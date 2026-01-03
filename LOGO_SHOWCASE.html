@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LSX Design Logo Showcase</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #f5f5f5;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+      color: #090909;
+    }
+
+    .subtitle {
+      font-size: 16px;
+      color: #565656;
+      margin-bottom: 40px;
+    }
+
+    .section {
+      background: white;
+      padding: 40px;
+      margin-bottom: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .section h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #090909;
+    }
+
+    .logo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 20px;
+    }
+
+    .logo-card {
+      padding: 30px;
+      border: 2px solid #e1e1e1;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .logo-card h3 {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #565656;
+      margin-bottom: 20px;
+    }
+
+    .logo-card.light {
+      background: #ffffff;
+    }
+
+    .logo-card.dark {
+      background: #090909;
+    }
+
+    .logo-card.dark h3 {
+      color: #e1e1e1;
+    }
+
+    .logo-display {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 80px;
+      margin-bottom: 15px;
+    }
+
+    .size-label {
+      font-size: 12px;
+      color: #757575;
+      margin-top: 10px;
+    }
+
+    .color-info {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-top: 30px;
+    }
+
+    .color-swatch {
+      padding: 15px;
+      border-radius: 4px;
+      font-size: 12px;
+      color: white;
+    }
+
+    .color-swatch.primary {
+      background: linear-gradient(135deg, rgba(30, 106, 255, 1), rgba(123, 231, 255, 1));
+    }
+
+    .color-swatch.text-dark {
+      background: rgba(9, 9, 9, 1);
+    }
+
+    .color-swatch.text-light {
+      background: rgba(255, 255, 255, 1);
+      color: #090909;
+      border: 1px solid #e1e1e1;
+    }
+
+    .specs {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .spec-item {
+      padding: 20px;
+      background: #f9f9f9;
+      border-radius: 4px;
+    }
+
+    .spec-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #757575;
+      margin-bottom: 5px;
+    }
+
+    .spec-value {
+      font-size: 18px;
+      font-weight: 600;
+      color: #090909;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>LSX Design Logo</h1>
+    <p class="subtitle">Brand identity system • December 24, 2024</p>
+
+    <!-- Primary Logos -->
+    <div class="section">
+      <h2>Primary Logos</h2>
+      <div class="logo-grid">
+        <!-- Light Mode Full -->
+        <div class="logo-card light">
+          <h3>Full Logo — Light Mode</h3>
+          <div class="logo-display">
+            <img src="/lsx-design-logo.svg" alt="LSX Design" width="200" height="48">
+          </div>
+          <div class="size-label">200×48px • Light backgrounds</div>
+        </div>
+
+        <!-- Dark Mode Full -->
+        <div class="logo-card dark">
+          <h3>Full Logo — Dark Mode</h3>
+          <div class="logo-display">
+            <img src="/lsx-design-logo-dark.svg" alt="LSX Design" width="200" height="48">
+          </div>
+          <div class="size-label">200×48px • Dark backgrounds</div>
+        </div>
+
+        <!-- Compact -->
+        <div class="logo-card light">
+          <h3>Compact Icon</h3>
+          <div class="logo-display">
+            <img src="/lsx-design-logo-compact.svg" alt="LSX" width="60" height="48">
+          </div>
+          <div class="size-label">60×48px • Small spaces</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Size Variations -->
+    <div class="section">
+      <h2>Size Variations</h2>
+      <div class="logo-grid">
+        <!-- Large -->
+        <div class="logo-card light">
+          <h3>Large (Desktop Header)</h3>
+          <div class="logo-display">
+            <img src="/lsx-design-logo.svg" alt="LSX Design" width="200" height="48">
+          </div>
+          <div class="size-label">200×48px</div>
+        </div>
+
+        <!-- Medium -->
+        <div class="logo-card light">
+          <h3>Medium (Mobile/Footer)</h3>
+          <div class="logo-display">
+            <img src="/lsx-design-logo.svg" alt="LSX Design" width="150" height="36">
+          </div>
+          <div class="size-label">150×36px</div>
+        </div>
+
+        <!-- Small -->
+        <div class="logo-card light">
+          <h3>Small (Compact Spaces)</h3>
+          <div class="logo-display">
+            <img src="/lsx-design-logo.svg" alt="LSX Design" width="120" height="28.8">
+          </div>
+          <div class="size-label">120×28.8px</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Colors -->
+    <div class="section">
+      <h2>Color System</h2>
+      <div class="color-info">
+        <div class="color-swatch primary">
+          <strong>Gradient</strong><br>
+          Primary → Accent<br>
+          #1E6AFF → #7BE7FF
+        </div>
+        <div class="color-swatch text-dark">
+          <strong>Text (Light Mode)</strong><br>
+          Foreground<br>
+          #090909
+        </div>
+        <div class="color-swatch text-light">
+          <strong>Text (Dark Mode)</strong><br>
+          Foreground<br>
+          #FFFFFF
+        </div>
+      </div>
+    </div>
+
+    <!-- Specifications -->
+    <div class="section">
+      <h2>Logo Specifications</h2>
+      <div class="specs">
+        <div class="spec-item">
+          <div class="spec-label">Aspect Ratio</div>
+          <div class="spec-value">25:6</div>
+        </div>
+        <div class="spec-item">
+          <div class="spec-label">Default Width</div>
+          <div class="spec-value">200px</div>
+        </div>
+        <div class="spec-item">
+          <div class="spec-label">Default Height</div>
+          <div class="spec-value">48px</div>
+        </div>
+        <div class="spec-item">
+          <div class="spec-label">Minimum Width</div>
+          <div class="spec-value">150px</div>
+        </div>
+        <div class="spec-item">
+          <div class="spec-label">Font</div>
+          <div class="spec-value">Lexend</div>
+        </div>
+        <div class="spec-item">
+          <div class="spec-label">Font Weight</div>
+          <div class="spec-value">500</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Usage Examples -->
+    <div class="section">
+      <h2>Usage Examples</h2>
+      <h3 style="margin-top: 20px; margin-bottom: 10px; font-size: 16px; color: #565656;">React Component</h3>
+      <pre style="background: #f9f9f9; padding: 20px; border-radius: 4px; overflow-x: auto; font-size: 14px; color: #090909;"><code>import { Logo } from './components/common/Logo';
+
+// Full logo
+&lt;Logo width={200} height={48} variant="full" /&gt;
+
+// Compact logo
+&lt;Logo width={60} height={48} variant="compact" /&gt;</code></pre>
+
+      <h3 style="margin-top: 30px; margin-bottom: 10px; font-size: 16px; color: #565656;">HTML</h3>
+      <pre style="background: #f9f9f9; padding: 20px; border-radius: 4px; overflow-x: auto; font-size: 14px; color: #090909;"><code>&lt;img 
+  src="/lsx-design-logo.svg" 
+  alt="LSX Design" 
+  width="200" 
+  height="48"
+/&gt;</code></pre>
+    </div>
+
+    <!-- Files -->
+    <div class="section">
+      <h2>Available Files</h2>
+      <ul style="list-style: none; padding: 0;">
+        <li style="padding: 10px 0; border-bottom: 1px solid #e1e1e1;">
+          <strong>lsx-design-logo.svg</strong> — Full logo for light backgrounds
+        </li>
+        <li style="padding: 10px 0; border-bottom: 1px solid #e1e1e1;">
+          <strong>lsx-design-logo-dark.svg</strong> — Full logo for dark backgrounds
+        </li>
+        <li style="padding: 10px 0; border-bottom: 1px solid #e1e1e1;">
+          <strong>lsx-design-logo-compact.svg</strong> — Icon only (any background)
+        </li>
+        <li style="padding: 10px 0;">
+          <strong>Logo.tsx</strong> — React component with theme switching
+        </li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>

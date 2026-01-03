@@ -1,0 +1,23 @@
+/**
+ * Font Imports
+ * 
+ * Design System Fonts:
+ * - Lexend: Primary font for all content (headings, body, UI)
+ * - Manrope: Secondary font for small text only
+ * 
+ * **Performance Optimization:**
+ * - Use font-display: swap to prevent FOIT (Flash of Invisible Text)
+ * - Subset to latin characters only for smaller file size
+ * - Load only required weights (400, 500, 600 for Lexend; 400, 500 for Manrope)
+ * 
+ * **Preconnect Setup:**
+ * Add to index.html <head>:
+ * <link rel="preconnect" href="https://fonts.googleapis.com">
+ * <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ */
+
+/* Lexend - Primary Font (Optimized: latin subset, display swap) */
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600&display=swap&subset=latin');
+
+/* Manrope - Secondary Font (Optimized: latin subset, display swap) */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500&display=swap&subset=latin');

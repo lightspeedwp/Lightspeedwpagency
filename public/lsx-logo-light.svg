@@ -1,0 +1,17 @@
+<svg width="220" height="70" viewBox="0 0 220 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Lightning bolt icon (two-tone, sharp geometric facets) -->
+  <g id="Icon">
+    <!-- Primary face (bright red) -->
+    <path id="Icon/Primary" fill="#FF3131" d="M10 10 L35 32 L22 32 L38 58 L20 36 L30 36 Z"/>
+    <!-- Secondary face (dark red/orange) for depth -->
+    <path id="Icon/Secondary" fill="#CC3F23" d="M35 32 L38 58 L22 32 Z"/>
+  </g>
+  
+  <!-- Wordmark (using design system fonts) -->
+  <g id="Text">
+    <!-- LSX (smaller, semibold) -->
+    <text x="60" y="24" fill="#111111" font-family="Lexend, -apple-system, system-ui, sans-serif" font-size="16" font-weight="600" letter-spacing="1">LSX</text>
+    <!-- Design (larger, extrabold) -->
+    <text x="60" y="54" fill="#111111" font-family="Lexend, -apple-system, system-ui, sans-serif" font-size="32" font-weight="800" letter-spacing="-0.5">Design</text>
+  </g>
+</svg>

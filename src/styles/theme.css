@@ -1,0 +1,60 @@
+/**
+ * LSX Design System — Main Theme File
+ * 
+ * This file imports the separated theme stylesheets:
+ * 
+ * 1. theme-base.css — Shared variables (typography, spacing, shadows, etc.)
+ * 2. theme-light.css — Light mode color variables
+ * 3. theme-dark.css — Dark mode color variables
+ * 
+ * Benefits of separation:
+ * - Easy to maintain each theme independently
+ * - Clear organization of shared vs theme-specific variables
+ * - Better documentation and testing
+ * - Simplified theme switching
+ * 
+ * @see theme-base.css — Base typography and spacing system
+ * @see theme-light.css — Light mode colors (WCAG AA/AAA compliant)
+ * @see theme-dark.css — Dark mode colors (WCAG AA/AAA compliant)
+ */
+
+/* ============================================
+   TAILWIND DARK MODE VARIANT
+   ============================================ */
+
+/**
+ * Custom variant for dark mode
+ * Matches .dark class on parent elements
+ */
+@custom-variant dark (&:is(.dark *));
+
+
+/* ============================================
+   IMPORT SEPARATED THEME STYLESHEETS
+   ============================================ */
+
+/**
+ * 1. Base variables (theme-agnostic)
+ * - Typography (font sizes, weights, line heights)
+ * - Spacing scale
+ * - Border radius
+ * - Transitions
+ * - Z-index scale
+ */
+@import './theme-base.css';
+
+/**
+ * 2. Light mode colors
+ * - All semantic color variables for light mode
+ * - Applied to :root selector
+ * - WCAG AA/AAA compliant
+ */
+@import './theme-light.css';
+
+/**
+ * 3. Dark mode colors
+ * - All semantic color variables for dark mode
+ * - Applied to .dark selector
+ * - WCAG AA/AAA compliant (often better than light mode)
+ */
+@import './theme-dark.css';

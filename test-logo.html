@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logo Test</title>
+    <style>
+        body {
+            font-family: system-ui, sans-serif;
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .test-section {
+            margin: 30px 0;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+        .test-section h2 {
+            margin-top: 0;
+        }
+        img {
+            display: block;
+            margin: 10px 0;
+            border: 1px solid #eee;
+        }
+        .error {
+            color: red;
+        }
+        .success {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1>LSX Logo Loading Test</h1>
+    
+    <div class="test-section">
+        <h2>Test 1: Direct SVG Path</h2>
+        <p>Path: <code>/lsx-logo-light.svg</code></p>
+        <img src="/lsx-logo-light.svg" alt="LSX Logo Light" width="220" height="70" 
+             onerror="this.parentElement.innerHTML += '<p class=error>❌ Failed to load</p>'"
+             onload="this.parentElement.innerHTML += '<p class=success>✅ Loaded successfully</p>'">
+    </div>
+    
+    <div class="test-section">
+        <h2>Test 2: Dark Variant</h2>
+        <p>Path: <code>/lsx-logo-dark.svg</code></p>
+        <div style="background: #222; padding: 20px;">
+            <img src="/lsx-logo-dark.svg" alt="LSX Logo Dark" width="220" height="70"
+                 onerror="this.parentElement.innerHTML += '<p class=error>❌ Failed to load</p>'"
+                 onload="this.parentElement.innerHTML += '<p class=success>✅ Loaded successfully</p>'">
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Test 3: Icon Only</h2>
+        <p>Path: <code>/lsx-icon.svg</code></p>
+        <img src="/lsx-icon.svg" alt="LSX Icon" width="48" height="68"
+             onerror="this.parentElement.innerHTML += '<p class=error>❌ Failed to load</p>'"
+             onload="this.parentElement.innerHTML += '<p class=success>✅ Loaded successfully</p>'">
+    </div>
+    
+    <div class="test-section">
+        <h2>Test 4: Inline SVG (Control)</h2>
+        <svg width="220" height="70" viewBox="0 0 220 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g id="Icon">
+                <path id="Icon/Primary" fill="#FF3131" d="M10 10 L35 32 L22 32 L38 58 L20 36 L30 36 Z"/>
+                <path id="Icon/Secondary" fill="#CC3F23" d="M35 32 L38 58 L22 32 Z"/>
+            </g>
+            <g id="Text">
+                <text x="60" y="24" fill="#111111" font-family="Lexend, -apple-system, system-ui, sans-serif" font-size="16" font-weight="600" letter-spacing="1">LSX</text>
+                <text x="60" y="54" fill="#111111" font-family="Lexend, -apple-system, system-ui, sans-serif" font-size="32" font-weight="800" letter-spacing="-0.5">Design</text>
+            </g>
+        </svg>
+        <p class="success">✅ This should always work (inline SVG)</p>
+    </div>
+    
+    <div class="test-section">
+        <h2>Test 5: Check if files exist</h2>
+        <p>Open browser console and check network tab for 404 errors</p>
+    </div>
+    
+    <script>
+        console.log('Logo test page loaded');
+        console.log('Current location:', window.location.href);
+        console.log('Origin:', window.location.origin);
+    </script>
+</body>
+</html>

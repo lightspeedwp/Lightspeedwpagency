@@ -1,0 +1,377 @@
+/**
+ * Print Stylesheet
+ * 
+ * Optimized styles for printing pages.
+ * Provides clean, professional document output.
+ * 
+ * Features:
+ * - Hides non-essential UI elements
+ * - Optimizes typography for print
+ * - Shows link URLs inline
+ * - Prevents awkward page breaks
+ * - Saves ink/toner (removes backgrounds)
+ * - Accessible printed documents
+ */
+
+@media print {
+  /* ============================================
+     HIDE NON-ESSENTIAL ELEMENTS
+     ============================================ */
+  
+  /* Navigation and UI elements */
+  .no-print,
+  header,
+  footer,
+  nav,
+  aside,
+  button,
+  .skip-link,
+  .style-switcher,
+  .scroll-back-to-top,
+  .scroll-down-arrow,
+  .mobile-filter-popover,
+  .mega-menu,
+  .breadcrumbs,
+  .pagination,
+  .filter-buttons,
+  .layout-switcher,
+  .page-switcher,
+  .toast,
+  .modal-backdrop,
+  .search-form {
+    display: none !important;
+  }
+
+  /* Hide all interactive elements */
+  button:not(.print-button),
+  input[type="submit"],
+  input[type="button"],
+  .cta-button,
+  .button,
+  a.button {
+    display: none !important;
+  }
+
+  /* ============================================
+     RESET LAYOUT FOR PRINT
+     ============================================ */
+  
+  * {
+    background: white !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* Reset page */
+  body {
+    font-size: 12pt;
+    line-height: 1.5;
+    color: black;
+    background: white;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Remove borders from cards */
+  .card,
+  [style*="border"],
+  [style*="box-shadow"] {
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  /* ============================================
+     OPTIMIZE TYPOGRAPHY FOR PRINT
+     ============================================ */
+  
+  /* Heading sizes optimized for print */
+  h1 {
+    font-size: 24pt !important;
+    font-family: Lexend, sans-serif !important;
+    font-weight: 700 !important;
+    margin-top: 0 !important;
+    margin-bottom: 12pt !important;
+    page-break-after: avoid;
+  }
+
+  h2 {
+    font-size: 18pt !important;
+    font-family: Lexend, sans-serif !important;
+    font-weight: 600 !important;
+    margin-top: 18pt !important;
+    margin-bottom: 10pt !important;
+    page-break-after: avoid;
+  }
+
+  h3 {
+    font-size: 14pt !important;
+    font-family: Lexend, sans-serif !important;
+    font-weight: 600 !important;
+    margin-top: 14pt !important;
+    margin-bottom: 8pt !important;
+    page-break-after: avoid;
+  }
+
+  h4, h5, h6 {
+    font-size: 12pt !important;
+    font-family: Lexend, sans-serif !important;
+    font-weight: 600 !important;
+    margin-top: 12pt !important;
+    margin-bottom: 6pt !important;
+    page-break-after: avoid;
+  }
+
+  /* Body text */
+  p {
+    font-size: 12pt !important;
+    font-family: Lexend, sans-serif !important;
+    line-height: 1.5 !important;
+    margin-bottom: 10pt !important;
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* Lists */
+  ul, ol {
+    margin: 10pt 0 !important;
+    padding-left: 20pt !important;
+  }
+
+  li {
+    font-size: 12pt !important;
+    font-family: Lexend, sans-serif !important;
+    line-height: 1.5 !important;
+    margin-bottom: 5pt !important;
+  }
+
+  /* Small text */
+  small,
+  .text-small {
+    font-size: 10pt !important;
+    font-family: Manrope, sans-serif !important;
+  }
+
+  /* ============================================
+     LINKS
+     ============================================ */
+  
+  /* Show link URLs after link text */
+  a[href]:after {
+    content: " (" attr(href) ")";
+    font-size: 10pt;
+    font-weight: normal;
+    color: #666 !important;
+  }
+
+  /* Don't show URLs for anchor links */
+  a[href^="#"]:after {
+    content: "";
+  }
+
+  /* Don't show URLs for navigation links */
+  nav a[href]:after {
+    content: "";
+  }
+
+  /* Underline links for clarity */
+  a {
+    text-decoration: underline !important;
+    color: black !important;
+  }
+
+  /* ============================================
+     IMAGES
+     ============================================ */
+  
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+    page-break-inside: avoid;
+    display: block;
+    margin: 10pt 0;
+  }
+
+  /* Hide decorative images */
+  img[alt=""],
+  img:not([alt]) {
+    display: none !important;
+  }
+
+  /* ============================================
+     TABLES
+     ============================================ */
+  
+  table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    page-break-inside: avoid;
+    margin: 10pt 0 !important;
+  }
+
+  th, td {
+    padding: 6pt !important;
+    border: 1pt solid #ddd !important;
+    font-size: 11pt !important;
+    text-align: left !important;
+  }
+
+  th {
+    background: #f5f5f5 !important;
+    font-weight: bold !important;
+  }
+
+  /* ============================================
+     PAGE BREAKS
+     ============================================ */
+  
+  /* Prevent page breaks inside these elements */
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+    page-break-inside: avoid;
+  }
+
+  img, figure, table, pre, blockquote {
+    page-break-inside: avoid;
+  }
+
+  /* Prevent widows and orphans */
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* ============================================
+     BLOCKQUOTES
+     ============================================ */
+  
+  blockquote {
+    border-left: 3pt solid #ddd !important;
+    padding-left: 12pt !important;
+    margin: 10pt 0 !important;
+    font-style: italic !important;
+    page-break-inside: avoid;
+  }
+
+  /* ============================================
+     CODE
+     ============================================ */
+  
+  code, pre {
+    font-family: 'Courier New', monospace !important;
+    font-size: 10pt !important;
+    background: #f5f5f5 !important;
+    border: 1pt solid #ddd !important;
+    padding: 2pt 4pt !important;
+  }
+
+  pre {
+    padding: 8pt !important;
+    overflow: visible !important;
+    white-space: pre-wrap !important;
+    page-break-inside: avoid;
+  }
+
+  /* ============================================
+     EXPAND COLLAPSED SECTIONS
+     ============================================ */
+  
+  /* Expand all details/summary elements */
+  details {
+    display: block !important;
+  }
+
+  summary {
+    display: none !important;
+  }
+
+  details[open] > :not(summary) {
+    display: block !important;
+  }
+
+  /* ============================================
+     CONTENT-SPECIFIC ADJUSTMENTS
+     ============================================ */
+  
+  /* Article content */
+  article {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Remove max-width constraints */
+  .container,
+  .max-w-3xl,
+  .max-w-4xl,
+  .max-w-5xl,
+  .max-w-6xl,
+  .max-w-7xl {
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+
+  /* Card grids become single column */
+  .grid {
+    display: block !important;
+  }
+
+  .grid > * {
+    display: block !important;
+    margin-bottom: 10pt !important;
+  }
+
+  /* ============================================
+     ACCESSIBILITY
+     ============================================ */
+  
+  /* Ensure sufficient contrast */
+  * {
+    color: black !important;
+    background: white !important;
+  }
+
+  /* Show skip links */
+  .skip-link {
+    display: none !important;
+  }
+
+  /* ============================================
+     PAGE METADATA (for header/footer)
+     ============================================ */
+  
+  @page {
+    margin: 2cm;
+  }
+
+  @page :first {
+    margin-top: 3cm;
+  }
+
+  /* Add page numbers */
+  @page {
+    @bottom-right {
+      content: counter(page);
+    }
+  }
+
+  /* ============================================
+     UTILITY CLASSES
+     ============================================ */
+  
+  .print-only {
+    display: block !important;
+  }
+
+  .print-break-before {
+    page-break-before: always;
+  }
+
+  .print-break-after {
+    page-break-after: always;
+  }
+
+  .print-break-avoid {
+    page-break-inside: avoid;
+  }
+}

@@ -1,0 +1,1061 @@
+/**
+ * Section Styles — Complete WordPress FSE Section Style System
+ * 
+ * WordPress Block Theme Section Styles System
+ * Maps to theme.json "styles.blocks.core/group.variations"
+ * 
+ * Section styles allow controlling all child element styling through
+ * a single parent class, similar to WordPress FSE section styles.
+ * 
+ * Usage:
+ * <Section sectionStyle="hero-primary">
+ *   <Container>
+ *     <h1>...</h1>
+ *     <p>...</p>
+ *     <Button>...</Button>
+ *   </Container>
+ * </Section>
+ * 
+ * Available Section Styles:
+ * - Hero: hero-primary, hero-secondary, hero-minimal
+ * - CTA: cta-primary, cta-secondary, cta-accent
+ * - Content: content-default, content-feature, content-editorial
+ * - Testimonial: testimonial-default, testimonial-highlight, testimonial-grid
+ * - Stats: stats-default, stats-highlight
+ * - Pricing: pricing-default, pricing-featured
+ * - Form: form-default, form-highlight
+ * 
+ * WordPress theme.json mapping:
+ * "styles": {
+ *   "blocks": {
+ *     "core/group": {
+ *       "variations": {
+ *         "hero-primary": { ... },
+ *         "testimonial-default": { ... }
+ *       }
+ *     }
+ *   }
+ * }
+ */
+
+/* ========================================
+   HERO SECTION STYLES
+   ======================================== */
+
+/**
+ * Hero Primary Style
+ * Large hero section with gradient background and decorative elements
+ * Use for homepage and landing pages
+ */
+.section-style-hero-primary {
+  /* Background & Layout */
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  color: var(--primary-foreground);
+  position: relative;
+  overflow: hidden;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  
+  /* Spacing */
+  padding-top: 8rem;  /* 128px */
+  padding-bottom: 8rem;  /* 128px */
+}
+
+/* Hero Primary - Decorative Grid Pattern */
+.section-style-hero-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(var(--primary-foreground) 1px, transparent 1px),
+    linear-gradient(90deg, var(--primary-foreground) 1px, transparent 1px);
+  background-size: 50px 50px;
+  opacity: 0.03;
+  pointer-events: none;
+}
+
+/* Hero Primary - Gradient Orb */
+.section-style-hero-primary::after {
+  content: '';
+  position: absolute;
+  top: -10rem;
+  right: -10rem;
+  width: 40rem;
+  height: 40rem;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.15;
+  filter: blur(100px);
+  pointer-events: none;
+}
+
+/* Hero Primary - All Headings */
+.section-style-hero-primary h1,
+.section-style-hero-primary h2,
+.section-style-hero-primary h3 {
+  font-family: Lexend, sans-serif;
+  font-weight: 600;  /* Semibold for hero */
+  color: var(--primary-foreground);
+  letter-spacing: var(--letter-spacing-tight);
+  line-height: var(--line-height-tight);
+}
+
+.section-style-hero-primary h1 {
+  font-size: var(--text-h1);
+  margin-bottom: 1.5rem;
+}
+
+/* Hero Primary - Paragraphs */
+.section-style-hero-primary p {
+  font-family: Lexend, sans-serif;
+  font-size: var(--text-xl);  /* 24px for hero text */
+  font-weight: 400;
+  color: var(--primary-foreground);
+  opacity: 0.95;
+  line-height: var(--line-height-relaxed);
+  margin-bottom: 2.5rem;
+}
+
+/* Hero Primary - Button Group */
+.section-style-hero-primary .button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2.5rem;
+}
+
+/**
+ * Hero Secondary Style
+ * Minimal hero with muted background
+ * Use for internal pages
+ */
+.section-style-hero-secondary {
+  background-color: var(--muted);
+  color: var(--foreground);
+  padding-top: 6rem;  /* 96px */
+  padding-bottom: 6rem;  /* 96px */
+  text-align: center;
+}
+
+.section-style-hero-secondary h1 {
+  font-family: Lexend, sans-serif;
+  font-size: var(--text-h1);
+  font-weight: 600;
+  color: var(--foreground);
+  margin-bottom: 1.5rem;
+}
+
+.section-style-hero-secondary p {
+  font-family: Lexend, sans-serif;
+  font-size: var(--text-xl);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-relaxed);
+  max-width: 800px;
+  margin: 0 auto 2rem;
+}
+
+/**
+ * Hero Minimal Style
+ * Clean, text-focused hero
+ * Use for blog posts and simple pages
+ */
+.section-style-hero-minimal {
+  background-color: var(--background);
+  color: var(--foreground);
+  padding-top: 4rem;  /* 64px */
+  padding-bottom: 4rem;  /* 64px */
+}
+
+.section-style-hero-minimal h1 {
+  font-family: Lexend, sans-serif;
+  font-size: var(--text-h1);
+  font-weight: 600;
+  color: var(--foreground);
+  margin-bottom: 1rem;
+}
+
+.section-style-hero-minimal p {
+  font-family: Lexend, sans-serif;
+  font-size: var(--text-lead);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-relaxed);
+}
+
+/* ========================================
+   CTA SECTION STYLES
+   ======================================== */
+
+/**
+ * CTA Primary Style
+ * Primary call-to-action with brand colors and high contrast
+ * Use for main conversion points
+ */
+.section-style-cta-primary {
+  /* Background & Layout */
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  position: relative;
+  overflow: hidden;
+  
+  /* Spacing */
+  padding-top: 5rem;  /* 80px */
+  padding-bottom: 5rem;  /* 80px */
+}
+
+/* CTA Primary - Gradient Overlay */
+.section-style-cta-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 0%, var(--accent) 100%);
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+/* CTA Primary - Decorative Orb */
+.section-style-cta-primary::after {
+  content: '';
+  position: absolute;
+  bottom: -6rem;
+  right: -6rem;
+  width: 24rem;
+  height: 24rem;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.1;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+/* CTA Primary - All Headings */
+.section-style-cta-primary h1,
+.section-style-cta-primary h2,
+.section-style-cta-primary h3,
+.section-style-cta-primary h4,
+.section-style-cta-primary h5,
+.section-style-cta-primary h6 {
+  font-family: Lexend, sans-serif;
+  font-weight: 500;  /* Medium weight for modern typography */
+  color: var(--primary-foreground);
+  letter-spacing: var(--letter-spacing-tight);
+  line-height: var(--line-height-snug);
+}
+
+/* CTA Primary - H2 Specific */
+.section-style-cta-primary h2 {
+  font-size: var(--text-h2);
+  margin-bottom: 2rem;
+}
+
+/* CTA Primary - All Paragraphs */
+.section-style-cta-primary p {
+  font-family: Lexend, sans-serif;
+  font-size: var(--text-lead);  /* 20px for CTA descriptions */
+  font-weight: 400;  /* Regular weight */
+  color: var(--primary-foreground);
+  opacity: 0.95;
+  line-height: var(--line-height-relaxed);
+  margin-bottom: 2.5rem;
+}
+
+/* CTA Primary - Lead Text */
+.section-style-cta-primary .lead {
+  font-size: var(--text-lead);
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* CTA Primary - Small Text */
+.section-style-cta-primary small,
+.section-style-cta-primary .text-sm {
+  font-family: Manrope, sans-serif;
+  font-size: var(--text-sm);
+  font-weight: 400;
+  color: var(--primary-foreground);
+  opacity: 0.9;
+}
+
+/* CTA Primary - Button Group */
+.section-style-cta-primary .button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2.5rem;
+}
+
+/* CTA Primary - Primary Button Override */
+.section-style-cta-primary button[data-variant="primary"],
+.section-style-cta-primary a[data-variant="primary"] {
+  background-color: var(--background);
+  color: var(--foreground);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* CTA Primary - Outline Button Override */
+.section-style-cta-primary button[data-variant="outline"],
+.section-style-cta-primary a[data-variant="outline"] {
+  border-color: var(--primary-foreground);
+  color: var(--primary-foreground);
+  background-color: transparent;
+}
+
+/* CTA Primary - Trust Indicators */
+.section-style-cta-primary .trust-indicators {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--primary-foreground);
+  opacity: 0.6;
+}
+
+.section-style-cta-primary .trust-indicators span {
+  font-family: Lexend, sans-serif;
+  font-size: var(--text-base);
+  font-weight: 500;
+  color: var(--primary-foreground);
+  opacity: 0.9;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/**
+ * CTA Secondary Style
+ * Subtle call-to-action with muted background
+ * Use for secondary conversion points
+ */
+.section-style-cta-secondary {
+  /* Background & Layout */
+  background-color: var(--muted);
+  color: var(--foreground);
+  
+  /* Spacing */
+  padding-top: 5rem;  /* 80px */
+  padding-bottom: 5rem;  /* 80px */
+}
+
+/* CTA Secondary - All Headings */
+.section-style-cta-secondary h1,
+.section-style-cta-secondary h2,
+.section-style-cta-secondary h3,
+.section-style-cta-secondary h4,
+.section-style-cta-secondary h5,
+.section-style-cta-secondary h6 {
+  font-family: Lexend, sans-serif;
+  font-weight: 500;
+  color: var(--foreground);
+  letter-spacing: var(--letter-spacing-tight);
+  line-height: var(--line-height-snug);
+}
+
+/* CTA Secondary - H2 Specific */
+.section-style-cta-secondary h2 {
+  font-size: var(--text-h2);
+  margin-bottom: 2rem;
+}
+
+/* CTA Secondary - All Paragraphs */
+.section-style-cta-secondary p {
+  font-family: Lexend, sans-serif;
+  font-size: var(--text-lead);
+  font-weight: 400;
+  color: var(--muted-foreground);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: 2.5rem;
+}
+
+/* CTA Secondary - Lead Text */
+.section-style-cta-secondary .lead {
+  font-size: var(--text-lead);
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* CTA Secondary - Small Text */
+.section-style-cta-secondary small,
+.section-style-cta-secondary .text-sm {
+  font-family: Manrope, sans-serif;
+  font-size: var(--text-sm);
+  font-weight: 400;
+  color: var(--muted-foreground);
+}
+
+/* CTA Secondary - Button Group */
+.section-style-cta-secondary .button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2.5rem;
+}
+
+/**
+ * CTA Accent Style
+ * Call-to-action with accent color
+ * Use for special offers or highlights
+ */
+.section-style-cta-accent {
+  /* Background & Layout */
+  background-color: var(--accent);
+  color: var(--accent-foreground);
+  position: relative;
+  overflow: hidden;
+  
+  /* Spacing */
+  padding-top: 5rem;  /* 80px */
+  padding-bottom: 5rem;  /* 80px */
+}
+
+/* CTA Accent - Gradient Overlay */
+.section-style-cta-accent::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 0%, var(--primary) 100%);
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+/* CTA Accent - All Headings */
+.section-style-cta-accent h1,
+.section-style-cta-accent h2,
+.section-style-cta-accent h3,
+.section-style-cta-accent h4,
+.section-style-cta-accent h5,
+.section-style-cta-accent h6 {
+  font-family: Lexend, sans-serif;
+  font-weight: 500;
+  color: var(--accent-foreground);
+  letter-spacing: var(--letter-spacing-tight);
+  line-height: var(--line-height-snug);
+}
+
+/* CTA Accent - H2 Specific */
+.section-style-cta-accent h2 {
+  font-size: var(--text-h2);
+  margin-bottom: 2rem;
+}
+
+/* CTA Accent - All Paragraphs */
+.section-style-cta-accent p {
+  font-family: Lexend, sans-serif;
+  font-size: var(--text-lead);
+  font-weight: 400;
+  color: var(--accent-foreground);
+  opacity: 0.95;
+  line-height: var(--line-height-relaxed);
+  margin-bottom: 2.5rem;
+}
+
+/* CTA Accent - Button Group */
+.section-style-cta-accent .button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2.5rem;
+}
+
+/* ========================================
+   CONTENT SECTION STYLES
+   ======================================== */
+
+/**
+ * Content Default Style
+ * Standard content section with default background
+ * Use for general editorial content
+ */
+.section-style-content-default {
+  background-color: var(--background);
+  color: var(--foreground);
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.section-style-content-default h2,
+.section-style-content-default h3,
+.section-style-content-default h4 {
+  font-family: Lexend, sans-serif;
+  font-weight: 500;
+  color: var(--foreground);
+  line-height: var(--line-height-snug);
+  margin-bottom: 1.5rem;
+}
+
+.section-style-content-default h2 {
+  font-size: var(--text-h2);
+}
+
+.section-style-content-default h3 {
+  font-size: var(--text-h3);
+}
+
+.section-style-content-default p {
+  font-family: Lexend, sans-serif;
+  font-size: var(--text-base);
+  color: var(--foreground);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: 1.5rem;
+}
+
+/**
+ * Content Feature Style
+ * Highlighted content section with card background
+ * Use for featured sections
+ */
+.section-style-content-feature {
+  background-color: var(--card);
+  color: var(--foreground);
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.section-style-content-feature h2 {
+  font-family: Lexend, sans-serif;
+  font-size: var(--text-h2);
+  font-weight: 500;
+  color: var(--foreground);
+  margin-bottom: 1.5rem;
+}
+
+.section-style-content-feature p {
+  font-family: Lexend, sans-serif;
+  font-size: var(--text-base);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-relaxed);
+}
+
+/**
+ * Content Editorial Style
+ * Optimized for long-form content
+ * Use for blog posts and articles
+ */
+.section-style-content-editorial {
+  background-color: var(--background);
+  color: var(--foreground);
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.section-style-content-editorial h2,
+.section-style-content-editorial h3,
+.section-style-content-editorial h4 {
+  font-family: Lexend, sans-serif;
+  font-weight: 500;
+  color: var(--foreground);
+  line-height: var(--line-height-snug);
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.section-style-content-editorial p {
+  font-family: Lexend, sans-serif;
+  font-size: var(--text-lg);
+  color: var(--foreground);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: 1.5rem;
+}
+
+.section-style-content-editorial ul,
+.section-style-content-editorial ol {
+  font-family: Lexend, sans-serif;
+  font-size: var(--text-lg);
+  color: var(--foreground);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: 1.5rem;
+  padding-left: 2rem;
+}
+
+/* ========================================
+   TESTIMONIAL SECTION STYLES
+   ======================================== */
+
+/**
+ * Testimonial Default Style
+ * Clean testimonial section with muted background
+ * Use for general testimonial displays
+ */
+.section-style-testimonial-default {
+  background-color: var(--muted);
+  color: var(--foreground);
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.section-style-testimonial-default h2 {
+  font-family: Lexend, sans-serif;
+  font-size: var(--text-h2);
+  font-weight: 500;
+  color: var(--foreground);
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-style-testimonial-default .testimonial-card {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  position: relative;
+}
+
+.section-style-testimonial-default .testimonial-quote {
+  font-family: Lexend, sans-serif;
+  font-size: var(--text-lg);
+  color: var(--foreground);
+  line-height: var(--line-height-relaxed);
+  font-style: italic;
+  margin-bottom: 1.5rem;
+}
+
+.section-style-testimonial-default .testimonial-author {
+  font-family: Lexend, sans-serif;
+  font-size: var(--text-base);
+  font-weight: 500;
+  color: var(--foreground);
+  margin-bottom: 0.25rem;
+}
+
+.section-style-testimonial-default .testimonial-role {
+  font-family: Manrope, sans-serif;
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+}
+
+.section-style-testimonial-default .testimonial-company {
+  font-family: Manrope, sans-serif;
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+}
+
+/**
+ * Testimonial Highlight Style
+ * Featured testimonial with brand colors
+ * Use for highlighting key testimonials
+ */
+.section-style-testimonial-highlight {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Testimonial Highlight - Gradient */
+.section-style-testimonial-highlight::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 0%, var(--accent) 100%);
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.section-style-testimonial-highlight h2 {
+  font-family: Lexend, sans-serif;
+  font-size: var(--text-h2);
+  font-weight: 500;
+  color: var(--primary-foreground);
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-style-testimonial-highlight .testimonial-quote {
+  font-family: Lexend, sans-serif;
+  font-size: var(--text-xl);
+  color: var(--primary-foreground);
+  line-height: var(--line-height-relaxed);
+  font-style: italic;
+  text-align: center;
+  margin-bottom: 2rem;
+  opacity: 0.95;
+}
+
+.section-style-testimonial-highlight .testimonial-author {
+  font-family: Lexend, sans-serif;
+  font-size: var(--text-lg);
+  font-weight: 500;
+  color: var(--primary-foreground);
+  text-align: center;
+}
+
+.section-style-testimonial-highlight .testimonial-role,
+.section-style-testimonial-highlight .testimonial-company {
+  font-family: Manrope, sans-serif;
+  font-size: var(--text-base);
+  color: var(--primary-foreground);
+  text-align: center;
+  opacity: 0.9;
+}
+
+/**
+ * Testimonial Grid Style
+ * Grid layout for multiple testimonials
+ * Use for testimonial archives
+ */
+.section-style-testimonial-grid {
+  background-color: var(--background);
+  color: var(--foreground);
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.section-style-testimonial-grid h2 {
+  font-family: Lexend, sans-serif;
+  font-size: var(--text-h2);
+  font-weight: 500;
+  color: var(--foreground);
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-style-testimonial-grid .testimonial-card {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  height: 100%;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.section-style-testimonial-grid .testimonial-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* ========================================
+   STATS SECTION STYLES
+   ======================================== */
+
+/**
+ * Stats Default Style
+ * Clean stats section with muted background
+ * Use for displaying metrics and numbers
+ */
+.section-style-stats-default {
+  background-color: var(--muted);
+  color: var(--foreground);
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.section-style-stats-default .stat-number {
+  font-family: Lexend, sans-serif;
+  font-size: var(--text-h1);
+  font-weight: 600;
+  color: var(--primary);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.section-style-stats-default .stat-label {
+  font-family: Lexend, sans-serif;
+  font-size: var(--text-base);
+  font-weight: 500;
+  color: var(--foreground);
+}
+
+.section-style-stats-default .stat-description {
+  font-family: Manrope, sans-serif;
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+}
+
+/**
+ * Stats Highlight Style
+ * Highlighted stats with brand colors
+ * Use for featuring key metrics
+ */
+.section-style-stats-highlight {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.section-style-stats-highlight .stat-number {
+  font-family: Lexend, sans-serif;
+  font-size: var(--text-h1);
+  font-weight: 600;
+  color: var(--primary-foreground);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.section-style-stats-highlight .stat-label {
+  font-family: Lexend, sans-serif;
+  font-size: var(--text-base);
+  font-weight: 500;
+  color: var(--primary-foreground);
+  opacity: 0.9;
+}
+
+/* ========================================
+   PRICING SECTION STYLES
+   ======================================== */
+
+/**
+ * Pricing Default Style
+ * Clean pricing section
+ * Use for pricing tables
+ */
+.section-style-pricing-default {
+  background-color: var(--background);
+  color: var(--foreground);
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.section-style-pricing-default h2 {
+  font-family: Lexend, sans-serif;
+  font-size: var(--text-h2);
+  font-weight: 500;
+  color: var(--foreground);
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-style-pricing-default .pricing-card {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.section-style-pricing-default .pricing-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/**
+ * Pricing Featured Style
+ * Featured pricing card with accent color
+ * Use for highlighting recommended plans
+ */
+.section-style-pricing-featured {
+  background-color: var(--accent);
+  color: var(--accent-foreground);
+  border: 2px solid var(--accent);
+}
+
+/* ========================================
+   FORM SECTION STYLES
+   ======================================== */
+
+/**
+ * Form Default Style
+ * Clean form section
+ * Use for contact forms and surveys
+ */
+.section-style-form-default {
+  background-color: var(--background);
+  color: var(--foreground);
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.section-style-form-default h2 {
+  font-family: Lexend, sans-serif;
+  font-size: var(--text-h2);
+  font-weight: 500;
+  color: var(--foreground);
+  margin-bottom: 2rem;
+}
+
+.section-style-form-default label {
+  font-family: Lexend, sans-serif;
+  font-size: var(--text-base);
+  font-weight: 500;
+  color: var(--foreground);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.section-style-form-default input,
+.section-style-form-default textarea,
+.section-style-form-default select {
+  font-family: Lexend, sans-serif;
+  font-size: var(--text-base);
+  color: var(--foreground);
+  background-color: var(--background);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.75rem 1rem;
+  width: 100%;
+}
+
+/**
+ * Form Highlight Style
+ * Highlighted form with muted background
+ * Use for important forms
+ */
+.section-style-form-highlight {
+  background-color: var(--muted);
+  color: var(--foreground);
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.section-style-form-highlight h2 {
+  font-family: Lexend, sans-serif;
+  font-size: var(--text-h2);
+  font-weight: 500;
+  color: var(--foreground);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* ========================================
+   Responsive Adjustments
+   ======================================== */
+
+@media (max-width: 768px) {
+  /* Hero sections */
+  .section-style-hero-primary,
+  .section-style-hero-secondary {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    min-height: 400px;
+  }
+  
+  .section-style-hero-primary::after {
+    width: 24rem;
+    height: 24rem;
+  }
+  
+  /* CTA sections */
+  .section-style-cta-primary,
+  .section-style-cta-secondary,
+  .section-style-cta-accent {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+  
+  .section-style-cta-primary::after {
+    width: 16rem;
+    height: 16rem;
+  }
+  
+  /* Button groups */
+  .section-style-hero-primary .button-group,
+  .section-style-cta-primary .button-group,
+  .section-style-cta-secondary .button-group,
+  .section-style-cta-accent .button-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  /* Trust indicators */
+  .section-style-cta-primary .trust-indicators {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  /* Content sections */
+  .section-style-content-default,
+  .section-style-content-feature,
+  .section-style-testimonial-default,
+  .section-style-testimonial-grid {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+}
+
+/* ========================================
+   Utility Classes for Section Styles
+   ======================================== */
+
+/* Center content within section */
+.section-content-center {
+  max-width: 64rem;  /* 1024px */
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+/* Narrow content for CTAs */
+.section-content-narrow {
+  max-width: 48rem;  /* 768px */
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+/* Wide content for grids */
+.section-content-wide {
+  max-width: 80rem;  /* 1280px */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Z-index for layered content */
+.section-content-layer {
+  position: relative;
+  z-index: 10;
+}
+
+/* Grid layouts */
+.section-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .section-grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.section-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .section-grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.section-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .section-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
