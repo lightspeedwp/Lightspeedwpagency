@@ -27,7 +27,7 @@ export function PageSwitcher({ currentPage, onPageChange }: PageSwitcherProps) {
         { id: 'about-culture', label: 'About: Our Culture' },
         { id: 'about-history', label: 'About: Our History' },
         { id: 'team', label: 'Team' },
-        { id: 'services', label: 'Services' },
+        { id: 'services', label: 'Services Overview' },
         { id: 'solutions', label: 'Solutions' },
         { id: 'hosting', label: 'Hosting' },
         { id: 'why-choose-us', label: 'Why Choose Us' },
@@ -39,6 +39,31 @@ export function PageSwitcher({ currentPage, onPageChange }: PageSwitcherProps) {
         { id: 'faq', label: 'FAQ' },
         { id: 'style-guide', label: 'Style Guide' },
         { id: 'section-style-example', label: '🎨 Section Styles Example' },
+      ]
+    },
+    {
+      label: 'Service Pages',
+      pages: [
+        { id: 'services', label: 'Services Overview' },
+        { id: 'discovery-service', label: 'Discovery Service' },
+        { id: 'design-service', label: 'Design Service' },
+        { id: 'development-service', label: 'Development Service' },
+        { id: 'content-service', label: 'Content Service' },
+        { id: 'migrations-service', label: 'Migrations Service' },
+        { id: 'security-service', label: 'Security Service' },
+        { id: 'support-service', label: 'Support Service' },
+        { id: 'newsletter-service', label: 'Newsletter Service' },
+      ]
+    },
+    {
+      label: 'Solution Pages',
+      pages: [
+        { id: 'solutions', label: 'Solutions Overview' },
+        { id: 'wordpress-solutions', label: 'WordPress Solutions' },
+        { id: 'woocommerce-solutions', label: 'WooCommerce Solutions' },
+        { id: 'tour-operator-solutions', label: 'Tour Operator Solutions' },
+        { id: 'lsx-design-solutions', label: 'LSX Design Solutions' },
+        { id: 'hosting', label: 'Hosting Solutions' },
       ]
     },
     {

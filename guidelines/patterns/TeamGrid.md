@@ -1,103 +1,52 @@
-# TeamGrid Pattern
+# Team Grid Pattern — WordPress Block
 
-## Overview
-
-**Purpose:** Display team members in a responsive grid with photos, names, roles, and bios  
-**Category:** `lsx-design/content/team-grid`  
-**WordPress Block:** Group block containing multiple team member cards  
-**Usage:** Team pages, about pages, leadership sections  
-
-**Key Features:**
-- Responsive grid layout (2-4 columns)
-- Team member photos with hover effects
-- Name, role, bio display
-- Optional social links
-- Customizable spacing
-- 100% CSS variables
+**Pattern Name:** wp-block-team-grid  
+**Category:** Content Pattern  
+**Added:** January 7, 2025  
+**CSS Lines:** 90 lines  
+**Complexity:** Medium
 
 ---
 
-## WordPress FSE Mapping
+## 📋 Overview
 
-### Block Pattern
-```json
-{
-  "slug": "lsx-design/content/team-grid",
-  "title": "Team Grid",
-  "description": "Grid of team member cards with photos and info",
-  "categories": ["content"],
-  "blockTypes": ["core/group"],
-  "keywords": ["team", "staff", "people", "about"]
-}
+The Team Grid pattern displays team member cards in a responsive grid layout with photos, roles, bios, and social links. Features hover effects on cards and images, with support for 1/2/4 column layouts.
+
+---
+
+## 🎯 Use Cases
+
+- Team/About pages ✅
+- Staff directories
+- Leadership pages
+- Contributors showcase
+- Author pages
+- Expert listings
+
+---
+
+## 📐 Structure
+
 ```
-
-### Template Usage
-```html
-<!-- wp:group {"layout":{"type":"constrained"}} -->
-<div class="wp-block-group">
-  <!-- wp:heading {"level":2} -->
-  <h2>Our Team</h2>
-  <!-- /wp:heading -->
-  
-  <!-- wp:columns {"columns":3} -->
-  <div class="wp-block-columns">
-    <!-- Team Member 1 -->
-    <!-- wp:column -->
-    <div class="wp-block-column">
-      <!-- wp:image {"className":"is-style-rounded"} -->
-      <figure class="wp-block-image is-style-rounded">
-        <img src="..." alt="Team member name" />
-      </figure>
-      <!-- /wp:image -->
-      
-      <!-- wp:heading {"level":3} -->
-      <h3>Team Member Name</h3>
-      <!-- /wp:heading -->
-      
-      <!-- wp:paragraph -->
-      <p class="has-small-font-size">Role</p>
-      <!-- /wp:paragraph -->
-      
-      <!-- wp:paragraph -->
-      <p>Bio text</p>
-      <!-- /wp:paragraph -->
-    </div>
-    <!-- /wp:column -->
-    
-    <!-- Repeat for each team member -->
-  </div>
-  <!-- /wp:columns -->
-</div>
-<!-- /wp:group -->
+wp-block-team-grid
+└── wp-block-team-card (repeating)
+    ├── wp-block-team-card__image
+    │   └── img
+    ├── wp-block-team-card__content
+    │   ├── wp-block-heading (name)
+    │   ├── wp-block-paragraph (role)
+    │   └── wp-block-paragraph (bio)
+    └── wp-block-team-card__social
+        └── a (social links)
 ```
 
 ---
 
-## Props / API
+## 💻 Code Example
 
-```typescript
-interface TeamGridProps {
-  /** Array of team members */
-  members: TeamMember[];
-  
-  /** Optional section title */
-  title?: string;
-  
-  /** Optional section description */
-  description?: string;
-  
-  /** Number of columns (2-4) */
-  columns?: 2 | 3 | 4;
-  
-  /** Section variant */
-  variant?: SectionVariant;
-  
-  /** Section spacing */
-  spacing?: SectionSpacing;
-  
-  /** Show social links */
-  showSocialLinks?: boolean;
-}
+```tsx
+import { useNavigation } from '../../hooks/useNavigation';
+import { Linkedin, Twitter, Github } from 'lucide-react';
 
 interface TeamMember {
   id: string;
@@ -105,365 +54,437 @@ interface TeamMember {
   role: string;
   bio: string;
   photo: string;
-  email?: string;
-  socialLinks?: {
+  socialLinks: {
     linkedin?: string;
     twitter?: string;
     github?: string;
   };
 }
-```
 
-### Default Values
-```typescript
-{
-  columns: 3,
-  variant: 'default',
-  spacing: '50',
-  showSocialLinks: false
+export function TeamGridPattern() {
+  const { navigate } = useNavigation();
+
+  const teamMembers: TeamMember[] = [
+    {
+      id: '1',
+      name: 'Sarah Johnson',
+      role: 'CEO & Founder',
+      bio: 'Leading our vision with 15+ years of experience in WordPress development.',
+      photo: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330',
+      socialLinks: {
+        linkedin: 'https://linkedin.com/in/sarahjohnson',
+        twitter: 'https://twitter.com/sarahjohnson'
+      }
+    },
+    {
+      id: '2',
+      name: 'Michael Chen',
+      role: 'CTO',
+      bio: 'Building scalable WordPress solutions with modern technologies.',
+      photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d',
+      socialLinks: {
+        linkedin: 'https://linkedin.com/in/michaelchen',
+        github: 'https://github.com/michaelchen'
+      }
+    },
+    // ... more team members
+  ];
+
+  return (
+    <section className="wp-block-section has-large-spacing">
+      <div className="wp-block-group is-layout-constrained">
+        
+        {/* Section Header */}
+        <div style={{ textAlign: 'center', marginBottom: '64px' }}>
+          <h2 className="wp-block-heading">Meet Our Team</h2>
+          <p className="wp-block-paragraph is-style-lead">
+            Passionate experts dedicated to your success
+          </p>
+        </div>
+
+        {/* Team Grid */}
+        <div className="wp-block-team-grid">
+          {teamMembers.map((member) => (
+            <div key={member.id} className="wp-block-team-card">
+              
+              {/* Photo */}
+              <div className="wp-block-team-card__image">
+                <img 
+                  src={member.photo} 
+                  alt={member.name}
+                  loading="lazy"
+                />
+              </div>
+
+              {/* Content */}
+              <div className="wp-block-team-card__content">
+                <h3 className="wp-block-heading">{member.name}</h3>
+                
+                <p className="wp-block-paragraph" style={{ 
+                  color: 'var(--primary)',
+                  fontWeight: 'var(--font-weight-medium)'
+                }}>
+                  {member.role}
+                </p>
+                
+                <p className="wp-block-paragraph is-style-small">
+                  {member.bio}
+                </p>
+                
+                {/* Social Links */}
+                <div className="wp-block-team-card__social">
+                  {member.socialLinks.linkedin && (
+                    <a 
+                      href={member.socialLinks.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${member.name} on LinkedIn`}
+                    >
+                      <Linkedin size={18} style={{ color: 'var(--foreground)' }} />
+                    </a>
+                  )}
+                  {member.socialLinks.twitter && (
+                    <a 
+                      href={member.socialLinks.twitter}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${member.name} on Twitter`}
+                    >
+                      <Twitter size={18} style={{ color: 'var(--foreground)' }} />
+                    </a>
+                  )}
+                  {member.socialLinks.github && (
+                    <a 
+                      href={member.socialLinks.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${member.name} on GitHub`}
+                    >
+                      <Github size={18} style={{ color: 'var(--foreground)' }} />
+                    </a>
+                  )}
+                </div>
+              </div>
+              
+            </div>
+          ))}
+        </div>
+        
+      </div>
+    </section>
+  );
 }
 ```
 
 ---
 
-## Usage Examples
+## 🎨 Features
 
-### Basic Usage
-```tsx
-import { TeamGrid } from '../patterns/TeamGrid';
-import { teamMembers } from '../../data/team';
+### **1. Responsive Grid Layout**
+- **Mobile (<768px):** 1 column
+- **Tablet (768px-1023px):** 2 columns
+- **Desktop (1024px+):** 4 columns
 
-<TeamGrid
-  members={teamMembers}
-  title="Our Team"
-  columns={3}
-/>
-```
-
-### With All Props
-```tsx
-<TeamGrid
-  members={leadershipTeam}
-  title="Leadership Team"
-  description="Meet the people leading LSX Design forward"
-  columns={4}
-  variant="canvas"
-  spacing="80"
-  showSocialLinks={true}
-/>
-```
-
-### Small Team (2 columns)
-```tsx
-<TeamGrid
-  members={coreTeam}
-  title="Core Team"
-  columns={2}
-  variant="default"
-/>
-```
-
----
-
-## Design System
-
-### CSS Variables Used
-
-**Typography:**
+### **2. Square Photo Aspect Ratio**
 ```css
---text-h2          /* Section title */
---text-h3          /* Member names */
---text-base        /* Member bios */
---text-small       /* Member roles */
-```
-
-**Font Families:**
-- **Lexend** — Section title, member names, bios
-- **Manrope** — Member roles (small text)
-
-**Colors:**
-```css
---foreground       /* Member names, text */
---muted-foreground /* Member bios */
---primary          /* Member roles, hover states */
---card             /* Card backgrounds */
---border-soft      /* Photo borders, card borders */
---background       /* Section background */
-```
-
-**Spacing:**
-- Tailwind classes: `gap-8`, `gap-12`, `mb-6`, `p-6`
-- Grid gaps: 32px (gap-8) or 48px (gap-12)
-- Card padding: 24px (p-6)
-
-**Border Radius:**
-```css
---radius-full      /* Team member photos (circular) */
---radius-lg        /* Card backgrounds */
-```
-
----
-
-## Responsive Behavior
-
-### Breakpoints
-
-**Mobile (< 768px):**
-- 1 column
-- Full-width cards
-- 24px gap between cards
-- Larger photos (128px)
-
-**Tablet (768px - 1024px):**
-- 2 columns
-- 32px gap between cards
-- Medium photos (96px)
-
-**Desktop (> 1024px):**
-- 3 or 4 columns (based on props)
-- 48px gap between cards
-- Standard photos (96px)
-
-### Grid Classes
-```tsx
-className={`
-  grid 
-  grid-cols-1 
-  md:grid-cols-2 
-  lg:grid-cols-${columns} 
-  gap-8 
-  lg:gap-12
-`}
-```
-
----
-
-## Accessibility
-
-### WCAG 2.1 AA Compliance
-
-**Keyboard Navigation:**
-- Social links keyboard accessible
-- Email links keyboard accessible
-- Focus states on all interactive elements
-
-**Screen Readers:**
-- Semantic HTML (section, heading, figure)
-- Alt text for all team photos
-- ARIA labels for social links
-
-**Focus States:**
-```tsx
-onFocus={(e) => {
-  e.currentTarget.style.outline = '2px solid var(--ring)';
-  e.currentTarget.style.outlineOffset = '2px';
-}}
-```
-
-**Image Alt Text:**
-```tsx
-<img
-  src={member.photo}
-  alt={`${member.name}, ${member.role} at LSX Design`}
-/>
-```
-
-**Contrast:**
-- Name: 7:1 (AAA)
-- Bio: 4.5:1 (AA)
-- Role: 4.5:1 (AA)
-
----
-
-## Team Member Card Structure
-
-### Card Anatomy
-```tsx
-<div className="text-center">
-  {/* Photo */}
-  <div
-    style={{
-      width: '128px',
-      height: '128px',
-      margin: '0 auto 24px',
-      borderRadius: '50%',
-      backgroundImage: `url(${member.photo})`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-      border: '4px solid var(--border-soft)'
-    }}
-  />
-  
-  {/* Name */}
-  <h3>{member.name}</h3>
-  
-  {/* Role */}
-  <p className="role">{member.role}</p>
-  
-  {/* Bio */}
-  <p className="bio">{member.bio}</p>
-  
-  {/* Social Links (optional) */}
-  {showSocialLinks && member.socialLinks && (
-    <div className="social-links">
-      {/* LinkedIn, Twitter, GitHub icons */}
-    </div>
-  )}
-</div>
-```
-
----
-
-## Photo Requirements
-
-### Image Specifications
-- **Dimensions:** 400×400px minimum
-- **Aspect Ratio:** 1:1 (square)
-- **Format:** JPEG or PNG
-- **File Size:** < 150KB
-- **Background:** Professional studio or neutral
-
-### Photo Guidelines
-- Professional headshots
-- Consistent lighting
-- Neutral or brand-colored backgrounds
-- High quality, sharp focus
-- Appropriate cropping
-
----
-
-## Social Links
-
-### Supported Platforms
-```tsx
-{
-  linkedin: 'https://linkedin.com/in/username',
-  twitter: 'https://twitter.com/username',
-  github: 'https://github.com/username'
+.wp-block-team-card__image {
+  width: 100%;
+  aspect-ratio: 1; /* Perfect square */
+  overflow: hidden;
 }
 ```
 
-### Icon Display
-- 20px × 20px icons
-- Hover state: color change to primary
-- Accessible labels
+### **3. Image Hover Effect**
+```css
+.wp-block-team-card:hover .wp-block-team-card__image img {
+  transform: scale(1.05); /* Subtle zoom */
+}
+```
+
+### **4. Card Hover Effect**
+```css
+.wp-block-team-card:hover {
+  transform: translateY(-8px); /* 8px lift */
+  box-shadow: var(--shadow-xl); /* Enhanced shadow */
+  border-color: var(--primary); /* Primary border */
+}
+```
+
+### **5. Social Links**
+- Circular buttons (40×40px)
+- Muted background by default
+- Primary background on hover
+- Icon color changes on hover
 
 ---
 
-## Testing Checklist
+## 📱 Responsive Design
 
-### Rendering
-- [ ] Renders without errors
-- [ ] Displays correct number of columns
-- [ ] Shows all team members
-- [ ] Photos load correctly
-
-### Accessibility
-- [ ] Keyboard navigation works
-- [ ] Focus states visible
-- [ ] Alt text for all images
-- [ ] WCAG AA contrast
-- [ ] Social links accessible
-
-### Responsive
-- [ ] Mobile (1 column)
-- [ ] Tablet (2 columns)
-- [ ] Desktop (3-4 columns)
-- [ ] Photos scale properly
-
-### Dark Mode
-- [ ] Text readable in dark mode
-- [ ] Photo borders visible
-- [ ] Social links visible
-- [ ] Hover states work
-
----
-
-## Common Use Cases
-
-### 1. Leadership Team
-```tsx
-<TeamGrid
-  members={leadershipTeam}
-  title="Leadership"
-  columns={4}
-  variant="canvas"
-  showSocialLinks={true}
-/>
+### **Mobile (<768px):**
+```css
+.wp-block-team-grid {
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
 ```
 
-### 2. Core Team
-```tsx
-<TeamGrid
-  members={coreTeam}
-  title="Our Team"
-  description="Meet the people building LSX Design"
-  columns={3}
-  variant="default"
-/>
+### **Tablet (768px-1023px):**
+```css
+@media (min-width: 768px) {
+  .wp-block-team-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 ```
 
-### 3. Advisory Board
-```tsx
-<TeamGrid
-  members={advisors}
-  title="Advisory Board"
-  columns={4}
-  variant="canvas"
-/>
+### **Desktop (1024px+):**
+```css
+@media (min-width: 1024px) {
+  .wp-block-team-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
 ```
 
 ---
 
-## WordPress Implementation Example
+## 🎯 CSS Classes Reference
 
-### PHP Pattern Registration
+### **Main Classes:**
+- `.wp-block-team-grid` — Grid container
+- `.wp-block-team-card` — Individual card
+- `.wp-block-team-card__image` — Photo container (1:1 aspect ratio)
+- `.wp-block-team-card__content` — Text content area
+- `.wp-block-team-card__social` — Social links container
+
+### **No Style Variants:**
+This pattern has a single design (no modifiers).
+
+---
+
+## ♿ Accessibility
+
+### **ARIA Labels for Social Links:**
+```tsx
+<a 
+  href={linkedin}
+  aria-label={`${name} on LinkedIn`}
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <Linkedin size={18} />
+</a>
+```
+
+### **Image Alt Text:**
+```tsx
+<img 
+  src={photo} 
+  alt={`Photo of ${name}, ${role}`}
+  loading="lazy"
+/>
+```
+
+### **WCAG 2.1 AA Compliance:**
+- ✅ Descriptive ARIA labels for icon links
+- ✅ Proper image alt text
+- ✅ Color contrast on all text
+- ✅ 40×40px touch targets (social links)
+- ✅ Keyboard accessible
+- ✅ Focus states visible
+
+---
+
+## 🔧 WordPress FSE Mapping
+
+### **Block Pattern Registration:**
+
 ```php
 <?php
-/**
- * Team Grid Pattern
- */
 register_block_pattern(
-  'lsx-design/team-grid',
+  'lsx-design/content/team-grid',
   array(
     'title'       => __( 'Team Grid', 'lsx-design' ),
-    'description' => __( 'Grid of team member cards', 'lsx-design' ),
-    'categories'  => array( 'content' ),
-    'keywords'    => array( 'team', 'staff', 'people' ),
-    'content'     => '<!-- pattern content -->',
+    'description' => __( 'Team member cards with photos and social links', 'lsx-design' ),
+    'categories'  => array( 'featured', 'content' ),
+    'content'     => '
+      <!-- wp:group {"className":"wp-block-team-grid"} -->
+      <div class="wp-block-group wp-block-team-grid">
+        
+        <!-- wp:group {"className":"wp-block-team-card"} -->
+        <div class="wp-block-group wp-block-team-card">
+          
+          <!-- wp:group {"className":"wp-block-team-card__image"} -->
+          <div class="wp-block-group wp-block-team-card__image">
+            <!-- wp:image -->
+            <figure class="wp-block-image">
+              <img src="placeholder.jpg" alt="Team member name" />
+            </figure>
+            <!-- /wp:image -->
+          </div>
+          <!-- /wp:group -->
+          
+          <!-- wp:group {"className":"wp-block-team-card__content"} -->
+          <div class="wp-block-group wp-block-team-card__content">
+            <!-- wp:heading {"level":3} -->
+            <h3 class="wp-block-heading">Team Member Name</h3>
+            <!-- /wp:heading -->
+            
+            <!-- wp:paragraph -->
+            <p class="wp-block-paragraph">Role Title</p>
+            <!-- /wp:paragraph -->
+            
+            <!-- wp:paragraph {"className":"is-style-small"} -->
+            <p class="wp-block-paragraph is-style-small">Short bio text.</p>
+            <!-- /wp:paragraph -->
+            
+            <!-- wp:group {"className":"wp-block-team-card__social"} -->
+            <div class="wp-block-group wp-block-team-card__social">
+              <!-- Social links here -->
+            </div>
+            <!-- /wp:group -->
+          </div>
+          <!-- /wp:group -->
+          
+        </div>
+        <!-- /wp:group -->
+        
+      </div>
+      <!-- /wp:group -->
+    ',
   )
 );
 ```
 
 ---
 
-## Best Practices
+## 💡 Best Practices
 
-### Content
-- Keep member names concise
-- Roles should be 2-4 words
-- Bios: 100-150 characters
-- Professional photos only
-- Consistent photo style
+### **1. Consistent Photo Dimensions**
+```tsx
+// ✅ GOOD: All photos same aspect ratio (1:1)
+photo: 'image-800x800.jpg'
 
-### Design
-- Use circular photos (border-radius: 50%)
-- Maintain consistent spacing
-- Center-align text
-- Use subtle hover effects
-- Keep hierarchy clear
+// ❌ AVOID: Mixed aspect ratios
+photo: 'image-800x600.jpg' // Not square
+```
 
-### Performance
-- Optimize photo file sizes (< 150KB)
-- Use lazy loading for photos
-- Provide width/height attributes
+### **2. Short Bios**
+```tsx
+// ✅ GOOD: 1-2 sentences
+bio: 'Building scalable solutions with 10+ years experience.'
+
+// ❌ AVOID: Long paragraphs
+bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit...'
+```
+
+### **3. Centralized Team Data**
+```tsx
+// ✅ GOOD: Import from data file
+import { teamMembers } from '../../data/team';
+
+// ❌ AVOID: Inline data
+const teamMembers = [
+  { name: 'Sarah', ... },
+  // ...
+];
+```
 
 ---
 
-**Created:** December 27, 2024  
-**Pattern:** TeamGrid  
-**Category:** Content  
-**Status:** Production-ready ✅  
-**Used in:** TeamTemplate, AboutTemplate  
-**Design System:** 100% compliant
+## 🎨 Customization Options
 
+### **1. Compact Variant (3 Columns)**
+```css
+@media (min-width: 1024px) {
+  .wp-block-team-grid.is-style-compact {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+  }
+}
+```
+
+### **2. List Variant (Single Column)**
+```css
+.wp-block-team-grid.is-style-list {
+  grid-template-columns: 1fr;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.wp-block-team-grid.is-style-list .wp-block-team-card {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 32px;
+}
+```
+
+### **3. Different Social Icon Sizes**
+```css
+.wp-block-team-card__social a {
+  width: 48px;
+  height: 48px;
+}
+```
+
+---
+
+## 🐛 Common Issues
+
+### **Issue 1: Photos Not Square**
+**Problem:** Images appear stretched or cropped incorrectly  
+**Solution:** Ensure images are cropped to 1:1 before upload
+
+```css
+.wp-block-team-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures proper cropping */
+}
+```
+
+### **Issue 2: Social Links Not Aligned**
+**Problem:** Icons misaligned or different sizes  
+**Solution:** Use consistent icon size and flexbox alignment
+
+```tsx
+<SocialIcon size={18} /> {/* Same size for all */}
+```
+
+---
+
+## 📊 Performance
+
+**CSS Size:** 90 lines (~2.5 KB)  
+**Images:** Use lazy loading (`loading="lazy"`)  
+**Render Cost:** Medium (4-8 cards typical)
+
+---
+
+## 🔗 Related Patterns
+
+- **Card** — Similar card structure
+- **Service Grid** — Similar grid layout
+- **Testimonial Grid** — Similar grid with photos
+
+---
+
+## ✅ Checklist for Implementation
+
+- [ ] Import team data from centralized file
+- [ ] Add section header
+- [ ] Ensure all photos are square (1:1 aspect ratio)
+- [ ] Add social links with ARIA labels
+- [ ] Test hover effects (card + image)
+- [ ] Verify responsive grid (1/2/4 columns)
+- [ ] Check social link hover effects
+- [ ] Test with varying bio lengths
+- [ ] Verify image lazy loading
+- [ ] Check WCAG 2.1 AA compliance
+
+---
+
+**Status:** ✅ Production-Ready  
+**WordPress FSE:** ✅ Compatible  
+**WCAG 2.1 AA:** ✅ Compliant  
+**Browser Support:** All modern browsers

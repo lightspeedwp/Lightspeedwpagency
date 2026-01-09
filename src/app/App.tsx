@@ -17,6 +17,7 @@ import { useState, lazy, Suspense } from 'react';
 import { NavigationContext } from './contexts/NavigationContext';
 import { KeyboardShortcuts } from './components/blocks/layout/KeyboardShortcuts';
 import { ErrorBoundary } from './components/blocks/layout/ErrorBoundary';
+import { ToastProvider } from './components/blocks/feedback/ToastSystem';
 
 // Loading component for suspense fallback
 function PageLoader() {
@@ -67,9 +68,11 @@ const SinglePostTemplate = lazy(() => import('./components/templates/SinglePostT
 const SearchResultsPageTemplate = lazy(() => import('./components/templates/SearchResultsPageTemplate').then(m => ({ default: m.SearchResultsPageTemplate })));
 const ContactPageTemplate = lazy(() => import('./components/templates/ContactPageTemplate').then(m => ({ default: m.ContactPageTemplate })));
 const StyleGuideTemplate = lazy(() => import('./components/templates/StyleGuideTemplate').then(m => ({ default: m.StyleGuideTemplate })));
+const WordPressBlocksProofOfConcept = lazy(() => import('./components/templates/WordPressBlocksProofOfConcept').then(m => ({ default: m.WordPressBlocksProofOfConcept })));
 const FAQTemplate = lazy(() => import('./components/templates/FAQTemplate').then(m => ({ default: m.FAQTemplate })));
 const SectionStyleExample = lazy(() => import('./components/templates/SectionStyleExample').then(m => ({ default: m.SectionStyleExample })));
 const ServicesTemplate = lazy(() => import('./components/templates/ServicesTemplate').then(m => ({ default: m.ServicesTemplate })));
+const ServicesLandingTemplate = lazy(() => import('./components/templates/ServicesLandingTemplate').then(m => ({ default: m.ServicesLandingTemplate })));
 const HostingTemplate = lazy(() => import('./components/templates/HostingTemplate').then(m => ({ default: m.HostingTemplate })));
 const AboutTemplate = lazy(() => import('./components/templates/AboutTemplate').then(m => ({ default: m.AboutTemplate })));
 const TeamTemplate = lazy(() => import('./components/templates/TeamTemplate').then(m => ({ default: m.TeamTemplate })));
@@ -98,12 +101,16 @@ const DiscoveryServiceTemplate = lazy(() => import('./components/templates/Disco
 const ContentServiceTemplate = lazy(() => import('./components/templates/ContentServiceTemplate').then(m => ({ default: m.ContentServiceTemplate })));
 const SecurityServiceTemplate = lazy(() => import('./components/templates/SecurityServiceTemplate').then(m => ({ default: m.SecurityServiceTemplate })));
 const MigrationsServiceTemplate = lazy(() => import('./components/templates/MigrationsServiceTemplate').then(m => ({ default: m.MigrationsServiceTemplate })));
+const SupportServiceTemplate = lazy(() => import('./components/templates/SupportServiceTemplate').then(m => ({ default: m.SupportServiceTemplate })));
+const NewsletterServiceTemplate = lazy(() => import('./components/templates/NewsletterServiceTemplate').then(m => ({ default: m.NewsletterServiceTemplate })));
 
 // Solutions Templates
 const SolutionsTemplate = lazy(() => import('./components/templates/SolutionsTemplate').then(m => ({ default: m.SolutionsTemplate })));
 const LSXSolutionTemplate = lazy(() => import('./components/templates/LSXSolutionTemplate').then(m => ({ default: m.LSXSolutionTemplate })));
+const LSXDesignTemplate = lazy(() => import('./components/templates/LSXDesignTemplate').then(m => ({ default: m.LSXDesignTemplate })));
 const WordPressSolutionTemplate = lazy(() => import('./components/templates/WordPressSolutionTemplate').then(m => ({ default: m.WordPressSolutionTemplate })));
 const WooCommerceSolutionTemplate = lazy(() => import('./components/templates/WooCommerceSolutionTemplate').then(m => ({ default: m.WooCommerceSolutionTemplate })));
+const TourOperatorTemplate = lazy(() => import('./components/templates/TourOperatorTemplate').then(m => ({ default: m.TourOperatorTemplate })));
 
 // Dev Tools Templates
 const DevToolsTemplate = lazy(() => import('./components/templates/DevToolsTemplate').then(m => ({ default: m.DevToolsTemplate })));
@@ -176,6 +183,10 @@ export default function App() {
           return <SecurityServiceTemplate />;
         case 'migrations':
           return <MigrationsServiceTemplate />;
+        case 'support':
+          return <SupportServiceTemplate />;
+        case 'newsletter':
+          return <NewsletterServiceTemplate />;
         default:
           return <ServicesTemplate />;
       }
@@ -193,6 +204,8 @@ export default function App() {
           return <WooCommerceSolutionTemplate />;
         case 'hosting':
           return <HostingTemplate />;
+        case 'tour-operator':
+          return <TourOperatorTemplate />;
         default:
           return <SolutionsTemplate />;
       }
@@ -259,6 +272,8 @@ export default function App() {
         return <ContactPageTemplate />;
       case 'style-guide':
         return <StyleGuideTemplate />;
+      case 'wordpress-blocks-poc':
+        return <WordPressBlocksProofOfConcept />;
       case 'faq':
       case 'faqs':
         return <FAQTemplate />;
@@ -285,9 +300,35 @@ export default function App() {
       case '404':
         return <Template404 />;
       case 'services':
-        return <ServicesTemplate />;
+        return <ServicesLandingTemplate />;
+      // Service Detail Pages
+      case 'discovery-service':
+        return <DiscoveryServiceTemplate />;
+      case 'design-service':
+        return <DesignServiceTemplate />;
+      case 'development-service':
+        return <DevelopmentServiceTemplate />;
+      case 'content-service':
+        return <ContentServiceTemplate />;
+      case 'migrations-service':
+        return <MigrationsServiceTemplate />;
+      case 'security-service':
+        return <SecurityServiceTemplate />;
+      case 'support-service':
+        return <SupportServiceTemplate />;
+      case 'newsletter-service':
+        return <NewsletterServiceTemplate />;
       case 'solutions':
         return <SolutionsTemplate />;
+      // Solution Detail Pages
+      case 'wordpress-solutions':
+        return <WordPressSolutionTemplate />;
+      case 'woocommerce-solutions':
+        return <WooCommerceSolutionTemplate />;
+      case 'tour-operator-solutions':
+        return <TourOperatorTemplate />;
+      case 'lsx-design-solutions':
+        return <LSXDesignTemplate />;
       case 'hosting':
         return <HostingTemplate />;
       case 'portfolio-archive':
@@ -378,16 +419,18 @@ export default function App() {
   };
 
   return (
-    <NavigationContext.Provider value={{ currentPage, navigateTo: setCurrentPage }}>
-      <div className="lsx-design-prototype">
-        {/* Render Current Template */}
-        <Suspense fallback={<PageLoader />}>
-          <ErrorBoundary>
-            {renderTemplate()}
-          </ErrorBoundary>
-        </Suspense>
-      </div>
-      <KeyboardShortcuts />
-    </NavigationContext.Provider>
+    <ToastProvider>
+      <NavigationContext.Provider value={{ currentPage, navigateTo: setCurrentPage }}>
+        <div className="lsx-design-prototype">
+          {/* Render Current Template */}
+          <Suspense fallback={<PageLoader />}>
+            <ErrorBoundary>
+              {renderTemplate()}
+            </ErrorBoundary>
+          </Suspense>
+        </div>
+        <KeyboardShortcuts />
+      </NavigationContext.Provider>
+    </ToastProvider>
   );
 }

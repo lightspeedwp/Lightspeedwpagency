@@ -32,22 +32,27 @@ export function SiteFooter({ variant = 'default' }: SiteFooterProps) {
   // Default footer pattern
   const footerLinks = {
     services: [
-      { label: 'WordPress Design', page: 'services' },
-      { label: 'WooCommerce Development', page: 'services' },
-      { label: 'WordPress Hosting', page: 'hosting' },
-      { label: 'Block Theme Development', page: 'services' },
+      { label: 'Discovery', page: 'discovery-service' },
+      { label: 'Design', page: 'design-service' },
+      { label: 'Development', page: 'development-service' },
+      { label: 'Support', page: 'support-service' },
+      { label: 'Hosting', page: 'hosting' },
+      { label: 'Migrations', page: 'migrations-service' },
+      { label: 'Security', page: 'security-service' },
+      { label: 'Content', page: 'content-service' },
     ],
     company: [
       { label: 'About Us', page: 'about' },
+      { label: 'Our Team', page: 'team' },
       { label: 'Portfolio', page: 'portfolio-archive' },
       { label: 'Blog', page: 'blog' },
-      { label: 'Style Guide', page: 'style-guide' },
+      { label: 'Testimonials', page: 'testimonials' },
     ],
     support: [
       { label: 'Contact', page: 'contact' },
-      { label: 'FAQs', page: 'contact' },
-      { label: 'Template Tester', page: 'template-tester' },
-      { label: 'Search', page: 'search-page' },
+      { label: 'FAQs', page: 'faq' },
+      { label: 'Pricing', page: 'pricing' },
+      { label: 'Solutions', page: 'solutions' },
     ],
   };
 
@@ -75,7 +80,7 @@ export function SiteFooter({ variant = 'default' }: SiteFooterProps) {
                 cursor: 'pointer',
               }}
             >
-              <SiteLogo width="220px" alt="LSX Design Logo" />
+              <SiteLogo width="220px" alt="LSX Design Logo" theme="light" />
             </button>
             <p 
               className="mt-6"
@@ -152,8 +157,8 @@ export function SiteFooter({ variant = 'default' }: SiteFooterProps) {
           style={{ borderTop: '1px solid var(--sidebar-border)' }}
         >
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
-            {/* Left: Copyright + Test All Pages Link (same line) */}
-            <div className="flex items-center gap-3 justify-start">
+            {/* Left: Copyright */}
+            <div className="flex flex-col gap-2 justify-start">
               <p 
                 style={{
                   fontFamily: 'Manrope, sans-serif',
@@ -161,67 +166,69 @@ export function SiteFooter({ variant = 'default' }: SiteFooterProps) {
                   color: 'var(--sidebar-foreground)',
                   opacity: 0.6,
                   margin: 0,
-                  whiteSpace: 'nowrap',
                 }}
               >
                 © {new Date().getFullYear()} LSX Design. All rights reserved.
               </p>
-              <button
-                onClick={() => navigateTo('template-tester')}
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-small)',
-                  fontWeight: 'var(--font-weight-medium)',
-                  color: 'var(--sidebar-foreground)',
-                  textDecoration: 'underline',
-                  background: 'none',
-                  border: 'none',
-                  padding: 0,
-                  cursor: 'pointer',
-                  transition: 'color 0.2s ease',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '4px',
-                  whiteSpace: 'nowrap',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.color = 'var(--primary)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.color = 'var(--sidebar-foreground)';
-                }}
-                aria-label="Test all pages"
-              >
-                Test All Pages →
-              </button>
-              <button
-                onClick={() => navigateTo('design-system-test')}
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-small)',
-                  fontWeight: 'var(--font-weight-medium)',
-                  color: 'var(--sidebar-foreground)',
-                  textDecoration: 'underline',
-                  background: 'none',
-                  border: 'none',
-                  padding: 0,
-                  cursor: 'pointer',
-                  transition: 'color 0.2s ease',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '4px',
-                  whiteSpace: 'nowrap',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.color = 'var(--primary)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.color = 'var(--sidebar-foreground)';
-                }}
-                aria-label="Design system dev tools"
-              >
-                Dev Tools →
-              </button>
+              {/* Dev Tools Links */}
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={() => navigateTo('template-tester')}
+                  style={{
+                    fontFamily: 'Lexend, sans-serif',
+                    fontSize: 'var(--text-small)',
+                    fontWeight: 'var(--font-weight-medium)',
+                    color: 'var(--sidebar-foreground)',
+                    textDecoration: 'underline',
+                    background: 'none',
+                    border: 'none',
+                    padding: 0,
+                    cursor: 'pointer',
+                    transition: 'color 0.2s ease',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '4px',
+                    whiteSpace: 'nowrap',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = 'var(--primary)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = 'var(--sidebar-foreground)';
+                  }}
+                  aria-label="Test all pages"
+                >
+                  Test All Pages →
+                </button>
+                <button
+                  onClick={() => navigateTo('design-system-test')}
+                  style={{
+                    fontFamily: 'Lexend, sans-serif',
+                    fontSize: 'var(--text-small)',
+                    fontWeight: 'var(--font-weight-medium)',
+                    color: 'var(--sidebar-foreground)',
+                    textDecoration: 'underline',
+                    background: 'none',
+                    border: 'none',
+                    padding: 0,
+                    cursor: 'pointer',
+                    transition: 'color 0.2s ease',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '4px',
+                    whiteSpace: 'nowrap',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = 'var(--primary)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = 'var(--sidebar-foreground)';
+                  }}
+                  aria-label="Design system dev tools"
+                >
+                  Dev Tools →
+                </button>
+              </div>
             </div>
 
             {/* Center: Legal Links */}
@@ -559,74 +566,76 @@ function SiteFooterNewsletter() {
           <div className="pt-8" style={{ borderTop: '1px solid var(--border-extra-soft)' }}>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
               {/* Left: Copyright & Test Link */}
-              <div className="flex flex-wrap items-center gap-3 justify-start">
+              <div className="flex flex-col gap-2 justify-start">
                 <p 
                   style={{
                     fontFamily: 'Lexend, sans-serif',
                     fontSize: 'var(--text-small)',
                     color: 'var(--foreground)',
                     margin: 0,
-                    whiteSpace: 'nowrap',
                   }}
                 >
                   © {new Date().getFullYear()} LSX Design. All rights reserved.
                 </p>
-                <button
-                  onClick={() => navigateTo('template-tester')}
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-small)',
-                    fontWeight: 'var(--font-weight-medium)',
-                    color: 'var(--foreground)',
-                    textDecoration: 'underline',
-                    background: 'none',
-                    border: 'none',
-                    padding: 0,
-                    cursor: 'pointer',
-                    transition: 'color 0.2s ease',
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '4px',
-                    whiteSpace: 'nowrap',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.color = 'var(--primary)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.color = 'var(--foreground)';
-                  }}
-                  aria-label="Test all pages"
-                >
-                  Test All Pages →
-                </button>
-                <button
-                  onClick={() => navigateTo('design-system-test')}
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-small)',
-                    fontWeight: 'var(--font-weight-medium)',
-                    color: 'var(--foreground)',
-                    textDecoration: 'underline',
-                    background: 'none',
-                    border: 'none',
-                    padding: 0,
-                    cursor: 'pointer',
-                    transition: 'color 0.2s ease',
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '4px',
-                    whiteSpace: 'nowrap',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.color = 'var(--primary)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.color = 'var(--foreground)';
-                  }}
-                  aria-label="Design system dev tools"
-                >
-                  Dev Tools →
-                </button>
+                {/* Dev Tools Links */}
+                <div className="flex items-center gap-3">
+                  <button
+                    onClick={() => navigateTo('template-tester')}
+                    style={{
+                      fontFamily: 'Lexend, sans-serif',
+                      fontSize: 'var(--text-small)',
+                      fontWeight: 'var(--font-weight-medium)',
+                      color: 'var(--foreground)',
+                      textDecoration: 'underline',
+                      background: 'none',
+                      border: 'none',
+                      padding: 0,
+                      cursor: 'pointer',
+                      transition: 'color 0.2s ease',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '4px',
+                      whiteSpace: 'nowrap',
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.color = 'var(--primary)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.color = 'var(--foreground)';
+                    }}
+                    aria-label="Test all pages"
+                  >
+                    Test All Pages →
+                  </button>
+                  <button
+                    onClick={() => navigateTo('design-system-test')}
+                    style={{
+                      fontFamily: 'Lexend, sans-serif',
+                      fontSize: 'var(--text-small)',
+                      fontWeight: 'var(--font-weight-medium)',
+                      color: 'var(--foreground)',
+                      textDecoration: 'underline',
+                      background: 'none',
+                      border: 'none',
+                      padding: 0,
+                      cursor: 'pointer',
+                      transition: 'color 0.2s ease',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '4px',
+                      whiteSpace: 'nowrap',
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.color = 'var(--primary)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.color = 'var(--foreground)';
+                    }}
+                    aria-label="Design system dev tools"
+                  >
+                    Dev Tools →
+                  </button>
+                </div>
               </div>
 
               {/* Center: Legal Links */}

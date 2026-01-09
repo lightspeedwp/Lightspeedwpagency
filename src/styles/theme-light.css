@@ -93,6 +93,14 @@
    */
   --primary-foreground: rgba(255, 255, 255, 1);  /* #FFFFFF - White */
   
+  /**
+   * Primary soft background (10% opacity)
+   * Usage: Category badges, tags, soft highlights
+   * Hex: rgba(30, 106, 255, 0.1)
+   * Contrast: Subtle, decorative use
+   */
+  --primary-soft: rgba(30, 106, 255, 0.1);       /* 10% primary blue */
+  
   
   /* ----------------------------------------
      Secondary Brand Colors

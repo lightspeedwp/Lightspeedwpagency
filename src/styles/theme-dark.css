@@ -102,6 +102,13 @@
    */
   --primary-foreground: rgba(14, 50, 120, 1);    /* #0E3278 - Dark blue */
   
+  /**
+   * Primary soft background (10% opacity) (dark mode)
+   * Usage: Category badges, tags, soft highlights
+   * Hex: rgba(123, 231, 255, 0.1)
+   */
+  --primary-soft: rgba(123, 231, 255, 0.1);      /* 10% primary cyan */
+  
   
   /* ----------------------------------------
      Secondary Brand Colors (Dark Mode)

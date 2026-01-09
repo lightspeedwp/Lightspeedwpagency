@@ -49,7 +49,7 @@ import { CTASection } from '../patterns/CTASection';
 import { BackToTopButton } from '../blocks/layout/BackToTopButton';
 import { useNavigation } from '../../contexts/NavigationContext';
 import { blogPosts } from '../../data/blog-posts';
-import { portfolioProjects } from '../../data/portfolio';
+import { portfolioProjects } from '../../data/portfolio-projects';
 import { services } from '../../data/services';
 import { useState } from 'react';
 import { Search, FileText, Calendar, User, ArrowRight } from 'lucide-react';

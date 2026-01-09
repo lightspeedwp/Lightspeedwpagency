@@ -26,7 +26,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { X } from 'lucide-react';
 import { Button } from '../blocks/design/Buttons';
-import { useToast } from '../../hooks/useToast';
+import { useToast } from '../blocks/feedback/ToastSystem';
 import { useFocusManagement } from '../../hooks/useFocusManagement';
 import { useFormValidation, validationRules } from '../../hooks/useFormValidation';
 import { useRipple, useShake } from '../../hooks/useMicroInteractions';

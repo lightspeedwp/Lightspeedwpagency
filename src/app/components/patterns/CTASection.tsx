@@ -105,7 +105,7 @@ export function CTASection({
           {/* Description */}
           {description && (
             <p 
-              className="mb-10"
+              className="mb-10 mx-auto"
               style={{
                 fontFamily: 'Lexend, sans-serif',
                 fontSize: 'var(--text-lead)',  /* Use CSS variable (20px) for lead text */
@@ -113,8 +113,7 @@ export function CTASection({
                 lineHeight: 'var(--line-height-relaxed)',
                 color: isHighlighted ? 'var(--primary-foreground)' : 'var(--muted-foreground)',
                 opacity: isHighlighted ? 0.95 : 1,
-                maxWidth: '700px',
-                margin: '0 auto 40px'
+                maxWidth: '700px'
               }}
             >
               {description}

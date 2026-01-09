@@ -90,7 +90,7 @@ const authorPosts = [
     title: 'The Ultimate Guide to Planning Your First Safari',
     excerpt: 'Discover everything you need to know about planning an unforgettable safari adventure, from choosing the right season to packing essentials.',
     category: 'Travel Tips',
-    imageUrl: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800',
+    featuredImage: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800',
     href: '#post-1',
     date: 'Dec 15, 2024',
     readTime: '8 min read'
@@ -101,7 +101,7 @@ const authorPosts = [
     title: 'Budget Travel: See the World Without Breaking the Bank',
     excerpt: 'Proven strategies for traveling on a budget, from finding cheap flights to affordable accommodation.',
     category: 'Travel Tips',
-    imageUrl: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800',
+    featuredImage: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800',
     href: '#post-2',
     date: 'Dec 5, 2024',
     readTime: '9 min read'
@@ -112,7 +112,7 @@ const authorPosts = [
     title: 'Jet Lag Recovery: Science-Backed Tips',
     excerpt: 'Beat jet lag with these proven strategies backed by sleep science and frequent traveler experience.',
     category: 'Travel Tips',
-    imageUrl: 'https://images.unsplash.com/photo-1464037866556-6812c9d1c72e?w=800',
+    featuredImage: 'https://images.unsplash.com/photo-1464037866556-6812c9d1c72e?w=800',
     href: '#post-3',
     date: 'Nov 12, 2024',
     readTime: '5 min read'
@@ -123,7 +123,7 @@ const authorPosts = [
     title: 'Solo Female Travel: Safety Tips and Destinations',
     excerpt: 'A comprehensive guide to solo female travel, including the safest destinations and essential safety tips.',
     category: 'Safety',
-    imageUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800',
+    featuredImage: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800',
     href: '#post-4',
     date: 'Nov 2, 2024',
     readTime: '10 min read'
@@ -134,7 +134,7 @@ const authorPosts = [
     title: 'Minimalist Packing: Travel Light, Travel Right',
     excerpt: 'How to pack everything you need in a carry-on for a two-week trip. Minimalist packing tips from a full-time traveler.',
     category: 'Travel Tips',
-    imageUrl: 'https://images.unsplash.com/photo-1544413660-299165566b1d?w=800',
+    featuredImage: 'https://images.unsplash.com/photo-1544413660-299165566b1d?w=800',
     href: '#post-5',
     date: 'Oct 28, 2024',
     readTime: '7 min read'
@@ -145,7 +145,7 @@ const authorPosts = [
     title: 'Digital Nomad Guide: Working While Traveling',
     excerpt: 'Everything you need to know about becoming a digital nomad, from finding remote work to managing time zones.',
     category: 'Remote Work',
-    imageUrl: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800',
+    featuredImage: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800',
     href: '#post-6',
     date: 'Oct 15, 2024',
     readTime: '12 min read'
@@ -390,24 +390,28 @@ export function AuthorArchiveTemplate({ author: authorSlug = 'sarah-mitchell' }:
                   }}
                 >
                   {/* Post Image */}
-                  <button 
-                    onClick={() => navigateTo(`post-${post.slug}`)}
+                  <a 
+                    href={`#post-${post.slug}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      navigateTo(`post-${post.slug}`);
+                    }}
                     style={{ 
                       textDecoration: 'none',
-                      background: 'none',
-                      border: 'none',
-                      padding: 0,
+                      display: 'block',
                       cursor: 'pointer',
-                      width: '100%',
+                      flexShrink: 0,
+                      width: '200px',
                     }}
+                    aria-label={`Read ${post.title}`}
                   >
                     <div 
-                      className="aspect-[16/9] bg-cover bg-center"
+                      className="aspect-square bg-cover bg-center rounded-[var(--radius-lg)]"
                       style={{
-                        backgroundImage: `url(${post.imageUrl})`,
+                        backgroundImage: `url(${post.featuredImage})`,
                       }}
                     />
-                  </button>
+                  </a>
 
                   {/* Post Content */}
                   <div className="p-6 flex flex-col flex-1">
@@ -442,8 +446,12 @@ export function AuthorArchiveTemplate({ author: authorSlug = 'sarah-mitchell' }:
 
                     {/* Title */}
                     <h3 className="mb-2">
-                      <button 
-                        onClick={() => navigateTo(`post-${post.slug}`)}
+                      <a 
+                        href={`#post-${post.slug}`}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          navigateTo(`post-${post.slug}`);
+                        }}
                         style={{
                           fontFamily: 'Lexend, sans-serif',
                           fontSize: 'var(--text-h3)',
@@ -451,12 +459,8 @@ export function AuthorArchiveTemplate({ author: authorSlug = 'sarah-mitchell' }:
                           color: 'var(--foreground)',
                           textDecoration: 'none',
                           lineHeight: '1.3',
-                          background: 'none',
-                          border: 'none',
-                          padding: 0,
+                          display: 'block',
                           cursor: 'pointer',
-                          textAlign: 'left',
-                          width: '100%',
                         }}
                         onMouseEnter={(e) => {
                           e.currentTarget.style.color = 'var(--primary)';
@@ -464,9 +468,10 @@ export function AuthorArchiveTemplate({ author: authorSlug = 'sarah-mitchell' }:
                         onMouseLeave={(e) => {
                           e.currentTarget.style.color = 'var(--foreground)';
                         }}
+                        aria-label={`Read ${post.title}`}
                       >
                         {post.title}
-                      </button>
+                      </a>
                     </h3>
 
                     {/* Excerpt */}

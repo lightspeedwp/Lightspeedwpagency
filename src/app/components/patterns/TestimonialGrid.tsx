@@ -16,7 +16,6 @@
  */
 
 import { Quote } from 'lucide-react';
-import { LazyImage } from '../ui/LazyImage';
 import { useStaggerReveal } from '../../hooks/useScrollReveal';
 
 export interface Testimonial {
@@ -177,7 +176,7 @@ export function TestimonialGrid({
             {/* Author Info */}
             <div className="flex items-center gap-4">
               {showAvatars && testimonial.avatar && (
-                <LazyImage
+                <img
                   src={testimonial.avatar}
                   alt={testimonial.author}
                   style={{

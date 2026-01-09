@@ -74,35 +74,36 @@ export function PaginationNav({ currentPage, totalPages, onPageChange }: Paginat
         >
           {/* Previous Button */}
           <button
-            disabled={currentPage === 1}
-            onClick={() => handlePageClick(currentPage - 1)}
-            aria-label="Previous page"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '4px',
-              padding: '0',
-              minHeight: '44px',
-              fontSize: 'var(--text-base)',
-              fontFamily: 'Lexend, sans-serif',
-              fontWeight: 'var(--font-weight-bold)',
-              backgroundColor: 'transparent',
-              color: currentPage === 1 ? 'var(--muted-foreground)' : 'var(--primary)',
-              border: 'none',
-              cursor: currentPage === 1 ? 'not-allowed' : 'pointer',
-              textDecoration: currentPage === 1 ? 'none' : 'underline',
-              textUnderlineOffset: '4px',
-              transition: 'all 0.3s ease',
-              opacity: currentPage === 1 ? 0.5 : 1,
-            }}
-            onMouseEnter={(e) => {
-              if (currentPage !== 1) {
-                e.currentTarget.style.gap = '8px';
-              }
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.gap = '4px';
-            }}
+                        onClick={() => onPageChange(currentPage - 1)}
+                        disabled={currentPage === 1}
+                        aria-label="Previous page"
+                        className="px-1.5"
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          minWidth: '44px',
+                          minHeight: '44px',
+                          fontSize: 'var(--text-base)',
+                          fontFamily: 'Lexend, sans-serif',
+                          fontWeight: 'var(--font-weight-bold)',
+                          backgroundColor: 'transparent',
+                          color: currentPage === 1 ? 'var(--muted-foreground)' : 'var(--primary)',
+                          border: 'none',
+                          cursor: currentPage === 1 ? 'not-allowed' : 'pointer',
+                          textDecoration: currentPage === 1 ? 'none' : 'underline',
+                          textUnderlineOffset: '4px',
+                          transition: 'all 0.3s ease',
+                          opacity: currentPage === 1 ? 0.5 : 1,
+                        }}
+                        onMouseEnter={(e) => {
+                          if (currentPage !== 1) {
+                            e.currentTarget.style.gap = '8px';
+                          }
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.gap = '4px';
+                        }}
           >
             <ChevronLeft size={16} strokeWidth={2.5} />
             <span>Previous</span>

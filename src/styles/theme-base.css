@@ -18,6 +18,20 @@
      TYPOGRAPHY SYSTEM
      ============================================ */
   
+  /* ----------------------------------------
+     Font Family System
+     ---------------------------------------- */
+  
+  /* Primary font (Lexend) - Headings, body text, UI elements */
+  --font-primary: 'Lexend', -apple-system, BlinkMacSystemFont, 
+                  'Segoe UI', Roboto, 'Helvetica Neue', Arial, 
+                  sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+  
+  /* Secondary font (Manrope) - Small text, captions, metadata */
+  --font-secondary: 'Manrope', -apple-system, BlinkMacSystemFont, 
+                    'Segoe UI', Roboto, 'Helvetica Neue', Arial, 
+                    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+  
   /* Base font size (16px = 1rem) */
   --font-size: 16px;
   
@@ -68,6 +82,158 @@
   --letter-spacing-normal: 0;        /* Body text, standard headings */
   --letter-spacing-wide: 0.025em;    /* Buttons, labels, small text */
   --letter-spacing-wider: 0.05em;    /* Uppercase text, categories */
+  
+  
+  /* ============================================
+     SPACING SCALE SYSTEM
+     ============================================ */
+  
+  /* Based on 4px base unit (Tailwind-compatible)
+   * User can adjust spacing scale globally by editing these values
+   * All spacing throughout the site uses these variables
+   */
+  
+  /* ----------------------------------------
+     Core Spacing Scale (4px increments)
+     ---------------------------------------- */
+  
+  --spacing-0: 0;         /* 0px */
+  --spacing-1: 0.25rem;   /* 4px */
+  --spacing-2: 0.5rem;    /* 8px */
+  --spacing-3: 0.75rem;   /* 12px */
+  --spacing-4: 1rem;      /* 16px */
+  --spacing-5: 1.25rem;   /* 20px */
+  --spacing-6: 1.5rem;    /* 24px */
+  --spacing-7: 1.75rem;   /* 28px */
+  --spacing-8: 2rem;      /* 32px */
+  --spacing-9: 2.25rem;   /* 36px */
+  --spacing-10: 2.5rem;   /* 40px */
+  --spacing-12: 3rem;     /* 48px */
+  --spacing-14: 3.5rem;   /* 56px */
+  --spacing-16: 4rem;     /* 64px */
+  --spacing-20: 5rem;     /* 80px */
+  --spacing-24: 6rem;     /* 96px */
+  --spacing-28: 7rem;     /* 112px */
+  --spacing-32: 8rem;     /* 128px */
+  --spacing-36: 9rem;     /* 144px */
+  --spacing-40: 10rem;    /* 160px */
+  --spacing-48: 12rem;    /* 192px */
+  --spacing-56: 14rem;    /* 224px */
+  --spacing-64: 16rem;    /* 256px */
+  
+  /* ----------------------------------------
+     Semantic Spacing Aliases (Recommended)
+     ---------------------------------------- */
+  
+  --spacing-xs: var(--spacing-2);   /* 8px - Minimum gap */
+  --spacing-sm: var(--spacing-4);   /* 16px - Small gap */
+  --spacing-md: var(--spacing-6);   /* 24px - Medium gap (default) */
+  --spacing-lg: var(--spacing-8);   /* 32px - Large gap */
+  --spacing-xl: var(--spacing-12);  /* 48px - Extra large gap */
+  --spacing-2xl: var(--spacing-16); /* 64px - Section padding */
+  --spacing-3xl: var(--spacing-24); /* 96px - Large section padding */
+  --spacing-4xl: var(--spacing-32); /* 128px - Extra large section padding */
+  
+  
+  /* ============================================
+     WORDPRESS THEME.JSON COMPATIBILITY
+     ============================================ */
+  
+  /* ----------------------------------------
+     WordPress Font Family Presets
+     WordPress expects: --wp--preset--font-family--{slug}
+     ---------------------------------------- */
+  
+  --wp--preset--font-family--primary: var(--font-primary);
+  --wp--preset--font-family--secondary: var(--font-secondary);
+  --wp--preset--font-family--heading: var(--font-primary);
+  --wp--preset--font-family--body: var(--font-primary);
+  --wp--preset--font-family--base: var(--font-primary);
+  
+  /* ----------------------------------------
+     WordPress Font Size Presets
+     WordPress expects: --wp--preset--font-size--{slug}
+     Maps to WordPress core size slugs
+     ---------------------------------------- */
+  
+  --wp--preset--font-size--small: var(--text-small);      /* 14px */
+  --wp--preset--font-size--medium: var(--text-base);      /* 16px */
+  --wp--preset--font-size--large: var(--text-lg);         /* 18px */
+  --wp--preset--font-size--x-large: var(--text-lead);     /* 20px */
+  --wp--preset--font-size--heading-1: var(--text-h1);     /* 40-64px fluid */
+  --wp--preset--font-size--heading-2: var(--text-h2);     /* 32-48px fluid */
+  --wp--preset--font-size--heading-3: var(--text-h3);     /* 24-36px fluid */
+  --wp--preset--font-size--heading-4: var(--text-h4);     /* 20-28px fluid */
+  --wp--preset--font-size--heading-5: var(--text-h5);     /* 18-24px fluid */
+  --wp--preset--font-size--heading-6: var(--text-h6);     /* 16-20px fluid */
+  
+  /* ----------------------------------------
+     WordPress Spacing Presets
+     WordPress expects: --wp--preset--spacing--{slug}
+     Uses WordPress core spacing scale (20-80)
+     ---------------------------------------- */
+  
+  /* WordPress numeric scale (20, 30, 40, 50, 60, 70, 80) */
+  --wp--preset--spacing--20: var(--spacing-2);   /* 8px */
+  --wp--preset--spacing--30: var(--spacing-4);   /* 16px */
+  --wp--preset--spacing--40: var(--spacing-6);   /* 24px */
+  --wp--preset--spacing--50: var(--spacing-8);   /* 32px */
+  --wp--preset--spacing--60: var(--spacing-12);  /* 48px */
+  --wp--preset--spacing--70: var(--spacing-16);  /* 64px */
+  --wp--preset--spacing--80: var(--spacing-24);  /* 96px */
+  
+  /* WordPress T-shirt sizes */
+  --wp--preset--spacing--x-small: var(--spacing-2);   /* 8px */
+  --wp--preset--spacing--small: var(--spacing-4);     /* 16px */
+  --wp--preset--spacing--medium: var(--spacing-6);    /* 24px */
+  --wp--preset--spacing--large: var(--spacing-8);     /* 32px */
+  --wp--preset--spacing--x-large: var(--spacing-12);  /* 48px */
+  
+  /* Additional WordPress-compatible spacing */
+  --wp--preset--spacing--10: var(--spacing-1);   /* 4px */
+  --wp--preset--spacing--100: var(--spacing-32); /* 128px */
+  
+  /* ----------------------------------------
+     WordPress Custom Spacing (LSX specific)
+     Extended scale for more granular control
+     ---------------------------------------- */
+  
+  --wp--custom--spacing--tiny: var(--spacing-1);       /* 4px */
+  --wp--custom--spacing--small: var(--spacing-2);      /* 8px */
+  --wp--custom--spacing--medium: var(--spacing-4);     /* 16px */
+  --wp--custom--spacing--large: var(--spacing-6);      /* 24px */
+  --wp--custom--spacing--x-large: var(--spacing-8);    /* 32px */
+  --wp--custom--spacing--2x-large: var(--spacing-12);  /* 48px */
+  --wp--custom--spacing--3x-large: var(--spacing-16);  /* 64px */
+  --wp--custom--spacing--4x-large: var(--spacing-24);  /* 96px */
+  --wp--custom--spacing--5x-large: var(--spacing-32);  /* 128px */
+  
+  /* ----------------------------------------
+     WordPress Gap Presets (for layout blocks)
+     WordPress expects: --wp--style--block-gap
+     ---------------------------------------- */
+  
+  --wp--style--block-gap: var(--spacing-6);  /* Default block gap: 24px */
+  
+  /* ----------------------------------------
+     WordPress Line Height Presets
+     WordPress expects: --wp--custom--line-height--{slug}
+     ---------------------------------------- */
+  
+  --wp--custom--line-height--tight: var(--line-height-tight);     /* 1.1 */
+  --wp--custom--line-height--snug: var(--line-height-snug);       /* 1.25 */
+  --wp--custom--line-height--normal: var(--line-height-normal);   /* 1.5 */
+  --wp--custom--line-height--relaxed: var(--line-height-relaxed); /* 1.75 */
+  
+  /* ----------------------------------------
+     WordPress Letter Spacing Presets
+     WordPress expects: --wp--custom--letter-spacing--{slug}
+     ---------------------------------------- */
+  
+  --wp--custom--letter-spacing--tight: var(--letter-spacing-tight);   /* -0.025em */
+  --wp--custom--letter-spacing--normal: var(--letter-spacing-normal); /* 0 */
+  --wp--custom--letter-spacing--wide: var(--letter-spacing-wide);     /* 0.025em */
+  --wp--custom--letter-spacing--wider: var(--letter-spacing-wider);   /* 0.05em */
   
   
   /* ============================================

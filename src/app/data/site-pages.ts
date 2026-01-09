@@ -117,7 +117,10 @@ export const sitePages: SitePage[] = [
     id: 'solutions',
     slug: 'solutions',
     title: 'Solutions',
-    showInNav: false
+    excerpt: 'Expert WordPress & WooCommerce solutions',
+    template: 'page-solutions',
+    showInNav: true,
+    order: 3
   },
   {
     id: 'solutions-wordpress',
@@ -160,7 +163,7 @@ export const sitePages: SitePage[] = [
     excerpt: 'Our work and case studies',
     template: 'archive',
     showInNav: true,
-    order: 3
+    order: 4
   },
   
   // Blog
@@ -171,7 +174,7 @@ export const sitePages: SitePage[] = [
     excerpt: 'WordPress insights and tutorials',
     template: 'index',
     showInNav: true,
-    order: 4
+    order: 5
   },
   
   // About
@@ -182,7 +185,7 @@ export const sitePages: SitePage[] = [
     excerpt: 'About LSX Design',
     template: 'page',
     showInNav: true,
-    order: 5
+    order: 6
   },
   {
     id: 'team',
@@ -233,7 +236,7 @@ export const sitePages: SitePage[] = [
     excerpt: 'Managed WordPress hosting',
     template: 'page',
     showInNav: true,
-    order: 6
+    order: 7
   },
   {
     id: 'hosting-plans',
@@ -268,7 +271,7 @@ export const sitePages: SitePage[] = [
     excerpt: 'Get in touch',
     template: 'page',
     showInNav: true,
-    order: 7
+    order: 8
   },
   
   // Testimonials
@@ -279,7 +282,7 @@ export const sitePages: SitePage[] = [
     excerpt: 'Client success stories',
     template: 'page',
     showInNav: true,
-    order: 8
+    order: 9
   },
   
   // Resources
@@ -384,6 +387,16 @@ export const sitePages: SitePage[] = [
     slug: 'style-guide',
     title: 'Style Guide',
     excerpt: 'Design system documentation',
+    showInNav: false
+  },
+  
+  // WordPress Blocks Proof of Concept
+  {
+    id: 'wordpress-blocks-poc',
+    slug: 'wordpress-blocks-poc',
+    title: 'WordPress Blocks Proof of Concept',
+    excerpt: 'Demonstration of 100% WordPress core block classes with zero Tailwind and zero inline styles',
+    template: 'page',
     showInNav: false
   },
   

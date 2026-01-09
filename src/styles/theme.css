@@ -58,3 +58,20 @@
  * - WCAG AA/AAA compliant (often better than light mode)
  */
 @import './theme-dark.css';
+
+/**
+ * 4. Global utility classes
+ * - Typography utilities (font sizes, weights, etc.)
+ * - Spacing utilities (padding, margin, gap)
+ * - WordPress-compatible utility classes
+ * - All classes use CSS variables for user control
+ */
+@import './utilities.css';
+
+/**
+ * 5. Component styles
+ * - Reusable component patterns (buttons, cards, sections)
+ * - WordPress block-compatible components
+ * - All styles use CSS variables for consistency
+ */
+@import './components.css';

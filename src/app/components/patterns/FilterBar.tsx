@@ -90,8 +90,8 @@ export function FilterBar({
                   <button
                     onClick={() => onFilterChange(option.id)}
                     aria-current={isActive ? 'true' : undefined}
+                    className="px-5 py-2.5"
                     style={{
-                      padding: '10px 20px',
                       fontSize: 'var(--text-base)',
                       fontFamily: 'Lexend, sans-serif',
                       fontWeight: isActive ? 'var(--font-weight-medium)' : 'var(--font-weight-regular)',
@@ -149,12 +149,12 @@ export function FilterBar({
             onClick={() => setMobileFiltersOpen(!mobileFiltersOpen)}
             aria-label={mobileFiltersOpen ? 'Close filters' : 'Open filters'}
             aria-expanded={mobileFiltersOpen}
+            className="p-3"
             style={{
               width: '100%',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
-              padding: '12px 16px',
               fontSize: 'var(--text-base)',
               fontFamily: 'Lexend, sans-serif',
               fontWeight: 'var(--font-weight-medium)',

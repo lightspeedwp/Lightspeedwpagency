@@ -30,7 +30,7 @@
 import { useState, useEffect } from 'react';
 import { X, Plus, Minus, ShoppingCart as CartIcon, Trash2 } from 'lucide-react';
 import { Button } from '../blocks/design/Buttons';
-import { useToast } from '../../hooks/useToast';
+import { useToast } from '../blocks/feedback/ToastSystem';
 
 export interface CartItem {
   id: string;

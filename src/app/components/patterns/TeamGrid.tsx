@@ -16,7 +16,6 @@
  */
 
 import { Mail, Linkedin, Twitter, Globe } from 'lucide-react';
-import { LazyImage } from '../ui/LazyImage';
 import { useStaggerReveal } from '../../hooks/useScrollReveal';
 
 export interface TeamMember {
@@ -130,7 +129,7 @@ export function TeamGrid({
           >
             {/* Avatar */}
             {member.avatar ? (
-              <LazyImage
+              <img
                 src={member.avatar}
                 alt={member.name}
                 style={{

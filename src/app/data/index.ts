@@ -129,8 +129,8 @@ export {
 
 // Legacy exports for existing code
 export { mainPages, allPages } from './pages';
-export { industries, categories, technologies } from './portfolio';
-export { authors } from './posts';
+export { industries, categories, technologies } from './portfolio-projects';
+export { blogAuthors as authors } from './blog-posts';
 
 // ========================================
 // PRICING & PACKAGES

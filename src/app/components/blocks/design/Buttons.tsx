@@ -47,19 +47,21 @@ export function Buttons({
   className = '',
   children 
 }: ButtonsProps) {
-  const orientationClass = orientation === 'horizontal' 
-    ? 'flex-row flex-wrap' 
-    : 'flex-col';
+  // WordPress block classes for orientation
+  const orientationClass = orientation === 'vertical' 
+    ? 'is-vertical' 
+    : '';
   
+  // WordPress block classes for alignment
   const alignmentClass = {
-    'start': 'justify-start',
-    'center': 'justify-center',
-    'end': 'justify-end'
+    'start': 'is-content-justification-left',
+    'center': 'is-content-justification-center',
+    'end': 'is-content-justification-right'
   }[align];
 
   return (
     <div 
-      className={`flex ${orientationClass} ${alignmentClass} gap-4 ${className}`}
+      className={`wp-block-buttons ${orientationClass} ${alignmentClass} ${className}`.trim()}
       role="group"
       aria-label="Action buttons"
     >
@@ -118,91 +120,27 @@ export function ButtonBlock({
   rel
 }: ButtonProps) {
   const { navigateTo } = useNavigation();
+  const [isHovered, setIsHovered] = React.useState(false);
   
-  // Micro-interactions: subtle lift on hover (2px) with enhanced shadow
-  const { hoverLift } = useMicroInteractions({ 
-    scaleOnHover: 1.01, 
-    duration: 150 
-  });
-  const liftProps = disabled ? {} : hoverLift(2);
+  // Build WordPress block classes
+  const sizeClass = size === 'sm' ? 'is-style-small' : size === 'lg' ? 'is-style-large' : '';
   
-  // Size styles using CSS variables
-  // - sm: 14px font, 44px height (WCAG AAA compliant)
-  // - md: 16px font, 48px height (WCAG AAA compliant) — DEFAULT
-  // - lg: 18px font, 56px height (exceeds WCAG AAA)
-  const sizeStyles = {
-    sm: {
-      padding: '10px 20px',               // 44px height
-      fontSize: 'var(--text-small)',      // 14px
-      minHeight: '44px',
-      borderRadius: 'var(--radius)'       // 4px
-    },
-    md: {
-      padding: '12px 24px',               // 48px height
-      fontSize: 'var(--text-base)',       // 16px
-      minHeight: '48px',
-      borderRadius: 'var(--radius)'       // 4px
-    },
-    lg: {
-      padding: '16px 32px',               // 56px height
-      fontSize: 'var(--text-lg)',         // 18px
-      minHeight: '56px',
-      borderRadius: 'var(--radius-lg)'    // 8px
-    }
-  };
-
-  // Variant styles using CSS variables
-  const variantStyles = {
-    default: {
-      backgroundColor: 'var(--primary)',
-      color: 'var(--primary-foreground)',
-      border: 'none'
-    },
-    primary: {
-      backgroundColor: 'var(--primary)',
-      color: 'var(--primary-foreground)',
-      border: 'none'
-    },
-    secondary: {
-      backgroundColor: 'var(--secondary)',
-      color: 'var(--secondary-foreground)',
-      border: 'none'
-    },
-    outline: {
-      backgroundColor: 'transparent',
-      color: 'var(--foreground)',
-      border: '1px solid var(--border)'
-    },
-    cta: {
-      backgroundImage: 'linear-gradient(to right, var(--primary), var(--secondary))',
-      color: 'var(--primary-foreground)',
-      border: 'none'
-    }
-  };
-
-  const baseStyles = {
-    display: 'inline-flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: '8px',
-    fontFamily: 'Lexend, sans-serif',
-    fontWeight: 'var(--font-weight-medium)',  // 500
-    textDecoration: 'none',
-    cursor: disabled ? 'not-allowed' : 'pointer',
-    opacity: disabled ? 0.5 : 1,
-    whiteSpace: 'nowrap' as const,
-    lineHeight: 'var(--line-height-normal)',  // 1.5
-    ...sizeStyles[size],
-    ...variantStyles[variant],
-    ...(liftProps.style || {})  // Merge micro-interaction styles
-  };
-
+  const variantClass = {
+    'default': '',
+    'primary': '',
+    'secondary': 'is-style-secondary',
+    'outline': 'is-style-outline',
+    'cta': 'is-style-cta'
+  }[variant];
+  
+  // WordPress button wrapper classes
+  const wrapperClasses = `wp-block-button ${sizeClass} ${variantClass} ${className}`.trim();
+  
   const commonProps = {
-    className: `button-block ${className}`,
-    style: baseStyles,
+    className: 'wp-block-button__link',
     'aria-label': ariaLabel,
     'aria-disabled': disabled,
-    ...liftProps  // Merge hover event handlers
+    style: disabled ? { opacity: 0.5, cursor: 'not-allowed' } as React.CSSProperties : undefined
   };
 
   const content = (
@@ -212,44 +150,62 @@ export function ButtonBlock({
     </>
   );
 
+  // Handle external links
   if (href && !disabled) {
     return (
-      <a
-        {...commonProps}
-        href={href}
-        onClick={onClick}
-        target={target}
-        rel={target === '_blank' ? 'noopener noreferrer' : rel}
-      >
-        {content}
-      </a>
+      <div className={wrapperClasses}>
+        <a
+          {...commonProps}
+          href={href}
+          onClick={onClick}
+          target={target}
+          rel={target === '_blank' ? 'noopener noreferrer' : rel}
+        >
+          {content}
+        </a>
+      </div>
     );
   }
 
+  // Handle internal navigation
   if (page && !disabled) {
     return (
+      <div className={wrapperClasses}>
+        <button
+          {...commonProps}
+          onClick={e => {
+            if (onClick) onClick(e);
+            navigateTo(page);
+          }}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          type="button"
+          style={{
+            ...commonProps.style,
+            color: isHovered ? 'white' : 'black',
+            border: '1px solid white',
+            backgroundColor: isHovered ? 'transparent' : 'white',
+            transition: 'all 0.3s ease'
+          }}
+        >
+          {content}
+        </button>
+      </div>
+    );
+  }
+
+  // Handle regular buttons
+  return (
+    <div className={wrapperClasses}>
       <button
         {...commonProps}
-        onClick={e => {
-          if (onClick) onClick(e);
-          navigateTo(page);
-        }}
+        onClick={disabled ? undefined : onClick}
+        disabled={disabled}
         type="button"
       >
         {content}
       </button>
-    );
-  }
-
-  return (
-    <button
-      {...commonProps}
-      onClick={disabled ? undefined : onClick}
-      disabled={disabled}
-      type="button"
-    >
-      {content}
-    </button>
+    </div>
   );
 }
 

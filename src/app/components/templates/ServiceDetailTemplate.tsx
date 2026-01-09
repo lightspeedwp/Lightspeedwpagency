@@ -61,6 +61,7 @@ interface ServiceDetailProps {
     timeline: string;
     pricing: string;
     relatedServices: Array<{
+      id: string;
       title: string;
       slug: string;
       excerpt: string;
@@ -682,28 +683,33 @@ export function ServiceDetailTemplate({ service }: ServiceDetailProps) {
               </h2>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {service.relatedServices.map((related, index) => (
-                  <article
-                    key={index}
+                {service.relatedServices.slice(0, 3).map((related) => (
+                  <a
+                    key={related.id}
+                    href={`#service-${related.slug}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      navigateTo(`service-${related.slug}`);
+                    }}
                     style={{
                       backgroundColor: 'var(--card)',
+                      borderRadius: 'var(--radius-lg)',
                       border: '1px solid var(--border-soft)',
-                      borderRadius: 'var(--radius-xl)',
-                      padding: '32px',
-                      cursor: 'pointer',
-                      transition: 'all 0.3s ease'
+                      overflow: 'hidden',
+                      transition: 'all 0.3s ease',
+                      textDecoration: 'none',
+                      display: 'block',
+                      cursor: 'pointer'
                     }}
-                    onClick={() => navigateTo(`service-${related.slug}`)}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.transform = 'translateY(-4px)';
-                      e.currentTarget.style.boxShadow = 'var(--shadow-lg)';
-                      e.currentTarget.style.borderColor = 'var(--primary)';
+                      e.currentTarget.style.boxShadow = '0 12px 24px rgba(0,0,0,0.1)';
                     }}
                     onMouseLeave={(e) => {
                       e.currentTarget.style.transform = 'translateY(0)';
                       e.currentTarget.style.boxShadow = 'none';
-                      e.currentTarget.style.borderColor = 'var(--border-soft)';
                     }}
+                    aria-label={`Learn more about ${related.title}`}
                   >
                     <h3 
                       style={{
@@ -744,7 +750,7 @@ export function ServiceDetailTemplate({ service }: ServiceDetailProps) {
                       Learn More
                       <ArrowRight size={16} />
                     </span>
-                  </article>
+                  </a>
                 ))}
               </div>
             </Container>

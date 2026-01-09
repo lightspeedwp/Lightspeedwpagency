@@ -34,7 +34,7 @@
 import { SiteHeader } from '../parts/SiteHeader';
 import { SiteFooter } from '../parts/SiteFooter';
 import { SkipLink } from '../common/SkipLink';
-import { BackToTopButton } from '../ui/BackToTopButton';
+import { BackToTopButton } from '../blocks/layout/BackToTopButton';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { Breadcrumbs } from '../common/Breadcrumbs';

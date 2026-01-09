@@ -44,8 +44,9 @@ import { FAQSection } from '../patterns/FAQSection';
 import { BackToTopButton } from '../blocks/layout/BackToTopButton';
 import { StickyBookCallButton } from '../blocks/layout/StickyBookCallButton';
 import { Skeleton } from '../blocks/layout/Skeleton';
+import { MobileFilterPopover } from '../common/MobileFilterPopover';
 import { useStaggerReveal } from '../../hooks/useScrollReveal';
-import { LazyImage } from '../ui/LazyImage';
+import { useMicroInteractions } from '../../hooks/useMicroInteractions';
 import { Filter } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { portfolioFAQs } from '../../data/faqs';
@@ -94,110 +95,122 @@ export function PortfolioArchiveTemplate() {
     const liftProps = hoverLift(12); // 12px lift for pronounced effect
 
     return (
-      <article
-        {...liftProps}
-        style={{
-          backgroundColor: 'var(--card)',
-          border: '1px solid var(--border-soft)',
-          borderRadius: 'var(--radius-xl)',
-          overflow: 'hidden',
-          boxShadow: 'var(--shadow-sm)',
-          cursor: 'pointer',
-          ...liftProps.style
+      <a
+        href={`#portfolio-single-${item.slug}`}
+        onClick={(e) => {
+          e.preventDefault();
+          navigateTo(`portfolio-single-${item.slug}`);
         }}
-        onClick={() => navigateTo(`portfolio-single-${item.slug}`)}
+        style={{
+          textDecoration: 'none',
+          display: 'block',
+          cursor: 'pointer',
+        }}
+        aria-label={`View ${item.title} project`}
       >
-        {/* Project Image */}
-        <div 
+        <article
+          {...liftProps}
           style={{
-            position: 'relative',
-            paddingTop: '66.67%',
-            overflow: 'hidden'
+            backgroundColor: 'var(--card)',
+            border: '1px solid var(--border-soft)',
+            borderRadius: 'var(--radius-xl)',
+            overflow: 'hidden',
+            boxShadow: 'var(--shadow-sm)',
+            ...liftProps.style
           }}
         >
-          <LazyImage 
-            src={item.imageUrl}
-            alt={item.title}
+          {/* Project Image */}
+          <div 
             style={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover'
-            }}
-          />
-          
-          {/* Category Badge */}
-          <span 
-            style={{
-              position: 'absolute',
-              top: '16px',
-              left: '16px',
-              backgroundColor: 'var(--primary)',
-              color: 'var(--primary-foreground)',
-              padding: '8px 16px',
-              borderRadius: 'var(--radius-lg)',
-              fontFamily: 'Lexend, sans-serif',
-              fontSize: 'var(--text-small)',
-              fontWeight: 'var(--font-weight-medium)',
-              backdropFilter: 'blur(10px)',
-              border: '1px solid var(--border)',
-              boxShadow: 'var(--shadow-lg)'
+              position: 'relative',
+              paddingTop: '66.67%',
+              overflow: 'hidden'
             }}
           >
-            {item.category}
-          </span>
-        </div>
-
-        {/* Project Content */}
-        <div className="p-6">
-          <h3 
-            style={{
-              fontFamily: 'Lexend, sans-serif',
-              fontSize: 'var(--text-h3)',
-              fontWeight: 'var(--font-weight-semibold)',
-              color: 'var(--card-foreground)',
-              marginBottom: '12px',
-              lineHeight: '1.3'
-            }}
-          >
-            {item.title}
-          </h3>
-
-          <p 
-            style={{
-              fontFamily: 'Lexend, sans-serif',
-              fontSize: 'var(--text-base)',
-              color: 'var(--muted-foreground)',
-              lineHeight: '1.6',
-              marginBottom: '16px'
-            }}
-          >
-            {item.excerpt}
-          </p>
-
-          {/* Tags */}
-          <div className="flex flex-wrap gap-2">
-            {item.tags.map((tag, index) => (
-              <span 
-                key={index}
-                style={{
-                  fontFamily: 'Manrope, sans-serif',
-                  fontSize: 'var(--text-small)',
-                  color: 'var(--muted-foreground)',
-                  backgroundColor: 'var(--muted)',
-                  padding: '6px 12px',
-                  borderRadius: 'var(--radius)',
-                  border: '1px solid var(--border-soft)'
-                }}
-              >
-                {tag}
-              </span>
-            ))}
+            <img 
+              src={item.imageUrl}
+              alt={item.title}
+              style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover'
+              }}
+            />
+            
+            {/* Category Badge */}
+            <span 
+              style={{
+                position: 'absolute',
+                top: '16px',
+                left: '16px',
+                backgroundColor: 'var(--primary)',
+                color: 'var(--primary-foreground)',
+                padding: '8px 16px',
+                borderRadius: 'var(--radius-lg)',
+                fontFamily: 'Lexend, sans-serif',
+                fontSize: 'var(--text-small)',
+                fontWeight: 'var(--font-weight-medium)',
+                backdropFilter: 'blur(10px)',
+                border: '1px solid var(--border)',
+                boxShadow: 'var(--shadow-lg)'
+              }}
+            >
+              {item.category}
+            </span>
           </div>
-        </div>
-      </article>
+
+          {/* Project Content */}
+          <div className="p-6">
+            <h3 
+              style={{
+                fontFamily: 'Lexend, sans-serif',
+                fontSize: 'var(--text-h3)',
+                fontWeight: 'var(--font-weight-semibold)',
+                color: 'var(--card-foreground)',
+                marginBottom: '12px',
+                lineHeight: '1.3'
+              }}
+            >
+              {item.title}
+            </h3>
+
+            <p 
+              style={{
+                fontFamily: 'Lexend, sans-serif',
+                fontSize: 'var(--text-base)',
+                color: 'var(--muted-foreground)',
+                lineHeight: '1.6',
+                marginBottom: '16px'
+              }}
+            >
+              {item.excerpt}
+            </p>
+
+            {/* Tags */}
+            <div className="flex flex-wrap gap-2">
+              {item.tags.map((tag, index) => (
+                <span 
+                  key={index}
+                  style={{
+                    fontFamily: 'Manrope, sans-serif',
+                    fontSize: 'var(--text-small)',
+                    color: 'var(--muted-foreground)',
+                    backgroundColor: 'var(--muted)',
+                    padding: '6px 12px',
+                    borderRadius: 'var(--radius)',
+                    border: '1px solid var(--border-soft)'
+                  }}
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+        </article>
+      </a>
     );
   }
 
@@ -265,7 +278,7 @@ export function PortfolioArchiveTemplate() {
                 className="inline-flex items-center px-6 py-3 mb-8"
                 style={{
                   backgroundColor: 'var(--muted)',
-                  color: 'var(--foreground)',
+                  color: 'var(--muted-foreground)',
                   borderRadius: 'var(--radius-xl)',
                   border: '1px solid var(--border-soft)',
                   fontFamily: 'Lexend, sans-serif',
@@ -286,7 +299,7 @@ export function PortfolioArchiveTemplate() {
                   lineHeight: 'var(--line-height-tight)',
                   letterSpacing: 'var(--letter-spacing-tight)',
                   marginBottom: '24px',
-                  color: 'var(--primary-foreground)'
+                  color: 'var(--card-foreground)'
                 }}
               >
                 Portfolio
@@ -298,7 +311,7 @@ export function PortfolioArchiveTemplate() {
                   fontSize: 'var(--text-lead)',
                   fontWeight: 'var(--font-weight-regular)',
                   lineHeight: 'var(--line-height-relaxed)',
-                  color: 'var(--primary-foreground)',
+                  color: 'var(--card-foreground)',
                   maxWidth: '700px',
                   margin: '0 auto'
                 }}
@@ -343,7 +356,7 @@ export function PortfolioArchiveTemplate() {
                       fontSize: 'var(--text-h2)',
                       fontWeight: 'var(--font-weight-bold)',
                       marginBottom: '8px',
-                      color: 'var(--foreground)'
+                      color: 'var(--card-foreground)'
                     }}
                   >
                     98%
@@ -366,7 +379,7 @@ export function PortfolioArchiveTemplate() {
                       fontSize: 'var(--text-h2)',
                       fontWeight: 'var(--font-weight-bold)',
                       marginBottom: '8px',
-                      color: 'var(--foreground)'
+                      color: 'var(--card-foreground)'
                     }}
                   >
                     15+

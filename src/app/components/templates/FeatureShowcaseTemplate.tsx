@@ -16,7 +16,7 @@ import { SiteFooter } from '../parts/SiteFooter';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { Button } from '../blocks/design/Buttons';
-import { BackToTopButton } from '../ui/BackToTopButton';
+import { BackToTopButton } from '../blocks/layout/BackToTopButton';
 import { motion } from 'motion/react';
 import { useState } from 'react';
 

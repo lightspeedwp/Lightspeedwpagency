@@ -19,7 +19,7 @@ import { BackToTopButton } from '../blocks/layout/BackToTopButton';
 import { ScrollProgress } from '../blocks/layout/ScrollProgress';
 import { useNavigation } from '../../contexts/NavigationContext';
 import { featuredTestimonials } from '../../data/testimonials';
-import { portfolioProjects } from '../../data/portfolio';
+import { portfolioProjects } from '../../data/portfolio-projects';
 import { ExternalLink, Calendar, Users, Award, TrendingUp } from 'lucide-react';
 
 interface PortfolioSingleTemplateProps {
@@ -757,29 +757,33 @@ export function PortfolioSingleTemplate({ slug = 'african-safari-consultants' }:
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {relatedProjects.map((relatedProject) => (
-                <article
+              {relatedProjects.slice(0, 3).map((relatedProject) => (
+                <a
                   key={relatedProject.id}
+                  href={`#portfolio-single-${relatedProject.slug}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigateTo(`portfolio-single-${relatedProject.slug}`);
+                  }}
                   style={{
                     backgroundColor: 'var(--card)',
+                    borderRadius: 'var(--radius-lg)',
                     border: '1px solid var(--border-soft)',
-                    borderRadius: 'var(--radius-xl)',
                     overflow: 'hidden',
-                    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                    boxShadow: 'var(--shadow-md)',
+                    transition: 'all 0.3s ease',
+                    textDecoration: 'none',
+                    display: 'block',
                     cursor: 'pointer'
                   }}
-                  onClick={() => navigateTo(`portfolio-single-${relatedProject.slug}`)}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.transform = 'translateY(-8px)';
-                    e.currentTarget.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.12)';
-                    e.currentTarget.style.borderColor = 'var(--primary)';
+                    e.currentTarget.style.boxShadow = '0 20px 40px rgba(0,0,0,0.1)';
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.transform = 'translateY(0)';
-                    e.currentTarget.style.boxShadow = 'var(--shadow-md)';
-                    e.currentTarget.style.borderColor = 'var(--border-soft)';
+                    e.currentTarget.style.boxShadow = 'none';
                   }}
+                  aria-label={`View ${relatedProject.title} project`}
                 >
                   <div 
                     style={{
@@ -829,7 +833,7 @@ export function PortfolioSingleTemplate({ slug = 'african-safari-consultants' }:
                       {relatedProject.title}
                     </h3>
                   </div>
-                </article>
+                </a>
               ))}
             </div>
           </Container>

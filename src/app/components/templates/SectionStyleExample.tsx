@@ -10,10 +10,8 @@
  * - Consistent with WordPress FSE section style system
  */
 
-import { SiteHeader } from '../parts/SiteHeader';
-import { SiteFooter } from '../parts/SiteFooter';
 import { SkipLink } from '../common/SkipLink';
-import { BackToTopButton } from '../ui/BackToTopButton';
+import { BackToTopButton } from '../blocks/layout/BackToTopButton';
 import { Section } from '../common/Section';
 import { Container } from '../common/Container';
 import { Button } from '../blocks/design/Buttons';
@@ -31,9 +29,6 @@ export function SectionStyleExample() {
     >
       {/* Skip Link for Accessibility */}
       <SkipLink targetId="main-content" />
-
-      {/* Site Header */}
-      <SiteHeader />
 
       {/* Main Content */}
       <main
@@ -254,9 +249,6 @@ export function SectionStyleExample() {
           </Container>
         </Section>
       </main>
-
-      {/* Site Footer */}
-      <SiteFooter />
 
       {/* Back to Top Button */}
       <BackToTopButton />

@@ -21,7 +21,7 @@
 
 import { useState, useEffect } from 'react';
 import { CheckCircle2, AlertCircle, Eye, EyeOff } from 'lucide-react';
-import { useShake } from '../../hooks/useShake';
+import { useShake } from '../../hooks/useMicroInteractions';
 
 interface FormFieldProps {
   /** Field label */
@@ -78,7 +78,7 @@ export function FormField({
 }: FormFieldProps) {
   const [isFocused, setIsFocused] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const { shake, triggerShake, shakeStyle } = useShake();
+  const [shakeProps, triggerShake] = useShake();
 
   // Trigger shake animation when error appears
   useEffect(() => {
@@ -110,7 +110,7 @@ export function FormField({
   const inputType = type === 'password' && showPassword ? 'text' : type;
 
   return (
-    <div className={`flex flex-col gap-2 ${className}`} style={shakeStyle}>
+    <div className={`flex flex-col gap-2 ${className}`} style={shakeProps.style}>
       {/* Label */}
       <label
         htmlFor={fieldId}
@@ -127,10 +127,7 @@ export function FormField({
         {label}
         {required && (
           <span
-            style={{
-              color: 'var(--destructive)',
-              fontSize: 'var(--text-base)',
-            }}
+            style={{ color: 'var(--destructive)', fontSize: 'var(--text-base)' }}
             aria-label="required"
           >
             *
@@ -411,7 +408,7 @@ export function TextAreaField({
   autoFocus = false,
 }: TextAreaFieldProps) {
   const [isFocused, setIsFocused] = useState(false);
-  const { shake, triggerShake, shakeStyle } = useShake();
+  const [shakeProps, triggerShake] = useShake();
 
   useEffect(() => {
     if (error) {
@@ -437,7 +434,7 @@ export function TextAreaField({
   };
 
   return (
-    <div className={`flex flex-col gap-2 ${className}`} style={shakeStyle}>
+    <div className={`flex flex-col gap-2 ${className}`} style={shakeProps.style}>
       {/* Label */}
       <label
         htmlFor={fieldId}

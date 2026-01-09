@@ -79,25 +79,19 @@ export * from './forms/ContactForm';
 export * from './data-display/Table';
 // export * from './data-display/DataTable';     // TODO: Move from /ui
 // export * from './data-display/StatsCard';     // TODO: Move from /ui
-// export * from './data-display/ProgressBar';   // TODO: Move from /ui
+// Note: ProgressBar removed (not used in LSX Design system)
 
 // ============================================================================
 // E-COMMERCE COMPONENTS
 // ============================================================================
-export * from './ecommerce/ProductCard';
-export * from './ecommerce/ShoppingCart';
-// export * from './ecommerce/ProductReviews';   // TODO: Create
-// export * from './ecommerce/WishlistButton';   // TODO: Create
-// export * from './ecommerce/QuickViewModal';   // TODO: Create
-// export * from './ecommerce/ComparisonTable';  // TODO: Create
+// Note: E-commerce components removed (not needed for WordPress agency site)
+// If needed in future, can be re-created in /blocks/ecommerce/
 
 // ============================================================================
 // MEDIA COMPONENTS
 // ============================================================================
 export * from './media/OptimizedImage';
-// export * from './media/ImageGallery';  // TODO: Move from /ui
-// export * from './media/VideoPlayer';   // TODO: Move from /ui
-// export * from './media/Lightbox';      // TODO: Move from /ui
+// Note: ImageGallery, VideoPlayer, Lightbox removed (WordPress handles media through core blocks)
 
 // ============================================================================
 // DEV TOOLS COMPONENTS

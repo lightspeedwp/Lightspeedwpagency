@@ -9,15 +9,12 @@
 
 import { Button, Buttons } from '../blocks/design/Buttons';
 import { ScrollDownArrow } from '../blocks/layout/ScrollDownArrow';
-import { useNavigation } from '../../contexts/NavigationContext';
 import { Container } from '../common/Container';
 import { Heading } from '../common/Heading';
 import { Section } from '../common/Section';
 import { TRANSITIONS } from '../../utils/animations';
 
 export function HeroHome() {
-  const { navigate } = useNavigation();
-
   return (
     <Section 
       sectionStyle="hero-primary"
@@ -93,7 +90,7 @@ export function HeroHome() {
           <Button 
             variant="primary" 
             size="lg" 
-            onClick={() => navigate('style-guide')}
+            href="/style-guide"
           >
             View Documentation
           </Button>
@@ -102,7 +99,7 @@ export function HeroHome() {
           <Button 
             variant="outline" 
             size="lg" 
-            onClick={() => navigate('contact')}
+            href="/contact"
           >
             Get Started
           </Button>
@@ -118,11 +115,11 @@ export function HeroHome() {
         >
           <div>
             <div 
+              className="mb-3"
               style={{
                 fontFamily: 'Lexend, sans-serif',
                 fontSize: 'var(--text-h2)',
                 fontWeight: 'var(--font-weight-semibold)',
-                marginBottom: '12px',
                 lineHeight: '1'
               }}
             >
@@ -138,20 +135,21 @@ export function HeroHome() {
                 letterSpacing: '0.1em'
               }}
             >
-              Active Installs
+              Happy Clients
             </div>
           </div>
+
           <div>
             <div 
+              className="mb-3"
               style={{
                 fontFamily: 'Lexend, sans-serif',
                 fontSize: 'var(--text-h2)',
                 fontWeight: 'var(--font-weight-semibold)',
-                marginBottom: '12px',
                 lineHeight: '1'
               }}
             >
-              100%
+              98%
             </div>
             <div 
               style={{
@@ -163,16 +161,17 @@ export function HeroHome() {
                 letterSpacing: '0.1em'
               }}
             >
-              Open Source
+              Success Rate
             </div>
           </div>
+
           <div>
             <div 
+              className="mb-3"
               style={{
                 fontFamily: 'Lexend, sans-serif',
                 fontSize: 'var(--text-h2)',
                 fontWeight: 'var(--font-weight-semibold)',
-                marginBottom: '12px',
                 lineHeight: '1'
               }}
             >

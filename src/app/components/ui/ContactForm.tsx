@@ -28,7 +28,7 @@
 import { useState, FormEvent } from 'react';
 import { Mail, Phone, User, MessageSquare, Send, CheckCircle2, AlertCircle } from 'lucide-react';
 import { Button } from '../blocks/design/Buttons';
-import { useToast } from '../../hooks/useToast';
+import { useToast } from '../blocks/feedback/ToastSystem';
 
 export interface ContactFormData {
   name: string;

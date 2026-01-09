@@ -554,6 +554,7 @@ if (typeof window !== 'undefined') {
       'content-service',
       'security-service',
       'migrations-service',
+      'support-service',
       'solutions',
       'lsx-solution',
       'wordpress-solution',

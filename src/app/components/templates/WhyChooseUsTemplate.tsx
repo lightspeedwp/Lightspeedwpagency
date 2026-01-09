@@ -37,7 +37,7 @@ import { CTASection } from '../patterns/CTASection';
 import { TestimonialGrid } from '../patterns/TestimonialGrid';
 import { SocialProof } from '../patterns/SocialProof';
 import { FAQSection } from '../patterns/FAQSection';
-import { BackToTopButton } from '../ui/BackToTopButton';
+import { BackToTopButton } from '../blocks/layout/BackToTopButton';
 import { testimonials } from '../../data/testimonials';
 import { clientLogos } from '../../data/logos';
 import { aboutFAQs } from '../../data/faqs';

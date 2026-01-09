@@ -23,79 +23,42 @@ import { Mail, Phone, MapPin, ChevronDown, Clock, Send } from 'lucide-react';
 import { useState } from 'react';
 
 export function ContactPageTemplate() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
-  });
   const [openFaq, setOpenFaq] = useState<string | null>(null);
-  const [touched, setTouched] = useState({
-    name: false,
-    email: false,
-    message: false,
-  });
 
   // Form validation with useFormValidation hook
-  const { errors, validateField, validateForm } = useFormValidation({
-    name: {
-      required: 'Name is required',
-      minLength: { value: 2, message: 'Name must be at least 2 characters' }
+  const {
+    values,
+    errors,
+    touched,
+    handleChange,
+    handleBlur,
+    handleSubmit,
+    resetForm,
+    isSubmitting
+  } = useFormValidation({
+    initialValues: {
+      name: '',
+      email: '',
+      subject: '',
+      message: ''
     },
-    email: {
-      required: 'Email is required',
-      pattern: {
-        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-        message: 'Invalid email address'
+    validationRules: {
+      name: (value) => value.length >= 2 ? '' : 'Name must be at least 2 characters',
+      email: (value) => /\S+@\S+\.\S+/.test(value) ? '' : 'Please enter a valid email address',
+      message: (value) => {
+        if (value.length < 10) return 'Message must be at least 10 characters';
+        if (value.length > 500) return 'Message must be less than 500 characters';
+        return '';
       }
     },
-    message: {
-      required: 'Message is required',
-      minLength: { value: 10, message: 'Message must be at least 10 characters' },
-      maxLength: { value: 500, message: 'Message must not exceed 500 characters' }
-    }
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    // Validate all fields
-    const isValid = validateForm(formData);
-    
-    if (isValid) {
-      console.log('Form submitted:', formData);
+    onSubmit: async (values) => {
+      console.log('Form submitted:', values);
       // In WordPress, this would submit to backend
       // Reset form after successful submission
-      setFormData({ name: '', email: '', subject: '', message: '' });
-      setTouched({ name: false, email: false, message: false });
-    } else {
-      // Mark all fields as touched to show errors
-      setTouched({ name: true, email: true, message: true });
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      resetForm();
     }
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-    
-    // Validate field on change if already touched
-    if (touched[name as keyof typeof touched]) {
-      validateField(name, value);
-    }
-  };
-
-  const handleBlur = (field: keyof typeof touched) => {
-    setTouched({
-      ...touched,
-      [field]: true,
-    });
-    
-    // Validate on blur
-    validateField(field, formData[field]);
-  };
+  });
 
   return (
     <>
@@ -234,28 +197,28 @@ export function ContactPageTemplate() {
                     <FormField
                       label="Name"
                       required
-                      value={formData.name}
-                      onChange={handleChange}
+                      value={values.name}
+                      onChange={(e) => handleChange('name', e.target.value)}
+                      onBlur={() => handleBlur('name')}
                       name="name"
                       type="text"
                       placeholder="John Doe"
-                      error={touched.name ? errors.name : undefined}
-                      showSuccess={touched.name && !errors.name && formData.name.length > 0}
-                      onBlur={() => handleBlur('name')}
+                      error={touched.name && errors.name ? errors.name : undefined}
+                      showSuccess={touched.name && !errors.name && values.name.length > 0}
                     />
 
                     {/* Email Field */}
                     <FormField
                       label="Email"
                       required
-                      value={formData.email}
-                      onChange={handleChange}
+                      value={values.email}
+                      onChange={(e) => handleChange('email', e.target.value)}
+                      onBlur={() => handleBlur('email')}
                       name="email"
                       type="email"
                       placeholder="john@example.com"
-                      error={touched.email ? errors.email : undefined}
-                      showSuccess={touched.email && !errors.email && formData.email.length > 0}
-                      onBlur={() => handleBlur('email')}
+                      error={touched.email && errors.email ? errors.email : undefined}
+                      showSuccess={touched.email && !errors.email && values.email.length > 0}
                     />
 
                     {/* Subject Field */}
@@ -276,8 +239,8 @@ export function ContactPageTemplate() {
                       <select
                         id="subject"
                         name="subject"
-                        value={formData.subject}
-                        onChange={handleChange}
+                        value={values.subject}
+                        onChange={(e) => handleChange('subject', e.target.value)}
                         className="w-full px-4 py-3"
                         style={{
                           fontFamily: 'Lexend, sans-serif',
@@ -313,13 +276,13 @@ export function ContactPageTemplate() {
                     <TextAreaField
                       label="Message"
                       required
-                      value={formData.message}
-                      onChange={handleChange}
+                      value={values.message}
+                      onChange={(e) => handleChange('message', e.target.value)}
+                      onBlur={() => handleBlur('message')}
                       name="message"
                       placeholder="Tell us about your project..."
-                      error={touched.message ? errors.message : undefined}
-                      showSuccess={touched.message && !errors.message && formData.message.length > 0}
-                      onBlur={() => handleBlur('message')}
+                      error={touched.message && errors.message ? errors.message : undefined}
+                      showSuccess={touched.message && !errors.message && values.message.length > 0}
                       showCharCount
                       maxLength={500}
                       rows={6}
@@ -350,9 +313,10 @@ export function ContactPageTemplate() {
                           e.currentTarget.style.transform = 'translateY(0)';
                           e.currentTarget.style.boxShadow = 'none';
                         }}
+                        disabled={isSubmitting}
                       >
                         <Send size={20} />
-                        Send Message
+                        {isSubmitting ? 'Submitting...' : 'Send Message'}
                       </button>
                     </div>
                   </div>

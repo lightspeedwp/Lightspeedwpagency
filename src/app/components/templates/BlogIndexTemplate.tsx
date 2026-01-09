@@ -22,7 +22,6 @@ import { BackToTopButton } from '../blocks/layout/BackToTopButton';
 import { MobileFilterPopover, FilterOption } from '../common/MobileFilterPopover';
 import { Skeleton } from '../blocks/layout/Skeleton';
 import { useStaggerReveal } from '../../hooks/useScrollReveal';
-import { LazyImage } from '../../hooks/useLazyImage';
 import { Calendar, User, Clock, Filter } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useNavigation } from '../../contexts/NavigationContext';
@@ -393,15 +392,16 @@ export function BlogIndexTemplate() {
                     }}
                   >
                     {/* Post Image */}
-                    <button 
-                      onClick={() => navigateTo(`post-${post.slug}`)}
+                    <a 
+                      href={`#post-${post.slug}`}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        navigateTo(`post-${post.slug}`);
+                      }}
                       style={{ 
                         textDecoration: 'none',
-                        background: 'none',
-                        border: 'none',
-                        padding: 0,
+                        display: 'block',
                         cursor: 'pointer',
-                        width: '100%',
                       }}
                       aria-label={`Read ${post.title}`}
                     >
@@ -411,13 +411,15 @@ export function BlogIndexTemplate() {
                           backgroundImage: `url(${post.featuredImage})`,
                         }}
                       />
-                    </button>
+                    </a>
 
                     {/* Post Content */}
                     <div className="p-6 flex flex-col flex-1">
                       {/* Category Badge */}
-                      <button 
-                        onClick={() => {
+                      <a 
+                        href={`#category-${post.categories[0]}`}
+                        onClick={(e) => {
+                          e.preventDefault();
                           navigateTo(`category-${post.categories[0]}`);
                         }}
                         className="inline-flex items-center px-3 py-1 rounded-full mb-3"
@@ -442,12 +444,16 @@ export function BlogIndexTemplate() {
                         aria-label={`View all posts in ${categoryDisplay}`}
                       >
                         {categoryDisplay}
-                      </button>
+                      </a>
 
                       {/* Title */}
                       <h2 className="mb-2">
-                        <button 
-                          onClick={() => navigateTo(`post-${post.slug}`)}
+                        <a 
+                          href={`#post-${post.slug}`}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            navigateTo(`post-${post.slug}`);
+                          }}
                           style={{
                             fontFamily: 'Lexend, sans-serif',
                             fontSize: 'var(--text-h3)',
@@ -455,12 +461,7 @@ export function BlogIndexTemplate() {
                             color: 'var(--foreground)',
                             textDecoration: 'none',
                             lineHeight: '1.3',
-                            background: 'none',
-                            border: 'none',
-                            padding: 0,
-                            cursor: 'pointer',
-                            textAlign: 'left',
-                            width: '100%',
+                            display: 'block',
                           }}
                           onMouseEnter={(e) => {
                             e.currentTarget.style.color = 'var(--primary)';
@@ -470,7 +471,7 @@ export function BlogIndexTemplate() {
                           }}
                         >
                           {post.title}
-                        </button>
+                        </a>
                       </h2>
 
                       {/* Excerpt */}
@@ -492,8 +493,10 @@ export function BlogIndexTemplate() {
                       <div className="flex flex-wrap items-center gap-4 pt-4" style={{ borderTop: '1px solid var(--border-extra-soft)' }}>
                         <div className="flex items-center gap-2">
                           <User size={16} style={{ color: 'var(--muted-foreground)' }} />
-                          <button 
-                            onClick={() => {
+                          <a 
+                            href={`#author-${post.author}`}
+                            onClick={(e) => {
+                              e.preventDefault();
                               navigateTo(`author-${post.author}`);
                             }}
                             style={{
@@ -501,10 +504,6 @@ export function BlogIndexTemplate() {
                               fontSize: 'var(--text-small)',
                               color: 'var(--muted-foreground)',
                               textDecoration: 'none',
-                              background: 'none',
-                              border: 'none',
-                              padding: 0,
-                              cursor: 'pointer',
                             }}
                             onMouseEnter={(e) => {
                               e.currentTarget.style.color = 'var(--primary)';
@@ -515,7 +514,7 @@ export function BlogIndexTemplate() {
                             aria-label={`View all posts by ${post.author}`}
                           >
                             {post.author}
-                          </button>
+                          </a>
                         </div>
                         <div className="flex items-center gap-2">
                           <Calendar size={16} style={{ color: 'var(--muted-foreground)' }} />

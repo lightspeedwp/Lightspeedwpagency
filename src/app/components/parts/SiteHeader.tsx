@@ -34,6 +34,7 @@ export function SiteHeader({ variant = 'default' }: SiteHeaderProps) {
   const { navigateTo, currentPage } = useNavigation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesMenuOpen, setServicesMenuOpen] = useState(false);
+  const [solutionsMenuOpen, setSolutionsMenuOpen] = useState(false);
   const [portfolioMenuOpen, setPortfolioMenuOpen] = useState(false);
   const [blogMenuOpen, setBlogMenuOpen] = useState(false);
   const [aboutMenuOpen, setAboutMenuOpen] = useState(false);
@@ -93,218 +94,60 @@ export function SiteHeader({ variant = 'default' }: SiteHeaderProps) {
       label: 'Services', 
       page: 'services',
       isActive: currentPage === 'services',
-      hasMegaMenu: true,
-      megaMenu: {
-        title: 'Our Services',
-        description: 'WordPress & WooCommerce solutions',
-        featured: [
-          {
-            title: 'WordPress Development',
-            description: 'Custom block themes & FSE solutions',
-            image: 'https://images.unsplash.com/photo-1637937459053-c788742455be?w=800',
-            page: 'services'
-          },
-          {
-            title: 'WooCommerce Solutions',
-            description: 'E-commerce platforms that convert',
-            image: 'https://images.unsplash.com/photo-1658297063569-162817482fb6?w=800',
-            page: 'services'
-          }
-        ],
-        columns: [
-          {
-            title: 'Development',
-            items: [
-              { label: 'WordPress Block Themes', page: 'services', description: 'Custom FSE themes' },
-              { label: 'WooCommerce Solutions', page: 'services', description: 'E-commerce platforms' },
-              { label: 'Design Systems', page: 'services', description: 'Token-driven systems' },
-              { label: 'Theme Customization', page: 'services', description: 'Tailored solutions' },
-            ]
-          },
-          {
-            title: 'Support & Hosting',
-            items: [
-              { label: 'Managed Hosting', page: 'hosting', description: 'WordPress hosting' },
-              { label: 'Maintenance & Support', page: 'services', description: 'Ongoing care' },
-              { label: 'Consulting Services', page: 'contact', description: 'Expert guidance' },
-              { label: 'Training & Workshops', page: 'contact', description: 'Team enablement' },
-            ]
-          },
-          {
-            title: 'Specializations',
-            items: [
-              { label: 'Accessibility (WCAG)', page: 'services', description: 'Inclusive design' },
-              { label: 'Performance Optimization', page: 'services', description: 'Speed & SEO' },
-              { label: 'Site Migrations', page: 'services', description: 'Platform transitions' },
-              { label: 'Security Hardening', page: 'services', description: 'Protection & monitoring' },
-            ]
-          }
-        ]
-      }
+      hasSubmenu: true,
+      submenu: [
+        { label: 'Discovery', page: 'discovery-service', description: 'Website discovery & exploration' },
+        { label: 'Design', page: 'design-service', description: 'Custom design & branding' },
+        { label: 'Development', page: 'development-service', description: 'WordPress & WooCommerce development' },
+        { label: 'Support', page: 'support-service', description: '24/7 technical support' },
+        { label: 'Hosting', page: 'hosting', description: 'Managed WordPress hosting' },
+        { label: 'Migrations', page: 'migrations-service', description: 'Seamless platform migrations' },
+        { label: 'Security', page: 'security-service', description: 'Security & compliance' },
+        { label: 'Content', page: 'content-service', description: 'Content strategy & creation' },
+        { label: 'Mailchimp', page: 'mailchimp-service', description: 'Email marketing integration' }
+      ]
+    },
+    { 
+      label: 'Solutions',
+      page: 'solutions',
+      isActive: currentPage === 'solutions',
+      hasSubmenu: true,
+      submenu: [
+        { label: 'WordPress', page: 'wordpress-solution', description: 'Enterprise WordPress solutions' },
+        { label: 'WooCommerce', page: 'woocommerce-solution', description: 'Ecommerce & online stores' },
+        { label: 'Tour Operators', page: 'tour-operator', description: 'Travel & booking platforms' },
+        { label: 'Hosting', page: 'hosting', description: 'Managed WordPress hosting' },
+        { label: 'LSX Design', page: 'lsx-design', description: 'Design system & theme' }
+      ]
     },
     { 
       label: 'Portfolio', 
       page: 'portfolio-archive',
-      isActive: currentPage === 'portfolio-archive' || currentPage === 'portfolio-single',
-      hasMegaMenu: true,
-      megaMenu: {
-        title: 'Featured Work',
-        description: 'Real-world WordPress & WooCommerce projects',
-        featured: [
-          {
-            title: 'EcoMarket Platform',
-            description: 'Sustainable e-commerce marketplace',
-            image: 'https://images.unsplash.com/photo-1542838132-92c53300491e?w=800',
-            page: 'portfolio-single-eco-market-woocommerce' // Fixed: Use actual project slug
-          },
-          {
-            title: 'HealthFirst Portal',
-            description: 'HIPAA-compliant healthcare system',
-            image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800',
-            page: 'portfolio-single-healthfirst-wellness-portal' // Fixed: Use actual project slug
-          }
-        ],
-        columns: [
-          {
-            title: 'By Industry',
-            items: [
-              { label: 'E-commerce & Retail', page: 'portfolio-archive', description: 'WooCommerce solutions' },
-              { label: 'Healthcare & Medical', page: 'portfolio-archive', description: 'HIPAA-compliant sites' },
-              { label: 'Travel & Tourism', page: 'portfolio-archive', description: 'Booking platforms' },
-              { label: 'Technology & SaaS', page: 'portfolio-archive', description: 'Startups & scale-ups' },
-            ]
-          },
-          {
-            title: 'By Type',
-            items: [
-              { label: 'New Build', page: 'portfolio-archive', description: 'Ground-up development' },
-              { label: 'Redesign', page: 'portfolio-archive', description: 'Site refreshes' },
-              { label: 'Migration', page: 'portfolio-archive', description: 'Platform moves' },
-              { label: 'Performance', page: 'portfolio-archive', description: 'Speed optimization' },
-            ]
-          },
-          {
-            title: 'Explore',
-            items: [
-              { label: 'All Projects', page: 'portfolio-archive', description: 'View full portfolio' },
-              { label: 'Case Studies', page: 'portfolio-archive', description: 'Detailed results' },
-              { label: 'Testimonials', page: 'about', description: 'Client feedback' },
-            ]
-          }
-        ]
-      }
-    },
-    { 
-      label: 'Blog', 
-      page: 'blog',
-      isActive: currentPage === 'blog' || currentPage === 'single' || currentPage.startsWith('post-'),
-      hasMegaMenu: true,
-      megaMenu: {
-        title: 'WordPress Insights',
-        description: 'Tutorials, best practices & industry news',
-        columns: [
-          {
-            title: 'Popular Topics',
-            items: [
-              { label: 'WordPress Development', page: 'blog', description: 'Code & tutorials' },
-              { label: 'WooCommerce Tips', page: 'blog', description: 'E-commerce guides' },
-              { label: 'Design Systems', page: 'blog', description: 'Token-based design' },
-              { label: 'Performance & SEO', page: 'blog', description: 'Speed optimization' },
-            ]
-          },
-          {
-            title: 'Resources',
-            items: [
-              { label: 'All Articles', page: 'blog', description: 'Browse all posts' },
-              { label: 'Getting Started', page: 'blog', description: 'Beginner guides' },
-              { label: 'Advanced Techniques', page: 'blog', description: 'Expert tips' },
-              { label: 'News & Updates', page: 'blog', description: 'Latest releases' },
-            ]
-          }
-        ]
-      }
+      isActive: currentPage === 'portfolio-archive' || currentPage.startsWith('portfolio-single')
     },
     { 
       label: 'About', 
       page: 'about',
+      isActive: currentPage === 'about' || currentPage.startsWith('about-'),
       hasSubmenu: true,
-      isActive: currentPage === 'about' || currentPage === 'team' || currentPage.startsWith('about-'),
       submenu: [
-        { label: 'About Us', page: 'about' },
-        { label: 'Our Team', page: 'team' },
-        { label: 'Our Process', page: 'about-process' },
-        { label: 'Culture & Values', page: 'about-culture' },
-        { label: 'Company History', page: 'about-history' }
+        { label: 'About Us', page: 'about', description: 'Our story & mission' },
+        { label: 'Our Team', page: 'team', description: 'Meet the experts' },
+        { label: 'Our Process', page: 'about-process', description: 'How we work' },
+        { label: 'Culture', page: 'about-culture', description: 'Our values & culture' },
+        { label: 'History', page: 'about-history', description: 'Our journey' }
       ]
     },
     { 
-      label: 'Hosting', 
-      page: 'hosting',
-      isActive: currentPage === 'hosting',
-      hasMegaMenu: true,
-      megaMenu: {
-        title: 'WordPress Hosting',
-        description: 'Managed WordPress hosting solutions',
-        columns: [
-          {
-            title: 'Hosting Plans',
-            items: [
-              { label: 'Starter Plan', page: 'hosting', description: '1-3 sites, 10GB storage' },
-              { label: 'Business Plan', page: 'hosting', description: '5-10 sites, 50GB storage' },
-              { label: 'Enterprise Plan', page: 'hosting', description: 'Unlimited sites, custom' },
-              { label: 'Compare Plans', page: 'hosting', description: 'See all features' },
-            ]
-          },
-          {
-            title: 'Features',
-            items: [
-              { label: 'Automatic Backups', page: 'hosting', description: 'Daily backups' },
-              { label: 'Security Monitoring', page: 'hosting', description: '24/7 protection' },
-              { label: 'Performance Optimization', page: 'hosting', description: 'CDN & caching' },
-              { label: 'Expert Support', page: 'contact', description: 'WordPress specialists' },
-            ]
-          }
-        ]
-      }
+      label: 'Blog', 
+      page: 'blog',
+      isActive: currentPage === 'blog' || currentPage.startsWith('post-')
     },
     { 
       label: 'Contact', 
       page: 'contact',
-      isActive: currentPage === 'contact',
-      hasMegaMenu: true,
-      megaMenu: {
-        title: 'Get In Touch',
-        description: 'We\'d love to hear from you',
-        featured: [
-          {
-            title: 'Start Your Project',
-            description: 'Free consultation & quote',
-            image: 'https://images.unsplash.com/photo-1653212883731-4d5bc66e0181?w=800',
-            page: 'contact'
-          }
-        ],
-        columns: [
-          {
-            title: 'Contact Options',
-            items: [
-              { label: 'Request a Quote', page: 'contact', description: 'Free project estimate' },
-              { label: 'Schedule Consultation', page: 'contact', description: '30-min discovery call' },
-              { label: 'General Inquiries', page: 'contact', description: 'Questions & support' },
-              { label: 'Partner With Us', page: 'contact', description: 'Agency partnerships' },
-            ]
-          },
-          {
-            title: 'Support',
-            items: [
-              { label: 'FAQs', page: 'faq', description: 'Common questions' }, // Fixed: Point to FAQ page
-              { label: 'Documentation', page: 'blog', description: 'Guides & resources' },
-              { label: 'Client Portal', page: 'contact', description: 'Existing clients' },
-              { label: 'Emergency Support', page: 'contact', description: '24/7 critical issues' },
-            ]
-          }
-        ]
-      }
-    },
+      isActive: currentPage === 'contact'
+    }
   ];
 
   return (
@@ -321,17 +164,17 @@ export function SiteHeader({ variant = 'default' }: SiteHeaderProps) {
       <Container>
         <div className="flex items-center justify-between py-4">
           {/* Site Logo */}
-          <button 
-            onClick={() => navigateTo('front-page')}
-            aria-label="LSX Design Home"
-            style={{ 
+          <button
+            onClick={() => navigateTo('/')}
+            aria-label="LSX Design - Home"
+            style={{
               background: 'none',
               border: 'none',
               padding: 0,
               cursor: 'pointer',
             }}
           >
-            <SiteLogo width="220px" alt="LSX Design Logo" />
+            <SiteLogo width="220px" alt="LSX Design Logo" theme={isDark ? 'dark' : 'light'} />
           </button>
 
           {/* Desktop Navigation */}
@@ -344,10 +187,12 @@ export function SiteHeader({ variant = 'default' }: SiteHeaderProps) {
               {navItems.map((item) => (
                 <li key={item.page} style={{ position: 'relative' }}>
                   {/* Mega Menu Items (Services, Portfolio) */}
-                  {item.hasMegaMenu ? (
+                  {item.hasSubmenu ? (
                     <div
                       onMouseEnter={() => {
                         if (item.label === 'Services') setServicesMenuOpen(true);
+                        if (item.label === 'Solutions') setSolutionsMenuOpen(true);
+                        if (item.label === 'About') setAboutMenuOpen(true);
                         if (item.label === 'Portfolio') setPortfolioMenuOpen(true);
                         if (item.label === 'Blog') setBlogMenuOpen(true);
                         if (item.label === 'Hosting') setHostingMenuOpen(true);
@@ -355,6 +200,8 @@ export function SiteHeader({ variant = 'default' }: SiteHeaderProps) {
                       }}
                       onMouseLeave={() => {
                         if (item.label === 'Services') setServicesMenuOpen(false);
+                        if (item.label === 'Solutions') setSolutionsMenuOpen(false);
+                        if (item.label === 'About') setAboutMenuOpen(false);
                         if (item.label === 'Portfolio') setPortfolioMenuOpen(false);
                         if (item.label === 'Blog') setBlogMenuOpen(false);
                         if (item.label === 'Hosting') setHostingMenuOpen(false);
@@ -392,6 +239,8 @@ export function SiteHeader({ variant = 'default' }: SiteHeaderProps) {
                             transition: 'transform 0.2s ease',
                             transform: (
                               (item.label === 'Services' && servicesMenuOpen) ||
+                              (item.label === 'Solutions' && solutionsMenuOpen) ||
+                              (item.label === 'About' && aboutMenuOpen) ||
                               (item.label === 'Portfolio' && portfolioMenuOpen) ||
                               (item.label === 'Blog' && blogMenuOpen) ||
                               (item.label === 'Hosting' && hostingMenuOpen) ||
@@ -403,13 +252,17 @@ export function SiteHeader({ variant = 'default' }: SiteHeaderProps) {
                       
                       {/* Mega Menu with Modern Animations */}
                       {((item.label === 'Services' && servicesMenuOpen) ||
+                        (item.label === 'Solutions' && solutionsMenuOpen) ||
+                        (item.label === 'About' && aboutMenuOpen) ||
                         (item.label === 'Portfolio' && portfolioMenuOpen) ||
                         (item.label === 'Blog' && blogMenuOpen) ||
                         (item.label === 'Hosting' && hostingMenuOpen) ||
-                        (item.label === 'Contact' && contactMenuOpen)) && item.megaMenu && (
+                        (item.label === 'Contact' && contactMenuOpen)) && item.submenu && (
                         <div
                           onMouseEnter={() => {
                             if (item.label === 'Services') setServicesMenuOpen(true);
+                            if (item.label === 'Solutions') setSolutionsMenuOpen(true);
+                            if (item.label === 'About') setAboutMenuOpen(true);
                             if (item.label === 'Portfolio') setPortfolioMenuOpen(true);
                             if (item.label === 'Blog') setBlogMenuOpen(true);
                             if (item.label === 'Hosting') setHostingMenuOpen(true);
@@ -417,6 +270,8 @@ export function SiteHeader({ variant = 'default' }: SiteHeaderProps) {
                           }}
                           onMouseLeave={() => {
                             if (item.label === 'Services') setServicesMenuOpen(false);
+                            if (item.label === 'Solutions') setSolutionsMenuOpen(false);
+                            if (item.label === 'About') setAboutMenuOpen(false);
                             if (item.label === 'Portfolio') setPortfolioMenuOpen(false);
                             if (item.label === 'Blog') setBlogMenuOpen(false);
                             if (item.label === 'Hosting') setHostingMenuOpen(false);
@@ -477,7 +332,7 @@ export function SiteHeader({ variant = 'default' }: SiteHeaderProps) {
                               color: 'var(--foreground)',
                               marginBottom: '4px'
                             }}>
-                              {item.megaMenu.title}
+                              {item.label}
                             </h3>
                             <p style={{
                               fontFamily: 'Lexend, sans-serif',
@@ -485,42 +340,40 @@ export function SiteHeader({ variant = 'default' }: SiteHeaderProps) {
                               color: 'var(--muted-foreground)',
                               margin: 0
                             }}>
-                              {item.megaMenu.description}
+                              {item.label === 'Services' ? 'WordPress & WooCommerce solutions' : ''}
                             </p>
                           </div>
 
                           {/* Featured Items with Images */}
-                          {item.megaMenu.featured && item.megaMenu.featured.length > 0 && (
+                          {item.label === 'Services' && (
                             <div
                               style={{
                                 display: 'grid',
-                                gridTemplateColumns: `repeat(${item.megaMenu.featured.length}, 1fr)`,
-                                gap: '16px',
-                                marginBottom: '24px'
+                                gridTemplateColumns: 'repeat(3, 1fr)', // 3 columns max for usability
+                                gap: '12px',
+                                marginBottom: '20px'
                               }}
                             >
-                              {item.megaMenu.featured.map((featuredItem, featIndex) => (
+                              {item.submenu.map((featuredItem, featIndex) => (
                                 <button
                                   key={featIndex}
                                   onClick={() => {
                                     navigateTo(featuredItem.page);
                                     setServicesMenuOpen(false);
-                                    setPortfolioMenuOpen(false);
-                                    setContactMenuOpen(false);
                                   }}
                                   style={{
                                     position: 'relative',
                                     overflow: 'hidden',
                                     borderRadius: 'var(--radius-lg)',
                                     border: '1px solid var(--border-soft)',
-                                    background: 'none',
-                                    padding: 0,
+                                    background: 'var(--card)',
+                                    padding: '16px',
                                     cursor: 'pointer',
-                                    transition: 'all 0.3s ease',
+                                    transition: 'all 0.2s ease',
                                     textAlign: 'left'
                                   }}
                                   onMouseEnter={(e) => {
-                                    e.currentTarget.style.transform = 'translateY(-4px)';
+                                    e.currentTarget.style.transform = 'translateY(-2px)';
                                     e.currentTarget.style.boxShadow = 'var(--shadow-lg)';
                                     e.currentTarget.style.borderColor = 'var(--primary)';
                                   }}
@@ -530,226 +383,136 @@ export function SiteHeader({ variant = 'default' }: SiteHeaderProps) {
                                     e.currentTarget.style.borderColor = 'var(--border-soft)';
                                   }}
                                 >
-                                  {/* Featured Image */}
                                   <div style={{
-                                    width: '100%',
-                                    height: '140px',
-                                    overflow: 'hidden',
-                                    backgroundColor: 'var(--muted)'
+                                    fontFamily: 'Lexend, sans-serif',
+                                    fontSize: 'var(--text-base)',
+                                    fontWeight: 'var(--font-weight-semibold)',
+                                    color: 'var(--foreground)',
+                                    marginBottom: '4px'
                                   }}>
-                                    <img
-                                      src={featuredItem.image}
-                                      alt={featuredItem.title}
-                                      style={{
-                                        width: '100%',
-                                        height: '100%',
-                                        objectFit: 'cover',
-                                        transition: 'transform 0.3s ease'
-                                      }}
-                                      onMouseEnter={(e) => {
-                                        e.currentTarget.style.transform = 'scale(1.05)';
-                                      }}
-                                      onMouseLeave={(e) => {
-                                        e.currentTarget.style.transform = 'scale(1)';
-                                      }}
-                                    />
+                                    {featuredItem.label}
                                   </div>
-                                  
-                                  {/* Featured Content */}
                                   <div style={{
-                                    padding: '16px'
+                                    fontFamily: 'Lexend, sans-serif',
+                                    fontSize: 'var(--text-small)',
+                                    color: 'var(--muted-foreground)',
+                                    fontWeight: 'var(--font-weight-regular)',
+                                    lineHeight: '1.4'
                                   }}>
-                                    <div style={{
-                                      fontFamily: 'Lexend, sans-serif',
-                                      fontSize: 'var(--text-base)',
-                                      fontWeight: 'var(--font-weight-semibold)',
-                                      color: 'var(--foreground)',
-                                      marginBottom: '6px'
-                                    }}>
-                                      {featuredItem.title}
-                                    </div>
-                                    <div style={{
-                                      fontFamily: 'Lexend, sans-serif',
-                                      fontSize: 'var(--text-small)',
-                                      color: 'var(--muted-foreground)',
-                                      fontWeight: 'var(--font-weight-regular)'
-                                    }}>
-                                      {featuredItem.description}
-                                    </div>
+                                    {featuredItem.description}
                                   </div>
                                 </button>
                               ))}
                             </div>
                           )}
 
-                          {/* Mega Menu Columns */}
-                          <div style={{
-                            display: 'grid',
-                            gridTemplateColumns: `repeat(${item.megaMenu.columns.length}, 1fr)`,
-                            gap: '32px'
-                          }}>
-                            {item.megaMenu.columns.map((column, colIndex) => (
-                              <div key={colIndex}>
-                                <h4 style={{
-                                  fontFamily: 'Lexend, sans-serif',
-                                  fontSize: 'var(--text-base)',
-                                  fontWeight: 'var(--font-weight-medium)', // Reduced from semibold to medium
-                                  color: 'var(--foreground)',
-                                  marginBottom: '12px'
-                                }}>
-                                  {column.title}
-                                </h4>
-                                <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-                                  {column.items.map((menuItem, itemIndex) => (
-                                    <li key={itemIndex} style={{ marginBottom: '8px' }}>
-                                      <button
-                                        onClick={() => {
-                                          navigateTo(menuItem.page);
-                                          setServicesMenuOpen(false);
-                                          setPortfolioMenuOpen(false);
-                                          setBlogMenuOpen(false);
-                                          setHostingMenuOpen(false);
-                                          setContactMenuOpen(false);
-                                        }}
-                                        style={{
-                                          width: '100%',
-                                          textAlign: 'left',
-                                          padding: '10px 12px',
-                                          fontFamily: 'Lexend, sans-serif',
-                                          fontSize: 'var(--text-base)',
-                                          fontWeight: 'var(--font-weight-regular)',
-                                          color: 'var(--foreground)',
-                                          background: 'none',
-                                          border: 'none',
-                                          borderRadius: 'var(--radius)',
-                                          cursor: 'pointer',
-                                          transition: 'all 0.2s ease',
-                                          display: 'block'
-                                        }}
-                                        onMouseEnter={(e) => {
-                                          e.currentTarget.style.backgroundColor = 'var(--muted)';
-                                          e.currentTarget.style.color = 'var(--primary)';
-                                        }}
-                                        onMouseLeave={(e) => {
-                                          e.currentTarget.style.backgroundColor = 'transparent';
-                                          e.currentTarget.style.color = 'var(--foreground)';
-                                        }}
-                                      >
-                                        <div style={{
-                                          fontWeight: 'var(--font-weight-medium)',
-                                          marginBottom: '2px'
-                                        }}>
-                                          {menuItem.label}
-                                        </div>
-                                        {menuItem.description && (
-                                          <div style={{
-                                            fontSize: 'var(--text-small)',
-                                            color: 'var(--muted-foreground)',
-                                            fontWeight: 'var(--font-weight-regular)'
-                                          }}>
-                                            {menuItem.description}
-                                          </div>
-                                        )}
-                                      </button>
-                                    </li>
-                                  ))}
-                                </ul>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  ) : item.hasSubmenu ? (
-                    // Regular Submenu (About)
-                    <div
-                      onMouseEnter={() => setAboutMenuOpen(true)}
-                      onMouseLeave={() => setAboutMenuOpen(false)}
-                    >
-                      <button
-                        onClick={() => navigateTo(item.page)}
-                        className="inline-flex items-center gap-1 px-2"
-                        style={{
-                          fontFamily: 'Lexend, sans-serif',
-                          fontSize: 'var(--text-base)',
-                          fontWeight: item.isActive ? 'var(--font-weight-semibold)' : 'var(--font-weight-regular)',
-                          color: item.isActive ? 'var(--primary)' : 'var(--foreground)',
-                          background: 'none',
-                          border: 'none',
-                          cursor: 'pointer',
-                          transition: 'color 0.2s ease'
-                        }}
-                        onMouseEnter={(e) => {
-                          if (!item.isActive) {
-                            e.currentTarget.style.color = 'var(--primary)';
-                          }
-                        }}
-                        onMouseLeave={(e) => {
-                          if (!item.isActive) {
-                            e.currentTarget.style.color = 'var(--foreground)';
-                          }
-                        }}
-                      >
-                        {item.label}
-                        <ChevronDown 
-                          size={16} 
-                          style={{
-                            transition: 'transform 0.2s ease',
-                            transform: aboutMenuOpen ? 'rotate(180deg)' : 'rotate(0deg)'
-                          }}
-                        />
-                      </button>
-                      
-                      {/* Submenu */}
-                      {aboutMenuOpen && item.submenu && (
-                        <div
-                          style={{
-                            position: 'absolute',
-                            top: '100%',
-                            left: 0,
-                            marginTop: '8px',
-                            backgroundColor: 'var(--card)',
-                            border: '1px solid var(--border-soft)',
-                            borderRadius: 'var(--radius-lg)',
-                            boxShadow: 'var(--shadow-lg)',
-                            minWidth: '180px',
-                            padding: '8px',
-                            zIndex: 100
-                          }}
-                        >
-                          {item.submenu.map((subItem) => (
-                            <button
-                              key={subItem.page}
-                              onClick={() => {
-                                navigateTo(subItem.page);
-                                setAboutMenuOpen(false);
-                              }}
-                              style={{
-                                width: '100%',
-                                textAlign: 'left',
-                                padding: '12px 16px',
-                                fontFamily: 'Lexend, sans-serif',
-                                fontSize: 'var(--text-base)',
-                                fontWeight: 'var(--font-weight-regular)',
-                                color: 'var(--foreground)',
-                                background: 'none',
-                                border: 'none',
-                                borderRadius: 'var(--radius)',
-                                cursor: 'pointer',
-                                transition: 'all 0.2s ease'
-                              }}
-                              onMouseEnter={(e) => {
-                                e.currentTarget.style.backgroundColor = 'var(--muted)';
-                                e.currentTarget.style.color = 'var(--primary)';
-                              }}
-                              onMouseLeave={(e) => {
-                                e.currentTarget.style.backgroundColor = 'transparent';
-                                e.currentTarget.style.color = 'var(--foreground)';
-                              }}
-                            >
-                              {subItem.label}
-                            </button>
-                          ))}
+                          {/* About submenu - simpler list */}
+                          {item.label === 'About' && (
+                            <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                              {item.submenu.map((subItem, subIndex) => (
+                                <li key={subIndex} style={{ marginBottom: '4px' }}>
+                                  <button
+                                    onClick={() => {
+                                      navigateTo(subItem.page);
+                                      setAboutMenuOpen(false);
+                                    }}
+                                    style={{
+                                      width: '100%',
+                                      textAlign: 'left',
+                                      padding: '12px 16px',
+                                      fontFamily: 'Lexend, sans-serif',
+                                      fontSize: 'var(--text-base)',
+                                      fontWeight: 'var(--font-weight-regular)',
+                                      color: 'var(--foreground)',
+                                      background: 'none',
+                                      border: 'none',
+                                      borderRadius: 'var(--radius)',
+                                      cursor: 'pointer',
+                                      transition: 'all 0.2s ease',
+                                      display: 'flex',
+                                      flexDirection: 'column',
+                                      gap: '4px'
+                                    }}
+                                    onMouseEnter={(e) => {
+                                      e.currentTarget.style.backgroundColor = 'var(--muted)';
+                                      e.currentTarget.style.color = 'var(--primary)';
+                                    }}
+                                    onMouseLeave={(e) => {
+                                      e.currentTarget.style.backgroundColor = 'transparent';
+                                      e.currentTarget.style.color = 'var(--foreground)';
+                                    }}
+                                  >
+                                    <div style={{
+                                      fontWeight: 'var(--font-weight-medium)'
+                                    }}>
+                                      {subItem.label}
+                                    </div>
+                                    <div style={{
+                                      fontSize: 'var(--text-small)',
+                                      color: 'var(--muted-foreground)',
+                                      fontWeight: 'var(--font-weight-regular)'
+                                    }}>
+                                      {subItem.description}
+                                    </div>
+                                  </button>
+                                </li>
+                              ))}
+                            </ul>
+                          )}
+
+                          {/* Solutions submenu - simple list */}
+                          {item.label === 'Solutions' && (
+                            <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                              {item.submenu.map((subItem, subIndex) => (
+                                <li key={subIndex} style={{ marginBottom: '4px' }}>
+                                  <button
+                                    onClick={() => {
+                                      navigateTo(subItem.page);
+                                      setSolutionsMenuOpen(false);
+                                    }}
+                                    style={{
+                                      width: '100%',
+                                      textAlign: 'left',
+                                      padding: '12px 16px',
+                                      fontFamily: 'Lexend, sans-serif',
+                                      fontSize: 'var(--text-base)',
+                                      fontWeight: 'var(--font-weight-regular)',
+                                      color: 'var(--foreground)',
+                                      background: 'none',
+                                      border: 'none',
+                                      borderRadius: 'var(--radius)',
+                                      cursor: 'pointer',
+                                      transition: 'all 0.2s ease',
+                                      display: 'flex',
+                                      flexDirection: 'column',
+                                      gap: '4px'
+                                    }}
+                                    onMouseEnter={(e) => {
+                                      e.currentTarget.style.backgroundColor = 'var(--muted)';
+                                      e.currentTarget.style.color = 'var(--primary)';
+                                    }}
+                                    onMouseLeave={(e) => {
+                                      e.currentTarget.style.backgroundColor = 'transparent';
+                                      e.currentTarget.style.color = 'var(--foreground)';
+                                    }}
+                                  >
+                                    <div style={{
+                                      fontWeight: 'var(--font-weight-medium)'
+                                    }}>
+                                      {subItem.label}
+                                    </div>
+                                    <div style={{
+                                      fontSize: 'var(--text-small)',
+                                      color: 'var(--muted-foreground)',
+                                      fontWeight: 'var(--font-weight-regular)'
+                                    }}>
+                                      {subItem.description}
+                                    </div>
+                                  </button>
+                                </li>
+                              ))}
+                            </ul>
+                          )}
                         </div>
                       )}
                     </div>

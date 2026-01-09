@@ -7,11 +7,13 @@
  * 3. Theme Base — Typography, spacing, borders (theme-agnostic)
  * 4. Theme Light — Light mode colors (default)
  * 5. Theme Dark — Dark mode colors (overrides for .dark class)
- * 6. Section Styles — WordPress-style section variations (CTA, Hero, etc.)
- * 7. Animations — Motion and transitions
- * 8. Print — Print-optimized styles
+ * 6. WordPress Blocks — Complete WordPress core block styles
+ * 7. WordPress Blocks Extended — Additional blog/navigation patterns (NEW)
+ * 8. Section Styles — WordPress-style section variations (CTA, Hero, etc.)
+ * 9. Animations — Motion and transitions
+ * 10. Print — Print-optimized styles
  * 
- * Last Updated: December 28, 2024
+ * Last Updated: January 9, 2025
  */
 
 @import './fonts.css';
@@ -19,6 +21,8 @@
 @import './theme-base.css';
 @import './theme-light.css';
 @import './theme-dark.css';
+@import './wordpress-blocks.css';
+@import './wordpress-blocks-extended.css';
 @import './section-styles.css';
 @import './animations.css';
 @import './print.css';

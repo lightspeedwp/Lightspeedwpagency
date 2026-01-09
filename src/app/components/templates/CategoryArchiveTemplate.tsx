@@ -170,31 +170,36 @@ export function CategoryArchiveTemplate({ category: categorySlug = 'wordpress-de
                         }}
                       >
                         {/* Post Image */}
-                        <button 
-                          onClick={() => navigateTo(`post-${post.slug}`)}
+                        <a 
+                          href={`#post-${post.slug}`}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            navigateTo(`post-${post.slug}`);
+                          }}
                           aria-label={`Read: ${post.title}`}
                           style={{ 
                             textDecoration: 'none',
-                            flexShrink: 0,
-                            background: 'none',
-                            border: 'none',
-                            padding: 0,
+                            display: 'block',
                             cursor: 'pointer',
                           }}
                         >
                           <div 
-                            className="w-full md:w-48 aspect-[16/9] md:aspect-square rounded-[var(--radius)] bg-cover bg-center"
+                            className="aspect-[16/9] bg-cover bg-center"
                             style={{
                               backgroundImage: `url(${post.featuredImage})`,
                             }}
                           />
-                        </button>
+                        </a>
 
                         {/* Post Content */}
                         <div className="flex flex-col flex-1">
                           <h2 className="mb-2">
-                            <button 
-                              onClick={() => navigateTo(`post-${post.slug}`)}
+                            <a 
+                              href={`#post-${post.slug}`}
+                              onClick={(e) => {
+                                e.preventDefault();
+                                navigateTo(`post-${post.slug}`);
+                              }}
                               aria-label={`Read: ${post.title}`}
                               style={{
                                 fontFamily: 'Lexend, sans-serif',
@@ -203,12 +208,8 @@ export function CategoryArchiveTemplate({ category: categorySlug = 'wordpress-de
                                 color: 'var(--foreground)',
                                 textDecoration: 'none',
                                 lineHeight: '1.3',
-                                background: 'none',
-                                border: 'none',
-                                padding: 0,
+                                display: 'block',
                                 cursor: 'pointer',
-                                textAlign: 'left',
-                                width: '100%',
                                 transition: 'color 0.2s ease',
                               }}
                               onMouseEnter={(e) => {
@@ -219,7 +220,7 @@ export function CategoryArchiveTemplate({ category: categorySlug = 'wordpress-de
                               }}
                             >
                               {post.title}
-                            </button>
+                            </a>
                           </h2>
 
                           <p 
@@ -242,16 +243,17 @@ export function CategoryArchiveTemplate({ category: categorySlug = 'wordpress-de
                             {author && (
                               <div className="flex items-center gap-2">
                                 <User size={16} style={{ color: 'var(--muted-foreground)' }} />
-                                <button
-                                  onClick={() => navigateTo(`author-${post.author}`)}
+                                <a
+                                  href={`#author-${post.author}`}
+                                  onClick={(e) => {
+                                    e.preventDefault();
+                                    navigateTo(`author-${post.author}`);
+                                  }}
                                   style={{
                                     fontFamily: 'Manrope, sans-serif',
                                     fontSize: 'var(--text-small)',
                                     color: 'var(--muted-foreground)',
                                     textDecoration: 'none',
-                                    background: 'none',
-                                    border: 'none',
-                                    padding: 0,
                                     cursor: 'pointer',
                                     transition: 'color 0.2s ease',
                                   }}
@@ -261,9 +263,10 @@ export function CategoryArchiveTemplate({ category: categorySlug = 'wordpress-de
                                   onMouseLeave={(e) => {
                                     e.currentTarget.style.color = 'var(--muted-foreground)';
                                   }}
+                                  aria-label={`View all posts by ${author.name}`}
                                 >
                                   {author.name}
-                                </button>
+                                </a>
                               </div>
                             )}
                             <div className="flex items-center gap-2">
