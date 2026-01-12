@@ -1,8 +1,11 @@
 /**
  * Site Pages Mock Data
  * 
- * WordPress site pages structure based on LightspeedWP.agency.
- * Complete page hierarchy with navigation menus.
+ * WordPress site pages structure based on LightSpeed WP Agency (lightspeedwp.agency).
+ * Complete page hierarchy with navigation menus and real content.
+ * 
+ * **REAL CONTENT SOURCE:** https://lightspeedwp.agency
+ * **Last Updated:** 2025-01-09
  * 
  * **WordPress Mapping:**
  * - Post Type: 'page'
@@ -24,17 +27,78 @@ export interface SitePage {
 
 /**
  * All Site Pages
- * Based on page-sitemap.xml from LightspeedWP.agency
+ * Based on sitemap from LightSpeed WP Agency
+ * Real content extracted from https://lightspeedwp.agency
  */
 export const sitePages: SitePage[] = [
   // Home
   {
     id: 'home',
     slug: 'home',
-    title: 'Home',
+    title: 'Expert WordPress & WooCommerce solutions',
+    excerpt: 'We build extraordinary websites for all types of businesses.',
     template: 'front-page',
-    showInNav: true,
+    showInNav: false,
     order: 1
+  },
+  
+  // Solutions
+  {
+    id: 'solutions',
+    slug: 'solutions',
+    title: 'Solutions',
+    excerpt: 'Innovative solutions for success - Industry-leading, custom solutions applied to meet your unique needs for your WordPress websites & WooCommerce shops.',
+    template: 'page-solutions',
+    showInNav: true,
+    order: 2
+  },
+  {
+    id: 'wordpress',
+    slug: 'wordpress',
+    title: 'WordPress',
+    excerpt: 'World-class WordPress development from inception all the way to deployment, providing the customised functionality and design you need to meet your needs.',
+    parent: 'solutions',
+    showInNav: false
+  },
+  {
+    id: 'woocommerce',
+    slug: 'woocommerce',
+    title: 'WooCommerce',
+    excerpt: 'Tailor-made world class eCommerce functionality that delivers, we provide tailored solutions that increase profitability & eCommerce needs.',
+    parent: 'solutions',
+    showInNav: false
+  },
+  {
+    id: 'tour-operators',
+    slug: 'tour-operators',
+    title: 'Tour Operators',
+    excerpt: 'Our LSX Tour Operator plugin is designed specifically for your industry, our Tour Operator plugin provides you with complete control over every component of your tours and itineraries.',
+    parent: 'solutions',
+    showInNav: false
+  },
+  {
+    id: 'lsx',
+    slug: 'lsx',
+    title: 'LSX',
+    excerpt: 'Our free, open-source products empower designers by providing them with the comprehensive tools and flexibility needed to create their own unique custom site editor designs.',
+    parent: 'solutions',
+    showInNav: false
+  },
+  {
+    id: 'hosting',
+    slug: 'hosting',
+    title: 'Hosting',
+    excerpt: 'Our specialised managed hosting enables your site to sustain peak traffic, securely.',
+    parent: 'solutions',
+    showInNav: false
+  },
+  {
+    id: 'mailchimp',
+    slug: 'mailchimp',
+    title: 'Mailchimp',
+    excerpt: 'Email marketing helping to drive sales.',
+    parent: 'solutions',
+    showInNav: false
   },
   
   // Services
@@ -42,116 +106,105 @@ export const sitePages: SitePage[] = [
     id: 'services',
     slug: 'services',
     title: 'Services',
-    excerpt: 'WordPress & WooCommerce solutions',
+    excerpt: 'WordPress & WooCommerce Experts - With over 10 years\' experience with WordPress & WooCommerce Development, our solutions help you and your business succeed.',
     template: 'page',
-    showInNav: true,
-    order: 2
-  },
-  {
-    id: 'wordpress-development',
-    slug: 'wordpress-development',
-    title: 'WordPress Development',
-    excerpt: 'Custom WordPress themes and plugin development',
-    parent: 'services',
-    showInNav: false
-  },
-  {
-    id: 'woocommerce-development',
-    slug: 'woocommerce-development',
-    title: 'WooCommerce Development',
-    excerpt: 'E-commerce solutions and custom integrations',
-    parent: 'services',
-    showInNav: false
-  },
-  {
-    id: 'block-theme-development',
-    slug: 'block-theme-development',
-    title: 'Block Theme Development',
-    excerpt: 'Full Site Editing (FSE) block themes',
-    parent: 'services',
-    showInNav: false
-  },
-  {
-    id: 'design-systems',
-    slug: 'design-systems',
-    title: 'Design Systems',
-    excerpt: 'Token-driven design systems for WordPress',
-    parent: 'services',
-    showInNav: false
-  },
-  {
-    id: 'accessibility-services',
-    slug: 'accessibility-services',
-    title: 'Accessibility Services',
-    excerpt: 'WCAG 2.1 AA compliance and audits',
-    parent: 'services',
-    showInNav: false
-  },
-  {
-    id: 'performance-optimization',
-    slug: 'performance-optimization',
-    title: 'Performance Optimization',
-    excerpt: 'Core Web Vitals and speed optimization',
-    parent: 'services',
-    showInNav: false
-  },
-  {
-    id: 'site-migration',
-    slug: 'site-migration',
-    title: 'Site Migration',
-    excerpt: 'Platform migrations and upgrades',
-    parent: 'services',
-    showInNav: false
-  },
-  {
-    id: 'maintenance-support',
-    slug: 'maintenance-support',
-    title: 'Maintenance & Support',
-    excerpt: 'Ongoing WordPress care and updates',
-    parent: 'services',
-    showInNav: false
-  },
-  
-  // Solutions (Service Variants)
-  {
-    id: 'solutions',
-    slug: 'solutions',
-    title: 'Solutions',
-    excerpt: 'Expert WordPress & WooCommerce solutions',
-    template: 'page-solutions',
     showInNav: true,
     order: 3
   },
   {
-    id: 'solutions-wordpress',
-    slug: 'solutions-wordpress',
-    title: 'WordPress Solutions',
-    excerpt: 'Enterprise WordPress implementations',
-    parent: 'solutions',
+    id: 'discovery',
+    slug: 'discovery',
+    title: 'Discovery',
+    excerpt: 'Expert design guidance on how to understand your business objectives.',
+    parent: 'services',
     showInNav: false
   },
   {
-    id: 'solutions-woocommerce',
-    slug: 'solutions-woocommerce',
-    title: 'WooCommerce Solutions',
-    excerpt: 'E-commerce platform development',
-    parent: 'solutions',
+    id: 'design',
+    slug: 'design',
+    title: 'Design',
+    excerpt: 'Expert design guidance on how to understand your business objectives.',
+    parent: 'services',
     showInNav: false
   },
   {
-    id: 'solutions-multisite',
-    slug: 'solutions-multisite',
-    title: 'WordPress Multisite Solutions',
-    excerpt: 'Multi-site network management',
-    parent: 'solutions',
+    id: 'development',
+    slug: 'development',
+    title: 'Development',
+    excerpt: 'WooExperts who can identify the best fit for your requirements.',
+    parent: 'services',
     showInNav: false
   },
   {
-    id: 'solutions-headless',
-    slug: 'solutions-headless',
-    title: 'Headless WordPress Solutions',
-    excerpt: 'Decoupled WordPress with modern frameworks',
-    parent: 'solutions',
+    id: 'support',
+    slug: 'support',
+    title: 'Support',
+    excerpt: 'Our ongoing support and maintenance services all WordPress core updates.',
+    parent: 'services',
+    showInNav: false
+  },
+  {
+    id: 'content',
+    slug: 'content',
+    title: 'Content',
+    excerpt: 'Content strategy, collection, and audit services.',
+    parent: 'services',
+    showInNav: false
+  },
+  {
+    id: 'content-strategy',
+    slug: 'content-strategy',
+    title: 'Content Strategy',
+    excerpt: 'Strategic content planning and implementation.',
+    parent: 'content',
+    showInNav: false
+  },
+  {
+    id: 'content-collection',
+    slug: 'content-collection',
+    title: 'Content Collection',
+    excerpt: 'Professional content gathering and organization.',
+    parent: 'content',
+    showInNav: false
+  },
+  {
+    id: 'content-audit',
+    slug: 'content-audit',
+    title: 'Content Audit',
+    excerpt: 'Comprehensive content analysis and recommendations.',
+    parent: 'content',
+    showInNav: false
+  },
+  {
+    id: 'migrations',
+    slug: 'migrations',
+    title: 'Migrations',
+    excerpt: 'Platform migration services.',
+    parent: 'services',
+    showInNav: false
+  },
+  {
+    id: 'email-marketing',
+    slug: 'email-marketing',
+    title: 'Email Marketing',
+    excerpt: 'Email marketing services and integrations.',
+    parent: 'services',
+    showInNav: false
+  },
+  {
+    id: 'training',
+    slug: 'training',
+    title: 'Training',
+    excerpt: 'WordPress and WooCommerce training services.',
+    parent: 'services',
+    showInNav: false
+  },
+  {
+    id: 'security',
+    slug: 'security',
+    title: 'Security',
+    excerpt: 'WordPress security services and hardening.',
+    parent: 'services',
     showInNav: false
   },
   
@@ -171,96 +224,10 @@ export const sitePages: SitePage[] = [
     id: 'blog',
     slug: 'blog',
     title: 'Blog',
-    excerpt: 'WordPress insights and tutorials',
+    excerpt: 'Latest from the blog - WordPress insights and tutorials',
     template: 'index',
     showInNav: true,
     order: 5
-  },
-  
-  // About
-  {
-    id: 'about',
-    slug: 'about',
-    title: 'About',
-    excerpt: 'About LSX Design',
-    template: 'page',
-    showInNav: true,
-    order: 6
-  },
-  {
-    id: 'team',
-    slug: 'team',
-    title: 'Our Team',
-    excerpt: 'Meet the WordPress experts',
-    parent: 'about',
-    showInNav: false
-  },
-  {
-    id: 'about-process',
-    slug: 'about-process',
-    title: 'Our Process',
-    excerpt: 'How we work',
-    parent: 'about',
-    showInNav: false
-  },
-  {
-    id: 'about-culture',
-    slug: 'about-culture',
-    title: 'Culture & Values',
-    excerpt: 'What drives us',
-    parent: 'about',
-    showInNav: false
-  },
-  {
-    id: 'about-history',
-    slug: 'about-history',
-    title: 'Company History',
-    excerpt: 'Our journey',
-    parent: 'about',
-    showInNav: false
-  },
-  {
-    id: 'careers',
-    slug: 'careers',
-    title: 'Careers',
-    excerpt: 'Join our team',
-    parent: 'about',
-    showInNav: false
-  },
-  
-  // Hosting
-  {
-    id: 'hosting',
-    slug: 'hosting',
-    title: 'Hosting',
-    excerpt: 'Managed WordPress hosting',
-    template: 'page',
-    showInNav: true,
-    order: 7
-  },
-  {
-    id: 'hosting-plans',
-    slug: 'hosting-plans',
-    title: 'Hosting Plans',
-    excerpt: 'Choose your plan',
-    parent: 'hosting',
-    showInNav: false
-  },
-  {
-    id: 'hosting-features',
-    slug: 'hosting-features',
-    title: 'Hosting Features',
-    excerpt: 'What\'s included',
-    parent: 'hosting',
-    showInNav: false
-  },
-  {
-    id: 'hosting-support',
-    slug: 'hosting-support',
-    title: 'Hosting Support',
-    excerpt: '24/7 WordPress support',
-    parent: 'hosting',
-    showInNav: false
   },
   
   // Contact
@@ -268,10 +235,110 @@ export const sitePages: SitePage[] = [
     id: 'contact',
     slug: 'contact',
     title: 'Contact',
-    excerpt: 'Get in touch',
+    excerpt: 'Book a free consultation - Over 15 years in launching successful WordPress websites.',
     template: 'page',
     showInNav: true,
-    order: 8
+    order: 6
+  },
+  
+  // About
+  {
+    id: 'about',
+    slug: 'about',
+    title: 'About',
+    excerpt: 'We have our eyes on innovation, continuously improving the solutions and services we provide to our clients.',
+    template: 'page',
+    showInNav: false
+  },
+  {
+    id: 'team',
+    slug: 'team',
+    title: 'Team',
+    excerpt: 'Meet the WordPress experts',
+    parent: 'about',
+    showInNav: false
+  },
+  {
+    id: 'about-process',
+    slug: 'about-process',
+    title: 'How We Work',
+    excerpt: 'Our process and workflow',
+    parent: 'about',
+    showInNav: false
+  },
+  {
+    id: 'about-culture',
+    slug: 'about-culture',
+    title: 'Our Culture',
+    excerpt: 'What drives us',
+    parent: 'about',
+    showInNav: false
+  },
+  {
+    id: 'about-history',
+    slug: 'about-history',
+    title: 'History',
+    excerpt: 'Our journey',
+    parent: 'about',
+    showInNav: false
+  },
+  
+  // Why Pages
+  {
+    id: 'why',
+    slug: 'why',
+    title: 'Why',
+    excerpt: 'Why choose LightSpeed',
+    template: 'page',
+    showInNav: false
+  },
+  {
+    id: 'why-wp',
+    slug: 'why-wp',
+    title: 'Why WordPress?',
+    excerpt: 'Flexible, SEO-friendly & full site editor.',
+    parent: 'why',
+    showInNav: false
+  },
+  {
+    id: 'why-woo',
+    slug: 'why-woo',
+    title: 'Why Woo?',
+    excerpt: 'Seamless integration and flexibility.',
+    parent: 'why',
+    showInNav: false
+  },
+  {
+    id: 'why-mailchimp',
+    slug: 'why-mailchimp',
+    title: 'Why Mailchimp?',
+    excerpt: 'Email marketing helping to drive sales.',
+    parent: 'why',
+    showInNav: false
+  },
+  {
+    id: 'why-lsx',
+    slug: 'why-lsx',
+    title: 'Why LSX?',
+    excerpt: 'Free, open-source products for designers.',
+    parent: 'why',
+    showInNav: false
+  },
+  {
+    id: 'why-lightspeed',
+    slug: 'why-lightspeed',
+    title: 'Why LightSpeed?',
+    excerpt: 'Expert WordPress & WooCommerce solutions.',
+    parent: 'why',
+    showInNav: false
+  },
+  {
+    id: 'why-tour-operator',
+    slug: 'why-tour-operator',
+    title: 'Why Tour Operator?',
+    excerpt: 'Complete control over tours and itineraries.',
+    parent: 'why',
+    showInNav: false
   },
   
   // Testimonials
@@ -281,47 +348,160 @@ export const sitePages: SitePage[] = [
     title: 'Testimonials',
     excerpt: 'Client success stories',
     template: 'page',
-    showInNav: true,
-    order: 9
+    showInNav: false
   },
   
-  // Resources
+  // Website Packages
   {
-    id: 'resources',
-    slug: 'resources',
-    title: 'Resources',
+    id: 'website-packages',
+    slug: 'website-packages',
+    title: 'Website Packages',
+    excerpt: 'Our website packages and pricing',
+    template: 'page',
+    showInNav: false
+  },
+  
+  // Referrals
+  {
+    id: 'referrals',
+    slug: 'referrals',
+    title: 'Referrals',
+    excerpt: 'Refer clients and earn rewards',
+    template: 'page',
+    showInNav: false
+  },
+  
+  // Free Consultation
+  {
+    id: 'free-consultation',
+    slug: 'free-consultation',
+    title: 'Free Consultation',
+    excerpt: 'Book your 20-30 minute free consultation',
+    template: 'page',
     showInNav: false
   },
   {
-    id: 'documentation',
-    slug: 'documentation',
-    title: 'Documentation',
-    excerpt: 'Guides and tutorials',
-    parent: 'resources',
+    id: 'free-woo-consultation',
+    slug: 'free-woo-consultation',
+    title: 'Free WooCommerce Consultation',
+    excerpt: 'Book your WooCommerce consultation',
+    template: 'page',
+    showInNav: false
+  },
+  
+  // Briefing/Forms
+  {
+    id: 'briefing',
+    slug: 'briefing',
+    title: 'Briefing',
+    excerpt: 'Project briefing forms',
+    template: 'page',
     showInNav: false
   },
   {
-    id: 'faqs',
-    slug: 'faqs',
-    title: 'FAQs',
-    excerpt: 'Frequently asked questions',
-    parent: 'resources',
+    id: 'briefing-about-us-page',
+    slug: 'briefing-about-us-page',
+    title: 'About Us Page Briefing',
+    excerpt: 'Brief us on your About Us page',
+    parent: 'briefing',
     showInNav: false
   },
   {
-    id: 'case-studies',
-    slug: 'case-studies',
-    title: 'Case Studies',
-    excerpt: 'In-depth project reviews',
-    parent: 'resources',
+    id: 'briefing-request-a-quote',
+    slug: 'briefing-request-a-quote',
+    title: 'Request a Quote',
+    excerpt: 'Request a project quote',
+    parent: 'briefing',
     showInNav: false
   },
   {
-    id: 'whitepapers',
-    slug: 'whitepapers',
-    title: 'Whitepapers',
-    excerpt: 'Industry insights',
-    parent: 'resources',
+    id: 'briefing-wordpress',
+    slug: 'briefing-wordpress',
+    title: 'WordPress Briefing',
+    excerpt: 'WordPress project briefing',
+    parent: 'briefing',
+    showInNav: false
+  },
+  {
+    id: 'client-intake-form',
+    slug: 'client-intake-form',
+    title: 'Client Intake Form',
+    excerpt: 'New client intake questionnaire',
+    template: 'page',
+    showInNav: false
+  },
+  {
+    id: 'client-feedback',
+    slug: 'client-feedback',
+    title: 'Client Feedback',
+    excerpt: 'Share your feedback',
+    template: 'page',
+    showInNav: false
+  },
+  
+  // Policies
+  {
+    id: 'policies',
+    slug: 'policies',
+    title: 'Policies',
+    excerpt: 'Our policies and principles',
+    template: 'page',
+    showInNav: false
+  },
+  {
+    id: 'policies-publishing-principles',
+    slug: 'policies-publishing-principles',
+    title: 'Publishing Principles',
+    excerpt: 'Our publishing standards',
+    parent: 'policies',
+    showInNav: false
+  },
+  {
+    id: 'policies-diversity-content',
+    slug: 'policies-diversity-content',
+    title: 'Diversity Content',
+    excerpt: 'Our commitment to diverse content',
+    parent: 'policies',
+    showInNav: false
+  },
+  {
+    id: 'policies-diversity-staffing',
+    slug: 'policies-diversity-staffing',
+    title: 'Diversity Staffing',
+    excerpt: 'Our commitment to diverse staffing',
+    parent: 'policies',
+    showInNav: false
+  },
+  {
+    id: 'policies-ethics',
+    slug: 'policies-ethics',
+    title: 'Ethics',
+    excerpt: 'Our ethical standards',
+    parent: 'policies',
+    showInNav: false
+  },
+  {
+    id: 'policies-feedback',
+    slug: 'policies-feedback',
+    title: 'Feedback',
+    excerpt: 'How we handle feedback',
+    parent: 'policies',
+    showInNav: false
+  },
+  {
+    id: 'policies-corrections',
+    slug: 'policies-corrections',
+    title: 'Corrections',
+    excerpt: 'Our corrections policy',
+    parent: 'policies',
+    showInNav: false
+  },
+  {
+    id: 'policies-ownership-funding',
+    slug: 'policies-ownership-funding',
+    title: 'Ownership & Funding',
+    excerpt: 'Ownership and funding information',
+    parent: 'policies',
     showInNav: false
   },
   
@@ -330,58 +510,129 @@ export const sitePages: SitePage[] = [
     id: 'privacy-policy',
     slug: 'privacy-policy',
     title: 'Privacy Policy',
+    excerpt: 'How we handle your data',
     showInNav: false
   },
   {
-    id: 'terms-of-service',
-    slug: 'terms-of-service',
-    title: 'Terms of Service',
+    id: 'terms-conditions',
+    slug: 'terms-conditions',
+    title: 'Terms & Conditions',
+    excerpt: 'Terms and conditions',
     showInNav: false
   },
   {
-    id: 'cookie-policy',
-    slug: 'cookie-policy',
-    title: 'Cookie Policy',
+    id: 'website-development-project-terms-conditions',
+    slug: 'website-development-project-terms-conditions',
+    title: 'Website Development Project Terms & Conditions',
+    excerpt: 'Project-specific terms',
     showInNav: false
   },
   
-  // Pricing & ROI
+  // Getting Started
   {
-    id: 'pricing',
-    slug: 'pricing',
-    title: 'Pricing',
-    excerpt: 'Transparent pricing for WordPress solutions',
-    template: 'page',
-    showInNav: false
-  },
-  {
-    id: 'roi-calculator',
-    slug: 'roi-calculator',
-    title: 'ROI Calculator',
-    excerpt: 'Calculate your WordPress investment return',
+    id: 'getting-started-with-lightspeed',
+    slug: 'getting-started-with-lightspeed',
+    title: 'Getting Started with LightSpeed',
+    excerpt: 'New client onboarding guide',
     template: 'page',
     showInNav: false
   },
   
-  // Why Choose Us & Guarantees
+  // Thank You Pages
   {
-    id: 'why-choose-us',
-    slug: 'why-choose-us',
-    title: 'Why Choose Us',
-    excerpt: 'What makes LSX Design different',
+    id: 'thank-you-newsletter-subscribe',
+    slug: 'thank-you-newsletter-subscribe',
+    title: 'Thank You - Newsletter',
     template: 'page',
     showInNav: false
   },
   {
-    id: 'guarantees',
-    slug: 'guarantees',
-    title: 'Our Guarantees',
-    excerpt: 'Risk-free WordPress development',
+    id: 'thank-you-for-subscribing',
+    slug: 'thank-you-for-subscribing',
+    title: 'Thank You for Subscribing',
+    template: 'page',
+    showInNav: false
+  },
+  {
+    id: 'thank-you-content-audit-post',
+    slug: 'thank-you-content-audit-post',
+    title: 'Thank You - Content Audit',
+    template: 'page',
+    showInNav: false
+  },
+  {
+    id: 'contact-thank-you',
+    slug: 'contact-thank-you',
+    title: 'Thank You',
+    parent: 'contact',
+    template: 'page',
+    showInNav: false
+  },
+  {
+    id: 'free-consultation-thank-you',
+    slug: 'free-consultation-thank-you',
+    title: 'Thank You',
+    parent: 'free-consultation',
+    template: 'page',
+    showInNav: false
+  },
+  {
+    id: 'referrals-thank-you',
+    slug: 'referrals-thank-you',
+    title: 'Thank You',
+    parent: 'referrals',
+    template: 'page',
+    showInNav: false
+  },
+  {
+    id: 'client-intake-form-thank-you',
+    slug: 'client-intake-form-thank-you',
+    title: 'Thank You',
+    parent: 'client-intake-form',
     template: 'page',
     showInNav: false
   },
   
-  // Style Guide (Design System)
+  // MailPoet Pages
+  {
+    id: 'mailpoet-unsubscribe-success-page',
+    slug: 'mailpoet-unsubscribe-success-page',
+    title: 'Unsubscribed Successfully',
+    template: 'page',
+    showInNav: false
+  },
+  {
+    id: 'mailpoet-manage-your-subscription',
+    slug: 'mailpoet-manage-your-subscription',
+    title: 'Manage Your Subscription',
+    template: 'page',
+    showInNav: false
+  },
+  {
+    id: 'mailpoet-unsubscribe-confirmation',
+    slug: 'mailpoet-unsubscribe-confirmation',
+    title: 'Confirm Unsubscribe',
+    template: 'page',
+    showInNav: false
+  },
+  {
+    id: 'mailpoet-re-engangement-page',
+    slug: 'mailpoet-re-engangement-page',
+    title: 'Re-engagement',
+    template: 'page',
+    showInNav: false
+  },
+  
+  // Competitions/Promotions
+  {
+    id: 'wcct-sticker-competition',
+    slug: 'wcct-sticker-competition',
+    title: 'WCCT Sticker Competition',
+    template: 'page',
+    showInNav: false
+  },
+  
+  // Style Guide (Design System) - Keep for prototype
   {
     id: 'style-guide',
     slug: 'style-guide',
@@ -390,7 +641,7 @@ export const sitePages: SitePage[] = [
     showInNav: false
   },
   
-  // WordPress Blocks Proof of Concept
+  // WordPress Blocks Proof of Concept - Keep for prototype
   {
     id: 'wordpress-blocks-poc',
     slug: 'wordpress-blocks-poc',
@@ -400,7 +651,7 @@ export const sitePages: SitePage[] = [
     showInNav: false
   },
   
-  // Developer Tools
+  // Developer Tools - Keep for prototype
   {
     id: 'dev-tools',
     slug: 'dev-tools',
@@ -522,28 +773,34 @@ export const sitePages: SitePage[] = [
 /**
  * Navigation Menus
  * WordPress registered menu locations
+ * Based on real navigation from lightspeedwp.agency
  */
 
 /**
  * Main Navigation (Header)
+ * Real navigation from https://lightspeedwp.agency
  */
 export const mainNavigation = [
   {
-    label: 'Home',
-    page: 'home' as const
+    label: 'Solutions',
+    page: 'solutions' as const,
+    children: [
+      { label: 'WordPress', page: 'wordpress' as const },
+      { label: 'WooCommerce', page: 'woocommerce' as const },
+      { label: 'Tour Operators', page: 'tour-operators' as const },
+      { label: 'LSX', page: 'lsx' as const },
+      { label: 'Hosting', page: 'hosting' as const },
+      { label: 'Mailchimp', page: 'mailchimp' as const }
+    ]
   },
   {
     label: 'Services',
     page: 'services' as const,
     children: [
-      { label: 'WordPress Development', page: 'wordpress-development' as const },
-      { label: 'WooCommerce Development', page: 'woocommerce-development' as const },
-      { label: 'Block Theme Development', page: 'block-theme-development' as const },
-      { label: 'Design Systems', page: 'design-systems' as const },
-      { label: 'Accessibility Services', page: 'accessibility-services' as const },
-      { label: 'Performance Optimization', page: 'performance-optimization' as const },
-      { label: 'Site Migration', page: 'site-migration' as const },
-      { label: 'Maintenance & Support', page: 'maintenance-support' as const }
+      { label: 'Discovery', page: 'discovery' as const },
+      { label: 'Design', page: 'design' as const },
+      { label: 'Development', page: 'development' as const },
+      { label: 'Support', page: 'support' as const }
     ]
   },
   {
@@ -555,22 +812,6 @@ export const mainNavigation = [
     page: 'blog' as const
   },
   {
-    label: 'About',
-    page: 'about' as const,
-    children: [
-      { label: 'About Us', page: 'about' as const },
-      { label: 'Our Team', page: 'team' as const },
-      { label: 'Our Process', page: 'about-process' as const },
-      { label: 'Culture & Values', page: 'about-culture' as const },
-      { label: 'Company History', page: 'about-history' as const },
-      { label: 'Careers', page: 'careers' as const }
-    ]
-  },
-  {
-    label: 'Hosting',
-    page: 'hosting' as const
-  },
-  {
     label: 'Contact',
     page: 'contact' as const
   }
@@ -578,45 +819,46 @@ export const mainNavigation = [
 
 /**
  * Footer Navigation
+ * Real footer navigation from https://lightspeedwp.agency
  */
 export const footerNavigation = {
-  services: {
-    title: 'Services',
+  about: {
+    title: 'About Us',
     links: [
-      { label: 'WordPress Development', page: 'wordpress-development' as const },
-      { label: 'WooCommerce Solutions', page: 'woocommerce-development' as const },
-      { label: 'Block Themes', page: 'block-theme-development' as const },
-      { label: 'Design Systems', page: 'design-systems' as const },
-      { label: 'Accessibility', page: 'accessibility-services' as const },
-      { label: 'Performance', page: 'performance-optimization' as const }
-    ]
-  },
-  company: {
-    title: 'Company',
-    links: [
-      { label: 'About Us', page: 'about' as const },
-      { label: 'Our Team', page: 'team' as const },
-      { label: 'Careers', page: 'careers' as const },
+      { label: 'About', page: 'about' as const },
+      { label: 'How We Work', page: 'about-process' as const },
+      { label: 'Our Culture', page: 'about-culture' as const },
       { label: 'Portfolio', page: 'portfolio-archive' as const },
-      { label: 'Case Studies', page: 'case-studies' as const },
       { label: 'Blog', page: 'blog' as const }
     ]
   },
-  resources: {
-    title: 'Resources',
+  products: {
+    title: 'Our Products',
     links: [
-      { label: 'Documentation', page: 'documentation' as const },
-      { label: 'FAQs', page: 'faqs' as const },
-      { label: 'Whitepapers', page: 'whitepapers' as const },
-      { label: 'Style Guide', page: 'style-guide' as const }
+      { label: 'LSX Theme', page: 'lsx' as const },
+      { label: 'LSX Tour Operator', page: 'tour-operators' as const },
+      { label: 'Wetu Importer', page: 'lsx' as const },
+      { label: 'LSX Sharing', page: 'lsx' as const },
+      { label: 'LSX Search', page: 'lsx' as const }
     ]
   },
-  legal: {
-    title: 'Legal',
+  services: {
+    title: 'Our Services',
     links: [
-      { label: 'Privacy Policy', page: 'privacy-policy' as const },
-      { label: 'Terms of Service', page: 'terms-of-service' as const },
-      { label: 'Cookie Policy', page: 'cookie-policy' as const }
+      { label: 'Discovery', page: 'discovery' as const },
+      { label: 'Design', page: 'design' as const },
+      { label: 'Development', page: 'development' as const },
+      { label: 'Support', page: 'support' as const },
+      { label: 'Hosting', page: 'hosting' as const }
+    ]
+  },
+  solutions: {
+    title: 'Our Solutions',
+    links: [
+      { label: 'WooCommerce', page: 'woocommerce' as const },
+      { label: 'WordPress', page: 'wordpress' as const },
+      { label: 'Tour Operators', page: 'tour-operators' as const },
+      { label: 'Mailchimp', page: 'mailchimp' as const }
     ]
   }
 };

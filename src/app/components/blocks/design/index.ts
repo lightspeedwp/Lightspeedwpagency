@@ -6,6 +6,8 @@
  * and follows the design system requirements.
  * 
  * Available blocks:
+ * - Alert (lsx-design/alert) - Important messages and notifications
+ * - Badge (lsx-design/badge) - Small label for status, categories, and tags
  * - Buttons (core/buttons) - Container for multiple button blocks
  * - Group (core/group) - Versatile container for grouping blocks
  * - Grid (core/grid) - Flexible grid layout container
@@ -15,6 +17,14 @@
  * 
  * @see /guidelines/blocks/design/
  */
+
+// Alert block
+export { Alert, AlertTitle, AlertDescription } from './Alert';
+export type { AlertProps, AlertTitleProps, AlertDescriptionProps } from './Alert';
+
+// Badge block
+export { Badge } from './Badge';
+export type { BadgeProps } from './Badge';
 
 // Buttons block
 export { Buttons, ButtonBlock, Button } from './Buttons';

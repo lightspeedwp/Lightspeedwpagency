@@ -35,181 +35,33 @@ import {
   Users,
   TrendingUp,
   Settings,
-  Globe
+  Globe,
+  Sparkles,
+  Award,
+  Heart
 } from 'lucide-react';
+
+// Import centralized data
+import { servicesSimplified } from '../../data/services';
+import { 
+  servicesPageBenefits,
+  servicesPageIndustries,
+  servicesPageProcess,
+  servicesPageFAQs,
+  servicesPageHero,
+  servicesPageCTA
+} from '../../data/services-page';
 
 export function ServicesTemplate() {
   const { navigateTo } = useNavigation();
   const [hoveredService, setHoveredService] = useState<string | null>(null);
 
-  // All services
-  const services = [
-    {
-      id: 'discovery',
-      icon: Search,
-      title: 'Discovery',
-      description: 'Website discovery and exploration to understand your needs and goals.',
-      page: 'discovery-service',
-      features: ['Requirements analysis', 'Competitor research', 'Project roadmap', 'Technical assessment']
-    },
-    {
-      id: 'design',
-      icon: Palette,
-      title: 'Design',
-      description: 'Custom design and branding that reflects your unique identity.',
-      page: 'design-service',
-      features: ['UI/UX design', 'Brand identity', 'Design systems', 'Prototyping']
-    },
-    {
-      id: 'development',
-      icon: Code,
-      title: 'Development',
-      description: 'Custom WordPress and WooCommerce development solutions.',
-      page: 'development-service',
-      features: ['Custom themes', 'Plugin development', 'API integrations', 'Custom functionality']
-    },
-    {
-      id: 'content',
-      icon: FileText,
-      title: 'Content',
-      description: 'Content strategy, creation, and optimization for better engagement.',
-      page: 'content-service',
-      features: ['Content strategy', 'Content creation', 'SEO optimization', 'Content audits']
-    },
-    {
-      id: 'migrations',
-      icon: RefreshCw,
-      title: 'Migrations',
-      description: 'Seamless platform migrations to WordPress with zero downtime.',
-      page: 'migrations-service',
-      features: ['Platform migration', 'Data transfer', 'SEO preservation', 'Testing & QA']
-    },
-    {
-      id: 'security',
-      icon: Shield,
-      title: 'Security',
-      description: 'Enterprise-grade security to protect your website and data.',
-      page: 'security-service',
-      features: ['Security audits', 'Malware removal', 'Firewall setup', 'Regular monitoring']
-    },
-    {
-      id: 'hosting',
-      icon: HardDrive,
-      title: 'Hosting',
-      description: 'Managed WordPress hosting with 99.9% uptime guarantee.',
-      page: 'hosting',
-      features: ['Managed hosting', 'Daily backups', 'Performance optimization', 'SSL certificates']
-    },
-    {
-      id: 'support',
-      icon: Zap,
-      title: 'Support',
-      description: '24/7 technical support and website maintenance services.',
-      page: 'support-service',
-      features: ['24/7 support', 'Regular updates', 'Bug fixes', 'Performance monitoring']
-    },
-    {
-      id: 'mailchimp',
-      icon: Mail,
-      title: 'Email Marketing',
-      description: 'Mailchimp integration and email marketing automation.',
-      page: 'mailchimp-service',
-      features: ['Mailchimp setup', 'Email campaigns', 'List management', 'Automation workflows']
-    }
-  ];
-
-  // Why choose us
-  const benefits = [
-    {
-      icon: Users,
-      title: '15+ Years Experience',
-      description: 'Over 15 years building WordPress and WooCommerce websites'
-    },
-    {
-      icon: TrendingUp,
-      title: 'Proven Results',
-      description: '500+ successful projects delivered across all industries'
-    },
-    {
-      icon: Settings,
-      title: 'Technical Excellence',
-      description: 'WordPress experts following best practices and modern standards'
-    },
-    {
-      icon: Globe,
-      title: 'Global Reach',
-      description: 'Serving clients worldwide with 24/7 support and communication'
-    }
-  ];
-
-  // Industries we serve
-  const industries = [
-    'Ecommerce & Retail',
-    'Travel & Tourism',
-    'Healthcare & Medical',
-    'Education & Training',
-    'Finance & Insurance',
-    'Real Estate',
-    'Professional Services',
-    'Non-Profit Organizations'
-  ];
-
-  // Service process
-  const processSteps = [
-    {
-      step: 1,
-      title: 'Discovery Call',
-      description: 'We discuss your goals, requirements, and vision for the project'
-    },
-    {
-      step: 2,
-      title: 'Proposal & Planning',
-      description: 'Detailed project scope, timeline, and pricing proposal'
-    },
-    {
-      step: 3,
-      title: 'Design & Development',
-      description: 'Collaborative design and development with regular check-ins'
-    },
-    {
-      step: 4,
-      title: 'Testing & Launch',
-      description: 'Comprehensive testing followed by smooth launch and training'
-    },
-    {
-      step: 5,
-      title: 'Ongoing Support',
-      description: 'Continued support, maintenance, and optimization services'
-    }
-  ];
-
-  // FAQs
-  const servicesFAQs = [
-    {
-      question: 'What services do you offer?',
-      answer: 'We offer comprehensive WordPress and WooCommerce services including discovery and planning, custom design, theme and plugin development, content creation, platform migrations, security services, managed hosting, ongoing support, and email marketing integration. We can handle projects from simple website updates to complex enterprise solutions.'
-    },
-    {
-      question: 'How long does a typical project take?',
-      answer: 'Project timelines vary based on scope and complexity. A simple website redesign might take 4-6 weeks, while a custom WooCommerce store could take 8-12 weeks. Complex enterprise projects may take 3-6 months. We provide detailed timelines during the proposal stage and keep you updated throughout development.'
-    },
-    {
-      question: 'Do you work with existing WordPress sites or only build new ones?',
-      answer: 'Both! We can build new WordPress sites from scratch, redesign existing sites, add new functionality to current installations, optimize performance, fix issues, and migrate sites from other platforms. Our team can work with any WordPress setup regardless of when it was built or who built it.'
-    },
-    {
-      question: 'What is your pricing structure?',
-      answer: 'We offer both project-based pricing and hourly rates depending on your needs. Project pricing provides a fixed cost based on defined scope and deliverables. Hourly rates are ideal for ongoing support, maintenance, or projects with evolving requirements. We provide detailed quotes after understanding your specific needs.'
-    },
-    {
-      question: 'Do you provide ongoing support after launch?',
-      answer: 'Yes! We offer comprehensive support and maintenance packages including regular updates, security monitoring, performance optimization, bug fixes, content updates, and priority technical support. We can also provide training for your team to manage the site independently.'
-    },
-    {
-      question: 'Can you help with SEO and digital marketing?',
-      answer: 'Yes! We implement SEO best practices in all our websites including technical SEO, schema markup, performance optimization, and mobile responsiveness. We also offer content strategy services, email marketing integration with Mailchimp, and can recommend trusted partners for paid advertising and social media marketing.'
-    }
-  ];
+  // Use centralized real data
+  const services = servicesSimplified;
+  const benefits = servicesPageBenefits;
+  const industries = servicesPageIndustries;
+  const processSteps = servicesPageProcess;
+  const faqs = servicesPageFAQs;
 
   return (
     <>
@@ -794,7 +646,7 @@ export function ServicesTemplate() {
                 </p>
               </div>
 
-              <FAQSection faqs={servicesFAQs} />
+              <FAQSection faqs={faqs} />
             </div>
           </Container>
         </Section>

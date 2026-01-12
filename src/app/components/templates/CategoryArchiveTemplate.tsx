@@ -351,18 +351,19 @@ export function CategoryArchiveTemplate({ category: categorySlug = 'wordpress-de
                     <ul className="flex flex-col gap-2" style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                       {allCategories.map((cat) => (
                         <li key={cat.slug}>
-                          <button 
+                          <button
+                            key={cat.slug}
                             onClick={() => navigateTo(`category-${cat.slug}`)}
-                            className="flex items-center justify-between py-2 w-full text-left"
+                            className="py-2"
                             style={{
-                              fontFamily: 'Lexend, sans-serif',
+                              fontFamily: 'var(--font-primary)',
                               fontSize: 'var(--text-base)',
+                              fontWeight: cat.slug === categorySlug ? 'var(--font-weight-medium)' : 'var(--font-weight-regular)',
                               color: cat.slug === categorySlug ? 'var(--primary)' : 'var(--foreground)',
                               textDecoration: 'none',
                               transition: 'color 0.2s ease',
                               background: 'none',
                               border: 'none',
-                              padding: '8px 0',
                               cursor: 'pointer',
                             }}
                             onMouseEnter={(e) => {

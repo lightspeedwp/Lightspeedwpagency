@@ -114,7 +114,7 @@ export function ComponentPlayground({
       >
         <h3
           style={{
-            fontFamily: 'Lexend, sans-serif',
+            fontFamily: 'var(--font-primary)',
             fontSize: 'var(--text-h3)',
             fontWeight: 'var(--font-weight-bold)',
             color: 'var(--foreground)',
@@ -125,7 +125,7 @@ export function ComponentPlayground({
         </h3>
         <p
           style={{
-            fontFamily: 'Lexend, sans-serif',
+            fontFamily: 'var(--font-primary)',
             fontSize: 'var(--text-base)',
             color: 'var(--muted-foreground)',
             lineHeight: '1.6',
@@ -163,7 +163,7 @@ export function ComponentPlayground({
               color: activeTab === id ? 'var(--primary-foreground)' : 'var(--foreground)',
               border: activeTab === id ? 'none' : '1px solid var(--border)',
               borderRadius: 'var(--radius-lg)',
-              fontFamily: 'Lexend, sans-serif',
+              fontFamily: 'var(--font-primary)',
               fontSize: 'var(--text-base)',
               fontWeight: 'var(--font-weight-medium)',
               cursor: 'pointer',
@@ -215,7 +215,7 @@ export function ComponentPlayground({
                     alignItems: 'center',
                     gap: '8px',
                     marginBottom: '8px',
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-base)',
                     fontWeight: 'var(--font-weight-semibold)',
                     color: 'var(--foreground)'
@@ -232,7 +232,7 @@ export function ComponentPlayground({
                 {prop.description && (
                   <p
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-small)',
                       color: 'var(--muted-foreground)',
                       marginBottom: '8px',
@@ -255,7 +255,7 @@ export function ComponentPlayground({
                       backgroundColor: 'var(--input)',
                       border: '1px solid var(--border)',
                       borderRadius: 'var(--radius-lg)',
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-base)',
                       color: 'var(--foreground)',
                       outline: 'none',
@@ -282,7 +282,7 @@ export function ComponentPlayground({
                       backgroundColor: 'var(--input)',
                       border: '1px solid var(--border)',
                       borderRadius: 'var(--radius-lg)',
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-base)',
                       color: 'var(--foreground)',
                       outline: 'none',
@@ -310,7 +310,7 @@ export function ComponentPlayground({
                       color: propValues[prop.name] ? 'var(--primary-foreground)' : 'var(--foreground)',
                       border: '1px solid var(--border)',
                       borderRadius: 'var(--radius-lg)',
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-base)',
                       fontWeight: 'var(--font-weight-medium)',
                       cursor: 'pointer',
@@ -355,7 +355,7 @@ export function ComponentPlayground({
                       backgroundColor: 'var(--input)',
                       border: '1px solid var(--border)',
                       borderRadius: 'var(--radius-lg)',
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-base)',
                       color: 'var(--foreground)',
                       cursor: 'pointer',
@@ -387,7 +387,7 @@ export function ComponentPlayground({
                 backgroundColor: 'transparent',
                 border: '1px solid var(--border)',
                 borderRadius: 'var(--radius-lg)',
-                fontFamily: 'Lexend, sans-serif',
+                fontFamily: 'var(--font-primary)',
                 fontSize: 'var(--text-base)',
                 fontWeight: 'var(--font-weight-medium)',
                 color: 'var(--foreground)',
@@ -422,7 +422,7 @@ export function ComponentPlayground({
             >
               <h4
                 style={{
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-base)',
                   fontWeight: 'var(--font-weight-semibold)',
                   color: 'var(--foreground)',
@@ -442,7 +442,7 @@ export function ComponentPlayground({
                   color: copied ? 'var(--primary-foreground)' : 'var(--foreground)',
                   border: '1px solid var(--border)',
                   borderRadius: 'var(--radius-lg)',
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-small)',
                   fontWeight: 'var(--font-weight-medium)',
                   cursor: 'pointer',
@@ -482,7 +482,7 @@ export function ComponentPlayground({
 
             <p
               style={{
-                fontFamily: 'Lexend, sans-serif',
+                fontFamily: 'var(--font-primary)',
                 fontSize: 'var(--text-small)',
                 color: 'var(--muted-foreground)',
                 marginTop: '16px',

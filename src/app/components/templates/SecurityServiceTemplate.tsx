@@ -3,10 +3,7 @@
  * 
  * WordPress template: templates/page-security-service.html
  * 
- * Website security service page for WordPress protection and monitoring.
- * 
- * Pattern order:
- * Hero → Security Services → Threats → Process → Features → CTA → FAQs
+ * Pattern order: Breadcrumbs → Hero → Overview → Services → Threats → Process → Features → Packages → FAQs → CTA
  */
 
 import { SiteHeader } from '../parts/SiteHeader';
@@ -14,154 +11,33 @@ import { SiteFooter } from '../parts/SiteFooter';
 import { SkipLink } from '../common/SkipLink';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
-import { Buttons, Button } from '../blocks/design/Buttons';
+import { Breadcrumbs } from '../common/Breadcrumbs';
 import { BackToTopButton } from '../blocks/layout/BackToTopButton';
 import { RouteAnnouncer } from '../blocks/utility/RouteAnnouncer';
-import { FAQSection } from '../patterns/FAQSection';
-import { useState } from 'react';
+import { Buttons, Button } from '../blocks/design/Buttons';
 import { 
   Shield,
-  ArrowRight,
   CheckCircle,
-  Lock,
-  AlertTriangle,
-  Eye,
-  FileText,
-  RefreshCw,
-  Server,
-  Zap
+  ArrowRight,
+  Check
 } from 'lucide-react';
+import { useState } from 'react';
+
+// Import centralized data
+import {
+  securityServiceHero,
+  securityServiceOverview,
+  securityServices,
+  securityThreats,
+  securityProcess,
+  securityFeatures,
+  securityPackages,
+  securityServiceFAQs,
+  securityServiceCTA
+} from '../../data/security-service-page';
 
 export function SecurityServiceTemplate() {
   const [hoveredService, setHoveredService] = useState<string | null>(null);
-
-  const securityServices = [
-    {
-      id: 'audits',
-      icon: Eye,
-      title: 'Security Audits',
-      description: 'Comprehensive security assessments to identify vulnerabilities.',
-      features: ['Vulnerability scanning', 'Code review', 'Plugin analysis', 'Configuration audit']
-    },
-    {
-      id: 'hardening',
-      icon: Shield,
-      title: 'Website Hardening',
-      description: 'Strengthen WordPress security with best practices and configurations.',
-      features: ['File permissions', 'Database security', 'Login protection', 'Admin hardening']
-    },
-    {
-      id: 'malware',
-      icon: AlertTriangle,
-      title: 'Malware Removal',
-      description: 'Clean infected sites and remove malicious code completely.',
-      features: ['Malware detection', 'Code cleaning', 'Backdoor removal', 'Reinfection prevention']
-    },
-    {
-      id: 'firewall',
-      icon: Lock,
-      title: 'Firewall Setup',
-      description: 'Web Application Firewall (WAF) to block malicious traffic.',
-      features: ['WAF configuration', 'IP blocking', 'DDoS protection', 'Traffic filtering']
-    },
-    {
-      id: 'monitoring',
-      icon: Server,
-      title: 'Security Monitoring',
-      description: '24/7 monitoring and alerts for suspicious activity.',
-      features: ['Real-time alerts', 'File integrity', 'Login monitoring', 'Uptime checks']
-    },
-    {
-      id: 'backups',
-      icon: RefreshCw,
-      title: 'Backup Solutions',
-      description: 'Automated backups with secure off-site storage.',
-      features: ['Daily backups', 'Off-site storage', 'One-click restore', 'Version history']
-    }
-  ];
-
-  const commonThreats = [
-    {
-      threat: 'Brute Force Attacks',
-      description: 'Automated login attempts to guess passwords',
-      solution: 'Two-factor authentication, login limits, strong passwords'
-    },
-    {
-      threat: 'Malware Infections',
-      description: 'Malicious code injected into your website',
-      solution: 'Regular scanning, file integrity monitoring, malware removal'
-    },
-    {
-      threat: 'DDoS Attacks',
-      description: 'Overwhelming traffic to crash your website',
-      solution: 'WAF protection, CDN, rate limiting, traffic analysis'
-    },
-    {
-      threat: 'SQL Injection',
-      description: 'Database attacks through vulnerable code',
-      solution: 'Prepared statements, input validation, code audits'
-    },
-    {
-      threat: 'Outdated Software',
-      description: 'Unpatched vulnerabilities in WordPress, themes, plugins',
-      solution: 'Automatic updates, version monitoring, testing protocols'
-    },
-    {
-      threat: 'Weak Passwords',
-      description: 'Easy-to-guess login credentials',
-      solution: 'Password policies, 2FA, user education, password managers'
-    }
-  ];
-
-  const securityFeatures = [
-    {
-      icon: Shield,
-      title: 'Proactive Protection',
-      description: 'Prevent attacks before they happen with multiple security layers'
-    },
-    {
-      icon: Eye,
-      title: '24/7 Monitoring',
-      description: 'Continuous surveillance with instant alerts for suspicious activity'
-    },
-    {
-      icon: Zap,
-      title: 'Rapid Response',
-      description: 'Quick incident response to minimize damage and downtime'
-    },
-    {
-      icon: FileText,
-      title: 'Detailed Reports',
-      description: 'Regular security reports showing threats blocked and actions taken'
-    }
-  ];
-
-  const securityFAQs = [
-    {
-      question: 'How often should I update WordPress security?',
-      answer: 'WordPress security should be monitored continuously with daily automated checks. Core WordPress, themes, and plugins should be updated as soon as updates are available (usually weekly). Security audits should be performed quarterly, and backups should run daily. We provide managed security services that handle all of this automatically.'
-    },
-    {
-      question: 'What happens if my site gets hacked?',
-      answer: 'If your site is compromised, we immediately take it offline to prevent further damage, identify the attack vector, remove all malicious code and backdoors, restore from clean backups if needed, implement additional security measures, and bring your site back online. Most hacked sites can be cleaned within 24-48 hours.'
-    },
-    {
-      question: 'Can you recover my website after an attack?',
-      answer: 'Yes! We specialize in hacked site recovery. We can restore your site from backups, clean infected files, remove malware and backdoors, restore your database, implement security hardening, and prevent future attacks. We also help with search engine blacklist removal if needed.'
-    },
-    {
-      question: 'Do I need security if I have a small website?',
-      answer: 'Absolutely! Small websites are often targeted because they typically have weaker security. Hackers use automated tools to scan thousands of sites looking for vulnerabilities. Your site can be infected and used for spam, phishing, or attacking other sites without you knowing. Every website needs security protection.'
-    },
-    {
-      question: 'What is two-factor authentication and do I need it?',
-      answer: 'Two-factor authentication (2FA) requires two forms of identification to log in - your password and a code from your phone. This prevents hackers from accessing your site even if they steal your password. We strongly recommend 2FA for all administrator accounts and can help implement it on your site.'
-    },
-    {
-      question: 'How much does WordPress security cost?',
-      answer: 'Security services range from $99/month for basic monitoring and updates to $499/month for comprehensive protection including WAF, malware scanning, daily backups, and priority incident response. One-time security audits start at $500. Malware removal services are $300-$1000 depending on infection severity. Investing in security is far cheaper than recovering from an attack.'
-    }
-  ];
 
   return (
     <>
@@ -170,20 +46,38 @@ export function SecurityServiceTemplate() {
       <SiteHeader />
       
       <main id="main-content" role="main">
+        {/* Breadcrumbs */}
+        <section 
+          className="py-4"
+          style={{
+            backgroundColor: 'var(--background)',
+            borderBottom: '1px solid var(--border-soft)'
+          }}
+        >
+          <Container>
+            <Breadcrumbs 
+              items={[
+                { label: 'Home', href: '/' },
+                { label: 'Services', href: '/services' },
+                { label: securityServiceHero.title }
+              ]}
+            />
+          </Container>
+        </section>
+
         {/* Hero Section */}
         <Section 
           spacing="xl"
           style={{
-            background: 'linear-gradient(135deg, #dc2626 0%, #ef4444 100%)',
+            background: 'linear-gradient(135deg, #dc2626 0%, #b91c1c 100%)',
             color: 'var(--primary-foreground)',
             position: 'relative',
-            overflow: 'hidden',
-            paddingTop: '80px',
-            paddingBottom: '80px'
+            overflow: 'hidden'
           }}
         >
+          {/* Gradient orb decorations */}
           <div
-            className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full"
+            className="absolute top-0 right-0 w-96 h-96 rounded-full"
             style={{
               background: 'radial-gradient(circle, rgba(239, 68, 68, 0.3) 0%, transparent 70%)',
               filter: 'blur(80px)',
@@ -207,7 +101,8 @@ export function SecurityServiceTemplate() {
                   letterSpacing: '0.1em'
                 }}
               >
-                SECURITY SERVICES
+                <Shield size={14} style={{ display: 'inline', marginRight: '8px' }} />
+                {securityServiceHero.badge.text}
               </div>
 
               <h1
@@ -221,417 +116,75 @@ export function SecurityServiceTemplate() {
                   color: 'var(--primary-foreground)'
                 }}
               >
-                Enterprise-Grade WordPress<br />Security
+                WordPress <span style={{ 
+                  background: 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text'
+                }}>Security</span> & Protection Services
               </h1>
 
               <p
                 style={{
                   fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-lg)',
-                  lineHeight: '1.7',
+                  fontSize: 'var(--text-xl)',
+                  lineHeight: '1.6',
                   color: 'rgba(255, 255, 255, 0.95)',
-                  marginBottom: '32px',
+                  marginBottom: '16px',
                   maxWidth: '700px',
-                  margin: '0 auto 32px'
+                  margin: '0 auto 16px'
                 }}
               >
-                Protect your website from hackers, malware, and cyber threats with 
-                comprehensive security services and 24/7 monitoring.
+                {securityServiceHero.tagline}
               </p>
 
-              <Buttons orientation="horizontal" style={{ justifyContent: 'center' }}>
-                <Button
-                  variant="default"
+              <p
+                style={{
+                  fontFamily: 'Lexend, sans-serif',
+                  fontSize: 'var(--text-lg)',
+                  lineHeight: '1.7',
+                  color: 'rgba(255, 255, 255, 0.85)',
+                  marginBottom: '40px',
+                  maxWidth: '700px',
+                  margin: '0 auto 40px'
+                }}
+              >
+                {securityServiceHero.description}
+              </p>
+
+              <Buttons alignment="center" gap="md">
+                <Button 
+                  page="contact" 
                   size="lg"
-                  page="contact"
+                  variant="default"
                   style={{
-                    backgroundColor: 'white',
-                    color: '#dc2626',
-                    boxShadow: '0 10px 40px rgba(0, 0, 0, 0.2)'
+                    backgroundColor: 'var(--primary-foreground)',
+                    color: 'var(--destructive)'
                   }}
                 >
-                  Secure My Site
-                  <ArrowRight size={20} />
+                  Get Free Security Scan
                 </Button>
-                <Button
+                <Button 
+                  page="pricing" 
+                  size="lg"
                   variant="outline"
-                  size="lg"
-                  page="contact"
                   style={{
-                    borderColor: 'rgba(255, 255, 255, 0.3)',
-                    color: 'white',
-                    backgroundColor: 'transparent'
+                    borderColor: 'var(--primary-foreground)',
+                    color: 'var(--primary-foreground)'
                   }}
                 >
-                  Get Security Audit
+                  View Packages
                 </Button>
               </Buttons>
             </div>
           </Container>
         </Section>
 
-        {/* Security Services */}
+        {/* Overview Section */}
         <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
           <Container>
-            <div className="text-center mb-16">
-              <h2
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-h1)',
-                  fontWeight: 'var(--font-weight-bold)',
-                  lineHeight: '1.2',
-                  letterSpacing: '-0.02em',
-                  marginBottom: '16px',
-                  color: 'var(--foreground)'
-                }}
-              >
-                Our Security Services
-              </h2>
-
-              <p
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-lg)',
-                  lineHeight: '1.7',
-                  color: 'var(--muted-foreground)',
-                  maxWidth: '700px',
-                  margin: '0 auto'
-                }}
-              >
-                Comprehensive protection for your WordPress website
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {securityServices.map((service) => {
-                const Icon = service.icon;
-                const isHovered = hoveredService === service.id;
-
-                return (
-                  <div
-                    key={service.id}
-                    style={{
-                      padding: '32px',
-                      backgroundColor: 'var(--card)',
-                      borderRadius: 'var(--radius-xl)',
-                      border: isHovered ? '2px solid var(--primary)' : '1px solid var(--border-soft)',
-                      transition: 'all 0.3s ease',
-                      transform: isHovered ? 'translateY(-8px)' : 'translateY(0)',
-                      boxShadow: isHovered ? '0 20px 40px rgba(0, 0, 0, 0.15)' : '0 4px 12px rgba(0, 0, 0, 0.05)'
-                    }}
-                    onMouseEnter={() => setHoveredService(service.id)}
-                    onMouseLeave={() => setHoveredService(null)}
-                  >
-                    <div
-                      style={{
-                        width: '64px',
-                        height: '64px',
-                        borderRadius: 'var(--radius-lg)',
-                        backgroundColor: isHovered ? 'var(--primary)' : 'var(--primary-soft)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        marginBottom: '20px',
-                        transition: 'all 0.3s ease'
-                      }}
-                    >
-                      <Icon 
-                        size={32} 
-                        style={{ 
-                          color: isHovered ? 'white' : 'var(--primary)',
-                          transition: 'color 0.3s ease'
-                        }} 
-                      />
-                    </div>
-
-                    <h3
-                      style={{
-                        fontFamily: 'Lexend, sans-serif',
-                        fontSize: 'var(--text-xl)',
-                        fontWeight: 'var(--font-weight-bold)',
-                        color: 'var(--foreground)',
-                        marginBottom: '12px'
-                      }}
-                    >
-                      {service.title}
-                    </h3>
-
-                    <p
-                      style={{
-                        fontFamily: 'Lexend, sans-serif',
-                        fontSize: 'var(--text-base)',
-                        lineHeight: '1.6',
-                        color: 'var(--muted-foreground)',
-                        marginBottom: '16px'
-                      }}
-                    >
-                      {service.description}
-                    </p>
-
-                    <ul className="space-y-2" style={{ listStyle: 'none', padding: 0 }}>
-                      {service.features.map((feature, idx) => (
-                        <li
-                          key={idx}
-                          style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '8px'
-                          }}
-                        >
-                          <CheckCircle size={16} style={{ color: 'var(--primary)', flexShrink: 0 }} />
-                          <span
-                            style={{
-                              fontFamily: 'Lexend, sans-serif',
-                              fontSize: 'var(--text-small)',
-                              color: 'var(--muted-foreground)'
-                            }}
-                          >
-                            {feature}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                );
-              })}
-            </div>
-          </Container>
-        </Section>
-
-        {/* Common Threats */}
-        <Section spacing="xl" style={{ backgroundColor: 'var(--muted)' }}>
-          <Container>
-            <div className="text-center mb-16">
-              <h2
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-h1)',
-                  fontWeight: 'var(--font-weight-bold)',
-                  lineHeight: '1.2',
-                  letterSpacing: '-0.02em',
-                  marginBottom: '16px',
-                  color: 'var(--foreground)'
-                }}
-              >
-                Common Security Threats
-              </h2>
-
-              <p
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-lg)',
-                  lineHeight: '1.7',
-                  color: 'var(--muted-foreground)',
-                  maxWidth: '700px',
-                  margin: '0 auto'
-                }}
-              >
-                Understanding the threats and how we protect you
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {commonThreats.map((item, index) => (
-                <div
-                  key={index}
-                  style={{
-                    padding: '32px',
-                    backgroundColor: 'var(--card)',
-                    borderRadius: 'var(--radius-lg)',
-                    border: '1px solid var(--border-soft)'
-                  }}
-                >
-                  <div
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '12px',
-                      marginBottom: '12px'
-                    }}
-                  >
-                    <AlertTriangle size={24} style={{ color: 'var(--destructive)', flexShrink: 0 }} />
-                    <h3
-                      style={{
-                        fontFamily: 'Lexend, sans-serif',
-                        fontSize: 'var(--text-lg)',
-                        fontWeight: 'var(--font-weight-semibold)',
-                        color: 'var(--foreground)'
-                      }}
-                    >
-                      {item.threat}
-                    </h3>
-                  </div>
-
-                  <p
-                    style={{
-                      fontFamily: 'Lexend, sans-serif',
-                      fontSize: 'var(--text-base)',
-                      lineHeight: '1.6',
-                      color: 'var(--muted-foreground)',
-                      marginBottom: '12px'
-                    }}
-                  >
-                    {item.description}
-                  </p>
-
-                  <div
-                    style={{
-                      padding: '12px',
-                      backgroundColor: 'var(--primary-soft)',
-                      borderRadius: 'var(--radius)',
-                      border: '1px solid var(--primary)'
-                    }}
-                  >
-                    <div
-                      style={{
-                        fontFamily: 'Manrope, sans-serif',
-                        fontSize: 'var(--text-small)',
-                        fontWeight: 'var(--font-weight-semibold)',
-                        color: 'var(--primary)',
-                        marginBottom: '4px'
-                      }}
-                    >
-                      Our Solution:
-                    </div>
-                    <div
-                      style={{
-                        fontFamily: 'Lexend, sans-serif',
-                        fontSize: 'var(--text-small)',
-                        lineHeight: '1.5',
-                        color: 'var(--foreground)'
-                      }}
-                    >
-                      {item.solution}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </Container>
-        </Section>
-
-        {/* Security Features */}
-        <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
-          <Container>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {securityFeatures.map((feature, index) => {
-                const Icon = feature.icon;
-                return (
-                  <div
-                    key={index}
-                    style={{
-                      padding: '32px',
-                      backgroundColor: 'var(--card)',
-                      borderRadius: 'var(--radius-lg)',
-                      border: '1px solid var(--border-soft)',
-                      textAlign: 'center'
-                    }}
-                  >
-                    <div
-                      style={{
-                        width: '64px',
-                        height: '64px',
-                        borderRadius: 'var(--radius-full)',
-                        backgroundColor: 'var(--primary-soft)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        margin: '0 auto 20px'
-                      }}
-                    >
-                      <Icon size={32} style={{ color: 'var(--primary)' }} />
-                    </div>
-
-                    <h3
-                      style={{
-                        fontFamily: 'Lexend, sans-serif',
-                        fontSize: 'var(--text-lg)',
-                        fontWeight: 'var(--font-weight-semibold)',
-                        color: 'var(--foreground)',
-                        marginBottom: '8px'
-                      }}
-                    >
-                      {feature.title}
-                    </h3>
-
-                    <p
-                      style={{
-                        fontFamily: 'Lexend, sans-serif',
-                        fontSize: 'var(--text-base)',
-                        lineHeight: '1.6',
-                        color: 'var(--muted-foreground)'
-                      }}
-                    >
-                      {feature.description}
-                    </p>
-                  </div>
-                );
-              })}
-            </div>
-          </Container>
-        </Section>
-
-        {/* CTA Section */}
-        <Section 
-          spacing="xl"
-          style={{
-            background: 'linear-gradient(135deg, #dc2626 0%, #ef4444 100%)',
-            color: 'var(--primary-foreground)',
-            textAlign: 'center'
-          }}
-        >
-          <Container>
-            <div className="max-w-3xl mx-auto">
-              <h2
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-h1)',
-                  fontWeight: 'var(--font-weight-bold)',
-                  lineHeight: '1.2',
-                  letterSpacing: '-0.02em',
-                  marginBottom: '20px'
-                }}
-              >
-                Don't Wait Until It's Too Late
-              </h2>
-
-              <p
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-lg)',
-                  lineHeight: '1.7',
-                  marginBottom: '32px',
-                  opacity: 0.95
-                }}
-              >
-                Protect your website now with comprehensive security services. 
-                Get a free security audit today.
-              </p>
-
-              <Buttons orientation="horizontal" style={{ justifyContent: 'center' }}>
-                <Button
-                  variant="default"
-                  size="lg"
-                  page="contact"
-                  style={{
-                    backgroundColor: 'white',
-                    color: '#dc2626',
-                    boxShadow: '0 10px 40px rgba(0, 0, 0, 0.2)'
-                  }}
-                >
-                  Get Protected
-                  <ArrowRight size={20} />
-                </Button>
-              </Buttons>
-            </div>
-          </Container>
-        </Section>
-
-        {/* FAQ Section */}
-        <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
-          <Container>
-            <div className="max-w-4xl mx-auto">
-              <div className="text-center mb-12">
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-16">
                 <h2
                   style={{
                     fontFamily: 'Lexend, sans-serif',
@@ -643,11 +196,774 @@ export function SecurityServiceTemplate() {
                     color: 'var(--foreground)'
                   }}
                 >
-                  Security FAQs
+                  {securityServiceOverview.title}
                 </h2>
+
+                <p
+                  style={{
+                    fontFamily: 'Lexend, sans-serif',
+                    fontSize: 'var(--text-lg)',
+                    lineHeight: '1.7',
+                    color: 'var(--muted-foreground)',
+                    maxWidth: '800px',
+                    margin: '0 auto'
+                  }}
+                >
+                  {securityServiceOverview.description}
+                </p>
               </div>
 
-              <FAQSection faqs={securityFAQs} />
+              {/* Stats */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {securityServiceOverview.stats.map((stat, index) => {
+                  const Icon = stat.icon;
+                  return (
+                    <div
+                      key={index}
+                      className="text-center"
+                      style={{
+                        padding: '32px',
+                        backgroundColor: 'var(--card)',
+                        borderRadius: 'var(--radius-lg)',
+                        border: '1px solid var(--border-soft)'
+                      }}
+                    >
+                      <Icon size={32} style={{ marginBottom: '12px', color: 'var(--destructive)' }} />
+                      <div
+                        style={{
+                          fontFamily: 'Lexend, sans-serif',
+                          fontSize: 'var(--text-h2)',
+                          fontWeight: 'var(--font-weight-bold)',
+                          marginBottom: '4px',
+                          color: 'var(--foreground)'
+                        }}
+                      >
+                        {stat.value}
+                      </div>
+                      <div
+                        style={{
+                          fontFamily: 'Lexend, sans-serif',
+                          fontSize: 'var(--text-base)',
+                          fontWeight: 'var(--font-weight-semibold)',
+                          marginBottom: '8px',
+                          color: 'var(--foreground)'
+                        }}
+                      >
+                        {stat.label}
+                      </div>
+                      <p
+                        style={{
+                          fontFamily: 'Manrope, sans-serif',
+                          fontSize: 'var(--text-small)',
+                          lineHeight: '1.5',
+                          color: 'var(--muted-foreground)'
+                        }}
+                      >
+                        {stat.description}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </Container>
+        </Section>
+
+        {/* Security Services Section */}
+        <Section spacing="xl" style={{ backgroundColor: 'var(--muted)' }}>
+          <Container>
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-16">
+                <h2
+                  style={{
+                    fontFamily: 'Lexend, sans-serif',
+                    fontSize: 'var(--text-h1)',
+                    fontWeight: 'var(--font-weight-bold)',
+                    lineHeight: '1.2',
+                    letterSpacing: '-0.02em',
+                    marginBottom: '16px',
+                    color: 'var(--foreground)'
+                  }}
+                >
+                  Our Security Services
+                </h2>
+
+                <p
+                  style={{
+                    fontFamily: 'Lexend, sans-serif',
+                    fontSize: 'var(--text-lg)',
+                    lineHeight: '1.7',
+                    color: 'var(--muted-foreground)'
+                  }}
+                >
+                  Comprehensive WordPress security solutions
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {securityServices.map((service) => {
+                  const Icon = service.icon;
+                  const isHovered = hoveredService === service.id;
+
+                  return (
+                    <div
+                      key={service.id}
+                      onMouseEnter={() => setHoveredService(service.id)}
+                      onMouseLeave={() => setHoveredService(null)}
+                      style={{
+                        padding: '24px',
+                        backgroundColor: 'var(--card)',
+                        borderRadius: 'var(--radius-lg)',
+                        border: isHovered ? '1px solid var(--destructive)' : '1px solid var(--border-soft)',
+                        transition: 'all 0.3s ease',
+                        transform: isHovered ? 'translateY(-4px)' : 'translateY(0)'
+                      }}
+                    >
+                      <div
+                        style={{
+                          width: '48px',
+                          height: '48px',
+                          borderRadius: 'var(--radius)',
+                          backgroundColor: isHovered ? 'var(--destructive)' : 'var(--muted)',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          marginBottom: '16px',
+                          transition: 'all 0.3s ease'
+                        }}
+                      >
+                        <Icon size={24} style={{ color: isHovered ? 'white' : 'var(--destructive)' }} />
+                      </div>
+
+                      <h3
+                        style={{
+                          fontFamily: 'Lexend, sans-serif',
+                          fontSize: 'var(--text-lg)',
+                          fontWeight: 'var(--font-weight-bold)',
+                          color: 'var(--foreground)',
+                          marginBottom: '8px'
+                        }}
+                      >
+                        {service.title}
+                      </h3>
+
+                      <p
+                        style={{
+                          fontFamily: 'Lexend, sans-serif',
+                          fontSize: 'var(--text-small)',
+                          lineHeight: '1.6',
+                          color: 'var(--muted-foreground)',
+                          marginBottom: '16px'
+                        }}
+                      >
+                        {service.description}
+                      </p>
+
+                      <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                        {service.features.map((feature, idx) => (
+                          <li
+                            key={idx}
+                            style={{
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: '8px',
+                              marginBottom: '8px'
+                            }}
+                          >
+                            <CheckCircle size={14} style={{ color: 'var(--success)', flexShrink: 0 }} />
+                            <span
+                              style={{
+                                fontFamily: 'Manrope, sans-serif',
+                                fontSize: 'var(--text-small)',
+                                color: 'var(--foreground)'
+                              }}
+                            >
+                              {feature}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </Container>
+        </Section>
+
+        {/* Security Threats Section */}
+        <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
+          <Container>
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-16">
+                <h2
+                  style={{
+                    fontFamily: 'Lexend, sans-serif',
+                    fontSize: 'var(--text-h1)',
+                    fontWeight: 'var(--font-weight-bold)',
+                    lineHeight: '1.2',
+                    letterSpacing: '-0.02em',
+                    marginBottom: '16px',
+                    color: 'var(--foreground)'
+                  }}
+                >
+                  Common Security Threats
+                </h2>
+
+                <p
+                  style={{
+                    fontFamily: 'Lexend, sans-serif',
+                    fontSize: 'var(--text-lg)',
+                    lineHeight: '1.7',
+                    color: 'var(--muted-foreground)'
+                  }}
+                >
+                  WordPress websites face these security risks daily
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {securityThreats.map((threat, index) => {
+                  const Icon = threat.icon;
+                  return (
+                    <div
+                      key={index}
+                      style={{
+                        padding: '24px',
+                        backgroundColor: 'var(--card)',
+                        borderRadius: 'var(--radius-lg)',
+                        border: '1px solid var(--border-soft)'
+                      }}
+                    >
+                      <div
+                        style={{
+                          width: '40px',
+                          height: '40px',
+                          borderRadius: 'var(--radius)',
+                          backgroundColor: 'var(--destructive-soft)',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          marginBottom: '12px'
+                        }}
+                      >
+                        <Icon size={20} style={{ color: 'var(--destructive)' }} />
+                      </div>
+
+                      <h3
+                        style={{
+                          fontFamily: 'Lexend, sans-serif',
+                          fontSize: 'var(--text-base)',
+                          fontWeight: 'var(--font-weight-bold)',
+                          color: 'var(--foreground)',
+                          marginBottom: '8px'
+                        }}
+                      >
+                        {threat.title}
+                      </h3>
+
+                      <p
+                        style={{
+                          fontFamily: 'Lexend, sans-serif',
+                          fontSize: 'var(--text-small)',
+                          lineHeight: '1.6',
+                          color: 'var(--muted-foreground)',
+                          marginBottom: '8px'
+                        }}
+                      >
+                        {threat.description}
+                      </p>
+
+                      <p
+                        style={{
+                          fontFamily: 'Manrope, sans-serif',
+                          fontSize: 'var(--text-small)',
+                          lineHeight: '1.5',
+                          color: 'var(--destructive)',
+                          fontWeight: 'var(--font-weight-semibold)'
+                        }}
+                      >
+                        Impact: {threat.impact}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </Container>
+        </Section>
+
+        {/* Security Process Section */}
+        <Section spacing="xl" style={{ backgroundColor: 'var(--muted)' }}>
+          <Container>
+            <div className="max-w-5xl mx-auto">
+              <div className="text-center mb-16">
+                <h2
+                  style={{
+                    fontFamily: 'Lexend, sans-serif',
+                    fontSize: 'var(--text-h1)',
+                    fontWeight: 'var(--font-weight-bold)',
+                    lineHeight: '1.2',
+                    letterSpacing: '-0.02em',
+                    marginBottom: '16px',
+                    color: 'var(--foreground)'
+                  }}
+                >
+                  Our Security Process
+                </h2>
+
+                <p
+                  style={{
+                    fontFamily: 'Lexend, sans-serif',
+                    fontSize: 'var(--text-lg)',
+                    lineHeight: '1.7',
+                    color: 'var(--muted-foreground)'
+                  }}
+                >
+                  How we protect your WordPress website
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {securityProcess.map((step) => {
+                  const Icon = step.icon;
+                  return (
+                    <div
+                      key={step.step}
+                      className="text-center"
+                      style={{
+                        padding: '24px',
+                        backgroundColor: 'var(--card)',
+                        borderRadius: 'var(--radius-lg)',
+                        border: '1px solid var(--border-soft)',
+                        position: 'relative'
+                      }}
+                    >
+                      <div
+                        style={{
+                          position: 'absolute',
+                          top: '16px',
+                          right: '16px',
+                          width: '32px',
+                          height: '32px',
+                          borderRadius: 'var(--radius-full)',
+                          backgroundColor: 'var(--destructive)',
+                          color: 'white',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          fontFamily: 'Lexend, sans-serif',
+                          fontSize: 'var(--text-small)',
+                          fontWeight: 'var(--font-weight-bold)'
+                        }}
+                      >
+                        {step.step}
+                      </div>
+
+                      <div
+                        style={{
+                          width: '56px',
+                          height: '56px',
+                          borderRadius: 'var(--radius-lg)',
+                          backgroundColor: 'var(--destructive-soft)',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          margin: '0 auto 16px'
+                        }}
+                      >
+                        <Icon size={28} style={{ color: 'var(--destructive)' }} />
+                      </div>
+
+                      <h3
+                        style={{
+                          fontFamily: 'Lexend, sans-serif',
+                          fontSize: 'var(--text-base)',
+                          fontWeight: 'var(--font-weight-bold)',
+                          color: 'var(--foreground)',
+                          marginBottom: '8px'
+                        }}
+                      >
+                        {step.title}
+                      </h3>
+
+                      <p
+                        style={{
+                          fontFamily: 'Lexend, sans-serif',
+                          fontSize: 'var(--text-small)',
+                          lineHeight: '1.6',
+                          color: 'var(--muted-foreground)'
+                        }}
+                      >
+                        {step.description}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </Container>
+        </Section>
+
+        {/* Features Section */}
+        <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
+          <Container>
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-16">
+                <h2
+                  style={{
+                    fontFamily: 'Lexend, sans-serif',
+                    fontSize: 'var(--text-h1)',
+                    fontWeight: 'var(--font-weight-bold)',
+                    lineHeight: '1.2',
+                    letterSpacing: '-0.02em',
+                    marginBottom: '16px',
+                    color: 'var(--foreground)'
+                  }}
+                >
+                  Security Features Included
+                </h2>
+
+                <p
+                  style={{
+                    fontFamily: 'Lexend, sans-serif',
+                    fontSize: 'var(--text-lg)',
+                    lineHeight: '1.7',
+                    color: 'var(--muted-foreground)'
+                  }}
+                >
+                  Comprehensive protection for your WordPress site
+                </p>
+              </div>
+
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                {securityFeatures.map((feature, index) => {
+                  const Icon = feature.icon;
+                  return (
+                    <div
+                      key={index}
+                      className="text-center"
+                      style={{
+                        padding: '20px',
+                        backgroundColor: 'var(--card)',
+                        borderRadius: 'var(--radius-lg)',
+                        border: '1px solid var(--border-soft)'
+                      }}
+                    >
+                      <div
+                        style={{
+                          width: '48px',
+                          height: '48px',
+                          borderRadius: 'var(--radius)',
+                          backgroundColor: 'var(--destructive-soft)',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          margin: '0 auto 12px'
+                        }}
+                      >
+                        <Icon size={24} style={{ color: 'var(--destructive)' }} />
+                      </div>
+
+                      <h3
+                        style={{
+                          fontFamily: 'Lexend, sans-serif',
+                          fontSize: 'var(--text-small)',
+                          fontWeight: 'var(--font-weight-bold)',
+                          color: 'var(--foreground)',
+                          marginBottom: '6px'
+                        }}
+                      >
+                        {feature.title}
+                      </h3>
+
+                      <p
+                        style={{
+                          fontFamily: 'Manrope, sans-serif',
+                          fontSize: 'var(--text-small)',
+                          lineHeight: '1.5',
+                          color: 'var(--muted-foreground)'
+                        }}
+                      >
+                        {feature.description}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </Container>
+        </Section>
+
+        {/* Pricing Packages Section */}
+        <Section spacing="xl" style={{ backgroundColor: 'var(--muted)' }}>
+          <Container>
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-16">
+                <h2
+                  style={{
+                    fontFamily: 'Lexend, sans-serif',
+                    fontSize: 'var(--text-h1)',
+                    fontWeight: 'var(--font-weight-bold)',
+                    lineHeight: '1.2',
+                    letterSpacing: '-0.02em',
+                    marginBottom: '16px',
+                    color: 'var(--foreground)'
+                  }}
+                >
+                  Security Packages
+                </h2>
+
+                <p
+                  style={{
+                    fontFamily: 'Lexend, sans-serif',
+                    fontSize: 'var(--text-lg)',
+                    lineHeight: '1.7',
+                    color: 'var(--muted-foreground)'
+                  }}
+                >
+                  Choose the right security plan for your website
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {securityPackages.map((pkg, index) => (
+                  <div
+                    key={index}
+                    style={{
+                      padding: '40px',
+                      backgroundColor: pkg.recommended ? 'var(--destructive-soft)' : 'var(--card)',
+                      borderRadius: 'var(--radius-lg)',
+                      border: pkg.recommended ? '2px solid var(--destructive)' : '1px solid var(--border-soft)',
+                      position: 'relative'
+                    }}
+                  >
+                    {pkg.recommended && (
+                      <div
+                        style={{
+                          position: 'absolute',
+                          top: '-12px',
+                          left: '50%',
+                          transform: 'translateX(-50%)',
+                          backgroundColor: 'var(--destructive)',
+                          color: 'white',
+                          padding: '4px 16px',
+                          borderRadius: 'var(--radius-full)',
+                          fontSize: 'var(--text-small)',
+                          fontFamily: 'Manrope, sans-serif',
+                          fontWeight: 'var(--font-weight-semibold)'
+                        }}
+                      >
+                        Most Popular
+                      </div>
+                    )}
+
+                    <h3
+                      style={{
+                        fontFamily: 'Lexend, sans-serif',
+                        fontSize: 'var(--text-h3)',
+                        fontWeight: 'var(--font-weight-bold)',
+                        color: 'var(--foreground)',
+                        marginBottom: '8px'
+                      }}
+                    >
+                      {pkg.name}
+                    </h3>
+
+                    <div
+                      style={{
+                        fontFamily: 'Lexend, sans-serif',
+                        fontSize: 'var(--text-h2)',
+                        fontWeight: 'var(--font-weight-bold)',
+                        color: 'var(--destructive)',
+                        marginBottom: '8px'
+                      }}
+                    >
+                      {pkg.price}
+                    </div>
+
+                    <p
+                      style={{
+                        fontFamily: 'Lexend, sans-serif',
+                        fontSize: 'var(--text-small)',
+                        lineHeight: '1.6',
+                        color: 'var(--muted-foreground)',
+                        marginBottom: '24px'
+                      }}
+                    >
+                      {pkg.description}
+                    </p>
+
+                    <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 24px 0' }}>
+                      {pkg.features.map((feature, idx) => (
+                        <li
+                          key={idx}
+                          style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '8px',
+                            marginBottom: '12px'
+                          }}
+                        >
+                          <Check size={18} style={{ color: 'var(--success)', flexShrink: 0 }} />
+                          <span
+                            style={{
+                              fontFamily: 'Lexend, sans-serif',
+                              fontSize: 'var(--text-small)',
+                              color: 'var(--foreground)'
+                            }}
+                          >
+                            {feature}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <Button 
+                      page="contact" 
+                      size="md"
+                      variant={pkg.recommended ? 'default' : 'outline'}
+                      style={{ width: '100%' }}
+                    >
+                      Get Started
+                    </Button>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Container>
+        </Section>
+
+        {/* FAQ Section */}
+        <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
+          <Container>
+            <div className="max-w-3xl mx-auto">
+              <div className="text-center mb-12">
+                <h2
+                  style={{
+                    fontFamily: 'Lexend, sans-serif',
+                    fontSize: 'var(--text-h2)',
+                    fontWeight: 'var(--font-weight-semibold)',
+                    color: 'var(--foreground)',
+                    marginBottom: '16px',
+                    lineHeight: 'var(--line-height-snug)'
+                  }}
+                >
+                  Frequently Asked Questions
+                </h2>
+                <p
+                  style={{
+                    fontFamily: 'Lexend, sans-serif',
+                    fontSize: 'var(--text-lg)',
+                    color: 'var(--muted-foreground)',
+                    lineHeight: '1.7'
+                  }}
+                >
+                  Common questions about WordPress security
+                </p>
+              </div>
+
+              <div className="space-y-4">
+                {securityServiceFAQs.map((faq, index) => (
+                  <details
+                    key={index}
+                    style={{
+                      padding: '24px',
+                      backgroundColor: 'var(--card)',
+                      borderRadius: 'var(--radius-lg)',
+                      border: '1px solid var(--border-soft)'
+                    }}
+                  >
+                    <summary
+                      style={{
+                        fontFamily: 'Lexend, sans-serif',
+                        fontSize: 'var(--text-lg)',
+                        fontWeight: 'var(--font-weight-semibold)',
+                        color: 'var(--foreground)',
+                        cursor: 'pointer',
+                        listStyle: 'none'
+                      }}
+                    >
+                      {faq.question}
+                    </summary>
+                    <p
+                      style={{
+                        fontFamily: 'Lexend, sans-serif',
+                        fontSize: 'var(--text-base)',
+                        lineHeight: '1.7',
+                        color: 'var(--muted-foreground)',
+                        marginTop: '12px'
+                      }}
+                    >
+                      {faq.answer}
+                    </p>
+                  </details>
+                ))}
+              </div>
+            </div>
+          </Container>
+        </Section>
+
+        {/* CTA Section */}
+        <Section 
+          spacing="xl" 
+          style={{
+            background: 'linear-gradient(135deg, #dc2626 0%, #b91c1c 100%)',
+            color: 'var(--primary-foreground)'
+          }}
+        >
+          <Container>
+            <div className="max-w-3xl mx-auto text-center">
+              <h2
+                style={{
+                  fontFamily: 'Lexend, sans-serif',
+                  fontSize: 'var(--text-h1)',
+                  fontWeight: 'var(--font-weight-bold)',
+                  lineHeight: '1.2',
+                  letterSpacing: '-0.02em',
+                  marginBottom: '16px',
+                  color: 'var(--primary-foreground)'
+                }}
+              >
+                {securityServiceCTA.title}
+              </h2>
+
+              <p
+                style={{
+                  fontFamily: 'Lexend, sans-serif',
+                  fontSize: 'var(--text-lg)',
+                  lineHeight: '1.7',
+                  color: 'rgba(255, 255, 255, 0.9)',
+                  marginBottom: '32px'
+                }}
+              >
+                {securityServiceCTA.description}
+              </p>
+
+              <Buttons alignment="center" gap="md">
+                <Button 
+                  page={securityServiceCTA.buttons[0].page as any} 
+                  size="lg"
+                  variant="default"
+                  style={{
+                    backgroundColor: 'var(--primary-foreground)',
+                    color: 'var(--destructive)'
+                  }}
+                >
+                  {securityServiceCTA.buttons[0].text}
+                </Button>
+                <Button 
+                  page={securityServiceCTA.buttons[1].page as any} 
+                  size="lg"
+                  variant="outline"
+                  style={{
+                    borderColor: 'var(--primary-foreground)',
+                    color: 'var(--primary-foreground)'
+                  }}
+                >
+                  {securityServiceCTA.buttons[1].text}
+                </Button>
+              </Buttons>
             </div>
           </Container>
         </Section>

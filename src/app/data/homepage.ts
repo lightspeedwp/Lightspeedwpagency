@@ -1,23 +1,31 @@
 /**
  * Homepage Data
  * 
- * Centralized data for the front page template.
- * All content, images, and structured data for the homepage.
+ * Real homepage content from LightSpeed WordPress Agency.
+ * Real content extracted from https://lightspeedwp.agency
+ * 
+ * **REAL CONTENT SOURCE:** https://lightspeedwp.agency
+ * **Last Updated:** 2025-01-09
  * 
  * WordPress: Maps to homepage template fields and patterns
  */
 
+// Import real data
+import { services } from './services';
+import { blogPosts, featuredPosts } from './blog-posts';
+
 /**
  * Hero Section Data
+ * Real hero content from LightSpeed WP Agency homepage
  */
 export const homepageHero = {
   badge: {
     icon: 'Sparkles',
-    text: 'WordPress & WooCommerce Experts'
+    text: 'WordPress & WooCommerce Experts Since 2003'
   },
-  title: 'Expert WordPress & WooCommerce Solutions',
-  titleHighlight: 'WooCommerce', // Word to highlight with gradient
-  description: 'We help businesses scale with enterprise-level WordPress development, stunning design, and expert WooCommerce solutions.',
+  title: 'Expert WordPress & WooCommerce solutions',
+  titleHighlight: 'WordPress', // Word to highlight with gradient
+  description: 'We build extraordinary websites for all types of businesses.',
   buttons: [
     {
       text: 'Get Started',
@@ -25,31 +33,31 @@ export const homepageHero = {
       variant: 'default'
     },
     {
-      text: 'View Our Work',
-      page: 'portfolio',
+      text: 'View Our Services',
+      page: 'services',
       variant: 'outline'
     }
   ],
   stats: [
     {
-      icon: 'Target',
-      value: '500+',
-      label: 'Projects Delivered'
+      icon: 'Award',
+      value: '22+',
+      label: 'Years Experience'
     },
     {
       icon: 'Users',
-      value: '200+',
-      label: 'Happy Clients'
-    },
-    {
-      icon: 'Award',
-      value: '15+',
-      label: 'Years WordPress Expertise'
+      value: '120+',
+      label: 'Websites Hosted'
     },
     {
       icon: 'Heart',
-      value: '99%',
-      label: 'Client Satisfaction'
+      value: 'WooExpert',
+      label: 'Certified Agency'
+    },
+    {
+      icon: 'Target',
+      value: '2003',
+      label: 'Established'
     }
   ]
 };
@@ -57,56 +65,63 @@ export const homepageHero = {
 /**
  * Services Section Data
  * 
- * 8 core services matching Lightspeed WP offerings
+ * Real LightSpeed services manually mapped with icon names (strings)
+ * for homepage compatibility with icon map
  */
 export const homepageServices = [
   {
-    icon: 'Code',
-    title: 'Development',
-    description: 'Custom WordPress development with modern best practices and scalable architecture.',
-    slug: 'development'
-  },
-  {
     icon: 'Palette',
-    title: 'Design Excellence',
-    description: 'Beautiful, user-focused designs that drive engagement and conversions.',
+    title: 'Design',
+    description: 'Beautiful, conversion-focused website design that drives results',
     slug: 'design'
   },
   {
-    icon: 'Shield',
-    title: 'Support & Maintenance',
-    description: 'Ongoing support to keep your WordPress site secure, fast, and up-to-date.',
-    slug: 'support'
+    icon: 'Code',
+    title: 'Development',
+    description: 'Expert WordPress development with coding skills you can rely on',
+    slug: 'development'
   },
   {
-    icon: 'Zap',
-    title: 'Managed Hosting',
-    description: 'High-performance WordPress hosting with expert management and monitoring.',
-    slug: 'hosting'
-  },
-  {
-    icon: 'ShoppingCart',
-    title: 'eCommerce Stores',
-    description: 'Powerful WooCommerce solutions that turn visitors into customers.',
-    slug: 'woocommerce'
-  },
-  {
-    icon: 'RefreshCw',
-    title: 'eCommerce Migrations',
-    description: 'Seamless migrations from Shopify, Magento, or other platforms to WooCommerce.',
-    slug: 'migrations'
+    icon: 'Search',
+    title: 'Discovery',
+    description: 'Understanding your needs to deliver the right solutions',
+    slug: 'discovery'
   },
   {
     icon: 'HelpCircle',
-    title: 'Your Questions',
-    description: 'Expert WordPress consultation to help you make the right decisions.',
-    slug: 'consultation'
+    title: 'Support',
+    description: 'The expertise you can rely on for ongoing success',
+    slug: 'support'
   },
   {
-    icon: 'GraduationCap',
-    title: 'eLearning',
-    description: 'Custom LMS solutions and online course platforms with WordPress.',
-    slug: 'elearning'
+    icon: 'Shield',
+    title: 'Security',
+    description: 'World-class security expertise to protect your website',
+    slug: 'security'
+  },
+  {
+    icon: 'Zap',
+    title: 'Hosting',
+    description: 'Safe and stable managed WordPress hosting',
+    slug: 'hosting'
+  },
+  {
+    icon: 'RefreshCw',
+    title: 'Migrations',
+    description: 'Smooth migrations with no data loss or downtime',
+    slug: 'migrations'
+  },
+  {
+    icon: 'FileText',
+    title: 'Content',
+    description: 'Content audit, strategy and creation services',
+    slug: 'content'
+  },
+  {
+    icon: 'Globe',
+    title: 'Mailchimp',
+    description: 'Email marketing that drives sales and engagement',
+    slug: 'mailchimp'
   }
 ];
 
@@ -220,67 +235,47 @@ export const homepageSolutions = [
  * Showcase portfolio highlight
  */
 export const homepageFeaturedProject = {
-  title: 'Leading African Tour Operator',
-  category: 'Travel & Tourism',
-  description: 'Complete digital transformation with custom booking system and multilingual support.',
-  image: 'https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=1200&h=800&fit=crop',
+  title: 'ARMD Digital - Email Security Platform',
+  category: 'Technology',
+  description: 'Custom WooCommerce solution with partner commission system and streamlined services for email security.',
+  image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1200&h=800&fit=crop',
   stats: [
     {
-      value: '300%',
-      label: 'Increase in Online Bookings'
+      value: 'Enhanced',
+      label: 'Operational Efficiency'
     },
     {
-      value: '50%',
-      label: 'Faster Page Load Times'
+      value: 'Positive',
+      label: 'User Experience'
     },
     {
-      value: '4.9★',
-      label: 'Customer Rating'
+      value: 'Expert',
+      label: 'Code Quality'
     }
   ],
-  technologies: ['WordPress', 'WooCommerce', 'WPML', 'Custom Booking System'],
-  slug: 'african-tour-operator'
+  technologies: ['WordPress', 'WooCommerce', 'Custom Development', 'API Integration'],
+  slug: 'armd-digital'
 };
 
 /**
  * Featured Blog Posts
  * 
- * Latest insights and articles
+ * Real blog posts from LightSpeed WordPress Agency
+ * Uses first 4 posts from blog-posts.ts
  */
-export const homepageBlogPosts = [
-  {
-    title: 'The power of your WordPress website',
-    excerpt: 'Discover how a well-optimized WordPress site can transform your business.',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop',
-    category: 'WordPress',
-    date: 'Dec 15, 2024',
-    slug: 'power-of-wordpress'
-  },
-  {
-    title: 'Compelling Content: captivate and convert',
-    excerpt: 'Learn the art of creating content that engages and converts visitors.',
-    image: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600&h=400&fit=crop',
-    category: 'Content',
-    date: 'Dec 10, 2024',
-    slug: 'compelling-content'
-  },
-  {
-    title: 'Creative strategy that drives results',
-    excerpt: 'Strategic approaches to building successful WordPress projects.',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop',
-    category: 'Strategy',
-    date: 'Dec 5, 2024',
-    slug: 'creative-strategy'
-  },
-  {
-    title: 'A strategic approach to ecommerce growth',
-    excerpt: 'Proven tactics for scaling your WooCommerce business.',
-    image: 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=600&h=400&fit=crop',
-    category: 'eCommerce',
-    date: 'Nov 30, 2024',
-    slug: 'ecommerce-growth'
-  }
-];
+export const homepageBlogPosts = featuredPosts.slice(0, 4).map(post => ({
+  title: post.title,
+  excerpt: post.excerpt,
+  image: post.featuredImage,
+  category: post.categories[0] || 'News',
+  date: new Date(post.date).toLocaleDateString('en-US', { 
+    month: 'short', 
+    day: 'numeric', 
+    year: 'numeric' 
+  }),
+  slug: post.slug,
+  readingTime: post.readingTime
+}));
 
 /**
  * CTA Section Data

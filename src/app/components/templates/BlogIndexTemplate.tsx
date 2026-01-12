@@ -3,7 +3,7 @@
  * 
  * WordPress template: templates/index.html (blog listing)
  * 
- * Pattern order: Header → Hero → Filter Bar → Post Grid → Pagination → Footer
+ * Pattern order: Breadcrumbs → Hero → Featured Posts → Filter Bar → Post Grid → Topics → Newsletter → FAQs → CTA
  */
 
 import { SiteHeader } from '../parts/SiteHeader';
@@ -12,68 +12,60 @@ import { SkipLink } from '../common/SkipLink';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { Breadcrumbs } from '../common/Breadcrumbs';
-import { Button } from '../blocks/design/Buttons';
-import { ArchiveCTA } from '../patterns/ArchiveCTA';
-import { blogArchiveCTA } from '../../data/cta';
-import { FAQSection } from '../patterns/FAQSection';
-import { NewsletterSignup } from '../patterns/NewsletterSignup';
-import { PaginationNav } from '../patterns/PaginationNav';
 import { BackToTopButton } from '../blocks/layout/BackToTopButton';
-import { MobileFilterPopover, FilterOption } from '../common/MobileFilterPopover';
-import { Skeleton } from '../blocks/layout/Skeleton';
-import { useStaggerReveal } from '../../hooks/useScrollReveal';
-import { Calendar, User, Clock, Filter } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { RouteAnnouncer } from '../blocks/utility/RouteAnnouncer';
+import { Buttons, Button } from '../blocks/design/Buttons';
+import { 
+  FileText,
+  Users,
+  TrendingUp,
+  BookOpen,
+  Calendar,
+  User,
+  Clock,
+  Tag,
+  ChevronRight,
+  Filter
+} from 'lucide-react';
+import { useState } from 'react';
 import { useNavigation } from '../../contexts/NavigationContext';
-import { useMicroInteractions } from '../../hooks/useMicroInteractions';
-import { blogFAQs } from '../../data/faqs';
-import { blogPosts, blogCategories } from '../../data/blog-posts';
 
-const categories = ['All', ...blogCategories.map(cat => cat.name)];
-const sortOptions = ['Latest First', 'Oldest First', 'Most Popular'];
+// Import centralized data
+import {
+  blogIndexHero,
+  blogIndexPosts,
+  featuredBlogPosts,
+  recentBlogPosts,
+  blogIndexCategories,
+  blogIndexAuthors,
+  blogIndexStats,
+  blogIndexTopics,
+  blogIndexFAQs,
+  blogIndexCTA,
+  blogIndexFilters
+} from '../../data/blog-index-page';
 
 export function BlogIndexTemplate() {
   const { navigateTo } = useNavigation();
-  const { handleHover } = useMicroInteractions();
   const [selectedCategory, setSelectedCategory] = useState('All');
-  const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
-  const [selectedSort, setSelectedSort] = useState('Latest First');
-  const [isLoading, setIsLoading] = useState(true);
-
-  // Scroll reveal with stagger for blog grid
-  const { containerRef, itemStyle } = useStaggerReveal({
-    stagger: 80,
-    animation: 'fade-up',
-    duration: 600,
-    threshold: 0.1
-  });
-
-  // Simulate loading state (in real app, this would be actual data fetching)
-  useEffect(() => {
-    setIsLoading(true);
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 800); // 800ms loading simulation
-    
-    return () => clearTimeout(timer);
-  }, [selectedCategory, selectedSort]); // Re-trigger when filter or sort changes
+  const [selectedSort, setSelectedSort] = useState('latest');
 
   // Filter posts by category
   const filteredPosts = selectedCategory === 'All' 
-    ? blogPosts 
-    : blogPosts.filter(post => {
-        // Map category names to slugs for filtering
-        const categorySlug = blogCategories.find(cat => cat.name === selectedCategory)?.slug;
+    ? recentBlogPosts 
+    : recentBlogPosts.filter(post => {
+        const categorySlug = blogIndexCategories.find(cat => cat.name === selectedCategory)?.slug;
         return categorySlug && post.categories.includes(categorySlug);
       });
 
   return (
     <>
+      <RouteAnnouncer />
       <SkipLink />
       <SiteHeader />
       
       <main id="main-content" role="main">
-        {/* Breadcrumbs - Modern styling */}
+        {/* Breadcrumbs */}
         <section 
           className="py-4"
           style={{
@@ -83,511 +75,712 @@ export function BlogIndexTemplate() {
           <Container>
             <Breadcrumbs 
               items={[
-                { label: 'Home', page: 'front-page' },
-                { label: 'Resources' }
+                { label: 'Home', href: '/' },
+                { label: 'Blog' }
               ]}
             />
           </Container>
         </section>
 
-        {/* Hero Section - Gradient with orbs */}
+        {/* Hero Section */}
         <Section 
           spacing="xl"
           style={{
-            background: 'linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%)',
+            background: 'linear-gradient(135deg, #1e40af 0%, #3b82f6 100%)',
             color: 'var(--primary-foreground)',
             position: 'relative',
             overflow: 'hidden'
           }}
         >
-          {/* Gradient orb decoration */}
+          {/* Gradient orb decorations */}
           <div
             className="absolute top-0 right-0 w-96 h-96 rounded-full"
             style={{
-              background: 'var(--glass-bg-strong)',
+              background: 'radial-gradient(circle, rgba(96, 165, 250, 0.3) 0%, transparent 70%)',
               filter: 'blur(80px)',
               transform: 'translate(30%, -30%)'
             }}
           />
 
-          <Container style={{ position: 'relative', zIndex: 1 }}>
-            <div className="text-center max-w-4xl mx-auto">
-              <span 
-                className="inline-flex items-center px-6 py-3 mb-8"
+          <Container>
+            <div className="max-w-4xl mx-auto text-center relative z-10">
+              <div
+                className="inline-block px-4 py-2 mb-6"
                 style={{
-                  backgroundColor: 'var(--glass-bg-strong)',
+                  backgroundColor: 'rgba(255, 255, 255, 0.15)',
                   backdropFilter: 'blur(10px)',
-                  color: 'var(--primary-foreground)',
-                  borderRadius: 'var(--radius-xl)',
-                  border: '1px solid var(--glass-border)',
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-base)',
-                  fontWeight: 'var(--font-weight-medium)',
+                  borderRadius: 'var(--radius-full)',
+                  border: '1px solid rgba(255, 255, 255, 0.2)',
+                  fontSize: 'var(--text-small)',
+                  fontFamily: 'Manrope, sans-serif',
+                  fontWeight: 'var(--font-weight-semibold)',
                   textTransform: 'uppercase',
                   letterSpacing: '0.1em'
                 }}
               >
-                Resources
-              </span>
+                <FileText size={14} style={{ display: 'inline', marginRight: '8px' }} />
+                OUR BLOG
+              </div>
 
-              <h1 
+              <h1
                 style={{
                   fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-h1)',
-                  fontWeight: 'var(--font-weight-semibold)',
-                  lineHeight: 'var(--line-height-tight)',
-                  letterSpacing: 'var(--letter-spacing-tight)',
-                  marginBottom: '24px',
+                  fontSize: 'clamp(2rem, 5vw, 3.5rem)',
+                  fontWeight: 'var(--font-weight-bold)',
+                  lineHeight: '1.1',
+                  letterSpacing: '-0.02em',
+                  marginBottom: '20px',
                   color: 'var(--primary-foreground)'
                 }}
               >
-                Insights & Tutorials
+                WordPress <span style={{ 
+                  background: 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text'
+                }}>Insights</span> & Best Practices
               </h1>
 
-              <p 
+              <p
                 style={{
                   fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-lead)',
-                  fontWeight: 'var(--font-weight-regular)',
-                  lineHeight: 'var(--line-height-relaxed)',
-                  color: 'var(--primary-foreground)',
-                  opacity: 0.95,
+                  fontSize: 'var(--text-lg)',
+                  lineHeight: '1.7',
+                  color: 'rgba(255, 255, 255, 0.95)',
+                  marginBottom: '40px',
                   maxWidth: '700px',
-                  margin: '0 auto'
+                  margin: '0 auto 40px'
                 }}
               >
-                Explore our collection of tutorials, case studies, and updates from the LSX Design team. Learn WordPress best practices and modern development techniques.
+                {blogIndexHero.description}
               </p>
+
+              {/* Hero Stats */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {blogIndexHero.stats.map((stat, index) => {
+                  const icons = { FileText, Users, TrendingUp };
+                  const Icon = icons[stat.icon as keyof typeof icons];
+                  return (
+                    <div
+                      key={index}
+                      style={{
+                        padding: '24px',
+                        backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                        backdropFilter: 'blur(10px)',
+                        borderRadius: 'var(--radius-lg)',
+                        border: '1px solid rgba(255, 255, 255, 0.2)'
+                      }}
+                    >
+                      <Icon size={32} style={{ marginBottom: '12px', color: '#fbbf24' }} />
+                      <div
+                        style={{
+                          fontFamily: 'Lexend, sans-serif',
+                          fontSize: 'var(--text-h2)',
+                          fontWeight: 'var(--font-weight-bold)',
+                          marginBottom: '4px'
+                        }}
+                      >
+                        {stat.value}
+                      </div>
+                      <div
+                        style={{
+                          fontFamily: 'Manrope, sans-serif',
+                          fontSize: 'var(--text-small)',
+                          opacity: 0.9
+                        }}
+                      >
+                        {stat.label}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </Container>
         </Section>
 
-        {/* Filter Bar */}
-        <section 
-          className="py-6"
-          style={{
-            backgroundColor: 'var(--background)',
-            borderBottom: '1px solid var(--border-soft)',
-          }}
-        >
-          <Container>
-            <div className="flex flex-col gap-6">
-              {/* Mobile Filter Button (show on mobile, hide on desktop) */}
-              <div className="flex items-center justify-between gap-4 lg:hidden">
-                <h2 
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-h4)',
-                    fontWeight: 'var(--font-weight-medium)',
-                    color: 'var(--foreground)',
-                    margin: 0
-                  }}
-                >
-                  Filter Resources
-                </h2>
-                
-                <button
-                  onClick={() => setIsMobileFilterOpen(true)}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '8px',
-                    minHeight: '48px',
-                    minWidth: '48px',
-                    padding: '12px 24px',
-                    backgroundColor: 'var(--primary)',
-                    color: 'var(--primary-foreground)',
-                    border: 'none',
-                    borderRadius: 'var(--radius)',
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-base)',
-                    fontWeight: 'var(--font-weight-medium)',
-                    cursor: 'pointer',
-                    transition: 'all 0.2s ease',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'scale(1.05)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'scale(1)';
-                  }}
-                  aria-label="Open filter menu"
-                >
-                  <Filter size={20} />
-                  <span>Filters</span>
-                </button>
-              </div>
-
-              {/* Category Filters (hide on mobile, show on desktop) */}
-              <div className="hidden lg:flex flex-wrap gap-3">
-                {categories.map((category) => (
-                  <button
-                    key={category}
-                    onClick={() => setSelectedCategory(category)}
-                    className="px-6 py-3"
+        {/* Featured Posts */}
+        {featuredBlogPosts.length > 0 && (
+          <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
+            <Container>
+              <div className="max-w-6xl mx-auto">
+                <div className="mb-12">
+                  <h2
+                    style={{
+                      fontFamily: 'Lexend, sans-serif',
+                      fontSize: 'var(--text-h2)',
+                      fontWeight: 'var(--font-weight-bold)',
+                      lineHeight: '1.2',
+                      letterSpacing: '-0.02em',
+                      marginBottom: '8px',
+                      color: 'var(--foreground)'
+                    }}
+                  >
+                    Featured Posts
+                  </h2>
+                  <p
                     style={{
                       fontFamily: 'Lexend, sans-serif',
                       fontSize: 'var(--text-base)',
-                      fontWeight: 'var(--font-weight-medium)',
-                      backgroundColor: selectedCategory === category 
-                        ? 'var(--primary)' 
-                        : 'var(--background)',
-                      color: selectedCategory === category 
-                        ? 'var(--primary-foreground)' 
-                        : 'var(--foreground)',
-                      border: `1px solid ${selectedCategory === category ? 'var(--primary)' : 'var(--border-soft)'}`,
-                      borderRadius: 'var(--radius)',
-                      cursor: 'pointer',
-                      transition: 'all 0.2s ease',
-                      minHeight: '44px',
-                      minWidth: '44px',
-                    }}
-                    onMouseEnter={(e) => {
-                      if (selectedCategory !== category) {
-                        e.currentTarget.style.borderColor = 'var(--primary)';
-                      }
-                    }}
-                    onMouseLeave={(e) => {
-                      if (selectedCategory !== category) {
-                        e.currentTarget.style.borderColor = 'var(--border-soft)';
-                      }
+                      color: 'var(--muted-foreground)'
                     }}
                   >
-                    {category}
-                  </button>
-                ))}
-              </div>
+                    Our most popular and recent articles
+                  </p>
+                </div>
 
-              {/* Sort Dropdown */}
-              <div className="flex flex-col sm:flex-row sm:items-center gap-3">
-                <label 
-                  htmlFor="sort-dropdown"
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-base)',
-                    fontWeight: 'var(--font-weight-medium)',
-                    color: 'var(--foreground)',
-                  }}
-                >
-                  Sort by:
-                </label>
-                <select
-                  id="sort-dropdown"
-                  value={selectedSort}
-                  onChange={(e) => setSelectedSort(e.target.value)}
-                  className="px-4 py-3 w-full sm:w-auto appearance-none"
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-base)',
-                    fontWeight: 'var(--font-weight-regular)',
-                    backgroundColor: 'var(--background)',
-                    color: 'var(--foreground)',
-                    border: '1px solid var(--border)',
-                    borderRadius: 'var(--radius)',
-                    cursor: 'pointer',
-                    minHeight: '44px',
-                    backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 9L1 4h10z'/%3E%3C/svg%3E")`,
-                    backgroundRepeat: 'no-repeat',
-                    backgroundPosition: 'right 12px center',
-                    paddingRight: '36px',
-                    outline: 'none',
-                  }}
-                  onFocus={(e) => {
-                    e.currentTarget.style.borderColor = 'var(--ring)';
-                  }}
-                  onBlur={(e) => {
-                    e.currentTarget.style.borderColor = 'var(--border)';
-                  }}
-                >
-                  {sortOptions.map((option) => (
-                    <option key={option} value={option}>
-                      {option}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              {/* Results Count */}
-              <p 
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-base)',
-                  color: 'var(--muted-foreground)',
-                  margin: 0,
-                }}
-              >
-                Showing {filteredPosts.length} {filteredPosts.length === 1 ? 'post' : 'posts'}
-              </p>
-            </div>
-          </Container>
-        </section>
-
-        {/* Post Grid */}
-        <section className="py-16" style={{ backgroundColor: 'var(--background)' }}>
-          <Container>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" ref={containerRef}>
-              {isLoading ? (
-                // Loading skeletons
-                Array.from({ length: 6 }).map((_, index) => (
-                  <div
-                    key={index}
-                    className="flex flex-col"
-                    style={{
-                      border: '1px solid var(--border-soft)',
-                      backgroundColor: 'var(--card)',
-                      borderRadius: 'var(--radius-lg)',
-                      overflow: 'hidden'
-                    }}
-                  >
-                    {/* Image skeleton */}
-                    <Skeleton height="220px" variant="rectangular" />
-                    
-                    {/* Content skeleton */}
-                    <div className="p-6 flex flex-col gap-3">
-                      {/* Category badge skeleton */}
-                      <Skeleton width="80px" height="28px" variant="rectangular" style={{ borderRadius: 'var(--radius-xl)' }} />
-                      
-                      {/* Title skeleton */}
-                      <Skeleton width="90%" height="24px" className="mb-1" variant="text" />
-                      <Skeleton width="70%" height="24px" className="mb-2" variant="text" />
-                      
-                      {/* Excerpt skeletons */}
-                      <Skeleton width="100%" height="16px" variant="text" />
-                      <Skeleton width="100%" height="16px" variant="text" />
-                      <Skeleton width="85%" height="16px" className="mb-4" variant="text" />
-                      
-                      {/* Meta skeleton */}
-                      <div className="flex gap-4 pt-4" style={{ borderTop: '1px solid var(--border-extra-soft)' }}>
-                        <Skeleton width="80px" height="16px" variant="text" />
-                        <Skeleton width="90px" height="16px" variant="text" />
-                        <Skeleton width="60px" height="16px" variant="text" />
-                      </div>
-                    </div>
-                  </div>
-                ))
-              ) : (
-                filteredPosts.map((post, index) => {
-                  // Get the first category for display
-                  const primaryCategory = blogCategories.find(cat => cat.slug === post.categories[0]);
-                  const categoryDisplay = primaryCategory?.name || post.categories[0];
-                  
-                  return (
-                  <div key={post.id} style={itemStyle(index)}>
-                  <article 
-                    className="flex flex-col rounded-[var(--radius-lg)]"
-                    style={{
-                      border: '1px solid var(--border-soft)',
-                      backgroundColor: 'var(--card)',
-                      overflow: 'hidden',
-                      transition: 'all 0.2s ease',
-                      height: '100%'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.transform = 'translateY(-4px)';
-                      e.currentTarget.style.boxShadow = 'var(--shadow-hover)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.transform = 'translateY(0)';
-                      e.currentTarget.style.boxShadow = 'none';
-                    }}
-                  >
-                    {/* Post Image */}
-                    <a 
-                      href={`#post-${post.slug}`}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        navigateTo(`post-${post.slug}`);
-                      }}
-                      style={{ 
-                        textDecoration: 'none',
-                        display: 'block',
-                        cursor: 'pointer',
-                      }}
-                      aria-label={`Read ${post.title}`}
-                    >
-                      <div 
-                        className="aspect-[16/9] bg-cover bg-center"
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  {featuredBlogPosts.slice(0, 2).map((post, index) => {
+                    const author = blogIndexAuthors.find(a => a.slug === post.author);
+                    return (
+                      <article
+                        key={index}
+                        onClick={() => navigateTo('blog-single')}
                         style={{
-                          backgroundImage: `url(${post.featuredImage})`,
-                        }}
-                      />
-                    </a>
-
-                    {/* Post Content */}
-                    <div className="p-6 flex flex-col flex-1">
-                      {/* Category Badge */}
-                      <a 
-                        href={`#category-${post.categories[0]}`}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          navigateTo(`category-${post.categories[0]}`);
-                        }}
-                        className="inline-flex items-center px-3 py-1 rounded-full mb-3"
-                        style={{
-                          fontFamily: 'Lexend, sans-serif',
-                          fontSize: 'var(--text-small)',
-                          fontWeight: 'var(--font-weight-medium)',
-                          backgroundColor: 'var(--secondary)',
-                          color: 'var(--secondary-foreground)',
-                          textDecoration: 'none',
-                          alignSelf: 'flex-start',
-                          transition: 'opacity 0.2s ease',
-                          border: 'none',
+                          backgroundColor: 'var(--card)',
+                          borderRadius: 'var(--radius-lg)',
+                          border: '1px solid var(--border-soft)',
+                          overflow: 'hidden',
                           cursor: 'pointer',
+                          transition: 'all 0.3s ease'
                         }}
                         onMouseEnter={(e) => {
-                          e.currentTarget.style.opacity = '0.8';
+                          e.currentTarget.style.transform = 'translateY(-4px)';
+                          e.currentTarget.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
+                          e.currentTarget.style.borderColor = 'var(--primary)';
                         }}
                         onMouseLeave={(e) => {
-                          e.currentTarget.style.opacity = '1';
+                          e.currentTarget.style.transform = 'translateY(0)';
+                          e.currentTarget.style.boxShadow = 'none';
+                          e.currentTarget.style.borderColor = 'var(--border-soft)';
                         }}
-                        aria-label={`View all posts in ${categoryDisplay}`}
                       >
-                        {categoryDisplay}
-                      </a>
-
-                      {/* Title */}
-                      <h2 className="mb-2">
-                        <a 
-                          href={`#post-${post.slug}`}
-                          onClick={(e) => {
-                            e.preventDefault();
-                            navigateTo(`post-${post.slug}`);
+                        {/* Featured Image */}
+                        <div
+                          style={{
+                            width: '100%',
+                            height: '240px',
+                            backgroundImage: `url(${post.featuredImage})`,
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center'
                           }}
+                        />
+
+                        <div style={{ padding: '32px' }}>
+                          {/* Categories */}
+                          <div style={{ display: 'flex', gap: '8px', marginBottom: '12px', flexWrap: 'wrap' }}>
+                            {post.categories.slice(0, 2).map((catSlug, idx) => {
+                              const category = blogIndexCategories.find(c => c.slug === catSlug);
+                              return category ? (
+                                <span
+                                  key={idx}
+                                  style={{
+                                    fontSize: 'var(--text-small)',
+                                    fontFamily: 'Manrope, sans-serif',
+                                    fontWeight: 'var(--font-weight-semibold)',
+                                    color: 'var(--primary)',
+                                    backgroundColor: 'var(--primary-soft)',
+                                    padding: '4px 12px',
+                                    borderRadius: 'var(--radius-full)'
+                                  }}
+                                >
+                                  {category.name}
+                                </span>
+                              ) : null;
+                            })}
+                          </div>
+
+                          <h3
+                            style={{
+                              fontFamily: 'Lexend, sans-serif',
+                              fontSize: 'var(--text-h3)',
+                              fontWeight: 'var(--font-weight-bold)',
+                              color: 'var(--foreground)',
+                              marginBottom: '12px',
+                              lineHeight: '1.3'
+                            }}
+                          >
+                            {post.title}
+                          </h3>
+
+                          <p
+                            style={{
+                              fontFamily: 'Lexend, sans-serif',
+                              fontSize: 'var(--text-base)',
+                              lineHeight: '1.6',
+                              color: 'var(--muted-foreground)',
+                              marginBottom: '20px'
+                            }}
+                          >
+                            {post.excerpt}
+                          </p>
+
+                          {/* Meta */}
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                              <User size={14} style={{ color: 'var(--muted-foreground)' }} />
+                              <span
+                                style={{
+                                  fontFamily: 'Manrope, sans-serif',
+                                  fontSize: 'var(--text-small)',
+                                  color: 'var(--muted-foreground)'
+                                }}
+                              >
+                                {author?.name}
+                              </span>
+                            </div>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                              <Calendar size={14} style={{ color: 'var(--muted-foreground)' }} />
+                              <span
+                                style={{
+                                  fontFamily: 'Manrope, sans-serif',
+                                  fontSize: 'var(--text-small)',
+                                  color: 'var(--muted-foreground)'
+                                }}
+                              >
+                                {post.date}
+                              </span>
+                            </div>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                              <Clock size={14} style={{ color: 'var(--muted-foreground)' }} />
+                              <span
+                                style={{
+                                  fontFamily: 'Manrope, sans-serif',
+                                  fontSize: 'var(--text-small)',
+                                  color: 'var(--muted-foreground)'
+                                }}
+                              >
+                                {post.readingTime}
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </article>
+                    );
+                  })}
+                </div>
+              </div>
+            </Container>
+          </Section>
+        )}
+
+        {/* Filter Bar */}
+        <Section spacing="md" style={{ backgroundColor: 'var(--muted)', paddingTop: '24px', paddingBottom: '24px' }}>
+          <Container>
+            <div className="max-w-6xl mx-auto">
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px' }}>
+                <h2
+                  style={{
+                    fontFamily: 'Lexend, sans-serif',
+                    fontSize: 'var(--text-xl)',
+                    fontWeight: 'var(--font-weight-semibold)',
+                    color: 'var(--foreground)'
+                  }}
+                >
+                  Recent Articles
+                </h2>
+
+                {/* Category Filters */}
+                <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                  {blogIndexFilters.categories.map((category, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setSelectedCategory(category)}
+                      style={{
+                        padding: '8px 16px',
+                        borderRadius: 'var(--radius-full)',
+                        border: '1px solid var(--border)',
+                        backgroundColor: selectedCategory === category ? 'var(--primary)' : 'var(--background)',
+                        color: selectedCategory === category ? 'var(--primary-foreground)' : 'var(--foreground)',
+                        fontFamily: 'Manrope, sans-serif',
+                        fontSize: 'var(--text-small)',
+                        fontWeight: 'var(--font-weight-semibold)',
+                        cursor: 'pointer',
+                        transition: 'all 0.2s ease'
+                      }}
+                      onMouseEnter={(e) => {
+                        if (selectedCategory !== category) {
+                          e.currentTarget.style.borderColor = 'var(--primary)';
+                          e.currentTarget.style.color = 'var(--primary)';
+                        }
+                      }}
+                      onMouseLeave={(e) => {
+                        if (selectedCategory !== category) {
+                          e.currentTarget.style.borderColor = 'var(--border)';
+                          e.currentTarget.style.color = 'var(--foreground)';
+                        }
+                      }}
+                      aria-pressed={selectedCategory === category}
+                    >
+                      {category}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </Container>
+        </Section>
+
+        {/* Blog Post Grid */}
+        <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
+          <Container>
+            <div className="max-w-6xl mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {filteredPosts.map((post, index) => {
+                  const author = blogIndexAuthors.find(a => a.slug === post.author);
+                  return (
+                    <article
+                      key={index}
+                      onClick={() => navigateTo('blog-single')}
+                      style={{
+                        backgroundColor: 'var(--card)',
+                        borderRadius: 'var(--radius-lg)',
+                        border: '1px solid var(--border-soft)',
+                        overflow: 'hidden',
+                        cursor: 'pointer',
+                        transition: 'all 0.3s ease'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.transform = 'translateY(-4px)';
+                        e.currentTarget.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
+                        e.currentTarget.style.borderColor = 'var(--primary)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.transform = 'translateY(0)';
+                        e.currentTarget.style.boxShadow = 'none';
+                        e.currentTarget.style.borderColor = 'var(--border-soft)';
+                      }}
+                    >
+                      {/* Featured Image */}
+                      <div
+                        style={{
+                          width: '100%',
+                          height: '200px',
+                          backgroundImage: `url(${post.featuredImage})`,
+                          backgroundSize: 'cover',
+                          backgroundPosition: 'center'
+                        }}
+                      />
+
+                      <div style={{ padding: '24px' }}>
+                        {/* Category */}
+                        {post.categories.length > 0 && (
+                          <span
+                            style={{
+                              fontSize: 'var(--text-small)',
+                              fontFamily: 'Manrope, sans-serif',
+                              fontWeight: 'var(--font-weight-semibold)',
+                              color: 'var(--primary)',
+                              backgroundColor: 'var(--primary-soft)',
+                              padding: '4px 12px',
+                              borderRadius: 'var(--radius-full)',
+                              display: 'inline-block',
+                              marginBottom: '12px'
+                            }}
+                          >
+                            {blogIndexCategories.find(c => c.slug === post.categories[0])?.name}
+                          </span>
+                        )}
+
+                        <h3
                           style={{
                             fontFamily: 'Lexend, sans-serif',
-                            fontSize: 'var(--text-h3)',
-                            fontWeight: 'var(--font-weight-medium)',
+                            fontSize: 'var(--text-xl)',
+                            fontWeight: 'var(--font-weight-bold)',
                             color: 'var(--foreground)',
-                            textDecoration: 'none',
-                            lineHeight: '1.3',
-                            display: 'block',
-                          }}
-                          onMouseEnter={(e) => {
-                            e.currentTarget.style.color = 'var(--primary)';
-                          }}
-                          onMouseLeave={(e) => {
-                            e.currentTarget.style.color = 'var(--foreground)';
+                            marginBottom: '8px',
+                            lineHeight: '1.3'
                           }}
                         >
                           {post.title}
-                        </a>
-                      </h2>
+                        </h3>
 
-                      {/* Excerpt */}
-                      <p 
-                        className="mb-4"
-                        style={{
-                          fontFamily: 'Lexend, sans-serif',
-                          fontSize: 'var(--text-base)',
-                          color: 'var(--muted-foreground)',
-                          lineHeight: '1.6',
-                          margin: 0,
-                          flex: 1,
-                        }}
-                      >
-                        {post.excerpt}
-                      </p>
+                        <p
+                          style={{
+                            fontFamily: 'Lexend, sans-serif',
+                            fontSize: 'var(--text-small)',
+                            lineHeight: '1.6',
+                            color: 'var(--muted-foreground)',
+                            marginBottom: '16px'
+                          }}
+                        >
+                          {post.excerpt.substring(0, 100)}...
+                        </p>
 
-                      {/* Post Meta */}
-                      <div className="flex flex-wrap items-center gap-4 pt-4" style={{ borderTop: '1px solid var(--border-extra-soft)' }}>
-                        <div className="flex items-center gap-2">
-                          <User size={16} style={{ color: 'var(--muted-foreground)' }} />
-                          <a 
-                            href={`#author-${post.author}`}
-                            onClick={(e) => {
-                              e.preventDefault();
-                              navigateTo(`author-${post.author}`);
-                            }}
+                        {/* Meta */}
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', fontSize: 'var(--text-small)' }}>
+                          <span
                             style={{
                               fontFamily: 'Manrope, sans-serif',
-                              fontSize: 'var(--text-small)',
-                              color: 'var(--muted-foreground)',
-                              textDecoration: 'none',
-                            }}
-                            onMouseEnter={(e) => {
-                              e.currentTarget.style.color = 'var(--primary)';
-                            }}
-                            onMouseLeave={(e) => {
-                              e.currentTarget.style.color = 'var(--muted-foreground)';
-                            }}
-                            aria-label={`View all posts by ${post.author}`}
-                          >
-                            {post.author}
-                          </a>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Calendar size={16} style={{ color: 'var(--muted-foreground)' }} />
-                          <span 
-                            style={{
-                              fontFamily: 'Manrope, sans-serif',
-                              fontSize: 'var(--text-small)',
-                              color: 'var(--muted-foreground)',
+                              color: 'var(--muted-foreground)'
                             }}
                           >
-                            {new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+                            {author?.name}
                           </span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Clock size={16} style={{ color: 'var(--muted-foreground)' }} />
-                          <span 
+                          <span style={{ color: 'var(--border)' }}>•</span>
+                          <span
                             style={{
                               fontFamily: 'Manrope, sans-serif',
-                              fontSize: 'var(--text-small)',
-                              color: 'var(--muted-foreground)',
+                              color: 'var(--muted-foreground)'
                             }}
                           >
                             {post.readingTime}
                           </span>
                         </div>
                       </div>
-                    </div>
-                  </article>
-                  </div>
-                );
-                })
-              )}
+                    </article>
+                  );
+                })}
+              </div>
             </div>
           </Container>
-        </section>
+        </Section>
 
-        {/* Pagination */}
-        <section className="py-8" style={{ backgroundColor: 'var(--background)' }}>
+        {/* Blog Topics/Categories */}
+        <Section spacing="xl" style={{ backgroundColor: 'var(--muted)' }}>
           <Container>
-            <PaginationNav 
-              currentPage={1}
-              totalPages={3}
-              baseUrl="#blog"
-            />
-          </Container>
-        </section>
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-16">
+                <h2
+                  style={{
+                    fontFamily: 'Lexend, sans-serif',
+                    fontSize: 'var(--text-h1)',
+                    fontWeight: 'var(--font-weight-bold)',
+                    lineHeight: '1.2',
+                    letterSpacing: '-0.02em',
+                    marginBottom: '16px',
+                    color: 'var(--foreground)'
+                  }}
+                >
+                  Explore by Topic
+                </h2>
 
-        {/* CTA Section */}
-        <ArchiveCTA ctaData={blogArchiveCTA} />
+                <p
+                  style={{
+                    fontFamily: 'Lexend, sans-serif',
+                    fontSize: 'var(--text-lg)',
+                    lineHeight: '1.7',
+                    color: 'var(--muted-foreground)'
+                  }}
+                >
+                  Browse our blog categories to find what you're looking for
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {blogIndexTopics.map((topic, index) => {
+                  const Icon = topic.icon;
+                  return (
+                    <div
+                      key={index}
+                      onClick={() => setSelectedCategory(topic.name)}
+                      style={{
+                        padding: '24px',
+                        backgroundColor: 'var(--card)',
+                        borderRadius: 'var(--radius-lg)',
+                        border: '1px solid var(--border-soft)',
+                        cursor: 'pointer',
+                        transition: 'all 0.3s ease'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.transform = 'translateY(-4px)';
+                        e.currentTarget.style.borderColor = 'var(--primary)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.transform = 'translateY(0)';
+                        e.currentTarget.style.borderColor = 'var(--border-soft)';
+                      }}
+                    >
+                      <div
+                        style={{
+                          width: '48px',
+                          height: '48px',
+                          borderRadius: 'var(--radius-lg)',
+                          backgroundColor: 'var(--primary-soft)',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          marginBottom: '16px'
+                        }}
+                      >
+                        <Icon size={24} style={{ color: 'var(--primary)' }} />
+                      </div>
+
+                      <h3
+                        style={{
+                          fontFamily: 'Lexend, sans-serif',
+                          fontSize: 'var(--text-lg)',
+                          fontWeight: 'var(--font-weight-bold)',
+                          color: 'var(--foreground)',
+                          marginBottom: '8px'
+                        }}
+                      >
+                        {topic.name}
+                      </h3>
+
+                      <p
+                        style={{
+                          fontFamily: 'Lexend, sans-serif',
+                          fontSize: 'var(--text-small)',
+                          lineHeight: '1.6',
+                          color: 'var(--muted-foreground)',
+                          marginBottom: '12px'
+                        }}
+                      >
+                        {topic.description}
+                      </p>
+
+                      <p
+                        style={{
+                          fontFamily: 'Manrope, sans-serif',
+                          fontSize: 'var(--text-small)',
+                          fontWeight: 'var(--font-weight-semibold)',
+                          color: 'var(--primary)'
+                        }}
+                      >
+                        {topic.postCount} articles
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </Container>
+        </Section>
 
         {/* FAQ Section */}
-        <FAQSection 
-          title="Frequently Asked Questions"
-          faqs={blogFAQs}
-        />
+        <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
+          <Container>
+            <div className="max-w-3xl mx-auto">
+              <div className="text-center mb-12">
+                <h2
+                  style={{
+                    fontFamily: 'Lexend, sans-serif',
+                    fontSize: 'var(--text-h2)',
+                    fontWeight: 'var(--font-weight-semibold)',
+                    color: 'var(--foreground)',
+                    marginBottom: '16px',
+                    lineHeight: 'var(--line-height-snug)'
+                  }}
+                >
+                  Blog FAQs
+                </h2>
+                <p
+                  style={{
+                    fontFamily: 'Lexend, sans-serif',
+                    fontSize: 'var(--text-lg)',
+                    color: 'var(--muted-foreground)',
+                    lineHeight: '1.7'
+                  }}
+                >
+                  Common questions about our blog and content
+                </p>
+              </div>
 
-        {/* Newsletter Signup */}
-        <NewsletterSignup />
+              <div className="space-y-4">
+                {blogIndexFAQs.map((faq, index) => (
+                  <details
+                    key={index}
+                    style={{
+                      padding: '24px',
+                      backgroundColor: 'var(--card)',
+                      borderRadius: 'var(--radius-lg)',
+                      border: '1px solid var(--border-soft)'
+                    }}
+                  >
+                    <summary
+                      style={{
+                        fontFamily: 'Lexend, sans-serif',
+                        fontSize: 'var(--text-lg)',
+                        fontWeight: 'var(--font-weight-semibold)',
+                        color: 'var(--foreground)',
+                        cursor: 'pointer',
+                        listStyle: 'none'
+                      }}
+                    >
+                      {faq.question}
+                    </summary>
+                    <p
+                      style={{
+                        fontFamily: 'Lexend, sans-serif',
+                        fontSize: 'var(--text-base)',
+                        lineHeight: '1.7',
+                        color: 'var(--muted-foreground)',
+                        marginTop: '12px'
+                      }}
+                    >
+                      {faq.answer}
+                    </p>
+                  </details>
+                ))}
+              </div>
+            </div>
+          </Container>
+        </Section>
 
-        {/* Mobile Filter Popover */}
-        <MobileFilterPopover
-          isOpen={isMobileFilterOpen}
-          onClose={() => setIsMobileFilterOpen(false)}
-          title="Filter by Category"
-          options={blogCategories.map(cat => ({
-            id: cat.slug,
-            label: cat.name,
-            count: blogPosts.filter(p => p.categories.includes(cat.slug)).length
-          }))}
-          selectedOption={selectedCategory}
-          onSelect={setSelectedCategory}
-          allLabel="All Posts"
-        />
+        {/* CTA Section */}
+        <Section 
+          spacing="xl" 
+          style={{
+            background: 'linear-gradient(135deg, #1e40af 0%, #3b82f6 100%)',
+            color: 'var(--primary-foreground)'
+          }}
+        >
+          <Container>
+            <div className="max-w-3xl mx-auto text-center">
+              <h2
+                style={{
+                  fontFamily: 'Lexend, sans-serif',
+                  fontSize: 'var(--text-h1)',
+                  fontWeight: 'var(--font-weight-bold)',
+                  lineHeight: '1.2',
+                  letterSpacing: '-0.02em',
+                  marginBottom: '16px',
+                  color: 'var(--primary-foreground)'
+                }}
+              >
+                {blogIndexCTA.title}
+              </h2>
+
+              <p
+                style={{
+                  fontFamily: 'Lexend, sans-serif',
+                  fontSize: 'var(--text-lg)',
+                  lineHeight: '1.7',
+                  color: 'rgba(255, 255, 255, 0.9)',
+                  marginBottom: '32px'
+                }}
+              >
+                {blogIndexCTA.description}
+              </p>
+
+              <Buttons alignment="center" gap="md">
+                <Button 
+                  page={blogIndexCTA.buttons[0].page} 
+                  size="lg"
+                  variant="default"
+                  style={{
+                    backgroundColor: 'var(--primary-foreground)',
+                    color: 'var(--primary)'
+                  }}
+                >
+                  {blogIndexCTA.buttons[0].text}
+                </Button>
+                <Button 
+                  page={blogIndexCTA.buttons[1].page} 
+                  size="lg"
+                  variant="outline"
+                  style={{
+                    borderColor: 'var(--primary-foreground)',
+                    color: 'var(--primary-foreground)'
+                  }}
+                >
+                  {blogIndexCTA.buttons[1].text}
+                </Button>
+              </Buttons>
+            </div>
+          </Container>
+        </Section>
       </main>
 
       <SiteFooter />

@@ -75,6 +75,10 @@ It does **not** validate:
 - ✅ **NEW (JAN 9):** Reporting guidelines established (YYYY-MM-DD naming, categorization, templates)
 - ✅ **NEW (JAN 9):** Root directory cleaned (only 6 essential reference docs remain)
 - ✅ **NEW (JAN 9):** All future reports MUST use date-first naming in categorized folders
+- ✅ **NEW (JAN 9, 2025):** 🎉 **Storybook Configuration Complete** (/.storybook/ directory, 100% CSS variables)
+- ✅ **NEW (JAN 9):** Storybook files migrated to correct location (/.storybook/)
+- ✅ **NEW (JAN 9):** Storybook preview.tsx uses CSS variables (user control via CSS files)
+- ✅ **NEW (JAN 9):** Complete infrastructure documentation (planning, reporting, imports, tests, storybook)
 - ✅ **NEW:** Light mode readability verified and fixed
 - ✅ **NEW:** Stats section converted to semantic colors
 - ✅ **NEW:** All sections use proper CSS variables
@@ -255,6 +259,17 @@ It does **not** validate:
 - ✅ **NEW (JAN 8):** **Pattern Library Index created** (800+ lines, all 37 patterns cataloged)
 - ✅ **NEW (JAN 8):** **25,780+ lines of documentation** (complete system, production-ready)
 - ✅ **NEW (JAN 8):** **Batch 1 (Critical) planned** (Homepage, Blog, Portfolio — 6 hours)
+- ✅ **NEW (JAN 9, 2025):** **🎉 Prompt Generation System Complete** (/prompts/ directory created, comprehensive guidelines)
+- ✅ **NEW (JAN 9):** **Prompt guidelines established** (YYYY-MM-DD naming, 8 categories, template structure)
+- ✅ **NEW (JAN 9):** **Prompt template created** (component creation template, complete examples)
+- ✅ **NEW (JAN 9):** **Prompt quality standards** (success criteria, validation, version tracking)
+- ✅ **NEW (JAN 9):** **Design system context** (CSS variables, WordPress mapping, accessibility requirements)
+- ✅ **NEW (JAN 9):** **8 prompt categories** (design-system, development, documentation, testing, migration, optimization, templates, utilities)
+- ✅ **NEW (JAN 9):** **Compliance Fixes Complete** (Phases 1-3: 99.2% compliance, fonts + data + spacing)
+- ✅ **NEW (JAN 9):** **Phase 1: Fonts 100%** (27 violations fixed, var(--font-primary) enforced)
+- ✅ **NEW (JAN 9):** **Phase 2: Data 100%** (5 templates centralized, 188 lines removed)
+- ✅ **NEW (JAN 9):** **Phase 3: Spacing 95.8%** (3/7 templates fixed, Tailwind classes enforced)
+- ✅ **NEW (JAN 9):** **Overall compliance: 99.2%** (from 90.1%, +9.1% improvement)
 
 **See:** [COMPLETE-DESIGN-SYSTEM-WORDPRESS-JAN-9.md](../COMPLETE-DESIGN-SYSTEM-WORDPRESS-JAN-9.md) for **COMPLETE WORDPRESS CSS VARIABLES** (80 variables, theme.json ready, 99%+ time savings) (Jan 9) ⭐⭐⭐⭐⭐⭐⭐⭐⭐ **🎉 NEW**.
 **See:** [WORDPRESS-THEME-JSON-MAPPING-COMPLETE-JAN-9.md](../WORDPRESS-THEME-JSON-MAPPING-COMPLETE-JAN-9.md) for **WORDPRESS COMPATIBILITY GUIDE** (47 WordPress variables, complete theme.json integration) (Jan 9) ⭐⭐⭐⭐⭐⭐⭐⭐ **🎉 NEW**.
@@ -423,6 +438,17 @@ Understand how React components map to WordPress:
 - Mobile performance? → Read **[mobile/performance.md](./mobile/performance.md)**
 - Mobile forms? → Read **[mobile/forms.md](./mobile/forms.md)**
 
+#### Step 7: Read Infrastructure Guidelines (As Needed)
+**BEFORE working on infrastructure**, read the relevant infrastructure guidelines:
+- Storybook configuration? → Read **[storybook/storybook-configuration.md](./storybook/storybook-configuration.md)** ⭐⭐⭐
+- Importing assets? → Read **[imports/import-guidelines.md](./imports/import-guidelines.md)** ⭐⭐⭐
+- Test organization? → Read **[testing/test-organization.md](./testing/test-organization.md)** ⭐⭐⭐
+- Writing shell scripts? → Read **[scripts/shell-script-guidelines.md](./scripts/shell-script-guidelines.md)** ⭐⭐⭐
+- Writing Python scripts? → Read **[scripts/python-script-guidelines.md](./scripts/python-script-guidelines.md)** ⭐⭐⭐
+- Planning new features? → Read **[planning/planning-guidelines.md](./planning/planning-guidelines.md)** ⭐⭐⭐
+- Creating reports? → Read **[reporting/reporting-guidelines.md](./reporting/reporting-guidelines.md)** ⭐⭐⭐
+- Creating AI prompts? → Read **[prompts/prompt-generation-guidelines.md](./prompts/prompt-generation-guidelines.md)** ⭐⭐⭐⭐⭐⭐⭐⭐⭐ **🎉 NEW**
+
 **DO NOT write code using a component or icon until you have read its specific guidelines.**
 
 ---
@@ -497,10 +523,27 @@ guidelines/
 ├─ code-documentation/       # Code standards
 │   └── JSDOC-STANDARDS.md   # JSDoc & TypeScript documentation standards ⭐⭐⭐
 │
-└── testing/                  # Testing guidelines
-    ├── TESTING-STANDARDS.md  # Testing standards & coverage requirements ⭐⭐⭐
-    ├── testing-guidelines.md
-    └── automated-auditing.md
+├── testing/                  # Testing guidelines
+│   ├── TESTING-STANDARDS.md  # Testing standards & coverage requirements ⭐⭐⭐
+│   ├── testing-guidelines.md
+│   ├── test-organization.md  # Test location & structure ⭐⭐⭐ NEW
+│   └── automated-auditing.md
+│
+├── storybook/                # Storybook configuration ⭐⭐⭐ NEW
+│   └── storybook-configuration.md  # File locations, design system integration
+│
+├── imports/                  # Import system guidelines ⭐⭐⭐ NEW
+│   └── import-guidelines.md  # Images, SVGs, fonts, data imports
+│
+├── scripts/                  # Script standards ⭐⭐⭐ NEW
+│   ├── shell-script-guidelines.md   # Shell script structure & standards
+│   └── python-script-guidelines.md  # Python script structure & standards
+│
+├── planning/                 # Planning process ⭐⭐⭐ NEW
+│   └── planning-guidelines.md  # Planning templates & lifecycle
+│
+└── reporting/                # Reporting system ⭐⭐⭐ NEW
+    └── reporting-guidelines.md  # YYYY-MM-DD naming, 9 categories
 ```
 
 ---

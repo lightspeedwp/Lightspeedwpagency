@@ -32,123 +32,33 @@ import {
   Filter
 } from 'lucide-react';
 
+// Import centralized testimonials data
+import { 
+  testimonials as centralizedTestimonials,
+  serviceFilters,
+  testimonialStats,
+  videoTestimonials
+} from '../../data/testimonials';
+
 export function TestimonialsTemplate() {
   const { navigateTo } = useNavigation();
   const [filterIndustry, setFilterIndustry] = useState<string>('all');
   const [filterService, setFilterService] = useState<string>('all');
   const [activeTestimonial, setActiveTestimonial] = useState<number>(0);
 
-  // Testimonials data
-  const testimonials = [
-    {
-      id: 1,
-      name: 'Sarah Johnson',
-      role: 'CEO',
-      company: 'EcoMarket',
-      industry: 'Ecommerce',
-      service: 'WooCommerce Development',
-      rating: 5,
-      text: 'LightSpeed transformed our online store into a high-performing ecommerce platform. Sales increased 250% in the first 6 months. Their expertise in WooCommerce and attention to detail is unmatched.',
-      image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400',
-      results: ['250% sales increase', '60% faster load times', '4.8/5 customer satisfaction']
-    },
-    {
-      id: 2,
-      name: 'Michael Chen',
-      role: 'Marketing Director',
-      company: 'HealthFirst Wellness',
-      industry: 'Healthcare',
-      service: 'WordPress Development',
-      rating: 5,
-      text: 'The team delivered a beautiful, HIPAA-compliant website that exceeded our expectations. Their understanding of healthcare regulations and WordPress best practices was impressive.',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400',
-      results: ['100% HIPAA compliant', '3x more appointments', 'Perfect accessibility score']
-    },
-    {
-      id: 3,
-      name: 'Emma Rodriguez',
-      role: 'Founder',
-      company: 'Wanderlust Travel',
-      industry: 'Travel',
-      service: 'Tour Operator Solution',
-      rating: 5,
-      text: 'Our tour booking system is now seamless and efficient. LightSpeed built a custom solution that handles our complex itineraries and booking workflows perfectly.',
-      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400',
-      results: ['500+ bookings/month', 'Zero booking errors', '95% customer retention']
-    },
-    {
-      id: 4,
-      name: 'David Park',
-      role: 'CTO',
-      company: 'TechStartup Magazine',
-      industry: 'Publishing',
-      service: 'Design & Development',
-      rating: 5,
-      text: 'From design to development, the entire process was smooth and professional. They created a custom publishing platform that our editorial team loves.',
-      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400',
-      results: ['2M monthly readers', '40% faster publishing', '10x content engagement']
-    },
-    {
-      id: 5,
-      name: 'Jennifer Martinez',
-      role: 'Operations Manager',
-      company: 'OceanView Real Estate',
-      industry: 'Real Estate',
-      service: 'WordPress Migration',
-      rating: 5,
-      text: 'Migrated from a legacy system to modern WordPress with zero downtime. The new site is faster, easier to manage, and generates more leads.',
-      image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400',
-      results: ['Zero downtime', '180% more leads', 'Perfect SEO migration']
-    },
-    {
-      id: 6,
-      name: 'Robert Taylor',
-      role: 'Executive Director',
-      company: 'Global Education Foundation',
-      industry: 'Non-Profit',
-      service: 'Security & Support',
-      rating: 5,
-      text: 'Their ongoing support and security services give us peace of mind. Our website has been rock-solid since partnering with LightSpeed.',
-      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400',
-      results: ['100% uptime', 'Zero security incidents', '$50K saved annually']
-    },
-    {
-      id: 7,
-      name: 'Lisa Anderson',
-      role: 'Owner',
-      company: 'Artisan Bakery Co',
-      industry: 'Food & Beverage',
-      service: 'WooCommerce Store',
-      rating: 5,
-      text: 'Our online bakery orders tripled after the redesign. The custom ordering system they built makes it easy for customers to place complex orders.',
-      image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400',
-      results: ['300% order increase', 'Custom order system', '4.9/5 customer rating']
-    },
-    {
-      id: 8,
-      name: 'James Wilson',
-      role: 'Partner',
-      company: 'Summit Law Firm',
-      industry: 'Legal',
-      service: 'Professional Website',
-      rating: 5,
-      text: 'Professional, accessible, and conversion-focused. The new website positioned us as a modern law firm and increased client inquiries significantly.',
-      image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400',
-      results: ['200% more inquiries', 'WCAG AAA compliant', 'Top Google rankings']
-    },
-    {
-      id: 9,
-      name: 'Amanda Foster',
-      role: 'Marketing Head',
-      company: 'FitLife Gym',
-      industry: 'Fitness',
-      service: 'Membership Platform',
-      rating: 5,
-      text: 'The custom membership platform streamlined our operations. Members can book classes, track progress, and manage subscriptions all in one place.',
-      image: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=400',
-      results: ['500+ active members', 'Automated billing', '95% renewal rate']
-    }
-  ];
+  // Use centralized testimonials data
+  const testimonials = centralizedTestimonials.map((t, index) => ({
+    id: index + 1,
+    name: t.author,
+    role: t.role,
+    company: t.company,
+    industry: t.industry?.[0] || 'General',
+    service: t.serviceType?.[0] || 'WordPress',
+    rating: t.rating || 5,
+    text: t.quote,
+    image: t.avatar || `https://images.unsplash.com/photo-${1494790108377 + index}?w=400`,
+    results: []
+  }));
 
   // Filter testimonials
   const filteredTestimonials = testimonials.filter(testimonial => {
@@ -165,37 +75,10 @@ export function TestimonialsTemplate() {
   const services = ['all', 'WordPress', 'WooCommerce', 'Design', 'Development', 'Migration', 'Security'];
 
   // Stats
-  const stats = [
-    { number: '500+', label: 'Happy Clients' },
-    { number: '4.9/5', label: 'Average Rating' },
-    { number: '98%', label: 'Client Retention' },
-    { number: '15+', label: 'Years Experience' }
-  ];
+  const stats = testimonialStats;
 
   // Video testimonials
-  const videoTestimonials = [
-    {
-      id: 1,
-      name: 'Sarah Johnson',
-      company: 'EcoMarket',
-      thumbnail: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800',
-      duration: '2:45'
-    },
-    {
-      id: 2,
-      name: 'Michael Chen',
-      company: 'HealthFirst',
-      thumbnail: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=800',
-      duration: '3:12'
-    },
-    {
-      id: 3,
-      name: 'Emma Rodriguez',
-      company: 'Wanderlust Travel',
-      thumbnail: 'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=800',
-      duration: '2:30'
-    }
-  ];
+  const videoTestimonialsData = videoTestimonials;
 
   // FAQs
   const testimonialFAQs = [
@@ -817,7 +700,7 @@ export function TestimonialsTemplate() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {videoTestimonials.map((video) => (
+              {videoTestimonialsData.map((video) => (
                 <div
                   key={video.id}
                   className="cursor-pointer"

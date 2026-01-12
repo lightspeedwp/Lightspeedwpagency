@@ -3,22 +3,7 @@
  * 
  * WordPress template: templates/page-service-detail.html
  * 
- * Single detail archetype for individual service pages.
- * Pattern order: Hero → Overview → Features → Process → Benefits → TestimonialGrid → SocialProof → FAQSection → Related Services → CTA
- * 
- * **Conversion Strategy:**
- * - TestimonialGrid: Build trust with service-specific testimonials
- * - SocialProof: Show client logos and credibility
- * - FAQSection: Address common questions about the service
- * - CTASection: Convert interested visitors
- * 
- * **Accessibility:**
- * - Keyboard navigation for all interactive elements
- * - Screen reader friendly service details
- * - ARIA labels for process steps
- * - WCAG 2.1 AA compliant
- * 
- * @see {@link /guidelines/templates/service-detail.md}
+ * Pattern order: Breadcrumbs → Hero → Overview → Features → Process → Sub-Services → Why Choose → Benefits → Related Services → FAQs → CTA
  */
 
 import { SiteHeader } from '../parts/SiteHeader';
@@ -28,78 +13,45 @@ import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { Breadcrumbs } from '../common/Breadcrumbs';
 import { BackToTopButton } from '../blocks/layout/BackToTopButton';
-import { Button } from '../blocks/design/Buttons';
-import { TestimonialGrid } from '../patterns/TestimonialGrid';
-import { SocialProof } from '../patterns/SocialProof';
-import { FAQSection } from '../patterns/FAQSection';
-import { CTASection } from '../patterns/CTASection';
+import { RouteAnnouncer } from '../blocks/utility/RouteAnnouncer';
+import { Buttons, Button } from '../blocks/design/Buttons';
+import { 
+  Code,
+  CheckCircle,
+  ArrowRight,
+  Award,
+  Users,
+  Clock,
+  Target
+} from 'lucide-react';
 import { useNavigation } from '../../contexts/NavigationContext';
-import { Check, ArrowRight, LucideIcon } from 'lucide-react';
-import { testimonials } from '../../data/testimonials';
-import { clientLogos } from '../../data/logos';
-import { servicesFAQs } from '../../data/faqs';
 
-interface ServiceDetailProps {
-  service: {
-    title: string;
-    slug: string;
-    category: string;
-    excerpt: string;
-    description: string;
-    features: Array<{
-      title: string;
-      description: string;
-      icon: LucideIcon;
-    }>;
-    process: Array<{
-      step: number;
-      title: string;
-      description: string;
-    }>;
-    benefits: string[];
-    deliverables: string[];
-    timeline: string;
-    pricing: string;
-    relatedServices: Array<{
-      id: string;
-      title: string;
-      slug: string;
-      excerpt: string;
-    }>;
-  };
+// Import centralized data
+import {
+  servicePageHero,
+  servicePageOverview,
+  servicePageFeatures,
+  servicePageProcess,
+  servicePageSubServices,
+  servicePageWhyChoose,
+  servicePageBenefits,
+  servicePageDeliverables,
+  servicePagePricing,
+  servicePageRelated,
+  servicePageFAQs,
+  servicePageCTA
+} from '../../data/service-page';
+
+interface ServiceDetailTemplateProps {
+  slug?: string;
 }
 
-export function ServiceDetailTemplate({ service }: ServiceDetailProps) {
+export function ServiceDetailTemplate({ slug = 'wordpress-development' }: ServiceDetailTemplateProps) {
   const { navigateTo } = useNavigation();
-
-  // Safety check: ensure service is defined
-  if (!service) {
-    return (
-      <>
-        <SkipLink />
-        <SiteHeader />
-        <main id="main-content" role="main">
-          <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
-            <Container>
-              <div className="text-center py-16">
-                <p style={{
-                  fontSize: 'var(--text-lg)',
-                  fontFamily: 'Lexend, sans-serif',
-                  color: 'var(--muted-foreground)'
-                }}>
-                  Service not found
-                </p>
-              </div>
-            </Container>
-          </Section>
-        </main>
-        <SiteFooter />
-      </>
-    );
-  }
 
   return (
     <>
+      <RouteAnnouncer />
       <SkipLink />
       <SiteHeader />
       
@@ -109,6 +61,7 @@ export function ServiceDetailTemplate({ service }: ServiceDetailProps) {
           className="py-4"
           style={{
             backgroundColor: 'var(--background)',
+            borderBottom: '1px solid var(--border-soft)'
           }}
         >
           <Container>
@@ -116,7 +69,7 @@ export function ServiceDetailTemplate({ service }: ServiceDetailProps) {
               items={[
                 { label: 'Home', href: '/' },
                 { label: 'Services', href: '/services' },
-                { label: service.title }
+                { label: servicePageHero.title }
               ]}
             />
           </Container>
@@ -126,94 +79,113 @@ export function ServiceDetailTemplate({ service }: ServiceDetailProps) {
         <Section 
           spacing="xl"
           style={{
-            backgroundColor: 'var(--primary)',
+            background: 'linear-gradient(135deg, #1e40af 0%, #3b82f6 100%)',
             color: 'var(--primary-foreground)',
             position: 'relative',
             overflow: 'hidden'
           }}
         >
-          {/* Decorative gradient orbs */}
-          <div 
+          {/* Gradient orb decorations */}
+          <div
             className="absolute top-0 right-0 w-96 h-96 rounded-full"
             style={{
-              background: 'var(--accent)',
-              opacity: '0.1',
+              background: 'radial-gradient(circle, rgba(96, 165, 250, 0.3) 0%, transparent 70%)',
               filter: 'blur(80px)',
               transform: 'translate(30%, -30%)'
             }}
-            aria-hidden="true"
           />
 
-          <Container style={{ position: 'relative', zIndex: 1 }}>
-            <div className="max-w-4xl">
-              {/* Category badge */}
-              <span 
-                className="inline-flex items-center px-6 py-3 mb-8"
+          <Container>
+            <div className="max-w-4xl mx-auto text-center relative z-10">
+              <div
+                className="inline-block px-4 py-2 mb-6"
                 style={{
-                  backgroundColor: 'var(--primary-foreground)',
-                  color: 'var(--primary)',
-                  borderRadius: 'var(--radius-xl)',
-                  border: 'none',
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-base)',
-                  fontWeight: 'var(--font-weight-medium)',
+                  backgroundColor: 'rgba(255, 255, 255, 0.15)',
+                  backdropFilter: 'blur(10px)',
+                  borderRadius: 'var(--radius-full)',
+                  border: '1px solid rgba(255, 255, 255, 0.2)',
+                  fontSize: 'var(--text-small)',
+                  fontFamily: 'Manrope, sans-serif',
+                  fontWeight: 'var(--font-weight-semibold)',
                   textTransform: 'uppercase',
-                  letterSpacing: '0.1em',
-                  opacity: 0.95
+                  letterSpacing: '0.1em'
                 }}
               >
-                {service.category}
-              </span>
+                <Code size={14} style={{ display: 'inline', marginRight: '8px' }} />
+                {servicePageHero.badge.text}
+              </div>
 
-              <h1 
+              <h1
                 style={{
                   fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-h1)',
-                  fontWeight: 'var(--font-weight-semibold)',
-                  lineHeight: 'var(--line-height-tight)',
+                  fontSize: 'clamp(2rem, 5vw, 3.5rem)',
+                  fontWeight: 'var(--font-weight-bold)',
+                  lineHeight: '1.1',
                   letterSpacing: '-0.02em',
-                  marginBottom: '24px',
+                  marginBottom: '20px',
                   color: 'var(--primary-foreground)'
                 }}
               >
-                {service.title}
+                Expert <span style={{ 
+                  background: 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text'
+                }}>WordPress</span> Development Services
               </h1>
 
-              <p 
+              <p
                 style={{
                   fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-lead)',
-                  fontWeight: 'var(--font-weight-regular)',
-                  lineHeight: 'var(--line-height-relaxed)',
-                  color: 'var(--primary-foreground)',
-                  opacity: 0.95,
-                  marginBottom: '32px'
+                  fontSize: 'var(--text-xl)',
+                  lineHeight: '1.6',
+                  color: 'rgba(255, 255, 255, 0.95)',
+                  marginBottom: '16px',
+                  maxWidth: '700px',
+                  margin: '0 auto 16px'
                 }}
               >
-                {service.excerpt}
+                {servicePageHero.tagline}
               </p>
 
-              <div className="flex flex-wrap gap-4">
+              <p
+                style={{
+                  fontFamily: 'Lexend, sans-serif',
+                  fontSize: 'var(--text-lg)',
+                  lineHeight: '1.7',
+                  color: 'rgba(255, 255, 255, 0.85)',
+                  marginBottom: '40px',
+                  maxWidth: '700px',
+                  margin: '0 auto 40px'
+                }}
+              >
+                {servicePageHero.description}
+              </p>
+
+              <Buttons alignment="center" gap="md">
                 <Button 
-                  variant="primary"
+                  page="contact" 
                   size="lg"
-                  page="contact"
-                  aria-label="Get started with this service"
-                >
-                  Get Started
-                </Button>
-                <Button 
-                  variant="outline"
-                  size="lg"
-                  onClick={() => {
-                    const element = document.getElementById('details');
-                    element?.scrollIntoView({ behavior: 'smooth' });
+                  variant="default"
+                  style={{
+                    backgroundColor: 'var(--primary-foreground)',
+                    color: 'var(--primary)'
                   }}
-                  aria-label="Learn more about this service"
                 >
-                  Learn More
+                  Get a Quote
                 </Button>
-              </div>
+                <Button 
+                  page="portfolio" 
+                  size="lg"
+                  variant="outline"
+                  style={{
+                    borderColor: 'var(--primary-foreground)',
+                    color: 'var(--primary-foreground)'
+                  }}
+                >
+                  View Our Work
+                </Button>
+              </Buttons>
             </div>
           </Container>
         </Section>
@@ -221,161 +193,87 @@ export function ServiceDetailTemplate({ service }: ServiceDetailProps) {
         {/* Overview Section */}
         <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
           <Container>
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-              {/* Main Description */}
-              <div className="lg:col-span-2">
-                <h2 
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-16">
+                <h2
                   style={{
                     fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-h2)',
-                    fontWeight: 'var(--font-weight-semibold)',
-                    color: 'var(--foreground)',
-                    marginBottom: '24px',
-                    lineHeight: '1.3'
+                    fontSize: 'var(--text-h1)',
+                    fontWeight: 'var(--font-weight-bold)',
+                    lineHeight: '1.2',
+                    letterSpacing: '-0.02em',
+                    marginBottom: '16px',
+                    color: 'var(--foreground)'
                   }}
                 >
-                  Overview
+                  {servicePageOverview.title}
                 </h2>
-                <p 
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-base)',
-                    color: 'var(--muted-foreground)',
-                    lineHeight: '1.8',
-                    marginBottom: '24px'
-                  }}
-                >
-                  {service.description}
-                </p>
 
-                {/* Deliverables */}
-                <h3 
+                <p
                   style={{
                     fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-h4)',
-                    fontWeight: 'var(--font-weight-semibold)',
-                    color: 'var(--foreground)',
-                    marginTop: '32px',
-                    marginBottom: '16px'
+                    fontSize: 'var(--text-lg)',
+                    lineHeight: '1.7',
+                    color: 'var(--muted-foreground)',
+                    maxWidth: '800px',
+                    margin: '0 auto'
                   }}
                 >
-                  What's Included
-                </h3>
-                <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                  {service.deliverables.map((item, index) => (
-                    <li 
+                  {servicePageOverview.description}
+                </p>
+              </div>
+
+              {/* Stats */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {servicePageOverview.stats.map((stat, index) => {
+                  const Icon = stat.icon;
+                  return (
+                    <div
                       key={index}
-                      className="flex items-start gap-3"
+                      className="text-center"
+                      style={{
+                        padding: '32px',
+                        backgroundColor: 'var(--card)',
+                        borderRadius: 'var(--radius-lg)',
+                        border: '1px solid var(--border-soft)'
+                      }}
                     >
-                      <Check 
-                        size={20}
-                        style={{ 
-                          color: 'var(--primary)',
-                          flexShrink: 0,
-                          marginTop: '2px'
+                      <Icon size={32} style={{ marginBottom: '12px', color: 'var(--primary)' }} />
+                      <div
+                        style={{
+                          fontFamily: 'Lexend, sans-serif',
+                          fontSize: 'var(--text-h2)',
+                          fontWeight: 'var(--font-weight-bold)',
+                          marginBottom: '4px',
+                          color: 'var(--foreground)'
                         }}
-                      />
-                      <span 
+                      >
+                        {stat.value}
+                      </div>
+                      <div
                         style={{
                           fontFamily: 'Lexend, sans-serif',
                           fontSize: 'var(--text-base)',
-                          color: 'var(--foreground)',
-                          lineHeight: '1.6'
+                          fontWeight: 'var(--font-weight-semibold)',
+                          marginBottom: '8px',
+                          color: 'var(--foreground)'
                         }}
                       >
-                        {item}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Quick Facts Sidebar */}
-              <div>
-                <div 
-                  style={{
-                    backgroundColor: 'var(--muted)',
-                    borderRadius: 'var(--radius-xl)',
-                    padding: '32px',
-                    position: 'sticky',
-                    top: '100px'
-                  }}
-                >
-                  <h3 
-                    style={{
-                      fontFamily: 'Lexend, sans-serif',
-                      fontSize: 'var(--text-h4)',
-                      fontWeight: 'var(--font-weight-semibold)',
-                      color: 'var(--foreground)',
-                      marginBottom: '24px'
-                    }}
-                  >
-                    Quick Facts
-                  </h3>
-
-                  {/* Timeline */}
-                  <div className="mb-6">
-                    <dt 
-                      style={{
-                        fontFamily: 'Lexend, sans-serif',
-                        fontSize: 'var(--text-small)',
-                        fontWeight: 'var(--font-weight-medium)',
-                        color: 'var(--muted-foreground)',
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.1em',
-                        marginBottom: '8px'
-                      }}
-                    >
-                      Timeline
-                    </dt>
-                    <dd 
-                      style={{
-                        fontFamily: 'Lexend, sans-serif',
-                        fontSize: 'var(--text-base)',
-                        fontWeight: 'var(--font-weight-semibold)',
-                        color: 'var(--foreground)'
-                      }}
-                    >
-                      {service.timeline}
-                    </dd>
-                  </div>
-
-                  {/* Pricing */}
-                  <div className="mb-6">
-                    <dt 
-                      style={{
-                        fontFamily: 'Lexend, sans-serif',
-                        fontSize: 'var(--text-small)',
-                        fontWeight: 'var(--font-weight-medium)',
-                        color: 'var(--muted-foreground)',
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.1em',
-                        marginBottom: '8px'
-                      }}
-                    >
-                      Investment
-                    </dt>
-                    <dd 
-                      style={{
-                        fontFamily: 'Lexend, sans-serif',
-                        fontSize: 'var(--text-base)',
-                        fontWeight: 'var(--font-weight-semibold)',
-                        color: 'var(--foreground)'
-                      }}
-                    >
-                      {service.pricing}
-                    </dd>
-                  </div>
-
-                  <Button 
-                    variant="primary"
-                    size="md"
-                    page="contact"
-                    aria-label="Request a quote for this service"
-                  >
-                    Request Quote
-                  </Button>
-                </div>
+                        {stat.label}
+                      </div>
+                      <p
+                        style={{
+                          fontFamily: 'Manrope, sans-serif',
+                          fontSize: 'var(--text-small)',
+                          lineHeight: '1.5',
+                          color: 'var(--muted-foreground)'
+                        }}
+                      >
+                        {stat.description}
+                      </p>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </Container>
@@ -384,99 +282,87 @@ export function ServiceDetailTemplate({ service }: ServiceDetailProps) {
         {/* Features Section */}
         <Section spacing="xl" style={{ backgroundColor: 'var(--muted)' }}>
           <Container>
-            <div className="text-center mb-16">
-              <h2 
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-h2)',
-                  fontWeight: 'var(--font-weight-semibold)',
-                  color: 'var(--foreground)',
-                  marginBottom: '16px',
-                  lineHeight: '1.3'
-                }}
-              >
-                Key Features
-              </h2>
-              <p 
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-base)',
-                  color: 'var(--muted-foreground)',
-                  maxWidth: '700px',
-                  margin: '0 auto'
-                }}
-              >
-                Everything you need to succeed with {service.title.toLowerCase()}.
-              </p>
-            </div>
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-16">
+                <h2
+                  style={{
+                    fontFamily: 'Lexend, sans-serif',
+                    fontSize: 'var(--text-h1)',
+                    fontWeight: 'var(--font-weight-bold)',
+                    lineHeight: '1.2',
+                    letterSpacing: '-0.02em',
+                    marginBottom: '16px',
+                    color: 'var(--foreground)'
+                  }}
+                >
+                  What We Build
+                </h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {service.features.map((feature, index) => {
-                const Icon = feature.icon;
-                return (
-                  <div
-                    key={index}
-                    style={{
-                      backgroundColor: 'var(--card)',
-                      border: '1px solid var(--border-soft)',
-                      borderRadius: 'var(--radius-xl)',
-                      padding: '32px',
-                      transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.transform = 'translateY(-8px)';
-                      e.currentTarget.style.boxShadow = 'var(--shadow-lg)';
-                      e.currentTarget.style.borderColor = 'var(--primary)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.transform = 'translateY(0)';
-                      e.currentTarget.style.boxShadow = 'none';
-                      e.currentTarget.style.borderColor = 'var(--border-soft)';
-                    }}
-                  >
-                    <div 
-                      className="mb-6"
+                <p
+                  style={{
+                    fontFamily: 'Lexend, sans-serif',
+                    fontSize: 'var(--text-lg)',
+                    lineHeight: '1.7',
+                    color: 'var(--muted-foreground)'
+                  }}
+                >
+                  Comprehensive WordPress development services for modern websites
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {servicePageFeatures.map((feature, index) => {
+                  const Icon = feature.icon;
+                  return (
+                    <div
+                      key={index}
                       style={{
-                        width: '56px',
-                        height: '56px',
+                        padding: '32px',
+                        backgroundColor: 'var(--card)',
                         borderRadius: 'var(--radius-lg)',
-                        backgroundColor: 'var(--primary)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        color: 'var(--primary-foreground)'
+                        border: '1px solid var(--border-soft)'
                       }}
                     >
-                      <Icon size={28} strokeWidth={2} />
+                      <div
+                        style={{
+                          width: '56px',
+                          height: '56px',
+                          borderRadius: 'var(--radius-lg)',
+                          backgroundColor: 'var(--primary-soft)',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          marginBottom: '20px'
+                        }}
+                      >
+                        <Icon size={28} style={{ color: 'var(--primary)' }} />
+                      </div>
+
+                      <h3
+                        style={{
+                          fontFamily: 'Lexend, sans-serif',
+                          fontSize: 'var(--text-xl)',
+                          fontWeight: 'var(--font-weight-bold)',
+                          color: 'var(--foreground)',
+                          marginBottom: '8px'
+                        }}
+                      >
+                        {feature.title}
+                      </h3>
+                      <p
+                        style={{
+                          fontFamily: 'Lexend, sans-serif',
+                          fontSize: 'var(--text-base)',
+                          lineHeight: '1.6',
+                          color: 'var(--muted-foreground)'
+                        }}
+                      >
+                        {feature.description}
+                      </p>
                     </div>
-                    
-                    <h3 
-                      style={{
-                        fontFamily: 'Lexend, sans-serif',
-                        fontSize: 'var(--text-h4)',
-                        fontWeight: 'var(--font-weight-semibold)',
-                        color: 'var(--card-foreground)',
-                        marginBottom: '12px',
-                        lineHeight: '1.3'
-                      }}
-                    >
-                      {feature.title}
-                    </h3>
-                    
-                    <p 
-                      style={{
-                        fontFamily: 'Lexend, sans-serif',
-                        fontSize: 'var(--text-base)',
-                        color: 'var(--muted-foreground)',
-                        lineHeight: '1.6',
-                        margin: 0
-                      }}
-                    >
-                      {feature.description}
-                    </p>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
             </div>
           </Container>
         </Section>
@@ -484,290 +370,658 @@ export function ServiceDetailTemplate({ service }: ServiceDetailProps) {
         {/* Process Section */}
         <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
           <Container>
-            <div className="text-center mb-16">
-              <h2 
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-h2)',
-                  fontWeight: 'var(--font-weight-semibold)',
-                  color: 'var(--foreground)',
-                  marginBottom: '16px',
-                  lineHeight: '1.3'
-                }}
-              >
-                Our Process
-              </h2>
-              <p 
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-base)',
-                  color: 'var(--muted-foreground)',
-                  maxWidth: '700px',
-                  margin: '0 auto'
-                }}
-              >
-                A proven workflow designed to deliver exceptional results.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {service.process.map((step, index) => (
-                <div
-                  key={index}
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-16">
+                <h2
                   style={{
-                    position: 'relative'
+                    fontFamily: 'Lexend, sans-serif',
+                    fontSize: 'var(--text-h1)',
+                    fontWeight: 'var(--font-weight-bold)',
+                    lineHeight: '1.2',
+                    letterSpacing: '-0.02em',
+                    marginBottom: '16px',
+                    color: 'var(--foreground)'
                   }}
                 >
-                  {/* Step Number Badge */}
-                  <div 
+                  Our Development Process
+                </h2>
+
+                <p
+                  style={{
+                    fontFamily: 'Lexend, sans-serif',
+                    fontSize: 'var(--text-lg)',
+                    lineHeight: '1.7',
+                    color: 'var(--muted-foreground)'
+                  }}
+                >
+                  From discovery to launch, we follow a proven process
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {servicePageProcess.map((step, index) => (
+                  <div
+                    key={index}
                     style={{
-                      width: '64px',
-                      height: '64px',
+                      padding: '32px',
+                      backgroundColor: 'var(--card)',
                       borderRadius: 'var(--radius-lg)',
-                      backgroundColor: 'var(--primary)',
-                      color: 'var(--primary-foreground)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
+                      border: '1px solid var(--border-soft)',
+                      position: 'relative'
+                    }}
+                  >
+                    {/* Step Number Badge */}
+                    <div
+                      style={{
+                        position: 'absolute',
+                        top: '-16px',
+                        left: '32px',
+                        width: '40px',
+                        height: '40px',
+                        borderRadius: 'var(--radius-full)',
+                        backgroundColor: 'var(--primary)',
+                        color: 'var(--primary-foreground)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        fontFamily: 'Lexend, sans-serif',
+                        fontSize: 'var(--text-lg)',
+                        fontWeight: 'var(--font-weight-bold)'
+                      }}
+                    >
+                      {step.number}
+                    </div>
+
+                    <h3
+                      style={{
+                        fontFamily: 'Lexend, sans-serif',
+                        fontSize: 'var(--text-xl)',
+                        fontWeight: 'var(--font-weight-bold)',
+                        color: 'var(--foreground)',
+                        marginBottom: '8px',
+                        marginTop: '8px'
+                      }}
+                    >
+                      {step.title}
+                    </h3>
+
+                    {step.duration && (
+                      <div
+                        style={{
+                          fontFamily: 'Manrope, sans-serif',
+                          fontSize: 'var(--text-small)',
+                          fontWeight: 'var(--font-weight-semibold)',
+                          color: 'var(--primary)',
+                          marginBottom: '12px'
+                        }}
+                      >
+                        <Clock size={14} style={{ display: 'inline', marginRight: '6px' }} />
+                        {step.duration}
+                      </div>
+                    )}
+
+                    <p
+                      style={{
+                        fontFamily: 'Lexend, sans-serif',
+                        fontSize: 'var(--text-base)',
+                        lineHeight: '1.6',
+                        color: 'var(--muted-foreground)'
+                      }}
+                    >
+                      {step.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Container>
+        </Section>
+
+        {/* Sub-Services Section */}
+        <Section spacing="xl" style={{ backgroundColor: 'var(--muted)' }}>
+          <Container>
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-16">
+                <h2
+                  style={{
+                    fontFamily: 'Lexend, sans-serif',
+                    fontSize: 'var(--text-h1)',
+                    fontWeight: 'var(--font-weight-bold)',
+                    lineHeight: '1.2',
+                    letterSpacing: '-0.02em',
+                    marginBottom: '16px',
+                    color: 'var(--foreground)'
+                  }}
+                >
+                  Specialized Services
+                </h2>
+
+                <p
+                  style={{
+                    fontFamily: 'Lexend, sans-serif',
+                    fontSize: 'var(--text-lg)',
+                    lineHeight: '1.7',
+                    color: 'var(--muted-foreground)'
+                  }}
+                >
+                  Deep expertise in specific WordPress development areas
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {servicePageSubServices.map((subService, index) => {
+                  const Icon = subService.icon;
+                  return (
+                    <div
+                      key={index}
+                      style={{
+                        padding: '40px',
+                        backgroundColor: 'var(--card)',
+                        borderRadius: 'var(--radius-lg)',
+                        border: '1px solid var(--border-soft)'
+                      }}
+                    >
+                      <div
+                        style={{
+                          width: '64px',
+                          height: '64px',
+                          borderRadius: 'var(--radius-lg)',
+                          backgroundColor: 'var(--primary-soft)',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          marginBottom: '24px'
+                        }}
+                      >
+                        <Icon size={32} style={{ color: 'var(--primary)' }} />
+                      </div>
+
+                      <h3
+                        style={{
+                          fontFamily: 'Lexend, sans-serif',
+                          fontSize: 'var(--text-h3)',
+                          fontWeight: 'var(--font-weight-bold)',
+                          color: 'var(--foreground)',
+                          marginBottom: '12px'
+                        }}
+                      >
+                        {subService.title}
+                      </h3>
+
+                      <p
+                        style={{
+                          fontFamily: 'Lexend, sans-serif',
+                          fontSize: 'var(--text-base)',
+                          lineHeight: '1.6',
+                          color: 'var(--muted-foreground)',
+                          marginBottom: '20px'
+                        }}
+                      >
+                        {subService.description}
+                      </p>
+
+                      {/* Features List */}
+                      <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                        {subService.features.map((feature, idx) => (
+                          <li
+                            key={idx}
+                            style={{
+                              display: 'flex',
+                              alignItems: 'flex-start',
+                              gap: '12px',
+                              marginBottom: '12px'
+                            }}
+                          >
+                            <CheckCircle 
+                              size={20} 
+                              style={{ 
+                                color: 'var(--primary)', 
+                                flexShrink: 0,
+                                marginTop: '2px'
+                              }} 
+                            />
+                            <span
+                              style={{
+                                fontFamily: 'Lexend, sans-serif',
+                                fontSize: 'var(--text-base)',
+                                lineHeight: '1.5',
+                                color: 'var(--foreground)'
+                              }}
+                            >
+                              {feature}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </Container>
+        </Section>
+
+        {/* Why Choose LightSpeed Section */}
+        <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
+          <Container>
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-16">
+                <h2
+                  style={{
+                    fontFamily: 'Lexend, sans-serif',
+                    fontSize: 'var(--text-h1)',
+                    fontWeight: 'var(--font-weight-bold)',
+                    lineHeight: '1.2',
+                    letterSpacing: '-0.02em',
+                    marginBottom: '16px',
+                    color: 'var(--foreground)'
+                  }}
+                >
+                  Why Choose LightSpeed
+                </h2>
+
+                <p
+                  style={{
+                    fontFamily: 'Lexend, sans-serif',
+                    fontSize: 'var(--text-lg)',
+                    lineHeight: '1.7',
+                    color: 'var(--muted-foreground)'
+                  }}
+                >
+                  What sets us apart from other WordPress development agencies
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {servicePageWhyChoose.map((reason, index) => {
+                  const Icon = reason.icon;
+                  return (
+                    <div
+                      key={index}
+                      style={{
+                        padding: '32px',
+                        backgroundColor: 'var(--card)',
+                        borderRadius: 'var(--radius-lg)',
+                        border: '1px solid var(--border-soft)'
+                      }}
+                    >
+                      <div
+                        style={{
+                          width: '56px',
+                          height: '56px',
+                          borderRadius: 'var(--radius-lg)',
+                          backgroundColor: 'var(--primary-soft)',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          marginBottom: '20px'
+                        }}
+                      >
+                        <Icon size={28} style={{ color: 'var(--primary)' }} />
+                      </div>
+
+                      <h3
+                        style={{
+                          fontFamily: 'Lexend, sans-serif',
+                          fontSize: 'var(--text-xl)',
+                          fontWeight: 'var(--font-weight-bold)',
+                          color: 'var(--foreground)',
+                          marginBottom: '8px'
+                        }}
+                      >
+                        {reason.title}
+                      </h3>
+                      <p
+                        style={{
+                          fontFamily: 'Lexend, sans-serif',
+                          fontSize: 'var(--text-base)',
+                          lineHeight: '1.6',
+                          color: 'var(--muted-foreground)'
+                        }}
+                      >
+                        {reason.description}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </Container>
+        </Section>
+
+        {/* Benefits & Deliverables Section */}
+        <Section spacing="xl" style={{ backgroundColor: 'var(--muted)' }}>
+          <Container>
+            <div className="max-w-6xl mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                {/* Benefits */}
+                <div>
+                  <h2
+                    style={{
                       fontFamily: 'Lexend, sans-serif',
                       fontSize: 'var(--text-h2)',
                       fontWeight: 'var(--font-weight-bold)',
-                      marginBottom: '16px',
-                      boxShadow: 'var(--shadow-primary)'
-                    }}
-                  >
-                    {step.step}
-                  </div>
-
-                  <h3 
-                    style={{
-                      fontFamily: 'Lexend, sans-serif',
-                      fontSize: 'var(--text-h4)',
-                      fontWeight: 'var(--font-weight-semibold)',
                       color: 'var(--foreground)',
-                      marginBottom: '12px',
-                      lineHeight: '1.3'
+                      marginBottom: '24px'
                     }}
                   >
-                    {step.title}
-                  </h3>
-                  
-                  <p 
+                    Service Benefits
+                  </h2>
+
+                  <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                    {servicePageBenefits.map((benefit, index) => (
+                      <li
+                        key={index}
+                        style={{
+                          display: 'flex',
+                          alignItems: 'flex-start',
+                          gap: '12px',
+                          marginBottom: '16px'
+                        }}
+                      >
+                        <CheckCircle 
+                          size={20} 
+                          style={{ 
+                            color: 'var(--primary)', 
+                            flexShrink: 0,
+                            marginTop: '2px'
+                          }} 
+                        />
+                        <span
+                          style={{
+                            fontFamily: 'Lexend, sans-serif',
+                            fontSize: 'var(--text-base)',
+                            lineHeight: '1.6',
+                            color: 'var(--foreground)'
+                          }}
+                        >
+                          {benefit}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Deliverables */}
+                <div>
+                  <h2
                     style={{
                       fontFamily: 'Lexend, sans-serif',
-                      fontSize: 'var(--text-base)',
-                      color: 'var(--muted-foreground)',
-                      lineHeight: '1.6',
-                      margin: 0
+                      fontSize: 'var(--text-h2)',
+                      fontWeight: 'var(--font-weight-bold)',
+                      color: 'var(--foreground)',
+                      marginBottom: '24px'
                     }}
                   >
-                    {step.description}
-                  </p>
+                    What You'll Receive
+                  </h2>
 
-                  {/* Connector Arrow (not on last item) */}
-                  {index < service.process.length - 1 && (
-                    <ArrowRight
-                      size={24}
-                      style={{
-                        color: 'var(--primary)',
-                        position: 'absolute',
-                        top: '32px',
-                        right: '-16px',
-                        display: 'none',
-                        opacity: 0.3
-                      }}
-                      className="hidden lg:block"
-                    />
-                  )}
+                  <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                    {servicePageDeliverables.map((deliverable, index) => (
+                      <li
+                        key={index}
+                        style={{
+                          display: 'flex',
+                          alignItems: 'flex-start',
+                          gap: '12px',
+                          marginBottom: '16px'
+                        }}
+                      >
+                        <CheckCircle 
+                          size={20} 
+                          style={{ 
+                            color: 'var(--primary)', 
+                            flexShrink: 0,
+                            marginTop: '2px'
+                          }} 
+                        />
+                        <span
+                          style={{
+                            fontFamily: 'Lexend, sans-serif',
+                            fontSize: 'var(--text-base)',
+                            lineHeight: '1.6',
+                            color: 'var(--foreground)'
+                          }}
+                        >
+                          {deliverable}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-              ))}
-            </div>
-          </Container>
-        </Section>
-
-        {/* Benefits Section */}
-        <Section spacing="xl" style={{ backgroundColor: 'var(--muted)' }}>
-          <Container>
-            <div className="max-w-3xl mx-auto">
-              <h2 
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-h2)',
-                  fontWeight: 'var(--font-weight-semibold)',
-                  color: 'var(--foreground)',
-                  marginBottom: '24px',
-                  textAlign: 'center',
-                  lineHeight: '1.3'
-                }}
-              >
-                Why Choose Us
-              </h2>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
-                {service.benefits.map((benefit, index) => (
-                  <div 
-                    key={index}
-                    className="flex items-start gap-4"
-                    style={{
-                      backgroundColor: 'var(--card)',
-                      border: '1px solid var(--border-soft)',
-                      borderRadius: 'var(--radius-lg)',
-                      padding: '24px'
-                    }}
-                  >
-                    <Check 
-                      size={24}
-                      style={{ 
-                        color: 'var(--primary)',
-                        flexShrink: 0,
-                        marginTop: '2px'
-                      }}
-                    />
-                    <span 
-                      style={{
-                        fontFamily: 'Lexend, sans-serif',
-                        fontSize: 'var(--text-base)',
-                        color: 'var(--foreground)',
-                        lineHeight: '1.6'
-                      }}
-                    >
-                      {benefit}
-                    </span>
-                  </div>
-                ))}
               </div>
             </div>
           </Container>
         </Section>
 
-        {/* TestimonialGrid */}
-        <TestimonialGrid
-          testimonials={testimonials.filter(testimonial => 
-            testimonial.service === service.title || 
-            testimonial.serviceType?.includes(service.title)
-          ).slice(0, 6)}
-          title="What Our Clients Say"
-          description={`Hear from satisfied clients about their experience with our ${service.title} service.`}
-        />
+        {/* Related Services Section */}
+        <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
+          <Container>
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-16">
+                <h2
+                  style={{
+                    fontFamily: 'Lexend, sans-serif',
+                    fontSize: 'var(--text-h1)',
+                    fontWeight: 'var(--font-weight-bold)',
+                    lineHeight: '1.2',
+                    letterSpacing: '-0.02em',
+                    marginBottom: '16px',
+                    color: 'var(--foreground)'
+                  }}
+                >
+                  Related Services
+                </h2>
 
-        {/* SocialProof */}
-        <SocialProof
-          logos={clientLogos}
-          title="Trusted by Leading Brands"
-          description={`Join the ranks of satisfied clients who have chosen our ${service.title} service.`}
-        />
-
-        {/* FAQSection */}
-        <FAQSection
-          faqs={servicesFAQs}
-          title="Frequently Asked Questions"
-          description={`Find answers to common questions about our ${service.title} service.`}
-        />
-
-        {/* Related Services */}
-        {service.relatedServices.length > 0 && (
-          <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
-            <Container>
-              <h2 
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-h2)',
-                  fontWeight: 'var(--font-weight-semibold)',
-                  color: 'var(--foreground)',
-                  marginBottom: '48px',
-                  textAlign: 'center',
-                  lineHeight: '1.3'
-                }}
-              >
-                Related Services
-              </h2>
+                <p
+                  style={{
+                    fontFamily: 'Lexend, sans-serif',
+                    fontSize: 'var(--text-lg)',
+                    lineHeight: '1.7',
+                    color: 'var(--muted-foreground)'
+                  }}
+                >
+                  Complementary services to enhance your WordPress website
+                </p>
+              </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {service.relatedServices.slice(0, 3).map((related) => (
-                  <a
-                    key={related.id}
-                    href={`#service-${related.slug}`}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      navigateTo(`service-${related.slug}`);
-                    }}
+                {servicePageRelated.map((relatedService, index) => (
+                  <div
+                    key={index}
+                    onClick={() => navigateTo(relatedService.page as any)}
                     style={{
+                      padding: '32px',
                       backgroundColor: 'var(--card)',
                       borderRadius: 'var(--radius-lg)',
                       border: '1px solid var(--border-soft)',
-                      overflow: 'hidden',
-                      transition: 'all 0.3s ease',
-                      textDecoration: 'none',
-                      display: 'block',
-                      cursor: 'pointer'
+                      cursor: 'pointer',
+                      transition: 'all 0.3s ease'
                     }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.transform = 'translateY(-4px)';
-                      e.currentTarget.style.boxShadow = '0 12px 24px rgba(0,0,0,0.1)';
+                      e.currentTarget.style.borderColor = 'var(--primary)';
                     }}
                     onMouseLeave={(e) => {
                       e.currentTarget.style.transform = 'translateY(0)';
-                      e.currentTarget.style.boxShadow = 'none';
+                      e.currentTarget.style.borderColor = 'var(--border-soft)';
                     }}
-                    aria-label={`Learn more about ${related.title}`}
                   >
-                    <h3 
+                    <h3
                       style={{
                         fontFamily: 'Lexend, sans-serif',
-                        fontSize: 'var(--text-h3)',
-                        fontWeight: 'var(--font-weight-semibold)',
-                        color: 'var(--card-foreground)',
-                        marginBottom: '12px',
-                        lineHeight: '1.3'
+                        fontSize: 'var(--text-xl)',
+                        fontWeight: 'var(--font-weight-bold)',
+                        color: 'var(--foreground)',
+                        marginBottom: '12px'
                       }}
                     >
-                      {related.title}
+                      {relatedService.title}
                     </h3>
-                    
-                    <p 
+                    <p
                       style={{
                         fontFamily: 'Lexend, sans-serif',
                         fontSize: 'var(--text-base)',
-                        color: 'var(--muted-foreground)',
                         lineHeight: '1.6',
+                        color: 'var(--muted-foreground)',
                         marginBottom: '16px'
                       }}
                     >
-                      {related.excerpt}
+                      {relatedService.description}
                     </p>
+                    <div
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '8px',
+                        fontFamily: 'Manrope, sans-serif',
+                        fontSize: 'var(--text-small)',
+                        fontWeight: 'var(--font-weight-semibold)',
+                        color: 'var(--primary)'
+                      }}
+                    >
+                      Learn More <ArrowRight size={16} />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Container>
+        </Section>
 
-                    <span 
+        {/* FAQ Section */}
+        <Section spacing="xl" style={{ backgroundColor: 'var(--muted)' }}>
+          <Container>
+            <div className="max-w-3xl mx-auto">
+              <div className="text-center mb-12">
+                <h2
+                  style={{
+                    fontFamily: 'Lexend, sans-serif',
+                    fontSize: 'var(--text-h2)',
+                    fontWeight: 'var(--font-weight-semibold)',
+                    color: 'var(--foreground)',
+                    marginBottom: '16px',
+                    lineHeight: 'var(--line-height-snug)'
+                  }}
+                >
+                  Frequently Asked Questions
+                </h2>
+                <p
+                  style={{
+                    fontFamily: 'Lexend, sans-serif',
+                    fontSize: 'var(--text-lg)',
+                    color: 'var(--muted-foreground)',
+                    lineHeight: '1.7'
+                  }}
+                >
+                  Common questions about WordPress development
+                </p>
+              </div>
+
+              <div className="space-y-4">
+                {servicePageFAQs.map((faq, index) => (
+                  <details
+                    key={index}
+                    style={{
+                      padding: '24px',
+                      backgroundColor: 'var(--card)',
+                      borderRadius: 'var(--radius-lg)',
+                      border: '1px solid var(--border-soft)'
+                    }}
+                  >
+                    <summary
+                      style={{
+                        fontFamily: 'Lexend, sans-serif',
+                        fontSize: 'var(--text-lg)',
+                        fontWeight: 'var(--font-weight-semibold)',
+                        color: 'var(--foreground)',
+                        cursor: 'pointer',
+                        listStyle: 'none'
+                      }}
+                    >
+                      {faq.question}
+                    </summary>
+                    <p
                       style={{
                         fontFamily: 'Lexend, sans-serif',
                         fontSize: 'var(--text-base)',
-                        fontWeight: 'var(--font-weight-medium)',
-                        color: 'var(--primary)',
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: '8px'
+                        lineHeight: '1.7',
+                        color: 'var(--muted-foreground)',
+                        marginTop: '12px'
                       }}
                     >
-                      Learn More
-                      <ArrowRight size={16} />
-                    </span>
-                  </a>
+                      {faq.answer}
+                    </p>
+                  </details>
                 ))}
               </div>
-            </Container>
-          </Section>
-        )}
+            </div>
+          </Container>
+        </Section>
 
         {/* CTA Section */}
-        <CTASection
-          title="Ready to Get Started?"
-          description="Let's discuss how we can help transform your WordPress project with our expert services."
-          primaryButtonText="Start Your Project"
-          primaryButtonPage="contact"
-          secondaryButtonText="View All Services"
-          secondaryButtonPage="services"
-          variant="highlighted"
-          buttonSize="lg"
-        />
+        <Section 
+          spacing="xl" 
+          style={{
+            background: 'linear-gradient(135deg, #1e40af 0%, #3b82f6 100%)',
+            color: 'var(--primary-foreground)'
+          }}
+        >
+          <Container>
+            <div className="max-w-3xl mx-auto text-center">
+              <h2
+                style={{
+                  fontFamily: 'Lexend, sans-serif',
+                  fontSize: 'var(--text-h1)',
+                  fontWeight: 'var(--font-weight-bold)',
+                  lineHeight: '1.2',
+                  letterSpacing: '-0.02em',
+                  marginBottom: '16px',
+                  color: 'var(--primary-foreground)'
+                }}
+              >
+                {servicePageCTA.title}
+              </h2>
+
+              <p
+                style={{
+                  fontFamily: 'Lexend, sans-serif',
+                  fontSize: 'var(--text-lg)',
+                  lineHeight: '1.7',
+                  color: 'rgba(255, 255, 255, 0.9)',
+                  marginBottom: '32px'
+                }}
+              >
+                {servicePageCTA.description}
+              </p>
+
+              <Buttons alignment="center" gap="md">
+                <Button 
+                  page={servicePageCTA.buttons[0].page as any} 
+                  size="lg"
+                  variant="default"
+                  style={{
+                    backgroundColor: 'var(--primary-foreground)',
+                    color: 'var(--primary)'
+                  }}
+                >
+                  {servicePageCTA.buttons[0].text}
+                </Button>
+                <Button 
+                  page={servicePageCTA.buttons[1].page as any} 
+                  size="lg"
+                  variant="outline"
+                  style={{
+                    borderColor: 'var(--primary-foreground)',
+                    color: 'var(--primary-foreground)'
+                  }}
+                >
+                  {servicePageCTA.buttons[1].text}
+                </Button>
+              </Buttons>
+            </div>
+          </Container>
+        </Section>
       </main>
 
       <SiteFooter />

@@ -32,7 +32,10 @@ import {
   Users,
   Award,
   Heart,
-  ChevronRight
+  ChevronRight,
+  Search,
+  FileText,
+  Globe
 } from 'lucide-react';
 
 // Import centralized data
@@ -62,7 +65,10 @@ const iconMap: Record<string, any> = {
   Users,
   Award,
   Heart,
-  Sparkles
+  Sparkles,
+  Search,
+  FileText,
+  Globe
 };
 
 export function FrontPageTemplate() {

@@ -38,10 +38,12 @@ import {
   Search,
   RefreshCw,
   FileText,
-  Briefcase,
-  Award,
-  Users
+  Palette
 } from 'lucide-react';
+
+// Import centralized hosting data
+import { hostingPlans, hostingFeatures } from '../../data/hosting';
+import { hostingFAQs } from '../../data/faqs';
 
 export function HostingTemplate() {
   const [hoveredFeature, setHoveredFeature] = useState<string | null>(null);
@@ -57,164 +59,10 @@ export function HostingTemplate() {
   ];
 
   // Hosting packages
-  const hostingPackages = [
-    {
-      id: 'standard',
-      name: 'Standard Secure Cloud Hosting',
-      monthlyPrice: '$100/month inc VAT*',
-      annualPrice: '$1000/month inc VAT*',
-      features: [
-        '50 GB SSD storage',
-        'FREE SSL (HTTPS)',
-        '24/7/365 support',
-        'FREE daily backups',
-        'Email Accounts',
-        'Unlimited bandwidth',
-        'Optimized performance',
-        'Free site migration'
-      ],
-      buttonText: 'Start now from $100/month',
-      color: 'primary',
-      popular: false
-    },
-    {
-      id: 'premium',
-      name: 'Premium Secure Cloud Hosting',
-      monthlyPrice: '$200/month inc VAT*',
-      annualPrice: 'From $2000/month inc VAT*',
-      features: [
-        '50+ GB SSD storage',
-        'FREE SSL (HTTPS)',
-        '24/7/365 support',
-        'FREE daily backups',
-        'Unlimited Email Accounts',
-        'Unlimited bandwidth',
-        'Optimized performance',
-        'Free site migration'
-      ],
-      buttonText: 'Start now from $200/month',
-      color: 'accent',
-      popular: true
-    }
-  ];
+  const hostingPackages = hostingPlans;
 
   // Features included with each package
-  const features = [
-    {
-      id: 'backups',
-      icon: Database,
-      title: 'Backups',
-      description: 'Automated daily backups of your complete website'
-    },
-    {
-      id: 'monitoring',
-      icon: Activity,
-      title: 'Monitoring',
-      description: 'Real-time website monitoring and uptime tracking'
-    },
-    {
-      id: 'malware',
-      icon: Shield,
-      title: 'Malware Scanning',
-      description: 'Daily malware scans with automatic threat removal'
-    },
-    {
-      id: 'cdn',
-      icon: Globe,
-      title: 'CDN',
-      description: 'Global content delivery network for faster loading'
-    },
-    {
-      id: 'ssl',
-      icon: Lock,
-      title: 'Free SSL',
-      description: 'Free SSL certificates included with every plan'
-    },
-    {
-      id: 'availability',
-      icon: CheckCircle,
-      title: 'High Availability',
-      description: '99.9% uptime SLA guarantee for your peace of mind'
-    },
-    {
-      id: 'ddos',
-      icon: Shield,
-      title: 'DDoS Protection',
-      description: 'Advanced protection against DDoS attacks'
-    },
-    {
-      id: 'updates',
-      icon: RefreshCw,
-      title: 'Managed Updates',
-      description: 'Automatic WordPress and plugin updates'
-    },
-    {
-      id: 'access',
-      icon: Users,
-      title: 'Multi-User Access',
-      description: 'Give team members secure access to hosting'
-    },
-    {
-      id: 'migration',
-      icon: TrendingUp,
-      title: 'Free Migration',
-      description: 'Free professional website migration service'
-    },
-    {
-      id: 'staging',
-      icon: Briefcase,
-      title: 'Staging Environment',
-      description: 'Test changes safely before going live'
-    },
-    {
-      id: 'monitoring-2',
-      icon: Search,
-      title: 'Performance Monitoring',
-      description: 'Track website performance metrics in real-time'
-    },
-    {
-      id: 'security',
-      icon: Lock,
-      title: 'Security',
-      description: 'Enterprise-grade security and firewall protection'
-    },
-    {
-      id: 'edge',
-      icon: Zap,
-      title: 'Edge & Legacy',
-      description: 'Support for both modern and legacy systems'
-    },
-    {
-      id: 'backups-2',
-      icon: Database,
-      title: 'Auto Backups',
-      description: 'Automated backups with one-click restore'
-    }
-  ];
-
-  // Hosting FAQs
-  const hostingFAQs = [
-    {
-      question: 'Can I get a refund on my website hosting purchase?',
-      answer: 'Yes, we offer a 30-day money-back guarantee on all hosting plans. If you\'re not satisfied within the first 30 days, we\'ll provide a full refund, no questions asked.'
-    },
-    {
-      question: 'What support is provided with LightSpeed hosting?',
-      answer: 'All hosting plans include 24/7/365 expert support via email, phone, and live chat. Our WordPress specialists are available to help with any hosting-related questions or technical issues.'
-    },
-    {
-      question: 'What about domain transfer/migration?',
-      answer: 'We offer free professional website migration for all new hosting customers. Our team will handle the complete migration process, ensuring zero downtime and no data loss.'
-    },
-    {
-      question: 'Why aren\'t managed hosting prices on this page?',
-      answer: 'Managed hosting pricing varies based on your specific requirements including traffic volume, storage needs, and custom features. Contact us for a personalized quote tailored to your website\'s needs.'
-    },
-    {
-      question: 'Why should I upgrade from free to a LightSpeed plan?',
-      answer: 'Free hosting comes with limitations including ads, limited storage, poor performance, and no support. LightSpeed hosting offers premium features, dedicated resources, expert support, and optimal performance for professional websites.'
-    }
-  ];
+  const features = hostingFeatures;
 
   return (
     <>
@@ -879,31 +727,23 @@ export function HostingTemplate() {
                     alignItems: 'center'
                   }}
                 >
-                  {/* WooCommerce */}
-                  <div
-                    style={{
-                      fontFamily: 'Lexend, sans-serif',
-                      fontSize: 'var(--text-2xl)',
-                      fontWeight: 'var(--font-weight-bold)',
-                      color: 'var(--primary)',
-                      textAlign: 'center'
-                    }}
-                  >
-                    WooCommerce
-                  </div>
-
-                  {/* WordPress */}
-                  <div
-                    style={{
-                      fontFamily: 'Lexend, sans-serif',
-                      fontSize: 'var(--text-2xl)',
-                      fontWeight: 'var(--font-weight-bold)',
-                      color: 'var(--accent)',
-                      textAlign: 'center'
-                    }}
-                  >
-                    WordPress
-                  </div>
+                  {[
+                    { key: 'woocommerce', text: 'WooCommerce', color: 'var(--primary)' },
+                    { key: 'wordpress', text: 'WordPress', color: 'var(--accent)' }
+                  ].map((logo) => (
+                    <div
+                      key={logo.key}
+                      style={{
+                        fontFamily: 'Lexend, sans-serif',
+                        fontSize: 'var(--text-2xl)',
+                        fontWeight: 'var(--font-weight-bold)',
+                        color: logo.color,
+                        textAlign: 'center'
+                      }}
+                    >
+                      {logo.text}
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>

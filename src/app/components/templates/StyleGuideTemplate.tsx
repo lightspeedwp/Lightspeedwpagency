@@ -204,12 +204,12 @@ export function StyleGuideTemplate() {
                   >
                     <div className="flex items-baseline justify-between mb-2">
                       <code 
+                        className="px-1.5 py-0.5"
                         style={{
                           fontFamily: 'monospace',
                           fontSize: 'var(--text-small)',
                           color: 'var(--primary)',
                           backgroundColor: 'var(--muted)',
-                          padding: '2px 6px',
                           borderRadius: 'var(--radius)',
                         }}
                       >
@@ -265,12 +265,12 @@ export function StyleGuideTemplate() {
                     }}
                   >
                     <code 
+                      className="px-1.5 py-0.5"
                       style={{
                         fontFamily: 'monospace',
                         fontSize: 'var(--text-small)',
                         color: 'var(--primary)',
                         backgroundColor: 'var(--muted)',
-                        padding: '2px 6px',
                         borderRadius: 'var(--radius)',
                         display: 'block',
                         marginBottom: '8px',

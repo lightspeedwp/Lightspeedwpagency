@@ -185,7 +185,7 @@ export function PageSwitcher({ currentPage, onPageChange }: PageSwitcherProps) {
               <div 
                 className="px-4 py-2"
                 style={{
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-small)',
                   fontWeight: 'var(--font-weight-medium)',
                   color: 'var(--muted-foreground)',
@@ -209,7 +209,7 @@ export function PageSwitcher({ currentPage, onPageChange }: PageSwitcherProps) {
                   className="py-2.5 px-4 pl-6"
                   style={{
                     width: '100%',
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-base)',
                     fontWeight: currentPage === page.id 
                       ? 'var(--font-weight-medium)' 
@@ -262,7 +262,7 @@ export function PageSwitcher({ currentPage, onPageChange }: PageSwitcherProps) {
         aria-expanded={isOpen}
         className="px-4 py-3"
         style={{
-          fontFamily: 'Lexend, sans-serif',
+          fontFamily: 'var(--font-primary)',
           fontSize: 'var(--text-base)',
           fontWeight: 'var(--font-weight-medium)',
           backgroundColor: 'var(--primary)',

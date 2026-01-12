@@ -3,8 +3,8 @@
  * 
  * WordPress template: templates/page-team.html
  * 
- * Team page showcasing company team members and culture.
- * Pattern order: Hero → Team Grid → Culture Section → CTA
+ * Team page showcasing LightSpeed team members and culture.
+ * Pattern order: Breadcrumbs → Hero → Leadership → Team Grid → Culture → Stats → Departments → FAQs → CTA
  */
 
 import { SiteHeader } from '../parts/SiteHeader';
@@ -13,56 +13,38 @@ import { SkipLink } from '../common/SkipLink';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { Breadcrumbs } from '../common/Breadcrumbs';
-import { Skeleton } from '../blocks/layout/Skeleton';
-import { TeamGrid } from '../patterns/TeamGrid';
-import { TestimonialGrid } from '../patterns/TestimonialGrid';
-import { CTASection } from '../patterns/CTASection';
-import { FAQSection } from '../patterns/FAQSection';
 import { BackToTopButton } from '../blocks/layout/BackToTopButton';
-import { teamFAQs } from '../../data/faqs';
-import { teamMembers } from '../../data/team';
-import { featuredTestimonials } from '../../data/testimonials';
-import { Globe, Users, Heart, Zap } from 'lucide-react';
-import { Button } from '../ui/Button';
-import { useState, useEffect } from 'react';
+import { RouteAnnouncer } from '../blocks/utility/RouteAnnouncer';
+import { Buttons, Button } from '../blocks/design/Buttons';
+import { 
+  Users,
+  Globe,
+  Award,
+  Code,
+  Heart,
+  Zap,
+  Mail,
+  Briefcase,
+  CheckCircle
+} from 'lucide-react';
+
+// Import centralized data
+import {
+  teamPageHero,
+  teamPageMembers,
+  featuredTeamMembers,
+  teamPageCulture,
+  teamPageStats,
+  teamPageDepartments,
+  teamPageFAQs,
+  teamPageLeadership,
+  teamPageCTA
+} from '../../data/team-page';
 
 export function TeamTemplate() {
-  const [isLoading, setIsLoading] = useState(true);
-
-  // Simulate loading state (in real app, this would be actual data fetching)
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 800); // 800ms loading simulation
-    
-    return () => clearTimeout(timer);
-  }, []); // Run once on mount
-
-  const culturePoints = [
-    {
-      icon: Globe,
-      title: 'Remote-First',
-      description: 'Our team works from 10+ countries, bringing diverse perspectives and 24/7 client coverage.'
-    },
-    {
-      icon: Users,
-      title: 'Collaborative',
-      description: 'We believe in pair programming, code reviews, and knowledge sharing to deliver the best results.'
-    },
-    {
-      icon: Heart,
-      title: 'Work-Life Balance',
-      description: 'We respect personal time with flexible schedules and unlimited PTO for all team members.'
-    },
-    {
-      icon: Zap,
-      title: 'Continuous Learning',
-      description: 'Annual learning budgets, conference attendance, and dedicated time for skill development.'
-    }
-  ];
-
   return (
     <>
+      <RouteAnnouncer />
       <SkipLink />
       <SiteHeader />
       
@@ -78,7 +60,6 @@ export function TeamTemplate() {
             <Breadcrumbs 
               items={[
                 { label: 'Home', href: '/' },
-                { label: 'About', href: '/about' },
                 { label: 'Team' }
               ]}
             />
@@ -89,341 +70,778 @@ export function TeamTemplate() {
         <Section 
           spacing="xl"
           style={{
-            background: 'linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%)',
+            background: 'linear-gradient(135deg, #1e40af 0%, #3b82f6 100%)',
             color: 'var(--primary-foreground)',
             position: 'relative',
             overflow: 'hidden'
           }}
         >
-          {/* Gradient orb decoration */}
+          {/* Gradient orb decorations */}
           <div
             className="absolute top-0 right-0 w-96 h-96 rounded-full"
             style={{
-              background: 'var(--glass-bg-strong)',
+              background: 'radial-gradient(circle, rgba(96, 165, 250, 0.3) 0%, transparent 70%)',
               filter: 'blur(80px)',
               transform: 'translate(30%, -30%)'
             }}
           />
 
-          <div className="relative z-10">
-            {/* Badge */}
-            <div
-              className="inline-flex items-center px-6 py-3 mb-8"
-              style={{
-                backgroundColor: 'var(--glass-bg-strong)',
-                backdropFilter: 'blur(10px)',
-                color: 'var(--primary-foreground)',
-                borderRadius: 'var(--radius-xl)',
-                border: '1px solid var(--glass-border)',
-                fontFamily: 'Lexend, sans-serif',
-                fontSize: 'var(--text-base)',
-                fontWeight: 'var(--font-weight-medium)',
-                textTransform: 'uppercase',
-                letterSpacing: '0.1em'
-              }}
-            >
-              Meet Our Team
-            </div>
-
-            <h1 
-              style={{
-                fontFamily: 'Lexend, sans-serif',
-                fontSize: 'var(--text-h1)',
-                fontWeight: 'var(--font-weight-semibold)',
-                lineHeight: 'var(--line-height-tight)',
-                letterSpacing: 'var(--letter-spacing-tight)',
-                marginBottom: '24px',
-                color: 'var(--primary-foreground)'
-              }}
-            >
-              The People Behind LSX Design
-            </h1>
-
-            <p 
-              style={{
-                fontFamily: 'Lexend, sans-serif',
-                fontSize: 'var(--text-lead)',
-                fontWeight: 'var(--font-weight-regular)',
-                lineHeight: 'var(--line-height-relaxed)',
-                color: 'var(--primary-foreground)',
-                opacity: 0.95,
-                maxWidth: '700px',
-                margin: '0 auto'
-              }}
-            >
-              A diverse team of WordPress experts, designers, and developers passionate about creating exceptional web experiences.
-            </p>
-          </div>
-        </Section>
-
-        {/* Team Grid */}
-        <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
           <Container>
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <h2 
+            <div className="max-w-4xl mx-auto text-center relative z-10">
+              <div
+                className="inline-block px-4 py-2 mb-6"
                 style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-h2)',
+                  backgroundColor: 'rgba(255, 255, 255, 0.15)',
+                  backdropFilter: 'blur(10px)',
+                  borderRadius: 'var(--radius-full)',
+                  border: '1px solid rgba(255, 255, 255, 0.2)',
+                  fontSize: 'var(--text-small)',
+                  fontFamily: 'Manrope, sans-serif',
                   fontWeight: 'var(--font-weight-semibold)',
-                  lineHeight: 'var(--line-height-snug)',
-                  letterSpacing: 'var(--letter-spacing-tight)',
-                  marginBottom: '16px',
-                  color: 'var(--foreground)'
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.1em'
                 }}
               >
-                Our WordPress Experts
-              </h2>
-              <p 
+                <Users size={14} style={{ display: 'inline', marginRight: '8px' }} />
+                MEET OUR TEAM
+              </div>
+
+              <h1
+                style={{
+                  fontFamily: 'Lexend, sans-serif',
+                  fontSize: 'clamp(2rem, 5vw, 3.5rem)',
+                  fontWeight: 'var(--font-weight-bold)',
+                  lineHeight: '1.1',
+                  letterSpacing: '-0.02em',
+                  marginBottom: '20px',
+                  color: 'var(--primary-foreground)'
+                }}
+              >
+                The <span style={{ 
+                  background: 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text'
+                }}>People</span> Behind LightSpeed
+              </h1>
+
+              <p
                 style={{
                   fontFamily: 'Lexend, sans-serif',
                   fontSize: 'var(--text-lg)',
-                  color: 'var(--muted-foreground)',
-                  lineHeight: '1.7'
+                  lineHeight: '1.7',
+                  color: 'rgba(255, 255, 255, 0.95)',
+                  marginBottom: '40px',
+                  maxWidth: '700px',
+                  margin: '0 auto 40px'
                 }}
               >
-                Meet the talented individuals who bring our WordPress projects to life
+                {teamPageHero.description}
               </p>
-            </div>
 
-            {isLoading ? (
-              // Loading skeletons
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                {Array.from({ length: 8 }).map((_, index) => (
-                  <div
-                    key={index}
-                    className="flex flex-col"
-                    style={{
-                      backgroundColor: 'var(--card)',
-                      border: '1px solid var(--border-soft)',
-                      borderRadius: 'var(--radius-xl)',
-                      overflow: 'hidden',
-                      boxShadow: 'var(--shadow-md)'
-                    }}
-                  >
-                    {/* Photo skeleton */}
-                    <Skeleton height="300px" variant="rectangular" />
-                    
-                    {/* Content skeleton */}
-                    <div className="p-6 flex flex-col gap-3">
-                      {/* Name skeleton */}
-                      <Skeleton width="80%" height="24px" variant="text" />
-                      
-                      {/* Role skeleton */}
-                      <Skeleton width="70%" height="20px" className="mb-2" variant="text" />
-                      
-                      {/* Bio skeletons */}
-                      <Skeleton width="100%" height="16px" variant="text" />
-                      <Skeleton width="100%" height="16px" variant="text" />
-                      <Skeleton width="85%" height="16px" className="mb-4" variant="text" />
-                      
-                      {/* Social links skeleton */}
-                      <div className="flex gap-2 pt-4" style={{ borderTop: '1px solid var(--border-extra-soft)' }}>
-                        <Skeleton width="32px" height="32px" variant="circular" />
-                        <Skeleton width="32px" height="32px" variant="circular" />
-                        <Skeleton width="32px" height="32px" variant="circular" />
+              {/* Hero Stats */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {teamPageHero.stats.map((stat, index) => {
+                  const icons = { Users, Globe, Award };
+                  const Icon = icons[stat.icon as keyof typeof icons];
+                  return (
+                    <div
+                      key={index}
+                      style={{
+                        padding: '24px',
+                        backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                        backdropFilter: 'blur(10px)',
+                        borderRadius: 'var(--radius-lg)',
+                        border: '1px solid rgba(255, 255, 255, 0.2)'
+                      }}
+                    >
+                      <Icon size={32} style={{ marginBottom: '12px', color: '#fbbf24' }} />
+                      <div
+                        style={{
+                          fontFamily: 'Lexend, sans-serif',
+                          fontSize: 'var(--text-h2)',
+                          fontWeight: 'var(--font-weight-bold)',
+                          marginBottom: '4px'
+                        }}
+                      >
+                        {stat.value}
+                      </div>
+                      <div
+                        style={{
+                          fontFamily: 'Manrope, sans-serif',
+                          fontSize: 'var(--text-small)',
+                          opacity: 0.9
+                        }}
+                      >
+                        {stat.label}
                       </div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
-            ) : (
-              <TeamGrid 
-                heading=""
-                description=""
-                members={teamMembers}
-                columns={{ mobile: 1, tablet: 2, desktop: 4 }}
-                showBios={true}
-                showSocial={true}
-              />
-            )}
+            </div>
           </Container>
         </Section>
 
-        {/* Testimonial Grid */}
+        {/* Leadership Section */}
         <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
           <Container>
-            <TestimonialGrid 
-              heading="What Our Clients Say"
-              description="Hear from our satisfied clients about their experiences with LSX Design"
-              testimonials={featuredTestimonials}
-              columns={{ mobile: 1, tablet: 2, desktop: 3 }}
-              showRatings={true}
-              showAvatars={false}
-            />
-          </Container>
-        </Section>
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-16">
+                <h2
+                  style={{
+                    fontFamily: 'Lexend, sans-serif',
+                    fontSize: 'var(--text-h1)',
+                    fontWeight: 'var(--font-weight-bold)',
+                    lineHeight: '1.2',
+                    letterSpacing: '-0.02em',
+                    marginBottom: '16px',
+                    color: 'var(--foreground)'
+                  }}
+                >
+                  Our Leadership
+                </h2>
 
-        {/* Culture Section */}
-        <Section spacing="xl" style={{ backgroundColor: 'var(--muted)' }}>
-          <Container>
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <h2 
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-h2)',
-                  fontWeight: 'var(--font-weight-semibold)',
-                  lineHeight: 'var(--line-height-snug)',
-                  letterSpacing: 'var(--letter-spacing-tight)',
-                  marginBottom: '16px',
-                  color: 'var(--foreground)'
-                }}
-              >
-                Our Culture
-              </h2>
-              <p 
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-lg)',
-                  color: 'var(--muted-foreground)',
-                  lineHeight: '1.7'
-                }}
-              >
-                The values and principles that make LSX Design a great place to work
-              </p>
-            </div>
+                <p
+                  style={{
+                    fontFamily: 'Lexend, sans-serif',
+                    fontSize: 'var(--text-lg)',
+                    lineHeight: '1.7',
+                    color: 'var(--muted-foreground)'
+                  }}
+                >
+                  Meet the team guiding LightSpeed's vision and growth
+                </p>
+              </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {culturePoints.map((point, index) => {
-                const Icon = point.icon;
-                return (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {teamPageLeadership.map((member, index) => (
                   <div
                     key={index}
                     style={{
+                      padding: '40px',
                       backgroundColor: 'var(--card)',
+                      borderRadius: 'var(--radius-lg)',
                       border: '1px solid var(--border-soft)',
-                      borderRadius: 'var(--radius-xl)',
-                      padding: '32px',
-                      textAlign: 'center',
-                      transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                      boxShadow: 'var(--shadow-md)'
+                      transition: 'all 0.3s ease'
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.transform = 'translateY(-8px)';
-                      e.currentTarget.style.boxShadow = 'var(--shadow-xl)';
+                      e.currentTarget.style.transform = 'translateY(-4px)';
+                      e.currentTarget.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
                       e.currentTarget.style.borderColor = 'var(--primary)';
                     }}
                     onMouseLeave={(e) => {
                       e.currentTarget.style.transform = 'translateY(0)';
-                      e.currentTarget.style.boxShadow = 'var(--shadow-md)';
+                      e.currentTarget.style.boxShadow = 'none';
                       e.currentTarget.style.borderColor = 'var(--border-soft)';
                     }}
                   >
-                    <div 
-                      className="mb-6 mx-auto"
-                      style={{
-                        width: '56px',
-                        height: '56px',
-                        borderRadius: 'var(--radius-lg)',
-                        backgroundColor: 'var(--primary)',
-                        color: 'var(--primary-foreground)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center'
-                      }}
-                    >
-                      <Icon size={28} strokeWidth={2} />
-                    </div>
-
-                    <h3 
+                    <h3
                       style={{
                         fontFamily: 'Lexend, sans-serif',
-                        fontSize: 'var(--text-h4)',
-                        fontWeight: 'var(--font-weight-semibold)',
-                        color: 'var(--card-foreground)',
-                        marginBottom: '12px',
-                        lineHeight: '1.3'
+                        fontSize: 'var(--text-h3)',
+                        fontWeight: 'var(--font-weight-bold)',
+                        color: 'var(--foreground)',
+                        marginBottom: '4px'
                       }}
                     >
-                      {point.title}
+                      {member.name}
                     </h3>
 
-                    <p 
+                    <p
+                      style={{
+                        fontFamily: 'Manrope, sans-serif',
+                        fontSize: 'var(--text-base)',
+                        fontWeight: 'var(--font-weight-semibold)',
+                        color: 'var(--primary)',
+                        marginBottom: '12px'
+                      }}
+                    >
+                      {member.role}
+                    </p>
+
+                    <p
                       style={{
                         fontFamily: 'Lexend, sans-serif',
                         fontSize: 'var(--text-base)',
+                        lineHeight: '1.7',
                         color: 'var(--muted-foreground)',
-                        lineHeight: '1.6'
+                        marginBottom: '20px'
                       }}
                     >
-                      {point.description}
+                      {member.bio}
                     </p>
+
+                    {/* Highlights */}
+                    <div className="space-y-2">
+                      {member.highlights.map((highlight, idx) => (
+                        <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                          <CheckCircle size={16} style={{ color: 'var(--primary)', flexShrink: 0 }} />
+                          <span
+                            style={{
+                              fontFamily: 'Manrope, sans-serif',
+                              fontSize: 'var(--text-small)',
+                              color: 'var(--foreground)'
+                            }}
+                          >
+                            {highlight}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Email */}
+                    <a
+                      href={`mailto:${member.email}`}
+                      style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '8px',
+                        marginTop: '20px',
+                        fontFamily: 'Manrope, sans-serif',
+                        fontSize: 'var(--text-small)',
+                        color: 'var(--primary)',
+                        textDecoration: 'none',
+                        transition: 'opacity 0.2s ease'
+                      }}
+                      onMouseEnter={(e) => e.currentTarget.style.opacity = '0.7'}
+                      onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
+                    >
+                      <Mail size={16} />
+                      {member.email}
+                    </a>
                   </div>
-                );
-              })}
+                ))}
+              </div>
             </div>
           </Container>
         </Section>
 
-        {/* Join Team CTA */}
+        {/* Full Team Grid */}
+        <Section spacing="xl" style={{ backgroundColor: 'var(--muted)' }}>
+          <Container>
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-16">
+                <h2
+                  style={{
+                    fontFamily: 'Lexend, sans-serif',
+                    fontSize: 'var(--text-h1)',
+                    fontWeight: 'var(--font-weight-bold)',
+                    lineHeight: '1.2',
+                    letterSpacing: '-0.02em',
+                    marginBottom: '16px',
+                    color: 'var(--foreground)'
+                  }}
+                >
+                  Our Complete Team
+                </h2>
+
+                <p
+                  style={{
+                    fontFamily: 'Lexend, sans-serif',
+                    fontSize: 'var(--text-lg)',
+                    lineHeight: '1.7',
+                    color: 'var(--muted-foreground)'
+                  }}
+                >
+                  11 WordPress experts dedicated to your success
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {teamPageMembers.map((member, index) => (
+                  <div
+                    key={index}
+                    style={{
+                      padding: '32px',
+                      backgroundColor: 'var(--card)',
+                      borderRadius: 'var(--radius-lg)',
+                      border: '1px solid var(--border-soft)',
+                      transition: 'all 0.3s ease'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = 'translateY(-4px)';
+                      e.currentTarget.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
+                      e.currentTarget.style.borderColor = 'var(--primary)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = 'translateY(0)';
+                      e.currentTarget.style.boxShadow = 'none';
+                      e.currentTarget.style.borderColor = 'var(--border-soft)';
+                    }}
+                  >
+                    <h3
+                      style={{
+                        fontFamily: 'Lexend, sans-serif',
+                        fontSize: 'var(--text-xl)',
+                        fontWeight: 'var(--font-weight-bold)',
+                        color: 'var(--foreground)',
+                        marginBottom: '4px'
+                      }}
+                    >
+                      {member.name}
+                    </h3>
+
+                    <p
+                      style={{
+                        fontFamily: 'Manrope, sans-serif',
+                        fontSize: 'var(--text-small)',
+                        fontWeight: 'var(--font-weight-semibold)',
+                        color: 'var(--primary)',
+                        marginBottom: '12px'
+                      }}
+                    >
+                      {member.role}
+                    </p>
+
+                    <p
+                      style={{
+                        fontFamily: 'Lexend, sans-serif',
+                        fontSize: 'var(--text-small)',
+                        lineHeight: '1.6',
+                        color: 'var(--muted-foreground)',
+                        marginBottom: '16px'
+                      }}
+                    >
+                      {member.bio}
+                    </p>
+
+                    <a
+                      href={`mailto:${member.email}`}
+                      style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '8px',
+                        fontFamily: 'Manrope, sans-serif',
+                        fontSize: 'var(--text-small)',
+                        color: 'var(--primary)',
+                        textDecoration: 'none',
+                        transition: 'opacity 0.2s ease'
+                      }}
+                      onMouseEnter={(e) => e.currentTarget.style.opacity = '0.7'}
+                      onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
+                      aria-label={`Email ${member.name}`}
+                    >
+                      <Mail size={14} />
+                      Email {member.name.split(' ')[0]}
+                    </a>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Container>
+        </Section>
+
+        {/* Culture & Values Section */}
         <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
           <Container>
-            <div 
-              className="text-center max-w-3xl mx-auto"
-              style={{
-                backgroundColor: 'var(--card)',
-                border: '1px solid var(--border-soft)',
-                borderRadius: 'var(--radius-xl)',
-                padding: '64px 48px',
-                boxShadow: 'var(--shadow-md)'
-              }}
-            >
-              <h2 
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-16">
+                <h2
+                  style={{
+                    fontFamily: 'Lexend, sans-serif',
+                    fontSize: 'var(--text-h1)',
+                    fontWeight: 'var(--font-weight-bold)',
+                    lineHeight: '1.2',
+                    letterSpacing: '-0.02em',
+                    marginBottom: '16px',
+                    color: 'var(--foreground)'
+                  }}
+                >
+                  Our Team Culture
+                </h2>
+
+                <p
+                  style={{
+                    fontFamily: 'Lexend, sans-serif',
+                    fontSize: 'var(--text-lg)',
+                    lineHeight: '1.7',
+                    color: 'var(--muted-foreground)'
+                  }}
+                >
+                  The values that define how we work together
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {teamPageCulture.map((value, index) => {
+                  const Icon = value.icon;
+                  return (
+                    <div
+                      key={index}
+                      style={{
+                        padding: '32px',
+                        backgroundColor: 'var(--card)',
+                        borderRadius: 'var(--radius-lg)',
+                        border: '1px solid var(--border-soft)'
+                      }}
+                    >
+                      <div
+                        style={{
+                          width: '56px',
+                          height: '56px',
+                          borderRadius: 'var(--radius-lg)',
+                          backgroundColor: 'var(--primary-soft)',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          marginBottom: '20px'
+                        }}
+                      >
+                        <Icon size={28} style={{ color: 'var(--primary)' }} />
+                      </div>
+
+                      <h3
+                        style={{
+                          fontFamily: 'Lexend, sans-serif',
+                          fontSize: 'var(--text-xl)',
+                          fontWeight: 'var(--font-weight-bold)',
+                          color: 'var(--foreground)',
+                          marginBottom: '8px'
+                        }}
+                      >
+                        {value.title}
+                      </h3>
+                      <p
+                        style={{
+                          fontFamily: 'Lexend, sans-serif',
+                          fontSize: 'var(--text-base)',
+                          lineHeight: '1.6',
+                          color: 'var(--muted-foreground)'
+                        }}
+                      >
+                        {value.description}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </Container>
+        </Section>
+
+        {/* Team Stats Section */}
+        <Section spacing="xl" style={{ backgroundColor: 'var(--muted)' }}>
+          <Container>
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-16">
+                <h2
+                  style={{
+                    fontFamily: 'Lexend, sans-serif',
+                    fontSize: 'var(--text-h1)',
+                    fontWeight: 'var(--font-weight-bold)',
+                    lineHeight: '1.2',
+                    letterSpacing: '-0.02em',
+                    marginBottom: '16px',
+                    color: 'var(--foreground)'
+                  }}
+                >
+                  Team by the Numbers
+                </h2>
+
+                <p
+                  style={{
+                    fontFamily: 'Lexend, sans-serif',
+                    fontSize: 'var(--text-lg)',
+                    lineHeight: '1.7',
+                    color: 'var(--muted-foreground)'
+                  }}
+                >
+                  Our team's expertise and reach
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {teamPageStats.map((stat, index) => {
+                  const Icon = stat.icon;
+                  return (
+                    <div
+                      key={index}
+                      className="text-center"
+                      style={{
+                        padding: '32px',
+                        backgroundColor: 'var(--card)',
+                        borderRadius: 'var(--radius-lg)',
+                        border: '1px solid var(--border-soft)'
+                      }}
+                    >
+                      <Icon size={32} style={{ marginBottom: '12px', color: 'var(--primary)' }} />
+                      <div
+                        style={{
+                          fontFamily: 'Lexend, sans-serif',
+                          fontSize: 'var(--text-h2)',
+                          fontWeight: 'var(--font-weight-bold)',
+                          marginBottom: '4px',
+                          color: 'var(--foreground)'
+                        }}
+                      >
+                        {stat.value}
+                      </div>
+                      <div
+                        style={{
+                          fontFamily: 'Lexend, sans-serif',
+                          fontSize: 'var(--text-base)',
+                          fontWeight: 'var(--font-weight-semibold)',
+                          marginBottom: '8px',
+                          color: 'var(--foreground)'
+                        }}
+                      >
+                        {stat.label}
+                      </div>
+                      <p
+                        style={{
+                          fontFamily: 'Manrope, sans-serif',
+                          fontSize: 'var(--text-small)',
+                          lineHeight: '1.5',
+                          color: 'var(--muted-foreground)'
+                        }}
+                      >
+                        {stat.description}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </Container>
+        </Section>
+
+        {/* Departments Section */}
+        <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
+          <Container>
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-16">
+                <h2
+                  style={{
+                    fontFamily: 'Lexend, sans-serif',
+                    fontSize: 'var(--text-h1)',
+                    fontWeight: 'var(--font-weight-bold)',
+                    lineHeight: '1.2',
+                    letterSpacing: '-0.02em',
+                    marginBottom: '16px',
+                    color: 'var(--foreground)'
+                  }}
+                >
+                  Our Departments
+                </h2>
+
+                <p
+                  style={{
+                    fontFamily: 'Lexend, sans-serif',
+                    fontSize: 'var(--text-lg)',
+                    lineHeight: '1.7',
+                    color: 'var(--muted-foreground)'
+                  }}
+                >
+                  Specialized teams working together for your success
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {teamPageDepartments.map((dept, index) => {
+                  const Icon = dept.icon;
+                  return (
+                    <div
+                      key={index}
+                      style={{
+                        padding: '32px',
+                        backgroundColor: 'var(--card)',
+                        borderRadius: 'var(--radius-lg)',
+                        border: '1px solid var(--border-soft)'
+                      }}
+                    >
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '16px' }}>
+                        <div
+                          style={{
+                            width: '56px',
+                            height: '56px',
+                            borderRadius: 'var(--radius-lg)',
+                            backgroundColor: 'var(--primary-soft)',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            flexShrink: 0
+                          }}
+                        >
+                          <Icon size={28} style={{ color: 'var(--primary)' }} />
+                        </div>
+
+                        <div>
+                          <h3
+                            style={{
+                              fontFamily: 'Lexend, sans-serif',
+                              fontSize: 'var(--text-xl)',
+                              fontWeight: 'var(--font-weight-bold)',
+                              color: 'var(--foreground)',
+                              marginBottom: '4px'
+                            }}
+                          >
+                            {dept.title}
+                          </h3>
+                          <p
+                            style={{
+                              fontFamily: 'Manrope, sans-serif',
+                              fontSize: 'var(--text-small)',
+                              color: 'var(--primary)',
+                              fontWeight: 'var(--font-weight-semibold)'
+                            }}
+                          >
+                            {dept.memberCount} {dept.memberCount === 1 ? 'member' : 'members'}
+                          </p>
+                        </div>
+                      </div>
+
+                      <p
+                        style={{
+                          fontFamily: 'Lexend, sans-serif',
+                          fontSize: 'var(--text-base)',
+                          lineHeight: '1.6',
+                          color: 'var(--muted-foreground)'
+                        }}
+                      >
+                        {dept.description}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </Container>
+        </Section>
+
+        {/* FAQ Section */}
+        <Section spacing="xl" style={{ backgroundColor: 'var(--muted)' }}>
+          <Container>
+            <div className="max-w-3xl mx-auto">
+              <div className="text-center mb-12">
+                <h2
+                  style={{
+                    fontFamily: 'Lexend, sans-serif',
+                    fontSize: 'var(--text-h2)',
+                    fontWeight: 'var(--font-weight-semibold)',
+                    color: 'var(--foreground)',
+                    marginBottom: '16px',
+                    lineHeight: 'var(--line-height-snug)'
+                  }}
+                >
+                  Team FAQs
+                </h2>
+                <p
+                  style={{
+                    fontFamily: 'Lexend, sans-serif',
+                    fontSize: 'var(--text-lg)',
+                    color: 'var(--muted-foreground)',
+                    lineHeight: '1.7'
+                  }}
+                >
+                  Learn more about the LightSpeed team
+                </p>
+              </div>
+
+              <div className="space-y-4">
+                {teamPageFAQs.map((faq, index) => (
+                  <details
+                    key={index}
+                    style={{
+                      padding: '24px',
+                      backgroundColor: 'var(--card)',
+                      borderRadius: 'var(--radius-lg)',
+                      border: '1px solid var(--border-soft)'
+                    }}
+                  >
+                    <summary
+                      style={{
+                        fontFamily: 'Lexend, sans-serif',
+                        fontSize: 'var(--text-lg)',
+                        fontWeight: 'var(--font-weight-semibold)',
+                        color: 'var(--foreground)',
+                        cursor: 'pointer',
+                        listStyle: 'none'
+                      }}
+                    >
+                      {faq.question}
+                    </summary>
+                    <p
+                      style={{
+                        fontFamily: 'Lexend, sans-serif',
+                        fontSize: 'var(--text-base)',
+                        lineHeight: '1.7',
+                        color: 'var(--muted-foreground)',
+                        marginTop: '12px'
+                      }}
+                    >
+                      {faq.answer}
+                    </p>
+                  </details>
+                ))}
+              </div>
+            </div>
+          </Container>
+        </Section>
+
+        {/* CTA Section */}
+        <Section 
+          spacing="xl" 
+          style={{
+            background: 'linear-gradient(135deg, #1e40af 0%, #3b82f6 100%)',
+            color: 'var(--primary-foreground)'
+          }}
+        >
+          <Container>
+            <div className="max-w-3xl mx-auto text-center">
+              <h2
                 style={{
                   fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-h2)',
+                  fontSize: 'var(--text-h1)',
                   fontWeight: 'var(--font-weight-bold)',
-                  lineHeight: 'var(--line-height-snug)',
-                  letterSpacing: 'var(--letter-spacing-tight)',
+                  lineHeight: '1.2',
+                  letterSpacing: '-0.02em',
                   marginBottom: '16px',
-                  color: 'var(--foreground)'
+                  color: 'var(--primary-foreground)'
                 }}
               >
-                Join Our Team
+                {teamPageCTA.title}
               </h2>
 
               <p
                 style={{
                   fontFamily: 'Lexend, sans-serif',
                   fontSize: 'var(--text-lg)',
-                  color: 'var(--muted-foreground)',
-                  lineHeight: '1.6',
-                  textAlign: 'center',
-                  margin: '0 0 2rem 0'
+                  lineHeight: '1.7',
+                  color: 'rgba(255, 255, 255, 0.9)',
+                  marginBottom: '32px'
                 }}
               >
-                We're always looking for talented individuals to join our team.
+                {teamPageCTA.description}
               </p>
 
-              <Button
-                variant="primary"
-                size="lg"
-                page="contact"
-              >
-                View Open Positions
-              </Button>
+              <Buttons alignment="center" gap="md">
+                <Button 
+                  page={teamPageCTA.buttons[0].page} 
+                  size="lg"
+                  variant="default"
+                  style={{
+                    backgroundColor: 'var(--primary-foreground)',
+                    color: 'var(--primary)'
+                  }}
+                >
+                  {teamPageCTA.buttons[0].text}
+                </Button>
+                <Button 
+                  page={teamPageCTA.buttons[1].page} 
+                  size="lg"
+                  variant="outline"
+                  style={{
+                    borderColor: 'var(--primary-foreground)',
+                    color: 'var(--primary-foreground)'
+                  }}
+                >
+                  {teamPageCTA.buttons[1].text}
+                </Button>
+              </Buttons>
             </div>
           </Container>
         </Section>
-
-        {/* FAQ Section */}
-        <FAQSection
-          title="Frequently Asked Questions"
-          description="Have questions about our team or the application process? We've got answers."
-          faqs={teamFAQs}
-          variant="default"
-        />
-
-        {/* CTA Section */}
-        <CTASection
-          title="Let's Work Together"
-          description="Ready to start your WordPress project? Our expert team is here to help bring your vision to life."
-          primaryButtonText="Get In Touch"
-          primaryButtonPage="contact"
-          secondaryButtonText="View Our Work"
-          secondaryButtonPage="portfolio-archive"
-          variant="highlighted"
-          buttonSize="lg"
-        />
       </main>
 
       <SiteFooter />

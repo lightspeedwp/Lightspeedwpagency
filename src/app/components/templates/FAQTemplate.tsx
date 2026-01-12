@@ -3,25 +3,7 @@
  * 
  * WordPress template: templates/page-faq.html
  * 
- * Page archetype: Utility page with comprehensive FAQ listing
- * Pattern order: Hero → FAQ Categories → CTAInline → ContactForm → CTA
- * 
- * **Conversion Strategy:**
- * - FAQ Categories: Organized information reduces support burden
- * - CTAInline: Mid-page conversion opportunity after FAQ consumption
- * - ContactForm: Direct support access for unanswered questions
- * - Final CTA: Catch-all conversion point
- * 
- * **Accessibility:**
- * - Keyboard navigation for FAQ accordions
- * - ARIA labels for expandable sections
- * - Focus management for form inputs
- * - Screen reader friendly FAQ structure
- * - Semantic HTML for questions and answers
- * 
- * URL: /faq/
- * 
- * @see {@link /guidelines/templates/faq.md}
+ * Pattern order: Breadcrumbs → Hero → Stats → FAQ Categories → CTA
  */
 
 import { SiteHeader } from '../parts/SiteHeader';
@@ -31,110 +13,36 @@ import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { Breadcrumbs } from '../common/Breadcrumbs';
 import { BackToTopButton } from '../blocks/layout/BackToTopButton';
-import { FAQSection } from '../patterns/FAQSection';
-import { CTAInline } from '../patterns/CTAInline';
-import { ContactForm } from '../patterns/ContactForm';
-import { Button } from '../blocks/design/Buttons';
+import { RouteAnnouncer } from '../blocks/utility/RouteAnnouncer';
+import { Buttons, Button } from '../blocks/design/Buttons';
+import { 
+  HelpCircle,
+  ChevronDown
+} from 'lucide-react';
+import { useState } from 'react';
+
+// Import centralized data
+import {
+  faqPageHero,
+  faqCategories,
+  faqStats,
+  faqCTA
+} from '../../data/faq-page';
 
 export function FAQTemplate() {
-  // General FAQs
-  const generalFAQs = [
-    {
-      question: 'What services does LSX Design offer?',
-      answer: 'We specialize in WordPress and WooCommerce development, including custom block theme development, design systems, e-commerce solutions, migrations, performance optimization, and ongoing maintenance and support.'
-    },
-    {
-      question: 'How long does a typical project take?',
-      answer: 'Project timelines vary based on scope and complexity. A simple WordPress site typically takes 4-6 weeks, while custom WooCommerce stores or enterprise solutions can take 12-16 weeks. We provide detailed timelines during the discovery phase.'
-    },
-    {
-      question: 'Do you work with clients internationally?',
-      answer: 'Yes! We work with clients across 30+ countries. Our remote-first structure and async communication processes ensure seamless collaboration regardless of time zones.'
-    },
-    {
-      question: 'What is your pricing model?',
-      answer: 'We offer both project-based and retainer pricing. Project rates are determined during discovery based on scope, complexity, and timeline. Retainer packages start at $3,000/month for ongoing support and development.'
-    },
-    {
-      question: 'Do you provide ongoing support after launch?',
-      answer: 'Absolutely! We offer comprehensive maintenance packages including security updates, performance monitoring, content updates, and technical support. All projects include 30 days of post-launch support.'
-    }
-  ];
+  const [openFAQs, setOpenFAQs] = useState<Record<string, boolean>>({});
 
-  // Technical FAQs
-  const technicalFAQs = [
-    {
-      question: 'What is WordPress Full Site Editing (FSE)?',
-      answer: 'FSE is WordPress\'s modern approach to theme development using blocks, patterns, and templates. It provides more flexibility and control without requiring code, while maintaining professional design standards through theme.json configuration.'
-    },
-    {
-      question: 'Why use block themes instead of classic themes?',
-      answer: 'Block themes offer better performance, easier maintenance, visual editing without code, better accessibility, and future-proof architecture. They\'re the recommended approach for all new WordPress sites.'
-    },
-    {
-      question: 'What is a design system and why do I need one?',
-      answer: 'A design system is a collection of reusable components, patterns, and tokens that ensure consistency across your website. It improves development speed, maintains brand consistency, and makes future updates easier and more affordable.'
-    },
-    {
-      question: 'Do you build headless WordPress sites?',
-      answer: 'Yes, we have experience with headless WordPress using Next.js, Gatsby, and other frontend frameworks. However, we generally recommend FSE block themes for most projects due to better editor experience and lower maintenance costs.'
-    },
-    {
-      question: 'What hosting do you recommend?',
-      answer: 'We recommend managed WordPress hosting providers like WP Engine, Kinsta, or Flywheel for optimal performance, security, and support. We also offer our own managed hosting service optimized for block themes.'
-    }
-  ];
-
-  // Process FAQs
-  const processFAQs = [
-    {
-      question: 'What is your development process?',
-      answer: 'We follow a four-phase approach: Discovery & Strategy, Design & Planning, Development & Build, and Testing & Launch. Each phase includes regular check-ins, demos, and opportunities for feedback.'
-    },
-    {
-      question: 'How involved do I need to be during development?',
-      answer: 'We recommend weekly sync meetings (30-60 minutes) and availability for async feedback via our project management tools. Most clients spend 2-4 hours per week reviewing progress and providing input.'
-    },
-    {
-      question: 'What do you need from us to get started?',
-      answer: 'We need access to existing sites/systems, brand assets (logos, fonts, colors), content strategy or sitemap, stakeholder availability for discovery workshops, and clearly defined project goals and success criteria.'
-    },
-    {
-      question: 'Can we make changes during development?',
-      answer: 'Minor changes are included. Major scope changes require change orders to adjust timeline and budget. We use agile sprints with demo checkpoints to minimize surprises and ensure alignment.'
-    },
-    {
-      question: 'What happens if we\'re not happy with the result?',
-      answer: 'We include multiple review cycles in each phase. If you\'re not satisfied, we work iteratively until the deliverable meets expectations. Our contracts include clear revision policies and approval gates.'
-    }
-  ];
-
-  // WooCommerce FAQs
-  const woocommerceFAQs = [
-    {
-      question: 'How many products can WooCommerce handle?',
-      answer: 'WooCommerce can handle thousands of products with proper optimization. We\'ve built stores with 10,000+ SKUs. Performance depends on hosting, optimization, and architecture—which we address in every build.'
-    },
-    {
-      question: 'Can you integrate with my existing inventory system?',
-      answer: 'Yes! We regularly integrate WooCommerce with ERPs, inventory systems, shipping providers, and accounting software. Common integrations include QuickBooks, ShipStation, and custom REST APIs.'
-    },
-    {
-      question: 'Do you handle payment gateway setup?',
-      answer: 'Yes, we configure and test all payment gateways including Stripe, PayPal, Square, and regional providers. We ensure PCI compliance and secure checkout flows.'
-    },
-    {
-      question: 'Can WooCommerce handle subscriptions?',
-      answer: 'Yes, using WooCommerce Subscriptions extension. We\'ve built membership sites, subscription boxes, SaaS billing, and recurring service businesses on WooCommerce.'
-    },
-    {
-      question: 'What about multi-currency and international shipping?',
-      answer: 'We implement multi-currency using plugins like WooCommerce Payments or Multi-Currency. For shipping, we integrate with carriers like FedEx, UPS, and DHL, including real-time rate calculations.'
-    }
-  ];
+  const toggleFAQ = (categoryId: string, questionIndex: number) => {
+    const key = `${categoryId}-${questionIndex}`;
+    setOpenFAQs(prev => ({
+      ...prev,
+      [key]: !prev[key]
+    }));
+  };
 
   return (
     <>
+      <RouteAnnouncer />
       <SkipLink />
       <SiteHeader />
       
@@ -144,13 +52,14 @@ export function FAQTemplate() {
           className="py-4"
           style={{
             backgroundColor: 'var(--background)',
+            borderBottom: '1px solid var(--border-soft)'
           }}
         >
           <Container>
             <Breadcrumbs 
               items={[
                 { label: 'Home', href: '/' },
-                { label: 'FAQ' }
+                { label: faqPageHero.title }
               ]}
             />
           </Container>
@@ -160,181 +69,430 @@ export function FAQTemplate() {
         <Section 
           spacing="xl"
           style={{
-            backgroundColor: 'var(--primary)',
+            background: 'linear-gradient(135deg, #0891b2 0%, #06b6d4 100%)',
             color: 'var(--primary-foreground)',
             position: 'relative',
             overflow: 'hidden'
           }}
         >
-          {/* Subtle gradient overlay */}
-          <div 
-            className="absolute inset-0"
-            style={{
-              background: 'linear-gradient(135deg, transparent 0%, var(--accent) 100%)',
-              opacity: '0.1',
-              pointerEvents: 'none'
-            }}
-            aria-hidden="true"
-          />
-          
-          {/* Decorative gradient orb */}
-          <div 
+          {/* Gradient orb decorations */}
+          <div
             className="absolute top-0 right-0 w-96 h-96 rounded-full"
             style={{
-              background: 'var(--accent)',
-              opacity: '0.1',
+              background: 'radial-gradient(circle, rgba(6, 182, 212, 0.3) 0%, transparent 70%)',
               filter: 'blur(80px)',
               transform: 'translate(30%, -30%)'
             }}
-            aria-hidden="true"
           />
 
-          <Container style={{ position: 'relative', zIndex: 1 }}>
-            <div className="text-center max-w-4xl mx-auto">
-              <span 
-                className="inline-flex items-center px-6 py-3 mb-8"
+          <Container>
+            <div className="max-w-4xl mx-auto text-center relative z-10">
+              <div
+                className="inline-block px-4 py-2 mb-6"
                 style={{
-                  backgroundColor: 'var(--glass-bg-strong)',
+                  backgroundColor: 'rgba(255, 255, 255, 0.15)',
                   backdropFilter: 'blur(10px)',
-                  color: 'var(--primary-foreground)',
-                  borderRadius: 'var(--radius-xl)',
-                  border: '1px solid var(--glass-border)',
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-base)',
-                  fontWeight: 'var(--font-weight-medium)',
+                  borderRadius: 'var(--radius-full)',
+                  border: '1px solid rgba(255, 255, 255, 0.2)',
+                  fontSize: 'var(--text-small)',
+                  fontFamily: 'Manrope, sans-serif',
+                  fontWeight: 'var(--font-weight-semibold)',
                   textTransform: 'uppercase',
                   letterSpacing: '0.1em'
                 }}
               >
-                Support
-              </span>
+                <HelpCircle size={14} style={{ display: 'inline', marginRight: '8px' }} />
+                {faqPageHero.badge.text}
+              </div>
 
-              <h1 
+              <h1
                 style={{
                   fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-h1)',
-                  fontWeight: 'var(--font-weight-semibold)',
-                  lineHeight: 'var(--line-height-tight)',
-                  letterSpacing: 'var(--letter-spacing-tight)',
-                  marginBottom: '24px',
+                  fontSize: 'clamp(2rem, 5vw, 3.5rem)',
+                  fontWeight: 'var(--font-weight-bold)',
+                  lineHeight: '1.1',
+                  letterSpacing: '-0.02em',
+                  marginBottom: '20px',
                   color: 'var(--primary-foreground)'
                 }}
               >
-                Frequently Asked Questions
+                Frequently Asked <span style={{ 
+                  background: 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text'
+                }}>Questions</span>
               </h1>
 
-              <p 
+              <p
                 style={{
                   fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-lead)',
-                  fontWeight: 'var(--font-weight-regular)',
-                  lineHeight: 'var(--line-height-relaxed)',
-                  color: 'var(--primary-foreground)',
-                  opacity: 0.95,
-                  marginBottom: 0
+                  fontSize: 'var(--text-xl)',
+                  lineHeight: '1.6',
+                  color: 'rgba(255, 255, 255, 0.95)',
+                  marginBottom: '16px',
+                  maxWidth: '700px',
+                  margin: '0 auto 16px'
                 }}
               >
-                Find answers to common questions about our services, process, and WordPress development
+                {faqPageHero.tagline}
+              </p>
+
+              <p
+                style={{
+                  fontFamily: 'Lexend, sans-serif',
+                  fontSize: 'var(--text-lg)',
+                  lineHeight: '1.7',
+                  color: 'rgba(255, 255, 255, 0.85)',
+                  maxWidth: '700px',
+                  margin: '0 auto'
+                }}
+              >
+                {faqPageHero.description}
               </p>
             </div>
           </Container>
         </Section>
 
-        {/* General FAQs */}
-        <FAQSection
-          title="General Questions"
-          description="Learn about our services, pricing, and how we work"
-          faqs={generalFAQs}
-          variant="default"
-        />
+        {/* Stats Section */}
+        <Section spacing="lg" style={{ backgroundColor: 'var(--background)' }}>
+          <Container>
+            <div className="max-w-5xl mx-auto">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div
+                  className="text-center"
+                  style={{
+                    padding: '24px',
+                    backgroundColor: 'var(--card)',
+                    borderRadius: 'var(--radius-lg)',
+                    border: '1px solid var(--border-soft)'
+                  }}
+                >
+                  <div
+                    style={{
+                      fontFamily: 'Lexend, sans-serif',
+                      fontSize: 'var(--text-h2)',
+                      fontWeight: 'var(--font-weight-bold)',
+                      marginBottom: '4px',
+                      color: '#0891b2'
+                    }}
+                  >
+                    {faqStats.totalQuestions}+
+                  </div>
+                  <div
+                    style={{
+                      fontFamily: 'Manrope, sans-serif',
+                      fontSize: 'var(--text-small)',
+                      color: 'var(--muted-foreground)'
+                    }}
+                  >
+                    Questions Answered
+                  </div>
+                </div>
 
-        {/* Technical FAQs */}
-        <FAQSection
-          title="Technical Questions"
-          description="WordPress, WooCommerce, and development best practices"
-          faqs={technicalFAQs}
-          variant="muted"
-        />
+                <div
+                  className="text-center"
+                  style={{
+                    padding: '24px',
+                    backgroundColor: 'var(--card)',
+                    borderRadius: 'var(--radius-lg)',
+                    border: '1px solid var(--border-soft)'
+                  }}
+                >
+                  <div
+                    style={{
+                      fontFamily: 'Lexend, sans-serif',
+                      fontSize: 'var(--text-h2)',
+                      fontWeight: 'var(--font-weight-bold)',
+                      marginBottom: '4px',
+                      color: '#0891b2'
+                    }}
+                  >
+                    {faqStats.categories}
+                  </div>
+                  <div
+                    style={{
+                      fontFamily: 'Manrope, sans-serif',
+                      fontSize: 'var(--text-small)',
+                      color: 'var(--muted-foreground)'
+                    }}
+                  >
+                    Categories
+                  </div>
+                </div>
 
-        {/* Process FAQs */}
-        <FAQSection
-          title="Process & Timeline"
-          description="How we plan, build, and deliver WordPress projects"
-          faqs={processFAQs}
-          variant="default"
-        />
+                <div
+                  className="text-center"
+                  style={{
+                    padding: '24px',
+                    backgroundColor: 'var(--card)',
+                    borderRadius: 'var(--radius-lg)',
+                    border: '1px solid var(--border-soft)'
+                  }}
+                >
+                  <div
+                    style={{
+                      fontFamily: 'Lexend, sans-serif',
+                      fontSize: 'var(--text-h2)',
+                      fontWeight: 'var(--font-weight-bold)',
+                      marginBottom: '4px',
+                      color: '#0891b2'
+                    }}
+                  >
+                    {faqStats.avgResponseTime}
+                  </div>
+                  <div
+                    style={{
+                      fontFamily: 'Manrope, sans-serif',
+                      fontSize: 'var(--text-small)',
+                      color: 'var(--muted-foreground)'
+                    }}
+                  >
+                    Avg Response Time
+                  </div>
+                </div>
 
-        {/* WooCommerce FAQs */}
-        <FAQSection
-          title="WooCommerce & E-commerce"
-          description="Everything about building online stores with WooCommerce"
-          faqs={woocommerceFAQs}
-          variant="muted"
-        />
+                <div
+                  className="text-center"
+                  style={{
+                    padding: '24px',
+                    backgroundColor: 'var(--card)',
+                    borderRadius: 'var(--radius-lg)',
+                    border: '1px solid var(--border-soft)'
+                  }}
+                >
+                  <div
+                    style={{
+                      fontFamily: 'Lexend, sans-serif',
+                      fontSize: 'var(--text-h2)',
+                      fontWeight: 'var(--font-weight-bold)',
+                      marginBottom: '4px',
+                      color: '#0891b2'
+                    }}
+                  >
+                    {faqStats.satisfaction}
+                  </div>
+                  <div
+                    style={{
+                      fontFamily: 'Manrope, sans-serif',
+                      fontSize: 'var(--text-small)',
+                      color: 'var(--muted-foreground)'
+                    }}
+                  >
+                    Satisfaction Rate
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Container>
+        </Section>
 
-        {/* CTAInline Section */}
-        <CTAInline
-          title="Still Have Questions?"
-          description="Our team is here to help. Get in touch and we'll respond within 24 hours."
-          button={{
-            label: "Contact Us",
-            page: "contact",
-            variant: "primary",
-            size: "lg",
-            style: {
-              backgroundColor: 'var(--primary-foreground)',
-              color: 'var(--primary)'
-            }
-          }}
-        />
+        {/* FAQ Categories Section */}
+        <Section spacing="xl" style={{ backgroundColor: 'var(--muted)' }}>
+          <Container>
+            <div className="max-w-5xl mx-auto">
+              <div className="space-y-12">
+                {faqCategories.map((category) => {
+                  const Icon = category.icon;
+                  return (
+                    <div key={category.id}>
+                      {/* Category Header */}
+                      <div
+                        className="mb-8"
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '16px',
+                          paddingBottom: '16px',
+                          borderBottom: '2px solid var(--border)'
+                        }}
+                      >
+                        <div
+                          style={{
+                            width: '48px',
+                            height: '48px',
+                            borderRadius: 'var(--radius)',
+                            backgroundColor: 'rgba(8, 145, 178, 0.1)',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center'
+                          }}
+                        >
+                          <Icon size={24} style={{ color: '#0891b2' }} />
+                        </div>
 
-        {/* ContactForm Section */}
+                        <div>
+                          <h2
+                            style={{
+                              fontFamily: 'Lexend, sans-serif',
+                              fontSize: 'var(--text-h3)',
+                              fontWeight: 'var(--font-weight-bold)',
+                              color: 'var(--foreground)',
+                              marginBottom: '4px'
+                            }}
+                          >
+                            {category.title}
+                          </h2>
+                          <p
+                            style={{
+                              fontFamily: 'Lexend, sans-serif',
+                              fontSize: 'var(--text-small)',
+                              color: 'var(--muted-foreground)'
+                            }}
+                          >
+                            {category.description}
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* FAQs */}
+                      <div className="space-y-4">
+                        {category.faqs.map((faq, index) => {
+                          const key = `${category.id}-${index}`;
+                          const isOpen = openFAQs[key];
+
+                          return (
+                            <div
+                              key={index}
+                              style={{
+                                backgroundColor: 'var(--card)',
+                                borderRadius: 'var(--radius-lg)',
+                                border: '1px solid var(--border-soft)',
+                                overflow: 'hidden'
+                              }}
+                            >
+                              <button
+                                onClick={() => toggleFAQ(category.id, index)}
+                                style={{
+                                  width: '100%',
+                                  padding: '20px 24px',
+                                  display: 'flex',
+                                  alignItems: 'center',
+                                  justifyContent: 'space-between',
+                                  gap: '16px',
+                                  backgroundColor: 'transparent',
+                                  border: 'none',
+                                  cursor: 'pointer',
+                                  textAlign: 'left'
+                                }}
+                                aria-expanded={isOpen}
+                              >
+                                <h3
+                                  style={{
+                                    fontFamily: 'Lexend, sans-serif',
+                                    fontSize: 'var(--text-lg)',
+                                    fontWeight: 'var(--font-weight-semibold)',
+                                    color: 'var(--foreground)',
+                                    margin: 0
+                                  }}
+                                >
+                                  {faq.question}
+                                </h3>
+
+                                <ChevronDown
+                                  size={20}
+                                  style={{
+                                    color: '#0891b2',
+                                    flexShrink: 0,
+                                    transition: 'transform 0.3s ease',
+                                    transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)'
+                                  }}
+                                />
+                              </button>
+
+                              {isOpen && (
+                                <div
+                                  style={{
+                                    padding: '0 24px 24px 24px',
+                                    borderTop: '1px solid var(--border-soft)'
+                                  }}
+                                >
+                                  <p
+                                    style={{
+                                      fontFamily: 'Lexend, sans-serif',
+                                      fontSize: 'var(--text-base)',
+                                      lineHeight: '1.7',
+                                      color: 'var(--muted-foreground)',
+                                      marginTop: '16px',
+                                      margin: '16px 0 0 0'
+                                    }}
+                                  >
+                                    {faq.answer}
+                                  </p>
+                                </div>
+                              )}
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </Container>
+        </Section>
+
+        {/* CTA Section */}
         <Section 
-          spacing="xl"
+          spacing="xl" 
           style={{
-            backgroundColor: 'var(--primary)',
-            color: 'var(--primary-foreground)',
-            textAlign: 'center'
+            background: 'linear-gradient(135deg, #0891b2 0%, #06b6d4 100%)',
+            color: 'var(--primary-foreground)'
           }}
         >
           <Container>
-            <div className="max-w-3xl mx-auto">
-              <h2 
+            <div className="max-w-3xl mx-auto text-center">
+              <h2
                 style={{
                   fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-h2)',
-                  fontWeight: 'var(--font-weight-semibold)',
-                  marginBottom: '24px',
+                  fontSize: 'var(--text-h1)',
+                  fontWeight: 'var(--font-weight-bold)',
                   lineHeight: '1.2',
-                  letterSpacing: '-0.02em'
+                  letterSpacing: '-0.02em',
+                  marginBottom: '16px',
+                  color: 'var(--primary-foreground)'
                 }}
               >
-                Didn't Find Your Answer?
+                {faqCTA.title}
               </h2>
-              <p 
+
+              <p
                 style={{
                   fontFamily: 'Lexend, sans-serif',
                   fontSize: 'var(--text-lg)',
-                  marginBottom: '32px',
                   lineHeight: '1.7',
-                  opacity: 0.95
+                  color: 'rgba(255, 255, 255, 0.9)',
+                  marginBottom: '32px'
                 }}
               >
-                Our team is here to help. Get in touch and we'll respond within 24 hours.
+                {faqCTA.description}
               </p>
-              <ContactForm
-                title="Contact Us"
-                description="Fill out the form below to get in touch with our team."
-                button={{
-                  label: "Submit",
-                  variant: "primary",
-                  size: "lg",
-                  style: {
+
+              <Buttons alignment="center" gap="md">
+                <Button 
+                  page={faqCTA.buttons[0].page as any} 
+                  size="lg"
+                  variant="default"
+                  style={{
                     backgroundColor: 'var(--primary-foreground)',
-                    color: 'var(--primary)'
-                  }
-                }}
-              />
+                    color: '#0891b2'
+                  }}
+                >
+                  {faqCTA.buttons[0].text}
+                </Button>
+                <Button 
+                  page={faqCTA.buttons[1].page as any} 
+                  size="lg"
+                  variant="outline"
+                  style={{
+                    borderColor: 'var(--primary-foreground)',
+                    color: 'var(--primary-foreground)'
+                  }}
+                >
+                  {faqCTA.buttons[1].text}
+                </Button>
+              </Buttons>
             </div>
           </Container>
         </Section>
@@ -345,5 +503,3 @@ export function FAQTemplate() {
     </>
   );
 }
-
-export default FAQTemplate;

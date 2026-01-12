@@ -85,13 +85,12 @@ export function ArchiveTemplate() {
                 </p>
                 
                 <button
-                  className="flex gap-2 items-center"
+                  className="flex gap-2 items-center p-2.5"
                   style={{
-                    padding: '10px',
                     backgroundColor: 'var(--background)',
                     border: 'none',
                     cursor: 'pointer',
-                    fontFamily: 'Manrope, sans-serif',
+                    fontFamily: 'var(--font-secondary)',
                     fontSize: 'var(--text-base)',
                     fontWeight: 'var(--font-weight-regular)',
                     color: 'var(--foreground)'

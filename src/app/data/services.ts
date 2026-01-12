@@ -1,8 +1,11 @@
 /**
  * Services Data
  * 
- * Centralized service offerings data for LSX Design.
- * Used across service templates and service overview pages.
+ * Centralized service offerings data for LightSpeed WordPress Agency.
+ * Real content extracted from https://lightspeedwp.agency
+ * 
+ * **REAL CONTENT SOURCE:** https://lightspeedwp.agency/services
+ * **Last Updated:** 2025-01-09
  * 
  * In WordPress, this would be a Custom Post Type: 'service' with
  * custom fields for pricing, features, and service details.
@@ -540,3 +543,165 @@ export function getCategoryDisplayName(category: ServiceCategory): string {
   };
   return names[category];
 }
+
+/**
+ * Simplified Services for Template Grid Display
+ * 
+ * Simplified service structure for overview/grid displays.
+ * Maps to the service detail pages.
+ */
+export interface SimpleService {
+  id: string;
+  icon: LucideIcon;
+  title: string;
+  description: string;
+  page: string;
+  features: string[];
+}
+
+import { HardDrive, Zap, Mail, RefreshCw } from 'lucide-react';
+
+/**
+ * Simplified Services Array (9 services for grid display)
+ * 
+ * Real content from LightSpeed WP Agency
+ * Compatible with ServicesTemplate and overview pages.
+ * Each service links to detailed service pages.
+ */
+export const servicesSimplified: SimpleService[] = [
+  {
+    id: 'discovery',
+    icon: Search,
+    title: 'Discovery',
+    description: 'By understanding your business, we\'re able to deliver online success.',
+    page: 'discovery',
+    features: [
+      'Requirements analysis',
+      'Competitor research', 
+      'Project roadmap',
+      'Technical assessment',
+      'User needs prioritization',
+      'Clear cost and timeline'
+    ]
+  },
+  {
+    id: 'design',
+    icon: Palette,
+    title: 'Design',
+    description: 'Expert design guidance on how best to optimise website performance.',
+    page: 'design',
+    features: [
+      'New website design',
+      'Website redesign',
+      'Brand identity',
+      'Digital asset creation',
+      'WooCommerce store design',
+      'Design systems'
+    ]
+  },
+  {
+    id: 'development',
+    icon: Code,
+    title: 'Development',
+    description: 'Expert development that builds sites which perform exceptionally.',
+    page: 'development',
+    features: [
+      'WordPress development',
+      'WooCommerce stores',
+      'Theme development',
+      'Plugin development',
+      'Custom functionality',
+      'API integrations'
+    ]
+  },
+  {
+    id: 'support',
+    icon: Zap,
+    title: 'Support',
+    description: 'Expertise you can confidently rely on for WordPress website support.',
+    page: 'support',
+    features: [
+      'Design & development',
+      'Bug fixes',
+      'Error resolution',
+      'Browser compatibility',
+      'Security monitoring',
+      'Performance optimization'
+    ]
+  },
+  {
+    id: 'hosting',
+    icon: HardDrive,
+    title: 'Hosting',
+    description: 'Safe and stable managed WordPress hosting that gives you peace of mind.',
+    page: 'hosting',
+    features: [
+      'Threat detection & blocking',
+      'Multiple daily backups',
+      'Regular WordPress updates',
+      'Caching optimization',
+      'High traffic handling',
+      'Secure platform'
+    ]
+  },
+  {
+    id: 'migrations',
+    icon: RefreshCw,
+    title: 'Migrations',
+    description: 'We\'re experts at migration achieved smoothly and without data loss.',
+    page: 'migrations',
+    features: [
+      'Host-to-host migration',
+      'CMS to WordPress',
+      'Multisite conversion',
+      'Large-scale moves',
+      'Testing & validation',
+      'Zero downtime'
+    ]
+  },
+  {
+    id: 'security',
+    icon: Shield,
+    title: 'Security',
+    description: 'World-class expertise, focused on protecting your website.',
+    page: 'security',
+    features: [
+      'Security audits',
+      'Malware removal',
+      'Firewall setup',
+      'Continuous monitoring',
+      'Threat detection',
+      'Secure hosting'
+    ]
+  },
+  {
+    id: 'content',
+    icon: FileText,
+    title: 'Content',
+    description: 'Auditing, strategy and creation, all your content needs fulfilled.',
+    page: 'content',
+    features: [
+      'Content audit',
+      'Content strategy',
+      'Content creation',
+      'AI-powered generation',
+      'Content-first design approach',
+      'Workflow implementation'
+    ]
+  },
+  {
+    id: 'mailchimp',
+    icon: Mail,
+    title: 'Mailchimp',
+    description: 'We can help you make the most of Mailchimp email marketing.',
+    page: 'mailchimp',
+    features: [
+      'Mailchimp setup',
+      'Email campaigns',
+      'List management',
+      'Automation workflows',
+      'Integration',
+      'Email marketing strategy'
+    ]
+  }
+];

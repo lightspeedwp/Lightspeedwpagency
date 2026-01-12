@@ -18,8 +18,9 @@ import { Buttons, Button } from '../blocks/design/Buttons';
 import { BackToTopButton } from '../blocks/layout/BackToTopButton';
 import { RouteAnnouncer } from '../blocks/utility/RouteAnnouncer';
 import { FAQSection } from '../patterns/FAQSection';
-import { useNavigation } from '../../contexts/NavigationContext';
 import { useState } from 'react';
+import { useNavigation } from '../../contexts/NavigationContext';
+import { lsxDesignStats } from '../../data/solutions';
 import { 
   Layers,
   ArrowRight,
@@ -199,14 +200,6 @@ export function LSXDesignTemplate() {
     }
   ];
 
-  // Stats
-  const stats = [
-    { number: '3x', label: 'Faster than page builders' },
-    { number: '100%', label: 'WCAG 2.1 AA compliant' },
-    { number: '50+', label: 'Block patterns included' },
-    { number: '24/7', label: 'Priority support' }
-  ];
-
   return (
     <>
       <RouteAnnouncer />
@@ -314,7 +307,7 @@ export function LSXDesignTemplate() {
 
                 {/* Stats */}
                 <div className="grid grid-cols-4 gap-6 mt-12">
-                  {stats.map((stat, index) => (
+                  {lsxDesignStats.map((stat, index) => (
                     <div key={index}>
                       <div
                         style={{

@@ -145,7 +145,7 @@ export function MegaMenu({
       {/* Menu Header */}
       <div style={{ marginBottom: featured && featured.length > 0 ? '24px' : '20px' }}>
         <h3 style={{
-          fontFamily: 'Lexend, sans-serif',
+          fontFamily: 'var(--font-primary)',
           fontSize: 'var(--text-h4)',
           fontWeight: 'var(--font-weight-semibold)',
           color: 'var(--foreground)',
@@ -156,7 +156,7 @@ export function MegaMenu({
         </h3>
         {description && (
           <p style={{
-            fontFamily: 'Manrope, sans-serif',
+            fontFamily: 'var(--font-secondary)',
             fontSize: 'var(--text-small)',
             color: 'var(--muted-foreground)',
             margin: 0,
@@ -225,7 +225,7 @@ export function MegaMenu({
                       color: 'var(--primary)',
                       borderRadius: 'var(--radius)',
                       fontSize: 'var(--text-small)',
-                      fontFamily: 'Manrope, sans-serif',
+                      fontFamily: 'var(--font-secondary)',
                       fontWeight: 'var(--font-weight-semibold)',
                       boxShadow: 'var(--shadow-sm)'
                     }}
@@ -238,7 +238,7 @@ export function MegaMenu({
               {/* Featured Content */}
               <div className="p-4">
                 <h4 style={{
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-base)',
                   fontWeight: 'var(--font-weight-semibold)',
                   color: 'var(--foreground)',
@@ -248,7 +248,7 @@ export function MegaMenu({
                   {item.label}
                 </h4>
                 <p style={{
-                  fontFamily: 'Manrope, sans-serif',
+                  fontFamily: 'var(--font-secondary)',
                   fontSize: 'var(--text-small)',
                   color: 'var(--muted-foreground)',
                   margin: 0,
@@ -272,7 +272,7 @@ export function MegaMenu({
           <div key={sectionIndex}>
             {/* Section Title */}
             <h4 style={{
-              fontFamily: 'Lexend, sans-serif',
+              fontFamily: 'var(--font-primary)',
               fontSize: 'var(--text-small)',
               fontWeight: 'var(--font-weight-semibold)',
               color: 'var(--muted-foreground)',
@@ -307,7 +307,7 @@ export function MegaMenu({
                     style={{
                       width: '100%',
                       textAlign: 'left',
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-base)',
                       fontWeight: 'var(--font-weight-regular)',
                       color: 'var(--foreground)',
@@ -350,7 +350,7 @@ export function MegaMenu({
                       {item.description && (
                         <div style={{
                           fontSize: 'var(--text-small)',
-                          fontFamily: 'Manrope, sans-serif',
+                          fontFamily: 'var(--font-secondary)',
                           color: 'var(--muted-foreground)',
                           fontWeight: 'var(--font-weight-regular)'
                         }}>

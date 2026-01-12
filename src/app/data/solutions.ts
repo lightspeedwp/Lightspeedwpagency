@@ -342,6 +342,28 @@ export function getSolutionsByIndustry(industry: string): Solution[] {
 }
 
 /**
+ * LSX Design Stats Interface
+ * 
+ * Statistics for the LSX Design solution page.
+ */
+export interface LSXDesignStat {
+  number: string;
+  label: string;
+}
+
+/**
+ * LSX Design Solution Statistics
+ * 
+ * Key metrics showcasing LSX Design theme performance.
+ */
+export const lsxDesignStats: LSXDesignStat[] = [
+  { number: '3x', label: 'Faster than page builders' },
+  { number: '100%', label: 'WCAG 2.1 AA compliant' },
+  { number: '50+', label: 'Block patterns included' },
+  { number: '24/7', label: 'Priority support' }
+];
+
+/**
  * Solution categories with display information
  */
 export const solutionCategories = [

@@ -30,7 +30,7 @@ function PageLoader() {
         justifyContent: 'center',
         backgroundColor: 'var(--background)',
         color: 'var(--foreground)',
-        fontFamily: 'Lexend, sans-serif',
+        fontFamily: 'var(--font-primary)',
         fontSize: 'var(--text-base)'
       }}
     >
