@@ -85,7 +85,7 @@ export function FeatureGrid({
   title,
   titleHighlight,
   description,
-  items,
+  items = [],
   columns = 3,
   variant = 'default',
   iconStyle = 'rounded',

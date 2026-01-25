@@ -50,16 +50,29 @@ import {
   wordpressSolutionCTA
 } from '../../data/wordpress-solution-page';
 
+import { PricingPackage, PricingFeature } from '../../data/pricing';
+
 export function WordPressSolutionTemplate() {
   // Transform pricing data for PricingTable pattern
-  const pricingPlans = wordpressSolutionPricing.packages.map(pkg => ({
+  const pricingPlans: PricingPackage[] = wordpressSolutionPricing.packages.map((pkg, index) => ({
+    id: `pkg-${index}`,
     name: pkg.name,
-    price: pkg.price,
+    slug: pkg.name.toLowerCase().replace(/\s+/g, '-'),
+    tagline: pkg.description,
     description: pkg.description,
-    features: pkg.features,
-    highlighted: pkg.recommended,
-    buttonText: 'Get Started',
-    buttonPage: 'contact'
+    price: {
+      amount: 0,
+      currency: 'USD',
+      display: pkg.price,
+      period: 'project'
+    },
+    features: pkg.features.map(f => ({ name: f, included: true })),
+    cta: {
+      text: 'Get Started',
+      action: 'contact'
+    },
+    recommended: pkg.recommended,
+    category: 'website'
   }));
 
   // Transform related solutions for BenefitsGrid pattern
@@ -168,10 +181,9 @@ export function WordPressSolutionTemplate() {
         <FeatureGrid
           title="WordPress Features & Capabilities"
           description="Everything you need for a powerful, modern website"
-          features={wordpressSolutionFeatures}
+          items={wordpressSolutionFeatures}
           columns={4}
-          variant="muted"
-          cardStyle="icon-top"
+          variant="default"
         />
 
         {/* Use Cases Section */}
@@ -185,10 +197,10 @@ export function WordPressSolutionTemplate() {
 
         {/* Pricing Section */}
         <PricingTable
-          title={wordpressSolutionPricing.title}
+          heading={wordpressSolutionPricing.title}
           description={wordpressSolutionPricing.description}
-          plans={pricingPlans}
-          variant="muted"
+          packages={pricingPlans}
+          variant="default"
         />
 
         {/* Benefits/Related Solutions Section */}

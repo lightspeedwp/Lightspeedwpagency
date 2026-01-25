@@ -1,6 +1,6 @@
 /**
  * Migrations Service Page Data
- * 
+ *
  * Complete data for Website Migrations service page.
  * Includes hero, benefits, features, process, platforms, case study, FAQs, and CTA.
  */
@@ -14,8 +14,7 @@ import {
   FileText,
   Search,
   TestTube,
-  GraduationCap,
-  TrendingUp
+  GraduationCap
 } from 'lucide-react';
 
 /**
@@ -40,7 +39,7 @@ export const migrationsHero = {
  */
 export const whyMigrateWithLSX = {
   title: 'Why Choose LSX for Your Migration?',
-  description: 'We've successfully migrated hundreds of websites with a 100% success rate',
+  description: 'We\'ve successfully migrated hundreds of websites with a 100% success rate',
   benefits: [
     {
       icon: Shield,

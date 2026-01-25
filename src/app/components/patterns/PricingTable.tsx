@@ -55,7 +55,7 @@ export interface PricingTableProps {
 export function PricingTable({
   heading = "Choose Your Plan",
   description,
-  packages,
+  packages = [],
   columns = 3,
   variant = 'default'
 }: PricingTableProps) {
