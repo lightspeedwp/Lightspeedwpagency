@@ -1,0 +1,127 @@
+/**
+ * LSX Design System — Global Layout Utilities
+ * 
+ * Sitewide layout utilities that apply consistent spacing,
+ * padding, and structure across all pages.
+ * 
+ * All utilities use CSS variables for complete user control.
+ */
+
+/* ============================================
+   FLUID HORIZONTAL PADDING
+   ============================================ */
+
+/**
+ * Fluid horizontal padding applied to inner container elements.
+ * 
+ * Scales from 16px (mobile) to 32px (desktop) using viewport width.
+ * 
+ * Applied to:
+ * - Container elements (inner content wrappers)
+ * - Inner content areas within sections/headers/footers
+ * 
+ * NOT applied to outer section/header/footer elements
+ * (those remain full-width edge-to-edge)
+ * 
+ * Formula: clamp(min, preferred, max)
+ * - min: 16px (mobile)
+ * - preferred: 4vw (scales with viewport)
+ * - max: 32px (desktop)
+ */
+
+/* Container elements - inner content wrappers */
+.container,
+[class*="container"] {
+  padding-left: clamp(16px, 4vw, 32px);
+  padding-right: clamp(16px, 4vw, 32px);
+}
+
+/* WordPress block inner containers */
+.wp-block-section > *,
+.wp-block-group > * {
+  padding-left: clamp(16px, 4vw, 32px);
+  padding-right: clamp(16px, 4vw, 32px);
+}
+
+/* Header inner content */
+header > *:not(.container):not([class*="container"]) {
+  padding-left: clamp(16px, 4vw, 32px);
+  padding-right: clamp(16px, 4vw, 32px);
+}
+
+/* Footer inner content */
+footer > *:not(.container):not([class*="container"]) {
+  padding-left: clamp(16px, 4vw, 32px);
+  padding-right: clamp(16px, 4vw, 32px);
+}
+
+/* Main content area inner elements */
+main > *:not(.container):not([class*="container"]) {
+  padding-left: clamp(16px, 4vw, 32px);
+  padding-right: clamp(16px, 4vw, 32px);
+}
+
+
+/* ============================================
+   OVERRIDE FOR NESTED CONTAINERS
+   ============================================ */
+
+/**
+ * Prevent double padding on deeply nested container elements.
+ */
+
+.container .container,
+[class*="container"] [class*="container"] {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+/**
+ * Optional utility class to apply fluid padding to any element.
+ * 
+ * Usage: <div class="fluid-padding-x">...</div>
+ */
+.fluid-padding-x {
+  padding-left: clamp(16px, 4vw, 32px);
+  padding-right: clamp(16px, 4vw, 32px);
+}
+
+/**
+ * Optional utility class to remove fluid padding.
+ * 
+ * Usage: <div class="no-fluid-padding">...</div>
+ */
+.no-fluid-padding {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+
+/**
+ * Fine-tune fluid padding at specific breakpoints if needed.
+ * Currently using clamp() which handles all breakpoints automatically.
+ */
+
+/* Mobile (< 640px) */
+@media (max-width: 639px) {
+  /* Fluid padding scales down to 16px minimum */
+}
+
+/* Tablet (640px - 1023px) */
+@media (min-width: 640px) and (max-width: 1023px) {
+  /* Fluid padding scales between 16px and 32px based on viewport */
+}
+
+/* Desktop (>= 1024px) */
+@media (min-width: 1024px) {
+  /* Fluid padding reaches 32px maximum */
+}

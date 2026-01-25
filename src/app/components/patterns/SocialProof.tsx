@@ -4,12 +4,14 @@
  * Client logos, partner badges, awards, and certifications pattern for LSX Design.
  * Maps to WordPress pattern: lsx-design/trust/social-proof
  * 
+ * All styling in /src/styles/social-proof.css (user-editable)
+ * 
  * **Design Token Compliance:**
  * - Typography: Uses ONLY CSS variables (var(--text-*))
- * - Fonts: Lexend (headings), Manrope (caption) ONLY
+ * - Fonts: var(--font-primary), var(--font-secondary)
  * - Colors: Uses ONLY CSS variables (var(--*))
- * - Spacing: Uses ONLY Tailwind classes
- * - Transitions: Uses ONLY CSS variables
+ * - Spacing: Uses ONLY CSS variables
+ * - Transitions: Pure CSS hover effects
  * 
  * **WordPress Mapping:**
  * - Block: core/gallery or core/group
@@ -68,20 +70,16 @@ export function SocialProof({
 
   const finalCaption = caption || defaultCaption;
 
+  // Build social proof classes
+  const socialProofClass = `social-proof--${variant}`;
+
   return (
-    <Section sectionStyle="testimonial-highlight">
+    <Section sectionStyle="testimonial-highlight" className={socialProofClass}>
       <Container>
-        {/* Heading - Lexend font, CSS variable size */}
+        {/* Heading */}
         <Heading 
           level={3} 
-          style={{ 
-            textAlign: 'center', 
-            marginBottom: '3rem',
-            fontSize: 'var(--text-h3)',
-            fontFamily: 'Lexend, sans-serif',
-            fontWeight: 'var(--font-weight-medium)',
-            color: 'var(--foreground)'
-          }}
+          className="social-proof__heading"
         >
           {heading}
         </Heading>
@@ -90,35 +88,14 @@ export function SocialProof({
         <Grid 
           columns={columns} 
           gap={8}
-          style={{
-            alignItems: 'center',
-            justifyContent: 'center'
-          }}
+          className="social-proof__grid"
         >
           {logos.map((logo) => {
-            const maxWidth = variant === 'certifications' ? '100px' : '120px';
-            
             const LogoImage = (
               <img
                 src={logo.src}
                 alt={logo.alt}
-                style={{
-                  maxWidth,
-                  height: 'auto',
-                  opacity: 0.7,
-                  filter: 'grayscale(100%)',
-                  transition: 'all var(--transition-base, 200ms) var(--ease-in-out, ease-in-out)',
-                  margin: '0 auto',
-                  display: 'block'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.opacity = '1';
-                  e.currentTarget.style.filter = 'grayscale(0%)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.opacity = '0.7';
-                  e.currentTarget.style.filter = 'grayscale(100%)';
-                }}
+                className="social-proof__logo"
               />
             );
 
@@ -130,10 +107,7 @@ export function SocialProof({
                   href={logo.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{
-                    display: 'block',
-                    textDecoration: 'none'
-                  }}
+                  className="social-proof__logo-wrapper"
                   aria-label={`Visit ${logo.alt} website`}
                 >
                   {LogoImage}
@@ -149,17 +123,9 @@ export function SocialProof({
           })}
         </Grid>
 
-        {/* Caption - Manrope font, small size */}
+        {/* Caption */}
         {showCaption && (
-          <p
-            style={{
-              textAlign: 'center',
-              fontSize: 'var(--text-small)',
-              fontFamily: 'Manrope, sans-serif',
-              color: 'var(--muted-foreground)',
-              marginTop: '2rem'
-            }}
-          >
+          <p className="social-proof__caption">
             {finalCaption}
           </p>
         )}

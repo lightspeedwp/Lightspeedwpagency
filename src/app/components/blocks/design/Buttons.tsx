@@ -182,10 +182,11 @@ export function ButtonBlock({
           type="button"
           style={{
             ...commonProps.style,
-            color: isHovered ? 'white' : 'black',
-            border: '1px solid white',
-            backgroundColor: isHovered ? 'transparent' : 'white',
-            transition: 'all 0.3s ease'
+            color: isHovered ? 'var(--primary-foreground)' : 'var(--foreground)',
+            border: '1px solid var(--primary)',
+            backgroundColor: isHovered ? 'var(--primary)' : 'var(--background)',
+            transition: 'all 0.3s ease',
+            fontFamily: 'var(--font-primary)'
           }}
         >
           {content}

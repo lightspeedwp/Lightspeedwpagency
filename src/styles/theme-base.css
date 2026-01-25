@@ -151,11 +151,23 @@
   --wp--preset--font-family--base: var(--font-primary);
   
   /* ----------------------------------------
-     WordPress Font Size Presets
+     WordPress Font Size Presets (Numeric Scale 100-900)
      WordPress expects: --wp--preset--font-size--{slug}
-     Maps to WordPress core size slugs
+     Updated Jan 9, 2025 - WordPress numeric scale alignment
      ---------------------------------------- */
   
+  /* Numeric scale (100-900) for WordPress FSE */
+  --wp--preset--font-size--100: 0.75rem;      /* 12px - Tiny */
+  --wp--preset--font-size--200: 1rem;         /* 16px - Base */
+  --wp--preset--font-size--300: 1.25rem;      /* 20px - Small */
+  --wp--preset--font-size--400: 1.5rem;       /* 24px - Medium */
+  --wp--preset--font-size--500: 2rem;         /* 32px - Large */
+  --wp--preset--font-size--600: 2.5rem;       /* 40px - X-Large */
+  --wp--preset--font-size--700: 3rem;         /* 48px - XX-Large */
+  --wp--preset--font-size--800: 4rem;         /* 64px - Huge */
+  --wp--preset--font-size--900: 5rem;         /* 80px - Gigantic */
+  
+  /* Legacy semantic aliases (for backward compatibility) */
   --wp--preset--font-size--small: var(--text-small);      /* 14px */
   --wp--preset--font-size--medium: var(--text-base);      /* 16px */
   --wp--preset--font-size--large: var(--text-lg);         /* 18px */
@@ -168,30 +180,29 @@
   --wp--preset--font-size--heading-6: var(--text-h6);     /* 16-20px fluid */
   
   /* ----------------------------------------
-     WordPress Spacing Presets
+     WordPress Spacing Presets (Numeric Scale 10-100)
      WordPress expects: --wp--preset--spacing--{slug}
-     Uses WordPress core spacing scale (20-80)
+     Updated Jan 9, 2025 - 10px increment alignment
      ---------------------------------------- */
   
-  /* WordPress numeric scale (20, 30, 40, 50, 60, 70, 80) */
-  --wp--preset--spacing--20: var(--spacing-2);   /* 8px */
-  --wp--preset--spacing--30: var(--spacing-4);   /* 16px */
-  --wp--preset--spacing--40: var(--spacing-6);   /* 24px */
-  --wp--preset--spacing--50: var(--spacing-8);   /* 32px */
-  --wp--preset--spacing--60: var(--spacing-12);  /* 48px */
-  --wp--preset--spacing--70: var(--spacing-16);  /* 64px */
-  --wp--preset--spacing--80: var(--spacing-24);  /* 96px */
+  /* WordPress numeric scale (10-100) in 10px increments */
+  --wp--preset--spacing--10: 0.625rem;   /* 10px */
+  --wp--preset--spacing--20: 1.25rem;    /* 20px */
+  --wp--preset--spacing--30: 1.875rem;   /* 30px */
+  --wp--preset--spacing--40: 2.5rem;     /* 40px */
+  --wp--preset--spacing--50: 3.125rem;   /* 50px */
+  --wp--preset--spacing--60: 3.75rem;    /* 60px */
+  --wp--preset--spacing--70: 4.375rem;   /* 70px */
+  --wp--preset--spacing--80: 5rem;       /* 80px */
+  --wp--preset--spacing--90: 5.625rem;   /* 90px */
+  --wp--preset--spacing--100: 6.25rem;   /* 100px */
   
-  /* WordPress T-shirt sizes */
-  --wp--preset--spacing--x-small: var(--spacing-2);   /* 8px */
-  --wp--preset--spacing--small: var(--spacing-4);     /* 16px */
-  --wp--preset--spacing--medium: var(--spacing-6);    /* 24px */
-  --wp--preset--spacing--large: var(--spacing-8);     /* 32px */
-  --wp--preset--spacing--x-large: var(--spacing-12);  /* 48px */
-  
-  /* Additional WordPress-compatible spacing */
-  --wp--preset--spacing--10: var(--spacing-1);   /* 4px */
-  --wp--preset--spacing--100: var(--spacing-32); /* 128px */
+  /* WordPress T-shirt sizes (mapped to numeric scale) */
+  --wp--preset--spacing--x-small: var(--wp--preset--spacing--10);   /* 10px */
+  --wp--preset--spacing--small: var(--wp--preset--spacing--20);     /* 20px */
+  --wp--preset--spacing--medium: var(--wp--preset--spacing--40);    /* 40px */
+  --wp--preset--spacing--large: var(--wp--preset--spacing--60);     /* 60px */
+  --wp--preset--spacing--x-large: var(--wp--preset--spacing--80);   /* 80px */
   
   /* ----------------------------------------
      WordPress Custom Spacing (LSX specific)

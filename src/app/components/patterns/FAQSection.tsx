@@ -126,11 +126,10 @@
  * @see {@link /src/app/data/faqs.ts}
  */
 
-import { useState } from 'react';
-import { ChevronDown } from 'lucide-react';
 import { Section } from '../common/Section';
 import { Container } from '../common/Container';
 import { Button } from '../blocks/design/Buttons';
+import { Accordion, AccordionItem } from '../blocks/design/Accordion';
 
 /**
  * FAQ Item interface
@@ -286,173 +285,55 @@ export function FAQSection({
   faqs,
   variant = 'default'
 }: FAQSectionProps) {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-
-  const toggleFAQ = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
-
   // Background color based on variant
-  const backgroundColor = {
-    default: 'var(--background)',
-    muted: 'var(--muted)',
-    card: 'var(--card)'
-  }[variant];
+  // Build section class
+  const sectionClass = `faq-section--${variant}`;
 
-  const textColor = variant === 'card' ? 'var(--card-foreground)' : 'var(--foreground)';
-  const mutedColor = 'var(--muted-foreground)';
-  const cardBg = variant === 'card' ? 'var(--background)' : 'var(--card)';
+  // Build title class
+  const titleClass = [
+    'faq-section__title',
+    description && 'faq-section__title--with-description'
+  ].filter(Boolean).join(' ');
 
   return (
     <Section 
       spacing="xl"
-      style={{
-        backgroundColor
-      }}
+      className={sectionClass}
     >
       <Container>
         {/* Section Header */}
         {(title || description) && (
-          <div className="text-center mb-16">
+          <div className="faq-section__header">
             {title && (
-              <h2 
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-h2)',
-                  fontWeight: 'var(--font-weight-semibold)',
-                  color: textColor,
-                  marginBottom: description ? '16px' : '0',
-                  lineHeight: '1.2',
-                  letterSpacing: '-0.02em'
-                }}
-              >
+              <h2 className={titleClass}>
                 {title}
               </h2>
             )}
             {description && (
-              <p 
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-lg)',
-                  color: mutedColor,
-                  maxWidth: '700px',
-                  margin: '0 auto',
-                  lineHeight: '1.7'
-                }}
-              >
+              <p className="faq-section__description">
                 {description}
               </p>
             )}
           </div>
         )}
 
-        {/* FAQ Accordion */}
-        <div className="max-w-4xl mx-auto">
-          <div className="space-y-4">
-            {faqs.map((faq, index) => {
-              const isOpen = openIndex === index;
-              
-              return (
-                <div
-                  key={index}
-                  style={{
-                    backgroundColor: cardBg,
-                    border: `1px solid var(--border-soft)`,
-                    borderRadius: 'var(--radius-lg)',
-                    overflow: 'hidden',
-                    transition: 'all 0.3s ease'
-                  }}
-                >
-                  {/* Question Button */}
-                  <button
-                    onClick={() => toggleFAQ(index)}
-                    className="w-full text-left p-6 flex items-start justify-between gap-4"
-                    style={{
-                      backgroundColor: 'transparent',
-                      border: 'none',
-                      cursor: 'pointer',
-                      transition: 'background-color 0.2s ease'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.backgroundColor = 'var(--muted)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.backgroundColor = 'transparent';
-                    }}
-                    aria-expanded={isOpen}
-                    aria-controls={`faq-answer-${index}`}
-                  >
-                    <span 
-                      style={{
-                        fontFamily: 'Lexend, sans-serif',
-                        fontSize: 'var(--text-lg)',
-                        fontWeight: 'var(--font-weight-semibold)',
-                        color: textColor,
-                        lineHeight: 'var(--line-height-snug)',
-                        flex: 1
-                      }}
-                    >
-                      {faq.question}
-                    </span>
-                    
-                    {/* Chevron Icon */}
-                    <ChevronDown
-                      size={24}
-                      style={{
-                        color: 'var(--primary)',
-                        transition: 'transform 0.3s ease',
-                        transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
-                        flexShrink: 0,
-                        marginTop: '2px'
-                      }}
-                      aria-hidden="true"
-                    />
-                  </button>
-
-                  {/* Answer Content */}
-                  <div
-                    id={`faq-answer-${index}`}
-                    style={{
-                      maxHeight: isOpen ? '500px' : '0',
-                      overflow: 'hidden',
-                      transition: 'max-height 0.3s ease'
-                    }}
-                  >
-                    <div 
-                      className="px-6 pb-6"
-                      style={{
-                        paddingTop: '0'
-                      }}
-                    >
-                      <p 
-                        style={{
-                          fontFamily: 'Lexend, sans-serif',
-                          fontSize: 'var(--text-base)',
-                          color: mutedColor,
-                          lineHeight: '1.7',
-                          margin: 0
-                        }}
-                      >
-                        {faq.answer}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+        {/* FAQ Accordion - WordPress Accordion Block */}
+        <div className="faq-section__accordion">
+          <Accordion>
+            {faqs.map((faq, index) => (
+              <AccordionItem
+                key={index}
+                id={`faq-${index}`}
+                question={faq.question}
+                answer={faq.answer}
+              />
+            ))}
+          </Accordion>
         </div>
 
         {/* Optional CTA below FAQs */}
-        <div className="text-center mt-12">
-          <p 
-            style={{
-              fontFamily: 'Lexend, sans-serif',
-              fontSize: 'var(--text-base)',
-              color: mutedColor,
-              marginBottom: '16px'
-            }}
-          >
+        <div className="faq-section__cta">
+          <p className="faq-section__cta-text">
             Still have questions?
           </p>
           <Button

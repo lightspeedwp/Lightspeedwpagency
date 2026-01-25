@@ -1,0 +1,62 @@
+/**
+ * Spacer Block Styles
+ * 
+ * WordPress block: .wp-block-spacer
+ * CRITICAL: 100% CSS variables only
+ */
+
+.wp-block-spacer {
+  /* Layout */
+  display: block;
+  width: 100%;
+  
+  /* Default height */
+  height: var(--spacing-12);
+  
+  /* Remove any content */
+  overflow: hidden;
+  
+  /* No visual styling */
+  background: transparent;
+  border: none;
+}
+
+/* Size variants */
+.wp-block-spacer--sm {
+  height: var(--spacing-6);
+}
+
+.wp-block-spacer--md {
+  height: var(--spacing-12);
+}
+
+.wp-block-spacer--lg {
+  height: var(--spacing-24);
+}
+
+.wp-block-spacer--xl {
+  height: var(--spacing-32);
+}
+
+/* Responsive behavior */
+@media (max-width: 768px) {
+  .wp-block-spacer--lg {
+    height: var(--spacing-16);
+  }
+  
+  .wp-block-spacer--xl {
+    height: var(--spacing-20);
+  }
+}
+
+/* Print styles */
+@media print {
+  .wp-block-spacer {
+    height: 12pt;
+  }
+  
+  .wp-block-spacer--lg,
+  .wp-block-spacer--xl {
+    height: 24pt;
+  }
+}

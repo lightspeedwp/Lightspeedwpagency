@@ -100,6 +100,30 @@ export const sitePages: SitePage[] = [
     parent: 'solutions',
     showInNav: false
   },
+  {
+    id: 'wetu-importer',
+    slug: 'wetu-importer',
+    title: 'Wetu Importer',
+    excerpt: 'Import and sync tour data from Wetu directly into your WordPress website.',
+    parent: 'solutions',
+    showInNav: false
+  },
+  {
+    id: 'lsx-sharing',
+    slug: 'lsx-sharing',
+    title: 'LSX Sharing',
+    excerpt: 'Beautiful, customizable social sharing buttons for WordPress.',
+    parent: 'solutions',
+    showInNav: false
+  },
+  {
+    id: 'lsx-search',
+    slug: 'lsx-search',
+    title: 'LSX Search',
+    excerpt: 'Powerful, lightning-fast search functionality for WordPress.',
+    parent: 'solutions',
+    showInNav: false
+  },
   
   // Services
   {
@@ -661,6 +685,14 @@ export const sitePages: SitePage[] = [
     showInNav: false
   },
   {
+    id: 'site-map',
+    slug: 'site-map',
+    title: 'Site Map',
+    excerpt: 'Complete site navigation and page structure',
+    template: 'page',
+    showInNav: false
+  },
+  {
     id: 'template-tester',
     slug: 'template-tester',
     title: 'Template Tester',
@@ -829,7 +861,8 @@ export const footerNavigation = {
       { label: 'How We Work', page: 'about-process' as const },
       { label: 'Our Culture', page: 'about-culture' as const },
       { label: 'Portfolio', page: 'portfolio-archive' as const },
-      { label: 'Blog', page: 'blog' as const }
+      { label: 'Blog', page: 'blog' as const },
+      { label: 'Site Map', page: 'site-map' as const }
     ]
   },
   products: {
@@ -837,9 +870,9 @@ export const footerNavigation = {
     links: [
       { label: 'LSX Theme', page: 'lsx' as const },
       { label: 'LSX Tour Operator', page: 'tour-operators' as const },
-      { label: 'Wetu Importer', page: 'lsx' as const },
-      { label: 'LSX Sharing', page: 'lsx' as const },
-      { label: 'LSX Search', page: 'lsx' as const }
+      { label: 'Wetu Importer', page: 'wetu-importer' as const },
+      { label: 'LSX Sharing', page: 'lsx-sharing' as const },
+      { label: 'LSX Search', page: 'lsx-search' as const }
     ]
   },
   services: {
@@ -859,6 +892,13 @@ export const footerNavigation = {
       { label: 'WordPress', page: 'wordpress' as const },
       { label: 'Tour Operators', page: 'tour-operators' as const },
       { label: 'Mailchimp', page: 'mailchimp' as const }
+    ]
+  },
+  legal: {
+    title: 'Legal',
+    links: [
+      { label: 'Privacy Policy', page: 'privacy-policy' as const },
+      { label: 'Terms of Service', page: 'terms-of-service' as const }
     ]
   }
 };

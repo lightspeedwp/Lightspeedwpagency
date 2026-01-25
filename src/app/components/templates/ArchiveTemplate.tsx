@@ -54,7 +54,7 @@ export function ArchiveTemplate() {
         {/* Archive Content Section */}
         <Section spacing="50">
           <Container>
-            <div className="flex flex-col gap-12">
+            <div className="wp-archive-content">
               {/* Breadcrumbs */}
               <Breadcrumbs 
                 items={[
@@ -70,31 +70,13 @@ export function ArchiveTemplate() {
               />
 
               {/* Results & Sorting */}
-              <div className="flex items-center justify-between">
-                <p
-                  style={{
-                    fontFamily: 'Manrope, sans-serif',
-                    fontSize: 'var(--text-base)',
-                    fontWeight: 'var(--font-weight-regular)',
-                    lineHeight: '1.5',
-                    color: 'var(--foreground)',
-                    margin: 0
-                  }}
-                >
+              <div className="wp-archive-results-bar">
+                <p className="wp-archive-results-count">
                   Showing {startResult} - {endResult} of {totalResults} results
                 </p>
                 
                 <button
-                  className="flex gap-2 items-center p-2.5"
-                  style={{
-                    backgroundColor: 'var(--background)',
-                    border: 'none',
-                    cursor: 'pointer',
-                    fontFamily: 'var(--font-secondary)',
-                    fontSize: 'var(--text-base)',
-                    fontWeight: 'var(--font-weight-regular)',
-                    color: 'var(--foreground)'
-                  }}
+                  className="wp-archive-sort-button"
                   aria-label="Sort results"
                 >
                   Sort

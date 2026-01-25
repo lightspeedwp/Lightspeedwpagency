@@ -114,63 +114,49 @@ export function AdvancedFilters({
     >
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
-        <div className="flex items-center gap-3">
-          <SlidersHorizontal
-            size={24}
-            style={{ color: 'var(--primary)' }}
-          />
-          <h3
-            style={{
-              fontFamily: 'Lexend, sans-serif',
-              fontSize: 'var(--text-h4)',
-              fontWeight: 'var(--font-weight-semibold)',
-              color: 'var(--foreground)',
-              margin: 0,
-            }}
-          >
-            Filters
-          </h3>
-          {activeCount > 0 && (
+        <h3
+          style={{
+            fontFamily: 'var(--font-primary)',
+            fontSize: 'var(--text-h4)',
+            fontWeight: 'var(--font-weight-semibold)',
+            color: 'var(--foreground)',
+            margin: 0,
+          }}
+        >
+          Filters
+        </h3>
+
+        {activeCount > 0 && (
+          <div className="flex items-center gap-2">
             <span
               className="px-2 py-1"
               style={{
-                fontFamily: 'Lexend, sans-serif',
+                fontFamily: 'var(--font-primary)',
                 fontSize: 'var(--text-small)',
                 fontWeight: 'var(--font-weight-medium)',
-                backgroundColor: 'var(--primary)',
                 color: 'var(--primary-foreground)',
+                backgroundColor: 'var(--primary)',
                 borderRadius: 'var(--radius)',
               }}
             >
-              {activeCount}
+              {activeCount} active
             </span>
-          )}
-        </div>
-
-        {activeCount > 0 && (
-          <button
-            onClick={onClearAll}
-            style={{
-              fontFamily: 'Lexend, sans-serif',
-              fontSize: 'var(--text-small)',
-              fontWeight: 'var(--font-weight-medium)',
-              color: 'var(--destructive)',
-              textDecoration: 'underline',
-              background: 'none',
-              border: 'none',
-              padding: 0,
-              cursor: 'pointer',
-              transition: 'opacity 0.2s ease',
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.opacity = '0.7';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.opacity = '1';
-            }}
-          >
-            Clear all
-          </button>
+            <button
+              onClick={onClearAll}
+              style={{
+                fontFamily: 'var(--font-primary)',
+                fontSize: 'var(--text-small)',
+                fontWeight: 'var(--font-weight-medium)',
+                color: 'var(--destructive)',
+                backgroundColor: 'transparent',
+                border: 'none',
+                cursor: 'pointer',
+                textDecoration: 'underline',
+              }}
+            >
+              Clear all
+            </button>
+          </div>
         )}
       </div>
 
@@ -196,7 +182,7 @@ export function AdvancedFilters({
               onChange={(e) => handleSearchChange(e.target.value)}
               placeholder={searchPlaceholder}
               style={{
-                fontFamily: 'Lexend, sans-serif',
+                fontFamily: 'var(--font-primary)',
                 fontSize: 'var(--text-base)',
                 color: 'var(--foreground)',
                 background: 'none',
@@ -254,7 +240,7 @@ export function AdvancedFilters({
             >
               <h4
                 style={{
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-base)',
                   fontWeight: 'var(--font-weight-semibold)',
                   color: 'var(--foreground)',
@@ -308,7 +294,7 @@ export function AdvancedFilters({
           <p
             className="mb-3"
             style={{
-              fontFamily: 'Lexend, sans-serif',
+              fontFamily: 'var(--font-primary)',
               fontSize: 'var(--text-small)',
               fontWeight: 'var(--font-weight-semibold)',
               color: 'var(--muted-foreground)',
@@ -331,7 +317,7 @@ export function AdvancedFilters({
                   onClick={() => onFilterChange(key, null)}
                   className="flex items-center gap-2 px-3 py-2"
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-small)',
                     fontWeight: 'var(--font-weight-medium)',
                     color: 'var(--foreground)',
@@ -405,7 +391,7 @@ function CheckboxFilterGroup({
           />
           <span
             style={{
-              fontFamily: 'Lexend, sans-serif',
+              fontFamily: 'var(--font-primary)',
               fontSize: 'var(--text-base)',
               color: 'var(--foreground)',
               flex: 1,
@@ -416,7 +402,7 @@ function CheckboxFilterGroup({
           {option.count !== undefined && (
             <span
               style={{
-                fontFamily: 'Manrope, sans-serif',
+                fontFamily: 'var(--font-secondary)',
                 fontSize: 'var(--text-small)',
                 color: 'var(--muted-foreground)',
               }}
@@ -465,7 +451,7 @@ function RadioFilterGroup({
           />
           <span
             style={{
-              fontFamily: 'Lexend, sans-serif',
+              fontFamily: 'var(--font-primary)',
               fontSize: 'var(--text-base)',
               color: 'var(--foreground)',
               flex: 1,
@@ -476,7 +462,7 @@ function RadioFilterGroup({
           {option.count !== undefined && (
             <span
               style={{
-                fontFamily: 'Manrope, sans-serif',
+                fontFamily: 'var(--font-secondary)',
                 fontSize: 'var(--text-small)',
                 color: 'var(--muted-foreground)',
               }}
@@ -518,7 +504,7 @@ function RangeFilterGroup({
       <div className="flex items-center justify-between">
         <span
           style={{
-            fontFamily: 'Lexend, sans-serif',
+            fontFamily: 'var(--font-primary)',
             fontSize: 'var(--text-base)',
             fontWeight: 'var(--font-weight-medium)',
             color: 'var(--foreground)',
@@ -528,7 +514,7 @@ function RangeFilterGroup({
         </span>
         <span
           style={{
-            fontFamily: 'Manrope, sans-serif',
+            fontFamily: 'var(--font-secondary)',
             fontSize: 'var(--text-small)',
             color: 'var(--muted-foreground)',
           }}
@@ -537,7 +523,7 @@ function RangeFilterGroup({
         </span>
         <span
           style={{
-            fontFamily: 'Lexend, sans-serif',
+            fontFamily: 'var(--font-primary)',
             fontSize: 'var(--text-base)',
             fontWeight: 'var(--font-weight-medium)',
             color: 'var(--foreground)',

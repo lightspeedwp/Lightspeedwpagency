@@ -9,11 +9,13 @@
 
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
+import { LucideIcon } from 'lucide-react';
 
 export interface TimelineItem {
   year: string;
   title: string;
   description: string;
+  icon?: LucideIcon; // Optional icon for timeline items
 }
 
 interface TimelineSectionProps {
@@ -22,7 +24,12 @@ interface TimelineSectionProps {
   items: TimelineItem[];
 }
 
-export function TimelineSection({ title, description, items }: TimelineSectionProps) {
+export function TimelineSection({ title, description, items = [] }: TimelineSectionProps) {
+  // Guard against undefined items
+  if (!items || items.length === 0) {
+    return null;
+  }
+
   return (
     <Section spacing="xl" style={{ backgroundColor: 'var(--muted)' }}>
       <Container>

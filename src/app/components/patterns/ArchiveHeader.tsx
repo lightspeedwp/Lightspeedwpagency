@@ -5,6 +5,8 @@
  * 
  * Page header for archive/listing pages (taxonomy, category, blog).
  * Provides context for the content that follows.
+ * 
+ * All styling in /src/styles/archive-header.css (user-editable)
  */
 
 import { Container } from '../common/Container';
@@ -21,11 +23,7 @@ export function ArchiveHeader({ title, description, count }: ArchiveHeaderProps)
   return (
     <Section spacing="60" background="neutral-100">
       <Container>
-        <div 
-          style={{
-            maxWidth: '700px',
-          }}
-        >
+        <div className="archive-header__content">
           {/* Archive Title - H1 */}
           <Heading level={1}>
             {title}
@@ -33,29 +31,14 @@ export function ArchiveHeader({ title, description, count }: ArchiveHeaderProps)
 
           {/* Optional Description */}
           {description && (
-            <p 
-              style={{
-                fontSize: 'var(--wp--preset--font-size--400)',
-                color: 'var(--wp--preset--color--neutral-600)',
-                marginTop: 'var(--wp--preset--spacing--30)',
-                lineHeight: '1.6',
-              }}
-            >
+            <p className="archive-header__description">
               {description}
             </p>
           )}
 
           {/* Optional Count */}
           {count !== undefined && (
-            <p 
-              style={{
-                fontSize: 'var(--wp--preset--font-size--100)',
-                color: 'var(--wp--preset--color--neutral-500)',
-                marginTop: 'var(--wp--preset--spacing--20)',
-                textTransform: 'uppercase',
-                letterSpacing: '0.05em',
-              }}
-            >
+            <p className="archive-header__count">
               {count} {count === 1 ? 'Result' : 'Results'}
             </p>
           )}

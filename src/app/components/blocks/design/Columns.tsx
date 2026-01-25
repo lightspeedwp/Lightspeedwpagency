@@ -9,7 +9,7 @@
  * 
  * Design System Requirements:
  * - Layout: CSS Grid or Flexbox for column distribution
- * - Spacing: Uses Tailwind gap classes or CSS variables
+ * - Spacing: Uses WordPress gap utilities (.wp-gap-*)
  * - Colors: Uses semantic color tokens
  * - Responsive: Automatically stacks on mobile devices
  * 
@@ -19,17 +19,17 @@
 import React from 'react';
 
 export interface ColumnsProps {
-  /** Number of columns (1-6) */
-  columns?: number;
-  /** Gap between columns */
-  gap?: string;
+  /** Number of columns (2-6) */
+  columns?: 2 | 3 | 4 | 5 | 6;
+  /** Gap between columns (0-24) */
+  gap?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 8 | 10 | 12 | 16 | 20 | 24;
   /** Equal width columns */
   equalWidth?: boolean;
   /** Vertical alignment of columns */
-  verticalAlign?: 'top' | 'center' | 'bottom' | 'stretch';
+  verticalAlign?: 'start' | 'center' | 'end' | 'stretch';
   /** Additional CSS classes */
   className?: string;
-  /** Inline styles */
+  /** Inline styles (CSS variables only) */
   style?: React.CSSProperties;
   /** Column children */
   children: React.ReactNode;
@@ -41,7 +41,7 @@ export interface ColumnsProps {
  * Columns Block - Multi-column layout container
  * 
  * @example
- * <Columns columns={2} gap="gap-8">
+ * <Columns columns={2} gap={8}>
  *   <Column>
  *     <Heading level={2}>Services</Heading>
  *     <Paragraph>We offer...</Paragraph>
@@ -52,7 +52,7 @@ export interface ColumnsProps {
  * </Columns>
  * 
  * @example
- * <Columns columns={3} gap="gap-6" equalWidth={true}>
+ * <Columns columns={3} gap={6} equalWidth={true}>
  *   <Column><FeatureCard title="Fast" /></Column>
  *   <Column><FeatureCard title="Secure" /></Column>
  *   <Column><FeatureCard title="Scalable" /></Column>
@@ -60,7 +60,7 @@ export interface ColumnsProps {
  */
 export function Columns({
   columns = 2,
-  gap = 'gap-6',
+  gap = 6,
   equalWidth = true,
   verticalAlign = 'stretch',
   className = '',
@@ -69,25 +69,19 @@ export function Columns({
   'aria-label': ariaLabel,
   ...props
 }: ColumnsProps) {
-  // Vertical alignment mapping
-  const alignItems = {
-    'top': 'items-start',
-    'center': 'items-center',
-    'bottom': 'items-end',
-    'stretch': 'items-stretch'
-  };
-
-  // Responsive grid classes (stacks on mobile, columns on md+)
-  const gridClasses = equalWidth
-    ? `grid grid-cols-1 md:grid-cols-${columns}`
-    : 'flex flex-col md:flex-row';
+  // Build WordPress-aligned class names
+  const gapClass = `wp-gap-${gap}`;
+  const alignClass = verticalAlign !== 'stretch' ? `wp-align-${verticalAlign}` : 'wp-align-stretch';
+  
+  // Responsive grid classes (stacks on mobile, columns on desktop)
+  const gridClass = equalWidth ? `wp-grid-${columns}-cols` : 'wp-flex wp-flex-row';
 
   // Combine classes
   const combinedClassName = [
     'wp-block-columns',
-    gridClasses,
-    gap,
-    alignItems[verticalAlign],
+    gridClass,
+    gapClass,
+    alignClass,
     className
   ].filter(Boolean).join(' ');
 
@@ -111,7 +105,7 @@ export interface ColumnProps {
   width?: string;
   /** Additional CSS classes */
   className?: string;
-  /** Inline styles */
+  /** Inline styles (CSS variables only) */
   style?: React.CSSProperties;
   /** Column content */
   children: React.ReactNode;

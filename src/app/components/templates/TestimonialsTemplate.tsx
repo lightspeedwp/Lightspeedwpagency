@@ -6,58 +6,61 @@
  * Comprehensive testimonials page with filtering, stats, and social proof.
  * 
  * Pattern order:
- * Hero → Stats → Featured Testimonials → Filters → All Testimonials → Video Section → Social Proof → CTA
+ * Hero → Stats → Featured Testimonials → Filters → All Testimonials → Video Section → Social Proof → FAQSection → CTA
+ * 
+ * **Pattern Components Used:**
+ * - Hero (gradient variant with rating)
+ * - StatsGrid (4-column layout)
+ * - TestimonialGrid (featured & filtered sections)
+ * - VideoTestimonial (video section)
+ * - SocialProof (client logos)
+ * - FAQSection (common questions)
+ * - CTASection (conversion)
+ * 
+ * **Code Reduction:**
+ * - Before: ~800 lines
+ * - After: ~400 lines
+ * - Reduction: 50% (~400 lines eliminated)
  */
 
 import { SiteHeader } from '../parts/SiteHeader';
 import { SiteFooter } from '../parts/SiteFooter';
 import { SkipLink } from '../common/SkipLink';
-import { Container } from '../common/Container';
 import { Section } from '../common/Section';
-import { Buttons, Button } from '../blocks/design/Buttons';
 import { BackToTopButton } from '../blocks/layout/BackToTopButton';
 import { RouteAnnouncer } from '../blocks/utility/RouteAnnouncer';
+import { Hero } from '../patterns/Hero';
+import { StatsGrid } from '../patterns/StatsGrid';
+import { TestimonialGrid } from '../patterns/TestimonialGrid';
+import { VideoTestimonial } from '../patterns/VideoTestimonial';
+import { SocialProof } from '../patterns/SocialProof';
 import { FAQSection } from '../patterns/FAQSection';
-import { useNavigation } from '../../contexts/NavigationContext';
+import { CTASection } from '../patterns/CTASection';
 import { useState } from 'react';
-import { 
-  Star,
-  ArrowRight,
-  Quote,
-  CheckCircle,
-  TrendingUp,
-  Users,
-  Award,
-  PlayCircle,
-  Filter
-} from 'lucide-react';
+import { Filter, Star } from 'lucide-react';
 
 // Import centralized testimonials data
 import { 
   testimonials as centralizedTestimonials,
-  serviceFilters,
   testimonialStats,
   videoTestimonials
 } from '../../data/testimonials';
+import { clientLogos } from '../../data/logos';
 
 export function TestimonialsTemplate() {
-  const { navigateTo } = useNavigation();
   const [filterIndustry, setFilterIndustry] = useState<string>('all');
   const [filterService, setFilterService] = useState<string>('all');
-  const [activeTestimonial, setActiveTestimonial] = useState<number>(0);
 
-  // Use centralized testimonials data
+  // Transform testimonials data for TestimonialGrid component
   const testimonials = centralizedTestimonials.map((t, index) => ({
-    id: index + 1,
-    name: t.author,
+    quote: t.quote,
+    author: t.author,
     role: t.role,
     company: t.company,
-    industry: t.industry?.[0] || 'General',
-    service: t.serviceType?.[0] || 'WordPress',
+    avatar: t.avatar || `https://images.unsplash.com/photo-${1494790108377 + index}?w=400`,
     rating: t.rating || 5,
-    text: t.quote,
-    image: t.avatar || `https://images.unsplash.com/photo-${1494790108377 + index}?w=400`,
-    results: []
+    industry: t.industry?.[0] || 'General',
+    service: t.serviceType?.[0] || 'WordPress'
   }));
 
   // Filter testimonials
@@ -74,11 +77,17 @@ export function TestimonialsTemplate() {
   const industries = ['all', ...Array.from(new Set(testimonials.map(t => t.industry)))];
   const services = ['all', 'WordPress', 'WooCommerce', 'Design', 'Development', 'Migration', 'Security'];
 
-  // Stats
-  const stats = testimonialStats;
-
-  // Video testimonials
-  const videoTestimonialsData = videoTestimonials;
+  // Video testimonials data
+  const videoTestimonialsData = videoTestimonials.map(v => ({
+    title: v.title,
+    clientName: v.name,
+    clientRole: v.role,
+    company: v.company,
+    thumbnail: v.thumbnail,
+    videoUrl: v.url,
+    duration: v.duration,
+    description: v.description
+  }));
 
   // FAQs
   const testimonialFAQs = [
@@ -115,344 +124,57 @@ export function TestimonialsTemplate() {
       <SiteHeader />
       
       <main id="main-content" role="main">
-        {/* Hero Section */}
-        <Section 
-          spacing="xl"
-          style={{
-            background: 'linear-gradient(135deg, #f59e0b 0%, #ea580c 100%)',
-            color: 'var(--primary-foreground)',
-            position: 'relative',
-            overflow: 'hidden',
-            paddingTop: '80px',
-            paddingBottom: '80px'
-          }}
-        >
-          <div
-            className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full"
-            style={{
-              background: 'radial-gradient(circle, rgba(234, 88, 12, 0.3) 0%, transparent 70%)',
-              filter: 'blur(80px)',
-              transform: 'translate(30%, -30%)'
-            }}
-          />
-
-          <Container>
-            <div className="max-w-4xl mx-auto text-center relative z-10">
-              <div
-                className="inline-block px-4 py-2 mb-6"
-                style={{
-                  backgroundColor: 'rgba(255, 255, 255, 0.15)',
-                  backdropFilter: 'blur(10px)',
-                  borderRadius: 'var(--radius-full)',
-                  border: '1px solid rgba(255, 255, 255, 0.2)',
-                  fontSize: 'var(--text-small)',
-                  fontFamily: 'Manrope, sans-serif',
-                  fontWeight: 'var(--font-weight-semibold)',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.1em'
-                }}
-              >
-                CLIENT TESTIMONIALS
-              </div>
-
-              <h1
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'clamp(2rem, 5vw, 3.5rem)',
-                  fontWeight: 'var(--font-weight-bold)',
-                  lineHeight: '1.1',
-                  letterSpacing: '-0.02em',
-                  marginBottom: '20px',
-                  color: 'var(--primary-foreground)'
-                }}
-              >
-                Trusted by 500+<br />Happy Clients
-              </h1>
-
-              <p
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-lg)',
-                  lineHeight: '1.7',
-                  color: 'rgba(255, 255, 255, 0.95)',
-                  marginBottom: '32px',
-                  maxWidth: '700px',
-                  margin: '0 auto 32px'
-                }}
-              >
-                Don't just take our word for it. See what our clients say about 
-                working with LightSpeed and the results we've achieved together.
-              </p>
-
-              {/* Star Rating */}
-              <div 
-                className="flex items-center justify-center gap-2 mb-8"
-                style={{
-                  marginBottom: '32px'
-                }}
-              >
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <Star 
-                    key={star} 
-                    size={32} 
-                    style={{ 
-                      fill: '#fbbf24', 
-                      color: '#fbbf24' 
-                    }} 
-                  />
-                ))}
-                <span
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-lg)',
-                    fontWeight: 'var(--font-weight-semibold)',
-                    color: 'white',
-                    marginLeft: '12px'
-                  }}
-                >
-                  4.9/5 Average Rating
-                </span>
-              </div>
-
-              <Buttons orientation="horizontal" style={{ justifyContent: 'center' }}>
-                <Button
-                  variant="default"
-                  size="lg"
-                  page="contact"
-                  style={{
-                    backgroundColor: 'white',
-                    color: '#f59e0b',
-                    boxShadow: '0 10px 40px rgba(0, 0, 0, 0.2)'
-                  }}
-                >
-                  Get Started
-                  <ArrowRight size={20} />
-                </Button>
-                <Button
-                  variant="outline"
-                  size="lg"
-                  page="portfolio-archive"
-                  style={{
-                    borderColor: 'rgba(255, 255, 255, 0.3)',
-                    color: 'white',
-                    backgroundColor: 'transparent'
-                  }}
-                >
-                  View Portfolio
-                </Button>
-              </Buttons>
-            </div>
-          </Container>
-        </Section>
+        {/* Hero Section with Rating */}
+        <Hero
+          badge="CLIENT TESTIMONIALS"
+          title="Trusted by 500+ Happy Clients"
+          description="Don't just take our word for it. See what our clients say about working with LightSpeed and the results we've achieved together."
+          variant="gradient"
+          primaryButtonText="Get Started"
+          primaryButtonPage="contact"
+          secondaryButtonText="View Portfolio"
+          secondaryButtonPage="portfolio-archive"
+        />
 
         {/* Stats Section */}
         <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
-          <Container>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              {stats.map((stat, index) => (
-                <div
-                  key={index}
-                  style={{
-                    padding: '32px',
-                    backgroundColor: 'var(--card)',
-                    borderRadius: 'var(--radius-lg)',
-                    border: '1px solid var(--border-soft)',
-                    textAlign: 'center'
-                  }}
-                >
-                  <div
-                    style={{
-                      fontFamily: 'Lexend, sans-serif',
-                      fontSize: 'var(--text-h1)',
-                      fontWeight: 'var(--font-weight-bold)',
-                      color: 'var(--primary)',
-                      marginBottom: '8px'
-                    }}
-                  >
-                    {stat.number}
-                  </div>
-                  <div
-                    style={{
-                      fontFamily: 'Lexend, sans-serif',
-                      fontSize: 'var(--text-base)',
-                      color: 'var(--muted-foreground)'
-                    }}
-                  >
-                    {stat.label}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </Container>
+          <StatsGrid
+            stats={testimonialStats.map(stat => ({
+              icon: Star,
+              value: stat.number,
+              label: stat.label
+            }))}
+            columns={4}
+            variant="cards"
+          />
         </Section>
 
         {/* Featured Testimonials */}
         <Section spacing="xl" style={{ backgroundColor: 'var(--muted)' }}>
-          <Container>
-            <div className="text-center mb-16">
-              <h2
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-h1)',
-                  fontWeight: 'var(--font-weight-bold)',
-                  lineHeight: '1.2',
-                  letterSpacing: '-0.02em',
-                  marginBottom: '16px',
-                  color: 'var(--foreground)'
-                }}
-              >
-                Featured Success Stories
-              </h2>
-
-              <p
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-lg)',
-                  lineHeight: '1.7',
-                  color: 'var(--muted-foreground)',
-                  maxWidth: '700px',
-                  margin: '0 auto'
-                }}
-              >
-                Hear from clients who achieved remarkable results
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {featuredTestimonials.map((testimonial) => (
-                <div
-                  key={testimonial.id}
-                  style={{
-                    padding: '32px',
-                    backgroundColor: 'var(--card)',
-                    borderRadius: 'var(--radius-xl)',
-                    border: '1px solid var(--border-soft)',
-                    position: 'relative'
-                  }}
-                >
-                  <Quote 
-                    size={48} 
-                    style={{ 
-                      color: 'var(--primary)', 
-                      opacity: 0.2,
-                      position: 'absolute',
-                      top: '24px',
-                      right: '24px'
-                    }} 
-                  />
-
-                  {/* Rating */}
-                  <div className="flex gap-1 mb-4">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star 
-                        key={i} 
-                        size={16} 
-                        style={{ fill: '#fbbf24', color: '#fbbf24' }} 
-                      />
-                    ))}
-                  </div>
-
-                  {/* Testimonial Text */}
-                  <p
-                    style={{
-                      fontFamily: 'Lexend, sans-serif',
-                      fontSize: 'var(--text-base)',
-                      lineHeight: '1.6',
-                      color: 'var(--foreground)',
-                      marginBottom: '20px'
-                    }}
-                  >
-                    "{testimonial.text}"
-                  </p>
-
-                  {/* Results */}
-                  <div className="space-y-2 mb-6">
-                    {testimonial.results.map((result, idx) => (
-                      <div
-                        key={idx}
-                        style={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          gap: '8px'
-                        }}
-                      >
-                        <CheckCircle size={16} style={{ color: 'var(--primary)', flexShrink: 0 }} />
-                        <span
-                          style={{
-                            fontFamily: 'Lexend, sans-serif',
-                            fontSize: 'var(--text-small)',
-                            color: 'var(--muted-foreground)'
-                          }}
-                        >
-                          {result}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Author */}
-                  <div className="flex items-center gap-4">
-                    <div
-                      style={{
-                        width: '48px',
-                        height: '48px',
-                        borderRadius: 'var(--radius-full)',
-                        overflow: 'hidden',
-                        flexShrink: 0
-                      }}
-                    >
-                      <img
-                        src={testimonial.image}
-                        alt={testimonial.name}
-                        style={{
-                          width: '100%',
-                          height: '100%',
-                          objectFit: 'cover'
-                        }}
-                      />
-                    </div>
-                    <div>
-                      <div
-                        style={{
-                          fontFamily: 'Lexend, sans-serif',
-                          fontSize: 'var(--text-base)',
-                          fontWeight: 'var(--font-weight-semibold)',
-                          color: 'var(--foreground)',
-                          marginBottom: '2px'
-                        }}
-                      >
-                        {testimonial.name}
-                      </div>
-                      <div
-                        style={{
-                          fontFamily: 'Manrope, sans-serif',
-                          fontSize: 'var(--text-small)',
-                          color: 'var(--muted-foreground)'
-                        }}
-                      >
-                        {testimonial.role}, {testimonial.company}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </Container>
+          <TestimonialGrid
+            testimonials={featuredTestimonials}
+            heading="Featured Success Stories"
+            description="Hear from clients who achieved remarkable results"
+            columns={3}
+            variant="cards"
+            showRating={true}
+            maxWidth="6xl"
+          />
         </Section>
 
-        {/* Filters */}
+        {/* Filters & All Testimonials */}
         <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
-          <Container>
-            <div className="text-center mb-12">
+          <div className="wp-max-w-6xl">
+            {/* Section Header */}
+            <div className="wp-text-center" style={{ marginBottom: 'var(--spacing-12)' }}>
               <h2
                 style={{
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-h1)',
                   fontWeight: 'var(--font-weight-bold)',
                   lineHeight: '1.2',
-                  letterSpacing: '-0.02em',
-                  marginBottom: '16px',
-                  color: 'var(--foreground)'
+                  color: 'var(--foreground)',
+                  marginBottom: 'var(--spacing-4)'
                 }}
               >
                 All Client Testimonials
@@ -460,23 +182,33 @@ export function TestimonialsTemplate() {
 
               <p
                 style={{
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-lg)',
                   lineHeight: '1.7',
                   color: 'var(--muted-foreground)',
-                  marginBottom: '32px'
+                  marginBottom: 'var(--spacing-8)'
                 }}
               >
                 Filter by industry or service to find relevant success stories
               </p>
 
               {/* Filter Controls */}
-              <div className="flex flex-col md:flex-row gap-4 justify-center items-center mb-12">
-                <div className="flex items-center gap-3">
+              <div 
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: 'var(--spacing-4)',
+                  alignItems: 'center',
+                  marginBottom: 'var(--spacing-12)'
+                }}
+                className="md:flex-row"
+              >
+                {/* Industry Filter */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-3)' }}>
                   <Filter size={20} style={{ color: 'var(--muted-foreground)' }} />
                   <span
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-base)',
                       fontWeight: 'var(--font-weight-medium)',
                       color: 'var(--foreground)'
@@ -493,10 +225,11 @@ export function TestimonialsTemplate() {
                       border: '1px solid var(--border)',
                       backgroundColor: 'var(--card)',
                       color: 'var(--foreground)',
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-base)',
                       cursor: 'pointer'
                     }}
+                    aria-label="Filter testimonials by industry"
                   >
                     {industries.map((industry) => (
                       <option key={industry} value={industry}>
@@ -506,10 +239,11 @@ export function TestimonialsTemplate() {
                   </select>
                 </div>
 
-                <div className="flex items-center gap-3">
+                {/* Service Filter */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-3)' }}>
                   <span
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-base)',
                       fontWeight: 'var(--font-weight-medium)',
                       color: 'var(--foreground)'
@@ -526,10 +260,11 @@ export function TestimonialsTemplate() {
                       border: '1px solid var(--border)',
                       backgroundColor: 'var(--card)',
                       color: 'var(--foreground)',
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-base)',
                       cursor: 'pointer'
                     }}
+                    aria-label="Filter testimonials by service"
                   >
                     {services.map((service) => (
                       <option key={service} value={service}>
@@ -541,109 +276,16 @@ export function TestimonialsTemplate() {
               </div>
             </div>
 
-            {/* All Testimonials Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredTestimonials.map((testimonial) => (
-                <div
-                  key={testimonial.id}
-                  style={{
-                    padding: '32px',
-                    backgroundColor: 'var(--card)',
-                    borderRadius: 'var(--radius-lg)',
-                    border: '1px solid var(--border-soft)',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '16px'
-                  }}
-                >
-                  {/* Rating */}
-                  <div className="flex gap-1">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star 
-                        key={i} 
-                        size={16} 
-                        style={{ fill: '#fbbf24', color: '#fbbf24' }} 
-                      />
-                    ))}
-                  </div>
-
-                  {/* Text */}
-                  <p
-                    style={{
-                      fontFamily: 'Lexend, sans-serif',
-                      fontSize: 'var(--text-base)',
-                      lineHeight: '1.6',
-                      color: 'var(--foreground)',
-                      flex: 1
-                    }}
-                  >
-                    "{testimonial.text}"
-                  </p>
-
-                  {/* Author */}
-                  <div className="flex items-center gap-3">
-                    <div
-                      style={{
-                        width: '40px',
-                        height: '40px',
-                        borderRadius: 'var(--radius-full)',
-                        overflow: 'hidden',
-                        flexShrink: 0
-                      }}
-                    >
-                      <img
-                        src={testimonial.image}
-                        alt={testimonial.name}
-                        style={{
-                          width: '100%',
-                          height: '100%',
-                          objectFit: 'cover'
-                        }}
-                      />
-                    </div>
-                    <div>
-                      <div
-                        style={{
-                          fontFamily: 'Lexend, sans-serif',
-                          fontSize: 'var(--text-base)',
-                          fontWeight: 'var(--font-weight-semibold)',
-                          color: 'var(--foreground)'
-                        }}
-                      >
-                        {testimonial.name}
-                      </div>
-                      <div
-                        style={{
-                          fontFamily: 'Manrope, sans-serif',
-                          fontSize: 'var(--text-small)',
-                          color: 'var(--muted-foreground)'
-                        }}
-                      >
-                        {testimonial.role}, {testimonial.company}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Industry/Service Tags */}
-                  <div className="flex gap-2">
-                    <span
-                      style={{
-                        padding: '4px 12px',
-                        borderRadius: 'var(--radius-full)',
-                        backgroundColor: 'var(--primary-soft)',
-                        fontSize: 'var(--text-small)',
-                        fontFamily: 'Manrope, sans-serif',
-                        color: 'var(--primary)'
-                      }}
-                    >
-                      {testimonial.industry}
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {filteredTestimonials.length === 0 && (
+            {/* Filtered Testimonials Grid */}
+            {filteredTestimonials.length > 0 ? (
+              <TestimonialGrid
+                testimonials={filteredTestimonials}
+                columns={3}
+                variant="cards"
+                showRating={true}
+                maxWidth="full"
+              />
+            ) : (
               <div
                 style={{
                   padding: '64px 32px',
@@ -655,7 +297,7 @@ export function TestimonialsTemplate() {
               >
                 <p
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-lg)',
                     color: 'var(--muted-foreground)'
                   }}
@@ -664,227 +306,51 @@ export function TestimonialsTemplate() {
                 </p>
               </div>
             )}
-          </Container>
+          </div>
         </Section>
 
         {/* Video Testimonials */}
         <Section spacing="xl" style={{ backgroundColor: 'var(--muted)' }}>
-          <Container>
-            <div className="text-center mb-16">
-              <h2
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-h1)',
-                  fontWeight: 'var(--font-weight-bold)',
-                  lineHeight: '1.2',
-                  letterSpacing: '-0.02em',
-                  marginBottom: '16px',
-                  color: 'var(--foreground)'
-                }}
-              >
-                Video Testimonials
-              </h2>
-
-              <p
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-lg)',
-                  lineHeight: '1.7',
-                  color: 'var(--muted-foreground)',
-                  maxWidth: '700px',
-                  margin: '0 auto'
-                }}
-              >
-                Watch our clients share their success stories
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {videoTestimonialsData.map((video) => (
-                <div
-                  key={video.id}
-                  className="cursor-pointer"
-                  style={{
-                    position: 'relative',
-                    borderRadius: 'var(--radius-xl)',
-                    overflow: 'hidden',
-                    aspectRatio: '16/9'
-                  }}
-                >
-                  <img
-                    src={video.thumbnail}
-                    alt={`${video.name} testimonial`}
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover'
-                    }}
-                  />
-                  
-                  <div
-                    style={{
-                      position: 'absolute',
-                      inset: 0,
-                      background: 'linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, transparent 50%)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center'
-                    }}
-                  >
-                    <div
-                      style={{
-                        width: '80px',
-                        height: '80px',
-                        borderRadius: 'var(--radius-full)',
-                        backgroundColor: 'rgba(255, 255, 255, 0.9)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        transition: 'transform 0.2s ease'
-                      }}
-                    >
-                      <PlayCircle size={40} style={{ color: 'var(--primary)' }} />
-                    </div>
-                  </div>
-
-                  <div
-                    style={{
-                      position: 'absolute',
-                      bottom: '20px',
-                      left: '20px',
-                      right: '20px'
-                    }}
-                  >
-                    <div
-                      style={{
-                        fontFamily: 'Lexend, sans-serif',
-                        fontSize: 'var(--text-lg)',
-                        fontWeight: 'var(--font-weight-semibold)',
-                        color: 'white',
-                        marginBottom: '4px'
-                      }}
-                    >
-                      {video.name}
-                    </div>
-                    <div
-                      style={{
-                        fontFamily: 'Manrope, sans-serif',
-                        fontSize: 'var(--text-small)',
-                        color: 'rgba(255, 255, 255, 0.9)'
-                      }}
-                    >
-                      {video.company} • {video.duration}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </Container>
+          <VideoTestimonial
+            videos={videoTestimonialsData}
+            heading="Video Testimonials"
+            description="Watch our clients share their success stories"
+            variant="grid"
+            columns={3}
+            maxWidth="6xl"
+          />
         </Section>
 
-        {/* CTA Section */}
-        <Section 
-          spacing="xl"
-          style={{
-            background: 'linear-gradient(135deg, #f59e0b 0%, #ea580c 100%)',
-            color: 'var(--primary-foreground)',
-            textAlign: 'center'
-          }}
-        >
-          <Container>
-            <div className="max-w-3xl mx-auto">
-              <h2
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-h1)',
-                  fontWeight: 'var(--font-weight-bold)',
-                  lineHeight: '1.2',
-                  letterSpacing: '-0.02em',
-                  marginBottom: '20px'
-                }}
-              >
-                Ready to Join Our Success Stories?
-              </h2>
-
-              <p
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-lg)',
-                  lineHeight: '1.7',
-                  marginBottom: '32px',
-                  opacity: 0.95
-                }}
-              >
-                Let's create your success story together. Get started with a 
-                free consultation and see how we can help your business grow.
-              </p>
-
-              <Buttons orientation="horizontal" style={{ justifyContent: 'center' }}>
-                <Button
-                  variant="default"
-                  size="lg"
-                  page="contact"
-                  style={{
-                    backgroundColor: 'white',
-                    color: '#f59e0b',
-                    boxShadow: '0 10px 40px rgba(0, 0, 0, 0.2)'
-                  }}
-                >
-                  Get Started Today
-                  <ArrowRight size={20} />
-                </Button>
-                <Button
-                  variant="outline"
-                  size="lg"
-                  page="portfolio-archive"
-                  style={{
-                    borderColor: 'rgba(255, 255, 255, 0.3)',
-                    color: 'white',
-                    backgroundColor: 'transparent'
-                  }}
-                >
-                  View Portfolio
-                </Button>
-              </Buttons>
-            </div>
-          </Container>
+        {/* Social Proof */}
+        <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
+          <SocialProof
+            logos={clientLogos.filter(logo => logo.category === 'client')}
+            heading="Trusted by Leading Brands"
+            description="Join 500+ companies who trust LightSpeed with their WordPress & WooCommerce solutions"
+            variant="grayscale-hover"
+            columns={6}
+          />
         </Section>
 
         {/* FAQ Section */}
-        <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
-          <Container>
-            <div className="max-w-4xl mx-auto">
-              <div className="text-center mb-12">
-                <h2
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-h1)',
-                    fontWeight: 'var(--font-weight-bold)',
-                    lineHeight: '1.2',
-                    letterSpacing: '-0.02em',
-                    marginBottom: '16px',
-                    color: 'var(--foreground)'
-                  }}
-                >
-                  Testimonials FAQs
-                </h2>
-
-                <p
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-lg)',
-                    lineHeight: '1.7',
-                    color: 'var(--muted-foreground)'
-                  }}
-                >
-                  Common questions about our client testimonials
-                </p>
-              </div>
-
-              <FAQSection faqs={testimonialFAQs} />
-            </div>
-          </Container>
+        <Section spacing="xl" style={{ backgroundColor: 'var(--muted)' }}>
+          <FAQSection
+            faqs={testimonialFAQs}
+            heading="Frequently Asked Questions"
+            description="Common questions about our testimonials and client references"
+          />
         </Section>
+
+        {/* CTA Section */}
+        <CTASection
+          variant="blue"
+          heading="Ready to Become Our Next Success Story?"
+          description="Join 500+ happy clients who have transformed their WordPress websites with LightSpeed. Let's achieve remarkable results together."
+          primaryButtonText="Start Your Project"
+          primaryButtonPage="contact"
+          secondaryButtonText="View Our Services"
+          secondaryButtonPage="services"
+        />
       </main>
 
       <SiteFooter />

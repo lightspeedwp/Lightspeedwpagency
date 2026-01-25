@@ -193,16 +193,7 @@ export function ServicesLandingTemplate() {
                   Your partner in WordPress success
                 </h1>
 
-                <p
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-xl)',
-                    lineHeight: '1.7',
-                    color: 'rgba(255, 255, 255, 0.9)',
-                    marginBottom: '40px',
-                    maxWidth: '600px'
-                  }}
-                >
+                <p className="wp-block-services-hero__description text-[rgb(255,255,255)]">
                   WordPress websites designed to take your online business 
                   to the next level.
                 </p>

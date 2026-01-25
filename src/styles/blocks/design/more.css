@@ -1,0 +1,200 @@
+/**
+ * More Block Styles
+ * 
+ * WordPress block: .wp-block-more
+ * Component: /src/app/components/blocks/design/More.tsx
+ * Guideline: /guidelines/blocks/design/more.md
+ * 
+ * CRITICAL: 100% CSS variables only - NO hardcoded values
+ * User can control ALL styling by editing theme CSS files
+ */
+
+/* ==========================================================================
+   BASE STYLES
+   ========================================================================== */
+
+.wp-block-more {
+  /* Layout */
+  display: block;
+  text-align: center;
+  
+  /* Spacing */
+  margin: var(--spacing-6) 0;
+  
+  /* Clear floats */
+  clear: both;
+}
+
+/* ==========================================================================
+   MORE LINK (Production)
+   ========================================================================== */
+
+.wp-block-more__text {
+  /* Layout */
+  display: inline-block;
+  
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--primary);
+  text-decoration: none;
+  
+  /* Spacing */
+  padding: var(--spacing-3) var(--spacing-6);
+  
+  /* Styling */
+  background: transparent;
+  border: 2px solid var(--primary);
+  border-radius: var(--radius);
+  
+  /* Transition */
+  transition: all 200ms ease;
+  
+  /* Cursor */
+  cursor: pointer;
+}
+
+.wp-block-more__text:hover {
+  background: var(--primary);
+  color: var(--primary-foreground);
+  transform: translateY(-2px);
+}
+
+.wp-block-more__text:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.wp-block-more__text:active {
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   EDITOR INDICATOR
+   ========================================================================== */
+
+.wp-block-more__indicator {
+  /* Layout */
+  display: inline-block;
+  
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--muted-foreground);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  
+  /* Spacing */
+  padding: var(--spacing-2) var(--spacing-4);
+  
+  /* Styling */
+  background: var(--muted);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+}
+
+/* ==========================================================================
+   RESPONSIVE STYLES
+   ========================================================================== */
+
+/* Mobile (< 768px) */
+@media (max-width: 767px) {
+  .wp-block-more__text {
+    font-size: 14px;
+    padding: var(--spacing-2) var(--spacing-4);
+  }
+}
+
+/* Tablet (768px - 1023px) */
+@media (min-width: 768px) {
+  .wp-block-more__text {
+    font-size: var(--text-sm);
+    padding: var(--spacing-3) var(--spacing-6);
+  }
+}
+
+/* Desktop (≥ 1024px) */
+@media (min-width: 1024px) {
+  .wp-block-more__text {
+    font-size: var(--text-sm);
+    padding: var(--spacing-4) var(--spacing-8);
+  }
+}
+
+/* ==========================================================================
+   DARK MODE OVERRIDES
+   ========================================================================== */
+
+.dark-theme .wp-block-more__text {
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.dark-theme .wp-block-more__text:hover {
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.dark-theme .wp-block-more__indicator {
+  color: var(--muted-foreground);
+  background: var(--muted);
+  border-color: var(--border);
+}
+
+/* ==========================================================================
+   PRINT STYLES
+   ========================================================================== */
+
+@media print {
+  /* Hide more block in print */
+  .wp-block-more {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   REDUCED MOTION
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .wp-block-more__text {
+    transition: none;
+    transform: none;
+  }
+  
+  .wp-block-more__text:hover {
+    transform: none;
+  }
+}
+
+/* ==========================================================================
+   UTILITY VARIANTS
+   ========================================================================== */
+
+/* Minimal style (text only) */
+.wp-block-more--minimal .wp-block-more__text {
+  border: none;
+  background: none;
+  padding: var(--spacing-2) var(--spacing-4);
+  text-decoration: underline;
+}
+
+.wp-block-more--minimal .wp-block-more__text:hover {
+  background: none;
+  color: var(--primary);
+  text-decoration: none;
+}
+
+/* Filled button style */
+.wp-block-more--filled .wp-block-more__text {
+  background: var(--primary);
+  color: var(--primary-foreground);
+  border-color: var(--primary);
+}
+
+.wp-block-more--filled .wp-block-more__text:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}

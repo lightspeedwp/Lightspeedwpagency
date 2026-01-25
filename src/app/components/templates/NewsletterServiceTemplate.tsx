@@ -6,7 +6,7 @@
  * Email newsletter and marketing service page.
  * 
  * Pattern order:
- * Hero → Services → Platforms → Benefits → Process → CTA → FAQs
+ * Hero → Service Offerings → Platforms → Benefits → Process Steps → CTA → FAQs
  */
 
 import { SiteHeader } from '../parts/SiteHeader';
@@ -14,15 +14,18 @@ import { SiteFooter } from '../parts/SiteFooter';
 import { SkipLink } from '../common/SkipLink';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
-import { Buttons, Button } from '../blocks/design/Buttons';
 import { BackToTopButton } from '../blocks/layout/BackToTopButton';
 import { RouteAnnouncer } from '../blocks/utility/RouteAnnouncer';
 import { FAQSection } from '../patterns/FAQSection';
-import { useState } from 'react';
+import { Hero } from '../patterns/Hero';
+import { ServiceOfferingsGrid } from '../patterns/ServiceOfferingsGrid';
+import { FeatureGrid } from '../patterns/FeatureGrid';
+import { ProcessSteps } from '../patterns/ProcessSteps';
+import { CTASection } from '../patterns/CTASection';
+import { LogoGrid } from '../patterns/LogoGrid';
 import { 
   Mail,
   ArrowRight,
-  CheckCircle,
   Users,
   TrendingUp,
   Target,
@@ -33,53 +36,59 @@ import {
 } from 'lucide-react';
 
 export function NewsletterServiceTemplate() {
-  const [hoveredService, setHoveredService] = useState<string | null>(null);
-
+  // Newsletter services (6 offerings)
   const newsletterServices = [
     {
       id: 'integration',
       icon: Settings,
       title: 'Platform Integration',
-      description: 'Seamless integration with Mailchimp, ConvertKit, and other email platforms.',
-      features: ['API integration', 'Form setup', 'List management', 'Automation workflows']
+      description: 'Seamless integration with Mailchimp, ConvertKit, and other email platforms. API integration, forms, lists.',
+      buttonText: 'Learn More',
+      buttonPage: 'contact' as const
     },
     {
       id: 'templates',
       icon: FileText,
       title: 'Email Templates',
-      description: 'Custom-designed email templates that match your brand.',
-      features: ['Responsive design', 'Brand styling', 'Template library', 'A/B testing']
+      description: 'Custom-designed email templates that match your brand. Responsive design, brand styling, A/B testing.',
+      buttonText: 'Learn More',
+      buttonPage: 'contact' as const
     },
     {
       id: 'automation',
       icon: Zap,
       title: 'Marketing Automation',
-      description: 'Automated email sequences and customer journeys.',
-      features: ['Welcome series', 'Drip campaigns', 'Behavior triggers', 'Segmentation']
+      description: 'Automated email sequences and customer journeys. Welcome series, drip campaigns, behavior triggers.',
+      buttonText: 'Learn More',
+      buttonPage: 'contact' as const
     },
     {
       id: 'analytics',
       icon: BarChart,
       title: 'Analytics & Reporting',
-      description: 'Track performance with detailed analytics and insights.',
-      features: ['Open rates', 'Click tracking', 'Conversion tracking', 'Custom reports']
+      description: 'Track performance with detailed analytics and insights. Open rates, click tracking, conversions.',
+      buttonText: 'Learn More',
+      buttonPage: 'contact' as const
     },
     {
       id: 'strategy',
       icon: Target,
       title: 'Email Strategy',
-      description: 'Strategic planning for effective email marketing campaigns.',
-      features: ['Content calendar', 'Audience segmentation', 'Campaign planning', 'Growth strategies']
+      description: 'Strategic planning for effective email marketing campaigns. Content calendar, audience segmentation.',
+      buttonText: 'Learn More',
+      buttonPage: 'contact' as const
     },
     {
       id: 'optimization',
       icon: TrendingUp,
       title: 'Campaign Optimization',
-      description: 'Continuous improvement of email performance and engagement.',
-      features: ['A/B testing', 'Subject line optimization', 'Send time optimization', 'List hygiene']
+      description: 'Continuous improvement of email performance and engagement. A/B testing, subject line optimization.',
+      buttonText: 'Learn More',
+      buttonPage: 'contact' as const
     }
   ];
 
+  // Platform logos
   const platforms = [
     { name: 'Mailchimp', description: 'Most popular email marketing platform' },
     { name: 'ConvertKit', description: 'For creators and bloggers' },
@@ -89,6 +98,7 @@ export function NewsletterServiceTemplate() {
     { name: 'Klaviyo', description: 'Ecommerce email marketing' }
   ];
 
+  // Benefits for FeatureGrid
   const benefits = [
     {
       icon: Users,
@@ -112,39 +122,47 @@ export function NewsletterServiceTemplate() {
     }
   ];
 
+  // Process steps (6 steps)
   const processSteps = [
     {
       step: 1,
       title: 'Strategy & Planning',
-      description: 'Define goals, audience segments, and content strategy'
+      description: 'Define goals, audience segments, and content strategy',
+      icon: Target
     },
     {
       step: 2,
       title: 'Platform Setup',
-      description: 'Configure email platform and integrate with your website'
+      description: 'Configure email platform and integrate with your website',
+      icon: Settings
     },
     {
       step: 3,
       title: 'Design & Templates',
-      description: 'Create branded email templates and signup forms'
+      description: 'Create branded email templates and signup forms',
+      icon: FileText
     },
     {
       step: 4,
       title: 'Automation Setup',
-      description: 'Build automated workflows and customer journeys'
+      description: 'Build automated workflows and customer journeys',
+      icon: Zap
     },
     {
       step: 5,
       title: 'Launch & Monitor',
-      description: 'Launch campaigns and track performance metrics'
+      description: 'Launch campaigns and track performance metrics',
+      icon: BarChart
     },
     {
       step: 6,
       title: 'Optimize & Scale',
-      description: 'Continuous testing and optimization for better results'
+      description: 'Continuous testing and optimization for better results',
+      icon: TrendingUp
     }
   ];
 
+  // FAQs
   const newsletterFAQs = [
     {
       question: 'Which email marketing platform should I use?',
@@ -175,249 +193,67 @@ export function NewsletterServiceTemplate() {
   return (
     <>
       <RouteAnnouncer />
+      <SkipLink />
       <SiteHeader />
       
       <main id="main-content" role="main">
         {/* Hero Section */}
-        <Section 
+        <Hero
+          variant="service"
+          align="center"
+          maxWidth="4xl"
+          gradient="blue"
           spacing="xl"
-          style={{
-            background: 'linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%)',
-            color: 'var(--primary-foreground)',
-            position: 'relative',
-            overflow: 'hidden',
-            paddingTop: '80px',
-            paddingBottom: '80px'
+          badge={{
+            icon: Mail,
+            text: 'NEWSLETTER SERVICES'
           }}
-        >
-          <div
-            className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full"
-            style={{
-              background: 'radial-gradient(circle, rgba(6, 182, 212, 0.3) 0%, transparent 70%)',
-              filter: 'blur(80px)',
-              transform: 'translate(30%, -30%)'
-            }}
-          />
-
-          <Container>
-            <div className="max-w-4xl mx-auto text-center relative z-10">
-              <div
-                className="inline-block px-4 py-2 mb-6"
-                style={{
-                  backgroundColor: 'rgba(255, 255, 255, 0.15)',
-                  backdropFilter: 'blur(10px)',
-                  borderRadius: 'var(--radius-full)',
-                  border: '1px solid rgba(255, 255, 255, 0.2)',
-                  fontSize: 'var(--text-small)',
-                  fontFamily: 'Manrope, sans-serif',
-                  fontWeight: 'var(--font-weight-semibold)',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.1em'
-                }}
-              >
-                NEWSLETTER SERVICES
-              </div>
-
-              <h1
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'clamp(2rem, 5vw, 3.5rem)',
-                  fontWeight: 'var(--font-weight-bold)',
-                  lineHeight: '1.1',
-                  letterSpacing: '-0.02em',
-                  marginBottom: '20px',
-                  color: 'var(--primary-foreground)'
-                }}
-              >
-                Email Marketing That<br />Drives Results
-              </h1>
-
-              <p
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-lg)',
-                  lineHeight: '1.7',
-                  color: 'rgba(255, 255, 255, 0.95)',
-                  marginBottom: '32px',
-                  maxWidth: '700px',
-                  margin: '0 auto 32px'
-                }}
-              >
-                Strategic email marketing services including platform integration, 
-                automation setup, and campaign management to grow your business.
-              </p>
-
-              <Buttons orientation="horizontal" style={{ justifyContent: 'center' }}>
-                <Button
-                  variant="default"
-                  size="lg"
-                  page="contact"
-                  style={{
-                    backgroundColor: 'white',
-                    color: '#0ea5e9',
-                    boxShadow: '0 10px 40px rgba(0, 0, 0, 0.2)'
-                  }}
-                >
-                  Get Started
-                  <ArrowRight size={20} />
-                </Button>
-                <Button
-                  variant="outline"
-                  size="lg"
-                  page="portfolio-archive"
-                  style={{
-                    borderColor: 'rgba(255, 255, 255, 0.3)',
-                    color: 'white',
-                    backgroundColor: 'transparent'
-                  }}
-                >
-                  View Work
-                </Button>
-              </Buttons>
-            </div>
-          </Container>
-        </Section>
+          title="Email Marketing That Drives Results"
+          description="Strategic email marketing services including platform integration, automation setup, and campaign management to grow your business."
+          buttons={[
+            {
+              label: 'Get Started',
+              page: 'contact',
+              variant: 'default',
+              icon: ArrowRight,
+              style: {
+                backgroundColor: 'white',
+                color: '#0ea5e9',
+                boxShadow: '0 10px 40px rgba(0, 0, 0, 0.2)'
+              }
+            },
+            {
+              label: 'View Work',
+              page: 'portfolio-archive',
+              variant: 'outline',
+              style: {
+                borderColor: 'rgba(255, 255, 255, 0.3)',
+                color: 'white',
+                backgroundColor: 'transparent'
+              }
+            }
+          ]}
+        />
 
         {/* Newsletter Services */}
-        <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
-          <Container>
-            <div className="text-center mb-16">
-              <h2
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-h1)',
-                  fontWeight: 'var(--font-weight-bold)',
-                  lineHeight: '1.2',
-                  letterSpacing: '-0.02em',
-                  marginBottom: '16px',
-                  color: 'var(--foreground)'
-                }}
-              >
-                What We Offer
-              </h2>
+        <ServiceOfferingsGrid
+          title="What We Offer"
+          description="Complete email marketing solutions"
+          offerings={newsletterServices}
+          columns={3}
+          backgroundColor="var(--background)"
+          spacing="xl"
+        />
 
-              <p
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-lg)',
-                  lineHeight: '1.7',
-                  color: 'var(--muted-foreground)',
-                  maxWidth: '700px',
-                  margin: '0 auto'
-                }}
-              >
-                Complete email marketing solutions
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {newsletterServices.map((service) => {
-                const Icon = service.icon;
-                const isHovered = hoveredService === service.id;
-
-                return (
-                  <div
-                    key={service.id}
-                    style={{
-                      padding: '32px',
-                      backgroundColor: 'var(--card)',
-                      borderRadius: 'var(--radius-xl)',
-                      border: isHovered ? '2px solid var(--primary)' : '1px solid var(--border-soft)',
-                      transition: 'all 0.3s ease',
-                      transform: isHovered ? 'translateY(-8px)' : 'translateY(0)',
-                      boxShadow: isHovered ? '0 20px 40px rgba(0, 0, 0, 0.15)' : '0 4px 12px rgba(0, 0, 0, 0.05)'
-                    }}
-                    onMouseEnter={() => setHoveredService(service.id)}
-                    onMouseLeave={() => setHoveredService(null)}
-                  >
-                    <div
-                      style={{
-                        width: '64px',
-                        height: '64px',
-                        borderRadius: 'var(--radius-lg)',
-                        backgroundColor: isHovered ? 'var(--primary)' : 'var(--primary-soft)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        marginBottom: '20px',
-                        transition: 'all 0.3s ease'
-                      }}
-                    >
-                      <Icon 
-                        size={32} 
-                        style={{ 
-                          color: isHovered ? 'white' : 'var(--primary)',
-                          transition: 'color 0.3s ease'
-                        }} 
-                      />
-                    </div>
-
-                    <h3
-                      style={{
-                        fontFamily: 'Lexend, sans-serif',
-                        fontSize: 'var(--text-xl)',
-                        fontWeight: 'var(--font-weight-bold)',
-                        color: 'var(--foreground)',
-                        marginBottom: '12px'
-                      }}
-                    >
-                      {service.title}
-                    </h3>
-
-                    <p
-                      style={{
-                        fontFamily: 'Lexend, sans-serif',
-                        fontSize: 'var(--text-base)',
-                        lineHeight: '1.6',
-                        color: 'var(--muted-foreground)',
-                        marginBottom: '16px'
-                      }}
-                    >
-                      {service.description}
-                    </p>
-
-                    <ul className="space-y-2" style={{ listStyle: 'none', padding: 0 }}>
-                      {service.features.map((feature, idx) => (
-                        <li
-                          key={idx}
-                          style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '8px'
-                          }}
-                        >
-                          <CheckCircle size={16} style={{ color: 'var(--primary)', flexShrink: 0 }} />
-                          <span
-                            style={{
-                              fontFamily: 'Lexend, sans-serif',
-                              fontSize: 'var(--text-small)',
-                              color: 'var(--muted-foreground)'
-                            }}
-                          >
-                            {feature}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                );
-              })}
-            </div>
-          </Container>
-        </Section>
-
-        {/* Platforms */}
+        {/* Platforms Section */}
         <Section spacing="xl" style={{ backgroundColor: 'var(--muted)' }}>
           <Container>
-            <div className="text-center mb-16">
+            <div className="wp-text-center" style={{ marginBottom: 'var(--spacing-12)' }}>
               <h2
+                className="font-primary text-h1 font-bold tracking-tight"
                 style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-h1)',
-                  fontWeight: 'var(--font-weight-bold)',
                   lineHeight: '1.2',
-                  letterSpacing: '-0.02em',
-                  marginBottom: '16px',
+                  marginBottom: 'var(--spacing-4)',
                   color: 'var(--foreground)'
                 }}
               >
@@ -425,194 +261,35 @@ export function NewsletterServiceTemplate() {
               </h2>
 
               <p
+                className="font-primary text-lg leading-relaxed"
                 style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-lg)',
-                  lineHeight: '1.7',
                   color: 'var(--muted-foreground)',
                   maxWidth: '700px',
-                  margin: '0 auto 32px'
+                  margin: '0 auto'
                 }}
               >
                 Expert integration with all major email marketing platforms
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Platform Cards */}
+            <div className="wp-grid-3-cols">
               {platforms.map((platform, index) => (
                 <div
                   key={index}
                   style={{
-                    padding: '24px',
-                    backgroundColor: 'var(--card)',
-                    borderRadius: 'var(--radius-lg)',
-                    border: '1px solid var(--border-soft)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '12px'
-                  }}
-                >
-                  <Mail size={24} style={{ color: 'var(--primary)', flexShrink: 0 }} />
-                  <div>
-                    <div
-                      style={{
-                        fontFamily: 'Lexend, sans-serif',
-                        fontSize: 'var(--text-base)',
-                        fontWeight: 'var(--font-weight-semibold)',
-                        color: 'var(--foreground)',
-                        marginBottom: '2px'
-                      }}
-                    >
-                      {platform.name}
-                    </div>
-                    <div
-                      style={{
-                        fontFamily: 'Manrope, sans-serif',
-                        fontSize: 'var(--text-small)',
-                        color: 'var(--muted-foreground)'
-                      }}
-                    >
-                      {platform.description}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </Container>
-        </Section>
-
-        {/* Benefits */}
-        <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
-          <Container>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {benefits.map((benefit, index) => {
-                const Icon = benefit.icon;
-                return (
-                  <div
-                    key={index}
-                    style={{
-                      padding: '32px',
-                      backgroundColor: 'var(--card)',
-                      borderRadius: 'var(--radius-lg)',
-                      border: '1px solid var(--border-soft)',
-                      textAlign: 'center'
-                    }}
-                  >
-                    <div
-                      style={{
-                        width: '64px',
-                        height: '64px',
-                        borderRadius: 'var(--radius-full)',
-                        backgroundColor: 'var(--primary-soft)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        margin: '0 auto 20px'
-                      }}
-                    >
-                      <Icon size={32} style={{ color: 'var(--primary)' }} />
-                    </div>
-
-                    <h3
-                      style={{
-                        fontFamily: 'Lexend, sans-serif',
-                        fontSize: 'var(--text-lg)',
-                        fontWeight: 'var(--font-weight-semibold)',
-                        color: 'var(--foreground)',
-                        marginBottom: '8px'
-                      }}
-                    >
-                      {benefit.title}
-                    </h3>
-
-                    <p
-                      style={{
-                        fontFamily: 'Lexend, sans-serif',
-                        fontSize: 'var(--text-base)',
-                        lineHeight: '1.6',
-                        color: 'var(--muted-foreground)'
-                      }}
-                    >
-                      {benefit.description}
-                    </p>
-                  </div>
-                );
-              })}
-            </div>
-          </Container>
-        </Section>
-
-        {/* Process */}
-        <Section spacing="xl" style={{ backgroundColor: 'var(--muted)' }}>
-          <Container>
-            <div className="text-center mb-16">
-              <h2
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-h1)',
-                  fontWeight: 'var(--font-weight-bold)',
-                  lineHeight: '1.2',
-                  letterSpacing: '-0.02em',
-                  marginBottom: '16px',
-                  color: 'var(--foreground)'
-                }}
-              >
-                How We Work
-              </h2>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {processSteps.map((step) => (
-                <div
-                  key={step.step}
-                  style={{
-                    padding: '32px',
+                    padding: 'var(--spacing-6)',
                     backgroundColor: 'var(--card)',
                     borderRadius: 'var(--radius-lg)',
                     border: '1px solid var(--border-soft)',
                     textAlign: 'center'
                   }}
                 >
-                  <div
-                    style={{
-                      width: '64px',
-                      height: '64px',
-                      borderRadius: 'var(--radius-full)',
-                      backgroundColor: 'var(--primary)',
-                      color: 'white',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      margin: '0 auto 16px',
-                      fontFamily: 'Lexend, sans-serif',
-                      fontSize: 'var(--text-h3)',
-                      fontWeight: 'var(--font-weight-bold)'
-                    }}
-                  >
-                    {step.step}
-                  </div>
-
-                  <h3
-                    style={{
-                      fontFamily: 'Lexend, sans-serif',
-                      fontSize: 'var(--text-base)',
-                      fontWeight: 'var(--font-weight-semibold)',
-                      color: 'var(--foreground)',
-                      marginBottom: '8px'
-                    }}
-                  >
-                    {step.title}
+                  <h3 className="font-primary text-lg font-bold" style={{ color: 'var(--foreground)', marginBottom: 'var(--spacing-2)' }}>
+                    {platform.name}
                   </h3>
-
-                  <p
-                    style={{
-                      fontFamily: 'Lexend, sans-serif',
-                      fontSize: 'var(--text-small)',
-                      lineHeight: '1.5',
-                      color: 'var(--muted-foreground)'
-                    }}
-                  >
-                    {step.description}
+                  <p className="font-primary text-small" style={{ color: 'var(--muted-foreground)' }}>
+                    {platform.description}
                   </p>
                 </div>
               ))}
@@ -620,86 +297,79 @@ export function NewsletterServiceTemplate() {
           </Container>
         </Section>
 
-        {/* CTA Section */}
-        <Section 
+        {/* Benefits Grid */}
+        <FeatureGrid
+          title="Why Email Marketing?"
+          description="Proven benefits of email marketing for your business"
+          features={benefits}
+          columns={4}
+          variant="cards"
+          backgroundColor="var(--background)"
           spacing="xl"
-          style={{
-            background: 'linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%)',
-            color: 'var(--primary-foreground)',
-            textAlign: 'center'
-          }}
-        >
+        />
+
+        {/* Process Steps */}
+        <Section spacing="xl" style={{ backgroundColor: 'var(--muted)' }}>
           <Container>
-            <div className="max-w-3xl mx-auto">
+            <div className="wp-text-center" style={{ marginBottom: 'var(--spacing-12)' }}>
               <h2
+                className="font-primary text-h1 font-bold tracking-tight"
                 style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-h1)',
-                  fontWeight: 'var(--font-weight-bold)',
                   lineHeight: '1.2',
-                  letterSpacing: '-0.02em',
-                  marginBottom: '20px'
+                  marginBottom: 'var(--spacing-4)',
+                  color: 'var(--foreground)'
                 }}
               >
-                Ready to Grow Your Email List?
+                Our Process
               </h2>
 
               <p
+                className="font-primary text-lg leading-relaxed"
                 style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-lg)',
-                  lineHeight: '1.7',
-                  marginBottom: '32px',
-                  opacity: 0.95
+                  color: 'var(--muted-foreground)',
+                  maxWidth: '700px',
+                  margin: '0 auto'
                 }}
               >
-                Let's create an email marketing strategy that drives real results 
-                for your business.
+                From strategy to optimization, we handle every step
               </p>
-
-              <Buttons orientation="horizontal" style={{ justifyContent: 'center' }}>
-                <Button
-                  variant="default"
-                  size="lg"
-                  page="contact"
-                  style={{
-                    backgroundColor: 'white',
-                    color: '#0ea5e9',
-                    boxShadow: '0 10px 40px rgba(0, 0, 0, 0.2)'
-                  }}
-                >
-                  Get Started
-                  <ArrowRight size={20} />
-                </Button>
-              </Buttons>
             </div>
+
+            <ProcessSteps
+              steps={processSteps}
+              columns={6}
+              variant="cards"
+              badgeStyle="circle"
+              maxWidth="6xl"
+            />
           </Container>
         </Section>
+
+        {/* CTA Section */}
+        <CTASection
+          title="Ready to Grow Your Email List?"
+          description="Let's create an email marketing strategy that drives real results for your business."
+          primaryButton={{
+            label: 'Start Your Campaign',
+            page: 'contact'
+          }}
+          secondaryButton={{
+            label: 'View Portfolio',
+            page: 'portfolio-archive'
+          }}
+          variant="centered"
+          sectionStyle="default"
+        />
 
         {/* FAQ Section */}
-        <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
-          <Container>
-            <div className="max-w-4xl mx-auto">
-              <div className="text-center mb-12">
-                <h2
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-h1)',
-                    fontWeight: 'var(--font-weight-bold)',
-                    lineHeight: '1.2',
-                    letterSpacing: '-0.02em',
-                    marginBottom: '16px',
-                    color: 'var(--foreground)'
-                  }}
-                >
-                  Newsletter FAQs
-                </h2>
-              </div>
-
-              <FAQSection faqs={newsletterFAQs} />
-            </div>
-          </Container>
-        </Section>
+        <FAQSection
+          faqs={newsletterFAQs}
+          title="Email Marketing FAQs"
+          description="Common questions about our email marketing services"
+          variant="accordion"
+          spacing="xl"
+          backgroundColor="var(--background)"
+        />
       </main>
 
       <SiteFooter />

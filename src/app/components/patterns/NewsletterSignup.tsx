@@ -1,196 +1,323 @@
 /**
  * Newsletter Signup Pattern
  * 
- * Email subscription form pattern for LSX Design.
- * Maps to WordPress pattern: lsx-design/form/newsletter
+ * WordPress pattern: lsx-design/content/newsletter-signup
  * 
- * **Design Token Compliance:**
- * - Typography: Uses ONLY CSS variables (var(--text-*))
- * - Fonts: Lexend (headings), Manrope (body/small) ONLY
- * - Colors: Uses ONLY CSS variables (var(--*))
- * - Spacing: Uses ONLY Tailwind classes
- * - Border Radius: Uses ONLY CSS variables (var(--radius*))
+ * Email subscription form with title, description, and privacy text.
+ * Supports multiple layouts and visual variants.
  * 
- * **WordPress Mapping:**
- * - Block: core/group
- * - Section Style: form-highlight
- * - Pattern Slug: lsx-design/form/newsletter
- */
-
-import React, { useState, FormEvent } from 'react';
-import { Section } from '../common/Section';
-import { Container } from '../common/Container';
-import { Heading } from '../common/Heading';
-import { Button } from '../blocks/design/Buttons';
-
-export interface NewsletterSignupProps {
-  heading?: string;
-  description?: string;
-  buttonText?: string;
-  compact?: boolean;
-  privacyText?: string;
-}
-
-/**
- * NewsletterSignup Pattern Component
- * 
- * @example
+ * **Usage:**
  * ```tsx
- * <NewsletterSignup 
- *   heading="Subscribe to Our Newsletter"
- *   description="Get the latest WordPress tips delivered to your inbox."
+ * <NewsletterSignup
+ *   title="Stay Updated"
+ *   description="Get the latest WordPress tips delivered to your inbox weekly."
+ *   placeholder="Enter your email"
+ *   buttonText="Subscribe"
+ *   privacyText="We respect your privacy. Unsubscribe at any time."
+ *   layout="centered"
+ *   variant="card"
+ *   onSubmit={(email) => console.log('Subscribe:', email)}
  * />
  * ```
+ * 
+ * @see {@link /guidelines/patterns/NewsletterSignup.md}
  */
+
+import { Mail, Check } from 'lucide-react';
+import { useState } from 'react';
+
+export interface NewsletterSignupProps {
+  /** Main heading */
+  title: string;
+  /** Description text */
+  description: string;
+  /** Email input placeholder */
+  placeholder?: string;
+  /** Submit button text */
+  buttonText?: string;
+  /** Privacy/GDPR text */
+  privacyText?: string;
+  /** Layout orientation */
+  layout?: 'centered' | 'inline' | 'sidebar';
+  /** Visual variant */
+  variant?: 'default' | 'card' | 'minimal';
+  /** Show icon */
+  showIcon?: boolean;
+  /** Submit handler */
+  onSubmit?: (email: string) => void;
+  /** Custom className */
+  className?: string;
+}
+
 export function NewsletterSignup({
-  heading = "Subscribe to Our Newsletter",
-  description = "Get the latest WordPress tips and design insights delivered to your inbox.",
-  buttonText = "Subscribe",
-  compact = false,
-  privacyText = "We respect your privacy. Unsubscribe at any time."
+  title,
+  description,
+  placeholder = 'Enter your email address',
+  buttonText = 'Subscribe',
+  privacyText,
+  layout = 'centered',
+  variant = 'default',
+  showIcon = true,
+  onSubmit,
+  className = ''
 }: NewsletterSignupProps) {
   const [email, setEmail] = useState('');
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setStatus('loading');
+    
+    if (!email) return;
 
+    setStatus('submitting');
+    
     // Simulate API call
     setTimeout(() => {
-      if (email.includes('@')) {
-        setStatus('success');
+      setStatus('success');
+      onSubmit?.(email);
+      
+      // Reset after 3 seconds
+      setTimeout(() => {
         setEmail('');
-      } else {
-        setStatus('error');
-      }
+        setStatus('idle');
+      }, 3000);
     }, 1000);
   };
 
+  // Container styles based on variant
+  const containerStyles = {
+    default: {
+      padding: 0,
+      backgroundColor: 'transparent'
+    },
+    card: {
+      padding: 'var(--spacing-10)',
+      backgroundColor: 'var(--card)',
+      borderRadius: 'var(--radius-lg)',
+      border: '1px solid var(--border-soft)'
+    },
+    minimal: {
+      padding: 'var(--spacing-6)',
+      backgroundColor: 'transparent',
+      borderTop: '1px solid var(--border)',
+      borderBottom: '1px solid var(--border)'
+    }
+  };
+
+  // Layout configurations
+  const isCentered = layout === 'centered';
+  const isSidebar = layout === 'sidebar';
+  const isInline = layout === 'inline';
+
+  // Max width based on layout
+  const maxWidth = isSidebar ? '100%' : isInline ? '800px' : '600px';
+
   return (
-    <Section sectionStyle="form-highlight" spacing={compact ? 'sm' : 'md'}>
-      <Container maxWidth="800px">
-        <div className="text-center">
-          {/* Heading - Lexend font, CSS variable size */}
-          <Heading 
-            level={3} 
-            style={{ 
-              marginBottom: '1rem',
-              fontSize: 'var(--text-h3)',
-              fontFamily: 'Lexend, sans-serif',
-              fontWeight: 'var(--font-weight-medium)',
-              color: 'var(--card-foreground)'
+    <div
+      className={className}
+      style={{
+        ...containerStyles[variant],
+        maxWidth,
+        margin: isCentered ? '0 auto' : undefined
+      }}
+    >
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: isSidebar ? 'row' : 'column',
+          gap: isSidebar ? 'var(--spacing-8)' : 'var(--spacing-6)',
+          alignItems: isSidebar ? 'flex-start' : isCentered ? 'center' : 'flex-start',
+          textAlign: isCentered ? 'center' : 'left'
+        }}
+      >
+        {/* Header Content */}
+        <div
+          style={{
+            flex: isSidebar ? 1 : undefined,
+            width: isSidebar ? undefined : '100%'
+          }}
+        >
+          {/* Icon */}
+          {showIcon && variant !== 'minimal' && (
+            <div
+              style={{
+                marginBottom: 'var(--spacing-4)',
+                display: 'flex',
+                justifyContent: isCentered ? 'center' : 'flex-start'
+              }}
+            >
+              <div
+                style={{
+                  width: '48px',
+                  height: '48px',
+                  borderRadius: 'var(--radius)',
+                  backgroundColor: 'var(--primary-soft)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}
+              >
+                <Mail size={24} style={{ color: 'var(--primary)' }} />
+              </div>
+            </div>
+          )}
+
+          {/* Title */}
+          <h2
+            style={{
+              fontFamily: 'var(--font-primary)',
+              fontSize: variant === 'minimal' ? 'var(--text-lg)' : 'var(--text-h2)',
+              fontWeight: 'var(--font-weight-bold)',
+              color: 'var(--foreground)',
+              marginBottom: 'var(--spacing-2)'
             }}
           >
-            {heading}
-          </Heading>
-          
-          {/* Description - Manrope font, CSS variable size */}
-          <p 
-            style={{ 
-              fontSize: 'var(--text-base)',
-              fontFamily: 'Manrope, sans-serif',
-              marginBottom: '2rem',
-              color: 'var(--card-foreground)'
+            {title}
+          </h2>
+
+          {/* Description */}
+          <p
+            style={{
+              fontFamily: 'var(--font-primary)',
+              fontSize: variant === 'minimal' ? 'var(--text-base)' : 'var(--text-lg)',
+              lineHeight: '1.7',
+              color: 'var(--muted-foreground)',
+              marginBottom: isSidebar ? 0 : 'var(--spacing-6)'
             }}
           >
             {description}
           </p>
         </div>
 
-        {status === 'success' ? (
-          /* Success Message */
-          <div 
+        {/* Form */}
+        <div
+          style={{
+            flex: isSidebar ? 1 : undefined,
+            width: isSidebar ? undefined : '100%'
+          }}
+        >
+          <form
+            onSubmit={handleSubmit}
             style={{
-              padding: '1.5rem',
-              backgroundColor: 'var(--success)',
-              color: 'var(--success-foreground)',
-              borderRadius: 'var(--radius-lg)',
-              textAlign: 'center',
-              fontSize: 'var(--text-base)',
-              fontFamily: 'Lexend, sans-serif',
-              marginBottom: '1rem'
+              display: 'flex',
+              flexDirection: isInline ? 'row' : 'column',
+              gap: 'var(--spacing-3)',
+              width: '100%'
             }}
           >
-            ✓ Thanks for subscribing! Check your email to confirm.
-          </div>
-        ) : (
-          /* Newsletter Form */
-          <form onSubmit={handleSubmit}>
-            <div 
-              style={{ 
-                display: 'flex', 
-                gap: '1rem', 
-                maxWidth: '600px', 
-                margin: '0 auto',
-                flexWrap: 'wrap'
-              }}
-            >
+            {/* Email Input */}
+            <div style={{ flex: 1, position: 'relative' }}>
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="your@email.com"
+                placeholder={placeholder}
                 required
-                disabled={status === 'loading'}
-                aria-label="Email address"
+                disabled={status === 'submitting' || status === 'success'}
                 style={{
-                  flex: '1 1 250px',
-                  minWidth: '250px',
-                  padding: '0.75rem 1rem',
-                  fontSize: 'var(--text-base)',
-                  fontFamily: 'Manrope, sans-serif',
+                  width: '100%',
+                  padding: '12px 20px',
                   border: '1px solid var(--border)',
                   borderRadius: 'var(--radius)',
+                  fontFamily: 'var(--font-primary)',
+                  fontSize: 'var(--text-base)',
                   backgroundColor: 'var(--background)',
                   color: 'var(--foreground)',
                   outline: 'none',
-                  transition: 'border-color 0.2s ease'
+                  transition: 'all 0.2s ease',
+                  opacity: status === 'success' ? 0.6 : 1
                 }}
-                onFocus={(e) => e.currentTarget.style.borderColor = 'var(--primary)'}
-                onBlur={(e) => e.currentTarget.style.borderColor = 'var(--border)'}
+                onFocus={(e) => {
+                  e.currentTarget.style.borderColor = 'var(--primary)';
+                  e.currentTarget.style.boxShadow = '0 0 0 3px var(--primary-soft)';
+                }}
+                onBlur={(e) => {
+                  e.currentTarget.style.borderColor = 'var(--border)';
+                  e.currentTarget.style.boxShadow = 'none';
+                }}
+                aria-label="Email address"
               />
-              <Button 
-                size="md" 
-                type="submit" 
-                disabled={status === 'loading'}
-                style={{
-                  flexShrink: 0
-                }}
-              >
-                {status === 'loading' ? 'Subscribing...' : buttonText}
-              </Button>
+              
+              {/* Success Icon */}
+              {status === 'success' && (
+                <div
+                  style={{
+                    position: 'absolute',
+                    right: 'var(--spacing-3)',
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    color: 'var(--success)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 'var(--spacing-2)'
+                  }}
+                >
+                  <Check size={20} />
+                </div>
+              )}
             </div>
-            
-            {status === 'error' && (
-              <div 
-                style={{
-                  marginTop: '0.75rem',
-                  fontSize: 'var(--text-small)',
-                  fontFamily: 'Manrope, sans-serif',
-                  color: 'var(--destructive)',
-                  textAlign: 'center'
-                }}
-              >
-                Please enter a valid email address.
-              </div>
-            )}
-          </form>
-        )}
 
-        {/* Privacy Text - Manrope font, small size */}
-        <p 
-          style={{
-            fontSize: 'var(--text-small)',
-            fontFamily: 'Manrope, sans-serif',
-            color: 'var(--muted-foreground)',
-            textAlign: 'center',
-            marginTop: '0.75rem'
-          }}
-        >
-          {privacyText}
-        </p>
-      </Container>
-    </Section>
+            {/* Submit Button */}
+            <button
+              type="submit"
+              disabled={status === 'submitting' || status === 'success'}
+              style={{
+                padding: '12px 32px',
+                backgroundColor: status === 'success' ? 'var(--success)' : 'var(--primary)',
+                color: 'var(--primary-foreground)',
+                border: 'none',
+                borderRadius: 'var(--radius)',
+                fontFamily: 'var(--font-primary)',
+                fontSize: 'var(--text-base)',
+                fontWeight: 'var(--font-weight-semibold)',
+                cursor: status === 'submitting' || status === 'success' ? 'default' : 'pointer',
+                transition: 'all 0.2s ease',
+                opacity: status === 'submitting' ? 0.7 : 1,
+                whiteSpace: 'nowrap',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 'var(--spacing-2)',
+                justifyContent: 'center'
+              }}
+              onMouseEnter={(e) => {
+                if (status === 'idle') {
+                  e.currentTarget.style.opacity = '0.9';
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (status === 'idle') {
+                  e.currentTarget.style.opacity = '1';
+                }
+              }}
+            >
+              {status === 'submitting' && 'Subscribing...'}
+              {status === 'success' && (
+                <>
+                  <Check size={16} />
+                  Subscribed!
+                </>
+              )}
+              {status === 'idle' && buttonText}
+              {status === 'error' && 'Try Again'}
+            </button>
+          </form>
+
+          {/* Privacy Text */}
+          {privacyText && (
+            <p
+              style={{
+                fontFamily: 'var(--font-secondary)',
+                fontSize: 'var(--text-xs)',
+                color: 'var(--muted-foreground)',
+                marginTop: 'var(--spacing-3)',
+                textAlign: isCentered ? 'center' : 'left'
+              }}
+            >
+              {privacyText}
+            </p>
+          )}
+        </div>
+      </div>
+    </div>
   );
 }

@@ -1,0 +1,279 @@
+/**
+ * Alert Block Styles
+ * 
+ * WordPress block: .wp-block-alert
+ * Component: /src/app/components/blocks/design/Alert.tsx
+ * Guideline: /guidelines/blocks/design/alert.md
+ * 
+ * CRITICAL: 100% CSS variables only - NO hardcoded values
+ * User can control ALL styling by editing theme CSS files
+ */
+
+/* ==========================================================================
+   BASE STYLES
+   ========================================================================== */
+
+.wp-block-alert {
+  /* Layout */
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-3);
+  
+  /* Spacing */
+  padding: var(--spacing-4);
+  margin-bottom: var(--spacing-6);
+  
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  line-height: 1.6;
+  
+  /* Borders */
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  
+  /* Position */
+  position: relative;
+}
+
+/* ==========================================================================
+   VARIANT STYLES
+   ========================================================================== */
+
+/* Info Variant */
+.wp-block-alert--info {
+  background: hsl(var(--primary-hsl) / 0.1);
+  border-color: var(--primary);
+  color: var(--foreground);
+}
+
+.wp-block-alert--info .wp-block-alert__icon {
+  color: var(--primary);
+}
+
+/* Success Variant */
+.wp-block-alert--success {
+  background: hsl(142 76% 36% / 0.1);
+  border-color: hsl(142 76% 36%);
+  color: var(--foreground);
+}
+
+.wp-block-alert--success .wp-block-alert__icon {
+  color: hsl(142 76% 36%);
+}
+
+/* Warning Variant */
+.wp-block-alert--warning {
+  background: hsl(38 92% 50% / 0.1);
+  border-color: hsl(38 92% 50%);
+  color: var(--foreground);
+}
+
+.wp-block-alert--warning .wp-block-alert__icon {
+  color: hsl(38 92% 50%);
+}
+
+/* Error Variant */
+.wp-block-alert--error {
+  background: hsl(var(--destructive-hsl) / 0.1);
+  border-color: var(--destructive);
+  color: var(--foreground);
+}
+
+.wp-block-alert--error .wp-block-alert__icon {
+  color: var(--destructive);
+}
+
+/* ==========================================================================
+   ICON STYLES
+   ========================================================================== */
+
+.wp-block-alert__icon {
+  /* Size */
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  
+  /* Position */
+  margin-top: 2px; /* Align with text */
+  
+  /* Prevent shrinking */
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   CONTENT STYLES
+   ========================================================================== */
+
+.wp-block-alert__content {
+  /* Layout */
+  flex: 1;
+  
+  /* Remove default margins */
+  & > *:first-child {
+    margin-top: 0;
+  }
+  
+  & > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.wp-block-alert__title {
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: 600;
+  
+  /* Spacing */
+  display: block;
+  margin-bottom: var(--spacing-2);
+  
+  /* Color */
+  color: var(--foreground);
+}
+
+.wp-block-alert__message {
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  line-height: 1.6;
+  
+  /* Color */
+  color: var(--foreground);
+}
+
+/* ==========================================================================
+   DISMISS BUTTON
+   ========================================================================== */
+
+.wp-block-alert--dismissible {
+  /* Add padding for dismiss button */
+  padding-right: var(--spacing-12);
+}
+
+.wp-block-alert__dismiss {
+  /* Reset button styles */
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  
+  /* Position */
+  position: absolute;
+  top: var(--spacing-4);
+  right: var(--spacing-4);
+  
+  /* Size */
+  width: 20px;
+  height: 20px;
+  
+  /* Layout */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Color */
+  color: var(--muted-foreground);
+  
+  /* Transition */
+  transition: color 200ms ease;
+  
+  /* Icon size */
+  & svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.wp-block-alert__dismiss:hover {
+  color: var(--foreground);
+}
+
+.wp-block-alert__dismiss:focus-visible {
+  /* Focus ring */
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* ==========================================================================
+   RESPONSIVE STYLES
+   ========================================================================== */
+
+/* Mobile (< 768px) - Base styles above */
+
+/* Tablet (768px - 1023px) */
+@media (min-width: 768px) {
+  .wp-block-alert__icon {
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
+  }
+}
+
+/* Desktop (≥ 1024px) */
+@media (min-width: 1024px) {
+  .wp-block-alert {
+    gap: var(--spacing-4);
+  }
+  
+  .wp-block-alert__icon {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+  }
+}
+
+/* ==========================================================================
+   DARK MODE OVERRIDES
+   ========================================================================== */
+
+.dark-theme .wp-block-alert--info {
+  background: hsl(var(--primary-hsl) / 0.15);
+}
+
+.dark-theme .wp-block-alert--success {
+  background: hsl(142 76% 36% / 0.15);
+}
+
+.dark-theme .wp-block-alert--warning {
+  background: hsl(38 92% 50% / 0.15);
+}
+
+.dark-theme .wp-block-alert--error {
+  background: hsl(var(--destructive-hsl) / 0.15);
+}
+
+/* ==========================================================================
+   PRINT STYLES
+   ========================================================================== */
+
+@media print {
+  .wp-block-alert {
+    /* Remove colors for better printing */
+    background: white !important;
+    color: black !important;
+    border: 1px solid #ccc !important;
+    
+    /* Hide dismiss button */
+    .wp-block-alert__dismiss {
+      display: none !important;
+    }
+  }
+  
+  .wp-block-alert__icon {
+    /* Convert to grayscale */
+    filter: grayscale(100%);
+  }
+}
+
+/* ==========================================================================
+   REDUCED MOTION
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .wp-block-alert__dismiss {
+    transition: none;
+  }
+}

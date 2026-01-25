@@ -1,280 +1,252 @@
 /**
  * Filter Bar Pattern
  * 
- * WordPress pattern: lsx-design/nav/filters
+ * WordPress pattern: lsx-design/nav/filter-bar
  * 
- * Category/tag filtering for archive pages.
- * Keyboard accessible with clear focus states.
- * Mobile-responsive with popover dropdown for small screens.
+ * Displays filtering and sorting controls for archive pages.
+ * Includes category filters, sort options, search, and view toggles.
+ * 
+ * All styling in /src/styles/filter-bar.css (user-editable)
+ * 
+ * **Usage:**
+ * ```tsx
+ * <FilterBar
+ *   categories={['All', 'WordPress', 'Design', 'Development']}
+ *   selectedCategory="All"
+ *   onCategoryChange={(cat) => setCategory(cat)}
+ *   sortOptions={[
+ *     { label: 'Latest', value: 'date-desc' },
+ *     { label: 'Oldest', value: 'date-asc' }
+ *   ]}
+ *   selectedSort="date-desc"
+ *   onSortChange={(sort) => setSort(sort)}
+ *   showSearch
+ *   searchValue={search}
+ *   onSearchChange={(val) => setSearch(val)}
+ * />
+ * ```
+ * 
+ * @see {@link /guidelines/patterns/FilterBar.md}
  */
 
-import { Container } from '../common/Container';
-import { Button } from '../blocks/design/Buttons';
-import { ListFilter, X } from 'lucide-react';
-import { useState } from 'react';
+import { Search, SlidersHorizontal, Grid, List, X } from 'lucide-react';
 
-interface FilterOption {
-  id: string;
+export interface FilterOption {
   label: string;
+  value: string;
   count?: number;
 }
 
-interface FilterBarProps {
-  options: FilterOption[];
-  activeFilter: string;
-  onFilterChange: (filterId: string) => void;
-  label?: string;
+export interface SortOption {
+  label: string;
+  value: string;
+  icon?: React.ComponentType<{ size?: number }>;
 }
 
-export function FilterBar({ 
-  options, 
-  activeFilter, 
-  onFilterChange,
-  label = 'Filter by category' 
+export type ViewMode = 'grid' | 'list';
+
+export interface FilterBarProps {
+  /** Category filter options */
+  categories?: string[] | FilterOption[];
+  /** Selected category */
+  selectedCategory?: string;
+  /** Category change handler */
+  onCategoryChange?: (category: string) => void;
+  /** Sort options */
+  sortOptions?: SortOption[];
+  /** Selected sort option */
+  selectedSort?: string;
+  /** Sort change handler */
+  onSortChange?: (sort: string) => void;
+  /** Show search input */
+  showSearch?: boolean;
+  /** Search value */
+  searchValue?: string;
+  /** Search change handler */
+  onSearchChange?: (value: string) => void;
+  /** Search placeholder */
+  searchPlaceholder?: string;
+  /** Show view mode toggle (grid/list) */
+  showViewToggle?: boolean;
+  /** Current view mode */
+  viewMode?: ViewMode;
+  /** View mode change handler */
+  onViewModeChange?: (mode: ViewMode) => void;
+  /** Show results count */
+  showResultsCount?: boolean;
+  /** Results count */
+  resultsCount?: number;
+  /** Total items count */
+  totalCount?: number;
+  /** Compact layout (less padding) */
+  compact?: boolean;
+  /** Background color variant */
+  variant?: 'default' | 'muted' | 'transparent';
+}
+
+export function FilterBar({
+  categories = [],
+  selectedCategory,
+  onCategoryChange,
+  sortOptions = [],
+  selectedSort,
+  onSortChange,
+  showSearch = false,
+  searchValue = '',
+  onSearchChange,
+  searchPlaceholder = 'Search...',
+  showViewToggle = false,
+  viewMode = 'grid',
+  onViewModeChange,
+  showResultsCount = false,
+  resultsCount,
+  totalCount,
+  compact = false,
+  variant = 'muted'
 }: FilterBarProps) {
-  const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
-  
-  // Get active filter label for mobile button
-  const activeFilterLabel = options.find(opt => opt.id === activeFilter)?.label || 'All';
-  
+  // Normalize categories to FilterOption format
+  const normalizedCategories: FilterOption[] = categories.map(cat => 
+    typeof cat === 'string' ? { label: cat, value: cat } : cat
+  );
+
+  // Build filter bar classes
+  const filterBarClasses = [
+    `filter-bar--${variant}`,
+    compact ? 'filter-bar--compact' : 'filter-bar--normal'
+  ].filter(Boolean).join(' ');
+
+  // Build view button classes
+  const gridButtonClasses = [
+    'filter-bar__view-button',
+    viewMode === 'grid' && 'filter-bar__view-button--active'
+  ].filter(Boolean).join(' ');
+
+  const listButtonClasses = [
+    'filter-bar__view-button',
+    viewMode === 'list' && 'filter-bar__view-button--active'
+  ].filter(Boolean).join(' ');
+
   return (
-    <nav 
-      aria-label={label}
-      style={{
-        borderBottom: '1px solid var(--border-soft)',
-        backgroundColor: 'var(--background)',
-        paddingTop: 'clamp(16px, 3vw, 24px)',
-        paddingBottom: 'clamp(16px, 3vw, 24px)',
-      }}
-    >
-      <Container>
-        {/* Desktop Filter Bar (hidden on mobile) */}
-        <div 
-          className="hidden md:flex"
-          style={{
-            display: 'flex',
-            gap: '16px',
-            flexWrap: 'wrap',
-            alignItems: 'center',
-          }}
-        >
-          {/* Filter Label */}
-          <span 
-            style={{
-              fontSize: 'var(--text-small)',
-              fontFamily: 'Manrope, sans-serif',
-              color: 'var(--muted-foreground)',
-              textTransform: 'uppercase',
-              letterSpacing: '0.05em',
-              fontWeight: 'var(--font-weight-medium)',
-            }}
-          >
-            {label}:
-          </span>
+    <div className={filterBarClasses}>
+      <div className="wp-max-w-6xl">
+        <div className="filter-bar__content">
+          {/* Top Row: Search + Results Count + View Toggle */}
+          {(showSearch || showResultsCount || showViewToggle) && (
+            <div className="filter-bar__top-row">
+              {/* Search */}
+              {showSearch && (
+                <div className="filter-bar__search">
+                  <Search size={18} className="filter-bar__search-icon" />
+                  <input
+                    type="search"
+                    value={searchValue}
+                    onChange={(e) => onSearchChange?.(e.target.value)}
+                    placeholder={searchPlaceholder}
+                    className="filter-bar__search-input"
+                  />
+                  {searchValue && (
+                    <button
+                      onClick={() => onSearchChange?.('')}
+                      className="filter-bar__search-clear"
+                      aria-label="Clear search"
+                    >
+                      <X size={16} />
+                    </button>
+                  )}
+                </div>
+              )}
 
-          {/* Filter Options */}
-          <ul 
-            style={{
-              display: 'flex',
-              gap: '12px',
-              flexWrap: 'wrap',
-              listStyle: 'none',
-              padding: 0,
-              margin: 0,
-            }}
-          >
-            {options.map((option) => {
-              const isActive = activeFilter === option.id;
-              return (
-                <li key={option.id}>
-                  <button
-                    onClick={() => onFilterChange(option.id)}
-                    aria-current={isActive ? 'true' : undefined}
-                    className="px-5 py-2.5"
-                    style={{
-                      fontSize: 'var(--text-base)',
-                      fontFamily: 'Lexend, sans-serif',
-                      fontWeight: isActive ? 'var(--font-weight-medium)' : 'var(--font-weight-regular)',
-                      backgroundColor: isActive 
-                        ? 'var(--primary)' 
-                        : 'var(--card)',
-                      color: isActive
-                        ? 'var(--primary-foreground)'
-                        : 'var(--foreground)',
-                      border: `1px solid ${isActive ? 'var(--primary)' : 'var(--border)'}`,
-                      borderRadius: 'var(--radius-lg)',
-                      cursor: 'pointer',
-                      transition: 'all 0.2s ease',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '8px',
-                      minHeight: '44px', // Accessible touch target
-                      boxShadow: isActive ? 'var(--shadow-primary)' : 'none',
-                    }}
-                    onMouseEnter={(e) => {
-                      if (!isActive) {
-                        e.currentTarget.style.borderColor = 'var(--primary)';
-                        e.currentTarget.style.backgroundColor = 'var(--muted)';
-                      }
-                    }}
-                    onMouseLeave={(e) => {
-                      if (!isActive) {
-                        e.currentTarget.style.borderColor = 'var(--border)';
-                        e.currentTarget.style.backgroundColor = 'var(--card)';
-                      }
-                    }}
-                  >
-                    <span>{option.label}</span>
-                    {option.count !== undefined && (
-                      <span 
-                        style={{
-                          fontSize: 'var(--text-small)',
-                          fontFamily: 'Manrope, sans-serif',
-                          opacity: 0.7,
-                        }}
-                      >
-                        ({option.count})
-                      </span>
-                    )}
-                  </button>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
+              {/* Right Side: Results Count + View Toggle */}
+              <div className="filter-bar__top-row">
+                {/* Results Count */}
+                {showResultsCount && (
+                  <span className="filter-bar__results">
+                    {resultsCount !== undefined && totalCount !== undefined
+                      ? `Showing ${resultsCount} of ${totalCount} results`
+                      : resultsCount !== undefined
+                      ? `${resultsCount} results`
+                      : null}
+                  </span>
+                )}
 
-        {/* Mobile Filter Button (visible only on mobile) */}
-        <div className="md:hidden">
-          <button
-            onClick={() => setMobileFiltersOpen(!mobileFiltersOpen)}
-            aria-label={mobileFiltersOpen ? 'Close filters' : 'Open filters'}
-            aria-expanded={mobileFiltersOpen}
-            className="p-3"
-            style={{
-              width: '100%',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              fontSize: 'var(--text-base)',
-              fontFamily: 'Lexend, sans-serif',
-              fontWeight: 'var(--font-weight-medium)',
-              backgroundColor: 'var(--card)',
-              color: 'var(--foreground)',
-              border: '1px solid var(--border)',
-              borderRadius: 'var(--radius-lg)',
-              cursor: 'pointer',
-              transition: 'all 0.2s ease',
-              minHeight: '48px', // Extra accessible on mobile
-            }}
-          >
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <ListFilter size={20} style={{ color: 'var(--primary)' }} />
-              <span>
-                {label}: <strong style={{ fontWeight: 'var(--font-weight-semibold)' }}>{activeFilterLabel}</strong>
-              </span>
+                {/* View Toggle */}
+                {showViewToggle && (
+                  <div className="filter-bar__view-toggle">
+                    <button
+                      onClick={() => onViewModeChange?.('grid')}
+                      className={gridButtonClasses}
+                      aria-label="Grid view"
+                      aria-pressed={viewMode === 'grid'}
+                    >
+                      <Grid size={18} />
+                    </button>
+                    <button
+                      onClick={() => onViewModeChange?.('list')}
+                      className={listButtonClasses}
+                      aria-label="List view"
+                      aria-pressed={viewMode === 'list'}
+                    >
+                      <List size={18} />
+                    </button>
+                  </div>
+                )}
+              </div>
             </div>
-            {mobileFiltersOpen ? <X size={20} /> : <ListFilter size={20} />}
-          </button>
+          )}
 
-          {/* Mobile Filter Popover */}
-          {mobileFiltersOpen && (
-            <div
-              style={{
-                position: 'absolute',
-                left: '16px',
-                right: '16px',
-                marginTop: '8px',
-                backgroundColor: 'var(--card)',
-                border: '1px solid var(--border-soft)',
-                borderRadius: 'var(--radius-lg)',
-                boxShadow: 'var(--shadow-lg)',
-                padding: '16px',
-                zIndex: 50,
-                maxHeight: '400px',
-                overflowY: 'auto',
-                animation: 'slideDown 0.3s ease-out forwards'
-              }}
-            >
-              <style>{`
-                @keyframes slideDown {
-                  from {
-                    opacity: 0;
-                    transform: translateY(-10px);
-                  }
-                  to {
-                    opacity: 1;
-                    transform: translateY(0);
-                  }
-                }
-              `}</style>
-              
-              <ul
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '8px',
-                  listStyle: 'none',
-                  padding: 0,
-                  margin: 0,
-                }}
-              >
-                {options.map((option) => {
-                  const isActive = activeFilter === option.id;
-                  return (
-                    <li key={option.id}>
+          {/* Bottom Row: Categories + Sort */}
+          {(categories.length > 0 || sortOptions.length > 0) && (
+            <div className="filter-bar__bottom-row">
+              {/* Category Filters */}
+              {categories.length > 0 && (
+                <div className="filter-bar__categories">
+                  {normalizedCategories.map((category, index) => {
+                    const isSelected = selectedCategory === category.value;
+                    const buttonClasses = [
+                      'filter-bar__category-button',
+                      isSelected && 'filter-bar__category-button--active'
+                    ].filter(Boolean).join(' ');
+
+                    return (
                       <button
-                        onClick={() => {
-                          onFilterChange(option.id);
-                          setMobileFiltersOpen(false); // Close popover after selection
-                        }}
-                        aria-current={isActive ? 'true' : undefined}
-                        style={{
-                          width: '100%',
-                          textAlign: 'left',
-                          padding: '14px 16px',
-                          fontSize: 'var(--text-base)',
-                          fontFamily: 'Lexend, sans-serif',
-                          fontWeight: isActive ? 'var(--font-weight-semibold)' : 'var(--font-weight-regular)',
-                          backgroundColor: isActive 
-                            ? 'var(--primary)' 
-                            : 'transparent',
-                          color: isActive
-                            ? 'var(--primary-foreground)'
-                            : 'var(--foreground)',
-                          border: `1px solid ${isActive ? 'var(--primary)' : 'var(--border)'}`,
-                          borderRadius: 'var(--radius)',
-                          cursor: 'pointer',
-                          transition: 'all 0.2s ease',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'space-between',
-                          minHeight: '48px', // Accessible touch target
-                        }}
+                        key={index}
+                        onClick={() => onCategoryChange?.(category.value)}
+                        className={buttonClasses}
+                        aria-pressed={isSelected}
                       >
-                        <span>{option.label}</span>
-                        {option.count !== undefined && (
-                          <span 
-                            style={{
-                              fontSize: 'var(--text-small)',
-                              fontFamily: 'Manrope, sans-serif',
-                              opacity: 0.7,
-                              padding: '4px 8px',
-                              backgroundColor: isActive ? 'rgba(255,255,255,0.2)' : 'var(--muted)',
-                              borderRadius: 'var(--radius)',
-                            }}
-                          >
-                            {option.count}
+                        {category.label}
+                        {category.count !== undefined && (
+                          <span className="filter-bar__category-count">
+                            ({category.count})
                           </span>
                         )}
                       </button>
-                    </li>
-                  );
-                })}
-              </ul>
+                    );
+                  })}
+                </div>
+              )}
+
+              {/* Sort Options */}
+              {sortOptions.length > 0 && (
+                <div className="filter-bar__sort">
+                  <SlidersHorizontal size={16} className="filter-bar__sort-icon" />
+                  <select
+                    value={selectedSort}
+                    onChange={(e) => onSortChange?.(e.target.value)}
+                    className="filter-bar__sort-select"
+                  >
+                    {sortOptions.map((option, index) => (
+                      <option key={index} value={option.value}>
+                        {option.label}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              )}
             </div>
           )}
         </div>
-      </Container>
-    </nav>
+      </div>
+    </div>
   );
 }

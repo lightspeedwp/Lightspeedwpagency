@@ -1,0 +1,79 @@
+/**
+ * Base WooCommerce Block Styles
+ * 
+ * Shared styles for all WooCommerce blocks
+ */
+
+/* Product Card Base */
+.wc-block-product {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-4);
+  transition: all 0.2s ease;
+}
+
+.wc-block-product:hover {
+  border-color: var(--primary);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Product Image */
+.wc-block-product__image {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: var(--radius);
+  margin-bottom: var(--spacing-3);
+}
+
+/* Product Title */
+.wc-block-product__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-medium);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-2);
+}
+
+/* Product Price */
+.wc-block-product__price {
+  font-family: var(--font-primary);
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--primary);
+}
+
+/* Add to Cart Button */
+.wc-block-add-to-cart {
+  width: 100%;
+  padding: var(--spacing-3);
+  background: var(--primary);
+  color: var(--primary-foreground);
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-medium);
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.wc-block-add-to-cart:hover {
+  background: var(--primary);
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+/* Grid Layout */
+.wc-block-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: var(--spacing-6);
+}
+
+@media (max-width: 767px) {
+  .wc-block-grid {
+    grid-template-columns: 1fr;
+  }
+}

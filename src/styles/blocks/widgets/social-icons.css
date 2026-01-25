@@ -1,0 +1,59 @@
+/**
+ * Social Icons Block Styles
+ * WordPress block: .wp-block-social-links
+ */
+
+.wp-block-social-links {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  flex-wrap: wrap;
+}
+
+.wp-block-social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-2);
+  color: var(--foreground);
+  text-decoration: none;
+  border-radius: var(--radius);
+  transition: all 0.2s ease;
+}
+
+.wp-block-social-link:hover {
+  color: var(--primary);
+  background: var(--muted);
+}
+
+.wp-block-social-link:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.wp-block-social-link__icon {
+  width: 24px;
+  height: 24px;
+}
+
+/* Sizes */
+.wp-block-social-links--small .wp-block-social-link__icon {
+  width: 20px;
+  height: 20px;
+}
+
+.wp-block-social-links--large .wp-block-social-link__icon {
+  width: 32px;
+  height: 32px;
+}
+
+/* Filled Variant */
+.wp-block-social-links--filled .wp-block-social-link {
+  background: var(--muted);
+  border-radius: var(--radius-full);
+}
+
+.wp-block-social-links--filled .wp-block-social-link:hover {
+  background: var(--primary);
+  color: var(--primary-foreground);
+}

@@ -1,0 +1,213 @@
+/**
+ * Blog Index Page Template Styles
+ * 
+ * Dedicated styles for blog index/archive layout and components.
+ * All styling uses CSS variables for complete user control.
+ * 
+ * User can edit this file to update blog index page styling site-wide.
+ */
+
+/* ============================================
+ * CONTENT WRAPPERS
+ * ============================================ */
+
+/**
+ * Wide content wrapper
+ * Used for: Topics section grid
+ * Max-width: 1152px (--breakpoint-6xl)
+ */
+.blog-index__content-wrapper--wide {
+  max-width: 1152px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/**
+ * Narrow content wrapper
+ * Used for: FAQ section
+ * Max-width: 768px (--breakpoint-3xl)
+ */
+.blog-index__content-wrapper--narrow {
+  max-width: 768px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ============================================
+ * SECTION HEADERS
+ * ============================================ */
+
+/**
+ * Large section header
+ * Used for: Topics section header
+ * Centered layout with generous spacing
+ */
+.blog-index__section-header--large {
+  text-align: center;
+  margin-bottom: var(--spacing-16);
+}
+
+/**
+ * Standard section header
+ * Used for: FAQ section header
+ * Centered layout with standard spacing
+ */
+.blog-index__section-header {
+  text-align: center;
+  margin-bottom: var(--spacing-12);
+}
+
+/* ============================================
+ * SECTION HEADER TYPOGRAPHY
+ * ============================================ */
+
+.blog-index__section-title {
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-h1);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+  
+  /* Line height & spacing */
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--spacing-4);
+}
+
+.blog-index__section-title--h2 {
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  
+  /* Line height & spacing */
+  line-height: var(--line-height-snug);
+  margin-bottom: var(--spacing-4);
+}
+
+.blog-index__section-description {
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  color: var(--muted-foreground);
+  
+  /* Line height */
+  line-height: 1.7;
+}
+
+/* ============================================
+ * TOPIC CARDS (Topics/Categories Section)
+ * ============================================ */
+
+/**
+ * Individual topic card
+ * Clickable card with hover effect
+ * Used in topics grid
+ */
+.blog-index__topic-card {
+  /* Spacing */
+  padding: var(--spacing-6);
+  
+  /* Appearance */
+  background-color: var(--card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  
+  /* Interaction */
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.blog-index__topic-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary);
+}
+
+/* ============================================
+ * TOPIC CARD COMPONENTS
+ * ============================================ */
+
+/**
+ * Topic card icon container
+ * Circular icon background
+ */
+.blog-index__topic-icon {
+  /* Size */
+  width: 48px;
+  height: 48px;
+  
+  /* Layout */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--spacing-4);
+  
+  /* Appearance */
+  background-color: var(--primary-soft);
+  border-radius: var(--radius-lg);
+}
+
+.blog-index__topic-icon svg {
+  color: var(--primary);
+}
+
+/**
+ * Topic card title
+ */
+.blog-index__topic-title {
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+  
+  /* Spacing */
+  margin-bottom: var(--spacing-2);
+}
+
+/**
+ * Topic card description
+ */
+.blog-index__topic-description {
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-small);
+  line-height: 1.6;
+  color: var(--muted-foreground);
+  
+  /* Spacing */
+  margin-bottom: var(--spacing-3);
+}
+
+/**
+ * Topic card post count
+ * Shows number of articles
+ */
+.blog-index__topic-count {
+  /* Typography */
+  font-family: var(--font-secondary);
+  font-size: var(--text-small);
+  font-weight: var(--font-weight-semibold);
+  color: var(--primary);
+}
+
+/* ============================================
+ * RESPONSIVE DESIGN
+ * ============================================ */
+
+/**
+ * Topics grid uses .wp-grid-3-cols utility
+ * No additional responsive styles needed
+ * 
+ * Grid breakpoints (from utilities.css):
+ * - Mobile: 1 column
+ * - Tablet (768px+): 2 columns
+ * - Desktop (1024px+): 3 columns
+ */
+
+/**
+ * Content wrappers are fluid by default
+ * Max-width constraints ensure readability
+ * on ultra-wide screens
+ */

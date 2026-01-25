@@ -180,7 +180,7 @@ export function AboutHistoryTemplate() {
         <TimelineSection
           title="Our Journey"
           description="Key milestones that defined our growth"
-          milestones={[
+          items={[
             {
               year: '2014',
               icon: Rocket,

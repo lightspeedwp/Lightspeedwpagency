@@ -15,6 +15,7 @@ import { Breadcrumbs } from '../common/Breadcrumbs';
 import { BackToTopButton } from '../blocks/layout/BackToTopButton';
 import { RouteAnnouncer } from '../blocks/utility/RouteAnnouncer';
 import { Buttons, Button } from '../blocks/design/Buttons';
+import { CTASection } from '../patterns/CTASection';
 import { 
   HelpCircle,
   ChevronDown
@@ -49,8 +50,9 @@ export function FAQTemplate() {
       <main id="main-content" role="main">
         {/* Breadcrumbs */}
         <section 
-          className="py-4"
           style={{
+            paddingTop: 'var(--spacing-4)',
+            paddingBottom: 'var(--spacing-4)',
             backgroundColor: 'var(--background)',
             borderBottom: '1px solid var(--border-soft)'
           }}
@@ -77,8 +79,13 @@ export function FAQTemplate() {
         >
           {/* Gradient orb decorations */}
           <div
-            className="absolute top-0 right-0 w-96 h-96 rounded-full"
             style={{
+              position: 'absolute',
+              top: 0,
+              right: 0,
+              width: '384px',
+              height: '384px',
+              borderRadius: '50%',
               background: 'radial-gradient(circle, rgba(6, 182, 212, 0.3) 0%, transparent 70%)',
               filter: 'blur(80px)',
               transform: 'translate(30%, -30%)'
@@ -86,10 +93,15 @@ export function FAQTemplate() {
           />
 
           <Container>
-            <div className="max-w-4xl mx-auto text-center relative z-10">
+            <div className="wp-max-w-4xl wp-text-center" style={{ position: 'relative', zIndex: 10 }}>
               <div
-                className="inline-block px-4 py-2 mb-6"
                 style={{
+                  display: 'inline-block',
+                  paddingLeft: 'var(--spacing-4)',
+                  paddingRight: 'var(--spacing-4)',
+                  paddingTop: 'var(--spacing-2)',
+                  paddingBottom: 'var(--spacing-2)',
+                  marginBottom: 'var(--spacing-6)',
                   backgroundColor: 'rgba(255, 255, 255, 0.15)',
                   backdropFilter: 'blur(10px)',
                   borderRadius: 'var(--radius-full)',
@@ -157,10 +169,10 @@ export function FAQTemplate() {
         {/* Stats Section */}
         <Section spacing="lg" style={{ backgroundColor: 'var(--background)' }}>
           <Container>
-            <div className="max-w-5xl mx-auto">
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 'var(--spacing-6)' }}>
                 <div
-                  className="text-center"
+                  className="wp-text-center"
                   style={{
                     padding: '24px',
                     backgroundColor: 'var(--card)',
@@ -191,7 +203,7 @@ export function FAQTemplate() {
                 </div>
 
                 <div
-                  className="text-center"
+                  className="wp-text-center"
                   style={{
                     padding: '24px',
                     backgroundColor: 'var(--card)',
@@ -222,7 +234,7 @@ export function FAQTemplate() {
                 </div>
 
                 <div
-                  className="text-center"
+                  className="wp-text-center"
                   style={{
                     padding: '24px',
                     backgroundColor: 'var(--card)',
@@ -253,7 +265,7 @@ export function FAQTemplate() {
                 </div>
 
                 <div
-                  className="text-center"
+                  className="wp-text-center"
                   style={{
                     padding: '24px',
                     backgroundColor: 'var(--card)',
@@ -290,20 +302,20 @@ export function FAQTemplate() {
         {/* FAQ Categories Section */}
         <Section spacing="xl" style={{ backgroundColor: 'var(--muted)' }}>
           <Container>
-            <div className="max-w-5xl mx-auto">
-              <div className="space-y-12">
+            <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--spacing-12)' }}>
                 {faqCategories.map((category) => {
                   const Icon = category.icon;
                   return (
                     <div key={category.id}>
                       {/* Category Header */}
                       <div
-                        className="mb-8"
                         style={{
                           display: 'flex',
                           alignItems: 'center',
                           gap: '16px',
                           paddingBottom: '16px',
+                          marginBottom: 'var(--spacing-8)',
                           borderBottom: '2px solid var(--border)'
                         }}
                       >
@@ -346,7 +358,7 @@ export function FAQTemplate() {
                       </div>
 
                       {/* FAQs */}
-                      <div className="space-y-4">
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--spacing-4)' }}>
                         {category.faqs.map((faq, index) => {
                           const key = `${category.id}-${index}`;
                           const isOpen = openFAQs[key];
@@ -434,68 +446,15 @@ export function FAQTemplate() {
         </Section>
 
         {/* CTA Section */}
-        <Section 
-          spacing="xl" 
-          style={{
-            background: 'linear-gradient(135deg, #0891b2 0%, #06b6d4 100%)',
-            color: 'var(--primary-foreground)'
-          }}
-        >
-          <Container>
-            <div className="max-w-3xl mx-auto text-center">
-              <h2
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-h1)',
-                  fontWeight: 'var(--font-weight-bold)',
-                  lineHeight: '1.2',
-                  letterSpacing: '-0.02em',
-                  marginBottom: '16px',
-                  color: 'var(--primary-foreground)'
-                }}
-              >
-                {faqCTA.title}
-              </h2>
-
-              <p
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-lg)',
-                  lineHeight: '1.7',
-                  color: 'rgba(255, 255, 255, 0.9)',
-                  marginBottom: '32px'
-                }}
-              >
-                {faqCTA.description}
-              </p>
-
-              <Buttons alignment="center" gap="md">
-                <Button 
-                  page={faqCTA.buttons[0].page as any} 
-                  size="lg"
-                  variant="default"
-                  style={{
-                    backgroundColor: 'var(--primary-foreground)',
-                    color: '#0891b2'
-                  }}
-                >
-                  {faqCTA.buttons[0].text}
-                </Button>
-                <Button 
-                  page={faqCTA.buttons[1].page as any} 
-                  size="lg"
-                  variant="outline"
-                  style={{
-                    borderColor: 'var(--primary-foreground)',
-                    color: 'var(--primary-foreground)'
-                  }}
-                >
-                  {faqCTA.buttons[1].text}
-                </Button>
-              </Buttons>
-            </div>
-          </Container>
-        </Section>
+        <CTASection
+          title={faqCTA.title}
+          description={faqCTA.description}
+          primaryButtonText={faqCTA.buttons[0].text}
+          primaryButtonPage={faqCTA.buttons[0].page as any}
+          secondaryButtonText={faqCTA.buttons[1]?.text}
+          secondaryButtonPage={faqCTA.buttons[1]?.page as any}
+          gradient="cyan"
+        />
       </main>
 
       <SiteFooter />

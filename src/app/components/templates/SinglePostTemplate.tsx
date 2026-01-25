@@ -15,6 +15,9 @@ import { Breadcrumbs } from '../common/Breadcrumbs';
 import { BackToTopButton } from '../blocks/layout/BackToTopButton';
 import { RouteAnnouncer } from '../blocks/utility/RouteAnnouncer';
 import { Buttons, Button } from '../blocks/design/Buttons';
+import { CTASection } from '../patterns/CTASection';
+import { AuthorBio } from '../patterns/AuthorBio';
+import { NewsletterSignup } from '../patterns/NewsletterSignup';
 import { 
   Calendar,
   User,
@@ -491,132 +494,22 @@ export function SinglePostTemplate({ slug = 'getting-started-with-block-themes' 
         <Section spacing="xl" style={{ backgroundColor: 'var(--muted)' }}>
           <Container>
             <div className="max-w-4xl mx-auto">
-              <div
-                style={{
-                  padding: '40px',
-                  backgroundColor: 'var(--card)',
-                  borderRadius: 'var(--radius-lg)',
-                  border: '1px solid var(--border-soft)'
+              <AuthorBio
+                author={{
+                  name: authorBio.name,
+                  role: authorBio.role,
+                  avatar: authorBio.avatar,
+                  bio: authorBio.bio,
+                  postCount: authorBio.postCount,
+                  social: {
+                    linkedin: authorBio.social.linkedin,
+                    twitter: authorBio.social.twitter
+                  }
                 }}
-              >
-                <div style={{ display: 'flex', gap: '24px', alignItems: 'flex-start', flexWrap: 'wrap' }}>
-                  {/* Avatar */}
-                  <div
-                    style={{
-                      width: '96px',
-                      height: '96px',
-                      borderRadius: 'var(--radius-full)',
-                      backgroundImage: `url(${authorBio.avatar})`,
-                      backgroundSize: 'cover',
-                      backgroundPosition: 'center',
-                      flexShrink: 0
-                    }}
-                  />
-
-                  {/* Bio Content */}
-                  <div style={{ flex: 1, minWidth: '300px' }}>
-                    <h3
-                      style={{
-                        fontFamily: 'Lexend, sans-serif',
-                        fontSize: 'var(--text-xl)',
-                        fontWeight: 'var(--font-weight-bold)',
-                        color: 'var(--foreground)',
-                        marginBottom: '4px'
-                      }}
-                    >
-                      About {authorBio.name}
-                    </h3>
-                    <p
-                      style={{
-                        fontFamily: 'Manrope, sans-serif',
-                        fontSize: 'var(--text-small)',
-                        fontWeight: 'var(--font-weight-semibold)',
-                        color: 'var(--primary)',
-                        marginBottom: '16px'
-                      }}
-                    >
-                      {authorBio.role} • {authorBio.postCount} articles
-                    </p>
-                    <p
-                      style={{
-                        fontFamily: 'Lexend, sans-serif',
-                        fontSize: 'var(--text-base)',
-                        lineHeight: '1.7',
-                        color: 'var(--muted-foreground)',
-                        marginBottom: '16px'
-                      }}
-                    >
-                      {authorBio.bio}
-                    </p>
-
-                    {/* Social Links */}
-                    <div style={{ display: 'flex', gap: '12px' }}>
-                      <a
-                        href={authorBio.social.linkedin}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{
-                          padding: '8px 16px',
-                          backgroundColor: 'var(--muted)',
-                          border: '1px solid var(--border)',
-                          borderRadius: 'var(--radius)',
-                          color: 'var(--foreground)',
-                          textDecoration: 'none',
-                          fontFamily: 'Manrope, sans-serif',
-                          fontSize: 'var(--text-small)',
-                          display: 'flex',
-                          alignItems: 'center',
-                          gap: '6px',
-                          transition: 'all 0.2s ease'
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.borderColor = 'var(--primary)';
-                          e.currentTarget.style.color = 'var(--primary)';
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.borderColor = 'var(--border)';
-                          e.currentTarget.style.color = 'var(--foreground)';
-                        }}
-                        aria-label="LinkedIn Profile"
-                      >
-                        <Linkedin size={14} />
-                        LinkedIn
-                      </a>
-                      <a
-                        href={authorBio.social.twitter}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{
-                          padding: '8px 16px',
-                          backgroundColor: 'var(--muted)',
-                          border: '1px solid var(--border)',
-                          borderRadius: 'var(--radius)',
-                          color: 'var(--foreground)',
-                          textDecoration: 'none',
-                          fontFamily: 'Manrope, sans-serif',
-                          fontSize: 'var(--text-small)',
-                          display: 'flex',
-                          alignItems: 'center',
-                          gap: '6px',
-                          transition: 'all 0.2s ease'
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.borderColor = 'var(--primary)';
-                          e.currentTarget.style.color = 'var(--primary)';
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.borderColor = 'var(--border)';
-                          e.currentTarget.style.color = 'var(--foreground)';
-                        }}
-                        aria-label="Twitter Profile"
-                      >
-                        <Twitter size={14} />
-                        Twitter
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                variant="card"
+                showSocial
+                showPostCount
+              />
             </div>
           </Container>
         </Section>
@@ -719,131 +612,29 @@ export function SinglePostTemplate({ slug = 'getting-started-with-block-themes' 
         <Section spacing="xl" style={{ backgroundColor: 'var(--muted)' }}>
           <Container>
             <div className="max-w-3xl mx-auto text-center">
-              <h2
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-h2)',
-                  fontWeight: 'var(--font-weight-bold)',
-                  color: 'var(--foreground)',
-                  marginBottom: '16px'
-                }}
-              >
-                {blogPostNewsletter.title}
-              </h2>
-              <p
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-lg)',
-                  lineHeight: '1.7',
-                  color: 'var(--muted-foreground)',
-                  marginBottom: '32px'
-                }}
-              >
-                {blogPostNewsletter.description}
-              </p>
-
-              <div style={{ display: 'flex', gap: '12px', maxWidth: '500px', margin: '0 auto' }}>
-                <input
-                  type="email"
-                  placeholder={blogPostNewsletter.placeholder}
-                  style={{
-                    flex: 1,
-                    padding: '12px 20px',
-                    border: '1px solid var(--border)',
-                    borderRadius: 'var(--radius)',
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-base)',
-                    backgroundColor: 'var(--background)',
-                    color: 'var(--foreground)'
-                  }}
-                  aria-label="Email address"
-                />
-                <button
-                  style={{
-                    padding: '12px 32px',
-                    backgroundColor: 'var(--primary)',
-                    color: 'var(--primary-foreground)',
-                    border: 'none',
-                    borderRadius: 'var(--radius)',
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-base)',
-                    fontWeight: 'var(--font-weight-semibold)',
-                    cursor: 'pointer',
-                    transition: 'opacity 0.2s ease'
-                  }}
-                  onMouseEnter={(e) => e.currentTarget.style.opacity = '0.9'}
-                  onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
-                >
-                  {blogPostNewsletter.buttonText}
-                </button>
-              </div>
+              <NewsletterSignup
+                title={blogPostNewsletter.title}
+                description={blogPostNewsletter.description}
+                placeholder={blogPostNewsletter.placeholder}
+                buttonText={blogPostNewsletter.buttonText}
+                privacyText={blogPostNewsletter.privacyText}
+                layout="centered"
+                variant="default"
+              />
             </div>
           </Container>
         </Section>
 
         {/* CTA Section */}
-        <Section 
-          spacing="xl" 
-          style={{
-            background: 'linear-gradient(135deg, #1e40af 0%, #3b82f6 100%)',
-            color: 'var(--primary-foreground)'
-          }}
-        >
-          <Container>
-            <div className="max-w-3xl mx-auto text-center">
-              <h2
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-h1)',
-                  fontWeight: 'var(--font-weight-bold)',
-                  lineHeight: '1.2',
-                  letterSpacing: '-0.02em',
-                  marginBottom: '16px',
-                  color: 'var(--primary-foreground)'
-                }}
-              >
-                {blogPostCTA.title}
-              </h2>
-
-              <p
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-lg)',
-                  lineHeight: '1.7',
-                  color: 'rgba(255, 255, 255, 0.9)',
-                  marginBottom: '32px'
-                }}
-              >
-                {blogPostCTA.description}
-              </p>
-
-              <Buttons alignment="center" gap="md">
-                <Button 
-                  page={blogPostCTA.buttons[0].page} 
-                  size="lg"
-                  variant="default"
-                  style={{
-                    backgroundColor: 'var(--primary-foreground)',
-                    color: 'var(--primary)'
-                  }}
-                >
-                  {blogPostCTA.buttons[0].text}
-                </Button>
-                <Button 
-                  page={blogPostCTA.buttons[1].page} 
-                  size="lg"
-                  variant="outline"
-                  style={{
-                    borderColor: 'var(--primary-foreground)',
-                    color: 'var(--primary-foreground)'
-                  }}
-                >
-                  {blogPostCTA.buttons[1].text}
-                </Button>
-              </Buttons>
-            </div>
-          </Container>
-        </Section>
+        <CTASection
+          title={blogPostCTA.title}
+          description={blogPostCTA.description}
+          primaryButtonText={blogPostCTA.buttons[0].text}
+          primaryButtonPage={blogPostCTA.buttons[0].page as any}
+          secondaryButtonText={blogPostCTA.buttons[1]?.text}
+          secondaryButtonPage={blogPostCTA.buttons[1]?.page as any}
+          gradient="blue"
+        />
       </main>
 
       <SiteFooter />

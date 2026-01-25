@@ -13,6 +13,9 @@
  * - Dynamic imports reduce initial bundle size
  */
 
+// Import design system styles (CRITICAL - must load first!)
+import '../styles/index.css';
+
 import { useState, lazy, Suspense } from 'react';
 import { NavigationContext } from './contexts/NavigationContext';
 import { KeyboardShortcuts } from './components/blocks/layout/KeyboardShortcuts';
@@ -94,6 +97,11 @@ const DesignSystemTest = lazy(() => import('./components/ui/DesignSystemTest').t
 const TestimonialsTemplate = lazy(() => import('./components/templates/TestimonialsTemplate').then(m => ({ default: m.TestimonialsTemplate })));
 const ComplianceScorecard = lazy(() => import('./components/ui/ComplianceScorecard').then(m => ({ default: m.ComplianceScorecard })));
 
+// Legal Templates
+const PrivacyPolicyTemplate = lazy(() => import('./components/templates/PrivacyPolicyTemplate').then(m => ({ default: m.PrivacyPolicyTemplate })));
+const TermsOfServiceTemplate = lazy(() => import('./components/templates/TermsOfServiceTemplate').then(m => ({ default: m.TermsOfServiceTemplate })));
+
+
 // Service Detail Templates
 const DevelopmentServiceTemplate = lazy(() => import('./components/templates/DevelopmentServiceTemplate').then(m => ({ default: m.DevelopmentServiceTemplate })));
 const DesignServiceTemplate = lazy(() => import('./components/templates/DesignServiceTemplate').then(m => ({ default: m.DesignServiceTemplate })));
@@ -104,6 +112,16 @@ const MigrationsServiceTemplate = lazy(() => import('./components/templates/Migr
 const SupportServiceTemplate = lazy(() => import('./components/templates/SupportServiceTemplate').then(m => ({ default: m.SupportServiceTemplate })));
 const NewsletterServiceTemplate = lazy(() => import('./components/templates/NewsletterServiceTemplate').then(m => ({ default: m.NewsletterServiceTemplate })));
 
+// Content & Marketing Service Templates
+const ContentStrategyTemplate = lazy(() => import('./components/templates/ContentStrategyTemplate').then(m => ({ default: m.ContentStrategyTemplate })));
+const ContentCollectionTemplate = lazy(() => import('./components/templates/ContentCollectionTemplate').then(m => ({ default: m.ContentCollectionTemplate })));
+const ContentAuditTemplate = lazy(() => import('./components/templates/ContentAuditTemplate').then(m => ({ default: m.ContentAuditTemplate })));
+const EmailMarketingTemplate = lazy(() => import('./components/templates/EmailMarketingTemplate').then(m => ({ default: m.EmailMarketingTemplate })));
+const TrainingTemplate = lazy(() => import('./components/templates/TrainingTemplate').then(m => ({ default: m.TrainingTemplate })));
+
+// About/Careers Templates
+const CareersTemplate = lazy(() => import('./components/templates/CareersTemplate').then(m => ({ default: m.CareersTemplate })));
+
 // Solutions Templates
 const SolutionsTemplate = lazy(() => import('./components/templates/SolutionsTemplate').then(m => ({ default: m.SolutionsTemplate })));
 const LSXSolutionTemplate = lazy(() => import('./components/templates/LSXSolutionTemplate').then(m => ({ default: m.LSXSolutionTemplate })));
@@ -111,6 +129,10 @@ const LSXDesignTemplate = lazy(() => import('./components/templates/LSXDesignTem
 const WordPressSolutionTemplate = lazy(() => import('./components/templates/WordPressSolutionTemplate').then(m => ({ default: m.WordPressSolutionTemplate })));
 const WooCommerceSolutionTemplate = lazy(() => import('./components/templates/WooCommerceSolutionTemplate').then(m => ({ default: m.WooCommerceSolutionTemplate })));
 const TourOperatorTemplate = lazy(() => import('./components/templates/TourOperatorTemplate').then(m => ({ default: m.TourOperatorTemplate })));
+const WetuImporterTemplate = lazy(() => import('./components/templates/WetuImporterTemplate').then(m => ({ default: m.WetuImporterTemplate })));
+const LSXSharingTemplate = lazy(() => import('./components/templates/LSXSharingTemplate').then(m => ({ default: m.LSXSharingTemplate })));
+const LSXSearchTemplate = lazy(() => import('./components/templates/LSXSearchTemplate').then(m => ({ default: m.LSXSearchTemplate })));
+const MailchimpSolutionTemplate = lazy(() => import('./components/templates/MailchimpSolutionTemplate').then(m => ({ default: m.MailchimpSolutionTemplate })));
 
 // Dev Tools Templates
 const DevToolsTemplate = lazy(() => import('./components/templates/DevToolsTemplate').then(m => ({ default: m.DevToolsTemplate })));
@@ -123,6 +145,7 @@ const IconLibrary = lazy(() => import('./components/templates/IconLibrary').then
 const LivePreview = lazy(() => import('./components/templates/LivePreview').then(m => ({ default: m.LivePreview })));
 const SectionPresetsShowcase = lazy(() => import('./components/templates/SectionPresetsShowcase').then(m => ({ default: m.SectionPresetsShowcase })));
 const ThemeBlocksShowcase = lazy(() => import('./components/templates/ThemeBlocksShowcase').then(m => ({ default: m.ThemeBlocksShowcase })));
+const SiteMapTemplate = lazy(() => import('./components/templates/SiteMapTemplate').then(m => ({ default: m.SiteMapTemplate })));
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState<string>('front-page');
@@ -290,7 +313,7 @@ export default function App() {
       case 'team':
         return <TeamTemplate />;
       case 'careers':
-        return <TeamTemplate />; // Reuse team template for now
+        return <CareersTemplate />;
       case 'index':
         return <IndexTemplate />;
       case 'archive':
@@ -301,7 +324,34 @@ export default function App() {
         return <Template404 />;
       case 'services':
         return <ServicesLandingTemplate />;
-      // Service Detail Pages
+      // Service Detail Pages (Direct Routes - No Suffix)
+      case 'discovery':
+        return <DiscoveryServiceTemplate />;
+      case 'design':
+        return <DesignServiceTemplate />;
+      case 'development':
+        return <DevelopmentServiceTemplate />;
+      case 'support':
+        return <SupportServiceTemplate />;
+      case 'migrations':
+        return <MigrationsServiceTemplate />;
+      case 'security':
+        return <SecurityServiceTemplate />;
+      case 'content':
+        return <ContentServiceTemplate />;
+      // Content & Marketing Service Pages
+      case 'content-strategy':
+        return <ContentStrategyTemplate />;
+      case 'content-collection':
+        return <ContentCollectionTemplate />;
+      case 'content-audit':
+        return <ContentAuditTemplate />;
+      case 'email-marketing':
+        return <EmailMarketingTemplate />;
+      // Training Service Page
+      case 'training':
+        return <TrainingTemplate />;
+      // Service Detail Pages (Alternative Routes - With Suffix)
       case 'discovery-service':
         return <DiscoveryServiceTemplate />;
       case 'design-service':
@@ -320,7 +370,16 @@ export default function App() {
         return <NewsletterServiceTemplate />;
       case 'solutions':
         return <SolutionsTemplate />;
-      // Solution Detail Pages
+      // Solution Detail Pages (Direct Routes - No Suffix)
+      case 'wordpress':
+        return <WordPressSolutionTemplate />;
+      case 'woocommerce':
+        return <WooCommerceSolutionTemplate />;
+      case 'tour-operators':
+        return <TourOperatorTemplate />;
+      case 'lsx':
+        return <LSXDesignTemplate />;
+      // Solution Detail Pages (Alternative Routes - With Suffix)
       case 'wordpress-solutions':
         return <WordPressSolutionTemplate />;
       case 'woocommerce-solutions':
@@ -331,6 +390,15 @@ export default function App() {
         return <LSXDesignTemplate />;
       case 'hosting':
         return <HostingTemplate />;
+      case 'wetu-importer':
+        return <WetuImporterTemplate />;
+      case 'lsx-sharing':
+        return <LSXSharingTemplate />;
+      case 'lsx-search':
+        return <LSXSearchTemplate />;
+      case 'mailchimp':
+        return <MailchimpSolutionTemplate />;
+      case 'portfolio':
       case 'portfolio-archive':
         return <PortfolioArchiveTemplate />;
       case 'portfolio-single':
@@ -359,6 +427,12 @@ export default function App() {
         return <TestimonialsTemplate />;
       case 'compliance-scorecard':
         return <ComplianceScorecard />;
+      // Legal Pages
+      case 'privacy-policy':
+        return <PrivacyPolicyTemplate />;
+      case 'terms-of-service':
+      case 'terms-conditions': // Legacy route support
+        return <TermsOfServiceTemplate />;
       // Dev Tools Pages
       case 'dev-tools':
         return <DevToolsTemplate />;
@@ -380,6 +454,8 @@ export default function App() {
         return <SectionPresetsShowcase />;
       case 'theme-blocks-showcase':
         return <ThemeBlocksShowcase />;
+      case 'site-map':
+        return <SiteMapTemplate />;
       // Service Pages
       case 'wordpress-development':
       case 'woocommerce-development':
@@ -408,11 +484,8 @@ export default function App() {
       case 'case-studies':
       case 'whitepapers':
         return <FAQTemplate />; // Use FAQ template as placeholder for resources
-      // Legal Pages
-      case 'privacy-policy':
-      case 'terms-of-service':
       case 'cookie-policy':
-        return <ContactPageTemplate />; // Use contact template as placeholder for legal pages
+        return <ContactPageTemplate />; // Use contact template as placeholder for cookie policy
       default:
         return <FrontPageTemplate />;
     }

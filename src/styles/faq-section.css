@@ -1,0 +1,99 @@
+/**
+ * FAQ Section Pattern Styles
+ * 
+ * Accordion-style FAQ sections with expandable answers.
+ * All styling uses CSS variables for complete user control.
+ * 
+ * User can edit this file to update FAQ sections site-wide.
+ */
+
+/* ============================================
+ * FAQ SECTION VARIANTS
+ * ============================================ */
+
+.faq-section--default {
+  background-color: var(--background);
+}
+
+.faq-section--muted {
+  background-color: var(--muted);
+}
+
+.faq-section--card {
+  background-color: var(--card);
+}
+
+/* ============================================
+ * FAQ HEADER
+ * ============================================ */
+
+.faq-section__header {
+  text-align: center;
+  margin-bottom: var(--spacing-16);
+}
+
+.faq-section__title {
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  
+  /* Spacing */
+  margin-bottom: 0;
+}
+
+.faq-section__title--with-description {
+  margin-bottom: var(--spacing-4);
+}
+
+/* Title color variants */
+.faq-section--default .faq-section__title,
+.faq-section--muted .faq-section__title {
+  color: var(--foreground);
+}
+
+.faq-section--card .faq-section__title {
+  color: var(--card-foreground);
+}
+
+.faq-section__description {
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  line-height: 1.7;
+  color: var(--muted-foreground);
+  
+  /* Layout */
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* ============================================
+ * FAQ ACCORDION CONTAINER
+ * ============================================ */
+
+.faq-section__accordion {
+  max-width: 896px; /* 4xl = 896px */
+  margin: 0 auto;
+}
+
+/* ============================================
+ * FAQ CTA FOOTER
+ * ============================================ */
+
+.faq-section__cta {
+  text-align: center;
+  margin-top: var(--spacing-12);
+}
+
+.faq-section__cta-text {
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  color: var(--muted-foreground);
+  
+  /* Spacing */
+  margin-bottom: var(--spacing-4);
+}

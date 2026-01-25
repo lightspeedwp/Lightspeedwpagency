@@ -27,6 +27,7 @@ import { PaginationNav } from '../patterns/PaginationNav';
 import { NewsletterSignup } from '../patterns/NewsletterSignup';
 import { SocialProof } from '../patterns/SocialProof';
 import { BackToTopButton } from '../blocks/layout/BackToTopButton';
+import { Badge } from '../patterns/Badge';
 import { Calendar, User, Clock, ChevronRight, Home, MapPin, Link as LinkIcon, Twitter, Linkedin, Globe } from 'lucide-react';
 import { useNavigation } from '../../contexts/NavigationContext';
 import { clientLogos } from '../../data/logos';
@@ -169,10 +170,11 @@ export function AuthorArchiveTemplate({ author: authorSlug = 'sarah-mitchell' }:
       <main id="main-content" role="main">
         {/* Breadcrumbs */}
         <section 
-          className="py-4"
           style={{
             backgroundColor: 'var(--background)',
             borderBottom: '1px solid var(--border)',
+            paddingTop: 'var(--spacing-4)',
+            paddingBottom: 'var(--spacing-4)',
           }}
         >
           <Container>
@@ -188,28 +190,34 @@ export function AuthorArchiveTemplate({ author: authorSlug = 'sarah-mitchell' }:
 
         {/* Author Header */}
         <section 
-          className="py-16"
           style={{
             backgroundColor: 'var(--background)',
             borderBottom: '1px solid var(--border-soft)',
+            paddingTop: 'var(--spacing-16)',
+            paddingBottom: 'var(--spacing-16)',
           }}
         >
           <Container>
-            <div className="flex flex-col md:flex-row gap-8 items-start">
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--spacing-8)', alignItems: 'flex-start' }}>
               {/* Author Avatar */}
               <div
-                className="w-32 h-32 rounded-full bg-cover bg-center flex-shrink-0"
                 style={{
+                  width: '128px',
+                  height: '128px',
+                  borderRadius: '50%',
                   backgroundImage: `url(${author.avatar})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
                   border: '4px solid var(--border-soft)',
+                  flexShrink: 0,
                 }}
               />
 
               {/* Author Info */}
-              <div className="flex-1">
+              <div style={{ flex: 1 }}>
                 <span 
                   style={{
-                    fontFamily: 'Manrope, sans-serif',
+                    fontFamily: 'var(--font-secondary)',
                     fontSize: 'var(--text-small)',
                     fontWeight: 'var(--font-weight-medium)',
                     color: 'var(--muted-foreground)',
@@ -223,26 +231,25 @@ export function AuthorArchiveTemplate({ author: authorSlug = 'sarah-mitchell' }:
                   {author.name}
                 </Heading>
                 <p 
-                  className="mb-6"
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-lg)',
                     color: 'var(--foreground)',
                     lineHeight: '1.6',
                     margin: 0,
-                    marginBottom: '24px',
+                    marginBottom: 'var(--spacing-6)',
                   }}
                 >
                   {author.bio}
                 </p>
 
                 {/* Author Meta */}
-                <div className="flex flex-wrap items-center gap-6 mb-6">
-                  <div className="flex items-center gap-2">
+                <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 'var(--spacing-6)', marginBottom: 'var(--spacing-6)' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-2)' }}>
                     <MapPin size={18} style={{ color: 'var(--muted-foreground)' }} />
                     <span 
                       style={{
-                        fontFamily: 'Lexend, sans-serif',
+                        fontFamily: 'var(--font-primary)',
                         fontSize: 'var(--text-base)',
                         color: 'var(--foreground)',
                       }}
@@ -250,11 +257,11 @@ export function AuthorArchiveTemplate({ author: authorSlug = 'sarah-mitchell' }:
                       {author.location}
                     </span>
                   </div>
-                  <div className="flex items-center gap-2">
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-2)' }}>
                     <User size={18} style={{ color: 'var(--muted-foreground)' }} />
                     <span 
                       style={{
-                        fontFamily: 'Lexend, sans-serif',
+                        fontFamily: 'var(--font-primary)',
                         fontSize: 'var(--text-base)',
                         color: 'var(--foreground)',
                       }}
@@ -262,11 +269,11 @@ export function AuthorArchiveTemplate({ author: authorSlug = 'sarah-mitchell' }:
                       {author.postCount} posts
                     </span>
                   </div>
-                  <div className="flex items-center gap-2">
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-2)' }}>
                     <Calendar size={18} style={{ color: 'var(--muted-foreground)' }} />
                     <span 
                       style={{
-                        fontFamily: 'Lexend, sans-serif',
+                        fontFamily: 'var(--font-primary)',
                         fontSize: 'var(--text-base)',
                         color: 'var(--foreground)',
                       }}
@@ -277,13 +284,15 @@ export function AuthorArchiveTemplate({ author: authorSlug = 'sarah-mitchell' }:
                 </div>
 
                 {/* Social Links */}
-                <div className="flex items-center gap-4">
+                <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-4)' }}>
                   <a 
                     href={author.website}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center"
                     style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
                       width: '40px',
                       height: '40px',
                       borderRadius: 'var(--radius)',
@@ -308,8 +317,10 @@ export function AuthorArchiveTemplate({ author: authorSlug = 'sarah-mitchell' }:
                     href={`https://twitter.com/${author.twitter.replace('@', '')}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center"
                     style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
                       width: '40px',
                       height: '40px',
                       borderRadius: 'var(--radius)',
@@ -334,8 +345,10 @@ export function AuthorArchiveTemplate({ author: authorSlug = 'sarah-mitchell' }:
                     href={`https://linkedin.com/in/${author.linkedin}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center"
                     style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
                       width: '40px',
                       height: '40px',
                       borderRadius: 'var(--radius)',
@@ -363,20 +376,28 @@ export function AuthorArchiveTemplate({ author: authorSlug = 'sarah-mitchell' }:
         </section>
 
         {/* Author Posts */}
-        <section className="py-16" style={{ backgroundColor: 'var(--background)' }}>
+        <section 
+          style={{ 
+            backgroundColor: 'var(--background)',
+            paddingTop: 'var(--spacing-16)',
+            paddingBottom: 'var(--spacing-16)',
+          }}
+        >
           <Container>
             <Heading level={2} style={{ marginBottom: '32px' }}>
               Latest by {author.name}
             </Heading>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="wp-grid-3-cols">
               {authorPosts.map((post) => (
                 <article 
                   key={post.id}
-                  className="flex flex-col rounded-[var(--radius-lg)]"
                   style={{
+                    display: 'flex',
+                    flexDirection: 'column',
                     border: '1px solid var(--border-soft)',
                     backgroundColor: 'var(--card)',
+                    borderRadius: 'var(--radius-lg)',
                     overflow: 'hidden',
                     transition: 'all 0.2s ease',
                   }}
@@ -406,46 +427,32 @@ export function AuthorArchiveTemplate({ author: authorSlug = 'sarah-mitchell' }:
                     aria-label={`Read ${post.title}`}
                   >
                     <div 
-                      className="aspect-square bg-cover bg-center rounded-[var(--radius-lg)]"
                       style={{
+                        aspectRatio: '1',
                         backgroundImage: `url(${post.featuredImage})`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        borderRadius: 'var(--radius-lg)',
                       }}
                     />
                   </a>
 
                   {/* Post Content */}
-                  <div className="p-6 flex flex-col flex-1">
+                  <div style={{ padding: 'var(--spacing-6)', display: 'flex', flexDirection: 'column', flex: 1 }}>
                     {/* Category Badge */}
-                    <button 
+                    <Badge
+                      variant="secondary"
+                      clickable
                       onClick={() => {
                         const categorySlug = post.category.toLowerCase().replace(/\s+/g, '-');
                         navigateTo(`category-${categorySlug}`);
                       }}
-                      className="inline-flex items-center px-3 py-1 rounded-full mb-3"
-                      style={{
-                        fontFamily: 'Lexend, sans-serif',
-                        fontSize: 'var(--text-small)',
-                        fontWeight: 'var(--font-weight-medium)',
-                        backgroundColor: 'var(--secondary)',
-                        color: 'var(--secondary-foreground)',
-                        textDecoration: 'none',
-                        alignSelf: 'flex-start',
-                        transition: 'opacity 0.2s ease',
-                        border: 'none',
-                        cursor: 'pointer',
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.opacity = '0.8';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.opacity = '1';
-                      }}
                     >
                       {post.category}
-                    </button>
+                    </Badge>
 
                     {/* Title */}
-                    <h3 className="mb-2">
+                    <h3 style={{ marginBottom: 'var(--spacing-2)' }}>
                       <a 
                         href={`#post-${post.slug}`}
                         onClick={(e) => {
@@ -453,7 +460,7 @@ export function AuthorArchiveTemplate({ author: authorSlug = 'sarah-mitchell' }:
                           navigateTo(`post-${post.slug}`);
                         }}
                         style={{
-                          fontFamily: 'Lexend, sans-serif',
+                          fontFamily: 'var(--font-primary)',
                           fontSize: 'var(--text-h3)',
                           fontWeight: 'var(--font-weight-medium)',
                           color: 'var(--foreground)',
@@ -476,9 +483,8 @@ export function AuthorArchiveTemplate({ author: authorSlug = 'sarah-mitchell' }:
 
                     {/* Excerpt */}
                     <p 
-                      className="mb-4"
                       style={{
-                        fontFamily: 'Lexend, sans-serif',
+                        fontFamily: 'var(--font-primary)',
                         fontSize: 'var(--text-base)',
                         color: 'var(--muted-foreground)',
                         lineHeight: '1.6',
@@ -490,12 +496,12 @@ export function AuthorArchiveTemplate({ author: authorSlug = 'sarah-mitchell' }:
                     </p>
 
                     {/* Post Meta */}
-                    <div className="flex flex-wrap items-center gap-4 pt-4" style={{ borderTop: '1px solid var(--border-extra-soft)' }}>
-                      <div className="flex items-center gap-2">
+                    <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 'var(--spacing-4)', paddingTop: 'var(--spacing-4)', borderTop: '1px solid var(--border-extra-soft)' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-2)' }}>
                         <Calendar size={16} style={{ color: 'var(--muted-foreground)' }} />
                         <span 
                           style={{
-                            fontFamily: 'Manrope, sans-serif',
+                            fontFamily: 'var(--font-secondary)',
                             fontSize: 'var(--text-small)',
                             color: 'var(--muted-foreground)',
                           }}
@@ -503,11 +509,11 @@ export function AuthorArchiveTemplate({ author: authorSlug = 'sarah-mitchell' }:
                           {post.date}
                         </span>
                       </div>
-                      <div className="flex items-center gap-2">
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-2)' }}>
                         <Clock size={16} style={{ color: 'var(--muted-foreground)' }} />
                         <span 
                           style={{
-                            fontFamily: 'Manrope, sans-serif',
+                            fontFamily: 'var(--font-secondary)',
                             fontSize: 'var(--text-small)',
                             color: 'var(--muted-foreground)',
                           }}
@@ -522,7 +528,7 @@ export function AuthorArchiveTemplate({ author: authorSlug = 'sarah-mitchell' }:
             </div>
 
             {/* Pagination */}
-            <div className="mt-12">
+            <div style={{ marginTop: 'var(--spacing-12)' }}>
               <PaginationNav 
                 currentPage={1}
                 totalPages={4}

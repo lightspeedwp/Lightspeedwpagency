@@ -1,0 +1,50 @@
+/**
+ * Custom Form Block Styles
+ * Generic form block styling
+ */
+
+.wp-block-custom-form {
+  margin-bottom: var(--spacing-8);
+}
+
+.custom-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.custom-form__field {
+  display: flex;
+  flex-direction: column;
+}
+
+.custom-form__field input:focus,
+.custom-form__field textarea:focus,
+.custom-form__field select:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-color: var(--primary);
+}
+
+.custom-form__error {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--destructive);
+  margin-top: var(--spacing-1);
+}
+
+.custom-form__success {
+  padding: var(--spacing-4);
+  background: var(--success);
+  color: var(--success-foreground);
+  border-radius: var(--radius);
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  margin-top: var(--spacing-4);
+}
+
+@media (max-width: 767px) {
+  .custom-form button {
+    width: 100%;
+  }
+}

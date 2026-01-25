@@ -1,0 +1,339 @@
+/**
+ * Quote Block Styles
+ * 
+ * WordPress block: .wp-block-quote
+ * Component: /src/app/components/blocks/text/Quote.tsx
+ * Guideline: /guidelines/blocks/text/quote.md
+ * 
+ * CRITICAL: 100% CSS variables only - NO hardcoded values
+ * User can control ALL styling by editing theme CSS files
+ */
+
+/* ==========================================================================
+   BASE STYLES
+   ========================================================================== */
+
+.wp-block-quote {
+  /* Layout */
+  position: relative;
+  display: block;
+  
+  /* Spacing */
+  margin: var(--spacing-6) 0;
+  padding: var(--spacing-4);
+  padding-left: var(--spacing-6);
+  
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: 16px;
+  font-style: italic;
+  line-height: 1.7;
+  color: var(--foreground);
+  
+  /* Borders */
+  border-left: 3px solid var(--border);
+  
+  /* Remove default browser margins */
+  & > *:first-child {
+    margin-top: 0;
+  }
+  
+  & > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/* ==========================================================================
+   QUOTE CONTENT
+   ========================================================================== */
+
+.wp-block-quote__content {
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: inherit;
+  font-style: inherit;
+  line-height: inherit;
+  color: inherit;
+  
+  /* Spacing */
+  margin: 0;
+  margin-bottom: var(--spacing-2);
+}
+
+.wp-block-quote__content:last-child {
+  margin-bottom: 0;
+}
+
+/* ==========================================================================
+   CITATION
+   ========================================================================== */
+
+.wp-block-quote__citation {
+  /* Layout */
+  display: block;
+  
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-style: normal;
+  font-weight: 500;
+  color: var(--muted-foreground);
+  
+  /* Spacing */
+  margin-top: var(--spacing-3);
+}
+
+.wp-block-quote__citation::before {
+  content: '— ';
+}
+
+/* ==========================================================================
+   VARIANT STYLES
+   ========================================================================== */
+
+/* Pull Quote - Large, Centered, Emphasized */
+.wp-block-quote--pullquote {
+  /* Layout */
+  text-align: center;
+  
+  /* Spacing */
+  padding: var(--spacing-8);
+  margin: var(--spacing-12) auto;
+  max-width: 800px;
+  
+  /* Typography */
+  font-size: var(--text-xl);
+  font-weight: 600;
+  font-style: normal;
+  
+  /* Borders */
+  border-left: none;
+  border-top: 2px solid var(--primary);
+  border-bottom: 2px solid var(--primary);
+}
+
+.wp-block-quote--pullquote .wp-block-quote__content {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.wp-block-quote--pullquote .wp-block-quote__citation {
+  margin-top: var(--spacing-4);
+  font-size: var(--text-base);
+}
+
+/* Testimonial - Card Style */
+.wp-block-quote--testimonial {
+  /* Layout */
+  background: var(--background);
+  
+  /* Spacing */
+  padding: var(--spacing-6);
+  
+  /* Borders */
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--primary);
+  border-radius: var(--radius);
+  
+  /* Shadow */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.wp-block-quote--testimonial .wp-block-quote__content {
+  font-size: var(--text-base);
+  line-height: 1.8;
+}
+
+.wp-block-quote--testimonial .wp-block-quote__citation {
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+/* ==========================================================================
+   ALIGNMENT VARIANTS
+   ========================================================================== */
+
+.wp-block-quote--left {
+  text-align: left;
+}
+
+.wp-block-quote--center {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.wp-block-quote--right {
+  text-align: right;
+  margin-left: auto;
+}
+
+/* ==========================================================================
+   RESPONSIVE STYLES
+   ========================================================================== */
+
+/* Mobile (< 768px) - Base styles above */
+
+/* Tablet (768px - 1023px) */
+@media (min-width: 768px) {
+  .wp-block-quote {
+    font-size: 18px;
+    padding: var(--spacing-5);
+    padding-left: var(--spacing-8);
+    border-left-width: 4px;
+  }
+  
+  .wp-block-quote__citation {
+    font-size: var(--text-base);
+  }
+  
+  .wp-block-quote--pullquote {
+    font-size: var(--text-2xl);
+    padding: var(--spacing-10);
+  }
+  
+  .wp-block-quote--testimonial {
+    padding: var(--spacing-8);
+  }
+}
+
+/* Desktop (≥ 1024px) */
+@media (min-width: 1024px) {
+  .wp-block-quote {
+    font-size: var(--text-lg);
+    padding: var(--spacing-6);
+    padding-left: var(--spacing-10);
+  }
+  
+  .wp-block-quote--pullquote {
+    font-size: var(--text-3xl);
+    padding: var(--spacing-12);
+    margin: var(--spacing-16) auto;
+  }
+}
+
+/* ==========================================================================
+   CONTENT WITHIN QUOTES
+   ========================================================================== */
+
+/* Paragraphs within quotes */
+.wp-block-quote p {
+  margin-bottom: var(--spacing-3);
+}
+
+.wp-block-quote p:last-child {
+  margin-bottom: 0;
+}
+
+/* Strong text within quotes */
+.wp-block-quote strong {
+  font-weight: 700;
+  color: var(--foreground);
+}
+
+/* Emphasized text within quotes */
+.wp-block-quote em {
+  font-style: italic;
+}
+
+/* Links within quotes */
+.wp-block-quote a {
+  color: var(--primary);
+  text-decoration: underline;
+  transition: opacity 200ms ease;
+}
+
+.wp-block-quote a:hover {
+  opacity: 0.8;
+}
+
+.wp-block-quote a:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* ==========================================================================
+   DARK MODE OVERRIDES
+   ========================================================================== */
+
+.dark-theme .wp-block-quote {
+  color: var(--foreground);
+  border-color: var(--border);
+}
+
+.dark-theme .wp-block-quote__citation {
+  color: var(--muted-foreground);
+}
+
+.dark-theme .wp-block-quote--pullquote {
+  border-color: var(--primary);
+}
+
+.dark-theme .wp-block-quote--pullquote .wp-block-quote__content {
+  color: var(--primary);
+}
+
+.dark-theme .wp-block-quote--testimonial {
+  background: var(--background);
+  border-color: var(--border);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* ==========================================================================
+   PRINT STYLES
+   ========================================================================== */
+
+@media print {
+  .wp-block-quote {
+    color: black;
+    font-size: 11pt;
+    border-left: 2pt solid black;
+    page-break-inside: avoid;
+  }
+  
+  .wp-block-quote__citation {
+    color: #666;
+  }
+  
+  .wp-block-quote--pullquote {
+    border-color: black;
+  }
+  
+  .wp-block-quote--testimonial {
+    border: 1pt solid black;
+    box-shadow: none;
+  }
+}
+
+/* ==========================================================================
+   REDUCED MOTION
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .wp-block-quote a {
+    transition: none;
+  }
+}
+
+/* ==========================================================================
+   UTILITY CLASSES
+   ========================================================================== */
+
+/* Large quote */
+.wp-block-quote--large {
+  font-size: var(--text-xl);
+  padding: var(--spacing-8);
+}
+
+/* Compact quote */
+.wp-block-quote--compact {
+  padding: var(--spacing-3);
+  margin: var(--spacing-4) 0;
+}
+
+/* No border */
+.wp-block-quote--no-border {
+  border-left: none;
+  padding-left: var(--spacing-4);
+}

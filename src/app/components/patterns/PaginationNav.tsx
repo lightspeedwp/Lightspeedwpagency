@@ -6,6 +6,8 @@
  * Accessible pagination for archive/listing pages.
  * Keyboard navigable with clear focus states.
  * Modern design with soft borders and smooth transitions.
+ * 
+ * All styling in /src/styles/pagination-nav.css (user-editable)
  */
 
 import { Container } from '../common/Container';
@@ -57,90 +59,44 @@ export function PaginationNav({ currentPage, totalPages, onPageChange }: Paginat
 
   const pageNumbers = getPageNumbers();
 
+  // Build Previous button classes
+  const prevButtonClasses = [
+    'pagination-nav__prev-next',
+    currentPage === 1 ? 'pagination-nav__prev-next--disabled' : 'pagination-nav__prev-next--active'
+  ].filter(Boolean).join(' ');
+
+  // Build Next button classes
+  const nextButtonClasses = [
+    'pagination-nav__prev-next',
+    currentPage === totalPages ? 'pagination-nav__prev-next--disabled' : 'pagination-nav__prev-next--active'
+  ].filter(Boolean).join(' ');
+
   return (
     <nav 
       aria-label="Pagination navigation"
-      className="py-12"
+      className="pagination-nav"
     >
       <Container>
-        <div 
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            gap: '16px',
-            flexWrap: 'wrap'
-          }}
-        >
+        <div className="pagination-nav__wrapper">
           {/* Previous Button */}
           <button
-                        onClick={() => onPageChange(currentPage - 1)}
-                        disabled={currentPage === 1}
-                        aria-label="Previous page"
-                        className="px-1.5"
-                        style={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          minWidth: '44px',
-                          minHeight: '44px',
-                          fontSize: 'var(--text-base)',
-                          fontFamily: 'Lexend, sans-serif',
-                          fontWeight: 'var(--font-weight-bold)',
-                          backgroundColor: 'transparent',
-                          color: currentPage === 1 ? 'var(--muted-foreground)' : 'var(--primary)',
-                          border: 'none',
-                          cursor: currentPage === 1 ? 'not-allowed' : 'pointer',
-                          textDecoration: currentPage === 1 ? 'none' : 'underline',
-                          textUnderlineOffset: '4px',
-                          transition: 'all 0.3s ease',
-                          opacity: currentPage === 1 ? 0.5 : 1,
-                        }}
-                        onMouseEnter={(e) => {
-                          if (currentPage !== 1) {
-                            e.currentTarget.style.gap = '8px';
-                          }
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.gap = '4px';
-                        }}
+            onClick={() => handlePageClick(currentPage - 1)}
+            disabled={currentPage === 1}
+            aria-label="Previous page"
+            className={prevButtonClasses}
           >
             <ChevronLeft size={16} strokeWidth={2.5} />
             <span>Previous</span>
           </button>
 
           {/* Page Numbers */}
-          <ul 
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '4px',
-              listStyle: 'none',
-              padding: 0,
-              margin: 0,
-            }}
-          >
+          <ul className="pagination-nav__pages">
             {pageNumbers.map((page, index) => {
               if (page === 'ellipsis') {
                 return (
-                  <li key={`ellipsis-${index}`}>
+                  <li key={`ellipsis-${index}`} className="pagination-nav__page-item">
                     <span
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        padding: '0 6px',
-                        minWidth: '44px',
-                        minHeight: '44px',
-                        fontSize: 'var(--text-base)',
-                        fontFamily: 'Lexend, sans-serif',
-                        fontWeight: 'var(--font-weight-medium)',
-                        color: 'var(--primary)',
-                        border: '1px solid var(--border-soft)',
-                        borderRadius: 'var(--radius)',
-                        backgroundColor: 'transparent',
-                        pointerEvents: 'none'
-                      }}
+                      className="pagination-nav__ellipsis"
                       aria-hidden="true"
                     >
                       ...
@@ -150,49 +106,18 @@ export function PaginationNav({ currentPage, totalPages, onPageChange }: Paginat
               }
 
               const isCurrent = page === currentPage;
+              const buttonClasses = [
+                'pagination-nav__page-button',
+                isCurrent && 'pagination-nav__page-button--current'
+              ].filter(Boolean).join(' ');
+
               return (
-                <li key={page}>
+                <li key={page} className="pagination-nav__page-item">
                   <button
                     onClick={() => handlePageClick(page)}
                     aria-label={`Page ${page}`}
                     aria-current={isCurrent ? 'page' : undefined}
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      padding: '0 6px',
-                      minWidth: '44px',
-                      minHeight: '44px',
-                      fontSize: 'var(--text-base)',
-                      fontFamily: 'Lexend, sans-serif',
-                      fontWeight: 'var(--font-weight-medium)',
-                      backgroundColor: isCurrent ? 'var(--primary)' : 'transparent',
-                      color: isCurrent ? 'var(--primary-foreground)' : 'var(--primary)',
-                      border: `1px solid ${isCurrent ? 'var(--primary)' : 'var(--border-soft)'}`,
-                      borderRadius: 'var(--radius)',
-                      cursor: isCurrent ? 'default' : 'pointer',
-                      transition: 'all 0.3s ease',
-                      boxShadow: isCurrent ? '0 2px 4px rgba(30, 106, 255, 0.2)' : 'none'
-                    }}
-                    onMouseEnter={(e) => {
-                      if (!isCurrent) {
-                        e.currentTarget.style.borderColor = 'var(--primary)';
-                        e.currentTarget.style.backgroundColor = 'rgba(30, 106, 255, 0.05)';
-                      }
-                    }}
-                    onMouseLeave={(e) => {
-                      if (!isCurrent) {
-                        e.currentTarget.style.borderColor = 'var(--border-soft)';
-                        e.currentTarget.style.backgroundColor = 'transparent';
-                      }
-                    }}
-                    onFocus={(e) => {
-                      e.currentTarget.style.outline = '2px solid var(--primary)';
-                      e.currentTarget.style.outlineOffset = '2px';
-                    }}
-                    onBlur={(e) => {
-                      e.currentTarget.style.outline = 'none';
-                    }}
+                    className={buttonClasses}
                   >
                     {page}
                   </button>
@@ -206,32 +131,7 @@ export function PaginationNav({ currentPage, totalPages, onPageChange }: Paginat
             disabled={currentPage === totalPages}
             onClick={() => handlePageClick(currentPage + 1)}
             aria-label="Next page"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '4px',
-              padding: '0',
-              minHeight: '44px',
-              fontSize: 'var(--text-base)',
-              fontFamily: 'Lexend, sans-serif',
-              fontWeight: 'var(--font-weight-bold)',
-              backgroundColor: 'transparent',
-              color: currentPage === totalPages ? 'var(--muted-foreground)' : 'var(--primary)',
-              border: 'none',
-              cursor: currentPage === totalPages ? 'not-allowed' : 'pointer',
-              textDecoration: currentPage === totalPages ? 'none' : 'underline',
-              textUnderlineOffset: '4px',
-              transition: 'all 0.3s ease',
-              opacity: currentPage === totalPages ? 0.5 : 1,
-            }}
-            onMouseEnter={(e) => {
-              if (currentPage !== totalPages) {
-                e.currentTarget.style.gap = '8px';
-              }
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.gap = '4px';
-            }}
+            className={nextButtonClasses}
           >
             <span>Next</span>
             <ChevronRight size={16} strokeWidth={2.5} />

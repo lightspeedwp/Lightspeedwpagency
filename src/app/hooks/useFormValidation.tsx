@@ -1,73 +1,31 @@
-/**
- * Form Validation Hook
- * 
- * Comprehensive form validation with WCAG 2.1 AA/AAA compliance.
- * Provides real-time validation, error messages, and accessibility attributes.
- * 
- * **WCAG 2.1 Compliance:**
- * - Level A: 3.3.1 Error Identification
- * - Level A: 3.3.2 Labels or Instructions
- * - Level AA: 3.3.3 Error Suggestion
- * - Level AA: 3.3.4 Error Prevention
- * - Level AA: 4.1.3 Status Messages (aria-live regions)
- * 
- * **Features:**
- * - Real-time field validation (on blur and on change after first blur)
- * - ARIA error attributes (aria-invalid, aria-describedby, aria-errormessage, aria-required)
- * - Live region announcements for screen readers
- * - Error summary generation for form-level errors
- * - Success state management
- * - Touch tracking (only show errors after field interaction)
- * 
- * **Design System:**
- * - Error messages use Manrope font with --text-small
- * - Error colors use --destructive from CSS variables
- * - All spacing uses design tokens
- * - Icons use inline SVG (no external dependencies)
- * 
- * @example
- * const validation = useFormValidation(
- *   { email: '', password: '' },
- *   {
- *     email: validationRules.email(),
- *     password: validationRules.minLength(8)
- *   }
- * );
- * 
- * <input 
- *   {...validation.getFieldProps('email')}
- *   value={validation.values.email}
- *   onChange={(e) => validation.handleChange('email', e.target.value)}
- *   onBlur={() => validation.handleBlur('email')}
- * />
- * {validation.renderError('email')}
- * 
- * @see {@link /guidelines/accessibility/forms.md}
- */
-
 import { useState } from 'react';
+
+/**
+ * Field Validation Rule
+ * 
+ * Defines validation rules for a single form field.
+ */
+export interface FieldValidationRule {
+  /** Field is required */
+  required?: boolean;
+  /** Pattern validation (email or custom regex) */
+  pattern?: 'email' | RegExp;
+  /** Minimum length */
+  minLength?: number;
+  /** Maximum length */
+  maxLength?: number;
+  /** Custom validation function */
+  validate?: (value: any) => string | null;
+  /** Custom error message */
+  message?: string;
+}
 
 /**
  * Validation Rules Type
  * 
  * Defines validation rules for form fields.
  */
-export interface ValidationRules<T> {
-  [K in keyof T]?: {
-    /** Field is required */
-    required?: boolean;
-    /** Pattern validation (email or custom regex) */
-    pattern?: 'email' | RegExp;
-    /** Minimum length */
-    minLength?: number;
-    /** Maximum length */
-    maxLength?: number;
-    /** Custom validation function */
-    validate?: (value: any) => string | null;
-    /** Custom error message */
-    message?: string;
-  };
-}
+export type ValidationRules<T> = Partial<Record<keyof T, FieldValidationRule>>;
 
 /**
  * Form Validation Hook

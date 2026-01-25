@@ -1,0 +1,48 @@
+/**
+ * Preformatted Block Styles
+ * 
+ * WordPress block: .wp-block-preformatted
+ * 
+ * @see /guidelines/blocks/text/preformatted.md
+ */
+
+.wp-block-preformatted {
+  background: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--spacing-4);
+  margin-bottom: var(--spacing-6);
+  font-family: var(--font-mono, 'Courier New', monospace);
+  font-size: var(--text-base);
+  line-height: 1.6;
+  color: var(--foreground);
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-x: auto;
+}
+
+/* Scrollbar for horizontal overflow */
+.wp-block-preformatted::-webkit-scrollbar {
+  height: 8px;
+}
+
+.wp-block-preformatted::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+.wp-block-preformatted::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: var(--radius);
+}
+
+.wp-block-preformatted::-webkit-scrollbar-thumb:hover {
+  background: var(--muted-foreground);
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+  .wp-block-preformatted {
+    font-size: var(--text-sm);
+    padding: var(--spacing-3);
+  }
+}

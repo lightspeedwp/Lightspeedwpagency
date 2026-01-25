@@ -1,0 +1,240 @@
+/**
+ * Featured Project Showcase Pattern Styles
+ * 
+ * Featured project/case study with stats, testimonial, and CTA.
+ * All styling uses CSS variables for complete user control.
+ * 
+ * User can edit this file to update featured project sections site-wide.
+ */
+
+/* ============================================
+ * MAIN GRID LAYOUT
+ * ============================================ */
+
+.featured-project__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-16);
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .featured-project__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.featured-project__grid--reverse {
+  flex-direction: row-reverse;
+}
+
+/* ============================================
+ * CONTENT COLUMN
+ * ============================================ */
+
+.featured-project__content {
+  /* All spacing handled by child elements */
+}
+
+/* ============================================
+ * BADGE
+ * ============================================ */
+
+.featured-project__badge {
+  /* Layout */
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  
+  /* Spacing */
+  padding: var(--spacing-2) var(--spacing-4);
+  margin-bottom: var(--spacing-6);
+  
+  /* Appearance */
+  background-color: var(--primary-soft);
+  border-radius: var(--radius-full);
+  
+  /* Typography */
+  font-family: var(--font-secondary);
+  font-size: var(--text-small);
+  font-weight: var(--font-weight-semibold);
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ============================================
+ * TITLE
+ * ============================================ */
+
+.featured-project__title {
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-h1);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--foreground);
+  
+  /* Spacing */
+  margin-bottom: var(--spacing-4);
+}
+
+/* ============================================
+ * DESCRIPTION
+ * ============================================ */
+
+.featured-project__description {
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  line-height: 1.8;
+  color: var(--muted-foreground);
+  
+  /* Spacing */
+  margin-bottom: var(--spacing-8);
+}
+
+/* ============================================
+ * STATS GRID
+ * ============================================ */
+
+.featured-project__stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-6);
+  margin-bottom: var(--spacing-8);
+}
+
+.featured-project__stat-value {
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--primary);
+  line-height: 1;
+  
+  /* Spacing */
+  margin-bottom: var(--spacing-2);
+}
+
+.featured-project__stat-label {
+  /* Typography */
+  font-family: var(--font-secondary);
+  font-size: var(--text-small);
+  color: var(--muted-foreground);
+}
+
+/* ============================================
+ * IMAGE COLUMN
+ * ============================================ */
+
+.featured-project__image-wrapper {
+  position: relative;
+}
+
+.featured-project__image-container {
+  /* Layout */
+  overflow: hidden;
+  
+  /* Appearance */
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-soft);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15);
+}
+
+.featured-project__image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ============================================
+ * TESTIMONIAL OVERLAY
+ * ============================================ */
+
+.featured-project__testimonial {
+  /* Position */
+  position: absolute;
+  bottom: -32px;
+  left: -32px;
+  
+  /* Size */
+  max-width: 448px; /* ~28rem */
+  
+  /* Spacing */
+  padding: var(--spacing-6);
+  
+  /* Appearance */
+  background-color: var(--card);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-soft);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+.featured-project__testimonial-header {
+  display: flex;
+  align-items: start;
+  gap: var(--spacing-3);
+  margin-bottom: var(--spacing-3);
+}
+
+/* ============================================
+ * TESTIMONIAL AVATAR
+ * ============================================ */
+
+.featured-project__avatar {
+  /* Size */
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  
+  /* Layout */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Appearance */
+  background-color: var(--primary-soft);
+  border-radius: var(--radius-full);
+}
+
+.featured-project__avatar-initials {
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--primary);
+}
+
+/* ============================================
+ * TESTIMONIAL AUTHOR INFO
+ * ============================================ */
+
+.featured-project__author-name {
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+}
+
+.featured-project__author-role {
+  /* Typography */
+  font-family: var(--font-secondary);
+  font-size: var(--text-small);
+  color: var(--muted-foreground);
+}
+
+/* ============================================
+ * TESTIMONIAL QUOTE
+ * ============================================ */
+
+.featured-project__quote {
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-small);
+  line-height: 1.6;
+  color: var(--muted-foreground);
+  font-style: italic;
+}

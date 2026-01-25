@@ -17,25 +17,24 @@ import { Container } from '../common/Container';
 import { Button } from '../blocks/design/Buttons';
 import { BackToTopButton } from '../blocks/layout/BackToTopButton';
 import { RouteAnnouncer } from '../blocks/utility/RouteAnnouncer';
+import { LogoGrid } from '../patterns/LogoGrid';
+import { NewsletterSignup } from '../patterns/NewsletterSignup';
 import { 
   Code, 
   Palette, 
-  ShoppingCart, 
-  Zap, 
   Shield, 
-  GraduationCap,
-  HelpCircle,
+  Zap, 
+  ShoppingCart,
   RefreshCw,
-  Sparkles,
+  HelpCircle,
+  GraduationCap,
   Target,
   TrendingUp,
   Users,
   Award,
   Heart,
-  ChevronRight,
-  Search,
-  FileText,
-  Globe
+  Sparkles,
+  ChevronRight
 } from 'lucide-react';
 
 // Import centralized data
@@ -65,10 +64,7 @@ const iconMap: Record<string, any> = {
   Users,
   Award,
   Heart,
-  Sparkles,
-  Search,
-  FileText,
-  Globe
+  Sparkles
 };
 
 export function FrontPageTemplate() {
@@ -86,7 +82,7 @@ export function FrontPageTemplate() {
           <Container>
             <div className="wp-block-hero-homepage__content">
               {/* Badge */}
-              <div className="wp-block-hero-homepage__badge">
+              <div className="wp-badge--hero-light" style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-2)', flexWrap: 'nowrap' }}>
                 {iconMap[homepageHero.badge.icon] && 
                   (() => {
                     const BadgeIcon = iconMap[homepageHero.badge.icon];
@@ -131,7 +127,7 @@ export function FrontPageTemplate() {
                   return (
                     <div key={index} className="wp-block-hero-stat">
                       <div className="wp-block-hero-stat__icon">
-                        {StatIcon && <StatIcon size={24} style={{ color: 'white' }} />}
+                        {StatIcon && <StatIcon size={24} />}
                       </div>
                       <div className="wp-block-hero-stat__content">
                         <div className="wp-block-hero-stat__value">{stat.value}</div>
@@ -154,16 +150,14 @@ export function FrontPageTemplate() {
               A few of our happy clients
             </p>
             
-            <div className="wp-block-client-logos">
-              {homepageClients.map((client, index) => (
-                <div key={index} className="wp-block-client-logo">
-                  <img
-                    src={client.logo}
-                    alt={client.name}
-                  />
-                </div>
-              ))}
-            </div>
+            <LogoGrid
+              logos={homepageClients.map(client => ({
+                name: client.name,
+                image: client.logo
+              }))}
+              columns={6}
+              grayscale
+            />
           </Container>
         </section>
 
@@ -174,7 +168,7 @@ export function FrontPageTemplate() {
           <Container>
             {/* Section Header */}
             <div className="wp-block-section-header">
-              <div className="wp-block-section-header__badge">
+              <div className="wp-badge--section">
                 <Target size={14} />
                 Our Services
               </div>
@@ -221,7 +215,7 @@ export function FrontPageTemplate() {
             {/* Section Header */}
             <div className="wp-block-section-header">
               <h2 className="wp-block-section-header__title">
-                Innovative solutions for <span style={{ color: 'var(--primary)' }}>online success</span>
+                Innovative solutions for <span className="wp-block-section-header__title-primary">online success</span>
               </h2>
 
               <p className="wp-block-section-header__description">
@@ -238,7 +232,7 @@ export function FrontPageTemplate() {
                   <div key={index} className="wp-block-solution-card">
                     <div className="wp-block-solution-card__header">
                       <div className="wp-block-solution-card__icon">
-                        {SolutionIcon && <SolutionIcon size={32} style={{ color: 'white' }} />}
+                        {SolutionIcon && <SolutionIcon size={32} />}
                       </div>
                       <h3 className="wp-block-solution-card__title">
                         {solution.title}
@@ -331,7 +325,7 @@ export function FrontPageTemplate() {
           <Container>
             {/* Section Header */}
             <div className="wp-block-section-header">
-              <div className="wp-block-section-header__badge">
+              <div className="wp-badge--section">
                 <Sparkles size={14} />
                 Latest Insights
               </div>
@@ -381,7 +375,7 @@ export function FrontPageTemplate() {
             </div>
 
             {/* View All Posts Button */}
-            <div style={{ textAlign: 'center', marginTop: 'clamp(40px, 6vw, 60px)' }}>
+            <div className="wp-block-blog-preview__view-all">
               <Button
                 variant="outline"
                 size="lg"
@@ -426,33 +420,15 @@ export function FrontPageTemplate() {
             ============================================ */}
         <section className="wp-block-newsletter-homepage">
           <div className="wp-block-newsletter-homepage__content">
-            <h2 className="wp-block-newsletter-homepage__title">
-              {homepageNewsletter.title}
-            </h2>
-
-            <p className="wp-block-newsletter-homepage__description">
-              {homepageNewsletter.description}
-            </p>
-
-            <form className="wp-block-newsletter-form">
-              <input
-                type="email"
-                placeholder={homepageNewsletter.placeholder}
-                aria-label="Email address"
-                required
-              />
-              <Button
-                variant="primary"
-                size="md"
-                type="submit"
-              >
-                {homepageNewsletter.buttonText}
-              </Button>
-            </form>
-
-            <p className="wp-block-newsletter-privacy">
-              {homepageNewsletter.privacyText}
-            </p>
+            <NewsletterSignup
+              title={homepageNewsletter.title}
+              description={homepageNewsletter.description}
+              placeholder={homepageNewsletter.placeholder}
+              buttonText={homepageNewsletter.buttonText}
+              privacyText={homepageNewsletter.privacyText}
+              layout="centered"
+              variant="default"
+            />
           </div>
         </section>
       </main>

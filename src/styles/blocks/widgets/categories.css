@@ -1,0 +1,99 @@
+/**
+ * Categories Block Styles
+ * 
+ * WordPress block: .wp-block-categories
+ * 
+ * @see /guidelines/blocks/widgets/categories.md
+ */
+
+.wp-block-categories {
+  margin-bottom: var(--spacing-6);
+}
+
+/* List Layout */
+.wp-block-categories__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.wp-block-categories__item {
+  /* Category item */
+}
+
+.wp-block-categories__link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-2);
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  color: var(--foreground);
+  text-decoration: none;
+  border-radius: var(--radius);
+  transition: all 0.2s ease;
+}
+
+.wp-block-categories__link:hover {
+  background: var(--muted);
+  color: var(--primary);
+}
+
+.wp-block-categories__link:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.wp-block-categories__name {
+  flex: 1;
+}
+
+.wp-block-categories__count {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  margin-left: var(--spacing-2);
+}
+
+/* Dropdown Layout */
+.wp-block-categories__dropdown {
+  width: 100%;
+  padding: var(--spacing-3);
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  color: var(--foreground);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.wp-block-categories__dropdown:hover {
+  border-color: var(--primary);
+}
+
+.wp-block-categories__dropdown:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-color: var(--primary);
+}
+
+/* Hierarchical Layout */
+.wp-block-categories--hierarchical .wp-block-categories__list {
+  padding-left: 0;
+}
+
+.wp-block-categories--hierarchical .wp-block-categories__item--child {
+  margin-left: var(--spacing-4);
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+  .wp-block-categories__link {
+    font-size: var(--text-sm);
+  }
+}

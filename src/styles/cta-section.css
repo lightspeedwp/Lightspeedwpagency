@@ -1,0 +1,226 @@
+/**
+ * CTA Section Pattern Styles
+ * 
+ * Call-to-action sections with primary and optional secondary buttons.
+ * All styling uses CSS variables for complete user control.
+ * 
+ * User can edit this file to update CTA sections site-wide.
+ */
+
+/* ============================================
+ * CTA SECTION VARIANTS
+ * ============================================ */
+
+/* Default variant */
+.cta-section--default {
+  background-color: var(--muted);
+  color: var(--foreground);
+}
+
+/* Highlighted variant (legacy - use gradient variants instead) */
+.cta-section--highlighted {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+/* ============================================
+ * DECORATIVE ELEMENTS (LEGACY HIGHLIGHTED)
+ * ============================================ */
+
+.cta-section__gradient-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 0%, var(--accent) 100%);
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.cta-section__gradient-orb {
+  position: absolute;
+  bottom: -96px; /* -24 * 4px = -96px */
+  right: -96px;
+  width: 384px; /* 96 * 4px = 384px */
+  height: 384px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.1;
+  filter: blur(80px);
+}
+
+/* ============================================
+ * CONTENT CONTAINER
+ * ============================================ */
+
+.cta-section__container {
+  position: relative;
+  z-index: 10;
+}
+
+.cta-section__content {
+  max-width: 896px; /* 4xl = 896px */
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* ============================================
+ * CTA TITLE (H2)
+ * ============================================ */
+
+.cta-section__title {
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-snug);
+  letter-spacing: var(--letter-spacing-tight);
+  
+  /* Spacing */
+  margin: 0 0 var(--spacing-8) 0;
+}
+
+/* Title color for default variant */
+.cta-section--default .cta-section__title {
+  color: var(--foreground);
+}
+
+/* Title color for highlighted/gradient variants */
+.cta-section--highlighted .cta-section__title,
+[class*="wp-gradient"] .cta-section__title {
+  color: var(--primary-foreground);
+}
+
+/* ============================================
+ * CTA DESCRIPTION (P)
+ * ============================================ */
+
+.cta-section__description {
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-lead);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-relaxed);
+  
+  /* Layout */
+  max-width: 700px;
+  margin: 0 auto var(--spacing-10) auto;
+}
+
+/* Description color for default variant */
+.cta-section--default .cta-section__description {
+  color: var(--muted-foreground);
+}
+
+/* Description color for highlighted/gradient variants */
+.cta-section--highlighted .cta-section__description,
+[class*="wp-gradient"] .cta-section__description {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+/* ============================================
+ * CTA BUTTONS
+ * ============================================ */
+
+.cta-section__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-4);
+  justify-content: center;
+  align-items: center;
+}
+
+/* ============================================
+ * PRIMARY BUTTON (HIGHLIGHTED/GRADIENT)
+ * ============================================ */
+
+.cta-section__button--primary-highlighted {
+  background-color: white;
+  color: var(--foreground);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Gradient variant button colors */
+.wp-gradient-blue .cta-section__button--primary-highlighted {
+  color: #1e40af;
+}
+
+.wp-gradient-purple .cta-section__button--primary-highlighted,
+.wp-gradient-purple-light .cta-section__button--primary-highlighted,
+.wp-gradient-purple-indigo .cta-section__button--primary-highlighted {
+  color: #8b5cf6;
+}
+
+.wp-gradient-red .cta-section__button--primary-highlighted {
+  color: #dc2626;
+}
+
+.wp-gradient-green .cta-section__button--primary-highlighted {
+  color: #10b981;
+}
+
+.wp-gradient-amber .cta-section__button--primary-highlighted {
+  color: #f59e0b;
+}
+
+.wp-gradient-cyan .cta-section__button--primary-highlighted {
+  color: #0891b2;
+}
+
+.wp-gradient-sky .cta-section__button--primary-highlighted {
+  color: #0ea5e9;
+}
+
+.wp-gradient-slate .cta-section__button--primary-highlighted {
+  color: #0f172a;
+}
+
+.wp-gradient-violet .cta-section__button--primary-highlighted {
+  color: #7c3aed;
+}
+
+/* ============================================
+ * SECONDARY BUTTON (HIGHLIGHTED/GRADIENT)
+ * ============================================ */
+
+.cta-section__button--secondary-highlighted {
+  border-color: rgba(255, 255, 255, 0.3);
+  color: white;
+  background-color: transparent;
+}
+
+/* ============================================
+ * TRUST INDICATORS (HIGHLIGHTED VARIANT)
+ * ============================================ */
+
+.cta-section__trust-indicators {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-8);
+  margin-top: var(--spacing-12);
+  padding-top: var(--spacing-8);
+  border-top: 1px solid var(--primary-foreground);
+  opacity: 0.6;
+}
+
+.cta-section__trust-item {
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-medium);
+  color: var(--primary-foreground);
+  
+  /* Layout */
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  
+  /* Visual */
+  opacity: 0.9;
+}
+
+.cta-section__trust-check {
+  font-size: var(--text-lead);
+}

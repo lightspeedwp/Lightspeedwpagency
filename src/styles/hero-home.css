@@ -1,0 +1,183 @@
+/**
+ * Hero Home Pattern Styles
+ * 
+ * Full-height homepage hero with centered content, stats grid, and gradient overlay.
+ * All styling uses CSS variables for complete user control.
+ * 
+ * User can edit this file to update homepage hero styling site-wide.
+ */
+
+/* ============================================
+ * HERO HOME SECTION
+ * ============================================ */
+
+.hero-home-section {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ============================================
+ * GRADIENT OVERLAY
+ * ============================================ */
+
+.hero-home__gradient-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 0%, var(--accent) 100%);
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+/* ============================================
+ * CONTENT CONTAINER
+ * ============================================ */
+
+.hero-home__container {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding-top: var(--spacing-24);
+  padding-bottom: var(--spacing-24);
+}
+
+/* ============================================
+ * CATEGORY BADGE
+ * ============================================ */
+
+.hero-home__badge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--spacing-3) var(--spacing-6);
+  margin-bottom: var(--spacing-8);
+  
+  /* Colors */
+  background-color: var(--primary-foreground);
+  color: var(--primary);
+  
+  /* Border radius */
+  border-radius: var(--radius-xl);
+  
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  
+  /* Visual */
+  opacity: 0.95;
+}
+
+/* ============================================
+ * HERO TITLE (H1)
+ * ============================================ */
+
+.hero-home__title {
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-h1);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+  
+  /* Spacing */
+  margin: 0 0 var(--spacing-8) 0;
+}
+
+/* ============================================
+ * HERO DESCRIPTION (P)
+ * ============================================ */
+
+.hero-home__description {
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-lead);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-relaxed);
+  
+  /* Layout */
+  max-width: 750px;
+  margin: 0 auto var(--spacing-12) auto;
+  
+  /* Visual */
+  opacity: 0.95;
+}
+
+/* ============================================
+ * BUTTONS CONTAINER
+ * ============================================ */
+
+.hero-home__buttons {
+  margin-bottom: var(--spacing-20);
+}
+
+/* ============================================
+ * STATS GRID
+ * ============================================ */
+
+.hero-home__stats {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-12);
+  padding-top: var(--spacing-12);
+  
+  /* Border */
+  border-top: 1px solid var(--primary-foreground);
+  
+  /* Visual */
+  opacity: 0.8;
+}
+
+/* Responsive: 2 columns on tablet */
+@media (min-width: 640px) {
+  .hero-home__stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Responsive: 3 columns on desktop */
+@media (min-width: 768px) {
+  .hero-home__stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ============================================
+ * STATS ITEM
+ * ============================================ */
+
+.hero-home__stat-item {
+  /* Stats items are simple containers */
+}
+
+/* ============================================
+ * STAT VALUE
+ * ============================================ */
+
+.hero-home__stat-value {
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1;
+  
+  /* Spacing */
+  margin-bottom: var(--spacing-3);
+}
+
+/* ============================================
+ * STAT LABEL
+ * ============================================ */
+
+.hero-home__stat-label {
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  
+  /* Visual */
+  opacity: 0.85;
+}

@@ -115,7 +115,7 @@ export function FormField({
       <label
         htmlFor={fieldId}
         style={{
-          fontFamily: 'Lexend, sans-serif',
+          fontFamily: 'var(--font-primary)',
           fontSize: 'var(--text-base)',
           fontWeight: 'var(--font-weight-medium)',
           color: disabled ? 'var(--muted-foreground)' : 'var(--foreground)',
@@ -161,7 +161,7 @@ export function FormField({
           style={{
             width: '100%',
             padding: type === 'password' ? '12px 48px 12px 16px' : '12px 40px 12px 16px',
-            fontFamily: 'Lexend, sans-serif',
+            fontFamily: 'var(--font-primary)',
             fontSize: 'var(--text-base)',
             fontWeight: 'var(--font-weight-regular)',
             color: disabled ? 'var(--muted-foreground)' : 'var(--foreground)',
@@ -252,7 +252,7 @@ export function FormField({
           style={{
             display: 'flex',
             justifyContent: 'flex-end',
-            fontFamily: 'Manrope, sans-serif',
+            fontFamily: 'var(--font-secondary)',
             fontSize: 'var(--text-small)',
             color:
               value.length > maxLength * 0.9
@@ -278,7 +278,7 @@ export function FormField({
             backgroundColor: 'var(--destructive-bg)',
             border: '1px solid var(--destructive)',
             borderRadius: 'var(--radius)',
-            fontFamily: 'Lexend, sans-serif',
+            fontFamily: 'var(--font-primary)',
             fontSize: 'var(--text-small)',
             color: 'var(--destructive)',
             animation: 'slideDown 200ms ease-out',
@@ -298,7 +298,7 @@ export function FormField({
         <div
           id={helpId}
           style={{
-            fontFamily: 'Manrope, sans-serif',
+            fontFamily: 'var(--font-secondary)',
             fontSize: 'var(--text-small)',
             color: 'var(--muted-foreground)',
             lineHeight: '1.5',
@@ -315,7 +315,7 @@ export function FormField({
             display: 'flex',
             alignItems: 'center',
             gap: '8px',
-            fontFamily: 'Lexend, sans-serif',
+            fontFamily: 'var(--font-primary)',
             fontSize: 'var(--text-small)',
             color: 'var(--success)',
             animation: 'fadeIn 200ms ease-in-out',
@@ -419,6 +419,9 @@ export function TextAreaField({
   const fieldId = `field-${name}`;
   const errorId = `${fieldId}-error`;
   const helpId = `${fieldId}-help`;
+  
+  // Ensure value is always a string
+  const safeValue = value || '';
 
   const getBorderColor = () => {
     if (error) return 'var(--destructive)';
@@ -439,7 +442,7 @@ export function TextAreaField({
       <label
         htmlFor={fieldId}
         style={{
-          fontFamily: 'Lexend, sans-serif',
+          fontFamily: 'var(--font-primary)',
           fontSize: 'var(--text-base)',
           fontWeight: 'var(--font-weight-medium)',
           color: disabled ? 'var(--muted-foreground)' : 'var(--foreground)',
@@ -463,7 +466,7 @@ export function TextAreaField({
       <textarea
         id={fieldId}
         name={name}
-        value={value}
+        value={safeValue}
         placeholder={placeholder}
         onChange={onChange}
         onBlur={(e) => {
@@ -481,7 +484,7 @@ export function TextAreaField({
         style={{
           width: '100%',
           padding: '12px 16px',
-          fontFamily: 'Lexend, sans-serif',
+          fontFamily: 'var(--font-primary)',
           fontSize: 'var(--text-base)',
           fontWeight: 'var(--font-weight-regular)',
           color: disabled ? 'var(--muted-foreground)' : 'var(--foreground)',
@@ -502,16 +505,16 @@ export function TextAreaField({
           style={{
             display: 'flex',
             justifyContent: 'flex-end',
-            fontFamily: 'Manrope, sans-serif',
+            fontFamily: 'var(--font-secondary)',
             fontSize: 'var(--text-small)',
             color:
-              value.length > maxLength * 0.9
+              safeValue.length > maxLength * 0.9
                 ? 'var(--destructive)'
                 : 'var(--muted-foreground)',
             transition: 'color 200ms ease',
           }}
         >
-          {value.length} / {maxLength}
+          {safeValue.length} / {maxLength}
         </div>
       )}
 
@@ -528,7 +531,7 @@ export function TextAreaField({
             backgroundColor: 'var(--destructive-bg)',
             border: '1px solid var(--destructive)',
             borderRadius: 'var(--radius)',
-            fontFamily: 'Lexend, sans-serif',
+            fontFamily: 'var(--font-primary)',
             fontSize: 'var(--text-small)',
             color: 'var(--destructive)',
             animation: 'slideDown 200ms ease-out',
@@ -548,7 +551,7 @@ export function TextAreaField({
         <div
           id={helpId}
           style={{
-            fontFamily: 'Manrope, sans-serif',
+            fontFamily: 'var(--font-secondary)',
             fontSize: 'var(--text-small)',
             color: 'var(--muted-foreground)',
             lineHeight: '1.5',
@@ -559,13 +562,13 @@ export function TextAreaField({
       )}
 
       {/* Success Message */}
-      {showSuccess && !error && value.length > 0 && (
+      {showSuccess && !error && safeValue.length > 0 && (
         <div
           style={{
             display: 'flex',
             alignItems: 'center',
             gap: '8px',
-            fontFamily: 'Lexend, sans-serif',
+            fontFamily: 'var(--font-primary)',
             fontSize: 'var(--text-small)',
             color: 'var(--success)',
             animation: 'fadeIn 200ms ease-in-out',

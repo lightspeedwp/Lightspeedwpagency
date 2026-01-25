@@ -1,243 +1,185 @@
 /**
  * Testimonial Grid Pattern
  * 
- * WordPress Pattern: lsx-design/content/testimonial-grid
+ * WordPress pattern: lsx-design/content/testimonial-grid
  * 
- * A grid of client testimonials with photos, quotes, and attribution.
- * Maps to WordPress Group block with nested Quote blocks.
+ * Displays customer testimonials, reviews, and quotes in a responsive grid.
+ * Commonly used for social proof on service pages, about pages, and homepage.
  * 
- * Design Token Compliance:
- * - Typography: var(--text-*) only
- * - Colors: var(--*) semantic roles
- * - Spacing: Tailwind classes only
- * - Fonts: Lexend (headings), Manrope (body)
+ * All styling in /src/styles/testimonial-grid.css (user-editable)
  * 
- * @see /guidelines/patterns/TestimonialGrid.md
+ * **Usage:**
+ * ```tsx
+ * <TestimonialGrid
+ *   testimonials={[
+ *     {
+ *       quote: 'Amazing service! Highly recommend.',
+ *       author: 'John Doe',
+ *       role: 'CEO',
+ *       company: 'Acme Corp',
+ *       avatar: '/images/john.jpg',
+ *       rating: 5
+ *     }
+ *   ]}
+ *   columns={3}
+ *   variant="cards"
+ * />
+ * ```
+ * 
+ * @see {@link /guidelines/patterns/TestimonialGrid.md}
  */
 
-import { Quote } from 'lucide-react';
-import { useStaggerReveal } from '../../hooks/useScrollReveal';
+import { Star } from 'lucide-react';
 
 export interface Testimonial {
-  id: string;
+  /** Testimonial quote/text */
   quote: string;
+  /** Author name */
   author: string;
-  role: string;
-  company: string;
+  /** Author role/title */
+  role?: string;
+  /** Author company */
+  company?: string;
+  /** Author avatar image URL */
   avatar?: string;
+  /** Rating (1-5 stars) */
   rating?: number;
+  /** Date of testimonial */
+  date?: string;
+  /** Optional logo of author's company */
+  companyLogo?: string;
 }
 
 export interface TestimonialGridProps {
-  /** Section heading */
-  heading?: string;
-  /** Section description */
-  description?: string;
   /** Array of testimonials */
   testimonials: Testimonial[];
-  /** Grid columns (default: 3) */
-  columns?: {
-    mobile?: 1 | 2;
-    tablet?: 2 | 3;
-    desktop?: 2 | 3 | 4;
-  };
-  /** Show ratings (default: true) */
-  showRatings?: boolean;
-  /** Show avatars (default: true) */
-  showAvatars?: boolean;
+  /** Number of columns (1-3, default: 3) */
+  columns?: 1 | 2 | 3;
+  /** Visual variant */
+  variant?: 'default' | 'cards' | 'minimal' | 'featured';
+  /** Show ratings */
+  showRating?: boolean;
+  /** Show avatars */
+  showAvatar?: boolean;
+  /** Show company logos */
+  showCompanyLogo?: boolean;
+  /** Max width constraint */
+  maxWidth?: '4xl' | '5xl' | '6xl' | 'none';
+  /** Custom gap between testimonials */
+  gap?: string;
 }
 
 export function TestimonialGrid({
-  heading = "What Our Clients Say",
-  description,
   testimonials,
-  columns = { mobile: 1, tablet: 2, desktop: 3 },
-  showRatings = true,
-  showAvatars = true,
+  columns = 3,
+  variant = 'cards',
+  showRating = true,
+  showAvatar = true,
+  showCompanyLogo = false,
+  maxWidth = '6xl',
+  gap = 'var(--spacing-8)'
 }: TestimonialGridProps) {
-  // Grid column classes
-  const gridCols = `grid-cols-${columns.mobile || 1} md:grid-cols-${columns.tablet || 2} lg:grid-cols-${columns.desktop || 3}`;
+  // Build grid classes
+  const gridClasses = [
+    'testimonial-grid',
+    `testimonial-grid--${columns}-col`
+  ].filter(Boolean).join(' ');
 
-  // Scroll reveal with stagger for testimonial cards
-  const { containerRef, itemStyle } = useStaggerReveal({
-    stagger: 70,        // 70ms delay between cards (medium stagger)
-    animation: 'fade-up', // Fade and slide up
-    duration: 550,      // 550ms animation duration
-    threshold: 0.1      // Trigger when 10% visible
-  });
+  // Max width class
+  const maxWidthClass = maxWidth !== 'none' ? `wp-max-w-${maxWidth}` : '';
+
+  // Render stars for rating
+  const renderStars = (rating: number) => {
+    return (
+      <div className="testimonial-card__rating">
+        {[...Array(5)].map((_, i) => {
+          const starClasses = [
+            'testimonial-card__star',
+            i < rating ? 'testimonial-card__star--filled' : 'testimonial-card__star--empty'
+          ].filter(Boolean).join(' ');
+
+          return (
+            <Star
+              key={i}
+              size={16}
+              className={starClasses}
+            />
+          );
+        })}
+      </div>
+    );
+  };
 
   return (
-    <div className="w-full">
-      {/* Section Header */}
-      {(heading || description) && (
-        <div className="text-center mb-12">
-          {heading && (
-            <h2
-              style={{
-                fontFamily: 'Lexend, sans-serif',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 'var(--font-weight-semibold)',
-                color: 'var(--foreground)',
-                marginBottom: description ? '16px' : '0',
-              }}
-            >
-              {heading}
-            </h2>
-          )}
-          {description && (
-            <p
-              style={{
-                fontFamily: 'Manrope, sans-serif',
-                fontSize: 'var(--text-lg)',
-                color: 'var(--muted-foreground)',
-                maxWidth: '800px',
-                margin: '0 auto',
-              }}
-            >
-              {description}
-            </p>
-          )}
-        </div>
-      )}
+    <div className={maxWidthClass}>
+      <div
+        className={gridClasses}
+        style={{ gap }}
+      >
+        {testimonials.map((testimonial, index) => {
+          // Build card classes
+          const cardClasses = [
+            'testimonial-card',
+            `testimonial-card--${variant}`
+          ].filter(Boolean).join(' ');
 
-      {/* Testimonials Grid */}
-      <div className={`grid ${gridCols} gap-8`} ref={containerRef}>
-        {testimonials.map((testimonial, index) => (
-          <div
-            key={testimonial.id}
-            className="relative"
-            style={{
-              backgroundColor: 'var(--card)',
-              border: '1px solid var(--border-soft)',
-              borderRadius: 'var(--radius-lg)',
-              padding: '32px',
-              transition: 'all var(--transition-base)',
-              ...itemStyle(index),
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = 'var(--primary)';
-              e.currentTarget.style.transform = 'translateY(-4px)';
-              e.currentTarget.style.boxShadow = '0 12px 24px -8px var(--shadow)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = 'var(--border-soft)';
-              e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = 'none';
-            }}
-          >
-            {/* Quote Icon */}
+          return (
             <div
-              style={{
-                width: '48px',
-                height: '48px',
-                borderRadius: 'var(--radius-lg)',
-                backgroundColor: 'var(--primary)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginBottom: '24px',
-              }}
+              key={index}
+              className={cardClasses}
             >
-              <Quote size={24} style={{ color: 'var(--primary-foreground)' }} />
-            </div>
+              {/* Rating */}
+              {showRating && testimonial.rating && renderStars(testimonial.rating)}
 
-            {/* Rating Stars */}
-            {showRatings && testimonial.rating && (
-              <div className="flex gap-1 mb-4">
-                {Array.from({ length: 5 }).map((_, index) => (
-                  <svg
-                    key={index}
-                    width="16"
-                    height="16"
-                    viewBox="0 0 16 16"
-                    fill={index < testimonial.rating! ? 'var(--warning)' : 'var(--muted)'}
-                    style={{ flexShrink: 0 }}
-                  >
-                    <path d="M8 0l2.163 5.455L16 6.91l-4.5 4.095L12.326 16 8 13.455 3.674 16 4.5 11.005 0 6.91l5.837-1.455z" />
-                  </svg>
-                ))}
-              </div>
-            )}
+              {/* Quote */}
+              <blockquote className="testimonial-card__quote">
+                "{testimonial.quote}"
+              </blockquote>
 
-            {/* Quote */}
-            <blockquote
-              style={{
-                fontFamily: 'Manrope, sans-serif',
-                fontSize: 'var(--text-base)',
-                lineHeight: '1.7',
-                color: 'var(--foreground)',
-                marginBottom: '24px',
-                fontStyle: 'italic',
-              }}
-            >
-              "{testimonial.quote}"
-            </blockquote>
+              {/* Author Info */}
+              <div className="testimonial-card__author">
+                {/* Avatar */}
+                {showAvatar && testimonial.avatar && (
+                  <img
+                    src={testimonial.avatar}
+                    alt={testimonial.author}
+                    className="testimonial-card__avatar"
+                  />
+                )}
 
-            {/* Author Info */}
-            <div className="flex items-center gap-4">
-              {showAvatars && testimonial.avatar && (
-                <img
-                  src={testimonial.avatar}
-                  alt={testimonial.author}
-                  style={{
-                    width: '56px',
-                    height: '56px',
-                    borderRadius: '50%',
-                    objectFit: 'cover',
-                    border: '2px solid var(--border)',
-                  }}
-                />
-              )}
-              {!testimonial.avatar && showAvatars && (
-                <div
-                  style={{
-                    width: '56px',
-                    height: '56px',
-                    borderRadius: '50%',
-                    backgroundColor: 'var(--muted)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    flexShrink: 0,
-                  }}
-                >
-                  <span
-                    style={{
-                      fontFamily: 'Lexend, sans-serif',
-                      fontSize: 'var(--text-lg)',
-                      fontWeight: 'var(--font-weight-semibold)',
-                      color: 'var(--muted-foreground)',
-                    }}
-                  >
-                    {testimonial.author.charAt(0)}
-                  </span>
+                {/* Author Details */}
+                <div className="testimonial-card__author-details">
+                  <div className="testimonial-card__author-name">
+                    {testimonial.author}
+                  </div>
+
+                  {(testimonial.role || testimonial.company) && (
+                    <div className="testimonial-card__author-role">
+                      {testimonial.role}
+                      {testimonial.role && testimonial.company && ' at '}
+                      {testimonial.company}
+                    </div>
+                  )}
+
+                  {testimonial.date && (
+                    <div className="testimonial-card__author-date">
+                      {testimonial.date}
+                    </div>
+                  )}
                 </div>
-              )}
-              <div>
-                <p
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-base)',
-                    fontWeight: 'var(--font-weight-semibold)',
-                    color: 'var(--foreground)',
-                    marginBottom: '4px',
-                  }}
-                >
-                  {testimonial.author}
-                </p>
-                <p
-                  style={{
-                    fontFamily: 'Manrope, sans-serif',
-                    fontSize: 'var(--text-small)',
-                    color: 'var(--muted-foreground)',
-                  }}
-                >
-                  {testimonial.role} at {testimonial.company}
-                </p>
+
+                {/* Company Logo */}
+                {showCompanyLogo && testimonial.companyLogo && (
+                  <img
+                    src={testimonial.companyLogo}
+                    alt={`${testimonial.company} logo`}
+                    className="testimonial-card__company-logo"
+                  />
+                )}
               </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );

@@ -190,7 +190,7 @@ export function Toast({
             <h3
               className="mb-1"
               style={{
-                fontFamily: 'Lexend, sans-serif',
+                fontFamily: 'var(--font-primary)',
                 fontSize: 'var(--text-base)',
                 fontWeight: 'var(--font-weight-semibold)',
                 color: 'var(--foreground)',
@@ -203,7 +203,7 @@ export function Toast({
 
           <p
             style={{
-              fontFamily: 'Manrope, sans-serif',
+              fontFamily: 'var(--font-secondary)',
               fontSize: 'var(--text-small)',
               color: 'var(--muted-foreground)',
               margin: 0,
@@ -222,7 +222,7 @@ export function Toast({
               }}
               className="mt-2"
               style={{
-                fontFamily: 'Lexend, sans-serif',
+                fontFamily: 'var(--font-primary)',
                 fontSize: 'var(--text-small)',
                 fontWeight: 'var(--font-weight-semibold)',
                 color: config.iconColor,

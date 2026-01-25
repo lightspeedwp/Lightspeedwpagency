@@ -32,7 +32,7 @@ export function DesignSystemTest() {
             <div className="text-center max-w-4xl mx-auto">
               <h1 style={{
                 fontSize: 'var(--text-h1)',
-                fontFamily: 'Lexend, sans-serif',
+                fontFamily: 'var(--font-primary)',
                 fontWeight: 'var(--font-weight-bold)',
                 color: 'var(--foreground)',
                 lineHeight: 'var(--line-height-tight)',
@@ -43,7 +43,7 @@ export function DesignSystemTest() {
               
               <p style={{
                 fontSize: 'var(--text-lead)',
-                fontFamily: 'Lexend, sans-serif',
+                fontFamily: 'var(--font-primary)',
                 fontWeight: 'var(--font-weight-regular)',
                 color: 'var(--muted-foreground)',
                 lineHeight: 'var(--line-height-normal)',
@@ -60,7 +60,7 @@ export function DesignSystemTest() {
                   color: 'var(--primary-foreground)',
                   borderRadius: 'var(--radius)',
                   fontSize: 'var(--text-small)',
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontWeight: 'var(--font-weight-medium)'
                 }}
               >
@@ -76,7 +76,7 @@ export function DesignSystemTest() {
           <Container>
             <h2 style={{
               fontSize: 'var(--text-h2)',
-              fontFamily: 'Lexend, sans-serif',
+              fontFamily: 'var(--font-primary)',
               fontWeight: 'var(--font-weight-semibold)',
               color: 'var(--foreground)',
               marginBottom: '32px'
@@ -96,7 +96,7 @@ export function DesignSystemTest() {
               >
                 <div style={{
                   fontSize: 'var(--text-small)',
-                  fontFamily: 'Manrope, sans-serif',
+                  fontFamily: 'var(--font-secondary)',
                   color: 'var(--muted-foreground)',
                   marginBottom: '8px'
                 }}>
@@ -104,7 +104,7 @@ export function DesignSystemTest() {
                 </div>
                 <h1 style={{
                   fontSize: 'var(--text-h1)',
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontWeight: 'var(--font-weight-bold)',
                   color: 'var(--foreground)',
                   lineHeight: 'var(--line-height-tight)'
@@ -124,7 +124,7 @@ export function DesignSystemTest() {
               >
                 <div style={{
                   fontSize: 'var(--text-small)',
-                  fontFamily: 'Manrope, sans-serif',
+                  fontFamily: 'var(--font-secondary)',
                   color: 'var(--muted-foreground)',
                   marginBottom: '8px'
                 }}>
@@ -132,7 +132,7 @@ export function DesignSystemTest() {
                 </div>
                 <h2 style={{
                   fontSize: 'var(--text-h2)',
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontWeight: 'var(--font-weight-semibold)',
                   color: 'var(--foreground)',
                   lineHeight: 'var(--line-height-snug)'
@@ -152,7 +152,7 @@ export function DesignSystemTest() {
               >
                 <div style={{
                   fontSize: 'var(--text-small)',
-                  fontFamily: 'Manrope, sans-serif',
+                  fontFamily: 'var(--font-secondary)',
                   color: 'var(--muted-foreground)',
                   marginBottom: '8px'
                 }}>
@@ -160,7 +160,7 @@ export function DesignSystemTest() {
                 </div>
                 <h3 style={{
                   fontSize: 'var(--text-h3)',
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontWeight: 'var(--font-weight-semibold)',
                   color: 'var(--foreground)',
                   lineHeight: 'var(--line-height-snug)'
@@ -180,7 +180,7 @@ export function DesignSystemTest() {
               >
                 <div style={{
                   fontSize: 'var(--text-small)',
-                  fontFamily: 'Manrope, sans-serif',
+                  fontFamily: 'var(--font-secondary)',
                   color: 'var(--muted-foreground)',
                   marginBottom: '8px'
                 }}>
@@ -188,7 +188,7 @@ export function DesignSystemTest() {
                 </div>
                 <p style={{
                   fontSize: 'var(--text-base)',
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontWeight: 'var(--font-weight-regular)',
                   color: 'var(--foreground)',
                   lineHeight: 'var(--line-height-normal)'
@@ -208,7 +208,7 @@ export function DesignSystemTest() {
               >
                 <div style={{
                   fontSize: 'var(--text-small)',
-                  fontFamily: 'Manrope, sans-serif',
+                  fontFamily: 'var(--font-secondary)',
                   color: 'var(--muted-foreground)',
                   marginBottom: '8px'
                 }}>
@@ -216,7 +216,7 @@ export function DesignSystemTest() {
                 </div>
                 <p style={{
                   fontSize: 'var(--text-lg)',
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontWeight: 'var(--font-weight-regular)',
                   color: 'var(--foreground)',
                   lineHeight: 'var(--line-height-normal)'
@@ -236,7 +236,7 @@ export function DesignSystemTest() {
               >
                 <div style={{
                   fontSize: 'var(--text-small)',
-                  fontFamily: 'Manrope, sans-serif',
+                  fontFamily: 'var(--font-secondary)',
                   color: 'var(--muted-foreground)',
                   marginBottom: '8px'
                 }}>
@@ -244,7 +244,7 @@ export function DesignSystemTest() {
                 </div>
                 <p style={{
                   fontSize: 'var(--text-small)',
-                  fontFamily: 'Manrope, sans-serif',
+                  fontFamily: 'var(--font-secondary)',
                   fontWeight: 'var(--font-weight-regular)',
                   color: 'var(--muted-foreground)',
                   lineHeight: 'var(--line-height-normal)'
@@ -261,7 +261,7 @@ export function DesignSystemTest() {
           <Container>
             <h2 style={{
               fontSize: 'var(--text-h2)',
-              fontFamily: 'Lexend, sans-serif',
+              fontFamily: 'var(--font-primary)',
               fontWeight: 'var(--font-weight-semibold)',
               color: 'var(--foreground)',
               marginBottom: '32px'
@@ -281,7 +281,7 @@ export function DesignSystemTest() {
               >
                 <div style={{
                   fontSize: 'var(--text-base)',
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontWeight: 'var(--font-weight-semibold)',
                   marginBottom: '4px'
                 }}>
@@ -289,7 +289,7 @@ export function DesignSystemTest() {
                 </div>
                 <div style={{
                   fontSize: 'var(--text-small)',
-                  fontFamily: 'Manrope, sans-serif',
+                  fontFamily: 'var(--font-secondary)',
                   opacity: 0.9
                 }}>
                   var(--primary)
@@ -307,7 +307,7 @@ export function DesignSystemTest() {
               >
                 <div style={{
                   fontSize: 'var(--text-base)',
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontWeight: 'var(--font-weight-semibold)',
                   marginBottom: '4px'
                 }}>
@@ -315,7 +315,7 @@ export function DesignSystemTest() {
                 </div>
                 <div style={{
                   fontSize: 'var(--text-small)',
-                  fontFamily: 'Manrope, sans-serif',
+                  fontFamily: 'var(--font-secondary)',
                   opacity: 0.9
                 }}>
                   var(--secondary)
@@ -333,7 +333,7 @@ export function DesignSystemTest() {
               >
                 <div style={{
                   fontSize: 'var(--text-base)',
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontWeight: 'var(--font-weight-semibold)',
                   marginBottom: '4px'
                 }}>
@@ -341,7 +341,7 @@ export function DesignSystemTest() {
                 </div>
                 <div style={{
                   fontSize: 'var(--text-small)',
-                  fontFamily: 'Manrope, sans-serif',
+                  fontFamily: 'var(--font-secondary)',
                   opacity: 0.9
                 }}>
                   var(--accent)
@@ -359,7 +359,7 @@ export function DesignSystemTest() {
               >
                 <div style={{
                   fontSize: 'var(--text-base)',
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontWeight: 'var(--font-weight-semibold)',
                   marginBottom: '4px'
                 }}>
@@ -367,7 +367,7 @@ export function DesignSystemTest() {
                 </div>
                 <div style={{
                   fontSize: 'var(--text-small)',
-                  fontFamily: 'Manrope, sans-serif'
+                  fontFamily: 'var(--font-secondary)'
                 }}>
                   var(--muted)
                 </div>
@@ -384,7 +384,7 @@ export function DesignSystemTest() {
               >
                 <div style={{
                   fontSize: 'var(--text-base)',
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontWeight: 'var(--font-weight-semibold)',
                   marginBottom: '4px'
                 }}>
@@ -392,7 +392,7 @@ export function DesignSystemTest() {
                 </div>
                 <div style={{
                   fontSize: 'var(--text-small)',
-                  fontFamily: 'Manrope, sans-serif',
+                  fontFamily: 'var(--font-secondary)',
                   opacity: 0.9
                 }}>
                   var(--destructive)
@@ -411,7 +411,7 @@ export function DesignSystemTest() {
               >
                 <div style={{
                   fontSize: 'var(--text-base)',
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontWeight: 'var(--font-weight-semibold)',
                   marginBottom: '4px'
                 }}>
@@ -419,7 +419,7 @@ export function DesignSystemTest() {
                 </div>
                 <div style={{
                   fontSize: 'var(--text-small)',
-                  fontFamily: 'Manrope, sans-serif',
+                  fontFamily: 'var(--font-secondary)',
                   color: 'var(--muted-foreground)'
                 }}>
                   var(--card)
@@ -434,7 +434,7 @@ export function DesignSystemTest() {
           <Container>
             <h2 style={{
               fontSize: 'var(--text-h2)',
-              fontFamily: 'Lexend, sans-serif',
+              fontFamily: 'var(--font-primary)',
               fontWeight: 'var(--font-weight-semibold)',
               color: 'var(--foreground)',
               marginBottom: '32px'
@@ -450,7 +450,7 @@ export function DesignSystemTest() {
                   backgroundColor: 'var(--primary)',
                   color: 'var(--primary-foreground)',
                   fontSize: 'var(--text-base)',
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontWeight: 'var(--font-weight-medium)',
                   borderRadius: 'var(--radius)',
                   border: 'none',
@@ -468,7 +468,7 @@ export function DesignSystemTest() {
                   backgroundColor: 'var(--secondary)',
                   color: 'var(--secondary-foreground)',
                   fontSize: 'var(--text-base)',
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontWeight: 'var(--font-weight-medium)',
                   borderRadius: 'var(--radius)',
                   border: 'none',
@@ -486,7 +486,7 @@ export function DesignSystemTest() {
                   backgroundColor: 'transparent',
                   color: 'var(--foreground)',
                   fontSize: 'var(--text-base)',
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontWeight: 'var(--font-weight-medium)',
                   borderRadius: 'var(--radius)',
                   border: '1px solid var(--border)',
@@ -504,7 +504,7 @@ export function DesignSystemTest() {
                   backgroundColor: 'var(--destructive)',
                   color: 'var(--destructive-foreground)',
                   fontSize: 'var(--text-base)',
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontWeight: 'var(--font-weight-medium)',
                   borderRadius: 'var(--radius)',
                   border: 'none',
@@ -523,7 +523,7 @@ export function DesignSystemTest() {
           <Container>
             <h2 style={{
               fontSize: 'var(--text-h2)',
-              fontFamily: 'Lexend, sans-serif',
+              fontFamily: 'var(--font-primary)',
               fontWeight: 'var(--font-weight-semibold)',
               color: 'var(--foreground)',
               marginBottom: '32px'
@@ -572,7 +572,7 @@ export function DesignSystemTest() {
                     </div>
                     <p style={{
                       fontSize: 'var(--text-base)',
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontWeight: 'var(--font-weight-regular)',
                       color: 'var(--foreground)',
                       lineHeight: 'var(--line-height-normal)',
@@ -592,7 +592,7 @@ export function DesignSystemTest() {
           <Container>
             <h2 style={{
               fontSize: 'var(--text-h2)',
-              fontFamily: 'Lexend, sans-serif',
+              fontFamily: 'var(--font-primary)',
               fontWeight: 'var(--font-weight-semibold)',
               color: 'var(--foreground)',
               marginBottom: '32px'
@@ -612,7 +612,7 @@ export function DesignSystemTest() {
               >
                 <h3 style={{
                   fontSize: 'var(--text-h4)',
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontWeight: 'var(--font-weight-semibold)',
                   color: 'var(--foreground)',
                   marginBottom: '16px'
@@ -623,7 +623,7 @@ export function DesignSystemTest() {
                   className="pl-5"
                   style={{
                     fontSize: 'var(--text-base)',
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     color: 'var(--foreground)',
                     lineHeight: 'var(--line-height-relaxed)',
                     margin: 0
@@ -648,7 +648,7 @@ export function DesignSystemTest() {
               >
                 <h3 style={{
                   fontSize: 'var(--text-h4)',
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontWeight: 'var(--font-weight-semibold)',
                   color: 'var(--foreground)',
                   marginBottom: '16px'
@@ -659,7 +659,7 @@ export function DesignSystemTest() {
                   className="pl-5"
                   style={{
                     fontSize: 'var(--text-base)',
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     color: 'var(--foreground)',
                     lineHeight: 'var(--line-height-relaxed)',
                     margin: 0
@@ -684,7 +684,7 @@ export function DesignSystemTest() {
                 <div className="grid grid-cols-1 gap-4">
                   <h3 style={{
                     fontSize: 'var(--text-h4)',
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontWeight: 'var(--font-weight-semibold)',
                     color: 'var(--foreground)',
                     marginBottom: '16px'
@@ -695,7 +695,7 @@ export function DesignSystemTest() {
                     className="pl-5"
                     style={{
                       fontSize: 'var(--text-base)',
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       color: 'var(--foreground)',
                       lineHeight: 'var(--line-height-relaxed)',
                       margin: 0
@@ -725,7 +725,7 @@ export function DesignSystemTest() {
             >
               <p style={{
                 fontSize: 'var(--text-base)',
-                fontFamily: 'Lexend, sans-serif',
+                fontFamily: 'var(--font-primary)',
                 fontWeight: 'var(--font-weight-regular)',
                 color: 'var(--muted-foreground)',
                 lineHeight: 'var(--line-height-normal)',
@@ -735,7 +735,7 @@ export function DesignSystemTest() {
               </p>
               <p style={{
                 fontSize: 'var(--text-small)',
-                fontFamily: 'Manrope, sans-serif',
+                fontFamily: 'var(--font-secondary)',
                 color: 'var(--muted-foreground)',
                 marginTop: '8px'
               }}>

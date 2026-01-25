@@ -1,0 +1,106 @@
+/**
+ * Pullquote Block Styles
+ * 
+ * WordPress block: .wp-block-pullquote
+ * 
+ * @see /guidelines/blocks/text/pullquote.md
+ */
+
+.wp-block-pullquote {
+  margin: var(--spacing-8) 0;
+  padding: var(--spacing-8) var(--spacing-6);
+  background: var(--muted);
+  border-left: 4px solid var(--primary);
+  border-radius: var(--radius-lg);
+}
+
+.wp-block-pullquote__quote {
+  font-family: var(--font-primary);
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.5;
+  color: var(--foreground);
+  margin: 0;
+  font-style: italic;
+}
+
+.wp-block-pullquote__quote::before {
+  content: '"';
+  color: var(--primary);
+  font-size: 1.5em;
+  line-height: 0;
+  vertical-align: -0.4em;
+  margin-right: 0.1em;
+}
+
+.wp-block-pullquote__quote::after {
+  content: '"';
+  color: var(--primary);
+  font-size: 1.5em;
+  line-height: 0;
+  vertical-align: -0.4em;
+  margin-left: 0.1em;
+}
+
+.wp-block-pullquote__citation {
+  margin-top: var(--spacing-3);
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-regular);
+  color: var(--muted-foreground);
+  font-style: normal;
+}
+
+.wp-block-pullquote__citation::before {
+  content: '— ';
+}
+
+/* Solid Variant */
+.wp-block-pullquote--solid {
+  background: var(--primary);
+  border-left: none;
+}
+
+.wp-block-pullquote--solid .wp-block-pullquote__quote {
+  color: var(--primary-foreground);
+}
+
+.wp-block-pullquote--solid .wp-block-pullquote__quote::before,
+.wp-block-pullquote--solid .wp-block-pullquote__quote::after {
+  color: var(--primary-foreground);
+  opacity: 0.5;
+}
+
+.wp-block-pullquote--solid .wp-block-pullquote__citation {
+  color: var(--primary-foreground);
+  opacity: 0.8;
+}
+
+/* Plain Variant */
+.wp-block-pullquote--plain {
+  background: transparent;
+  border-left: none;
+  padding-left: 0;
+  padding-right: 0;
+  text-align: center;
+}
+
+.wp-block-pullquote--plain .wp-block-pullquote__quote {
+  font-size: var(--text-2xl);
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+  .wp-block-pullquote {
+    padding: var(--spacing-6) var(--spacing-4);
+    margin: var(--spacing-6) 0;
+  }
+  
+  .wp-block-pullquote__quote {
+    font-size: var(--text-lg);
+  }
+  
+  .wp-block-pullquote--plain .wp-block-pullquote__quote {
+    font-size: var(--text-xl);
+  }
+}

@@ -1,0 +1,58 @@
+/**
+ * Page Break Block Styles
+ * 
+ * WordPress block: .wp-block-page-break
+ * CRITICAL: 100% CSS variables only
+ */
+
+.wp-block-page-break {
+  /* Layout */
+  display: block;
+  width: 100%;
+  margin: var(--spacing-6) 0;
+  
+  /* Print behavior */
+  page-break-after: always;
+  break-after: page;
+  
+  /* Editor indicator (optional) */
+  position: relative;
+}
+
+.wp-block-page-break__indicator {
+  /* Layout */
+  display: inline-block;
+  padding: var(--spacing-2) var(--spacing-4);
+  
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--foreground);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  
+  /* Styling */
+  background: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  
+  /* Center */
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Hide indicator in print */
+@media print {
+  .wp-block-page-break__indicator {
+    display: none;
+  }
+}
+
+/* Dark mode */
+.dark-theme .wp-block-page-break__indicator {
+  color: var(--foreground);
+  background: var(--muted);
+  border-color: var(--border);
+}

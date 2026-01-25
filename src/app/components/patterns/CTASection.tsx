@@ -8,16 +8,37 @@
  * - Large buttons (lg) for hero CTAs
  * - Medium buttons (md) for standard CTAs (default)
  * 
+ * All styling in /src/styles/cta-section.css (user-editable)
+ * 
  * **Pattern Guidelines:**
  * - Maximum 1 primary button per section
  * - Maximum 1 secondary button (optional)
  * - Uses CSS variables for all styling
  * - WCAG 2.1 AA compliant
+ * 
+ * **NEW (Jan 20, 2025):**
+ * - Added `gradient` prop for gradient backgrounds
+ * - 11 gradient variants available (blue, purple, red, green, amber, cyan, sky, slate, violet, purple-light, purple-indigo)
+ * - Automatic orb decoration for gradient variants
+ * - 100% WCAG 2.1 AA compliant
  */
 
 import { Section } from '../common/Section';
 import { Container } from '../common/Container';
 import { Button } from '../blocks/design/Buttons';
+
+type GradientVariant = 
+  | 'blue' 
+  | 'purple' 
+  | 'purple-light' 
+  | 'purple-indigo' 
+  | 'red' 
+  | 'green' 
+  | 'amber' 
+  | 'cyan' 
+  | 'sky' 
+  | 'slate' 
+  | 'violet';
 
 interface CTASectionProps {
   title: string;
@@ -30,6 +51,7 @@ interface CTASectionProps {
   secondaryButtonPage?: string;
   variant?: 'default' | 'highlighted';
   buttonSize?: 'sm' | 'md' | 'lg'; // Button size (default: lg for CTAs)
+  gradient?: GradientVariant; // NEW: Gradient background variant
 }
 
 export function CTASection({ 
@@ -42,97 +64,74 @@ export function CTASection({
   secondaryButtonHref = '#',
   secondaryButtonPage,
   variant = 'default',
-  buttonSize = 'lg' // Default to large for CTA sections
+  buttonSize = 'lg', // Default to large for CTA sections
+  gradient // NEW: Gradient variant prop
 }: CTASectionProps) {
   const isHighlighted = variant === 'highlighted';
+  const hasGradient = !!gradient;
+
+  // Build section class names
+  const sectionClasses = [
+    hasGradient ? `wp-gradient-${gradient}` : 
+    isHighlighted ? 'cta-section--highlighted' : 
+    'cta-section--default'
+  ].filter(Boolean).join(' ');
+
+  // Determine orb color based on gradient (maps gradient name to orb color)
+  const orbColor = gradient || 'blue';
 
   return (
     <Section 
       spacing="xl"
-      className={isHighlighted ? 'relative overflow-hidden' : ''}
-      style={isHighlighted ? {
-        backgroundColor: 'var(--primary)',
-        color: 'var(--primary-foreground)'
-      } : {
-        backgroundColor: 'var(--muted)',
-        color: 'var(--foreground)'
-      }}
+      className={sectionClasses}
     >
-      {/* Decorative elements for highlighted variant */}
-      {isHighlighted && (
+      {/* Gradient Orb Decoration (NEW) */}
+      {hasGradient && (
+        <div 
+          className={`wp-gradient-orb wp-gradient-orb--${orbColor} wp-gradient-orb--top-right`}
+          aria-hidden="true"
+        />
+      )}
+
+      {/* Decorative elements for highlighted variant (legacy) */}
+      {isHighlighted && !hasGradient && (
         <>
           {/* Subtle gradient overlay */}
           <div 
-            className="absolute inset-0"
-            style={{
-              background: 'linear-gradient(135deg, transparent 0%, var(--accent) 100%)',
-              opacity: '0.1',
-              pointerEvents: 'none'
-            }}
+            className="cta-section__gradient-overlay"
             aria-hidden="true"
           />
           {/* Decorative gradient orb */}
           <div 
-            className="absolute -bottom-24 -right-24 w-96 h-96 rounded-full"
-            style={{
-              background: 'var(--accent)',
-              opacity: '0.1',
-              filter: 'blur(80px)'
-            }}
+            className="cta-section__gradient-orb"
             aria-hidden="true"
           />
         </>
       )}
 
-      <Container className="relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
+      <Container className="cta-section__container">
+        <div className="cta-section__content">
           {/* Title */}
-          <h2 
-            className="mb-8"
-            style={{
-              fontFamily: 'Lexend, sans-serif',
-              fontSize: 'var(--text-h2)',  /* Use CSS variable for fluid typography */
-              fontWeight: 'var(--font-weight-medium)',  /* Modern: size provides hierarchy */
-              lineHeight: 'var(--line-height-snug)',
-              letterSpacing: 'var(--letter-spacing-tight)',
-              color: isHighlighted ? 'var(--primary-foreground)' : 'var(--foreground)',
-              margin: 0
-            }}
-          >
+          <h2 className="cta-section__title">
             {title}
           </h2>
 
           {/* Description */}
           {description && (
-            <p 
-              className="mb-10 mx-auto"
-              style={{
-                fontFamily: 'Lexend, sans-serif',
-                fontSize: 'var(--text-lead)',  /* Use CSS variable (20px) for lead text */
-                fontWeight: 'var(--font-weight-regular)',
-                lineHeight: 'var(--line-height-relaxed)',
-                color: isHighlighted ? 'var(--primary-foreground)' : 'var(--muted-foreground)',
-                opacity: isHighlighted ? 0.95 : 1,
-                maxWidth: '700px'
-              }}
-            >
+            <p className="cta-section__description">
               {description}
             </p>
           )}
 
           {/* CTA Buttons */}
-          <div className="flex flex-wrap gap-4 justify-center items-center">
+          <div className="cta-section__buttons">
             {/* Primary Button */}
             <Button 
-              variant={isHighlighted ? 'secondary' : 'primary'}
+              variant={(isHighlighted || hasGradient) ? 'secondary' : 'primary'}
               size={buttonSize}
               href={primaryButtonHref}
               page={primaryButtonPage}
-              style={isHighlighted ? {
-                backgroundColor: 'var(--background)',
-                color: 'var(--foreground)',
-                boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
-              } : undefined}
+              className={(isHighlighted || hasGradient) ? 'cta-section__button--primary-highlighted' : undefined}
             >
               {primaryButtonText}
             </Button>
@@ -144,11 +143,7 @@ export function CTASection({
                 size={buttonSize}
                 href={secondaryButtonHref}
                 page={secondaryButtonPage}
-                style={isHighlighted ? {
-                  borderColor: 'var(--primary-foreground)',
-                  color: 'var(--primary-foreground)',
-                  backgroundColor: 'transparent'
-                } : undefined}
+                className={(isHighlighted || hasGradient) ? 'cta-section__button--secondary-highlighted' : undefined}
               >
                 {secondaryButtonText}
               </Button>
@@ -157,54 +152,15 @@ export function CTASection({
 
           {/* Trust indicators (only for highlighted variant) */}
           {variant === 'highlighted' && (
-            <div 
-              className="flex flex-wrap items-center justify-center gap-8 mt-12 pt-8"
-              style={{
-                borderTop: '1px solid var(--primary-foreground)',
-                opacity: 0.6
-              }}
-            >
-              <span
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-base)',
-                  fontWeight: 'var(--font-weight-medium)',
-                  color: 'var(--primary-foreground)',
-                  opacity: 0.9,
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '8px'
-                }}
-              >
-                <span style={{ fontSize: 'var(--text-lead)' }}>✓</span> Free consultation
+            <div className="cta-section__trust-indicators">
+              <span className="cta-section__trust-item">
+                <span className="cta-section__trust-check">✓</span> Free consultation
               </span>
-              <span
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-base)',
-                  fontWeight: 'var(--font-weight-medium)',
-                  color: 'var(--primary-foreground)',
-                  opacity: 0.9,
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '8px'
-                }}
-              >
-                <span style={{ fontSize: 'var(--text-lead)' }}>✓</span> Expert guides
+              <span className="cta-section__trust-item">
+                <span className="cta-section__trust-check">✓</span> Expert guides
               </span>
-              <span
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-base)',
-                  fontWeight: 'var(--font-weight-medium)',
-                  color: 'var(--primary-foreground)',
-                  opacity: 0.9,
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '8px'
-                }}
-              >
-                <span style={{ fontSize: 'var(--text-lead)' }}>✓</span> Flexible booking
+              <span className="cta-section__trust-item">
+                <span className="cta-section__trust-check">✓</span> Flexible booking
               </span>
             </div>
           )}

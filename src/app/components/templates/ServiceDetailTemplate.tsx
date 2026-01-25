@@ -15,6 +15,9 @@ import { Breadcrumbs } from '../common/Breadcrumbs';
 import { BackToTopButton } from '../blocks/layout/BackToTopButton';
 import { RouteAnnouncer } from '../blocks/utility/RouteAnnouncer';
 import { Buttons, Button } from '../blocks/design/Buttons';
+import { FAQSection } from '../patterns/FAQSection';
+import { CTASection } from '../patterns/CTASection';
+import { Hero } from '../patterns/Hero';
 import { 
   Code,
   CheckCircle,
@@ -148,17 +151,7 @@ export function ServiceDetailTemplate({ slug = 'wordpress-development' }: Servic
                 {servicePageHero.tagline}
               </p>
 
-              <p
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-lg)',
-                  lineHeight: '1.7',
-                  color: 'rgba(255, 255, 255, 0.85)',
-                  marginBottom: '40px',
-                  maxWidth: '700px',
-                  margin: '0 auto 40px'
-                }}
-              >
+              <p className="wp-block-service-hero__description">
                 {servicePageHero.description}
               </p>
 
@@ -890,138 +883,23 @@ export function ServiceDetailTemplate({ slug = 'wordpress-development' }: Servic
         </Section>
 
         {/* FAQ Section */}
-        <Section spacing="xl" style={{ backgroundColor: 'var(--muted)' }}>
-          <Container>
-            <div className="max-w-3xl mx-auto">
-              <div className="text-center mb-12">
-                <h2
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-h2)',
-                    fontWeight: 'var(--font-weight-semibold)',
-                    color: 'var(--foreground)',
-                    marginBottom: '16px',
-                    lineHeight: 'var(--line-height-snug)'
-                  }}
-                >
-                  Frequently Asked Questions
-                </h2>
-                <p
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-lg)',
-                    color: 'var(--muted-foreground)',
-                    lineHeight: '1.7'
-                  }}
-                >
-                  Common questions about WordPress development
-                </p>
-              </div>
-
-              <div className="space-y-4">
-                {servicePageFAQs.map((faq, index) => (
-                  <details
-                    key={index}
-                    style={{
-                      padding: '24px',
-                      backgroundColor: 'var(--card)',
-                      borderRadius: 'var(--radius-lg)',
-                      border: '1px solid var(--border-soft)'
-                    }}
-                  >
-                    <summary
-                      style={{
-                        fontFamily: 'Lexend, sans-serif',
-                        fontSize: 'var(--text-lg)',
-                        fontWeight: 'var(--font-weight-semibold)',
-                        color: 'var(--foreground)',
-                        cursor: 'pointer',
-                        listStyle: 'none'
-                      }}
-                    >
-                      {faq.question}
-                    </summary>
-                    <p
-                      style={{
-                        fontFamily: 'Lexend, sans-serif',
-                        fontSize: 'var(--text-base)',
-                        lineHeight: '1.7',
-                        color: 'var(--muted-foreground)',
-                        marginTop: '12px'
-                      }}
-                    >
-                      {faq.answer}
-                    </p>
-                  </details>
-                ))}
-              </div>
-            </div>
-          </Container>
-        </Section>
+        <FAQSection
+          title="Frequently Asked Questions"
+          description="Common questions about WordPress development"
+          faqs={servicePageFAQs}
+          variant="muted"
+        />
 
         {/* CTA Section */}
-        <Section 
-          spacing="xl" 
-          style={{
-            background: 'linear-gradient(135deg, #1e40af 0%, #3b82f6 100%)',
-            color: 'var(--primary-foreground)'
-          }}
-        >
-          <Container>
-            <div className="max-w-3xl mx-auto text-center">
-              <h2
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-h1)',
-                  fontWeight: 'var(--font-weight-bold)',
-                  lineHeight: '1.2',
-                  letterSpacing: '-0.02em',
-                  marginBottom: '16px',
-                  color: 'var(--primary-foreground)'
-                }}
-              >
-                {servicePageCTA.title}
-              </h2>
-
-              <p
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-lg)',
-                  lineHeight: '1.7',
-                  color: 'rgba(255, 255, 255, 0.9)',
-                  marginBottom: '32px'
-                }}
-              >
-                {servicePageCTA.description}
-              </p>
-
-              <Buttons alignment="center" gap="md">
-                <Button 
-                  page={servicePageCTA.buttons[0].page as any} 
-                  size="lg"
-                  variant="default"
-                  style={{
-                    backgroundColor: 'var(--primary-foreground)',
-                    color: 'var(--primary)'
-                  }}
-                >
-                  {servicePageCTA.buttons[0].text}
-                </Button>
-                <Button 
-                  page={servicePageCTA.buttons[1].page as any} 
-                  size="lg"
-                  variant="outline"
-                  style={{
-                    borderColor: 'var(--primary-foreground)',
-                    color: 'var(--primary-foreground)'
-                  }}
-                >
-                  {servicePageCTA.buttons[1].text}
-                </Button>
-              </Buttons>
-            </div>
-          </Container>
-        </Section>
+        <CTASection
+          title={servicePageCTA.title}
+          description={servicePageCTA.description}
+          primaryButtonText={servicePageCTA.buttons[0].text}
+          primaryButtonPage={servicePageCTA.buttons[0].page as any}
+          secondaryButtonText={servicePageCTA.buttons[1].text}
+          secondaryButtonPage={servicePageCTA.buttons[1].page as any}
+          gradient="blue"
+        />
       </main>
 
       <SiteFooter />

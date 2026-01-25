@@ -1,0 +1,150 @@
+/**
+ * Theme Showcase Grid Pattern Styles
+ * 
+ * Grid of theme/product cards with category badges, hover effects, and feature lists.
+ * All styling uses CSS variables for complete user control.
+ * 
+ * User can edit this file to update theme showcase grids site-wide.
+ */
+
+/* ============================================
+ * SECTION HEADER
+ * ============================================ */
+
+.theme-showcase__header {
+  text-align: center;
+  margin-bottom: var(--spacing-16);
+}
+
+.theme-showcase__title {
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-h1);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.2;
+  letter-spacing: var(--letter-spacing-tight);
+  color: var(--foreground);
+  
+  /* Spacing */
+  margin-bottom: var(--spacing-4);
+}
+
+.theme-showcase__description {
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  line-height: var(--line-height-relaxed);
+  color: var(--muted-foreground);
+  
+  /* Layout */
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* ============================================
+ * THEME CARD
+ * ============================================ */
+
+.theme-showcase__card {
+  /* Spacing */
+  padding: var(--spacing-8);
+  
+  /* Appearance */
+  background-color: var(--card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  
+  /* Interaction */
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.theme-showcase__card:hover {
+  transform: translateY(-8px);
+  border: 2px solid var(--primary);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* ============================================
+ * CATEGORY BADGE
+ * ============================================ */
+
+.theme-showcase__badge {
+  /* Layout */
+  display: inline-block;
+  
+  /* Spacing */
+  padding: 6px 12px;
+  margin-bottom: var(--spacing-4);
+  
+  /* Appearance */
+  background-color: var(--primary-soft);
+  border-radius: var(--radius-full);
+}
+
+.theme-showcase__badge-text {
+  /* Typography */
+  font-family: var(--font-secondary);
+  font-size: var(--text-small);
+  font-weight: var(--font-weight-semibold);
+  color: var(--primary);
+}
+
+/* ============================================
+ * THEME NAME
+ * ============================================ */
+
+.theme-showcase__name {
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-h3);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+  
+  /* Spacing */
+  margin-bottom: var(--spacing-3);
+}
+
+/* ============================================
+ * THEME DESCRIPTION
+ * ============================================ */
+
+.theme-showcase__card-description {
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  line-height: var(--line-height-snug);
+  color: var(--muted-foreground);
+  
+  /* Spacing */
+  margin-bottom: var(--spacing-5);
+}
+
+/* ============================================
+ * FEATURES GRID
+ * ============================================ */
+
+.theme-showcase__features {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-3);
+}
+
+.theme-showcase__feature {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.theme-showcase__feature-icon {
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.theme-showcase__feature-text {
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-small);
+  color: var(--muted-foreground);
+}

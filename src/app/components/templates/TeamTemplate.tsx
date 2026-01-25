@@ -1,7 +1,9 @@
 /**
- * Team Template
+ * Team Page Template
  * 
  * WordPress template: templates/page-team.html
+ * 
+ * All styling in /src/styles/templates/team-page.css (user-editable)
  * 
  * Team page showcasing LightSpeed team members and culture.
  * Pattern order: Breadcrumbs → Hero → Leadership → Team Grid → Culture → Stats → Departments → FAQs → CTA
@@ -16,6 +18,10 @@ import { Breadcrumbs } from '../common/Breadcrumbs';
 import { BackToTopButton } from '../blocks/layout/BackToTopButton';
 import { RouteAnnouncer } from '../blocks/utility/RouteAnnouncer';
 import { Buttons, Button } from '../blocks/design/Buttons';
+import { FAQSection } from '../patterns/FAQSection';
+import { CTASection } from '../patterns/CTASection';
+import { Hero } from '../patterns/Hero';
+import { TeamGrid } from '../patterns/TeamGrid';
 import { 
   Users,
   Globe,
@@ -51,9 +57,11 @@ export function TeamTemplate() {
       <main id="main-content" role="main">
         {/* Breadcrumbs */}
         <section 
-          className="py-4"
           style={{
+            paddingTop: 'var(--spacing-4)',
+            paddingBottom: 'var(--spacing-4)',
             backgroundColor: 'var(--background)',
+            borderBottom: '1px solid var(--border-soft)'
           }}
         >
           <Container>
@@ -67,223 +75,66 @@ export function TeamTemplate() {
         </section>
 
         {/* Hero Section */}
-        <Section 
+        <Hero
+          variant="page"
+          align="center"
+          maxWidth="4xl"
+          gradient="blue"
           spacing="xl"
-          style={{
-            background: 'linear-gradient(135deg, #1e40af 0%, #3b82f6 100%)',
-            color: 'var(--primary-foreground)',
-            position: 'relative',
-            overflow: 'hidden'
+          badge={{
+            icon: Users,
+            text: 'MEET OUR TEAM'
           }}
-        >
-          {/* Gradient orb decorations */}
-          <div
-            className="absolute top-0 right-0 w-96 h-96 rounded-full"
-            style={{
-              background: 'radial-gradient(circle, rgba(96, 165, 250, 0.3) 0%, transparent 70%)',
-              filter: 'blur(80px)',
-              transform: 'translate(30%, -30%)'
-            }}
-          />
-
-          <Container>
-            <div className="max-w-4xl mx-auto text-center relative z-10">
-              <div
-                className="inline-block px-4 py-2 mb-6"
-                style={{
-                  backgroundColor: 'rgba(255, 255, 255, 0.15)',
-                  backdropFilter: 'blur(10px)',
-                  borderRadius: 'var(--radius-full)',
-                  border: '1px solid rgba(255, 255, 255, 0.2)',
-                  fontSize: 'var(--text-small)',
-                  fontFamily: 'Manrope, sans-serif',
-                  fontWeight: 'var(--font-weight-semibold)',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.1em'
-                }}
-              >
-                <Users size={14} style={{ display: 'inline', marginRight: '8px' }} />
-                MEET OUR TEAM
-              </div>
-
-              <h1
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'clamp(2rem, 5vw, 3.5rem)',
-                  fontWeight: 'var(--font-weight-bold)',
-                  lineHeight: '1.1',
-                  letterSpacing: '-0.02em',
-                  marginBottom: '20px',
-                  color: 'var(--primary-foreground)'
-                }}
-              >
-                The <span style={{ 
-                  background: 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text'
-                }}>People</span> Behind LightSpeed
-              </h1>
-
-              <p
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-lg)',
-                  lineHeight: '1.7',
-                  color: 'rgba(255, 255, 255, 0.95)',
-                  marginBottom: '40px',
-                  maxWidth: '700px',
-                  margin: '0 auto 40px'
-                }}
-              >
-                {teamPageHero.description}
-              </p>
-
-              {/* Hero Stats */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {teamPageHero.stats.map((stat, index) => {
-                  const icons = { Users, Globe, Award };
-                  const Icon = icons[stat.icon as keyof typeof icons];
-                  return (
-                    <div
-                      key={index}
-                      style={{
-                        padding: '24px',
-                        backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                        backdropFilter: 'blur(10px)',
-                        borderRadius: 'var(--radius-lg)',
-                        border: '1px solid rgba(255, 255, 255, 0.2)'
-                      }}
-                    >
-                      <Icon size={32} style={{ marginBottom: '12px', color: '#fbbf24' }} />
-                      <div
-                        style={{
-                          fontFamily: 'Lexend, sans-serif',
-                          fontSize: 'var(--text-h2)',
-                          fontWeight: 'var(--font-weight-bold)',
-                          marginBottom: '4px'
-                        }}
-                      >
-                        {stat.value}
-                      </div>
-                      <div
-                        style={{
-                          fontFamily: 'Manrope, sans-serif',
-                          fontSize: 'var(--text-small)',
-                          opacity: 0.9
-                        }}
-                      >
-                        {stat.label}
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </Container>
-        </Section>
+          title="The People Behind LightSpeed"
+          titleHighlight="People"
+          description={teamPageHero.description}
+          stats={teamPageHero.stats.map(stat => {
+            const icons = { Users, Globe, Award };
+            const Icon = icons[stat.icon as keyof typeof icons];
+            return {
+              icon: Icon,
+              value: stat.value,
+              label: stat.label
+            };
+          })}
+        />
 
         {/* Leadership Section */}
         <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
           <Container>
-            <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-16">
-                <h2
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-h1)',
-                    fontWeight: 'var(--font-weight-bold)',
-                    lineHeight: '1.2',
-                    letterSpacing: '-0.02em',
-                    marginBottom: '16px',
-                    color: 'var(--foreground)'
-                  }}
-                >
+            <div className="wp-max-w-6xl">
+              {/* Section Header */}
+              <div className="template-section-header">
+                <h2 className="template-section-header__title">
                   Our Leadership
                 </h2>
-
-                <p
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-lg)',
-                    lineHeight: '1.7',
-                    color: 'var(--muted-foreground)'
-                  }}
-                >
+                <p className="template-section-header__description">
                   Meet the team guiding LightSpeed's vision and growth
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {/* Leadership Grid */}
+              <div className="team-page__leadership-grid">
                 {teamPageLeadership.map((member, index) => (
-                  <div
-                    key={index}
-                    style={{
-                      padding: '40px',
-                      backgroundColor: 'var(--card)',
-                      borderRadius: 'var(--radius-lg)',
-                      border: '1px solid var(--border-soft)',
-                      transition: 'all 0.3s ease'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.transform = 'translateY(-4px)';
-                      e.currentTarget.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
-                      e.currentTarget.style.borderColor = 'var(--primary)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.transform = 'translateY(0)';
-                      e.currentTarget.style.boxShadow = 'none';
-                      e.currentTarget.style.borderColor = 'var(--border-soft)';
-                    }}
-                  >
-                    <h3
-                      style={{
-                        fontFamily: 'Lexend, sans-serif',
-                        fontSize: 'var(--text-h3)',
-                        fontWeight: 'var(--font-weight-bold)',
-                        color: 'var(--foreground)',
-                        marginBottom: '4px'
-                      }}
-                    >
+                  <div key={index} className="team-page__leadership-card">
+                    <h3 className="team-page__leadership-name">
                       {member.name}
                     </h3>
 
-                    <p
-                      style={{
-                        fontFamily: 'Manrope, sans-serif',
-                        fontSize: 'var(--text-base)',
-                        fontWeight: 'var(--font-weight-semibold)',
-                        color: 'var(--primary)',
-                        marginBottom: '12px'
-                      }}
-                    >
+                    <p className="team-page__leadership-role">
                       {member.role}
                     </p>
 
-                    <p
-                      style={{
-                        fontFamily: 'Lexend, sans-serif',
-                        fontSize: 'var(--text-base)',
-                        lineHeight: '1.7',
-                        color: 'var(--muted-foreground)',
-                        marginBottom: '20px'
-                      }}
-                    >
+                    <p className="team-page__leadership-bio">
                       {member.bio}
                     </p>
 
                     {/* Highlights */}
-                    <div className="space-y-2">
+                    <div className="team-page__leadership-highlights">
                       {member.highlights.map((highlight, idx) => (
-                        <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                          <CheckCircle size={16} style={{ color: 'var(--primary)', flexShrink: 0 }} />
-                          <span
-                            style={{
-                              fontFamily: 'Manrope, sans-serif',
-                              fontSize: 'var(--text-small)',
-                              color: 'var(--foreground)'
-                            }}
-                          >
+                        <div key={idx} className="team-page__leadership-highlight">
+                          <CheckCircle size={16} className="team-page__leadership-highlight-icon" />
+                          <span className="team-page__leadership-highlight-text">
                             {highlight}
                           </span>
                         </div>
@@ -293,19 +144,7 @@ export function TeamTemplate() {
                     {/* Email */}
                     <a
                       href={`mailto:${member.email}`}
-                      style={{
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: '8px',
-                        marginTop: '20px',
-                        fontFamily: 'Manrope, sans-serif',
-                        fontSize: 'var(--text-small)',
-                        color: 'var(--primary)',
-                        textDecoration: 'none',
-                        transition: 'opacity 0.2s ease'
-                      }}
-                      onMouseEnter={(e) => e.currentTarget.style.opacity = '0.7'}
-                      onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
+                      className="team-page__leadership-email"
                     >
                       <Mail size={16} />
                       {member.email}
@@ -320,114 +159,18 @@ export function TeamTemplate() {
         {/* Full Team Grid */}
         <Section spacing="xl" style={{ backgroundColor: 'var(--muted)' }}>
           <Container>
-            <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-16">
-                <h2
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-h1)',
-                    fontWeight: 'var(--font-weight-bold)',
-                    lineHeight: '1.2',
-                    letterSpacing: '-0.02em',
-                    marginBottom: '16px',
-                    color: 'var(--foreground)'
-                  }}
-                >
+            <div className="wp-max-w-6xl">
+              {/* Section Header */}
+              <div className="template-section-header">
+                <h2 className="template-section-header__title">
                   Our Complete Team
                 </h2>
-
-                <p
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-lg)',
-                    lineHeight: '1.7',
-                    color: 'var(--muted-foreground)'
-                  }}
-                >
+                <p className="template-section-header__description">
                   11 WordPress experts dedicated to your success
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {teamPageMembers.map((member, index) => (
-                  <div
-                    key={index}
-                    style={{
-                      padding: '32px',
-                      backgroundColor: 'var(--card)',
-                      borderRadius: 'var(--radius-lg)',
-                      border: '1px solid var(--border-soft)',
-                      transition: 'all 0.3s ease'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.transform = 'translateY(-4px)';
-                      e.currentTarget.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
-                      e.currentTarget.style.borderColor = 'var(--primary)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.transform = 'translateY(0)';
-                      e.currentTarget.style.boxShadow = 'none';
-                      e.currentTarget.style.borderColor = 'var(--border-soft)';
-                    }}
-                  >
-                    <h3
-                      style={{
-                        fontFamily: 'Lexend, sans-serif',
-                        fontSize: 'var(--text-xl)',
-                        fontWeight: 'var(--font-weight-bold)',
-                        color: 'var(--foreground)',
-                        marginBottom: '4px'
-                      }}
-                    >
-                      {member.name}
-                    </h3>
-
-                    <p
-                      style={{
-                        fontFamily: 'Manrope, sans-serif',
-                        fontSize: 'var(--text-small)',
-                        fontWeight: 'var(--font-weight-semibold)',
-                        color: 'var(--primary)',
-                        marginBottom: '12px'
-                      }}
-                    >
-                      {member.role}
-                    </p>
-
-                    <p
-                      style={{
-                        fontFamily: 'Lexend, sans-serif',
-                        fontSize: 'var(--text-small)',
-                        lineHeight: '1.6',
-                        color: 'var(--muted-foreground)',
-                        marginBottom: '16px'
-                      }}
-                    >
-                      {member.bio}
-                    </p>
-
-                    <a
-                      href={`mailto:${member.email}`}
-                      style={{
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: '8px',
-                        fontFamily: 'Manrope, sans-serif',
-                        fontSize: 'var(--text-small)',
-                        color: 'var(--primary)',
-                        textDecoration: 'none',
-                        transition: 'opacity 0.2s ease'
-                      }}
-                      onMouseEnter={(e) => e.currentTarget.style.opacity = '0.7'}
-                      onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
-                      aria-label={`Email ${member.name}`}
-                    >
-                      <Mail size={14} />
-                      Email {member.name.split(' ')[0]}
-                    </a>
-                  </div>
-                ))}
-              </div>
+              <TeamGrid members={teamPageMembers} />
             </div>
           </Container>
         </Section>
@@ -435,81 +178,32 @@ export function TeamTemplate() {
         {/* Culture & Values Section */}
         <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
           <Container>
-            <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-16">
-                <h2
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-h1)',
-                    fontWeight: 'var(--font-weight-bold)',
-                    lineHeight: '1.2',
-                    letterSpacing: '-0.02em',
-                    marginBottom: '16px',
-                    color: 'var(--foreground)'
-                  }}
-                >
+            <div className="wp-max-w-6xl">
+              {/* Section Header */}
+              <div className="template-section-header">
+                <h2 className="template-section-header__title">
                   Our Team Culture
                 </h2>
-
-                <p
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-lg)',
-                    lineHeight: '1.7',
-                    color: 'var(--muted-foreground)'
-                  }}
-                >
+                <p className="template-section-header__description">
                   The values that define how we work together
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {/* Values Grid */}
+              <div className="team-page__values-grid">
                 {teamPageCulture.map((value, index) => {
                   const Icon = value.icon;
                   return (
-                    <div
-                      key={index}
-                      style={{
-                        padding: '32px',
-                        backgroundColor: 'var(--card)',
-                        borderRadius: 'var(--radius-lg)',
-                        border: '1px solid var(--border-soft)'
-                      }}
-                    >
-                      <div
-                        style={{
-                          width: '56px',
-                          height: '56px',
-                          borderRadius: 'var(--radius-lg)',
-                          backgroundColor: 'var(--primary-soft)',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          marginBottom: '20px'
-                        }}
-                      >
-                        <Icon size={28} style={{ color: 'var(--primary)' }} />
+                    <div key={index} className="team-page__value-card">
+                      <div className="team-page__value-icon">
+                        <Icon size={28} />
                       </div>
 
-                      <h3
-                        style={{
-                          fontFamily: 'Lexend, sans-serif',
-                          fontSize: 'var(--text-xl)',
-                          fontWeight: 'var(--font-weight-bold)',
-                          color: 'var(--foreground)',
-                          marginBottom: '8px'
-                        }}
-                      >
+                      <h3 className="team-page__value-title">
                         {value.title}
                       </h3>
-                      <p
-                        style={{
-                          fontFamily: 'Lexend, sans-serif',
-                          fontSize: 'var(--text-base)',
-                          lineHeight: '1.6',
-                          color: 'var(--muted-foreground)'
-                        }}
-                      >
+
+                      <p className="team-page__value-description">
                         {value.description}
                       </p>
                     </div>
@@ -523,79 +217,36 @@ export function TeamTemplate() {
         {/* Team Stats Section */}
         <Section spacing="xl" style={{ backgroundColor: 'var(--muted)' }}>
           <Container>
-            <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-16">
-                <h2
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-h1)',
-                    fontWeight: 'var(--font-weight-bold)',
-                    lineHeight: '1.2',
-                    letterSpacing: '-0.02em',
-                    marginBottom: '16px',
-                    color: 'var(--foreground)'
-                  }}
-                >
+            <div className="wp-max-w-6xl">
+              {/* Section Header */}
+              <div className="template-section-header">
+                <h2 className="template-section-header__title">
                   Team by the Numbers
                 </h2>
-
-                <p
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-lg)',
-                    lineHeight: '1.7',
-                    color: 'var(--muted-foreground)'
-                  }}
-                >
+                <p className="template-section-header__description">
                   Our team's expertise and reach
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {/* Stats Grid */}
+              <div className="team-page__stats-grid">
                 {teamPageStats.map((stat, index) => {
                   const Icon = stat.icon;
                   return (
-                    <div
-                      key={index}
-                      className="text-center"
-                      style={{
-                        padding: '32px',
-                        backgroundColor: 'var(--card)',
-                        borderRadius: 'var(--radius-lg)',
-                        border: '1px solid var(--border-soft)'
-                      }}
-                    >
-                      <Icon size={32} style={{ marginBottom: '12px', color: 'var(--primary)' }} />
-                      <div
-                        style={{
-                          fontFamily: 'Lexend, sans-serif',
-                          fontSize: 'var(--text-h2)',
-                          fontWeight: 'var(--font-weight-bold)',
-                          marginBottom: '4px',
-                          color: 'var(--foreground)'
-                        }}
-                      >
+                    <div key={index} className="team-page__stat-card">
+                      <div className="team-page__stat-icon">
+                        <Icon size={32} />
+                      </div>
+
+                      <div className="team-page__stat-value">
                         {stat.value}
                       </div>
-                      <div
-                        style={{
-                          fontFamily: 'Lexend, sans-serif',
-                          fontSize: 'var(--text-base)',
-                          fontWeight: 'var(--font-weight-semibold)',
-                          marginBottom: '8px',
-                          color: 'var(--foreground)'
-                        }}
-                      >
+
+                      <div className="team-page__stat-label">
                         {stat.label}
                       </div>
-                      <p
-                        style={{
-                          fontFamily: 'Manrope, sans-serif',
-                          fontSize: 'var(--text-small)',
-                          lineHeight: '1.5',
-                          color: 'var(--muted-foreground)'
-                        }}
-                      >
+
+                      <p className="team-page__value-description">
                         {stat.description}
                       </p>
                     </div>
@@ -609,96 +260,36 @@ export function TeamTemplate() {
         {/* Departments Section */}
         <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
           <Container>
-            <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-16">
-                <h2
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-h1)',
-                    fontWeight: 'var(--font-weight-bold)',
-                    lineHeight: '1.2',
-                    letterSpacing: '-0.02em',
-                    marginBottom: '16px',
-                    color: 'var(--foreground)'
-                  }}
-                >
+            <div className="wp-max-w-6xl">
+              {/* Section Header */}
+              <div className="template-section-header">
+                <h2 className="template-section-header__title">
                   Our Departments
                 </h2>
-
-                <p
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-lg)',
-                    lineHeight: '1.7',
-                    color: 'var(--muted-foreground)'
-                  }}
-                >
+                <p className="template-section-header__description">
                   Specialized teams working together for your success
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {/* Departments Grid */}
+              <div className="team-page__departments-grid">
                 {teamPageDepartments.map((dept, index) => {
                   const Icon = dept.icon;
                   return (
-                    <div
-                      key={index}
-                      style={{
-                        padding: '32px',
-                        backgroundColor: 'var(--card)',
-                        borderRadius: 'var(--radius-lg)',
-                        border: '1px solid var(--border-soft)'
-                      }}
-                    >
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '16px' }}>
-                        <div
-                          style={{
-                            width: '56px',
-                            height: '56px',
-                            borderRadius: 'var(--radius-lg)',
-                            backgroundColor: 'var(--primary-soft)',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            flexShrink: 0
-                          }}
-                        >
-                          <Icon size={28} style={{ color: 'var(--primary)' }} />
-                        </div>
-
-                        <div>
-                          <h3
-                            style={{
-                              fontFamily: 'Lexend, sans-serif',
-                              fontSize: 'var(--text-xl)',
-                              fontWeight: 'var(--font-weight-bold)',
-                              color: 'var(--foreground)',
-                              marginBottom: '4px'
-                            }}
-                          >
-                            {dept.title}
-                          </h3>
-                          <p
-                            style={{
-                              fontFamily: 'Manrope, sans-serif',
-                              fontSize: 'var(--text-small)',
-                              color: 'var(--primary)',
-                              fontWeight: 'var(--font-weight-semibold)'
-                            }}
-                          >
-                            {dept.memberCount} {dept.memberCount === 1 ? 'member' : 'members'}
-                          </p>
-                        </div>
+                    <div key={index} className="team-page__department-card">
+                      <div className="team-page__department-icon">
+                        <Icon size={28} />
                       </div>
 
-                      <p
-                        style={{
-                          fontFamily: 'Lexend, sans-serif',
-                          fontSize: 'var(--text-base)',
-                          lineHeight: '1.6',
-                          color: 'var(--muted-foreground)'
-                        }}
-                      >
+                      <h3 className="team-page__department-name">
+                        {dept.title}
+                      </h3>
+
+                      <p className="team-page__department-count">
+                        {dept.memberCount} {dept.memberCount === 1 ? 'member' : 'members'}
+                      </p>
+
+                      <p className="team-page__department-description">
                         {dept.description}
                       </p>
                     </div>
@@ -712,136 +303,37 @@ export function TeamTemplate() {
         {/* FAQ Section */}
         <Section spacing="xl" style={{ backgroundColor: 'var(--muted)' }}>
           <Container>
-            <div className="max-w-3xl mx-auto">
-              <div className="text-center mb-12">
-                <h2
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-h2)',
-                    fontWeight: 'var(--font-weight-semibold)',
-                    color: 'var(--foreground)',
-                    marginBottom: '16px',
-                    lineHeight: 'var(--line-height-snug)'
-                  }}
-                >
+            <div className="wp-max-w-3xl">
+              {/* Section Header */}
+              <div className="template-section-header template-section-header--compact">
+                <h2 className="template-section-header__title">
                   Team FAQs
                 </h2>
-                <p
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-lg)',
-                    color: 'var(--muted-foreground)',
-                    lineHeight: '1.7'
-                  }}
-                >
-                  Learn more about the LightSpeed team
+                <p className="template-section-header__description">
+                  Common questions about our team and culture
                 </p>
               </div>
 
-              <div className="space-y-4">
-                {teamPageFAQs.map((faq, index) => (
-                  <details
-                    key={index}
-                    style={{
-                      padding: '24px',
-                      backgroundColor: 'var(--card)',
-                      borderRadius: 'var(--radius-lg)',
-                      border: '1px solid var(--border-soft)'
-                    }}
-                  >
-                    <summary
-                      style={{
-                        fontFamily: 'Lexend, sans-serif',
-                        fontSize: 'var(--text-lg)',
-                        fontWeight: 'var(--font-weight-semibold)',
-                        color: 'var(--foreground)',
-                        cursor: 'pointer',
-                        listStyle: 'none'
-                      }}
-                    >
-                      {faq.question}
-                    </summary>
-                    <p
-                      style={{
-                        fontFamily: 'Lexend, sans-serif',
-                        fontSize: 'var(--text-base)',
-                        lineHeight: '1.7',
-                        color: 'var(--muted-foreground)',
-                        marginTop: '12px'
-                      }}
-                    >
-                      {faq.answer}
-                    </p>
-                  </details>
-                ))}
-              </div>
+              <FAQSection faqs={teamPageFAQs} />
             </div>
           </Container>
         </Section>
 
         {/* CTA Section */}
-        <Section 
-          spacing="xl" 
-          style={{
-            background: 'linear-gradient(135deg, #1e40af 0%, #3b82f6 100%)',
-            color: 'var(--primary-foreground)'
+        <CTASection
+          title={teamPageCTA.title}
+          description={teamPageCTA.description}
+          primaryButton={{
+            text: teamPageCTA.primaryButton.text,
+            page: teamPageCTA.primaryButton.page
           }}
-        >
-          <Container>
-            <div className="max-w-3xl mx-auto text-center">
-              <h2
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-h1)',
-                  fontWeight: 'var(--font-weight-bold)',
-                  lineHeight: '1.2',
-                  letterSpacing: '-0.02em',
-                  marginBottom: '16px',
-                  color: 'var(--primary-foreground)'
-                }}
-              >
-                {teamPageCTA.title}
-              </h2>
-
-              <p
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-lg)',
-                  lineHeight: '1.7',
-                  color: 'rgba(255, 255, 255, 0.9)',
-                  marginBottom: '32px'
-                }}
-              >
-                {teamPageCTA.description}
-              </p>
-
-              <Buttons alignment="center" gap="md">
-                <Button 
-                  page={teamPageCTA.buttons[0].page} 
-                  size="lg"
-                  variant="default"
-                  style={{
-                    backgroundColor: 'var(--primary-foreground)',
-                    color: 'var(--primary)'
-                  }}
-                >
-                  {teamPageCTA.buttons[0].text}
-                </Button>
-                <Button 
-                  page={teamPageCTA.buttons[1].page} 
-                  size="lg"
-                  variant="outline"
-                  style={{
-                    borderColor: 'var(--primary-foreground)',
-                    color: 'var(--primary-foreground)'
-                  }}
-                >
-                  {teamPageCTA.buttons[1].text}
-                </Button>
-              </Buttons>
-            </div>
-          </Container>
-        </Section>
+          secondaryButton={{
+            text: teamPageCTA.secondaryButton.text,
+            page: teamPageCTA.secondaryButton.page
+          }}
+          variant="gradient"
+          align="center"
+        />
       </main>
 
       <SiteFooter />

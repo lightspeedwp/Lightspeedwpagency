@@ -60,7 +60,18 @@
 @import './theme-dark.css';
 
 /**
- * 4. Global utility classes
+ * 4. Fluid Responsive System
+ * - Breakpoint system (320px → 1440px+)
+ * - Fluid container padding (16px → 32px)
+ * - Fluid typography with clamp() for smooth scaling
+ * - Responsive grid systems
+ * - Mobile menu breakpoints
+ * - Touch-friendly spacing on mobile
+ */
+@import './responsive.css';
+
+/**
+ * 5. Global utility classes
  * - Typography utilities (font sizes, weights, etc.)
  * - Spacing utilities (padding, margin, gap)
  * - WordPress-compatible utility classes
@@ -69,9 +80,277 @@
 @import './utilities.css';
 
 /**
- * 5. Component styles
+ * 6. Component styles
  * - Reusable component patterns (buttons, cards, sections)
  * - WordPress block-compatible components
  * - All styles use CSS variables for consistency
  */
 @import './components.css';
+
+/**
+ * 7. Hero pattern styles
+ * - Hero component styling
+ * - All hero variants (homepage, archive, service, simple)
+ * - Gradient backgrounds, badges, stats, buttons
+ * - 100% CSS variables for user control
+ */
+@import './hero.css';
+
+/**
+ * 8. Hero Home pattern styles
+ * - Homepage hero full-height section
+ * - Category badge, stats grid, gradient overlay
+ * - 100% CSS variables for user control
+ */
+@import './hero-home.css';
+
+/**
+ * 9. Archive Header pattern styles
+ * - Archive page headers (taxonomy, category, blog)
+ * - Title, description, result count
+ * - 100% CSS variables for user control
+ */
+@import './archive-header.css';
+
+/**
+ * 10. Card Grid pattern styles
+ * - Responsive card grids (blog, portfolio, services)
+ * - Card layouts with images, titles, descriptions, meta
+ * - 100% CSS variables for user control
+ */
+@import './card-grid.css';
+
+/**
+ * 11. CTA Section pattern styles
+ * - Call-to-action sections with buttons
+ * - Default, highlighted, and gradient variants
+ * - Trust indicators
+ * - 100% CSS variables for user control
+ */
+@import './cta-section.css';
+
+/**
+ * 12. FAQ Section pattern styles
+ * - Accordion-style FAQ sections
+ * - Default, muted, and card variants
+ * - Contact CTA footer
+ * - 100% CSS variables for user control
+ */
+@import './faq-section.css';
+
+/**
+ * 13. Filter Bar pattern styles
+ * - Archive filtering and sorting controls
+ * - Search input, category filters, sort dropdown
+ * - View mode toggle (grid/list)
+ * - 100% CSS variables for user control
+ */
+@import './filter-bar.css';
+
+/**
+ * 14. Pagination Navigation pattern styles
+ * - Archive pagination controls
+ * - Previous/next buttons, page numbers
+ * - Smart ellipsis for large page counts
+ * - 100% CSS variables for user control
+ */
+@import './pagination-nav.css';
+
+/**
+ * 15. Stats Section pattern styles
+ * - Key statistics in grid layout
+ * - Default and highlighted variants
+ * - Responsive 1/2/4 column grid
+ * - 100% CSS variables for user control
+ */
+@import './stats-section.css';
+
+/**
+ * 16. Testimonial Grid pattern styles
+ * - Customer testimonials and reviews
+ * - 4 variants: default, cards, minimal, featured
+ * - Responsive 1/2/3 column grid
+ * - 100% CSS variables for user control
+ */
+@import './testimonial-grid.css';
+
+/**
+ * 17. Social Proof pattern styles
+ * - Client logos, awards, certifications
+ * - Grayscale hover effect
+ * - Responsive grid
+ * - 100% CSS variables for user control
+ */
+@import './social-proof.css';
+
+/**
+ * 18. Footer Newsletter pattern styles
+ * - Newsletter subscription footer
+ * - Social links, link columns
+ * - Form styling
+ * - 100% CSS variables for user control
+ */
+@import './footer-newsletter.css';
+
+/**
+ * 19. Featured Project Showcase pattern styles
+ * - Featured project/case study with stats
+ * - Two-column layout with testimonial overlay
+ * - 100% CSS variables for user control
+ */
+@import './featured-project-showcase.css';
+
+/**
+ * 20. Solution Cards Grid pattern styles
+ * - Clickable solution cards with icons
+ * - Responsive 1-3 column grid
+ * - Hover effects and animations
+ * - 100% CSS variables for user control
+ */
+@import './solution-cards-grid.css';
+
+/**
+ * 21. Values Section pattern styles
+ * - Company values in grid layout
+ * - Icon cards with hover effects
+ * - Responsive 1-3 column grid
+ * - 100% CSS variables for user control
+ */
+@import './values-section.css';
+
+/**
+ * 22. Case Study Preview pattern styles
+ * - Featured case study with metrics
+ * - Two-column layout with image
+ * - Responsive grid layout
+ * - 100% CSS variables for user control
+ */
+@import './case-study-preview.css';
+
+/**
+ * 23. Theme Showcase Grid pattern styles
+ * - Theme/product cards with features
+ * - Category badges, hover effects
+ * - Responsive grid layout
+ * - 100% CSS variables for user control
+ */
+@import './theme-showcase-grid.css';
+
+/**
+ * ==================================================================
+ * TEMPLATE-SPECIFIC STYLES
+ * ==================================================================
+ */
+
+/**
+ * 24. Common Template Headers
+ * - Reusable section header pattern
+ * - Used across multiple templates
+ * - 100% CSS variables for user control
+ */
+@import './templates/common-template-headers.css';
+
+/**
+ * 25. Contact Page Template
+ * - Contact methods grid
+ * - Contact form layout
+ * - Info cards sidebar
+ * - 100% CSS variables for user control
+ */
+@import './templates/contact-page.css';
+
+/**
+ * 26. Team Page Template
+ * - Leadership cards
+ * - Team stats grid
+ * - Culture values cards
+ * - Department cards
+ * - 100% CSS variables for user control
+ */
+@import './templates/team-page.css';
+
+/**
+ * 27. Hosting Page Template
+ * - Hosting plan cards (3-column)
+ * - Hosting features grid (4-column)
+ * - Why choose section (2-column)
+ * - Guarantees grid (3-column)
+ * - 100% CSS variables for user control
+ */
+@import './templates/hosting-page.css';
+
+/**
+ * 28. Blog Index Page Template
+ * - Section headers (large and standard variants)
+ * - Content wrappers (wide and narrow)
+ * - Topic cards with icons and hover effects
+ * - 100% CSS variables for user control
+ */
+@import './templates/blog-index-page.css';
+
+/**
+ * 29. Single Post (Longform) Template
+ * - Related articles grid (3-column responsive)
+ * - Comments section and comment cards
+ * - Category badges
+ * - Comment form CTA
+ * - 100% CSS variables for user control
+ */
+@import './templates/single-post-page.css';
+
+/**
+ * 30. Wetu Importer Product Page Template
+ * - Feature cards (3-column responsive grid)
+ * - Benefit cards (2-column responsive grid)
+ * - Process steps (numbered timeline)
+ * - Pricing cards (3-tier comparison)
+ * - Specifications grid
+ * - 100% CSS variables for user control
+ */
+@import './templates/wetu-importer-page.css';
+
+/**
+ * 31. LSX Sharing Product Page Template
+ * - Feature cards (3-column responsive grid)
+ * - Benefit cards (2-column responsive grid)
+ * - Social networks grid (4-column responsive)
+ * - Free plugin highlight section
+ * - Specifications grid
+ * - 100% CSS variables for user control
+ */
+@import './templates/lsx-sharing-page.css';
+
+/**
+ * 32. LSX Search Product Page Template
+ * - Feature cards (3-column responsive grid)
+ * - Benefit cards (2-column responsive grid)
+ * - Capabilities grid (4 categories)
+ * - Search demo section
+ * - Specifications grid
+ * - 100% CSS variables for user control
+ */
+@import './templates/lsx-search-page.css';
+
+/**
+ * 33. Mailchimp Solution Page Template
+ * - Why Mailchimp benefits (2-column grid)
+ * - Feature cards (3-column responsive grid)
+ * - Process steps (6-step grid with numbered badges)
+ * - Pricing packages (3-tier comparison)
+ * - Case study with results metrics
+ * - 100% CSS variables for user control
+ */
+@import './templates/mailchimp-solution-page.css';
+
+/**
+ * 34. Service Pages Shared Styles
+ * - Shared styles for Migrations, Security, and Content service pages
+ * - Benefits grid (4-column responsive)
+ * - Features grid (3-column responsive)
+ * - Process steps (5 steps with numbered timeline)
+ * - List grids (platforms, standards, content types — 4-column responsive)
+ * - Pricing packages (3-tier comparison)
+ * - Case study with results metrics
+ * - 100% CSS variables for user control
+ */
+@import './templates/service-pages-shared.css';

@@ -1,0 +1,75 @@
+/**
+ * Tag Cloud Block Styles
+ * 
+ * WordPress block: .wp-block-tag-cloud
+ * 
+ * @see /guidelines/blocks/widgets/tag-cloud.md
+ */
+
+.wp-block-tag-cloud {
+  margin-bottom: var(--spacing-6);
+}
+
+.wp-block-tag-cloud__container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-2);
+  align-items: center;
+}
+
+.wp-block-tag-cloud__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  padding: var(--spacing-1) var(--spacing-2);
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-regular);
+  color: var(--foreground);
+  background: var(--muted);
+  border-radius: var(--radius);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.wp-block-tag-cloud__tag:hover {
+  background: var(--primary);
+  color: var(--primary-foreground);
+  transform: translateY(-2px);
+}
+
+.wp-block-tag-cloud__tag:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Size Variants */
+.wp-block-tag-cloud__tag--small {
+  font-size: var(--text-xs);
+}
+
+.wp-block-tag-cloud__tag--medium {
+  font-size: var(--text-sm);
+}
+
+.wp-block-tag-cloud__tag--large {
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-medium);
+}
+
+.wp-block-tag-cloud__count {
+  font-family: var(--font-secondary);
+  font-size: 0.85em;
+  opacity: 0.7;
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+  .wp-block-tag-cloud__tag {
+    font-size: var(--text-xs);
+  }
+  
+  .wp-block-tag-cloud__tag--large {
+    font-size: var(--text-sm);
+  }
+}

@@ -1,0 +1,341 @@
+/**
+ * Single Post (Longform) Template Styles
+ * 
+ * Dedicated styles for long-form blog post layout and components.
+ * All styling uses CSS variables for complete user control.
+ * 
+ * Sections:
+ * - Related Articles grid (3-column responsive)
+ * - Comments section (list layout)
+ * - Comment cards and avatars
+ * - Comment form CTA
+ * 
+ * User can edit this file to update single post styling site-wide.
+ */
+
+/* ============================================
+ * RELATED ARTICLES SECTION
+ * ============================================ */
+
+/**
+ * Related articles grid
+ * Responsive: 1 col mobile → 3 cols desktop
+ */
+.single-post__related-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-8);
+}
+
+@media (min-width: 768px) {
+  .single-post__related-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ============================================
+ * RELATED ARTICLE CARD
+ * ============================================ */
+
+/**
+ * Individual article card
+ * Card with image, category badge, and title
+ */
+.single-post__related-card {
+  /* Appearance */
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  
+  /* Transition */
+  transition: all 0.2s ease;
+}
+
+.single-post__related-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+/**
+ * Article card image
+ * 16:9 aspect ratio
+ */
+.single-post__related-image {
+  aspect-ratio: 16 / 9;
+  background-size: cover;
+  background-position: center;
+}
+
+/**
+ * Article card content area
+ * Contains category badge and title
+ */
+.single-post__related-content {
+  padding: var(--spacing-6);
+}
+
+/* ============================================
+ * CATEGORY BADGE
+ * ============================================ */
+
+/**
+ * Category badge
+ * Pill-shaped label above article title
+ */
+.single-post__category-badge {
+  /* Display */
+  display: inline-block;
+  margin-bottom: var(--spacing-3);
+  
+  /* Spacing */
+  padding: var(--spacing-1) var(--spacing-3);
+  
+  /* Appearance */
+  background-color: var(--secondary);
+  color: var(--secondary-foreground);
+  border-radius: var(--radius-full);
+  
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-small);
+  font-weight: var(--font-weight-medium);
+}
+
+/**
+ * Article title link
+ * Hover effect changes color
+ */
+.single-post__article-title {
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-h3);
+  font-weight: var(--font-weight-medium);
+  color: var(--foreground);
+  line-height: 1.3;
+  
+  /* Link styling */
+  text-decoration: none;
+  
+  /* Transition */
+  transition: color 0.2s ease;
+}
+
+.single-post__article-title:hover {
+  color: var(--primary);
+}
+
+/* ============================================
+ * COMMENTS SECTION
+ * ============================================ */
+
+/**
+ * Comments container wrapper
+ * Constrains width for readability
+ */
+.single-post__comments-wrapper {
+  max-width: 896px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/**
+ * Comments section header
+ * Icon + title layout
+ */
+.single-post__comments-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  margin-bottom: var(--spacing-8);
+}
+
+.single-post__comments-header svg {
+  color: var(--foreground);
+}
+
+/**
+ * Comments list container
+ * Vertical stack with spacing
+ */
+.single-post__comments-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+  margin-bottom: var(--spacing-12);
+}
+
+/* ============================================
+ * COMMENT CARD
+ * ============================================ */
+
+/**
+ * Individual comment card
+ * Contains avatar, author, date, and content
+ */
+.single-post__comment {
+  /* Spacing */
+  padding: var(--spacing-6);
+  
+  /* Appearance */
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+/**
+ * Comment content layout
+ * Avatar on left, content on right
+ */
+.single-post__comment-content {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-4);
+}
+
+/**
+ * Comment avatar
+ * Circular profile picture
+ */
+.single-post__comment-avatar {
+  /* Size */
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  
+  /* Appearance */
+  border-radius: var(--radius-full);
+  background-size: cover;
+  background-position: center;
+}
+
+/**
+ * Comment text container
+ * Holds author, date, and comment text
+ */
+.single-post__comment-text-wrapper {
+  flex: 1;
+}
+
+/**
+ * Comment meta
+ * Author name + date layout
+ */
+.single-post__comment-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  margin-bottom: var(--spacing-2);
+}
+
+/**
+ * Comment author name
+ */
+.single-post__comment-author {
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-medium);
+  color: var(--foreground);
+}
+
+/**
+ * Comment date
+ */
+.single-post__comment-date {
+  /* Typography */
+  font-family: var(--font-secondary);
+  font-size: var(--text-small);
+  color: var(--muted-foreground);
+}
+
+/**
+ * Comment text
+ */
+.single-post__comment-text {
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  color: var(--foreground);
+  line-height: 1.6;
+  
+  /* Reset */
+  margin: 0;
+}
+
+/* ============================================
+ * COMMENT FORM CTA
+ * ============================================ */
+
+/**
+ * Leave a reply CTA card
+ * Centered call-to-action to encourage comments
+ */
+.single-post__comment-cta {
+  /* Spacing */
+  padding: var(--spacing-8);
+  
+  /* Appearance */
+  background-color: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  
+  /* Layout */
+  text-align: center;
+}
+
+/**
+ * CTA title
+ */
+.single-post__cta-title {
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-h3);
+  font-weight: var(--font-weight-medium);
+  color: var(--foreground);
+  
+  /* Spacing */
+  margin-bottom: var(--spacing-4);
+}
+
+/**
+ * CTA description
+ */
+.single-post__cta-description {
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  color: var(--muted-foreground);
+  line-height: 1.6;
+  
+  /* Spacing */
+  margin-bottom: var(--spacing-6);
+}
+
+/* ============================================
+ * RESPONSIVE DESIGN
+ * ============================================ */
+
+/**
+ * Mobile (< 768px)
+ * - Related grid: 1 column
+ * - Comments: Full width within container
+ */
+
+/**
+ * Desktop (>= 768px)
+ * - Related grid: 3 columns
+ * - Comments: Constrained to 896px
+ */
+
+/* ============================================
+ * DARK MODE SUPPORT
+ * ============================================ */
+
+/**
+ * All colors use CSS variables which automatically
+ * adapt to light/dark mode via theme-light.css and
+ * theme-dark.css
+ * 
+ * No additional dark mode styles needed
+ */

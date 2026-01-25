@@ -6,6 +6,7 @@
  * and follows the design system requirements.
  * 
  * Available blocks:
+ * - Accordion (core/details) - Collapsible content panels for FAQs and expandable content (NEW)
  * - Alert (lsx-design/alert) - Important messages and notifications
  * - Badge (lsx-design/badge) - Small label for status, categories, and tags
  * - Buttons (core/buttons) - Container for multiple button blocks
@@ -16,7 +17,12 @@
  * - Columns (core/columns) - Multi-column layout with Column children
  * 
  * @see /guidelines/blocks/design/
+ * @see /guidelines/blocks/design/Accordion.md
  */
+
+// Accordion block (NEW)
+export { Accordion, AccordionItem } from './Accordion';
+export type { AccordionProps, AccordionItemProps } from './Accordion';
 
 // Alert block
 export { Alert, AlertTitle, AlertDescription } from './Alert';

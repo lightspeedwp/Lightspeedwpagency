@@ -1,0 +1,338 @@
+/**
+ * List Block Styles
+ * 
+ * WordPress block: .wp-block-list
+ * Component: /src/app/components/blocks/text/List.tsx
+ * Guideline: /guidelines/blocks/text/list.md
+ * 
+ * CRITICAL: 100% CSS variables only - NO hardcoded values
+ * User can control ALL styling by editing theme CSS files
+ */
+
+/* ==========================================================================
+   BASE STYLES - UNORDERED LIST
+   ========================================================================== */
+
+.wp-block-list--unordered {
+  /* Layout */
+  list-style-type: disc;
+  padding-left: 24px;
+  
+  /* Spacing */
+  margin-bottom: var(--spacing-6);
+  
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--foreground);
+}
+
+/* List item spacing */
+.wp-block-list--unordered .wp-block-list__item + .wp-block-list__item {
+  margin-top: var(--spacing-2);
+}
+
+/* Marker styling */
+.wp-block-list--unordered .wp-block-list__item::marker {
+  color: var(--muted-foreground);
+}
+
+/* ==========================================================================
+   BASE STYLES - ORDERED LIST
+   ========================================================================== */
+
+.wp-block-list--ordered {
+  /* Layout */
+  list-style-type: decimal;
+  padding-left: 24px;
+  
+  /* Spacing */
+  margin-bottom: var(--spacing-6);
+  
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--foreground);
+}
+
+/* List item spacing */
+.wp-block-list--ordered .wp-block-list__item + .wp-block-list__item {
+  margin-top: var(--spacing-2);
+}
+
+/* Marker styling */
+.wp-block-list--ordered .wp-block-list__item::marker {
+  color: var(--muted-foreground);
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   LIST ITEM
+   ========================================================================== */
+
+.wp-block-list__item {
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  
+  /* Remove default margin */
+  margin: 0;
+  padding: 0;
+}
+
+/* Remove margin from last item */
+.wp-block-list__item:last-child {
+  margin-bottom: 0;
+}
+
+/* ==========================================================================
+   SPACING VARIANTS
+   ========================================================================== */
+
+/* Tight spacing */
+.wp-block-list--tight .wp-block-list__item + .wp-block-list__item {
+  margin-top: var(--spacing-1);
+}
+
+/* Normal spacing (default) */
+.wp-block-list--normal .wp-block-list__item + .wp-block-list__item {
+  margin-top: var(--spacing-3);
+}
+
+/* Relaxed spacing */
+.wp-block-list--relaxed .wp-block-list__item + .wp-block-list__item {
+  margin-top: var(--spacing-4);
+}
+
+/* ==========================================================================
+   VARIANT STYLES
+   ========================================================================== */
+
+/* Checkmarks variant (unordered) */
+.wp-block-list--checkmarks {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.wp-block-list--checkmarks .wp-block-list__item {
+  position: relative;
+  padding-left: 32px;
+}
+
+.wp-block-list--checkmarks .wp-block-list__item::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 18px;
+  line-height: inherit;
+}
+
+/* Custom variant */
+.wp-block-list--custom {
+  /* User can override in their custom CSS */
+  list-style-type: disc;
+}
+
+/* ==========================================================================
+   NESTED LISTS
+   ========================================================================== */
+
+.wp-block-list__item .wp-block-list--unordered,
+.wp-block-list__item .wp-block-list--ordered {
+  /* Spacing */
+  margin-top: var(--spacing-2);
+  margin-bottom: var(--spacing-2);
+  
+  /* Typography */
+  font-size: var(--text-sm);
+}
+
+/* Nested unordered lists change marker style */
+.wp-block-list--unordered .wp-block-list--unordered {
+  list-style-type: circle;
+}
+
+.wp-block-list--unordered .wp-block-list--unordered .wp-block-list--unordered {
+  list-style-type: square;
+}
+
+/* Nested ordered lists */
+.wp-block-list--ordered .wp-block-list--ordered {
+  list-style-type: lower-alpha;
+}
+
+.wp-block-list--ordered .wp-block-list--ordered .wp-block-list--ordered {
+  list-style-type: lower-roman;
+}
+
+/* ==========================================================================
+   CONTENT WITHIN LIST ITEMS
+   ========================================================================== */
+
+/* Paragraphs within list items */
+.wp-block-list__item p {
+  margin-top: var(--spacing-1);
+  margin-bottom: var(--spacing-2);
+}
+
+.wp-block-list__item p:last-child {
+  margin-bottom: 0;
+}
+
+/* Headings within list items */
+.wp-block-list__item h3,
+.wp-block-list__item h4,
+.wp-block-list__item h5,
+.wp-block-list__item h6 {
+  margin-top: var(--spacing-2);
+  margin-bottom: var(--spacing-1);
+}
+
+/* Code blocks within list items */
+.wp-block-list__item code {
+  font-family: 'Courier New', monospace;
+  font-size: 0.9em;
+  padding: 2px 6px;
+  background: var(--muted);
+  border-radius: var(--radius-sm);
+}
+
+/* Links within list items */
+.wp-block-list__item a {
+  color: var(--primary);
+  text-decoration: underline;
+  transition: color 200ms ease;
+}
+
+.wp-block-list__item a:hover {
+  color: var(--primary);
+  opacity: 0.8;
+}
+
+.wp-block-list__item a:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* ==========================================================================
+   RESPONSIVE STYLES
+   ========================================================================== */
+
+/* Mobile (< 768px) - Base styles above */
+
+/* Tablet (768px - 1023px) */
+@media (min-width: 768px) {
+  .wp-block-list--unordered,
+  .wp-block-list--ordered {
+    font-size: 16px;
+    padding-left: 28px;
+  }
+  
+  .wp-block-list--unordered .wp-block-list__item + .wp-block-list__item,
+  .wp-block-list--ordered .wp-block-list__item + .wp-block-list__item {
+    margin-top: var(--spacing-3);
+  }
+}
+
+/* Desktop (≥ 1024px) */
+@media (min-width: 1024px) {
+  .wp-block-list--unordered,
+  .wp-block-list--ordered {
+    font-size: var(--text-base);
+    padding-left: 32px;
+  }
+}
+
+/* ==========================================================================
+   DARK MODE OVERRIDES
+   ========================================================================== */
+
+.dark-theme .wp-block-list--unordered,
+.dark-theme .wp-block-list--ordered {
+  color: var(--foreground);
+}
+
+.dark-theme .wp-block-list__item::marker {
+  color: var(--muted-foreground);
+}
+
+.dark-theme .wp-block-list--checkmarks .wp-block-list__item::before {
+  color: var(--primary);
+}
+
+.dark-theme .wp-block-list__item code {
+  background: var(--muted);
+  color: var(--foreground);
+}
+
+/* ==========================================================================
+   PRINT STYLES
+   ========================================================================== */
+
+@media print {
+  .wp-block-list--unordered,
+  .wp-block-list--ordered {
+    color: black;
+    font-size: 12pt;
+    line-height: 1.5;
+  }
+  
+  .wp-block-list__item {
+    page-break-inside: avoid;
+  }
+  
+  /* Preserve list markers in print */
+  .wp-block-list__item::marker {
+    color: black;
+  }
+  
+  .wp-block-list--checkmarks .wp-block-list__item::before {
+    color: black;
+  }
+}
+
+/* ==========================================================================
+   REDUCED MOTION
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .wp-block-list__item a {
+    transition: none;
+  }
+}
+
+/* ==========================================================================
+   UTILITY CLASSES
+   ========================================================================== */
+
+/* No bullets/numbers */
+.wp-block-list--none {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+/* Horizontal list (for navigation) */
+.wp-block-list--horizontal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-4);
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.wp-block-list--horizontal .wp-block-list__item {
+  margin-top: 0;
+}
+
+/* Compact list (minimal spacing) */
+.wp-block-list--compact .wp-block-list__item + .wp-block-list__item {
+  margin-top: 0;
+}

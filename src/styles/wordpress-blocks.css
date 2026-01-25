@@ -555,13 +555,13 @@ h6.wp-block-heading {
 .wp-block-navigation {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--spacing-4); /* Reduced from 8px to 16px for tighter spacing */
 }
 
 .wp-block-navigation__container {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--spacing-4); /* Reduced from 8px to 16px for tighter spacing */
   list-style: none;
   margin: 0;
   padding: 0;
@@ -1236,12 +1236,121 @@ h6.wp-block-heading {
 
 
 /* ============================================
-   20. BADGE PATTERN
+   20. BADGE PATTERN (UNIFIED SYSTEM)
    ============================================ */
 
 /**
- * Badge component for labels, tags, categories
+ * UNIFIED BADGE SYSTEM
+ * 
+ * Base badge class with 3 style variants:
+ * - .wp-badge--hero      → Glassmorphic style for hero sections
+ * - .wp-badge--section   → Primary color style for section headers
+ * - .wp-badge--technology → Card style for technology tags
+ * 
+ * Usage:
+ * <div className="wp-badge--hero">Badge Text</div>
+ * <div className="wp-badge--section">Section Label</div>
+ * <span className="wp-badge--technology">React</span>
  */
+
+/* Base badge (shared styles) */
+.wp-badge,
+.wp-badge--hero,
+.wp-badge--section,
+.wp-badge--technology {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-secondary); /* Manrope */
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.2s ease;
+}
+
+/* Hero Badge (Glassmorphic style for hero sections) */
+.wp-badge--hero {
+  padding: 10px 16px;
+  margin-bottom: var(--spacing-6);
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(255, 255, 255, 0.95); /* Updated: White border for better contrast */
+  font-size: var(--text-base); /* Increased from var(--text-small) for better readability */
+  color: rgba(255, 255, 255, 0.95); /* Updated: Bright white for maximum contrast */
+}
+
+/* Hero Badge - Light Background Variant (for light backgrounds in dark mode) */
+.wp-badge--hero-light {
+  padding: 10px 16px;
+  margin-bottom: var(--spacing-6);
+  background-color: hsl(0 0% 100%); /* Always white background */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: var(--radius-full);
+  border: 1px solid hsl(240 5.9% 10%); /* Always dark border */
+  font-size: var(--text-base);
+  color: hsl(240 10% 3.9%); /* Always dark text */
+}
+
+.wp-badge--hero-light svg {
+  animation: badgeIconPulse 2s ease-in-out infinite;
+}
+
+/* Hero Badge Icon Animation */
+.wp-badge--hero svg {
+  animation: badgeIconPulse 2s ease-in-out infinite;
+}
+
+@keyframes badgeIconPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+/* Section Header Badge (Primary color style) */
+.wp-badge--section {
+  padding: 10px 16px;
+  margin-bottom: var(--spacing-6);
+  background-color: var(--primary-soft);
+  border-radius: var(--radius-full);
+  border: 1px solid transparent;
+  font-size: var(--text-small);
+  color: var(--primary);
+}
+
+.wp-badge--section:hover {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border-color: var(--primary);
+}
+
+/* Technology Badge (Card style for tech tags) */
+.wp-badge--technology {
+  padding: 8px 16px;
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  font-size: var(--text-small);
+  font-weight: var(--font-weight-medium);
+  color: var(--foreground);
+  text-transform: none; /* No uppercase for tech names */
+  letter-spacing: normal;
+}
+
+.wp-badge--technology:hover {
+  background-color: var(--primary-soft);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+/* Legacy support: keep old classes for backward compatibility */
 .wp-block-badge {
   display: inline-flex;
   align-items: center;
@@ -1250,12 +1359,12 @@ h6.wp-block-heading {
   color: var(--primary);
   border-radius: var(--radius-lg);
   border: 1px solid var(--primary);
-  font-family: Lexend, sans-serif;
+  font-family: var(--font-primary);
   font-size: var(--text-small);
   font-weight: var(--font-weight-semibold);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  margin-bottom: 16px;
+  margin-bottom: var(--spacing-4);
 }
 
 .wp-block-badge.is-style-secondary {
@@ -2088,8 +2197,9 @@ h6.wp-block-heading {
   z-index: 10;
 }
 
-/* Hero badge (pill-style label) */
+/* Hero badge (pill-style label) - LEGACY: Use .wp-badge--hero instead */
 .wp-block-hero-homepage__badge {
+  /* Redirect to new unified badge system */
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -2097,13 +2207,15 @@ h6.wp-block-heading {
   margin-bottom: clamp(20px, 3vw, 24px);
   background-color: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border-radius: var(--radius-full);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  font-family: 'Manrope', sans-serif;
+  font-family: var(--font-secondary);
   font-size: var(--text-small);
   font-weight: var(--font-weight-semibold);
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.95);
 }
 
 /* Hero title */
@@ -2130,9 +2242,32 @@ h6.wp-block-heading {
   font-family: 'Lexend', sans-serif;
   font-size: var(--text-xl);
   line-height: 1.7;
-  color: rgba(255, 255, 255, 0.9);
+  color: #0E3278; /* Deep blue for brand consistency on gradient backgrounds */
   margin-bottom: clamp(30px, 4vw, 40px);
   max-width: 540px;
+}
+
+/* Generic hero description (for all hero patterns) */
+.wp-block-hero__description {
+  font-family: Lexend, sans-serif;
+  font-size: var(--text-xl);
+  line-height: var(--line-height-relaxed);
+  color: #0E3278; /* Deep blue for brand consistency on gradient backgrounds */
+  max-width: 700px;
+  margin: 0 auto 40px;
+}
+
+/* Service/Solution hero description variants */
+.wp-block-service-hero__description,
+.wp-block-solution-hero__description,
+.wp-block-portfolio-hero__description,
+.wp-block-services-hero__description {
+  font-family: Lexend, sans-serif;
+  font-size: var(--text-xl);
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.95); /* Updated: White text for better contrast on gradient backgrounds */
+  max-width: 700px;
+  margin: 0 auto 40px;
 }
 
 /* Hero buttons container */
@@ -2178,7 +2313,7 @@ h6.wp-block-heading {
 }
 
 .wp-block-hero-stat__value {
-  font-family: 'Lexend', sans-serif;
+  font-family: var(--font-primary);
   font-size: var(--text-2xl);
   font-weight: var(--font-weight-bold);
   color: var(--primary-foreground);
@@ -2186,9 +2321,10 @@ h6.wp-block-heading {
 }
 
 .wp-block-hero-stat__label {
-  font-family: 'Manrope', sans-serif;
+  font-family: var(--font-secondary);
   font-size: var(--text-small);
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--primary-foreground);
+  opacity: 0.8;
 }
 
 /* Responsive hero adjustments */
@@ -2287,6 +2423,7 @@ h6.wp-block-heading {
 }
 
 .wp-block-section-header__badge {
+  /* LEGACY: Use .wp-badge--section instead */
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -2294,12 +2431,20 @@ h6.wp-block-heading {
   margin-bottom: clamp(20px, 3vw, 24px);
   background-color: var(--primary-soft);
   border-radius: var(--radius-full);
-  font-family: 'Manrope', sans-serif;
+  font-family: var(--font-secondary);
   font-size: var(--text-small);
   font-weight: var(--font-weight-semibold);
   color: var(--primary);
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.wp-block-section-header__badge:hover {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border-color: var(--primary);
 }
 
 .wp-block-section-header__title {
@@ -2598,14 +2743,22 @@ h6.wp-block-heading {
 }
 
 .wp-block-technology-badge {
+  /* LEGACY: Use .wp-badge--technology instead */
   padding: 8px 16px;
   background-color: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius-full);
-  font-family: 'Manrope', sans-serif;
+  font-family: var(--font-secondary);
   font-size: var(--text-small);
   font-weight: var(--font-weight-medium);
   color: var(--foreground);
+  transition: all 0.2s ease;
+}
+
+.wp-block-technology-badge:hover {
+  background-color: var(--primary-soft);
+  border-color: var(--primary);
+  color: var(--primary);
 }
 
 
@@ -3168,4 +3321,537 @@ h6.wp-block-heading {
   .wp-block-post-header__divider {
     display: none;
   }
+}
+
+
+/* ============================================
+   42. ARCHIVE TEMPLATE UTILITIES
+   ============================================ */
+
+/**
+ * Archive template layout utilities
+ * Used in ArchiveTemplate.tsx for consistent styling
+ */
+
+/* Archive content wrapper - Vertical flex layout */
+.wp-archive-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-12);
+}
+
+/* Archive results bar - Horizontal layout with space between */
+.wp-archive-results-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--spacing-4);
+}
+
+/* Results count text */
+.wp-archive-results-count {
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.5;
+  color: var(--foreground);
+  margin: 0;
+}
+
+/* Sort button */
+.wp-archive-sort-button {
+  display: flex;
+  gap: var(--spacing-2);
+  align-items: center;
+  padding: var(--spacing-2-5);
+  background-color: var(--background);
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-regular);
+  color: var(--foreground);
+  border-radius: var(--radius);
+  transition: all 0.2s ease;
+}
+
+.wp-archive-sort-button:hover {
+  background-color: var(--muted);
+}
+
+.wp-archive-sort-button:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+
+/* ============================================
+   43. SINGLE TEMPLATE UTILITIES
+   ============================================ */
+
+/**
+ * Single template layout utilities
+ * Used in SingleTemplate.tsx for consistent styling
+ */
+
+/* Page wrapper - Full height flex layout */
+.wp-single-page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+/* Main content area - Flex grow */
+.wp-single-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Breadcrumbs section */
+.wp-single-breadcrumbs {
+  background-color: var(--background);
+  border-bottom: 1px solid var(--border-soft);
+  padding-block: var(--spacing-4);
+}
+
+/* Page content */
+.wp-single-content {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  color: var(--foreground);
+  line-height: 1.7;
+}
+
+/* Empty state alert box */
+.wp-single-empty-state {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-3);
+  padding: var(--spacing-6);
+  background-color: var(--muted);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+}
+
+.wp-single-empty-state__icon {
+  color: var(--muted-foreground);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.wp-single-empty-state__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-medium);
+  color: var(--foreground);
+  margin-bottom: 8px;
+}
+
+.wp-single-empty-state__description {
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  line-height: 1.6;
+  margin: 0;
+}
+
+
+/* ============================================
+   44. BLOG INDEX TEMPLATE UTILITIES
+   ============================================ */
+
+/**
+ * Blog index template utilities
+ * Used in BlogIndexTemplate.tsx for consistent styling
+ */
+
+/* Breadcrumbs section */
+.wp-blog-breadcrumbs {
+  background-color: var(--background);
+  padding-block: var(--spacing-4);
+}
+
+/* Section header */
+.wp-blog-section-header {
+  margin-bottom: var(--spacing-12);
+}
+
+.wp-blog-section-header__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+  color: var(--foreground);
+}
+
+.wp-blog-section-header__description {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  color: var(--muted-foreground);
+  margin: 0;
+}
+
+/* Featured post card */
+.wp-blog-featured-card {
+  background-color: var(--card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-soft);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.wp-blog-featured-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+  border-color: var(--primary);
+}
+
+.wp-blog-featured-card__image {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  display: block;
+}
+
+.wp-blog-featured-card__content {
+  padding: 32px;
+}
+
+/* Category tags group */
+.wp-blog-categories {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.wp-blog-category-tag {
+  font-size: var(--text-small);
+  font-family: var(--font-secondary);
+  font-weight: var(--font-weight-medium);
+  padding: 4px 12px;
+  background-color: var(--primary-soft);
+  color: var(--primary);
+  border-radius: var(--radius);
+  transition: all 0.2s ease;
+}
+
+.wp-blog-category-tag:hover {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+/* Post title in featured card */
+.wp-blog-featured-card__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h3);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  line-height: 1.3;
+  margin-bottom: 12px;
+}
+
+/* Post excerpt */
+.wp-blog-featured-card__excerpt {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  line-height: 1.6;
+  color: var(--muted-foreground);
+  margin-bottom: 20px;
+}
+
+/* Post meta wrapper */
+.wp-blog-post-meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.wp-blog-post-meta__item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.wp-blog-post-meta__icon {
+  color: var(--muted-foreground);
+}
+
+.wp-blog-post-meta__text {
+  font-family: var(--font-secondary);
+  font-size: var(--text-small);
+  color: var(--muted-foreground);
+}
+
+
+/* ============================================
+   45. CATEGORY ARCHIVE TEMPLATE UTILITIES
+   ============================================ */
+
+/**
+ * Category archive template utilities
+ * Used in CategoryArchiveTemplate.tsx for consistent styling
+ */
+
+/* Category header section */
+.wp-category-header {
+  background-color: var(--background);
+  border-bottom: 1px solid var(--border-soft);
+  padding-top: var(--spacing-16);
+  padding-bottom: var(--spacing-16);
+}
+
+/* Category label (small text above title) */
+.wp-category-label {
+  font-family: var(--font-secondary);
+  font-size: var(--text-small);
+  font-weight: var(--font-weight-medium);
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: block;
+}
+
+/* Category title */
+.wp-category-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h1);
+  font-weight: var(--font-weight-medium);
+  color: var(--foreground);
+  margin-top: 8px;
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+/* Category description */
+.wp-category-description {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  color: var(--foreground);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+/* Category post count */
+.wp-category-count {
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  color: var(--muted-foreground);
+  margin: 0;
+}
+
+/* Category posts grid */
+.wp-category-posts-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-16);
+  margin-bottom: var(--spacing-12);
+}
+
+@media (min-width: 1024px) {
+  .wp-category-posts-grid {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+/* Category posts list */
+.wp-category-posts-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+}
+
+/* Category post card (horizontal layout) */
+.wp-category-post-card {
+  display: flex;
+  gap: var(--spacing-6);
+  padding: var(--spacing-6);
+  background-color: var(--card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.wp-category-post-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  border-color: var(--primary);
+}
+
+/* Post card image container */
+.wp-category-post-card__image-wrapper {
+  aspect-ratio: 16/9;
+  width: 280px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.wp-category-post-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Post card content */
+.wp-category-post-card__content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.wp-category-post-card__title {
+  margin-bottom: var(--spacing-2);
+}
+
+.wp-category-post-card__title-link {
+  font-family: var(--font-primary);
+  font-size: var(--text-h4);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  text-decoration: none;
+  line-height: 1.3;
+  transition: color 0.2s ease;
+}
+
+.wp-category-post-card__title-link:hover {
+  color: var(--primary);
+}
+
+.wp-category-post-card__excerpt {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  line-height: 1.6;
+  color: var(--muted-foreground);
+  margin-bottom: var(--spacing-4);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Post card meta footer */
+.wp-category-post-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-4);
+  padding-top: var(--spacing-4);
+  border-top: 1px solid var(--border-extra-soft);
+}
+
+/* Sidebar section wrapper */
+.wp-category-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+}
+
+/* Sidebar card */
+.wp-category-sidebar-card {
+  padding: var(--spacing-6);
+  background-color: var(--card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+}
+
+.wp-category-sidebar-card__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h5);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-4);
+}
+
+/* Sidebar list */
+.wp-category-sidebar-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.wp-category-sidebar-list__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-2-5);
+  border-radius: var(--radius);
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+}
+
+.wp-category-sidebar-list__item:hover {
+  background-color: var(--muted);
+}
+
+.wp-category-sidebar-list__link {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  color: var(--foreground);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.wp-category-sidebar-list__link:hover {
+  color: var(--primary);
+}
+
+.wp-category-sidebar-list__count {
+  font-family: var(--font-secondary);
+  font-size: var(--text-small);
+  color: var(--muted-foreground);
+}
+
+/* Sidebar category button (special layout with count badge) */
+.wp-category-sidebar-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-regular);
+  color: var(--foreground);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--spacing-2-5);
+  border-radius: var(--radius);
+  text-align: left;
+}
+
+.wp-category-sidebar-button:hover {
+  background-color: var(--muted);
+  color: var(--primary);
+}
+
+.wp-category-sidebar-button--active {
+  font-weight: var(--font-weight-medium);
+  color: var(--primary);
+}
+
+.wp-category-sidebar-button__count {
+  font-family: var(--font-secondary);
+  font-size: var(--text-small);
+  background-color: var(--secondary);
+  color: var(--secondary-foreground);
+  padding: var(--spacing-1) var(--spacing-2);
+  border-radius: var(--radius-full);
 }

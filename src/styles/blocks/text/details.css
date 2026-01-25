@@ -1,0 +1,45 @@
+/**
+ * Details Block Styles
+ * WordPress block: .wp-block-details
+ */
+
+.wp-block-details {
+  margin-bottom: var(--spacing-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--spacing-4);
+  background: var(--card);
+}
+
+.wp-block-details__summary {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-medium);
+  color: var(--foreground);
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+}
+
+.wp-block-details__summary::-webkit-details-marker {
+  display: none;
+}
+
+.wp-block-details__summary::before {
+  content: '▶';
+  margin-right: var(--spacing-2);
+  color: var(--primary);
+  transition: transform 0.2s ease;
+}
+
+.wp-block-details[open] .wp-block-details__summary::before {
+  transform: rotate(90deg);
+}
+
+.wp-block-details__content {
+  padding-top: var(--spacing-3);
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  color: var(--muted-foreground);
+  line-height: 1.6;
+}

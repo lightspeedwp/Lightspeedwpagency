@@ -10,7 +10,7 @@
  * Design System Requirements:
  * - Typography: Inherits from child blocks (no typography enforcement)
  * - Colors: Uses semantic color tokens (--background, --foreground, etc.)
- * - Spacing: Uses Tailwind classes for padding/margin
+ * - Spacing: Uses WordPress padding utilities (.p-*, .px-*, .py-*)
  * - Border Radius: Uses CSS variable (--radius)
  * - Semantic HTML: Supports multiple tag names (div, section, article, etc.)
  * 
@@ -28,15 +28,17 @@ export interface GroupProps {
   backgroundColor?: string;
   /** Text color (CSS variable) */
   color?: string;
-  /** Padding (Tailwind classes) */
-  padding?: string;
-  /** Margin (Tailwind classes) */
-  margin?: string;
-  /** Border radius (CSS variable or Tailwind) */
+  /** Padding (0-24) */
+  padding?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 8 | 10 | 12 | 16 | 20 | 24;
+  /** Border radius (CSS variable) */
   borderRadius?: string;
+  /** Layout direction */
+  layout?: 'stack' | 'row';
+  /** Gap between children (0-24) */
+  gap?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 8 | 10 | 12 | 16 | 20 | 24;
   /** Additional CSS classes */
   className?: string;
-  /** Inline styles */
+  /** Inline styles (CSS variables only) */
   style?: React.CSSProperties;
   /** Child blocks */
   children: React.ReactNode;
@@ -48,13 +50,13 @@ export interface GroupProps {
  * Group Block - Container for grouping blocks with shared styling
  * 
  * @example
- * <Group as="section" backgroundColor="var(--surface)" padding="p-8">
+ * <Group as="section" backgroundColor="var(--surface)" padding={8}>
  *   <Heading level={2}>Features</Heading>
  *   <Paragraph>Our features include...</Paragraph>
  * </Group>
  * 
  * @example
- * <Group as="div" align="wide" className="my-8">
+ * <Group as="div" align="wide" layout="stack" gap={6}>
  *   <Columns columns={2}>
  *     <Column>Left content</Column>
  *     <Column>Right content</Column>
@@ -66,32 +68,33 @@ export function Group({
   align = 'default',
   backgroundColor,
   color,
-  padding = '',
-  margin = '',
+  padding,
   borderRadius,
+  layout = 'stack',
+  gap = 0,
   className = '',
   style = {},
   children,
   'aria-label': ariaLabel,
   ...props
 }: GroupProps) {
-  // Width alignment classes
-  const alignClasses = {
-    'default': 'max-w-7xl mx-auto',
-    'wide': 'max-w-screen-2xl mx-auto',
-    'full': 'w-full'
-  };
+  // Build WordPress-aligned class names
+  const alignClass = align !== 'default' ? `wp-width-${align}` : 'wp-width-default';
+  const paddingClass = padding ? `p-${padding}` : '';
+  const layoutClass = layout === 'stack' ? 'wp-flex wp-flex-col' : 'wp-flex wp-flex-row';
+  const gapClass = gap > 0 ? `wp-gap-${gap}` : '';
 
   // Combine classes
   const combinedClassName = [
     'wp-block-group',
-    alignClasses[align],
-    padding,
-    margin,
+    alignClass,
+    layoutClass,
+    gapClass,
+    paddingClass,
     className
   ].filter(Boolean).join(' ');
 
-  // Combine styles
+  // Combine styles (CSS variables only)
   const combinedStyle: React.CSSProperties = {
     backgroundColor,
     color,

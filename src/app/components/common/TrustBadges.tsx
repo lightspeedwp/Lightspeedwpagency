@@ -57,9 +57,9 @@ export function TrustBadges() {
             <div 
               style={{
                 fontSize: 'var(--text-base)',
-                fontFamily: 'Lexend, sans-serif',
+                fontFamily: 'var(--font-primary)',
                 fontWeight: 500,
-                color: 'var(--foreground)'
+                color: 'var(--sidebar-foreground)'
               }}
             >
               {badge.label}
@@ -68,7 +68,7 @@ export function TrustBadges() {
               style={{
                 fontSize: 'var(--text-xs)',
                 fontFamily: 'Manrope, sans-serif',
-                color: 'var(--muted-foreground)'
+                color: 'var(--primary-foreground)' // White text for high contrast on dark backgrounds
               }}
             >
               {badge.description}

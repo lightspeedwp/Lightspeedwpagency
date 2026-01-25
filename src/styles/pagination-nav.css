@@ -1,0 +1,169 @@
+/**
+ * Pagination Navigation Pattern Styles
+ * 
+ * Accessible pagination for archive/listing pages.
+ * All styling uses CSS variables for complete user control.
+ * 
+ * User can edit this file to update pagination site-wide.
+ */
+
+/* ============================================
+ * PAGINATION CONTAINER
+ * ============================================ */
+
+.pagination-nav {
+  padding-top: var(--spacing-12);
+  padding-bottom: var(--spacing-12);
+}
+
+.pagination-nav__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-4);
+  flex-wrap: wrap;
+}
+
+/* ============================================
+ * PREVIOUS/NEXT BUTTONS
+ * ============================================ */
+
+.pagination-nav__prev-next {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding-left: var(--spacing-1);
+  padding-right: var(--spacing-1);
+  
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-bold);
+  
+  /* Appearance */
+  background-color: transparent;
+  border: none;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  
+  /* Interaction */
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pagination-nav__prev-next--active {
+  color: var(--primary);
+  opacity: 1;
+}
+
+.pagination-nav__prev-next--disabled {
+  color: var(--muted-foreground);
+  opacity: 0.5;
+  cursor: not-allowed;
+  text-decoration: none;
+}
+
+.pagination-nav__prev-next--active:hover {
+  color: var(--primary);
+  opacity: 0.8;
+}
+
+.pagination-nav__prev-next:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: var(--radius);
+}
+
+/* ============================================
+ * PAGE NUMBERS LIST
+ * ============================================ */
+
+.pagination-nav__pages {
+  display: flex;
+  list-style: none;
+  gap: var(--spacing-2);
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+/* ============================================
+ * PAGE NUMBER ITEMS
+ * ============================================ */
+
+.pagination-nav__page-item {
+  /* No additional styling needed - handled by button */
+}
+
+/* ============================================
+ * ELLIPSIS
+ * ============================================ */
+
+.pagination-nav__ellipsis {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  color: var(--muted-foreground);
+  user-select: none;
+}
+
+/* ============================================
+ * PAGE NUMBER BUTTONS
+ * ============================================ */
+
+.pagination-nav__page-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: var(--spacing-2) var(--spacing-3);
+  
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-medium);
+  
+  /* Appearance */
+  background-color: transparent;
+  color: var(--foreground);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius);
+  
+  /* Interaction */
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.pagination-nav__page-button:hover {
+  background-color: var(--muted);
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.pagination-nav__page-button--current {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border-color: var(--primary);
+  font-weight: var(--font-weight-semibold);
+}
+
+.pagination-nav__page-button--current:hover {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border-color: var(--primary);
+  transform: none;
+  box-shadow: none;
+  cursor: default;
+}
+
+.pagination-nav__page-button:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}

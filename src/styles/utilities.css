@@ -204,3 +204,493 @@
 .rounded-lg { border-radius: var(--radius-lg); }
 .rounded-xl { border-radius: var(--radius-xl); }
 .rounded-full { border-radius: 9999px; }
+
+
+/* ============================================
+   LAYOUT UTILITIES (WordPress Global Styles)
+   ============================================ */
+
+/* Display Utilities */
+.wp-flex { display: flex; }
+.wp-block { display: block; }
+.wp-inline-flex { display: inline-flex; }
+
+/* Flexbox Gap Utilities */
+.wp-gap-0 { gap: var(--spacing-0); }
+.wp-gap-1 { gap: var(--spacing-1); }
+.wp-gap-2 { gap: var(--spacing-2); }
+.wp-gap-3 { gap: var(--spacing-3); }
+.wp-gap-4 { gap: var(--spacing-4); }
+.wp-gap-5 { gap: var(--spacing-5); }
+.wp-gap-6 { gap: var(--spacing-6); }
+.wp-gap-8 { gap: var(--spacing-8); }
+.wp-gap-10 { gap: var(--spacing-10); }
+.wp-gap-12 { gap: var(--spacing-12); }
+.wp-gap-16 { gap: var(--spacing-16); }
+.wp-gap-20 { gap: var(--spacing-20); }
+.wp-gap-24 { gap: var(--spacing-24); }
+
+/* Justify Content Utilities */
+.wp-justify-start { justify-content: flex-start; }
+.wp-justify-center { justify-content: center; }
+.wp-justify-end { justify-content: flex-end; }
+.wp-justify-between { justify-content: space-between; }
+.wp-justify-around { justify-content: space-around; }
+.wp-justify-evenly { justify-content: space-evenly; }
+
+/* Align Items Utilities */
+.wp-align-start { align-items: flex-start; }
+.wp-align-center { align-items: center; }
+.wp-align-end { align-items: flex-end; }
+.wp-align-stretch { align-items: stretch; }
+.wp-align-baseline { align-items: baseline; }
+
+/* Flex Direction Utilities */
+.wp-flex-row { flex-direction: row; }
+.wp-flex-col { flex-direction: column; }
+.wp-flex-row-reverse { flex-direction: row-reverse; }
+.wp-flex-col-reverse { flex-direction: column-reverse; }
+
+/* Flex Wrap Utilities */
+.wp-wrap { flex-wrap: wrap; }
+.wp-nowrap { flex-wrap: nowrap; }
+.wp-wrap-reverse { flex-wrap: wrap-reverse; }
+
+/* Width Constraint Utilities */
+.wp-width-auto { width: auto; }
+.wp-width-full { width: 100%; }
+.wp-width-default { max-width: 1280px; margin-inline: auto; }
+.wp-width-wide { max-width: 1600px; margin-inline: auto; }
+
+/* Grid Utilities */
+.wp-grid { display: grid; }
+.wp-grid-2-cols { 
+  display: grid; 
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-8);
+}
+.wp-grid-3-cols { 
+  display: grid; 
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-8);
+}
+.wp-grid-4-cols { 
+  display: grid; 
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-8);
+}
+.wp-grid-auto { 
+  display: grid; 
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-8);
+}
+
+/* Responsive Grid (mobile-first) */
+@media (max-width: 768px) {
+  .wp-grid-2-cols,
+  .wp-grid-3-cols,
+  .wp-grid-4-cols {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .wp-grid-3-cols,
+  .wp-grid-4-cols {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Flexbox Utilities */
+.wp-flex-center { 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+}
+.wp-flex-between { 
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+}
+.wp-flex-start { 
+  display: flex; 
+  align-items: center; 
+  justify-content: flex-start; 
+}
+.wp-flex-end { 
+  display: flex; 
+  align-items: center; 
+  justify-content: flex-end; 
+}
+.wp-flex-wrap { 
+  display: flex; 
+  flex-wrap: wrap; 
+}
+
+/* Flexbox Alignment */
+.wp-items-center { align-items: center; }
+.wp-items-start { align-items: flex-start; }
+.wp-items-end { align-items: flex-end; }
+.wp-justify-center { justify-content: center; }
+.wp-justify-between { justify-content: space-between; }
+.wp-justify-start { justify-content: flex-start; }
+.wp-justify-end { justify-content: flex-end; }
+
+/* Text Alignment */
+.wp-text-left { text-align: left; }
+.wp-text-center { text-align: center; }
+.wp-text-right { text-align: right; }
+.wp-text-justify { text-align: justify; }
+
+/* Width & Max-Width */
+.wp-max-w-prose { max-width: 65ch; margin-left: auto; margin-right: auto; }
+.wp-max-w-sm { max-width: 640px; margin-left: auto; margin-right: auto; }
+.wp-max-w-md { max-width: 768px; margin-left: auto; margin-right: auto; }
+.wp-max-w-lg { max-width: 1024px; margin-left: auto; margin-right: auto; }
+.wp-max-w-xl { max-width: 1280px; margin-left: auto; margin-right: auto; }
+.wp-max-w-2xl { max-width: 1536px; margin-left: auto; margin-right: auto; }
+.wp-max-w-3xl { max-width: 768px; margin-left: auto; margin-right: auto; } /* For content */
+.wp-max-w-4xl { max-width: 896px; margin-left: auto; margin-right: auto; }
+.wp-max-w-6xl { max-width: 1152px; margin-left: auto; margin-right: auto; }
+.wp-max-w-full { max-width: 100%; }
+.wp-w-full { width: 100%; }
+.wp-w-auto { width: auto; }
+
+/* Display */
+.wp-inline { display: inline; }
+.wp-inline-block { display: inline-block; }
+.wp-hidden { display: none; }
+
+
+/* ============================================
+   POSITION & OVERFLOW UTILITIES
+   ============================================ */
+
+/* Position */
+.wp-relative { position: relative; }
+.wp-absolute { position: absolute; }
+.wp-fixed { position: fixed; }
+.wp-sticky { position: sticky; }
+
+/* Overflow */
+.wp-overflow-hidden { overflow: hidden; }
+.wp-overflow-auto { overflow: auto; }
+.wp-overflow-scroll { overflow: scroll; }
+
+
+/* ============================================
+   RESPONSIVE UTILITIES
+   ============================================ */
+
+/* Hide on mobile */
+@media (max-width: 768px) {
+  .wp-hide-mobile { display: none !important; }
+}
+
+/* Hide on tablet */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .wp-hide-tablet { display: none !important; }
+}
+
+/* Hide on desktop */
+@media (min-width: 1025px) {
+  .wp-hide-desktop { display: none !important; }
+}
+
+
+/* ============================================
+   BACKGROUND COLOR UTILITIES
+   ============================================ */
+
+/**
+ * Background color utilities using CSS variables
+ */
+.bg-background { background-color: var(--background); }
+.bg-foreground { background-color: var(--foreground); }
+.bg-card { background-color: var(--card); }
+.bg-muted { background-color: var(--muted); }
+.bg-primary { background-color: var(--primary); }
+.bg-secondary { background-color: var(--secondary); }
+.bg-accent { background-color: var(--accent); }
+
+
+/* ============================================
+   SPACING UTILITIES
+   ============================================ */
+
+/**
+ * Margin utilities (limited use - prefer padding)
+ * Only for specific component spacing needs
+ */
+.mb-6 { margin-bottom: var(--spacing-6); }  /* 24px */
+.mb-8 { margin-bottom: var(--spacing-8); }  /* 32px */
+.mb-12 { margin-bottom: var(--spacing-12); }  /* 48px */
+
+.mt-8 { margin-top: var(--spacing-8); }  /* 32px */
+.mt-12 { margin-top: var(--spacing-12); }  /* 48px */
+
+
+/* ============================================
+   GRADIENT BACKGROUND UTILITIES
+   ============================================ */
+
+/**
+ * Gradient Utilities
+ * 
+ * Centralized gradient backgrounds for consistency and maintainability.
+ * All gradients use 135deg angle for consistency.
+ * All gradients include white text color for WCAG AA compliance.
+ * 
+ * Usage:
+ * <Section className="wp-gradient-blue">
+ *   <Container>
+ *     <h2>Your Content</h2>
+ *   </Container>
+ * </Section>
+ */
+
+/* Blue Gradient (Most common - Blue ocean professional) */
+.wp-gradient-blue {
+  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+  color: var(--primary-foreground);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Purple Gradient (Creative/innovative sections) */
+.wp-gradient-purple {
+  background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+  color: var(--primary-foreground);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Purple Light Gradient (Softer purple variant) */
+.wp-gradient-purple-light {
+  background: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%);
+  color: var(--primary-foreground);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Purple Indigo Gradient (Purple to indigo blend) */
+.wp-gradient-purple-indigo {
+  background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+  color: var(--primary-foreground);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Red Gradient (Security/protection/urgency sections) */
+.wp-gradient-red {
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+  color: var(--primary-foreground);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Green Gradient (Success/growth/guarantees sections) */
+.wp-gradient-green {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: var(--primary-foreground);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Amber Gradient (Warmth/testimonials/highlights) */
+.wp-gradient-amber {
+  background: linear-gradient(135deg, #f59e0b 0%, #ea580c 100%);
+  color: var(--primary-foreground);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Cyan Gradient (Fresh/modern/pricing sections) */
+.wp-gradient-cyan {
+  background: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);
+  color: var(--primary-foreground);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Sky Gradient (Newsletter/email marketing) */
+.wp-gradient-sky {
+  background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);
+  color: var(--primary-foreground);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Slate Dark Gradient (Deep/sophisticated/discovery) */
+.wp-gradient-slate {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  color: var(--primary-foreground);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Violet Gradient (WooCommerce/ecommerce sections) */
+.wp-gradient-violet {
+  background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+  color: var(--primary-foreground);
+  position: relative;
+  overflow: hidden;
+}
+
+
+/* ============================================
+   GRADIENT ORB DECORATIONS
+   ============================================ */
+
+/**
+ * Gradient Orb Decorations
+ * 
+ * Decorative radial gradient orbs for visual interest.
+ * Should be used with aria-hidden="true" for accessibility.
+ * 
+ * Usage:
+ * <div className="wp-gradient-orb wp-gradient-orb--blue wp-gradient-orb--top-right" aria-hidden="true" />
+ */
+
+/* Base Orb Styles */
+.wp-gradient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Orb Color Variants */
+.wp-gradient-orb--blue {
+  background: radial-gradient(circle, rgba(96, 165, 250, 0.3) 0%, transparent 70%);
+}
+
+.wp-gradient-orb--purple {
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.3) 0%, transparent 70%);
+}
+
+.wp-gradient-orb--red {
+  background: radial-gradient(circle, rgba(220, 38, 38, 0.3) 0%, transparent 70%);
+}
+
+.wp-gradient-orb--green {
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.3) 0%, transparent 70%);
+}
+
+.wp-gradient-orb--amber {
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.3) 0%, transparent 70%);
+}
+
+.wp-gradient-orb--cyan {
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.3) 0%, transparent 70%);
+}
+
+/* Orb Position Variants */
+.wp-gradient-orb--top-right {
+  top: 0;
+  right: 0;
+  width: min(500px, 40vw);
+  height: min(500px, 40vw);
+  transform: translate(30%, -30%);
+}
+
+.wp-gradient-orb--top-left {
+  top: 0;
+  left: 0;
+  width: min(500px, 40vw);
+  height: min(500px, 40vw);
+  transform: translate(-30%, -30%);
+}
+
+.wp-gradient-orb--bottom-right {
+  bottom: 0;
+  right: 0;
+  width: min(500px, 40vw);
+  height: min(500px, 40vw);
+  transform: translate(30%, 30%);
+}
+
+.wp-gradient-orb--bottom-left {
+  bottom: 0;
+  left: 0;
+  width: min(500px, 40vw);
+  height: min(500px, 40vw);
+  transform: translate(-30%, 30%);
+}
+
+/* Smaller Orb Variant */
+.wp-gradient-orb--small {
+  width: min(384px, 30vw) !important;
+  height: min(384px, 30vw) !important;
+}
+
+/* ============================================
+   ADDITIONAL FLEXBOX UTILITIES
+   (Added Phase 2.2 - Pattern Migration)
+   ============================================ */
+
+/* Flex Items Center (Vertical align only) */
+.wp-flex-items-center {
+  display: flex;
+  align-items: center;
+}
+
+/* Flex Justify Center (Horizontal align only) */
+.wp-flex-justify-center {
+  display: flex;
+  justify-content: center;
+}
+
+/* Flex Justify Between */
+.wp-flex-justify-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Responsive Flex (Column on mobile, Row on desktop) */
+.wp-flex-responsive {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .wp-flex-responsive {
+    flex-direction: row;
+  }
+}
+
+/* ============================================
+   BORDER RADIUS UTILITIES
+   (Added Phase 2.2 - Pattern Migration)
+   ============================================ */
+
+.wp-rounded {
+  border-radius: var(--radius);
+}
+
+.wp-rounded-lg {
+  border-radius: var(--radius-lg);
+}
+
+.wp-rounded-full {
+  border-radius: var(--radius-full);
+}
+
+/* ============================================
+   SPACING UTILITY HELPERS
+   (Added Phase 2.2 - Pattern Migration)
+   ============================================ */
+
+/* Use these classes with inline styles for dynamic spacing */
+/* Example: className="wp-flex-gap" style={{ gap: 'var(--spacing-4)' }} */
+
+.wp-flex-gap {
+  display: flex;
+  /* gap should be set via inline style for specific spacing control */
+}
+
+.wp-grid-gap {
+  display: grid;
+  /* gap should be set via inline style for specific spacing control */
+}

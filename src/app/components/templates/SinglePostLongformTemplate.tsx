@@ -28,8 +28,7 @@ import { Heading } from '../common/Heading';
 import { Button } from '../blocks/design/Buttons';
 import { BackToTopButton } from '../blocks/layout/BackToTopButton';
 import { ScrollProgress } from '../blocks/layout/ScrollProgress';
-import { NewsletterSignup } from '../patterns/NewsletterSignup';
-import { TestimonialGrid } from '../patterns/TestimonialGrid';
+import { Badge } from '../patterns/Badge';
 import { Calendar, User, Clock, ChevronRight, Home, Share2, Bookmark, MessageCircle } from 'lucide-react';
 import { useState } from 'react';
 import { testimonials } from '../../data/testimonials';
@@ -105,10 +104,11 @@ export function SinglePostLongformTemplate() {
       <main id="main-content" role="main">
         {/* Breadcrumbs */}
         <section 
-          className="py-4"
           style={{
             backgroundColor: 'var(--background)',
             borderBottom: '1px solid var(--border)',
+            paddingTop: 'var(--spacing-4)',
+            paddingBottom: 'var(--spacing-4)',
           }}
         >
           <Container>
@@ -127,58 +127,68 @@ export function SinglePostLongformTemplate() {
                   margin: 0
                 }}
               >
-                <li className="flex items-center gap-2">
-                  <Button
-                    variant="link"
-                    page="home"
-                    className="flex items-center gap-1"
+                <li style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-2)' }}>
+                  <span 
                     style={{
-                      fontFamily: 'Manrope, sans-serif',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 'var(--spacing-1)',
+                      fontFamily: 'var(--font-secondary)',
                       fontSize: 'var(--text-small)',
                       fontWeight: 'var(--font-weight-regular)',
                       color: 'var(--muted-foreground)',
-                      textDecoration: 'none',
-                      padding: 0,
-                      height: 'auto'
                     }}
                   >
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                      <path d="M2 6L8 2L14 6V13C14 13.5523 13.5523 14 13 14H3C2.44772 14 2 13.5523 2 13V6Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                      <path d="M6 14V8H10V14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
+                    <Home size={14} />
                     Home
-                  </Button>
-                  <span style={{ color: 'var(--muted-foreground)' }}>/</span>
+                  </span>
+                  <ChevronRight size={14} style={{ color: 'var(--muted-foreground)' }} />
                 </li>
-                <li className="flex items-center gap-2">
-                  <Button
-                    variant="link"
-                    page="blog-index"
+                <li style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-2)' }}>
+                  <span 
                     style={{
-                      fontFamily: 'Manrope, sans-serif',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 'var(--spacing-1)',
+                      fontFamily: 'var(--font-secondary)',
                       fontSize: 'var(--text-small)',
                       fontWeight: 'var(--font-weight-regular)',
                       color: 'var(--muted-foreground)',
-                      textDecoration: 'none',
-                      padding: 0,
-                      height: 'auto'
                     }}
                   >
                     Blog
-                  </Button>
-                  <span style={{ color: 'var(--muted-foreground)' }}>/</span>
+                  </span>
+                  <ChevronRight size={14} style={{ color: 'var(--muted-foreground)' }} />
                 </li>
-                <li className="flex items-center gap-2">
-                  <span
+                <li style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-2)' }}>
+                  <Button 
+                    variant="link"
+                    page="blog-index"
                     style={{
-                      fontFamily: 'Manrope, sans-serif',
+                      fontFamily: 'var(--font-secondary)',
                       fontSize: 'var(--text-small)',
                       fontWeight: 'var(--font-weight-regular)',
-                      color: 'var(--foreground)'
+                      color: 'var(--primary)',
+                      textDecoration: 'none',
+                      padding: '0',
+                      height: 'auto',
+                    }}
+                  >
+                    Travel Tips
+                  </Button>
+                  <ChevronRight size={14} style={{ color: 'var(--muted-foreground)' }} />
+                </li>
+                <li style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-2)' }}>
+                  <span
+                    style={{
+                      fontFamily: 'var(--font-secondary)',
+                      fontSize: 'var(--text-small)',
+                      fontWeight: 'var(--font-weight-regular)',
+                      color: 'var(--foreground)',
                     }}
                     aria-current="page"
                   >
-                    Travel Tips
+                    Planning Your African Safari
                   </span>
                 </li>
               </ol>
@@ -188,36 +198,19 @@ export function SinglePostLongformTemplate() {
 
         {/* Hero Section */}
         <section 
-          className="py-16"
           style={{
             backgroundColor: 'var(--background)',
             borderBottom: '1px solid var(--border)',
+            paddingTop: 'var(--spacing-16)',
+            paddingBottom: 'var(--spacing-16)',
           }}
         >
           <Container>
-            <div className="max-w-4xl mx-auto">
+            <div className="wp-max-w-4xl">
               {/* Category Badge */}
-              <a 
-                href="#category-travel-tips"
-                className="inline-flex items-center px-3 py-1 rounded-full mb-4"
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-small)',
-                  fontWeight: 'var(--font-weight-medium)',
-                  backgroundColor: 'var(--secondary)',
-                  color: 'var(--secondary-foreground)',
-                  textDecoration: 'none',
-                  transition: 'opacity 0.2s ease',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.opacity = '0.8';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.opacity = '1';
-                }}
-              >
+              <Badge variant="secondary" href="#category-travel-tips">
                 Travel Tips
-              </a>
+              </Badge>
 
               {/* Title */}
               <Heading level={1} style={{ marginBottom: '24px' }}>
@@ -225,19 +218,23 @@ export function SinglePostLongformTemplate() {
               </Heading>
 
               {/* Post Meta */}
-              <div className="flex flex-wrap items-center gap-6 mb-8">
-                <div className="flex items-center gap-3">
+              <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 'var(--spacing-6)', marginBottom: 'var(--spacing-8)' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-2)' }}>
                   <div
-                    className="w-12 h-12 rounded-full bg-cover bg-center"
                     style={{
+                      width: '48px',
+                      height: '48px',
+                      borderRadius: '50%',
                       backgroundImage: 'url(https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100)',
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center',
                     }}
                   />
                   <div>
                     <a 
                       href="#author-sarah-mitchell"
                       style={{
-                        fontFamily: 'Lexend, sans-serif',
+                        fontFamily: 'var(--font-primary)',
                         fontSize: 'var(--text-base)',
                         fontWeight: 'var(--font-weight-medium)',
                         color: 'var(--foreground)',
@@ -255,7 +252,7 @@ export function SinglePostLongformTemplate() {
                     </a>
                     <span 
                       style={{
-                        fontFamily: 'Manrope, sans-serif',
+                        fontFamily: 'var(--font-secondary)',
                         fontSize: 'var(--text-small)',
                         color: 'var(--muted-foreground)',
                       }}
@@ -264,11 +261,11 @@ export function SinglePostLongformTemplate() {
                     </span>
                   </div>
                 </div>
-                <div className="flex items-center gap-2">
+                <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-2)' }}>
                   <Calendar size={16} style={{ color: 'var(--muted-foreground)' }} />
                   <span 
                     style={{
-                      fontFamily: 'Manrope, sans-serif',
+                      fontFamily: 'var(--font-secondary)',
                       fontSize: 'var(--text-small)',
                       color: 'var(--muted-foreground)',
                     }}
@@ -276,11 +273,11 @@ export function SinglePostLongformTemplate() {
                     Dec 15, 2024
                   </span>
                 </div>
-                <div className="flex items-center gap-2">
+                <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-2)' }}>
                   <Clock size={16} style={{ color: 'var(--muted-foreground)' }} />
                   <span 
                     style={{
-                      fontFamily: 'Manrope, sans-serif',
+                      fontFamily: 'var(--font-secondary)',
                       fontSize: 'var(--text-small)',
                       color: 'var(--muted-foreground)',
                     }}
@@ -291,7 +288,7 @@ export function SinglePostLongformTemplate() {
               </div>
 
               {/* Action Buttons */}
-              <div className="flex items-center gap-3 mb-8">
+              <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-3)', marginBottom: 'var(--spacing-8)' }}>
                 <Button
                   variant="secondary"
                   size="sm"
@@ -312,9 +309,12 @@ export function SinglePostLongformTemplate() {
 
               {/* Featured Image */}
               <div 
-                className="aspect-[21/9] rounded-[var(--radius-lg)] bg-cover bg-center"
                 style={{
+                  aspectRatio: '21/9',
+                  borderRadius: 'var(--radius-lg)',
                   backgroundImage: 'url(https://images.unsplash.com/photo-1516426122078-c23e76319801?w=1400)',
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
                 }}
               />
             </div>
@@ -322,21 +322,24 @@ export function SinglePostLongformTemplate() {
         </section>
 
         {/* Article Content with TOC */}
-        <section className="py-16" style={{ backgroundColor: 'var(--background)' }}>
+        <section style={{ backgroundColor: 'var(--background)', paddingTop: 'var(--spacing-16)', paddingBottom: 'var(--spacing-16)' }}>
           <Container>
-            <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: 'var(--spacing-12)' }}>
               {/* Table of Contents (Sticky Sidebar) */}
-              <aside className="lg:col-span-1">
+              <aside style={{ gridColumn: '1 / -1' }}>
                 <div 
-                  className="p-6 rounded-[var(--radius-lg)] lg:sticky lg:top-24"
                   style={{
+                    padding: 'var(--spacing-6)',
+                    borderRadius: 'var(--radius-lg)',
                     backgroundColor: 'var(--card)',
                     border: '1px solid var(--border)',
+                    position: 'sticky',
+                    top: '96px',
                   }}
                 >
                   <h2 
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-h4)',
                       fontWeight: 'var(--font-weight-medium)',
                       color: 'var(--foreground)',
@@ -354,7 +357,7 @@ export function SinglePostLongformTemplate() {
                             onClick={() => setActiveSection(item.id)}
                             className="py-2 block"
                             style={{
-                              fontFamily: 'Lexend, sans-serif',
+                              fontFamily: 'var(--font-primary)',
                               fontSize: 'var(--text-base)',
                               fontWeight: activeSection === item.id 
                                 ? 'var(--font-weight-medium)' 
@@ -390,97 +393,94 @@ export function SinglePostLongformTemplate() {
               </aside>
 
               {/* Article Content */}
-              <article className="lg:col-span-3 max-w-3xl">
+              <article style={{ gridColumn: 'span 3', maxWidth: '768px' }}>
                 {/* Introduction */}
-                <div id="introduction" className="mb-12">
+                <div id="introduction" style={{ marginBottom: 'var(--spacing-12)' }}>
                   <h2 
-                    className="mb-4"
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-h2)',
                       fontWeight: 'var(--font-weight-medium)',
                       color: 'var(--foreground)',
+                      marginBottom: 'var(--spacing-4)',
                     }}
                   >
                     Introduction
                   </h2>
                   <p 
-                    className="mb-4"
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-lg)',
                       color: 'var(--foreground)',
                       lineHeight: '1.8',
+                      marginBottom: 'var(--spacing-4)',
                     }}
                   >
                     Planning your first safari is an exciting adventure that requires careful consideration and preparation. 
-                    Whether you're dreaming of witnessing the Great Migration in Tanzania, tracking gorillas in Rwanda, or 
-                    exploring the vast plains of the Serengeti, this comprehensive guide will help you navigate every aspect 
-                    of your safari planning journey.
+                    Whether you're dreaming of witnessing the Great Migration in Tanzania, tracking gorillas in Rwanda, or \n                    exploring the vast plains of the Serengeti, this comprehensive guide will help you navigate every aspect \n                    of your safari planning journey.
                   </p>
                   <p 
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-lg)',
                       color: 'var(--foreground)',
                       lineHeight: '1.8',
                     }}
                   >
-                    From choosing the right destination to packing essential items, we'll cover everything you need to know 
-                    to make your first safari an unforgettable experience.
+                    From choosing the right destination to packing essential items, we'll cover everything you need to know \n                    to make your first safari an unforgettable experience.
                   </p>
                 </div>
 
                 {/* Planning Your Safari */}
-                <div id="planning" className="mb-12">
+                <div id="planning" style={{ marginBottom: 'var(--spacing-12)' }}>
                   <h2 
-                    className="mb-4"
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-h2)',
                       fontWeight: 'var(--font-weight-medium)',
                       color: 'var(--foreground)',
+                      marginBottom: 'var(--spacing-4)',
                     }}
                   >
                     Planning Your Safari
                   </h2>
                   <p 
-                    className="mb-4"
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-lg)',
                       color: 'var(--foreground)',
                       lineHeight: '1.8',
+                      marginBottom: 'var(--spacing-4)',
                     }}
                   >
-                    The key to a successful safari starts with thorough planning. Begin by deciding what type of wildlife 
-                    experience you're looking for. Are you hoping to see the Big Five? Interested in bird watching? Or 
-                    perhaps you want to witness specific animal behaviors like calving season or river crossings?
+                    The key to a successful safari starts with thorough planning. Begin by deciding what type of wildlife \n                    experience you're looking for. Are you hoping to see the Big Five? Interested in bird watching? Or \n                    perhaps you want to witness specific animal behaviors like calving season or river crossings?
                   </p>
                   <p 
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-lg)',
                       color: 'var(--foreground)',
                       lineHeight: '1.8',
                     }}
                   >
-                    Your budget will also play a significant role in determining your safari style. Options range from 
-                    budget camping safaris to luxury lodges with all-inclusive amenities.
+                    Your budget will also play a significant role in determining your safari style. Options range from \n                    budget camping safaris to luxury lodges with all-inclusive amenities.
                   </p>
                 </div>
 
                 {/* Pull Quote */}
                 <blockquote 
-                  className="my-12 p-8 rounded-[var(--radius-lg)]"
                   style={{
                     backgroundColor: 'var(--muted)',
                     borderLeft: '4px solid var(--primary)',
+                    marginTop: 'var(--spacing-12)',
+                    marginBottom: 'var(--spacing-12)',
+                    padding: 'var(--spacing-8)',
+                    borderRadius: 'var(--radius-lg)',
                   }}
                 >
                   <p 
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-h3)',
                       fontWeight: 'var(--font-weight-medium)',
                       color: 'var(--foreground)',
@@ -489,82 +489,78 @@ export function SinglePostLongformTemplate() {
                       fontStyle: 'italic',
                     }}
                   >
-                    "A safari is not just about seeing animals—it's about immersing yourself in the rhythm of 
-                    nature and witnessing life in its purest form."
+                    \"A safari is not just about seeing animals—it's about immersing yourself in the rhythm of \n                    nature and witnessing life in its purest form.\"
                   </p>
                 </blockquote>
 
                 {/* Best Season to Visit */}
-                <div id="best-season" className="mb-12">
+                <div id="best-season" style={{ marginBottom: 'var(--spacing-12)' }}>
                   <h2 
-                    className="mb-4"
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-h2)',
                       fontWeight: 'var(--font-weight-medium)',
                       color: 'var(--foreground)',
+                      marginBottom: 'var(--spacing-4)',
                     }}
                   >
                     Best Season to Visit
                   </h2>
                   <p 
-                    className="mb-4"
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-lg)',
                       color: 'var(--foreground)',
                       lineHeight: '1.8',
+                      marginBottom: 'var(--spacing-4)',
                     }}
                   >
-                    Timing is everything when it comes to safari planning. The dry season (typically June to October in East 
-                    Africa) is generally considered the best time for wildlife viewing. During this period, animals congregate 
-                    around water sources, making them easier to spot.
+                    Timing is everything when it comes to safari planning. The dry season (typically June to October in East \n                    Africa) is generally considered the best time for wildlife viewing. During this period, animals congregate \n                    around water sources, making them easier to spot.
                   </p>
                   <p 
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-lg)',
                       color: 'var(--foreground)',
                       lineHeight: '1.8',
                     }}
                   >
-                    However, the green season (November to May) offers its own advantages: fewer tourists, lush landscapes, 
-                    and often lower prices. It's also the best time to see newborn animals and migratory birds.
+                    However, the green season (November to May) offers its own advantages: fewer tourists, lush landscapes, \n                    and often lower prices. It's also the best time to see newborn animals and migratory birds.
                   </p>
                 </div>
 
                 {/* What to Pack */}
-                <div id="what-to-pack" className="mb-12">
+                <div id="what-to-pack" style={{ marginBottom: 'var(--spacing-12)' }}>
                   <h2 
-                    className="mb-4"
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-h2)',
                       fontWeight: 'var(--font-weight-medium)',
                       color: 'var(--foreground)',
+                      marginBottom: 'var(--spacing-4)',
                     }}
                   >
                     What to Pack
                   </h2>
                   <p 
-                    className="mb-4"
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-lg)',
                       color: 'var(--foreground)',
                       lineHeight: '1.8',
+                      marginBottom: 'var(--spacing-4)',
                     }}
                   >
                     Packing for a safari requires a balance between being prepared and traveling light. Essential items include:
                   </p>
                   <ul 
-                    className="mb-4"
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-lg)',
                       color: 'var(--foreground)',
                       lineHeight: '1.8',
                       paddingLeft: '24px',
+                      marginBottom: 'var(--spacing-4)',
                     }}
                   >
                     <li>Neutral-colored clothing (khaki, olive, beige)</li>
@@ -577,81 +573,75 @@ export function SinglePostLongformTemplate() {
                 </div>
 
                 {/* Continue with more sections as needed */}
-                <div id="choosing-destination" className="mb-12">
+                <div id="choosing-destination" style={{ marginBottom: 'var(--spacing-12)' }}>
                   <h2 
-                    className="mb-4"
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-h2)',
                       fontWeight: 'var(--font-weight-medium)',
                       color: 'var(--foreground)',
+                      marginBottom: 'var(--spacing-4)',
                     }}
                   >
                     Choosing Your Destination
                   </h2>
                   <p 
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-lg)',
                       color: 'var(--foreground)',
                       lineHeight: '1.8',
                     }}
                   >
-                    Africa offers incredible safari destinations, each with unique characteristics. Kenya and Tanzania are 
-                    perfect for first-timers, offering excellent infrastructure and abundant wildlife. South Africa provides 
-                    malaria-free options and luxury lodges, while Botswana offers exclusive, low-impact safari experiences.
+                    Africa offers incredible safari destinations, each with unique characteristics. Kenya and Tanzania are \n                    perfect for first-timers, offering excellent infrastructure and abundant wildlife. South Africa provides \n                    malaria-free options and luxury lodges, while Botswana offers exclusive, low-impact safari experiences.
                   </p>
                 </div>
 
-                <div id="wildlife-viewing" className="mb-12">
+                <div id="wildlife-viewing" style={{ marginBottom: 'var(--spacing-12)' }}>
                   <h2 
-                    className="mb-4"
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-h2)',
                       fontWeight: 'var(--font-weight-medium)',
                       color: 'var(--foreground)',
+                      marginBottom: 'var(--spacing-4)',
                     }}
                   >
                     Wildlife Viewing Tips
                   </h2>
                   <p 
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-lg)',
                       color: 'var(--foreground)',
                       lineHeight: '1.8',
                     }}
                   >
-                    Patience is key to successful wildlife viewing. Wake up early for dawn game drives when animals are most 
-                    active. Listen to your guide's expertise and respect wildlife by maintaining safe distances. Remember, 
-                    you're a guest in their home.
+                    Patience is key to successful wildlife viewing. Wake up early for dawn game drives when animals are most \n                    active. Listen to your guide's expertise and respect wildlife by maintaining safe distances. Remember, \n                    you're a guest in their home.
                   </p>
                 </div>
 
-                <div id="conclusion" className="mb-12">
+                <div id="conclusion" style={{ marginBottom: 'var(--spacing-12)' }}>
                   <h2 
-                    className="mb-4"
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-h2)',
                       fontWeight: 'var(--font-weight-medium)',
                       color: 'var(--foreground)',
+                      marginBottom: 'var(--spacing-4)',
                     }}
                   >
                     Conclusion
                   </h2>
                   <p 
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-lg)',
                       color: 'var(--foreground)',
                       lineHeight: '1.8',
                     }}
                   >
-                    Your first safari will be an experience you'll never forget. With proper planning, realistic expectations, 
-                    and an open mind, you're set for an adventure that will change how you see the natural world. Start 
-                    planning today, and soon you'll be witnessing the magic of Africa's wilderness firsthand.
+                    Your first safari will be an experience you'll never forget. With proper planning, realistic expectations, \n                    and an open mind, you're set for an adventure that will change how you see the natural world. Start \n                    planning today, and soon you'll be witnessing the magic of Africa's wilderness firsthand.
                   </p>
                 </div>
               </article>
@@ -697,64 +687,28 @@ export function SinglePostLongformTemplate() {
             <Heading level={2} style={{ marginBottom: '32px' }}>
               Related Articles
             </Heading>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="single-post__related-grid">
               {relatedPosts.map((post) => (
                 <article 
                   key={post.id}
-                  className="rounded-[var(--radius-lg)]"
-                  style={{
-                    backgroundColor: 'var(--card)',
-                    border: '1px solid var(--border)',
-                    overflow: 'hidden',
-                    transition: 'all 0.2s ease',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'translateY(-4px)';
-                    e.currentTarget.style.boxShadow = '0 8px 16px rgba(0, 0, 0, 0.1)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'translateY(0)';
-                    e.currentTarget.style.boxShadow = 'none';
-                  }}
+                  className="single-post__related-card"
                 >
                   <a href={post.href} style={{ textDecoration: 'none' }}>
                     <div 
-                      className="aspect-[16/9] bg-cover bg-center"
+                      className="single-post__related-image"
                       style={{
                         backgroundImage: `url(${post.imageUrl})`,
                       }}
                     />
                   </a>
-                  <div className="p-6">
-                    <span 
-                      className="inline-block px-3 py-1 rounded-full mb-3"
-                      style={{
-                        fontFamily: 'Lexend, sans-serif',
-                        fontSize: 'var(--text-small)',
-                        fontWeight: 'var(--font-weight-medium)',
-                        backgroundColor: 'var(--secondary)',
-                        color: 'var(--secondary-foreground)',
-                      }}
-                    >
+                  <div className="single-post__related-content">
+                    <span className="single-post__category-badge">
                       {post.category}
                     </span>
                     <h3>
                       <a 
                         href={post.href}
-                        style={{
-                          fontFamily: 'Lexend, sans-serif',
-                          fontSize: 'var(--text-h3)',
-                          fontWeight: 'var(--font-weight-medium)',
-                          color: 'var(--foreground)',
-                          textDecoration: 'none',
-                          lineHeight: '1.3',
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.color = 'var(--primary)';
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.color = 'var(--foreground)';
-                        }}
+                        className="single-post__article-title"
                       >
                         {post.title}
                       </a>
@@ -769,63 +723,38 @@ export function SinglePostLongformTemplate() {
         {/* Comments Section */}
         <section className="py-16" style={{ backgroundColor: 'var(--background)' }}>
           <Container>
-            <div className="max-w-4xl mx-auto">
-              <div className="flex items-center gap-3 mb-8">
-                <MessageCircle size={24} style={{ color: 'var(--foreground)' }} />
+            <div className="single-post__comments-wrapper">
+              <div className="single-post__comments-header">
+                <MessageCircle size={24} />
                 <Heading level={2} style={{ margin: 0 }}>
                   Comments ({comments.length})
                 </Heading>
               </div>
 
               {/* Comments List */}
-              <div className="flex flex-col gap-6 mb-12">
+              <div className="single-post__comments-list">
                 {comments.map((comment) => (
                   <div 
                     key={comment.id}
-                    className="p-6 rounded-[var(--radius-lg)]"
-                    style={{
-                      backgroundColor: 'var(--card)',
-                      border: '1px solid var(--border)',
-                    }}
+                    className="single-post__comment"
                   >
-                    <div className="flex items-start gap-4">
+                    <div className="single-post__comment-content">
                       <div
-                        className="w-12 h-12 rounded-full bg-cover bg-center flex-shrink-0"
+                        className="single-post__comment-avatar"
                         style={{
                           backgroundImage: `url(${comment.avatar})`,
                         }}
                       />
-                      <div className="flex-1">
-                        <div className="flex items-center gap-3 mb-2">
-                          <span 
-                            style={{
-                              fontFamily: 'Lexend, sans-serif',
-                              fontSize: 'var(--text-base)',
-                              fontWeight: 'var(--font-weight-medium)',
-                              color: 'var(--foreground)',
-                            }}
-                          >
+                      <div className="single-post__comment-text-wrapper">
+                        <div className="single-post__comment-meta">
+                          <span className="single-post__comment-author">
                             {comment.author}
                           </span>
-                          <span 
-                            style={{
-                              fontFamily: 'Manrope, sans-serif',
-                              fontSize: 'var(--text-small)',
-                              color: 'var(--muted-foreground)',
-                            }}
-                          >
+                          <span className="single-post__comment-date">
                             {comment.date}
                           </span>
                         </div>
-                        <p 
-                          style={{
-                            fontFamily: 'Lexend, sans-serif',
-                            fontSize: 'var(--text-base)',
-                            color: 'var(--foreground)',
-                            lineHeight: '1.6',
-                            margin: 0,
-                          }}
-                        >
+                        <p className="single-post__comment-text">
                           {comment.content}
                         </p>
                       </div>
@@ -835,33 +764,11 @@ export function SinglePostLongformTemplate() {
               </div>
 
               {/* Leave a Reply CTA */}
-              <div 
-                className="p-8 rounded-[var(--radius-lg)] text-center"
-                style={{
-                  backgroundColor: 'var(--muted)',
-                  border: '1px solid var(--border)',
-                }}
-              >
-                <h3 
-                  className="mb-4"
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-h3)',
-                    fontWeight: 'var(--font-weight-medium)',
-                    color: 'var(--foreground)',
-                  }}
-                >
+              <div className="single-post__comment-cta">
+                <h3 className="single-post__cta-title">
                   Join the Conversation
                 </h3>
-                <p 
-                  className="mb-6"
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-base)',
-                    color: 'var(--muted-foreground)',
-                    lineHeight: '1.6',
-                  }}
-                >
+                <p className="single-post__cta-description">
                   Have questions or insights about safari planning? We'd love to hear from you!
                 </p>
                 <Button variant="primary">

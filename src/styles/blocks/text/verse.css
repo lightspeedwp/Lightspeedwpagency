@@ -1,0 +1,24 @@
+/**
+ * Verse Block Styles
+ * WordPress block: .wp-block-verse
+ */
+
+.wp-block-verse {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  line-height: 1.8;
+  color: var(--foreground);
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  padding-left: var(--spacing-4);
+  border-left: 2px solid var(--border);
+  margin-bottom: var(--spacing-6);
+  font-style: italic;
+}
+
+@media (max-width: 767px) {
+  .wp-block-verse {
+    font-size: var(--text-sm);
+    padding-left: var(--spacing-3);
+  }
+}

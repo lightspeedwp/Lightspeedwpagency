@@ -55,15 +55,7 @@ export function SingleTemplate({
   content 
 }: SingleTemplateProps) {
   return (
-    <div 
-      style={{ 
-        minHeight: '100vh',
-        display: 'flex',
-        flexDirection: 'column',
-        backgroundColor: 'var(--background)',
-        color: 'var(--foreground)'
-      }}
-    >
+    <div className="wp-single-page-wrapper">
       {/* Skip Link for Accessibility */}
       <SkipLink targetId="main-content" />
 
@@ -74,20 +66,10 @@ export function SingleTemplate({
       <main 
         id="main-content" 
         role="main"
-        style={{
-          flex: 1,
-          display: 'flex',
-          flexDirection: 'column'
-        }}
+        className="wp-single-main"
       >
         {/* Breadcrumbs */}
-        <section 
-          className="py-4"
-          style={{
-            backgroundColor: 'var(--background)',
-            borderBottom: '1px solid var(--border-soft)',
-          }}
-        >
+        <section className="wp-single-breadcrumbs">
           <Container>
             <Breadcrumbs 
               items={[
@@ -99,62 +81,28 @@ export function SingleTemplate({
         </section>
 
         {/* Page Header */}
-        <Section spacing="lg" style={{ backgroundColor: 'var(--background)' }}>
+        <Section spacing="lg">
           <Container>
-            <div className="max-w-3xl mx-auto">
-              <Heading level={1} style={{ marginBottom: '24px' }}>
+            <div className="wp-max-w-3xl">
+              <Heading level={1} className="mb-6">
                 {title}
               </Heading>
               
               {content ? (
-                <div 
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-base)',
-                    color: 'var(--foreground)',
-                    lineHeight: '1.7',
-                  }}
-                >
+                <div className="wp-single-content">
                   {content}
                 </div>
               ) : (
-                <div 
-                  className="flex items-start gap-3 p-6"
-                  style={{
-                    backgroundColor: 'var(--muted)',
-                    borderRadius: 'var(--radius-lg)',
-                    border: '1px solid var(--border)',
-                  }}
-                >
+                <div className="wp-single-empty-state">
                   <AlertCircle 
                     size={24}
-                    style={{ 
-                      color: 'var(--muted-foreground)',
-                      flexShrink: 0,
-                      marginTop: '2px',
-                    }}
+                    className="wp-single-empty-state__icon"
                   />
                   <div>
-                    <p 
-                      style={{
-                        fontFamily: 'Lexend, sans-serif',
-                        fontSize: 'var(--text-base)',
-                        fontWeight: 'var(--font-weight-medium)',
-                        color: 'var(--foreground)',
-                        marginBottom: '8px',
-                      }}
-                    >
+                    <p className="wp-single-empty-state__title">
                       Generic Single Template
                     </p>
-                    <p 
-                      style={{
-                        fontFamily: 'Lexend, sans-serif',
-                        fontSize: 'var(--text-sm)',
-                        color: 'var(--muted-foreground)',
-                        lineHeight: '1.6',
-                        margin: 0,
-                      }}
-                    >
+                    <p className="wp-single-empty-state__description">
                       This is a fallback template for single pages without a specific template. 
                       For actual content, use dedicated templates like SinglePostTemplate, 
                       PortfolioSingleTemplate, or ServiceDetailTemplate.

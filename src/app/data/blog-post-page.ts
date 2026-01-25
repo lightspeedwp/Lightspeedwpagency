@@ -237,7 +237,8 @@ export const blogPostNewsletter = {
   title: 'Enjoyed this article?',
   description: 'Subscribe to our newsletter for more WordPress tips, tutorials, and best practices delivered to your inbox.',
   placeholder: 'Enter your email',
-  buttonText: 'Subscribe Now'
+  buttonText: 'Subscribe Now',
+  privacyText: 'We respect your privacy. Unsubscribe at any time.'
 };
 
 /**

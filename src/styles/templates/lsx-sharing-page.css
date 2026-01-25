@@ -1,0 +1,380 @@
+/**
+ * LSX Sharing Product Page Styles
+ * 
+ * Template-specific styles for LSX Sharing plugin page.
+ * All styling uses CSS variables from design system.
+ * 
+ * Structure:
+ * - Section headers
+ * - Feature cards
+ * - Benefit cards
+ * - Process steps
+ * - Network grid
+ * - Specifications
+ * - CTA section
+ */
+
+/* ============================================================
+   SECTION HEADERS
+   ============================================================ */
+
+.lsx-sharing__section-header {
+  text-align: center;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: var(--spacing-12);
+}
+
+.lsx-sharing__section-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h2);
+  font-weight: 600;
+  color: var(--foreground);
+  margin-bottom: var(--spacing-4);
+}
+
+.lsx-sharing__section-description {
+  font-family: var(--font-secondary);
+  font-size: var(--text-lg);
+  color: var(--muted-foreground);
+}
+
+/* ============================================================
+   FEATURES GRID
+   ============================================================ */
+
+.lsx-sharing__features-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-8);
+}
+
+@media (min-width: 768px) {
+  .lsx-sharing__features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .lsx-sharing__features-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.lsx-sharing__feature-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-8);
+  transition: all 0.3s ease;
+}
+
+.lsx-sharing__feature-card:hover {
+  border-color: var(--primary);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.lsx-sharing__feature-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary);
+  color: var(--primary-foreground);
+  border-radius: var(--radius);
+  margin-bottom: var(--spacing-4);
+}
+
+.lsx-sharing__feature-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.lsx-sharing__feature-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  color: var(--foreground);
+  margin-bottom: var(--spacing-3);
+}
+
+.lsx-sharing__feature-description {
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  color: var(--muted-foreground);
+  line-height: 1.6;
+}
+
+/* ============================================================
+   BENEFITS GRID
+   ============================================================ */
+
+.lsx-sharing__benefits-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-8);
+}
+
+@media (min-width: 768px) {
+  .lsx-sharing__benefits-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.lsx-sharing__benefit-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-8);
+}
+
+.lsx-sharing__benefit-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  color: var(--foreground);
+  margin-bottom: var(--spacing-3);
+}
+
+.lsx-sharing__benefit-description {
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  color: var(--muted-foreground);
+  line-height: 1.6;
+}
+
+/* ============================================================
+   PROCESS STEPS
+   ============================================================ */
+
+.lsx-sharing__process-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-6);
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.lsx-sharing__process-step {
+  display: flex;
+  gap: var(--spacing-6);
+  align-items: flex-start;
+}
+
+.lsx-sharing__process-number {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary);
+  color: var(--primary-foreground);
+  border-radius: 50%;
+  font-family: var(--font-primary);
+  font-size: var(--text-xl);
+  font-weight: 600;
+}
+
+.lsx-sharing__process-content {
+  flex: 1;
+}
+
+.lsx-sharing__process-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--foreground);
+  margin-bottom: var(--spacing-2);
+}
+
+.lsx-sharing__process-description {
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  color: var(--muted-foreground);
+  line-height: 1.6;
+}
+
+/* ============================================================
+   SOCIAL NETWORKS GRID
+   ============================================================ */
+
+.lsx-sharing__networks-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-6);
+  margin-top: var(--spacing-12);
+}
+
+@media (min-width: 640px) {
+  .lsx-sharing__networks-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .lsx-sharing__networks-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.lsx-sharing__network-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--spacing-6);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.lsx-sharing__network-card:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.lsx-sharing__network-icon {
+  width: 40px;
+  height: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: var(--spacing-3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+}
+
+.lsx-sharing__network-icon svg {
+  width: 32px;
+  height: 32px;
+}
+
+.lsx-sharing__network-name {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--foreground);
+  margin-bottom: var(--spacing-1);
+}
+
+.lsx-sharing__network-description {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+}
+
+/* ============================================================
+   SPECIFICATIONS
+   ============================================================ */
+
+.lsx-sharing__specs-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-4);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 768px) {
+  .lsx-sharing__specs-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.lsx-sharing__spec-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-4);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.lsx-sharing__spec-label {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: 500;
+  color: var(--muted-foreground);
+}
+
+.lsx-sharing__spec-value {
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  color: var(--foreground);
+  text-align: right;
+}
+
+/* ============================================================
+   FREE PLUGIN HIGHLIGHT
+   ============================================================ */
+
+.lsx-sharing__free-highlight {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: var(--primary-foreground);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-12);
+  text-align: center;
+  margin-top: var(--spacing-12);
+}
+
+.lsx-sharing__free-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-3xl);
+  font-weight: 600;
+  margin-bottom: var(--spacing-4);
+}
+
+.lsx-sharing__free-description {
+  font-family: var(--font-secondary);
+  font-size: var(--text-lg);
+  margin-bottom: var(--spacing-8);
+  opacity: 0.95;
+  line-height: 1.6;
+}
+
+/* ============================================================
+   CTA SECTION
+   ============================================================ */
+
+.lsx-sharing__cta-container {
+  text-align: center;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.lsx-sharing__cta-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-3xl);
+  font-weight: 600;
+  color: var(--foreground);
+  margin-bottom: var(--spacing-4);
+}
+
+.lsx-sharing__cta-description {
+  font-family: var(--font-secondary);
+  font-size: var(--text-lg);
+  color: var(--muted-foreground);
+  margin-bottom: var(--spacing-8);
+  line-height: 1.6;
+}
+
+.lsx-sharing__cta-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  align-items: center;
+}
+
+@media (min-width: 640px) {
+  .lsx-sharing__cta-buttons {
+    flex-direction: row;
+    justify-content: center;
+  }
+}

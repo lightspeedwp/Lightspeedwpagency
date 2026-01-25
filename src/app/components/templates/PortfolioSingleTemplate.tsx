@@ -15,6 +15,9 @@ import { Breadcrumbs } from '../common/Breadcrumbs';
 import { BackToTopButton } from '../blocks/layout/BackToTopButton';
 import { RouteAnnouncer } from '../blocks/utility/RouteAnnouncer';
 import { Buttons, Button } from '../blocks/design/Buttons';
+import { CTASection } from '../patterns/CTASection';
+import { Hero } from '../patterns/Hero';
+import { TestimonialGrid } from '../patterns/TestimonialGrid';
 import { 
   Code,
   Calendar,
@@ -80,114 +83,19 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
         </section>
 
         {/* Hero Section */}
-        <Section 
+        <Hero
+          variant="page"
+          align="left"
+          maxWidth="5xl"
+          gradient="blue"
           spacing="xl"
-          style={{
-            background: 'linear-gradient(135deg, #1e40af 0%, #3b82f6 100%)',
-            color: 'var(--primary-foreground)',
-            position: 'relative',
-            overflow: 'hidden'
+          badge={{
+            icon: Code,
+            text: projectPageHero.badge.text
           }}
-        >
-          {/* Gradient orb decorations */}
-          <div
-            className="absolute top-0 right-0 w-96 h-96 rounded-full"
-            style={{
-              background: 'radial-gradient(circle, rgba(96, 165, 250, 0.3) 0%, transparent 70%)',
-              filter: 'blur(80px)',
-              transform: 'translate(30%, -30%)'
-            }}
-          />
-
-          <Container>
-            <div className="max-w-5xl mx-auto relative z-10">
-              <div
-                className="inline-block px-4 py-2 mb-6"
-                style={{
-                  backgroundColor: 'rgba(255, 255, 255, 0.15)',
-                  backdropFilter: 'blur(10px)',
-                  borderRadius: 'var(--radius-full)',
-                  border: '1px solid rgba(255, 255, 255, 0.2)',
-                  fontSize: 'var(--text-small)',
-                  fontFamily: 'Manrope, sans-serif',
-                  fontWeight: 'var(--font-weight-semibold)',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.1em'
-                }}
-              >
-                <Code size={14} style={{ display: 'inline', marginRight: '8px' }} />
-                {projectPageHero.badge.text}
-              </div>
-
-              <h1
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'clamp(2rem, 5vw, 3.5rem)',
-                  fontWeight: 'var(--font-weight-bold)',
-                  lineHeight: '1.1',
-                  letterSpacing: '-0.02em',
-                  marginBottom: '16px',
-                  color: 'var(--primary-foreground)'
-                }}
-              >
-                {projectPageHero.title}
-              </h1>
-
-              <p
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-xl)',
-                  lineHeight: '1.6',
-                  color: 'rgba(255, 255, 255, 0.95)',
-                  marginBottom: '8px',
-                  fontStyle: 'italic'
-                }}
-              >
-                "{projectPageHero.tagline}"
-              </p>
-
-              <p
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-lg)',
-                  lineHeight: '1.7',
-                  color: 'rgba(255, 255, 255, 0.85)',
-                  marginBottom: '32px',
-                  maxWidth: '800px'
-                }}
-              >
-                {projectPageHero.description}
-              </p>
-
-              {/* Visit Site Button */}
-              {projectPageHero.url && (
-                <a
-                  href={projectPageHero.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '8px',
-                    padding: '14px 32px',
-                    backgroundColor: 'var(--primary-foreground)',
-                    color: 'var(--primary)',
-                    borderRadius: 'var(--radius)',
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-base)',
-                    fontWeight: 'var(--font-weight-semibold)',
-                    textDecoration: 'none',
-                    transition: 'opacity 0.2s ease'
-                  }}
-                  onMouseEnter={(e) => e.currentTarget.style.opacity = '0.9'}
-                  onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
-                >
-                  Visit Live Site <ExternalLink size={18} />
-                </a>
-              )}
-            </div>
-          </Container>
-        </Section>
+          title={projectPageHero.title}
+          description={projectPageHero.description}
+        />
 
         {/* Featured Image */}
         <Section spacing="none" style={{ backgroundColor: 'var(--background)' }}>
@@ -782,63 +690,20 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
           }}
         >
           <Container>
-            <div className="max-w-4xl mx-auto text-center">
-              <Quote size={48} style={{ marginBottom: '24px', opacity: 0.3 }} />
-
-              <p
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-xl)',
-                  lineHeight: '1.7',
-                  color: 'var(--primary-foreground)',
-                  marginBottom: '32px',
-                  fontStyle: 'italic'
-                }}
-              >
-                "{projectPageTestimonial.quote}"
-              </p>
-
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '16px' }}>
-                <div
-                  style={{
-                    width: '64px',
-                    height: '64px',
-                    borderRadius: 'var(--radius-full)',
-                    backgroundImage: `url(${projectPageTestimonial.avatar})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                    border: '3px solid rgba(255, 255, 255, 0.3)'
-                  }}
-                />
-                <div style={{ textAlign: 'left' }}>
-                  <div
-                    style={{
-                      fontFamily: 'Lexend, sans-serif',
-                      fontSize: 'var(--text-lg)',
-                      fontWeight: 'var(--font-weight-bold)',
-                      color: 'var(--primary-foreground)',
-                      marginBottom: '4px'
-                    }}
-                  >
-                    {projectPageTestimonial.author}
-                  </div>
-                  <div
-                    style={{
-                      fontFamily: 'Manrope, sans-serif',
-                      fontSize: 'var(--text-small)',
-                      color: 'rgba(255, 255, 255, 0.85)'
-                    }}
-                  >
-                    {projectPageTestimonial.position}, {projectPageTestimonial.company}
-                  </div>
-                  <div style={{ display: 'flex', gap: '4px', marginTop: '8px' }}>
-                    {[...Array(projectPageTestimonial.rating)].map((_, i) => (
-                      <Star key={i} size={16} fill="currentColor" style={{ color: '#fbbf24' }} />
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
+            <TestimonialGrid
+              testimonials={[{
+                quote: projectPageTestimonial.quote,
+                author: projectPageTestimonial.author,
+                role: projectPageTestimonial.position,
+                company: projectPageTestimonial.company,
+                avatar: projectPageTestimonial.avatar,
+                rating: projectPageTestimonial.rating
+              }]}
+              columns={1}
+              variant="featured"
+              showRating
+              showAvatar
+            />
           </Container>
         </Section>
 
@@ -936,68 +801,15 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
         </Section>
 
         {/* CTA Section */}
-        <Section 
-          spacing="xl" 
-          style={{
-            background: 'linear-gradient(135deg, #1e40af 0%, #3b82f6 100%)',
-            color: 'var(--primary-foreground)'
-          }}
-        >
-          <Container>
-            <div className="max-w-3xl mx-auto text-center">
-              <h2
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-h1)',
-                  fontWeight: 'var(--font-weight-bold)',
-                  lineHeight: '1.2',
-                  letterSpacing: '-0.02em',
-                  marginBottom: '16px',
-                  color: 'var(--primary-foreground)'
-                }}
-              >
-                {projectPageCTA.title}
-              </h2>
-
-              <p
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-lg)',
-                  lineHeight: '1.7',
-                  color: 'rgba(255, 255, 255, 0.9)',
-                  marginBottom: '32px'
-                }}
-              >
-                {projectPageCTA.description}
-              </p>
-
-              <Buttons alignment="center" gap="md">
-                <Button 
-                  page={projectPageCTA.buttons[0].page as any} 
-                  size="lg"
-                  variant="default"
-                  style={{
-                    backgroundColor: 'var(--primary-foreground)',
-                    color: 'var(--primary)'
-                  }}
-                >
-                  {projectPageCTA.buttons[0].text}
-                </Button>
-                <Button 
-                  page={projectPageCTA.buttons[1].page as any} 
-                  size="lg"
-                  variant="outline"
-                  style={{
-                    borderColor: 'var(--primary-foreground)',
-                    color: 'var(--primary-foreground)'
-                  }}
-                >
-                  {projectPageCTA.buttons[1].text}
-                </Button>
-              </Buttons>
-            </div>
-          </Container>
-        </Section>
+        <CTASection
+          title={projectPageCTA.title}
+          description={projectPageCTA.description}
+          primaryButtonText={projectPageCTA.buttons[0].text}
+          primaryButtonPage={projectPageCTA.buttons[0].page as any}
+          secondaryButtonText={projectPageCTA.buttons[1].text}
+          secondaryButtonPage={projectPageCTA.buttons[1].page as any}
+          gradient="blue"
+        />
       </main>
 
       <SiteFooter />

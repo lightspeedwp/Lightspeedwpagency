@@ -9,7 +9,7 @@
  * 
  * Design System Requirements:
  * - Layout: Flexbox with flex-direction: row
- * - Spacing: Uses Tailwind gap classes or CSS variables
+ * - Spacing: Uses WordPress gap utilities (.wp-gap-*)
  * - Colors: Uses semantic color tokens
  * - Alignment: Supports justify-content and align-items
  * - Responsive: Optional wrapping for mobile
@@ -20,17 +20,17 @@
 import React from 'react';
 
 export interface RowProps {
-  /** Horizontal spacing between children */
-  gap?: string;
-  /** Horizontal justification (flex-start, center, flex-end, space-between, etc.) */
-  justify?: 'flex-start' | 'center' | 'flex-end' | 'space-between' | 'space-around' | 'space-evenly';
-  /** Vertical alignment (flex-start, center, flex-end, stretch) */
-  align?: 'flex-start' | 'center' | 'flex-end' | 'stretch';
+  /** Horizontal spacing between children (0-24) */
+  gap?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 8 | 10 | 12 | 16 | 20 | 24;
+  /** Horizontal justification */
+  justify?: 'start' | 'center' | 'end' | 'between' | 'around' | 'evenly';
+  /** Vertical alignment */
+  align?: 'start' | 'center' | 'end' | 'stretch' | 'baseline';
   /** Allow items to wrap to next line */
   wrap?: boolean;
   /** Additional CSS classes */
   className?: string;
-  /** Inline styles */
+  /** Inline styles (CSS variables only) */
   style?: React.CSSProperties;
   /** Row items */
   children: React.ReactNode;
@@ -42,21 +42,21 @@ export interface RowProps {
  * Row Block - Horizontal layout container
  * 
  * @example
- * <Row gap="gap-4" justify="center" align="center">
+ * <Row gap={4} justify="center" align="center">
  *   <Button variant="primary">Sign Up</Button>
  *   <Button variant="secondary">Learn More</Button>
  * </Row>
  * 
  * @example
- * <Row gap="gap-6" justify="space-between" wrap>
+ * <Row gap={6} justify="between" wrap>
  *   <Logo />
  *   <Navigation />
  *   <Button>Contact</Button>
  * </Row>
  */
 export function Row({
-  gap = 'gap-4',
-  justify = 'flex-start',
+  gap = 4,
+  justify = 'start',
   align = 'center',
   wrap = false,
   className = '',
@@ -65,26 +65,28 @@ export function Row({
   'aria-label': ariaLabel,
   ...props
 }: RowProps) {
+  // Build WordPress-aligned class names
+  const gapClass = `wp-gap-${gap}`;
+  const justifyClass = justify !== 'start' ? `wp-justify-${justify}` : '';
+  const alignClass = align !== 'center' ? `wp-align-${align}` : 'wp-align-center';
+  const wrapClass = wrap ? 'wp-wrap' : 'wp-nowrap';
+
   // Combine classes
   const combinedClassName = [
     'wp-block-row',
-    'flex',
-    wrap ? 'flex-wrap' : 'flex-nowrap',
-    gap,
+    'wp-flex',
+    'wp-flex-row',
+    gapClass,
+    justifyClass,
+    alignClass,
+    wrapClass,
     className
   ].filter(Boolean).join(' ');
-
-  // Combine styles
-  const combinedStyle: React.CSSProperties = {
-    justifyContent: justify,
-    alignItems: align,
-    ...style
-  };
 
   return (
     <div
       className={combinedClassName}
-      style={combinedStyle}
+      style={style}
       aria-label={ariaLabel}
       {...props}
     >

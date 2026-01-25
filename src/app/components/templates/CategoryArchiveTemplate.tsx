@@ -65,12 +65,7 @@ export function CategoryArchiveTemplate({ category: categorySlug = 'wordpress-de
       
       <main id="main-content" role="main">
         {/* Breadcrumbs */}
-        <section 
-          className="py-4"
-          style={{
-            backgroundColor: 'var(--background)',
-          }}
-        >
+        <section className="wp-blog-breadcrumbs">
           <Container>
             <Breadcrumbs 
               items={[
@@ -83,117 +78,52 @@ export function CategoryArchiveTemplate({ category: categorySlug = 'wordpress-de
         </section>
 
         {/* Category Header */}
-        <Section 
-          className="py-16"
-          style={{
-            backgroundColor: 'var(--background)',
-            borderBottom: '1px solid var(--border-soft)',
-          }}
-        >
+        <section className="wp-category-header">
           <Container>
-            <div className="max-w-3xl">
-              <span 
-                style={{
-                  fontFamily: 'Manrope, sans-serif',
-                  fontSize: 'var(--text-small)',
-                  fontWeight: 'var(--font-weight-medium)',
-                  color: 'var(--muted-foreground)',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.05em',
-                }}
-              >
+            <div className="wp-max-w-3xl">
+              <span className="wp-category-label">
                 Category
               </span>
-              <h1 
-                style={{ 
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-h1)',
-                  fontWeight: 'var(--font-weight-medium)',
-                  color: 'var(--foreground)',
-                  marginTop: '8px',
-                  marginBottom: '16px',
-                  lineHeight: '1.2',
-                }}
-              >
+              <h1 className="wp-category-title">
                 {category.name}
               </h1>
-              <p 
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-lg)',
-                  color: 'var(--foreground)',
-                  lineHeight: '1.6',
-                  marginBottom: '16px',
-                }}
-              >
+              <p className="wp-category-description">
                 {category.description}
               </p>
-              <p 
-                style={{
-                  fontFamily: 'Manrope, sans-serif',
-                  fontSize: 'var(--text-base)',
-                  color: 'var(--muted-foreground)',
-                  margin: 0,
-                }}
-              >
+              <p className="wp-category-count">
                 {categoryPosts.length} {categoryPosts.length === 1 ? 'post' : 'posts'} in this category
               </p>
             </div>
           </Container>
-        </Section>
+        </section>
 
         {/* Main Content with Sidebar */}
-        <Section className="py-16" style={{ backgroundColor: 'var(--background)' }}>
+        <Section spacing="xl">
           <Container>
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            <div className="wp-category-posts-grid">
               {/* Post List */}
-              <div className="lg:col-span-2">
-                <div className="flex flex-col gap-8">
+              <div>
+                <div className="wp-category-posts-list">
                   {categoryPosts.map((post) => {
                     const author = getAuthorBySlug(post.author);
                     return (
                       <article 
                         key={post.id}
-                        className="flex flex-col md:flex-row gap-6 p-6 rounded-[var(--radius-lg)]"
-                        style={{
-                          border: '1px solid var(--border-soft)',
-                          backgroundColor: 'var(--card)',
-                          transition: 'all 0.2s ease',
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.transform = 'translateY(-2px)';
-                          e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.08)';
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.transform = 'translateY(0)';
-                          e.currentTarget.style.boxShadow = 'none';
-                        }}
+                        className="wp-category-post-card"
+                        onClick={() => navigateTo(`post-${post.slug}`)}
                       >
                         {/* Post Image */}
-                        <a 
-                          href={`#post-${post.slug}`}
-                          onClick={(e) => {
-                            e.preventDefault();
-                            navigateTo(`post-${post.slug}`);
-                          }}
-                          aria-label={`Read: ${post.title}`}
-                          style={{ 
-                            textDecoration: 'none',
-                            display: 'block',
-                            cursor: 'pointer',
-                          }}
-                        >
-                          <div 
-                            className="aspect-[16/9] bg-cover bg-center"
-                            style={{
-                              backgroundImage: `url(${post.featuredImage})`,
-                            }}
+                        <div className="wp-category-post-card__image-wrapper">
+                          <img 
+                            src={post.featuredImage}
+                            alt={post.title}
+                            className="wp-category-post-card__image"
                           />
-                        </a>
+                        </div>
 
                         {/* Post Content */}
-                        <div className="flex flex-col flex-1">
-                          <h2 className="mb-2">
+                        <div className="wp-category-post-card__content">
+                          <h2 className="wp-category-post-card__title">
                             <a 
                               href={`#post-${post.slug}`}
                               onClick={(e) => {
@@ -201,83 +131,37 @@ export function CategoryArchiveTemplate({ category: categorySlug = 'wordpress-de
                                 navigateTo(`post-${post.slug}`);
                               }}
                               aria-label={`Read: ${post.title}`}
-                              style={{
-                                fontFamily: 'Lexend, sans-serif',
-                                fontSize: 'var(--text-h3)',
-                                fontWeight: 'var(--font-weight-medium)',
-                                color: 'var(--foreground)',
-                                textDecoration: 'none',
-                                lineHeight: '1.3',
-                                display: 'block',
-                                cursor: 'pointer',
-                                transition: 'color 0.2s ease',
-                              }}
-                              onMouseEnter={(e) => {
-                                e.currentTarget.style.color = 'var(--primary)';
-                              }}
-                              onMouseLeave={(e) => {
-                                e.currentTarget.style.color = 'var(--foreground)';
-                              }}
+                              className="wp-category-post-card__title-link"
                             >
                               {post.title}
                             </a>
                           </h2>
 
-                          <p 
-                            className="mb-4"
-                            style={{
-                              fontFamily: 'Lexend, sans-serif',
-                              fontSize: 'var(--text-base)',
-                              color: 'var(--muted-foreground)',
-                              lineHeight: '1.6',
-                              margin: 0,
-                              marginBottom: '16px',
-                              flex: 1,
-                            }}
-                          >
+                          <p className="wp-category-post-card__excerpt">
                             {post.excerpt}
                           </p>
 
                           {/* Post Meta */}
-                          <div className="flex flex-wrap items-center gap-4 pt-4" style={{ borderTop: '1px solid var(--border-extra-soft)' }}>
+                          <div className="wp-category-post-card__meta">
                             {author && (
-                              <div className="flex items-center gap-2">
-                                <User size={16} style={{ color: 'var(--muted-foreground)' }} />
+                              <div className="wp-blog-post-meta__item">
+                                <User size={16} className="wp-blog-post-meta__icon" />
                                 <a
                                   href={`#author-${post.author}`}
                                   onClick={(e) => {
                                     e.preventDefault();
                                     navigateTo(`author-${post.author}`);
                                   }}
-                                  style={{
-                                    fontFamily: 'Manrope, sans-serif',
-                                    fontSize: 'var(--text-small)',
-                                    color: 'var(--muted-foreground)',
-                                    textDecoration: 'none',
-                                    cursor: 'pointer',
-                                    transition: 'color 0.2s ease',
-                                  }}
-                                  onMouseEnter={(e) => {
-                                    e.currentTarget.style.color = 'var(--primary)';
-                                  }}
-                                  onMouseLeave={(e) => {
-                                    e.currentTarget.style.color = 'var(--muted-foreground)';
-                                  }}
+                                  className="wp-blog-post-meta__text"
                                   aria-label={`View all posts by ${author.name}`}
                                 >
                                   {author.name}
                                 </a>
                               </div>
                             )}
-                            <div className="flex items-center gap-2">
-                              <Calendar size={16} style={{ color: 'var(--muted-foreground)' }} />
-                              <span 
-                                style={{
-                                  fontFamily: 'Manrope, sans-serif',
-                                  fontSize: 'var(--text-small)',
-                                  color: 'var(--muted-foreground)',
-                                }}
-                              >
+                            <div className="wp-blog-post-meta__item">
+                              <Calendar size={16} className="wp-blog-post-meta__icon" />
+                              <span className="wp-blog-post-meta__text">
                                 {new Date(post.date).toLocaleDateString('en-US', { 
                                   year: 'numeric', 
                                   month: 'short', 
@@ -285,15 +169,9 @@ export function CategoryArchiveTemplate({ category: categorySlug = 'wordpress-de
                                 })}
                               </span>
                             </div>
-                            <div className="flex items-center gap-2">
-                              <Clock size={16} style={{ color: 'var(--muted-foreground)' }} />
-                              <span 
-                                style={{
-                                  fontFamily: 'Manrope, sans-serif',
-                                  fontSize: 'var(--text-small)',
-                                  color: 'var(--muted-foreground)',
-                                }}
-                              >
+                            <div className="wp-blog-post-meta__item">
+                              <Clock size={16} className="wp-blog-post-meta__icon" />
+                              <span className="wp-blog-post-meta__text">
                                 {post.readingTime}
                               </span>
                             </div>
@@ -327,66 +205,22 @@ export function CategoryArchiveTemplate({ category: categorySlug = 'wordpress-de
               </div>
 
               {/* Sidebar */}
-              <aside className="lg:col-span-1">
-                <div className="flex flex-col gap-8">
+              <aside>
+                <div className="wp-category-sidebar">
                   {/* Categories */}
-                  <div 
-                    className="p-6 rounded-[var(--radius-lg)]"
-                    style={{
-                      backgroundColor: 'var(--card)',
-                      border: '1px solid var(--border-soft)',
-                    }}
-                  >
-                    <h3 
-                      style={{
-                        fontFamily: 'Lexend, sans-serif',
-                        fontSize: 'var(--text-h4)',
-                        fontWeight: 'var(--font-weight-medium)',
-                        color: 'var(--foreground)',
-                        marginBottom: '16px',
-                      }}
-                    >
+                  <div className="wp-category-sidebar-card">
+                    <h3 className="wp-category-sidebar-card__title">
                       All Categories
                     </h3>
-                    <ul className="flex flex-col gap-2" style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                    <ul className="wp-category-sidebar-list">
                       {allCategories.map((cat) => (
                         <li key={cat.slug}>
                           <button
-                            key={cat.slug}
                             onClick={() => navigateTo(`category-${cat.slug}`)}
-                            className="py-2"
-                            style={{
-                              fontFamily: 'var(--font-primary)',
-                              fontSize: 'var(--text-base)',
-                              fontWeight: cat.slug === categorySlug ? 'var(--font-weight-medium)' : 'var(--font-weight-regular)',
-                              color: cat.slug === categorySlug ? 'var(--primary)' : 'var(--foreground)',
-                              textDecoration: 'none',
-                              transition: 'color 0.2s ease',
-                              background: 'none',
-                              border: 'none',
-                              cursor: 'pointer',
-                            }}
-                            onMouseEnter={(e) => {
-                              if (cat.slug !== categorySlug) {
-                                e.currentTarget.style.color = 'var(--primary)';
-                              }
-                            }}
-                            onMouseLeave={(e) => {
-                              if (cat.slug !== categorySlug) {
-                                e.currentTarget.style.color = 'var(--foreground)';
-                              }
-                            }}
+                            className={`wp-category-sidebar-button ${cat.slug === categorySlug ? 'wp-category-sidebar-button--active' : ''}`}
                           >
                             <span>{cat.name}</span>
-                            <span 
-                              className="px-2 py-1 rounded-full"
-                              style={{
-                                fontFamily: 'Manrope, sans-serif',
-                                fontSize: 'var(--text-small)',
-                                backgroundColor: 'var(--secondary)',
-                                color: 'var(--secondary-foreground)',
-                              }}
-                            >
+                            <span className="wp-category-sidebar-button__count">
                               {cat.count}
                             </span>
                           </button>

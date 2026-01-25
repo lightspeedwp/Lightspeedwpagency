@@ -3,239 +3,257 @@
  * 
  * WordPress pattern: lsx-design/listing/card-grid
  * 
- * Responsive grid of cards with consistent styling using design system tokens.
- * Supports 2, 3, or 4 column layouts.
+ * Displays a responsive grid of cards with images, titles, descriptions, and metadata.
+ * Commonly used for blog posts, portfolio items, services, case studies, and generic content.
+ * 
+ * All styling in /src/styles/card-grid.css (user-editable)
+ * 
+ * **Usage:**
+ * ```tsx
+ * <CardGrid
+ *   items={[
+ *     {
+ *       title: 'Blog Post Title',
+ *       description: 'Post excerpt...',
+ *       image: '/images/post.jpg',
+ *       href: '/blog/post-slug',
+ *       meta: [
+ *         { icon: Calendar, label: 'Jan 21, 2025' },
+ *         { icon: User, label: 'John Doe' }
+ *       ]
+ *     }
+ *   ]}
+ *   columns={3}
+ *   variant="blog"
+ * />
+ * ```
+ * 
+ * @see {@link /guidelines/patterns/CardGrid.md}
  */
 
-import { Section } from '../common/Section';
-import { Container } from '../common/Container';
-import { Heading } from '../common/Heading';
-import { useNavigation } from '../../contexts/NavigationContext';
+import { ChevronRight, ExternalLink } from 'lucide-react';
 
-interface CardGridItem {
-  id: string;
+export interface CardMeta {
+  /** Icon component */
+  icon?: React.ComponentType<{ size?: number; className?: string }>;
+  /** Label text */
+  label: string;
+  /** Optional link */
+  href?: string;
+}
+
+export interface CardBadge {
+  /** Badge text */
+  text: string;
+  /** Badge color variant */
+  variant?: 'primary' | 'success' | 'warning' | 'muted';
+}
+
+export interface CardGridItem {
+  /** Card title */
   title: string;
-  excerpt: string;
-  category: string;
-  imageUrl: string;
-  href: string;
-  page?: string; // Navigation page ID (e.g., 'single', 'blog', etc.)
-  duration?: string;
-  price?: string;
+  /** Card description/excerpt */
+  description?: string;
+  /** Card image URL */
+  image?: string;
+  /** Card link */
+  href?: string;
+  /** Open link in new tab */
+  external?: boolean;
+  /** Meta information (date, author, category, etc.) */
+  meta?: CardMeta[];
+  /** Badge/tag */
+  badge?: CardBadge;
+  /** Optional CTA text (defaults to "Learn More" or "Read More") */
+  ctaText?: string;
+  /** Optional icon for the card */
+  icon?: React.ComponentType<{ size?: number; className?: string }>;
 }
 
-interface CardGridProps {
+export interface CardGridProps {
+  /** Array of card items */
   items: CardGridItem[];
-  sectionTitle?: string;
+  /** Number of columns (2-4, default: 3) */
   columns?: 2 | 3 | 4;
+  /** Visual variant */
+  variant?: 'default' | 'blog' | 'portfolio' | 'service' | 'minimal';
+  /** Show images */
+  showImages?: boolean;
+  /** Show descriptions */
+  showDescriptions?: boolean;
+  /** Show CTA buttons */
+  showCTA?: boolean;
+  /** Max width constraint */
+  maxWidth?: '4xl' | '5xl' | '6xl' | 'none';
+  /** Custom gap between cards */
+  gap?: string;
+  /** Empty state message */
+  emptyMessage?: string;
 }
 
-export function CardGrid({ items, sectionTitle, columns = 3 }: CardGridProps) {
-  const { navigateTo } = useNavigation();
-  
-  const gridCols = {
-    2: 'md:grid-cols-2',
-    3: 'md:grid-cols-2 lg:grid-cols-3',
-    4: 'md:grid-cols-2 lg:grid-cols-4'
-  };
+export function CardGrid({
+  items,
+  columns = 3,
+  variant = 'default',
+  showImages = true,
+  showDescriptions = true,
+  showCTA = true,
+  maxWidth = '6xl',
+  gap = 'var(--spacing-8)',
+  emptyMessage = 'No items found.'
+}: CardGridProps) {
+  // Max width class
+  const maxWidthClass = maxWidth !== 'none' ? `wp-max-w-${maxWidth}` : '';
+
+  // Grid column class based on columns count
+  const gridClass = columns === 2 ? 'wp-grid-2-cols' : columns === 3 ? 'wp-grid-3-cols' : 'wp-grid-4-cols';
+
+  // Empty state
+  if (items.length === 0) {
+    return (
+      <div className={maxWidthClass}>
+        <div className="card-grid__empty">
+          <p className="card-grid__empty-message">
+            {emptyMessage}
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <Section spacing="lg" id="featured">
-      <Container>
-        {/* Section header */}
-        {sectionTitle && (
-          <div className="text-center mb-12">
-            <Heading level={2}>{sectionTitle}</Heading>
-            <p 
-              className="mt-4 mx-auto"
-              style={{
-                fontFamily: 'Lexend, sans-serif',
-                fontSize: 'var(--text-base)',
-                color: 'var(--muted-foreground)',
-                maxWidth: '600px'
-              }}
-            >
-              Handpicked projects showcasing our design and development expertise
-            </p>
-          </div>
-        )}
+    <div className={maxWidthClass}>
+      <div className={gridClass} style={{ gap }}>
+        {items.map((item, index) => {
+          const isExternal = item.external || item.href?.startsWith('http');
+          const CardIcon = item.icon;
 
-        {/* Card grid */}
-        <div className={`grid grid-cols-1 ${gridCols[columns]} gap-8`}>
-          {items.map((item) => (
-            <article 
-              key={item.id}
-              className="group"
-              style={{
-                backgroundColor: 'var(--card)',
-                border: '1px solid var(--border-soft)',
-                borderRadius: 'var(--radius-xl)',
-                overflow: 'hidden',
-                transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                cursor: 'pointer',
-                boxShadow: 'var(--shadow-md)'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-12px)';
-                e.currentTarget.style.boxShadow = 'var(--shadow-xl)';
-                e.currentTarget.style.borderColor = 'var(--primary)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = 'var(--shadow-md)';
-                e.currentTarget.style.borderColor = 'var(--border-soft)';
-              }}
-            >
-              {/* Card image */}
-              <div 
-                className="relative overflow-hidden"
-                style={{ 
-                  paddingTop: '60%', // Modern 5:3 aspect ratio
-                  backgroundColor: 'var(--muted)'
-                }}
-              >
-                <img
-                  src={item.imageUrl}
-                  alt={item.title}
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  loading="lazy"
-                  style={{
-                    filter: 'brightness(0.95)'
-                  }}
-                />
-                
-                {/* Gradient overlay */}
-                <div 
-                  className="absolute inset-0"
-                  style={{
-                    background: 'linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.05) 100%)'
-                  }}
-                  aria-hidden="true"
-                />
-                
-                {/* Category badge with proper color variables */}
-                <span 
-                  className="absolute top-4 left-4 px-4 py-2"
-                  style={{
-                    backgroundColor: 'var(--primary)',
-                    color: 'var(--primary-foreground)',
-                    borderRadius: 'var(--radius-lg)',
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-small)',
-                    fontWeight: 'var(--font-weight-bold)',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.08em',
-                    boxShadow: 'var(--shadow-hover)'
-                  }}
-                >
-                  {item.category}
-                </span>
-              </div>
+          // Image container class
+          const imageContainerClass = [
+            'card-grid__image-container',
+            variant === 'portfolio' ? 'card-grid__image-container--portfolio' :
+            variant === 'blog' ? 'card-grid__image-container--blog' :
+            'card-grid__image-container--default'
+          ].filter(Boolean).join(' ');
 
-              {/* Card content */}
-              <div className="p-8 space-y-4">
+          // Badge class (overlay)
+          const badgeOverlayClass = [
+            'card-grid__badge--overlay',
+            `card-grid__badge--${item.badge?.variant || 'muted'}`
+          ].filter(Boolean).join(' ');
+
+          // Badge class (inline)
+          const badgeInlineClass = [
+            'card-grid__badge--inline',
+            `card-grid__badge--${item.badge?.variant || 'muted'}`
+          ].filter(Boolean).join(' ');
+
+          // Content class
+          const contentClass = [
+            'card-grid__content',
+            variant === 'minimal' && 'card-grid__content--minimal'
+          ].filter(Boolean).join(' ');
+
+          // Title class
+          const titleClass = [
+            'card-grid__title',
+            variant === 'minimal' && 'card-grid__title--minimal'
+          ].filter(Boolean).join(' ');
+
+          return (
+            <article key={index} className="card-grid__card">
+              {/* Image */}
+              {showImages && item.image && (
+                <div className={imageContainerClass}>
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="card-grid__image"
+                  />
+
+                  {/* Badge overlay */}
+                  {item.badge && (
+                    <div className={badgeOverlayClass}>
+                      {item.badge.text}
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* Content */}
+              <div className={contentClass}>
+                {/* Icon (for service cards) */}
+                {variant === 'service' && CardIcon && (
+                  <div className="card-grid__service-icon">
+                    <CardIcon size={24} />
+                  </div>
+                )}
+
+                {/* Badge (if no image) */}
+                {(!showImages || !item.image) && item.badge && (
+                  <div className={badgeInlineClass}>
+                    {item.badge.text}
+                  </div>
+                )}
+
+                {/* Meta */}
+                {item.meta && item.meta.length > 0 && (
+                  <div className="card-grid__meta">
+                    {item.meta.map((meta, metaIndex) => {
+                      const MetaIcon = meta.icon;
+                      const content = (
+                        <div className="card-grid__meta-item">
+                          {MetaIcon && <MetaIcon size={14} />}
+                          <span>{meta.label}</span>
+                        </div>
+                      );
+
+                      return meta.href ? (
+                        <a
+                          key={metaIndex}
+                          href={meta.href}
+                          className="card-grid__meta-link"
+                        >
+                          {content}
+                        </a>
+                      ) : (
+                        <div key={metaIndex}>{content}</div>
+                      );
+                    })}
+                  </div>
+                )}
+
                 {/* Title */}
-                <h3 
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-h3)',
-                    fontWeight: 'var(--font-weight-bold)',
-                    color: 'var(--card-foreground)',
-                    lineHeight: '1.3',
-                    letterSpacing: '-0.01em'
-                  }}
-                >
+                <h3 className={titleClass}>
                   {item.title}
                 </h3>
 
-                {/* Excerpt */}
-                <p 
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-base)',
-                    color: 'var(--muted-foreground)',
-                    lineHeight: '1.7'
-                  }}
-                >
-                  {item.excerpt}
-                </p>
+                {/* Description */}
+                {showDescriptions && item.description && (
+                  <p className="card-grid__description">
+                    {item.description}
+                  </p>
+                )}
 
-                {/* Meta information */}
-                <div className="flex items-center gap-4 pt-3" style={{ borderTop: '1px solid var(--border-extra-soft)' }}>
-                  {item.duration && (
-                    <span 
-                      className="flex items-center gap-2"
-                      style={{
-                        fontFamily: 'Manrope, sans-serif',
-                        fontSize: 'var(--text-small)',
-                        color: 'var(--muted-foreground)'
-                      }}
-                    >
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <circle cx="12" cy="12" r="10"/>
-                        <polyline points="12 6 12 12 16 14"/>
-                      </svg>
-                      {item.duration}
-                    </span>
-                  )}
-                  {item.price && (
-                    <span 
-                      style={{
-                        fontFamily: 'Lexend, sans-serif',
-                        fontSize: 'var(--text-base)',
-                        fontWeight: 'var(--font-weight-bold)',
-                        color: 'var(--primary)',
-                        marginLeft: 'auto'
-                      }}
-                    >
-                      {item.price}
-                    </span>
-                  )}
-                </div>
-
-                {/* CTA link */}
-                <button
-                  onClick={() => navigateTo(item.page || 'single')}
-                  className="inline-flex items-center gap-2 mt-2 group/link"
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-base)',
-                    fontWeight: 'var(--font-weight-medium)',
-                    color: 'var(--primary)',
-                    textDecoration: 'none',
-                    background: 'none',
-                    border: 'none',
-                    padding: 0,
-                    cursor: 'pointer',
-                    transition: 'gap 0.3s ease'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.gap = '12px';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.gap = '8px';
-                  }}
-                >
-                  View Details
-                  <svg 
-                    width="18" 
-                    height="18" 
-                    viewBox="0 0 24 24" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
+                {/* CTA */}
+                {showCTA && item.href && (
+                  <a
+                    href={item.href}
+                    {...(isExternal ? {
+                      target: '_blank',
+                      rel: 'noopener noreferrer'
+                    } : {})}
+                    className="card-grid__cta"
                   >
-                    <line x1="5" y1="12" x2="19" y2="12"/>
-                    <polyline points="12 5 19 12 12 19"/>
-                  </svg>
-                </button>
+                    {item.ctaText || (variant === 'blog' ? 'Read More' : variant === 'portfolio' ? 'View Project' : 'Learn More')}
+                    {isExternal ? <ExternalLink size={16} /> : <ChevronRight size={16} />}
+                  </a>
+                )}
               </div>
             </article>
-          ))}
-        </div>
-      </Container>
-    </Section>
+          );
+        })}
+      </div>
+    </div>
   );
 }

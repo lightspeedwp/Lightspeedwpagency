@@ -7,13 +7,20 @@
  * 3. Theme Base — Typography, spacing, borders (theme-agnostic)
  * 4. Theme Light — Light mode colors (default)
  * 5. Theme Dark — Dark mode colors (overrides for .dark class)
- * 6. WordPress Blocks — Complete WordPress core block styles
- * 7. WordPress Blocks Extended — Additional blog/navigation patterns (NEW)
- * 8. Section Styles — WordPress-style section variations (CTA, Hero, etc.)
- * 9. Animations — Motion and transitions
- * 10. Print — Print-optimized styles
+ * 6. Layout — Global fluid padding and layout utilities (NEW)
+ * 7. WordPress Blocks — Complete WordPress core block styles
+ * 8. WordPress Blocks Extended — Additional blog/navigation patterns
+ * 9. Accordion — WordPress Accordion/Details block styles
+ * 10. Section Styles — WordPress-style section variations (CTA, Hero, etc.)
+ * 11. Homepage Sections — Custom homepage section styles
+ * 12. Design Service — Design service template styles
+ * 13. Solutions Template — Solutions template styles
+ * 14. Header — Site header and mega menu styles
+ * 15. Footer — Custom footer styles
+ * 16. Animations — Motion and transitions
+ * 17. Print — Print-optimized styles
  * 
- * Last Updated: January 9, 2025
+ * Last Updated: January 25, 2025
  */
 
 @import './fonts.css';
@@ -21,8 +28,15 @@
 @import './theme-base.css';
 @import './theme-light.css';
 @import './theme-dark.css';
+@import './layout.css';
 @import './wordpress-blocks.css';
 @import './wordpress-blocks-extended.css';
+@import './accordion.css';
 @import './section-styles.css';
+@import './homepage-sections.css';
+@import './design-service.css';
+@import './solutions-template.css';
+@import './parts/site-header.css';
+@import './footer.css';
 @import './animations.css';
 @import './print.css';

@@ -1,0 +1,237 @@
+/**
+ * Gallery Block Styles
+ * 
+ * WordPress block: .wp-block-gallery
+ * Component: /src/app/components/blocks/media/Gallery.tsx
+ * Guideline: /guidelines/blocks/media/gallery.md
+ * 
+ * CRITICAL: 100% CSS variables only - NO hardcoded values
+ */
+
+/* ==========================================================================
+   BASE STYLES
+   ========================================================================== */
+
+.wp-block-gallery {
+  /* Layout */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-4);
+  
+  /* Spacing */
+  margin: var(--spacing-6) 0;
+  padding: 0;
+  
+  /* Remove list styles */
+  list-style: none;
+}
+
+/* ==========================================================================
+   GALLERY ITEM
+   ========================================================================== */
+
+.wp-block-gallery__item {
+  /* Layout */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  
+  /* Reset */
+  margin: 0;
+  padding: 0;
+}
+
+.wp-block-gallery__img {
+  /* Layout */
+  width: 100%;
+  height: auto;
+  display: block;
+  
+  /* Ensure crisp rendering */
+  image-rendering: crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+  
+  /* Rounded corners */
+  border-radius: var(--radius);
+  
+  /* Transition */
+  transition: transform 300ms ease, opacity 300ms ease;
+}
+
+.wp-block-gallery__caption {
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  text-align: center;
+  
+  /* Spacing */
+  margin-top: var(--spacing-2);
+}
+
+/* ==========================================================================
+   COLUMN VARIANTS
+   ========================================================================== */
+
+.wp-block-gallery--2-cols {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.wp-block-gallery--3-cols {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.wp-block-gallery--4-cols {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.wp-block-gallery--5-cols {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.wp-block-gallery--6-cols {
+  grid-template-columns: repeat(6, 1fr);
+}
+
+/* ==========================================================================
+   GAP VARIANTS
+   ========================================================================== */
+
+.wp-block-gallery--gap-sm {
+  gap: var(--spacing-2);
+}
+
+.wp-block-gallery--gap-md {
+  gap: var(--spacing-4);
+}
+
+.wp-block-gallery--gap-lg {
+  gap: var(--spacing-6);
+}
+
+/* ==========================================================================
+   ASPECT RATIO VARIANTS
+   ========================================================================== */
+
+.wp-block-gallery--square .wp-block-gallery__img {
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.wp-block-gallery--portrait .wp-block-gallery__img {
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+}
+
+.wp-block-gallery--landscape .wp-block-gallery__img {
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+/* ==========================================================================
+   CLICKABLE ITEMS
+   ========================================================================== */
+
+.wp-block-gallery__item a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.wp-block-gallery__item a:hover .wp-block-gallery__img {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+.wp-block-gallery__item a:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: var(--radius);
+}
+
+/* ==========================================================================
+   RESPONSIVE STYLES
+   ========================================================================== */
+
+/* Mobile (< 768px) - 1 column */
+@media (max-width: 767px) {
+  .wp-block-gallery,
+  .wp-block-gallery--2-cols,
+  .wp-block-gallery--3-cols,
+  .wp-block-gallery--4-cols,
+  .wp-block-gallery--5-cols,
+  .wp-block-gallery--6-cols {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-4);
+  }
+}
+
+/* Tablet (768px - 1023px) - 2 columns */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .wp-block-gallery--3-cols,
+  .wp-block-gallery--4-cols,
+  .wp-block-gallery--5-cols,
+  .wp-block-gallery--6-cols {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Desktop (≥ 1024px) - Use specified columns */
+@media (min-width: 1024px) {
+  .wp-block-gallery--4-cols,
+  .wp-block-gallery--5-cols,
+  .wp-block-gallery--6-cols {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Large desktop (≥ 1440px) - Full columns */
+@media (min-width: 1440px) {
+  .wp-block-gallery--4-cols {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .wp-block-gallery--5-cols {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  
+  .wp-block-gallery--6-cols {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+/* ==========================================================================
+   DARK MODE OVERRIDES
+   ========================================================================== */
+
+.dark-theme .wp-block-gallery__caption {
+  color: var(--muted-foreground);
+}
+
+/* ==========================================================================
+   PRINT STYLES
+   ========================================================================== */
+
+@media print {
+  .wp-block-gallery {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12pt;
+    page-break-inside: avoid;
+  }
+  
+  .wp-block-gallery__item {
+    page-break-inside: avoid;
+  }
+}
+
+/* ==========================================================================
+   REDUCED MOTION
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .wp-block-gallery__img,
+  .wp-block-gallery__item a:hover .wp-block-gallery__img {
+    transition: none;
+    transform: none;
+  }
+}

@@ -18,6 +18,10 @@ import { Buttons, Button } from '../blocks/design/Buttons';
 import { BackToTopButton } from '../blocks/layout/BackToTopButton';
 import { RouteAnnouncer } from '../blocks/utility/RouteAnnouncer';
 import { FAQSection } from '../patterns/FAQSection';
+import { Hero } from '../patterns/Hero';
+import { FeatureGrid } from '../patterns/FeatureGrid';
+import { ProcessSteps } from '../patterns/ProcessSteps';
+import { CTASection } from '../patterns/CTASection';
 import { useNavigation } from '../../contexts/NavigationContext';
 import { useState } from 'react';
 import { 
@@ -37,8 +41,7 @@ import {
   Settings,
   Globe,
   Sparkles,
-  Award,
-  Heart
+  Award
 } from 'lucide-react';
 
 // Import centralized data
@@ -71,246 +74,58 @@ export function ServicesTemplate() {
       
       <main id="main-content" role="main">
         {/* Hero Section */}
-        <Section 
+        <Hero
+          variant="page"
+          align="center"
+          maxWidth="4xl"
+          gradient="blue"
           spacing="xl"
-          style={{
-            background: 'linear-gradient(135deg, #1e40af 0%, #3b82f6 100%)',
-            color: 'var(--primary-foreground)',
-            position: 'relative',
-            overflow: 'hidden',
-            paddingTop: '80px',
-            paddingBottom: '80px'
+          badge={{
+            icon: Sparkles,
+            text: 'OUR SERVICES'
           }}
-        >
-          <div
-            className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full"
-            style={{
-              background: 'radial-gradient(circle, rgba(96, 165, 250, 0.3) 0%, transparent 70%)',
-              filter: 'blur(80px)',
-              transform: 'translate(30%, -30%)'
-            }}
-          />
-
-          <Container>
-            <div className="max-w-4xl mx-auto text-center relative z-10">
-              <div
-                className="inline-block px-4 py-2 mb-6"
-                style={{
-                  backgroundColor: 'rgba(255, 255, 255, 0.15)',
-                  backdropFilter: 'blur(10px)',
-                  borderRadius: 'var(--radius-full)',
-                  border: '1px solid rgba(255, 255, 255, 0.2)',
-                  fontSize: 'var(--text-small)',
-                  fontFamily: 'Manrope, sans-serif',
-                  fontWeight: 'var(--font-weight-semibold)',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.1em'
-                }}
+          title="WordPress & WooCommerce Services"
+          description="From discovery to ongoing support, we provide comprehensive WordPress services to help your business succeed online. Over 15 years of expertise delivering exceptional results."
+          buttons={
+            <Buttons orientation="horizontal" style={{ justifyContent: 'center' }}>
+              <Button
+                variant="primary"
+                size="lg"
+                page="contact"
+                icon={<ArrowRight size={20} />}
               >
-                OUR SERVICES
-              </div>
-
-              <h1
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'clamp(2rem, 5vw, 3.5rem)',
-                  fontWeight: 'var(--font-weight-bold)',
-                  lineHeight: '1.1',
-                  letterSpacing: '-0.02em',
-                  marginBottom: '20px',
-                  color: 'var(--primary-foreground)'
-                }}
+                Contact Us
+              </Button>
+              <Button
+                variant="outline"
+                size="lg"
+                page="portfolio-archive"
               >
-                WordPress & WooCommerce<br />Services
-              </h1>
-
-              <p
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-lg)',
-                  lineHeight: '1.7',
-                  color: 'rgba(255, 255, 255, 0.95)',
-                  marginBottom: '32px',
-                  maxWidth: '700px',
-                  margin: '0 auto 32px'
-                }}
-              >
-                From discovery to ongoing support, we provide comprehensive WordPress 
-                services to help your business succeed online. Over 15 years of expertise 
-                delivering exceptional results.
-              </p>
-
-              <Buttons orientation="horizontal" style={{ justifyContent: 'center' }}>
-                <Button
-                  variant="primary"
-                  size="lg"
-                  page="contact"
-                  icon={<ArrowRight size={20} />}
-                >
-                  Contact Us
-                </Button>
-                <Button
-                  variant="outline"
-                  size="lg"
-                  page="portfolio-archive"
-                >
-                  View Work
-                </Button>
-              </Buttons>
-            </div>
-          </Container>
-        </Section>
+                View Work
+              </Button>
+            </Buttons>
+          }
+        />
 
         {/* Services Grid */}
-        <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
-          <Container>
-            <div className="text-center mb-16">
-              <h2
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-h1)',
-                  fontWeight: 'var(--font-weight-bold)',
-                  lineHeight: '1.2',
-                  letterSpacing: '-0.02em',
-                  marginBottom: '16px',
-                  color: 'var(--foreground)'
-                }}
-              >
-                What We Do
-              </h2>
-
-              <p
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-lg)',
-                  lineHeight: '1.7',
-                  color: 'var(--muted-foreground)',
-                  maxWidth: '700px',
-                  margin: '0 auto'
-                }}
-              >
-                Comprehensive WordPress services for every need
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {services.map((service) => (
-                <a
-                  key={service.id}
-                  href={`#${service.page}`}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    navigateTo(service.page);
-                  }}
-                  onMouseEnter={() => setHoveredService(service.id)}
-                  onMouseLeave={() => setHoveredService(null)}
-                  style={{
-                    textDecoration: 'none',
-                    display: 'block',
-                    cursor: 'pointer',
-                  }}
-                  aria-label={`Learn more about ${service.title}`}
-                >
-                  <div
-                    className="cursor-pointer"
-                    style={{
-                      padding: '32px',
-                      backgroundColor: 'var(--card)',
-                      border: '1px solid var(--border-soft)',
-                      borderRadius: 'var(--radius-lg)',
-                      transition: 'all 0.3s ease',
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.transform = 'translateY(-8px)';
-                      e.currentTarget.style.boxShadow = '0 20px 40px rgba(0,0,0,0.1)';
-                      e.currentTarget.style.borderColor = 'var(--primary)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.transform = 'translateY(0)';
-                      e.currentTarget.style.boxShadow = 'none';
-                      e.currentTarget.style.borderColor = 'var(--border-soft)';
-                    }}
-                  >
-                    <div
-                      style={{
-                        width: '64px',
-                        height: '64px',
-                        borderRadius: 'var(--radius-lg)',
-                        backgroundColor: 'var(--primary-soft)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        marginBottom: '20px',
-                        transition: 'all 0.3s ease'
-                      }}
-                    >
-                      <service.icon 
-                        size={32} 
-                        style={{ 
-                          color: 'var(--primary)',
-                          transition: 'color 0.3s ease'
-                        }} 
-                      />
-                    </div>
-
-                    <h3
-                      style={{
-                        fontFamily: 'Lexend, sans-serif',
-                        fontSize: 'var(--text-xl)',
-                        fontWeight: 'var(--font-weight-bold)',
-                        color: 'var(--foreground)',
-                        marginBottom: '12px'
-                      }}
-                    >
-                      {service.title}
-                    </h3>
-
-                    <p
-                      style={{
-                        fontFamily: 'Lexend, sans-serif',
-                        fontSize: 'var(--text-base)',
-                        lineHeight: '1.6',
-                        color: 'var(--muted-foreground)',
-                        marginBottom: '16px'
-                      }}
-                    >
-                      {service.description}
-                    </p>
-
-                    <ul className="space-y-2" style={{ listStyle: 'none', padding: 0 }}>
-                      {service.features.map((feature, idx) => (
-                        <li
-                          key={idx}
-                          style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '8px'
-                          }}
-                        >
-                          <CheckCircle size={16} style={{ color: 'var(--primary)', flexShrink: 0 }} />
-                          <span
-                            style={{
-                              fontFamily: 'Lexend, sans-serif',
-                              fontSize: 'var(--text-small)',
-                              color: 'var(--muted-foreground)'
-                            }}
-                          >
-                            {feature}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </a>
-              ))}
-            </div>
-          </Container>
-        </Section>
+        <FeatureGrid
+          title="What We Do"
+          description="Comprehensive WordPress services for every need"
+          columns={3}
+          variant="bordered"
+          items={services.map(service => ({
+            icon: service.icon,
+            title: service.title,
+            description: service.description,
+            features: service.features,
+            link: service.page
+          }))}
+        />
 
         {/* Why Choose Us */}
         <Section spacing="xl" style={{ backgroundColor: 'var(--muted)' }}>
           <Container>
-            <div className="text-center mb-16">
+            <div className="wp-text-center" style={{ marginBottom: 'var(--spacing-16)' }}>
               <h2
                 style={{
                   fontFamily: 'Lexend, sans-serif',
@@ -339,7 +154,7 @@ export function ServicesTemplate() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: 'var(--spacing-8)' }}>
               {benefits.map((benefit, index) => {
                 const Icon = benefit.icon;
                 return (
@@ -400,7 +215,7 @@ export function ServicesTemplate() {
         {/* Process Section */}
         <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
           <Container>
-            <div className="text-center mb-16">
+            <div className="wp-text-center" style={{ marginBottom: 'var(--spacing-16)' }}>
               <h2
                 style={{
                   fontFamily: 'Lexend, sans-serif',
@@ -429,65 +244,14 @@ export function ServicesTemplate() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
-              {processSteps.map((step) => (
-                <div
-                  key={step.step}
-                  style={{
-                    textAlign: 'center'
-                  }}
-                >
-                  <div
-                    style={{
-                      width: '64px',
-                      height: '64px',
-                      borderRadius: 'var(--radius-full)',
-                      backgroundColor: 'var(--primary)',
-                      color: 'white',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      margin: '0 auto 16px',
-                      fontFamily: 'Lexend, sans-serif',
-                      fontSize: 'var(--text-h3)',
-                      fontWeight: 'var(--font-weight-bold)'
-                    }}
-                  >
-                    {step.step}
-                  </div>
-
-                  <h3
-                    style={{
-                      fontFamily: 'Lexend, sans-serif',
-                      fontSize: 'var(--text-base)',
-                      fontWeight: 'var(--font-weight-semibold)',
-                      color: 'var(--foreground)',
-                      marginBottom: '8px'
-                    }}
-                  >
-                    {step.title}
-                  </h3>
-
-                  <p
-                    style={{
-                      fontFamily: 'Lexend, sans-serif',
-                      fontSize: 'var(--text-small)',
-                      lineHeight: '1.5',
-                      color: 'var(--muted-foreground)'
-                    }}
-                  >
-                    {step.description}
-                  </p>
-                </div>
-              ))}
-            </div>
+            <ProcessSteps steps={processSteps} />
           </Container>
         </Section>
 
         {/* Industries Section */}
         <Section spacing="xl" style={{ backgroundColor: 'var(--muted)' }}>
           <Container>
-            <div className="text-center mb-16">
+            <div className="wp-text-center" style={{ marginBottom: 'var(--spacing-16)' }}>
               <h2
                 style={{
                   fontFamily: 'Lexend, sans-serif',
@@ -516,7 +280,7 @@ export function ServicesTemplate() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: 'var(--spacing-4)' }}>
               {industries.map((industry, index) => (
                 <div
                   key={index}
@@ -548,78 +312,21 @@ export function ServicesTemplate() {
         </Section>
 
         {/* CTA Section */}
-        <Section 
-          spacing="xl"
-          style={{
-            background: 'linear-gradient(135deg, #1e40af 0%, #3b82f6 100%)',
-            color: 'var(--primary-foreground)',
-            textAlign: 'center'
-          }}
-        >
-          <Container>
-            <div className="max-w-3xl mx-auto">
-              <h2
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-h1)',
-                  fontWeight: 'var(--font-weight-bold)',
-                  lineHeight: '1.2',
-                  letterSpacing: '-0.02em',
-                  marginBottom: '20px'
-                }}
-              >
-                Ready to Start Your Project?
-              </h2>
-
-              <p
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-lg)',
-                  lineHeight: '1.7',
-                  marginBottom: '32px',
-                  opacity: 0.95
-                }}
-              >
-                Let's discuss your needs and create a custom solution that drives 
-                results. Schedule a free consultation today.
-              </p>
-
-              <Buttons orientation="horizontal" style={{ justifyContent: 'center' }}>
-                <Button
-                  variant="default"
-                  size="lg"
-                  page="contact"
-                  icon={<ArrowRight size={20} />}
-                  style={{
-                    backgroundColor: 'white',
-                    color: 'var(--primary)',
-                    boxShadow: '0 10px 40px rgba(0, 0, 0, 0.2)'
-                  }}
-                >
-                  Contact Us
-                </Button>
-                <Button
-                  variant="outline"
-                  size="lg"
-                  page="portfolio-archive"
-                  style={{
-                    borderColor: 'rgba(255, 255, 255, 0.3)',
-                    color: 'white',
-                    backgroundColor: 'transparent'
-                  }}
-                >
-                  View Work
-                </Button>
-              </Buttons>
-            </div>
-          </Container>
-        </Section>
-
+        <CTASection
+          title="Ready to Start Your Project?"
+          description="Let's discuss your needs and create a custom solution that drives results. Schedule a free consultation today."
+          primaryButtonText="Contact Us"
+          primaryButtonPage="contact"
+          secondaryButtonText="View Our Work"
+          secondaryButtonPage="portfolio"
+          gradient="blue"
+        />
+        
         {/* FAQ Section */}
         <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
           <Container>
-            <div className="max-w-4xl mx-auto">
-              <div className="text-center mb-12">
+            <div className="wp-max-w-4xl">
+              <div className="wp-text-center" style={{ marginBottom: 'var(--spacing-12)' }}>
                 <h2
                   style={{
                     fontFamily: 'Lexend, sans-serif',

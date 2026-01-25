@@ -78,7 +78,7 @@ export function InputField({
       <label
         htmlFor={id}
         style={{
-          fontFamily: 'Lexend, sans-serif',
+          fontFamily: 'var(--font-primary)',
           fontSize: 'var(--text-base)',
           fontWeight: '500',
           color: 'var(--foreground)',
@@ -127,7 +127,7 @@ export function InputField({
             padding: prefixIcon || suffixIcon ? '0.75rem 3rem' : '0.75rem 1rem',
             paddingLeft: prefixIcon ? '3rem' : '1rem',
             paddingRight: suffixIcon ? '3rem' : '1rem',
-            fontFamily: 'Manrope, sans-serif',
+            fontFamily: 'var(--font-secondary)',
             fontSize: 'var(--text-base)',
             color: 'var(--foreground)',
             backgroundColor: disabled ? 'var(--muted)' : 'var(--background)',
@@ -172,7 +172,7 @@ export function InputField({
           <p
             id={hasMessage ? `${id}-message` : `${id}-helper`}
             style={{
-              fontFamily: 'Manrope, sans-serif',
+              fontFamily: 'var(--font-secondary)',
               fontSize: 'var(--text-small)',
               color: hasMessage ? messageColor : 'var(--muted-foreground)',
               margin: 0,
@@ -186,7 +186,7 @@ export function InputField({
         {showCounter && maxLength && (
           <span
             style={{
-              fontFamily: 'Manrope, sans-serif',
+              fontFamily: 'var(--font-secondary)',
               fontSize: 'var(--text-small)',
               color: currentLength > maxLength ? 'var(--destructive)' : 'var(--muted-foreground)',
             }}
@@ -233,7 +233,7 @@ export function TextareaField({
       <label
         htmlFor={id}
         style={{
-          fontFamily: 'Lexend, sans-serif',
+          fontFamily: 'var(--font-primary)',
           fontSize: 'var(--text-base)',
           fontWeight: '500',
           color: 'var(--foreground)',
@@ -259,7 +259,7 @@ export function TextareaField({
         style={{
           width: '100%',
           padding: '0.75rem 1rem',
-          fontFamily: 'Manrope, sans-serif',
+          fontFamily: 'var(--font-secondary)',
           fontSize: 'var(--text-base)',
           lineHeight: '1.6',
           color: 'var(--foreground)',
@@ -288,7 +288,7 @@ export function TextareaField({
           <p
             id={hasMessage ? `${id}-message` : `${id}-helper`}
             style={{
-              fontFamily: 'Manrope, sans-serif',
+              fontFamily: 'var(--font-secondary)',
               fontSize: 'var(--text-small)',
               color: hasMessage ? messageColor : 'var(--muted-foreground)',
               margin: 0,
@@ -301,7 +301,7 @@ export function TextareaField({
         {showCounter && maxLength && (
           <span
             style={{
-              fontFamily: 'Manrope, sans-serif',
+              fontFamily: 'var(--font-secondary)',
               fontSize: 'var(--text-small)',
               color: currentLength > maxLength ? 'var(--destructive)' : 'var(--muted-foreground)',
             }}
@@ -344,7 +344,7 @@ export function SelectField({
       <label
         htmlFor={id}
         style={{
-          fontFamily: 'Lexend, sans-serif',
+          fontFamily: 'var(--font-primary)',
           fontSize: 'var(--text-base)',
           fontWeight: '500',
           color: 'var(--foreground)',
@@ -367,7 +367,7 @@ export function SelectField({
         style={{
           width: '100%',
           padding: '0.75rem 1rem',
-          fontFamily: 'Manrope, sans-serif',
+          fontFamily: 'var(--font-secondary)',
           fontSize: 'var(--text-base)',
           color: 'var(--foreground)',
           backgroundColor: disabled ? 'var(--muted)' : 'var(--background)',
@@ -395,7 +395,7 @@ export function SelectField({
         <p
           id={hasMessage ? `${id}-message` : `${id}-helper`}
           style={{
-            fontFamily: 'Manrope, sans-serif',
+            fontFamily: 'var(--font-secondary)',
             fontSize: 'var(--text-small)',
             color: hasMessage ? messageColor : 'var(--muted-foreground)',
             margin: 0,
@@ -440,7 +440,7 @@ export function CheckboxField({ label, id, description, error, ...props }: Check
           <label
             htmlFor={id}
             style={{
-              fontFamily: 'Lexend, sans-serif',
+              fontFamily: 'var(--font-primary)',
               fontSize: 'var(--text-base)',
               fontWeight: '400',
               color: 'var(--foreground)',
@@ -453,7 +453,7 @@ export function CheckboxField({ label, id, description, error, ...props }: Check
             <p
               id={`${id}-description`}
               style={{
-                fontFamily: 'Manrope, sans-serif',
+                fontFamily: 'var(--font-secondary)',
                 fontSize: 'var(--text-small)',
                 color: 'var(--muted-foreground)',
                 margin: '0.25rem 0 0 0',
@@ -466,7 +466,7 @@ export function CheckboxField({ label, id, description, error, ...props }: Check
             <p
               id={`${id}-error`}
               style={{
-                fontFamily: 'Manrope, sans-serif',
+                fontFamily: 'var(--font-secondary)',
                 fontSize: 'var(--text-small)',
                 color: 'var(--destructive)',
                 margin: '0.25rem 0 0 0',

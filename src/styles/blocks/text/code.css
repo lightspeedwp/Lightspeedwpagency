@@ -1,0 +1,82 @@
+/**
+ * Code Block Styles
+ * 
+ * WordPress block: .wp-block-code
+ * 
+ * @see /guidelines/blocks/text/code.md
+ */
+
+.wp-block-code {
+  background: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: var(--spacing-6);
+  overflow-x: auto;
+}
+
+.wp-block-code__pre {
+  margin: 0;
+  padding: var(--spacing-4);
+  overflow-x: auto;
+}
+
+.wp-block-code__code {
+  font-family: var(--font-mono, 'Courier New', monospace);
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  color: var(--foreground);
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  tab-size: 4;
+}
+
+/* Line Numbers Variant */
+.wp-block-code--line-numbers {
+  counter-reset: line;
+}
+
+.wp-block-code--line-numbers .wp-block-code__code {
+  display: block;
+}
+
+.wp-block-code--line-numbers .wp-block-code__code::before {
+  counter-increment: line;
+  content: counter(line);
+  display: inline-block;
+  width: 2em;
+  margin-right: var(--spacing-3);
+  text-align: right;
+  color: var(--muted-foreground);
+  user-select: none;
+}
+
+/* Scrollbar Styles */
+.wp-block-code__pre::-webkit-scrollbar {
+  height: 8px;
+}
+
+.wp-block-code__pre::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+.wp-block-code__pre::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: var(--radius);
+}
+
+.wp-block-code__pre::-webkit-scrollbar-thumb:hover {
+  background: var(--muted-foreground);
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+  .wp-block-code__code {
+    font-size: 13px;
+  }
+  
+  .wp-block-code__pre {
+    padding: var(--spacing-3);
+  }
+}

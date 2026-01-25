@@ -1,0 +1,310 @@
+/**
+ * Image Block Styles
+ * 
+ * WordPress block: .wp-block-image
+ * Component: /src/app/components/blocks/media/Image.tsx
+ * Guideline: /guidelines/blocks/media/image.md
+ * 
+ * CRITICAL: 100% CSS variables only - NO hardcoded values
+ * User can control ALL styling by editing theme CSS files
+ */
+
+/* ==========================================================================
+   BASE STYLES
+   ========================================================================== */
+
+.wp-block-image {
+  /* Layout */
+  position: relative;
+  display: block;
+  
+  /* Spacing */
+  margin: var(--spacing-6) 0;
+  
+  /* Remove default figure margins */
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+}
+
+/* ==========================================================================
+   IMAGE ELEMENT
+   ========================================================================== */
+
+.wp-block-image__img {
+  /* Layout */
+  display: block;
+  width: 100%;
+  height: auto;
+  
+  /* Ensure crisp rendering */
+  image-rendering: crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+  
+  /* Prevent layout shift */
+  max-width: 100%;
+  
+  /* Transition for hover effects */
+  transition: transform 300ms ease, opacity 300ms ease;
+}
+
+/* ==========================================================================
+   CAPTION
+   ========================================================================== */
+
+.wp-block-image__caption {
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--muted-foreground);
+  text-align: center;
+  
+  /* Spacing */
+  margin-top: var(--spacing-2);
+  padding: 0 var(--spacing-2);
+}
+
+/* ==========================================================================
+   SIZE VARIANTS
+   ========================================================================== */
+
+/* Thumbnail (150px max) */
+.wp-block-image--thumbnail {
+  max-width: 150px;
+}
+
+.wp-block-image--thumbnail .wp-block-image__img {
+  max-width: 150px;
+}
+
+/* Medium (300px max) */
+.wp-block-image--medium {
+  max-width: 300px;
+}
+
+.wp-block-image--medium .wp-block-image__img {
+  max-width: 300px;
+}
+
+/* Large (1024px max) */
+.wp-block-image--large {
+  max-width: 1024px;
+}
+
+.wp-block-image--large .wp-block-image__img {
+  max-width: 1024px;
+}
+
+/* Full (Original size, no constraint) */
+.wp-block-image--full {
+  max-width: none;
+}
+
+.wp-block-image--full .wp-block-image__img {
+  max-width: none;
+}
+
+/* ==========================================================================
+   ALIGNMENT VARIANTS
+   ========================================================================== */
+
+/* Left aligned */
+.wp-block-image--left {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+/* Center aligned */
+.wp-block-image--center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Right aligned */
+.wp-block-image--right {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+/* Wide width (extends beyond content) */
+.wp-block-image--wide {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Full width (edge to edge) */
+.wp-block-image--full-width {
+  max-width: none;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+.wp-block-image--full-width .wp-block-image__img {
+  width: 100%;
+}
+
+/* ==========================================================================
+   ROUNDED CORNERS
+   ========================================================================== */
+
+.wp-block-image--rounded .wp-block-image__img {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   CLICKABLE IMAGES (WITH LINKS)
+   ========================================================================== */
+
+.wp-block-image a {
+  display: block;
+  position: relative;
+  
+  /* Remove link styling */
+  text-decoration: none;
+  color: inherit;
+}
+
+.wp-block-image a:hover .wp-block-image__img {
+  opacity: 0.9;
+  transform: scale(1.02);
+}
+
+.wp-block-image a:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 4px;
+  border-radius: var(--radius);
+}
+
+/* ==========================================================================
+   LOADING STATES
+   ========================================================================== */
+
+/* Lazy loading placeholder */
+.wp-block-image__img[loading="lazy"] {
+  background: var(--muted);
+}
+
+/* Image not loaded yet */
+.wp-block-image__img:not([src]) {
+  background: var(--muted);
+  min-height: 200px;
+}
+
+/* ==========================================================================
+   RESPONSIVE STYLES
+   ========================================================================== */
+
+/* Mobile (< 768px) - Base styles above */
+
+/* Tablet (768px - 1023px) */
+@media (min-width: 768px) {
+  .wp-block-image__caption {
+    font-size: 14px;
+  }
+}
+
+/* Desktop (≥ 1024px) */
+@media (min-width: 1024px) {
+  .wp-block-image__caption {
+    font-size: var(--text-sm);
+  }
+}
+
+/* Mobile: Full width images */
+@media (max-width: 767px) {
+  .wp-block-image--large,
+  .wp-block-image--full,
+  .wp-block-image--wide {
+    max-width: 100%;
+  }
+  
+  .wp-block-image--full-width {
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+  }
+}
+
+/* ==========================================================================
+   DARK MODE OVERRIDES
+   ========================================================================== */
+
+.dark-theme .wp-block-image__caption {
+  color: var(--muted-foreground);
+}
+
+.dark-theme .wp-block-image__img[loading="lazy"] {
+  background: var(--muted);
+}
+
+/* ==========================================================================
+   PRINT STYLES
+   ========================================================================== */
+
+@media print {
+  .wp-block-image {
+    page-break-inside: avoid;
+    margin: 12pt 0;
+  }
+  
+  .wp-block-image__img {
+    max-width: 100%;
+    page-break-inside: avoid;
+  }
+  
+  .wp-block-image__caption {
+    color: #666;
+    font-size: 9pt;
+  }
+  
+  /* Don't show hover effects in print */
+  .wp-block-image a:hover .wp-block-image__img {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ==========================================================================
+   REDUCED MOTION
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .wp-block-image__img,
+  .wp-block-image a:hover .wp-block-image__img {
+    transition: none;
+    transform: none;
+  }
+}
+
+/* ==========================================================================
+   UTILITY CLASSES
+   ========================================================================== */
+
+/* Bordered image */
+.wp-block-image--bordered .wp-block-image__img {
+  border: 1px solid var(--border);
+}
+
+/* Shadow */
+.wp-block-image--shadow .wp-block-image__img {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Grayscale (hover to color) */
+.wp-block-image--grayscale .wp-block-image__img {
+  filter: grayscale(100%);
+  transition: filter 300ms ease;
+}
+
+.wp-block-image--grayscale:hover .wp-block-image__img {
+  filter: grayscale(0%);
+}
+
+/* Avatar style (circular) */
+.wp-block-image--avatar .wp-block-image__img {
+  border-radius: 50%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}

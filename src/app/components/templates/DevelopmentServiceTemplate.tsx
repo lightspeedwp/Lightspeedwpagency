@@ -15,6 +15,9 @@ import { Breadcrumbs } from '../common/Breadcrumbs';
 import { BackToTopButton } from '../blocks/layout/BackToTopButton';
 import { RouteAnnouncer } from '../blocks/utility/RouteAnnouncer';
 import { Buttons, Button } from '../blocks/design/Buttons';
+import { FAQSection } from '../patterns/FAQSection';
+import { CTASection } from '../patterns/CTASection';
+import { Hero } from '../patterns/Hero';
 import { 
   Code,
   CheckCircle,
@@ -66,119 +69,31 @@ export function DevelopmentServiceTemplate() {
         </section>
 
         {/* Hero Section */}
-        <Section 
-          spacing="xl"
-          style={{
-            background: 'linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%)',
-            color: 'var(--primary-foreground)',
-            position: 'relative',
-            overflow: 'hidden'
+        <Hero
+          title={developmentServiceHero.title}
+          titleHighlight={developmentServiceHero.titleHighlight}
+          subtitle={developmentServiceHero.tagline}
+          description={developmentServiceHero.description}
+          badge={{
+            icon: Code,
+            text: developmentServiceHero.badge.text
           }}
-        >
-          {/* Gradient orb decorations */}
-          <div
-            className="absolute top-0 right-0 w-96 h-96 rounded-full"
-            style={{
-              background: 'radial-gradient(circle, rgba(168, 85, 247, 0.3) 0%, transparent 70%)',
-              filter: 'blur(80px)',
-              transform: 'translate(30%, -30%)'
-            }}
-          />
-
-          <Container>
-            <div className="max-w-4xl mx-auto text-center relative z-10">
-              <div
-                className="inline-block px-4 py-2 mb-6"
-                style={{
-                  backgroundColor: 'rgba(255, 255, 255, 0.15)',
-                  backdropFilter: 'blur(10px)',
-                  borderRadius: 'var(--radius-full)',
-                  border: '1px solid rgba(255, 255, 255, 0.2)',
-                  fontSize: 'var(--text-small)',
-                  fontFamily: 'Manrope, sans-serif',
-                  fontWeight: 'var(--font-weight-semibold)',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.1em'
-                }}
-              >
-                <Code size={14} style={{ display: 'inline', marginRight: '8px' }} />
-                {developmentServiceHero.badge.text}
-              </div>
-
-              <h1
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'clamp(2rem, 5vw, 3.5rem)',
-                  fontWeight: 'var(--font-weight-bold)',
-                  lineHeight: '1.1',
-                  letterSpacing: '-0.02em',
-                  marginBottom: '20px',
-                  color: 'var(--primary-foreground)'
-                }}
-              >
-                Expert WordPress <span style={{ 
-                  background: 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text'
-                }}>Development</span> for Modern Websites
-              </h1>
-
-              <p
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-xl)',
-                  lineHeight: '1.6',
-                  color: 'rgba(255, 255, 255, 0.95)',
-                  marginBottom: '16px',
-                  maxWidth: '700px',
-                  margin: '0 auto 16px'
-                }}
-              >
-                {developmentServiceHero.tagline}
-              </p>
-
-              <p
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-lg)',
-                  lineHeight: '1.7',
-                  color: 'rgba(255, 255, 255, 0.85)',
-                  marginBottom: '40px',
-                  maxWidth: '700px',
-                  margin: '0 auto 40px'
-                }}
-              >
-                {developmentServiceHero.description}
-              </p>
-
-              <Buttons alignment="center" gap="md">
-                <Button 
-                  page="contact" 
-                  size="lg"
-                  variant="default"
-                  style={{
-                    backgroundColor: 'var(--primary-foreground)',
-                    color: '#8b5cf6'
-                  }}
-                >
-                  Start Your Project
-                </Button>
-                <Button 
-                  page="portfolio" 
-                  size="lg"
-                  variant="outline"
-                  style={{
-                    borderColor: 'var(--primary-foreground)',
-                    color: 'var(--primary-foreground)'
-                  }}
-                >
-                  View Our Work
-                </Button>
-              </Buttons>
-            </div>
-          </Container>
-        </Section>
+          buttons={[
+            {
+              label: 'Start Your Project',
+              page: 'contact',
+              variant: 'primary'
+            },
+            {
+              label: 'View Our Work',
+              page: 'portfolio',
+              variant: 'outline'
+            }
+          ]}
+          variant="service"
+          gradient="purple"
+          spacing="xl"
+        />
 
         {/* Overview Section */}
         <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
@@ -925,138 +840,23 @@ export function DevelopmentServiceTemplate() {
         </Section>
 
         {/* FAQ Section */}
-        <Section spacing="xl" style={{ backgroundColor: 'var(--muted)' }}>
-          <Container>
-            <div className="max-w-3xl mx-auto">
-              <div className="text-center mb-12">
-                <h2
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-h2)',
-                    fontWeight: 'var(--font-weight-semibold)',
-                    color: 'var(--foreground)',
-                    marginBottom: '16px',
-                    lineHeight: 'var(--line-height-snug)'
-                  }}
-                >
-                  Frequently Asked Questions
-                </h2>
-                <p
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-lg)',
-                    color: 'var(--muted-foreground)',
-                    lineHeight: '1.7'
-                  }}
-                >
-                  Common questions about WordPress development
-                </p>
-              </div>
-
-              <div className="space-y-4">
-                {developmentServiceFAQs.map((faq, index) => (
-                  <details
-                    key={index}
-                    style={{
-                      padding: '24px',
-                      backgroundColor: 'var(--card)',
-                      borderRadius: 'var(--radius-lg)',
-                      border: '1px solid var(--border-soft)'
-                    }}
-                  >
-                    <summary
-                      style={{
-                        fontFamily: 'Lexend, sans-serif',
-                        fontSize: 'var(--text-lg)',
-                        fontWeight: 'var(--font-weight-semibold)',
-                        color: 'var(--foreground)',
-                        cursor: 'pointer',
-                        listStyle: 'none'
-                      }}
-                    >
-                      {faq.question}
-                    </summary>
-                    <p
-                      style={{
-                        fontFamily: 'Lexend, sans-serif',
-                        fontSize: 'var(--text-base)',
-                        lineHeight: '1.7',
-                        color: 'var(--muted-foreground)',
-                        marginTop: '12px'
-                      }}
-                    >
-                      {faq.answer}
-                    </p>
-                  </details>
-                ))}
-              </div>
-            </div>
-          </Container>
-        </Section>
+        <FAQSection
+          title="Frequently Asked Questions"
+          description="Common questions about WordPress development"
+          faqs={developmentServiceFAQs}
+          variant="muted"
+        />
 
         {/* CTA Section */}
-        <Section 
-          spacing="xl" 
-          style={{
-            background: 'linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%)',
-            color: 'var(--primary-foreground)'
-          }}
-        >
-          <Container>
-            <div className="max-w-3xl mx-auto text-center">
-              <h2
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-h1)',
-                  fontWeight: 'var(--font-weight-bold)',
-                  lineHeight: '1.2',
-                  letterSpacing: '-0.02em',
-                  marginBottom: '16px',
-                  color: 'var(--primary-foreground)'
-                }}
-              >
-                {developmentServiceCTA.title}
-              </h2>
-
-              <p
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-lg)',
-                  lineHeight: '1.7',
-                  color: 'rgba(255, 255, 255, 0.9)',
-                  marginBottom: '32px'
-                }}
-              >
-                {developmentServiceCTA.description}
-              </p>
-
-              <Buttons alignment="center" gap="md">
-                <Button 
-                  page={developmentServiceCTA.buttons[0].page as any} 
-                  size="lg"
-                  variant="default"
-                  style={{
-                    backgroundColor: 'var(--primary-foreground)',
-                    color: '#8b5cf6'
-                  }}
-                >
-                  {developmentServiceCTA.buttons[0].text}
-                </Button>
-                <Button 
-                  page={developmentServiceCTA.buttons[1].page as any} 
-                  size="lg"
-                  variant="outline"
-                  style={{
-                    borderColor: 'var(--primary-foreground)',
-                    color: 'var(--primary-foreground)'
-                  }}
-                >
-                  {developmentServiceCTA.buttons[1].text}
-                </Button>
-              </Buttons>
-            </div>
-          </Container>
-        </Section>
+        <CTASection
+          title={developmentServiceCTA.title}
+          description={developmentServiceCTA.description}
+          primaryButtonText={developmentServiceCTA.buttons[0].text}
+          primaryButtonPage={developmentServiceCTA.buttons[0].page as any}
+          secondaryButtonText={developmentServiceCTA.buttons[1]?.text}
+          secondaryButtonPage={developmentServiceCTA.buttons[1]?.page as any}
+          gradient="purple"
+        />
       </main>
 
       <SiteFooter />
@@ -1064,3 +864,5 @@ export function DevelopmentServiceTemplate() {
     </>
   );
 }
+
+export default DevelopmentServiceTemplate;

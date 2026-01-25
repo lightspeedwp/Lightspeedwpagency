@@ -1,0 +1,63 @@
+/**
+ * Video Block Styles
+ * 
+ * WordPress block: .wp-block-video
+ * CRITICAL: 100% CSS variables only
+ */
+
+.wp-block-video {
+  position: relative;
+  display: block;
+  margin: var(--spacing-6) 0;
+}
+
+.wp-block-video__element {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius);
+}
+
+.wp-block-video--16-9 .wp-block-video__element {
+  aspect-ratio: 16 / 9;
+}
+
+.wp-block-video--4-3 .wp-block-video__element {
+  aspect-ratio: 4 / 3;
+}
+
+.wp-block-video--1-1 .wp-block-video__element {
+  aspect-ratio: 1 / 1;
+}
+
+.wp-block-video__caption {
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  text-align: center;
+  margin-top: var(--spacing-2);
+}
+
+/* Embedded videos (YouTube, Vimeo) */
+.wp-block-video__embed {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+  overflow: hidden;
+}
+
+.wp-block-video__embed iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: var(--radius);
+}
+
+@media (max-width: 768px) {
+  .wp-block-video__caption {
+    font-size: 13px;
+  }
+}

@@ -1,0 +1,337 @@
+/**
+ * Contact Page Template Styles
+ * 
+ * Dedicated styles for contact page layout and components.
+ * All styling uses CSS variables for complete user control.
+ * 
+ * User can edit this file to update contact page styling site-wide.
+ */
+
+/* ============================================
+ * CONTACT METHODS GRID
+ * ============================================ */
+
+.contact-page__methods-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-8);
+}
+
+@media (min-width: 768px) {
+  .contact-page__methods-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ============================================
+ * METHOD CARD
+ * ============================================ */
+
+.contact-page__method-card {
+  /* Spacing */
+  padding: var(--spacing-8);
+  
+  /* Appearance */
+  background-color: var(--card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  
+  /* Layout */
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  
+  /* Transition */
+  transition: all 0.3s ease;
+}
+
+.contact-page__method-card--link {
+  cursor: pointer;
+}
+
+.contact-page__method-card--link:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border-color: var(--primary);
+}
+
+.contact-page__method-icon {
+  /* Size */
+  width: 56px;
+  height: 56px;
+  
+  /* Layout */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Appearance */
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border-radius: var(--radius-lg);
+}
+
+.contact-page__method-title {
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+}
+
+.contact-page__method-description {
+  /* Typography */
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  line-height: 1.7;
+  color: var(--muted-foreground);
+}
+
+.contact-page__method-link {
+  /* Layout */
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--primary);
+  text-decoration: none;
+  
+  /* Transition */
+  transition: opacity 0.2s ease;
+}
+
+.contact-page__method-link:hover {
+  opacity: 0.8;
+}
+
+/* ============================================
+ * CONTACT FORM SECTION
+ * ============================================ */
+
+.contact-page__form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-12);
+}
+
+@media (min-width: 1024px) {
+  .contact-page__form-grid {
+    grid-template-columns: 2fr 1fr;
+    gap: var(--spacing-16);
+  }
+}
+
+/* ============================================
+ * FORM CONTAINER
+ * ============================================ */
+
+.contact-page__form {
+  /* Spacing */
+  padding: var(--spacing-10);
+  
+  /* Appearance */
+  background-color: var(--card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.contact-page__form-title {
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  
+  /* Spacing */
+  margin-bottom: var(--spacing-2);
+}
+
+.contact-page__form-subtitle {
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  color: var(--muted-foreground);
+  line-height: 1.7;
+  
+  /* Spacing */
+  margin-bottom: var(--spacing-8);
+}
+
+/* ============================================
+ * FORM FIELDS
+ * ============================================ */
+
+.contact-page__form-fields {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+/* ============================================
+ * SUBMIT BUTTON
+ * ============================================ */
+
+.contact-page__submit-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-2);
+}
+
+/* ============================================
+ * STATUS MESSAGES
+ * ============================================ */
+
+.contact-page__status-message {
+  /* Spacing */
+  padding: var(--spacing-4);
+  
+  /* Appearance */
+  border-radius: var(--radius-lg);
+  
+  /* Layout */
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+}
+
+.contact-page__status-message--success {
+  background-color: var(--success-soft);
+  color: var(--success);
+  border: 1px solid var(--success);
+}
+
+.contact-page__status-message--error {
+  background-color: var(--destructive-soft);
+  color: var(--destructive);
+  border: 1px solid var(--destructive);
+}
+
+/* ============================================
+ * CONTACT INFO SIDEBAR
+ * ============================================ */
+
+.contact-page__info-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+.contact-page__info-card {
+  /* Spacing */
+  padding: var(--spacing-6);
+  
+  /* Appearance */
+  background-color: var(--muted);
+  border-radius: var(--radius-lg);
+}
+
+.contact-page__info-icon {
+  /* Appearance */
+  color: var(--primary);
+  
+  /* Spacing */
+  margin-bottom: var(--spacing-2);
+}
+
+.contact-page__info-title {
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  
+  /* Spacing */
+  margin-bottom: var(--spacing-1);
+}
+
+.contact-page__info-text {
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  color: var(--muted-foreground);
+  line-height: 1.7;
+}
+
+/* ============================================
+ * WHY CONTACT US SECTION
+ * ============================================ */
+
+.contact-page__reasons-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-6);
+}
+
+@media (min-width: 768px) {
+  .contact-page__reasons-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .contact-page__reasons-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.contact-page__reason-card {
+  /* Spacing */
+  padding: var(--spacing-6);
+  
+  /* Appearance */
+  background-color: var(--card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  
+  /* Layout */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--spacing-3);
+}
+
+.contact-page__reason-icon {
+  /* Size */
+  width: 56px;
+  height: 56px;
+  
+  /* Layout */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Appearance */
+  background-color: var(--primary-soft);
+  color: var(--primary);
+  border-radius: var(--radius-lg);
+}
+
+.contact-page__reason-title {
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+}
+
+.contact-page__reason-description {
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-small);
+  color: var(--muted-foreground);
+  line-height: 1.6;
+}

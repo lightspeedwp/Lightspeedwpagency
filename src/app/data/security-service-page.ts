@@ -1,297 +1,170 @@
 /**
  * Security Service Page Data
  * 
- * Real content for WordPress security service page from LightSpeed WP Agency.
- * Real content extracted from https://lightspeedwp.agency
- * 
- * **REAL CONTENT SOURCE:** https://lightspeedwp.agency/services/security
- * **Last Updated:** 2025-01-09
- * 
- * WordPress: Maps to templates/page-security-service.html
+ * Complete data for Security & Compliance service page.
+ * Includes hero, benefits, features, process, standards, packages, FAQs, and CTA.
  */
 
-import { 
+import {
   Shield,
   Lock,
   Eye,
   AlertTriangle,
-  RefreshCw,
-  Server,
+  CheckCircle2,
   FileText,
+  Users,
+  TrendingUp,
   Zap,
-  CheckCircle,
-  Activity,
-  Database,
-  Globe,
-  Search,
-  Bell,
-  ShieldCheck
+  Search
 } from 'lucide-react';
-import type { LucideIcon } from 'lucide-react';
 
 /**
- * Service Hero Content
+ * Hero Section
  */
-export const securityServiceHero = {
+export const securityHero = {
   badge: {
     icon: Shield,
-    text: 'Security Service'
+    text: 'Security Services'
   },
-  title: 'WordPress Security & Protection Services',
-  titleHighlight: 'Security', // Word to highlight
-  tagline: 'Protect your WordPress website from malware, hacks, and security threats with our comprehensive security services',
-  description: 'We provide enterprise-grade WordPress security including security audits, malware removal, firewall protection, security monitoring, and proactive threat prevention. Keep your website and customer data safe 24/7.'
+  title: 'Enterprise-Grade',
+  titleHighlight: 'Security',
+  description: 'Protect your WordPress website with comprehensive security services. From vulnerability scanning to 24/7 monitoring, we keep your site safe from threats while ensuring compliance with industry standards.',
+  cta: {
+    primary: { text: 'Get Security Audit', page: 'contact' as const },
+    secondary: { text: 'View Packages', page: 'contact' as const }
+  }
 };
 
 /**
- * Service Overview
+ * Why Security Matters
  */
-export const securityServiceOverview = {
-  title: 'Why WordPress Security Matters',
-  description: 'WordPress powers 43% of all websites, making it a prime target for hackers. A single security breach can cost thousands in lost revenue, damage your reputation, and compromise customer data. Our security services protect your investment.',
-  stats: [
+export const whySecurityMatters = {
+  title: 'Why WordPress Security is Critical',
+  description: 'Don\'t wait for a breach to take security seriously',
+  benefits: [
     {
-      icon: AlertTriangle,
-      value: '90K+',
-      label: 'Attacks Per Day',
-      description: 'WordPress sites targeted daily'
+      icon: Shield,
+      title: 'Protect Your Data',
+      description: 'Safeguard customer information, business data, and intellectual property from unauthorized access and cyber threats.'
     },
     {
-      icon: ShieldCheck,
-      value: '99.9%',
-      label: 'Protection Rate',
-      description: 'Our security success rate'
+      icon: Users,
+      title: 'Build Trust',
+      description: 'Demonstrate commitment to security with SSL certificates, privacy compliance, and visible security measures that reassure customers.'
     },
     {
-      icon: Activity,
-      value: '24/7',
-      label: 'Monitoring',
-      description: 'Continuous security surveillance'
+      icon: FileText,
+      title: 'Maintain Compliance',
+      description: 'Meet GDPR, PCI DSS, HIPAA, and other regulatory requirements to avoid fines and legal issues.'
     },
     {
-      icon: Zap,
-      value: '<1hr',
-      label: 'Response Time',
-      description: 'Average security incident response'
+      icon: TrendingUp,
+      title: 'Prevent Downtime',
+      description: 'Avoid costly website downtime, revenue loss, and reputation damage from security incidents and malware infections.'
     }
   ]
 };
 
 /**
- * Security Services
+ * Security Services Features
  */
-export interface SecurityService {
-  id: string;
-  icon: LucideIcon;
-  title: string;
-  description: string;
-  features: string[];
-}
-
-export const securityServices: SecurityService[] = [
+export const securityServices = [
   {
-    id: 'audits',
+    icon: Search,
+    title: 'Vulnerability Scanning',
+    description: 'Continuous automated scanning for security vulnerabilities, outdated plugins, and potential threats.'
+  },
+  {
+    icon: AlertTriangle,
+    title: 'Malware Detection & Removal',
+    description: 'Advanced malware scanning with immediate removal service and cleanup of infected files.'
+  },
+  {
+    icon: Shield,
+    title: 'Firewall Configuration',
+    description: 'Web application firewall (WAF) setup to block malicious traffic and protect against common attacks.'
+  },
+  {
+    icon: Lock,
+    title: 'SSL & Encryption',
+    description: 'SSL certificate installation and configuration for secure HTTPS connections and data encryption.'
+  },
+  {
     icon: Eye,
     title: 'Security Audits',
-    description: 'Comprehensive security assessments to identify vulnerabilities before hackers do.',
-    features: [
-      'Full vulnerability scanning',
-      'Code review and analysis',
-      'Plugin & theme security check',
-      'Configuration audit',
-      'SSL/HTTPS verification',
-      'Detailed security report'
-    ]
+    description: 'Comprehensive security assessments identifying vulnerabilities and providing detailed remediation plans.'
   },
   {
-    id: 'hardening',
-    icon: Shield,
-    title: 'Website Hardening',
-    description: 'Strengthen your WordPress security with industry best practices and configurations.',
-    features: [
-      'WordPress core hardening',
-      'Database security',
-      'File permission optimization',
-      'Admin area protection',
-      'Login security enhancement',
-      'Brute force prevention'
-    ]
-  },
-  {
-    id: 'malware',
-    icon: AlertTriangle,
-    title: 'Malware Removal',
-    description: 'Fast malware detection and removal to get your hacked site cleaned and back online.',
-    features: [
-      'Malware scanning & detection',
-      'Complete malware removal',
-      'File integrity verification',
-      'Blacklist removal',
-      'Google Safe Browsing fix',
-      'Post-cleanup monitoring'
-    ]
-  },
-  {
-    id: 'firewall',
-    icon: Lock,
-    title: 'Firewall Protection',
-    description: 'Web application firewall (WAF) to block malicious traffic and attacks.',
-    features: [
-      'Advanced firewall rules',
-      'DDoS protection',
-      'Bot mitigation',
-      'IP blocking & whitelisting',
-      'Country blocking',
-      'Real-time threat blocking'
-    ]
-  },
-  {
-    id: 'monitoring',
-    icon: Activity,
-    title: 'Security Monitoring',
-    description: '24/7 monitoring to detect and respond to security threats in real-time.',
-    features: [
-      '24/7 threat monitoring',
-      'Intrusion detection',
-      'File change monitoring',
-      'Login attempt tracking',
-      'Uptime monitoring',
-      'Instant security alerts'
-    ]
-  },
-  {
-    id: 'backups',
-    icon: Database,
-    title: 'Secure Backups',
-    description: 'Automated daily backups stored securely offsite for disaster recovery.',
-    features: [
-      'Daily automated backups',
-      'Offsite backup storage',
-      'One-click restore',
-      '30-day backup retention',
-      'Database & files backup',
-      'Backup verification'
-    ]
+    icon: Zap,
+    title: '24/7 Monitoring',
+    description: 'Real-time security monitoring with instant alerts for suspicious activity and automated threat response.'
   }
 ];
 
 /**
- * Common Security Threats
- */
-export const securityThreats = [
-  {
-    icon: AlertTriangle,
-    title: 'Brute Force Attacks',
-    description: 'Automated attempts to guess passwords and gain unauthorized access.',
-    impact: 'Can compromise admin accounts and entire website'
-  },
-  {
-    icon: Lock,
-    title: 'Malware Infections',
-    description: 'Malicious code injected into your website files or database.',
-    impact: 'Steals data, redirects visitors, damages reputation'
-  },
-  {
-    icon: Database,
-    title: 'SQL Injection',
-    description: 'Database attacks that extract or manipulate sensitive information.',
-    impact: 'Exposes customer data, financial information'
-  },
-  {
-    icon: Globe,
-    title: 'DDoS Attacks',
-    description: 'Overwhelming your server with traffic to crash your website.',
-    impact: 'Website downtime, lost revenue, poor user experience'
-  },
-  {
-    icon: FileText,
-    title: 'File Inclusion Exploits',
-    description: 'Exploiting vulnerabilities in themes and plugins to execute malicious code.',
-    impact: 'Full server compromise, data theft'
-  },
-  {
-    icon: Eye,
-    title: 'Phishing & Social Engineering',
-    description: 'Tricking users into revealing passwords or sensitive information.',
-    impact: 'Account compromise, data breaches'
-  }
-];
-
-/**
- * Security Process
+ * Security Process Steps
  */
 export const securityProcess = [
   {
     step: 1,
     title: 'Security Assessment',
-    description: 'We perform a comprehensive security audit to identify vulnerabilities and risks.',
-    icon: Search
+    description: 'Comprehensive audit of your current security posture: vulnerability scan, plugin review, access control analysis, and compliance check.'
   },
   {
     step: 2,
-    title: 'Threat Removal',
-    description: 'Remove any existing malware, backdoors, or security threats from your site.',
-    icon: AlertTriangle
+    title: 'Hardening & Protection',
+    description: 'Implement core security measures: firewall setup, SSL configuration, secure authentication, file permissions, and database security.'
   },
   {
     step: 3,
-    title: 'Security Hardening',
-    description: 'Implement security best practices, firewall rules, and protective measures.',
-    icon: Shield
+    title: 'Continuous Monitoring',
+    description: 'Deploy 24/7 monitoring systems: intrusion detection, uptime monitoring, malware scanning, and automated backup verification.'
   },
   {
     step: 4,
-    title: 'Ongoing Monitoring',
-    description: '24/7 monitoring with automated backups and instant threat notifications.',
-    icon: Activity
+    title: 'Incident Response',
+    description: 'Rapid response protocol for security incidents: threat containment, malware removal, vulnerability patching, and recovery procedures.'
+  },
+  {
+    step: 5,
+    title: 'Ongoing Maintenance',
+    description: 'Regular security updates: WordPress core updates, plugin updates, security patches, and quarterly security audits.'
   }
 ];
 
 /**
- * Security Features
+ * Security Standards
  */
-export const securityFeatures = [
-  {
-    icon: Shield,
-    title: 'Firewall Protection',
-    description: 'Advanced WAF blocking malicious traffic'
-  },
-  {
-    icon: RefreshCw,
-    title: 'Auto Updates',
-    description: 'Automatic WordPress & plugin updates'
-  },
-  {
-    icon: Lock,
-    title: 'SSL/HTTPS',
-    description: 'Encrypted connections and data transfer'
-  },
-  {
-    icon: Database,
-    title: 'Daily Backups',
-    description: 'Automated backups with offsite storage'
-  },
-  {
-    icon: Bell,
-    title: 'Security Alerts',
-    description: 'Instant notifications of threats'
-  },
-  {
-    icon: Eye,
-    title: 'Activity Logs',
-    description: 'Detailed logging of all site activity'
-  },
-  {
-    icon: Server,
-    title: 'Uptime Monitoring',
-    description: '24/7 website availability checks'
-  },
-  {
-    icon: CheckCircle,
-    title: 'Malware Scanning',
-    description: 'Regular scans for malicious code'
-  }
-];
+export const securityStandards = {
+  title: 'Industry-Leading Security Standards',
+  description: 'We follow and help you achieve compliance with major security frameworks',
+  standards: [
+    { 
+      name: 'OWASP Top 10',
+      description: 'Protection against the most critical web application security risks'
+    },
+    { 
+      name: 'PCI DSS',
+      description: 'Payment card industry data security standards compliance'
+    },
+    { 
+      name: 'GDPR',
+      description: 'European data protection and privacy requirements'
+    },
+    { 
+      name: 'WCAG 2.1 AA',
+      description: 'Web Content Accessibility Guidelines for inclusive design'
+    },
+    { 
+      name: 'ISO 27001',
+      description: 'Information security management best practices'
+    },
+    { 
+      name: 'SOC 2',
+      description: 'Service organization controls for trust services criteria'
+    }
+  ]
+};
 
 /**
  * Security Packages
@@ -299,130 +172,112 @@ export const securityFeatures = [
 export const securityPackages = [
   {
     name: 'Essential Security',
-    price: '$200/month',
-    description: 'Basic security for small websites',
+    tagline: 'Core protection for small websites',
+    price: {
+      amount: 500,
+      display: '$500',
+      period: '/month'
+    },
+    description: 'Basic security essentials for WordPress websites with standard protection needs.',
     features: [
-      'Security audit',
-      'Malware scanning',
-      'Firewall protection',
-      'Weekly backups',
-      'Security monitoring',
-      'Email support'
+      'SSL certificate & HTTPS setup',
+      'Weekly malware scanning',
+      'Basic firewall configuration',
+      'Monthly security updates',
+      'Automated daily backups',
+      'Email support (48hr response)',
+      'Security monitoring dashboard'
     ],
-    recommended: false
+    cta: { text: 'Get Started', page: 'contact' as const },
+    popular: false
   },
   {
     name: 'Professional Security',
-    price: '$400/month',
-    description: 'Advanced protection for growing businesses',
+    tagline: 'Advanced protection for business sites',
+    price: {
+      amount: 1200,
+      display: '$1,200',
+      period: '/month'
+    },
+    description: 'Comprehensive security for business websites with enhanced monitoring and support.',
     features: [
-      'Everything in Essential',
-      'Daily backups',
-      '24/7 monitoring',
-      'Malware removal',
-      'Priority support',
-      'Security hardening',
-      'Monthly reports'
+      'Everything in Essential, plus:',
+      'Daily malware scanning',
+      'Advanced WAF with custom rules',
+      'Weekly security audits',
+      'Two-factor authentication setup',
+      'Security incident response',
+      'Priority support (24hr response)',
+      'Quarterly penetration testing',
+      'Compliance reporting'
     ],
-    recommended: true
+    cta: { text: 'Get Started', page: 'contact' as const },
+    popular: true
   },
   {
     name: 'Enterprise Security',
-    price: '$800/month',
-    description: 'Maximum security for mission-critical sites',
-    features: [
-      'Everything in Professional',
-      'Dedicated security manager',
-      'Advanced DDoS protection',
-      '1-hour response time',
-      'Custom security rules',
-      'Compliance assistance',
-      'Weekly security reviews'
-    ],
-    recommended: false
-  }
-];
-
-/**
- * Service FAQs
- */
-export interface ServiceFAQ {
-  question: string;
-  answer: string;
-}
-
-export const securityServiceFAQs: ServiceFAQ[] = [
-  {
-    question: 'How do I know if my WordPress site has been hacked?',
-    answer: 'Common signs include: unexpected redirects, spam content, slow performance, search engine warnings, suspicious admin users, unknown files, or malware warnings from antivirus software. We provide free security scans to detect compromises.'
-  },
-  {
-    question: 'What does your malware removal service include?',
-    answer: 'Our malware removal includes: complete site scanning, identifying all infected files, removing malicious code, cleaning the database, removing backdoors, verifying file integrity, blacklist removal, and implementing security measures to prevent reinfection.'
-  },
-  {
-    question: 'How long does it take to clean a hacked WordPress site?',
-    answer: 'Most sites are cleaned within 24-48 hours. Simple infections may be resolved in a few hours, while complex compromises with multiple backdoors may take longer. We work urgently to restore your site as quickly as possible while ensuring thorough cleanup.'
-  },
-  {
-    question: 'Can you guarantee my site won\'t be hacked again?',
-    answer: 'While no one can guarantee 100% security (hackers are constantly evolving), we implement industry-leading security measures that prevent 99.9% of attacks. Our ongoing monitoring and maintenance significantly reduce the risk of future compromises.'
-  },
-  {
-    question: 'What security measures do you implement?',
-    answer: 'We implement: web application firewall (WAF), security hardening, brute force protection, malware scanning, file integrity monitoring, automated updates, daily backups, SSL/HTTPS, strong authentication, IP blocking, and 24/7 monitoring.'
-  },
-  {
-    question: 'Do you offer emergency security response?',
-    answer: 'Yes! For Professional and Enterprise clients, we provide priority emergency response. Contact us immediately if you suspect a security breach. We offer 24/7 support for security emergencies with response times under 1 hour for Enterprise clients.'
-  },
-  {
-    question: 'How often should I update WordPress and plugins?',
-    answer: 'WordPress core, plugins, and themes should be updated as soon as updates are available, especially security patches. Our security service includes automated updates with testing to ensure compatibility while maintaining security.'
-  },
-  {
-    question: 'What happens if my site gets infected while under your protection?',
-    answer: 'If your site is compromised while under our Professional or Enterprise security service, we clean it for free. We investigate how the breach occurred, remove the malware, strengthen security, and implement additional measures to prevent recurrence at no extra charge.'
-  }
-];
-
-/**
- * Service CTA
- */
-export const securityServiceCTA = {
-  title: 'Protect Your WordPress Website Today',
-  description: 'Don\'t wait for a security breach. Get professional WordPress security protection starting at $200/month.',
-  buttons: [
-    {
-      text: 'Get Free Security Scan',
-      page: 'contact',
-      variant: 'default'
+    tagline: 'Maximum protection & compliance',
+    price: {
+      amount: 0,
+      display: 'Custom',
+      period: ''
     },
-    {
-      text: 'View Security Packages',
-      page: 'pricing',
-      variant: 'outline'
-    }
+    description: 'Full-scale security for enterprise websites with dedicated support and compliance.',
+    features: [
+      'Everything in Professional, plus:',
+      'Real-time malware detection',
+      'Custom security architecture',
+      'Dedicated security engineer',
+      'PCI DSS compliance support',
+      'GDPR compliance assistance',
+      'DDoS protection & mitigation',
+      '24/7 emergency support',
+      'Monthly compliance audits',
+      'Security training for team'
+    ],
+    cta: { text: 'Contact Sales', page: 'contact' as const },
+    popular: false
+  }
+];
+
+/**
+ * FAQs
+ */
+export const securityFAQs = [
+  {
+    question: 'How often should I update WordPress for security?',
+    answer: 'WordPress core, plugins, and themes should be updated as soon as security patches are released. We recommend enabling automatic updates for minor releases and testing major updates on staging before deploying to production. Our security packages include managed updates with testing.'
+  },
+  {
+    question: 'What happens if my site gets hacked?',
+    answer: 'If you have our security service, we\'ll receive immediate alerts and begin containment and removal within hours. We\'ll identify the vulnerability, remove malware, restore clean backups if needed, patch security holes, and implement measures to prevent future attacks.'
+  },
+  {
+    question: 'Do I need a security service if I use good hosting?',
+    answer: 'Yes. While good hosting provides infrastructure security, your WordPress application layer needs separate protection. This includes plugin vulnerabilities, theme issues, authentication security, and application-specific threats that hosting can\'t address.'
+  },
+  {
+    question: 'Can you help with GDPR and PCI compliance?',
+    answer: 'Yes. Our Professional and Enterprise packages include compliance assistance. We implement technical requirements (encryption, data protection, access controls) and provide documentation. For legal compliance questions, we recommend consulting with a compliance attorney.'
+  },
+  {
+    question: 'How do I know if my site is already compromised?',
+    answer: 'Warning signs include unexpected redirects, spam content appearing on your site, slow performance, Google blacklist warnings, or unknown administrator accounts. We offer free security scans to check for known malware and vulnerabilities.'
+  },
+  {
+    question: 'What\'s included in a security audit?',
+    answer: 'Our comprehensive audit includes: vulnerability scanning, malware detection, plugin/theme security review, access control analysis, server configuration check, SSL/HTTPS verification, database security assessment, and a detailed report with prioritized recommendations.'
+  }
+];
+
+/**
+ * CTA Section
+ */
+export const securityCTA = {
+  title: 'Protect Your Website Today',
+  description: 'Don\'t wait for a security breach. Get a free security assessment and learn how we can protect your WordPress website from threats.',
+  buttons: [
+    { text: 'Get Free Security Scan', page: 'contact' as const },
+    { text: 'Compare Packages', page: 'contact' as const }
   ]
 };
-
-/**
- * Helper Functions
- */
-
-/**
- * Get security service data
- */
-export function getSecurityServiceData() {
-  return {
-    hero: securityServiceHero,
-    overview: securityServiceOverview,
-    services: securityServices,
-    threats: securityThreats,
-    process: securityProcess,
-    features: securityFeatures,
-    packages: securityPackages,
-    faqs: securityServiceFAQs,
-    cta: securityServiceCTA
-  };
-}

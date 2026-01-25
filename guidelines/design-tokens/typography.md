@@ -1,19 +1,19 @@
 # Modern Typography System
 
-**Version:** 2.0 — Fluid Typography Era  
-**Last Updated:** December 26, 2024
+**Version:** 3.0 — WordPress theme.json Alignment  
+**Last Updated:** January 09, 2025
 
 ---
 
 ## 🎯 Philosophy
 
-This typography system uses **fluid scaling** with `clamp()` for responsive, modern design that adapts seamlessly across all devices without media queries. Every heading scales fluidly, while body text remains fixed for optimal readability.
+This typography system uses **WordPress numeric scale (100-900)** with **fluid typography** for responsive, modern design that adapts seamlessly across all devices. The system aligns with WordPress theme.json standards for Full Site Editing compatibility.
 
 **Core Principles:**
-- **Fluid headings (H1-H6)** scale naturally between mobile and desktop
-- **Fixed body text** ensures consistent readability at 16px
+- **Numeric font size scale (100-900)** with fluid scaling
+- **WordPress FSE compatible** via theme.json presets
+- **CSS custom properties** for all typography values
 - **Semantic HTML only** — use proper heading hierarchy
-- **CSS variables everywhere** — no hard-coded values
 - **Two fonts only** — Lexend (primary) + Manrope (metadata)
 
 ---
@@ -26,6 +26,7 @@ This typography system uses **fluid scaling** with `clamp()` for responsive, mod
 
 ```css
 font-family: 'Lexend', sans-serif;
+font-family: var(--wp--preset--font-family--heading);
 ```
 
 **Applied to:**
@@ -41,6 +42,7 @@ font-family: 'Lexend', sans-serif;
 
 ```css
 font-family: 'Manrope', sans-serif;
+font-family: var(--wp--preset--font-family--body);
 ```
 
 **Applied to:**
@@ -56,13 +58,115 @@ font-family: 'Manrope', sans-serif;
 
 ---
 
-## 📏 Modern Fluid Typography Scale
+## 📏 WordPress Numeric Typography Scale
 
-### H1 — Page Hero
+### Font Size Scale (100-900)
+
+All font sizes use **numeric slugs 100-900** with fluid typography:
+
+| Slug | Size | Pixels | Fluid Range | CSS Variable | Name | Usage |
+|------|------|--------|-------------|--------------|------|-------|
+| `100` | 0.75rem | 12px | 10.4-12px | `var(--wp--preset--font-size--100)` | Tiny | Legal text |
+| `200` | 1rem | 16px | 14-16px | `var(--wp--preset--font-size--200)` | Base | Body text |
+| `300` | 1.25rem | 20px | 16-20px | `var(--wp--preset--font-size--300)` | Small | Lead text |
+| `400` | 1.5rem | 24px | 20-24px | `var(--wp--preset--font-size--400)` | Medium | H6, H5 |
+| `500` | 2rem | 32px | 24-32px | `var(--wp--preset--font-size--500)` | Large | H4 |
+| `600` | 2.5rem | 40px | 32-40px | `var(--wp--preset--font-size--600)` | X-Large | H3 |
+| `700` | 3rem | 48px | 40-48px | `var(--wp--preset--font-size--700)` | XX-Large | H2 |
+| `800` | 4rem | 64px | 48-64px | `var(--wp--preset--font-size--800)` | Huge | H1 |
+| `900` | 5rem | 80px | 56-80px | `var(--wp--preset--font-size--900)` | Gigantic | Hero H1 |
+
+**Why numeric slugs?**
+- WordPress FSE standard
+- Predictable progression (100 → 200 → 300)
+- Shorter CSS variables
+- Logical scale relationships
+
+---
+
+## 🎨 WordPress Fluid Typography Configuration
+
+### theme.json Font Size Presets
+
+```json
+{
+  "settings": {
+    "typography": {
+      "fluid": {
+        "minFontSize": "0.875rem",
+        "maxViewportWidth": "1440px",
+        "minViewportWidth": "320px"
+      },
+      "fontSizes": [
+        {
+          "slug": "100",
+          "size": "0.75rem",
+          "name": "Tiny",
+          "fluid": { "min": "0.65rem", "max": "0.75rem" }
+        },
+        {
+          "slug": "200",
+          "size": "1rem",
+          "name": "Base",
+          "fluid": { "min": "0.875rem", "max": "1rem" }
+        },
+        {
+          "slug": "300",
+          "size": "1.25rem",
+          "name": "Small",
+          "fluid": { "min": "1rem", "max": "1.25rem" }
+        },
+        {
+          "slug": "400",
+          "size": "1.5rem",
+          "name": "Medium",
+          "fluid": { "min": "1.25rem", "max": "1.5rem" }
+        },
+        {
+          "slug": "500",
+          "size": "2rem",
+          "name": "Large",
+          "fluid": { "min": "1.5rem", "max": "2rem" }
+        },
+        {
+          "slug": "600",
+          "size": "2.5rem",
+          "name": "X-Large",
+          "fluid": { "min": "2rem", "max": "2.5rem" }
+        },
+        {
+          "slug": "700",
+          "size": "3rem",
+          "name": "XX-Large",
+          "fluid": { "min": "2.5rem", "max": "3rem" }
+        },
+        {
+          "slug": "800",
+          "size": "4rem",
+          "name": "Huge",
+          "fluid": { "min": "3rem", "max": "4rem" }
+        },
+        {
+          "slug": "900",
+          "size": "5rem",
+          "name": "Gigantic",
+          "fluid": { "min": "3.5rem", "max": "5rem" }
+        }
+      ]
+    }
+  }
+}
+```
+
+---
+
+## 📝 Heading Scale (H1-H6)
+
+### H1 — Page Hero (Slug 800 or 900)
 
 ```css
---text-h1: clamp(2.5rem, 5vw + 1rem, 4rem);
-/* Scales: 40px (mobile) → 64px (desktop) */
+font-size: var(--wp--preset--font-size--800);  /* 4rem / 64px */
+font-size: var(--wp--preset--font-size--900);  /* 5rem / 80px (Hero) */
 ```
 
 **Usage:**
@@ -73,7 +177,7 @@ font-family: 'Manrope', sans-serif;
 **Styling:**
 ```tsx
 <h1 style={{
-  fontSize: 'var(--text-h1)',
+  fontSize: 'var(--wp--preset--font-size--800)',
   fontFamily: 'Lexend, sans-serif',
   fontWeight: 'var(--font-weight-semibold)',
   lineHeight: 'var(--line-height-tight)',
@@ -85,11 +189,10 @@ font-family: 'Manrope', sans-serif;
 
 ---
 
-### H2 — Section Heading
+### H2 — Section Heading (Slug 700)
 
 ```css
---text-h2: clamp(2rem, 4vw + 0.5rem, 3rem);
-/* Scales: 32px (mobile) → 48px (desktop) */
+font-size: var(--wp--preset--font-size--700);  /* 3rem / 48px */
 ```
 
 **Usage:**
@@ -100,7 +203,7 @@ font-family: 'Manrope', sans-serif;
 **Styling:**
 ```tsx
 <h2 style={{
-  fontSize: 'var(--text-h2)',
+  fontSize: 'var(--wp--preset--font-size--700)',
   fontFamily: 'Lexend, sans-serif',
   fontWeight: 'var(--font-weight-semibold)',
   lineHeight: 'var(--line-height-snug)',
@@ -112,11 +215,10 @@ font-family: 'Manrope', sans-serif;
 
 ---
 
-### H3 — Subsection Heading
+### H3 — Subsection Heading (Slug 600)
 
 ```css
---text-h3: clamp(1.5rem, 3vw + 0.5rem, 2.25rem);
-/* Scales: 24px (mobile) → 36px (desktop) */
+font-size: var(--wp--preset--font-size--600);  /* 2.5rem / 40px */
 ```
 
 **Usage:**
@@ -127,7 +229,7 @@ font-family: 'Manrope', sans-serif;
 **Styling:**
 ```tsx
 <h3 style={{
-  fontSize: 'var(--text-h3)',
+  fontSize: 'var(--wp--preset--font-size--600)',
   fontFamily: 'Lexend, sans-serif',
   fontWeight: 'var(--font-weight-semibold)',
   lineHeight: 'var(--line-height-snug)',
@@ -139,11 +241,10 @@ font-family: 'Manrope', sans-serif;
 
 ---
 
-### H4 — Card Title
+### H4 — Card Title (Slug 500)
 
 ```css
---text-h4: clamp(1.25rem, 2vw + 0.5rem, 1.75rem);
-/* Scales: 20px (mobile) → 28px (desktop) */
+font-size: var(--wp--preset--font-size--500);  /* 2rem / 32px */
 ```
 
 **Usage:**
@@ -154,7 +255,7 @@ font-family: 'Manrope', sans-serif;
 **Styling:**
 ```tsx
 <h4 style={{
-  fontSize: 'var(--text-h4)',
+  fontSize: 'var(--wp--preset--font-size--500)',
   fontFamily: 'Lexend, sans-serif',
   fontWeight: 'var(--font-weight-semibold)',
   lineHeight: 'var(--line-height-normal)',
@@ -166,11 +267,10 @@ font-family: 'Manrope', sans-serif;
 
 ---
 
-### H5 — Subheading
+### H5 — Subheading (Slug 400)
 
 ```css
---text-h5: clamp(1.125rem, 1.5vw + 0.5rem, 1.5rem);
-/* Scales: 18px (mobile) → 24px (desktop) */
+font-size: var(--wp--preset--font-size--400);  /* 1.5rem / 24px */
 ```
 
 **Usage:**
@@ -181,7 +281,7 @@ font-family: 'Manrope', sans-serif;
 **Styling:**
 ```tsx
 <h5 style={{
-  fontSize: 'var(--text-h5)',
+  fontSize: 'var(--wp--preset--font-size--400)',
   fontFamily: 'Lexend, sans-serif',
   fontWeight: 'var(--font-weight-medium)',
   lineHeight: 'var(--line-height-normal)',
@@ -193,11 +293,10 @@ font-family: 'Manrope', sans-serif;
 
 ---
 
-### H6 — Label Heading
+### H6 — Label Heading (Slug 400)
 
 ```css
---text-h6: clamp(1rem, 1vw + 0.5rem, 1.25rem);
-/* Scales: 16px (mobile) → 20px (desktop) */
+font-size: var(--wp--preset--font-size--400);  /* 1.5rem / 24px */
 ```
 
 **Usage:**
@@ -209,7 +308,7 @@ font-family: 'Manrope', sans-serif;
 **Styling:**
 ```tsx
 <h6 style={{
-  fontSize: 'var(--text-h6)',
+  fontSize: 'var(--wp--preset--font-size--400)',
   fontFamily: 'Lexend, sans-serif',
   fontWeight: 'var(--font-weight-medium)',
   lineHeight: 'var(--line-height-normal)',
@@ -224,10 +323,10 @@ font-family: 'Manrope', sans-serif;
 
 ## 📝 Body Text & Components
 
-### Large Body Text (FAQ Questions, Lists)
+### Large Body Text (Slug 300)
 
 ```css
---text-lg: 1.125rem; /* 18px */
+font-size: var(--wp--preset--font-size--300);  /* 1.25rem / 20px */
 ```
 
 **Usage:**
@@ -235,29 +334,27 @@ font-family: 'Manrope', sans-serif;
 - Important list items
 - Emphasized body text
 - Callout text
+- Lead paragraphs
 
 **Styling:**
 ```tsx
-// FAQ Question (correct size)
-<span style={{
-  fontSize: 'var(--text-lg)',
+<p style={{
+  fontSize: 'var(--wp--preset--font-size--300)',
   fontFamily: 'Lexend, sans-serif',
-  fontWeight: 'var(--font-weight-semibold)',
-  lineHeight: 'var(--line-height-snug)',
+  fontWeight: 'var(--font-weight-regular)',
+  lineHeight: 'var(--line-height-relaxed)',
   color: 'var(--foreground)'
 }}>
-  What is your typical project timeline?
-</span>
+  We specialize in modern WordPress block themes and design systems.
+</p>
 ```
-
-**DO NOT use H4 for FAQ questions** — this was too large. Always use `--text-lg` (18px) for optimal FAQ readability.
 
 ---
 
-### Base Text (Fixed)
+### Base Text (Slug 200)
 
 ```css
---text-base: 1rem; /* 16px — Never scales */
+font-size: var(--wp--preset--font-size--200);  /* 1rem / 16px */
 ```
 
 **Usage:**
@@ -267,13 +364,13 @@ font-family: 'Manrope', sans-serif;
 - Form inputs
 - All UI text
 
-**Why Fixed?**
-Body text must remain at 16px for optimal readability across all devices. Only headings should scale.
+**Why Fixed at 16px?**
+Body text must remain at 16px for optimal readability across all devices. Fluid scaling maintains responsive behavior.
 
 **Styling:**
 ```tsx
 <p style={{
-  fontSize: 'var(--text-base)',
+  fontSize: 'var(--wp--preset--font-size--200)',
   fontFamily: 'Lexend, sans-serif',
   fontWeight: 'var(--font-weight-regular)',
   lineHeight: 'var(--line-height-normal)',
@@ -285,36 +382,10 @@ Body text must remain at 16px for optimal readability across all devices. Only h
 
 ---
 
-### Lead Paragraph (Fixed)
+### Small Text (Slug 100)
 
 ```css
---text-lead: 1.25rem; /* 20px */
-```
-
-**Usage:**
-- Intro paragraphs
-- Hero descriptions
-- Featured content
-
-**Styling:**
-```tsx
-<p style={{
-  fontSize: 'var(--text-lead)',
-  fontFamily: 'Lexend, sans-serif',
-  fontWeight: 'var(--font-weight-regular)',
-  lineHeight: 'var(--line-height-relaxed)',
-  opacity: 0.9
-}}>
-  We specialize in modern block themes and design systems.
-</p>
-```
-
----
-
-### Small Text (Metadata)
-
-```css
---text-small: 0.875rem; /* 14px */
+font-size: var(--wp--preset--font-size--100);  /* 0.75rem / 12px */
 ```
 
 **Usage:**
@@ -322,11 +393,12 @@ Body text must remain at 16px for optimal readability across all devices. Only h
 - Captions
 - Helper text
 - Timestamps
+- Legal disclaimers
 
 **Styling:**
 ```tsx
 <small style={{
-  fontSize: 'var(--text-small)',
+  fontSize: 'var(--wp--preset--font-size--100)',
   fontFamily: 'Manrope, sans-serif',
   fontWeight: 'var(--font-weight-regular)',
   color: 'var(--muted-foreground)',
@@ -334,33 +406,6 @@ Body text must remain at 16px for optimal readability across all devices. Only h
 }}>
   By Sarah Johnson · December 26, 2024 · 5 min read
 </small>
-```
-
----
-
-### Tiny Text (Legal)
-
-```css
---text-tiny: 0.75rem; /* 12px */
-```
-
-**Usage:**
-- Legal disclaimers
-- Footnotes
-- Copyright text
-- Fine print
-
-**Styling:**
-```tsx
-<span style={{
-  fontSize: 'var(--text-tiny)',
-  fontFamily: 'Manrope, sans-serif',
-  fontWeight: 'var(--font-weight-regular)',
-  color: 'var(--muted-foreground)',
-  lineHeight: 'var(--line-height-normal)'
-}}>
-  © 2025 LSX Design. All rights reserved.
-</span>
 ```
 
 ---
@@ -434,22 +479,6 @@ Body text must remain at 16px for optimal readability across all devices. Only h
 | Buttons, Labels | 0.025em | `var(--letter-spacing-wide)` |
 | Uppercase Text | 0.05em | `var(--letter-spacing-wider)` |
 
-**Examples:**
-```tsx
-{/* Tight tracking for impact */}
-<h1 style={{ letterSpacing: 'var(--letter-spacing-tight)' }}>
-  Hero Title
-</h1>
-
-{/* Wide tracking for uppercase */}
-<span style={{ 
-  letterSpacing: 'var(--letter-spacing-wider)',
-  textTransform: 'uppercase'
-}}>
-  Category
-</span>
-```
-
 ---
 
 ## 🎨 Complete Typography Patterns
@@ -460,7 +489,7 @@ Body text must remain at 16px for optimal readability across all devices. Only h
 <div>
   {/* Main heading */}
   <h1 style={{
-    fontSize: 'var(--text-h1)',
+    fontSize: 'var(--wp--preset--font-size--800)',
     fontFamily: 'Lexend, sans-serif',
     fontWeight: 'var(--font-weight-semibold)',
     lineHeight: 'var(--line-height-tight)',
@@ -473,7 +502,7 @@ Body text must remain at 16px for optimal readability across all devices. Only h
   
   {/* Lead paragraph */}
   <p style={{
-    fontSize: 'var(--text-lead)',
+    fontSize: 'var(--wp--preset--font-size--300)',
     fontFamily: 'Lexend, sans-serif',
     fontWeight: 'var(--font-weight-regular)',
     lineHeight: 'var(--line-height-relaxed)',
@@ -495,7 +524,7 @@ Body text must remain at 16px for optimal readability across all devices. Only h
 <section>
   {/* Section heading */}
   <h2 style={{
-    fontSize: 'var(--text-h2)',
+    fontSize: 'var(--wp--preset--font-size--700)',
     fontFamily: 'Lexend, sans-serif',
     fontWeight: 'var(--font-weight-semibold)',
     lineHeight: 'var(--line-height-snug)',
@@ -508,7 +537,7 @@ Body text must remain at 16px for optimal readability across all devices. Only h
   
   {/* Body text */}
   <p style={{
-    fontSize: 'var(--text-base)',
+    fontSize: 'var(--wp--preset--font-size--200)',
     fontFamily: 'Lexend, sans-serif',
     fontWeight: 'var(--font-weight-regular)',
     lineHeight: 'var(--line-height-normal)',
@@ -526,22 +555,9 @@ Body text must remain at 16px for optimal readability across all devices. Only h
 
 ```tsx
 <article>
-  {/* Category label (uppercase) */}
-  <h6 style={{
-    fontSize: 'var(--text-small)',
-    fontFamily: 'Manrope, sans-serif',
-    fontWeight: 'var(--font-weight-medium)',
-    letterSpacing: 'var(--letter-spacing-wider)',
-    textTransform: 'uppercase',
-    color: 'var(--muted-foreground)',
-    marginBottom: '12px'
-  }}>
-    WordPress Development
-  </h6>
-  
   {/* Card title */}
   <h3 style={{
-    fontSize: 'var(--text-h3)',
+    fontSize: 'var(--wp--preset--font-size--600)',
     fontFamily: 'Lexend, sans-serif',
     fontWeight: 'var(--font-weight-semibold)',
     lineHeight: 'var(--line-height-snug)',
@@ -553,7 +569,7 @@ Body text must remain at 16px for optimal readability across all devices. Only h
   
   {/* Description */}
   <p style={{
-    fontSize: 'var(--text-base)',
+    fontSize: 'var(--wp--preset--font-size--200)',
     fontFamily: 'Lexend, sans-serif',
     fontWeight: 'var(--font-weight-regular)',
     lineHeight: 'var(--line-height-normal)',
@@ -565,46 +581,14 @@ Body text must remain at 16px for optimal readability across all devices. Only h
   </p>
   
   {/* Metadata */}
-  <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
-    <small style={{
-      fontSize: 'var(--text-small)',
-      fontFamily: 'Manrope, sans-serif',
-      color: 'var(--muted-foreground)'
-    }}>
-      By Sarah Johnson
-    </small>
-    <span style={{ color: 'var(--border)' }}>•</span>
-    <small style={{
-      fontSize: 'var(--text-small)',
-      fontFamily: 'Manrope, sans-serif',
-      color: 'var(--muted-foreground)'
-    }}>
-      5 min read
-    </small>
-  </div>
+  <small style={{
+    fontSize: 'var(--wp--preset--font-size--100)',
+    fontFamily: 'Manrope, sans-serif',
+    color: 'var(--muted-foreground)'
+  }}>
+    By Sarah Johnson · 5 min read
+  </small>
 </article>
-```
-
----
-
-### Pattern 4: Button Text
-
-```tsx
-<button style={{
-  fontSize: 'var(--text-base)',
-  fontFamily: 'Lexend, sans-serif',
-  fontWeight: 'var(--font-weight-medium)',
-  letterSpacing: 'var(--letter-spacing-wide)',
-  lineHeight: 'var(--line-height-normal)',
-  backgroundColor: 'var(--primary)',
-  color: 'var(--primary-foreground)',
-  padding: '12px 32px',
-  borderRadius: 'var(--radius)',
-  border: 'none',
-  cursor: 'pointer'
-}}>
-  Get Started
-</button>
 ```
 
 ---
@@ -617,8 +601,7 @@ Body text must remain at 16px for optimal readability across all devices. Only h
 | Context | Minimum Size | Reason |
 |---------|-------------|--------|
 | Body text | 16px | WCAG readability standard |
-| Small text | 14px | Metadata/captions only |
-| Minimum allowed | 12px | Legal/footnotes only |
+| Small text | 12px | Metadata/captions only |
 
 **Contrast Requirements:**
 | Text Size | Weight | Minimum Ratio |
@@ -637,128 +620,77 @@ Body text must remain at 16px for optimal readability across all devices. Only h
 
 ---
 
-## 🚫 What NOT to Do
-
-### Typography Anti-Patterns ❌
-
-- ❌ **Don't use Tailwind font classes** — Use CSS variables (`var(--text-*)`)
-- ❌ **Don't hard-code sizes** — Always use variables
-- ❌ **Don't use other fonts** — Only Lexend and Manrope
-- ❌ **Don't use Manrope for headings** — Lexend only
-- ❌ **Don't scale body text** — Keep at 16px
-- ❌ **Don't use light weights (< 400)** — Too thin, poor readability
-- ❌ **Don't skip heading levels** — Maintain proper hierarchy
-- ❌ **Don't use uppercase for long text** — Only labels/categories
-- ❌ **Don't exceed -0.025em letter spacing** — Text becomes illegible
-
----
-
 ## ✅ Best Practices
 
 ### Typography Do's ✅
 
-- ✅ **Use semantic HTML** — `<h1>`, `<h2>`, `<p>`, `<small>`
-- ✅ **Use CSS variables** — `var(--text-h1)`, `var(--font-weight-semibold)`
-- ✅ **Use fluid typography** — `clamp()` for responsive headings
+- ✅ **Use WordPress numeric scale** — 100, 200, 300, 400, 500, 600, 700, 800, 900
+- ✅ **Use CSS variables** — `var(--wp--preset--font-size--XXX)`
+- ✅ **Use fluid typography** — Automatic responsive scaling
 - ✅ **Maintain hierarchy** — H1 → H2 → H3 (logical flow)
 - ✅ **Test readability** — Check contrast ratios and line heights
 - ✅ **Use proper weights** — 600 for headings, 400 for body
-- ✅ **Optimize line length** — 60-75 characters for body text
-- ✅ **Adequate line spacing** — 1.5 minimum for body
 - ✅ **Use Manrope sparingly** — Only for small metadata
 
----
+### Typography Don'ts ❌
 
-## 📱 Responsive Behavior
-
-### How Fluid Typography Works
-
-Fluid typography uses `clamp()` to scale smoothly between a minimum and maximum value based on viewport width:
-
-```css
---text-h1: clamp(2.5rem, 5vw + 1rem, 4rem);
-```
-
-**Breakdown:**
-- `2.5rem` (40px) = Minimum size (mobile)
-- `5vw + 1rem` = Preferred size (scales with viewport)
-- `4rem` (64px) = Maximum size (desktop)
-
-### Viewport Breakpoints
-
-| Viewport Width | H1 Size | H2 Size | H3 Size |
-|----------------|---------|---------|---------|
-| 375px (mobile) | ~40px | ~32px | ~24px |
-| 768px (tablet) | ~52px | ~40px | ~30px |
-| 1440px (desktop) | 64px | 48px | 36px |
-
-**Result:** Headings scale naturally without media queries!
-
----
-
-## 🔧 Implementation Checklist
-
-Before deploying typography changes:
-
-- [ ] All headings use `var(--text-h1)` through `var(--text-h6)`
-- [ ] Body text uses `var(--text-base)` (16px fixed)
-- [ ] Small text uses `var(--text-small)` with Manrope
-- [ ] Font weights use variables (`var(--font-weight-*)`)
-- [ ] Line heights use variables (`var(--line-height-*)`)
-- [ ] Letter spacing uses variables (`var(--letter-spacing-*)`)
-- [ ] Only Lexend and Manrope fonts used
-- [ ] Heading hierarchy is logical (no skipped levels)
-- [ ] Color contrast meets WCAG 2.1 AA (4.5:1 minimum)
-- [ ] No hard-coded font sizes anywhere
-- [ ] Responsive scaling works on all devices
+- ❌ **Don't use semantic slugs** — Never use `fontSize: 'small'`, use `fontSize: '200'`
+- ❌ **Don't hard-code sizes** — Always use WordPress CSS variables
+- ❌ **Don't use other fonts** — Only Lexend and Manrope
+- ❌ **Don't use Manrope for headings** — Lexend only
+- ❌ **Don't scale body text** — Keep at 16px (slug 200)
+- ❌ **Don't skip heading levels** — Maintain proper hierarchy
 
 ---
 
 ## 📚 Quick Reference
 
-### All Typography Variables
+### All WordPress Typography Variables
 
 ```css
-/* Heading Scales (Fluid) */
---text-h1: clamp(2.5rem, 5vw + 1rem, 4rem);
---text-h2: clamp(2rem, 4vw + 0.5rem, 3rem);
---text-h3: clamp(1.5rem, 3vw + 0.5rem, 2.25rem);
---text-h4: clamp(1.25rem, 2vw + 0.5rem, 1.75rem);
---text-h5: clamp(1.125rem, 1.5vw + 0.5rem, 1.5rem);
---text-h6: clamp(1rem, 1vw + 0.5rem, 1.25rem);
+/* Font Sizes (WordPress Numeric Scale) */
+var(--wp--preset--font-size--100)  /* 0.75rem / 12px - Tiny */
+var(--wp--preset--font-size--200)  /* 1rem / 16px - Base */
+var(--wp--preset--font-size--300)  /* 1.25rem / 20px - Small */
+var(--wp--preset--font-size--400)  /* 1.5rem / 24px - Medium */
+var(--wp--preset--font-size--500)  /* 2rem / 32px - Large */
+var(--wp--preset--font-size--600)  /* 2.5rem / 40px - X-Large */
+var(--wp--preset--font-size--700)  /* 3rem / 48px - XX-Large */
+var(--wp--preset--font-size--800)  /* 4rem / 64px - Huge */
+var(--wp--preset--font-size--900)  /* 5rem / 80px - Gigantic */
 
-/* Body Text (Fixed) */
---text-base: 1rem;       /* 16px */
---text-lead: 1.25rem;    /* 20px */
---text-small: 0.875rem;  /* 14px */
---text-tiny: 0.75rem;    /* 12px */
---text-lg: 1.125rem;     /* 18px */
-
-/* Weights */
---font-weight-light: 300;
---font-weight-regular: 400;
---font-weight-medium: 500;
---font-weight-semibold: 600;
---font-weight-bold: 700;
---font-weight-black: 800;
-
-/* Line Heights */
---line-height-tight: 1.1;
---line-height-snug: 1.25;
---line-height-normal: 1.5;
---line-height-relaxed: 1.75;
-
-/* Letter Spacing */
---letter-spacing-tight: -0.025em;
---letter-spacing-normal: 0;
---letter-spacing-wide: 0.025em;
---letter-spacing-wider: 0.05em;
+/* Font Families */
+var(--wp--preset--font-family--heading)  /* Lexend */
+var(--wp--preset--font-family--body)     /* Manrope */
 ```
 
 ---
 
-**Last Updated:** December 26, 2024  
-**Typography System:** Modern Fluid Scale (v2.0)  
+## 📚 Related Documentation
+
+- **[spacing.md](./spacing.md)** - WordPress numeric spacing scale (10-100)
+- **[colors.md](./colors.md)** - Color system (unchanged)
+- **[design-patterns-modern.md](../design-patterns-modern.md)** - Modern design patterns
+- **WordPress theme.json Reference** - [developer.wordpress.org](https://developer.wordpress.org/themes/block-themes/theme-json-reference/)
+
+---
+
+## Summary Checklist
+
+When using typography tokens:
+
+- [ ] Use WordPress numeric scale (100-900)
+- [ ] Use CSS custom properties (`var(--wp--preset--font-size--XXX)`)
+- [ ] Never hard-code font sizes
+- [ ] Maintain heading hierarchy (H1 → H2 → H3)
+- [ ] Use fluid typography for responsive scaling
+- [ ] Only use Lexend and Manrope fonts
+- [ ] Reference theme.json for all typography values
+- [ ] Validate accessibility and contrast
+
+**Version:** 3.0 (WordPress theme.json alignment)  
+**Last Updated:** January 09, 2025  
+**Typography System:** WordPress FSE compatible (numeric scale 100-900)  
 **Fonts:** 2 (Lexend, Manrope)  
 **Heading Levels:** 6 (H1-H6, all fluid)  
-**Body Sizes:** 4 (base, lead, small, tiny)
+**Body Sizes:** Numeric slugs 100-900

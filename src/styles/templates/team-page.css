@@ -1,0 +1,430 @@
+/**
+ * Team Page Template Styles
+ * 
+ * Dedicated styles for team page layout and components.
+ * All styling uses CSS variables for complete user control.
+ * 
+ * User can edit this file to update team page styling site-wide.
+ */
+
+/* ============================================
+ * LEADERSHIP SECTION
+ * ============================================ */
+
+.team-page__leadership-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-8);
+}
+
+@media (min-width: 768px) {
+  .team-page__leadership-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ============================================
+ * LEADERSHIP CARD
+ * ============================================ */
+
+.team-page__leadership-card {
+  /* Spacing */
+  padding: var(--spacing-10);
+  
+  /* Appearance */
+  background-color: var(--card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  
+  /* Transition */
+  transition: all 0.3s ease;
+}
+
+.team-page__leadership-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border-color: var(--primary);
+}
+
+.team-page__leadership-name {
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-h3);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+  
+  /* Spacing */
+  margin-bottom: var(--spacing-1);
+}
+
+.team-page__leadership-role {
+  /* Typography */
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--primary);
+  
+  /* Spacing */
+  margin-bottom: var(--spacing-3);
+}
+
+.team-page__leadership-bio {
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  line-height: 1.7;
+  color: var(--muted-foreground);
+  
+  /* Spacing */
+  margin-bottom: var(--spacing-5);
+}
+
+.team-page__leadership-highlights {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  margin-bottom: var(--spacing-5);
+}
+
+.team-page__leadership-highlight {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.team-page__leadership-highlight-icon {
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.team-page__leadership-highlight-text {
+  /* Typography */
+  font-family: var(--font-secondary);
+  font-size: var(--text-small);
+  color: var(--foreground);
+}
+
+.team-page__leadership-email {
+  /* Layout */
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  
+  /* Typography */
+  font-family: var(--font-secondary);
+  font-size: var(--text-small);
+  color: var(--primary);
+  text-decoration: none;
+  
+  /* Transition */
+  transition: opacity 0.2s ease;
+}
+
+.team-page__leadership-email:hover {
+  opacity: 0.7;
+}
+
+/* ============================================
+ * STATS SECTION
+ * ============================================ */
+
+.team-page__stats-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-6);
+}
+
+@media (min-width: 768px) {
+  .team-page__stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .team-page__stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ============================================
+ * STAT CARD
+ * ============================================ */
+
+.team-page__stat-card {
+  /* Spacing */
+  padding: var(--spacing-8);
+  
+  /* Appearance */
+  background-color: var(--card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  
+  /* Layout */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--spacing-3);
+}
+
+.team-page__stat-icon {
+  /* Size */
+  width: 56px;
+  height: 56px;
+  
+  /* Layout */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Appearance */
+  background-color: var(--primary-soft);
+  color: var(--primary);
+  border-radius: var(--radius-lg);
+}
+
+.team-page__stat-value {
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-h1);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+  line-height: 1;
+}
+
+.team-page__stat-label {
+  /* Typography */
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  color: var(--muted-foreground);
+}
+
+/* ============================================
+ * CULTURE VALUES SECTION
+ * ============================================ */
+
+.team-page__values-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-6);
+}
+
+@media (min-width: 768px) {
+  .team-page__values-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .team-page__values-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ============================================
+ * VALUE CARD
+ * ============================================ */
+
+.team-page__value-card {
+  /* Spacing */
+  padding: var(--spacing-8);
+  
+  /* Appearance */
+  background-color: var(--card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  
+  /* Layout */
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  
+  /* Transition */
+  transition: all 0.3s ease;
+}
+
+.team-page__value-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.team-page__value-icon {
+  /* Size */
+  width: 56px;
+  height: 56px;
+  
+  /* Layout */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Appearance */
+  background-color: var(--primary-soft);
+  color: var(--primary);
+  border-radius: var(--radius-lg);
+}
+
+.team-page__value-title {
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-h4);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+}
+
+.team-page__value-description {
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  line-height: 1.7;
+  color: var(--muted-foreground);
+}
+
+/* ============================================
+ * DEPARTMENTS SECTION
+ * ============================================ */
+
+.team-page__departments-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-6);
+}
+
+@media (min-width: 768px) {
+  .team-page__departments-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .team-page__departments-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ============================================
+ * DEPARTMENT CARD
+ * ============================================ */
+
+.team-page__department-card {
+  /* Spacing */
+  padding: var(--spacing-8);
+  
+  /* Appearance */
+  background-color: var(--card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  
+  /* Layout */
+  text-align: center;
+  
+  /* Transition */
+  transition: all 0.3s ease;
+}
+
+.team-page__department-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  border-color: var(--primary);
+}
+
+.team-page__department-icon {
+  /* Size */
+  width: 64px;
+  height: 64px;
+  
+  /* Layout */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--spacing-4);
+  
+  /* Appearance */
+  background-color: var(--primary-soft);
+  color: var(--primary);
+  border-radius: var(--radius-lg);
+}
+
+.team-page__department-name {
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-h4);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+  
+  /* Spacing */
+  margin-bottom: var(--spacing-2);
+}
+
+.team-page__department-count {
+  /* Typography */
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  color: var(--primary);
+  font-weight: var(--font-weight-semibold);
+  
+  /* Spacing */
+  margin-bottom: var(--spacing-3);
+}
+
+.team-page__department-description {
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  line-height: 1.7;
+  color: var(--muted-foreground);
+}
+
+/* ============================================
+ * JOIN TEAM SECTION
+ * ============================================ */
+
+.team-page__join-section {
+  /* Spacing */
+  padding: var(--spacing-12);
+  
+  /* Appearance */
+  background-color: var(--primary-soft);
+  border: 1px solid var(--primary);
+  border-radius: var(--radius-xl);
+  
+  /* Layout */
+  text-align: center;
+}
+
+.team-page__join-title {
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+  
+  /* Spacing */
+  margin-bottom: var(--spacing-4);
+}
+
+.team-page__join-description {
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  line-height: 1.7;
+  color: var(--muted-foreground);
+  
+  /* Layout */
+  max-width: 700px;
+  margin: 0 auto var(--spacing-6);
+}
+
+.team-page__join-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 640px) {
+  .team-page__join-buttons {
+    flex-direction: row;
+  }
+}

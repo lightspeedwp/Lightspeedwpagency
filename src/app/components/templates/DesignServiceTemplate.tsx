@@ -4,6 +4,12 @@
  * WordPress template: templates/page-design-service.html
  * 
  * Pattern order: Breadcrumbs → Hero → Overview → Services → Process → Principles → Tools → Packages → FAQs → CTA
+ * 
+ * CSS: /src/styles/design-service.css
+ * - 100% CSS classes (no Tailwind)
+ * - Light/dark mode adaptive
+ * - Fluid padding (32px → 24px → 16px)
+ * - 100% CSS variables (user-controllable)
  */
 
 import { SiteHeader } from '../parts/SiteHeader';
@@ -15,6 +21,7 @@ import { Breadcrumbs } from '../common/Breadcrumbs';
 import { BackToTopButton } from '../blocks/layout/BackToTopButton';
 import { RouteAnnouncer } from '../blocks/utility/RouteAnnouncer';
 import { Buttons, Button } from '../blocks/design/Buttons';
+import { FAQSection } from '../patterns/FAQSection';
 import { 
   Palette,
   CheckCircle,
@@ -46,13 +53,7 @@ export function DesignServiceTemplate() {
       
       <main id="main-content" role="main">
         {/* Breadcrumbs */}
-        <section 
-          className="py-4"
-          style={{
-            backgroundColor: 'var(--background)',
-            borderBottom: '1px solid var(--border-soft)'
-          }}
-        >
+        <section className="design-service-breadcrumbs design-service-section">
           <Container>
             <Breadcrumbs 
               items={[
@@ -65,89 +66,26 @@ export function DesignServiceTemplate() {
         </section>
 
         {/* Hero Section */}
-        <Section 
-          spacing="xl"
-          style={{
-            background: 'linear-gradient(135deg, #ec4899 0%, #f43f5e 100%)',
-            color: 'var(--primary-foreground)',
-            position: 'relative',
-            overflow: 'hidden'
-          }}
-        >
-          {/* Gradient orb decorations */}
-          <div
-            className="absolute top-0 right-0 w-96 h-96 rounded-full"
-            style={{
-              background: 'radial-gradient(circle, rgba(244, 63, 94, 0.3) 0%, transparent 70%)',
-              filter: 'blur(80px)',
-              transform: 'translate(30%, -30%)'
-            }}
-          />
+        <section className="design-service-hero design-service-section">
+          {/* Gradient orb decoration */}
+          <div className="design-service-hero__orb" aria-hidden="true" />
 
           <Container>
-            <div className="max-w-4xl mx-auto text-center relative z-10">
-              <div
-                className="inline-block px-4 py-2 mb-6"
-                style={{
-                  backgroundColor: 'rgba(255, 255, 255, 0.15)',
-                  backdropFilter: 'blur(10px)',
-                  borderRadius: 'var(--radius-full)',
-                  border: '1px solid rgba(255, 255, 255, 0.2)',
-                  fontSize: 'var(--text-small)',
-                  fontFamily: 'Manrope, sans-serif',
-                  fontWeight: 'var(--font-weight-semibold)',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.1em'
-                }}
-              >
-                <Palette size={14} style={{ display: 'inline', marginRight: '8px' }} />
-                {designServiceHero.badge.text}
+            <div className="design-service-hero__content">
+              <div className="design-service-hero__badge">
+                <Palette size={14} />
+                WordPress Design
               </div>
 
-              <h1
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'clamp(2rem, 5vw, 3.5rem)',
-                  fontWeight: 'var(--font-weight-bold)',
-                  lineHeight: '1.1',
-                  letterSpacing: '-0.02em',
-                  marginBottom: '20px',
-                  color: 'var(--primary-foreground)'
-                }}
-              >
-                Modern Web <span style={{ 
-                  background: 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text'
-                }}>Design</span> That Converts Visitors Into Customers
+              <h1 className="design-service-hero__title">
+                Modern Web <span className="design-service-hero__title-gradient">Design</span> That Converts Visitors Into Customers
               </h1>
 
-              <p
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-xl)',
-                  lineHeight: '1.6',
-                  color: 'rgba(255, 255, 255, 0.95)',
-                  marginBottom: '16px',
-                  maxWidth: '700px',
-                  margin: '0 auto 16px'
-                }}
-              >
+              <p className="design-service-hero__tagline">
                 {designServiceHero.tagline}
               </p>
 
-              <p
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-lg)',
-                  lineHeight: '1.7',
-                  color: 'rgba(255, 255, 255, 0.85)',
-                  marginBottom: '40px',
-                  maxWidth: '700px',
-                  margin: '0 auto 40px'
-                }}
-              >
+              <p className="design-service-hero__description">
                 {designServiceHero.description}
               </p>
 
@@ -156,10 +94,6 @@ export function DesignServiceTemplate() {
                   page="contact" 
                   size="lg"
                   variant="default"
-                  style={{
-                    backgroundColor: 'var(--primary-foreground)',
-                    color: '#ec4899'
-                  }}
                 >
                   Start Your Project
                 </Button>
@@ -167,97 +101,42 @@ export function DesignServiceTemplate() {
                   page="portfolio" 
                   size="lg"
                   variant="outline"
-                  style={{
-                    borderColor: 'var(--primary-foreground)',
-                    color: 'var(--primary-foreground)'
-                  }}
                 >
                   View Portfolio
                 </Button>
               </Buttons>
             </div>
           </Container>
-        </Section>
+        </section>
 
         {/* Overview Section */}
-        <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
+        <section className="design-service-overview design-service-section">
           <Container>
-            <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-16">
-                <h2
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-h1)',
-                    fontWeight: 'var(--font-weight-bold)',
-                    lineHeight: '1.2',
-                    letterSpacing: '-0.02em',
-                    marginBottom: '16px',
-                    color: 'var(--foreground)'
-                  }}
-                >
+            <div className="design-service-overview__container">
+              <div className="design-service-section-header">
+                <h2 className="design-service-section-header__title">
                   {designServiceOverview.title}
                 </h2>
 
-                <p
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-lg)',
-                    lineHeight: '1.7',
-                    color: 'var(--muted-foreground)',
-                    maxWidth: '800px',
-                    margin: '0 auto'
-                  }}
-                >
+                <p className="design-service-section-header__description" style={{ maxWidth: '800px', margin: '0 auto' }}>
                   {designServiceOverview.description}
                 </p>
               </div>
 
               {/* Stats */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              <div className="design-service-overview__stats">
                 {designServiceOverview.stats.map((stat, index) => {
                   const Icon = stat.icon;
                   return (
-                    <div
-                      key={index}
-                      className="text-center"
-                      style={{
-                        padding: '32px',
-                        backgroundColor: 'var(--card)',
-                        borderRadius: 'var(--radius-lg)',
-                        border: '1px solid var(--border-soft)'
-                      }}
-                    >
-                      <Icon size={32} style={{ marginBottom: '12px', color: '#ec4899' }} />
-                      <div
-                        style={{
-                          fontFamily: 'Lexend, sans-serif',
-                          fontSize: 'var(--text-h2)',
-                          fontWeight: 'var(--font-weight-bold)',
-                          marginBottom: '4px',
-                          color: 'var(--foreground)'
-                        }}
-                      >
+                    <div key={index} className="design-service-stat-card">
+                      <Icon size={32} className="design-service-stat-card__icon" />
+                      <div className="design-service-stat-card__value">
                         {stat.value}
                       </div>
-                      <div
-                        style={{
-                          fontFamily: 'Lexend, sans-serif',
-                          fontSize: 'var(--text-base)',
-                          fontWeight: 'var(--font-weight-semibold)',
-                          marginBottom: '8px',
-                          color: 'var(--foreground)'
-                        }}
-                      >
+                      <div className="design-service-stat-card__label">
                         {stat.label}
                       </div>
-                      <p
-                        style={{
-                          fontFamily: 'Manrope, sans-serif',
-                          fontSize: 'var(--text-small)',
-                          lineHeight: '1.5',
-                          color: 'var(--muted-foreground)'
-                        }}
-                      >
+                      <p className="design-service-stat-card__description">
                         {stat.description}
                       </p>
                     </div>
@@ -266,40 +145,23 @@ export function DesignServiceTemplate() {
               </div>
             </div>
           </Container>
-        </Section>
+        </section>
 
         {/* Design Services Section */}
-        <Section spacing="xl" style={{ backgroundColor: 'var(--muted)' }}>
+        <section className="design-service-services design-service-section">
           <Container>
-            <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-16">
-                <h2
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-h1)',
-                    fontWeight: 'var(--font-weight-bold)',
-                    lineHeight: '1.2',
-                    letterSpacing: '-0.02em',
-                    marginBottom: '16px',
-                    color: 'var(--foreground)'
-                  }}
-                >
+            <div className="design-service-services__container">
+              <div className="design-service-section-header">
+                <h2 className="design-service-section-header__title">
                   Our Design Services
                 </h2>
 
-                <p
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-lg)',
-                    lineHeight: '1.7',
-                    color: 'var(--muted-foreground)'
-                  }}
-                >
+                <p className="design-service-section-header__description">
                   Comprehensive web design solutions
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="design-service-services__grid">
                 {designServices.map((service) => {
                   const Icon = service.icon;
                   const isHovered = hoveredService === service.id;
@@ -307,76 +169,27 @@ export function DesignServiceTemplate() {
                   return (
                     <div
                       key={service.id}
+                      className="design-service-service-card"
                       onMouseEnter={() => setHoveredService(service.id)}
                       onMouseLeave={() => setHoveredService(null)}
-                      style={{
-                        padding: '24px',
-                        backgroundColor: 'var(--card)',
-                        borderRadius: 'var(--radius-lg)',
-                        border: isHovered ? '1px solid #ec4899' : '1px solid var(--border-soft)',
-                        transition: 'all 0.3s ease',
-                        transform: isHovered ? 'translateY(-4px)' : 'translateY(0)'
-                      }}
                     >
-                      <div
-                        style={{
-                          width: '48px',
-                          height: '48px',
-                          borderRadius: 'var(--radius)',
-                          backgroundColor: isHovered ? '#ec4899' : 'var(--muted)',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          marginBottom: '16px',
-                          transition: 'all 0.3s ease'
-                        }}
-                      >
-                        <Icon size={24} style={{ color: isHovered ? 'white' : '#ec4899' }} />
+                      <div className="design-service-service-card__icon-wrapper">
+                        <Icon size={24} className="design-service-service-card__icon" />
                       </div>
 
-                      <h3
-                        style={{
-                          fontFamily: 'Lexend, sans-serif',
-                          fontSize: 'var(--text-lg)',
-                          fontWeight: 'var(--font-weight-bold)',
-                          color: 'var(--foreground)',
-                          marginBottom: '8px'
-                        }}
-                      >
+                      <h3 className="design-service-service-card__title">
                         {service.title}
                       </h3>
 
-                      <p
-                        style={{
-                          fontFamily: 'Lexend, sans-serif',
-                          fontSize: 'var(--text-small)',
-                          lineHeight: '1.6',
-                          color: 'var(--muted-foreground)',
-                          marginBottom: '16px'
-                        }}
-                      >
+                      <p className="design-service-service-card__description">
                         {service.description}
                       </p>
 
-                      <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                      <ul className="design-service-service-card__features">
                         {service.features.map((feature, idx) => (
-                          <li
-                            key={idx}
-                            style={{
-                              display: 'flex',
-                              alignItems: 'center',
-                              gap: '8px',
-                              marginBottom: '8px'
-                            }}
-                          >
+                          <li key={idx} className="design-service-service-card__feature">
                             <CheckCircle size={14} style={{ color: 'var(--success)', flexShrink: 0 }} />
-                            <span
-                              style={{
-                                fontFamily: 'Manrope, sans-serif',
-                                fontSize: 'var(--text-small)',
-                                color: 'var(--foreground)'
-                              }}
-                            >
+                            <span className="design-service-service-card__feature-text">
                               {feature}
                             </span>
                           </li>
@@ -388,132 +201,48 @@ export function DesignServiceTemplate() {
               </div>
             </div>
           </Container>
-        </Section>
+        </section>
 
         {/* Design Process Section */}
-        <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
+        <section className="design-service-process design-service-section">
           <Container>
-            <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-16">
-                <h2
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-h1)',
-                    fontWeight: 'var(--font-weight-bold)',
-                    lineHeight: '1.2',
-                    letterSpacing: '-0.02em',
-                    marginBottom: '16px',
-                    color: 'var(--foreground)'
-                  }}
-                >
+            <div className="design-service-process__container">
+              <div className="design-service-section-header">
+                <h2 className="design-service-section-header__title">
                   Our Design Process
                 </h2>
 
-                <p
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-lg)',
-                    lineHeight: '1.7',
-                    color: 'var(--muted-foreground)'
-                  }}
-                >
+                <p className="design-service-section-header__description">
                   A proven 4-step process for exceptional results
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="design-service-process__grid">
                 {designProcess.map((step) => {
                   const Icon = step.icon;
                   return (
-                    <div
-                      key={step.step}
-                      style={{
-                        padding: '24px',
-                        backgroundColor: 'var(--card)',
-                        borderRadius: 'var(--radius-lg)',
-                        border: '1px solid var(--border-soft)',
-                        position: 'relative'
-                      }}
-                    >
-                      <div
-                        style={{
-                          position: 'absolute',
-                          top: '16px',
-                          right: '16px',
-                          width: '32px',
-                          height: '32px',
-                          borderRadius: 'var(--radius-full)',
-                          backgroundColor: '#ec4899',
-                          color: 'white',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          fontFamily: 'Lexend, sans-serif',
-                          fontSize: 'var(--text-small)',
-                          fontWeight: 'var(--font-weight-bold)'
-                        }}
-                      >
+                    <div key={step.step} className="design-service-process-card">
+                      <div className="design-service-process-card__badge">
                         {step.step}
                       </div>
 
-                      <div
-                        style={{
-                          width: '56px',
-                          height: '56px',
-                          borderRadius: 'var(--radius-lg)',
-                          backgroundColor: 'rgba(236, 72, 153, 0.1)',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          marginBottom: '16px'
-                        }}
-                      >
-                        <Icon size={28} style={{ color: '#ec4899' }} />
+                      <div className="design-service-process-card__icon-wrapper">
+                        <Icon size={28} className="design-service-process-card__icon" />
                       </div>
 
-                      <h3
-                        style={{
-                          fontFamily: 'Lexend, sans-serif',
-                          fontSize: 'var(--text-base)',
-                          fontWeight: 'var(--font-weight-bold)',
-                          color: 'var(--foreground)',
-                          marginBottom: '8px'
-                        }}
-                      >
+                      <h3 className="design-service-process-card__title">
                         {step.title}
                       </h3>
 
-                      <p
-                        style={{
-                          fontFamily: 'Lexend, sans-serif',
-                          fontSize: 'var(--text-small)',
-                          lineHeight: '1.6',
-                          color: 'var(--muted-foreground)',
-                          marginBottom: '12px'
-                        }}
-                      >
+                      <p className="design-service-process-card__description">
                         {step.description}
                       </p>
 
-                      <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                      <ul className="design-service-process-card__deliverables">
                         {step.deliverables.map((item, idx) => (
-                          <li
-                            key={idx}
-                            style={{
-                              display: 'flex',
-                              alignItems: 'center',
-                              gap: '6px',
-                              marginBottom: '6px'
-                            }}
-                          >
+                          <li key={idx} className="design-service-process-card__deliverable">
                             <CheckCircle size={12} style={{ color: 'var(--success)', flexShrink: 0 }} />
-                            <span
-                              style={{
-                                fontFamily: 'Manrope, sans-serif',
-                                fontSize: 'var(--text-small)',
-                                color: 'var(--muted-foreground)'
-                              }}
-                            >
+                            <span className="design-service-process-card__deliverable-text">
                               {item}
                             </span>
                           </li>
@@ -525,87 +254,36 @@ export function DesignServiceTemplate() {
               </div>
             </div>
           </Container>
-        </Section>
+        </section>
 
         {/* Design Principles Section */}
-        <Section spacing="xl" style={{ backgroundColor: 'var(--muted)' }}>
+        <section className="design-service-principles design-service-section">
           <Container>
-            <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-16">
-                <h2
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-h1)',
-                    fontWeight: 'var(--font-weight-bold)',
-                    lineHeight: '1.2',
-                    letterSpacing: '-0.02em',
-                    marginBottom: '16px',
-                    color: 'var(--foreground)'
-                  }}
-                >
+            <div className="design-service-principles__container">
+              <div className="design-service-section-header">
+                <h2 className="design-service-section-header__title">
                   Our Design Principles
                 </h2>
 
-                <p
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-lg)',
-                    lineHeight: '1.7',
-                    color: 'var(--muted-foreground)'
-                  }}
-                >
+                <p className="design-service-section-header__description">
                   The foundation of every design we create
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="design-service-principles__grid">
                 {designPrinciples.map((principle, index) => {
                   const Icon = principle.icon;
                   return (
-                    <div
-                      key={index}
-                      style={{
-                        padding: '24px',
-                        backgroundColor: 'var(--card)',
-                        borderRadius: 'var(--radius-lg)',
-                        border: '1px solid var(--border-soft)'
-                      }}
-                    >
-                      <div
-                        style={{
-                          width: '48px',
-                          height: '48px',
-                          borderRadius: 'var(--radius)',
-                          backgroundColor: 'rgba(236, 72, 153, 0.1)',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          marginBottom: '16px'
-                        }}
-                      >
-                        <Icon size={24} style={{ color: '#ec4899' }} />
+                    <div key={index} className="design-service-principle-card">
+                      <div className="design-service-principle-card__icon-wrapper">
+                        <Icon size={24} className="design-service-principle-card__icon" />
                       </div>
 
-                      <h3
-                        style={{
-                          fontFamily: 'Lexend, sans-serif',
-                          fontSize: 'var(--text-base)',
-                          fontWeight: 'var(--font-weight-bold)',
-                          color: 'var(--foreground)',
-                          marginBottom: '8px'
-                        }}
-                      >
+                      <h3 className="design-service-principle-card__title">
                         {principle.title}
                       </h3>
 
-                      <p
-                        style={{
-                          fontFamily: 'Lexend, sans-serif',
-                          fontSize: 'var(--text-small)',
-                          lineHeight: '1.6',
-                          color: 'var(--muted-foreground)'
-                        }}
-                      >
+                      <p className="design-service-principle-card__description">
                         {principle.description}
                       </p>
                     </div>
@@ -614,76 +292,32 @@ export function DesignServiceTemplate() {
               </div>
             </div>
           </Container>
-        </Section>
+        </section>
 
         {/* Design Tools Section */}
-        <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
+        <section className="design-service-tools design-service-section">
           <Container>
-            <div className="max-w-5xl mx-auto">
-              <div className="text-center mb-16">
-                <h2
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-h1)',
-                    fontWeight: 'var(--font-weight-bold)',
-                    lineHeight: '1.2',
-                    letterSpacing: '-0.02em',
-                    marginBottom: '16px',
-                    color: 'var(--foreground)'
-                  }}
-                >
+            <div className="design-service-tools__container">
+              <div className="design-service-section-header">
+                <h2 className="design-service-section-header__title">
                   Design Tools & Technologies
                 </h2>
 
-                <p
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-lg)',
-                    lineHeight: '1.7',
-                    color: 'var(--muted-foreground)'
-                  }}
-                >
+                <p className="design-service-section-header__description">
                   Industry-leading tools for professional results
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="design-service-tools__grid">
                 {designTools.map((category, index) => (
-                  <div
-                    key={index}
-                    style={{
-                      padding: '32px',
-                      backgroundColor: 'var(--card)',
-                      borderRadius: 'var(--radius-lg)',
-                      border: '1px solid var(--border-soft)'
-                    }}
-                  >
-                    <h3
-                      style={{
-                        fontFamily: 'Lexend, sans-serif',
-                        fontSize: 'var(--text-lg)',
-                        fontWeight: 'var(--font-weight-bold)',
-                        color: 'var(--foreground)',
-                        marginBottom: '16px'
-                      }}
-                    >
+                  <div key={index} className="design-service-tools-category">
+                    <h3 className="design-service-tools-category__title">
                       {category.category}
                     </h3>
 
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                    <div className="design-service-tools-category__list">
                       {category.tools.map((tool, idx) => (
-                        <span
-                          key={idx}
-                          style={{
-                            fontSize: 'var(--text-small)',
-                            fontFamily: 'Manrope, sans-serif',
-                            color: '#ec4899',
-                            backgroundColor: 'rgba(236, 72, 153, 0.1)',
-                            padding: '6px 12px',
-                            borderRadius: 'var(--radius)',
-                            border: '1px solid #ec4899'
-                          }}
-                        >
+                        <span key={idx} className="design-service-tool-tag">
                           {tool}
                         </span>
                       ))}
@@ -693,126 +327,51 @@ export function DesignServiceTemplate() {
               </div>
             </div>
           </Container>
-        </Section>
+        </section>
 
         {/* Design Packages Section */}
-        <Section spacing="xl" style={{ backgroundColor: 'var(--muted)' }}>
+        <section className="design-service-packages design-service-section">
           <Container>
-            <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-16">
-                <h2
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-h1)',
-                    fontWeight: 'var(--font-weight-bold)',
-                    lineHeight: '1.2',
-                    letterSpacing: '-0.02em',
-                    marginBottom: '16px',
-                    color: 'var(--foreground)'
-                  }}
-                >
+            <div className="design-service-packages__container">
+              <div className="design-service-section-header">
+                <h2 className="design-service-section-header__title">
                   Design Packages
                 </h2>
 
-                <p
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-lg)',
-                    lineHeight: '1.7',
-                    color: 'var(--muted-foreground)'
-                  }}
-                >
+                <p className="design-service-section-header__description">
                   Choose the right design package for your needs
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="design-service-packages__grid">
                 {designPackages.map((pkg, index) => (
                   <div
                     key={index}
-                    style={{
-                      padding: '40px',
-                      backgroundColor: pkg.recommended ? 'rgba(236, 72, 153, 0.1)' : 'var(--card)',
-                      borderRadius: 'var(--radius-lg)',
-                      border: pkg.recommended ? '2px solid #ec4899' : '1px solid var(--border-soft)',
-                      position: 'relative'
-                    }}
+                    className={`design-service-package-card ${pkg.recommended ? 'design-service-package-card--recommended' : ''}`}
                   >
                     {pkg.recommended && (
-                      <div
-                        style={{
-                          position: 'absolute',
-                          top: '-12px',
-                          left: '50%',
-                          transform: 'translateX(-50%)',
-                          backgroundColor: '#ec4899',
-                          color: 'white',
-                          padding: '4px 16px',
-                          borderRadius: 'var(--radius-full)',
-                          fontSize: 'var(--text-small)',
-                          fontFamily: 'Manrope, sans-serif',
-                          fontWeight: 'var(--font-weight-semibold)'
-                        }}
-                      >
+                      <div className="design-service-package-card__badge">
                         Most Popular
                       </div>
                     )}
 
-                    <h3
-                      style={{
-                        fontFamily: 'Lexend, sans-serif',
-                        fontSize: 'var(--text-h3)',
-                        fontWeight: 'var(--font-weight-bold)',
-                        color: 'var(--foreground)',
-                        marginBottom: '8px'
-                      }}
-                    >
+                    <h3 className="design-service-package-card__name">
                       {pkg.name}
                     </h3>
 
-                    <div
-                      style={{
-                        fontFamily: 'Lexend, sans-serif',
-                        fontSize: 'var(--text-h2)',
-                        fontWeight: 'var(--font-weight-bold)',
-                        color: '#ec4899',
-                        marginBottom: '8px'
-                      }}
-                    >
+                    <div className="design-service-package-card__price">
                       {pkg.price}
                     </div>
 
-                    <p
-                      style={{
-                        fontFamily: 'Lexend, sans-serif',
-                        fontSize: 'var(--text-small)',
-                        lineHeight: '1.6',
-                        color: 'var(--muted-foreground)',
-                        marginBottom: '24px'
-                      }}
-                    >
+                    <p className="design-service-package-card__description">
                       {pkg.description}
                     </p>
 
-                    <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 24px 0' }}>
+                    <ul className="design-service-package-card__features">
                       {pkg.features.map((feature, idx) => (
-                        <li
-                          key={idx}
-                          style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '8px',
-                            marginBottom: '12px'
-                          }}
-                        >
+                        <li key={idx} className="design-service-package-card__feature">
                           <Check size={18} style={{ color: 'var(--success)', flexShrink: 0 }} />
-                          <span
-                            style={{
-                              fontFamily: 'Lexend, sans-serif',
-                              fontSize: 'var(--text-small)',
-                              color: 'var(--foreground)'
-                            }}
-                          >
+                          <span className="design-service-package-card__feature-text">
                             {feature}
                           </span>
                         </li>
@@ -832,111 +391,25 @@ export function DesignServiceTemplate() {
               </div>
             </div>
           </Container>
-        </Section>
+        </section>
 
         {/* FAQ Section */}
-        <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
-          <Container>
-            <div className="max-w-3xl mx-auto">
-              <div className="text-center mb-12">
-                <h2
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-h2)',
-                    fontWeight: 'var(--font-weight-semibold)',
-                    color: 'var(--foreground)',
-                    marginBottom: '16px',
-                    lineHeight: 'var(--line-height-snug)'
-                  }}
-                >
-                  Frequently Asked Questions
-                </h2>
-                <p
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-lg)',
-                    color: 'var(--muted-foreground)',
-                    lineHeight: '1.7'
-                  }}
-                >
-                  Common questions about web design services
-                </p>
-              </div>
-
-              <div className="space-y-4">
-                {designServiceFAQs.map((faq, index) => (
-                  <details
-                    key={index}
-                    style={{
-                      padding: '24px',
-                      backgroundColor: 'var(--card)',
-                      borderRadius: 'var(--radius-lg)',
-                      border: '1px solid var(--border-soft)'
-                    }}
-                  >
-                    <summary
-                      style={{
-                        fontFamily: 'Lexend, sans-serif',
-                        fontSize: 'var(--text-lg)',
-                        fontWeight: 'var(--font-weight-semibold)',
-                        color: 'var(--foreground)',
-                        cursor: 'pointer',
-                        listStyle: 'none'
-                      }}
-                    >
-                      {faq.question}
-                    </summary>
-                    <p
-                      style={{
-                        fontFamily: 'Lexend, sans-serif',
-                        fontSize: 'var(--text-base)',
-                        lineHeight: '1.7',
-                        color: 'var(--muted-foreground)',
-                        marginTop: '12px'
-                      }}
-                    >
-                      {faq.answer}
-                    </p>
-                  </details>
-                ))}
-              </div>
-            </div>
-          </Container>
-        </Section>
+        <FAQSection
+          title="Frequently Asked Questions"
+          description="Common questions about web design services"
+          faqs={designServiceFAQs}
+          variant="muted"
+        />
 
         {/* CTA Section */}
-        <Section 
-          spacing="xl" 
-          style={{
-            background: 'linear-gradient(135deg, #ec4899 0%, #f43f5e 100%)',
-            color: 'var(--primary-foreground)'
-          }}
-        >
+        <section className="design-service-cta design-service-section">
           <Container>
-            <div className="max-w-3xl mx-auto text-center">
-              <h2
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-h1)',
-                  fontWeight: 'var(--font-weight-bold)',
-                  lineHeight: '1.2',
-                  letterSpacing: '-0.02em',
-                  marginBottom: '16px',
-                  color: 'var(--primary-foreground)'
-                }}
-              >
+            <div className="design-service-cta__container">
+              <h2 className="design-service-cta__title">
                 {designServiceCTA.title}
               </h2>
 
-              <p
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-lg)',
-                  lineHeight: '1.7',
-                  color: 'rgba(255, 255, 255, 0.9)',
-                  marginBottom: '32px'
-                }}
-              >
+              <p className="design-service-cta__description">
                 {designServiceCTA.description}
               </p>
 
@@ -947,7 +420,7 @@ export function DesignServiceTemplate() {
                   variant="default"
                   style={{
                     backgroundColor: 'var(--primary-foreground)',
-                    color: '#ec4899'
+                    color: 'var(--primary)'
                   }}
                 >
                   {designServiceCTA.buttons[0].text}
@@ -966,7 +439,7 @@ export function DesignServiceTemplate() {
               </Buttons>
             </div>
           </Container>
-        </Section>
+        </section>
       </main>
 
       <SiteFooter />

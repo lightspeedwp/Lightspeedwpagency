@@ -241,7 +241,7 @@ export function EnquiryModal({
                 id="modal-title"
                 className="mb-4"
                 style={{
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-h3)',
                   fontWeight: 'var(--font-weight-medium)',
                   lineHeight: 'var(--line-height-snug)',
@@ -253,7 +253,7 @@ export function EnquiryModal({
               <p
                 id="modal-description"
                 style={{
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-base)',
                   lineHeight: 'var(--line-height-relaxed)',
                   color: 'var(--muted-foreground)'
@@ -271,7 +271,7 @@ export function EnquiryModal({
                   backgroundColor: 'var(--primary)',
                   color: 'var(--primary-foreground)',
                   borderRadius: 'var(--radius)',
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-base)',
                   textAlign: 'center'
                 }}
@@ -289,7 +289,7 @@ export function EnquiryModal({
                     htmlFor="name"
                     className="block mb-2"
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-base)',
                       fontWeight: 'var(--font-weight-medium)',
                       color: 'var(--foreground)'
@@ -311,7 +311,7 @@ export function EnquiryModal({
                       color: 'var(--foreground)',
                       border: '1px solid var(--border)',
                       borderRadius: 'var(--radius)',
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-base)',
                       outline: 'none',
                       transition: 'border-color var(--transition-base) var(--ease-in-out)',
@@ -328,7 +328,7 @@ export function EnquiryModal({
                     htmlFor="email"
                     className="block mb-2"
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-base)',
                       fontWeight: 'var(--font-weight-medium)',
                       color: 'var(--foreground)'
@@ -349,7 +349,7 @@ export function EnquiryModal({
                       color: 'var(--foreground)',
                       border: '1px solid var(--border)',
                       borderRadius: 'var(--radius)',
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-base)',
                       outline: 'none',
                       transition: 'border-color var(--transition-base) var(--ease-in-out)',
@@ -366,7 +366,7 @@ export function EnquiryModal({
                     htmlFor="company"
                     className="block mb-2"
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-base)',
                       fontWeight: 'var(--font-weight-medium)',
                       color: 'var(--foreground)'
@@ -386,7 +386,7 @@ export function EnquiryModal({
                       color: 'var(--foreground)',
                       border: '1px solid var(--border)',
                       borderRadius: 'var(--radius)',
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-base)',
                       outline: 'none',
                       transition: 'border-color var(--transition-base) var(--ease-in-out)'
@@ -403,7 +403,7 @@ export function EnquiryModal({
                     htmlFor="phone"
                     className="block mb-2"
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-base)',
                       fontWeight: 'var(--font-weight-medium)',
                       color: 'var(--foreground)'
@@ -423,7 +423,7 @@ export function EnquiryModal({
                       color: 'var(--foreground)',
                       border: '1px solid var(--border)',
                       borderRadius: 'var(--radius)',
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-base)',
                       outline: 'none',
                       transition: 'border-color var(--transition-base) var(--ease-in-out)'
@@ -440,7 +440,7 @@ export function EnquiryModal({
                     htmlFor="message"
                     className="block mb-2"
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-base)',
                       fontWeight: 'var(--font-weight-medium)',
                       color: 'var(--foreground)'
@@ -461,7 +461,7 @@ export function EnquiryModal({
                       color: 'var(--foreground)',
                       border: '1px solid var(--border)',
                       borderRadius: 'var(--radius)',
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-base)',
                       outline: 'none',
                       resize: 'vertical',

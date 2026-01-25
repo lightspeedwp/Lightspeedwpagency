@@ -1,0 +1,133 @@
+/**
+ * Stats Section Pattern Styles
+ * 
+ * Displays key statistics in a grid layout.
+ * All styling uses CSS variables for complete user control.
+ * 
+ * User can edit this file to update stats sections site-wide.
+ */
+
+/* ============================================
+ * STATS SECTION VARIANTS
+ * ============================================ */
+
+.stats-section--default {
+  background-color: var(--muted);
+  color: var(--foreground);
+}
+
+.stats-section--highlighted {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+/* ============================================
+ * STATS GRID
+ * ============================================ */
+
+.stats-section__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-8);
+}
+
+/* Responsive breakpoints */
+@media (min-width: 768px) {
+  .stats-section__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .stats-section__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ============================================
+ * STAT ITEM
+ * ============================================ */
+
+.stats-section__item {
+  text-align: center;
+}
+
+/* ============================================
+ * STAT NUMBER
+ * ============================================ */
+
+.stats-section__number {
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-h1);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1;
+  letter-spacing: var(--letter-spacing-tight);
+  
+  /* Spacing */
+  margin-bottom: var(--spacing-3);
+}
+
+/* Number color for default variant */
+.stats-section--default .stats-section__number {
+  color: var(--primary);
+}
+
+/* Number color for highlighted variant */
+.stats-section--highlighted .stats-section__number {
+  color: var(--primary-foreground);
+}
+
+/* ============================================
+ * STAT LABEL
+ * ============================================ */
+
+.stats-section__label {
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-h4);
+  font-weight: var(--font-weight-semibold);
+  
+  /* Spacing */
+  margin-bottom: 0;
+}
+
+.stats-section__label--with-description {
+  margin-bottom: var(--spacing-2);
+}
+
+/* Label color for default variant */
+.stats-section--default .stats-section__label {
+  color: var(--foreground);
+}
+
+/* Label color for highlighted variant */
+.stats-section--highlighted .stats-section__label {
+  color: var(--primary-foreground);
+}
+
+/* ============================================
+ * STAT DESCRIPTION
+ * ============================================ */
+
+.stats-section__description {
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  line-height: 1.6;
+  
+  /* Spacing */
+  margin: 0;
+}
+
+/* Description color for default variant */
+.stats-section--default .stats-section__description {
+  color: var(--muted-foreground);
+  opacity: 1;
+}
+
+/* Description color for highlighted variant */
+.stats-section--highlighted .stats-section__description {
+  color: var(--primary-foreground);
+  opacity: 0.9;
+}
