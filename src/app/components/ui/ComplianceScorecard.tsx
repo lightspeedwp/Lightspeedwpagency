@@ -85,7 +85,7 @@ export function ComplianceScorecard() {
               <Heading level={2}>Running Compliance Tests...</Heading>
               <p style={{
                 fontSize: 'var(--text-base)',
-                fontFamily: 'Manrope, sans-serif',
+                fontFamily: 'var(--font-secondary)',
                 color: 'var(--muted-foreground)',
                 marginTop: '16px'
               }}>
@@ -121,7 +121,7 @@ export function ComplianceScorecard() {
               <Heading level={2}>Test Error</Heading>
               <p style={{
                 fontSize: 'var(--text-base)',
-                fontFamily: 'Manrope, sans-serif',
+                fontFamily: 'var(--font-secondary)',
                 color: 'var(--destructive)',
                 marginTop: '16px'
               }}>
@@ -154,7 +154,7 @@ export function ComplianceScorecard() {
                 color: 'var(--primary-foreground)',
                 borderRadius: 'var(--radius)',
                 fontSize: 'var(--text-small)',
-                fontFamily: 'Lexend, sans-serif',
+                fontFamily: 'var(--font-primary)',
                 fontWeight: 'var(--font-weight-medium)'
               }}
             >
@@ -168,7 +168,7 @@ export function ComplianceScorecard() {
             
             <p style={{
               fontSize: 'var(--text-lead)',
-              fontFamily: 'Lexend, sans-serif',
+              fontFamily: 'var(--font-primary)',
               color: 'var(--muted-foreground)',
               lineHeight: 'var(--line-height-relaxed)',
               maxWidth: '42rem',
@@ -196,7 +196,7 @@ export function ComplianceScorecard() {
           >
             <div style={{
               fontSize: 'clamp(64px, 10vw, 96px)',  /* Fluid score number */
-              fontFamily: 'Lexend, sans-serif',
+              fontFamily: 'var(--font-primary)',
               fontWeight: 'var(--font-weight-bold)',
               color: getGradeColor(scorecard.overall),
               lineHeight: '1',
@@ -207,7 +207,7 @@ export function ComplianceScorecard() {
             
             <div style={{
               fontSize: 'var(--text-h3)',
-              fontFamily: 'Lexend, sans-serif',
+              fontFamily: 'var(--font-primary)',
               fontWeight: 'var(--font-weight-medium)',
               color: getGradeColor(scorecard.overall),
               marginBottom: '8px'
@@ -217,7 +217,7 @@ export function ComplianceScorecard() {
             
             <p style={{
               fontSize: 'var(--text-base)',
-              fontFamily: 'Manrope, sans-serif',
+              fontFamily: 'var(--font-secondary)',
               color: 'var(--muted-foreground)'
             }}>
               Overall Compliance Score
@@ -321,7 +321,7 @@ export function ComplianceScorecard() {
                     
                     <div style={{
                       fontSize: 'var(--text-base)',
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontWeight: 'var(--font-weight-medium)',
                       color: passedCount === totalCount ? 'var(--primary)' : 'var(--muted-foreground)'
                     }}>
@@ -350,7 +350,7 @@ export function ComplianceScorecard() {
               style={{
                 backgroundColor: 'var(--primary)',
                 color: 'var(--primary-foreground)',
-                fontFamily: 'Lexend, sans-serif',
+                fontFamily: 'var(--font-primary)',
                 fontSize: 'var(--text-base)',
                 fontWeight: 'var(--font-weight-medium)',
                 padding: '12px 32px',
@@ -374,7 +374,7 @@ export function ComplianceScorecard() {
             
             <p style={{
               fontSize: 'var(--text-small)',
-              fontFamily: 'Manrope, sans-serif',
+              fontFamily: 'var(--font-secondary)',
               color: 'var(--muted-foreground)',
               marginTop: '16px'
             }}>
@@ -451,7 +451,7 @@ function ScoreCard({ title, score, icon, description }: {
         <div>
           <div style={{
             fontSize: 'var(--text-h4)',
-            fontFamily: 'Lexend, sans-serif',
+            fontFamily: 'var(--font-primary)',
             fontWeight: 'var(--font-weight-medium)',
             color: 'var(--foreground)'
           }}>
@@ -468,7 +468,7 @@ function ScoreCard({ title, score, icon, description }: {
       }}>
         <div style={{
           fontSize: 'var(--text-h2)',  /* Use CSS variable for card score numbers */
-          fontFamily: 'Lexend, sans-serif',
+          fontFamily: 'var(--font-primary)',
           fontWeight: 'var(--font-weight-semibold)',
           color: getGradeColor(score),
           lineHeight: '1'
@@ -478,7 +478,7 @@ function ScoreCard({ title, score, icon, description }: {
         
         <div style={{
           fontSize: 'var(--text-lg)',
-          fontFamily: 'Lexend, sans-serif',
+          fontFamily: 'var(--font-primary)',
           fontWeight: 'var(--font-weight-medium)',
           color: getGradeColor(score)
         }}>
@@ -488,7 +488,7 @@ function ScoreCard({ title, score, icon, description }: {
 
       <p style={{
         fontSize: 'var(--text-small)',
-        fontFamily: 'Manrope, sans-serif',
+        fontFamily: 'var(--font-secondary)',
         color: 'var(--muted-foreground)',
         lineHeight: 'var(--line-height-normal)'
       }}>
@@ -528,7 +528,7 @@ function TestResult({ result }: { result: PerformanceTestResult }) {
       <div style={{ flex: 1 }}>
         <div style={{
           fontSize: 'var(--text-base)',
-          fontFamily: 'Lexend, sans-serif',
+          fontFamily: 'var(--font-primary)',
           fontWeight: 'var(--font-weight-medium)',
           color: 'var(--foreground)',
           marginBottom: '4px'
@@ -538,7 +538,7 @@ function TestResult({ result }: { result: PerformanceTestResult }) {
 
         <div style={{
           fontSize: 'var(--text-small)',
-          fontFamily: 'Manrope, sans-serif',
+          fontFamily: 'var(--font-secondary)',
           color: 'var(--muted-foreground)',
           marginBottom: result.recommendation ? '8px' : '0'
         }}>
@@ -555,7 +555,7 @@ function TestResult({ result }: { result: PerformanceTestResult }) {
               backgroundColor: 'var(--muted)',
               borderRadius: 'var(--radius)',
               fontSize: 'var(--text-small)',
-              fontFamily: 'Manrope, sans-serif',
+              fontFamily: 'var(--font-secondary)',
               color: 'var(--muted-foreground)'
             }}
           >

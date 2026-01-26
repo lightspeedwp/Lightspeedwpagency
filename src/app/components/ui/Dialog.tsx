@@ -216,7 +216,7 @@ export function Dialog({
               id="dialog-title"
               className="mb-1"
               style={{
-                fontFamily: 'Lexend, sans-serif',
+                fontFamily: 'var(--font-primary)',
                 fontSize: 'var(--text-h4)',
                 fontWeight: 'var(--font-weight-semibold)',
                 color: 'var(--foreground)',
@@ -230,7 +230,7 @@ export function Dialog({
               <p
                 id="dialog-description"
                 style={{
-                  fontFamily: 'Manrope, sans-serif',
+                  fontFamily: 'var(--font-secondary)',
                   fontSize: 'var(--text-base)',
                   color: 'var(--muted-foreground)',
                   margin: 0,
@@ -273,7 +273,7 @@ export function Dialog({
         <div
           className="flex-1 p-6 overflow-y-auto"
           style={{
-            fontFamily: 'Manrope, sans-serif',
+            fontFamily: 'var(--font-secondary)',
             fontSize: 'var(--text-base)',
             color: 'var(--foreground)',
             lineHeight: '1.6',

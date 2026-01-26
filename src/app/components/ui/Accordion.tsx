@@ -201,7 +201,7 @@ function AccordionItemComponent({
 
           <h3
             style={{
-              fontFamily: 'Lexend, sans-serif',
+              fontFamily: 'var(--font-primary)',
               fontSize: 'var(--text-base)',
               fontWeight: 'var(--font-weight-semibold)',
               color: isOpen ? 'var(--foreground)' : 'var(--foreground)',
@@ -237,7 +237,7 @@ function AccordionItemComponent({
         <div
           className="p-4 pt-0"
           style={{
-            fontFamily: 'Manrope, sans-serif',
+            fontFamily: 'var(--font-secondary)',
             fontSize: 'var(--text-base)',
             color: 'var(--muted-foreground)',
             lineHeight: '1.6',

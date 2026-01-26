@@ -93,7 +93,7 @@ export function FAQTemplate() {
           />
 
           <Container>
-            <div className="wp-max-w-4xl wp-text-center" style={{ position: 'relative', zIndex: 10 }}>
+            <div className="wp-max-w-4xl wp-text-center" style={{ position: 'relative', zIndex: 10, margin: '0 auto' }}>
               <div
                 style={{
                   display: 'inline-block',
@@ -107,7 +107,7 @@ export function FAQTemplate() {
                   borderRadius: 'var(--radius-full)',
                   border: '1px solid rgba(255, 255, 255, 0.2)',
                   fontSize: 'var(--text-small)',
-                  fontFamily: 'Manrope, sans-serif',
+                  fontFamily: 'var(--font-secondary)',
                   fontWeight: 'var(--font-weight-semibold)',
                   textTransform: 'uppercase',
                   letterSpacing: '0.1em'
@@ -119,7 +119,7 @@ export function FAQTemplate() {
 
               <h1
                 style={{
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'clamp(2rem, 5vw, 3.5rem)',
                   fontWeight: 'var(--font-weight-bold)',
                   lineHeight: '1.1',
@@ -138,7 +138,7 @@ export function FAQTemplate() {
 
               <p
                 style={{
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-xl)',
                   lineHeight: '1.6',
                   color: 'rgba(255, 255, 255, 0.95)',
@@ -152,7 +152,7 @@ export function FAQTemplate() {
 
               <p
                 style={{
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-lg)',
                   lineHeight: '1.7',
                   color: 'rgba(255, 255, 255, 0.85)',
@@ -170,7 +170,7 @@ export function FAQTemplate() {
         <Section spacing="lg" style={{ backgroundColor: 'var(--background)' }}>
           <Container>
             <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 'var(--spacing-6)' }}>
+              <div className="wp-grid-4-cols" style={{ gap: 'var(--spacing-6)' }}>
                 <div
                   className="wp-text-center"
                   style={{
@@ -182,7 +182,7 @@ export function FAQTemplate() {
                 >
                   <div
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-h2)',
                       fontWeight: 'var(--font-weight-bold)',
                       marginBottom: '4px',
@@ -193,7 +193,7 @@ export function FAQTemplate() {
                   </div>
                   <div
                     style={{
-                      fontFamily: 'Manrope, sans-serif',
+                      fontFamily: 'var(--font-secondary)',
                       fontSize: 'var(--text-small)',
                       color: 'var(--muted-foreground)'
                     }}
@@ -213,7 +213,7 @@ export function FAQTemplate() {
                 >
                   <div
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-h2)',
                       fontWeight: 'var(--font-weight-bold)',
                       marginBottom: '4px',
@@ -224,7 +224,7 @@ export function FAQTemplate() {
                   </div>
                   <div
                     style={{
-                      fontFamily: 'Manrope, sans-serif',
+                      fontFamily: 'var(--font-secondary)',
                       fontSize: 'var(--text-small)',
                       color: 'var(--muted-foreground)'
                     }}
@@ -244,7 +244,7 @@ export function FAQTemplate() {
                 >
                   <div
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-h2)',
                       fontWeight: 'var(--font-weight-bold)',
                       marginBottom: '4px',
@@ -255,7 +255,7 @@ export function FAQTemplate() {
                   </div>
                   <div
                     style={{
-                      fontFamily: 'Manrope, sans-serif',
+                      fontFamily: 'var(--font-secondary)',
                       fontSize: 'var(--text-small)',
                       color: 'var(--muted-foreground)'
                     }}
@@ -275,7 +275,7 @@ export function FAQTemplate() {
                 >
                   <div
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-h2)',
                       fontWeight: 'var(--font-weight-bold)',
                       marginBottom: '4px',
@@ -286,7 +286,7 @@ export function FAQTemplate() {
                   </div>
                   <div
                     style={{
-                      fontFamily: 'Manrope, sans-serif',
+                      fontFamily: 'var(--font-secondary)',
                       fontSize: 'var(--text-small)',
                       color: 'var(--muted-foreground)'
                     }}
@@ -336,7 +336,7 @@ export function FAQTemplate() {
                         <div>
                           <h2
                             style={{
-                              fontFamily: 'Lexend, sans-serif',
+                              fontFamily: 'var(--font-primary)',
                               fontSize: 'var(--text-h3)',
                               fontWeight: 'var(--font-weight-bold)',
                               color: 'var(--foreground)',
@@ -347,7 +347,7 @@ export function FAQTemplate() {
                           </h2>
                           <p
                             style={{
-                              fontFamily: 'Lexend, sans-serif',
+                              fontFamily: 'var(--font-secondary)',
                               fontSize: 'var(--text-small)',
                               color: 'var(--muted-foreground)'
                             }}
@@ -391,7 +391,7 @@ export function FAQTemplate() {
                               >
                                 <h3
                                   style={{
-                                    fontFamily: 'Lexend, sans-serif',
+                                    fontFamily: 'var(--font-primary)',
                                     fontSize: 'var(--text-lg)',
                                     fontWeight: 'var(--font-weight-semibold)',
                                     color: 'var(--foreground)',
@@ -421,7 +421,7 @@ export function FAQTemplate() {
                                 >
                                   <p
                                     style={{
-                                      fontFamily: 'Lexend, sans-serif',
+                                      fontFamily: 'var(--font-primary)',
                                       fontSize: 'var(--text-base)',
                                       lineHeight: '1.7',
                                       color: 'var(--muted-foreground)',

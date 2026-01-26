@@ -230,7 +230,7 @@ export function Breadcrumbs({ items, className = '' }: BreadcrumbsProps) {
         <ol 
           className="flex items-center gap-1"
           style={{
-            fontFamily: 'Manrope, sans-serif',
+            fontFamily: 'var(--font-secondary)',
             fontSize: 'var(--text-small)',
             fontWeight: 'var(--font-weight-regular)',
             lineHeight: '1.5',
@@ -253,7 +253,7 @@ export function Breadcrumbs({ items, className = '' }: BreadcrumbsProps) {
                       border: 'none',
                       padding: 0,
                       cursor: 'pointer',
-                      fontFamily: 'Manrope, sans-serif',
+                      fontFamily: 'var(--font-secondary)',
                       fontSize: 'var(--text-small)',
                       fontWeight: 'var(--font-weight-regular)',
                       textDecoration: 'none',
@@ -283,7 +283,7 @@ export function Breadcrumbs({ items, className = '' }: BreadcrumbsProps) {
                     href={item.href}
                     style={{
                       color: 'var(--muted-foreground)',
-                      fontFamily: 'Manrope, sans-serif',
+                      fontFamily: 'var(--font-secondary)',
                       fontSize: 'var(--text-small)',
                       fontWeight: 'var(--font-weight-regular)',
                       textDecoration: 'none',
@@ -313,7 +313,7 @@ export function Breadcrumbs({ items, className = '' }: BreadcrumbsProps) {
                     aria-current={isLast ? 'page' : undefined}
                     style={{
                       color: 'var(--foreground)',
-                      fontFamily: 'Manrope, sans-serif',
+                      fontFamily: 'var(--font-secondary)',
                       fontSize: 'var(--text-small)',
                       fontWeight: 'var(--font-weight-medium)',
                     }}

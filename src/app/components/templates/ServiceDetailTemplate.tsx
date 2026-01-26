@@ -61,8 +61,9 @@ export function ServiceDetailTemplate({ slug = 'wordpress-development' }: Servic
       <main id="main-content" role="main">
         {/* Breadcrumbs */}
         <section 
-          className="py-4"
           style={{
+            paddingTop: 'var(--spacing-4)',
+            paddingBottom: 'var(--spacing-4)',
             backgroundColor: 'var(--background)',
             borderBottom: '1px solid var(--border-soft)'
           }}
@@ -90,8 +91,13 @@ export function ServiceDetailTemplate({ slug = 'wordpress-development' }: Servic
         >
           {/* Gradient orb decorations */}
           <div
-            className="absolute top-0 right-0 w-96 h-96 rounded-full"
             style={{
+              position: 'absolute',
+              top: 0,
+              right: 0,
+              width: '384px',
+              height: '384px',
+              borderRadius: '9999px',
               background: 'radial-gradient(circle, rgba(96, 165, 250, 0.3) 0%, transparent 70%)',
               filter: 'blur(80px)',
               transform: 'translate(30%, -30%)'
@@ -99,16 +105,18 @@ export function ServiceDetailTemplate({ slug = 'wordpress-development' }: Servic
           />
 
           <Container>
-            <div className="max-w-4xl mx-auto text-center relative z-10">
+            <div className="wp-max-w-4xl" style={{ margin: '0 auto', textAlign: 'center', position: 'relative', zIndex: 10 }}>
               <div
-                className="inline-block px-4 py-2 mb-6"
                 style={{
+                  display: 'inline-block',
+                  padding: '8px 16px',
+                  marginBottom: '24px',
                   backgroundColor: 'rgba(255, 255, 255, 0.15)',
                   backdropFilter: 'blur(10px)',
                   borderRadius: 'var(--radius-full)',
                   border: '1px solid rgba(255, 255, 255, 0.2)',
                   fontSize: 'var(--text-small)',
-                  fontFamily: 'Manrope, sans-serif',
+                  fontFamily: 'var(--font-secondary)',
                   fontWeight: 'var(--font-weight-semibold)',
                   textTransform: 'uppercase',
                   letterSpacing: '0.1em'
@@ -120,7 +128,7 @@ export function ServiceDetailTemplate({ slug = 'wordpress-development' }: Servic
 
               <h1
                 style={{
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'clamp(2rem, 5vw, 3.5rem)',
                   fontWeight: 'var(--font-weight-bold)',
                   lineHeight: '1.1',
@@ -139,7 +147,7 @@ export function ServiceDetailTemplate({ slug = 'wordpress-development' }: Servic
 
               <p
                 style={{
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-xl)',
                   lineHeight: '1.6',
                   color: 'rgba(255, 255, 255, 0.95)',
@@ -186,11 +194,11 @@ export function ServiceDetailTemplate({ slug = 'wordpress-development' }: Servic
         {/* Overview Section */}
         <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
           <Container>
-            <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-16">
+            <div className="wp-max-w-6xl" style={{ margin: '0 auto' }}>
+              <div style={{ textAlign: 'center', marginBottom: 'var(--spacing-16)' }}>
                 <h2
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-h1)',
                     fontWeight: 'var(--font-weight-bold)',
                     lineHeight: '1.2',
@@ -204,7 +212,7 @@ export function ServiceDetailTemplate({ slug = 'wordpress-development' }: Servic
 
                 <p
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-lg)',
                     lineHeight: '1.7',
                     color: 'var(--muted-foreground)',
@@ -217,24 +225,24 @@ export function ServiceDetailTemplate({ slug = 'wordpress-development' }: Servic
               </div>
 
               {/* Stats */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              <div className="wp-grid-4-cols" style={{ gap: 'var(--spacing-8)' }}>
                 {servicePageOverview.stats.map((stat, index) => {
                   const Icon = stat.icon;
                   return (
                     <div
                       key={index}
-                      className="text-center"
                       style={{
                         padding: '32px',
                         backgroundColor: 'var(--card)',
                         borderRadius: 'var(--radius-lg)',
-                        border: '1px solid var(--border-soft)'
+                        border: '1px solid var(--border-soft)',
+                        textAlign: 'center'
                       }}
                     >
                       <Icon size={32} style={{ marginBottom: '12px', color: 'var(--primary)' }} />
                       <div
                         style={{
-                          fontFamily: 'Lexend, sans-serif',
+                          fontFamily: 'var(--font-primary)',
                           fontSize: 'var(--text-h2)',
                           fontWeight: 'var(--font-weight-bold)',
                           marginBottom: '4px',
@@ -245,7 +253,7 @@ export function ServiceDetailTemplate({ slug = 'wordpress-development' }: Servic
                       </div>
                       <div
                         style={{
-                          fontFamily: 'Lexend, sans-serif',
+                          fontFamily: 'var(--font-primary)',
                           fontSize: 'var(--text-base)',
                           fontWeight: 'var(--font-weight-semibold)',
                           marginBottom: '8px',
@@ -256,7 +264,7 @@ export function ServiceDetailTemplate({ slug = 'wordpress-development' }: Servic
                       </div>
                       <p
                         style={{
-                          fontFamily: 'Manrope, sans-serif',
+                          fontFamily: 'var(--font-secondary)',
                           fontSize: 'var(--text-small)',
                           lineHeight: '1.5',
                           color: 'var(--muted-foreground)'
@@ -275,11 +283,11 @@ export function ServiceDetailTemplate({ slug = 'wordpress-development' }: Servic
         {/* Features Section */}
         <Section spacing="xl" style={{ backgroundColor: 'var(--muted)' }}>
           <Container>
-            <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-16">
+            <div className="wp-max-w-6xl" style={{ margin: '0 auto' }}>
+              <div style={{ textAlign: 'center', marginBottom: 'var(--spacing-16)' }}>
                 <h2
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-h1)',
                     fontWeight: 'var(--font-weight-bold)',
                     lineHeight: '1.2',
@@ -293,7 +301,7 @@ export function ServiceDetailTemplate({ slug = 'wordpress-development' }: Servic
 
                 <p
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-lg)',
                     lineHeight: '1.7',
                     color: 'var(--muted-foreground)'
@@ -303,7 +311,7 @@ export function ServiceDetailTemplate({ slug = 'wordpress-development' }: Servic
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="wp-grid-3-cols" style={{ gap: 'var(--spacing-8)' }}>
                 {servicePageFeatures.map((feature, index) => {
                   const Icon = feature.icon;
                   return (
@@ -333,7 +341,7 @@ export function ServiceDetailTemplate({ slug = 'wordpress-development' }: Servic
 
                       <h3
                         style={{
-                          fontFamily: 'Lexend, sans-serif',
+                          fontFamily: 'var(--font-primary)',
                           fontSize: 'var(--text-xl)',
                           fontWeight: 'var(--font-weight-bold)',
                           color: 'var(--foreground)',
@@ -344,7 +352,7 @@ export function ServiceDetailTemplate({ slug = 'wordpress-development' }: Servic
                       </h3>
                       <p
                         style={{
-                          fontFamily: 'Lexend, sans-serif',
+                          fontFamily: 'var(--font-primary)',
                           fontSize: 'var(--text-base)',
                           lineHeight: '1.6',
                           color: 'var(--muted-foreground)'
@@ -363,11 +371,11 @@ export function ServiceDetailTemplate({ slug = 'wordpress-development' }: Servic
         {/* Process Section */}
         <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
           <Container>
-            <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-16">
+            <div className="wp-max-w-6xl" style={{ margin: '0 auto' }}>
+              <div style={{ textAlign: 'center', marginBottom: 'var(--spacing-16)' }}>
                 <h2
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-h1)',
                     fontWeight: 'var(--font-weight-bold)',
                     lineHeight: '1.2',
@@ -381,7 +389,7 @@ export function ServiceDetailTemplate({ slug = 'wordpress-development' }: Servic
 
                 <p
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-lg)',
                     lineHeight: '1.7',
                     color: 'var(--muted-foreground)'
@@ -391,7 +399,7 @@ export function ServiceDetailTemplate({ slug = 'wordpress-development' }: Servic
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="wp-grid-3-cols" style={{ gap: 'var(--spacing-8)' }}>
                 {servicePageProcess.map((step, index) => (
                   <div
                     key={index}
@@ -417,7 +425,7 @@ export function ServiceDetailTemplate({ slug = 'wordpress-development' }: Servic
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        fontFamily: 'Lexend, sans-serif',
+                        fontFamily: 'var(--font-primary)',
                         fontSize: 'var(--text-lg)',
                         fontWeight: 'var(--font-weight-bold)'
                       }}
@@ -427,7 +435,7 @@ export function ServiceDetailTemplate({ slug = 'wordpress-development' }: Servic
 
                     <h3
                       style={{
-                        fontFamily: 'Lexend, sans-serif',
+                        fontFamily: 'var(--font-primary)',
                         fontSize: 'var(--text-xl)',
                         fontWeight: 'var(--font-weight-bold)',
                         color: 'var(--foreground)',
@@ -441,7 +449,7 @@ export function ServiceDetailTemplate({ slug = 'wordpress-development' }: Servic
                     {step.duration && (
                       <div
                         style={{
-                          fontFamily: 'Manrope, sans-serif',
+                          fontFamily: 'var(--font-secondary)',
                           fontSize: 'var(--text-small)',
                           fontWeight: 'var(--font-weight-semibold)',
                           color: 'var(--primary)',
@@ -455,7 +463,7 @@ export function ServiceDetailTemplate({ slug = 'wordpress-development' }: Servic
 
                     <p
                       style={{
-                        fontFamily: 'Lexend, sans-serif',
+                        fontFamily: 'var(--font-primary)',
                         fontSize: 'var(--text-base)',
                         lineHeight: '1.6',
                         color: 'var(--muted-foreground)'
@@ -473,11 +481,11 @@ export function ServiceDetailTemplate({ slug = 'wordpress-development' }: Servic
         {/* Sub-Services Section */}
         <Section spacing="xl" style={{ backgroundColor: 'var(--muted)' }}>
           <Container>
-            <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-16">
+            <div className="wp-max-w-6xl" style={{ margin: '0 auto' }}>
+              <div style={{ textAlign: 'center', marginBottom: 'var(--spacing-16)' }}>
                 <h2
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-h1)',
                     fontWeight: 'var(--font-weight-bold)',
                     lineHeight: '1.2',
@@ -491,7 +499,7 @@ export function ServiceDetailTemplate({ slug = 'wordpress-development' }: Servic
 
                 <p
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-lg)',
                     lineHeight: '1.7',
                     color: 'var(--muted-foreground)'
@@ -501,7 +509,7 @@ export function ServiceDetailTemplate({ slug = 'wordpress-development' }: Servic
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="wp-grid-2-cols" style={{ gap: 'var(--spacing-8)' }}>
                 {servicePageSubServices.map((subService, index) => {
                   const Icon = subService.icon;
                   return (
@@ -531,7 +539,7 @@ export function ServiceDetailTemplate({ slug = 'wordpress-development' }: Servic
 
                       <h3
                         style={{
-                          fontFamily: 'Lexend, sans-serif',
+                          fontFamily: 'var(--font-primary)',
                           fontSize: 'var(--text-h3)',
                           fontWeight: 'var(--font-weight-bold)',
                           color: 'var(--foreground)',
@@ -543,7 +551,7 @@ export function ServiceDetailTemplate({ slug = 'wordpress-development' }: Servic
 
                       <p
                         style={{
-                          fontFamily: 'Lexend, sans-serif',
+                          fontFamily: 'var(--font-primary)',
                           fontSize: 'var(--text-base)',
                           lineHeight: '1.6',
                           color: 'var(--muted-foreground)',
@@ -575,7 +583,7 @@ export function ServiceDetailTemplate({ slug = 'wordpress-development' }: Servic
                             />
                             <span
                               style={{
-                                fontFamily: 'Lexend, sans-serif',
+                                fontFamily: 'var(--font-primary)',
                                 fontSize: 'var(--text-base)',
                                 lineHeight: '1.5',
                                 color: 'var(--foreground)'
@@ -597,11 +605,11 @@ export function ServiceDetailTemplate({ slug = 'wordpress-development' }: Servic
         {/* Why Choose LightSpeed Section */}
         <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
           <Container>
-            <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-16">
+            <div className="wp-max-w-6xl" style={{ margin: '0 auto' }}>
+              <div style={{ textAlign: 'center', marginBottom: 'var(--spacing-16)' }}>
                 <h2
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-h1)',
                     fontWeight: 'var(--font-weight-bold)',
                     lineHeight: '1.2',
@@ -615,7 +623,7 @@ export function ServiceDetailTemplate({ slug = 'wordpress-development' }: Servic
 
                 <p
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-lg)',
                     lineHeight: '1.7',
                     color: 'var(--muted-foreground)'
@@ -625,7 +633,7 @@ export function ServiceDetailTemplate({ slug = 'wordpress-development' }: Servic
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="wp-grid-2-cols" style={{ gap: 'var(--spacing-8)' }}>
                 {servicePageWhyChoose.map((reason, index) => {
                   const Icon = reason.icon;
                   return (
@@ -655,7 +663,7 @@ export function ServiceDetailTemplate({ slug = 'wordpress-development' }: Servic
 
                       <h3
                         style={{
-                          fontFamily: 'Lexend, sans-serif',
+                          fontFamily: 'var(--font-primary)',
                           fontSize: 'var(--text-xl)',
                           fontWeight: 'var(--font-weight-bold)',
                           color: 'var(--foreground)',
@@ -666,7 +674,7 @@ export function ServiceDetailTemplate({ slug = 'wordpress-development' }: Servic
                       </h3>
                       <p
                         style={{
-                          fontFamily: 'Lexend, sans-serif',
+                          fontFamily: 'var(--font-primary)',
                           fontSize: 'var(--text-base)',
                           lineHeight: '1.6',
                           color: 'var(--muted-foreground)'
@@ -685,13 +693,13 @@ export function ServiceDetailTemplate({ slug = 'wordpress-development' }: Servic
         {/* Benefits & Deliverables Section */}
         <Section spacing="xl" style={{ backgroundColor: 'var(--muted)' }}>
           <Container>
-            <div className="max-w-6xl mx-auto">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div className="wp-max-w-6xl" style={{ margin: '0 auto' }}>
+              <div className="wp-grid-2-cols" style={{ gap: 'var(--spacing-12)' }}>
                 {/* Benefits */}
                 <div>
                   <h2
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-h2)',
                       fontWeight: 'var(--font-weight-bold)',
                       color: 'var(--foreground)',
@@ -722,7 +730,7 @@ export function ServiceDetailTemplate({ slug = 'wordpress-development' }: Servic
                         />
                         <span
                           style={{
-                            fontFamily: 'Lexend, sans-serif',
+                            fontFamily: 'var(--font-primary)',
                             fontSize: 'var(--text-base)',
                             lineHeight: '1.6',
                             color: 'var(--foreground)'
@@ -739,7 +747,7 @@ export function ServiceDetailTemplate({ slug = 'wordpress-development' }: Servic
                 <div>
                   <h2
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-h2)',
                       fontWeight: 'var(--font-weight-bold)',
                       color: 'var(--foreground)',
@@ -770,7 +778,7 @@ export function ServiceDetailTemplate({ slug = 'wordpress-development' }: Servic
                         />
                         <span
                           style={{
-                            fontFamily: 'Lexend, sans-serif',
+                            fontFamily: 'var(--font-primary)',
                             fontSize: 'var(--text-base)',
                             lineHeight: '1.6',
                             color: 'var(--foreground)'
@@ -790,11 +798,11 @@ export function ServiceDetailTemplate({ slug = 'wordpress-development' }: Servic
         {/* Related Services Section */}
         <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
           <Container>
-            <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-16">
+            <div className="wp-max-w-6xl" style={{ margin: '0 auto' }}>
+              <div style={{ textAlign: 'center', marginBottom: 'var(--spacing-16)' }}>
                 <h2
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-h1)',
                     fontWeight: 'var(--font-weight-bold)',
                     lineHeight: '1.2',
@@ -808,7 +816,7 @@ export function ServiceDetailTemplate({ slug = 'wordpress-development' }: Servic
 
                 <p
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-lg)',
                     lineHeight: '1.7',
                     color: 'var(--muted-foreground)'
@@ -818,7 +826,7 @@ export function ServiceDetailTemplate({ slug = 'wordpress-development' }: Servic
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="wp-grid-3-cols" style={{ gap: 'var(--spacing-8)' }}>
                 {servicePageRelated.map((relatedService, index) => (
                   <div
                     key={index}
@@ -842,7 +850,7 @@ export function ServiceDetailTemplate({ slug = 'wordpress-development' }: Servic
                   >
                     <h3
                       style={{
-                        fontFamily: 'Lexend, sans-serif',
+                        fontFamily: 'var(--font-primary)',
                         fontSize: 'var(--text-xl)',
                         fontWeight: 'var(--font-weight-bold)',
                         color: 'var(--foreground)',
@@ -853,7 +861,7 @@ export function ServiceDetailTemplate({ slug = 'wordpress-development' }: Servic
                     </h3>
                     <p
                       style={{
-                        fontFamily: 'Lexend, sans-serif',
+                        fontFamily: 'var(--font-primary)',
                         fontSize: 'var(--text-base)',
                         lineHeight: '1.6',
                         color: 'var(--muted-foreground)',
@@ -867,7 +875,7 @@ export function ServiceDetailTemplate({ slug = 'wordpress-development' }: Servic
                         display: 'flex',
                         alignItems: 'center',
                         gap: '8px',
-                        fontFamily: 'Manrope, sans-serif',
+                        fontFamily: 'var(--font-secondary)',
                         fontSize: 'var(--text-small)',
                         fontWeight: 'var(--font-weight-semibold)',
                         color: 'var(--primary)'

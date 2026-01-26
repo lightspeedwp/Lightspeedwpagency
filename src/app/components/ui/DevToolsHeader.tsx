@@ -146,7 +146,7 @@ export function DevToolsHeader({
           <h1
             style={{
               fontSize: 'var(--text-h1)',
-              fontFamily: 'Lexend, sans-serif',
+              fontFamily: 'var(--font-primary)',
               fontWeight: 'var(--font-weight-medium)',
               color: 'var(--foreground)',
               margin: '0 0 16px 0',
@@ -159,7 +159,7 @@ export function DevToolsHeader({
           <p
             style={{
               fontSize: 'var(--text-xl)',
-              fontFamily: 'Manrope, sans-serif',
+              fontFamily: 'var(--font-secondary)',
               fontWeight: 'var(--font-weight-regular)',
               color: 'var(--muted-foreground)',
               margin: '0 0 48px 0',
@@ -193,7 +193,7 @@ export function DevToolsHeader({
                   <div
                     style={{
                       fontSize: 'var(--text-h1)',
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontWeight: 'var(--font-weight-medium)',
                       color: 'var(--primary)',
                       lineHeight: 1,
@@ -205,7 +205,7 @@ export function DevToolsHeader({
                   <div
                     style={{
                       fontSize: 'var(--text-base)',
-                      fontFamily: 'Manrope, sans-serif',
+                      fontFamily: 'var(--font-secondary)',
                       fontWeight: 'var(--font-weight-regular)',
                       color: 'var(--muted-foreground)',
                       lineHeight: 1.5

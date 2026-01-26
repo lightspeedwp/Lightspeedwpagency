@@ -105,7 +105,7 @@ export function FeatureComparison({
       <span
         style={{
           fontSize: 'var(--text-small)',
-          fontFamily: 'Manrope, sans-serif',
+          fontFamily: 'var(--font-secondary)',
           color: isFeaturedColumn 
             ? 'var(--primary-foreground)' 
             : 'var(--foreground)'
@@ -126,7 +126,7 @@ export function FeatureComparison({
             textAlign: 'center', 
             marginBottom: '3rem',
             fontSize: 'var(--text-h2)',
-            fontFamily: 'Lexend, sans-serif',
+            fontFamily: 'var(--font-primary)',
             fontWeight: 'var(--font-weight-medium)',
             color: 'var(--foreground)'
           }}
@@ -138,7 +138,7 @@ export function FeatureComparison({
           <p
             style={{
               fontSize: 'var(--text-lead)',
-              fontFamily: 'Manrope, sans-serif',
+              fontFamily: 'var(--font-secondary)',
               color: 'var(--muted-foreground)',
               textAlign: 'center',
               marginTop: '-2rem',
@@ -165,7 +165,7 @@ export function FeatureComparison({
               width: '100%',
               borderCollapse: 'collapse',
               fontSize: 'var(--text-base)',
-              fontFamily: 'Manrope, sans-serif'
+              fontFamily: 'var(--font-secondary)'
             }}
           >
             {/* Table header */}
@@ -180,7 +180,7 @@ export function FeatureComparison({
                   style={{
                     padding: '1rem',
                     textAlign: 'left',
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontWeight: 'var(--font-weight-medium)',
                     fontSize: 'var(--text-base)'
                   }}
@@ -192,7 +192,7 @@ export function FeatureComparison({
                   style={{
                     padding: '1rem',
                     textAlign: 'center',
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontWeight: 'var(--font-weight-medium)',
                     fontSize: 'var(--text-base)',
                     backgroundColor: featuredColumn === 1 ? 'var(--primary)' : undefined,
@@ -206,7 +206,7 @@ export function FeatureComparison({
                   style={{
                     padding: '1rem',
                     textAlign: 'center',
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontWeight: 'var(--font-weight-medium)',
                     fontSize: 'var(--text-base)',
                     backgroundColor: featuredColumn === 2 ? 'var(--primary)' : undefined,
@@ -220,7 +220,7 @@ export function FeatureComparison({
                   style={{
                     padding: '1rem',
                     textAlign: 'center',
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontWeight: 'var(--font-weight-medium)',
                     fontSize: 'var(--text-base)',
                     backgroundColor: featuredColumn === 3 ? 'var(--primary)' : undefined,
@@ -247,7 +247,7 @@ export function FeatureComparison({
                   <td
                     style={{
                       padding: '1rem',
-                      fontFamily: 'Manrope, sans-serif',
+                      fontFamily: 'var(--font-secondary)',
                       fontSize: 'var(--text-base)'
                     }}
                   >
@@ -312,7 +312,7 @@ export function FeatureComparison({
         <p
           style={{
             fontSize: 'var(--text-small)',
-            fontFamily: 'Manrope, sans-serif',
+            fontFamily: 'var(--font-secondary)',
             color: 'var(--muted-foreground)',
             textAlign: 'center',
             marginTop: '1rem'

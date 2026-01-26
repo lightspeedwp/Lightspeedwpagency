@@ -323,16 +323,11 @@ export function TeamTemplate() {
         <CTASection
           title={teamPageCTA.title}
           description={teamPageCTA.description}
-          primaryButton={{
-            text: teamPageCTA.primaryButton.text,
-            page: teamPageCTA.primaryButton.page
-          }}
-          secondaryButton={{
-            text: teamPageCTA.secondaryButton.text,
-            page: teamPageCTA.secondaryButton.page
-          }}
-          variant="gradient"
-          align="center"
+          primaryButtonText={teamPageCTA.buttons[0].text}
+          primaryButtonPage={teamPageCTA.buttons[0].page}
+          secondaryButtonText={teamPageCTA.buttons[1].text}
+          secondaryButtonPage={teamPageCTA.buttons[1].page}
+          gradient="blue"
         />
       </main>
 

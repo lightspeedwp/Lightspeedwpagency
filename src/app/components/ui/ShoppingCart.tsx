@@ -131,7 +131,7 @@ export function ShoppingCart({
         <h3
           className="mb-3"
           style={{
-            fontFamily: 'Lexend, sans-serif',
+            fontFamily: 'var(--font-primary)',
             fontSize: 'var(--text-h4)',
             fontWeight: 'var(--font-weight-semibold)',
             color: 'var(--foreground)',
@@ -144,7 +144,7 @@ export function ShoppingCart({
         <p
           className="mb-6"
           style={{
-            fontFamily: 'Lexend, sans-serif',
+            fontFamily: 'var(--font-primary)',
             fontSize: 'var(--text-base)',
             color: 'var(--muted-foreground)',
             margin: 0,
@@ -187,7 +187,7 @@ export function ShoppingCart({
           <div className="flex items-center justify-between">
             <h3
               style={{
-                fontFamily: 'Lexend, sans-serif',
+                fontFamily: 'var(--font-primary)',
                 fontSize: 'var(--text-lg)',
                 fontWeight: 'var(--font-weight-semibold)',
                 color: 'var(--foreground)',
@@ -200,7 +200,7 @@ export function ShoppingCart({
             <span
               className="px-2 py-1"
               style={{
-                fontFamily: 'Lexend, sans-serif',
+                fontFamily: 'var(--font-primary)',
                 fontSize: 'var(--text-small)',
                 fontWeight: 'var(--font-weight-medium)',
                 backgroundColor: 'var(--primary)',
@@ -244,7 +244,7 @@ export function ShoppingCart({
                 <h4
                   className="mb-1"
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-base)',
                     fontWeight: 'var(--font-weight-medium)',
                     color: 'var(--foreground)',
@@ -261,7 +261,7 @@ export function ShoppingCart({
                   <p
                     className="mb-2"
                     style={{
-                      fontFamily: 'Manrope, sans-serif',
+                      fontFamily: 'var(--font-secondary)',
                       fontSize: 'var(--text-small)',
                       color: 'var(--muted-foreground)',
                       margin: 0,
@@ -302,7 +302,7 @@ export function ShoppingCart({
 
                     <span
                       style={{
-                        fontFamily: 'Lexend, sans-serif',
+                        fontFamily: 'var(--font-primary)',
                         fontSize: 'var(--text-base)',
                         fontWeight: 'var(--font-weight-medium)',
                         color: 'var(--foreground)',
@@ -343,7 +343,7 @@ export function ShoppingCart({
                   {/* Price */}
                   <span
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-base)',
                       fontWeight: 'var(--font-weight-semibold)',
                       color: 'var(--foreground)',
@@ -401,7 +401,7 @@ export function ShoppingCart({
           <div className="flex items-center justify-between">
             <span
               style={{
-                fontFamily: 'Lexend, sans-serif',
+                fontFamily: 'var(--font-primary)',
                 fontSize: 'var(--text-base)',
                 color: 'var(--muted-foreground)',
               }}
@@ -410,7 +410,7 @@ export function ShoppingCart({
             </span>
             <span
               style={{
-                fontFamily: 'Lexend, sans-serif',
+                fontFamily: 'var(--font-primary)',
                 fontSize: 'var(--text-lg)',
                 fontWeight: 'var(--font-weight-bold)',
                 color: 'var(--foreground)',
@@ -462,7 +462,7 @@ export function ShoppingCart({
         >
           <h2
             style={{
-              fontFamily: 'Lexend, sans-serif',
+              fontFamily: 'var(--font-primary)',
               fontSize: 'var(--text-h3)',
               fontWeight: 'var(--font-weight-semibold)',
               color: 'var(--foreground)',
@@ -509,7 +509,7 @@ export function ShoppingCart({
                     <h3
                       className="mb-2"
                       style={{
-                        fontFamily: 'Lexend, sans-serif',
+                        fontFamily: 'var(--font-primary)',
                         fontSize: 'var(--text-lg)',
                         fontWeight: 'var(--font-weight-semibold)',
                         color: 'var(--foreground)',
@@ -522,7 +522,7 @@ export function ShoppingCart({
                     {item.variant && (
                       <p
                         style={{
-                          fontFamily: 'Manrope, sans-serif',
+                          fontFamily: 'var(--font-secondary)',
                           fontSize: 'var(--text-base)',
                           color: 'var(--muted-foreground)',
                           margin: 0,
@@ -576,7 +576,7 @@ export function ShoppingCart({
                   <div className="flex items-center gap-3">
                     <span
                       style={{
-                        fontFamily: 'Lexend, sans-serif',
+                        fontFamily: 'var(--font-primary)',
                         fontSize: 'var(--text-base)',
                         color: 'var(--muted-foreground)',
                       }}
@@ -613,7 +613,7 @@ export function ShoppingCart({
 
                       <span
                         style={{
-                          fontFamily: 'Lexend, sans-serif',
+                          fontFamily: 'var(--font-primary)',
                           fontSize: 'var(--text-lg)',
                           fontWeight: 'var(--font-weight-medium)',
                           color: 'var(--foreground)',
@@ -657,7 +657,7 @@ export function ShoppingCart({
                     <p
                       className="mb-1"
                       style={{
-                        fontFamily: 'Lexend, sans-serif',
+                        fontFamily: 'var(--font-primary)',
                         fontSize: 'var(--text-h4)',
                         fontWeight: 'var(--font-weight-bold)',
                         color: 'var(--foreground)',
@@ -668,7 +668,7 @@ export function ShoppingCart({
                     </p>
                     <p
                       style={{
-                        fontFamily: 'Manrope, sans-serif',
+                        fontFamily: 'var(--font-secondary)',
                         fontSize: 'var(--text-small)',
                         color: 'var(--muted-foreground)',
                         margin: 0,
@@ -696,7 +696,7 @@ export function ShoppingCart({
             <h3
               className="mb-4"
               style={{
-                fontFamily: 'Lexend, sans-serif',
+                fontFamily: 'var(--font-primary)',
                 fontSize: 'var(--text-lg)',
                 fontWeight: 'var(--font-weight-semibold)',
                 color: 'var(--foreground)',
@@ -712,7 +712,7 @@ export function ShoppingCart({
             <div className="flex items-center justify-between">
               <span
                 style={{
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-base)',
                   color: 'var(--muted-foreground)',
                 }}
@@ -721,7 +721,7 @@ export function ShoppingCart({
               </span>
               <span
                 style={{
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-base)',
                   fontWeight: 'var(--font-weight-medium)',
                   color: 'var(--foreground)',
@@ -735,7 +735,7 @@ export function ShoppingCart({
             <div className="flex items-center justify-between">
               <span
                 style={{
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-base)',
                   color: 'var(--muted-foreground)',
                 }}
@@ -744,7 +744,7 @@ export function ShoppingCart({
               </span>
               <span
                 style={{
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-base)',
                   fontWeight: 'var(--font-weight-medium)',
                   color: shipping === 0 ? 'var(--success)' : 'var(--foreground)',
@@ -759,7 +759,7 @@ export function ShoppingCart({
               <p
                 className="px-3 py-2"
                 style={{
-                  fontFamily: 'Manrope, sans-serif',
+                  fontFamily: 'var(--font-secondary)',
                   fontSize: 'var(--text-small)',
                   color: 'var(--muted-foreground)',
                   backgroundColor: 'var(--accent)',
@@ -775,7 +775,7 @@ export function ShoppingCart({
             <div className="flex items-center justify-between">
               <span
                 style={{
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-base)',
                   color: 'var(--muted-foreground)',
                 }}
@@ -784,7 +784,7 @@ export function ShoppingCart({
               </span>
               <span
                 style={{
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-base)',
                   fontWeight: 'var(--font-weight-medium)',
                   color: 'var(--foreground)',
@@ -803,7 +803,7 @@ export function ShoppingCart({
             >
               <span
                 style={{
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-lg)',
                   fontWeight: 'var(--font-weight-semibold)',
                   color: 'var(--foreground)',
@@ -813,7 +813,7 @@ export function ShoppingCart({
               </span>
               <span
                 style={{
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-h4)',
                   fontWeight: 'var(--font-weight-bold)',
                   color: 'var(--primary)',
@@ -865,7 +865,7 @@ export function CartBadge({ count }: { count: number }) {
         right: '-6px',
         width: '20px',
         height: '20px',
-        fontFamily: 'Lexend, sans-serif',
+        fontFamily: 'var(--font-primary)',
         fontSize: 'var(--text-small)',
         fontWeight: 'var(--font-weight-bold)',
         backgroundColor: 'var(--primary)',

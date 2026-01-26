@@ -136,7 +136,7 @@ export function Alert({
             <h3
               className="mb-1"
               style={{
-                fontFamily: 'Lexend, sans-serif',
+                fontFamily: 'var(--font-primary)',
                 fontSize: 'var(--text-base)',
                 fontWeight: 'var(--font-weight-semibold)',
                 color: 'var(--foreground)',
@@ -149,7 +149,7 @@ export function Alert({
 
           <p
             style={{
-              fontFamily: 'Manrope, sans-serif',
+              fontFamily: 'var(--font-secondary)',
               fontSize: 'var(--text-base)',
               color: 'var(--foreground)',
               margin: 0,

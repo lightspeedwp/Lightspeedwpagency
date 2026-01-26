@@ -150,7 +150,7 @@ export function PortfolioArchiveTemplate() {
                 color: 'var(--primary-foreground)',
                 padding: '8px 16px',
                 borderRadius: 'var(--radius-lg)',
-                fontFamily: 'Lexend, sans-serif',
+                fontFamily: 'var(--font-primary)',
                 fontSize: 'var(--text-small)',
                 fontWeight: 'var(--font-weight-medium)',
                 backdropFilter: 'blur(10px)',
@@ -163,10 +163,10 @@ export function PortfolioArchiveTemplate() {
           </div>
 
           {/* Project Content */}
-          <div className="p-6">
+          <div style={{ padding: 'var(--spacing-6)' }}>
             <h3 
               style={{
-                fontFamily: 'Lexend, sans-serif',
+                fontFamily: 'var(--font-primary)',
                 fontSize: 'var(--text-h3)',
                 fontWeight: 'var(--font-weight-semibold)',
                 color: 'var(--card-foreground)',
@@ -179,7 +179,7 @@ export function PortfolioArchiveTemplate() {
 
             <p 
               style={{
-                fontFamily: 'Lexend, sans-serif',
+                fontFamily: 'var(--font-primary)',
                 fontSize: 'var(--text-base)',
                 color: 'var(--muted-foreground)',
                 lineHeight: '1.6',
@@ -190,12 +190,12 @@ export function PortfolioArchiveTemplate() {
             </p>
 
             {/* Tags */}
-            <div className="flex flex-wrap gap-2">
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--spacing-2)' }}>
               {item.tags.map((tag, index) => (
                 <span 
                   key={index}
                   style={{
-                    fontFamily: 'Manrope, sans-serif',
+                    fontFamily: 'var(--font-secondary)',
                     fontSize: 'var(--text-small)',
                     color: 'var(--muted-foreground)',
                     backgroundColor: 'var(--muted)',
@@ -222,8 +222,9 @@ export function PortfolioArchiveTemplate() {
       <main id="main-content" role="main">
         {/* Breadcrumbs - Modern styling */}
         <section 
-          className="py-4"
           style={{
+            paddingTop: 'var(--spacing-4)',
+            paddingBottom: 'var(--spacing-4)',
             backgroundColor: 'var(--background)',
           }}
         >
@@ -273,15 +274,18 @@ export function PortfolioArchiveTemplate() {
           />
 
           <Container style={{ position: 'relative', zIndex: 1 }}>
-            <div className="text-center max-w-4xl mx-auto">
+            <div className="wp-text-center wp-max-w-4xl" style={{ margin: '0 auto' }}>
               <span 
-                className="inline-flex items-center px-6 py-3 mb-8"
                 style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  padding: '12px 24px',
+                  marginBottom: 'var(--spacing-8)',
                   backgroundColor: 'var(--muted)',
                   color: 'var(--muted-foreground)',
                   borderRadius: 'var(--radius-xl)',
                   border: '1px solid var(--border-soft)',
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-base)',
                   fontWeight: 'var(--font-weight-medium)',
                   textTransform: 'uppercase',
@@ -293,7 +297,7 @@ export function PortfolioArchiveTemplate() {
 
               <h1 
                 style={{
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-h1)',
                   fontWeight: 'var(--font-weight-semibold)',
                   lineHeight: 'var(--line-height-tight)',
@@ -307,7 +311,7 @@ export function PortfolioArchiveTemplate() {
 
               <p 
                 style={{
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-lead)',
                   fontWeight: 'var(--font-weight-regular)',
                   lineHeight: 'var(--line-height-relaxed)',
@@ -321,15 +325,18 @@ export function PortfolioArchiveTemplate() {
 
               {/* Stats */}
               <div 
-                className="grid grid-cols-3 gap-8 mt-12 pt-12"
+                className="wp-grid-3-cols"
                 style={{
+                  gap: 'var(--spacing-8)',
+                  marginTop: 'var(--spacing-12)',
+                  paddingTop: 'var(--spacing-12)',
                   borderTop: '1px solid var(--border-soft)'
                 }}
               >
                 <div>
                   <div 
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-h2)',
                       fontWeight: 'var(--font-weight-bold)',
                       marginBottom: '8px',
@@ -340,7 +347,7 @@ export function PortfolioArchiveTemplate() {
                   </div>
                   <div 
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-base)',
                       fontWeight: 'var(--font-weight-regular)',
                       color: 'var(--muted-foreground)'
@@ -352,7 +359,7 @@ export function PortfolioArchiveTemplate() {
                 <div>
                   <div 
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-h2)',
                       fontWeight: 'var(--font-weight-bold)',
                       marginBottom: '8px',
@@ -363,7 +370,7 @@ export function PortfolioArchiveTemplate() {
                   </div>
                   <div 
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-base)',
                       fontWeight: 'var(--font-weight-regular)',
                       color: 'var(--muted-foreground)'
@@ -375,7 +382,7 @@ export function PortfolioArchiveTemplate() {
                 <div>
                   <div 
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-h2)',
                       fontWeight: 'var(--font-weight-bold)',
                       marginBottom: '8px',
@@ -386,7 +393,7 @@ export function PortfolioArchiveTemplate() {
                   </div>
                   <div 
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-base)',
                       fontWeight: 'var(--font-weight-regular)',
                       color: 'var(--muted-foreground)'
@@ -402,19 +409,20 @@ export function PortfolioArchiveTemplate() {
 
         {/* Filter Bar */}
         <section 
-          className="py-6"
           style={{
+            paddingTop: 'var(--spacing-6)',
+            paddingBottom: 'var(--spacing-6)',
             backgroundColor: 'var(--background)',
             borderBottom: '1px solid var(--border-soft)',
           }}
         >
           <Container>
-            <div className="flex flex-col gap-6">
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--spacing-6)' }}>
               {/* Mobile Filter Button (show on mobile, hide on desktop) */}
-              <div className="flex items-center justify-between gap-4 lg:hidden">
+              <div className="lg:hidden" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 'var(--spacing-4)' }}>
                 <h2 
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-h4)',
                     fontWeight: 'var(--font-weight-medium)',
                     color: 'var(--foreground)',
@@ -437,7 +445,7 @@ export function PortfolioArchiveTemplate() {
                     color: 'var(--primary-foreground)',
                     border: 'none',
                     borderRadius: 'var(--radius)',
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-base)',
                     fontWeight: 'var(--font-weight-medium)',
                     cursor: 'pointer',
@@ -457,14 +465,14 @@ export function PortfolioArchiveTemplate() {
               </div>
 
               {/* Category Filters (hide on mobile, show on desktop) */}
-              <div className="hidden lg:flex flex-wrap gap-3">
+              <div className="hidden lg:flex" style={{ flexWrap: 'wrap', gap: 'var(--spacing-3)' }}>
                 {categories.map((category) => (
                   <button
                     key={category}
                     onClick={() => setSelectedCategory(category)}
-                    className="px-6 py-3"
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      padding: '12px 24px',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-base)',
                       fontWeight: 'var(--font-weight-medium)',
                       backgroundColor: selectedCategory === category 
@@ -499,7 +507,7 @@ export function PortfolioArchiveTemplate() {
               {/* Results Count */}
               <p 
                 style={{
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-base)',
                   color: 'var(--muted-foreground)',
                   margin: 0,
@@ -514,14 +522,14 @@ export function PortfolioArchiveTemplate() {
         {/* Portfolio Grid */}
         <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
           <Container>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" ref={containerRef}>
+            <div className="wp-grid-3-cols" style={{ gap: 'var(--spacing-8)' }} ref={containerRef}>
               {isLoading ? (
                 // Loading skeletons
                 Array.from({ length: 6 }).map((_, index) => (
                   <div
                     key={index}
-                    className="p-6"
                     style={{
+                      padding: 'var(--spacing-6)',
                       backgroundColor: 'var(--card)',
                       borderRadius: 'var(--radius-xl)',
                       border: '1px solid var(--border-soft)'
@@ -539,7 +547,7 @@ export function PortfolioArchiveTemplate() {
                     <Skeleton width="80%" height="16px" className="mb-4" variant="text" />
                     
                     {/* Tags skeleton */}
-                    <div className="flex gap-2">
+                    <div style={{ display: 'flex', gap: 'var(--spacing-2)' }}>
                       <Skeleton width="60px" height="24px" variant="rectangular" />
                       <Skeleton width="80px" height="24px" variant="rectangular" />
                       <Skeleton width="70px" height="24px" variant="rectangular" />

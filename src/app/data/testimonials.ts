@@ -59,3 +59,43 @@ export const testimonials: ExtendedTestimonial[] = [
     service: 'WordPress Support'
   }
 ];
+
+/**
+ * Employee Testimonials
+ * Internal testimonials from LSX Design team members
+ */
+export const employeeTestimonials: ExtendedTestimonial[] = [
+  {
+    id: 'emp-1',
+    quote: 'Working at LSX Design has been the most rewarding experience of my career. The focus on continuous learning and work-life balance is real, not just a slogan.',
+    author: 'Sarah Jenkins',
+    role: 'Senior Developer',
+    company: 'LSX Design',
+    rating: 5,
+    industry: ['Internal'],
+    serviceType: ['Development'],
+    service: 'Employee'
+  },
+  {
+    id: 'emp-2',
+    quote: 'I appreciate the autonomy and trust we are given. The remote-first culture allows me to work from where I am most productive.',
+    author: 'Michael Chen',
+    role: 'UX Designer',
+    company: 'LSX Design',
+    rating: 5,
+    industry: ['Internal'],
+    serviceType: ['Design'],
+    service: 'Employee'
+  },
+  {
+    id: 'emp-3',
+    quote: 'The team support is incredible. Even though we are remote, I feel more connected to my colleagues here than I did in an office.',
+    author: 'Elena Rodriguez',
+    role: 'Project Manager',
+    company: 'LSX Design',
+    rating: 5,
+    industry: ['Internal'],
+    serviceType: ['Management'],
+    service: 'Employee'
+  }
+];

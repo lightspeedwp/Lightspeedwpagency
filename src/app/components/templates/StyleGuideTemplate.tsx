@@ -63,29 +63,31 @@ export function StyleGuideTemplate() {
       <main id="main-content" role="main">
         {/* Hero */}
         <section 
-          className="py-16"
           style={{
+            paddingTop: 'var(--spacing-16)',
+            paddingBottom: 'var(--spacing-16)',
             backgroundColor: 'var(--background)',
             borderBottom: '1px solid var(--border)',
           }}
         >
           <Container>
             {/* Breadcrumbs */}
-            <Breadcrumbs
-              items={[
-                { label: 'Home', page: 'home' },
-                { label: 'Developer Tools', page: 'dev-tools' },
-                { label: 'Style Guide' }
-              ]}
-              className="mb-8"
-            />
+            <div style={{ marginBottom: 'var(--spacing-8)' }}>
+              <Breadcrumbs
+                items={[
+                  { label: 'Home', page: 'home' },
+                  { label: 'Developer Tools', page: 'dev-tools' },
+                  { label: 'Style Guide' }
+                ]}
+              />
+            </div>
 
             <Heading level={1} style={{ marginBottom: '16px' }}>
               Design System Style Guide
             </Heading>
             <p 
               style={{
-                fontFamily: 'Lexend, sans-serif',
+                fontFamily: 'var(--font-primary)',
                 fontSize: 'var(--text-lg)',
                 color: 'var(--muted-foreground)',
                 lineHeight: '1.6',
@@ -98,17 +100,17 @@ export function StyleGuideTemplate() {
         </section>
 
         {/* Typography */}
-        <section className="py-16" style={{ backgroundColor: 'var(--background)' }}>
+        <section style={{ paddingTop: 'var(--spacing-16)', paddingBottom: 'var(--spacing-16)', backgroundColor: 'var(--background)' }}>
           <Container>
             <Heading level={2} style={{ marginBottom: '32px' }}>
               Typography
             </Heading>
 
             {/* Font Families */}
-            <div className="mb-12">
+            <div style={{ marginBottom: 'var(--spacing-12)' }}>
               <h3 
                 style={{
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-h3)',
                   fontWeight: 'var(--font-weight-medium)',
                   color: 'var(--foreground)',
@@ -117,17 +119,18 @@ export function StyleGuideTemplate() {
               >
                 Font Families
               </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="wp-grid-2-cols" style={{ gap: 'var(--spacing-6)' }}>
                 <div 
-                  className="p-6 rounded-[var(--radius-lg)]"
                   style={{
+                    padding: 'var(--spacing-6)',
+                    borderRadius: 'var(--radius-lg)',
                     backgroundColor: 'var(--card)',
                     border: '1px solid var(--border)',
                   }}
                 >
                   <p 
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-h3)',
                       fontWeight: 'var(--font-weight-medium)',
                       color: 'var(--foreground)',
@@ -138,7 +141,7 @@ export function StyleGuideTemplate() {
                   </p>
                   <p 
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-base)',
                       color: 'var(--muted-foreground)',
                       margin: 0,
@@ -148,15 +151,16 @@ export function StyleGuideTemplate() {
                   </p>
                 </div>
                 <div 
-                  className="p-6 rounded-[var(--radius-lg)]"
                   style={{
+                    padding: 'var(--spacing-6)',
+                    borderRadius: 'var(--radius-lg)',
                     backgroundColor: 'var(--card)',
                     border: '1px solid var(--border)',
                   }}
                 >
                   <p 
                     style={{
-                      fontFamily: 'Manrope, sans-serif',
+                      fontFamily: 'var(--font-secondary)',
                       fontSize: 'var(--text-h3)',
                       fontWeight: 'var(--font-weight-medium)',
                       color: 'var(--foreground)',
@@ -167,7 +171,7 @@ export function StyleGuideTemplate() {
                   </p>
                   <p 
                     style={{
-                      fontFamily: 'Manrope, sans-serif',
+                      fontFamily: 'var(--font-secondary)',
                       fontSize: 'var(--text-base)',
                       color: 'var(--muted-foreground)',
                       margin: 0,
@@ -180,10 +184,10 @@ export function StyleGuideTemplate() {
             </div>
 
             {/* Type Scale */}
-            <div className="mb-12">
+            <div style={{ marginBottom: 'var(--spacing-12)' }}>
               <h3 
                 style={{
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-h3)',
                   fontWeight: 'var(--font-weight-medium)',
                   color: 'var(--foreground)',
@@ -192,20 +196,21 @@ export function StyleGuideTemplate() {
               >
                 Type Scale
               </h3>
-              <div className="flex flex-col gap-6">
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--spacing-6)' }}>
                 {typographyScale.map((item) => (
                   <div 
                     key={item.variable}
-                    className="p-6 rounded-[var(--radius-lg)]"
                     style={{
+                      padding: 'var(--spacing-6)',
+                      borderRadius: 'var(--radius-lg)',
                       backgroundColor: 'var(--card)',
                       border: '1px solid var(--border)',
                     }}
                   >
-                    <div className="flex items-baseline justify-between mb-2">
+                    <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: 'var(--spacing-2)' }}>
                       <code 
-                        className="px-1.5 py-0.5"
                         style={{
+                          padding: '2px 6px',
                           fontFamily: 'monospace',
                           fontSize: 'var(--text-small)',
                           color: 'var(--primary)',
@@ -217,7 +222,7 @@ export function StyleGuideTemplate() {
                       </code>
                       <span 
                         style={{
-                          fontFamily: 'Manrope, sans-serif',
+                          fontFamily: 'var(--font-secondary)',
                           fontSize: 'var(--text-small)',
                           color: 'var(--muted-foreground)',
                         }}
@@ -227,7 +232,7 @@ export function StyleGuideTemplate() {
                     </div>
                     <p 
                       style={{
-                        fontFamily: 'Lexend, sans-serif',
+                        fontFamily: 'var(--font-primary)',
                         fontSize: `var(${item.variable})`,
                         fontWeight: item.element.startsWith('h') ? 'var(--font-weight-medium)' : 'var(--font-weight-regular)',
                         color: 'var(--foreground)',
@@ -245,7 +250,7 @@ export function StyleGuideTemplate() {
             <div>
               <h3 
                 style={{
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-h3)',
                   fontWeight: 'var(--font-weight-medium)',
                   color: 'var(--foreground)',
@@ -254,19 +259,20 @@ export function StyleGuideTemplate() {
               >
                 Font Weights
               </h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="wp-grid-3-cols" style={{ gap: 'var(--spacing-6)' }}>
                 {['regular', 'medium', 'bold'].map((weight) => (
                   <div 
                     key={weight}
-                    className="p-6 rounded-[var(--radius-lg)]"
                     style={{
+                      padding: 'var(--spacing-6)',
+                      borderRadius: 'var(--radius-lg)',
                       backgroundColor: 'var(--card)',
                       border: '1px solid var(--border)',
                     }}
                   >
                     <code 
-                      className="px-1.5 py-0.5"
                       style={{
+                        padding: '2px 6px',
                         fontFamily: 'monospace',
                         fontSize: 'var(--text-small)',
                         color: 'var(--primary)',
@@ -280,7 +286,7 @@ export function StyleGuideTemplate() {
                     </code>
                     <p 
                       style={{
-                        fontFamily: 'Lexend, sans-serif',
+                        fontFamily: 'var(--font-primary)',
                         fontSize: 'var(--text-lg)',
                         fontWeight: `var(--font-weight-${weight})`,
                         color: 'var(--foreground)',
@@ -298,8 +304,9 @@ export function StyleGuideTemplate() {
 
         {/* Colors */}
         <section 
-          className="py-16"
           style={{
+            paddingTop: 'var(--spacing-16)',
+            paddingBottom: 'var(--spacing-16)',
             backgroundColor: 'var(--muted)',
             borderTop: '1px solid var(--border)',
           }}
@@ -309,24 +316,25 @@ export function StyleGuideTemplate() {
               Color System
             </Heading>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="wp-grid-3-cols" style={{ gap: 'var(--spacing-6)' }}>
               {colorTokens.map((token) => (
                 <div 
                   key={token.name}
-                  className="rounded-[var(--radius-lg)] overflow-hidden"
                   style={{
+                    borderRadius: 'var(--radius-lg)',
+                    overflow: 'hidden',
                     border: '1px solid var(--border)',
                   }}
                 >
                   <div 
-                    className="h-24"
                     style={{
+                      height: '96px',
                       backgroundColor: `var(${token.name})`,
                     }}
                   />
                   <div 
-                    className="p-4"
                     style={{
+                      padding: 'var(--spacing-4)',
                       backgroundColor: 'var(--card)',
                     }}
                   >
@@ -343,7 +351,7 @@ export function StyleGuideTemplate() {
                     </code>
                     <p 
                       style={{
-                        fontFamily: 'Lexend, sans-serif',
+                        fontFamily: 'var(--font-primary)',
                         fontSize: 'var(--text-base)',
                         fontWeight: 'var(--font-weight-medium)',
                         color: 'var(--foreground)',
@@ -354,7 +362,7 @@ export function StyleGuideTemplate() {
                     </p>
                     <p 
                       style={{
-                        fontFamily: 'Manrope, sans-serif',
+                        fontFamily: 'var(--font-secondary)',
                         fontSize: 'var(--text-small)',
                         color: 'var(--muted-foreground)',
                         margin: 0,
@@ -370,17 +378,17 @@ export function StyleGuideTemplate() {
         </section>
 
         {/* Spacing */}
-        <section className="py-16" style={{ backgroundColor: 'var(--background)' }}>
+        <section style={{ paddingTop: 'var(--spacing-16)', paddingBottom: 'var(--spacing-16)', backgroundColor: 'var(--background)' }}>
           <Container>
             <Heading level={2} style={{ marginBottom: '32px' }}>
               Spacing Scale
             </Heading>
 
-            <div className="flex flex-col gap-6">
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--spacing-6)' }}>
               {spacingScale.map((item) => (
                 <div 
                   key={item.class}
-                  className="flex items-center gap-6"
+                  style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-6)' }}
                 >
                   <code 
                     style={{
@@ -401,7 +409,7 @@ export function StyleGuideTemplate() {
                   />
                   <span 
                     style={{
-                      fontFamily: 'Manrope, sans-serif',
+                      fontFamily: 'var(--font-secondary)',
                       fontSize: 'var(--text-small)',
                       color: 'var(--muted-foreground)',
                     }}
@@ -416,8 +424,9 @@ export function StyleGuideTemplate() {
 
         {/* Border Radius */}
         <section 
-          className="py-16"
           style={{
+            paddingTop: 'var(--spacing-16)',
+            paddingBottom: 'var(--spacing-16)',
             backgroundColor: 'var(--muted)',
             borderTop: '1px solid var(--border)',
           }}
@@ -427,12 +436,13 @@ export function StyleGuideTemplate() {
               Border Radius
             </Heading>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="wp-grid-2-cols" style={{ gap: 'var(--spacing-6)' }}>
               {radiusTokens.map((token) => (
                 <div 
                   key={token.variable}
-                  className="p-6 rounded-[var(--radius-lg)]"
                   style={{
+                    padding: 'var(--spacing-6)',
+                    borderRadius: 'var(--radius-lg)',
                     backgroundColor: 'var(--card)',
                     border: '1px solid var(--border)',
                   }}
@@ -449,15 +459,15 @@ export function StyleGuideTemplate() {
                     {token.variable}
                   </code>
                   <div 
-                    className="h-24"
                     style={{
+                      height: '96px',
                       backgroundColor: 'var(--primary)',
                       borderRadius: `var(${token.variable})`,
                     }}
                   />
                   <p 
                     style={{
-                      fontFamily: 'Manrope, sans-serif',
+                      fontFamily: 'var(--font-secondary)',
                       fontSize: 'var(--text-small)',
                       color: 'var(--muted-foreground)',
                       marginTop: '8px',
@@ -473,18 +483,18 @@ export function StyleGuideTemplate() {
         </section>
 
         {/* Buttons */}
-        <section className="py-16" style={{ backgroundColor: 'var(--background)' }}>
+        <section style={{ paddingTop: 'var(--spacing-16)', paddingBottom: 'var(--spacing-16)', backgroundColor: 'var(--background)' }}>
           <Container>
             <Heading level={2} style={{ marginBottom: '32px' }}>
               Buttons
             </Heading>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="wp-grid-2-cols" style={{ gap: 'var(--spacing-8)' }}>
               {/* Primary Button */}
               <div>
                 <h3 
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-h4)',
                     fontWeight: 'var(--font-weight-medium)',
                     color: 'var(--foreground)',
@@ -493,7 +503,7 @@ export function StyleGuideTemplate() {
                 >
                   Primary Button
                 </h3>
-                <div className="flex flex-col gap-4">
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--spacing-4)' }}>
                   <Button variant="primary">Primary Button</Button>
                   <Button variant="primary" disabled>Disabled</Button>
                 </div>
@@ -503,7 +513,7 @@ export function StyleGuideTemplate() {
               <div>
                 <h3 
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-h4)',
                     fontWeight: 'var(--font-weight-medium)',
                     color: 'var(--foreground)',
@@ -512,7 +522,7 @@ export function StyleGuideTemplate() {
                 >
                   Secondary Button
                 </h3>
-                <div className="flex flex-col gap-4">
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--spacing-4)' }}>
                   <Button variant="secondary">Secondary Button</Button>
                   <Button variant="secondary" disabled>Disabled</Button>
                 </div>
@@ -522,7 +532,7 @@ export function StyleGuideTemplate() {
               <div>
                 <h3 
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-h4)',
                     fontWeight: 'var(--font-weight-medium)',
                     color: 'var(--foreground)',
@@ -531,7 +541,7 @@ export function StyleGuideTemplate() {
                 >
                   Outline Button
                 </h3>
-                <div className="flex flex-col gap-4">
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--spacing-4)' }}>
                   <Button variant="outline">Outline Button</Button>
                   <Button variant="outline" disabled>Disabled</Button>
                 </div>
@@ -541,7 +551,7 @@ export function StyleGuideTemplate() {
               <div>
                 <h3 
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-h4)',
                     fontWeight: 'var(--font-weight-medium)',
                     color: 'var(--foreground)',
@@ -550,11 +560,15 @@ export function StyleGuideTemplate() {
                 >
                   With Icons
                 </h3>
-                <div className="flex flex-col gap-4">
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--spacing-4)' }}>
                   <button
-                    className="flex items-center gap-2 px-6 py-3 rounded-[var(--radius)]"
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 'var(--spacing-2)',
+                      padding: '12px 24px',
+                      borderRadius: 'var(--radius)',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-base)',
                       fontWeight: 'var(--font-weight-medium)',
                       backgroundColor: 'var(--primary)',
@@ -567,9 +581,13 @@ export function StyleGuideTemplate() {
                     Like
                   </button>
                   <button
-                    className="flex items-center gap-2 px-6 py-3 rounded-[var(--radius)]"
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 'var(--spacing-2)',
+                      padding: '12px 24px',
+                      borderRadius: 'var(--radius)',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-base)',
                       fontWeight: 'var(--font-weight-medium)',
                       backgroundColor: 'var(--secondary)',
@@ -589,8 +607,9 @@ export function StyleGuideTemplate() {
 
         {/* Form Elements */}
         <section 
-          className="py-16"
           style={{
+            paddingTop: 'var(--spacing-16)',
+            paddingBottom: 'var(--spacing-16)',
             backgroundColor: 'var(--muted)',
             borderTop: '1px solid var(--border)',
           }}
@@ -600,13 +619,13 @@ export function StyleGuideTemplate() {
               Form Elements
             </Heading>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl">
+            <div className="wp-grid-2-cols wp-max-w-4xl" style={{ gap: 'var(--spacing-8)' }}>
               {/* Text Input */}
               <div>
                 <label 
                   htmlFor="sample-input"
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-base)',
                     fontWeight: 'var(--font-weight-medium)',
                     color: 'var(--foreground)',
@@ -620,9 +639,11 @@ export function StyleGuideTemplate() {
                   id="sample-input"
                   type="text"
                   placeholder="Enter text..."
-                  className="w-full px-4 py-3 rounded-[var(--radius)]"
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    width: '100%',
+                    padding: '12px 16px',
+                    borderRadius: 'var(--radius)',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-base)',
                     backgroundColor: 'var(--background)',
                     color: 'var(--foreground)',
@@ -636,7 +657,7 @@ export function StyleGuideTemplate() {
                 <label 
                   htmlFor="sample-textarea"
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-base)',
                     fontWeight: 'var(--font-weight-medium)',
                     color: 'var(--foreground)',
@@ -650,9 +671,11 @@ export function StyleGuideTemplate() {
                   id="sample-textarea"
                   placeholder="Enter message..."
                   rows={3}
-                  className="w-full px-4 py-3 rounded-[var(--radius)]"
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    width: '100%',
+                    padding: '12px 16px',
+                    borderRadius: 'var(--radius)',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-base)',
                     backgroundColor: 'var(--background)',
                     color: 'var(--foreground)',
@@ -666,7 +689,7 @@ export function StyleGuideTemplate() {
                 <label 
                   htmlFor="sample-select"
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-base)',
                     fontWeight: 'var(--font-weight-medium)',
                     color: 'var(--foreground)',
@@ -678,9 +701,11 @@ export function StyleGuideTemplate() {
                 </label>
                 <select
                   id="sample-select"
-                  className="w-full px-4 py-3 rounded-[var(--radius)]"
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    width: '100%',
+                    padding: '12px 16px',
+                    borderRadius: 'var(--radius)',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-base)',
                     backgroundColor: 'var(--background)',
                     color: 'var(--foreground)',
@@ -698,7 +723,7 @@ export function StyleGuideTemplate() {
                 <label 
                   htmlFor="sample-search"
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-base)',
                     fontWeight: 'var(--font-weight-medium)',
                     color: 'var(--foreground)',
@@ -708,14 +733,17 @@ export function StyleGuideTemplate() {
                 >
                   Search Input
                 </label>
-                <div className="relative">
+                <div style={{ position: 'relative' }}>
                   <input
                     id="sample-search"
                     type="search"
                     placeholder="Search..."
-                    className="w-full px-4 py-3 pr-12 rounded-[var(--radius)]"
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      width: '100%',
+                      padding: '12px 16px',
+                      paddingRight: '48px',
+                      borderRadius: 'var(--radius)',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-base)',
                       backgroundColor: 'var(--background)',
                       color: 'var(--foreground)',
@@ -739,110 +767,125 @@ export function StyleGuideTemplate() {
         </section>
 
         {/* Badges & Pills */}
-        <section className="py-16" style={{ backgroundColor: 'var(--background)' }}>
+        <section style={{ paddingTop: 'var(--spacing-16)', paddingBottom: 'var(--spacing-16)', backgroundColor: 'var(--background)' }}>
           <Container>
             <Heading level={2} style={{ marginBottom: '32px' }}>
               Badges & Pills
             </Heading>
 
-            <div className="flex flex-wrap items-center gap-3">
-              <span 
-                className="px-3 py-1 rounded-full"
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-small)',
-                  fontWeight: 'var(--font-weight-medium)',
-                  backgroundColor: 'var(--primary)',
-                  color: 'var(--primary-foreground)',
-                }}
-              >
-                Primary
-              </span>
-              <span 
-                className="px-3 py-1 rounded-full"
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-small)',
-                  fontWeight: 'var(--font-weight-medium)',
-                  backgroundColor: 'var(--secondary)',
-                  color: 'var(--secondary-foreground)',
-                }}
-              >
-                Secondary
-              </span>
-              <span 
-                className="px-3 py-1 rounded-full"
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-small)',
-                  fontWeight: 'var(--font-weight-medium)',
-                  backgroundColor: 'var(--muted)',
-                  color: 'var(--muted-foreground)',
-                }}
-              >
-                Muted
-              </span>
-              <span 
-                className="px-3 py-1 rounded-full"
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-small)',
-                  fontWeight: 'var(--font-weight-medium)',
-                  backgroundColor: 'transparent',
-                  color: 'var(--foreground)',
-                  border: '1px solid var(--border)',
-                }}
-              >
-                Outline
-              </span>
-            </div>
-          </Container>
-        </section>
-
-        {/* Icons */}
-        <section 
-          className="py-16"
-          style={{
-            backgroundColor: 'var(--muted)',
-            borderTop: '1px solid var(--border)',
-          }}
-        >
-          <Container>
-            <Heading level={2} style={{ marginBottom: '32px' }}>
-              Icons (Lucide React)
-            </Heading>
-
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
-              {[
-                { Icon: Check, label: 'Check' },
-                { Icon: X, label: 'X' },
-                { Icon: AlertCircle, label: 'Alert' },
-                { Icon: Info, label: 'Info' },
-                { Icon: Heart, label: 'Heart' },
-                { Icon: Star, label: 'Star' },
-                { Icon: Search, label: 'Search' },
-                { Icon: Mail, label: 'Mail' },
-              ].map(({ Icon, label }) => (
-                <div 
-                  key={label}
-                  className="flex flex-col items-center gap-2 p-4 rounded-[var(--radius)]"
+            <div className="wp-grid-3-cols" style={{ gap: 'var(--spacing-8)' }}>
+              {/* Status Badges */}
+              <div>
+                <h3 
                   style={{
-                    backgroundColor: 'var(--card)',
-                    border: '1px solid var(--border)',
+                    fontFamily: 'var(--font-primary)',
+                    fontSize: 'var(--text-h4)',
+                    fontWeight: 'var(--font-weight-medium)',
+                    color: 'var(--foreground)',
+                    marginBottom: '16px',
                   }}
                 >
-                  <Icon size={32} style={{ color: 'var(--foreground)' }} />
-                  <span 
-                    style={{
-                      fontFamily: 'Manrope, sans-serif',
-                      fontSize: 'var(--text-small)',
-                      color: 'var(--muted-foreground)',
-                    }}
-                  >
-                    {label}
-                  </span>
+                  Status Badges
+                </h3>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--spacing-4)' }}>
+                  <div style={{ display: 'flex', gap: 'var(--spacing-4)' }}>
+                    <span 
+                      style={{
+                        padding: '4px 12px',
+                        borderRadius: '9999px',
+                        fontFamily: 'var(--font-primary)',
+                        fontSize: 'var(--text-small)',
+                        fontWeight: 'var(--font-weight-medium)',
+                        backgroundColor: 'var(--success-soft)',
+                        color: 'var(--success)',
+                      }}
+                    >
+                      Active
+                    </span>
+                    <span 
+                      style={{
+                        padding: '4px 12px',
+                        borderRadius: '9999px',
+                        fontFamily: 'var(--font-primary)',
+                        fontSize: 'var(--text-small)',
+                        fontWeight: 'var(--font-weight-medium)',
+                        backgroundColor: 'var(--warning-soft)',
+                        color: 'var(--warning)',
+                      }}
+                    >
+                      Pending
+                    </span>
+                    <span 
+                      style={{
+                        padding: '4px 12px',
+                        borderRadius: '9999px',
+                        fontFamily: 'var(--font-primary)',
+                        fontSize: 'var(--text-small)',
+                        fontWeight: 'var(--font-weight-medium)',
+                        backgroundColor: 'var(--destructive-soft)',
+                        color: 'var(--destructive)',
+                      }}
+                    >
+                      Error
+                    </span>
+                  </div>
                 </div>
-              ))}
+              </div>
+
+              {/* Notification Badges */}
+              <div>
+                <h3 
+                  style={{
+                    fontFamily: 'var(--font-primary)',
+                    fontSize: 'var(--text-h4)',
+                    fontWeight: 'var(--font-weight-medium)',
+                    color: 'var(--foreground)',
+                    marginBottom: '16px',
+                  }}
+                >
+                  Notification
+                </h3>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-4)' }}>
+                  <div style={{ position: 'relative', display: 'inline-block' }}>
+                    <Mail size={24} />
+                    <span 
+                      style={{
+                        position: 'absolute',
+                        top: '-8px',
+                        right: '-8px',
+                        backgroundColor: 'var(--destructive)',
+                        color: 'white',
+                        fontSize: '10px',
+                        fontWeight: 'bold',
+                        height: '18px',
+                        width: '18px',
+                        borderRadius: '50%',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        border: '2px solid var(--background)',
+                      }}
+                    >
+                      3
+                    </span>
+                  </div>
+                  <div style={{ position: 'relative', display: 'inline-block' }}>
+                    <AlertCircle size={24} />
+                    <span 
+                      style={{
+                        position: 'absolute',
+                        top: '-4px',
+                        right: '-4px',
+                        backgroundColor: 'var(--primary)',
+                        height: '10px',
+                        width: '10px',
+                        borderRadius: '50%',
+                        border: '2px solid var(--background)',
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
           </Container>
         </section>

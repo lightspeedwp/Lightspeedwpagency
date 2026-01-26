@@ -29,8 +29,6 @@ import { SiteFooter } from '../parts/SiteFooter';
 import { SkipLink } from '../common/SkipLink';
 import { BackToTopButton } from '../blocks/layout/BackToTopButton';
 import { Breadcrumbs } from '../common/Breadcrumbs';
-import { DevToolsHeader } from '../ui/DevToolsHeader';
-import { DevToolsFilterToolbar } from '../ui/DevToolsFilterToolbar';
 import { useState } from 'react';
 import { 
   Home,
@@ -330,20 +328,21 @@ export function TemplateTester() {
         <Section variant="default" spacing="50">
           <Container>
             {/* Breadcrumbs */}
-            <Breadcrumbs
-              items={[
-                { label: 'Home', page: 'home' },
-                { label: 'Developer Tools', page: 'dev-tools' },
-                { label: 'Template Tester' }
-              ]}
-              className="mb-8"
-            />
+            <div style={{ marginBottom: 'var(--spacing-8)' }}>
+              <Breadcrumbs
+                items={[
+                  { label: 'Home', page: 'home' },
+                  { label: 'Developer Tools', page: 'dev-tools' },
+                  { label: 'Template Tester' }
+                ]}
+              />
+            </div>
             
-            <div className="text-center max-w-4xl mx-auto">
+            <div className="wp-max-w-4xl" style={{ margin: '0 auto', textAlign: 'center' }}>
               <h1
                 style={{
                   fontSize: 'var(--text-h1)',
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontWeight: 'var(--font-weight-medium)',
                   color: 'var(--foreground)',
                   margin: '0 0 16px 0',
@@ -356,7 +355,7 @@ export function TemplateTester() {
               <p
                 style={{
                   fontSize: 'var(--text-xl)',
-                  fontFamily: 'Manrope, sans-serif',
+                  fontFamily: 'var(--font-secondary)',
                   fontWeight: 'var(--font-weight-regular)',
                   color: 'var(--muted-foreground)',
                   margin: '0 0 48px 0',
@@ -367,7 +366,7 @@ export function TemplateTester() {
               </p>
 
               {/* Stats Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+              <div className="wp-grid-3-cols" style={{ gap: 'var(--spacing-8)', marginBottom: 'var(--spacing-12)' }}>
                 <div
                   style={{
                     padding: '32px',
@@ -380,7 +379,7 @@ export function TemplateTester() {
                   <div
                     style={{
                       fontSize: 'var(--text-h1)',
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontWeight: 'var(--font-weight-medium)',
                       color: 'var(--primary)',
                       lineHeight: 1,
@@ -392,7 +391,7 @@ export function TemplateTester() {
                   <div
                     style={{
                       fontSize: 'var(--text-base)',
-                      fontFamily: 'Manrope, sans-serif',
+                      fontFamily: 'var(--font-secondary)',
                       fontWeight: 'var(--font-weight-regular)',
                       color: 'var(--muted-foreground)',
                       lineHeight: 1.5
@@ -414,7 +413,7 @@ export function TemplateTester() {
                   <div
                     style={{
                       fontSize: 'var(--text-h1)',
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontWeight: 'var(--font-weight-medium)',
                       color: 'var(--primary)',
                       lineHeight: 1,
@@ -426,7 +425,7 @@ export function TemplateTester() {
                   <div
                     style={{
                       fontSize: 'var(--text-base)',
-                      fontFamily: 'Manrope, sans-serif',
+                      fontFamily: 'var(--font-secondary)',
                       fontWeight: 'var(--font-weight-regular)',
                       color: 'var(--muted-foreground)',
                       lineHeight: 1.5
@@ -448,7 +447,7 @@ export function TemplateTester() {
                   <div
                     style={{
                       fontSize: 'var(--text-h1)',
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontWeight: 'var(--font-weight-medium)',
                       color: 'var(--primary)',
                       lineHeight: 1,
@@ -460,7 +459,7 @@ export function TemplateTester() {
                   <div
                     style={{
                       fontSize: 'var(--text-base)',
-                      fontFamily: 'Manrope, sans-serif',
+                      fontFamily: 'var(--font-secondary)',
                       fontWeight: 'var(--font-weight-regular)',
                       color: 'var(--muted-foreground)',
                       lineHeight: 1.5
@@ -477,21 +476,21 @@ export function TemplateTester() {
         {/* Toolbar: Sort & Component Showcase */}
         <Section variant="default" spacing="30">
           <Container>
-            <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 'var(--spacing-4)' }}>
               {/* Sort Controls */}
-              <div className="flex items-center gap-3">
+              <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-3)' }}>
                 <Filter size={20} style={{ color: 'var(--muted-foreground)' }} />
                 <span
                   style={{
                     fontSize: 'var(--text-base)',
-                    fontFamily: 'Manrope, sans-serif',
+                    fontFamily: 'var(--font-secondary)',
                     fontWeight: 'var(--font-weight-regular)',
                     color: 'var(--foreground)'
                   }}
                 >
                   Sort by:
                 </span>
-                <div className="flex gap-2">
+                <div style={{ display: 'flex', gap: 'var(--spacing-2)' }}>
                   <button
                     onClick={() => setSortBy('category')}
                     style={{
@@ -500,7 +499,7 @@ export function TemplateTester() {
                       color: sortBy === 'category' ? 'var(--primary-foreground)' : 'var(--foreground)',
                       border: `1px solid ${sortBy === 'category' ? 'var(--primary)' : 'var(--border-soft)'}`,
                       borderRadius: 'var(--radius-lg)',
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-base)',
                       fontWeight: 'var(--font-weight-medium)',
                       cursor: 'pointer',
@@ -536,7 +535,7 @@ export function TemplateTester() {
                       color: sortBy === 'type' ? 'var(--primary-foreground)' : 'var(--foreground)',
                       border: `1px solid ${sortBy === 'type' ? 'var(--primary)' : 'var(--border-soft)'}`,
                       borderRadius: 'var(--radius-lg)',
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-base)',
                       fontWeight: 'var(--font-weight-medium)',
                       cursor: 'pointer',
@@ -587,7 +586,7 @@ export function TemplateTester() {
             <Section key={category.id} variant="default" spacing="50">
               <Container>
                 {/* Category Header */}
-                <div className="flex items-start gap-4 mb-8">
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: 'var(--spacing-4)', marginBottom: 'var(--spacing-8)' }}>
                   <div
                     style={{
                       width: '48px',
@@ -609,7 +608,7 @@ export function TemplateTester() {
                     <h2
                       style={{
                         fontSize: 'var(--text-h2)',
-                        fontFamily: 'Lexend, sans-serif',
+                        fontFamily: 'var(--font-primary)',
                         fontWeight: 'var(--font-weight-medium)',
                         color: 'var(--foreground)',
                         margin: '0 0 8px 0',
@@ -621,7 +620,7 @@ export function TemplateTester() {
                     <p
                       style={{
                         fontSize: 'var(--text-base)',
-                        fontFamily: 'Manrope, sans-serif',
+                        fontFamily: 'var(--font-secondary)',
                         fontWeight: 'var(--font-weight-regular)',
                         color: 'var(--muted-foreground)',
                         margin: 0,
@@ -635,7 +634,7 @@ export function TemplateTester() {
 
                 {/* Archetypes (if applicable) */}
                 {category.templates ? (
-                  <div className="flex flex-col gap-12">
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--spacing-12)' }}>
                     {category.templates.map((archetype) => (
                       <div key={archetype.id}>
                         {/* Archetype Header */}
@@ -648,7 +647,7 @@ export function TemplateTester() {
                             marginBottom: '16px'
                           }}
                         >
-                          <div className="flex items-start gap-3">
+                          <div style={{ display: 'flex', alignItems: 'flex-start', gap: 'var(--spacing-3)' }}>
                             <archetype.icon
                               size={20}
                               style={{
@@ -658,11 +657,11 @@ export function TemplateTester() {
                               }}
                             />
                             <div>
-                              <div className="flex items-center gap-2 mb-2">
+                              <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-2)', marginBottom: 'var(--spacing-2)' }}>
                                 <h3
                                   style={{
                                     fontSize: 'var(--text-h4)',
-                                    fontFamily: 'Lexend, sans-serif',
+                                    fontFamily: 'var(--font-primary)',
                                     fontWeight: 'var(--font-weight-medium)',
                                     color: 'var(--foreground)',
                                     margin: 0,
@@ -674,7 +673,7 @@ export function TemplateTester() {
                                 <span
                                   style={{
                                     fontSize: 'var(--text-small)',
-                                    fontFamily: 'Manrope, sans-serif',
+                                    fontFamily: 'var(--font-secondary)',
                                     fontWeight: 'var(--font-weight-regular)',
                                     color: 'var(--muted-foreground)',
                                     padding: '4px 8px',
@@ -689,7 +688,7 @@ export function TemplateTester() {
                               <p
                                 style={{
                                   fontSize: 'var(--text-base)',
-                                  fontFamily: 'Manrope, sans-serif',
+                                  fontFamily: 'var(--font-secondary)',
                                   fontWeight: 'var(--font-weight-regular)',
                                   color: 'var(--muted-foreground)',
                                   margin: 0,
@@ -703,7 +702,7 @@ export function TemplateTester() {
                         </div>
 
                         {/* Archetype Pages Grid */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div className="wp-grid-3-cols" style={{ gap: 'var(--spacing-4)' }}>
                           {archetype.pages.map((page) => (
                             <button
                               key={page.page}
@@ -738,11 +737,11 @@ export function TemplateTester() {
                                 e.currentTarget.style.outline = 'none';
                               }}
                             >
-                              <div className="flex items-center justify-between">
+                              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                                 <span
                                   style={{
                                     fontSize: 'var(--text-base)',
-                                    fontFamily: 'Lexend, sans-serif',
+                                    fontFamily: 'var(--font-primary)',
                                     fontWeight: 'var(--font-weight-medium)',
                                     color: 'var(--foreground)',
                                     lineHeight: 1.5
@@ -755,7 +754,7 @@ export function TemplateTester() {
                               <span
                                 style={{
                                   fontSize: 'var(--text-small)',
-                                  fontFamily: 'Manrope, sans-serif',
+                                  fontFamily: 'var(--font-secondary)',
                                   fontWeight: 'var(--font-weight-regular)',
                                   color: 'var(--muted-foreground)',
                                   lineHeight: 1.5
@@ -766,7 +765,7 @@ export function TemplateTester() {
                               <span
                                 style={{
                                   fontSize: 'var(--text-small)',
-                                  fontFamily: 'Manrope, sans-serif',
+                                  fontFamily: 'var(--font-secondary)',
                                   fontWeight: 'var(--font-weight-regular)',
                                   color: 'var(--primary)',
                                   lineHeight: 1.5
@@ -782,7 +781,7 @@ export function TemplateTester() {
                   </div>
                 ) : (
                   /* Regular Pages Grid */
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  <div className="wp-grid-3-cols" style={{ gap: 'var(--spacing-4)' }}>
                     {category.pages?.map((page) => (
                       <button
                         key={page.page}
@@ -817,11 +816,11 @@ export function TemplateTester() {
                           e.currentTarget.style.outline = 'none';
                         }}
                       >
-                        <div className="flex items-center justify-between">
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                           <span
                             style={{
                               fontSize: 'var(--text-base)',
-                              fontFamily: 'Lexend, sans-serif',
+                              fontFamily: 'var(--font-primary)',
                               fontWeight: 'var(--font-weight-medium)',
                               color: 'var(--foreground)',
                               lineHeight: 1.5
@@ -834,7 +833,7 @@ export function TemplateTester() {
                         <span
                           style={{
                             fontSize: 'var(--text-small)',
-                            fontFamily: 'Manrope, sans-serif',
+                            fontFamily: 'var(--font-secondary)',
                             fontWeight: 'var(--font-weight-regular)',
                             color: 'var(--muted-foreground)',
                             lineHeight: 1.5
@@ -845,7 +844,7 @@ export function TemplateTester() {
                         <span
                           style={{
                             fontSize: 'var(--text-small)',
-                            fontFamily: 'Manrope, sans-serif',
+                            fontFamily: 'var(--font-secondary)',
                             fontWeight: 'var(--font-weight-regular)',
                             color: 'var(--primary)',
                             lineHeight: 1.5
@@ -866,7 +865,7 @@ export function TemplateTester() {
             <Section key={type} variant="default" spacing="50">
               <Container>
                 {/* Category Header */}
-                <div className="flex items-start gap-4 mb-8">
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: 'var(--spacing-4)', marginBottom: 'var(--spacing-8)' }}>
                   <div
                     style={{
                       width: '48px',
@@ -888,7 +887,7 @@ export function TemplateTester() {
                     <h2
                       style={{
                         fontSize: 'var(--text-h2)',
-                        fontFamily: 'Lexend, sans-serif',
+                        fontFamily: 'var(--font-primary)',
                         fontWeight: 'var(--font-weight-medium)',
                         color: 'var(--foreground)',
                         margin: '0 0 8px 0',
@@ -900,7 +899,7 @@ export function TemplateTester() {
                     <p
                       style={{
                         fontSize: 'var(--text-base)',
-                        fontFamily: 'Manrope, sans-serif',
+                        fontFamily: 'var(--font-secondary)',
                         fontWeight: 'var(--font-weight-regular)',
                         color: 'var(--muted-foreground)',
                         margin: 0,
@@ -913,7 +912,7 @@ export function TemplateTester() {
                 </div>
 
                 {/* Archetype Pages Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className="wp-grid-3-cols" style={{ gap: 'var(--spacing-4)' }}>
                   {templatesByType[type].map((page) => (
                     <button
                       key={page.page}
@@ -948,11 +947,11 @@ export function TemplateTester() {
                         e.currentTarget.style.outline = 'none';
                       }}
                     >
-                      <div className="flex items-center justify-between">
+                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                         <span
                           style={{
                             fontSize: 'var(--text-base)',
-                            fontFamily: 'Lexend, sans-serif',
+                            fontFamily: 'var(--font-primary)',
                             fontWeight: 'var(--font-weight-medium)',
                             color: 'var(--foreground)',
                             lineHeight: 1.5
@@ -965,7 +964,7 @@ export function TemplateTester() {
                       <span
                         style={{
                           fontSize: 'var(--text-small)',
-                          fontFamily: 'Manrope, sans-serif',
+                          fontFamily: 'var(--font-secondary)',
                           fontWeight: 'var(--font-weight-regular)',
                           color: 'var(--muted-foreground)',
                           lineHeight: 1.5
@@ -976,7 +975,7 @@ export function TemplateTester() {
                       <span
                         style={{
                           fontSize: 'var(--text-small)',
-                          fontFamily: 'Manrope, sans-serif',
+                          fontFamily: 'var(--font-secondary)',
                           fontWeight: 'var(--font-weight-regular)',
                           color: 'var(--primary)',
                           lineHeight: 1.5
@@ -1007,7 +1006,7 @@ export function TemplateTester() {
               <p
                 style={{
                   fontSize: 'var(--text-base)',
-                  fontFamily: 'Manrope, sans-serif',
+                  fontFamily: 'var(--font-secondary)',
                   fontWeight: 'var(--font-weight-regular)',
                   color: 'var(--muted-foreground)',
                   margin: 0,

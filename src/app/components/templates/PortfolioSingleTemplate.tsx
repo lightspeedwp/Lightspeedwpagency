@@ -65,8 +65,9 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
       <main id="main-content" role="main">
         {/* Breadcrumbs */}
         <section 
-          className="py-4"
           style={{
+            paddingTop: 'var(--spacing-4)',
+            paddingBottom: 'var(--spacing-4)',
             backgroundColor: 'var(--background)',
             borderBottom: '1px solid var(--border-soft)'
           }}
@@ -100,7 +101,7 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
         {/* Featured Image */}
         <Section spacing="none" style={{ backgroundColor: 'var(--background)' }}>
           <Container>
-            <div className="max-w-6xl mx-auto" style={{ marginTop: '-80px', position: 'relative', zIndex: 10 }}>
+            <div className="wp-max-w-6xl" style={{ margin: '0 auto', marginTop: '-80px', position: 'relative', zIndex: 10 }}>
               <div
                 style={{
                   width: '100%',
@@ -120,13 +121,19 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
         {/* Project Meta */}
         <Section spacing="xl" style={{ backgroundColor: 'var(--background)', paddingTop: '80px' }}>
           <Container>
-            <div className="max-w-6xl mx-auto">
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+            <div className="wp-max-w-6xl" style={{ margin: '0 auto' }}>
+              <div 
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))',
+                  gap: 'var(--spacing-6)'
+                }}
+              >
                 {/* Client */}
                 <div>
                   <div
                     style={{
-                      fontFamily: 'Manrope, sans-serif',
+                      fontFamily: 'var(--font-secondary)',
                       fontSize: 'var(--text-small)',
                       fontWeight: 'var(--font-weight-semibold)',
                       color: 'var(--muted-foreground)',
@@ -139,7 +146,7 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
                   </div>
                   <div
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-base)',
                       fontWeight: 'var(--font-weight-semibold)',
                       color: 'var(--foreground)'
@@ -153,7 +160,7 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
                 <div>
                   <div
                     style={{
-                      fontFamily: 'Manrope, sans-serif',
+                      fontFamily: 'var(--font-secondary)',
                       fontSize: 'var(--text-small)',
                       fontWeight: 'var(--font-weight-semibold)',
                       color: 'var(--muted-foreground)',
@@ -166,7 +173,7 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
                   </div>
                   <div
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-base)',
                       fontWeight: 'var(--font-weight-semibold)',
                       color: 'var(--foreground)'
@@ -180,7 +187,7 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
                 <div>
                   <div
                     style={{
-                      fontFamily: 'Manrope, sans-serif',
+                      fontFamily: 'var(--font-secondary)',
                       fontSize: 'var(--text-small)',
                       fontWeight: 'var(--font-weight-semibold)',
                       color: 'var(--muted-foreground)',
@@ -194,7 +201,7 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
                   </div>
                   <div
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-base)',
                       fontWeight: 'var(--font-weight-semibold)',
                       color: 'var(--foreground)'
@@ -208,7 +215,7 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
                 <div>
                   <div
                     style={{
-                      fontFamily: 'Manrope, sans-serif',
+                      fontFamily: 'var(--font-secondary)',
                       fontSize: 'var(--text-small)',
                       fontWeight: 'var(--font-weight-semibold)',
                       color: 'var(--muted-foreground)',
@@ -222,7 +229,7 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
                   </div>
                   <div
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-base)',
                       fontWeight: 'var(--font-weight-semibold)',
                       color: 'var(--foreground)'
@@ -236,7 +243,7 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
                 <div>
                   <div
                     style={{
-                      fontFamily: 'Manrope, sans-serif',
+                      fontFamily: 'var(--font-secondary)',
                       fontSize: 'var(--text-small)',
                       fontWeight: 'var(--font-weight-semibold)',
                       color: 'var(--muted-foreground)',
@@ -250,7 +257,7 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
                   </div>
                   <div
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-base)',
                       fontWeight: 'var(--font-weight-semibold)',
                       color: 'var(--foreground)'
@@ -264,7 +271,7 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
                 <div>
                   <div
                     style={{
-                      fontFamily: 'Manrope, sans-serif',
+                      fontFamily: 'var(--font-secondary)',
                       fontSize: 'var(--text-small)',
                       fontWeight: 'var(--font-weight-semibold)',
                       color: 'var(--muted-foreground)',
@@ -278,7 +285,7 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
                   </div>
                   <div
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-base)',
                       fontWeight: 'var(--font-weight-semibold)',
                       color: 'var(--foreground)'
@@ -290,12 +297,12 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
               </div>
 
               {/* Services & Technologies */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+              <div className="wp-grid-2-cols" style={{ gap: 'var(--spacing-8)', marginTop: 'var(--spacing-12)' }}>
                 {/* Services */}
                 <div>
                   <h3
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-lg)',
                       fontWeight: 'var(--font-weight-bold)',
                       color: 'var(--foreground)',
@@ -310,7 +317,7 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
                         key={index}
                         style={{
                           fontSize: 'var(--text-small)',
-                          fontFamily: 'Manrope, sans-serif',
+                          fontFamily: 'var(--font-secondary)',
                           fontWeight: 'var(--font-weight-semibold)',
                           color: 'var(--primary)',
                           backgroundColor: 'var(--primary-soft)',
@@ -329,7 +336,7 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
                 <div>
                   <h3
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-lg)',
                       fontWeight: 'var(--font-weight-bold)',
                       color: 'var(--foreground)',
@@ -344,7 +351,7 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
                         key={index}
                         style={{
                           fontSize: 'var(--text-small)',
-                          fontFamily: 'Manrope, sans-serif',
+                          fontFamily: 'var(--font-secondary)',
                           color: 'var(--foreground)',
                           backgroundColor: 'var(--muted)',
                           padding: '6px 12px',
@@ -365,10 +372,10 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
         {/* Challenge Section */}
         <Section spacing="xl" style={{ backgroundColor: 'var(--muted)' }}>
           <Container>
-            <div className="max-w-4xl mx-auto">
+            <div className="wp-max-w-4xl" style={{ margin: '0 auto' }}>
               <h2
                 style={{
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-h1)',
                   fontWeight: 'var(--font-weight-bold)',
                   lineHeight: '1.2',
@@ -383,7 +390,7 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
 
               <p
                 style={{
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-lg)',
                   lineHeight: '1.8',
                   color: 'var(--foreground)',
@@ -396,7 +403,7 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
                 "{projectPageChallenge.description}"
               </p>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="wp-grid-2-cols" style={{ gap: 'var(--spacing-6)' }}>
                 {projectPageChallenge.keyIssues.map((issue, index) => {
                   const Icon = issue.icon;
                   return (
@@ -425,7 +432,7 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
                       </div>
                       <h3
                         style={{
-                          fontFamily: 'Lexend, sans-serif',
+                          fontFamily: 'var(--font-primary)',
                           fontSize: 'var(--text-lg)',
                           fontWeight: 'var(--font-weight-bold)',
                           color: 'var(--foreground)',
@@ -436,7 +443,7 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
                       </h3>
                       <p
                         style={{
-                          fontFamily: 'Lexend, sans-serif',
+                          fontFamily: 'var(--font-primary)',
                           fontSize: 'var(--text-base)',
                           lineHeight: '1.6',
                           color: 'var(--muted-foreground)'
@@ -455,10 +462,10 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
         {/* Solution Section */}
         <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
           <Container>
-            <div className="max-w-4xl mx-auto">
+            <div className="wp-max-w-4xl" style={{ margin: '0 auto' }}>
               <h2
                 style={{
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-h1)',
                   fontWeight: 'var(--font-weight-bold)',
                   lineHeight: '1.2',
@@ -473,7 +480,7 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
 
               <p
                 style={{
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-lg)',
                   lineHeight: '1.8',
                   color: 'var(--foreground)',
@@ -486,7 +493,7 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
                 {projectPageSolution.description}
               </p>
 
-              <div className="space-y-4">
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--spacing-4)' }}>
                 {projectPageSolution.keyFeatures.map((feature, index) => {
                   const Icon = feature.icon;
                   return (
@@ -519,7 +526,7 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
                       <div style={{ flex: 1 }}>
                         <h3
                           style={{
-                            fontFamily: 'Lexend, sans-serif',
+                            fontFamily: 'var(--font-primary)',
                             fontSize: 'var(--text-lg)',
                             fontWeight: 'var(--font-weight-bold)',
                             color: 'var(--foreground)',
@@ -530,7 +537,7 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
                         </h3>
                         <p
                           style={{
-                            fontFamily: 'Lexend, sans-serif',
+                            fontFamily: 'var(--font-primary)',
                             fontSize: 'var(--text-base)',
                             lineHeight: '1.6',
                             color: 'var(--muted-foreground)'
@@ -550,10 +557,10 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
         {/* Results Section */}
         <Section spacing="xl" style={{ backgroundColor: 'var(--muted)' }}>
           <Container>
-            <div className="max-w-6xl mx-auto">
+            <div className="wp-max-w-6xl" style={{ margin: '0 auto' }}>
               <h2
                 style={{
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-h1)',
                   fontWeight: 'var(--font-weight-bold)',
                   lineHeight: '1.2',
@@ -566,13 +573,13 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
                 Project Results
               </h2>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              <div className="wp-grid-4-cols" style={{ gap: 'var(--spacing-8)' }}>
                 {projectPageResults.map((result, index) => {
                   const Icon = result.icon;
                   return (
                     <div
                       key={index}
-                      className="text-center"
+                      className="wp-text-center"
                       style={{
                         padding: '32px',
                         backgroundColor: 'var(--card)',
@@ -583,7 +590,7 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
                       <Icon size={40} style={{ marginBottom: '16px', color: 'var(--primary)' }} />
                       <div
                         style={{
-                          fontFamily: 'Lexend, sans-serif',
+                          fontFamily: 'var(--font-primary)',
                           fontSize: 'var(--text-h2)',
                           fontWeight: 'var(--font-weight-bold)',
                           marginBottom: '8px',
@@ -594,7 +601,7 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
                       </div>
                       <div
                         style={{
-                          fontFamily: 'Lexend, sans-serif',
+                          fontFamily: 'var(--font-primary)',
                           fontSize: 'var(--text-base)',
                           fontWeight: 'var(--font-weight-semibold)',
                           marginBottom: '8px',
@@ -605,7 +612,7 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
                       </div>
                       <p
                         style={{
-                          fontFamily: 'Manrope, sans-serif',
+                          fontFamily: 'var(--font-secondary)',
                           fontSize: 'var(--text-small)',
                           lineHeight: '1.5',
                           color: 'var(--muted-foreground)'
@@ -624,10 +631,10 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
         {/* Gallery Section */}
         <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
           <Container>
-            <div className="max-w-6xl mx-auto">
+            <div className="wp-max-w-6xl" style={{ margin: '0 auto' }}>
               <h2
                 style={{
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-h2)',
                   fontWeight: 'var(--font-weight-bold)',
                   marginBottom: '32px',
@@ -638,7 +645,7 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
                 Project Gallery
               </h2>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="wp-grid-2-cols" style={{ gap: 'var(--spacing-6)' }}>
                 {projectPageGallery.map((image, index) => (
                   <div
                     key={index}
@@ -665,7 +672,7 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
                     >
                       <p
                         style={{
-                          fontFamily: 'Manrope, sans-serif',
+                          fontFamily: 'var(--font-secondary)',
                           fontSize: 'var(--text-small)',
                           color: 'var(--muted-foreground)',
                           textAlign: 'center'
@@ -710,10 +717,10 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
         {/* Related Projects Section */}
         <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
           <Container>
-            <div className="max-w-6xl mx-auto">
+            <div className="wp-max-w-6xl" style={{ margin: '0 auto' }}>
               <h2
                 style={{
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-h2)',
                   fontWeight: 'var(--font-weight-bold)',
                   marginBottom: '32px',
@@ -724,7 +731,7 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
                 Related Projects
               </h2>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="wp-grid-3-cols" style={{ gap: 'var(--spacing-8)' }}>
                 {projectPageRelated.map((project, index) => (
                   <div
                     key={index}
@@ -748,50 +755,54 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
                   >
                     <div
                       style={{
-                        width: '100%',
                         height: '200px',
-                        backgroundImage: `url(${project.featuredImage})`,
+                        backgroundImage: `url(${project.imageUrl})`,
                         backgroundSize: 'cover',
-                        backgroundPosition: 'center'
+                        backgroundPosition: 'center',
+                        position: 'relative'
                       }}
-                    />
+                    >
+                      <span
+                        style={{
+                          position: 'absolute',
+                          top: '12px',
+                          left: '12px',
+                          padding: '4px 12px',
+                          backgroundColor: 'var(--primary)',
+                          color: 'var(--primary-foreground)',
+                          borderRadius: 'var(--radius)',
+                          fontSize: 'var(--text-small)',
+                          fontFamily: 'var(--font-secondary)',
+                          fontWeight: 'var(--font-weight-medium)'
+                        }}
+                      >
+                        {project.category}
+                      </span>
+                    </div>
                     <div style={{ padding: '24px' }}>
                       <h3
                         style={{
-                          fontFamily: 'Lexend, sans-serif',
+                          fontFamily: 'var(--font-primary)',
                           fontSize: 'var(--text-lg)',
                           fontWeight: 'var(--font-weight-bold)',
-                          color: 'var(--foreground)',
                           marginBottom: '8px',
-                          lineHeight: '1.3'
+                          color: 'var(--foreground)'
                         }}
                       >
                         {project.title}
                       </h3>
                       <p
                         style={{
-                          fontFamily: 'Lexend, sans-serif',
-                          fontSize: 'var(--text-small)',
-                          lineHeight: '1.6',
+                          fontFamily: 'var(--font-primary)',
+                          fontSize: 'var(--text-base)',
                           color: 'var(--muted-foreground)',
-                          marginBottom: '12px'
-                        }}
-                      >
-                        {project.excerpt.substring(0, 100)}...
-                      </p>
-                      <div
-                        style={{
                           display: 'flex',
                           alignItems: 'center',
-                          gap: '8px',
-                          fontFamily: 'Manrope, sans-serif',
-                          fontSize: 'var(--text-small)',
-                          fontWeight: 'var(--font-weight-semibold)',
-                          color: 'var(--primary)'
+                          gap: '8px'
                         }}
                       >
                         View Case Study <ArrowRight size={16} />
-                      </div>
+                      </p>
                     </div>
                   </div>
                 ))}
@@ -805,9 +816,9 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
           title={projectPageCTA.title}
           description={projectPageCTA.description}
           primaryButtonText={projectPageCTA.buttons[0].text}
-          primaryButtonPage={projectPageCTA.buttons[0].page as any}
+          primaryButtonPage={projectPageCTA.buttons[0].page}
           secondaryButtonText={projectPageCTA.buttons[1].text}
-          secondaryButtonPage={projectPageCTA.buttons[1].page as any}
+          secondaryButtonPage={projectPageCTA.buttons[1].page}
           gradient="blue"
         />
       </main>

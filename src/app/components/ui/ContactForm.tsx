@@ -230,7 +230,7 @@ export function ContactForm({
         <h3
           className="mb-3"
           style={{
-            fontFamily: 'Lexend, sans-serif',
+            fontFamily: 'var(--font-primary)',
             fontSize: 'var(--text-h4)',
             fontWeight: 'var(--font-weight-semibold)',
             color: 'var(--success)',
@@ -242,7 +242,7 @@ export function ContactForm({
 
         <p
           style={{
-            fontFamily: 'Lexend, sans-serif',
+            fontFamily: 'var(--font-primary)',
             fontSize: 'var(--text-base)',
             color: 'var(--foreground)',
             margin: 0,
@@ -277,7 +277,7 @@ export function ContactForm({
           htmlFor="name"
           style={{
             display: 'block',
-            fontFamily: 'Lexend, sans-serif',
+            fontFamily: 'var(--font-primary)',
             fontSize: 'var(--text-base)',
             fontWeight: 'var(--font-weight-medium)',
             color: 'var(--foreground)',
@@ -313,7 +313,7 @@ export function ContactForm({
             style={{
               width: '100%',
               padding: '12px 16px 12px 44px',
-              fontFamily: 'Lexend, sans-serif',
+              fontFamily: 'var(--font-primary)',
               fontSize: 'var(--text-base)',
               color: 'var(--foreground)',
               backgroundColor: 'var(--background)',
@@ -341,7 +341,7 @@ export function ContactForm({
             id="name-error"
             className="flex items-center gap-1 mt-2"
             style={{
-              fontFamily: 'Manrope, sans-serif',
+              fontFamily: 'var(--font-secondary)',
               fontSize: 'var(--text-small)',
               color: 'var(--destructive)',
               margin: 0,
@@ -359,7 +359,7 @@ export function ContactForm({
           htmlFor="email"
           style={{
             display: 'block',
-            fontFamily: 'Lexend, sans-serif',
+            fontFamily: 'var(--font-primary)',
             fontSize: 'var(--text-base)',
             fontWeight: 'var(--font-weight-medium)',
             color: 'var(--foreground)',
@@ -395,7 +395,7 @@ export function ContactForm({
             style={{
               width: '100%',
               padding: '12px 16px 12px 44px',
-              fontFamily: 'Lexend, sans-serif',
+              fontFamily: 'var(--font-primary)',
               fontSize: 'var(--text-base)',
               color: 'var(--foreground)',
               backgroundColor: 'var(--background)',
@@ -423,7 +423,7 @@ export function ContactForm({
             id="email-error"
             className="flex items-center gap-1 mt-2"
             style={{
-              fontFamily: 'Manrope, sans-serif',
+              fontFamily: 'var(--font-secondary)',
               fontSize: 'var(--text-small)',
               color: 'var(--destructive)',
               margin: 0,
@@ -442,7 +442,7 @@ export function ContactForm({
             htmlFor="phone"
             style={{
               display: 'block',
-              fontFamily: 'Lexend, sans-serif',
+              fontFamily: 'var(--font-primary)',
               fontSize: 'var(--text-base)',
               fontWeight: 'var(--font-weight-medium)',
               color: 'var(--foreground)',
@@ -477,7 +477,7 @@ export function ContactForm({
               style={{
                 width: '100%',
                 padding: '12px 16px 12px 44px',
-                fontFamily: 'Lexend, sans-serif',
+                fontFamily: 'var(--font-primary)',
                 fontSize: 'var(--text-base)',
                 color: 'var(--foreground)',
                 backgroundColor: 'var(--background)',
@@ -505,7 +505,7 @@ export function ContactForm({
               id="phone-error"
               className="flex items-center gap-1 mt-2"
               style={{
-                fontFamily: 'Manrope, sans-serif',
+                fontFamily: 'var(--font-secondary)',
                 fontSize: 'var(--text-small)',
                 color: 'var(--destructive)',
                 margin: 0,
@@ -524,7 +524,7 @@ export function ContactForm({
           htmlFor="subject"
           style={{
             display: 'block',
-            fontFamily: 'Lexend, sans-serif',
+            fontFamily: 'var(--font-primary)',
             fontSize: 'var(--text-base)',
             fontWeight: 'var(--font-weight-medium)',
             color: 'var(--foreground)',
@@ -560,7 +560,7 @@ export function ContactForm({
             style={{
               width: '100%',
               padding: '12px 16px 12px 44px',
-              fontFamily: 'Lexend, sans-serif',
+              fontFamily: 'var(--font-primary)',
               fontSize: 'var(--text-base)',
               color: 'var(--foreground)',
               backgroundColor: 'var(--background)',
@@ -588,7 +588,7 @@ export function ContactForm({
             id="subject-error"
             className="flex items-center gap-1 mt-2"
             style={{
-              fontFamily: 'Manrope, sans-serif',
+              fontFamily: 'var(--font-secondary)',
               fontSize: 'var(--text-small)',
               color: 'var(--destructive)',
               margin: 0,
@@ -606,7 +606,7 @@ export function ContactForm({
           <label
             htmlFor="message"
             style={{
-              fontFamily: 'Lexend, sans-serif',
+              fontFamily: 'var(--font-primary)',
               fontSize: 'var(--text-base)',
               fontWeight: 'var(--font-weight-medium)',
               color: 'var(--foreground)',
@@ -617,7 +617,7 @@ export function ContactForm({
 
           <span
             style={{
-              fontFamily: 'Manrope, sans-serif',
+              fontFamily: 'var(--font-secondary)',
               fontSize: 'var(--text-small)',
               color: formData.message.length > maxMessageLength ? 'var(--destructive)' : 'var(--muted-foreground)',
             }}
@@ -640,7 +640,7 @@ export function ContactForm({
           style={{
             width: '100%',
             padding: '12px 16px',
-            fontFamily: 'Lexend, sans-serif',
+            fontFamily: 'var(--font-primary)',
             fontSize: 'var(--text-base)',
             color: 'var(--foreground)',
             backgroundColor: 'var(--background)',
@@ -668,7 +668,7 @@ export function ContactForm({
             id="message-error"
             className="flex items-center gap-1 mt-2"
             style={{
-              fontFamily: 'Manrope, sans-serif',
+              fontFamily: 'var(--font-secondary)',
               fontSize: 'var(--text-small)',
               color: 'var(--destructive)',
               margin: 0,
@@ -714,7 +714,7 @@ export function ContactForm({
       {/* Privacy Notice */}
       <p
         style={{
-          fontFamily: 'Manrope, sans-serif',
+          fontFamily: 'var(--font-secondary)',
           fontSize: 'var(--text-small)',
           color: 'var(--muted-foreground)',
           textAlign: 'center',

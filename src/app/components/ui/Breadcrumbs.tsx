@@ -117,7 +117,7 @@ export function Breadcrumbs({
                   onClick={() => handleClick(item.href)}
                   className="flex items-center gap-2"
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: sizes[size],
                     fontWeight: 'var(--font-weight-medium)',
                     color: 'var(--muted-foreground)',
@@ -147,7 +147,7 @@ export function Breadcrumbs({
                 <span
                   className="flex items-center gap-2"
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: sizes[size],
                     fontWeight: isLast ? 'var(--font-weight-semibold)' : 'var(--font-weight-medium)',
                     color: isLast ? 'var(--foreground)' : 'var(--muted-foreground)',

@@ -246,7 +246,7 @@ export function BreadcrumbsBar({ items, className = '' }: BreadcrumbsBarProps) {
           <ol 
             className="flex items-center gap-1 flex-wrap"
             style={{
-              fontFamily: 'Manrope, sans-serif',
+              fontFamily: 'var(--font-secondary)',
               fontSize: 'var(--text-small)',
               lineHeight: '1.5',
             }}
@@ -270,7 +270,7 @@ export function BreadcrumbsBar({ items, className = '' }: BreadcrumbsBarProps) {
                         border: 'none',
                         padding: '0 4px',
                         cursor: 'pointer',
-                        fontFamily: 'Manrope, sans-serif',
+                        fontFamily: 'var(--font-secondary)',
                         fontSize: 'var(--text-small)',
                         fontWeight: '400',
                       }}
@@ -291,7 +291,7 @@ export function BreadcrumbsBar({ items, className = '' }: BreadcrumbsBarProps) {
                       className="px-1"
                       style={{
                         color: 'var(--foreground)',
-                        fontFamily: 'Manrope, sans-serif',
+                        fontFamily: 'var(--font-secondary)',
                         fontSize: 'var(--text-small)',
                         fontWeight: '500',
                       }}

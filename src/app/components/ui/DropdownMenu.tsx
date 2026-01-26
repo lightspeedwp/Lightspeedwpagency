@@ -215,7 +215,7 @@ export function DropdownMenu({
                 role="menuitem"
                 className="w-full px-3 py-2 flex items-center gap-3"
                 style={{
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-base)',
                   color: item.destructive
                     ? 'var(--destructive)'
@@ -384,7 +384,7 @@ export function DropdownMenuWithGroups({
                 <div
                   className="px-3 py-2"
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-small)',
                     fontWeight: 'var(--font-weight-semibold)',
                     color: 'var(--muted-foreground)',
@@ -405,7 +405,7 @@ export function DropdownMenuWithGroups({
                   role="menuitem"
                   className="w-full px-3 py-2 flex items-center gap-3"
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-base)',
                     color: item.destructive
                       ? 'var(--destructive)'

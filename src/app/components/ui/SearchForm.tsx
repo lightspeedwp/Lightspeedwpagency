@@ -216,7 +216,7 @@ export function SearchForm({
             style={{
               width: '100%',
               padding: '14px 120px 14px 48px',
-              fontFamily: 'Lexend, sans-serif',
+              fontFamily: 'var(--font-primary)',
               fontSize: 'var(--text-base)',
               color: 'var(--foreground)',
               backgroundColor: 'var(--background)',
@@ -278,7 +278,7 @@ export function SearchForm({
               className="absolute right-4 top-1/2 px-2 py-1"
               style={{
                 transform: 'translateY(-50%)',
-                fontFamily: 'Manrope, sans-serif',
+                fontFamily: 'var(--font-secondary)',
                 fontSize: 'var(--text-small)',
                 color: 'var(--muted-foreground)',
                 backgroundColor: 'var(--muted)',
@@ -327,7 +327,7 @@ export function SearchForm({
                 <div className="flex items-center justify-between px-3 py-2">
                   <span
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-small)',
                       fontWeight: 'var(--font-weight-semibold)',
                       color: 'var(--muted-foreground)',
@@ -342,7 +342,7 @@ export function SearchForm({
                     type="button"
                     onClick={clearRecentSearches}
                     style={{
-                      fontFamily: 'Manrope, sans-serif',
+                      fontFamily: 'var(--font-secondary)',
                       fontSize: 'var(--text-small)',
                       color: 'var(--primary)',
                       backgroundColor: 'transparent',
@@ -368,7 +368,7 @@ export function SearchForm({
                     }}
                     className="flex items-center gap-3 w-full px-3 py-2"
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-base)',
                       color: 'var(--foreground)',
                       backgroundColor: 'transparent',
@@ -398,7 +398,7 @@ export function SearchForm({
                 <div className="px-3 py-2">
                   <span
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-small)',
                       fontWeight: 'var(--font-weight-semibold)',
                       color: 'var(--muted-foreground)',
@@ -424,7 +424,7 @@ export function SearchForm({
                     }}
                     className="flex items-center gap-3 w-full px-3 py-2"
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-base)',
                       color: 'var(--foreground)',
                       backgroundColor: 'transparent',
@@ -459,7 +459,7 @@ export function SearchForm({
             onClick={() => setShowFilters(!showFilters)}
             className="flex items-center gap-2 px-3 py-2"
             style={{
-              fontFamily: 'Lexend, sans-serif',
+              fontFamily: 'var(--font-primary)',
               fontSize: 'var(--text-base)',
               fontWeight: 'var(--font-weight-medium)',
               color: showFilters ? 'var(--primary)' : 'var(--foreground)',
@@ -488,7 +488,7 @@ export function SearchForm({
                 style={{
                   width: '20px',
                   height: '20px',
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-small)',
                   fontWeight: 'var(--font-weight-bold)',
                   backgroundColor: 'var(--primary)',
@@ -506,7 +506,7 @@ export function SearchForm({
               type="button"
               onClick={clearFilters}
               style={{
-                fontFamily: 'Lexend, sans-serif',
+                fontFamily: 'var(--font-primary)',
                 fontSize: 'var(--text-base)',
                 color: 'var(--destructive)',
                 backgroundColor: 'transparent',
@@ -537,7 +537,7 @@ export function SearchForm({
                 htmlFor="category"
                 style={{
                   display: 'block',
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-base)',
                   fontWeight: 'var(--font-weight-medium)',
                   color: 'var(--foreground)',
@@ -554,7 +554,7 @@ export function SearchForm({
                 style={{
                   width: '100%',
                   padding: '12px 16px',
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-base)',
                   color: 'var(--foreground)',
                   backgroundColor: 'var(--background)',
@@ -580,7 +580,7 @@ export function SearchForm({
                 htmlFor="dateFrom"
                 style={{
                   display: 'block',
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-base)',
                   fontWeight: 'var(--font-weight-medium)',
                   color: 'var(--foreground)',
@@ -598,7 +598,7 @@ export function SearchForm({
                 style={{
                   width: '100%',
                   padding: '12px 16px',
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-base)',
                   color: 'var(--foreground)',
                   backgroundColor: 'var(--background)',
@@ -614,7 +614,7 @@ export function SearchForm({
                 htmlFor="dateTo"
                 style={{
                   display: 'block',
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-base)',
                   fontWeight: 'var(--font-weight-medium)',
                   color: 'var(--foreground)',
@@ -632,7 +632,7 @@ export function SearchForm({
                 style={{
                   width: '100%',
                   padding: '12px 16px',
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-base)',
                   color: 'var(--foreground)',
                   backgroundColor: 'var(--background)',
@@ -650,7 +650,7 @@ export function SearchForm({
               htmlFor="sortBy"
               style={{
                 display: 'block',
-                fontFamily: 'Lexend, sans-serif',
+                fontFamily: 'var(--font-primary)',
                 fontSize: 'var(--text-base)',
                 fontWeight: 'var(--font-weight-medium)',
                 color: 'var(--foreground)',
@@ -667,7 +667,7 @@ export function SearchForm({
               style={{
                 width: '100%',
                 padding: '12px 16px',
-                fontFamily: 'Lexend, sans-serif',
+                fontFamily: 'var(--font-primary)',
                 fontSize: 'var(--text-base)',
                 color: 'var(--foreground)',
                 backgroundColor: 'var(--background)',

@@ -74,7 +74,7 @@ export function WhyChooseUsTemplate() {
       
       <main id="main-content">
         {/* Breadcrumbs */}
-        <Section variant="default" className="pt-24 pb-0">
+        <Section variant="default" style={{ paddingTop: 'var(--spacing-24)', paddingBottom: 0 }}>
           <Container>
             <Breadcrumbs 
               items={[
@@ -86,19 +86,20 @@ export function WhyChooseUsTemplate() {
         </Section>
 
         {/* Hero Section */}
-        <Section variant="default" className="pt-8 pb-16">
+        <Section variant="default" style={{ paddingTop: 'var(--spacing-8)', paddingBottom: 'var(--spacing-16)' }}>
           <Container>
             <motion.div
               variants={fadeInUp}
               initial="hidden"
               animate="visible"
-              className="text-center max-w-4xl mx-auto"
+              className="wp-text-center wp-max-w-4xl"
+              style={{ marginLeft: 'auto', marginRight: 'auto' }}
             >
               <h1 
-                className="mb-6"
                 style={{
+                  marginBottom: 'var(--spacing-6)',
                   fontSize: 'var(--text-h1)',
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontWeight: 500,
                   color: 'var(--foreground)'
                 }}
@@ -107,10 +108,10 @@ export function WhyChooseUsTemplate() {
               </h1>
               
               <p 
-                className="mb-8"
                 style={{
+                  marginBottom: 'var(--spacing-8)',
                   fontSize: 'var(--text-xl)',
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   color: 'var(--muted-foreground)',
                   lineHeight: 1.6
                 }}
@@ -119,7 +120,7 @@ export function WhyChooseUsTemplate() {
                 accessible, high-performance websites that drive real business results.
               </p>
 
-              <div className="flex flex-wrap items-center justify-center gap-4">
+              <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: 'var(--spacing-4)' }}>
                 <Button href="/pricing" size="lg">
                   View Pricing
                 </Button>
@@ -139,7 +140,8 @@ export function WhyChooseUsTemplate() {
               initial="hidden"
               whileInView="visible"
               viewport={viewportOptions}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+              className="wp-grid-4-cols"
+              style={{ gap: 'var(--spacing-6)' }}
             >
               {[
                 { label: 'Years Experience', value: '15+', icon: Award },
@@ -150,22 +152,27 @@ export function WhyChooseUsTemplate() {
                 <motion.div
                   key={stat.label}
                   variants={staggerItem}
-                  className="p-6 rounded-lg text-center"
+                  className="wp-text-center"
                   style={{
+                    padding: 'var(--spacing-6)',
+                    borderRadius: 'var(--radius-lg)',
                     backgroundColor: 'var(--card)',
                     border: '1px solid var(--border-soft)'
                   }}
                 >
                   <stat.icon 
                     size={32} 
-                    className="mx-auto mb-4"
-                    style={{ color: 'var(--primary)' }}
+                    style={{ 
+                      display: 'block',
+                      margin: '0 auto var(--spacing-4)',
+                      color: 'var(--primary)' 
+                    }}
                   />
                   <div 
-                    className="mb-2"
                     style={{
+                      marginBottom: 'var(--spacing-2)',
                       fontSize: 'var(--text-h2)',
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontWeight: 500,
                       color: 'var(--foreground)'
                     }}
@@ -175,7 +182,7 @@ export function WhyChooseUsTemplate() {
                   <div 
                     style={{
                       fontSize: 'var(--text-sm)',
-                      fontFamily: 'Manrope, sans-serif',
+                      fontFamily: 'var(--font-secondary)',
                       color: 'var(--muted-foreground)'
                     }}
                   >
@@ -195,13 +202,14 @@ export function WhyChooseUsTemplate() {
               initial="hidden"
               whileInView="visible"
               viewport={viewportOptions}
-              className="text-center mb-12"
+              className="wp-text-center"
+              style={{ marginBottom: 'var(--spacing-12)' }}
             >
               <h2 
-                className="mb-4"
                 style={{
+                  marginBottom: 'var(--spacing-4)',
                   fontSize: 'var(--text-h2)',
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontWeight: 500,
                   color: 'var(--foreground)'
                 }}
@@ -211,7 +219,7 @@ export function WhyChooseUsTemplate() {
               <p 
                 style={{
                   fontSize: 'var(--text-lg)',
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   color: 'var(--muted-foreground)',
                   maxWidth: '600px',
                   margin: '0 auto'
@@ -227,7 +235,8 @@ export function WhyChooseUsTemplate() {
               initial="hidden"
               whileInView="visible"
               viewport={viewportOptions}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+              className="wp-grid-3-cols"
+              style={{ gap: 'var(--spacing-8)' }}
             >
               {[
                 {
@@ -266,14 +275,16 @@ export function WhyChooseUsTemplate() {
                     <InteractiveCardContent>
                       <item.icon 
                         size={48} 
-                        className="mb-6"
-                        style={{ color: 'var(--primary)' }}
+                        style={{ 
+                          marginBottom: 'var(--spacing-6)',
+                          color: 'var(--primary)' 
+                        }}
                       />
                       <h3 
-                        className="mb-4"
                         style={{
+                          marginBottom: 'var(--spacing-4)',
                           fontSize: 'var(--text-h4)',
-                          fontFamily: 'Lexend, sans-serif',
+                          fontFamily: 'var(--font-primary)',
                           fontWeight: 500,
                           color: 'var(--foreground)'
                         }}
@@ -283,7 +294,7 @@ export function WhyChooseUsTemplate() {
                       <p 
                         style={{
                           fontSize: 'var(--text-base)',
-                          fontFamily: 'Lexend, sans-serif',
+                          fontFamily: 'var(--font-primary)',
                           color: 'var(--muted-foreground)',
                           lineHeight: 1.6
                         }}
@@ -306,13 +317,14 @@ export function WhyChooseUsTemplate() {
               initial="hidden"
               whileInView="visible"
               viewport={viewportOptions}
-              className="text-center mb-12"
+              className="wp-text-center"
+              style={{ marginBottom: 'var(--spacing-12)' }}
             >
               <h2 
-                className="mb-4"
                 style={{
+                  marginBottom: 'var(--spacing-4)',
                   fontSize: 'var(--text-h2)',
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontWeight: 500,
                   color: 'var(--foreground)'
                 }}
@@ -322,7 +334,7 @@ export function WhyChooseUsTemplate() {
               <p 
                 style={{
                   fontSize: 'var(--text-lg)',
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   color: 'var(--muted-foreground)',
                   maxWidth: '600px',
                   margin: '0 auto'
@@ -337,7 +349,8 @@ export function WhyChooseUsTemplate() {
               initial="hidden"
               whileInView="visible"
               viewport={viewportOptions}
-              className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto"
+              className="wp-grid-2-cols wp-max-w-4xl"
+              style={{ gap: 'var(--spacing-8)', marginLeft: 'auto', marginRight: 'auto' }}
             >
               {[
                 {
@@ -374,11 +387,17 @@ export function WhyChooseUsTemplate() {
                 <motion.div
                   key={index}
                   variants={staggerItem}
-                  className="flex gap-4"
+                  style={{ display: 'flex', gap: 'var(--spacing-4)' }}
                 >
                   <div 
-                    className="flex-shrink-0 w-12 h-12 rounded-lg flex items-center justify-center"
                     style={{
+                      flexShrink: 0,
+                      width: '48px',
+                      height: '48px',
+                      borderRadius: 'var(--radius-lg)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
                       backgroundColor: 'var(--primary)',
                       color: 'var(--primary-foreground)'
                     }}
@@ -387,10 +406,10 @@ export function WhyChooseUsTemplate() {
                   </div>
                   <div>
                     <h3 
-                      className="mb-2"
                       style={{
+                        marginBottom: 'var(--spacing-2)',
                         fontSize: 'var(--text-lg)',
-                        fontFamily: 'Lexend, sans-serif',
+                        fontFamily: 'var(--font-primary)',
                         fontWeight: 500,
                         color: 'var(--foreground)'
                       }}
@@ -400,7 +419,7 @@ export function WhyChooseUsTemplate() {
                     <p 
                       style={{
                         fontSize: 'var(--text-base)',
-                        fontFamily: 'Lexend, sans-serif',
+                        fontFamily: 'var(--font-primary)',
                         color: 'var(--muted-foreground)',
                         lineHeight: 1.6
                       }}
@@ -422,13 +441,14 @@ export function WhyChooseUsTemplate() {
               initial="hidden"
               whileInView="visible"
               viewport={viewportOptions}
-              className="text-center mb-12"
+              className="wp-text-center"
+              style={{ marginBottom: 'var(--spacing-12)' }}
             >
               <h2 
-                className="mb-4"
                 style={{
+                  marginBottom: 'var(--spacing-4)',
                   fontSize: 'var(--text-h2)',
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontWeight: 500,
                   color: 'var(--foreground)'
                 }}
@@ -438,7 +458,7 @@ export function WhyChooseUsTemplate() {
               <p 
                 style={{
                   fontSize: 'var(--text-lg)',
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   color: 'var(--muted-foreground)',
                   maxWidth: '600px',
                   margin: '0 auto'
@@ -453,7 +473,8 @@ export function WhyChooseUsTemplate() {
               initial="hidden"
               whileInView="visible"
               viewport={viewportOptions}
-              className="grid grid-cols-1 md:grid-cols-3 gap-6"
+              className="wp-grid-3-cols"
+              style={{ gap: 'var(--spacing-6)' }}
             >
               {[
                 {
@@ -472,22 +493,27 @@ export function WhyChooseUsTemplate() {
                 <motion.div
                   key={index}
                   variants={staggerItem}
-                  className="p-6 rounded-lg text-center"
+                  className="wp-text-center"
                   style={{
+                    padding: 'var(--spacing-6)',
+                    borderRadius: 'var(--radius-lg)',
                     backgroundColor: 'var(--card)',
                     border: '1px solid var(--border-soft)'
                   }}
                 >
                   <Shield 
                     size={48} 
-                    className="mx-auto mb-4"
-                    style={{ color: 'var(--primary)' }}
+                    style={{ 
+                      display: 'block',
+                      margin: '0 auto var(--spacing-4)',
+                      color: 'var(--primary)' 
+                    }}
                   />
                   <h3 
-                    className="mb-3"
                     style={{
+                      marginBottom: 'var(--spacing-3)',
                       fontSize: 'var(--text-lg)',
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontWeight: 500,
                       color: 'var(--foreground)'
                     }}
@@ -497,7 +523,7 @@ export function WhyChooseUsTemplate() {
                   <p 
                     style={{
                       fontSize: 'var(--text-sm)',
-                      fontFamily: 'Manrope, sans-serif',
+                      fontFamily: 'var(--font-secondary)',
                       color: 'var(--muted-foreground)',
                       lineHeight: 1.5
                     }}
@@ -508,7 +534,7 @@ export function WhyChooseUsTemplate() {
               ))}
             </motion.div>
 
-            <div className="text-center mt-8">
+            <div className="wp-text-center" style={{ marginTop: 'var(--spacing-8)' }}>
               <Button href="/guarantees" variant="ghost">
                 View All Guarantees →
               </Button>

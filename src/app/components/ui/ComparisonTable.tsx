@@ -88,7 +88,7 @@ export function ComparisonTable({
     return (
       <span
         style={{
-          fontFamily: 'Lexend, sans-serif',
+          fontFamily: 'var(--font-primary)',
           fontSize: 'var(--text-base)',
           color: 'var(--foreground)',
         }}
@@ -174,7 +174,7 @@ export function ComparisonTable({
                   <span
                     className="px-3 py-1"
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-small)',
                       fontWeight: 'var(--font-weight-semibold)',
                       backgroundColor: 'var(--primary)',
@@ -191,7 +191,7 @@ export function ComparisonTable({
               <h3
                 className="mb-2"
                 style={{
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-h4)',
                   fontWeight: 'var(--font-weight-semibold)',
                   color: 'var(--foreground)',
@@ -205,7 +205,7 @@ export function ComparisonTable({
               {item.price && (
                 <p
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-lg)',
                     fontWeight: 'var(--font-weight-bold)',
                     color: 'var(--primary)',
@@ -245,7 +245,7 @@ export function ComparisonTable({
                 <Plus size={32} style={{ color: 'var(--muted-foreground)' }} />
                 <span
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-base)',
                     fontWeight: 'var(--font-weight-medium)',
                     color: 'var(--muted-foreground)',
@@ -293,7 +293,7 @@ export function ComparisonTable({
                 >
                   <span
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-base)',
                       fontWeight: different
                         ? 'var(--font-weight-semibold)'
@@ -334,7 +334,7 @@ export function ComparisonTable({
         >
           <p
             style={{
-              fontFamily: 'Manrope, sans-serif',
+              fontFamily: 'var(--font-secondary)',
               fontSize: 'var(--text-small)',
               color: 'var(--muted-foreground)',
               margin: 0,
@@ -365,7 +365,7 @@ export function ComparisonTable({
       <p
         className="mt-4 text-center md:hidden"
         style={{
-          fontFamily: 'Manrope, sans-serif',
+          fontFamily: 'var(--font-secondary)',
           fontSize: 'var(--text-small)',
           color: 'var(--muted-foreground)',
           margin: 0,
@@ -417,7 +417,7 @@ export function MobileComparisonCard({
                   <span
                     className="inline-block px-3 py-1 mb-2"
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-small)',
                       fontWeight: 'var(--font-weight-semibold)',
                       backgroundColor: 'var(--primary)',
@@ -431,7 +431,7 @@ export function MobileComparisonCard({
 
                 <h3
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-h4)',
                     fontWeight: 'var(--font-weight-semibold)',
                     color: 'var(--foreground)',
@@ -445,7 +445,7 @@ export function MobileComparisonCard({
                   <p
                     className="mt-2"
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-lg)',
                       fontWeight: 'var(--font-weight-bold)',
                       color: 'var(--primary)',
@@ -505,7 +505,7 @@ export function MobileComparisonCard({
                 >
                   <span
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-base)',
                       fontWeight: 'var(--font-weight-medium)',
                       color: 'var(--muted-foreground)',
@@ -516,7 +516,7 @@ export function MobileComparisonCard({
 
                   <span
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-base)',
                       color: 'var(--foreground)',
                     }}

@@ -209,7 +209,7 @@ export function DataTable<T extends Record<string, any>>({
       >
         <p
           style={{
-            fontFamily: 'Lexend, sans-serif',
+            fontFamily: 'var(--font-primary)',
             fontSize: 'var(--text-base)',
             color: 'var(--muted-foreground)',
             margin: 0,
@@ -237,7 +237,7 @@ export function DataTable<T extends Record<string, any>>({
             style={{
               width: '100%',
               borderCollapse: 'collapse',
-              fontFamily: 'Lexend, sans-serif',
+              fontFamily: 'var(--font-primary)',
             }}
           >
             {/* Table Header */}
@@ -282,7 +282,7 @@ export function DataTable<T extends Record<string, any>>({
                     style={{
                       padding: '12px 16px',
                       textAlign: column.align || 'left',
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-base)',
                       fontWeight: 'var(--font-weight-semibold)',
                       color: 'var(--foreground)',
@@ -379,7 +379,7 @@ export function DataTable<T extends Record<string, any>>({
                           padding: '12px 16px',
                           textAlign: column.align || 'left',
                           borderTop: '1px solid var(--border-extra-soft)',
-                          fontFamily: 'Lexend, sans-serif',
+                          fontFamily: 'var(--font-primary)',
                           fontSize: 'var(--text-base)',
                           color: 'var(--foreground)',
                         }}
@@ -403,7 +403,7 @@ export function DataTable<T extends Record<string, any>>({
           {/* Info */}
           <p
             style={{
-              fontFamily: 'Manrope, sans-serif',
+              fontFamily: 'var(--font-secondary)',
               fontSize: 'var(--text-small)',
               color: 'var(--muted-foreground)',
               margin: 0,
@@ -480,7 +480,7 @@ export function DataTable<T extends Record<string, any>>({
                     onClick={() => setCurrentPage(pageNumber)}
                     className="px-3 py-2"
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-base)',
                       fontWeight: isActive ? 'var(--font-weight-semibold)' : 'var(--font-weight-normal)',
                       backgroundColor: isActive ? 'var(--primary)' : 'transparent',

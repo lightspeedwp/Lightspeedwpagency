@@ -164,7 +164,7 @@ export function StatsCard({
           <p
             className="mb-2"
             style={{
-              fontFamily: 'Lexend, sans-serif',
+              fontFamily: 'var(--font-primary)',
               fontSize: 'var(--text-base)',
               fontWeight: 'var(--font-weight-medium)',
               color: 'var(--muted-foreground)',
@@ -178,7 +178,7 @@ export function StatsCard({
           <p
             className="mb-3"
             style={{
-              fontFamily: 'Lexend, sans-serif',
+              fontFamily: 'var(--font-primary)',
               fontSize: 'var(--text-h2)',
               fontWeight: 'var(--font-weight-bold)',
               color: 'var(--foreground)',
@@ -197,7 +197,7 @@ export function StatsCard({
                 <div
                   className="flex items-center gap-1 px-2 py-1"
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-small)',
                     fontWeight: 'var(--font-weight-semibold)',
                     color: currentTrend.color,
@@ -219,7 +219,7 @@ export function StatsCard({
               {comparison && (
                 <span
                   style={{
-                    fontFamily: 'Manrope, sans-serif',
+                    fontFamily: 'var(--font-secondary)',
                     fontSize: 'var(--text-small)',
                     color: 'var(--muted-foreground)',
                   }}
@@ -235,7 +235,7 @@ export function StatsCard({
             <p
               className="mt-2"
               style={{
-                fontFamily: 'Manrope, sans-serif',
+                fontFamily: 'var(--font-secondary)',
                 fontSize: 'var(--text-small)',
                 color: 'var(--muted-foreground)',
                 margin: 0,

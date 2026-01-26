@@ -121,7 +121,7 @@ export function NewsletterForm({
         <CheckCircle2 size={20} style={{ color: 'var(--success)' }} />
         <span
           style={{
-            fontFamily: 'Lexend, sans-serif',
+            fontFamily: 'var(--font-primary)',
             fontSize: 'var(--text-base)',
             fontWeight: 'var(--font-weight-medium)',
             color: 'var(--success)',
@@ -164,7 +164,7 @@ export function NewsletterForm({
               style={{
                 width: '100%',
                 padding: '12px 16px 12px 40px',
-                fontFamily: 'Lexend, sans-serif',
+                fontFamily: 'var(--font-primary)',
                 fontSize: 'var(--text-base)',
                 color: 'var(--foreground)',
                 backgroundColor: 'var(--background)',
@@ -220,7 +220,7 @@ export function NewsletterForm({
             id="email-error"
             className="flex items-center gap-1"
             style={{
-              fontFamily: 'Manrope, sans-serif',
+              fontFamily: 'var(--font-secondary)',
               fontSize: 'var(--text-small)',
               color: 'var(--destructive)',
               margin: 0,
@@ -257,7 +257,7 @@ export function NewsletterForm({
 
             <span
               style={{
-                fontFamily: 'Manrope, sans-serif',
+                fontFamily: 'var(--font-secondary)',
                 fontSize: 'var(--text-small)',
                 color: 'var(--muted-foreground)',
                 lineHeight: '1.5',
@@ -309,7 +309,7 @@ export function NewsletterForm({
           style={{
             width: '100%',
             padding: '14px 16px 14px 44px',
-            fontFamily: 'Lexend, sans-serif',
+            fontFamily: 'var(--font-primary)',
             fontSize: 'var(--text-base)',
             color: 'var(--foreground)',
             backgroundColor: 'var(--background)',
@@ -337,7 +337,7 @@ export function NewsletterForm({
           id="email-error"
           className="flex items-center gap-1"
           style={{
-            fontFamily: 'Manrope, sans-serif',
+            fontFamily: 'var(--font-secondary)',
             fontSize: 'var(--text-small)',
             color: 'var(--destructive)',
             margin: 0,
@@ -374,7 +374,7 @@ export function NewsletterForm({
 
           <span
             style={{
-              fontFamily: 'Manrope, sans-serif',
+              fontFamily: 'var(--font-secondary)',
               fontSize: 'var(--text-small)',
               color: 'var(--muted-foreground)',
               lineHeight: '1.5',

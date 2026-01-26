@@ -105,7 +105,7 @@ export function FeatureShowcaseTemplate() {
                 <h1 
                   style={{ 
                     fontSize: 'var(--text-h1)',
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontWeight: 500,
                     color: 'var(--foreground)'
                   }}
@@ -118,7 +118,7 @@ export function FeatureShowcaseTemplate() {
                 className="mb-8"
                 style={{
                   fontSize: 'var(--text-xl)',
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   color: 'var(--muted-foreground)',
                   lineHeight: 1.6
                 }}
@@ -177,7 +177,7 @@ export function FeatureShowcaseTemplate() {
                     className="mb-2"
                     style={{
                       fontSize: 'var(--text-h2)',
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontWeight: 500,
                       color: 'var(--foreground)'
                     }}
@@ -187,7 +187,7 @@ export function FeatureShowcaseTemplate() {
                   <div 
                     style={{
                       fontSize: 'var(--text-sm)',
-                      fontFamily: 'Manrope, sans-serif',
+                      fontFamily: 'var(--font-secondary)',
                       color: 'var(--muted-foreground)'
                     }}
                   >
@@ -213,7 +213,7 @@ export function FeatureShowcaseTemplate() {
                 className="mb-4"
                 style={{
                   fontSize: 'var(--text-h2)',
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontWeight: 500,
                   color: 'var(--foreground)'
                 }}
@@ -223,7 +223,7 @@ export function FeatureShowcaseTemplate() {
               <p 
                 style={{
                   fontSize: 'var(--text-lg)',
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   color: 'var(--muted-foreground)',
                   maxWidth: '600px',
                   margin: '0 auto'
@@ -257,7 +257,7 @@ export function FeatureShowcaseTemplate() {
                       className="mb-4"
                       style={{
                         fontSize: 'var(--text-h3)',
-                        fontFamily: 'Lexend, sans-serif',
+                        fontFamily: 'var(--font-primary)',
                         fontWeight: 500,
                         color: 'var(--foreground)'
                       }}
@@ -268,7 +268,7 @@ export function FeatureShowcaseTemplate() {
                       className="mb-6"
                       style={{
                         fontSize: 'var(--text-base)',
-                        fontFamily: 'Lexend, sans-serif',
+                        fontFamily: 'var(--font-primary)',
                         color: 'var(--muted-foreground)',
                         lineHeight: 1.6
                       }}
@@ -288,7 +288,7 @@ export function FeatureShowcaseTemplate() {
                           className="flex items-center gap-2"
                           style={{
                             fontSize: 'var(--text-sm)',
-                            fontFamily: 'Manrope, sans-serif',
+                            fontFamily: 'var(--font-secondary)',
                             color: 'var(--muted-foreground)'
                           }}
                         >
@@ -298,7 +298,7 @@ export function FeatureShowcaseTemplate() {
                       ))}
                     </ul>
                     <div className="flex items-center gap-2" style={{ color: 'var(--primary)' }}>
-                      <span style={{ fontSize: 'var(--text-sm)', fontFamily: 'Manrope, sans-serif', fontWeight: 500 }}>
+                      <span style={{ fontSize: 'var(--text-sm)', fontFamily: 'var(--font-secondary)', fontWeight: 500 }}>
                         View Tag Archive
                       </span>
                       <ArrowRight size={16} />
@@ -324,7 +324,7 @@ export function FeatureShowcaseTemplate() {
                       className="mb-4"
                       style={{
                         fontSize: 'var(--text-h3)',
-                        fontFamily: 'Lexend, sans-serif',
+                        fontFamily: 'var(--font-primary)',
                         fontWeight: 500,
                         color: 'var(--foreground)'
                       }}
@@ -335,7 +335,7 @@ export function FeatureShowcaseTemplate() {
                       className="mb-6"
                       style={{
                         fontSize: 'var(--text-base)',
-                        fontFamily: 'Lexend, sans-serif',
+                        fontFamily: 'var(--font-primary)',
                         color: 'var(--muted-foreground)',
                         lineHeight: 1.6
                       }}
@@ -355,7 +355,7 @@ export function FeatureShowcaseTemplate() {
                           className="flex items-center gap-2"
                           style={{
                             fontSize: 'var(--text-sm)',
-                            fontFamily: 'Manrope, sans-serif',
+                            fontFamily: 'var(--font-secondary)',
                             color: 'var(--muted-foreground)'
                           }}
                         >
@@ -365,7 +365,7 @@ export function FeatureShowcaseTemplate() {
                       ))}
                     </ul>
                     <div className="flex items-center gap-2" style={{ color: 'var(--primary)' }}>
-                      <span style={{ fontSize: 'var(--text-sm)', fontFamily: 'Manrope, sans-serif', fontWeight: 500 }}>
+                      <span style={{ fontSize: 'var(--text-sm)', fontFamily: 'var(--font-secondary)', fontWeight: 500 }}>
                         View Date Archive
                       </span>
                       <ArrowRight size={16} />
@@ -391,7 +391,7 @@ export function FeatureShowcaseTemplate() {
                 className="mb-4"
                 style={{
                   fontSize: 'var(--text-h2)',
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontWeight: 500,
                   color: 'var(--foreground)'
                 }}
@@ -401,7 +401,7 @@ export function FeatureShowcaseTemplate() {
               <p 
                 style={{
                   fontSize: 'var(--text-lg)',
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   color: 'var(--muted-foreground)',
                   maxWidth: '600px',
                   margin: '0 auto'
@@ -429,7 +429,7 @@ export function FeatureShowcaseTemplate() {
                   className="mb-2"
                   style={{
                     fontSize: 'var(--text-lg)',
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontWeight: 500,
                     color: 'var(--foreground)'
                   }}
@@ -439,7 +439,7 @@ export function FeatureShowcaseTemplate() {
                 <p 
                   style={{
                     fontSize: 'var(--text-sm)',
-                    fontFamily: 'Manrope, sans-serif',
+                    fontFamily: 'var(--font-secondary)',
                     color: 'var(--muted-foreground)'
                   }}
                 >
@@ -464,7 +464,7 @@ export function FeatureShowcaseTemplate() {
                   className="mb-2"
                   style={{
                     fontSize: 'var(--text-lg)',
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontWeight: 500,
                     color: 'var(--foreground)'
                   }}
@@ -474,7 +474,7 @@ export function FeatureShowcaseTemplate() {
                 <p 
                   style={{
                     fontSize: 'var(--text-sm)',
-                    fontFamily: 'Manrope, sans-serif',
+                    fontFamily: 'var(--font-secondary)',
                     color: 'var(--muted-foreground)'
                   }}
                 >
@@ -499,7 +499,7 @@ export function FeatureShowcaseTemplate() {
                   className="mb-2"
                   style={{
                     fontSize: 'var(--text-lg)',
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontWeight: 500,
                     color: 'var(--foreground)'
                   }}
@@ -509,7 +509,7 @@ export function FeatureShowcaseTemplate() {
                 <p 
                   style={{
                     fontSize: 'var(--text-sm)',
-                    fontFamily: 'Manrope, sans-serif',
+                    fontFamily: 'var(--font-secondary)',
                     color: 'var(--muted-foreground)'
                   }}
                 >
@@ -534,7 +534,7 @@ export function FeatureShowcaseTemplate() {
                   className="mb-2"
                   style={{
                     fontSize: 'var(--text-lg)',
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontWeight: 500,
                     color: 'var(--foreground)'
                   }}
@@ -544,7 +544,7 @@ export function FeatureShowcaseTemplate() {
                 <p 
                   style={{
                     fontSize: 'var(--text-sm)',
-                    fontFamily: 'Manrope, sans-serif',
+                    fontFamily: 'var(--font-secondary)',
                     color: 'var(--muted-foreground)'
                   }}
                 >
@@ -569,7 +569,7 @@ export function FeatureShowcaseTemplate() {
                   className="mb-2"
                   style={{
                     fontSize: 'var(--text-lg)',
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontWeight: 500,
                     color: 'var(--foreground)'
                   }}
@@ -579,7 +579,7 @@ export function FeatureShowcaseTemplate() {
                 <p 
                   style={{
                     fontSize: 'var(--text-sm)',
-                    fontFamily: 'Manrope, sans-serif',
+                    fontFamily: 'var(--font-secondary)',
                     color: 'var(--muted-foreground)'
                   }}
                 >
@@ -604,7 +604,7 @@ export function FeatureShowcaseTemplate() {
                   className="mb-2"
                   style={{
                     fontSize: 'var(--text-lg)',
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontWeight: 500,
                     color: 'var(--foreground)'
                   }}
@@ -614,7 +614,7 @@ export function FeatureShowcaseTemplate() {
                 <p 
                   style={{
                     fontSize: 'var(--text-sm)',
-                    fontFamily: 'Manrope, sans-serif',
+                    fontFamily: 'var(--font-secondary)',
                     color: 'var(--muted-foreground)'
                   }}
                 >
@@ -628,7 +628,7 @@ export function FeatureShowcaseTemplate() {
                 className="mb-4"
                 style={{
                   fontSize: 'var(--text-base)',
-                  fontFamily: 'Manrope, sans-serif',
+                  fontFamily: 'var(--font-secondary)',
                   color: 'var(--muted-foreground)'
                 }}
               >
@@ -655,7 +655,7 @@ export function FeatureShowcaseTemplate() {
                 className="mb-4"
                 style={{
                   fontSize: 'var(--text-h2)',
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontWeight: 500,
                   color: 'var(--foreground)'
                 }}
@@ -665,7 +665,7 @@ export function FeatureShowcaseTemplate() {
               <p 
                 style={{
                   fontSize: 'var(--text-lg)',
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   color: 'var(--muted-foreground)',
                   maxWidth: '600px',
                   margin: '0 auto'
@@ -690,7 +690,7 @@ export function FeatureShowcaseTemplate() {
                       className="mb-2"
                       style={{
                         fontSize: 'var(--text-lg)',
-                        fontFamily: 'Lexend, sans-serif',
+                        fontFamily: 'var(--font-primary)',
                         fontWeight: 500,
                         color: 'var(--foreground)'
                       }}
@@ -700,7 +700,7 @@ export function FeatureShowcaseTemplate() {
                     <p 
                       style={{
                         fontSize: 'var(--text-sm)',
-                        fontFamily: 'Manrope, sans-serif',
+                        fontFamily: 'var(--font-secondary)',
                         color: 'var(--muted-foreground)'
                       }}
                     >
@@ -718,7 +718,7 @@ export function FeatureShowcaseTemplate() {
                       className="mb-2"
                       style={{
                         fontSize: 'var(--text-lg)',
-                        fontFamily: 'Lexend, sans-serif',
+                        fontFamily: 'var(--font-primary)',
                         fontWeight: 500,
                         color: 'var(--foreground)'
                       }}
@@ -728,7 +728,7 @@ export function FeatureShowcaseTemplate() {
                     <p 
                       style={{
                         fontSize: 'var(--text-sm)',
-                        fontFamily: 'Manrope, sans-serif',
+                        fontFamily: 'var(--font-secondary)',
                         color: 'var(--muted-foreground)'
                       }}
                     >
@@ -746,7 +746,7 @@ export function FeatureShowcaseTemplate() {
                       className="mb-2"
                       style={{
                         fontSize: 'var(--text-lg)',
-                        fontFamily: 'Lexend, sans-serif',
+                        fontFamily: 'var(--font-primary)',
                         fontWeight: 500,
                         color: 'var(--foreground)'
                       }}
@@ -756,7 +756,7 @@ export function FeatureShowcaseTemplate() {
                     <p 
                       style={{
                         fontSize: 'var(--text-sm)',
-                        fontFamily: 'Manrope, sans-serif',
+                        fontFamily: 'var(--font-secondary)',
                         color: 'var(--muted-foreground)'
                       }}
                     >
@@ -774,7 +774,7 @@ export function FeatureShowcaseTemplate() {
                       className="mb-2"
                       style={{
                         fontSize: 'var(--text-lg)',
-                        fontFamily: 'Lexend, sans-serif',
+                        fontFamily: 'var(--font-primary)',
                         fontWeight: 500,
                         color: 'var(--foreground)'
                       }}
@@ -784,7 +784,7 @@ export function FeatureShowcaseTemplate() {
                     <p 
                       style={{
                         fontSize: 'var(--text-sm)',
-                        fontFamily: 'Manrope, sans-serif',
+                        fontFamily: 'var(--font-secondary)',
                         color: 'var(--muted-foreground)'
                       }}
                     >
@@ -802,7 +802,7 @@ export function FeatureShowcaseTemplate() {
                       className="mb-2"
                       style={{
                         fontSize: 'var(--text-lg)',
-                        fontFamily: 'Lexend, sans-serif',
+                        fontFamily: 'var(--font-primary)',
                         fontWeight: 500,
                         color: 'var(--foreground)'
                       }}
@@ -812,7 +812,7 @@ export function FeatureShowcaseTemplate() {
                     <p 
                       style={{
                         fontSize: 'var(--text-sm)',
-                        fontFamily: 'Manrope, sans-serif',
+                        fontFamily: 'var(--font-secondary)',
                         color: 'var(--muted-foreground)'
                       }}
                     >
@@ -830,7 +830,7 @@ export function FeatureShowcaseTemplate() {
                       className="mb-2"
                       style={{
                         fontSize: 'var(--text-lg)',
-                        fontFamily: 'Lexend, sans-serif',
+                        fontFamily: 'var(--font-primary)',
                         fontWeight: 500,
                         color: 'var(--foreground)'
                       }}
@@ -840,7 +840,7 @@ export function FeatureShowcaseTemplate() {
                     <p 
                       style={{
                         fontSize: 'var(--text-sm)',
-                        fontFamily: 'Manrope, sans-serif',
+                        fontFamily: 'var(--font-secondary)',
                         color: 'var(--muted-foreground)'
                       }}
                     >
@@ -867,7 +867,7 @@ export function FeatureShowcaseTemplate() {
                 className="mb-4"
                 style={{
                   fontSize: 'var(--text-h2)',
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontWeight: 500,
                   color: 'var(--foreground)'
                 }}
@@ -877,7 +877,7 @@ export function FeatureShowcaseTemplate() {
               <p 
                 style={{
                   fontSize: 'var(--text-lg)',
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   color: 'var(--muted-foreground)',
                   maxWidth: '600px',
                   margin: '0 auto'
@@ -900,7 +900,7 @@ export function FeatureShowcaseTemplate() {
                   className="mb-6"
                   style={{
                     fontSize: 'var(--text-lg)',
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontWeight: 500,
                     color: 'var(--foreground)'
                   }}
@@ -914,7 +914,7 @@ export function FeatureShowcaseTemplate() {
                       className="mt-2"
                       style={{
                         fontSize: 'var(--text-xs)',
-                        fontFamily: 'Manrope, sans-serif',
+                        fontFamily: 'var(--font-secondary)',
                         color: 'var(--muted-foreground)'
                       }}
                     >
@@ -927,7 +927,7 @@ export function FeatureShowcaseTemplate() {
                       className="mt-2"
                       style={{
                         fontSize: 'var(--text-xs)',
-                        fontFamily: 'Manrope, sans-serif',
+                        fontFamily: 'var(--font-secondary)',
                         color: 'var(--muted-foreground)'
                       }}
                     >
@@ -940,7 +940,7 @@ export function FeatureShowcaseTemplate() {
                       className="mt-2"
                       style={{
                         fontSize: 'var(--text-xs)',
-                        fontFamily: 'Manrope, sans-serif',
+                        fontFamily: 'var(--font-secondary)',
                         color: 'var(--muted-foreground)'
                       }}
                     >
@@ -962,7 +962,7 @@ export function FeatureShowcaseTemplate() {
                   className="mb-6"
                   style={{
                     fontSize: 'var(--text-lg)',
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontWeight: 500,
                     color: 'var(--foreground)'
                   }}
@@ -974,7 +974,7 @@ export function FeatureShowcaseTemplate() {
                     <span 
                       style={{
                         fontSize: 'var(--text-sm)',
-                        fontFamily: 'Manrope, sans-serif',
+                        fontFamily: 'var(--font-secondary)',
                         color: 'var(--foreground)'
                       }}
                     >
@@ -986,7 +986,7 @@ export function FeatureShowcaseTemplate() {
                     <span 
                       style={{
                         fontSize: 'var(--text-sm)',
-                        fontFamily: 'Manrope, sans-serif',
+                        fontFamily: 'var(--font-secondary)',
                         color: 'var(--foreground)'
                       }}
                     >
@@ -1009,7 +1009,7 @@ export function FeatureShowcaseTemplate() {
                   <h3 
                     style={{
                       fontSize: 'var(--text-lg)',
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontWeight: 500,
                       color: 'var(--foreground)'
                     }}
@@ -1039,7 +1039,7 @@ export function FeatureShowcaseTemplate() {
                   <h3 
                     style={{
                       fontSize: 'var(--text-lg)',
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontWeight: 500,
                       color: 'var(--foreground)'
                     }}
@@ -1062,7 +1062,7 @@ export function FeatureShowcaseTemplate() {
                         className="mb-3"
                         style={{
                           fontSize: 'var(--text-sm)',
-                          fontFamily: 'Manrope, sans-serif',
+                          fontFamily: 'var(--font-secondary)',
                           color: 'var(--muted-foreground)'
                         }}
                       >
@@ -1080,7 +1080,7 @@ export function FeatureShowcaseTemplate() {
                         className="mb-3"
                         style={{
                           fontSize: 'var(--text-sm)',
-                          fontFamily: 'Manrope, sans-serif',
+                          fontFamily: 'var(--font-secondary)',
                           color: 'var(--muted-foreground)'
                         }}
                       >
@@ -1115,7 +1115,7 @@ export function FeatureShowcaseTemplate() {
                 className="mb-4"
                 style={{
                   fontSize: 'var(--text-h2)',
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontWeight: 500,
                   color: 'var(--foreground)'
                 }}
@@ -1126,7 +1126,7 @@ export function FeatureShowcaseTemplate() {
                 className="mb-8"
                 style={{
                   fontSize: 'var(--text-lg)',
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   color: 'var(--muted-foreground)',
                   lineHeight: 1.6
                 }}

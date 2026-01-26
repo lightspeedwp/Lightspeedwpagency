@@ -254,7 +254,7 @@ export function Heading({ level, children, className = '', id }: HeadingProps) {
       id={id}
       className={className}
       style={{
-        fontFamily: 'Lexend, sans-serif',
+        fontFamily: 'var(--font-primary)',
         fontSize: fontSizeMap[level],
         fontWeight: fontWeightMap[level],
         lineHeight: lineHeightMap[level],

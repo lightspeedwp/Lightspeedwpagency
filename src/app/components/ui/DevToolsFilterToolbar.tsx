@@ -215,7 +215,7 @@ export function DevToolsFilterToolbar({
                   backgroundColor: 'var(--background)',
                   border: '1px solid var(--border-soft)',
                   borderRadius: 'var(--radius-lg)',
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-base)',
                   color: 'var(--foreground)',
                   outline: 'none',
@@ -247,7 +247,7 @@ export function DevToolsFilterToolbar({
             <span
               style={{
                 fontSize: 'var(--text-base)',
-                fontFamily: 'Manrope, sans-serif',
+                fontFamily: 'var(--font-secondary)',
                 fontWeight: 'var(--font-weight-regular)',
                 color: 'var(--foreground)'
               }}
@@ -275,7 +275,7 @@ export function DevToolsFilterToolbar({
                       : 'var(--border-soft)'
                   }`,
                   borderRadius: 'var(--radius-lg)',
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-base)',
                   fontWeight: 'var(--font-weight-medium)',
                   cursor: 'pointer',
