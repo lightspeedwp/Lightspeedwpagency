@@ -16,10 +16,10 @@
  */
 
 import { RouteAnnouncer } from '@/app/components/blocks/utility/RouteAnnouncer';
-import { SkipLink } from '@/app/components/blocks/utility/SkipLink';
+import { SkipLink } from '@/app/components/common/SkipLink';
 import { SiteHeader } from '@/app/components/parts/SiteHeader';
 import { SiteFooter } from '@/app/components/parts/SiteFooter';
-import { BackToTopButton } from '@/app/components/blocks/navigation/BackToTopButton';
+import { BackToTopButton } from '@/app/components/blocks/layout/BackToTopButton';
 import { Hero } from '@/app/components/patterns/Hero';
 import { Section } from '@/app/components/common/Section';
 import { Container } from '@/app/components/common/Container';
@@ -239,10 +239,10 @@ export function LSXSearchTemplate() {
         <CTASection
           title={lsxSearchCTA.title}
           description={lsxSearchCTA.description}
-          buttons={lsxSearchCTA.buttons.map(btn => ({
-            text: btn.text,
-            page: btn.page
-          }))}
+          primaryButtonText={lsxSearchCTA.buttons[0].text}
+          primaryButtonPage={lsxSearchCTA.buttons[0].page}
+          secondaryButtonText={lsxSearchCTA.buttons[1].text}
+          secondaryButtonPage={lsxSearchCTA.buttons[1].page}
         />
       </main>
 

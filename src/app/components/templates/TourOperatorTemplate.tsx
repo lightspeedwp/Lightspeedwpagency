@@ -256,23 +256,27 @@ export function TourOperatorTemplate() {
       <main id="main-content" role="main">
         {/* Hero Section */}
         <Hero
-          variant="gradient"
+          variant="service"
+          gradient="cyan"
           title="WordPress Websites for Tour Operators"
           description="Specialized websites for safari operators, adventure travel companies, and destination management companies. Complete booking systems, itinerary management, and travel industry integrations."
-          primaryButtonText="Book Your Free Consultation"
-          primaryButtonPage="contact"
-          secondaryButtonText="View Portfolio"
-          secondaryButtonPage="portfolio-archive"
-          badge="TOUR OPERATOR SOLUTIONS"
-          gradientColor="cyan"
-          illustration={{
-            icon: Plane,
-            badge: {
-              icon: Calendar,
-              text: 'Bookings',
-              color: 'green'
-            }
+          badge={{
+            icon: Calendar,
+            text: 'TOUR OPERATOR SOLUTIONS'
           }}
+          buttons={[
+            {
+              label: 'Book Your Free Consultation',
+              page: 'contact',
+              variant: 'primary'
+            },
+            {
+              label: 'View Portfolio',
+              page: 'portfolio-archive',
+              variant: 'secondary'
+            }
+          ]}
+          heroIcon={Plane}
         />
 
         {/* Tour Industry Challenges */}
@@ -309,22 +313,21 @@ export function TourOperatorTemplate() {
         <StatsGrid
           stats={benefitsStats}
           columns={4}
-          variant="gradient"
-          gradientColor="cyan"
+          variant="cards"
           spacing="xl"
         />
 
         {/* FAQ Section */}
         <FAQSection
-          heading="Tour Operator FAQs"
+          title="Tour Operator FAQs"
           description="Common questions about tour operator websites"
           faqs={tourFAQs}
         />
 
         {/* CTA Section */}
         <CTASection
-          variant="cyan"
-          heading="Ready to Transform Your Tour Business?"
+          gradient="cyan"
+          title="Ready to Transform Your Tour Business?"
           description="Let's discuss your tour operator needs and create a website that drives bookings and grows your business. Schedule a free consultation today."
           primaryButtonText="Schedule Free Consultation"
           primaryButtonPage="contact"

@@ -17,10 +17,10 @@
 
 import { Check } from 'lucide-react';
 import { RouteAnnouncer } from '@/app/components/blocks/utility/RouteAnnouncer';
-import { SkipLink } from '@/app/components/blocks/utility/SkipLink';
+import { SkipLink } from '@/app/components/common/SkipLink';
 import { SiteHeader } from '@/app/components/parts/SiteHeader';
 import { SiteFooter } from '@/app/components/parts/SiteFooter';
-import { BackToTopButton } from '@/app/components/blocks/navigation/BackToTopButton';
+import { BackToTopButton } from '@/app/components/blocks/layout/BackToTopButton';
 import { Hero } from '@/app/components/patterns/Hero';
 import { Section } from '@/app/components/common/Section';
 import { Container } from '@/app/components/common/Container';
@@ -273,10 +273,10 @@ export function ContentServiceTemplate() {
         <CTASection
           title={contentCTA.title}
           description={contentCTA.description}
-          buttons={contentCTA.buttons.map(btn => ({
-            text: btn.text,
-            page: btn.page
-          }))}
+          primaryButtonText={contentCTA.buttons[0].text}
+          primaryButtonPage={contentCTA.buttons[0].page}
+          secondaryButtonText={contentCTA.buttons[1].text}
+          secondaryButtonPage={contentCTA.buttons[1].page}
         />
       </main>
 

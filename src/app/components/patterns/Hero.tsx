@@ -16,6 +16,7 @@
  * - Optional CTA buttons
  * - Optional stats grid
  * - Optional breadcrumbs
+ * - Optional large hero icon
  * - 100% CSS variables compliance
  * - Full WordPress FSE compatibility
  * - All styling in /src/styles/hero.css (user-editable)
@@ -83,6 +84,9 @@ export interface HeroProps {
   
   // Stats
   stats?: HeroStat[];
+
+  // Hero Icon (Large, right side)
+  heroIcon?: LucideIcon;
   
   // Layout
   variant?: HeroVariant;
@@ -114,6 +118,7 @@ export function Hero({
   badge,
   buttons = [],
   stats = [],
+  heroIcon,
   
   // Layout
   variant = 'simple',
@@ -161,10 +166,10 @@ export function Hero({
   
   const contentClasses = [
     'hero-content',
-    maxWidthClass,
-    alignClass,
-    align === 'center' && 'hero-content--center',
-    maxWidth === '75%' && 'hero-content--75',
+    !heroIcon && maxWidthClass, // Disable max-width constraint if side-by-side layout
+    heroIcon ? 'wp-text-left' : alignClass, // Force left align if icon is present
+    !heroIcon && align === 'center' && 'hero-content--center',
+    !heroIcon && maxWidth === '75%' && 'hero-content--75',
   ].filter(Boolean).join(' ');
   
   // ============================================
@@ -195,7 +200,7 @@ export function Hero({
   
   const buttonsClasses = [
     'hero-buttons',
-    'wp-flex-center',
+    heroIcon ? 'wp-flex-start' : 'wp-flex-center', // Align buttons left if icon present
     'wp-flex-wrap',
     stats.length > 0 && 'hero-buttons--with-stats',
   ].filter(Boolean).join(' ');
@@ -233,6 +238,133 @@ export function Hero({
   };
   
   // ============================================
+  // CONTENT RENDERER
+  // ============================================
+  
+  const renderHeroContent = () => (
+    <div className={contentClasses}>
+      {/* Badge */}
+      {badge && (
+        <div className="hero-badge wp-badge--hero" style={{ fontFamily: 'var(--font-secondary)', marginBottom: 'var(--spacing-4)' }}>
+          {badge.icon && (() => {
+            const BadgeIcon = badge.icon;
+            return <BadgeIcon size={14} />;
+          })()}
+          {badge.text}
+        </div>
+      )}
+      
+      {/* Title */}
+      <h1 
+        className={titleClasses} 
+        style={{ 
+          fontFamily: 'var(--font-primary)',
+          marginBottom: 'var(--spacing-6)',
+        }}
+      >
+        {renderTitle()}
+      </h1>
+      
+      {/* Subtitle (optional) */}
+      {subtitle && (
+        <p 
+          className={`hero-subtitle ${hasGradient ? 'hero-subtitle--gradient' : ''}`} 
+          style={{ 
+            fontFamily: 'var(--font-primary)',
+            marginBottom: 'var(--spacing-6)',
+          }}
+        >
+          {subtitle}
+        </p>
+      )}
+      
+      {/* Description */}
+      <p 
+        className={descriptionClasses} 
+        style={{ 
+          fontFamily: 'var(--font-primary)',
+          marginBottom: 'var(--spacing-8)',
+        }}
+      >
+        {description}
+      </p>
+      
+      {/* CTA Buttons */}
+      {buttons.length > 0 && (
+        <div className={buttonsClasses}>
+          <Buttons>
+            {buttons.map((button, index) => (
+              <Button
+                key={index}
+                variant={button.variant || 'primary'}
+                page={button.page}
+                href={button.href}
+              >
+                {button.label}
+              </Button>
+            ))}
+          </Buttons>
+        </div>
+      )}
+      
+      {/* Stats Grid */}
+      {stats.length > 0 && (
+        <div className={statsClasses} style={{ gap: 'var(--spacing-8)', marginTop: 'var(--spacing-12)' }}>
+          {stats.map((stat, index) => {
+            const StatIcon = stat.icon;
+            
+            // Stat item classes
+            const statClasses = [
+              'hero-stat',
+              variant === 'homepage' ? 'hero-stat--homepage' : 'hero-stat--column',
+              variant !== 'homepage' && `hero-stat--${align}`,
+            ].filter(Boolean).join(' ');
+            
+            // Stat icon classes
+            const iconClasses = [
+              'hero-stat__icon',
+              hasGradient && 'hero-stat__icon--gradient',
+            ].filter(Boolean).join(' ');
+            
+            // Stat value classes
+            const valueClasses = [
+              'hero-stat__value',
+              hasGradient && 'hero-stat__value--gradient',
+            ].filter(Boolean).join(' ');
+            
+            // Stat label classes
+            const labelClasses = [
+              'hero-stat__label',
+              hasGradient && 'hero-stat__label--gradient',
+            ].filter(Boolean).join(' ');
+            
+            return (
+              <div key={index} className={statClasses}>
+                {/* Icon */}
+                {StatIcon && (
+                  <div className={iconClasses}>
+                    <StatIcon size={24} />
+                  </div>
+                )}
+                
+                {/* Content */}
+                <div className="hero-stat__content">
+                  <div className={valueClasses} style={{ fontFamily: 'var(--font-primary)' }}>
+                    {stat.value}
+                  </div>
+                  <div className={labelClasses} style={{ fontFamily: 'var(--font-secondary)' }}>
+                    {stat.label}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+  
+  // ============================================
   // RENDER COMPONENT
   // ============================================
   
@@ -252,114 +384,28 @@ export function Hero({
       <Container>
         {/* Breadcrumbs (Above hero content) */}
         {breadcrumbs && breadcrumbs.length > 0 && (
-          <div className="hero-breadcrumbs">
+          <div className="hero-breadcrumbs" style={{ fontFamily: 'var(--font-secondary)', marginBottom: 'var(--spacing-6)' }}>
             <Breadcrumbs items={breadcrumbs} />
           </div>
         )}
         
-        {/* Hero Content */}
-        <div className={contentClasses}>
-          {/* Badge */}
-          {badge && (
-            <div className="hero-badge wp-badge--hero">
-              {badge.icon && (() => {
-                const BadgeIcon = badge.icon;
-                return <BadgeIcon size={14} />;
+        {/* Hero Content Layout */}
+        {heroIcon ? (
+          <div className="wp-grid-2-cols" style={{ alignItems: 'center', gap: 'var(--spacing-12)' }}>
+            {/* Left: Content */}
+            {renderHeroContent()}
+            
+            {/* Right: Large Icon */}
+            <div className="hero-icon-container" style={{ display: 'flex', justifyContent: 'center', color: 'var(--primary)' }}>
+              {(() => {
+                const Icon = heroIcon;
+                return <Icon size={180} strokeWidth={1} />;
               })()}
-              {badge.text}
             </div>
-          )}
-          
-          {/* Title */}
-          <h1 className={titleClasses}>
-            {renderTitle()}
-          </h1>
-          
-          {/* Subtitle (optional) */}
-          {subtitle && (
-            <p className={`hero-subtitle ${hasGradient ? 'hero-subtitle--gradient' : ''}`}>
-              {subtitle}
-            </p>
-          )}
-          
-          {/* Description */}
-          <p className={descriptionClasses}>
-            {description}
-          </p>
-          
-          {/* CTA Buttons */}
-          {buttons.length > 0 && (
-            <div className={buttonsClasses}>
-              <Buttons>
-                {buttons.map((button, index) => (
-                  <Button
-                    key={index}
-                    variant={button.variant || 'primary'}
-                    page={button.page}
-                    href={button.href}
-                  >
-                    {button.label}
-                  </Button>
-                ))}
-              </Buttons>
-            </div>
-          )}
-          
-          {/* Stats Grid */}
-          {stats.length > 0 && (
-            <div className={statsClasses}>
-              {stats.map((stat, index) => {
-                const StatIcon = stat.icon;
-                
-                // Stat item classes
-                const statClasses = [
-                  'hero-stat',
-                  variant === 'homepage' ? 'hero-stat--homepage' : 'hero-stat--column',
-                  variant !== 'homepage' && `hero-stat--${align}`,
-                ].filter(Boolean).join(' ');
-                
-                // Stat icon classes
-                const iconClasses = [
-                  'hero-stat__icon',
-                  hasGradient && 'hero-stat__icon--gradient',
-                ].filter(Boolean).join(' ');
-                
-                // Stat value classes
-                const valueClasses = [
-                  'hero-stat__value',
-                  hasGradient && 'hero-stat__value--gradient',
-                ].filter(Boolean).join(' ');
-                
-                // Stat label classes
-                const labelClasses = [
-                  'hero-stat__label',
-                  hasGradient && 'hero-stat__label--gradient',
-                ].filter(Boolean).join(' ');
-                
-                return (
-                  <div key={index} className={statClasses}>
-                    {/* Icon */}
-                    {StatIcon && (
-                      <div className={iconClasses}>
-                        <StatIcon size={24} />
-                      </div>
-                    )}
-                    
-                    {/* Content */}
-                    <div className="hero-stat__content">
-                      <div className={valueClasses}>
-                        {stat.value}
-                      </div>
-                      <div className={labelClasses}>
-                        {stat.label}
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          )}
-        </div>
+          </div>
+        ) : (
+          renderHeroContent()
+        )}
       </Container>
     </Section>
   );

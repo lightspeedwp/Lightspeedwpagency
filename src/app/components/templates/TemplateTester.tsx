@@ -572,7 +572,7 @@ export function TemplateTester() {
                 variant="outline"
                 size="md"
                 page="component-showcase"
-                icon={Grid3x3}
+                icon={<Grid3x3 size={20} />}
                 aria-label="View Component Showcase"
               >
                 Component Showcase

@@ -16,16 +16,15 @@
  */
 
 import { RouteAnnouncer } from '@/app/components/blocks/utility/RouteAnnouncer';
-import { SkipLink } from '@/app/components/blocks/utility/SkipLink';
+import { SkipLink } from '@/app/components/common/SkipLink';
 import { SiteHeader } from '@/app/components/parts/SiteHeader';
 import { SiteFooter } from '@/app/components/parts/SiteFooter';
-import { BackToTopButton } from '@/app/components/blocks/navigation/BackToTopButton';
+import { BackToTopButton } from '@/app/components/blocks/layout/BackToTopButton';
 import { Hero } from '@/app/components/patterns/Hero';
 import { Section } from '@/app/components/common/Section';
 import { Container } from '@/app/components/common/Container';
 import { CTASection } from '@/app/components/patterns/CTASection';
 import { FAQSection } from '@/app/components/patterns/FAQSection';
-import { Buttons } from '@/app/components/blocks/design/Buttons';
 import {
   migrationsHero,
   whyMigrateWithLSX,
@@ -58,19 +57,23 @@ export function MigrationsServiceTemplate() {
           title={migrationsHero.title}
           titleHighlight={migrationsHero.titleHighlight}
           description={migrationsHero.description}
-        >
-          <Buttons
-            buttons={[
-              { text: migrationsHero.cta.primary.text, page: migrationsHero.cta.primary.page, variant: 'default', size: 'lg' },
-              { text: migrationsHero.cta.secondary.text, page: migrationsHero.cta.secondary.page, variant: 'outline', size: 'lg' }
-            ]}
-            alignment="center"
-          />
-        </Hero>
+          buttons={[
+            { 
+              label: migrationsHero.cta.primary.text, 
+              page: migrationsHero.cta.primary.page, 
+              variant: 'primary' 
+            },
+            { 
+              label: migrationsHero.cta.secondary.text, 
+              page: migrationsHero.cta.secondary.page, 
+              variant: 'outline' 
+            }
+          ]}
+        />
 
         {/* Why Migrate with LSX Section */}
-        <Section spacing="xl" sectionStyle="muted">
-          <Container maxWidth="6xl">
+        <Section spacing="xl" background="muted">
+          <Container width="default">
             <div className="service-page__section-header">
               <h2 className="service-page__section-title">
                 {whyMigrateWithLSX.title}
@@ -103,7 +106,7 @@ export function MigrationsServiceTemplate() {
 
         {/* Migration Services Section */}
         <Section spacing="xl">
-          <Container maxWidth="6xl">
+          <Container width="default">
             <div className="service-page__section-header">
               <h2 className="service-page__section-title">
                 Our Migration Services
@@ -135,8 +138,8 @@ export function MigrationsServiceTemplate() {
         </Section>
 
         {/* Migration Process Section */}
-        <Section spacing="xl" sectionStyle="muted">
-          <Container maxWidth="6xl">
+        <Section spacing="xl" background="muted">
+          <Container width="default">
             <div className="service-page__section-header">
               <h2 className="service-page__section-title">
                 Our Migration Process
@@ -168,7 +171,7 @@ export function MigrationsServiceTemplate() {
 
         {/* Supported Platforms Section */}
         <Section spacing="xl">
-          <Container maxWidth="6xl">
+          <Container width="default">
             <div className="service-page__section-header">
               <h2 className="service-page__section-title">
                 {supportedPlatforms.title}
@@ -194,8 +197,8 @@ export function MigrationsServiceTemplate() {
         </Section>
 
         {/* Case Study Section */}
-        <Section spacing="xl" sectionStyle="muted">
-          <Container maxWidth="6xl">
+        <Section spacing="xl" background="muted">
+          <Container width="default">
             <div className="service-page__case-study">
               <div className="service-page__case-study-header">
                 <h2 className="service-page__case-study-title">
@@ -235,10 +238,10 @@ export function MigrationsServiceTemplate() {
         <CTASection
           title={migrationsCTA.title}
           description={migrationsCTA.description}
-          buttons={migrationsCTA.buttons.map(btn => ({
-            text: btn.text,
-            page: btn.page
-          }))}
+          primaryButtonText={migrationsCTA.buttons[0].text}
+          primaryButtonPage={migrationsCTA.buttons[0].page}
+          secondaryButtonText={migrationsCTA.buttons[1].text}
+          secondaryButtonPage={migrationsCTA.buttons[1].page}
         />
       </main>
 

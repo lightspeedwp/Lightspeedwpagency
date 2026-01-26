@@ -149,7 +149,7 @@ export function SiteFooter({ className = '' }: SiteFooterProps) {
                   Test All Pages →
                 </button>
                 <button
-                  onClick={() => navigateTo('design-system-test')}
+                  onClick={() => navigateTo('dev-tools')}
                   className="site-footer__dev-link"
                   aria-label="Design system dev tools"
                 >
