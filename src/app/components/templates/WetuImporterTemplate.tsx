@@ -27,6 +27,7 @@ import { Container } from '@/app/components/common/Container';
 import { CTASection } from '@/app/components/patterns/CTASection';
 import { FAQSection } from '@/app/components/patterns/FAQSection';
 import { Buttons } from '@/app/components/blocks/design/Buttons';
+import '@/styles/templates/wetu-importer-page.css';
 import {
   wetuImporterHero,
   wetuImporterFeatures,

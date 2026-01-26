@@ -37,6 +37,7 @@ import {
   ExternalLink
 } from 'lucide-react';
 import { useState } from 'react';
+import '@/styles/templates/contact-page.css';
 
 // Import centralized data
 import {

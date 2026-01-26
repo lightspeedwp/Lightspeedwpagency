@@ -93,7 +93,7 @@ export function FAQTemplate() {
           />
 
           <Container>
-            <div className="wp-max-w-4xl wp-text-center" style={{ position: 'relative', zIndex: 10, margin: '0 auto' }}>
+            <div className="wp-max-w-4xl wp-text-center" style={{ position: 'relative', zIndex: 10, margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               <div
                 style={{
                   display: 'inline-block',
@@ -144,7 +144,8 @@ export function FAQTemplate() {
                   color: 'rgba(255, 255, 255, 0.95)',
                   marginBottom: '16px',
                   maxWidth: '700px',
-                  margin: '0 auto 16px'
+                  margin: '0 auto 16px',
+                  textAlign: 'center'
                 }}
               >
                 {faqPageHero.tagline}
@@ -157,7 +158,8 @@ export function FAQTemplate() {
                   lineHeight: '1.7',
                   color: 'rgba(255, 255, 255, 0.85)',
                   maxWidth: '700px',
-                  margin: '0 auto'
+                  margin: '0 auto',
+                  textAlign: 'center'
                 }}
               >
                 {faqPageHero.description}

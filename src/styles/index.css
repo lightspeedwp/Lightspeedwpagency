@@ -8,35 +8,63 @@
  * 4. Theme Light — Light mode colors (default)
  * 5. Theme Dark — Dark mode colors (overrides for .dark class)
  * 6. Layout — Global fluid padding and layout utilities (NEW)
- * 7. WordPress Blocks — Complete WordPress core block styles
- * 8. WordPress Blocks Extended — Additional blog/navigation patterns
- * 9. Accordion — WordPress Accordion/Details block styles
- * 10. Section Styles — WordPress-style section variations (CTA, Hero, etc.)
- * 11. Homepage Sections — Custom homepage section styles
- * 12. Design Service — Design service template styles
- * 13. Solutions Template — Solutions template styles
- * 14. Header — Site header and mega menu styles
- * 15. Footer — Custom footer styles
- * 16. Animations — Motion and transitions
- * 17. Print — Print-optimized styles
+ * 7. Utilities — Global utility classes (text, spacing, grids)
+ * 8. Responsive — Responsive utilities (hide/show, fluid typography)
+ * 9. WordPress Blocks — Complete WordPress core block styles
+ * 10. WordPress Blocks Extended — Additional blog/navigation patterns
+ * 11. Component Styles — Reusable component patterns
+ * 12. Template Styles — Page-specific styles
+ * 13. Theme Parts — Header, Footer, etc.
  * 
- * Last Updated: January 25, 2025
+ * Last Updated: January 26, 2026
  */
 
+/* 1. Core System */
 @import './fonts.css';
 @import './tailwind.css';
 @import './theme-base.css';
 @import './theme-light.css';
 @import './theme-dark.css';
 @import './layout.css';
+@import './utilities.css';
+@import './responsive.css';
+
+/* 2. WordPress Blocks */
 @import './wordpress-blocks.css';
 @import './wordpress-blocks-extended.css';
 @import './accordion.css';
+
+/* 3. Global Section Styles */
 @import './section-styles.css';
+
+/* 4. Pattern Styles */
+@import './archive-header.css';
+@import './card-grid.css';
+@import './case-study-preview.css';
+@import './cta-section.css';
+@import './faq-section.css';
+@import './featured-project-showcase.css';
+@import './filter-bar.css';
+@import './footer-newsletter.css';
+@import './hero.css';
+@import './hero-home.css';
+@import './pagination-nav.css';
+@import './social-proof.css';
+@import './solution-cards-grid.css';
+@import './stats-section.css';
+@import './testimonial-grid.css';
+@import './theme-showcase-grid.css';
+@import './values-section.css';
+
+/* 5. Page/Template Styles */
 @import './homepage-sections.css';
 @import './design-service.css';
 @import './solutions-template.css';
+
+/* 6. Theme Parts */
 @import './parts/site-header.css';
 @import './footer.css';
+
+/* 7. Utilities & Extras */
 @import './animations.css';
 @import './print.css';

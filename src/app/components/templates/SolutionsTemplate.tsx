@@ -63,7 +63,7 @@ const solutionCards = [
     icon: Target,
     title: 'Tourism Websites',
     description: 'With over 15 years experience, our developers use the power of WordPress to help you and your business with whatever you need.',
-    link: 'tourism-websites',
+    link: 'tour-operators',
     linkText: 'Read More →'
   },
   {
@@ -71,16 +71,16 @@ const solutionCards = [
     icon: Palette,
     title: 'Media Industry',
     description: 'Developed to handle media, stories and adverts for global brands, with support some of the biggest names in the industry.',
-    link: 'media-industry',
-    linkText: 'Read More →'
+    link: 'contact',
+    linkText: 'Contact Us →'
   },
   {
     id: 'elearning',
     icon: Users,
     title: 'eLearning & Education',
     description: 'Powering interactive learning, our eLearning solutions put the WP in courses & training programs to launch learners everywhere.',
-    link: 'elearning',
-    linkText: 'Read More →'
+    link: 'contact',
+    linkText: 'Contact Us →'
   },
   {
     id: 'lsx-design-system',

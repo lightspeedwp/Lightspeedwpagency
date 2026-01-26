@@ -151,11 +151,6 @@ export function DiscoveryServiceTemplate() {
               page: 'contact',
               variant: 'default',
               icon: ArrowRight,
-              style: {
-                backgroundColor: '#3b82f6',
-                color: 'white',
-                boxShadow: '0 10px 40px rgba(59, 130, 246, 0.3)'
-              }
             },
             {
               label: 'View our portfolio',
@@ -222,12 +217,7 @@ export function DiscoveryServiceTemplate() {
         {/* Why LightSpeed Section */}
         <Section 
           spacing="xl"
-          style={{
-            background: 'linear-gradient(135deg, #059669 0%, #047857 100%)',
-            color: 'var(--primary-foreground)',
-            position: 'relative',
-            overflow: 'hidden'
-          }}
+          className="wp-gradient-green"
         >
           {/* Background pattern */}
           <div
@@ -339,9 +329,10 @@ export function DiscoveryServiceTemplate() {
                   size="lg"
                   page="contact"
                   style={{
-                    backgroundColor: '#34d399',
+                    backgroundColor: 'rgba(255, 255, 255, 0.2)',
                     color: 'white',
-                    boxShadow: '0 10px 40px rgba(52, 211, 153, 0.3)'
+                    border: '1px solid rgba(255, 255, 255, 0.4)',
+                    backdropFilter: 'blur(4px)'
                   }}
                 >
                   Book a free consultation

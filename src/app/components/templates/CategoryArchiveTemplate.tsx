@@ -41,6 +41,7 @@ import { BackToTopButton } from '../blocks/layout/BackToTopButton';
 import { useNavigation } from '../../contexts/NavigationContext';
 import { blogCategories, blogPosts, getPostsByCategory, blogAuthors, getAuthorBySlug } from '../../data/blog-posts';
 import { User, Calendar, Clock } from 'lucide-react';
+import '@/styles/templates/blog-index-page.css';
 
 interface CategoryArchiveTemplateProps {
   category?: string;

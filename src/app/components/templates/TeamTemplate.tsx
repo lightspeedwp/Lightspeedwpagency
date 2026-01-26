@@ -33,6 +33,7 @@ import {
   Briefcase,
   CheckCircle
 } from 'lucide-react';
+import '@/styles/templates/team-page.css';
 
 // Import centralized data
 import {

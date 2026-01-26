@@ -85,7 +85,7 @@ export function GuaranteesTemplate() {
                   borderRadius: 'var(--radius-full)',
                   border: '1px solid rgba(255, 255, 255, 0.2)',
                   fontSize: 'var(--text-small)',
-                  fontFamily: 'Manrope, sans-serif',
+                  fontFamily: 'var(--font-secondary)',
                   fontWeight: 'var(--font-weight-semibold)',
                   textTransform: 'uppercase',
                   letterSpacing: '0.1em'
@@ -97,7 +97,7 @@ export function GuaranteesTemplate() {
 
               <h1
                 style={{
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'clamp(2rem, 5vw, 3.5rem)',
                   fontWeight: 'var(--font-weight-bold)',
                   lineHeight: '1.1',
@@ -116,7 +116,7 @@ export function GuaranteesTemplate() {
 
               <p
                 style={{
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-xl)',
                   lineHeight: '1.6',
                   color: 'rgba(255, 255, 255, 0.95)',
@@ -130,7 +130,7 @@ export function GuaranteesTemplate() {
 
               <p
                 style={{
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-lg)',
                   lineHeight: '1.7',
                   color: 'rgba(255, 255, 255, 0.85)',
@@ -151,7 +151,7 @@ export function GuaranteesTemplate() {
               <div className="text-center mb-16">
                 <h2
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-h2)',
                     fontWeight: 'var(--font-weight-bold)',
                     marginBottom: '16px',
@@ -162,7 +162,7 @@ export function GuaranteesTemplate() {
                 </h2>
                 <p
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-lg)',
                     color: 'var(--muted-foreground)',
                     maxWidth: '700px',
@@ -198,7 +198,7 @@ export function GuaranteesTemplate() {
                             padding: '4px 12px',
                             borderRadius: 'var(--radius-full)',
                             fontSize: 'var(--text-small)',
-                            fontFamily: 'Manrope, sans-serif',
+                            fontFamily: 'var(--font-secondary)',
                             fontWeight: 'var(--font-weight-semibold)'
                           }}
                         >
@@ -223,7 +223,7 @@ export function GuaranteesTemplate() {
 
                       <h3
                         style={{
-                          fontFamily: 'Lexend, sans-serif',
+                          fontFamily: 'var(--font-primary)',
                           fontSize: 'var(--text-h5)',
                           fontWeight: 'var(--font-weight-bold)',
                           marginBottom: '8px',
@@ -235,7 +235,7 @@ export function GuaranteesTemplate() {
 
                       <p
                         style={{
-                          fontFamily: 'Lexend, sans-serif',
+                          fontFamily: 'var(--font-primary)',
                           fontSize: 'var(--text-base)',
                           lineHeight: '1.6',
                           color: 'var(--muted-foreground)',
@@ -259,7 +259,7 @@ export function GuaranteesTemplate() {
                             <Check size={16} style={{ color: '#10b981', flexShrink: 0, marginTop: '4px' }} />
                             <span
                               style={{
-                                fontFamily: 'Lexend, sans-serif',
+                                fontFamily: 'var(--font-primary)',
                                 fontSize: 'var(--text-small)',
                                 color: 'var(--foreground)'
                               }}
@@ -284,7 +284,7 @@ export function GuaranteesTemplate() {
               <div className="text-center mb-16">
                 <h2
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-h2)',
                     fontWeight: 'var(--font-weight-bold)',
                     marginBottom: '16px',
@@ -295,7 +295,7 @@ export function GuaranteesTemplate() {
                 </h2>
                 <p
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-lg)',
                     color: 'var(--muted-foreground)'
                   }}
@@ -327,7 +327,7 @@ export function GuaranteesTemplate() {
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        fontFamily: 'Lexend, sans-serif',
+                        fontFamily: 'var(--font-primary)',
                         fontSize: 'var(--text-h4)',
                         fontWeight: 'var(--font-weight-bold)',
                         flexShrink: 0
@@ -339,7 +339,7 @@ export function GuaranteesTemplate() {
                     <div>
                       <h3
                         style={{
-                          fontFamily: 'Lexend, sans-serif',
+                          fontFamily: 'var(--font-primary)',
                           fontSize: 'var(--text-h5)',
                           fontWeight: 'var(--font-weight-bold)',
                           marginBottom: '8px',
@@ -351,7 +351,7 @@ export function GuaranteesTemplate() {
 
                       <p
                         style={{
-                          fontFamily: 'Lexend, sans-serif',
+                          fontFamily: 'var(--font-primary)',
                           fontSize: 'var(--text-base)',
                           lineHeight: '1.6',
                           color: 'var(--muted-foreground)'
@@ -374,7 +374,7 @@ export function GuaranteesTemplate() {
               <div className="text-center mb-16">
                 <h2
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-h2)',
                     fontWeight: 'var(--font-weight-bold)',
                     marginBottom: '16px',
@@ -385,7 +385,7 @@ export function GuaranteesTemplate() {
                 </h2>
                 <p
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-lg)',
                     color: 'var(--muted-foreground)'
                   }}
@@ -412,7 +412,7 @@ export function GuaranteesTemplate() {
                       
                       <div
                         style={{
-                          fontFamily: 'Lexend, sans-serif',
+                          fontFamily: 'var(--font-primary)',
                           fontSize: 'var(--text-h3)',
                           fontWeight: 'var(--font-weight-bold)',
                           color: '#10b981',
@@ -424,7 +424,7 @@ export function GuaranteesTemplate() {
 
                       <div
                         style={{
-                          fontFamily: 'Lexend, sans-serif',
+                          fontFamily: 'var(--font-primary)',
                           fontSize: 'var(--text-base)',
                           fontWeight: 'var(--font-weight-semibold)',
                           color: 'var(--foreground)',
@@ -436,7 +436,7 @@ export function GuaranteesTemplate() {
 
                       <p
                         style={{
-                          fontFamily: 'Lexend, sans-serif',
+                          fontFamily: 'var(--font-primary)',
                           fontSize: 'var(--text-small)',
                           color: 'var(--muted-foreground)'
                         }}

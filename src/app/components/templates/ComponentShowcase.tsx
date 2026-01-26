@@ -439,7 +439,7 @@ export function ComponentShowcase() {
                   variant="outline"
                   size="md"
                   page="template-tester"
-                  icon={Code}
+                  icon={<Code size={16} />}
                   aria-label="Back to Template Tester"
                   style={{ marginLeft: 'auto' }}
                 >

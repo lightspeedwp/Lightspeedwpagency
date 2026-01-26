@@ -30,6 +30,7 @@ import {
   Check,
   X
 } from 'lucide-react';
+import '@/styles/templates/hosting-page.css';
 
 // Import centralized data
 import {

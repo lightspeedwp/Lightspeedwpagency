@@ -27,6 +27,7 @@ import { CTASection } from '@/app/components/patterns/CTASection';
 import { FAQSection } from '@/app/components/patterns/FAQSection';
 import { Buttons } from '@/app/components/blocks/design/Buttons';
 import { Share2 } from 'lucide-react';
+import '@/styles/templates/lsx-sharing-page.css';
 import {
   lsxSharingHero,
   lsxSharingFeatures,

@@ -26,6 +26,7 @@ import { Container } from '@/app/components/common/Container';
 import { CTASection } from '@/app/components/patterns/CTASection';
 import { FAQSection } from '@/app/components/patterns/FAQSection';
 import { Buttons } from '@/app/components/blocks/design/Buttons';
+import '@/styles/templates/lsx-search-page.css';
 import {
   lsxSearchHero,
   lsxSearchFeatures,

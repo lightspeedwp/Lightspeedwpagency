@@ -36,6 +36,7 @@ import {
   Sparkles,
   ChevronRight
 } from 'lucide-react';
+import '@/styles/homepage-sections.css';
 
 // Import centralized data
 import {

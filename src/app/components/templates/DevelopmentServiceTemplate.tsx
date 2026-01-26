@@ -102,7 +102,7 @@ export function DevelopmentServiceTemplate() {
               <div className="text-center mb-16">
                 <h2
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-h1)',
                     fontWeight: 'var(--font-weight-bold)',
                     lineHeight: '1.2',
@@ -116,7 +116,7 @@ export function DevelopmentServiceTemplate() {
 
                 <p
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-lg)',
                     lineHeight: '1.7',
                     color: 'var(--muted-foreground)',
@@ -146,7 +146,7 @@ export function DevelopmentServiceTemplate() {
                       <Icon size={32} style={{ marginBottom: '12px', color: '#8b5cf6' }} />
                       <div
                         style={{
-                          fontFamily: 'Lexend, sans-serif',
+                          fontFamily: 'var(--font-primary)',
                           fontSize: 'var(--text-h2)',
                           fontWeight: 'var(--font-weight-bold)',
                           marginBottom: '4px',
@@ -157,7 +157,7 @@ export function DevelopmentServiceTemplate() {
                       </div>
                       <div
                         style={{
-                          fontFamily: 'Lexend, sans-serif',
+                          fontFamily: 'var(--font-primary)',
                           fontSize: 'var(--text-base)',
                           fontWeight: 'var(--font-weight-semibold)',
                           marginBottom: '8px',
@@ -168,7 +168,7 @@ export function DevelopmentServiceTemplate() {
                       </div>
                       <p
                         style={{
-                          fontFamily: 'Manrope, sans-serif',
+                          fontFamily: 'var(--font-secondary)',
                           fontSize: 'var(--text-small)',
                           lineHeight: '1.5',
                           color: 'var(--muted-foreground)'
@@ -191,7 +191,7 @@ export function DevelopmentServiceTemplate() {
               <div className="text-center mb-16">
                 <h2
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-h1)',
                     fontWeight: 'var(--font-weight-bold)',
                     lineHeight: '1.2',
@@ -205,7 +205,7 @@ export function DevelopmentServiceTemplate() {
 
                 <p
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-lg)',
                     lineHeight: '1.7',
                     color: 'var(--muted-foreground)'
@@ -252,7 +252,7 @@ export function DevelopmentServiceTemplate() {
 
                       <h3
                         style={{
-                          fontFamily: 'Lexend, sans-serif',
+                          fontFamily: 'var(--font-primary)',
                           fontSize: 'var(--text-lg)',
                           fontWeight: 'var(--font-weight-bold)',
                           color: 'var(--foreground)',
@@ -264,7 +264,7 @@ export function DevelopmentServiceTemplate() {
 
                       <p
                         style={{
-                          fontFamily: 'Lexend, sans-serif',
+                          fontFamily: 'var(--font-primary)',
                           fontSize: 'var(--text-small)',
                           lineHeight: '1.6',
                           color: 'var(--muted-foreground)',
@@ -288,7 +288,7 @@ export function DevelopmentServiceTemplate() {
                             <CheckCircle size={14} style={{ color: 'var(--success)', flexShrink: 0 }} />
                             <span
                               style={{
-                                fontFamily: 'Manrope, sans-serif',
+                                fontFamily: 'var(--font-secondary)',
                                 fontSize: 'var(--text-small)',
                                 color: 'var(--foreground)'
                               }}
@@ -313,7 +313,7 @@ export function DevelopmentServiceTemplate() {
               <div className="text-center mb-16">
                 <h2
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-h1)',
                     fontWeight: 'var(--font-weight-bold)',
                     lineHeight: '1.2',
@@ -327,7 +327,7 @@ export function DevelopmentServiceTemplate() {
 
                 <p
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-lg)',
                     lineHeight: '1.7',
                     color: 'var(--muted-foreground)'
@@ -350,7 +350,7 @@ export function DevelopmentServiceTemplate() {
                   >
                     <h3
                       style={{
-                        fontFamily: 'Lexend, sans-serif',
+                        fontFamily: 'var(--font-primary)',
                         fontSize: 'var(--text-lg)',
                         fontWeight: 'var(--font-weight-bold)',
                         color: 'var(--foreground)',
@@ -366,7 +366,7 @@ export function DevelopmentServiceTemplate() {
                           key={idx}
                           style={{
                             fontSize: 'var(--text-small)',
-                            fontFamily: 'Manrope, sans-serif',
+                            fontFamily: 'var(--font-secondary)',
                             color: '#8b5cf6',
                             backgroundColor: 'rgba(139, 92, 246, 0.1)',
                             padding: '6px 12px',
@@ -443,7 +443,7 @@ export function DevelopmentServiceTemplate() {
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
-                          fontFamily: 'Lexend, sans-serif',
+                          fontFamily: 'var(--font-primary)',
                           fontSize: 'var(--text-small)',
                           fontWeight: 'var(--font-weight-bold)'
                         }}
@@ -468,7 +468,7 @@ export function DevelopmentServiceTemplate() {
 
                       <h3
                         style={{
-                          fontFamily: 'Lexend, sans-serif',
+                          fontFamily: 'var(--font-primary)',
                           fontSize: 'var(--text-base)',
                           fontWeight: 'var(--font-weight-bold)',
                           color: 'var(--foreground)',
@@ -480,7 +480,7 @@ export function DevelopmentServiceTemplate() {
 
                       <p
                         style={{
-                          fontFamily: 'Lexend, sans-serif',
+                          fontFamily: 'var(--font-primary)',
                           fontSize: 'var(--text-small)',
                           lineHeight: '1.6',
                           color: 'var(--muted-foreground)',
@@ -504,7 +504,7 @@ export function DevelopmentServiceTemplate() {
                             <CheckCircle size={12} style={{ color: 'var(--success)', flexShrink: 0 }} />
                             <span
                               style={{
-                                fontFamily: 'Manrope, sans-serif',
+                                fontFamily: 'var(--font-secondary)',
                                 fontSize: 'var(--text-small)',
                                 color: 'var(--muted-foreground)'
                               }}
@@ -529,7 +529,7 @@ export function DevelopmentServiceTemplate() {
               <div className="text-center mb-16">
                 <h2
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-h1)',
                     fontWeight: 'var(--font-weight-bold)',
                     lineHeight: '1.2',
@@ -543,7 +543,7 @@ export function DevelopmentServiceTemplate() {
 
                 <p
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-lg)',
                     lineHeight: '1.7',
                     color: 'var(--muted-foreground)'
@@ -583,7 +583,7 @@ export function DevelopmentServiceTemplate() {
 
                       <h3
                         style={{
-                          fontFamily: 'Lexend, sans-serif',
+                          fontFamily: 'var(--font-primary)',
                           fontSize: 'var(--text-base)',
                           fontWeight: 'var(--font-weight-bold)',
                           color: 'var(--foreground)',
@@ -595,7 +595,7 @@ export function DevelopmentServiceTemplate() {
 
                       <p
                         style={{
-                          fontFamily: 'Lexend, sans-serif',
+                          fontFamily: 'var(--font-primary)',
                           fontSize: 'var(--text-small)',
                           lineHeight: '1.6',
                           color: 'var(--muted-foreground)'

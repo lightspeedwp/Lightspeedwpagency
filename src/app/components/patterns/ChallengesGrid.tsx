@@ -98,15 +98,15 @@ export function ChallengesGrid({
 
   return (
     <Section spacing={spacing} style={{ backgroundColor }}>
-      <div className={`wp-max-w-${maxWidth}`}>
+      <div className={`wp-max-w-${maxWidth} wp-mx-auto`}>
         {/* Section Header */}
         {(badge || title || description) && (
           <div className="wp-text-center" style={{ marginBottom: 'var(--spacing-16)' }}>
             {/* Badge */}
             {badge && (
               <div
-                className="inline-flex"
                 style={{
+                  display: 'inline-flex',
                   alignItems: 'center',
                   gap: 'var(--spacing-2)',
                   padding: '8px 16px',

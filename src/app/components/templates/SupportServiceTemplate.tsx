@@ -14,13 +14,12 @@ import { Section } from '../common/Section';
 import { Breadcrumbs } from '../common/Breadcrumbs';
 import { BackToTopButton } from '../blocks/layout/BackToTopButton';
 import { RouteAnnouncer } from '../blocks/utility/RouteAnnouncer';
-import { Buttons, Button } from '../blocks/design/Buttons';
+import { Button } from '../blocks/design/Buttons';
 import { FAQSection } from '../patterns/FAQSection';
 import { Hero } from '../patterns/Hero';
 import { 
   Wrench,
   CheckCircle,
-  ArrowRight,
   Check
 } from 'lucide-react';
 import { useState } from 'react';
@@ -98,11 +97,11 @@ export function SupportServiceTemplate() {
         {/* Overview Section */}
         <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
           <Container>
-            <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-16">
+            <div className="wp-max-w-6xl mx-auto">
+              <div className="wp-text-center" style={{ marginBottom: 'var(--spacing-16)' }}>
                 <h2
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-h1)',
                     fontWeight: 'var(--font-weight-bold)',
                     lineHeight: '1.2',
@@ -116,7 +115,7 @@ export function SupportServiceTemplate() {
 
                 <p
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-lg)',
                     lineHeight: '1.7',
                     color: 'var(--muted-foreground)',
@@ -129,13 +128,13 @@ export function SupportServiceTemplate() {
               </div>
 
               {/* Stats */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              <div className="wp-grid-4-cols" style={{ gap: 'var(--spacing-8)' }}>
                 {supportServiceOverview.stats.map((stat, index) => {
                   const Icon = stat.icon;
                   return (
                     <div
                       key={index}
-                      className="text-center"
+                      className="wp-text-center"
                       style={{
                         padding: '32px',
                         backgroundColor: 'var(--card)',
@@ -143,10 +142,10 @@ export function SupportServiceTemplate() {
                         border: '1px solid var(--border-soft)'
                       }}
                     >
-                      <Icon size={32} style={{ marginBottom: '12px', color: '#0891b2' }} />
+                      <Icon size={32} style={{ marginBottom: '12px', color: 'var(--primary)' }} />
                       <div
                         style={{
-                          fontFamily: 'Lexend, sans-serif',
+                          fontFamily: 'var(--font-primary)',
                           fontSize: 'var(--text-h2)',
                           fontWeight: 'var(--font-weight-bold)',
                           marginBottom: '4px',
@@ -157,7 +156,7 @@ export function SupportServiceTemplate() {
                       </div>
                       <div
                         style={{
-                          fontFamily: 'Lexend, sans-serif',
+                          fontFamily: 'var(--font-primary)',
                           fontSize: 'var(--text-base)',
                           fontWeight: 'var(--font-weight-semibold)',
                           marginBottom: '8px',
@@ -168,7 +167,7 @@ export function SupportServiceTemplate() {
                       </div>
                       <p
                         style={{
-                          fontFamily: 'Manrope, sans-serif',
+                          fontFamily: 'var(--font-secondary)',
                           fontSize: 'var(--text-small)',
                           lineHeight: '1.5',
                           color: 'var(--muted-foreground)'
@@ -187,11 +186,11 @@ export function SupportServiceTemplate() {
         {/* Support Services Section */}
         <Section spacing="xl" style={{ backgroundColor: 'var(--muted)' }}>
           <Container>
-            <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-16">
+            <div className="wp-max-w-6xl mx-auto">
+              <div className="wp-text-center" style={{ marginBottom: 'var(--spacing-16)' }}>
                 <h2
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-h1)',
                     fontWeight: 'var(--font-weight-bold)',
                     lineHeight: '1.2',
@@ -205,7 +204,7 @@ export function SupportServiceTemplate() {
 
                 <p
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-lg)',
                     lineHeight: '1.7',
                     color: 'var(--muted-foreground)'
@@ -215,7 +214,7 @@ export function SupportServiceTemplate() {
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="wp-grid-3-cols" style={{ gap: 'var(--spacing-6)' }}>
                 {supportServices.map((service) => {
                   const Icon = service.icon;
                   const isHovered = hoveredService === service.id;
@@ -229,7 +228,7 @@ export function SupportServiceTemplate() {
                         padding: '24px',
                         backgroundColor: 'var(--card)',
                         borderRadius: 'var(--radius-lg)',
-                        border: isHovered ? '1px solid #0891b2' : '1px solid var(--border-soft)',
+                        border: isHovered ? '1px solid var(--primary)' : '1px solid var(--border-soft)',
                         transition: 'all 0.3s ease',
                         transform: isHovered ? 'translateY(-4px)' : 'translateY(0)'
                       }}
@@ -239,7 +238,7 @@ export function SupportServiceTemplate() {
                           width: '48px',
                           height: '48px',
                           borderRadius: 'var(--radius)',
-                          backgroundColor: isHovered ? '#0891b2' : 'var(--muted)',
+                          backgroundColor: isHovered ? 'var(--primary)' : 'var(--muted)',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
@@ -247,12 +246,12 @@ export function SupportServiceTemplate() {
                           transition: 'all 0.3s ease'
                         }}
                       >
-                        <Icon size={24} style={{ color: isHovered ? 'white' : '#0891b2' }} />
+                        <Icon size={24} style={{ color: isHovered ? 'white' : 'var(--primary)' }} />
                       </div>
 
                       <h3
                         style={{
-                          fontFamily: 'Lexend, sans-serif',
+                          fontFamily: 'var(--font-primary)',
                           fontSize: 'var(--text-lg)',
                           fontWeight: 'var(--font-weight-bold)',
                           color: 'var(--foreground)',
@@ -264,7 +263,7 @@ export function SupportServiceTemplate() {
 
                       <p
                         style={{
-                          fontFamily: 'Lexend, sans-serif',
+                          fontFamily: 'var(--font-primary)',
                           fontSize: 'var(--text-small)',
                           lineHeight: '1.6',
                           color: 'var(--muted-foreground)',
@@ -288,7 +287,7 @@ export function SupportServiceTemplate() {
                             <CheckCircle size={14} style={{ color: 'var(--success)', flexShrink: 0 }} />
                             <span
                               style={{
-                                fontFamily: 'Manrope, sans-serif',
+                                fontFamily: 'var(--font-secondary)',
                                 fontSize: 'var(--text-small)',
                                 color: 'var(--foreground)'
                               }}
@@ -309,11 +308,11 @@ export function SupportServiceTemplate() {
         {/* Support Plans Section */}
         <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
           <Container>
-            <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-16">
+            <div className="wp-max-w-6xl mx-auto">
+              <div className="wp-text-center" style={{ marginBottom: 'var(--spacing-16)' }}>
                 <h2
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-h1)',
                     fontWeight: 'var(--font-weight-bold)',
                     lineHeight: '1.2',
@@ -327,7 +326,7 @@ export function SupportServiceTemplate() {
 
                 <p
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-lg)',
                     lineHeight: '1.7',
                     color: 'var(--muted-foreground)'
@@ -337,7 +336,7 @@ export function SupportServiceTemplate() {
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="wp-grid-3-cols" style={{ gap: 'var(--spacing-8)' }}>
                 {supportPlans.map((plan, index) => (
                   <div
                     key={index}
@@ -345,7 +344,7 @@ export function SupportServiceTemplate() {
                       padding: '40px',
                       backgroundColor: plan.recommended ? 'rgba(8, 145, 178, 0.1)' : 'var(--card)',
                       borderRadius: 'var(--radius-lg)',
-                      border: plan.recommended ? '2px solid #0891b2' : '1px solid var(--border-soft)',
+                      border: plan.recommended ? '2px solid var(--primary)' : '1px solid var(--border-soft)',
                       position: 'relative'
                     }}
                   >
@@ -356,12 +355,12 @@ export function SupportServiceTemplate() {
                           top: '-12px',
                           left: '50%',
                           transform: 'translateX(-50%)',
-                          backgroundColor: '#0891b2',
+                          backgroundColor: 'var(--primary)',
                           color: 'white',
                           padding: '4px 16px',
                           borderRadius: 'var(--radius-full)',
                           fontSize: 'var(--text-small)',
-                          fontFamily: 'Manrope, sans-serif',
+                          fontFamily: 'var(--font-secondary)',
                           fontWeight: 'var(--font-weight-semibold)'
                         }}
                       >
@@ -371,7 +370,7 @@ export function SupportServiceTemplate() {
 
                     <h3
                       style={{
-                        fontFamily: 'Lexend, sans-serif',
+                        fontFamily: 'var(--font-primary)',
                         fontSize: 'var(--text-h3)',
                         fontWeight: 'var(--font-weight-bold)',
                         color: 'var(--foreground)',
@@ -383,10 +382,10 @@ export function SupportServiceTemplate() {
 
                     <div
                       style={{
-                        fontFamily: 'Lexend, sans-serif',
+                        fontFamily: 'var(--font-primary)',
                         fontSize: 'var(--text-h2)',
                         fontWeight: 'var(--font-weight-bold)',
-                        color: '#0891b2',
+                        color: 'var(--primary)',
                         marginBottom: '8px'
                       }}
                     >
@@ -395,7 +394,7 @@ export function SupportServiceTemplate() {
 
                     <p
                       style={{
-                        fontFamily: 'Lexend, sans-serif',
+                        fontFamily: 'var(--font-primary)',
                         fontSize: 'var(--text-small)',
                         lineHeight: '1.6',
                         color: 'var(--muted-foreground)',
@@ -419,7 +418,7 @@ export function SupportServiceTemplate() {
                           <Check size={18} style={{ color: 'var(--success)', flexShrink: 0 }} />
                           <span
                             style={{
-                              fontFamily: 'Lexend, sans-serif',
+                              fontFamily: 'var(--font-primary)',
                               fontSize: 'var(--text-small)',
                               color: 'var(--foreground)'
                             }}
@@ -448,11 +447,11 @@ export function SupportServiceTemplate() {
         {/* What's Included Section */}
         <Section spacing="xl" style={{ backgroundColor: 'var(--muted)' }}>
           <Container>
-            <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-16">
+            <div className="wp-max-w-6xl mx-auto">
+              <div className="wp-text-center" style={{ marginBottom: 'var(--spacing-16)' }}>
                 <h2
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-h1)',
                     fontWeight: 'var(--font-weight-bold)',
                     lineHeight: '1.2',
@@ -466,7 +465,7 @@ export function SupportServiceTemplate() {
 
                 <p
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-lg)',
                     lineHeight: '1.7',
                     color: 'var(--muted-foreground)'
@@ -476,13 +475,13 @@ export function SupportServiceTemplate() {
                 </p>
               </div>
 
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              <div className="wp-grid-4-cols" style={{ gap: 'var(--spacing-6)' }}>
                 {supportIncludes.map((item, index) => {
                   const Icon = item.icon;
                   return (
                     <div
                       key={index}
-                      className="text-center"
+                      className="wp-text-center"
                       style={{
                         padding: '20px',
                         backgroundColor: 'var(--card)',
@@ -502,12 +501,12 @@ export function SupportServiceTemplate() {
                           margin: '0 auto 12px'
                         }}
                       >
-                        <Icon size={24} style={{ color: '#0891b2' }} />
+                        <Icon size={24} style={{ color: 'var(--primary)' }} />
                       </div>
 
                       <h3
                         style={{
-                          fontFamily: 'Lexend, sans-serif',
+                          fontFamily: 'var(--font-primary)',
                           fontSize: 'var(--text-small)',
                           fontWeight: 'var(--font-weight-bold)',
                           color: 'var(--foreground)',
@@ -519,7 +518,7 @@ export function SupportServiceTemplate() {
 
                       <p
                         style={{
-                          fontFamily: 'Manrope, sans-serif',
+                          fontFamily: 'var(--font-secondary)',
                           fontSize: 'var(--text-small)',
                           lineHeight: '1.5',
                           color: 'var(--muted-foreground)'
@@ -538,11 +537,11 @@ export function SupportServiceTemplate() {
         {/* Support Process Section */}
         <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
           <Container>
-            <div className="max-w-5xl mx-auto">
-              <div className="text-center mb-16">
+            <div className="wp-max-w-6xl mx-auto">
+              <div className="wp-text-center" style={{ marginBottom: 'var(--spacing-16)' }}>
                 <h2
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-h1)',
                     fontWeight: 'var(--font-weight-bold)',
                     lineHeight: '1.2',
@@ -556,7 +555,7 @@ export function SupportServiceTemplate() {
 
                 <p
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-lg)',
                     lineHeight: '1.7',
                     color: 'var(--muted-foreground)'
@@ -566,13 +565,13 @@ export function SupportServiceTemplate() {
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="wp-grid-4-cols" style={{ gap: 'var(--spacing-6)' }}>
                 {supportProcess.map((step) => {
                   const Icon = step.icon;
                   return (
                     <div
                       key={step.step}
-                      className="text-center"
+                      className="wp-text-center"
                       style={{
                         padding: '24px',
                         backgroundColor: 'var(--card)',
@@ -589,12 +588,12 @@ export function SupportServiceTemplate() {
                           width: '32px',
                           height: '32px',
                           borderRadius: 'var(--radius-full)',
-                          backgroundColor: '#0891b2',
+                          backgroundColor: 'var(--primary)',
                           color: 'white',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
-                          fontFamily: 'Lexend, sans-serif',
+                          fontFamily: 'var(--font-primary)',
                           fontSize: 'var(--text-small)',
                           fontWeight: 'var(--font-weight-bold)'
                         }}
@@ -614,12 +613,12 @@ export function SupportServiceTemplate() {
                           margin: '0 auto 16px'
                         }}
                       >
-                        <Icon size={28} style={{ color: '#0891b2' }} />
+                        <Icon size={28} style={{ color: 'var(--primary)' }} />
                       </div>
 
                       <h3
                         style={{
-                          fontFamily: 'Lexend, sans-serif',
+                          fontFamily: 'var(--font-primary)',
                           fontSize: 'var(--text-base)',
                           fontWeight: 'var(--font-weight-bold)',
                           color: 'var(--foreground)',
@@ -631,7 +630,7 @@ export function SupportServiceTemplate() {
 
                       <p
                         style={{
-                          fontFamily: 'Lexend, sans-serif',
+                          fontFamily: 'var(--font-primary)',
                           fontSize: 'var(--text-small)',
                           lineHeight: '1.6',
                           color: 'var(--muted-foreground)'
@@ -650,11 +649,11 @@ export function SupportServiceTemplate() {
         {/* Common Issues Section */}
         <Section spacing="xl" style={{ backgroundColor: 'var(--muted)' }}>
           <Container>
-            <div className="max-w-4xl mx-auto">
-              <div className="text-center mb-16">
+            <div className="wp-max-w-4xl mx-auto">
+              <div className="wp-text-center" style={{ marginBottom: 'var(--spacing-16)' }}>
                 <h2
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-h1)',
                     fontWeight: 'var(--font-weight-bold)',
                     lineHeight: '1.2',
@@ -668,7 +667,7 @@ export function SupportServiceTemplate() {
 
                 <p
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-lg)',
                     lineHeight: '1.7',
                     color: 'var(--muted-foreground)'
@@ -678,7 +677,7 @@ export function SupportServiceTemplate() {
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="wp-grid-2-cols" style={{ gap: 'var(--spacing-6)' }}>
                 {commonIssues.map((item, index) => (
                   <div
                     key={index}
@@ -694,7 +693,7 @@ export function SupportServiceTemplate() {
                       <div>
                         <h3
                           style={{
-                            fontFamily: 'Lexend, sans-serif',
+                            fontFamily: 'var(--font-primary)',
                             fontSize: 'var(--text-base)',
                             fontWeight: 'var(--font-weight-bold)',
                             color: 'var(--foreground)',
@@ -705,7 +704,7 @@ export function SupportServiceTemplate() {
                         </h3>
                         <p
                           style={{
-                            fontFamily: 'Lexend, sans-serif',
+                            fontFamily: 'var(--font-primary)',
                             fontSize: 'var(--text-small)',
                             lineHeight: '1.6',
                             color: 'var(--muted-foreground)'
@@ -725,11 +724,11 @@ export function SupportServiceTemplate() {
         {/* Why Choose Us Section */}
         <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
           <Container>
-            <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-16">
+            <div className="wp-max-w-6xl mx-auto">
+              <div className="wp-text-center" style={{ marginBottom: 'var(--spacing-16)' }}>
                 <h2
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-h1)',
                     fontWeight: 'var(--font-weight-bold)',
                     lineHeight: '1.2',
@@ -738,66 +737,53 @@ export function SupportServiceTemplate() {
                     color: 'var(--foreground)'
                   }}
                 >
-                  Why Choose Our WordPress Support?
+                  Why Choose Our Support?
                 </h2>
-
-                <p
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-lg)',
-                    lineHeight: '1.7',
-                    color: 'var(--muted-foreground)'
-                  }}
-                >
-                  What makes our support service different
-                </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="wp-grid-3-cols" style={{ gap: 'var(--spacing-8)' }}>
                 {whyChooseUs.map((reason, index) => {
                   const Icon = reason.icon;
                   return (
-                    <div
-                      key={index}
+                    <div 
+                      key={index} 
+                      className="wp-text-center"
                       style={{
                         padding: '24px',
-                        backgroundColor: 'var(--card)',
-                        borderRadius: 'var(--radius-lg)',
-                        border: '1px solid var(--border-soft)'
+                        backgroundColor: 'var(--muted)',
+                        borderRadius: 'var(--radius-lg)'
                       }}
                     >
                       <div
                         style={{
-                          width: '48px',
-                          height: '48px',
-                          borderRadius: 'var(--radius)',
-                          backgroundColor: 'rgba(8, 145, 178, 0.1)',
+                          width: '64px',
+                          height: '64px',
+                          borderRadius: 'var(--radius-full)',
+                          backgroundColor: 'var(--background)',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
-                          marginBottom: '16px'
+                          margin: '0 auto 16px',
+                          border: '1px solid var(--border-soft)'
                         }}
                       >
-                        <Icon size={24} style={{ color: '#0891b2' }} />
+                        <Icon size={32} style={{ color: 'var(--primary)' }} />
                       </div>
-
                       <h3
                         style={{
-                          fontFamily: 'Lexend, sans-serif',
+                          fontFamily: 'var(--font-primary)',
                           fontSize: 'var(--text-lg)',
                           fontWeight: 'var(--font-weight-bold)',
-                          color: 'var(--foreground)',
-                          marginBottom: '8px'
+                          marginBottom: '8px',
+                          color: 'var(--foreground)'
                         }}
                       >
                         {reason.title}
                       </h3>
-
                       <p
                         style={{
-                          fontFamily: 'Lexend, sans-serif',
-                          fontSize: 'var(--text-small)',
-                          lineHeight: '1.6',
+                          fontFamily: 'var(--font-secondary)',
+                          fontSize: 'var(--text-base)',
                           color: 'var(--muted-foreground)'
                         }}
                       >
@@ -811,74 +797,51 @@ export function SupportServiceTemplate() {
           </Container>
         </Section>
 
-        {/* FAQ Section */}
-        <FAQSection
-          title="Frequently Asked Questions"
-          description="Common questions about WordPress support"
-          faqs={supportServiceFAQs}
-          variant="muted"
-        />
+        {/* FAQs */}
+        <FAQSection faqs={supportServiceFAQs} />
 
-        {/* CTA Section */}
+        {/* CTA */}
         <Section 
           spacing="xl" 
-          style={{
+          style={{ 
             background: 'linear-gradient(135deg, #0891b2 0%, #06b6d4 100%)',
-            color: 'var(--primary-foreground)'
+            color: 'white'
           }}
         >
           <Container>
-            <div className="max-w-3xl mx-auto text-center">
+            <div className="wp-max-w-4xl mx-auto wp-text-center">
               <h2
                 style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-h1)',
+                  fontFamily: 'var(--font-primary)',
+                  fontSize: 'var(--text-h2)',
                   fontWeight: 'var(--font-weight-bold)',
-                  lineHeight: '1.2',
-                  letterSpacing: '-0.02em',
                   marginBottom: '16px',
-                  color: 'var(--primary-foreground)'
+                  color: 'white'
                 }}
               >
                 {supportServiceCTA.title}
               </h2>
-
               <p
                 style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-lg)',
-                  lineHeight: '1.7',
-                  color: 'rgba(255, 255, 255, 0.9)',
-                  marginBottom: '32px'
+                  fontFamily: 'var(--font-primary)',
+                  fontSize: 'var(--text-xl)',
+                  marginBottom: '32px',
+                  color: 'rgba(255, 255, 255, 0.9)'
                 }}
               >
-                {supportServiceCTA.description}
+                {supportServiceCTA.subtitle}
               </p>
-
-              <Buttons alignment="center" gap="md">
-                <Button 
-                  page={supportServiceCTA.buttons[0].page as any} 
-                  size="lg"
-                  variant="default"
-                  style={{
-                    backgroundColor: 'var(--primary-foreground)',
-                    color: '#0891b2'
-                  }}
-                >
-                  {supportServiceCTA.buttons[0].text}
-                </Button>
-                <Button 
-                  page={supportServiceCTA.buttons[1].page as any} 
-                  size="lg"
-                  variant="outline"
-                  style={{
-                    borderColor: 'var(--primary-foreground)',
-                    color: 'var(--primary-foreground)'
-                  }}
-                >
-                  {supportServiceCTA.buttons[1].text}
-                </Button>
-              </Buttons>
+              <Button 
+                page="contact" 
+                size="lg" 
+                variant="default"
+                style={{ 
+                  backgroundColor: 'white', 
+                  color: '#0891b2' 
+                }}
+              >
+                {supportServiceCTA.buttonText}
+              </Button>
             </div>
           </Container>
         </Section>
@@ -889,3 +852,5 @@ export function SupportServiceTemplate() {
     </>
   );
 }
+
+export default SupportServiceTemplate;

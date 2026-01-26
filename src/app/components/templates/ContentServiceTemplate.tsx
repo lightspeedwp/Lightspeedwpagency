@@ -37,6 +37,7 @@ import {
   contentFAQs,
   contentCTA
 } from '@/app/data/content-service-page';
+import '@/styles/templates/service-pages-shared.css';
 
 /**
  * Content Service Template

@@ -32,6 +32,7 @@ import { Badge } from '../patterns/Badge';
 import { Calendar, User, Clock, ChevronRight, Home, Share2, Bookmark, MessageCircle } from 'lucide-react';
 import { useState } from 'react';
 import { testimonials } from '../../data/testimonials';
+import '@/styles/templates/single-post.css';
 
 // Table of contents data
 const tocItems = [

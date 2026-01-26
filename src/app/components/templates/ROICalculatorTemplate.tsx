@@ -31,7 +31,6 @@ import { SiteHeader } from '../parts/SiteHeader';
 import { SiteFooter } from '../parts/SiteFooter';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
-import { Button } from '../blocks/design/Buttons';
 import { Breadcrumbs } from '../common/Breadcrumbs';
 import { CTASection } from '../patterns/CTASection';
 import { TestimonialGrid } from '../patterns/TestimonialGrid';
@@ -42,19 +41,19 @@ import { StickyBookCallButton } from '../blocks/layout/StickyBookCallButton';
 import { useState } from 'react';
 import { motion } from 'motion/react';
 import { 
-  fadeInUp,
+  fadeInUp, 
   viewportOptions 
 } from '../../utils/scrollAnimations';
 import {
-  DollarSign,
   TrendingUp,
-  Users,
-  Zap,
   Shield,
   Search,
-  ArrowRight,
-  Calculator
+  Calculator,
+  Zap
 } from 'lucide-react';
+import { testimonials } from '../../data/testimonials';
+import { clientLogos } from '../../data/logos';
+import { pricingTimelineFAQs } from '../../data/faqs';
 
 export function ROICalculatorTemplate() {
   // Calculator inputs
@@ -96,7 +95,7 @@ export function ROICalculatorTemplate() {
       
       <main id="main-content">
         {/* Breadcrumbs */}
-        <Section variant="default" className="pt-24 pb-0">
+        <Section variant="default" style={{ paddingTop: 'var(--spacing-24)', paddingBottom: 0 }}>
           <Container>
             <Breadcrumbs 
               items={[
@@ -108,25 +107,28 @@ export function ROICalculatorTemplate() {
         </Section>
 
         {/* Hero Section */}
-        <Section variant="default" className="pt-8 pb-16">
+        <Section variant="default" style={{ paddingTop: 'var(--spacing-8)', paddingBottom: 'var(--spacing-16)' }}>
           <Container>
             <motion.div
               variants={fadeInUp}
               initial="hidden"
               animate="visible"
-              className="text-center max-w-4xl mx-auto"
+              className="wp-text-center wp-max-w-4xl"
+              style={{ marginLeft: 'auto', marginRight: 'auto' }}
             >
               <Calculator 
                 size={48} 
-                className="mx-auto mb-6"
-                style={{ color: 'var(--primary)' }}
+                style={{ 
+                  margin: '0 auto var(--spacing-6)', 
+                  color: 'var(--primary)' 
+                }}
               />
               
               <h1 
-                className="mb-6"
                 style={{
+                  marginBottom: 'var(--spacing-6)',
                   fontSize: 'var(--text-h1)',
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontWeight: 500,
                   color: 'var(--foreground)'
                 }}
@@ -135,10 +137,10 @@ export function ROICalculatorTemplate() {
               </h1>
               
               <p 
-                className="mb-8"
                 style={{
+                  marginBottom: 'var(--spacing-8)',
                   fontSize: 'var(--text-xl)',
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   color: 'var(--muted-foreground)',
                   lineHeight: 1.6
                 }}
@@ -153,14 +155,14 @@ export function ROICalculatorTemplate() {
         {/* Calculator Section */}
         <Section variant="muted">
           <Container>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div className="wp-grid-2-cols" style={{ gap: 'var(--spacing-12)' }}>
               {/* Input Form */}
               <div>
                 <h2 
-                  className="mb-8"
                   style={{
+                    marginBottom: 'var(--spacing-8)',
                     fontSize: 'var(--text-h3)',
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontWeight: 500,
                     color: 'var(--foreground)'
                   }}
@@ -168,15 +170,16 @@ export function ROICalculatorTemplate() {
                   Your Current Metrics
                 </h2>
 
-                <div className="space-y-6">
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--spacing-6)' }}>
                   {/* Monthly Traffic */}
                   <div>
                     <label 
                       htmlFor="monthly-traffic"
-                      className="block mb-2"
                       style={{
+                        display: 'block',
+                        marginBottom: 'var(--spacing-2)',
                         fontSize: 'var(--text-base)',
-                        fontFamily: 'Lexend, sans-serif',
+                        fontFamily: 'var(--font-primary)',
                         fontWeight: 500,
                         color: 'var(--foreground)'
                       }}
@@ -188,22 +191,24 @@ export function ROICalculatorTemplate() {
                       type="number"
                       value={monthlyTraffic}
                       onChange={(e) => setMonthlyTraffic(Number(e.target.value))}
-                      className="w-full p-4 rounded-lg"
                       style={{
+                        width: '100%',
+                        padding: 'var(--spacing-4)',
+                        borderRadius: 'var(--radius-lg)',
                         backgroundColor: 'var(--background)',
                         border: '1px solid var(--border)',
                         color: 'var(--foreground)',
                         fontSize: 'var(--text-base)',
-                        fontFamily: 'Lexend, sans-serif'
+                        fontFamily: 'var(--font-primary)'
                       }}
                       min="0"
                       step="1000"
                     />
                     <p 
-                      className="mt-2"
                       style={{
+                        marginTop: 'var(--spacing-2)',
                         fontSize: 'var(--text-sm)',
-                        fontFamily: 'Manrope, sans-serif',
+                        fontFamily: 'var(--font-secondary)',
                         color: 'var(--muted-foreground)'
                       }}
                     >
@@ -215,10 +220,11 @@ export function ROICalculatorTemplate() {
                   <div>
                     <label 
                       htmlFor="conversion-rate"
-                      className="block mb-2"
                       style={{
+                        display: 'block',
+                        marginBottom: 'var(--spacing-2)',
                         fontSize: 'var(--text-base)',
-                        fontFamily: 'Lexend, sans-serif',
+                        fontFamily: 'var(--font-primary)',
                         fontWeight: 500,
                         color: 'var(--foreground)'
                       }}
@@ -230,23 +236,25 @@ export function ROICalculatorTemplate() {
                       type="number"
                       value={currentConversion}
                       onChange={(e) => setCurrentConversion(Number(e.target.value))}
-                      className="w-full p-4 rounded-lg"
                       style={{
+                        width: '100%',
+                        padding: 'var(--spacing-4)',
+                        borderRadius: 'var(--radius-lg)',
                         backgroundColor: 'var(--background)',
                         border: '1px solid var(--border)',
                         color: 'var(--foreground)',
                         fontSize: 'var(--text-base)',
-                        fontFamily: 'Lexend, sans-serif'
+                        fontFamily: 'var(--font-primary)'
                       }}
                       min="0"
                       max="100"
                       step="0.1"
                     />
                     <p 
-                      className="mt-2"
                       style={{
+                        marginTop: 'var(--spacing-2)',
                         fontSize: 'var(--text-sm)',
-                        fontFamily: 'Manrope, sans-serif',
+                        fontFamily: 'var(--font-secondary)',
                         color: 'var(--muted-foreground)'
                       }}
                     >
@@ -258,10 +266,11 @@ export function ROICalculatorTemplate() {
                   <div>
                     <label 
                       htmlFor="order-value"
-                      className="block mb-2"
                       style={{
+                        display: 'block',
+                        marginBottom: 'var(--spacing-2)',
                         fontSize: 'var(--text-base)',
-                        fontFamily: 'Lexend, sans-serif',
+                        fontFamily: 'var(--font-primary)',
                         fontWeight: 500,
                         color: 'var(--foreground)'
                       }}
@@ -273,22 +282,24 @@ export function ROICalculatorTemplate() {
                       type="number"
                       value={avgOrderValue}
                       onChange={(e) => setAvgOrderValue(Number(e.target.value))}
-                      className="w-full p-4 rounded-lg"
                       style={{
+                        width: '100%',
+                        padding: 'var(--spacing-4)',
+                        borderRadius: 'var(--radius-lg)',
                         backgroundColor: 'var(--background)',
                         border: '1px solid var(--border)',
                         color: 'var(--foreground)',
                         fontSize: 'var(--text-base)',
-                        fontFamily: 'Lexend, sans-serif'
+                        fontFamily: 'var(--font-primary)'
                       }}
                       min="0"
                       step="10"
                     />
                     <p 
-                      className="mt-2"
                       style={{
+                        marginTop: 'var(--spacing-2)',
                         fontSize: 'var(--text-sm)',
-                        fontFamily: 'Manrope, sans-serif',
+                        fontFamily: 'var(--font-secondary)',
                         color: 'var(--muted-foreground)'
                       }}
                     >
@@ -300,10 +311,11 @@ export function ROICalculatorTemplate() {
                   <div>
                     <label 
                       htmlFor="lighthouse-score"
-                      className="block mb-2"
                       style={{
+                        display: 'block',
+                        marginBottom: 'var(--spacing-2)',
                         fontSize: 'var(--text-base)',
-                        fontFamily: 'Lexend, sans-serif',
+                        fontFamily: 'var(--font-primary)',
                         fontWeight: 500,
                         color: 'var(--foreground)'
                       }}
@@ -315,16 +327,21 @@ export function ROICalculatorTemplate() {
                       type="range"
                       value={currentLighthouse}
                       onChange={(e) => setCurrentLighthouse(Number(e.target.value))}
-                      className="w-full"
+                      style={{
+                        width: '100%',
+                        cursor: 'pointer'
+                      }}
                       min="0"
                       max="100"
                       step="5"
                     />
                     <div 
-                      className="flex justify-between mt-2"
                       style={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        marginTop: 'var(--spacing-2)',
                         fontSize: 'var(--text-sm)',
-                        fontFamily: 'Manrope, sans-serif',
+                        fontFamily: 'var(--font-secondary)',
                         color: 'var(--muted-foreground)'
                       }}
                     >
@@ -341,10 +358,10 @@ export function ROICalculatorTemplate() {
                       <span>100</span>
                     </div>
                     <p 
-                      className="mt-2"
                       style={{
+                        marginTop: 'var(--spacing-2)',
                         fontSize: 'var(--text-sm)',
-                        fontFamily: 'Manrope, sans-serif',
+                        fontFamily: 'var(--font-secondary)',
                         color: 'var(--muted-foreground)'
                       }}
                     >
@@ -357,10 +374,10 @@ export function ROICalculatorTemplate() {
               {/* Results */}
               <div>
                 <h2 
-                  className="mb-8"
                   style={{
+                    marginBottom: 'var(--spacing-8)',
                     fontSize: 'var(--text-h3)',
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontWeight: 500,
                     color: 'var(--foreground)'
                   }}
@@ -368,20 +385,21 @@ export function ROICalculatorTemplate() {
                   Your Projected ROI
                 </h2>
 
-                <div className="space-y-4">
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--spacing-4)' }}>
                   {/* Current Revenue */}
                   <div 
-                    className="p-6 rounded-lg"
                     style={{
+                      padding: 'var(--spacing-6)',
+                      borderRadius: 'var(--radius-lg)',
                       backgroundColor: 'var(--card)',
                       border: '1px solid var(--border-soft)'
                     }}
                   >
                     <p 
-                      className="mb-2"
                       style={{
+                        marginBottom: 'var(--spacing-2)',
                         fontSize: 'var(--text-sm)',
-                        fontFamily: 'Manrope, sans-serif',
+                        fontFamily: 'var(--font-secondary)',
                         color: 'var(--muted-foreground)'
                       }}
                     >
@@ -390,7 +408,7 @@ export function ROICalculatorTemplate() {
                     <p 
                       style={{
                         fontSize: 'var(--text-h2)',
-                        fontFamily: 'Lexend, sans-serif',
+                        fontFamily: 'var(--font-primary)',
                         fontWeight: 500,
                         color: 'var(--foreground)'
                       }}
@@ -401,17 +419,21 @@ export function ROICalculatorTemplate() {
 
                   {/* Projected Annual Gain */}
                   <div 
-                    className="p-6 rounded-lg"
                     style={{
+                      padding: 'var(--spacing-6)',
+                      borderRadius: 'var(--radius-lg)',
                       backgroundColor: 'var(--primary)',
                       color: 'var(--primary-foreground)'
                     }}
                   >
                     <p 
-                      className="mb-2 flex items-center gap-2"
                       style={{
+                        marginBottom: 'var(--spacing-2)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 'var(--spacing-2)',
                         fontSize: 'var(--text-sm)',
-                        fontFamily: 'Manrope, sans-serif',
+                        fontFamily: 'var(--font-secondary)',
                         opacity: 0.9
                       }}
                     >
@@ -421,7 +443,7 @@ export function ROICalculatorTemplate() {
                     <p 
                       style={{
                         fontSize: 'var(--text-h1)',
-                        fontFamily: 'Lexend, sans-serif',
+                        fontFamily: 'var(--font-primary)',
                         fontWeight: 500
                       }}
                     >
@@ -431,17 +453,18 @@ export function ROICalculatorTemplate() {
 
                   {/* ROI Percentage */}
                   <div 
-                    className="p-6 rounded-lg"
                     style={{
+                      padding: 'var(--spacing-6)',
+                      borderRadius: 'var(--radius-lg)',
                       backgroundColor: 'var(--card)',
                       border: '1px solid var(--border-soft)'
                     }}
                   >
                     <p 
-                      className="mb-2"
                       style={{
+                        marginBottom: 'var(--spacing-2)',
                         fontSize: 'var(--text-sm)',
-                        fontFamily: 'Manrope, sans-serif',
+                        fontFamily: 'var(--font-secondary)',
                         color: 'var(--muted-foreground)'
                       }}
                     >
@@ -450,7 +473,7 @@ export function ROICalculatorTemplate() {
                     <p 
                       style={{
                         fontSize: 'var(--text-h2)',
-                        fontFamily: 'Lexend, sans-serif',
+                        fontFamily: 'var(--font-primary)',
                         fontWeight: 500,
                         color: roi > 0 ? 'var(--primary)' : 'var(--foreground)'
                       }}
@@ -461,17 +484,18 @@ export function ROICalculatorTemplate() {
 
                   {/* Payback Period */}
                   <div 
-                    className="p-6 rounded-lg"
                     style={{
+                      padding: 'var(--spacing-6)',
+                      borderRadius: 'var(--radius-lg)',
                       backgroundColor: 'var(--card)',
                       border: '1px solid var(--border-soft)'
                     }}
                   >
                     <p 
-                      className="mb-2"
                       style={{
+                        marginBottom: 'var(--spacing-2)',
                         fontSize: 'var(--text-sm)',
-                        fontFamily: 'Manrope, sans-serif',
+                        fontFamily: 'var(--font-secondary)',
                         color: 'var(--muted-foreground)'
                       }}
                     >
@@ -480,7 +504,7 @@ export function ROICalculatorTemplate() {
                     <p 
                       style={{
                         fontSize: 'var(--text-h2)',
-                        fontFamily: 'Lexend, sans-serif',
+                        fontFamily: 'var(--font-primary)',
                         fontWeight: 500,
                         color: 'var(--foreground)'
                       }}
@@ -491,10 +515,10 @@ export function ROICalculatorTemplate() {
                 </div>
 
                 <p 
-                  className="mt-6"
                   style={{
+                    marginTop: 'var(--spacing-6)',
                     fontSize: 'var(--text-sm)',
-                    fontFamily: 'Manrope, sans-serif',
+                    fontFamily: 'var(--font-secondary)',
                     color: 'var(--muted-foreground)',
                     fontStyle: 'italic'
                   }}
@@ -514,13 +538,14 @@ export function ROICalculatorTemplate() {
               initial="hidden"
               whileInView="visible"
               viewport={viewportOptions}
-              className="text-center mb-12"
+              className="wp-text-center"
+              style={{ marginBottom: 'var(--spacing-12)' }}
             >
               <h2 
-                className="mb-4"
                 style={{
+                  marginBottom: 'var(--spacing-4)',
                   fontSize: 'var(--text-h2)',
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontWeight: 500,
                   color: 'var(--foreground)'
                 }}
@@ -530,7 +555,7 @@ export function ROICalculatorTemplate() {
               <p 
                 style={{
                   fontSize: 'var(--text-lg)',
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   color: 'var(--muted-foreground)',
                   maxWidth: '600px',
                   margin: '0 auto'
@@ -540,25 +565,25 @@ export function ROICalculatorTemplate() {
               </p>
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="wp-grid-3-cols" style={{ gap: 'var(--spacing-8)' }}>
               {/* Performance */}
               <div 
-                className="p-8 rounded-lg"
                 style={{
+                  padding: 'var(--spacing-8)',
+                  borderRadius: 'var(--radius-lg)',
                   backgroundColor: 'var(--card)',
                   border: '1px solid var(--border-soft)'
                 }}
               >
                 <Zap 
                   size={48} 
-                  className="mb-6"
-                  style={{ color: 'var(--primary)' }}
+                  style={{ marginBottom: 'var(--spacing-6)', color: 'var(--primary)' }}
                 />
                 <h3 
-                  className="mb-4"
                   style={{
+                    marginBottom: 'var(--spacing-4)',
                     fontSize: 'var(--text-h4)',
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontWeight: 500,
                     color: 'var(--foreground)'
                   }}
@@ -566,10 +591,10 @@ export function ROICalculatorTemplate() {
                   Performance (+15%)
                 </h3>
                 <p 
-                  className="mb-4"
                   style={{
+                    marginBottom: 'var(--spacing-4)',
                     fontSize: 'var(--text-base)',
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     color: 'var(--muted-foreground)',
                     lineHeight: 1.6
                   }}
@@ -577,10 +602,9 @@ export function ROICalculatorTemplate() {
                   90+ Lighthouse scores mean faster load times. Amazon found that every 100ms delay costs 1% in sales. We improve by seconds, not milliseconds.
                 </p>
                 <p 
-                  className="text-primary"
                   style={{
                     fontSize: 'var(--text-xl)',
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontWeight: 500,
                     color: 'var(--primary)'
                   }}
@@ -591,22 +615,22 @@ export function ROICalculatorTemplate() {
 
               {/* Accessibility */}
               <div 
-                className="p-8 rounded-lg"
                 style={{
+                  padding: 'var(--spacing-8)',
+                  borderRadius: 'var(--radius-lg)',
                   backgroundColor: 'var(--card)',
                   border: '1px solid var(--border-soft)'
                 }}
               >
                 <Shield 
                   size={48} 
-                  className="mb-6"
-                  style={{ color: 'var(--primary)' }}
+                  style={{ marginBottom: 'var(--spacing-6)', color: 'var(--primary)' }}
                 />
                 <h3 
-                  className="mb-4"
                   style={{
+                    marginBottom: 'var(--spacing-4)',
                     fontSize: 'var(--text-h4)',
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontWeight: 500,
                     color: 'var(--foreground)'
                   }}
@@ -614,10 +638,10 @@ export function ROICalculatorTemplate() {
                   Accessibility (+15%)
                 </h3>
                 <p 
-                  className="mb-4"
                   style={{
+                    marginBottom: 'var(--spacing-4)',
                     fontSize: 'var(--text-base)',
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     color: 'var(--muted-foreground)',
                     lineHeight: 1.6
                   }}
@@ -625,10 +649,9 @@ export function ROICalculatorTemplate() {
                   15% of the population has some form of disability. WCAG AA compliance makes your site usable for everyone, expanding your addressable market.
                 </p>
                 <p 
-                  className="text-primary"
                   style={{
                     fontSize: 'var(--text-xl)',
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontWeight: 500,
                     color: 'var(--primary)'
                   }}
@@ -639,22 +662,22 @@ export function ROICalculatorTemplate() {
 
               {/* SEO */}
               <div 
-                className="p-8 rounded-lg"
                 style={{
+                  padding: 'var(--spacing-8)',
+                  borderRadius: 'var(--radius-lg)',
                   backgroundColor: 'var(--card)',
                   border: '1px solid var(--border-soft)'
                 }}
               >
                 <Search 
                   size={48} 
-                  className="mb-6"
-                  style={{ color: 'var(--primary)' }}
+                  style={{ marginBottom: 'var(--spacing-6)', color: 'var(--primary)' }}
                 />
                 <h3 
-                  className="mb-4"
                   style={{
+                    marginBottom: 'var(--spacing-4)',
                     fontSize: 'var(--text-h4)',
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontWeight: 500,
                     color: 'var(--foreground)'
                   }}
@@ -662,10 +685,10 @@ export function ROICalculatorTemplate() {
                   SEO (+30%)
                 </h3>
                 <p 
-                  className="mb-4"
                   style={{
+                    marginBottom: 'var(--spacing-4)',
                     fontSize: 'var(--text-base)',
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     color: 'var(--muted-foreground)',
                     lineHeight: 1.6
                   }}
@@ -673,10 +696,9 @@ export function ROICalculatorTemplate() {
                   Google prioritizes fast, accessible sites. Better Core Web Vitals = higher rankings = more organic traffic without ad spend.
                 </p>
                 <p 
-                  className="text-primary"
                   style={{
                     fontSize: 'var(--text-xl)',
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontWeight: 500,
                     color: 'var(--primary)'
                   }}

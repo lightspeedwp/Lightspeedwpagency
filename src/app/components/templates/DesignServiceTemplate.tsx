@@ -28,6 +28,7 @@ import {
   Check
 } from 'lucide-react';
 import { useState } from 'react';
+import '@/styles/design-service.css';
 
 // Import centralized data
 import {

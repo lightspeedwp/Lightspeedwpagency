@@ -115,7 +115,7 @@ export function ServicesLandingTemplate() {
       icon: Mail,
       title: 'Mailchimp',
       description: 'We can help you set the rest of your email marketing to you!',
-      link: 'mailchimp-service',
+      link: 'mailchimp',
       linkText: 'View about Discovery →'
     }
   ];

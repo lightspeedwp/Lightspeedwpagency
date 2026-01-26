@@ -51,14 +51,25 @@ import {
 
 export function WooCommerceSolutionTemplate() {
   // Transform pricing data for PricingTable pattern
-  const pricingPlans = woocommerceSolutionPricing.packages.map(pkg => ({
+  const pricingPlans: PricingPackage[] = woocommerceSolutionPricing.packages.map((pkg, index) => ({
+    id: `pkg-${index}`,
     name: pkg.name,
-    price: pkg.price,
+    slug: pkg.name.toLowerCase().replace(/\s+/g, '-'),
+    tagline: pkg.description, // Using description as tagline for now
     description: pkg.description,
-    features: pkg.features,
-    highlighted: pkg.recommended,
-    buttonText: 'Get Started',
-    buttonPage: 'contact'
+    price: {
+      amount: 0, // Placeholder
+      currency: 'USD',
+      display: pkg.price,
+      period: 'project'
+    },
+    features: pkg.features.map(f => ({ name: f, included: true })),
+    cta: {
+      text: 'Get Started',
+      action: 'contact'
+    },
+    recommended: pkg.recommended,
+    category: 'ecommerce'
   }));
 
   // Transform related solutions for BenefitsGrid pattern
@@ -67,21 +78,21 @@ export function WooCommerceSolutionTemplate() {
       icon: Code,
       title: 'WordPress Solution',
       description: 'Build powerful WordPress websites with modern development practices.',
-      link: '/solutions/wordpress',
+      link: 'wordpress',
       linkText: 'Learn More'
     },
     {
       icon: Shield,
       title: 'E-commerce Security',
       description: 'Protect your online store from fraud, malware, and security threats.',
-      link: '/services/security',
+      link: 'security',
       linkText: 'Learn More'
     },
     {
       icon: Zap,
       title: 'Performance Optimization',
       description: 'Speed up your WooCommerce store for better conversions and SEO.',
-      link: '/services/performance',
+      link: 'performance-optimization',
       linkText: 'Learn More'
     }
   ];
@@ -167,10 +178,10 @@ export function WooCommerceSolutionTemplate() {
         <FeatureGrid
           title="WooCommerce Features & Capabilities"
           description="Everything you need for a successful online store"
-          features={woocommerceSolutionFeatures}
+          items={woocommerceSolutionFeatures}
           columns={4}
           variant="muted"
-          cardStyle="icon-top"
+          iconStyle="rounded"
         />
 
         {/* Use Cases Section */}
@@ -184,9 +195,9 @@ export function WooCommerceSolutionTemplate() {
 
         {/* Pricing Section */}
         <PricingTable
-          title={woocommerceSolutionPricing.title}
+          heading={woocommerceSolutionPricing.title}
           description={woocommerceSolutionPricing.description}
-          plans={pricingPlans}
+          packages={pricingPlans}
           variant="muted"
         />
 

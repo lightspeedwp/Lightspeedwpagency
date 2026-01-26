@@ -740,7 +740,7 @@ export function SolutionDetailTemplate({ solution }: SolutionDetailProps) {
             <Container>
               <h2 
                 style={{
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-h2)',
                   fontWeight: 'var(--font-weight-semibold)',
                   color: 'var(--foreground)',
@@ -773,7 +773,7 @@ export function SolutionDetailTemplate({ solution }: SolutionDetailProps) {
                     }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.transform = 'translateY(-4px)';
-                      e.currentTarget.style.boxShadow = '0 12px 24px rgba(0,0,0,0.1)';
+                      e.currentTarget.style.boxShadow = 'var(--shadow-md)';
                     }}
                     onMouseLeave={(e) => {
                       e.currentTarget.style.transform = 'translateY(0)';
@@ -781,45 +781,47 @@ export function SolutionDetailTemplate({ solution }: SolutionDetailProps) {
                     }}
                     aria-label={`Learn more about ${related.title}`}
                   >
-                    <h3 
-                      style={{
-                        fontFamily: 'Lexend, sans-serif',
-                        fontSize: 'var(--text-h3)',
-                        fontWeight: 'var(--font-weight-semibold)',
-                        color: 'var(--card-foreground)',
-                        marginBottom: '12px',
-                        lineHeight: '1.3'
-                      }}
-                    >
-                      {related.title}
-                    </h3>
-                    
-                    <p 
-                      style={{
-                        fontFamily: 'Lexend, sans-serif',
-                        fontSize: 'var(--text-base)',
-                        color: 'var(--muted-foreground)',
-                        lineHeight: '1.6',
-                        marginBottom: '16px'
-                      }}
-                    >
-                      {related.excerpt}
-                    </p>
+                    <div style={{ padding: '32px' }}>
+                      <h3 
+                        style={{
+                          fontFamily: 'var(--font-primary)',
+                          fontSize: 'var(--text-h3)',
+                          fontWeight: 'var(--font-weight-semibold)',
+                          color: 'var(--card-foreground)',
+                          marginBottom: '12px',
+                          lineHeight: '1.3'
+                        }}
+                      >
+                        {related.title}
+                      </h3>
+                      
+                      <p 
+                        style={{
+                          fontFamily: 'var(--font-primary)',
+                          fontSize: 'var(--text-base)',
+                          color: 'var(--muted-foreground)',
+                          lineHeight: '1.6',
+                          marginBottom: '16px'
+                        }}
+                      >
+                        {related.excerpt}
+                      </p>
 
-                    <span 
-                      style={{
-                        fontFamily: 'Lexend, sans-serif',
-                        fontSize: 'var(--text-base)',
-                        fontWeight: 'var(--font-weight-medium)',
-                        color: 'var(--primary)',
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: '8px'
-                      }}
-                    >
-                      Learn More
-                      <ArrowRight size={16} />
-                    </span>
+                      <span 
+                        style={{
+                          fontFamily: 'var(--font-primary)',
+                          fontSize: 'var(--text-base)',
+                          fontWeight: 'var(--font-weight-medium)',
+                          color: 'var(--primary)',
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '8px'
+                        }}
+                      >
+                        Learn More
+                        <ArrowRight size={16} />
+                      </span>
+                    </div>
                   </a>
                 ))}
               </div>
@@ -827,40 +829,32 @@ export function SolutionDetailTemplate({ solution }: SolutionDetailProps) {
           </Section>
         )}
 
-        {/* PricingTable */}
-        <PricingTable
-          plans={websitePackages}
-          title="Choose the Right Plan"
-          description="Select the plan that best fits your needs and budget."
-        />
-
-        {/* FeatureComparison */}
-        <FeatureComparison
-          plans={websitePackages}
-          title="Compare Plans"
-          description="See which features are included in each plan."
-        />
-
         {/* TestimonialGrid */}
-        <TestimonialGrid
-          testimonials={testimonials.filter(t => t.solution === solution.title)}
-          title="What Our Clients Say"
-          description="Hear from satisfied clients about their experience with {solution.title}."
-        />
+        {testimonials.filter(t => t.solution === solution.title).length > 0 && (
+          <TestimonialGrid
+            testimonials={testimonials.filter(t => t.solution === solution.title)}
+            title="What Our Clients Say"
+            description={`Hear from satisfied clients about their experience with ${solution.title}.`}
+          />
+        )}
 
         {/* SocialProof */}
-        <SocialProof
-          logos={clientLogos.filter(l => l.solution === solution.title)}
-          title="Trusted by Leading Brands"
-          description="Join the ranks of satisfied clients using {solution.title}."
-        />
+        {clientLogos.filter(l => l.solution === solution.title).length > 0 && (
+          <SocialProof
+            logos={clientLogos.filter(l => l.solution === solution.title)}
+            title="Trusted by Leading Brands"
+            description={`Join the ranks of satisfied clients using ${solution.title}.`}
+          />
+        )}
 
         {/* FAQSection */}
-        <FAQSection
-          faqs={servicesFAQs.filter(f => f.solution === solution.title)}
-          title="Frequently Asked Questions"
-          description="Find answers to common questions about {solution.title}."
-        />
+        {servicesFAQs.filter(f => f.solution === solution.title).length > 0 && (
+          <FAQSection
+            faqs={servicesFAQs.filter(f => f.solution === solution.title)}
+            title="Frequently Asked Questions"
+            description={`Find answers to common questions about ${solution.title}.`}
+          />
+        )}
 
         {/* CTA Section */}
         <CTASection

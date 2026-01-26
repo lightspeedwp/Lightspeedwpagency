@@ -81,21 +81,21 @@ export function WordPressSolutionTemplate() {
       icon: ShoppingCart,
       title: 'WooCommerce Solution',
       description: 'Build powerful e-commerce stores with WooCommerce and WordPress.',
-      link: '/solutions/woocommerce',
+      link: 'woocommerce',
       linkText: 'Learn More'
     },
     {
       icon: Shield,
       title: 'WordPress Hosting',
       description: 'Secure managed WordPress hosting with daily backups and monitoring.',
-      link: '/hosting',
+      link: 'hosting',
       linkText: 'Learn More'
     },
     {
       icon: Code,
       title: 'WordPress Security',
       description: 'Protect your WordPress site from malware, hacks, and security threats.',
-      link: '/services/security',
+      link: 'security',
       linkText: 'Learn More'
     }
   ];

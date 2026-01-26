@@ -16,10 +16,12 @@ import { useEffect, useState } from 'react';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { Heading } from '../common/Heading';
-import { Check, X, AlertTriangle, TrendingUp, Zap } from 'lucide-react';
+import { Check, X, AlertTriangle, TrendingUp, Zap, ArrowLeft } from 'lucide-react';
+import { useNavigation } from '../../contexts/NavigationContext';
 import { DesignSystemPerformanceTester, type ComplianceScorecard, type PerformanceTestResult } from '../../utils/performanceTester';
 
 export function ComplianceScorecard() {
+  const { navigateTo } = useNavigation();
   const [scorecard, setScorecard] = useState<ComplianceScorecard | null>(null);
   const [results, setResults] = useState<PerformanceTestResult[]>([]);
   const [loading, setLoading] = useState(true);
@@ -70,6 +72,27 @@ export function ComplianceScorecard() {
       <main>
         <Section variant="canvas" className="py-24">
           <Container>
+            <button 
+              onClick={() => navigateTo('dev-tools')}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                background: 'none',
+                border: 'none',
+                cursor: 'pointer',
+                padding: 0,
+                color: 'var(--muted-foreground)',
+                fontFamily: 'var(--font-primary)',
+                fontSize: 'var(--text-small)',
+                marginBottom: 'var(--spacing-8)'
+              }}
+              onMouseOver={(e) => e.currentTarget.style.color = 'var(--foreground)'}
+              onMouseOut={(e) => e.currentTarget.style.color = 'var(--muted-foreground)'}
+            >
+              <ArrowLeft size={16} />
+              Back to Dev Tools
+            </button>
             <div className="text-center">
               <div 
                 style={{ 
@@ -103,6 +126,27 @@ export function ComplianceScorecard() {
       <main>
         <Section variant="canvas" className="py-24">
           <Container>
+            <button 
+              onClick={() => navigateTo('dev-tools')}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                background: 'none',
+                border: 'none',
+                cursor: 'pointer',
+                padding: 0,
+                color: 'var(--muted-foreground)',
+                fontFamily: 'var(--font-primary)',
+                fontSize: 'var(--text-small)',
+                marginBottom: 'var(--spacing-8)'
+              }}
+              onMouseOver={(e) => e.currentTarget.style.color = 'var(--foreground)'}
+              onMouseOut={(e) => e.currentTarget.style.color = 'var(--muted-foreground)'}
+            >
+              <ArrowLeft size={16} />
+              Back to Dev Tools
+            </button>
             <div className="text-center">
               <div 
                 style={{
@@ -146,6 +190,27 @@ export function ComplianceScorecard() {
       {/* Hero Section */}
       <Section variant="canvas" className="py-16">
         <Container>
+          <button 
+            onClick={() => navigateTo('dev-tools')}
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              padding: 0,
+              color: 'var(--muted-foreground)',
+              fontFamily: 'var(--font-primary)',
+              fontSize: 'var(--text-small)',
+              marginBottom: 'var(--spacing-8)'
+            }}
+            onMouseOver={(e) => e.currentTarget.style.color = 'var(--foreground)'}
+            onMouseOut={(e) => e.currentTarget.style.color = 'var(--muted-foreground)'}
+          >
+            <ArrowLeft size={16} />
+            Back to Dev Tools
+          </button>
           <div className="text-center max-w-4xl mx-auto">
             <div
               className="inline-flex items-center gap-3 px-4 py-2 mb-6"

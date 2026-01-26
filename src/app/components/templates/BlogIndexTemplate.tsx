@@ -34,6 +34,7 @@ import {
 } from 'lucide-react';
 import { useState } from 'react';
 import { useNavigation } from '../../contexts/NavigationContext';
+import '@/styles/templates/blog-index-page.css';
 
 // Import centralized data
 import {

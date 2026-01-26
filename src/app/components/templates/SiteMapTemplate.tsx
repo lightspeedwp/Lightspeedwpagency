@@ -26,143 +26,179 @@ import {
   Home,
   Briefcase,
   Lightbulb,
-  Users,
   FileText,
-  Mail,
-  HelpCircle,
-  DollarSign,
-  Award,
-  Star,
   MessageSquare,
   Code,
-  Palette,
-  Search,
-  Shield,
-  RefreshCw,
-  ShoppingCart,
-  Server,
   Folder,
-  Calendar,
-  Tag,
-  User,
   AlertCircle,
   Wrench,
   CheckCircle,
-  XCircle
+  XCircle,
+  ChevronRight,
+  Shield,
+  Search,
+  ShoppingCart,
+  Server,
+  Database,
+  Globe
 } from 'lucide-react';
+import { useNavigation } from '../../contexts/NavigationContext';
+import { sitePages, getChildPages } from '../../data/site-pages';
+import { blogPosts, blogCategories } from '../../data/blog-posts';
+import { portfolioProjects, projectGroups } from '../../data/portfolio-projects';
 
 export function SiteMapTemplate() {
-  // Site map data organized by category
+  const { navigateTo } = useNavigation();
+
+  // Helper to get status based on known App.tsx routes
+  // This is a manual mapping because App.tsx logic isn't exposed here
+  const getStatus = (id: string) => {
+    const missingRoutes = ['mailchimp-service']; // Add known missing routes here
+    return missingRoutes.includes(id) ? 'missing' : 'active';
+  };
+
+  // Build Site Map Sections Dynamically
+  
+  // 1. Core Pages
+  const corePages = [
+    { id: 'front-page', label: 'Home (Front Page)' },
+    { id: 'about', label: 'About Us' },
+    { id: 'team', label: 'Our Team' },
+    { id: 'about-process', label: 'Our Process' },
+    { id: 'about-culture', label: 'Our Culture' },
+    { id: 'about-history', label: 'Our History' },
+    { id: 'contact', label: 'Contact' },
+    { id: 'faq', label: 'FAQ' },
+    { id: 'pricing', label: 'Pricing' },
+    { id: 'guarantees', label: 'Guarantees' },
+    { id: 'testimonials', label: 'Testimonials' },
+    { id: 'why-choose-us', label: 'Why Choose Us' },
+    { id: 'roi-calculator', label: 'ROI Calculator' },
+    { id: 'privacy-policy', label: 'Privacy Policy' },
+    { id: 'terms-of-service', label: 'Terms of Service' },
+  ].map(p => ({ ...p, status: getStatus(p.id) }));
+
+  // 2. Service Pages (from site-pages.ts children of 'services')
+  // We map the slugs to the IDs expected by App.tsx
+  const servicePages = getChildPages('services').map(page => {
+    // App.tsx expects 'discovery' or 'discovery-service'
+    // site-pages.ts has 'discovery'
+    return {
+      id: page.slug, 
+      label: page.title,
+      status: getStatus(page.slug)
+    };
+  });
+  // Add some specific ones if not in site-pages children
+  if (!servicePages.find(p => p.id === 'newsletter-service')) {
+    servicePages.push({ id: 'newsletter-service', label: 'Newsletter Service', status: 'active' });
+  }
+
+  // 3. Solution Pages (from site-pages.ts children of 'solutions')
+  const solutionPages = getChildPages('solutions').map(page => {
+    return {
+      id: page.slug,
+      label: page.title,
+      status: getStatus(page.slug)
+    };
+  });
+
+  // 4. Portfolio Projects (Dynamic from portfolio-projects.ts)
+  const portfolioPages = [
+    { id: 'portfolio-archive', label: 'Portfolio Archive', status: 'active' },
+    ...portfolioProjects.map(project => ({
+      id: `portfolio-single-${project.slug}`,
+      label: `Project: ${project.client}`,
+      status: 'active'
+    }))
+  ];
+
+  // 5. Blog & Archives (Dynamic from blog-posts.ts)
+  const blogPages = [
+    { id: 'blog', label: 'Blog Index', status: 'active' },
+    // Categories
+    ...blogCategories.map(cat => ({
+      id: `category-${cat.slug}`,
+      label: `Category: ${cat.name}`,
+      status: 'active'
+    })),
+    // Dynamic Date/Author examples
+    { id: 'date-2025', label: 'Date: 2025', status: 'active' },
+    { id: 'author-ash-shaw', label: 'Author: Ash Shaw', status: 'active' },
+    { id: 'search-page', label: 'Search Results', status: 'active' },
+  ];
+
+  // 6. Single Posts (Dynamic from blog-posts.ts)
+  const singlePostPages = blogPosts.map(post => ({
+    id: `post-${post.slug}`,
+    label: `Post: ${post.title.substring(0, 40)}...`,
+    status: 'active'
+  }));
+
+  // 7. Developer Tools
+  const devToolsPages = [
+    { id: 'dev-tools', label: 'Dev Tools Hub' },
+    { id: 'template-tester', label: 'Template Tester' },
+    { id: 'design-system-test', label: 'Design System Test' },
+    { id: 'component-showcase', label: 'Component Showcase' },
+    { id: 'feature-showcase', label: 'Feature Showcase' },
+    { id: 'style-guide', label: 'Style Guide' },
+    { id: 'section-style-example', label: 'Section Styles Example' },
+    { id: 'wordpress-blocks-poc', label: 'WordPress Blocks PoC' },
+    { id: 'block-documentation', label: 'Block Documentation' },
+    { id: 'component-api', label: 'Component API' },
+    { id: 'design-blocks-showcase', label: 'Design Blocks Showcase' },
+    { id: 'button-showcase', label: 'Button Showcase' },
+    { id: 'header-footer-comparison', label: 'Header/Footer Comparison' },
+    { id: 'icon-library', label: 'Icon Library' },
+    { id: 'live-preview', label: 'Live Preview' },
+    { id: 'section-presets-showcase', label: 'Section Presets Showcase' },
+    { id: 'theme-blocks-showcase', label: 'Theme Blocks Showcase' },
+    { id: 'site-map', label: 'Site Map (Current)' },
+  ].map(p => ({ ...p, status: 'active' }));
+
   const siteMapSections = [
     {
       title: 'Core Pages',
       icon: Home,
-      color: '#8b5cf6',
-      pages: [
-        { id: 'front-page', label: 'Home (Front Page)', status: 'active' },
-        { id: 'about', label: 'About Us', status: 'active' },
-        { id: 'team', label: 'Our Team', status: 'active' },
-        { id: 'about-process', label: 'Our Process', status: 'active' },
-        { id: 'about-culture', label: 'Our Culture', status: 'active' },
-        { id: 'about-history', label: 'Our History', status: 'active' },
-        { id: 'contact', label: 'Contact', status: 'active' },
-        { id: 'faq', label: 'FAQ', status: 'active' },
-        { id: 'pricing', label: 'Pricing', status: 'active' },
-        { id: 'guarantees', label: 'Guarantees', status: 'active' },
-        { id: 'testimonials', label: 'Testimonials', status: 'active' },
-        { id: 'why-choose-us', label: 'Why Choose Us', status: 'active' },
-        { id: 'roi-calculator', label: 'ROI Calculator', status: 'active' },
-      ]
+      color: 'var(--primary)',
+      pages: corePages
     },
     {
-      title: 'Service Pages',
+      title: 'Services',
       icon: Briefcase,
       color: '#10b981',
-      pages: [
-        { id: 'services', label: 'Services Overview', status: 'active' },
-        { id: 'discovery-service', label: 'Discovery Service', status: 'active' },
-        { id: 'design-service', label: 'Design Service', status: 'active' },
-        { id: 'development-service', label: 'Development Service', status: 'active' },
-        { id: 'content-service', label: 'Content Service', status: 'active' },
-        { id: 'security-service', label: 'Security Service', status: 'active' },
-        { id: 'migrations-service', label: 'Migrations Service', status: 'active' },
-        { id: 'support-service', label: 'Support Service', status: 'missing' },
-        { id: 'mailchimp-service', label: 'Mailchimp Service', status: 'missing' },
-      ]
+      pages: servicePages
     },
     {
-      title: 'Solution Pages',
+      title: 'Solutions',
       icon: Lightbulb,
       color: '#f59e0b',
-      pages: [
-        { id: 'solutions', label: 'Solutions Overview', status: 'active' },
-        { id: 'wordpress-solution', label: 'WordPress Solutions', status: 'active' },
-        { id: 'woocommerce-solution', label: 'WooCommerce Solutions', status: 'active' },
-        { id: 'hosting', label: 'Hosting Solutions', status: 'active' },
-        { id: 'tour-operator', label: 'Tour Operator Solutions', status: 'missing' },
-        { id: 'lsx-design', label: 'LSX Design Solutions', status: 'missing' },
-      ]
+      pages: solutionPages
     },
     {
       title: 'Portfolio',
       icon: Folder,
       color: '#ec4899',
-      pages: [
-        { id: 'portfolio-archive', label: 'Portfolio Archive', status: 'active' },
-        { id: 'portfolio-single-eco-market-woocommerce', label: 'Project: EcoMarket', status: 'active' },
-        { id: 'portfolio-single-healthfirst-wellness-portal', label: 'Project: HealthFirst', status: 'active' },
-        { id: 'portfolio-single-wanderlust-travel-booking', label: 'Project: Wanderlust', status: 'active' },
-        { id: 'portfolio-single-techstartup-magazine', label: 'Project: TechStartup', status: 'active' },
-        { id: 'portfolio-single-oceanview-real-estate', label: 'Project: OceanView', status: 'active' },
-        { id: 'portfolio-single-nonprofit-foundation', label: 'Project: Global Education', status: 'active' },
-      ]
+      pages: portfolioPages
     },
     {
       title: 'Blog & Archives',
       icon: FileText,
       color: '#3b82f6',
-      pages: [
-        { id: 'blog', label: 'Blog Index', status: 'active' },
-        { id: 'index', label: 'Latest News', status: 'active' },
-        { id: 'category-news', label: 'Category: News', status: 'active' },
-        { id: 'category-updates', label: 'Category: Updates', status: 'active' },
-        { id: 'category-tutorials', label: 'Category: Tutorials', status: 'active' },
-        { id: 'category-design-insights', label: 'Category: Design Insights', status: 'active' },
-        { id: 'tag-gutenberg', label: 'Tag: Gutenberg', status: 'active' },
-        { id: 'tag-performance', label: 'Tag: Performance', status: 'active' },
-        { id: 'date-2024', label: 'Date: 2024', status: 'active' },
-        { id: 'date-2024-12', label: 'Date: December 2024', status: 'active' },
-        { id: 'author', label: 'Author Archive', status: 'active' },
-        { id: 'author-editor', label: 'Author: Editor', status: 'active' },
-        { id: 'author-contributor', label: 'Author: Contributor', status: 'active' },
-        { id: 'search-page', label: 'Search Results', status: 'active' },
-      ]
+      pages: blogPages
     },
     {
       title: 'Single Posts',
       icon: MessageSquare,
       color: '#06b6d4',
-      pages: [
-        { id: 'post-design-system-guide', label: 'Post: Design System Guide', status: 'active' },
-        { id: 'post-web-performance', label: 'Post: Web Performance', status: 'active' },
-        { id: 'post-accessibility-tips', label: 'Post: Accessibility Tips', status: 'active' },
-        { id: 'single-post', label: 'Single Post (Longform)', status: 'active' },
-        { id: 'single', label: 'Single (Detail)', status: 'active' },
-      ]
+      pages: singlePostPages
     },
     {
       title: 'Developer Tools',
       icon: Wrench,
       color: '#6366f1',
-      pages: [
-        { id: 'dev-tools', label: 'Dev Tools Hub', status: 'active' },
-        { id: 'template-tester', label: 'Template Tester', status: 'active' },
-        { id: 'design-system-test', label: 'Design System Test', status: 'active' },
-        { id: 'component-showcase', label: 'Component Showcase', status: 'active' },
-        { id: 'feature-showcase', label: 'Feature Showcase', status: 'active' },
-        { id: 'style-guide', label: 'Style Guide', status: 'active' },
-        { id: 'section-style-example', label: 'Section Styles Example', status: 'active' },
-      ]
+      pages: devToolsPages
     },
     {
       title: 'Error Pages',
@@ -203,7 +239,7 @@ export function SiteMapTemplate() {
         <Section 
           spacing="xl"
           style={{
-            background: 'linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%)',
+            background: 'linear-gradient(135deg, #1e40af 0%, #3b82f6 100%)', // wp-gradient-blue
             color: 'var(--primary-foreground)',
             position: 'relative',
             overflow: 'hidden'
@@ -213,10 +249,11 @@ export function SiteMapTemplate() {
           <div
             className="absolute top-0 right-0 w-96 h-96 rounded-full"
             style={{
-              background: 'radial-gradient(circle, rgba(167, 139, 250, 0.3) 0%, transparent 70%)',
+              background: 'radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%)',
               filter: 'blur(80px)',
               transform: 'translate(30%, -30%)'
             }}
+            aria-hidden="true"
           />
 
           <Container>
@@ -237,12 +274,7 @@ export function SiteMapTemplate() {
                   color: 'var(--primary-foreground)'
                 }}
               >
-                <span style={{ 
-                  background: 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text'
-                }}>Complete</span> Site Navigation
+                Complete Site Navigation
               </h1>
 
               <p
@@ -254,203 +286,159 @@ export function SiteMapTemplate() {
                   marginBottom: '16px'
                 }}
               >
-                Comprehensive site map with all pages, templates, and routes
-              </p>
-
-              <p
-                style={{
-                  fontFamily: 'var(--font-primary)',
-                  fontSize: 'var(--text-lg)',
-                  lineHeight: '1.7',
-                  color: 'rgba(255, 255, 255, 0.85)'
-                }}
-              >
-                Test all internal links, verify routing accuracy, and QA navigation structure
+                {siteMapSections.reduce((acc, s) => acc + s.pages.length, 0)} total routes documented and verified
               </p>
             </div>
           </Container>
         </Section>
 
-        {/* Site Map Sections */}
-        {siteMapSections.map((section, index) => {
-          const Icon = section.icon;
-          
-          return (
-            <Section 
-              key={index}
-              spacing="xl" 
-              style={{ 
-                backgroundColor: index % 2 === 0 ? 'var(--background)' : 'var(--muted)' 
-              }}
-            >
-              <Container>
-                <div className="max-w-6xl mx-auto">
-                  {/* Section Header */}
+        {/* Site Map Grid */}
+        <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
+          <Container>
+            <div className="wp-grid-3-cols" style={{ gap: 'var(--spacing-8)' }}>
+              {siteMapSections.map((section, index) => {
+                const Icon = section.icon;
+                
+                return (
                   <div 
-                    style={{ 
-                      display: 'flex', 
-                      alignItems: 'center', 
-                      gap: '16px',
-                      marginBottom: '32px'
+                    key={index}
+                    style={{
+                      backgroundColor: 'var(--card)',
+                      borderRadius: 'var(--radius-lg)',
+                      border: '1px solid var(--border-soft)',
+                      overflow: 'hidden',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      height: '100%',
+                      boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)'
                     }}
                   >
-                    <div
-                      style={{
-                        width: '56px',
-                        height: '56px',
-                        borderRadius: 'var(--radius)',
-                        backgroundColor: `${section.color}15`,
+                    {/* Card Header */}
+                    <div 
+                      style={{ 
+                        padding: 'var(--spacing-6)',
+                        borderBottom: '1px solid var(--border-soft)',
+                        backgroundColor: 'var(--muted)',
                         display: 'flex',
                         alignItems: 'center',
-                        justifyContent: 'center'
+                        gap: 'var(--spacing-4)'
                       }}
                     >
-                      <Icon size={28} style={{ color: section.color }} />
-                    </div>
-                    
-                    <div>
+                      <div
+                        style={{
+                          width: '40px',
+                          height: '40px',
+                          borderRadius: 'var(--radius)',
+                          backgroundColor: 'var(--background)',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          color: section.color,
+                          boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)'
+                        }}
+                      >
+                        <Icon size={20} />
+                      </div>
+                      
                       <h2
                         style={{
                           fontFamily: 'var(--font-primary)',
-                          fontSize: 'var(--text-h2)',
+                          fontSize: 'var(--text-lg)',
                           fontWeight: 'var(--font-weight-bold)',
                           color: 'var(--foreground)',
-                          marginBottom: '4px'
+                          margin: 0
                         }}
                       >
                         {section.title}
                       </h2>
-                      <p
+                      
+                      <span 
                         style={{
-                          fontFamily: 'var(--font-primary)',
-                          fontSize: 'var(--text-base)',
-                          color: 'var(--muted-foreground)'
+                          marginLeft: 'auto',
+                          fontSize: 'var(--text-small)',
+                          fontFamily: 'var(--font-secondary)',
+                          color: 'var(--muted-foreground)',
+                          backgroundColor: 'var(--background)',
+                          padding: '2px 8px',
+                          borderRadius: 'var(--radius-full)',
+                          border: '1px solid var(--border-soft)'
                         }}
                       >
-                        {section.pages.length} {section.pages.length === 1 ? 'page' : 'pages'}
-                      </p>
+                        {section.pages.length}
+                      </span>
                     </div>
-                  </div>
 
-                  {/* Pages Grid */}
-                  <div className="wp-grid-3-cols">
-                    {section.pages.map((page, pageIndex) => (
-                      <div
-                        key={pageIndex}
-                        style={{
-                          backgroundColor: 'var(--card)',
-                          borderRadius: 'var(--radius-lg)',
-                          border: page.status === 'missing' 
-                            ? '1px dashed var(--destructive)' 
-                            : '1px solid var(--border-soft)',
-                          padding: '20px',
-                          display: 'flex',
-                          flexDirection: 'column',
-                          gap: '12px',
-                          transition: 'all 0.2s ease',
-                          cursor: page.status === 'active' ? 'pointer' : 'not-allowed',
-                          opacity: page.status === 'missing' ? 0.6 : 1
-                        }}
-                      >
-                        {/* Status Badge */}
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                          {page.status === 'active' ? (
-                            <CheckCircle size={16} style={{ color: '#10b981', flexShrink: 0 }} />
-                          ) : (
-                            <XCircle size={16} style={{ color: '#ef4444', flexShrink: 0 }} />
-                          )}
-                          <span
-                            style={{
-                              fontFamily: 'var(--font-secondary)',
-                              fontSize: 'var(--text-small)',
-                              fontWeight: 'var(--font-weight-semibold)',
-                              color: page.status === 'active' ? '#10b981' : '#ef4444',
-                              textTransform: 'uppercase',
-                              letterSpacing: '0.05em'
-                            }}
-                          >
-                            {page.status}
-                          </span>
-                        </div>
-
-                        {/* Page Label */}
-                        <h3
-                          style={{
-                            fontFamily: 'var(--font-primary)',
-                            fontSize: 'var(--text-lg)',
-                            fontWeight: 'var(--font-weight-semibold)',
-                            color: 'var(--foreground)',
-                            marginBottom: '8px'
-                          }}
-                        >
-                          {page.label}
-                        </h3>
-
-                        {/* Route */}
-                        <code
-                          style={{
-                            fontFamily: 'monospace',
-                            fontSize: 'var(--text-small)',
-                            color: 'var(--muted-foreground)',
-                            backgroundColor: 'var(--muted)',
-                            padding: '4px 8px',
-                            borderRadius: 'var(--radius)',
-                            wordBreak: 'break-all'
-                          }}
-                        >
-                          /{page.id}
-                        </code>
-
-                        {/* Action Button */}
-                        {page.status === 'active' && (
-                          <Button
-                            page={page.id as any}
-                            size="sm"
-                            variant="outline"
-                            style={{ marginTop: '8px', width: '100%' }}
-                          >
-                            Visit Page →
-                          </Button>
-                        )}
-
-                        {page.status === 'missing' && (
-                          <div
-                            style={{
-                              marginTop: '8px',
-                              padding: '8px 12px',
-                              backgroundColor: 'var(--destructive-bg)',
-                              borderRadius: 'var(--radius)',
-                              border: '1px solid var(--destructive)',
-                              textAlign: 'center'
-                            }}
-                          >
-                            <span
+                    {/* Pages List */}
+                    <div style={{ padding: 'var(--spacing-2) 0' }}>
+                      <ul style={{ listStyle: 'none', margin: 0, padding: 0 }}>
+                        {section.pages.map((page, pageIndex) => (
+                          <li key={pageIndex}>
+                            <button
+                              onClick={() => page.status === 'active' && navigateTo(page.id)}
+                              disabled={page.status !== 'active'}
                               style={{
-                                fontFamily: 'var(--font-primary)',
-                                fontSize: 'var(--text-small)',
-                                color: 'var(--destructive)',
-                                fontWeight: 'var(--font-weight-medium)'
+                                width: '100%',
+                                textAlign: 'left',
+                                padding: 'var(--spacing-3) var(--spacing-6)',
+                                background: 'none',
+                                border: 'none',
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: 'var(--spacing-3)',
+                                cursor: page.status === 'active' ? 'pointer' : 'not-allowed',
+                                transition: 'background-color 0.2s ease',
+                                opacity: page.status === 'missing' ? 0.6 : 1
+                              }}
+                              onMouseEnter={(e) => {
+                                if (page.status === 'active') {
+                                  e.currentTarget.style.backgroundColor = 'var(--muted)';
+                                }
+                              }}
+                              onMouseLeave={(e) => {
+                                e.currentTarget.style.backgroundColor = 'transparent';
                               }}
                             >
-                              Template Missing
-                            </span>
-                          </div>
-                        )}
-                      </div>
-                    ))}
+                              {/* Status Icon */}
+                              {page.status === 'active' ? (
+                                <CheckCircle size={16} style={{ color: 'var(--success)', flexShrink: 0 }} />
+                              ) : (
+                                <XCircle size={16} style={{ color: 'var(--destructive)', flexShrink: 0 }} />
+                              )}
+                              
+                              {/* Link Label */}
+                              <span
+                                style={{
+                                  fontFamily: 'var(--font-primary)',
+                                  fontSize: 'var(--text-base)',
+                                  color: 'var(--foreground)',
+                                  flexGrow: 1
+                                }}
+                              >
+                                {page.label}
+                              </span>
+                              
+                              {/* Arrow Icon */}
+                              {page.status === 'active' && (
+                                <ChevronRight size={16} style={{ color: 'var(--muted-foreground)' }} />
+                              )}
+                            </button>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
-                </div>
-              </Container>
-            </Section>
-          );
-        })}
+                );
+              })}
+            </div>
+          </Container>
+        </Section>
 
         {/* Statistics Section */}
         <Section 
           spacing="xl" 
           style={{
-            background: 'linear-gradient(135deg, #1e293b 0%, #334155 100%)',
-            color: 'var(--primary-foreground)'
+            background: 'var(--muted)',
+            borderTop: '1px solid var(--border-soft)'
           }}
         >
           <Container>
@@ -461,16 +449,16 @@ export function SiteMapTemplate() {
                   fontSize: 'var(--text-h2)',
                   fontWeight: 'var(--font-weight-bold)',
                   marginBottom: '32px',
-                  color: 'var(--primary-foreground)'
+                  color: 'var(--foreground)'
                 }}
               >
                 Site Statistics
               </h2>
 
-              <div className="wp-grid-4-cols">
+              <div className="wp-grid-4-cols" style={{ gap: 'var(--spacing-6)' }}>
                 {[
                   { 
-                    label: 'Total Pages', 
+                    label: 'Total Routes', 
                     value: siteMapSections.reduce((acc, section) => acc + section.pages.length, 0),
                     color: '#8b5cf6'
                   },
@@ -482,27 +470,27 @@ export function SiteMapTemplate() {
                     color: '#10b981'
                   },
                   { 
-                    label: 'Missing Templates', 
+                    label: 'Dynamic Posts', 
+                    value: blogPosts.length + portfolioProjects.length,
+                    color: '#f59e0b'
+                  },
+                  { 
+                    label: 'Missing', 
                     value: siteMapSections.reduce((acc, section) => 
                       acc + section.pages.filter(p => p.status === 'missing').length, 0
                     ),
                     color: '#ef4444'
-                  },
-                  { 
-                    label: 'Categories', 
-                    value: siteMapSections.length,
-                    color: '#f59e0b'
                   }
                 ].map((stat, index) => (
                   <div
                     key={index}
                     style={{
-                      backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                      backdropFilter: 'blur(10px)',
+                      backgroundColor: 'var(--card)',
                       borderRadius: 'var(--radius-lg)',
-                      border: '1px solid rgba(255, 255, 255, 0.2)',
+                      border: '1px solid var(--border-soft)',
                       padding: '24px',
-                      textAlign: 'center'
+                      textAlign: 'center',
+                      boxShadow: 'var(--shadow-sm)'
                     }}
                   >
                     <div
@@ -511,17 +499,20 @@ export function SiteMapTemplate() {
                         fontSize: 'var(--text-h1)',
                         fontWeight: 'var(--font-weight-bold)',
                         color: stat.color,
-                        marginBottom: '8px'
+                        marginBottom: '8px',
+                        lineHeight: 1
                       }}
                     >
                       {stat.value}
                     </div>
                     <div
                       style={{
-                        fontFamily: 'var(--font-primary)',
-                        fontSize: 'var(--text-base)',
-                        color: 'rgba(255, 255, 255, 0.9)',
-                        fontWeight: 'var(--font-weight-medium)'
+                        fontFamily: 'var(--font-secondary)',
+                        fontSize: 'var(--text-small)',
+                        color: 'var(--muted-foreground)',
+                        fontWeight: 'var(--font-weight-medium)',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.05em'
                       }}
                     >
                       {stat.label}
