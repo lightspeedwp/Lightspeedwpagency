@@ -128,12 +128,12 @@ export function ServicesTemplate() {
             <div className="wp-text-center" style={{ marginBottom: 'var(--spacing-16)' }}>
               <h2
                 style={{
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-h1)',
                   fontWeight: 'var(--font-weight-bold)',
                   lineHeight: '1.2',
                   letterSpacing: '-0.02em',
-                  marginBottom: '16px',
+                  marginBottom: 'var(--spacing-4)',
                   color: 'var(--foreground)'
                 }}
               >
@@ -142,7 +142,7 @@ export function ServicesTemplate() {
 
               <p
                 style={{
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-lg)',
                   lineHeight: '1.7',
                   color: 'var(--muted-foreground)',
@@ -161,7 +161,7 @@ export function ServicesTemplate() {
                   <div
                     key={index}
                     style={{
-                      padding: '32px',
+                      padding: 'var(--spacing-8)',
                       backgroundColor: 'var(--card)',
                       borderRadius: 'var(--radius-lg)',
                       border: '1px solid var(--border-soft)',
@@ -185,11 +185,11 @@ export function ServicesTemplate() {
 
                     <h3
                       style={{
-                        fontFamily: 'Lexend, sans-serif',
+                        fontFamily: 'var(--font-primary)',
                         fontSize: 'var(--text-lg)',
                         fontWeight: 'var(--font-weight-semibold)',
                         color: 'var(--foreground)',
-                        marginBottom: '8px'
+                        marginBottom: 'var(--spacing-2)'
                       }}
                     >
                       {benefit.title}
@@ -197,7 +197,7 @@ export function ServicesTemplate() {
 
                     <p
                       style={{
-                        fontFamily: 'Lexend, sans-serif',
+                        fontFamily: 'var(--font-primary)',
                         fontSize: 'var(--text-base)',
                         lineHeight: '1.6',
                         color: 'var(--muted-foreground)'
@@ -218,12 +218,12 @@ export function ServicesTemplate() {
             <div className="wp-text-center" style={{ marginBottom: 'var(--spacing-16)' }}>
               <h2
                 style={{
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-h1)',
                   fontWeight: 'var(--font-weight-bold)',
                   lineHeight: '1.2',
                   letterSpacing: '-0.02em',
-                  marginBottom: '16px',
+                  marginBottom: 'var(--spacing-4)',
                   color: 'var(--foreground)'
                 }}
               >
@@ -232,7 +232,7 @@ export function ServicesTemplate() {
 
               <p
                 style={{
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-lg)',
                   lineHeight: '1.7',
                   color: 'var(--muted-foreground)',
@@ -254,12 +254,12 @@ export function ServicesTemplate() {
             <div className="wp-text-center" style={{ marginBottom: 'var(--spacing-16)' }}>
               <h2
                 style={{
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-h1)',
                   fontWeight: 'var(--font-weight-bold)',
                   lineHeight: '1.2',
                   letterSpacing: '-0.02em',
-                  marginBottom: '16px',
+                  marginBottom: 'var(--spacing-4)',
                   color: 'var(--foreground)'
                 }}
               >
@@ -268,7 +268,7 @@ export function ServicesTemplate() {
 
               <p
                 style={{
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-lg)',
                   lineHeight: '1.7',
                   color: 'var(--muted-foreground)',
@@ -285,19 +285,19 @@ export function ServicesTemplate() {
                 <div
                   key={index}
                   style={{
-                    padding: '20px 24px',
+                    padding: 'var(--spacing-5) var(--spacing-6)',
                     backgroundColor: 'var(--card)',
                     borderRadius: 'var(--radius-lg)',
                     border: '1px solid var(--border-soft)',
                     display: 'flex',
                     alignItems: 'center',
-                    gap: '12px'
+                    gap: 'var(--spacing-3)'
                   }}
                 >
                   <CheckCircle size={20} style={{ color: 'var(--primary)', flexShrink: 0 }} />
                   <span
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-base)',
                       fontWeight: 'var(--font-weight-medium)',
                       color: 'var(--foreground)'
@@ -329,12 +329,12 @@ export function ServicesTemplate() {
               <div className="wp-text-center" style={{ marginBottom: 'var(--spacing-12)' }}>
                 <h2
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-h1)',
                     fontWeight: 'var(--font-weight-bold)',
                     lineHeight: '1.2',
                     letterSpacing: '-0.02em',
-                    marginBottom: '16px',
+                    marginBottom: 'var(--spacing-4)',
                     color: 'var(--foreground)'
                   }}
                 >
@@ -343,7 +343,7 @@ export function ServicesTemplate() {
 
                 <p
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-lg)',
                     lineHeight: '1.7',
                     color: 'var(--muted-foreground)'

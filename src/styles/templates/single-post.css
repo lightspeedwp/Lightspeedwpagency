@@ -1,0 +1,21 @@
+/**
+ * Single Post Template Styles
+ */
+
+.single-post-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-12);
+}
+
+@media (min-width: 1024px) {
+  .single-post-grid {
+    grid-template-columns: 1fr 3fr;
+  }
+}
+
+.single-post-sidebar {
+  position: sticky;
+  top: 100px;
+  align-self: start;
+}

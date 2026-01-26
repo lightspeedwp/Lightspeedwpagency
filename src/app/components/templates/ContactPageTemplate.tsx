@@ -104,8 +104,9 @@ export function ContactPageTemplate() {
       <main id="main-content" role="main">
         {/* Breadcrumbs */}
         <section 
-          className="py-4"
           style={{
+            paddingTop: 'var(--spacing-4)',
+            paddingBottom: 'var(--spacing-4)',
             backgroundColor: 'var(--background)',
           }}
         >

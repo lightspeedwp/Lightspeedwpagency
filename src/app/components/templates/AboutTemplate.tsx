@@ -204,7 +204,7 @@ export function AboutTemplate() {
                 {/* Mission */}
                 <div
                   style={{
-                    padding: '40px',
+                    padding: 'var(--spacing-10)',
                     backgroundColor: 'var(--card)',
                     borderRadius: 'var(--radius-lg)',
                     border: '1px solid var(--border-soft)'
@@ -219,7 +219,7 @@ export function AboutTemplate() {
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      marginBottom: '20px'
+                      marginBottom: 'var(--spacing-5)'
                     }}
                   >
                     <Target size={28} style={{ color: 'var(--primary)' }} />
@@ -251,7 +251,7 @@ export function AboutTemplate() {
                 {/* Vision */}
                 <div
                   style={{
-                    padding: '40px',
+                    padding: 'var(--spacing-10)',
                     backgroundColor: 'var(--card)',
                     borderRadius: 'var(--radius-lg)',
                     border: '1px solid var(--border-soft)'
@@ -266,7 +266,7 @@ export function AboutTemplate() {
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      marginBottom: '20px'
+                      marginBottom: 'var(--spacing-5)'
                     }}
                   >
                     <Lightbulb size={28} style={{ color: 'var(--primary)' }} />

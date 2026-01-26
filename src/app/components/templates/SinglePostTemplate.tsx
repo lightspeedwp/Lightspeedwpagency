@@ -32,6 +32,7 @@ import {
   Facebook
 } from 'lucide-react';
 import { useNavigation } from '../../contexts/NavigationContext';
+import '@/styles/templates/single-post.css';
 
 // Import centralized data
 import {
@@ -65,8 +66,9 @@ export function SinglePostTemplate({ slug = 'getting-started-with-block-themes' 
       <main id="main-content" role="main">
         {/* Breadcrumbs */}
         <section 
-          className="py-4"
           style={{
+            paddingTop: 'var(--spacing-4)',
+            paddingBottom: 'var(--spacing-4)',
             backgroundColor: 'var(--background)',
             borderBottom: '1px solid var(--border-soft)'
           }}
@@ -85,15 +87,15 @@ export function SinglePostTemplate({ slug = 'getting-started-with-block-themes' 
         {/* Article Header/Hero */}
         <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
           <Container>
-            <article className="max-w-4xl mx-auto">
+            <article className="wp-max-w-4xl" style={{ margin: '0 auto' }}>
               {/* Categories */}
-              <div style={{ display: 'flex', gap: '8px', marginBottom: '24px', flexWrap: 'wrap' }}>
+              <div style={{ display: 'flex', gap: 'var(--spacing-2)', marginBottom: 'var(--spacing-6)', flexWrap: 'wrap' }}>
                 {meta.categories.map((category, index) => (
                   <span
                     key={index}
                     style={{
                       fontSize: 'var(--text-small)',
-                      fontFamily: 'Manrope, sans-serif',
+                      fontFamily: 'var(--font-secondary)',
                       fontWeight: 'var(--font-weight-semibold)',
                       color: 'var(--primary)',
                       backgroundColor: 'var(--primary-soft)',
@@ -119,12 +121,12 @@ export function SinglePostTemplate({ slug = 'getting-started-with-block-themes' 
               {/* Title */}
               <h1
                 style={{
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'clamp(2rem, 5vw, 3rem)',
                   fontWeight: 'var(--font-weight-bold)',
                   lineHeight: '1.1',
                   letterSpacing: '-0.02em',
-                  marginBottom: '24px',
+                  marginBottom: 'var(--spacing-6)',
                   color: 'var(--foreground)'
                 }}
               >
@@ -134,11 +136,11 @@ export function SinglePostTemplate({ slug = 'getting-started-with-block-themes' 
               {/* Excerpt */}
               <p
                 style={{
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-xl)',
                   lineHeight: '1.6',
                   color: 'var(--muted-foreground)',
-                  marginBottom: '32px'
+                  marginBottom: 'var(--spacing-8)'
                 }}
               >
                 {post.excerpt}
@@ -148,13 +150,13 @@ export function SinglePostTemplate({ slug = 'getting-started-with-block-themes' 
               <div style={{ 
                 display: 'flex', 
                 alignItems: 'center', 
-                gap: '24px', 
-                paddingBottom: '32px',
+                gap: 'var(--spacing-6)', 
+                paddingBottom: 'var(--spacing-8)',
                 borderBottom: '1px solid var(--border-soft)',
                 flexWrap: 'wrap'
               }}>
                 {/* Author */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-3)' }}>
                   <div
                     style={{
                       width: '48px',
@@ -168,7 +170,7 @@ export function SinglePostTemplate({ slug = 'getting-started-with-block-themes' 
                   <div>
                     <div
                       style={{
-                        fontFamily: 'Lexend, sans-serif',
+                        fontFamily: 'var(--font-primary)',
                         fontSize: 'var(--text-base)',
                         fontWeight: 'var(--font-weight-semibold)',
                         color: 'var(--foreground)',
@@ -179,7 +181,7 @@ export function SinglePostTemplate({ slug = 'getting-started-with-block-themes' 
                     </div>
                     <div
                       style={{
-                        fontFamily: 'Manrope, sans-serif',
+                        fontFamily: 'var(--font-secondary)',
                         fontSize: 'var(--text-small)',
                         color: 'var(--muted-foreground)'
                       }}
@@ -190,11 +192,11 @@ export function SinglePostTemplate({ slug = 'getting-started-with-block-themes' 
                 </div>
 
                 {/* Date */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-2)' }}>
                   <Calendar size={16} style={{ color: 'var(--muted-foreground)' }} />
                   <span
                     style={{
-                      fontFamily: 'Manrope, sans-serif',
+                      fontFamily: 'var(--font-secondary)',
                       fontSize: 'var(--text-small)',
                       color: 'var(--muted-foreground)'
                     }}
@@ -204,11 +206,11 @@ export function SinglePostTemplate({ slug = 'getting-started-with-block-themes' 
                 </div>
 
                 {/* Reading Time */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-2)' }}>
                   <Clock size={16} style={{ color: 'var(--muted-foreground)' }} />
                   <span
                     style={{
-                      fontFamily: 'Manrope, sans-serif',
+                      fontFamily: 'var(--font-secondary)',
                       fontSize: 'var(--text-small)',
                       color: 'var(--muted-foreground)'
                     }}
@@ -218,7 +220,7 @@ export function SinglePostTemplate({ slug = 'getting-started-with-block-themes' 
                 </div>
 
                 {/* Actions */}
-                <div style={{ marginLeft: 'auto', display: 'flex', gap: '12px' }}>
+                <div style={{ marginLeft: 'auto', display: 'flex', gap: 'var(--spacing-3)' }}>
                   {postActions.map((action, index) => {
                     const Icon = action.icon;
                     return (
@@ -232,7 +234,7 @@ export function SinglePostTemplate({ slug = 'getting-started-with-block-themes' 
                           backgroundColor: 'var(--muted)',
                           border: '1px solid var(--border)',
                           borderRadius: 'var(--radius)',
-                          fontFamily: 'Manrope, sans-serif',
+                          fontFamily: 'var(--font-secondary)',
                           fontSize: 'var(--text-small)',
                           fontWeight: 'var(--font-weight-semibold)',
                           color: 'var(--foreground)',
@@ -265,7 +267,7 @@ export function SinglePostTemplate({ slug = 'getting-started-with-block-themes' 
         {/* Featured Image */}
         <Section spacing="none" style={{ backgroundColor: 'var(--background)' }}>
           <Container>
-            <div className="max-w-5xl mx-auto">
+            <div className="wp-max-w-5xl" style={{ margin: '0 auto' }}>
               <div
                 style={{
                   width: '100%',
@@ -274,7 +276,7 @@ export function SinglePostTemplate({ slug = 'getting-started-with-block-themes' 
                   backgroundImage: `url(${post.featuredImage})`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
-                  marginBottom: '64px'
+                  marginBottom: 'var(--spacing-16)'
                 }}
               />
             </div>
@@ -284,20 +286,13 @@ export function SinglePostTemplate({ slug = 'getting-started-with-block-themes' 
         {/* Article Content */}
         <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
           <Container>
-            <div className="max-w-4xl mx-auto">
-              <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
+            <div className="wp-max-w-4xl" style={{ margin: '0 auto' }}>
+              <div className="single-post-grid">
                 {/* Table of Contents (Sidebar) */}
-                <aside
-                  className="lg:col-span-1"
-                  style={{
-                    position: 'sticky',
-                    top: '100px',
-                    alignSelf: 'start'
-                  }}
-                >
+                <aside className="single-post-sidebar">
                   <div
                     style={{
-                      padding: '24px',
+                      padding: 'var(--spacing-6)',
                       backgroundColor: 'var(--muted)',
                       borderRadius: 'var(--radius-lg)',
                       border: '1px solid var(--border-soft)'
@@ -305,11 +300,11 @@ export function SinglePostTemplate({ slug = 'getting-started-with-block-themes' 
                   >
                     <h2
                       style={{
-                        fontFamily: 'Lexend, sans-serif',
+                        fontFamily: 'var(--font-primary)',
                         fontSize: 'var(--text-base)',
                         fontWeight: 'var(--font-weight-bold)',
                         color: 'var(--foreground)',
-                        marginBottom: '16px'
+                        marginBottom: 'var(--spacing-4)'
                       }}
                     >
                       Table of Contents
@@ -317,11 +312,11 @@ export function SinglePostTemplate({ slug = 'getting-started-with-block-themes' 
                     <nav>
                       <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                         {tableOfContents.map((item, index) => (
-                          <li key={index} style={{ marginBottom: '8px' }}>
+                          <li key={index} style={{ marginBottom: 'var(--spacing-2)' }}>
                             <a
                               href={`#${item.id}`}
                               style={{
-                                fontFamily: 'Manrope, sans-serif',
+                                fontFamily: 'var(--font-secondary)',
                                 fontSize: 'var(--text-small)',
                                 color: 'var(--muted-foreground)',
                                 textDecoration: 'none',
@@ -340,11 +335,11 @@ export function SinglePostTemplate({ slug = 'getting-started-with-block-themes' 
                 </aside>
 
                 {/* Main Content */}
-                <div className="lg:col-span-3">
+                <div>
                   <div
                     className="prose prose-lg"
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-base)',
                       lineHeight: '1.8',
                       color: 'var(--foreground)'
@@ -353,12 +348,12 @@ export function SinglePostTemplate({ slug = 'getting-started-with-block-themes' 
                   />
 
                   {/* Tags */}
-                  <div style={{ marginTop: '48px', paddingTop: '32px', borderTop: '1px solid var(--border-soft)' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
+                  <div style={{ marginTop: 'var(--spacing-12)', paddingTop: 'var(--spacing-8)', borderTop: '1px solid var(--border-soft)' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-3)', marginBottom: 'var(--spacing-4)' }}>
                       <Tag size={18} style={{ color: 'var(--muted-foreground)' }} />
                       <span
                         style={{
-                          fontFamily: 'Lexend, sans-serif',
+                          fontFamily: 'var(--font-primary)',
                           fontSize: 'var(--text-base)',
                           fontWeight: 'var(--font-weight-semibold)',
                           color: 'var(--foreground)'
@@ -367,13 +362,13 @@ export function SinglePostTemplate({ slug = 'getting-started-with-block-themes' 
                         Tags:
                       </span>
                     </div>
-                    <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                    <div style={{ display: 'flex', gap: 'var(--spacing-2)', flexWrap: 'wrap' }}>
                       {meta.tags.map((tag, index) => (
                         <span
                           key={index}
                           style={{
                             fontSize: 'var(--text-small)',
-                            fontFamily: 'Manrope, sans-serif',
+                            fontFamily: 'var(--font-secondary)',
                             color: 'var(--muted-foreground)',
                             backgroundColor: 'var(--muted)',
                             padding: '6px 12px',
@@ -398,12 +393,12 @@ export function SinglePostTemplate({ slug = 'getting-started-with-block-themes' 
                   </div>
 
                   {/* Share */}
-                  <div style={{ marginTop: '32px', paddingTop: '32px', borderTop: '1px solid var(--border-soft)' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
+                  <div style={{ marginTop: 'var(--spacing-8)', paddingTop: 'var(--spacing-8)', borderTop: '1px solid var(--border-soft)' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-3)', marginBottom: 'var(--spacing-4)' }}>
                       <Share2 size={18} style={{ color: 'var(--muted-foreground)' }} />
                       <span
                         style={{
-                          fontFamily: 'Lexend, sans-serif',
+                          fontFamily: 'var(--font-primary)',
                           fontSize: 'var(--text-base)',
                           fontWeight: 'var(--font-weight-semibold)',
                           color: 'var(--foreground)'
@@ -412,7 +407,7 @@ export function SinglePostTemplate({ slug = 'getting-started-with-block-themes' 
                         Share this article:
                       </span>
                     </div>
-                    <div style={{ display: 'flex', gap: '12px' }}>
+                    <div style={{ display: 'flex', gap: 'var(--spacing-3)' }}>
                       <button
                         style={{
                           padding: '12px 20px',
@@ -420,7 +415,7 @@ export function SinglePostTemplate({ slug = 'getting-started-with-block-themes' 
                           color: 'white',
                           border: 'none',
                           borderRadius: 'var(--radius)',
-                          fontFamily: 'Manrope, sans-serif',
+                          fontFamily: 'var(--font-secondary)',
                           fontSize: 'var(--text-small)',
                           fontWeight: 'var(--font-weight-semibold)',
                           cursor: 'pointer',
@@ -443,7 +438,7 @@ export function SinglePostTemplate({ slug = 'getting-started-with-block-themes' 
                           color: 'white',
                           border: 'none',
                           borderRadius: 'var(--radius)',
-                          fontFamily: 'Manrope, sans-serif',
+                          fontFamily: 'var(--font-secondary)',
                           fontSize: 'var(--text-small)',
                           fontWeight: 'var(--font-weight-semibold)',
                           cursor: 'pointer',
@@ -466,7 +461,7 @@ export function SinglePostTemplate({ slug = 'getting-started-with-block-themes' 
                           color: 'white',
                           border: 'none',
                           borderRadius: 'var(--radius)',
-                          fontFamily: 'Manrope, sans-serif',
+                          fontFamily: 'var(--font-secondary)',
                           fontSize: 'var(--text-small)',
                           fontWeight: 'var(--font-weight-semibold)',
                           cursor: 'pointer',
@@ -517,21 +512,21 @@ export function SinglePostTemplate({ slug = 'getting-started-with-block-themes' 
         {/* Related Posts */}
         <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
           <Container>
-            <div className="max-w-6xl mx-auto">
+            <div className="wp-max-w-6xl" style={{ margin: '0 auto' }}>
               <h2
                 style={{
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-h2)',
                   fontWeight: 'var(--font-weight-bold)',
                   color: 'var(--foreground)',
-                  marginBottom: '32px',
+                  marginBottom: 'var(--spacing-8)',
                   textAlign: 'center'
                 }}
               >
                 Related Articles
               </h2>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="wp-grid-3-cols" style={{ gap: 'var(--spacing-8)' }}>
                 {relatedBlogPosts.map((relatedPost, index) => (
                   <article
                     key={index}
@@ -564,14 +559,14 @@ export function SinglePostTemplate({ slug = 'getting-started-with-block-themes' 
                         backgroundPosition: 'center'
                       }}
                     />
-                    <div style={{ padding: '24px' }}>
+                    <div style={{ padding: 'var(--spacing-6)' }}>
                       <h3
                         style={{
-                          fontFamily: 'Lexend, sans-serif',
+                          fontFamily: 'var(--font-primary)',
                           fontSize: 'var(--text-lg)',
                           fontWeight: 'var(--font-weight-bold)',
                           color: 'var(--foreground)',
-                          marginBottom: '8px',
+                          marginBottom: 'var(--spacing-2)',
                           lineHeight: '1.3'
                         }}
                       >
@@ -579,20 +574,20 @@ export function SinglePostTemplate({ slug = 'getting-started-with-block-themes' 
                       </h3>
                       <p
                         style={{
-                          fontFamily: 'Lexend, sans-serif',
+                          fontFamily: 'var(--font-primary)',
                           fontSize: 'var(--text-small)',
                           lineHeight: '1.6',
                           color: 'var(--muted-foreground)',
-                          marginBottom: '12px'
+                          marginBottom: 'var(--spacing-3)'
                         }}
                       >
                         {relatedPost.excerpt.substring(0, 100)}...
                       </p>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-2)' }}>
                         <Clock size={14} style={{ color: 'var(--muted-foreground)' }} />
                         <span
                           style={{
-                            fontFamily: 'Manrope, sans-serif',
+                            fontFamily: 'var(--font-secondary)',
                             fontSize: 'var(--text-small)',
                             color: 'var(--muted-foreground)'
                           }}

@@ -19,7 +19,9 @@ import { CTASection } from '../patterns/CTASection';
 import { Hero } from '../patterns/Hero';
 import { 
   DollarSign,
-  Check
+  Check,
+  X,
+  Zap
 } from 'lucide-react';
 
 // Import centralized data
@@ -42,8 +44,9 @@ export function PricingTemplate() {
       <main id="main-content" role="main">
         {/* Breadcrumbs */}
         <section 
-          className="py-4"
           style={{
+            paddingTop: 'var(--spacing-4)',
+            paddingBottom: 'var(--spacing-4)',
             backgroundColor: 'var(--background)',
             borderBottom: '1px solid var(--border-soft)'
           }}
@@ -77,14 +80,14 @@ export function PricingTemplate() {
         {/* Website Packages Section */}
         <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
           <Container>
-            <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-16">
+            <div className="wp-max-w-6xl">
+              <div className="wp-text-center" style={{ marginBottom: 'var(--spacing-16)' }}>
                 <h2
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-h2)',
                     fontWeight: 'var(--font-weight-bold)',
-                    marginBottom: '16px',
+                    marginBottom: 'var(--spacing-4)',
                     color: 'var(--foreground)'
                   }}
                 >
@@ -92,7 +95,7 @@ export function PricingTemplate() {
                 </h2>
                 <p
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-lg)',
                     color: 'var(--muted-foreground)',
                     maxWidth: '700px',
@@ -103,7 +106,7 @@ export function PricingTemplate() {
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="wp-grid-3-cols" style={{ gap: 'var(--spacing-8)' }}>
                 {websitePackages.map((plan) => {
                   const Icon = plan.icon;
                   return (
@@ -113,9 +116,9 @@ export function PricingTemplate() {
                         backgroundColor: 'var(--card)',
                         borderRadius: 'var(--radius-lg)',
                         border: plan.popular 
-                          ? '2px solid #0891b2' 
+                          ? '2px solid var(--primary)' 
                           : '1px solid var(--border-soft)',
-                        padding: '32px',
+                        padding: 'var(--spacing-8)',
                         position: 'relative',
                         display: 'flex',
                         flexDirection: 'column'
@@ -128,12 +131,12 @@ export function PricingTemplate() {
                             top: '-12px',
                             left: '50%',
                             transform: 'translateX(-50%)',
-                            backgroundColor: '#0891b2',
-                            color: 'white',
+                            backgroundColor: 'var(--primary)',
+                            color: 'var(--primary-foreground)',
                             padding: '4px 16px',
                             borderRadius: 'var(--radius-full)',
                             fontSize: 'var(--text-small)',
-                            fontFamily: 'Manrope, sans-serif',
+                            fontFamily: 'var(--font-secondary)',
                             fontWeight: 'var(--font-weight-semibold)',
                             textTransform: 'uppercase',
                             letterSpacing: '0.05em'
@@ -148,22 +151,22 @@ export function PricingTemplate() {
                           width: '48px',
                           height: '48px',
                           borderRadius: 'var(--radius)',
-                          backgroundColor: 'rgba(8, 145, 178, 0.1)',
+                          backgroundColor: 'var(--primary-soft)',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
-                          marginBottom: '16px'
+                          marginBottom: 'var(--spacing-4)'
                         }}
                       >
-                        <Icon size={24} style={{ color: '#0891b2' }} />
+                        <Icon size={24} style={{ color: 'var(--primary)' }} />
                       </div>
 
                       <h3
                         style={{
-                          fontFamily: 'Lexend, sans-serif',
+                          fontFamily: 'var(--font-primary)',
                           fontSize: 'var(--text-h4)',
                           fontWeight: 'var(--font-weight-bold)',
-                          marginBottom: '8px',
+                          marginBottom: 'var(--spacing-2)',
                           color: 'var(--foreground)'
                         }}
                       >
@@ -172,30 +175,30 @@ export function PricingTemplate() {
 
                       <p
                         style={{
-                          fontFamily: 'Lexend, sans-serif',
+                          fontFamily: 'var(--font-primary)',
                           fontSize: 'var(--text-small)',
                           color: 'var(--muted-foreground)',
-                          marginBottom: '16px'
+                          marginBottom: 'var(--spacing-4)'
                         }}
                       >
                         {plan.tagline}
                       </p>
 
-                      <div style={{ marginBottom: '24px' }}>
+                      <div style={{ marginBottom: 'var(--spacing-6)' }}>
                         <div
                           style={{
-                            fontFamily: 'Lexend, sans-serif',
+                            fontFamily: 'var(--font-primary)',
                             fontSize: 'var(--text-h1)',
                             fontWeight: 'var(--font-weight-bold)',
-                            color: '#0891b2',
-                            marginBottom: '4px'
+                            color: 'var(--primary)',
+                            marginBottom: 'var(--spacing-1)'
                           }}
                         >
                           {plan.price.display}
                         </div>
                         <div
                           style={{
-                            fontFamily: 'Manrope, sans-serif',
+                            fontFamily: 'var(--font-secondary)',
                             fontSize: 'var(--text-small)',
                             color: 'var(--muted-foreground)'
                           }}
@@ -206,18 +209,18 @@ export function PricingTemplate() {
 
                       <p
                         style={{
-                          fontFamily: 'Lexend, sans-serif',
+                          fontFamily: 'var(--font-primary)',
                           fontSize: 'var(--text-base)',
                           lineHeight: '1.6',
                           color: 'var(--foreground)',
-                          marginBottom: '24px',
+                          marginBottom: 'var(--spacing-6)',
                           flexGrow: 1
                         }}
                       >
                         {plan.description}
                       </p>
 
-                      <ul style={{ marginBottom: '24px' }}>
+                      <ul style={{ marginBottom: 'var(--spacing-6)' }}>
                         {plan.features.slice(0, 8).map((feature, index) => (
                           <li
                             key={index}
@@ -229,13 +232,13 @@ export function PricingTemplate() {
                             }}
                           >
                             {feature.included ? (
-                              <Check size={20} style={{ color: '#10b981', flexShrink: 0, marginTop: '2px' }} />
+                              <Check size={20} style={{ color: 'var(--color-success)', flexShrink: 0, marginTop: '2px' }} />
                             ) : (
                               <X size={20} style={{ color: 'var(--muted-foreground)', flexShrink: 0, marginTop: '2px' }} />
                             )}
                             <span
                               style={{
-                                fontFamily: 'Lexend, sans-serif',
+                                fontFamily: 'var(--font-primary)',
                                 fontSize: 'var(--text-base)',
                                 color: feature.included ? 'var(--foreground)' : 'var(--muted-foreground)'
                               }}
@@ -253,8 +256,8 @@ export function PricingTemplate() {
                         style={{
                           width: '100%',
                           ...(plan.popular && {
-                            backgroundColor: '#0891b2',
-                            color: 'white'
+                            backgroundColor: 'var(--primary)',
+                            color: 'var(--primary-foreground)'
                           })
                         }}
                       >
@@ -271,14 +274,14 @@ export function PricingTemplate() {
         {/* Support Packages Section */}
         <Section spacing="xl" style={{ backgroundColor: 'var(--muted)' }}>
           <Container>
-            <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-16">
+            <div className="wp-max-w-6xl">
+              <div className="wp-text-center" style={{ marginBottom: 'var(--spacing-16)' }}>
                 <h2
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-h2)',
                     fontWeight: 'var(--font-weight-bold)',
-                    marginBottom: '16px',
+                    marginBottom: 'var(--spacing-4)',
                     color: 'var(--foreground)'
                   }}
                 >
@@ -286,7 +289,7 @@ export function PricingTemplate() {
                 </h2>
                 <p
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-lg)',
                     color: 'var(--muted-foreground)',
                     maxWidth: '700px',
@@ -297,7 +300,7 @@ export function PricingTemplate() {
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="wp-grid-3-cols" style={{ gap: 'var(--spacing-8)' }}>
                 {supportPackages.map((plan) => {
                   const Icon = plan.icon;
                   return (
@@ -307,9 +310,9 @@ export function PricingTemplate() {
                         backgroundColor: 'var(--card)',
                         borderRadius: 'var(--radius-lg)',
                         border: plan.popular 
-                          ? '2px solid #0891b2' 
+                          ? '2px solid var(--primary)' 
                           : '1px solid var(--border-soft)',
-                        padding: '32px',
+                        padding: 'var(--spacing-8)',
                         position: 'relative',
                         display: 'flex',
                         flexDirection: 'column'
@@ -322,12 +325,12 @@ export function PricingTemplate() {
                             top: '-12px',
                             left: '50%',
                             transform: 'translateX(-50%)',
-                            backgroundColor: '#0891b2',
-                            color: 'white',
+                            backgroundColor: 'var(--primary)',
+                            color: 'var(--primary-foreground)',
                             padding: '4px 16px',
                             borderRadius: 'var(--radius-full)',
                             fontSize: 'var(--text-small)',
-                            fontFamily: 'Manrope, sans-serif',
+                            fontFamily: 'var(--font-secondary)',
                             fontWeight: 'var(--font-weight-semibold)',
                             textTransform: 'uppercase',
                             letterSpacing: '0.05em'
@@ -342,22 +345,22 @@ export function PricingTemplate() {
                           width: '48px',
                           height: '48px',
                           borderRadius: 'var(--radius)',
-                          backgroundColor: 'rgba(8, 145, 178, 0.1)',
+                          backgroundColor: 'var(--primary-soft)',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
-                          marginBottom: '16px'
+                          marginBottom: 'var(--spacing-4)'
                         }}
                       >
-                        <Icon size={24} style={{ color: '#0891b2' }} />
+                        <Icon size={24} style={{ color: 'var(--primary)' }} />
                       </div>
 
                       <h3
                         style={{
-                          fontFamily: 'Lexend, sans-serif',
+                          fontFamily: 'var(--font-primary)',
                           fontSize: 'var(--text-h4)',
                           fontWeight: 'var(--font-weight-bold)',
-                          marginBottom: '8px',
+                          marginBottom: 'var(--spacing-2)',
                           color: 'var(--foreground)'
                         }}
                       >
@@ -366,30 +369,30 @@ export function PricingTemplate() {
 
                       <p
                         style={{
-                          fontFamily: 'Lexend, sans-serif',
+                          fontFamily: 'var(--font-primary)',
                           fontSize: 'var(--text-small)',
                           color: 'var(--muted-foreground)',
-                          marginBottom: '16px'
+                          marginBottom: 'var(--spacing-4)'
                         }}
                       >
                         {plan.tagline}
                       </p>
 
-                      <div style={{ marginBottom: '24px' }}>
+                      <div style={{ marginBottom: 'var(--spacing-6)' }}>
                         <div
                           style={{
-                            fontFamily: 'Lexend, sans-serif',
+                            fontFamily: 'var(--font-primary)',
                             fontSize: 'var(--text-h1)',
                             fontWeight: 'var(--font-weight-bold)',
-                            color: '#0891b2',
-                            marginBottom: '4px'
+                            color: 'var(--primary)',
+                            marginBottom: 'var(--spacing-1)'
                           }}
                         >
                           {plan.price.display}
                         </div>
                         <div
                           style={{
-                            fontFamily: 'Manrope, sans-serif',
+                            fontFamily: 'var(--font-secondary)',
                             fontSize: 'var(--text-small)',
                             color: 'var(--muted-foreground)'
                           }}
@@ -400,18 +403,18 @@ export function PricingTemplate() {
 
                       <p
                         style={{
-                          fontFamily: 'Lexend, sans-serif',
+                          fontFamily: 'var(--font-primary)',
                           fontSize: 'var(--text-base)',
                           lineHeight: '1.6',
                           color: 'var(--foreground)',
-                          marginBottom: '24px',
+                          marginBottom: 'var(--spacing-6)',
                           flexGrow: 1
                         }}
                       >
                         {plan.description}
                       </p>
 
-                      <ul style={{ marginBottom: '24px' }}>
+                      <ul style={{ marginBottom: 'var(--spacing-6)' }}>
                         {plan.features.slice(0, 8).map((feature, index) => (
                           <li
                             key={index}
@@ -423,13 +426,13 @@ export function PricingTemplate() {
                             }}
                           >
                             {feature.included ? (
-                              <Check size={20} style={{ color: '#10b981', flexShrink: 0, marginTop: '2px' }} />
+                              <Check size={20} style={{ color: 'var(--color-success)', flexShrink: 0, marginTop: '2px' }} />
                             ) : (
                               <X size={20} style={{ color: 'var(--muted-foreground)', flexShrink: 0, marginTop: '2px' }} />
                             )}
                             <span
                               style={{
-                                fontFamily: 'Lexend, sans-serif',
+                                fontFamily: 'var(--font-primary)',
                                 fontSize: 'var(--text-base)',
                                 color: feature.included ? 'var(--foreground)' : 'var(--muted-foreground)'
                               }}
@@ -447,8 +450,8 @@ export function PricingTemplate() {
                         style={{
                           width: '100%',
                           ...(plan.popular && {
-                            backgroundColor: '#0891b2',
-                            color: 'white'
+                            backgroundColor: 'var(--primary)',
+                            color: 'var(--primary-foreground)'
                           })
                         }}
                       >
@@ -465,13 +468,13 @@ export function PricingTemplate() {
         {/* Payment Options Section */}
         <Section spacing="lg" style={{ backgroundColor: 'var(--background)' }}>
           <Container>
-            <div className="max-w-4xl mx-auto text-center">
+            <div className="wp-max-w-4xl wp-text-center">
               <h2
                 style={{
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-h2)',
                   fontWeight: 'var(--font-weight-bold)',
-                  marginBottom: '16px',
+                  marginBottom: 'var(--spacing-4)',
                   color: 'var(--foreground)'
                 }}
               >
@@ -479,16 +482,16 @@ export function PricingTemplate() {
               </h2>
               <p
                 style={{
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-lg)',
                   color: 'var(--muted-foreground)',
-                  marginBottom: '48px'
+                  marginBottom: 'var(--spacing-12)'
                 }}
               >
                 {paymentOptions.description}
               </p>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="wp-grid-3-cols" style={{ gap: 'var(--spacing-6)' }}>
                 {paymentOptions.options.map((option, index) => (
                   <div
                     key={index}
@@ -496,17 +499,17 @@ export function PricingTemplate() {
                       backgroundColor: 'var(--card)',
                       borderRadius: 'var(--radius-lg)',
                       border: '1px solid var(--border-soft)',
-                      padding: '24px',
+                      padding: 'var(--spacing-6)',
                       textAlign: 'center'
                     }}
                   >
-                    <Zap size={32} style={{ color: '#0891b2', margin: '0 auto 16px' }} />
+                    <Zap size={32} style={{ color: 'var(--primary)', margin: '0 auto var(--spacing-4)' }} />
                     <h3
                       style={{
-                        fontFamily: 'Lexend, sans-serif',
+                        fontFamily: 'var(--font-primary)',
                         fontSize: 'var(--text-h5)',
                         fontWeight: 'var(--font-weight-bold)',
-                        marginBottom: '8px',
+                        marginBottom: 'var(--spacing-2)',
                         color: 'var(--foreground)'
                       }}
                     >
@@ -514,28 +517,28 @@ export function PricingTemplate() {
                     </h3>
                     <p
                       style={{
-                        fontFamily: 'Lexend, sans-serif',
+                        fontFamily: 'var(--font-primary)',
                         fontSize: 'var(--text-base)',
                         color: 'var(--muted-foreground)',
-                        marginBottom: '12px'
+                        marginBottom: 'var(--spacing-3)'
                       }}
                     >
                       {option.description}
                     </p>
                     <div
                       style={{
-                        fontFamily: 'Manrope, sans-serif',
+                        fontFamily: 'var(--font-secondary)',
                         fontSize: 'var(--text-small)',
-                        color: '#0891b2',
+                        color: 'var(--primary)',
                         fontWeight: 'var(--font-weight-semibold)',
-                        marginBottom: '8px'
+                        marginBottom: 'var(--spacing-2)'
                       }}
                     >
                       {option.discount}
                     </div>
                     <p
                       style={{
-                        fontFamily: 'Manrope, sans-serif',
+                        fontFamily: 'var(--font-secondary)',
                         fontSize: 'var(--text-small)',
                         color: 'var(--muted-foreground)'
                       }}
