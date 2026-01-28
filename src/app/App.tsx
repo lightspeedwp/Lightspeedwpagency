@@ -20,7 +20,7 @@ import { useState, lazy, Suspense } from 'react';
 import { NavigationContext } from './contexts/NavigationContext';
 import { KeyboardShortcuts } from './components/blocks/layout/KeyboardShortcuts';
 import { ErrorBoundary } from './components/blocks/layout/ErrorBoundary';
-import { ToastProvider } from './components/blocks/feedback/ToastSystem';
+import { ToastProvider, ToastContextInitializer } from './components/blocks/feedback/ToastSystem';
 
 // Loading component for suspense fallback
 function PageLoader() {
@@ -147,6 +147,37 @@ const SectionPresetsShowcase = lazy(() => import('./components/templates/Section
 const ThemeBlocksShowcase = lazy(() => import('./components/templates/ThemeBlocksShowcase').then(m => ({ default: m.ThemeBlocksShowcase })));
 const SiteMapTemplate = lazy(() => import('./components/templates/SiteMapTemplate').then(m => ({ default: m.SiteMapTemplate })));
 
+// Post Format Templates
+const AudioArchiveTemplate = lazy(() => import('./components/templates/post-formats/AudioArchiveTemplate').then(m => ({ default: m.AudioArchiveTemplate })));
+const SingleAudioTemplate = lazy(() => import('./components/templates/post-formats/SingleAudioTemplate').then(m => ({ default: m.SingleAudioTemplate })));
+const VideoArchiveTemplate = lazy(() => import('./components/templates/post-formats/VideoArchiveTemplate').then(m => ({ default: m.VideoArchiveTemplate })));
+const SingleVideoTemplate = lazy(() => import('./components/templates/post-formats/SingleVideoTemplate').then(m => ({ default: m.SingleVideoTemplate })));
+const GalleryArchiveTemplate = lazy(() => import('./components/templates/post-formats/GalleryArchiveTemplate').then(m => ({ default: m.GalleryArchiveTemplate })));
+const SingleGalleryTemplate = lazy(() => import('./components/templates/post-formats/SingleGalleryTemplate').then(m => ({ default: m.SingleGalleryTemplate })));
+const AsideStreamTemplate = lazy(() => import('./components/templates/post-formats/AsideStreamTemplate').then(m => ({ default: m.AsideStreamTemplate })));
+const ProductArchiveTemplate = lazy(() => import('./components/templates/ProductArchiveTemplate').then(m => ({ default: m.ProductArchiveTemplate })));
+const SingleProductTemplate = lazy(() => import('./components/templates/woocommerce/SingleProductTemplate').then(m => ({ default: m.SingleProductTemplate })));
+
+// Tour Operator Templates
+const TourOperatorArchiveTemplate = lazy(() => import('./components/templates/tour-operator/TourOperatorArchiveTemplate').then(m => ({ default: m.TourOperatorArchiveTemplate })));
+const SingleTourTemplate = lazy(() => import('./components/templates/tour-operator/SingleTourTemplate').then(m => ({ default: m.SingleTourTemplate })));
+
+// Additional Post Format Templates
+const ImageArchiveTemplate = lazy(() => import('./components/templates/post-formats/ImageArchiveTemplate').then(m => ({ default: m.ImageArchiveTemplate })));
+const QuoteArchiveTemplate = lazy(() => import('./components/templates/post-formats/QuoteArchiveTemplate').then(m => ({ default: m.QuoteArchiveTemplate })));
+const LinkArchiveTemplate = lazy(() => import('./components/templates/post-formats/LinkArchiveTemplate').then(m => ({ default: m.LinkArchiveTemplate })));
+const ChatArchiveTemplate = lazy(() => import('./components/templates/post-formats/ChatArchiveTemplate').then(m => ({ default: m.ChatArchiveTemplate })));
+const SingleChatTemplate = lazy(() => import('./components/templates/post-formats/SingleChatTemplate').then(m => ({ default: m.SingleChatTemplate })));
+const StatusArchiveTemplate = lazy(() => import('./components/templates/post-formats/StatusArchiveTemplate').then(m => ({ default: m.StatusArchiveTemplate })));
+const SingleStatusTemplate = lazy(() => import('./components/templates/post-formats/SingleStatusTemplate').then(m => ({ default: m.SingleStatusTemplate })));
+const StandardArchiveTemplate = lazy(() => import('./components/templates/post-formats/StandardArchiveTemplate').then(m => ({ default: m.StandardArchiveTemplate })));
+const SingleStandardTemplate = lazy(() => import('./components/templates/post-formats/SingleStandardTemplate').then(m => ({ default: m.SingleStandardTemplate })));
+const AsideArchiveTemplate = lazy(() => import('./components/templates/post-formats/AsideArchiveTemplate').then(m => ({ default: m.AsideArchiveTemplate })));
+const SingleImageTemplate = lazy(() => import('./components/templates/post-formats/SingleImageTemplate').then(m => ({ default: m.SingleImageTemplate })));
+const SingleQuoteTemplate = lazy(() => import('./components/templates/post-formats/SingleQuoteTemplate').then(m => ({ default: m.SingleQuoteTemplate })));
+const SingleLinkTemplate = lazy(() => import('./components/templates/post-formats/SingleLinkTemplate').then(m => ({ default: m.SingleLinkTemplate })));
+const SingleAsideTemplate = lazy(() => import('./components/templates/post-formats/SingleAsideTemplate').then(m => ({ default: m.SingleAsideTemplate })));
+
 export default function App() {
   const [currentPage, setCurrentPage] = useState<string>('front-page');
 
@@ -188,6 +219,12 @@ export default function App() {
     if (currentPage.startsWith('portfolio-single-')) {
       const slug = currentPage.replace('portfolio-single-', '');
       return <PortfolioSingleTemplate slug={slug} />;
+    }
+
+    // Handle dynamic product single pages
+    if (currentPage.startsWith('product-single-')) {
+      const slug = currentPage.replace('product-single-', '');
+      return <SingleProductTemplate slug={slug} />;
     }
     
     // Handle dynamic service pages
@@ -456,6 +493,69 @@ export default function App() {
         return <ThemeBlocksShowcase />;
       case 'site-map':
         return <SiteMapTemplate />;
+      // Post Format Routes
+      case 'audio-archive':
+        return <AudioArchiveTemplate />;
+      case 'audio-single':
+        return <SingleAudioTemplate />;
+      case 'video-archive':
+        return <VideoArchiveTemplate />;
+      case 'video-single':
+        return <SingleVideoTemplate />;
+      case 'gallery-archive':
+        return <GalleryArchiveTemplate />;
+      case 'gallery-single':
+        return <SingleGalleryTemplate />;
+      case 'aside-stream':
+        return <AsideStreamTemplate />;
+      case 'product-archive':
+        return <ProductArchiveTemplate />;
+      case 'tour-operator-archive':
+        return <TourOperatorArchiveTemplate />;
+      case 'tour-single':
+        return <SingleTourTemplate />;
+      case 'image-archive':
+        return <ImageArchiveTemplate />;
+      case 'quote-archive':
+        return <QuoteArchiveTemplate />;
+      case 'link-archive':
+        return <LinkArchiveTemplate />;
+      case 'chat-archive':
+        return <ChatArchiveTemplate />;
+      case 'chat-single':
+        return <SingleChatTemplate />;
+      case 'status-archive':
+        return <StatusArchiveTemplate />;
+      case 'status-single':
+        return <SingleStatusTemplate />;
+      case 'standard-archive':
+        return <StandardArchiveTemplate />;
+      case 'standard-single':
+        return <SingleStandardTemplate />;
+      case 'audio-archive':
+        return <AudioArchiveTemplate />;
+      case 'audio-single':
+        return <SingleAudioTemplate />;
+      case 'video-archive':
+        return <VideoArchiveTemplate />;
+      case 'video-single':
+        return <SingleVideoTemplate />;
+      case 'gallery-archive':
+        return <GalleryArchiveTemplate />;
+      case 'gallery-single':
+        return <SingleGalleryTemplate />;
+      case 'image-archive':
+        return <ImageArchiveTemplate />;
+      case 'aside-archive':
+        return <AsideArchiveTemplate />;
+      case 'image-single':
+        return <SingleImageTemplate />;
+      case 'quote-single':
+        return <SingleQuoteTemplate />;
+      case 'link-single':
+        return <SingleLinkTemplate />;
+      case 'aside-single':
+        return <SingleAsideTemplate />;
       // Service Pages
       case 'wordpress-development':
       case 'woocommerce-development':
@@ -493,6 +593,7 @@ export default function App() {
 
   return (
     <ToastProvider>
+      <ToastContextInitializer />
       <NavigationContext.Provider value={{ currentPage, navigateTo: setCurrentPage }}>
         <div className="lsx-design-prototype">
           {/* Render Current Template */}

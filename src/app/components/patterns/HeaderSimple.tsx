@@ -72,7 +72,7 @@ export function HeaderSimple({
                     href={item.href}
                     className="flex items-center gap-1 px-3 py-2"
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-base)',
                       fontWeight: 'var(--font-weight-bold)',
                       color: item.isActive ? 'var(--primary)' : 'var(--foreground)',

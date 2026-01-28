@@ -84,9 +84,13 @@ export function ComponentPlayground({
 
   // Copy to clipboard
   const copyCode = async () => {
-    await navigator.clipboard.writeText(generateCode());
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    try {
+      await navigator.clipboard.writeText(generateCode());
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.error('Failed to copy code:', err);
+    }
   };
 
   // Reset to defaults

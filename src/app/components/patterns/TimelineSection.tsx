@@ -37,7 +37,7 @@ export function TimelineSection({ title, description, items = [] }: TimelineSect
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 
             style={{
-              fontFamily: 'Lexend, sans-serif',
+              fontFamily: 'var(--font-primary)',
               fontSize: 'var(--text-h2)',
               fontWeight: 'var(--font-weight-semibold)',
               lineHeight: 'var(--line-height-snug)',
@@ -52,7 +52,7 @@ export function TimelineSection({ title, description, items = [] }: TimelineSect
           {description && (
             <p 
               style={{
-                fontFamily: 'Lexend, sans-serif',
+                fontFamily: 'var(--font-primary)',
                 fontSize: 'var(--text-lg)',
                 color: 'var(--muted-foreground)',
                 lineHeight: '1.7'
@@ -103,7 +103,7 @@ export function TimelineSection({ title, description, items = [] }: TimelineSect
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-base)',
                   fontWeight: 'var(--font-weight-bold)',
                   boxShadow: '0 4px 12px rgba(30, 106, 255, 0.3)',
@@ -125,7 +125,7 @@ export function TimelineSection({ title, description, items = [] }: TimelineSect
               >
                 <h3 
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-h4)',
                     fontWeight: 'var(--font-weight-semibold)',
                     color: 'var(--card-foreground)',
@@ -138,7 +138,7 @@ export function TimelineSection({ title, description, items = [] }: TimelineSect
 
                 <p 
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-base)',
                     color: 'var(--muted-foreground)',
                     lineHeight: '1.7',

@@ -79,13 +79,18 @@ export function PerformanceMonitor() {
 
         // Log metrics after page load
         setTimeout(() => {
-          console.group('📊 Core Web Vitals');
-          console.log('TTFB:', metrics.ttfb ? `${metrics.ttfb.toFixed(2)}ms` : 'N/A', '(Target: < 600ms)');
-          console.log('FCP:', metrics.fcp ? `${metrics.fcp.toFixed(2)}ms` : 'N/A', '(Target: < 1800ms)');
-          console.log('LCP:', metrics.lcp ? `${metrics.lcp.toFixed(2)}ms` : 'N/A', '(Target: < 2500ms)');
-          console.log('FID:', metrics.fid ? `${metrics.fid.toFixed(2)}ms` : 'N/A', '(Target: < 100ms)');
-          console.log('CLS:', metrics.cls !== undefined ? metrics.cls.toFixed(4) : 'N/A', '(Target: < 0.1)');
-          console.groupEnd();
+          // In production, send these to an analytics endpoint
+          if (process.env.NODE_ENV === 'development') {
+            /* 
+            console.group('📊 Core Web Vitals');
+            console.log('TTFB:', metrics.ttfb ? `${metrics.ttfb.toFixed(2)}ms` : 'N/A', '(Target: < 600ms)');
+            console.log('FCP:', metrics.fcp ? `${metrics.fcp.toFixed(2)}ms` : 'N/A', '(Target: < 1800ms)');
+            console.log('LCP:', metrics.lcp ? `${metrics.lcp.toFixed(2)}ms` : 'N/A', '(Target: < 2500ms)');
+            console.log('FID:', metrics.fid ? `${metrics.fid.toFixed(2)}ms` : 'N/A', '(Target: < 100ms)');
+            console.log('CLS:', metrics.cls !== undefined ? metrics.cls.toFixed(4) : 'N/A', '(Target: < 0.1)');
+            console.groupEnd();
+            */
+          }
 
           // Performance grade
           const getGrade = () => {
@@ -101,10 +106,10 @@ export function PerformanceMonitor() {
             return `🔴 NEEDS WORK - ${issues.length} metrics need improvement: ${issues.join(', ')}`;
           };
 
-          console.log('\n' + getGrade() + '\n');
+          // console.log('\n' + getGrade() + '\n');
         }, 3000);
       } catch (error) {
-        console.warn('Performance monitoring not supported in this browser');
+        // console.warn('Performance monitoring not supported in this browser');
       }
     }
   }, []);
@@ -145,7 +150,7 @@ export function usePerformanceTiming(componentName: string) {
 
       const measure = performance.getEntriesByName(componentName)[0];
       if (measure) {
-        console.log(`⏱️ ${componentName}: ${measure.duration.toFixed(2)}ms`);
+        // console.log(`⏱️ ${componentName}: ${measure.duration.toFixed(2)}ms`);
       }
     }
   };

@@ -39,9 +39,9 @@ export function lazyWithRetry<T extends ComponentType<any>>(
               return;
             }
             
-            console.warn(
-              `Failed to load component. Retrying... (${retriesLeft} attempts left)`
-            );
+            // console.warn(
+            //   `Failed to load component. Retrying... (${retriesLeft} attempts left)`
+            // );
             
             setTimeout(() => {
               attemptLoad(retriesLeft - 1);
@@ -174,7 +174,7 @@ export async function importWithErrorHandling<T>(
   try {
     return await importFn();
   } catch (error) {
-    console.error('Failed to load module:', error);
+    // console.error('Failed to load module:', error);
     
     if (fallback) {
       return fallback;
@@ -205,7 +205,7 @@ export function logBundleInfo(
     loadTime,
   };
   
-  console.log(`Bundle "${bundleName}" loaded in ${loadTime.toFixed(2)}ms`);
+  // console.log(`Bundle "${bundleName}" loaded in ${loadTime.toFixed(2)}ms`);
   
   return info;
 }
@@ -275,7 +275,7 @@ export function prefetchAllChunks(): void {
   
   // This would be implemented with webpack's magic comments
   // or vite's dynamic import analysis
-  console.log('Prefetching all chunks...');
+  // console.log('Prefetching all chunks...');
   
   // In a real implementation, this would use:
   // - Webpack: import(/* webpackPrefetch: true */ './module')
@@ -297,10 +297,10 @@ export async function loadByCapability<T>(
   const useModern = config.test();
   
   if (useModern) {
-    console.log('Loading modern implementation');
+    // console.log('Loading modern implementation');
     return config.modern();
   } else {
-    console.log('Loading legacy implementation');
+    // console.log('Loading legacy implementation');
     return config.legacy();
   }
 }

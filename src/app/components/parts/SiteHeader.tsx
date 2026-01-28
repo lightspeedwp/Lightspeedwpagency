@@ -49,9 +49,11 @@
  */
 
 import '@/styles/parts/site-header.css';
+import '@/styles/responsive.css'; // Ensure responsive utilities are loaded
 import { Container } from '../common/Container';
 import { SiteLogo } from '../blocks/theme/SiteLogo';
 import { useNavigation } from '../../contexts/NavigationContext';
+import { blogCategories } from '../../data/blog-posts';
 import { Menu, X, ChevronDown, Search, Sun, Moon } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
@@ -75,6 +77,15 @@ export function SiteHeader({ variant = 'default' }: SiteHeaderProps) {
   
   // Hover delay timers for smoother menu interaction
   const [menuCloseTimer, setMenuCloseTimer] = useState<NodeJS.Timeout | null>(null);
+
+  // Subscription-style Post Formats
+  const postFormats = [
+    { label: 'Podcasts', page: 'audio-archive', description: 'Exclusive interviews & discussions' },
+    { label: 'Video Library', page: 'video-archive', description: 'Premium tutorials & webinars' },
+    { label: 'Photo Galleries', page: 'gallery-archive', description: 'Event photos & visual stories' },
+    { label: 'Quick Updates', page: 'aside-archive', description: 'Short status updates & news' },
+    { label: 'Downloads', page: 'link-archive', description: 'Resources & templates' }
+  ];
 
   // Initialize theme from localStorage or system preference
   useEffect(() => {
@@ -241,23 +252,26 @@ export function SiteHeader({ variant = 'default' }: SiteHeaderProps) {
     { 
       label: 'Blog', 
       page: 'blog',
-      isActive: currentPage === 'blog' || currentPage.startsWith('post-'),
+      isActive: currentPage === 'blog' || currentPage.startsWith('post-') || currentPage.startsWith('category-') || currentPage.startsWith('audio-') || currentPage.startsWith('video-') || currentPage.startsWith('gallery-') || currentPage.startsWith('aside-') || currentPage.startsWith('link-'),
       hasMegaMenu: true,
       megaMenuSections: [
         {
           title: 'Categories',
-          items: [
-            { label: 'WordPress Development', page: 'blog', description: 'Development tutorials' },
-            { label: 'WooCommerce', page: 'blog', description: 'E-commerce insights' },
-            { label: 'Design', page: 'blog', description: 'UI/UX & design trends' },
-            { label: 'Performance', page: 'blog', description: 'Speed optimization' }
-          ]
+          items: blogCategories.map(category => ({
+            label: category.name,
+            page: `category-${category.slug}`,
+            description: category.description
+          }))
+        },
+        {
+          title: 'Premium Content',
+          items: postFormats
         },
         {
           title: 'Resources',
           items: [
-            { label: 'Latest Articles', page: 'blog', description: 'Recent posts' },
-            { label: 'Tutorials', page: 'blog', description: 'Step-by-step guides' }
+            { label: 'All Articles', page: 'blog', description: 'Browse all posts' },
+            { label: 'Subscribe', page: 'newsletter-service', description: 'Get updates via email' }
           ]
         }
       ]
@@ -435,7 +449,14 @@ export function SiteHeader({ variant = 'default' }: SiteHeaderProps) {
           </nav>
 
           {/* Mobile Menu + Icons */}
-          <div className="md:hidden flex items-center gap-2">
+          <div 
+            className="hide-desktop" 
+            style={{ 
+              display: 'flex', 
+              alignItems: 'center', 
+              gap: 'var(--spacing-2)' 
+            }}
+          >
             {/* Mobile Theme Toggle */}
             <button
               onClick={toggleTheme}
@@ -444,7 +465,7 @@ export function SiteHeader({ variant = 'default' }: SiteHeaderProps) {
                 background: 'none',
                 border: 'none',
                 cursor: 'pointer',
-                padding: '8px',
+                padding: 'var(--spacing-2)',
                 color: 'var(--foreground)'
               }}
             >
@@ -461,7 +482,7 @@ export function SiteHeader({ variant = 'default' }: SiteHeaderProps) {
                 background: 'none',
                 border: 'none',
                 cursor: 'pointer',
-                padding: '8px',
+                padding: 'var(--spacing-2)',
                 color: 'var(--foreground)'
               }}
             >
@@ -513,7 +534,7 @@ export function SiteHeader({ variant = 'default' }: SiteHeaderProps) {
             <ul className="site-header__mobile-nav-list">
               {navItems.map((item) => (
                 <li key={item.page} className="site-header__mobile-nav-item">
-                  {item.hasSubmenu ? (
+                  {item.hasMegaMenu ? (
                     <>
                       <button
                         onClick={() => {
@@ -524,23 +545,7 @@ export function SiteHeader({ variant = 'default' }: SiteHeaderProps) {
                       >
                         {item.label}
                       </button>
-                      {item.submenu && (
-                        <ul className="site-header__mobile-submenu">
-                          {item.submenu.map((subItem) => (
-                            <li key={subItem.page}>
-                              <button
-                                onClick={() => {
-                                  navigateTo(subItem.page);
-                                  setMobileMenuOpen(false);
-                                }}
-                                className="site-header__mobile-submenu-link"
-                              >
-                                {subItem.label}
-                              </button>
-                            </li>
-                          ))}
-                        </ul>
-                      )}
+                      {/* Note: Mobile mega menu flattening would happen here, simplified for this template */}
                     </>
                   ) : (
                     <button
@@ -615,14 +620,16 @@ function SiteHeaderSimple() {
   return (
     <header 
       role="banner"
-      className="sticky top-0 z-50"
       style={{
+        position: 'sticky',
+        top: 0,
+        zIndex: 'var(--z-fixed)',
         backgroundColor: 'var(--background)',
         borderBottom: '1px solid var(--border-soft)',
       }}
     >
       <Container>
-        <div className="flex items-center justify-between py-2">
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: 'var(--spacing-2) 0' }}>
           {/* Site Logo */}
           <button 
             onClick={() => navigateTo('front-page')}
@@ -646,7 +653,7 @@ function SiteHeaderSimple() {
               style={{ 
                 display: 'flex',
                 alignItems: 'center',
-                gap: 'var(--spacing-4)', // Half of previous 32px = 16px
+                gap: 'var(--spacing-4)',
                 margin: 0,
                 padding: 0,
                 listStyle: 'none'
@@ -656,9 +663,12 @@ function SiteHeaderSimple() {
                 <li key={index}>
                   <button
                     onClick={() => navigateTo(item.page)}
-                    className="flex items-center gap-1 px-3 py-2"
                     style={{
-                      fontFamily: 'Lexend, sans-serif',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 'var(--spacing-1)',
+                      padding: 'var(--spacing-2) var(--spacing-3)',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-base)',
                       fontWeight: 'var(--font-weight-bold)',
                       color: item.isActive ? 'var(--primary)' : 'var(--foreground)',

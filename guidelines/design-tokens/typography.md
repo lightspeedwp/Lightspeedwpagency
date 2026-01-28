@@ -25,24 +25,26 @@ This typography system uses **WordPress numeric scale (100-900)** with **fluid t
 **Usage:** All headings, body text, buttons, labels, and UI elements
 
 ```css
-font-family: 'Lexend', sans-serif;
+font-family: var(--font-primary);
+/* or */
 font-family: var(--wp--preset--font-family--heading);
 ```
 
 **Applied to:**
 - H1, H2, H3, H4, H5, H6
-- Paragraphs, lists, divs
+- Paragraphs, lists, divs (Default Body)
 - Buttons, links, labels
 - Inputs, forms
 - All interactive elements
 
 ### Secondary Font: Manrope
 
-**Usage:** Small text ONLY (metadata, captions, timestamps)
+**Usage:** Small text, captions, metadata, and specific descriptions
 
 ```css
-font-family: 'Manrope', sans-serif;
-font-family: var(--wp--preset--font-family--body);
+font-family: var(--font-secondary);
+/* or */
+font-family: var(--wp--preset--font-family--secondary);
 ```
 
 **Applied to:**
@@ -53,8 +55,9 @@ font-family: var(--wp--preset--font-family--body);
 - Image captions
 - Category labels (optional)
 - Legal text/footnotes
+- Detailed feature lists (optional)
 
-**Rule:** Never use Manrope for headings or body text.
+**Rule:** Always use CSS variables (`var(--font-primary)` / `var(--font-secondary)`). Never hardcode font names.
 
 ---
 
@@ -178,7 +181,7 @@ font-size: var(--wp--preset--font-size--900);  /* 5rem / 80px (Hero) */
 ```tsx
 <h1 style={{
   fontSize: 'var(--wp--preset--font-size--800)',
-  fontFamily: 'Lexend, sans-serif',
+  fontFamily: 'var(--font-primary)',
   fontWeight: 'var(--font-weight-semibold)',
   lineHeight: 'var(--line-height-tight)',
   letterSpacing: 'var(--letter-spacing-tight)'
@@ -503,7 +506,7 @@ font-size: var(--wp--preset--font-size--100);  /* 0.75rem / 12px */
   {/* Lead paragraph */}
   <p style={{
     fontSize: 'var(--wp--preset--font-size--300)',
-    fontFamily: 'Lexend, sans-serif',
+    fontFamily: 'var(--font-primary)',
     fontWeight: 'var(--font-weight-regular)',
     lineHeight: 'var(--line-height-relaxed)',
     color: 'var(--foreground)',
@@ -525,7 +528,7 @@ font-size: var(--wp--preset--font-size--100);  /* 0.75rem / 12px */
   {/* Section heading */}
   <h2 style={{
     fontSize: 'var(--wp--preset--font-size--700)',
-    fontFamily: 'Lexend, sans-serif',
+    fontFamily: 'var(--font-primary)',
     fontWeight: 'var(--font-weight-semibold)',
     lineHeight: 'var(--line-height-snug)',
     letterSpacing: 'var(--letter-spacing-tight)',
@@ -538,7 +541,7 @@ font-size: var(--wp--preset--font-size--100);  /* 0.75rem / 12px */
   {/* Body text */}
   <p style={{
     fontSize: 'var(--wp--preset--font-size--200)',
-    fontFamily: 'Lexend, sans-serif',
+    fontFamily: 'var(--font-primary)',
     fontWeight: 'var(--font-weight-regular)',
     lineHeight: 'var(--line-height-normal)',
     color: 'var(--foreground)',
@@ -558,7 +561,7 @@ font-size: var(--wp--preset--font-size--100);  /* 0.75rem / 12px */
   {/* Card title */}
   <h3 style={{
     fontSize: 'var(--wp--preset--font-size--600)',
-    fontFamily: 'Lexend, sans-serif',
+    fontFamily: 'var(--font-primary)',
     fontWeight: 'var(--font-weight-semibold)',
     lineHeight: 'var(--line-height-snug)',
     color: 'var(--foreground)',
@@ -570,7 +573,7 @@ font-size: var(--wp--preset--font-size--100);  /* 0.75rem / 12px */
   {/* Description */}
   <p style={{
     fontSize: 'var(--wp--preset--font-size--200)',
-    fontFamily: 'Lexend, sans-serif',
+    fontFamily: 'var(--font-primary)',
     fontWeight: 'var(--font-weight-regular)',
     lineHeight: 'var(--line-height-normal)',
     color: 'var(--foreground)',
@@ -583,7 +586,7 @@ font-size: var(--wp--preset--font-size--100);  /* 0.75rem / 12px */
   {/* Metadata */}
   <small style={{
     fontSize: 'var(--wp--preset--font-size--100)',
-    fontFamily: 'Manrope, sans-serif',
+    fontFamily: 'var(--font-secondary)',
     color: 'var(--muted-foreground)'
   }}>
     By Sarah Johnson · 5 min read

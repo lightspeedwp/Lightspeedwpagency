@@ -58,8 +58,8 @@ export function ArchiveCTA({
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleEnquirySubmit = (formData: any) => {
-    console.log('Enquiry submitted:', formData);
     // In production: Send to API endpoint
+    // console.log('Enquiry submitted:', formData);
   };
 
   return (
@@ -75,7 +75,7 @@ export function ArchiveCTA({
             {/* Heading innerBlock - Inherits section style typography */}
             <h2
               style={{
-                fontFamily: 'Lexend, sans-serif',
+                fontFamily: 'var(--font-primary)',
                 fontSize: 'var(--text-h2)',
                 fontWeight: 'var(--font-weight-medium)',
                 lineHeight: 'var(--line-height-snug)',
@@ -90,7 +90,7 @@ export function ArchiveCTA({
             {/* Paragraph innerBlock - Inherits section style typography */}
             <p
               style={{
-                fontFamily: 'Lexend, sans-serif',
+                fontFamily: 'var(--font-primary)',
                 fontSize: 'var(--text-lg)',
                 fontWeight: 'var(--font-weight-regular)',
                 lineHeight: 'var(--line-height-relaxed)',

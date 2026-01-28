@@ -100,7 +100,7 @@ export function ServicesCard({
             color: 'var(--primary-foreground)',
             padding: '0.375rem 0.75rem',
             borderRadius: 'var(--radius)',
-            fontFamily: 'Lexend, sans-serif',
+            fontFamily: 'var(--font-primary)',
             fontSize: 'var(--text-small)',
             fontWeight: 'var(--font-weight-semibold)',
             textTransform: 'uppercase' as const,
@@ -132,7 +132,7 @@ export function ServicesCard({
       {/* Heading innerBlock (core/heading) */}
       <h3
         style={{
-          fontFamily: 'Lexend, sans-serif',
+          fontFamily: 'var(--font-primary)',
           fontSize: 'var(--text-h3)',
           fontWeight: 'var(--font-weight-medium)',
           lineHeight: 'var(--line-height-snug)',
@@ -147,7 +147,7 @@ export function ServicesCard({
       {/* Paragraph innerBlock (core/paragraph) */}
       <p
         style={{
-          fontFamily: 'Lexend, sans-serif',
+          fontFamily: 'var(--font-primary)',
           fontSize: 'var(--text-base)',
           fontWeight: 'var(--font-weight-regular)',
           lineHeight: 'var(--line-height-relaxed)',
@@ -176,7 +176,7 @@ export function ServicesCard({
               display: 'flex',
               alignItems: 'flex-start',
               gap: '0.75rem',
-              fontFamily: 'Lexend, sans-serif',
+              fontFamily: 'var(--font-primary)',
               fontSize: 'var(--text-base)',
               fontWeight: 'var(--font-weight-regular)',
               lineHeight: 'var(--line-height-relaxed)',
@@ -227,7 +227,7 @@ export function ServicesCard({
           backgroundColor: 'transparent',
           border: 'none',
           cursor: 'pointer',
-          fontFamily: 'Lexend, sans-serif',
+          fontFamily: 'var(--font-primary)',
           fontSize: 'var(--text-base)',
           fontWeight: 'var(--font-weight-semibold)',
           color: 'var(--primary)',

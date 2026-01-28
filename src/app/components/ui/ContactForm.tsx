@@ -154,7 +154,7 @@ export function ContactForm({
 
     // Check honeypot (spam protection)
     if (honeypot) {
-      console.log('Spam detected');
+      // Spam detected, silently return
       return;
     }
 

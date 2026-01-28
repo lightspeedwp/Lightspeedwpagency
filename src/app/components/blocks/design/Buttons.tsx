@@ -18,8 +18,8 @@
  */
 
 import React from 'react';
-import { useNavigation } from '../../../contexts/NavigationContext';
-import { useMicroInteractions } from '../../../hooks/useMicroInteractions';
+import { useNavigation } from '@/app/contexts/NavigationContext';
+import { useMicroInteractions } from '@/app/hooks/useMicroInteractions';
 
 export interface ButtonsProps {
   /** Layout orientation */

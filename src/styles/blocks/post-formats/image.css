@@ -1,0 +1,89 @@
+/**
+ * Image Block Styles
+ * 
+ * Styles for Single Image Template and Archive.
+ */
+
+/* Image Archive Card */
+.wp-block-image-card {
+  margin-bottom: var(--spacing-8);
+  cursor: pointer;
+}
+
+.wp-block-image-card__inner {
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-soft);
+  position: relative;
+  transition: box-shadow var(--transition-base);
+}
+
+.wp-block-image-card__inner:hover {
+  box-shadow: var(--shadow-xl);
+}
+
+.wp-block-image-card__img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.wp-block-image-card__overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  padding: var(--spacing-6);
+  padding-top: var(--spacing-12);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.wp-block-image-card:hover .wp-block-image-card__overlay {
+  opacity: 1;
+}
+
+.wp-block-image-card__title {
+  color: #ffffff;
+  font-weight: var(--font-weight-bold);
+  font-size: var(--text-lg);
+  margin-bottom: var(--spacing-1);
+}
+
+.wp-block-image-card__meta {
+  color: #ffffff;
+  font-size: var(--text-tiny);
+  opacity: 0.8;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+/* Single Image */
+.wp-block-image-single-featured {
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border-soft);
+  margin-bottom: var(--spacing-8);
+}
+
+.wp-block-image-single-featured__img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.wp-block-image-exif {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  margin-top: var(--spacing-8);
+  padding-top: var(--spacing-8);
+  border-top: 1px solid var(--border-soft);
+  color: var(--muted-foreground);
+  font-family: var(--font-secondary);
+  font-size: var(--text-small);
+}

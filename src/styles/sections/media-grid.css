@@ -1,0 +1,23 @@
+/**
+ * Media Grid Section Styles
+ * 
+ * Reusable grid layout for media archives (Audio, Video, Gallery).
+ */
+
+.wp-section-media-grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: var(--spacing-8);
+}
+
+@media (min-width: 768px) {
+  .wp-section-media-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .wp-section-media-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

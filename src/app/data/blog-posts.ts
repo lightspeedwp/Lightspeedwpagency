@@ -14,6 +14,8 @@
  * - Featured images
  */
 
+import { blogCategories } from './taxonomies';
+
 export interface BlogAuthor {
   id: string;
   slug: string;
@@ -85,48 +87,8 @@ export const blogAuthors: BlogAuthor[] = [
   }
 ];
 
-/**
- * Blog Categories
- * Real categories from LightSpeed blog
- */
-export const blogCategories = [
-  { 
-    slug: 'news', 
-    name: 'News', 
-    description: 'LightSpeed company news, team updates, and announcements',
-    count: 12 
-  },
-  { 
-    slug: 'project-workflows', 
-    name: 'Project Workflows', 
-    description: 'Insights into our development process, tools, and methodologies',
-    count: 18 
-  },
-  { 
-    slug: 'tour-operators', 
-    name: 'Tour Operators', 
-    description: 'Specialized content for tour operator websites and travel industry',
-    count: 15 
-  },
-  { 
-    slug: 'wordpress-development', 
-    name: 'WordPress Development', 
-    description: 'WordPress development insights, tutorials, and best practices',
-    count: 24 
-  },
-  { 
-    slug: 'woocommerce', 
-    name: 'WooCommerce', 
-    description: 'WooCommerce optimization, customization, and e-commerce strategies',
-    count: 20 
-  },
-  { 
-    slug: 'case-studies', 
-    name: 'Case Studies', 
-    description: 'Real client projects and success stories',
-    count: 10 
-  }
-] as const;
+// Re-export categories from taxonomies for backward compatibility
+export { blogCategories };
 
 /**
  * Post Tags
@@ -159,7 +121,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: 'Discover how LightSpeed has evolved over the years, building a talented team of developers while embracing AI technology to enhance our WordPress and WooCommerce solutions.',
     featuredImage: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200',
     author: 'ash-shaw',
-    categories: ['news'],
+    categories: ['agency-life'],
     tags: ['ai', 'team', 'workflow'],
     date: '2025-09-15',
     readingTime: '6 min read',
@@ -172,7 +134,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: 'Explore how we integrate AI tools into our development workflow to improve efficiency, code quality, and deliver better WordPress solutions for our clients.',
     featuredImage: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200',
     author: 'warwick-booth',
-    categories: ['project-workflows'],
+    categories: ['tutorials'],
     tags: ['ai', 'workflow', 'wordpress'],
     date: '2025-09-11',
     readingTime: '8 min read',
@@ -185,7 +147,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: 'Announcing the latest release of our Tour Operator plugin with new features, performance improvements, and enhanced compatibility with the latest WordPress version.',
     featuredImage: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1200',
     author: 'ash-shaw',
-    categories: ['tour-operators'],
+    categories: ['industry-news'],
     tags: ['tour-operator', 'lsx-theme', 'plugin-development'],
     date: '2025-09-03',
     readingTime: '5 min read',
@@ -198,7 +160,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: 'Key takeaways from our collaborative webinar with BugHerd, covering best practices for streamlining the website design and development process from concept to launch.',
     featuredImage: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=1200',
     author: 'lourens-visser',
-    categories: ['project-workflows'],
+    categories: ['tutorials'],
     tags: ['bugherd', 'webinar', 'workflow'],
     date: '2025-08-22',
     readingTime: '7 min read',

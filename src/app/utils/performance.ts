@@ -91,7 +91,7 @@ export function useRenderCount(componentName: string) {
   useEffect(() => {
     if (process.env.NODE_ENV === 'development') {
       renderCount.current += 1;
-      console.log(`🔄 ${componentName} rendered ${renderCount.current} times`);
+      // console.log(`🔄 ${componentName} rendered ${renderCount.current} times`);
     }
   });
 }
@@ -139,7 +139,7 @@ export function useMemoizedCallback<T extends (...args: any[]) => any>(
     if (process.env.NODE_ENV === 'development' && debugName && prevDeps) {
       const changedDeps = dependencies.filter((dep, i) => dep !== prevDeps[i]);
       if (changedDeps.length > 0) {
-        console.log(`🔄 ${debugName} callback recreated due to dependency change`);
+        // console.log(`🔄 ${debugName} callback recreated due to dependency change`);
       }
     }
   }, [dependencies, debugName, prevDeps]);
@@ -170,7 +170,7 @@ export function useMemoizedValue<T>(
     if (process.env.NODE_ENV === 'development' && debugName && prevDeps) {
       const changedDeps = dependencies.filter((dep, i) => dep !== prevDeps[i]);
       if (changedDeps.length > 0) {
-        console.log(`🔄 ${debugName} value recomputed due to dependency change`);
+        // console.log(`🔄 ${debugName} value recomputed due to dependency change`);
       }
     }
   }, [dependencies, debugName, prevDeps]);
@@ -250,12 +250,14 @@ export function PerformanceProfiler({ id, children }: PerformanceProfilerProps) 
     startTime,
     commitTime
   ) => {
+    /*
     console.log(`⏱️ [${profileId}] ${phase} render:`, {
       actualDuration: `${actualDuration.toFixed(2)}ms`,
       baseDuration: `${baseDuration.toFixed(2)}ms`,
       startTime: `${startTime.toFixed(2)}ms`,
       commitTime: `${commitTime.toFixed(2)}ms`,
     });
+    */
   };
 
   return (

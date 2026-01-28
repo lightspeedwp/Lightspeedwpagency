@@ -75,7 +75,7 @@ export function ContactForm({
 
     // Simulate API call
     setTimeout(() => {
-      console.log('Form submitted:', formData);
+      // console.log('Form submitted:', formData);
       setStatus('success');
       // Reset form
       setFormData({
@@ -93,7 +93,7 @@ export function ContactForm({
   const inputStyles = {
     width: '100%',
     padding: '12px 16px',
-    fontFamily: 'Lexend, sans-serif',
+    fontFamily: 'var(--font-primary)',
     fontSize: 'var(--text-base)',
     backgroundColor: 'var(--background)',
     color: 'var(--foreground)',
@@ -104,7 +104,7 @@ export function ContactForm({
   };
 
   const labelStyles = {
-    fontFamily: 'Lexend, sans-serif',
+    fontFamily: 'var(--font-primary)',
     fontSize: 'var(--text-base)',
     fontWeight: 'var(--font-weight-medium)',
     color: 'var(--foreground)',
@@ -120,7 +120,7 @@ export function ContactForm({
           {heading && (
             <h2
               style={{
-                fontFamily: 'Lexend, sans-serif',
+                fontFamily: 'var(--font-primary)',
                 fontSize: 'var(--text-h2)',
                 fontWeight: 'var(--font-weight-semibold)',
                 color: 'var(--foreground)',
@@ -133,7 +133,7 @@ export function ContactForm({
           {description && (
             <p
               style={{
-                fontFamily: 'Manrope, sans-serif',
+                fontFamily: 'var(--font-secondary)',
                 fontSize: 'var(--text-base)',
                 color: 'var(--muted-foreground)',
               }}
@@ -161,7 +161,7 @@ export function ContactForm({
           <CheckCircle size={20} style={{ color: 'var(--success)', flexShrink: 0, marginTop: '2px' }} />
           <p
             style={{
-              fontFamily: 'Manrope, sans-serif',
+              fontFamily: 'var(--font-secondary)',
               fontSize: 'var(--text-base)',
               color: 'var(--success)',
               margin: 0,
@@ -189,7 +189,7 @@ export function ContactForm({
           <AlertCircle size={20} style={{ color: 'var(--destructive)', flexShrink: 0, marginTop: '2px' }} />
           <p
             style={{
-              fontFamily: 'Manrope, sans-serif',
+              fontFamily: 'var(--font-secondary)',
               fontSize: 'var(--text-base)',
               color: 'var(--destructive)',
               margin: 0,

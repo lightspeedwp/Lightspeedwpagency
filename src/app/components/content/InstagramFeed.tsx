@@ -264,7 +264,7 @@ async function fetchInstagramPosts(
     const data: InstagramAPIResponse = await response.json();
     return data.data;
   } catch (error) {
-    console.error('Error fetching Instagram posts:', error);
+    // console.error('Error fetching Instagram posts:', error);
     throw error;
   }
 }

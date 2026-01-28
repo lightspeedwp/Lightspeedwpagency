@@ -67,7 +67,7 @@ export function TrustBadges() {
             <div 
               style={{
                 fontSize: 'var(--text-xs)',
-                fontFamily: 'Manrope, sans-serif',
+                fontFamily: 'var(--font-secondary)',
                 color: 'var(--primary-foreground)' // White text for high contrast on dark backgrounds
               }}
             >

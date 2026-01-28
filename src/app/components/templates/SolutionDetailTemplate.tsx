@@ -584,7 +584,7 @@ export function SolutionDetailTemplate({ solution }: SolutionDetailProps) {
                       <span 
                         key={idx}
                         style={{
-                          fontFamily: 'Manrope, sans-serif',
+                          fontFamily: 'var(--font-secondary)',
                           fontSize: 'var(--text-small)',
                           color: 'var(--primary)',
                           backgroundColor: 'var(--muted)',

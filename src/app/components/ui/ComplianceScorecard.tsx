@@ -41,7 +41,7 @@ export function ComplianceScorecard() {
         setScorecard(testScorecard);
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Test failed');
-        console.error('Test error:', err);
+        // console.error('Test error:', err);
       } finally {
         setLoading(false);
       }

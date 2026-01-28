@@ -70,7 +70,7 @@ export function CTAInline({
             style={{ 
               marginBottom: '1rem',
               fontSize: 'var(--text-h3)',
-              fontFamily: 'Lexend, sans-serif',
+              fontFamily: 'var(--font-primary)',
               fontWeight: 'var(--font-weight-medium)',
               color: 'var(--accent-foreground)'
             }}
@@ -82,7 +82,7 @@ export function CTAInline({
           <p 
             style={{
               fontSize: 'var(--text-base)',
-              fontFamily: 'Manrope, sans-serif',
+              fontFamily: 'var(--font-secondary)',
               marginBottom: '2rem',
               color: 'var(--accent-foreground)'
             }}

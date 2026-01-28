@@ -136,7 +136,7 @@ export function HeaderWithSearchExample() {
   ];
 
   const handleSearch = (query: string) => {
-    console.log('Searching for:', query);
+    // console.log('Searching for:', query);
     // Navigate to search results page
   };
 
@@ -591,7 +591,7 @@ export function NavigationTestExample() {
  */
 export function SearchTestExample() {
   const handleSearch = (query: string) => {
-    console.log('Search query:', query);
+    // console.log('Search query:', query);
   };
 
   return (

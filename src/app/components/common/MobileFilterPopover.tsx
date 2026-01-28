@@ -199,7 +199,7 @@ export function MobileFilterPopover({
         >
           <h2
             style={{
-              fontFamily: 'Lexend, sans-serif',
+              fontFamily: 'var(--font-primary)',
               fontSize: 'var(--text-h4)',
               fontWeight: 'var(--font-weight-medium)',
               color: 'var(--foreground)',
@@ -260,7 +260,7 @@ export function MobileFilterPopover({
               borderRadius: 'var(--radius-lg)',
               backgroundColor: selectedOption === 'all' ? 'var(--primary)' : 'transparent',
               color: selectedOption === 'all' ? 'var(--primary-foreground)' : 'var(--foreground)',
-              fontFamily: 'Manrope, sans-serif',
+              fontFamily: 'var(--font-secondary)',
               fontSize: 'var(--text-base)',
               fontWeight: selectedOption === 'all' ? 'var(--font-weight-semibold)' : 'var(--font-weight-regular)',
               cursor: 'pointer',
@@ -308,7 +308,7 @@ export function MobileFilterPopover({
                 borderRadius: 'var(--radius-lg)',
                 backgroundColor: selectedOption === option.id ? 'var(--primary)' : 'transparent',
                 color: selectedOption === option.id ? 'var(--primary-foreground)' : 'var(--foreground)',
-                fontFamily: 'Manrope, sans-serif',
+                fontFamily: 'var(--font-secondary)',
                 fontSize: 'var(--text-base)',
                 fontWeight: selectedOption === option.id ? 'var(--font-weight-semibold)' : 'var(--font-weight-regular)',
                 cursor: 'pointer',

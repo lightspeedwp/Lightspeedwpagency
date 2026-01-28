@@ -70,7 +70,7 @@ export function PricingTable({
             level={2}
             style={{
               fontSize: 'var(--text-h2)',
-              fontFamily: 'Lexend, sans-serif',
+              fontFamily: 'var(--font-primary)',
               fontWeight: 'var(--font-weight-medium)',
               color: 'var(--foreground)'
             }}
@@ -81,9 +81,9 @@ export function PricingTable({
             <p 
               style={{
                 fontSize: 'var(--text-lead)',
-                fontFamily: 'Manrope, sans-serif',
+                fontFamily: 'var(--font-secondary)',
                 color: 'var(--muted-foreground)',
-                marginTop: '1rem',
+                marginTop: 'var(--spacing-4)',
                 maxWidth: '800px',
                 marginLeft: 'auto',
                 marginRight: 'auto'
@@ -99,7 +99,7 @@ export function PricingTable({
             <div
               key={pkg.id}
               style={{
-                padding: '2rem',
+                padding: 'var(--spacing-8)',
                 borderRadius: 'var(--radius-lg)',
                 border: pkg.recommended 
                   ? '2px solid var(--primary)' 
@@ -129,7 +129,7 @@ export function PricingTable({
                     padding: '0.25rem 1rem',
                     borderRadius: 'var(--radius-full)',
                     fontSize: 'var(--text-small)',
-                    fontFamily: 'Manrope, sans-serif',
+                    fontFamily: 'var(--font-secondary)',
                     fontWeight: 'var(--font-weight-semibold)',
                     whiteSpace: 'nowrap'
                   }}
@@ -142,9 +142,9 @@ export function PricingTable({
               <h3 
                 style={{
                   fontSize: 'var(--text-h4)',
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontWeight: 'var(--font-weight-medium)',
-                  marginBottom: '0.5rem'
+                  marginBottom: 'var(--spacing-2)'
                 }}
               >
                 {pkg.name}
@@ -154,20 +154,20 @@ export function PricingTable({
               <p 
                 style={{
                   fontSize: 'var(--text-small)',
-                  fontFamily: 'Manrope, sans-serif',
+                  fontFamily: 'var(--font-secondary)',
                   opacity: 0.8,
-                  marginBottom: '1.5rem'
+                  marginBottom: 'var(--spacing-6)'
                 }}
               >
                 {pkg.tagline}
               </p>
 
               {/* Price - Lexend, --text-h2 */}
-              <div style={{ marginBottom: '1.5rem' }}>
+              <div style={{ marginBottom: 'var(--spacing-6)' }}>
                 <span 
                   style={{
                     fontSize: 'var(--text-h2)',
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontWeight: 'var(--font-weight-semibold)'
                   }}
                 >
@@ -177,7 +177,7 @@ export function PricingTable({
                   <span 
                     style={{
                       fontSize: 'var(--text-small)',
-                      fontFamily: 'Manrope, sans-serif',
+                      fontFamily: 'var(--font-secondary)',
                       opacity: 0.7,
                       marginLeft: '0.5rem'
                     }}
@@ -191,8 +191,8 @@ export function PricingTable({
               <p 
                 style={{
                   fontSize: 'var(--text-small)',
-                  fontFamily: 'Manrope, sans-serif',
-                  marginBottom: '2rem',
+                  fontFamily: 'var(--font-secondary)',
+                  marginBottom: 'var(--spacing-8)',
                   opacity: 0.9
                 }}
               >
@@ -205,7 +205,7 @@ export function PricingTable({
                   listStyle: 'none',
                   padding: 0,
                   margin: 0,
-                  marginBottom: '2rem',
+                  marginBottom: 'var(--spacing-8)',
                   flex: 1
                 }}
               >
@@ -214,11 +214,11 @@ export function PricingTable({
                     key={index}
                     style={{
                       display: 'flex',
-                      gap: '0.75rem',
+                      gap: 'var(--spacing-3)',
                       alignItems: 'flex-start',
-                      marginBottom: '0.75rem',
+                      marginBottom: 'var(--spacing-3)',
                       fontSize: 'var(--text-base)',
-                      fontFamily: 'Manrope, sans-serif'
+                      fontFamily: 'var(--font-secondary)'
                     }}
                   >
                     {feature.included ? (

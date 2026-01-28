@@ -54,7 +54,8 @@ import {
   CheckCircle,
   ArrowRight,
   Filter,
-  Grid3x3
+  Grid3x3,
+  MapPin
 } from 'lucide-react';
 
 /**
@@ -205,6 +206,68 @@ const templateCategories = [
     color: 'var(--secondary)',
     pages: [
       { label: 'Hosting Overview', page: 'hosting', slug: '/hosting', template: 'page-hosting.html' },
+    ]
+  },
+  {
+    id: 'post-formats',
+    title: 'Post Formats',
+    description: 'WordPress post format archives and single views',
+    icon: Layers,
+    color: 'var(--accent)',
+    pages: [
+      { label: 'Audio Archive', page: 'audio-archive', slug: '/audio-archive', template: 'archive-audio.html' },
+      { label: 'Video Archive', page: 'video-archive', slug: '/video-archive', template: 'archive-video.html' },
+      { label: 'Gallery Archive', page: 'gallery-archive', slug: '/gallery-archive', template: 'archive-gallery.html' },
+      { label: 'Aside Stream', page: 'aside-stream', slug: '/aside-stream', template: 'archive-aside.html' },
+      { label: 'Single Audio', page: 'audio-single', slug: '/audio-single', template: 'single-audio.html' },
+      { label: 'Single Video', page: 'video-single', slug: '/video-single', template: 'single-video.html' },
+      { label: 'Single Gallery', page: 'gallery-single', slug: '/gallery-single', template: 'single-gallery.html' },
+      { label: 'Image Archive', page: 'image-archive', slug: '/image-archive', template: 'archive-image.html' },
+      { label: 'Quote Archive', page: 'quote-archive', slug: '/quote-archive', template: 'archive-quote.html' },
+      { label: 'Link Archive', page: 'link-archive', slug: '/link-archive', template: 'archive-link.html' },
+      { label: 'Chat Archive', page: 'chat-archive', slug: '/chat-archive', template: 'archive-chat.html' },
+      { label: 'Status Archive', page: 'status-archive', slug: '/status-archive', template: 'archive-status.html' },
+      { label: 'Standard Archive', page: 'standard-archive', slug: '/standard-archive', template: 'archive.html' },
+      { label: 'Audio Archive', page: 'audio-archive', slug: '/audio-archive', template: 'archive-audio.html' },
+      { label: 'Video Archive', page: 'video-archive', slug: '/video-archive', template: 'archive-video.html' },
+      { label: 'Gallery Archive', page: 'gallery-archive', slug: '/gallery-archive', template: 'archive-gallery.html' },
+      { label: 'Image Archive', page: 'image-archive', slug: '/image-archive', template: 'archive-image.html' },
+      { label: 'Aside Archive', page: 'aside-archive', slug: '/aside-archive', template: 'archive-aside.html' },
+      { label: 'Single Chat', page: 'chat-single', slug: '/chat-single', template: 'single-chat.html' },
+      { label: 'Single Status', page: 'status-single', slug: '/status-single', template: 'single-status.html' },
+      { label: 'Single Standard', page: 'standard-single', slug: '/standard-single', template: 'single.html' },
+      { label: 'Single Audio', page: 'audio-single', slug: '/audio-single', template: 'single-audio.html' },
+      { label: 'Single Video', page: 'video-single', slug: '/video-single', template: 'single-video.html' },
+      { label: 'Single Gallery', page: 'gallery-single', slug: '/gallery-single', template: 'single-gallery.html' },
+      { label: 'Single Image', page: 'image-single', slug: '/image-single', template: 'single-image.html' },
+      { label: 'Single Quote', page: 'quote-single', slug: '/quote-single', template: 'single-quote.html' },
+      { label: 'Single Link', page: 'link-single', slug: '/link-single', template: 'single-link.html' },
+      { label: 'Single Aside', page: 'aside-single', slug: '/aside-single', template: 'single-aside.html' },
+    ]
+  },
+  {
+    id: 'woocommerce',
+    title: 'WooCommerce Store',
+    description: 'E-commerce templates using mock product data',
+    icon: ShoppingCart,
+    color: 'var(--primary)',
+    pages: [
+      { label: 'Product Archive', page: 'product-archive', slug: '/shop', template: 'archive-product.html' },
+      { label: 'Simple Product', page: 'product-single-lsx-theme-pro', slug: '/product/lsx-theme-pro', template: 'single-product.html' },
+      { label: 'Subscription Product', page: 'product-single-agency-maintenance', slug: '/product/agency-maintenance', template: 'single-product.html' },
+      { label: 'Bundle Product', page: 'product-single-developer-kit', slug: '/product/developer-kit', template: 'single-product.html' },
+      { label: 'Composite Product', page: 'product-single-build-your-agency-bundle', slug: '/product/build-agency-bundle', template: 'single-product.html' },
+    ]
+  },
+  {
+    id: 'tour-operator',
+    title: 'Tour Operator',
+    description: 'Travel and booking templates',
+    icon: MapPin,
+    color: 'var(--secondary)',
+    pages: [
+      { label: 'Tour Operator Archive', page: 'tour-operator-archive', slug: '/tours', template: 'archive-tour.html' },
+      { label: 'Single Tour', page: 'tour-single', slug: '/tours/garden-route-adventure', template: 'single-tour.html' },
     ]
   },
   {

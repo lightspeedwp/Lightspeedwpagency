@@ -210,7 +210,7 @@ export function Search({
   
   // Input styles using CSS variables
   const inputStyles: React.CSSProperties = {
-    fontFamily: 'Manrope, sans-serif',
+    fontFamily: 'var(--font-secondary)',
     fontSize: 'var(--text-base)',
     fontWeight: 'var(--font-weight-regular)',
     color: 'var(--foreground)',
@@ -224,7 +224,7 @@ export function Search({
   
   // Button styles using CSS variables
   const buttonStyles: React.CSSProperties = {
-    fontFamily: 'Manrope, sans-serif',
+    fontFamily: 'var(--font-secondary)',
     fontSize: 'var(--text-base)',
     fontWeight: 'var(--font-weight-semibold)',
     color: 'var(--primary-foreground)',

@@ -83,7 +83,7 @@
  */
 
 import { ChevronRight } from 'lucide-react';
-import { useNavigation } from '../../../contexts/NavigationContext';
+import { useNavigation } from '@/app/contexts/NavigationContext';
 
 /**
  * Single breadcrumb item in the trail

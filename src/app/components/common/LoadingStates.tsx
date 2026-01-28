@@ -312,7 +312,7 @@ export function ProgressBar({
           className="flex items-center justify-between mb-2"
           style={{
             fontSize: 'var(--text-sm)',
-            fontFamily: 'Manrope, sans-serif',
+            fontFamily: 'var(--font-secondary)',
             color: 'var(--muted-foreground)'
           }}
         >

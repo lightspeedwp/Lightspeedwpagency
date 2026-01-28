@@ -1,135 +1,41 @@
-import {
-  Shield,
-  Gauge,
-  Eye,
-  Server,
-  Clock,
-  GraduationCap,
-  Headphones,
-  ThumbsUp,
-  CheckCircle,
-  Award,
-  Users,
-  Star
-} from 'lucide-react';
-import { guarantees } from './guarantees';
+/**
+ * Guarantees Page Data
+ * 
+ * Mock data for the Guarantees page (GuaranteesTemplate).
+ */
 
-// Map string icons to components
-const iconMap: Record<string, any> = {
-  Shield,
-  Gauge,
-  Eye,
-  Server,
-  Clock,
-  GraduationCap,
-  Headphones,
-  ThumbsUp
+import { Shield, Clock, ThumbsUp, RefreshCw } from 'lucide-react';
+
+export const guaranteesHero = {
+  title: "Our Ironclad Guarantees",
+  subtitle: "We stand behind our work with commitments that give you peace of mind."
 };
 
-export const guaranteesPageHero = {
-  title: 'Guarantees',
-  badge: {
-    text: 'Risk-Free Partnership',
-    icon: Shield
-  },
-  tagline: 'We put our money where our mouth is.',
-  description: 'Most agencies make promises. We make guarantees. Backed by clear SLAs and financial penalties if we miss the mark.'
-};
-
-export const mainGuarantees = guarantees.map(g => ({
-  ...g,
-  icon: g.icon ? iconMap[g.icon] : Shield, // Fallback
-  badge: g.id === 'performance' ? 'Most Popular' : undefined // Example enhancement
-}));
-
-export const guaranteesProcess = {
-  title: 'How It Works',
-  description: 'Our guarantee process is simple and transparent.',
-  steps: [
-    {
-      number: '01',
-      title: 'Define Baseline',
-      description: 'We establish clear metrics and targets before starting any work.'
-    },
-    {
-      number: '02',
-      title: 'Track Progress',
-      description: 'Real-time monitoring and reporting throughout the project lifecycle.'
-    },
-    {
-      number: '03',
-      title: 'Verify Results',
-      description: 'Final audit using industry-standard tools to confirm compliance.'
-    },
-    {
-      number: '04',
-      title: 'Ongoing Support',
-      description: 'Continuous monitoring to ensure standards are maintained post-launch.'
-    }
-  ]
-};
-
-export const trustSignals = {
-  title: 'Why Trust Us?',
-  description: 'Our track record speaks for itself.',
-  signals: [
-    {
-      icon: CheckCircle,
-      stat: '100%',
-      label: 'Success Rate',
-      description: 'On guaranteed deliverables'
-    },
-    {
-      icon: Users,
-      stat: '500+',
-      label: 'Happy Clients',
-      description: 'Across 12 countries'
-    },
-    {
-      icon: Star,
-      stat: '4.9/5',
-      label: 'Client Rating',
-      description: 'Based on post-launch surveys'
-    },
-    {
-      icon: Award,
-      stat: '15+',
-      label: 'Industry Awards',
-      description: 'For design and performance'
-    }
-  ]
-};
-
-export const guaranteesFAQs = [
+export const guaranteesList = [
   {
-    question: 'How do you measure the Lighthouse score?',
-    answer: 'We use the official Google Lighthouse auditing tool running in a controlled environment to ensure consistent, accurate results. We measure Performance, Accessibility, Best Practices, and SEO.'
+    icon: ThumbsUp,
+    title: "100% Satisfaction Guarantee",
+    description: "We won't stop working until you are completely satisfied with the design and functionality of your website."
   },
   {
-    question: 'What happens if you miss a deadline?',
-    answer: 'If we miss a mutually agreed milestone due to our own delays, we apply a 10% discount to that milestone\'s payment. This keeps us accountable and focused on your timeline.'
+    icon: Clock,
+    title: "On-Time Delivery Guarantee",
+    description: "If we miss a mutually agreed-upon launch deadline due to our fault, we'll discount your final invoice."
   },
   {
-    question: 'Does the 99.9% uptime guarantee apply to all hosting?',
-    answer: 'It applies to all sites hosted on our "Professional" and "Enterprise" maintenance plans. Basic hosting plans are subject to the upstream provider\'s SLA.'
+    icon: Shield,
+    title: "Bug-Free Warranty",
+    description: "We provide a 30-day warranty period after launch where we fix any bugs or issues free of charge."
   },
   {
-    question: 'How do I claim a refund?',
-    answer: 'Simply notify your project manager in writing within the first 30 days. We will process the refund of your deposit within 5 business days, no questions asked.'
+    icon: RefreshCw,
+    title: "Uptime Guarantee",
+    description: "For our hosting clients, we guarantee 99.9% uptime or we'll credit your account."
   }
 ];
 
 export const guaranteesCTA = {
-  title: 'Ready to Start Risk-Free?',
-  description: 'Book your free consultation today and let\'s discuss how we can help you achieve your goals with total peace of mind.',
-  buttons: [
-    {
-      text: 'Start Your Project',
-      page: 'contact'
-    },
-    {
-      text: 'View Pricing',
-      page: 'pricing'
-    }
-  ]
+  title: "Work With Confidence",
+  description: "Partner with an agency that puts its money where its mouth is.",
+  button: { text: "Start Your Project", page: "contact" }
 };

@@ -132,7 +132,7 @@ export function FooterNewsletter({
                 onSubmit={(e) => {
                   e.preventDefault();
                   // Handle newsletter signup
-                  console.log('Newsletter signup submitted');
+                  // In production: Send to API
                 }}
               >
                 <div className="footer-newsletter__form-group">

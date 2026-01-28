@@ -128,8 +128,8 @@ export function useFocusTrap(isActive: boolean) {
           try {
             previousFocusRef.current.focus();
           } catch (e) {
-            // Element might no longer exist in DOM
-            console.warn('Could not restore focus to previous element', e);
+            // Element might no longer exist in DOM, which is fine
+            // console.warn('Could not restore focus to previous element', e);
           }
         }
       }, 50);

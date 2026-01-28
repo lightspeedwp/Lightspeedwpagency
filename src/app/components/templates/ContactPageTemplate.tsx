@@ -81,7 +81,7 @@ export function ContactPageTemplate() {
     },
     onSubmit: async (values) => {
       try {
-        console.log('Form submitted:', values);
+        // console.log('Form submitted:', values);
         // In WordPress, this would submit to backend
         await new Promise(resolve => setTimeout(resolve, 1500));
         setSubmitStatus('success');

@@ -666,7 +666,7 @@ export function DevelopmentServiceTemplate() {
                           padding: '4px 16px',
                           borderRadius: 'var(--radius-full)',
                           fontSize: 'var(--text-small)',
-                          fontFamily: 'Manrope, sans-serif',
+                          fontFamily: 'var(--font-secondary)',
                           fontWeight: 'var(--font-weight-semibold)'
                         }}
                       >

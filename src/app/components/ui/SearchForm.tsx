@@ -85,7 +85,8 @@ export function SearchForm({
       try {
         setRecentSearches(JSON.parse(stored));
       } catch (e) {
-        console.error('Failed to parse recent searches');
+        // Silently fail if localStorage data is invalid
+        // console.error('Failed to parse recent searches');
       }
     }
   }, []);

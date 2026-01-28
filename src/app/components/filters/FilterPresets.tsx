@@ -127,7 +127,7 @@ export function FilterPresets({
         );
       }
     } catch (error) {
-      console.error('Failed to load filter presets:', error);
+      // console.error('Failed to load filter presets:', error);
     }
   }, [storageKey]);
 
@@ -136,7 +136,7 @@ export function FilterPresets({
     try {
       localStorage.setItem(storageKey, JSON.stringify(newPresets));
     } catch (error) {
-      console.error('Failed to save filter presets:', error);
+      // console.error('Failed to save filter presets:', error);
     }
   };
 

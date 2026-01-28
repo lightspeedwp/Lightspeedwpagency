@@ -184,18 +184,18 @@ export function CategoryArchiveTemplate({ category: categorySlug = 'wordpress-de
                 </div>
 
                 {/* Newsletter Signup */}
-                <div className="mt-12">
+                <div style={{ marginTop: 'var(--spacing-12)' }}>
                   <NewsletterSignup />
                 </div>
 
                 {/* CTA Inline */}
-                <div className="mt-12">
+                <div style={{ marginTop: 'var(--spacing-12)' }}>
                   <CTAInline />
                 </div>
 
                 {/* Pagination */}
                 {categoryPosts.length > 10 && (
-                  <div className="mt-12">
+                  <div style={{ marginTop: 'var(--spacing-12)' }}>
                     <PaginationNav 
                       currentPage={1}
                       totalPages={Math.ceil(categoryPosts.length / 10)}

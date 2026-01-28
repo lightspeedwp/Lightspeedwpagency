@@ -223,7 +223,7 @@ export function ComponentShowcase() {
               <p
                 style={{
                   fontSize: 'var(--text-xl)',
-                  fontFamily: 'Manrope, sans-serif',
+                  fontFamily: 'var(--font-secondary)',
                   fontWeight: 'var(--font-weight-regular)',
                   color: 'var(--muted-foreground)',
                   margin: '0 0 48px 0',
@@ -388,7 +388,7 @@ export function ComponentShowcase() {
                 <span
                   style={{
                     fontSize: 'var(--text-base)',
-                    fontFamily: 'Manrope, sans-serif',
+                    fontFamily: 'var(--font-secondary)',
                     fontWeight: 'var(--font-weight-regular)',
                     color: 'var(--foreground)'
                   }}
@@ -541,7 +541,7 @@ export function ComponentShowcase() {
                       <span
                         style={{
                           fontSize: 'var(--text-small)',
-                          fontFamily: 'Manrope, sans-serif',
+                          fontFamily: 'var(--font-secondary)',
                           fontWeight: 'var(--font-weight-regular)',
                           color: 'var(--muted-foreground)',
                           padding: '2px 8px',
@@ -557,7 +557,7 @@ export function ComponentShowcase() {
                     <p
                       style={{
                         fontSize: 'var(--text-base)',
-                        fontFamily: 'Manrope, sans-serif',
+                        fontFamily: 'var(--font-secondary)',
                         fontWeight: 'var(--font-weight-regular)',
                         color: 'var(--muted-foreground)',
                         margin: 0,
@@ -633,7 +633,7 @@ export function ComponentShowcase() {
               <p
                 style={{
                   fontSize: 'var(--text-base)',
-                  fontFamily: 'Manrope, sans-serif',
+                  fontFamily: 'var(--font-secondary)',
                   fontWeight: 'var(--font-weight-regular)',
                   color: 'var(--muted-foreground)',
                   margin: 0,

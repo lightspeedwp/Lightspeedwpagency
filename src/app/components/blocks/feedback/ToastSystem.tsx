@@ -359,7 +359,9 @@ export function setToastContext(context: ToastContextValue) {
 export const toast = {
   success: (message: string, options?: Partial<Omit<Toast, 'id' | 'type' | 'message'>>) => {
     if (!toastContext) {
-      console.warn('Toast context not initialized. Wrap your app with ToastProvider.');
+      if (process.env.NODE_ENV === 'development') {
+        console.warn('Toast context not initialized. Wrap your app with ToastProvider.');
+      }
       return '';
     }
     return toastContext.addToast({ type: 'success', message, ...options });
@@ -367,7 +369,9 @@ export const toast = {
 
   error: (message: string, options?: Partial<Omit<Toast, 'id' | 'type' | 'message'>>) => {
     if (!toastContext) {
-      console.warn('Toast context not initialized. Wrap your app with ToastProvider.');
+      if (process.env.NODE_ENV === 'development') {
+        console.warn('Toast context not initialized. Wrap your app with ToastProvider.');
+      }
       return '';
     }
     return toastContext.addToast({ type: 'error', message, ...options });
@@ -375,7 +379,9 @@ export const toast = {
 
   warning: (message: string, options?: Partial<Omit<Toast, 'id' | 'type' | 'message'>>) => {
     if (!toastContext) {
-      console.warn('Toast context not initialized. Wrap your app with ToastProvider.');
+      if (process.env.NODE_ENV === 'development') {
+        console.warn('Toast context not initialized. Wrap your app with ToastProvider.');
+      }
       return '';
     }
     return toastContext.addToast({ type: 'warning', message, ...options });
@@ -383,7 +389,9 @@ export const toast = {
 
   info: (message: string, options?: Partial<Omit<Toast, 'id' | 'type' | 'message'>>) => {
     if (!toastContext) {
-      console.warn('Toast context not initialized. Wrap your app with ToastProvider.');
+      if (process.env.NODE_ENV === 'development') {
+        console.warn('Toast context not initialized. Wrap your app with ToastProvider.');
+      }
       return '';
     }
     return toastContext.addToast({ type: 'info', message, ...options });
@@ -391,7 +399,9 @@ export const toast = {
 
   loading: (message: string, options?: Partial<Omit<Toast, 'id' | 'type' | 'message'>>) => {
     if (!toastContext) {
-      console.warn('Toast context not initialized. Wrap your app with ToastProvider.');
+      if (process.env.NODE_ENV === 'development') {
+        console.warn('Toast context not initialized. Wrap your app with ToastProvider.');
+      }
       return '';
     }
     return toastContext.addToast({ type: 'loading', message, dismissible: false, ...options });
@@ -399,7 +409,9 @@ export const toast = {
 
   update: (id: string, update: Partial<Toast>) => {
     if (!toastContext) {
-      console.warn('Toast context not initialized. Wrap your app with ToastProvider.');
+      if (process.env.NODE_ENV === 'development') {
+        console.warn('Toast context not initialized. Wrap your app with ToastProvider.');
+      }
       return;
     }
     toastContext.updateToast(id, update);
@@ -407,7 +419,9 @@ export const toast = {
 
   dismiss: (id: string) => {
     if (!toastContext) {
-      console.warn('Toast context not initialized. Wrap your app with ToastProvider.');
+      if (process.env.NODE_ENV === 'development') {
+        console.warn('Toast context not initialized. Wrap your app with ToastProvider.');
+      }
       return;
     }
     toastContext.removeToast(id);

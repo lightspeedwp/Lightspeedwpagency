@@ -38,7 +38,7 @@
  */
 
 import { useState, useEffect } from 'react';
-import { useLocation } from '../../../contexts/NavigationContext';
+import { useLocation } from '@/app/contexts/NavigationContext';
 
 export function RouteAnnouncer() {
   const [announcement, setAnnouncement] = useState('');

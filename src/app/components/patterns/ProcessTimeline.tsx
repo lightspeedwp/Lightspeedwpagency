@@ -60,7 +60,7 @@ export function ProcessTimeline({
           {heading && (
             <h2
               style={{
-                fontFamily: 'Lexend, sans-serif',
+                fontFamily: 'var(--font-primary)',
                 fontSize: 'var(--text-h2)',
                 fontWeight: 'var(--font-weight-semibold)',
                 color: 'var(--foreground)',
@@ -73,7 +73,7 @@ export function ProcessTimeline({
           {description && (
             <p
               style={{
-                fontFamily: 'Manrope, sans-serif',
+                fontFamily: 'var(--font-secondary)',
                 fontSize: 'var(--text-lg)',
                 color: 'var(--muted-foreground)',
                 maxWidth: '800px',
@@ -169,7 +169,7 @@ export function ProcessTimeline({
                   >
                     <span
                       style={{
-                        fontFamily: 'Lexend, sans-serif',
+                        fontFamily: 'var(--font-primary)',
                         fontSize: 'var(--text-small)',
                         fontWeight: 'var(--font-weight-semibold)',
                         color: 'var(--primary)',
@@ -185,7 +185,7 @@ export function ProcessTimeline({
                     {showDuration && step.duration && (
                       <span
                         style={{
-                          fontFamily: 'Manrope, sans-serif',
+                          fontFamily: 'var(--font-secondary)',
                           fontSize: 'var(--text-small)',
                           color: 'var(--muted-foreground)',
                         }}
@@ -199,7 +199,7 @@ export function ProcessTimeline({
                 {/* Title */}
                 <h3
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-h4)',
                     fontWeight: 'var(--font-weight-semibold)',
                     color: 'var(--foreground)',
@@ -212,7 +212,7 @@ export function ProcessTimeline({
                 {/* Description */}
                 <p
                   style={{
-                    fontFamily: 'Manrope, sans-serif',
+                    fontFamily: 'var(--font-secondary)',
                     fontSize: 'var(--text-base)',
                     lineHeight: '1.7',
                     color: 'var(--muted-foreground)',

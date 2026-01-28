@@ -157,7 +157,7 @@ export function FitText({
         style={{
           // Use clamp() for responsive sizing (works in all modern browsers)
           fontSize: clampFallback,
-          fontFamily: 'Lexend, sans-serif',
+          fontFamily: 'var(--font-primary)',
           fontWeight,
           lineHeight,
           letterSpacing,

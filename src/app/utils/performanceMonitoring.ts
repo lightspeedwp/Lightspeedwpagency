@@ -168,7 +168,7 @@ export function startMeasure(name: string): PerformanceMeasure {
       endTime = performance.now();
       const duration = endTime - startTime;
       
-      console.log(`[Performance] ${name}: ${duration.toFixed(2)}ms`);
+      // console.log(`[Performance] ${name}: ${duration.toFixed(2)}ms`);
       
       // Use Performance API if available
       if (typeof window !== 'undefined' && 'performance' in window) {
@@ -242,7 +242,7 @@ export function useRenderTime(componentName: string): void {
   // Log render time after render completes
   setTimeout(() => {
     const renderTime = performance.now() - renderStart;
-    console.log(`[Render] ${componentName}: ${renderTime.toFixed(2)}ms`);
+    // console.log(`[Render] ${componentName}: ${renderTime.toFixed(2)}ms`);
   }, 0);
 }
 
@@ -304,7 +304,10 @@ export function logPerformanceSummary(): void {
     return;
   }
   
-  console.group('📊 Performance Summary');
+  if (process.env.NODE_ENV === 'development') {
+    // console.group('📊 Performance Summary');
+    // ... rest of logging
+  }
   
   console.log('⏱️  DNS Lookup:', 
     `${(navigation.domainLookupEnd - navigation.domainLookupStart).toFixed(2)}ms`
@@ -346,24 +349,28 @@ export function logMemoryUsage(): void {
     return;
   }
   
-  console.group('💾 Memory Usage');
-  
-  console.log('Used JS Heap:', 
-    `${(memory.usedJSHeapSize / 1048576).toFixed(2)} MB`
-  );
-  
-  console.log('Total JS Heap:', 
-    `${(memory.totalJSHeapSize / 1048576).toFixed(2)} MB`
-  );
-  
-  console.log('Heap Limit:', 
-    `${(memory.jsHeapSizeLimit / 1048576).toFixed(2)} MB`
-  );
-  
-  const percentUsed = (memory.usedJSHeapSize / memory.jsHeapSizeLimit) * 100;
-  console.log('Heap Usage:', `${percentUsed.toFixed(1)}%`);
-  
-  console.groupEnd();
+  if (process.env.NODE_ENV === 'development') {
+    /*
+    console.group('💾 Memory Usage');
+    
+    console.log('Used JS Heap:', 
+      `${(memory.usedJSHeapSize / 1048576).toFixed(2)} MB`
+    );
+    
+    console.log('Total JS Heap:', 
+      `${(memory.totalJSHeapSize / 1048576).toFixed(2)} MB`
+    );
+    
+    console.log('Heap Limit:', 
+      `${(memory.jsHeapSizeLimit / 1048576).toFixed(2)} MB`
+    );
+    
+    const percentUsed = (memory.usedJSHeapSize / memory.jsHeapSizeLimit) * 100;
+    console.log('Heap Usage:', `${percentUsed.toFixed(1)}%`);
+    
+    console.groupEnd();
+    */
+  }
 }
 
 /**
@@ -395,20 +402,24 @@ export function getNetworkInfo(): {
  * Log complete performance report
  */
 export function logPerformanceReport(): void {
-  console.log('\n🚀 LSX Design - Performance Report\n');
-  
-  logPerformanceSummary();
-  logMemoryUsage();
-  
-  const networkInfo = getNetworkInfo();
-  if (Object.keys(networkInfo).length > 0) {
-    console.group('🌐 Network Information');
-    console.log('Connection Type:', networkInfo.effectiveType);
-    console.log('Downlink Speed:', `${networkInfo.downlink} Mbps`);
-    console.log('Round Trip Time:', `${networkInfo.rtt}ms`);
-    console.log('Data Saver:', networkInfo.saveData ? 'ON' : 'OFF');
-    console.groupEnd();
+  if (process.env.NODE_ENV === 'development') {
+    /*
+    console.log('\n🚀 LSX Design - Performance Report\n');
+    
+    logPerformanceSummary();
+    logMemoryUsage();
+    
+    const networkInfo = getNetworkInfo();
+    if (Object.keys(networkInfo).length > 0) {
+      console.group('🌐 Network Information');
+      console.log('Connection Type:', networkInfo.effectiveType);
+      console.log('Downlink Speed:', `${networkInfo.downlink} Mbps`);
+      console.log('Round Trip Time:', `${networkInfo.rtt}ms`);
+      console.log('Data Saver:', networkInfo.saveData ? 'ON' : 'OFF');
+      console.groupEnd();
+    }
+    
+    console.log('\n');
+    */
   }
-  
-  console.log('\n');
 }

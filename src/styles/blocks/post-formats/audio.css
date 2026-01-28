@@ -1,0 +1,199 @@
+/**
+ * Audio Block Styles
+ * 
+ * Styles for Single Audio Template and Archive.
+ */
+
+/* Player */
+.wp-block-audio-player {
+  background-color: var(--card);
+  padding: var(--spacing-4);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-soft);
+}
+
+.wp-block-audio-player__progress {
+  height: 0.25rem;
+  background-color: var(--border);
+  border-radius: var(--radius-full);
+  margin-bottom: var(--spacing-4);
+  position: relative;
+  overflow: hidden;
+}
+
+.wp-block-audio-player__progress-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 33.33%;
+  background-color: var(--primary);
+}
+
+.wp-block-audio-player__controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.wp-block-audio-player__buttons {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+}
+
+.wp-block-audio-player__btn {
+  color: var(--foreground);
+  transition: color var(--transition-base);
+}
+
+.wp-block-audio-player__btn:hover {
+  color: var(--primary);
+}
+
+.wp-block-audio-player__play-btn {
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: var(--primary);
+  color: #ffffff;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--transition-base);
+}
+
+.wp-block-audio-player__play-btn:hover {
+  transform: scale(1.05);
+}
+
+.wp-block-audio-player__time {
+  font-size: var(--text-tiny);
+  font-family: monospace;
+  color: var(--muted-foreground);
+}
+
+.wp-block-audio-player__volume {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.wp-block-audio-player__volume-bar {
+  width: 5rem;
+  height: 0.25rem;
+  background-color: var(--border);
+  border-radius: var(--radius-full);
+}
+
+.wp-block-audio-player__volume-level {
+  width: 66%;
+  height: 100%;
+  background-color: var(--foreground);
+  border-radius: var(--radius-full);
+}
+
+/* Archive Grid Item */
+.wp-block-audio-card {
+  cursor: pointer;
+  background-color: var(--card);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  border: 1px solid var(--border-soft);
+  transition: box-shadow var(--transition-base);
+}
+
+.wp-block-audio-card:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+.wp-block-audio-card__media {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  background-color: #111827; /* gray-900 */
+}
+
+.wp-block-audio-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.8;
+}
+
+.wp-block-audio-card__overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wp-block-audio-card__play-icon {
+  width: 4rem;
+  height: 4rem;
+  background-color: var(--primary);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  box-shadow: var(--shadow-lg);
+  transition: transform var(--transition-base);
+}
+
+.wp-block-audio-card:hover .wp-block-audio-card__play-icon {
+  transform: scale(1.1);
+}
+
+.wp-block-audio-card__duration {
+  position: absolute;
+  top: var(--spacing-4);
+  right: var(--spacing-4);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+  font-size: var(--text-tiny);
+  font-weight: var(--font-weight-bold);
+  padding: var(--spacing-1) var(--spacing-3);
+  border-radius: var(--radius-full);
+  backdrop-filter: blur(4px);
+}
+
+.wp-block-audio-card__content {
+  padding: var(--spacing-6);
+}
+
+.wp-block-audio-card__label {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-size: var(--text-small);
+  color: var(--primary);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-2);
+}
+
+.wp-block-audio-card__title {
+  font-size: var(--text-xl); /* 20px */
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-2);
+  transition: color var(--transition-base);
+}
+
+.wp-block-audio-card:hover .wp-block-audio-card__title {
+  color: var(--primary);
+}
+
+.wp-block-audio-card__excerpt {
+  color: var(--muted-foreground);
+  margin-bottom: var(--spacing-4);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.wp-block-audio-card__date {
+  font-size: var(--text-small);
+  color: var(--muted-foreground);
+}

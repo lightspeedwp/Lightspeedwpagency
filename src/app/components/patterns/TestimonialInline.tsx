@@ -45,7 +45,7 @@ export function TestimonialInline({
         <div className="text-center mb-8">
           <h2
             style={{
-              fontFamily: 'Lexend, sans-serif',
+              fontFamily: 'var(--font-primary)',
               fontSize: 'var(--text-h3)',
               fontWeight: 'var(--font-weight-semibold)',
               color: 'var(--foreground)',
@@ -110,7 +110,7 @@ export function TestimonialInline({
             {/* Quote */}
             <p
               style={{
-                fontFamily: 'Lexend, sans-serif',
+                fontFamily: 'var(--font-primary)',
                 fontSize: compact ? 'var(--text-base)' : 'var(--text-lg)',
                 lineHeight: '1.6',
                 color: 'var(--foreground)',
@@ -147,7 +147,7 @@ export function TestimonialInline({
               <div>
                 <div
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-base)',
                     fontWeight: 'var(--font-weight-semibold)',
                     color: 'var(--foreground)',
@@ -158,7 +158,7 @@ export function TestimonialInline({
                 </div>
                 <div
                   style={{
-                    fontFamily: 'Manrope, sans-serif',
+                    fontFamily: 'var(--font-secondary)',
                     fontSize: 'var(--text-small)',
                     color: 'var(--muted-foreground)'
                   }}

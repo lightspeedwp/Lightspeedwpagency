@@ -1,0 +1,161 @@
+/**
+ * Quote Block Styles
+ * 
+ * Styles for Single Quote Template and Archive.
+ */
+
+/* Quote Card (Archive) */
+.wp-block-quote-card {
+  background-color: var(--card);
+  padding: var(--spacing-8);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-soft);
+  position: relative;
+  transition: box-shadow var(--transition-base);
+}
+
+.wp-block-quote-card:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+.wp-block-quote-card__icon {
+  position: absolute;
+  top: var(--spacing-6);
+  left: var(--spacing-6);
+  color: var(--primary);
+  opacity: 0.2;
+}
+
+.wp-block-quote-card__body {
+  position: relative;
+  z-index: 10;
+  padding-top: var(--spacing-8);
+}
+
+.wp-block-quote-card__text {
+  font-size: var(--text-xl);
+  font-family: var(--font-primary); /* Often serif in design, but stick to system font or var */
+  font-style: italic;
+  margin-bottom: var(--spacing-6);
+  line-height: var(--line-height-relaxed);
+}
+
+.wp-block-quote-card__footer {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  margin-top: var(--spacing-6);
+  padding-top: var(--spacing-6);
+  border-top: 1px solid var(--border-soft);
+}
+
+.wp-block-quote-card__avatar {
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: var(--border);
+  border-radius: var(--radius-full);
+}
+
+.wp-block-quote-card__author {
+  font-weight: var(--font-weight-bold);
+  font-size: var(--text-small);
+}
+
+.wp-block-quote-card__role {
+  font-size: var(--text-tiny);
+  color: var(--muted-foreground);
+}
+
+/* Single Quote Hero */
+.wp-block-quote-hero {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  padding-top: var(--spacing-12);
+  padding-bottom: var(--spacing-12);
+}
+
+.wp-block-quote-hero__card {
+  background-color: var(--card);
+  padding: var(--spacing-12);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-xl);
+  border: 1px solid var(--border-soft);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .wp-block-quote-hero__card {
+    padding: var(--spacing-16);
+  }
+}
+
+.wp-block-quote-hero__bg-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: var(--spacing-12);
+  opacity: 0.05;
+  color: var(--primary);
+  pointer-events: none;
+}
+
+.wp-block-quote-hero__content {
+  position: relative;
+  z-index: 10;
+}
+
+.wp-block-quote-hero__icon {
+  margin-bottom: var(--spacing-8);
+  color: var(--primary);
+  display: flex;
+  justify-content: center;
+}
+
+.wp-block-quote-hero__text {
+  font-size: var(--text-3xl); /* 30px */
+  font-weight: var(--font-weight-medium);
+  font-style: italic;
+  margin-bottom: var(--spacing-8);
+  line-height: var(--line-height-relaxed);
+  color: var(--foreground);
+}
+
+@media (min-width: 768px) {
+  .wp-block-quote-hero__text {
+    font-size: var(--text-4xl); /* 36px */
+  }
+}
+
+.wp-block-quote-hero__footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-4);
+  margin-top: var(--spacing-8);
+  padding-top: var(--spacing-8);
+  border-top: 1px solid var(--border-soft);
+}
+
+.wp-block-quote-hero__avatar {
+  width: 3rem;
+  height: 3rem;
+  background-color: var(--border);
+  border-radius: var(--radius-full);
+}
+
+.wp-block-quote-hero__author-info {
+  text-align: left;
+}
+
+.wp-block-quote-hero__author {
+  font-weight: var(--font-weight-bold);
+  font-size: var(--text-lg);
+}
+
+.wp-block-quote-hero__role {
+  color: var(--muted-foreground);
+}

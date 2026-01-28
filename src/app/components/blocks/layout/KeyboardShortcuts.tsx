@@ -20,8 +20,8 @@
  */
 
 import { useState } from 'react';
-import { useNavigation } from '../../../contexts/NavigationContext';
-import { useKeyboardShortcuts, formatShortcut, type KeyboardShortcut } from '../../../hooks/useKeyboardShortcuts';
+import { useNavigation } from '@/app/contexts/NavigationContext';
+import { useKeyboardShortcuts, formatShortcut, type KeyboardShortcut } from '@/app/hooks/useKeyboardShortcuts';
 import { X, Keyboard } from 'lucide-react';
 
 export function KeyboardShortcuts() {
