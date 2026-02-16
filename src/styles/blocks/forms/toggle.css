@@ -1,0 +1,59 @@
+/**
+ * Toggle Block Styles
+ */
+.wp-block-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius);
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  transition: all var(--transition-base) ease;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  color: var(--muted-foreground);
+  padding: var(--spacing-2) var(--spacing-4);
+}
+
+.wp-block-toggle:hover {
+  background-color: var(--muted);
+  color: var(--foreground);
+}
+
+.wp-block-toggle:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 var(--wp--preset--border-width--2) var(--ring);
+}
+
+.wp-block-toggle[data-state="on"] {
+  background-color: var(--accent);
+  color: var(--accent-foreground);
+}
+
+.wp-block-toggle:disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* Variants */
+.wp-block-toggle--outline {
+  border: var(--wp--preset--border-width--1) solid var(--border);
+}
+
+.wp-block-toggle--outline:hover {
+  background-color: var(--muted);
+}
+
+/* Sizes */
+.wp-block-toggle--sm {
+  height: var(--spacing-8); /* 32px */
+  padding: 0 var(--spacing-3);
+  font-size: var(--text-xs);
+}
+
+.wp-block-toggle--lg {
+  height: 2.75rem; /* 44px - Keeping custom size as no direct mapping exists between 40px and 48px */
+  padding: 0 var(--spacing-6);
+}

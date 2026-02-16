@@ -5,30 +5,12 @@
  * 
  * Grid of features/benefits with large icons and descriptions.
  * Commonly used on solution/service pages to highlight key features.
- * 
- * **Usage:**
- * ```tsx
- * <FeatureIconGrid
- *   title="Why Choose LSX Design?"
- *   description="Built on WordPress best practices"
- *   features={[
- *     {
- *       id: 'performance',
- *       icon: Zap,
- *       title: 'Performance Optimized',
- *       description: 'Lightning-fast load times...'
- *     }
- *   ]}
- *   columns={3}
- *   iconSize={32}
- *   iconBoxSize={64}
- * />
- * ```
  */
 
 import { LucideIcon } from 'lucide-react';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
+import '@/styles/patterns/feature-icon-grid.css';
 
 export interface FeatureIcon {
   /** Unique identifier */
@@ -88,29 +70,15 @@ export function FeatureIconGrid({
       <Container>
         {/* Section Header */}
         {(title || description) && (
-          <div className="wp-text-center" style={{ marginBottom: 'var(--spacing-16)' }}>
+          <div className="feature-icon-grid__header">
             {title && (
-              <h2
-                className="font-primary text-h1 font-bold tracking-tight"
-                style={{
-                  lineHeight: '1.2',
-                  marginBottom: 'var(--spacing-4)',
-                  color: 'var(--foreground)'
-                }}
-              >
+              <h2 className="feature-icon-grid__title">
                 {title}
               </h2>
             )}
 
             {description && (
-              <p
-                className="font-primary text-lg leading-relaxed"
-                style={{
-                  color: 'var(--muted-foreground)',
-                  maxWidth: '700px',
-                  margin: '0 auto'
-                }}
-              >
+              <p className="feature-icon-grid__description">
                 {description}
               </p>
             )}
@@ -118,54 +86,33 @@ export function FeatureIconGrid({
         )}
 
         {/* Features Grid */}
-        <div className={`${gridClass} ${maxWidthClass}`}>
+        <div className={`feature-icon-grid__grid ${gridClass} ${maxWidthClass}`}>
           {features.map((feature) => {
             const Icon = feature.icon;
 
             return (
               <div
                 key={feature.id}
-                style={{
-                  padding: 'var(--spacing-8)',
-                  backgroundColor: 'var(--card)',
-                  borderRadius: 'var(--radius-lg)',
-                  border: '1px solid var(--border-soft)'
-                }}
+                className="feature-icon-grid__card"
               >
                 {/* Icon Box */}
                 <div
+                  className="feature-icon-grid__icon-box"
                   style={{
                     width: `${iconBoxSize}px`,
                     height: `${iconBoxSize}px`,
-                    borderRadius: 'var(--radius-lg)',
-                    backgroundColor: 'var(--primary-soft)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    marginBottom: 'var(--spacing-5)'
                   }}
                 >
-                  <Icon size={iconSize} style={{ color: 'var(--primary)' }} />
+                  <Icon size={iconSize} />
                 </div>
 
                 {/* Title */}
-                <h3
-                  className="font-primary text-xl font-bold"
-                  style={{
-                    color: 'var(--foreground)',
-                    marginBottom: 'var(--spacing-3)'
-                  }}
-                >
+                <h3 className="feature-icon-grid__item-title">
                   {feature.title}
                 </h3>
 
                 {/* Description */}
-                <p
-                  className="font-primary text-base leading-snug"
-                  style={{
-                    color: 'var(--muted-foreground)'
-                  }}
-                >
+                <p className="feature-icon-grid__item-description">
                   {feature.description}
                 </p>
               </div>

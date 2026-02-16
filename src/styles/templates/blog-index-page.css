@@ -2,31 +2,20 @@
  * Blog Index Page Template Styles
  * 
  * Dedicated styles for blog index/archive layout and components.
+ * All vertical spacing via blockGap (CSS gap) -- zero margin.
  * All styling uses CSS variables for complete user control.
- * 
- * User can edit this file to update blog index page styling site-wide.
  */
 
 /* ============================================
  * CONTENT WRAPPERS
  * ============================================ */
 
-/**
- * Wide content wrapper
- * Used for: Topics section grid
- * Max-width: 1152px (--breakpoint-6xl)
- */
 .blog-index__content-wrapper--wide {
   max-width: 1152px;
   margin-left: auto;
   margin-right: auto;
 }
 
-/**
- * Narrow content wrapper
- * Used for: FAQ section
- * Max-width: 768px (--breakpoint-3xl)
- */
 .blog-index__content-wrapper--narrow {
   max-width: 768px;
   margin-left: auto;
@@ -34,27 +23,23 @@
 }
 
 /* ============================================
- * SECTION HEADERS
+ * SECTION HEADERS -- flex column with blockGap
  * ============================================ */
 
-/**
- * Large section header
- * Used for: Topics section header
- * Centered layout with generous spacing
- */
 .blog-index__section-header--large {
   text-align: center;
-  margin-bottom: var(--spacing-16);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  padding-bottom: var(--spacing-16);
 }
 
-/**
- * Standard section header
- * Used for: FAQ section header
- * Centered layout with standard spacing
- */
 .blog-index__section-header {
   text-align: center;
-  margin-bottom: var(--spacing-12);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  padding-bottom: var(--spacing-12);
 }
 
 /* ============================================
@@ -62,61 +47,44 @@
  * ============================================ */
 
 .blog-index__section-title {
-  /* Typography */
   font-family: var(--font-primary);
   font-size: var(--text-h1);
   font-weight: var(--font-weight-bold);
   color: var(--foreground);
-  
-  /* Line height & spacing */
-  line-height: 1.2;
-  letter-spacing: -0.02em;
-  margin-bottom: var(--spacing-4);
+  line-height: var(--line-height-snug);
+  letter-spacing: var(--letter-spacing-tight);
 }
 
 .blog-index__section-title--h2 {
-  /* Typography */
   font-family: var(--font-primary);
   font-size: var(--text-h2);
   font-weight: var(--font-weight-semibold);
   color: var(--foreground);
-  
-  /* Line height & spacing */
   line-height: var(--line-height-snug);
-  margin-bottom: var(--spacing-4);
+  letter-spacing: var(--letter-spacing-tight);
 }
 
 .blog-index__section-description {
-  /* Typography */
   font-family: var(--font-primary);
   font-size: var(--text-lg);
   color: var(--muted-foreground);
-  
-  /* Line height */
-  line-height: 1.7;
+  line-height: var(--line-height-relaxed);
 }
 
 /* ============================================
- * TOPIC CARDS (Topics/Categories Section)
+ * TOPIC CARDS -- flex column with blockGap
  * ============================================ */
 
-/**
- * Individual topic card
- * Clickable card with hover effect
- * Used in topics grid
- */
 .blog-index__topic-card {
-  /* Spacing */
   padding: var(--spacing-6);
-  
-  /* Appearance */
   background-color: var(--card);
   border: 1px solid var(--border-soft);
   border-radius: var(--radius-lg);
-  
-  /* Interaction */
   cursor: pointer;
   transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
 }
 
 .blog-index__topic-card:hover {
@@ -128,22 +96,12 @@
  * TOPIC CARD COMPONENTS
  * ============================================ */
 
-/**
- * Topic card icon container
- * Circular icon background
- */
 .blog-index__topic-icon {
-  /* Size */
-  width: 48px;
-  height: 48px;
-  
-  /* Layout */
+  width: var(--spacing-12);
+  height: var(--spacing-12);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: var(--spacing-4);
-  
-  /* Appearance */
   background-color: var(--primary-soft);
   border-radius: var(--radius-lg);
 }
@@ -152,55 +110,41 @@
   color: var(--primary);
 }
 
-/**
- * Topic card title
- */
 .blog-index__topic-title {
-  /* Typography */
   font-family: var(--font-primary);
   font-size: var(--text-lg);
   font-weight: var(--font-weight-bold);
   color: var(--foreground);
-  
-  /* Spacing */
-  margin-bottom: var(--spacing-2);
 }
 
-/**
- * Topic card description
- */
 .blog-index__topic-description {
-  /* Typography */
-  font-family: var(--font-primary);
+  font-family: var(--font-secondary);
   font-size: var(--text-small);
-  line-height: 1.6;
+  line-height: var(--line-height-normal);
   color: var(--muted-foreground);
-  
-  /* Spacing */
-  margin-bottom: var(--spacing-3);
 }
 
-/**
- * Topic card post count
- * Shows number of articles
- */
 .blog-index__topic-count {
-  /* Typography */
   font-family: var(--font-secondary);
   font-size: var(--text-small);
   font-weight: var(--font-weight-semibold);
   color: var(--primary);
+  letter-spacing: var(--letter-spacing-wider);
 }
 
 /* ============================================
  * CATEGORY ARCHIVE STYLES
  * ============================================ */
 
+/* Category header -- flex column with blockGap */
 .wp-category-header {
   padding: var(--spacing-16) 0;
   background-color: var(--secondary);
-  margin-bottom: var(--spacing-12);
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-4);
 }
 
 .wp-category-label {
@@ -210,8 +154,7 @@
   font-weight: 600;
   color: var(--primary);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: var(--spacing-4);
+  letter-spacing: var(--letter-spacing-wider);
 }
 
 .wp-category-title {
@@ -219,7 +162,6 @@
   font-size: var(--text-h1);
   font-weight: 700;
   color: var(--foreground);
-  margin-bottom: var(--spacing-4);
 }
 
 .wp-category-description {
@@ -227,8 +169,7 @@
   font-size: var(--text-lg);
   color: var(--muted-foreground);
   max-width: 600px;
-  margin: 0 auto var(--spacing-6);
-  line-height: 1.6;
+  line-height: var(--line-height-normal);
 }
 
 .wp-category-count {
@@ -249,6 +190,13 @@
   }
 }
 
+/* Post cards container -- flex column with blockGap */
+.wp-category-posts-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+}
+
 .wp-category-post-card {
   display: flex;
   flex-direction: column;
@@ -256,7 +204,6 @@
   border: 1px solid var(--border-soft);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  margin-bottom: var(--spacing-8);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   cursor: pointer;
 }
@@ -298,20 +245,21 @@
   transform: scale(1.05);
 }
 
+/* Post card content -- flex column with blockGap */
 .wp-category-post-card__content {
   padding: var(--spacing-6);
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: var(--spacing-3);
 }
 
 .wp-category-post-card__title {
   font-family: var(--font-primary);
-  font-size: var(--text-h3);
+  font-size: var(--text-h4);
   font-weight: 700;
-  margin-bottom: var(--spacing-3);
-  line-height: 1.3;
+  line-height: var(--line-height-snug);
 }
 
 .wp-category-post-card__title-link {
@@ -323,8 +271,7 @@
   font-family: var(--font-secondary);
   font-size: var(--text-base);
   color: var(--muted-foreground);
-  margin-bottom: var(--spacing-4);
-  line-height: 1.6;
+  line-height: var(--line-height-normal);
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
@@ -351,26 +298,32 @@
   top: var(--spacing-8);
 }
 
+/* Sidebar card -- flex column with blockGap */
 .wp-category-sidebar-card {
   background-color: var(--card);
   border: 1px solid var(--border-soft);
   border-radius: var(--radius-lg);
   padding: var(--spacing-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
 }
 
 .wp-category-sidebar-card__title {
   font-family: var(--font-primary);
   font-size: var(--text-h4);
   font-weight: 700;
-  margin-bottom: var(--spacing-4);
   padding-bottom: var(--spacing-4);
   border-bottom: 1px solid var(--border-soft);
 }
 
+/* Sidebar list -- flex column with blockGap */
 .wp-category-sidebar-list {
   list-style: none;
   padding: 0;
-  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
 }
 
 .wp-category-sidebar-button {
@@ -387,7 +340,6 @@
   font-size: var(--text-base);
   cursor: pointer;
   transition: all 0.2s ease;
-  margin-bottom: var(--spacing-2);
 }
 
 .wp-category-sidebar-button:hover {
@@ -409,13 +361,13 @@
 .wp-category-sidebar-button__count {
   background-color: var(--secondary);
   color: var(--foreground);
-  padding: 2px 8px;
-  border-radius: 12px;
+  padding: calc(var(--spacing-1) / 2) var(--spacing-2);
+  border-radius: var(--radius-xl);
   font-size: var(--text-xs);
   font-weight: 600;
 }
 
 .wp-category-sidebar-button--active .wp-category-sidebar-button__count {
-  background-color: rgba(255,255,255,0.2);
+  background-color: var(--overlay-white-subtle);
   color: var(--primary-foreground);
 }

@@ -6,6 +6,7 @@
  */
 
 import { ChevronDown } from 'lucide-react';
+import '@/styles/scroll-down.css';
 
 interface ScrollDownArrowProps {
   targetId: string;
@@ -22,24 +23,10 @@ export function ScrollDownArrow({ targetId }: ScrollDownArrowProps) {
   return (
     <button
       onClick={handleClick}
-      className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce p-2"
+      className="scroll-down-arrow"
       aria-label="Scroll to content"
-      style={{
-        background: 'transparent',
-        border: 'none',
-        cursor: 'pointer',
-        color: 'var(--primary-foreground)',
-        opacity: 0.8,
-        transition: 'opacity 0.3s ease'
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.opacity = '1';
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.opacity = '0.8';
-      }}
     >
-      <ChevronDown size={32} strokeWidth={2} />
+      <ChevronDown className="scroll-down-arrow__icon" strokeWidth={2} />
     </button>
   );
 }

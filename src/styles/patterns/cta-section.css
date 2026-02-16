@@ -1,0 +1,206 @@
+/**
+ * CTA Section Pattern Styles
+ * 
+ * BEM-compliant styles for the CTASection component.
+ * All vertical spacing via blockGap (CSS gap) -- zero margin.
+ */
+
+/* Section Layout */
+.cta-section--default {
+  background-color: var(--background);
+}
+
+.cta-section--highlighted {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Gradient Variants */
+.wp-gradient-blue { background: var(--gradient-blue); color: var(--color-white); }
+.wp-gradient-purple { background: var(--gradient-purple); color: var(--color-white); }
+.wp-gradient-purple-light { background: var(--gradient-purple-light); color: var(--color-white); }
+.wp-gradient-purple-indigo { background: var(--gradient-purple-indigo); color: var(--color-white); }
+.wp-gradient-red { background: var(--gradient-red); color: var(--color-white); }
+.wp-gradient-green { background: var(--gradient-green); color: var(--color-white); }
+.wp-gradient-amber { background: var(--gradient-amber); color: var(--color-white); }
+.wp-gradient-cyan { background: var(--gradient-cyan); color: var(--color-white); }
+.wp-gradient-sky { background: var(--gradient-sky); color: var(--color-white); }
+.wp-gradient-slate { background: var(--gradient-slate); color: var(--color-white); }
+.wp-gradient-violet { background: var(--gradient-violet); color: var(--color-white); }
+
+/* Gradient Decorations */
+.wp-gradient-orb {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.wp-gradient-orb--top-right {
+  top: -100px;
+  right: -100px;
+  background-color: var(--overlay-white-medium);
+}
+
+.cta-section__gradient-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, var(--overlay-extra-light), transparent);
+  pointer-events: none;
+}
+
+.cta-section__gradient-orb {
+  position: absolute;
+  top: -50%;
+  left: -20%;
+  width: 80%;
+  height: 200%;
+  background: radial-gradient(circle, var(--overlay-white-soft) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* Container */
+.cta-section__container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Content -- flex column with blockGap */
+.cta-section__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  align-items: center;
+  text-align: center;
+  max-width: var(--wp--style--global--narrow-size);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Title */
+.cta-section__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-3xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-normal);
+}
+
+.cta-section--default .cta-section__title {
+  color: var(--foreground);
+}
+
+.cta-section--highlighted .cta-section__title,
+[class*="wp-gradient-"] .cta-section__title {
+  color: var(--color-white);
+}
+
+@media (min-width: 768px) {
+  .cta-section__title {
+    font-size: var(--text-5xl);
+  }
+}
+
+@media (min-width: 1024px) {
+  .cta-section__title {
+    font-size: var(--text-6xl);
+  }
+}
+
+/* Description */
+.cta-section__description {
+  font-family: var(--font-secondary);
+  font-size: var(--text-lg);
+  max-width: 60ch;
+  line-height: var(--line-height-relaxed);
+}
+
+.cta-section--default .cta-section__description {
+  color: var(--muted-foreground);
+}
+
+.cta-section--highlighted .cta-section__description,
+[class*="wp-gradient-"] .cta-section__description {
+  color: var(--overlay-white-opaque);
+}
+
+@media (min-width: 768px) {
+  .cta-section__description {
+    font-size: var(--text-xl);
+  }
+}
+
+/* Buttons */
+.cta-section__buttons {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  align-items: center;
+  justify-content: center;
+  padding-top: var(--spacing-4);
+}
+
+@media (min-width: 480px) {
+  .cta-section__buttons {
+    flex-direction: row;
+  }
+}
+
+/* Button Variants overrides for gradient backgrounds */
+.cta-section__button--primary-highlighted {
+  background-color: var(--color-white) !important;
+  color: var(--primary) !important;
+  border-color: var(--color-white) !important;
+}
+
+.cta-section__button--primary-highlighted:hover {
+  background-color: var(--overlay-white-opaque) !important;
+  transform: translateY(-2px);
+}
+
+.cta-section__button--secondary-highlighted {
+  border-color: var(--overlay-white-medium) !important;
+  color: var(--color-white) !important;
+}
+
+.cta-section__button--secondary-highlighted:hover {
+  background-color: var(--overlay-white-soft) !important;
+  border-color: var(--color-white) !important;
+}
+
+/* Trust Indicators */
+.cta-section__trust-indicators {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--spacing-6);
+  padding-top: var(--spacing-4);
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+}
+
+.cta-section__trust-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  color: var(--overlay-white-opaque);
+}
+
+.cta-section__trust-check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  background-color: var(--overlay-white-subtle);
+  border-radius: 50%;
+  font-size: var(--text-2xs);
+  font-weight: bold;
+}

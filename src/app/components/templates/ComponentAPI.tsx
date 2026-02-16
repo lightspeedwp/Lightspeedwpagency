@@ -11,10 +11,7 @@
 
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
-import { SiteHeader } from '../parts/SiteHeader';
-import { SiteFooter } from '../parts/SiteFooter';
-import { SkipLink } from '../common/SkipLink';
-import { BackToTopButton } from '../blocks/layout/BackToTopButton';
+
 import { Breadcrumbs } from '../common/Breadcrumbs';
 import { FileCode } from 'lucide-react';
 
@@ -29,22 +26,21 @@ export function ComponentAPI() {
         color: 'var(--foreground)'
       }}
     >
-      <SkipLink targetId="main-content" />
-      <SiteHeader />
-
-      <main id="main-content" role="main" style={{ flex: 1 }}>
-        <Section variant="default" spacing="50">
-          <Container>
+      <div style={{ flex: 1 }}>
+        {/* Breadcrumbs */}
+        <section className="wp-block-breadcrumbs-section">
             <Breadcrumbs
               items={[
                 { label: 'Home', page: 'home' },
                 { label: 'Developer Tools', page: 'dev-tools' },
                 { label: 'Component API' }
               ]}
-              className="mb-8"
             />
+        </section>
 
-            <div className="text-center max-w-4xl mx-auto">
+        <Section background="default" spacing="lg">
+          <Container>
+            <div className="wp-text-center wp-max-w-4xl wp-mx-auto">
               <div
                 style={{
                   display: 'inline-flex',
@@ -53,8 +49,8 @@ export function ComponentAPI() {
                   width: '80px',
                   height: '80px',
                   borderRadius: 'var(--radius-lg)',
-                  backgroundColor: 'var(--accent)',
-                  marginBottom: '24px'
+                  backgroundColor: 'var(--secondary)',
+                  marginBottom: 'var(--spacing-6)'
                 }}
               >
                 <FileCode size={40} style={{ color: 'var(--primary-foreground)' }} />
@@ -63,10 +59,10 @@ export function ComponentAPI() {
               <h1
                 style={{
                   fontSize: 'var(--text-h1)',
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontWeight: 'var(--font-weight-medium)',
                   color: 'var(--foreground)',
-                  margin: '0 0 16px 0',
+                  margin: '0 0 var(--spacing-4) 0',
                   lineHeight: 1.2
                 }}
               >
@@ -76,10 +72,10 @@ export function ComponentAPI() {
               <p
                 style={{
                   fontSize: 'var(--text-xl)',
-                  fontFamily: 'Manrope, sans-serif',
+                  fontFamily: 'var(--font-secondary)',
                   fontWeight: 'var(--font-weight-regular)',
                   color: 'var(--muted-foreground)',
-                  margin: 0,
+                  margin: '0 0 var(--spacing-12) 0',
                   lineHeight: 1.5
                 }}
               >
@@ -88,10 +84,7 @@ export function ComponentAPI() {
             </div>
           </Container>
         </Section>
-      </main>
-
-      <SiteFooter />
-      <BackToTopButton />
+      </div>
     </div>
   );
 }

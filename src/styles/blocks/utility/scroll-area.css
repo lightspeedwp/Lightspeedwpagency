@@ -1,0 +1,54 @@
+/**
+ * Scroll Area Block Styles
+ */
+.wp-block-scroll-area {
+  position: relative;
+  overflow: hidden;
+}
+
+.wp-block-scroll-area__viewport {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+}
+
+.wp-block-scroll-area__scrollbar {
+  display: flex;
+  user-select: none;
+  touch-action: none;
+  padding: calc(var(--spacing-1) / 2);
+  background: var(--muted);
+  transition: background var(--transition-base) ease-out;
+}
+
+.wp-block-scroll-area__scrollbar:hover {
+  background: var(--muted-foreground);
+}
+
+.wp-block-scroll-area__scrollbar[data-orientation='vertical'] {
+  width: 10px;
+}
+
+.wp-block-scroll-area__scrollbar[data-orientation='horizontal'] {
+  flex-direction: column;
+  height: 10px;
+}
+
+.wp-block-scroll-area__thumb {
+  flex: 1;
+  background: var(--muted-foreground);
+  border-radius: var(--radius-lg);
+  position: relative;
+}
+
+.wp-block-scroll-area__thumb::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  min-width: 44px;
+  min-height: 44px;
+}

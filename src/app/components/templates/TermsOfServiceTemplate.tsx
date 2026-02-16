@@ -19,107 +19,52 @@
  * - WCAG 2.1 AA compliant
  */
 
-import { SiteHeader } from '../parts/SiteHeader';
-import { SiteFooter } from '../parts/SiteFooter';
-import { SkipLink } from '../common/SkipLink';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { Breadcrumbs } from '../common/Breadcrumbs';
-import { BackToTopButton } from '../blocks/layout/BackToTopButton';
-import { RouteAnnouncer } from '../blocks/utility/RouteAnnouncer';
 import { CTASection } from '../patterns/CTASection';
+import { Heading } from '../blocks/text/Heading';
+import { Paragraph } from '../blocks/text/Paragraph';
 import { FileCheck, Scale, AlertTriangle, CheckCircle2, XCircle, Users } from 'lucide-react';
+import '@/styles/templates/page-legal.css';
 
 export function TermsOfServiceTemplate() {
   const lastUpdated = 'January 22, 2026';
 
   return (
     <>
-      <RouteAnnouncer />
-      <SkipLink />
-      <SiteHeader />
-      
-      <main id="main-content" role="main">
         {/* Breadcrumbs */}
-        <section 
-          style={{
-            paddingTop: 'var(--spacing-4)',
-            paddingBottom: 'var(--spacing-4)',
-            backgroundColor: 'var(--background)',
-            borderBottom: '1px solid var(--border-soft)'
-          }}
-        >
-          <Container>
+        <section className="wp-block-breadcrumbs-section">
             <Breadcrumbs 
               items={[
                 { label: 'Home', href: '/' },
                 { label: 'Terms of Service' }
               ]}
             />
-          </Container>
         </section>
 
         {/* Hero Section */}
         <Section 
           spacing="xl"
-          style={{
-            background: 'linear-gradient(135deg, #0891b2 0%, #06b6d4 100%)',
-            color: 'var(--primary-foreground)',
-            position: 'relative',
-            overflow: 'hidden'
-          }}
+          className="legal-page__hero"
         >
           <Container>
-            <div className="wp-max-w-4xl wp-text-center" style={{ position: 'relative', zIndex: 10 }}>
-              <div
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  width: '80px',
-                  height: '80px',
-                  borderRadius: '50%',
-                  backgroundColor: 'rgba(255, 255, 255, 0.15)',
-                  backdropFilter: 'blur(12px)',
-                  marginBottom: 'var(--spacing-6)'
-                }}
-              >
+            <div className="legal-page__hero-content">
+              <div className="legal-page__hero-icon">
                 <Scale size={40} strokeWidth={2} />
               </div>
 
-              <h1 
-                style={{
-                  fontFamily: 'var(--font-primary)',
-                  fontSize: 'var(--text-h1)',
-                  fontWeight: 'var(--font-weight-semibold)',
-                  lineHeight: 1.2,
-                  marginBottom: 'var(--spacing-6)'
-                }}
-              >
+              <Heading level={1} className="legal-page__hero-title">
                 Terms of Service
-              </h1>
+              </Heading>
 
-              <p 
-                style={{
-                  fontFamily: 'var(--font-primary)',
-                  fontSize: 'var(--text-lg)',
-                  lineHeight: 1.6,
-                  opacity: 0.9,
-                  marginBottom: 'var(--spacing-6)'
-                }}
-              >
+              <Paragraph className="legal-page__hero-desc">
                 Please read these terms carefully before using our services. By using our services, you agree to be bound by these terms.
-              </p>
+              </Paragraph>
 
-              <p 
-                style={{
-                  fontFamily: 'var(--font-primary)',
-                  fontSize: 'var(--text-base)',
-                  opacity: 0.8
-                }}
-              >
+              <Paragraph className="legal-page__hero-meta">
                 Last updated: {lastUpdated}
-              </p>
+              </Paragraph>
             </div>
           </Container>
         </Section>
@@ -127,81 +72,43 @@ export function TermsOfServiceTemplate() {
         {/* Content Section */}
         <Section spacing="xl">
           <Container>
-            <div className="wp-max-w-4xl" style={{ margin: '0 auto' }}>
+            <div className="legal-page__content-container">
               {/* Section 1: Agreement to Terms */}
-              <div style={{ marginBottom: 'var(--spacing-12)' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-3)', marginBottom: 'var(--spacing-4)' }}>
-                  <div
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      width: '48px',
-                      height: '48px',
-                      borderRadius: 'var(--radius-lg)',
-                      backgroundColor: 'var(--primary)',
-                      color: 'var(--primary-foreground)'
-                    }}
-                  >
+              <div className="legal-page__section">
+                <div className="legal-page__section-header">
+                  <div className="legal-page__section-icon">
                     <FileCheck size={24} />
                   </div>
-                  <h2 
-                    style={{
-                      fontFamily: 'var(--font-primary)',
-                      fontSize: 'var(--text-h2)',
-                      fontWeight: 'var(--font-weight-semibold)',
-                      color: 'var(--foreground)',
-                      margin: 0
-                    }}
-                  >
+                  <Heading level={2} className="legal-page__section-title">
                     Agreement to Terms
-                  </h2>
+                  </Heading>
                 </div>
 
-                <p style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-base)', lineHeight: 1.6, color: 'var(--foreground)', marginBottom: 'var(--spacing-4)' }}>
+                <Paragraph className="legal-page__text">
                   By accessing or using LSX Design's services, you agree to be bound by these Terms of Service and all applicable laws and regulations. If you do not agree with any of these terms, you are prohibited from using our services.
-                </p>
+                </Paragraph>
 
-                <p style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-base)', lineHeight: 1.6, color: 'var(--foreground)' }}>
+                <Paragraph className="legal-page__text">
                   These terms constitute a legally binding agreement between you and LSX Design. We reserve the right to update these terms at any time, and continued use of our services after changes constitutes acceptance of the new terms.
-                </p>
+                </Paragraph>
               </div>
 
               {/* Section 2: Services Provided */}
-              <div style={{ marginBottom: 'var(--spacing-12)' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-3)', marginBottom: 'var(--spacing-4)' }}>
-                  <div
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      width: '48px',
-                      height: '48px',
-                      borderRadius: 'var(--radius-lg)',
-                      backgroundColor: 'var(--primary)',
-                      color: 'var(--primary-foreground)'
-                    }}
-                  >
+              <div className="legal-page__section">
+                <div className="legal-page__section-header">
+                  <div className="legal-page__section-icon">
                     <CheckCircle2 size={24} />
                   </div>
-                  <h2 
-                    style={{
-                      fontFamily: 'var(--font-primary)',
-                      fontSize: 'var(--text-h2)',
-                      fontWeight: 'var(--font-weight-semibold)',
-                      color: 'var(--foreground)',
-                      margin: 0
-                    }}
-                  >
+                  <Heading level={2} className="legal-page__section-title">
                     Services Provided
-                  </h2>
+                  </Heading>
                 </div>
 
-                <p style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-base)', lineHeight: 1.6, color: 'var(--foreground)', marginBottom: 'var(--spacing-4)' }}>
+                <Paragraph className="legal-page__text">
                   LSX Design provides the following services:
-                </p>
+                </Paragraph>
 
-                <ul style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-base)', lineHeight: 1.8, color: 'var(--foreground)', marginLeft: 'var(--spacing-6)', marginBottom: 'var(--spacing-6)' }}>
+                <ul className="legal-page__list">
                   <li><strong>WordPress Development:</strong> Custom WordPress website design, development, and implementation</li>
                   <li><strong>WooCommerce Solutions:</strong> E-commerce platform development and customization</li>
                   <li><strong>Design Services:</strong> UI/UX design, branding, and visual identity</li>
@@ -212,40 +119,21 @@ export function TermsOfServiceTemplate() {
               </div>
 
               {/* Section 3: Client Responsibilities */}
-              <div style={{ marginBottom: 'var(--spacing-12)' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-3)', marginBottom: 'var(--spacing-4)' }}>
-                  <div
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      width: '48px',
-                      height: '48px',
-                      borderRadius: 'var(--radius-lg)',
-                      backgroundColor: 'var(--primary)',
-                      color: 'var(--primary-foreground)'
-                    }}
-                  >
+              <div className="legal-page__section">
+                <div className="legal-page__section-header">
+                  <div className="legal-page__section-icon">
                     <Users size={24} />
                   </div>
-                  <h2 
-                    style={{
-                      fontFamily: 'var(--font-primary)',
-                      fontSize: 'var(--text-h2)',
-                      fontWeight: 'var(--font-weight-semibold)',
-                      color: 'var(--foreground)',
-                      margin: 0
-                    }}
-                  >
+                  <Heading level={2} className="legal-page__section-title">
                     Client Responsibilities
-                  </h2>
+                  </Heading>
                 </div>
 
-                <p style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-base)', lineHeight: 1.6, color: 'var(--foreground)', marginBottom: 'var(--spacing-4)' }}>
+                <Paragraph className="legal-page__text">
                   As a client, you agree to:
-                </p>
+                </Paragraph>
 
-                <ul style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-base)', lineHeight: 1.8, color: 'var(--foreground)', marginLeft: 'var(--spacing-6)', marginBottom: 'var(--spacing-6)' }}>
+                <ul className="legal-page__list">
                   <li>Provide accurate and complete information required for project completion</li>
                   <li>Respond to requests for feedback and approvals in a timely manner</li>
                   <li>Provide necessary content, assets, and access credentials as required</li>
@@ -257,36 +145,17 @@ export function TermsOfServiceTemplate() {
               </div>
 
               {/* Section 4: Payment Terms */}
-              <div style={{ marginBottom: 'var(--spacing-12)' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-3)', marginBottom: 'var(--spacing-4)' }}>
-                  <div
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      width: '48px',
-                      height: '48px',
-                      borderRadius: 'var(--radius-lg)',
-                      backgroundColor: 'var(--primary)',
-                      color: 'var(--primary-foreground)'
-                    }}
-                  >
+              <div className="legal-page__section">
+                <div className="legal-page__section-header">
+                  <div className="legal-page__section-icon">
                     <CheckCircle2 size={24} />
                   </div>
-                  <h2 
-                    style={{
-                      fontFamily: 'var(--font-primary)',
-                      fontSize: 'var(--text-h2)',
-                      fontWeight: 'var(--font-weight-semibold)',
-                      color: 'var(--foreground)',
-                      margin: 0
-                    }}
-                  >
+                  <Heading level={2} className="legal-page__section-title">
                     Payment Terms
-                  </h2>
+                  </Heading>
                 </div>
 
-                <ul style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-base)', lineHeight: 1.8, color: 'var(--foreground)', marginLeft: 'var(--spacing-6)', marginBottom: 'var(--spacing-6)' }}>
+                <ul className="legal-page__list">
                   <li>Payment terms are specified in your project proposal or service agreement</li>
                   <li>Typical payment structure: 50% deposit, 50% upon completion</li>
                   <li>Invoices are due within 14 days unless otherwise specified</li>
@@ -298,40 +167,21 @@ export function TermsOfServiceTemplate() {
               </div>
 
               {/* Section 5: Intellectual Property */}
-              <div style={{ marginBottom: 'var(--spacing-12)' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-3)', marginBottom: 'var(--spacing-4)' }}>
-                  <div
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      width: '48px',
-                      height: '48px',
-                      borderRadius: 'var(--radius-lg)',
-                      backgroundColor: 'var(--primary)',
-                      color: 'var(--primary-foreground)'
-                    }}
-                  >
+              <div className="legal-page__section">
+                <div className="legal-page__section-header">
+                  <div className="legal-page__section-icon">
                     <Scale size={24} />
                   </div>
-                  <h2 
-                    style={{
-                      fontFamily: 'var(--font-primary)',
-                      fontSize: 'var(--text-h2)',
-                      fontWeight: 'var(--font-weight-semibold)',
-                      color: 'var(--foreground)',
-                      margin: 0
-                    }}
-                  >
+                  <Heading level={2} className="legal-page__section-title">
                     Intellectual Property
-                  </h2>
+                  </Heading>
                 </div>
 
-                <p style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-base)', lineHeight: 1.6, color: 'var(--foreground)', marginBottom: 'var(--spacing-4)' }}>
+                <Paragraph className="legal-page__text">
                   Upon full payment, you receive the following rights:
-                </p>
+                </Paragraph>
 
-                <ul style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-base)', lineHeight: 1.8, color: 'var(--foreground)', marginLeft: 'var(--spacing-6)', marginBottom: 'var(--spacing-6)' }}>
+                <ul className="legal-page__list">
                   <li><strong>Custom Code:</strong> Full ownership of custom code developed specifically for your project</li>
                   <li><strong>Design Assets:</strong> Rights to use designs, graphics, and visual elements</li>
                   <li><strong>Content:</strong> You retain ownership of all content you provide</li>
@@ -342,36 +192,17 @@ export function TermsOfServiceTemplate() {
               </div>
 
               {/* Section 6: Limitations of Liability */}
-              <div style={{ marginBottom: 'var(--spacing-12)' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-3)', marginBottom: 'var(--spacing-4)' }}>
-                  <div
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      width: '48px',
-                      height: '48px',
-                      borderRadius: 'var(--radius-lg)',
-                      backgroundColor: 'var(--primary)',
-                      color: 'var(--primary-foreground)'
-                    }}
-                  >
+              <div className="legal-page__section">
+                <div className="legal-page__section-header">
+                  <div className="legal-page__section-icon">
                     <XCircle size={24} />
                   </div>
-                  <h2 
-                    style={{
-                      fontFamily: 'var(--font-primary)',
-                      fontSize: 'var(--text-h2)',
-                      fontWeight: 'var(--font-weight-semibold)',
-                      color: 'var(--foreground)',
-                      margin: 0
-                    }}
-                  >
+                  <Heading level={2} className="legal-page__section-title">
                     Limitations of Liability
-                  </h2>
+                  </Heading>
                 </div>
 
-                <ul style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-base)', lineHeight: 1.8, color: 'var(--foreground)', marginLeft: 'var(--spacing-6)', marginBottom: 'var(--spacing-6)' }}>
+                <ul className="legal-page__list">
                   <li>LSX Design is not liable for any indirect, incidental, or consequential damages</li>
                   <li>Our total liability is limited to the amount paid by you for the specific service</li>
                   <li>We are not responsible for third-party services, plugins, or hosting issues</li>
@@ -382,40 +213,21 @@ export function TermsOfServiceTemplate() {
               </div>
 
               {/* Section 7: Termination */}
-              <div style={{ marginBottom: 'var(--spacing-12)' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-3)', marginBottom: 'var(--spacing-4)' }}>
-                  <div
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      width: '48px',
-                      height: '48px',
-                      borderRadius: 'var(--radius-lg)',
-                      backgroundColor: 'var(--primary)',
-                      color: 'var(--primary-foreground)'
-                    }}
-                  >
+              <div className="legal-page__section">
+                <div className="legal-page__section-header">
+                  <div className="legal-page__section-icon">
                     <AlertTriangle size={24} />
                   </div>
-                  <h2 
-                    style={{
-                      fontFamily: 'var(--font-primary)',
-                      fontSize: 'var(--text-h2)',
-                      fontWeight: 'var(--font-weight-semibold)',
-                      color: 'var(--foreground)',
-                      margin: 0
-                    }}
-                  >
+                  <Heading level={2} className="legal-page__section-title">
                     Termination
-                  </h2>
+                  </Heading>
                 </div>
 
-                <p style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-base)', lineHeight: 1.6, color: 'var(--foreground)', marginBottom: 'var(--spacing-4)' }}>
+                <Paragraph className="legal-page__text">
                   Either party may terminate services under the following conditions:
-                </p>
+                </Paragraph>
 
-                <ul style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-base)', lineHeight: 1.8, color: 'var(--foreground)', marginLeft: 'var(--spacing-6)', marginBottom: 'var(--spacing-6)' }}>
+                <ul className="legal-page__list">
                   <li>Written notice of 30 days for ongoing service agreements</li>
                   <li>Immediate termination for breach of these terms</li>
                   <li>Non-payment beyond 30 days may result in service suspension</li>
@@ -426,33 +238,18 @@ export function TermsOfServiceTemplate() {
               </div>
 
               {/* Contact Information */}
-              <div 
-                style={{
-                  padding: 'var(--spacing-8)',
-                  borderRadius: 'var(--radius-lg)',
-                  backgroundColor: 'var(--muted)',
-                  border: '1px solid var(--border)'
-                }}
-              >
-                <h3 
-                  style={{
-                    fontFamily: 'var(--font-primary)',
-                    fontSize: 'var(--text-h3)',
-                    fontWeight: 'var(--font-weight-semibold)',
-                    color: 'var(--foreground)',
-                    marginBottom: 'var(--spacing-4)'
-                  }}
-                >
+              <div className="legal-page__contact-box">
+                <Heading level={3} className="legal-page__contact-title">
                   Questions About Our Terms?
-                </h3>
-                <p style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-base)', lineHeight: 1.6, color: 'var(--foreground)', marginBottom: 'var(--spacing-3)' }}>
+                </Heading>
+                <Paragraph className="legal-page__contact-text">
                   If you have questions about these Terms of Service, please contact us:
-                </p>
-                <p style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-base)', lineHeight: 1.8, color: 'var(--foreground)', margin: 0 }}>
+                </Paragraph>
+                <Paragraph className="legal-page__contact-details">
                   <strong>Email:</strong> legal@lsxdesign.com<br />
                   <strong>Website:</strong> https://lsxdesign.com/contact<br />
                   <strong>Last Updated:</strong> {lastUpdated}
-                </p>
+                </Paragraph>
               </div>
             </div>
           </Container>
@@ -466,10 +263,6 @@ export function TermsOfServiceTemplate() {
           buttonPage="contact"
           variant="default"
         />
-      </main>
-
-      <SiteFooter />
-      <BackToTopButton />
     </>
   );
 }

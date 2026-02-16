@@ -11,11 +11,6 @@
  * **Code Reduction:** 891 → 236 lines (73.5% reduction)
  */
 
-import { SiteHeader } from '../parts/SiteHeader';
-import { SiteFooter } from '../parts/SiteFooter';
-import { SkipLink } from '../common/SkipLink';
-import { BackToTopButton } from '../blocks/layout/BackToTopButton';
-import { RouteAnnouncer } from '../blocks/utility/RouteAnnouncer';
 import { Hero } from '../patterns/Hero';
 import { FeatureIconGrid } from '../patterns/FeatureIconGrid';
 import { ThemeShowcaseGrid } from '../patterns/ThemeShowcaseGrid';
@@ -204,11 +199,6 @@ export function LSXDesignTemplate() {
 
   return (
     <>
-      <RouteAnnouncer />
-      <SkipLink />
-      <SiteHeader />
-      
-      <main id="main-content" role="main">
         {/* Hero Section */}
         <Hero
           variant="gradient"
@@ -287,10 +277,6 @@ export function LSXDesignTemplate() {
           description="Common questions about LSX Design themes"
           faqs={lsxFAQs}
         />
-      </main>
-
-      <SiteFooter />
-      <BackToTopButton />
     </>
   );
 }

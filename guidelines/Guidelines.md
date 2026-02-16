@@ -14,6 +14,16 @@ It does **not** validate:
 
 **Business Context:** LSX Design is a WordPress and WooCommerce web design agency specializing in modern block themes, design systems, and accessible high-performance websites.
 
+**Project Status (February 14, 2026):**
+- ✅ **NEW (FEB 14, 2026):** 🎉 **Sitemap updated to 117 routes** (overview-sitemap.md rewritten from 30 → 117 routes)
+- ✅ **NEW (FEB 14):** **Routing reference updated** (routing-complete-reference.md rewritten, verified against routes.tsx)
+- ✅ **NEW (FEB 14):** **Templates overview updated** (overview-templates.md, 90+ template files inventoried)
+- ✅ **NEW (FEB 14):** **Tailwind elimination — 6 templates migrated** (WhyChooseUs, ServicesLanding, AuthorArchive, Guarantees, TourOperatorArchive, SingleTour)
+- ✅ **NEW (FEB 14):** **6 new BEM CSS files** (why-choose-us.css, author-archive.css, guarantees.css, tour-operator-archive.css, single-tour.css + services-landing.css updated)
+- ✅ **NEW (FEB 14):** **Minor Tailwind fixes** (ContentCollection, EmailMarketing, Careers, SiteMap — py-*/p-* replaced)
+- ✅ **NEW (FEB 14):** All 117 routes verified and documented
+- ✅ **NEW (FEB 14):** Zero raw Tailwind classes in migrated templates
+
 **Project Status (January 9, 2025):**
 - ✅ Complete centralized data system implemented (`/src/app/data/`)
 - ✅ All navigation links fixed and centralized
@@ -377,7 +387,26 @@ It does **not** validate:
 - ✅ **NEW (JAN 22):** **Design system compliance: 100%** (all 38 blocks use CSS variables + BEM naming)
 - ✅ **NEW (JAN 22):** **Complete block library: 66/66 blocks** (100% WordPress + WooCommerce FSE compatible)
 - ✅ **NEW (JAN 22):** **Complete WooCommerce coverage: 11/11 blocks** (full e-commerce functionality)
+- ✅ **NEW (JAN 24, 2025):** 🎉 **Phase 7 COMPLETE: Pattern Refactoring & BEM Enforcement** (All patterns migrated)
+- ✅ **NEW (JAN 24):** **100% Pattern Migration:** All 30+ patterns now use dedicated CSS files in `src/styles/patterns/`.
+- ✅ **NEW (JAN 24):** **Zero Duplicate CSS:** Cleaned up root `src/styles/` directory (16+ files moved/removed).
+- ✅ **NEW (JAN 24):** **Strict BEM Compliance:** All patterns follow `block__element--modifier` syntax.
+- ✅ **NEW (JAN 24):** **Import Hygiene:** React components updated to import from `@/styles/patterns/`.
+- ✅ **NEW (JAN 24):** **System Verification:** Full pass completed, zero regressions found.
+- ✅ **NEW (JAN 24, 2025):** 🎉 **Phase 8 COMPLETE: Full Template Migration & Polish**
+- ✅ **NEW (JAN 24):** **Refactored BlogIndexTemplate:** Now uses `CardGrid` pattern (removed manual loops).
+- ✅ **NEW (JAN 24):** **Refactored ArchiveTemplate:** Now uses `Button` component (removed raw HTML).
+- ✅ **NEW (JAN 24):** **Template Verification:** Verified 10+ core templates for BEM compliance.
+- ✅ **NEW (JAN 24):** **CSS Architecture:** Validated `src/styles/templates/` for strict variable usage.
+- ✅ **NEW (JAN 24, 2025):** 🎉 **Phase 9 COMPLETE: Final Design System Polish**
+- ✅ **NEW (JAN 24):** **Hex Code Elimination:** Replaced 20+ hardcoded hex colors with semantic variables.
+- ✅ **NEW (JAN 24):** **Gradient System:** Created 13 new gradient variables in `theme-light.css`.
+- ✅ **NEW (JAN 24):** **Pixel Removal:** Replaced hardcoded spacing/sizing with `--spacing-*` variables.
+- ✅ **NEW (JAN 24):** **Strict Typography:** Verified 100% usage of `--font-primary` and `--font-secondary`.
 
+**See:** [PHASE-9-DESIGN-SYSTEM-POLISH-COMPLETE-JAN-24-2025.md](../reports/2025-01/phase-9-design-system-polish.md) for **🎉 PHASE 9 COMPLETE** (Final Design System Polish) (Jan 24) ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ **🎉 NEW**.
+**See:** [PHASE-8-TEMPLATE-MIGRATION-COMPLETE-JAN-24-2025.md](../reports/2025-01/phase-8-template-migration-complete.md) for **🎉 PHASE 8 COMPLETE** (Full Template Migration & Polish) (Jan 24) ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ **🎉 NEW**.
+**See:** [PHASE-7-COMPLETE-SUMMARY-JAN-24-2025.md](../reports/2025-01/phase-7-complete-summary.md) for **🎉 PHASE 7 COMPLETE** (Pattern Refactoring & BEM Enforcement) (Jan 24) ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ **🎉 NEW**.
 **See:** [PHASE-1-COMPLETE-SUMMARY-JAN-23-2025.md](../PHASE-1-COMPLETE-SUMMARY-JAN-23-2025.md) for **🎉 PHASE 1 COMPLETE** (4/4 batches, 140+ components, 100% compliant, A+ grade, 85% time savings) (Jan 23) ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ **🎉 NEW**.
 **See:** [BATCH-4-COMPLETE-JAN-23-2025.md](../BATCH-4-COMPLETE-JAN-23-2025.md) for **✅ BATCH 4 COMPLETE** (Block compliance audit, 35+ blocks, 100% compliant, A+ grade) (Jan 23) ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ **✅ NEW**.
 **See:** [BATCH-3-COMPLETE-JAN-23-2025.md](../BATCH-3-COMPLETE-JAN-23-2025.md) for **✅ BATCH 3 COMPLETE** (Pattern compliance audit, 51/51 patterns, 100% compliant, A+ grade) (Jan 23) ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ **✅ NEW**.
@@ -1683,10 +1712,12 @@ Before you call the prototype "done":
 
 ---
 
-**Last Updated:** December 25, 2024  
-**System Version:** 1.0  
+**Last Updated:** February 14, 2026  
+**System Version:** 2.0  
 **Design System:** LSX Design  
-**WordPress Compatibility:** FSE (Full Site Editing)
+**WordPress Compatibility:** FSE (Full Site Editing)  
+**Total Routes:** 117  
+**Total Template Files:** 90+
 
 ---
 

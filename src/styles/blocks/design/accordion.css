@@ -1,0 +1,168 @@
+/* ============================================
+   ACCORDION / DETAILS BLOCK STYLES
+   ============================================ */
+
+/**
+ * WordPress Accordion Block (core/details)
+ * 
+ * Collapsible content panels for FAQs, instructions, expandable content.
+ * Maps to WordPress native <details> element.
+ * 
+ * Features:
+ * - Smooth expand/collapse animations
+ * - WCAG 2.1 AA compliant (keyboard navigation, ARIA attributes)
+ * - 100% CSS variables (user-controllable)
+ * - Light/dark mode support
+ * - Reduced motion support
+ * 
+ * Usage:
+ * <Accordion>
+ *   <AccordionItem id="faq-1" question="..." answer="..." />
+ * </Accordion>
+ */
+
+/* Accordion wrapper */
+.wp-block-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  width: 100%;
+}
+
+/* Individual accordion item */
+.wp-block-accordion__item {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.wp-block-accordion__item:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-md);
+}
+
+.wp-block-accordion__item--open {
+  border-color: var(--primary);
+}
+
+/* Question header (button) */
+.wp-block-accordion__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--spacing-5) var(--spacing-6);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s ease;
+  gap: var(--spacing-4);
+}
+
+.wp-block-accordion__header:hover {
+  background-color: var(--muted);
+}
+
+.wp-block-accordion__header:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: -2px;
+}
+
+.wp-block-accordion__header:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: -2px;
+}
+
+/* Question text */
+.wp-block-accordion__question {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  line-height: var(--line-height-snug);
+  flex: 1;
+}
+
+/* Chevron icon */
+.wp-block-accordion__icon {
+  color: var(--primary);
+  flex-shrink: 0;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.wp-block-accordion__icon--open {
+  transform: rotate(180deg);
+}
+
+/* Answer panel (content wrapper for animation) */
+.wp-block-accordion__content {
+  height: 0;
+  overflow: hidden;
+  transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.wp-block-accordion__content[hidden] {
+  display: block; /* Required for transition to work from 0 height */
+  height: 0;
+}
+
+/* Answer content (inner padding wrapper) */
+.wp-block-accordion__content-inner {
+  padding: 0 var(--spacing-6) var(--spacing-5);
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  line-height: var(--line-height-relaxed);
+  color: var(--muted-foreground);
+}
+
+.wp-block-accordion__content-inner p {
+  margin-bottom: var(--spacing-4);
+}
+
+.wp-block-accordion__content-inner p:last-child {
+  margin-bottom: 0;
+}
+
+.wp-block-accordion__content-inner ul,
+.wp-block-accordion__content-inner ol {
+  margin: var(--spacing-4) 0;
+  padding-left: var(--spacing-6);
+}
+
+.wp-block-accordion__content-inner li {
+  margin-bottom: var(--spacing-2);
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .wp-block-accordion__content {
+    transition: none;
+  }
+  
+  .wp-block-accordion__icon {
+    transition: none;
+  }
+  
+  .wp-block-accordion__item {
+    transition: none;
+  }
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 767px) {
+  .wp-block-accordion__header {
+    padding: var(--spacing-4) var(--spacing-5);
+  }
+  
+  .wp-block-accordion__question {
+    font-size: var(--text-base);
+  }
+  
+  .wp-block-accordion__content-inner {
+    padding: 0 var(--spacing-5) var(--spacing-4);
+    font-size: var(--text-small);
+  }
+}

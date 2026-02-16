@@ -24,11 +24,10 @@ import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { Button } from '../blocks/design/Buttons';
 import { useNavigation } from '../../contexts/NavigationContext';
-import { SiteHeader } from '../parts/SiteHeader';
-import { SiteFooter } from '../parts/SiteFooter';
-import { SkipLink } from '../common/SkipLink';
-import { BackToTopButton } from '../blocks/layout/BackToTopButton';
+
 import { Breadcrumbs } from '../common/Breadcrumbs';
+import { Heading } from '../common/Heading';
+import { Paragraph } from '../blocks/text/Paragraph';
 import { useState } from 'react';
 import {
   Layers,
@@ -42,9 +41,10 @@ import {
   Search,
   Grid3x3
 } from 'lucide-react';
+import '@/styles/templates/component-showcase.css';
 
 /**
- * Component  categories organized by type and usage
+ * Component categories organized by type and usage
  */
 const componentCategories = [
   {
@@ -177,162 +177,66 @@ export function ComponentShowcase() {
         color: 'var(--foreground)'
       }}
     >
-      {/* Skip Link for Accessibility */}
-      <SkipLink targetId="main-content" />
-
-      {/* Site Header */}
-      <SiteHeader />
-
       {/* Main Content */}
-      <main
-        id="main-content"
-        role="main"
+      <div
         style={{
-          flex: 1,
           display: 'flex',
           flexDirection: 'column'
         }}
       >
-        {/* Hero Header */}
-        <Section variant="default" spacing="50">
-          <Container>
-            {/* Breadcrumbs */}
+        {/* Breadcrumbs */}
+        <section className="wp-block-breadcrumbs-section">
             <Breadcrumbs
               items={[
                 { label: 'Home', page: 'home' },
                 { label: 'Developer Tools', page: 'dev-tools' },
                 { label: 'Component Showcase' }
               ]}
-              className="mb-8"
             />
-            
-            <div className="text-center max-w-4xl mx-auto">
-              <h1
-                style={{
-                  fontSize: 'var(--text-h1)',
-                  fontFamily: 'Lexend, sans-serif',
-                  fontWeight: 'var(--font-weight-medium)',
-                  color: 'var(--foreground)',
-                  margin: '0 0 16px 0',
-                  lineHeight: 1.2
-                }}
+        </section>
+
+        {/* Hero Header */}
+        <Section background="default" spacing="lg">
+          <Container>
+            <div className="wp-text-center wp-max-w-4xl wp-mx-auto">
+              <Heading
+                level={1}
+                className="wp-mb-4"
               >
                 Component Showcase
-              </h1>
+              </Heading>
 
-              <p
-                style={{
-                  fontSize: 'var(--text-xl)',
-                  fontFamily: 'var(--font-secondary)',
-                  fontWeight: 'var(--font-weight-regular)',
-                  color: 'var(--muted-foreground)',
-                  margin: '0 0 48px 0',
-                  lineHeight: 1.5
-                }}
+              <Paragraph
+                className="showcase__subtitle wp-mb-12"
               >
                 Complete library of reusable components, patterns, and blocks in the LSX Design system
-              </p>
+              </Paragraph>
 
               {/* Stats */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-                <div
-                  style={{
-                    padding: '32px',
-                    backgroundColor: 'var(--card)',
-                    borderRadius: 'var(--radius-lg)',
-                    border: '1px solid var(--border-soft)',
-                    textAlign: 'center'
-                  }}
-                >
-                  <div
-                    style={{
-                      fontSize: 'var(--text-h1)',
-                      fontFamily: 'Lexend, sans-serif',
-                      fontWeight: 'var(--font-weight-medium)',
-                      color: 'var(--primary)',
-                      lineHeight: 1,
-                      marginBottom: '12px'
-                    }}
-                  >
+              <div className="wp-grid-3-cols wp-gap-8 wp-mb-12">
+                <div className="showcase__stat-card">
+                  <div className="showcase__stat-value">
                     {totalComponents}
                   </div>
-                  <div
-                    style={{
-                      fontSize: 'var(--text-base)',
-                      fontFamily: 'Manrope, sans-serif',
-                      fontWeight: 'var(--font-weight-regular)',
-                      color: 'var(--muted-foreground)',
-                      lineHeight: 1.5
-                    }}
-                  >
+                  <div className="showcase__stat-label">
                     Total Components
                   </div>
                 </div>
 
-                <div
-                  style={{
-                    padding: '32px',
-                    backgroundColor: 'var(--card)',
-                    borderRadius: 'var(--radius-lg)',
-                    border: '1px solid var(--border-soft)',
-                    textAlign: 'center'
-                  }}
-                >
-                  <div
-                    style={{
-                      fontSize: 'var(--text-h1)',
-                      fontFamily: 'Lexend, sans-serif',
-                      fontWeight: 'var(--font-weight-medium)',
-                      color: 'var(--primary)',
-                      lineHeight: 1,
-                      marginBottom: '12px'
-                    }}
-                  >
+                <div className="showcase__stat-card">
+                  <div className="showcase__stat-value">
                     {componentCategories.length}
                   </div>
-                  <div
-                    style={{
-                      fontSize: 'var(--text-base)',
-                      fontFamily: 'Manrope, sans-serif',
-                      fontWeight: 'var(--font-weight-regular)',
-                      color: 'var(--muted-foreground)',
-                      lineHeight: 1.5
-                    }}
-                  >
+                  <div className="showcase__stat-label">
                     Categories
                   </div>
                 </div>
 
-                <div
-                  style={{
-                    padding: '32px',
-                    backgroundColor: 'var(--card)',
-                    borderRadius: 'var(--radius-lg)',
-                    border: '1px solid var(--border-soft)',
-                    textAlign: 'center'
-                  }}
-                >
-                  <div
-                    style={{
-                      fontSize: 'var(--text-h1)',
-                      fontFamily: 'Lexend, sans-serif',
-                      fontWeight: 'var(--font-weight-medium)',
-                      color: 'var(--primary)',
-                      lineHeight: 1,
-                      marginBottom: '12px'
-                    }}
-                  >
+                <div className="showcase__stat-card">
+                  <div className="showcase__stat-value">
                     15
                   </div>
-                  <div
-                    style={{
-                      fontSize: 'var(--text-base)',
-                      fontFamily: 'Manrope, sans-serif',
-                      fontWeight: 'var(--font-weight-regular)',
-                      color: 'var(--muted-foreground)',
-                      lineHeight: 1.5
-                    }}
-                  >
+                  <div className="showcase__stat-label">
                     Patterns
                   </div>
                 </div>
@@ -342,11 +246,11 @@ export function ComponentShowcase() {
         </Section>
 
         {/* Toolbar: Search & Filters */}
-        <Section variant="default" spacing="30">
+        <Section background="default" spacing="sm">
           <Container>
-            <div className="flex flex-col gap-6">
+            <div className="wp-flex wp-flex-col wp-gap-6">
               {/* Search */}
-              <div className="relative">
+              <div className="wp-relative">
                 <Search
                   size={20}
                   style={{
@@ -364,11 +268,11 @@ export function ComponentShowcase() {
                   onChange={(e) => setSearchTerm(e.target.value)}
                   style={{
                     width: '100%',
-                    padding: '12px 16px 12px 48px',
+                    padding: 'var(--spacing-3) var(--spacing-4) var(--spacing-3) var(--spacing-12)',
                     backgroundColor: 'var(--background)',
                     border: '1px solid var(--border-soft)',
                     borderRadius: 'var(--radius-lg)',
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-base)',
                     color: 'var(--foreground)',
                     outline: 'none',
@@ -384,15 +288,8 @@ export function ComponentShowcase() {
               </div>
 
               {/* Filters */}
-              <div className="flex flex-wrap items-center gap-3">
-                <span
-                  style={{
-                    fontSize: 'var(--text-base)',
-                    fontFamily: 'var(--font-secondary)',
-                    fontWeight: 'var(--font-weight-regular)',
-                    color: 'var(--foreground)'
-                  }}
-                >
+              <div className="wp-flex wp-flex-wrap wp-items-center wp-gap-3">
+                <span className="showcase__filter-label">
                   Filter:
                 </span>
                 {(['all', 'common', 'patterns', 'blocks', 'parts', 'ui'] as FilterType[]).map((filterType) => (
@@ -400,12 +297,12 @@ export function ComponentShowcase() {
                     key={filterType}
                     onClick={() => setFilter(filterType)}
                     style={{
-                      padding: '8px 16px',
+                      padding: 'var(--spacing-2) var(--spacing-4)',
                       backgroundColor: filter === filterType ? 'var(--primary)' : 'var(--background)',
                       color: filter === filterType ? 'var(--primary-foreground)' : 'var(--foreground)',
                       border: `1px solid ${filter === filterType ? 'var(--primary)' : 'var(--border-soft)'}`,
                       borderRadius: 'var(--radius-lg)',
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-base)',
                       fontWeight: 'var(--font-weight-medium)',
                       cursor: 'pointer',
@@ -435,16 +332,17 @@ export function ComponentShowcase() {
                     {filterType}
                   </button>
                 ))}
-                <Button
-                  variant="outline"
-                  size="md"
-                  page="template-tester"
-                  icon={<Code size={16} />}
-                  aria-label="Back to Template Tester"
-                  style={{ marginLeft: 'auto' }}
-                >
-                  Template Tester
-                </Button>
+                <div style={{ marginLeft: 'auto' }}>
+                  <Button
+                    variant="outline"
+                    size="md"
+                    href="/template-tester"
+                    icon={<Code size={16} />}
+                    aria-label="Back to Template Tester"
+                  >
+                    Template Tester
+                  </Button>
+                </div>
               </div>
             </div>
           </Container>
@@ -452,10 +350,10 @@ export function ComponentShowcase() {
 
         {/* Component Categories */}
         {filteredCategories.map((category) => (
-          <Section key={category.id} variant="default" spacing="50">
+          <Section key={category.id} background="default" spacing="lg">
             <Container>
               {/* Category Header */}
-              <div className="flex items-start gap-4 mb-8">
+              <div className="wp-flex wp-items-start wp-gap-4 wp-mb-8">
                 <div
                   style={{
                     width: '48px',
@@ -474,112 +372,36 @@ export function ComponentShowcase() {
                   />
                 </div>
                 <div>
-                  <h2
-                    style={{
-                      fontSize: 'var(--text-h2)',
-                      fontFamily: 'Lexend, sans-serif',
-                      fontWeight: 'var(--font-weight-medium)',
-                      color: 'var(--foreground)',
-                      margin: '0 0 8px 0',
-                      lineHeight: 1.25
-                    }}
-                  >
+                  <Heading level={2} className="wp-mb-2">
                     {category.title}
-                  </h2>
-                  <p
-                    style={{
-                      fontSize: 'var(--text-base)',
-                      fontFamily: 'Manrope, sans-serif',
-                      fontWeight: 'var(--font-weight-regular)',
-                      color: 'var(--muted-foreground)',
-                      margin: 0,
-                      lineHeight: 1.5
-                    }}
-                  >
+                  </Heading>
+                  <Paragraph className="showcase__category-desc">
                     {category.description}
-                  </p>
+                  </Paragraph>
                 </div>
               </div>
 
               {/* Components Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div className="wp-grid-3-cols wp-gap-4">
                 {category.components.map((component) => (
                   <div
                     key={component.name}
-                    style={{
-                      padding: '20px',
-                      backgroundColor: 'var(--card)',
-                      border: '1px solid var(--border-soft)',
-                      borderRadius: 'var(--radius-lg)',
-                      transition: 'all 0.2s ease',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      gap: '12px'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.borderColor = 'var(--primary)';
-                      e.currentTarget.style.transform = 'translateY(-2px)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.borderColor = 'var(--border-soft)';
-                      e.currentTarget.style.transform = 'translateY(0)';
-                    }}
+                    className="showcase__card"
                   >
-                    <div className="flex items-start justify-between">
-                      <h3
-                        style={{
-                          fontSize: 'var(--text-base)',
-                          fontFamily: 'Lexend, sans-serif',
-                          fontWeight: 'var(--font-weight-medium)',
-                          color: 'var(--foreground)',
-                          margin: 0,
-                          lineHeight: 1.5
-                        }}
-                      >
+                    <div className="showcase__card-header">
+                      <Heading level={3} className="showcase__card-title">
                         {component.name}
-                      </h3>
-                      <span
-                        style={{
-                          fontSize: 'var(--text-small)',
-                          fontFamily: 'var(--font-secondary)',
-                          fontWeight: 'var(--font-weight-regular)',
-                          color: 'var(--muted-foreground)',
-                          padding: '2px 8px',
-                          backgroundColor: 'var(--background)',
-                          borderRadius: 'var(--radius)',
-                          border: '1px solid var(--border-soft)'
-                        }}
-                      >
+                      </Heading>
+                      <span className="showcase__card-badge">
                         {component.usage}
                       </span>
                     </div>
 
-                    <p
-                      style={{
-                        fontSize: 'var(--text-base)',
-                        fontFamily: 'var(--font-secondary)',
-                        fontWeight: 'var(--font-weight-regular)',
-                        color: 'var(--muted-foreground)',
-                        margin: 0,
-                        lineHeight: 1.6
-                      }}
-                    >
+                    <Paragraph className="showcase__card-desc">
                       {component.description}
-                    </p>
+                    </Paragraph>
 
-                    <code
-                      style={{
-                        fontSize: 'var(--text-small)',
-                        fontFamily: 'monospace',
-                        color: 'var(--primary)',
-                        padding: '4px 8px',
-                        backgroundColor: 'var(--background)',
-                        borderRadius: 'var(--radius)',
-                        border: '1px solid var(--border-soft)',
-                        display: 'block',
-                        overflow: 'auto'
-                      }}
-                    >
+                    <code className="showcase__card-code">
                       {component.file}
                     </code>
                   </div>
@@ -591,72 +413,28 @@ export function ComponentShowcase() {
 
         {/* Empty State */}
         {filteredCategories.length === 0 && (
-          <Section variant="default" spacing="50">
+          <Section background="default" spacing="lg">
             <Container>
-              <div
-                style={{
-                  padding: '64px 32px',
-                  textAlign: 'center',
-                  backgroundColor: 'var(--card)',
-                  borderRadius: 'var(--radius-xl)',
-                  border: '1px solid var(--border-soft)'
-                }}
-              >
-                <p
-                  style={{
-                    fontSize: 'var(--text-lg)',
-                    fontFamily: 'Lexend, sans-serif',
-                    fontWeight: 'var(--font-weight-regular)',
-                    color: 'var(--muted-foreground)',
-                    margin: 0
-                  }}
-                >
+              <div className="showcase__empty">
+                <Paragraph className="showcase__empty-text">
                   No components found matching "{searchTerm}"
-                </p>
+                </Paragraph>
               </div>
             </Container>
           </Section>
         )}
 
         {/* Footer Note */}
-        <Section variant="canvas" spacing="50">
+        <Section background="default" spacing="lg">
           <Container>
-            <div
-              style={{
-                padding: '24px',
-                backgroundColor: 'var(--card)',
-                borderRadius: 'var(--radius-lg)',
-                border: '1px solid var(--border-soft)',
-                textAlign: 'center'
-              }}
-            >
-              <p
-                style={{
-                  fontSize: 'var(--text-base)',
-                  fontFamily: 'var(--font-secondary)',
-                  fontWeight: 'var(--font-weight-regular)',
-                  color: 'var(--muted-foreground)',
-                  margin: 0,
-                  lineHeight: 1.5
-                }}
-              >
-                All components use 100% CSS variables from <code style={{
-                  fontFamily: 'monospace',
-                  fontSize: 'var(--text-small)',
-                  padding: '2px 6px',
-                  backgroundColor: 'var(--background)',
-                  borderRadius: 'var(--radius)',
-                  border: '1px solid var(--border-soft)'
-                }}>theme.css</code> • Lexend/Manrope fonts • WCAG 2.1 AA compliant • WordPress FSE compatible
-              </p>
+            <div className="showcase__footer-note">
+              <Paragraph className="showcase__footer-text">
+                All components use 100% CSS variables from <code className="showcase__inline-code">theme.css</code> • Lexend/Manrope fonts • WCAG 2.1 AA compliant • WordPress FSE compatible
+              </Paragraph>
             </div>
           </Container>
         </Section>
-      </main>
-
-      {/* Site Footer */}
-      <SiteFooter />
-      <BackToTopButton />
+      </div>
     </div>
   );
 }

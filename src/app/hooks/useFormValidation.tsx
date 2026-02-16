@@ -82,13 +82,13 @@ export function useFormValidation<T extends Record<string, any>>(
         aria-live="polite"
         aria-atomic="true"
         style={{
-          fontFamily: 'Manrope, sans-serif',
+          fontFamily: 'var(--font-secondary)',
           fontSize: 'var(--text-small)',
           color: 'var(--destructive)',
-          marginTop: '4px',
+          marginTop: 'var(--spacing-1)',
           display: 'flex',
           alignItems: 'center',
-          gap: '4px'
+          gap: 'var(--spacing-1)'
         }}
       >
         {/* Error icon */}

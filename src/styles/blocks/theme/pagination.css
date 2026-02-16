@@ -1,0 +1,46 @@
+/**
+ * Pagination Block Styles
+ */
+.wp-block-pagination {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-2);
+  align-items: center;
+  justify-content: center;
+  margin-top: var(--spacing-12);
+}
+
+.wp-block-pagination__item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.5rem;
+  height: 2.5rem;
+  padding: 0 var(--spacing-2);
+  
+  border-radius: var(--radius);
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  text-decoration: none;
+  
+  background-color: transparent;
+  color: var(--muted-foreground);
+  border: var(--wp--preset--border-width--1) solid transparent;
+  transition: all var(--transition-base) ease;
+  cursor: pointer;
+}
+
+.wp-block-pagination__item:hover {
+  background-color: var(--muted);
+  color: var(--foreground);
+}
+
+.wp-block-pagination__item.is-active {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.wp-block-pagination__ellipsis {
+  color: var(--muted-foreground);
+}

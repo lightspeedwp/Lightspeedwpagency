@@ -31,20 +31,17 @@
  * @see {@link /guidelines/templates/portfolio-archive.md}
  */
 
-import { SiteHeader } from '../parts/SiteHeader';
-import { SiteFooter } from '../parts/SiteFooter';
-import { SkipLink } from '../common/SkipLink';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { Breadcrumbs } from '../common/Breadcrumbs';
-import { ArchiveHeader } from '../patterns/ArchiveHeader';
 import { ArchiveCTA } from '../patterns/ArchiveCTA';
 import { SocialProof } from '../patterns/SocialProof';
 import { FAQSection } from '../patterns/FAQSection';
-import { BackToTopButton } from '../blocks/layout/BackToTopButton';
 import { StickyBookCallButton } from '../blocks/layout/StickyBookCallButton';
 import { Skeleton } from '../blocks/layout/Skeleton';
 import { MobileFilterPopover } from '../common/MobileFilterPopover';
+import { Heading } from '../blocks/text/Heading';
+import { Paragraph } from '../blocks/text/Paragraph';
 import { useStaggerReveal } from '../../hooks/useScrollReveal';
 import { useMicroInteractions } from '../../hooks/useMicroInteractions';
 import { Filter } from 'lucide-react';
@@ -52,7 +49,8 @@ import { useState, useEffect } from 'react';
 import { portfolioFAQs } from '../../data/faqs';
 import { clientLogos } from '../../data/logos';
 import { portfolioArchiveCTA } from '../../data/cta';
-import { portfolioArchiveItems, portfolioCategories, portfolioIndustries } from '../../data/archive-items';
+import { portfolioArchiveItems } from '../../data/archive-items';
+import '@/styles/templates/portfolio-archive.css';
 import { useNavigation } from '../../contexts/NavigationContext';
 
 export function PortfolioArchiveTemplate() {
@@ -101,108 +99,44 @@ export function PortfolioArchiveTemplate() {
           e.preventDefault();
           navigateTo(`portfolio-single-${item.slug}`);
         }}
-        style={{
-          textDecoration: 'none',
-          display: 'block',
-          cursor: 'pointer',
-        }}
+        className="portfolio-card"
         aria-label={`View ${item.title} project`}
       >
         <article
           {...liftProps}
-          style={{
-            backgroundColor: 'var(--card)',
-            border: '1px solid var(--border-soft)',
-            borderRadius: 'var(--radius-xl)',
-            overflow: 'hidden',
-            boxShadow: 'var(--shadow-sm)',
-            ...liftProps.style
-          }}
+          className="portfolio-card__article"
+          style={liftProps.style}
         >
           {/* Project Image */}
-          <div 
-            style={{
-              position: 'relative',
-              paddingTop: '66.67%',
-              overflow: 'hidden'
-            }}
-          >
+          <div className="portfolio-card__image-container">
             <img 
               src={item.imageUrl}
               alt={item.title}
-              style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover'
-              }}
+              className="portfolio-card__image"
             />
             
             {/* Category Badge */}
-            <span 
-              style={{
-                position: 'absolute',
-                top: '16px',
-                left: '16px',
-                backgroundColor: 'var(--primary)',
-                color: 'var(--primary-foreground)',
-                padding: '8px 16px',
-                borderRadius: 'var(--radius-lg)',
-                fontFamily: 'var(--font-primary)',
-                fontSize: 'var(--text-small)',
-                fontWeight: 'var(--font-weight-medium)',
-                backdropFilter: 'blur(10px)',
-                border: '1px solid var(--border)',
-                boxShadow: 'var(--shadow-lg)'
-              }}
-            >
+            <span className="portfolio-card__category-badge">
               {item.category}
             </span>
           </div>
 
           {/* Project Content */}
-          <div style={{ padding: 'var(--spacing-6)' }}>
-            <h3 
-              style={{
-                fontFamily: 'var(--font-primary)',
-                fontSize: 'var(--text-h3)',
-                fontWeight: 'var(--font-weight-semibold)',
-                color: 'var(--card-foreground)',
-                marginBottom: '12px',
-                lineHeight: '1.3'
-              }}
-            >
+          <div className="portfolio-card__content">
+            <Heading level={3} className="portfolio-card__title">
               {item.title}
-            </h3>
+            </Heading>
 
-            <p 
-              style={{
-                fontFamily: 'var(--font-primary)',
-                fontSize: 'var(--text-base)',
-                color: 'var(--muted-foreground)',
-                lineHeight: '1.6',
-                marginBottom: '16px'
-              }}
-            >
+            <Paragraph className="portfolio-card__excerpt">
               {item.excerpt}
-            </p>
+            </Paragraph>
 
             {/* Tags */}
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--spacing-2)' }}>
+            <div className="portfolio-card__tags">
               {item.tags.map((tag, index) => (
                 <span 
                   key={index}
-                  style={{
-                    fontFamily: 'var(--font-secondary)',
-                    fontSize: 'var(--text-small)',
-                    color: 'var(--muted-foreground)',
-                    backgroundColor: 'var(--muted)',
-                    padding: '6px 12px',
-                    borderRadius: 'var(--radius)',
-                    border: '1px solid var(--border-soft)'
-                  }}
+                  className="portfolio-card__tag"
                 >
                   {tag}
                 </span>
@@ -216,189 +150,70 @@ export function PortfolioArchiveTemplate() {
 
   return (
     <>
-      <SkipLink />
-      <SiteHeader />
-      
-      <main id="main-content" role="main">
-        {/* Breadcrumbs - Modern styling */}
-        <section 
-          style={{
-            paddingTop: 'var(--spacing-4)',
-            paddingBottom: 'var(--spacing-4)',
-            backgroundColor: 'var(--background)',
-          }}
-        >
-          <Container>
-            <Breadcrumbs 
-              items={[
-                { label: 'Home', page: 'front-page' },
-                { label: 'Portfolio' }
-              ]}
-            />
-          </Container>
-        </section>
+      {/* Breadcrumbs */}
+      <section className="wp-block-breadcrumbs-section">
+          <Breadcrumbs 
+            items={[
+              { label: 'Home', page: 'front-page' },
+              { label: 'Portfolio' }
+            ]}
+          />
+      </section>
 
         {/* Archive Header */}
         <Section 
           spacing="xl"
-          style={{
-            backgroundColor: 'var(--card)',
-            color: 'var(--card-foreground)',
-            position: 'relative',
-            overflow: 'hidden',
-            borderBottom: '1px solid var(--border-soft)'
-          }}
+          className="portfolio-archive__header"
         >
           {/* Subtle gradient overlay */}
           <div 
-            className="absolute inset-0"
-            style={{
-              background: 'linear-gradient(135deg, transparent 0%, var(--accent) 100%)',
-              opacity: '0.05',
-              pointerEvents: 'none'
-            }}
+            className="portfolio-archive__gradient-overlay"
             aria-hidden="true"
           />
           
           {/* Decorative gradient orb */}
           <div 
-            className="absolute top-0 right-0 w-96 h-96 rounded-full"
-            style={{
-              background: 'radial-gradient(circle, var(--accent) 0%, transparent 70%)',
-              opacity: '0.08',
-              filter: 'blur(80px)',
-              transform: 'translate(30%, -30%)',
-              pointerEvents: 'none'
-            }}
+            className="portfolio-archive__orb"
             aria-hidden="true"
           />
 
-          <Container style={{ position: 'relative', zIndex: 1 }}>
-            <div className="wp-text-center wp-max-w-4xl" style={{ margin: '0 auto' }}>
-              <span 
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  padding: '12px 24px',
-                  marginBottom: 'var(--spacing-8)',
-                  backgroundColor: 'var(--muted)',
-                  color: 'var(--muted-foreground)',
-                  borderRadius: 'var(--radius-xl)',
-                  border: '1px solid var(--border-soft)',
-                  fontFamily: 'var(--font-primary)',
-                  fontSize: 'var(--text-base)',
-                  fontWeight: 'var(--font-weight-medium)',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.1em'
-                }}
-              >
+          <Container className="portfolio-archive__header-container">
+            <div className="portfolio-archive__header-content">
+              <span className="portfolio-archive__badge">
                 Our Work
               </span>
 
-              <h1 
-                style={{
-                  fontFamily: 'var(--font-primary)',
-                  fontSize: 'var(--text-h1)',
-                  fontWeight: 'var(--font-weight-semibold)',
-                  lineHeight: 'var(--line-height-tight)',
-                  letterSpacing: 'var(--letter-spacing-tight)',
-                  marginBottom: '24px',
-                  color: 'var(--card-foreground)'
-                }}
-              >
+              <Heading level={1} className="portfolio-archive__title">
                 Portfolio
-              </h1>
+              </Heading>
 
-              <p 
-                style={{
-                  fontFamily: 'var(--font-primary)',
-                  fontSize: 'var(--text-lead)',
-                  fontWeight: 'var(--font-weight-regular)',
-                  lineHeight: 'var(--line-height-relaxed)',
-                  color: 'var(--card-foreground)',
-                  maxWidth: '700px',
-                  margin: '0 auto'
-                }}
-              >
+              <Paragraph size="large" className="portfolio-archive__description">
                 Explore our collection of successful WordPress and WooCommerce projects. From simple websites to complex enterprise solutions.
-              </p>
+              </Paragraph>
 
               {/* Stats */}
-              <div 
-                className="wp-grid-3-cols"
-                style={{
-                  gap: 'var(--spacing-8)',
-                  marginTop: 'var(--spacing-12)',
-                  paddingTop: 'var(--spacing-12)',
-                  borderTop: '1px solid var(--border-soft)'
-                }}
-              >
+              <div className="portfolio-archive__stats wp-grid-3-cols">
                 <div>
-                  <div 
-                    style={{
-                      fontFamily: 'var(--font-primary)',
-                      fontSize: 'var(--text-h2)',
-                      fontWeight: 'var(--font-weight-bold)',
-                      marginBottom: '8px',
-                      color: 'var(--primary)'
-                    }}
-                  >
+                  <div className="portfolio-archive__stat-value portfolio-archive__stat-value--primary">
                     150+
                   </div>
-                  <div 
-                    style={{
-                      fontFamily: 'var(--font-primary)',
-                      fontSize: 'var(--text-base)',
-                      fontWeight: 'var(--font-weight-regular)',
-                      color: 'var(--muted-foreground)'
-                    }}
-                  >
+                  <div className="portfolio-archive__stat-label">
                     Projects Delivered
                   </div>
                 </div>
                 <div>
-                  <div 
-                    style={{
-                      fontFamily: 'var(--font-primary)',
-                      fontSize: 'var(--text-h2)',
-                      fontWeight: 'var(--font-weight-bold)',
-                      marginBottom: '8px',
-                      color: 'var(--card-foreground)'
-                    }}
-                  >
+                  <div className="portfolio-archive__stat-value">
                     98%
                   </div>
-                  <div 
-                    style={{
-                      fontFamily: 'var(--font-primary)',
-                      fontSize: 'var(--text-base)',
-                      fontWeight: 'var(--font-weight-regular)',
-                      color: 'var(--muted-foreground)'
-                    }}
-                  >
+                  <div className="portfolio-archive__stat-label">
                     Client Satisfaction
                   </div>
                 </div>
                 <div>
-                  <div 
-                    style={{
-                      fontFamily: 'var(--font-primary)',
-                      fontSize: 'var(--text-h2)',
-                      fontWeight: 'var(--font-weight-bold)',
-                      marginBottom: '8px',
-                      color: 'var(--card-foreground)'
-                    }}
-                  >
+                  <div className="portfolio-archive__stat-value">
                     15+
                   </div>
-                  <div 
-                    style={{
-                      fontFamily: 'var(--font-primary)',
-                      fontSize: 'var(--text-base)',
-                      fontWeight: 'var(--font-weight-regular)',
-                      color: 'var(--muted-foreground)'
-                    }}
-                  >
+                  <div className="portfolio-archive__stat-label">
                     Industries Served
                   </div>
                 </div>
@@ -408,55 +223,18 @@ export function PortfolioArchiveTemplate() {
         </Section>
 
         {/* Filter Bar */}
-        <section 
-          style={{
-            paddingTop: 'var(--spacing-6)',
-            paddingBottom: 'var(--spacing-6)',
-            backgroundColor: 'var(--background)',
-            borderBottom: '1px solid var(--border-soft)',
-          }}
-        >
+        <section className="portfolio-archive__filter-section">
           <Container>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--spacing-6)' }}>
+            <div className="portfolio-archive__filter-container">
               {/* Mobile Filter Button (show on mobile, hide on desktop) */}
-              <div className="lg:hidden" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 'var(--spacing-4)' }}>
-                <h2 
-                  style={{
-                    fontFamily: 'var(--font-primary)',
-                    fontSize: 'var(--text-h4)',
-                    fontWeight: 'var(--font-weight-medium)',
-                    color: 'var(--foreground)',
-                    margin: 0
-                  }}
-                >
+              <div className="portfolio-archive__mobile-header wp-hide-desktop">
+                <Heading level={2} className="portfolio-archive__filter-title">
                   Filter Projects
-                </h2>
+                </Heading>
                 
                 <button
                   onClick={() => setIsMobileFilterOpen(true)}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '8px',
-                    minHeight: '48px',
-                    minWidth: '48px',
-                    padding: '12px 24px',
-                    backgroundColor: 'var(--primary)',
-                    color: 'var(--primary-foreground)',
-                    border: 'none',
-                    borderRadius: 'var(--radius)',
-                    fontFamily: 'var(--font-primary)',
-                    fontSize: 'var(--text-base)',
-                    fontWeight: 'var(--font-weight-medium)',
-                    cursor: 'pointer',
-                    transition: 'all 0.2s ease',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'scale(1.05)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'scale(1)';
-                  }}
+                  className="portfolio-archive__filter-toggle"
                   aria-label="Open filter menu"
                 >
                   <Filter size={20} />
@@ -465,39 +243,14 @@ export function PortfolioArchiveTemplate() {
               </div>
 
               {/* Category Filters (hide on mobile, show on desktop) */}
-              <div className="hidden lg:flex" style={{ flexWrap: 'wrap', gap: 'var(--spacing-3)' }}>
+              <div className="portfolio-archive__desktop-filters wp-hide-mobile wp-hide-tablet">
                 {categories.map((category) => (
                   <button
                     key={category}
                     onClick={() => setSelectedCategory(category)}
-                    style={{
-                      padding: '12px 24px',
-                      fontFamily: 'var(--font-primary)',
-                      fontSize: 'var(--text-base)',
-                      fontWeight: 'var(--font-weight-medium)',
-                      backgroundColor: selectedCategory === category 
-                        ? 'var(--primary)' 
-                        : 'var(--background)',
-                      color: selectedCategory === category 
-                        ? 'var(--primary-foreground)' 
-                        : 'var(--foreground)',
-                      border: `1px solid ${selectedCategory === category ? 'var(--primary)' : 'var(--border-soft)'}`,
-                      borderRadius: 'var(--radius)',
-                      cursor: 'pointer',
-                      transition: 'all 0.2s ease',
-                      minHeight: '44px',
-                      minWidth: '44px',
-                    }}
-                    onMouseEnter={(e) => {
-                      if (selectedCategory !== category) {
-                        e.currentTarget.style.borderColor = 'var(--primary)';
-                      }
-                    }}
-                    onMouseLeave={(e) => {
-                      if (selectedCategory !== category) {
-                        e.currentTarget.style.borderColor = 'var(--border-soft)';
-                      }
-                    }}
+                    className={`portfolio-archive__filter-button ${
+                      selectedCategory === category ? 'portfolio-archive__filter-button--active' : ''
+                    }`}
                   >
                     {category}
                   </button>
@@ -505,16 +258,9 @@ export function PortfolioArchiveTemplate() {
               </div>
 
               {/* Results Count */}
-              <p 
-                style={{
-                  fontFamily: 'var(--font-primary)',
-                  fontSize: 'var(--text-base)',
-                  color: 'var(--muted-foreground)',
-                  margin: 0,
-                }}
-              >
+              <Paragraph className="portfolio-archive__results-count">
                 Showing {filteredItems.length} {filteredItems.length === 1 ? 'project' : 'projects'}
-              </p>
+              </Paragraph>
             </div>
           </Container>
         </section>
@@ -522,35 +268,30 @@ export function PortfolioArchiveTemplate() {
         {/* Portfolio Grid */}
         <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
           <Container>
-            <div className="wp-grid-3-cols" style={{ gap: 'var(--spacing-8)' }} ref={containerRef}>
+            <div className="wp-grid-3-cols wp-gap-8" ref={containerRef}>
               {isLoading ? (
                 // Loading skeletons
                 Array.from({ length: 6 }).map((_, index) => (
                   <div
                     key={index}
-                    style={{
-                      padding: 'var(--spacing-6)',
-                      backgroundColor: 'var(--card)',
-                      borderRadius: 'var(--radius-xl)',
-                      border: '1px solid var(--border-soft)'
-                    }}
+                    className="portfolio-skeleton-card"
                   >
                     {/* Image skeleton */}
-                    <Skeleton height="200px" className="mb-4" variant="rectangular" />
+                    <Skeleton height="var(--spacing-48)" className="wp-mb-4" variant="rectangular" />
                     
                     {/* Title skeleton */}
-                    <Skeleton width="60%" height="24px" className="mb-2" variant="text" />
+                    <Skeleton width="60%" height="var(--spacing-6)" className="wp-mb-2" variant="text" />
                     
                     {/* Description skeletons */}
-                    <Skeleton width="100%" height="16px" className="mb-1" variant="text" />
-                    <Skeleton width="100%" height="16px" className="mb-1" variant="text" />
-                    <Skeleton width="80%" height="16px" className="mb-4" variant="text" />
+                    <Skeleton width="100%" height="var(--spacing-4)" className="wp-mb-1" variant="text" />
+                    <Skeleton width="100%" height="var(--spacing-4)" className="wp-mb-1" variant="text" />
+                    <Skeleton width="80%" height="var(--spacing-4)" className="wp-mb-4" variant="text" />
                     
                     {/* Tags skeleton */}
-                    <div style={{ display: 'flex', gap: 'var(--spacing-2)' }}>
-                      <Skeleton width="60px" height="24px" variant="rectangular" />
-                      <Skeleton width="80px" height="24px" variant="rectangular" />
-                      <Skeleton width="70px" height="24px" variant="rectangular" />
+                    <div className="portfolio-skeleton-tags">
+                      <Skeleton width="var(--spacing-16)" height="var(--spacing-6)" variant="rectangular" />
+                      <Skeleton width="var(--spacing-20)" height="var(--spacing-6)" variant="rectangular" />
+                      <Skeleton width="var(--spacing-16)" height="var(--spacing-6)" variant="rectangular" />
                     </div>
                   </div>
                 ))
@@ -598,10 +339,7 @@ export function PortfolioArchiveTemplate() {
           onSelect={setSelectedCategory}
           allLabel="All Projects"
         />
-      </main>
 
-      <SiteFooter />
-      <BackToTopButton />
       <StickyBookCallButton />
     </>
   );

@@ -1,0 +1,42 @@
+/**
+ * Switch Block Styles
+ */
+.wp-block-switch {
+  width: var(--spacing-10); /* 40px - approx 2.5rem */
+  height: var(--spacing-6);  /* 24px */
+  background-color: var(--input);
+  border-radius: var(--radius-full);
+  position: relative;
+  cursor: pointer;
+  border: var(--wp--preset--border-width--1) solid transparent;
+  transition: background-color var(--transition-base) ease;
+}
+
+.wp-block-switch:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 var(--wp--preset--border-width--2) var(--ring);
+}
+
+.wp-block-switch[data-state="checked"] {
+  background-color: var(--primary);
+}
+
+.wp-block-switch[disabled] {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.wp-block-switch__thumb {
+  display: block;
+  width: var(--spacing-5); /* 20px */
+  height: var(--spacing-5);
+  background-color: var(--background);
+  border-radius: 50%;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-base) ease;
+  transform: translateX(2px); /* Start offset */
+}
+
+.wp-block-switch[data-state="checked"] .wp-block-switch__thumb {
+  transform: translateX(18px); /* End offset (40px - 20px - 2px) */
+}

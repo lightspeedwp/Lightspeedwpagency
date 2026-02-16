@@ -5,41 +5,15 @@
  * Maps to WordPress pattern: lsx-design/content/benefits
  * 
  * **Design Token Compliance:**
- * - Typography: Uses ONLY CSS variables (var(--text-*), var(--font-*))
- * - Fonts: var(--font-primary) and var(--font-secondary) ONLY
- * - Colors: Uses ONLY CSS variables (var(--*))
- * - Spacing: Uses ONLY CSS variables (var(--spacing-*))
- * - Border Radius: Uses ONLY CSS variables (var(--radius*))
- * 
- * **WordPress Mapping:**
- * - Block: core/group with nested core/columns
- * - Section Style: content-feature
- * - Pattern Slug: lsx-design/content/benefits
- * 
- * @example
- * ```tsx
- * import { BenefitsGrid } from '../patterns/BenefitsGrid';
- * import { Shield, Zap } from 'lucide-react';
- * 
- * <BenefitsGrid
- *   title="Additional Benefits"
- *   description="Explore more ways our solution helps you succeed"
- *   benefits={[
- *     {
- *       icon: Shield,
- *       title: "Enhanced Security",
- *       description: "Enterprise-grade security features",
- *       link: "/security"
- *     }
- *   ]}
- *   columns={3}
- * />
- * ```
+ * - Uses /src/styles/benefits-grid.css
+ * - 100% CSS variables
+ * - BEM naming
  */
 
 import { Section } from '../common/Section';
 import { Container } from '../common/Container';
 import { ArrowRight, LucideIcon } from 'lucide-react';
+import '@/styles/benefits-grid.css';
 
 /**
  * Benefit Item Interface
@@ -98,6 +72,8 @@ export function BenefitsGrid({
     : columns === 3 
     ? 'wp-grid-3-cols' 
     : 'wp-grid-4-cols';
+    
+  const variantClass = `benefits-grid--${variant}`;
 
   /**
    * Handle benefit click
@@ -111,45 +87,21 @@ export function BenefitsGrid({
   return (
     <Section 
       spacing="xl" 
-      style={{ 
-        backgroundColor: variant === 'muted' 
-          ? 'var(--muted)' 
-          : 'var(--background)' 
-      }}
+      className={`benefits-grid ${variantClass}`}
     >
       <Container>
         <div className="wp-max-w-6xl">
           {/* Section Header */}
           {(title || description) && (
-            <div 
-              className="wp-text-center" 
-              style={{ marginBottom: 'var(--spacing-16)' }}
-            >
+            <div className="benefits-grid__header">
               {title && (
-                <h2
-                  style={{
-                    fontFamily: 'var(--font-primary)',
-                    fontSize: 'var(--text-h1)',
-                    fontWeight: 'var(--font-weight-bold)',
-                    lineHeight: '1.2',
-                    letterSpacing: '-0.02em',
-                    marginBottom: 'var(--spacing-4)',
-                    color: 'var(--foreground)'
-                  }}
-                >
+                <h2 className="benefits-grid__title">
                   {title}
                 </h2>
               )}
 
               {description && (
-                <p
-                  style={{
-                    fontFamily: 'var(--font-primary)',
-                    fontSize: 'var(--text-lg)',
-                    lineHeight: '1.7',
-                    color: 'var(--muted-foreground)'
-                  }}
-                >
+                <p className="benefits-grid__description">
                   {description}
                 </p>
               )}
@@ -157,10 +109,7 @@ export function BenefitsGrid({
           )}
 
           {/* Benefits Grid */}
-          <div 
-            className={columnClass}
-            style={{ gap: 'var(--spacing-8)' }}
-          >
+          <div className={`benefits-grid__grid ${columnClass}`}>
             {benefits.map((benefit, index) => {
               const Icon = benefit.icon;
               const isClickable = !!benefit.link || !!onBenefitClick;
@@ -169,94 +118,28 @@ export function BenefitsGrid({
                 <div
                   key={index}
                   onClick={() => isClickable && handleClick(benefit, index)}
-                  style={{
-                    padding: 'var(--spacing-8)',
-                    backgroundColor: 'var(--card)',
-                    borderRadius: 'var(--radius-lg)',
-                    border: '1px solid var(--border-soft)',
-                    cursor: isClickable ? 'pointer' : 'default',
-                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                    height: '100%',
-                    display: 'flex',
-                    flexDirection: 'column'
-                  }}
-                  onMouseEnter={(e) => {
-                    if (isClickable) {
-                      e.currentTarget.style.transform = 'translateY(-4px)';
-                      e.currentTarget.style.boxShadow = '0 12px 24px -10px var(--shadow)';
-                      e.currentTarget.style.borderColor = 'var(--primary)';
-                    }
-                  }}
-                  onMouseLeave={(e) => {
-                    if (isClickable) {
-                      e.currentTarget.style.transform = 'translateY(0)';
-                      e.currentTarget.style.boxShadow = 'none';
-                      e.currentTarget.style.borderColor = 'var(--border-soft)';
-                    }
-                  }}
+                  className={`benefits-grid__card ${isClickable ? 'benefits-grid__card--clickable' : ''}`}
                 >
                   {/* Icon */}
-                  <div
-                    style={{
-                      width: '56px',
-                      height: '56px',
-                      borderRadius: 'var(--radius-lg)',
-                      backgroundColor: 'var(--primary-soft)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      marginBottom: 'var(--spacing-4)'
-                    }}
-                  >
-                    <Icon 
-                      size={28} 
-                      style={{ color: 'var(--primary)' }} 
-                    />
+                  <div className="benefits-grid__icon-wrapper">
+                    <Icon className="benefits-grid__icon" size={28} />
                   </div>
 
                   {/* Title */}
-                  <h3
-                    style={{
-                      fontFamily: 'var(--font-primary)',
-                      fontSize: 'var(--text-h4)',
-                      fontWeight: 'var(--font-weight-bold)',
-                      color: 'var(--foreground)',
-                      marginBottom: 'var(--spacing-3)'
-                    }}
-                  >
+                  <h3 className="benefits-grid__item-title">
                     {benefit.title}
                   </h3>
 
                   {/* Description */}
-                  <p
-                    style={{
-                      fontFamily: 'var(--font-primary)',
-                      fontSize: 'var(--text-base)',
-                      lineHeight: '1.6',
-                      color: 'var(--muted-foreground)',
-                      marginBottom: 'var(--spacing-4)',
-                      flex: 1
-                    }}
-                  >
+                  <p className="benefits-grid__item-description">
                     {benefit.description}
                   </p>
 
                   {/* Learn More Link */}
                   {isClickable && showArrows && (
-                    <div
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: 'var(--spacing-2)',
-                        fontFamily: 'var(--font-primary)',
-                        fontSize: 'var(--text-base)',
-                        fontWeight: 'var(--font-weight-semibold)',
-                        color: 'var(--primary)',
-                        marginTop: 'auto'
-                      }}
-                    >
+                    <div className="benefits-grid__link">
                       {benefit.linkText || 'Learn More'}
-                      <ArrowRight size={16} />
+                      <ArrowRight className="benefits-grid__arrow" size={16} />
                     </div>
                   )}
                 </div>

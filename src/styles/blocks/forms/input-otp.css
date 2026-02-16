@@ -1,0 +1,88 @@
+/**
+ * Input OTP Block Styles
+ * 
+ * WordPress Block: custom/input-otp
+ */
+
+.wp-block-input-otp {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.wp-block-input-otp.is-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.wp-block-input-otp__group {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+}
+
+.wp-block-input-otp__slot {
+  position: relative;
+  display: flex;
+  height: 36px;
+  width: 36px;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  background-color: var(--background);
+  transition: all 0.2s ease;
+  color: var(--foreground);
+}
+
+.wp-block-input-otp__slot:first-child {
+  border-top-left-radius: var(--radius-md);
+  border-bottom-left-radius: var(--radius-md);
+  border-left: 1px solid var(--border);
+}
+
+.wp-block-input-otp__slot:last-child {
+  border-top-right-radius: var(--radius-md);
+  border-bottom-right-radius: var(--radius-md);
+}
+
+/* Active state */
+.wp-block-input-otp__slot[data-active="true"] {
+  z-index: 10;
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+  border-color: var(--ring);
+}
+
+/* Separator */
+.wp-block-input-otp__separator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted-foreground);
+}
+
+/* Cursor/Caret */
+.wp-block-input-otp__caret {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.wp-block-input-otp__caret-bar {
+  height: 16px;
+  width: 1px;
+  background-color: var(--foreground);
+  animation: caret-blink 1s ease-out infinite;
+}
+
+@keyframes caret-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}

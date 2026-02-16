@@ -21,19 +21,7 @@
    ============================================ */
 
 .section {
-  padding: var(--spacing-16) var(--spacing-6);
-}
-
-@media (min-width: 768px) {
-  .section {
-    padding: var(--spacing-20) var(--spacing-8);
-  }
-}
-
-@media (min-width: 1024px) {
-  .section {
-    padding: var(--spacing-24) var(--spacing-12);
-  }
+  padding: var(--section-padding-y) var(--section-padding-x);
 }
 
 .section-header {
@@ -60,11 +48,11 @@
 }
 
 .section-container {
-  max-width: 1200px;
+  max-width: var(--section-max-width);
   margin-left: auto;
   margin-right: auto;
-  padding-left: var(--spacing-6);
-  padding-right: var(--spacing-6);
+  padding-left: var(--section-padding-x);
+  padding-right: var(--section-padding-x);
 }
 
 
@@ -421,12 +409,14 @@
 .link {
   color: var(--primary);
   text-decoration: none;
+  border-bottom: 1px solid transparent;
   transition: all 0.2s ease;
 }
 
 .link:hover {
-  text-decoration: underline;
-  opacity: 0.8;
+  border-bottom-color: var(--primary);
+  text-shadow: 0 0 8px var(--primary-soft);
+  opacity: 1;
 }
 
 .link-muted {
@@ -444,10 +434,19 @@
 
 /* WordPress Group block */
 .wp-block-group {
-  padding: var(--wp--preset--spacing--medium);
   display: flex;
   flex-direction: column;
+}
+
+/* WordPress Group block with explicit spacing (opt-in) */
+.wp-block-group.has-block-gap {
   gap: var(--wp--preset--spacing--medium);
+}
+
+/* Container override -- no padding/gap from group */
+.wp-block-container {
+  padding: 0;
+  gap: 0;
 }
 
 /* WordPress Columns block */

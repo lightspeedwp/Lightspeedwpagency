@@ -1,0 +1,152 @@
+/**
+ * Benefits Grid Pattern Styles
+ * 
+ * BEM-compliant styles for the BenefitsGrid component.
+ */
+
+.benefits-grid {
+  /* Base styles handled by Section component */
+}
+
+/* Background Variants */
+.benefits-grid--default {
+  background-color: var(--background);
+}
+
+.benefits-grid--muted {
+  background-color: var(--muted);
+}
+
+/* Header */
+.benefits-grid__header {
+  text-align: center;
+  margin-bottom: var(--spacing-12);
+  max-width: var(--wp--custom--layout--content-width);
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-4);
+}
+
+.benefits-grid__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+  /* margin-bottom removed — handled by parent gap */
+}
+
+@media (min-width: 768px) {
+  .benefits-grid__title {
+    font-size: var(--text-3xl);
+  }
+}
+
+.benefits-grid__description {
+  font-family: var(--font-secondary);
+  font-size: var(--text-lg);
+  color: var(--muted-foreground);
+  max-width: 65ch;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: var(--line-height-normal);
+}
+
+/* Grid Layout */
+.benefits-grid__grid {
+  display: grid;
+  gap: var(--spacing-8);
+}
+
+/* Card */
+.benefits-grid__card {
+  display: flex;
+  flex-direction: column;
+  padding: var(--spacing-8);
+  background-color: var(--card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-xl);
+  transition: all var(--transition-base) var(--ease-in-out);
+  height: 100%;
+  gap: var(--spacing-4);
+}
+
+.benefits-grid__card--clickable {
+  cursor: pointer;
+}
+
+.benefits-grid__card--clickable:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary);
+}
+
+/* Icon */
+.benefits-grid__icon-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--spacing-14);
+  height: var(--spacing-14);
+  background-color: var(--primary-soft);
+  border-radius: var(--radius-lg);
+  /* margin-bottom removed — handled by parent gap */
+  color: var(--primary);
+  transition: transform var(--transition-base);
+}
+
+.benefits-grid__card--clickable:hover .benefits-grid__icon-wrapper {
+  transform: scale(1.1);
+}
+
+.benefits-grid__icon {
+  stroke-width: 2px;
+}
+
+/* Item Title */
+.benefits-grid__item-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+  /* margin-bottom removed — handled by parent gap */
+  line-height: var(--line-height-snug);
+}
+
+/* Item Description */
+.benefits-grid__item-description {
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-snug);
+  /* margin-bottom removed — handled by parent gap */
+  flex-grow: 1;
+}
+
+/* Link */
+.benefits-grid__link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--primary);
+  margin-top: auto;
+  transition: gap var(--transition-base);
+}
+
+.benefits-grid__link:hover {
+  gap: var(--spacing-3);
+  color: var(--primary-dark);
+}
+
+.benefits-grid__arrow {
+  transition: transform var(--transition-base);
+}
+
+.benefits-grid__link:hover .benefits-grid__arrow {
+  transform: translateX(2px);
+}

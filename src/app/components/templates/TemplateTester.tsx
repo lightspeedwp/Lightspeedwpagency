@@ -20,15 +20,11 @@
  * @see {@link /guidelines/templates/overview-templates.md}
  */
 
-import { Container } from '../common/Container';
-import { Section } from '../common/Section';
 import { Button } from '../blocks/design/Buttons';
 import { useNavigation } from '../../contexts/NavigationContext';
-import { SiteHeader } from '../parts/SiteHeader';
-import { SiteFooter } from '../parts/SiteFooter';
-import { SkipLink } from '../common/SkipLink';
-import { BackToTopButton } from '../blocks/layout/BackToTopButton';
 import { Breadcrumbs } from '../common/Breadcrumbs';
+import { Container } from '../common/Container';
+import { Section } from '../common/Section';
 import { useState } from 'react';
 import { 
   Home,
@@ -57,6 +53,7 @@ import {
   Grid3x3,
   MapPin
 } from 'lucide-react';
+import '@/styles/templates/template-tester.css';
 
 /**
  * WordPress Template Categories
@@ -362,172 +359,55 @@ export function TemplateTester() {
   const templatesByType = sortBy === 'type' ? getTemplatesByType() : {};
 
   return (
-    <div
-      style={{
-        minHeight: '100vh',
-        display: 'flex',
-        flexDirection: 'column',
-        backgroundColor: 'var(--background)',
-        color: 'var(--foreground)'
-      }}
-    >
-      {/* Skip Link for Accessibility */}
-      <SkipLink targetId="main-content" />
+    <>
+        {/* Breadcrumbs */}
+        <section className="wp-block-breadcrumbs-section">
+            <Breadcrumbs
+              items={[
+                { label: 'Home', page: 'home' },
+                { label: 'Developer Tools', page: 'dev-tools' },
+                { label: 'Template Tester' }
+              ]}
+            />
+        </section>
 
-      {/* Site Header */}
-      <SiteHeader />
-
-      {/* Main Content */}
-      <main
-        id="main-content"
-        role="main"
-        style={{
-          flex: 1,
-          display: 'flex',
-          flexDirection: 'column'
-        }}
-      >
         {/* Hero Header */}
-        <Section variant="default" spacing="50">
+        <Section background="default" spacing="lg">
           <Container>
-            {/* Breadcrumbs */}
-            <div style={{ marginBottom: 'var(--spacing-8)' }}>
-              <Breadcrumbs
-                items={[
-                  { label: 'Home', page: 'home' },
-                  { label: 'Developer Tools', page: 'dev-tools' },
-                  { label: 'Template Tester' }
-                ]}
-              />
-            </div>
-            
-            <div className="wp-max-w-4xl" style={{ margin: '0 auto', textAlign: 'center' }}>
-              <h1
-                style={{
-                  fontSize: 'var(--text-h1)',
-                  fontFamily: 'var(--font-primary)',
-                  fontWeight: 'var(--font-weight-medium)',
-                  color: 'var(--foreground)',
-                  margin: '0 0 16px 0',
-                  lineHeight: 1.2
-                }}
-              >
+            <div className="wp-max-w-4xl wp-text-center wp-mx-auto">
+              <h1 className="template-tester__hero-title">
                 WordPress Template Tester
               </h1>
               
-              <p
-                style={{
-                  fontSize: 'var(--text-xl)',
-                  fontFamily: 'var(--font-secondary)',
-                  fontWeight: 'var(--font-weight-regular)',
-                  color: 'var(--muted-foreground)',
-                  margin: '0 0 48px 0',
-                  lineHeight: 1.5
-                }}
-              >
+              <p className="template-tester__hero-subtitle">
                 Test all WordPress templates, page archetypes, and design patterns in one place
               </p>
 
               {/* Stats Grid */}
-              <div className="wp-grid-3-cols" style={{ gap: 'var(--spacing-8)', marginBottom: 'var(--spacing-12)' }}>
-                <div
-                  style={{
-                    padding: '32px',
-                    backgroundColor: 'var(--card)',
-                    borderRadius: 'var(--radius-lg)',
-                    border: '1px solid var(--border-soft)',
-                    textAlign: 'center'
-                  }}
-                >
-                  <div
-                    style={{
-                      fontSize: 'var(--text-h1)',
-                      fontFamily: 'var(--font-primary)',
-                      fontWeight: 'var(--font-weight-medium)',
-                      color: 'var(--primary)',
-                      lineHeight: 1,
-                      marginBottom: '12px'
-                    }}
-                  >
+              <div className="wp-grid-3-cols template-tester__stats-grid">
+                <div className="template-tester__stat-card">
+                  <div className="template-tester__stat-value">
                     {totalTemplates}
                   </div>
-                  <div
-                    style={{
-                      fontSize: 'var(--text-base)',
-                      fontFamily: 'var(--font-secondary)',
-                      fontWeight: 'var(--font-weight-regular)',
-                      color: 'var(--muted-foreground)',
-                      lineHeight: 1.5
-                    }}
-                  >
+                  <div className="template-tester__stat-label">
                     Total Templates
                   </div>
                 </div>
 
-                <div
-                  style={{
-                    padding: '32px',
-                    backgroundColor: 'var(--card)',
-                    borderRadius: 'var(--radius-lg)',
-                    border: '1px solid var(--border-soft)',
-                    textAlign: 'center'
-                  }}
-                >
-                  <div
-                    style={{
-                      fontSize: 'var(--text-h1)',
-                      fontFamily: 'var(--font-primary)',
-                      fontWeight: 'var(--font-weight-medium)',
-                      color: 'var(--primary)',
-                      lineHeight: 1,
-                      marginBottom: '12px'
-                    }}
-                  >
+                <div className="template-tester__stat-card">
+                  <div className="template-tester__stat-value">
                     {archetypes}
                   </div>
-                  <div
-                    style={{
-                      fontSize: 'var(--text-base)',
-                      fontFamily: 'var(--font-secondary)',
-                      fontWeight: 'var(--font-weight-regular)',
-                      color: 'var(--muted-foreground)',
-                      lineHeight: 1.5
-                    }}
-                  >
+                  <div className="template-tester__stat-label">
                     Page Archetypes
                   </div>
                 </div>
 
-                <div
-                  style={{
-                    padding: '32px',
-                    backgroundColor: 'var(--card)',
-                    borderRadius: 'var(--radius-lg)',
-                    border: '1px solid var(--border-soft)',
-                    textAlign: 'center'
-                  }}
-                >
-                  <div
-                    style={{
-                      fontSize: 'var(--text-h1)',
-                      fontFamily: 'var(--font-primary)',
-                      fontWeight: 'var(--font-weight-medium)',
-                      color: 'var(--primary)',
-                      lineHeight: 1,
-                      marginBottom: '12px'
-                    }}
-                  >
+                <div className="template-tester__stat-card">
+                  <div className="template-tester__stat-value">
                     {categories}
                   </div>
-                  <div
-                    style={{
-                      fontSize: 'var(--text-base)',
-                      fontFamily: 'var(--font-secondary)',
-                      fontWeight: 'var(--font-weight-regular)',
-                      color: 'var(--muted-foreground)',
-                      lineHeight: 1.5
-                    }}
-                  >
+                  <div className="template-tester__stat-label">
                     Categories
                   </div>
                 </div>
@@ -537,92 +417,25 @@ export function TemplateTester() {
         </Section>
 
         {/* Toolbar: Sort & Component Showcase */}
-        <Section variant="default" spacing="30">
+        <Section background="default" spacing="sm">
           <Container>
-            <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 'var(--spacing-4)' }}>
+            <div className="template-tester__toolbar">
               {/* Sort Controls */}
-              <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-3)' }}>
+              <div className="template-tester__sort-controls">
                 <Filter size={20} style={{ color: 'var(--muted-foreground)' }} />
-                <span
-                  style={{
-                    fontSize: 'var(--text-base)',
-                    fontFamily: 'var(--font-secondary)',
-                    fontWeight: 'var(--font-weight-regular)',
-                    color: 'var(--foreground)'
-                  }}
-                >
+                <span className="template-tester__sort-label">
                   Sort by:
                 </span>
-                <div style={{ display: 'flex', gap: 'var(--spacing-2)' }}>
+                <div className="template-tester__sort-buttons">
                   <button
                     onClick={() => setSortBy('category')}
-                    style={{
-                      padding: '8px 16px',
-                      backgroundColor: sortBy === 'category' ? 'var(--primary)' : 'var(--background)',
-                      color: sortBy === 'category' ? 'var(--primary-foreground)' : 'var(--foreground)',
-                      border: `1px solid ${sortBy === 'category' ? 'var(--primary)' : 'var(--border-soft)'}`,
-                      borderRadius: 'var(--radius-lg)',
-                      fontFamily: 'var(--font-primary)',
-                      fontSize: 'var(--text-base)',
-                      fontWeight: 'var(--font-weight-medium)',
-                      cursor: 'pointer',
-                      transition: 'all 0.2s ease'
-                    }}
-                    onMouseEnter={(e) => {
-                      if (sortBy !== 'category') {
-                        e.currentTarget.style.borderColor = 'var(--primary)';
-                        e.currentTarget.style.backgroundColor = 'var(--card)';
-                      }
-                    }}
-                    onMouseLeave={(e) => {
-                      if (sortBy !== 'category') {
-                        e.currentTarget.style.borderColor = 'var(--border-soft)';
-                        e.currentTarget.style.backgroundColor = 'var(--background)';
-                      }
-                    }}
-                    onFocus={(e) => {
-                      e.currentTarget.style.outline = '2px solid var(--ring)';
-                      e.currentTarget.style.outlineOffset = '2px';
-                    }}
-                    onBlur={(e) => {
-                      e.currentTarget.style.outline = 'none';
-                    }}
+                    className={`template-tester__sort-button ${sortBy === 'category' ? 'template-tester__sort-button--active' : ''}`}
                   >
                     Category
                   </button>
                   <button
                     onClick={() => setSortBy('type')}
-                    style={{
-                      padding: '8px 16px',
-                      backgroundColor: sortBy === 'type' ? 'var(--primary)' : 'var(--background)',
-                      color: sortBy === 'type' ? 'var(--primary-foreground)' : 'var(--foreground)',
-                      border: `1px solid ${sortBy === 'type' ? 'var(--primary)' : 'var(--border-soft)'}`,
-                      borderRadius: 'var(--radius-lg)',
-                      fontFamily: 'var(--font-primary)',
-                      fontSize: 'var(--text-base)',
-                      fontWeight: 'var(--font-weight-medium)',
-                      cursor: 'pointer',
-                      transition: 'all 0.2s ease'
-                    }}
-                    onMouseEnter={(e) => {
-                      if (sortBy !== 'type') {
-                        e.currentTarget.style.borderColor = 'var(--primary)';
-                        e.currentTarget.style.backgroundColor = 'var(--card)';
-                      }
-                    }}
-                    onMouseLeave={(e) => {
-                      if (sortBy !== 'type') {
-                        e.currentTarget.style.borderColor = 'var(--border-soft)';
-                        e.currentTarget.style.backgroundColor = 'var(--background)';
-                      }
-                    }}
-                    onFocus={(e) => {
-                      e.currentTarget.style.outline = '2px solid var(--ring)';
-                      e.currentTarget.style.outlineOffset = '2px';
-                    }}
-                    onBlur={(e) => {
-                      e.currentTarget.style.outline = 'none';
-                    }}
+                    className={`template-tester__sort-button ${sortBy === 'type' ? 'template-tester__sort-button--active' : ''}`}
                   >
                     Type
                   </button>
@@ -646,50 +459,21 @@ export function TemplateTester() {
         {/* Template Categories */}
         {sortBy === 'category' ? (
           templateCategories.map((category) => (
-            <Section key={category.id} variant="default" spacing="50">
+            <Section key={category.id} background="default" spacing="lg">
               <Container>
                 {/* Category Header */}
-                <div style={{ display: 'flex', alignItems: 'flex-start', gap: 'var(--spacing-4)', marginBottom: 'var(--spacing-8)' }}>
+                <div className="template-tester__category-header">
                   <div
-                    style={{
-                      width: '48px',
-                      height: '48px',
-                      borderRadius: 'var(--radius-lg)',
-                      backgroundColor: category.color,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      flexShrink: 0
-                    }}
+                    className="template-tester__category-icon"
+                    style={{ backgroundColor: category.color }}
                   >
-                    <category.icon
-                      size={24}
-                      style={{ color: 'var(--primary-foreground)' }}
-                    />
+                    <category.icon size={24} />
                   </div>
                   <div>
-                    <h2
-                      style={{
-                        fontSize: 'var(--text-h2)',
-                        fontFamily: 'var(--font-primary)',
-                        fontWeight: 'var(--font-weight-medium)',
-                        color: 'var(--foreground)',
-                        margin: '0 0 8px 0',
-                        lineHeight: 1.25
-                      }}
-                    >
+                    <h2 className="template-tester__category-title">
                       {category.title}
                     </h2>
-                    <p
-                      style={{
-                        fontSize: 'var(--text-base)',
-                        fontFamily: 'var(--font-secondary)',
-                        fontWeight: 'var(--font-weight-regular)',
-                        color: 'var(--muted-foreground)',
-                        margin: 0,
-                        lineHeight: 1.5
-                      }}
-                    >
+                    <p className="template-tester__category-desc">
                       {category.description}
                     </p>
                   </div>
@@ -697,67 +481,26 @@ export function TemplateTester() {
 
                 {/* Archetypes (if applicable) */}
                 {category.templates ? (
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--spacing-12)' }}>
+                  <div className="template-tester__archetype-list">
                     {category.templates.map((archetype) => (
                       <div key={archetype.id}>
                         {/* Archetype Header */}
-                        <div
-                          style={{
-                            padding: '20px 24px',
-                            backgroundColor: 'var(--card)',
-                            borderRadius: 'var(--radius-lg)',
-                            border: '1px solid var(--border-soft)',
-                            marginBottom: '16px'
-                          }}
-                        >
-                          <div style={{ display: 'flex', alignItems: 'flex-start', gap: 'var(--spacing-3)' }}>
+                        <div className="template-tester__archetype-card">
+                          <div className="template-tester__archetype-inner">
                             <archetype.icon
                               size={20}
-                              style={{
-                                color: 'var(--primary)',
-                                marginTop: '2px',
-                                flexShrink: 0
-                              }}
+                              className="template-tester__archetype-icon"
                             />
                             <div>
-                              <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-2)', marginBottom: 'var(--spacing-2)' }}>
-                                <h3
-                                  style={{
-                                    fontSize: 'var(--text-h4)',
-                                    fontFamily: 'var(--font-primary)',
-                                    fontWeight: 'var(--font-weight-medium)',
-                                    color: 'var(--foreground)',
-                                    margin: 0,
-                                    lineHeight: 1.25
-                                  }}
-                                >
+                              <div className="template-tester__archetype-title-row">
+                                <h3 className="template-tester__archetype-title">
                                   {archetype.name}
                                 </h3>
-                                <span
-                                  style={{
-                                    fontSize: 'var(--text-small)',
-                                    fontFamily: 'var(--font-secondary)',
-                                    fontWeight: 'var(--font-weight-regular)',
-                                    color: 'var(--muted-foreground)',
-                                    padding: '4px 8px',
-                                    backgroundColor: 'var(--background)',
-                                    borderRadius: 'var(--radius)',
-                                    border: '1px solid var(--border-soft)'
-                                  }}
-                                >
+                                <span className="template-tester__archetype-badge">
                                   {archetype.archetype}
                                 </span>
                               </div>
-                              <p
-                                style={{
-                                  fontSize: 'var(--text-base)',
-                                  fontFamily: 'var(--font-secondary)',
-                                  fontWeight: 'var(--font-weight-regular)',
-                                  color: 'var(--muted-foreground)',
-                                  margin: 0,
-                                  lineHeight: 1.5
-                                }}
-                              >
+                              <p className="template-tester__archetype-desc">
                                 {archetype.description}
                               </p>
                             </div>
@@ -765,75 +508,23 @@ export function TemplateTester() {
                         </div>
 
                         {/* Archetype Pages Grid */}
-                        <div className="wp-grid-3-cols" style={{ gap: 'var(--spacing-4)' }}>
+                        <div className="wp-grid-3-cols template-tester__pages-grid">
                           {archetype.pages.map((page) => (
                             <button
                               key={page.page}
                               onClick={() => navigateTo(page.page)}
-                              style={{
-                                padding: '16px 20px',
-                                backgroundColor: 'var(--background)',
-                                border: '1px solid var(--border-soft)',
-                                borderRadius: 'var(--radius-lg)',
-                                textAlign: 'left',
-                                cursor: 'pointer',
-                                transition: 'all 0.2s ease',
-                                display: 'flex',
-                                flexDirection: 'column',
-                                gap: '8px'
-                              }}
-                              onMouseEnter={(e) => {
-                                e.currentTarget.style.backgroundColor = 'var(--card)';
-                                e.currentTarget.style.borderColor = 'var(--primary)';
-                                e.currentTarget.style.transform = 'translateY(-2px)';
-                              }}
-                              onMouseLeave={(e) => {
-                                e.currentTarget.style.backgroundColor = 'var(--background)';
-                                e.currentTarget.style.borderColor = 'var(--border-soft)';
-                                e.currentTarget.style.transform = 'translateY(0)';
-                              }}
-                              onFocus={(e) => {
-                                e.currentTarget.style.outline = '2px solid var(--ring)';
-                                e.currentTarget.style.outlineOffset = '2px';
-                              }}
-                              onBlur={(e) => {
-                                e.currentTarget.style.outline = 'none';
-                              }}
+                              className="template-tester__page-button"
                             >
-                              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                                <span
-                                  style={{
-                                    fontSize: 'var(--text-base)',
-                                    fontFamily: 'var(--font-primary)',
-                                    fontWeight: 'var(--font-weight-medium)',
-                                    color: 'var(--foreground)',
-                                    lineHeight: 1.5
-                                  }}
-                                >
+                              <div className="template-tester__page-button-header">
+                                <span className="template-tester__page-label">
                                   {page.label}
                                 </span>
                                 <ArrowRight size={16} style={{ color: 'var(--primary)' }} />
                               </div>
-                              <span
-                                style={{
-                                  fontSize: 'var(--text-small)',
-                                  fontFamily: 'var(--font-secondary)',
-                                  fontWeight: 'var(--font-weight-regular)',
-                                  color: 'var(--muted-foreground)',
-                                  lineHeight: 1.5
-                                }}
-                              >
+                              <span className="template-tester__page-slug">
                                 {page.slug}
                               </span>
-                              <span
-                                style={{
-                                  fontSize: 'var(--text-small)',
-                                  fontFamily: 'var(--font-secondary)',
-                                  fontWeight: 'var(--font-weight-regular)',
-                                  color: 'var(--primary)',
-                                  lineHeight: 1.5
-                                }}
-                              >
+                              <span className="template-tester__page-template">
                                 {page.template}
                               </span>
                             </button>
@@ -844,75 +535,23 @@ export function TemplateTester() {
                   </div>
                 ) : (
                   /* Regular Pages Grid */
-                  <div className="wp-grid-3-cols" style={{ gap: 'var(--spacing-4)' }}>
+                  <div className="wp-grid-3-cols template-tester__pages-grid">
                     {category.pages?.map((page) => (
                       <button
                         key={page.page}
                         onClick={() => navigateTo(page.page)}
-                        style={{
-                          padding: '16px 20px',
-                          backgroundColor: 'var(--background)',
-                          border: '1px solid var(--border-soft)',
-                          borderRadius: 'var(--radius-lg)',
-                          textAlign: 'left',
-                          cursor: 'pointer',
-                          transition: 'all 0.2s ease',
-                          display: 'flex',
-                          flexDirection: 'column',
-                          gap: '8px'
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.backgroundColor = 'var(--card)';
-                          e.currentTarget.style.borderColor = 'var(--primary)';
-                          e.currentTarget.style.transform = 'translateY(-2px)';
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.backgroundColor = 'var(--background)';
-                          e.currentTarget.style.borderColor = 'var(--border-soft)';
-                          e.currentTarget.style.transform = 'translateY(0)';
-                        }}
-                        onFocus={(e) => {
-                          e.currentTarget.style.outline = '2px solid var(--ring)';
-                          e.currentTarget.style.outlineOffset = '2px';
-                        }}
-                        onBlur={(e) => {
-                          e.currentTarget.style.outline = 'none';
-                        }}
+                        className="template-tester__page-button"
                       >
-                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                          <span
-                            style={{
-                              fontSize: 'var(--text-base)',
-                              fontFamily: 'var(--font-primary)',
-                              fontWeight: 'var(--font-weight-medium)',
-                              color: 'var(--foreground)',
-                              lineHeight: 1.5
-                            }}
-                          >
+                        <div className="template-tester__page-button-header">
+                          <span className="template-tester__page-label">
                             {page.label}
                           </span>
                           <ArrowRight size={16} style={{ color: 'var(--primary)' }} />
                         </div>
-                        <span
-                          style={{
-                            fontSize: 'var(--text-small)',
-                            fontFamily: 'var(--font-secondary)',
-                            fontWeight: 'var(--font-weight-regular)',
-                            color: 'var(--muted-foreground)',
-                            lineHeight: 1.5
-                          }}
-                        >
+                        <span className="template-tester__page-slug">
                           {page.slug}
                         </span>
-                        <span
-                          style={{
-                            fontSize: 'var(--text-small)',
-                            fontFamily: 'var(--font-secondary)',
-                            fontWeight: 'var(--font-weight-regular)',
-                            color: 'var(--primary)',
-                            lineHeight: 1.5
-                          }}
-                        >
+                        <span className="template-tester__page-template">
                           {page.template}
                         </span>
                       </button>
@@ -925,125 +564,44 @@ export function TemplateTester() {
         ) : (
           // Sort by type
           Object.keys(templatesByType).map(type => (
-            <Section key={type} variant="default" spacing="50">
+            <Section key={type} background="default" spacing="lg">
               <Container>
                 {/* Category Header */}
-                <div style={{ display: 'flex', alignItems: 'flex-start', gap: 'var(--spacing-4)', marginBottom: 'var(--spacing-8)' }}>
+                <div className="template-tester__category-header">
                   <div
-                    style={{
-                      width: '48px',
-                      height: '48px',
-                      borderRadius: 'var(--radius-lg)',
-                      backgroundColor: 'var(--primary)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      flexShrink: 0
-                    }}
+                    className="template-tester__category-icon"
+                    style={{ backgroundColor: 'var(--primary)' }}
                   >
-                    <Code
-                      size={24}
-                      style={{ color: 'var(--primary-foreground)' }}
-                    />
+                    <Code size={24} />
                   </div>
                   <div>
-                    <h2
-                      style={{
-                        fontSize: 'var(--text-h2)',
-                        fontFamily: 'var(--font-primary)',
-                        fontWeight: 'var(--font-weight-medium)',
-                        color: 'var(--foreground)',
-                        margin: '0 0 8px 0',
-                        lineHeight: 1.25
-                      }}
-                    >
+                    <h2 className="template-tester__category-title">
                       {type}
                     </h2>
-                    <p
-                      style={{
-                        fontSize: 'var(--text-base)',
-                        fontFamily: 'var(--font-secondary)',
-                        fontWeight: 'var(--font-weight-regular)',
-                        color: 'var(--muted-foreground)',
-                        margin: 0,
-                        lineHeight: 1.5
-                      }}
-                    >
+                    <p className="template-tester__category-desc">
                       Template type
                     </p>
                   </div>
                 </div>
 
                 {/* Archetype Pages Grid */}
-                <div className="wp-grid-3-cols" style={{ gap: 'var(--spacing-4)' }}>
+                <div className="wp-grid-3-cols template-tester__pages-grid">
                   {templatesByType[type].map((page) => (
                     <button
                       key={page.page}
                       onClick={() => navigateTo(page.page)}
-                      style={{
-                        padding: '16px 20px',
-                        backgroundColor: 'var(--background)',
-                        border: '1px solid var(--border-soft)',
-                        borderRadius: 'var(--radius-lg)',
-                        textAlign: 'left',
-                        cursor: 'pointer',
-                        transition: 'all 0.2s ease',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        gap: '8px'
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.backgroundColor = 'var(--card)';
-                        e.currentTarget.style.borderColor = 'var(--primary)';
-                        e.currentTarget.style.transform = 'translateY(-2px)';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.backgroundColor = 'var(--background)';
-                        e.currentTarget.style.borderColor = 'var(--border-soft)';
-                        e.currentTarget.style.transform = 'translateY(0)';
-                      }}
-                      onFocus={(e) => {
-                        e.currentTarget.style.outline = '2px solid var(--ring)';
-                        e.currentTarget.style.outlineOffset = '2px';
-                      }}
-                      onBlur={(e) => {
-                        e.currentTarget.style.outline = 'none';
-                      }}
+                      className="template-tester__page-button"
                     >
-                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                        <span
-                          style={{
-                            fontSize: 'var(--text-base)',
-                            fontFamily: 'var(--font-primary)',
-                            fontWeight: 'var(--font-weight-medium)',
-                            color: 'var(--foreground)',
-                            lineHeight: 1.5
-                          }}
-                        >
+                      <div className="template-tester__page-button-header">
+                        <span className="template-tester__page-label">
                           {page.label}
                         </span>
                         <ArrowRight size={16} style={{ color: 'var(--primary)' }} />
                       </div>
-                      <span
-                        style={{
-                          fontSize: 'var(--text-small)',
-                          fontFamily: 'var(--font-secondary)',
-                          fontWeight: 'var(--font-weight-regular)',
-                          color: 'var(--muted-foreground)',
-                          lineHeight: 1.5
-                        }}
-                      >
+                      <span className="template-tester__page-slug">
                         {page.slug}
                       </span>
-                      <span
-                        style={{
-                          fontSize: 'var(--text-small)',
-                          fontFamily: 'var(--font-secondary)',
-                          fontWeight: 'var(--font-weight-regular)',
-                          color: 'var(--primary)',
-                          lineHeight: 1.5
-                        }}
-                      >
+                      <span className="template-tester__page-template">
                         {page.template}
                       </span>
                     </button>
@@ -1055,44 +613,15 @@ export function TemplateTester() {
         )}
 
         {/* Footer Note */}
-        <Section variant="canvas" spacing="50">
+        <Section background="default" spacing="lg">
           <Container>
-            <div
-              style={{
-                padding: '24px',
-                backgroundColor: 'var(--card)',
-                borderRadius: 'var(--radius-lg)',
-                border: '1px solid var(--border-soft)',
-                textAlign: 'center'
-              }}
-            >
-              <p
-                style={{
-                  fontSize: 'var(--text-base)',
-                  fontFamily: 'var(--font-secondary)',
-                  fontWeight: 'var(--font-weight-regular)',
-                  color: 'var(--muted-foreground)',
-                  margin: 0,
-                  lineHeight: 1.5
-                }}
-              >
-                All templates use 100% CSS variables from <code style={{ 
-                  fontFamily: 'monospace',
-                  fontSize: 'var(--text-small)',
-                  padding: '2px 6px',
-                  backgroundColor: 'var(--background)',
-                  borderRadius: 'var(--radius)',
-                  border: '1px solid var(--border-soft)'
-                }}>theme.css</code> • Lexend/Manrope fonts • WCAG 2.1 AA compliant • WordPress FSE compatible
+            <div className="template-tester__footer-card">
+              <p className="template-tester__footer-text">
+                All templates use 100% CSS variables from <code className="template-tester__code">theme.css</code> • Lexend/Manrope fonts • WCAG 2.1 AA compliant • WordPress FSE compatible
               </p>
             </div>
           </Container>
         </Section>
-      </main>
-
-      {/* Site Footer */}
-      <SiteFooter />
-      <BackToTopButton />
-    </div>
+    </>
   );
 }

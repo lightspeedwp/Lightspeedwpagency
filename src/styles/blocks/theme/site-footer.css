@@ -1,0 +1,357 @@
+/**
+ * Site Footer Styles
+ * 
+ * WordPress Template Part: parts/footer.html
+ * 
+ * Layout:
+ * - Top: Brand (left) + 3 nav columns (right)
+ * - Middle: Social icons row (centered)
+ * - Bottom: Copyright (left) + Legal links (right)
+ * 
+ * 100% CSS variables for complete user control.
+ * BEM naming convention.
+ * Full light/dark mode support.
+ */
+
+/* ============================================
+   FOOTER CONTAINER
+   ============================================ */
+
+.site-footer {
+  background-color: var(--sidebar);
+  color: var(--sidebar-foreground);
+}
+
+.site-footer__container {
+  max-width: var(--section-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding: var(--section-padding-y) var(--section-padding-x);
+}
+
+@media (max-width: 767px) {
+  .site-footer__container {
+    padding: var(--section-padding-y) var(--section-padding-x);
+  }
+}
+
+
+/* ============================================
+   MAIN CONTENT GRID — Brand + 3 Nav Columns
+   ============================================ */
+
+.site-footer__main {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-10);
+  padding-bottom: var(--spacing-10);
+  border-bottom: 1px solid var(--sidebar-border);
+}
+
+@media (min-width: 768px) {
+  .site-footer__main {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .site-footer__main {
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: var(--spacing-12);
+  }
+}
+
+
+/* ============================================
+   BRAND COLUMN
+   ============================================ */
+
+.site-footer__brand {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-5);
+}
+
+.site-footer__logo-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: block;
+  width: fit-content;
+}
+
+.site-footer__logo-text {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.site-footer__logo-bolt {
+  font-size: var(--text-xl);
+}
+
+.site-footer__logo-name {
+  font-family: var(--font-primary);
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--sidebar-foreground);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+.site-footer__logo-light {
+  font-weight: var(--font-weight-regular);
+}
+
+.site-footer__brand-description {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-regular);
+  color: var(--sidebar-foreground);
+  line-height: var(--line-height-relaxed);
+  opacity: 0.7;
+  margin: 0;
+  max-width: 32ch;
+}
+
+
+/* ============================================
+   NAVIGATION COLUMNS
+   ============================================ */
+
+.site-footer__column {
+  display: flex;
+  flex-direction: column;
+}
+
+.site-footer__column-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--sidebar-foreground);
+  margin: 0 0 var(--spacing-5) 0;
+  letter-spacing: var(--letter-spacing-normal);
+}
+
+.site-footer__link-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.site-footer__link-item {
+  margin: 0;
+}
+
+.site-footer__link-button {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-regular);
+  color: var(--sidebar-foreground);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+  opacity: 0.6;
+  transition: opacity var(--transition-base) ease, color var(--transition-base) ease;
+  display: block;
+  line-height: var(--line-height-normal);
+}
+
+.site-footer__link-button:hover,
+.site-footer__link-button:focus-visible {
+  opacity: 1;
+  color: var(--primary);
+}
+
+
+/* ============================================
+   SOCIAL ICONS ROW
+   ============================================ */
+
+.site-footer__social {
+  padding: var(--spacing-8) 0;
+  border-bottom: 1px solid var(--sidebar-border);
+  display: flex;
+  justify-content: center;
+}
+
+.site-footer__social-icons {
+  display: flex;
+  gap: var(--spacing-4);
+  align-items: center;
+}
+
+.site-footer__social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--spacing-10);
+  height: var(--spacing-10);
+  border-radius: var(--radius-full);
+  background-color: color-mix(in srgb, var(--sidebar-foreground) 12%, transparent);
+  color: var(--sidebar-foreground);
+  text-decoration: none;
+  transition: all var(--transition-base) ease;
+}
+
+.site-footer__social-link:hover,
+.site-footer__social-link:focus-visible {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  transform: translateY(-2px);
+}
+
+
+/* ============================================
+   BOTTOM BAR — Copyright + Legal
+   ============================================ */
+
+.site-footer__bottom {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  align-items: center;
+  justify-content: space-between;
+  padding-top: var(--spacing-8);
+}
+
+@media (min-width: 768px) {
+  .site-footer__bottom {
+    flex-direction: row;
+  }
+}
+
+.site-footer__copyright {
+  font-family: var(--font-secondary);
+  font-size: var(--text-xs);
+  color: var(--sidebar-foreground);
+  opacity: 0.5;
+  margin: 0;
+}
+
+.site-footer__legal {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.site-footer__legal-link {
+  font-family: var(--font-secondary);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--sidebar-foreground);
+  opacity: 0.5;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: opacity var(--transition-base) ease, color var(--transition-base) ease;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.site-footer__legal-link:hover,
+.site-footer__legal-link:focus-visible {
+  opacity: 1;
+  color: var(--primary);
+}
+
+.site-footer__legal-separator {
+  color: var(--sidebar-foreground);
+  opacity: 0.3;
+  font-size: var(--text-xs);
+  user-select: none;
+}
+
+
+/* ============================================
+   LIGHT MODE OVERRIDES
+   ============================================ */
+
+/**
+ * In light mode, the footer uses a dark navy background
+ * matching the approved mockup design.
+ */
+
+.light .site-footer {
+  background-color: var(--sidebar);
+  color: var(--sidebar-foreground);
+}
+
+.light .site-footer__main {
+  border-bottom-color: color-mix(in srgb, var(--sidebar-foreground) 15%, transparent);
+}
+
+.light .site-footer__social {
+  border-bottom-color: color-mix(in srgb, var(--sidebar-foreground) 15%, transparent);
+}
+
+.light .site-footer__social-link {
+  background-color: color-mix(in srgb, var(--sidebar-foreground) 12%, transparent);
+  color: var(--sidebar-foreground);
+}
+
+.light .site-footer__social-link:hover,
+.light .site-footer__social-link:focus-visible {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+
+/* ============================================
+   DARK MODE OVERRIDES
+   ============================================ */
+
+.dark .site-footer {
+  background-color: var(--sidebar);
+  color: var(--sidebar-foreground);
+}
+
+.dark .site-footer__main {
+  border-bottom-color: var(--sidebar-border);
+}
+
+.dark .site-footer__social {
+  border-bottom-color: var(--sidebar-border);
+}
+
+.dark .site-footer__social-link {
+  background-color: color-mix(in srgb, var(--sidebar-foreground) 12%, transparent);
+  color: var(--sidebar-foreground);
+}
+
+.dark .site-footer__social-link:hover,
+.dark .site-footer__social-link:focus-visible {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+
+/* ============================================
+   RESPONSIVE — MOBILE ADJUSTMENTS
+   ============================================ */
+
+@media (max-width: 767px) {
+  .site-footer__bottom {
+    text-align: center;
+  }
+
+  .site-footer__social-icons {
+    justify-content: center;
+  }
+
+  .site-footer__legal {
+    justify-content: center;
+  }
+
+  .site-footer__brand-description {
+    max-width: none;
+  }
+}

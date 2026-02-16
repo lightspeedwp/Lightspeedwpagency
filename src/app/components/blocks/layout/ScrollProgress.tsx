@@ -28,7 +28,8 @@
  * ```
  */
 
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
+import '@/styles/components/scroll-progress.css';
 
 interface ScrollProgressProps {
   /** Height of progress bar in pixels (default: 4) */
@@ -87,10 +88,9 @@ export function ScrollProgress({
 
   return (
     <div
-      className="fixed top-0 left-0 right-0 z-50"
+      className="scroll-progress-bar"
       style={{
         height: `${height}px`,
-        pointerEvents: 'none'
       }}
       role="progressbar"
       aria-valuenow={Math.round(progress)}
@@ -170,7 +170,7 @@ export function CircularScrollProgress({
 
   return (
     <div
-      className="fixed bottom-6 right-6 z-50"
+      className="scroll-progress-circle"
       style={{
         width: `${size}px`,
         height: `${size}px`
@@ -217,15 +217,7 @@ export function CircularScrollProgress({
 
       {/* Percentage text */}
       {showPercentage && (
-        <div
-          className="absolute inset-0 flex items-center justify-center"
-          style={{
-            fontSize: 'var(--text-small)',
-            fontFamily: 'Manrope, sans-serif',
-            fontWeight: 'var(--font-weight-semibold)',
-            color: 'var(--foreground)'
-          }}
-        >
+        <div className="scroll-progress-circle__label">
           {Math.round(progress)}%
         </div>
       )}

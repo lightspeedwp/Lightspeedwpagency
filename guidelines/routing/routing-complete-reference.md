@@ -1,374 +1,323 @@
 # Complete Routing Reference
 
-**Last Updated:** 2025-01-13  
-**Status:** Complete Reference  
-**Purpose:** Comprehensive routing map for all pages, templates, and navigation links
+**Last Updated:** February 14, 2026  
+**Status:** Verified against `/src/app/routes.tsx`  
+**Router:** `react-router` (Data Mode with `createBrowserRouter`)  
+**Layout:** All routes wrapped in `<RootLayout>` with `<Outlet />`
 
 ---
 
-## 📋 **ROUTING STRUCTURE**
+## Architecture
 
-### **Route Format**
-All routes follow WordPress-style URL patterns:
-- **Root:** `/` → Front page (home)
-- **Pages:** `/{slug}` → Page template
-- **Archives:** `/blog`, `/portfolio-archive`, `/category/{slug}`, `/tag/{slug}`, `/author/{slug}`
-- **Singles:** `/post-{slug}`, `/portfolio-single-{slug}`
-- **Hierarchical:** `/{parent}/{child}` (e.g., `/solutions/wordpress`)
-
----
-
-## 🏠 **CORE PAGES**
-
-### **Homepage**
-- **Route:** `/` or `/front-page`
-- **Page ID:** `front-page`
-- **Template:** `FrontPageTemplate.tsx`
-- **Navigation:** Not in main nav (home link via logo)
-
-### **About Pages**
-| Route | Page ID | Template | In Nav |
-|-------|---------|----------|--------|
-| `/about` | `about` | `AboutTemplate.tsx` | ✅ Yes (About submenu) |
-| `/team` | `team` | `TeamTemplate.tsx` | ✅ Yes (About submenu) |
-| `/about-process` | `about-process` | `AboutProcessTemplate.tsx` | ✅ Yes (About submenu) |
-| `/about-culture` | `about-culture` | `AboutCultureTemplate.tsx` | ✅ Yes (About submenu) |
-| `/about-history` | `about-history` | `AboutHistoryTemplate.tsx` | ✅ Yes (About submenu) |
-
-### **Utility Pages**
-| Route | Page ID | Template | In Nav |
-|-------|---------|----------|--------|
-| `/contact` | `contact` | `ContactPageTemplate.tsx` | ✅ Yes (Main nav) |
-| `/faq` | `faq` | `FAQTemplate.tsx` | ❌ No |
-| `/pricing` | `pricing` | `PricingTemplate.tsx` | ❌ No |
-| `/guarantees` | `guarantees` | `GuaranteesTemplate.tsx` | ❌ No |
-| `/testimonials` | `testimonials` | `TestimonialsTemplate.tsx` | ❌ No |
-| `/why-choose-us` | `why-choose-us` | `WhyChooseUsTemplate.tsx` | ❌ No |
-| `/roi-calculator` | `roi-calculator` | `ROICalculatorTemplate.tsx` | ❌ No |
-
----
-
-## 🛠️ **SERVICE PAGES**
-
-### **Services Overview**
-- **Route:** `/services`
-- **Page ID:** `services`
-- **Template:** `ServicesTemplate.tsx`
-- **Navigation:** ✅ Yes (Main nav + submenu)
-
-### **Service Detail Pages**
-| Route | Page ID | Template | In Nav |
-|-------|---------|----------|--------|
-| `/discovery-service` | `discovery-service` | `DiscoveryServiceTemplate.tsx` | ✅ Yes (Services submenu) |
-| `/design-service` | `design-service` | `DesignServiceTemplate.tsx` | ✅ Yes (Services submenu) |
-| `/development-service` | `development-service` | `DevelopmentServiceTemplate.tsx` | ✅ Yes (Services submenu) |
-| `/content-service` | `content-service` | `ContentServiceTemplate.tsx` | ✅ Yes (Services submenu) |
-| `/support-service` | `support-service` | *Template needed* | ✅ Yes (Services submenu) |
-| `/security-service` | `security-service` | `SecurityServiceTemplate.tsx` | ✅ Yes (Services submenu) |
-| `/migrations-service` | `migrations-service` | `MigrationsServiceTemplate.tsx` | ✅ Yes (Services submenu) |
-| `/mailchimp-service` | `mailchimp-service` | *Template needed* | ✅ Yes (Services submenu) |
-
-**Note:** `support-service` and `mailchimp-service` referenced in navigation but templates not found.
-
----
-
-## 💡 **SOLUTION PAGES**
-
-### **Solutions Overview**
-- **Route:** `/solutions`
-- **Page ID:** `solutions`
-- **Template:** `SolutionsTemplate.tsx`
-- **Navigation:** ✅ Yes (Main nav + submenu)
-
-### **Solution Detail Pages**
-| Route | Page ID | Template | In Nav |
-|-------|---------|----------|--------|
-| `/wordpress-solution` | `wordpress-solution` | `WordPressSolutionTemplate.tsx` | ✅ Yes (Solutions submenu) |
-| `/woocommerce-solution` | `woocommerce-solution` | `WooCommerceSolutionTemplate.tsx` | ✅ Yes (Solutions submenu) |
-| `/tour-operator` | `tour-operator` | *Template needed* | ✅ Yes (Solutions submenu) |
-| `/hosting` | `hosting` | `HostingTemplate.tsx` | ✅ Yes (Solutions submenu) |
-| `/lsx-design` | `lsx-design` | *Template needed* | ✅ Yes (Solutions submenu) |
-
-**Note:** `tour-operator` and `lsx-design` referenced in navigation but templates not found.
-
----
-
-## 📝 **BLOG & ARCHIVES**
-
-### **Blog Pages**
-| Route | Page ID | Template | In Nav |
-|-------|---------|----------|--------|
-| `/blog` | `blog` | `BlogIndexTemplate.tsx` | ✅ Yes (Main nav) |
-| `/index` | `index` | `IndexTemplate.tsx` (Latest posts) | ❌ No |
-
-### **Category Archives**
-| Route | Page ID | Template |
-|-------|---------|----------|
-| `/category-news` | `category-news` | `CategoryNewsTemplate.tsx` |
-| `/category-updates` | `category-updates` | `CategoryUpdatesTemplate.tsx` |
-| `/category-tutorials` | `category-tutorials` | `CategoryTutorialsTemplate.tsx` |
-| `/category-design-insights` | `category-design-insights` | `CategoryDesignInsightsTemplate.tsx` |
-
-### **Tag Archives**
-| Route | Page ID | Template |
-|-------|---------|----------|
-| `/tag-gutenberg` | `tag-gutenberg` | `TagGutenbergTemplate.tsx` |
-| `/tag-performance` | `tag-performance` | `TagPerformanceTemplate.tsx` |
-
-### **Date Archives**
-| Route | Page ID | Template |
-|-------|---------|----------|
-| `/date-2024` | `date-2024` | `Date2024Template.tsx` |
-| `/date-2024-12` | `date-2024-12` | `Date2024DecemberTemplate.tsx` |
-
-### **Author Archives**
-| Route | Page ID | Template |
-|-------|---------|----------|
-| `/author` | `author` | `AuthorArchiveTemplate.tsx` |
-| `/author-editor` | `author-editor` | `AuthorEditorTemplate.tsx` |
-| `/author-contributor` | `author-contributor` | `AuthorContributorTemplate.tsx` |
-
-### **Search**
-| Route | Page ID | Template |
-|-------|---------|----------|
-| `/search-page` | `search-page` | `SearchPageTemplate.tsx` |
-
----
-
-## 📰 **SINGLE POSTS**
-
-### **Single Post Routes**
-| Route | Page ID | Template |
-|-------|---------|----------|
-| `/post-design-system-guide` | `post-design-system-guide` | `SinglePostLongformTemplate.tsx` |
-| `/post-web-performance` | `post-web-performance` | `SinglePostLongformTemplate.tsx` |
-| `/post-accessibility-tips` | `post-accessibility-tips` | `SinglePostLongformTemplate.tsx` |
-| `/single-post` | `single-post` | `SinglePostLongformTemplate.tsx` |
-| `/single` | `single` | `SingleDetailTemplate.tsx` |
-
----
-
-## 🎨 **PORTFOLIO**
-
-### **Portfolio Archive**
-- **Route:** `/portfolio-archive`
-- **Page ID:** `portfolio-archive`
-- **Template:** `PortfolioArchiveTemplate.tsx`
-- **Navigation:** ✅ Yes (Main nav)
-
-### **Portfolio Single Projects**
-| Route | Page ID | Project Name |
-|-------|---------|--------------|
-| `/portfolio-single-eco-market-woocommerce` | `portfolio-single-eco-market-woocommerce` | EcoMarket |
-| `/portfolio-single-healthfirst-wellness-portal` | `portfolio-single-healthfirst-wellness-portal` | HealthFirst |
-| `/portfolio-single-wanderlust-travel-booking` | `portfolio-single-wanderlust-travel-booking` | Wanderlust |
-| `/portfolio-single-techstartup-magazine` | `portfolio-single-techstartup-magazine` | TechStartup |
-| `/portfolio-single-oceanview-real-estate` | `portfolio-single-oceanview-real-estate` | OceanView |
-| `/portfolio-single-nonprofit-foundation` | `portfolio-single-nonprofit-foundation` | Global Education |
-
-**Template:** All use `PortfolioSingleTemplate.tsx`
-
----
-
-## 🔧 **DEVELOPER TOOLS**
-
-### **Dev Tools Hub**
-- **Route:** `/dev-tools`
-- **Page ID:** `dev-tools`
-- **Template:** Dev tools navigation page
-- **Navigation:** ❌ No (direct access only)
-
-### **Dev Tools Pages**
-| Route | Page ID | Purpose |
-|-------|---------|---------|
-| `/dev-tools/template-tester` | `dev-tools/template-tester` | Template testing interface |
-| `/dev-tools/design-system-test` | `dev-tools/design-system-test` | Design system validation |
-| `/dev-tools/component-showcase` | `dev-tools/component-showcase` | Component library |
-| `/dev-tools/compliance-scorecard` | `dev-tools/compliance-scorecard` | Accessibility compliance |
-| `/dev-tools/feature-showcase` | `dev-tools/feature-showcase` | Feature demonstrations |
-| `/dev-tools/block-documentation` | `dev-tools/block-documentation` | Block documentation |
-| `/dev-tools/component-api` | `dev-tools/component-api` | Component API reference |
-| `/dev-tools/design-blocks-showcase` | `dev-tools/design-blocks-showcase` | Design blocks library |
-| `/dev-tools/button-showcase` | `dev-tools/button-showcase` | Button system reference |
-| `/dev-tools/header-footer-comparison` | `dev-tools/header-footer-comparison` | Header/footer variants |
-| `/dev-tools/icon-library` | `dev-tools/icon-library` | Icon reference |
-| `/dev-tools/live-preview` | `dev-tools/live-preview` | Live preview mode |
-| `/dev-tools/section-presets-showcase` | `dev-tools/section-presets-showcase` | Section style presets |
-
----
-
-## 🎨 **DESIGN SYSTEM PAGES**
-
-| Route | Page ID | Template |
-|-------|---------|----------|
-| `/style-guide` | `style-guide` | `StyleGuideTemplate.tsx` |
-| `/section-style-example` | `section-style-example` | Section style variations |
-| `/design-system-test` | `design-system-test` | Design system testing |
-| `/component-showcase` | `component-showcase` | Component showcase |
-| `/feature-showcase` | `feature-showcase` | Feature showcase |
-| `/template-tester` | `template-tester` | Template tester |
-
----
-
-## ❌ **ERROR PAGES**
-
-| Route | Page ID | Template |
-|-------|---------|----------|
-| `/404` | `404` | `NotFoundTemplate.tsx` |
-
----
-
-## 🗺️ **NAVIGATION STRUCTURE**
-
-### **Main Navigation (SiteHeader)**
-```tsx
-const mainNavItems = [
-  { label: 'Services', page: 'services', hasSubmenu: true },
-  { label: 'Solutions', page: 'solutions', hasSubmenu: true },
-  { label: 'Portfolio', page: 'portfolio-archive' },
-  { label: 'About', page: 'about', hasSubmenu: true },
-  { label: 'Blog', page: 'blog' },
-  { label: 'Contact', page: 'contact' }
-];
+```
+routes.tsx          → Route definitions (createBrowserRouter)
+route-map.ts        → Slug ↔ path bidirectional mapping
+NavigationContext   → navigateTo(slug) resolves via route-map.ts
+RootLayout          → SiteHeader + <Outlet /> + SiteFooter
 ```
 
-### **Services Submenu**
-```tsx
-const servicesSubmenu = [
-  { label: 'Discovery', page: 'discovery-service' },
-  { label: 'Design', page: 'design-service' },
-  { label: 'Development', page: 'development-service' },
-  { label: 'Support', page: 'support-service' },
-  { label: 'Hosting', page: 'hosting' },
-  { label: 'Migrations', page: 'migrations-service' },
-  { label: 'Security', page: 'security-service' },
-  { label: 'Content', page: 'content-service' },
-  { label: 'Mailchimp', page: 'mailchimp-service' }
-];
-```
+**IMPORTANT:** Templates must NOT render `SiteHeader`, `SiteFooter`, or `SkipLink` — the `RootLayout` handles all shared chrome.
 
-### **Solutions Submenu**
-```tsx
-const solutionsSubmenu = [
-  { label: 'WordPress', page: 'wordpress-solution' },
-  { label: 'WooCommerce', page: 'woocommerce-solution' },
-  { label: 'Tour Operators', page: 'tour-operator' },
-  { label: 'Hosting', page: 'hosting' },
-  { label: 'LSX Design', page: 'lsx-design' }
-];
-```
+---
 
-### **About Submenu**
-```tsx
-const aboutSubmenu = [
-  { label: 'About Us', page: 'about' },
-  { label: 'Our Team', page: 'team' },
-  { label: 'Our Process', page: 'about-process' },
-  { label: 'Culture', page: 'about-culture' },
-  { label: 'History', page: 'about-history' }
-];
+## Route Format
+
+All URLs use **hierarchical WordPress-style paths**:
+
+```
+/                               → Homepage
+/{section}                      → Section landing (e.g., /about, /services)
+/{section}/{slug}               → Detail page (e.g., /services/discovery)
+/{section}/{slug}/{sub}         → Nested sub-page (e.g., /services/content/strategy)
+/{archive}/:slug                → Dynamic single (e.g., /portfolio/:slug)
+/{archive}/category/:slug       → Taxonomy archive (e.g., /blog/category/:slug)
 ```
 
 ---
 
-## 🚨 **MISSING TEMPLATES**
+## All Routes (117 total)
 
-These routes are referenced in navigation but templates are missing:
+### Homepage (1)
 
-1. **`support-service`** — Support Service page (referenced in Services submenu)
-2. **`mailchimp-service`** — Mailchimp Service page (referenced in Services submenu)
-3. **`tour-operator`** — Tour Operator solution page (referenced in Solutions submenu)
-4. **`lsx-design`** — LSX Design solution page (referenced in Solutions submenu)
-
-**Action Required:** Create templates or remove from navigation
+| Path | Template | Slug |
+|------|----------|------|
+| `/` | `FrontPageTemplate` | `front-page`, `home` |
 
 ---
 
-## 🔍 **ROUTE VALIDATION RULES**
+### About (6)
 
-### **Valid Route Format**
-```typescript
-// Valid formats:
-'/' → Front page
-'/services' → Top-level page
-'/discovery-service' → Service detail
-'/portfolio-archive' → Archive
-'/post-design-system-guide' → Single post
-'/category-news' → Category archive
-'/portfolio-single-eco-market-woocommerce' → Portfolio project
-```
-
-### **Invalid Route Format**
-```typescript
-// Invalid (will cause navigation errors):
-'services' → Missing leading slash
-'/services/' → Trailing slash
-'/Services' → Incorrect case
-'/services/discovery' → Hierarchical (not implemented)
-```
+| Path | Template | Slug |
+|------|----------|------|
+| `/about` | `AboutTemplate` | `about` |
+| `/about/process` | `AboutProcessTemplate` | `about-process` |
+| `/about/culture` | `AboutCultureTemplate` | `about-culture` |
+| `/about/history` | `AboutHistoryTemplate` | `about-history` |
+| `/about/team` | `TeamTemplate` | `team` |
+| `/about/careers` | `CareersTemplate` | `careers` |
 
 ---
 
-## 📊 **ROUTE STATISTICS**
+### Services (15)
 
-- **Total Routes:** 90+ unique routes
-- **Main Navigation Items:** 6 (Services, Solutions, Portfolio, About, Blog, Contact)
-- **Service Pages:** 9 (1 overview + 8 detail pages)
-- **Solution Pages:** 5 (1 overview + 4 detail pages)
-- **About Pages:** 5 (overview + 4 sub-pages)
-- **Blog Archives:** 15+ (categories, tags, dates, authors)
-- **Portfolio Projects:** 6 case studies
-- **Utility Pages:** 8 pages
-- **Developer Tools:** 14 tools
-- **Missing Templates:** 4 pages
-
----
-
-## 🎯 **USAGE EXAMPLES**
-
-### **Navigating Programmatically**
-```tsx
-import { useNavigation } from '@/contexts/NavigationContext';
-
-const { navigateTo } = useNavigation();
-
-// Navigate to a page
-navigateTo('services');
-navigateTo('discovery-service');
-navigateTo('portfolio-archive');
-```
-
-### **Linking in Components**
-```tsx
-<Button page="contact" size="lg">
-  Get Started
-</Button>
-```
-
-### **Checking Current Page**
-```tsx
-const { currentPage } = useNavigation();
-
-const isActive = currentPage === 'services';
-const isAboutSection = currentPage.startsWith('about-');
-```
+| Path | Template | Slug | Legacy Slug |
+|------|----------|------|-------------|
+| `/services` | `ServicesLandingTemplate` | `services` | — |
+| `/services/discovery` | `DiscoveryServiceTemplate` | `discovery` | `discovery-service` |
+| `/services/design` | `DesignServiceTemplate` | `design` | `design-service` |
+| `/services/development` | `DevelopmentServiceTemplate` | `development` | `development-service` |
+| `/services/content` | `ContentServiceTemplate` | `content` | `content-service` |
+| `/services/content/strategy` | `ContentStrategyTemplate` | `content-strategy` | — |
+| `/services/content/collection` | `ContentCollectionTemplate` | `content-collection` | — |
+| `/services/content/audit` | `ContentAuditTemplate` | `content-audit` | — |
+| `/services/security` | `SecurityServiceTemplate` | `security` | `security-service` |
+| `/services/migrations` | `MigrationsServiceTemplate` | `migrations` | `migrations-service` |
+| `/services/support` | `SupportServiceTemplate` | `support` | `support-service` |
+| `/services/newsletter` | `NewsletterServiceTemplate` | `newsletter-service` | — |
+| `/services/email-marketing` | `EmailMarketingTemplate` | `email-marketing` | — |
+| `/services/training` | `TrainingTemplate` | `training` | — |
+| `/services/hosting` | `HostingTemplate` | `hosting` | `hosting-plans` |
 
 ---
 
-## ✅ **VALIDATION CHECKLIST**
+### Solutions (10)
 
-- [ ] All main navigation links have valid routes
-- [ ] All mega menu links have valid routes
-- [ ] All footer links have valid routes
-- [ ] All button links have valid pages
-- [ ] All missing templates are identified
-- [ ] All portfolio projects have valid slugs
-- [ ] All blog archives have valid routes
-- [ ] All service pages have valid routes
-- [ ] All solution pages have valid routes
+| Path | Template | Slug | Legacy Slug |
+|------|----------|------|-------------|
+| `/solutions` | `SolutionsTemplate` | `solutions` | — |
+| `/solutions/wordpress` | `WordPressSolutionTemplate` | `wordpress` | `wordpress-solution` |
+| `/solutions/woocommerce` | `WooCommerceSolutionTemplate` | `woocommerce` | `woocommerce-solution` |
+| `/solutions/tour-operators` | `TourOperatorTemplate` | `tour-operators` | — |
+| `/solutions/publishers` | `PublishersTemplate` | `publishers` | — |
+| `/solutions/lsx` | `LSXDesignTemplate` | `lsx` | `lsx-design` |
+| `/solutions/lsx-theme` | `LSXSolutionTemplate` | `lsx-theme` | — |
+| `/solutions/mailchimp` | `MailchimpSolutionTemplate` | `mailchimp` | — |
+| `/solutions/wetu-importer` | `WetuImporterTemplate` | `wetu-importer` | — |
+| `/solutions/lsx-sharing` | `LSXSharingTemplate` | `lsx-sharing` | — |
+| `/solutions/lsx-search` | `LSXSearchTemplate` | `lsx-search` | — |
 
 ---
 
-**Last Updated:** 2025-01-13  
-**Maintained By:** LSX Design System Team  
-**Version:** 1.0.0
+### Portfolio (4)
+
+| Path | Template | Slug Pattern |
+|------|----------|--------------|
+| `/portfolio` | `PortfolioArchiveTemplate` | `portfolio`, `portfolio-archive` |
+| `/portfolio/:slug` | `PortfolioSingleTemplate` | `portfolio-single-{slug}` |
+| `/portfolio/category/:slug` | `PortfolioCategoryArchiveTemplate` | — |
+| `/portfolio/tag/:slug` | `PortfolioTagArchiveTemplate` | — |
+
+---
+
+### Blog (11 base + 21 post formats = 32)
+
+#### Core Blog Routes
+
+| Path | Template | Slug Pattern |
+|------|----------|--------------|
+| `/blog` | `BlogIndexTemplate` | `blog` |
+| `/blog/single-post` | `SinglePostLongformTemplate` | `single-post` |
+| `/blog/:slug` | `SinglePostTemplate` | `post-{slug}` |
+| `/blog/category` | `CategoryArchiveTemplate` | `category` |
+| `/blog/category/:slug` | `CategoryArchiveTemplate` | `category-{slug}` |
+| `/blog/author` | `AuthorArchiveTemplate` | `author` |
+| `/blog/author/:slug` | `AuthorArchiveTemplate` | `author-{slug}` |
+| `/blog/tag` | `TagArchiveTemplate` | `tag-archive` |
+| `/blog/tag/:slug` | `TagArchiveTemplate` | `tag-{slug}` |
+| `/blog/date` | `DateArchiveTemplate` | `date-archive` |
+| `/blog/date/:year` | `DateArchiveTemplate` | `date-{year}` |
+| `/blog/date/:year/:month` | `DateArchiveTemplate` | `date-{year}-{month}` |
+
+#### Post Format Routes (21)
+
+| Format | Archive Path | Single Path | Archive Slug | Single Slug |
+|--------|-------------|-------------|--------------|-------------|
+| Audio | `/blog/format/audio` | `/blog/format/audio/single` | `audio-archive` | `audio-single` |
+| Video | `/blog/format/video` | `/blog/format/video/single` | `video-archive` | `video-single` |
+| Gallery | `/blog/format/gallery` | `/blog/format/gallery/single` | `gallery-archive` | `gallery-single` |
+| Image | `/blog/format/image` | `/blog/format/image/single` | `image-archive` | `image-single` |
+| Quote | `/blog/format/quote` | `/blog/format/quote/single` | `quote-archive` | `quote-single` |
+| Link | `/blog/format/link` | `/blog/format/link/single` | `link-archive` | `link-single` |
+| Chat | `/blog/format/chat` | `/blog/format/chat/single` | `chat-archive` | `chat-single` |
+| Status | `/blog/format/status` | `/blog/format/status/single` | `status-archive` | `status-single` |
+| Standard | `/blog/format/standard` | `/blog/format/standard/single` | `standard-archive` | `standard-single` |
+| Aside | `/blog/format/aside` | `/blog/format/aside/single` | `aside-archive` | `aside-single` |
+| Aside Stream | `/blog/format/aside-stream` | — | `aside-stream` | — |
+
+---
+
+### Videos (3)
+
+| Path | Template | Slug |
+|------|----------|------|
+| `/videos` | `VideoArchiveTemplate` | `videos`, `videos-archive` |
+| `/video/:slug` | `SingleVideoTemplate` | — |
+| `/videos/category/:slug` | `VideoCategoryArchiveTemplate` | — |
+
+---
+
+### Podcasts (2)
+
+| Path | Template | Slug |
+|------|----------|------|
+| `/podcasts` | `PodcastArchiveTemplate` | `podcasts`, `podcast-archive` |
+| `/podcast/:slug` | `SinglePodcastTemplate` | — |
+
+---
+
+### WooCommerce (4)
+
+| Path | Template | Slug |
+|------|----------|------|
+| `/shop` | `ProductArchiveTemplate` | `product-archive` |
+| `/shop/:slug` | `SingleProductTemplate` | `product-single-{slug}` |
+| `/cart` | `CartTemplate` | `cart` |
+| `/checkout` | `CheckoutTemplate` | `checkout` |
+
+---
+
+### Tour Operator (2)
+
+| Path | Template | Slug |
+|------|----------|------|
+| `/tours` | `TourOperatorArchiveTemplate` | `tour-operator-archive` |
+| `/tours/:slug` | `SingleTourTemplate` | `tour-single-{slug}` |
+
+---
+
+### Utility Pages (13)
+
+| Path | Template | Slug | In Nav |
+|------|----------|------|--------|
+| `/contact` | `ContactPageTemplate` | `contact` | Main nav |
+| `/faq` | `FAQTemplate` | `faq`, `faqs` | Footer |
+| `/pricing` | `PricingTemplate` | `pricing` | CTA links |
+| `/why-choose-us` | `WhyChooseUsTemplate` | `why-choose-us` | Internal links |
+| `/guarantees` | `GuaranteesTemplate` | `guarantees` | Internal links |
+| `/roi-calculator` | `ROICalculatorTemplate` | `roi-calculator` | Internal links |
+| `/testimonials` | `TestimonialsTemplate` | `testimonials` | Internal links |
+| `/search` | `SearchResultsPageTemplate` | `search` | Header search |
+| `/privacy-policy` | `PrivacyPolicyTemplate` | `privacy-policy` | Footer |
+| `/terms-of-service` | `TermsOfServiceTemplate` | `terms-of-service` | Footer |
+| `/site-map` | `SiteMapTemplate` | `site-map` | Footer |
+| `/style-guide` | `StyleGuideTemplate` | `style-guide` | Dev tools |
+| `/tutorials` | `TutorialsTemplate` | `tutorials` | Footer |
+
+---
+
+### Legacy / Misc (8)
+
+These are backward-compatibility or proof-of-concept routes.
+
+| Path | Template | Notes |
+|------|----------|-------|
+| `/archive` | `ArchiveTemplate` | Generic archive fallback |
+| `/archive/filters` | `ArchiveWithFiltersTemplate` | Filter demo |
+| `/index` | `IndexTemplate` | WordPress index fallback |
+| `/single` | `SingleTemplate` | Generic single fallback |
+| `/search-legacy` | `SearchResultsTemplate` | Legacy search |
+| `/wordpress-blocks-poc` | `WordPressBlocksProofOfConcept` | Blocks PoC |
+| `/section-style-example` | `SectionStyleExample` | Section styles demo |
+| `/feature-showcase` | `FeatureShowcaseTemplate` | Feature demo |
+
+---
+
+### Dev Tools (16)
+
+All behind `/dev-tools/`. Not production pages.
+
+| Path | Template |
+|------|----------|
+| `/dev-tools` | `DevToolsTemplate` |
+| `/dev-tools/template-tester` | `TemplateTester` |
+| `/dev-tools/component-showcase` | `ComponentShowcase` |
+| `/dev-tools/design-system-test` | `DesignSystemTest` |
+| `/dev-tools/compliance-scorecard` | `ComplianceScorecard` |
+| `/dev-tools/feature-showcase` | `FeatureShowcaseTemplate` |
+| `/dev-tools/block-documentation` | `BlockDocumentation` |
+| `/dev-tools/component-api` | `ComponentAPI` |
+| `/dev-tools/design-blocks-showcase` | `DesignBlocksShowcase` |
+| `/dev-tools/button-showcase` | `ButtonShowcase` |
+| `/dev-tools/header-footer-comparison` | `HeaderFooterComparison` |
+| `/dev-tools/icon-library` | `IconLibrary` |
+| `/dev-tools/live-preview` | `LivePreview` |
+| `/dev-tools/section-presets-showcase` | `SectionPresetsShowcase` |
+| `/dev-tools/theme-blocks-showcase` | `ThemeBlocksShowcase` |
+| `/dev-tools/style-guide` | `StyleGuideTemplate` |
+
+---
+
+### Error Pages (2)
+
+| Path | Template |
+|------|----------|
+| `/404` | `Template404` |
+| `*` | `Template404` (catch-all) |
+
+---
+
+## Slug Resolution
+
+The `NavigationContext` uses `navigateTo(slug)` which resolves slugs via `/src/app/utils/route-map.ts`.
+
+### Static Slugs
+
+Direct lookups in `SLUG_TO_PATH` map (170+ entries including legacy aliases).
+
+### Dynamic Slug Patterns
+
+| Prefix | Pattern | Resolved Path |
+|--------|---------|---------------|
+| `portfolio-single-` | `portfolio-single-{slug}` | `/portfolio/{slug}` |
+| `product-single-` | `product-single-{slug}` | `/shop/{slug}` |
+| `post-` | `post-{slug}` | `/blog/{slug}` |
+| `category-` | `category-{slug}` | `/blog/category/{slug}` |
+| `author-` | `author-{slug}` | `/blog/author/{slug}` |
+| `tag-` | `tag-{slug}` | `/blog/tag/{slug}` |
+| `date-` | `date-{year}-{month}` | `/blog/date/{year}/{month}` |
+| `service-` | `service-{name}` | `/services/{name}` |
+| `solution-` | `solution-{name}` | `/solutions/{name}` |
+| `tour-single-` | `tour-single-{slug}` | `/tours/{slug}` |
+
+### Legacy Slug Aliases
+
+Many old flat slugs are mapped to new hierarchical paths for backward compatibility:
+
+```
+discovery-service    → /services/discovery
+design-service       → /services/design
+wordpress-solution   → /solutions/wordpress
+woocommerce-solution → /solutions/woocommerce
+hosting-plans        → /services/hosting
+```
+
+See `route-map.ts` for the full alias list.
+
+---
+
+## Navigation Data
+
+**Source:** `/src/app/data/pages.ts`
+
+- `mainNavigation` — Desktop header mega menu items
+- `footerNavigation` — Footer column links
+- Helper functions: `getPageBySlug()`, `getPageUrl()`, `getPageTitle()`
+
+---
+
+## Adding a New Route
+
+1. **Create template** in `/src/app/components/templates/`
+2. **Create CSS file** in `/src/styles/templates/` (BEM naming, CSS variables only)
+3. **Register CSS import** in `/src/styles/index.css`
+4. **Add lazy import** in `/src/app/routes.tsx`
+5. **Add route definition** in the `routes` array
+6. **Add slug mapping** in `/src/app/utils/route-map.ts`
+7. **Update navigation data** in `/src/app/data/pages.ts` if the page appears in menus
+8. **Update sitemap** in `/guidelines/overview-sitemap.md`
+
+---
+
+**Last Updated:** February 14, 2026  
+**Total Routes:** 117  
+**Verified:** Against `/src/app/routes.tsx` and `/src/app/utils/route-map.ts`

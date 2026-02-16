@@ -1,0 +1,57 @@
+/**
+ * Contact Form Block Styles
+ * 
+ * WordPress Block: custom/contact-form
+ */
+
+.wp-block-contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+  max-width: 600px;
+  width: 100%;
+}
+
+/* Success State */
+.wp-block-contact-form--success {
+  padding: var(--spacing-4);
+  background-color: var(--success);
+  color: var(--success-foreground);
+  border-radius: var(--radius);
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+}
+
+/* Error State */
+.wp-block-contact-form--error {
+  padding: var(--spacing-4);
+  background-color: var(--destructive);
+  color: var(--destructive-foreground);
+  border-radius: var(--radius);
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+}
+
+/* Submit Button */
+.wp-block-contact-form__submit {
+  padding: var(--spacing-4) var(--spacing-8);
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: 500;
+  color: var(--primary-foreground);
+  background-color: var(--primary);
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  min-height: 48px;
+  transition: all 0.2s ease;
+}
+
+.wp-block-contact-form__submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.wp-block-contact-form__submit:hover:not(:disabled) {
+  opacity: 0.9;
+}

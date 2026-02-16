@@ -13,36 +13,17 @@
  * - Grid: WordPress utility classes (.wp-grid-*-cols)
  * - Interactions: Smooth hover transitions
  * 
- * **WordPress Mapping:**
- * - Group Block → Container
- * - Columns Block → Grid layout
- * - List Block → Features list
- * 
  * @example
  * ```tsx
  * import { SolutionsDetailGrid } from '../patterns/SolutionsDetailGrid';
- * import { Calendar, MapPin, CreditCard, CheckCircle } from 'lucide-react';
+ * import { Calendar, CheckCircle } from 'lucide-react';
  * 
  * <SolutionsDetailGrid
  *   badge="OUR SOLUTIONS"
  *   title="Complete Tour Operator Solutions"
  *   description="Everything you need to run a successful tour operation online"
- *   solutions={[
- *     {
- *       id: 'booking-system',
- *       icon: Calendar,
- *       title: 'Advanced Booking System',
- *       description: 'Complete booking management with real-time availability, pricing rules, and automated confirmations.',
- *       features: [
- *         'Real-time availability calendar',
- *         'Dynamic pricing & seasonal rates',
- *         'Group booking management'
- *       ]
- *     }
- *   ]}
+ *   solutions={...}
  *   columns={3}
- *   spacing="xl"
- *   backgroundColor="var(--muted)"
  * />
  * ```
  */
@@ -51,6 +32,7 @@ import { LucideIcon } from 'lucide-react';
 import { Section } from '../common/Section';
 import { CheckCircle } from 'lucide-react';
 import { useState } from 'react';
+import '@/styles/patterns/solutions-detail-grid.css';
 
 export interface SolutionDetail {
   /** Unique ID for hover state */
@@ -103,39 +85,22 @@ export function SolutionsDetailGrid({
   const [hoveredSolution, setHoveredSolution] = useState<string | null>(null);
 
   // Map columns to WordPress utility classes
-  const gridClass = columns === 3 ? 'wp-grid-3-cols' : 'wp-grid-2-cols';
+  const gridClass = columns === 3 ? 'solutions-detail-grid__grid--3-cols' : 'solutions-detail-grid__grid--2-cols';
+
+  // Max width class
+  const maxWidthClass = maxWidth !== 'full' ? `wp-max-w-${maxWidth}` : 'wp-max-w-full';
 
   return (
     <Section spacing={spacing} style={{ backgroundColor }}>
-      <div className={`wp-max-w-${maxWidth}`}>
+      <div className={maxWidthClass} style={{ margin: '0 auto' }}>
         {/* Section Header */}
         {(badge || title || description) && (
-          <div className="wp-text-center" style={{ marginBottom: 'var(--spacing-16)' }}>
+          <div className="solutions-detail-grid__header">
             {/* Badge */}
             {badge && (
-              <div
-                className="inline-flex"
-                style={{
-                  alignItems: 'center',
-                  gap: 'var(--spacing-2)',
-                  padding: '8px 16px',
-                  marginBottom: 'var(--spacing-4)',
-                  backgroundColor: 'var(--primary-soft)',
-                  borderRadius: 'var(--radius-full)',
-                  border: '1px solid var(--border-soft)'
-                }}
-              >
-                {BadgeIcon && <BadgeIcon size={16} style={{ color: 'var(--primary)' }} />}
-                <span
-                  style={{
-                    fontFamily: 'var(--font-primary)',
-                    fontSize: 'var(--text-small)',
-                    fontWeight: 'var(--font-weight-semibold)',
-                    color: 'var(--primary)',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.1em'
-                  }}
-                >
+              <div className="solutions-detail-grid__badge">
+                {BadgeIcon && <BadgeIcon size={16} className="solutions-detail-grid__badge-icon" />}
+                <span className="solutions-detail-grid__badge-text">
                   {badge}
                 </span>
               </div>
@@ -143,33 +108,14 @@ export function SolutionsDetailGrid({
 
             {/* Title */}
             {title && (
-              <h2
-                style={{
-                  fontFamily: 'var(--font-primary)',
-                  fontSize: 'var(--text-h1)',
-                  fontWeight: 'var(--font-weight-bold)',
-                  lineHeight: '1.2',
-                  letterSpacing: '-0.02em',
-                  marginBottom: 'var(--spacing-4)',
-                  color: 'var(--foreground)'
-                }}
-              >
+              <h2 className="solutions-detail-grid__title">
                 {title}
               </h2>
             )}
 
             {/* Description */}
             {description && (
-              <p
-                style={{
-                  fontFamily: 'var(--font-primary)',
-                  fontSize: 'var(--text-lg)',
-                  lineHeight: '1.7',
-                  color: 'var(--muted-foreground)',
-                  maxWidth: '700px',
-                  margin: '0 auto'
-                }}
-              >
+              <p className="solutions-detail-grid__description">
                 {description}
               </p>
             )}
@@ -177,97 +123,44 @@ export function SolutionsDetailGrid({
         )}
 
         {/* Solutions Grid */}
-        <div className={gridClass} style={{ gap: 'var(--spacing-8)' }}>
+        <div className={`solutions-detail-grid__grid ${gridClass}`}>
           {solutions.map((solution) => {
             const Icon = solution.icon;
-            const isHovered = hoveredSolution === solution.id;
-
+            
             return (
               <div
                 key={solution.id}
-                className="cursor-pointer"
-                style={{
-                  padding: 'var(--spacing-8)',
-                  backgroundColor: 'var(--card)',
-                  borderRadius: 'var(--radius-xl)',
-                  border: isHovered ? '2px solid var(--primary)' : '1px solid var(--border-soft)',
-                  transition: 'all 0.3s ease',
-                  transform: isHovered ? 'translateY(-8px)' : 'translateY(0)',
-                  boxShadow: isHovered 
-                    ? '0 20px 40px rgba(0, 0, 0, 0.15)' 
-                    : '0 4px 12px rgba(0, 0, 0, 0.05)'
-                }}
+                className="solution-detail-card"
                 onMouseEnter={() => setHoveredSolution(solution.id)}
                 onMouseLeave={() => setHoveredSolution(null)}
               >
                 {/* Icon */}
-                <div
-                  style={{
-                    width: '64px',
-                    height: '64px',
-                    borderRadius: 'var(--radius-lg)',
-                    backgroundColor: isHovered ? 'var(--primary)' : 'var(--primary-soft)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    marginBottom: 'var(--spacing-5)',
-                    transition: 'all 0.3s ease'
-                  }}
-                >
+                <div className="solution-detail-card__icon-wrapper">
                   <Icon 
                     size={32} 
-                    style={{ 
-                      color: isHovered ? 'white' : 'var(--primary)',
-                      transition: 'color 0.3s ease'
-                    }} 
+                    className="solution-detail-card__icon"
                   />
                 </div>
 
                 {/* Title */}
-                <h3
-                  style={{
-                    fontFamily: 'var(--font-primary)',
-                    fontSize: 'var(--text-xl)',
-                    fontWeight: 'var(--font-weight-bold)',
-                    color: 'var(--foreground)',
-                    marginBottom: 'var(--spacing-3)'
-                  }}
-                >
+                <h3 className="solution-detail-card__title">
                   {solution.title}
                 </h3>
 
                 {/* Description */}
-                <p
-                  style={{
-                    fontFamily: 'var(--font-primary)',
-                    fontSize: 'var(--text-base)',
-                    lineHeight: '1.6',
-                    color: 'var(--muted-foreground)',
-                    marginBottom: 'var(--spacing-4)'
-                  }}
-                >
+                <p className="solution-detail-card__description">
                   {solution.description}
                 </p>
 
                 {/* Features List */}
-                <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: 'var(--spacing-2)' }}>
+                <ul className="solution-detail-card__features">
                   {solution.features.map((feature, idx) => (
                     <li
                       key={idx}
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: 'var(--spacing-2)'
-                      }}
+                      className="solution-detail-card__feature-item"
                     >
-                      <FeatureIcon size={16} style={{ color: 'var(--primary)', flexShrink: 0 }} />
-                      <span
-                        style={{
-                          fontFamily: 'var(--font-primary)',
-                          fontSize: 'var(--text-small)',
-                          color: 'var(--muted-foreground)'
-                        }}
-                      >
+                      <FeatureIcon size={16} className="solution-detail-card__feature-icon" />
+                      <span className="solution-detail-card__feature-text">
                         {feature}
                       </span>
                     </li>

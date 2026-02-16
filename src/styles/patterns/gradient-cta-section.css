@@ -1,0 +1,129 @@
+/**
+ * Gradient CTA Section Pattern Styles
+ * 
+ * BEM-compliant styles for the GradientCTASection component.
+ * All vertical spacing via blockGap (CSS gap) -- zero margin.
+ */
+
+.gradient-cta-section {
+  position: relative;
+  overflow: hidden;
+  color: var(--primary-foreground);
+}
+
+/* Background Pattern */
+.gradient-cta-section__pattern {
+  position: absolute;
+  inset: 0;
+  opacity: 0.1;
+  background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0);
+  background-size: 32px 32px;
+  pointer-events: none;
+}
+
+/* Content Grid */
+.gradient-cta-section__grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-12);
+  align-items: center;
+  position: relative;
+  z-index: 10;
+}
+
+@media (min-width: 1024px) {
+  .gradient-cta-section__grid {
+    flex-direction: row;
+    gap: var(--spacing-20);
+  }
+}
+
+/* Content Column -- flex column with blockGap */
+.gradient-cta-section__content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+/* Title */
+.gradient-cta-section__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h1);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-snug);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+/* Description */
+.gradient-cta-section__description {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  line-height: var(--line-height-normal);
+  opacity: 0.95;
+}
+
+/* Benefits Checklist */
+.gradient-cta-section__benefits {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.gradient-cta-section__benefit-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+.gradient-cta-section__benefit-icon {
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.gradient-cta-section__benefit-text {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  color: var(--primary-foreground);
+}
+
+/* Button Override */
+.gradient-cta-section__button {
+  background-color: var(--color-white) !important;
+  color: var(--primary) !important;
+  border-color: var(--color-white) !important;
+  box-shadow: var(--shadow-lg);
+}
+
+.gradient-cta-section__button:hover {
+  background-color: var(--overlay-white-opaque) !important;
+}
+
+/* Graphic Column */
+.gradient-cta-section__graphic-wrapper {
+  display: none;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 1024px) {
+  .gradient-cta-section__graphic-wrapper {
+    display: flex;
+  }
+}
+
+.gradient-cta-section__graphic-box {
+  width: 280px;
+  height: 280px;
+  border-radius: var(--radius-xl);
+  background: var(--overlay-white-soft);
+  backdrop-filter: blur(20px);
+  border: 2px solid var(--overlay-white-medium);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-xl);
+}

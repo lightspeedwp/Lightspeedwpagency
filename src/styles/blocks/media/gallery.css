@@ -55,7 +55,7 @@
   border-radius: var(--radius);
   
   /* Transition */
-  transition: transform 300ms ease, opacity 300ms ease;
+  transition: transform var(--transition-base) ease, opacity var(--transition-base) ease;
 }
 
 .wp-block-gallery__caption {

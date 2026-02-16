@@ -6,21 +6,11 @@
  * Displays chronological events, process steps, or milestones with vertical timeline.
  * Commonly used in about pages (company history) and service pages (process steps).
  * 
- * **Usage:**
- * ```tsx
- * <Timeline
- *   items={[
- *     { year: '2003', title: 'Founded', description: 'Company established...' },
- *     { year: '2010', title: 'Expansion', description: 'Opened new office...' }
- *   ]}
- *   variant="default"
- * />
- * ```
- * 
  * @see {@link /guidelines/patterns/Timeline.md}
  */
 
 import { LucideIcon } from 'lucide-react';
+import '@/styles/patterns/timeline.css';
 
 export interface TimelineItem {
   /** Year or step number */
@@ -57,139 +47,81 @@ export function Timeline({
   lineColor,
   maxWidth = '4xl'
 }: TimelineProps) {
-  // Dot size mapping
-  const dotSizeMap = {
-    sm: { width: '48px', height: '48px', fontSize: 'var(--text-sm)' },
-    md: { width: '56px', height: '56px', fontSize: 'var(--text-base)' },
-    lg: { width: '64px', height: '64px', fontSize: 'var(--text-base)' }
-  };
-
-  const dotStyles = dotSizeMap[dotSize];
-
   // Max width classes
   const maxWidthClass = maxWidth !== 'none' ? `wp-max-w-${maxWidth}` : '';
+  
+  // Line classes
+  const lineClasses = [
+    'timeline__line',
+    variant === 'minimal' ? 'timeline__line--minimal' : 'timeline__line--default'
+  ].filter(Boolean).join(' ');
 
   return (
     <div className={maxWidthClass}>
-      <div style={{ position: 'relative' }}>
+      <div className="timeline">
         {/* Timeline Vertical Line */}
         <div
+          className={lineClasses}
           style={{
-            position: 'absolute',
-            left: variant === 'minimal' ? '16px' : '32px',
-            top: 0,
-            bottom: 0,
-            width: '2px',
-            backgroundColor: lineColor || 'var(--border-soft)',
-            zIndex: 0
+            backgroundColor: lineColor || 'var(--border-soft)'
           }}
         />
 
         {/* Timeline Items */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--spacing-12)' }}>
+        <div className="timeline__items">
           {items.map((item, index) => {
             const Icon = item.icon;
             const displayText = item.year || (item.step ? `${item.step}` : `${index + 1}`);
+            
+            // Item Classes
+            const itemClasses = [
+              'timeline__item',
+              variant === 'minimal' ? 'timeline__item--minimal' : 'timeline__item--default'
+            ].filter(Boolean).join(' ');
+
+            // Dot Classes
+            const dotClasses = [
+              'timeline__dot',
+              `timeline__dot--${dotSize}`,
+              variant === 'process' ? 'timeline__dot--rounded' : 'timeline__dot--circle',
+              variant === 'cards' ? 'timeline__dot--cards' : ''
+            ].filter(Boolean).join(' ');
+
+            // Title Classes
+            const titleClasses = [
+              'timeline__title',
+              variant === 'minimal' ? 'timeline__title--md' : 'timeline__title--lg'
+            ].filter(Boolean).join(' ');
 
             return (
-              <div 
-                key={index} 
-                style={{ 
-                  position: 'relative', 
-                  paddingLeft: variant === 'minimal' ? '60px' : '80px' 
-                }}
-              >
+              <div key={index} className={itemClasses}>
                 {/* Timeline Dot/Icon */}
                 <div
+                  className={dotClasses}
                   style={{
-                    position: 'absolute',
-                    left: 0,
-                    top: 0,
-                    ...dotStyles,
-                    borderRadius: variant === 'process' ? 'var(--radius-lg)' : 'var(--radius-full)',
-                    backgroundColor: item.dotColor || 'var(--primary)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontSize: dotStyles.fontSize,
-                    fontFamily: 'var(--font-primary)',
-                    fontWeight: 'var(--font-weight-bold)',
-                    color: 'var(--primary-foreground)',
-                    zIndex: 1,
-                    border: variant === 'cards' ? '3px solid var(--background)' : 'none',
-                    boxShadow: variant === 'cards' ? '0 4px 12px rgba(0, 0, 0, 0.1)' : 'none'
+                    backgroundColor: item.dotColor || 'var(--primary)'
                   }}
                 >
                   {Icon ? <Icon size={24} /> : displayText}
                 </div>
 
-                {/* Content Card */}
+                {/* Content */}
                 {variant === 'cards' ? (
-                  <div
-                    style={{
-                      padding: 'var(--spacing-6)',
-                      backgroundColor: 'var(--card)',
-                      borderRadius: 'var(--radius-lg)',
-                      border: '1px solid var(--border-soft)',
-                      transition: 'all 0.3s ease'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.transform = 'translateX(4px)';
-                      e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.08)';
-                      e.currentTarget.style.borderColor = 'var(--primary)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.transform = 'translateX(0)';
-                      e.currentTarget.style.boxShadow = 'none';
-                      e.currentTarget.style.borderColor = 'var(--border-soft)';
-                    }}
-                  >
-                    <h3
-                      style={{
-                        fontFamily: 'var(--font-primary)',
-                        fontSize: variant === 'minimal' ? 'var(--text-lg)' : 'var(--text-xl)',
-                        fontWeight: 'var(--font-weight-bold)',
-                        color: 'var(--foreground)',
-                        marginBottom: 'var(--spacing-2)'
-                      }}
-                    >
+                  <div className="timeline__card">
+                    <h3 className={titleClasses}>
                       {item.title}
                     </h3>
-                    <p
-                      style={{
-                        fontFamily: 'var(--font-primary)',
-                        fontSize: 'var(--text-base)',
-                        lineHeight: '1.6',
-                        color: 'var(--muted-foreground)',
-                        margin: 0
-                      }}
-                    >
+                    <p className="timeline__description">
                       {item.description}
                     </p>
                   </div>
                 ) : (
                   // Default/Process/Minimal variant
                   <div>
-                    <h3
-                      style={{
-                        fontFamily: 'var(--font-primary)',
-                        fontSize: variant === 'minimal' ? 'var(--text-lg)' : 'var(--text-xl)',
-                        fontWeight: 'var(--font-weight-bold)',
-                        color: 'var(--foreground)',
-                        marginBottom: 'var(--spacing-2)'
-                      }}
-                    >
+                    <h3 className={titleClasses}>
                       {item.title}
                     </h3>
-                    <p
-                      style={{
-                        fontFamily: 'var(--font-primary)',
-                        fontSize: 'var(--text-base)',
-                        lineHeight: '1.6',
-                        color: 'var(--muted-foreground)',
-                        margin: 0
-                      }}
-                    >
+                    <p className="timeline__description">
                       {item.description}
                     </p>
                   </div>

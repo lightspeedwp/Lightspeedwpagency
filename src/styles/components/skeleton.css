@@ -1,0 +1,42 @@
+/**
+ * Skeleton Component Styles
+ *
+ * BEM-compliant styles for composite skeleton layouts
+ * (ListSkeleton, ArticleSkeleton).
+ * All spacing via CSS variables.
+ */
+
+/* ── List skeleton ── */
+.skeleton-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.skeleton-list__item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-4);
+}
+
+.skeleton-list__body {
+  flex: 1;
+}
+
+/* ── Article skeleton ── */
+.skeleton-article {
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.skeleton-article__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+  margin-bottom: var(--spacing-6);
+}
+
+.skeleton-article__paragraph {
+  margin-bottom: var(--spacing-4);
+}

@@ -4,77 +4,80 @@
  * WordPress template: single-status.html
  * 
  * Displays a single status update.
+ * 100% CSS variables — no Tailwind.
+ * BEM naming: .wp-block-status-*, .status-single__*
+ * 
+ * @see /src/styles/blocks/post-formats/status.css
+ * @see /src/styles/templates/single-post.css
  */
 
-import { SiteHeader } from '@/app/components/parts/SiteHeader';
-import { SiteFooter } from '@/app/components/parts/SiteFooter';
 import { Container } from '@/app/components/common/Container';
 import { Section } from '@/app/components/common/Section';
 import { Breadcrumbs } from '@/app/components/common/Breadcrumbs';
 import { statusPost } from '@/app/data/posts-formats';
 import { MessageSquare, Heart, Share2 } from 'lucide-react';
+import '@/styles/blocks/post-formats/status.css';
+import '@/styles/templates/single-post.css';
 
 export function SingleStatusTemplate() {
   const post = statusPost;
 
   return (
     <>
-      <SiteHeader />
-      <main>
-        <section className="py-4 border-b border-[var(--border-soft)]">
-          <Container>
-            <Breadcrumbs 
-              items={[
-                { label: 'Home', href: '/' },
-                { label: 'Blog', href: '/blog' },
-                { label: 'Status Updates', href: '/status-archive' },
-                { label: 'Status' }
-              ]}
-            />
-          </Container>
-        </section>
+      <section className="single-post-breadcrumbs">
+        <Container>
+          <Breadcrumbs 
+            items={[
+              { label: 'Home', href: '/' },
+              { label: 'Blog', href: '/blog' },
+              { label: 'Status Updates', href: '/blog/format/status' },
+              { label: 'Status' }
+            ]}
+          />
+        </Container>
+      </section>
 
-        <Section spacing="lg">
-          <Container>
-            <div className="max-w-2xl mx-auto">
-              <article className="bg-[var(--card)] p-8 rounded-xl border border-[var(--border-soft)] shadow-md">
-                <div className="flex gap-4 mb-6">
-                  <div className="w-14 h-14 bg-gray-200 rounded-full flex-shrink-0" />
-                  <div>
-                    <div className="font-bold text-lg text-[var(--foreground)]">LightSpeed Team</div>
-                    <div className="text-[var(--muted-foreground)]">@lightspeedwp</div>
+      <Section spacing="lg">
+        <Container>
+          <div className="wp-block-status-single">
+            <article className="wp-block-status-card">
+              <div className="wp-block-status-card__header">
+                <div className="wp-block-status-card__avatar" />
+                <div className="wp-block-status-card__meta">
+                  <div className="wp-block-status-card__author">
+                    LightSpeed Team
                   </div>
+                  <div className="wp-block-status-card__handle">@lightspeedwp</div>
                 </div>
-                
-                <div 
-                  className="text-2xl leading-relaxed mb-8 font-medium"
-                  dangerouslySetInnerHTML={{ __html: post.content.rendered }} 
-                />
-                
-                <div className="text-[var(--muted-foreground)] border-b border-[var(--border-soft)] pb-4 mb-4 text-sm">
-                  9:15 AM · Dec 11, 2023
-                </div>
+              </div>
+              
+              <div 
+                className="wp-block-status-card__content"
+                dangerouslySetInnerHTML={{ __html: post.content.rendered }} 
+              />
+              
+              <div className="wp-block-status-card__time status-single__timestamp">
+                9:15 AM &middot; Dec 11, 2023
+              </div>
 
-                <div className="flex items-center gap-8 text-[var(--muted-foreground)]">
-                  <button className="flex items-center gap-2 hover:text-[var(--primary)] transition-colors">
-                    <MessageSquare size={20} />
-                    <span>12 Comments</span>
-                  </button>
-                  <button className="flex items-center gap-2 hover:text-red-500 transition-colors">
-                    <Heart size={20} />
-                    <span>45 Likes</span>
-                  </button>
-                  <button className="flex items-center gap-2 hover:text-blue-500 transition-colors">
-                    <Share2 size={20} />
-                    <span>Share</span>
-                  </button>
-                </div>
-              </article>
-            </div>
-          </Container>
-        </Section>
-      </main>
-      <SiteFooter />
+              <div className="status-single__actions">
+                <button className="wp-block-status-card__action">
+                  <MessageSquare size={20} />
+                  <span>12 Comments</span>
+                </button>
+                <button className="wp-block-status-card__action wp-block-status-card__action--like">
+                  <Heart size={20} />
+                  <span>45 Likes</span>
+                </button>
+                <button className="wp-block-status-card__action wp-block-status-card__action--share">
+                  <Share2 size={20} />
+                  <span>Share</span>
+                </button>
+              </div>
+            </article>
+          </div>
+        </Container>
+      </Section>
     </>
   );
 }

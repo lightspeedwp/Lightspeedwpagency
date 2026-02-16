@@ -21,9 +21,9 @@
 }
 
 .wp-block-code__code {
-  font-family: var(--font-mono, 'Courier New', monospace);
+  font-family: var(--font-mono);
   font-size: var(--text-sm);
-  line-height: 1.6;
+  line-height: var(--line-height-normal);
   color: var(--foreground);
   white-space: pre;
   word-spacing: normal;
@@ -73,7 +73,7 @@
 /* Responsive */
 @media (max-width: 767px) {
   .wp-block-code__code {
-    font-size: 13px;
+    font-size: var(--text-xs);
   }
   
   .wp-block-code__pre {

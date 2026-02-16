@@ -19,6 +19,8 @@
 
 import React from 'react';
 
+import '@/styles/blocks/design/group.css';
+
 export interface GroupProps {
   /** HTML tag for semantic structure */
   as?: 'div' | 'section' | 'article' | 'aside' | 'header' | 'footer' | 'nav' | 'main';

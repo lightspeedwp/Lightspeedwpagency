@@ -1,0 +1,32 @@
+/**
+ * Textarea Block Styles
+ */
+.wp-block-textarea {
+  display: flex;
+  min-height: var(--spacing-20);
+  width: 100%;
+  border-radius: var(--radius-md);
+  border: var(--wp--preset--border-width--1) solid var(--border);
+  background-color: var(--background);
+  padding: var(--spacing-4);
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  color: var(--foreground);
+  transition: border-color var(--transition-base) ease-in-out, box-shadow var(--transition-base) ease-in-out;
+}
+
+.wp-block-textarea:focus-visible {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 var(--wp--preset--border-width--2) var(--ring);
+}
+
+.wp-block-textarea::placeholder {
+  color: var(--muted-foreground);
+}
+
+.wp-block-textarea:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+  background-color: var(--muted);
+}

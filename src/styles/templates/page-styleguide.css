@@ -1,0 +1,618 @@
+/**
+ * Style Guide Page Template Styles
+ * 
+ * Dedicated styles for the style guide page.
+ * 100% CSS variables, reusable classes.
+ */
+
+/* ============================================
+   HERO
+   ============================================ */
+
+.styleguide-page__hero {
+  padding-top: var(--spacing-16);
+  padding-bottom: var(--spacing-16);
+  background-color: var(--background);
+  border-bottom: 1px solid var(--border);
+}
+
+.styleguide-page__breadcrumbs {
+  margin-bottom: var(--spacing-8);
+}
+
+.styleguide-page__hero-title {
+  margin-bottom: var(--spacing-4);
+}
+
+.styleguide-page__hero-desc {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-normal);
+  margin: 0;
+}
+
+/* ============================================
+   SECTIONS
+   ============================================ */
+
+.styleguide-page__section {
+  padding-top: var(--spacing-16);
+  padding-bottom: var(--spacing-16);
+  background-color: var(--background);
+}
+
+.styleguide-page__section--muted {
+  background-color: var(--muted);
+  border-top: 1px solid var(--border);
+}
+
+.styleguide-page__section-title {
+  margin-bottom: var(--spacing-8);
+}
+
+.styleguide-page__section-subtitle {
+  font-family: var(--font-primary);
+  font-size: var(--text-h3);
+  font-weight: var(--font-weight-medium);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-4);
+}
+
+.styleguide-page__section-group {
+  margin-bottom: var(--spacing-12);
+}
+
+/* ============================================
+   CARDS & CONTAINERS
+   ============================================ */
+
+.styleguide-page__card {
+  padding: var(--spacing-6);
+  border-radius: var(--radius-lg);
+  background-color: var(--card);
+  border: 1px solid var(--border);
+}
+
+/* ============================================
+   TYPOGRAPHY DISPLAY
+   ============================================ */
+
+.styleguide-page__type-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-2);
+}
+
+.styleguide-page__code-badge {
+  padding: var(--spacing-0) var(--spacing-1-5);
+  font-family: monospace;
+  font-size: var(--text-small);
+  color: var(--primary);
+  background-color: var(--muted);
+  border-radius: var(--radius);
+}
+
+.styleguide-page__type-label {
+  font-family: var(--font-secondary);
+  font-size: var(--text-small);
+  color: var(--muted-foreground);
+}
+
+.styleguide-page__font-preview-primary {
+  font-family: var(--font-primary);
+  color: var(--foreground);
+  margin: 0;
+}
+
+.styleguide-page__font-preview-secondary {
+  font-family: var(--font-secondary);
+  color: var(--foreground);
+  margin: 0;
+}
+
+.styleguide-page__font-desc {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  color: var(--muted-foreground);
+  margin: 0;
+}
+
+/* ============================================
+   COLOR SWATCHES
+   ============================================ */
+
+.styleguide-page__swatch-container {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.styleguide-page__swatch-color {
+  height: 96px;
+}
+
+.styleguide-page__swatch-info {
+  padding: var(--spacing-4);
+  background-color: var(--card);
+}
+
+.styleguide-page__swatch-code {
+  font-family: monospace;
+  font-size: var(--text-small);
+  color: var(--primary);
+  display: block;
+  margin-bottom: var(--spacing-1);
+}
+
+.styleguide-page__swatch-name {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-medium);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-1);
+}
+
+.styleguide-page__swatch-usage {
+  font-family: var(--font-secondary);
+  font-size: var(--text-small);
+  color: var(--muted-foreground);
+  margin: 0;
+}
+
+/* ============================================
+   SPACING DISPLAY
+   ============================================ */
+
+.styleguide-page__spacing-row {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-6);
+}
+
+.styleguide-page__spacing-code {
+  font-family: monospace;
+  font-size: var(--text-base);
+  color: var(--foreground);
+  min-width: 120px;
+}
+
+.styleguide-page__spacing-box {
+  background-color: var(--primary);
+  height: 40px;
+  display: flex;
+  align-items: center;
+  color: var(--primary-foreground);
+  font-size: var(--text-small);
+  border-radius: var(--radius);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.styleguide-page__spacing-value {
+  font-family: var(--font-secondary);
+  font-size: var(--text-small);
+  color: var(--muted-foreground);
+}
+
+/* ============================================
+   RADIUS DISPLAY
+   ============================================ */
+
+.styleguide-page__radius-card {
+  padding: var(--spacing-6);
+  border-radius: var(--radius-lg);
+  background-color: var(--card);
+  border: 1px solid var(--border);
+}
+
+.styleguide-page__radius-code {
+  font-family: monospace;
+  font-size: var(--text-base);
+  color: var(--primary);
+  display: block;
+  margin-bottom: var(--spacing-4);
+}
+
+.styleguide-page__radius-box {
+  height: 96px;
+  background-color: var(--primary);
+}
+
+.styleguide-page__radius-label {
+  font-family: var(--font-secondary);
+  font-size: var(--text-small);
+  color: var(--muted-foreground);
+  padding-top: var(--spacing-2);
+  /* margin-top: 8px converted to padding-top with CSS variable */
+  margin-bottom: 0;
+}
+
+/* ============================================
+   BUTTONS DISPLAY
+   ============================================ */
+
+.styleguide-page__button-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.styleguide-page__icon-button {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-3) var(--spacing-6);
+  border-radius: var(--radius);
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-medium);
+  border: none;
+  cursor: pointer;
+}
+
+.styleguide-page__icon-button--primary {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.styleguide-page__icon-button--secondary {
+  background-color: var(--secondary);
+  color: var(--secondary-foreground);
+}
+
+/* ============================================
+   FORM ELEMENTS
+   ============================================ */
+
+.styleguide-page__form-label {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-medium);
+  color: var(--foreground);
+  display: block;
+  margin-bottom: var(--spacing-2);
+}
+
+.styleguide-page__form-input {
+  width: 100%;
+  padding: var(--spacing-3) var(--spacing-4);
+  border-radius: var(--radius);
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  background-color: var(--background);
+  color: var(--foreground);
+  border: 1px solid var(--border);
+}
+
+/* ============================================
+   ALERTS
+   ============================================ */
+
+.styleguide-page__alert {
+  padding: var(--spacing-4);
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  display: flex;
+  align-items: start;
+  gap: var(--spacing-3);
+}
+
+.styleguide-page__alert--info {
+  background-color: var(--primary-soft);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.styleguide-page__alert--success {
+  background-color: var(--success-soft);
+  border-color: var(--success);
+  color: var(--success);
+}
+
+.styleguide-page__alert--warning {
+  background-color: var(--warning-soft);
+  border-color: var(--warning);
+  color: var(--warning);
+}
+
+.styleguide-page__alert--destructive {
+  background-color: var(--destructive-soft);
+  border-color: var(--destructive);
+  color: var(--destructive);
+}
+
+.styleguide-page__alert-title {
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--spacing-0);
+}
+
+.styleguide-page__alert-desc {
+  font-family: var(--font-primary);
+  font-size: var(--text-small);
+  opacity: 0.9;
+}
+
+/* ============================================
+   INLINE HELPERS (Refactored)
+   ============================================ */
+
+.styleguide-page__breadcrumbs-container {
+  margin-bottom: var(--spacing-8);
+}
+
+.styleguide-page__hero-heading {
+  margin-bottom: var(--spacing-4);
+}
+
+.styleguide-page__hero-text {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-normal);
+  margin: 0;
+}
+
+.styleguide-page__section-header {
+  margin-bottom: var(--spacing-8);
+}
+
+.styleguide-page__subsection {
+  margin-bottom: var(--spacing-12);
+}
+
+.styleguide-page__subsection-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h3);
+  font-weight: var(--font-weight-medium);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-4);
+}
+
+.styleguide-page__font-card {
+  padding: var(--spacing-6);
+  border-radius: var(--radius-lg);
+  background-color: var(--card);
+  border: 1px solid var(--border);
+}
+
+.styleguide-page__font-card-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h3);
+  font-weight: var(--font-weight-medium);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-2);
+}
+
+.styleguide-page__font-card-title--secondary {
+  font-family: var(--font-secondary);
+}
+
+.styleguide-page__font-card-desc {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  color: var(--muted-foreground);
+  margin: 0;
+}
+
+.styleguide-page__font-card-desc--secondary {
+  font-family: var(--font-secondary);
+}
+
+.styleguide-page__scale-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+.styleguide-page__scale-item {
+  padding: var(--spacing-6);
+  border-radius: var(--radius-lg);
+  background-color: var(--card);
+  border: 1px solid var(--border);
+}
+
+.styleguide-page__scale-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-2);
+}
+
+.styleguide-page__scale-code {
+  padding: var(--spacing-0) var(--spacing-1-5);
+  font-family: monospace;
+  font-size: var(--text-small);
+  color: var(--primary);
+  background-color: var(--muted);
+  border-radius: var(--radius);
+}
+
+.styleguide-page__scale-label {
+  font-family: var(--font-secondary);
+  font-size: var(--text-small);
+  color: var(--muted-foreground);
+}
+
+.styleguide-page__scale-preview {
+  font-family: var(--font-primary);
+  color: var(--foreground);
+  margin: 0;
+}
+
+.styleguide-page__weight-code {
+  padding: var(--spacing-0) var(--spacing-1-5);
+  font-family: monospace;
+  font-size: var(--text-small);
+  color: var(--primary);
+  background-color: var(--muted);
+  border-radius: var(--radius);
+  display: block;
+  margin-bottom: var(--spacing-2);
+}
+
+.styleguide-page__weight-preview {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  color: var(--foreground);
+  margin: 0;
+}
+
+.styleguide-page__swatch {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.styleguide-page__swatch-color {
+  height: 96px;
+}
+
+.styleguide-page__swatch-info {
+  padding: var(--spacing-4);
+  background-color: var(--card);
+}
+
+.styleguide-page__swatch-code {
+  font-family: monospace;
+  font-size: var(--text-small);
+  color: var(--primary);
+  display: block;
+  margin-bottom: var(--spacing-1);
+}
+
+.styleguide-page__swatch-name {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-medium);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-1);
+}
+
+.styleguide-page__swatch-usage {
+  font-family: var(--font-secondary);
+  font-size: var(--text-small);
+  color: var(--muted-foreground);
+  margin: 0;
+}
+
+.styleguide-page__spacing-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+.styleguide-page__spacing-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-6);
+}
+
+.styleguide-page__spacing-code {
+  font-family: monospace;
+  font-size: var(--text-base);
+  color: var(--foreground);
+  min-width: 120px;
+}
+
+.styleguide-page__spacing-box {
+  background-color: var(--primary);
+  height: 40px;
+  display: flex;
+  align-items: center;
+  color: var(--primary-foreground);
+  font-size: var(--text-small);
+  border-radius: var(--radius);
+}
+
+.styleguide-page__spacing-value {
+  font-family: var(--font-secondary);
+  font-size: var(--text-small);
+  color: var(--muted-foreground);
+}
+
+.styleguide-page__radius-card {
+  padding: var(--spacing-6);
+  border-radius: var(--radius-lg);
+  background-color: var(--card);
+  border: 1px solid var(--border);
+}
+
+.styleguide-page__radius-code {
+  font-family: monospace;
+  font-size: var(--text-base);
+  color: var(--primary);
+  display: block;
+  margin-bottom: var(--spacing-4);
+}
+
+.styleguide-page__radius-box {
+  height: 96px;
+  background-color: var(--primary);
+}
+
+.styleguide-page__radius-label {
+  font-family: var(--font-secondary);
+  font-size: var(--text-small);
+  color: var(--muted-foreground);
+  padding-top: var(--spacing-2);
+  /* margin-top: 8px converted to padding-top with CSS variable */
+  margin-bottom: 0;
+}
+
+.styleguide-page__button-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.styleguide-page__icon-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-3) var(--spacing-6);
+  border-radius: var(--radius);
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-medium);
+  border: none;
+  cursor: pointer;
+}
+
+.styleguide-page__icon-btn--primary {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.styleguide-page__icon-btn--secondary {
+  background-color: var(--secondary);
+  color: var(--secondary-foreground);
+}
+
+.styleguide-page__form-group {
+  margin-bottom: 0;
+}
+
+.styleguide-page__label {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-medium);
+  color: var(--foreground);
+  display: block;
+  margin-bottom: var(--spacing-2);
+}
+
+.styleguide-page__input,
+.styleguide-page__textarea,
+.styleguide-page__select {
+  width: 100%;
+  padding: var(--spacing-3) var(--spacing-4);
+  border-radius: var(--radius);
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  background-color: var(--background);
+  color: var(--foreground);
+  border: 1px solid var(--border);
+}

@@ -1,0 +1,46 @@
+/**
+ * Skip Link Styles
+ * 
+ * Accessibility skip link styles.
+ * 100% CSS variables.
+ */
+
+.skip-link {
+  /* Hidden state (default) - Screen reader accessible */
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  z-index: 9999;
+  
+  /* Visible state styles */
+  padding: var(--spacing-3) var(--spacing-6);
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+  border-radius: var(--radius);
+  transition: all 0.2s ease;
+}
+
+.skip-link:focus {
+  /* Show link when focused */
+  left: 16px;
+  top: 16px;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+  white-space: nowrap;
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+  box-shadow: var(--shadow-lg);
+}

@@ -1,0 +1,15 @@
+/**
+ * Aspect Ratio Block Styles
+ */
+.wp-block-aspect-ratio {
+  position: relative;
+  width: 100%;
+}
+
+.wp-block-aspect-ratio > * {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}

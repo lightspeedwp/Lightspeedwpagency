@@ -1,0 +1,117 @@
+/**
+ * Pagination Navigation Pattern Styles
+ * 
+ * BEM-compliant styles for the PaginationNav component.
+ */
+
+.pagination-nav {
+  padding-top: var(--spacing-8);
+  padding-bottom: var(--spacing-8);
+  border-top: 1px solid var(--border-soft);
+  margin-top: var(--spacing-12);
+}
+
+.pagination-nav__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-4);
+  flex-wrap: wrap;
+}
+
+@media (max-width: 640px) {
+  .pagination-nav__wrapper {
+    justify-content: center;
+  }
+}
+
+/* Previous/Next Buttons */
+.pagination-nav__prev-next {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2) var(--spacing-4);
+  border-radius: var(--radius-full);
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  transition: all 0.2s ease;
+  background-color: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.pagination-nav__prev-next--active {
+  color: var(--foreground);
+}
+
+.pagination-nav__prev-next--active:hover {
+  background-color: var(--muted);
+}
+
+.pagination-nav__prev-next--disabled {
+  color: var(--muted-foreground);
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Pages List */
+.pagination-nav__pages {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+@media (max-width: 480px) {
+  .pagination-nav__pages {
+    display: none; /* Hide page numbers on very small screens, keep prev/next */
+  }
+}
+
+/* Page Item */
+.pagination-nav__page-item {
+  display: flex;
+}
+
+/* Page Button */
+.pagination-nav__page-button {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--foreground);
+  background-color: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pagination-nav__page-button:hover:not(.pagination-nav__page-button--current) {
+  background-color: var(--muted);
+}
+
+.pagination-nav__page-button--current {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Ellipsis */
+.pagination-nav__ellipsis {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+}

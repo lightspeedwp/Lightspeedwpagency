@@ -29,7 +29,7 @@
   background: var(--muted);
   border-radius: var(--radius);
   text-decoration: none;
-  transition: all 0.2s ease;
+  transition: all var(--transition-base) ease;
 }
 
 .wp-block-tag-cloud__tag:hover {
@@ -39,7 +39,7 @@
 }
 
 .wp-block-tag-cloud__tag:focus-visible {
-  outline: 2px solid var(--primary);
+  outline: var(--wp--preset--border-width--2) solid var(--primary);
   outline-offset: 2px;
 }
 

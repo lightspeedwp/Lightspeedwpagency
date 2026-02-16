@@ -8,28 +8,13 @@
  * 
  * All styling in /src/styles/theme-showcase-grid.css (user-editable)
  * 
- * **Usage:**
- * ```tsx
- * <ThemeShowcaseGrid
- *   title="LSX Theme Collection"
- *   description="Professional WordPress themes for every industry"
- *   themes={[
- *     {
- *       id: 'lsx-business',
- *       name: 'LSX Business',
- *       description: 'Professional business theme...',
- *       category: 'Business',
- *       features: ['Service templates', 'Team profiles']
- *     }
- *   ]}
- *   columns={2}
- * />
- * ```
+ * @see {@link /guidelines/patterns/ThemeShowcaseGrid.md}
  */
 
-import { LucideIcon, CheckCircle } from 'lucide-react';
+import { CheckCircle } from 'lucide-react';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
+import '@/styles/patterns/theme-showcase-grid.css';
 
 export interface ThemeShowcase {
   /** Unique identifier */
@@ -73,12 +58,8 @@ export function ThemeShowcaseGrid({
   maxWidth = '6xl',
   checkmarkSize = 16
 }: ThemeShowcaseGridProps) {
-  // Grid columns - WordPress-aligned responsive grid
-  const gridClass = {
-    2: 'wp-grid-2-cols',
-    3: 'wp-grid-3-cols',
-    4: 'wp-grid-4-cols'
-  }[columns];
+  // Grid columns class
+  const gridClass = `theme-showcase__grid--${columns}-cols`;
 
   // Max width class
   const maxWidthClass = maxWidth !== 'none' ? `wp-max-w-${maxWidth}` : '';
@@ -104,7 +85,7 @@ export function ThemeShowcaseGrid({
         )}
 
         {/* Themes Grid */}
-        <div className={`${gridClass} ${maxWidthClass}`}>
+        <div className={`theme-showcase__grid ${gridClass} ${maxWidthClass}`} style={{ margin: '0 auto' }}>
           {themes.map((theme) => {
             return (
               <div

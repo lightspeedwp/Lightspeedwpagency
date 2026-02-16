@@ -9,39 +9,31 @@
  * URL: /about/culture/
  */
 
-import { SiteHeader } from '../parts/SiteHeader';
-import { SiteFooter } from '../parts/SiteFooter';
-import { SkipLink } from '../common/SkipLink';
+
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { Breadcrumbs } from '../common/Breadcrumbs';
-import { BackToTopButton } from '../blocks/layout/BackToTopButton';
+
 import { ValuesSection } from '../patterns/ValuesSection';
 import { CTASection } from '../patterns/CTASection';
 import { FAQSection } from '../patterns/FAQSection';
 import { TeamGrid } from '../patterns/TeamGrid';
 import { TestimonialGrid } from '../patterns/TestimonialGrid';
 import { Button } from '../blocks/design/Buttons';
+import { Heading } from '../blocks/text/Heading';
+import { Paragraph } from '../blocks/text/Paragraph';
 import { cultureFAQs } from '../../data/faqs';
 import { leadershipTeam } from '../../data/team';
 import { employeeTestimonials } from '../../data/testimonials';
 import { Heart, Users, Zap, Award, Coffee, Code, Sprout, Globe2 } from 'lucide-react';
+import '@/styles/templates/page-about.css';
 
 export function AboutCultureTemplate() {
   return (
     <>
-      <SkipLink />
-      <SiteHeader />
-      
-      <main id="main-content" role="main">
+
         {/* Breadcrumbs */}
-        <section 
-          className="py-4"
-          style={{
-            backgroundColor: 'var(--background)',
-          }}
-        >
-          <Container>
+        <section className="wp-block-breadcrumbs-section">
             <Breadcrumbs 
               items={[
                 { label: 'Home', href: '/' },
@@ -49,22 +41,16 @@ export function AboutCultureTemplate() {
                 { label: 'Our Culture' }
               ]}
             />
-          </Container>
         </section>
 
         {/* Hero Section */}
         <Section 
           spacing="xl"
-          style={{
-            backgroundColor: 'var(--primary)',
-            color: 'var(--primary-foreground)',
-            position: 'relative',
-            overflow: 'hidden'
-          }}
+          className="about-page__hero"
         >
           {/* Subtle gradient overlay */}
           <div 
-            className="absolute inset-0"
+            className="wp-absolute wp-inset-0"
             style={{
               background: 'linear-gradient(135deg, transparent 0%, var(--accent) 100%)',
               opacity: '0.1',
@@ -75,7 +61,7 @@ export function AboutCultureTemplate() {
           
           {/* Decorative gradient orb */}
           <div 
-            className="absolute top-0 right-0 w-96 h-96 rounded-full"
+            className="wp-absolute wp-top-0 wp-right-0 wp-w-96 wp-h-96 wp-rounded-full"
             style={{
               background: 'var(--accent)',
               opacity: '0.1',
@@ -86,52 +72,18 @@ export function AboutCultureTemplate() {
           />
 
           <Container style={{ position: 'relative', zIndex: 1 }}>
-            <div className="max-w-4xl">
-              <span 
-                className="inline-flex items-center px-6 py-3 mb-8"
-                style={{
-                  backgroundColor: 'var(--glass-bg-strong)',
-                  backdropFilter: 'blur(10px)',
-                  color: 'var(--primary-foreground)',
-                  borderRadius: 'var(--radius-xl)',
-                  border: '1px solid var(--glass-border)',
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-base)',
-                  fontWeight: 'var(--font-weight-medium)',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.1em'
-                }}
-              >
+            <div className="wp-max-w-4xl">
+              <span className="about-page__hero-badge">
                 About Us
               </span>
 
-              <h1 
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-h1)',
-                  fontWeight: 'var(--font-weight-semibold)',
-                  lineHeight: 'var(--line-height-tight)',
-                  letterSpacing: 'var(--letter-spacing-tight)',
-                  marginBottom: '24px',
-                  color: 'var(--primary-foreground)'
-                }}
-              >
+              <Heading level={1} className="about-page__hero-title">
                 Our Culture
-              </h1>
+              </Heading>
 
-              <p 
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-lead)',
-                  fontWeight: 'var(--font-weight-regular)',
-                  lineHeight: 'var(--line-height-relaxed)',
-                  color: 'var(--primary-foreground)',
-                  opacity: 0.95,
-                  marginBottom: 0
-                }}
-              >
+              <Paragraph size="large" className="about-page__hero-desc">
                 We believe in creating a workplace where talented people can do their best work while maintaining balance, learning continuously, and having fun along the way.
-              </p>
+              </Paragraph>
             </div>
           </Container>
         </Section>
@@ -167,25 +119,15 @@ export function AboutCultureTemplate() {
         />
 
         {/* Work Environment Section */}
-        <Section spacing="xl" style={{ backgroundColor: 'var(--muted)' }}>
+        <Section spacing="xl" className="about-page__mission-section">
           <Container>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="wp-grid-2-cols wp-gap-12 wp-items-center">
               <div>
-                <h2 
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-h2)',
-                    fontWeight: 'var(--font-weight-semibold)',
-                    color: 'var(--foreground)',
-                    marginBottom: '24px',
-                    lineHeight: 'var(--line-height-snug)',
-                    letterSpacing: 'var(--letter-spacing-tight)'
-                  }}
-                >
+                <Heading level={2} className="about-page__section-title wp-text-left wp-mb-6">
                   How We Work
-                </h2>
+                </Heading>
                 
-                <div className="space-y-6">
+                <div className="wp-space-y-6">
                   {[
                     {
                       title: 'Flexible Hours',
@@ -206,81 +148,30 @@ export function AboutCultureTemplate() {
                   ].map((item, index) => (
                     <div
                       key={index}
-                      style={{
-                        backgroundColor: 'var(--card)',
-                        border: '1px solid var(--border-soft)',
-                        borderRadius: 'var(--radius-lg)',
-                        padding: '24px'
-                      }}
+                      className="about-page__story-card"
                     >
-                      <h3 
-                        style={{
-                          fontFamily: 'Lexend, sans-serif',
-                          fontSize: 'var(--text-h4)',
-                          fontWeight: 'var(--font-weight-semibold)',
-                          color: 'var(--foreground)',
-                          marginBottom: '8px',
-                          lineHeight: '1.3'
-                        }}
-                      >
+                      <Heading level={3} className="about-page__story-card-title wp-mb-2">
                         {item.title}
-                      </h3>
-                      <p 
-                        style={{
-                          fontFamily: 'Lexend, sans-serif',
-                          fontSize: 'var(--text-base)',
-                          color: 'var(--muted-foreground)',
-                          lineHeight: '1.6',
-                          margin: 0
-                        }}
-                      >
+                      </Heading>
+                      <Paragraph className="about-page__story-card-text wp-m-0">
                         {item.description}
-                      </p>
+                      </Paragraph>
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div 
-                style={{
-                  backgroundColor: 'var(--card)',
-                  border: '1px solid var(--border-soft)',
-                  borderRadius: 'var(--radius-xl)',
-                  padding: '48px',
-                  textAlign: 'center'
-                }}
-              >
+              <div className="about-page__mission-card wp-text-center">
                 <Users 
                   size={64} 
-                  style={{ 
-                    color: 'var(--primary)',
-                    marginBottom: '24px',
-                    display: 'inline-block'
-                  }} 
+                  className="wp-text-primary wp-mb-6 wp-inline-block"
                 />
-                <h3 
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-h3)',
-                    fontWeight: 'var(--font-weight-semibold)',
-                    color: 'var(--foreground)',
-                    marginBottom: '16px',
-                    lineHeight: '1.3'
-                  }}
-                >
+                <Heading level={3} className="about-page__card-title wp-mb-4">
                   Join Our Team
-                </h3>
-                <p 
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-base)',
-                    color: 'var(--muted-foreground)',
-                    lineHeight: '1.6',
-                    marginBottom: '24px'
-                  }}
-                >
+                </Heading>
+                <Paragraph className="about-page__card-desc wp-mb-6">
                   We're always looking for talented WordPress developers, designers, and project managers who share our values.
-                </p>
+                </Paragraph>
                 <Button 
                   variant="primary" 
                   size="md" 
@@ -295,37 +186,18 @@ export function AboutCultureTemplate() {
         </Section>
 
         {/* Benefits Section */}
-        <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
+        <Section spacing="xl" className="about-page__story-section">
           <Container>
-            <div className="text-center mb-16">
-              <h2 
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-h2)',
-                  fontWeight: 'var(--font-weight-semibold)',
-                  color: 'var(--foreground)',
-                  marginBottom: '16px',
-                  lineHeight: 'var(--line-height-snug)',
-                  letterSpacing: 'var(--letter-spacing-tight)'
-                }}
-              >
+            <div className="about-page__section-header">
+              <Heading level={2} className="about-page__section-title">
                 Benefits & Perks
-              </h2>
-              <p 
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-lg)',
-                  color: 'var(--muted-foreground)',
-                  maxWidth: '700px',
-                  margin: '0 auto',
-                  lineHeight: '1.7'
-                }}
-              >
+              </Heading>
+              <Paragraph className="about-page__section-desc">
                 We invest in our team's success and wellbeing
-              </p>
+              </Paragraph>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="wp-grid-3-cols wp-gap-8">
               {[
                 {
                   icon: Award,
@@ -362,18 +234,12 @@ export function AboutCultureTemplate() {
                 return (
                   <div
                     key={index}
-                    className="flex gap-4"
-                    style={{
-                      backgroundColor: 'var(--card)',
-                      border: '1px solid var(--border-soft)',
-                      borderRadius: 'var(--radius-xl)',
-                      padding: '24px'
-                    }}
+                    className="wp-flex wp-gap-4 wp-p-6 wp-bg-card wp-border wp-border-border-soft wp-rounded-xl"
                   >
                     <div 
                       style={{
-                        width: '48px',
-                        height: '48px',
+                        width: 'var(--spacing-12)',
+                        height: 'var(--spacing-12)',
                         borderRadius: 'var(--radius)',
                         backgroundColor: 'var(--secondary)',
                         display: 'flex',
@@ -386,29 +252,12 @@ export function AboutCultureTemplate() {
                       <Icon size={24} strokeWidth={2} />
                     </div>
                     <div>
-                      <h3 
-                        style={{
-                          fontFamily: 'Lexend, sans-serif',
-                          fontSize: 'var(--text-h4)',
-                          fontWeight: 'var(--font-weight-semibold)',
-                          color: 'var(--foreground)',
-                          marginBottom: '8px',
-                          lineHeight: '1.3'
-                        }}
-                      >
+                      <Heading level={3} className="about-page__story-card-title wp-text-h4 wp-mb-2">
                         {benefit.title}
-                      </h3>
-                      <p 
-                        style={{
-                          fontFamily: 'Lexend, sans-serif',
-                          fontSize: 'var(--text-base)',
-                          color: 'var(--muted-foreground)',
-                          lineHeight: '1.6',
-                          margin: 0
-                        }}
-                      >
+                      </Heading>
+                      <Paragraph className="about-page__story-card-text wp-m-0">
                         {benefit.description}
-                      </p>
+                      </Paragraph>
                     </div>
                   </div>
                 );
@@ -418,34 +267,15 @@ export function AboutCultureTemplate() {
         </Section>
 
         {/* Team Grid */}
-        <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
+        <Section spacing="xl" className="about-page__stats-section">
           <Container>
-            <div className="text-center mb-16">
-              <h2 
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-h2)',
-                  fontWeight: 'var(--font-weight-semibold)',
-                  color: 'var(--foreground)',
-                  marginBottom: '16px',
-                  lineHeight: 'var(--line-height-snug)',
-                  letterSpacing: 'var(--letter-spacing-tight)'
-                }}
-              >
+            <div className="about-page__section-header">
+              <Heading level={2} className="about-page__section-title">
                 Leadership Team
-              </h2>
-              <p 
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-lg)',
-                  color: 'var(--muted-foreground)',
-                  maxWidth: '700px',
-                  margin: '0 auto',
-                  lineHeight: '1.7'
-                }}
-              >
+              </Heading>
+              <Paragraph className="about-page__section-desc">
                 Meet the team driving our success
-              </p>
+              </Paragraph>
             </div>
 
             <TeamGrid
@@ -455,34 +285,15 @@ export function AboutCultureTemplate() {
         </Section>
 
         {/* Testimonial Grid */}
-        <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
+        <Section spacing="xl" className="about-page__story-section">
           <Container>
-            <div className="text-center mb-16">
-              <h2 
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-h2)',
-                  fontWeight: 'var(--font-weight-semibold)',
-                  color: 'var(--foreground)',
-                  marginBottom: '16px',
-                  lineHeight: 'var(--line-height-snug)',
-                  letterSpacing: 'var(--letter-spacing-tight)'
-                }}
-              >
+            <div className="about-page__section-header">
+              <Heading level={2} className="about-page__section-title">
                 Employee Testimonials
-              </h2>
-              <p 
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-lg)',
-                  color: 'var(--muted-foreground)',
-                  maxWidth: '700px',
-                  margin: '0 auto',
-                  lineHeight: '1.7'
-                }}
-              >
+              </Heading>
+              <Paragraph className="about-page__section-desc">
                 Hear from our team members about their experience
-              </p>
+              </Paragraph>
             </div>
 
             <TestimonialGrid
@@ -509,10 +320,6 @@ export function AboutCultureTemplate() {
           description="Have more questions about our culture? Check out our FAQ section."
           faqs={cultureFAQs}
         />
-      </main>
-
-      <SiteFooter />
-      <BackToTopButton />
     </>
   );
 }

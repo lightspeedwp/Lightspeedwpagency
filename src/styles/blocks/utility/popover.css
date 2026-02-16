@@ -1,0 +1,61 @@
+/**
+ * Popover Block Styles
+ * 
+ * WordPress block: .wp-block-popover
+ */
+
+.wp-block-popover-content {
+  z-index: 50;
+  width: 280px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-soft);
+  background-color: var(--card);
+  color: var(--foreground);
+  padding: var(--spacing-4);
+  box-shadow: var(--shadow-lg);
+  outline: none;
+  
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  
+  /* Animation */
+  animation-duration: 0.2s;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+.wp-block-popover-content[data-state='open'] {
+  animation-name: wp-block-popover-slide-up-fade;
+}
+
+.wp-block-popover-content[data-state='closed'] {
+  animation-name: wp-block-popover-slide-down-fade;
+}
+
+.wp-block-popover-arrow {
+  fill: var(--card);
+  stroke: var(--border-soft);
+  stroke-width: 1px;
+}
+
+@keyframes wp-block-popover-slide-up-fade {
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes wp-block-popover-slide-down-fade {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+}

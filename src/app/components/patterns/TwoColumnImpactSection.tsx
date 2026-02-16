@@ -6,33 +6,14 @@
  * Two-column layout with icon features on left and content box on right.
  * Commonly used on service pages to highlight key benefits and approach.
  * 
- * **Usage:**
- * ```tsx
- * <TwoColumnImpactSection
- *   title="Empower your content's impact"
- *   features={[
- *     {
- *       icon: Zap,
- *       title: 'Uncertain about your initial steps?',
- *       description: 'We provide clear guidance...'
- *     }
- *   ]}
- *   contentBox={{
- *     content: 'At LightSpeed, we follow a three-tiered approach...',
- *     highlightStart: 'At LightSpeed, we follow a three-tiered approach:'
- *   }}
- *   imagePlaceholder={{
- *     icon: FileText,
- *     label: 'Content Strategy Workshop'
- *   }}
- * />
- * ```
+ * @see {@link /guidelines/patterns/TwoColumnImpactSection.md}
  */
 
 import { LucideIcon } from 'lucide-react';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { IconFeaturesList, IconFeature } from './IconFeaturesList';
+import '@/styles/patterns/two-column-impact.css';
 
 export interface ContentBox {
   /** Main content text */
@@ -84,7 +65,7 @@ export function TwoColumnImpactSection({
 
     if (!highlightStart) {
       return (
-        <p className="font-primary text-lg leading-relaxed" style={{ color: 'var(--foreground)' }}>
+        <p className="impact-section__text">
           {content}
         </p>
       );
@@ -94,8 +75,8 @@ export function TwoColumnImpactSection({
     const parts = content.split(highlightStart);
     
     return (
-      <p className="font-primary text-lg leading-relaxed" style={{ color: 'var(--foreground)' }}>
-        <strong className="font-bold">{highlightStart}</strong>
+      <p className="impact-section__text">
+        <strong className="impact-section__highlight">{highlightStart}</strong>
         {parts[1]}
       </p>
     );
@@ -105,22 +86,14 @@ export function TwoColumnImpactSection({
     <Section spacing={spacing} style={{ backgroundColor }}>
       <Container>
         <div 
-          className="wp-grid-2-cols"
+          className={`impact-section__grid ${reverseColumns ? 'impact-section__grid--reverse' : ''}`}
           style={{ 
-            alignItems: 'center',
             flexDirection: reverseColumns ? 'row-reverse' : 'row'
           }}
         >
           {/* Left Column: Title + Features */}
-          <div>
-            <h2
-              className="font-primary text-h1 font-bold tracking-tight"
-              style={{
-                lineHeight: '1.2',
-                marginBottom: 'var(--spacing-8)',
-                color: 'var(--foreground)'
-              }}
-            >
+          <div style={{ order: reverseColumns ? 2 : 1 }}>
+            <h2 className="impact-section__title">
               {title}
             </h2>
 
@@ -128,43 +101,23 @@ export function TwoColumnImpactSection({
           </div>
 
           {/* Right Column: Content Box + Image */}
-          <div>
+          <div style={{ order: reverseColumns ? 1 : 2 }}>
             {/* Content Box */}
             {contentBox && (
-              <div
-                style={{
-                  backgroundColor: 'var(--primary-soft)',
-                  borderRadius: 'var(--radius-xl)',
-                  padding: 'var(--spacing-8)',
-                  marginBottom: 'var(--spacing-6)'
-                }}
-              >
+              <div className="impact-section__content-box">
                 {renderContent()}
               </div>
             )}
 
             {/* Image Placeholder */}
             {imagePlaceholder && Icon && (
-              <div
-                style={{
-                  borderRadius: 'var(--radius-xl)',
-                  overflow: 'hidden',
-                  backgroundColor: 'var(--muted)',
-                  aspectRatio: '16/9',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }}
-              >
-                <div style={{ textAlign: 'center', padding: 'var(--spacing-10)' }}>
+              <div className="impact-section__image-placeholder">
+                <div className="impact-section__placeholder-content">
                   <Icon 
                     size={64} 
-                    style={{ 
-                      color: 'var(--muted-foreground)', 
-                      margin: '0 auto var(--spacing-4)' 
-                    }} 
+                    className="impact-section__placeholder-icon"
                   />
-                  <p className="font-primary text-base" style={{ color: 'var(--muted-foreground)' }}>
+                  <p className="impact-section__placeholder-label">
                     {imagePlaceholder.label}
                   </p>
                 </div>

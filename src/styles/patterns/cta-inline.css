@@ -1,0 +1,77 @@
+/**
+ * CTA Inline Pattern Styles
+ * 
+ * BEM-compliant styles for the CTAInline component.
+ * All vertical spacing via blockGap (CSS gap) -- zero margin.
+ */
+
+.cta-inline {
+  /* Layout handled by Section component */
+}
+
+/* Container -- flex column with blockGap */
+.cta-inline__container {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-4);
+}
+
+/* Heading */
+.cta-inline__heading {
+  font-family: var(--font-primary);
+  font-size: var(--text-h3);
+  font-weight: var(--font-weight-medium);
+  color: var(--accent-foreground);
+  line-height: var(--line-height-snug);
+}
+
+/* Description */
+.cta-inline__description {
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  color: var(--accent-foreground);
+  line-height: var(--line-height-normal);
+}
+
+/* Buttons Wrapper */
+.cta-inline__buttons {
+  display: flex;
+  gap: var(--spacing-4);
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Button Overrides */
+/* Primary button in accent section */
+.cta-inline__button--primary {
+  background-color: var(--background) !important;
+  color: var(--foreground) !important;
+  border-color: var(--background) !important;
+}
+
+.cta-inline__button--primary:hover {
+  background-color: var(--overlay-white-opaque) !important;
+  border-color: var(--overlay-white-opaque) !important;
+}
+
+/* Secondary button in accent section */
+.cta-inline__button--secondary {
+  background-color: transparent !important;
+  border-color: var(--accent-foreground) !important;
+  color: var(--accent-foreground) !important;
+}
+
+.cta-inline__button--secondary:hover {
+  background-color: var(--overlay-white-soft) !important;
+  color: var(--accent-foreground) !important;
+}
+
+/* Icon */
+.cta-inline__icon {
+  margin-left: var(--spacing-2);
+  display: inline-block;
+  vertical-align: middle;
+}

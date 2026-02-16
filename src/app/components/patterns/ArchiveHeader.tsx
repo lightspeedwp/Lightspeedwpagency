@@ -12,6 +12,7 @@
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { Heading } from '../common/Heading';
+import '@/styles/patterns/archive-header.css';
 
 interface ArchiveHeaderProps {
   title: string;

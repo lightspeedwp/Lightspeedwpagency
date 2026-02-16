@@ -20,11 +20,6 @@
  * **Code Reduction:** 491 → 183 lines (62.7% reduction)
  */
 
-import { SiteHeader } from '../parts/SiteHeader';
-import { SiteFooter } from '../parts/SiteFooter';
-import { SkipLink } from '../common/SkipLink';
-import { BackToTopButton } from '../blocks/layout/BackToTopButton';
-import { RouteAnnouncer } from '../blocks/utility/RouteAnnouncer';
 import { Hero } from '../patterns/Hero';
 import { ChallengesGrid } from '../patterns/ChallengesGrid';
 import { SolutionsDetailGrid } from '../patterns/SolutionsDetailGrid';
@@ -249,11 +244,6 @@ export function TourOperatorTemplate() {
 
   return (
     <>
-      <RouteAnnouncer />
-      <SkipLink />
-      <SiteHeader />
-      
-      <main id="main-content" role="main">
         {/* Hero Section */}
         <Hero
           variant="service"
@@ -334,10 +324,6 @@ export function TourOperatorTemplate() {
           secondaryButtonText="View Tour Examples"
           secondaryButtonPage="portfolio-archive"
         />
-      </main>
-
-      <SiteFooter />
-      <BackToTopButton />
     </>
   );
 }

@@ -20,6 +20,7 @@
  */
 
 import { motion } from 'motion/react';
+import '@/styles/components/loading-states.css';
 
 /**
  * Loading Spinner Component
@@ -50,7 +51,7 @@ export function LoadingSpinner({
     <div 
       role="status" 
       aria-label={label}
-      className="flex items-center justify-center"
+      className="loading-spinner"
     >
       <motion.div
         style={{
@@ -94,7 +95,7 @@ export function CardSkeleton({
       {Array.from({ length: count }).map((_, index) => (
         <div
           key={index}
-          className={`rounded-lg overflow-hidden ${className}`}
+          className={`loading-card-skeleton ${className}`}
           style={{
             backgroundColor: 'var(--card)',
             border: '1px solid var(--border-soft)'
@@ -104,26 +105,26 @@ export function CardSkeleton({
           {showImage && (
             <SkeletonBlock 
               height={200} 
-              className="rounded-none"
+              className="loading-card-skeleton__image"
             />
           )}
           
           {/* Content */}
-          <div className="p-6 space-y-4">
+          <div style={{ padding: 'var(--spacing-6)', display: 'flex', flexDirection: 'column', gap: 'var(--spacing-4)' }}>
             {/* Title */}
             <SkeletonLine width="80%" height={24} />
             
             {/* Description */}
-            <div className="space-y-2">
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--spacing-2)' }}>
               <SkeletonLine width="100%" />
               <SkeletonLine width="90%" />
               <SkeletonLine width="70%" />
             </div>
             
             {/* Meta */}
-            <div className="flex items-center gap-4 pt-2">
+            <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-4)', paddingTop: 'var(--spacing-2)' }}>
               <SkeletonCircle size={32} />
-              <div className="flex-1 space-y-2">
+              <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 'var(--spacing-2)' }}>
                 <SkeletonLine width="40%" height={12} />
                 <SkeletonLine width="30%" height={12} />
               </div>
@@ -176,7 +177,7 @@ export function SkeletonLine({
           left: 0,
           right: 0,
           bottom: 0,
-          background: 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent)'
+          background: 'linear-gradient(90deg, transparent, var(--overlay-white-soft), transparent)'
         }}
         animate={{
           x: ['-100%', '100%']
@@ -233,7 +234,7 @@ export function SkeletonBlock({
           left: 0,
           right: 0,
           bottom: 0,
-          background: 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent)'
+          background: 'linear-gradient(90deg, transparent, var(--overlay-white-soft), transparent)'
         }}
         animate={{
           x: ['-100%', '100%']
@@ -309,7 +310,7 @@ export function ProgressBar({
     <div>
       {showLabel && (
         <div 
-          className="flex items-center justify-between mb-2"
+          className="loading-progress__label-row"
           style={{
             fontSize: 'var(--text-sm)',
             fontFamily: 'var(--font-secondary)',
@@ -373,7 +374,7 @@ export function DotsLoader({
 }: DotsLoaderProps) {
   return (
     <div 
-      className="flex items-center gap-2"
+      className="loading-dots"
       role="status"
       aria-label={label}
     >
@@ -423,10 +424,10 @@ export function PulseLoader({
 }: PulseLoaderProps) {
   return (
     <div 
-      className="flex items-center justify-center"
+      className="loading-pulse"
       role="status"
       aria-label={label}
-      style={{ position: 'relative', width: size, height: size }}
+      style={{ width: size, height: size }}
     >
       {[0, 1].map((index) => (
         <motion.div
@@ -472,11 +473,11 @@ export function ListSkeleton({
   showAvatar = false
 }: ListSkeletonProps) {
   return (
-    <div className="space-y-4">
+    <div className="loading-list-skeleton">
       {Array.from({ length: count }).map((_, index) => (
-        <div key={index} className="flex items-center gap-4">
+        <div key={index} className="loading-list-skeleton__item">
           {showAvatar && <SkeletonCircle size={48} />}
-          <div className="flex-1 space-y-2">
+          <div className="loading-list-skeleton__body">
             <SkeletonLine width="60%" height={20} />
             <SkeletonLine width="40%" height={14} />
           </div>

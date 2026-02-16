@@ -55,484 +55,199 @@
    SPACING UTILITIES
    ============================================ */
 
-/* Padding - All sides */
-.p-0 { padding: var(--spacing-0); }
-.p-1 { padding: var(--spacing-1); }
-.p-2 { padding: var(--spacing-2); }
-.p-3 { padding: var(--spacing-3); }
-.p-4 { padding: var(--spacing-4); }
-.p-5 { padding: var(--spacing-5); }
-.p-6 { padding: var(--spacing-6); }
-.p-8 { padding: var(--spacing-8); }
-.p-10 { padding: var(--spacing-10); }
-.p-12 { padding: var(--spacing-12); }
-.p-16 { padding: var(--spacing-16); }
-.p-20 { padding: var(--spacing-20); }
-.p-24 { padding: var(--spacing-24); }
+/* Margin-bottom (wp-prefixed) */
+.wp-mb-0 { margin-bottom: 0; }
+.wp-mb-1 { margin-bottom: var(--spacing-1); }
+.wp-mb-2 { margin-bottom: var(--spacing-2); }
+.wp-mb-3 { margin-bottom: var(--spacing-3); }
+.wp-mb-4 { margin-bottom: var(--spacing-4); }
+.wp-mb-5 { margin-bottom: var(--spacing-5); }
+.wp-mb-6 { margin-bottom: var(--spacing-6); }
+.wp-mb-8 { margin-bottom: var(--spacing-8); }
+.wp-mb-10 { margin-bottom: var(--spacing-10); }
+.wp-mb-12 { margin-bottom: var(--spacing-12); }
+.wp-mb-16 { margin-bottom: var(--spacing-16); }
 
-/* Padding - Horizontal (X) */
-.px-0 { padding-left: var(--spacing-0); padding-right: var(--spacing-0); }
-.px-2 { padding-left: var(--spacing-2); padding-right: var(--spacing-2); }
-.px-3 { padding-left: var(--spacing-3); padding-right: var(--spacing-3); }
-.px-4 { padding-left: var(--spacing-4); padding-right: var(--spacing-4); }
-.px-6 { padding-left: var(--spacing-6); padding-right: var(--spacing-6); }
-.px-8 { padding-left: var(--spacing-8); padding-right: var(--spacing-8); }
-.px-12 { padding-left: var(--spacing-12); padding-right: var(--spacing-12); }
+/* Margin-top (wp-prefixed) */
+.wp-mt-0 { margin-top: 0; }
+.wp-mt-1 { margin-top: var(--spacing-1); }
+.wp-mt-2 { margin-top: var(--spacing-2); }
+.wp-mt-3 { margin-top: var(--spacing-3); }
+.wp-mt-4 { margin-top: var(--spacing-4); }
+.wp-mt-6 { margin-top: var(--spacing-6); }
+.wp-mt-8 { margin-top: var(--spacing-8); }
+.wp-mt-10 { margin-top: var(--spacing-10); }
+.wp-mt-12 { margin-top: var(--spacing-12); }
+.wp-mt-16 { margin-top: var(--spacing-16); }
 
-/* Padding - Vertical (Y) */
-.py-0 { padding-top: var(--spacing-0); padding-bottom: var(--spacing-0); }
-.py-2 { padding-top: var(--spacing-2); padding-bottom: var(--spacing-2); }
-.py-3 { padding-top: var(--spacing-3); padding-bottom: var(--spacing-3); }
-.py-4 { padding-top: var(--spacing-4); padding-bottom: var(--spacing-4); }
-.py-6 { padding-top: var(--spacing-6); padding-bottom: var(--spacing-6); }
-.py-8 { padding-top: var(--spacing-8); padding-bottom: var(--spacing-8); }
-.py-12 { padding-top: var(--spacing-12); padding-bottom: var(--spacing-12); }
-.py-16 { padding-top: var(--spacing-16); padding-bottom: var(--spacing-16); }
-.py-20 { padding-top: var(--spacing-20); padding-bottom: var(--spacing-20); }
-.py-24 { padding-top: var(--spacing-24); padding-bottom: var(--spacing-24); }
+/* Margin-left / Margin-right */
+.wp-ml-auto { margin-left: auto; }
+.wp-mr-auto { margin-right: auto; }
+.wp-mx-auto { margin-left: auto; margin-right: auto; }
+.wp-ml-2 { margin-left: var(--spacing-2); }
+.wp-ml-4 { margin-left: var(--spacing-4); }
+.wp-mr-2 { margin-right: var(--spacing-2); }
+.wp-mr-4 { margin-right: var(--spacing-4); }
 
-/* Padding - Top */
-.pt-0 { padding-top: var(--spacing-0); }
-.pt-4 { padding-top: var(--spacing-4); }
-.pt-6 { padding-top: var(--spacing-6); }
-.pt-8 { padding-top: var(--spacing-8); }
-.pt-12 { padding-top: var(--spacing-12); }
+/* Padding (wp-prefixed) */
+.wp-p-0 { padding: 0; }
+.wp-p-1 { padding: var(--spacing-1); }
+.wp-p-2 { padding: var(--spacing-2); }
+.wp-p-3 { padding: var(--spacing-3); }
+.wp-p-4 { padding: var(--spacing-4); }
+.wp-p-5 { padding: var(--spacing-5); }
+.wp-p-6 { padding: var(--spacing-6); }
+.wp-p-8 { padding: var(--spacing-8); }
+.wp-p-10 { padding: var(--spacing-10); }
+.wp-p-12 { padding: var(--spacing-12); }
+.wp-p-16 { padding: var(--spacing-16); }
 
-/* Padding - Bottom */
-.pb-0 { padding-bottom: var(--spacing-0); }
-.pb-4 { padding-bottom: var(--spacing-4); }
-.pb-6 { padding-bottom: var(--spacing-6); }
-.pb-8 { padding-bottom: var(--spacing-8); }
-.pb-12 { padding-bottom: var(--spacing-12); }
-.pb-16 { padding-bottom: var(--spacing-16); }
-.pb-20 { padding-bottom: var(--spacing-20); }
-.pb-24 { padding-bottom: var(--spacing-24); }
+/* Padding-x (horizontal) */
+.wp-px-0 { padding-left: 0; padding-right: 0; }
+.wp-px-2 { padding-left: var(--spacing-2); padding-right: var(--spacing-2); }
+.wp-px-3 { padding-left: var(--spacing-3); padding-right: var(--spacing-3); }
+.wp-px-4 { padding-left: var(--spacing-4); padding-right: var(--spacing-4); }
+.wp-px-5 { padding-left: var(--spacing-5); padding-right: var(--spacing-5); }
+.wp-px-6 { padding-left: var(--spacing-6); padding-right: var(--spacing-6); }
+.wp-px-8 { padding-left: var(--spacing-8); padding-right: var(--spacing-8); }
+.wp-px-10 { padding-left: var(--spacing-10); padding-right: var(--spacing-10); }
+.wp-px-12 { padding-left: var(--spacing-12); padding-right: var(--spacing-12); }
 
-/* Padding - Left */
-.pl-0 { padding-left: var(--spacing-0); }
-.pl-4 { padding-left: var(--spacing-4); }
-.pl-6 { padding-left: var(--spacing-6); }
-.pl-8 { padding-left: var(--spacing-8); }
+/* Padding-y (vertical) */
+.wp-py-0 { padding-top: 0; padding-bottom: 0; }
+.wp-py-2 { padding-top: var(--spacing-2); padding-bottom: var(--spacing-2); }
+.wp-py-3 { padding-top: var(--spacing-3); padding-bottom: var(--spacing-3); }
+.wp-py-4 { padding-top: var(--spacing-4); padding-bottom: var(--spacing-4); }
+.wp-py-5 { padding-top: var(--spacing-5); padding-bottom: var(--spacing-5); }
+.wp-py-6 { padding-top: var(--spacing-6); padding-bottom: var(--spacing-6); }
+.wp-py-8 { padding-top: var(--spacing-8); padding-bottom: var(--spacing-8); }
+.wp-py-10 { padding-top: var(--spacing-10); padding-bottom: var(--spacing-10); }
+.wp-py-12 { padding-top: var(--spacing-12); padding-bottom: var(--spacing-12); }
+.wp-py-16 { padding-top: var(--spacing-16); padding-bottom: var(--spacing-16); }
+.wp-py-20 { padding-top: var(--spacing-20); padding-bottom: var(--spacing-20); }
+.wp-py-24 { padding-top: var(--spacing-24); padding-bottom: var(--spacing-24); }
 
-/* Padding - Right */
-.pr-0 { padding-right: var(--spacing-0); }
-.pr-4 { padding-right: var(--spacing-4); }
-.pr-6 { padding-right: var(--spacing-6); }
-.pr-8 { padding-right: var(--spacing-8); }
+/* Padding directional */
+.wp-pt-0 { padding-top: 0; }
+.wp-pt-4 { padding-top: var(--spacing-4); }
+.wp-pt-6 { padding-top: var(--spacing-6); }
+.wp-pt-8 { padding-top: var(--spacing-8); }
+.wp-pt-12 { padding-top: var(--spacing-12); }
+.wp-pt-16 { padding-top: var(--spacing-16); }
+.wp-pb-0 { padding-bottom: 0; }
+.wp-pb-4 { padding-bottom: var(--spacing-4); }
+.wp-pb-6 { padding-bottom: var(--spacing-6); }
+.wp-pb-8 { padding-bottom: var(--spacing-8); }
+.wp-pb-12 { padding-bottom: var(--spacing-12); }
+.wp-pb-16 { padding-bottom: var(--spacing-16); }
+.wp-pl-0 { padding-left: 0; }
+.wp-pl-4 { padding-left: var(--spacing-4); }
+.wp-pl-6 { padding-left: var(--spacing-6); }
+.wp-pr-0 { padding-right: 0; }
+.wp-pr-4 { padding-right: var(--spacing-4); }
+.wp-pr-6 { padding-right: var(--spacing-6); }
 
-/* Margin - MINIMAL USE (only for centering and auto) */
-.m-auto { margin: auto; }
-.mx-auto { margin-left: auto; margin-right: auto; }
+/* Legacy non-prefixed (DEPRECATED — migrate to wp-* versions) */
+.mb-2 { margin-bottom: var(--spacing-2); }
+.mb-3 { margin-bottom: var(--spacing-3); }
+.mb-4 { margin-bottom: var(--spacing-4); }
+.mb-6 { margin-bottom: var(--spacing-6); }
+.mb-8 { margin-bottom: var(--spacing-8); }
+.mb-12 { margin-bottom: var(--spacing-12); }
 
-/* Gap (for flex/grid) */
-.gap-0 { gap: var(--spacing-0); }
-.gap-1 { gap: var(--spacing-1); }
-.gap-2 { gap: var(--spacing-2); }
-.gap-3 { gap: var(--spacing-3); }
-.gap-4 { gap: var(--spacing-4); }
-.gap-6 { gap: var(--spacing-6); }
-.gap-8 { gap: var(--spacing-8); }
-.gap-12 { gap: var(--spacing-12); }
-.gap-16 { gap: var(--spacing-16); }
-
-
-/* ============================================
-   WORDPRESS UTILITIES
-   ============================================ */
-
-/* WordPress alignment */
-.wp-block {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.alignwide {
-  max-width: 1400px;
-}
-
-.alignfull {
-  max-width: 100%;
-  width: 100%;
-}
-
-.aligncenter {
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-}
-
-/* WordPress font sizes */
-.has-small-font-size {
-  font-size: var(--wp--preset--font-size--small);
-}
-
-.has-medium-font-size {
-  font-size: var(--wp--preset--font-size--medium);
-}
-
-.has-large-font-size {
-  font-size: var(--wp--preset--font-size--large);
-}
-
-.has-x-large-font-size {
-  font-size: var(--wp--preset--font-size--x-large);
-}
-
-/* WordPress spacing */
-.has-small-spacing {
-  gap: var(--wp--preset--spacing--small);
-}
-
-.has-medium-spacing {
-  gap: var(--wp--preset--spacing--medium);
-}
-
-.has-large-spacing {
-  gap: var(--wp--preset--spacing--large);
-}
-
-
-/* ============================================
-   BORDER RADIUS UTILITIES
-   ============================================ */
-
-.rounded-none { border-radius: 0; }
-.rounded-sm { border-radius: var(--radius-sm); }
-.rounded { border-radius: var(--radius); }
-.rounded-md { border-radius: var(--radius-md); }
-.rounded-lg { border-radius: var(--radius-lg); }
-.rounded-xl { border-radius: var(--radius-xl); }
-.rounded-full { border-radius: 9999px; }
-
-
-/* ============================================
-   LAYOUT UTILITIES (WordPress Global Styles)
-   ============================================ */
-
-/* Display Utilities */
-.wp-flex { display: flex; }
-.wp-block { display: block; }
-.wp-inline-flex { display: inline-flex; }
-
-/* Flexbox Gap Utilities */
-.wp-gap-0 { gap: var(--spacing-0); }
-.wp-gap-1 { gap: var(--spacing-1); }
-.wp-gap-2 { gap: var(--spacing-2); }
-.wp-gap-3 { gap: var(--spacing-3); }
-.wp-gap-4 { gap: var(--spacing-4); }
-.wp-gap-5 { gap: var(--spacing-5); }
-.wp-gap-6 { gap: var(--spacing-6); }
-.wp-gap-8 { gap: var(--spacing-8); }
-.wp-gap-10 { gap: var(--spacing-10); }
-.wp-gap-12 { gap: var(--spacing-12); }
-.wp-gap-16 { gap: var(--spacing-16); }
-.wp-gap-20 { gap: var(--spacing-20); }
-.wp-gap-24 { gap: var(--spacing-24); }
-
-/* Justify Content Utilities */
-.wp-justify-start { justify-content: flex-start; }
-.wp-justify-center { justify-content: center; }
-.wp-justify-end { justify-content: flex-end; }
-.wp-justify-between { justify-content: space-between; }
-.wp-justify-around { justify-content: space-around; }
-.wp-justify-evenly { justify-content: space-evenly; }
-
-/* Align Items Utilities */
-.wp-align-start { align-items: flex-start; }
-.wp-align-center { align-items: center; }
-.wp-align-end { align-items: flex-end; }
-.wp-align-stretch { align-items: stretch; }
-.wp-align-baseline { align-items: baseline; }
-
-/* Flex Direction Utilities */
-.wp-flex-row { flex-direction: row; }
-.wp-flex-col { flex-direction: column; }
-.wp-flex-row-reverse { flex-direction: row-reverse; }
-.wp-flex-col-reverse { flex-direction: column-reverse; }
-
-/* Flex Wrap Utilities */
-.wp-wrap { flex-wrap: wrap; }
-.wp-nowrap { flex-wrap: nowrap; }
-.wp-wrap-reverse { flex-wrap: wrap-reverse; }
-
-/* Width Constraint Utilities */
-.wp-width-auto { width: auto; }
-.wp-width-full { width: 100%; }
-.wp-width-default { max-width: 1280px; margin-inline: auto; }
-.wp-width-wide { max-width: 1600px; margin-inline: auto; }
-
-/* Grid Utilities */
-.wp-grid { display: grid; }
-.wp-grid-2-cols { 
-  display: grid; 
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--spacing-8);
-}
-.wp-grid-3-cols { 
-  display: grid; 
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--spacing-8);
-}
-.wp-grid-4-cols { 
-  display: grid; 
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--spacing-8);
-}
-.wp-grid-auto { 
-  display: grid; 
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--spacing-8);
-}
-
-/* Responsive Grid (mobile-first) */
-@media (max-width: 768px) {
-  .wp-grid-2-cols,
-  .wp-grid-3-cols,
-  .wp-grid-4-cols {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (min-width: 769px) and (max-width: 1024px) {
-  .wp-grid-3-cols,
-  .wp-grid-4-cols {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* Flexbox Utilities */
-.wp-flex-center { 
-  display: flex; 
-  align-items: center; 
-  justify-content: center; 
-}
-.wp-flex-between { 
-  display: flex; 
-  align-items: center; 
-  justify-content: space-between; 
-}
-.wp-flex-start { 
-  display: flex; 
-  align-items: center; 
-  justify-content: flex-start; 
-}
-.wp-flex-end { 
-  display: flex; 
-  align-items: center; 
-  justify-content: flex-end; 
-}
-.wp-flex-wrap { 
-  display: flex; 
-  flex-wrap: wrap; 
-}
-
-/* Flexbox Alignment */
-.wp-items-center { align-items: center; }
-.wp-items-start { align-items: flex-start; }
-.wp-items-end { align-items: flex-end; }
-.wp-justify-center { justify-content: center; }
-.wp-justify-between { justify-content: space-between; }
-.wp-justify-start { justify-content: flex-start; }
-.wp-justify-end { justify-content: flex-end; }
-
-/* Text Alignment */
-.wp-text-left { text-align: left; }
-.wp-text-center { text-align: center; }
-.wp-text-right { text-align: right; }
-.wp-text-justify { text-align: justify; }
-
-/* Width & Max-Width */
-.wp-max-w-prose { max-width: 65ch; margin-left: auto; margin-right: auto; }
-.wp-max-w-sm { max-width: 640px; margin-left: auto; margin-right: auto; }
-.wp-max-w-md { max-width: 768px; margin-left: auto; margin-right: auto; }
-.wp-max-w-lg { max-width: 1024px; margin-left: auto; margin-right: auto; }
-.wp-max-w-xl { max-width: 1280px; margin-left: auto; margin-right: auto; }
-.wp-max-w-2xl { max-width: 1536px; margin-left: auto; margin-right: auto; }
-.wp-max-w-3xl { max-width: 768px; margin-left: auto; margin-right: auto; } /* For content */
-.wp-max-w-4xl { max-width: 896px; margin-left: auto; margin-right: auto; }
-.wp-max-w-6xl { max-width: 1152px; margin-left: auto; margin-right: auto; }
-.wp-max-w-full { max-width: 100%; }
-.wp-w-full { width: 100%; }
-.wp-w-auto { width: auto; }
-
-/* Display */
-.wp-inline { display: inline; }
-.wp-inline-block { display: inline-block; }
-.wp-hidden { display: none; }
-
-
-/* ============================================
-   POSITION & OVERFLOW UTILITIES
-   ============================================ */
-
-/* Position */
-.wp-relative { position: relative; }
-.wp-absolute { position: absolute; }
-.wp-fixed { position: fixed; }
-.wp-sticky { position: sticky; }
-
-/* Overflow */
-.wp-overflow-hidden { overflow: hidden; }
-.wp-overflow-auto { overflow: auto; }
-.wp-overflow-scroll { overflow: scroll; }
-
-
-/* ============================================
-   RESPONSIVE UTILITIES
-   ============================================ */
-
-/* Hide on mobile */
-@media (max-width: 768px) {
-  .wp-hide-mobile { display: none !important; }
-}
-
-/* Hide on tablet */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .wp-hide-tablet { display: none !important; }
-}
-
-/* Hide on desktop */
-@media (min-width: 1025px) {
-  .wp-hide-desktop { display: none !important; }
-}
-
-
-/* ============================================
-   BACKGROUND COLOR UTILITIES
-   ============================================ */
-
-/**
- * Background color utilities using CSS variables
- */
-.bg-background { background-color: var(--background); }
-.bg-foreground { background-color: var(--foreground); }
-.bg-card { background-color: var(--card); }
-.bg-muted { background-color: var(--muted); }
-.bg-primary { background-color: var(--primary); }
-.bg-secondary { background-color: var(--secondary); }
-.bg-accent { background-color: var(--accent); }
-
-
-/* ============================================
-   SPACING UTILITIES
-   ============================================ */
-
-/**
- * Margin utilities (limited use - prefer padding)
- * Only for specific component spacing needs
- */
-.mb-6 { margin-bottom: var(--spacing-6); }  /* 24px */
-.mb-8 { margin-bottom: var(--spacing-8); }  /* 32px */
-.mb-12 { margin-bottom: var(--spacing-12); }  /* 48px */
-
-.mt-8 { margin-top: var(--spacing-8); }  /* 32px */
-.mt-12 { margin-top: var(--spacing-12); }  /* 48px */
+.mt-4 { margin-top: var(--spacing-4); }
+.mt-8 { margin-top: var(--spacing-8); }
+.mt-12 { margin-top: var(--spacing-12); }
 
 
 /* ============================================
    GRADIENT BACKGROUND UTILITIES
    ============================================ */
 
-/**
- * Gradient Utilities
- * 
- * Centralized gradient backgrounds for consistency and maintainability.
- * All gradients use 135deg angle for consistency.
- * All gradients include white text color for WCAG AA compliance.
- * 
- * Usage:
- * <Section className="wp-gradient-blue">
- *   <Container>
- *     <h2>Your Content</h2>
- *   </Container>
- * </Section>
- */
-
-/* Blue Gradient (Most common - Blue ocean professional) */
+/* Blue Gradient */
 .wp-gradient-blue {
-  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
-  color: var(--primary-foreground);
+  background: var(--gradient-blue);
+  color: var(--color-white);
   position: relative;
   overflow: hidden;
 }
 
-/* Purple Gradient (Creative/innovative sections) */
+/* Purple Gradient */
 .wp-gradient-purple {
-  background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
-  color: var(--primary-foreground);
+  background: var(--gradient-purple);
+  color: var(--color-white);
   position: relative;
   overflow: hidden;
 }
 
-/* Purple Light Gradient (Softer purple variant) */
+/* Purple Light Gradient */
 .wp-gradient-purple-light {
-  background: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%);
-  color: var(--primary-foreground);
+  background: var(--gradient-purple-light);
+  color: var(--color-white);
   position: relative;
   overflow: hidden;
 }
 
-/* Purple Indigo Gradient (Purple to indigo blend) */
+/* Purple Indigo Gradient */
 .wp-gradient-purple-indigo {
-  background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
-  color: var(--primary-foreground);
+  background: var(--gradient-purple-indigo);
+  color: var(--color-white);
   position: relative;
   overflow: hidden;
 }
 
-/* Red Gradient (Security/protection/urgency sections) */
+/* Red Gradient */
 .wp-gradient-red {
-  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
-  color: var(--primary-foreground);
+  background: var(--gradient-red);
+  color: var(--color-white);
   position: relative;
   overflow: hidden;
 }
 
-/* Green Gradient (Success/growth/guarantees sections) */
+/* Green Gradient */
 .wp-gradient-green {
-  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-  color: var(--primary-foreground);
+  background: var(--gradient-green);
+  color: var(--color-white);
   position: relative;
   overflow: hidden;
 }
 
-/* Amber Gradient (Warmth/testimonials/highlights) */
+/* Amber Gradient */
 .wp-gradient-amber {
-  background: linear-gradient(135deg, #f59e0b 0%, #ea580c 100%);
-  color: var(--primary-foreground);
+  background: var(--gradient-amber);
+  color: var(--color-white);
   position: relative;
   overflow: hidden;
 }
 
-/* Cyan Gradient (Fresh/modern/pricing sections) */
+/* Cyan Gradient */
 .wp-gradient-cyan {
-  background: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);
-  color: var(--primary-foreground);
+  background: var(--gradient-cyan);
+  color: var(--color-white);
   position: relative;
   overflow: hidden;
 }
 
-/* Sky Gradient (Newsletter/email marketing) */
+/* Sky Gradient */
 .wp-gradient-sky {
-  background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);
-  color: var(--primary-foreground);
+  background: var(--gradient-sky);
+  color: var(--color-white);
   position: relative;
   overflow: hidden;
 }
 
-/* Slate Dark Gradient (Deep/sophisticated/discovery) */
+/* Slate Dark Gradient */
 .wp-gradient-slate {
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-  color: var(--primary-foreground);
+  background: var(--gradient-slate);
+  color: var(--color-white);
   position: relative;
   overflow: hidden;
 }
 
-/* Violet Gradient (WooCommerce/ecommerce sections) */
+/* Violet Gradient */
 .wp-gradient-violet {
-  background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
-  color: var(--primary-foreground);
+  background: var(--gradient-violet);
+  color: var(--color-white);
   position: relative;
   overflow: hidden;
 }
@@ -541,16 +256,6 @@
 /* ============================================
    GRADIENT ORB DECORATIONS
    ============================================ */
-
-/**
- * Gradient Orb Decorations
- * 
- * Decorative radial gradient orbs for visual interest.
- * Should be used with aria-hidden="true" for accessibility.
- * 
- * Usage:
- * <div className="wp-gradient-orb wp-gradient-orb--blue wp-gradient-orb--top-right" aria-hidden="true" />
- */
 
 /* Base Orb Styles */
 .wp-gradient-orb {
@@ -563,27 +268,27 @@
 
 /* Orb Color Variants */
 .wp-gradient-orb--blue {
-  background: radial-gradient(circle, rgba(96, 165, 250, 0.3) 0%, transparent 70%);
+  background: radial-gradient(circle, color-mix(in srgb, var(--category-blue) 30%, transparent) 0%, transparent 70%);
 }
 
 .wp-gradient-orb--purple {
-  background: radial-gradient(circle, rgba(168, 85, 247, 0.3) 0%, transparent 70%);
+  background: radial-gradient(circle, color-mix(in srgb, var(--category-violet) 30%, transparent) 0%, transparent 70%);
 }
 
 .wp-gradient-orb--red {
-  background: radial-gradient(circle, rgba(220, 38, 38, 0.3) 0%, transparent 70%);
+  background: radial-gradient(circle, color-mix(in srgb, var(--category-red) 30%, transparent) 0%, transparent 70%);
 }
 
 .wp-gradient-orb--green {
-  background: radial-gradient(circle, rgba(16, 185, 129, 0.3) 0%, transparent 70%);
+  background: radial-gradient(circle, color-mix(in srgb, var(--category-green) 30%, transparent) 0%, transparent 70%);
 }
 
 .wp-gradient-orb--amber {
-  background: radial-gradient(circle, rgba(245, 158, 11, 0.3) 0%, transparent 70%);
+  background: radial-gradient(circle, color-mix(in srgb, var(--category-amber) 30%, transparent) 0%, transparent 70%);
 }
 
 .wp-gradient-orb--cyan {
-  background: radial-gradient(circle, rgba(6, 182, 212, 0.3) 0%, transparent 70%);
+  background: radial-gradient(circle, color-mix(in srgb, var(--category-cyan) 30%, transparent) 0%, transparent 70%);
 }
 
 /* Orb Position Variants */
@@ -621,34 +326,29 @@
 
 /* Smaller Orb Variant */
 .wp-gradient-orb--small {
-  width: min(384px, 30vw) !important;
-  height: min(384px, 30vw) !important;
+  width: min(384px, 30vw); /* Specificity should be enough without !important */
+  height: min(384px, 30vw);
 }
 
 /* ============================================
    ADDITIONAL FLEXBOX UTILITIES
-   (Added Phase 2.2 - Pattern Migration)
    ============================================ */
 
-/* Flex Items Center (Vertical align only) */
 .wp-flex-items-center {
   display: flex;
   align-items: center;
 }
 
-/* Flex Justify Center (Horizontal align only) */
 .wp-flex-justify-center {
   display: flex;
   justify-content: center;
 }
 
-/* Flex Justify Between */
 .wp-flex-justify-between {
   display: flex;
   justify-content: space-between;
 }
 
-/* Responsive Flex (Column on mobile, Row on desktop) */
 .wp-flex-responsive {
   display: flex;
   flex-direction: column;
@@ -662,35 +362,367 @@
 
 /* ============================================
    BORDER RADIUS UTILITIES
-   (Added Phase 2.2 - Pattern Migration)
    ============================================ */
 
-.wp-rounded {
-  border-radius: var(--radius);
-}
+.wp-rounded { border-radius: var(--radius); }
+.wp-rounded-lg { border-radius: var(--radius-lg); }
+.wp-rounded-full { border-radius: var(--radius-full); }
 
-.wp-rounded-lg {
-  border-radius: var(--radius-lg);
-}
+/* ============================================
+   LAYOUT UTILITIES
+   ============================================ */
 
-.wp-rounded-full {
-  border-radius: var(--radius-full);
+.wp-block {
+  max-width: var(--wp--style--global--content-size, 1200px);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* ============================================
-   SPACING UTILITY HELPERS
-   (Added Phase 2.2 - Pattern Migration)
+   DISPLAY UTILITIES
    ============================================ */
 
-/* Use these classes with inline styles for dynamic spacing */
-/* Example: className="wp-flex-gap" style={{ gap: 'var(--spacing-4)' }} */
+.wp-flex { display: flex; }
+.wp-block-display { display: block; }
+.wp-inline-flex { display: inline-flex; }
+.wp-inline { display: inline; }
+.wp-inline-block { display: inline-block; }
+.wp-hidden { display: none; }
+.wp-grid { display: grid; }
 
-.wp-flex-gap {
-  display: flex;
-  /* gap should be set via inline style for specific spacing control */
+/* ============================================
+   GAP UTILITIES
+   ============================================ */
+
+.wp-gap-0 { gap: var(--spacing-0); }
+.wp-gap-1 { gap: var(--spacing-1); }
+.wp-gap-2 { gap: var(--spacing-2); }
+.wp-gap-3 { gap: var(--spacing-3); }
+.wp-gap-4 { gap: var(--spacing-4); }
+.wp-gap-5 { gap: var(--spacing-5); }
+.wp-gap-6 { gap: var(--spacing-6); }
+.wp-gap-8 { gap: var(--spacing-8); }
+.wp-gap-10 { gap: var(--spacing-10); }
+.wp-gap-12 { gap: var(--spacing-12); }
+.wp-gap-16 { gap: var(--spacing-16); }
+.wp-gap-20 { gap: var(--spacing-20); }
+.wp-gap-24 { gap: var(--spacing-24); }
+
+/* ============================================
+   JUSTIFY & ALIGN UTILITIES
+   ============================================ */
+
+.wp-justify-start { justify-content: flex-start; }
+.wp-justify-center { justify-content: center; }
+.wp-justify-end { justify-content: flex-end; }
+.wp-justify-between { justify-content: space-between; }
+.wp-justify-around { justify-content: space-around; }
+.wp-justify-evenly { justify-content: space-evenly; }
+
+.wp-items-center { align-items: center; }
+.wp-items-start { align-items: flex-start; }
+.wp-items-end { align-items: flex-end; }
+.wp-items-stretch { align-items: stretch; }
+.wp-items-baseline { align-items: baseline; }
+
+/* ============================================
+   FLEX DIRECTION UTILITIES
+   ============================================ */
+
+.wp-flex-row { flex-direction: row; }
+.wp-flex-col { flex-direction: column; }
+.wp-flex-row-reverse { flex-direction: row-reverse; }
+.wp-flex-col-reverse { flex-direction: column-reverse; }
+.wp-flex-wrap { flex-wrap: wrap; }
+.wp-flex-nowrap { flex-wrap: nowrap; }
+
+/* ============================================
+   FLEX ITEM UTILITIES
+   ============================================ */
+
+.shrink-0 { flex-shrink: 0; }
+.grow-0 { flex-grow: 0; }
+.grow { flex-grow: 1; }
+.wp-flex-1 { flex: 1 1 0%; }
+.wp-flex-auto { flex: 1 1 auto; }
+.wp-flex-none { flex: none; }
+
+/* ============================================
+   FLEX SHORTHAND UTILITIES
+   ============================================ */
+
+.wp-flex-center { 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+}
+.wp-flex-between { 
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+}
+.wp-flex-start { 
+  display: flex; 
+  align-items: center; 
+  justify-content: flex-start; 
+}
+.wp-flex-end { 
+  display: flex; 
+  align-items: center; 
+  justify-content: flex-end; 
 }
 
-.wp-grid-gap {
+/* ============================================
+   GRID UTILITIES
+   ============================================ */
+
+.wp-grid-1-col {
   display: grid;
-  /* gap should be set via inline style for specific spacing control */
+  grid-template-columns: 1fr;
+  gap: var(--spacing-6);
+}
+.wp-grid-2-cols { 
+  display: grid; 
+  grid-template-columns: repeat(2, 1fr); 
+  gap: var(--spacing-6); 
+}
+.wp-grid-3-cols { 
+  display: grid; 
+  grid-template-columns: repeat(3, 1fr); 
+  gap: var(--spacing-6); 
+}
+.wp-grid-4-cols { 
+  display: grid; 
+  grid-template-columns: repeat(4, 1fr); 
+  gap: var(--spacing-6); 
+}
+.wp-grid-auto { 
+  display: grid; 
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+  gap: var(--spacing-6); 
+}
+
+/* Responsive grid breakpoints */
+@media (max-width: 768px) {
+  .wp-grid-2-cols,
+  .wp-grid-3-cols,
+  .wp-grid-4-cols {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .wp-grid-3-cols,
+  .wp-grid-4-cols {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ============================================
+   TEXT ALIGNMENT UTILITIES
+   ============================================ */
+
+.wp-text-left { text-align: left; }
+.wp-text-center { text-align: center; }
+.wp-text-right { text-align: right; }
+.wp-text-justify { text-align: justify; }
+
+/* ============================================
+   WIDTH & MAX-WIDTH UTILITIES
+   ============================================ */
+
+.wp-max-w-prose { max-width: 65ch; margin-left: auto; margin-right: auto; }
+.wp-max-w-sm { max-width: 640px; margin-left: auto; margin-right: auto; }
+.wp-max-w-md { max-width: 768px; margin-left: auto; margin-right: auto; }
+.wp-max-w-lg { max-width: 1024px; margin-left: auto; margin-right: auto; }
+.wp-max-w-xl { max-width: 1280px; margin-left: auto; margin-right: auto; }
+.wp-max-w-2xl { max-width: 1536px; margin-left: auto; margin-right: auto; }
+.wp-max-w-3xl { max-width: 768px; margin-left: auto; margin-right: auto; }
+.wp-max-w-4xl { max-width: 896px; margin-left: auto; margin-right: auto; }
+.wp-max-w-6xl { max-width: 1152px; margin-left: auto; margin-right: auto; }
+.wp-max-w-full { max-width: 100%; }
+.wp-w-full { width: 100%; }
+.wp-w-auto { width: auto; }
+
+/* ============================================
+   SIZE UTILITIES
+   ============================================ */
+
+.wp-w-8 { width: var(--spacing-8); min-width: var(--spacing-8); }
+.wp-h-8 { height: var(--spacing-8); min-height: var(--spacing-8); }
+.wp-w-10 { width: var(--spacing-10); min-width: var(--spacing-10); }
+.wp-h-10 { height: var(--spacing-10); min-height: var(--spacing-10); }
+.wp-w-12 { width: var(--spacing-12); min-width: var(--spacing-12); }
+.wp-h-12 { height: var(--spacing-12); min-height: var(--spacing-12); }
+.wp-w-16 { width: var(--spacing-16); min-width: var(--spacing-16); }
+.wp-h-16 { height: var(--spacing-16); min-height: var(--spacing-16); }
+
+/* ============================================
+   POSITION & OVERFLOW UTILITIES
+   ============================================ */
+
+.wp-relative { position: relative; }
+.wp-absolute { position: absolute; }
+.wp-fixed { position: fixed; }
+.wp-sticky { position: sticky; }
+.wp-overflow-hidden { overflow: hidden; }
+.wp-overflow-auto { overflow: auto; }
+.wp-overflow-scroll { overflow: scroll; }
+
+/* ============================================
+   RESPONSIVE UTILITIES
+   ============================================ */
+
+/* Hide on mobile — !important allowed for responsive visibility toggles */
+@media (max-width: 768px) {
+  .wp-hide-mobile { display: none !important; }
+}
+
+/* Hide on tablet */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .wp-hide-tablet { display: none !important; }
+}
+
+/* Hide on desktop */
+@media (min-width: 1025px) {
+  .wp-hide-desktop { display: none !important; }
+}
+
+/* ============================================
+   BACKGROUND COLOR UTILITIES
+   ============================================ */
+
+.bg-background { background-color: var(--background); }
+.bg-foreground { background-color: var(--foreground); }
+.bg-card { background-color: var(--card); }
+.bg-muted { background-color: var(--muted); }
+.bg-primary { background-color: var(--primary); }
+.bg-secondary { background-color: var(--secondary); }
+.bg-accent { background-color: var(--accent); }
+
+/* wp-prefixed background colors */
+.wp-bg-background { background-color: var(--background); }
+.wp-bg-foreground { background-color: var(--foreground); }
+.wp-bg-card { background-color: var(--card); }
+.wp-bg-muted { background-color: var(--muted); }
+.wp-bg-primary { background-color: var(--primary); }
+.wp-bg-secondary { background-color: var(--secondary); }
+.wp-bg-accent { background-color: var(--accent); }
+.wp-bg-destructive { background-color: var(--destructive); }
+
+/* ============================================
+   TEXT COLOR UTILITIES
+   ============================================ */
+
+.text-foreground { color: var(--foreground); }
+.text-muted-foreground { color: var(--muted-foreground); }
+.text-primary { color: var(--primary); }
+.text-primary-foreground { color: var(--primary-foreground); }
+.text-card-foreground { color: var(--card-foreground); }
+.text-destructive { color: var(--destructive); }
+.text-accent-foreground { color: var(--accent-foreground); }
+
+/* wp-prefixed text colors */
+.wp-text-foreground { color: var(--foreground); }
+.wp-text-muted-foreground { color: var(--muted-foreground); }
+.wp-text-primary { color: var(--primary); }
+.wp-text-primary-foreground { color: var(--primary-foreground); }
+.wp-text-secondary-foreground { color: var(--secondary-foreground); }
+.wp-text-card-foreground { color: var(--card-foreground); }
+.wp-text-destructive { color: var(--destructive); }
+.wp-text-destructive-foreground { color: var(--destructive-foreground); }
+.wp-text-accent-foreground { color: var(--accent-foreground); }
+
+/* ============================================
+   WP-PREFIXED TYPOGRAPHY UTILITIES
+   ============================================ */
+
+/* Font sizes */
+.wp-text-sm { font-size: var(--text-small); }
+.wp-text-base { font-size: var(--text-base); }
+.wp-text-lg { font-size: var(--text-lg); }
+.wp-text-small { font-size: var(--text-small); }
+.wp-text-tiny { font-size: var(--text-tiny); }
+.wp-text-lead { font-size: var(--text-lead); }
+
+/* Font weights */
+.wp-font-light { font-weight: var(--font-weight-light); }
+.wp-font-normal { font-weight: var(--font-weight-regular); }
+.wp-font-medium { font-weight: var(--font-weight-medium); }
+.wp-font-semibold { font-weight: var(--font-weight-semibold); }
+.wp-font-bold { font-weight: var(--font-weight-bold); }
+
+/* ============================================
+   WP-PREFIXED MISC UTILITIES
+   ============================================ */
+
+.wp-h-auto { height: auto; }
+
+/* Border shorthand */
+.wp-border { border: 1px solid var(--border); }
+.wp-border-border { border-color: var(--border); }
+.wp-border-border-soft { border-color: var(--border-soft); }
+.wp-border-primary { border: 1px solid var(--primary); }
+.wp-border-none { border: none; }
+
+/* Rounded (extended) */
+.wp-rounded-xl { border-radius: var(--radius-xl, 12px); }
+.wp-rounded-2xl { border-radius: var(--radius-2xl, 16px); }
+.wp-rounded-none { border-radius: 0; }
+
+/* ============================================
+   WP-PREFIXED HOVER UTILITIES
+   ============================================ */
+
+.wp-hover\:text-primary:hover { color: var(--primary); }
+.wp-hover\:text-foreground:hover { color: var(--foreground); }
+.wp-hover\:bg-muted:hover { background-color: var(--muted); }
+.wp-hover\:bg-accent:hover { background-color: var(--accent); }
+.wp-hover\:border-primary:hover { border-color: var(--primary); }
+
+/* ============================================
+   BORDER UTILITIES
+   ============================================ */
+
+.border-default { border: 1px solid var(--border); }
+.border-soft { border: 1px solid var(--border-soft); }
+.border-extra-soft { border: 1px solid var(--border-extra-soft); }
+.border-primary { border: 1px solid var(--primary); }
+.border-none { border: none; }
+
+/* ============================================
+   RESPONSIVE BREAKPOINT VARIANTS (wp-prefixed)
+   ============================================ */
+
+/* md: breakpoint (768px+) */
+@media (min-width: 768px) {
+  .md\:wp-block { display: block; }
+  .md\:wp-flex { display: flex; }
+  .md\:wp-grid { display: grid; }
+  .md\:wp-hidden { display: none; }
+  .md\:wp-inline-flex { display: inline-flex; }
+  .md\:wp-py-12 { padding-top: var(--spacing-12); padding-bottom: var(--spacing-12); }
+  .md\:wp-py-16 { padding-top: var(--spacing-16); padding-bottom: var(--spacing-16); }
+  .md\:wp-py-20 { padding-top: var(--spacing-20); padding-bottom: var(--spacing-20); }
+  .md\:wp-px-8 { padding-left: var(--spacing-8); padding-right: var(--spacing-8); }
+  .md\:wp-gap-8 { gap: var(--spacing-8); }
+  .md\:wp-gap-12 { gap: var(--spacing-12); }
+  .md\:wp-flex-row { flex-direction: row; }
+  .md\:wp-grid-2-cols { grid-template-columns: repeat(2, 1fr); }
+  .md\:wp-grid-3-cols { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* lg: breakpoint (1024px+) */
+@media (min-width: 1024px) {
+  .lg\:wp-block { display: block; }
+  .lg\:wp-flex { display: flex; }
+  .lg\:wp-grid { display: grid; }
+  .lg\:wp-hidden { display: none; }
+  .lg\:wp-py-16 { padding-top: var(--spacing-16); padding-bottom: var(--spacing-16); }
+  .lg\:wp-py-20 { padding-top: var(--spacing-20); padding-bottom: var(--spacing-20); }
+  .lg\:wp-py-24 { padding-top: var(--spacing-24); padding-bottom: var(--spacing-24); }
+  .lg\:wp-gap-12 { gap: var(--spacing-12); }
+  .lg\:wp-gap-16 { gap: var(--spacing-16); }
+  .lg\:wp-grid-3-cols { grid-template-columns: repeat(3, 1fr); }
+  .lg\:wp-grid-4-cols { grid-template-columns: repeat(4, 1fr); }
 }

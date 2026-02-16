@@ -1,260 +1,65 @@
 /**
  * Badge Block Styles
  * 
- * WordPress block: .wp-block-badge
- * Component: /src/app/components/blocks/design/Badge.tsx
- * Guideline: /guidelines/blocks/design/badge.md
- * 
- * CRITICAL: 100% CSS variables only - NO hardcoded values
- * User can control ALL styling by editing theme CSS files
+ * WordPress Block: core/group (with badge variation)
+ * Class: .wp-block-badge
  */
 
-/* ==========================================================================
-   BASE STYLES
-   ========================================================================== */
-
 .wp-block-badge {
-  /* Layout */
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  
-  /* Spacing */
-  padding: var(--spacing-1) var(--spacing-3);
-  
-  /* Typography */
-  font-family: var(--font-primary);
-  font-size: var(--text-sm);
-  font-weight: 500;
-  line-height: 1.2;
-  white-space: nowrap;
-  
-  /* Borders */
   border-radius: var(--radius-full);
-  border: 1px solid transparent;
-  
-  /* Transitions */
-  transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease;
-}
-
-/* ==========================================================================
-   SIZE VARIANTS
-   ========================================================================== */
-
-/* Small */
-.wp-block-badge--sm {
-  padding: var(--spacing-1) var(--spacing-2);
-  font-size: var(--text-xs);
-}
-
-/* Medium (default) */
-.wp-block-badge--md {
-  padding: var(--spacing-1) var(--spacing-3);
+  padding: 0.25em 0.75em;
+  font-family: var(--font-secondary);
+  font-weight: var(--font-weight-medium);
   font-size: var(--text-sm);
+  line-height: 1;
+  white-space: nowrap;
+  transition: all 0.2s ease;
 }
 
-/* Large */
-.wp-block-badge--lg {
-  padding: var(--spacing-2) var(--spacing-4);
-  font-size: var(--text-base);
-}
-
-/* ==========================================================================
-   VARIANT STYLES
-   ========================================================================== */
-
-/* Default Variant */
-.wp-block-badge--default {
-  background: var(--muted);
-  color: var(--foreground);
-  border-color: var(--border);
-}
-
-/* Primary Variant */
-.wp-block-badge--primary {
-  background: var(--primary);
-  color: var(--primary-foreground);
-  border-color: var(--primary);
-}
-
-/* Secondary Variant */
-.wp-block-badge--secondary {
-  background: var(--secondary);
-  color: var(--secondary-foreground);
-  border-color: var(--secondary);
-}
-
-/* Success Variant */
-.wp-block-badge--success {
-  background: hsl(142 76% 36%);
-  color: white;
-  border-color: hsl(142 76% 36%);
-}
-
-/* Warning Variant */
-.wp-block-badge--warning {
-  background: hsl(38 92% 50%);
-  color: hsl(38 92% 20%);
-  border-color: hsl(38 92% 50%);
-}
-
-/* Error Variant */
-.wp-block-badge--error {
-  background: var(--destructive);
-  color: var(--destructive-foreground);
-  border-color: var(--destructive);
-}
-
-/* Outline Variant */
-.wp-block-badge--outline {
-  background: transparent;
-  color: var(--foreground);
-  border-color: var(--border);
-}
-
-/* ==========================================================================
-   INTERACTIVE STATES
-   ========================================================================== */
-
-/* Hover states (when badge is inside a button or link) */
-button .wp-block-badge:hover,
-a .wp-block-badge:hover {
-  opacity: 0.9;
-}
-
-/* Focus states */
-button:focus-visible .wp-block-badge,
-a:focus-visible .wp-block-badge {
-  outline: 2px solid var(--primary);
-  outline-offset: 2px;
-}
-
-/* ==========================================================================
-   BADGE WITH ICONS
-   ========================================================================== */
-
-.wp-block-badge svg {
-  width: 1em;
-  height: 1em;
-  margin-right: var(--spacing-1);
-  vertical-align: middle;
-}
-
-.wp-block-badge svg:last-child:only-child {
-  margin-right: 0;
-}
-
-/* ==========================================================================
-   BADGE GROUPS
-   ========================================================================== */
-
-.badge-group {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--spacing-2);
-  align-items: center;
-}
-
-/* ==========================================================================
-   RESPONSIVE STYLES
-   ========================================================================== */
-
-/* Mobile (< 768px) - Base styles above */
-
-/* Tablet (768px - 1023px) */
-@media (min-width: 768px) {
-  .wp-block-badge--sm {
-    font-size: 12px;
-  }
-  
-  .wp-block-badge--md {
-    font-size: 13px;
-  }
-  
-  .wp-block-badge--lg {
-    font-size: 15px;
-  }
-}
-
-/* Desktop (≥ 1024px) */
-@media (min-width: 1024px) {
-  .wp-block-badge--sm {
-    font-size: var(--text-xs);
-  }
-  
-  .wp-block-badge--md {
-    font-size: var(--text-sm);
-  }
-  
-  .wp-block-badge--lg {
-    font-size: var(--text-base);
-  }
-}
-
-/* ==========================================================================
-   DARK MODE OVERRIDES
-   ========================================================================== */
-
-.dark-theme .wp-block-badge--default {
-  background: var(--muted);
+.wp-block-badge.is-style-default {
+  background-color: var(--muted);
   color: var(--muted-foreground);
 }
 
-.dark-theme .wp-block-badge--outline {
-  border-color: var(--border);
+.wp-block-badge.is-style-primary {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.wp-block-badge.is-style-secondary {
+  background-color: var(--secondary);
+  color: var(--secondary-foreground);
+}
+
+.wp-block-badge.is-style-outline {
+  background-color: transparent;
+  border: 1px solid var(--border);
   color: var(--foreground);
 }
 
-.dark-theme .wp-block-badge--warning {
-  background: hsl(38 92% 50%);
-  color: hsl(38 92% 10%);
+.wp-block-badge.is-style-success {
+  background-color: var(--success-soft);
+  color: var(--success);
 }
 
-/* ==========================================================================
-   PRINT STYLES
-   ========================================================================== */
-
-@media print {
-  .wp-block-badge {
-    /* Remove colors for better printing */
-    background: white !important;
-    color: black !important;
-    border: 1px solid #333 !important;
-  }
+.wp-block-badge.is-style-warning {
+  background-color: var(--warning-soft);
+  color: var(--warning);
 }
 
-/* ==========================================================================
-   REDUCED MOTION
-   ========================================================================== */
-
-@media (prefers-reduced-motion: reduce) {
-  .wp-block-badge {
-    transition: none;
-  }
+.wp-block-badge.is-style-error {
+  background-color: var(--destructive-soft);
+  color: var(--destructive);
 }
 
-/* ==========================================================================
-   UTILITY CLASSES
-   ========================================================================== */
-
-/* Dot/circle badge (number only) */
-.wp-block-badge--dot {
-  width: 20px;
-  height: 20px;
-  padding: 0;
-  border-radius: 50%;
-  font-size: 11px;
-  font-weight: 600;
+.wp-block-badge.has-small-font-size {
+  font-size: var(--text-tiny);
+  padding: 0.2em 0.6em;
 }
 
-.wp-block-badge--dot.wp-block-badge--sm {
-  width: 16px;
-  height: 16px;
-  font-size: 10px;
-}
-
-.wp-block-badge--dot.wp-block-badge--lg {
-  width: 24px;
-  height: 24px;
-  font-size: 12px;
+.wp-block-badge.has-large-font-size {
+  font-size: var(--text-base);
+  padding: 0.35em 1em;
 }

@@ -4,32 +4,12 @@
  * WordPress pattern: lsx-design/content/testimonial-grid
  * 
  * Displays customer testimonials, reviews, and quotes in a responsive grid.
- * Commonly used for social proof on service pages, about pages, and homepage.
- * 
- * All styling in /src/styles/testimonial-grid.css (user-editable)
- * 
- * **Usage:**
- * ```tsx
- * <TestimonialGrid
- *   testimonials={[
- *     {
- *       quote: 'Amazing service! Highly recommend.',
- *       author: 'John Doe',
- *       role: 'CEO',
- *       company: 'Acme Corp',
- *       avatar: '/images/john.jpg',
- *       rating: 5
- *     }
- *   ]}
- *   columns={3}
- *   variant="cards"
- * />
- * ```
  * 
  * @see {@link /guidelines/patterns/TestimonialGrid.md}
  */
 
 import { Star } from 'lucide-react';
+import '@/styles/patterns/testimonial-grid.css';
 
 export interface Testimonial {
   /** Testimonial quote/text */

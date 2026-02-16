@@ -23,8 +23,8 @@ import React from 'react';
 import { Section } from '../common/Section';
 import { Container } from '../common/Container';
 import { Heading } from '../common/Heading';
-import { Grid } from '../blocks/design/Grid';
 import type { Logo } from '../../data/logos';
+import '@/styles/patterns/social-proof.css';
 
 export interface SocialProofProps {
   heading?: string;
@@ -35,24 +35,6 @@ export interface SocialProofProps {
   showCaption?: boolean;
 }
 
-/**
- * SocialProof Pattern Component
- * 
- * Displays client logos, partner badges, awards, or certifications
- * in a responsive grid layout with grayscale hover effect.
- * 
- * @example
- * ```tsx
- * import { clientLogos } from '../../data';
- * 
- * <SocialProof 
- *   heading="Trusted By Industry Leaders"
- *   logos={clientLogos}
- *   columns={5}
- *   variant="logos"
- * />
- * ```
- */
 export function SocialProof({
   heading = "Trusted By Industry Leaders",
   logos,
@@ -85,11 +67,7 @@ export function SocialProof({
         </Heading>
 
         {/* Logo Grid */}
-        <Grid 
-          columns={columns} 
-          gap={8}
-          className="social-proof__grid"
-        >
+        <div className="social-proof__grid">
           {logos.map((logo) => {
             const LogoImage = (
               <img
@@ -116,12 +94,12 @@ export function SocialProof({
             }
 
             return (
-              <div key={logo.id}>
+              <div key={logo.id} className="social-proof__logo-wrapper">
                 {LogoImage}
               </div>
             );
           })}
-        </Grid>
+        </div>
 
         {/* Caption */}
         {showCaption && (

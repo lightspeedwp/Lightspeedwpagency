@@ -1,0 +1,156 @@
+/**
+ * Logo Grid Pattern Styles
+ * 
+ * BEM-compliant styles for the LogoGrid component.
+ */
+
+.logo-grid {
+  display: grid;
+}
+
+/* Grid Columns */
+.logo-grid--2-cols {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.logo-grid--3-cols {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (min-width: 640px) {
+  .logo-grid--3-cols {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.logo-grid--4-cols {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (min-width: 640px) {
+  .logo-grid--4-cols {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.logo-grid--5-cols {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (min-width: 640px) {
+  .logo-grid--5-cols {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .logo-grid--5-cols {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+.logo-grid--6-cols {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (min-width: 640px) {
+  .logo-grid--6-cols {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .logo-grid--6-cols {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+/* Logo Item */
+.logo-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: var(--spacing-4);
+  transition: all 0.3s ease;
+}
+
+/* Grayscale Effect */
+.logo-item--grayscale {
+  filter: grayscale(100%);
+  opacity: 0.6;
+}
+
+.logo-item--grayscale:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+/* Clickable */
+.logo-item--clickable {
+  cursor: pointer;
+}
+
+/* Alignment */
+.logo-item--center {
+  justify-content: center;
+}
+
+.logo-item--left {
+  justify-content: flex-start;
+}
+
+/* Variants */
+.logo-item--cards {
+  background-color: var(--card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-6);
+}
+
+.logo-item--cards:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary);
+}
+
+.logo-item--bordered {
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius);
+}
+
+/* Image */
+.logo-item__image {
+  max-width: 100%;
+  max-height: 48px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Icon */
+.logo-item__icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+}
+
+.logo-item__icon-wrapper--center {
+  margin: 0 auto;
+}
+
+/* Text Fallback */
+.logo-item__text {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+}
+
+/* Link Wrapper */
+.logo-item__link {
+  display: block;
+  text-decoration: none;
+  height: 100%;
+}

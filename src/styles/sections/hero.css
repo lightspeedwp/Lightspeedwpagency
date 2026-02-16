@@ -1,0 +1,35 @@
+/**
+ * Hero Section Styles
+ */
+.wp-block-section-hero {
+  padding: var(--wp--preset--spacing--80) 0;
+  background-color: var(--wp--preset--color--base);
+  display: flex;
+  align-items: center;
+  min-height: 60vh;
+}
+
+.wp-block-section-hero__content {
+  max-width: var(--wp--style--global--content-size);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.wp-block-section-hero__title {
+  font-family: var(--wp--preset--font-family--brand-sans);
+  font-size: var(--wp--preset--font-size--800);
+  font-weight: 800;
+  line-height: var(--line-height-tight);
+  margin-bottom: var(--wp--preset--spacing--30);
+  color: var(--wp--preset--color--contrast);
+}
+
+.wp-block-section-hero__lead {
+  font-family: var(--wp--preset--font-family--brand-serif);
+  font-size: var(--wp--preset--font-size--400);
+  color: var(--wp--preset--color--neutral-600);
+  margin-bottom: var(--wp--preset--spacing--50);
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
+}

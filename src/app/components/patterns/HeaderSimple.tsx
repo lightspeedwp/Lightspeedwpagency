@@ -11,6 +11,7 @@ import { Logo } from '../common/Logo';
 import { Container } from '../common/Container';
 import { ChevronDown } from 'lucide-react';
 import { useState } from 'react';
+import '@/styles/header-simple.css';
 
 interface NavItem {
   label: string;
@@ -37,19 +38,15 @@ export function HeaderSimple({
   return (
     <header 
       role="banner"
-      className="sticky top-0 z-50"
-      style={{
-        backgroundColor: 'var(--background)',
-        borderBottom: '1px solid var(--border-soft)',
-      }}
+      className="header-simple"
     >
       <Container>
-        <div className="flex items-center justify-between py-2">
+        <div className="header-simple__inner">
           {/* Site Logo */}
           <a 
             href="/" 
             aria-label="LSX Design Home"
-            style={{ textDecoration: 'none' }}
+            className="header-simple__logo-link"
           >
             <Logo theme="light" />
           </a>
@@ -58,49 +55,44 @@ export function HeaderSimple({
           <nav 
             role="navigation" 
             aria-label="Primary navigation"
-            style={{
-              backgroundColor: 'var(--background)',
-            }}
+            className="header-simple__nav"
           >
-            <ul 
-              className="flex items-center gap-2" 
-              style={{ listStyle: 'none', padding: 0, margin: 0 }}
-            >
-              {navItems.map((item, index) => (
-                <li key={index}>
-                  <a
-                    href={item.href}
-                    className="flex items-center gap-1 px-3 py-2"
-                    style={{
-                      fontFamily: 'var(--font-primary)',
-                      fontSize: 'var(--text-base)',
-                      fontWeight: 'var(--font-weight-bold)',
-                      color: item.isActive ? 'var(--primary)' : 'var(--foreground)',
-                      textDecoration: item.isActive ? 'underline' : 'none',
-                      transition: 'all 0.2s ease',
-                      whiteSpace: 'nowrap',
-                      borderRadius: 'var(--radius)',
-                    }}
-                    onMouseEnter={() => setHoveredItem(item.label)}
-                    onMouseLeave={() => setHoveredItem(null)}
-                    onFocus={() => setHoveredItem(item.label)}
-                    onBlur={() => setHoveredItem(null)}
-                  >
-                    <span>{item.label}</span>
-                    {item.hasDropdown && (
-                      <ChevronDown 
-                        size={20} 
-                        strokeWidth={2}
-                        style={{
-                          color: item.isActive ? 'var(--primary)' : 'var(--foreground)',
-                          transition: 'transform 0.2s ease',
-                          transform: hoveredItem === item.label ? 'rotate(180deg)' : 'rotate(0deg)',
-                        }}
-                      />
-                    )}
-                  </a>
-                </li>
-              ))}
+            <ul className="header-simple__list">
+              {navItems.map((item, index) => {
+                const isHovered = hoveredItem === item.label;
+                const linkClasses = [
+                  'header-simple__link',
+                  item.isActive && 'header-simple__link--active',
+                  isHovered && 'header-simple__link--hovered'
+                ].filter(Boolean).join(' ');
+
+                const chevronClasses = [
+                  'header-simple__chevron',
+                  item.isActive && 'header-simple__chevron--active'
+                ].filter(Boolean).join(' ');
+
+                return (
+                  <li key={index}>
+                    <a
+                      href={item.href}
+                      className={linkClasses}
+                      onMouseEnter={() => setHoveredItem(item.label)}
+                      onMouseLeave={() => setHoveredItem(null)}
+                      onFocus={() => setHoveredItem(item.label)}
+                      onBlur={() => setHoveredItem(null)}
+                    >
+                      <span>{item.label}</span>
+                      {item.hasDropdown && (
+                        <ChevronDown 
+                          size={20} 
+                          strokeWidth={2}
+                          className={chevronClasses}
+                        />
+                      )}
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
           </nav>
         </div>

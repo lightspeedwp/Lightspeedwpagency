@@ -1,133 +1,64 @@
 /**
- * Quote Block Styles
+ * Quote Post Format Styles
  * 
- * Styles for Single Quote Template and Archive.
+ * WordPress Template: single-quote.html, archive-quote.html
+ * 100% CSS variables.
  */
-
-/* Quote Card (Archive) */
-.wp-block-quote-card {
-  background-color: var(--card);
-  padding: var(--spacing-8);
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-md);
-  border: 1px solid var(--border-soft);
-  position: relative;
-  transition: box-shadow var(--transition-base);
-}
-
-.wp-block-quote-card:hover {
-  box-shadow: var(--shadow-lg);
-}
-
-.wp-block-quote-card__icon {
-  position: absolute;
-  top: var(--spacing-6);
-  left: var(--spacing-6);
-  color: var(--primary);
-  opacity: 0.2;
-}
-
-.wp-block-quote-card__body {
-  position: relative;
-  z-index: 10;
-  padding-top: var(--spacing-8);
-}
-
-.wp-block-quote-card__text {
-  font-size: var(--text-xl);
-  font-family: var(--font-primary); /* Often serif in design, but stick to system font or var */
-  font-style: italic;
-  margin-bottom: var(--spacing-6);
-  line-height: var(--line-height-relaxed);
-}
-
-.wp-block-quote-card__footer {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-3);
-  margin-top: var(--spacing-6);
-  padding-top: var(--spacing-6);
-  border-top: 1px solid var(--border-soft);
-}
-
-.wp-block-quote-card__avatar {
-  width: 2.5rem;
-  height: 2.5rem;
-  background-color: var(--border);
-  border-radius: var(--radius-full);
-}
-
-.wp-block-quote-card__author {
-  font-weight: var(--font-weight-bold);
-  font-size: var(--text-small);
-}
-
-.wp-block-quote-card__role {
-  font-size: var(--text-tiny);
-  color: var(--muted-foreground);
-}
 
 /* Single Quote Hero */
 .wp-block-quote-hero {
+  background-color: var(--secondary);
+  padding: var(--spacing-20) 0;
   min-height: 60vh;
   display: flex;
   align-items: center;
-  padding-top: var(--spacing-12);
-  padding-bottom: var(--spacing-12);
 }
 
 .wp-block-quote-hero__card {
+  position: relative;
   background-color: var(--card);
   padding: var(--spacing-12);
-  border-radius: var(--radius-2xl);
+  border-radius: var(--radius-xl);
   box-shadow: var(--shadow-xl);
   border: 1px solid var(--border-soft);
-  position: relative;
   overflow: hidden;
-  text-align: center;
-}
-
-@media (min-width: 768px) {
-  .wp-block-quote-hero__card {
-    padding: var(--spacing-16);
-  }
 }
 
 .wp-block-quote-hero__bg-icon {
   position: absolute;
-  top: 0;
-  right: 0;
-  padding: var(--spacing-12);
-  opacity: 0.05;
+  top: -20px;
+  left: -20px;
   color: var(--primary);
+  opacity: 0.05;
+  transform: rotate(180deg);
+  z-index: 0;
   pointer-events: none;
 }
 
 .wp-block-quote-hero__content {
   position: relative;
-  z-index: 10;
+  z-index: 1;
+  text-align: center;
 }
 
 .wp-block-quote-hero__icon {
-  margin-bottom: var(--spacing-8);
   color: var(--primary);
+  margin-bottom: var(--spacing-8);
   display: flex;
   justify-content: center;
 }
 
 .wp-block-quote-hero__text {
-  font-size: var(--text-3xl); /* 30px */
+  font-family: var(--font-primary);
+  font-size: var(--text-3xl);
   font-weight: var(--font-weight-medium);
-  font-style: italic;
-  margin-bottom: var(--spacing-8);
-  line-height: var(--line-height-relaxed);
+  line-height: var(--line-height-snug);
   color: var(--foreground);
+  margin-bottom: var(--spacing-10);
 }
 
-@media (min-width: 768px) {
-  .wp-block-quote-hero__text {
-    font-size: var(--text-4xl); /* 36px */
-  }
+.wp-block-quote-hero__text p {
+  margin: 0;
 }
 
 .wp-block-quote-hero__footer {
@@ -135,16 +66,15 @@
   align-items: center;
   justify-content: center;
   gap: var(--spacing-4);
-  margin-top: var(--spacing-8);
-  padding-top: var(--spacing-8);
-  border-top: 1px solid var(--border-soft);
 }
 
 .wp-block-quote-hero__avatar {
-  width: 3rem;
-  height: 3rem;
-  background-color: var(--border);
+  width: 64px;
+  height: 64px;
   border-radius: var(--radius-full);
+  background-color: var(--muted);
+  border: 2px solid var(--background);
+  box-shadow: var(--shadow-sm);
 }
 
 .wp-block-quote-hero__author-info {
@@ -152,10 +82,92 @@
 }
 
 .wp-block-quote-hero__author {
-  font-weight: var(--font-weight-bold);
+  font-family: var(--font-primary);
   font-size: var(--text-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
 }
 
 .wp-block-quote-hero__role {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
   color: var(--muted-foreground);
+}
+
+/* Quote Archive Card */
+.wp-block-quote-card {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  height: 100%;
+}
+
+.wp-block-quote-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary);
+}
+
+.wp-block-quote-card__icon {
+  color: var(--primary);
+  opacity: 0.2;
+}
+
+.wp-block-quote-card__body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--spacing-6);
+}
+
+.wp-block-quote-card__text {
+  font-family: var(--font-primary);
+  font-size: var(--text-xl);
+  line-height: var(--line-height-normal);
+  color: var(--foreground);
+  font-style: italic;
+}
+
+.wp-block-quote-card__text p {
+  margin: 0;
+}
+
+.wp-block-quote-card__footer {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  padding-top: var(--spacing-6);
+  border-top: 1px solid var(--border-soft);
+}
+
+.wp-block-quote-card__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  background-color: var(--muted);
+}
+
+.wp-block-quote-card__author {
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+}
+
+.wp-block-quote-card__role {
+  font-family: var(--font-secondary);
+  font-size: var(--text-xs);
+  color: var(--muted-foreground);
+}
+
+/* Focus-visible for keyboard navigation */
+.wp-block-quote-card:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: var(--spacing-1);
 }

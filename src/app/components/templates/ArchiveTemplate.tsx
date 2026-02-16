@@ -5,37 +5,23 @@
  * 
  * Content hub archetype for category/taxonomy archives.
  * Pattern order: Breadcrumbs → Archive Header → Results/Sorting → Card Grid → Pagination → ArchiveCTA
- * 
- * **Data Source:** `/src/app/data/archive-items.ts`
- * 
- * **Patterns Used:**
- * - Breadcrumbs (navigation context)
- * - ArchiveHeader (page title and description)
- * - CardGrid (content display)
- * - PaginationNav (page navigation)
- * - ArchiveCTA (conversion optimization)
- * - EmptyState (no results fallback)
- * 
- * @see {@link /guidelines/templates/archive.md}
  */
 
-import { SkipLink } from '../common/SkipLink';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
-import { SiteHeader } from '../parts/SiteHeader';
-import { SiteFooter } from '../parts/SiteFooter';
-import { Breadcrumbs } from '../patterns/Breadcrumbs';
-import { ArchiveHeader } from '../patterns/ArchiveHeader';
+import { Breadcrumbs } from '../common/Breadcrumbs';
 import { CardGrid } from '../patterns/CardGrid';
 import { PaginationNav } from '../patterns/PaginationNav';
-import { EmptyState } from '../patterns/EmptyState';
-import { BackToTopButton } from '../blocks/layout/BackToTopButton';
+import { Heading } from '../blocks/text/Heading';
+import { Paragraph } from '../blocks/text/Paragraph';
+import { Button } from '../blocks/design/Buttons';
 import { useNavigation } from '../../contexts/NavigationContext';
 import { ArchiveCTA } from '../patterns/ArchiveCTA';
 import { generalArchiveCTA } from '../../data/cta';
-import { generalArchiveItems, archiveCategories } from '../../data/archive-items';
+import { generalArchiveItems } from '../../data/archive-items';
 import { useState } from 'react';
-import { Search } from 'lucide-react';
+import { ArrowUpDown } from 'lucide-react';
+import '@/styles/templates/archive.css';
 
 export function ArchiveTemplate() {
   const { navigateTo } = useNavigation();
@@ -47,67 +33,72 @@ export function ArchiveTemplate() {
 
   return (
     <>
-      <SkipLink />
-      <SiteHeader />
-      
-      <main id="main-content" role="main">
-        {/* Archive Content Section */}
-        <Section spacing="50">
-          <Container>
-            <div className="wp-archive-content">
-              {/* Breadcrumbs */}
-              <Breadcrumbs 
-                items={[
-                  { label: 'Home', href: '/' },
-                  { label: 'Archive' }
-                ]}
-              />
+      {/* Breadcrumbs */}
+      <section className="wp-block-breadcrumbs-section">
+          <Breadcrumbs 
+            items={[
+              { label: 'Home', href: '/' },
+              { label: 'Archive' }
+            ]}
+          />
+      </section>
 
-              {/* Archive Header */}
-              <ArchiveHeader
-                title="Archive Title"
-                description="Archive description"
-              />
+      {/* Archive Content Section */}
+      <Section spacing="xl">
+        <Container>
+          <div className="archive-layout">
+            {/* Archive Header */}
+            <div className="archive-header">
+              <Heading level={1} className="archive-header__title">
+                Archive Title
+              </Heading>
+              <Paragraph className="archive-header__description">
+                Archive description text goes here.
+              </Paragraph>
+            </div>
 
-              {/* Results & Sorting */}
-              <div className="wp-archive-results-bar">
-                <p className="wp-archive-results-count">
-                  Showing {startResult} - {endResult} of {totalResults} results
-                </p>
-                
-                <button
-                  className="wp-archive-sort-button"
+            {/* Results & Sorting */}
+            <div className="archive-controls">
+              <Paragraph className="archive-controls__count">
+                Showing {startResult} - {endResult} of {totalResults} results
+              </Paragraph>
+              
+              <div className="archive-controls__actions">
+                <Button
+                  variant="outline"
+                  size="sm"
                   aria-label="Sort results"
+                  className="wp-flex wp-items-center wp-gap-2"
                 >
                   Sort
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path d="M19.5 8.25L12 15.75L4.5 8.25" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </button>
+                  <ArrowUpDown size={16} />
+                </Button>
               </div>
+            </div>
 
-              {/* Card Grid - 3 columns */}
+            {/* Card Grid - 3 columns */}
+            <div className="archive-grid archive-grid--3-cols">
               <CardGrid
                 items={generalArchiveItems.slice((currentPage - 1) * resultsPerPage, currentPage * resultsPerPage)}
                 navigateTo={navigateTo}
+                columns={3}
               />
+            </div>
 
-              {/* Pagination */}
+            {/* Pagination */}
+            <div className="archive-pagination">
               <PaginationNav
                 currentPage={currentPage}
                 totalPages={Math.ceil(totalResults / resultsPerPage)}
                 onPageChange={setCurrentPage}
               />
             </div>
-          </Container>
-        </Section>
+          </div>
+        </Container>
+      </Section>
 
-        {/* Archive CTA Pattern - WordPress Group block with cta-primary section style */}
-        <ArchiveCTA ctaData={generalArchiveCTA} />
-      </main>
-
-      <SiteFooter />
-      <BackToTopButton />
+      {/* Archive CTA Pattern */}
+      <ArchiveCTA ctaData={generalArchiveCTA} />
     </>
   );
 }

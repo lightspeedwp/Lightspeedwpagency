@@ -1,0 +1,246 @@
+/**
+ * Design System Test Block Styles
+ * 
+ * WordPress Block: dev-tools/design-system-test
+ */
+
+.wp-block-devtools-design-system-test {
+  padding: var(--spacing-12) 0;
+}
+
+.wp-block-devtools-design-system-test__header {
+  text-align: center;
+  max-width: var(--container-4xl);
+  margin: 0 auto;
+}
+
+.wp-block-devtools-design-system-test__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h1);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+  line-height: var(--line-height-snug);
+  margin-bottom: var(--spacing-4);
+}
+
+.wp-block-devtools-design-system-test__description {
+  font-family: var(--font-primary);
+  font-size: var(--text-lead);
+  font-weight: var(--font-weight-regular);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-normal);
+  margin-bottom: var(--spacing-6);
+}
+
+.wp-block-devtools-design-system-test__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2) var(--spacing-4);
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border-radius: var(--radius);
+  font-family: var(--font-primary);
+  font-size: var(--text-small);
+  font-weight: var(--font-weight-medium);
+}
+
+.wp-block-devtools-design-system-test__section-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-8);
+}
+
+/* Test Cards Grid */
+.wp-block-devtools-design-system-test__grid {
+  display: grid;
+  gap: var(--spacing-6);
+}
+
+.wp-block-devtools-design-system-test__grid--3-cols {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .wp-block-devtools-design-system-test__grid--3-cols {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Test Card */
+.wp-block-devtools-design-system-test__card {
+  padding: var(--spacing-6);
+  background-color: var(--card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+}
+
+.wp-block-devtools-design-system-test__card--large {
+  padding: var(--spacing-8);
+}
+
+/* Typography Test */
+.wp-block-devtools-design-system-test__meta {
+  font-family: var(--font-secondary);
+  font-size: var(--text-small);
+  color: var(--muted-foreground);
+  margin-bottom: var(--spacing-2);
+}
+
+.wp-block-devtools-design-system-test__h1 {
+  font-family: var(--font-primary);
+  font-size: var(--text-h1);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+  line-height: var(--line-height-snug);
+}
+
+.wp-block-devtools-design-system-test__h2 {
+  font-family: var(--font-primary);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  line-height: var(--line-height-snug);
+}
+
+.wp-block-devtools-design-system-test__h3 {
+  font-family: var(--font-primary);
+  font-size: var(--text-h3);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  line-height: var(--line-height-snug);
+}
+
+.wp-block-devtools-design-system-test__body {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-regular);
+  color: var(--foreground);
+  line-height: var(--line-height-normal);
+}
+
+.wp-block-devtools-design-system-test__body--lg {
+  font-size: var(--text-lg);
+}
+
+.wp-block-devtools-design-system-test__body--sm {
+  font-family: var(--font-secondary);
+  font-size: var(--text-small);
+}
+
+/* Color Test */
+.wp-block-devtools-design-system-test__color-card {
+  padding: var(--spacing-6);
+  border-radius: var(--radius-lg);
+  border: 1px solid transparent;
+}
+
+.wp-block-devtools-design-system-test__color-name {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--spacing-1);
+}
+
+.wp-block-devtools-design-system-test__color-var {
+  font-family: var(--font-secondary);
+  font-size: var(--text-small);
+  opacity: 0.9;
+}
+
+/* Interactive Test */
+.wp-block-devtools-design-system-test__interactive {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-4);
+}
+
+.wp-block-devtools-design-system-test__button {
+  padding: var(--spacing-3) var(--spacing-6);
+  border-radius: var(--radius);
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.wp-block-devtools-design-system-test__button--primary {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.wp-block-devtools-design-system-test__button--secondary {
+  background-color: var(--secondary);
+  color: var(--secondary-foreground);
+}
+
+.wp-block-devtools-design-system-test__button--outline {
+  background-color: transparent;
+  color: var(--foreground);
+  border: 1px solid var(--border);
+}
+
+.wp-block-devtools-design-system-test__button--destructive {
+  background-color: var(--destructive);
+  color: var(--destructive-foreground);
+}
+
+/* Checklist */
+.wp-block-devtools-design-system-test__checklist {
+  display: grid;
+  gap: var(--spacing-4);
+}
+
+.wp-block-devtools-design-system-test__check-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-3);
+}
+
+.wp-block-devtools-design-system-test__check-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius);
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.wp-block-devtools-design-system-test__check-text {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  color: var(--foreground);
+  line-height: var(--line-height-normal);
+  margin: 0;
+}
+
+/* Steps */
+.wp-block-devtools-design-system-test__step-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h4);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-4);
+}
+
+.wp-block-devtools-design-system-test__steps {
+  padding-left: var(--spacing-5);
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  color: var(--foreground);
+  line-height: var(--line-height-relaxed);
+  margin: 0;
+}
+
+.wp-block-devtools-design-system-test__code {
+  font-family: monospace;
+  font-size: var(--text-small);
+  color: var(--primary);
+}

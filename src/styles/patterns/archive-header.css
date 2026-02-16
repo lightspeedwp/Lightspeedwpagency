@@ -1,0 +1,57 @@
+/**
+ * Archive Header Pattern Styles
+ * 
+ * BEM-compliant styles for the ArchiveHeader component.
+ * All vertical spacing via blockGap (CSS gap) -- zero margin.
+ */
+
+/* Content -- flex column with blockGap */
+.archive-header__content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-4);
+  max-width: var(--wp--custom--layout--content-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Title */
+.archive-header__content h1 {
+  font-family: var(--font-primary);
+  font-size: var(--text-4xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+  line-height: var(--line-height-tight);
+}
+
+@media (min-width: 768px) {
+  .archive-header__content h1 {
+    font-size: var(--text-5xl);
+  }
+}
+
+/* Description */
+.archive-header__description {
+  font-family: var(--font-secondary);
+  font-size: var(--text-lg);
+  color: var(--muted-foreground);
+  max-width: 65ch;
+  line-height: var(--line-height-normal);
+}
+
+/* Count */
+.archive-header__count {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+  display: inline-block;
+  padding: var(--spacing-2) var(--spacing-4);
+  background-color: var(--background);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-full);
+}

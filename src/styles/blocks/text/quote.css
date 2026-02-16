@@ -25,9 +25,9 @@
   
   /* Typography */
   font-family: var(--font-primary);
-  font-size: 16px;
+  font-size: var(--text-base);
   font-style: italic;
-  line-height: 1.7;
+  line-height: var(--line-height-relaxed);
   color: var(--foreground);
   
   /* Borders */
@@ -136,12 +136,12 @@
   border-radius: var(--radius);
   
   /* Shadow */
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-sm);
 }
 
 .wp-block-quote--testimonial .wp-block-quote__content {
   font-size: var(--text-base);
-  line-height: 1.8;
+  line-height: var(--line-height-relaxed);
 }
 
 .wp-block-quote--testimonial .wp-block-quote__citation {
@@ -177,7 +177,7 @@
 /* Tablet (768px - 1023px) */
 @media (min-width: 768px) {
   .wp-block-quote {
-    font-size: 18px;
+    font-size: var(--text-lg);
     padding: var(--spacing-5);
     padding-left: var(--spacing-8);
     border-left-width: 4px;
@@ -277,7 +277,7 @@
 .dark-theme .wp-block-quote--testimonial {
   background: var(--background);
   border-color: var(--border);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--shadow-sm);
 }
 
 /* ==========================================================================
@@ -336,4 +336,11 @@
 .wp-block-quote--no-border {
   border-left: none;
   padding-left: var(--spacing-4);
+}
+
+/* Plain style */
+.wp-block-quote.is-style-plain .wp-block-quote__citation {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  line-height: var(--line-height-relaxed);
 }

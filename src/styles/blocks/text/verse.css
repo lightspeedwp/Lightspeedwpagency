@@ -6,7 +6,7 @@
 .wp-block-verse {
   font-family: var(--font-primary);
   font-size: var(--text-base);
-  line-height: 1.8;
+  line-height: var(--line-height-relaxed);
   color: var(--foreground);
   white-space: pre-wrap;
   overflow-wrap: break-word;

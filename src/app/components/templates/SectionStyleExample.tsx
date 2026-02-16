@@ -10,30 +10,16 @@
  * - Consistent with WordPress FSE section style system
  */
 
-import { SkipLink } from '../common/SkipLink';
-import { BackToTopButton } from '../blocks/layout/BackToTopButton';
 import { Section } from '../common/Section';
 import { Container } from '../common/Container';
 import { Button } from '../blocks/design/Buttons';
+import { Heading } from '../common/Heading';
+import { Paragraph } from '../blocks/text/Paragraph';
 
 export function SectionStyleExample() {
   return (
-    <div
-      style={{
-        minHeight: '100vh',
-        display: 'flex',
-        flexDirection: 'column',
-        backgroundColor: 'var(--background)',
-        color: 'var(--foreground)'
-      }}
-    >
-      {/* Skip Link for Accessibility */}
-      <SkipLink targetId="main-content" />
-
-      {/* Main Content */}
-      <main
-        id="main-content"
-        role="main"
+    <>
+      <div
         style={{
           flex: 1,
           display: 'flex',
@@ -121,28 +107,17 @@ export function SectionStyleExample() {
         {/* Example 4: Standard Section (no section style) */}
         <Section spacing="xl" background="muted">
           <Container>
-            <div className="max-w-4xl mx-auto text-center">
-              <h2 style={{
-                fontFamily: 'Lexend, sans-serif',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 500,
-                color: 'var(--foreground)',
-                marginBottom: '2rem'
-              }}>
+            <div className="wp-max-w-4xl wp-mx-auto wp-text-center">
+              <Heading level={2} className="wp-mb-8">
                 This Section Uses Standard Props
-              </h2>
+              </Heading>
               
-              <p style={{
-                fontFamily: 'Lexend, sans-serif',
-                fontSize: 'var(--text-lead)',
-                color: 'var(--muted-foreground)',
-                marginBottom: '2.5rem'
-              }}>
+              <Paragraph style={{ fontSize: 'var(--text-lead)', color: 'var(--muted-foreground)' }} className="wp-mb-10">
                 Notice how this section requires inline styles for each element, 
                 while the section style examples above don't need any inline styles.
-              </p>
+              </Paragraph>
               
-              <div className="flex flex-wrap gap-4 justify-center">
+              <div className="wp-flex wp-flex-wrap wp-gap-4 wp-justify-center">
                 <Button variant="primary" size="lg" page="front-page">
                   Back to Home
                 </Button>
@@ -154,83 +129,44 @@ export function SectionStyleExample() {
         {/* Documentation Section */}
         <Section spacing="xl" background="card">
           <Container>
-            <div className="max-w-4xl mx-auto">
-              <h2 style={{
-                fontFamily: 'Lexend, sans-serif',
-                fontSize: 'var(--text-h3)',
-                fontWeight: 500,
-                color: 'var(--foreground)',
-                marginBottom: '1.5rem'
-              }}>
+            <div className="wp-max-w-4xl wp-mx-auto">
+              <Heading level={2} className="wp-mb-6" style={{ fontSize: 'var(--text-h3)' }}>
                 How Section Styles Work
-              </h2>
+              </Heading>
               
-              <div style={{
-                fontFamily: 'Lexend, sans-serif',
-                fontSize: 'var(--text-base)',
-                color: 'var(--foreground)',
-                lineHeight: 1.7
-              }}>
-                <p style={{ marginBottom: '1rem' }}>
+              <div style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-base)', color: 'var(--foreground)', lineHeight: 1.6 }}>
+                <Paragraph className="wp-mb-4">
                   Section styles are similar to WordPress block theme section styles 
-                  defined in <code style={{ 
-                    fontFamily: 'monospace',
-                    backgroundColor: 'var(--muted)',
-                    padding: '2px 6px',
-                    borderRadius: 'var(--radius)',
-                    fontSize: '0.9em'
-                  }}>theme.json</code>.
-                </p>
+                  defined in <code style={{ fontFamily: 'var(--font-mono)', backgroundColor: 'var(--muted)', borderRadius: 'var(--radius)', padding: 'var(--spacing-1)', fontSize: 'var(--text-sm)' }}>theme.json</code>.
+                </Paragraph>
                 
-                <h3 style={{
-                  fontSize: 'var(--text-lg)',
-                  fontWeight: 500,
-                  marginTop: '2rem',
-                  marginBottom: '1rem'
-                }}>
+                <Heading level={3} className="wp-mt-8 wp-mb-4" style={{ fontSize: 'var(--text-lg)' }}>
                   Benefits:
-                </h3>
+                </Heading>
                 
-                <ul style={{ 
-                  marginLeft: '1.5rem',
-                  marginBottom: '1.5rem',
-                  listStyleType: 'disc'
-                }}>
-                  <li style={{ marginBottom: '0.5rem' }}>
+                <ul style={{ listStyleType: 'disc', paddingLeft: 'var(--spacing-6)' }} className="wp-mb-6">
+                  <li className="wp-mb-2">
                     <strong>Single source of truth:</strong> All styling in CSS
                   </li>
-                  <li style={{ marginBottom: '0.5rem' }}>
+                  <li className="wp-mb-2">
                     <strong>No inline styles:</strong> Cleaner React components
                   </li>
-                  <li style={{ marginBottom: '0.5rem' }}>
+                  <li className="wp-mb-2">
                     <strong>Easy updates:</strong> Change CSS, update all instances
                   </li>
-                  <li style={{ marginBottom: '0.5rem' }}>
+                  <li className="wp-mb-2">
                     <strong>WordPress-native:</strong> Maps to theme.json patterns
                   </li>
-                  <li style={{ marginBottom: '0.5rem' }}>
+                  <li className="wp-mb-2">
                     <strong>Design system compliance:</strong> Uses CSS variables
                   </li>
                 </ul>
                 
-                <h3 style={{
-                  fontSize: 'var(--text-lg)',
-                  fontWeight: 500,
-                  marginTop: '2rem',
-                  marginBottom: '1rem'
-                }}>
+                <Heading level={3} className="wp-mt-8 wp-mb-4" style={{ fontSize: 'var(--text-lg)' }}>
                   Usage:
-                </h3>
+                </Heading>
                 
-                <pre style={{
-                  backgroundColor: 'var(--muted)',
-                  padding: '1rem',
-                  borderRadius: 'var(--radius)',
-                  overflow: 'auto',
-                  fontFamily: 'monospace',
-                  fontSize: '0.875rem',
-                  marginBottom: '1rem'
-                }}>
+                <pre style={{ backgroundColor: 'var(--muted)', padding: 'var(--spacing-4)', borderRadius: 'var(--radius)', overflow: 'auto', fontFamily: 'var(--font-mono)', fontSize: 'var(--text-sm)' }} className="wp-mb-4">
 {`<Section sectionStyle="cta-primary">
   <Container>
     <h2>Your Heading</h2>
@@ -240,18 +176,15 @@ export function SectionStyleExample() {
 </Section>`}
                 </pre>
                 
-                <p style={{ marginBottom: '1rem' }}>
+                <Paragraph className="wp-mb-4">
                   All child elements (h2, p, buttons) automatically inherit 
                   the correct styling from the section style CSS.
-                </p>
+                </Paragraph>
               </div>
             </div>
           </Container>
         </Section>
-      </main>
-
-      {/* Back to Top Button */}
-      <BackToTopButton />
-    </div>
+      </div>
+    </>
   );
 }

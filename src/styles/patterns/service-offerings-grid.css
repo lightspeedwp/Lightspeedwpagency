@@ -1,0 +1,162 @@
+/**
+ * Service Offerings Grid Pattern Styles
+ * 
+ * BEM-compliant styles for the ServiceOfferingsGrid component.
+ * All vertical spacing via blockGap (CSS gap) -- zero margin.
+ */
+
+.service-offerings-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-16);
+}
+
+/* Header -- flex column with blockGap */
+.service-offerings__header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  max-width: var(--wp--custom--layout--content-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.service-offerings__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h1);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-snug);
+  color: var(--foreground);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+.service-offerings__description {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  line-height: var(--line-height-relaxed);
+  color: var(--muted-foreground);
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Grid */
+.service-offerings__grid {
+  display: grid;
+  gap: var(--spacing-8);
+}
+
+.service-offerings__grid--2-cols {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .service-offerings__grid--2-cols {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.service-offerings__grid--3-cols {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .service-offerings__grid--3-cols {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .service-offerings__grid--3-cols {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.service-offerings__grid--4-cols {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .service-offerings__grid--4-cols {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .service-offerings__grid--4-cols {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Card -- flex column with blockGap */
+.service-offering-card {
+  padding: var(--spacing-10);
+  background-color: var(--card);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-soft);
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-4);
+  height: 100%;
+}
+
+.service-offering-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--primary);
+}
+
+.service-offering-card:not(:hover) {
+  box-shadow: var(--shadow-md);
+}
+
+/* Icon */
+.service-offering-card__icon-wrapper {
+  width: 80px;
+  height: 80px;
+  border-radius: var(--radius-xl);
+  background-color: var(--primary-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.service-offering-card:hover .service-offering-card__icon-wrapper {
+  background-color: var(--primary);
+}
+
+.service-offering-card__icon {
+  color: var(--primary);
+  transition: color 0.3s ease;
+}
+
+.service-offering-card:hover .service-offering-card__icon {
+  color: var(--color-white);
+}
+
+/* Content */
+.service-offering-card__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+}
+
+.service-offering-card__description {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  line-height: var(--line-height-normal);
+  color: var(--muted-foreground);
+  flex-grow: 1;
+}
+
+/* Button */
+.service-offering-card__button {
+  width: 100%;
+}

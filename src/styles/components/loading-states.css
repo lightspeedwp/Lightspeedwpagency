@@ -1,0 +1,71 @@
+/**
+ * Loading States Styles
+ *
+ * BEM-compliant styles for loading spinners, skeletons, progress bars, etc.
+ * All spacing via CSS variables.
+ */
+
+/* ── Spinner ── */
+.loading-spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Card skeleton ── */
+.loading-card-skeleton {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background-color: var(--card);
+  border: 1px solid var(--border-soft);
+}
+
+.loading-card-skeleton__image {
+  border-radius: 0;
+}
+
+/* ── Progress bar ── */
+.loading-progress__label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-2);
+  font-size: var(--text-sm);
+  font-family: var(--font-secondary);
+  color: var(--muted-foreground);
+}
+
+/* ── Dots loader ── */
+.loading-dots {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+/* ── Pulse loader ── */
+.loading-pulse {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* ── List skeleton ── */
+.loading-list-skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.loading-list-skeleton__item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+}
+
+.loading-list-skeleton__body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}

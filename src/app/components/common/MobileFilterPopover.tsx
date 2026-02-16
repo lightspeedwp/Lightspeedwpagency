@@ -28,6 +28,7 @@
 import { X } from 'lucide-react';
 import { useEffect, useRef } from 'react';
 import { Button } from '../blocks/design/Buttons';
+import '@/styles/components/mobile-filter-popover.css';
 
 export interface FilterOption {
   id: string;
@@ -141,17 +142,7 @@ export function MobileFilterPopover({
 
   return (
     <div
-      style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        zIndex: 1000,
-        display: 'flex',
-        alignItems: 'flex-end',
-        justifyContent: 'center'
-      }}
+      className="mobile-filter-popover"
       role="dialog"
       aria-modal="true"
       aria-label={`Filter by ${title}`}
@@ -159,134 +150,39 @@ export function MobileFilterPopover({
       {/* Backdrop */}
       <div
         onClick={onClose}
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundColor: 'rgba(0, 0, 0, 0.5)',
-          backdropFilter: 'blur(4px)',
-          animation: 'fadeIn 0.2s ease-out'
-        }}
+        className="mobile-filter-popover__backdrop"
       />
 
       {/* Popover Content */}
       <div
         ref={popoverRef}
-        style={{
-          position: 'relative',
-          width: '100%',
-          maxHeight: '80vh',
-          backgroundColor: 'var(--card)',
-          borderTopLeftRadius: 'var(--radius-2xl)',
-          borderTopRightRadius: 'var(--radius-2xl)',
-          boxShadow: 'var(--shadow-xl)',
-          animation: 'slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-          display: 'flex',
-          flexDirection: 'column'
-        }}
+        className="mobile-filter-popover__content"
       >
         {/* Header */}
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            padding: '20px 24px',
-            borderBottom: '1px solid var(--border-soft)'
-          }}
-        >
-          <h2
-            style={{
-              fontFamily: 'var(--font-primary)',
-              fontSize: 'var(--text-h4)',
-              fontWeight: 'var(--font-weight-medium)',
-              color: 'var(--foreground)',
-              margin: 0
-            }}
-          >
+        <div className="mobile-filter-popover__header">
+          <h2 className="mobile-filter-popover__title">
             {title}
           </h2>
 
           <button
             onClick={onClose}
             aria-label="Close filter menu"
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              width: '48px',
-              height: '48px',
-              border: 'none',
-              borderRadius: 'var(--radius)',
-              backgroundColor: 'var(--muted)',
-              color: 'var(--foreground)',
-              cursor: 'pointer',
-              transition: 'all 0.2s ease'
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = 'var(--primary)';
-              e.currentTarget.style.color = 'var(--primary-foreground)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = 'var(--muted)';
-              e.currentTarget.style.color = 'var(--foreground)';
-            }}
+            className="mobile-filter-popover__close"
           >
             <X size={24} />
           </button>
         </div>
 
         {/* Filter Options */}
-        <div
-          style={{
-            flex: 1,
-            overflowY: 'auto',
-            padding: '8px'
-          }}
-        >
+        <div className="mobile-filter-popover__list">
           {/* All option */}
           <button
             onClick={() => handleSelect('all')}
-            style={{
-              width: '100%',
-              minHeight: '48px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              padding: '12px 16px',
-              border: 'none',
-              borderRadius: 'var(--radius-lg)',
-              backgroundColor: selectedOption === 'all' ? 'var(--primary)' : 'transparent',
-              color: selectedOption === 'all' ? 'var(--primary-foreground)' : 'var(--foreground)',
-              fontFamily: 'var(--font-secondary)',
-              fontSize: 'var(--text-base)',
-              fontWeight: selectedOption === 'all' ? 'var(--font-weight-semibold)' : 'var(--font-weight-regular)',
-              cursor: 'pointer',
-              transition: 'all 0.2s ease',
-              textAlign: 'left',
-              marginBottom: '4px'
-            }}
-            onMouseEnter={(e) => {
-              if (selectedOption !== 'all') {
-                e.currentTarget.style.backgroundColor = 'var(--muted)';
-              }
-            }}
-            onMouseLeave={(e) => {
-              if (selectedOption !== 'all') {
-                e.currentTarget.style.backgroundColor = 'transparent';
-              }
-            }}
+            className={`mobile-filter-popover__option ${selectedOption === 'all' ? 'mobile-filter-popover__option--selected' : ''}`}
           >
             <span>{allLabel}</span>
             {selectedOption === 'all' && (
-              <span
-                style={{
-                  fontSize: 'var(--text-lg)',
-                  fontWeight: 'var(--font-weight-bold)'
-                }}
-              >
+              <span className="mobile-filter-popover__check">
                 ✓
               </span>
             )}
@@ -297,56 +193,17 @@ export function MobileFilterPopover({
             <button
               key={option.id}
               onClick={() => handleSelect(option.id)}
-              style={{
-                width: '100%',
-                minHeight: '48px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                padding: '12px 16px',
-                border: 'none',
-                borderRadius: 'var(--radius-lg)',
-                backgroundColor: selectedOption === option.id ? 'var(--primary)' : 'transparent',
-                color: selectedOption === option.id ? 'var(--primary-foreground)' : 'var(--foreground)',
-                fontFamily: 'var(--font-secondary)',
-                fontSize: 'var(--text-base)',
-                fontWeight: selectedOption === option.id ? 'var(--font-weight-semibold)' : 'var(--font-weight-regular)',
-                cursor: 'pointer',
-                transition: 'all 0.2s ease',
-                textAlign: 'left',
-                marginBottom: '4px'
-              }}
-              onMouseEnter={(e) => {
-                if (selectedOption !== option.id) {
-                  e.currentTarget.style.backgroundColor = 'var(--muted)';
-                }
-              }}
-              onMouseLeave={(e) => {
-                if (selectedOption !== option.id) {
-                  e.currentTarget.style.backgroundColor = 'transparent';
-                }
-              }}
+              className={`mobile-filter-popover__option ${selectedOption === option.id ? 'mobile-filter-popover__option--selected' : ''}`}
             >
               <span>{option.label}</span>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+              <div className="mobile-filter-popover__option-content">
                 {option.count !== undefined && (
-                  <span
-                    style={{
-                      fontSize: 'var(--text-small)',
-                      color: selectedOption === option.id ? 'var(--primary-foreground)' : 'var(--muted-foreground)',
-                      opacity: 0.8
-                    }}
-                  >
+                  <span className="mobile-filter-popover__count">
                     ({option.count})
                   </span>
                 )}
                 {selectedOption === option.id && (
-                  <span
-                    style={{
-                      fontSize: 'var(--text-lg)',
-                      fontWeight: 'var(--font-weight-bold)'
-                    }}
-                  >
+                  <span className="mobile-filter-popover__check">
                     ✓
                   </span>
                 )}
@@ -356,43 +213,17 @@ export function MobileFilterPopover({
         </div>
 
         {/* Footer (optional close button) */}
-        <div
-          style={{
-            padding: '16px 24px',
-            borderTop: '1px solid var(--border-soft)'
-          }}
-        >
+        <div className="mobile-filter-popover__footer">
           <Button
             variant="secondary"
             size="lg"
             onClick={onClose}
-            style={{ width: '100%' }}
+            className="wp-w-full"
           >
             Close Filters
           </Button>
         </div>
       </div>
-
-      {/* Animations */}
-      <style>{`
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-          }
-          to {
-            opacity: 1;
-          }
-        }
-
-        @keyframes slideUp {
-          from {
-            transform: translateY(100%);
-          }
-          to {
-            transform: translateY(0);
-          }
-        }
-      `}</style>
     </div>
   );
 }

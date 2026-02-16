@@ -1,0 +1,13 @@
+/**
+ * Skeleton Block Styles
+ */
+@keyframes wp-skeleton-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .5; }
+}
+
+.wp-block-skeleton {
+  background-color: var(--muted);
+  border-radius: var(--radius);
+  animation: wp-skeleton-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}

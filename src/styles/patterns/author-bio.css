@@ -1,0 +1,131 @@
+/**
+ * Author Bio Pattern Styles
+ * 
+ * BEM-compliant styles for the AuthorBio component.
+ */
+
+.author-bio {
+  display: block;
+  width: 100%;
+}
+
+.author-bio--card {
+  background-color: var(--card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-6);
+}
+
+.author-bio--inline {
+  background-color: transparent;
+  padding: var(--spacing-4) 0;
+  border-top: 1px solid var(--border-soft);
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.author-bio--minimal {
+  background-color: transparent;
+  padding: 0;
+}
+
+.author-bio--center .author-bio__container {
+  text-align: center;
+  flex-direction: column;
+}
+
+.author-bio--center .author-bio__content {
+  align-items: center;
+}
+
+/* Container */
+.author-bio__container {
+  display: flex;
+  gap: var(--spacing-6);
+  align-items: flex-start;
+}
+
+@media (max-width: 640px) {
+  .author-bio__container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+/* Avatar */
+.author-bio__avatar {
+  flex-shrink: 0;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--muted);
+  border-radius: var(--radius-full);
+}
+
+.author-bio__avatar--sm {
+  width: var(--spacing-12);
+  height: var(--spacing-12);
+}
+
+.author-bio__avatar--md {
+  width: var(--spacing-16);
+  height: var(--spacing-16);
+}
+
+.author-bio__avatar--lg {
+  width: var(--spacing-24);
+  height: var(--spacing-24);
+}
+
+/* Content -- flex column with blockGap */
+.author-bio__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  flex-grow: 1;
+}
+
+/* Name */
+.author-bio__name {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+}
+
+/* Role */
+.author-bio__role {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Bio Text */
+.author-bio__text {
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  color: var(--foreground);
+  line-height: var(--line-height-normal);
+}
+
+/* Social Links */
+.author-bio__social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-4);
+}
+
+.author-bio__social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+.author-bio__social-link:hover {
+  color: var(--primary);
+}

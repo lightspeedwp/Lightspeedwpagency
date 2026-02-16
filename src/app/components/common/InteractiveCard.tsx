@@ -98,16 +98,16 @@ export function InteractiveCard({
     },
     elevated: {
       backgroundColor: 'var(--card)',
-      boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
+      boxShadow: 'var(--shadow-lg)'
     },
     bordered: {
       backgroundColor: 'var(--card)',
       border: '2px solid var(--border)'
     },
     glass: {
-      backgroundColor: 'rgba(255, 255, 255, 0.05)',
+      backgroundColor: 'var(--glass-bg)',
       backdropFilter: 'blur(12px)',
-      border: '1px solid rgba(255, 255, 255, 0.1)'
+      border: '1px solid var(--glass-border)'
     },
     gradient: {
       background: 'linear-gradient(135deg, var(--card) 0%, var(--muted) 100%)',
@@ -121,12 +121,12 @@ export function InteractiveCard({
       rest: { 
         y: 0,
         scale: 1,
-        boxShadow: variantStyles[variant].boxShadow || '0 2px 8px rgba(0, 0, 0, 0.05)'
+        boxShadow: variantStyles[variant].boxShadow || 'var(--shadow-sm)'
       },
       hover: {
         y: -8,
         scale: 1.02,
-        boxShadow: '0 12px 24px rgba(0, 0, 0, 0.15)',
+        boxShadow: 'var(--shadow-xl)',
         transition: {
           duration: 0.3,
           ease: [0.22, 1, 0.36, 1]
@@ -162,11 +162,11 @@ export function InteractiveCard({
     glow: {
       rest: {
         scale: 1,
-        boxShadow: '0 2px 8px rgba(0, 0, 0, 0.05)'
+        boxShadow: 'var(--shadow-sm)'
       },
       hover: {
         scale: 1.02,
-        boxShadow: '0 8px 24px rgba(var(--primary-rgb), 0.3)',
+        boxShadow: 'var(--shadow-primary)',
         transition: {
           duration: 0.3,
           ease: [0.22, 1, 0.36, 1]
@@ -201,8 +201,7 @@ export function InteractiveCard({
   
   const combinedStyles = {
     ...baseStyles,
-    ...variantStyles[variant],
-    ...className
+    ...variantStyles[variant]
   };
   
   const content = (
@@ -221,7 +220,7 @@ export function InteractiveCard({
             left: 0,
             right: 0,
             bottom: 0,
-            background: 'linear-gradient(135deg, rgba(var(--primary-rgb), 0.05) 0%, rgba(var(--primary-rgb), 0.02) 100%)',
+            background: 'linear-gradient(135deg, var(--primary-soft) 0%, transparent 100%)',
             pointerEvents: 'none'
           }}
         />
@@ -239,7 +238,7 @@ export function InteractiveCard({
             left: 0,
             width: '50%',
             height: '100%',
-            background: 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent)',
+            background: 'linear-gradient(90deg, transparent, var(--glass-bg-strong), transparent)',
             pointerEvents: 'none'
           }}
         />
@@ -297,8 +296,9 @@ export function InteractiveCardHeader({
 }) {
   return (
     <div 
-      className={`p-6 ${className}`}
+      className={className}
       style={{
+        padding: 'var(--spacing-6)',
         borderBottom: '1px solid var(--border-soft)'
       }}
     >
@@ -319,7 +319,10 @@ export function InteractiveCardContent({
   className?: string; 
 }) {
   return (
-    <div className={`p-6 ${className}`}>
+    <div 
+      className={className}
+      style={{ padding: 'var(--spacing-6)' }}
+    >
       {children}
     </div>
   );
@@ -338,8 +341,9 @@ export function InteractiveCardFooter({
 }) {
   return (
     <div 
-      className={`p-6 ${className}`}
+      className={className}
       style={{
+        padding: 'var(--spacing-6)',
         borderTop: '1px solid var(--border-soft)'
       }}
     >

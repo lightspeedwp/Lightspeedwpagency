@@ -1,0 +1,208 @@
+/**
+ * Newsletter Signup Pattern Styles
+ * 
+ * BEM-compliant styles for the NewsletterSignup component.
+ * All vertical spacing via blockGap (CSS gap) -- zero margin.
+ */
+
+.newsletter-signup {
+  width: 100%;
+}
+
+.newsletter-signup__content {
+  background-color: var(--card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-8);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+/* Layout Variants */
+.newsletter-signup--centered .newsletter-signup__content {
+  text-align: center;
+}
+
+.newsletter-signup--sidebar .newsletter-signup__content {
+  padding: var(--spacing-6);
+}
+
+.newsletter-signup--minimal .newsletter-signup__content {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+}
+
+/* Header -- flex column with blockGap */
+.newsletter-signup__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+/* Icon */
+.newsletter-signup__icon-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.newsletter-signup--sidebar .newsletter-signup__icon-wrapper,
+.newsletter-signup--inline .newsletter-signup__icon-wrapper {
+  justify-content: flex-start;
+}
+
+.newsletter-signup__icon {
+  width: 48px;
+  height: 48px;
+  background-color: var(--primary-soft);
+  color: var(--primary);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Title */
+.newsletter-signup__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+  line-height: var(--line-height-snug);
+}
+
+.newsletter-signup__title--minimal {
+  font-size: var(--text-xl);
+}
+
+/* Description */
+.newsletter-signup__description {
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-normal);
+}
+
+/* Form Wrapper */
+.newsletter-signup__form-wrapper {
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.newsletter-signup--sidebar .newsletter-signup__form-wrapper,
+.newsletter-signup--inline .newsletter-signup__form-wrapper {
+  margin: 0;
+  max-width: 100%;
+}
+
+/* Form */
+.newsletter-signup__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+@media (min-width: 480px) {
+  .newsletter-signup__form {
+    flex-direction: row;
+  }
+}
+
+.newsletter-signup--sidebar .newsletter-signup__form {
+  flex-direction: column;
+}
+
+/* Input Wrapper */
+.newsletter-signup__input-wrapper {
+  position: relative;
+  flex-grow: 1;
+}
+
+/* Input */
+.newsletter-signup__input {
+  width: 100%;
+  height: 48px;
+  padding: 0 var(--spacing-4);
+  background-color: var(--background);
+  border: 1px solid var(--border-input);
+  border-radius: var(--radius);
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--foreground);
+  transition: all 0.2s ease;
+}
+
+.newsletter-signup__input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px var(--primary-soft);
+}
+
+.newsletter-signup__input:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Success Icon in Input */
+.newsletter-signup__success-icon {
+  position: absolute;
+  right: var(--spacing-3);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--success);
+  pointer-events: none;
+}
+
+/* Button */
+.newsletter-signup__button {
+  height: 48px;
+  padding: 0 var(--spacing-6);
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border: none;
+  border-radius: var(--radius);
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-2);
+  white-space: nowrap;
+}
+
+.newsletter-signup__button:hover:not(:disabled) {
+  background-color: var(--primary-dark);
+}
+
+.newsletter-signup__button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.newsletter-signup__button--success {
+  background-color: var(--success);
+  color: var(--success-foreground);
+}
+
+.newsletter-signup__button--success:hover:not(:disabled) {
+  background-color: var(--success);
+}
+
+/* Privacy Text */
+.newsletter-signup__privacy {
+  font-family: var(--font-secondary);
+  font-size: var(--text-xs);
+  color: var(--muted-foreground);
+  text-align: center;
+}
+
+.newsletter-signup--sidebar .newsletter-signup__privacy,
+.newsletter-signup--inline .newsletter-signup__privacy {
+  text-align: left;
+}

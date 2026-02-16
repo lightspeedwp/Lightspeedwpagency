@@ -32,12 +32,7 @@ class Colors:
 
 # Directories to search
 SEARCH_DIRS = [
-    'src/app/components/templates',
-    'src/app/components/patterns',
-    'src/app/components/parts',
-    'src/app/components/common',
-    'src/app/components/ui',
-    'src/app/components/blocks',
+    'src/app'
 ]
 
 # Replacement patterns

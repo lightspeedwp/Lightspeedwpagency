@@ -2,13 +2,13 @@
 
 This file provides a complete overview of the LSX Design component system and when to use each component type.
 
-**Last Updated:** December 30, 2024  
-**System Version:** 1.1  
-**Architecture:** Reorganized with `/blocks` structure (WordPress FSE alignment)
+**Last Updated:** February 16, 2026  
+**System Version:** 2.0  
+**Architecture:** CSS-first with `/blocks` structure (WordPress FSE alignment), zero Tailwind, 100% CSS variables
 
 ---
 
-## 🏗️ New Architecture (December 30, 2024)
+## 🏗️ New Architecture (February 2026)
 
 The LSX Design component system has been reorganized to align with WordPress Full Site Editing conventions:
 
@@ -638,5 +638,5 @@ Before using any component, verify:
 
 ---
 
-**Last Updated:** December 30, 2024  
-**System Version:** 1.1
+**Last Updated:** February 16, 2026  
+**System Version:** 2.0

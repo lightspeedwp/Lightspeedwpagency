@@ -4,44 +4,21 @@
  * WordPress template: templates/archive-category.html
  * 
  * Pattern order: Breadcrumbs → Category Header → Post Grid → NewsletterSignup → CTAInline → Pagination
- * 
- * **Data Source:** `/src/app/data/blog-posts.ts`
- * 
- * **Patterns Used:**
- * - Breadcrumbs (navigation context)
- * - ArchiveHeader (category description)
- * - Card Grid (blog post cards with clickable functionality)
- * - NewsletterSignup (email capture mid-archive)
- * - CTAInline (conversion CTA)
- * - PaginationNav (page navigation)
- * 
- * **Conversion Strategy:**
- * - NewsletterSignup: Capture email subscribers mid-archive
- * - CTAInline: Conversion-focused CTA after posts
- * 
- * **Accessibility:**
- * - Keyboard navigation for posts and categories
- * - Screen reader friendly category navigation
- * - ARIA labels for archive controls
- * - Clickable cards with proper button semantics
- * 
- * @see {@link /guidelines/templates/category-archive.md}
  */
 
-import { SiteHeader } from '../parts/SiteHeader';
-import { SiteFooter } from '../parts/SiteFooter';
-import { SkipLink } from '../common/SkipLink';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { Breadcrumbs } from '../common/Breadcrumbs';
 import { PaginationNav } from '../patterns/PaginationNav';
 import { NewsletterSignup } from '../patterns/NewsletterSignup';
 import { CTAInline } from '../patterns/CTAInline';
-import { BackToTopButton } from '../blocks/layout/BackToTopButton';
+import { Heading } from '../blocks/text/Heading';
+import { Paragraph } from '../blocks/text/Paragraph';
 import { useNavigation } from '../../contexts/NavigationContext';
-import { blogCategories, blogPosts, getPostsByCategory, blogAuthors, getAuthorBySlug } from '../../data/blog-posts';
+import { blogCategories, getPostsByCategory, getAuthorBySlug } from '../../data/blog-posts';
 import { User, Calendar, Clock } from 'lucide-react';
-import '@/styles/templates/blog-index-page.css';
+import '@/styles/templates/archive.css';
+import { Badge } from '../blocks/design/Badge';
 
 interface CategoryArchiveTemplateProps {
   category?: string;
@@ -61,183 +38,173 @@ export function CategoryArchiveTemplate({ category: categorySlug = 'wordpress-de
 
   return (
     <>
-      <SkipLink />
-      <SiteHeader />
+      {/* Breadcrumbs */}
+      <section className="wp-block-breadcrumbs-section">
+          <Breadcrumbs 
+            items={[
+              { label: 'Home', href: '/' },
+              { label: 'Resources & Insights', href: '/blog' },
+              { label: category.name }
+            ]}
+          />
+      </section>
       
-      <main id="main-content" role="main">
-        {/* Breadcrumbs */}
-        <section className="wp-blog-breadcrumbs">
-          <Container>
-            <Breadcrumbs 
-              items={[
-                { label: 'Home', href: '/' },
-                { label: 'Resources & Insights', href: '/blog' },
-                { label: category.name }
-              ]}
-            />
-          </Container>
-        </section>
-
-        {/* Category Header */}
-        <section className="wp-category-header">
-          <Container>
-            <div className="wp-max-w-3xl">
-              <span className="wp-category-label">
+      {/* Category Header */}
+      <div className="archive-header">
+        <Container>
+          <div className="wp-max-w-3xl wp-mx-auto">
+            <div className="wp-mb-4">
+              <Badge variant="secondary">
                 Category
-              </span>
-              <h1 className="wp-category-title">
-                {category.name}
-              </h1>
-              <p className="wp-category-description">
-                {category.description}
-              </p>
-              <p className="wp-category-count">
-                {categoryPosts.length} {categoryPosts.length === 1 ? 'post' : 'posts'} in this category
-              </p>
+              </Badge>
             </div>
-          </Container>
-        </section>
+            <Heading level={1} className="archive-header__title">
+              {category.name}
+            </Heading>
+            <Paragraph className="archive-header__description">
+              {category.description}
+            </Paragraph>
+            <Paragraph className="archive-controls__count wp-mt-4">
+              {categoryPosts.length} {categoryPosts.length === 1 ? 'post' : 'posts'} in this category
+            </Paragraph>
+          </div>
+        </Container>
+      </div>
 
-        {/* Main Content with Sidebar */}
-        <Section spacing="xl">
-          <Container>
-            <div className="wp-category-posts-grid">
-              {/* Post List */}
-              <div>
-                <div className="wp-category-posts-list">
-                  {categoryPosts.map((post) => {
-                    const author = getAuthorBySlug(post.author);
-                    return (
-                      <article 
-                        key={post.id}
-                        className="wp-category-post-card"
-                        onClick={() => navigateTo(`post-${post.slug}`)}
-                      >
-                        {/* Post Image */}
-                        <div className="wp-category-post-card__image-wrapper">
-                          <img 
-                            src={post.featuredImage}
-                            alt={post.title}
-                            className="wp-category-post-card__image"
-                          />
-                        </div>
+      {/* Main Content with Sidebar */}
+      <Section spacing="xl">
+        <Container>
+          <div className="archive-layout--sidebar">
+            {/* Post List */}
+            <div>
+              <div className="archive-grid archive-grid--1-col">
+                {categoryPosts.map((post) => {
+                  const author = getAuthorBySlug(post.author);
+                  return (
+                    <article 
+                      key={post.id}
+                      className="archive-card wp-flex-row"
+                      onClick={() => navigateTo(`post-${post.slug}`)}
+                      role="button"
+                      tabIndex={0}
+                      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); navigateTo(`post-${post.slug}`); } }}
+                    >
+                      {/* Post Image */}
+                      <div className="archive-card__image-wrapper wp-hidden md:wp-block">
+                        <img 
+                          src={post.featuredImage}
+                          alt={post.title}
+                          className="archive-card__image"
+                        />
+                      </div>
 
-                        {/* Post Content */}
-                        <div className="wp-category-post-card__content">
-                          <h2 className="wp-category-post-card__title">
-                            <a 
-                              href={`#post-${post.slug}`}
-                              onClick={(e) => {
-                                e.preventDefault();
-                                navigateTo(`post-${post.slug}`);
-                              }}
-                              aria-label={`Read: ${post.title}`}
-                              className="wp-category-post-card__title-link"
-                            >
-                              {post.title}
-                            </a>
-                          </h2>
+                      {/* Post Content */}
+                      <div className="archive-card__content">
+                        <Heading level={2} className="archive-card__title">
+                          <a 
+                            href={`#post-${post.slug}`}
+                            onClick={(e) => {
+                              e.preventDefault();
+                              navigateTo(`post-${post.slug}`);
+                            }}
+                            aria-label={`Read: ${post.title}`}
+                          >
+                            {post.title}
+                          </a>
+                        </Heading>
 
-                          <p className="wp-category-post-card__excerpt">
-                            {post.excerpt}
-                          </p>
+                        <Paragraph className="archive-card__excerpt">
+                          {post.excerpt}
+                        </Paragraph>
 
-                          {/* Post Meta */}
-                          <div className="wp-category-post-card__meta">
-                            {author && (
-                              <div className="wp-blog-post-meta__item">
-                                <User size={16} className="wp-blog-post-meta__icon" />
-                                <a
-                                  href={`#author-${post.author}`}
-                                  onClick={(e) => {
-                                    e.preventDefault();
-                                    navigateTo(`author-${post.author}`);
-                                  }}
-                                  className="wp-blog-post-meta__text"
-                                  aria-label={`View all posts by ${author.name}`}
-                                >
-                                  {author.name}
-                                </a>
-                              </div>
-                            )}
-                            <div className="wp-blog-post-meta__item">
-                              <Calendar size={16} className="wp-blog-post-meta__icon" />
-                              <span className="wp-blog-post-meta__text">
-                                {new Date(post.date).toLocaleDateString('en-US', { 
-                                  year: 'numeric', 
-                                  month: 'short', 
-                                  day: 'numeric' 
-                                })}
-                              </span>
+                        {/* Post Meta */}
+                        <div className="archive-card__meta">
+                          {author && (
+                            <div className="archive-card__meta-item">
+                              <User size={16} />
+                              <a
+                                href={`#author-${post.author}`}
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  navigateTo(`author-${post.author}`);
+                                }}
+                                className="wp-link"
+                                aria-label={`View all posts by ${author.name}`}
+                              >
+                                {author.name}
+                              </a>
                             </div>
-                            <div className="wp-blog-post-meta__item">
-                              <Clock size={16} className="wp-blog-post-meta__icon" />
-                              <span className="wp-blog-post-meta__text">
-                                {post.readingTime}
-                              </span>
-                            </div>
+                          )}
+                          <div className="archive-card__meta-item">
+                            <Calendar size={16} />
+                            <span>
+                              {new Date(post.date).toLocaleDateString('en-US', { 
+                                year: 'numeric', 
+                                month: 'short', 
+                                day: 'numeric' 
+                              })}
+                            </span>
+                          </div>
+                          <div className="archive-card__meta-item">
+                            <Clock size={16} />
+                            <span>
+                              {post.readingTime}
+                            </span>
                           </div>
                         </div>
-                      </article>
-                    );
-                  })}
-                </div>
-
-                {/* Newsletter Signup */}
-                <div style={{ marginTop: 'var(--spacing-12)' }}>
-                  <NewsletterSignup />
-                </div>
-
-                {/* CTA Inline */}
-                <div style={{ marginTop: 'var(--spacing-12)' }}>
-                  <CTAInline />
-                </div>
-
-                {/* Pagination */}
-                {categoryPosts.length > 10 && (
-                  <div style={{ marginTop: 'var(--spacing-12)' }}>
-                    <PaginationNav 
-                      currentPage={1}
-                      totalPages={Math.ceil(categoryPosts.length / 10)}
-                      baseUrl={`/category/${category.slug}`}
-                    />
-                  </div>
-                )}
+                      </div>
+                    </article>
+                  );
+                })}
               </div>
 
-              {/* Sidebar */}
-              <aside>
-                <div className="wp-category-sidebar">
-                  {/* Categories */}
-                  <div className="wp-category-sidebar-card">
-                    <h3 className="wp-category-sidebar-card__title">
-                      All Categories
-                    </h3>
-                    <ul className="wp-category-sidebar-list">
-                      {allCategories.map((cat) => (
-                        <li key={cat.slug}>
-                          <button
-                            onClick={() => navigateTo(`category-${cat.slug}`)}
-                            className={`wp-category-sidebar-button ${cat.slug === categorySlug ? 'wp-category-sidebar-button--active' : ''}`}
-                          >
-                            <span>{cat.name}</span>
-                            <span className="wp-category-sidebar-button__count">
-                              {cat.count}
-                            </span>
-                          </button>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </aside>
-            </div>
-          </Container>
-        </Section>
-      </main>
+              {/* Newsletter Signup */}
+              <div className="wp-mt-12">
+                <NewsletterSignup />
+              </div>
 
-      <SiteFooter />
-      <BackToTopButton />
+              {/* CTA Inline */}
+              <div className="wp-mt-12">
+                <CTAInline />
+              </div>
+
+              {/* Pagination */}
+              {categoryPosts.length > 10 && (
+                <div className="archive-pagination">
+                  <PaginationNav 
+                    currentPage={1}
+                    totalPages={Math.ceil(categoryPosts.length / 10)}
+                  />
+                </div>
+              )}
+            </div>
+
+            {/* Sidebar */}
+            <aside className="archive-sidebar">
+              <div className="archive-sidebar__widget">
+                <Heading level={3} className="archive-sidebar__title">
+                  All Categories
+                </Heading>
+                <ul className="archive-sidebar__list">
+                  {allCategories.map((cat) => (
+                    <li key={cat.slug}>
+                      <button
+                        onClick={() => navigateTo(`category-${cat.slug}`)}
+                        className={`archive-sidebar__link ${cat.slug === categorySlug ? 'archive-sidebar__link--active' : ''}`}
+                      >
+                        <span>{cat.name}</span>
+                        <span className="related-tag__count">
+                          {cat.count}
+                        </span>
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </aside>
+          </div>
+        </Container>
+      </Section>
     </>
   );
 }

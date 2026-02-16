@@ -27,8 +27,6 @@
  * @see {@link /guidelines/templates/roi-calculator.md}
  */
 
-import { SiteHeader } from '../parts/SiteHeader';
-import { SiteFooter } from '../parts/SiteFooter';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { Breadcrumbs } from '../common/Breadcrumbs';
@@ -36,24 +34,7 @@ import { CTASection } from '../patterns/CTASection';
 import { TestimonialGrid } from '../patterns/TestimonialGrid';
 import { SocialProof } from '../patterns/SocialProof';
 import { FAQSection } from '../patterns/FAQSection';
-import { BackToTopButton } from '../blocks/layout/BackToTopButton';
-import { StickyBookCallButton } from '../blocks/layout/StickyBookCallButton';
 import { useState } from 'react';
-import { motion } from 'motion/react';
-import { 
-  fadeInUp, 
-  viewportOptions 
-} from '../../utils/scrollAnimations';
-import {
-  TrendingUp,
-  Shield,
-  Search,
-  Calculator,
-  Zap
-} from 'lucide-react';
-import { testimonials } from '../../data/testimonials';
-import { clientLogos } from '../../data/logos';
-import { pricingTimelineFAQs } from '../../data/faqs';
 
 export function ROICalculatorTemplate() {
   // Calculator inputs
@@ -91,23 +72,18 @@ export function ROICalculatorTemplate() {
 
   return (
     <>
-      <SiteHeader />
-      
-      <main id="main-content">
         {/* Breadcrumbs */}
-        <Section variant="default" style={{ paddingTop: 'var(--spacing-24)', paddingBottom: 0 }}>
-          <Container>
+        <section className="wp-block-breadcrumbs-section">
             <Breadcrumbs 
               items={[
                 { label: 'Home', href: '/' },
                 { label: 'ROI Calculator', href: '/roi-calculator' }
               ]}
             />
-          </Container>
-        </Section>
+        </section>
 
         {/* Hero Section */}
-        <Section variant="default" style={{ paddingTop: 'var(--spacing-8)', paddingBottom: 'var(--spacing-16)' }}>
+        <Section background="default" style={{ paddingTop: 'var(--spacing-8)', paddingBottom: 'var(--spacing-16)' }}>
           <Container>
             <motion.div
               variants={fadeInUp}
@@ -153,7 +129,7 @@ export function ROICalculatorTemplate() {
         </Section>
 
         {/* Calculator Section */}
-        <Section variant="muted">
+        <Section background="muted" spacing="md">
           <Container>
             <div className="wp-grid-2-cols" style={{ gap: 'var(--spacing-12)' }}>
               {/* Input Form */}
@@ -531,7 +507,7 @@ export function ROICalculatorTemplate() {
         </Section>
 
         {/* Breakdown Section */}
-        <Section variant="default">
+        <Section background="default" spacing="md">
           <Container>
             <motion.div
               variants={fadeInUp}
@@ -744,11 +720,6 @@ export function ROICalculatorTemplate() {
           variant="highlighted"
           buttonSize="lg"
         />
-      </main>
-
-      <SiteFooter />
-      <BackToTopButton />
-      <StickyBookCallButton />
     </>
   );
 }

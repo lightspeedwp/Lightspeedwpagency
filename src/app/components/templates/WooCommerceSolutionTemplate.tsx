@@ -21,13 +21,8 @@
  * **Code Reduction:** ~885 → ~245 lines (72% reduction)
  */
 
-import { SiteHeader } from '../parts/SiteHeader';
-import { SiteFooter } from '../parts/SiteFooter';
-import { SkipLink } from '../common/SkipLink';
 import { Container } from '../common/Container';
 import { Breadcrumbs } from '../common/Breadcrumbs';
-import { BackToTopButton } from '../blocks/layout/BackToTopButton';
-import { RouteAnnouncer } from '../blocks/utility/RouteAnnouncer';
 import { Hero } from '../patterns/Hero';
 import { StatsGrid } from '../patterns/StatsGrid';
 import { FeatureGrid } from '../patterns/FeatureGrid';
@@ -99,20 +94,8 @@ export function WooCommerceSolutionTemplate() {
 
   return (
     <>
-      <RouteAnnouncer />
-      <SkipLink />
-      <SiteHeader />
-      
-      <main id="main-content" role="main">
         {/* Breadcrumbs */}
-        <section 
-          className="py-4"
-          style={{
-            backgroundColor: 'var(--background)',
-            borderBottom: '1px solid var(--border-soft)'
-          }}
-        >
-          <Container>
+        <section className="wp-block-breadcrumbs-section wp-block-breadcrumbs-section--border">
             <Breadcrumbs 
               items={[
                 { label: 'Home', href: '/' },
@@ -120,7 +103,6 @@ export function WooCommerceSolutionTemplate() {
                 { label: woocommerceSolutionHero.title }
               ]}
             />
-          </Container>
         </section>
 
         {/* Hero Section */}
@@ -229,10 +211,6 @@ export function WooCommerceSolutionTemplate() {
           secondaryButtonPage={woocommerceSolutionCTA.buttons[1]?.page as any}
           gradient="violet"
         />
-      </main>
-
-      <SiteFooter />
-      <BackToTopButton />
     </>
   );
 }

@@ -44,38 +44,6 @@ export default defineConfig({
             '@radix-ui/react-popover',
             '@radix-ui/react-tabs',
           ],
-          
-          // Data and context
-          'app-data': [
-            './src/app/data/pages',
-            './src/app/data/posts',
-            './src/app/data/portfolio',
-            './src/app/data/faqs',
-            './src/app/data/services',
-            './src/app/data/testimonials',
-          ],
-          
-          // Common components (used across many templates)
-          'app-common': [
-            './src/app/components/common/Button',
-            './src/app/components/common/Container',
-            './src/app/components/common/Section',
-            './src/app/components/common/Heading',
-          ],
-          
-          // Template parts (header/footer)
-          'app-parts': [
-            './src/app/components/parts/SiteHeader',
-            './src/app/components/parts/SiteFooter',
-          ],
-          
-          // Patterns (reusable sections)
-          'app-patterns': [
-            './src/app/components/patterns/HeroHome',
-            './src/app/components/patterns/CardGrid',
-            './src/app/components/patterns/CTASection',
-            './src/app/components/patterns/FAQSection',
-          ],
         },
         
         // Optimize chunk file names for caching

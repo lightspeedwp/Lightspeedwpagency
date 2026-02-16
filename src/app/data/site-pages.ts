@@ -77,6 +77,14 @@ export const sitePages: SitePage[] = [
     showInNav: false
   },
   {
+    id: 'publishers',
+    slug: 'publishers',
+    title: 'Publishers',
+    excerpt: 'We build wordpress websites for magazines and newspapers that are an extension of their print brand.',
+    parent: 'solutions',
+    showInNav: false
+  },
+  {
     id: 'lsx',
     slug: 'lsx',
     title: 'LSX',
@@ -820,9 +828,7 @@ export const mainNavigation = [
       { label: 'WordPress', page: 'wordpress' as const },
       { label: 'WooCommerce', page: 'woocommerce' as const },
       { label: 'Tour Operators', page: 'tour-operators' as const },
-      { label: 'LSX', page: 'lsx' as const },
-      { label: 'Hosting', page: 'hosting' as const },
-      { label: 'Mailchimp', page: 'mailchimp' as const }
+      { label: 'Publishers', page: 'publishers' as const }
     ]
   },
   {
@@ -891,7 +897,9 @@ export const footerNavigation = {
       { label: 'WooCommerce', page: 'woocommerce' as const },
       { label: 'WordPress', page: 'wordpress' as const },
       { label: 'Tour Operators', page: 'tour-operators' as const },
-      { label: 'Mailchimp', page: 'mailchimp' as const }
+      { label: 'Publishers', page: 'publishers' as const },
+      { label: 'Videos', page: 'videos' as const },
+      { label: 'Podcasts', page: 'podcasts' as const }
     ]
   },
   legal: {

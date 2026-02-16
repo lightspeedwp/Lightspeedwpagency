@@ -467,22 +467,6 @@ Every template **must** include:
 3. `<main id="main-content">` wrapper
 4. `<SiteFooter />` or `<!-- wp:template-part {"slug":"footer"} /-->`
 
-### ✅ Should Include (Where Appropriate)
-
-- Breadcrumbs (interior pages)
-- Page/section headers
-- Pagination (archive/search)
-- CTA sections (end of content)
-- Empty states (no results)
-
-### ❌ Must Not Include
-
-- Hard-coded content
-- Bespoke one-off sections
-- Arbitrary pixel values
-- Non-semantic HTML
-- Inaccessible patterns
-
 ---
 
 ## Accessibility Requirements
@@ -592,76 +576,86 @@ Before finalizing a template:
 
 ### **React Template Components** (`/src/app/components/templates/`)
 
-LSX Design includes **39 complete page templates** organized by archetype:
+LSX Design includes **90+ template files** across 11 sections.
+For the complete route-to-template mapping, see **[overview-sitemap.md](../overview-sitemap.md)**.
 
-#### **Homepage Templates (1):**
-1. **FrontPageTemplate** — Homepage with hero, features, stats, testimonials, CTA
+#### Template File Counts by Section
 
-#### **Archive Templates (8):**
-1. **PortfolioArchiveTemplate** — Portfolio grid with filters
-2. **BlogIndexTemplate** — Blog listing with categories
-3. **ServicesArchiveTemplate** — Services grid
-4. **TeamArchiveTemplate** — Team member grid
-5. **TestimonialsArchiveTemplate** — Testimonials grid
-6. **CaseStudiesArchiveTemplate** — Case studies grid
-7. **EventsArchiveTemplate** — Events listing
-8. **ResourcesArchiveTemplate** — Resources library
+| Section | Templates | Location |
+|---------|-----------|----------|
+| Homepage | 1 | `FrontPageTemplate.tsx` |
+| About | 6 | `About*.tsx`, `TeamTemplate.tsx`, `CareersTemplate.tsx` |
+| Services | 15 | `*ServiceTemplate.tsx`, `ServicesLandingTemplate.tsx` |
+| Solutions | 10 | `*SolutionTemplate.tsx`, `SolutionsTemplate.tsx` |
+| Portfolio | 4 | `Portfolio*.tsx` |
+| Blog & Posts | 5 | `BlogIndexTemplate.tsx`, `SinglePost*.tsx`, `*ArchiveTemplate.tsx` |
+| Post Formats | 21 | `post-formats/*.tsx` |
+| Videos | 3 | `Video*.tsx`, `SingleVideoTemplate.tsx` |
+| Podcasts | 2 | `Podcast*.tsx`, `SinglePodcastTemplate.tsx` |
+| WooCommerce | 4 | `Product*.tsx`, `Cart*.tsx`, `Checkout*.tsx`, `woocommerce/*.tsx` |
+| Tour Operator | 2 | `tour-operator/*.tsx` |
+| Utility | 13 | `ContactPage*.tsx`, `FAQ*.tsx`, `Pricing*.tsx`, etc. |
+| Legacy/Misc | 8 | `Archive*.tsx`, `Index*.tsx`, `Single*.tsx` |
+| Dev Tools | 16 | `DevTools*.tsx`, `*Showcase.tsx`, `TemplateTester.tsx` |
+| **Total** | **110+** | |
 
-#### **Single Detail Templates (7):**
-1. **PortfolioSingleTemplate** — Project case study
-2. **BlogSingleTemplate** — Blog post
-3. **ServicesSingleTemplate** — Service detail page
-4. **TeamMemberTemplate** — Team member profile
-5. **TestimonialSingleTemplate** — Single testimonial
-6. **CaseStudySingleTemplate** — Case study detail
-7. **EventSingleTemplate** — Event detail
+#### CSS Architecture
 
-#### **About Page Templates (6):**
-1. **AboutTemplate** — Main about page
-2. **AboutProcessTemplate** — Our process
-3. **AboutCultureTemplate** — Company culture
-4. **AboutHistoryTemplate** — Company history
-5. **AboutTeamTemplate** — Team overview
-6. **AboutCareersTemplate** — Careers page
+Every template has a dedicated BEM CSS file in `/src/styles/templates/`:
 
-#### **Services Page Templates (4):**
-1. **ServicesTemplate** — Services overview
-2. **ServiceDetailTemplate** — Individual service
-3. **PricingTemplate** — Pricing page
-4. **PackagesTemplate** — Service packages
+```
+src/styles/templates/
+├── archive.css                  # Shared archive card/grid styles
+├── author-archive.css           # Author profile + posts
+├── why-choose-us.css            # Why choose us page
+├── guarantees.css               # Guarantees page
+├── services-landing.css         # Services overview page
+├── tour-operator-archive.css    # Tour listings
+├── single-tour.css              # Single tour detail
+├── dev-tools.css                # Dev tools dashboard
+├── solution-detail.css          # Solution detail pages
+├── feature-showcase.css         # Feature showcase
+├── [35+ more files]
+```
 
-#### **Utility Templates (13):**
-1. **ContactPageTemplate** — Contact form
-2. **FAQTemplate** — FAQ page
-3. **PrivacyPolicyTemplate** — Privacy policy
-4. **TermsOfServiceTemplate** — Terms of service
-5. **AccessibilityStatementTemplate** — Accessibility
-6. **SitemapTemplate** — HTML sitemap
-7. **Error404Template** — 404 error page
-8. **SearchResultsTemplate** — Search results
-9. **ThankYouTemplate** — Form thank you
-10. **MaintenanceTemplate** — Maintenance mode
-11. **ComingSoonTemplate** — Coming soon page
-12. **StyleGuideTemplate** — Style guide
-13. **HostingTemplate** — Hosting services
+All CSS uses:
+- BEM naming (`.template-name__element--modifier`)
+- 100% CSS variables (`var(--*)`)
+- Zero Tailwind classes
+- WordPress utility classes (`.wp-*`) for layout
 
-**Total Templates:** 39 complete page templates
+#### Template Composition Rule
 
-### **Template Organization:**
-- Each template follows one of 5 fixed archetypes
-- All templates use centralized data from `/src/app/data/`
-- All templates are composed from approved patterns
-- All templates support light/dark mode
-- All templates meet WCAG 2.1 AA compliance
+**IMPORTANT:** Templates render inside `<RootLayout>` via `<Outlet />`. They must NOT include `SiteHeader`, `SiteFooter`, or `SkipLink` — those are provided by the layout.
 
-### **WordPress Mapping:**
-Each React template maps to a WordPress template file:
-- React: `FrontPageTemplate.tsx` → WordPress: `templates/front-page.html`
-- React: `BlogIndexTemplate.tsx` → WordPress: `templates/index.html`
-- React: `PortfolioArchiveTemplate.tsx` → WordPress: `templates/archive-portfolio.html`
+```tsx
+// ✅ CORRECT — template renders content only
+export function MyTemplate() {
+  return (
+    <>
+      <Section spacing="md">
+        <Container>
+          <h1 className="my-template__title">Title</h1>
+        </Container>
+      </Section>
+    </>
+  );
+}
+
+// ❌ WRONG — do not render chrome
+export function MyTemplate() {
+  return (
+    <>
+      <SiteHeader />  {/* NO — handled by RootLayout */}
+      <main>...</main>
+      <SiteFooter />  {/* NO — handled by RootLayout */}
+    </>
+  );
+}
+```
 
 ---
 
-**Last Updated:** December 27, 2024  
-**System Version:** 1.0  
+**Last Updated:** February 14, 2026  
+**System Version:** 2.0  
 **WordPress Compatibility:** FSE (Full Site Editing)

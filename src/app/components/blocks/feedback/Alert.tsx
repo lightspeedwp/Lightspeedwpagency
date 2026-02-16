@@ -1,232 +1,66 @@
 /**
- * Alert Component
+ * Alert Block Component
  * 
- * Production-grade alert/banner messages.
- * 
- * Features:
- * - Multiple variants (info, success, warning, destructive)
- * - Icon support
- * - Dismissible option
- * - Title and description
- * - Action buttons
- * - Accessible
- * 
- * Design Token Compliance:
- * - Typography: var(--text-*) only
- * - Colors: var(--*) semantic roles
- * - Spacing: Tailwind classes only
- * - Fonts: Lexend (headings), Manrope (body)
- * 
- * @example
- * <Alert
- *   variant="success"
- *   title="Success"
- *   description="Your changes have been saved."
- *   dismissible
- * />
+ * WordPress Block: core/group (with alert variation)
+ * Style: .wp-block-alert
  */
 
-import { useState } from 'react';
-import { 
-  AlertCircle, 
-  CheckCircle2, 
-  Info, 
-  AlertTriangle, 
-  X, 
-  LucideIcon 
-} from 'lucide-react';
-import { Button } from '../design/Buttons';
+import React from 'react';
+import '@/styles/blocks/feedback/alert.css';
 
 export interface AlertProps {
-  /** Variant */
-  variant?: 'info' | 'success' | 'warning' | 'destructive';
-  /** Alert title */
+  children: React.ReactNode;
+  variant?: 'default' | 'info' | 'success' | 'warning' | 'error';
   title?: string;
-  /** Alert description */
-  description: string;
-  /** Custom icon */
-  icon?: LucideIcon;
-  /** Dismissible */
+  icon?: React.ReactNode;
+  className?: string;
   dismissible?: boolean;
-  /** Dismiss handler */
   onDismiss?: () => void;
-  /** Action button */
-  action?: {
-    label: string;
-    onClick: () => void;
-  };
-  /** Show border */
-  bordered?: boolean;
 }
 
-const variantConfig = {
-  info: {
-    backgroundColor: 'var(--info-soft)',
-    borderColor: 'var(--info)',
-    textColor: 'var(--info)',
-    icon: Info,
-  },
-  success: {
-    backgroundColor: 'var(--success-soft)',
-    borderColor: 'var(--success)',
-    textColor: 'var(--success)',
-    icon: CheckCircle2,
-  },
-  warning: {
-    backgroundColor: 'var(--warning-soft)',
-    borderColor: 'var(--warning)',
-    textColor: 'var(--warning)',
-    icon: AlertTriangle,
-  },
-  destructive: {
-    backgroundColor: 'var(--destructive-soft)',
-    borderColor: 'var(--destructive)',
-    textColor: 'var(--destructive)',
-    icon: AlertCircle,
-  },
-};
-
-export function Alert({
-  variant = 'info',
-  title,
-  description,
-  icon: CustomIcon,
-  dismissible = false,
-  onDismiss,
-  action,
-  bordered = true,
+export function Alert({ 
+  children, 
+  variant = 'default', 
+  title, 
+  icon,
+  className = '',
+  dismissible,
+  onDismiss
 }: AlertProps) {
-  const [isVisible, setIsVisible] = useState(true);
-
-  const config = variantConfig[variant];
-  const Icon = CustomIcon || config.icon;
+  const [isVisible, setIsVisible] = React.useState(true);
+  const variantClass = variant !== 'default' ? `is-style-${variant}` : '';
+  
+  if (!isVisible) return null;
 
   const handleDismiss = () => {
     setIsVisible(false);
     onDismiss?.();
   };
-
-  if (!isVisible) return null;
-
+  
   return (
-    <div
-      className="p-4"
-      style={{
-        backgroundColor: config.backgroundColor,
-        border: bordered ? `1px solid ${config.borderColor}` : 'none',
-        borderRadius: 'var(--radius-lg)',
-      }}
-      role="alert"
-      aria-live="polite"
-    >
-      <div className="flex gap-3">
-        {/* Icon */}
-        <div
-          className="flex-shrink-0"
-          style={{
-            color: config.textColor,
-          }}
-        >
-          <Icon size={20} />
-        </div>
-
-        {/* Content */}
-        <div className="flex-1 min-w-0">
-          {title && (
-            <h3
-              className="mb-1"
-              style={{
-                fontFamily: 'Lexend, sans-serif',
-                fontSize: 'var(--text-base)',
-                fontWeight: 'var(--font-weight-semibold)',
-                color: 'var(--foreground)',
-                margin: 0,
-              }}
-            >
-              {title}
-            </h3>
-          )}
-
-          <p
-            style={{
-              fontFamily: 'Manrope, sans-serif',
-              fontSize: 'var(--text-base)',
-              color: 'var(--foreground)',
-              margin: 0,
-              lineHeight: '1.5',
-            }}
-          >
-            {description}
-          </p>
-
-          {/* Action button */}
-          {action && (
-            <div className="mt-3">
-              <Button
-                onClick={action.onClick}
-                variant="outline"
-                size="sm"
-              >
-                {action.label}
-              </Button>
-            </div>
-          )}
-        </div>
-
-        {/* Dismiss button */}
-        {dismissible && (
-          <button
-            onClick={handleDismiss}
-            className="flex-shrink-0 p-1"
-            style={{
-              backgroundColor: 'transparent',
-              color: 'var(--muted-foreground)',
-              border: 'none',
-              borderRadius: 'var(--radius)',
-              cursor: 'pointer',
-              transition: 'all 0.2s ease',
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = 'var(--muted)';
-              e.currentTarget.style.color = 'var(--foreground)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = 'transparent';
-              e.currentTarget.style.color = 'var(--muted-foreground)';
-            }}
-            aria-label="Dismiss alert"
-          >
-            <X size={18} />
-          </button>
-        )}
+    <div className={`wp-block-alert ${variantClass} ${className}`.trim()} role="alert">
+      {icon && <div className="wp-block-alert__icon">{icon}</div>}
+      <div className="wp-block-alert__content">
+        {title && <strong className="wp-block-alert__title">{title}</strong>}
+        <div className="wp-block-alert__message">{children}</div>
       </div>
+      {dismissible && (
+        <button 
+          className="wp-block-alert__dismiss" 
+          onClick={handleDismiss} 
+          aria-label="Dismiss"
+        >
+          ✕
+        </button>
+      )}
     </div>
   );
 }
 
-/**
- * Alert List Component
- * 
- * Stack multiple alerts with spacing.
- */
-export interface AlertListProps {
-  /** Alerts */
-  alerts: (AlertProps & { id: string })[];
-  /** Remove alert handler */
-  onRemove?: (id: string) => void;
+export function AlertTitle({ children, className = '' }: { children: React.ReactNode, className?: string }) {
+  return <strong className={`wp-block-alert__title ${className}`.trim()}>{children}</strong>;
 }
 
-export function AlertList({ alerts, onRemove }: AlertListProps) {
-  return (
-    <div className="space-y-4">
-      {alerts.map((alert) => (
-        <Alert
-          key={alert.id}
-          {...alert}
-          dismissible
-          onDismiss={() => onRemove?.(alert.id)}
-        />
-      ))}
-    </div>
-  );
+export function AlertDescription({ children, className = '' }: { children: React.ReactNode, className?: string }) {
+  return <div className={`wp-block-alert__message ${className}`.trim()}>{children}</div>;
 }

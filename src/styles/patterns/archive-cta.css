@@ -1,0 +1,57 @@
+/**
+ * Archive CTA Pattern Styles
+ * 
+ * BEM-compliant styles for the ArchiveCTA component.
+ * All vertical spacing via blockGap (CSS gap) -- zero margin.
+ */
+
+/* Layout -- flex column with blockGap */
+.archive-cta__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--spacing-6);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Heading */
+.archive-cta__heading {
+  font-family: var(--font-primary);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-weight-bold);
+  color: inherit;
+  line-height: var(--line-height-snug);
+}
+
+@media (min-width: 768px) {
+  .archive-cta__heading {
+    font-size: var(--text-3xl);
+  }
+}
+
+/* Description */
+.archive-cta__description {
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  max-width: 60ch;
+  line-height: var(--line-height-normal);
+  opacity: 0.9;
+  color: inherit;
+}
+
+@media (min-width: 768px) {
+  .archive-cta__description {
+    font-size: var(--text-lg);
+  }
+}
+
+/* Buttons Wrapper */
+.archive-cta__buttons {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-4);
+  width: 100%;
+}

@@ -1,0 +1,49 @@
+/**
+ * Slider Block Styles
+ */
+.wp-block-slider {
+  position: relative;
+  display: flex;
+  width: 100%;
+  touch-action: none;
+  user-select: none;
+  align-items: center;
+}
+
+.wp-block-slider__track {
+  position: relative;
+  height: var(--spacing-2);
+  width: 100%;
+  flex-grow: 1;
+  overflow: hidden;
+  border-radius: var(--radius-full);
+  background-color: var(--muted);
+}
+
+.wp-block-slider__range {
+  position: absolute;
+  height: 100%;
+  background-color: var(--primary);
+}
+
+.wp-block-slider__thumb {
+  display: block;
+  height: var(--spacing-5);
+  width: var(--spacing-5);
+  border-radius: 50%;
+  border: var(--wp--preset--border-width--2) solid var(--primary);
+  background-color: var(--background);
+  box-shadow: var(--shadow-sm);
+  transition: colors var(--transition-base) ease;
+  cursor: pointer;
+}
+
+.wp-block-slider__thumb:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 var(--wp--preset--border-width--2) var(--ring);
+}
+
+.wp-block-slider__thumb:disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}

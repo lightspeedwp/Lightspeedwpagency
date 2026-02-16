@@ -20,11 +20,10 @@
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { useNavigation } from '../../contexts/NavigationContext';
-import { SiteHeader } from '../parts/SiteHeader';
-import { SiteFooter } from '../parts/SiteFooter';
-import { SkipLink } from '../common/SkipLink';
-import { BackToTopButton } from '../blocks/layout/BackToTopButton';
+
 import { Breadcrumbs } from '../common/Breadcrumbs';
+import { Heading } from '../common/Heading';
+import { Paragraph } from '../blocks/text/Paragraph';
 import { useState } from 'react';
 import {
   FileText,
@@ -36,6 +35,7 @@ import {
   ArrowRight,
   Check
 } from 'lucide-react';
+import '@/styles/templates/component-showcase.css';
 
 /**
  * WordPress Blocks Catalog
@@ -210,172 +210,72 @@ export function BlockDocumentation() {
         color: 'var(--foreground)'
       }}
     >
-      <SkipLink targetId="main-content" />
-      <SiteHeader />
-
-      <main
-        id="main-content"
-        role="main"
+      <div
         style={{
-          flex: 1,
           display: 'flex',
           flexDirection: 'column'
         }}
       >
-        {/* Header */}
-        <Section variant="default" spacing="50">
-          <Container>
+        {/* Breadcrumbs */}
+        <section className="wp-block-breadcrumbs-section">
             <Breadcrumbs
               items={[
                 { label: 'Home', page: 'home' },
                 { label: 'Developer Tools', page: 'dev-tools' },
                 { label: 'Block Documentation' }
               ]}
-              className="mb-8"
             />
+        </section>
 
-            <div className="text-center max-w-4xl mx-auto">
+        {/* Header */}
+        <Section background="default" spacing="lg">
+          <Container>
+            <div className="wp-text-center wp-max-w-4xl wp-mx-auto">
               <div
+                className="wp-inline-flex wp-items-center wp-justify-center wp-mb-6"
                 style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
                   width: '80px',
                   height: '80px',
                   borderRadius: 'var(--radius-lg)',
-                  backgroundColor: 'var(--secondary)',
-                  marginBottom: '24px'
+                  backgroundColor: 'var(--secondary)'
                 }}
               >
                 <FileText size={40} style={{ color: 'var(--primary-foreground)' }} />
               </div>
 
-              <h1
-                style={{
-                  fontSize: 'var(--text-h1)',
-                  fontFamily: 'Lexend, sans-serif',
-                  fontWeight: 'var(--font-weight-medium)',
-                  color: 'var(--foreground)',
-                  margin: '0 0 16px 0',
-                  lineHeight: 1.2
-                }}
-              >
+              <Heading level={1} className="wp-mb-4">
                 Block Documentation
-              </h1>
+              </Heading>
 
-              <p
-                style={{
-                  fontSize: 'var(--text-xl)',
-                  fontFamily: 'Manrope, sans-serif',
-                  fontWeight: 'var(--font-weight-regular)',
-                  color: 'var(--muted-foreground)',
-                  margin: '0 0 48px 0',
-                  lineHeight: 1.5
-                }}
-              >
+              <Paragraph className="showcase__subtitle wp-mb-12">
                 Complete documentation for all WordPress blocks in the LSX Design system
-              </p>
+              </Paragraph>
 
               {/* Stats */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div
-                  style={{
-                    padding: '24px',
-                    backgroundColor: 'var(--card)',
-                    borderRadius: 'var(--radius-lg)',
-                    border: '1px solid var(--border-soft)',
-                    textAlign: 'center'
-                  }}
-                >
-                  <div
-                    style={{
-                      fontSize: 'var(--text-h1)',
-                      fontFamily: 'Lexend, sans-serif',
-                      fontWeight: 'var(--font-weight-medium)',
-                      color: 'var(--primary)',
-                      lineHeight: 1,
-                      marginBottom: '8px'
-                    }}
-                  >
+              <div className="wp-grid-3-cols wp-gap-8">
+                <div className="showcase__stat-card">
+                  <div className="showcase__stat-value">
                     {totalBlocks}
                   </div>
-                  <div
-                    style={{
-                      fontSize: 'var(--text-base)',
-                      fontFamily: 'Manrope, sans-serif',
-                      fontWeight: 'var(--font-weight-regular)',
-                      color: 'var(--muted-foreground)',
-                      lineHeight: 1.5
-                    }}
-                  >
+                  <div className="showcase__stat-label">
                     Total Blocks
                   </div>
                 </div>
 
-                <div
-                  style={{
-                    padding: '24px',
-                    backgroundColor: 'var(--card)',
-                    borderRadius: 'var(--radius-lg)',
-                    border: '1px solid var(--border-soft)',
-                    textAlign: 'center'
-                  }}
-                >
-                  <div
-                    style={{
-                      fontSize: 'var(--text-h1)',
-                      fontFamily: 'Lexend, sans-serif',
-                      fontWeight: 'var(--font-weight-medium)',
-                      color: 'var(--primary)',
-                      lineHeight: 1,
-                      marginBottom: '8px'
-                    }}
-                  >
+                <div className="showcase__stat-card">
+                  <div className="showcase__stat-value">
                     {blockCategories.length}
                   </div>
-                  <div
-                    style={{
-                      fontSize: 'var(--text-base)',
-                      fontFamily: 'Manrope, sans-serif',
-                      fontWeight: 'var(--font-weight-regular)',
-                      color: 'var(--muted-foreground)',
-                      lineHeight: 1.5
-                    }}
-                  >
+                  <div className="showcase__stat-label">
                     Categories
                   </div>
                 </div>
 
-                <div
-                  style={{
-                    padding: '24px',
-                    backgroundColor: 'var(--card)',
-                    borderRadius: 'var(--radius-lg)',
-                    border: '1px solid var(--border-soft)',
-                    textAlign: 'center'
-                  }}
-                >
-                  <div
-                    style={{
-                      fontSize: 'var(--text-h1)',
-                      fontFamily: 'Lexend, sans-serif',
-                      fontWeight: 'var(--font-weight-medium)',
-                      color: 'var(--primary)',
-                      lineHeight: 1,
-                      marginBottom: '8px'
-                    }}
-                  >
+                <div className="showcase__stat-card">
+                  <div className="showcase__stat-value">
                     100%
                   </div>
-                  <div
-                    style={{
-                      fontSize: 'var(--text-base)',
-                      fontFamily: 'Manrope, sans-serif',
-                      fontWeight: 'var(--font-weight-regular)',
-                      color: 'var(--muted-foreground)',
-                      lineHeight: 1.5
-                    }}
-                  >
+                  <div className="showcase__stat-label">
                     FSE Compatible
                   </div>
                 </div>
@@ -385,28 +285,21 @@ export function BlockDocumentation() {
         </Section>
 
         {/* Filters */}
-        <Section variant="default" spacing="30">
+        <Section background="default" spacing="sm">
           <Container>
-            <div className="flex flex-wrap items-center gap-3">
-              <span
-                style={{
-                  fontSize: 'var(--text-base)',
-                  fontFamily: 'Manrope, sans-serif',
-                  fontWeight: 'var(--font-weight-regular)',
-                  color: 'var(--foreground)'
-                }}
-              >
+            <div className="wp-flex wp-flex-wrap wp-items-center wp-gap-3">
+              <span className="showcase__filter-label">
                 Filter by:
               </span>
               <button
                 onClick={() => setSelectedCategory('all')}
                 style={{
-                  padding: '8px 16px',
+                  padding: 'var(--spacing-2) var(--spacing-4)',
                   backgroundColor: selectedCategory === 'all' ? 'var(--primary)' : 'var(--background)',
                   color: selectedCategory === 'all' ? 'var(--primary-foreground)' : 'var(--foreground)',
                   border: `1px solid ${selectedCategory === 'all' ? 'var(--primary)' : 'var(--border-soft)'}`,
                   borderRadius: 'var(--radius-lg)',
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-base)',
                   fontWeight: 'var(--font-weight-medium)',
                   cursor: 'pointer',
@@ -420,12 +313,12 @@ export function BlockDocumentation() {
                   key={cat.id}
                   onClick={() => setSelectedCategory(cat.id)}
                   style={{
-                    padding: '8px 16px',
+                    padding: 'var(--spacing-2) var(--spacing-4)',
                     backgroundColor: selectedCategory === cat.id ? 'var(--primary)' : 'var(--background)',
                     color: selectedCategory === cat.id ? 'var(--primary-foreground)' : 'var(--foreground)',
                     border: `1px solid ${selectedCategory === cat.id ? 'var(--primary)' : 'var(--border-soft)'}`,
                     borderRadius: 'var(--radius-lg)',
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-base)',
                     fontWeight: 'var(--font-weight-medium)',
                     cursor: 'pointer',
@@ -443,113 +336,44 @@ export function BlockDocumentation() {
         {filteredCategories.map((category) => (
           <Section key={category.id} variant="default" spacing="50">
             <Container>
-              <div className="mb-8">
-                <h2
-                  style={{
-                    fontSize: 'var(--text-h2)',
-                    fontFamily: 'Lexend, sans-serif',
-                    fontWeight: 'var(--font-weight-medium)',
-                    color: 'var(--foreground)',
-                    margin: '0 0 8px 0',
-                    lineHeight: 1.25
-                  }}
-                >
+              <div className="wp-mb-8">
+                <Heading level={2} className="wp-mb-2">
                   {category.name}
-                </h2>
-                <p
-                  style={{
-                    fontSize: 'var(--text-base)',
-                    fontFamily: 'Manrope, sans-serif',
-                    fontWeight: 'var(--font-weight-regular)',
-                    color: 'var(--muted-foreground)',
-                    margin: 0,
-                    lineHeight: 1.5
-                  }}
-                >
+                </Heading>
+                <Paragraph className="showcase__category-desc wp-m-0">
                   {category.description}
-                </p>
+                </Paragraph>
               </div>
 
-              <div className="grid grid-cols-1 gap-6">
+              <div className="wp-grid-1-col wp-gap-6">
                 {category.blocks.map((block) => (
                   <div
                     key={block.id}
-                    style={{
-                      padding: '24px',
-                      backgroundColor: 'var(--card)',
-                      border: '1px solid var(--border-soft)',
-                      borderRadius: 'var(--radius-lg)'
-                    }}
+                    className="showcase__block-card"
                   >
-                    <div className="flex items-start gap-4">
-                      <div
-                        style={{
-                          width: '48px',
-                          height: '48px',
-                          borderRadius: 'var(--radius-lg)',
-                          backgroundColor: 'var(--primary)',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          flexShrink: 0
-                        }}
-                      >
+                    <div className="wp-flex wp-items-start wp-gap-4">
+                      <div className="showcase__block-icon-wrapper">
                         <block.icon size={24} style={{ color: 'var(--primary-foreground)' }} />
                       </div>
 
-                      <div style={{ flex: 1 }}>
-                        <h3
-                          style={{
-                            fontSize: 'var(--text-h4)',
-                            fontFamily: 'Lexend, sans-serif',
-                            fontWeight: 'var(--font-weight-medium)',
-                            color: 'var(--foreground)',
-                            margin: '0 0 8px 0',
-                            lineHeight: 1.25
-                          }}
-                        >
+                      <div className="showcase__block-content">
+                        <Heading level={3} className="wp-mb-2">
                           {block.name}
-                        </h3>
-                        <p
-                          style={{
-                            fontSize: 'var(--text-base)',
-                            fontFamily: 'Manrope, sans-serif',
-                            fontWeight: 'var(--font-weight-regular)',
-                            color: 'var(--muted-foreground)',
-                            margin: '0 0 16px 0',
-                            lineHeight: 1.5
-                          }}
-                        >
+                        </Heading>
+                        <Paragraph className="showcase__category-desc wp-mb-4">
                           {block.description}
-                        </p>
+                        </Paragraph>
 
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div className="wp-grid-3-cols wp-gap-4">
                           <div>
-                            <div
-                              style={{
-                                fontSize: 'var(--text-small)',
-                                fontFamily: 'Lexend, sans-serif',
-                                fontWeight: 'var(--font-weight-medium)',
-                                color: 'var(--foreground)',
-                                marginBottom: '4px'
-                              }}
-                            >
+                            <div className="showcase__block-meta-label">
                               Props
                             </div>
-                            <div className="flex flex-wrap gap-2">
+                            <div className="wp-flex wp-flex-wrap wp-gap-2">
                               {block.props.map((prop) => (
                                 <span
                                   key={prop}
-                                  style={{
-                                    fontSize: 'var(--text-small)',
-                                    fontFamily: 'monospace',
-                                    fontWeight: 'var(--font-weight-regular)',
-                                    color: 'var(--primary)',
-                                    padding: '2px 8px',
-                                    backgroundColor: 'var(--background)',
-                                    borderRadius: 'var(--radius)',
-                                    border: '1px solid var(--border-soft)'
-                                  }}
+                                  className="showcase__prop-tag"
                                 >
                                   {prop}
                                 </span>
@@ -558,51 +382,19 @@ export function BlockDocumentation() {
                           </div>
 
                           <div>
-                            <div
-                              style={{
-                                fontSize: 'var(--text-small)',
-                                fontFamily: 'Lexend, sans-serif',
-                                fontWeight: 'var(--font-weight-medium)',
-                                color: 'var(--foreground)',
-                                marginBottom: '4px'
-                              }}
-                            >
+                            <div className="showcase__block-meta-label">
                               Common Usage
                             </div>
-                            <div
-                              style={{
-                                fontSize: 'var(--text-base)',
-                                fontFamily: 'Manrope, sans-serif',
-                                fontWeight: 'var(--font-weight-regular)',
-                                color: 'var(--muted-foreground)'
-                              }}
-                            >
+                            <div className="showcase__stat-label">
                               {block.usage}
                             </div>
                           </div>
 
                           <div>
-                            <div
-                              style={{
-                                fontSize: 'var(--text-small)',
-                                fontFamily: 'Lexend, sans-serif',
-                                fontWeight: 'var(--font-weight-medium)',
-                                color: 'var(--foreground)',
-                                marginBottom: '4px'
-                              }}
-                            >
+                            <div className="showcase__block-meta-label">
                               File Location
                             </div>
-                            <code
-                              style={{
-                                fontSize: 'var(--text-small)',
-                                fontFamily: 'monospace',
-                                fontWeight: 'var(--font-weight-regular)',
-                                color: 'var(--muted-foreground)',
-                                display: 'block',
-                                wordBreak: 'break-all'
-                              }}
-                            >
+                            <code className="showcase__file-path">
                               {block.file}
                             </code>
                           </div>
@@ -615,10 +407,7 @@ export function BlockDocumentation() {
             </Container>
           </Section>
         ))}
-      </main>
-
-      <SiteFooter />
-      <BackToTopButton />
+      </div>
     </div>
   );
 }

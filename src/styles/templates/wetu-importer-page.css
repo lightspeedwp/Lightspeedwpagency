@@ -2,20 +2,16 @@
  * Wetu Importer Product Page Styles
  * 
  * Template-specific styles for Wetu Importer product page.
+ * All vertical spacing via blockGap (CSS gap) -- zero margin.
  * All styling uses CSS variables from design system.
- * 
- * Structure:
- * - Section headers
- * - Feature cards
- * - Benefit cards
- * - Process steps
- * - Specifications
- * - Pricing cards
- * - CTA section
  */
 
+.wetu-importer__section--muted {
+  background-color: var(--muted);
+}
+
 /* ============================================================
-   SECTION HEADERS
+   SECTION HEADERS -- flex column with blockGap
    ============================================================ */
 
 .wetu-importer__section-header {
@@ -24,6 +20,9 @@
   margin-left: auto;
   margin-right: auto;
   padding-bottom: var(--spacing-12);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
 }
 
 .wetu-importer__section-title {
@@ -31,13 +30,13 @@
   font-size: var(--text-h2);
   font-weight: 600;
   color: var(--foreground);
-  margin-bottom: var(--spacing-4);
 }
 
 .wetu-importer__section-description {
   font-family: var(--font-secondary);
   font-size: var(--text-lg);
   color: var(--muted-foreground);
+  line-height: var(--line-height-normal);
 }
 
 /* ============================================================
@@ -62,18 +61,22 @@
   }
 }
 
+/* Feature card -- flex column with blockGap */
 .wetu-importer__feature-card {
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: var(--spacing-8);
   transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
 }
 
 .wetu-importer__feature-card:hover {
   border-color: var(--primary);
   transform: translateY(-4px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-hover);
 }
 
 .wetu-importer__feature-icon {
@@ -85,12 +88,13 @@
   background: var(--primary);
   color: var(--primary-foreground);
   border-radius: var(--radius);
-  margin-bottom: var(--spacing-4);
 }
 
 .wetu-importer__feature-icon svg {
   width: 24px;
   height: 24px;
+  color: var(--primary);
+  margin-top: calc(var(--spacing-1) / 2); /* optical icon alignment */
 }
 
 .wetu-importer__feature-title {
@@ -98,14 +102,13 @@
   font-size: var(--text-xl);
   font-weight: 600;
   color: var(--foreground);
-  margin-bottom: var(--spacing-3);
 }
 
 .wetu-importer__feature-description {
   font-family: var(--font-secondary);
   font-size: var(--text-base);
   color: var(--muted-foreground);
-  line-height: 1.6;
+  line-height: var(--line-height-normal);
 }
 
 /* ============================================================
@@ -124,11 +127,15 @@
   }
 }
 
+/* Benefit card -- flex column with blockGap */
 .wetu-importer__benefit-card {
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: var(--spacing-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
 }
 
 .wetu-importer__benefit-title {
@@ -136,14 +143,13 @@
   font-size: var(--text-xl);
   font-weight: 600;
   color: var(--foreground);
-  margin-bottom: var(--spacing-3);
 }
 
 .wetu-importer__benefit-description {
   font-family: var(--font-secondary);
   font-size: var(--text-base);
   color: var(--muted-foreground);
-  line-height: 1.6;
+  line-height: var(--line-height-normal);
 }
 
 /* ============================================================
@@ -180,8 +186,12 @@
   font-weight: 600;
 }
 
+/* Process content -- flex column with blockGap */
 .wetu-importer__process-content {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
 }
 
 .wetu-importer__process-title {
@@ -189,14 +199,13 @@
   font-size: var(--text-lg);
   font-weight: 600;
   color: var(--foreground);
-  margin-bottom: var(--spacing-2);
 }
 
 .wetu-importer__process-description {
   font-family: var(--font-secondary);
   font-size: var(--text-base);
   color: var(--muted-foreground);
-  line-height: 1.6;
+  line-height: var(--line-height-normal);
 }
 
 /* ============================================================
@@ -250,7 +259,8 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--spacing-8);
-  margin-top: var(--spacing-12);
+  padding-top: var(--spacing-12);
+  /* margin-top converted to padding-top — section-level spacing */
 }
 
 @media (min-width: 768px) {
@@ -259,6 +269,7 @@
   }
 }
 
+/* Pricing card -- flex column with blockGap */
 .wetu-importer__pricing-card {
   background: var(--card);
   border: 1px solid var(--border);
@@ -266,13 +277,14 @@
   padding: var(--spacing-8);
   display: flex;
   flex-direction: column;
+  gap: var(--spacing-3);
   position: relative;
 }
 
 .wetu-importer__pricing-card--popular {
   border-color: var(--primary);
   border-width: 2px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-hover);
 }
 
 .wetu-importer__pricing-badge {
@@ -288,7 +300,7 @@
   text-transform: uppercase;
   padding: var(--spacing-1) var(--spacing-4);
   border-radius: var(--radius-full);
-  letter-spacing: 0.05em;
+  letter-spacing: var(--letter-spacing-wider);
 }
 
 .wetu-importer__pricing-name {
@@ -296,18 +308,16 @@
   font-size: var(--text-xl);
   font-weight: 600;
   color: var(--foreground);
-  margin-bottom: var(--spacing-2);
 }
 
 .wetu-importer__pricing-tagline {
   font-family: var(--font-secondary);
   font-size: var(--text-sm);
   color: var(--muted-foreground);
-  margin-bottom: var(--spacing-6);
 }
 
 .wetu-importer__pricing-price {
-  margin-bottom: var(--spacing-6);
+  padding-bottom: var(--spacing-3);
 }
 
 .wetu-importer__pricing-amount {
@@ -324,9 +334,12 @@
   margin-left: var(--spacing-2);
 }
 
+/* Pricing features list -- flex column with blockGap */
 .wetu-importer__pricing-features {
   flex: 1;
-  margin-bottom: var(--spacing-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
 }
 
 .wetu-importer__pricing-feature {
@@ -336,7 +349,6 @@
   font-family: var(--font-secondary);
   font-size: var(--text-base);
   color: var(--foreground);
-  margin-bottom: var(--spacing-3);
 }
 
 .wetu-importer__pricing-feature svg {
@@ -344,11 +356,11 @@
   width: 20px;
   height: 20px;
   color: var(--primary);
-  margin-top: 2px;
+  margin-top: calc(var(--spacing-1) / 2); /* optical icon alignment */
 }
 
 /* ============================================================
-   CTA SECTION
+   CTA SECTION -- flex column with blockGap
    ============================================================ */
 
 .wetu-importer__cta-container {
@@ -356,6 +368,10 @@
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-6);
 }
 
 .wetu-importer__cta-title {
@@ -363,15 +379,13 @@
   font-size: var(--text-3xl);
   font-weight: 600;
   color: var(--foreground);
-  margin-bottom: var(--spacing-4);
 }
 
 .wetu-importer__cta-description {
   font-family: var(--font-secondary);
   font-size: var(--text-lg);
   color: var(--muted-foreground);
-  margin-bottom: var(--spacing-8);
-  line-height: 1.6;
+  line-height: var(--line-height-normal);
 }
 
 .wetu-importer__cta-buttons {

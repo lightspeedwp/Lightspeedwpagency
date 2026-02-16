@@ -28,16 +28,14 @@
  * @see {@link /guidelines/templates/single.md}
  */
 
-import { SiteHeader } from '../parts/SiteHeader';
-import { SiteFooter } from '../parts/SiteFooter';
-import { SkipLink } from '../common/SkipLink';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { Heading } from '../common/Heading';
+import { Paragraph } from '../blocks/text/Paragraph';
 import { Breadcrumbs } from '../common/Breadcrumbs';
 import { CTASection } from '../patterns/CTASection';
-import { BackToTopButton } from '../blocks/layout/BackToTopButton';
 import { AlertCircle } from 'lucide-react';
+import '@/styles/templates/single.css';
 
 /**
  * SingleTemplate Props
@@ -55,85 +53,64 @@ export function SingleTemplate({
   content 
 }: SingleTemplateProps) {
   return (
-    <div className="wp-single-page-wrapper">
-      {/* Skip Link for Accessibility */}
-      <SkipLink targetId="main-content" />
-
-      {/* Site Header */}
-      <SiteHeader />
-
-      {/* Main Content */}
-      <main 
-        id="main-content" 
-        role="main"
-        className="wp-single-main"
-      >
-        {/* Breadcrumbs */}
-        <section className="wp-single-breadcrumbs">
-          <Container>
-            <Breadcrumbs 
-              items={[
-                { label: 'Home', page: 'front-page' },
-                { label: title }
-              ]}
-            />
-          </Container>
-        </section>
-
-        {/* Page Header */}
-        <Section spacing="lg">
-          <Container>
-            <div className="wp-max-w-3xl">
-              <Heading level={1} className="mb-6">
-                {title}
-              </Heading>
-              
-              {content ? (
-                <div className="wp-single-content">
-                  {content}
-                </div>
-              ) : (
-                <div className="wp-single-empty-state">
-                  <AlertCircle 
-                    size={24}
-                    className="wp-single-empty-state__icon"
-                  />
-                  <div>
-                    <p className="wp-single-empty-state__title">
-                      Generic Single Template
-                    </p>
-                    <p className="wp-single-empty-state__description">
-                      This is a fallback template for single pages without a specific template. 
-                      For actual content, use dedicated templates like SinglePostTemplate, 
-                      PortfolioSingleTemplate, or ServiceDetailTemplate.
-                    </p>
-                  </div>
-                </div>
-              )}
-            </div>
-          </Container>
-        </Section>
-
-        {/* CTA Section */}
-        <CTASection
-          title="Need a Custom Template?"
-          description="We can help you create custom WordPress templates tailored to your specific content types and business needs."
-          primaryButton={{
-            text: 'Get Started',
-            page: 'contact'
-          }}
-          secondaryButton={{
-            text: 'View Services',
-            page: 'services'
-          }}
+    <>
+      {/* Breadcrumbs */}
+      <section className="wp-block-breadcrumbs-section">
+        <Breadcrumbs 
+          items={[
+            { label: 'Home', page: 'front-page' },
+            { label: title }
+          ]}
         />
-      </main>
+      </section>
 
-      {/* Site Footer */}
-      <SiteFooter />
+      {/* Page Header */}
+      <Section spacing="lg">
+        <Container>
+          <div className="wp-max-w-3xl">
+            <Heading level={1} className="wp-mb-6">
+              {title}
+            </Heading>
+            
+            {content ? (
+              <div className="wp-single-content">
+                {content}
+              </div>
+            ) : (
+              <div className="wp-single-empty-state">
+                <AlertCircle 
+                  size={24}
+                  className="wp-single-empty-state__icon"
+                />
+                <div>
+                  <Heading level={3} className="wp-single-empty-state__title">
+                    Generic Single Template
+                  </Heading>
+                  <Paragraph className="wp-single-empty-state__description">
+                    This is a fallback template for single pages without a specific template. 
+                    For actual content, use dedicated templates like SinglePostTemplate, 
+                    PortfolioSingleTemplate, or ServiceDetailTemplate.
+                  </Paragraph>
+                </div>
+              </div>
+            )}
+          </div>
+        </Container>
+      </Section>
 
-      {/* Back to Top Button */}
-      <BackToTopButton />
-    </div>
+      {/* CTA Section */}
+      <CTASection
+        title="Need a Custom Template?"
+        description="We can help you create custom WordPress templates tailored to your specific content types and business needs."
+        primaryButton={{
+          text: 'Get Started',
+          page: 'contact'
+        }}
+        secondaryButton={{
+          text: 'View Services',
+          page: 'services'
+        }}
+      />
+    </>
   );
 }

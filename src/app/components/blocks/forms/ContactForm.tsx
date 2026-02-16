@@ -17,10 +17,12 @@
 
 import { useState, FormEvent } from 'react';
 import { InputField, TextareaField } from './FormField';
+import '@/styles/blocks/forms/contact-form.css';
 
 export interface ContactFormData {
   name: string;
   email: string;
+  phone?: string;
   subject: string;
   message: string;
 }
@@ -34,6 +36,10 @@ export interface ContactFormProps {
   errorMessage?: string;
   /** Show subject field */
   showSubject?: boolean;
+  /** Show phone field */
+  showPhone?: boolean;
+  /** Additional CSS class */
+  className?: string;
 }
 
 export function ContactForm({
@@ -41,10 +47,13 @@ export function ContactForm({
   successMessage = 'Thank you! We\'ll get back to you soon.',
   errorMessage = 'Something went wrong. Please try again.',
   showSubject = true,
+  showPhone = false,
+  className = '',
 }: ContactFormProps) {
   const [formData, setFormData] = useState<ContactFormData>({
     name: '',
     email: '',
+    phone: '',
     subject: '',
     message: '',
   });
@@ -117,12 +126,7 @@ export function ContactForm({
   return (
     <form
       onSubmit={handleSubmit}
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '1.5rem',
-        maxWidth: '600px',
-      }}
+      className={`wp-block-contact-form ${className}`}
     >
       {/* Name Field */}
       <InputField
@@ -150,6 +154,20 @@ export function ContactForm({
         placeholder="john@example.com"
         prefixIcon={<span>✉️</span>}
       />
+
+      {/* Phone Field */}
+      {showPhone && (
+        <InputField
+          id="phone"
+          label="Phone"
+          type="tel"
+          value={formData.phone}
+          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+          disabled={isSubmitting}
+          placeholder="+1 (555) 123-4567"
+          prefixIcon={<span>📞</span>}
+        />
+      )}
 
       {/* Subject Field */}
       {showSubject && (
@@ -185,31 +203,13 @@ export function ContactForm({
 
       {/* Success/Error Messages */}
       {submitStatus === 'success' && (
-        <div
-          style={{
-            padding: '1rem',
-            backgroundColor: 'var(--accent)',
-            color: 'var(--accent-foreground)',
-            borderRadius: 'var(--radius)',
-            fontFamily: 'Manrope, sans-serif',
-            fontSize: 'var(--text-base)',
-          }}
-        >
+        <div className="wp-block-contact-form--success">
           ✓ {successMessage}
         </div>
       )}
 
       {submitStatus === 'error' && (
-        <div
-          style={{
-            padding: '1rem',
-            backgroundColor: 'var(--destructive)',
-            color: 'var(--destructive-foreground)',
-            borderRadius: 'var(--radius)',
-            fontFamily: 'Manrope, sans-serif',
-            fontSize: 'var(--text-base)',
-          }}
-        >
+        <div className="wp-block-contact-form--error">
           ✕ {errorMessage}
         </div>
       )}
@@ -218,20 +218,7 @@ export function ContactForm({
       <button
         type="submit"
         disabled={isSubmitting}
-        style={{
-          padding: '1rem 2rem',
-          fontFamily: 'Lexend, sans-serif',
-          fontSize: 'var(--text-base)',
-          fontWeight: '500',
-          color: 'var(--primary-foreground)',
-          backgroundColor: 'var(--primary)',
-          border: 'none',
-          borderRadius: 'var(--radius)',
-          cursor: isSubmitting ? 'not-allowed' : 'pointer',
-          opacity: isSubmitting ? 0.7 : 1,
-          transition: 'all 0.2s ease',
-          minHeight: '48px',
-        }}
+        className="wp-block-contact-form__submit"
       >
         {isSubmitting ? 'Sending...' : 'Send Message'}
       </button>

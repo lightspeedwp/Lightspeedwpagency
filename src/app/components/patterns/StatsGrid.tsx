@@ -4,25 +4,12 @@
  * WordPress pattern: lsx-design/content/stats-grid
  * 
  * Displays a grid of statistics/metrics with icons, values, and labels.
- * Commonly used in hero sections, about pages, and feature showcases.
- * 
- * **Usage:**
- * ```tsx
- * <StatsGrid
- *   stats={[
- *     { icon: Award, value: '15+', label: 'Years Experience' },
- *     { icon: Users, value: '500+', label: 'Happy Clients' },
- *     { icon: Trophy, value: '98%', label: 'Success Rate' }
- *   ]}
- *   variant="default"
- *   columns={3}
- * />
- * ```
  * 
  * @see {@link /guidelines/patterns/StatsGrid.md}
  */
 
 import { LucideIcon } from 'lucide-react';
+import '@/styles/patterns/stats-grid.css';
 
 export interface StatItem {
   /** Lucide icon component */
@@ -43,7 +30,7 @@ export interface StatsGridProps {
   /** Number of columns (2-4, default: 3) */
   columns?: 2 | 3 | 4;
   /** Visual variant */
-  variant?: 'default' | 'cards' | 'minimal' | 'hero';
+  variant?: 'default' | 'cards' | 'hero';
   /** Alignment */
   align?: 'left' | 'center';
   /** Icon size */
@@ -64,118 +51,87 @@ export function StatsGrid({
   iconSize = 'md',
   backgroundColor,
   textColor,
-  gap = 'var(--spacing-8)'
+  gap
 }: StatsGridProps) {
-  // Icon sizes
+  // Grid classes
+  const gridClasses = [
+    'stats-grid',
+    `stats-grid--${columns}-cols`,
+    variant === 'hero' ? 'stats-grid--hero' : ''
+  ].filter(Boolean).join(' ');
+
   const iconSizeMap = {
     sm: 20,
     md: 24,
     lg: 28
   };
 
-  // Grid classes based on columns
-  const gridClasses = {
-    2: 'wp-grid-2-cols',
-    3: 'wp-grid-3-cols',
-    4: 'wp-grid-4-cols'
-  }[columns];
-
-  // Alignment classes
-  const alignmentStyle = align === 'center' ? { textAlign: 'center' as const } : { textAlign: 'left' as const };
-
   return (
     <div 
       className={gridClasses}
-      style={{ 
-        gap,
-        ...(variant === 'hero' ? {
-          padding: 'var(--spacing-8) 0',
-          borderTop: '1px solid rgba(255, 255, 255, 0.2)',
-          borderBottom: '1px solid rgba(255, 255, 255, 0.2)'
-        } : {})
-      }}
+      style={{ gap: gap || 'var(--spacing-8)' }}
     >
       {stats.map((stat, index) => {
         const Icon = stat.icon;
         
+        // Item classes
+        const itemClasses = [
+          'stat-item',
+          variant === 'cards' ? 'stat-item--cards' : '',
+          `stat-item--${align}`
+        ].filter(Boolean).join(' ');
+
+        // Icon classes
+        const iconWrapperClasses = [
+          'stat-icon-wrapper',
+          variant === 'hero' ? 'stat-icon-wrapper--hero' : 
+          variant === 'cards' ? 'stat-icon-wrapper--cards' : 
+          'stat-icon-wrapper--default'
+        ].filter(Boolean).join(' ');
+
+        // Value classes
+        const valueClasses = [
+          'stat-value',
+          variant === 'hero' ? 'stat-value--hero' : 'stat-value--default'
+        ].filter(Boolean).join(' ');
+
+        // Label classes
+        const labelClasses = [
+          'stat-label',
+          variant === 'hero' ? 'stat-label--hero' : 'stat-label--default'
+        ].filter(Boolean).join(' ');
+
         return (
           <div
             key={index}
+            className={itemClasses}
             style={{
-              ...(variant === 'cards' ? {
-                padding: 'var(--spacing-6)',
-                backgroundColor: backgroundColor || 'var(--card)',
-                borderRadius: 'var(--radius-lg)',
-                border: '1px solid var(--border-soft)',
-                transition: 'all 0.3s ease'
-              } : {}),
-              ...alignmentStyle
+              backgroundColor: variant === 'cards' && backgroundColor ? backgroundColor : undefined
             }}
-            {...(variant === 'cards' ? {
-              onMouseEnter: (e: React.MouseEvent<HTMLDivElement>) => {
-                e.currentTarget.style.transform = 'translateY(-4px)';
-                e.currentTarget.style.boxShadow = '0 12px 24px rgba(0, 0, 0, 0.1)';
-              },
-              onMouseLeave: (e: React.MouseEvent<HTMLDivElement>) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = 'none';
-              }
-            } : {})}
           >
             {/* Icon */}
-            {variant !== 'minimal' && (
-              <div
-                style={{
-                  marginBottom: variant === 'hero' ? 'var(--spacing-3)' : 'var(--spacing-4)',
-                  display: 'flex',
-                  justifyContent: align === 'center' ? 'center' : 'flex-start'
-                }}
-              >
-                <div
-                  style={{
-                    width: variant === 'hero' ? '40px' : '48px',
-                    height: variant === 'hero' ? '40px' : '48px',
-                    borderRadius: variant === 'cards' ? 'var(--radius-lg)' : 'var(--radius-full)',
-                    backgroundColor: variant === 'hero' ? 'rgba(255, 255, 255, 0.15)' : 'var(--primary-soft)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    backdropFilter: variant === 'hero' ? 'blur(10px)' : 'none'
-                  }}
-                >
-                  <Icon 
-                    size={iconSizeMap[iconSize]} 
-                    style={{ 
-                      color: stat.iconColor || (variant === 'hero' ? 'white' : 'var(--primary)')
-                    }} 
-                  />
-                </div>
-              </div>
-            )}
+            <div className={iconWrapperClasses}>
+              <Icon 
+                size={iconSizeMap[iconSize]} 
+                style={{ 
+                  color: stat.iconColor || (variant === 'hero' ? 'white' : 'var(--primary)')
+                }} 
+              />
+            </div>
 
             {/* Value */}
-            <div
-              style={{
-                fontFamily: 'var(--font-primary)',
-                fontSize: variant === 'hero' ? 'var(--text-h2)' : 'var(--text-h1)',
-                fontWeight: 'var(--font-weight-bold)',
-                lineHeight: '1.2',
-                color: textColor || (variant === 'hero' ? 'white' : 'var(--foreground)'),
-                marginBottom: 'var(--spacing-2)'
-              }}
+            <div 
+              className={valueClasses}
+              style={{ color: textColor || (variant === 'hero' ? 'white' : 'var(--foreground)') }}
             >
               {stat.value}
             </div>
 
             {/* Label */}
-            <div
-              style={{
-                fontFamily: 'var(--font-secondary)',
-                fontSize: variant === 'hero' ? 'var(--text-small)' : 'var(--text-base)',
-                fontWeight: 'var(--font-weight-medium)',
-                color: textColor || (variant === 'hero' ? 'rgba(255, 255, 255, 0.9)' : 'var(--muted-foreground)'),
-                textTransform: variant === 'hero' ? 'uppercase' : 'none',
-                letterSpacing: variant === 'hero' ? '0.05em' : 'normal',
+            <div 
+              className={labelClasses}
+              style={{ 
+                color: textColor || (variant === 'hero' ? 'var(--overlay-white-strong)' : 'var(--muted-foreground)'),
                 marginBottom: stat.description ? 'var(--spacing-2)' : '0'
               }}
             >
@@ -184,14 +140,9 @@ export function StatsGrid({
 
             {/* Optional Description */}
             {stat.description && (
-              <p
-                style={{
-                  fontFamily: 'var(--font-secondary)',
-                  fontSize: 'var(--text-small)',
-                  lineHeight: '1.5',
-                  color: textColor || 'var(--muted-foreground)',
-                  margin: 0
-                }}
+              <p 
+                className="stat-description"
+                style={{ color: textColor || 'var(--muted-foreground)' }}
               >
                 {stat.description}
               </p>

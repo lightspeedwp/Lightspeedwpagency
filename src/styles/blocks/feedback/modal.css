@@ -1,0 +1,83 @@
+/**
+ * Modal Block Styles (Dialog)
+ */
+.wp-block-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background-color: var(--overlay-backdrop);
+  backdrop-filter: blur(4px);
+  animation: wp-fade-in 0.2s ease-out;
+}
+
+.wp-block-modal-content {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  z-index: 51;
+  display: grid;
+  width: 100%;
+  max-width: 32rem; /* lg */
+  transform: translate(-50%, -50%);
+  gap: var(--spacing-4);
+  padding: var(--spacing-6);
+  
+  background-color: var(--background);
+  color: var(--foreground);
+  
+  border-radius: var(--radius-lg);
+  border: var(--wp--preset--border-width--1) solid var(--border);
+  box-shadow: var(--shadow-lg);
+  
+  animation: wp-zoom-in 0.2s ease-out;
+}
+
+.wp-block-modal__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  text-align: center;
+}
+
+.wp-block-modal__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-semibold);
+  margin: 0;
+}
+
+.wp-block-modal__description {
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  margin: 0;
+}
+
+.wp-block-modal__close {
+  position: absolute;
+  right: var(--spacing-4);
+  top: var(--spacing-4);
+  padding: var(--spacing-2);
+  border-radius: var(--radius);
+  color: var(--muted-foreground);
+  opacity: 0.7;
+  transition: opacity var(--transition-base) ease;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.wp-block-modal__close:hover {
+  opacity: 1;
+  background-color: var(--muted);
+}
+
+@keyframes wp-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes wp-zoom-in {
+  from { opacity: 0; transform: translate(-50%, -48%) scale(0.96); }
+  to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}

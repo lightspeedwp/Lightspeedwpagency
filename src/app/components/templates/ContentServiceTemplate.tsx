@@ -1,288 +1,165 @@
 /**
  * Content Service Template
  * 
- * Dedicated page for Content Strategy & Creation service.
- * WordPress Mapping: Service detail page
+ * WordPress template: templates/page-content-service.html
  * 
- * Sections:
- * - Hero (service introduction)
- * - Why Content Strategy (4 benefits)
- * - Content Services (6 features)
- * - Content Process (5 steps)
- * - Content Types (8 types)
- * - Pricing Packages (3-tier)
- * - FAQ
- * - CTA
+ * Content service page showcasing content strategy and creation.
+ * 
+ * Pattern order:
+ * Hero → Overview → Services → Process → CTA
  */
 
-import { Check } from 'lucide-react';
-import { RouteAnnouncer } from '@/app/components/blocks/utility/RouteAnnouncer';
-import { SkipLink } from '@/app/components/common/SkipLink';
-import { SiteHeader } from '@/app/components/parts/SiteHeader';
-import { SiteFooter } from '@/app/components/parts/SiteFooter';
-import { BackToTopButton } from '@/app/components/blocks/layout/BackToTopButton';
-import { Hero } from '@/app/components/patterns/Hero';
-import { Section } from '@/app/components/common/Section';
-import { Container } from '@/app/components/common/Container';
-import { CTASection } from '@/app/components/patterns/CTASection';
-import { FAQSection } from '@/app/components/patterns/FAQSection';
-import { Buttons } from '@/app/components/blocks/design/Buttons';
-import {
-  contentHero,
-  whyContentStrategy,
-  contentServices,
-  contentProcess,
-  contentTypes,
-  contentPackages,
-  contentFAQs,
-  contentCTA
-} from '@/app/data/content-service-page';
-import '@/styles/templates/service-pages-shared.css';
+import { Container } from '../common/Container';
+import { Section } from '../common/Section';
+import { Heading } from '../blocks/text/Heading';
+import { Paragraph } from '../blocks/text/Paragraph';
+import { Hero } from '../patterns/Hero';
+import { ServiceOfferingsGrid } from '../patterns/ServiceOfferingsGrid';
+import { ProcessSteps } from '../patterns/ProcessSteps';
+import { CTASection } from '../patterns/CTASection';
+import { 
+  FileText,
+  ArrowRight,
+  Search,
+  Map,
+  PenTool,
+  Download,
+  Zap,
+  CheckCircle,
+  FileSearch
+} from 'lucide-react';
+import '@/styles/templates/service-detail.css';
 
-/**
- * Content Service Template
- */
+// Import detailed data
+import { contentServiceDetailed } from '../../data/services-detailed';
+
 export function ContentServiceTemplate() {
+  const data = contentServiceDetailed;
+
+  // Icon mapping for Sub-services
+  const serviceIcons: Record<string, any> = {
+    'content-audit': FileSearch,
+    'content-strategy': Map,
+    'content-creation': PenTool
+  };
+
+  // Icon mapping for Process steps
+  const processIcons: Record<string, any> = {
+    'content-audit-step': Search,
+    'content-strategy-step': Map,
+    'collect-content': Download,
+    'document-workflow': FileText,
+    'implement-workflow': Zap
+  };
+
+  // Map data to component formats
+  const offerings = data.subServices.map(service => ({
+    id: service.id,
+    icon: serviceIcons[service.id] || FileText,
+    title: service.title,
+    description: service.description,
+    buttonText: `More About ${service.title}`,
+    // Update links to specific pages
+    buttonPage: service.id === 'content-audit' ? 'content-audit' : 
+                service.id === 'content-strategy' ? 'content-strategy' : 'contact'
+  }));
+
+  const processSteps = data.process.steps.map(step => ({
+    step: step.number,
+    icon: processIcons[step.id] || CheckCircle,
+    title: step.title,
+    description: step.description
+  }));
+
   return (
     <>
-      <RouteAnnouncer />
-      <SkipLink />
-      <SiteHeader />
-      
-      <main id="main-content" role="main">
-        {/* Hero Section */}
-        <Hero
-          variant="service"
-          badge={{
-            icon: contentHero.badge.icon,
-            text: contentHero.badge.text
-          }}
-          title={contentHero.title}
-          titleHighlight={contentHero.titleHighlight}
-          description={contentHero.description}
-        >
-          <Buttons
-            buttons={[
-              { text: contentHero.cta.primary.text, page: contentHero.cta.primary.page, variant: 'default', size: 'lg' },
-              { text: contentHero.cta.secondary.text, page: contentHero.cta.secondary.page, variant: 'outline', size: 'lg' }
-            ]}
-            alignment="center"
+      {/* Hero Section */}
+      <Hero
+        variant="service"
+        align="left"
+        maxWidth="6xl"
+        gradient="amber"
+        spacing="xl"
+        badge={{
+          icon: FileText,
+          text: 'Content Strategy'
+        }}
+        title={data.headline}
+        description={data.tagline}
+        buttons={[
+          {
+            label: 'Start a Project',
+            page: 'contact',
+            variant: 'default',
+            icon: ArrowRight,
+          },
+          {
+            label: 'Our Process',
+            page: 'about-process',
+            variant: 'outline',
+            style: {
+              borderColor: 'var(--overlay-white-medium)',
+              color: 'var(--color-white)',
+              backgroundColor: 'transparent'
+            }
+          }
+        ]}
+      />
+
+      {/* Overview Section (Why LightSpeed) */}
+      <Section spacing="xl" className="service-detail__overview-section">
+        <Container>
+          <div className="service-detail__section-header">
+            <Heading level={2} className="service-detail__title">
+              {data.whyLightSpeed.title}
+            </Heading>
+            <Paragraph className="service-detail__description">
+              {data.whyLightSpeed.description}
+            </Paragraph>
+          </div>
+        </Container>
+      </Section>
+
+      {/* Content Services Offerings */}
+      <ServiceOfferingsGrid
+        title="Our Content Services"
+        description={data.description}
+        offerings={offerings}
+        columns={3}
+        backgroundColor="var(--background)"
+        spacing="xl"
+      />
+
+      {/* Process Steps Section */}
+      <Section spacing="xl" className="service-detail__process-section">
+        <Container>
+          <div className="service-detail__section-header">
+            <Heading level={2} className="service-detail__title">
+              {data.process.title}
+            </Heading>
+            <Paragraph className="service-detail__description">
+              {data.process.description}
+            </Paragraph>
+          </div>
+
+          <ProcessSteps
+            steps={processSteps}
+            columns={5}
+            variant="cards"
+            badgeStyle="circle"
+            maxWidth="full"
           />
-        </Hero>
+        </Container>
+      </Section>
 
-        {/* Why Content Strategy Section */}
-        <Section spacing="xl" sectionStyle="muted">
-          <Container maxWidth="6xl">
-            <div className="service-page__section-header">
-              <h2 className="service-page__section-title">
-                {whyContentStrategy.title}
-              </h2>
-              <p className="service-page__section-description">
-                {whyContentStrategy.description}
-              </p>
-            </div>
-
-            <div className="service-page__benefits-grid">
-              {whyContentStrategy.benefits.map((benefit, index) => {
-                const Icon = benefit.icon;
-                return (
-                  <div key={index} className="service-page__benefit-card">
-                    <div className="service-page__benefit-icon">
-                      <Icon />
-                    </div>
-                    <h3 className="service-page__benefit-title">
-                      {benefit.title}
-                    </h3>
-                    <p className="service-page__benefit-description">
-                      {benefit.description}
-                    </p>
-                  </div>
-                );
-              })}
-            </div>
-          </Container>
-        </Section>
-
-        {/* Content Services Section */}
-        <Section spacing="xl">
-          <Container maxWidth="6xl">
-            <div className="service-page__section-header">
-              <h2 className="service-page__section-title">
-                Our Content Services
-              </h2>
-              <p className="service-page__section-description">
-                Complete content solutions from strategy to publication
-              </p>
-            </div>
-
-            <div className="service-page__features-grid">
-              {contentServices.map((service, index) => {
-                const Icon = service.icon;
-                return (
-                  <div key={index} className="service-page__feature-card">
-                    <div className="service-page__feature-icon">
-                      <Icon />
-                    </div>
-                    <h3 className="service-page__feature-title">
-                      {service.title}
-                    </h3>
-                    <p className="service-page__feature-description">
-                      {service.description}
-                    </p>
-                  </div>
-                );
-              })}
-            </div>
-          </Container>
-        </Section>
-
-        {/* Content Process Section */}
-        <Section spacing="xl" sectionStyle="muted">
-          <Container maxWidth="6xl">
-            <div className="service-page__section-header">
-              <h2 className="service-page__section-title">
-                Our Content Process
-              </h2>
-              <p className="service-page__section-description">
-                A proven 5-step approach to content excellence
-              </p>
-            </div>
-
-            <div className="service-page__process-grid">
-              {contentProcess.map((step, index) => (
-                <div key={index} className="service-page__process-step">
-                  <div className="service-page__process-number">
-                    {step.step}
-                  </div>
-                  <div className="service-page__process-content">
-                    <h3 className="service-page__process-title">
-                      {step.title}
-                    </h3>
-                    <p className="service-page__process-description">
-                      {step.description}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </Container>
-        </Section>
-
-        {/* Content Types Section */}
-        <Section spacing="xl">
-          <Container maxWidth="6xl">
-            <div className="service-page__section-header">
-              <h2 className="service-page__section-title">
-                {contentTypes.title}
-              </h2>
-              <p className="service-page__section-description">
-                {contentTypes.description}
-              </p>
-            </div>
-
-            <div className="service-page__list-grid">
-              {contentTypes.types.map((type, index) => (
-                <div key={index} className="service-page__list-item">
-                  <h3 className="service-page__list-name">
-                    {type.name}
-                  </h3>
-                  <p className="service-page__list-description">
-                    {type.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </Container>
-        </Section>
-
-        {/* Pricing Packages Section */}
-        <Section spacing="xl" sectionStyle="muted">
-          <Container maxWidth="6xl">
-            <div className="service-page__section-header">
-              <h2 className="service-page__section-title">
-                Content Packages
-              </h2>
-              <p className="service-page__section-description">
-                Choose the content solution that fits your business
-              </p>
-            </div>
-
-            <div className="service-page__pricing-grid">
-              {contentPackages.map((pkg, index) => (
-                <div
-                  key={index}
-                  className={`service-page__pricing-card ${
-                    pkg.popular ? 'service-page__pricing-card--popular' : ''
-                  }`}
-                >
-                  {pkg.popular && (
-                    <div className="service-page__pricing-badge">
-                      Most Popular
-                    </div>
-                  )}
-
-                  <h3 className="service-page__pricing-name">
-                    {pkg.name}
-                  </h3>
-                  <p className="service-page__pricing-tagline">
-                    {pkg.tagline}
-                  </p>
-
-                  <div className="service-page__pricing-price">
-                    <span className="service-page__pricing-amount">
-                      {pkg.price.display}
-                    </span>
-                    <span className="service-page__pricing-period">
-                      {pkg.price.period}
-                    </span>
-                  </div>
-
-                  <p className="service-page__pricing-description">
-                    {pkg.description}
-                  </p>
-
-                  <div className="service-page__pricing-features">
-                    {pkg.features.map((feature, featureIndex) => (
-                      <div key={featureIndex} className="service-page__pricing-feature">
-                        <Check />
-                        <span>{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <Buttons
-                    buttons={[
-                      {
-                        text: pkg.cta.text,
-                        page: pkg.cta.page,
-                        variant: pkg.popular ? 'default' : 'outline',
-                        size: 'md'
-                      }
-                    ]}
-                    alignment="center"
-                  />
-                </div>
-              ))}
-            </div>
-          </Container>
-        </Section>
-
-        {/* FAQ Section */}
-        <FAQSection faqs={contentFAQs} />
-
-        {/* CTA Section */}
-        <CTASection
-          title={contentCTA.title}
-          description={contentCTA.description}
-          primaryButtonText={contentCTA.buttons[0].text}
-          primaryButtonPage={contentCTA.buttons[0].page}
-          secondaryButtonText={contentCTA.buttons[1].text}
-          secondaryButtonPage={contentCTA.buttons[1].page}
-        />
-      </main>
-
-      <SiteFooter />
-      <BackToTopButton />
+      {/* CTA Section */}
+      <CTASection
+        title={data.cta.title}
+        description={data.cta.description}
+        primaryButtonText={data.cta.buttonText}
+        primaryButtonPage={data.cta.buttonPage as any}
+        gradient="amber"
+      />
     </>
   );
 }

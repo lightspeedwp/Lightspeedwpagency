@@ -34,6 +34,7 @@ import { Section } from '../common/Section';
 import { Button } from '../blocks/design/Buttons';
 import { EnquiryModal } from '../ui/EnquiryModal';
 import type { CTAData } from '../../data/cta';
+import '@/styles/patterns/archive-cta.css';
 
 export interface ArchiveCTAProps {
   /** CTA content data */
@@ -73,40 +74,18 @@ export function ArchiveCTA({
           {/* Content wrapper with section style utility classes */}
           <div className="section-content-narrow section-content-layer">
             {/* Heading innerBlock - Inherits section style typography */}
-            <h2
-              style={{
-                fontFamily: 'var(--font-primary)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 'var(--font-weight-medium)',
-                lineHeight: 'var(--line-height-snug)',
-                letterSpacing: 'var(--letter-spacing-tight)',
-                marginBottom: '1.5rem',
-                textAlign: 'center'
-              }}
-            >
+            <h2 className="archive-cta__heading">
               {ctaData.title}
             </h2>
 
             {/* Paragraph innerBlock - Inherits section style typography */}
-            <p
-              style={{
-                fontFamily: 'var(--font-primary)',
-                fontSize: 'var(--text-lg)',
-                fontWeight: 'var(--font-weight-regular)',
-                lineHeight: 'var(--line-height-relaxed)',
-                marginBottom: '2.5rem',
-                textAlign: 'center',
-                maxWidth: '700px',
-                marginLeft: 'auto',
-                marginRight: 'auto'
-              }}
-            >
+            <p className="archive-cta__description">
               {ctaData.description}
             </p>
 
             {/* Buttons Block innerBlock - Single button with data-variant */}
             <div 
-              className="flex justify-center"
+              className="archive-cta__buttons"
               role="group"
               aria-label="Call to action"
             >

@@ -1,0 +1,268 @@
+/**
+ * Pricing Page Template Styles
+ * 
+ * Dedicated styles for the Pricing page.
+ * 100% CSS variables, no hardcoded values.
+ */
+
+/* ============================================
+   BREADCRUMBS SECTION
+   ============================================ */
+
+.pricing-page__breadcrumbs-section {
+  padding-top: var(--spacing-4);
+  padding-bottom: var(--spacing-4);
+  background-color: var(--background);
+  border-bottom: 1px solid var(--border-soft);
+}
+
+/* ============================================
+   WEBSITE PACKAGES SECTION
+   ============================================ */
+
+.pricing-page__packages-section {
+  background-color: var(--background);
+}
+
+.pricing-page__section-header {
+  text-align: center;
+  /* margin-bottom removed — handled by parent gap */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-4);
+}
+
+.pricing-page__section-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+}
+
+.pricing-page__section-description {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  color: var(--muted-foreground);
+  max-width: var(--wp--style--global--content-size);
+  margin: 0 auto;
+}
+
+.pricing-page__packages-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-8);
+}
+
+@media (min-width: 768px) {
+  .pricing-page__packages-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .pricing-page__packages-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Package Card */
+.pricing-page__package-card {
+  background-color: var(--card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-soft);
+  padding: var(--spacing-8);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.pricing-page__package-card--popular {
+  border: 2px solid var(--primary);
+}
+
+.pricing-page__popular-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  padding: var(--spacing-1) var(--spacing-4);
+  border-radius: var(--radius-full);
+  font-size: var(--text-tiny);
+  font-family: var(--font-secondary);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+}
+
+.pricing-page__package-icon {
+  width: var(--spacing-12);
+  height: var(--spacing-12);
+  border-radius: var(--radius);
+  background-color: var(--primary-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* margin-bottom removed — handled by card gap */
+}
+
+.pricing-page__package-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h4);
+  font-weight: var(--font-weight-bold);
+  /* margin-bottom removed — handled by card gap */
+  color: var(--foreground);
+}
+
+.pricing-page__package-tagline {
+  font-family: var(--font-primary);
+  font-size: var(--text-small);
+  color: var(--muted-foreground);
+  /* margin-bottom removed — handled by card gap */
+}
+
+.pricing-page__package-price-wrapper {
+  /* margin-bottom removed — handled by card gap */
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+.pricing-page__package-price {
+  font-family: var(--font-primary);
+  font-size: var(--text-h1);
+  font-weight: var(--font-weight-bold);
+  color: var(--primary);
+  /* margin-bottom removed — handled by price-wrapper gap */
+}
+
+.pricing-page__package-period {
+  font-family: var(--font-secondary);
+  font-size: var(--text-small);
+  color: var(--muted-foreground);
+}
+
+.pricing-page__package-description {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  line-height: var(--line-height-normal);
+  color: var(--foreground);
+  /* margin-bottom removed — handled by card gap */
+  flex-grow: 1;
+}
+
+.pricing-page__features-list {
+  /* margin-bottom removed — handled by card gap */
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.pricing-page__feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-3);
+  /* margin-bottom removed — handled by features-list gap */
+}
+
+.pricing-page__feature-icon--included {
+  color: var(--primary); /* Using primary instead of success which might not exist */
+  flex-shrink: 0;
+  margin-top: calc(var(--spacing-1) / 2); /* optical icon alignment */
+}
+
+.pricing-page__feature-icon--excluded {
+  color: var(--muted-foreground);
+  flex-shrink: 0;
+  margin-top: calc(var(--spacing-1) / 2); /* optical icon alignment */
+}
+
+.pricing-page__feature-text {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+}
+
+.pricing-page__feature-text--included {
+  color: var(--foreground);
+}
+
+.pricing-page__feature-text--excluded {
+  color: var(--muted-foreground);
+}
+
+/* ============================================
+   SUPPORT PACKAGES SECTION
+   ============================================ */
+
+.pricing-page__support-section {
+  background-color: var(--muted);
+}
+
+/* ============================================
+   PAYMENT OPTIONS SECTION
+   ============================================ */
+
+.pricing-page__payment-section {
+  background-color: var(--background);
+}
+
+.pricing-page__payment-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-6);
+}
+
+@media (min-width: 768px) {
+  .pricing-page__payment-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.pricing-page__payment-card {
+  background-color: var(--card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-soft);
+  padding: var(--spacing-6);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+.pricing-page__payment-icon {
+  color: var(--primary);
+  /* margin removed — handled by card gap */
+}
+
+.pricing-page__payment-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h5);
+  font-weight: var(--font-weight-bold);
+  /* margin-bottom removed — handled by card gap */
+  color: var(--foreground);
+}
+
+.pricing-page__payment-description {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  color: var(--muted-foreground);
+  /* margin-bottom removed — handled by card gap */
+}
+
+.pricing-page__payment-discount {
+  font-family: var(--font-secondary);
+  font-size: var(--text-small);
+  color: var(--primary);
+  font-weight: var(--font-weight-semibold);
+  /* margin-bottom removed — handled by card gap */
+}
+
+.pricing-page__payment-terms {
+  font-family: var(--font-secondary);
+  font-size: var(--text-small);
+  color: var(--muted-foreground);
+}

@@ -12,9 +12,9 @@
   border-radius: var(--radius);
   padding: var(--spacing-4);
   margin-bottom: var(--spacing-6);
-  font-family: var(--font-mono, 'Courier New', monospace);
+  font-family: var(--font-mono);
   font-size: var(--text-base);
-  line-height: 1.6;
+  line-height: var(--line-height-normal);
   color: var(--foreground);
   white-space: pre-wrap;
   word-wrap: break-word;

@@ -219,7 +219,7 @@ export class ComponentAuditor {
           category: 'fonts',
           element: htmlElement.tagName.toLowerCase(),
           description: `Uses non-approved font: ${styles.fontFamily}`,
-          recommendation: `Use Lexend (primary) or Manrope (small text only) fonts from design system.`,
+          recommendation: `Use CSS variables: var(--font-primary) or var(--font-secondary)`,
           location: `${element.tagName}[${index}]`
         });
       }

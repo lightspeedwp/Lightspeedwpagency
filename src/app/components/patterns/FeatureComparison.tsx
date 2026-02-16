@@ -5,16 +5,9 @@
  * Maps to WordPress pattern: lsx-design/pricing/comparison
  * 
  * **Design Token Compliance:**
- * - Typography: Uses ONLY CSS variables (var(--text-*))
- * - Fonts: Lexend (table headers), Manrope (table cells) ONLY
- * - Colors: Uses ONLY CSS variables (var(--*))
- * - Spacing: Uses ONLY rem values
- * - Border Radius: Uses ONLY CSS variables (var(--radius*))
- * 
- * **WordPress Mapping:**
- * - Block: core/table or core/group
- * - Section Style: content-feature
- * - Pattern Slug: lsx-design/pricing/comparison
+ * - Uses /src/styles/feature-comparison.css
+ * - 100% CSS variables
+ * - BEM naming
  */
 
 import React from 'react';
@@ -23,6 +16,7 @@ import { Container } from '../common/Container';
 import { Heading } from '../common/Heading';
 import { Check, X } from 'lucide-react';
 import type { ComparisonFeature } from '../../data/comparisons';
+import '@/styles/patterns/feature-comparison.css';
 
 export interface FeatureComparisonProps {
   heading?: string;
@@ -37,23 +31,6 @@ export interface FeatureComparisonProps {
   featuredColumn?: 1 | 2 | 3;
 }
 
-/**
- * FeatureComparison Pattern Component
- * 
- * Displays detailed feature-by-feature comparison table
- * with checkmarks, X marks, and custom text values.
- * 
- * @example
- * ```tsx
- * import { websiteFeatureComparison } from '../../data';
- * 
- * <FeatureComparison 
- *   heading="Compare All Features"
- *   features={websiteFeatureComparison}
- *   featuredColumn={2}
- * />
- * ```
- */
 export function FeatureComparison({
   heading = "Compare Features",
   description,
@@ -66,51 +43,18 @@ export function FeatureComparison({
   },
   featuredColumn = 2
 }: FeatureComparisonProps) {
-  /**
-   * Render cell value - boolean or custom text
-   */
+  
   const renderCellValue = (value: boolean | string, isFeaturedColumn: boolean) => {
-    // Boolean true
     if (value === true) {
-      return (
-        <Check 
-          size={20} 
-          style={{ 
-            color: isFeaturedColumn 
-              ? 'var(--primary-foreground)' 
-              : 'var(--success)',
-            margin: '0 auto',
-            display: 'block'
-          }} 
-        />
-      );
+      return <Check size={20} className="feature-comparison__check" />;
     }
 
-    // Boolean false
     if (value === false) {
-      return (
-        <X 
-          size={20} 
-          style={{ 
-            color: 'var(--muted-foreground)',
-            margin: '0 auto',
-            display: 'block'
-          }} 
-        />
-      );
+      return <X size={20} className="feature-comparison__x" />;
     }
 
-    // Custom text (e.g., "Up to 5", "Add $2,000")
     return (
-      <span
-        style={{
-          fontSize: 'var(--text-small)',
-          fontFamily: 'var(--font-secondary)',
-          color: isFeaturedColumn 
-            ? 'var(--primary-foreground)' 
-            : 'var(--foreground)'
-        }}
-      >
+      <span className="feature-comparison__text">
         {value}
       </span>
     );
@@ -119,113 +63,39 @@ export function FeatureComparison({
   return (
     <Section sectionStyle="content-feature">
       <Container>
-        {/* Heading - Lexend font, CSS variable size */}
-        <Heading 
-          level={2} 
-          style={{ 
-            textAlign: 'center', 
-            marginBottom: '3rem',
-            fontSize: 'var(--text-h2)',
-            fontFamily: 'var(--font-primary)',
-            fontWeight: 'var(--font-weight-medium)',
-            color: 'var(--foreground)'
-          }}
-        >
-          {heading}
-        </Heading>
+        <div className="feature-comparison__header">
+          <Heading level={2} className="feature-comparison__title">
+            {heading}
+          </Heading>
+          
+          {description && (
+            <p className="feature-comparison__description">
+              {description}
+            </p>
+          )}
+        </div>
 
-        {description && (
-          <p
-            style={{
-              fontSize: 'var(--text-lead)',
-              fontFamily: 'var(--font-secondary)',
-              color: 'var(--muted-foreground)',
-              textAlign: 'center',
-              marginTop: '-2rem',
-              marginBottom: '3rem',
-              maxWidth: '800px',
-              marginLeft: 'auto',
-              marginRight: 'auto'
-            }}
-          >
-            {description}
-          </p>
-        )}
-
-        {/* Table container with overflow */}
-        <div 
-          className="overflow-x-auto"
-          style={{
-            borderRadius: 'var(--radius-lg)',
-            border: '1px solid var(--border)'
-          }}
-        >
-          <table
-            style={{
-              width: '100%',
-              borderCollapse: 'collapse',
-              fontSize: 'var(--text-base)',
-              fontFamily: 'var(--font-secondary)'
-            }}
-          >
-            {/* Table header */}
+        <div className="feature-comparison__table-container">
+          <table className="feature-comparison__table">
             <thead>
-              <tr
-                style={{
-                  backgroundColor: 'var(--muted)',
-                  borderBottom: '1px solid var(--border)'
-                }}
-              >
-                <th
-                  style={{
-                    padding: '1rem',
-                    textAlign: 'left',
-                    fontFamily: 'var(--font-primary)',
-                    fontWeight: 'var(--font-weight-medium)',
-                    fontSize: 'var(--text-base)'
-                  }}
-                  scope="col"
-                >
+              <tr className="feature-comparison__header-row">
+                <th className="feature-comparison__th" scope="col">
                   {columns.feature}
                 </th>
-                <th
-                  style={{
-                    padding: '1rem',
-                    textAlign: 'center',
-                    fontFamily: 'var(--font-primary)',
-                    fontWeight: 'var(--font-weight-medium)',
-                    fontSize: 'var(--text-base)',
-                    backgroundColor: featuredColumn === 1 ? 'var(--primary)' : undefined,
-                    color: featuredColumn === 1 ? 'var(--primary-foreground)' : undefined
-                  }}
+                <th 
+                  className={`feature-comparison__th ${featuredColumn === 1 ? 'feature-comparison__th--featured' : ''}`} 
                   scope="col"
                 >
                   {columns.basic}
                 </th>
-                <th
-                  style={{
-                    padding: '1rem',
-                    textAlign: 'center',
-                    fontFamily: 'var(--font-primary)',
-                    fontWeight: 'var(--font-weight-medium)',
-                    fontSize: 'var(--text-base)',
-                    backgroundColor: featuredColumn === 2 ? 'var(--primary)' : undefined,
-                    color: featuredColumn === 2 ? 'var(--primary-foreground)' : undefined
-                  }}
+                <th 
+                  className={`feature-comparison__th ${featuredColumn === 2 ? 'feature-comparison__th--featured' : ''}`} 
                   scope="col"
                 >
                   {columns.professional}
                 </th>
-                <th
-                  style={{
-                    padding: '1rem',
-                    textAlign: 'center',
-                    fontFamily: 'var(--font-primary)',
-                    fontWeight: 'var(--font-weight-medium)',
-                    fontSize: 'var(--text-base)',
-                    backgroundColor: featuredColumn === 3 ? 'var(--primary)' : undefined,
-                    color: featuredColumn === 3 ? 'var(--primary-foreground)' : undefined
-                  }}
+                <th 
+                  className={`feature-comparison__th ${featuredColumn === 3 ? 'feature-comparison__th--featured' : ''}`} 
                   scope="col"
                 >
                   {columns.enterprise}
@@ -233,73 +103,27 @@ export function FeatureComparison({
               </tr>
             </thead>
             
-            {/* Table body */}
             <tbody>
               {features.map((feature, index) => (
-                <tr
-                  key={feature.id}
-                  style={{
-                    backgroundColor: index % 2 === 0 ? 'var(--background)' : 'var(--muted)',
-                    borderBottom: '1px solid var(--border)'
-                  }}
-                >
-                  {/* Feature name - Manrope font */}
-                  <td
-                    style={{
-                      padding: '1rem',
-                      fontFamily: 'var(--font-secondary)',
-                      fontSize: 'var(--text-base)'
-                    }}
-                  >
+                <tr key={feature.id} className="feature-comparison__row">
+                  <td className="feature-comparison__td feature-comparison__td--feature">
                     {feature.name}
                     {feature.tooltip && (
-                      <span
-                        style={{
-                          fontSize: 'var(--text-small)',
-                          color: 'var(--muted-foreground)',
-                          marginLeft: '0.5rem',
-                          cursor: 'help'
-                        }}
-                        title={feature.tooltip}
-                      >
+                      <span className="feature-comparison__tooltip" title={feature.tooltip}>
                         ⓘ
                       </span>
                     )}
                   </td>
                   
-                  {/* Basic column */}
-                  <td
-                    style={{
-                      padding: '1rem',
-                      textAlign: 'center',
-                      backgroundColor: featuredColumn === 1 ? 'var(--primary)' : undefined,
-                      color: featuredColumn === 1 ? 'var(--primary-foreground)' : undefined
-                    }}
-                  >
+                  <td className={`feature-comparison__td feature-comparison__td--value ${featuredColumn === 1 ? 'feature-comparison__td--featured' : ''}`}>
                     {renderCellValue(feature.basic, featuredColumn === 1)}
                   </td>
                   
-                  {/* Professional column */}
-                  <td
-                    style={{
-                      padding: '1rem',
-                      textAlign: 'center',
-                      backgroundColor: featuredColumn === 2 ? 'var(--primary)' : undefined,
-                      color: featuredColumn === 2 ? 'var(--primary-foreground)' : undefined
-                    }}
-                  >
+                  <td className={`feature-comparison__td feature-comparison__td--value ${featuredColumn === 2 ? 'feature-comparison__td--featured' : ''}`}>
                     {renderCellValue(feature.professional, featuredColumn === 2)}
                   </td>
                   
-                  {/* Enterprise column */}
-                  <td
-                    style={{
-                      padding: '1rem',
-                      textAlign: 'center',
-                      backgroundColor: featuredColumn === 3 ? 'var(--primary)' : undefined,
-                      color: featuredColumn === 3 ? 'var(--primary-foreground)' : undefined
-                    }}
-                  >
+                  <td className={`feature-comparison__td feature-comparison__td--value ${featuredColumn === 3 ? 'feature-comparison__td--featured' : ''}`}>
                     {renderCellValue(feature.enterprise, featuredColumn === 3)}
                   </td>
                 </tr>
@@ -308,17 +132,7 @@ export function FeatureComparison({
           </table>
         </div>
 
-        {/* Mobile notice */}
-        <p
-          style={{
-            fontSize: 'var(--text-small)',
-            fontFamily: 'var(--font-secondary)',
-            color: 'var(--muted-foreground)',
-            textAlign: 'center',
-            marginTop: '1rem'
-          }}
-          className="md:hidden"
-        >
+        <p className="feature-comparison__mobile-notice">
           Scroll horizontally to view all features
         </p>
       </Container>

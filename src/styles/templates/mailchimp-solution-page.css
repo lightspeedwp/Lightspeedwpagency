@@ -2,20 +2,12 @@
  * Mailchimp Solution Page Styles
  * 
  * Template-specific styles for Mailchimp integration solution page.
+ * All vertical spacing via blockGap (CSS gap) -- zero margin.
  * All styling uses CSS variables from design system.
- * 
- * Structure:
- * - Section headers
- * - Why Mailchimp benefits
- * - Feature cards
- * - Process steps
- * - Pricing packages
- * - Case study
- * - CTA section
  */
 
 /* ============================================================
-   SECTION HEADERS
+   SECTION HEADERS -- flex column with blockGap
    ============================================================ */
 
 .mailchimp__section-header {
@@ -24,6 +16,9 @@
   margin-left: auto;
   margin-right: auto;
   padding-bottom: var(--spacing-12);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
 }
 
 .mailchimp__section-title {
@@ -31,13 +26,13 @@
   font-size: var(--text-h2);
   font-weight: 600;
   color: var(--foreground);
-  margin-bottom: var(--spacing-4);
 }
 
 .mailchimp__section-description {
   font-family: var(--font-secondary);
   font-size: var(--text-lg);
   color: var(--muted-foreground);
+  line-height: var(--line-height-normal);
 }
 
 /* ============================================================
@@ -56,18 +51,22 @@
   }
 }
 
+/* Benefit card -- flex column with blockGap */
 .mailchimp__benefit-card {
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: var(--spacing-8);
   transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
 }
 
 .mailchimp__benefit-card:hover {
   border-color: var(--primary);
   transform: translateY(-4px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-hover);
 }
 
 .mailchimp__benefit-icon {
@@ -79,12 +78,12 @@
   background: var(--primary);
   color: var(--primary-foreground);
   border-radius: var(--radius);
-  margin-bottom: var(--spacing-4);
 }
 
 .mailchimp__benefit-icon svg {
   width: 24px;
   height: 24px;
+  margin-top: calc(var(--spacing-1) / 2); /* optical icon alignment */
 }
 
 .mailchimp__benefit-title {
@@ -92,14 +91,13 @@
   font-size: var(--text-xl);
   font-weight: 600;
   color: var(--foreground);
-  margin-bottom: var(--spacing-3);
 }
 
 .mailchimp__benefit-description {
   font-family: var(--font-secondary);
   font-size: var(--text-base);
   color: var(--muted-foreground);
-  line-height: 1.6;
+  line-height: var(--line-height-normal);
 }
 
 /* ============================================================
@@ -124,11 +122,15 @@
   }
 }
 
+/* Feature card -- flex column with blockGap */
 .mailchimp__feature-card {
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: var(--spacing-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
 }
 
 .mailchimp__feature-icon {
@@ -140,7 +142,6 @@
   background: var(--primary);
   color: var(--primary-foreground);
   border-radius: var(--radius);
-  margin-bottom: var(--spacing-4);
 }
 
 .mailchimp__feature-icon svg {
@@ -153,14 +154,13 @@
   font-size: var(--text-xl);
   font-weight: 600;
   color: var(--foreground);
-  margin-bottom: var(--spacing-3);
 }
 
 .mailchimp__feature-description {
   font-family: var(--font-secondary);
   font-size: var(--text-base);
   color: var(--muted-foreground);
-  line-height: 1.6;
+  line-height: var(--line-height-normal);
 }
 
 /* ============================================================
@@ -208,12 +208,16 @@
   font-weight: 600;
 }
 
+/* Process content -- flex column with blockGap */
 .mailchimp__process-content {
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: var(--spacing-8);
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
 }
 
 .mailchimp__process-title {
@@ -221,14 +225,13 @@
   font-size: var(--text-lg);
   font-weight: 600;
   color: var(--foreground);
-  margin-bottom: var(--spacing-3);
 }
 
 .mailchimp__process-description {
   font-family: var(--font-secondary);
   font-size: var(--text-base);
   color: var(--muted-foreground);
-  line-height: 1.6;
+  line-height: var(--line-height-normal);
 }
 
 /* ============================================================
@@ -239,7 +242,8 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--spacing-8);
-  margin-top: var(--spacing-12);
+  padding-top: var(--spacing-12);
+  /* margin-top converted to padding-top — section-level spacing */
 }
 
 @media (min-width: 768px) {
@@ -248,6 +252,7 @@
   }
 }
 
+/* Pricing card -- flex column with blockGap */
 .mailchimp__pricing-card {
   background: var(--card);
   border: 1px solid var(--border);
@@ -255,13 +260,14 @@
   padding: var(--spacing-8);
   display: flex;
   flex-direction: column;
+  gap: var(--spacing-3);
   position: relative;
 }
 
 .mailchimp__pricing-card--popular {
   border-color: var(--primary);
   border-width: 2px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-hover);
 }
 
 .mailchimp__pricing-badge {
@@ -277,7 +283,7 @@
   text-transform: uppercase;
   padding: var(--spacing-1) var(--spacing-4);
   border-radius: var(--radius-full);
-  letter-spacing: 0.05em;
+  letter-spacing: var(--letter-spacing-wider);
 }
 
 .mailchimp__pricing-name {
@@ -285,18 +291,16 @@
   font-size: var(--text-xl);
   font-weight: 600;
   color: var(--foreground);
-  margin-bottom: var(--spacing-2);
 }
 
 .mailchimp__pricing-tagline {
   font-family: var(--font-secondary);
   font-size: var(--text-sm);
   color: var(--muted-foreground);
-  margin-bottom: var(--spacing-6);
 }
 
 .mailchimp__pricing-price {
-  margin-bottom: var(--spacing-2);
+  /* price wrapper */
 }
 
 .mailchimp__pricing-amount {
@@ -317,14 +321,16 @@
   font-family: var(--font-secondary);
   font-size: var(--text-sm);
   color: var(--muted-foreground);
-  margin-bottom: var(--spacing-6);
   padding-bottom: var(--spacing-6);
   border-bottom: 1px solid var(--border);
 }
 
+/* Pricing features list -- flex column with blockGap */
 .mailchimp__pricing-features {
   flex: 1;
-  margin-bottom: var(--spacing-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
 }
 
 .mailchimp__pricing-feature {
@@ -334,7 +340,6 @@
   font-family: var(--font-secondary);
   font-size: var(--text-base);
   color: var(--foreground);
-  margin-bottom: var(--spacing-3);
 }
 
 .mailchimp__pricing-feature svg {
@@ -342,23 +347,29 @@
   width: 20px;
   height: 20px;
   color: var(--primary);
-  margin-top: 2px;
+  margin-top: calc(var(--spacing-1) / 2); /* optical icon alignment */
 }
 
 /* ============================================================
-   CASE STUDY
+   CASE STUDY -- flex column with blockGap
    ============================================================ */
 
 .mailchimp__case-study {
   background: var(--muted);
   border-radius: var(--radius-lg);
   padding: var(--spacing-12);
-  margin-top: var(--spacing-12);
+  /* margin-top removed — handled by parent gap */
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
 }
 
+/* Case study header -- flex column with blockGap */
 .mailchimp__case-study-header {
   text-align: center;
-  margin-bottom: var(--spacing-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
 }
 
 .mailchimp__case-study-title {
@@ -366,7 +377,6 @@
   font-size: var(--text-2xl);
   font-weight: 600;
   color: var(--foreground);
-  margin-bottom: var(--spacing-6);
 }
 
 .mailchimp__case-study-quote {
@@ -374,8 +384,7 @@
   font-size: var(--text-xl);
   font-style: italic;
   color: var(--foreground);
-  margin-bottom: var(--spacing-4);
-  line-height: 1.6;
+  line-height: var(--line-height-normal);
 }
 
 .mailchimp__case-study-author {
@@ -395,7 +404,6 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--spacing-6);
-  margin-top: var(--spacing-8);
 }
 
 @media (min-width: 640px) {
@@ -410,11 +418,15 @@
   }
 }
 
+/* Result item -- flex column with blockGap */
 .mailchimp__result-item {
   text-align: center;
   padding: var(--spacing-6);
   background: var(--card);
   border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
 }
 
 .mailchimp__result-metric {
@@ -422,7 +434,6 @@
   font-size: var(--text-3xl);
   font-weight: 700;
   color: var(--primary);
-  margin-bottom: var(--spacing-2);
 }
 
 .mailchimp__result-label {
@@ -432,7 +443,7 @@
 }
 
 /* ============================================================
-   CTA SECTION
+   CTA SECTION -- flex column with blockGap
    ============================================================ */
 
 .mailchimp__cta-container {
@@ -440,6 +451,10 @@
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-6);
 }
 
 .mailchimp__cta-title {
@@ -447,15 +462,13 @@
   font-size: var(--text-3xl);
   font-weight: 600;
   color: var(--foreground);
-  margin-bottom: var(--spacing-4);
 }
 
 .mailchimp__cta-description {
   font-family: var(--font-secondary);
   font-size: var(--text-lg);
   color: var(--muted-foreground);
-  margin-bottom: var(--spacing-8);
-  line-height: 1.6;
+  line-height: var(--line-height-normal);
 }
 
 .mailchimp__cta-buttons {

@@ -4,136 +4,109 @@
  * WordPress concept: Template part — parts/header.html
  * 
  * Global navigation chrome with modern animated mega menus.
- * Features smooth transitions, hover effects, and micro-interactions.
- * Uses design system tokens for all styling.
+ * Rebuilt to use WordPress Block classes and CSS variables.
  * 
- * **Modern Features:**
- * - Smooth slide-down animations (300ms ease)
- * - Backdrop blur glassmorphism effect
- * - Hover scale effects on featured cards
- * - Progressive reveal animations (stagger effect)
- * - Keyboard accessible with focus states
- * - Mobile-responsive touch interactions
- * - Integrated MegaMenu component with consistent styling
+ * **Structure:**
+ * - `wp-block-group` (Header Container)
+ *   - `wp-block-site-logo` (Logo)
+ *   - `wp-block-navigation` (Desktop Nav)
+ *   - `wp-block-group` (Actions: Theme/Search/Mobile)
  * 
  * **Styling:**
- * - 100% CSS classes from /src/styles/parts/site-header.css
- * - BEM naming for all major sections
- * - CSS variables for complete user control (var(--font-primary), var(--spacing-*), var(--primary), etc.)
- * - WordPress-aligned utility classes
+ * - Uses `wp-block-*` classes for structural layout
+ * - Uses CSS variables for all styling
+ * - Fully responsive with mobile menu overlay
  * 
- * **Accessibility:**
- * - WCAG 2.1 AA compliant
- * - Full keyboard navigation support
- * - ARIA labels and expanded states
- * - Focus trap in mobile menu
- * - Screen reader announcements
- * - 48×48px minimum touch targets (WCAG AAA)
- * 
- * **Props:**
- * @param {Object} props - Component props
- * @param {'default' | 'simple'} [props.variant='default'] - Header variant style
- * 
- * **Usage:**
- * ```tsx
- * // Default header with mega menus
- * <SiteHeader />
- * 
- * // Simple header without mega menus
- * <SiteHeader variant="simple" />
- * ```
- * 
- * @see /guidelines/parts/SiteHeader.md - Complete documentation
- * @see /src/styles/parts/site-header.css - Dedicated CSS file (600+ lines)
  * @see /src/app/data/site-pages.ts - Navigation data source
  */
 
-import '@/styles/parts/site-header.css';
-import '@/styles/responsive.css'; // Ensure responsive utilities are loaded
-import { Container } from '../common/Container';
 import { SiteLogo } from '../blocks/theme/SiteLogo';
 import { useNavigation } from '../../contexts/NavigationContext';
+import { useLocation as useRouterLocation } from 'react-router';
 import { blogCategories } from '../../data/blog-posts';
 import { Menu, X, ChevronDown, Search, Sun, Moon } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import { GlobalSearchOverlay } from '../patterns/GlobalSearchOverlay';
+import '@/styles/blocks/theme/site-header.css';
+import '@/styles/responsive.css';
 
 interface SiteHeaderProps {
   variant?: 'default' | 'simple';
 }
 
 export function SiteHeader({ variant = 'default' }: SiteHeaderProps) {
-  const { navigateTo, currentPage } = useNavigation();
+  const { navigateTo } = useNavigation();
+  const location = useRouterLocation();
+  const currentPath = location.pathname;
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [servicesMenuOpen, setServicesMenuOpen] = useState(false);
-  const [solutionsMenuOpen, setSolutionsMenuOpen] = useState(false);
-  const [portfolioMenuOpen, setPortfolioMenuOpen] = useState(false);
-  const [blogMenuOpen, setBlogMenuOpen] = useState(false);
-  const [aboutMenuOpen, setAboutMenuOpen] = useState(false);
-  const [hostingMenuOpen, setHostingMenuOpen] = useState(false);
-  const [contactMenuOpen, setContactMenuOpen] = useState(false);
-  const [searchOpen, setSearchOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [isDark, setIsDark] = useState(false);
   
-  // Hover delay timers for smoother menu interaction
-  const [menuCloseTimer, setMenuCloseTimer] = useState<NodeJS.Timeout | null>(null);
+  // State for mega menus
+  const [activeMenu, setActiveMenu] = useState<string | null>(null);
+  
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [isDark, setIsDark] = useState(false);
 
   // Subscription-style Post Formats
   const postFormats = [
     { label: 'Podcasts', page: 'audio-archive', description: 'Exclusive interviews & discussions' },
-    { label: 'Video Library', page: 'video-archive', description: 'Premium tutorials & webinars' },
+    { label: 'Video Library', page: 'videos', description: 'Premium tutorials & webinars' },
     { label: 'Photo Galleries', page: 'gallery-archive', description: 'Event photos & visual stories' },
     { label: 'Quick Updates', page: 'aside-archive', description: 'Short status updates & news' },
     { label: 'Downloads', page: 'link-archive', description: 'Resources & templates' }
   ];
 
-  // Initialize theme from localStorage or system preference
+  // Initialize theme
   useEffect(() => {
     const savedTheme = localStorage.getItem('style-variation');
     if (savedTheme) {
       setIsDark(savedTheme === 'dark');
-      if (savedTheme === 'dark') {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-      }
+      document.documentElement.classList.toggle('dark', savedTheme === 'dark');
+      document.documentElement.classList.toggle('light', savedTheme !== 'dark');
     } else {
       const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      const initialTheme = prefersDark ? 'dark' : 'light';
       setIsDark(prefersDark);
-      if (prefersDark) {
-        document.documentElement.classList.add('dark');
-      }
-      localStorage.setItem('style-variation', initialTheme);
+      document.documentElement.classList.toggle('dark', prefersDark);
+      document.documentElement.classList.toggle('light', !prefersDark);
+      localStorage.setItem('style-variation', prefersDark ? 'dark' : 'light');
     }
   }, []);
 
-  const applyTheme = (theme: 'light' | 'dark') => {
-    if (theme === 'dark') {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-    localStorage.setItem('style-variation', theme);
-  };
+  // Close mobile menu on route change
+  useEffect(() => {
+    setMobileMenuOpen(false);
+    setActiveMenu(null);
+    setSearchOpen(false);
+  }, [currentPath]);
+
+  // Keyboard shortcut: Ctrl+K / Cmd+K to open search
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        setSearchOpen(prev => !prev);
+      }
+      if (e.key === 'Escape' && searchOpen) {
+        setSearchOpen(false);
+      }
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [searchOpen]);
 
   const toggleTheme = () => {
-    const newTheme = isDark ? 'light' : 'dark';
-    setIsDark(!isDark);
-    applyTheme(newTheme);
+    const newTheme = !isDark;
+    setIsDark(newTheme);
+    document.documentElement.classList.toggle('dark', newTheme);
+    document.documentElement.classList.toggle('light', !newTheme);
+    localStorage.setItem('style-variation', newTheme ? 'dark' : 'light');
   };
-
-  // If simple variant is requested, use the simple header pattern
-  if (variant === 'simple') {
-    return <SiteHeaderSimple />;
-  }
 
   // Default header pattern with enhanced mega menus
   const navItems = [
     { 
       label: 'Services', 
       page: 'services',
-      isActive: currentPage === 'services' || currentPage.startsWith('service-'),
+      isActive: currentPath === '/services' || currentPath.startsWith('/services/'),
       hasMegaMenu: true,
       megaMenuSections: [
         {
@@ -173,31 +146,21 @@ export function SiteHeader({ variant = 'default' }: SiteHeaderProps) {
     { 
       label: 'Solutions',
       page: 'solutions',
-      isActive: currentPage === 'solutions' || currentPage.startsWith('solution-'),
+      isActive: currentPath === '/solutions' || currentPath.startsWith('/solutions/'),
       hasMegaMenu: true,
       megaMenuSections: [
         {
           title: 'Platforms',
           items: [
             { label: 'WordPress', page: 'wordpress', description: 'Enterprise WordPress solutions' },
-            { label: 'WooCommerce', page: 'woocommerce', description: 'E-commerce & online stores' },
-            { label: 'LSX Design', page: 'lsx', description: 'Design system & theme' }
+            { label: 'WooCommerce', page: 'woocommerce', description: 'E-commerce & online stores' }
           ]
         },
         {
-          title: 'Industry Solutions',
+          title: 'Industries',
           items: [
             { label: 'Tour Operators', page: 'tour-operators', description: 'Travel & booking platforms' },
-            { label: 'Hosting', page: 'hosting', description: 'Managed WordPress hosting' }
-          ]
-        },
-        {
-          title: 'Integrations',
-          items: [
-            { label: 'Mailchimp', page: 'mailchimp', description: 'Email marketing' },
-            { label: 'Wetu Importer', page: 'wetu-importer', description: 'Tour data sync' },
-            { label: 'LSX Sharing', page: 'lsx-sharing', description: 'Social sharing' },
-            { label: 'LSX Search', page: 'lsx-search', description: 'Advanced search' }
+            { label: 'Publishers', page: 'publishers', description: 'Digital publishing solutions' }
           ]
         }
       ]
@@ -205,7 +168,7 @@ export function SiteHeader({ variant = 'default' }: SiteHeaderProps) {
     { 
       label: 'Portfolio', 
       page: 'portfolio-archive',
-      isActive: currentPage === 'portfolio-archive' || currentPage.startsWith('portfolio-single'),
+      isActive: currentPath === '/portfolio' || currentPath.startsWith('/portfolio/'),
       hasMegaMenu: true,
       megaMenuSections: [
         {
@@ -229,7 +192,7 @@ export function SiteHeader({ variant = 'default' }: SiteHeaderProps) {
     { 
       label: 'About', 
       page: 'about',
-      isActive: currentPage === 'about' || currentPage.startsWith('about-'),
+      isActive: currentPath === '/about' || currentPath.startsWith('/about/'),
       hasMegaMenu: true,
       megaMenuSections: [
         {
@@ -252,7 +215,7 @@ export function SiteHeader({ variant = 'default' }: SiteHeaderProps) {
     { 
       label: 'Blog', 
       page: 'blog',
-      isActive: currentPage === 'blog' || currentPage.startsWith('post-') || currentPage.startsWith('category-') || currentPage.startsWith('audio-') || currentPage.startsWith('video-') || currentPage.startsWith('gallery-') || currentPage.startsWith('aside-') || currentPage.startsWith('link-'),
+      isActive: currentPath === '/blog' || currentPath.startsWith('/blog/'),
       hasMegaMenu: true,
       megaMenuSections: [
         {
@@ -279,18 +242,16 @@ export function SiteHeader({ variant = 'default' }: SiteHeaderProps) {
     { 
       label: 'Contact', 
       page: 'contact',
-      isActive: currentPage === 'contact'
+      isActive: currentPath === '/contact'
     }
   ];
 
   return (
-    <header 
-      role="banner"
-      className="site-header"
-    >
-      <Container>
-        <div className="site-header__container">
-          {/* Site Logo */}
+    <header className="wp-block-template-part site-header">
+      <div className="site-header__container">
+        
+        {/* Logo Block */}
+        <div className="wp-block-site-logo">
           <button
             onClick={() => navigateTo('front-page')}
             aria-label="LSX Design - Home"
@@ -298,426 +259,183 @@ export function SiteHeader({ variant = 'default' }: SiteHeaderProps) {
           >
             <SiteLogo width="220px" alt="LSX Design Logo" theme={isDark ? 'dark' : 'light'} />
           </button>
-
-          {/* Desktop Navigation */}
-          <nav 
-            role="navigation" 
-            aria-label="Primary navigation"
-            className="site-header__nav"
-          >
-            <ul className="site-header__nav-list">
-              {navItems.map((item) => (
-                <li key={item.page} className="site-header__nav-item">
-                  {/* Mega Menu Items */}
-                  {item.hasMegaMenu ? (
-                    <div
-                      onMouseEnter={() => {
-                        if (item.label === 'Services') setServicesMenuOpen(true);
-                        if (item.label === 'Solutions') setSolutionsMenuOpen(true);
-                        if (item.label === 'About') setAboutMenuOpen(true);
-                        if (item.label === 'Portfolio') setPortfolioMenuOpen(true);
-                        if (item.label === 'Blog') setBlogMenuOpen(true);
-                        if (item.label === 'Hosting') setHostingMenuOpen(true);
-                        if (item.label === 'Contact') setContactMenuOpen(true);
-                      }}
-                      onMouseLeave={() => {
-                        if (item.label === 'Services') setServicesMenuOpen(false);
-                        if (item.label === 'Solutions') setSolutionsMenuOpen(false);
-                        if (item.label === 'About') setAboutMenuOpen(false);
-                        if (item.label === 'Portfolio') setPortfolioMenuOpen(false);
-                        if (item.label === 'Blog') setBlogMenuOpen(false);
-                        if (item.label === 'Hosting') setHostingMenuOpen(false);
-                        if (item.label === 'Contact') setContactMenuOpen(false);
-                      }}
-                    >
-                      <button
-                        onClick={() => navigateTo(item.page)}
-                        className={`site-header__nav-link ${item.isActive ? 'site-header__nav-link--active' : ''} ${
-                          (item.label === 'Services' && servicesMenuOpen) ||
-                          (item.label === 'Solutions' && solutionsMenuOpen) ||
-                          (item.label === 'About' && aboutMenuOpen)
-                            ? 'site-header__nav-link--open'
-                            : ''
-                        }`}
-                      >
-                        {item.label}
-                        <ChevronDown 
-                          size={16} 
-                          className="site-header__nav-link-icon"
-                        />
-                      </button>
-                      
-                      {/* Mega Menu with Modern Animations */}
-                      {((item.label === 'Services' && servicesMenuOpen) ||
-                        (item.label === 'Solutions' && solutionsMenuOpen) ||
-                        (item.label === 'About' && aboutMenuOpen) ||
-                        (item.label === 'Portfolio' && portfolioMenuOpen) ||
-                        (item.label === 'Blog' && blogMenuOpen)) && item.megaMenuSections && (
-                        <div
-                          onMouseEnter={() => {
-                            if (item.label === 'Services') setServicesMenuOpen(true);
-                            if (item.label === 'Solutions') setSolutionsMenuOpen(true);
-                            if (item.label === 'About') setAboutMenuOpen(true);
-                            if (item.label === 'Portfolio') setPortfolioMenuOpen(true);
-                            if (item.label === 'Blog') setBlogMenuOpen(true);
-                          }}
-                          onMouseLeave={() => {
-                            if (item.label === 'Services') setServicesMenuOpen(false);
-                            if (item.label === 'Solutions') setSolutionsMenuOpen(false);
-                            if (item.label === 'About') setAboutMenuOpen(false);
-                            if (item.label === 'Portfolio') setPortfolioMenuOpen(false);
-                            if (item.label === 'Blog') setBlogMenuOpen(false);
-                          }}
-                          className="site-header__mega-menu"
-                        >
-                          {/* Mega Menu Grid */}
-                          <div className="site-header__mega-menu-grid">
-                            {item.megaMenuSections.map((section, sectionIndex) => (
-                              <div key={sectionIndex} className="site-header__mega-menu-column">
-                                {section.title && (
-                                  <h3 className="site-header__mega-menu-section-title">
-                                    {section.title}
-                                  </h3>
-                                )}
-                                <ul className="site-header__mega-menu-list">
-                                  {section.items.map((menuItem, itemIndex) => (
-                                    <li key={itemIndex} className="site-header__mega-menu-item">
-                                      <button
-                                        onClick={() => {
-                                          navigateTo(menuItem.page);
-                                          setServicesMenuOpen(false);
-                                          setSolutionsMenuOpen(false);
-                                          setAboutMenuOpen(false);
-                                          setPortfolioMenuOpen(false);
-                                          setBlogMenuOpen(false);
-                                        }}
-                                        className="site-header__mega-menu-link"
-                                        aria-label={`Navigate to ${menuItem.label}`}
-                                      >
-                                        <div className="site-header__mega-menu-link-label">
-                                          {menuItem.label}
-                                        </div>
-                                        {menuItem.description && (
-                                          <div className="site-header__mega-menu-link-description">
-                                            {menuItem.description}
-                                          </div>
-                                        )}
-                                      </button>
-                                    </li>
-                                  ))}
-                                </ul>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  ) : (
-                    <button
-                      onClick={() => navigateTo(item.page)}
-                      className={`site-header__nav-link ${item.isActive ? 'site-header__nav-link--active' : ''}`}
-                    >
-                      {item.label}
-                    </button>
-                  )}
-                </li>
-              ))}
-              {/* Theme Toggle Icon */}
-              <li>
-                <button
-                  onClick={toggleTheme}
-                  aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-                  className="site-header__theme-toggle"
-                >
-                  {isDark ? <Sun size={20} /> : <Moon size={20} />}
-                </button>
-              </li>
-              
-              {/* Search Icon */}
-              <li>
-                <button
-                  onClick={() => setSearchOpen(!searchOpen)}
-                  aria-label="Search"
-                  aria-expanded={searchOpen}
-                  aria-controls="search-bar"
-                  className="site-header__search-toggle"
-                >
-                  <Search size={20} />
-                </button>
-              </li>
-            </ul>
-          </nav>
-
-          {/* Mobile Menu + Icons */}
-          <div 
-            className="hide-desktop" 
-            style={{ 
-              display: 'flex', 
-              alignItems: 'center', 
-              gap: 'var(--spacing-2)' 
-            }}
-          >
-            {/* Mobile Theme Toggle */}
-            <button
-              onClick={toggleTheme}
-              aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-              style={{
-                background: 'none',
-                border: 'none',
-                cursor: 'pointer',
-                padding: 'var(--spacing-2)',
-                color: 'var(--foreground)'
-              }}
-            >
-              {isDark ? <Sun size={20} /> : <Moon size={20} />}
-            </button>
-            
-            {/* Mobile Search Button */}
-            <button
-              onClick={() => setSearchOpen(!searchOpen)}
-              aria-label="Search"
-              aria-expanded={searchOpen}
-              aria-controls="search-bar"
-              style={{
-                background: 'none',
-                border: 'none',
-                cursor: 'pointer',
-                padding: 'var(--spacing-2)',
-                color: 'var(--foreground)'
-              }}
-            >
-              <Search size={20} />
-            </button>
-            
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label="Toggle mobile menu"
-              aria-expanded={mobileMenuOpen}
-              aria-controls="mobile-navigation"
-              className="site-header__mobile-toggle"
-            >
-              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
         </div>
 
-        {/* Expandable Search Bar */}
-        {searchOpen && (
-          <div id="search-bar" className="site-header__search-expandable">
-            <div className="site-header__search-wrapper">
-              <input
-                type="search"
-                placeholder="Search..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                autoFocus
-                aria-label="Search the site"
-                className="site-header__search-input"
-              />
-              <Search
-                size={20}
-                className="site-header__search-icon"
-              />
-            </div>
-          </div>
-        )}
+        {/* Desktop Navigation */}
+        <nav className="site-header__nav" aria-label="Main Navigation">
+          <ul className="site-header__nav-list">
+            {navItems.map((item) => (
+              <li 
+                key={item.page} 
+                className={`site-header__nav-item ${item.hasMegaMenu ? 'has-child' : ''}`}
+                onMouseEnter={() => item.hasMegaMenu && setActiveMenu(item.label)}
+                onMouseLeave={() => item.hasMegaMenu && setActiveMenu(null)}
+              >
+                <button
+                  onClick={() => navigateTo(item.page)}
+                  className={`site-header__nav-link ${item.isActive ? 'site-header__nav-link--active' : ''} ${activeMenu === item.label ? 'site-header__nav-link--open' : ''}`}
+                  aria-expanded={activeMenu === item.label}
+                >
+                  {item.label}
+                  {item.hasMegaMenu && (
+                    <ChevronDown 
+                      size={14} 
+                      className="site-header__nav-link-icon"
+                    />
+                  )}
+                </button>
 
-        {/* Mobile Navigation */}
-        {mobileMenuOpen && (
-          <nav 
-            id="mobile-navigation"
-            className="site-header__mobile-nav"
-            role="navigation"
-            aria-label="Mobile navigation"
+                {/* Mega Menu Dropdown */}
+                {item.hasMegaMenu && activeMenu === item.label && item.megaMenuSections && (
+                  <div className="site-header__mega-menu">
+                    <div className="site-header__mega-menu-grid" style={{ gridTemplateColumns: `repeat(${item.megaMenuSections.length}, 1fr)` }}>
+                      {item.megaMenuSections.map((section, idx) => (
+                        <div key={idx} className="site-header__mega-menu-column">
+                          {section.title && (
+                            <h3 className="site-header__mega-menu-section-title">
+                              {section.title}
+                            </h3>
+                          )}
+                          <ul className="site-header__mega-menu-list">
+                            {section.items.map((subItem, subIdx) => (
+                              <li key={subIdx}>
+                                <button
+                                  onClick={() => {
+                                    navigateTo(subItem.page);
+                                    setActiveMenu(null);
+                                  }}
+                                  className="site-header__mega-menu-link"
+                                >
+                                  <span className="site-header__mega-menu-link-label">
+                                    {subItem.label}
+                                  </span>
+                                  {subItem.description && (
+                                    <span className="site-header__mega-menu-link-description">
+                                      {subItem.description}
+                                    </span>
+                                  )}
+                                </button>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        {/* Action Buttons */}
+        <div className="site-header__actions">
+          <button 
+            onClick={toggleTheme}
+            aria-label="Toggle theme"
+            className="site-header__theme-toggle"
           >
+            {isDark ? <Sun size={20} /> : <Moon size={20} />}
+          </button>
+          
+          <button 
+            onClick={() => setSearchOpen(!searchOpen)}
+            aria-label="Search"
+            className="site-header__search-toggle"
+          >
+            <Search size={20} />
+          </button>
+
+          {/* Mobile Menu Toggle */}
+          <button
+            className="site-header__mobile-toggle"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Menu"
+          >
+            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
+      </div>
+
+      {/* Global Search Overlay */}
+      <GlobalSearchOverlay
+        isOpen={searchOpen}
+        onClose={() => setSearchOpen(false)}
+      />
+
+      {/* Mobile Navigation Menu */}
+      {mobileMenuOpen && (
+        <div className="site-header__mobile-menu">
+          <div className="site-header__mobile-menu-header">
+            <div className="wp-block-site-logo">
+              <SiteLogo width="180px" alt="LSX Design Logo" theme={isDark ? 'dark' : 'light'} />
+            </div>
+            <button 
+              className="site-header__mobile-menu-close"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              <X size={24} />
+            </button>
+          </div>
+          
+          <nav className="site-header__mobile-nav">
             <ul className="site-header__mobile-nav-list">
               {navItems.map((item) => (
                 <li key={item.page} className="site-header__mobile-nav-item">
-                  {item.hasMegaMenu ? (
-                    <>
-                      <button
-                        onClick={() => {
-                          navigateTo(item.page);
-                          setMobileMenuOpen(false);
-                        }}
-                        className={`site-header__mobile-nav-link ${item.isActive ? 'site-header__mobile-nav-link--active' : ''}`}
-                      >
-                        {item.label}
-                      </button>
-                      {/* Note: Mobile mega menu flattening would happen here, simplified for this template */}
-                    </>
-                  ) : (
-                    <button
-                      onClick={() => {
-                        navigateTo(item.page);
-                        setMobileMenuOpen(false);
-                      }}
-                      className={`site-header__mobile-nav-link ${item.isActive ? 'site-header__mobile-nav-link--active' : ''}`}
-                    >
-                      {item.label}
-                    </button>
+                  <button
+                    onClick={() => {
+                      navigateTo(item.page);
+                      setMobileMenuOpen(false);
+                    }}
+                    className={`site-header__mobile-nav-link ${item.isActive ? 'site-header__mobile-nav-link--active' : ''}`}
+                  >
+                    {item.label}
+                  </button>
+                  {item.hasMegaMenu && item.megaMenuSections && (
+                    <div className="site-header__mobile-submenu">
+                      {item.megaMenuSections.map((section, sIdx) => (
+                        <div key={sIdx}>
+                          {section.title && (
+                            <div className="site-header__mega-menu-section-title wp-mt-4">
+                              {section.title}
+                            </div>
+                          )}
+                          <ul className="site-header__mega-menu-list">
+                            {section.items.map((sub, subIdx) => (
+                              <li key={subIdx}>
+                                <button
+                                  onClick={() => {
+                                    navigateTo(sub.page);
+                                    setMobileMenuOpen(false);
+                                  }}
+                                  className="site-header__mobile-submenu-link"
+                                >
+                                  {sub.label}
+                                </button>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
                   )}
                 </li>
               ))}
-              <li className="site-header__mobile-nav-item" style={{ paddingTop: 'var(--spacing-2)' }}>
+              <li className="wp-mt-6">
                 <button
                   onClick={() => {
                     navigateTo('contact');
                     setMobileMenuOpen(false);
                   }}
-                  style={{
-                    width: '100%',
-                    textAlign: 'center',
-                    padding: 'var(--spacing-3) var(--spacing-4)',
-                    backgroundColor: 'var(--primary)',
-                    color: 'var(--primary-foreground)',
-                    fontFamily: 'var(--font-primary)',
-                    fontSize: 'var(--text-base)',
-                    fontWeight: 'var(--font-weight-medium)',
-                    border: 'none',
-                    borderRadius: 'var(--radius-lg)',
-                    cursor: 'pointer',
-                    boxShadow: 'var(--shadow-primary)'
-                  }}
+                  className="wp-block-button__link is-style-primary wp-w-full wp-justify-center"
                 >
                   Contact Us
                 </button>
               </li>
             </ul>
           </nav>
-        )}
-      </Container>
-    </header>
-  );
-}
-
-/**
- * Simple Header Variant
- * 
- * Alternative header pattern with horizontal navigation and dropdown indicators.
- */
-function SiteHeaderSimple() {
-  const { navigateTo, currentPage } = useNavigation();
-
-  const navItems = [
-    { label: 'Home', page: 'front-page', isActive: currentPage === 'front-page' },
-    { label: 'Services', page: 'services', isActive: currentPage === 'services' },
-    { label: 'Hosting', page: 'hosting', isActive: currentPage === 'hosting' },
-    { label: 'Portfolio', page: 'portfolio-archive', hasDropdown: false, isActive: currentPage === 'portfolio-archive' || currentPage.startsWith('portfolio-single-') },
-    { 
-      label: 'About', 
-      page: 'about', 
-      isActive: currentPage === 'about' || currentPage === 'team',
-      submenu: [
-        { label: 'About Us', page: 'about' },
-        { label: 'Our Team', page: 'team' }
-      ]
-    },
-    { label: 'Contact', page: 'contact', hasDropdown: false, isActive: currentPage === 'contact' },
-  ];
-
-  return (
-    <header 
-      role="banner"
-      style={{
-        position: 'sticky',
-        top: 0,
-        zIndex: 'var(--z-fixed)',
-        backgroundColor: 'var(--background)',
-        borderBottom: '1px solid var(--border-soft)',
-      }}
-    >
-      <Container>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: 'var(--spacing-2) 0' }}>
-          {/* Site Logo */}
-          <button 
-            onClick={() => navigateTo('front-page')}
-            aria-label="LSX Design Home"
-            style={{ 
-              background: 'none',
-              border: 'none',
-              padding: 0,
-              cursor: 'pointer',
-            }}
-          >
-            <SiteLogo theme="light" />
-          </button>
-
-          {/* Primary Navigation */}
-          <nav 
-            role="navigation" 
-            aria-label="Primary navigation"
-          >
-            <ul 
-              style={{ 
-                display: 'flex',
-                alignItems: 'center',
-                gap: 'var(--spacing-4)',
-                margin: 0,
-                padding: 0,
-                listStyle: 'none'
-              }}
-            >
-              {navItems.map((item, index) => (
-                <li key={index}>
-                  <button
-                    onClick={() => navigateTo(item.page)}
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: 'var(--spacing-1)',
-                      padding: 'var(--spacing-2) var(--spacing-3)',
-                      fontFamily: 'var(--font-primary)',
-                      fontSize: 'var(--text-base)',
-                      fontWeight: 'var(--font-weight-bold)',
-                      color: item.isActive ? 'var(--primary)' : 'var(--foreground)',
-                      textDecoration: item.isActive ? 'underline' : 'none',
-                      background: 'none',
-                      border: 'none',
-                      cursor: 'pointer',
-                      transition: 'color 0.2s ease',
-                      whiteSpace: 'nowrap',
-                      borderRadius: 'var(--radius)',
-                    }}
-                    onMouseEnter={(e) => {
-                      if (!item.isActive) {
-                        e.currentTarget.style.color = 'var(--primary)';
-                      }
-                    }}
-                    onMouseLeave={(e) => {
-                      if (!item.isActive) {
-                        e.currentTarget.style.color = 'var(--foreground)';
-                      }
-                    }}
-                  >
-                    <span>{item.label}</span>
-                    {item.hasDropdown && (
-                      <svg 
-                        width="20" 
-                        height="20" 
-                        viewBox="0 0 20 20" 
-                        fill="none"
-                        style={{
-                          transition: 'transform 0.2s ease',
-                        }}
-                      >
-                        <path 
-                          d="M5 7.5L10 12.5L15 7.5" 
-                          stroke="currentColor" 
-                          strokeWidth="2" 
-                          strokeLinecap="round" 
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    )}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </nav>
         </div>
-      </Container>
+      )}
     </header>
   );
 }

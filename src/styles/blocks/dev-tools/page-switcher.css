@@ -1,0 +1,106 @@
+/**
+ * Page Switcher Styles
+ * 
+ * Dev tool for switching templates.
+ * 100% CSS variables.
+ */
+
+.wp-block-page-switcher {
+  position: relative;
+  z-index: 50;
+}
+
+.wp-block-page-switcher__toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2) var(--spacing-4);
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--foreground);
+  font-family: var(--font-primary);
+  font-size: var(--text-small);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease;
+  min-width: 200px;
+  justify-content: space-between;
+}
+
+.wp-block-page-switcher__toggle:hover {
+  border-color: var(--primary);
+  background-color: var(--input);
+}
+
+.wp-block-page-switcher__arrow {
+  font-size: var(--text-2xs);
+  transition: transform 0.2s ease;
+}
+
+.wp-block-page-switcher__arrow--open {
+  transform: rotate(180deg);
+}
+
+/* Dropdown (Opens Upward) */
+.wp-block-page-switcher__dropdown {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  width: 240px;
+  max-height: 400px;
+  overflow-y: auto;
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  margin-bottom: var(--spacing-2);
+  padding: var(--spacing-2);
+  z-index: 100;
+}
+
+.wp-block-page-switcher__group {
+  margin-bottom: var(--spacing-3);
+}
+
+.wp-block-page-switcher__group:last-child {
+  margin-bottom: 0;
+}
+
+.wp-block-page-switcher__group-label {
+  padding: var(--spacing-1) var(--spacing-2);
+  font-family: var(--font-secondary);
+  font-size: var(--text-tiny);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+  color: var(--muted-foreground);
+  border-bottom: 1px solid var(--border-soft);
+  margin-bottom: var(--spacing-1);
+}
+
+.wp-block-page-switcher__item {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: var(--spacing-1-5) var(--spacing-3);
+  background: none;
+  border: none;
+  border-radius: var(--radius);
+  color: var(--foreground);
+  font-family: var(--font-primary);
+  font-size: var(--text-small);
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+
+.wp-block-page-switcher__item:hover {
+  background-color: var(--muted);
+}
+
+.wp-block-page-switcher__item--active {
+  background-color: var(--primary-soft);
+  color: var(--primary);
+  font-weight: var(--font-weight-medium);
+}

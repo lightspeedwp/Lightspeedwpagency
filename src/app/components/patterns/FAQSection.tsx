@@ -130,6 +130,7 @@ import { Section } from '../common/Section';
 import { Container } from '../common/Container';
 import { Button } from '../blocks/design/Buttons';
 import { Accordion, AccordionItem } from '../blocks/design/Accordion';
+import '@/styles/patterns/faq-section.css';
 
 /**
  * FAQ Item interface
@@ -301,49 +302,51 @@ export function FAQSection({
       className={sectionClass}
     >
       <Container>
-        {/* Section Header */}
-        {(title || description) && (
-          <div className="faq-section__header">
-            {title && (
-              <h2 className={titleClass}>
-                {title}
-              </h2>
-            )}
-            {description && (
-              <p className="faq-section__description">
-                {description}
-              </p>
-            )}
+        <div className="faq-section__inner">
+          {/* Section Header */}
+          {(title || description) && (
+            <div className="faq-section__header">
+              {title && (
+                <h2 className={titleClass}>
+                  {title}
+                </h2>
+              )}
+              {description && (
+                <p className="faq-section__description">
+                  {description}
+                </p>
+              )}
+            </div>
+          )}
+
+          {/* FAQ Accordion - WordPress Accordion Block */}
+          <div className="faq-section__accordion">
+            <Accordion>
+              {faqs.map((faq, index) => (
+                <AccordionItem
+                  key={index}
+                  id={`faq-${index}`}
+                  question={faq.question}
+                  answer={faq.answer}
+                />
+              ))}
+            </Accordion>
           </div>
-        )}
 
-        {/* FAQ Accordion - WordPress Accordion Block */}
-        <div className="faq-section__accordion">
-          <Accordion>
-            {faqs.map((faq, index) => (
-              <AccordionItem
-                key={index}
-                id={`faq-${index}`}
-                question={faq.question}
-                answer={faq.answer}
-              />
-            ))}
-          </Accordion>
-        </div>
-
-        {/* Optional CTA below FAQs */}
-        <div className="faq-section__cta">
-          <p className="faq-section__cta-text">
-            Still have questions?
-          </p>
-          <Button
-            variant="primary"
-            size="md"
-            page="contact"
-            aria-label="Contact our support team"
-          >
-            Contact Support
-          </Button>
+          {/* Optional CTA below FAQs */}
+          <div className="faq-section__cta">
+            <p className="faq-section__cta-text">
+              Still have questions?
+            </p>
+            <Button
+              variant="primary"
+              size="md"
+              page="contact"
+              aria-label="Contact our support team"
+            >
+              Contact Support
+            </Button>
+          </div>
         </div>
       </Container>
     </Section>

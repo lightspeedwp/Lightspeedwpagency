@@ -215,7 +215,7 @@
 ## 🗺️ Site Structure
 
 **[overview-sitemap.md](./overview-sitemap.md)** - Complete site map
-- 30+ pages
+- 117 routes (11 sections, verified Feb 2026)
 - Navigation structure
 - URL patterns
 - Breadcrumb patterns

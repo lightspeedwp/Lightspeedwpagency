@@ -34,17 +34,192 @@
  * @see {@link /guidelines/templates/index.md}
  */
 
-import { SiteHeader } from '../parts/SiteHeader';
-import { SiteFooter } from '../parts/SiteFooter';
-import { SkipLink } from '../common/SkipLink';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
-import { Heading } from '../common/Heading';
+import { Heading } from '../blocks/text/Heading';
+import { Paragraph } from '../blocks/text/Paragraph';
 import { Breadcrumbs } from '../common/Breadcrumbs';
 import { NewsletterSignup } from '../patterns/NewsletterSignup';
 import { CTASection } from '../patterns/CTASection';
-import { BackToTopButton } from '../blocks/layout/BackToTopButton';
 import { useNavigation } from '../../contexts/NavigationContext';
 import { blogPosts, blogCategories } from '../../data/blog-posts';
 import { useState } from 'react';
-import { Calendar, User, Tag as TagIcon, Clock } from 'lucide-react';
+import { Calendar, User, Clock } from 'lucide-react';
+import '@/styles/templates/index.css';
+
+export function IndexTemplate() {
+  const { navigateTo } = useNavigation();
+  const [activeCategory, setActiveCategory] = useState('All');
+  const [currentPage, setCurrentPage] = useState(1);
+  const postsPerPage = 9;
+
+  // Filter posts
+  const filteredPosts = activeCategory === 'All' 
+    ? blogPosts 
+    : blogPosts.filter(post => post.categories.includes(activeCategory));
+
+  // Pagination logic
+  const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
+  const currentPosts = filteredPosts.slice(
+    (currentPage - 1) * postsPerPage, 
+    currentPage * postsPerPage
+  );
+
+  return (
+    <>
+      {/* Breadcrumbs */}
+      <section className="wp-block-breadcrumbs-section">
+          <Breadcrumbs 
+            items={[
+              { label: 'Home', page: 'front-page' },
+              { label: 'Blog' }
+            ]}
+          />
+      </section>
+
+      {/* Header & Filters */}
+      <Section spacing="lg">
+        <Container>
+          <div className="wp-index-header">
+            <Heading level={1} className="wp-index-header__title">
+              Latest Insights & News
+            </Heading>
+            <Paragraph 
+              size="lead"
+              className="wp-index-header__description"
+            >
+              Expert advice, tutorials, and industry updates from our team of WordPress professionals.
+            </Paragraph>
+          </div>
+
+          {/* Category Filter Bar */}
+          <div className="wp-index-filters">
+            <button
+              onClick={() => { setActiveCategory('All'); setCurrentPage(1); }}
+              className={`wp-index-filter-btn ${
+                activeCategory === 'All' 
+                  ? 'wp-index-filter-btn--active' 
+                  : 'wp-index-filter-btn--inactive'
+              }`}
+            >
+              All Posts
+            </button>
+            {blogCategories.map((category) => (
+              <button
+                key={category.slug}
+                onClick={() => { setActiveCategory(category.name); setCurrentPage(1); }}
+                className={`wp-index-filter-btn ${
+                  activeCategory === category.name 
+                    ? 'wp-index-filter-btn--active' 
+                    : 'wp-index-filter-btn--inactive'
+                }`}
+              >
+                {category.name}
+              </button>
+            ))}
+          </div>
+
+          {/* Posts Grid */}
+          <div className="wp-index-grid">
+            {currentPosts.map((post) => (
+              <article 
+                key={post.id}
+                className="wp-index-card"
+                onClick={() => navigateTo(`blog/${post.slug}`)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); navigateTo(`blog/${post.slug}`); } }}
+              >
+                {/* Featured Image */}
+                <div className="wp-index-card__image-wrapper">
+                  <img 
+                    src={post.featuredImage} 
+                    alt={post.title}
+                    className="wp-index-card__image"
+                  />
+                  <div className="wp-index-card__category">
+                    {post.categories[0]}
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="wp-index-card__content">
+                  <div className="wp-index-card__meta">
+                    <span className="wp-index-card__meta-item">
+                      <Calendar size={14} />
+                      {new Date(post.date).toLocaleDateString()}
+                    </span>
+                    <span className="wp-index-card__meta-item">
+                      <Clock size={14} />
+                      {post.readingTime} min read
+                    </span>
+                  </div>
+
+                  <Heading level={3} className="wp-index-card__title">
+                    {post.title}
+                  </Heading>
+
+                  <Paragraph className="wp-index-card__excerpt">
+                    {post.excerpt}
+                  </Paragraph>
+
+                  <div className="wp-index-card__footer">
+                    <div className="wp-index-card__author-avatar">
+                      <User size={16} style={{ color: 'var(--muted-foreground)' }} />
+                    </div>
+                    <span className="wp-index-card__author-name">
+                      {post.author}
+                    </span>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          {/* Pagination */}
+          {totalPages > 1 && (
+            <div className="wp-index-pagination">
+              {Array.from({ length: totalPages }).map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrentPage(i + 1)}
+                  className={`wp-index-pagination__btn ${
+                    currentPage === i + 1
+                      ? 'wp-index-pagination__btn--active'
+                      : 'wp-index-pagination__btn--inactive'
+                  }`}
+                >
+                  {i + 1}
+                </button>
+              ))}
+            </div>
+          )}
+        </Container>
+      </Section>
+
+      {/* Newsletter Section */}
+      <Section className="wp-index-newsletter">
+        <Container>
+          <NewsletterSignup 
+            title="Subscribe to Our Newsletter"
+            description="Get the latest articles, tutorials, and WordPress tips delivered straight to your inbox."
+          />
+        </Container>
+      </Section>
+
+      {/* CTA Section */}
+      <CTASection
+        title="Looking for expert WordPress development?"
+        description="We build high-performance, accessible, and scalable WordPress websites using the latest block editor technologies."
+        primaryButton={{
+          text: 'View Our Services',
+          page: 'services'
+        }}
+        secondaryButton={{
+          text: 'Contact Us',
+          page: 'contact'
+        }}
+      />
+    </>
+  );
+}

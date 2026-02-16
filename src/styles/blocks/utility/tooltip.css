@@ -1,0 +1,50 @@
+/**
+ * Tooltip Block Styles
+ * 
+ * WordPress block: .wp-block-tooltip
+ */
+
+@keyframes wp-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes wp-slide-up-fade {
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.wp-block-tooltip-content {
+  z-index: var(--z-tooltip, 1600);
+  overflow: hidden;
+  border-radius: var(--radius-sm, 4px);
+  background-color: var(--foreground); /* Inverted theme */
+  color: var(--background); /* Inverted theme */
+  padding: var(--spacing-2) var(--spacing-3);
+  
+  font-family: var(--font-primary);
+  font-size: var(--text-xs);
+  line-height: var(--line-height-tight, 1.25);
+  
+  box-shadow: var(--shadow-sm);
+  
+  /* Animation */
+  animation-name: wp-slide-up-fade;
+  animation-duration: 0.2s;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+.wp-block-tooltip-arrow {
+  fill: var(--foreground);
+}

@@ -1,0 +1,24 @@
+/**
+ * Container Component Styles
+ * 
+ * Width-constraint container only.
+ * Provides max-width (1440px align-wide) + fluid horizontal padding (16px → 32px).
+ * Vertical spacing is NEVER added here — it comes from Section.
+ * 100% CSS variables.
+ *
+ * Edit --section-padding-x and --section-max-width in theme-base.css
+ * to change site-wide container spacing in one place.
+ */
+
+.wp-block-container {
+  width: 100%;
+}
+
+.wp-container-inner {
+  width: 100%;
+  max-width: var(--section-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--section-padding-x);
+  padding-right: var(--section-padding-x);
+}

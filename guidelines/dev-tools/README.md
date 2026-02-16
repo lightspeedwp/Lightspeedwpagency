@@ -43,17 +43,37 @@ Home > Dev Tools > {Tool Name}
 
 ## Available Tools
 
-1. **Template Tester** — Test all WordPress templates and page archetypes
-2. **Component Showcase** — Browse complete component library
-3. **Block Documentation** — Document all WordPress blocks
-4. **Component API** — Reference all component APIs
-5. **Design Blocks Showcase** — Showcase design-specific blocks
-6. **Button Showcase** — Display all button styles and variants
-7. **Header/Footer Comparison** — Compare header and footer variations
-8. **Icon Library** — Browse and search icon library
-9. **Live Preview** — Live component preview tool
-10. **Section Presets Showcase** — Display all section style presets
-11. **Theme Blocks Showcase** — Showcase WordPress theme blocks
+### Testing
+1. **Template Tester** — Test all 90+ WordPress templates with instant switching
+2. **Compliance Scorecard** — Real-time WCAG 2.1 AA/AAA compliance testing (26+ checks)
+
+### Design
+3. **Design System Test** — Complete design system testing suite (107 automated tests)
+4. **Design Tokens Reference** ✅ NEW — Complete CSS custom properties reference (colors, typography, spacing, shadows, radii)
+5. **Design Playground** ✅ NEW — Interactive sandbox to experiment with tokens live
+6. **Design Blocks Showcase** — All design blocks (Buttons, Heading, Paragraph, etc.)
+7. **Theme Blocks Showcase** — WordPress theme blocks (Site Logo, Navigation, etc.)
+8. **Button Showcase** — Complete button system (5 variants, 3 sizes, WCAG AAA)
+9. **Section Presets Showcase** — All 17 section style presets
+10. **Header/Footer Comparison** — Compare header and footer variations
+11. **Icon Library** — Complete Lucide React icon reference
+12. **Style Guide** — Complete visual style guide with tokens
+
+### Development
+13. **Component Showcase** — Browse all 85+ components with live examples
+14. **Feature Showcase** — Interactive demos of all 164 production features
+15. **Live Preview** — Live component preview with interactive property editor
+
+### Documentation
+16. **Block Documentation** — Complete WordPress block library with usage examples
+17. **Component API** — TypeScript interfaces and complete API reference
+18. **Documentation Generator** ✅ NEW — Auto-generated JSDoc docs with props tables, usage examples, and cross-reference links
+
+### Analytics
+19. **Code Quality Dashboard** ✅ NEW — Static analysis (component counts, route stats, CSS architecture, token inventory, compliance scores)
+
+### Deployment
+20. **Deployment Readiness** ✅ NEW — Pre-deploy checklist with Lighthouse scores, link checker, accessibility audit, WordPress FSE compatibility
 
 ## Implementation Checklist
 
@@ -74,6 +94,6 @@ When creating a new dev tool page:
 
 ---
 
-**Last Updated:** December 28, 2024  
+**Last Updated:** February 16, 2026  
 **Design System:** LSX Design  
 **WordPress Compatibility:** FSE (Full Site Editing)

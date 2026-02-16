@@ -1,126 +1,249 @@
 # Site Structure & Navigation
 
-**Version:** 1.0  
-**Last Updated:** December 25, 2024
+**Version:** 2.0  
+**Last Updated:** February 16, 2026
 
 ---
 
-## 📐 Complete Site Map
+## Summary
 
-### Homepage
-- **URL:** `/`
-- **Template:** FrontPageTemplate
-- **Archetype:** Single Detail
+The LSX Design prototype contains **120+ routes** across **11 sections**, mapping to WordPress templates, custom post types, and WooCommerce pages. Every route is lazy-loaded and wrapped in a shared `<RootLayout>` (header, footer, skip-link).
 
-### About Section
-- **About** - `/about` - AboutTemplate
-  - **Our Process** - `/about/process` - AboutProcessTemplate
-  - **Our Culture** - `/about/culture` - AboutCultureTemplate
-  - **Our History** - `/about/history` - AboutHistoryTemplate
-- **Team** - `/team` - TeamTemplate
-
-### Services Section
-- **Services Overview** - `/services` - ServicesTemplate
-  - **WordPress Development** - `/services/wordpress-development` - ServiceDetailTemplate
-  - **WooCommerce Solutions** - `/services/woocommerce-solutions` - ServiceDetailTemplate
-  - **Custom Block Themes** - `/services/custom-block-themes` - ServiceDetailTemplate
-  - **Headless WordPress** - `/services/headless-wordpress` - ServiceDetailTemplate
-  - **Performance Optimization** - `/services/performance-optimization` - ServiceDetailTemplate
-  - **Maintenance & Support** - `/services/maintenance-support` - ServiceDetailTemplate
-
-### Solutions Section
-- **Solutions Overview** - `/solutions` - (Future implementation)
-  - **Enterprise WordPress** - `/solutions/enterprise-wordpress` - SolutionDetailTemplate
-  - **E-Commerce Solutions** - `/solutions/ecommerce-solutions` - SolutionDetailTemplate
-  - **Content Management** - `/solutions/content-management` - SolutionDetailTemplate
-
-### Portfolio
-- **Portfolio Archive** - `/portfolio` - PortfolioArchiveTemplate
-- **Single Project** - `/portfolio/[slug]` - SinglePortfolioTemplate
-
-### Blog
-- **Blog Index** - `/blog` - BlogIndexTemplate
-- **Single Post** - `/blog/[slug]` - SinglePostTemplate
-- **Category Archive** - `/blog/category/[slug]` - CategoryArchiveTemplate
-- **Tag Archive** - `/blog/tag/[slug]` - (Future implementation)
-
-### Utility Pages
-- **Contact** - `/contact` - ContactPageTemplate
-- **FAQ** - `/faq` - FAQTemplate
-- **Hosting** - `/hosting` - HostingTemplate
-- **404 Not Found** - `/404` - 404Template
+**Route file:** `/src/app/routes.tsx`  
+**Slug resolver:** `/src/app/utils/route-map.ts`  
+**Navigation data:** `/src/app/data/pages.ts`
 
 ---
 
-## 🗂️ Navigation Structure
+## Complete Site Map
 
-### Main Navigation (Desktop)
+### Homepage (1 page)
 
-```tsx
-[
-  { label: 'Home', href: '/' },
-  { 
-    label: 'About', 
-    href: '/about',
-    children: [
-      { label: 'Our Process', href: '/about/process' },
-      { label: 'Our Culture', href: '/about/culture' },
-      { label: 'Our History', href: '/about/history' },
-      { label: 'Our Team', href: '/team' }
-    ]
-  },
-  {
-    label: 'Services',
-    href: '/services',
-    children: [
-      { label: 'WordPress Development', href: '/services/wordpress-development' },
-      { label: 'WooCommerce Solutions', href: '/services/woocommerce-solutions' },
-      { label: 'Custom Block Themes', href: '/services/custom-block-themes' },
-      { label: 'Headless WordPress', href: '/services/headless-wordpress' },
-      { label: 'Performance Optimization', href: '/services/performance-optimization' },
-      { label: 'Maintenance & Support', href: '/services/maintenance-support' }
-    ]
-  },
-  { label: 'Portfolio', href: '/portfolio' },
-  { label: 'Blog', href: '/blog' },
-  { label: 'Contact', href: '/contact' }
-]
-```
-
-### Footer Navigation
-
-**Column 1: Company**
-```tsx
-[
-  { label: 'About', href: '/about' },
-  { label: 'Team', href: '/team' },
-  { label: 'Hosting', href: '/hosting' },
-  { label: 'Contact', href: '/contact' }
-]
-```
-
-**Column 2: Services**
-```tsx
-[
-  { label: 'WordPress Development', href: '/services/wordpress-development' },
-  { label: 'WooCommerce Solutions', href: '/services/woocommerce-solutions' },
-  { label: 'Custom Block Themes', href: '/services/custom-block-themes' },
-  { label: 'Headless WordPress', href: '/services/headless-wordpress' }
-]
-```
-
-**Column 3: Resources**
-```tsx
-[
-  { label: 'Blog', href: '/blog' },
-  { label: 'Portfolio', href: '/portfolio' },
-  { label: 'FAQ', href: '/faq' }
-]
-```
+| URL | Template | Archetype |
+|-----|----------|-----------|
+| `/` | FrontPageTemplate | Single Detail (Hero → Why Choose → Services → Projects → Stats → CTA → How We Work → Testimonials → Latest Insights → FAQs → CTA) |
 
 ---
 
-## 📊 Page Hierarchy
+### About Section (6 pages)
+
+| URL | Template | Notes |
+|-----|----------|-------|
+| `/about` | AboutTemplate | Company overview |
+| `/about/process` | AboutProcessTemplate | Development process |
+| `/about/culture` | AboutCultureTemplate | Company culture & values |
+| `/about/history` | AboutHistoryTemplate | Company timeline |
+| `/about/team` | TeamTemplate | Team grid |
+| `/about/careers` | CareersTemplate | Job listings (under construction) |
+
+---
+
+### Services Section (15 pages)
+
+| URL | Template | Notes |
+|-----|----------|-------|
+| `/services` | ServicesLandingTemplate | Services overview grid |
+| `/services/discovery` | DiscoveryServiceTemplate | Discovery service detail |
+| `/services/design` | DesignServiceTemplate | Design service detail |
+| `/services/development` | DevelopmentServiceTemplate | Development service detail |
+| `/services/content` | ContentServiceTemplate | Content services hub |
+| `/services/content/strategy` | ContentStrategyTemplate | Content strategy sub-service |
+| `/services/content/collection` | ContentCollectionTemplate | Content collection (under construction) |
+| `/services/content/audit` | ContentAuditTemplate | Content audit sub-service |
+| `/services/security` | SecurityServiceTemplate | Security service detail |
+| `/services/migrations` | MigrationsServiceTemplate | Migration service detail |
+| `/services/support` | SupportServiceTemplate | Support service detail |
+| `/services/newsletter` | NewsletterServiceTemplate | Newsletter/email service |
+| `/services/email-marketing` | EmailMarketingTemplate | Email marketing (under construction) |
+| `/services/training` | TrainingTemplate | WordPress training service |
+| `/services/hosting` | HostingTemplate | Managed hosting plans |
+
+---
+
+### Solutions Section (10 pages)
+
+| URL | Template | Notes |
+|-----|----------|-------|
+| `/solutions` | SolutionsTemplate | Solutions overview |
+| `/solutions/wordpress` | WordPressSolutionTemplate | WordPress solution detail |
+| `/solutions/woocommerce` | WooCommerceSolutionTemplate | WooCommerce solution detail |
+| `/solutions/tour-operators` | TourOperatorTemplate | Tour operator solution |
+| `/solutions/publishers` | PublishersTemplate | Publishers solution |
+| `/solutions/lsx` | LSXDesignTemplate | LSX Design system |
+| `/solutions/lsx-theme` | LSXSolutionTemplate | LSX Theme solution |
+| `/solutions/mailchimp` | MailchimpSolutionTemplate | Mailchimp integration |
+| `/solutions/wetu-importer` | WetuImporterTemplate | Wetu importer solution |
+| `/solutions/lsx-sharing` | LSXSharingTemplate | LSX Sharing plugin |
+| `/solutions/lsx-search` | LSXSearchTemplate | LSX Search plugin |
+
+---
+
+### Portfolio (4 routes)
+
+| URL | Template | Notes |
+|-----|----------|-------|
+| `/portfolio` | PortfolioArchiveTemplate | Archive with filters |
+| `/portfolio/:slug` | PortfolioSingleTemplate | Single case study |
+| `/portfolio/category/:slug` | PortfolioCategoryArchiveTemplate | Category filter archive |
+| `/portfolio/tag/:slug` | PortfolioTagArchiveTemplate | Tag filter archive |
+
+**WordPress mapping:** Custom Post Type `portfolio` with `portfolio_category` and `portfolio_tag` taxonomies.
+
+---
+
+### Blog (11 base routes + dynamic)
+
+| URL | Template | Notes |
+|-----|----------|-------|
+| `/blog` | BlogIndexTemplate | Blog archive index |
+| `/blog/:slug` | SinglePostTemplate | Single blog post |
+| `/blog/single-post` | SinglePostLongformTemplate | Longform post demo |
+| `/blog/category` | CategoryArchiveTemplate | Category index (default) |
+| `/blog/category/:slug` | CategoryArchiveTemplate | Category archive |
+| `/blog/author` | AuthorArchiveTemplate | Author index (default) |
+| `/blog/author/:slug` | AuthorArchiveTemplate | Author archive |
+| `/blog/tag` | TagArchiveTemplate | Tag index (default) |
+| `/blog/tag/:slug` | TagArchiveTemplate | Tag archive |
+| `/blog/date` | DateArchiveTemplate | Date index (default) |
+| `/blog/date/:year` | DateArchiveTemplate | Year archive |
+| `/blog/date/:year/:month` | DateArchiveTemplate | Month archive |
+
+#### Post Format Archives & Singles (21 routes)
+
+| Format | Archive URL | Single URL |
+|--------|-------------|------------|
+| Audio | `/blog/format/audio` | `/blog/format/audio/single` |
+| Video | `/blog/format/video` | `/blog/format/video/single` |
+| Gallery | `/blog/format/gallery` | `/blog/format/gallery/single` |
+| Image | `/blog/format/image` | `/blog/format/image/single` |
+| Quote | `/blog/format/quote` | `/blog/format/quote/single` |
+| Link | `/blog/format/link` | `/blog/format/link/single` |
+| Chat | `/blog/format/chat` | `/blog/format/chat/single` |
+| Status | `/blog/format/status` | `/blog/format/status/single` |
+| Standard | `/blog/format/standard` | `/blog/format/standard/single` |
+| Aside | `/blog/format/aside` | `/blog/format/aside/single` |
+| Aside Stream | `/blog/format/aside-stream` | — |
+
+---
+
+### Videos (3 routes)
+
+| URL | Template | Notes |
+|-----|----------|-------|
+| `/videos` | VideoArchiveTemplate | Video archive |
+| `/video/:slug` | SingleVideoTemplate | Single video |
+| `/videos/category/:slug` | VideoCategoryArchiveTemplate | Video category filter |
+
+---
+
+### Podcasts (2 routes)
+
+| URL | Template | Notes |
+|-----|----------|-------|
+| `/podcasts` | PodcastArchiveTemplate | Podcast archive |
+| `/podcast/:slug` | SinglePodcastTemplate | Single podcast episode |
+
+---
+
+### WooCommerce / Shop (4 routes)
+
+| URL | Template | Notes |
+|-----|----------|-------|
+| `/shop` | ProductArchiveTemplate | Product archive grid |
+| `/shop/:slug` | SingleProductTemplate | Single product page |
+| `/cart` | CartTemplate | Shopping cart |
+| `/checkout` | CheckoutTemplate | Checkout flow |
+
+---
+
+### Tour Operator (2 routes)
+
+| URL | Template | Notes |
+|-----|----------|-------|
+| `/tours` | TourOperatorArchiveTemplate | Tours & accommodations archive |
+| `/tours/:slug` | SingleTourTemplate | Single tour / accommodation |
+
+**WordPress mapping:** LSX Tour Operator custom post types (`tour`, `accommodation`, `destination`).
+
+---
+
+### Utility Pages (13 pages)
+
+| URL | Template | Notes |
+|-----|----------|-------|
+| `/contact` | ContactPageTemplate | Contact form + info |
+| `/faq` | FAQTemplate | FAQ accordion sections |
+| `/pricing` | PricingTemplate | Pricing plans |
+| `/why-choose-us` | WhyChooseUsTemplate | Value propositions + stats |
+| `/guarantees` | GuaranteesTemplate | Service guarantees |
+| `/roi-calculator` | ROICalculatorTemplate | Interactive ROI tool |
+| `/testimonials` | TestimonialsTemplate | Client testimonials |
+| `/search` | SearchResultsPageTemplate | Site search results |
+| `/privacy-policy` | PrivacyPolicyTemplate | Legal: privacy |
+| `/terms-of-service` | TermsOfServiceTemplate | Legal: terms |
+| `/site-map` | SiteMapTemplate | HTML sitemap |
+| `/style-guide` | StyleGuideTemplate | Design system reference |
+| `/tutorials` | TutorialsTemplate | Tutorial articles |
+
+---
+
+### Legacy / Miscellaneous (7 routes)
+
+These routes exist for backward compatibility or proof-of-concept demos.
+
+| URL | Template | Notes |
+|-----|----------|-------|
+| `/archive` | ArchiveTemplate | Generic archive |
+| `/archive/filters` | ArchiveWithFiltersTemplate | Archive with filter bar |
+| `/index` | IndexTemplate | WordPress index fallback |
+| `/single` | SingleTemplate | Generic single fallback |
+| `/search-legacy` | SearchResultsTemplate | Legacy search |
+| `/wordpress-blocks-poc` | WordPressBlocksProofOfConcept | Blocks proof of concept |
+| `/section-style-example` | SectionStyleExample | Section style demo |
+| `/feature-showcase` | FeatureShowcaseTemplate | Feature showcase demo |
+
+---
+
+### Dev Tools (20 routes)
+
+All dev tools are behind `/dev-tools/`. These are **not** part of the production site.
+
+| URL | Template | Notes |
+|-----|----------|-------|
+| `/dev-tools` | DevToolsTemplate | Dev tools dashboard |
+| `/dev-tools/template-tester` | TemplateTester | Preview any template |
+| `/dev-tools/component-showcase` | ComponentShowcase | Component library |
+| `/dev-tools/design-system-test` | DesignSystemTest | Automated token tests |
+| `/dev-tools/compliance-scorecard` | ComplianceScorecard | WCAG / design compliance |
+| `/dev-tools/feature-showcase` | FeatureShowcaseTemplate | Feature demo |
+| `/dev-tools/block-documentation` | BlockDocumentation | Block API docs |
+| `/dev-tools/component-api` | ComponentAPI | Component prop API |
+| `/dev-tools/design-blocks-showcase` | DesignBlocksShowcase | Design blocks gallery |
+| `/dev-tools/button-showcase` | ButtonShowcase | Button variants |
+| `/dev-tools/header-footer-comparison` | HeaderFooterComparison | Header/footer A/B |
+| `/dev-tools/icon-library` | IconLibrary | Icon explorer |
+| `/dev-tools/live-preview` | LivePreview | Live template preview |
+| `/dev-tools/section-presets-showcase` | SectionPresetsShowcase | Section style presets |
+| `/dev-tools/theme-blocks-showcase` | ThemeBlocksShowcase | WordPress theme blocks |
+| `/dev-tools/style-guide` | StyleGuideTemplate | Alias of `/style-guide` |
+| `/dev-tools/design-tokens-reference` | DesignTokensReferenceTemplate | CSS token reference |
+| `/dev-tools/deployment-readiness` | DeploymentReadinessTemplate | Pre-deploy checklist |
+| `/dev-tools/design-playground` | DesignPlaygroundTemplate | Token experimenter |
+| `/dev-tools/code-quality-dashboard` | CodeQualityDashboardTemplate | Static analysis |
+| `/dev-tools/docs-generator` | DocsGeneratorTemplate | JSDoc auto-docs |
+
+---
+
+### Error Pages
+
+| URL | Template | Notes |
+|-----|----------|-------|
+| `/404` | Template404 | Explicit 404 |
+| `*` | Template404 | Catch-all fallback |
+
+---
+
+## Page Hierarchy (Tree)
 
 ```
 LSX Design (/)
@@ -128,250 +251,282 @@ LSX Design (/)
 ├── About (/about)
 │   ├── Our Process (/about/process)
 │   ├── Our Culture (/about/culture)
-│   └── Our History (/about/history)
-│
-├── Team (/team)
+│   ├── Our History (/about/history)
+│   ├── Our Team (/about/team)
+│   └── Careers (/about/careers)
 │
 ├── Services (/services)
-│   ├── WordPress Development (/services/wordpress-development)
-│   ├── WooCommerce Solutions (/services/woocommerce-solutions)
-│   ├── Custom Block Themes (/services/custom-block-themes)
-│   ├── Headless WordPress (/services/headless-wordpress)
-│   ├── Performance Optimization (/services/performance-optimization)
-│   └── Maintenance & Support (/services/maintenance-support)
+│   ├── Discovery (/services/discovery)
+│   ├── Design (/services/design)
+│   ├── Development (/services/development)
+│   ├── Content (/services/content)
+│   │   ├── Strategy (/services/content/strategy)
+│   │   ├── Collection (/services/content/collection)
+│   │   └── Audit (/services/content/audit)
+│   ├── Security (/services/security)
+│   ├── Migrations (/services/migrations)
+│   ├── Support (/services/support)
+│   ├── Newsletter (/services/newsletter)
+│   ├── Email Marketing (/services/email-marketing)
+│   ├── Training (/services/training)
+│   └── Hosting (/services/hosting)
+│
+├── Solutions (/solutions)
+│   ├── WordPress (/solutions/wordpress)
+│   ├── WooCommerce (/solutions/woocommerce)
+│   ├── Tour Operators (/solutions/tour-operators)
+│   ├── Publishers (/solutions/publishers)
+│   ├── LSX Design (/solutions/lsx)
+│   ├── LSX Theme (/solutions/lsx-theme)
+│   ├── Mailchimp (/solutions/mailchimp)
+│   ├── Wetu Importer (/solutions/wetu-importer)
+│   ├── LSX Sharing (/solutions/lsx-sharing)
+│   └── LSX Search (/solutions/lsx-search)
 │
 ├── Portfolio (/portfolio)
-│   ├── Project Alpha (/portfolio/ecommerce-platform-redesign)
-│   ├── Project Beta (/portfolio/headless-news-site)
-│   └── [... 4 more projects]
+│   ├── :slug — Single Project
+│   ├── category/:slug — Category Archive
+│   └── tag/:slug — Tag Archive
 │
 ├── Blog (/blog)
-│   ├── Post 1 (/blog/wordpress-6-4-block-theme-updates)
-│   ├── Post 2 (/blog/building-performant-woocommerce-stores)
-│   └── [... 10 more posts]
+│   ├── :slug — Single Post
+│   ├── single-post — Longform Demo
+│   ├── category/:slug — Category Archive
+│   ├── author/:slug — Author Archive
+│   ├── tag/:slug — Tag Archive
+│   ├── date/:year/:month — Date Archive
+│   └── format/ — Post Formats (10 types × archive + single)
 │
-├── Hosting (/hosting)
-├── Contact (/contact)
-└── FAQ (/faq)
+├── Videos (/videos)
+│   ├── :slug — Single Video
+│   └── category/:slug — Category Archive
+│
+├── Podcasts (/podcasts)
+│   └── :slug — Single Episode
+│
+├── Shop (/shop) — WooCommerce
+│   └── :slug — Single Product
+├── Cart (/cart)
+├── Checkout (/checkout)
+│
+├── Tours (/tours) — Tour Operator
+│   └── :slug — Single Tour
+│
+├── Utility Pages
+│   ├── Contact (/contact)
+│   ├── FAQ (/faq)
+│   ├── Pricing (/pricing)
+│   ├── Why Choose Us (/why-choose-us)
+│   ├── Guarantees (/guarantees)
+│   ├── ROI Calculator (/roi-calculator)
+│   ├── Testimonials (/testimonials)
+│   ├── Search (/search)
+│   ├── Privacy Policy (/privacy-policy)
+│   ├── Terms of Service (/terms-of-service)
+│   ├── Site Map (/site-map)
+│   ├── Style Guide (/style-guide)
+│   └── Tutorials (/tutorials)
+│
+├── Dev Tools (/dev-tools) — 20 tools
+│
+└── 404 (catch-all)
 ```
 
 ---
 
-## 🔗 URL Patterns
+## URL Patterns
 
 ### Static Pages
 ```
-/                           # Homepage
-/about                      # About page
-/about/process              # About sub-page
-/services                   # Services overview
-/team                       # Team page
-/contact                    # Contact page
-/faq                        # FAQ page
-/hosting                    # Hosting page
+/                               Homepage
+/about                          About
+/about/process                  Sub-page
+/about/team                     Sub-page
+/services                       Services landing
+/services/discovery             Service detail
+/services/content/strategy      Nested service sub-page
+/solutions                      Solutions landing
+/solutions/wordpress            Solution detail
+/contact                        Utility page
+/pricing                        Utility page
+/tutorials                      Resource page
 ```
 
-### Dynamic Pages (Archives)
+### Dynamic Archives
 ```
-/portfolio                  # Portfolio archive
-/blog                       # Blog archive
-/blog/category/{slug}       # Category archive
+/portfolio                      Portfolio archive
+/blog                           Blog archive
+/blog/category/{slug}           Category archive
+/blog/author/{slug}             Author archive
+/blog/tag/{slug}                Tag archive
+/blog/date/{year}/{month}       Date archive
+/blog/format/{format}           Post format archive
+/videos                         Video archive
+/videos/category/{slug}         Video category archive
+/podcasts                       Podcast archive
+/shop                           Product archive
+/tours                          Tour archive
 ```
 
-### Dynamic Pages (Singles)
+### Dynamic Singles
 ```
-/portfolio/{slug}           # Single portfolio project
-/blog/{slug}                # Single blog post
-/services/{slug}            # Single service detail
-/solutions/{slug}           # Single solution detail
+/portfolio/{slug}               Single project
+/blog/{slug}                    Single post
+/blog/format/{format}/single    Single format post
+/video/{slug}                   Single video
+/podcast/{slug}                 Single podcast
+/shop/{slug}                    Single product
+/tours/{slug}                   Single tour
 ```
 
 ---
 
-## 🧭 Breadcrumb Patterns
+## Breadcrumb Patterns
 
-### Static Page Breadcrumbs
-```tsx
-// About Page
+### Static Pages
+```
 Home > About
-
-// About Process
 Home > About > Our Process
-
-// Services
-Home > Services
-
-// Service Detail
-Home > Services > WordPress Development
+Home > Services > Development
+Home > Solutions > WordPress
+Home > Pricing
 ```
 
-### Archive Breadcrumbs
-```tsx
-// Portfolio Archive
+### Archives
+```
 Home > Portfolio
-
-// Blog Archive
 Home > Blog
-
-// Category Archive
 Home > Blog > Category Name
+Home > Blog > Author Name
+Home > Videos
+Home > Shop
+Home > Tours
 ```
 
-### Single Item Breadcrumbs
-```tsx
-// Single Portfolio Project
+### Singles
+```
 Home > Portfolio > Project Name
-
-// Single Blog Post
 Home > Blog > Post Title
+Home > Videos > Video Title
+Home > Shop > Product Name
+Home > Tours > Tour Name
 ```
 
 ---
 
-## 📱 Mobile Navigation
+## Navigation Structure
 
-### Hamburger Menu Structure
+### Main Navigation (Desktop Mega Menu)
 
-```tsx
-Main Menu
+```
+Home  |  About ▼  |  Services ▼  |  Solutions ▼  |  Portfolio  |  Blog  |  Contact
+         ├ Process      ├ Discovery       ├ WordPress
+         ├ Culture      ├ Design          ├ WooCommerce
+         ├ History      ├ Development     ├ Tour Operators
+         ├ Team         ├ Content         ├ Publishers
+         └ Careers      ├ Security        ├ LSX Design
+                        ├ Migrations      ├ LSX Theme
+                        ├ Support         ├ Mailchimp
+                        ├ Newsletter      ├ Wetu Importer
+                        ├ Training        ├ LSX Sharing
+                        └ Hosting         └ LSX Search
+```
+
+### Footer Navigation
+
+**Column 1: Company**
+- About → `/about`
+- Team → `/about/team`
+- Careers → `/about/careers`
+- Contact → `/contact`
+
+**Column 2: Services**
+- Discovery → `/services/discovery`
+- Design → `/services/design`
+- Development → `/services/development`
+- Content → `/services/content`
+- Hosting → `/services/hosting`
+
+**Column 3: Solutions**
+- WordPress → `/solutions/wordpress`
+- WooCommerce → `/solutions/woocommerce`
+- Tour Operators → `/solutions/tour-operators`
+- LSX Theme → `/solutions/lsx-theme`
+
+**Column 4: Resources**
+- Blog → `/blog`
+- Portfolio → `/portfolio`
+- Tutorials → `/tutorials`
+- FAQ → `/faq`
+- Style Guide → `/style-guide`
+
+---
+
+## Mobile Navigation
+
+### Hamburger Menu
+```
 ├── Home
-├── About
-│   ├── Our Process
-│   ├── Our Culture
-│   ├── Our History
-│   └── Our Team
-├── Services
-│   ├── WordPress Development
-│   ├── WooCommerce Solutions
-│   ├── Custom Block Themes
-│   ├── Headless WordPress
-│   ├── Performance Optimization
-│   └── Maintenance & Support
+├── About ▸ (expandable)
+│   ├── Process
+│   ├── Culture
+│   ├── History
+│   ├── Team
+│   └── Careers
+├── Services ▸ (expandable)
+│   ├── Discovery – Hosting (12 items)
+├── Solutions ▸ (expandable)
+│   ├── WordPress – LSX Search (10 items)
 ├── Portfolio
 ├── Blog
-└── Contact
+├── Shop
+├── Contact
+└── Search
 ```
 
-**Mobile Menu Features:**
-- Slide-in from right
-- Overlay background
-- Expandable sub-menus
-- Close button
-- Touch-friendly tap targets (44×44px minimum)
+**Mobile features:** slide-in from right, overlay, expandable sub-menus, close button, 48×48px touch targets.
 
 ---
 
-## 🎯 Template to URL Mapping
+## Content Types (WordPress Mapping)
 
-| Template | URLs Using This Template | Count |
-|----------|------------------------|-------|
-| FrontPageTemplate | `/` | 1 |
-| AboutTemplate | `/about` | 1 |
-| AboutProcessTemplate | `/about/process` | 1 |
-| AboutCultureTemplate | `/about/culture` | 1 |
-| AboutHistoryTemplate | `/about/history` | 1 |
-| TeamTemplate | `/team` | 1 |
-| ServicesTemplate | `/services` | 1 |
-| ServiceDetailTemplate | `/services/*` | 6 |
-| PortfolioArchiveTemplate | `/portfolio` | 1 |
-| SinglePortfolioTemplate | `/portfolio/*` | 6 |
-| BlogIndexTemplate | `/blog` | 1 |
-| SinglePostTemplate | `/blog/*` | 12 |
-| CategoryArchiveTemplate | `/blog/category/*` | Dynamic |
-| ContactPageTemplate | `/contact` | 1 |
-| FAQTemplate | `/faq` | 1 |
-| HostingTemplate | `/hosting` | 1 |
-| 404Template | Any 404 error | N/A |
+| Content Type | WordPress Type | Archives | Taxonomies |
+|-------------|---------------|----------|------------|
+| Pages | `page` | — | — |
+| Blog Posts | `post` | `/blog` | `category`, `post_tag`, `post_format` |
+| Portfolio | `portfolio` (CPT) | `/portfolio` | `portfolio_category`, `portfolio_tag` |
+| Videos | `video` (CPT) | `/videos` | `video_category` |
+| Podcasts | `podcast` (CPT) | `/podcasts` | — |
+| Products | `product` (WooCommerce) | `/shop` | `product_cat`, `product_tag` |
+| Tours | `tour` (LSX Tour Operator) | `/tours` | — |
+| Accommodations | `accommodation` (LSX TO) | `/tours` | — |
+| FAQs | `faq` (CPT) | — | `faq_category` |
 
 ---
 
-## 📋 Content Types
+## Template Count Summary
 
-### Pages (WordPress Pages)
-- Static content managed in WordPress admin
-- Examples: About, Services, Contact, Team
-
-### Portfolio (Custom Post Type)
-- Custom post type: `portfolio`
-- Taxonomy: `portfolio_category`, `portfolio_industry`
-- Custom fields: client, challenge, solution, results, technologies
-
-### Posts (Default Post Type)
-- Default WordPress post type
-- Categories, tags, featured image
-- Author, publish date, reading time
-
-### FAQs (Custom Post Type)
-- Custom post type: `faq`
-- Taxonomy: `faq_category`
-- Custom fields: question, answer, order
-
----
-
-## 🔍 WordPress Query Types
-
-### Main Query
-```php
-// Homepage
-is_front_page()
-
-// Blog index
-is_home()
-
-// Single post
-is_single()
-
-// Portfolio archive
-is_post_type_archive('portfolio')
-
-// Category archive
-is_category()
-```
-
-### Custom Queries
-```php
-// Featured portfolio projects
-new WP_Query([
-  'post_type' => 'portfolio',
-  'meta_key' => 'featured',
-  'meta_value' => '1',
-  'posts_per_page' => 3
-]);
-
-// Recent blog posts
-new WP_Query([
-  'post_type' => 'post',
-  'posts_per_page' => 6,
-  'orderby' => 'date',
-  'order' => 'DESC'
-]);
-```
+| Section | Static Routes | Dynamic Routes | Total |
+|---------|--------------|----------------|-------|
+| Homepage | 1 | — | 1 |
+| About | 6 | — | 6 |
+| Services | 15 | — | 15 |
+| Solutions | 10 | — | 10 |
+| Portfolio | 1 | 3 | 4 |
+| Blog | 5 | 6 + 21 formats | 32 |
+| Videos | 1 | 2 | 3 |
+| Podcasts | 1 | 1 | 2 |
+| WooCommerce | 3 | 1 | 4 |
+| Tour Operator | 1 | 1 | 2 |
+| Utility | 13 | — | 13 |
+| Legacy/Misc | 7 | — | 7 |
+| Dev Tools | 20 | — | 20 |
+| Error | 2 | — | 2 |
+| **Total** | **86** | **35** | **121** |
 
 ---
 
-## ✅ Navigation Best Practices
-
-### Accessibility
-- Clear, descriptive link text
-- Keyboard navigable (Tab, Enter, Escape)
-- ARIA labels for screen readers
-- Skip links to main content
-- Focus states visible (2px outline)
-
-### Mobile UX
-- Touch targets ≥ 44×44px
-- Thumb-friendly menu position
-- Swipe to close drawer
-- No hover-only interactions
-
-### Performance
-- Navigation data centralized (`/src/app/data/pages.ts`)
-- No unnecessary re-renders
-- Lazy load sub-menus where appropriate
-- Prefetch critical routes
-
----
-
-**Last Updated:** December 25, 2024  
-**Total Pages:** 30+ (static and dynamic)  
+**Last Updated:** February 16, 2026  
+**Total Routes:** 121  
+**Total Template Files:** 90+  
 **Maintained By:** LSX Design Team

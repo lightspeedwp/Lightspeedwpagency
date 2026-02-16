@@ -4,77 +4,80 @@
  * WordPress template: archive-chat.html
  * 
  * Displays a list of chat transcripts.
+ * 100% CSS variables — no Tailwind.
+ * BEM naming: .wp-block-chat-*
+ * 
+ * @see /src/styles/blocks/post-formats/chat.css
+ * @see /src/styles/templates/archive.css
  */
 
-import { SiteHeader } from '@/app/components/parts/SiteHeader';
-import { SiteFooter } from '@/app/components/parts/SiteFooter';
 import { Container } from '@/app/components/common/Container';
 import { Section } from '@/app/components/common/Section';
 import { Breadcrumbs } from '@/app/components/common/Breadcrumbs';
 import { allPosts } from '@/app/data/posts-formats';
 import { MessageCircle, User } from 'lucide-react';
 import { useNavigation } from '@/app/contexts/NavigationContext';
+import '@/styles/blocks/post-formats/chat.css';
+import '@/styles/templates/archive.css';
 
 export function ChatArchiveTemplate() {
   const { navigateTo } = useNavigation();
   const chatPosts = allPosts.filter(post => post.format === 'chat');
-  // Duplicate for visual effect
   const posts = [...chatPosts, ...chatPosts, ...chatPosts];
 
   return (
     <>
-      <SiteHeader />
-      <main>
-        <section className="py-4 border-b border-[var(--border-soft)]">
-          <Container>
-            <Breadcrumbs 
-              items={[
-                { label: 'Home', href: '/' },
-                { label: 'Blog', href: '/blog' },
-                { label: 'Chats', href: '/chat-archive' }
-              ]}
-            />
-          </Container>
-        </section>
+      <section className="archive-breadcrumbs">
+        <Container>
+          <Breadcrumbs 
+            items={[
+              { label: 'Home', href: '/' },
+              { label: 'Blog', href: '/blog' },
+              { label: 'Chats', href: '/chat-archive' }
+            ]}
+          />
+        </Container>
+      </section>
 
-        <Section spacing="lg">
-          <Container>
-            <header className="mb-12 text-center">
-              <h1 className="text-4xl font-bold mb-4">Chat Transcripts</h1>
-              <p className="text-xl text-[var(--muted-foreground)]">Support logs, Q&A sessions, and team discussions.</p>
-            </header>
+      <Section spacing="lg">
+        <Container>
+          <header className="archive-header">
+            <h1 className="archive-header__title">Chat Transcripts</h1>
+            <p className="archive-header__description">Support logs, Q&amp;A sessions, and team discussions.</p>
+          </header>
 
-            <div className="max-w-3xl mx-auto space-y-6">
-              {posts.map((post, index) => (
-                <article 
-                  key={`${post.id}-${index}`} 
-                  className="bg-[var(--card)] p-6 rounded-xl border border-[var(--border-soft)] hover:border-[var(--primary)] transition-colors cursor-pointer"
-                  onClick={() => navigateTo('chat-single')}
-                >
-                  <div className="flex items-start gap-4">
-                    <div className="p-3 bg-[var(--secondary)] rounded-full text-[var(--primary)]">
-                      <MessageCircle size={24} />
-                    </div>
-                    <div>
-                      <h2 className="text-xl font-bold mb-2">{post.title.rendered}</h2>
-                      <div className="text-[var(--muted-foreground)] mb-4">{post.excerpt.rendered}</div>
-                      <div className="flex items-center gap-4 text-sm text-[var(--muted-foreground)]">
-                        <span className="flex items-center gap-1">
-                          <User size={14} />
-                          Support Team
-                        </span>
-                        <span>•</span>
-                        <span>{new Date(post.date).toLocaleDateString()}</span>
-                      </div>
+          <div className="archive-feed">
+            {posts.map((post, index) => (
+              <article 
+                key={`${post.id}-${index}`} 
+                className="wp-block-chat-card"
+                onClick={() => navigateTo('chat-single')}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); navigateTo('chat-single'); } }}
+              >
+                <div className="wp-block-chat-card__inner">
+                  <div className="wp-block-chat-card__icon">
+                    <MessageCircle size={24} />
+                  </div>
+                  <div>
+                    <h2 className="wp-block-chat-card__title">{post.title.rendered}</h2>
+                    <div className="wp-block-chat-card__excerpt">{post.excerpt.rendered}</div>
+                    <div className="wp-block-chat-card__meta">
+                      <span className="wp-block-chat-card__meta-item">
+                        <User size={14} />
+                        Support Team
+                      </span>
+                      <span>&bull;</span>
+                      <span>{new Date(post.date).toLocaleDateString()}</span>
                     </div>
                   </div>
-                </article>
-              ))}
-            </div>
-          </Container>
-        </Section>
-      </main>
-      <SiteFooter />
+                </div>
+              </article>
+            ))}
+          </div>
+        </Container>
+      </Section>
     </>
   );
 }

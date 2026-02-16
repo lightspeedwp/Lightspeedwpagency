@@ -211,7 +211,7 @@ export function LogoInline({
   width, 
   height, 
   variant = 'full', 
-  theme = 'light',
+  theme = 'light', 
   className = '' 
 }: LogoProps) {
   /**
@@ -232,10 +232,10 @@ export function LogoInline({
    * Dark theme: White text (#FFFFFF) for dark backgrounds
    * 
    * Icon colors are always fixed:
-   * - Primary: #FF3131 (brand red)
-   * - Secondary: #CC3F23 (brand dark red/orange)
+   * - Primary: var(--logo-icon-primary) (brand red)
+   * - Secondary: var(--logo-icon-secondary) (brand dark red/orange)
    */
-  const textColor = theme === 'dark' ? '#FFFFFF' : '#111111';
+  const textColor = theme === 'dark' ? 'var(--color-white)' : 'var(--foreground)';
   
   // Icon only (compact variant)
   if (variant === 'compact') {
@@ -244,8 +244,8 @@ export function LogoInline({
         <svg width={w} height={h} viewBox="0 0 48 68" fill="none" xmlns="http://www.w3.org/2000/svg">
           <title>LSX Design</title>
           <g id="Icon">
-            <path id="Icon/Primary" fill="#FF3131" d="M10 10 L35 32 L22 32 L38 58 L20 36 L30 36 Z"/>
-            <path id="Icon/Secondary" fill="#CC3F23" d="M35 32 L38 58 L22 32 Z"/>
+            <path id="Icon/Primary" fill="var(--logo-icon-primary)" d="M10 10 L35 32 L22 32 L38 58 L20 36 L30 36 Z"/>
+            <path id="Icon/Secondary" fill="var(--logo-icon-secondary)" d="M35 32 L38 58 L22 32 Z"/>
           </g>
         </svg>
       </div>
@@ -260,9 +260,9 @@ export function LogoInline({
         {/* Lightning bolt icon (two-tone, sharp geometric facets) */}
         <g id="Icon">
           {/* Primary face (bright red) */}
-          <path id="Icon/Primary" fill="#FF3131" d="M10 10 L35 32 L22 32 L38 58 L20 36 L30 36 Z"/>
+          <path id="Icon/Primary" fill="var(--logo-icon-primary)" d="M10 10 L35 32 L22 32 L38 58 L20 36 L30 36 Z"/>
           {/* Secondary face (dark red/orange) for depth */}
-          <path id="Icon/Secondary" fill="#CC3F23" d="M35 32 L38 58 L22 32 Z"/>
+          <path id="Icon/Secondary" fill="var(--logo-icon-secondary)" d="M35 32 L38 58 L22 32 Z"/>
         </g>
         
         {/* Wordmark (using design system fonts) */}
@@ -272,7 +272,7 @@ export function LogoInline({
             x="60" 
             y="24" 
             fill={textColor}
-            fontFamily="Lexend, -apple-system, system-ui, sans-serif" 
+            fontFamily="var(--font-primary)" 
             fontSize="16" 
             fontWeight="600" 
             letterSpacing="1"
@@ -284,7 +284,7 @@ export function LogoInline({
             x="60" 
             y="54" 
             fill={textColor}
-            fontFamily="Lexend, -apple-system, system-ui, sans-serif" 
+            fontFamily="var(--font-primary)" 
             fontSize="32" 
             fontWeight="800" 
             letterSpacing="-0.5"

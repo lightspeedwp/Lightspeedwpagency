@@ -1,148 +1,30 @@
 /**
  * Separator Block Styles
- * 
- * WordPress block: .wp-block-separator
- * Component: /src/app/components/blocks/design/Separator.tsx
- * Guideline: /guidelines/blocks/design/separator.md
- * 
- * CRITICAL: 100% CSS variables only - NO hardcoded values
- * User can control ALL styling by editing theme CSS files
  */
-
-/* ==========================================================================
-   BASE STYLES
-   ========================================================================== */
-
 .wp-block-separator {
-  /* Layout */
-  width: 100%;
-  height: 1px;
-  
-  /* Remove default browser styles */
   border: none;
-  background: none;
-  
-  /* Borders */
-  border-top: 1px solid var(--border);
-  
-  /* Spacing */
-  margin: var(--spacing-6) 0;
-  
-  /* Ensure no content inside */
-  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+  margin: var(--spacing-8) 0;
+  width: 100%;
 }
 
-/* ==========================================================================
-   VARIANT STYLES
-   ========================================================================== */
-
-/* Default (thin line) - already set in base styles */
-.wp-block-separator--default {
-  border-top-width: 1px;
-}
-
-/* Wide (thick line) */
-.wp-block-separator--wide {
-  border-top-width: 3px;
-  border-color: var(--border);
-  max-width: 100px;
+.wp-block-separator.is-style-wide {
+  max-width: var(--wp--style--global--wide-size);
   margin-left: auto;
   margin-right: auto;
 }
 
-/* Dots (three centered dots) */
-.wp-block-separator--dots {
-  /* Remove border */
-  border: none;
-  height: auto;
-  
-  /* Spacing */
-  margin: var(--spacing-8) 0;
-  
-  /* Center content */
+.wp-block-separator.is-style-dots {
+  border-bottom: none;
   text-align: center;
-  
-  /* Dots via pseudo-element */
-  position: relative;
+  line-height: 1;
+  height: auto;
 }
 
-.wp-block-separator--dots::before {
+.wp-block-separator.is-style-dots::before {
   content: '···';
+  font-size: var(--text-3xl);
   color: var(--muted-foreground);
-  font-size: 24px;
-  letter-spacing: 8px;
-  display: inline-block;
-  font-weight: 700;
-}
-
-/* ==========================================================================
-   RESPONSIVE STYLES
-   ========================================================================== */
-
-/* Mobile (< 768px) - Base styles above */
-
-/* Tablet (768px - 1023px) */
-@media (min-width: 768px) {
-  .wp-block-separator {
-    margin: var(--spacing-8) 0;
-  }
-}
-
-/* Desktop (≥ 1024px) */
-@media (min-width: 1024px) {
-  .wp-block-separator {
-    margin: var(--spacing-8) 0;
-  }
-}
-
-/* ==========================================================================
-   DARK MODE OVERRIDES
-   ========================================================================== */
-
-.dark-theme .wp-block-separator {
-  border-color: var(--border);
-}
-
-.dark-theme .wp-block-separator--wide {
-  border-color: var(--border);
-}
-
-.dark-theme .wp-block-separator--dots::before {
-  color: var(--muted-foreground);
-}
-
-/* ==========================================================================
-   PRINT STYLES
-   ========================================================================== */
-
-@media print {
-  .wp-block-separator {
-    border-color: #ccc;
-    margin: 12pt 0;
-    page-break-after: avoid;
-  }
-  
-  .wp-block-separator--wide {
-    border-color: #999;
-    max-width: 50px;
-  }
-  
-  .wp-block-separator--dots::before {
-    color: #666;
-  }
-}
-
-/* ==========================================================================
-   UTILITY CLASSES
-   ========================================================================== */
-
-/* Invisible separator (for spacing only) */
-.wp-block-separator--invisible {
-  border: none;
-  background: none;
-}
-
-/* Custom color (override with inline style) */
-.wp-block-separator--custom {
-  /* User can set border-color via style prop */
+  letter-spacing: var(--spacing-4);
+  padding-left: var(--spacing-4); /* Offset letter-spacing */
 }

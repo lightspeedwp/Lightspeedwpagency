@@ -1,0 +1,217 @@
+/**
+ * Why Choose Us Template Styles
+ *
+ * WordPress template: templates/page-why-choose-us.html
+ * BEM naming: .wcu-*
+ * 100% CSS variables — no hardcoded values.
+ */
+
+/* ============================================
+   HERO
+   ============================================ */
+
+.wcu__hero-inner {
+  text-align: center;
+  max-width: 896px;
+  margin: 0 auto;
+}
+
+.wcu__hero-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h1);
+  font-weight: var(--font-weight-medium);
+  color: var(--foreground);
+  margin: 0 0 var(--spacing-6) 0;
+}
+
+.wcu__hero-desc {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-normal);
+  margin: 0 0 var(--spacing-8) 0;
+}
+
+.wcu__hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-4);
+}
+
+
+/* ============================================
+   STATS
+   ============================================ */
+
+.wcu__stat-card {
+  text-align: center;
+  padding: var(--spacing-6);
+  background-color: var(--card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-soft);
+}
+
+.wcu__stat-icon {
+  display: block;
+  margin: 0 auto var(--spacing-4);
+  color: var(--primary);
+}
+
+.wcu__stat-value {
+  font-family: var(--font-primary);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-medium);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-2);
+}
+
+.wcu__stat-label {
+  font-family: var(--font-secondary);
+  font-size: var(--text-small);
+  color: var(--muted-foreground);
+}
+
+
+/* ============================================
+   SECTION HEADER
+   ============================================ */
+
+.wcu__section-header {
+  text-align: center;
+  margin-bottom: var(--spacing-12);
+}
+
+.wcu__section-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-medium);
+  color: var(--foreground);
+  margin: 0 0 var(--spacing-4) 0;
+}
+
+.wcu__section-desc {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-normal);
+  max-width: 768px;
+  margin: 0 auto;
+}
+
+
+/* ============================================
+   VALUE PROP CARD
+   ============================================ */
+
+.wcu__vp-icon {
+  color: var(--primary);
+  margin-bottom: var(--spacing-6);
+}
+
+.wcu__vp-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h4);
+  font-weight: var(--font-weight-medium);
+  color: var(--foreground);
+  margin: 0 0 var(--spacing-4) 0;
+}
+
+.wcu__vp-desc {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-normal);
+  margin: 0;
+}
+
+
+/* ============================================
+   PROCESS STEP
+   ============================================ */
+
+.wcu__step {
+  display: flex;
+  gap: var(--spacing-4);
+}
+
+.wcu__step-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-lg);
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.wcu__step-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-medium);
+  color: var(--foreground);
+  margin: 0 0 var(--spacing-2) 0;
+}
+
+.wcu__step-desc {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-normal);
+  margin: 0;
+}
+
+
+/* ============================================
+   GUARANTEE CARD
+   ============================================ */
+
+.wcu__guarantee-card {
+  text-align: center;
+  padding: var(--spacing-6);
+  background-color: var(--card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-soft);
+}
+
+.wcu__guarantee-icon {
+  display: block;
+  margin: 0 auto var(--spacing-4);
+  color: var(--primary);
+}
+
+.wcu__guarantee-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-medium);
+  color: var(--foreground);
+  margin: 0 0 var(--spacing-3) 0;
+}
+
+.wcu__guarantee-desc {
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-normal);
+  margin: 0;
+}
+
+.wcu__section-footer {
+  text-align: center;
+  padding-top: var(--spacing-8);
+  /* margin-top converted to padding-top — section-level spacing */
+}
+
+
+/* ============================================
+   DARK MODE
+   ============================================ */
+
+.dark .wcu__stat-card,
+.dark .wcu__guarantee-card {
+  background-color: var(--card);
+  border-color: var(--border);
+}

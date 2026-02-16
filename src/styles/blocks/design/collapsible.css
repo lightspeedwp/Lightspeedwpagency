@@ -1,0 +1,22 @@
+/**
+ * Collapsible Block Styles
+ */
+.wp-block-collapsible {
+  /* No default styles, purely functional wrapper */
+}
+
+.wp-block-collapsible-trigger {
+  /* No default styles */
+}
+
+.wp-block-collapsible-content {
+  overflow: hidden;
+}
+
+.wp-block-collapsible-content[data-state="open"] {
+  animation: wp-slide-down 0.2s ease-out;
+}
+
+.wp-block-collapsible-content[data-state="closed"] {
+  animation: wp-slide-up 0.2s ease-out;
+}

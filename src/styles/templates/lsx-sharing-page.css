@@ -2,20 +2,12 @@
  * LSX Sharing Product Page Styles
  * 
  * Template-specific styles for LSX Sharing plugin page.
+ * All vertical spacing via blockGap (CSS gap) -- zero margin.
  * All styling uses CSS variables from design system.
- * 
- * Structure:
- * - Section headers
- * - Feature cards
- * - Benefit cards
- * - Process steps
- * - Network grid
- * - Specifications
- * - CTA section
  */
 
 /* ============================================================
-   SECTION HEADERS
+   SECTION HEADERS -- flex column with blockGap
    ============================================================ */
 
 .lsx-sharing__section-header {
@@ -24,6 +16,9 @@
   margin-left: auto;
   margin-right: auto;
   padding-bottom: var(--spacing-12);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
 }
 
 .lsx-sharing__section-title {
@@ -31,7 +26,6 @@
   font-size: var(--text-h2);
   font-weight: 600;
   color: var(--foreground);
-  margin-bottom: var(--spacing-4);
 }
 
 .lsx-sharing__section-description {
@@ -62,18 +56,22 @@
   }
 }
 
+/* Feature card -- flex column with blockGap */
 .lsx-sharing__feature-card {
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: var(--spacing-8);
   transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
 }
 
 .lsx-sharing__feature-card:hover {
   border-color: var(--primary);
   transform: translateY(-4px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-hover);
 }
 
 .lsx-sharing__feature-icon {
@@ -85,7 +83,6 @@
   background: var(--primary);
   color: var(--primary-foreground);
   border-radius: var(--radius);
-  margin-bottom: var(--spacing-4);
 }
 
 .lsx-sharing__feature-icon svg {
@@ -98,14 +95,13 @@
   font-size: var(--text-xl);
   font-weight: 600;
   color: var(--foreground);
-  margin-bottom: var(--spacing-3);
 }
 
 .lsx-sharing__feature-description {
   font-family: var(--font-secondary);
   font-size: var(--text-base);
   color: var(--muted-foreground);
-  line-height: 1.6;
+  line-height: var(--line-height-normal);
 }
 
 /* ============================================================
@@ -124,11 +120,15 @@
   }
 }
 
+/* Benefit card -- flex column with blockGap */
 .lsx-sharing__benefit-card {
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: var(--spacing-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
 }
 
 .lsx-sharing__benefit-title {
@@ -136,14 +136,13 @@
   font-size: var(--text-xl);
   font-weight: 600;
   color: var(--foreground);
-  margin-bottom: var(--spacing-3);
 }
 
 .lsx-sharing__benefit-description {
   font-family: var(--font-secondary);
   font-size: var(--text-base);
   color: var(--muted-foreground);
-  line-height: 1.6;
+  line-height: var(--line-height-normal);
 }
 
 /* ============================================================
@@ -180,8 +179,12 @@
   font-weight: 600;
 }
 
+/* Process content -- flex column with blockGap */
 .lsx-sharing__process-content {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
 }
 
 .lsx-sharing__process-title {
@@ -189,14 +192,13 @@
   font-size: var(--text-lg);
   font-weight: 600;
   color: var(--foreground);
-  margin-bottom: var(--spacing-2);
 }
 
 .lsx-sharing__process-description {
   font-family: var(--font-secondary);
   font-size: var(--text-base);
   color: var(--muted-foreground);
-  line-height: 1.6;
+  line-height: var(--line-height-normal);
 }
 
 /* ============================================================
@@ -207,7 +209,8 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--spacing-6);
-  margin-top: var(--spacing-12);
+  padding-top: var(--spacing-12);
+  /* margin-top converted to padding-top — section-level spacing */
 }
 
 @media (min-width: 640px) {
@@ -222,6 +225,7 @@
   }
 }
 
+/* Network card -- flex column with blockGap */
 .lsx-sharing__network-card {
   background: var(--card);
   border: 1px solid var(--border);
@@ -229,6 +233,10 @@
   padding: var(--spacing-6);
   text-align: center;
   transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-2);
 }
 
 .lsx-sharing__network-card:hover {
@@ -239,9 +247,6 @@
 .lsx-sharing__network-icon {
   width: 40px;
   height: 40px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: var(--spacing-3);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -258,7 +263,6 @@
   font-size: var(--text-base);
   font-weight: 600;
   color: var(--foreground);
-  margin-bottom: var(--spacing-1);
 }
 
 .lsx-sharing__network-description {
@@ -311,7 +315,7 @@
 }
 
 /* ============================================================
-   FREE PLUGIN HIGHLIGHT
+   FREE PLUGIN HIGHLIGHT -- flex column with blockGap
    ============================================================ */
 
 .lsx-sharing__free-highlight {
@@ -320,26 +324,28 @@
   border-radius: var(--radius-lg);
   padding: var(--spacing-12);
   text-align: center;
-  margin-top: var(--spacing-12);
+  /* margin-top removed — handled by parent gap or padding-top on this element */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-6);
 }
 
 .lsx-sharing__free-title {
   font-family: var(--font-primary);
   font-size: var(--text-3xl);
   font-weight: 600;
-  margin-bottom: var(--spacing-4);
 }
 
 .lsx-sharing__free-description {
   font-family: var(--font-secondary);
   font-size: var(--text-lg);
-  margin-bottom: var(--spacing-8);
   opacity: 0.95;
-  line-height: 1.6;
+  line-height: var(--line-height-normal);
 }
 
 /* ============================================================
-   CTA SECTION
+   CTA SECTION -- flex column with blockGap
    ============================================================ */
 
 .lsx-sharing__cta-container {
@@ -347,6 +353,10 @@
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-6);
 }
 
 .lsx-sharing__cta-title {
@@ -354,15 +364,13 @@
   font-size: var(--text-3xl);
   font-weight: 600;
   color: var(--foreground);
-  margin-bottom: var(--spacing-4);
 }
 
 .lsx-sharing__cta-description {
   font-family: var(--font-secondary);
   font-size: var(--text-lg);
   color: var(--muted-foreground);
-  margin-bottom: var(--spacing-8);
-  line-height: 1.6;
+  line-height: var(--line-height-normal);
 }
 
 .lsx-sharing__cta-buttons {

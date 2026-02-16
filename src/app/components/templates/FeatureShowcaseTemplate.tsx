@@ -1,49 +1,29 @@
 /**
  * Feature Showcase Template
  * 
- * Comprehensive demonstration of Option 1 & 2 features:
- * - New archive templates (Tag, Date)
- * - 15+ animation variants
- * - Interactive cards (5 variants × 5 hover effects)
- * - Loading states (8+ components)
- * - Real-world examples
+ * Comprehensive demonstration of Option 1 & 2 features.
+ * 100% CSS variables — no Tailwind.
+ * BEM naming: .showcase-*
  * 
- * This is a prototype showcase page (not a WordPress template).
+ * @see /src/styles/templates/feature-showcase.css
  */
 
-import { SiteHeader } from '../parts/SiteHeader';
-import { SiteFooter } from '../parts/SiteFooter';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { Button } from '../blocks/design/Buttons';
-import { BackToTopButton } from '../blocks/layout/BackToTopButton';
+import { Heading } from '../common/Heading';
 import { motion } from 'motion/react';
-import { useState } from 'react';
+import '@/styles/templates/feature-showcase.css';
 
-// Import new features
 import { 
   InteractiveCard,
-  InteractiveCardHeader,
-  InteractiveCardContent,
-  InteractiveCardFooter 
+  InteractiveCardContent
 } from '../common/InteractiveCard';
 
 import {
-  LoadingSpinner,
-  CardSkeleton,
-  ProgressBar,
-  DotsLoader,
-  PulseLoader,
-  SkeletonLine,
-  SkeletonCircle
-} from '../common/LoadingStates';
-
-import {
-  fadeIn,
   fadeInUp,
   fadeInDown,
   fadeInLeft,
-  fadeInRight,
   scaleIn,
   bounceIn,
   rotateIn,
@@ -66,1089 +46,319 @@ import {
 } from 'lucide-react';
 
 export function FeatureShowcaseTemplate() {
-  const [showLoadingDemo, setShowLoadingDemo] = useState(false);
-  const [progress, setProgress] = useState(0);
-
-  // Simulate progress bar
-  const startProgress = () => {
-    setProgress(0);
-    const interval = setInterval(() => {
-      setProgress(prev => {
-        if (prev >= 100) {
-          clearInterval(interval);
-          return 100;
-        }
-        return prev + 10;
-      });
-    }, 200);
-  };
-
   return (
     <>
-      <SiteHeader />
-      
-      <main id="main-content">
-        {/* Hero Section */}
-        <Section variant="default" className="pt-24 md:pt-32 pb-16">
-          <Container>
-            <motion.div
-              variants={fadeInUp}
-              initial="hidden"
-              animate="visible"
-              className="text-center max-w-4xl mx-auto"
-            >
-              <div className="flex items-center justify-center gap-2 mb-6">
-                <Sparkles 
-                  size={32} 
-                  style={{ color: 'var(--primary)' }}
-                />
-                <h1 
-                  style={{ 
-                    fontSize: 'var(--text-h1)',
-                    fontFamily: 'var(--font-primary)',
-                    fontWeight: 500,
-                    color: 'var(--foreground)'
-                  }}
-                >
-                  Feature Showcase
-                </h1>
-              </div>
-              
-              <p 
-                className="mb-8"
-                style={{
-                  fontSize: 'var(--text-xl)',
-                  fontFamily: 'var(--font-primary)',
-                  color: 'var(--muted-foreground)',
-                  lineHeight: 1.6
-                }}
-              >
-                Explore the new interactive features, animations, and components added in Options 1 & 2. 
-                All features maintain 100% design system compliance with CSS variables, Lexend/Manrope fonts, 
-                and WCAG AA accessibility.
-              </p>
-
-              <div className="flex flex-wrap items-center justify-center gap-4">
-                <Button href="#new-templates" size="lg">
-                  View New Templates
-                </Button>
-                <Button href="#animations" variant="secondary" size="lg">
-                  See Animations
-                </Button>
-                <Button href="#interactive-cards" variant="ghost" size="lg">
-                  Interactive Cards
-                </Button>
-              </div>
-            </motion.div>
-          </Container>
-        </Section>
-
-        {/* Feature Stats */}
-        <Section variant="muted">
-          <Container>
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={viewportOptions}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
-            >
-              {[
-                { label: 'New Templates', value: '2', icon: Layout, color: 'var(--primary)' },
-                { label: 'Animation Variants', value: '15+', icon: Zap, color: 'var(--primary)' },
-                { label: 'Card Combinations', value: '25', icon: Palette, color: 'var(--primary)' },
-                { label: 'Loading Components', value: '8+', icon: Rocket, color: 'var(--primary)' }
-              ].map((stat, index) => (
-                <motion.div
-                  key={stat.label}
-                  variants={staggerItem}
-                  className="p-6 rounded-lg text-center"
-                  style={{
-                    backgroundColor: 'var(--card)',
-                    border: '1px solid var(--border-soft)'
-                  }}
-                >
-                  <stat.icon 
-                    size={32} 
-                    className="mx-auto mb-4"
-                    style={{ color: stat.color }}
-                  />
-                  <div 
-                    className="mb-2"
-                    style={{
-                      fontSize: 'var(--text-h2)',
-                      fontFamily: 'var(--font-primary)',
-                      fontWeight: 500,
-                      color: 'var(--foreground)'
-                    }}
-                  >
-                    {stat.value}
-                  </div>
-                  <div 
-                    style={{
-                      fontSize: 'var(--text-sm)',
-                      fontFamily: 'var(--font-secondary)',
-                      color: 'var(--muted-foreground)'
-                    }}
-                  >
-                    {stat.label}
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
-          </Container>
-        </Section>
-
-        {/* New Archive Templates */}
-        <Section variant="default" id="new-templates">
-          <Container>
-            <motion.div
-              variants={fadeInUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={viewportOptions}
-              className="text-center mb-12"
-            >
-              <h2 
-                className="mb-4"
-                style={{
-                  fontSize: 'var(--text-h2)',
-                  fontFamily: 'var(--font-primary)',
-                  fontWeight: 500,
-                  color: 'var(--foreground)'
-                }}
-              >
-                New Archive Templates
-              </h2>
-              <p 
-                style={{
-                  fontSize: 'var(--text-lg)',
-                  fontFamily: 'var(--font-primary)',
-                  color: 'var(--muted-foreground)',
-                  maxWidth: '600px',
-                  margin: '0 auto'
-                }}
-              >
-                Browse content by tag or date with beautiful, interactive archive pages
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={viewportOptions}
-              className="grid grid-cols-1 md:grid-cols-2 gap-8"
-            >
-              {/* Tag Archive */}
-              <motion.div variants={staggerItem}>
-                <InteractiveCard
-                  href="/tag-gutenberg"
-                  variant="elevated"
-                  hoverEffect="lift"
-                >
-                  <InteractiveCardContent>
-                    <Tag 
-                      size={48} 
-                      className="mb-6"
-                      style={{ color: 'var(--primary)' }}
-                    />
-                    <h3 
-                      className="mb-4"
-                      style={{
-                        fontSize: 'var(--text-h3)',
-                        fontFamily: 'var(--font-primary)',
-                        fontWeight: 500,
-                        color: 'var(--foreground)'
-                      }}
-                    >
-                      Tag Archive Template
-                    </h3>
-                    <p 
-                      className="mb-6"
-                      style={{
-                        fontSize: 'var(--text-base)',
-                        fontFamily: 'var(--font-primary)',
-                        color: 'var(--muted-foreground)',
-                        lineHeight: 1.6
-                      }}
-                    >
-                      Browse posts by tag with related tags navigation, smart filtering, 
-                      and animated tag pills. Perfect for content discovery.
-                    </p>
-                    <ul className="space-y-2 mb-6">
-                      {[
-                        'Related tags detection',
-                        'Post count statistics',
-                        'Smart tag descriptions',
-                        'Stagger animations'
-                      ].map(feature => (
-                        <li 
-                          key={feature}
-                          className="flex items-center gap-2"
-                          style={{
-                            fontSize: 'var(--text-sm)',
-                            fontFamily: 'var(--font-secondary)',
-                            color: 'var(--muted-foreground)'
-                          }}
-                        >
-                          <CheckCircle size={16} style={{ color: 'var(--primary)' }} />
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-                    <div className="flex items-center gap-2" style={{ color: 'var(--primary)' }}>
-                      <span style={{ fontSize: 'var(--text-sm)', fontFamily: 'var(--font-secondary)', fontWeight: 500 }}>
-                        View Tag Archive
-                      </span>
-                      <ArrowRight size={16} />
-                    </div>
-                  </InteractiveCardContent>
-                </InteractiveCard>
-              </motion.div>
-
-              {/* Date Archive */}
-              <motion.div variants={staggerItem}>
-                <InteractiveCard
-                  href="/date-2024"
-                  variant="elevated"
-                  hoverEffect="lift"
-                >
-                  <InteractiveCardContent>
-                    <Calendar 
-                      size={48} 
-                      className="mb-6"
-                      style={{ color: 'var(--primary)' }}
-                    />
-                    <h3 
-                      className="mb-4"
-                      style={{
-                        fontSize: 'var(--text-h3)',
-                        fontFamily: 'var(--font-primary)',
-                        fontWeight: 500,
-                        color: 'var(--foreground)'
-                      }}
-                    >
-                      Date Archive Template
-                    </h3>
-                    <p 
-                      className="mb-6"
-                      style={{
-                        fontSize: 'var(--text-base)',
-                        fontFamily: 'var(--font-primary)',
-                        color: 'var(--muted-foreground)',
-                        lineHeight: 1.6
-                      }}
-                    >
-                      Browse posts by year or month with interactive calendar navigation, 
-                      month grids, and timeline views. Perfect for historical content.
-                    </p>
-                    <ul className="space-y-2 mb-6">
-                      {[
-                        'Year/month navigation',
-                        'Interactive month grid',
-                        'Post count visualization',
-                        'Smooth transitions'
-                      ].map(feature => (
-                        <li 
-                          key={feature}
-                          className="flex items-center gap-2"
-                          style={{
-                            fontSize: 'var(--text-sm)',
-                            fontFamily: 'var(--font-secondary)',
-                            color: 'var(--muted-foreground)'
-                          }}
-                        >
-                          <CheckCircle size={16} style={{ color: 'var(--primary)' }} />
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-                    <div className="flex items-center gap-2" style={{ color: 'var(--primary)' }}>
-                      <span style={{ fontSize: 'var(--text-sm)', fontFamily: 'var(--font-secondary)', fontWeight: 500 }}>
-                        View Date Archive
-                      </span>
-                      <ArrowRight size={16} />
-                    </div>
-                  </InteractiveCardContent>
-                </InteractiveCard>
-              </motion.div>
-            </motion.div>
-          </Container>
-        </Section>
-
-        {/* Animation Variants */}
-        <Section variant="background" id="animations">
-          <Container>
-            <motion.div
-              variants={fadeInUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={viewportOptions}
-              className="text-center mb-12"
-            >
-              <h2 
-                className="mb-4"
-                style={{
-                  fontSize: 'var(--text-h2)',
-                  fontFamily: 'var(--font-primary)',
-                  fontWeight: 500,
-                  color: 'var(--foreground)'
-                }}
-              >
-                Animation Variants
-              </h2>
-              <p 
-                style={{
-                  fontSize: 'var(--text-lg)',
-                  fontFamily: 'var(--font-primary)',
-                  color: 'var(--muted-foreground)',
-                  maxWidth: '600px',
-                  margin: '0 auto'
-                }}
-              >
-                15+ pre-built animation variants for scroll-triggered effects
-              </p>
-            </motion.div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {/* Fade In Up */}
-              <motion.div
-                variants={fadeInUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={viewportOptions}
-                className="p-6 rounded-lg"
-                style={{
-                  backgroundColor: 'var(--card)',
-                  border: '1px solid var(--border-soft)'
-                }}
-              >
-                <Code size={32} className="mb-4" style={{ color: 'var(--primary)' }} />
-                <h3 
-                  className="mb-2"
-                  style={{
-                    fontSize: 'var(--text-lg)',
-                    fontFamily: 'var(--font-primary)',
-                    fontWeight: 500,
-                    color: 'var(--foreground)'
-                  }}
-                >
-                  Fade In Up
-                </h3>
-                <p 
-                  style={{
-                    fontSize: 'var(--text-sm)',
-                    fontFamily: 'var(--font-secondary)',
-                    color: 'var(--muted-foreground)'
-                  }}
-                >
-                  Most common animation. Opacity + upward movement with smooth easing.
-                </p>
-              </motion.div>
-
-              {/* Fade In Down */}
-              <motion.div
-                variants={fadeInDown}
-                initial="hidden"
-                whileInView="visible"
-                viewport={viewportOptions}
-                className="p-6 rounded-lg"
-                style={{
-                  backgroundColor: 'var(--card)',
-                  border: '1px solid var(--border-soft)'
-                }}
-              >
-                <Code size={32} className="mb-4" style={{ color: 'var(--primary)' }} />
-                <h3 
-                  className="mb-2"
-                  style={{
-                    fontSize: 'var(--text-lg)',
-                    fontFamily: 'var(--font-primary)',
-                    fontWeight: 500,
-                    color: 'var(--foreground)'
-                  }}
-                >
-                  Fade In Down
-                </h3>
-                <p 
-                  style={{
-                    fontSize: 'var(--text-sm)',
-                    fontFamily: 'var(--font-secondary)',
-                    color: 'var(--muted-foreground)'
-                  }}
-                >
-                  Header animation. Opacity + downward movement for titles.
-                </p>
-              </motion.div>
-
-              {/* Fade In Left */}
-              <motion.div
-                variants={fadeInLeft}
-                initial="hidden"
-                whileInView="visible"
-                viewport={viewportOptions}
-                className="p-6 rounded-lg"
-                style={{
-                  backgroundColor: 'var(--card)',
-                  border: '1px solid var(--border-soft)'
-                }}
-              >
-                <Code size={32} className="mb-4" style={{ color: 'var(--primary)' }} />
-                <h3 
-                  className="mb-2"
-                  style={{
-                    fontSize: 'var(--text-lg)',
-                    fontFamily: 'var(--font-primary)',
-                    fontWeight: 500,
-                    color: 'var(--foreground)'
-                  }}
-                >
-                  Fade In Left
-                </h3>
-                <p 
-                  style={{
-                    fontSize: 'var(--text-sm)',
-                    fontFamily: 'var(--font-secondary)',
-                    color: 'var(--muted-foreground)'
-                  }}
-                >
-                  Directional animation. Slides in from left with fade.
-                </p>
-              </motion.div>
-
-              {/* Scale In */}
-              <motion.div
-                variants={scaleIn}
-                initial="hidden"
-                whileInView="visible"
-                viewport={viewportOptions}
-                className="p-6 rounded-lg"
-                style={{
-                  backgroundColor: 'var(--card)',
-                  border: '1px solid var(--border-soft)'
-                }}
-              >
-                <Code size={32} className="mb-4" style={{ color: 'var(--primary)' }} />
-                <h3 
-                  className="mb-2"
-                  style={{
-                    fontSize: 'var(--text-lg)',
-                    fontFamily: 'var(--font-primary)',
-                    fontWeight: 500,
-                    color: 'var(--foreground)'
-                  }}
-                >
-                  Scale In
-                </h3>
-                <p 
-                  style={{
-                    fontSize: 'var(--text-sm)',
-                    fontFamily: 'var(--font-secondary)',
-                    color: 'var(--muted-foreground)'
-                  }}
-                >
-                  Emphasis animation. Zooms in with opacity for attention.
-                </p>
-              </motion.div>
-
-              {/* Bounce In */}
-              <motion.div
-                variants={bounceIn}
-                initial="hidden"
-                whileInView="visible"
-                viewport={viewportOptions}
-                className="p-6 rounded-lg"
-                style={{
-                  backgroundColor: 'var(--card)',
-                  border: '1px solid var(--border-soft)'
-                }}
-              >
-                <Code size={32} className="mb-4" style={{ color: 'var(--primary)' }} />
-                <h3 
-                  className="mb-2"
-                  style={{
-                    fontSize: 'var(--text-lg)',
-                    fontFamily: 'var(--font-primary)',
-                    fontWeight: 500,
-                    color: 'var(--foreground)'
-                  }}
-                >
-                  Bounce In
-                </h3>
-                <p 
-                  style={{
-                    fontSize: 'var(--text-sm)',
-                    fontFamily: 'var(--font-secondary)',
-                    color: 'var(--muted-foreground)'
-                  }}
-                >
-                  Playful animation. Spring bounce effect for fun elements.
-                </p>
-              </motion.div>
-
-              {/* Rotate In */}
-              <motion.div
-                variants={rotateIn}
-                initial="hidden"
-                whileInView="visible"
-                viewport={viewportOptions}
-                className="p-6 rounded-lg"
-                style={{
-                  backgroundColor: 'var(--card)',
-                  border: '1px solid var(--border-soft)'
-                }}
-              >
-                <Code size={32} className="mb-4" style={{ color: 'var(--primary)' }} />
-                <h3 
-                  className="mb-2"
-                  style={{
-                    fontSize: 'var(--text-lg)',
-                    fontFamily: 'var(--font-primary)',
-                    fontWeight: 500,
-                    color: 'var(--foreground)'
-                  }}
-                >
-                  Rotate In
-                </h3>
-                <p 
-                  style={{
-                    fontSize: 'var(--text-sm)',
-                    fontFamily: 'var(--font-secondary)',
-                    color: 'var(--muted-foreground)'
-                  }}
-                >
-                  Dynamic animation. Spinning entrance for icons/logos.
-                </p>
-              </motion.div>
+      {/* Hero Section */}
+      <Section background="default" spacing="lg">
+        <Container>
+          <motion.div
+            variants={fadeInUp}
+            initial="hidden"
+            animate="visible"
+            className="showcase__hero-inner"
+          >
+            <div className="showcase__hero-title-row">
+              <Sparkles 
+                size={32} 
+                style={{ color: 'var(--primary)' }}
+              />
+              <Heading level={1}>
+                Feature Showcase
+              </Heading>
             </div>
+            
+            <p className="showcase__hero-desc">
+              Explore the new interactive features, animations, and components added in Options 1 &amp; 2. 
+              All features maintain 100% design system compliance with CSS variables, Lexend/Manrope fonts, 
+              and WCAG AA accessibility.
+            </p>
 
-            <div className="text-center mt-12">
-              <p 
-                className="mb-4"
-                style={{
-                  fontSize: 'var(--text-base)',
-                  fontFamily: 'var(--font-secondary)',
-                  color: 'var(--muted-foreground)'
-                }}
-              >
-                + 9 more variants including blur, reveal, parallax, and stagger effects
-              </p>
-              <Button href="/style-guide" variant="secondary">
-                View Complete Animation Guide
+            <div className="showcase__hero-actions">
+              <Button href="#new-templates" size="lg">
+                View New Templates
+              </Button>
+              <Button href="#animations" variant="secondary" size="lg">
+                See Animations
+              </Button>
+              <Button href="#interactive-cards" variant="ghost" size="lg">
+                Interactive Cards
               </Button>
             </div>
-          </Container>
-        </Section>
+          </motion.div>
+        </Container>
+      </Section>
 
-        {/* Interactive Cards */}
-        <Section variant="default" id="interactive-cards">
-          <Container>
-            <motion.div
-              variants={fadeInUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={viewportOptions}
-              className="text-center mb-12"
-            >
-              <h2 
-                className="mb-4"
-                style={{
-                  fontSize: 'var(--text-h2)',
-                  fontFamily: 'var(--font-primary)',
-                  fontWeight: 500,
-                  color: 'var(--foreground)'
-                }}
+      {/* Feature Stats */}
+      <Section background="muted" spacing="md">
+        <Container>
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOptions}
+            className="wp-grid-4-cols"
+            style={{ gap: 'var(--spacing-6)' }}
+          >
+            {[
+              { label: 'New Templates', value: '2', icon: Layout },
+              { label: 'Animation Variants', value: '15+', icon: Zap },
+              { label: 'Card Combinations', value: '25', icon: Palette },
+              { label: 'Loading Components', value: '8+', icon: Rocket }
+            ].map((stat) => (
+              <motion.div
+                key={stat.label}
+                variants={staggerItem}
+                className="showcase__stat-card"
               >
-                Interactive Cards
-              </h2>
-              <p 
-                style={{
-                  fontSize: 'var(--text-lg)',
-                  fontFamily: 'var(--font-primary)',
-                  color: 'var(--muted-foreground)',
-                  maxWidth: '600px',
-                  margin: '0 auto'
-                }}
-              >
-                5 variants × 5 hover effects = 25 unique card combinations
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={viewportOptions}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-            >
-              {/* Default + Lift */}
-              <motion.div variants={staggerItem}>
-                <InteractiveCard variant="default" hoverEffect="lift">
-                  <InteractiveCardContent>
-                    <h3 
-                      className="mb-2"
-                      style={{
-                        fontSize: 'var(--text-lg)',
-                        fontFamily: 'var(--font-primary)',
-                        fontWeight: 500,
-                        color: 'var(--foreground)'
-                      }}
-                    >
-                      Default + Lift
-                    </h3>
-                    <p 
-                      style={{
-                        fontSize: 'var(--text-sm)',
-                        fontFamily: 'var(--font-secondary)',
-                        color: 'var(--muted-foreground)'
-                      }}
-                    >
-                      Most common. Card rises on hover with enhanced shadow.
-                    </p>
-                  </InteractiveCardContent>
-                </InteractiveCard>
-              </motion.div>
-
-              {/* Elevated + Scale */}
-              <motion.div variants={staggerItem}>
-                <InteractiveCard variant="elevated" hoverEffect="scale">
-                  <InteractiveCardContent>
-                    <h3 
-                      className="mb-2"
-                      style={{
-                        fontSize: 'var(--text-lg)',
-                        fontFamily: 'var(--font-primary)',
-                        fontWeight: 500,
-                        color: 'var(--foreground)'
-                      }}
-                    >
-                      Elevated + Scale
-                    </h3>
-                    <p 
-                      style={{
-                        fontSize: 'var(--text-sm)',
-                        fontFamily: 'var(--font-secondary)',
-                        color: 'var(--muted-foreground)'
-                      }}
-                    >
-                      Emphasis. Card grows slightly without vertical movement.
-                    </p>
-                  </InteractiveCardContent>
-                </InteractiveCard>
-              </motion.div>
-
-              {/* Bordered + Tilt */}
-              <motion.div variants={staggerItem}>
-                <InteractiveCard variant="bordered" hoverEffect="tilt">
-                  <InteractiveCardContent>
-                    <h3 
-                      className="mb-2"
-                      style={{
-                        fontSize: 'var(--text-lg)',
-                        fontFamily: 'var(--font-primary)',
-                        fontWeight: 500,
-                        color: 'var(--foreground)'
-                      }}
-                    >
-                      Bordered + Tilt
-                    </h3>
-                    <p 
-                      style={{
-                        fontSize: 'var(--text-sm)',
-                        fontFamily: 'var(--font-secondary)',
-                        color: 'var(--muted-foreground)'
-                      }}
-                    >
-                      Playful 3D. Card tilts based on mouse position.
-                    </p>
-                  </InteractiveCardContent>
-                </InteractiveCard>
-              </motion.div>
-
-              {/* Glass + Glow */}
-              <motion.div variants={staggerItem}>
-                <InteractiveCard variant="glass" hoverEffect="glow">
-                  <InteractiveCardContent>
-                    <h3 
-                      className="mb-2"
-                      style={{
-                        fontSize: 'var(--text-lg)',
-                        fontFamily: 'var(--font-primary)',
-                        fontWeight: 500,
-                        color: 'var(--foreground)'
-                      }}
-                    >
-                      Glass + Glow
-                    </h3>
-                    <p 
-                      style={{
-                        fontSize: 'var(--text-sm)',
-                        fontFamily: 'var(--font-secondary)',
-                        color: 'var(--muted-foreground)'
-                      }}
-                    >
-                      Premium. Glassmorphism with glowing shadow and shine.
-                    </p>
-                  </InteractiveCardContent>
-                </InteractiveCard>
-              </motion.div>
-
-              {/* Gradient + Lift */}
-              <motion.div variants={staggerItem}>
-                <InteractiveCard variant="gradient" hoverEffect="lift">
-                  <InteractiveCardContent>
-                    <h3 
-                      className="mb-2"
-                      style={{
-                        fontSize: 'var(--text-lg)',
-                        fontFamily: 'var(--font-primary)',
-                        fontWeight: 500,
-                        color: 'var(--foreground)'
-                      }}
-                    >
-                      Gradient + Lift
-                    </h3>
-                    <p 
-                      style={{
-                        fontSize: 'var(--text-sm)',
-                        fontFamily: 'var(--font-secondary)',
-                        color: 'var(--muted-foreground)'
-                      }}
-                    >
-                      Eye-catching. Subtle gradient with lift effect.
-                    </p>
-                  </InteractiveCardContent>
-                </InteractiveCard>
-              </motion.div>
-
-              {/* Default + None */}
-              <motion.div variants={staggerItem}>
-                <InteractiveCard variant="default" hoverEffect="none">
-                  <InteractiveCardContent>
-                    <h3 
-                      className="mb-2"
-                      style={{
-                        fontSize: 'var(--text-lg)',
-                        fontFamily: 'var(--font-primary)',
-                        fontWeight: 500,
-                        color: 'var(--foreground)'
-                      }}
-                    >
-                      Any + None
-                    </h3>
-                    <p 
-                      style={{
-                        fontSize: 'var(--text-sm)',
-                        fontFamily: 'var(--font-secondary)',
-                        color: 'var(--muted-foreground)'
-                      }}
-                    >
-                      Static. Disable animations for dense layouts.
-                    </p>
-                  </InteractiveCardContent>
-                </InteractiveCard>
-              </motion.div>
-            </motion.div>
-          </Container>
-        </Section>
-
-        {/* Loading States */}
-        <Section variant="muted" id="loading-states">
-          <Container>
-            <motion.div
-              variants={fadeInUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={viewportOptions}
-              className="text-center mb-12"
-            >
-              <h2 
-                className="mb-4"
-                style={{
-                  fontSize: 'var(--text-h2)',
-                  fontFamily: 'var(--font-primary)',
-                  fontWeight: 500,
-                  color: 'var(--foreground)'
-                }}
-              >
-                Loading States
-              </h2>
-              <p 
-                style={{
-                  fontSize: 'var(--text-lg)',
-                  fontFamily: 'var(--font-primary)',
-                  color: 'var(--muted-foreground)',
-                  maxWidth: '600px',
-                  margin: '0 auto'
-                }}
-              >
-                8+ skeleton loaders and loading indicators for better UX
-              </p>
-            </motion.div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              {/* Loading Spinners */}
-              <div 
-                className="p-6 rounded-lg"
-                style={{
-                  backgroundColor: 'var(--card)',
-                  border: '1px solid var(--border-soft)'
-                }}
-              >
-                <h3 
-                  className="mb-6"
-                  style={{
-                    fontSize: 'var(--text-lg)',
-                    fontFamily: 'var(--font-primary)',
-                    fontWeight: 500,
-                    color: 'var(--foreground)'
-                  }}
-                >
-                  Spinners
-                </h3>
-                <div className="flex items-center justify-around gap-4 mb-6">
-                  <div className="text-center">
-                    <LoadingSpinner size="sm" />
-                    <p 
-                      className="mt-2"
-                      style={{
-                        fontSize: 'var(--text-xs)',
-                        fontFamily: 'var(--font-secondary)',
-                        color: 'var(--muted-foreground)'
-                      }}
-                    >
-                      Small
-                    </p>
-                  </div>
-                  <div className="text-center">
-                    <LoadingSpinner size="md" />
-                    <p 
-                      className="mt-2"
-                      style={{
-                        fontSize: 'var(--text-xs)',
-                        fontFamily: 'var(--font-secondary)',
-                        color: 'var(--muted-foreground)'
-                      }}
-                    >
-                      Medium
-                    </p>
-                  </div>
-                  <div className="text-center">
-                    <LoadingSpinner size="lg" />
-                    <p 
-                      className="mt-2"
-                      style={{
-                        fontSize: 'var(--text-xs)',
-                        fontFamily: 'var(--font-secondary)',
-                        color: 'var(--muted-foreground)'
-                      }}
-                    >
-                      Large
-                    </p>
-                  </div>
+                <stat.icon 
+                  size={32} 
+                  style={{ color: 'var(--primary)', margin: '0 auto var(--spacing-4)' }}
+                />
+                <div className="showcase__stat-value">
+                  {stat.value}
                 </div>
-              </div>
-
-              {/* Other Loaders */}
-              <div 
-                className="p-6 rounded-lg"
-                style={{
-                  backgroundColor: 'var(--card)',
-                  border: '1px solid var(--border-soft)'
-                }}
-              >
-                <h3 
-                  className="mb-6"
-                  style={{
-                    fontSize: 'var(--text-lg)',
-                    fontFamily: 'var(--font-primary)',
-                    fontWeight: 500,
-                    color: 'var(--foreground)'
-                  }}
-                >
-                  Alternative Loaders
-                </h3>
-                <div className="space-y-6">
-                  <div className="flex items-center justify-between">
-                    <span 
-                      style={{
-                        fontSize: 'var(--text-sm)',
-                        fontFamily: 'var(--font-secondary)',
-                        color: 'var(--foreground)'
-                      }}
-                    >
-                      Dots Loader
-                    </span>
-                    <DotsLoader />
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span 
-                      style={{
-                        fontSize: 'var(--text-sm)',
-                        fontFamily: 'var(--font-secondary)',
-                        color: 'var(--foreground)'
-                      }}
-                    >
-                      Pulse Loader
-                    </span>
-                    <PulseLoader size={48} />
-                  </div>
+                <div className="showcase__stat-label">
+                  {stat.label}
                 </div>
-              </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </Container>
+      </Section>
 
-              {/* Progress Bar */}
-              <div 
-                className="p-6 rounded-lg lg:col-span-2"
-                style={{
-                  backgroundColor: 'var(--card)',
-                  border: '1px solid var(--border-soft)'
-                }}
+      {/* New Archive Templates */}
+      <Section background="default" spacing="md" id="new-templates">
+        <Container>
+          <motion.div
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOptions}
+            className="showcase__section-header"
+          >
+            <h2 className="showcase__section-title">
+              New Archive Templates
+            </h2>
+            <p className="showcase__section-desc">
+              Browse content by tag or date with beautiful, interactive archive pages
+            </p>
+          </motion.div>
+
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOptions}
+            className="wp-grid-2-cols"
+            style={{ gap: 'var(--spacing-8)' }}
+          >
+            {/* Tag Archive */}
+            <motion.div variants={staggerItem}>
+              <InteractiveCard
+                href="/tag-gutenberg"
+                variant="elevated"
+                hoverEffect="lift"
               >
-                <div className="flex items-center justify-between mb-4">
-                  <h3 
-                    style={{
-                      fontSize: 'var(--text-lg)',
-                      fontFamily: 'var(--font-primary)',
-                      fontWeight: 500,
-                      color: 'var(--foreground)'
-                    }}
-                  >
-                    Progress Bar
+                <InteractiveCardContent>
+                  <Tag 
+                    size={48} 
+                    className="showcase__template-icon"
+                  />
+                  <h3 className="showcase__template-title">
+                    Tag Archive Template
                   </h3>
-                  <Button 
-                    variant="ghost" 
-                    size="sm"
-                    onClick={startProgress}
-                  >
-                    Start Demo
-                  </Button>
-                </div>
-                <ProgressBar progress={progress} showLabel={true} />
-              </div>
-
-              {/* Skeleton Components */}
-              <div 
-                className="p-6 rounded-lg lg:col-span-2"
-                style={{
-                  backgroundColor: 'var(--card)',
-                  border: '1px solid var(--border-soft)'
-                }}
-              >
-                <div className="flex items-center justify-between mb-6">
-                  <h3 
-                    style={{
-                      fontSize: 'var(--text-lg)',
-                      fontFamily: 'var(--font-primary)',
-                      fontWeight: 500,
-                      color: 'var(--foreground)'
-                    }}
-                  >
-                    Skeleton Loaders
-                  </h3>
-                  <Button 
-                    variant="ghost" 
-                    size="sm"
-                    onClick={() => setShowLoadingDemo(!showLoadingDemo)}
-                  >
-                    {showLoadingDemo ? 'Hide Demo' : 'Show Demo'}
-                  </Button>
-                </div>
-                
-                {showLoadingDemo && (
-                  <div className="space-y-6">
-                    <div>
-                      <p 
-                        className="mb-3"
-                        style={{
-                          fontSize: 'var(--text-sm)',
-                          fontFamily: 'var(--font-secondary)',
-                          color: 'var(--muted-foreground)'
-                        }}
+                  <p className="showcase__template-desc">
+                    Browse posts by tag with related tags navigation, smart filtering, 
+                    and animated tag pills. Perfect for content discovery.
+                  </p>
+                  <ul className="showcase__feature-list">
+                    {[
+                      'Related tags detection',
+                      'Post count statistics',
+                      'Smart tag descriptions',
+                      'Stagger animations'
+                    ].map(feature => (
+                      <li 
+                        key={feature}
+                        className="showcase__feature-item"
                       >
-                        Skeleton Lines
-                      </p>
-                      <div className="space-y-2">
-                        <SkeletonLine width="100%" height={20} />
-                        <SkeletonLine width="80%" height={20} />
-                        <SkeletonLine width="60%" height={20} />
-                      </div>
-                    </div>
-
-                    <div>
-                      <p 
-                        className="mb-3"
-                        style={{
-                          fontSize: 'var(--text-sm)',
-                          fontFamily: 'var(--font-secondary)',
-                          color: 'var(--muted-foreground)'
-                        }}
-                      >
-                        Skeleton with Avatar
-                      </p>
-                      <div className="flex items-center gap-4">
-                        <SkeletonCircle size={48} />
-                        <div className="flex-1 space-y-2">
-                          <SkeletonLine width="60%" height={16} />
-                          <SkeletonLine width="40%" height={12} />
-                        </div>
-                      </div>
-                    </div>
+                        <CheckCircle size={16} style={{ color: 'var(--primary)' }} />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="showcase__template-link">
+                    <span>View Tag Archive</span>
+                    <ArrowRight size={16} />
                   </div>
-                )}
-              </div>
-            </div>
-          </Container>
-        </Section>
-
-        {/* CTA Section */}
-        <Section variant="default">
-          <Container>
-            <motion.div
-              variants={fadeInUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={viewportOptions}
-              className="text-center max-w-3xl mx-auto"
-            >
-              <h2 
-                className="mb-4"
-                style={{
-                  fontSize: 'var(--text-h2)',
-                  fontFamily: 'var(--font-primary)',
-                  fontWeight: 500,
-                  color: 'var(--foreground)'
-                }}
-              >
-                Ready to Use These Features?
-              </h2>
-              <p 
-                className="mb-8"
-                style={{
-                  fontSize: 'var(--text-lg)',
-                  fontFamily: 'var(--font-primary)',
-                  color: 'var(--muted-foreground)',
-                  lineHeight: 1.6
-                }}
-              >
-                All features maintain 100% design system compliance with CSS variables, 
-                approved fonts (Lexend/Manrope), and WCAG AA accessibility.
-              </p>
-              <div className="flex flex-wrap items-center justify-center gap-4">
-                <Button href="/style-guide" size="lg">
-                  View Style Guide
-                </Button>
-                <Button href="/front-page" variant="secondary" size="lg">
-                  Back to Home
-                </Button>
-              </div>
+                </InteractiveCardContent>
+              </InteractiveCard>
             </motion.div>
-          </Container>
-        </Section>
-      </main>
 
-      <SiteFooter />
-      <BackToTopButton />
+            {/* Date Archive */}
+            <motion.div variants={staggerItem}>
+              <InteractiveCard
+                href="/date-2024"
+                variant="elevated"
+                hoverEffect="lift"
+              >
+                <InteractiveCardContent>
+                  <Calendar 
+                    size={48} 
+                    className="showcase__template-icon"
+                  />
+                  <h3 className="showcase__template-title">
+                    Date Archive Template
+                  </h3>
+                  <p className="showcase__template-desc">
+                    Browse posts by year or month with interactive calendar navigation, 
+                    month grids, and timeline views. Perfect for historical content.
+                  </p>
+                  <ul className="showcase__feature-list">
+                    {[
+                      'Year/month navigation',
+                      'Interactive month grid',
+                      'Post count visualization',
+                      'Smooth transitions'
+                    ].map(feature => (
+                      <li 
+                        key={feature}
+                        className="showcase__feature-item"
+                      >
+                        <CheckCircle size={16} style={{ color: 'var(--primary)' }} />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="showcase__template-link">
+                    <span>View Date Archive</span>
+                    <ArrowRight size={16} />
+                  </div>
+                </InteractiveCardContent>
+              </InteractiveCard>
+            </motion.div>
+          </motion.div>
+        </Container>
+      </Section>
+
+      {/* Animation Variants */}
+      <Section background="default" spacing="md" id="animations">
+        <Container>
+          <motion.div
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOptions}
+            className="showcase__section-header"
+          >
+            <h2 className="showcase__section-title">
+              Animation Variants
+            </h2>
+            <p className="showcase__section-desc">
+              15+ pre-built animation variants for scroll-triggered effects
+            </p>
+          </motion.div>
+
+          <div className="wp-grid-3-cols" style={{ gap: 'var(--spacing-6)' }}>
+            {[
+              { name: 'Fade In Up', desc: 'Most common animation. Opacity + upward movement with smooth easing.', variant: fadeInUp },
+              { name: 'Fade In Down', desc: 'Header animation. Opacity + downward movement for titles.', variant: fadeInDown },
+              { name: 'Fade In Left', desc: 'Directional animation. Slides in from left with fade.', variant: fadeInLeft },
+              { name: 'Scale In', desc: 'Emphasis animation. Zooms in with opacity for attention.', variant: scaleIn },
+              { name: 'Bounce In', desc: 'Playful animation. Spring bounce effect for fun elements.', variant: bounceIn },
+              { name: 'Rotate In', desc: 'Dynamic animation. Spinning entrance for icons/logos.', variant: rotateIn },
+            ].map((anim) => (
+              <motion.div
+                key={anim.name}
+                variants={anim.variant}
+                initial="hidden"
+                whileInView="visible"
+                viewport={viewportOptions}
+                className="showcase__anim-card"
+              >
+                <Code size={32} className="showcase__anim-icon" />
+                <h3 className="showcase__anim-title">
+                  {anim.name}
+                </h3>
+                <p className="showcase__anim-desc">
+                  {anim.desc}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="showcase__section-footer">
+            <p className="showcase__section-footer-text">
+              + 9 more variants including blur, reveal, parallax, and stagger effects
+            </p>
+            <Button href="/style-guide" variant="secondary">
+              View Complete Animation Guide
+            </Button>
+          </div>
+        </Container>
+      </Section>
+
+      {/* Interactive Cards */}
+      <Section background="default" spacing="md" id="interactive-cards">
+        <Container>
+          <motion.div
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOptions}
+            className="showcase__section-header"
+          >
+            <h2 className="showcase__section-title">
+              Interactive Cards
+            </h2>
+            <p className="showcase__section-desc">
+              5 variants &times; 5 hover effects = 25 unique card combinations
+            </p>
+          </motion.div>
+
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOptions}
+            className="wp-grid-3-cols"
+            style={{ gap: 'var(--spacing-6)' }}
+          >
+            {[
+              { title: 'Default + Lift', desc: 'Most common. Card rises on hover with enhanced shadow.', variant: 'default' as const, effect: 'lift' as const },
+              { title: 'Elevated + Scale', desc: 'Emphasis. Card grows slightly without vertical movement.', variant: 'elevated' as const, effect: 'scale' as const },
+              { title: 'Bordered + Tilt', desc: 'Playful 3D. Card tilts based on mouse position.', variant: 'bordered' as const, effect: 'tilt' as const },
+              { title: 'Muted + Glow', desc: 'Subtle background with colored glow on hover.', variant: 'muted' as const, effect: 'glow' as const },
+              { title: 'Gradient + Shine', desc: 'Premium look. Gradient background with light reflection.', variant: 'gradient' as const, effect: 'shine' as const },
+            ].map((card) => (
+              <motion.div key={card.title} variants={staggerItem}>
+                <InteractiveCard variant={card.variant} hoverEffect={card.effect}>
+                  <InteractiveCardContent>
+                    <h3 
+                      className="showcase__card-title"
+                      style={card.variant === 'gradient' ? { color: 'var(--primary-foreground)' } : undefined}
+                    >
+                      {card.title}
+                    </h3>
+                    <p 
+                      className="showcase__card-desc"
+                      style={card.variant === 'gradient' ? { color: 'var(--primary-foreground)', opacity: 0.9 } : undefined}
+                    >
+                      {card.desc}
+                    </p>
+                  </InteractiveCardContent>
+                </InteractiveCard>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          <div className="showcase__section-footer">
+            <Button href="/components#cards" variant="outline">
+              View All Combinations
+            </Button>
+          </div>
+        </Container>
+      </Section>
     </>
   );
 }

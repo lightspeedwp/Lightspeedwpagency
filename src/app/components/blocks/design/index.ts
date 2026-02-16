@@ -1,32 +1,15 @@
 /**
  * Design Blocks - WordPress Core Design Category Blocks
  * 
- * This folder contains React implementations of WordPress core blocks
- * from the "Design" category. Each component maps to a WordPress block
- * and follows the design system requirements.
- * 
- * Available blocks:
- * - Accordion (core/details) - Collapsible content panels for FAQs and expandable content (NEW)
- * - Alert (lsx-design/alert) - Important messages and notifications
- * - Badge (lsx-design/badge) - Small label for status, categories, and tags
- * - Buttons (core/buttons) - Container for multiple button blocks
- * - Group (core/group) - Versatile container for grouping blocks
- * - Grid (core/grid) - Flexible grid layout container
- * - Stack (core/stack) - Vertical layout with consistent spacing
- * - Row (core/row) - Horizontal layout container
- * - Columns (core/columns) - Multi-column layout with Column children
+ * React implementations of WordPress core blocks from the "Design" category.
+ * Each component maps to a WordPress block and follows the design system requirements.
  * 
  * @see /guidelines/blocks/design/
- * @see /guidelines/blocks/design/Accordion.md
  */
 
-// Accordion block (NEW)
+// Accordion block
 export { Accordion, AccordionItem } from './Accordion';
 export type { AccordionProps, AccordionItemProps } from './Accordion';
-
-// Alert block
-export { Alert, AlertTitle, AlertDescription } from './Alert';
-export type { AlertProps, AlertTitleProps, AlertDescriptionProps } from './Alert';
 
 // Badge block
 export { Badge } from './Badge';
@@ -35,6 +18,9 @@ export type { BadgeProps } from './Badge';
 // Buttons block
 export { Buttons, ButtonBlock, Button } from './Buttons';
 export type { ButtonsProps, ButtonProps } from './Buttons';
+
+// Card block
+export { Card } from './Card';
 
 // Group block
 export { Group } from './Group';
@@ -55,3 +41,12 @@ export type { RowProps } from './Row';
 // Columns block
 export { Columns, Column } from './Columns';
 export type { ColumnsProps, ColumnProps } from './Columns';
+
+// Separator block
+export { Separator } from './Separator';
+
+// Spacer block
+export { Spacer } from './Spacer';
+
+// Tabs block
+export { Tabs } from './Tabs';

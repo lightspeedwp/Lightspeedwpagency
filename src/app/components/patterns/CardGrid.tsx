@@ -32,6 +32,7 @@
  */
 
 import { ChevronRight, ExternalLink } from 'lucide-react';
+import '@/styles/patterns/card-grid.css';
 
 export interface CardMeta {
   /** Icon component */
@@ -197,7 +198,7 @@ export function CardGrid({
                 )}
 
                 {/* Meta */}
-                {item.meta && item.meta.length > 0 && (
+                {Array.isArray(item.meta) && item.meta.length > 0 && (
                   <div className="card-grid__meta">
                     {item.meta.map((meta, metaIndex) => {
                       const MetaIcon = meta.icon;

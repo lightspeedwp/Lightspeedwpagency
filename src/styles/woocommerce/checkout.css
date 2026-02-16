@@ -1,0 +1,163 @@
+/**
+ * WooCommerce Checkout Styles
+ * 
+ * BEM naming.
+ * 100% CSS variables.
+ */
+
+.woocommerce-checkout {
+  padding-top: var(--spacing-16);
+  padding-bottom: var(--spacing-16);
+}
+
+.woocommerce-checkout__header {
+  margin-bottom: var(--spacing-8);
+}
+
+.woocommerce-checkout__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h1);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+}
+
+.woocommerce-checkout__section-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h4);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-6);
+  color: var(--foreground);
+}
+
+.woocommerce-checkout__layout {
+  display: grid;
+  gap: var(--spacing-12);
+}
+
+@media (min-width: 1024px) {
+  .woocommerce-checkout__layout {
+    grid-template-columns: 1.5fr 1fr;
+  }
+}
+
+/* Billing Fields */
+.woocommerce-billing-fields__field-wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-6);
+}
+
+@media (min-width: 768px) {
+  .woocommerce-billing-fields__field-wrapper {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .form-row-wide {
+    grid-column: span 2;
+  }
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.form-row label {
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--foreground);
+}
+
+.form-row .required {
+  color: var(--destructive);
+  text-decoration: none;
+}
+
+.input-text {
+  padding: var(--spacing-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background-color: var(--background);
+  font-family: var(--font-secondary);
+}
+
+/* Order Review */
+.woocommerce-checkout-review-order {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-8);
+  height: fit-content;
+}
+
+.woocommerce-checkout-review-order-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: var(--spacing-8);
+}
+
+.woocommerce-checkout-review-order-table th,
+.woocommerce-checkout-review-order-table td {
+  padding: var(--spacing-4) 0;
+  border-bottom: 1px solid var(--border-soft);
+  text-align: left;
+}
+
+.woocommerce-checkout-review-order-table .product-total {
+  text-align: right;
+}
+
+.woocommerce-checkout-payment {
+  background-color: var(--muted);
+  border-radius: var(--radius);
+  padding: var(--spacing-6);
+}
+
+.wc_payment_methods {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--spacing-6) 0;
+}
+
+.wc_payment_method {
+  margin-bottom: var(--spacing-4);
+}
+
+.wc_payment_method label {
+  font-weight: var(--font-weight-bold);
+  margin-left: var(--spacing-2);
+  cursor: pointer;
+}
+
+.payment_box {
+  background-color: var(--card);
+  padding: var(--spacing-4);
+  border-radius: var(--radius);
+  margin-top: var(--spacing-2);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+}
+
+.place-order {
+  margin-top: var(--spacing-6);
+}
+
+.button.alt {
+  width: 100%;
+  padding: var(--spacing-4);
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border: none;
+  border-radius: var(--radius-lg);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--text-lg);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.button.alt:hover {
+  background-color: var(--primary);
+  opacity: 0.9;
+}

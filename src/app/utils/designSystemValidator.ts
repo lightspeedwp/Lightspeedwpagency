@@ -71,10 +71,10 @@ export const DESIGN_SYSTEM_RULES: ValidationRule[] = [
           severity: 'error',
           element: getElementSelector(element),
           description: `Unapproved font: ${fontFamily}. Only Lexend and Manrope are allowed.`,
-          fix: 'Replace with Lexend (primary) or Manrope (small text only)',
+          fix: 'Replace with var(--font-primary) or var(--font-secondary)',
           codeExample: {
             before: `fontFamily: '${fontFamily}'`,
-            after: `fontFamily: 'Lexend, sans-serif'`
+            after: `fontFamily: 'var(--font-primary)'`
           }
         };
       }

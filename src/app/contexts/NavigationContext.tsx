@@ -1,206 +1,112 @@
 /**
- * Navigation Context
+ * Navigation Context — React Router Bridge
  * 
- * Provides centralized navigation functionality throughout the LSX Design app.
- * Enables client-side routing without prop drilling, integrating with the
- * centralized page registry in `/src/app/data/pages.ts`.
+ * Provides backward-compatible navigation for components that still use
+ * the legacy `navigateTo(slug)` pattern while powered by React Router.
  * 
- * **Purpose:**
- * - Single source of truth for current page state
- * - Centralized navigation handler for all components
- * - Enables deep linking and programmatic navigation
- * - Simplifies component APIs (no need to pass navigation props)
+ * **Bridge Pattern:**
+ * - `navigateTo(slug)` converts flat slug → hierarchical URL path via route-map
+ * - `currentPage` derives the flat slug from the current URL for backward compat
+ * - Components can progressively migrate to `<Link>` and `useNavigate()`
  * 
  * **WordPress Mapping:**
- * In WordPress, this would be handled by:
+ * In WordPress, navigation is handled by:
  * - WordPress's native routing system
  * - The Rewrite API for custom URLs
  * - Template hierarchy for page matching
  * 
- * **Usage Pattern:**
- * ```tsx
- * // In App.tsx (provider setup)
- * <NavigationContext.Provider value={{ currentPage, navigateTo }}>
- *   <AppContent />
- * </NavigationContext.Provider>
- * 
- * // In any component (consumer)
- * const { currentPage, navigateTo } = useNavigation();
- * <Button onClick={() => navigateTo('contact')}>Contact</Button>
- * ```
- * 
- * @example
- * // Using the navigation hook
- * function MyComponent() {
- *   const { currentPage, navigateTo } = useNavigation();
- *   
- *   return (
- *     <button onClick={() => navigateTo('services')}>
- *       Go to Services
- *     </button>
- *   );
- * }
- * 
- * @see {@link /src/app/data/pages.ts} - Page registry
- * @see {@link /src/app/App.tsx} - Provider implementation
+ * @see /src/app/utils/route-map.ts — Slug↔Path conversion
+ * @see /src/app/routes.tsx — Route definitions
  */
 
-import { createContext, useContext } from 'react';
+import { createContext, useContext, useMemo, useCallback } from 'react';
+import {
+  useNavigate as useRouterNavigate,
+  useLocation as useRouterLocation,
+} from 'react-router';
+import { slugToPath, pathToSlug } from '../utils/route-map';
 
 /**
  * Navigation context type definition
- * 
- * Defines the shape of the navigation context value.
- * Used by both the provider and consumers.
  */
 interface NavigationContextType {
   /**
-   * Current active page slug
-   * 
-   * The slug of the currently displayed page (e.g., 'front-page', 'contact').
-   * Corresponds to page slugs defined in `/src/app/data/pages.ts`.
-   * 
-   * **Valid values:**
-   * - 'front-page' - Homepage
-   * - 'services' - Services page
-   * - 'contact' - Contact page
-   * - 'portfolio' - Portfolio archive
-   * - 'portfolio-single-{slug}' - Portfolio single pages
-   * - See `/src/app/data/pages.ts` for complete list
-   * 
-   * @example
-   * currentPage === 'contact'
+   * Current active page slug (backward compatible).
+   * Derived from the URL path via pathToSlug().
    */
   currentPage: string;
-  
+
   /**
-   * Navigate to a different page
+   * Navigate to a page by slug or path.
    * 
-   * Triggers a page change by updating the current page state.
-   * The page slug must exist in the page registry.
+   * Accepts either:
+   * - A legacy flat slug: `navigateTo('contact')` → navigates to `/contact`
+   * - A full path: `navigateTo('/services/design')` → navigates directly
    * 
-   * **Implementation:**
-   * - Updates currentPage state
-   * - Scrolls to top of page
-   * - Updates browser history (in full implementation)
-   * - Renders corresponding template component
-   * 
-   * **Error handling:**
-   * - Invalid page slugs are ignored or fall back to 404
-   * - Console warnings for development debugging
-   * 
-   * @param page - Page slug to navigate to (must match pages.ts registry)
-   * 
-   * @example
-   * navigateTo('contact')
-   * 
-   * @example
-   * navigateTo('portfolio-single-african-safari')
+   * @param pageOrPath — Flat slug or URL path
    */
-  navigateTo: (page: string) => void;
+  navigateTo: (pageOrPath: string) => void;
 }
 
 /**
  * Navigation Context
- * 
- * React context for navigation state and functions.
  * Default value is null to enforce using the provider.
- * 
- * **Provider setup required:**
- * All components must be wrapped in NavigationContext.Provider
- * at the app root level.
- * 
- * @see {@link useNavigation} - Hook for consuming this context
  */
 export const NavigationContext = createContext<NavigationContextType | null>(null);
 
 /**
  * useNavigation Hook
  * 
- * Custom hook to access navigation context in any component.
- * Provides type-safe access to currentPage and navigateTo function.
+ * Provides navigation powered by React Router with backward-compatible
+ * slug-based API. All components rendered inside the RouterProvider
+ * can use this hook.
  * 
- * **Rules:**
- * - Must be used within a component tree that has NavigationContext.Provider
- * - Throws error if used outside provider (development safety)
- * - Returns navigation state and functions
+ * Uses React Router's useNavigate + useLocation under the hood,
+ * mapping flat slugs to hierarchical URL paths via route-map.ts.
  * 
- * **Usage:**
- * ```tsx
+ * @example
  * const { currentPage, navigateTo } = useNavigation();
- * ```
- * 
- * @throws {Error} If used outside NavigationContext.Provider
- * 
- * @returns Navigation context value with currentPage and navigateTo
- * 
- * @example
- * // In a button component
- * function ContactButton() {
- *   const { navigateTo } = useNavigation();
- *   
- *   return (
- *     <button onClick={() => navigateTo('contact')}>
- *       Contact Us
- *     </button>
- *   );
- * }
- * 
- * @example
- * // Checking current page
- * function Navigation() {
- *   const { currentPage } = useNavigation();
- *   
- *   return (
- *     <nav>
- *       <a 
- *         href="#" 
- *         className={currentPage === 'services' ? 'active' : ''}
- *       >
- *         Services
- *       </a>
- *     </nav>
- *   );
- * }
- * 
- * @see {@link NavigationContext}
+ * navigateTo('contact');    // → /contact
+ * navigateTo('discovery');  // → /services/discovery
+ * navigateTo('/about');     // → /about (path passed through)
  */
-export function useNavigation() {
+export function useNavigation(): NavigationContextType {
+  // Always call React Router hooks (Rules of Hooks compliance)
+  const routerNavigate = useRouterNavigate();
+  const location = useRouterLocation();
+
+  // Check for Provider context (optional override)
   const context = useContext(NavigationContext);
-  
-  // Development safety: ensure hook is used within provider
-  if (!context) {
-    throw new Error('useNavigation must be used within NavigationProvider. ' +
-      'Wrap your app in <NavigationContext.Provider> at the root level.');
-  }
-  
-  return context;
+
+  const currentPage = useMemo(
+    () => context ? context.currentPage : pathToSlug(location.pathname),
+    [context, location.pathname]
+  );
+
+  const navigateTo = useCallback(
+    (pageOrPath: string) => {
+      if (context) {
+        context.navigateTo(pageOrPath);
+      } else {
+        const path = pageOrPath.startsWith('/') ? pageOrPath : slugToPath(pageOrPath);
+        routerNavigate(path);
+      }
+    },
+    [context, routerNavigate]
+  );
+
+  return { currentPage, navigateTo };
 }
 
 /**
  * useLocation Hook
  * 
- * Custom hook that returns the current page location for route change detection.
- * Used primarily by accessibility utilities like RouteAnnouncer.
- * 
- * **Purpose:**
- * - Track route changes for screen reader announcements
- * - Trigger effects when navigation occurs
- * - Enable route-based conditional rendering
+ * Returns the current page slug for route change detection.
+ * Used by accessibility utilities like RouteAnnouncer.
  * 
  * @returns Current page slug
- * 
- * @example
- * // In RouteAnnouncer component
- * const location = useLocation();
- * 
- * useEffect(() => {
- *   announcePageChange(location);
- * }, [location]);
- * 
- * @see {@link useNavigation}
  */
-export function useLocation() {
+export function useLocation(): string {
   const { currentPage } = useNavigation();
   return currentPage;
 }

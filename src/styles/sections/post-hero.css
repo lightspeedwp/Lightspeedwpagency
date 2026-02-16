@@ -2,6 +2,7 @@
  * Post Hero Section Styles
  * 
  * Used in single post templates for various formats.
+ * All vertical spacing via blockGap (CSS gap) -- zero margin.
  */
 
 .wp-block-post-hero {
@@ -50,9 +51,13 @@
   object-fit: cover;
 }
 
+/* Content -- flex column with blockGap */
 .wp-block-post-hero__content {
   width: 100%;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
 }
 
 @media (min-width: 768px) {
@@ -65,18 +70,16 @@
 .wp-block-post-hero__label {
   display: inline-block;
   background-color: var(--primary);
-  color: #ffffff;
+  color: var(--primary-foreground);
   padding: var(--spacing-1) var(--spacing-3);
   border-radius: var(--radius-full);
   font-size: var(--text-small);
   font-weight: var(--font-weight-bold);
-  margin-bottom: var(--spacing-4);
 }
 
 .wp-block-post-hero__title {
   font-size: var(--text-h2);
   font-weight: var(--font-weight-bold);
-  margin-bottom: var(--spacing-4);
 }
 
 @media (min-width: 768px) {
@@ -92,7 +95,6 @@
   gap: var(--spacing-6);
   font-size: var(--text-small);
   color: var(--muted-foreground);
-  margin-bottom: var(--spacing-8);
 }
 
 @media (min-width: 768px) {
@@ -105,4 +107,13 @@
   display: flex;
   align-items: center;
   gap: var(--spacing-2);
+}
+
+/* Centered hero variant (e.g. image-single) */
+.wp-block-post-hero--centered {
+  text-align: center;
+}
+
+.wp-block-post-hero--centered .wp-block-post-hero__meta {
+  justify-content: center;
 }

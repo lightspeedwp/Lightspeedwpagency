@@ -16,6 +16,8 @@
  * - Section Style: cta-accent
  * - Pattern Slug: lsx-design/cta/inline
  * - Max Width: 800px (constrained)
+ * 
+ * @see {@link /guidelines/patterns/CTAInline.md}
  */
 
 import React from 'react';
@@ -24,6 +26,7 @@ import { Container } from '../common/Container';
 import { Heading } from '../common/Heading';
 import { Button } from '../blocks/design/Buttons';
 import { ArrowRight } from 'lucide-react';
+import '@/styles/patterns/cta-inline.css';
 
 export interface CTAInlineProps {
   heading?: string;
@@ -40,16 +43,6 @@ export interface CTAInlineProps {
  * 
  * Compact CTA for breaking up long-form content.
  * Smaller than CTASection with 800px max-width.
- * 
- * @example
- * ```tsx
- * <CTAInline 
- *   heading="Ready to Get Started?"
- *   description="Let's build something amazing together."
- *   buttonText="Start Your Project"
- *   buttonHref="/contact"
- * />
- * ```
  */
 export function CTAInline({
   heading = "Ready to Get Started?",
@@ -61,62 +54,34 @@ export function CTAInline({
   showIcon = true
 }: CTAInlineProps) {
   return (
-    <Section sectionStyle="cta-accent" spacing="sm">
+    <Section sectionStyle="cta-accent" spacing="sm" className="cta-inline">
       <Container maxWidth="800px">
-        <div className="text-center">
-          {/* Heading - Lexend font, CSS variable size */}
+        <div className="cta-inline__container">
+          {/* Heading */}
           <Heading 
             level={3} 
-            style={{ 
-              marginBottom: '1rem',
-              fontSize: 'var(--text-h3)',
-              fontFamily: 'var(--font-primary)',
-              fontWeight: 'var(--font-weight-medium)',
-              color: 'var(--accent-foreground)'
-            }}
+            className="cta-inline__heading"
           >
             {heading}
           </Heading>
           
-          {/* Description - Manrope font, CSS variable size */}
-          <p 
-            style={{
-              fontSize: 'var(--text-base)',
-              fontFamily: 'var(--font-secondary)',
-              marginBottom: '2rem',
-              color: 'var(--accent-foreground)'
-            }}
-          >
+          {/* Description */}
+          <p className="cta-inline__description">
             {description}
           </p>
           
           {/* Buttons */}
-          <div 
-            style={{
-              display: 'flex',
-              gap: '1rem',
-              justifyContent: 'center',
-              alignItems: 'center',
-              flexWrap: 'wrap'
-            }}
-          >
+          <div className="cta-inline__buttons">
             <Button 
               size="md" 
               href={buttonHref}
-              style={{
-                backgroundColor: 'var(--background)',
-                color: 'var(--foreground)'
-              }}
+              className="cta-inline__button--primary"
             >
               {buttonText}
               {showIcon && (
                 <ArrowRight 
                   size={16} 
-                  style={{ 
-                    marginLeft: '0.5rem',
-                    display: 'inline-block',
-                    verticalAlign: 'middle'
-                  }} 
+                  className="cta-inline__icon"
                 />
               )}
             </Button>
@@ -126,11 +91,7 @@ export function CTAInline({
                 size="md" 
                 href={secondaryHref}
                 variant="outline"
-                style={{
-                  backgroundColor: 'transparent',
-                  borderColor: 'var(--accent-foreground)',
-                  color: 'var(--accent-foreground)'
-                }}
+                className="cta-inline__button--secondary"
               >
                 {secondaryText}
               </Button>

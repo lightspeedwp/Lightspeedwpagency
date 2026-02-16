@@ -6,25 +6,15 @@
  * Email subscription form with title, description, and privacy text.
  * Supports multiple layouts and visual variants.
  * 
- * **Usage:**
- * ```tsx
- * <NewsletterSignup
- *   title="Stay Updated"
- *   description="Get the latest WordPress tips delivered to your inbox weekly."
- *   placeholder="Enter your email"
- *   buttonText="Subscribe"
- *   privacyText="We respect your privacy. Unsubscribe at any time."
- *   layout="centered"
- *   variant="card"
- *   onSubmit={(email) => console.log('Subscribe:', email)}
- * />
- * ```
- * 
- * @see {@link /guidelines/patterns/NewsletterSignup.md}
+ * **Design Token Compliance:**
+ * - Uses /src/styles/newsletter-signup.css
+ * - 100% CSS variables
+ * - BEM naming
  */
 
 import { Mail, Check } from 'lucide-react';
 import { useState } from 'react';
+import '@/styles/patterns/newsletter-signup.css';
 
 export interface NewsletterSignupProps {
   /** Main heading */
@@ -84,129 +74,62 @@ export function NewsletterSignup({
     }, 1000);
   };
 
-  // Container styles based on variant
-  const containerStyles = {
-    default: {
-      padding: 0,
-      backgroundColor: 'transparent'
-    },
-    card: {
-      padding: 'var(--spacing-10)',
-      backgroundColor: 'var(--card)',
-      borderRadius: 'var(--radius-lg)',
-      border: '1px solid var(--border-soft)'
-    },
-    minimal: {
-      padding: 'var(--spacing-6)',
-      backgroundColor: 'transparent',
-      borderTop: '1px solid var(--border)',
-      borderBottom: '1px solid var(--border)'
-    }
-  };
+  // Build component classes
+  const containerClasses = [
+    'newsletter-signup',
+    `newsletter-signup--${variant}`,
+    `newsletter-signup--${layout}`,
+    className
+  ].filter(Boolean).join(' ');
 
-  // Layout configurations
-  const isCentered = layout === 'centered';
-  const isSidebar = layout === 'sidebar';
-  const isInline = layout === 'inline';
+  const titleClasses = [
+    'newsletter-signup__title',
+    `newsletter-signup__title--${variant}`
+  ].join(' ');
 
-  // Max width based on layout
-  const maxWidth = isSidebar ? '100%' : isInline ? '800px' : '600px';
+  const descClasses = [
+    'newsletter-signup__description',
+    `newsletter-signup__description--${variant}`
+  ].join(' ');
+
+  const buttonClasses = [
+    'newsletter-signup__button',
+    status === 'success' ? 'newsletter-signup__button--success' : ''
+  ].filter(Boolean).join(' ');
+
+  // Max width override for layout styles (handled by CSS generally but keeping prop logic)
+  const maxWidth = layout === 'sidebar' ? '100%' : layout === 'inline' ? '800px' : '600px';
 
   return (
-    <div
-      className={className}
-      style={{
-        ...containerStyles[variant],
-        maxWidth,
-        margin: isCentered ? '0 auto' : undefined
-      }}
-    >
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: isSidebar ? 'row' : 'column',
-          gap: isSidebar ? 'var(--spacing-8)' : 'var(--spacing-6)',
-          alignItems: isSidebar ? 'flex-start' : isCentered ? 'center' : 'flex-start',
-          textAlign: isCentered ? 'center' : 'left'
-        }}
-      >
+    <div className={containerClasses} style={{ maxWidth, margin: layout === 'centered' ? '0 auto' : undefined }}>
+      <div className="newsletter-signup__content">
         {/* Header Content */}
-        <div
-          style={{
-            flex: isSidebar ? 1 : undefined,
-            width: isSidebar ? undefined : '100%'
-          }}
-        >
+        <div className="newsletter-signup__header">
           {/* Icon */}
           {showIcon && variant !== 'minimal' && (
-            <div
-              style={{
-                marginBottom: 'var(--spacing-4)',
-                display: 'flex',
-                justifyContent: isCentered ? 'center' : 'flex-start'
-              }}
-            >
-              <div
-                style={{
-                  width: '48px',
-                  height: '48px',
-                  borderRadius: 'var(--radius)',
-                  backgroundColor: 'var(--primary-soft)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }}
-              >
-                <Mail size={24} style={{ color: 'var(--primary)' }} />
+            <div className="newsletter-signup__icon-wrapper">
+              <div className="newsletter-signup__icon">
+                <Mail size={24} />
               </div>
             </div>
           )}
 
           {/* Title */}
-          <h2
-            style={{
-              fontFamily: 'var(--font-primary)',
-              fontSize: variant === 'minimal' ? 'var(--text-lg)' : 'var(--text-h2)',
-              fontWeight: 'var(--font-weight-bold)',
-              color: 'var(--foreground)',
-              marginBottom: 'var(--spacing-2)'
-            }}
-          >
+          <h2 className={titleClasses}>
             {title}
           </h2>
 
           {/* Description */}
-          <p
-            style={{
-              fontFamily: 'var(--font-primary)',
-              fontSize: variant === 'minimal' ? 'var(--text-base)' : 'var(--text-lg)',
-              lineHeight: '1.7',
-              color: 'var(--muted-foreground)',
-              marginBottom: isSidebar ? 0 : 'var(--spacing-6)'
-            }}
-          >
+          <p className={descClasses}>
             {description}
           </p>
         </div>
 
         {/* Form */}
-        <div
-          style={{
-            flex: isSidebar ? 1 : undefined,
-            width: isSidebar ? undefined : '100%'
-          }}
-        >
-          <form
-            onSubmit={handleSubmit}
-            style={{
-              display: 'flex',
-              flexDirection: isInline ? 'row' : 'column',
-              gap: 'var(--spacing-3)',
-              width: '100%'
-            }}
-          >
+        <div className="newsletter-signup__form-wrapper">
+          <form className="newsletter-signup__form" onSubmit={handleSubmit}>
             {/* Email Input */}
-            <div style={{ flex: 1, position: 'relative' }}>
+            <div className="newsletter-signup__input-wrapper">
               <input
                 type="email"
                 value={email}
@@ -214,44 +137,13 @@ export function NewsletterSignup({
                 placeholder={placeholder}
                 required
                 disabled={status === 'submitting' || status === 'success'}
-                style={{
-                  width: '100%',
-                  padding: '12px 20px',
-                  border: '1px solid var(--border)',
-                  borderRadius: 'var(--radius)',
-                  fontFamily: 'var(--font-primary)',
-                  fontSize: 'var(--text-base)',
-                  backgroundColor: 'var(--background)',
-                  color: 'var(--foreground)',
-                  outline: 'none',
-                  transition: 'all 0.2s ease',
-                  opacity: status === 'success' ? 0.6 : 1
-                }}
-                onFocus={(e) => {
-                  e.currentTarget.style.borderColor = 'var(--primary)';
-                  e.currentTarget.style.boxShadow = '0 0 0 3px var(--primary-soft)';
-                }}
-                onBlur={(e) => {
-                  e.currentTarget.style.borderColor = 'var(--border)';
-                  e.currentTarget.style.boxShadow = 'none';
-                }}
+                className="newsletter-signup__input"
                 aria-label="Email address"
               />
               
               {/* Success Icon */}
               {status === 'success' && (
-                <div
-                  style={{
-                    position: 'absolute',
-                    right: 'var(--spacing-3)',
-                    top: '50%',
-                    transform: 'translateY(-50%)',
-                    color: 'var(--success)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: 'var(--spacing-2)'
-                  }}
-                >
+                <div className="newsletter-signup__success-icon">
                   <Check size={20} />
                 </div>
               )}
@@ -261,34 +153,7 @@ export function NewsletterSignup({
             <button
               type="submit"
               disabled={status === 'submitting' || status === 'success'}
-              style={{
-                padding: '12px 32px',
-                backgroundColor: status === 'success' ? 'var(--success)' : 'var(--primary)',
-                color: 'var(--primary-foreground)',
-                border: 'none',
-                borderRadius: 'var(--radius)',
-                fontFamily: 'var(--font-primary)',
-                fontSize: 'var(--text-base)',
-                fontWeight: 'var(--font-weight-semibold)',
-                cursor: status === 'submitting' || status === 'success' ? 'default' : 'pointer',
-                transition: 'all 0.2s ease',
-                opacity: status === 'submitting' ? 0.7 : 1,
-                whiteSpace: 'nowrap',
-                display: 'flex',
-                alignItems: 'center',
-                gap: 'var(--spacing-2)',
-                justifyContent: 'center'
-              }}
-              onMouseEnter={(e) => {
-                if (status === 'idle') {
-                  e.currentTarget.style.opacity = '0.9';
-                }
-              }}
-              onMouseLeave={(e) => {
-                if (status === 'idle') {
-                  e.currentTarget.style.opacity = '1';
-                }
-              }}
+              className={buttonClasses}
             >
               {status === 'submitting' && 'Subscribing...'}
               {status === 'success' && (
@@ -304,15 +169,7 @@ export function NewsletterSignup({
 
           {/* Privacy Text */}
           {privacyText && (
-            <p
-              style={{
-                fontFamily: 'var(--font-secondary)',
-                fontSize: 'var(--text-xs)',
-                color: 'var(--muted-foreground)',
-                marginTop: 'var(--spacing-3)',
-                textAlign: isCentered ? 'center' : 'left'
-              }}
-            >
+            <p className="newsletter-signup__privacy">
               {privacyText}
             </p>
           )}

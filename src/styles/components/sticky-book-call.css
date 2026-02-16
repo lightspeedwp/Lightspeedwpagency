@@ -1,0 +1,77 @@
+/**
+ * Sticky Book Call Button
+ *
+ * Non-WordPress UI utility -- floating CTA for conversion.
+ * Desktop: bottom-right pill. Mobile: bottom-center full-width bar.
+ *
+ * All spacing & colors via CSS variables.
+ */
+
+/* Wrapper (desktop) */
+.sticky-book-call {
+  position: fixed;
+  bottom: var(--spacing-6);
+  right: var(--spacing-6);
+  z-index: 40;
+}
+
+/* Hide desktop on mobile, show mobile on desktop */
+.sticky-book-call--desktop {
+  display: none;
+}
+
+.sticky-book-call--mobile {
+  position: fixed;
+  bottom: var(--spacing-4);
+  left: var(--spacing-4);
+  right: var(--spacing-4);
+  z-index: 40;
+}
+
+@media (min-width: 768px) {
+  .sticky-book-call--desktop {
+    display: block;
+  }
+
+  .sticky-book-call--mobile {
+    display: none;
+  }
+}
+
+/* Link button (shared) */
+.sticky-book-call__link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  min-width: 48px; /* WCAG AAA touch target */
+  min-height: 48px; /* WCAG AAA touch target */
+}
+
+.sticky-book-call__link:hover {
+  box-shadow: var(--shadow-xl);
+}
+
+/* Desktop variant */
+.sticky-book-call__link--desktop {
+  padding: var(--spacing-3) var(--spacing-6);
+}
+
+/* Mobile variant */
+.sticky-book-call__link--mobile {
+  justify-content: center;
+  padding: var(--spacing-4) var(--spacing-6);
+  width: 100%;
+}
+
+.sticky-book-call__link--mobile:active {
+  transform: scale(0.95);
+}

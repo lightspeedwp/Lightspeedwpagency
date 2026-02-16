@@ -1,0 +1,15 @@
+/**
+ * HoverCard Block Styles
+ */
+.wp-block-hover-card-content {
+  z-index: 50;
+  width: 16rem; /* 64 * 4 = 256px */
+  border-radius: var(--radius);
+  border: var(--wp--preset--border-width--1) solid var(--border);
+  background-color: var(--background);
+  color: var(--foreground);
+  padding: var(--spacing-4);
+  box-shadow: var(--shadow-md);
+  outline: none;
+  animation: wp-fade-in 0.2s ease-out;
+}

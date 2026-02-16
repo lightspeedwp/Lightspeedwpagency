@@ -1,0 +1,143 @@
+/**
+ * Services Card Pattern Styles
+ * 
+ * BEM-compliant styles for the ServicesCard component.
+ * All vertical spacing via blockGap (CSS gap) -- zero margin.
+ */
+
+/* Grid Layout */
+.services-card-grid {
+  display: grid;
+  gap: var(--spacing-8);
+}
+
+/* Card -- flex column with blockGap */
+.services-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  padding: var(--spacing-8);
+  background-color: var(--card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-xl);
+  transition: all var(--transition-base) var(--ease-in-out);
+  height: 100%;
+}
+
+.services-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary);
+}
+
+.services-card--featured {
+  border-color: var(--primary);
+  background-color: var(--card);
+  box-shadow: var(--shadow-md);
+}
+
+/* Badge */
+.services-card__badge {
+  position: absolute;
+  top: var(--spacing-4);
+  right: var(--spacing-4);
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  font-family: var(--font-primary);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-bold);
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+}
+
+/* Icon */
+.services-card__icon {
+  width: var(--spacing-12);
+  height: var(--spacing-12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-soft);
+  color: var(--primary);
+  border-radius: var(--radius-lg);
+  transition: transform var(--transition-base);
+}
+
+.services-card:hover .services-card__icon {
+  transform: scale(1.1);
+}
+
+/* Title */
+.services-card__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+  line-height: var(--line-height-snug);
+}
+
+/* Description */
+.services-card__description {
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-normal);
+  flex-grow: 1;
+}
+
+/* Features List */
+.services-card__features {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.services-card__feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-3);
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--foreground);
+  line-height: var(--line-height-normal);
+}
+
+.services-card__check-icon {
+  flex-shrink: 0;
+  margin-top: calc(var(--spacing-1) / 2); /* optical icon alignment */
+}
+
+/* Link Button */
+.services-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--primary);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: gap var(--transition-base);
+  margin-top: auto;
+}
+
+.services-card__link:hover {
+  gap: var(--spacing-3);
+  color: var(--primary-dark);
+}
+
+.services-card__arrow {
+  transition: transform var(--transition-base);
+}
+
+.services-card__link:hover .services-card__arrow {
+  transform: translateX(2px);
+}

@@ -26,14 +26,14 @@
    * Usage: Page background, canvas sections
    * Contrast: Base for all foreground colors
    */
-  --background: rgba(255, 255, 255, 1);          /* #FFFFFF - Pure white */
+  --background: #FFFFFF;          /* #FFFFFF - Pure white */
   
   /**
    * Primary foreground color (text on background)
    * Usage: Body text, headings on light backgrounds
    * Contrast: 16.07:1 on white (AAA ✓✓✓)
    */
-  --foreground: rgba(9, 9, 9, 1);                /* #090909 - Near black */
+  --foreground: #090909;                /* #090909 - Near black */
   
   
   /* ----------------------------------------
@@ -42,17 +42,23 @@
   
   /**
    * Card background color
-   * Usage: Card components, modals, panels
-   * Contrast: Same as background for clean design
+   * Usage: Card components, modals, panels, alternating sections
+   * Contrast: Subtle differentiation from background
    */
-  --card: rgba(255, 255, 255, 1);                /* #FFFFFF - Pure white */
+  --card: #F9FAFB;                /* #F9FAFB - Very subtle off-white for section alternation */
   
   /**
    * Card foreground color (text on cards)
    * Usage: Text inside cards and containers
    * Contrast: 16.07:1 on card background (AAA ✓✓✓)
    */
-  --card-foreground: rgba(9, 9, 9, 1);           /* #090909 - Near black */
+  --card-foreground: #090909;           /* #090909 - Near black */
+  
+  /** Card hover background — slightly darker on hover */
+  --card-hover: #F9F9F9;                /* Very light gray */
+  
+  /** Primary dark variant — for hover states on links */
+  --primary-dark: #1554CC;              /* Darker blue */
   
   
   /* ----------------------------------------
@@ -64,14 +70,14 @@
    * Usage: Dropdowns, tooltips, floating menus
    * Note: Transparent by default, use card color for solid popovers
    */
-  --popover: rgba(0, 0, 0, 0);                   /* Transparent */
+  --popover: transparent;                   /* Transparent */
   
   /**
    * Popover foreground color
    * Usage: Text in popovers and dropdowns
    * Contrast: 16.07:1 when on white background (AAA ✓✓✓)
    */
-  --popover-foreground: rgba(9, 9, 9, 1);        /* #090909 - Near black */
+  --popover-foreground: #090909;        /* #090909 - Near black */
   
   
   /* ----------------------------------------
@@ -84,22 +90,22 @@
    * Hex: #1E6AFF
    * Contrast: 4.58:1 on white (AA ✓)
    */
-  --primary: rgba(30, 106, 255, 1);              /* #1E6AFF - Bright blue */
+  --primary: #1E6AFF;              /* #1E6AFF - Bright blue */
   
   /**
    * Primary foreground color (text/icons on primary)
    * Usage: Text on primary buttons and backgrounds
    * Contrast: 4.52:1 on primary (AA ✓)
    */
-  --primary-foreground: rgba(255, 255, 255, 1);  /* #FFFFFF - White */
+  --primary-foreground: #FFFFFF;  /* #FFFFFF - White */
   
   /**
    * Primary soft background (10% opacity)
    * Usage: Category badges, tags, soft highlights
-   * Hex: rgba(30, 106, 255, 0.1)
+   * Hex: #1E6AFF1A
    * Contrast: Subtle, decorative use
    */
-  --primary-soft: rgba(30, 106, 255, 0.1);       /* 10% primary blue */
+  --primary-soft: #1E6AFF1A;       /* 10% primary blue */
   
   
   /* ----------------------------------------
@@ -112,7 +118,7 @@
    * Hex: #7BE7FF
    * Contrast: 1.48:1 on white (Decorative use only)
    */
-  --secondary: rgba(123, 231, 255, 1);           /* #7BE7FF - Light cyan */
+  --secondary: #7BE7FF;           /* #7BE7FF - Light cyan */
   
   /**
    * Secondary foreground color (text on secondary)
@@ -120,7 +126,7 @@
    * Hex: #0E3278
    * Contrast: 9.62:1 on secondary (AAA ✓✓✓)
    */
-  --secondary-foreground: rgba(14, 50, 120, 1);  /* #0E3278 - Dark blue */
+  --secondary-foreground: #0E3278;  /* #0E3278 - Dark blue */
   
   
   /* ----------------------------------------
@@ -133,7 +139,7 @@
    * Hex: #E1E1E1
    * Contrast: 1.22:1 on white
    */
-  --muted: rgba(225, 225, 225, 1);               /* #E1E1E1 - Light gray */
+  --muted: #E1E1E1;               /* #E1E1E1 - Light gray */
   
   /**
    * Muted foreground color
@@ -141,7 +147,7 @@
    * Hex: #565656
    * Contrast: 7.35:1 on white (AAA ✓✓✓)
    */
-  --muted-foreground: rgba(86, 86, 86, 1);       /* #565656 - Medium gray */
+  --muted-foreground: #565656;       /* #565656 - Medium gray */
   
   
   /* ----------------------------------------
@@ -154,7 +160,7 @@
    * Hex: #7BE7FF
    * Contrast: 1.48:1 on white (Decorative use only)
    */
-  --accent: rgba(123, 231, 255, 1);              /* #7BE7FF - Light cyan */
+  --accent: #7BE7FF;              /* #7BE7FF - Light cyan */
   
   /**
    * Accent foreground color
@@ -162,7 +168,7 @@
    * Hex: #0E3278
    * Contrast: 9.62:1 on accent (AAA ✓✓✓)
    */
-  --accent-foreground: rgba(14, 50, 120, 1);     /* #0E3278 - Dark blue */
+  --accent-foreground: #0E3278;     /* #0E3278 - Dark blue */
   
   
   /* ----------------------------------------
@@ -175,14 +181,110 @@
    * Hex: #CC0000
    * Contrast: 7.42:1 on white (AAA ✓✓✓)
    */
-  --destructive: rgba(204, 0, 0, 1);             /* #CC0000 - Red */
+  --destructive: #CC0000;             /* #CC0000 - Red */
   
   /**
    * Destructive foreground color
    * Usage: Text on destructive backgrounds
    * Contrast: 4.89:1 on destructive (AA ✓)
    */
-  --destructive-foreground: rgba(255, 255, 255, 1); /* #FFFFFF - White */
+  --destructive-foreground: #FFFFFF; /* #FFFFFF - White */
+  
+  /**
+   * Destructive/Error soft background (10% opacity)
+   * Usage: Error badges, soft highlights
+   */
+  --destructive-soft: rgba(239, 68, 68, 0.1);
+  
+  
+  /* ----------------------------------------
+     Warning Colors
+     ---------------------------------------- */
+  
+  /**
+   * Warning background color
+   * Usage: Cautionary messages, alerts, pending states
+   * Hex: #F59E0B
+   * Contrast: Amber for attention
+   */
+  --warning: #F59E0B;               /* #F59E0B - Amber */
+  
+  /**
+   * Warning foreground color
+   * Usage: Text on warning backgrounds
+   * Contrast: High readability on amber
+   */
+  --warning-foreground: #FFFFFF;     /* #FFFFFF - White */
+  
+  /**
+   * Warning soft background (10% opacity)
+   * Usage: Warning badges, soft highlights
+   */
+  --warning-soft: rgba(245, 158, 11, 0.1);
+  
+  
+  /* ----------------------------------------
+     Success Colors
+     ---------------------------------------- */
+  
+  /**
+   * Success background color
+   * Usage: Success messages, confirmations, positive states
+   * Hex: #16A34A
+   * Contrast: 3.56:1 on white (AA Large ✓)
+   */
+  --success: #16A34A;               /* #16A34A - Green */
+  
+  /**
+   * Success foreground color
+   * Usage: Text on success backgrounds
+   * Contrast: High readability on green
+   */
+  --success-foreground: #FFFFFF;     /* #FFFFFF - White */
+  
+  /**
+   * Success soft background (10% opacity)
+   * Usage: Success badges, soft highlights
+   */
+  --success-soft: rgba(22, 163, 74, 0.1);
+  
+  
+  /* ----------------------------------------
+     Info Colors
+     ---------------------------------------- */
+  
+  /**
+   * Info color
+   * Usage: Informational messages, tips, highlights
+   * Hex: #0EA5E9
+   * Contrast: 3.03:1 on white (decorative / large text)
+   */
+  --info: #0EA5E9;                   /* #0EA5E9 - Sky blue */
+  
+  /**
+   * Info foreground color
+   * Usage: Text on info backgrounds
+   */
+  --info-foreground: #FFFFFF;        /* #FFFFFF - White */
+  
+  
+  /* ----------------------------------------
+     Category Colors (Decorative)
+     ---------------------------------------- */
+  
+  /**
+   * Category-specific colors for visual differentiation.
+   * Usage: SiteMap icons, tag badges, category indicators.
+   * These are decorative — not for text on backgrounds.
+   */
+  --category-green: #10B981;      /* Emerald — Services */
+  --category-amber: #F59E0B;      /* Amber — Solutions */
+  --category-pink: #EC4899;       /* Pink — Portfolio, Media */
+  --category-blue: #3B82F6;       /* Blue — Blog */
+  --category-cyan: #06B6D4;       /* Cyan — Posts */
+  --category-indigo: #6366F1;     /* Indigo — Dev Tools */
+  --category-red: #EF4444;        /* Red — Error / 404 */
+  --category-violet: #8B5CF6;     /* Violet — Summary stats */
   
   
   /* ----------------------------------------
@@ -195,21 +297,24 @@
    * Hex: #757575
    * Contrast: 4.55:1 on white (AA ✓)
    */
-  --border: rgba(117, 117, 117, 1);              /* #757575 - Medium gray */
+  --border: #757575;              /* #757575 - Medium gray */
   
   /**
    * Soft border color (modern design)
    * Usage: Subtle card borders, section dividers
    * Contrast: Low contrast for subtle effect
    */
-  --border-soft: rgba(0, 0, 0, 0.08);            /* 8% black */
+  --border-soft: #00000014;            /* 8% black */
   
   /**
    * Extra soft border color
    * Usage: Very subtle dividers
    * Contrast: Minimal contrast for elegant design
    */
-  --border-extra-soft: rgba(0, 0, 0, 0.04);      /* 4% black */
+  --border-extra-soft: #0000000A;      /* 4% black */
+  
+  /** Subtle border — used for feature lists, inner dividers */
+  --border-subtle: #00000010;          /* 6% black */
   
   
   /* ----------------------------------------
@@ -220,13 +325,13 @@
    * Input field background (filled state)
    * Usage: Text inputs, textareas
    */
-  --input: rgba(255, 255, 255, 1);               /* #FFFFFF - White */
+  --input: #FFFFFF;               /* #FFFFFF - White */
   
   /**
    * Input field background (default)
    * Usage: Form fields, search boxes
    */
-  --input-background: rgba(255, 255, 255, 1);    /* #FFFFFF - White */
+  --input-background: #FFFFFF;    /* #FFFFFF - White */
   
   /**
    * Focus ring color
@@ -234,7 +339,7 @@
    * Hex: #0047D0
    * Contrast: 6.72:1 on white (AA ✓)
    */
-  --ring: rgba(0, 71, 208, 1);                   /* #0047D0 - Dark blue */
+  --ring: #0047D0;                   /* #0047D0 - Dark blue */
   
   
   /* ----------------------------------------
@@ -246,51 +351,51 @@
    * Usage: Navigation menus, sidebars (dark in light mode)
    * Hex: #090909
    */
-  --sidebar: rgba(9, 9, 9, 1);                   /* #090909 - Near black */
+  --sidebar: #090909;                   /* #090909 - Near black */
   
   /**
    * Sidebar foreground color
    * Usage: Text in navigation/sidebar
    * Contrast: 16.07:1 on sidebar (AAA ✓✓✓)
    */
-  --sidebar-foreground: rgba(255, 255, 255, 1);  /* #FFFFFF - White */
+  --sidebar-foreground: #FFFFFF;  /* #FFFFFF - White */
   
   /**
    * Sidebar primary color
    * Usage: Active nav items
    * Hex: #1E6AFF
    */
-  --sidebar-primary: rgba(30, 106, 255, 1);      /* #1E6AFF - Bright blue */
+  --sidebar-primary: #1E6AFF;      /* #1E6AFF - Bright blue */
   
   /**
    * Sidebar primary foreground
    * Contrast: 4.52:1 on sidebar-primary (AA ✓)
    */
-  --sidebar-primary-foreground: rgba(255, 255, 255, 1); /* #FFFFFF - White */
+  --sidebar-primary-foreground: #FFFFFF; /* #FFFFFF - White */
   
   /**
    * Sidebar accent color
    * Hex: #7BE7FF
    */
-  --sidebar-accent: rgba(123, 231, 255, 1);      /* #7BE7FF - Light cyan */
+  --sidebar-accent: #7BE7FF;      /* #7BE7FF - Light cyan */
   
   /**
    * Sidebar accent foreground
    * Contrast: 9.62:1 on sidebar-accent (AAA ✓✓✓)
    */
-  --sidebar-accent-foreground: rgba(14, 50, 120, 1); /* #0E3278 - Dark blue */
+  --sidebar-accent-foreground: #0E3278; /* #0E3278 - Dark blue */
   
   /**
    * Sidebar border color
    * Hex: #757575
    */
-  --sidebar-border: rgba(117, 117, 117, 1);      /* #757575 - Medium gray */
+  --sidebar-border: #757575;      /* #757575 - Medium gray */
   
   /**
    * Sidebar ring (focus)
    * Hex: #7BE7FF
    */
-  --sidebar-ring: rgba(123, 231, 255, 1);        /* #7BE7FF - Light cyan */
+  --sidebar-ring: #7BE7FF;        /* #7BE7FF - Light cyan */
   
   
   /* ============================================
@@ -301,25 +406,25 @@
    * Glass background (subtle)
    * Usage: Glassmorphism cards, hero overlays
    */
-  --glass-bg: rgba(255, 255, 255, 0.08);         /* 8% white */
+  --glass-bg: #FFFFFF14;         /* 8% white */
   
   /**
    * Glass background (stronger)
    * Usage: Prominent glass elements
    */
-  --glass-bg-strong: rgba(255, 255, 255, 0.15);  /* 15% white */
+  --glass-bg-strong: #FFFFFF26;  /* 15% white */
   
   /**
    * Glass border color
    * Usage: Borders on glass elements
    */
-  --glass-border: rgba(0, 0, 0, 0.08);           /* 8% black */
+  --glass-border: #00000014;           /* 8% black */
   
   /**
    * Glass text color
    * Usage: Text on glass backgrounds
    */
-  --glass-text: rgba(9, 9, 9, 1);                /* #090909 - Near black */
+  --glass-text: #090909;                /* #090909 - Near black */
   
   
   /* ============================================
@@ -329,18 +434,18 @@
   /**
    * Shadows optimized for light backgrounds
    */
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.05);
-  --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.15);
-  --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.12);
-  --shadow-primary: 0 4px 12px rgba(30, 106, 255, 0.3);  /* Blue glow */
-  --shadow-hover: 0 8px 16px rgba(0, 0, 0, 0.1);
+  --shadow-sm: 0 1px 3px #0000000D;
+  --shadow-md: 0 4px 6px #0000000D;
+  --shadow-lg: 0 10px 40px #00000026;
+  --shadow-xl: 0 20px 40px #0000001F;
+  --shadow-primary: 0 4px 12px #1E6AFF4D;  /* Blue glow */
+  --shadow-hover: 0 8px 16px #0000001A;
   
   /**
    * Legacy elevation shadow (brutalist style)
    * Usage: Buttons, cards with hard shadows
    */
-  --elevation-sm: 4px 4px 0px 0px rgba(9, 9, 9, 1);
+  --elevation-sm: 4px 4px 0px 0px #090909;
   
   
   /* ============================================
@@ -350,13 +455,34 @@
   /**
    * Chart color palette (accessible, high contrast)
    */
-  --chart-1: rgba(30, 106, 255, 1);   /* #1E6AFF - Primary blue */
-  --chart-2: rgba(123, 231, 255, 1);  /* #7BE7FF - Light cyan */
-  --chart-3: rgba(14, 50, 120, 1);    /* #0E3278 - Dark blue */
-  --chart-4: rgba(117, 117, 117, 1);  /* #757575 - Gray */
-  --chart-5: rgba(86, 86, 86, 1);     /* #565656 - Dark gray */
+  --chart-1: #1E6AFF;   /* #1E6AFF - Primary blue */
+  --chart-2: #7BE7FF;  /* #7BE7FF - Light cyan */
+  --chart-3: #0E3278;    /* #0E3278 - Dark blue */
+  --chart-4: #757575;  /* #757575 - Gray */
+  --chart-5: #565656;     /* #565656 - Dark gray */
   
   
+  /* ============================================
+     GRADIENTS (Light Mode)
+     ============================================ */
+  
+  --gradient-blue: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+  --gradient-purple: linear-gradient(135deg, #581c87 0%, #8b5cf6 100%);
+  --gradient-purple-light: linear-gradient(135deg, #7e22ce 0%, #a855f7 100%);
+  --gradient-purple-indigo: linear-gradient(135deg, #4c1d95 0%, #6366f1 100%);
+  --gradient-red: linear-gradient(135deg, #991b1b 0%, #ef4444 100%);
+  --gradient-green: linear-gradient(135deg, #14532d 0%, #22c55e 100%);
+  --gradient-amber: linear-gradient(135deg, #b45309 0%, #f59e0b 100%);
+  --gradient-cyan: linear-gradient(135deg, #155e75 0%, #06b6d4 100%);
+  --gradient-sky: linear-gradient(135deg, #0369a1 0%, #0ea5e9 100%);
+  --gradient-slate: linear-gradient(135deg, #334155 0%, #64748b 100%);
+  --gradient-violet: linear-gradient(135deg, #5b21b6 0%, #8b5cf6 100%);
+  --gradient-gold: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  --gradient-teal: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);
+  --gradient-pink: linear-gradient(135deg, #ec4899 0%, #f43f5e 100%);
+  
+  --color-gold: #ffd700;
+
   /* ============================================
      LOGO REFERENCE (Light Mode)
      ============================================ */
@@ -369,7 +495,7 @@
    * - Icon: #FF3131 (red) and #CC3F23 (dark red) - Lightning bolt
    * - Wordmark: Dark (#090909) in light mode, Light (#FFFFFF) in dark mode
    */
-  --logo-wordmark-color: rgba(9, 9, 9, 1);       /* Dark wordmark for light backgrounds */
-  --logo-icon-primary: rgba(255, 49, 49, 1);     /* Red - never changes */
-  --logo-icon-secondary: rgba(204, 63, 35, 1);   /* Dark red - never changes */
+  --logo-wordmark-color: #090909;       /* Dark wordmark for light backgrounds */
+  --logo-icon-primary: #FF3131;     /* Red - never changes */
+  --logo-icon-secondary: #CC3F23;   /* Dark red - never changes */
 }

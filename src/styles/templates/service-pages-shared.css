@@ -6,21 +6,12 @@
  * - Security Service
  * - Content Service
  * 
+ * All vertical spacing via blockGap (CSS gap) -- zero margin.
  * All styling uses CSS variables from design system.
- * 
- * Structure:
- * - Section headers
- * - Benefit cards (4-column grid)
- * - Feature cards (3-column grid)
- * - Process steps (5 steps with numbered timeline)
- * - List grids (platforms, standards, content types)
- * - Pricing packages (3-tier comparison)
- * - Case study
- * - CTA section
  */
 
 /* ============================================================
-   SECTION HEADERS
+   SECTION HEADERS -- flex column with blockGap
    ============================================================ */
 
 .service-page__section-header {
@@ -29,6 +20,9 @@
   margin-left: auto;
   margin-right: auto;
   padding-bottom: var(--spacing-12);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
 }
 
 .service-page__section-title {
@@ -36,13 +30,13 @@
   font-size: var(--text-h2);
   font-weight: 600;
   color: var(--foreground);
-  margin-bottom: var(--spacing-4);
 }
 
 .service-page__section-description {
   font-family: var(--font-secondary);
   font-size: var(--text-lg);
   color: var(--muted-foreground);
+  line-height: var(--line-height-normal);
 }
 
 /* ============================================================
@@ -67,18 +61,22 @@
   }
 }
 
+/* Benefit card -- flex column with blockGap */
 .service-page__benefit-card {
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: var(--spacing-8);
   transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
 }
 
 .service-page__benefit-card:hover {
   border-color: var(--primary);
   transform: translateY(-4px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-hover);
 }
 
 .service-page__benefit-icon {
@@ -90,12 +88,13 @@
   background: var(--primary);
   color: var(--primary-foreground);
   border-radius: var(--radius);
-  margin-bottom: var(--spacing-4);
 }
 
 .service-page__benefit-icon svg {
   width: 24px;
   height: 24px;
+  color: var(--primary);
+  margin-top: calc(var(--spacing-1) / 2); /* optical icon alignment */
 }
 
 .service-page__benefit-title {
@@ -103,14 +102,13 @@
   font-size: var(--text-xl);
   font-weight: 600;
   color: var(--foreground);
-  margin-bottom: var(--spacing-3);
 }
 
 .service-page__benefit-description {
   font-family: var(--font-secondary);
   font-size: var(--text-base);
   color: var(--muted-foreground);
-  line-height: 1.6;
+  line-height: var(--line-height-normal);
 }
 
 /* ============================================================
@@ -135,11 +133,15 @@
   }
 }
 
+/* Feature card -- flex column with blockGap */
 .service-page__feature-card {
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: var(--spacing-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
 }
 
 .service-page__feature-icon {
@@ -151,7 +153,6 @@
   background: var(--primary);
   color: var(--primary-foreground);
   border-radius: var(--radius);
-  margin-bottom: var(--spacing-4);
 }
 
 .service-page__feature-icon svg {
@@ -164,14 +165,13 @@
   font-size: var(--text-xl);
   font-weight: 600;
   color: var(--foreground);
-  margin-bottom: var(--spacing-3);
 }
 
 .service-page__feature-description {
   font-family: var(--font-secondary);
   font-size: var(--text-base);
   color: var(--muted-foreground);
-  line-height: 1.6;
+  line-height: var(--line-height-normal);
 }
 
 /* ============================================================
@@ -208,8 +208,12 @@
   font-weight: 600;
 }
 
+/* Process content -- flex column with blockGap */
 .service-page__process-content {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
 }
 
 .service-page__process-title {
@@ -217,14 +221,13 @@
   font-size: var(--text-lg);
   font-weight: 600;
   color: var(--foreground);
-  margin-bottom: var(--spacing-2);
 }
 
 .service-page__process-description {
   font-family: var(--font-secondary);
   font-size: var(--text-base);
   color: var(--muted-foreground);
-  line-height: 1.6;
+  line-height: var(--line-height-normal);
 }
 
 /* ============================================================
@@ -249,6 +252,7 @@
   }
 }
 
+/* List item -- flex column with blockGap */
 .service-page__list-item {
   background: var(--card);
   border: 1px solid var(--border);
@@ -256,6 +260,9 @@
   padding: var(--spacing-6);
   text-align: center;
   transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
 }
 
 .service-page__list-item:hover {
@@ -268,7 +275,6 @@
   font-size: var(--text-base);
   font-weight: 600;
   color: var(--foreground);
-  margin-bottom: var(--spacing-2);
 }
 
 .service-page__list-description {
@@ -285,7 +291,8 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--spacing-8);
-  margin-top: var(--spacing-12);
+  padding-top: var(--spacing-12);
+  /* margin-top converted to padding-top — section-level spacing */
 }
 
 @media (min-width: 768px) {
@@ -294,6 +301,7 @@
   }
 }
 
+/* Pricing card -- flex column with blockGap */
 .service-page__pricing-card {
   background: var(--card);
   border: 1px solid var(--border);
@@ -301,13 +309,14 @@
   padding: var(--spacing-8);
   display: flex;
   flex-direction: column;
+  gap: var(--spacing-3);
   position: relative;
 }
 
 .service-page__pricing-card--popular {
   border-color: var(--primary);
   border-width: 2px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-hover);
 }
 
 .service-page__pricing-badge {
@@ -323,7 +332,7 @@
   text-transform: uppercase;
   padding: var(--spacing-1) var(--spacing-4);
   border-radius: var(--radius-full);
-  letter-spacing: 0.05em;
+  letter-spacing: var(--letter-spacing-wider);
 }
 
 .service-page__pricing-name {
@@ -331,18 +340,16 @@
   font-size: var(--text-xl);
   font-weight: 600;
   color: var(--foreground);
-  margin-bottom: var(--spacing-2);
 }
 
 .service-page__pricing-tagline {
   font-family: var(--font-secondary);
   font-size: var(--text-sm);
   color: var(--muted-foreground);
-  margin-bottom: var(--spacing-6);
 }
 
 .service-page__pricing-price {
-  margin-bottom: var(--spacing-2);
+  /* price wrapper */
 }
 
 .service-page__pricing-amount {
@@ -363,14 +370,16 @@
   font-family: var(--font-secondary);
   font-size: var(--text-sm);
   color: var(--muted-foreground);
-  margin-bottom: var(--spacing-6);
   padding-bottom: var(--spacing-6);
   border-bottom: 1px solid var(--border);
 }
 
+/* Pricing features list -- flex column with blockGap */
 .service-page__pricing-features {
   flex: 1;
-  margin-bottom: var(--spacing-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
 }
 
 .service-page__pricing-feature {
@@ -380,7 +389,6 @@
   font-family: var(--font-secondary);
   font-size: var(--text-base);
   color: var(--foreground);
-  margin-bottom: var(--spacing-3);
 }
 
 .service-page__pricing-feature svg {
@@ -388,23 +396,29 @@
   width: 20px;
   height: 20px;
   color: var(--primary);
-  margin-top: 2px;
+  margin-top: calc(var(--spacing-1) / 2); /* optical icon alignment */
 }
 
 /* ============================================================
-   CASE STUDY
+   CASE STUDY -- flex column with blockGap
    ============================================================ */
 
 .service-page__case-study {
   background: var(--muted);
   border-radius: var(--radius-lg);
   padding: var(--spacing-12);
-  margin-top: var(--spacing-12);
+  /* margin-top removed — handled by parent gap */
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
 }
 
+/* Case study header -- flex column with blockGap */
 .service-page__case-study-header {
   text-align: center;
-  margin-bottom: var(--spacing-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
 }
 
 .service-page__case-study-title {
@@ -412,7 +426,6 @@
   font-size: var(--text-2xl);
   font-weight: 600;
   color: var(--foreground);
-  margin-bottom: var(--spacing-6);
 }
 
 .service-page__case-study-quote {
@@ -420,8 +433,7 @@
   font-size: var(--text-xl);
   font-style: italic;
   color: var(--foreground);
-  margin-bottom: var(--spacing-4);
-  line-height: 1.6;
+  line-height: var(--line-height-normal);
 }
 
 .service-page__case-study-author {
@@ -441,7 +453,6 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--spacing-6);
-  margin-top: var(--spacing-8);
 }
 
 @media (min-width: 640px) {
@@ -456,11 +467,15 @@
   }
 }
 
+/* Result item -- flex column with blockGap */
 .service-page__result-item {
   text-align: center;
   padding: var(--spacing-6);
   background: var(--card);
   border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
 }
 
 .service-page__result-metric {
@@ -468,7 +483,6 @@
   font-size: var(--text-3xl);
   font-weight: 700;
   color: var(--primary);
-  margin-bottom: var(--spacing-2);
 }
 
 .service-page__result-label {
@@ -478,7 +492,7 @@
 }
 
 /* ============================================================
-   CTA SECTION
+   CTA SECTION -- flex column with blockGap
    ============================================================ */
 
 .service-page__cta-container {
@@ -486,6 +500,10 @@
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-6);
 }
 
 .service-page__cta-title {
@@ -493,15 +511,13 @@
   font-size: var(--text-3xl);
   font-weight: 600;
   color: var(--foreground);
-  margin-bottom: var(--spacing-4);
 }
 
 .service-page__cta-description {
   font-family: var(--font-secondary);
   font-size: var(--text-lg);
   color: var(--muted-foreground);
-  margin-bottom: var(--spacing-8);
-  line-height: 1.6;
+  line-height: var(--line-height-normal);
 }
 
 .service-page__cta-buttons {

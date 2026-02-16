@@ -1,0 +1,258 @@
+/**
+ * Hero Pattern Styles
+ * 
+ * BEM-compliant styles for the Hero component.
+ * All vertical spacing via blockGap (CSS gap) -- zero margin.
+ */
+
+/* Section Layout */
+.hero-section {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--background);
+}
+
+.hero-section--with-gradient {
+  color: var(--color-white);
+}
+
+/* Gradient Variants */
+.wp-gradient-blue { background: var(--gradient-blue); }
+.wp-gradient-purple { background: var(--gradient-purple); }
+.wp-gradient-purple-light { background: var(--gradient-purple-light); }
+.wp-gradient-purple-indigo { background: var(--gradient-purple-indigo); }
+.wp-gradient-red { background: var(--gradient-red); }
+.wp-gradient-green { background: var(--gradient-green); }
+.wp-gradient-amber { background: var(--gradient-amber); }
+.wp-gradient-cyan { background: var(--gradient-cyan); }
+.wp-gradient-sky { background: var(--gradient-sky); }
+.wp-gradient-slate { background: var(--gradient-slate); }
+.wp-gradient-violet { background: var(--gradient-violet); }
+
+/* Decorative Orbs */
+.hero-orb {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 0;
+  top: -200px;
+  right: -200px;
+}
+
+.hero-orb--primary {
+  background-color: var(--overlay-white-subtle);
+}
+
+.hero-orb--accent {
+  background-color: var(--overlay-white-15);
+}
+
+/* Breadcrumbs — sits above hero-content, spacing via padding */
+.hero-breadcrumbs {
+  padding-bottom: var(--spacing-6);
+  position: relative;
+  z-index: 1;
+}
+
+/* Content Container — flex column with blockGap */
+.hero-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+.hero-content--center {
+  align-items: center;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Badge */
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: 0.375rem 0.75rem;
+  background-color: var(--primary-soft);
+  color: var(--primary);
+  border-radius: var(--radius-full);
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+.hero-section--with-gradient .hero-badge {
+  background-color: var(--overlay-white-15);
+  color: var(--color-white);
+  backdrop-filter: blur(4px);
+}
+
+/* Title */
+.hero-title {
+  font-family: var(--font-primary);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--foreground);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+.hero-title--gradient {
+  color: var(--color-white);
+}
+
+.hero-title__highlight {
+  color: var(--primary);
+  position: relative;
+  display: inline-block;
+}
+
+.hero-section--with-gradient .hero-title__highlight {
+  color: var(--overlay-white-opaque);
+  text-shadow: 0 0 20px var(--overlay-white-medium);
+}
+
+/* Subtitle */
+.hero-subtitle {
+  font-family: var(--font-primary);
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-medium);
+  color: var(--primary);
+}
+
+.hero-subtitle--gradient {
+  color: var(--overlay-white-opaque);
+}
+
+/* Description */
+.hero-description {
+  font-family: var(--font-secondary);
+  font-size: var(--text-lg);
+  line-height: var(--line-height-normal);
+  color: var(--muted-foreground);
+  max-width: 65ch;
+}
+
+.hero-description--homepage {
+  font-size: var(--text-lead); /* Hero subtitle - lead text */
+}
+
+.hero-description--gradient {
+  color: var(--overlay-white-85);
+}
+
+/* Increase gap before buttons when description precedes them */
+.hero-description--with-buttons {
+  padding-bottom: var(--spacing-4);
+}
+
+@media (min-width: 768px) {
+  .hero-description {
+    font-size: var(--text-xl);
+  }
+  
+  .hero-description--homepage {
+    font-size: var(--text-lead); /* Hero subtitle - lead text */
+  }
+}
+
+/* Buttons — extra spacing below when stats follow */
+.hero-buttons {
+  padding-bottom: var(--spacing-6);
+}
+
+.hero-buttons--with-stats {
+  padding-bottom: var(--spacing-10);
+}
+
+/* Stats */
+.hero-stats {
+  width: 100%;
+  border-top: 1px solid var(--border-soft);
+  padding-top: var(--spacing-8);
+  margin-top: auto;
+}
+
+.hero-section--with-gradient .hero-stats {
+  border-top-color: var(--overlay-white-subtle);
+}
+
+.hero-stat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.hero-stat--homepage {
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-4);
+}
+
+.hero-stat--center {
+  align-items: center;
+  text-align: center;
+}
+
+/* Stat Icon */
+.hero-stat__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background-color: var(--primary-soft);
+  color: var(--primary);
+  border-radius: var(--radius-full);
+}
+
+.hero-stat__icon--gradient {
+  background-color: var(--overlay-white-15);
+  color: var(--color-white);
+}
+
+/* Stat Value */
+.hero-stat__value {
+  font-family: var(--font-primary);
+  font-size: var(--text-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+  line-height: 1;
+}
+
+.hero-stat__value--gradient {
+  color: var(--color-white);
+}
+
+/* Stat Label */
+.hero-stat__label {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+  font-weight: var(--font-weight-medium);
+}
+
+.hero-stat__label--gradient {
+  color: var(--overlay-white-muted);
+}
+
+/* Hero Icon (Right side large icon) */
+.hero-icon-container {
+  opacity: 0.1;
+  transform: rotate(-10deg);
+  pointer-events: none;
+}
+
+.hero-section--with-gradient .hero-icon-container {
+  color: var(--color-white) !important;
+  opacity: 0.15;
+}

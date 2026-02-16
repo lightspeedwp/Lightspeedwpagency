@@ -1,0 +1,24 @@
+/**
+ * LightSpeed Typography Presets
+ * 
+ * Defines font families and font sizes.
+ * Pattern: --wp--preset--font-family--{slug}
+ * Pattern: --wp--preset--font-size--{slug}
+ */
+
+:root {
+  /* Font Families */
+  --wp--preset--font-family--brand-sans: 'Lexend', sans-serif;
+  --wp--preset--font-family--brand-serif: 'Manrope', serif; /* Using Manrope as secondary/serif placeholder as per previous context */
+  
+  /* Font Sizes */
+  --wp--preset--font-size--100: 0.75rem;  /* 12px */
+  --wp--preset--font-size--200: 1rem;     /* 16px */
+  --wp--preset--font-size--300: 1.25rem;  /* 20px */
+  --wp--preset--font-size--400: 1.5rem;   /* 24px */
+  --wp--preset--font-size--500: 2rem;     /* 32px */
+  --wp--preset--font-size--600: 2.5rem;   /* 40px */
+  --wp--preset--font-size--700: 3rem;     /* 48px */
+  --wp--preset--font-size--800: 4rem;     /* 64px */
+  --wp--preset--font-size--900: 5rem;     /* 80px */
+}

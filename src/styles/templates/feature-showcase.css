@@ -1,0 +1,232 @@
+/**
+ * Feature Showcase Page Styles
+ *
+ * Dev tools showcase page for animation, card, and feature demos.
+ * BEM naming: .showcase-*
+ * 100% CSS variables — no hardcoded values.
+ */
+
+/* ============================================
+   HERO
+   ============================================ */
+
+.showcase__hero-inner {
+  text-align: center;
+  max-width: 896px;
+  margin: 0 auto;
+}
+
+.showcase__hero-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-2);
+  margin-bottom: var(--spacing-6);
+}
+
+.showcase__hero-desc {
+  font-family: var(--font-primary);
+  font-size: var(--text-xl);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-relaxed);
+  margin: 0 0 var(--spacing-8) 0;
+}
+
+.showcase__hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-4);
+}
+
+
+/* ============================================
+   STATS
+   ============================================ */
+
+.showcase__stat-card {
+  padding: var(--spacing-6);
+  text-align: center;
+  background-color: var(--card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-soft);
+}
+
+.showcase__stat-value {
+  font-family: var(--font-primary);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-medium);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-2);
+}
+
+.showcase__stat-label {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+}
+
+
+/* ============================================
+   SECTION HEADER
+   ============================================ */
+
+.showcase__section-header {
+  text-align: center;
+  margin-bottom: var(--spacing-12);
+}
+
+.showcase__section-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+  margin: 0 0 var(--spacing-4) 0;
+}
+
+.showcase__section-desc {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  color: var(--muted-foreground);
+  max-width: 672px;
+  margin: 0 auto;
+  line-height: var(--line-height-relaxed);
+}
+
+
+/* ============================================
+   ANIMATION DEMO CARD
+   ============================================ */
+
+.showcase__anim-card {
+  padding: var(--spacing-6);
+  background-color: var(--card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-soft);
+}
+
+.showcase__anim-icon {
+  margin-bottom: var(--spacing-4);
+  color: var(--primary);
+}
+
+.showcase__anim-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+  margin: 0 0 var(--spacing-2) 0;
+}
+
+.showcase__anim-desc {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-normal);
+  margin: 0;
+}
+
+
+/* ============================================
+   CARD DEMO
+   ============================================ */
+
+.showcase__card-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+  margin: 0 0 var(--spacing-2) 0;
+}
+
+.showcase__card-desc {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-normal);
+  margin: 0;
+}
+
+
+/* ============================================
+   TEMPLATE CARD FEATURES
+   ============================================ */
+
+.showcase__feature-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--spacing-6) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.showcase__feature-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+}
+
+.showcase__template-link {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--primary);
+}
+
+.showcase__template-icon {
+  margin-bottom: var(--spacing-6);
+  color: var(--primary);
+}
+
+.showcase__template-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h3);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+  margin: 0 0 var(--spacing-4) 0;
+}
+
+.showcase__template-desc {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-relaxed);
+  margin: 0 0 var(--spacing-6) 0;
+}
+
+
+/* ============================================
+   SECTION FOOTER
+   ============================================ */
+
+.showcase__section-footer {
+  text-align: center;
+  padding-top: var(--spacing-12);
+  /* margin-top converted to padding-top — section-level spacing */
+}
+
+.showcase__section-footer-text {
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  color: var(--muted-foreground);
+  margin: 0 0 var(--spacing-4) 0;
+}
+
+
+/* ============================================
+   DARK MODE
+   ============================================ */
+
+.dark .showcase__stat-card,
+.dark .showcase__anim-card {
+  background-color: var(--card);
+  border-color: var(--border);
+}

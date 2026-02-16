@@ -6,23 +6,20 @@
  * Displays a single link post.
  */
 
-import { SiteHeader } from '@/app/components/parts/SiteHeader';
-import { SiteFooter } from '@/app/components/parts/SiteFooter';
 import { Container } from '@/app/components/common/Container';
 import { Section } from '@/app/components/common/Section';
 import { Breadcrumbs } from '@/app/components/common/Breadcrumbs';
 import { linkPost } from '@/app/data/posts-formats';
 import { Link as LinkIcon, ExternalLink, Calendar } from 'lucide-react';
 import '@/styles/blocks/post-formats/link.css';
+import '@/styles/templates/single-post.css';
 
 export function SingleLinkTemplate() {
   const post = linkPost;
 
   return (
     <>
-      <SiteHeader />
-      <main>
-        <section className="py-4 border-b border-[var(--border-soft)]">
+      <section className="single-post-breadcrumbs">
           <Container>
             <Breadcrumbs 
               items={[
@@ -37,7 +34,7 @@ export function SingleLinkTemplate() {
 
         <Section spacing="lg">
           <Container>
-            <div className="max-w-2xl mx-auto">
+            <div className="wp-max-w-2xl wp-mx-auto">
               <article className="wp-block-link-single">
                 <div className="wp-block-link-single__icon">
                   <LinkIcon size={32} />
@@ -64,8 +61,7 @@ export function SingleLinkTemplate() {
             </div>
           </Container>
         </Section>
-      </main>
-      <SiteFooter />
+
     </>
   );
 }

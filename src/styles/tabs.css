@@ -1,0 +1,69 @@
+/**
+ * Tabs Component Styles
+ * Replaces Tailwind classes for separation of concerns
+ */
+
+.tabs-root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.tabs-list {
+  display: inline-flex;
+  height: var(--spacing-9);
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-xl);
+  background-color: var(--muted);
+  padding: var(--spacing-1);
+  color: var(--muted-foreground);
+}
+
+.tabs-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-1) var(--spacing-3);
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--muted-foreground);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  height: 100%;
+}
+
+.tabs-trigger:hover:not(:disabled) {
+  color: var(--foreground);
+}
+
+.tabs-trigger[data-state="active"] {
+  background-color: var(--card);
+  color: var(--foreground);
+  box-shadow: var(--shadow-sm);
+}
+
+.tabs-trigger:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.tabs-trigger:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.tabs-content {
+  margin-top: var(--spacing-2);
+  outline: none;
+}
+
+.tabs-content:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}

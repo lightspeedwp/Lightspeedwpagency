@@ -1,0 +1,17 @@
+/**
+ * Label Block Styles
+ */
+.wp-block-label {
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: 1;
+  color: var(--foreground);
+  user-select: none;
+}
+
+.wp-block-label:disabled,
+.wp-block-label[aria-disabled="true"] {
+  cursor: not-allowed;
+  opacity: 0.7;
+}

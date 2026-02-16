@@ -1,0 +1,164 @@
+/**
+ * WordPress Services Pattern Styles
+ * 
+ * BEM-compliant styles for the WordPressServices component.
+ * All vertical spacing via blockGap (CSS gap) -- zero margin.
+ */
+
+/* Wrapper -- flex column with blockGap */
+.wordpress-services {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-16);
+}
+
+/* Header -- flex column with blockGap */
+.wordpress-services__header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  max-width: var(--wp--custom--layout--content-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.wordpress-services__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-snug);
+  color: var(--foreground);
+}
+
+.wordpress-services__description {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  line-height: var(--line-height-normal);
+  color: var(--muted-foreground);
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.wordpress-services__grid {
+  display: grid;
+  gap: var(--spacing-8);
+}
+
+.wordpress-services__grid--3-cols {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .wordpress-services__grid--3-cols {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .wordpress-services__grid--3-cols {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Card -- flex column with blockGap */
+.wordpress-services__card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  background-color: var(--card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-8);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.wordpress-services__card:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
+}
+
+/* Icon */
+.wordpress-services__icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-lg);
+  background-color: var(--primary-soft);
+  color: var(--primary);
+  transition: all 0.3s ease;
+}
+
+.wordpress-services__card:hover .wordpress-services__icon-wrapper {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+/* Title */
+.wordpress-services__card-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+}
+
+/* Description */
+.wordpress-services__card-description {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  line-height: var(--line-height-normal);
+  color: var(--muted-foreground);
+  flex-grow: 1;
+}
+
+/* Features */
+.wordpress-services__features {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+  border-top: 1px solid var(--border-soft);
+  padding-top: var(--spacing-6);
+}
+
+.wordpress-services__feature-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+.wordpress-services__feature-icon {
+  color: var(--success);
+  flex-shrink: 0;
+}
+
+.wordpress-services__feature-text {
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  color: var(--foreground);
+}
+
+/* Link */
+.wordpress-services__link {
+  margin-top: auto;
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--text-base);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  text-decoration: none;
+}
+
+.wordpress-services__link:hover {
+  text-decoration: underline;
+}

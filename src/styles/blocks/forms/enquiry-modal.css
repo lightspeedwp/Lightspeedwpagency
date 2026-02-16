@@ -1,0 +1,162 @@
+/**
+ * Enquiry Modal Block Styles
+ * 
+ * WordPress Block: forms/enquiry-modal
+ */
+
+/* Backdrop */
+.wp-block-enquiry-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background-color: var(--overlay-backdrop);
+  backdrop-filter: blur(4px);
+  animation: wp-fade-in 0.2s ease-out;
+}
+
+/* Modal */
+.wp-block-enquiry-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 101;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-4);
+}
+
+.wp-block-enquiry-modal__content {
+  position: relative;
+  width: 100%;
+  max-width: 42rem; /* max-w-2xl */
+  max-height: 90vh;
+  overflow: auto;
+  background-color: var(--card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  animation: wp-slide-up-fade 0.3s ease-out;
+}
+
+/* Close Button */
+.wp-block-enquiry-modal__close {
+  position: absolute;
+  top: var(--spacing-4);
+  right: var(--spacing-4);
+  padding: var(--spacing-2);
+  color: var(--muted-foreground);
+  border-radius: var(--radius);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.wp-block-enquiry-modal__close:hover {
+  background-color: var(--muted);
+  color: var(--foreground);
+}
+
+/* Body */
+.wp-block-enquiry-modal__body {
+  padding: var(--spacing-8);
+}
+
+/* Header */
+.wp-block-enquiry-modal__header {
+  margin-bottom: var(--spacing-8);
+}
+
+.wp-block-enquiry-modal__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h3);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-snug);
+  color: var(--foreground);
+  margin: 0 0 var(--spacing-4) 0;
+}
+
+.wp-block-enquiry-modal__description {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  line-height: var(--line-height-normal);
+  color: var(--muted-foreground);
+  margin: 0;
+}
+
+/* Success Message */
+.wp-block-enquiry-modal__success {
+  margin-bottom: var(--spacing-6);
+  padding: var(--spacing-4);
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border-radius: var(--radius);
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  text-align: center;
+}
+
+/* Form */
+.wp-block-enquiry-modal__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+.wp-block-enquiry-modal__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.wp-block-enquiry-modal__label {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-medium);
+  color: var(--foreground);
+}
+
+.wp-block-enquiry-modal__input,
+.wp-block-enquiry-modal__textarea {
+  width: 100%;
+  padding: var(--spacing-3) var(--spacing-4);
+  background-color: var(--input);
+  color: var(--foreground);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.wp-block-enquiry-modal__input:focus,
+.wp-block-enquiry-modal__textarea:focus {
+  border-color: var(--ring);
+  box-shadow: 0 0 0 2px var(--ring-offset);
+}
+
+.wp-block-enquiry-modal__textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* Actions */
+.wp-block-enquiry-modal__actions {
+  display: flex;
+  gap: var(--spacing-4);
+  padding-top: var(--spacing-4);
+}
+
+.wp-block-enquiry-modal__submit {
+  flex: 1;
+}
+
+@keyframes wp-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes wp-slide-up-fade {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

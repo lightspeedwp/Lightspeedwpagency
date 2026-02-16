@@ -8,6 +8,8 @@
  */
 
 import { useState, useEffect } from 'react';
+import { ChevronUp } from 'lucide-react'; // Better than text arrow
+import '@/styles/back-to-top.css';
 
 export function BackToTopButton() {
   const [isVisible, setIsVisible] = useState(false);
@@ -32,35 +34,18 @@ export function BackToTopButton() {
     });
   };
 
-  if (!isVisible) {
-    return null;
-  }
+  const buttonClasses = [
+    'back-to-top',
+    isVisible && 'back-to-top--visible'
+  ].filter(Boolean).join(' ');
 
   return (
     <button
       onClick={scrollToTop}
       aria-label="Back to top"
-      style={{
-        position: 'fixed',
-        bottom: 'var(--wp--preset--spacing--30)',
-        left: 'var(--wp--preset--spacing--30)',
-        zIndex: 1000,
-        width: '48px',
-        height: '48px',
-        borderRadius: '50%',
-        backgroundColor: 'var(--wp--preset--color--primary)',
-        color: 'var(--wp--preset--color--primary-foreground)',
-        border: 'none',
-        cursor: 'pointer',
-        boxShadow: 'var(--shadow-md)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        fontSize: 'var(--wp--preset--font-size--400)',
-        transition: 'opacity 0.3s ease',
-      }}
+      className={buttonClasses}
     >
-      ↑
+      <ChevronUp size={24} />
     </button>
   );
 }

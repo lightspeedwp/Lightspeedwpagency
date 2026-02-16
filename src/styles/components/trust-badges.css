@@ -1,0 +1,55 @@
+/**
+ * Trust Badges Component Styles
+ * 
+ * Social proof badges for footer.
+ * 100% CSS variables.
+ */
+
+.trust-badges {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: start;
+  text-align: center;
+  gap: var(--spacing-6);
+  padding: var(--spacing-6) 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+@media (min-width: 640px) {
+  .trust-badges {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.trust-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--spacing-2);
+}
+
+.trust-badge__icon {
+  color: var(--primary);
+  width: 32px;
+  height: 32px;
+}
+
+.trust-badge__content {
+  display: flex;
+  flex-direction: column;
+}
+
+.trust-badge__label {
+  font-size: var(--text-base);
+  font-family: var(--font-primary);
+  font-weight: 500;
+  color: var(--sidebar-foreground);
+}
+
+.trust-badge__description {
+  font-size: var(--text-tiny);
+  font-family: var(--font-secondary);
+  color: var(--muted-foreground);
+}

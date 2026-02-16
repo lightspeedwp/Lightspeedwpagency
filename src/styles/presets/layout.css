@@ -1,0 +1,15 @@
+/**
+ * LightSpeed Layout Presets
+ * 
+ * Defines global layout sizes and aspect ratios.
+ */
+
+:root {
+  /* Layout Widths */
+  --wp--style--global--content-size: 40rem;
+  --wp--style--global--wide-size: 64rem;
+  
+  /* Aspect Ratios */
+  --wp--preset--aspect-ratio--2-1: 2/1;
+  --wp--preset--aspect-ratio--21-9: 21/9;
+}

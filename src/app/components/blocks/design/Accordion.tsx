@@ -32,6 +32,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { ChevronDown } from 'lucide-react';
+import '@/styles/blocks/design/accordion.css';
 
 /**
  * Individual Accordion Item Props
@@ -160,12 +161,12 @@ export function AccordionItem({
       <div
         id={`accordion-panel-${id}`}
         ref={panelRef}
-        className="wp-block-accordion__panel"
+        className="wp-block-accordion__content"
         role="region"
         aria-labelledby={`accordion-header-${id}`}
         hidden={!isOpen}
       >
-        <div className="wp-block-accordion__answer">
+        <div className="wp-block-accordion__content-inner">
           {children || answer}
         </div>
       </div>

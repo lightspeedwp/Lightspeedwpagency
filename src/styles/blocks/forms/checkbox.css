@@ -1,0 +1,44 @@
+/**
+ * Checkbox Block Styles
+ */
+.wp-block-checkbox {
+  height: var(--spacing-5);
+  width: var(--spacing-5);
+  appearance: none;
+  background-color: var(--background);
+  border: var(--wp--preset--border-width--1) solid var(--primary);
+  border-radius: var(--radius-sm);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-base) ease-in-out;
+}
+
+.wp-block-checkbox:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 var(--wp--preset--border-width--2) var(--ring);
+  border-color: var(--primary);
+}
+
+.wp-block-checkbox[data-state="checked"] {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.wp-block-checkbox[disabled] {
+  cursor: not-allowed;
+  opacity: 0.5;
+  background-color: var(--muted);
+}
+
+/* Check icon wrapper (custom svg usually) */
+.wp-block-checkbox__indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: currentColor;
+  width: 100%;
+  height: 100%;
+}

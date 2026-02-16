@@ -1,0 +1,12 @@
+/**
+ * LightSpeed Presets Index
+ * 
+ * Imports all preset categories.
+ */
+
+@import './colors.css';
+@import './typography.css';
+@import './spacing.css';
+@import './shadows.css';
+@import './borders.css';
+@import './layout.css';

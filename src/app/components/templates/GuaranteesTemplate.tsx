@@ -6,18 +6,13 @@
  * Pattern order: Breadcrumbs → Hero → Main Guarantees → How It Works → Trust Signals → FAQs → CTA
  */
 
-import { SiteHeader } from '../parts/SiteHeader';
-import { SiteFooter } from '../parts/SiteFooter';
-import { SkipLink } from '../common/SkipLink';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { Breadcrumbs } from '../common/Breadcrumbs';
-import { BackToTopButton } from '../blocks/layout/BackToTopButton';
-import { RouteAnnouncer } from '../blocks/utility/RouteAnnouncer';
-import { Buttons, Button } from '../blocks/design/Buttons';
+import { Heading } from '../blocks/text/Heading';
+import { Paragraph } from '../blocks/text/Paragraph';
 import { FAQSection } from '../patterns/FAQSection';
-import { CTASection } from '../patterns/CTASection';
-import { Check } from 'lucide-react';
+import '@/styles/templates/guarantees.css';
 
 // Import centralized data
 import {
@@ -32,114 +27,51 @@ import {
 export function GuaranteesTemplate() {
   return (
     <>
-      <RouteAnnouncer />
-      <SkipLink />
-      <SiteHeader />
-      
-      <main id="main-content" role="main">
         {/* Breadcrumbs */}
-        <section 
-          className="py-4"
-          style={{
-            backgroundColor: 'var(--background)',
-            borderBottom: '1px solid var(--border-soft)'
-          }}
-        >
-          <Container>
+        <section className="wp-block-breadcrumbs-section wp-block-breadcrumbs-section--border">
             <Breadcrumbs 
               items={[
                 { label: 'Home', href: '/' },
                 { label: guaranteesPageHero.title }
               ]}
             />
-          </Container>
         </section>
 
         {/* Hero Section */}
         <Section 
+          className="wp-gradient-green wp-overflow-hidden"
           spacing="xl"
-          style={{
-            background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
-            color: 'var(--primary-foreground)',
-            position: 'relative',
-            overflow: 'hidden'
-          }}
         >
           {/* Gradient orb decorations */}
-          <div
-            className="absolute top-0 right-0 w-96 h-96 rounded-full"
-            style={{
-              background: 'radial-gradient(circle, rgba(16, 185, 129, 0.3) 0%, transparent 70%)',
-              filter: 'blur(80px)',
-              transform: 'translate(30%, -30%)'
-            }}
-          />
+          <div className="wp-gradient-orb wp-gradient-orb--green wp-gradient-orb--top-right" />
 
           <Container>
-            <div className="max-w-4xl mx-auto text-center relative z-10">
-              <div
-                className="inline-block px-4 py-2 mb-6"
-                style={{
-                  backgroundColor: 'rgba(255, 255, 255, 0.15)',
-                  backdropFilter: 'blur(10px)',
-                  borderRadius: 'var(--radius-full)',
-                  border: '1px solid rgba(255, 255, 255, 0.2)',
-                  fontSize: 'var(--text-small)',
-                  fontFamily: 'var(--font-secondary)',
-                  fontWeight: 'var(--font-weight-semibold)',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.1em'
-                }}
-              >
-                <guaranteesPageHero.badge.icon size={14} style={{ display: 'inline', marginRight: '8px' }} />
-                {guaranteesPageHero.badge.text}
+            <div className="wp-max-w-4xl wp-mx-auto wp-text-center wp-relative" style={{ zIndex: 10 }}>
+              <div className="wp-inline-block wp-mb-6">
+                <Badge variant="outline" style={{ color: 'var(--primary-foreground)', borderColor: 'rgba(255,255,255,0.2)', backgroundColor: 'var(--overlay-white-soft)', backdropFilter: 'blur(4px)' }}>
+                  <guaranteesPageHero.badge.icon size={14} className="wp-inline wp-mr-2" />
+                  {guaranteesPageHero.badge.text}
+                </Badge>
               </div>
 
-              <h1
-                style={{
-                  fontFamily: 'var(--font-primary)',
-                  fontSize: 'clamp(2rem, 5vw, 3.5rem)',
-                  fontWeight: 'var(--font-weight-bold)',
-                  lineHeight: '1.1',
-                  letterSpacing: '-0.02em',
-                  marginBottom: '20px',
-                  color: 'var(--primary-foreground)'
-                }}
-              >
-                Our <span style={{ 
-                  background: 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text'
-                }}>Guarantees</span>
-              </h1>
+              <Heading level={1} className="wp-mb-6" style={{ color: 'var(--primary-foreground)' }}>
+                Our <span style={{ background: 'var(--gradient-gold)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Guarantees</span>
+              </Heading>
 
-              <p
-                style={{
-                  fontFamily: 'var(--font-primary)',
-                  fontSize: 'var(--text-xl)',
-                  lineHeight: '1.6',
-                  color: 'rgba(255, 255, 255, 0.95)',
-                  marginBottom: '16px',
-                  maxWidth: '700px',
-                  margin: '0 auto 16px'
-                }}
+              <Paragraph 
+                size="large"
+                className="wp-mb-4 wp-max-w-3xl wp-mx-auto"
+                style={{ color: 'var(--primary-foreground)', opacity: 0.95 }}
               >
                 {guaranteesPageHero.tagline}
-              </p>
+              </Paragraph>
 
-              <p
-                style={{
-                  fontFamily: 'var(--font-primary)',
-                  fontSize: 'var(--text-lg)',
-                  lineHeight: '1.7',
-                  color: 'rgba(255, 255, 255, 0.85)',
-                  maxWidth: '700px',
-                  margin: '0 auto'
-                }}
+              <Paragraph
+                className="wp-max-w-3xl wp-mx-auto"
+                style={{ color: 'var(--primary-foreground)', opacity: 0.85 }}
               >
                 {guaranteesPageHero.description}
-              </p>
+              </Paragraph>
             </div>
           </Container>
         </Section>
@@ -147,123 +79,53 @@ export function GuaranteesTemplate() {
         {/* Main Guarantees Section */}
         <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
           <Container>
-            <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-16">
-                <h2
-                  style={{
-                    fontFamily: 'var(--font-primary)',
-                    fontSize: 'var(--text-h2)',
-                    fontWeight: 'var(--font-weight-bold)',
-                    marginBottom: '16px',
-                    color: 'var(--foreground)'
-                  }}
-                >
+            <div className="wp-max-w-6xl wp-mx-auto">
+              <div className="wp-text-center wp-mb-12">
+                <Heading level={2} className="wp-mb-4">
                   Our Core Guarantees
-                </h2>
-                <p
-                  style={{
-                    fontFamily: 'var(--font-primary)',
-                    fontSize: 'var(--text-lg)',
-                    color: 'var(--muted-foreground)',
-                    maxWidth: '700px',
-                    margin: '0 auto'
-                  }}
-                >
+                </Heading>
+                <Paragraph style={{ color: 'var(--muted-foreground)' }} className="wp-max-w-3xl wp-mx-auto">
                   Every guarantee is backed by real commitments, not empty promises
-                </p>
+                </Paragraph>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="wp-grid-3-cols" style={{ gap: 'var(--spacing-8)' }}>
                 {mainGuarantees.map((guarantee) => {
                   const Icon = guarantee.icon;
                   return (
                     <div
                       key={guarantee.id}
-                      style={{
-                        backgroundColor: 'var(--card)',
-                        borderRadius: 'var(--radius-lg)',
-                        border: '1px solid var(--border-soft)',
-                        padding: '32px',
-                        position: 'relative'
-                      }}
+                      className="guarantees__card"
                     >
                       {guarantee.badge && (
-                        <div
-                          style={{
-                            position: 'absolute',
-                            top: '16px',
-                            right: '16px',
-                            backgroundColor: '#10b981',
-                            color: 'white',
-                            padding: '4px 12px',
-                            borderRadius: 'var(--radius-full)',
-                            fontSize: 'var(--text-small)',
-                            fontFamily: 'var(--font-secondary)',
-                            fontWeight: 'var(--font-weight-semibold)'
-                          }}
-                        >
-                          {guarantee.badge}
+                        <div className="wp-absolute top-4 right-4">
+                          <Badge variant="success">
+                            {guarantee.badge}
+                          </Badge>
                         </div>
                       )}
 
-                      <div
-                        style={{
-                          width: '56px',
-                          height: '56px',
-                          borderRadius: 'var(--radius)',
-                          backgroundColor: 'rgba(16, 185, 129, 0.1)',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          marginBottom: '16px'
-                        }}
-                      >
-                        <Icon size={28} style={{ color: '#10b981' }} />
+                      <div className="guarantees__icon-box">
+                        <Icon size={28} />
                       </div>
 
-                      <h3
-                        style={{
-                          fontFamily: 'var(--font-primary)',
-                          fontSize: 'var(--text-h5)',
-                          fontWeight: 'var(--font-weight-bold)',
-                          marginBottom: '8px',
-                          color: 'var(--foreground)'
-                        }}
-                      >
+                      <Heading level={3} className="wp-mb-2">
                         {guarantee.title}
-                      </h3>
+                      </Heading>
 
-                      <p
-                        style={{
-                          fontFamily: 'var(--font-primary)',
-                          fontSize: 'var(--text-base)',
-                          lineHeight: '1.6',
-                          color: 'var(--muted-foreground)',
-                          marginBottom: '16px'
-                        }}
-                      >
+                      <Paragraph className="wp-mb-4" style={{ color: 'var(--muted-foreground)' }}>
                         {guarantee.description}
-                      </p>
+                      </Paragraph>
 
-                      <ul style={{ marginTop: '16px' }}>
+                      <ul className="wp-mt-4" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--spacing-2)' }}>
                         {guarantee.details.map((detail, index) => (
                           <li
                             key={index}
-                            style={{
-                              display: 'flex',
-                              alignItems: 'flex-start',
-                              gap: '12px',
-                              marginBottom: '8px'
-                            }}
+                            className="wp-flex wp-items-start"
+                            style={{ gap: 'var(--spacing-3)' }}
                           >
-                            <Check size={16} style={{ color: '#10b981', flexShrink: 0, marginTop: '4px' }} />
-                            <span
-                              style={{
-                                fontFamily: 'var(--font-primary)',
-                                fontSize: 'var(--text-small)',
-                                color: 'var(--foreground)'
-                              }}
-                            >
+                            <Check size={16} className="wp-mt-1" style={{ flexShrink: 0, color: 'var(--primary)' }} />
+                            <span style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-sm)', color: 'var(--foreground)' }}>
                               {detail}
                             </span>
                           </li>
@@ -280,85 +142,34 @@ export function GuaranteesTemplate() {
         {/* How It Works Section */}
         <Section spacing="xl" style={{ backgroundColor: 'var(--muted)' }}>
           <Container>
-            <div className="max-w-4xl mx-auto">
-              <div className="text-center mb-16">
-                <h2
-                  style={{
-                    fontFamily: 'var(--font-primary)',
-                    fontSize: 'var(--text-h2)',
-                    fontWeight: 'var(--font-weight-bold)',
-                    marginBottom: '16px',
-                    color: 'var(--foreground)'
-                  }}
-                >
+            <div className="wp-max-w-4xl wp-mx-auto">
+              <div className="wp-text-center wp-mb-12">
+                <Heading level={2} className="wp-mb-4">
                   {guaranteesProcess.title}
-                </h2>
-                <p
-                  style={{
-                    fontFamily: 'var(--font-primary)',
-                    fontSize: 'var(--text-lg)',
-                    color: 'var(--muted-foreground)'
-                  }}
-                >
+                </Heading>
+                <Paragraph style={{ color: 'var(--muted-foreground)' }}>
                   {guaranteesProcess.description}
-                </p>
+                </Paragraph>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="wp-grid-2-cols" style={{ gap: 'var(--spacing-8)' }}>
                 {guaranteesProcess.steps.map((step) => (
                   <div
                     key={step.number}
-                    style={{
-                      backgroundColor: 'var(--card)',
-                      borderRadius: 'var(--radius-lg)',
-                      border: '1px solid var(--border-soft)',
-                      padding: '24px',
-                      display: 'flex',
-                      gap: '16px'
-                    }}
+                    className="guarantees__card guarantees__card--compact guarantees__card--flex"
                   >
-                    <div
-                      style={{
-                        width: '48px',
-                        height: '48px',
-                        borderRadius: 'var(--radius-full)',
-                        backgroundColor: '#10b981',
-                        color: 'white',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        fontFamily: 'var(--font-primary)',
-                        fontSize: 'var(--text-h4)',
-                        fontWeight: 'var(--font-weight-bold)',
-                        flexShrink: 0
-                      }}
-                    >
+                    <div className="guarantees__step-number">
                       {step.number}
                     </div>
 
                     <div>
-                      <h3
-                        style={{
-                          fontFamily: 'var(--font-primary)',
-                          fontSize: 'var(--text-h5)',
-                          fontWeight: 'var(--font-weight-bold)',
-                          marginBottom: '8px',
-                          color: 'var(--foreground)'
-                        }}
-                      >
+                      <Heading level={3} className="wp-mb-2">
                         {step.title}
-                      </h3>
+                      </Heading>
 
-                      <p
-                        style={{
-                          fontFamily: 'var(--font-primary)',
-                          fontSize: 'var(--text-base)',
-                          lineHeight: '1.6',
-                          color: 'var(--muted-foreground)'
-                        }}
-                      >
+                      <Paragraph style={{ color: 'var(--muted-foreground)' }}>
                         {step.description}
-                      </p>
+                      </Paragraph>
                     </div>
                   </div>
                 ))}
@@ -370,79 +181,37 @@ export function GuaranteesTemplate() {
         {/* Trust Signals Section */}
         <Section spacing="lg" style={{ backgroundColor: 'var(--background)' }}>
           <Container>
-            <div className="max-w-4xl mx-auto">
-              <div className="text-center mb-16">
-                <h2
-                  style={{
-                    fontFamily: 'var(--font-primary)',
-                    fontSize: 'var(--text-h2)',
-                    fontWeight: 'var(--font-weight-bold)',
-                    marginBottom: '16px',
-                    color: 'var(--foreground)'
-                  }}
-                >
+            <div className="wp-max-w-4xl wp-mx-auto">
+              <div className="wp-text-center wp-mb-12">
+                <Heading level={2} className="wp-mb-4">
                   {trustSignals.title}
-                </h2>
-                <p
-                  style={{
-                    fontFamily: 'var(--font-primary)',
-                    fontSize: 'var(--text-lg)',
-                    color: 'var(--muted-foreground)'
-                  }}
-                >
+                </Heading>
+                <Paragraph style={{ color: 'var(--muted-foreground)' }}>
                   {trustSignals.description}
-                </p>
+                </Paragraph>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="wp-grid-4-cols" style={{ gap: 'var(--spacing-6)' }}>
                 {trustSignals.signals.map((signal, index) => {
                   const Icon = signal.icon;
                   return (
                     <div
                       key={index}
-                      style={{
-                        backgroundColor: 'var(--card)',
-                        borderRadius: 'var(--radius-lg)',
-                        border: '1px solid var(--border-soft)',
-                        padding: '24px',
-                        textAlign: 'center'
-                      }}
+                      className="guarantees__card guarantees__card--compact wp-text-center"
                     >
-                      <Icon size={32} style={{ color: '#10b981', margin: '0 auto 12px' }} />
+                      <Icon size={32} className="guarantees__signal-icon" />
                       
-                      <div
-                        style={{
-                          fontFamily: 'var(--font-primary)',
-                          fontSize: 'var(--text-h3)',
-                          fontWeight: 'var(--font-weight-bold)',
-                          color: '#10b981',
-                          marginBottom: '4px'
-                        }}
-                      >
+                      <div className="guarantees__signal-stat">
                         {signal.stat}
                       </div>
 
-                      <div
-                        style={{
-                          fontFamily: 'var(--font-primary)',
-                          fontSize: 'var(--text-base)',
-                          fontWeight: 'var(--font-weight-semibold)',
-                          color: 'var(--foreground)',
-                          marginBottom: '8px'
-                        }}
-                      >
+                      <div className="guarantees__signal-label">
                         {signal.label}
                       </div>
 
-                      <p
-                        style={{
-                          fontFamily: 'var(--font-primary)',
-                          fontSize: 'var(--text-small)',
-                          color: 'var(--muted-foreground)'
-                        }}
-                      >
+                      <Paragraph size="small" style={{ color: 'var(--muted-foreground)' }}>
                         {signal.description}
-                      </p>
+                      </Paragraph>
                     </div>
                   );
                 })}
@@ -464,10 +233,6 @@ export function GuaranteesTemplate() {
           secondaryButtonPage={guaranteesCTA.buttons[1]?.page as any}
           gradient="green"
         />
-      </main>
-
-      <SiteFooter />
-      <BackToTopButton />
     </>
   );
 }

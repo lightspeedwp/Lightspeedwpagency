@@ -1,0 +1,86 @@
+/**
+ * Feature Icon Grid Pattern Styles
+ * 
+ * BEM-compliant styles for the FeatureIconGrid component.
+ * All vertical spacing via blockGap (CSS gap) -- zero margin.
+ */
+
+.feature-icon-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-16);
+}
+
+/* Header -- flex column with blockGap */
+.feature-icon-grid__header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  max-width: var(--wp--custom--layout--content-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.feature-icon-grid__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h1);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-snug);
+  color: var(--foreground);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+.feature-icon-grid__description {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  line-height: var(--line-height-relaxed);
+  color: var(--muted-foreground);
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Grid */
+.feature-icon-grid__grid {
+  display: grid;
+  gap: var(--spacing-8);
+}
+
+/* Card -- flex column with blockGap */
+.feature-icon-grid__card {
+  padding: var(--spacing-8);
+  background-color: var(--card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-soft);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+/* Icon Box */
+.feature-icon-grid__icon-box {
+  border-radius: var(--radius-lg);
+  background-color: var(--primary-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+}
+
+/* Item Title */
+.feature-icon-grid__item-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+}
+
+/* Item Description */
+.feature-icon-grid__item-description {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  line-height: var(--line-height-normal);
+  color: var(--muted-foreground);
+}

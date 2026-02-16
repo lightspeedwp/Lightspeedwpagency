@@ -17,36 +17,12 @@
  * - Columns Block → Grid layout
  * - Paragraph Blocks → Integration cards
  * 
- * @example
- * ```tsx
- * import { IntegrationsGrid } from '../patterns/IntegrationsGrid';
- * import { Globe, Calendar, CreditCard, MapPin } from 'lucide-react';
- * 
- * <IntegrationsGrid
- *   badge="INTEGRATIONS"
- *   title="Key Integrations"
- *   description="Connect with the tools and platforms you already use"
- *   integrations={[
- *     {
- *       name: 'Wetu',
- *       description: 'Tour operator content management and distribution platform',
- *       icon: Globe
- *     },
- *     {
- *       name: 'TourCMS',
- *       description: 'Online booking and reservation system for tour operators',
- *       icon: Calendar
- *     }
- *   ]}
- *   columns={3}
- *   spacing="xl"
- *   backgroundColor="var(--background)"
- * />
- * ```
+ * @see {@link /guidelines/patterns/IntegrationsGrid.md}
  */
 
 import { LucideIcon } from 'lucide-react';
 import { Section } from '../common/Section';
+import '@/styles/patterns/integrations-grid.css';
 
 export interface Integration {
   /** Integration name */
@@ -96,71 +72,32 @@ export function IntegrationsGrid({
     ? 'wp-grid-3-cols'
     : 'wp-grid-2-cols';
 
+  const maxWidthClass = maxWidth !== 'full' ? `wp-max-w-${maxWidth}` : '';
+
   return (
-    <Section spacing={spacing} style={{ backgroundColor }}>
-      <div className={`wp-max-w-${maxWidth}`}>
+    <Section spacing={spacing} style={{ backgroundColor }} className="integrations-grid">
+      <div className={maxWidthClass} style={{ margin: '0 auto' }}>
         {/* Section Header */}
         {(badge || title || description) && (
-          <div className="wp-text-center" style={{ marginBottom: 'var(--spacing-16)' }}>
+          <div className="integrations-grid__header">
             {/* Badge */}
             {badge && (
-              <div
-                className="inline-flex"
-                style={{
-                  alignItems: 'center',
-                  gap: 'var(--spacing-2)',
-                  padding: '8px 16px',
-                  marginBottom: 'var(--spacing-4)',
-                  backgroundColor: 'var(--primary-soft)',
-                  borderRadius: 'var(--radius-full)',
-                  border: '1px solid var(--border-soft)'
-                }}
-              >
-                {BadgeIcon && <BadgeIcon size={16} style={{ color: 'var(--primary)' }} />}
-                <span
-                  style={{
-                    fontFamily: 'var(--font-primary)',
-                    fontSize: 'var(--text-small)',
-                    fontWeight: 'var(--font-weight-semibold)',
-                    color: 'var(--primary)',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.1em'
-                  }}
-                >
-                  {badge}
-                </span>
+              <div className="integrations-grid__badge">
+                {BadgeIcon && <BadgeIcon size={16} />}
+                <span>{badge}</span>
               </div>
             )}
 
             {/* Title */}
             {title && (
-              <h2
-                style={{
-                  fontFamily: 'var(--font-primary)',
-                  fontSize: 'var(--text-h1)',
-                  fontWeight: 'var(--font-weight-bold)',
-                  lineHeight: '1.2',
-                  letterSpacing: '-0.02em',
-                  marginBottom: 'var(--spacing-4)',
-                  color: 'var(--foreground)'
-                }}
-              >
+              <h2 className="integrations-grid__title">
                 {title}
               </h2>
             )}
 
             {/* Description */}
             {description && (
-              <p
-                style={{
-                  fontFamily: 'var(--font-primary)',
-                  fontSize: 'var(--text-lg)',
-                  lineHeight: '1.7',
-                  color: 'var(--muted-foreground)',
-                  maxWidth: '700px',
-                  margin: '0 auto'
-                }}
-              >
+              <p className="integrations-grid__description">
                 {description}
               </p>
             )}
@@ -168,61 +105,27 @@ export function IntegrationsGrid({
         )}
 
         {/* Integrations Grid */}
-        <div className={gridClass} style={{ gap: 'var(--spacing-8)' }}>
+        <div className={`integrations-grid__grid ${gridClass}`}>
           {integrations.map((integration, index) => {
             const Icon = integration.icon;
             return (
               <div
                 key={index}
-                style={{
-                  padding: 'var(--spacing-8)',
-                  backgroundColor: 'var(--card)',
-                  borderRadius: 'var(--radius-lg)',
-                  border: '1px solid var(--border-soft)',
-                  display: 'flex',
-                  gap: 'var(--spacing-4)',
-                  alignItems: 'flex-start'
-                }}
+                className="integrations-grid__card"
               >
                 {/* Icon */}
-                <div
-                  style={{
-                    width: '48px',
-                    height: '48px',
-                    borderRadius: 'var(--radius-lg)',
-                    backgroundColor: 'var(--primary-soft)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    flexShrink: 0
-                  }}
-                >
-                  <Icon size={24} style={{ color: 'var(--primary)' }} />
+                <div className="integrations-grid__icon-wrapper">
+                  <Icon size={24} />
                 </div>
 
-                <div>
+                <div className="integrations-grid__content">
                   {/* Name */}
-                  <h3
-                    style={{
-                      fontFamily: 'var(--font-primary)',
-                      fontSize: 'var(--text-lg)',
-                      fontWeight: 'var(--font-weight-semibold)',
-                      color: 'var(--foreground)',
-                      marginBottom: 'var(--spacing-1)'
-                    }}
-                  >
+                  <h3 className="integrations-grid__item-title">
                     {integration.name}
                   </h3>
 
                   {/* Description */}
-                  <p
-                    style={{
-                      fontFamily: 'var(--font-primary)',
-                      fontSize: 'var(--text-base)',
-                      lineHeight: '1.6',
-                      color: 'var(--muted-foreground)'
-                    }}
-                  >
+                  <p className="integrations-grid__item-description">
                     {integration.description}
                   </p>
                 </div>

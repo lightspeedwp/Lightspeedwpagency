@@ -1,0 +1,90 @@
+/**
+ * FAQ Section Pattern Styles
+ * 
+ * BEM-compliant styles for the FAQSection component.
+ * All vertical spacing via blockGap (CSS gap) -- zero margin.
+ */
+
+/* Section Variants */
+.faq-section--default {
+  background-color: var(--background);
+}
+
+.faq-section--muted {
+  background-color: var(--muted);
+}
+
+.faq-section--card {
+  background-color: var(--card);
+}
+
+/* Inner wrapper -- vertical blockGap */
+.faq-section__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-10);
+}
+
+/* Header */
+.faq-section__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  text-align: center;
+  max-width: var(--wp--style--global--content-size);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.faq-section__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+  line-height: var(--line-height-snug);
+}
+
+.faq-section__description {
+  font-family: var(--font-secondary);
+  font-size: var(--text-lg);
+  color: var(--muted-foreground);
+  max-width: 60ch;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: var(--line-height-relaxed);
+}
+
+/* Accordion Container */
+.faq-section__accordion {
+  max-width: var(--wp--style--global--narrow-size);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* CTA */
+.faq-section__cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-4);
+  padding-top: var(--spacing-8);
+  border-top: 1px solid var(--border-soft);
+  max-width: var(--wp--style--global--narrow-size);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.faq-section__cta-text {
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-medium);
+  color: var(--foreground);
+}
+
+@media (min-width: 640px) {
+  .faq-section__cta {
+    flex-direction: row;
+    align-items: baseline;
+  }
+}

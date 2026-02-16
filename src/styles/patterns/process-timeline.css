@@ -1,0 +1,190 @@
+/**
+ * Process Timeline Pattern Styles
+ * 
+ * BEM-compliant styles for the ProcessTimeline component.
+ * All vertical spacing via blockGap (CSS gap) -- zero margin.
+ */
+
+.process-timeline {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-16);
+}
+
+/* Header -- flex column with blockGap */
+.process-timeline__header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  max-width: var(--wp--custom--layout--content-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.process-timeline__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+  line-height: var(--line-height-snug);
+}
+
+.process-timeline__desc {
+  font-family: var(--font-secondary);
+  font-size: var(--text-lg);
+  color: var(--muted-foreground);
+  max-width: 60ch;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: var(--line-height-normal);
+}
+
+/* Vertical Layout */
+.process-timeline__vertical {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-0);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Horizontal Layout (Grid) */
+.process-timeline__grid {
+  display: grid;
+  gap: var(--spacing-8);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .process-timeline__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .process-timeline__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Process Step */
+.process-step--vertical {
+  display: flex;
+  gap: var(--spacing-8);
+}
+
+.process-step--horizontal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-4);
+  text-align: center;
+  padding: var(--spacing-6);
+  background-color: var(--card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-xl);
+  height: 100%;
+}
+
+/* Sidebar (Vertical only) */
+.process-step__sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  width: 48px;
+}
+
+.process-step__icon-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-full);
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.process-step__icon-circle--horizontal {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-full);
+  background-color: var(--primary-soft);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.process-step__line {
+  width: 2px;
+  flex-grow: 1;
+  background-color: var(--border);
+  min-height: var(--spacing-16);
+  margin-top: var(--spacing-2);
+  margin-bottom: var(--spacing-2);
+}
+
+/* Content -- flex column with blockGap */
+.process-step__content {
+  padding-bottom: var(--spacing-12);
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.process-step--horizontal .process-step__content {
+  padding-bottom: 0;
+  width: 100%;
+}
+
+/* Badge */
+.process-step__badge {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+.process-step--horizontal .process-step__badge {
+  justify-content: center;
+}
+
+.process-step__number {
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-bold);
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+}
+
+.process-step__duration {
+  font-family: var(--font-secondary);
+  font-size: var(--text-xs);
+  color: var(--muted-foreground);
+  background-color: var(--muted);
+  padding: calc(var(--spacing-1) / 2) var(--spacing-2);
+  border-radius: var(--radius-full);
+}
+
+/* Step Title */
+.process-step__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+}
+
+/* Step Description */
+.process-step__desc {
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-normal);
+}

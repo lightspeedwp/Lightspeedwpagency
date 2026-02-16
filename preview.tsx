@@ -12,6 +12,8 @@ import '../src/styles/global.css';
 /**
  * Global Decorator - Wraps all stories
  * Ensures design system CSS variables and fonts are available
+ * 
+ * ✅ USES CSS VARIABLES for user control via CSS files
  */
 const withDesignSystem = (Story: any) => {
   return (
@@ -21,8 +23,8 @@ const withDesignSystem = (Story: any) => {
         minHeight: '100vh',
         backgroundColor: 'var(--background)',
         color: 'var(--foreground)',
-        fontFamily: 'Manrope, sans-serif',
-        padding: '2rem',
+        fontFamily: 'var(--font-primary)',    // ✅ FIXED: CSS variable
+        padding: 'var(--spacing-8)',          // ✅ FIXED: CSS variable
       }}
     >
       <Story />

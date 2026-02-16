@@ -1,0 +1,120 @@
+/**
+ * Menubar Block Styles
+ * 
+ * Replaces Shadcn Menubar.
+ * Uses .wp-block-menubar BEM naming.
+ */
+
+:root {
+  --menubar-background: var(--background);
+  --menubar-foreground: var(--foreground);
+  --menubar-border: var(--border);
+  --menubar-item-hover: var(--accent);
+  --menubar-item-hover-foreground: var(--accent-foreground);
+  --menubar-muted: var(--muted);
+  --menubar-muted-foreground: var(--muted-foreground);
+}
+
+.wp-block-menubar {
+  display: flex;
+  height: 2.5rem; /* 10 (40px) */
+  align-items: center;
+  gap: 0.25rem;
+  border: 1px solid var(--menubar-border);
+  background-color: var(--menubar-background);
+  padding: 0.25rem;
+  border-radius: var(--radius-md);
+}
+
+.wp-block-menubar__trigger {
+  display: flex;
+  cursor: default;
+  user-select: none;
+  align-items: center;
+  border-radius: var(--radius-sm);
+  padding: 0.375rem 0.75rem; /* px-3 py-1.5 */
+  font-size: var(--text-sm); /* 14px */
+  font-weight: 500;
+  outline: none;
+  background-color: transparent;
+  color: var(--menubar-foreground);
+  border: none;
+}
+
+.wp-block-menubar__trigger:focus,
+.wp-block-menubar__trigger[data-state="open"] {
+  background-color: var(--menubar-item-hover);
+  color: var(--menubar-item-hover-foreground);
+}
+
+.wp-block-menubar__content,
+.wp-block-menubar__sub-content {
+  z-index: 50;
+  min-width: 12rem;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--menubar-border);
+  background-color: var(--menubar-background);
+  color: var(--menubar-foreground);
+  padding: 0.25rem;
+  box-shadow: var(--shadow-md);
+  animation-duration: 0.2s;
+}
+
+.wp-block-menubar__item {
+  position: relative;
+  display: flex;
+  cursor: default;
+  user-select: none;
+  align-items: center;
+  border-radius: var(--radius-sm);
+  padding: 0.375rem 0.5rem; /* px-2 py-1.5 */
+  font-size: var(--text-sm); /* 14px */
+  outline: none;
+  transition: colors 0.2s;
+}
+
+.wp-block-menubar__item:focus,
+.wp-block-menubar__item[data-state="open"] {
+  background-color: var(--menubar-item-hover);
+  color: var(--menubar-item-hover-foreground);
+}
+
+.wp-block-menubar__item[data-disabled] {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.wp-block-menubar__item--inset {
+  padding-left: 2rem;
+}
+
+.wp-block-menubar__separator {
+  height: 1px;
+  background-color: var(--menubar-muted);
+  margin: 0.25rem -0.25rem;
+}
+
+.wp-block-menubar__label {
+  padding: 0.375rem 0.5rem; /* px-2 py-1.5 */
+  font-size: var(--text-sm); /* 14px */
+  font-weight: 600;
+  padding-left: 2rem; /* inset */
+}
+
+.wp-block-menubar__shortcut {
+  margin-left: auto;
+  font-size: var(--text-xs); /* 12px */
+  letter-spacing: var(--letter-spacing-wider);
+  color: var(--menubar-muted-foreground);
+}
+
+.wp-block-menubar__item-indicator {
+  position: absolute;
+  left: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 0.875rem;
+  height: 0.875rem;
+}

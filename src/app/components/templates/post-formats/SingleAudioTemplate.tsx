@@ -6,8 +6,6 @@
  * Displays a single audio post with player.
  */
 
-import { SiteHeader } from '@/app/components/parts/SiteHeader';
-import { SiteFooter } from '@/app/components/parts/SiteFooter';
 import { Container } from '@/app/components/common/Container';
 import { Section } from '@/app/components/common/Section';
 import { Breadcrumbs } from '@/app/components/common/Breadcrumbs';
@@ -15,15 +13,15 @@ import { audioPost } from '@/app/data/posts-formats';
 import { Play, SkipBack, SkipForward, Volume2, Calendar, User, Clock } from 'lucide-react';
 import '@/styles/sections/post-hero.css';
 import '@/styles/blocks/post-formats/audio.css';
+import '@/styles/templates/archive.css';
 
 export function SingleAudioTemplate() {
   const post = audioPost;
 
   return (
     <>
-      <SiteHeader />
-      <main>
-        <section className="py-4 border-b border-[var(--border-soft)]">
+      {/* Breadcrumbs */}
+      <section className="archive-breadcrumbs">
           <Container>
             <Breadcrumbs 
               items={[
@@ -71,7 +69,7 @@ export function SingleAudioTemplate() {
                       <div className="wp-block-audio-player__buttons">
                         <button className="wp-block-audio-player__btn"><SkipBack size={20} /></button>
                         <button className="wp-block-audio-player__play-btn">
-                          <Play size={20} fill="currentColor" className="ml-0.5" />
+                          <Play size={20} fill="currentColor" />
                         </button>
                         <button className="wp-block-audio-player__btn"><SkipForward size={20} /></button>
                       </div>
@@ -79,7 +77,7 @@ export function SingleAudioTemplate() {
                         12:45 / {post.meta?.find(m => m.key === 'duration')?.value}
                       </div>
                       <div className="wp-block-audio-player__volume">
-                        <Volume2 size={18} className="text-[var(--muted-foreground)]" />
+                        <Volume2 size={18} />
                         <div className="wp-block-audio-player__volume-bar">
                           <div className="wp-block-audio-player__volume-level"></div>
                         </div>
@@ -93,7 +91,7 @@ export function SingleAudioTemplate() {
 
           <Section spacing="lg">
             <Container>
-              <div className="max-w-3xl mx-auto prose prose-lg">
+              <div className="single-post-body wp-max-w-3xl wp-mx-auto">
                 <h2>About This Episode</h2>
                 <div dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
                 
@@ -108,8 +106,6 @@ export function SingleAudioTemplate() {
             </Container>
           </Section>
         </article>
-      </main>
-      <SiteFooter />
     </>
   );
 }

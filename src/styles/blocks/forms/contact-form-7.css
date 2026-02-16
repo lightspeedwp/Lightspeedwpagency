@@ -20,7 +20,7 @@
 
 .cf7-field input:focus,
 .cf7-field textarea:focus {
-  outline: 2px solid var(--primary);
+  outline: var(--wp--preset--border-width--2) solid var(--primary);
   outline-offset: 2px;
   border-color: var(--primary);
 }

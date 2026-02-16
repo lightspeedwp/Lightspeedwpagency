@@ -8,6 +8,14 @@
  */
 
 /* ============================================
+ * HERO SECTION
+ * ============================================ */
+
+.contact-page__hero {
+  /* Inherits styles from shared Hero component classes or can be specific here */
+}
+
+/* ============================================
  * CONTACT METHODS GRID
  * ============================================ */
 
@@ -35,7 +43,7 @@
   background-color: var(--card);
   border: 1px solid var(--border-soft);
   border-radius: var(--radius-lg);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow-md);
   
   /* Layout */
   height: 100%;
@@ -53,14 +61,14 @@
 
 .contact-page__method-card--link:hover {
   transform: translateY(-4px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-lg);
   border-color: var(--primary);
 }
 
 .contact-page__method-icon {
   /* Size */
-  width: 56px;
-  height: 56px;
+  width: var(--spacing-14);
+  height: var(--spacing-14);
   
   /* Layout */
   display: flex;
@@ -85,7 +93,7 @@
   /* Typography */
   font-family: var(--font-secondary);
   font-size: var(--text-base);
-  line-height: 1.7;
+  line-height: var(--line-height-relaxed);
   color: var(--muted-foreground);
 }
 
@@ -108,6 +116,18 @@
 
 .contact-page__method-link:hover {
   opacity: 0.8;
+}
+
+.contact-page__external-link {
+  display: inline;
+  margin-left: var(--spacing-2);
+  color: var(--primary);
+}
+
+.contact-page__method-card-link-wrapper {
+  text-decoration: none;
+  display: block;
+  height: 100%; /* Ensure full height for gap-based layout */
 }
 
 /* ============================================
@@ -139,7 +159,11 @@
   background-color: var(--card);
   border: 1px solid var(--border-soft);
   border-radius: var(--radius-xl);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow-md);
+  
+  /* Layout */
+  display: flex;
+  flex-direction: column;
 }
 
 .contact-page__form-title {
@@ -148,9 +172,6 @@
   font-size: var(--text-h2);
   font-weight: var(--font-weight-semibold);
   color: var(--foreground);
-  
-  /* Spacing */
-  margin-bottom: var(--spacing-2);
 }
 
 .contact-page__form-subtitle {
@@ -158,10 +179,10 @@
   font-family: var(--font-primary);
   font-size: var(--text-base);
   color: var(--muted-foreground);
-  line-height: 1.7;
+  line-height: var(--line-height-relaxed);
   
-  /* Spacing */
-  margin-bottom: var(--spacing-8);
+  /* Extra spacing before form fields */
+  padding-bottom: var(--spacing-5);
 }
 
 /* ============================================
@@ -236,14 +257,16 @@
   /* Appearance */
   background-color: var(--muted);
   border-radius: var(--radius-lg);
+  
+  /* Layout -- flex column with blockGap */
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
 }
 
 .contact-page__info-icon {
   /* Appearance */
   color: var(--primary);
-  
-  /* Spacing */
-  margin-bottom: var(--spacing-2);
 }
 
 .contact-page__info-title {
@@ -252,9 +275,6 @@
   font-size: var(--text-base);
   font-weight: var(--font-weight-semibold);
   color: var(--foreground);
-  
-  /* Spacing */
-  margin-bottom: var(--spacing-1);
 }
 
 .contact-page__info-text {
@@ -262,7 +282,7 @@
   font-family: var(--font-primary);
   font-size: var(--text-base);
   color: var(--muted-foreground);
-  line-height: 1.7;
+  line-height: var(--line-height-relaxed);
 }
 
 /* ============================================
@@ -306,8 +326,8 @@
 
 .contact-page__reason-icon {
   /* Size */
-  width: 56px;
-  height: 56px;
+  width: var(--spacing-14);
+  height: var(--spacing-14);
   
   /* Layout */
   display: flex;
@@ -333,5 +353,5 @@
   font-family: var(--font-primary);
   font-size: var(--text-small);
   color: var(--muted-foreground);
-  line-height: 1.6;
+  line-height: var(--line-height-normal);
 }

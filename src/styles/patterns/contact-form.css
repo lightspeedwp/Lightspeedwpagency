@@ -1,0 +1,141 @@
+/**
+ * Contact Form Pattern Styles
+ * 
+ * BEM-compliant styles for the ContactForm component.
+ * All vertical spacing via blockGap (CSS gap) -- zero margin.
+ */
+
+.contact-form {
+  width: 100%;
+  max-width: 42rem; /* max-w-2xl */
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+}
+
+/* Header -- flex column with blockGap */
+.contact-form__header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.contact-form__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+}
+
+.contact-form__description {
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  color: var(--muted-foreground);
+}
+
+/* Status Messages */
+.contact-form__status {
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-4);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-3);
+}
+
+.contact-form__status--success {
+  background-color: var(--success-soft);
+  border: 1px solid var(--success);
+}
+
+.contact-form__status--error {
+  background-color: var(--destructive-soft);
+  border: 1px solid var(--destructive);
+}
+
+.contact-form__status-icon {
+  flex-shrink: 0;
+  margin-top: calc(var(--spacing-1) / 2); /* optical icon alignment */
+}
+
+.contact-form__status-icon--success {
+  color: var(--success);
+}
+
+.contact-form__status-icon--error {
+  color: var(--destructive);
+}
+
+.contact-form__status-text {
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+}
+
+.contact-form__status-text--success {
+  color: var(--success);
+}
+
+.contact-form__status-text--error {
+  color: var(--destructive);
+}
+
+/* Form Fields */
+.contact-form__fields {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+.contact-form__group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.contact-form__label {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-medium);
+  color: var(--foreground);
+  display: block;
+}
+
+.contact-form__required {
+  color: var(--destructive);
+}
+
+.contact-form__input,
+.contact-form__textarea {
+  width: 100%;
+  padding: var(--spacing-3) var(--spacing-4);
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  background-color: var(--background);
+  color: var(--foreground);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  outline: none;
+  transition: all var(--transition-base);
+}
+
+.contact-form__textarea {
+  resize: vertical;
+  min-height: 150px;
+}
+
+.contact-form__input:focus,
+.contact-form__textarea:focus {
+  border-color: var(--primary);
+  outline: 2px solid var(--ring);
+  outline-offset: 0;
+}
+
+.contact-form__submit {
+  width: 100%;
+}
+
+.contact-form__submit-icon {
+  margin-left: var(--spacing-2);
+}

@@ -6,8 +6,6 @@
  * Displays a single image post with focus on the visual content.
  */
 
-import { SiteHeader } from '@/app/components/parts/SiteHeader';
-import { SiteFooter } from '@/app/components/parts/SiteFooter';
 import { Container } from '@/app/components/common/Container';
 import { Section } from '@/app/components/common/Section';
 import { Breadcrumbs } from '@/app/components/common/Breadcrumbs';
@@ -15,15 +13,14 @@ import { imagePost } from '@/app/data/posts-formats';
 import { Camera, Calendar, User } from 'lucide-react';
 import '@/styles/sections/post-hero.css';
 import '@/styles/blocks/post-formats/image.css';
+import '@/styles/templates/archive.css';
 
 export function SingleImageTemplate() {
   const post = imagePost;
 
   return (
     <>
-      <SiteHeader />
-      <main>
-        <section className="py-4 border-b border-[var(--border-soft)]">
+      <section className="archive-breadcrumbs">
           <Container>
             <Breadcrumbs 
               items={[
@@ -37,9 +34,9 @@ export function SingleImageTemplate() {
         </section>
 
         <article>
-          <div className="wp-block-post-hero">
+          <div className="wp-block-post-hero wp-block-post-hero--centered">
             <Container>
-              <div className="max-w-4xl mx-auto text-center">
+              <div className="wp-max-w-4xl wp-mx-auto">
                 <h1 className="wp-block-post-hero__title">{post.title.rendered}</h1>
                 <div className="wp-block-post-hero__meta">
                   <span className="wp-block-post-hero__meta-item"><User size={16} /> {post._embedded?.author?.[0]?.name || 'LightSpeed'}</span>
@@ -51,7 +48,7 @@ export function SingleImageTemplate() {
 
           <Section spacing="lg">
             <Container>
-              <div className="max-w-5xl mx-auto">
+              <div className="wp-max-w-5xl wp-mx-auto">
                 {post._embedded?.['wp:featuredmedia']?.[0]?.source_url && (
                   <div className="wp-block-image-single-featured">
                     <img 
@@ -62,7 +59,7 @@ export function SingleImageTemplate() {
                   </div>
                 )}
 
-                <div className="max-w-2xl mx-auto prose prose-lg">
+                <div className="wp-max-w-2xl wp-mx-auto single-post-body">
                   <div dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
                   
                   <div className="wp-block-image-exif">
@@ -74,8 +71,7 @@ export function SingleImageTemplate() {
             </Container>
           </Section>
         </article>
-      </main>
-      <SiteFooter />
+
     </>
   );
 }

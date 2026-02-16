@@ -1,0 +1,28 @@
+/**
+ * LightSpeed Border Presets
+ * 
+ * Defines border radius and width.
+ * Pattern: --wp--preset--border-radius--{slug}
+ * Pattern: --wp--custom--border-width--{slug}
+ */
+
+:root {
+  /* Border Radius */
+  --wp--preset--border-radius--0: 0;
+  --wp--preset--border-radius--100: 0.125rem;
+  --wp--preset--border-radius--200: 0.25rem;
+  --wp--preset--border-radius--300: 0.375rem;
+  --wp--preset--border-radius--400: 0.5rem;
+  --wp--preset--border-radius--500: 0.75rem;
+  --wp--preset--border-radius--600: 1rem;
+  --wp--preset--border-radius--700: 1.5rem;
+  --wp--preset--border-radius--800: 2rem;
+  --wp--preset--border-radius--900: 9999px; /* Pill/Full */
+  
+  /* Border Width (Custom Tokens) */
+  --wp--custom--border-width--0: 0;
+  --wp--custom--border-width--100: 1px;
+  --wp--custom--border-width--200: 2px;
+  --wp--custom--border-width--300: 4px;
+  --wp--custom--border-width--400: 8px;
+}

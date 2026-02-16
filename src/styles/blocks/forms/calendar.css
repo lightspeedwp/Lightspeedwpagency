@@ -1,0 +1,151 @@
+/**
+ * Calendar Block Styles
+ */
+.wp-block-calendar {
+  padding: var(--spacing-2);
+}
+
+.wp-block-calendar .rdp-months {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+@media (min-width: 640px) {
+  .wp-block-calendar .rdp-months {
+    flex-direction: row;
+  }
+}
+
+.wp-block-calendar .rdp-month {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.wp-block-calendar .rdp-caption {
+  display: flex;
+  justify-content: center;
+  padding-top: var(--spacing-2);
+  position: relative;
+  align-items: center;
+  width: 100%;
+}
+
+.wp-block-calendar .rdp-caption_label {
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+.wp-block-calendar .rdp-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.wp-block-calendar .rdp-nav_button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius);
+  width: var(--spacing-7);
+  height: var(--spacing-7);
+  background-color: transparent;
+  padding: 0;
+  opacity: 0.5;
+  transition: opacity var(--transition-base) ease;
+  border: var(--wp--preset--border-width--1) solid var(--border);
+}
+
+.wp-block-calendar .rdp-nav_button:hover {
+  opacity: 1;
+  background-color: var(--muted);
+}
+
+.wp-block-calendar .rdp-nav_button_previous {
+  position: absolute;
+  left: var(--spacing-2);
+}
+
+.wp-block-calendar .rdp-nav_button_next {
+  position: absolute;
+  right: var(--spacing-2);
+}
+
+.wp-block-calendar .rdp-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.wp-block-calendar .rdp-head_row {
+  display: flex;
+}
+
+.wp-block-calendar .rdp-head_cell {
+  color: var(--muted-foreground);
+  border-radius: var(--radius);
+  width: var(--spacing-8);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--text-xs);
+}
+
+.wp-block-calendar .rdp-row {
+  display: flex;
+  width: 100%;
+  margin-top: var(--spacing-2);
+}
+
+.wp-block-calendar .rdp-cell {
+  position: relative;
+  padding: 0;
+  text-align: center;
+  font-size: var(--text-sm);
+}
+
+.wp-block-calendar .rdp-cell:focus-within {
+  position: relative;
+  z-index: 20;
+}
+
+.wp-block-calendar .rdp-day {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--spacing-8);
+  height: var(--spacing-8);
+  padding: 0;
+  font-weight: var(--font-weight-regular);
+  border-radius: var(--radius);
+  background-color: transparent;
+  color: var(--foreground);
+  transition: all var(--transition-base) ease;
+}
+
+.wp-block-calendar .rdp-day:hover:not([disabled]) {
+  background-color: var(--muted);
+}
+
+.wp-block-calendar .rdp-day_selected:not([disabled]) {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.wp-block-calendar .rdp-day_today:not(.rdp-day_selected) {
+  background-color: var(--muted);
+  color: var(--foreground);
+}
+
+.wp-block-calendar .rdp-day_outside {
+  color: var(--muted-foreground);
+  opacity: 0.5;
+}
+
+.wp-block-calendar .rdp-day_disabled {
+  color: var(--muted-foreground);
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.wp-block-calendar .rdp-day_hidden {
+  visibility: hidden;
+}

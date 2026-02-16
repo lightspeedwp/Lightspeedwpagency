@@ -124,14 +124,14 @@ export function MultiStepForm({
         width: '100%',
         maxWidth: '800px',
         margin: '0 auto',
-        fontFamily: 'Manrope, sans-serif',
+        fontFamily: 'var(--font-secondary)',
       }}
     >
       {/* Progress Bar */}
       {showProgress && (
         <div
           style={{
-            marginBottom: '2rem',
+            marginBottom: 'var(--spacing-8)',
           }}
         >
           {/* Progress Track */}
@@ -157,7 +157,7 @@ export function MultiStepForm({
           {/* Progress Text */}
           <div
             style={{
-              marginTop: '0.5rem',
+              marginTop: 'var(--spacing-2)',
               fontSize: 'var(--text-small)',
               color: 'var(--muted-foreground)',
               textAlign: 'center',
@@ -173,8 +173,8 @@ export function MultiStepForm({
         style={{
           display: 'flex',
           justifyContent: 'space-between',
-          marginBottom: '3rem',
-          gap: '1rem',
+          marginBottom: 'var(--spacing-12)',
+          gap: 'var(--spacing-4)',
           flexWrap: 'wrap',
         }}
       >
@@ -199,8 +199,8 @@ export function MultiStepForm({
                 style={{
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '0.5rem',
-                  marginBottom: '0.5rem',
+                  gap: 'var(--spacing-2)',
+                  marginBottom: 'var(--spacing-2)',
                 }}
               >
                 {showStepNumbers && (
@@ -214,7 +214,7 @@ export function MultiStepForm({
                       justifyContent: 'center',
                       backgroundColor: isActive ? 'var(--primary)' : isCompleted ? 'var(--accent)' : 'var(--muted)',
                       color: isActive ? 'var(--primary-foreground)' : isCompleted ? 'var(--accent-foreground)' : 'var(--muted-foreground)',
-                      fontFamily: 'Lexend, sans-serif',
+                      fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-base)',
                       fontWeight: '500',
                     }}
@@ -226,7 +226,7 @@ export function MultiStepForm({
                 {/* Step Title */}
                 <div
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-secondary)',
                     fontSize: 'var(--text-base)',
                     fontWeight: '500',
                     color: isActive ? 'var(--foreground)' : 'var(--muted-foreground)',
@@ -259,17 +259,17 @@ export function MultiStepForm({
           backgroundColor: 'var(--card)',
           border: '1px solid var(--border)',
           borderRadius: 'var(--radius-lg)',
-          padding: '2rem',
-          marginBottom: '2rem',
+          padding: 'var(--spacing-8)',
+          marginBottom: 'var(--spacing-8)',
         }}
       >
         {/* Step Title */}
         <h2
           style={{
-            fontFamily: 'Lexend, sans-serif',
+            fontFamily: 'var(--font-primary)',
             fontSize: 'var(--text-h3)',
             fontWeight: '500',
-            marginBottom: '1rem',
+            marginBottom: 'var(--spacing-4)',
             color: 'var(--foreground)',
           }}
         >
@@ -282,7 +282,7 @@ export function MultiStepForm({
             style={{
               fontSize: 'var(--text-base)',
               color: 'var(--muted-foreground)',
-              marginBottom: '2rem',
+              marginBottom: 'var(--spacing-8)',
             }}
           >
             {steps[currentStep].description}
@@ -293,11 +293,11 @@ export function MultiStepForm({
         {validationErrors.length > 0 && (
           <div
             style={{
-              padding: '1rem',
+              padding: 'var(--spacing-4)',
               backgroundColor: 'var(--destructive)',
               color: 'var(--destructive-foreground)',
               borderRadius: 'var(--radius)',
-              marginBottom: '1.5rem',
+              marginBottom: 'var(--spacing-6)',
             }}
           >
             {validationErrors.map((error, index) => (
@@ -315,7 +315,7 @@ export function MultiStepForm({
         style={{
           display: 'flex',
           justifyContent: 'space-between',
-          gap: '1rem',
+          gap: 'var(--spacing-4)',
         }}
       >
         {/* Previous Button */}
@@ -323,8 +323,8 @@ export function MultiStepForm({
           onClick={handlePrevious}
           disabled={isFirstStep}
           style={{
-            padding: '12px 24px',
-            fontFamily: 'Lexend, sans-serif',
+            padding: 'var(--spacing-3) var(--spacing-6)',
+            fontFamily: 'var(--font-primary)',
             fontSize: 'var(--text-base)',
             fontWeight: '500',
             backgroundColor: 'var(--background)',
@@ -341,14 +341,14 @@ export function MultiStepForm({
         </button>
 
         {/* Action Buttons */}
-        <div style={{ display: 'flex', gap: '1rem' }}>
+        <div style={{ display: 'flex', gap: 'var(--spacing-4)' }}>
           {/* Cancel Button (optional) */}
           {onCancel && (
             <button
               onClick={onCancel}
               style={{
-                padding: '12px 24px',
-                fontFamily: 'Lexend, sans-serif',
+                padding: 'var(--spacing-3) var(--spacing-6)',
+                fontFamily: 'var(--font-primary)',
                 fontSize: 'var(--text-base)',
                 fontWeight: '500',
                 backgroundColor: 'var(--background)',
@@ -369,8 +369,8 @@ export function MultiStepForm({
             onClick={handleNext}
             disabled={loading}
             style={{
-              padding: '12px 24px',
-              fontFamily: 'Lexend, sans-serif',
+              padding: 'var(--spacing-3) var(--spacing-6)',
+              fontFamily: 'var(--font-primary)',
               fontSize: 'var(--text-base)',
               fontWeight: '500',
               backgroundColor: 'var(--primary)',
@@ -404,9 +404,9 @@ export interface FormStepContainerProps {
 
 export function FormStepContainer({ children, spacing = 'normal' }: FormStepContainerProps) {
   const spacingMap = {
-    compact: '1rem',
-    normal: '1.5rem',
-    spacious: '2rem',
+    compact: 'var(--spacing-4)',
+    normal: 'var(--spacing-6)',
+    spacious: 'var(--spacing-8)',
   };
 
   return (

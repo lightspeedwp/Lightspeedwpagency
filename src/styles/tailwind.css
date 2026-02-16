@@ -1,4 +1,7 @@
-@import 'tailwindcss' source(none);
-@source '../**/*.{js,ts,jsx,tsx}';
-
-@import 'tw-animate-css';
+/**
+ * Tailwind CSS Integration
+ *
+ * Tailwind v4 base is provided by the Figma Make environment automatically.
+ * Project-specific animations are in animations.css.
+ * All component animations use wp-* prefixed keyframes in dedicated CSS files.
+ */

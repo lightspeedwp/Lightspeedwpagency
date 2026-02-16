@@ -9,20 +9,16 @@
  * Hero → Service Offerings → Platforms → Benefits → Process Steps → CTA → FAQs
  */
 
-import { SiteHeader } from '../parts/SiteHeader';
-import { SiteFooter } from '../parts/SiteFooter';
-import { SkipLink } from '../common/SkipLink';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
-import { BackToTopButton } from '../blocks/layout/BackToTopButton';
-import { RouteAnnouncer } from '../blocks/utility/RouteAnnouncer';
 import { FAQSection } from '../patterns/FAQSection';
 import { Hero } from '../patterns/Hero';
 import { ServiceOfferingsGrid } from '../patterns/ServiceOfferingsGrid';
 import { FeatureGrid } from '../patterns/FeatureGrid';
 import { ProcessSteps } from '../patterns/ProcessSteps';
 import { CTASection } from '../patterns/CTASection';
-import { LogoGrid } from '../patterns/LogoGrid';
+import { Heading } from '../blocks/text/Heading';
+import { Paragraph } from '../blocks/text/Paragraph';
 import { 
   Mail,
   ArrowRight,
@@ -34,6 +30,7 @@ import {
   Settings,
   FileText
 } from 'lucide-react';
+import '@/styles/templates/service-detail.css';
 
 export function NewsletterServiceTemplate() {
   // Newsletter services (6 offerings)
@@ -192,11 +189,6 @@ export function NewsletterServiceTemplate() {
 
   return (
     <>
-      <RouteAnnouncer />
-      <SkipLink />
-      <SiteHeader />
-      
-      <main id="main-content" role="main">
         {/* Hero Section */}
         <Hero
           variant="service"
@@ -217,9 +209,9 @@ export function NewsletterServiceTemplate() {
               variant: 'default',
               icon: ArrowRight,
               style: {
-                backgroundColor: 'white',
-                color: '#0ea5e9',
-                boxShadow: '0 10px 40px rgba(0, 0, 0, 0.2)'
+                backgroundColor: 'var(--color-white)',
+                color: 'var(--primary)',
+                boxShadow: 'var(--shadow-lg)'
               }
             },
             {
@@ -227,8 +219,8 @@ export function NewsletterServiceTemplate() {
               page: 'portfolio-archive',
               variant: 'outline',
               style: {
-                borderColor: 'rgba(255, 255, 255, 0.3)',
-                color: 'white',
+                borderColor: 'var(--overlay-white-medium)',
+                color: 'var(--color-white)',
                 backgroundColor: 'transparent'
               }
             }
@@ -246,51 +238,31 @@ export function NewsletterServiceTemplate() {
         />
 
         {/* Platforms Section */}
-        <Section spacing="xl" style={{ backgroundColor: 'var(--muted)' }}>
+        <Section spacing="xl" className="service-detail__overview-section">
           <Container>
-            <div className="wp-text-center" style={{ marginBottom: 'var(--spacing-12)' }}>
-              <h2
-                className="font-primary text-h1 font-bold tracking-tight"
-                style={{
-                  lineHeight: '1.2',
-                  marginBottom: 'var(--spacing-4)',
-                  color: 'var(--foreground)'
-                }}
-              >
+            <div className="service-detail__section-header">
+              <Heading level={2} className="service-detail__title">
                 Platforms We Work With
-              </h2>
+              </Heading>
 
-              <p
-                className="font-primary text-lg leading-relaxed"
-                style={{
-                  color: 'var(--muted-foreground)',
-                  maxWidth: '700px',
-                  margin: '0 auto'
-                }}
-              >
+              <Paragraph className="service-detail__description">
                 Expert integration with all major email marketing platforms
-              </p>
+              </Paragraph>
             </div>
 
             {/* Platform Cards */}
-            <div className="wp-grid-3-cols">
+            <div className="wp-grid-3-cols wp-gap-6">
               {platforms.map((platform, index) => (
                 <div
                   key={index}
-                  style={{
-                    padding: 'var(--spacing-6)',
-                    backgroundColor: 'var(--card)',
-                    borderRadius: 'var(--radius-lg)',
-                    border: '1px solid var(--border-soft)',
-                    textAlign: 'center'
-                  }}
+                  className="service-detail__tech-card wp-text-center"
                 >
-                  <h3 className="font-primary text-lg font-bold" style={{ color: 'var(--foreground)', marginBottom: 'var(--spacing-2)' }}>
+                  <Heading level={3} className="service-detail__tech-title wp-mb-2">
                     {platform.name}
-                  </h3>
-                  <p className="font-primary text-small" style={{ color: 'var(--muted-foreground)' }}>
+                  </Heading>
+                  <Paragraph className="service-detail__stat-desc">
                     {platform.description}
-                  </p>
+                  </Paragraph>
                 </div>
               ))}
             </div>
@@ -309,22 +281,16 @@ export function NewsletterServiceTemplate() {
         />
 
         {/* Process Steps */}
-        <Section spacing="xl" style={{ backgroundColor: 'var(--muted)' }}>
+        <Section spacing="xl" background="muted">
           <Container>
             <div className="wp-text-center" style={{ marginBottom: 'var(--spacing-12)' }}>
-              <h2
-                className="font-primary text-h1 font-bold tracking-tight"
-                style={{
-                  lineHeight: '1.2',
-                  marginBottom: 'var(--spacing-4)',
-                  color: 'var(--foreground)'
-                }}
-              >
+              <Heading level={1} align="center" className="wp-mb-4" style={{ color: 'var(--foreground)' }}>
                 Our Process
-              </h2>
+              </Heading>
 
-              <p
-                className="font-primary text-lg leading-relaxed"
+              <Paragraph
+                size="large"
+                align="center"
                 style={{
                   color: 'var(--muted-foreground)',
                   maxWidth: '700px',
@@ -332,7 +298,7 @@ export function NewsletterServiceTemplate() {
                 }}
               >
                 From strategy to optimization, we handle every step
-              </p>
+              </Paragraph>
             </div>
 
             <ProcessSteps
@@ -370,10 +336,6 @@ export function NewsletterServiceTemplate() {
           spacing="xl"
           backgroundColor="var(--background)"
         />
-      </main>
-
-      <SiteFooter />
-      <BackToTopButton />
     </>
   );
 }

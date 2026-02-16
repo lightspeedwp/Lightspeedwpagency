@@ -1,0 +1,39 @@
+/**
+ * Columns Block Styles
+ * WordPress block: .wp-block-columns
+ */
+
+.wp-block-columns {
+  display: grid;
+  gap: var(--spacing-12);
+  grid-template-columns: 1fr;
+  width: 100%;
+}
+
+/* Responsive column counts */
+@media (min-width: 768px) {
+  .wp-block-columns {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .wp-block-columns.has-3-columns {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .wp-block-columns.has-4-columns {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Individual column */
+.wp-block-column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+@media (min-width: 1024px) {
+  .wp-block-columns.has-4-columns {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

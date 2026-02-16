@@ -16,6 +16,7 @@
  */
 
 import { Star, Quote } from 'lucide-react';
+import '@/styles/patterns/testimonial-inline.css';
 
 export interface TestimonialInlineProps {
   /** Array of testimonials (2-3 recommended) */
@@ -38,20 +39,14 @@ export function TestimonialInline({
   heading = "What Our Clients Say",
   compact = false
 }: TestimonialInlineProps) {
+  const gridCols = testimonials.length === 2 ? 2 : 3;
+
   return (
-    <div className="w-full">
+    <div className="testimonial-inline">
       {/* Section Header */}
       {heading && (
-        <div className="text-center mb-8">
-          <h2
-            style={{
-              fontFamily: 'var(--font-primary)',
-              fontSize: 'var(--text-h3)',
-              fontWeight: 'var(--font-weight-semibold)',
-              color: 'var(--foreground)',
-              marginBottom: '8px'
-            }}
-          >
+        <div className="testimonial-inline__header">
+          <h2 className="testimonial-inline__title">
             {heading}
           </h2>
         </div>
@@ -59,110 +54,53 @@ export function TestimonialInline({
 
       {/* Testimonials Grid */}
       <div 
-        className={`grid gap-6 ${
-          testimonials.length === 2 
-            ? 'grid-cols-1 md:grid-cols-2' 
-            : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'
-        }`}
+        className={`testimonial-inline__grid testimonial-inline__grid--${gridCols}-cols`}
       >
         {testimonials.map((testimonial, index) => (
           <div
             key={index}
-            style={{
-              backgroundColor: 'var(--card)',
-              border: '1px solid var(--border-soft)',
-              borderRadius: 'var(--radius-lg)',
-              padding: compact ? '20px' : '24px',
-              position: 'relative',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '16px'
-            }}
+            className={`testimonial-inline__card ${compact ? 'testimonial-inline__card--compact' : 'testimonial-inline__card--default'}`}
           >
             {/* Quote Icon */}
             <Quote 
               size={32} 
-              style={{ 
-                color: 'var(--primary)', 
-                opacity: 0.2,
-                position: 'absolute',
-                top: '16px',
-                right: '16px'
-              }} 
+              className="testimonial-inline__quote-icon"
             />
 
             {/* Rating */}
             {testimonial.rating && (
-              <div className="flex gap-1">
+              <div className="testimonial-inline__rating">
                 {[...Array(testimonial.rating)].map((_, i) => (
                   <Star 
                     key={i} 
                     size={16} 
-                    style={{ 
-                      fill: '#fbbf24', 
-                      color: '#fbbf24' 
-                    }} 
+                    className="testimonial-inline__star"
                   />
                 ))}
               </div>
             )}
 
             {/* Quote */}
-            <p
-              style={{
-                fontFamily: 'var(--font-primary)',
-                fontSize: compact ? 'var(--text-base)' : 'var(--text-lg)',
-                lineHeight: '1.6',
-                color: 'var(--foreground)',
-                flex: 1,
-                margin: 0
-              }}
-            >
+            <p className={`testimonial-inline__quote ${compact ? 'testimonial-inline__quote--compact' : 'testimonial-inline__quote--default'}`}>
               "{testimonial.quote}"
             </p>
 
             {/* Author Info */}
-            <div className="flex items-center gap-3">
+            <div className="testimonial-inline__author-wrapper">
               {testimonial.image && (
-                <div
-                  style={{
-                    width: '48px',
-                    height: '48px',
-                    borderRadius: 'var(--radius-full)',
-                    overflow: 'hidden',
-                    flexShrink: 0
-                  }}
-                >
+                <div className="testimonial-inline__avatar">
                   <img
                     src={testimonial.image}
                     alt={testimonial.author}
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover'
-                    }}
+                    className="testimonial-inline__avatar-img"
                   />
                 </div>
               )}
-              <div>
-                <div
-                  style={{
-                    fontFamily: 'var(--font-primary)',
-                    fontSize: 'var(--text-base)',
-                    fontWeight: 'var(--font-weight-semibold)',
-                    color: 'var(--foreground)',
-                    marginBottom: '2px'
-                  }}
-                >
+              <div className="testimonial-inline__author-details">
+                <div className="testimonial-inline__author-name">
                   {testimonial.author}
                 </div>
-                <div
-                  style={{
-                    fontFamily: 'var(--font-secondary)',
-                    fontSize: 'var(--text-small)',
-                    color: 'var(--muted-foreground)'
-                  }}
-                >
+                <div className="testimonial-inline__author-role">
                   {testimonial.role}, {testimonial.company}
                 </div>
               </div>

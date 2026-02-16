@@ -18,6 +18,7 @@
 import { Send, CheckCircle, AlertCircle } from 'lucide-react';
 import { useState } from 'react';
 import { Button } from '../blocks/design/Buttons';
+import '@/styles/patterns/contact-form.css';
 
 export interface ContactFormProps {
   /** Form heading */
@@ -90,54 +91,18 @@ export function ContactForm({
     }, 1500);
   };
 
-  const inputStyles = {
-    width: '100%',
-    padding: '12px 16px',
-    fontFamily: 'var(--font-primary)',
-    fontSize: 'var(--text-base)',
-    backgroundColor: 'var(--background)',
-    color: 'var(--foreground)',
-    border: '1px solid var(--border-soft)',
-    borderRadius: 'var(--radius-lg)',
-    outline: 'none',
-    transition: 'all var(--transition-base)',
-  };
-
-  const labelStyles = {
-    fontFamily: 'var(--font-primary)',
-    fontSize: 'var(--text-base)',
-    fontWeight: 'var(--font-weight-medium)',
-    color: 'var(--foreground)',
-    display: 'block',
-    marginBottom: '8px',
-  };
-
   return (
-    <div className="w-full max-w-2xl mx-auto">
+    <div className="contact-form">
       {/* Header */}
       {(heading || description) && (
-        <div className="text-center mb-8">
+        <div className="contact-form__header">
           {heading && (
-            <h2
-              style={{
-                fontFamily: 'var(--font-primary)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 'var(--font-weight-semibold)',
-                color: 'var(--foreground)',
-                marginBottom: description ? '16px' : '0',
-              }}
-            >
+            <h2 className={`contact-form__title ${description ? 'contact-form__title--with-desc' : ''}`}>
               {heading}
             </h2>
           )}
           {description && (
-            <p
-              style={{
-                fontFamily: 'var(--font-secondary)',
-                fontSize: 'var(--text-base)',
-                color: 'var(--muted-foreground)',
-              }}
-            >
+            <p className="contact-form__description">
               {description}
             </p>
           )}
@@ -146,27 +111,9 @@ export function ContactForm({
 
       {/* Success Message */}
       {status === 'success' && (
-        <div
-          style={{
-            backgroundColor: 'var(--success-soft)',
-            border: '1px solid var(--success)',
-            borderRadius: 'var(--radius-lg)',
-            padding: '16px',
-            marginBottom: '24px',
-            display: 'flex',
-            alignItems: 'start',
-            gap: '12px',
-          }}
-        >
-          <CheckCircle size={20} style={{ color: 'var(--success)', flexShrink: 0, marginTop: '2px' }} />
-          <p
-            style={{
-              fontFamily: 'var(--font-secondary)',
-              fontSize: 'var(--text-base)',
-              color: 'var(--success)',
-              margin: 0,
-            }}
-          >
+        <div className="contact-form__status contact-form__status--success">
+          <CheckCircle size={20} className="contact-form__status-icon contact-form__status-icon--success" />
+          <p className="contact-form__status-text contact-form__status-text--success">
             {successMessage}
           </p>
         </div>
@@ -174,38 +121,20 @@ export function ContactForm({
 
       {/* Error Message */}
       {status === 'error' && (
-        <div
-          style={{
-            backgroundColor: 'var(--destructive-soft)',
-            border: '1px solid var(--destructive)',
-            borderRadius: 'var(--radius-lg)',
-            padding: '16px',
-            marginBottom: '24px',
-            display: 'flex',
-            alignItems: 'start',
-            gap: '12px',
-          }}
-        >
-          <AlertCircle size={20} style={{ color: 'var(--destructive)', flexShrink: 0, marginTop: '2px' }} />
-          <p
-            style={{
-              fontFamily: 'var(--font-secondary)',
-              fontSize: 'var(--text-base)',
-              color: 'var(--destructive)',
-              margin: 0,
-            }}
-          >
+        <div className="contact-form__status contact-form__status--error">
+          <AlertCircle size={20} className="contact-form__status-icon contact-form__status-icon--error" />
+          <p className="contact-form__status-text contact-form__status-text--error">
             {errorMessage}
           </p>
         </div>
       )}
 
       {/* Form */}
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form onSubmit={handleSubmit} className="contact-form__fields">
         {/* Name Field */}
-        <div>
-          <label htmlFor="name" style={labelStyles}>
-            Name <span style={{ color: 'var(--destructive)' }}>*</span>
+        <div className="contact-form__group">
+          <label htmlFor="name" className="contact-form__label">
+            Name <span className="contact-form__required">*</span>
           </label>
           <input
             type="text"
@@ -214,23 +143,14 @@ export function ContactForm({
             required
             value={formData.name}
             onChange={handleChange}
-            style={inputStyles}
-            onFocus={(e) => {
-              e.currentTarget.style.borderColor = 'var(--primary)';
-              e.currentTarget.style.outline = '2px solid var(--ring)';
-              e.currentTarget.style.outlineOffset = '0px';
-            }}
-            onBlur={(e) => {
-              e.currentTarget.style.borderColor = 'var(--border-soft)';
-              e.currentTarget.style.outline = 'none';
-            }}
+            className="contact-form__input"
           />
         </div>
 
         {/* Email Field */}
-        <div>
-          <label htmlFor="email" style={labelStyles}>
-            Email <span style={{ color: 'var(--destructive)' }}>*</span>
+        <div className="contact-form__group">
+          <label htmlFor="email" className="contact-form__label">
+            Email <span className="contact-form__required">*</span>
           </label>
           <input
             type="email"
@@ -239,23 +159,14 @@ export function ContactForm({
             required
             value={formData.email}
             onChange={handleChange}
-            style={inputStyles}
-            onFocus={(e) => {
-              e.currentTarget.style.borderColor = 'var(--primary)';
-              e.currentTarget.style.outline = '2px solid var(--ring)';
-              e.currentTarget.style.outlineOffset = '0px';
-            }}
-            onBlur={(e) => {
-              e.currentTarget.style.borderColor = 'var(--border-soft)';
-              e.currentTarget.style.outline = 'none';
-            }}
+            className="contact-form__input"
           />
         </div>
 
         {/* Company Field (Optional) */}
         {showCompany && (
-          <div>
-            <label htmlFor="company" style={labelStyles}>
+          <div className="contact-form__group">
+            <label htmlFor="company" className="contact-form__label">
               Company
             </label>
             <input
@@ -264,25 +175,16 @@ export function ContactForm({
               name="company"
               value={formData.company}
               onChange={handleChange}
-              style={inputStyles}
-              onFocus={(e) => {
-                e.currentTarget.style.borderColor = 'var(--primary)';
-                e.currentTarget.style.outline = '2px solid var(--ring)';
-                e.currentTarget.style.outlineOffset = '0px';
-              }}
-              onBlur={(e) => {
-                e.currentTarget.style.borderColor = 'var(--border-soft)';
-                e.currentTarget.style.outline = 'none';
-              }}
+              className="contact-form__input"
             />
           </div>
         )}
 
         {/* Subject Field (Optional) */}
         {showSubject && (
-          <div>
-            <label htmlFor="subject" style={labelStyles}>
-              Subject <span style={{ color: 'var(--destructive)' }}>*</span>
+          <div className="contact-form__group">
+            <label htmlFor="subject" className="contact-form__label">
+              Subject <span className="contact-form__required">*</span>
             </label>
             <input
               type="text"
@@ -291,24 +193,15 @@ export function ContactForm({
               required
               value={formData.subject}
               onChange={handleChange}
-              style={inputStyles}
-              onFocus={(e) => {
-                e.currentTarget.style.borderColor = 'var(--primary)';
-                e.currentTarget.style.outline = '2px solid var(--ring)';
-                e.currentTarget.style.outlineOffset = '0px';
-              }}
-              onBlur={(e) => {
-                e.currentTarget.style.borderColor = 'var(--border-soft)';
-                e.currentTarget.style.outline = 'none';
-              }}
+              className="contact-form__input"
             />
           </div>
         )}
 
         {/* Message Field */}
-        <div>
-          <label htmlFor="message" style={labelStyles}>
-            Message <span style={{ color: 'var(--destructive)' }}>*</span>
+        <div className="contact-form__group">
+          <label htmlFor="message" className="contact-form__label">
+            Message <span className="contact-form__required">*</span>
           </label>
           <textarea
             id="message"
@@ -317,20 +210,7 @@ export function ContactForm({
             rows={6}
             value={formData.message}
             onChange={handleChange}
-            style={{
-              ...inputStyles,
-              resize: 'vertical',
-              minHeight: '150px',
-            }}
-            onFocus={(e) => {
-              e.currentTarget.style.borderColor = 'var(--primary)';
-              e.currentTarget.style.outline = '2px solid var(--ring)';
-              e.currentTarget.style.outlineOffset = '0px';
-            }}
-            onBlur={(e) => {
-              e.currentTarget.style.borderColor = 'var(--border-soft)';
-              e.currentTarget.style.outline = 'none';
-            }}
+            className="contact-form__textarea"
           />
         </div>
 
@@ -340,14 +220,14 @@ export function ContactForm({
           variant="default"
           size="lg"
           disabled={status === 'submitting'}
-          className="w-full"
+          className="contact-form__submit"
         >
           {status === 'submitting' ? (
             <>Sending...</>
           ) : (
             <>
               {submitText}
-              <Send size={18} style={{ marginLeft: '8px' }} />
+              <Send size={18} className="contact-form__submit-icon" />
             </>
           )}
         </Button>

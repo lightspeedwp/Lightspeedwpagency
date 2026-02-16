@@ -16,11 +16,6 @@
  */
 
 import { Check } from 'lucide-react';
-import { RouteAnnouncer } from '@/app/components/blocks/utility/RouteAnnouncer';
-import { SkipLink } from '@/app/components/common/SkipLink';
-import { SiteHeader } from '@/app/components/parts/SiteHeader';
-import { SiteFooter } from '@/app/components/parts/SiteFooter';
-import { BackToTopButton } from '@/app/components/blocks/layout/BackToTopButton';
 import { Hero } from '@/app/components/patterns/Hero';
 import { Section } from '@/app/components/common/Section';
 import { Container } from '@/app/components/common/Container';
@@ -45,11 +40,6 @@ import {
 export function MailchimpSolutionTemplate() {
   return (
     <>
-      <RouteAnnouncer />
-      <SkipLink />
-      <SiteHeader />
-      
-      <main id="main-content" role="main">
         {/* Hero Section */}
         <Hero
           variant="solution"
@@ -287,10 +277,6 @@ export function MailchimpSolutionTemplate() {
           secondaryButtonText={mailchimpCTA.buttons[1].text}
           secondaryButtonPage={mailchimpCTA.buttons[1].page}
         />
-      </main>
-
-      <SiteFooter />
-      <BackToTopButton />
     </>
   );
 }

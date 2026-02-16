@@ -18,6 +18,8 @@
 
 import React from 'react';
 
+import '@/styles/blocks/design/stack.css';
+
 export interface StackProps {
   /** Vertical spacing between children (0-24) */
   gap?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 8 | 10 | 12 | 16 | 20 | 24;

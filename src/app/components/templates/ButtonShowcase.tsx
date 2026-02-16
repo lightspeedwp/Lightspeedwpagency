@@ -10,10 +10,7 @@
 
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
-import { SiteHeader } from '../parts/SiteHeader';
-import { SiteFooter } from '../parts/SiteFooter';
-import { SkipLink } from '../common/SkipLink';
-import { BackToTopButton } from '../blocks/layout/BackToTopButton';
+
 import { Breadcrumbs } from '../common/Breadcrumbs';
 import { Type } from 'lucide-react';
 
@@ -28,11 +25,8 @@ export function ButtonShowcase() {
         color: 'var(--foreground)'
       }}
     >
-      <SkipLink targetId="main-content" />
-      <SiteHeader />
-
-      <main id="main-content" role="main" style={{ flex: 1 }}>
-        <Section variant="default" spacing="50">
+      <div style={{ flex: 1 }}>
+        <Section background="default" spacing="sm">
           <Container>
             <Breadcrumbs
               items={[
@@ -40,20 +34,20 @@ export function ButtonShowcase() {
                 { label: 'Developer Tools', page: 'dev-tools' },
                 { label: 'Button Showcase' }
               ]}
-              className="mb-8"
+              className="wp-mb-8"
             />
 
-            <div className="text-center max-w-4xl mx-auto">
+            <div className="wp-text-center wp-max-w-4xl wp-mx-auto">
               <div
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  width: '80px',
-                  height: '80px',
+                  width: 'var(--spacing-20)',
+                  height: 'var(--spacing-20)',
                   borderRadius: 'var(--radius-lg)',
                   backgroundColor: 'var(--accent)',
-                  marginBottom: '24px'
+                  marginBottom: 'var(--spacing-6)'
                 }}
               >
                 <Type size={40} style={{ color: 'var(--primary-foreground)' }} />
@@ -62,10 +56,10 @@ export function ButtonShowcase() {
               <h1
                 style={{
                   fontSize: 'var(--text-h1)',
-                  fontFamily: 'Lexend, sans-serif',
+                  fontFamily: 'var(--font-primary)',
                   fontWeight: 'var(--font-weight-medium)',
                   color: 'var(--foreground)',
-                  margin: '0 0 16px 0',
+                  margin: '0 0 var(--spacing-4) 0',
                   lineHeight: 1.2
                 }}
               >
@@ -74,8 +68,8 @@ export function ButtonShowcase() {
 
               <p
                 style={{
-                  fontSize: 'var(--text-xl)',
-                  fontFamily: 'Manrope, sans-serif',
+                  fontSize: 'var(--text-lead)',
+                  fontFamily: 'var(--font-secondary)',
                   fontWeight: 'var(--font-weight-regular)',
                   color: 'var(--muted-foreground)',
                   margin: 0,
@@ -87,10 +81,7 @@ export function ButtonShowcase() {
             </div>
           </Container>
         </Section>
-      </main>
-
-      <SiteFooter />
-      <BackToTopButton />
+      </div>
     </div>
   );
 }

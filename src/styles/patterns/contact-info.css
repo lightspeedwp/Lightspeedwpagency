@@ -1,0 +1,169 @@
+/**
+ * Contact Info Pattern Styles
+ * 
+ * BEM-compliant styles for the ContactInfo component.
+ * All vertical spacing via blockGap (CSS gap) -- zero margin.
+ */
+
+.contact-info {
+  width: 100%;
+}
+
+/* Layout Variants */
+.contact-info--vertical {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-info--horizontal {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+/* Items */
+.contact-info__item {
+  display: flex;
+  text-decoration: none;
+}
+
+/* Variant: Cards */
+.contact-info__item--cards {
+  flex-direction: column;
+  gap: var(--spacing-4);
+  padding: var(--spacing-6);
+  background-color: var(--card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-soft);
+  transition: all 0.3s ease;
+}
+
+.contact-info__item--cards:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--primary);
+}
+
+.contact-info__item--cards .contact-info__icon-wrapper {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-lg);
+  background-color: var(--primary-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--primary);
+}
+
+/* Variant: Sidebar */
+.contact-info__item--sidebar {
+  flex-direction: column;
+  gap: var(--spacing-3);
+  padding: var(--spacing-4);
+  background-color: var(--muted);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+.contact-info__item--sidebar .contact-info__icon-wrapper {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius);
+  background-color: var(--background);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--muted-foreground);
+}
+
+/* Variant: Minimal */
+.contact-info__item--minimal {
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+.contact-info__item--minimal .contact-info__icon-wrapper {
+  flex-shrink: 0;
+  color: var(--muted-foreground);
+}
+
+/* Variant: Default */
+.contact-info__item--default {
+  gap: var(--spacing-4);
+  padding: var(--spacing-5);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+.contact-info__item--default .contact-info__icon-wrapper {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-lg);
+  background-color: var(--primary-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--primary);
+}
+
+/* Content -- flex column with blockGap */
+.contact-info__content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+/* Label */
+.contact-info__label {
+  font-family: var(--font-secondary);
+  font-weight: var(--font-weight-semibold);
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+}
+
+.contact-info__item--sidebar .contact-info__label {
+  font-size: var(--text-xs);
+}
+
+.contact-info__item--cards .contact-info__label,
+.contact-info__item--default .contact-info__label,
+.contact-info__item--minimal .contact-info__label {
+  font-size: var(--text-sm);
+}
+
+/* Value */
+.contact-info__value {
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+.contact-info__item--sidebar .contact-info__value {
+  font-size: var(--text-sm);
+}
+
+.contact-info__item--cards .contact-info__value,
+.contact-info__item--default .contact-info__value {
+  font-size: var(--text-base);
+}
+
+/* Link Value Color */
+a.contact-info__item .contact-info__value {
+  color: var(--primary);
+  transition: opacity 0.2s ease;
+}
+
+div.contact-info__item .contact-info__value {
+  color: var(--foreground);
+}
+
+/* Description */
+.contact-info__description {
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  line-height: var(--line-height-normal);
+  color: var(--muted-foreground);
+}

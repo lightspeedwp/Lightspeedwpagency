@@ -1,0 +1,105 @@
+/**
+ * Empty States Block Styles
+ * 
+ * Styles for empty state components (no results, 404, etc.)
+ * Mapped to global CSS variables.
+ */
+
+/* Container */
+.wp-block-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--spacing-16) var(--spacing-8); /* 4rem 2rem */
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Emoji Icon */
+.wp-block-empty-state__emoji {
+  font-size: 4rem;
+  margin-bottom: var(--spacing-6);
+  line-height: 1;
+}
+
+/* SVG Icon Wrapper */
+.wp-block-empty-state__icon {
+  margin-bottom: var(--spacing-6);
+  color: var(--muted-foreground);
+  display: flex;
+  justify-content: center;
+}
+
+.wp-block-empty-state__icon svg {
+  width: 4rem;
+  height: 4rem;
+}
+
+/* Heading */
+.wp-block-empty-state__heading {
+  font-family: var(--font-primary);
+  font-size: var(--text-h3);
+  font-weight: var(--font-weight-medium);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-3);
+  line-height: var(--line-height-snug);
+}
+
+/* Description */
+.wp-block-empty-state__description {
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  color: var(--muted-foreground);
+  margin-bottom: var(--spacing-8);
+  max-width: 500px;
+  line-height: var(--line-height-normal);
+}
+
+/* Actions Wrapper */
+.wp-block-empty-state__actions {
+  display: flex;
+  gap: var(--spacing-4);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Base Button */
+.wp-block-empty-state__button {
+  padding: var(--spacing-3) var(--spacing-6); /* 12px 24px */
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-medium);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all var(--transition-base) var(--ease-out);
+  min-height: 48px; /* Touch target */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Primary Button */
+.wp-block-empty-state__button--primary {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border: 1px solid transparent;
+}
+
+.wp-block-empty-state__button--primary:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+/* Secondary Button */
+.wp-block-empty-state__button--secondary {
+  background-color: var(--background);
+  color: var(--foreground);
+  border: 1px solid var(--border);
+}
+
+.wp-block-empty-state__button--secondary:hover {
+  background-color: var(--muted);
+  border-color: var(--muted-foreground);
+}

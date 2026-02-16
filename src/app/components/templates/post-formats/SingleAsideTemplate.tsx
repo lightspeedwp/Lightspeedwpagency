@@ -6,23 +6,20 @@
  * Displays a single aside post.
  */
 
-import { SiteHeader } from '@/app/components/parts/SiteHeader';
-import { SiteFooter } from '@/app/components/parts/SiteFooter';
 import { Container } from '@/app/components/common/Container';
 import { Section } from '@/app/components/common/Section';
 import { Breadcrumbs } from '@/app/components/common/Breadcrumbs';
 import { asidePost } from '@/app/data/posts-formats';
 import { Hash, Calendar } from 'lucide-react';
 import '@/styles/blocks/post-formats/aside.css';
+import '@/styles/templates/single-post.css';
 
 export function SingleAsideTemplate() {
   const post = asidePost;
 
   return (
     <>
-      <SiteHeader />
-      <main>
-        <section className="py-4 border-b border-[var(--border-soft)]">
+      <section className="single-post-breadcrumbs">
           <Container>
             <Breadcrumbs 
               items={[
@@ -37,9 +34,9 @@ export function SingleAsideTemplate() {
 
         <Section spacing="lg">
           <Container>
-            <div className="max-w-2xl mx-auto">
+            <div className="wp-max-w-2xl wp-mx-auto">
               <article className="wp-block-aside-single">
-                <div className="flex items-start gap-4">
+                <div className="wp-block-aside-single__content">
                   <div className="wp-block-aside-single__icon-wrapper">
                     <Hash size={24} />
                   </div>
@@ -55,8 +52,7 @@ export function SingleAsideTemplate() {
             </div>
           </Container>
         </Section>
-      </main>
-      <SiteFooter />
+
     </>
   );
 }

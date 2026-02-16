@@ -1,6 +1,6 @@
 # LSX Design — Complete Documentation Index
 
-**Last Updated:** December 27, 2024  
+**Last Updated:** February 14, 2026  
 **Purpose:** Comprehensive index of all LSX Design documentation files
 
 ---
@@ -189,6 +189,24 @@
 
 ---
 
+## 🛣️ Routing & Navigation
+
+**Location:** `/guidelines/routing/`
+
+### **Routing Reference**
+- **[routing-complete-reference.md](./routing/routing-complete-reference.md)** — Complete routing map (117 routes, verified Feb 2026) ⭐⭐⭐
+
+### **Infrastructure Guidelines**
+- **[reporting-guidelines.md](./reporting/reporting-guidelines.md)** — Reporting standards (YYYY-MM-DD naming)
+- **[planning-guidelines.md](./planning/planning-guidelines.md)** — Planning standards
+- **[shell-script-guidelines.md](./scripts/shell-script-guidelines.md)** — Shell script standards
+- **[python-script-guidelines.md](./scripts/python-script-guidelines.md)** — Python script standards
+- **[import-guidelines.md](./imports/import-guidelines.md)** — Import system guidelines
+- **[storybook-configuration.md](./storybook/storybook-configuration.md)** — Storybook configuration
+- **[prompt-generation-guidelines.md](./prompts/prompt-generation-guidelines.md)** — AI prompt standards
+
+---
+
 ## 🔧 Code & Testing
 
 ### **Code Documentation**
@@ -229,8 +247,11 @@
 4. **[LIGHT-MODE-FIXES-COMPLETE.md](./LIGHT-MODE-FIXES-COMPLETE.md)** — Light mode fixes
 5. **[CSS-VARIABLE-COMPLIANCE-REPORT.md](./CSS-VARIABLE-COMPLIANCE-REPORT.md)** — CSS variable compliance
 
-### **Recent Updates (December 2024)**
-1. **[COMPLETE-UPDATE-DEC-25-2024.md](./COMPLETE-UPDATE-DEC-25-2024.md)** — Complete update Dec 25
+### **Recent Updates (January 2025)**
+1. **[PHASE-9-DESIGN-SYSTEM-POLISH-COMPLETE-JAN-24-2025.md](../reports/2025-01/phase-9-design-system-polish.md)** — Phase 9 Complete (Final Design System Polish) ⭐
+2. **[PHASE-8-TEMPLATE-MIGRATION-COMPLETE-JAN-24-2025.md](../reports/2025-01/phase-8-template-migration-complete.md)** — Phase 8 Complete (Template Migration) ⭐
+3. **[PHASE-7-COMPLETE-SUMMARY-JAN-24-2025.md](../reports/2025-01/phase-7-complete-summary.md)** — Phase 7 Complete (Pattern Refactoring) ⭐
+3. **[COMPLETE-UPDATE-DEC-25-2024.md](./COMPLETE-UPDATE-DEC-25-2024.md)** — Complete update Dec 25
 2. **[COMPREHENSIVE-UPDATE-DEC-25-2024.md](./COMPREHENSIVE-UPDATE-DEC-25-2024.md)** — Comprehensive update Dec 25
 3. **[DEEP-AUDIT-REPORT-DEC-25-2024.md](./DEEP-AUDIT-REPORT-DEC-25-2024.md)** — Deep audit report Dec 25
 4. **[FIXES-APPLIED-DEC-25-2024.md](./FIXES-APPLIED-DEC-25-2024.md)** — Fixes applied Dec 25
@@ -334,6 +355,6 @@
 
 ---
 
-**Last Updated:** December 27, 2024  
+**Last Updated:** February 14, 2026  
 **Maintained By:** LSX Design System Team  
 **Version:** 1.0

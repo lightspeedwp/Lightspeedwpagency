@@ -6,8 +6,6 @@
  * Displays a grid of images for a gallery post.
  */
 
-import { SiteHeader } from '@/app/components/parts/SiteHeader';
-import { SiteFooter } from '@/app/components/parts/SiteFooter';
 import { Container } from '@/app/components/common/Container';
 import { Section } from '@/app/components/common/Section';
 import { Breadcrumbs } from '@/app/components/common/Breadcrumbs';
@@ -15,6 +13,7 @@ import { galleryPost } from '@/app/data/posts-formats';
 import { Image, Calendar, User } from 'lucide-react';
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
 import '@/styles/blocks/post-formats/gallery.css';
+import '@/styles/templates/single-post.css';
 
 export function SingleGalleryTemplate() {
   const post = galleryPost;
@@ -22,9 +21,7 @@ export function SingleGalleryTemplate() {
 
   return (
     <>
-      <SiteHeader />
-      <main>
-        <section className="py-4 border-b border-[var(--border-soft)]">
+      <section className="single-post-breadcrumbs">
           <Container>
             <Breadcrumbs 
               items={[
@@ -39,7 +36,7 @@ export function SingleGalleryTemplate() {
 
         <header className="wp-block-gallery-hero">
           <Container>
-            <div className="max-w-4xl mx-auto">
+            <div className="wp-max-w-4xl wp-mx-auto">
               <h1 className="wp-block-gallery-hero__title">{post.title.rendered}</h1>
               <div className="wp-block-gallery-hero__meta">
                 <span className="wp-block-gallery-hero__meta-item"><User size={16} /> LightSpeed Team</span>
@@ -56,7 +53,7 @@ export function SingleGalleryTemplate() {
             <ResponsiveMasonry columnsCountBreakPoints={{350: 1, 750: 2, 900: 3}}>
               <Masonry gutter="1.5rem">
                 {images.map((imgUrl: string, index: number) => (
-                  <div key={index} className="wp-block-gallery-item group">
+                  <div key={index} className="wp-block-gallery-item">
                     <img 
                       src={imgUrl} 
                       alt={`Gallery image ${index + 1}`} 
@@ -68,8 +65,7 @@ export function SingleGalleryTemplate() {
             </ResponsiveMasonry>
           </Container>
         </Section>
-      </main>
-      <SiteFooter />
+
     </>
   );
 }

@@ -6,21 +6,11 @@
  * Displays horizontal process steps with numbered badges.
  * Commonly used on services pages to show workflow or methodology.
  * 
- * **Usage:**
- * ```tsx
- * <ProcessSteps
- *   steps={[
- *     { step: 1, title: 'Discovery', description: 'We learn about your business...' },
- *     { step: 2, title: 'Planning', description: 'We create a detailed roadmap...' }
- *   ]}
- *   columns={5}
- * />
- * ```
- * 
  * @see {@link /guidelines/patterns/ProcessSteps.md}
  */
 
 import { LucideIcon } from 'lucide-react';
+import '@/styles/patterns/process-steps.css';
 
 export interface ProcessStep {
   /** Step number */
@@ -56,106 +46,47 @@ export function ProcessSteps({
   badgeColor,
   maxWidth = '6xl'
 }: ProcessStepsProps) {
-  // Grid template based on columns
-  const gridTemplate = {
-    3: { gridTemplateColumns: 'repeat(1, 1fr)', md: 'repeat(3, 1fr)' },
-    4: { gridTemplateColumns: 'repeat(2, 1fr)', md: 'repeat(4, 1fr)' },
-    5: { gridTemplateColumns: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)', lg: 'repeat(5, 1fr)' },
-    6: { gridTemplateColumns: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)', lg: 'repeat(6, 1fr)' }
-  }[columns];
-
-  // Badge border radius
-  const badgeRadius = {
-    circle: 'var(--radius-full)',
-    square: 'var(--radius)',
-    rounded: 'var(--radius-lg)'
-  }[badgeStyle];
-
   // Max width class
   const maxWidthClass = maxWidth !== 'none' ? `wp-max-w-${maxWidth}` : '';
+  
+  // Grid column class
+  const gridClass = `process-steps__grid--${columns}-cols`;
 
   return (
-    <div className={maxWidthClass}>
+    <div className={`process-steps ${maxWidthClass}`}>
       <div
+        className={`process-steps__grid ${gridClass}`}
         style={{
-          display: 'grid',
-          gridTemplateColumns: gridTemplate.gridTemplateColumns,
           gap: variant === 'cards' ? 'var(--spacing-6)' : 'var(--spacing-8)'
         }}
       >
         {steps.map((step) => {
           const Icon = step.icon;
+          const alignment = variant === 'minimal' ? 'left' : 'centered';
+          const badgeShape = `process-step__badge--${badgeStyle}`;
           
           return (
             <div
               key={step.step}
-              style={{
-                ...(variant === 'cards' ? {
-                  padding: 'var(--spacing-6)',
-                  backgroundColor: 'var(--card)',
-                  borderRadius: 'var(--radius-lg)',
-                  border: '1px solid var(--border-soft)',
-                  transition: 'all 0.3s ease'
-                } : {}),
-                textAlign: variant === 'minimal' ? 'left' : 'center'
-              }}
-              {...(variant === 'cards' ? {
-                onMouseEnter: (e: React.MouseEvent<HTMLDivElement>) => {
-                  e.currentTarget.style.transform = 'translateY(-4px)';
-                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.08)';
-                  e.currentTarget.style.borderColor = 'var(--primary)';
-                },
-                onMouseLeave: (e: React.MouseEvent<HTMLDivElement>) => {
-                  e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = 'none';
-                  e.currentTarget.style.borderColor = 'var(--border-soft)';
-                }
-              } : {})}
+              className={`process-step process-step--${variant} process-step--${alignment}`}
             >
               {/* Step Badge */}
               <div
+                className={`process-step__badge ${badgeShape}`}
                 style={{
-                  width: variant === 'minimal' ? '48px' : '64px',
-                  height: variant === 'minimal' ? '48px' : '64px',
-                  borderRadius: badgeRadius,
-                  backgroundColor: badgeColor || 'var(--primary)',
-                  color: 'var(--primary-foreground)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  margin: variant === 'minimal' ? '0 0 var(--spacing-3) 0' : '0 auto var(--spacing-4)',
-                  fontFamily: 'var(--font-primary)',
-                  fontSize: variant === 'minimal' ? 'var(--text-lg)' : 'var(--text-h3)',
-                  fontWeight: 'var(--font-weight-bold)',
-                  boxShadow: variant === 'cards' ? 'none' : '0 4px 12px rgba(0, 0, 0, 0.15)'
+                  backgroundColor: badgeColor || undefined
                 }}
               >
                 {Icon ? <Icon size={variant === 'minimal' ? 20 : 28} /> : step.step}
               </div>
 
               {/* Step Title */}
-              <h3
-                style={{
-                  fontFamily: 'var(--font-primary)',
-                  fontSize: variant === 'minimal' ? 'var(--text-base)' : 'var(--text-base)',
-                  fontWeight: 'var(--font-weight-semibold)',
-                  color: 'var(--foreground)',
-                  marginBottom: 'var(--spacing-2)'
-                }}
-              >
+              <h3 className="process-step__title">
                 {step.title}
               </h3>
 
               {/* Step Description */}
-              <p
-                style={{
-                  fontFamily: 'var(--font-secondary)',
-                  fontSize: 'var(--text-small)',
-                  lineHeight: '1.5',
-                  color: 'var(--muted-foreground)',
-                  margin: 0
-                }}
-              >
+              <p className="process-step__description">
                 {step.description}
               </p>
             </div>

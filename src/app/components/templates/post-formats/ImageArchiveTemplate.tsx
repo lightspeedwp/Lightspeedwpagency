@@ -6,8 +6,6 @@
  * Displays a grid of image posts.
  */
 
-import { SiteHeader } from '@/app/components/parts/SiteHeader';
-import { SiteFooter } from '@/app/components/parts/SiteFooter';
 import { Container } from '@/app/components/common/Container';
 import { Section } from '@/app/components/common/Section';
 import { Breadcrumbs } from '@/app/components/common/Breadcrumbs';
@@ -25,9 +23,7 @@ export function ImageArchiveTemplate() {
 
   return (
     <>
-      <SiteHeader />
-      <main>
-        <section className="py-4 border-b border-[var(--border-soft)]">
+      <section className="archive-breadcrumbs">
           <Container>
             <Breadcrumbs 
               items={[
@@ -41,9 +37,9 @@ export function ImageArchiveTemplate() {
 
         <Section spacing="lg">
           <Container>
-            <header className="mb-12 text-center">
-              <h1 className="text-4xl font-bold mb-4">Photography</h1>
-              <p className="text-xl text-[var(--muted-foreground)]">Captured moments and visual stories.</p>
+            <header className="archive-header">
+              <h1 className="archive-header__title">Photography</h1>
+              <p className="archive-header__description">Captured moments and visual stories.</p>
             </header>
 
             <ResponsiveMasonry columnsCountBreakPoints={{350: 1, 750: 2, 900: 3}}>
@@ -51,8 +47,11 @@ export function ImageArchiveTemplate() {
                 {posts.map((post, index) => (
                   <article 
                     key={`${post.id}-${index}`} 
-                    className="wp-block-image-card group"
+                    className="wp-block-image-card"
                     onClick={() => navigateTo('image-single')}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); navigateTo('image-single'); } }}
                   >
                     <div className="wp-block-image-card__inner">
                       {post._embedded?.['wp:featuredmedia']?.[0]?.source_url && (
@@ -63,7 +62,7 @@ export function ImageArchiveTemplate() {
                         />
                       )}
                       <div className="wp-block-image-card__overlay">
-                        <div className="text-white">
+                        <div>
                           <h2 className="wp-block-image-card__title">{post.title.rendered}</h2>
                           <div className="wp-block-image-card__meta">
                              <Camera size={12} /> {new Date(post.date).toLocaleDateString()}
@@ -77,8 +76,7 @@ export function ImageArchiveTemplate() {
             </ResponsiveMasonry>
           </Container>
         </Section>
-      </main>
-      <SiteFooter />
+
     </>
   );
 }

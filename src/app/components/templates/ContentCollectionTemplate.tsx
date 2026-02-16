@@ -7,84 +7,59 @@
  * @see /guidelines/templates/overview-templates.md
  */
 
-import { SiteHeader } from '../parts/SiteHeader';
-import { SiteFooter } from '../parts/SiteFooter';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
+import { Heading } from '../common/Heading';
+import { Paragraph } from '../blocks/text/Paragraph';
+import { Badge } from '../blocks/design/Badge';
 
 export function ContentCollectionTemplate() {
   return (
     <>
-      <SiteHeader />
-      
-      <main id="main-content" role="main">
         {/* Page Hero */}
-        <Section variant="canvas" className="py-12">
+        <Section background="default" spacing="lg">
           <Container>
-            <div style={{ textAlign: 'center' }}>
-              <h1 style={{
-                fontSize: 'var(--text-h1)',
-                fontFamily: 'var(--font-primary)',
-                fontWeight: 'var(--font-weight-bold)',
-                color: 'var(--foreground)',
-                marginBottom: 'var(--spacing-4)'
-              }}>
+            <div className="wp-text-center">
+              <Heading level={1} className="wp-mb-4">
                 Content Collection
-              </h1>
+              </Heading>
               
-              <p style={{
-                fontSize: 'var(--text-lead)',
-                fontFamily: 'var(--font-primary)',
-                color: 'var(--muted-foreground)',
-                marginBottom: 'var(--spacing-8)',
-                maxWidth: '800px',
-                marginLeft: 'auto',
-                marginRight: 'auto'
-              }}>
+              <Paragraph 
+                size="large"
+                className="wp-mb-8 wp-max-w-2xl wp-mx-auto"
+                style={{ color: 'var(--muted-foreground)' }}
+              >
                 Professional content gathering and curation services
-              </p>
+              </Paragraph>
 
               {/* Coming Soon Badge */}
-              <div style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: 'var(--spacing-2)',
-                padding: 'var(--spacing-2) var(--spacing-4)',
-                backgroundColor: 'var(--muted)',
-                borderRadius: 'var(--radius)',
-                fontSize: 'var(--text-small)',
-                fontFamily: 'var(--font-secondary)',
-                color: 'var(--muted-foreground)'
-              }}>
-                🚧 Page Under Construction
+              <div className="wp-inline-flex wp-items-center wp-justify-center">
+                <Badge variant="secondary">
+                   🚧 Page Under Construction
+                </Badge>
               </div>
             </div>
           </Container>
         </Section>
 
         {/* Placeholder Content */}
-        <Section variant="white" className="py-12">
+        <Section background="default" spacing="lg">
           <Container>
-            <div style={{
-              textAlign: 'center',
-              padding: 'var(--spacing-12)',
-              backgroundColor: 'var(--card)',
-              borderRadius: 'var(--radius-lg)',
-              border: '1px solid var(--border)'
-            }}>
-              <p style={{
-                fontSize: 'var(--text-base)',
-                fontFamily: 'var(--font-primary)',
-                color: 'var(--foreground)'
-              }}>
+            <div
+              className="wp-text-center"
+              style={{
+                padding: 'var(--spacing-12)',
+                backgroundColor: 'var(--card)',
+                borderRadius: 'var(--radius-lg)',
+                border: '1px solid var(--border)',
+              }}
+            >
+              <Paragraph>
                 Full content for this page is coming soon. Check back later!
-              </p>
+              </Paragraph>
             </div>
           </Container>
         </Section>
-      </main>
-      
-      <SiteFooter />
     </>
   );
 }

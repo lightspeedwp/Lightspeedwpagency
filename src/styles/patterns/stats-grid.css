@@ -1,0 +1,154 @@
+/**
+ * Stats Grid Pattern Styles
+ * 
+ * BEM-compliant styles for the StatsGrid component.
+ * All vertical spacing via blockGap (CSS gap) -- zero margin.
+ */
+
+.stats-grid {
+  display: grid;
+  gap: var(--spacing-8);
+  width: 100%;
+}
+
+.stats-grid--2-cols {
+  grid-template-columns: repeat(1, 1fr);
+}
+
+@media (min-width: 640px) {
+  .stats-grid--2-cols {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.stats-grid--3-cols {
+  grid-template-columns: repeat(1, 1fr);
+}
+
+@media (min-width: 640px) {
+  .stats-grid--3-cols {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .stats-grid--3-cols {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.stats-grid--4-cols {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (min-width: 1024px) {
+  .stats-grid--4-cols {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Stat Item -- flex column with blockGap */
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.stat-item--left {
+  align-items: flex-start;
+  text-align: left;
+}
+
+.stat-item--center {
+  align-items: center;
+  text-align: center;
+}
+
+/* Card Variant */
+.stat-item--cards {
+  padding: var(--spacing-6);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-soft);
+  background-color: var(--card);
+  transition: all 0.3s ease;
+}
+
+.stat-item--cards:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary);
+}
+
+/* Icon Wrapper */
+.stat-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+}
+
+.stat-icon-wrapper--default {
+  background-color: transparent;
+  width: auto;
+  height: auto;
+}
+
+.stat-icon-wrapper--cards {
+  width: 48px;
+  height: 48px;
+  background-color: var(--primary-soft);
+  color: var(--primary);
+}
+
+.stat-icon-wrapper--hero {
+  width: 56px;
+  height: 56px;
+  background-color: var(--overlay-white-subtle);
+  border-radius: var(--radius-full);
+  color: var(--color-white);
+  backdrop-filter: blur(4px);
+}
+
+/* Value */
+.stat-value {
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+}
+
+.stat-value--default {
+  font-size: var(--text-4xl);
+  color: var(--foreground);
+}
+
+.stat-value--hero {
+  font-size: var(--text-5xl);
+  color: var(--color-white);
+  text-shadow: 0 2px 4px var(--overlay-extra-light);
+}
+
+/* Label */
+.stat-label {
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-snug);
+}
+
+.stat-label--default {
+  font-size: var(--text-lg);
+  color: var(--muted-foreground);
+}
+
+.stat-label--hero {
+  font-size: var(--text-lg);
+  color: var(--overlay-white-opaque);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Description */
+.stat-description {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-normal);
+}

@@ -1,0 +1,31 @@
+/**
+ * Call to Action Section Styles
+ */
+.wp-block-section-cta {
+  padding: var(--wp--preset--spacing--60) 0;
+  background-color: var(--wp--preset--color--neutral-100);
+  text-align: center;
+}
+
+.wp-block-section-cta__content {
+  max-width: var(--wp--style--global--content-size);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--wp--preset--spacing--30);
+}
+
+.wp-block-section-cta__title {
+  font-family: var(--wp--preset--font-family--brand-sans);
+  font-size: var(--wp--preset--font-size--600);
+  font-weight: 700;
+  color: var(--wp--preset--color--contrast);
+}
+
+.wp-block-section-cta__description {
+  font-family: var(--wp--preset--font-family--brand-serif);
+  font-size: var(--wp--preset--font-size--300);
+  color: var(--wp--preset--color--neutral-600);
+  max-width: 40rem;
+}

@@ -58,6 +58,6 @@
 
 @media (max-width: 768px) {
   .wp-block-video__caption {
-    font-size: 13px;
+    font-size: var(--text-sm);
   }
 }

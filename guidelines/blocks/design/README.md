@@ -17,6 +17,7 @@ Complete guidelines for WordPress design/layout blocks as React components.
 11. **[Spacer](./spacer.md)** ✅ - Vertical spacing block
 12. **[Page Break](./page-break.md)** ✅ - Page breaks for printing
 13. **[More](./more.md)** ✅ - Read more divider
+14. **[Card](./Card.md)** ✅ - Flexible container for grouping content
 
 ## 🎉 Design Blocks: 100% COMPLETE!
 
@@ -63,6 +64,7 @@ Blocks for displaying status and metadata:
 ├── Alert.tsx             ✅
 ├── Badge.tsx             ✅
 ├── Buttons.tsx           ✅
+├── Card.tsx              ✅
 ├── Columns.tsx           ✅
 ├── Group.tsx             ✅
 ├── Row.tsx               ✅
@@ -82,6 +84,7 @@ Blocks for displaying status and metadata:
 ├── alert.css             ✅
 ├── badge.css             ✅
 ├── buttons.css           ✅
+├── card.css              ✅
 ├── columns.css           ✅
 ├── group.css             ✅
 ├── row.css               ✅

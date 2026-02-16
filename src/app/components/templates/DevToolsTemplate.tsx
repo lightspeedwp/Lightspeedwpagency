@@ -2,39 +2,24 @@
  * Dev Tools Landing Page Template
  * 
  * Central hub for all developer tools and utilities.
+ * 100% CSS variables — no Tailwind.
+ * BEM naming: .devtools-*
  * 
- * Features:
- * - Complete dev tools index
- * - Quick access cards
- * - Tool categories
- * - Search/filter functionality
- * - Breadcrumb navigation
- * 
- * Design Token Compliance:
- * - Typography: var(--text-*) only
- * - Colors: var(--*) semantic roles
- * - Spacing: Tailwind classes only
- * - Fonts: Lexend (headings), Manrope (body)
- * 
- * WordPress Mapping:
- * - Template: page-dev-tools.php
- * - URL: /dev-tools/
- * - Breadcrumb: Home > Dev Tools
+ * @see /src/styles/templates/dev-tools.css
  */
 
-import { Code2, TestTube2, Eye, FileCode2, Puzzle, Palette, Layout, Activity, ChevronRight, BookOpen, Blocks, MousePointer, Layers, Paintbrush } from 'lucide-react';
-import { SiteHeader } from '../parts/SiteHeader';
-import { SiteFooter } from '../parts/SiteFooter';
+import { Code2, TestTube2, Eye, FileCode2, Puzzle, Palette, Layout, Activity, ChevronRight, BookOpen, Blocks, MousePointer, Layers, Paintbrush, SwatchBook, ClipboardCheck, Wrench, Rocket, SlidersHorizontal, BarChart3, FileSearch, Scissors } from 'lucide-react';
 import { Breadcrumbs } from '../common/Breadcrumbs';
 import { useNavigation } from '../../contexts/NavigationContext';
+import '@/styles/templates/dev-tools.css';
 
 interface DevTool {
   id: string;
   title: string;
   description: string;
   icon: React.ReactNode;
-  url: string;
-  category: 'Testing' | 'Development' | 'Design' | 'Documentation';
+  slug: string;
+  category: 'Testing' | 'Development' | 'Design' | 'Documentation' | 'Deployment' | 'Analytics';
   badge?: string;
 }
 
@@ -43,9 +28,9 @@ const devTools: DevTool[] = [
   {
     id: 'template-tester',
     title: 'Template Tester',
-    description: 'Test all 55+ templates with instant switching and live preview.',
+    description: 'Test all 90+ templates with instant switching and live preview.',
     icon: <TestTube2 size={32} />,
-    url: 'dev-tools/template-tester',
+    slug: 'template-tester',
     category: 'Testing',
     badge: 'Essential',
   },
@@ -54,7 +39,7 @@ const devTools: DevTool[] = [
     title: 'Compliance Scorecard',
     description: 'Real-time WCAG 2.1 AA/AAA compliance testing with 26+ automated checks.',
     icon: <Activity size={32} />,
-    url: 'dev-tools/compliance-scorecard',
+    slug: 'compliance-scorecard',
     category: 'Testing',
     badge: 'Essential',
   },
@@ -65,7 +50,7 @@ const devTools: DevTool[] = [
     title: 'Component Showcase',
     description: 'Browse all 85+ components with live examples and code snippets.',
     icon: <Puzzle size={32} />,
-    url: 'dev-tools/component-showcase',
+    slug: 'component-showcase',
     category: 'Development',
   },
   {
@@ -73,7 +58,7 @@ const devTools: DevTool[] = [
     title: 'Feature Showcase',
     description: 'Interactive demos of all 164 production features across 24 components.',
     icon: <Eye size={32} />,
-    url: 'dev-tools/feature-showcase',
+    slug: 'feature-showcase',
     category: 'Development',
   },
   {
@@ -81,7 +66,7 @@ const devTools: DevTool[] = [
     title: 'Live Preview',
     description: 'Live component preview tool with interactive property editor.',
     icon: <MousePointer size={32} />,
-    url: 'dev-tools/live-preview',
+    slug: 'live-preview',
     category: 'Development',
   },
   
@@ -91,16 +76,34 @@ const devTools: DevTool[] = [
     title: 'Design System Test',
     description: 'Complete design system testing suite with 107 automated tests and color contrast validation.',
     icon: <Palette size={32} />,
-    url: 'dev-tools/design-system-test',
+    slug: 'design-system-test',
     category: 'Design',
     badge: 'Essential',
+  },
+  {
+    id: 'design-tokens-reference',
+    title: 'Design Tokens Reference',
+    description: 'Complete reference of all CSS custom properties — colors, typography, spacing, shadows, radii.',
+    icon: <SwatchBook size={32} />,
+    slug: 'design-tokens-reference',
+    category: 'Design',
+    badge: 'New',
+  },
+  {
+    id: 'design-playground',
+    title: 'Design Playground',
+    description: 'Interactive sandbox to experiment with design tokens — change colours, preview typography, test spacing live.',
+    icon: <SlidersHorizontal size={32} />,
+    slug: 'design-playground',
+    category: 'Design',
+    badge: 'New',
   },
   {
     id: 'design-blocks-showcase',
     title: 'Design Blocks Showcase',
     description: 'All design blocks (Buttons, Heading, Paragraph, etc.) with live preview.',
     icon: <Layout size={32} />,
-    url: 'dev-tools/design-blocks-showcase',
+    slug: 'design-blocks-showcase',
     category: 'Design',
   },
   {
@@ -108,7 +111,7 @@ const devTools: DevTool[] = [
     title: 'Theme Blocks Showcase',
     description: 'Showcase all WordPress theme blocks (Site Logo, Navigation, etc.).',
     icon: <Blocks size={32} />,
-    url: 'dev-tools/theme-blocks-showcase',
+    slug: 'theme-blocks-showcase',
     category: 'Design',
   },
   {
@@ -116,7 +119,7 @@ const devTools: DevTool[] = [
     title: 'Button Showcase',
     description: 'Complete button system showcase with all 5 variants and 3 sizes (WCAG AAA compliant).',
     icon: <MousePointer size={32} />,
-    url: 'dev-tools/button-showcase',
+    slug: 'button-showcase',
     category: 'Design',
   },
   {
@@ -124,7 +127,7 @@ const devTools: DevTool[] = [
     title: 'Section Presets Showcase',
     description: 'Showcase all 17 section style presets with WordPress FSE mapping.',
     icon: <Layers size={32} />,
-    url: 'dev-tools/section-presets-showcase',
+    slug: 'section-presets-showcase',
     category: 'Design',
   },
   {
@@ -132,7 +135,7 @@ const devTools: DevTool[] = [
     title: 'Header/Footer Comparison',
     description: 'Compare all header and footer template variations side-by-side.',
     icon: <Layout size={32} />,
-    url: 'dev-tools/header-footer-comparison',
+    slug: 'header-footer-comparison',
     category: 'Design',
   },
   {
@@ -140,7 +143,7 @@ const devTools: DevTool[] = [
     title: 'Icon Library',
     description: 'Complete Lucide React icon reference with copy-paste code snippets.',
     icon: <Paintbrush size={32} />,
-    url: 'dev-tools/icon-library',
+    slug: 'icon-library',
     category: 'Design',
   },
   {
@@ -148,7 +151,7 @@ const devTools: DevTool[] = [
     title: 'Style Guide',
     description: 'Complete visual style guide with typography, colors, and spacing tokens.',
     icon: <BookOpen size={32} />,
-    url: 'dev-tools/style-guide',
+    slug: 'style-guide',
     category: 'Design',
   },
   
@@ -158,7 +161,7 @@ const devTools: DevTool[] = [
     title: 'Block Documentation',
     description: 'Complete WordPress block library with usage examples and guidelines.',
     icon: <FileCode2 size={32} />,
-    url: 'dev-tools/block-documentation',
+    slug: 'block-documentation',
     category: 'Documentation',
   },
   {
@@ -166,407 +169,191 @@ const devTools: DevTool[] = [
     title: 'Component API',
     description: 'TypeScript interfaces and complete API reference for all components.',
     icon: <Code2 size={32} />,
-    url: 'dev-tools/component-api',
+    slug: 'component-api',
     category: 'Documentation',
   },
+  {
+    id: 'docs-generator',
+    title: 'Documentation Generator',
+    description: 'Auto-generated docs from JSDoc — structured component reference with props tables, usage examples, and cross-links.',
+    icon: <FileSearch size={32} />,
+    slug: 'docs-generator',
+    category: 'Documentation',
+    badge: 'New',
+  },
+  {
+    id: 'snippet-generator',
+    title: 'Snippet Generator',
+    description: 'Interactive BEM pattern code builder — select a pattern, configure options, get copy-ready JSX, CSS and WordPress HTML.',
+    icon: <Scissors size={32} />,
+    slug: 'snippet-generator',
+    category: 'Documentation',
+    badge: 'New',
+  },
+  
+  // Deployment Tools
+  {
+    id: 'deployment-readiness',
+    title: 'Deployment Readiness',
+    description: 'Pre-deploy checklist with simulated Lighthouse scores, link checker, accessibility audit, and WordPress FSE compatibility.',
+    icon: <ClipboardCheck size={32} />,
+    slug: 'deployment-readiness',
+    category: 'Deployment',
+    badge: 'New',
+  },
+
+  // Analytics Tools
+  {
+    id: 'code-quality-dashboard',
+    title: 'Code Quality Dashboard',
+    description: 'Static analysis — component counts, route stats, CSS architecture, design token inventory, and compliance scores.',
+    icon: <BarChart3 size={32} />,
+    slug: 'code-quality-dashboard',
+    category: 'Analytics',
+    badge: 'New',
+  },
 ];
+
+/* ═══════════════════════════════════════════
+ * Category Config
+ * ═══════════════════════════════════════════ */
+
+const categoryOrder: DevTool['category'][] = ['Testing', 'Design', 'Development', 'Documentation', 'Analytics', 'Deployment'];
+
+const categoryIcons: Record<string, React.ReactNode> = {
+  Testing: <TestTube2 size={20} />,
+  Development: <Wrench size={20} />,
+  Design: <Palette size={20} />,
+  Documentation: <FileCode2 size={20} />,
+  Analytics: <BarChart3 size={20} />,
+  Deployment: <Rocket size={20} />,
+};
+
+/* ═══════════════════════════════════════════
+ * Component
+ * ═══════════════════════════════════════════ */
 
 export function DevToolsTemplate() {
   const { navigateTo } = useNavigation();
 
-  const breadcrumbs = [
-    { label: 'Home', url: 'home' },
-    { label: 'Dev Tools', url: 'dev-tools' },
-  ];
+  const toolsByCategory = categoryOrder.map(category => ({
+    category,
+    tools: devTools.filter(t => t.category === category),
+  })).filter(group => group.tools.length > 0);
 
-  const categories = Array.from(new Set(devTools.map(tool => tool.category)));
+  const totalTools = devTools.length;
 
   return (
     <>
-      <SiteHeader />
+      {/* Breadcrumbs */}
+      <section className="wp-block-breadcrumbs-section wp-block-breadcrumbs-section--border">
+        <Breadcrumbs
+          items={[
+            { label: 'Home', page: 'home' },
+            { label: 'Developer Tools' },
+          ]}
+        />
+      </section>
 
-      <main id="main-content" style={{ backgroundColor: 'var(--background)' }}>
-        {/* Breadcrumbs */}
-        <div
-          className="px-6 py-4"
-          style={{
-            backgroundColor: 'var(--muted)',
-            borderBottom: '1px solid var(--border-soft)',
-          }}
-        >
-          <div className="mx-auto" style={{ maxWidth: '1400px' }}>
-            <Breadcrumbs items={breadcrumbs} />
+      {/* Hero */}
+      <div className="devtools__hero">
+        <div className="devtools__hero-inner">
+          <div className="devtools__hero-header">
+            <h1 className="devtools__hero-title">Developer Tools</h1>
+            <p className="devtools__hero-description">
+              {totalTools} tools for testing, designing, documenting, and deploying 
+              the LSX Design system. Every tool uses CSS variables and BEM classes for 
+              full WordPress FSE compatibility.
+            </p>
           </div>
-        </div>
 
-        {/* Hero Section */}
-        <section className="px-6 py-16">
-          <div className="mx-auto" style={{ maxWidth: '1400px' }}>
-            <div className="mb-8 text-center">
-              <h1
-                className="mb-4"
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-h1)',
-                  fontWeight: 'var(--font-weight-semibold)',
-                  color: 'var(--foreground)',
-                  margin: 0,
-                }}
-              >
-                Developer Tools
-              </h1>
-
-              <p
-                className="mx-auto"
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-xl)',
-                  color: 'var(--muted-foreground)',
-                  maxWidth: '800px',
-                  margin: '0 auto',
-                }}
-              >
-                Complete suite of developer tools for testing, debugging, and documenting the LSX Design System
-              </p>
-            </div>
-
-            {/* Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
-              <div
-                className="p-6 text-center"
-                style={{
-                  backgroundColor: 'var(--card)',
-                  border: '1px solid var(--border-soft)',
-                  borderRadius: 'var(--radius-lg)',
-                }}
-              >
-                <div
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-h2)',
-                    fontWeight: 'var(--font-weight-bold)',
-                    color: 'var(--primary)',
-                    marginBottom: '8px',
-                  }}
-                >
-                  47
-                </div>
-                <div
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-base)',
-                    color: 'var(--muted-foreground)',
-                  }}
-                >
-                  Templates
-                </div>
-              </div>
-
-              <div
-                className="p-6 text-center"
-                style={{
-                  backgroundColor: 'var(--card)',
-                  border: '1px solid var(--border-soft)',
-                  borderRadius: 'var(--radius-lg)',
-                }}
-              >
-                <div
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-h2)',
-                    fontWeight: 'var(--font-weight-bold)',
-                    color: 'var(--primary)',
-                    marginBottom: '8px',
-                  }}
-                >
-                  164
-                </div>
-                <div
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-base)',
-                    color: 'var(--muted-foreground)',
-                  }}
-                >
-                  Features
-                </div>
-              </div>
-
-              <div
-                className="p-6 text-center"
-                style={{
-                  backgroundColor: 'var(--card)',
-                  border: '1px solid var(--border-soft)',
-                  borderRadius: 'var(--radius-lg)',
-                }}
-              >
-                <div
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-h2)',
-                    fontWeight: 'var(--font-weight-bold)',
-                    color: 'var(--primary)',
-                    marginBottom: '8px',
-                  }}
-                >
-                  100%
-                </div>
-                <div
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-base)',
-                    color: 'var(--muted-foreground)',
-                  }}
-                >
-                  Compliant
-                </div>
-              </div>
-
-              <div
-                className="p-6 text-center"
-                style={{
-                  backgroundColor: 'var(--card)',
-                  border: '1px solid var(--border-soft)',
-                  borderRadius: 'var(--radius-lg)',
-                }}
-              >
-                <div
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-h2)',
-                    fontWeight: 'var(--font-weight-bold)',
-                    color: 'var(--primary)',
-                    marginBottom: '8px',
-                  }}
-                >
-                  26+
-                </div>
-                <div
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-base)',
-                    color: 'var(--muted-foreground)',
-                  }}
-                >
-                  Tests
-                </div>
-              </div>
-            </div>
-
-            {/* Tools by Category */}
-            {categories.map((category) => (
-              <div key={category} className="mb-12">
-                <h2
-                  className="mb-6 flex items-center gap-3"
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-h3)',
-                    fontWeight: 'var(--font-weight-semibold)',
-                    color: 'var(--foreground)',
-                    margin: 0,
-                    paddingBottom: '12px',
-                    borderBottom: '2px solid var(--border)',
-                  }}
-                >
-                  {category}
-                  <span
-                    className="px-2 py-1"
-                    style={{
-                      fontFamily: 'Lexend, sans-serif',
-                      fontSize: 'var(--text-small)',
-                      fontWeight: 'var(--font-weight-medium)',
-                      backgroundColor: 'var(--muted)',
-                      color: 'var(--muted-foreground)',
-                      borderRadius: 'var(--radius)',
-                    }}
-                  >
-                    {devTools.filter(tool => tool.category === category).length}
-                  </span>
-                </h2>
-
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {devTools
-                    .filter(tool => tool.category === category)
-                    .map((tool) => (
-                      <button
-                        key={tool.id}
-                        onClick={() => navigateTo(tool.url)}
-                        className="group text-left p-6"
-                        style={{
-                          backgroundColor: 'var(--card)',
-                          border: '1px solid var(--border-soft)',
-                          borderRadius: 'var(--radius-lg)',
-                          cursor: 'pointer',
-                          transition: 'all 0.2s ease',
-                          width: '100%',
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.borderColor = 'var(--primary)';
-                          e.currentTarget.style.transform = 'translateY(-4px)';
-                          e.currentTarget.style.boxShadow = 'var(--shadow-md)';
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.borderColor = 'var(--border-soft)';
-                          e.currentTarget.style.transform = 'translateY(0)';
-                          e.currentTarget.style.boxShadow = 'none';
-                        }}
-                      >
-                        {/* Icon & Badge */}
-                        <div className="flex items-start justify-between mb-4">
-                          <div
-                            className="p-3"
-                            style={{
-                              backgroundColor: 'var(--primary-soft)',
-                              color: 'var(--primary)',
-                              borderRadius: 'var(--radius-lg)',
-                            }}
-                          >
-                            {tool.icon}
-                          </div>
-
-                          {tool.badge && (
-                            <span
-                              className="px-2 py-1"
-                              style={{
-                                fontFamily: 'Lexend, sans-serif',
-                                fontSize: 'var(--text-small)',
-                                fontWeight: 'var(--font-weight-semibold)',
-                                backgroundColor: 'var(--primary)',
-                                color: 'var(--primary-foreground)',
-                                borderRadius: 'var(--radius)',
-                              }}
-                            >
-                              {tool.badge}
-                            </span>
-                          )}
-                        </div>
-
-                        {/* Title */}
-                        <h3
-                          className="mb-2 flex items-center justify-between"
-                          style={{
-                            fontFamily: 'Lexend, sans-serif',
-                            fontSize: 'var(--text-lg)',
-                            fontWeight: 'var(--font-weight-semibold)',
-                            color: 'var(--foreground)',
-                            margin: 0,
-                          }}
-                        >
-                          {tool.title}
-                          <ChevronRight
-                            size={20}
-                            className="group-hover:translate-x-1 transition-transform"
-                            style={{ color: 'var(--muted-foreground)' }}
-                          />
-                        </h3>
-
-                        {/* Description */}
-                        <p
-                          style={{
-                            fontFamily: 'Lexend, sans-serif',
-                            fontSize: 'var(--text-base)',
-                            color: 'var(--muted-foreground)',
-                            margin: 0,
-                            lineHeight: '1.6',
-                          }}
-                        >
-                          {tool.description}
-                        </p>
-                      </button>
-                    ))}
-                </div>
+          {/* Stats */}
+          <div className="devtools__stats-grid">
+            {[
+              { value: totalTools, label: 'Total Tools' },
+              { value: '90+', label: 'Templates' },
+              { value: '117', label: 'Routes' },
+              { value: '100%', label: 'CSS Variables' },
+            ].map((stat, i) => (
+              <div key={i} className="devtools__stat-card">
+                <div className="devtools__stat-value">{stat.value}</div>
+                <div className="devtools__stat-label">{stat.label}</div>
               </div>
             ))}
+          </div>
 
-            {/* Help Section */}
-            <div
-              className="mt-12 p-8 text-center"
-              style={{
-                backgroundColor: 'var(--muted)',
-                border: '1px solid var(--border)',
-                borderRadius: 'var(--radius-xl)',
-              }}
-            >
-              <h3
-                className="mb-3"
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
+          {/* Category Grids */}
+          {toolsByCategory.map(({ category, tools }) => (
+            <div key={category} className="devtools__category">
+              <div className="devtools__category-header">
+                {categoryIcons[category]}
+                <h2 style={{
+                  fontFamily: 'var(--font-primary)',
                   fontSize: 'var(--text-h4)',
-                  fontWeight: 'var(--font-weight-semibold)',
+                  fontWeight: 'var(--font-weight-medium)',
                   color: 'var(--foreground)',
                   margin: 0,
-                }}
-              >
-                Need Help?
-              </h3>
+                }}>
+                  {category}
+                </h2>
+                <span className="devtools__category-count">{tools.length}</span>
+              </div>
 
-              <p
-                className="mb-6"
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-base)',
-                  color: 'var(--muted-foreground)',
-                  margin: 0,
-                }}
-              >
-                Check the documentation or contact the development team for assistance.
-              </p>
-
-              <div className="flex items-center justify-center gap-4">
-                <button
-                  onClick={() => navigateTo('dev-tools/block-documentation')}
-                  className="px-6 py-3"
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-base)',
-                    fontWeight: 'var(--font-weight-medium)',
-                    backgroundColor: 'var(--primary)',
-                    color: 'var(--primary-foreground)',
-                    border: 'none',
-                    borderRadius: 'var(--radius-lg)',
-                    cursor: 'pointer',
-                    transition: 'all 0.2s ease',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'scale(1.05)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'scale(1)';
-                  }}
-                >
-                  View Documentation
-                </button>
-
-                <button
-                  onClick={() => navigateTo('contact')}
-                  className="px-6 py-3"
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-base)',
-                    fontWeight: 'var(--font-weight-medium)',
-                    backgroundColor: 'var(--background)',
-                    color: 'var(--foreground)',
-                    border: '2px solid var(--border)',
-                    borderRadius: 'var(--radius-lg)',
-                    cursor: 'pointer',
-                    transition: 'all 0.2s ease',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = 'var(--muted)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.backgroundColor = 'var(--background)';
-                  }}
-                >
-                  Contact Support
-                </button>
+              <div className="devtools__tools-grid">
+                {tools.map(tool => (
+                  <button
+                    key={tool.id}
+                    className="devtools__tool-card"
+                    onClick={() => navigateTo(tool.slug)}
+                    type="button"
+                  >
+                    <div className="devtools__tool-card-header">
+                      <div className="devtools__tool-icon">
+                        {tool.icon}
+                      </div>
+                      {tool.badge && (
+                        <span className="devtools__tool-badge">{tool.badge}</span>
+                      )}
+                    </div>
+                    <div className="devtools__tool-title-row">
+                      <h3 className="devtools__tool-title">{tool.title}</h3>
+                      <ChevronRight size={16} className="devtools__tool-arrow" />
+                    </div>
+                    <p className="devtools__tool-desc">{tool.description}</p>
+                  </button>
+                ))}
               </div>
             </div>
-          </div>
-        </section>
-      </main>
+          ))}
 
-      <SiteFooter variant="default" />
+          {/* Help Section */}
+          <div className="devtools__help">
+            <h2 className="devtools__help-title">Need a Custom Tool?</h2>
+            <p className="devtools__help-desc">
+              These developer tools are built using the same design system as the rest of the site.
+              Check the task list for planned additions or create your own.
+            </p>
+            <div className="devtools__help-actions">
+              <button
+                className="devtools__help-btn devtools__help-btn--primary"
+                onClick={() => navigateTo('home')}
+                type="button"
+              >
+                Back to Home
+              </button>
+              <button
+                className="devtools__help-btn devtools__help-btn--outline"
+                onClick={() => navigateTo('site-map')}
+                type="button"
+              >
+                View Site Map
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 }
+
+export default DevToolsTemplate;

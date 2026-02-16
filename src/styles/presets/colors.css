@@ -1,0 +1,38 @@
+/**
+ * LightSpeed Color Presets
+ * 
+ * Defines semantic roles and numeric scales for the design system.
+ * Pattern: --wp--preset--color--{slug}
+ */
+
+:root {
+  /* Semantic Roles */
+  --wp--preset--color--base: #FFFFFF;
+  --wp--preset--color--contrast: #111111;
+  --wp--preset--color--primary: #0A84FF;
+  --wp--preset--color--brand: #0A84FF;
+  --wp--preset--color--cta: #0066CC;
+  --wp--preset--color--cta-hover: #0055AA;
+  
+  /* Neutral Scale */
+  --wp--preset--color--neutral-100: #F9FAFB;
+  --wp--preset--color--neutral-200: #F3F4F6;
+  --wp--preset--color--neutral-300: #E5E7EB;
+  --wp--preset--color--neutral-400: #D1D5DB;
+  --wp--preset--color--neutral-500: #9CA3AF;
+  --wp--preset--color--neutral-600: #4B5563;
+  --wp--preset--color--neutral-700: #374151;
+  --wp--preset--color--neutral-800: #1F2937;
+  --wp--preset--color--neutral-900: #111827;
+  
+  /* Accent Scale (Blue-ish default) */
+  --wp--preset--color--accent-100: #E0F2FE;
+  --wp--preset--color--accent-200: #BAE6FD;
+  --wp--preset--color--accent-300: #7DD3FC;
+  --wp--preset--color--accent-400: #38BDF8;
+  --wp--preset--color--accent-500: #0EA5E9;
+  --wp--preset--color--accent-600: #0284C7;
+  --wp--preset--color--accent-700: #0369A1;
+  --wp--preset--color--accent-800: #075985;
+  --wp--preset--color--accent-900: #0C4A6E;
+}

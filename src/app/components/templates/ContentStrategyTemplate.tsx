@@ -1,90 +1,99 @@
 /**
  * Content Strategy Template
  * 
- * Page shell for Content Strategy service page.
- * Full content implementation coming soon.
+ * WordPress template: templates/page-content-strategy.html
+ * 
+ * Sub-service page for Content Strategy.
  * 
  * @see /guidelines/templates/overview-templates.md
  */
 
-import { SiteHeader } from '../parts/SiteHeader';
-import { SiteFooter } from '../parts/SiteFooter';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
+import { Heading } from '../blocks/text/Heading';
+import { Paragraph } from '../blocks/text/Paragraph';
+import { CTASection } from '../patterns/CTASection';
+import { Breadcrumbs } from '../common/Breadcrumbs';
+import { Map, Target, Users } from 'lucide-react';
+import { contentServiceDetailed } from '../../data/services-detailed';
 
 export function ContentStrategyTemplate() {
+  const serviceData = contentServiceDetailed.subServices.find(s => s.id === 'content-strategy');
+  
   return (
     <>
-      <SiteHeader />
-      
-      <main id="main-content" role="main">
-        {/* Page Hero */}
-        <Section variant="canvas" className="py-12">
+        {/* Breadcrumbs */}
+        <Section className="wp-bg-muted wp-py-4">
           <Container>
-            <div style={{ textAlign: 'center' }}>
-              <h1 style={{
-                fontSize: 'var(--text-h1)',
-                fontFamily: 'var(--font-primary)',
-                fontWeight: 'var(--font-weight-bold)',
-                color: 'var(--foreground)',
-                marginBottom: 'var(--spacing-4)'
-              }}>
-                Content Strategy
-              </h1>
-              
-              <p style={{
-                fontSize: 'var(--text-lead)',
-                fontFamily: 'var(--font-primary)',
-                color: 'var(--muted-foreground)',
-                marginBottom: 'var(--spacing-8)',
-                maxWidth: '800px',
-                marginLeft: 'auto',
-                marginRight: 'auto'
-              }}>
-                Strategic content planning and implementation services
-              </p>
+            <Breadcrumbs 
+              items={[
+                { label: 'Home', page: 'front-page' },
+                { label: 'Services', page: 'services' },
+                { label: 'Content', page: 'content-service' },
+                { label: 'Content Strategy' }
+              ]}
+            />
+          </Container>
+        </Section>
 
-              {/* Coming Soon Badge */}
-              <div style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: 'var(--spacing-2)',
-                padding: 'var(--spacing-2) var(--spacing-4)',
-                backgroundColor: 'var(--muted)',
-                borderRadius: 'var(--radius)',
-                fontSize: 'var(--text-small)',
-                fontFamily: 'var(--font-secondary)',
-                color: 'var(--muted-foreground)'
-              }}>
-                🚧 Page Under Construction
+        {/* Page Hero */}
+        <Section background="default" className="wp-py-12 md:wp-py-20">
+          <Container>
+            <div className="wp-text-center wp-max-w-4xl wp-mx-auto">
+              <span className="wp-badge wp-badge--primary wp-mb-4">
+                Service
+              </span>
+              <Heading level={1} align="center" className="wp-mb-6">
+                Content Strategy
+              </Heading>
+              
+              <Paragraph 
+                size="lead"
+                align="center"
+                className="wp-mb-8 wp-max-w-2xl wp-mx-auto wp-text-muted-foreground"
+              >
+                {serviceData?.description || 'Strategic content planning and implementation services'}
+              </Paragraph>
+            </div>
+          </Container>
+        </Section>
+
+        {/* Benefits Grid */}
+        <Section spacing="xl">
+          <Container>
+            <div className="wp-grid-3-cols wp-gap-8">
+              <div className="wp-block-group wp-p-8 wp-bg-card wp-rounded-lg wp-border wp-border-border">
+                <Map size={32} className="wp-text-primary wp-mb-4" />
+                <Heading level={3} className="wp-mb-3">Roadmap Development</Heading>
+                <Paragraph>
+                  Create a clear path forward for your content ecosystem, defining channels, formats, and publishing cadences.
+                </Paragraph>
+              </div>
+              <div className="wp-block-group wp-p-8 wp-bg-card wp-rounded-lg wp-border wp-border-border">
+                <Target size={32} className="wp-text-primary wp-mb-4" />
+                <Heading level={3} className="wp-mb-3">Goal Alignment</Heading>
+                <Paragraph>
+                  Ensure every piece of content serves a specific business objective and user need, eliminating waste.
+                </Paragraph>
+              </div>
+              <div className="wp-block-group wp-p-8 wp-bg-card wp-rounded-lg wp-border wp-border-border">
+                <Users size={32} className="wp-text-primary wp-mb-4" />
+                <Heading level={3} className="wp-mb-3">Audience Targeting</Heading>
+                <Paragraph>
+                  Define detailed personas and user journeys to deliver the right message to the right person at the right time.
+                </Paragraph>
               </div>
             </div>
           </Container>
         </Section>
 
-        {/* Placeholder Content */}
-        <Section variant="white" className="py-12">
-          <Container>
-            <div style={{
-              textAlign: 'center',
-              padding: 'var(--spacing-12)',
-              backgroundColor: 'var(--card)',
-              borderRadius: 'var(--radius-lg)',
-              border: '1px solid var(--border)'
-            }}>
-              <p style={{
-                fontSize: 'var(--text-base)',
-                fontFamily: 'var(--font-primary)',
-                color: 'var(--foreground)'
-              }}>
-                Full content for this page is coming soon. Check back later!
-              </p>
-            </div>
-          </Container>
-        </Section>
-      </main>
-      
-      <SiteFooter />
+        {/* CTA Section */}
+        <CTASection
+          title="Develop a winning strategy"
+          description="Let's build a content strategy that drives measurable results for your business."
+          primaryButtonText="Start Strategy Session"
+          primaryButtonPage="contact"
+        />
     </>
   );
 }

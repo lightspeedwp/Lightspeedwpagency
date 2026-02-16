@@ -1,0 +1,269 @@
+/**
+ * Sidebar Block Styles
+ * 
+ * Replaces Shadcn Sidebar.
+ * Uses .wp-block-sidebar BEM naming.
+ */
+
+:root {
+  --sidebar-background: var(--background);
+  --sidebar-foreground: var(--foreground);
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--primary-foreground);
+  --sidebar-accent: var(--accent);
+  --sidebar-accent-foreground: var(--accent-foreground);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--ring);
+  
+  --sidebar-width: 16rem;
+  --sidebar-width-mobile: 18rem;
+  --sidebar-width-icon: 3rem;
+  --sidebar-width-icon-open: 3.5rem; /* Optional: if needed */
+}
+
+/* Sidebar Wrapper */
+.wp-block-sidebar-wrapper {
+  display: flex;
+  min-height: 100vh; /* 100svh if supported */
+  width: 100%;
+  
+  /* Sidebar variables context */
+  --sidebar-width: 16rem;
+  --sidebar-width-icon: 3rem;
+}
+
+.wp-block-sidebar-wrapper.has-variant-inset {
+  background-color: var(--sidebar-background);
+}
+
+/* Sidebar Container */
+.wp-block-sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: var(--sidebar-width);
+  background-color: var(--sidebar-background);
+  color: var(--sidebar-foreground);
+}
+
+.wp-block-sidebar[data-collapsible="none"] {
+  display: flex;
+  height: 100%;
+  width: var(--sidebar-width);
+  flex-direction: column;
+  background-color: var(--sidebar-background);
+  color: var(--sidebar-foreground);
+}
+
+/* Mobile Sidebar */
+.wp-block-sidebar[data-mobile="true"] {
+  width: var(--sidebar-width-mobile);
+  padding: 0;
+  background-color: var(--sidebar-background);
+  color: var(--sidebar-foreground);
+}
+
+/* Desktop Sidebar State */
+.wp-block-sidebar[data-state="collapsed"] {
+  width: var(--sidebar-width-icon);
+}
+
+/* Sidebar Gap (Rail equivalent behavior?) */
+.wp-block-sidebar__gap {
+  position: relative;
+  width: var(--sidebar-width);
+  background-color: transparent;
+  transition: width 0.2s linear;
+}
+
+.wp-block-sidebar__gap[data-collapsible="offcanvas"] {
+  width: 0;
+}
+
+.wp-block-sidebar__gap[data-side="right"] {
+  transform: rotate(180deg);
+}
+
+/* Sidebar Inner Container */
+.wp-block-sidebar__container {
+  position: fixed;
+  inset-block: 0; /* inset-y-0 */
+  z-index: 10;
+  display: none; /* hidden md:flex */
+  height: 100vh;
+  width: var(--sidebar-width);
+  transition: left 0.2s linear, right 0.2s linear, width 0.2s linear;
+}
+
+@media (min-width: 768px) {
+  .wp-block-sidebar__container {
+    display: flex;
+  }
+}
+
+.wp-block-sidebar__container[data-side="left"] {
+  left: 0;
+}
+
+.wp-block-sidebar__container[data-side="right"] {
+  right: 0;
+}
+
+/* Sidebar Content */
+.wp-block-sidebar__content {
+  display: flex;
+  min-height: 0;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.5rem;
+  overflow: auto;
+}
+
+.wp-block-sidebar__content[data-collapsible="icon"] {
+  overflow: hidden;
+}
+
+/* Sidebar Header & Footer */
+.wp-block-sidebar__header,
+.wp-block-sidebar__footer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.5rem;
+}
+
+/* Sidebar Input */
+.wp-block-sidebar__input {
+  background-color: var(--background);
+  height: 2rem;
+  width: 100%;
+  box-shadow: none;
+}
+
+/* Sidebar Separator */
+.wp-block-sidebar__separator {
+  background-color: var(--sidebar-border);
+  margin-inline: 0.5rem;
+  width: auto;
+  height: 1px;
+}
+
+/* Sidebar Group */
+.wp-block-sidebar__group {
+  position: relative;
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  flex-direction: column;
+  padding: 0.5rem;
+}
+
+/* Sidebar Group Label */
+.wp-block-sidebar__group-label {
+  display: flex;
+  height: 2rem;
+  flex-shrink: 0;
+  align-items: center;
+  border-radius: var(--radius-md);
+  padding-inline: 0.5rem;
+  font-size: var(--text-xs); /* 12px - Labels */
+  font-weight: 500; /* medium */
+  color: var(--sidebar-foreground);
+  opacity: 0.7;
+  outline: none;
+  transition: margin 0.2s linear, opacity 0.2s linear;
+}
+
+.wp-block-sidebar__group-label[data-collapsible="icon"] {
+  margin-top: -2rem;
+  opacity: 0;
+}
+
+/* Sidebar Group Action */
+.wp-block-sidebar__group-action {
+  position: absolute;
+  top: 0.875rem; /* 3.5 */
+  right: 0.75rem; /* 3 */
+  display: flex;
+  aspect-ratio: 1 / 1;
+  width: 1.25rem; /* 5 */
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  padding: 0;
+  color: var(--sidebar-foreground);
+  outline: none;
+  transition: transform 0.2s;
+}
+
+.wp-block-sidebar__group-action:hover {
+  background-color: var(--sidebar-accent);
+  color: var(--sidebar-accent-foreground);
+}
+
+/* Sidebar Menu */
+.wp-block-sidebar__menu {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  flex-direction: column;
+  gap: 0.25rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.wp-block-sidebar__menu-item {
+  position: relative;
+}
+
+/* Sidebar Menu Button */
+.wp-block-sidebar__menu-button {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 0.5rem;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  padding: 0.5rem;
+  text-align: left;
+  font-size: var(--text-sm); /* 14px - Menu items */
+  outline: none;
+  transition: width 0.2s, height 0.2s, padding 0.2s;
+  background-color: transparent;
+  color: inherit;
+  border: none;
+  cursor: pointer;
+}
+
+.wp-block-sidebar__menu-button:hover {
+  background-color: var(--sidebar-accent);
+  color: var(--sidebar-accent-foreground);
+}
+
+.wp-block-sidebar__menu-button[data-active="true"] {
+  background-color: var(--sidebar-accent);
+  color: var(--sidebar-accent-foreground);
+  font-weight: 500;
+}
+
+.wp-block-sidebar__menu-button[data-size="sm"] {
+  height: 1.75rem;
+  font-size: var(--text-xs); /* 12px */
+}
+
+.wp-block-sidebar__menu-button[data-size="default"] {
+  height: 2rem;
+  font-size: var(--text-sm); /* 14px */
+}
+
+.wp-block-sidebar__menu-button[data-size="lg"] {
+  height: 3rem;
+  font-size: var(--text-sm); /* 14px */
+}
+
+/* Sidebar Trigger */
+.wp-block-sidebar__trigger {
+  width: 1.75rem; /* 7 */
+  height: 1.75rem; /* 7 */
+}

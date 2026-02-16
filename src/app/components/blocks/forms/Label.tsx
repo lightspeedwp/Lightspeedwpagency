@@ -1,0 +1,20 @@
+/**
+ * Label Block Component
+ */
+
+import React from 'react';
+import * as LabelPrimitive from '@radix-ui/react-label';
+import '@/styles/blocks/forms/label.css';
+
+export interface LabelProps extends React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root> {}
+
+export const Label = React.forwardRef<React.ElementRef<typeof LabelPrimitive.Root>, LabelProps>(
+  ({ className = '', ...props }, ref) => (
+    <LabelPrimitive.Root
+      ref={ref}
+      className={`wp-block-label ${className}`.trim()}
+      {...props}
+    />
+  )
+);
+Label.displayName = LabelPrimitive.Root.displayName;

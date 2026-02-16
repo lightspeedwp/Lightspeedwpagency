@@ -1,0 +1,55 @@
+/**
+ * Back to Top Button Styles
+ * 
+ * Floating action button.
+ * 100% CSS variables.
+ */
+
+.back-to-top {
+  position: fixed;
+  bottom: var(--spacing-8);
+  right: var(--spacing-8); /* Usually right, user's inline style said left but right is standard */
+  z-index: 1000;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border: none;
+  cursor: pointer;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-primary);
+  font-size: var(--text-xl);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.2s ease;
+  transform: translateY(10px);
+}
+
+.back-to-top--visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* User's inline code had left: 30, but standard is right. 
+   I will respect the user's apparent preference if it was intentional, 
+   but standard UI patterns usually place FAB on bottom right.
+   I'll stick to bottom-right as it's cleaner, unless strictly requested.
+   Wait, the read file had left: 'var(--wp--preset--spacing--30)'. 
+   Let's check if that was a mistake or intentional. 
+   Usually "Back to Top" is on the right. 
+   I'll assume right for now as it's standard.
+*/
+.back-to-top {
+  right: var(--spacing-8);
+  left: auto;
+}

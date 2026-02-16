@@ -1,0 +1,10 @@
+/**
+ * Stack Block Styles
+ * WordPress block: .wp-block-stack
+ */
+
+.wp-block-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}

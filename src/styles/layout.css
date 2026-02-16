@@ -4,76 +4,60 @@
  * Sitewide layout utilities that apply consistent spacing,
  * padding, and structure across all pages.
  * 
+ * Horizontal padding is handled by individual container classes:
+ * - .wp-container-inner (Container component — 1440px)
+ * - .site-header__container (Header — 1440px)
+ * - .site-footer__container (Footer — 1440px)
+ * 
+ * This file only contains global overrides and duplicate prevention.
  * All utilities use CSS variables for complete user control.
  */
 
 /* ============================================
-   FLUID HORIZONTAL PADDING
+   DUPLICATE LAYOUT PREVENTION
    ============================================ */
 
 /**
- * Fluid horizontal padding applied to inner container elements.
- * 
- * Scales from 16px (mobile) to 32px (desktop) using viewport width.
- * 
- * Applied to:
- * - Container elements (inner content wrappers)
- * - Inner content areas within sections/headers/footers
- * 
- * NOT applied to outer section/header/footer elements
- * (those remain full-width edge-to-edge)
- * 
- * Formula: clamp(min, preferred, max)
- * - min: 16px (mobile)
- * - preferred: 4vw (scales with viewport)
- * - max: 32px (desktop)
+ * RootLayout renders SiteHeader, SiteFooter, SkipLink, BackToTopButton,
+ * and RouteAnnouncer globally. Many templates still render these internally.
+ * Since templates render inside <main id="main-content"> via <Outlet />,
+ * any layout elements inside main are duplicates and must be hidden.
+ *
+ * This CSS rule hides ALL duplicate layout elements rendered by templates
+ * until the template imports are fully cleaned up.
  */
 
-/* Container elements - inner content wrappers */
-.container,
-[class*="container"] {
-  padding-left: clamp(16px, 4vw, 32px);
-  padding-right: clamp(16px, 4vw, 32px);
+/* Hide duplicate headers/footers inside main content area */
+#main-content .site-header,
+#main-content .site-footer,
+#main-content .wp-block-template-part.site-header,
+#main-content footer.site-footer,
+#main-content header.site-header {
+  display: none !important;
 }
 
-/* WordPress block inner containers */
-.wp-block-section > *,
-.wp-block-group > * {
-  padding-left: clamp(16px, 4vw, 32px);
-  padding-right: clamp(16px, 4vw, 32px);
+/* Hide duplicate skip links inside main */
+#main-content .skip-link {
+  display: none !important;
 }
 
-/* Header inner content */
-header > *:not(.container):not([class*="container"]) {
-  padding-left: clamp(16px, 4vw, 32px);
-  padding-right: clamp(16px, 4vw, 32px);
+/* Hide duplicate back-to-top buttons inside main */
+#main-content .back-to-top {
+  display: none !important;
 }
 
-/* Footer inner content */
-footer > *:not(.container):not([class*="container"]) {
-  padding-left: clamp(16px, 4vw, 32px);
-  padding-right: clamp(16px, 4vw, 32px);
+/* Hide duplicate route announcers inside main */
+#main-content .route-announcer {
+  display: none !important;
 }
-
-/* Main content area inner elements */
-main > *:not(.container):not([class*="container"]) {
-  padding-left: clamp(16px, 4vw, 32px);
-  padding-right: clamp(16px, 4vw, 32px);
-}
-
-
-/* ============================================
-   OVERRIDE FOR NESTED CONTAINERS
-   ============================================ */
 
 /**
- * Prevent double padding on deeply nested container elements.
+ * Nested <main> tags are invalid HTML. Templates that still render their own
+ * <main> create a nested structure. Use display:contents so the wrapper
+ * disappears but its children still render normally.
  */
-
-.container .container,
-[class*="container"] [class*="container"] {
-  padding-left: 0;
-  padding-right: 0;
+#main-content main {
+  display: contents;
 }
 
 
@@ -87,8 +71,8 @@ main > *:not(.container):not([class*="container"]) {
  * Usage: <div class="fluid-padding-x">...</div>
  */
 .fluid-padding-x {
-  padding-left: clamp(16px, 4vw, 32px);
-  padding-right: clamp(16px, 4vw, 32px);
+  padding-left: var(--section-padding-x);
+  padding-right: var(--section-padding-x);
 }
 
 /**
@@ -101,27 +85,14 @@ main > *:not(.container):not([class*="container"]) {
   padding-right: 0 !important;
 }
 
-
-/* ============================================
-   RESPONSIVE ADJUSTMENTS
-   ============================================ */
-
 /**
- * Fine-tune fluid padding at specific breakpoints if needed.
- * Currently using clamp() which handles all breakpoints automatically.
+ * Align-wide constraint utility.
+ * Enforces 1440px max-width with auto centering.
+ * 
+ * Usage: <div class="alignwide">...</div>
  */
-
-/* Mobile (< 640px) */
-@media (max-width: 639px) {
-  /* Fluid padding scales down to 16px minimum */
-}
-
-/* Tablet (640px - 1023px) */
-@media (min-width: 640px) and (max-width: 1023px) {
-  /* Fluid padding scales between 16px and 32px based on viewport */
-}
-
-/* Desktop (>= 1024px) */
-@media (min-width: 1024px) {
-  /* Fluid padding reaches 32px maximum */
+.alignwide {
+  max-width: var(--section-max-width);
+  margin-left: auto;
+  margin-right: auto;
 }

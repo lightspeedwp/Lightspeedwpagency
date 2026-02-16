@@ -19,10 +19,11 @@
  * ```
  */
 
-import { useState } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import { useNavigation } from '@/app/contexts/NavigationContext';
 import { useKeyboardShortcuts, formatShortcut, type KeyboardShortcut } from '@/app/hooks/useKeyboardShortcuts';
-import { X, Keyboard } from 'lucide-react';
+import { Keyboard, X } from 'lucide-react';
+import '@/styles/components/keyboard-shortcuts.css';
 
 export function KeyboardShortcuts() {
   const { navigateTo } = useNavigation();
@@ -94,44 +95,20 @@ export function KeyboardShortcuts() {
       {/* Help Modal */}
       {showHelp && (
         <div
-          className="fixed inset-0 flex items-center justify-center p-6"
-          style={{
-            backgroundColor: 'rgba(0, 0, 0, 0.5)',
-            zIndex: 9999,
-            animation: 'fadeIn 0.2s ease-out'
-          }}
+          className="keyboard-shortcuts__backdrop"
           onClick={() => setShowHelp(false)}
           role="dialog"
           aria-modal="true"
           aria-labelledby="shortcuts-title"
         >
           <div
-            className="p-8"
-            style={{
-              backgroundColor: 'var(--card)',
-              borderRadius: 'var(--radius-lg)',
-              maxWidth: '600px',
-              width: '100%',
-              maxHeight: '80vh',
-              overflow: 'auto',
-              border: '1px solid var(--border-soft)',
-              boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2)'
-            }}
+            className="keyboard-shortcuts__panel"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
-            <div className="flex items-center justify-between mb-6">
-              <div className="flex items-center gap-3">
-                <div
-                  className="p-2"
-                  style={{
-                    backgroundColor: 'var(--primary)',
-                    borderRadius: 'var(--radius)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center'
-                  }}
-                >
+            <div className="keyboard-shortcuts__header">
+              <div className="keyboard-shortcuts__header-left">
+                <div className="keyboard-shortcuts__icon-box">
                   <Keyboard 
                     size={24} 
                     style={{ color: 'var(--primary-foreground)' }} 
@@ -139,36 +116,14 @@ export function KeyboardShortcuts() {
                 </div>
                 <h2 
                   id="shortcuts-title"
-                  style={{ 
-                    fontSize: 'var(--text-h3)', 
-                    fontFamily: 'Lexend, sans-serif',
-                    fontWeight: 'var(--font-weight-semibold)',
-                    color: 'var(--foreground)',
-                    margin: 0
-                  }}
+                  className="keyboard-shortcuts__title"
                 >
                   Keyboard Shortcuts
                 </h2>
               </div>
               <button
                 onClick={() => setShowHelp(false)}
-                className="p-2"
-                style={{
-                  backgroundColor: 'transparent',
-                  border: 'none',
-                  color: 'var(--muted-foreground)',
-                  cursor: 'pointer',
-                  borderRadius: 'var(--radius)',
-                  transition: 'all 150ms ease'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = 'var(--muted)';
-                  e.currentTarget.style.color = 'var(--foreground)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = 'transparent';
-                  e.currentTarget.style.color = 'var(--muted-foreground)';
-                }}
+                className="keyboard-shortcuts__close-btn"
                 aria-label="Close keyboard shortcuts"
               >
                 <X size={20} />
@@ -176,43 +131,19 @@ export function KeyboardShortcuts() {
             </div>
 
             {/* Shortcuts List */}
-            <div className="space-y-3">
+            <div className="keyboard-shortcuts__list">
               {shortcuts.map((shortcut, index) => (
                 <div
                   key={index}
-                  className="flex items-center justify-between py-3 px-4"
-                  style={{
-                    backgroundColor: 'var(--muted)',
-                    borderRadius: 'var(--radius)',
-                    border: '1px solid var(--border-soft)'
-                  }}
+                  className="keyboard-shortcuts__row"
                 >
                   {/* Description */}
-                  <span
-                    style={{
-                      fontSize: 'var(--text-base)',
-                      fontFamily: 'Lexend, sans-serif',
-                      color: 'var(--foreground)'
-                    }}
-                  >
+                  <span className="keyboard-shortcuts__description">
                     {shortcut.description}
                   </span>
 
                   {/* Shortcut keys */}
-                  <kbd
-                    className="px-3 py-1"
-                    style={{
-                      fontSize: 'var(--text-small)',
-                      fontFamily: 'Manrope, sans-serif',
-                      fontWeight: 'var(--font-weight-semibold)',
-                      backgroundColor: 'var(--card)',
-                      color: 'var(--foreground)',
-                      border: '1px solid var(--border)',
-                      borderRadius: 'var(--radius-sm)',
-                      boxShadow: '0 1px 2px rgba(0, 0, 0, 0.1)',
-                      whiteSpace: 'nowrap'
-                    }}
-                  >
+                  <kbd className="keyboard-shortcuts__key">
                     {formatShortcut(shortcut)}
                   </kbd>
                 </div>
@@ -221,26 +152,12 @@ export function KeyboardShortcuts() {
 
             {/* Footer */}
             <div
-              className="mt-6 pt-6"
-              style={{
-                borderTop: '1px solid var(--border-soft)'
-              }}
+              className="keyboard-shortcuts__footer"
             >
               <p
-                style={{
-                  fontSize: 'var(--text-small)',
-                  fontFamily: 'Manrope, sans-serif',
-                  color: 'var(--muted-foreground)',
-                  textAlign: 'center',
-                  margin: 0
-                }}
+                className="keyboard-shortcuts__footer-text"
               >
-                Press <kbd style={{
-                  padding: '2px 6px',
-                  backgroundColor: 'var(--muted)',
-                  borderRadius: 'var(--radius-sm)',
-                  fontWeight: 'var(--font-weight-semibold)'
-                }}>Esc</kbd> or click outside to close
+                Press <kbd className="keyboard-shortcuts__footer-key">Esc</kbd> or click outside to close
               </p>
             </div>
           </div>

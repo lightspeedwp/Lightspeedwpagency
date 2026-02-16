@@ -17,10 +17,6 @@
  * @see /guidelines/Guidelines.md
  */
 
-import { SiteHeader } from '../parts/SiteHeader';
-import { SiteFooter } from '../parts/SiteFooter';
-import { BackToTopButton } from '../blocks/layout/BackToTopButton';
-import { RouteAnnouncer } from '../blocks/utility/RouteAnnouncer';
 import { useNavigation } from '../../contexts/NavigationContext';
 import { Home, ArrowRight, Check, Star, Award, Shield } from 'lucide-react';
 
@@ -29,16 +25,6 @@ export function WordPressBlocksProofOfConcept() {
 
   return (
     <>
-      <RouteAnnouncer />
-      
-      {/* Skip Link - Accessibility */}
-      <a href="#main-content" className="wp-block-skip-link">
-        Skip to content
-      </a>
-      
-      <SiteHeader />
-      
-      <main id="main-content" role="main">
         
         {/* ============================================
             HERO SECTION
@@ -329,10 +315,6 @@ export function WordPressBlocksProofOfConcept() {
           </div>
         </section>
         
-      </main>
-      
-      <SiteFooter />
-      <BackToTopButton />
     </>
   );
 }

@@ -40,6 +40,7 @@ import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { Button } from '../blocks/design/Buttons';
 import { ExternalLink } from 'lucide-react';
+import '@/styles/patterns/featured-project-showcase.css';
 
 export interface FeaturedProjectStat {
   /** Stat value (e.g., "500K+", "99.9%") */

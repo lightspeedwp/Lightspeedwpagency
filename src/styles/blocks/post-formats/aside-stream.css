@@ -1,0 +1,227 @@
+/**
+ * Aside Stream Template Styles
+ *
+ * WordPress template: archive-aside.html (stream variant)
+ * BEM naming: .aside-stream-*
+ * 100% CSS variables — no hardcoded values.
+ * Full light/dark mode support.
+ */
+
+/* ============================================
+   ASIDE STREAM HEADER
+   ============================================ */
+
+.aside-stream__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-8);
+}
+
+.aside-stream__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  margin: 0;
+}
+
+.aside-stream__title-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--spacing-8);
+  height: var(--spacing-8);
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border-radius: var(--radius-lg);
+}
+
+.aside-stream__badge {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+}
+
+
+/* ============================================
+   ASIDE STREAM TIMELINE
+   ============================================ */
+
+.aside-stream__timeline {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+  position: relative;
+}
+
+/* Vertical connecting line */
+.aside-stream__timeline::before {
+  content: '';
+  position: absolute;
+  left: var(--spacing-8);
+  top: var(--spacing-4);
+  bottom: var(--spacing-4);
+  width: 2px;
+  background-color: var(--border-soft);
+}
+
+
+/* ============================================
+   ASIDE STREAM ITEM
+   ============================================ */
+
+.aside-stream__item {
+  position: relative;
+  padding-left: calc(var(--spacing-8) * 2 + var(--spacing-4));
+}
+
+/* Timeline dot */
+.aside-stream__marker {
+  position: absolute;
+  left: calc(var(--spacing-8) - var(--spacing-2));
+  top: var(--spacing-6);
+  width: var(--spacing-4);
+  height: var(--spacing-4);
+  background-color: var(--background);
+  border: 4px solid var(--primary);
+  border-radius: var(--radius-full);
+  z-index: 1;
+}
+
+
+/* ============================================
+   ASIDE STREAM CARD
+   ============================================ */
+
+.aside-stream__card {
+  background-color: var(--card);
+  padding: var(--spacing-6);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-soft);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition-base) ease;
+}
+
+.aside-stream__card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+/* Card Header */
+.aside-stream__card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-4);
+}
+
+.aside-stream__author {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+.aside-stream__avatar {
+  width: var(--spacing-10);
+  height: var(--spacing-10);
+  background-color: var(--muted);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.aside-stream__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.aside-stream__author-name {
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+}
+
+.aside-stream__author-time {
+  font-family: var(--font-secondary);
+  font-size: var(--text-xs);
+  color: var(--muted-foreground);
+}
+
+.aside-stream__more-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--spacing-1);
+  color: var(--muted-foreground);
+  transition: color var(--transition-base) ease;
+}
+
+.aside-stream__more-btn:hover {
+  color: var(--foreground);
+}
+
+.aside-stream__more-btn:focus-visible {
+  outline: var(--wp--preset--border-width--2) solid var(--primary);
+  outline-offset: 2px;
+  border-radius: var(--radius);
+}
+
+/* Card Body */
+.aside-stream__card-body {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  color: var(--foreground);
+  line-height: var(--line-height-normal);
+  margin-bottom: var(--spacing-4);
+}
+
+/* Card Actions */
+.aside-stream__card-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-6);
+  padding-top: var(--spacing-4);
+  border-top: 1px solid var(--border-soft);
+}
+
+.aside-stream__action-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--spacing-1) var(--spacing-2);
+  border-radius: var(--radius);
+  transition: color var(--transition-base) ease;
+}
+
+.aside-stream__action-btn:hover {
+  color: var(--primary);
+}
+
+.aside-stream__action-btn:focus-visible {
+  outline: var(--wp--preset--border-width--2) solid var(--primary);
+  outline-offset: 2px;
+}
+
+
+/* ============================================
+   DARK MODE
+   ============================================ */
+
+.dark .aside-stream__card {
+  background-color: var(--card);
+  border-color: var(--border);
+}
+
+.dark .aside-stream__card:hover {
+  box-shadow: var(--shadow-neon);
+}

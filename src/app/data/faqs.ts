@@ -46,6 +46,10 @@
  * - maintenanceSupportFAQs - Maintenance & Support (5 items)
  * - pricingTimelineFAQs - Pricing & Timeline (5 items)
  * - designUXFAQs - Design & UX (5 items)
+ * - testimonialPageFAQs - Testimonials Page (6 items)
+ * - videoFAQs - Video Content (3 items)
+ * - podcastFAQs - Podcast Content (3 items)
+ * - searchFAQs - Search Functionality (2 items)
  * 
  * @example
  * // Import specific FAQ collection
@@ -532,19 +536,19 @@ export const maintenanceSupportFAQs: FAQ[] = [
   },
   {
     question: 'How quickly do you respond to emergencies?',
-    answer: 'Critical issues (site down, security breach) receive immediate response - typically within 30 minutes. High-priority issues are addressed within 4 hours, and standard requests within 24 hours on business days.'
+    answer: 'For maintenance clients, we guarantee emergency response within 2 hours. Our average response time for critical issues is under 30 minutes. We have monitoring systems that alert us instantly if your site goes down.'
   },
   {
-    question: 'Do you provide training for our team?',
-    answer: 'Yes! We provide comprehensive training on WordPress block editor, content management, WooCommerce administration, SEO best practices, and site maintenance. Training can be live sessions or recorded videos.'
+    question: 'Do you provide content updates?',
+    answer: 'Yes, our higher-tier packages include monthly hours for content updates, small design tweaks, and functionality additions. Unused hours can be rolled over for up to 3 months.'
   },
   {
-    question: 'What happens if something breaks after launch?',
-    answer: 'All our projects include a 30-day warranty covering any bugs or issues from development. After that, our maintenance packages cover ongoing support, updates, and issue resolution.'
+    question: 'How do you handle backups?',
+    answer: 'We perform daily off-site backups with 30-day retention. In case of any issues, we can restore your site to a previous version within minutes.'
   },
   {
-    question: 'Can you take over maintenance of an existing WordPress site?',
-    answer: 'Absolutely! We conduct an initial site audit, fix any existing issues, optimize performance, update components, and then provide ongoing maintenance. We can maintain sites we didn\'t build.'
+    question: 'What if my site gets hacked?',
+    answer: 'If you\'re on our maintenance plan, malware removal and site cleanup are included at no extra cost. We\'ll identify the vulnerability, clean the site, restore from a clean backup if necessary, and secure it against future attacks.'
   }
 ];
 
@@ -553,24 +557,24 @@ export const maintenanceSupportFAQs: FAQ[] = [
  */
 export const pricingTimelineFAQs: FAQ[] = [
   {
-    question: 'How much does a custom WordPress site cost?',
-    answer: 'Projects typically range from $15,000-$75,000 depending on complexity. Simple business sites start at $15,000, WooCommerce stores from $25,000, and enterprise solutions from $50,000. We provide detailed quotes after discovery.'
+    question: 'What is your typical project timeline?',
+    answer: 'Timelines depend on project scope. Simple sites: 4-6 weeks. Custom block themes: 8-12 weeks. Complex WooCommerce stores: 12-16 weeks. We provide a detailed timeline with milestones before starting any project.'
   },
   {
-    question: 'Do you offer payment plans?',
-    answer: 'Yes! We offer flexible payment schedules with deposits and milestone-based payments. For larger projects, we can arrange monthly payment plans. We also offer retainer agreements for ongoing work.'
+    question: 'How do you structure payments?',
+    answer: 'We typically split payments into milestones: 40% deposit to start, 30% upon design approval/mid-development, and 30% before launch. For larger projects, we can structure monthly billing milestones.'
   },
   {
-    question: 'What\'s your typical project timeline?',
-    answer: 'Standard business sites: 6-8 weeks. WooCommerce stores: 8-12 weeks. Enterprise projects: 12-16 weeks. Timelines depend on complexity, content readiness, and feedback cycles. We provide detailed project schedules.'
+    question: 'Are there any hidden costs?',
+    answer: 'No hidden costs. We transparently outline all costs including third-party fees (hosting, domains, premium plugins, font licenses) in our proposals. Any scope additions during the project are discussed and approved before implementation.'
   },
   {
-    question: 'What do I need to provide before starting?',
-    answer: 'You\'ll need: brand assets (logo, colors, fonts), content (text and images), hosting credentials, access to existing systems, and stakeholder availability for feedback. We guide you through the preparation process.'
+    question: 'Do you offer rush delivery?',
+    answer: 'Yes, depending on our team\'s availability, we can expedite projects for an additional rush fee (typically 20-30%). This allows us to allocate extra resources and work outside standard hours to meet tight deadlines.'
   },
   {
-    question: 'Can you work within our budget?',
-    answer: 'We offer solutions at various price points and can phase projects to fit budgets. We\'ll discuss your priorities and recommend an approach that delivers maximum value within your budget constraints.'
+    question: 'What happens if the project goes over timeline?',
+    answer: 'We pride ourselves on hitting deadlines. If delays occur due to our team, we prioritize your project to get back on track. If delays occur due to client feedback or content delivery, we adjust the timeline accordingly.'
   }
 ];
 
@@ -579,46 +583,104 @@ export const pricingTimelineFAQs: FAQ[] = [
  */
 export const designUXFAQs: FAQ[] = [
   {
-    question: 'What\'s your design process?',
-    answer: 'We start with discovery to understand your brand, audience, and goals. Then we create wireframes, high-fidelity mockups, interactive prototypes, and conduct usability testing. We iterate based on feedback before development.'
+    question: 'Do you use pre-made templates?',
+    answer: 'No. We design custom solutions tailored to your brand and goals. While we use our internal design system and starter theme for efficiency, the visual design and user experience are unique to your project.'
   },
   {
-    question: 'Do you provide custom designs or use templates?',
-    answer: 'We create 100% custom designs tailored to your brand and business goals. We never use pre-made templates. Every design is crafted specifically for your unique needs and target audience.'
+    question: 'What is your design process?',
+    answer: 'Our process includes: 1. Discovery & User Research, 2. Wireframing & Information Architecture, 3. Visual Design & Prototyping (Figma), 4. Design System Documentation, and 5. Developer Handoff. You\'re involved at every step.'
   },
   {
-    question: 'How do you ensure accessibility?',
-    answer: 'We follow WCAG 2.1 AA guidelines, ensuring proper color contrast, keyboard navigation, screen reader compatibility, semantic HTML, focus indicators, and alternative text. Accessibility is built in from day one.'
+    question: 'Do you ensure accessibility compliance?',
+    answer: 'Yes, accessibility is core to our process. We design and build to WCAG 2.1 AA standards, ensuring your site is usable by people with disabilities. This improves SEO, reduces legal risk, and expands your audience.'
   },
   {
-    question: 'Can you match our existing brand guidelines?',
-    answer: 'Absolutely! We work within your established brand guidelines, ensuring the website reflects your brand identity accurately. We can also help evolve or refine your brand for digital applications.'
+    question: 'Can you work with our existing brand guidelines?',
+    answer: 'Absolutely. We strictly adhere to your brand guidelines while translating them effectively for the web. If you don\'t have established guidelines, we can help create a digital style guide for you.'
   },
   {
-    question: 'Do you redesign existing WordPress sites?',
-    answer: 'Yes! We specialize in WordPress redesigns - modernizing outdated sites with fresh designs, improved UX, better performance, and modern block themes. We can preserve your content and SEO during the redesign.'
+    question: 'Do you provide copywriting services?',
+    answer: 'We offer content strategy and copywriting as add-on services. We have experienced copywriters who specialize in web content, SEO, and conversion optimization to help tell your story effectively.'
   }
 ];
 
-// Export all FAQ collections
-export const allFAQs = {
-  homepage: homepageFAQs,
-  services: servicesFAQs,
-  about: aboutFAQs,
-  process: processFAQs,
-  culture: cultureFAQs,
-  team: teamFAQs,
-  hosting: hostingFAQs,
-  contact: contactFAQs,
-  portfolio: portfolioFAQs,
-  blog: blogFAQs,
-  woocommerce: woocommerceFAQs,
-  general: generalFAQs,
-  technical: technicalFAQs,
-  wordpress: wordpressFAQs,
-  woocommerceDetailed: woocommerceDetailedFAQs,
-  performanceSEO: performanceSEOFAQs,
-  maintenanceSupport: maintenanceSupportFAQs,
-  pricingTimeline: pricingTimelineFAQs,
-  designUX: designUXFAQs
-};
+// Testimonials Page FAQs
+export const testimonialPageFAQs: FAQ[] = [
+  {
+    question: 'Are these testimonials from real clients?',
+    answer: 'Yes! All testimonials are from real clients who have worked with LightSpeed. We never use fake reviews or paid testimonials. Each review includes the client\'s name, company, and specific results achieved. We can provide references and case studies upon request.'
+  },
+  {
+    question: 'Can I speak with past clients before hiring you?',
+    answer: 'Absolutely! We\'re happy to connect you with past clients who have given us permission to share their contact information. We have clients across various industries who are willing to share their experience working with us. Just let us know what type of project you\'re considering and we\'ll match you with relevant references.'
+  },
+  {
+    question: 'What industries have you worked with?',
+    answer: 'We\'ve worked with clients across 20+ industries including ecommerce, healthcare, travel & tourism, real estate, professional services, education, non-profits, publishing, fitness, food & beverage, and more. Our diverse experience means we understand the unique challenges and requirements of different sectors.'
+  },
+  {
+    question: 'Do you guarantee the same results for my project?',
+    answer: 'While we can\'t guarantee specific metrics (as results depend on many factors including your industry, competition, and marketing efforts), we do guarantee quality work, adherence to best practices, and our commitment to your success. We set realistic expectations during the proposal stage and provide regular progress updates throughout the project.'
+  },
+  {
+    question: 'How do you measure project success?',
+    answer: 'Success metrics are defined during the discovery phase and vary by project. Common metrics include: website speed improvements, increased traffic and conversions, better search rankings, improved user engagement, higher customer satisfaction scores, and ROI. We provide analytics dashboards and regular reports to track progress against your goals.'
+  },
+  {
+    question: 'What if I\'m not satisfied with the results?',
+    answer: 'Client satisfaction is our top priority. We have a structured revision process during development to ensure you\'re happy with the work before launch. Post-launch, we offer support packages to address any issues and continuously optimize performance. If you\'re not satisfied, we work with you to make it right. Our 98% client retention rate speaks to our commitment to your success.'
+  }
+];
+
+/**
+ * Video FAQs
+ * Questions about our video content and tutorials
+ */
+export const videoFAQs: FAQ[] = [
+  {
+    question: 'Are the video tutorials free to watch?',
+    answer: 'Yes, all our video tutorials, webinars, and case study walkthroughs are completely free. We believe in sharing knowledge with the WordPress community. Subscribe to our channel to get notified when new videos are published.'
+  },
+  {
+    question: 'How often do you publish new videos?',
+    answer: 'We aim to publish 2-4 videos per month, covering tutorials, webinars, and project case studies. Our content calendar focuses on topics most requested by our community and clients.'
+  },
+  {
+    question: 'Can I request a specific tutorial topic?',
+    answer: 'Absolutely! We love hearing from our audience. Contact us through the website or leave a comment on any video with your suggestion. Popular requests get prioritised in our content schedule.'
+  }
+];
+
+/**
+ * Podcast FAQs
+ * Questions about the LSX Design podcast
+ */
+export const podcastFAQs: FAQ[] = [
+  {
+    question: 'Where can I listen to the podcast?',
+    answer: 'The LSX Design Podcast is available on Apple Podcasts, Spotify, Google Podcasts, and via RSS feed. You can also listen directly on our website. New episodes are published regularly.'
+  },
+  {
+    question: 'How can I be a guest on the podcast?',
+    answer: 'We are always looking for interesting guests from the WordPress community, design industry, and tech sector. Reach out via our contact page with a brief introduction and topics you would like to discuss.'
+  },
+  {
+    question: 'Do you provide transcripts for episodes?',
+    answer: 'Yes, full transcripts are available for every episode on the individual episode page. We are committed to making our content accessible to everyone, including those who prefer reading over listening.'
+  }
+];
+
+/**
+ * Search FAQs
+ * Questions about using the site search
+ */
+export const searchFAQs: FAQ[] = [
+  {
+    question: 'What content can I search for?',
+    answer: 'Our global search covers all content including blog posts, portfolio projects, videos, podcasts, service pages, and solution pages. Results are grouped by content type for easy browsing.'
+  },
+  {
+    question: 'Can I filter search results?',
+    answer: 'Yes! Search results can be filtered by content type (Blog, Portfolio, Videos, Podcasts, Pages) and sorted by relevance, date, or popularity. Category-specific filters appear based on the content type you select.'
+  }
+];

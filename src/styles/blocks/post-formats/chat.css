@@ -1,0 +1,141 @@
+/**
+ * Chat Post Format Styles
+ * 
+ * WordPress Template: single-chat.html, archive-chat.html
+ * 100% CSS variables.
+ */
+
+/* Single Chat Header */
+.wp-block-chat-header {
+  text-align: center;
+  margin-bottom: var(--spacing-8);
+}
+
+.wp-block-chat-label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-1) var(--spacing-3);
+  background-color: var(--secondary);
+  color: var(--primary);
+  border-radius: var(--radius-full);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+  margin-bottom: var(--spacing-4);
+}
+
+.wp-block-chat-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-4);
+}
+
+.wp-block-chat-meta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-4);
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+}
+
+.wp-block-chat-meta-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+}
+
+/* Chat Transcript */
+.wp-block-chat-transcript {
+  background-color: var(--card);
+  padding: var(--spacing-8);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-soft);
+  box-shadow: var(--shadow-sm);
+}
+
+.chat-transcript {
+  font-family: var(--font-secondary);
+  line-height: var(--line-height-normal);
+}
+
+.chat-transcript p {
+  margin-bottom: var(--spacing-4);
+}
+
+/* Chat Archive Card */
+.wp-block-chat-card {
+  background-color: var(--card);
+  padding: var(--spacing-6);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-soft);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+  cursor: pointer;
+  height: 100%;
+}
+
+.wp-block-chat-card:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.wp-block-chat-card__inner {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-4);
+}
+
+.wp-block-chat-card__icon {
+  padding: var(--spacing-3);
+  background-color: var(--secondary);
+  color: var(--primary);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.wp-block-chat-card__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-2);
+  color: var(--foreground);
+}
+
+.wp-block-chat-card__excerpt {
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  color: var(--muted-foreground);
+  margin-bottom: var(--spacing-4);
+}
+
+.wp-block-chat-card__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  padding-top: var(--spacing-4);
+  border-top: 1px solid var(--border-soft);
+}
+
+.wp-block-chat-card__meta-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+}
+
+/* Focus-visible for keyboard navigation */
+.wp-block-chat-card:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: var(--spacing-1);
+}

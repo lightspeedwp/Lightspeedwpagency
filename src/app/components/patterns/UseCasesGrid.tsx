@@ -11,34 +11,13 @@
  * - Spacing: Uses ONLY CSS variables (var(--spacing-*))
  * - Border Radius: Uses ONLY CSS variables (var(--radius*))
  * 
- * **WordPress Mapping:**
- * - Block: core/group with nested core/columns
- * - Section Style: content-feature
- * - Pattern Slug: lsx-design/content/use-cases
- * 
- * @example
- * ```tsx
- * import { UseCasesGrid } from '../patterns/UseCasesGrid';
- * 
- * <UseCasesGrid
- *   title="Use Cases"
- *   description="See how our solution adapts to different industries"
- *   useCases={[
- *     {
- *       title: "E-commerce",
- *       description: "Build powerful online stores",
- *       industries: ["Retail", "Fashion", "Electronics"],
- *       features: ["Product catalogs", "Payment gateways", "Inventory management"]
- *     }
- *   ]}
- *   columns={2}
- * />
- * ```
+ * @see {@link /guidelines/patterns/UseCasesGrid.md}
  */
 
 import { Section } from '../common/Section';
 import { Container } from '../common/Container';
 import { CheckCircle } from 'lucide-react';
+import '@/styles/patterns/use-cases-grid.css';
 
 /**
  * Use Case Item Interface
@@ -85,10 +64,10 @@ export function UseCasesGrid({
 }: UseCasesGridProps) {
   // Column class mapping for WordPress utility classes
   const columnClass = columns === 1 
-    ? 'wp-grid-1-col' 
+    ? 'use-cases-grid__grid--1-col' 
     : columns === 2 
-    ? 'wp-grid-2-cols' 
-    : 'wp-grid-3-cols';
+    ? 'use-cases-grid__grid--2-cols' 
+    : 'use-cases-grid__grid--3-cols';
 
   return (
     <Section 
@@ -100,38 +79,18 @@ export function UseCasesGrid({
       }}
     >
       <Container>
-        <div className="wp-max-w-6xl">
+        <div className="wp-max-w-6xl" style={{ margin: '0 auto' }}>
           {/* Section Header */}
           {(title || description) && (
-            <div 
-              className="wp-text-center" 
-              style={{ marginBottom: 'var(--spacing-16)' }}
-            >
+            <div className="use-cases-grid__header">
               {title && (
-                <h2
-                  style={{
-                    fontFamily: 'var(--font-primary)',
-                    fontSize: 'var(--text-h1)',
-                    fontWeight: 'var(--font-weight-bold)',
-                    lineHeight: '1.2',
-                    letterSpacing: '-0.02em',
-                    marginBottom: 'var(--spacing-4)',
-                    color: 'var(--foreground)'
-                  }}
-                >
+                <h2 className="use-cases-grid__title">
                   {title}
                 </h2>
               )}
 
               {description && (
-                <p
-                  style={{
-                    fontFamily: 'var(--font-primary)',
-                    fontSize: 'var(--text-lg)',
-                    lineHeight: '1.7',
-                    color: 'var(--muted-foreground)'
-                  }}
-                >
+                <p className="use-cases-grid__description">
                   {description}
                 </p>
               )}
@@ -139,82 +98,33 @@ export function UseCasesGrid({
           )}
 
           {/* Use Cases Grid */}
-          <div 
-            className={columnClass}
-            style={{ gap: 'var(--spacing-8)' }}
-          >
+          <div className={`use-cases-grid__grid ${columnClass}`}>
             {useCases.map((useCase, index) => (
               <div
                 key={index}
-                style={{
-                  padding: 'var(--spacing-8)',
-                  backgroundColor: 'var(--card)',
-                  borderRadius: 'var(--radius-lg)',
-                  border: '1px solid var(--border-soft)',
-                  height: '100%',
-                  display: 'flex',
-                  flexDirection: 'column'
-                }}
+                className="use-case-card"
               >
                 {/* Title */}
-                <h3
-                  style={{
-                    fontFamily: 'var(--font-primary)',
-                    fontSize: 'var(--text-h3)',
-                    fontWeight: 'var(--font-weight-bold)',
-                    color: 'var(--foreground)',
-                    marginBottom: 'var(--spacing-3)'
-                  }}
-                >
+                <h3 className="use-case-card__title">
                   {useCase.title}
                 </h3>
 
                 {/* Description */}
-                <p
-                  style={{
-                    fontFamily: 'var(--font-primary)',
-                    fontSize: 'var(--text-base)',
-                    lineHeight: '1.6',
-                    color: 'var(--muted-foreground)',
-                    marginBottom: 'var(--spacing-4)'
-                  }}
-                >
+                <p className="use-case-card__description">
                   {useCase.description}
                 </p>
 
                 {/* Industries */}
                 {useCase.industries && useCase.industries.length > 0 && (
-                  <div style={{ marginBottom: 'var(--spacing-4)' }}>
-                    <div
-                      style={{
-                        fontFamily: 'var(--font-secondary)',
-                        fontSize: 'var(--text-small)',
-                        fontWeight: 'var(--font-weight-semibold)',
-                        color: 'var(--muted-foreground)',
-                        marginBottom: 'var(--spacing-2)'
-                      }}
-                    >
+                  <div className="use-case-card__industries">
+                    <div className="use-case-card__industries-label">
                       Industries:
                     </div>
-                    <div 
-                      style={{ 
-                        display: 'flex', 
-                        flexWrap: 'wrap', 
-                        gap: 'var(--spacing-1-5)' 
-                      }}
-                    >
+                    <div className="use-case-card__tags">
                       {useCase.industries.map((industry, idx) => (
                         <span
                           key={idx}
-                          style={{
-                            fontSize: 'var(--text-small)',
-                            fontFamily: 'var(--font-secondary)',
-                            color: 'var(--primary)',
-                            backgroundColor: 'var(--primary-soft)',
-                            padding: 'var(--spacing-1) var(--spacing-2-5)',
-                            borderRadius: 'var(--radius)',
-                            border: '1px solid var(--primary)'
-                          }}
+                          className="use-case-card__tag"
                         >
                           {industry}
                         </span>
@@ -225,38 +135,17 @@ export function UseCasesGrid({
 
                 {/* Features */}
                 {useCase.features && useCase.features.length > 0 && (
-                  <ul 
-                    style={{ 
-                      listStyle: 'none', 
-                      padding: 0, 
-                      margin: 0,
-                      marginTop: 'auto'
-                    }}
-                  >
+                  <ul className="use-case-card__features">
                     {useCase.features.map((feature, idx) => (
                       <li
                         key={idx}
-                        style={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          gap: 'var(--spacing-2)',
-                          marginBottom: 'var(--spacing-2)'
-                        }}
+                        className="use-case-card__feature-item"
                       >
                         <CheckCircle 
                           size={16} 
-                          style={{ 
-                            color: 'var(--success)', 
-                            flexShrink: 0 
-                          }} 
+                          className="use-case-card__feature-icon"
                         />
-                        <span
-                          style={{
-                            fontFamily: 'var(--font-primary)',
-                            fontSize: 'var(--text-small)',
-                            color: 'var(--foreground)'
-                          }}
-                        >
+                        <span className="use-case-card__feature-text">
                           {feature}
                         </span>
                       </li>

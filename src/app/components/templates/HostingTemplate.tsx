@@ -14,14 +14,9 @@
  * - Full light/dark mode support
  */
 
-import { SiteHeader } from '../parts/SiteHeader';
-import { SiteFooter } from '../parts/SiteFooter';
-import { SkipLink } from '../common/SkipLink';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { Breadcrumbs } from '../common/Breadcrumbs';
-import { BackToTopButton } from '../blocks/layout/BackToTopButton';
-import { RouteAnnouncer } from '../blocks/utility/RouteAnnouncer';
 import { Buttons, Button } from '../blocks/design/Buttons';
 import { CTASection } from '../patterns/CTASection';
 import { Hero } from '../patterns/Hero';
@@ -45,21 +40,14 @@ import {
 export function HostingTemplate() {
   return (
     <>
-      <RouteAnnouncer />
-      <SkipLink />
-      <SiteHeader />
-      
-      <main id="main-content" role="main">
         {/* Breadcrumbs */}
-        <section className="hosting-page__breadcrumb-section">
-          <Container>
+        <section className="wp-block-breadcrumbs-section">
             <Breadcrumbs 
               items={[
                 { label: 'Home', href: '/' },
                 { label: hostingPageHero.title }
               ]}
             />
-          </Container>
         </section>
 
         {/* Hero Section */}
@@ -278,10 +266,6 @@ export function HostingTemplate() {
           secondaryButtonPage={hostingCTA.buttons[1]?.page as any}
           gradient="purple-light"
         />
-      </main>
-
-      <SiteFooter />
-      <BackToTopButton />
     </>
   );
 }

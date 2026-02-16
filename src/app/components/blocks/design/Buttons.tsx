@@ -4,22 +4,14 @@
  * WordPress Block: core/buttons
  * Category: Design
  * 
- * Container component that groups one or more Button blocks with consistent spacing.
- * Supports horizontal and vertical orientation.
+ * Refactored to use LightSpeed Presets and CSS variables.
  * 
- * Design System Requirements:
- * - Typography: Uses CSS variables (--text-base) with Lexend font
- * - Colors: Uses semantic color tokens (--primary, --secondary, etc.)
- * - Spacing: Uses Tailwind gap classes for consistent spacing
- * - Border Radius: Uses CSS variable (--radius)
- * - Touch Targets: Minimum 44×44px for WCAG AAA
- * 
- * @see /guidelines/blocks/design/buttons.md
+ * @see /src/styles/blocks/design/button.css
  */
 
 import React from 'react';
 import { useNavigation } from '@/app/contexts/NavigationContext';
-import { useMicroInteractions } from '@/app/hooks/useMicroInteractions';
+import '@/styles/blocks/design/button.css';
 
 export interface ButtonsProps {
   /** Layout orientation */
@@ -34,12 +26,6 @@ export interface ButtonsProps {
 
 /**
  * Buttons Block - Container for multiple Button components
- * 
- * @example
- * <Buttons orientation="horizontal" align="center">
- *   <Button variant="primary" href="/signup">Get Started</Button>
- *   <Button variant="secondary" href="/learn-more">Learn More</Button>
- * </Buttons>
  */
 export function Buttons({ 
   orientation = 'horizontal', 
@@ -99,13 +85,8 @@ export interface ButtonProps {
 
 /**
  * Button Component - Individual button within Buttons block
- * 
- * @example
- * <Button variant="primary" href="/signup">Get Started</Button>
- * <Button variant="outline" icon={<ArrowRight />} href="/learn">Learn More</Button>
- * <Button variant="cta" href="/special-offer">Limited Time Offer</Button>
  */
-export function ButtonBlock({ 
+export function Button({ 
   variant = 'default',
   size = 'md',
   href,
@@ -120,7 +101,6 @@ export function ButtonBlock({
   rel
 }: ButtonProps) {
   const { navigateTo } = useNavigation();
-  const [isHovered, setIsHovered] = React.useState(false);
   
   // Build WordPress block classes
   const sizeClass = size === 'sm' ? 'is-style-small' : size === 'lg' ? 'is-style-large' : '';
@@ -140,7 +120,8 @@ export function ButtonBlock({
     className: 'wp-block-button__link',
     'aria-label': ariaLabel,
     'aria-disabled': disabled,
-    style: disabled ? { opacity: 0.5, cursor: 'not-allowed' } as React.CSSProperties : undefined
+    // Note: Inline styles removed in favor of CSS classes in button.css
+    // Logic for disabled styling is handled in CSS via :disabled or aria-disabled
   };
 
   const content = (
@@ -177,17 +158,7 @@ export function ButtonBlock({
             if (onClick) onClick(e);
             navigateTo(page);
           }}
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
           type="button"
-          style={{
-            ...commonProps.style,
-            color: isHovered ? 'var(--primary-foreground)' : 'var(--foreground)',
-            border: '1px solid var(--primary)',
-            backgroundColor: isHovered ? 'var(--primary)' : 'var(--background)',
-            transition: 'all 0.3s ease',
-            fontFamily: 'var(--font-primary)'
-          }}
         >
           {content}
         </button>
@@ -209,6 +180,3 @@ export function ButtonBlock({
     </div>
   );
 }
-
-// Export both components
-export { ButtonBlock as Button };

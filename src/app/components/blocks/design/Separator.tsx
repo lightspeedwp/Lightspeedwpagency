@@ -2,60 +2,30 @@
  * Separator Block Component
  * 
  * WordPress Block: core/separator
- * Category: Design Blocks
- * 
- * @see /guidelines/blocks/design/separator.md
- * @see /src/styles/blocks/design/separator.css
- * 
- * CRITICAL REQUIREMENTS:
- * - 100% CSS variables (NO hardcoded values)
- * - WordPress BEM class naming (.wp-block-separator)
- * - Dedicated CSS file for ALL styling
- * - WCAG 2.1 AA compliant
- * - Semantic HTML (<hr>)
+ * Style: .wp-block-separator
  */
 
-import '@/styles/blocks/design/separator.css';
 import React from 'react';
+import '@/styles/blocks/design/separator.css';
 
-export interface SeparatorProps {
-  /** Separator style variant */
+export interface SeparatorProps extends React.HTMLAttributes<HTMLHRElement> {
+  orientation?: 'horizontal' | 'vertical';
   variant?: 'default' | 'wide' | 'dots';
-  
-  /** Additional CSS classes */
-  className?: string;
 }
 
-/**
- * Separator Block
- * 
- * Creates horizontal dividers between sections of content.
- * Uses 100% CSS variables for complete user control.
- * 
- * @example
- * ```tsx
- * // Default separator
- * <Separator />
- * 
- * // Wide separator
- * <Separator variant="wide" />
- * 
- * // Dots separator
- * <Separator variant="dots" />
- * ```
- */
-export function Separator({
+export function Separator({ 
+  className = '', 
+  orientation = 'horizontal',
   variant = 'default',
-  className = ''
+  ...props 
 }: SeparatorProps) {
-  // Build BEM classes
-  const blockClass = 'wp-block-separator';
-  const variantClass = `${blockClass}--${variant}`;
-  const classes = [blockClass, variantClass, className]
-    .filter(Boolean)
-    .join(' ');
-
+  const variantClass = variant !== 'default' ? `is-style-${variant}` : '';
+  
   return (
-    <hr className={classes} />
+    <hr 
+      className={`wp-block-separator ${variantClass} ${className}`.trim()} 
+      aria-orientation={orientation}
+      {...props} 
+    />
   );
 }

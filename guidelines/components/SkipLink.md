@@ -15,7 +15,7 @@ Provides keyboard users a way to skip repetitive navigation and jump directly to
 ## Design System Requirements
 
 ### Typography
-- **Font Family:** `Lexend, sans-serif`
+- **Font Family:** `var(--font-primary)`
 - **Font Size:** `var(--text-base)` (16px)
 - **Font Weight:** `var(--font-weight-medium)` (500)
 
@@ -113,7 +113,7 @@ With CSS:
 ## Token Enforcement
 
 ✅ **REQUIRED:**
-- Lexend font (`fontFamily: 'Lexend, sans-serif'`)
+- Lexend font (`fontFamily: var(--font-primary)`)
 - CSS variables for colors (`var(--primary)`, `var(--primary-foreground)`)
 - Absolute positioning with transform off-screen
 - High z-index when focused

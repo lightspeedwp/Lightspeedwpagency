@@ -17,36 +17,12 @@
  * - Columns Block → Grid layout
  * - Paragraph Blocks → Challenge cards
  * 
- * @example
- * ```tsx
- * import { ChallengesGrid } from '../patterns/ChallengesGrid';
- * import { Calendar, CreditCard, Users, Globe } from 'lucide-react';
- * 
- * <ChallengesGrid
- *   badge="CHALLENGES WE SOLVE"
- *   title="Tour Industry Challenges"
- *   description="Common challenges faced by tour operators and how we address them"
- *   challenges={[
- *     {
- *       icon: Calendar,
- *       title: 'Complex Booking Management',
- *       description: 'Managing availability, pricing, and reservations across multiple tours and dates'
- *     },
- *     {
- *       icon: CreditCard,
- *       title: 'Payment Processing',
- *       description: 'Secure payment handling with multiple currencies and payment methods'
- *     }
- *   ]}
- *   columns={4}
- *   spacing="xl"
- *   backgroundColor="var(--background)"
- * />
- * ```
+ * @see {@link /guidelines/patterns/ChallengesGrid.md}
  */
 
 import { LucideIcon } from 'lucide-react';
 import { Section } from '../common/Section';
+import '@/styles/patterns/challenges-grid.css';
 
 export interface Challenge {
   /** Lucide icon component */
@@ -96,71 +72,34 @@ export function ChallengesGrid({
     ? 'wp-grid-3-cols'
     : 'wp-grid-2-cols';
 
+  const maxWidthClass = maxWidth === 'full' 
+    ? '' 
+    : `wp-max-w-${maxWidth} wp-mx-auto`;
+
   return (
     <Section spacing={spacing} style={{ backgroundColor }}>
-      <div className={`wp-max-w-${maxWidth} wp-mx-auto`}>
+      <div className={maxWidthClass}>
         {/* Section Header */}
         {(badge || title || description) && (
-          <div className="wp-text-center" style={{ marginBottom: 'var(--spacing-16)' }}>
+          <div className="challenges-grid__header">
             {/* Badge */}
             {badge && (
-              <div
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: 'var(--spacing-2)',
-                  padding: '8px 16px',
-                  marginBottom: 'var(--spacing-4)',
-                  backgroundColor: 'var(--primary-soft)',
-                  borderRadius: 'var(--radius-full)',
-                  border: '1px solid var(--border-soft)'
-                }}
-              >
-                {BadgeIcon && <BadgeIcon size={16} style={{ color: 'var(--primary)' }} />}
-                <span
-                  style={{
-                    fontFamily: 'var(--font-primary)',
-                    fontSize: 'var(--text-small)',
-                    fontWeight: 'var(--font-weight-semibold)',
-                    color: 'var(--primary)',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.1em'
-                  }}
-                >
-                  {badge}
-                </span>
+              <div className="challenges-grid__badge">
+                {BadgeIcon && <BadgeIcon size={16} className="challenges-grid__badge-icon" />}
+                <span>{badge}</span>
               </div>
             )}
 
             {/* Title */}
             {title && (
-              <h2
-                style={{
-                  fontFamily: 'var(--font-primary)',
-                  fontSize: 'var(--text-h1)',
-                  fontWeight: 'var(--font-weight-bold)',
-                  lineHeight: '1.2',
-                  letterSpacing: '-0.02em',
-                  marginBottom: 'var(--spacing-4)',
-                  color: 'var(--foreground)'
-                }}
-              >
+              <h2 className="challenges-grid__title">
                 {title}
               </h2>
             )}
 
             {/* Description */}
             {description && (
-              <p
-                style={{
-                  fontFamily: 'var(--font-primary)',
-                  fontSize: 'var(--text-lg)',
-                  lineHeight: '1.7',
-                  color: 'var(--muted-foreground)',
-                  maxWidth: '700px',
-                  margin: '0 auto'
-                }}
-              >
+              <p className="challenges-grid__description">
                 {description}
               </p>
             )}
@@ -168,58 +107,26 @@ export function ChallengesGrid({
         )}
 
         {/* Challenges Grid */}
-        <div className={gridClass} style={{ gap: 'var(--spacing-8)' }}>
+        <div className={`challenges-grid__grid ${gridClass}`}>
           {challenges.map((challenge, index) => {
             const Icon = challenge.icon;
             return (
               <div
                 key={index}
-                style={{
-                  padding: 'var(--spacing-8)',
-                  backgroundColor: 'var(--card)',
-                  borderRadius: 'var(--radius-lg)',
-                  border: '1px solid var(--border-soft)',
-                  textAlign: 'center'
-                }}
+                className="challenges-grid__card"
               >
                 {/* Icon */}
-                <div
-                  style={{
-                    width: '64px',
-                    height: '64px',
-                    borderRadius: 'var(--radius-full)',
-                    backgroundColor: 'var(--primary-soft)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    margin: '0 auto var(--spacing-5)'
-                  }}
-                >
-                  <Icon size={32} style={{ color: 'var(--primary)' }} />
+                <div className="challenges-grid__icon-wrapper">
+                  <Icon size={32} />
                 </div>
 
                 {/* Title */}
-                <h3
-                  style={{
-                    fontFamily: 'var(--font-primary)',
-                    fontSize: 'var(--text-lg)',
-                    fontWeight: 'var(--font-weight-semibold)',
-                    color: 'var(--foreground)',
-                    marginBottom: 'var(--spacing-2)'
-                  }}
-                >
+                <h3 className="challenges-grid__item-title">
                   {challenge.title}
                 </h3>
 
                 {/* Description */}
-                <p
-                  style={{
-                    fontFamily: 'var(--font-primary)',
-                    fontSize: 'var(--text-base)',
-                    lineHeight: '1.6',
-                    color: 'var(--muted-foreground)'
-                  }}
-                >
+                <p className="challenges-grid__item-description">
                   {challenge.description}
                 </p>
               </div>

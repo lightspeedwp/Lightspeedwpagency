@@ -21,7 +21,7 @@
 .custom-form__field input:focus,
 .custom-form__field textarea:focus,
 .custom-form__field select:focus {
-  outline: 2px solid var(--primary);
+  outline: var(--wp--preset--border-width--2) solid var(--primary);
   outline-offset: 2px;
   border-color: var(--primary);
 }

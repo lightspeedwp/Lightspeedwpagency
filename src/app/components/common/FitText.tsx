@@ -239,9 +239,9 @@ export function FitTextCallout({
     <div
       style={{
         backgroundColor,
-        padding: '48px 24px',
+        padding: 'var(--spacing-12) var(--spacing-6)',
         borderRadius: 'var(--radius-xl)',
-        marginBottom: '24px'
+        marginBottom: 'var(--spacing-6)'
       }}
     >
       <FitText

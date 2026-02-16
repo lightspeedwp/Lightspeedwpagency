@@ -6,25 +6,7 @@
  * Displays a grid of service offerings with icons, hover effects, and CTA buttons.
  * Commonly used on service pages to showcase core offerings.
  * 
- * **Usage:**
- * ```tsx
- * <ServiceOfferingsGrid
- *   title="Our Content Services"
- *   description="Dive into our three core services and discover our first Content Design approach"
- *   offerings={[
- *     {
- *       id: 'audit',
- *       icon: Search,
- *       title: 'Content Audit',
- *       description: 'Conduct a complete analysis...',
- *       buttonText: 'Learn More',
- *       buttonPage: 'contact'
- *     }
- *   ]}
- *   columns={3}
- *   backgroundColor="var(--muted)"
- * />
- * ```
+ * @see {@link /guidelines/patterns/ServiceOfferingsGrid.md}
  */
 
 import { LucideIcon } from 'lucide-react';
@@ -33,6 +15,7 @@ import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { Button } from '../blocks/design/Buttons';
 import { useState } from 'react';
+import '@/styles/patterns/service-offerings-grid.css';
 
 export interface ServiceOffering {
   /** Unique identifier */
@@ -79,12 +62,8 @@ export function ServiceOfferingsGrid({
 }: ServiceOfferingsGridProps) {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
 
-  // Grid columns - WordPress-aligned responsive grid
-  const gridClass = {
-    2: 'wp-grid-2-cols',
-    3: 'wp-grid-3-cols',
-    4: 'wp-grid-4-cols'
-  }[columns];
+  // Grid columns class - Responsive grid handled by CSS
+  const gridClass = `service-offerings__grid--${columns}-cols`;
 
   // Max width class
   const maxWidthClass = maxWidth !== 'none' ? `wp-max-w-${maxWidth}` : '';
@@ -94,29 +73,15 @@ export function ServiceOfferingsGrid({
       <Container>
         {/* Section Header */}
         {(title || description) && (
-          <div className="wp-text-center" style={{ marginBottom: 'var(--spacing-16)' }}>
+          <div className="service-offerings__header">
             {title && (
-              <h2
-                className="font-primary text-h1 font-bold tracking-tight"
-                style={{
-                  lineHeight: '1.2',
-                  marginBottom: 'var(--spacing-4)',
-                  color: 'var(--foreground)'
-                }}
-              >
+              <h2 className="service-offerings__title">
                 {title}
               </h2>
             )}
 
             {description && (
-              <p
-                className="font-primary text-lg leading-relaxed"
-                style={{
-                  color: 'var(--muted-foreground)',
-                  maxWidth: '700px',
-                  margin: '0 auto'
-                }}
-              >
+              <p className="service-offerings__description">
                 {description}
               </p>
             )}
@@ -124,72 +89,32 @@ export function ServiceOfferingsGrid({
         )}
 
         {/* Services Grid */}
-        <div className={`${gridClass} ${maxWidthClass}`}>
+        <div className={`service-offerings__grid ${gridClass} ${maxWidthClass}`} style={{ margin: '0 auto' }}>
           {offerings.map((offering) => {
             const Icon = offering.icon;
-            const isHovered = hoveredId === offering.id;
-
+            
             return (
               <div
                 key={offering.id}
-                style={{
-                  padding: 'var(--spacing-10)',
-                  backgroundColor: 'var(--card)',
-                  borderRadius: 'var(--radius-xl)',
-                  border: isHovered ? '2px solid var(--primary)' : '1px solid var(--border-soft)',
-                  textAlign: 'center',
-                  transition: 'all 0.3s ease',
-                  transform: isHovered ? 'translateY(-8px)' : 'translateY(0)',
-                  boxShadow: isHovered 
-                    ? '0 20px 40px rgba(0, 0, 0, 0.15)' 
-                    : '0 4px 12px rgba(0, 0, 0, 0.05)',
-                  cursor: 'pointer'
-                }}
+                className="service-offering-card"
                 onMouseEnter={() => setHoveredId(offering.id)}
                 onMouseLeave={() => setHoveredId(null)}
               >
                 {/* Icon */}
-                <div
-                  style={{
-                    width: '80px',
-                    height: '80px',
-                    borderRadius: 'var(--radius-xl)',
-                    backgroundColor: isHovered ? 'var(--primary)' : 'var(--primary-soft)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    margin: '0 auto var(--spacing-6)',
-                    transition: 'all 0.3s ease'
-                  }}
-                >
+                <div className="service-offering-card__icon-wrapper">
                   <Icon 
                     size={40} 
-                    style={{ 
-                      color: isHovered ? 'white' : 'var(--primary)',
-                      transition: 'color 0.3s ease'
-                    }} 
+                    className="service-offering-card__icon"
                   />
                 </div>
 
                 {/* Title */}
-                <h3
-                  className="font-primary text-xl font-bold"
-                  style={{
-                    color: 'var(--foreground)',
-                    marginBottom: 'var(--spacing-4)'
-                  }}
-                >
+                <h3 className="service-offering-card__title">
                   {offering.title}
                 </h3>
 
                 {/* Description */}
-                <p
-                  className="font-primary text-base leading-relaxed"
-                  style={{
-                    color: 'var(--muted-foreground)',
-                    marginBottom: 'var(--spacing-6)'
-                  }}
-                >
+                <p className="service-offering-card__description">
                   {offering.description}
                 </p>
 
@@ -198,7 +123,7 @@ export function ServiceOfferingsGrid({
                   variant={offering.buttonVariant || 'outline'}
                   size="md"
                   page={offering.buttonPage}
-                  style={{ width: '100%' }}
+                  className="service-offering-card__button"
                 >
                   {offering.buttonText}
                   <ArrowRight size={20} />

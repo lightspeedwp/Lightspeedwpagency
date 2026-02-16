@@ -6,12 +6,13 @@
  * Displays company values or principles in a grid layout.
  * Includes icons, headings, and descriptions.
  * 
- * All styling in /src/styles/values-section.css (user-editable)
+ * All styling in /src/styles/patterns/values-section.css (user-editable)
  */
 
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { LucideIcon } from 'lucide-react';
+import '@/styles/patterns/values-section.css';
 
 export interface Value {
   icon: LucideIcon;

@@ -5,16 +5,9 @@
  * Maps to WordPress pattern: lsx-design/pricing/table
  * 
  * **Design Token Compliance:**
- * - Typography: Uses ONLY CSS variables (var(--text-*))
- * - Fonts: Lexend (headings, prices), Manrope (features, descriptions) ONLY
- * - Colors: Uses ONLY CSS variables (var(--*))
- * - Spacing: Uses ONLY Tailwind classes and rem values
- * - Border Radius: Uses ONLY CSS variables (var(--radius*))
- * 
- * **WordPress Mapping:**
- * - Block: core/group
- * - Section Style: pricing-default or pricing-featured
- * - Pattern Slug: lsx-design/pricing/table
+ * - Uses /src/styles/pricing-table.css
+ * - 100% CSS variables
+ * - BEM naming
  */
 
 import React from 'react';
@@ -25,6 +18,7 @@ import { Button } from '../blocks/design/Buttons';
 import { Grid } from '../blocks/design/Grid';
 import { Check } from 'lucide-react';
 import type { PricingPackage } from '../../data/pricing';
+import '@/styles/patterns/pricing-table.css';
 
 export interface PricingTableProps {
   heading?: string;
@@ -34,24 +28,6 @@ export interface PricingTableProps {
   variant?: 'default' | 'featured';
 }
 
-/**
- * PricingTable Pattern Component
- * 
- * Displays pricing plans in a card-based grid layout.
- * Supports 2-4 column layouts with featured plan highlighting.
- * 
- * @example
- * ```tsx
- * import { websitePackages } from '../../data';
- * 
- * <PricingTable 
- *   heading="Choose Your Plan"
- *   description="Select the perfect package for your business needs."
- *   packages={websitePackages}
- *   columns={3}
- * />
- * ```
- */
 export function PricingTable({
   heading = "Choose Your Plan",
   description,
@@ -64,31 +40,12 @@ export function PricingTable({
   return (
     <Section sectionStyle={sectionStyle}>
       <Container>
-        {/* Section heading - Lexend font, CSS variable size */}
-        <div className="text-center mb-12">
-          <Heading 
-            level={2}
-            style={{
-              fontSize: 'var(--text-h2)',
-              fontFamily: 'var(--font-primary)',
-              fontWeight: 'var(--font-weight-medium)',
-              color: 'var(--foreground)'
-            }}
-          >
+        <div className="pricing-header">
+          <Heading level={2} className="pricing-header__title">
             {heading}
           </Heading>
           {description && (
-            <p 
-              style={{
-                fontSize: 'var(--text-lead)',
-                fontFamily: 'var(--font-secondary)',
-                color: 'var(--muted-foreground)',
-                marginTop: 'var(--spacing-4)',
-                maxWidth: '800px',
-                marginLeft: 'auto',
-                marginRight: 'auto'
-              }}
-            >
+            <p className="pricing-header__description">
               {description}
             </p>
           )}
@@ -98,157 +55,55 @@ export function PricingTable({
           {packages.map((pkg) => (
             <div
               key={pkg.id}
-              style={{
-                padding: 'var(--spacing-8)',
-                borderRadius: 'var(--radius-lg)',
-                border: pkg.recommended 
-                  ? '2px solid var(--primary)' 
-                  : '1px solid var(--border)',
-                backgroundColor: pkg.recommended 
-                  ? 'var(--primary)' 
-                  : 'var(--card)',
-                color: pkg.recommended 
-                  ? 'var(--primary-foreground)' 
-                  : 'var(--card-foreground)',
-                position: 'relative',
-                display: 'flex',
-                flexDirection: 'column',
-                height: '100%'
-              }}
+              className={`pricing-card ${pkg.recommended ? 'is-featured' : ''}`}
             >
               {/* Featured badge */}
               {pkg.recommended && (
-                <div
-                  style={{
-                    position: 'absolute',
-                    top: '-12px',
-                    left: '50%',
-                    transform: 'translateX(-50%)',
-                    backgroundColor: 'var(--accent)',
-                    color: 'var(--accent-foreground)',
-                    padding: '0.25rem 1rem',
-                    borderRadius: 'var(--radius-full)',
-                    fontSize: 'var(--text-small)',
-                    fontFamily: 'var(--font-secondary)',
-                    fontWeight: 'var(--font-weight-semibold)',
-                    whiteSpace: 'nowrap'
-                  }}
-                >
+                <div className="pricing-card__badge">
                   Most Popular
                 </div>
               )}
 
-              {/* Plan name - Lexend, --text-h4 */}
-              <h3 
-                style={{
-                  fontSize: 'var(--text-h4)',
-                  fontFamily: 'var(--font-primary)',
-                  fontWeight: 'var(--font-weight-medium)',
-                  marginBottom: 'var(--spacing-2)'
-                }}
-              >
+              {/* Plan name */}
+              <h3 className="pricing-card__title">
                 {pkg.name}
               </h3>
 
-              {/* Tagline - Manrope, --text-small */}
-              <p 
-                style={{
-                  fontSize: 'var(--text-small)',
-                  fontFamily: 'var(--font-secondary)',
-                  opacity: 0.8,
-                  marginBottom: 'var(--spacing-6)'
-                }}
-              >
+              {/* Tagline */}
+              <p className="pricing-card__tagline">
                 {pkg.tagline}
               </p>
 
-              {/* Price - Lexend, --text-h2 */}
-              <div style={{ marginBottom: 'var(--spacing-6)' }}>
-                <span 
-                  style={{
-                    fontSize: 'var(--text-h2)',
-                    fontFamily: 'var(--font-primary)',
-                    fontWeight: 'var(--font-weight-semibold)'
-                  }}
-                >
+              {/* Price */}
+              <div className="pricing-card__price-wrapper">
+                <span className="pricing-card__price">
                   {pkg.price.display}
                 </span>
                 {pkg.price.period && pkg.price.period !== 'one-time' && (
-                  <span 
-                    style={{
-                      fontSize: 'var(--text-small)',
-                      fontFamily: 'var(--font-secondary)',
-                      opacity: 0.7,
-                      marginLeft: '0.5rem'
-                    }}
-                  >
+                  <span className="pricing-card__period">
                     {pkg.price.period === 'monthly' ? '/month' : `/${pkg.price.period}`}
                   </span>
                 )}
               </div>
 
-              {/* Description - Manrope, --text-small */}
-              <p 
-                style={{
-                  fontSize: 'var(--text-small)',
-                  fontFamily: 'var(--font-secondary)',
-                  marginBottom: 'var(--spacing-8)',
-                  opacity: 0.9
-                }}
-              >
+              {/* Description */}
+              <p className="pricing-card__description">
                 {pkg.description}
               </p>
 
-              {/* Features list - Manrope, --text-base */}
-              <ul 
-                style={{
-                  listStyle: 'none',
-                  padding: 0,
-                  margin: 0,
-                  marginBottom: 'var(--spacing-8)',
-                  flex: 1
-                }}
-              >
+              {/* Features list */}
+              <ul className="pricing-card__features">
                 {pkg.features.slice(0, 8).map((feature, index) => (
-                  <li 
-                    key={index}
-                    style={{
-                      display: 'flex',
-                      gap: 'var(--spacing-3)',
-                      alignItems: 'flex-start',
-                      marginBottom: 'var(--spacing-3)',
-                      fontSize: 'var(--text-base)',
-                      fontFamily: 'var(--font-secondary)'
-                    }}
-                  >
+                  <li key={index} className="pricing-card__feature-item">
                     {feature.included ? (
-                      <Check 
-                        size={20} 
-                        style={{
-                          flexShrink: 0,
-                          marginTop: '0.125rem',
-                          color: pkg.recommended 
-                            ? 'var(--primary-foreground)' 
-                            : 'var(--success)'
-                        }}
-                      />
+                      <Check size={20} className="pricing-card__feature-icon" />
                     ) : (
-                      <span 
-                        style={{
-                          width: '20px',
-                          height: '20px',
-                          flexShrink: 0,
-                          textAlign: 'center',
-                          opacity: 0.3
-                        }}
-                      >
-                        —
-                      </span>
+                      <span className="pricing-card__feature-placeholder">—</span>
                     )}
                     <span>
                       {feature.name}
                       {feature.limit && (
-                        <span style={{ opacity: 0.7, fontSize: 'var(--text-small)' }}>
+                        <span className="pricing-card__feature-limit">
                           {' '}({feature.limit})
                         </span>
                       )}
@@ -260,17 +115,9 @@ export function PricingTable({
               {/* CTA Button */}
               <Button 
                 size="lg" 
-                href={pkg.cta.action === 'contact' ? '/contact' : pkg.cta.action === 'book-call' ? '/contact' : '/contact'}
+                href={pkg.cta.action === 'contact' ? '/contact' : '/contact'}
                 variant={pkg.recommended ? 'default' : 'outline'}
-                style={{
-                  width: '100%',
-                  backgroundColor: pkg.recommended 
-                    ? 'var(--background)' 
-                    : 'var(--primary)',
-                  color: pkg.recommended 
-                    ? 'var(--foreground)' 
-                    : 'var(--primary-foreground)'
-                }}
+                className="pricing-card__button"
               >
                 {pkg.cta.text}
               </Button>

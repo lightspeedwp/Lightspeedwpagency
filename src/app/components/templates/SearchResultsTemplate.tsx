@@ -1,55 +1,544 @@
 /**
  * Search Results Template
- * 
+ *
  * WordPress template: templates/search.html
- * 
- * **Purpose:** Search results display page (utility page archetype).
- * 
- * **Data Source:** `/src/app/data/blog-posts.ts` (search across all content)
- * 
- * **Pattern Order:**
- * - Breadcrumbs
- * - Search Header (query + result count)
- * - Search Form (refine search)
- * - Results Grid
- * - Pagination
- * - EmptyState (no results)
- * - NewsletterSignup
- * - CTASection
- * 
- * **Conversion Strategy:**
- * - NewsletterSignup: Capture visitors who didn't find what they need
- * - CTASection: Offer alternative next steps (contact, services)
- * 
+ *
+ * **Purpose:** Global search results page with multi-content-type
+ * filtering, relevance scoring, sort options, and content-type badges.
+ *
  * **Design System:**
- * - 100% CSS variables from theme.css
- * - Lexend for headings/body
- * - Manrope for small text
- * - Tailwind spacing classes
- * 
- * **Accessibility:**
- * - Search form keyboard accessible
- * - Results have proper heading hierarchy
- * - WCAG 2.1 AA compliant
- * 
- * @see {@link /guidelines/templates/search-results.md}
- * @see {@link /guidelines/patterns/EmptyState.md}
+ * - 100% CSS variables from search.css
+ * - var(--font-primary) for headings/body
+ * - var(--font-secondary) for meta text
+ * - Neon glow focus state on search input
+ * - All spacing via CSS variables
+ *
+ * @see /src/app/data/search.ts — Unified search index
+ * @see /src/styles/templates/search.css — Styles
  */
 
-import { SiteHeader } from '../parts/SiteHeader';
-import { SiteFooter } from '../parts/SiteFooter';
-import { SkipLink } from '../common/SkipLink';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
-import { Heading } from '../common/Heading';
 import { Breadcrumbs } from '../common/Breadcrumbs';
-import { Button } from '../blocks/design/Buttons';
-import { NewsletterSignup } from '../patterns/NewsletterSignup';
 import { CTASection } from '../patterns/CTASection';
-import { BackToTopButton } from '../blocks/layout/BackToTopButton';
 import { useNavigation } from '../../contexts/NavigationContext';
-import { blogPosts } from '../../data/blog-posts';
-import { portfolioProjects } from '../../data/portfolio-projects';
-import { services } from '../../data/services';
-import { useState } from 'react';
-import { Search, FileText, Calendar, User, ArrowRight } from 'lucide-react';
+import {
+  searchAllContent,
+  getResultCountsByType,
+  contentTypeLabels,
+  contentTypeColors,
+  type ContentType,
+  type SortOption,
+  type SearchResult,
+} from '../../data/search';
+import { useState, useEffect, useCallback, useMemo } from 'react';
+import { useSearchParams } from 'react-router';
+import {
+  Search,
+  Calendar,
+  ArrowRight,
+  AlertCircle,
+  FileText,
+  Folder,
+  Video,
+  Headphones,
+  Globe,
+  Clock,
+  Eye,
+} from 'lucide-react';
+import '@/styles/templates/search.css';
+
+/* ═══════════════════════════════════════════
+ * Content-type icon map
+ * ═══════════════════════════════════════════ */
+
+const contentTypeIcons: Record<ContentType, typeof FileText> = {
+  blog: FileText,
+  portfolio: Folder,
+  video: Video,
+  podcast: Headphones,
+  page: Globe,
+};
+
+/* ═══════════════════════════════════════════
+ * Highlight Helper
+ * ═══════════════════════════════════════════ */
+
+/** Highlight query terms in text */
+function highlightText(text: string, query: string): JSX.Element {
+  if (!query.trim()) return <>{text}</>;
+
+  const escapedQuery = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const regex = new RegExp(`(${escapedQuery})`, 'gi');
+  const parts = text.split(regex);
+
+  return (
+    <>
+      {parts.map((part, i) =>
+        regex.test(part) ? (
+          <mark key={i} className="search-highlight">{part}</mark>
+        ) : (
+          <span key={i}>{part}</span>
+        )
+      )}
+    </>
+  );
+}
+
+/* ═══════════════════════════════════════════
+ * Component
+ * ═══════════════════════════════════════════ */
+
+export function SearchResultsTemplate() {
+  const { navigateTo } = useNavigation();
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  // Read initial query from URL
+  const initialQuery = searchParams.get('q') || '';
+
+  const [query, setQuery] = useState(initialQuery);
+  const [activeTypes, setActiveTypes] = useState<ContentType[]>([]);
+  const [sort, setSort] = useState<SortOption>('relevance');
+  const [currentPage, setCurrentPage] = useState(1);
+  const resultsPerPage = 8;
+
+  // Sync query to URL
+  useEffect(() => {
+    if (query) {
+      setSearchParams({ q: query }, { replace: true });
+    }
+  }, [query, setSearchParams]);
+
+  // Run search
+  const allResults = useMemo(
+    () =>
+      searchAllContent({
+        query,
+        contentTypes: activeTypes,
+        sort,
+      }),
+    [query, activeTypes, sort]
+  );
+
+  const typeCounts = useMemo(
+    () =>
+      getResultCountsByType(
+        searchAllContent({ query, contentTypes: [], sort: 'relevance' })
+      ),
+    [query]
+  );
+
+  const totalResults = allResults.length;
+  const totalPages = Math.ceil(totalResults / resultsPerPage);
+  const paginatedResults = allResults.slice(
+    (currentPage - 1) * resultsPerPage,
+    currentPage * resultsPerPage
+  );
+
+  // Reset page when filters change
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [query, activeTypes, sort]);
+
+  const toggleType = useCallback((type: ContentType) => {
+    setActiveTypes(prev =>
+      prev.includes(type)
+        ? prev.filter(t => t !== type)
+        : [...prev, type]
+    );
+  }, []);
+
+  const handleResultClick = useCallback(
+    (result: SearchResult) => {
+      // Use navigateTo for internal routing
+      const path = result.url;
+      // Strip leading slash for navigateTo slug
+      const slug = path.startsWith('/') ? path.slice(1) : path;
+      navigateTo(slug || 'front-page');
+    },
+    [navigateTo]
+  );
+
+  const allContentTypes: ContentType[] = [
+    'blog',
+    'portfolio',
+    'video',
+    'podcast',
+    'page',
+  ];
+
+  return (
+    <>
+      {/* Breadcrumbs */}
+      <section
+        style={{
+          backgroundColor: 'var(--background)',
+          borderBottom: '1px solid var(--border-soft)',
+          padding: 'var(--spacing-4) 0',
+        }}
+      >
+        <Container>
+          <Breadcrumbs
+            items={[
+              { label: 'Home', page: 'front-page' },
+              { label: 'Search Results' },
+            ]}
+          />
+        </Container>
+      </section>
+
+      {/* Search Header */}
+      <section className="search-header">
+        <Container>
+          <div
+            style={{
+              maxWidth: '800px',
+              margin: '0 auto',
+            }}
+          >
+            <h1
+              style={{
+                fontFamily: 'var(--font-primary)',
+                fontSize: 'var(--text-h2)',
+                fontWeight: 'var(--font-weight-bold)',
+                color: 'var(--foreground)',
+                marginBottom: 'var(--spacing-6)',
+                textAlign: 'center',
+              }}
+            >
+              {query ? `Search Results for "${query}"` : 'Search'}
+            </h1>
+
+            {/* Enhanced Search Input */}
+            <div
+              style={{
+                position: 'relative',
+                maxWidth: '640px',
+                margin: '0 auto',
+                marginBottom: 'var(--spacing-8)',
+              }}
+            >
+              <Search
+                size={22}
+                style={{
+                  position: 'absolute',
+                  left: 'var(--spacing-4)',
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  color: 'var(--muted-foreground)',
+                  pointerEvents: 'none',
+                }}
+              />
+              <input
+                type="search"
+                value={query}
+                onChange={e => setQuery(e.target.value)}
+                placeholder="Search all content..."
+                className="search-input--enhanced"
+                aria-label="Search all content"
+              />
+              <span
+                className="search-kbd"
+                style={{
+                  position: 'absolute',
+                  right: 'var(--spacing-3)',
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                }}
+              >
+                Ctrl+K
+              </span>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* Results Section */}
+      <Section
+        spacing="lg"
+        style={{ backgroundColor: 'var(--background)' }}
+      >
+        <Container>
+          <div style={{ maxWidth: '900px', margin: '0 auto' }}>
+            {/* Filters Bar */}
+            {query && (
+              <>
+                <div className="search-filters">
+                  <span className="search-filters__label">Filter:</span>
+                  <div
+                    className="search-filters__chips"
+                    style={{
+                      display: 'flex',
+                      flexWrap: 'wrap',
+                      gap: 'var(--spacing-2)',
+                    }}
+                  >
+                    {allContentTypes.map(type => {
+                      const Icon = contentTypeIcons[type];
+                      const count = typeCounts[type];
+                      const isActive =
+                        activeTypes.length === 0 ||
+                        activeTypes.includes(type);
+                      return (
+                        <button
+                          key={type}
+                          onClick={() => toggleType(type)}
+                          className={`search-filters__chip ${
+                            activeTypes.includes(type)
+                              ? 'search-filters__chip--active'
+                              : ''
+                          }`}
+                          aria-pressed={activeTypes.includes(type)}
+                          style={{
+                            opacity: count === 0 ? 0.5 : 1,
+                          }}
+                        >
+                          <Icon size={14} />
+                          {contentTypeLabels[type]}
+                          <span className="search-filters__chip-count">
+                            {count}
+                          </span>
+                        </button>
+                      );
+                    })}
+                  </div>
+
+                  {/* Sort */}
+                  <div className="search-sort">
+                    <label
+                      htmlFor="search-sort"
+                      className="search-sort__label"
+                    >
+                      Sort:
+                    </label>
+                    <select
+                      id="search-sort"
+                      value={sort}
+                      onChange={e =>
+                        setSort(e.target.value as SortOption)
+                      }
+                      className="search-sort__select"
+                    >
+                      <option value="relevance">Relevance</option>
+                      <option value="recent">Most Recent</option>
+                      <option value="popular">Popular</option>
+                      <option value="featured">Featured</option>
+                    </select>
+                  </div>
+                </div>
+
+                {/* Result Count */}
+                <div className="search-result-count">
+                  Number of results:{' '}
+                  <strong>{totalResults}</strong>
+                  {activeTypes.length > 0 && (
+                    <>
+                      {' '}
+                      in{' '}
+                      {activeTypes
+                        .map(t => contentTypeLabels[t])
+                        .join(', ')}
+                      {' — '}
+                      <button
+                        onClick={() => setActiveTypes([])}
+                        style={{
+                          background: 'none',
+                          border: 'none',
+                          color: 'var(--primary)',
+                          cursor: 'pointer',
+                          fontFamily: 'var(--font-secondary)',
+                          fontSize: 'var(--text-small)',
+                          textDecoration: 'underline',
+                          padding: 0,
+                        }}
+                      >
+                        Clear filters
+                      </button>
+                    </>
+                  )}
+                </div>
+              </>
+            )}
+
+            {/* Results */}
+            {totalResults > 0 ? (
+              <div className="search-results-grid">
+                {paginatedResults.map(result => {
+                  const TypeIcon = contentTypeIcons[result.contentType];
+                  return (
+                    <button
+                      key={`${result.contentType}-${result.id}`}
+                      className="search-result-card"
+                      onClick={() => handleResultClick(result)}
+                      style={{
+                        textAlign: 'left',
+                        width: '100%',
+                      }}
+                    >
+                      {/* Meta Row */}
+                      <div className="search-result-card__meta">
+                        <span
+                          className="search-result-card__badge"
+                          style={{
+                            color:
+                              contentTypeColors[result.contentType],
+                          }}
+                        >
+                          <TypeIcon size={10} />
+                          {contentTypeLabels[result.contentType]}
+                        </span>
+
+                        {result.date && (
+                          <>
+                            <Calendar size={12} />
+                            <span>
+                              {new Date(
+                                result.date
+                              ).toLocaleDateString('en-GB', {
+                                day: 'numeric',
+                                month: 'short',
+                                year: 'numeric',
+                              })}
+                            </span>
+                          </>
+                        )}
+
+                        {result.meta?.duration && (
+                          <>
+                            <Clock size={12} />
+                            <span>{result.meta.duration}</span>
+                          </>
+                        )}
+
+                        {result.meta?.views && (
+                          <>
+                            <Eye size={12} />
+                            <span>
+                              {result.meta.views} views
+                            </span>
+                          </>
+                        )}
+
+                        {result.meta?.readingTime && (
+                          <span>{result.meta.readingTime}</span>
+                        )}
+                      </div>
+
+                      {/* Title */}
+                      <h3 className="search-result-card__title">
+                        {highlightText(result.title, query)}
+                      </h3>
+
+                      {/* Excerpt */}
+                      <p className="search-result-card__excerpt">
+                        {highlightText(
+                          result.excerpt.length > 180
+                            ? result.excerpt.slice(0, 180) + '...'
+                            : result.excerpt,
+                          query
+                        )}
+                      </p>
+
+                      {/* Footer */}
+                      <div className="search-result-card__footer">
+                        View{' '}
+                        {contentTypeLabels[result.contentType]}
+                        <ArrowRight size={14} />
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
+            ) : query ? (
+              /* No Results */
+              <div className="search-no-results">
+                <AlertCircle
+                  size={48}
+                  className="search-no-results__icon"
+                />
+                <h2
+                  className="search-no-results__title"
+                  style={{
+                    fontFamily: 'var(--font-primary)',
+                  }}
+                >
+                  No results found
+                </h2>
+                <p
+                  className="search-no-results__text"
+                  style={{
+                    fontFamily: 'var(--font-primary)',
+                    marginBottom: 'var(--spacing-4)',
+                  }}
+                >
+                  We couldn&apos;t find any content matching &quot;
+                  {query}&quot;. Try a different search term or browse
+                  our content below.
+                </p>
+              </div>
+            ) : (
+              /* Empty State */
+              <div
+                className="search-no-results"
+                style={{ borderStyle: 'solid' }}
+              >
+                <Search
+                  size={48}
+                  className="search-no-results__icon"
+                />
+                <h2
+                  className="search-no-results__title"
+                  style={{
+                    fontFamily: 'var(--font-primary)',
+                  }}
+                >
+                  Start searching
+                </h2>
+                <p
+                  className="search-no-results__text"
+                  style={{ fontFamily: 'var(--font-primary)' }}
+                >
+                  Search across blog posts, portfolio projects,
+                  videos, podcasts, and pages.
+                </p>
+              </div>
+            )}
+
+            {/* Pagination */}
+            {totalPages > 1 && (
+              <div className="search-pagination">
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                  page => (
+                    <button
+                      key={page}
+                      onClick={() => setCurrentPage(page)}
+                      className={`search-pagination__button ${
+                        page === currentPage
+                          ? 'search-pagination__button--active'
+                          : ''
+                      }`}
+                      style={{
+                        fontFamily: 'var(--font-primary)',
+                        fontSize: 'var(--text-small)',
+                      }}
+                    >
+                      {page}
+                    </button>
+                  )
+                )}
+              </div>
+            )}
+          </div>
+        </Container>
+      </Section>
+
+      {/* CTA */}
+      <CTASection
+        heading="Can't find what you're looking for?"
+        description="Get in touch with our team and we'll help you find exactly what you need."
+        primaryButton={{ label: 'Contact Us', page: 'contact' }}
+        secondaryButton={{ label: 'Browse Blog', page: 'blog' }}
+      />
+    </>
+  );
+}

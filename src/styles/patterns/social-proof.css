@@ -1,0 +1,89 @@
+/**
+ * Social Proof Pattern Styles
+ * 
+ * BEM-compliant styles for the SocialProof component.
+ * All vertical spacing via blockGap (CSS gap) -- zero margin.
+ */
+
+/* Wrapper -- flex column with blockGap */
+.social-proof {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+}
+
+/* Variants */
+.social-proof--logos {
+  background-color: var(--background);
+}
+
+.social-proof--awards {
+  background-color: var(--muted);
+}
+
+.social-proof--certifications {
+  background-color: var(--card);
+}
+
+/* Heading */
+.social-proof__heading {
+  text-align: center;
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+}
+
+/* Grid */
+.social-proof__grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-8);
+}
+
+/* Logo Wrapper */
+.social-proof__logo-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  padding: var(--spacing-4);
+}
+
+.social-proof__logo-wrapper:hover {
+  opacity: 1 !important;
+  transform: scale(1.05);
+}
+
+/* Logo Image */
+.social-proof__logo {
+  max-height: 48px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.6;
+  transition: all 0.3s ease;
+}
+
+.social-proof__logo-wrapper:hover .social-proof__logo,
+.social-proof__grid:hover .social-proof__logo:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+/* Caption */
+.social-proof__caption {
+  text-align: center;
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  max-width: 600px;
+  margin: 0 auto;
+  padding-top: var(--spacing-4);
+  border-top: 1px solid var(--border-soft);
+}

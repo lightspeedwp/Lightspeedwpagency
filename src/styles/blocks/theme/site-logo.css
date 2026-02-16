@@ -1,0 +1,15 @@
+/**
+ * Site Logo Block Styles
+ * WordPress block: .wp-block-site-logo
+ */
+
+.wp-block-site-logo {
+  display: flex;
+  align-items: center;
+}
+
+.wp-block-site-logo img {
+  height: auto;
+  width: 220px;
+  display: block;
+}

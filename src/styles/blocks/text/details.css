@@ -41,5 +41,5 @@
   font-family: var(--font-primary);
   font-size: var(--text-base);
   color: var(--muted-foreground);
-  line-height: 1.6;
+  line-height: var(--line-height-normal);
 }

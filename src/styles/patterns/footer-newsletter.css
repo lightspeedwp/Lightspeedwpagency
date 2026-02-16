@@ -1,0 +1,197 @@
+/**
+ * Footer Newsletter Pattern Styles
+ * 
+ * BEM-compliant styles for the FooterNewsletter component.
+ * All vertical spacing via blockGap (CSS gap) -- zero margin.
+ */
+
+.footer-newsletter {
+  background-color: var(--background);
+  border-top: 1px solid var(--border-soft);
+  padding-top: var(--spacing-16);
+  padding-bottom: var(--spacing-8);
+}
+
+.footer-newsletter__container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-16);
+}
+
+/* Main Content */
+.footer-newsletter__main {
+  display: grid;
+  gap: var(--spacing-12);
+}
+
+@media (min-width: 1024px) {
+  .footer-newsletter__main {
+    grid-template-columns: 2fr 1fr;
+    gap: var(--spacing-20);
+  }
+}
+
+/* Links Section */
+.footer-newsletter__links {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-8);
+}
+
+@media (min-width: 768px) {
+  .footer-newsletter__links {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.footer-newsletter__logo-column {
+  grid-column: span 2;
+  padding-bottom: var(--spacing-6);
+}
+
+@media (min-width: 768px) {
+  .footer-newsletter__logo-column {
+    grid-column: span 1;
+    padding-bottom: 0;
+  }
+}
+
+/* Column -- flex column with blockGap */
+.footer-newsletter__column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.footer-newsletter__column-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+}
+
+.footer-newsletter__column-nav {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.footer-newsletter__link {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+.footer-newsletter__link:hover {
+  color: var(--primary);
+}
+
+/* Subscribe Section -- flex column with blockGap */
+.footer-newsletter__subscribe {
+  background-color: var(--muted);
+  padding: var(--spacing-8);
+  border-radius: var(--radius-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.footer-newsletter__subscribe-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+}
+
+.footer-newsletter__subscribe-description {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-normal);
+}
+
+.footer-newsletter__form-group {
+  display: flex;
+  gap: var(--spacing-2);
+}
+
+.footer-newsletter__input {
+  flex-grow: 1;
+  padding: var(--spacing-2) var(--spacing-4);
+  border: 1px solid var(--border-input);
+  border-radius: var(--radius);
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+.footer-newsletter__input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px var(--primary-soft);
+}
+
+.footer-newsletter__submit {
+  flex-shrink: 0;
+}
+
+.footer-newsletter__disclaimer {
+  font-family: var(--font-secondary);
+  font-size: var(--text-xs);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-normal);
+}
+
+.footer-newsletter__disclaimer-link {
+  color: var(--foreground);
+  text-decoration: underline;
+}
+
+/* Bottom Section */
+.footer-newsletter__bottom {
+  border-top: 1px solid var(--border-soft);
+  padding-top: var(--spacing-8);
+}
+
+.footer-newsletter__bottom-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  align-items: center;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .footer-newsletter__bottom-content {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+}
+
+.footer-newsletter__copyright {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+}
+
+.footer-newsletter__social {
+  display: flex;
+  gap: var(--spacing-4);
+}
+
+.footer-newsletter__social-link {
+  color: var(--muted-foreground);
+  transition: color var(--transition-base);
+}
+
+.footer-newsletter__social-link:hover {
+  color: var(--primary);
+}

@@ -18,6 +18,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Phone } from 'lucide-react';
+import '@/styles/components/sticky-book-call.css';
 
 export function StickyBookCallButton() {
   const [isVisible, setIsVisible] = useState(false);
@@ -54,27 +55,11 @@ export function StickyBookCallButton() {
           animate={{ opacity: 1, y: 0 }}
           exit={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.3 }}
-          style={{
-            position: 'fixed',
-            bottom: '24px',
-            right: '24px',
-            zIndex: 40
-          }}
-          className="hidden md:block"
+          className="sticky-book-call sticky-book-call--desktop"
         >
           <a
             href="/contact"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg shadow-lg transition-all duration-200 hover:shadow-xl"
-            style={{
-              backgroundColor: 'var(--primary)',
-              color: 'var(--primary-foreground)',
-              fontSize: 'var(--text-base)',
-              fontFamily: 'Lexend, sans-serif',
-              fontWeight: 500,
-              textDecoration: 'none',
-              minWidth: '48px',
-              minHeight: '48px'
-            }}
+            className="sticky-book-call__link sticky-book-call__link--desktop"
             aria-label="Book a free consultation call"
           >
             <Phone size={20} />
@@ -91,28 +76,11 @@ export function StickyBookCallButton() {
           animate={{ opacity: 1, y: 0 }}
           exit={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.3 }}
-          style={{
-            position: 'fixed',
-            bottom: '16px',
-            left: '16px',
-            right: '16px',
-            zIndex: 40
-          }}
-          className="md:hidden"
+          className="sticky-book-call--mobile"
         >
           <a
             href="/contact"
-            className="flex items-center justify-center gap-2 px-6 py-4 rounded-lg shadow-lg transition-all duration-200 active:scale-95"
-            style={{
-              backgroundColor: 'var(--primary)',
-              color: 'var(--primary-foreground)',
-              fontSize: 'var(--text-base)',
-              fontFamily: 'Lexend, sans-serif',
-              fontWeight: 500,
-              textDecoration: 'none',
-              minHeight: '48px',
-              width: '100%'
-            }}
+            className="sticky-book-call__link sticky-book-call__link--mobile"
             aria-label="Book a free consultation call"
           >
             <Phone size={20} />

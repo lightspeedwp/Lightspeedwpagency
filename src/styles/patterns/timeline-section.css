@@ -1,0 +1,125 @@
+/**
+ * Timeline Section Pattern Styles
+ * 
+ * BEM-compliant styles for the TimelineSection component.
+ * All vertical spacing via blockGap (CSS gap) -- zero margin.
+ */
+
+/* Root -- flex column with blockGap */
+.timeline-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-16);
+}
+
+/* Header -- flex column with blockGap */
+.timeline-section__header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  max-width: var(--wp--custom--layout--content-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.timeline-section__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-snug);
+  letter-spacing: var(--letter-spacing-tight);
+  color: var(--foreground);
+}
+
+.timeline-section__description {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  line-height: var(--line-height-relaxed);
+  color: var(--muted-foreground);
+  max-width: 48rem; /* 3xl */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Wrapper */
+.timeline-section__wrapper {
+  max-width: 56rem; /* 4xl */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Item */
+.timeline-section__item {
+  position: relative;
+  padding-left: var(--spacing-20);
+  padding-bottom: var(--spacing-12);
+}
+
+.timeline-section__item:last-child {
+  padding-bottom: 0;
+}
+
+/* Vertical Line */
+.timeline-section__line {
+  position: absolute;
+  left: var(--spacing-8);
+  top: var(--spacing-15);
+  bottom: 0;
+  width: 2px;
+  background-color: var(--border-soft);
+}
+
+/* Year Badge */
+.timeline-section__badge {
+  position: absolute;
+  left: 0;
+  top: var(--spacing-2);
+  width: var(--spacing-16);
+  height: var(--spacing-16);
+  border-radius: var(--radius-full);
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-bold);
+  box-shadow: var(--shadow-glow-sm);
+  z-index: 1;
+}
+
+/* Content Card -- flex column with blockGap */
+.timeline-section__card {
+  background-color: var(--card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-6) var(--spacing-8);
+  box-shadow: var(--shadow-glow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+  transition: all 0.3s ease;
+}
+
+.timeline-section__card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary);
+}
+
+.timeline-section__item-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h4);
+  font-weight: var(--font-weight-semibold);
+  color: var(--card-foreground);
+  line-height: var(--line-height-snug);
+}
+
+.timeline-section__item-desc {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-relaxed);
+}

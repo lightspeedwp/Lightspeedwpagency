@@ -1,0 +1,128 @@
+/**
+ * Timeline Pattern Styles
+ * 
+ * BEM-compliant styles for the Timeline component.
+ * All vertical spacing via blockGap (CSS gap) -- zero margin.
+ */
+
+.timeline {
+  position: relative;
+  padding: var(--spacing-4) 0;
+}
+
+/* Timeline Line */
+.timeline__line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: var(--border-soft);
+  left: 23px; /* Centers with 48px dot */
+}
+
+.timeline__line--minimal {
+  left: 11px; /* Centers with 24px dot */
+}
+
+/* Items Container */
+.timeline__items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+}
+
+/* Item */
+.timeline__item {
+  position: relative;
+  padding-left: var(--spacing-16);
+}
+
+.timeline__item--minimal {
+  padding-left: var(--spacing-10);
+}
+
+/* Dot */
+.timeline__dot {
+  position: absolute;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-bold);
+  z-index: 1;
+}
+
+.timeline__dot--circle {
+  border-radius: var(--radius-full);
+}
+
+.timeline__dot--rounded {
+  border-radius: var(--radius-md);
+}
+
+.timeline__dot--lg {
+  width: 48px;
+  height: 48px;
+  font-size: var(--text-lg);
+}
+
+.timeline__dot--md {
+  width: 32px;
+  height: 32px;
+  font-size: var(--text-base);
+}
+
+.timeline__dot--sm {
+  width: 24px;
+  height: 24px;
+  font-size: var(--text-sm);
+}
+
+/* Title */
+.timeline__title {
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+}
+
+.timeline__title--lg {
+  font-size: var(--text-xl);
+}
+
+.timeline__title--md {
+  font-size: var(--text-lg);
+}
+
+/* Description */
+.timeline__description {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  line-height: var(--line-height-normal);
+  color: var(--muted-foreground);
+  margin: 0;
+}
+
+/* Card Variant -- flex column with blockGap */
+.timeline__card {
+  background-color: var(--card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  transition: all 0.3s ease;
+}
+
+.timeline__card:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.timeline__dot--cards {
+  box-shadow: 0 0 0 4px var(--background);
+}

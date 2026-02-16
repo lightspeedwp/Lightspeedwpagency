@@ -1,0 +1,198 @@
+/**
+ * Testimonials Carousel Styles
+ *
+ * BEM-compliant styles for the TestimonialsCarousel component.
+ * All spacing/colors via CSS variables.
+ */
+
+.testimonials-carousel {
+  width: 100%;
+}
+
+/* Slide container */
+.testimonials-carousel__slide {
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonials-carousel__slide--card {
+  padding: var(--spacing-8);
+  border-radius: var(--radius);
+  background-color: var(--card);
+  border: 1px solid var(--border);
+}
+
+.testimonials-carousel__slide--default {
+  padding: var(--spacing-6);
+}
+
+/* Quote icon */
+.testimonials-carousel__quote-icon {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto var(--spacing-6);
+  color: var(--primary);
+  opacity: 0.2;
+}
+
+/* Content area */
+.testimonials-carousel__content {
+  text-align: center;
+  margin-bottom: var(--spacing-6);
+}
+
+.testimonials-carousel__title {
+  margin-bottom: var(--spacing-4);
+  font-family: var(--font-primary);
+  font-size: var(--text-h4);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+}
+
+.testimonials-carousel__text {
+  font-family: var(--font-secondary);
+  font-size: var(--text-lg);
+  color: var(--foreground);
+  line-height: var(--line-height-relaxed);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.testimonials-carousel__text--italic {
+  font-style: italic;
+}
+
+/* Author section */
+.testimonials-carousel__author {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+.testimonials-carousel__avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.testimonials-carousel__avatar-placeholder {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.testimonials-carousel__avatar-initial {
+  font-family: var(--font-primary);
+  font-size: var(--text-h3);
+  font-weight: var(--font-weight-semibold);
+  color: var(--primary-foreground);
+}
+
+.testimonials-carousel__author-info {
+  text-align: center;
+}
+
+.testimonials-carousel__author-name {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+}
+
+.testimonials-carousel__author-title {
+  font-family: var(--font-secondary);
+  font-size: var(--text-small);
+  color: var(--muted-foreground);
+}
+
+/* Rating row */
+.testimonials-carousel__rating {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  justify-content: center;
+  margin-bottom: var(--spacing-4);
+}
+
+.testimonials-carousel__star {
+  width: 20px;
+  height: 20px;
+}
+
+/* Navigation arrows */
+.testimonials-carousel__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: var(--spacing-2);
+  border-radius: 50%;
+  background-color: var(--background);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.testimonials-carousel__arrow:hover {
+  transform: translateY(-50%) scale(1.1);
+}
+
+.testimonials-carousel__arrow--prev {
+  left: var(--spacing-4);
+}
+
+.testimonials-carousel__arrow--next {
+  right: var(--spacing-4);
+}
+
+.testimonials-carousel__arrow-icon {
+  width: 24px;
+  height: 24px;
+  color: var(--foreground);
+}
+
+/* Pagination dots */
+.testimonials-carousel__dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-2);
+  margin-top: var(--spacing-6);
+}
+
+.testimonials-carousel__dot {
+  height: 8px;
+  border-radius: var(--radius);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.2s ease;
+}
+
+.testimonials-carousel__dot:hover {
+  transform: scale(1.25);
+}
+
+.testimonials-carousel__dot--active {
+  width: 32px;
+  background-color: var(--primary);
+}
+
+.testimonials-carousel__dot--inactive {
+  width: 8px;
+  background-color: var(--muted);
+}
+
+/* Counter */
+.testimonials-carousel__counter {
+  text-align: center;
+  margin-top: var(--spacing-4);
+  font-family: var(--font-secondary);
+  font-size: var(--text-small);
+  color: var(--muted-foreground);
+}

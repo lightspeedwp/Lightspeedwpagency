@@ -5,7 +5,7 @@
  */
 
 .wc-block-product-search {
-  margin-bottom: var(--spacing-4);
+  /* margin-bottom removed - handled by parent gap */
 }
 
 .wc-block-product-search__form {
@@ -20,13 +20,13 @@
   font-size: var(--text-base);
   color: var(--foreground);
   background: var(--card);
-  border: 1px solid var(--border);
+  border: var(--wp--preset--border-width--1) solid var(--border);
   border-radius: var(--radius);
-  transition: border-color 0.2s ease;
+  transition: border-color var(--transition-base) ease;
 }
 
 .wc-block-product-search__input:focus {
-  outline: 2px solid var(--primary);
+  outline: var(--wp--preset--border-width--2) solid var(--primary);
   outline-offset: 2px;
   border-color: var(--primary);
 }
@@ -45,7 +45,7 @@
   border: none;
   border-radius: var(--radius);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all var(--transition-base) ease;
 }
 
 .wc-block-product-search__button:hover {
@@ -54,7 +54,7 @@
 }
 
 .wc-block-product-search__button:focus-visible {
-  outline: 2px solid var(--primary);
+  outline: var(--wp--preset--border-width--2) solid var(--primary);
   outline-offset: 2px;
 }
 

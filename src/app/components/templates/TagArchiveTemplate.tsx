@@ -5,27 +5,8 @@
  * Displays posts filtered by tag with interactive features.
  * 
  * Pattern order: Header → Breadcrumbs → Archive Header → Card Grid → NewsletterSignup → CTAInline → Pagination → Footer
- * 
- * **Conversion Strategy:**
- * - NewsletterSignup: Capture email subscribers interested in this tag/topic
- * - CTAInline: Conversion-focused CTA after post listings
- * 
- * **Features:**
- * - Dynamic tag information
- * - Related tags navigation
- * - Post count and description
- * - Smooth animations
- * - Interactive card hover effects
- * 
- * @example
- * ```tsx
- * <TagArchiveTemplate tag="gutenberg" />
- * ```
  */
 
-import { SiteHeader } from '../parts/SiteHeader';
-import { SiteFooter } from '../parts/SiteFooter';
-import { SkipLink } from '../common/SkipLink';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { Breadcrumbs } from '../common/Breadcrumbs';
@@ -36,9 +17,10 @@ import { CTASection } from '../patterns/CTASection';
 import { NewsletterSignup } from '../patterns/NewsletterSignup';
 import { CTAInline } from '../patterns/CTAInline';
 import { EmptyState } from '../patterns/EmptyState';
-import { BackToTopButton } from '../blocks/layout/BackToTopButton';
-import { getPostsByTag, postTags, blogPosts } from '../../data/blog-posts';
+import { Paragraph } from '../blocks/text/Paragraph';
+import { getPostsByTag, postTags } from '../../data/blog-posts';
 import { motion } from 'motion/react';
+import '@/styles/templates/archive.css';
 
 interface TagArchiveTemplateProps {
   /** Current tag slug */
@@ -82,14 +64,13 @@ export function TagArchiveTemplate({
 
   return (
     <>
-      <SkipLink />
-      <SiteHeader />
-      
-      <main id="main-content">
-        <Section variant="default" className="pt-24 md:pt-32 pb-12">
-          <Container>
+        {/* Breadcrumbs */}
+        <section className="wp-block-breadcrumbs-section">
             <Breadcrumbs items={breadcrumbs} />
-            
+        </section>
+
+        <Section background="default" spacing="lg" style={{ paddingTop: 'var(--spacing-24)', paddingBottom: 'var(--spacing-12)' }}>
+          <Container>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -109,58 +90,35 @@ export function TagArchiveTemplate({
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="mt-8"
+                className="related-tags"
               >
-                <div className="flex flex-wrap items-center gap-3">
-                  <span 
-                    className="font-medium"
-                    style={{ 
-                      fontSize: 'var(--text-sm)',
-                      fontFamily: 'Manrope, sans-serif',
-                      color: 'var(--muted-foreground)'
-                    }}
+                <Paragraph className="related-tags__label" style={{ marginBottom: 0, marginRight: 'var(--spacing-2)' }}>
+                  Related Tags:
+                </Paragraph>
+                {relatedTags.map((relatedTag, index) => (
+                  <motion.a
+                    key={relatedTag.slug}
+                    href={`/blog/tag/${relatedTag.slug}`}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.3, delay: 0.1 + index * 0.05 }}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="related-tag"
                   >
-                    Related Tags:
-                  </span>
-                  {relatedTags.map((relatedTag, index) => (
-                    <motion.a
-                      key={relatedTag.slug}
-                      href={`/blog/tag/${relatedTag.slug}`}
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.3, delay: 0.1 + index * 0.05 }}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="px-4 py-2 rounded-full transition-all duration-300"
-                      style={{
-                        backgroundColor: 'var(--muted)',
-                        color: 'var(--foreground)',
-                        fontSize: 'var(--text-sm)',
-                        fontFamily: 'Manrope, sans-serif',
-                        border: '1px solid var(--border-soft)',
-                        textDecoration: 'none'
-                      }}
-                    >
-                      #{relatedTag.name}
-                      <span 
-                        className="ml-2"
-                        style={{ 
-                          color: 'var(--muted-foreground)',
-                          fontSize: 'var(--text-xs)'
-                        }}
-                      >
-                        {relatedTag.count}
-                      </span>
-                    </motion.a>
-                  ))}
-                </div>
+                    #{relatedTag.name}
+                    <span className="related-tag__count">
+                      {relatedTag.count}
+                    </span>
+                  </motion.a>
+                ))}
               </motion.div>
             )}
           </Container>
         </Section>
-
+        
         {/* Posts Grid */}
-        <Section variant="background">
+        <Section background="default" spacing="md">
           <Container>
             {currentPosts.length > 0 ? (
               <motion.div
@@ -198,7 +156,7 @@ export function TagArchiveTemplate({
         </Section>
 
         {/* Newsletter Signup */}
-        <Section variant="default">
+        <Section background="default" spacing="md">
           <Container>
             <NewsletterSignup
               title="Stay Updated with WordPress Insights"
@@ -216,7 +174,7 @@ export function TagArchiveTemplate({
         </Section>
 
         {/* CTA Inline */}
-        <Section variant="default">
+        <Section background="default" spacing="md">
           <Container>
             <CTAInline
               title="Explore More Resources"
@@ -231,7 +189,7 @@ export function TagArchiveTemplate({
 
         {/* Pagination */}
         {totalPages > 1 && (
-          <Section variant="default">
+          <Section background="default" spacing="md">
             <Container>
               <PaginationNav
                 currentPage={currentPage}
@@ -255,10 +213,6 @@ export function TagArchiveTemplate({
             href: '/blog/tags'
           }}
         />
-      </main>
-
-      <SiteFooter />
-      <BackToTopButton />
     </>
   );
 }

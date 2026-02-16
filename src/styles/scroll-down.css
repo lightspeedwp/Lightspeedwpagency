@@ -1,0 +1,40 @@
+/**
+ * Scroll Down Arrow Styles
+ * 
+ * Animated scroll indicator.
+ * 100% CSS variables.
+ */
+
+.scroll-down-arrow {
+  position: absolute;
+  bottom: var(--spacing-8);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: var(--spacing-2);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--primary-foreground);
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+  z-index: 20;
+}
+
+.scroll-down-arrow:hover {
+  opacity: 1;
+}
+
+.scroll-down-arrow__icon {
+  width: 32px;
+  height: 32px;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-25%);
+  }
+}

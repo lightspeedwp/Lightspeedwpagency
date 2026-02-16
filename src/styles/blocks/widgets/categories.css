@@ -34,7 +34,7 @@
   color: var(--foreground);
   text-decoration: none;
   border-radius: var(--radius);
-  transition: all 0.2s ease;
+  transition: all var(--transition-base) ease;
 }
 
 .wp-block-categories__link:hover {
@@ -69,7 +69,7 @@
   border: 1px solid var(--border);
   border-radius: var(--radius);
   cursor: pointer;
-  transition: border-color 0.2s ease;
+  transition: border-color var(--transition-base) ease;
 }
 
 .wp-block-categories__dropdown:hover {

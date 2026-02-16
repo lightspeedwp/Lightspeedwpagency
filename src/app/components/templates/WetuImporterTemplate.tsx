@@ -16,17 +16,14 @@
  */
 
 import { Check } from 'lucide-react';
-import { RouteAnnouncer } from '@/app/components/blocks/utility/RouteAnnouncer';
-import { SkipLink } from '@/app/components/common/SkipLink';
-import { SiteHeader } from '@/app/components/parts/SiteHeader';
-import { SiteFooter } from '@/app/components/parts/SiteFooter';
-import { BackToTopButton } from '@/app/components/blocks/layout/BackToTopButton';
 import { Hero } from '@/app/components/patterns/Hero';
 import { Section } from '@/app/components/common/Section';
 import { Container } from '@/app/components/common/Container';
 import { CTASection } from '@/app/components/patterns/CTASection';
 import { FAQSection } from '@/app/components/patterns/FAQSection';
 import { Buttons } from '@/app/components/blocks/design/Buttons';
+import { Heading } from '@/app/components/common/Heading';
+import { Paragraph } from '@/app/components/blocks/text/Paragraph';
 import '@/styles/templates/wetu-importer-page.css';
 import {
   wetuImporterHero,
@@ -45,11 +42,6 @@ import {
 export function WetuImporterTemplate() {
   return (
     <>
-      <RouteAnnouncer />
-      <SkipLink />
-      <SiteHeader />
-      
-      <main id="main-content" role="main">
         {/* Hero Section */}
         <Hero
           variant="solution"
@@ -71,15 +63,15 @@ export function WetuImporterTemplate() {
         </Hero>
 
         {/* Features Section */}
-        <Section spacing="xl" sectionStyle="muted">
+        <Section spacing="xl" className="wetu-importer__section--muted">
           <Container maxWidth="6xl">
             <div className="wetu-importer__section-header">
-              <h2 className="wetu-importer__section-title">
+              <Heading level={2} className="wetu-importer__section-title">
                 Key Features
-              </h2>
-              <p className="wetu-importer__section-description">
+              </Heading>
+              <Paragraph className="wetu-importer__section-description">
                 Everything you need to automate your tour content management
-              </p>
+              </Paragraph>
             </div>
 
             <div className="wetu-importer__features-grid">
@@ -90,12 +82,12 @@ export function WetuImporterTemplate() {
                     <div className="wetu-importer__feature-icon">
                       <Icon />
                     </div>
-                    <h3 className="wetu-importer__feature-title">
+                    <Heading level={3} className="wetu-importer__feature-title">
                       {feature.title}
-                    </h3>
-                    <p className="wetu-importer__feature-description">
+                    </Heading>
+                    <Paragraph className="wetu-importer__feature-description">
                       {feature.description}
-                    </p>
+                    </Paragraph>
                   </div>
                 );
               })}
@@ -107,23 +99,23 @@ export function WetuImporterTemplate() {
         <Section spacing="xl">
           <Container maxWidth="6xl">
             <div className="wetu-importer__section-header">
-              <h2 className="wetu-importer__section-title">
+              <Heading level={2} className="wetu-importer__section-title">
                 Why Choose Wetu Importer?
-              </h2>
-              <p className="wetu-importer__section-description">
+              </Heading>
+              <Paragraph className="wetu-importer__section-description">
                 Transform how you manage tour content with automation and reliability
-              </p>
+              </Paragraph>
             </div>
 
             <div className="wetu-importer__benefits-grid">
               {wetuImporterBenefits.map((benefit, index) => (
                 <div key={index} className="wetu-importer__benefit-card">
-                  <h3 className="wetu-importer__benefit-title">
+                  <Heading level={3} className="wetu-importer__benefit-title">
                     {benefit.title}
-                  </h3>
-                  <p className="wetu-importer__benefit-description">
+                  </Heading>
+                  <Paragraph className="wetu-importer__benefit-description">
                     {benefit.description}
-                  </p>
+                  </Paragraph>
                 </div>
               ))}
             </div>
@@ -131,15 +123,15 @@ export function WetuImporterTemplate() {
         </Section>
 
         {/* How It Works Section */}
-        <Section spacing="xl" sectionStyle="muted">
+        <Section spacing="xl" className="wetu-importer__section--muted">
           <Container maxWidth="6xl">
             <div className="wetu-importer__section-header">
-              <h2 className="wetu-importer__section-title">
+              <Heading level={2} className="wetu-importer__section-title">
                 How It Works
-              </h2>
-              <p className="wetu-importer__section-description">
+              </Heading>
+              <Paragraph className="wetu-importer__section-description">
                 Get started in 4 simple steps
-              </p>
+              </Paragraph>
             </div>
 
             <div className="wetu-importer__process-grid">
@@ -149,12 +141,12 @@ export function WetuImporterTemplate() {
                     {step.step}
                   </div>
                   <div className="wetu-importer__process-content">
-                    <h3 className="wetu-importer__process-title">
+                    <Heading level={3} className="wetu-importer__process-title">
                       {step.title}
-                    </h3>
-                    <p className="wetu-importer__process-description">
+                    </Heading>
+                    <Paragraph className="wetu-importer__process-description">
                       {step.description}
-                    </p>
+                    </Paragraph>
                   </div>
                 </div>
               ))}
@@ -166,9 +158,9 @@ export function WetuImporterTemplate() {
         <Section spacing="xl">
           <Container maxWidth="6xl">
             <div className="wetu-importer__section-header">
-              <h2 className="wetu-importer__section-title">
+              <Heading level={2} className="wetu-importer__section-title">
                 {wetuImporterSpecs.title}
-              </h2>
+              </Heading>
             </div>
 
             <div className="wetu-importer__specs-grid">
@@ -187,15 +179,15 @@ export function WetuImporterTemplate() {
         </Section>
 
         {/* Pricing Section */}
-        <Section spacing="xl" sectionStyle="muted">
+        <Section spacing="xl" className="wetu-importer__section--muted">
           <Container maxWidth="6xl">
             <div className="wetu-importer__section-header">
-              <h2 className="wetu-importer__section-title">
+              <Heading level={2} className="wetu-importer__section-title">
                 {wetuImporterPricing.title}
-              </h2>
-              <p className="wetu-importer__section-description">
+              </Heading>
+              <Paragraph className="wetu-importer__section-description">
                 {wetuImporterPricing.description}
-              </p>
+              </Paragraph>
             </div>
 
             <div className="wetu-importer__pricing-grid">
@@ -212,12 +204,12 @@ export function WetuImporterTemplate() {
                     </div>
                   )}
 
-                  <h3 className="wetu-importer__pricing-name">
+                  <Heading level={3} className="wetu-importer__pricing-name">
                     {plan.name}
-                  </h3>
-                  <p className="wetu-importer__pricing-tagline">
+                  </Heading>
+                  <Paragraph className="wetu-importer__pricing-tagline">
                     {plan.tagline}
-                  </p>
+                  </Paragraph>
 
                   <div className="wetu-importer__pricing-price">
                     <span className="wetu-importer__pricing-amount">
@@ -266,10 +258,6 @@ export function WetuImporterTemplate() {
           secondaryButtonText={wetuImporterCTA.buttons[1].text}
           secondaryButtonPage={wetuImporterCTA.buttons[1].page}
         />
-      </main>
-
-      <SiteFooter />
-      <BackToTopButton />
     </>
   );
 }

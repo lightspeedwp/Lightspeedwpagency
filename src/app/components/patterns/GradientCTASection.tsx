@@ -5,23 +5,6 @@
  * 
  * Full-width gradient CTA section with benefits checklist and optional graphic.
  * Commonly used on service pages for conversion-focused calls-to-action.
- * 
- * **Usage:**
- * ```tsx
- * <GradientCTASection
- *   title="Reveal your unique business's potential"
- *   description="Dive into groundwork with our Content Strategy services..."
- *   benefits={[
- *     'Content strategy inspection',
- *     'Content ideation assistance',
- *     'Content Creation'
- *   ]}
- *   buttonText="Free consultation"
- *   buttonPage="contact"
- *   gradient="blue"
- *   graphic={<TrendingUp size={120} />}
- * />
- * ```
  */
 
 import { LucideIcon, CheckCircle } from 'lucide-react';
@@ -29,6 +12,7 @@ import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { Button } from '../blocks/design/Buttons';
 import { ReactNode } from 'react';
+import '@/styles/patterns/gradient-cta-section.css';
 
 export interface GradientCTASectionProps {
   /** Section title */
@@ -70,90 +54,46 @@ export function GradientCTASection({
 }: GradientCTASectionProps) {
   // Gradient backgrounds
   const gradientBg = customGradient || {
-    blue: 'linear-gradient(135deg, #3b82f6 0%, #1e40af 100%)',
-    purple: 'linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%)',
-    green: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
-    orange: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)'
+    blue: 'linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%)',
+    purple: 'linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%)',
+    green: 'linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%)',
+    orange: 'linear-gradient(135deg, var(--accent) 0%, var(--secondary) 100%)'
   }[gradient];
 
   return (
     <Section 
       spacing={spacing}
-      style={{
-        background: gradientBg,
-        color: 'var(--primary-foreground)',
-        position: 'relative',
-        overflow: 'hidden'
-      }}
+      className="gradient-cta-section"
+      style={{ background: gradientBg }}
     >
       {/* Background Pattern */}
       {showPattern && (
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            opacity: 0.1,
-            backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
-            backgroundSize: '32px 32px'
-          }}
-        />
+        <div className="gradient-cta-section__pattern" />
       )}
 
       <Container>
-        <div 
-          className="wp-grid-2-cols"
-          style={{ 
-            alignItems: 'center', 
-            position: 'relative', 
-            zIndex: 10 
-          }}
-        >
+        <div className="gradient-cta-section__grid">
           {/* Left: Content */}
-          <div>
+          <div className="gradient-cta-section__content">
             {/* Title */}
-            <h2
-              className="font-primary text-h1 font-bold tracking-tight"
-              style={{
-                lineHeight: '1.2',
-                marginBottom: 'var(--spacing-6)'
-              }}
-            >
+            <h2 className="gradient-cta-section__title">
               {title}
             </h2>
 
             {/* Description */}
-            <p
-              className="font-primary text-lg leading-relaxed"
-              style={{
-                marginBottom: 'var(--spacing-6)',
-                opacity: 0.95
-              }}
-            >
+            <p className="gradient-cta-section__description">
               {description}
             </p>
 
             {/* Benefits Checklist */}
-            <ul 
-              style={{ 
-                listStyle: 'none', 
-                padding: 0,
-                marginBottom: 'var(--spacing-8)',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: 'var(--spacing-3)'
-              }}
-            >
+            <ul className="gradient-cta-section__benefits">
               {benefits.map((benefit, index) => (
                 <li
                   key={index}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: 'var(--spacing-3)'
-                  }}
+                  className="gradient-cta-section__benefit-item"
                 >
-                  <CheckCircle size={20} style={{ color: '#10b981', flexShrink: 0 }} />
-                  <span className="font-primary text-base" style={{ color: 'white' }}>
+                  <CheckCircle size={20} className="gradient-cta-section__benefit-icon" />
+                  <span className="gradient-cta-section__benefit-text">
                     {benefit}
                   </span>
                 </li>
@@ -165,11 +105,7 @@ export function GradientCTASection({
               variant="default"
               size="lg"
               page={buttonPage}
-              style={{
-                backgroundColor: 'white',
-                color: 'var(--primary)',
-                boxShadow: '0 10px 40px rgba(0, 0, 0, 0.2)'
-              }}
+              className="gradient-cta-section__button"
             >
               {buttonText}
               {ButtonIcon && <ButtonIcon size={20} />}
@@ -178,28 +114,8 @@ export function GradientCTASection({
 
           {/* Right: Graphic */}
           {graphic && (
-            <div 
-              style={{
-                display: 'none',
-                alignItems: 'center',
-                justifyContent: 'center'
-              }}
-              className="lg:flex"
-            >
-              <div
-                style={{
-                  width: '280px',
-                  height: '280px',
-                  borderRadius: 'var(--radius-xl)',
-                  background: 'rgba(255, 255, 255, 0.1)',
-                  backdropFilter: 'blur(20px)',
-                  border: '2px solid rgba(255, 255, 255, 0.3)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3)'
-                }}
-              >
+            <div className="gradient-cta-section__graphic-wrapper">
+              <div className="gradient-cta-section__graphic-box">
                 {graphic}
               </div>
             </div>

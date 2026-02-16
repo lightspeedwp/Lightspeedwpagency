@@ -1,25 +1,14 @@
 /**
- * Logo Grid Pattern
+ * Logo Grid Pattern Component
  * 
  * WordPress pattern: lsx-design/content/logo-grid
  * 
  * Displays a grid of client logos, partner badges, or technology icons.
- * Commonly used for social proof, partnerships, and tech stack showcases.
- * 
- * **Usage:**
- * ```tsx
- * <LogoGrid
- *   logos={[
- *     { name: 'Company A', image: '/logos/company-a.png' },
- *     { name: 'Company B', image: '/logos/company-b.png' }
- *   ]}
- *   columns={6}
- *   grayscale
- * />
- * ```
  * 
  * @see {@link /guidelines/patterns/LogoGrid.md}
  */
+
+import '@/styles/patterns/logo-grid.css';
 
 export interface Logo {
   /** Company/product name */
@@ -49,8 +38,8 @@ export interface LogoGridProps {
   variant?: 'default' | 'cards' | 'bordered';
   /** Apply grayscale filter and show color on hover */
   grayscale?: boolean;
-  /** Logo opacity (0-1) */
-  opacity?: number;
+  /** Logo opacity (0-1) - handled via CSS class mostly now */
+  opacity?: number; 
   /** Max width constraint */
   maxWidth?: '4xl' | '5xl' | '6xl' | 'none';
   /** Custom gap between logos */
@@ -69,83 +58,41 @@ export function LogoGrid({
   gap = 'var(--spacing-8)',
   align = 'center'
 }: LogoGridProps) {
-  // Grid template based on columns with responsive breakpoints
-  const gridStyles = {
-    2: { gridTemplateColumns: 'repeat(1, 1fr)' },
-    3: { gridTemplateColumns: 'repeat(2, 1fr)' },
-    4: { gridTemplateColumns: 'repeat(2, 1fr)' },
-    5: { gridTemplateColumns: 'repeat(2, 1fr)' },
-    6: { gridTemplateColumns: 'repeat(2, 1fr)' }
-  }[columns];
+  // Grid classes
+  const gridClasses = [
+    'logo-grid',
+    `logo-grid--${columns}-cols`
+  ].filter(Boolean).join(' ');
 
   // Max width class
   const maxWidthClass = maxWidth !== 'none' ? `wp-max-w-${maxWidth}` : '';
 
+  // Container margin
+  const containerStyle = {
+    margin: maxWidth !== 'none' ? '0 auto' : undefined
+  };
+
   return (
-    <div className={maxWidthClass}>
+    <div className={maxWidthClass} style={containerStyle}>
       <div
-        style={{
-          display: 'grid',
-          ...gridStyles,
-          gap
-        }}
+        className={gridClasses}
+        style={{ gap }}
       >
         {logos.map((logo, index) => {
+          // Logo Item classes
+          const itemClasses = [
+            'logo-item',
+            `logo-item--${variant}`,
+            `logo-item--${align}`,
+            grayscale && 'logo-item--grayscale',
+            logo.link && 'logo-item--clickable'
+          ].filter(Boolean).join(' ');
+
           const content = (
-            <div
-              style={{
-                ...(variant === 'cards' ? {
-                  padding: 'var(--spacing-6)',
-                  backgroundColor: 'var(--card)',
-                  borderRadius: 'var(--radius-lg)',
-                  border: '1px solid var(--border-soft)'
-                } : variant === 'bordered' ? {
-                  padding: 'var(--spacing-4)',
-                  borderRadius: 'var(--radius)',
-                  border: '1px solid var(--border-soft)'
-                } : {
-                  padding: 'var(--spacing-4)'
-                }),
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: align,
-                transition: 'all 0.3s ease',
-                cursor: logo.link ? 'pointer' : 'default'
-              }}
-              onMouseEnter={(e) => {
-                if (grayscale && e.currentTarget.querySelector('img')) {
-                  const img = e.currentTarget.querySelector('img') as HTMLImageElement;
-                  img.style.filter = 'grayscale(0%)';
-                  img.style.opacity = '1';
-                }
-                if (variant === 'cards') {
-                  e.currentTarget.style.transform = 'translateY(-4px)';
-                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.08)';
-                }
-              }}
-              onMouseLeave={(e) => {
-                if (grayscale && e.currentTarget.querySelector('img')) {
-                  const img = e.currentTarget.querySelector('img') as HTMLImageElement;
-                  img.style.filter = 'grayscale(100%)';
-                  img.style.opacity = opacity.toString();
-                }
-                if (variant === 'cards') {
-                  e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = 'none';
-                }
-              }}
-            >
+            <div className={itemClasses}>
               {logo.icon ? (
                 // Render icon (for tech stack)
-                <div
-                  style={{
-                    width: '100%',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: align,
-                    color: 'var(--muted-foreground)'
-                  }}
-                >
+                <div className={`logo-item__icon-wrapper logo-item__icon-wrapper--${align}`}>
                   {logo.icon}
                 </div>
               ) : (logo.image || logo.src) ? (
@@ -153,28 +100,11 @@ export function LogoGrid({
                 <img
                   src={logo.image || logo.src}
                   alt={logo.alt || logo.name || 'Logo'}
-                  style={{
-                    maxWidth: '100%',
-                    maxHeight: variant === 'cards' ? '60px' : '48px',
-                    width: 'auto',
-                    height: 'auto',
-                    objectFit: 'contain',
-                    filter: grayscale ? 'grayscale(100%)' : 'none',
-                    opacity: grayscale ? opacity : 1,
-                    transition: 'all 0.3s ease'
-                  }}
+                  className="logo-item__image"
                 />
               ) : (
                 // Fallback to text
-                <span
-                  style={{
-                    fontFamily: 'var(--font-primary)',
-                    fontSize: 'var(--text-sm)',
-                    fontWeight: 'var(--font-weight-semibold)',
-                    color: 'var(--muted-foreground)',
-                    textAlign: align
-                  }}
-                >
+                <span className="logo-item__text" style={{ textAlign: align }}>
                   {logo.name || logo.alt}
                 </span>
               )}
@@ -188,13 +118,13 @@ export function LogoGrid({
               href={logo.link}
               target="_blank"
               rel="noopener noreferrer"
-              style={{ textDecoration: 'none' }}
+              className="logo-item__link"
               aria-label={`Visit ${logo.name}`}
             >
               {content}
             </a>
           ) : (
-            <div key={index}>{content}</div>
+            <div key={index} style={{ width: '100%' }}>{content}</div>
           );
         })}
       </div>

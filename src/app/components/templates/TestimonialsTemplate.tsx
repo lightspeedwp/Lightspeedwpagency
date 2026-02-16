@@ -23,12 +23,7 @@
  * - Reduction: 50% (~400 lines eliminated)
  */
 
-import { SiteHeader } from '../parts/SiteHeader';
-import { SiteFooter } from '../parts/SiteFooter';
-import { SkipLink } from '../common/SkipLink';
 import { Section } from '../common/Section';
-import { BackToTopButton } from '../blocks/layout/BackToTopButton';
-import { RouteAnnouncer } from '../blocks/utility/RouteAnnouncer';
 import { Hero } from '../patterns/Hero';
 import { StatsGrid } from '../patterns/StatsGrid';
 import { TestimonialGrid } from '../patterns/TestimonialGrid';
@@ -46,6 +41,7 @@ import {
   videoTestimonials
 } from '../../data/testimonials';
 import { clientLogos } from '../../data/logos';
+import { testimonialPageFAQs } from '../../data/faqs';
 
 export function TestimonialsTemplate() {
   const [filterIndustry, setFilterIndustry] = useState<string>('all');
@@ -90,50 +86,21 @@ export function TestimonialsTemplate() {
   }));
 
   // FAQs
-  const testimonialFAQs = [
-    {
-      question: 'Are these testimonials from real clients?',
-      answer: 'Yes! All testimonials are from real clients who have worked with LightSpeed. We never use fake reviews or paid testimonials. Each review includes the client\'s name, company, and specific results achieved. We can provide references and case studies upon request.'
-    },
-    {
-      question: 'Can I speak with past clients before hiring you?',
-      answer: 'Absolutely! We\'re happy to connect you with past clients who have given us permission to share their contact information. We have clients across various industries who are willing to share their experience working with us. Just let us know what type of project you\'re considering and we\'ll match you with relevant references.'
-    },
-    {
-      question: 'What industries have you worked with?',
-      answer: 'We\'ve worked with clients across 20+ industries including ecommerce, healthcare, travel & tourism, real estate, professional services, education, non-profits, publishing, fitness, food & beverage, and more. Our diverse experience means we understand the unique challenges and requirements of different sectors.'
-    },
-    {
-      question: 'Do you guarantee the same results for my project?',
-      answer: 'While we can\'t guarantee specific metrics (as results depend on many factors including your industry, competition, and marketing efforts), we do guarantee quality work, adherence to best practices, and our commitment to your success. We set realistic expectations during the proposal stage and provide regular progress updates throughout the project.'
-    },
-    {
-      question: 'How do you measure project success?',
-      answer: 'Success metrics are defined during the discovery phase and vary by project. Common metrics include: website speed improvements, increased traffic and conversions, better search rankings, improved user engagement, higher customer satisfaction scores, and ROI. We provide analytics dashboards and regular reports to track progress against your goals.'
-    },
-    {
-      question: 'What if I\'m not satisfied with the results?',
-      answer: 'Client satisfaction is our top priority. We have a structured revision process during development to ensure you\'re happy with the work before launch. Post-launch, we offer support packages to address any issues and continuously optimize performance. If you\'re not satisfied, we work with you to make it right. Our 98% client retention rate speaks to our commitment to your success.'
-    }
-  ];
+  const testimonialFAQs = testimonialPageFAQs;
 
   return (
     <>
-      <RouteAnnouncer />
-      <SkipLink />
-      <SiteHeader />
-      
-      <main id="main-content" role="main">
         {/* Hero Section with Rating */}
         <Hero
-          badge="CLIENT TESTIMONIALS"
+          badge={{ text: "CLIENT TESTIMONIALS" }}
           title="Trusted by 500+ Happy Clients"
           description="Don't just take our word for it. See what our clients say about working with LightSpeed and the results we've achieved together."
-          variant="gradient"
-          primaryButtonText="Get Started"
-          primaryButtonPage="contact"
-          secondaryButtonText="View Portfolio"
-          secondaryButtonPage="portfolio-archive"
+          variant="service"
+          gradient="blue"
+          buttons={[
+            { label: "Get Started", page: "contact", variant: "primary" },
+            { label: "View Portfolio", page: "portfolio", variant: "outline" }
+          ]}
         />
 
         {/* Stats Section */}
@@ -150,7 +117,7 @@ export function TestimonialsTemplate() {
         </Section>
 
         {/* Featured Testimonials */}
-        <Section spacing="xl" style={{ backgroundColor: 'var(--muted)' }}>
+        <Section spacing="xl" background="muted">
           <TestimonialGrid
             testimonials={featuredTestimonials}
             heading="Featured Success Stories"
@@ -201,7 +168,7 @@ export function TestimonialsTemplate() {
                   alignItems: 'center',
                   marginBottom: 'var(--spacing-12)'
                 }}
-                className="md:flex-row"
+                className="md:wp-flex-row"
               >
                 {/* Industry Filter */}
                 <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-3)' }}>
@@ -220,7 +187,7 @@ export function TestimonialsTemplate() {
                     value={filterIndustry}
                     onChange={(e) => setFilterIndustry(e.target.value)}
                     style={{
-                      padding: '8px 16px',
+                      padding: 'var(--spacing-2) var(--spacing-4)',
                       borderRadius: 'var(--radius)',
                       border: '1px solid var(--border)',
                       backgroundColor: 'var(--card)',
@@ -255,7 +222,7 @@ export function TestimonialsTemplate() {
                     value={filterService}
                     onChange={(e) => setFilterService(e.target.value)}
                     style={{
-                      padding: '8px 16px',
+                      padding: 'var(--spacing-2) var(--spacing-4)',
                       borderRadius: 'var(--radius)',
                       border: '1px solid var(--border)',
                       backgroundColor: 'var(--card)',
@@ -288,7 +255,7 @@ export function TestimonialsTemplate() {
             ) : (
               <div
                 style={{
-                  padding: '64px 32px',
+                  padding: 'var(--spacing-16) var(--spacing-8)',
                   textAlign: 'center',
                   backgroundColor: 'var(--card)',
                   borderRadius: 'var(--radius-lg)',
@@ -310,7 +277,7 @@ export function TestimonialsTemplate() {
         </Section>
 
         {/* Video Testimonials */}
-        <Section spacing="xl" style={{ backgroundColor: 'var(--muted)' }}>
+        <Section spacing="xl" background="muted">
           <VideoTestimonial
             videos={videoTestimonialsData}
             heading="Video Testimonials"
@@ -333,7 +300,7 @@ export function TestimonialsTemplate() {
         </Section>
 
         {/* FAQ Section */}
-        <Section spacing="xl" style={{ backgroundColor: 'var(--muted)' }}>
+        <Section spacing="xl" background="muted">
           <FAQSection
             faqs={testimonialFAQs}
             heading="Frequently Asked Questions"
@@ -351,10 +318,6 @@ export function TestimonialsTemplate() {
           secondaryButtonText="View Our Services"
           secondaryButtonPage="services"
         />
-      </main>
-
-      <SiteFooter />
-      <BackToTopButton />
     </>
   );
 }

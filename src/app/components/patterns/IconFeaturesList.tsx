@@ -23,6 +23,7 @@
  */
 
 import { LucideIcon } from 'lucide-react';
+import '@/styles/icon-features-list.css';
 
 export interface IconFeature {
   /** Icon component */
@@ -56,61 +57,38 @@ export function IconFeaturesList({
   iconBackground = 'var(--primary)',
   iconColor = 'white'
 }: IconFeaturesListProps) {
-  // Gap spacing
-  const gapValue = {
-    sm: 'var(--spacing-4)',
-    md: 'var(--spacing-6)',
-    lg: 'var(--spacing-8)'
-  }[gap];
+  
+  const listClass = `icon-features-list icon-features-list--gap-${gap}`;
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: gapValue }}>
+    <div className={listClass}>
       {features.map((feature, index) => {
         const Icon = feature.icon;
         
         return (
           <div
             key={index}
-            style={{
-              display: 'flex',
-              gap: 'var(--spacing-4)',
-              alignItems: 'flex-start'
-            }}
+            className="icon-features-list__item"
           >
             {/* Icon Box */}
             <div
+              className="icon-features-list__icon-box"
               style={{
                 width: `${iconBoxSize}px`,
                 height: `${iconBoxSize}px`,
-                borderRadius: 'var(--radius-lg)',
                 backgroundColor: iconBackground,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                flexShrink: 0
               }}
             >
               <Icon size={iconSize} style={{ color: iconColor }} />
             </div>
 
             {/* Content */}
-            <div style={{ flex: 1 }}>
-              <h3
-                className="font-primary text-lg font-semibold"
-                style={{
-                  color: 'var(--foreground)',
-                  marginBottom: 'var(--spacing-2)'
-                }}
-              >
+            <div className="icon-features-list__content">
+              <h3 className="icon-features-list__title">
                 {feature.title}
               </h3>
               
-              <p
-                className="font-primary text-base leading-relaxed"
-                style={{
-                  color: 'var(--muted-foreground)'
-                }}
-              >
+              <p className="icon-features-list__description">
                 {feature.description}
               </p>
             </div>

@@ -1,0 +1,19 @@
+/**
+ * Progress Block Styles
+ */
+.wp-block-progress {
+  position: relative;
+  height: 0.5rem; /* 8px */
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--radius-full);
+  background-color: var(--muted);
+}
+
+.wp-block-progress__indicator {
+  height: 100%;
+  width: 100%;
+  flex: 1;
+  background-color: var(--primary);
+  transition: all 0.5s cubic-bezier(0.65, 0, 0.35, 1); /* standard ease */
+}

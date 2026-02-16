@@ -31,10 +31,6 @@
  * ```
  */
 
-import { SiteHeader } from '../parts/SiteHeader';
-import { SiteFooter } from '../parts/SiteFooter';
-import { SkipLink } from '../common/SkipLink';
-import { BackToTopButton } from '../blocks/layout/BackToTopButton';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { Breadcrumbs } from '../common/Breadcrumbs';
@@ -45,10 +41,13 @@ import { NewsletterSignup } from '../patterns/NewsletterSignup';
 import { SocialProof } from '../patterns/SocialProof';
 import { CTASection } from '../patterns/CTASection';
 import { EmptyState } from '../patterns/EmptyState';
+import { Heading } from '../blocks/text/Heading';
+import { Paragraph } from '../blocks/text/Paragraph';
 import { blogPosts } from '../../data/blog-posts';
 import { clientLogos } from '../../data/logos';
 import { motion } from 'motion/react';
 import { Calendar, ChevronLeft, ChevronRight } from 'lucide-react';
+import '@/styles/templates/archive.css';
 
 interface DateArchiveTemplateProps {
   /** Year (e.g., 2024) */
@@ -115,14 +114,13 @@ export function DateArchiveTemplate({
 
   return (
     <>
-      <SkipLink />
-      <SiteHeader />
+      {/* Breadcrumbs */}
+      <section className="wp-block-breadcrumbs-section">
+          <Breadcrumbs items={breadcrumbs} />
+      </section>
       
-      <main id="main-content">
-        <Section variant="default" className="pt-24 md:pt-32 pb-12">
+        <Section background="default" spacing="lg" style={{ paddingTop: 'var(--spacing-24)', paddingBottom: 'var(--spacing-12)' }}>
           <Container>
-            <Breadcrumbs items={breadcrumbs} />
-            
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -141,7 +139,7 @@ export function DateArchiveTemplate({
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="mt-8 flex items-center justify-between gap-4"
+              className="date-navigation"
             >
               {/* Previous Period */}
               {prevPeriod && (
@@ -149,15 +147,7 @@ export function DateArchiveTemplate({
                   href={prevPeriod.url}
                   whileHover={{ scale: 1.05, x: -5 }}
                   whileTap={{ scale: 0.95 }}
-                  className="flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-300"
-                  style={{
-                    backgroundColor: 'var(--muted)',
-                    color: 'var(--foreground)',
-                    fontSize: 'var(--text-sm)',
-                    fontFamily: 'Manrope, sans-serif',
-                    border: '1px solid var(--border-soft)',
-                    textDecoration: 'none'
-                  }}
+                  className="date-navigation__link"
                 >
                   <ChevronLeft size={16} />
                   <span>{prevPeriod.label}</span>
@@ -165,24 +155,9 @@ export function DateArchiveTemplate({
               )}
               
               {/* Calendar Widget */}
-              <div 
-                className="flex items-center gap-2 px-4 py-2 rounded-lg"
-                style={{
-                  backgroundColor: 'var(--muted)',
-                  border: '1px solid var(--border-soft)'
-                }}
-              >
-                <Calendar size={16} style={{ color: 'var(--muted-foreground)' }} />
-                <span 
-                  style={{
-                    fontSize: 'var(--text-sm)',
-                    fontFamily: 'Manrope, sans-serif',
-                    color: 'var(--foreground)',
-                    fontWeight: 500
-                  }}
-                >
-                  {title}
-                </span>
+              <div className="date-navigation__current">
+                <Calendar size={16} className="wp-text-muted-foreground" />
+                <span>{title}</span>
               </div>
               
               {/* Next Period */}
@@ -191,15 +166,7 @@ export function DateArchiveTemplate({
                   href={nextPeriod.url}
                   whileHover={{ scale: 1.05, x: 5 }}
                   whileTap={{ scale: 0.95 }}
-                  className="flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-300"
-                  style={{
-                    backgroundColor: 'var(--muted)',
-                    color: 'var(--foreground)',
-                    fontSize: 'var(--text-sm)',
-                    fontFamily: 'Manrope, sans-serif',
-                    border: '1px solid var(--border-soft)',
-                    textDecoration: 'none'
-                  }}
+                  className="date-navigation__link"
                 >
                   <span>{nextPeriod.label}</span>
                   <ChevronRight size={16} />
@@ -213,16 +180,16 @@ export function DateArchiveTemplate({
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="mt-8"
+                className="wp-mt-8"
               >
                 <MonthGrid year={year} />
               </motion.div>
             )}
           </Container>
         </Section>
-
+        
         {/* Posts Grid */}
-        <Section variant="background">
+        <Section background="default" spacing="md">
           <Container>
             {currentPosts.length > 0 ? (
               <motion.div
@@ -261,7 +228,7 @@ export function DateArchiveTemplate({
 
         {/* Pagination */}
         {totalPages > 1 && (
-          <Section variant="default">
+          <Section background="default" spacing="md">
             <Container>
               <PaginationNav
                 currentPage={currentPage}
@@ -300,10 +267,6 @@ export function DateArchiveTemplate({
             href: '/blog'
           }}
         />
-      </main>
-
-      <SiteFooter />
-      <BackToTopButton />
     </>
   );
 }
@@ -329,7 +292,7 @@ function MonthGrid({ year }: { year: number }) {
   });
   
   return (
-    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    <div className="month-grid">
       {monthCounts.map((item, index) => (
         <motion.a
           key={item.month}
@@ -339,34 +302,14 @@ function MonthGrid({ year }: { year: number }) {
           transition={{ duration: 0.3, delay: index * 0.05 }}
           whileHover={{ scale: 1.05, y: -5 }}
           whileTap={{ scale: 0.95 }}
-          className="p-4 rounded-lg transition-all duration-300"
-          style={{
-            backgroundColor: item.count > 0 ? 'var(--card)' : 'var(--muted)',
-            border: '1px solid var(--border-soft)',
-            textDecoration: 'none',
-            opacity: item.count > 0 ? 1 : 0.5,
-            cursor: item.count > 0 ? 'pointer' : 'default'
-          }}
+          className={`month-card ${item.count === 0 ? 'month-card--empty' : ''}`}
         >
-          <div 
-            className="font-medium mb-1"
-            style={{
-              fontSize: 'var(--text-base)',
-              fontFamily: 'Lexend, sans-serif',
-              color: 'var(--foreground)'
-            }}
-          >
+          <Heading level={4} className="month-card__name">
             {item.name}
-          </div>
-          <div 
-            style={{
-              fontSize: 'var(--text-sm)',
-              fontFamily: 'Manrope, sans-serif',
-              color: 'var(--muted-foreground)'
-            }}
-          >
+          </Heading>
+          <Paragraph size="small" className="month-card__count">
             {item.count} {item.count === 1 ? 'post' : 'posts'}
-          </div>
+          </Paragraph>
         </motion.a>
       ))}
     </div>

@@ -9,37 +9,23 @@
  * URL: /about/process/
  */
 
-import { SiteHeader } from '../parts/SiteHeader';
-import { SiteFooter } from '../parts/SiteFooter';
-import { SkipLink } from '../common/SkipLink';
+
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
-import { Breadcrumbs } from '../common/Breadcrumbs';
-import { BackToTopButton } from '../blocks/layout/BackToTopButton';
-import { TimelineSection } from '../patterns/TimelineSection';
-import { ProcessTimeline } from '../patterns/ProcessTimeline';
+import { Breadcrumbs } from '../blocks/theme/Breadcrumbs';
 import { CTASection } from '../patterns/CTASection';
 import { FAQSection } from '../patterns/FAQSection';
-import { Button } from '../blocks/design/Buttons';
+import { Heading } from '../blocks/text/Heading';
+import { Paragraph } from '../blocks/text/Paragraph';
 import { processFAQs } from '../../data/faqs';
-import { designProcess } from '../../data/process';
 import { CheckCircle, Target, Users, Rocket, Code, Palette, TestTube, Globe } from 'lucide-react';
+import '@/styles/templates/page-about.css';
 
 export function AboutProcessTemplate() {
   return (
     <>
-      <SkipLink />
-      <SiteHeader />
-      
-      <main id="main-content" role="main">
-        {/* Breadcrumbs */}
-        <section 
-          className="py-4"
-          style={{
-            backgroundColor: 'var(--background)',
-          }}
-        >
-          <Container>
+      {/* Breadcrumbs */}
+        <section className="wp-block-breadcrumbs-section">
             <Breadcrumbs 
               items={[
                 { label: 'Home', href: '/' },
@@ -47,22 +33,16 @@ export function AboutProcessTemplate() {
                 { label: 'Our Process' }
               ]}
             />
-          </Container>
         </section>
 
         {/* Hero Section */}
         <Section 
           spacing="xl"
-          style={{
-            backgroundColor: 'var(--primary)',
-            color: 'var(--primary-foreground)',
-            position: 'relative',
-            overflow: 'hidden'
-          }}
+          className="about-page__hero"
         >
           {/* Subtle gradient overlay */}
           <div 
-            className="absolute inset-0"
+            className="wp-absolute wp-inset-0"
             style={{
               background: 'linear-gradient(135deg, transparent 0%, var(--accent) 100%)',
               opacity: '0.1',
@@ -73,7 +53,7 @@ export function AboutProcessTemplate() {
           
           {/* Decorative gradient orb */}
           <div 
-            className="absolute top-0 right-0 w-96 h-96 rounded-full"
+            className="wp-absolute wp-top-0 wp-right-0 wp-w-96 wp-h-96 wp-rounded-full"
             style={{
               background: 'var(--accent)',
               opacity: '0.1',
@@ -84,88 +64,35 @@ export function AboutProcessTemplate() {
           />
 
           <Container style={{ position: 'relative', zIndex: 1 }}>
-            <div className="max-w-4xl">
-              <span 
-                className="inline-flex items-center px-6 py-3 mb-8"
-                style={{
-                  backgroundColor: 'var(--glass-bg-strong)',
-                  backdropFilter: 'blur(10px)',
-                  color: 'var(--primary-foreground)',
-                  borderRadius: 'var(--radius-xl)',
-                  border: '1px solid var(--glass-border)',
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-base)',
-                  fontWeight: 'var(--font-weight-medium)',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.1em'
-                }}
-              >
+            <div className="wp-max-w-4xl">
+              <span className="about-page__hero-badge">
                 About Us
               </span>
 
-              <h1 
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-h1)',
-                  fontWeight: 'var(--font-weight-semibold)',
-                  lineHeight: 'var(--line-height-tight)',
-                  letterSpacing: 'var(--letter-spacing-tight)',
-                  marginBottom: '24px',
-                  color: 'var(--primary-foreground)'
-                }}
-              >
+              <Heading level={1} className="about-page__hero-title">
                 Our Process
-              </h1>
+              </Heading>
 
-              <p 
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-lead)',
-                  fontWeight: 'var(--font-weight-regular)',
-                  lineHeight: 'var(--line-height-relaxed)',
-                  color: 'var(--primary-foreground)',
-                  opacity: 0.95,
-                  marginBottom: 0
-                }}
-              >
+              <Paragraph size="large" className="about-page__hero-desc">
                 A proven methodology that transforms ideas into exceptional WordPress experiences. Our systematic approach ensures quality, efficiency, and success at every stage.
-              </p>
+              </Paragraph>
             </div>
           </Container>
         </Section>
 
         {/* Process Steps Section */}
-        <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
+        <Section spacing="xl" className="about-page__story-section">
           <Container>
-            <div className="text-center mb-16">
-              <h2 
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-h2)',
-                  fontWeight: 'var(--font-weight-semibold)',
-                  color: 'var(--foreground)',
-                  marginBottom: '16px',
-                  lineHeight: 'var(--line-height-snug)',
-                  letterSpacing: 'var(--letter-spacing-tight)'
-                }}
-              >
+            <div className="about-page__section-header">
+              <Heading level={2} className="about-page__section-title">
                 Four-Phase Development Cycle
-              </h2>
-              <p 
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-lg)',
-                  color: 'var(--muted-foreground)',
-                  maxWidth: '700px',
-                  margin: '0 auto',
-                  lineHeight: '1.7'
-                }}
-              >
+              </Heading>
+              <Paragraph className="about-page__section-desc">
                 From discovery to delivery, every project follows our battle-tested framework
-              </p>
+              </Paragraph>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="wp-grid-2-cols wp-gap-8">
               {[
                 {
                   phase: '01',
@@ -224,25 +151,19 @@ export function AboutProcessTemplate() {
                 return (
                   <div
                     key={index}
-                    style={{
-                      backgroundColor: 'var(--card)',
-                      border: '1px solid var(--border-soft)',
-                      borderRadius: 'var(--radius-xl)',
-                      padding: '40px',
-                      position: 'relative'
-                    }}
+                    className="about-page__story-card wp-relative"
                   >
                     {/* Phase Number Background */}
                     <div 
                       style={{
-                        fontFamily: 'Lexend, sans-serif',
+                        fontFamily: 'var(--font-primary)',
                         fontSize: 'clamp(64px, 8vw, 96px)',
                         fontWeight: 'var(--font-weight-bold)',
                         color: 'var(--primary)',
                         opacity: 0.08,
                         position: 'absolute',
-                        top: '24px',
-                        right: '24px',
+                        top: 'var(--spacing-6)',
+                        right: 'var(--spacing-6)',
                         lineHeight: '1',
                         pointerEvents: 'none'
                       }}
@@ -252,10 +173,10 @@ export function AboutProcessTemplate() {
 
                     {/* Icon */}
                     <div 
-                      className="mb-6"
+                      className="wp-mb-6"
                       style={{
-                        width: '64px',
-                        height: '64px',
+                        width: 'var(--spacing-16)',
+                        height: 'var(--spacing-16)',
                         borderRadius: 'var(--radius-lg)',
                         backgroundColor: 'var(--primary)',
                         display: 'flex',
@@ -268,71 +189,53 @@ export function AboutProcessTemplate() {
                     </div>
 
                     {/* Title */}
-                    <h3 
-                      style={{
-                        fontFamily: 'Lexend, sans-serif',
-                        fontSize: 'var(--text-h3)',
-                        fontWeight: 'var(--font-weight-semibold)',
-                        color: 'var(--foreground)',
-                        marginBottom: '16px',
-                        lineHeight: '1.3'
-                      }}
-                    >
+                    <Heading level={3} className="about-page__story-card-title">
                       {step.title}
-                    </h3>
+                    </Heading>
 
                     {/* Description */}
-                    <p 
-                      style={{
-                        fontFamily: 'Lexend, sans-serif',
-                        fontSize: 'var(--text-base)',
-                        color: 'var(--muted-foreground)',
-                        lineHeight: '1.6',
-                        marginBottom: '24px'
-                      }}
-                    >
+                    <Paragraph className="about-page__story-card-text wp-mb-6">
                       {step.description}
-                    </p>
+                    </Paragraph>
 
                     {/* Deliverables */}
                     <div>
-                      <h4 
+                      <Heading 
+                        level={4}
                         style={{
-                          fontFamily: 'Lexend, sans-serif',
                           fontSize: 'var(--text-base)',
                           fontWeight: 'var(--font-weight-semibold)',
                           color: 'var(--foreground)',
-                          marginBottom: '12px',
+                          marginBottom: 'var(--spacing-3)',
                           textTransform: 'uppercase',
                           letterSpacing: '0.05em'
                         }}
                       >
                         Key Deliverables
-                      </h4>
-                      <ul style={{ margin: 0, padding: 0, listStyle: 'none' }}>
+                      </Heading>
+                      <ul className="wp-m-0 wp-p-0 wp-list-none">
                         {step.deliverables.map((item, i) => (
                           <li 
                             key={i}
-                            className="flex items-start gap-2 mb-2"
+                            className="wp-flex wp-items-start wp-gap-2 wp-mb-2"
                           >
                             <CheckCircle 
                               size={18} 
                               style={{ 
-                                color: 'var(--primary)',
+                                color: 'var(--primary)', 
                                 flexShrink: 0,
-                                marginTop: '2px'
+                                marginTop: 'var(--spacing-0-5)'
                               }} 
                             />
-                            <span 
+                            <Paragraph 
                               style={{
-                                fontFamily: 'Lexend, sans-serif',
                                 fontSize: 'var(--text-base)',
                                 color: 'var(--foreground)',
                                 lineHeight: '1.5'
                               }}
                             >
                               {item}
-                            </span>
+                            </Paragraph>
                           </li>
                         ))}
                       </ul>
@@ -345,103 +248,69 @@ export function AboutProcessTemplate() {
         </Section>
 
         {/* Methodology Section */}
-        <Section spacing="xl" style={{ backgroundColor: 'var(--muted)' }}>
+        <Section spacing="xl" className="about-page__mission-section">
           <Container>
-            <div className="max-w-4xl mx-auto">
-              <h2 
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-h2)',
-                  fontWeight: 'var(--font-weight-semibold)',
-                  color: 'var(--foreground)',
-                  marginBottom: '24px',
-                  lineHeight: 'var(--line-height-snug)',
-                  letterSpacing: 'var(--letter-spacing-tight)',
-                  textAlign: 'center'
-                }}
-              >
+            <div className="about-page__section-header">
+              <Heading level={2} className="about-page__section-title">
                 Our Core Principles
-              </h2>
+              </Heading>
+            </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
-                {[
-                  {
-                    icon: Users,
-                    title: 'Collaborative Partnership',
-                    description: 'We work as an extension of your team, not as external vendors. Regular communication and feedback loops keep everyone aligned.'
-                  },
-                  {
-                    icon: TestTube,
-                    title: 'Iterative Development',
-                    description: 'Agile sprints with regular demos and testing ensure we stay on track and adapt quickly to changing requirements.'
-                  },
-                  {
-                    icon: Globe,
-                    title: 'Standards-First Approach',
-                    description: 'WCAG AA compliance, semantic HTML, and WordPress coding standards are non-negotiable in every project.'
-                  },
-                  {
-                    icon: CheckCircle,
-                    title: 'Quality Assurance',
-                    description: 'Multiple rounds of testing across devices, browsers, and assistive technologies before launch.'
-                  }
-                ].map((principle, index) => {
-                  const Icon = principle.icon;
-                  return (
-                    <div
-                      key={index}
-                      className="flex gap-4"
+            <div className="wp-grid-2-cols wp-gap-6 wp-mt-12">
+              {[
+                {
+                  icon: Users,
+                  title: 'Collaborative Partnership',
+                  description: 'We work as an extension of your team, not as external vendors. Regular communication and feedback loops keep everyone aligned.'
+                },
+                {
+                  icon: TestTube,
+                  title: 'Iterative Development',
+                  description: 'Agile sprints with regular demos and testing ensure we stay on track and adapt quickly to changing requirements.'
+                },
+                {
+                  icon: Globe,
+                  title: 'Standards-First Approach',
+                  description: 'WCAG AA compliance, semantic HTML, and WordPress coding standards are non-negotiable in every project.'
+                },
+                {
+                  icon: CheckCircle,
+                  title: 'Quality Assurance',
+                  description: 'Multiple rounds of testing across devices, browsers, and assistive technologies before launch.'
+                }
+              ].map((principle, index) => {
+                const Icon = principle.icon;
+                return (
+                  <div
+                    key={index}
+                    className="wp-flex wp-gap-4 wp-p-6 wp-bg-card wp-border wp-border-border-soft wp-rounded-xl"
+                  >
+                    <div 
                       style={{
-                        backgroundColor: 'var(--card)',
-                        border: '1px solid var(--border-soft)',
-                        borderRadius: 'var(--radius-xl)',
-                        padding: '24px'
+                        width: 'var(--spacing-12)',
+                        height: 'var(--spacing-12)',
+                        borderRadius: 'var(--radius)',
+                        backgroundColor: 'var(--primary)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        color: 'var(--primary-foreground)',
+                        flexShrink: 0
                       }}
                     >
-                      <div 
-                        style={{
-                          width: '48px',
-                          height: '48px',
-                          borderRadius: 'var(--radius)',
-                          backgroundColor: 'var(--primary)',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          color: 'var(--primary-foreground)',
-                          flexShrink: 0
-                        }}
-                      >
-                        <Icon size={24} strokeWidth={2} />
-                      </div>
-                      <div>
-                        <h3 
-                          style={{
-                            fontFamily: 'Lexend, sans-serif',
-                            fontSize: 'var(--text-h4)',
-                            fontWeight: 'var(--font-weight-semibold)',
-                            color: 'var(--foreground)',
-                            marginBottom: '8px',
-                            lineHeight: '1.3'
-                          }}
-                        >
-                          {principle.title}
-                        </h3>
-                        <p 
-                          style={{
-                            fontFamily: 'Lexend, sans-serif',
-                            fontSize: 'var(--text-base)',
-                            color: 'var(--muted-foreground)',
-                            lineHeight: '1.6',
-                            margin: 0
-                          }}
-                        >
-                          {principle.description}
-                        </p>
-                      </div>
+                      <Icon size={24} strokeWidth={2} />
                     </div>
-                  );
-                })}
-              </div>
+                    <div>
+                      <Heading level={3} className="about-page__story-card-title wp-mb-2">
+                        {principle.title}
+                      </Heading>
+                      <Paragraph className="about-page__story-card-text wp-m-0">
+                        {principle.description}
+                      </Paragraph>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </Container>
         </Section>
@@ -455,58 +324,14 @@ export function AboutProcessTemplate() {
         />
 
         {/* CTA Section */}
-        <Section 
-          spacing="xl"
-          style={{
-            backgroundColor: 'var(--primary)',
-            color: 'var(--primary-foreground)',
-            textAlign: 'center'
-          }}
-        >
-          <Container>
-            <div className="max-w-3xl mx-auto">
-              <h2 
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-h2)',
-                  fontWeight: 'var(--font-weight-semibold)',
-                  marginBottom: '24px',
-                  lineHeight: 'var(--line-height-snug)',
-                  letterSpacing: 'var(--letter-spacing-tight)'
-                }}
-              >
-                Ready to Start Your Project?
-              </h2>
-              <p 
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-lg)',
-                  marginBottom: '32px',
-                  lineHeight: '1.7',
-                  opacity: 0.95
-                }}
-              >
-                Let's discuss how our proven process can bring your WordPress vision to life
-              </p>
-              <Button 
-                variant="primary" 
-                size="lg" 
-                page="contact"
-                aria-label="Schedule a consultation"
-                style={{
-                  backgroundColor: 'var(--primary-foreground)',
-                  color: 'var(--primary)'
-                }}
-              >
-                Schedule a Consultation
-              </Button>
-            </div>
-          </Container>
-        </Section>
-      </main>
-
-      <SiteFooter />
-      <BackToTopButton />
+        <CTASection
+          title="Ready to Start Your Project?"
+          description="Let's discuss how our proven process can bring your WordPress vision to life"
+          primaryButtonText="Schedule a Consultation"
+          primaryButtonPage="contact"
+          variant="highlighted"
+          buttonSize="lg"
+        />
     </>
   );
 }

@@ -17,8 +17,9 @@
  */
 
 import React, { Component, ReactNode } from 'react';
-import { AlertTriangle, RefreshCw, Home } from 'lucide-react';
+import { AlertTriangle, RefreshCw, Home, ChevronDown, ChevronUp } from 'lucide-react';
 import { Button } from '../design/Buttons';
+import '@/styles/components/error-boundary.css';
 
 interface ErrorBoundaryProps {
   /** Child components to monitor for errors */
@@ -107,7 +108,7 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
             alignItems: 'center',
             justifyContent: 'center',
             backgroundColor: 'var(--background)',
-            padding: '24px',
+            padding: 'var(--spacing-6)',
           }}
         >
           <div
@@ -120,14 +121,14 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
             {/* Error Icon */}
             <div
               style={{
-                width: '80px',
-                height: '80px',
+                width: 'var(--spacing-20)',
+                height: 'var(--spacing-20)',
                 borderRadius: '50%',
                 backgroundColor: 'var(--destructive)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                margin: '0 auto 24px',
+                margin: '0 auto var(--spacing-6)',
                 opacity: 0.9,
               }}
             >
@@ -137,11 +138,11 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
             {/* Heading */}
             <h1
               style={{
-                fontFamily: 'Lexend, sans-serif',
+                fontFamily: 'var(--font-primary)',
                 fontSize: 'var(--text-h2)',
                 fontWeight: 'var(--font-weight-semibold)',
                 color: 'var(--foreground)',
-                marginBottom: '16px',
+                marginBottom: 'var(--spacing-4)',
               }}
             >
               Something went wrong
@@ -149,9 +150,9 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
 
             {/* Description */}
             <p
-              className="mb-8"
+              className="wp-mb-8"
               style={{
-                fontFamily: 'Manrope, sans-serif',
+                fontFamily: 'var(--font-secondary)',
                 fontSize: 'var(--text-lg)',
                 color: 'var(--muted-foreground)',
                 lineHeight: '1.7',
@@ -164,29 +165,29 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
             {/* Error Details (Development Only) */}
             {process.env.NODE_ENV === 'development' && this.state.error && (
               <div
-                className="mb-8"
+                className="wp-mb-8"
                 style={{
                   backgroundColor: 'var(--muted)',
                   border: '1px solid var(--border)',
                   borderRadius: 'var(--radius-lg)',
-                  padding: '16px',
+                  padding: 'var(--spacing-4)',
                   textAlign: 'left',
                 }}
               >
                 <p
                   style={{
-                    fontFamily: 'Lexend, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                     fontSize: 'var(--text-base)',
                     fontWeight: 'var(--font-weight-semibold)',
                     color: 'var(--destructive)',
-                    marginBottom: '8px',
+                    marginBottom: 'var(--spacing-2)',
                   }}
                 >
                   Error Details (Development Mode):
                 </p>
                 <pre
                   style={{
-                    fontFamily: 'monospace',
+                    fontFamily: 'var(--font-mono)',
                     fontSize: 'var(--text-small)',
                     color: 'var(--foreground)',
                     whiteSpace: 'pre-wrap',
@@ -201,7 +202,7 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
             )}
 
             {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="error-boundary__actions">
               <Button
                 variant="default"
                 size="lg"
@@ -209,7 +210,7 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
-                  gap: '8px',
+                  gap: 'var(--spacing-2)',
                 }}
               >
                 <RefreshCw size={20} />
@@ -223,7 +224,7 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
-                  gap: '8px',
+                  gap: 'var(--spacing-2)',
                 }}
               >
                 <Home size={20} />
@@ -254,26 +255,20 @@ export function ErrorFallback({
 }) {
   return (
     <div
-      className="flex flex-col items-center justify-center p-8"
-      style={{
-        backgroundColor: 'var(--card)',
-        border: '1px solid var(--border)',
-        borderRadius: 'var(--radius-lg)',
-        minHeight: '200px',
-      }}
+      className="error-fallback"
     >
       <AlertTriangle
         size={48}
         style={{
           color: 'var(--destructive)',
-          marginBottom: '16px',
+          marginBottom: 'var(--spacing-4)',
         }}
       />
       
       <h3
-        className="mb-2"
+        className="wp-mb-2"
         style={{
-          fontFamily: 'Lexend, sans-serif',
+          fontFamily: 'var(--font-primary)',
           fontSize: 'var(--text-h4)',
           fontWeight: 'var(--font-weight-semibold)',
           color: 'var(--foreground)',
@@ -283,9 +278,9 @@ export function ErrorFallback({
       </h3>
       
       <p
-        className="mb-6"
+        className="wp-mb-6"
         style={{
-          fontFamily: 'Manrope, sans-serif',
+          fontFamily: 'var(--font-secondary)',
           fontSize: 'var(--text-base)',
           color: 'var(--muted-foreground)',
           textAlign: 'center',
@@ -303,7 +298,7 @@ export function ErrorFallback({
           style={{
             display: 'inline-flex',
             alignItems: 'center',
-            gap: '8px',
+            gap: 'var(--spacing-2)',
           }}
         >
           <RefreshCw size={16} />

@@ -10,41 +10,12 @@
  * - Spacing: CSS variables (var(--spacing-*))
  * - Border Radius: CSS variables (var(--radius-*))
  * 
- * **WordPress Mapping:**
- * - Pattern: lsx-design/content/video-testimonial
- * - Block: Group → Grid → Video Cards
- * 
- * **Accessibility:**
- * - WCAG 2.1 AA compliant
- * - Keyboard navigation support
- * - Screen reader friendly
- * - Focus indicators on play buttons
- * 
- * **Usage:**
- * ```tsx
- * <VideoTestimonial
- *   videos={[
- *     {
- *       title: 'Client Success Story',
- *       clientName: 'John Doe',
- *       clientRole: 'CEO',
- *       company: 'Tech Corp',
- *       thumbnail: 'https://...',
- *       videoUrl: 'https://youtube.com/...',
- *       duration: '2:34'
- *     }
- *   ]}
- *   heading="Video Testimonials"
- *   variant="grid"
- *   columns={2}
- * />
- * ```
- * 
  * @see {@link /guidelines/patterns/VideoTestimonial.md}
  */
 
 import { PlayCircle, Clock } from 'lucide-react';
 import { useState } from 'react';
+import '@/styles/patterns/video-testimonial.css';
 
 export interface VideoTestimonialItem {
   /** Video title */
@@ -90,64 +61,34 @@ export function VideoTestimonial({
 }: VideoTestimonialProps) {
   const [activeVideo, setActiveVideo] = useState<number | null>(null);
 
-  // Grid template based on columns
-  const gridStyles = {
-    1: { gridTemplateColumns: '1fr' },
-    2: { 
-      gridTemplateColumns: '1fr',
-      '@media (min-width: 768px)': {
-        gridTemplateColumns: 'repeat(2, 1fr)'
-      }
-    },
-    3: {
-      gridTemplateColumns: '1fr',
-      '@media (min-width: 768px)': {
-        gridTemplateColumns: 'repeat(2, 1fr)'
-      },
-      '@media (min-width: 1024px)': {
-        gridTemplateColumns: 'repeat(3, 1fr)'
-      }
-    }
-  };
-
   // Max width classes
   const maxWidthClass = {
     '3xl': 'wp-max-w-3xl',
     '4xl': 'wp-max-w-4xl',
     '6xl': 'wp-max-w-6xl',
-    '7xl': 'max-w-7xl mx-auto px-6'
-  }[maxWidth];
+    '7xl': 'wp-max-w-7xl' // assuming this utility exists, otherwise standard naming
+  }[maxWidth] || 'wp-max-w-6xl';
+
+  const gridClass = {
+    1: 'video-testimonial__grid--1-col',
+    2: 'video-testimonial__grid--2-cols',
+    3: 'video-testimonial__grid--3-cols'
+  }[columns];
 
   return (
-    <div className="w-full">
+    <div className="video-testimonial">
       {/* Section Header */}
       {(heading || description) && (
-        <div className={`${maxWidthClass} wp-text-center`} style={{ marginBottom: 'var(--spacing-12)' }}>
+        <div className="video-testimonial__header">
           {heading && (
             <h2
-              style={{
-                fontFamily: 'var(--font-primary)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 'var(--font-weight-bold)',
-                lineHeight: '1.2',
-                color: 'var(--foreground)',
-                marginBottom: description ? 'var(--spacing-4)' : '0'
-              }}
+              className={`video-testimonial__title ${description ? 'video-testimonial__title--with-desc' : ''}`}
             >
               {heading}
             </h2>
           )}
           {description && (
-            <p
-              style={{
-                fontFamily: 'var(--font-primary)',
-                fontSize: 'var(--text-lg)',
-                lineHeight: '1.6',
-                color: 'var(--muted-foreground)',
-                maxWidth: '700px',
-                margin: '0 auto'
-              }}
-            >
+            <p className="video-testimonial__description">
               {description}
             </p>
           )}
@@ -155,35 +96,12 @@ export function VideoTestimonial({
       )}
 
       {/* Video Grid */}
-      <div className={maxWidthClass}>
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: columns === 1 ? '1fr' : columns === 2 ? 'repeat(auto-fit, minmax(300px, 1fr))' : 'repeat(auto-fit, minmax(280px, 1fr))',
-            gap: 'var(--spacing-8)'
-          }}
-        >
+      <div className={maxWidthClass} style={{ margin: '0 auto' }}>
+        <div className={`video-testimonial__grid ${gridClass}`}>
           {videos.map((video, index) => (
             <div
               key={index}
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                backgroundColor: 'var(--card)',
-                borderRadius: 'var(--radius-lg)',
-                overflow: 'hidden',
-                border: '1px solid var(--border)',
-                transition: 'all 0.3s ease',
-                cursor: 'pointer'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-4px)';
-                e.currentTarget.style.boxShadow = '0 12px 24px rgba(0, 0, 0, 0.1)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = 'none';
-              }}
+              className="video-testimonial__card"
               onClick={() => {
                 // Open video in modal or new tab
                 window.open(video.videoUrl, '_blank');
@@ -199,82 +117,24 @@ export function VideoTestimonial({
               }}
             >
               {/* Video Thumbnail */}
-              <div
-                style={{
-                  position: 'relative',
-                  width: '100%',
-                  paddingTop: '56.25%', // 16:9 aspect ratio
-                  backgroundColor: 'var(--muted)',
-                  overflow: 'hidden'
-                }}
-              >
+              <div className="video-testimonial__thumbnail-container">
                 <img
                   src={video.thumbnail}
                   alt={`${video.title} video thumbnail`}
-                  style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
-                    transition: 'transform 0.3s ease'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'scale(1.05)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'scale(1)';
-                  }}
+                  className="video-testimonial__thumbnail"
                 />
 
                 {/* Play Button Overlay */}
-                <div
-                  style={{
-                    position: 'absolute',
-                    top: '50%',
-                    left: '50%',
-                    transform: 'translate(-50%, -50%)',
-                    width: '80px',
-                    height: '80px',
-                    borderRadius: '50%',
-                    backgroundColor: 'rgba(255, 255, 255, 0.95)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    boxShadow: '0 8px 16px rgba(0, 0, 0, 0.2)',
-                    transition: 'all 0.3s ease'
-                  }}
-                >
+                <div className="video-testimonial__play-overlay">
                   <PlayCircle
                     size={48}
-                    style={{
-                      color: 'var(--primary)',
-                      fill: 'var(--primary)',
-                      transition: 'all 0.3s ease'
-                    }}
+                    className="video-testimonial__play-icon"
                   />
                 </div>
 
                 {/* Duration Badge */}
                 {video.duration && (
-                  <div
-                    style={{
-                      position: 'absolute',
-                      bottom: '12px',
-                      right: '12px',
-                      backgroundColor: 'rgba(0, 0, 0, 0.8)',
-                      color: 'white',
-                      padding: '4px 8px',
-                      borderRadius: 'var(--radius)',
-                      fontSize: 'var(--text-small)',
-                      fontFamily: 'var(--font-secondary)',
-                      fontWeight: 'var(--font-weight-medium)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '4px'
-                    }}
-                  >
+                  <div className="video-testimonial__duration">
                     <Clock size={12} />
                     {video.duration}
                   </div>
@@ -282,56 +142,25 @@ export function VideoTestimonial({
               </div>
 
               {/* Video Info */}
-              <div style={{ padding: 'var(--spacing-6)' }}>
+              <div className="video-testimonial__content">
                 {/* Title */}
-                <h3
-                  style={{
-                    fontFamily: 'var(--font-primary)',
-                    fontSize: 'var(--text-lg)',
-                    fontWeight: 'var(--font-weight-semibold)',
-                    lineHeight: '1.4',
-                    color: 'var(--foreground)',
-                    marginBottom: 'var(--spacing-2)'
-                  }}
-                >
+                <h3 className="video-testimonial__video-title">
                   {video.title}
                 </h3>
 
                 {/* Description */}
                 {video.description && (
-                  <p
-                    style={{
-                      fontFamily: 'var(--font-primary)',
-                      fontSize: 'var(--text-base)',
-                      lineHeight: '1.6',
-                      color: 'var(--muted-foreground)',
-                      marginBottom: 'var(--spacing-4)'
-                    }}
-                  >
+                  <p className="video-testimonial__video-description">
                     {video.description}
                   </p>
                 )}
 
                 {/* Client Info */}
-                <div style={{ marginTop: 'var(--spacing-4)' }}>
-                  <p
-                    style={{
-                      fontFamily: 'var(--font-primary)',
-                      fontSize: 'var(--text-base)',
-                      fontWeight: 'var(--font-weight-semibold)',
-                      color: 'var(--foreground)',
-                      marginBottom: '2px'
-                    }}
-                  >
+                <div className="video-testimonial__client-info">
+                  <p className="video-testimonial__client-name">
                     {video.clientName}
                   </p>
-                  <p
-                    style={{
-                      fontFamily: 'var(--font-secondary)',
-                      fontSize: 'var(--text-small)',
-                      color: 'var(--muted-foreground)'
-                    }}
-                  >
+                  <p className="video-testimonial__client-role">
                     {video.clientRole} at {video.company}
                   </p>
                 </div>

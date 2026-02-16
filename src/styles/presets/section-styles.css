@@ -1,0 +1,100 @@
+/**
+ * LSX Design System — Section Style Presets
+ * 
+ * WordPress-compatible section style variations.
+ * Applied via the "Styles" panel in WordPress editor or `.is-style-{name}` classes.
+ */
+
+/* ============================================
+   DEFAULT STYLE
+   ============================================ */
+
+.is-style-default {
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+/* ============================================
+   MUTED STYLE
+   ============================================ */
+
+.is-style-muted {
+  background-color: var(--muted);
+  color: var(--muted-foreground);
+}
+
+.is-style-muted .wp-block-button__link:not(.is-style-outline) {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+/* ============================================
+   DARK STYLE
+   ============================================ */
+
+.is-style-dark {
+  background-color: var(--foreground); /* Invert standard logic: bg becomes dark */
+  color: var(--background);            /* Text becomes light */
+  
+  /* Redefine semantic vars for children context */
+  --primary-foreground: var(--primary);
+  --muted: var(--overlay-white-soft);             /* ~10% white */
+  --muted-foreground: var(--overlay-white-muted);  /* ~70% white */
+  --border: var(--overlay-white-medium);           /* ~30% white */
+}
+
+.is-style-dark h1,
+.is-style-dark h2,
+.is-style-dark h3,
+.is-style-dark h4,
+.is-style-dark h5,
+.is-style-dark h6 {
+  color: var(--background);
+}
+
+/* ============================================
+   PRIMARY STYLE
+   ============================================ */
+
+.is-style-primary {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  --muted-foreground: var(--overlay-white-heavy);  /* ~80% white */
+}
+
+.is-style-primary h1, 
+.is-style-primary h2, 
+.is-style-primary h3, 
+.is-style-primary h4, 
+.is-style-primary h5, 
+.is-style-primary h6 {
+  color: var(--primary-foreground);
+}
+
+/* ============================================
+   ACCENT STYLE
+   ============================================ */
+
+.is-style-accent {
+  background-color: var(--accent);
+  color: var(--accent-foreground);
+}
+
+/* ============================================
+   GRADIENT STYLES
+   ============================================ */
+
+.is-style-gradient-primary {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  color: var(--primary-foreground);
+}
+
+.is-style-gradient-dark {
+  background: linear-gradient(to bottom, var(--foreground) 0%, var(--card) 100%);
+  color: var(--background);
+}
+
+.is-style-gradient-subtle {
+  background: linear-gradient(to bottom, var(--background) 0%, var(--muted) 100%);
+  color: var(--foreground);
+}

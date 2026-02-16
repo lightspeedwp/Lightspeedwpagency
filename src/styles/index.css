@@ -1,26 +1,6 @@
-/**
- * LSX Design System — Main Stylesheet
- * 
- * Import order matters:
- * 1. Fonts — Load custom fonts first
- * 2. Tailwind — Base framework
- * 3. Theme Base — Typography, spacing, borders (theme-agnostic)
- * 4. Theme Light — Light mode colors (default)
- * 5. Theme Dark — Dark mode colors (overrides for .dark class)
- * 6. Layout — Global fluid padding and layout utilities (NEW)
- * 7. Utilities — Global utility classes (text, spacing, grids)
- * 8. Responsive — Responsive utilities (hide/show, fluid typography)
- * 9. WordPress Blocks — Complete WordPress core block styles
- * 10. WordPress Blocks Extended — Additional blog/navigation patterns
- * 11. Component Styles — Reusable component patterns
- * 12. Template Styles — Page-specific styles
- * 13. Theme Parts — Header, Footer, etc.
- * 
- * Last Updated: January 26, 2026
- */
-
 /* 1. Core System */
 @import './fonts.css';
+@import './presets/index.css';
 @import './tailwind.css';
 @import './theme-base.css';
 @import './theme-light.css';
@@ -32,39 +12,273 @@
 /* 2. WordPress Blocks */
 @import './wordpress-blocks.css';
 @import './wordpress-blocks-extended.css';
-@import './accordion.css';
+
+/* Design Blocks */
+@import './blocks/design/accordion.css';
+@import './blocks/design/badge.css';
+@import './blocks/design/button.css';
+@import './blocks/design/card.css';
+@import './blocks/design/collapsible.css';
+@import './blocks/design/separator.css';
+@import './blocks/design/skeleton.css';
+@import './blocks/design/more.css';
+@import './blocks/design/spacer.css';
+@import './blocks/design/page-break.css';
+@import './blocks/design/group.css';
+@import './blocks/design/columns.css';
+@import './blocks/design/stack.css';
+@import './blocks/design/row.css';
+@import './blocks/design/tabs.css';
+
+/* Theme Blocks */
+@import './blocks/theme/breadcrumbs.css';
+@import './blocks/theme/pagination.css';
+@import './blocks/theme/nav-block.css';
+@import './blocks/theme/mega-menu.css';
+@import './blocks/theme/style-switcher.css';
+@import './blocks/theme/avatar.css';
+@import './blocks/theme/site-header.css';
+@import './blocks/theme/site-footer.css';
+@import './blocks/theme/site-logo.css';
+@import './blocks/theme/site-title.css';
+
+/* Text Blocks */
+@import './blocks/text/table.css';
+@import './blocks/text/list.css';
+@import './blocks/text/quote.css';
+@import './blocks/text/code.css';
+@import './blocks/text/preformatted.css';
+@import './blocks/text/pullquote.css';
+@import './blocks/text/verse.css';
+@import './blocks/text/details.css';
+@import './blocks/text/paragraph.css';
+@import './blocks/text/heading.css';
+
+/* Media Blocks */
+@import './blocks/media/carousel.css';
+@import './blocks/media/gallery.css';
+@import './blocks/media/image.css';
+@import './blocks/media/video.css';
+@import './blocks/media/cover.css';
+
+/* Widget Blocks */
+@import './blocks/widgets/latest-comments.css';
+@import './blocks/widgets/calendar.css';
+@import './blocks/widgets/archives.css';
+@import './blocks/widgets/categories.css';
+@import './blocks/widgets/latest-posts.css';
+@import './blocks/widgets/rss.css';
+@import './blocks/widgets/social-icons.css';
+@import './blocks/widgets/tag-cloud.css';
+@import './blocks/widgets/search.css';
+
+/* Navigation Blocks */
+@import './blocks/navigation/menubar.css';
+/* Tabs moved to Design Blocks */
+
+/* Feedback Blocks */
+@import './blocks/feedback/alert.css';
+@import './blocks/feedback/modal.css';
+@import './blocks/feedback/alert-dialog.css';
+@import './blocks/feedback/hover-card.css';
+@import './blocks/feedback/progress.css';
+@import './blocks/feedback/toast.css';
+
+/* Layout Blocks */
+@import './blocks/layout/offcanvas.css';
+@import './blocks/layout/drawer.css';
+@import './blocks/layout/resizable.css';
+@import './blocks/layout/sidebar.css';
+
+/* Utility Blocks */
+@import './blocks/utility/aspect-ratio.css';
+@import './blocks/utility/command.css';
+@import './blocks/utility/popover.css';
+@import './blocks/utility/scroll-area.css';
+@import './blocks/utility/dropdown-menu.css';
+@import './blocks/utility/tooltip.css';
+
+/* Data Display Blocks */
+@import './blocks/data-display/chart.css';
+@import './blocks/data-display/stats-card.css';
+@import './blocks/data-display/data-table.css';
+
+/* Post Format Blocks */
+@import './blocks/post-formats/audio.css';
+@import './blocks/post-formats/gallery.css';
+@import './blocks/post-formats/link.css';
+@import './blocks/post-formats/video.css';
+@import './blocks/post-formats/image.css';
+@import './blocks/post-formats/aside.css';
+@import './blocks/post-formats/quote.css';
+@import './blocks/post-formats/aside-stream.css';
+@import './blocks/post-formats/chat.css';
+@import './blocks/post-formats/status.css';
+@import './blocks/post-formats/standard.css';
+
+/* Embed Blocks */
+@import './blocks/embed/embed-base.css';
+
+/* WooCommerce Blocks */
+@import './blocks/woocommerce/product-search.css';
+@import './blocks/woocommerce/mini-cart.css';
+@import './blocks/woocommerce/woo-base.css';
+
+/* Forms */
+@import './blocks/forms/input.css';
+@import './blocks/forms/textarea.css';
+@import './blocks/forms/label.css';
+@import './blocks/forms/checkbox.css';
+@import './blocks/forms/switch.css';
+@import './blocks/forms/radio-group.css';
+@import './blocks/forms/select.css';
+@import './blocks/forms/slider.css';
+@import './blocks/forms/toggle.css';
+@import './blocks/forms/toggle-group.css';
+@import './blocks/forms/calendar.css';
+@import './blocks/forms/custom-form.css';
+@import './blocks/forms/contact-form-7.css';
+@import './blocks/forms/enquiry-modal.css';
+@import './blocks/forms/form-field.css';
 
 /* 3. Global Section Styles */
 @import './section-styles.css';
+@import './sections/hero.css';
+@import './sections/call-to-action.css';
+@import './sections/media-grid.css';
+@import './sections/post-hero.css';
 
 /* 4. Pattern Styles */
-@import './archive-header.css';
-@import './card-grid.css';
-@import './case-study-preview.css';
-@import './cta-section.css';
-@import './faq-section.css';
-@import './featured-project-showcase.css';
-@import './filter-bar.css';
-@import './footer-newsletter.css';
-@import './hero.css';
-@import './hero-home.css';
-@import './pagination-nav.css';
-@import './social-proof.css';
-@import './solution-cards-grid.css';
-@import './stats-section.css';
-@import './testimonial-grid.css';
-@import './theme-showcase-grid.css';
-@import './values-section.css';
+@import './patterns/archive-header.css';
+@import './patterns/card-grid.css';
+@import './patterns/case-study-preview.css';
+@import './patterns/cta-section.css';
+@import './patterns/faq-section.css';
+@import './patterns/featured-project-showcase.css';
+@import './patterns/filter-bar.css';
+@import './patterns/footer-newsletter.css';
+@import './patterns/hero.css';
+@import './patterns/hero-home.css';
+@import './patterns/pagination-nav.css';
+@import './patterns/social-proof.css';
+@import './patterns/solution-cards-grid.css';
+@import './patterns/stats-section.css';
+@import './patterns/testimonial-grid.css';
+@import './patterns/theme-showcase-grid.css';
+@import './patterns/values-section.css';
+@import './patterns/pricing-table.css';
+@import './patterns/archive-cta.css';
+@import './patterns/feature-comparison.css';
+@import './patterns/feature-grid.css';
+@import './patterns/newsletter-signup.css';
+
+/* Additional Patterns */
+@import './patterns/taxonomy-filter.css';
+@import './patterns/services-card.css';
+@import './patterns/team-grid.css';
+@import './patterns/timeline.css';
+@import './patterns/timeline-section.css';
+@import './patterns/process-timeline.css';
+@import './patterns/process-steps.css';
+@import './patterns/contact-form.css';
+@import './patterns/contact-info.css';
+@import './patterns/cta-inline.css';
+@import './patterns/empty-state.css';
+@import './patterns/logo-grid.css';
+@import './patterns/gradient-cta-section.css';
+@import './patterns/author-bio.css';
+@import './patterns/challenges-grid.css';
+@import './patterns/integrations-grid.css';
+@import './patterns/service-offerings-grid.css';
+@import './patterns/solutions-detail-grid.css';
+@import './patterns/use-cases-grid.css';
+@import './patterns/vertical-process-steps.css';
+@import './patterns/video-testimonial.css';
+@import './patterns/testimonial-inline.css';
+@import './patterns/why-choose-us.css';
+@import './patterns/wordpress-services.css';
+@import './patterns/two-column-impact.css';
+@import './patterns/feature-icon-grid.css';
+@import './patterns/instagram-feed.css';
+@import './patterns/global-search.css';
 
 /* 5. Page/Template Styles */
 @import './homepage-sections.css';
 @import './design-service.css';
 @import './solutions-template.css';
+@import './templates/common-template-headers.css';
+@import './templates/contact-page.css';
+@import './templates/team-page.css';
+@import './templates/hosting-page.css';
+@import './templates/blog-index-page.css';
+@import './templates/single-post-page.css';
+@import './templates/wetu-importer-page.css';
+@import './templates/lsx-sharing-page.css';
+@import './templates/lsx-search-page.css';
+@import './templates/mailchimp-solution-page.css';
+@import './templates/service-pages-shared.css';
 
-/* 6. Theme Parts */
-@import './parts/site-header.css';
-@import './footer.css';
+/* Additional Templates */
+@import './templates/portfolio-archive.css';
+@import './templates/portfolio-single.css';
+@import './templates/video-archive.css';
+@import './templates/single-video.css';
+@import './templates/podcast-archive.css';
+@import './templates/page-about.css';
+@import './templates/page-faq.css';
+@import './templates/page-legal.css';
+@import './templates/page-styleguide.css';
+@import './templates/pricing-page.css';
+@import './templates/solutions-page.css';
+@import './templates/solution-detail.css';
+@import './templates/services-landing.css';
+@import './templates/services-page.css';
+@import './templates/service-detail.css';
+@import './templates/development-service-page.css';
+@import './templates/single-post.css';
+@import './templates/single.css';
+@import './templates/archive.css';
+@import './templates/author-archive.css';
+@import './templates/why-choose-us.css';
+@import './templates/guarantees.css';
+@import './templates/tour-operator-archive.css';
+@import './templates/single-tour.css';
+@import './templates/tutorials-page.css';
+@import './templates/404.css';
+@import './templates/index.css';
+@import './templates/template-tester.css';
+@import './templates/dev-tools.css';
+@import './templates/feature-showcase.css';
+@import './templates/search.css';
+@import './templates/site-map.css';
+@import './templates/component-showcase.css';
+
+/* Code Quality Dashboard */
+@import './templates/code-quality-dashboard.css';
+
+/* WooCommerce Templates */
+@import './woocommerce/cart.css';
+@import './woocommerce/checkout.css';
+@import './woocommerce/product-archive.css';
+@import './woocommerce/single-product.css';
+
+/* 6. Theme Parts - Deprecated, moved to blocks/theme/ */
 
 /* 7. Utilities & Extras */
 @import './animations.css';
 @import './print.css';
+@import './components.css';
+@import './components/section.css';
+@import './components/container.css';
+@import './components/page-loader.css';
+@import './components/sticky-book-call.css';
+@import './components/keyboard-shortcuts.css';
+@import './components/loading-states.css';
+@import './components/scroll-progress.css';
+@import './components/error-boundary.css';
+@import './components/skeleton.css';
+
+/* 8. Content Component Styles */
+@import './content/weather-widget.css';
+@import './content/testimonials-carousel.css';
+@import './content/countdown-timer.css';

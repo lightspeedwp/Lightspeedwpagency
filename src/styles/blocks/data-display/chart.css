@@ -1,0 +1,124 @@
+/**
+ * Chart Block Styles
+ */
+.wp-block-chart {
+  display: flex;
+  aspect-ratio: 16 / 9;
+  justify-content: center;
+  font-size: var(--text-xs);
+  width: 100%;
+}
+
+/* Recharts overrides for theme variables */
+.wp-block-chart .recharts-cartesian-axis-tick-text {
+  fill: var(--muted-foreground);
+}
+
+.wp-block-chart .recharts-cartesian-grid-line[stroke='var(--border)'] {
+  stroke: var(--border);
+}
+
+.wp-block-chart .recharts-curve.recharts-tooltip-cursor {
+  stroke: var(--muted);
+}
+
+.wp-block-chart .recharts-polar-grid[stroke='var(--border)'] {
+  stroke: var(--border);
+}
+
+.wp-block-chart .recharts-radial-bar-background-sector {
+  fill: var(--muted);
+}
+
+.wp-block-chart .recharts-rectangle.recharts-tooltip-cursor {
+  fill: var(--muted);
+}
+
+.wp-block-chart .recharts-reference-line[stroke='var(--border)'] {
+  stroke: var(--border);
+}
+
+.wp-block-chart-tooltip {
+  display: grid;
+  min-width: 8rem;
+  gap: var(--spacing-2);
+  border-radius: var(--radius);
+  border: var(--wp--preset--border-width--1) solid var(--border);
+  background-color: var(--background);
+  padding: var(--spacing-2);
+  font-size: var(--text-xs);
+  box-shadow: var(--shadow-sm);
+}
+
+.wp-block-chart-legend {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-4);
+  padding-top: var(--spacing-2);
+}
+
+/* ── Tooltip internals ── */
+.wp-block-chart-tooltip__grid {
+  display: grid;
+  gap: 6px;
+}
+
+.wp-block-chart-tooltip__row {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: var(--spacing-2);
+}
+
+.wp-block-chart-tooltip__row--dot {
+  align-items: center;
+}
+
+.wp-block-chart-tooltip__indicator {
+  flex-shrink: 0;
+  border-radius: 2px;
+}
+
+.wp-block-chart-tooltip__body {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  line-height: 1;
+  align-items: center;
+}
+
+.wp-block-chart-tooltip__body--nested {
+  align-items: flex-end;
+}
+
+.wp-block-chart-tooltip__label-grid {
+  display: grid;
+  gap: 6px;
+}
+
+.wp-block-chart-tooltip__label {
+  color: var(--muted-foreground);
+}
+
+.wp-block-chart-tooltip__value {
+  color: var(--foreground);
+  font-family: var(--font-mono);
+  font-weight: var(--font-weight-medium);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Legend internals ── */
+.wp-block-chart-legend__item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.wp-block-chart-legend__swatch {
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+  border-radius: 2px;
+}

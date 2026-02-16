@@ -1,0 +1,96 @@
+/**
+ * Two-Column Impact Section Pattern Styles
+ * 
+ * BEM-compliant styles for the TwoColumnImpactSection component.
+ * All vertical spacing via blockGap (CSS gap) -- zero margin.
+ */
+
+/* Grid Layout */
+.impact-section__grid {
+  display: grid;
+  gap: var(--spacing-8);
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .impact-section__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.impact-section__grid--reverse {
+  direction: rtl;
+}
+
+/* Content Column -- flex column with blockGap */
+.impact-section__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+/* Title */
+.impact-section__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-snug);
+  color: var(--foreground);
+}
+
+/* Content Box */
+.impact-section__content-box {
+  background-color: var(--card);
+  padding: var(--spacing-8);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-soft);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.impact-section__text {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  line-height: var(--line-height-normal);
+  color: var(--muted-foreground);
+}
+
+.impact-section__highlight {
+  color: var(--foreground);
+  font-weight: var(--font-weight-semibold);
+  display: block;
+}
+
+/* Image Placeholder */
+.impact-section__image-placeholder {
+  background-color: var(--muted);
+  border-radius: var(--radius-xl);
+  aspect-ratio: 16/9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed var(--border);
+}
+
+/* Placeholder Content -- flex column with blockGap */
+.impact-section__placeholder-content {
+  text-align: center;
+  color: var(--muted-foreground);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-4);
+}
+
+.impact-section__placeholder-icon {
+  color: var(--muted-foreground);
+  opacity: 0.5;
+}
+
+.impact-section__placeholder-label {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+}

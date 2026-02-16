@@ -1,0 +1,15 @@
+/**
+ * LightSpeed Shadow Presets
+ * 
+ * Defines shadow elevations.
+ * Pattern: --wp--preset--shadow--{slug}
+ */
+
+:root {
+  --wp--preset--shadow--100: 0 1px 2px 0 rgb(0 0 0 / 0.06);
+  --wp--preset--shadow--200: 0 1px 3px 0 rgb(0 0 0 / 0.10);
+  --wp--preset--shadow--300: 0 4px 6px -1px rgb(0 0 0 / 0.10), 0 2px 4px -2px rgb(0 0 0 / 0.10);
+  --wp--preset--shadow--400: 0 10px 15px -3px rgb(0 0 0 / 0.10), 0 4px 6px -4px rgb(0 0 0 / 0.10);
+  --wp--preset--shadow--500: 0 20px 25px -5px rgb(0 0 0 / 0.12), 0 10px 10px -5px rgb(0 0 0 / 0.08);
+  --wp--preset--shadow--600: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+}

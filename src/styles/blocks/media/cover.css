@@ -27,7 +27,7 @@
 .wp-block-cover__overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: var(--overlay, var(--overlay-backdrop));
   z-index: 1;
 }
 
@@ -36,9 +36,9 @@
   z-index: 2;
   padding: var(--spacing-8);
   text-align: center;
-  color: white;
+  color: var(--white, white);
   width: 100%;
-  max-width: 800px;
+  max-width: var(--container-width, 800px);
 }
 
 .wp-block-cover--top {
@@ -51,7 +51,7 @@
 
 .wp-block-cover__content h1,
 .wp-block-cover__content h2 {
-  color: white;
+  color: var(--white, white);
   margin-bottom: var(--spacing-4);
 }
 

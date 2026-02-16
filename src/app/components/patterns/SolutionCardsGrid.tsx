@@ -8,31 +8,14 @@
  * 
  * All styling in /src/styles/solution-cards-grid.css (user-editable)
  * 
- * **Usage:**
- * ```tsx
- * <SolutionCardsGrid
- *   badge="OUR SOLUTIONS"
- *   badgeIcon={Package}
- *   title="Expert WordPress Solutions"
- *   description="Industry-leading solutions for your business needs"
- *   solutions={[
- *     {
- *       id: 'wordpress',
- *       icon: Code,
- *       title: 'WordPress Websites',
- *       description: 'Custom WordPress development...',
- *       link: 'wordpress-solution',
- *       linkText: 'Read More →'
- *     }
- *   ]}
- * />
- * ```
+ * @see {@link /guidelines/patterns/SolutionCardsGrid.md}
  */
 
 import { LucideIcon } from 'lucide-react';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { useNavigation } from '../../contexts/NavigationContext';
+import '@/styles/patterns/solution-cards-grid.css';
 
 export interface SolutionCard {
   /** Unique solution ID */

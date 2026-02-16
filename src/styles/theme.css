@@ -23,11 +23,10 @@
    ============================================ */
 
 /**
- * Custom variant for dark mode
- * Matches .dark class on parent elements
+ * NOTE: The @custom-variant directive is handled by the Figma Make
+ * environment automatically. This file is a documentation reference
+ * only — it is NOT imported by App.tsx or index.css.
  */
-@custom-variant dark (&:is(.dark *));
-
 
 /* ============================================
    IMPORT SEPARATED THEME STYLESHEETS
@@ -40,11 +39,26 @@
  * - Border radius
  * - Transitions
  * - Z-index scale
+ * - Aspect Ratios & Layouts
  */
 @import './theme-base.css';
 
 /**
- * 2. Light mode colors
+ * 1b. Global Resets
+ * - Removes default margins from typography
+ * - Enforces "Gap-First" architecture
+ */
+@import './resets.css';
+
+/**
+ * 2. Animation Utilities
+ * - Keyframes
+ * - Animation utility classes
+ */
+@import './animations.css';
+
+/**
+ * 3. Light mode colors
  * - All semantic color variables for light mode
  * - Applied to :root selector
  * - WCAG AA/AAA compliant
@@ -52,7 +66,7 @@
 @import './theme-light.css';
 
 /**
- * 3. Dark mode colors
+ * 4. Dark mode colors
  * - All semantic color variables for dark mode
  * - Applied to .dark selector
  * - WCAG AA/AAA compliant (often better than light mode)
@@ -60,7 +74,7 @@
 @import './theme-dark.css';
 
 /**
- * 4. Fluid Responsive System
+ * 5. Fluid Responsive System
  * - Breakpoint system (320px → 1440px+)
  * - Fluid container padding (16px → 32px)
  * - Fluid typography with clamp() for smooth scaling
@@ -71,7 +85,7 @@
 @import './responsive.css';
 
 /**
- * 5. Global utility classes
+ * 6. Global utility classes
  * - Typography utilities (font sizes, weights, etc.)
  * - Spacing utilities (padding, margin, gap)
  * - WordPress-compatible utility classes
@@ -80,7 +94,7 @@
 @import './utilities.css';
 
 /**
- * 6. Component styles
+ * 7. Component styles
  * - Reusable component patterns (buttons, cards, sections)
  * - WordPress block-compatible components
  * - All styles use CSS variables for consistency
@@ -88,153 +102,202 @@
 @import './components.css';
 
 /**
- * 7. Hero pattern styles
+ * 8. Section Style Presets (WordPress Compatible)
+ * - .is-style-default
+ * - .is-style-muted
+ * - .is-style-dark
+ * - .is-style-primary
+ * - Gradient variants
+ */
+@import './presets/section-styles.css';
+
+/**
+ * 9. Hero pattern styles
  * - Hero component styling
  * - All hero variants (homepage, archive, service, simple)
  * - Gradient backgrounds, badges, stats, buttons
  * - 100% CSS variables for user control
  */
-@import './hero.css';
+@import './patterns/hero.css';
 
 /**
- * 8. Hero Home pattern styles
+ * 10. Hero Home pattern styles
  * - Homepage hero full-height section
  * - Category badge, stats grid, gradient overlay
  * - 100% CSS variables for user control
  */
-@import './hero-home.css';
+@import './patterns/hero-home.css';
 
 /**
- * 9. Archive Header pattern styles
+ * 11. Archive Header pattern styles
  * - Archive page headers (taxonomy, category, blog)
  * - Title, description, result count
  * - 100% CSS variables for user control
  */
-@import './archive-header.css';
+@import './patterns/archive-header.css';
 
 /**
- * 10. Card Grid pattern styles
+ * 12. Card Grid pattern styles
  * - Responsive card grids (blog, portfolio, services)
  * - Card layouts with images, titles, descriptions, meta
  * - 100% CSS variables for user control
  */
-@import './card-grid.css';
+@import './patterns/card-grid.css';
 
 /**
- * 11. CTA Section pattern styles
+ * 13. CTA Section pattern styles
  * - Call-to-action sections with buttons
  * - Default, highlighted, and gradient variants
  * - Trust indicators
  * - 100% CSS variables for user control
  */
-@import './cta-section.css';
+@import './patterns/cta-section.css';
 
 /**
- * 12. FAQ Section pattern styles
+ * 14. FAQ Section pattern styles
  * - Accordion-style FAQ sections
  * - Default, muted, and card variants
  * - Contact CTA footer
  * - 100% CSS variables for user control
  */
-@import './faq-section.css';
+@import './patterns/faq-section.css';
 
 /**
- * 13. Filter Bar pattern styles
+ * 15. Filter Bar pattern styles
  * - Archive filtering and sorting controls
  * - Search input, category filters, sort dropdown
  * - View mode toggle (grid/list)
  * - 100% CSS variables for user control
  */
-@import './filter-bar.css';
+@import './patterns/filter-bar.css';
 
 /**
- * 14. Pagination Navigation pattern styles
+ * 16. Pagination Navigation pattern styles
  * - Archive pagination controls
  * - Previous/next buttons, page numbers
  * - Smart ellipsis for large page counts
  * - 100% CSS variables for user control
  */
-@import './pagination-nav.css';
+@import './patterns/pagination-nav.css';
 
 /**
- * 15. Stats Section pattern styles
+ * 17. Stats Section pattern styles
  * - Key statistics in grid layout
  * - Default and highlighted variants
  * - Responsive 1/2/4 column grid
  * - 100% CSS variables for user control
  */
-@import './stats-section.css';
+@import './patterns/stats-section.css';
 
 /**
- * 16. Testimonial Grid pattern styles
+ * 18. Testimonial Grid pattern styles
  * - Customer testimonials and reviews
  * - 4 variants: default, cards, minimal, featured
  * - Responsive 1/2/3 column grid
  * - 100% CSS variables for user control
  */
-@import './testimonial-grid.css';
+@import './patterns/testimonial-grid.css';
 
 /**
- * 17. Social Proof pattern styles
+ * 19. Social Proof pattern styles
  * - Client logos, awards, certifications
  * - Grayscale hover effect
  * - Responsive grid
  * - 100% CSS variables for user control
  */
-@import './social-proof.css';
+@import './patterns/social-proof.css';
 
 /**
- * 18. Footer Newsletter pattern styles
+ * 20. Footer Newsletter pattern styles
  * - Newsletter subscription footer
  * - Social links, link columns
  * - Form styling
  * - 100% CSS variables for user control
  */
-@import './footer-newsletter.css';
+@import './patterns/footer-newsletter.css';
 
 /**
- * 19. Featured Project Showcase pattern styles
+ * 21. Featured Project Showcase pattern styles
  * - Featured project/case study with stats
  * - Two-column layout with testimonial overlay
  * - 100% CSS variables for user control
  */
-@import './featured-project-showcase.css';
+@import './patterns/featured-project-showcase.css';
 
 /**
- * 20. Solution Cards Grid pattern styles
+ * 22. Solution Cards Grid pattern styles
  * - Clickable solution cards with icons
  * - Responsive 1-3 column grid
  * - Hover effects and animations
  * - 100% CSS variables for user control
  */
-@import './solution-cards-grid.css';
+@import './patterns/solution-cards-grid.css';
 
 /**
- * 21. Values Section pattern styles
+ * 23. Values Section pattern styles
  * - Company values in grid layout
  * - Icon cards with hover effects
  * - Responsive 1-3 column grid
  * - 100% CSS variables for user control
  */
-@import './values-section.css';
+@import './patterns/values-section.css';
 
 /**
- * 22. Case Study Preview pattern styles
+ * 24. Case Study Preview pattern styles
  * - Featured case study with metrics
  * - Two-column layout with image
  * - Responsive grid layout
  * - 100% CSS variables for user control
  */
-@import './case-study-preview.css';
+@import './patterns/case-study-preview.css';
 
 /**
- * 23. Theme Showcase Grid pattern styles
+ * 25. Theme Showcase Grid pattern styles
  * - Theme/product cards with features
  * - Category badges, hover effects
  * - Responsive grid layout
  * - 100% CSS variables for user control
  */
-@import './theme-showcase-grid.css';
+@import './patterns/theme-showcase-grid.css';
+
+/**
+ * 26. Pricing Table pattern styles
+ * - Pricing plan cards
+ * - Featured highlighting
+ * - Features list and CTAs
+ * - 100% CSS variables for user control
+ */
+@import './patterns/pricing-table.css';
+
+/**
+ * 27. Newsletter Signup pattern styles
+ * - Email subscription forms
+ * - Multiple layouts (centered, inline, sidebar)
+ * - 100% CSS variables for user control
+ */
+@import './patterns/newsletter-signup.css';
+
+/**
+ * 28. Feature Comparison pattern styles
+ * - Feature comparison tables
+ * - Sticky headers and responsive layout
+ * - 100% CSS variables for user control
+ */
+@import './patterns/feature-comparison.css';
+
+/**
+ * 29. Benefits Grid pattern styles
+ * - Benefits list with icons and links
+ * - 100% CSS variables for user control
+ */
+@import './patterns/benefits-grid.css';
+
+/**
+ * 30. Feature Grid pattern styles
+ * - Feature grid with cards and hover effects
+ * - 100% CSS variables for user control
+ */
+@import './patterns/feature-grid.css';
 
 /**
  * ==================================================================
@@ -243,7 +306,7 @@
  */
 
 /**
- * 24. Common Template Headers
+ * 26. Common Template Headers
  * - Reusable section header pattern
  * - Used across multiple templates
  * - 100% CSS variables for user control
@@ -251,7 +314,7 @@
 @import './templates/common-template-headers.css';
 
 /**
- * 25. Contact Page Template
+ * 27. Contact Page Template
  * - Contact methods grid
  * - Contact form layout
  * - Info cards sidebar
@@ -260,7 +323,7 @@
 @import './templates/contact-page.css';
 
 /**
- * 26. Team Page Template
+ * 28. Team Page Template
  * - Leadership cards
  * - Team stats grid
  * - Culture values cards
@@ -270,7 +333,7 @@
 @import './templates/team-page.css';
 
 /**
- * 27. Hosting Page Template
+ * 29. Hosting Page Template
  * - Hosting plan cards (3-column)
  * - Hosting features grid (4-column)
  * - Why choose section (2-column)
@@ -280,7 +343,7 @@
 @import './templates/hosting-page.css';
 
 /**
- * 28. Blog Index Page Template
+ * 30. Blog Index Page Template
  * - Section headers (large and standard variants)
  * - Content wrappers (wide and narrow)
  * - Topic cards with icons and hover effects
@@ -289,7 +352,7 @@
 @import './templates/blog-index-page.css';
 
 /**
- * 29. Single Post (Longform) Template
+ * 31. Single Post (Longform) Template
  * - Related articles grid (3-column responsive)
  * - Comments section and comment cards
  * - Category badges
@@ -299,7 +362,7 @@
 @import './templates/single-post-page.css';
 
 /**
- * 30. Wetu Importer Product Page Template
+ * 32. Wetu Importer Product Page Template
  * - Feature cards (3-column responsive grid)
  * - Benefit cards (2-column responsive grid)
  * - Process steps (numbered timeline)
@@ -310,7 +373,7 @@
 @import './templates/wetu-importer-page.css';
 
 /**
- * 31. LSX Sharing Product Page Template
+ * 33. LSX Sharing Product Page Template
  * - Feature cards (3-column responsive grid)
  * - Benefit cards (2-column responsive grid)
  * - Social networks grid (4-column responsive)
@@ -321,7 +384,7 @@
 @import './templates/lsx-sharing-page.css';
 
 /**
- * 32. LSX Search Product Page Template
+ * 34. LSX Search Product Page Template
  * - Feature cards (3-column responsive grid)
  * - Benefit cards (2-column responsive grid)
  * - Capabilities grid (4 categories)
@@ -332,7 +395,7 @@
 @import './templates/lsx-search-page.css';
 
 /**
- * 33. Mailchimp Solution Page Template
+ * 35. Mailchimp Solution Page Template
  * - Why Mailchimp benefits (2-column grid)
  * - Feature cards (3-column responsive grid)
  * - Process steps (6-step grid with numbered badges)
@@ -343,7 +406,7 @@
 @import './templates/mailchimp-solution-page.css';
 
 /**
- * 34. Service Pages Shared Styles
+ * 36. Service Pages Shared Styles
  * - Shared styles for Migrations, Security, and Content service pages
  * - Benefits grid (4-column responsive)
  * - Features grid (3-column responsive)

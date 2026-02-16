@@ -18,6 +18,8 @@
  * ```
  */
 
+import '@/styles/components/skeleton.css';
+
 interface SkeletonProps {
   /** Width of skeleton (default: 100%) */
   width?: string;
@@ -96,14 +98,17 @@ export function CardGridSkeleton({
   count = 6,
   columns = { mobile: 1, tablet: 2, desktop: 3 }
 }: CardGridSkeletonProps) {
-  const gridClasses = `grid gap-6 grid-cols-${columns.mobile} md:grid-cols-${columns.tablet} lg:grid-cols-${columns.desktop}`;
-
   return (
-    <div className={gridClasses}>
+    <div 
+      className="wp-grid wp-gap-6"
+      style={{
+        gridTemplateColumns: `repeat(${columns.desktop}, 1fr)`,
+      }}
+    >
       {Array.from({ length: count }).map((_, i) => (
         <div 
           key={i} 
-          className="p-6"
+          className="wp-p-6"
           style={{ 
             backgroundColor: 'var(--card)', 
             borderRadius: 'var(--radius-lg)',
@@ -111,15 +116,15 @@ export function CardGridSkeleton({
           }}
         >
           {/* Image skeleton */}
-          <Skeleton height="200px" className="mb-4" variant="rectangular" />
+          <Skeleton height="200px" className="wp-mb-4" variant="rectangular" />
           
           {/* Title skeleton */}
-          <Skeleton width="60%" height="24px" className="mb-2" variant="text" />
+          <Skeleton width="60%" height="24px" className="wp-mb-2" variant="text" />
           
           {/* Description skeletons */}
-          <Skeleton width="100%" height="16px" className="mb-1" variant="text" />
-          <Skeleton width="100%" height="16px" className="mb-1" variant="text" />
-          <Skeleton width="80%" height="16px" className="mb-4" variant="text" />
+          <Skeleton width="100%" height="16px" className="wp-mb-1" variant="text" />
+          <Skeleton width="100%" height="16px" className="wp-mb-1" variant="text" />
+          <Skeleton width="80%" height="16px" className="wp-mb-4" variant="text" />
           
           {/* Button skeleton */}
           <Skeleton width="120px" height="40px" variant="rectangular" />
@@ -148,15 +153,15 @@ interface ListSkeletonProps {
 
 export function ListSkeleton({ count = 5, showAvatar = false }: ListSkeletonProps) {
   return (
-    <div className="space-y-4">
+    <div className="skeleton-list">
       {Array.from({ length: count }).map((_, i) => (
-        <div key={i} className="flex items-start gap-4">
+        <div key={i} className="skeleton-list__item">
           {showAvatar && (
             <Skeleton height="48px" variant="circular" />
           )}
-          <div className="flex-1">
-            <Skeleton width="70%" height="20px" className="mb-2" variant="text" />
-            <Skeleton width="100%" height="16px" className="mb-1" variant="text" />
+          <div className="skeleton-list__body">
+            <Skeleton width="70%" height="20px" className="wp-mb-2" variant="text" />
+            <Skeleton width="100%" height="16px" className="wp-mb-1" variant="text" />
             <Skeleton width="90%" height="16px" variant="text" />
           </div>
         </div>
@@ -177,28 +182,28 @@ export function ListSkeleton({ count = 5, showAvatar = false }: ListSkeletonProp
  */
 export function ArticleSkeleton() {
   return (
-    <div className="max-w-3xl mx-auto">
+    <div className="skeleton-article">
       {/* Hero image */}
-      <Skeleton height="400px" className="mb-6" variant="rectangular" />
+      <Skeleton height="400px" className="wp-mb-6" variant="rectangular" />
       
       {/* Title */}
-      <Skeleton width="80%" height="48px" className="mb-4" variant="text" />
+      <Skeleton width="80%" height="48px" className="wp-mb-4" variant="text" />
       
       {/* Meta (author, date) */}
-      <div className="flex items-center gap-4 mb-6">
+      <div className="skeleton-article__meta">
         <Skeleton height="40px" variant="circular" />
         <div>
-          <Skeleton width="120px" height="16px" className="mb-1" variant="text" />
+          <Skeleton width="120px" height="16px" className="wp-mb-1" variant="text" />
           <Skeleton width="100px" height="14px" variant="text" />
         </div>
       </div>
       
       {/* Content paragraphs */}
       {Array.from({ length: 6 }).map((_, i) => (
-        <div key={i} className="mb-4">
-          <Skeleton width="100%" height="16px" className="mb-1" variant="text" />
-          <Skeleton width="100%" height="16px" className="mb-1" variant="text" />
-          <Skeleton width="100%" height="16px" className="mb-1" variant="text" />
+        <div key={i} className="skeleton-article__paragraph">
+          <Skeleton width="100%" height="16px" className="wp-mb-1" variant="text" />
+          <Skeleton width="100%" height="16px" className="wp-mb-1" variant="text" />
+          <Skeleton width="100%" height="16px" className="wp-mb-1" variant="text" />
           <Skeleton width="85%" height="16px" variant="text" />
         </div>
       ))}

@@ -1,0 +1,37 @@
+/**
+ * Paragraph Block Styles
+ * 
+ * WordPress block: .wp-block-paragraph
+ */
+
+.wp-block-paragraph {
+  font-family: var(--font-primary);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-4);
+  max-width: var(--container-width);
+}
+
+/* Size Variants */
+.wp-block-paragraph.text-lead {
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-regular);
+  color: var(--muted-foreground);
+}
+
+.wp-block-paragraph.text-small,
+.wp-block-paragraph.text-tiny {
+  font-family: var(--font-secondary); /* Use secondary font for small text */
+}
+
+/* Links within paragraphs */
+.wp-block-paragraph a {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: var(--spacing-1);
+}
+
+.wp-block-paragraph a:hover {
+  color: var(--primary-foreground);
+  background-color: var(--primary);
+  text-decoration: none;
+}

@@ -18,7 +18,7 @@ Child blocks include **Custom Link**, **Home Link**, **Submenu** and **Social Ic
 ## Design system requirements
 
 - **Layout & orientation:** Use horizontal orientation for desktop navigation and vertical (stacked or collapsed) orientation for mobile. Use a Row or Stack block to wrap the Navigation block and align it with the logo and site title in the header.
-- **Spacing:** Define consistent spacing between menu items using Tailwind spacing classes (e.g., `gap-6`, `gap-8`). Provide adequate padding around the navigation area to separate it from other header elements (e.g., `px-6`, `py-4`).
+- **Spacing:** Define consistent spacing between menu items using CSS variables (e.g., `gap: var(--spacing-6)`). Provide adequate padding around the navigation area to separate it from other header elements.
 - **Typography:** Use a clear, legible font for navigation items. Apply appropriate letter spacing using `var(--letter-spacing-normal)` or `var(--letter-spacing-wide)` and use sentence case or uppercase according to your brand guidelines. Use tokens like `var(--text-base)` or `var(--text-small)` for menu text with `var(--font-weight-medium)` or `var(--font-weight-semibold)`.
 - **Colours & states:** Define colours for normal, hover, active and focus states. Use your palette tokens:
   - Normal: `var(--foreground)` or `var(--text-muted)`
@@ -35,8 +35,7 @@ Child blocks include **Custom Link**, **Home Link**, **Submenu** and **Social Ic
 <Navigation 
   menu={primaryMenu} 
   orientation="horizontal" 
-  spacing="gap-6"
-  align="center"
+  className="wp-block-navigation"
 >
   {primaryMenu.map(item => (
     <NavItem 
@@ -68,8 +67,6 @@ Child blocks include **Custom Link**, **Home Link**, **Submenu** and **Social Ic
 |---------------|---------|---------|-------------|
 | `menu`        | array   | —       | Array of menu items with `id`, `title`, `url` and optional `children`. |
 | `orientation` | string  | `horizontal` | Layout orientation (`horizontal` or `vertical`). |
-| `spacing`     | string  | `gap-6` | Tailwind spacing class for space between menu items. |
-| `align`       | string  | `flex-start` | Alignment of the menu (`center`, `space-between`, `flex-end`). |
 | `className`   | string  | —       | Additional CSS classes. |
 | `style`       | object  | —       | Inline style overrides. |
 
@@ -92,7 +89,7 @@ Child blocks include **Custom Link**, **Home Link**, **Submenu** and **Social Ic
 In theme.json, you can set default typography, colour and spacing for navigation menus under `styles.blocks["core/navigation"]`. Use CSS variables for all styling:
 - Typography: `var(--text-base)`, `var(--font-weight-medium)`
 - Colors: `var(--foreground)`, `var(--primary)`, `var(--text-muted)`
-- Spacing: Tailwind classes (`gap-6`, `px-6`, `py-4`)
+- Spacing: CSS variables (`var(--spacing-6)`, `var(--spacing-4)`)
 - Borders: `var(--radius)` for submenu dropdowns
 
 Use classes such as `.wp-block-navigation` to target menu styling. When converting Figma designs, map nav bars or menu groups to the Navigation component and ensure menu data can be dynamic (loaded from WordPress menus or centralized data like `/src/app/data/pages.ts`).
@@ -119,7 +116,7 @@ Use classes such as `.wp-block-navigation` to target menu styling. When converti
 
 Common variations include:
 - **Horizontal vs. vertical layout:** Use Row for horizontal, Stack for vertical
-- **Centered vs. left‑aligned menus:** Use `align` prop
+- **Centered vs. left‑aligned menus:** Use `align` prop or CSS flexbox utilities
 - **Mega menus:** For large sites with many navigation items, use Grid within SubMenu
 - **Responsive variations:** Collapsed mobile menus with hamburger icon
 - **Skip links:** Add accessible skip navigation links at the top

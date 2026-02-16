@@ -7,84 +7,50 @@
  * @see /guidelines/templates/overview-templates.md
  */
 
-import { SiteHeader } from '../parts/SiteHeader';
-import { SiteFooter } from '../parts/SiteFooter';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
+import { Heading } from '../blocks/text/Heading';
+import { Paragraph } from '../blocks/text/Paragraph';
+import { Badge } from '../blocks/design/Badge';
+import { Card, CardContent } from '../blocks/design/Card';
+import '@/styles/templates/service-detail.css';
 
 export function TrainingTemplate() {
   return (
     <>
-      <SiteHeader />
-      
-      <main id="main-content" role="main">
         {/* Page Hero */}
-        <Section variant="canvas" className="py-12">
+        <Section spacing="lg" background="muted">
           <Container>
-            <div style={{ textAlign: 'center' }}>
-              <h1 style={{
-                fontSize: 'var(--text-h1)',
-                fontFamily: 'var(--font-primary)',
-                fontWeight: 'var(--font-weight-bold)',
-                color: 'var(--foreground)',
-                marginBottom: 'var(--spacing-4)'
-              }}>
+            <div className="wp-text-center wp-max-w-4xl wp-mx-auto">
+              <Heading level={1} className="wp-mb-6">
                 WordPress Training
-              </h1>
+              </Heading>
               
-              <p style={{
-                fontSize: 'var(--text-lead)',
-                fontFamily: 'var(--font-primary)',
-                color: 'var(--muted-foreground)',
-                marginBottom: 'var(--spacing-8)',
-                maxWidth: '800px',
-                marginLeft: 'auto',
-                marginRight: 'auto'
-              }}>
+              <Paragraph size="lead" align="center" className="wp-mb-8 wp-max-w-3xl wp-mx-auto">
                 Professional WordPress training and education services
-              </p>
+              </Paragraph>
 
-              {/* Coming Soon Badge */}
-              <div style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: 'var(--spacing-2)',
-                padding: 'var(--spacing-2) var(--spacing-4)',
-                backgroundColor: 'var(--muted)',
-                borderRadius: 'var(--radius)',
-                fontSize: 'var(--text-small)',
-                fontFamily: 'var(--font-secondary)',
-                color: 'var(--muted-foreground)'
-              }}>
-                🚧 Page Under Construction
+              <div className="wp-flex wp-justify-center">
+                <Badge variant="secondary" size="md">
+                  🚧 Page Under Construction
+                </Badge>
               </div>
             </div>
           </Container>
         </Section>
 
         {/* Placeholder Content */}
-        <Section variant="white" className="py-12">
+        <Section spacing="lg">
           <Container>
-            <div style={{
-              textAlign: 'center',
-              padding: 'var(--spacing-12)',
-              backgroundColor: 'var(--card)',
-              borderRadius: 'var(--radius-lg)',
-              border: '1px solid var(--border)'
-            }}>
-              <p style={{
-                fontSize: 'var(--text-base)',
-                fontFamily: 'var(--font-primary)',
-                color: 'var(--foreground)'
-              }}>
-                Full content for this page is coming soon. Check back later!
-              </p>
-            </div>
+            <Card className="wp-text-center service-detail__coming-soon">
+              <CardContent>
+                <Paragraph align="center">
+                  Full content for this page is coming soon. Check back later!
+                </Paragraph>
+              </CardContent>
+            </Card>
           </Container>
         </Section>
-      </main>
-      
-      <SiteFooter />
     </>
   );
 }

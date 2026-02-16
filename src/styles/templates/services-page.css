@@ -1,0 +1,122 @@
+/**
+ * Services Page Template Styles
+ * 
+ * Dedicated styles for the Services Overview page.
+ * Note: Core patterns (Why Choose Us, Services Grid) use dedicated pattern CSS files.
+ */
+
+.services-page__section-header {
+  text-align: center;
+  /* margin-bottom removed — handled by parent gap */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-4);
+  max-width: var(--wp--custom--layout--content-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.services-page__section-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-snug);
+  letter-spacing: var(--letter-spacing-tight);
+  color: var(--foreground);
+}
+
+.services-page__section-description {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  line-height: var(--line-height-relaxed);
+  color: var(--muted-foreground);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* ============================================
+   PROCESS SECTION
+   ============================================ */
+
+.services-page__process-section {
+  background-color: var(--background);
+}
+
+/* ============================================
+   INDUSTRIES SECTION
+   ============================================ */
+
+.services-page__industries-section {
+  background-color: var(--muted);
+}
+
+.services-page__industries-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-4);
+}
+
+@media (min-width: 640px) {
+  .services-page__industries-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .services-page__industries-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1280px) {
+  .services-page__industries-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.services-page__industry-card {
+  padding: var(--spacing-5) var(--spacing-6);
+  background-color: var(--card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-soft);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  transition: all 0.2s ease;
+}
+
+.services-page__industry-card:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.services-page__industry-icon {
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.services-page__industry-name {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-medium);
+  color: var(--foreground);
+}
+
+/* ============================================
+   FAQ SECTION
+   ============================================ */
+
+.services-page__faq-section {
+  background-color: var(--background);
+}
+
+.services-page__faq-header {
+  text-align: center;
+  /* margin-bottom removed — handled by parent gap */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-4);
+}

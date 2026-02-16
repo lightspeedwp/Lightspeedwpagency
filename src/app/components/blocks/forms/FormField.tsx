@@ -1,482 +1,307 @@
 /**
- * Form Field Components
+ * Form Field Block Component
  * 
- * Features:
- * - Input, Textarea, Select, Checkbox, Radio, Switch
- * - Validation states (success, error, warning)
- * - Character counter
- * - Helper text and error messages
- * - Required indicator
- * - WCAG 2.1 AA compliant
+ * WordPress Block: forms/form-field
  * 
- * Design System Compliance:
- * - Uses CSS variables for all colors
- * - Uses Lexend for labels
- * - Uses Manrope for inputs/helper text
- * - Proper focus states
+ * Enhanced form field with real-time validation indicators.
+ * 
+ * @see /src/styles/blocks/forms/form-field.css
  */
 
-import { ReactNode, InputHTMLAttributes, TextareaHTMLAttributes, SelectHTMLAttributes } from 'react';
+import React, { useState, useEffect } from 'react';
+import { CheckCircle2, AlertCircle, Eye, EyeOff } from 'lucide-react';
+import { useShake } from '../../../hooks/useMicroInteractions';
+import '@/styles/blocks/forms/form-field.css';
 
-export interface BaseFieldProps {
-  /** Field label */
+export interface FormFieldProps {
   label: string;
-  /** Field ID */
-  id: string;
-  /** Helper text */
-  helperText?: string;
-  /** Error message */
+  name: string;
+  type?: 'text' | 'email' | 'tel' | 'url' | 'password' | 'number';
+  value: string;
+  placeholder?: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
   error?: string;
-  /** Success message */
-  success?: string;
-  /** Warning message */
-  warning?: string;
-  /** Required field */
-  required?: boolean;
-  /** Disabled state */
+  showSuccess?: boolean;
   disabled?: boolean;
-}
-
-/**
- * Text Input Field
- */
-export interface InputFieldProps extends BaseFieldProps, Omit<InputHTMLAttributes<HTMLInputElement>, 'id'> {
-  /** Show character counter */
-  showCounter?: boolean;
-  /** Max length */
+  required?: boolean;
+  helpText?: string;
+  className?: string;
+  showCharCount?: boolean;
   maxLength?: number;
-  /** Prefix icon */
-  prefixIcon?: ReactNode;
-  /** Suffix icon */
-  suffixIcon?: ReactNode;
+  autoFocus?: boolean;
 }
 
-export function InputField({
+export function FormField({
   label,
-  id,
-  helperText,
-  error,
-  success,
-  warning,
-  required,
-  disabled,
-  showCounter,
-  maxLength,
-  prefixIcon,
-  suffixIcon,
+  name,
+  type = 'text',
   value,
-  ...props
-}: InputFieldProps) {
-  const currentLength = String(value || '').length;
-  const hasMessage = error || success || warning;
-  const message = error || success || warning;
-  const messageColor = error ? 'var(--destructive)' : success ? 'var(--accent)' : '#F59E0B';
+  placeholder,
+  onChange,
+  onBlur,
+  error,
+  showSuccess = false,
+  disabled = false,
+  required = false,
+  helpText,
+  className = '',
+  showCharCount = false,
+  maxLength,
+  autoFocus = false,
+}: FormFieldProps) {
+  const [isFocused, setIsFocused] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [shakeProps, triggerShake] = useShake();
+
+  useEffect(() => {
+    if (error) {
+      triggerShake();
+    }
+  }, [error, triggerShake]);
+
+  const hasValue = value && value.length > 0;
+  const fieldId = `field-${name}`;
+  const errorId = `${fieldId}-error`;
+  const helpId = `${fieldId}-help`;
+
+  const inputType = type === 'password' && showPassword ? 'text' : type;
+
+  // Compute classes based on state
+  const inputClasses = [
+    'wp-block-form-field__input',
+    type === 'password' ? 'wp-block-form-field__input--password' : '',
+    error ? 'wp-block-form-field__input--error' : '',
+    !error && showSuccess ? 'wp-block-form-field__input--success' : '',
+    disabled ? 'wp-block-form-field__input--disabled' : ''
+  ].filter(Boolean).join(' ');
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+    <div className={`wp-block-form-field ${className}`} style={shakeProps.style}>
       {/* Label */}
       <label
-        htmlFor={id}
-        style={{
-          fontFamily: 'var(--font-primary)',
-          fontSize: 'var(--text-base)',
-          fontWeight: '500',
-          color: 'var(--foreground)',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '0.25rem',
-        }}
+        htmlFor={fieldId}
+        className={`wp-block-form-field__label ${disabled ? 'wp-block-form-field__label--disabled' : ''}`}
       >
         {label}
         {required && (
-          <span style={{ color: 'var(--destructive)' }} aria-label="required">
-            *
-          </span>
+          <span className="wp-block-form-field__required" aria-label="required">*</span>
         )}
       </label>
 
       {/* Input Container */}
-      <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
-        {/* Prefix Icon */}
-        {prefixIcon && (
-          <div
-            style={{
-              position: 'absolute',
-              left: '1rem',
-              display: 'flex',
-              alignItems: 'center',
-              color: 'var(--muted-foreground)',
-            }}
-          >
-            {prefixIcon}
-          </div>
-        )}
-
-        {/* Input */}
+      <div className="wp-block-form-field__container">
         <input
-          id={id}
-          required={required}
-          disabled={disabled}
-          maxLength={maxLength}
+          id={fieldId}
+          name={name}
+          type={inputType}
           value={value}
-          aria-invalid={!!error}
-          aria-describedby={hasMessage ? `${id}-message` : helperText ? `${id}-helper` : undefined}
-          {...props}
-          style={{
-            width: '100%',
-            padding: prefixIcon || suffixIcon ? '0.75rem 3rem' : '0.75rem 1rem',
-            paddingLeft: prefixIcon ? '3rem' : '1rem',
-            paddingRight: suffixIcon ? '3rem' : '1rem',
-            fontFamily: 'var(--font-secondary)',
-            fontSize: 'var(--text-base)',
-            color: 'var(--foreground)',
-            backgroundColor: disabled ? 'var(--muted)' : 'var(--background)',
-            border: `1px solid ${error ? 'var(--destructive)' : success ? 'var(--accent)' : 'var(--border)'}`,
-            borderRadius: 'var(--radius)',
-            outline: 'none',
-            transition: 'border-color 0.2s ease, box-shadow 0.2s ease',
-            minHeight: '48px',
-            ...props.style,
-          }}
-          onFocus={(e) => {
-            e.currentTarget.style.borderColor = 'var(--primary)';
-            e.currentTarget.style.boxShadow = '0 0 0 2px rgba(var(--primary-rgb), 0.1)';
-            props.onFocus?.(e);
-          }}
+          placeholder={placeholder}
+          onChange={onChange}
           onBlur={(e) => {
-            e.currentTarget.style.borderColor = error ? 'var(--destructive)' : 'var(--border)';
-            e.currentTarget.style.boxShadow = 'none';
-            props.onBlur?.(e);
+            setIsFocused(false);
+            onBlur?.(e);
           }}
+          onFocus={() => setIsFocused(true)}
+          disabled={disabled}
+          required={required}
+          maxLength={maxLength}
+          autoFocus={autoFocus}
+          aria-invalid={!!error}
+          aria-describedby={error ? errorId : helpText ? helpId : undefined}
+          className={inputClasses}
         />
 
-        {/* Suffix Icon */}
-        {suffixIcon && (
-          <div
-            style={{
-              position: 'absolute',
-              right: '1rem',
-              display: 'flex',
-              alignItems: 'center',
-              color: 'var(--muted-foreground)',
-            }}
+        {/* Status Icon */}
+        <div className={`wp-block-form-field__icon wp-block-form-field__icon--status ${type === 'password' ? 'wp-block-form-field__icon--password' : ''}`}>
+          {error && (
+            <AlertCircle
+              size={20}
+              className="wp-block-form-field__icon-svg--error"
+              aria-hidden="true"
+            />
+          )}
+          {showSuccess && !error && (
+            <CheckCircle2
+              size={20}
+              className="wp-block-form-field__icon-svg--success"
+              aria-hidden="true"
+            />
+          )}
+        </div>
+
+        {/* Password Toggle */}
+        {type === 'password' && (
+          <button
+            type="button"
+            onClick={() => setShowPassword(!showPassword)}
+            className="wp-block-form-field__password-toggle"
+            aria-label={showPassword ? 'Hide password' : 'Show password'}
           >
-            {suffixIcon}
-          </div>
+            {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+          </button>
         )}
       </div>
 
-      {/* Helper Text / Error / Success / Warning */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        {(helperText || hasMessage) && (
-          <p
-            id={hasMessage ? `${id}-message` : `${id}-helper`}
-            style={{
-              fontFamily: 'var(--font-secondary)',
-              fontSize: 'var(--text-small)',
-              color: hasMessage ? messageColor : 'var(--muted-foreground)',
-              margin: 0,
-            }}
-          >
-            {message || helperText}
-          </p>
-        )}
+      {/* Character Count */}
+      {showCharCount && maxLength && (
+        <div className={`wp-block-form-field__char-count ${value.length > maxLength * 0.9 ? 'wp-block-form-field__char-count--warning' : ''}`}>
+          {value.length} / {maxLength}
+        </div>
+      )}
 
-        {/* Character Counter */}
-        {showCounter && maxLength && (
-          <span
-            style={{
-              fontFamily: 'var(--font-secondary)',
-              fontSize: 'var(--text-small)',
-              color: currentLength > maxLength ? 'var(--destructive)' : 'var(--muted-foreground)',
-            }}
-          >
-            {currentLength}/{maxLength}
-          </span>
-        )}
-      </div>
-    </div>
-  );
-}
-
-/**
- * Textarea Field
- */
-export interface TextareaFieldProps extends BaseFieldProps, Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'id'> {
-  showCounter?: boolean;
-  maxLength?: number;
-  rows?: number;
-}
-
-export function TextareaField({
-  label,
-  id,
-  helperText,
-  error,
-  success,
-  warning,
-  required,
-  disabled,
-  showCounter,
-  maxLength,
-  rows = 4,
-  value,
-  ...props
-}: TextareaFieldProps) {
-  const currentLength = String(value || '').length;
-  const hasMessage = error || success || warning;
-  const message = error || success || warning;
-  const messageColor = error ? 'var(--destructive)' : success ? 'var(--accent)' : '#F59E0B';
-
-  return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-      <label
-        htmlFor={id}
-        style={{
-          fontFamily: 'var(--font-primary)',
-          fontSize: 'var(--text-base)',
-          fontWeight: '500',
-          color: 'var(--foreground)',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '0.25rem',
-        }}
-      >
-        {label}
-        {required && <span style={{ color: 'var(--destructive)' }}>*</span>}
-      </label>
-
-      <textarea
-        id={id}
-        required={required}
-        disabled={disabled}
-        maxLength={maxLength}
-        rows={rows}
-        value={value}
-        aria-invalid={!!error}
-        aria-describedby={hasMessage ? `${id}-message` : helperText ? `${id}-helper` : undefined}
-        {...props}
-        style={{
-          width: '100%',
-          padding: '0.75rem 1rem',
-          fontFamily: 'var(--font-secondary)',
-          fontSize: 'var(--text-base)',
-          lineHeight: '1.6',
-          color: 'var(--foreground)',
-          backgroundColor: disabled ? 'var(--muted)' : 'var(--background)',
-          border: `1px solid ${error ? 'var(--destructive)' : success ? 'var(--accent)' : 'var(--border)'}`,
-          borderRadius: 'var(--radius)',
-          outline: 'none',
-          resize: 'vertical',
-          transition: 'border-color 0.2s ease, box-shadow 0.2s ease',
-          ...props.style,
-        }}
-        onFocus={(e) => {
-          e.currentTarget.style.borderColor = 'var(--primary)';
-          e.currentTarget.style.boxShadow = '0 0 0 2px rgba(var(--primary-rgb), 0.1)';
-          props.onFocus?.(e);
-        }}
-        onBlur={(e) => {
-          e.currentTarget.style.borderColor = error ? 'var(--destructive)' : 'var(--border)';
-          e.currentTarget.style.boxShadow = 'none';
-          props.onBlur?.(e);
-        }}
-      />
-
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        {(helperText || hasMessage) && (
-          <p
-            id={hasMessage ? `${id}-message` : `${id}-helper`}
-            style={{
-              fontFamily: 'var(--font-secondary)',
-              fontSize: 'var(--text-small)',
-              color: hasMessage ? messageColor : 'var(--muted-foreground)',
-              margin: 0,
-            }}
-          >
-            {message || helperText}
-          </p>
-        )}
-
-        {showCounter && maxLength && (
-          <span
-            style={{
-              fontFamily: 'var(--font-secondary)',
-              fontSize: 'var(--text-small)',
-              color: currentLength > maxLength ? 'var(--destructive)' : 'var(--muted-foreground)',
-            }}
-          >
-            {currentLength}/{maxLength}
-          </span>
-        )}
-      </div>
-    </div>
-  );
-}
-
-/**
- * Select Field
- */
-export interface SelectFieldProps extends BaseFieldProps, Omit<SelectHTMLAttributes<HTMLSelectElement>, 'id'> {
-  options: Array<{ value: string; label: string; disabled?: boolean }>;
-  placeholder?: string;
-}
-
-export function SelectField({
-  label,
-  id,
-  helperText,
-  error,
-  success,
-  warning,
-  required,
-  disabled,
-  options,
-  placeholder,
-  ...props
-}: SelectFieldProps) {
-  const hasMessage = error || success || warning;
-  const message = error || success || warning;
-  const messageColor = error ? 'var(--destructive)' : success ? 'var(--accent)' : '#F59E0B';
-
-  return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-      <label
-        htmlFor={id}
-        style={{
-          fontFamily: 'var(--font-primary)',
-          fontSize: 'var(--text-base)',
-          fontWeight: '500',
-          color: 'var(--foreground)',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '0.25rem',
-        }}
-      >
-        {label}
-        {required && <span style={{ color: 'var(--destructive)' }}>*</span>}
-      </label>
-
-      <select
-        id={id}
-        required={required}
-        disabled={disabled}
-        aria-invalid={!!error}
-        aria-describedby={hasMessage ? `${id}-message` : helperText ? `${id}-helper` : undefined}
-        {...props}
-        style={{
-          width: '100%',
-          padding: '0.75rem 1rem',
-          fontFamily: 'var(--font-secondary)',
-          fontSize: 'var(--text-base)',
-          color: 'var(--foreground)',
-          backgroundColor: disabled ? 'var(--muted)' : 'var(--background)',
-          border: `1px solid ${error ? 'var(--destructive)' : success ? 'var(--accent)' : 'var(--border)'}`,
-          borderRadius: 'var(--radius)',
-          outline: 'none',
-          cursor: disabled ? 'not-allowed' : 'pointer',
-          minHeight: '48px',
-          ...props.style,
-        }}
-      >
-        {placeholder && (
-          <option value="" disabled>
-            {placeholder}
-          </option>
-        )}
-        {options.map((option) => (
-          <option key={option.value} value={option.value} disabled={option.disabled}>
-            {option.label}
-          </option>
-        ))}
-      </select>
-
-      {(helperText || hasMessage) && (
-        <p
-          id={hasMessage ? `${id}-message` : `${id}-helper`}
-          style={{
-            fontFamily: 'var(--font-secondary)',
-            fontSize: 'var(--text-small)',
-            color: hasMessage ? messageColor : 'var(--muted-foreground)',
-            margin: 0,
-          }}
+      {/* Error Message */}
+      {error && (
+        <div
+          id={errorId}
+          role="alert"
+          className="wp-block-form-field__message wp-block-form-field__message--error"
         >
-          {message || helperText}
-        </p>
+          <AlertCircle size={16} style={{ flexShrink: 0, marginTop: '2px' }} aria-hidden="true" />
+          <span>{error}</span>
+        </div>
+      )}
+
+      {/* Help Text */}
+      {helpText && !error && (
+        <div id={helpId} className="wp-block-form-field__help-text">
+          {helpText}
+        </div>
+      )}
+
+      {/* Success Message */}
+      {showSuccess && !error && hasValue && (
+        <div className="wp-block-form-field__message wp-block-form-field__message--success">
+          <CheckCircle2 size={16} aria-hidden="true" />
+          <span>Looks good!</span>
+        </div>
       )}
     </div>
   );
 }
 
-/**
- * Checkbox Field
- */
-export interface CheckboxFieldProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'id'> {
+export interface TextAreaFieldProps {
   label: string;
-  id: string;
-  description?: string;
+  name: string;
+  value: string;
+  placeholder?: string;
+  onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  onBlur?: (e: React.FocusEvent<HTMLTextAreaElement>) => void;
   error?: string;
+  showSuccess?: boolean;
+  disabled?: boolean;
+  required?: boolean;
+  helpText?: string;
+  rows?: number;
+  maxLength?: number;
+  showCharCount?: boolean;
+  className?: string;
+  autoFocus?: boolean;
 }
 
-export function CheckboxField({ label, id, description, error, ...props }: CheckboxFieldProps) {
+export function TextAreaField({
+  label,
+  name,
+  value,
+  placeholder,
+  onChange,
+  onBlur,
+  error,
+  showSuccess = false,
+  disabled = false,
+  required = false,
+  helpText,
+  rows = 4,
+  maxLength,
+  showCharCount = false,
+  className = '',
+  autoFocus = false,
+}: TextAreaFieldProps) {
+  const [isFocused, setIsFocused] = useState(false);
+  const [shakeProps, triggerShake] = useShake();
+
+  useEffect(() => {
+    if (error) {
+      triggerShake();
+    }
+  }, [error, triggerShake]);
+
+  const fieldId = `field-${name}`;
+  const errorId = `${fieldId}-error`;
+  const helpId = `${fieldId}-help`;
+  const safeValue = value || '';
+
+  const textareaClasses = [
+    'wp-block-form-field__textarea',
+    error ? 'wp-block-form-field__textarea--error' : '',
+    !error && showSuccess ? 'wp-block-form-field__textarea--success' : '',
+    disabled ? 'wp-block-form-field__textarea--disabled' : ''
+  ].filter(Boolean).join(' ');
+
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
-      <div style={{ display: 'flex', alignItems: 'start', gap: '0.75rem' }}>
-        <input
-          type="checkbox"
-          id={id}
-          aria-invalid={!!error}
-          aria-describedby={error ? `${id}-error` : description ? `${id}-description` : undefined}
-          {...props}
-          style={{
-            width: '20px',
-            height: '20px',
-            marginTop: '0.125rem',
-            cursor: props.disabled ? 'not-allowed' : 'pointer',
-            accentColor: 'var(--primary)',
+    <div className={`wp-block-form-field ${className}`} style={shakeProps.style}>
+      <label
+        htmlFor={fieldId}
+        className={`wp-block-form-field__label ${disabled ? 'wp-block-form-field__label--disabled' : ''}`}
+      >
+        {label}
+        {required && (
+          <span className="wp-block-form-field__required" aria-label="required">*</span>
+        )}
+      </label>
+
+      <div className="wp-block-form-field__container">
+        <textarea
+          id={fieldId}
+          name={name}
+          value={safeValue}
+          placeholder={placeholder}
+          onChange={onChange}
+          onBlur={(e) => {
+            setIsFocused(false);
+            onBlur?.(e);
           }}
+          onFocus={() => setIsFocused(true)}
+          disabled={disabled}
+          required={required}
+          rows={rows}
+          maxLength={maxLength}
+          autoFocus={autoFocus}
+          aria-invalid={!!error}
+          aria-describedby={error ? errorId : helpText ? helpId : undefined}
+          className={textareaClasses}
         />
-        <div style={{ flex: 1 }}>
-          <label
-            htmlFor={id}
-            style={{
-              fontFamily: 'var(--font-primary)',
-              fontSize: 'var(--text-base)',
-              fontWeight: '400',
-              color: 'var(--foreground)',
-              cursor: props.disabled ? 'not-allowed' : 'pointer',
-            }}
-          >
-            {label}
-          </label>
-          {description && (
-            <p
-              id={`${id}-description`}
-              style={{
-                fontFamily: 'var(--font-secondary)',
-                fontSize: 'var(--text-small)',
-                color: 'var(--muted-foreground)',
-                margin: '0.25rem 0 0 0',
-              }}
-            >
-              {description}
-            </p>
-          )}
-          {error && (
-            <p
-              id={`${id}-error`}
-              style={{
-                fontFamily: 'var(--font-secondary)',
-                fontSize: 'var(--text-small)',
-                color: 'var(--destructive)',
-                margin: '0.25rem 0 0 0',
-              }}
-            >
-              {error}
-            </p>
-          )}
-        </div>
       </div>
+
+      {showCharCount && maxLength && (
+        <div className={`wp-block-form-field__char-count ${safeValue.length > maxLength * 0.9 ? 'wp-block-form-field__char-count--warning' : ''}`}>
+          {safeValue.length} / {maxLength}
+        </div>
+      )}
+
+      {error && (
+        <div
+          id={errorId}
+          role="alert"
+          className="wp-block-form-field__message wp-block-form-field__message--error"
+        >
+          <AlertCircle size={16} style={{ flexShrink: 0, marginTop: '2px' }} aria-hidden="true" />
+          <span>{error}</span>
+        </div>
+      )}
+
+      {helpText && !error && (
+        <div id={helpId} className="wp-block-form-field__help-text">
+          {helpText}
+        </div>
+      )}
+
+      {showSuccess && !error && safeValue.length > 0 && (
+        <div className="wp-block-form-field__message wp-block-form-field__message--success">
+          <CheckCircle2 size={16} aria-hidden="true" />
+          <span>Looks good!</span>
+        </div>
+      )}
     </div>
   );
 }

@@ -44,7 +44,7 @@
   max-width: 100%;
   
   /* Transition for hover effects */
-  transition: transform 300ms ease, opacity 300ms ease;
+  transition: transform var(--transition-base) ease, opacity var(--transition-base) ease;
 }
 
 /* ==========================================================================
@@ -54,8 +54,8 @@
 .wp-block-image__caption {
   /* Typography */
   font-family: var(--font-primary);
-  font-size: 13px;
-  line-height: 1.6;
+  font-size: var(--text-sm);
+  line-height: var(--line-height-normal);
   color: var(--muted-foreground);
   text-align: center;
   
@@ -202,7 +202,7 @@
 /* Tablet (768px - 1023px) */
 @media (min-width: 768px) {
   .wp-block-image__caption {
-    font-size: 14px;
+    font-size: var(--text-sm);
   }
 }
 
@@ -255,7 +255,7 @@
   }
   
   .wp-block-image__caption {
-    color: #666;
+    color: var(--muted-foreground);
     font-size: 9pt;
   }
   
@@ -289,13 +289,13 @@
 
 /* Shadow */
 .wp-block-image--shadow .wp-block-image__img {
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-md);
 }
 
 /* Grayscale (hover to color) */
 .wp-block-image--grayscale .wp-block-image__img {
   filter: grayscale(100%);
-  transition: filter 300ms ease;
+  transition: filter var(--transition-base) ease;
 }
 
 .wp-block-image--grayscale:hover .wp-block-image__img {

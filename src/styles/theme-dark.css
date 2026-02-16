@@ -29,7 +29,7 @@
    * Contrast: Base for all foreground colors
    * Hex: #090909
    */
-  --background: rgba(9, 9, 9, 1);                /* #090909 - Near black */
+  --background: #090909;                /* #090909 - Near black */
   
   /**
    * Primary foreground color (text on dark background)
@@ -37,7 +37,7 @@
    * Hex: #FFFFFF
    * Contrast: 16.07:1 on dark background (AAA ✓✓✓)
    */
-  --foreground: rgba(255, 255, 255, 1);          /* #FFFFFF - Pure white */
+  --foreground: #FFFFFF;          /* #FFFFFF - Pure white */
   
   
   /* ----------------------------------------
@@ -50,7 +50,7 @@
    * Hex: #1E1E1E
    * Contrast: Slightly lighter than background for depth
    */
-  --card: rgba(30, 30, 30, 1);                   /* #1E1E1E - Dark gray */
+  --card: #1E1E1E;                   /* #1E1E1E - Dark gray */
   
   /**
    * Card foreground color (text on cards in dark mode)
@@ -58,7 +58,13 @@
    * Hex: #FFFFFF
    * Contrast: 13.85:1 on card background (AAA ✓✓✓)
    */
-  --card-foreground: rgba(255, 255, 255, 1);     /* #FFFFFF - White */
+  --card-foreground: #FFFFFF;     /* #FFFFFF - White */
+  
+  /** Card hover background — slightly lighter on hover */
+  --card-hover: #2A2A2A;                /* Lighter dark gray */
+  
+  /** Primary dark variant — for hover states on links */
+  --primary-dark: #5B9AFF;              /* Lighter blue for dark mode */
   
   
   /* ----------------------------------------
@@ -70,7 +76,7 @@
    * Usage: Dropdowns, tooltips, floating menus
    * Hex: #1E1E1E
    */
-  --popover: rgba(30, 30, 30, 1);                /* #1E1E1E - Dark gray */
+  --popover: #1E1E1E;                /* #1E1E1E - Dark gray */
   
   /**
    * Popover foreground color (dark mode)
@@ -78,7 +84,7 @@
    * Hex: #FFFFFF
    * Contrast: 13.85:1 on popover background (AAA ✓✓✓)
    */
-  --popover-foreground: rgba(255, 255, 255, 1);  /* #FFFFFF - White */
+  --popover-foreground: #FFFFFF;  /* #FFFFFF - White */
   
   
   /* ----------------------------------------
@@ -92,7 +98,7 @@
    * Contrast: 10.87:1 on dark background (AAA ✓✓✓)
    * Note: Inverted from light mode for better dark contrast
    */
-  --primary: rgba(123, 231, 255, 1);             /* #7BE7FF - Bright cyan */
+  --primary: #7BE7FF;             /* #7BE7FF - Bright cyan */
   
   /**
    * Primary foreground color (dark mode)
@@ -100,14 +106,14 @@
    * Hex: #0E3278
    * Contrast: 9.62:1 on primary (AAA ✓✓✓)
    */
-  --primary-foreground: rgba(14, 50, 120, 1);    /* #0E3278 - Dark blue */
+  --primary-foreground: #0E3278;    /* #0E3278 - Dark blue */
   
   /**
    * Primary soft background (10% opacity) (dark mode)
    * Usage: Category badges, tags, soft highlights
-   * Hex: rgba(123, 231, 255, 0.1)
+   * Hex: #7BE7FF1A
    */
-  --primary-soft: rgba(123, 231, 255, 0.1);      /* 10% primary cyan */
+  --primary-soft: #7BE7FF1A;      /* 10% primary cyan */
   
   
   /* ----------------------------------------
@@ -120,7 +126,7 @@
    * Hex: #0E3278
    * Contrast: 8.95:1 on dark background (AAA ✓✓✓)
    */
-  --secondary: rgba(14, 50, 120, 1);             /* #0E3278 - Dark blue */
+  --secondary: #0E3278;             /* #0E3278 - Dark blue */
   
   /**
    * Secondary foreground color (dark mode)
@@ -128,7 +134,7 @@
    * Hex: #7BE7FF
    * Contrast: 9.62:1 on secondary (AAA ✓✓✓)
    */
-  --secondary-foreground: rgba(123, 231, 255, 1); /* #7BE7FF - Bright cyan */
+  --secondary-foreground: #7BE7FF; /* #7BE7FF - Bright cyan */
   
   
   /* ----------------------------------------
@@ -141,7 +147,7 @@
    * Hex: #565656
    * Contrast: 2.19:1 on dark background
    */
-  --muted: rgba(86, 86, 86, 1);                  /* #565656 - Medium gray */
+  --muted: #565656;                  /* #565656 - Medium gray */
   
   /**
    * Muted foreground color (dark mode)
@@ -149,7 +155,7 @@
    * Hex: #E1E1E1
    * Contrast: 13.16:1 on dark background (AAA ✓✓✓)
    */
-  --muted-foreground: rgba(225, 225, 225, 1);    /* #E1E1E1 - Light gray */
+  --muted-foreground: #E1E1E1;    /* #E1E1E1 - Light gray */
   
   
   /* ----------------------------------------
@@ -162,7 +168,7 @@
    * Hex: #1E6AFF
    * Contrast: 3.51:1 on dark background (AA Large ✓)
    */
-  --accent: rgba(30, 106, 255, 1);               /* #1E6AFF - Bright blue */
+  --accent: #1E6AFF;               /* #1E6AFF - Bright blue */
   
   /**
    * Accent foreground color (dark mode)
@@ -170,7 +176,7 @@
    * Hex: #FFFFFF
    * Contrast: 4.58:1 on accent (AA ✓)
    */
-  --accent-foreground: rgba(255, 255, 255, 1);   /* #FFFFFF - White */
+  --accent-foreground: #FFFFFF;   /* #FFFFFF - White */
   
   
   /* ----------------------------------------
@@ -183,7 +189,7 @@
    * Hex: #FF6363
    * Contrast: 4.53:1 on dark background (AA ✓)
    */
-  --destructive: rgba(255, 99, 99, 1);           /* #FF6363 - Light red */
+  --destructive: #FF6363;           /* #FF6363 - Light red */
   
   /**
    * Destructive foreground color (dark mode)
@@ -191,7 +197,93 @@
    * Hex: #090909
    * Contrast: 8.99:1 on destructive (AAA ✓✓✓)
    */
-  --destructive-foreground: rgba(9, 9, 9, 1);    /* #090909 - Near black */
+  --destructive-foreground: #090909;    /* #090909 - Near black */
+  
+  /**
+   * Destructive/Error soft background (dark mode, 10% opacity)
+   */
+  --destructive-soft: rgba(239, 68, 68, 0.1);
+  
+  
+  /* ----------------------------------------
+     Warning Colors (Dark Mode)
+     ---------------------------------------- */
+  
+  /**
+   * Warning background color (dark mode)
+   * Usage: Cautionary messages, alerts, pending states
+   * Hex: #F59E0B
+   */
+  --warning: #F59E0B;               /* #F59E0B - Amber */
+  
+  /**
+   * Warning foreground color (dark mode)
+   * Usage: Text on warning backgrounds
+   */
+  --warning-foreground: #090909;     /* #090909 - Near black */
+  
+  /**
+   * Warning soft background (dark mode, 10% opacity)
+   */
+  --warning-soft: rgba(245, 158, 11, 0.1);
+  
+  
+  /* ----------------------------------------
+     Success Colors (Dark Mode)
+     ---------------------------------------- */
+  
+  /**
+   * Success background color (dark mode)
+   * Usage: Success messages, confirmations, positive states
+   * Hex: #22C55E
+   */
+  --success: #22C55E;               /* #22C55E - Green (brighter for dark mode) */
+  
+  /**
+   * Success foreground color (dark mode)
+   * Usage: Text on success backgrounds
+   */
+  --success-foreground: #090909;     /* #090909 - Near black */
+  
+  /**
+   * Success soft background (dark mode, 10% opacity)
+   */
+  --success-soft: rgba(34, 197, 94, 0.1);
+  
+  
+  /* ----------------------------------------
+     Info Colors (Dark Mode)
+     ---------------------------------------- */
+  
+  /**
+   * Info color (dark mode)
+   * Usage: Informational messages, tips, highlights
+   * Hex: #38BDF8
+   */
+  --info: #38BDF8;                   /* #38BDF8 - Sky blue (brighter for dark mode) */
+  
+  /**
+   * Info foreground color (dark mode)
+   */
+  --info-foreground: #090909;        /* #090909 - Near black */
+  
+  
+  /* ----------------------------------------
+     Category Colors (Decorative, Dark Mode)
+     ---------------------------------------- */
+  
+  /**
+   * Category-specific colors for visual differentiation (dark mode).
+   * Slightly brighter than light mode for dark background contrast.
+   */
+  --category-green: #34D399;      /* Emerald-400 — Services */
+  --category-amber: #FBBF24;      /* Amber-400 — Solutions */
+  --category-pink: #F472B6;       /* Pink-400 — Portfolio, Media */
+  --category-blue: #60A5FA;       /* Blue-400 — Blog */
+  --category-cyan: #22D3EE;       /* Cyan-400 — Posts */
+  --category-indigo: #818CF8;     /* Indigo-400 — Dev Tools */
+  --category-red: #F87171;        /* Red-400 — Error / 404 */
+  --category-violet: #A78BFA;     /* Violet-400 — Summary stats */
   
   
   /* ----------------------------------------
@@ -204,21 +296,24 @@
    * Hex: #757575
    * Contrast: 3.53:1 on dark background (AA Large ✓)
    */
-  --border: rgba(117, 117, 117, 1);              /* #757575 - Medium gray */
+  --border: #757575;              /* #757575 - Medium gray */
   
   /**
    * Soft border color (dark mode - subtle)
    * Usage: Subtle card borders, section dividers
    * Contrast: Low contrast for subtle effect
    */
-  --border-soft: rgba(255, 255, 255, 0.08);      /* 8% white */
+  --border-soft: #FFFFFF14;      /* 8% white */
   
   /**
    * Extra soft border color (dark mode)
    * Usage: Very subtle dividers
    * Contrast: Minimal contrast for elegant design
    */
-  --border-extra-soft: rgba(255, 255, 255, 0.04); /* 4% white */
+  --border-extra-soft: #FFFFFF0A; /* 4% white */
+  
+  /** Subtle border — used for feature lists, inner dividers */
+  --border-subtle: #FFFFFF10;    /* 6% white */
   
   
   /* ----------------------------------------
@@ -230,14 +325,14 @@
    * Usage: Text inputs, textareas
    * Hex: #1E1E1E
    */
-  --input: rgba(30, 30, 30, 1);                  /* #1E1E1E - Dark gray */
+  --input: #1E1E1E;                  /* #1E1E1E - Dark gray */
   
   /**
    * Input field background (default, dark mode)
    * Usage: Form fields, search boxes
    * Hex: #1E1E1E
    */
-  --input-background: rgba(30, 30, 30, 1);       /* #1E1E1E - Dark gray */
+  --input-background: #1E1E1E;       /* #1E1E1E - Dark gray */
   
   /**
    * Focus ring color (dark mode)
@@ -245,7 +340,7 @@
    * Hex: #7BE7FF
    * Contrast: 10.87:1 on dark background (AAA ✓✓✓)
    */
-  --ring: rgba(123, 231, 255, 1);                /* #7BE7FF - Bright cyan */
+  --ring: #7BE7FF;                /* #7BE7FF - Bright cyan */
   
   
   /* ----------------------------------------
@@ -257,7 +352,7 @@
    * Usage: Navigation menus, sidebars
    * Hex: #090909
    */
-  --sidebar: rgba(9, 9, 9, 1);                   /* #090909 - Near black */
+  --sidebar: #090909;                   /* #090909 - Near black */
   
   /**
    * Sidebar foreground color (dark mode)
@@ -265,46 +360,46 @@
    * Hex: #FFFFFF
    * Contrast: 16.07:1 on sidebar (AAA ✓✓✓)
    */
-  --sidebar-foreground: rgba(255, 255, 255, 1);  /* #FFFFFF - White */
+  --sidebar-foreground: #FFFFFF;  /* #FFFFFF - White */
   
   /**
    * Sidebar primary color (dark mode)
    * Usage: Active nav items
    * Hex: #7BE7FF
    */
-  --sidebar-primary: rgba(123, 231, 255, 1);     /* #7BE7FF - Bright cyan */
+  --sidebar-primary: #7BE7FF;     /* #7BE7FF - Bright cyan */
   
   /**
    * Sidebar primary foreground (dark mode)
    * Hex: #0E3278
    * Contrast: 9.62:1 on sidebar-primary (AAA ✓✓✓)
    */
-  --sidebar-primary-foreground: rgba(14, 50, 120, 1); /* #0E3278 - Dark blue */
+  --sidebar-primary-foreground: #0E3278; /* #0E3278 - Dark blue */
   
   /**
    * Sidebar accent color (dark mode)
    * Hex: #1E6AFF
    */
-  --sidebar-accent: rgba(30, 106, 255, 1);       /* #1E6AFF - Bright blue */
+  --sidebar-accent: #1E6AFF;       /* #1E6AFF - Bright blue */
   
   /**
    * Sidebar accent foreground (dark mode)
    * Hex: #FFFFFF
    * Contrast: 4.58:1 on sidebar-accent (AA ✓)
    */
-  --sidebar-accent-foreground: rgba(255, 255, 255, 1); /* #FFFFFF - White */
+  --sidebar-accent-foreground: #FFFFFF; /* #FFFFFF - White */
   
   /**
    * Sidebar border color (dark mode)
    * Hex: #757575
    */
-  --sidebar-border: rgba(117, 117, 117, 1);      /* #757575 - Medium gray */
+  --sidebar-border: #757575;      /* #757575 - Medium gray */
   
   /**
    * Sidebar ring (focus, dark mode)
    * Hex: #1E6AFF
    */
-  --sidebar-ring: rgba(30, 106, 255, 1);         /* #1E6AFF - Bright blue */
+  --sidebar-ring: #1E6AFF;         /* #1E6AFF - Bright blue */
   
   
   /* ============================================
@@ -315,26 +410,26 @@
    * Glass background (subtle, dark mode)
    * Usage: Glassmorphism cards, hero overlays
    */
-  --glass-bg: rgba(0, 0, 0, 0.08);               /* 8% black */
+  --glass-bg: #00000014;               /* 8% black */
   
   /**
    * Glass background (stronger, dark mode)
    * Usage: Prominent glass elements
    */
-  --glass-bg-strong: rgba(0, 0, 0, 0.15);        /* 15% black */
+  --glass-bg-strong: #00000026;        /* 15% black */
   
   /**
    * Glass border color (dark mode)
    * Usage: Borders on glass elements
    */
-  --glass-border: rgba(255, 255, 255, 0.08);     /* 8% white */
+  --glass-border: #FFFFFF14;     /* 8% white */
   
   /**
    * Glass text color (dark mode)
    * Usage: Text on glass backgrounds
    * Hex: #FFFFFF
    */
-  --glass-text: rgba(255, 255, 255, 1);          /* #FFFFFF - White */
+  --glass-text: #FFFFFF;          /* #FFFFFF - White */
   
   
   /* ============================================
@@ -345,18 +440,18 @@
    * Shadows optimized for dark backgrounds
    * Note: Lighter shadows for better visibility on dark backgrounds
    */
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.5);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.5);
-  --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.8);
-  --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.7);
-  --shadow-primary: 0 4px 12px rgba(123, 231, 255, 0.3);  /* Cyan glow */
-  --shadow-hover: 0 8px 16px rgba(0, 0, 0, 0.6);
+  --shadow-sm: 0 1px 3px #00000080;
+  --shadow-md: 0 4px 6px #00000080;
+  --shadow-lg: 0 10px 40px #000000CC;
+  --shadow-xl: 0 20px 40px #000000B3;
+  --shadow-primary: 0 4px 12px #7BE7FF4D;  /* Cyan glow */
+  --shadow-hover: 0 8px 16px #00000099;
   
   /**
    * Legacy elevation shadow (brutalist style, dark mode)
    * Usage: Buttons, cards with hard shadows
    */
-  --elevation-sm: 4px 4px 0px 0px rgba(255, 255, 255, 0.1);
+  --elevation-sm: 4px 4px 0px 0px #FFFFFF1A;
   
   
   /* ============================================
@@ -366,11 +461,33 @@
   /**
    * Chart color palette (accessible, high contrast for dark mode)
    */
-  --chart-1: rgba(123, 231, 255, 1);  /* #7BE7FF - Bright cyan */
-  --chart-2: rgba(30, 106, 255, 1);   /* #1E6AFF - Bright blue */
-  --chart-3: rgba(255, 99, 99, 1);    /* #FF6363 - Light red */
-  --chart-4: rgba(225, 225, 225, 1);  /* #E1E1E1 - Light gray */
-  --chart-5: rgba(117, 117, 117, 1);  /* #757575 - Medium gray */
+  --chart-1: #7BE7FF;  /* #7BE7FF - Bright cyan */
+  --chart-2: #1E6AFF;   /* #1E6AFF - Bright blue */
+  --chart-3: #FF6363;    /* #FF6363 - Light red */
+  --chart-4: #E1E1E1;  /* #E1E1E1 - Light gray */
+  --chart-5: #757575;  /* #757575 - Medium gray */
+  
+  
+  /* ============================================
+     GRADIENTS (Dark Mode)
+     ============================================ */
+  
+  --gradient-blue: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+  --gradient-purple: linear-gradient(135deg, #581c87 0%, #a855f7 100%);
+  --gradient-purple-light: linear-gradient(135deg, #7e22ce 0%, #c084fc 100%);
+  --gradient-purple-indigo: linear-gradient(135deg, #4c1d95 0%, #818cf8 100%);
+  --gradient-red: linear-gradient(135deg, #991b1b 0%, #f87171 100%);
+  --gradient-green: linear-gradient(135deg, #14532d 0%, #34d399 100%);
+  --gradient-amber: linear-gradient(135deg, #b45309 0%, #fbbf24 100%);
+  --gradient-cyan: linear-gradient(135deg, #155e75 0%, #22d3ee 100%);
+  --gradient-sky: linear-gradient(135deg, #0369a1 0%, #38bdf8 100%);
+  --gradient-slate: linear-gradient(135deg, #334155 0%, #94a3b8 100%);
+  --gradient-violet: linear-gradient(135deg, #5b21b6 0%, #a78bfa 100%);
+  --gradient-gold: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  --gradient-teal: linear-gradient(135deg, #0891b2 0%, #22d3ee 100%);
+  --gradient-pink: linear-gradient(135deg, #f472b6 0%, #fb7185 100%);
+  
+  --color-gold: #ffd700;
   
   
   /* ============================================
@@ -385,7 +502,7 @@
    * - Icon: #FF3131 (red) and #CC3F23 (dark red) - Lightning bolt
    * - Wordmark: Light (#FFFFFF) in dark mode, Dark (#090909) in light mode
    */
-  --logo-wordmark-color: rgba(255, 255, 255, 1);  /* Light wordmark for dark backgrounds */
-  --logo-icon-primary: rgba(255, 49, 49, 1);      /* Red - never changes */
-  --logo-icon-secondary: rgba(204, 63, 35, 1);    /* Dark red - never changes */
+  --logo-wordmark-color: #FFFFFF;  /* Light wordmark for dark backgrounds */
+  --logo-icon-primary: #FF3131;      /* Red - never changes */
+  --logo-icon-secondary: #CC3F23;    /* Dark red - never changes */
 }

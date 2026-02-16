@@ -9,34 +9,25 @@
  * URL: /about/history/
  */
 
-import { SiteHeader } from '../parts/SiteHeader';
-import { SiteFooter } from '../parts/SiteFooter';
-import { SkipLink } from '../common/SkipLink';
+
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
-import { Breadcrumbs } from '../common/Breadcrumbs';
-import { BackToTopButton } from '../blocks/layout/BackToTopButton';
+
 import { Rocket, Award, Users, TrendingUp, Globe, Sparkles } from 'lucide-react';
 import { TimelineSection } from '../patterns/TimelineSection';
 import { CTASection } from '../patterns/CTASection';
 import { FAQSection } from '../patterns/FAQSection';
+import { Heading } from '../blocks/text/Heading';
+import { Paragraph } from '../blocks/text/Paragraph';
 import { aboutFAQs } from '../../data/faqs';
+import '@/styles/templates/page-about.css';
 
 export function AboutHistoryTemplate() {
   return (
     <>
-      <SkipLink />
-      <SiteHeader />
-      
-      <main id="main-content" role="main">
+
         {/* Breadcrumbs */}
-        <section 
-          className="py-4"
-          style={{
-            backgroundColor: 'var(--background)',
-          }}
-        >
-          <Container>
+        <section className="wp-block-breadcrumbs-section">
             <Breadcrumbs 
               items={[
                 { label: 'Home', href: '/' },
@@ -44,22 +35,16 @@ export function AboutHistoryTemplate() {
                 { label: 'Our History' }
               ]}
             />
-          </Container>
         </section>
 
         {/* Hero Section */}
         <Section 
           spacing="xl"
-          style={{
-            backgroundColor: 'var(--primary)',
-            color: 'var(--primary-foreground)',
-            position: 'relative',
-            overflow: 'hidden'
-          }}
+          className="about-page__hero"
         >
           {/* Subtle gradient overlay */}
           <div 
-            className="absolute inset-0"
+            className="wp-absolute wp-inset-0"
             style={{
               background: 'linear-gradient(135deg, transparent 0%, var(--accent) 100%)',
               opacity: '0.1',
@@ -70,7 +55,7 @@ export function AboutHistoryTemplate() {
           
           {/* Decorative gradient orb */}
           <div 
-            className="absolute top-0 right-0 w-96 h-96 rounded-full"
+            className="wp-absolute wp-top-0 wp-right-0 wp-w-96 wp-h-96 wp-rounded-full"
             style={{
               background: 'var(--accent)',
               opacity: '0.1',
@@ -81,96 +66,38 @@ export function AboutHistoryTemplate() {
           />
 
           <Container style={{ position: 'relative', zIndex: 1 }}>
-            <div className="max-w-4xl">
-              <span 
-                className="inline-flex items-center px-6 py-3 mb-8"
-                style={{
-                  backgroundColor: 'var(--glass-bg-strong)',
-                  backdropFilter: 'blur(10px)',
-                  color: 'var(--primary-foreground)',
-                  borderRadius: 'var(--radius-xl)',
-                  border: '1px solid var(--glass-border)',
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-base)',
-                  fontWeight: 'var(--font-weight-medium)',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.1em'
-                }}
-              >
+            <div className="wp-max-w-4xl">
+              <span className="about-page__hero-badge">
                 About Us
               </span>
 
-              <h1 
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-h1)',
-                  fontWeight: 'var(--font-weight-semibold)',
-                  lineHeight: 'var(--line-height-tight)',
-                  letterSpacing: 'var(--letter-spacing-tight)',
-                  marginBottom: '24px',
-                  color: 'var(--primary-foreground)'
-                }}
-              >
+              <Heading level={1} className="about-page__hero-title">
                 Our History
-              </h1>
+              </Heading>
 
-              <p 
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-lead)',
-                  fontWeight: 'var(--font-weight-regular)',
-                  lineHeight: 'var(--line-height-relaxed)',
-                  color: 'var(--primary-foreground)',
-                  opacity: 0.95,
-                  marginBottom: 0
-                }}
-              >
+              <Paragraph size="large" className="about-page__hero-desc">
                 From a small freelance operation to a leading WordPress and WooCommerce agency—discover the journey that shaped LSX Design.
-              </p>
+              </Paragraph>
             </div>
           </Container>
         </Section>
 
         {/* Origin Story Section */}
-        <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
+        <Section spacing="xl" className="about-page__story-section">
           <Container>
-            <div className="max-w-4xl mx-auto">
-              <h2 
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-h2)',
-                  fontWeight: 'var(--font-weight-semibold)',
-                  color: 'var(--foreground)',
-                  marginBottom: '24px',
-                  lineHeight: '1.2',
-                  letterSpacing: '-0.02em'
-                }}
-              >
+            <div className="wp-max-w-4xl wp-mx-auto">
+              <Heading level={2} className="about-page__section-title wp-mb-6">
                 Where It All Began
-              </h2>
+              </Heading>
 
-              <div className="space-y-6">
-                <p 
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-lg)',
-                    color: 'var(--foreground)',
-                    lineHeight: '1.7'
-                  }}
-                >
+              <div className="wp-space-y-6">
+                <Paragraph className="about-page__story-card-text">
                   LSX Design was founded in 2014 by a small team of WordPress developers who saw a gap in the market for agencies that truly understood both design systems and WordPress development. While many shops could do one or the other, few could bridge the two seamlessly.
-                </p>
+                </Paragraph>
 
-                <p 
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontSize: 'var(--text-lg)',
-                    color: 'var(--foreground)',
-                    lineHeight: '1.7'
-                  }}
-                >
+                <Paragraph className="about-page__story-card-text">
                   What started as weekend projects quickly grew into a full-time operation serving clients across three continents. Our focus on token-driven design systems, accessibility, and WordPress best practices set us apart from day one.
-                </p>
+                </Paragraph>
               </div>
             </div>
           </Container>
@@ -221,37 +148,18 @@ export function AboutHistoryTemplate() {
         />
 
         {/* Stats Section */}
-        <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
+        <Section spacing="xl" className="about-page__stats-section">
           <Container>
-            <div className="text-center mb-16">
-              <h2 
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'clamp(32px, 5vw, 48px)',
-                  fontWeight: 'var(--font-weight-semibold)',
-                  color: 'var(--foreground)',
-                  marginBottom: '16px',
-                  lineHeight: '1.2',
-                  letterSpacing: '-0.02em'
-                }}
-              >
+            <div className="about-page__section-header">
+              <Heading level={2} className="about-page__section-title">
                 By The Numbers
-              </h2>
-              <p 
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-lg)',
-                  color: 'var(--muted-foreground)',
-                  maxWidth: '700px',
-                  margin: '0 auto',
-                  lineHeight: '1.7'
-                }}
-              >
+              </Heading>
+              <Paragraph className="about-page__section-desc">
                 A decade of growth and achievement
-              </p>
+              </Paragraph>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="wp-grid-4-cols wp-gap-8">
               {[
                 { number: '500+', label: 'Projects Delivered', description: 'Since 2014' },
                 { number: '150+', label: 'Happy Clients', description: 'Across 30 countries' },
@@ -260,48 +168,17 @@ export function AboutHistoryTemplate() {
               ].map((stat, index) => (
                 <div 
                   key={index}
-                  className="text-center"
-                  style={{
-                    backgroundColor: 'var(--card)',
-                    border: '1px solid var(--border-soft)',
-                    borderRadius: 'var(--radius-xl)',
-                    padding: '40px 24px'
-                  }}
+                  className="about-page__stat-card"
                 >
-                  <div 
-                    style={{
-                      fontFamily: 'Lexend, sans-serif',
-                      fontSize: 'clamp(48px, 8vw, 64px)',
-                      fontWeight: 'var(--font-weight-bold)',
-                      color: 'var(--primary)',
-                      marginBottom: '12px',
-                      lineHeight: '1'
-                    }}
-                  >
+                  <div className="about-page__stat-value">
                     {stat.number}
                   </div>
-                  <div 
-                    style={{
-                      fontFamily: 'Lexend, sans-serif',
-                      fontSize: 'var(--text-base)',
-                      fontWeight: 'var(--font-weight-semibold)',
-                      color: 'var(--foreground)',
-                      marginBottom: '8px',
-                      textTransform: 'uppercase',
-                      letterSpacing: '0.05em'
-                    }}
-                  >
+                  <div className="about-page__stat-label wp-uppercase wp-tracking-wider">
                     {stat.label}
                   </div>
-                  <div 
-                    style={{
-                      fontFamily: 'Lexend, sans-serif',
-                      fontSize: 'var(--text-small)',
-                      color: 'var(--muted-foreground)'
-                    }}
-                  >
+                  <Paragraph className="about-page__stat-desc">
                     {stat.description}
-                  </div>
+                  </Paragraph>
                 </div>
               ))}
             </div>
@@ -317,46 +194,20 @@ export function AboutHistoryTemplate() {
         />
 
         {/* Vision Section */}
-        <Section spacing="xl" style={{ backgroundColor: 'var(--muted)' }}>
+        <Section spacing="xl" className="about-page__mission-section">
           <Container>
-            <div className="max-w-4xl mx-auto text-center">
-              <h2 
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'clamp(32px, 5vw, 48px)',
-                  fontWeight: 'var(--font-weight-semibold)',
-                  color: 'var(--foreground)',
-                  marginBottom: '24px',
-                  lineHeight: '1.2',
-                  letterSpacing: '-0.02em'
-                }}
-              >
+            <div className="wp-max-w-4xl wp-mx-auto wp-text-center">
+              <Heading level={2} className="about-page__section-title">
                 Looking Forward
-              </h2>
+              </Heading>
 
-              <p 
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-lg)',
-                  color: 'var(--foreground)',
-                  lineHeight: '1.7',
-                  marginBottom: '32px'
-                }}
-              >
+              <Paragraph className="about-page__section-desc wp-mb-8">
                 As WordPress continues to evolve, so do we. Our commitment to accessibility, performance, and developer experience remains unwavering. We're investing in AI-assisted development tools, advanced pattern libraries, and next-generation design systems that will shape the future of WordPress.
-              </p>
+              </Paragraph>
 
-              <p 
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontSize: 'var(--text-lg)',
-                  color: 'var(--muted-foreground)',
-                  lineHeight: '1.7',
-                  marginBottom: 0
-                }}
-              >
+              <Paragraph className="about-page__section-desc wp-mb-0">
                 The next 10 years will be our most exciting yet. Join us on the journey.
-              </p>
+              </Paragraph>
             </div>
           </Container>
         </Section>
@@ -372,10 +223,6 @@ export function AboutHistoryTemplate() {
           variant="highlighted"
           buttonSize="lg"
         />
-      </main>
-
-      <SiteFooter />
-      <BackToTopButton />
     </>
   );
 }

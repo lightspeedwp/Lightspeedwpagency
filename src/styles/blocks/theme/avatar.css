@@ -1,0 +1,32 @@
+/**
+ * Avatar Block Styles
+ */
+.wp-block-avatar {
+  position: relative;
+  display: flex;
+  height: 2.5rem; /* 40px */
+  width: 2.5rem;
+  overflow: hidden;
+  border-radius: var(--radius-full);
+}
+
+.wp-block-avatar__image {
+  aspect-ratio: 1 / 1;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.wp-block-avatar__fallback {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  background-color: var(--muted);
+  color: var(--muted-foreground);
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: 500;
+}

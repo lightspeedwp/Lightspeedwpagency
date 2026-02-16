@@ -1,0 +1,33 @@
+/**
+ * Section Component Styles
+ * 
+ * Base styles for the <Section> component.
+ * Every section gets uniform fluid padding from --section-padding-y
+ * and align-wide constraint (--section-max-width = 1440px).
+ * 
+ * Horizontal padding is inherited by child Container component.
+ * NO default gap — containers handle width, sections handle vertical rhythm.
+ *
+ * Edit --section-padding-x and --section-padding-y in theme-base.css
+ * to change site-wide section spacing in one place.
+ */
+
+.lsx-section {
+  width: 100%;
+  position: relative;
+  /* Uniform fluid vertical padding: 48px → 80px */
+  padding-top: var(--section-padding-y);
+  padding-bottom: var(--section-padding-y);
+}
+
+/**
+ * Compact section modifier
+ * 
+ * For breadcrumbs, pagination strips, and other
+ * low-profile sections that need minimal vertical padding.
+ * Uses --section-padding-y-sm (8px → 12px) from theme-base.css.
+ */
+.lsx-section--compact {
+  padding-top: var(--section-padding-y-sm);
+  padding-bottom: var(--section-padding-y-sm);
+}

@@ -16,15 +16,15 @@
 .wp-block-list--unordered {
   /* Layout */
   list-style-type: disc;
-  padding-left: 24px;
+  padding-left: var(--spacing-6);
   
   /* Spacing */
   margin-bottom: var(--spacing-6);
   
   /* Typography */
   font-family: var(--font-primary);
-  font-size: 15px;
-  line-height: 1.7;
+  font-size: var(--text-base);
+  line-height: var(--line-height-relaxed);
   color: var(--foreground);
 }
 
@@ -45,15 +45,15 @@
 .wp-block-list--ordered {
   /* Layout */
   list-style-type: decimal;
-  padding-left: 24px;
+  padding-left: var(--spacing-6);
   
   /* Spacing */
   margin-bottom: var(--spacing-6);
   
   /* Typography */
   font-family: var(--font-primary);
-  font-size: 15px;
-  line-height: 1.7;
+  font-size: var(--text-base);
+  line-height: var(--line-height-relaxed);
   color: var(--foreground);
 }
 
@@ -65,7 +65,7 @@
 /* Marker styling */
 .wp-block-list--ordered .wp-block-list__item::marker {
   color: var(--muted-foreground);
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
 }
 
 /* ==========================================================================
@@ -120,7 +120,7 @@
 
 .wp-block-list--checkmarks .wp-block-list__item {
   position: relative;
-  padding-left: 32px;
+  padding-left: var(--spacing-8);
 }
 
 .wp-block-list--checkmarks .wp-block-list__item::before {
@@ -129,8 +129,8 @@
   left: 0;
   top: 0;
   color: var(--primary);
-  font-weight: 700;
-  font-size: 18px;
+  font-weight: var(--font-weight-bold);
+  font-size: var(--text-lg);
   line-height: inherit;
 }
 
@@ -197,9 +197,9 @@
 
 /* Code blocks within list items */
 .wp-block-list__item code {
-  font-family: 'Courier New', monospace;
+  font-family: var(--font-mono);
   font-size: 0.9em;
-  padding: 2px 6px;
+  padding: var(--spacing-0-5) var(--spacing-1-5);
   background: var(--muted);
   border-radius: var(--radius-sm);
 }
@@ -208,7 +208,7 @@
 .wp-block-list__item a {
   color: var(--primary);
   text-decoration: underline;
-  transition: color 200ms ease;
+  transition: color var(--transition-base) ease;
 }
 
 .wp-block-list__item a:hover {
@@ -217,7 +217,7 @@
 }
 
 .wp-block-list__item a:focus-visible {
-  outline: 2px solid var(--primary);
+  outline: var(--wp--preset--border-width--2) solid var(--primary);
   outline-offset: 2px;
   border-radius: var(--radius-sm);
 }
@@ -232,8 +232,8 @@
 @media (min-width: 768px) {
   .wp-block-list--unordered,
   .wp-block-list--ordered {
-    font-size: 16px;
-    padding-left: 28px;
+    font-size: var(--text-base);
+    padding-left: var(--spacing-7);
   }
   
   .wp-block-list--unordered .wp-block-list__item + .wp-block-list__item,
@@ -247,7 +247,7 @@
   .wp-block-list--unordered,
   .wp-block-list--ordered {
     font-size: var(--text-base);
-    padding-left: 32px;
+    padding-left: var(--spacing-8);
   }
 }
 
@@ -282,7 +282,7 @@
   .wp-block-list--ordered {
     color: black;
     font-size: 12pt;
-    line-height: 1.5;
+    line-height: var(--line-height-normal);
   }
   
   .wp-block-list__item {

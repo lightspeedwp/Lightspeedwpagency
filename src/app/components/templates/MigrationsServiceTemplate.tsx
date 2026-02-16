@@ -15,16 +15,13 @@
  * - CTA
  */
 
-import { RouteAnnouncer } from '@/app/components/blocks/utility/RouteAnnouncer';
-import { SkipLink } from '@/app/components/common/SkipLink';
-import { SiteHeader } from '@/app/components/parts/SiteHeader';
-import { SiteFooter } from '@/app/components/parts/SiteFooter';
-import { BackToTopButton } from '@/app/components/blocks/layout/BackToTopButton';
 import { Hero } from '@/app/components/patterns/Hero';
 import { Section } from '@/app/components/common/Section';
 import { Container } from '@/app/components/common/Container';
 import { CTASection } from '@/app/components/patterns/CTASection';
 import { FAQSection } from '@/app/components/patterns/FAQSection';
+import { Heading } from '@/app/components/blocks/text/Heading';
+import { Paragraph } from '@/app/components/blocks/text/Paragraph';
 import {
   migrationsHero,
   whyMigrateWithLSX,
@@ -35,6 +32,7 @@ import {
   migrationsFAQs,
   migrationsCTA
 } from '@/app/data/migrations-service-page';
+import '@/styles/templates/service-detail.css';
 
 /**
  * Migrations Service Template
@@ -42,12 +40,7 @@ import {
 export function MigrationsServiceTemplate() {
   return (
     <>
-      <RouteAnnouncer />
-      <SkipLink />
-      <SiteHeader />
-      
-      <main id="main-content" role="main">
-        {/* Hero Section */}
+      {/* Hero Section */}
         <Hero
           variant="service"
           badge={{
@@ -61,42 +54,45 @@ export function MigrationsServiceTemplate() {
             { 
               label: migrationsHero.cta.primary.text, 
               page: migrationsHero.cta.primary.page, 
-              variant: 'primary' 
+              variant: 'default',
+              className: 'service-detail__hero-btn-primary'
             },
             { 
               label: migrationsHero.cta.secondary.text, 
               page: migrationsHero.cta.secondary.page, 
-              variant: 'outline' 
+              variant: 'outline',
+              className: 'service-detail__hero-btn-outline'
             }
           ]}
+          className="service-detail__hero"
         />
 
         {/* Why Migrate with LSX Section */}
-        <Section spacing="xl" background="muted">
-          <Container width="default">
-            <div className="service-page__section-header">
-              <h2 className="service-page__section-title">
+        <Section spacing="xl" className="service-detail__overview-section">
+          <Container>
+            <div className="service-detail__section-header">
+              <Heading level={2} align="center" className="service-detail__title">
                 {whyMigrateWithLSX.title}
-              </h2>
-              <p className="service-page__section-description">
+              </Heading>
+              <Paragraph align="center" className="service-detail__description">
                 {whyMigrateWithLSX.description}
-              </p>
+              </Paragraph>
             </div>
 
-            <div className="service-page__benefits-grid">
+            <div className="service-detail__stats-grid">
               {whyMigrateWithLSX.benefits.map((benefit, index) => {
                 const Icon = benefit.icon;
                 return (
-                  <div key={index} className="service-page__benefit-card">
-                    <div className="service-page__benefit-icon">
-                      <Icon />
+                  <div key={index} className="service-detail__stat-card">
+                    <div className="service-detail__service-icon-wrapper">
+                      <Icon size={32} />
                     </div>
-                    <h3 className="service-page__benefit-title">
+                    <Heading level={3} className="service-detail__service-title">
                       {benefit.title}
-                    </h3>
-                    <p className="service-page__benefit-description">
+                    </Heading>
+                    <Paragraph className="service-detail__service-desc">
                       {benefit.description}
-                    </p>
+                    </Paragraph>
                   </div>
                 );
               })}
@@ -105,31 +101,31 @@ export function MigrationsServiceTemplate() {
         </Section>
 
         {/* Migration Services Section */}
-        <Section spacing="xl">
-          <Container width="default">
-            <div className="service-page__section-header">
-              <h2 className="service-page__section-title">
+        <Section spacing="xl" className="service-detail__services-section">
+          <Container className="wp-max-w-6xl">
+            <div className="service-detail__section-header">
+              <Heading level={2} align="center" className="service-detail__title">
                 Our Migration Services
-              </h2>
-              <p className="service-page__section-description">
+              </Heading>
+              <Paragraph align="center" className="service-detail__description">
                 Comprehensive migration solutions for a seamless transition
-              </p>
+              </Paragraph>
             </div>
 
-            <div className="service-page__features-grid">
+            <div className="service-detail__services-grid">
               {migrationServices.map((service, index) => {
                 const Icon = service.icon;
                 return (
-                  <div key={index} className="service-page__feature-card">
-                    <div className="service-page__feature-icon">
-                      <Icon />
+                  <div key={index} className="service-detail__service-card">
+                    <div className="service-detail__service-icon-wrapper">
+                      <Icon size={24} />
                     </div>
-                    <h3 className="service-page__feature-title">
+                    <Heading level={3} className="service-detail__service-title">
                       {service.title}
-                    </h3>
-                    <p className="service-page__feature-description">
+                    </Heading>
+                    <Paragraph className="service-detail__service-desc">
                       {service.description}
-                    </p>
+                    </Paragraph>
                   </div>
                 );
               })}
@@ -138,30 +134,30 @@ export function MigrationsServiceTemplate() {
         </Section>
 
         {/* Migration Process Section */}
-        <Section spacing="xl" background="muted">
-          <Container width="default">
-            <div className="service-page__section-header">
-              <h2 className="service-page__section-title">
+        <Section spacing="xl" className="service-detail__process-section">
+          <Container>
+            <div className="service-detail__section-header">
+              <Heading level={2} align="center" className="service-detail__title">
                 Our Migration Process
-              </h2>
-              <p className="service-page__section-description">
+              </Heading>
+              <Paragraph align="center" className="service-detail__description">
                 A proven 5-step approach to successful migrations
-              </p>
+              </Paragraph>
             </div>
 
-            <div className="service-page__process-grid">
+            <div className="wp-grid-5-cols wp-gap-6">
               {migrationProcess.map((step, index) => (
-                <div key={index} className="service-page__process-step">
-                  <div className="service-page__process-number">
+                <div key={index} className="service-detail__process-card">
+                  <div className="service-detail__process-number">
                     {step.step}
                   </div>
-                  <div className="service-page__process-content">
-                    <h3 className="service-page__process-title">
+                  <div className="service-detail__process-content">
+                    <Heading level={3} className="service-detail__process-title wp-mt-4">
                       {step.title}
-                    </h3>
-                    <p className="service-page__process-description">
+                    </Heading>
+                    <Paragraph className="service-detail__process-desc">
                       {step.description}
-                    </p>
+                    </Paragraph>
                   </div>
                 </div>
               ))}
@@ -170,26 +166,26 @@ export function MigrationsServiceTemplate() {
         </Section>
 
         {/* Supported Platforms Section */}
-        <Section spacing="xl">
-          <Container width="default">
-            <div className="service-page__section-header">
-              <h2 className="service-page__section-title">
+        <Section spacing="xl" className="service-detail__tech-section">
+          <Container>
+            <div className="service-detail__section-header">
+              <Heading level={2} align="center" className="service-detail__title">
                 {supportedPlatforms.title}
-              </h2>
-              <p className="service-page__section-description">
+              </Heading>
+              <Paragraph align="center" className="service-detail__description">
                 {supportedPlatforms.description}
-              </p>
+              </Paragraph>
             </div>
 
-            <div className="service-page__list-grid">
+            <div className="wp-grid-4-cols wp-gap-6">
               {supportedPlatforms.platforms.map((platform, index) => (
-                <div key={index} className="service-page__list-item">
-                  <h3 className="service-page__list-name">
+                <div key={index} className="service-detail__tech-card wp-text-center">
+                  <Heading level={3} className="service-detail__tech-title wp-mb-2">
                     {platform.name}
-                  </h3>
-                  <p className="service-page__list-description">
+                  </Heading>
+                  <Paragraph className="service-detail__stat-desc">
                     {platform.description}
-                  </p>
+                  </Paragraph>
                 </div>
               ))}
             </div>
@@ -197,31 +193,31 @@ export function MigrationsServiceTemplate() {
         </Section>
 
         {/* Case Study Section */}
-        <Section spacing="xl" background="muted">
-          <Container width="default">
-            <div className="service-page__case-study">
-              <div className="service-page__case-study-header">
-                <h2 className="service-page__case-study-title">
+        <Section spacing="xl" className="service-detail__overview-section">
+          <Container>
+            <div className="service-detail__case-study">
+              <div className="service-detail__case-study-header">
+                <Heading level={2} className="service-detail__case-study-title">
                   {migrationCaseStudy.title}
-                </h2>
-                <blockquote className="service-page__case-study-quote">
+                </Heading>
+                <blockquote className="service-detail__case-study-quote">
                   &ldquo;{migrationCaseStudy.quote}&rdquo;
                 </blockquote>
-                <div className="service-page__case-study-author">
+                <div className="service-detail__case-study-author">
                   {migrationCaseStudy.author}
                 </div>
-                <div className="service-page__case-study-role">
+                <div className="service-detail__case-study-role">
                   {migrationCaseStudy.role}, {migrationCaseStudy.client}
                 </div>
               </div>
 
-              <div className="service-page__results-grid">
+              <div className="service-detail__results-grid">
                 {migrationCaseStudy.results.map((result, index) => (
-                  <div key={index} className="service-page__result-item">
-                    <div className="service-page__result-metric">
+                  <div key={index} className="service-detail__result-item">
+                    <div className="service-detail__result-metric">
                       {result.metric}
                     </div>
-                    <div className="service-page__result-label">
+                    <div className="service-detail__result-label">
                       {result.label}
                     </div>
                   </div>
@@ -232,7 +228,7 @@ export function MigrationsServiceTemplate() {
         </Section>
 
         {/* FAQ Section */}
-        <FAQSection faqs={migrationsFAQs} />
+        <FAQSection faqs={migrationsFAQs} variant="muted" />
 
         {/* CTA Section */}
         <CTASection
@@ -242,11 +238,8 @@ export function MigrationsServiceTemplate() {
           primaryButtonPage={migrationsCTA.buttons[0].page}
           secondaryButtonText={migrationsCTA.buttons[1].text}
           secondaryButtonPage={migrationsCTA.buttons[1].page}
+          gradient="blue"
         />
-      </main>
-
-      <SiteFooter />
-      <BackToTopButton />
     </>
   );
 }

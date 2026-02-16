@@ -7,84 +7,38 @@
  * @see /guidelines/templates/overview-templates.md
  */
 
-import { SiteHeader } from '../parts/SiteHeader';
-import { SiteFooter } from '../parts/SiteFooter';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
+import { Heading } from '../common/Heading';
+import { Paragraph } from '../blocks/text/Paragraph';
+import { Hero } from '../patterns/Hero';
+import '@/styles/templates/service-detail.css';
 
 export function EmailMarketingTemplate() {
   return (
     <>
-      <SiteHeader />
-      
-      <main id="main-content" role="main">
         {/* Page Hero */}
-        <Section variant="canvas" className="py-12">
-          <Container>
-            <div style={{ textAlign: 'center' }}>
-              <h1 style={{
-                fontSize: 'var(--text-h1)',
-                fontFamily: 'var(--font-primary)',
-                fontWeight: 'var(--font-weight-bold)',
-                color: 'var(--foreground)',
-                marginBottom: 'var(--spacing-4)'
-              }}>
-                Email Marketing
-              </h1>
-              
-              <p style={{
-                fontSize: 'var(--text-lead)',
-                fontFamily: 'var(--font-primary)',
-                color: 'var(--muted-foreground)',
-                marginBottom: 'var(--spacing-8)',
-                maxWidth: '800px',
-                marginLeft: 'auto',
-                marginRight: 'auto'
-              }}>
-                Strategic email campaigns that drive engagement and conversions
-              </p>
+        <Hero
+          variant="default"
+          align="center"
+          title="Email Marketing"
+          description="Strategic email campaigns that drive engagement and conversions"
+          gradient="blue"
+        />
 
-              {/* Coming Soon Badge */}
-              <div style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: 'var(--spacing-2)',
-                padding: 'var(--spacing-2) var(--spacing-4)',
-                backgroundColor: 'var(--muted)',
-                borderRadius: 'var(--radius)',
-                fontSize: 'var(--text-small)',
-                fontFamily: 'var(--font-secondary)',
-                color: 'var(--muted-foreground)'
-              }}>
+        {/* Placeholder Content */}
+        <Section background="default" spacing="lg">
+          <Container>
+            <div className="service-detail__coming-soon">
+              <Paragraph>
+                Full content for this page is coming soon. Check back later!
+              </Paragraph>
+              <div className="service-detail__coming-soon-badge">
                 🚧 Page Under Construction
               </div>
             </div>
           </Container>
         </Section>
-
-        {/* Placeholder Content */}
-        <Section variant="white" className="py-12">
-          <Container>
-            <div style={{
-              textAlign: 'center',
-              padding: 'var(--spacing-12)',
-              backgroundColor: 'var(--card)',
-              borderRadius: 'var(--radius-lg)',
-              border: '1px solid var(--border)'
-            }}>
-              <p style={{
-                fontSize: 'var(--text-base)',
-                fontFamily: 'var(--font-primary)',
-                color: 'var(--foreground)'
-              }}>
-                Full content for this page is coming soon. Check back later!
-              </p>
-            </div>
-          </Container>
-        </Section>
-      </main>
-      
-      <SiteFooter />
     </>
   );
 }

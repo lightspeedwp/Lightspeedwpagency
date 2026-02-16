@@ -27,6 +27,7 @@ import { Section } from '../common/Section';
 import { Buttons, Button } from '../blocks/design/Buttons';
 import { Breadcrumbs } from '../common/Breadcrumbs';
 import type { LucideIcon } from 'lucide-react';
+import '@/styles/patterns/hero.css';
 
 // ============================================
 // TYPESCRIPT INTERFACES
@@ -245,7 +246,7 @@ export function Hero({
     <div className={contentClasses}>
       {/* Badge */}
       {badge && (
-        <div className="hero-badge wp-badge--hero" style={{ fontFamily: 'var(--font-secondary)', marginBottom: 'var(--spacing-4)' }}>
+        <div className="hero-badge wp-badge--hero">
           {badge.icon && (() => {
             const BadgeIcon = badge.icon;
             return <BadgeIcon size={14} />;
@@ -255,37 +256,19 @@ export function Hero({
       )}
       
       {/* Title */}
-      <h1 
-        className={titleClasses} 
-        style={{ 
-          fontFamily: 'var(--font-primary)',
-          marginBottom: 'var(--spacing-6)',
-        }}
-      >
+      <h1 className={titleClasses}>
         {renderTitle()}
       </h1>
       
       {/* Subtitle (optional) */}
       {subtitle && (
-        <p 
-          className={`hero-subtitle ${hasGradient ? 'hero-subtitle--gradient' : ''}`} 
-          style={{ 
-            fontFamily: 'var(--font-primary)',
-            marginBottom: 'var(--spacing-6)',
-          }}
-        >
+        <p className={`hero-subtitle ${hasGradient ? 'hero-subtitle--gradient' : ''}`}>
           {subtitle}
         </p>
       )}
       
       {/* Description */}
-      <p 
-        className={descriptionClasses} 
-        style={{ 
-          fontFamily: 'var(--font-primary)',
-          marginBottom: 'var(--spacing-8)',
-        }}
-      >
+      <p className={descriptionClasses}>
         {description}
       </p>
       
@@ -309,7 +292,7 @@ export function Hero({
       
       {/* Stats Grid */}
       {stats.length > 0 && (
-        <div className={statsClasses} style={{ gap: 'var(--spacing-8)', marginTop: 'var(--spacing-12)' }}>
+        <div className={statsClasses}>
           {stats.map((stat, index) => {
             const StatIcon = stat.icon;
             
@@ -349,10 +332,10 @@ export function Hero({
                 
                 {/* Content */}
                 <div className="hero-stat__content">
-                  <div className={valueClasses} style={{ fontFamily: 'var(--font-primary)' }}>
+                  <div className={valueClasses}>
                     {stat.value}
                   </div>
-                  <div className={labelClasses} style={{ fontFamily: 'var(--font-secondary)' }}>
+                  <div className={labelClasses}>
                     {stat.label}
                   </div>
                 </div>
@@ -384,7 +367,7 @@ export function Hero({
       <Container>
         {/* Breadcrumbs (Above hero content) */}
         {breadcrumbs && breadcrumbs.length > 0 && (
-          <div className="hero-breadcrumbs" style={{ fontFamily: 'var(--font-secondary)', marginBottom: 'var(--spacing-6)' }}>
+          <div className="hero-breadcrumbs">
             <Breadcrumbs items={breadcrumbs} />
           </div>
         )}

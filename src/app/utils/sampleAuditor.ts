@@ -409,14 +409,14 @@ export class SampleAuditor {
       examples.push({
         issue: 'Unapproved font family',
         before: `<h1 style={{ fontFamily: 'Arial, sans-serif' }}>Title</h1>`,
-        after: `<h1 style={{ fontFamily: 'Lexend, sans-serif', fontSize: 'var(--text-h1)' }}>Title</h1>`,
-        explanation: 'Use Lexend for headings and body text. Always pair with CSS variable font size.'
+        after: `<h1 style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-h1)' }}>Title</h1>`,
+        explanation: 'Use design system CSS variables for fonts and sizes.'
       });
       
       examples.push({
         issue: 'Hardcoded font size',
         before: `<p style={{ fontSize: '16px' }}>Text</p>`,
-        after: `<p style={{ fontSize: 'var(--text-base)', fontFamily: 'Lexend, sans-serif' }}>Text</p>`,
+        after: `<p style={{ fontSize: 'var(--text-base)', fontFamily: 'var(--font-primary)' }}>Text</p>`,
         explanation: 'Use CSS variables for font sizes to maintain consistency and enable global updates.'
       });
     }

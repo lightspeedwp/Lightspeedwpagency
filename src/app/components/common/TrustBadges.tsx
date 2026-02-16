@@ -11,17 +11,11 @@
  */
 
 import { Award, Zap, Shield, Briefcase } from 'lucide-react';
+import '@/styles/components/trust-badges.css';
 
 export function TrustBadges() {
   return (
-    <div 
-      className="grid grid-cols-2 md:grid-cols-4 gap-6"
-      style={{
-        padding: '24px 0',
-        borderTop: '1px solid var(--border)',
-        borderBottom: '1px solid var(--border)'
-      }}
-    >
+    <div className="trust-badges">
       {[
         {
           icon: Zap,
@@ -44,33 +38,16 @@ export function TrustBadges() {
           description: 'WordPress Expertise'
         }
       ].map((badge, index) => (
-        <div 
-          key={index}
-          className="flex flex-col items-center text-center gap-2"
-        >
+        <div key={index} className="trust-badge">
           <badge.icon 
-            size={32}
-            style={{ color: 'var(--primary)' }}
+            className="trust-badge__icon"
             aria-hidden="true"
           />
-          <div>
-            <div 
-              style={{
-                fontSize: 'var(--text-base)',
-                fontFamily: 'var(--font-primary)',
-                fontWeight: 500,
-                color: 'var(--sidebar-foreground)'
-              }}
-            >
+          <div className="trust-badge__content">
+            <div className="trust-badge__label">
               {badge.label}
             </div>
-            <div 
-              style={{
-                fontSize: 'var(--text-xs)',
-                fontFamily: 'var(--font-secondary)',
-                color: 'var(--primary-foreground)' // White text for high contrast on dark backgrounds
-              }}
-            >
+            <div className="trust-badge__description">
               {badge.description}
             </div>
           </div>

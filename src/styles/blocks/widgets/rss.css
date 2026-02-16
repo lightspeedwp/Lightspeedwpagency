@@ -28,7 +28,7 @@
   font-weight: var(--font-weight-medium);
   color: var(--foreground);
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: color var(--transition-base) ease;
 }
 
 .wp-block-rss__title:hover {
@@ -50,6 +50,6 @@
   font-family: var(--font-primary);
   font-size: var(--text-sm);
   color: var(--muted-foreground);
-  line-height: 1.5;
+  line-height: var(--line-height-normal);
   margin: 0;
 }
