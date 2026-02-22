@@ -791,6 +791,8 @@ function Modal({ isOpen, onClose }) {
 
 ### Reduced Motion Support
 
+**For comprehensive reduced-motion coding standards, see [REDUCED-MOTION-STANDARDS.md](/guidelines/REDUCED-MOTION-STANDARDS.md).**
+
 **Requirements:**
 - Respect `prefers-reduced-motion: reduce`
 - No required animations

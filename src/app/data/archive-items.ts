@@ -365,6 +365,16 @@ export function getPortfolioItemsByIndustry(industry: string): PortfolioArchiveI
 }
 
 /**
+ * Get portfolio items by tag
+ */
+export function getPortfolioItemsByTag(tag: string): PortfolioArchiveItem[] {
+  const normalizedTag = tag.toLowerCase().replace(/-/g, ' ');
+  return portfolioArchiveItems.filter(item => 
+    item.tags.some(t => t.toLowerCase() === normalizedTag || t.toLowerCase().replace(/\s+/g, '-') === tag.toLowerCase())
+  );
+}
+
+/**
  * Get archive items by tag
  */
 export function getArchiveItemsByTag(tag: string): ArchiveItem[] {

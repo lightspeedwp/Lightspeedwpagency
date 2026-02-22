@@ -1,14 +1,23 @@
 /**
  * Breadcrumbs Block Component
- * 
+ *
  * WordPress Block: custom (or Yoast/RankMath)
  * Style: .wp-block-breadcrumbs
+ *
+ * Funky `//` prefix style — each crumb is rendered as `// LABEL`
+ * in uppercase monospace. No chevron separators.
+ *
+ * This is the canonical breadcrumb pattern used site-wide.
+ * Templates should consume this via the BreadcrumbPart template part.
+ *
+ * @see /src/styles/blocks/theme/breadcrumbs.css
+ * @see /src/app/components/parts/BreadcrumbPart.tsx
  */
 
 import React from 'react';
-import '@/styles/blocks/theme/breadcrumbs.css';
-import { ChevronRight, Home, MoreHorizontal } from 'lucide-react';
-import { useNavigation } from '@/app/contexts/NavigationContext';
+import { MoreHorizontal } from 'lucide-react';
+import { Link } from 'react-router';
+import { slugToPath } from '@/app/utils/route-map';
 
 export interface BreadcrumbItem {
   label: string;
@@ -20,69 +29,74 @@ export interface BreadcrumbItem {
 export interface BreadcrumbsProps {
   items: BreadcrumbItem[];
   className?: string;
-  separator?: React.ReactNode;
-  showHomeIcon?: boolean;
   maxItems?: number;
 }
 
-export function Breadcrumbs({ 
-  items, 
-  className = '', 
-  separator, 
-  showHomeIcon = false,
-  maxItems 
+export function Breadcrumbs({
+  items,
+  className = '',
+  maxItems,
 }: BreadcrumbsProps) {
-  const { navigateTo } = useNavigation();
-
   // Collapse breadcrumbs if maxItems is set
-  const displayItems = maxItems && items.length > maxItems
-    ? [
-        items[0],
-        { label: '...', href: undefined, icon: MoreHorizontal },
-        ...items.slice(items.length - (maxItems - 1)),
-      ]
-    : items;
+  const displayItems =
+    maxItems && items.length > maxItems
+      ? [
+          items[0],
+          { label: '…', href: undefined, icon: MoreHorizontal },
+          ...items.slice(items.length - (maxItems - 1)),
+        ]
+      : items;
 
   return (
-    <nav 
-      className={`wp-block-breadcrumbs ${className}`.trim()} 
+    <nav
+      className={`wp-block-breadcrumbs ${className}`.trim()}
       aria-label="Breadcrumb"
     >
       <ol className="wp-block-breadcrumbs__list">
         {displayItems.map((item, index) => {
           const isLast = index === displayItems.length - 1;
-          const isHome = index === 0 && showHomeIcon;
           const Icon = item.icon;
-          const isCollapsed = item.label === '...';
-          
+          const isCollapsed = item.label === '…';
+
+          // Strip any existing `// ` prefix so labels are always clean
+          const cleanLabel = item.label.replace(/^\/\/\s*/, '');
+
           return (
             <li key={index} className="wp-block-breadcrumbs__item">
-              {index > 0 && (
-                <span className="wp-block-breadcrumbs__separator" aria-hidden="true">
-                  {separator || <ChevronRight size={12} />}
-                </span>
-              )}
-              
+              {/* Decorative // prefix — hidden from assistive tech */}
+              <span className="wp-block-breadcrumbs__prefix" aria-hidden="true">
+                //
+              </span>
+
               {isLast ? (
-                <span className="wp-block-breadcrumbs__current wp-block-breadcrumbs__current-wrapper" aria-current="page">
-                  {isHome ? <Home size={14} /> : (Icon && <Icon size={14} />)}
-                  {(!isHome || isCollapsed || !showHomeIcon) && item.label}
+                <span
+                  className="wp-block-breadcrumbs__current"
+                  aria-current="page"
+                >
+                  {Icon && <Icon size={14} className="wp-block-breadcrumbs__icon" />}
+                  {cleanLabel}
                 </span>
+              ) : item.page ? (
+                <Link
+                  to={slugToPath(item.page)}
+                  className="wp-block-breadcrumbs__link"
+                >
+                  {Icon && <Icon size={14} className="wp-block-breadcrumbs__icon" />}
+                  {cleanLabel}
+                </Link>
+              ) : item.href ? (
+                <Link
+                  to={item.href}
+                  className="wp-block-breadcrumbs__link"
+                >
+                  {Icon && <Icon size={14} className="wp-block-breadcrumbs__icon" />}
+                  {cleanLabel}
+                </Link>
               ) : (
-                item.page ? (
-                  <button 
-                    onClick={() => navigateTo(item.page!)}
-                    className="wp-block-breadcrumbs__link"
-                  >
-                    {isHome ? <Home size={14} /> : (Icon && <Icon size={14} />)}
-                    {(!isHome || !showHomeIcon) && item.label}
-                  </button>
-                ) : (
-                  <a href={item.href || '#'} className="wp-block-breadcrumbs__link">
-                    {isHome ? <Home size={14} /> : (Icon && <Icon size={14} />)}
-                    {(!isHome || !showHomeIcon) && item.label}
-                  </a>
-                )
+                <span className="wp-block-breadcrumbs__link">
+                  {Icon && <Icon size={14} className="wp-block-breadcrumbs__icon" />}
+                  {isCollapsed ? '…' : cleanLabel}
+                </span>
               )}
             </li>
           );

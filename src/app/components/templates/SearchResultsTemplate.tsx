@@ -19,9 +19,10 @@
 
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
-import { Breadcrumbs } from '../common/Breadcrumbs';
-import { CTASection } from '../patterns/CTASection';
-import { useNavigation } from '../../contexts/NavigationContext';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
+import { FunkyCTA } from '../patterns/FunkyCTA';
+import { useNavigate } from 'react-router';
+import { slugToPath } from '../../utils/route-map';
 import {
   searchAllContent,
   getResultCountsByType,
@@ -46,7 +47,6 @@ import {
   Clock,
   Eye,
 } from 'lucide-react';
-import '@/styles/templates/search.css';
 
 /* ═══════════════════════════════════════════
  * Content-type icon map
@@ -90,7 +90,7 @@ function highlightText(text: string, query: string): JSX.Element {
  * ═══════════════════════════════════════════ */
 
 export function SearchResultsTemplate() {
-  const { navigateTo } = useNavigation();
+  const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
 
   // Read initial query from URL
@@ -150,13 +150,13 @@ export function SearchResultsTemplate() {
 
   const handleResultClick = useCallback(
     (result: SearchResult) => {
-      // Use navigateTo for internal routing
+      // Use navigate for internal routing
       const path = result.url;
-      // Strip leading slash for navigateTo slug
+      // Strip leading slash for slug
       const slug = path.startsWith('/') ? path.slice(1) : path;
-      navigateTo(slug || 'front-page');
+      navigate(slugToPath(slug || 'front-page'));
     },
-    [navigateTo]
+    [navigate]
   );
 
   const allContentTypes: ContentType[] = [
@@ -170,29 +170,19 @@ export function SearchResultsTemplate() {
   return (
     <>
       {/* Breadcrumbs */}
-      <section
-        style={{
-          backgroundColor: 'var(--background)',
-          borderBottom: '1px solid var(--border-soft)',
-          padding: 'var(--spacing-4) 0',
-        }}
-      >
-        <Container>
-          <Breadcrumbs
-            items={[
-              { label: 'Home', page: 'front-page' },
-              { label: 'Search Results' },
-            ]}
-          />
-        </Container>
-      </section>
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', page: 'front-page' },
+          { label: 'Search Results' },
+        ]}
+      />
 
-      {/* Search Header */}
+      {/* Search Hero */}
       <section className="search-header">
         <Container>
           <div
             style={{
-              maxWidth: '800px',
+              maxWidth: 'var(--wp--style--global--narrow-size)',
               margin: '0 auto',
             }}
           >
@@ -213,7 +203,7 @@ export function SearchResultsTemplate() {
             <div
               style={{
                 position: 'relative',
-                maxWidth: '640px',
+                maxWidth: 'var(--wp--style--global--content-size)',
                 margin: '0 auto',
                 marginBottom: 'var(--spacing-8)',
               }}
@@ -259,7 +249,7 @@ export function SearchResultsTemplate() {
         style={{ backgroundColor: 'var(--background)' }}
       >
         <Container>
-          <div style={{ maxWidth: '900px', margin: '0 auto' }}>
+          <div style={{ maxWidth: 'var(--wp--style--global--narrow-size)', margin: '0 auto' }}>
             {/* Filters Bar */}
             {query && (
               <>
@@ -533,11 +523,17 @@ export function SearchResultsTemplate() {
       </Section>
 
       {/* CTA */}
-      <CTASection
-        heading="Can't find what you're looking for?"
+      <FunkyCTA
+        title="Can't find what you're looking for?"
         description="Get in touch with our team and we'll help you find exactly what you need."
-        primaryButton={{ label: 'Contact Us', page: 'contact' }}
-        secondaryButton={{ label: 'Browse Blog', page: 'blog' }}
+        buttonText="Contact Us"
+        buttonPage="contact"
+        benefits={[
+          'Personalised help from our team',
+          'Quick response times',
+          'Browse our full service catalogue',
+          'Free initial consultation'
+        ]}
       />
     </>
   );

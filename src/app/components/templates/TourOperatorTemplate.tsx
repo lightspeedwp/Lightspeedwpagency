@@ -15,7 +15,7 @@
  * - ✅ Integrations → IntegrationsGrid pattern
  * - ✅ Benefits → StatsGrid pattern
  * - ✅ FAQs → FAQSection pattern
- * - ✅ CTA → CTASection pattern
+ * - ✅ CTA → FunkyCTA pattern
  * 
  * **Code Reduction:** 491 → 183 lines (62.7% reduction)
  */
@@ -26,254 +26,52 @@ import { SolutionsDetailGrid } from '../patterns/SolutionsDetailGrid';
 import { IntegrationsGrid } from '../patterns/IntegrationsGrid';
 import { StatsGrid } from '../patterns/StatsGrid';
 import { FAQSection } from '../patterns/FAQSection';
-import { CTASection } from '../patterns/CTASection';
-import { 
-  Plane,
-  Calendar,
-  CreditCard,
-  Users,
-  Globe,
-  MapPin,
-  Search,
-  Smartphone,
-  Star,
-  MessageSquare,
-  TrendingUp,
-  Zap,
-  Shield
-} from 'lucide-react';
+import { FunkyCTA } from '../patterns/FunkyCTA';
+
+// Import centralized data
+import {
+  tourOperatorHero,
+  tourOperatorChallenges,
+  tourOperatorSolutions,
+  tourOperatorIntegrations,
+  tourOperatorBenefits,
+  tourOperatorFAQs,
+  tourOperatorCTA
+} from '../../data/tour-operator-page';
 
 export function TourOperatorTemplate() {
-  // Tour industry challenges
-  const challenges = [
-    {
-      icon: Calendar,
-      title: 'Complex Booking Management',
-      description: 'Managing availability, pricing, and reservations across multiple tours and dates'
-    },
-    {
-      icon: CreditCard,
-      title: 'Payment Processing',
-      description: 'Secure payment handling with multiple currencies and payment methods'
-    },
-    {
-      icon: Users,
-      title: 'Customer Management',
-      description: 'Tracking customer preferences, bookings, and communication history'
-    },
-    {
-      icon: Globe,
-      title: 'Multi-language Support',
-      description: 'Reaching global audiences with content in multiple languages'
-    }
-  ];
-
-  // Tour operator solutions
-  const solutions = [
-    {
-      id: 'booking-system',
-      icon: Calendar,
-      title: 'Advanced Booking System',
-      description: 'Complete booking management with real-time availability, pricing rules, and automated confirmations.',
-      features: [
-        'Real-time availability calendar',
-        'Dynamic pricing & seasonal rates',
-        'Group booking management',
-        'Automated confirmation emails',
-        'Booking modifications & cancellations',
-        'Waitlist management'
-      ]
-    },
-    {
-      id: 'tour-management',
-      icon: MapPin,
-      title: 'Tour & Itinerary Management',
-      description: 'Create and manage detailed tour itineraries with multimedia content and interactive maps.',
-      features: [
-        'Detailed itinerary builder',
-        'Interactive route maps',
-        'Photo galleries & videos',
-        'Inclusions & exclusions',
-        'Difficulty levels & requirements',
-        'PDF itinerary generation'
-      ]
-    },
-    {
-      id: 'payment-gateway',
-      icon: CreditCard,
-      title: 'Payment & Financial Management',
-      description: 'Secure payment processing with multiple currencies, deposit options, and financial reporting.',
-      features: [
-        'Multiple payment gateways',
-        'Multi-currency support',
-        'Deposit & installment options',
-        'Automated invoicing',
-        'Financial reporting',
-        'Tax calculation'
-      ]
-    },
-    {
-      id: 'crm',
-      icon: Users,
-      title: 'Customer Relationship Management',
-      description: 'Build lasting relationships with comprehensive customer data and communication tools.',
-      features: [
-        'Customer profiles & history',
-        'Email marketing integration',
-        'Review & testimonial management',
-        'Loyalty programs',
-        'Automated follow-ups',
-        'Newsletter subscriptions'
-      ]
-    },
-    {
-      id: 'seo-marketing',
-      icon: Search,
-      title: 'SEO & Marketing Tools',
-      description: 'Attract more travelers with SEO optimization, social media integration, and analytics.',
-      features: [
-        'SEO-optimized tour pages',
-        'Social media sharing',
-        'Google Analytics integration',
-        'Conversion tracking',
-        'Blog & content marketing',
-        'Email campaigns'
-      ]
-    },
-    {
-      id: 'mobile-responsive',
-      icon: Smartphone,
-      title: 'Mobile-First Design',
-      description: 'Fully responsive design ensures perfect experience on all devices from phones to desktops.',
-      features: [
-        'Mobile-optimized booking',
-        'Touch-friendly navigation',
-        'Fast loading times',
-        'Progressive Web App (PWA)',
-        'Offline capabilities',
-        'App-like experience'
-      ]
-    }
-  ];
-
-  // Key integrations
-  const integrations = [
-    {
-      name: 'Wetu',
-      description: 'Tour operator content management and distribution platform',
-      icon: Globe
-    },
-    {
-      name: 'TourCMS',
-      description: 'Online booking and reservation system for tour operators',
-      icon: Calendar
-    },
-    {
-      name: 'Stripe & PayPal',
-      description: 'Secure payment processing with global coverage',
-      icon: CreditCard
-    },
-    {
-      name: 'Google Maps',
-      description: 'Interactive maps and location services',
-      icon: MapPin
-    },
-    {
-      name: 'Mailchimp',
-      description: 'Email marketing and automation platform',
-      icon: MessageSquare
-    },
-    {
-      name: 'TripAdvisor',
-      description: 'Review integration and reputation management',
-      icon: Star
-    }
-  ];
-
-  // Benefits stats
-  const benefitsStats = [
-    { 
-      icon: TrendingUp, 
-      value: '+45%', 
-      label: 'Increase Bookings' 
-    },
-    { 
-      icon: Zap, 
-      value: '70%', 
-      label: 'Time Saved' 
-    },
-    { 
-      icon: Users, 
-      value: '98%', 
-      label: 'Customer Satisfaction' 
-    },
-    { 
-      icon: Shield, 
-      value: '99.9%', 
-      label: 'Uptime Guarantee' 
-    }
-  ];
-
-  // FAQs
-  const tourFAQs = [
-    {
-      question: 'Do you specialize in tour operator websites?',
-      answer: 'Yes! We have extensive experience building websites for tour operators, safari companies, adventure travel providers, and destination management companies. We understand the unique requirements of the travel industry including booking systems, itinerary management, and travel-specific integrations.'
-    },
-    {
-      question: 'Can you integrate with Wetu or other tour operator platforms?',
-      answer: 'Absolutely! We specialize in Wetu integrations and can connect your WordPress site with TourCMS, Rezdy, FareHarbor, and other tour operator platforms. We handle all API integrations, data synchronization, and ensure seamless booking experiences.'
-    },
-    {
-      question: 'How do you handle booking and payment processing?',
-      answer: 'We implement secure booking systems with real-time availability, dynamic pricing, and deposit options. Payment processing uses PCI-compliant gateways like Stripe, PayPal, and regional processors. We support multiple currencies, automated invoicing, and secure customer data handling.'
-    },
-    {
-      question: 'Can the website support multiple languages and currencies?',
-      answer: 'Yes! We build multilingual websites using WPML or Polylang, allowing you to manage content in multiple languages. Currency conversion is handled automatically, and you can set region-specific pricing. This is essential for reaching international travelers.'
-    },
-    {
-      question: 'How do you optimize tour pages for search engines?',
-      answer: 'We implement travel-specific SEO best practices including schema markup for tours/activities, optimized imagery, fast loading times, and structured content. We also integrate with Google Maps, TripAdvisor, and social media to maximize your online visibility and bookings.'
-    },
-    {
-      question: 'What happens if we need to migrate from our current platform?',
-      answer: 'We handle complete migrations from legacy systems, custom platforms, or competitors. We migrate all tour data, itineraries, bookings, customer information, and media assets while preserving SEO rankings. We ensure zero downtime and provide training on the new system.'
-    }
-  ];
-
   return (
     <>
         {/* Hero Section */}
         <Hero
           variant="service"
           gradient="cyan"
-          title="WordPress Websites for Tour Operators"
-          description="Specialized websites for safari operators, adventure travel companies, and destination management companies. Complete booking systems, itinerary management, and travel industry integrations."
+          title={tourOperatorHero.title}
+          description={tourOperatorHero.description}
           badge={{
-            icon: Calendar,
-            text: 'TOUR OPERATOR SOLUTIONS'
+            icon: tourOperatorHero.badge.icon,
+            text: tourOperatorHero.badge.text
           }}
           buttons={[
             {
-              label: 'Book Your Free Consultation',
-              page: 'contact',
-              variant: 'primary'
+              label: tourOperatorHero.buttons[0].label,
+              page: tourOperatorHero.buttons[0].page as any,
+              variant: tourOperatorHero.buttons[0].variant as any
             },
             {
-              label: 'View Portfolio',
-              page: 'portfolio-archive',
-              variant: 'secondary'
+              label: tourOperatorHero.buttons[1].label,
+              page: tourOperatorHero.buttons[1].page as any,
+              variant: tourOperatorHero.buttons[1].variant as any
             }
           ]}
-          heroIcon={Plane}
+          heroIcon={tourOperatorHero.heroIcon}
         />
 
         {/* Tour Industry Challenges */}
         <ChallengesGrid
-          title="Tour Industry Challenges We Solve"
-          description="Common challenges faced by tour operators and how we address them"
-          challenges={challenges}
+          title={tourOperatorChallenges.title}
+          description={tourOperatorChallenges.description}
+          challenges={tourOperatorChallenges.items}
           columns={4}
           spacing="xl"
           backgroundColor="var(--background)"
@@ -281,9 +79,9 @@ export function TourOperatorTemplate() {
 
         {/* Tour Operator Solutions Grid */}
         <SolutionsDetailGrid
-          title="Complete Tour Operator Solutions"
-          description="Everything you need to run a successful tour operation online"
-          solutions={solutions}
+          title={tourOperatorSolutions.title}
+          description={tourOperatorSolutions.description}
+          solutions={tourOperatorSolutions.items}
           columns={3}
           spacing="xl"
           backgroundColor="var(--muted)"
@@ -291,9 +89,9 @@ export function TourOperatorTemplate() {
 
         {/* Integrations Section */}
         <IntegrationsGrid
-          title="Key Integrations"
-          description="Connect with the tools and platforms you already use"
-          integrations={integrations}
+          title={tourOperatorIntegrations.title}
+          description={tourOperatorIntegrations.description}
+          integrations={tourOperatorIntegrations.items}
           columns={3}
           spacing="xl"
           backgroundColor="var(--background)"
@@ -301,7 +99,7 @@ export function TourOperatorTemplate() {
 
         {/* Benefits Section */}
         <StatsGrid
-          stats={benefitsStats}
+          stats={tourOperatorBenefits}
           columns={4}
           variant="cards"
           spacing="xl"
@@ -311,18 +109,22 @@ export function TourOperatorTemplate() {
         <FAQSection
           title="Tour Operator FAQs"
           description="Common questions about tour operator websites"
-          faqs={tourFAQs}
+          faqs={tourOperatorFAQs}
         />
 
         {/* CTA Section */}
-        <CTASection
-          gradient="cyan"
-          title="Ready to Transform Your Tour Business?"
-          description="Let's discuss your tour operator needs and create a website that drives bookings and grows your business. Schedule a free consultation today."
-          primaryButtonText="Schedule Free Consultation"
-          primaryButtonPage="contact"
-          secondaryButtonText="View Tour Examples"
-          secondaryButtonPage="portfolio-archive"
+        <FunkyCTA
+          title={tourOperatorCTA.title}
+          description={tourOperatorCTA.description}
+          buttonText={tourOperatorCTA.primaryButtonText}
+          buttonPage={tourOperatorCTA.primaryButtonPage as any}
+          benefits={[
+            'Stunning tour itineraries',
+            'Interactive maps & booking',
+            'Wetu integration support',
+            'Responsive tour galleries',
+            'SEO-optimised tour pages'
+          ]}
         />
     </>
   );

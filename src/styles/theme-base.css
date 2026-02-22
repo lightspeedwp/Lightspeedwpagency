@@ -75,6 +75,7 @@
   --font-weight-medium: 500;     /* Headings (modern standard) */
   --font-weight-semibold: 600;   /* Button text, data emphasis */
   --font-weight-bold: 700;       /* Strong callouts, warnings */
+  --font-weight-extrabold: 800;  /* Alias for black — hero titles */
   --font-weight-black: 800;      /* Display text, marketing */
   
   /* ----------------------------------------
@@ -94,6 +95,7 @@
   --letter-spacing-normal: 0;        /* Body text, standard headings */
   --letter-spacing-wide: 0.025em;    /* Buttons, labels, small text */
   --letter-spacing-wider: 0.05em;    /* Uppercase text, categories */
+  --letter-spacing-widest: 0.1em;    /* Extra wide tracking, badges */
   
   
   /* ============================================
@@ -212,6 +214,7 @@
   --wp--custom--letter-spacing--normal: var(--letter-spacing-normal);
   --wp--custom--letter-spacing--wide: var(--letter-spacing-wide);
   --wp--custom--letter-spacing--wider: var(--letter-spacing-wider);
+  --wp--custom--letter-spacing--widest: var(--letter-spacing-widest);
   
   
   /* ============================================
@@ -273,6 +276,7 @@
   --section-padding-y: clamp(3rem, 4vw + 1rem, 5rem);       /* 48px → 80px vertical */
   --section-padding-y-sm: clamp(0.5rem, 0.5vw + 0.375rem, 0.75rem); /* 8px → 12px compact (breadcrumbs, pagination) */
   --section-max-width: var(--wp--style--global--wide-size);  /* 1440px align-wide */
+  --hero-min-height: 100vh;                                  /* fullscreen hero sections */
   
   /* ============================================
      RESPONSIVE BREAKPOINTS (Reference)
@@ -297,6 +301,7 @@
   --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.05);
   --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.15);
   --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.12);
+  --shadow-2xl: 0 25px 50px rgba(0, 0, 0, 0.2);
   --shadow-hover: 0 8px 16px rgba(0, 0, 0, 0.1);
   --shadow-inner: inset 0 2px 4px rgba(0, 0, 0, 0.06);
   --shadow-card-hover: 0 10px 20px rgba(0, 0, 0, 0.1);

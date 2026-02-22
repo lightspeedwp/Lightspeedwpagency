@@ -13,33 +13,27 @@
 
 import { Container } from '@/app/components/common/Container';
 import { Section } from '@/app/components/common/Section';
-import { Breadcrumbs } from '@/app/components/common/Breadcrumbs';
+import { BreadcrumbPart } from '@/app/components/parts/BreadcrumbPart';
 import { allPosts } from '@/app/data/posts-formats';
 import { Layers } from 'lucide-react';
-import { useNavigation } from '@/app/contexts/NavigationContext';
+import { Link } from 'react-router';
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
-import '@/styles/blocks/post-formats/gallery.css';
-import '@/styles/templates/archive.css';
+
 
 export function GalleryArchiveTemplate() {
-  const { navigateTo } = useNavigation();
   const galleryPosts = allPosts.filter(post => post.format === 'gallery');
   // Duplicate for visual effect
   const posts = [...galleryPosts, ...galleryPosts, ...galleryPosts, ...galleryPosts];
 
   return (
     <>
-      <section className="archive-breadcrumbs">
-        <Container>
-          <Breadcrumbs 
-            items={[
-              { label: 'Home', href: '/' },
-              { label: 'Blog', href: '/blog' },
-              { label: 'Photo Galleries', href: '/blog/format/gallery' }
-            ]}
-          />
-        </Container>
-      </section>
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Blog', href: '/blog' },
+          { label: 'Gallery' },
+        ]}
+      />
 
       <Section spacing="lg">
         <Container>
@@ -51,13 +45,10 @@ export function GalleryArchiveTemplate() {
           <ResponsiveMasonry columnsCountBreakPoints={{350: 1, 750: 2, 900: 3}}>
             <Masonry gutter="2rem">
               {posts.map((post, index) => (
-                <article 
-                  key={`${post.id}-${index}`} 
+                <Link 
+                  key={`${post.id}-${index}`}
+                  to="#"
                   className="wp-block-gallery-card"
-                  onClick={() => navigateTo('gallery-single')}
-                  role="button"
-                  tabIndex={0}
-                  onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); navigateTo('gallery-single'); } }}
                 >
                   <div className="wp-block-gallery-card__media">
                     {post._embedded?.['wp:featuredmedia']?.[0]?.source_url && (
@@ -82,7 +73,7 @@ export function GalleryArchiveTemplate() {
                       {new Date(post.date).toLocaleDateString()}
                     </div>
                   </div>
-                </article>
+                </Link>
               ))}
             </Masonry>
           </ResponsiveMasonry>

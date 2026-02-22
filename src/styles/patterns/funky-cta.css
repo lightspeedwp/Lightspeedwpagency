@@ -1,0 +1,126 @@
+/**
+ * Funky CTA Pattern Styles
+ * 
+ * Neon glow aesthetic with grid background.
+ * Uses CSS variables for consistent theming.
+ */
+
+.funky-cta {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-16) var(--spacing-8);
+}
+
+.funky-cta__bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, var(--border) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(circle at center, black, transparent 80%);
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.funky-cta__glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+  opacity: 0.15;
+  filter: blur(60px);
+  pointer-events: none;
+}
+
+.funky-cta__inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-12);
+  z-index: 10;
+}
+
+@media (min-width: 1024px) {
+  .funky-cta__inner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.funky-cta__content {
+  flex: 1;
+  max-width: 600px;
+}
+
+.funky-cta__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h2);
+  font-weight: 700;
+  color: var(--foreground);
+  margin-bottom: var(--spacing-4);
+  line-height: 1.1;
+}
+
+.funky-cta__description {
+  font-family: var(--font-secondary);
+  font-size: var(--text-lg);
+  color: var(--muted-foreground);
+  margin-bottom: var(--spacing-8);
+  line-height: 1.6;
+}
+
+.funky-cta__action {
+  display: flex;
+  gap: var(--spacing-4);
+}
+
+.funky-cta__benefits {
+  flex: 1;
+  max-width: 400px;
+}
+
+.funky-cta__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.funky-cta__item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+.funky-cta__check-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.funky-cta__check {
+  width: 14px;
+  height: 14px;
+}
+
+.funky-cta__text {
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  color: var(--foreground);
+  font-weight: 500;
+}

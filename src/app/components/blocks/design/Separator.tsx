@@ -6,7 +6,6 @@
  */
 
 import React from 'react';
-import '@/styles/blocks/design/separator.css';
 
 export interface SeparatorProps extends React.HTMLAttributes<HTMLHRElement> {
   orientation?: 'horizontal' | 'vertical';

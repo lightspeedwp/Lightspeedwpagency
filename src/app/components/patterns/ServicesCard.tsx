@@ -29,9 +29,10 @@
  */
 
 import { ArrowRight, LucideIcon } from 'lucide-react';
-import { useNavigation } from '../../contexts/NavigationContext';
+import { Link } from 'react-router';
+import { getPageUrl } from '../../data/pages';
 import type { Service } from '../../data/services';
-import '@/styles/patterns/services-card.css';
+
 
 export interface ServicesCardProps {
   /** Service data object */
@@ -52,12 +53,7 @@ export function ServicesCard({
   className = '',
   variant = 'default'
 }: ServicesCardProps) {
-  const { navigateTo } = useNavigation();
   const Icon = service.icon;
-
-  const handleClick = () => {
-    navigateTo(service.link.page);
-  };
 
   const isFeatured = variant === 'featured' || service.featured;
 
@@ -129,8 +125,8 @@ export function ServicesCard({
       </ul>
 
       {/* Button innerBlock (core/button with link style) */}
-      <button
-        onClick={handleClick}
+      <Link
+        to={getPageUrl(service.link.page)}
         className="services-card__link"
         aria-label={`Learn more about ${service.title}`}
       >
@@ -139,7 +135,7 @@ export function ServicesCard({
           size={20} 
           className="services-card__arrow"
         />
-      </button>
+      </Link>
     </article>
   );
 }

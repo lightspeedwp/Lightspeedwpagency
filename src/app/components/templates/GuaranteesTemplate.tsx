@@ -1,20 +1,31 @@
 /**
- * Guarantees Template
- * 
- * WordPress template: templates/page-guarantees.html
- * 
- * Pattern order: Breadcrumbs → Hero → Main Guarantees → How It Works → Trust Signals → FAQs → CTA
+ * Guarantees Template — Funky Neon Redesign
+ *
+ * Full-featured guarantees page with mesh hero, neon-glow cards,
+ * numbered process steps, and trust signal stats. All content is
+ * driven by centralised mock data.
+ *
+ * Sections:
+ *  1. Hero (mesh grid + orb glow + badge + title)
+ *  2. Core Guarantees (icon cards with checklist details)
+ *  3. How It Works (numbered step cards)
+ *  4. Trust Signals (stat cards)
+ *  5. FAQ + CTA
+ *
+ * @see /src/styles/templates/guarantees.css
+ * @see /src/app/data/guarantees-page.ts
  */
 
 import { Container } from '../common/Container';
-import { Section } from '../common/Section';
-import { Breadcrumbs } from '../common/Breadcrumbs';
-import { Heading } from '../blocks/text/Heading';
-import { Paragraph } from '../blocks/text/Paragraph';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
+import { FunkyCTA } from '../patterns/FunkyCTA';
 import { FAQSection } from '../patterns/FAQSection';
-import '@/styles/templates/guarantees.css';
+import { ScrollReveal } from '../../hooks/useScrollReveal';
+import { Check, ShieldCheck } from 'lucide-react';
 
-// Import centralized data
+
+
+/* ── Data imports ── */
 import {
   guaranteesPageHero,
   mainGuarantees,
@@ -27,212 +38,168 @@ import {
 export function GuaranteesTemplate() {
   return (
     <>
-        {/* Breadcrumbs */}
-        <section className="wp-block-breadcrumbs-section wp-block-breadcrumbs-section--border">
-            <Breadcrumbs 
-              items={[
-                { label: 'Home', href: '/' },
-                { label: guaranteesPageHero.title }
-              ]}
-            />
-        </section>
+      {/* ── Breadcrumbs ── */}
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', href: '/' },
+          { label: guaranteesPageHero.title },
+        ]}
+      />
 
-        {/* Hero Section */}
-        <Section 
-          className="wp-gradient-green wp-overflow-hidden"
-          spacing="xl"
-        >
-          {/* Gradient orb decorations */}
-          <div className="wp-gradient-orb wp-gradient-orb--green wp-gradient-orb--top-right" />
+      {/* ============================================
+          1. HERO
+          ============================================ */}
+      <section className="guar__hero">
+        <div className="guar__hero-grid" aria-hidden="true" />
+        <div className="guar__hero-orb" aria-hidden="true" />
 
-          <Container>
-            <div className="wp-max-w-4xl wp-mx-auto wp-text-center wp-relative" style={{ zIndex: 10 }}>
-              <div className="wp-inline-block wp-mb-6">
-                <Badge variant="outline" style={{ color: 'var(--primary-foreground)', borderColor: 'rgba(255,255,255,0.2)', backgroundColor: 'var(--overlay-white-soft)', backdropFilter: 'blur(4px)' }}>
-                  <guaranteesPageHero.badge.icon size={14} className="wp-inline wp-mr-2" />
-                  {guaranteesPageHero.badge.text}
-                </Badge>
+        <Container>
+          <ScrollReveal animation="fade-up">
+            <div className="guar__hero-inner">
+              <div className="guar__hero-badge">
+                <ShieldCheck size={14} />
+                <span>{guaranteesPageHero.badge.text}</span>
               </div>
 
-              <Heading level={1} className="wp-mb-6" style={{ color: 'var(--primary-foreground)' }}>
-                Our <span style={{ background: 'var(--gradient-gold)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Guarantees</span>
-              </Heading>
+              <h1 className="guar__hero-title">
+                Our{' '}
+                <span className="guar__hero-title-highlight">Guarantees</span>
+              </h1>
 
-              <Paragraph 
-                size="large"
-                className="wp-mb-4 wp-max-w-3xl wp-mx-auto"
-                style={{ color: 'var(--primary-foreground)', opacity: 0.95 }}
-              >
+              <p className="guar__hero-tagline">
                 {guaranteesPageHero.tagline}
-              </Paragraph>
+              </p>
 
-              <Paragraph
-                className="wp-max-w-3xl wp-mx-auto"
-                style={{ color: 'var(--primary-foreground)', opacity: 0.85 }}
-              >
+              <p className="guar__hero-desc">
                 {guaranteesPageHero.description}
-              </Paragraph>
+              </p>
             </div>
-          </Container>
-        </Section>
+          </ScrollReveal>
+        </Container>
+      </section>
 
-        {/* Main Guarantees Section */}
-        <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
-          <Container>
-            <div className="wp-max-w-6xl wp-mx-auto">
-              <div className="wp-text-center wp-mb-12">
-                <Heading level={2} className="wp-mb-4">
-                  Our Core Guarantees
-                </Heading>
-                <Paragraph style={{ color: 'var(--muted-foreground)' }} className="wp-max-w-3xl wp-mx-auto">
-                  Every guarantee is backed by real commitments, not empty promises
-                </Paragraph>
-              </div>
-
-              <div className="wp-grid-3-cols" style={{ gap: 'var(--spacing-8)' }}>
-                {mainGuarantees.map((guarantee) => {
-                  const Icon = guarantee.icon;
-                  return (
-                    <div
-                      key={guarantee.id}
-                      className="guarantees__card"
-                    >
-                      {guarantee.badge && (
-                        <div className="wp-absolute top-4 right-4">
-                          <Badge variant="success">
-                            {guarantee.badge}
-                          </Badge>
-                        </div>
-                      )}
-
-                      <div className="guarantees__icon-box">
-                        <Icon size={28} />
-                      </div>
-
-                      <Heading level={3} className="wp-mb-2">
-                        {guarantee.title}
-                      </Heading>
-
-                      <Paragraph className="wp-mb-4" style={{ color: 'var(--muted-foreground)' }}>
-                        {guarantee.description}
-                      </Paragraph>
-
-                      <ul className="wp-mt-4" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--spacing-2)' }}>
-                        {guarantee.details.map((detail, index) => (
-                          <li
-                            key={index}
-                            className="wp-flex wp-items-start"
-                            style={{ gap: 'var(--spacing-3)' }}
-                          >
-                            <Check size={16} className="wp-mt-1" style={{ flexShrink: 0, color: 'var(--primary)' }} />
-                            <span style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-sm)', color: 'var(--foreground)' }}>
-                              {detail}
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  );
-                })}
-              </div>
+      {/* ============================================
+          2. CORE GUARANTEES
+          ============================================ */}
+      <section className="guar__core">
+        <Container>
+          <ScrollReveal animation="fade-up">
+            <div className="guar__section-header">
+              <h2 className="guar__section-title">Our Core Guarantees</h2>
+              <p className="guar__section-desc">
+                Every guarantee is backed by real commitments, not empty promises
+              </p>
             </div>
-          </Container>
-        </Section>
+          </ScrollReveal>
 
-        {/* How It Works Section */}
-        <Section spacing="xl" style={{ backgroundColor: 'var(--muted)' }}>
-          <Container>
-            <div className="wp-max-w-4xl wp-mx-auto">
-              <div className="wp-text-center wp-mb-12">
-                <Heading level={2} className="wp-mb-4">
-                  {guaranteesProcess.title}
-                </Heading>
-                <Paragraph style={{ color: 'var(--muted-foreground)' }}>
-                  {guaranteesProcess.description}
-                </Paragraph>
-              </div>
+          <div className="guar__core-grid">
+            {mainGuarantees.map((guarantee) => {
+              const Icon = guarantee.icon;
+              return (
+                <ScrollReveal key={guarantee.id} animation="fade-up">
+                  <article className="guar__card">
+                    {guarantee.badge && (
+                      <span className="guar__card-badge">{guarantee.badge}</span>
+                    )}
 
-              <div className="wp-grid-2-cols" style={{ gap: 'var(--spacing-8)' }}>
-                {guaranteesProcess.steps.map((step) => (
-                  <div
-                    key={step.number}
-                    className="guarantees__card guarantees__card--compact guarantees__card--flex"
-                  >
-                    <div className="guarantees__step-number">
-                      {step.number}
+                    <div className="guar__card-icon">
+                      <Icon size={28} />
                     </div>
 
-                    <div>
-                      <Heading level={3} className="wp-mb-2">
-                        {step.title}
-                      </Heading>
+                    <h3 className="guar__card-title">{guarantee.title}</h3>
+                    <p className="guar__card-desc">{guarantee.description}</p>
 
-                      <Paragraph style={{ color: 'var(--muted-foreground)' }}>
-                        {step.description}
-                      </Paragraph>
-                    </div>
+                    <ul className="guar__details">
+                      {guarantee.details.map((detail, idx) => (
+                        <li key={idx} className="guar__detail-item">
+                          <Check size={16} className="guar__detail-check" />
+                          <span className="guar__detail-text">{detail}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </article>
+                </ScrollReveal>
+              );
+            })}
+          </div>
+        </Container>
+      </section>
+
+      {/* ============================================
+          3. HOW IT WORKS
+          ============================================ */}
+      <section className="guar__process">
+        <Container>
+          <ScrollReveal animation="fade-up">
+            <div className="guar__section-header">
+              <h2 className="guar__section-title">{guaranteesProcess.title}</h2>
+              <p className="guar__section-desc">{guaranteesProcess.description}</p>
+            </div>
+          </ScrollReveal>
+
+          <div className="guar__process-grid">
+            {guaranteesProcess.steps.map((step) => (
+              <ScrollReveal key={step.number} animation="fade-up">
+                <article className="guar__step-card">
+                  <div className="guar__step-num">{step.number}</div>
+                  <div>
+                    <h3 className="guar__step-title">{step.title}</h3>
+                    <p className="guar__step-desc">{step.description}</p>
                   </div>
-                ))}
-              </div>
+                </article>
+              </ScrollReveal>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* ============================================
+          4. TRUST SIGNALS
+          ============================================ */}
+      <section className="guar__trust">
+        <Container>
+          <ScrollReveal animation="fade-up">
+            <div className="guar__section-header">
+              <h2 className="guar__section-title">{trustSignals.title}</h2>
+              <p className="guar__section-desc">{trustSignals.description}</p>
             </div>
-          </Container>
-        </Section>
+          </ScrollReveal>
 
-        {/* Trust Signals Section */}
-        <Section spacing="lg" style={{ backgroundColor: 'var(--background)' }}>
-          <Container>
-            <div className="wp-max-w-4xl wp-mx-auto">
-              <div className="wp-text-center wp-mb-12">
-                <Heading level={2} className="wp-mb-4">
-                  {trustSignals.title}
-                </Heading>
-                <Paragraph style={{ color: 'var(--muted-foreground)' }}>
-                  {trustSignals.description}
-                </Paragraph>
-              </div>
+          <div className="guar__trust-grid">
+            {trustSignals.signals.map((signal, index) => {
+              const Icon = signal.icon;
+              return (
+                <ScrollReveal key={index} animation="fade-up">
+                  <article className="guar__trust-card">
+                    <Icon size={32} className="guar__trust-icon" />
+                    <div className="guar__trust-stat">{signal.stat}</div>
+                    <div className="guar__trust-label">{signal.label}</div>
+                    <p className="guar__trust-desc">{signal.description}</p>
+                  </article>
+                </ScrollReveal>
+              );
+            })}
+          </div>
+        </Container>
+      </section>
 
-              <div className="wp-grid-4-cols" style={{ gap: 'var(--spacing-6)' }}>
-                {trustSignals.signals.map((signal, index) => {
-                  const Icon = signal.icon;
-                  return (
-                    <div
-                      key={index}
-                      className="guarantees__card guarantees__card--compact wp-text-center"
-                    >
-                      <Icon size={32} className="guarantees__signal-icon" />
-                      
-                      <div className="guarantees__signal-stat">
-                        {signal.stat}
-                      </div>
+      {/* ============================================
+          5. FAQ + CTA
+          ============================================ */}
+      <FAQSection faqs={guaranteesFAQs} />
 
-                      <div className="guarantees__signal-label">
-                        {signal.label}
-                      </div>
-
-                      <Paragraph size="small" style={{ color: 'var(--muted-foreground)' }}>
-                        {signal.description}
-                      </Paragraph>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </Container>
-        </Section>
-
-        {/* FAQs Section */}
-        <FAQSection faqs={guaranteesFAQs} />
-
-        {/* CTA Section */}
-        <CTASection
-          title={guaranteesCTA.title}
-          description={guaranteesCTA.description}
-          primaryButtonText={guaranteesCTA.buttons[0].text}
-          primaryButtonPage={guaranteesCTA.buttons[0].page as any}
-          secondaryButtonText={guaranteesCTA.buttons[1]?.text}
-          secondaryButtonPage={guaranteesCTA.buttons[1]?.page as any}
-          gradient="green"
-        />
+      <FunkyCTA
+        title={guaranteesCTA.title}
+        description={guaranteesCTA.description}
+        buttonText={guaranteesCTA.buttons[0].text}
+        buttonPage={guaranteesCTA.buttons[0].page}
+        benefits={[
+          '100% satisfaction guarantee',
+          'Transparent pricing — no hidden fees',
+          'Dedicated project manager',
+          '24/7 support after launch'
+        ]}
+      />
     </>
   );
 }

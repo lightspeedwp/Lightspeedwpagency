@@ -1,27 +1,26 @@
 /**
  * ROI Calculator Page Data
  * 
- * Mock data for the ROI Calculator page (ROICalculatorTemplate).
+ * Content and configuration for the ROI Calculator tool.
  */
 
+import { Calculator } from 'lucide-react';
+
 export const roiCalculatorHero = {
-  title: "Calculate Your ROI",
-  subtitle: "See how much a high-performance website could contribute to your bottom line."
+  title: "ROI Calculator",
+  subtitle: "Estimate the potential return on investment for a custom WordPress or WooCommerce project.",
+  badge: { text: "CALCULATE VALUE", icon: Calculator }
 };
 
-export const roiCalculatorInputs = {
-  traffic: { label: "Monthly Traffic", defaultValue: 5000, min: 1000, max: 100000 },
-  conversionRate: { label: "Conversion Rate (%)", defaultValue: 2, min: 0.1, max: 10, step: 0.1 },
-  averageOrderValue: { label: "Average Order Value ($)", defaultValue: 50, min: 10, max: 500 }
-};
-
-export const roiCalculatorResults = {
-  title: "Potential Monthly Revenue",
-  description: "Based on your inputs and industry benchmarks for optimized websites."
+export const roiCalculatorDefaults = {
+  currentMonthlyVisitors: 5000,
+  currentConversionRate: 1.5, // percent
+  averageOrderValue: 100, // currency
+  projectCost: 15000 // currency
 };
 
 export const roiCalculatorCTA = {
-  title: "Unlock Your Potential",
-  description: "Let us help you achieve these numbers with a conversion-optimized website.",
-  button: { text: "Get a Strategy Audit", page: "contact" }
+  title: "Get a Detailed Analysis",
+  description: "Want a more specific breakdown tailored to your industry data? Let's chat.",
+  button: { text: "Book Strategy Call", page: "contact" }
 };

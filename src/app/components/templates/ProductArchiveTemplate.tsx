@@ -10,7 +10,7 @@ import { Heading } from '../common/Heading';
 import { Paragraph } from '../blocks/text/Paragraph';
 import { allProducts } from '../../data/woocommerce';
 import { ShoppingCart, Filter } from 'lucide-react';
-import '@/styles/woocommerce/product-archive.css';
+
 
 export function ProductArchiveTemplate() {
   return (

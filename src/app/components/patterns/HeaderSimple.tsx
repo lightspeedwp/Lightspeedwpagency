@@ -11,7 +11,6 @@ import { Logo } from '../common/Logo';
 import { Container } from '../common/Container';
 import { ChevronDown } from 'lucide-react';
 import { useState } from 'react';
-import '@/styles/header-simple.css';
 
 interface NavItem {
   label: string;

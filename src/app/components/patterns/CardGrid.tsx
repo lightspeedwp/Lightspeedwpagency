@@ -32,7 +32,8 @@
  */
 
 import { ChevronRight, ExternalLink } from 'lucide-react';
-import '@/styles/patterns/card-grid.css';
+import { Link } from 'react-router';
+
 
 export interface CardMeta {
   /** Icon component */
@@ -238,17 +239,25 @@ export function CardGrid({
 
                 {/* CTA */}
                 {showCTA && item.href && (
-                  <a
-                    href={item.href}
-                    {...(isExternal ? {
-                      target: '_blank',
-                      rel: 'noopener noreferrer'
-                    } : {})}
-                    className="card-grid__cta"
-                  >
-                    {item.ctaText || (variant === 'blog' ? 'Read More' : variant === 'portfolio' ? 'View Project' : 'Learn More')}
-                    {isExternal ? <ExternalLink size={16} /> : <ChevronRight size={16} />}
-                  </a>
+                  isExternal ? (
+                    <a
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="card-grid__cta"
+                    >
+                      {item.ctaText || (variant === 'blog' ? 'Read More' : variant === 'portfolio' ? 'View Project' : 'Learn More')}
+                      <ExternalLink size={16} />
+                    </a>
+                  ) : (
+                    <Link
+                      to={item.href}
+                      className="card-grid__cta"
+                    >
+                      {item.ctaText || (variant === 'blog' ? 'Read More' : variant === 'portfolio' ? 'View Project' : 'Learn More')}
+                      <ChevronRight size={16} />
+                    </Link>
+                  )
                 )}
               </div>
             </article>

@@ -1,0 +1,117 @@
+/**
+ * Button Showcase Page Styles
+ *
+ * Theme: "Interactive Lab"
+ * BEM naming: .btn-showcase-*
+ * 100% CSS variables.
+ */
+
+.btn-showcase {
+  background-color: var(--background);
+  min-height: 100vh;
+}
+
+/* Hero Section */
+.btn-showcase__hero {
+  position: relative;
+  padding: var(--spacing-20) 0;
+  overflow: hidden;
+  text-align: center;
+  background: radial-gradient(circle at 50% -20%, var(--primary-soft) 0%, transparent 60%);
+}
+
+.btn-showcase__hero-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h1);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-4);
+}
+
+.btn-showcase__hero-desc {
+  font-family: var(--font-secondary);
+  font-size: var(--text-lg);
+  color: var(--muted-foreground);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Sections */
+.btn-showcase__section {
+  padding: var(--spacing-16) 0;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.btn-showcase__section:last-child {
+  border-bottom: none;
+}
+
+.btn-showcase__section-header {
+  margin-bottom: var(--spacing-10);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+.btn-showcase__section-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h3);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  margin: 0;
+}
+
+.btn-showcase__section-icon {
+  color: var(--primary);
+  padding: var(--spacing-2);
+  background: var(--primary-soft);
+  border-radius: var(--radius-md);
+}
+
+/* Grid Layouts */
+.btn-showcase__grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-8);
+  align-items: center;
+}
+
+.btn-showcase__column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  align-items: flex-start;
+}
+
+/* Card for variant grouping */
+.btn-showcase__card {
+  background: var(--card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-8);
+  width: 100%;
+}
+
+.btn-showcase__card-title {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-bold);
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+  margin-bottom: var(--spacing-6);
+  display: block;
+}
+
+/* Dark Mode Grid Overlay */
+.dark .btn-showcase__hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 24px 24px;
+  mask-image: radial-gradient(circle at 50% 50%, black 0%, transparent 80%);
+  pointer-events: none;
+}

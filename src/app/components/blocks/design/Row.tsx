@@ -19,7 +19,6 @@
 
 import React from 'react';
 
-import '@/styles/blocks/design/row.css';
 
 export interface RowProps {
   /** Horizontal spacing between children (0-24) */

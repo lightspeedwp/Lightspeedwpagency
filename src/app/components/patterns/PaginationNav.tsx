@@ -12,7 +12,7 @@
 
 import { Container } from '../common/Container';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import '@/styles/patterns/pagination-nav.css';
+
 
 interface PaginationNavProps {
   currentPage: number;

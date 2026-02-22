@@ -10,20 +10,19 @@
 import { useState, useMemo } from 'react';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
-import { Breadcrumbs } from '../common/Breadcrumbs';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { TaxonomyFilter } from '../patterns/TaxonomyFilter';
 import { FAQSection } from '../patterns/FAQSection';
-import { CTASection } from '../patterns/CTASection';
+import { FunkyCTA } from '../patterns/FunkyCTA';
 import { Heading } from '../blocks/text/Heading';
 import { Paragraph } from '../blocks/text/Paragraph';
 import { Play, Clock, Eye, Calendar } from 'lucide-react';
 import { videos, videoCategories } from '../../data/videos';
 import { videoFAQs } from '../../data/faqs';
-import { useNavigation } from '../../contexts/NavigationContext';
-import '@/styles/templates/video-archive.css';
+import { Link } from 'react-router';
+
 
 export function VideoArchiveTemplate() {
-  const { navigateTo } = useNavigation();
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [sort, setSort] = useState('recent');
 
@@ -60,16 +59,12 @@ export function VideoArchiveTemplate() {
   return (
     <>
       {/* Breadcrumbs */}
-      <section style={{ padding: 'var(--spacing-4) 0' }}>
-        <Container>
-          <Breadcrumbs
-            items={[
-              { label: 'Home', page: 'front-page' },
-              { label: 'Videos' }
-            ]}
-          />
-        </Container>
-      </section>
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', page: 'front-page' },
+          { label: 'Videos' },
+        ]}
+      />
 
       {/* Header */}
       <Section spacing="md">
@@ -97,17 +92,14 @@ export function VideoArchiveTemplate() {
             label="Filter Videos"
           />
 
-          <div className="video-archive__grid" style={{ marginTop: 'var(--spacing-8)' }}>
+          <div className="video-archive__grid wp-mt-8">
             {filtered.map(video => {
               const cat = videoCategories.find(c => video.categories.includes(c.slug));
               return (
-                <article
+                <Link
                   key={video.id}
+                  to={`/video/${video.slug}`}
                   className="video-archive__card"
-                  onClick={() => navigateTo(`/video/${video.slug}`)}
-                  tabIndex={0}
-                  role="link"
-                  onKeyDown={e => e.key === 'Enter' && navigateTo(`/video/${video.slug}`)}
                   aria-label={`Watch: ${video.title}`}
                 >
                   <div className="video-archive__thumbnail">
@@ -132,13 +124,13 @@ export function VideoArchiveTemplate() {
                       </span>
                     </div>
                   </div>
-                </article>
+                </Link>
               );
             })}
           </div>
 
           {filtered.length === 0 && (
-            <div style={{ textAlign: 'center', padding: 'var(--spacing-12) 0' }}>
+            <div className="wp-text-center wp-py-12">
               <Paragraph>No videos found matching your filters. Try adjusting your selection.</Paragraph>
             </div>
           )}
@@ -156,11 +148,18 @@ export function VideoArchiveTemplate() {
       </Section>
 
       {/* CTA */}
-      <CTASection
+      <FunkyCTA
         title="Want a Custom Tutorial?"
         description="We create bespoke video training for teams adopting WordPress block themes and design systems."
-        primaryButtonText="Get in Touch"
-        primaryButtonPage="contact"
+        buttonText="Get in Touch"
+        buttonPage="contact"
+        benefits={[
+          'Bespoke video training',
+          'Block theme development',
+          'Design system workshops',
+          'Team upskilling',
+          'Ongoing support'
+        ]}
       />
     </>
   );

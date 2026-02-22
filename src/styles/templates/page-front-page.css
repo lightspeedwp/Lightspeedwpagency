@@ -1,0 +1,277 @@
+/**
+ * Front Page Styles
+ * 
+ * Styles for the main landing page (Neon Future theme).
+ */
+
+/* Hero Section */
+.front-page__hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background-color: var(--background);
+  margin-top: -80px; /* Offset header height */
+  padding-top: 80px;
+}
+
+.front-page__hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  opacity: 0.4;
+}
+
+.front-page__hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--overlay-darker), var(--background));
+  z-index: 1;
+}
+
+.front-page__hero-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(color-mix(in srgb, var(--color-white) 3%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--color-white) 3%, transparent) 1px, transparent 1px);
+  background-size: 50px 50px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.front-page__hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: 1;
+  opacity: 0.4;
+  animation: float 10s ease-in-out infinite;
+}
+
+.front-page__hero-orb--1 {
+  width: 400px;
+  height: 400px;
+  background-color: var(--primary);
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.front-page__hero-orb--2 {
+  width: 300px;
+  height: 300px;
+  background-color: var(--secondary);
+  top: 60%;
+  right: 15%;
+  animation-delay: -2s;
+}
+
+.front-page__hero-orb--3 {
+  width: 200px;
+  height: 200px;
+  background-color: var(--accent);
+  bottom: 10%;
+  left: 30%;
+  animation-delay: -4s;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+.front-page__hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: var(--spacing-8) 0;
+}
+
+.front-page__hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  background-color: color-mix(in srgb, var(--color-white) 10%, transparent);
+  backdrop-filter: blur(10px);
+  border: 1px solid color-mix(in srgb, var(--color-white) 20%, transparent);
+  padding: var(--spacing-2) var(--spacing-4);
+  border-radius: var(--radius-full);
+  color: var(--color-white);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  margin-bottom: var(--spacing-6);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.front-page__hero-title {
+  font-family: var(--font-primary);
+  font-size: clamp(40px, 8vw, 80px);
+  font-weight: 800;
+  color: var(--color-white);
+  line-height: 1.1;
+  margin-bottom: var(--spacing-6);
+  letter-spacing: -0.02em;
+}
+
+.front-page__hero-title-gradient {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.front-page__hero-subtitle {
+  font-family: var(--font-primary);
+  font-size: clamp(18px, 4vw, 24px);
+  color: color-mix(in srgb, var(--color-white) 80%, transparent);
+  margin-bottom: var(--spacing-8);
+  line-height: 1.6;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.front-page__hero-actions {
+  display: flex;
+  gap: var(--spacing-4);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Sections */
+.front-page__section {
+  padding: var(--spacing-24) 0;
+  position: relative;
+}
+
+.front-page__section--default {
+  background-color: var(--background);
+}
+
+.front-page__section--card {
+  background-color: var(--card);
+}
+
+.front-page__section-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto var(--spacing-16);
+}
+
+.front-page__section-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h2);
+  font-weight: 700;
+  color: var(--foreground);
+  margin-bottom: var(--spacing-4);
+}
+
+.front-page__section-desc {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  color: var(--muted-foreground);
+  line-height: 1.6;
+}
+
+/* Section Footer (centered CTA button area) */
+.front-page__section-footer {
+  text-align: center;
+  margin-top: var(--spacing-12);
+}
+
+/* Hero outline button — white styling for dark hero */
+.front-page__hero-btn--outline .wp-block-button__link {
+  color: var(--color-white);
+  border-color: var(--color-white);
+}
+
+.front-page__hero-btn--outline .wp-block-button__link:hover {
+  background-color: color-mix(in srgb, var(--color-white) 10%, transparent);
+}
+
+.has-shadow-neon {
+  box-shadow: var(--shadow-neon);
+}
+
+/* ============================================
+   DARK MODE OVERRIDES
+   ============================================ */
+
+.dark .front-page__hero {
+  background-color: var(--background);
+}
+
+.dark .front-page__hero-overlay {
+  background: linear-gradient(to bottom, var(--overlay-darker), var(--background));
+}
+
+.dark .front-page__hero-grid {
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--primary) 6%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--primary) 6%, transparent) 1px, transparent 1px);
+}
+
+.dark .front-page__hero-orb--1 {
+  opacity: 0.5;
+}
+
+.dark .front-page__hero-orb--2 {
+  opacity: 0.4;
+}
+
+.dark .front-page__hero-orb--3 {
+  opacity: 0.3;
+}
+
+.dark .front-page__hero-badge {
+  background-color: color-mix(in srgb, var(--primary) 15%, transparent);
+  border-color: color-mix(in srgb, var(--primary) 30%, transparent);
+  color: var(--primary);
+}
+
+.dark .front-page__section--card {
+  background-color: color-mix(in srgb, var(--background) 95%, var(--primary) 5%);
+}
+
+.dark .front-page__section-title {
+  color: var(--foreground);
+}
+
+.dark .front-page__section-desc {
+  color: var(--muted-foreground);
+}
+
+.dark .front-page__hero-btn--outline .wp-block-button__link {
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.dark .front-page__hero-btn--outline .wp-block-button__link:hover {
+  background-color: color-mix(in srgb, var(--primary) 15%, transparent);
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .front-page__hero-orb {
+    animation: none;
+  }
+}

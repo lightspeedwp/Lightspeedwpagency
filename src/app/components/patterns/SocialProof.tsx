@@ -24,25 +24,33 @@ import { Section } from '../common/Section';
 import { Container } from '../common/Container';
 import { Heading } from '../common/Heading';
 import type { Logo } from '../../data/logos';
-import '@/styles/patterns/social-proof.css';
+
 
 export interface SocialProofProps {
   heading?: string;
+  /** Alias for heading — accepted for convenience */
+  title?: string;
   logos: Logo[];
   columns?: 3 | 4 | 5 | 6;
-  variant?: 'logos' | 'awards' | 'certifications';
+  variant?: 'logos' | 'awards' | 'certifications' | 'funky';
   caption?: string;
+  /** Alias for caption — accepted for convenience */
+  description?: string;
   showCaption?: boolean;
 }
 
 export function SocialProof({
-  heading = "Trusted By Industry Leaders",
+  heading,
+  title,
   logos,
   columns = 5,
   variant = 'logos',
   caption,
+  description,
   showCaption = true
 }: SocialProofProps) {
+  const resolvedHeading = heading || title || "Trusted By Industry Leaders";
+  const resolvedCaption = caption || description;
   // Default captions based on variant
   const defaultCaption = variant === 'logos' 
     ? 'Join hundreds of businesses that trust our services'
@@ -50,7 +58,7 @@ export function SocialProof({
     ? 'Recognized for excellence in web design and development'
     : 'Certified professionals committed to quality';
 
-  const finalCaption = caption || defaultCaption;
+  const finalCaption = resolvedCaption || defaultCaption;
 
   // Build social proof classes
   const socialProofClass = `social-proof--${variant}`;
@@ -63,7 +71,7 @@ export function SocialProof({
           level={3} 
           className="social-proof__heading"
         >
-          {heading}
+          {resolvedHeading}
         </Heading>
 
         {/* Logo Grid */}

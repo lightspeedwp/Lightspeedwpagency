@@ -4,7 +4,6 @@
 
 import React from 'react';
 import * as SwitchPrimitive from '@radix-ui/react-switch';
-import '@/styles/blocks/forms/switch.css';
 
 export const Switch = React.forwardRef<
   React.ElementRef<typeof SwitchPrimitive.Root>,

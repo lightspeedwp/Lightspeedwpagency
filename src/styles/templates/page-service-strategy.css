@@ -1,0 +1,405 @@
+/**
+ * Content Strategy Template Styles - Funky Redesign
+ * 
+ * Theme: "Strategic Blueprint"
+ * Colors: Blueprint Blue, White Lines, Red Accents
+ * Visuals: Grid lines, technical drawings, precise layout
+ *
+ * STRICT DESIGN SYSTEM COMPLIANCE:
+ * - All colors mapped to semantic tokens or color-mix()
+ * - NO hardcoded hex — auto light/dark via system tokens
+ */
+
+:root {
+  /* Strategy Page Identity — mapped to design system */
+  --strategy-bg: color-mix(in srgb, var(--category-blue) 80%, var(--color-black));
+  --strategy-lines: var(--overlay-white-15);
+  --strategy-text: var(--color-white);
+  --strategy-accent: var(--category-red);
+  --strategy-paper: color-mix(in srgb, var(--category-blue) 60%, var(--color-black));
+  --strategy-glow: 0 0 30px color-mix(in srgb, var(--category-red) 40%, transparent);
+  --gradient-strategy: linear-gradient(135deg, var(--category-blue), var(--category-red));
+  --gradient-blueprint: linear-gradient(to right, var(--category-blue), var(--category-indigo));
+}
+
+.dark {
+  /* Dark mode — deeper blueprint */
+  --strategy-bg: color-mix(in srgb, var(--category-blue) 40%, var(--color-black));
+  --strategy-paper: color-mix(in srgb, var(--category-blue) 25%, var(--color-black));
+  --strategy-glow: 0 0 40px color-mix(in srgb, var(--category-red) 50%, transparent);
+}
+
+/* ============================================
+   HERO SECTION (The War Room)
+   ============================================ */
+
+.strategy-page__hero {
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--strategy-bg);
+  overflow: hidden;
+  color: var(--strategy-text);
+  border-bottom: 4px solid var(--strategy-text);
+}
+
+/* Blueprint Grid Background */
+.strategy-page__grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(var(--strategy-lines) 1px, transparent 1px),
+    linear-gradient(90deg, var(--strategy-lines) 1px, transparent 1px);
+  background-size: 40px 40px;
+  /* Major grid lines every 5 cells */
+  background-position: -1px -1px;
+}
+
+.strategy-page__grid::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(color-mix(in srgb, var(--color-white) 30%, transparent) 2px, transparent 2px),
+    linear-gradient(90deg, color-mix(in srgb, var(--color-white) 30%, transparent) 2px, transparent 2px);
+  background-size: 200px 200px;
+  background-position: -1px -1px;
+}
+
+.strategy-page__compass {
+  position: absolute;
+  top: 10%;
+  right: 10%;
+  width: 400px;
+  height: 400px;
+  border: 2px solid var(--strategy-lines);
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: rotateCompass 60s linear infinite;
+}
+
+.strategy-page__compass::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--strategy-lines);
+}
+
+.strategy-page__compass::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--strategy-lines);
+}
+
+@keyframes rotateCompass {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.strategy-page__hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 64rem;
+  border: 4px solid var(--strategy-text);
+  padding: var(--spacing-16);
+  background: color-mix(in srgb, var(--strategy-bg) 80%, transparent);
+  backdrop-filter: blur(4px);
+  box-shadow: 20px 20px 0 color-mix(in srgb, var(--color-black) 50%, transparent);
+}
+
+.strategy-page__label {
+  display: inline-block;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: var(--text-sm);
+  color: var(--strategy-accent);
+  border: 1px solid var(--strategy-accent);
+  padding: var(--spacing-2) var(--spacing-4);
+  margin-bottom: var(--spacing-8);
+}
+
+.strategy-page__hero-title {
+  font-family: var(--font-primary);
+  font-size: clamp(3rem, 5vw, 5rem);
+  font-weight: var(--font-weight-black);
+  line-height: 1;
+  text-transform: uppercase;
+  margin-bottom: var(--spacing-6);
+  color: var(--strategy-text);
+  text-shadow: 4px 4px 0 color-mix(in srgb, var(--color-black) 50%, transparent);
+}
+
+.strategy-page__hero-accent {
+  color: var(--strategy-accent);
+}
+
+.strategy-page__hero-desc {
+  font-family: var(--font-mono);
+  font-size: var(--text-lg);
+  color: color-mix(in srgb, var(--color-white) 70%, transparent);
+  max-width: 40rem;
+  margin: 0 auto var(--spacing-8);
+  line-height: var(--line-height-relaxed);
+  border-left: 2px solid var(--strategy-accent);
+  padding-left: var(--spacing-4);
+  text-align: left;
+}
+
+.strategy-page__hero-actions {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-6);
+}
+
+/* Button override */
+:where(.strategy-page__btn--primary) .wp-block-button__link {
+  background-color: var(--strategy-accent);
+  color: var(--color-white);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-widest);
+  border: 1px solid var(--strategy-accent);
+  border-radius: 0;
+  box-shadow: 0 0 20px color-mix(in srgb, var(--strategy-accent) 40%, transparent);
+}
+
+:where(.strategy-page__btn--primary) .wp-block-button__link:hover {
+  background-color: color-mix(in srgb, var(--strategy-accent) 85%, var(--color-black));
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px color-mix(in srgb, var(--strategy-accent) 50%, transparent);
+}
+
+/* ============================================
+   BENEFITS GRID (Tactical Advantages)
+   ============================================ */
+
+.strategy-page__benefits {
+  background-color: var(--strategy-paper);
+  padding: var(--wp--preset--spacing--24) 0;
+  color: var(--strategy-text);
+}
+
+.strategy-page__benefits-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-8);
+}
+
+@media (min-width: 768px) {
+  .strategy-page__benefits-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.strategy-page__card {
+  border: 2px solid color-mix(in srgb, var(--color-white) 20%, transparent);
+  padding: var(--spacing-8);
+  background: color-mix(in srgb, var(--color-white) 5%, transparent);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.strategy-page__card:hover {
+  background: color-mix(in srgb, var(--color-white) 10%, transparent);
+  border-color: var(--strategy-accent);
+  transform: translateY(-5px);
+}
+
+/* Technical corners */
+.strategy-page__card::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid var(--strategy-text);
+  border-left: 2px solid var(--strategy-text);
+}
+
+.strategy-page__card::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  right: -1px;
+  width: 10px;
+  height: 10px;
+  border-bottom: 2px solid var(--strategy-text);
+  border-right: 2px solid var(--strategy-text);
+}
+
+.strategy-page__card-icon {
+  color: var(--strategy-accent);
+  margin-bottom: var(--spacing-6);
+}
+
+.strategy-page__card-title {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-4);
+  color: var(--strategy-text);
+}
+
+.strategy-page__card-desc {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  line-height: var(--line-height-relaxed);
+  color: color-mix(in srgb, var(--color-white) 70%, transparent);
+}
+
+.strategy-page__card-status {
+  margin-top: var(--spacing-4);
+  padding-top: var(--spacing-4);
+  border-top: 1px solid color-mix(in srgb, var(--color-white) 15%, transparent);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+  color: var(--strategy-accent);
+  opacity: 0;
+  transition: opacity var(--transition-slow) var(--ease-out);
+}
+
+.strategy-page__card:hover .strategy-page__card-status {
+  opacity: 1;
+}
+
+/* ============================================
+   BREADCRUMBS (Coordinates)
+   ============================================ */
+
+.strategy-page__breadcrumbs {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  background: var(--strategy-bg);
+  color: color-mix(in srgb, var(--color-white) 70%, transparent);
+  padding: var(--spacing-4) 0;
+  border-bottom: 1px solid var(--strategy-lines);
+}
+
+/* ============================================
+   FUNKY BODY SECTION TREATMENTS
+   ============================================ */
+
+/* --- Gradient Section Title Underlines (Blueprint Red) --- */
+.strategy-page__card-title--funky {
+  position: relative;
+  display: inline-block;
+  padding-bottom: var(--spacing-3);
+}
+
+.strategy-page__card-title--funky::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--gradient-strategy);
+  border-radius: var(--radius-full);
+  animation: strategy-shimmer 3s ease-in-out infinite;
+}
+
+@keyframes strategy-shimmer {
+  0%, 100% { opacity: 0.7; transform: scaleX(0.85); }
+  50% { opacity: 1; transform: scaleX(1); }
+}
+
+/* --- Blueprint Glassmorphism Cards --- */
+.strategy-page__card--glass {
+  background: color-mix(in srgb, var(--strategy-bg) 60%, transparent);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 2px solid color-mix(in srgb, var(--color-white) 15%, transparent);
+}
+
+/* --- Neon Accent Glow on Icons --- */
+.strategy-page__card-icon--neon {
+  filter: drop-shadow(0 0 8px color-mix(in srgb, var(--strategy-accent) 50%, transparent));
+}
+
+/* --- Glow Hover Borders --- */
+.strategy-page__card--glow:hover {
+  border-color: var(--strategy-accent);
+  box-shadow:
+    var(--strategy-glow),
+    inset 0 0 20px color-mix(in srgb, var(--strategy-accent) 5%, transparent);
+}
+
+/* --- Blueprint Mesh Overlay on Sections --- */
+.strategy-page__benefits--mesh {
+  position: relative;
+}
+
+.strategy-page__benefits--mesh::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--color-white) 4%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--color-white) 4%, transparent) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.strategy-page__benefits--mesh > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* --- Coordinate Labels (blueprint flavour) --- */
+.strategy-page__card--coordinates::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid var(--strategy-accent);
+  border-left: 2px solid var(--strategy-accent);
+}
+
+.strategy-page__card--coordinates::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  right: -1px;
+  width: 10px;
+  height: 10px;
+  border-bottom: 2px solid var(--strategy-accent);
+  border-right: 2px solid var(--strategy-accent);
+}
+
+/* --- Reduced motion --- */
+@media (prefers-reduced-motion: reduce) {
+  .strategy-page__card {
+    transition: none;
+  }
+  .strategy-page__card:hover {
+    transform: none;
+  }
+  .strategy-page__card-status {
+    transition: none;
+  }
+  .strategy-page__card-title--funky::after {
+    animation: none;
+  }
+  .strategy-page__compass {
+    animation: none;
+  }
+}

@@ -3,7 +3,6 @@
  */
 
 import React from 'react';
-import '@/styles/blocks/forms/input.css';
 
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {}
 

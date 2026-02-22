@@ -19,7 +19,7 @@
 
 import { ArrowRight, TrendingUp } from 'lucide-react';
 import { Button } from '../blocks/design/Buttons';
-import '@/styles/patterns/case-study-preview.css';
+
 
 export interface CaseStudyMetric {
   label: string;

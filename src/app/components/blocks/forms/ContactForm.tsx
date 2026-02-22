@@ -17,7 +17,6 @@
 
 import { useState, FormEvent } from 'react';
 import { InputField, TextareaField } from './FormField';
-import '@/styles/blocks/forms/contact-form.css';
 
 export interface ContactFormData {
   name: string;

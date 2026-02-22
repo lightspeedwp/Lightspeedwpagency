@@ -13,7 +13,6 @@ import { Heading } from '../blocks/text/Heading';
 import { Paragraph } from '../blocks/text/Paragraph';
 import { Button } from '../blocks/design/Buttons';
 import { AlertTriangle, Search, Home, ArrowRight } from 'lucide-react';
-import '@/styles/templates/404.css';
 
 // Import centralized data
 import {

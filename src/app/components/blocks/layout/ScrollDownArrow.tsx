@@ -6,7 +6,6 @@
  */
 
 import { ChevronDown } from 'lucide-react';
-import '@/styles/scroll-down.css';
 
 interface ScrollDownArrowProps {
   targetId: string;

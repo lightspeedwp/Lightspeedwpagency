@@ -18,7 +18,6 @@
  * ```
  */
 
-import '@/styles/components/skeleton.css';
 
 interface SkeletonProps {
   /** Width of skeleton (default: 100%) */

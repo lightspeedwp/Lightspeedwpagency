@@ -22,6 +22,7 @@
  */
 
 import { useState, useCallback, CSSProperties } from 'react';
+import { useReducedMotion } from './useReducedMotion';
 
 interface MicroInteractionOptions {
   /** Scale factor on hover (default: 1.02) */
@@ -48,9 +49,9 @@ export function useMicroInteractions(options: MicroInteractionOptions = {}) {
   const [isHovered, setIsHovered] = useState(false);
   const [isPressed, setIsPressed] = useState(false);
 
-  // Check for reduced motion preference
-  const prefersReducedMotion = respectReducedMotion && 
-    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Check for reduced motion preference (reactive — updates if user toggles mid-session)
+  const systemPrefersReducedMotion = useReducedMotion();
+  const prefersReducedMotion = respectReducedMotion && systemPrefersReducedMotion;
 
   /**
    * Hover scale effect
@@ -208,7 +209,12 @@ export function useMicroInteractions(options: MicroInteractionOptions = {}) {
  * ```
  */
 export function useRipple() {
+  const prefersReducedMotion = useReducedMotion();
+
   const createRipple = useCallback((e: React.MouseEvent<HTMLElement>) => {
+    // Skip ripple effect when user prefers reduced motion
+    if (prefersReducedMotion) return;
+
     const button = e.currentTarget;
     const rect = button.getBoundingClientRect();
     
@@ -232,7 +238,7 @@ export function useRipple() {
     setTimeout(() => {
       ripple.remove();
     }, 600);
-  }, []);
+  }, [prefersReducedMotion]);
 
   return {
     onClick: createRipple,
@@ -257,7 +263,7 @@ export function useRipple() {
  * ```
  */
 export function useLoadingPulse() {
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const prefersReducedMotion = useReducedMotion();
 
   if (prefersReducedMotion) {
     return {
@@ -298,16 +304,21 @@ export function useShake(): [
   () => void
 ] {
   const [isShaking, setIsShaking] = useState(false);
+  const prefersReducedMotion = useReducedMotion();
 
   const triggerShake = useCallback(() => {
+    // Skip shake animation when user prefers reduced motion
+    if (prefersReducedMotion) return;
     setIsShaking(true);
     setTimeout(() => setIsShaking(false), 500);
-  }, []);
+  }, [prefersReducedMotion]);
 
   return [
     {
       style: {
-        animation: isShaking ? 'shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97)' : 'none'
+        animation: isShaking && !prefersReducedMotion
+          ? 'shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97)'
+          : 'none'
       }
     },
     triggerShake

@@ -1,161 +1,188 @@
 /**
  * FAQ Page Data
  * 
- * Mock data for the FAQ page (FAQTemplate).
+ * Content for the dedicated FAQ page.
+ * Organizes the granular FAQ data from faqs.ts into displayable sections.
  * 
- * Sections:
- * - Hero (with badge, tagline, description)
- * - Stats (4-column layout)
- * - FAQ Categories (with icons, descriptions, grouped questions)
- * - CTA (with dual buttons)
+ * @see /src/app/components/templates/FAQTemplate.tsx
  */
 
-import { HelpCircle, Settings, DollarSign, Wrench, Rocket, BookOpen } from 'lucide-react';
-import type { LucideIcon } from 'lucide-react';
+import {
+  HelpCircle,
+  Wrench,
+  Server,
+  CreditCard
+} from 'lucide-react';
 
-/* ── Hero ── */
+/* ============================================
+   HERO
+   ============================================ */
 
 export const faqPageHero = {
-  title: "Frequently Asked Questions",
-  subtitle: "Find answers to the most common questions about our services, process, and pricing.",
-  badge: {
-    text: "KNOWLEDGE BASE"
-  },
-  tagline: "Everything you need to know about working with LSX Design",
-  description: "Find answers to the most common questions about our WordPress development services, design process, pricing, and ongoing support."
+  title: "Frequently asked questions",
+  tagline: "Your questions, answered.",
+  description:
+    "Everything you need to know about our services, process, and technical approach. Can't find your answer? Reach out — we're always happy to help.",
+  badge: { text: "SUPPORT CENTER", icon: HelpCircle }
 };
 
-/* ── Stats ── */
+/* ============================================
+   STATS
+   ============================================ */
 
 export const faqStats = {
-  totalQuestions: 50,
-  categories: 5,
-  avgResponseTime: "< 4h",
+  totalQuestions: 40,
+  categories: 4,
+  avgResponseTime: "< 2 hrs",
   satisfaction: "98%"
 };
 
-/* ── FAQ Categories (with icons & descriptions for the template) ── */
+/* ============================================
+   CATEGORIES WITH FAQ ITEMS
+   ============================================ */
 
-interface FAQCategory {
-  id: string;
-  title: string;
-  description: string;
-  icon: LucideIcon;
-  faqs: { question: string; answer: string }[];
-}
-
-export const faqCategories: FAQCategory[] = [
+export const faqCategories = [
   {
-    id: "general",
-    title: "General",
-    description: "Common questions about LSX Design and how we work",
+    id: 'general',
+    title: 'General',
+    description: 'Basics about LSX Design and how we work.',
     icon: HelpCircle,
     faqs: [
       {
-        question: "Where are you located?",
-        answer: "We are a remote-first agency with headquarters in Cape Town, South Africa and team members distributed globally across multiple time zones."
+        question: "What does LSX Design specialise in?",
+        answer:
+          "We specialise in WordPress block themes, WooCommerce stores, and accessible, high-performance websites. Our focus is on modern Full Site Editing (FSE) architecture with clean design systems."
       },
       {
-        question: "How long have you been in business?",
-        answer: "We have been serving clients since 2014, celebrating over 10 years of WordPress and WooCommerce excellence across 30+ countries."
+        question: "Do you work with clients outside of South Africa?",
+        answer:
+          "Absolutely. We work with clients worldwide. Our team is experienced in async collaboration across time zones, and we use modern project-management tools to keep every stakeholder in the loop."
       },
       {
-        question: "Who will I be working with?",
-        answer: "You will be assigned a dedicated project manager who will coordinate with our team of designers and developers throughout your project."
+        question: "How long does a typical project take?",
+        answer:
+          "Timelines depend on scope. A standard brochure site takes 4–6 weeks, a WooCommerce store 6–10 weeks, and enterprise builds 10–16 weeks. We provide a detailed timeline during the discovery phase."
+      },
+      {
+        question: "Can you redesign an existing website?",
+        answer:
+          "Yes — redesigns are one of our core offerings. We audit your current site, identify opportunities, and migrate content to a modern block theme while preserving SEO rankings."
       }
     ]
   },
   {
-    id: "services",
-    title: "Services",
-    description: "Details about our WordPress and WooCommerce offerings",
-    icon: Settings,
-    faqs: [
-      {
-        question: "Do you work with startups?",
-        answer: "Yes, we love working with startups! We have specific packages tailored to help new businesses launch quickly and affordably."
-      },
-      {
-        question: "Can you help with marketing?",
-        answer: "Yes, we offer SEO, content strategy, and email marketing services to help you grow your audience and increase conversions."
-      },
-      {
-        question: "Do you build mobile apps?",
-        answer: "We specialize in web technologies (PWA, React Native) that allow us to build mobile-friendly experiences and cross-platform apps."
-      }
-    ]
-  },
-  {
-    id: "pricing",
-    title: "Pricing & Billing",
-    description: "Information about our pricing structure and payment options",
-    icon: DollarSign,
-    faqs: [
-      {
-        question: "What is your pricing model?",
-        answer: "We offer both project-based and retainer pricing. Project rates are determined during discovery based on scope, complexity, and timeline."
-      },
-      {
-        question: "Do you require a deposit?",
-        answer: "Yes, a 40% deposit is required to schedule your project, with the remaining balance split across milestones and final delivery."
-      }
-    ]
-  },
-  {
-    id: "technical",
-    title: "Technical",
-    description: "WordPress, WooCommerce, and development questions",
+    id: 'services',
+    title: 'Services',
+    description: 'Details on our design, development, and support offerings.',
     icon: Wrench,
     faqs: [
       {
-        question: "What is WordPress Full Site Editing?",
-        answer: "FSE is WordPress's modern approach to theme development using blocks, patterns, and templates. It provides more flexibility and control without requiring code."
+        question: "What services do you offer?",
+        answer:
+          "Our services include discovery & strategy, custom design, WordPress & WooCommerce development, managed hosting, migrations, security hardening, content strategy, and ongoing support."
       },
       {
-        question: "Why use block themes instead of classic themes?",
-        answer: "Block themes offer better performance, easier maintenance, visual editing without code, better accessibility, and future-proof architecture."
+        question: "Do you offer ongoing maintenance and support?",
+        answer:
+          "Yes. We offer monthly retainers that cover plugin updates, security monitoring, performance optimisation, content changes, and priority support with guaranteed response times."
       },
       {
-        question: "Do you build headless WordPress sites?",
-        answer: "Yes, we have experience with headless WordPress using Next.js and other frameworks. However, we generally recommend FSE block themes for most projects."
+        question: "Can you help with SEO and content strategy?",
+        answer:
+          "Definitely. Our content strategy service covers keyword research, information architecture, content auditing, and editorial planning — all designed to work hand-in-hand with WordPress."
+      },
+      {
+        question: "Do you build e-commerce stores?",
+        answer:
+          "Yes — WooCommerce is one of our specialities. We build custom storefronts, integrate payment gateways, configure shipping, and optimise the checkout experience for conversions."
+      },
+      {
+        question: "What is your design process?",
+        answer:
+          "We follow a four-phase process: Discovery (research & strategy), Design (wireframes & visual design), Development (theme build & testing), and Launch (deployment & training)."
       }
     ]
   },
   {
-    id: "support",
-    title: "Support & Maintenance",
-    description: "Post-launch support and ongoing maintenance details",
-    icon: Rocket,
+    id: 'technical',
+    title: 'Technical',
+    description: 'Hosting, security, FSE, and code questions.',
+    icon: Server,
     faqs: [
       {
-        question: "Do you provide ongoing support after launch?",
-        answer: "Yes! All projects include 30 days of post-launch support. We also offer comprehensive maintenance packages starting at $3,000/month."
+        question: "What is a WordPress block theme?",
+        answer:
+          "A block theme uses WordPress Full Site Editing (FSE) to let you customise every part of your site — header, footer, templates, and content — directly in the block editor, without code."
       },
       {
-        question: "What's included in your maintenance packages?",
-        answer: "Our maintenance includes weekly backups, core/plugin/theme updates, security monitoring, performance optimization, and priority support."
+        question: "Do you use page builders like Elementor?",
+        answer:
+          "No. We build exclusively with the native WordPress block editor (Gutenberg) and FSE. This approach is faster, lighter, more accessible, and future-proof — no third-party lock-in."
       },
       {
-        question: "What if my site gets hacked?",
-        answer: "If you're on our maintenance plan, malware removal and site cleanup are included at no extra cost. We'll identify the vulnerability, clean the site, and secure it."
+        question: "How do you handle website security?",
+        answer:
+          "We implement security best practices including hardened server configs, Web Application Firewalls (WAF), two-factor authentication, automatic backups, malware scanning, and regular patching."
+      },
+      {
+        question: "What hosting do you recommend?",
+        answer:
+          "We offer managed WordPress hosting optimised for performance. Our infrastructure includes LiteSpeed servers, Redis object caching, free SSL, daily backups, and a global CDN."
+      },
+      {
+        question: "Can you migrate my site from another platform?",
+        answer:
+          "Yes. We handle migrations from Wix, Squarespace, Joomla, Drupal, Shopify, and legacy WordPress setups. We preserve content, SEO, and redirects throughout the process."
+      }
+    ]
+  },
+  {
+    id: 'pricing',
+    title: 'Pricing & billing',
+    description: 'Payment structures, retainers, and contracts.',
+    icon: CreditCard,
+    faqs: [
+      {
+        question: "How much does a website cost?",
+        answer:
+          "Projects start at R25,000 for a starter site. Custom designs range from R45,000–R120,000 depending on complexity, and enterprise WooCommerce builds from R80,000+. We provide detailed proposals after discovery."
+      },
+      {
+        question: "Do you require a deposit?",
+        answer:
+          "Yes — we require a 50% deposit to begin work, with the remainder due on launch. For larger projects we offer milestone-based payment plans."
+      },
+      {
+        question: "What payment methods do you accept?",
+        answer:
+          "We accept bank transfers (EFT), credit card payments, and PayFast. International clients can pay via Wise (TransferWise) or PayPal."
+      },
+      {
+        question: "Do you offer payment plans?",
+        answer:
+          "Yes. For projects over R60,000 we offer structured payment plans aligned to project milestones. Monthly retainers are billed at the start of each month."
       }
     ]
   }
 ];
 
-/* ── Backward-compatible alias ── */
-export const faqPageCategories = faqCategories;
-
-/* ── CTA ── */
+/* ============================================
+   CTA
+   ============================================ */
 
 export const faqCTA = {
-  title: "Still Have Questions?",
-  description: "Can't find the answer you're looking for? Our team is happy to help with any questions about our services.",
+  title: "Still have questions?",
+  description:
+    "Can't find the answer you're looking for? Reach out to our team directly — we typically respond within two hours.",
   buttons: [
-    { text: "Get in Touch", page: "contact" },
-    { text: "View Services", page: "services" }
+    { text: "Contact support", page: "contact" },
+    { text: "View services", page: "services" }
   ]
 };
 
-/* ── Backward-compatible alias ── */
+/* ============================================
+   LEGACY ALIAS (backward compatibility)
+   ============================================ */
+
+export const faqPageCategories = faqCategories.map(({ faqs, icon, ...rest }) => rest);
 export const faqPageCTA = faqCTA;

@@ -6,32 +6,23 @@
  * Displays a single quote with emphasis on typography.
  */
 
-import { Container } from '@/app/components/common/Container';
-import { Section } from '@/app/components/common/Section';
-import { Breadcrumbs } from '@/app/components/common/Breadcrumbs';
-import { quotePost } from '@/app/data/posts-formats';
 import { Quote } from 'lucide-react';
-import '@/styles/blocks/post-formats/quote.css';
-import '@/styles/templates/single-post.css';
 
 export function SingleQuoteTemplate() {
   const post = quotePost;
 
   return (
     <>
-      <section className="single-post-breadcrumbs">
-          <Container>
-            <Breadcrumbs 
-              items={[
-                { label: 'Home', href: '/' },
-                { label: 'Blog', href: '/blog' },
-                { label: 'Quotes', href: '/quote-archive' },
-                { label: 'Quote' }
-              ]}
-            />
-          </Container>
-        </section>
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Blog', href: '/blog' },
+          { label: 'Quotes', href: '/quote-archive' },
+          { label: post.title.rendered },
+        ]}
+      />
 
+      <article>
         <div className="wp-block-quote-hero">
           <Container>
             <div className="wp-max-w-3xl wp-mx-auto">
@@ -63,6 +54,7 @@ export function SingleQuoteTemplate() {
           </Container>
         </div>
 
+      </article>
     </>
   );
 }

@@ -496,17 +496,45 @@
   grid-template-columns: repeat(4, 1fr); 
   gap: var(--spacing-6); 
 }
+.wp-grid-5-cols { 
+  display: grid; 
+  grid-template-columns: repeat(5, 1fr); 
+  gap: var(--spacing-6); 
+}
+.wp-grid-6-cols { 
+  display: grid; 
+  grid-template-columns: repeat(6, 1fr); 
+  gap: var(--spacing-6); 
+}
+.wp-grid-12-cols { 
+  display: grid; 
+  grid-template-columns: repeat(12, 1fr); 
+  gap: var(--spacing-6); 
+}
 .wp-grid-auto { 
   display: grid; 
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
   gap: var(--spacing-6); 
 }
 
+/* Column Spans */
+.wp-col-span-1 { grid-column: span 1 / span 1; }
+.wp-col-span-2 { grid-column: span 2 / span 2; }
+.wp-col-span-3 { grid-column: span 3 / span 3; }
+.wp-col-span-4 { grid-column: span 4 / span 4; }
+.wp-col-span-5 { grid-column: span 5 / span 5; }
+.wp-col-span-6 { grid-column: span 6 / span 6; }
+.wp-col-span-8 { grid-column: span 8 / span 8; }
+.wp-col-span-12 { grid-column: span 12 / span 12; }
+.wp-col-span-full { grid-column: 1 / -1; }
+
 /* Responsive grid breakpoints */
 @media (max-width: 768px) {
   .wp-grid-2-cols,
   .wp-grid-3-cols,
-  .wp-grid-4-cols {
+  .wp-grid-4-cols,
+  .wp-grid-6-cols,
+  .wp-grid-12-cols {
     grid-template-columns: 1fr;
   }
 }
@@ -565,9 +593,11 @@
 .wp-absolute { position: absolute; }
 .wp-fixed { position: fixed; }
 .wp-sticky { position: sticky; }
+.wp-top-24 { top: var(--spacing-24); }
 .wp-overflow-hidden { overflow: hidden; }
 .wp-overflow-auto { overflow: auto; }
 .wp-overflow-scroll { overflow: scroll; }
+.wp-z-10 { z-index: 10; }
 
 /* ============================================
    RESPONSIVE UTILITIES
@@ -606,9 +636,13 @@
 .wp-bg-card { background-color: var(--card); }
 .wp-bg-muted { background-color: var(--muted); }
 .wp-bg-primary { background-color: var(--primary); }
+.wp-bg-primary-soft { background-color: var(--primary-soft); }
 .wp-bg-secondary { background-color: var(--secondary); }
 .wp-bg-accent { background-color: var(--accent); }
 .wp-bg-destructive { background-color: var(--destructive); }
+.wp-bg-success { background-color: var(--success); }
+.wp-bg-success-soft { background-color: var(--success-soft); }
+.wp-bg-transparent { background-color: transparent; }
 
 /* ============================================
    TEXT COLOR UTILITIES
@@ -632,6 +666,7 @@
 .wp-text-destructive { color: var(--destructive); }
 .wp-text-destructive-foreground { color: var(--destructive-foreground); }
 .wp-text-accent-foreground { color: var(--accent-foreground); }
+.wp-text-success { color: var(--success); }
 
 /* ============================================
    WP-PREFIXED TYPOGRAPHY UTILITIES
@@ -641,6 +676,10 @@
 .wp-text-sm { font-size: var(--text-small); }
 .wp-text-base { font-size: var(--text-base); }
 .wp-text-lg { font-size: var(--text-lg); }
+.wp-text-xl { font-size: var(--text-xl); }
+.wp-text-2xl { font-size: var(--text-2xl); }
+.wp-text-3xl { font-size: var(--text-3xl); }
+.wp-text-4xl { font-size: var(--text-4xl); }
 .wp-text-small { font-size: var(--text-small); }
 .wp-text-tiny { font-size: var(--text-tiny); }
 .wp-text-lead { font-size: var(--text-lead); }
@@ -652,23 +691,42 @@
 .wp-font-semibold { font-weight: var(--font-weight-semibold); }
 .wp-font-bold { font-weight: var(--font-weight-bold); }
 
+/* Misc */
+.wp-uppercase { text-transform: uppercase; }
+.wp-tracking-wider { letter-spacing: var(--letter-spacing-wide); }
+.wp-tracking-widest { letter-spacing: var(--letter-spacing-wider); }
+.wp-leading-relaxed { line-height: var(--line-height-relaxed); }
+
 /* ============================================
    WP-PREFIXED MISC UTILITIES
    ============================================ */
 
 .wp-h-auto { height: auto; }
+.wp-h-full { height: 100%; }
 
 /* Border shorthand */
 .wp-border { border: 1px solid var(--border); }
+.wp-border-2 { border: 2px solid var(--border); }
 .wp-border-border { border-color: var(--border); }
 .wp-border-border-soft { border-color: var(--border-soft); }
 .wp-border-primary { border: 1px solid var(--primary); }
 .wp-border-none { border: none; }
 
 /* Rounded (extended) */
-.wp-rounded-xl { border-radius: var(--radius-xl, 12px); }
-.wp-rounded-2xl { border-radius: var(--radius-2xl, 16px); }
+.wp-rounded-xl { border-radius: var(--radius-xl); }
+.wp-rounded-2xl { border-radius: var(--radius-2xl); }
 .wp-rounded-none { border-radius: 0; }
+
+/* Shadow */
+.wp-shadow-sm { box-shadow: var(--shadow-sm); }
+.wp-shadow-md { box-shadow: var(--shadow-md); }
+.wp-shadow-lg { box-shadow: var(--shadow-lg); }
+.wp-shadow-none { box-shadow: none; }
+
+/* Transition */
+.wp-transition-all { transition: all var(--transition-base) ease; }
+.wp-transition-colors { transition: color var(--transition-base) ease, background-color var(--transition-base) ease, border-color var(--transition-base) ease; }
+.wp-transition-transform { transition: transform var(--transition-base) ease; }
 
 /* ============================================
    WP-PREFIXED HOVER UTILITIES
@@ -679,6 +737,20 @@
 .wp-hover\:bg-muted:hover { background-color: var(--muted); }
 .wp-hover\:bg-accent:hover { background-color: var(--accent); }
 .wp-hover\:border-primary:hover { border-color: var(--primary); }
+.group-hover\:wp-text-primary:hover .group:hover .wp-text-primary { color: var(--primary); }
+.group-hover\:wp-translate-x-1:hover .group:hover .wp-translate-x-1 { transform: translateX(var(--spacing-1)); }
+
+/* Manually adding generic group hover classes as CSS doesn't support arbitrary nesting easily without preprocessor */
+/* Note: The above group-hover selectors are pseudo-code. In plain CSS we do: */
+.group:hover .group-hover\:wp-text-primary { color: var(--primary); }
+.group:hover .group-hover\:wp-border-primary { border-color: var(--primary); }
+.group:hover .group-hover\:wp-translate-x-1 { transform: translateX(var(--spacing-1)); }
+.group:hover .group-hover\:wp-shadow-md { box-shadow: var(--shadow-md); }
+
+.hover\:wp-text-primary:hover { color: var(--primary); }
+.hover\:wp-border-primary:hover { border-color: var(--primary); }
+.hover\:wp-shadow-lg:hover { box-shadow: var(--shadow-lg); }
+.hover\:wp-shadow-md:hover { box-shadow: var(--shadow-md); }
 
 /* ============================================
    BORDER UTILITIES
@@ -710,6 +782,10 @@
   .md\:wp-flex-row { flex-direction: row; }
   .md\:wp-grid-2-cols { grid-template-columns: repeat(2, 1fr); }
   .md\:wp-grid-3-cols { grid-template-columns: repeat(3, 1fr); }
+  .md\:wp-grid-6-cols { grid-template-columns: repeat(6, 1fr); }
+  .md\:wp-grid-12-cols { grid-template-columns: repeat(12, 1fr); }
+  .md\:wp-col-span-4 { grid-column: span 4 / span 4; }
+  .md\:wp-col-span-8 { grid-column: span 8 / span 8; }
 }
 
 /* lg: breakpoint (1024px+) */
@@ -725,4 +801,5 @@
   .lg\:wp-gap-16 { gap: var(--spacing-16); }
   .lg\:wp-grid-3-cols { grid-template-columns: repeat(3, 1fr); }
   .lg\:wp-grid-4-cols { grid-template-columns: repeat(4, 1fr); }
+  .lg\:wp-grid-6-cols { grid-template-columns: repeat(6, 1fr); }
 }

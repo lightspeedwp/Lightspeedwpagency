@@ -58,3 +58,17 @@
   color: var(--muted-foreground);
   line-height: var(--line-height-normal);
 }
+
+/* ============================================
+   DARK MODE OVERRIDES
+   ============================================ */
+
+.dark .wp-single-breadcrumbs {
+  border-bottom-color: var(--glass-border);
+}
+
+.dark .wp-single-empty-state {
+  background-color: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border-color: var(--glass-border);
+}

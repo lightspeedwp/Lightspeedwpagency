@@ -9,7 +9,6 @@
  */
 
 import { ReactNode } from 'react';
-import '@/styles/components/container.css';
 
 interface ContainerProps {
   children: ReactNode;

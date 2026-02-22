@@ -29,7 +29,6 @@
  */
 
 import { useState, useEffect } from 'react';
-import '@/styles/components/scroll-progress.css';
 
 interface ScrollProgressProps {
   /** Height of progress bar in pixels (default: 4) */

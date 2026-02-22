@@ -23,9 +23,8 @@
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { Button } from '../blocks/design/Buttons';
-import { useNavigation } from '../../contexts/NavigationContext';
 
-import { Breadcrumbs } from '../common/Breadcrumbs';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { Heading } from '../common/Heading';
 import { Paragraph } from '../blocks/text/Paragraph';
 import { useState } from 'react';
@@ -41,7 +40,7 @@ import {
   Search,
   Grid3x3
 } from 'lucide-react';
-import '@/styles/templates/component-showcase.css';
+
 
 /**
  * Component categories organized by type and usage
@@ -57,7 +56,6 @@ const componentCategories = [
       { name: 'Container', file: '/common/Container.tsx', description: 'Max-width container with responsive padding', usage: 'Layout structure' },
       { name: 'Section', file: '/common/Section.tsx', description: 'Vertical spacing and background variants', usage: 'Page sections' },
       { name: 'Heading', file: '/common/Heading.tsx', description: 'Typography component with semantic levels', usage: 'Headings H1-H6' },
-      { name: 'Breadcrumbs', file: '/common/Breadcrumbs.tsx', description: 'Navigation breadcrumb trail', usage: 'Page navigation' },
       { name: 'SkipLink', file: '/common/SkipLink.tsx', description: 'Accessibility skip to content link', usage: 'A11y navigation' },
     ]
   },
@@ -136,7 +134,6 @@ const componentCategories = [
 type FilterType = 'all' | 'common' | 'patterns' | 'blocks' | 'parts' | 'ui';
 
 export function ComponentShowcase() {
-  const { navigateTo } = useNavigation();
   const [filter, setFilter] = useState<FilterType>('all');
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -185,15 +182,13 @@ export function ComponentShowcase() {
         }}
       >
         {/* Breadcrumbs */}
-        <section className="wp-block-breadcrumbs-section">
-            <Breadcrumbs
-              items={[
-                { label: 'Home', page: 'home' },
-                { label: 'Developer Tools', page: 'dev-tools' },
-                { label: 'Component Showcase' }
-              ]}
-            />
-        </section>
+        <BreadcrumbPart
+          items={[
+            { label: 'Home', page: 'front-page' },
+            { label: 'Developer Tools', page: 'dev-tools' },
+            { label: 'Component Showcase' },
+          ]}
+        />
 
         {/* Hero Header */}
         <Section background="default" spacing="lg">
@@ -255,7 +250,7 @@ export function ComponentShowcase() {
                   size={20}
                   style={{
                     position: 'absolute',
-                    left: '16px',
+                    left: 'var(--spacing-4)',
                     top: '50%',
                     transform: 'translateY(-50%)',
                     color: 'var(--muted-foreground)'
@@ -356,8 +351,8 @@ export function ComponentShowcase() {
               <div className="wp-flex wp-items-start wp-gap-4 wp-mb-8">
                 <div
                   style={{
-                    width: '48px',
-                    height: '48px',
+                    width: 'var(--spacing-12)',
+                    height: 'var(--spacing-12)',
                     borderRadius: 'var(--radius-lg)',
                     backgroundColor: category.color,
                     display: 'flex',

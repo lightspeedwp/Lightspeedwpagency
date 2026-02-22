@@ -1,41 +1,38 @@
 /**
- * Testimonials Template
- * 
- * WordPress template: page-testimonials.html
- * 
- * Comprehensive testimonials page with filtering, stats, and social proof.
- * 
- * Pattern order:
- * Hero → Stats → Featured Testimonials → Filters → All Testimonials → Video Section → Social Proof → FAQSection → CTA
- * 
- * **Pattern Components Used:**
- * - Hero (gradient variant with rating)
- * - StatsGrid (4-column layout)
- * - TestimonialGrid (featured & filtered sections)
- * - VideoTestimonial (video section)
- * - SocialProof (client logos)
- * - FAQSection (common questions)
- * - CTASection (conversion)
- * 
- * **Code Reduction:**
- * - Before: ~800 lines
- * - After: ~400 lines
- * - Reduction: 50% (~400 lines eliminated)
+ * Testimonials Template — Funky Neon Redesign
+ *
+ * Full-featured testimonials page with mesh hero, neon-glow stat
+ * cards, filtering controls, video section, and social proof.
+ * All content is driven by centralised mock data.
+ *
+ * Sections:
+ *  1. Hero (mesh grid + orb glow + rating badge)
+ *  2. Stats (4-column stat cards)
+ *  3. Featured Testimonials (TestimonialGrid)
+ *  4. Filters + All Testimonials (select controls + grid)
+ *  5. Video Testimonials (VideoTestimonial)
+ *  6. Patterns (SocialProof, FAQ, CTA)
+ *
+ * @see /src/styles/templates/testimonials-page.css
+ * @see /src/app/data/testimonials.ts
  */
 
-import { Section } from '../common/Section';
-import { Hero } from '../patterns/Hero';
-import { StatsGrid } from '../patterns/StatsGrid';
+import { useState } from 'react';
+import { Container } from '../common/Container';
+import { Button } from '../blocks/design/Buttons';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { TestimonialGrid } from '../patterns/TestimonialGrid';
 import { VideoTestimonial } from '../patterns/VideoTestimonial';
 import { SocialProof } from '../patterns/SocialProof';
 import { FAQSection } from '../patterns/FAQSection';
-import { CTASection } from '../patterns/CTASection';
-import { useState } from 'react';
-import { Filter, Star } from 'lucide-react';
+import { FunkyCTA } from '../patterns/FunkyCTA';
+import { ScrollReveal } from '../../hooks/useScrollReveal';
+import { Filter, Star, MessageSquare } from 'lucide-react';
 
-// Import centralized testimonials data
-import { 
+
+
+/* ── Data imports ── */
+import {
   testimonials as centralizedTestimonials,
   testimonialStats,
   videoTestimonials
@@ -47,7 +44,7 @@ export function TestimonialsTemplate() {
   const [filterIndustry, setFilterIndustry] = useState<string>('all');
   const [filterService, setFilterService] = useState<string>('all');
 
-  // Transform testimonials data for TestimonialGrid component
+  /* ── Transform data ── */
   const testimonials = centralizedTestimonials.map((t, index) => ({
     quote: t.quote,
     author: t.author,
@@ -59,22 +56,17 @@ export function TestimonialsTemplate() {
     service: t.serviceType?.[0] || 'WordPress'
   }));
 
-  // Filter testimonials
-  const filteredTestimonials = testimonials.filter(testimonial => {
-    const industryMatch = filterIndustry === 'all' || testimonial.industry === filterIndustry;
-    const serviceMatch = filterService === 'all' || testimonial.service.includes(filterService);
+  const filteredTestimonials = testimonials.filter((t) => {
+    const industryMatch = filterIndustry === 'all' || t.industry === filterIndustry;
+    const serviceMatch = filterService === 'all' || t.service.includes(filterService);
     return industryMatch && serviceMatch;
   });
 
-  // Featured testimonials (top 3)
   const featuredTestimonials = testimonials.slice(0, 3);
-
-  // Industries and services for filters
-  const industries = ['all', ...Array.from(new Set(testimonials.map(t => t.industry)))];
+  const industries = ['all', ...Array.from(new Set(testimonials.map((t) => t.industry)))];
   const services = ['all', 'WordPress', 'WooCommerce', 'Design', 'Development', 'Migration', 'Security'];
 
-  // Video testimonials data
-  const videoTestimonialsData = videoTestimonials.map(v => ({
+  const videoTestimonialsData = videoTestimonials.map((v) => ({
     title: v.title,
     clientName: v.name,
     clientRole: v.role,
@@ -85,117 +77,118 @@ export function TestimonialsTemplate() {
     description: v.description
   }));
 
-  // FAQs
-  const testimonialFAQs = testimonialPageFAQs;
-
   return (
     <>
-        {/* Hero Section with Rating */}
-        <Hero
-          badge={{ text: "CLIENT TESTIMONIALS" }}
-          title="Trusted by 500+ Happy Clients"
-          description="Don't just take our word for it. See what our clients say about working with LightSpeed and the results we've achieved together."
-          variant="service"
-          gradient="blue"
-          buttons={[
-            { label: "Get Started", page: "contact", variant: "primary" },
-            { label: "View Portfolio", page: "portfolio", variant: "outline" }
-          ]}
-        />
+      {/* ── Breadcrumbs ── */}
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Testimonials' },
+        ]}
+      />
 
-        {/* Stats Section */}
-        <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
-          <StatsGrid
-            stats={testimonialStats.map(stat => ({
-              icon: Star,
-              value: stat.number,
-              label: stat.label
-            }))}
-            columns={4}
-            variant="cards"
-          />
-        </Section>
+      {/* ============================================
+          1. HERO
+          ============================================ */}
+      <section className="test-page__hero">
+        <div className="test-page__hero-grid" aria-hidden="true" />
+        <div className="test-page__hero-orb" aria-hidden="true" />
 
-        {/* Featured Testimonials */}
-        <Section spacing="xl" background="muted">
-          <TestimonialGrid
-            testimonials={featuredTestimonials}
-            heading="Featured Success Stories"
-            description="Hear from clients who achieved remarkable results"
-            columns={3}
-            variant="cards"
-            showRating={true}
-            maxWidth="6xl"
-          />
-        </Section>
+        <Container>
+          <ScrollReveal animation="fade-up">
+            <div className="test-page__hero-inner">
+              <div className="test-page__hero-badge">
+                <MessageSquare size={14} />
+                <span>CLIENT TESTIMONIALS</span>
+              </div>
 
-        {/* Filters & All Testimonials */}
-        <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
-          <div className="wp-max-w-6xl">
-            {/* Section Header */}
-            <div className="wp-text-center" style={{ marginBottom: 'var(--spacing-12)' }}>
-              <h2
-                style={{
-                  fontFamily: 'var(--font-primary)',
-                  fontSize: 'var(--text-h1)',
-                  fontWeight: 'var(--font-weight-bold)',
-                  lineHeight: '1.2',
-                  color: 'var(--foreground)',
-                  marginBottom: 'var(--spacing-4)'
-                }}
-              >
-                All Client Testimonials
-              </h2>
+              <div className="test-page__hero-rating">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} size={16} className="test-page__hero-rating-star" fill="currentColor" />
+                ))}
+                <span className="test-page__hero-rating-text">4.9 / 5 average rating</span>
+              </div>
 
-              <p
-                style={{
-                  fontFamily: 'var(--font-primary)',
-                  fontSize: 'var(--text-lg)',
-                  lineHeight: '1.7',
-                  color: 'var(--muted-foreground)',
-                  marginBottom: 'var(--spacing-8)'
-                }}
-              >
+              <h1 className="test-page__hero-title">
+                Trusted by{' '}
+                <span className="test-page__hero-title-highlight">500+ Happy Clients</span>
+              </h1>
+
+              <p className="test-page__hero-desc">
+                Don't just take our word for it. See what our clients say about
+                working with LightSpeed and the results we've achieved together.
+              </p>
+
+              <div className="test-page__hero-actions">
+                <Button href="/contact" size="lg">
+                  Get Started
+                </Button>
+                <Button href="/portfolio" variant="secondary" size="lg">
+                  View Portfolio
+                </Button>
+              </div>
+            </div>
+          </ScrollReveal>
+        </Container>
+      </section>
+
+      {/* ============================================
+          2. STATS
+          ============================================ */}
+      <section className="test-page__stats">
+        <Container>
+          <div className="test-page__stats-grid">
+            {testimonialStats.map((stat, index) => (
+              <ScrollReveal key={index} animation="fade-up">
+                <article className="test-page__stat-card">
+                  <Star size={24} className="test-page__stat-icon" />
+                  <div className="test-page__stat-value">{stat.number}</div>
+                  <div className="test-page__stat-label">{stat.label}</div>
+                </article>
+              </ScrollReveal>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* ============================================
+          3. FEATURED TESTIMONIALS
+          ============================================ */}
+      <section className="test-page__featured">
+        <Container>
+          <ScrollReveal animation="fade-up">
+            <TestimonialGrid
+              testimonials={featuredTestimonials}
+              columns={3}
+              variant="cards"
+              showRating={true}
+              maxWidth="6xl"
+            />
+          </ScrollReveal>
+        </Container>
+      </section>
+
+      {/* ============================================
+          4. FILTERS + ALL TESTIMONIALS
+          ============================================ */}
+      <section className="test-page__filter-section">
+        <Container>
+          <ScrollReveal animation="fade-up">
+            <div className="test-page__filter-header">
+              <h2 className="test-page__filter-title">All Client Testimonials</h2>
+              <p className="test-page__filter-desc">
                 Filter by industry or service to find relevant success stories
               </p>
 
-              {/* Filter Controls */}
-              <div 
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: 'var(--spacing-4)',
-                  alignItems: 'center',
-                  marginBottom: 'var(--spacing-12)'
-                }}
-                className="md:wp-flex-row"
-              >
+              <div className="test-page__filter-row">
                 {/* Industry Filter */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-3)' }}>
-                  <Filter size={20} style={{ color: 'var(--muted-foreground)' }} />
-                  <span
-                    style={{
-                      fontFamily: 'var(--font-primary)',
-                      fontSize: 'var(--text-base)',
-                      fontWeight: 'var(--font-weight-medium)',
-                      color: 'var(--foreground)'
-                    }}
-                  >
-                    Industry:
-                  </span>
+                <div className="test-page__filter-group">
+                  <Filter size={20} className="test-page__filter-icon" />
+                  <span className="test-page__filter-label">Industry:</span>
                   <select
+                    className="test-page__filter-select"
                     value={filterIndustry}
                     onChange={(e) => setFilterIndustry(e.target.value)}
-                    style={{
-                      padding: 'var(--spacing-2) var(--spacing-4)',
-                      borderRadius: 'var(--radius)',
-                      border: '1px solid var(--border)',
-                      backgroundColor: 'var(--card)',
-                      color: 'var(--foreground)',
-                      fontFamily: 'var(--font-primary)',
-                      fontSize: 'var(--text-base)',
-                      cursor: 'pointer'
-                    }}
                     aria-label="Filter testimonials by industry"
                   >
                     {industries.map((industry) => (
@@ -207,30 +200,12 @@ export function TestimonialsTemplate() {
                 </div>
 
                 {/* Service Filter */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-3)' }}>
-                  <span
-                    style={{
-                      fontFamily: 'var(--font-primary)',
-                      fontSize: 'var(--text-base)',
-                      fontWeight: 'var(--font-weight-medium)',
-                      color: 'var(--foreground)'
-                    }}
-                  >
-                    Service:
-                  </span>
+                <div className="test-page__filter-group">
+                  <span className="test-page__filter-label">Service:</span>
                   <select
+                    className="test-page__filter-select"
                     value={filterService}
                     onChange={(e) => setFilterService(e.target.value)}
-                    style={{
-                      padding: 'var(--spacing-2) var(--spacing-4)',
-                      borderRadius: 'var(--radius)',
-                      border: '1px solid var(--border)',
-                      backgroundColor: 'var(--card)',
-                      color: 'var(--foreground)',
-                      fontFamily: 'var(--font-primary)',
-                      fontSize: 'var(--text-base)',
-                      cursor: 'pointer'
-                    }}
                     aria-label="Filter testimonials by service"
                   >
                     {services.map((service) => (
@@ -242,42 +217,32 @@ export function TestimonialsTemplate() {
                 </div>
               </div>
             </div>
+          </ScrollReveal>
 
-            {/* Filtered Testimonials Grid */}
-            {filteredTestimonials.length > 0 ? (
-              <TestimonialGrid
-                testimonials={filteredTestimonials}
-                columns={3}
-                variant="cards"
-                showRating={true}
-                maxWidth="full"
-              />
-            ) : (
-              <div
-                style={{
-                  padding: 'var(--spacing-16) var(--spacing-8)',
-                  textAlign: 'center',
-                  backgroundColor: 'var(--card)',
-                  borderRadius: 'var(--radius-lg)',
-                  border: '1px solid var(--border-soft)'
-                }}
-              >
-                <p
-                  style={{
-                    fontFamily: 'var(--font-primary)',
-                    fontSize: 'var(--text-lg)',
-                    color: 'var(--muted-foreground)'
-                  }}
-                >
-                  No testimonials found for the selected filters.
-                </p>
-              </div>
-            )}
-          </div>
-        </Section>
+          {/* Filtered Grid */}
+          {filteredTestimonials.length > 0 ? (
+            <TestimonialGrid
+              testimonials={filteredTestimonials}
+              columns={3}
+              variant="cards"
+              showRating={true}
+              maxWidth="none"
+            />
+          ) : (
+            <div className="test-page__empty">
+              <p className="test-page__empty-text">
+                No testimonials found for the selected filters.
+              </p>
+            </div>
+          )}
+        </Container>
+      </section>
 
-        {/* Video Testimonials */}
-        <Section spacing="xl" background="muted">
+      {/* ============================================
+          5. VIDEO TESTIMONIALS
+          ============================================ */}
+      <section className="test-page__video-section">
+        <Container>
           <VideoTestimonial
             videos={videoTestimonialsData}
             heading="Video Testimonials"
@@ -286,38 +251,40 @@ export function TestimonialsTemplate() {
             columns={3}
             maxWidth="6xl"
           />
-        </Section>
+        </Container>
+      </section>
 
-        {/* Social Proof */}
-        <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
+      {/* ============================================
+          6. PATTERNS
+          ============================================ */}
+      <section className="test-page__social">
+        <Container>
           <SocialProof
-            logos={clientLogos.filter(logo => logo.category === 'client')}
+            logos={clientLogos.filter((logo) => logo.category === 'client')}
             heading="Trusted by Leading Brands"
             description="Join 500+ companies who trust LightSpeed with their WordPress & WooCommerce solutions"
-            variant="grayscale-hover"
-            columns={6}
           />
-        </Section>
+        </Container>
+      </section>
 
-        {/* FAQ Section */}
-        <Section spacing="xl" background="muted">
-          <FAQSection
-            faqs={testimonialFAQs}
-            heading="Frequently Asked Questions"
-            description="Common questions about our testimonials and client references"
-          />
-        </Section>
+      <FAQSection
+        faqs={testimonialPageFAQs}
+        title="Frequently Asked Questions"
+        description="Common questions about our testimonials and client references"
+      />
 
-        {/* CTA Section */}
-        <CTASection
-          variant="blue"
-          heading="Ready to Become Our Next Success Story?"
-          description="Join 500+ happy clients who have transformed their WordPress websites with LightSpeed. Let's achieve remarkable results together."
-          primaryButtonText="Start Your Project"
-          primaryButtonPage="contact"
-          secondaryButtonText="View Our Services"
-          secondaryButtonPage="services"
-        />
+      <FunkyCTA
+        title="Ready to Become Our Next Success Story?"
+        description="Join 500+ happy clients who have transformed their WordPress websites with LightSpeed. Let's achieve remarkable results together."
+        buttonText="Start Your Project"
+        buttonPage="contact"
+        benefits={[
+          '500+ successful projects delivered',
+          '4.9/5 average client rating',
+          '98% client satisfaction rate',
+          'Risk-free guarantees on every project'
+        ]}
+      />
     </>
   );
 }

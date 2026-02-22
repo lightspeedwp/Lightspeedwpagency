@@ -8,12 +8,11 @@
 
 import { Container } from '@/app/components/common/Container';
 import { Section } from '@/app/components/common/Section';
-import { Breadcrumbs } from '@/app/components/common/Breadcrumbs';
+import { BreadcrumbPart } from '@/app/components/parts/BreadcrumbPart';
 import { galleryPost } from '@/app/data/posts-formats';
 import { Image, Calendar, User } from 'lucide-react';
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
-import '@/styles/blocks/post-formats/gallery.css';
-import '@/styles/templates/single-post.css';
+
 
 export function SingleGalleryTemplate() {
   const post = galleryPost;
@@ -21,19 +20,16 @@ export function SingleGalleryTemplate() {
 
   return (
     <>
-      <section className="single-post-breadcrumbs">
-          <Container>
-            <Breadcrumbs 
-              items={[
-                { label: 'Home', href: '/' },
-                { label: 'Blog', href: '/blog' },
-                { label: 'Galleries', href: '/gallery-archive' },
-                { label: post.title.rendered }
-              ]}
-            />
-          </Container>
-        </section>
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Blog', href: '/blog' },
+          { label: 'Gallery', href: '/gallery-archive' },
+          { label: post.title.rendered },
+        ]}
+      />
 
+      <article>
         <header className="wp-block-gallery-hero">
           <Container>
             <div className="wp-max-w-4xl wp-mx-auto">
@@ -66,6 +62,7 @@ export function SingleGalleryTemplate() {
           </Container>
         </Section>
 
+      </article>
     </>
   );
 }

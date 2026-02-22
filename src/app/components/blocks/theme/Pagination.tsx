@@ -6,7 +6,6 @@
  */
 
 import React from 'react';
-import '@/styles/blocks/theme/pagination.css';
 import { ChevronLeft, ChevronRight, MoreHorizontal } from 'lucide-react';
 
 export interface PaginationProps {

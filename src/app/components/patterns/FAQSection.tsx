@@ -130,7 +130,7 @@ import { Section } from '../common/Section';
 import { Container } from '../common/Container';
 import { Button } from '../blocks/design/Buttons';
 import { Accordion, AccordionItem } from '../blocks/design/Accordion';
-import '@/styles/patterns/faq-section.css';
+
 
 /**
  * FAQ Item interface

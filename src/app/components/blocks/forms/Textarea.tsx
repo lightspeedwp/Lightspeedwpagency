@@ -3,7 +3,6 @@
  */
 
 import React from 'react';
-import '@/styles/blocks/forms/textarea.css';
 
 export interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {}
 

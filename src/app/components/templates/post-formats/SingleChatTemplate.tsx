@@ -6,32 +6,23 @@
  * Displays a single chat transcript.
  */
 
-import { Container } from '@/app/components/common/Container';
-import { Section } from '@/app/components/common/Section';
-import { Breadcrumbs } from '@/app/components/common/Breadcrumbs';
-import { chatPost } from '@/app/data/posts-formats';
 import { MessageCircle, User, Calendar } from 'lucide-react';
-import '@/styles/blocks/post-formats/chat.css';
-import '@/styles/templates/single-post.css';
 
 export function SingleChatTemplate() {
   const post = chatPost;
 
   return (
     <>
-      <section className="single-post-breadcrumbs">
-          <Container>
-            <Breadcrumbs 
-              items={[
-                { label: 'Home', href: '/' },
-                { label: 'Blog', href: '/blog' },
-                { label: 'Chats', href: '/chat-archive' },
-                { label: post.title.rendered }
-              ]}
-            />
-          </Container>
-        </section>
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Blog', href: '/blog' },
+          { label: 'Chat', href: '/chat-archive' },
+          { label: post.title.rendered },
+        ]}
+      />
 
+      <article>
         <Section spacing="lg">
           <Container>
             <div className="wp-max-w-3xl wp-mx-auto">
@@ -56,6 +47,7 @@ export function SingleChatTemplate() {
           </Container>
         </Section>
 
+      </article>
     </>
   );
 }

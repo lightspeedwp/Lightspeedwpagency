@@ -26,7 +26,7 @@
 import { Section } from '../common/Section';
 import { Container } from '../common/Container';
 import { Button } from '../blocks/design/Buttons';
-import '@/styles/patterns/cta-section.css';
+
 
 type GradientVariant = 
   | 'blue' 

@@ -1,17 +1,217 @@
 /**
- * Wetu Importer Product Page Styles
- * 
- * Template-specific styles for Wetu Importer product page.
- * All vertical spacing via blockGap (CSS gap) -- zero margin.
- * All styling uses CSS variables from design system.
+ * Wetu Importer Product Page Styles — Funky Neon Redesign
+ *
+ * Template: WetuImporterTemplate
+ * Theme: Neon data flow, glassmorphism cards, floating orbs
+ *
+ * Modes:
+ *   :root (light) — white bg, primary blue accents, glass cards
+ *   .dark          — near-black bg, neon cyan glows, full intensity
+ *
+ * 100% CSS variables — no hardcoded color/spacing values.
+ * BEM naming throughout.
  */
 
-.wetu-importer__section--muted {
-  background-color: var(--muted);
-}
 
 /* ============================================================
-   SECTION HEADERS -- flex column with blockGap
+   PAGE CONTAINER
+   ============================================================ */
+
+.wetu-importer {
+  position: relative;
+  overflow: hidden;
+}
+
+
+/* ============================================================
+   HERO SECTION (Parallax + Mesh Grid + Floating Orbs)
+   ============================================================ */
+
+.wetu-importer__hero {
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  color: var(--color-white);
+  padding-top: var(--spacing-20);
+}
+
+.wetu-importer__hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  object-fit: cover;
+  z-index: 0;
+  transform: translateY(0);
+  will-change: transform;
+}
+
+.wetu-importer__hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    var(--overlay-30) 0%,
+    var(--overlay-dark) 55%,
+    var(--background) 100%
+  );
+  z-index: 1;
+}
+
+.wetu-importer__hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--primary-transparent-10) 1px, transparent 1px),
+    linear-gradient(90deg, var(--primary-transparent-10) 1px, transparent 1px);
+  background-size: 60px 60px;
+  z-index: 2;
+  opacity: 0.4;
+}
+
+/* Floating Orbs */
+.wetu-importer__orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: 2;
+  opacity: 0.5;
+  animation: wetu-float-orb 12s ease-in-out infinite alternate;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wetu-importer__orb {
+    animation: none;
+  }
+}
+
+.wetu-importer__orb--1 {
+  width: 300px;
+  height: 300px;
+  background: var(--primary);
+  top: 10%;
+  left: -5%;
+  opacity: 0.3;
+}
+
+.wetu-importer__orb--2 {
+  width: 200px;
+  height: 200px;
+  background: var(--accent);
+  top: 60%;
+  right: -5%;
+  opacity: 0.25;
+  animation-delay: -4s;
+}
+
+.wetu-importer__orb--3 {
+  width: 150px;
+  height: 150px;
+  background: var(--chart-4);
+  bottom: 10%;
+  left: 30%;
+  opacity: 0.2;
+  animation-delay: -8s;
+}
+
+@keyframes wetu-float-orb {
+  0%   { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(30px, -20px) scale(1.1); }
+}
+
+/* Hero Content */
+.wetu-importer__hero-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-6);
+  padding: var(--spacing-16) 0;
+}
+
+.wetu-importer__hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2) var(--spacing-4);
+  background: var(--primary-transparent-10);
+  border: 1px solid var(--primary-transparent-20);
+  border-radius: var(--radius-full);
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--primary);
+  backdrop-filter: blur(8px);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+}
+
+.wetu-importer__hero-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h1);
+  font-weight: 700;
+  color: var(--color-white);
+  line-height: var(--line-height-tight);
+  max-width: 800px;
+}
+
+.wetu-importer__hero-highlight {
+  background: linear-gradient(135deg, var(--primary), var(--chart-4));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.wetu-importer__hero-subtitle {
+  font-family: var(--font-secondary);
+  font-size: var(--text-lead);
+  color: var(--muted-foreground);
+  max-width: 600px;
+  line-height: var(--line-height-normal);
+}
+
+
+/* ============================================================
+   SECTION LAYOUT (Shared)
+   ============================================================ */
+
+.wetu-importer__features,
+.wetu-importer__benefits,
+.wetu-importer__process,
+.wetu-importer__specs,
+.wetu-importer__pricing,
+.wetu-importer__faq {
+  padding: var(--spacing-20) 0;
+}
+
+.wetu-importer__features {
+  background: var(--muted);
+}
+
+.wetu-importer__process {
+  background: var(--muted);
+}
+
+.wetu-importer__specs {
+  background: var(--background);
+}
+
+.wetu-importer__pricing {
+  background: var(--muted);
+}
+
+.wetu-importer__faq {
+  background: var(--background);
+}
+
+
+/* ============================================================
+   SECTION HEADERS
    ============================================================ */
 
 .wetu-importer__section-header {
@@ -39,8 +239,9 @@
   line-height: var(--line-height-normal);
 }
 
+
 /* ============================================================
-   FEATURES GRID
+   FEATURES GRID (Glassmorphism Cards)
    ============================================================ */
 
 .wetu-importer__features-grid {
@@ -61,8 +262,8 @@
   }
 }
 
-/* Feature card -- flex column with blockGap */
 .wetu-importer__feature-card {
+  position: relative;
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
@@ -71,12 +272,29 @@
   display: flex;
   flex-direction: column;
   gap: var(--spacing-4);
+  overflow: hidden;
 }
 
 .wetu-importer__feature-card:hover {
   border-color: var(--primary);
   transform: translateY(-4px);
-  box-shadow: var(--shadow-hover);
+  box-shadow: 0 8px 30px var(--primary-transparent-10);
+}
+
+.wetu-importer__feature-glow {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, var(--primary-transparent-10) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.wetu-importer__feature-card:hover .wetu-importer__feature-glow {
+  opacity: 1;
 }
 
 .wetu-importer__feature-icon {
@@ -85,16 +303,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--primary);
-  color: var(--primary-foreground);
+  background: var(--primary-transparent-10);
   border-radius: var(--radius);
+  position: relative;
+  z-index: 1;
 }
 
 .wetu-importer__feature-icon svg {
   width: 24px;
   height: 24px;
   color: var(--primary);
-  margin-top: calc(var(--spacing-1) / 2); /* optical icon alignment */
 }
 
 .wetu-importer__feature-title {
@@ -102,6 +320,8 @@
   font-size: var(--text-xl);
   font-weight: 600;
   color: var(--foreground);
+  position: relative;
+  z-index: 1;
 }
 
 .wetu-importer__feature-description {
@@ -109,7 +329,10 @@
   font-size: var(--text-base);
   color: var(--muted-foreground);
   line-height: var(--line-height-normal);
+  position: relative;
+  z-index: 1;
 }
+
 
 /* ============================================================
    BENEFITS GRID
@@ -127,7 +350,6 @@
   }
 }
 
-/* Benefit card -- flex column with blockGap */
 .wetu-importer__benefit-card {
   background: var(--card);
   border: 1px solid var(--border);
@@ -136,6 +358,12 @@
   display: flex;
   flex-direction: column;
   gap: var(--spacing-3);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.wetu-importer__benefit-card:hover {
+  border-color: var(--primary);
+  box-shadow: 0 4px 20px var(--primary-transparent-10);
 }
 
 .wetu-importer__benefit-title {
@@ -152,8 +380,9 @@
   line-height: var(--line-height-normal);
 }
 
+
 /* ============================================================
-   PROCESS STEPS
+   PROCESS STEPS (Neon Numbering)
    ============================================================ */
 
 .wetu-importer__process-grid {
@@ -184,9 +413,9 @@
   font-family: var(--font-primary);
   font-size: var(--text-xl);
   font-weight: 600;
+  box-shadow: 0 0 20px var(--primary-transparent-20);
 }
 
-/* Process content -- flex column with blockGap */
 .wetu-importer__process-content {
   flex: 1;
   display: flex;
@@ -207,6 +436,7 @@
   color: var(--muted-foreground);
   line-height: var(--line-height-normal);
 }
+
 
 /* ============================================================
    SPECIFICATIONS
@@ -251,16 +481,15 @@
   text-align: right;
 }
 
+
 /* ============================================================
-   PRICING CARDS
+   PRICING CARDS (Neon Hover)
    ============================================================ */
 
 .wetu-importer__pricing-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--spacing-8);
-  padding-top: var(--spacing-12);
-  /* margin-top converted to padding-top — section-level spacing */
 }
 
 @media (min-width: 768px) {
@@ -269,7 +498,6 @@
   }
 }
 
-/* Pricing card -- flex column with blockGap */
 .wetu-importer__pricing-card {
   background: var(--card);
   border: 1px solid var(--border);
@@ -279,12 +507,18 @@
   flex-direction: column;
   gap: var(--spacing-3);
   position: relative;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.wetu-importer__pricing-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px var(--primary-transparent-10);
 }
 
 .wetu-importer__pricing-card--popular {
   border-color: var(--primary);
   border-width: 2px;
-  box-shadow: var(--shadow-hover);
+  box-shadow: 0 0 30px var(--primary-transparent-10);
 }
 
 .wetu-importer__pricing-badge {
@@ -334,7 +568,6 @@
   margin-left: var(--spacing-2);
 }
 
-/* Pricing features list -- flex column with blockGap */
 .wetu-importer__pricing-features {
   flex: 1;
   display: flex;
@@ -356,48 +589,246 @@
   width: 20px;
   height: 20px;
   color: var(--primary);
-  margin-top: calc(var(--spacing-1) / 2); /* optical icon alignment */
 }
+
 
 /* ============================================================
-   CTA SECTION -- flex column with blockGap
+   FUNKY BODY TREATMENTS
+   Glassmorphism, animated gradient stripes, neon icon wrappers,
+   gradient section title underlines, dark mode overrides.
    ============================================================ */
 
-.wetu-importer__cta-container {
-  text-align: center;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--spacing-6);
+
+/* --- Animated Gradient Stripe Keyframe --- */
+
+@keyframes wetuStripeShimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
 }
 
-.wetu-importer__cta-title {
-  font-family: var(--font-primary);
-  font-size: var(--text-3xl);
-  font-weight: 600;
-  color: var(--foreground);
+
+/* --- Section Title Gradient Underline --- */
+
+.wetu-importer__section-title {
+  position: relative;
+  display: inline-block;
+  padding-bottom: var(--spacing-3);
 }
 
-.wetu-importer__cta-description {
-  font-family: var(--font-secondary);
-  font-size: var(--text-lg);
-  color: var(--muted-foreground);
-  line-height: var(--line-height-normal);
+.wetu-importer__section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(90deg, var(--primary), var(--accent));
 }
 
-.wetu-importer__cta-buttons {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-4);
-  align-items: center;
+
+/* --- Feature Cards: Glassmorphism + Stripe + Neon Icons --- */
+
+.wetu-importer__feature-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-color: var(--glass-border);
 }
 
-@media (min-width: 640px) {
-  .wetu-importer__cta-buttons {
-    flex-direction: row;
-    justify-content: center;
+.wetu-importer__feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
+  background-size: 200% 100%;
+  animation: wetuStripeShimmer 3s linear infinite;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.wetu-importer__feature-icon {
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  box-shadow: 0 0 16px color-mix(in srgb, var(--primary) 30%, transparent);
+  border-radius: var(--radius-lg);
+  transition: transform var(--transition-base) var(--ease-out), box-shadow var(--transition-base) var(--ease-out);
+}
+
+.wetu-importer__feature-icon svg {
+  color: var(--color-white);
+}
+
+.wetu-importer__feature-card:hover .wetu-importer__feature-icon {
+  transform: scale(1.1);
+  box-shadow: 0 0 24px color-mix(in srgb, var(--primary) 50%, transparent);
+}
+
+
+/* --- Benefit Cards: Glassmorphism + Glow --- */
+
+.wetu-importer__benefit-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-color: var(--glass-border);
+}
+
+.wetu-importer__benefit-card:hover {
+  box-shadow: 0 0 24px color-mix(in srgb, var(--primary) 20%, transparent);
+}
+
+
+/* --- Process Numbers: Neon Gradient + Glow --- */
+
+.wetu-importer__process-number {
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: var(--color-white);
+  box-shadow: 0 0 20px color-mix(in srgb, var(--primary) 40%, transparent);
+  transition: transform var(--transition-base) var(--ease-out), box-shadow var(--transition-base) var(--ease-out);
+}
+
+.wetu-importer__process-step:hover .wetu-importer__process-number {
+  transform: scale(1.1);
+  box-shadow: 0 0 30px color-mix(in srgb, var(--primary) 60%, transparent);
+}
+
+
+/* --- Spec Items: Glassmorphism --- */
+
+.wetu-importer__spec-item {
+  background: var(--glass-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-color: var(--glass-border);
+}
+
+
+/* --- Pricing Cards: Glassmorphism + Gradient Price --- */
+
+.wetu-importer__pricing-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-color: var(--glass-border);
+}
+
+.wetu-importer__pricing-card:hover {
+  box-shadow: 0 0 30px color-mix(in srgb, var(--primary) 20%, transparent);
+}
+
+.wetu-importer__pricing-card--popular {
+  box-shadow: 0 0 30px color-mix(in srgb, var(--primary) 25%, transparent);
+}
+
+.wetu-importer__pricing-amount {
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+
+/* ============================================================
+   DARK MODE OVERRIDES
+   ============================================================ */
+
+/* Dark body section backgrounds */
+.dark .wetu-importer__features { background: color-mix(in srgb, var(--background) 95%, var(--primary) 5%); }
+.dark .wetu-importer__process  { background: color-mix(in srgb, var(--background) 95%, var(--primary) 5%); }
+.dark .wetu-importer__pricing  { background: color-mix(in srgb, var(--background) 95%, var(--primary) 5%); }
+
+/* Dark feature cards */
+.dark .wetu-importer__feature-card {
+  background: var(--glass-bg);
+  border-color: var(--glass-border);
+}
+
+.dark .wetu-importer__feature-card:hover {
+  border-color: var(--primary);
+  box-shadow: 0 0 30px color-mix(in srgb, var(--primary) 25%, transparent);
+}
+
+.dark .wetu-importer__feature-icon {
+  box-shadow: 0 0 20px color-mix(in srgb, var(--primary) 40%, transparent);
+}
+
+/* Dark benefit cards */
+.dark .wetu-importer__benefit-card {
+  background: var(--glass-bg);
+  border-color: var(--glass-border);
+}
+
+.dark .wetu-importer__benefit-card:hover {
+  border-color: var(--primary);
+  box-shadow: 0 0 24px color-mix(in srgb, var(--primary) 30%, transparent);
+}
+
+/* Dark process numbers */
+.dark .wetu-importer__process-number {
+  box-shadow: 0 0 24px color-mix(in srgb, var(--primary) 50%, transparent);
+}
+
+/* Dark spec items */
+.dark .wetu-importer__spec-item {
+  background: var(--glass-bg);
+  border-color: var(--glass-border);
+}
+
+/* Dark pricing cards */
+.dark .wetu-importer__pricing-card {
+  background: var(--glass-bg);
+  border-color: var(--glass-border);
+}
+
+.dark .wetu-importer__pricing-card:hover {
+  border-color: var(--primary);
+  box-shadow: 0 0 30px color-mix(in srgb, var(--primary) 30%, transparent);
+}
+
+.dark .wetu-importer__pricing-card--popular {
+  border-color: var(--primary);
+  box-shadow: 0 0 40px color-mix(in srgb, var(--primary) 35%, transparent);
+}
+
+.dark .wetu-importer__pricing-badge {
+  box-shadow: 0 0 12px color-mix(in srgb, var(--primary) 40%, transparent);
+}
+
+/* Dark network/spec items */
+.dark .wetu-importer__section-title::after {
+  box-shadow: 0 0 8px color-mix(in srgb, var(--primary) 30%, transparent);
+}
+
+/* Dark hero overlay adjustment */
+.dark .wetu-importer__hero-overlay {
+  background: linear-gradient(
+    to bottom,
+    var(--overlay-dark) 0%,
+    var(--overlay-darker) 55%,
+    var(--background) 100%
+  );
+}
+
+
+/* ============================================================
+   REDUCED MOTION GUARDS
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .wetu-importer__feature-card::before {
+    animation: none;
+  }
+
+  .wetu-importer__feature-card:hover,
+  .wetu-importer__pricing-card:hover {
+    transform: none;
+  }
+
+  .wetu-importer__feature-card:hover .wetu-importer__feature-icon,
+  .wetu-importer__process-step:hover .wetu-importer__process-number {
+    transform: none;
   }
 }

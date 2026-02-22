@@ -10,6 +10,7 @@
  */
 
 import { useEffect, useRef, useState } from 'react';
+import { useReducedMotion } from './useReducedMotion';
 
 export interface ScrollAnimationOptions {
   /** Animation type */
@@ -38,12 +39,14 @@ export function useScrollAnimation<T extends HTMLElement>({
   const [isVisible, setIsVisible] = useState(false);
   const [hasAnimated, setHasAnimated] = useState(false);
 
+  // Check for reduced motion preference (reactive — updates if user toggles mid-session)
+  const prefersReducedMotion = useReducedMotion();
+
   useEffect(() => {
     const element = ref.current;
     if (!element) return;
 
-    // Check for reduced motion preference
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // Skip animation if reduced motion is preferred
     if (prefersReducedMotion) {
       setIsVisible(true);
       return;
@@ -79,7 +82,7 @@ export function useScrollAnimation<T extends HTMLElement>({
     observer.observe(element);
 
     return () => observer.disconnect();
-  }, [threshold, delay, once, hasAnimated, rootMargin]);
+  }, [threshold, delay, once, hasAnimated, rootMargin, prefersReducedMotion]);
 
   // Apply animation styles
   useEffect(() => {
@@ -141,12 +144,14 @@ export function useStaggerAnimation<T extends HTMLElement>(
     refs.current[index] = el;
   };
 
+  // Check for reduced motion preference (reactive)
+  const prefersReducedMotion = useReducedMotion();
+
   useEffect(() => {
     const elements = refs.current.filter((el): el is T => el !== null);
     if (elements.length === 0) return;
 
     // Check for reduced motion
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReducedMotion) {
       elements.forEach((el) => {
         el.style.opacity = '1';
@@ -186,7 +191,7 @@ export function useStaggerAnimation<T extends HTMLElement>(
     }
 
     return () => observer.disconnect();
-  }, [itemCount, staggerDelay, animationOptions.threshold, animationOptions.duration]);
+  }, [itemCount, staggerDelay, animationOptions.threshold, animationOptions.duration, prefersReducedMotion]);
 
   return { setRef, refs };
 }

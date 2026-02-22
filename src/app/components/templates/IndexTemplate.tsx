@@ -38,17 +38,15 @@ import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { Heading } from '../blocks/text/Heading';
 import { Paragraph } from '../blocks/text/Paragraph';
-import { Breadcrumbs } from '../common/Breadcrumbs';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { NewsletterSignup } from '../patterns/NewsletterSignup';
-import { CTASection } from '../patterns/CTASection';
-import { useNavigation } from '../../contexts/NavigationContext';
+import { FunkyCTA } from '../patterns/FunkyCTA';
+import { Link } from 'react-router';
 import { blogPosts, blogCategories } from '../../data/blog-posts';
 import { useState } from 'react';
 import { Calendar, User, Clock } from 'lucide-react';
-import '@/styles/templates/index.css';
 
 export function IndexTemplate() {
-  const { navigateTo } = useNavigation();
   const [activeCategory, setActiveCategory] = useState('All');
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 9;
@@ -68,14 +66,12 @@ export function IndexTemplate() {
   return (
     <>
       {/* Breadcrumbs */}
-      <section className="wp-block-breadcrumbs-section">
-          <Breadcrumbs 
-            items={[
-              { label: 'Home', page: 'front-page' },
-              { label: 'Blog' }
-            ]}
-          />
-      </section>
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', page: 'front-page' },
+          { label: 'Blog' },
+        ]}
+      />
 
       {/* Header & Filters */}
       <Section spacing="lg">
@@ -122,13 +118,10 @@ export function IndexTemplate() {
           {/* Posts Grid */}
           <div className="wp-index-grid">
             {currentPosts.map((post) => (
-              <article 
+              <Link 
                 key={post.id}
                 className="wp-index-card"
-                onClick={() => navigateTo(`blog/${post.slug}`)}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); navigateTo(`blog/${post.slug}`); } }}
+                to={`/blog/${post.slug}`}
               >
                 {/* Featured Image */}
                 <div className="wp-index-card__image-wrapper">
@@ -172,7 +165,7 @@ export function IndexTemplate() {
                     </span>
                   </div>
                 </div>
-              </article>
+              </Link>
             ))}
           </div>
 
@@ -208,17 +201,17 @@ export function IndexTemplate() {
       </Section>
 
       {/* CTA Section */}
-      <CTASection
+      <FunkyCTA
         title="Looking for expert WordPress development?"
         description="We build high-performance, accessible, and scalable WordPress websites using the latest block editor technologies."
-        primaryButton={{
-          text: 'View Our Services',
-          page: 'services'
-        }}
-        secondaryButton={{
-          text: 'Contact Us',
-          page: 'contact'
-        }}
+        buttonText="View Our Services"
+        buttonPage="services"
+        benefits={[
+          'Block-based theme development',
+          'WooCommerce solutions',
+          'Performance optimization',
+          'Ongoing maintenance plans'
+        ]}
       />
     </>
   );

@@ -1,165 +1,58 @@
 /**
- * Newsletter Service Template
+ * Newsletter Service Template - Funky Redesign
  * 
- * WordPress template: templates/page-newsletter-service.html
+ * Theme: "Inbox Zero" (Yellow/Teal/White)
  * 
- * Email newsletter and marketing service page.
+ * Features:
+ * - Air Mail Pattern Hero
+ * - Flying Paper Planes
+ * - Automation Flow Timeline
+ * - Platform Integration Grid
  * 
- * Pattern order:
- * Hero → Service Offerings → Platforms → Benefits → Process Steps → CTA → FAQs
+ * STRICT DESIGN SYSTEM COMPLIANCE:
+ * - No inline Tailwind classes
+ * - All styling via @/styles/templates/page-service-newsletter.css
+ * - Colors mapped to global semantic tokens for auto light/dark
  */
 
 import { Container } from '../common/Container';
-import { Section } from '../common/Section';
 import { FAQSection } from '../patterns/FAQSection';
-import { Hero } from '../patterns/Hero';
-import { ServiceOfferingsGrid } from '../patterns/ServiceOfferingsGrid';
-import { FeatureGrid } from '../patterns/FeatureGrid';
-import { ProcessSteps } from '../patterns/ProcessSteps';
-import { CTASection } from '../patterns/CTASection';
-import { Heading } from '../blocks/text/Heading';
-import { Paragraph } from '../blocks/text/Paragraph';
+import { FunkyCTA } from '../patterns/FunkyCTA';
+import { RelatedServicesGrid } from '../patterns/RelatedServicesGrid';
+import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
+import { Button } from '../blocks/design/Buttons';
+import { newsletterServiceDetailed } from '../../data/services-detailed';
+import { ScrollReveal } from '../../hooks/useScrollReveal';
+
 import { 
-  Mail,
-  ArrowRight,
-  Users,
-  TrendingUp,
-  Target,
-  Zap,
-  BarChart,
-  Settings,
-  FileText
+  Mail, ArrowRight, Users, TrendingUp, Target, Zap, 
+  BarChart, Settings, FileText, Send, Paperclip
 } from 'lucide-react';
-import '@/styles/templates/service-detail.css';
 
 export function NewsletterServiceTemplate() {
-  // Newsletter services (6 offerings)
-  const newsletterServices = [
-    {
-      id: 'integration',
-      icon: Settings,
-      title: 'Platform Integration',
-      description: 'Seamless integration with Mailchimp, ConvertKit, and other email platforms. API integration, forms, lists.',
-      buttonText: 'Learn More',
-      buttonPage: 'contact' as const
-    },
-    {
-      id: 'templates',
-      icon: FileText,
-      title: 'Email Templates',
-      description: 'Custom-designed email templates that match your brand. Responsive design, brand styling, A/B testing.',
-      buttonText: 'Learn More',
-      buttonPage: 'contact' as const
-    },
-    {
-      id: 'automation',
-      icon: Zap,
-      title: 'Marketing Automation',
-      description: 'Automated email sequences and customer journeys. Welcome series, drip campaigns, behavior triggers.',
-      buttonText: 'Learn More',
-      buttonPage: 'contact' as const
-    },
-    {
-      id: 'analytics',
-      icon: BarChart,
-      title: 'Analytics & Reporting',
-      description: 'Track performance with detailed analytics and insights. Open rates, click tracking, conversions.',
-      buttonText: 'Learn More',
-      buttonPage: 'contact' as const
-    },
-    {
-      id: 'strategy',
-      icon: Target,
-      title: 'Email Strategy',
-      description: 'Strategic planning for effective email marketing campaigns. Content calendar, audience segmentation.',
-      buttonText: 'Learn More',
-      buttonPage: 'contact' as const
-    },
-    {
-      id: 'optimization',
-      icon: TrendingUp,
-      title: 'Campaign Optimization',
-      description: 'Continuous improvement of email performance and engagement. A/B testing, subject line optimization.',
-      buttonText: 'Learn More',
-      buttonPage: 'contact' as const
-    }
-  ];
+  const data = newsletterServiceDetailed;
 
-  // Platform logos
+  // Icon mapping
+  const serviceIcons: Record<string, any> = {
+    'integration': Settings,
+    'templates': FileText,
+    'automation': Zap,
+    'analytics': BarChart,
+    'strategy': Target,
+    'optimization': TrendingUp
+  };
+
+  // Platform logos (Static UI data)
   const platforms = [
-    { name: 'Mailchimp', description: 'Most popular email marketing platform' },
-    { name: 'ConvertKit', description: 'For creators and bloggers' },
-    { name: 'ActiveCampaign', description: 'Advanced automation platform' },
-    { name: 'Constant Contact', description: 'Small business focused' },
-    { name: 'SendGrid', description: 'Transactional and marketing emails' },
-    { name: 'Klaviyo', description: 'Ecommerce email marketing' }
+    { name: 'Mailchimp' },
+    { name: 'ConvertKit' },
+    { name: 'ActiveCampaign' },
+    { name: 'Constant Contact' },
+    { name: 'SendGrid' },
+    { name: 'Klaviyo' }
   ];
 
-  // Benefits for FeatureGrid
-  const benefits = [
-    {
-      icon: Users,
-      title: 'Grow Your Audience',
-      description: 'Build and nurture your email list with proven strategies'
-    },
-    {
-      icon: TrendingUp,
-      title: 'Increase Engagement',
-      description: 'Higher open rates and click-through rates with optimized campaigns'
-    },
-    {
-      icon: Target,
-      title: 'Better Conversions',
-      description: 'Turn subscribers into customers with targeted messaging'
-    },
-    {
-      icon: Zap,
-      title: 'Save Time',
-      description: 'Automated workflows that run on autopilot'
-    }
-  ];
-
-  // Process steps (6 steps)
-  const processSteps = [
-    {
-      step: 1,
-      title: 'Strategy & Planning',
-      description: 'Define goals, audience segments, and content strategy',
-      icon: Target
-    },
-    {
-      step: 2,
-      title: 'Platform Setup',
-      description: 'Configure email platform and integrate with your website',
-      icon: Settings
-    },
-    {
-      step: 3,
-      title: 'Design & Templates',
-      description: 'Create branded email templates and signup forms',
-      icon: FileText
-    },
-    {
-      step: 4,
-      title: 'Automation Setup',
-      description: 'Build automated workflows and customer journeys',
-      icon: Zap
-    },
-    {
-      step: 5,
-      title: 'Launch & Monitor',
-      description: 'Launch campaigns and track performance metrics',
-      icon: BarChart
-    },
-    {
-      step: 6,
-      title: 'Optimize & Scale',
-      description: 'Continuous testing and optimization for better results',
-      icon: TrendingUp
-    }
-  ];
-
-  // FAQs
+  // FAQs (Static UI data)
   const newsletterFAQs = [
     {
       question: 'Which email marketing platform should I use?',
@@ -189,153 +82,246 @@ export function NewsletterServiceTemplate() {
 
   return (
     <>
-        {/* Hero Section */}
-        <Hero
-          variant="service"
-          align="center"
-          maxWidth="4xl"
-          gradient="blue"
-          spacing="xl"
-          badge={{
-            icon: Mail,
-            text: 'NEWSLETTER SERVICES'
-          }}
-          title="Email Marketing That Drives Results"
-          description="Strategic email marketing services including platform integration, automation setup, and campaign management to grow your business."
-          buttons={[
-            {
-              label: 'Get Started',
-              page: 'contact',
-              variant: 'default',
-              icon: ArrowRight,
-              style: {
-                backgroundColor: 'var(--color-white)',
-                color: 'var(--primary)',
-                boxShadow: 'var(--shadow-lg)'
-              }
-            },
-            {
-              label: 'View Work',
-              page: 'portfolio-archive',
-              variant: 'outline',
-              style: {
-                borderColor: 'var(--overlay-white-medium)',
-                color: 'var(--color-white)',
-                backgroundColor: 'transparent'
-              }
-            }
-          ]}
-        />
+      {/* ============================================
+          HERO SECTION (The Mailroom)
+          ============================================ */}
+      <section className="newsletter-page__hero">
+        <div className="newsletter-page__pattern" aria-hidden="true" />
+        
+        {/* Floating Paper Planes */}
+        <div className="newsletter-page__plane newsletter-page__plane--1"><Send /></div>
+        <div className="newsletter-page__plane newsletter-page__plane--2"><Send /></div>
+        <div className="newsletter-page__plane newsletter-page__plane--3"><Send /></div>
 
-        {/* Newsletter Services */}
-        <ServiceOfferingsGrid
-          title="What We Offer"
-          description="Complete email marketing solutions"
-          offerings={newsletterServices}
-          columns={3}
-          backgroundColor="var(--background)"
-          spacing="xl"
-        />
+        <Container>
+          <div className="newsletter-page__hero-content">
+            <ScrollReveal animation="fade-up">
+              <div className="newsletter-page__badge">
+                <Mail size={16} />
+                INBOX ZERO ACHIEVED
+              </div>
+              
+              <h1 className="newsletter-page__title">
+                Email That Gets <br />
+                <span>Opened.</span>
+              </h1>
+              
+              <p className="newsletter-page__desc">
+                {data.tagline}
+              </p>
 
-        {/* Platforms Section */}
-        <Section spacing="xl" className="service-detail__overview-section">
-          <Container>
-            <div className="service-detail__section-header">
-              <Heading level={2} className="service-detail__title">
-                Platforms We Work With
-              </Heading>
-
-              <Paragraph className="service-detail__description">
-                Expert integration with all major email marketing platforms
-              </Paragraph>
-            </div>
-
-            {/* Platform Cards */}
-            <div className="wp-grid-3-cols wp-gap-6">
-              {platforms.map((platform, index) => (
-                <div
-                  key={index}
-                  className="service-detail__tech-card wp-text-center"
+              <div className="newsletter-page__hero-buttons">
+                <Button
+                  variant="default"
+                  size="lg"
+                  page="contact"
+                  className="newsletter-page__btn-primary"
                 >
-                  <Heading level={3} className="service-detail__tech-title wp-mb-2">
+                  Start Sending
+                </Button>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  page="portfolio-archive"
+                  className="newsletter-page__btn-outline"
+                >
+                  View Examples
+                </Button>
+              </div>
+            </ScrollReveal>
+          </div>
+        </Container>
+      </section>
+
+      {/* ============================================
+          SERVICES GRID (The Sort)
+          ============================================ */}
+      <section className="newsletter-page__services">
+        <Container>
+          <div className="newsletter-page__services-header">
+            <ScrollReveal animation="fade-right">
+              <div className="newsletter-page__max-w-2xl">
+                <span className="newsletter-page__label">
+                  Deliverables
+                </span>
+                <h2 className="newsletter-page__section-title">
+                  {data.whyLightSpeed.title}
+                </h2>
+              </div>
+            </ScrollReveal>
+            
+            <ScrollReveal animation="fade-left">
+               <div className="newsletter-page__stats-pill">
+                 <div className="newsletter-page__stat newsletter-page__stat--up">
+                   <TrendingUp size={12} /> +124% Open Rate
+                 </div>
+                 <div className="newsletter-page__stat newsletter-page__stat--subs">
+                   <Users size={12} /> +5k Subs
+                 </div>
+               </div>
+            </ScrollReveal>
+          </div>
+
+          <div className="newsletter-page__grid">
+            {data.subServices.map((service, index) => {
+              const Icon = serviceIcons[service.id] || Mail;
+              return (
+                <ScrollReveal key={index} animation="fade-up" delay={index * 50}>
+                  <div className="newsletter-page__card">
+                    <div className="newsletter-page__card-icon">
+                      <Icon size={32} />
+                    </div>
+                    
+                    <h3 className="newsletter-page__card-title">
+                      {service.title}
+                    </h3>
+                    
+                    <p className="newsletter-page__card-desc">
+                      {service.description}
+                    </p>
+                    
+                    <div className="newsletter-page__card-footer">
+                      <div className="newsletter-page__card-link">
+                        Learn More <ArrowRight size={16} />
+                      </div>
+                    </div>
+                  </div>
+                </ScrollReveal>
+              );
+            })}
+          </div>
+        </Container>
+      </section>
+
+      {/* ============================================
+          PLATFORMS (The Integrations)
+          ============================================ */}
+      <section className="newsletter-page__platforms">
+        <Container>
+          <div className="newsletter-page__platforms-header">
+            <ScrollReveal animation="fade-up">
+              <h2 className="newsletter-page__platforms-title">
+                We Speak Your Language
+              </h2>
+              <p className="newsletter-page__platforms-desc">
+                Whether you're on Mailchimp, Klaviyo, or custom SMTP, we integrate seamlessly with your stack.
+              </p>
+            </ScrollReveal>
+          </div>
+
+          <div className="newsletter-page__platforms-grid">
+            {platforms.map((platform, index) => (
+              <ScrollReveal key={index} animation="scale" delay={index * 50}>
+                <div className="newsletter-page__platform-card">
+                  <div className="newsletter-page__platform-icon">
+                     <Paperclip size={18} />
+                  </div>
+                  <div className="newsletter-page__platform-name">
                     {platform.name}
-                  </Heading>
-                  <Paragraph className="service-detail__stat-desc">
-                    {platform.description}
-                  </Paragraph>
+                  </div>
                 </div>
-              ))}
+              </ScrollReveal>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* ============================================
+          PROCESS (The Delivery)
+          ============================================ */}
+      <section className="newsletter-page__process">
+        <Container>
+           <div className="newsletter-page__process-grid">
+            <div className="newsletter-page__process-sticky">
+              <ScrollReveal animation="fade-right">
+                <div className="newsletter-page__process-icon">
+                  <Send size={32} />
+                </div>
+                <h2 className="newsletter-page__process-title">
+                  Ready for <br />
+                  <span className="newsletter-page__process-highlight">Liftoff</span>
+                </h2>
+                <p className="newsletter-page__process-desc">
+                  {data.process.description}
+                </p>
+                
+                {/* Stats Widget */}
+                <div className="newsletter-page__stat-widget">
+                   <div className="newsletter-page__widget-header">
+                     <span className="newsletter-page__widget-label">Avg. Delivery Rate</span>
+                     <span className="newsletter-page__widget-value">99.8%</span>
+                   </div>
+                   <div className="newsletter-page__progress-bar">
+                     <div className="newsletter-page__progress-fill" style={{ width: '99.8%' }}></div>
+                   </div>
+                </div>
+              </ScrollReveal>
             </div>
-          </Container>
-        </Section>
 
-        {/* Benefits Grid */}
-        <FeatureGrid
-          title="Why Email Marketing?"
-          description="Proven benefits of email marketing for your business"
-          features={benefits}
-          columns={4}
-          variant="cards"
-          backgroundColor="var(--background)"
-          spacing="xl"
-        />
-
-        {/* Process Steps */}
-        <Section spacing="xl" background="muted">
-          <Container>
-            <div className="wp-text-center" style={{ marginBottom: 'var(--spacing-12)' }}>
-              <Heading level={1} align="center" className="wp-mb-4" style={{ color: 'var(--foreground)' }}>
-                Our Process
-              </Heading>
-
-              <Paragraph
-                size="large"
-                align="center"
-                style={{
-                  color: 'var(--muted-foreground)',
-                  maxWidth: '700px',
-                  margin: '0 auto'
-                }}
-              >
-                From strategy to optimization, we handle every step
-              </Paragraph>
+            <div className="newsletter-page__timeline">
+              {data.process.steps.map((step, index) => {
+                const stepIcons = [Target, Settings, FileText, Zap, BarChart, TrendingUp];
+                const Icon = stepIcons[index] || Target;
+                
+                return (
+                  <ScrollReveal key={index} animation="fade-up" delay={index * 100}>
+                    <div className="newsletter-page__step">
+                      <div className="newsletter-page__step-marker">
+                        {step.number}
+                      </div>
+                      
+                      <div className="newsletter-page__step-card">
+                        <div className="newsletter-page__step-header">
+                          <Icon size={24} className="newsletter-page__step-icon" />
+                          <h3 className="newsletter-page__step-title">
+                            {step.title}
+                          </h3>
+                        </div>
+                        <p className="newsletter-page__step-desc">
+                          {step.description}
+                        </p>
+                      </div>
+                    </div>
+                  </ScrollReveal>
+                );
+              })}
             </div>
+          </div>
+        </Container>
+      </section>
 
-            <ProcessSteps
-              steps={processSteps}
-              columns={6}
-              variant="cards"
-              badgeStyle="circle"
-              maxWidth="6xl"
-            />
-          </Container>
-        </Section>
+      {/* FAQ Section */}
+      <FAQSection 
+        faqs={newsletterFAQs} 
+        title="Inbox Insights"
+        description="Common questions about our email marketing services"
+        variant="default"
+      />
 
-        {/* CTA Section */}
-        <CTASection
-          title="Ready to Grow Your Email List?"
-          description="Let's create an email marketing strategy that drives real results for your business."
-          primaryButton={{
-            label: 'Start Your Campaign',
-            page: 'contact'
-          }}
-          secondaryButton={{
-            label: 'View Portfolio',
-            page: 'portfolio-archive'
-          }}
-          variant="centered"
-          sectionStyle="default"
+      {/* CTA Section */}
+      {data.relatedServices && data.relatedServices.length > 0 && (
+        <RelatedServicesGrid
+          title="Related Services"
+          subtitle="Boost your email strategy with these complementary services"
+          services={data.relatedServices}
         />
-
-        {/* FAQ Section */}
-        <FAQSection
-          faqs={newsletterFAQs}
-          title="Email Marketing FAQs"
-          description="Common questions about our email marketing services"
-          variant="accordion"
-          spacing="xl"
-          backgroundColor="var(--background)"
-        />
+      )}
+      <ServiceTestimonial
+        serviceSlug="newsletter"
+        subtitle="Discover how our email marketing expertise boosts engagement"
+      />
+      <FunkyCTA
+        title={data.cta.title}
+        description={data.cta.description}
+        buttonText={data.cta.buttonText}
+        buttonPage={data.cta.buttonPage}
+        benefits={[
+          'Increase Open Rates',
+          'Automate Customer Journeys',
+          'Professional Template Design',
+          'Full Analytics Reporting'
+        ]}
+      />
     </>
   );
 }

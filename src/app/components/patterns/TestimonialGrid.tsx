@@ -9,7 +9,7 @@
  */
 
 import { Star } from 'lucide-react';
-import '@/styles/patterns/testimonial-grid.css';
+
 
 export interface Testimonial {
   /** Testimonial quote/text */
@@ -36,7 +36,7 @@ export interface TestimonialGridProps {
   /** Number of columns (1-3, default: 3) */
   columns?: 1 | 2 | 3;
   /** Visual variant */
-  variant?: 'default' | 'cards' | 'minimal' | 'featured';
+  variant?: 'default' | 'cards' | 'minimal' | 'featured' | 'funky';
   /** Show ratings */
   showRating?: boolean;
   /** Show avatars */

@@ -12,7 +12,7 @@
  */
 
 import { useState, useMemo, useCallback } from 'react';
-import { Breadcrumbs } from '../common/Breadcrumbs';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import {
   Search,
   Copy,
@@ -31,7 +31,7 @@ import {
   Globe,
   SlidersHorizontal,
 } from 'lucide-react';
-import '@/styles/templates/snippet-generator.css';
+
 
 /* ═══════════════════════════════════════════
  * Types
@@ -1656,15 +1656,13 @@ import '${selectedPattern.cssPath.replace('/src/', '@/')}';`;
   return (
     <>
       {/* Breadcrumbs */}
-      <section className="wp-block-breadcrumbs-section wp-block-breadcrumbs-section--border">
-        <Breadcrumbs
-          items={[
-            { label: 'Home', page: 'home' },
-            { label: 'Developer Tools', page: 'dev-tools' },
-            { label: 'Snippet Generator' },
-          ]}
-        />
-      </section>
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', page: 'home' },
+          { label: 'Developer Tools', page: 'dev-tools' },
+          { label: 'Snippet Generator' },
+        ]}
+      />
 
       <div className="snippet-gen">
         {/* Hero */}

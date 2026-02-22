@@ -4,41 +4,38 @@
  * WordPress concept: front-page.html
  * 
  * The main landing page for LightSpeed WordPress Agency.
- * Layout matches the approved homepage design:
+ * Funky Redesign Version: "Neon Future"
  * 
- * 1. Hero (gradient-primary, stats)
- * 2. Why Choose LightSpeed (6 feature cards)
- * 3. Our Services (3 image cards)
- * 4. Featured Projects (3 project cards)
- * 5. Proven Track Record (4 stats)
- * 6. CTA Banner ("WordPress Experts You Can Trust")
- * 7. How We Work (4 process steps)
- * 8. What Our Clients Say (3 testimonials)
- * 9. Latest Insights (3 blog cards)
- * 10. Common Questions (FAQ accordion)
- * 11. Bottom CTA
+ * Features:
+ * - Full-screen Parallax Hero with Neon Orbs
+ * - Glassmorphism Feature Grids
+ * - Gradient Text & Borders
+ * - Floating Elements
  * 
  * **Align-wide:** All body content constrained to 1440px (--wp--style--global--wide-size)
  * via the Container component. Header and footer match the same max-width.
- * 
- * All spacing uses blockGap (CSS gap) -- zero margin.
- * All styling uses CSS variables from /src/styles/.
- * NO Tailwind classes -- WordPress utility classes + CSS variables only.
  */
 
-import { HeroHome } from '../patterns/HeroHome';
+import { useRef } from 'react';
+import { HeroHome } from '../patterns/HeroHome'; // Kept for reference but replaced inline
 import { FeatureGrid } from '../patterns/FeatureGrid';
 import { StatsSection } from '../patterns/StatsSection';
-import { CTASection } from '../patterns/CTASection';
 import { ProcessSteps } from '../patterns/ProcessSteps';
 import { TestimonialGrid } from '../patterns/TestimonialGrid';
 import { CardGrid } from '../patterns/CardGrid';
 import { FAQSection } from '../patterns/FAQSection';
+import { FunkyCTA } from '../patterns/FunkyCTA';
+import { TrendingTopicsWidget } from '../patterns/TrendingTopicsWidget';
+import { ActivityFeedWidget } from '../patterns/ActivityFeedWidget';
 import { Section } from '../common/Section';
 import { Container } from '../common/Container';
 import { Button } from '../blocks/design/Buttons';
+import { useHeroParallax } from '../../hooks/useHeroParallax';
+import { Sparkles, ArrowRight } from 'lucide-react';
+import { ScrollDownArrow } from '../common/ScrollDownArrow';
 
 import {
+  frontPageHero,
   frontPageWhyChoose,
   frontPageServices,
   frontPageProjects,
@@ -51,239 +48,312 @@ import {
   frontPageBottomCTA
 } from '../../data/front-page';
 
-import '@/styles/homepage-sections.css';
-
 export function FrontPageTemplate() {
+  const parallaxRef = useHeroParallax(0.4);
+
   return (
     <>
       {/* ============================================
-          1. HERO SECTION
+          1. HERO SECTION (Neon Parallax)
           ============================================ */}
-      <HeroHome />
+      <section className="front-page__hero">
+        {/* Parallax Background */}
+        <img 
+          ref={parallaxRef}
+          src="https://images.unsplash.com/photo-1635776063328-153b13e3c245?q=80&w=2832&auto=format&fit=crop"
+          alt="Abstract neon grid background"
+          className="front-page__hero-bg"
+        />
+        
+        {/* Overlays */}
+        <div className="front-page__hero-overlay" />
+        <div className="front-page__hero-grid" />
+        
+        {/* Floating Orbs */}
+        <div className="front-page__hero-orb front-page__hero-orb--1" />
+        <div className="front-page__hero-orb front-page__hero-orb--2" />
+        <div className="front-page__hero-orb front-page__hero-orb--3" />
 
-      {/* ============================================
-          2. WHY CHOOSE LIGHTSPEED -- 6 features, 3 cols
-          ============================================ */}
-      <FeatureGrid
-        title={frontPageWhyChoose.title}
-        description={frontPageWhyChoose.description}
-        items={frontPageWhyChoose.features}
-        columns={3}
-        variant="bordered"
-        iconStyle="rounded"
-        spacing="xl"
-      />
-
-      {/* ============================================
-          3. OUR SERVICES -- 3 cards with images
-          ============================================ */}
-      <Section spacing="xl" background="card">
         <Container>
-          <div className="homepage-section__inner">
-            {/* Section Header */}
-            <div className="homepage-section__header">
-              <h2 className="homepage-section__title">
-                {frontPageServices.title}
-              </h2>
-              <p className="homepage-section__description">
-                {frontPageServices.description}
-              </p>
+          <div className="front-page__hero-content">
+            {/* Badge */}
+            <div className="front-page__hero-badge">
+              <Sparkles size={16} style={{ color: 'var(--color-white)' }} />
+              {frontPageHero.badge}
             </div>
+            
+            {/* Title */}
+            <h1 className="front-page__hero-title">
+              Build Better WordPress Sites <br />
+              <span className="front-page__hero-title-gradient">Faster & Funkier</span>
+            </h1>
+            
+            {/* Subtitle */}
+            <p className="front-page__hero-subtitle">
+              {frontPageHero.description}
+            </p>
 
-            {/* Service Cards */}
-            <CardGrid
-              items={frontPageServices.items.map(service => ({
-                title: service.title,
-                description: service.description,
-                image: service.image,
-                href: `/${service.link}`,
-                ctaText: 'Learn More →'
-              }))}
-              columns={3}
-              variant="service"
-              showImages={true}
-              showDescriptions={true}
-              showCTA={true}
-              maxWidth="none"
-            />
-          </div>
-        </Container>
-      </Section>
-
-      {/* ============================================
-          4. FEATURED PROJECTS -- 3 project cards
-          ============================================ */}
-      <Section spacing="xl" background="default">
-        <Container>
-          <div className="homepage-section__inner">
-            {/* Section Header */}
-            <div className="homepage-section__header">
-              <h2 className="homepage-section__title">
-                {frontPageProjects.title}
-              </h2>
-              <p className="homepage-section__description">
-                {frontPageProjects.description}
-              </p>
-            </div>
-
-            {/* Project Cards */}
-            <CardGrid
-              items={frontPageProjects.projects.map(project => ({
-                title: project.title,
-                description: project.description,
-                image: project.image,
-                badge: { text: project.category, variant: 'primary' as const },
-                href: `/portfolio/${project.slug}`,
-                ctaText: 'View Case Study →'
-              }))}
-              columns={3}
-              variant="portfolio"
-              showImages={true}
-              showDescriptions={true}
-              showCTA={true}
-              maxWidth="none"
-            />
-
-            {/* View All Projects Button */}
-            <div className="homepage-section__cta-wrapper">
+            {/* Actions */}
+            <div className="front-page__hero-actions">
+              <Button
+                variant="primary"
+                size="xl"
+                page={frontPageHero.primaryButton.page as any}
+                className="has-shadow-neon"
+              >
+                {frontPageHero.primaryButton.text}
+              </Button>
               <Button
                 variant="outline"
-                size="md"
-                page={frontPageProjects.cta.page}
+                size="xl"
+                page={frontPageHero.secondaryButton.page as any}
+                className="front-page__hero-btn--outline"
               >
-                {frontPageProjects.cta.text}
+                {frontPageHero.secondaryButton.text}
               </Button>
             </div>
           </div>
         </Container>
-      </Section>
+        <ScrollDownArrow targetId="why-choose-section" />
+      </section>
 
       {/* ============================================
-          5. PROVEN TRACK RECORD -- heading + 4 stats
+          2. WHY CHOOSE LIGHTSPEED
+          ============================================ */}
+      <div id="why-choose-section" className="front-page__section front-page__section--default">
+        <FeatureGrid
+          title={frontPageWhyChoose.title}
+          description={frontPageWhyChoose.description}
+          items={frontPageWhyChoose.features}
+          columns={3}
+          variant="bordered"
+          iconStyle="rounded"
+          spacing="xl"
+        />
+      </div>
+
+      {/* ============================================
+          3. OUR SERVICES
+          ============================================ */}
+      <div className="front-page__section front-page__section--card">
+        <Container>
+          <div className="front-page__section-header">
+            <h2 className="front-page__section-title">
+              {frontPageServices.title}
+            </h2>
+            <p className="front-page__section-desc">
+              {frontPageServices.description}
+            </p>
+          </div>
+
+          <CardGrid
+            items={frontPageServices.items.map(service => ({
+              title: service.title,
+              description: service.description,
+              image: service.image,
+              href: `/${service.link}`,
+              ctaText: 'Learn More →',
+              badge: { text: 'Service', variant: 'muted' }
+            }))}
+            columns={3}
+            variant="service"
+            showImages={true}
+            showDescriptions={true}
+            showCTA={true}
+            maxWidth="none"
+          />
+        </Container>
+      </div>
+
+      {/* ============================================
+          4. FEATURED PROJECTS
+          ============================================ */}
+      <div className="front-page__section front-page__section--default">
+        <Container>
+          <div className="front-page__section-header">
+            <h2 className="front-page__section-title">
+              {frontPageProjects.title}
+            </h2>
+            <p className="front-page__section-desc">
+              {frontPageProjects.description}
+            </p>
+          </div>
+
+          <CardGrid
+            items={frontPageProjects.projects.map(project => ({
+              title: project.title,
+              description: project.description,
+              image: project.image,
+              badge: { text: project.category, variant: 'primary' },
+              href: `/portfolio/${project.slug}`,
+              ctaText: 'View Case Study →'
+            }))}
+            columns={3}
+            variant="portfolio"
+            showImages={true}
+            showDescriptions={true}
+            showCTA={true}
+            maxWidth="none"
+          />
+
+          <div className="front-page__section-footer">
+            <Button
+              variant="outline"
+              size="lg"
+              page={frontPageProjects.cta.page as any}
+            >
+              {frontPageProjects.cta.text}
+            </Button>
+          </div>
+        </Container>
+      </div>
+
+      {/* ============================================
+          5. PROVEN TRACK RECORD
           ============================================ */}
       <StatsSection
         title="Proven Track Record"
         stats={frontPageStats}
-        variant="default"
+        variant="proven-track"
       />
 
       {/* ============================================
-          6. CTA BANNER -- "WordPress Experts You Can Trust"
+          6. CTA BANNER
           ============================================ */}
-      <CTASection
+      <FunkyCTA
         title={frontPageMidCTA.title}
         description={frontPageMidCTA.description}
-        primaryButtonText={frontPageMidCTA.primaryButton.text}
-        primaryButtonPage={frontPageMidCTA.primaryButton.page}
-        variant="highlighted"
-        gradient="blue"
+        buttonText={frontPageMidCTA.primaryButton.text}
+        buttonPage={frontPageMidCTA.primaryButton.page}
+        benefits={[
+          'Free strategy consultation',
+          'Custom WordPress solutions',
+          'Transparent project pricing',
+          'Dedicated project manager'
+        ]}
       />
 
       {/* ============================================
-          7. HOW WE WORK -- 4 process steps
+          7. HOW WE WORK
           ============================================ */}
-      <Section spacing="xl">
+      <div className="front-page__section front-page__section--default">
         <Container>
-          <div className="homepage-section__inner">
-            {/* Section Header */}
-            <div className="homepage-section__header">
-              <h2 className="homepage-section__title">
-                {frontPageProcess.title}
-              </h2>
-              <p className="homepage-section__description">
-                {frontPageProcess.description}
-              </p>
-            </div>
-
-            {/* Process Steps */}
-            <ProcessSteps
-              steps={frontPageProcess.steps}
-              columns={4}
-              variant="cards"
-              badgeStyle="circle"
-              maxWidth="none"
-            />
+          <div className="front-page__section-header">
+            <h2 className="front-page__section-title">
+              {frontPageProcess.title}
+            </h2>
+            <p className="front-page__section-desc">
+              {frontPageProcess.description}
+            </p>
           </div>
+
+          <ProcessSteps
+            steps={frontPageProcess.steps}
+            columns={4}
+            variant="cards"
+            badgeStyle="circle"
+            maxWidth="none"
+          />
         </Container>
-      </Section>
+      </div>
 
       {/* ============================================
-          8. WHAT OUR CLIENTS SAY -- 3 testimonials
+          8. WHAT OUR CLIENTS SAY
           ============================================ */}
-      <Section spacing="xl" background="card">
+      <div className="front-page__section front-page__section--card">
         <Container>
-          <div className="homepage-section__inner">
-            {/* Section Header */}
-            <div className="homepage-section__header">
-              <h2 className="homepage-section__title">
-                What Our Clients Say
-              </h2>
-            </div>
-
-            {/* Testimonial Grid */}
-            <TestimonialGrid
-              testimonials={frontPageTestimonials}
-              columns={3}
-              variant="cards"
-              showRating={true}
-              showAvatar={false}
-              maxWidth="none"
-            />
+          <div className="front-page__section-header">
+            <h2 className="front-page__section-title">
+              What Our Clients Say
+            </h2>
           </div>
+
+          <TestimonialGrid
+            testimonials={frontPageTestimonials}
+            columns={3}
+            variant="cards"
+            showRating={true}
+            showAvatar={false}
+            maxWidth="none"
+          />
         </Container>
-      </Section>
+      </div>
 
       {/* ============================================
-          9. LATEST INSIGHTS -- 3 blog cards
+          8b. EXPLORE OUR EXPERTISE (Dynamic Widget)
           ============================================ */}
-      <Section spacing="xl">
+      <div className="front-page__section front-page__section--default">
         <Container>
-          <div className="homepage-section__inner">
-            {/* Section Header */}
-            <div className="homepage-section__header">
-              <h2 className="homepage-section__title">
-                Latest Insights
-              </h2>
-            </div>
-
-            {/* Blog Cards */}
-            <CardGrid
-              items={frontPageBlogPosts.map(post => ({
-                title: post.title,
-                description: post.excerpt,
-                image: post.image,
-                badge: { text: post.category, variant: 'primary' as const },
-                meta: [
-                  { label: post.date },
-                  { label: post.readingTime }
-                ],
-                href: `/blog/${post.slug}`,
-                ctaText: 'Read Article →'
-              }))}
-              columns={3}
-              variant="blog"
-              showImages={true}
-              showDescriptions={true}
-              showCTA={true}
-              maxWidth="none"
-            />
-
-            {/* View All Button */}
-            <div className="homepage-section__cta-wrapper">
-              <Button
-                variant="outline"
-                size="md"
-                page="blog"
-              >
-                View All Articles
-              </Button>
-            </div>
-          </div>
+          <TrendingTopicsWidget
+            sources={['blog-categories', 'project-groups', 'project-tags']}
+            title="Explore Our Expertise"
+            label="What We Do"
+            description="Browse our work by industry, technology, or topic."
+            maxPerSection={8}
+          />
         </Container>
-      </Section>
+      </div>
 
       {/* ============================================
-          10. COMMON QUESTIONS -- FAQ Accordion
+          9. LATEST INSIGHTS
+          ============================================ */}
+      <div className="front-page__section front-page__section--default">
+        <Container>
+          <div className="front-page__section-header">
+            <h2 className="front-page__section-title">
+              Latest Insights
+            </h2>
+          </div>
+
+          <CardGrid
+            items={frontPageBlogPosts.map(post => ({
+              title: post.title,
+              description: post.excerpt,
+              image: post.image,
+              badge: { text: post.category, variant: 'primary' },
+              meta: [
+                { label: post.date },
+                { label: post.readingTime }
+              ],
+              href: `/blog/${post.slug}`,
+              ctaText: 'Read Article →'
+            }))}
+            columns={3}
+            variant="blog"
+            showImages={true}
+            showDescriptions={true}
+            showCTA={true}
+            maxWidth="none"
+          />
+
+          <div className="front-page__section-footer">
+            <Button
+              variant="outline"
+              size="lg"
+              page="blog"
+            >
+              View All Articles
+            </Button>
+          </div>
+        </Container>
+      </div>
+
+      {/* ============================================
+          9b. LATEST ACTIVITY (Dynamic Widget)
+          ============================================ */}
+      <div className="front-page__section front-page__section--card">
+        <Container>
+          <ActivityFeedWidget
+            count={5}
+            title="What's Happening"
+            subtitle="The latest from our blog, projects, and client stories"
+            include={['blog', 'project', 'testimonial']}
+          />
+        </Container>
+      </div>
+
+      {/* ============================================
+          10. COMMON QUESTIONS
           ============================================ */}
       <FAQSection
         title="Common Questions"
@@ -294,15 +364,18 @@ export function FrontPageTemplate() {
       {/* ============================================
           11. BOTTOM CTA
           ============================================ */}
-      <CTASection
+      <FunkyCTA
         title={frontPageBottomCTA.title}
         description={frontPageBottomCTA.description}
-        primaryButtonText={frontPageBottomCTA.primaryButton.text}
-        primaryButtonPage={frontPageBottomCTA.primaryButton.page}
-        secondaryButtonText={frontPageBottomCTA.secondaryButton.text}
-        secondaryButtonPage={frontPageBottomCTA.secondaryButton.page}
-        variant="highlighted"
-        gradient="blue"
+        buttonText={frontPageBottomCTA.primaryButton.text}
+        buttonPage={frontPageBottomCTA.primaryButton.page}
+        benefits={[
+          'Modern WordPress block themes',
+          'WCAG 2.1 AA accessibility',
+          'Sub-second page load times',
+          'Ongoing support & maintenance',
+          '15+ years WordPress expertise'
+        ]}
       />
     </>
   );

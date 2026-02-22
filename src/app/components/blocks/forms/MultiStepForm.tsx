@@ -122,7 +122,7 @@ export function MultiStepForm({
     <div
       style={{
         width: '100%',
-        maxWidth: '800px',
+        maxWidth: 'var(--wp--style--global--narrow-size)',
         margin: '0 auto',
         fontFamily: 'var(--font-secondary)',
       }}
@@ -138,7 +138,7 @@ export function MultiStepForm({
           <div
             style={{
               width: '100%',
-              height: '8px',
+              height: 'var(--spacing-2)',
               backgroundColor: 'var(--muted)',
               borderRadius: 'var(--radius-full)',
               overflow: 'hidden',
@@ -206,8 +206,8 @@ export function MultiStepForm({
                 {showStepNumbers && (
                   <div
                     style={{
-                      width: '32px',
-                      height: '32px',
+                      width: 'var(--spacing-8)',
+                      height: 'var(--spacing-8)',
                       borderRadius: '50%',
                       display: 'flex',
                       alignItems: 'center',
@@ -216,7 +216,7 @@ export function MultiStepForm({
                       color: isActive ? 'var(--primary-foreground)' : isCompleted ? 'var(--accent-foreground)' : 'var(--muted-foreground)',
                       fontFamily: 'var(--font-primary)',
                       fontSize: 'var(--text-base)',
-                      fontWeight: '500',
+                      fontWeight: 'var(--font-weight-medium)',
                     }}
                   >
                     {isCompleted ? '✓' : index + 1}
@@ -228,7 +228,7 @@ export function MultiStepForm({
                   style={{
                     fontFamily: 'var(--font-secondary)',
                     fontSize: 'var(--text-base)',
-                    fontWeight: '500',
+                    fontWeight: 'var(--font-weight-medium)',
                     color: isActive ? 'var(--foreground)' : 'var(--muted-foreground)',
                   }}
                 >
@@ -268,7 +268,7 @@ export function MultiStepForm({
           style={{
             fontFamily: 'var(--font-primary)',
             fontSize: 'var(--text-h3)',
-            fontWeight: '500',
+            fontWeight: 'var(--font-weight-medium)',
             marginBottom: 'var(--spacing-4)',
             color: 'var(--foreground)',
           }}
@@ -326,7 +326,7 @@ export function MultiStepForm({
             padding: 'var(--spacing-3) var(--spacing-6)',
             fontFamily: 'var(--font-primary)',
             fontSize: 'var(--text-base)',
-            fontWeight: '500',
+            fontWeight: 'var(--font-weight-medium)',
             backgroundColor: 'var(--background)',
             color: 'var(--foreground)',
             border: '1px solid var(--border)',
@@ -334,7 +334,7 @@ export function MultiStepForm({
             cursor: isFirstStep ? 'not-allowed' : 'pointer',
             opacity: isFirstStep ? 0.5 : 1,
             transition: 'all 0.2s ease',
-            minHeight: '48px',
+            minHeight: 'var(--spacing-12)',
           }}
         >
           Previous
@@ -350,14 +350,14 @@ export function MultiStepForm({
                 padding: 'var(--spacing-3) var(--spacing-6)',
                 fontFamily: 'var(--font-primary)',
                 fontSize: 'var(--text-base)',
-                fontWeight: '500',
+                fontWeight: 'var(--font-weight-medium)',
                 backgroundColor: 'var(--background)',
                 color: 'var(--foreground)',
                 border: '1px solid var(--border)',
                 borderRadius: 'var(--radius)',
                 cursor: 'pointer',
                 transition: 'all 0.2s ease',
-                minHeight: '48px',
+                minHeight: 'var(--spacing-12)',
               }}
             >
               Cancel
@@ -372,7 +372,7 @@ export function MultiStepForm({
               padding: 'var(--spacing-3) var(--spacing-6)',
               fontFamily: 'var(--font-primary)',
               fontSize: 'var(--text-base)',
-              fontWeight: '500',
+              fontWeight: 'var(--font-weight-medium)',
               backgroundColor: 'var(--primary)',
               color: 'var(--primary-foreground)',
               border: 'none',
@@ -380,7 +380,7 @@ export function MultiStepForm({
               cursor: loading ? 'not-allowed' : 'pointer',
               opacity: loading ? 0.7 : 1,
               transition: 'all 0.2s ease',
-              minHeight: '48px',
+              minHeight: 'var(--spacing-12)',
             }}
           >
             {loading ? 'Processing...' : isLastStep ? submitText : 'Next'}

@@ -569,6 +569,7 @@ Read **ALL** files in the `design-tokens/` folder. **Do NOT skip this step.**
 - **[design-tokens/typography.md](./design-tokens/typography.md)** — Typography hierarchy
 - **[design-tokens/spacing.md](./design-tokens/spacing.md)** — Spacing scale and patterns
 - **[design-patterns-modern.md](./design-patterns-modern.md)** — Modern design patterns (REQUIRED: fluid typography, glassmorphism, animations, **soft borders**)
+- **[REDUCED-MOTION-STANDARDS.md](./REDUCED-MOTION-STANDARDS.md)** — Reduced motion coding standards (REQUIRED: `prefers-reduced-motion` guards, JS detection, animation classification)
 
 #### Step 3: Read WordPress System Overviews (REQUIRED FOR STRUCTURE)
 Understand how React components map to WordPress:
@@ -625,6 +626,7 @@ guidelines/
 ├── Guidelines.md              # This file (canonical reference)
 ├── README.md                  # Navigation guide
 ├── DOCUMENTATION-INDEX.md     # Complete file index (100+ files) ⭐
+├── REDUCED-MOTION-STANDARDS.md # prefers-reduced-motion coding standards ⭐⭐⭐ NEW
 │
 ├── overview-components.md     # Component system overview + React diagram
 ├── overview-icons.md         # Icon system overview
@@ -674,6 +676,9 @@ guidelines/
 ├── icons/                    # Icon library documentation
 │   ├── travel.md
 │   └── interface.md
+│
+├── interactions/              # Animation & motion guidelines
+│   └── animations.md         # Animation categories, scroll patterns, loading states
 │
 ├── mobile/                   # Mobile-specific guidelines (4 files)
 │   ├── typography.md
@@ -1609,9 +1614,16 @@ These are valid UI utilities but live **outside** Gutenberg composition:
 - [ ] Missing fields don't create visual gaps
 - [ ] Empty states are explicit (message + next action where appropriate)
 
-### Motion
+### Motion (See [REDUCED-MOTION-STANDARDS.md](./REDUCED-MOTION-STANDARDS.md))
 - [ ] Respect reduced motion (`prefers-reduced-motion: reduce`)
 - [ ] No required animation for understanding content
+- [ ] Every `@keyframes` animation has a `prefers-reduced-motion: reduce` guard
+- [ ] Every hover `transform` is neutralised under reduced motion
+- [ ] Decorative-only animated elements are hidden or static under reduced motion
+- [ ] Loading indicators remain visible (static state) under reduced motion
+- [ ] No content flashes more than 3 times per second (WCAG 2.3.1 Level A)
+- [ ] JavaScript animation hooks default to `respectReducedMotion: true`
+- [ ] Template CSS uses a consolidated reduced-motion block after dark-mode section
 
 ---
 

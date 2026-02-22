@@ -8,12 +8,10 @@
 
 import { Container } from '@/app/components/common/Container';
 import { Section } from '@/app/components/common/Section';
-import { Breadcrumbs } from '@/app/components/common/Breadcrumbs';
+import { BreadcrumbPart } from '@/app/components/parts/BreadcrumbPart';
 import { audioPost } from '@/app/data/posts-formats';
 import { Play, SkipBack, SkipForward, Volume2, Calendar, User, Clock } from 'lucide-react';
-import '@/styles/sections/post-hero.css';
-import '@/styles/blocks/post-formats/audio.css';
-import '@/styles/templates/archive.css';
+
 
 export function SingleAudioTemplate() {
   const post = audioPost;
@@ -21,18 +19,14 @@ export function SingleAudioTemplate() {
   return (
     <>
       {/* Breadcrumbs */}
-      <section className="archive-breadcrumbs">
-          <Container>
-            <Breadcrumbs 
-              items={[
-                { label: 'Home', href: '/' },
-                { label: 'Blog', href: '/blog' },
-                { label: 'Audio', href: '/audio-archive' },
-                { label: post.title.rendered }
-              ]}
-            />
-          </Container>
-        </section>
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Blog', href: '/blog' },
+          { label: 'Audio', href: '/audio-archive' },
+          { label: post.title.rendered },
+        ]}
+      />
 
         <article>
           <div className="wp-block-post-hero">

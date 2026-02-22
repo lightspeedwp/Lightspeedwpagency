@@ -14,7 +14,7 @@
 import { CheckCircle } from 'lucide-react';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
-import '@/styles/patterns/theme-showcase-grid.css';
+
 
 export interface ThemeShowcase {
   /** Unique identifier */

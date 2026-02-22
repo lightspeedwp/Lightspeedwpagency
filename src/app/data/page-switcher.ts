@@ -51,6 +51,11 @@ export const pageSwitcherGroups = [
       { id: 'tour-operator-solutions', label: 'Tour Operator Solutions' },
       { id: 'lsx-design-solutions', label: 'LSX Design Solutions' },
       { id: 'hosting', label: 'Hosting Solutions' },
+      { id: 'ai-integrations', label: 'AI Integrations' },
+      { id: 'ai-content-generation', label: 'AI Content Generation' },
+      { id: 'ai-seo', label: 'AI-Powered SEO' },
+      { id: 'ai-chatbots', label: 'AI Chatbots' },
+      { id: 'ai-analytics', label: 'AI Analytics & Insights' },
     ]
   },
   {

@@ -1,87 +1,173 @@
 /**
- * Button Showcase
+ * Button Showcase Template
  * 
- * Display all button styles, sizes, and variants from the design system.
+ * Interactive display of all button variants, sizes, and states.
+ * demonstratesthe "Funky" design system's interactive elements.
  * 
- * **Design System:**
- * - 100% CSS variables from theme.css
- * - WCAG 2.1 AA compliant
+ * Features:
+ * - Variant gallery (Primary, Secondary, Outline, CTA)
+ * - Size comparison
+ * - Icon integration
+ * - Grouping patterns
+ * - Light/Dark mode ready (via CSS variables)
+ * 
+ * @see /src/styles/templates/button-showcase.css
  */
 
 import { Container } from '../common/Container';
-import { Section } from '../common/Section';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
+import { Button, Buttons } from '../blocks/design/Buttons';
+import { ScrollReveal } from '../../hooks/useScrollReveal';
+import { 
+  Type, 
+  Palette, 
+  Maximize, 
+  MousePointer2, 
+  Zap, 
+  ArrowRight, 
+  Download, 
+  Settings,
+  Play
+} from 'lucide-react';
 
-import { Breadcrumbs } from '../common/Breadcrumbs';
-import { Type } from 'lucide-react';
 
 export function ButtonShowcase() {
-  return (
-    <div
-      style={{
-        minHeight: '100vh',
-        display: 'flex',
-        flexDirection: 'column',
-        backgroundColor: 'var(--background)',
-        color: 'var(--foreground)'
-      }}
-    >
-      <div style={{ flex: 1 }}>
-        <Section background="default" spacing="sm">
-          <Container>
-            <Breadcrumbs
-              items={[
-                { label: 'Home', page: 'home' },
-                { label: 'Developer Tools', page: 'dev-tools' },
-                { label: 'Button Showcase' }
-              ]}
-              className="wp-mb-8"
-            />
+  const breadcrumbs = [
+    { label: 'Home', page: 'home' as const },
+    { label: 'Developer Tools', page: 'dev-tools' as const },
+    { label: 'Button Showcase' },
+  ];
 
-            <div className="wp-text-center wp-max-w-4xl wp-mx-auto">
-              <div
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  width: 'var(--spacing-20)',
-                  height: 'var(--spacing-20)',
-                  borderRadius: 'var(--radius-lg)',
-                  backgroundColor: 'var(--accent)',
-                  marginBottom: 'var(--spacing-6)'
-                }}
-              >
-                <Type size={40} style={{ color: 'var(--primary-foreground)' }} />
+  return (
+    <div className="btn-showcase">
+      <BreadcrumbPart items={breadcrumbs} />
+
+      {/* Hero */}
+      <section className="btn-showcase__hero">
+        <Container>
+          <ScrollReveal animation="fade-up">
+            <h1 className="btn-showcase__hero-title">Button System</h1>
+            <p className="btn-showcase__hero-desc">
+              Standardized interactive elements with neon glow states, 
+              fluid scaling, and WCAG AA compliance.
+            </p>
+          </ScrollReveal>
+        </Container>
+      </section>
+
+      <Container>
+        {/* 1. Variants */}
+        <ScrollReveal animation="fade-up" delay={100}>
+          <section className="btn-showcase__section">
+            <div className="btn-showcase__section-header">
+              <Palette className="btn-showcase__section-icon" size={20} />
+              <h2 className="btn-showcase__section-title">Style Variants</h2>
+            </div>
+            
+            <div className="btn-showcase__card">
+              <span className="btn-showcase__card-title">Core Styles</span>
+              <Buttons>
+                <Button variant="primary">Primary Action</Button>
+                <Button variant="secondary">Secondary</Button>
+                <Button variant="outline">Outline Style</Button>
+                <Button variant="cta">CTA Special</Button>
+              </Buttons>
+            </div>
+          </section>
+        </ScrollReveal>
+
+        {/* 2. Sizes */}
+        <ScrollReveal animation="fade-up" delay={200}>
+          <section className="btn-showcase__section">
+            <div className="btn-showcase__section-header">
+              <Maximize className="btn-showcase__section-icon" size={20} />
+              <h2 className="btn-showcase__section-title">Size Scale</h2>
+            </div>
+
+            <div className="btn-showcase__grid">
+              <div className="btn-showcase__card">
+                <span className="btn-showcase__card-title">Small (Compact UI)</span>
+                <Buttons>
+                  <Button size="sm" variant="primary">Small Button</Button>
+                  <Button size="sm" variant="outline">Small Outline</Button>
+                </Buttons>
               </div>
 
-              <h1
-                style={{
-                  fontSize: 'var(--text-h1)',
-                  fontFamily: 'var(--font-primary)',
-                  fontWeight: 'var(--font-weight-medium)',
-                  color: 'var(--foreground)',
-                  margin: '0 0 var(--spacing-4) 0',
-                  lineHeight: 1.2
-                }}
-              >
-                Button Showcase
-              </h1>
+              <div className="btn-showcase__card">
+                <span className="btn-showcase__card-title">Medium (Default)</span>
+                <Buttons>
+                  <Button size="md" variant="primary">Medium Button</Button>
+                  <Button size="md" variant="outline">Medium Outline</Button>
+                </Buttons>
+              </div>
 
-              <p
-                style={{
-                  fontSize: 'var(--text-lead)',
-                  fontFamily: 'var(--font-secondary)',
-                  fontWeight: 'var(--font-weight-regular)',
-                  color: 'var(--muted-foreground)',
-                  margin: 0,
-                  lineHeight: 1.5
-                }}
-              >
-                Display all button styles, sizes, and variants
-              </p>
+              <div className="btn-showcase__card">
+                <span className="btn-showcase__card-title">Large (Hero/CTA)</span>
+                <Buttons>
+                  <Button size="lg" variant="primary">Large Button</Button>
+                  <Button size="lg" variant="outline">Large Outline</Button>
+                </Buttons>
+              </div>
             </div>
-          </Container>
-        </Section>
-      </div>
+          </section>
+        </ScrollReveal>
+
+        {/* 3. Icons */}
+        <ScrollReveal animation="fade-up" delay={300}>
+          <section className="btn-showcase__section">
+            <div className="btn-showcase__section-header">
+              <Zap className="btn-showcase__section-icon" size={20} />
+              <h2 className="btn-showcase__section-title">Icon Integration</h2>
+            </div>
+
+            <div className="btn-showcase__card">
+              <span className="btn-showcase__card-title">Leading & Trailing Icons</span>
+              <Buttons>
+                <Button variant="primary" icon={<Play size={16} />}>
+                  Start Now
+                </Button>
+                <Button variant="secondary" icon={<Settings size={16} />}>
+                  Configure
+                </Button>
+                <Button variant="outline" icon={<Download size={16} />}>
+                  Download
+                </Button>
+                {/* Note: Button component doesn't explicitly support trailing icon prop yet, 
+                    but we can compose it inside children if needed, or stick to leading icons per design system */}
+              </Buttons>
+            </div>
+          </section>
+        </ScrollReveal>
+
+        {/* 4. States */}
+        <ScrollReveal animation="fade-up" delay={400}>
+          <section className="btn-showcase__section">
+            <div className="btn-showcase__section-header">
+              <MousePointer2 className="btn-showcase__section-icon" size={20} />
+              <h2 className="btn-showcase__section-title">Interactive States</h2>
+            </div>
+
+            <div className="btn-showcase__grid">
+              <div className="btn-showcase__card">
+                <span className="btn-showcase__card-title">Disabled</span>
+                <Buttons>
+                  <Button variant="primary" disabled>Processing...</Button>
+                  <Button variant="outline" disabled>Unavailable</Button>
+                </Buttons>
+              </div>
+              
+              <div className="btn-showcase__card">
+                <span className="btn-showcase__card-title">CTA Variant (Glows on Hover)</span>
+                <Buttons>
+                  <Button variant="cta" size="lg">
+                    Get Started <span style={{ marginLeft: '8px' }}>→</span>
+                  </Button>
+                </Buttons>
+              </div>
+            </div>
+          </section>
+        </ScrollReveal>
+      </Container>
     </div>
   );
 }

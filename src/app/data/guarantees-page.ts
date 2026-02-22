@@ -1,237 +1,144 @@
 /**
  * Guarantees Page Data
  * 
- * Mock data for the Guarantees page (GuaranteesTemplate).
- * 
- * Sections:
- * - Hero (with badge, tagline, description)
- * - Main Guarantees (cards with icons, badges, detail lists)
- * - Process / How It Works (numbered steps)
- * - Trust Signals (stats with icons)
- * - FAQs
- * - CTA (with dual buttons)
+ * Content for the Guarantees overview page.
  */
 
-import {
-  Shield,
-  Clock,
-  ThumbsUp,
-  RefreshCw,
-  Award,
-  Zap,
-  Users,
-  Star,
-  CheckCircle,
-  HeartHandshake,
-  Lock,
-  TrendingUp
-} from 'lucide-react';
-import type { LucideIcon } from 'lucide-react';
-
-/* ── Hero ── */
+import { ShieldCheck, Clock, CheckCircle, RefreshCw, Lock, Award, Users, Star, ThumbsUp } from 'lucide-react';
 
 export const guaranteesPageHero = {
-  title: "Our Ironclad Guarantees",
-  subtitle: "We stand behind our work with commitments that give you peace of mind.",
-  badge: {
-    icon: Shield,
-    text: "QUALITY GUARANTEED"
-  },
-  tagline: "We back every project with clear, measurable guarantees",
-  description: "At LSX Design we believe actions speak louder than words. Every guarantee below is written into our contracts and backed by real accountability."
+  title: "Our Commitments",
+  subtitle: "We stand behind our work with concrete guarantees. Zero risk, 100% commitment.",
+  tagline: "We believe trust is earned through accountability. That's why we put our skin in the game.",
+  description: "Most agencies are afraid to commit to results. We're not. We believe that if we don't deliver value, you shouldn't pay. It's that simple.",
+  badge: { text: "PEACE OF MIND", icon: ShieldCheck },
+  primaryButton: { text: "Start a Project", page: "contact" }
 };
 
-/** @deprecated Use guaranteesPageHero instead */
-export const guaranteesHero = guaranteesPageHero;
+export const guaranteesPageIntro = {
+  title: "Why we offer guarantees",
+  description: "Most agencies are afraid to commit to results. We're not. We believe that if we don't deliver value, you shouldn't pay. It's that simple."
+};
 
-/* ── Main Guarantees ── */
-
-interface Guarantee {
-  id: string;
-  icon: LucideIcon;
-  title: string;
-  description: string;
-  badge?: string;
-  details: string[];
-}
-
-export const mainGuarantees: Guarantee[] = [
-  {
-    id: "satisfaction",
-    icon: ThumbsUp,
-    title: "100% Satisfaction Guarantee",
-    description: "We won't stop working until you are completely satisfied with the design and functionality of your website.",
-    badge: "Most Popular",
-    details: [
-      "Unlimited revisions during the design phase",
-      "Dedicated project manager for clear communication",
-      "Regular feedback sessions throughout development",
-      "Post-launch adjustments within 30 days"
-    ]
-  },
-  {
-    id: "on-time",
-    icon: Clock,
-    title: "On-Time Delivery Guarantee",
-    description: "If we miss a mutually agreed-upon launch deadline due to our fault, we'll discount your final invoice.",
-    details: [
-      "Detailed project timeline with milestones",
-      "Weekly progress reports and demos",
-      "Proactive risk communication",
-      "10% discount per week of delay (our fault)"
-    ]
-  },
-  {
-    id: "bug-free",
-    icon: Shield,
-    title: "Bug-Free Warranty",
-    description: "We provide a 30-day warranty period after launch where we fix any bugs or issues free of charge.",
-    badge: "30-Day Coverage",
-    details: [
-      "Comprehensive QA testing before launch",
-      "Cross-browser and device testing",
-      "Free bug fixes for 30 days post-launch",
-      "Priority response within 4 hours"
-    ]
-  },
-  {
-    id: "uptime",
-    icon: RefreshCw,
-    title: "99.9% Uptime Guarantee",
-    description: "For our hosting clients, we guarantee 99.9% uptime or we'll credit your account.",
-    details: [
-      "24/7 server monitoring",
-      "Automatic failover systems",
-      "Prorated credit for any downtime",
-      "Scheduled maintenance windows only"
-    ]
-  },
-  {
-    id: "security",
-    icon: Lock,
-    title: "Security Guarantee",
-    description: "We implement industry-best security practices and respond to threats within 2 hours.",
-    details: [
-      "SSL certificates and HTTPS enforcement",
-      "Regular security audits and patching",
-      "Malware scanning and removal",
-      "2-hour emergency response SLA"
-    ]
-  },
+export const mainGuarantees = [
   {
     id: "performance",
-    icon: Zap,
     title: "Performance Guarantee",
-    description: "We guarantee your site will score 90+ on Google Lighthouse or we'll optimize until it does.",
-    badge: "90+ Score",
+    description: "We guarantee your site will pass Core Web Vitals and load in under 2 seconds.",
+    icon: Clock,
+    badge: "Most Popular",
     details: [
-      "Core Web Vitals optimization",
-      "Image and asset optimization",
-      "Caching and CDN implementation",
-      "Ongoing performance monitoring"
+      "90+ Google PageSpeed Score",
+      "Sub-2s Load Times",
+      "Core Web Vitals Pass"
+    ]
+  },
+  {
+    id: "quality",
+    title: "Code Quality Guarantee",
+    description: "Our code is clean, semantic, and built to WordPress standards.",
+    icon: CheckCircle,
+    details: [
+      "W3C Validated HTML/CSS",
+      "WordPress Coding Standards",
+      "Accessibility Compliant"
+    ]
+  },
+  {
+    id: "satisfaction",
+    title: "Satisfaction Guarantee",
+    description: "We don't stop until you are 100% satisfied with the design and functionality.",
+    icon: ThumbsUp,
+    details: [
+      "Unlimited Design Revisions",
+      "Functional Testing",
+      "Cross-Browser Compatibility"
     ]
   }
 ];
-
-/** @deprecated Use mainGuarantees instead */
-export const guaranteesList = mainGuarantees;
-
-/* ── Process / How It Works ── */
 
 export const guaranteesProcess = {
   title: "How Our Guarantees Work",
-  description: "We've designed a straightforward process so you're always protected",
+  description: "Transparent, simple, and designed to protect your investment.",
   steps: [
     {
-      number: 1,
-      title: "Clear Agreement",
-      description: "Every guarantee is documented in our contract with specific, measurable criteria so expectations are crystal clear."
+      number: "01",
+      title: "Define Success",
+      description: "We agree on clear, measurable metrics before starting the project."
     },
     {
-      number: 2,
-      title: "Regular Check-ins",
-      description: "Weekly demos and progress reports keep you informed and ensure the project stays aligned with your goals."
+      number: "02",
+      title: "Track Progress",
+      description: "We provide regular updates and tracking against agreed metrics."
     },
     {
-      number: 3,
-      title: "Quality Assurance",
-      description: "Comprehensive testing across browsers, devices, and accessibility standards before every delivery milestone."
+      number: "03",
+      title: "Deliver or Refund",
+      description: "If we miss the mark, we fix it at our cost or issue a refund."
     },
     {
-      number: 4,
-      title: "Post-Launch Coverage",
-      description: "Our 30-day warranty and ongoing support plans ensure your site remains healthy long after launch."
+      number: "04",
+      title: "Ongoing Support",
+      description: "Our warranty covers bugs and issues for 30 days post-launch."
     }
   ]
 };
 
-/* ── Trust Signals ── */
-
 export const trustSignals = {
-  title: "Why Clients Trust Us",
-  description: "Numbers that speak for themselves",
+  title: "Backed by Track Record",
+  description: "Our guarantees are supported by years of successful project delivery.",
   signals: [
     {
+      icon: Users,
+      stat: "150+",
+      label: "Happy Clients",
+      description: "Across 12 countries"
+    },
+    {
       icon: Star,
-      stat: "98%",
-      label: "Client Satisfaction",
-      description: "Based on post-project surveys across 500+ clients"
+      stat: "4.9/5",
+      label: "Client Rating",
+      description: "Average clutch rating"
     },
     {
       icon: Award,
-      stat: "500+",
-      label: "Projects Delivered",
-      description: "WordPress and WooCommerce sites launched worldwide"
+      stat: "100%",
+      label: "Success Rate",
+      description: "Project completion"
     },
     {
-      icon: Users,
-      stat: "30+",
-      label: "Countries Served",
-      description: "Global client base across every continent"
-    },
-    {
-      icon: TrendingUp,
-      stat: "10+",
-      label: "Years Experience",
-      description: "Specialising in WordPress since 2014"
+      icon: Lock,
+      stat: "Zero",
+      label: "Security Breaches",
+      description: "In 10 years"
     }
   ]
 };
 
-/* ── FAQs ── */
-
 export const guaranteesFAQs = [
   {
-    question: "What happens if I'm not satisfied with the final result?",
-    answer: "We offer unlimited revisions during the design phase and a 30-day post-launch adjustment period. If we can't meet your requirements, we'll work out a fair resolution together."
+    question: "What does the performance guarantee cover?",
+    answer: "Our performance guarantee covers Core Web Vitals metrics (LCP, FID, CLS) and total load time on standard hosting environments. We optimize images, code, and caching to ensure top-tier speed."
   },
   {
-    question: "How do you define 'on time'?",
-    answer: "Timelines are mutually agreed upon during discovery and documented in the contract. We track progress against milestones and communicate proactively about any risks."
+    question: "How do you handle design revisions?",
+    answer: "We offer unlimited design revisions during the design phase. We want you to love the look and feel of your site. We only move to development once you've signed off on the design."
   },
   {
-    question: "What's covered under the bug-free warranty?",
-    answer: "Any functional bugs, display issues, or broken features that existed at launch or were introduced by our code. It does not cover issues caused by third-party plugin updates or client-made changes."
+    question: "Is there a warranty period?",
+    answer: "Yes, we provide a 30-day warranty period after launch. Any bugs or issues related to our work will be fixed free of charge during this time."
   },
   {
-    question: "Can I extend the warranty period?",
-    answer: "Yes, our maintenance packages extend coverage beyond 30 days. Plans start at $3,000/month and include continuous monitoring, updates, and priority support."
-  },
-  {
-    question: "Do guarantees apply to existing site work?",
-    answer: "Yes, our guarantees apply to all work we perform, whether it's a new build or improvements to an existing site. Scope is defined during the proposal phase."
+    question: "Do you guarantee SEO rankings?",
+    answer: "No agency can guarantee specific SEO rankings as search algorithms change constantly. However, we guarantee that your site is built with technical SEO best practices, giving you the best foundation for ranking."
   }
 ];
 
-/* ── CTA ── */
-
 export const guaranteesCTA = {
-  title: "Work With Confidence",
-  description: "Partner with an agency that puts its money where its mouth is. Every project is backed by clear, enforceable guarantees.",
+  title: "Ready to work with a partner you can trust?",
+  description: "Let's build something great together, risk-free.",
   buttons: [
-    { text: "Start Your Project", page: "contact" },
-    { text: "View Pricing", page: "pricing" }
-  ],
-  /** @deprecated Use buttons[0] instead */
-  button: { text: "Start Your Project", page: "contact" }
+    { text: "Get Started", page: "contact" },
+    { text: "View Portfolio", page: "portfolio" }
+  ]
 };

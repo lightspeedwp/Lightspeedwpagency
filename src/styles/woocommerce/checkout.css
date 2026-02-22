@@ -1,9 +1,30 @@
 /**
- * WooCommerce Checkout Styles
- * 
- * BEM naming.
- * 100% CSS variables.
+ * WooCommerce Checkout Styles — Funky Neon Pass
+ *
+ * Funky treatments:
+ * - Order review → glassmorphism + animated gradient stripe
+ * - Payment section → glassmorphism bg
+ * - Form inputs → neon focus glow
+ * - Place order button → gradient bg + neon glow + hover lift
+ * - Section titles → gradient underline ::after
+ * - Full dark mode overrides
+ * - prefers-reduced-motion guards
+ *
+ * BEM naming. 100% CSS variables.
  */
+
+/* ============================================
+   ANIMATED GRADIENT STRIPE — Checkout
+   ============================================ */
+
+@keyframes checkoutStripeShimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ============================================
+   CHECKOUT CONTAINER
+   ============================================ */
 
 .woocommerce-checkout {
   padding-top: var(--spacing-16);
@@ -19,6 +40,19 @@
   font-size: var(--text-h1);
   font-weight: var(--font-weight-bold);
   color: var(--foreground);
+  position: relative;
+  display: inline-block;
+}
+
+/* Gradient underline on checkout title */
+.woocommerce-checkout__title::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  margin-top: var(--spacing-3);
+  border-radius: var(--radius-full);
 }
 
 .woocommerce-checkout__section-title {
@@ -27,6 +61,19 @@
   font-weight: var(--font-weight-bold);
   margin-bottom: var(--spacing-6);
   color: var(--foreground);
+  position: relative;
+  display: inline-block;
+}
+
+/* Gradient underline on section titles */
+.woocommerce-checkout__section-title::after {
+  content: '';
+  display: block;
+  width: 36px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  margin-top: var(--spacing-2);
+  border-radius: var(--radius-full);
 }
 
 .woocommerce-checkout__layout {
@@ -40,7 +87,10 @@
   }
 }
 
-/* Billing Fields */
+/* ============================================
+   BILLING FIELDS — Neon focus
+   ============================================ */
+
 .woocommerce-billing-fields__field-wrapper {
   display: grid;
   grid-template-columns: 1fr;
@@ -51,7 +101,7 @@
   .woocommerce-billing-fields__field-wrapper {
     grid-template-columns: 1fr 1fr;
   }
-  
+
   .form-row-wide {
     grid-column: span 2;
   }
@@ -75,21 +125,60 @@
   text-decoration: none;
 }
 
-.input-text {
+.input-text,
+.state_select,
+.country_select {
   padding: var(--spacing-3);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   background-color: var(--background);
   font-family: var(--font-secondary);
+  transition: border-color var(--transition-fast) var(--ease-out),
+              box-shadow var(--transition-fast) var(--ease-out);
 }
 
-/* Order Review */
+.input-text:focus,
+.state_select:focus,
+.country_select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 8px color-mix(in srgb, var(--primary) 20%, transparent);
+  outline: none;
+}
+
+/* ============================================
+   ORDER REVIEW — Glassmorphism + Stripe
+   ============================================ */
+
 .woocommerce-checkout-review-order {
-  background-color: var(--card);
-  border: 1px solid var(--border);
+  position: relative;
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
   border-radius: var(--radius-lg);
   padding: var(--spacing-8);
   height: fit-content;
+  overflow: hidden;
+}
+
+/* Animated gradient stripe along top */
+.woocommerce-checkout-review-order::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    var(--primary) 25%,
+    var(--accent) 50%,
+    var(--primary) 75%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: checkoutStripeShimmer 4s linear infinite;
+  z-index: 1;
 }
 
 .woocommerce-checkout-review-order-table {
@@ -103,14 +192,30 @@
   padding: var(--spacing-4) 0;
   border-bottom: 1px solid var(--border-soft);
   text-align: left;
+  font-family: var(--font-secondary);
 }
 
 .woocommerce-checkout-review-order-table .product-total {
   text-align: right;
 }
 
+/* Gradient total in checkout */
+.woocommerce-checkout-review-order-table .order-total td strong {
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ============================================
+   PAYMENT SECTION — Glassmorphism
+   ============================================ */
+
 .woocommerce-checkout-payment {
-  background-color: var(--muted);
+  background: color-mix(in srgb, var(--muted) 80%, transparent);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid var(--border-soft);
   border-radius: var(--radius);
   padding: var(--spacing-6);
 }
@@ -129,35 +234,104 @@
   font-weight: var(--font-weight-bold);
   margin-left: var(--spacing-2);
   cursor: pointer;
+  font-family: var(--font-primary);
+}
+
+/* Neon radio indicator */
+.wc_payment_method .input-radio {
+  accent-color: var(--primary);
 }
 
 .payment_box {
-  background-color: var(--card);
+  background: var(--card);
   padding: var(--spacing-4);
   border-radius: var(--radius);
   margin-top: var(--spacing-2);
   font-size: var(--text-sm);
+  font-family: var(--font-secondary);
   color: var(--muted-foreground);
+  border: 1px solid var(--border-soft);
 }
 
 .place-order {
   margin-top: var(--spacing-6);
 }
 
+/* Gradient place order button + neon glow */
 .button.alt {
   width: 100%;
   padding: var(--spacing-4);
-  background-color: var(--primary);
-  color: var(--primary-foreground);
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: var(--color-white);
   border: none;
   border-radius: var(--radius-lg);
   font-weight: var(--font-weight-bold);
+  font-family: var(--font-primary);
   font-size: var(--text-lg);
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: all var(--transition-base) var(--ease-out);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--primary) 20%, transparent);
 }
 
 .button.alt:hover {
-  background-color: var(--primary);
-  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px color-mix(in srgb, var(--primary) 35%, transparent);
+}
+
+/* ============================================
+   DARK MODE
+   ============================================ */
+
+.dark .woocommerce-checkout-review-order {
+  background: color-mix(in srgb, var(--card) 50%, transparent);
+  border-color: var(--glass-border);
+}
+
+.dark .woocommerce-checkout-review-order::before {
+  box-shadow: 0 0 8px color-mix(in srgb, var(--primary) 30%, transparent);
+}
+
+.dark .woocommerce-checkout-payment {
+  background: color-mix(in srgb, var(--card) 60%, transparent);
+  border-color: var(--glass-border);
+}
+
+.dark .payment_box {
+  background: color-mix(in srgb, var(--card) 80%, transparent);
+  border-color: var(--glass-border);
+}
+
+.dark .input-text:focus,
+.dark .state_select:focus,
+.dark .country_select:focus {
+  box-shadow: 0 0 12px color-mix(in srgb, var(--primary) 30%, transparent);
+}
+
+.dark .button.alt {
+  box-shadow: 0 0 16px color-mix(in srgb, var(--primary) 30%, transparent);
+}
+
+.dark .button.alt:hover {
+  box-shadow: 0 4px 24px color-mix(in srgb, var(--primary) 45%, transparent);
+}
+
+.dark .woocommerce-checkout__title::after,
+.dark .woocommerce-checkout__section-title::after {
+  box-shadow: 0 0 6px color-mix(in srgb, var(--primary) 25%, transparent);
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .woocommerce-checkout-review-order::before {
+    animation: none;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    background-size: 100% 100%;
+  }
+
+  .button.alt:hover {
+    transform: none;
+  }
 }

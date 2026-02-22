@@ -9,7 +9,6 @@
  */
 
 import { useEffect, useState } from 'react';
-import '@/styles/blocks/theme/style-switcher.css';
 
 type StyleVariation = 'light' | 'dark';
 

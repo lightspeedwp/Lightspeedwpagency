@@ -16,7 +16,7 @@
  */
 
 import { Star, Quote } from 'lucide-react';
-import '@/styles/patterns/testimonial-inline.css';
+
 
 export interface TestimonialInlineProps {
   /** Array of testimonials (2-3 recommended) */

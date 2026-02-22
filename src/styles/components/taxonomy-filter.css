@@ -1,0 +1,158 @@
+/**
+ * Taxonomy Filter Component Styles
+ * 
+ * Reusable filter component for archive pages.
+ * Supports desktop chips and mobile popover.
+ */
+
+.taxonomy-filter {
+  width: 100%;
+  margin-bottom: var(--spacing-8);
+}
+
+.taxonomy-filter__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-4);
+  flex-wrap: wrap;
+  gap: var(--spacing-4);
+}
+
+.taxonomy-filter__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--foreground);
+  margin: 0;
+}
+
+.taxonomy-filter__controls {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+}
+
+/* Mobile Toggle */
+.taxonomy-filter__mobile-toggle {
+  display: none; /* Hidden by default (desktop) */
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2) var(--spacing-4);
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  color: var(--foreground);
+  font-family: var(--font-secondary);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.taxonomy-filter__mobile-toggle:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+/* Desktop Chips */
+.taxonomy-filter__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-3);
+}
+
+.taxonomy-filter__chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-2) var(--spacing-4);
+  background: var(--muted); /* Default background */
+  border: 1px solid transparent;
+  border-radius: var(--radius-full);
+  color: var(--muted-foreground);
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.taxonomy-filter__chip:hover {
+  color: var(--foreground);
+  background: var(--accent);
+}
+
+.taxonomy-filter__chip--active {
+  background: var(--primary); /* Or specific active color */
+  color: var(--primary-foreground);
+  border-color: var(--primary);
+  box-shadow: var(--shadow-neon); /* Neon glow */
+}
+
+.taxonomy-filter__chip--active:hover {
+  background: var(--primary); /* Keep same on hover */
+  opacity: 0.9;
+}
+
+/* Count Badge on Chip */
+.taxonomy-filter__chip-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  margin-left: var(--spacing-2);
+  padding: 0 var(--spacing-1);
+  background: color-mix(in srgb, var(--color-white) 20%, transparent);
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  line-height: 1;
+}
+
+/* Sort Dropdown */
+.taxonomy-filter__sort {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.taxonomy-filter__sort-select {
+  appearance: none;
+  background: transparent;
+  border: none;
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--foreground);
+  font-weight: 500;
+  padding-right: var(--spacing-4);
+  cursor: pointer;
+}
+
+.taxonomy-filter__sort-icon {
+  pointer-events: none;
+  margin-left: -12px;
+  color: var(--muted-foreground);
+}
+
+/* Result Count */
+.taxonomy-filter__count {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .taxonomy-filter__chips {
+    display: none; /* Hide chips on mobile */
+  }
+
+  .taxonomy-filter__mobile-toggle {
+    display: flex; /* Show toggle on mobile */
+  }
+  
+  .taxonomy-filter__sort {
+    display: none; /* Maybe move sort to popover on mobile? */
+  }
+}

@@ -7,45 +7,41 @@
 
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
-import { Breadcrumbs } from '../common/Breadcrumbs';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { FAQSection } from '../patterns/FAQSection';
-import { CTASection } from '../patterns/CTASection';
+import { FunkyCTA } from '../patterns/FunkyCTA';
 import { Heading } from '../blocks/text/Heading';
 import { Paragraph } from '../blocks/text/Paragraph';
 import { Play, Clock, Eye, Calendar } from 'lucide-react';
 import { getVideosByCategory, getVideoCategoryBySlug, videoCategories, videos } from '../../data/videos';
 import { videoFAQs } from '../../data/faqs';
-import { useNavigation } from '../../contexts/NavigationContext';
-import '@/styles/templates/video-archive.css';
+import { Link } from 'react-router';
+
 
 interface Props { category?: string; }
 
 export function VideoCategoryArchiveTemplate({ category }: Props) {
-  const { navigateTo } = useNavigation();
   const cat = category ? getVideoCategoryBySlug(category) : videoCategories[0];
   const filtered = category ? getVideosByCategory(category) : videos;
 
   return (
     <>
-      <section style={{ padding: 'var(--spacing-4) 0' }}>
-        <Container>
-          <Breadcrumbs
-            items={[
-              { label: 'Home', page: 'front-page' },
-              { label: 'Videos', page: 'videos' },
-              { label: cat?.name || 'Category' }
-            ]}
-          />
-        </Container>
-      </section>
+      {/* Breadcrumbs */}
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', page: 'front-page' },
+          { label: 'Videos', href: '/videos' },
+          { label: cat?.name || 'Category' },
+        ]}
+      />
 
       <Section spacing="md">
         <Container>
           <div className="wp-max-w-4xl">
             <Heading level={1}>{cat?.name || 'Video Category'}</Heading>
             {cat?.description && <Paragraph>{cat.description}</Paragraph>}
-            <Paragraph style={{ color: 'var(--muted-foreground)', fontSize: 'var(--text-small)', fontFamily: 'var(--font-secondary)' }}>
-              Number of results: <strong style={{ color: 'var(--foreground)' }}>{filtered.length}</strong>
+            <Paragraph className="wp-text-muted-foreground wp-text-sm wp-font-secondary">
+              Number of results: <strong className="wp-text-foreground">{filtered.length}</strong>
             </Paragraph>
           </div>
         </Container>
@@ -55,13 +51,10 @@ export function VideoCategoryArchiveTemplate({ category }: Props) {
         <Container>
           <div className="video-archive__grid">
             {filtered.map(video => (
-              <article
+              <Link
                 key={video.id}
+                to={`/video/${video.slug}`}
                 className="video-archive__card"
-                onClick={() => navigateTo(`/video/${video.slug}`)}
-                tabIndex={0}
-                role="link"
-                onKeyDown={e => e.key === 'Enter' && navigateTo(`/video/${video.slug}`)}
                 aria-label={`Watch: ${video.title}`}
               >
                 <div className="video-archive__thumbnail">
@@ -79,14 +72,14 @@ export function VideoCategoryArchiveTemplate({ category }: Props) {
                     <span className="single-video__meta-item"><Eye size={12} /> {video.views.toLocaleString()} views</span>
                   </div>
                 </div>
-              </article>
+              </Link>
             ))}
+            {filtered.length === 0 && (
+              <div className="wp-text-center wp-py-12">
+                <Paragraph>No videos found in this category.</Paragraph>
+              </div>
+            )}
           </div>
-          {filtered.length === 0 && (
-            <div style={{ textAlign: 'center', padding: 'var(--spacing-12) 0' }}>
-              <Paragraph>No videos found in this category.</Paragraph>
-            </div>
-          )}
         </Container>
       </Section>
 
@@ -96,11 +89,18 @@ export function VideoCategoryArchiveTemplate({ category }: Props) {
         </Container>
       </Section>
 
-      <CTASection
+      <FunkyCTA
         title="Subscribe to Our Video Channel"
         description="Get notified when we publish new tutorials, webinars, and case studies."
-        primaryButtonText="Contact Us"
-        primaryButtonPage="contact"
+        buttonText="Contact Us"
+        buttonPage="contact"
+        benefits={[
+          'New tutorial alerts',
+          'Webinar invitations',
+          'Case study deep-dives',
+          'Behind-the-scenes content',
+          'Early access to courses'
+        ]}
       />
     </>
   );

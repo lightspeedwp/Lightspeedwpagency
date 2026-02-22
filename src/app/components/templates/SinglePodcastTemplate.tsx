@@ -7,21 +7,20 @@
 
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
-import { Breadcrumbs } from '../common/Breadcrumbs';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { FAQSection } from '../patterns/FAQSection';
-import { CTASection } from '../patterns/CTASection';
+import { FunkyCTA } from '../patterns/FunkyCTA';
 import { Heading } from '../blocks/text/Heading';
 import { Paragraph } from '../blocks/text/Paragraph';
 import { Clock, Calendar, Headphones, ExternalLink } from 'lucide-react';
 import { getPodcastBySlug, getRelatedPodcasts, podcasts } from '../../data/podcasts';
 import { podcastFAQs } from '../../data/faqs';
-import { useNavigation } from '../../contexts/NavigationContext';
-import '@/styles/templates/podcast-archive.css';
+import { Link } from 'react-router';
+
 
 interface Props { slug?: string; }
 
 export function SinglePodcastTemplate({ slug }: Props) {
-  const { navigateTo } = useNavigation();
   const episode = slug ? getPodcastBySlug(slug) : podcasts[0];
   const related = episode ? getRelatedPodcasts(episode.slug) : [];
 
@@ -38,17 +37,13 @@ export function SinglePodcastTemplate({ slug }: Props) {
 
   return (
     <>
-      <section style={{ padding: 'var(--spacing-4) 0' }}>
-        <Container>
-          <Breadcrumbs
-            items={[
-              { label: 'Home', page: 'front-page' },
-              { label: 'Podcasts', page: 'podcast-archive' },
-              { label: episode.title }
-            ]}
-          />
-        </Container>
-      </section>
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', page: 'front-page' },
+          { label: 'Podcasts', href: '/podcasts' },
+          { label: episode.title },
+        ]}
+      />
 
       {/* Player Section */}
       <Section spacing="md">
@@ -117,14 +112,14 @@ export function SinglePodcastTemplate({ slug }: Props) {
         <Container>
           <div className="wp-max-w-4xl">
             <Heading level={2}>About This Episode</Heading>
-            <p className="single-podcast__show-notes" style={{ marginTop: 'var(--spacing-4)' }}>
+            <p className="single-podcast__show-notes wp-mt-4">
               {episode.content || episode.excerpt}
             </p>
 
             {episode.showNotes && (
               <>
-                <Heading level={3} style={{ marginTop: 'var(--spacing-8)' }}>Show Notes</Heading>
-                <p className="single-podcast__show-notes" style={{ marginTop: 'var(--spacing-4)' }}>
+                <Heading level={3} className="wp-mt-8">Show Notes</Heading>
+                <p className="single-podcast__show-notes wp-mt-4">
                   {episode.showNotes}
                 </p>
               </>
@@ -132,12 +127,12 @@ export function SinglePodcastTemplate({ slug }: Props) {
 
             {episode.guests && episode.guests.length > 0 && (
               <>
-                <Heading level={3} style={{ marginTop: 'var(--spacing-8)' }}>Guests</Heading>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--spacing-3)', marginTop: 'var(--spacing-4)' }}>
+                <Heading level={3} className="wp-mt-8">Guests</Heading>
+                <div className="wp-flex wp-flex-col wp-gap-3 wp-mt-4">
                   {episode.guests.map((guest, i) => (
-                    <div key={i} style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-base)', color: 'var(--foreground)' }}>
+                    <div key={i} className="wp-font-primary wp-text-base wp-text-foreground">
                       <strong>{guest.name}</strong>
-                      <span style={{ color: 'var(--muted-foreground)', fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-small)' }}>
+                      <span className="wp-text-muted-foreground wp-font-secondary wp-text-sm">
                         {' '}&mdash; {guest.role}, {guest.company}
                       </span>
                     </div>
@@ -154,15 +149,12 @@ export function SinglePodcastTemplate({ slug }: Props) {
         <Section spacing="md" background="muted">
           <Container>
             <Heading level={2}>More Episodes</Heading>
-            <div className="podcast-archive__list" style={{ marginTop: 'var(--spacing-6)' }}>
+            <div className="podcast-archive__list wp-mt-6">
               {related.map(ep => (
-                <article
+                <Link
                   key={ep.id}
+                  to={`/podcast/${ep.slug}`}
                   className="podcast-archive__card"
-                  onClick={() => navigateTo(`/podcast/${ep.slug}`)}
-                  tabIndex={0}
-                  role="link"
-                  onKeyDown={e => e.key === 'Enter' && navigateTo(`/podcast/${ep.slug}`)}
                 >
                   <div className="podcast-archive__artwork">
                     <img src={ep.featuredImage} alt={ep.title} loading="lazy" />
@@ -176,7 +168,7 @@ export function SinglePodcastTemplate({ slug }: Props) {
                       <span className="single-video__meta-item"><Clock size={12} /> {ep.duration}</span>
                     </div>
                   </div>
-                </article>
+                </Link>
               ))}
             </div>
           </Container>
@@ -190,11 +182,18 @@ export function SinglePodcastTemplate({ slug }: Props) {
         </Container>
       </Section>
 
-      <CTASection
+      <FunkyCTA
         title="Enjoy the Show?"
         description="Subscribe to never miss an episode and get notified when new content is published."
-        primaryButtonText="Contact Us"
-        primaryButtonPage="contact"
+        buttonText="Contact Us"
+        buttonPage="contact"
+        benefits={[
+          'Weekly episodes',
+          'Expert interviews',
+          'WordPress deep-dives',
+          'Available on all platforms',
+          'Community discussions'
+        ]}
       />
     </>
   );

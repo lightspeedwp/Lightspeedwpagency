@@ -14,7 +14,6 @@ import { Button } from '../design/Buttons';
 import { toast } from 'sonner';
 import { useFocusManagement } from '../../../hooks/useFocusManagement';
 import { useRipple, useShake } from '../../../hooks/useMicroInteractions';
-import '@/styles/blocks/forms/enquiry-modal.css';
 
 export interface FormData {
   name: string;

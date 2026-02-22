@@ -28,10 +28,10 @@ export interface WPPost {
   sticky: boolean;
   template: string;
   format: 'standard' | 'aside' | 'chat' | 'gallery' | 'link' | 'image' | 'quote' | 'status' | 'video' | 'audio';
-  meta: any[];
+  meta: Record<string, string | number | boolean>[];
   categories: number[];
   tags: number[];
-  _embedded?: any;
+  _embedded?: Record<string, unknown>;
 }
 
 // 1. Audio Post (Podcast)

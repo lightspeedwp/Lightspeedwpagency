@@ -417,3 +417,13 @@
  * - 100% CSS variables for user control
  */
 @import './templates/service-pages-shared.css';
+
+/**
+ * 37. Publishers Solution Page Template
+ * - Funky neon hero with parallax + orbs
+ * - Feature cards with glassmorphism hover
+ * - Process steps with neon numbering
+ * - Testimonial glassmorphism card
+ * - 100% CSS variables for user control
+ */
+@import './templates/publishers-page.css';

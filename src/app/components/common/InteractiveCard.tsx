@@ -26,6 +26,7 @@
 
 import { motion, useMotionValue, useTransform } from 'motion/react';
 import { ReactNode, useState } from 'react';
+import { useReducedMotion } from '../../hooks/useReducedMotion';
 
 interface InteractiveCardProps {
   /** Card content */
@@ -72,10 +73,8 @@ export function InteractiveCard({
   const rotateX = useTransform(y, [-100, 100], [5, -5]);
   const rotateY = useTransform(x, [-100, 100], [-5, 5]);
   
-  // Check for reduced motion preference
-  const prefersReducedMotion = 
-    typeof window !== 'undefined' && 
-    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Check for reduced motion preference (reactive — updates if user toggles mid-session)
+  const prefersReducedMotion = useReducedMotion();
   
   const shouldAnimate = !disableAnimations && !prefersReducedMotion;
   

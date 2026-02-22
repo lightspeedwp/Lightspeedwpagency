@@ -13,7 +13,7 @@ import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { Heading } from '../common/Heading';
 import { Button } from '../blocks/design/Buttons';
-import '@/styles/patterns/empty-state.css';
+
 
 interface EmptyStateProps {
   /** Title of the empty state */

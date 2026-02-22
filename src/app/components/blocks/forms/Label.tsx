@@ -4,7 +4,6 @@
 
 import React from 'react';
 import * as LabelPrimitive from '@radix-ui/react-label';
-import '@/styles/blocks/forms/label.css';
 
 export interface LabelProps extends React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root> {}
 

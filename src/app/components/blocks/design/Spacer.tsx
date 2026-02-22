@@ -8,7 +8,6 @@
  * @see /src/styles/blocks/design/spacer.css
  */
 
-import '@/styles/blocks/design/spacer.css';
 import React from 'react';
 
 export interface SpacerProps {

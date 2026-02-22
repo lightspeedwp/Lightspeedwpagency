@@ -9,7 +9,7 @@
  */
 
 import { Linkedin, Twitter, Mail, Globe } from 'lucide-react';
-import '@/styles/patterns/team-grid.css';
+
 
 export interface TeamMember {
   /** Member name */

@@ -8,15 +8,15 @@
 
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
-import { Breadcrumbs } from '../common/Breadcrumbs';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { Buttons, Button } from '../blocks/design/Buttons';
-import { CTASection } from '../patterns/CTASection';
+import { FunkyCTA } from '../patterns/FunkyCTA';
 import { 
   HelpCircle,
   ChevronDown
 } from 'lucide-react';
 import { useState } from 'react';
-import '@/styles/templates/page-faq.css';
+
 
 // Import centralized data
 import {
@@ -40,14 +40,12 @@ export function FAQTemplate() {
   return (
     <>
       {/* Breadcrumbs */}
-      <section className="wp-block-breadcrumbs-section">
-        <Breadcrumbs 
-          items={[
-            { label: 'Home', href: '/' },
-            { label: faqPageHero.title }
-          ]}
-        />
-      </section>
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', href: '/' },
+          { label: faqPageHero.title },
+        ]}
+      />
 
       {/* Hero Section */}
       <Section 
@@ -198,14 +196,17 @@ export function FAQTemplate() {
       </Section>
 
       {/* CTA Section */}
-      <CTASection
+      <FunkyCTA
         title={faqCTA.title}
         description={faqCTA.description}
-        primaryButtonText={faqCTA.buttons[0].text}
-        primaryButtonPage={faqCTA.buttons[0].page as any}
-        secondaryButtonText={faqCTA.buttons[1]?.text}
-        secondaryButtonPage={faqCTA.buttons[1]?.page as any}
-        gradient="cyan"
+        buttonText={faqCTA.buttons[0].text}
+        buttonPage={faqCTA.buttons[0].page}
+        benefits={[
+          'Typical response within 2 hours',
+          'Expert WordPress & WooCommerce support',
+          'Free initial consultation',
+          'Flexible support plans available'
+        ]}
       />
     </>
   );

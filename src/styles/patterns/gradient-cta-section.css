@@ -90,15 +90,15 @@
 }
 
 /* Button Override */
-.gradient-cta-section__button {
-  background-color: var(--color-white) !important;
-  color: var(--primary) !important;
-  border-color: var(--color-white) !important;
+.gradient-cta-section__button .wp-block-button__link {
+  background-color: var(--color-white);
+  color: var(--primary);
+  border-color: var(--color-white);
   box-shadow: var(--shadow-lg);
 }
 
-.gradient-cta-section__button:hover {
-  background-color: var(--overlay-white-opaque) !important;
+.gradient-cta-section__button .wp-block-button__link:hover {
+  background-color: var(--overlay-white-opaque);
 }
 
 /* Graphic Column */

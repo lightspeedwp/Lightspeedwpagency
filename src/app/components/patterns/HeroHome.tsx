@@ -28,7 +28,8 @@ import {
   ShieldCheck,
 } from 'lucide-react';
 import { frontPageHero } from '../../data/front-page';
-import '@/styles/patterns/hero-home.css';
+import { GlobalSearchOverlay } from './GlobalSearchOverlay';
+/* hero-home.css loaded globally via index.css */
 
 /**
  * Showcase card data — capability highlights displayed as

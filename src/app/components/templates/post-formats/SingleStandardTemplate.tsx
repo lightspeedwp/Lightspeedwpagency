@@ -10,30 +10,20 @@
  * @see /src/styles/templates/single-post.css
  */
 
-import { Container } from '@/app/components/common/Container';
-import { Section } from '@/app/components/common/Section';
-import { Breadcrumbs } from '@/app/components/common/Breadcrumbs';
-import { standardPost } from '@/app/data/posts-formats';
 import { User, Calendar, Tag } from 'lucide-react';
-import '@/styles/templates/single-post.css';
 
 export function SingleStandardTemplate() {
   const post = standardPost;
 
   return (
     <>
-      <section className="single-post-breadcrumbs">
-        <Container>
-          <Breadcrumbs 
-            items={[
-              { label: 'Home', href: '/' },
-              { label: 'Blog', href: '/blog' },
-              { label: 'Articles', href: '/blog/format/standard' },
-              { label: post.title.rendered }
-            ]}
-          />
-        </Container>
-      </section>
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Blog', href: '/blog' },
+          { label: post.title.rendered },
+        ]}
+      />
 
       <article>
         {/* Hero */}

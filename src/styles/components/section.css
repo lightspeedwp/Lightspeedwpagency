@@ -31,3 +31,14 @@
   padding-top: var(--section-padding-y-sm);
   padding-bottom: var(--section-padding-y-sm);
 }
+
+/**
+ * No-padding section modifier
+ * 
+ * For sections that manage their own padding via dedicated CSS.
+ * Used by FunkyCTA and other self-contained patterns.
+ */
+.lsx-section--none {
+  padding-top: 0;
+  padding-bottom: 0;
+}

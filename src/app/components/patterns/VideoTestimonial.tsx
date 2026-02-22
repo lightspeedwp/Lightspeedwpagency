@@ -15,7 +15,7 @@
 
 import { PlayCircle, Clock } from 'lucide-react';
 import { useState } from 'react';
-import '@/styles/patterns/video-testimonial.css';
+
 
 export interface VideoTestimonialItem {
   /** Video title */

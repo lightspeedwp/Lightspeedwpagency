@@ -11,7 +11,7 @@
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 
-import { Breadcrumbs } from '../common/Breadcrumbs';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { Eye } from 'lucide-react';
 
 export function LivePreview() {
@@ -26,25 +26,24 @@ export function LivePreview() {
       }}
     >
       <div style={{ flex: 1 }}>
+        <BreadcrumbPart
+          items={[
+            { label: 'Home', page: 'home' },
+            { label: 'Developer Tools', page: 'dev-tools' },
+            { label: 'Live Preview' },
+          ]}
+        />
+
         <Section background="default" spacing="lg">
           <Container>
-            <Breadcrumbs
-              items={[
-                { label: 'Home', page: 'home' },
-                { label: 'Developer Tools', page: 'dev-tools' },
-                { label: 'Live Preview' }
-              ]}
-              className="wp-mb-8"
-            />
-
             <div className="wp-text-center wp-max-w-4xl wp-mx-auto">
               <div
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  width: '80px',
-                  height: '80px',
+                  width: 'var(--spacing-20)',
+                  height: 'var(--spacing-20)',
                   borderRadius: 'var(--radius-lg)',
                   backgroundColor: 'var(--primary)',
                   marginBottom: 'var(--spacing-6)'

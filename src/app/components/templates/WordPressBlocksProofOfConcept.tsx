@@ -17,12 +17,11 @@
  * @see /guidelines/Guidelines.md
  */
 
-import { useNavigation } from '../../contexts/NavigationContext';
+import { Link } from 'react-router';
+import { slugToPath } from '../../utils/route-map';
 import { Home, ArrowRight, Check, Star, Award, Shield } from 'lucide-react';
 
 export function WordPressBlocksProofOfConcept() {
-  const { navigateTo } = useNavigation();
-
   return (
     <>
         
@@ -43,25 +42,25 @@ export function WordPressBlocksProofOfConcept() {
             {/* Buttons Block */}
             <div className="wp-block-buttons is-content-justification-center">
               <div className="wp-block-button">
-                <button 
+                <Link 
+                  to={slugToPath('front-page')}
                   className="wp-block-button__link"
-                  onClick={() => navigateTo('front-page')}
                   aria-label="Get Started"
                 >
                   <Home size={20} />
                   Get Started
-                </button>
+                </Link>
               </div>
               
               <div className="wp-block-button is-style-outline">
-                <button 
+                <Link 
+                  to={slugToPath('portfolio-archive')}
                   className="wp-block-button__link"
-                  onClick={() => navigateTo('portfolio-archive')}
                   aria-label="View Documentation"
                 >
                   View Documentation
                   <ArrowRight size={20} />
-                </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -188,7 +187,7 @@ export function WordPressBlocksProofOfConcept() {
   <button 
     style={{
       backgroundColor: 'var(--primary)',
-      padding: '12px 24px'
+      padding: 'var(--spacing-3) var(--spacing-6)'
     }}
   >
     Click Me
@@ -300,14 +299,14 @@ export function WordPressBlocksProofOfConcept() {
               
               <div className="wp-block-buttons is-content-justification-center">
                 <div className="wp-block-button is-style-large">
-                  <button 
+                  <Link 
+                    to={slugToPath('front-page')}
                     className="wp-block-button__link"
-                    onClick={() => navigateTo('front-page')}
                     aria-label="View Homepage"
                   >
                     View Homepage
                     <ArrowRight size={20} />
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>

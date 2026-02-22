@@ -1,203 +1,115 @@
 /**
- * Privacy Policy Template
- * 
+ * Privacy Policy Template — Funky Neon Redesign
+ *
  * WordPress template: templates/page-privacy-policy.html
- * 
+ *
  * Legal page displaying privacy policy content.
- * Pattern order: Breadcrumbs → Hero → Content → CTA
- * 
- * **WordPress Blocks:**
- * - Group (page container)
- * - Heading (H1, H2, H3)
- * - Paragraph (body text)
- * - List (bullet points)
- * 
- * **Compliance:**
- * - 100% CSS variables
- * - WordPress-aligned CSS classes
- * - Light + dark mode support
- * - WCAG 2.1 AA compliant
+ * Pattern order: Hero → Content → Contact Box → CTA
+ *
+ * Theme: Neon shield motif, glassmorphism content cards
+ * Features:
+ * - Parallax hero with floating orbs + mesh grid
+ * - Neon glow badge
+ * - Glassmorphism section cards
+ * - FunkyCTA conversion section
+ * - ScrollReveal entry animations
+ * - 100% CSS variable compliance
+ *
+ * STRICT DESIGN SYSTEM COMPLIANCE:
+ * - No inline Tailwind classes
+ * - All styling via @/styles/templates/page-legal.css
+ * - BEM naming throughout
  */
 
 import { Container } from '../common/Container';
-import { Section } from '../common/Section';
-import { Breadcrumbs } from '../common/Breadcrumbs';
-import { CTASection } from '../patterns/CTASection';
+import { FunkyCTA } from '../patterns/FunkyCTA';
 import { Heading } from '../blocks/text/Heading';
 import { Paragraph } from '../blocks/text/Paragraph';
+import { useHeroParallax } from '../../hooks/useHeroParallax';
+import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { Shield, Lock, Eye, FileText, AlertCircle, CheckCircle } from 'lucide-react';
-import '@/styles/templates/page-legal.css';
+
+
+// Import Mock Data
+import { privacyPolicyContent } from '../../data/legal';
+
+// Icon mapping
+const icons = [FileText, CheckCircle, Eye, Lock, AlertCircle];
 
 export function PrivacyPolicyTemplate() {
-  const lastUpdated = 'January 22, 2026';
+  const parallaxRef = useHeroParallax(0.5);
 
   return (
-    <>
-        {/* Breadcrumbs */}
-        <section className="wp-block-breadcrumbs-section">
-            <Breadcrumbs 
-              items={[
-                { label: 'Home', href: '/' },
-                { label: 'Privacy Policy' }
-              ]}
-            />
-        </section>
+    <div className="legal-page">
+      {/* ============================================
+          1. HERO SECTION (Parallax + Floating Orbs)
+          ============================================ */}
+      <section className="legal-page__hero-funky">
+        <img
+          ref={parallaxRef}
+          src="https://images.unsplash.com/photo-1710915125520-2bb01788996a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMG5lb24lMjBsZWdhbCUyMGRvY3VtZW50JTIwc2hpZWxkfGVufDF8fHx8MTc3MTU4NDYzOXww&ixlib=rb-4.1.0&q=80&w=1080"
+          alt="Abstract neon legal shield"
+          className="legal-page__hero-bg"
+        />
+        <div className="legal-page__hero-overlay-funky" />
+        <div className="legal-page__hero-grid" />
 
-        {/* Hero Section */}
-        <Section 
-          spacing="xl"
-          className="legal-page__hero"
-        >
-          <Container>
-            <div className="legal-page__hero-content">
-              <div className="legal-page__hero-icon">
-                <Shield size={40} strokeWidth={2} />
-              </div>
+        {/* Floating Orbs */}
+        <div className="legal-page__orb legal-page__orb--1" />
+        <div className="legal-page__orb legal-page__orb--2" />
 
-              <Heading level={1} className="legal-page__hero-title">
-                Privacy Policy
-              </Heading>
+        <Container>
+          <div className="legal-page__hero-content-funky">
+            <span className="legal-page__hero-badge">
+              <Shield size={16} />
+              Privacy Policy
+            </span>
 
-              <Paragraph className="legal-page__hero-desc">
-                Your privacy is important to us. This policy explains how we collect, use, and protect your personal information.
-              </Paragraph>
+            <h1 className="legal-page__hero-title-funky">
+              {privacyPolicyContent.title}
+            </h1>
 
-              <Paragraph className="legal-page__hero-meta">
-                Last updated: {lastUpdated}
-              </Paragraph>
-            </div>
-          </Container>
-        </Section>
+            <p className="legal-page__hero-desc-funky">
+              Your privacy is important to us. This policy explains how we collect, use, and protect your personal information.
+            </p>
 
-        {/* Content Section */}
-        <Section spacing="xl">
-          <Container>
-            <div className="legal-page__content-container">
-              {/* Section 1: Information We Collect */}
-              <div className="legal-page__section">
-                <div className="legal-page__section-header">
-                  <div className="legal-page__section-icon">
-                    <FileText size={24} />
+            <p className="legal-page__hero-meta-funky">
+              Last updated: {privacyPolicyContent.lastUpdated}
+            </p>
+          </div>
+        </Container>
+      </section>
+
+      {/* ============================================
+          2. CONTENT SECTIONS
+          ============================================ */}
+      <section className="legal-page__content-section">
+        <Container>
+          <div className="legal-page__content-container">
+            {privacyPolicyContent.sections.map((section, index) => {
+              const Icon = icons[index % icons.length];
+              return (
+                <ScrollReveal key={index} animation="fade-up" delay={index * 80}>
+                  <div className="legal-page__section">
+                    <div className="legal-page__section-header">
+                      <div className="legal-page__section-icon">
+                        <Icon size={24} />
+                      </div>
+                      <Heading level={2} className="legal-page__section-title">
+                        {section.heading}
+                      </Heading>
+                    </div>
+
+                    <Paragraph className="legal-page__text">
+                      {section.content}
+                    </Paragraph>
                   </div>
-                  <Heading level={2} className="legal-page__section-title">
-                    Information We Collect
-                  </Heading>
-                </div>
+                </ScrollReveal>
+              );
+            })}
 
-                <Paragraph className="legal-page__text">
-                  We collect information you provide directly to us, including:
-                </Paragraph>
-
-                <ul className="legal-page__list">
-                  <li><strong>Contact Information:</strong> Name, email address, phone number, company name</li>
-                  <li><strong>Project Details:</strong> Project requirements, budget, timeline, industry</li>
-                  <li><strong>Technical Information:</strong> IP address, browser type, device information, usage data</li>
-                  <li><strong>Communication Data:</strong> Messages, feedback, support requests</li>
-                </ul>
-              </div>
-
-              {/* Section 2: How We Use Your Information */}
-              <div className="legal-page__section">
-                <div className="legal-page__section-header">
-                  <div className="legal-page__section-icon">
-                    <CheckCircle size={24} />
-                  </div>
-                  <Heading level={2} className="legal-page__section-title">
-                    How We Use Your Information
-                  </Heading>
-                </div>
-
-                <Paragraph className="legal-page__text">
-                  We use the information we collect to:
-                </Paragraph>
-
-                <ul className="legal-page__list">
-                  <li>Provide, maintain, and improve our services</li>
-                  <li>Respond to your inquiries and provide customer support</li>
-                  <li>Send you project updates, newsletters, and marketing communications</li>
-                  <li>Analyze usage patterns and optimize website performance</li>
-                  <li>Prevent fraud, abuse, and security incidents</li>
-                  <li>Comply with legal obligations and enforce our terms</li>
-                </ul>
-              </div>
-
-              {/* Section 3: Information Sharing */}
-              <div className="legal-page__section">
-                <div className="legal-page__section-header">
-                  <div className="legal-page__section-icon">
-                    <Eye size={24} />
-                  </div>
-                  <Heading level={2} className="legal-page__section-title">
-                    Information Sharing
-                  </Heading>
-                </div>
-
-                <Paragraph className="legal-page__text">
-                  We do not sell your personal information. We may share your information with:
-                </Paragraph>
-
-                <ul className="legal-page__list">
-                  <li><strong>Service Providers:</strong> Third-party vendors who help us operate our business (hosting, analytics, email)</li>
-                  <li><strong>Business Partners:</strong> With your consent, for co-marketing or joint services</li>
-                  <li><strong>Legal Requirements:</strong> When required by law or to protect our rights</li>
-                  <li><strong>Business Transfers:</strong> In connection with a merger, acquisition, or sale of assets</li>
-                </ul>
-              </div>
-
-              {/* Section 4: Data Security */}
-              <div className="legal-page__section">
-                <div className="legal-page__section-header">
-                  <div className="legal-page__section-icon">
-                    <Lock size={24} />
-                  </div>
-                  <Heading level={2} className="legal-page__section-title">
-                    Data Security
-                  </Heading>
-                </div>
-
-                <Paragraph className="legal-page__text">
-                  We implement appropriate technical and organizational measures to protect your personal information:
-                </Paragraph>
-
-                <ul className="legal-page__list">
-                  <li>SSL/TLS encryption for data transmission</li>
-                  <li>Secure server infrastructure and regular security audits</li>
-                  <li>Access controls and authentication measures</li>
-                  <li>Regular backups and disaster recovery procedures</li>
-                  <li>Employee training on data protection best practices</li>
-                </ul>
-              </div>
-
-              {/* Section 5: Your Rights */}
-              <div className="legal-page__section">
-                <div className="legal-page__section-header">
-                  <div className="legal-page__section-icon">
-                    <AlertCircle size={24} />
-                  </div>
-                  <Heading level={2} className="legal-page__section-title">
-                    Your Rights
-                  </Heading>
-                </div>
-
-                <Paragraph className="legal-page__text">
-                  You have the following rights regarding your personal information:
-                </Paragraph>
-
-                <ul className="legal-page__list">
-                  <li><strong>Access:</strong> Request a copy of your personal information</li>
-                  <li><strong>Correction:</strong> Update inaccurate or incomplete information</li>
-                  <li><strong>Deletion:</strong> Request deletion of your personal information</li>
-                  <li><strong>Opt-Out:</strong> Unsubscribe from marketing communications</li>
-                  <li><strong>Data Portability:</strong> Receive your data in a structured format</li>
-                  <li><strong>Object:</strong> Object to certain processing activities</li>
-                </ul>
-
-                <Paragraph className="legal-page__text">
-                  To exercise these rights, please contact us at <strong>privacy@lsxdesign.com</strong>
-                </Paragraph>
-              </div>
-
-              {/* Contact Information */}
+            {/* Contact Information */}
+            <ScrollReveal animation="fade-up">
               <div className="legal-page__contact-box">
                 <Heading level={3} className="legal-page__contact-title">
                   Contact Us
@@ -206,23 +118,32 @@ export function PrivacyPolicyTemplate() {
                   If you have questions about this Privacy Policy, please contact us:
                 </Paragraph>
                 <Paragraph className="legal-page__contact-details">
-                  <strong>Email:</strong> privacy@lsxdesign.com<br />
-                  <strong>Website:</strong> https://lsxdesign.com/contact<br />
-                  <strong>Last Updated:</strong> {lastUpdated}
+                  <strong>Email:</strong> privacy@lightspeedwp.agency<br />
+                  <strong>Website:</strong> https://lightspeedwp.agency/contact<br />
+                  <strong>Last Updated:</strong> {privacyPolicyContent.lastUpdated}
                 </Paragraph>
               </div>
-            </div>
-          </Container>
-        </Section>
+            </ScrollReveal>
+          </div>
+        </Container>
+      </section>
 
-        {/* CTA Section */}
-        <CTASection
-          title="Have Questions About Privacy?"
-          description="Our team is here to help. Contact us for any privacy-related inquiries."
-          buttonText="Contact Us"
-          buttonPage="contact"
-          variant="default"
-        />
-    </>
+      {/* ============================================
+          3. CTA SECTION (FunkyCTA)
+          ============================================ */}
+      <FunkyCTA
+        title="Have Questions About Privacy?"
+        description="Our team is here to help. Contact us for any privacy-related inquiries."
+        buttonText="Contact Us"
+        buttonPage="contact"
+        benefits={[
+          'Transparent data practices',
+          'GDPR compliant',
+          'Your data is never sold',
+          '24-hour response time',
+          'Dedicated privacy team'
+        ]}
+      />
+    </div>
   );
 }

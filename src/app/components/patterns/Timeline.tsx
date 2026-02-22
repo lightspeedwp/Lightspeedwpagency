@@ -10,7 +10,7 @@
  */
 
 import { LucideIcon } from 'lucide-react';
-import '@/styles/patterns/timeline.css';
+
 
 export interface TimelineItem {
   /** Year or step number */

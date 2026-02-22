@@ -19,7 +19,8 @@
  */
 
 import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
-import { useNavigation } from '../../contexts/NavigationContext';
+import { useNavigate } from 'react-router';
+import { slugToPath } from '../../utils/route-map';
 import {
   searchAllContent,
   getResultCountsByType,
@@ -39,7 +40,7 @@ import {
   Clock,
   CornerDownLeft,
 } from 'lucide-react';
-import '@/styles/patterns/global-search.css';
+
 
 /* ═══════════════════════════════════════════
  * Constants
@@ -139,7 +140,7 @@ export function GlobalSearchOverlay({
   onClose,
   initialQuery = '',
 }: GlobalSearchOverlayProps) {
-  const { navigateTo } = useNavigation();
+  const navigate = useNavigate();
   const inputRef = useRef<HTMLInputElement>(null);
   const resultsRef = useRef<HTMLDivElement>(null);
 
@@ -215,20 +216,20 @@ export function GlobalSearchOverlay({
       saveRecentSearch(query);
       const path = result.url;
       const slug = path.startsWith('/') ? path.slice(1) : path;
-      navigateTo(slug || 'front-page');
+      navigate(slugToPath(slug || 'front-page'));
       onClose();
     },
-    [query, navigateTo, onClose]
+    [query, navigate, onClose]
   );
 
   // Navigate to full search page
   const handleViewAll = useCallback(() => {
     if (query.trim()) {
       saveRecentSearch(query);
-      navigateTo(`/search?q=${encodeURIComponent(query.trim())}`);
+      navigate(`/search?q=${encodeURIComponent(query.trim())}`);
       onClose();
     }
-  }, [query, navigateTo, onClose]);
+  }, [query, navigate, onClose]);
 
   // Toggle content type filter
   const toggleType = useCallback((type: ContentType) => {

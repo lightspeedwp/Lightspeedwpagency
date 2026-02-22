@@ -6,10 +6,11 @@
 
 1. [Core Principles](#core-principles)
 2. [Design Tokens Reference](#design-tokens-reference)
-3. [Component Implementation Rules](#component-implementation-rules)
-4. [Common Patterns](#common-patterns)
-5. [Testing Checklist](#testing-checklist)
-6. [Migration Guide](#migration-guide)
+3. [Neon & Glow Effects](#neon--glow-effects)
+4. [Component Implementation Rules](#component-implementation-rules)
+5. [Common Patterns](#common-patterns)
+6. [Testing Checklist](#testing-checklist)
+7. [Migration Guide](#migration-guide)
 
 ---
 
@@ -68,8 +69,9 @@ All color combinations meet WCAG 2.1 AA standards (4.5:1 contrast minimum):
 |-------|-----------|-----------|-------|
 | `--background` | `#FFFFFF` (White) | `#090909` (Near Black) | Page background |
 | `--foreground` | `#090909` (Near Black) | `#FFFFFF` (White) | Body text |
-| `--card` | `#FFFFFF` (White) | `#1E1E1E` (Dark Gray) | Card backgrounds |
+| `--card` | `#F9FAFB` (Subtle Off-White) | `#1E1E1E` (Dark Gray) | Card backgrounds |
 | `--card-foreground` | `#090909` (Near Black) | `#FFFFFF` (White) | Card text |
+| `--card-hover` | `#F9F9F9` | `#252525` | Interactive card hover |
 
 ### Brand Colors
 
@@ -77,8 +79,10 @@ All color combinations meet WCAG 2.1 AA standards (4.5:1 contrast minimum):
 |-------|-----------|-----------|-------|
 | `--primary` | `#1E6AFF` (Bright Blue) | `#7BE7FF` (Bright Cyan) | Primary buttons, links |
 | `--primary-foreground` | `#FFFFFF` (White) | `#0E3278` (Dark Blue) | Text on primary |
+| `--primary-soft` | `rgba(30, 106, 255, 0.1)` | `rgba(123, 231, 255, 0.1)` | Subtle highlights |
 | `--secondary` | `#7BE7FF` (Light Cyan) | `#0E3278` (Dark Blue) | Secondary elements |
 | `--secondary-foreground` | `#0E3278` (Dark Blue) | `#7BE7FF` (Bright Cyan) | Text on secondary |
+| `--neon-color` | `#1E6AFF` | `#7BE7FF` | Dynamic neon accent |
 
 ### Neutral Colors
 
@@ -96,6 +100,7 @@ All color combinations meet WCAG 2.1 AA standards (4.5:1 contrast minimum):
 | `--border` | `#757575` (Medium Gray) | `#757575` (Medium Gray) | Input borders, dividers |
 | `--border-soft` | `rgba(0,0,0,0.08)` | `rgba(255,255,255,0.08)` | Subtle card borders |
 | `--border-extra-soft` | `rgba(0,0,0,0.04)` | `rgba(255,255,255,0.04)` | Very subtle dividers |
+| `--border-subtle` | `rgba(0,0,0,0.06)` | `rgba(255,255,255,0.06)` | Feature lists, inner dividers |
 
 ### State Colors
 
@@ -103,25 +108,68 @@ All color combinations meet WCAG 2.1 AA standards (4.5:1 contrast minimum):
 |-------|-----------|-----------|-------|
 | `--destructive` | `#CC0000` (Red) | `#FF6363` (Light Red) | Delete buttons, errors |
 | `--destructive-foreground` | `#FFFFFF` (White) | `#090909` (Near Black) | Text on destructive |
+| `--success` | `#16A34A` (Green) | `#22C55E` (Light Green) | Success messages |
+| `--warning` | `#F59E0B` (Amber) | `#FBBF24` (Light Amber) | Warning alerts |
+| `--info` | `#0EA5E9` (Sky Blue) | `#38BDF8` (Light Sky) | Info alerts |
 | `--ring` | `#0047D0` (Dark Blue) | `#7BE7FF` (Bright Cyan) | Focus outlines |
 
 ### Shadows
 
-| Token | Light Mode | Dark Mode | Usage |
-|-------|-----------|-----------|-------|
-| `--shadow-sm` | `0 1px 3px rgba(0,0,0,0.05)` | `0 1px 3px rgba(0,0,0,0.5)` | Small shadows |
-| `--shadow-md` | `0 4px 6px rgba(0,0,0,0.05)` | `0 4px 6px rgba(0,0,0,0.5)` | Medium shadows |
-| `--shadow-lg` | `0 10px 40px rgba(0,0,0,0.15)` | `0 10px 40px rgba(0,0,0,0.8)` | Large shadows |
-| `--shadow-primary` | Blue glow | Cyan glow | Primary button shadows |
+| Token | Description | Light Mode Value | Dark Mode Value |
+|-------|-------------|------------------|-----------------|
+| `--shadow-sm` | Small shadow | `0 1px 3px rgba(0,0,0,0.05)` | `0 1px 3px rgba(0,0,0,0.5)` |
+| `--shadow-md` | Medium shadow | `0 4px 6px rgba(0,0,0,0.05)` | `0 4px 6px rgba(0,0,0,0.5)` |
+| `--shadow-lg` | Large shadow | `0 10px 40px rgba(0,0,0,0.15)` | `0 10px 40px rgba(0,0,0,0.8)` |
+| `--shadow-xl` | Extra large | `0 20px 40px rgba(0,0,0,0.12)` | `0 20px 40px rgba(0,0,0,0.6)` |
+| `--shadow-inner` | Inset shadow | `inset 0 2px 4px rgba(0,0,0,0.06)` | `inset 0 2px 4px rgba(0,0,0,0.3)` |
+| `--shadow-hover` | Hover state | `0 8px 16px rgba(0,0,0,0.1)` | `0 8px 16px rgba(0,0,0,0.4)` |
 
 ### Glassmorphism
 
 | Token | Light Mode | Dark Mode | Usage |
 |-------|-----------|-----------|-------|
-| `--glass-bg` | `rgba(255,255,255,0.08)` | `rgba(0,0,0,0.08)` | Glass backgrounds |
-| `--glass-bg-strong` | `rgba(255,255,255,0.15)` | `rgba(0,0,0,0.15)` | Stronger glass |
+| `--glass-bg` | `rgba(255,255,255,0.6)` | `rgba(0,0,0,0.08)` | Glass backgrounds |
+| `--glass-bg-strong` | `rgba(255,255,255,0.85)` | `rgba(0,0,0,0.15)` | Stronger glass |
 | `--glass-border` | `rgba(0,0,0,0.08)` | `rgba(255,255,255,0.08)` | Glass borders |
 | `--glass-text` | `#090909` (Near Black) | `#FFFFFF` (White) | Text on glass |
+
+---
+
+## Neon & Glow Effects
+
+The design system includes advanced neon and glow effects for the "Funky" design aesthetic. These tokens adapt to the current theme color.
+
+### Glow Tokens
+
+| Token | Description |
+|-------|-------------|
+| `--shadow-neon` | Crisp neon outline + soft outer glow. Uses `--neon-color`. |
+| `--shadow-neon-intense` | Intense, multi-layered neon glow for high-impact elements. |
+| `--shadow-glow` | Standard ambient glow using `--primary`. |
+| `--shadow-glow-sm` | Small, subtle ambient glow. |
+| `--shadow-glow-lg` | Large, diffuse ambient glow. |
+
+### Usage Example
+
+```css
+.hero-badge {
+  box-shadow: var(--shadow-neon);
+  border-color: var(--neon-color);
+}
+
+.primary-button:hover {
+  box-shadow: var(--shadow-glow);
+}
+```
+
+### Neon Animation Classes
+
+Helper classes available in `animations.css`:
+
+- `.neon-hover`: Adds neon glow on hover.
+- `.neon-focus`: Adds neon ring on focus.
+- `.neon-border-flow`: Animated gradient border effect.
+- `.neon-glow-pulse`: Pulsing glow animation.
 
 ---
 
@@ -243,7 +291,7 @@ function Button({ children, variant = 'default' }: ButtonProps) {
         ...styles[variant],
         borderRadius: 'var(--radius-lg)',
         padding: '12px 24px',
-        fontFamily: 'Lexend, sans-serif',
+        fontFamily: 'var(--font-primary)',
         fontSize: 'var(--text-base)',
         fontWeight: 'var(--font-weight-medium)',
         cursor: 'pointer',
@@ -268,18 +316,17 @@ function Input({ ...props }: InputProps) {
         border: '1px solid var(--border)',          // Border
         borderRadius: 'var(--radius-lg)',           // Border radius
         padding: '12px 16px',
-        fontFamily: 'Manrope, sans-serif',
+        fontFamily: 'var(--font-secondary)',
         fontSize: 'var(--text-base)',
         outline: 'none',
       }}
       onFocus={(e) => {
         e.currentTarget.style.borderColor = 'var(--ring)';
-        e.currentTarget.style.outline = '2px solid var(--ring)';
-        e.currentTarget.style.outlineOffset = '2px';
+        e.currentTarget.style.boxShadow = 'var(--shadow-focus-ring)';
       }}
       onBlur={(e) => {
         e.currentTarget.style.borderColor = 'var(--border)';
-        e.currentTarget.style.outline = 'none';
+        e.currentTarget.style.boxShadow = 'none';
       }}
       {...props}
     />
@@ -517,4 +564,4 @@ Our CSS variables map directly to WordPress preset colors:
 - Test: Use StyleSwitcher component to toggle modes
 - Verify: Use Compliance Scorecard for WCAG testing
 
-**Last Updated:** December 30, 2024
+**Last Updated:** February 18, 2026

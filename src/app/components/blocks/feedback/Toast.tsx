@@ -10,7 +10,6 @@
 import { Toaster as Sonner } from "sonner";
 import { toast } from "sonner";
 import React from 'react';
-import '@/styles/blocks/feedback/toast.css';
 
 type ToasterProps = React.ComponentProps<typeof Sonner>;
 

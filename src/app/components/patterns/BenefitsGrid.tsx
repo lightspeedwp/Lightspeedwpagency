@@ -5,7 +5,7 @@
  * Maps to WordPress pattern: lsx-design/content/benefits
  * 
  * **Design Token Compliance:**
- * - Uses /src/styles/benefits-grid.css
+ * - Uses /src/styles/patterns/benefits-grid.css
  * - 100% CSS variables
  * - BEM naming
  */
@@ -13,7 +13,7 @@
 import { Section } from '../common/Section';
 import { Container } from '../common/Container';
 import { ArrowRight, LucideIcon } from 'lucide-react';
-import '@/styles/benefits-grid.css';
+
 
 /**
  * Benefit Item Interface

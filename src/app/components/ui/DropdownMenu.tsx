@@ -38,7 +38,7 @@ export function DropdownMenu({
   trigger,
   items,
   position = 'bottom-right',
-  minWidth = '200px',
+  minWidth = '12rem',
 }: DropdownMenuProps) {
   // Map position to Radix side/align
   const side = position.includes('top') ? 'top' : 'bottom';
@@ -95,7 +95,7 @@ export function DropdownMenuWithGroups({
   trigger,
   groups,
   position = 'bottom-right',
-  minWidth = '200px',
+  minWidth = '12rem',
 }: DropdownMenuWithGroupsProps) {
   const side = position.includes('top') ? 'top' : 'bottom';
   const align = position.includes('left') ? 'start' : 'end';

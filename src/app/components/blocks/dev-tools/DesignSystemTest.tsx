@@ -13,7 +13,6 @@ import React from 'react';
 import { Container } from '../../common/Container';
 import { Section } from '../../common/Section';
 import { Check } from 'lucide-react';
-import '@/styles/blocks/dev-tools/design-system-test.css';
 
 export function DesignSystemTest() {
   return (

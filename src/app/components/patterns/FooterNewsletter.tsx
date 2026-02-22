@@ -11,7 +11,7 @@ import { Logo } from '../common/Logo';
 import { Button } from '../blocks/design/Buttons';
 import { Container } from '../common/Container';
 import { Facebook, Instagram, Twitter, Linkedin, Youtube } from 'lucide-react';
-import '@/styles/patterns/footer-newsletter.css';
+
 
 interface FooterColumn {
   title: string;

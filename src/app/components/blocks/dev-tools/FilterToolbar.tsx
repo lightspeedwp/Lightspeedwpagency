@@ -9,10 +9,9 @@
  * @see /src/styles/blocks/dev-tools/filter-toolbar.css
  */
 
-import React from 'react';
-import { Search } from 'lucide-react';
+import React, { useState } from 'react';
+import { Search, Filter } from 'lucide-react';
 import { MobileFilterPopover } from '../../common/MobileFilterPopover';
-import '@/styles/blocks/dev-tools/filter-toolbar.css';
 
 export interface FilterOption {
   value: string;
@@ -40,6 +39,8 @@ export function DevToolsFilterToolbar({
   filterLabel = 'Filter:',
   mobileButtonLabel = 'Filter'
 }: DevToolsFilterToolbarProps) {
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
+
   return (
     <section className="wp-block-devtools-filter-toolbar">
       <div className="wp-block-devtools-filter-toolbar__container">
@@ -61,12 +62,24 @@ export function DevToolsFilterToolbar({
 
         {/* Mobile: Filter Popover */}
         <div className="wp-block-devtools-filter-toolbar__mobile">
+          <button 
+            className="wp-block-devtools-filter-toolbar__mobile-toggle"
+            onClick={() => setIsMobileOpen(true)}
+            aria-label="Open filters"
+            style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-2)', padding: 'var(--spacing-2) var(--spacing-4)', borderRadius: 'var(--radius-full)', border: '1px solid var(--border)', background: 'var(--background)' }}
+          >
+            <Filter size={16} />
+            <span>{mobileButtonLabel}</span>
+          </button>
+
           <MobileFilterPopover
-            options={filterOptions}
-            selectedValue={selectedFilter}
+            isOpen={isMobileOpen}
+            onClose={() => setIsMobileOpen(false)}
+            title={filterLabel.replace(':', '')}
+            options={filterOptions.map(opt => ({ id: opt.value, label: opt.label }))}
+            selectedOption={selectedFilter}
             onSelect={onFilterChange}
-            label={filterLabel}
-            buttonLabel={mobileButtonLabel}
+            allLabel="All"
           />
         </div>
 

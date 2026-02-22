@@ -15,7 +15,6 @@
  * - Approved fonts only (var(--font-primary))
  */
 
-import '@/styles/blocks/text/list.css';
 import React from 'react';
 
 export interface ListProps {

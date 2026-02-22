@@ -18,7 +18,6 @@
 
 import React from 'react';
 
-import '@/styles/blocks/design/columns.css';
 
 export interface ColumnsProps {
   /** Number of columns (2-6) */

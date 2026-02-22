@@ -1,216 +1,231 @@
 /**
  * WooCommerce Solution Template
- * 
- * WordPress template: templates/page-solution-woocommerce.html
- * 
- * WooCommerce solutions page for e-commerce development services.
- * 
- * Pattern order:
- * Breadcrumbs → Hero → Overview → Features → Use Cases → Pricing → Comparison → Benefits → FAQs → CTA
- * 
- * **Migration Status:**
- * - ✅ Hero → Hero pattern
- * - ✅ Overview → StatsGrid pattern
- * - ✅ Features → FeatureGrid pattern
- * - ✅ Use Cases → UseCasesGrid pattern
- * - ✅ Pricing → PricingTable pattern
- * - ✅ Benefits → BenefitsGrid pattern
- * - ✅ FAQs → FAQSection pattern
- * - ✅ CTA → CTASection pattern
- * 
- * **Code Reduction:** ~885 → ~245 lines (72% reduction)
+ *
+ * Theme: "Neon Market"
+ * Visuals: Cyberpunk storefront, neon glows, holographic product card,
+ *          scanline grid, pulsing orbs.
+ *
+ * STRICT DESIGN SYSTEM COMPLIANCE:
+ * - All styling via BEM classes in page-solution-ecommerce.css
+ * - Colors via scoped CSS variables (no hardcoded hex in JSX)
+ * - Fonts: var(--font-primary), var(--font-secondary), var(--font-mono)
+ *
+ * @see /src/styles/templates/page-solution-ecommerce.css
  */
 
 import { Container } from '../common/Container';
-import { Breadcrumbs } from '../common/Breadcrumbs';
-import { Hero } from '../patterns/Hero';
-import { StatsGrid } from '../patterns/StatsGrid';
-import { FeatureGrid } from '../patterns/FeatureGrid';
-import { UseCasesGrid } from '../patterns/UseCasesGrid';
-import { PricingTable } from '../patterns/PricingTable';
-import { BenefitsGrid } from '../patterns/BenefitsGrid';
-import { FAQSection } from '../patterns/FAQSection';
-import { CTASection } from '../patterns/CTASection';
-import { ShoppingCart, Code, Shield, Zap } from 'lucide-react';
-
-// Import centralized data
+import { Section } from '../common/Section';
+import { ScrollReveal } from '../../hooks/useScrollReveal';
 import {
-  woocommerceSolutionHero,
-  woocommerceSolutionOverview,
-  woocommerceSolutionFeatures,
-  woocommerceSolutionUseCases,
-  woocommerceSolutionPricing,
-  woocommerceSolutionFAQs,
-  woocommerceSolutionCTA
-} from '../../data/woocommerce-solution-page';
+  ShoppingBag,
+  CreditCard,
+  Truck,
+  BarChart3,
+  Globe,
+  ShieldCheck,
+  Zap,
+  ArrowRight,
+} from 'lucide-react';
+
+
+import { woocommerceSolutionDetailed } from '../../data/solutions-detailed';
 
 export function WooCommerceSolutionTemplate() {
-  // Transform pricing data for PricingTable pattern
-  const pricingPlans: PricingPackage[] = woocommerceSolutionPricing.packages.map((pkg, index) => ({
-    id: `pkg-${index}`,
-    name: pkg.name,
-    slug: pkg.name.toLowerCase().replace(/\s+/g, '-'),
-    tagline: pkg.description, // Using description as tagline for now
-    description: pkg.description,
-    price: {
-      amount: 0, // Placeholder
-      currency: 'USD',
-      display: pkg.price,
-      period: 'project'
-    },
-    features: pkg.features.map(f => ({ name: f, included: true })),
-    cta: {
-      text: 'Get Started',
-      action: 'contact'
-    },
-    recommended: pkg.recommended,
-    category: 'ecommerce'
-  }));
+  const data = woocommerceSolutionDetailed;
 
-  // Transform related solutions for BenefitsGrid pattern
-  const relatedBenefits = [
-    {
-      icon: Code,
-      title: 'WordPress Solution',
-      description: 'Build powerful WordPress websites with modern development practices.',
-      link: 'wordpress',
-      linkText: 'Learn More'
-    },
-    {
-      icon: Shield,
-      title: 'E-commerce Security',
-      description: 'Protect your online store from fraud, malware, and security threats.',
-      link: 'security',
-      linkText: 'Learn More'
-    },
-    {
-      icon: Zap,
-      title: 'Performance Optimization',
-      description: 'Speed up your WooCommerce store for better conversions and SEO.',
-      link: 'performance-optimization',
-      linkText: 'Learn More'
-    }
-  ];
+  const featureIcons: Record<string, any> = {
+    'Custom Product Experience': ShoppingBag,
+    'Frictionless Checkout': CreditCard,
+    'Smart Logistics': Truck,
+    'Conversion Analytics': BarChart3,
+    'Global Scale': Globe,
+    'Enterprise Security': ShieldCheck,
+  };
 
   return (
-    <>
-        {/* Breadcrumbs */}
-        <section className="wp-block-breadcrumbs-section wp-block-breadcrumbs-section--border">
-            <Breadcrumbs 
-              items={[
-                { label: 'Home', href: '/' },
-                { label: 'Solutions', href: '/solutions' },
-                { label: woocommerceSolutionHero.title }
-              ]}
-            />
-        </section>
+    <div className="ecommerce-page">
+      {/* ============================================
+          HERO SECTION — Cyberpunk Storefront
+          ============================================ */}
+      <section className="ecommerce-page__hero">
+        <Container>
+          <ScrollReveal animation="fade-up">
+            <div className="ecommerce-page__hero-layout">
+              {/* Left: Content */}
+              <div className="ecommerce-page__hero-content">
+                <span className="ecommerce-page__badge">ECOMMERCE 2.0</span>
 
-        {/* Hero Section */}
-        <Hero
-          variant="service"
-          align="center"
-          maxWidth="4xl"
-          gradient="violet"
-          spacing="xl"
-          badge={{
-            icon: ShoppingCart,
-            text: woocommerceSolutionHero.badge.text
-          }}
-          title={woocommerceSolutionHero.title}
-          titleHighlight={woocommerceSolutionHero.titleHighlight}
-          description={woocommerceSolutionHero.tagline}
-          subtitle={woocommerceSolutionHero.description}
-          buttons={[
-            {
-              label: 'Get a Free Quote',
-              page: 'contact',
-              variant: 'default',
-              style: {
-                backgroundColor: 'var(--primary-foreground)',
-                color: 'var(--primary)'
-              }
-            },
-            {
-              label: 'View Portfolio',
-              page: 'portfolio',
-              variant: 'outline',
-              style: {
-                borderColor: 'var(--primary-foreground)',
-                color: 'var(--primary-foreground)'
-              }
-            }
-          ]}
-        />
+                <h1 className="ecommerce-page__title">
+                  Sell Anywhere, <br />
+                  <span className="ecommerce-page__highlight">Scale Everywhere</span>
+                </h1>
 
-        {/* Overview Stats Section */}
-        <StatsGrid
-          title={woocommerceSolutionOverview.title}
-          description={woocommerceSolutionOverview.description}
-          stats={woocommerceSolutionOverview.stats.map(stat => ({
-            icon: stat.icon,
-            value: stat.value,
-            label: stat.label,
-            description: stat.description
-          }))}
-          columns={4}
-          variant="default"
-        />
+                <p className="ecommerce-page__tagline">{data.tagline}</p>
 
-        {/* Features Section */}
-        <FeatureGrid
-          title="WooCommerce Features & Capabilities"
-          description="Everything you need for a successful online store"
-          items={woocommerceSolutionFeatures}
-          columns={4}
-          variant="muted"
-          iconStyle="rounded"
-        />
+                <div className="ecommerce-page__hero-buttons">
+                  <a href="#contact" className="ecommerce-page__btn-primary">
+                    Start Selling <ArrowRight size={20} />
+                  </a>
+                  <a href="#features" className="ecommerce-page__btn-outline">
+                    View Features
+                  </a>
+                </div>
+              </div>
 
-        {/* Use Cases Section */}
-        <UseCasesGrid
-          title="WooCommerce Use Cases"
-          description="WooCommerce adapts to any product or business model"
-          useCases={woocommerceSolutionUseCases}
-          columns={2}
-          variant="default"
-        />
+              {/* Right: Holographic Product */}
+              <div className="ecommerce-page__hologram-wrapper">
+                <div className="ecommerce-page__hologram">
+                  <div className="ecommerce-page__hologram-scan" />
+                  <span className="ecommerce-page__hologram-id">ID: #8392-X</span>
 
-        {/* Pricing Section */}
-        <PricingTable
-          heading={woocommerceSolutionPricing.title}
-          description={woocommerceSolutionPricing.description}
-          packages={pricingPlans}
-          variant="muted"
-        />
+                  <div className="ecommerce-page__hologram-body">
+                    <div className="ecommerce-page__hologram-bar ecommerce-page__hologram-bar--accent" />
+                    <div className="ecommerce-page__hologram-bar ecommerce-page__hologram-bar--muted" />
+                    <div className="ecommerce-page__hologram-footer">
+                      <span className="ecommerce-page__hologram-price">$2,499.00</span>
+                      <span className="ecommerce-page__hologram-stock">IN STOCK</span>
+                    </div>
+                  </div>
+                </div>
 
-        {/* Benefits/Related Solutions Section */}
-        <BenefitsGrid
-          title="Related Solutions"
-          description="Explore more ways to enhance your WooCommerce store"
-          benefits={relatedBenefits}
-          columns={3}
-          variant="default"
-          showArrows={true}
-        />
+                <div className="ecommerce-page__hologram-glow" aria-hidden="true" />
+              </div>
+            </div>
+          </ScrollReveal>
+        </Container>
+      </section>
 
-        {/* FAQ Section */}
-        <FAQSection
-          title="Frequently Asked Questions"
-          description="Common questions about WooCommerce solutions"
-          faqs={woocommerceSolutionFAQs}
-          variant="muted"
-        />
+      {/* ============================================
+          STATS SECTION — The Dashboard
+          ============================================ */}
+      <section className="ecommerce-page__stats">
+        <Container>
+          <ScrollReveal animation="fade-up">
+            <div className="ecommerce-page__stats-grid">
+              {data.results.map((result, index) => (
+                <div key={index} className="ecommerce-page__stat-item">
+                  <span className="ecommerce-page__stat-number">{result.stat}</span>
+                  <span className="ecommerce-page__stat-label">{result.label}</span>
+                  <p className="ecommerce-page__stat-desc">{result.description}</p>
+                </div>
+              ))}
+            </div>
+          </ScrollReveal>
+        </Container>
+      </section>
 
-        {/* CTA Section */}
-        <CTASection
-          title={woocommerceSolutionCTA.title}
-          description={woocommerceSolutionCTA.description}
-          primaryButtonText={woocommerceSolutionCTA.buttons[0].text}
-          primaryButtonPage={woocommerceSolutionCTA.buttons[0].page as any}
-          secondaryButtonText={woocommerceSolutionCTA.buttons[1]?.text}
-          secondaryButtonPage={woocommerceSolutionCTA.buttons[1]?.page as any}
-          gradient="violet"
-        />
-    </>
+      {/* ============================================
+          FEATURES GRID — The Product Catalog
+          ============================================ */}
+      <section className="ecommerce-page__features" id="features">
+        <Container>
+          <ScrollReveal animation="fade-up">
+            <div className="ecommerce-page__features-header">
+              <span className="ecommerce-page__features-label">
+                {'// SYSTEM MODULES'}
+              </span>
+              <h2 className="ecommerce-page__features-title">
+                Enterprise-Grade Commerce
+              </h2>
+              <p className="ecommerce-page__features-desc">
+                Everything you need to run a high-performance online store.
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <div className="ecommerce-page__features-grid">
+            {data.features.map((feature, index) => {
+              const Icon = featureIcons[feature.title] || Zap;
+              return (
+                <ScrollReveal key={index} animation="fade-up" delay={index * 80}>
+                  <div className="ecommerce-page__feature-card">
+                    <div className="ecommerce-page__feature-icon">
+                      <Icon size={24} />
+                    </div>
+                    <h3 className="ecommerce-page__feature-title">{feature.title}</h3>
+                    <p className="ecommerce-page__feature-desc">{feature.description}</p>
+                    <div className="ecommerce-page__feature-corner" aria-hidden="true" />
+                  </div>
+                </ScrollReveal>
+              );
+            })}
+          </div>
+        </Container>
+      </section>
+
+      {/* ============================================
+          APPROACH — The Blueprint
+          ============================================ */}
+      <section className="ecommerce-page__approach">
+        <Container>
+          <div className="ecommerce-page__approach-grid">
+            <ScrollReveal animation="fade-right">
+              <div>
+                <h2 className="ecommerce-page__approach-title">{data.approach.title}</h2>
+                <p className="ecommerce-page__approach-desc">{data.approach.description}</p>
+
+                <div className="ecommerce-page__steps">
+                  {data.approach.steps.map((step, index) => (
+                    <div key={index} className="ecommerce-page__step">
+                      <div className="ecommerce-page__step-number">{step.number}</div>
+                      <div>
+                        <h4 className="ecommerce-page__step-title">{step.title}</h4>
+                        <p className="ecommerce-page__step-desc">{step.description}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal animation="fade-left">
+              <div className="ecommerce-page__tech-sidebar">
+                <h3 className="ecommerce-page__tech-header">
+                  <Globe size={20} className="ecommerce-page__tech-header-icon" />
+                  {data.techStack.title}
+                </h3>
+                <div className="ecommerce-page__tech-grid">
+                  {data.techStack.items.map((item, idx) => (
+                    <div key={idx} className="ecommerce-page__tech-item">
+                      <span className="ecommerce-page__tech-prompt">$</span>
+                      {item}
+                    </div>
+                  ))}
+                </div>
+                <div className="ecommerce-page__tech-sidebar-glow" aria-hidden="true" />
+              </div>
+            </ScrollReveal>
+          </div>
+        </Container>
+      </section>
+
+      {/* ============================================
+          CTA SECTION — Checkout
+          ============================================ */}
+      <section className="ecommerce-page__cta" id="contact">
+        <Container>
+          <ScrollReveal animation="scale">
+            <div className="ecommerce-page__cta-content">
+              <ShoppingBag size={48} className="ecommerce-page__cta-icon" />
+              <h2 className="ecommerce-page__cta-title">{data.cta.title}</h2>
+              <p className="ecommerce-page__cta-desc">{data.cta.description}</p>
+
+              <div className="ecommerce-page__cta-buttons">
+                <a
+                  href={`/${data.cta.buttonPage}`}
+                  className="ecommerce-page__btn-primary"
+                >
+                  {data.cta.buttonText}
+                </a>
+                <a href="/portfolio" className="ecommerce-page__btn-outline">
+                  View Case Studies
+                </a>
+              </div>
+            </div>
+          </ScrollReveal>
+          <div className="ecommerce-page__cta-grid-bg" aria-hidden="true" />
+        </Container>
+      </section>
+    </div>
   );
 }

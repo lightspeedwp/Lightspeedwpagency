@@ -86,6 +86,100 @@
   margin: 0 0 var(--spacing-4) 0;
 }
 
+/* Hero Inline Stats */
+.site-map__hero-stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--spacing-4);
+  margin-top: var(--spacing-8);
+}
+
+.site-map__hero-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--overlay-white-soft);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-3) var(--spacing-5);
+  min-width: 80px;
+}
+
+.site-map__hero-stat-value {
+  font-family: var(--font-primary);
+  font-size: var(--text-h3);
+  font-weight: var(--font-weight-bold);
+  color: var(--primary-foreground);
+  line-height: 1;
+}
+
+.site-map__hero-stat-label {
+  font-family: var(--font-secondary);
+  font-size: var(--text-xs);
+  color: var(--overlay-white-strong);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+  margin-top: var(--spacing-1);
+}
+
+/* ═══════════════════════════════════════════
+   Jump Navigation
+   ═══════════════════════════════════════════ */
+
+.site-map__jump-nav-section {
+  background-color: var(--muted);
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.site-map__jump-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-2);
+  justify-content: center;
+}
+
+.site-map__jump-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-1-5);
+  padding: var(--spacing-2) var(--spacing-3);
+  border-radius: var(--radius-full);
+  background-color: var(--card);
+  border: 1px solid var(--border-soft);
+  color: var(--foreground);
+  font-family: var(--font-primary);
+  font-size: var(--text-small);
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+  transition: all var(--transition-fast) var(--ease-in-out);
+  white-space: nowrap;
+}
+
+.site-map__jump-link:hover {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border-color: var(--primary);
+}
+
+.site-map__jump-link:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.site-map__jump-count {
+  font-family: var(--font-secondary);
+  font-size: var(--text-xs);
+  background: var(--muted);
+  padding: 1px 6px;
+  border-radius: var(--radius-full);
+  color: var(--muted-foreground);
+}
+
+.site-map__jump-link:hover .site-map__jump-count {
+  background: var(--overlay-white-soft);
+  color: var(--primary-foreground);
+}
+
 /* ═══════════════════════════════════════════
    Card Grid
    ═══════════════════════════════════════════ */
@@ -200,6 +294,7 @@
   font-family: var(--font-primary);
   font-size: var(--text-base);
   color: var(--foreground);
+  text-decoration: none;
 }
 
 .site-map__link:hover {

@@ -32,7 +32,6 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { ChevronDown } from 'lucide-react';
-import '@/styles/blocks/design/accordion.css';
 
 /**
  * Individual Accordion Item Props

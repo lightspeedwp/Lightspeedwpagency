@@ -1,39 +1,45 @@
 /**
- * Design Service Template
+ * Design Service Template - Funky Redesign
  * 
- * WordPress template: templates/page-design-service.html
+ * Theme: "Pixel Perfect Blueprint" (Indigo/Cyan/White)
  * 
- * Design service page showcasing UI/UX and branding services.
+ * Features:
+ * - Wireframe/Blueprint Hero
+ * - Crosshair Grid Background
+ * - 3D Layer Stack Visualization
+ * - Process Timeline with connection lines
  * 
- * Pattern order:
- * Hero → Overview → Services → Process → CTA
+ * STRICT DESIGN SYSTEM COMPLIANCE:
+ * - No inline Tailwind classes
+ * - All styling via @/styles/templates/page-service-design.css
+ * - Colors mapped to global semantic tokens for auto light/dark
  */
 
 import { Container } from '../common/Container';
-import { Section } from '../common/Section';
-import { Heading } from '../blocks/text/Heading';
-import { Paragraph } from '../blocks/text/Paragraph';
-import { Hero } from '../patterns/Hero';
-import { ServiceOfferingsGrid } from '../patterns/ServiceOfferingsGrid';
-import { ProcessSteps } from '../patterns/ProcessSteps';
-import { CTASection } from '../patterns/CTASection';
+import { Button } from '../blocks/design/Buttons';
+import { FunkyCTA } from '../patterns/FunkyCTA';
+import { RelatedServicesGrid } from '../patterns/RelatedServicesGrid';
+import { IncludedInSolutions } from '../patterns/IncludedInSolutions';
+import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
+import { designServiceDetailed } from '../../data/services-detailed';
+import { ScrollReveal } from '../../hooks/useScrollReveal';
+import { ScrollDownArrow } from '../common/ScrollDownArrow';
 import { 
   Palette,
   ArrowRight,
   Monitor,
   RefreshCw,
-  Mail,
   Layout,
   PenTool,
-  Image,
   ShoppingBag,
-  Store,
-  CheckCircle
+  Sparkles,
+  CheckCircle,
+  Layers,
+  MousePointer2,
+  Eye,
+  Crop,
+  Grid
 } from 'lucide-react';
-import '@/styles/templates/service-detail.css';
-
-// Import detailed data
-import { designServiceDetailed } from '../../data/services-detailed';
 
 export function DesignServiceTemplate() {
   const data = designServiceDetailed;
@@ -42,120 +48,285 @@ export function DesignServiceTemplate() {
   const serviceIcons: Record<string, any> = {
     'new-website-design': Monitor,
     'website-redesign': RefreshCw,
-    'newsletters': Mail,
     'landing-pages': Layout,
     'icons-illustrations': PenTool,
-    'hero-images': Image,
     'product-images': ShoppingBag,
-    'new-store-design': Store,
-    'store-redesign': RefreshCw
+    'branding': Palette
   };
 
-  // Map data to component formats
-  const offerings = data.subServices.map(service => ({
-    id: service.id,
-    icon: serviceIcons[service.id] || Palette,
-    title: service.title,
-    description: service.description,
-    buttonText: `More About ${service.title}`,
-    buttonPage: 'contact' as const
-  }));
-
-  const processSteps = data.process.steps.map(step => ({
-    step: step.number,
-    icon: CheckCircle, // Generic icon as specific ones aren't mapped
-    title: step.title,
-    description: step.description
-  }));
+  // Showcase projects (design portfolio preview)
+  const showcaseProjects = [
+    {
+      name: 'E-Commerce Redesign',
+      tag: 'UI/UX Design',
+      image: 'https://images.unsplash.com/photo-1604074131228-9d48b811bd80?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjB3ZWJzaXRlJTIwZGVzaWduJTIwbW9ja3VwJTIwZGVza3RvcHxlbnwxfHx8fDE3NzE0NTU0NjZ8MA&ixlib=rb-4.1.0&q=80&w=1080'
+    },
+    {
+      name: 'Brand Identity System',
+      tag: 'Branding',
+      image: 'https://images.unsplash.com/photo-1759390304277-df4f95509186?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2xvcmZ1bCUyMGJyYW5kaW5nJTIwaWRlbnRpdHklMjBkZXNpZ258ZW58MXx8fHwxNzcxNDg2NjE5fDA&ixlib=rb-4.1.0&q=80&w=1080'
+    },
+    {
+      name: 'Mobile App Interface',
+      tag: 'App Design',
+      image: 'https://images.unsplash.com/photo-1565268878251-eb6848dc481c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2JpbGUlMjBhcHAlMjBVSSUyMGRlc2lnbiUyMHdpcmVmcmFtZXxlbnwxfHx8fDE3NzE0ODY2MTZ8MA&ixlib=rb-4.1.0&q=80&w=1080'
+    }
+  ];
 
   return (
     <>
-      {/* Hero Section */}
-      <Hero
-        variant="service"
-        align="left"
-        maxWidth="6xl"
-        gradient="purple"
-        spacing="xl"
-        badge={{
-          icon: Palette,
-          text: 'Design & Branding'
-        }}
-        title={data.headline}
-        description={data.tagline}
-        buttons={[
-          {
-            label: 'Start a Project',
-            page: 'contact',
-            variant: 'default',
-            icon: ArrowRight,
-          },
-          {
-            label: 'View Portfolio',
-            page: 'portfolio-archive',
-            variant: 'outline',
-            style: {
-              borderColor: 'var(--overlay-white-medium)',
-              color: 'var(--color-white)',
-              backgroundColor: 'transparent'
-            }
-          }
-        ]}
-      />
+      {/* ============================================
+          HERO SECTION (The Blueprint)
+          ============================================ */}
+      <section className="design-page__hero">
+        {/* Crosshairs */}
+        <div className="design-page__crosshair design-page__crosshair--tl" />
+        <div className="design-page__crosshair design-page__crosshair--tr" />
+        <div className="design-page__crosshair design-page__crosshair--bl" />
+        <div className="design-page__crosshair design-page__crosshair--br" />
 
-      {/* Overview Section (Why LightSpeed) */}
-      <Section spacing="xl" background="muted">
+        {/* Floating Wireframes */}
+        <div className="design-page__wireframe design-page__wireframe--1" aria-hidden="true">
+          <div className="design-page__wire-line" style={{ width: '40%' }} />
+          <div className="design-page__wire-line" style={{ width: '80%' }} />
+          <div className="design-page__wire-block" />
+          <div className="design-page__wire-line" style={{ width: '60%' }} />
+        </div>
+        <div className="design-page__wireframe design-page__wireframe--2" aria-hidden="true">
+          <div className="design-page__wire-block" style={{ height: '80px' }} />
+          <div className="design-page__wire-line" style={{ width: '90%' }} />
+          <div className="design-page__wire-line" style={{ width: '70%' }} />
+          <div className="design-page__wire-line" style={{ width: '50%' }} />
+        </div>
+
         <Container>
-          <div className="wp-text-center wp-max-w-4xl wp-mx-auto">
-            <Heading level={2} align="center" className="wp-mb-6">
-              {data.whyLightSpeed.title}
-            </Heading>
-            <Paragraph size="large" align="center" style={{ color: 'var(--muted-foreground)' }}>
-              {data.whyLightSpeed.description}
-            </Paragraph>
+          <div className="design-page__hero-content">
+            <ScrollReveal animation="fade-down">
+              <div className="design-page__badge">
+                <Grid size={16} />
+                PIXEL PERFECT ARCHITECTURE
+              </div>
+
+              <h1 className="design-page__title">
+                We Craft <br />
+                <span className="design-page__highlight">Digital Masterpieces</span>
+              </h1>
+
+              <p className="design-page__description">
+                {data.tagline}
+              </p>
+
+              <div className="design-page__hero-buttons">
+                <Button
+                  variant="default"
+                  size="lg"
+                  page="contact"
+                >
+                  Start Your Project
+                </Button>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  page="portfolio-archive"
+                >
+                  Explore Portfolio
+                </Button>
+              </div>
+            </ScrollReveal>
           </div>
         </Container>
-      </Section>
+        <ScrollDownArrow targetId="design-overview" />
+      </section>
 
-      {/* Design Services Offerings */}
-      <ServiceOfferingsGrid
-        title="Our Design Services"
-        description={data.description}
-        offerings={offerings}
-        columns={3}
-        backgroundColor="var(--background)"
-        spacing="xl"
-      />
-
-      {/* Process Steps Section */}
-      <Section spacing="xl">
+      {/* ============================================
+          OVERVIEW (Why LightSpeed)
+          ============================================ */}
+      <section id="design-overview" className="design-page__overview">
         <Container>
-          <div className="wp-text-center wp-mb-12">
-            <Heading level={2} align="center" className="wp-mb-4">
-              {data.process.title}
-            </Heading>
-            <Paragraph size="large" align="center" className="wp-max-w-2xl wp-mx-auto" style={{ color: 'var(--muted-foreground)' }}>
-              {data.process.description}
-            </Paragraph>
+          <div className="design-page__overview-grid">
+            <ScrollReveal animation="fade-right">
+              {/* Visual Stack */}
+              <div className="design-page__stack">
+                <div className="design-page__layer" />
+                <div className="design-page__layer" />
+                <div className="design-page__layer">
+                  <Layers size={48} className="design-page__layer-icon" />
+                  <h3 className="design-page__layer-title">Design Systems</h3>
+                  <p className="design-page__layer-subtitle">Scalable & Consistent</p>
+                </div>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal animation="fade-left">
+              <div>
+                <h2 className="design-page__section-title">
+                  Design that <span className="design-page__highlight">Works</span>
+                </h2>
+                <p className="design-page__section-desc">
+                  {data.whyLightSpeed.description}
+                </p>
+                <div className="design-page__feature-list">
+                  {[
+                    'User-Centric Approach',
+                    'Accessibility First (WCAG 2.1)',
+                    'Conversion Optimized Layouts',
+                    'Brand Consistency'
+                  ].map((item, i) => (
+                    <div key={i} className="design-page__feature-item">
+                      <CheckCircle size={20} className="design-page__feature-icon" />
+                      {item}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </ScrollReveal>
+          </div>
+        </Container>
+      </section>
+
+      {/* ============================================
+          SHOWCASE (Portfolio Preview)
+          ============================================ */}
+      <section className="design-page__showcase">
+        <Container>
+          <ScrollReveal animation="fade-up">
+            <div className="design-page__showcase-header">
+              <h2 className="design-page__section-title">
+                Recent <span className="design-page__highlight">Work</span>
+              </h2>
+              <p className="design-page__section-desc design-page__max-w-2xl">
+                A glimpse at some of our latest design projects.
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <div className="design-page__showcase-grid">
+            {showcaseProjects.map((project, index) => (
+              <ScrollReveal key={index} animation="fade-up" delay={index * 100}>
+                <div className="design-page__project-card">
+                  <img
+                    src={project.image}
+                    alt={project.name}
+                    className="design-page__project-image"
+                    loading="lazy"
+                  />
+                  <div className="design-page__project-overlay">
+                    <span className="design-page__project-tag">{project.tag}</span>
+                    <span className="design-page__project-title">{project.name}</span>
+                  </div>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* ============================================
+          SERVICES GRID
+          ============================================ */}
+      <section className="design-page__services">
+        <Container>
+          <ScrollReveal animation="fade-up">
+            <div className="design-page__showcase-header">
+              <h2 className="design-page__section-title">
+                Our Creative Suite
+              </h2>
+              <p className="design-page__section-desc design-page__max-w-2xl">
+                From branding to full-scale UI/UX design, we cover every pixel.
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <div className="design-page__services-grid">
+            {data.subServices.map((service, index) => {
+              const Icon = serviceIcons[service.id] || Sparkles;
+              return (
+                <ScrollReveal key={index} animation="fade-up" delay={index * 60}>
+                  <div className="design-page__service-card">
+                    <div className="design-page__service-icon">
+                      <Icon size={28} />
+                    </div>
+                    
+                    <h3 className="design-page__service-title">
+                      {service.title}
+                    </h3>
+                    
+                    <p className="design-page__service-desc">
+                      {service.description}
+                    </p>
+                  </div>
+                </ScrollReveal>
+              );
+            })}
+          </div>
+        </Container>
+      </section>
+
+      {/* ============================================
+          PROCESS (Creative Flow)
+          ============================================ */}
+      <section className="design-page__process">
+        <Container>
+          <div className="design-page__showcase-header">
+            <ScrollReveal animation="fade-up">
+              <h2 className="design-page__section-title">
+                The Creative Process
+              </h2>
+              <p className="design-page__section-desc design-page__max-w-2xl">
+                How we take your vision from concept to reality.
+              </p>
+            </ScrollReveal>
           </div>
 
-          <ProcessSteps
-            steps={processSteps}
-            columns={3}
-            variant="cards"
-            badgeStyle="circle"
-            maxWidth="6xl"
-          />
+          <div className="design-page__process-timeline">
+            <div className="design-page__process-line" aria-hidden="true" />
+            
+            {data.process.steps.map((step, index) => (
+              <ScrollReveal key={index} animation="fade-up" delay={index * 80}>
+                <div className="design-page__process-step">
+                  <div className="design-page__step-circle">
+                    {index + 1}
+                  </div>
+                  <h3 className="design-page__step-title">
+                    {step.title}
+                  </h3>
+                  <p className="design-page__step-desc">
+                    {step.description}
+                  </p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
         </Container>
-      </Section>
+      </section>
 
       {/* CTA Section */}
-      <CTASection
+      {data.relatedServices && data.relatedServices.length > 0 && (
+        <RelatedServicesGrid
+          title="Related Services"
+          subtitle="Pair design with these services for a complete digital experience"
+          services={data.relatedServices}
+        />
+      )}
+      <IncludedInSolutions
+        serviceSlug="design"
+        subtitle="Our design service is bundled into these complete solution packages"
+      />
+      <ServiceTestimonial
+        serviceSlug="design"
+        subtitle="Hear from clients who transformed their brand with our design expertise"
+      />
+      <FunkyCTA
         title={data.cta.title}
         description={data.cta.description}
-        primaryButtonText={data.cta.buttonText}
-        primaryButtonPage={data.cta.buttonPage as any}
-        gradient="purple"
+        buttonText={data.cta.buttonText}
+        buttonPage={data.cta.buttonPage}
+        benefits={[
+          'User-centric design methodology',
+          'WCAG 2.1 AA accessibility baked in',
+          'Conversion-optimised layouts',
+          'Full design system handoff'
+        ]}
       />
     </>
   );

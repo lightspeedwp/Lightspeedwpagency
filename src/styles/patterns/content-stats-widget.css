@@ -1,0 +1,172 @@
+/**
+ * ContentStatsWidget Pattern Styles
+ *
+ * Animated counters showing dynamic content totals
+ * BEM: .content-stats__*
+ */
+
+.content-stats {
+  padding: var(--spacing-10) var(--spacing-0);
+}
+
+.content-stats__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-4);
+}
+
+@media (min-width: 768px) {
+  .content-stats__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ── Stat Card ── */
+
+.content-stats__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-3);
+  padding: var(--spacing-6) var(--spacing-4);
+  background: var(--card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-xl);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition:
+    border-color var(--transition-base) var(--ease-in-out),
+    box-shadow var(--transition-base) var(--ease-in-out);
+}
+
+.content-stats__card:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-glow-sm);
+}
+
+/* Neon glow accent line at top */
+.content-stats__card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--primary), transparent);
+  opacity: 0;
+  transition: opacity var(--transition-base) var(--ease-in-out);
+}
+
+.content-stats__card:hover::before {
+  opacity: 1;
+}
+
+.content-stats__icon-wrap {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-lg);
+  background: var(--primary-soft);
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.content-stats__value {
+  font-family: var(--font-primary);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+.content-stats__label {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-normal);
+}
+
+/* ── Compact Variant (inline horizontal) ── */
+
+.content-stats--compact .content-stats__grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--spacing-6);
+}
+
+.content-stats--compact .content-stats__card {
+  flex-direction: row;
+  padding: var(--spacing-3) var(--spacing-5);
+  border-radius: var(--radius-full);
+  gap: var(--spacing-2);
+  text-align: left;
+}
+
+.content-stats--compact .content-stats__icon-wrap {
+  width: 36px;
+  height: 36px;
+}
+
+.content-stats--compact .content-stats__value {
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-semibold);
+}
+
+.content-stats--compact .content-stats__label {
+  font-size: var(--text-xs);
+}
+
+/* ── Funky Variant (Neon) ── */
+
+.content-stats--funky .content-stats__grid {
+  gap: var(--spacing-6);
+}
+
+.content-stats--funky .content-stats__card {
+  background: color-mix(in srgb, var(--color-white) 3%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-white) 10%, transparent);
+  backdrop-filter: blur(10px);
+  box-shadow: none;
+}
+
+.content-stats--funky .content-stats__card:hover {
+  background: color-mix(in srgb, var(--color-white) 8%, transparent);
+  border-color: var(--accent);
+  box-shadow: 0 0 20px color-mix(in srgb, var(--accent) 20%, transparent);
+  transform: translateY(-5px);
+}
+
+.content-stats--funky .content-stats__card::before {
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+}
+
+.content-stats--funky .content-stats__icon-wrap {
+  background: color-mix(in srgb, var(--color-white) 5%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-white) 10%, transparent);
+  color: var(--accent);
+  box-shadow: 0 0 15px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
+.content-stats--funky .content-stats__card:hover .content-stats__icon-wrap {
+  background: var(--accent);
+  color: var(--color-white);
+  border-color: var(--accent);
+  transform: scale(1.1) rotate(5deg);
+}
+
+.content-stats--funky .content-stats__value {
+  color: var(--color-white);
+  text-shadow: 0 0 10px var(--shadow-neon);
+}
+
+.content-stats--funky .content-stats__label {
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+  font-size: var(--text-xs);
+}

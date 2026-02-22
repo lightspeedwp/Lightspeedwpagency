@@ -10,7 +10,7 @@
  */
 
 import { Phone, Mail, MapPin, Clock, Globe, MessageCircle } from 'lucide-react';
-import '@/styles/patterns/contact-info.css';
+
 
 export type ContactInfoType = 'phone' | 'email' | 'address' | 'hours' | 'website' | 'chat';
 

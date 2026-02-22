@@ -18,7 +18,6 @@
 
 import React from 'react';
 
-import '@/styles/blocks/design/stack.css';
 
 export interface StackProps {
   /** Vertical spacing between children (0-24) */

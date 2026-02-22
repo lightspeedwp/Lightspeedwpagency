@@ -5,13 +5,13 @@
  * Real content extracted from https://lightspeedwp.agency
  * 
  * **REAL CONTENT SOURCE:** https://lightspeedwp.agency/services
- * **Last Updated:** 2025-01-09
+ * **Last Updated:** 2026-02-16
  * 
  * In WordPress, this would be a Custom Post Type: 'service' with
  * custom fields for pricing, features, and service details.
  */
 
-import { LucideIcon, Palette, Code, Search, FileText, Globe, Shield } from 'lucide-react';
+import { LucideIcon, Palette, Code, Search, FileText, Globe, Shield, Zap, Accessibility, Brain, MessageSquare } from 'lucide-react';
 
 /**
  * Service Category Types
@@ -73,7 +73,7 @@ export const services: Service[] = [
   // Design Services (3)
   {
     id: 'web-design',
-    name: 'Web Design',
+    name: 'Web design',
     slug: 'web-design',
     tagline: 'Beautiful, conversion-focused website design',
     description: 'Create stunning, user-friendly websites that convert visitors into customers. Our design process focuses on your business goals while delivering exceptional user experiences.',
@@ -105,7 +105,7 @@ export const services: Service[] = [
   },
   {
     id: 'ui-ux-design',
-    name: 'UI/UX Design',
+    name: 'UI/UX design',
     slug: 'ui-ux-design',
     tagline: 'User-centered design that drives engagement',
     description: 'Design intuitive interfaces and seamless user experiences based on research and best practices. We create designs that users love and that drive business results.',
@@ -137,7 +137,7 @@ export const services: Service[] = [
   },
   {
     id: 'brand-identity',
-    name: 'Brand Identity',
+    name: 'Brand identity',
     slug: 'brand-identity',
     tagline: 'Build a memorable brand that stands out',
     description: 'Develop a cohesive brand identity that resonates with your target audience and differentiates you from competitors.',
@@ -171,10 +171,10 @@ export const services: Service[] = [
   // Development Services (3)
   {
     id: 'wordpress-development',
-    name: 'WordPress Development',
+    name: 'WordPress development',
     slug: 'wordpress-development',
     tagline: 'Custom WordPress solutions built to scale',
-    description: 'Build powerful, flexible WordPress websites with custom themes and plugins. Specializing in block themes and full site editing.',
+    description: 'Build powerful, flexible <i>WordPress</i> websites with custom themes and plugins. Specializing in block themes and full site editing.',
     category: 'development',
     icon: Code,
     features: [
@@ -203,7 +203,7 @@ export const services: Service[] = [
   },
   {
     id: 'custom-development',
-    name: 'Custom Development',
+    name: 'Custom development',
     slug: 'custom-development',
     tagline: 'Bespoke solutions for unique requirements',
     description: 'Build custom web applications and integrations tailored to your specific business needs.',
@@ -234,10 +234,10 @@ export const services: Service[] = [
   },
   {
     id: 'ecommerce-development',
-    name: 'E-commerce Development',
+    name: 'E-commerce development',
     slug: 'ecommerce-development',
     tagline: 'Powerful online stores that drive sales',
-    description: 'Create high-converting e-commerce experiences with WooCommerce or custom solutions.',
+    description: 'Create high-converting e-commerce experiences with <i>WooCommerce</i> or custom solutions.',
     category: 'development',
     icon: Globe,
     features: [
@@ -267,7 +267,7 @@ export const services: Service[] = [
   // Strategy Services (3)
   {
     id: 'discovery-strategy',
-    name: 'Discovery & Strategy',
+    name: 'Discovery & strategy',
     slug: 'discovery-strategy',
     tagline: 'Strategic planning for digital success',
     description: 'Define your digital strategy with research-driven insights and actionable recommendations.',
@@ -299,7 +299,7 @@ export const services: Service[] = [
   },
   {
     id: 'content-strategy',
-    name: 'Content Strategy',
+    name: 'Content strategy',
     slug: 'content-strategy',
     tagline: 'Content that engages and converts',
     description: 'Develop a comprehensive content strategy that aligns with your business goals and audience needs.',
@@ -330,7 +330,7 @@ export const services: Service[] = [
   },
   {
     id: 'seo-optimization',
-    name: 'SEO Optimization',
+    name: 'SEO optimization',
     slug: 'seo-optimization',
     tagline: 'Increase visibility and organic traffic',
     description: 'Improve your search engine rankings with technical SEO, content optimization, and ongoing monitoring.',
@@ -363,7 +363,7 @@ export const services: Service[] = [
   // Support Services (3)
   {
     id: 'website-maintenance',
-    name: 'Website Maintenance',
+    name: 'Website maintenance',
     slug: 'website-maintenance',
     tagline: 'Keep your website secure and up-to-date',
     description: 'Ongoing maintenance, updates, and support to keep your website running smoothly.',
@@ -394,10 +394,10 @@ export const services: Service[] = [
   },
   {
     id: 'website-migration',
-    name: 'Website Migration',
+    name: 'Website migration',
     slug: 'website-migration',
     tagline: 'Seamless migration to WordPress',
-    description: 'Migrate your website to WordPress with zero downtime and no data loss.',
+    description: 'Migrate your website to <i>WordPress</i> with zero downtime and no data loss.',
     category: 'support',
     icon: Globe,
     features: [
@@ -426,7 +426,7 @@ export const services: Service[] = [
   },
   {
     id: 'security-hardening',
-    name: 'Security Hardening',
+    name: 'Security hardening',
     slug: 'security-hardening',
     tagline: 'Protect your website from threats',
     description: 'Comprehensive security audit and hardening to protect against attacks and vulnerabilities.',
@@ -454,6 +454,132 @@ export const services: Service[] = [
     ],
     buttonText: 'Learn More',
     buttonPage: 'security-service',
+  },
+
+  // Optimisation Services (4)
+  {
+    id: 'performance-optimisation',
+    name: 'Performance optimisation',
+    slug: 'performance-optimisation',
+    tagline: 'Lightning-fast Core Web Vitals scores',
+    description: 'Optimise your WordPress site for speed, stability, and superior user experience with sub-second load times.',
+    category: 'strategy',
+    icon: Zap,
+    features: [
+      'Core Web Vitals audit',
+      'Code & database optimisation',
+      'Advanced caching (Redis, CDN)',
+      'Image & asset optimisation',
+      'Server-side performance',
+      'Ongoing monitoring',
+    ],
+    pricing: {
+      starting: '$2,000',
+      typical: '$3,000 - $6,000',
+      timeframe: '1-3 weeks',
+    },
+    deliverables: [
+      'Performance audit report',
+      'Lighthouse score improvements',
+      'Caching configuration',
+      'CDN setup',
+      'Monitoring dashboard',
+    ],
+    buttonText: 'Learn More',
+    buttonPage: 'performance',
+  },
+  {
+    id: 'accessibility-compliance',
+    name: 'Accessibility compliance',
+    slug: 'accessibility-compliance',
+    tagline: 'WCAG 2.1 AA/AAA compliant websites',
+    description: 'Audit, remediate, and build WordPress sites that welcome every visitor regardless of ability or assistive technology.',
+    category: 'strategy',
+    icon: Accessibility,
+    features: [
+      'WCAG 2.1 compliance audit',
+      'Accessibility remediation',
+      'Inclusive design systems',
+      'Assistive technology testing',
+      'Ongoing compliance monitoring',
+      'Staff accessibility training',
+    ],
+    pricing: {
+      starting: '$2,500',
+      typical: '$4,000 - $8,000',
+      timeframe: '2-4 weeks',
+    },
+    deliverables: [
+      'WCAG compliance report',
+      'Prioritised remediation plan',
+      'Assistive tech test results',
+      'Accessibility statement',
+      'Quarterly re-audit schedule',
+    ],
+    buttonText: 'Learn More',
+    buttonPage: 'accessibility',
+  },
+  {
+    id: 'ai-engine-optimisation',
+    name: 'AI engine optimisation',
+    slug: 'ai-engine-optimisation',
+    tagline: 'Cut AI costs by 60% while keeping quality',
+    description: 'Fine-tune, accelerate, and scale AI models running on your WordPress stack — from inference speed to cost efficiency.',
+    category: 'strategy',
+    icon: Brain,
+    features: [
+      'Model benchmarking (6+ providers)',
+      'Prompt engineering & tuning',
+      'Semantic inference caching',
+      'Cost & rate-limit management',
+      'Quality regression testing',
+      'Real-time cost dashboards',
+    ],
+    pricing: {
+      starting: '$3,000',
+      typical: '$5,000 - $10,000',
+      timeframe: '2-4 weeks',
+    },
+    deliverables: [
+      'AI engine audit report',
+      'Optimised prompt library',
+      'Caching layer implementation',
+      'Cost monitoring dashboard',
+      'Quality test suite',
+    ],
+    buttonText: 'Learn More',
+    buttonPage: 'ai-engine-optimisation',
+  },
+  {
+    id: 'answer-engine-optimisation',
+    name: 'Answer engine optimisation',
+    slug: 'answer-engine-optimisation',
+    tagline: 'Get cited by ChatGPT, Perplexity & AI Overviews',
+    description: 'Optimise your content to be the answer AI engines serve — the new front page of the internet.',
+    category: 'strategy',
+    icon: MessageSquare,
+    features: [
+      'AI visibility audit',
+      'Schema & structured data',
+      'Entity authority building',
+      'AI-friendly content formatting',
+      'Citation tracking (5+ engines)',
+      'Monthly share-of-voice reports',
+    ],
+    pricing: {
+      starting: '$2,500',
+      typical: '$4,000 - $8,000/month',
+      timeframe: 'Ongoing',
+    },
+    deliverables: [
+      'AI citation audit report',
+      'Schema implementation',
+      'Content restructuring plan',
+      'Monthly citation reports',
+      'Competitor benchmarking',
+    ],
+    buttonText: 'Learn More',
+    buttonPage: 'answer-engine-optimisation',
   },
 ];
 
@@ -559,7 +685,7 @@ export interface SimpleService {
   features: string[];
 }
 
-import { HardDrive, Zap, Mail, RefreshCw } from 'lucide-react';
+import { HardDrive, RefreshCw } from 'lucide-react';
 
 /**
  * Simplified Services Array (9 services for grid display)
@@ -691,7 +817,7 @@ export const servicesSimplified: SimpleService[] = [
   },
   {
     id: 'mailchimp',
-    icon: Mail,
+    icon: MessageSquare,
     title: 'Mailchimp',
     description: 'We can help you make the most of Mailchimp email marketing.',
     page: 'mailchimp',

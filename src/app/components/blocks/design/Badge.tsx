@@ -6,7 +6,6 @@
  */
 
 import React from 'react';
-import '@/styles/blocks/design/badge.css';
 
 export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
   variant?: 'default' | 'primary' | 'secondary' | 'outline' | 'success' | 'warning' | 'error';

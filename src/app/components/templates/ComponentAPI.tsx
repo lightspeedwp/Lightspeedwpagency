@@ -12,7 +12,7 @@
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 
-import { Breadcrumbs } from '../common/Breadcrumbs';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { FileCode } from 'lucide-react';
 
 export function ComponentAPI() {
@@ -28,15 +28,13 @@ export function ComponentAPI() {
     >
       <div style={{ flex: 1 }}>
         {/* Breadcrumbs */}
-        <section className="wp-block-breadcrumbs-section">
-            <Breadcrumbs
-              items={[
-                { label: 'Home', page: 'home' },
-                { label: 'Developer Tools', page: 'dev-tools' },
-                { label: 'Component API' }
-              ]}
-            />
-        </section>
+        <BreadcrumbPart
+          items={[
+            { label: 'Home', page: 'home' },
+            { label: 'Developer Tools', page: 'dev-tools' },
+            { label: 'Component API' },
+          ]}
+        />
 
         <Section background="default" spacing="lg">
           <Container>
@@ -46,8 +44,8 @@ export function ComponentAPI() {
                   display: 'inline-flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  width: '80px',
-                  height: '80px',
+                  width: 'var(--spacing-20)',
+                  height: 'var(--spacing-20)',
                   borderRadius: 'var(--radius-lg)',
                   backgroundColor: 'var(--secondary)',
                   marginBottom: 'var(--spacing-6)'

@@ -24,6 +24,8 @@ Animations should **enhance user experience** without causing distraction, motio
 
 **CRITICAL:** All animations MUST respect user motion preferences.
 
+**For comprehensive reduced-motion coding standards, see [REDUCED-MOTION-STANDARDS.md](/guidelines/REDUCED-MOTION-STANDARDS.md).**
+
 ```css
 /* Default: Full animations */
 .element {

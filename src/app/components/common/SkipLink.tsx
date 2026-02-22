@@ -7,8 +7,6 @@
  * @see {@link /guidelines/components/SkipLink.md}
  */
 
-import '@/styles/components/skip-link.css';
-
 /**
  * SkipLink Component
  * 

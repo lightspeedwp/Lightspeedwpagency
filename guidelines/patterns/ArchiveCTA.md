@@ -112,7 +112,7 @@ import { blogArchiveCTA } from '../../data/cta';
 
 ### Portfolio Archive
 ```tsx
-import { portfolioArchiveCTA } from '../../data/cta';
+import { portfolioPageCTA } from '../../data/cta';
 ```
 - **Title:** "Like What You See?"
 - **Button:** "Discuss Your Project"

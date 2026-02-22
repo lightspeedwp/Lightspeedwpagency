@@ -13,7 +13,6 @@ import { Section } from '@/app/components/common/Section';
 import { Breadcrumbs } from '@/app/components/common/Breadcrumbs';
 import { tours } from '@/app/data/tour-operator';
 import { MapPin, Calendar, Check, Info } from 'lucide-react';
-import '@/styles/templates/single-tour.css';
 
 export function SingleTourTemplate() {
   const tour = tours[0]; // Default to first tour for demo
@@ -33,9 +32,8 @@ export function SingleTourTemplate() {
             items={[
               { label: 'Home', href: '/' },
               { label: 'Tours', href: '/tours' },
-              { label: tour.title }
+              { label: tour.title },
             ]}
-            variant="dark"
           />
           <h1 className="single-tour__title">{tour.title}</h1>
           <div className="single-tour__meta-row">

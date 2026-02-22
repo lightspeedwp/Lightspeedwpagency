@@ -1,7 +1,7 @@
 # Mock Data System - Complete Documentation
 
-**Version:** 2.0  
-**Last Updated:** December 25, 2024  
+**Version:** 2.1
+**Last Updated:** February 16, 2026
 **Status:** ✅ **PRODUCTION READY**
 
 ---
@@ -26,6 +26,9 @@ The LSX Design mock data system provides realistic, comprehensive data for:
 - **Site Pages** - Complete page hierarchy and navigation
 - **Portfolio Projects** - Real WordPress/WooCommerce case studies
 - **Blog Posts** - 2025 blog content with authors and tags
+- **Videos** - Video tutorials and webinars
+- **Podcasts** - Audio episodes and interviews
+- **Taxonomies** - Centralized category and tag definitions
 - **FAQs** - Question collections for all templates
 
 ### **Data Scale**
@@ -36,11 +39,9 @@ The LSX Design mock data system provides realistic, comprehensive data for:
 | **Portfolio Projects** | 12 projects | With full case studies |
 | **Blog Posts** | 20 posts | All from 2025 |
 | **Blog Authors** | 6 authors | With bios and social links |
-| **Project Groups** | 8 industries | Custom taxonomy |
-| **Project Tags** | 15 technologies | Custom taxonomy |
-| **Project Types** | 6 types | Custom taxonomy |
-| **Blog Categories** | 9 categories | Default taxonomy |
-| **Post Tags** | 17 tags | Default taxonomy |
+| **Videos** | 4 videos | Tutorials and case studies |
+| **Podcasts** | 6 episodes | Interviews and tech talks |
+| **Taxonomies** | 50+ terms | Groups, Tags, Types, Categories |
 | **FAQ Collections** | 13 collections | Various contexts |
 
 ---
@@ -55,6 +56,9 @@ The LSX Design mock data system provides realistic, comprehensive data for:
 ├── site-pages.ts              # All site pages + navigation (NEW)
 ├── portfolio-projects.ts      # Portfolio with taxonomies (NEW)
 ├── blog-posts.ts              # Blog posts, authors, tags (NEW)
+├── videos.ts                  # Videos with taxonomies (NEW)
+├── podcasts.ts                # Podcasts with episodes (NEW)
+├── taxonomies.ts              # Centralized taxonomy definitions (NEW)
 ├── faqs.ts                    # FAQ collections (existing)
 │
 ├── pages.ts                   # Legacy wrapper (backward compat)
@@ -309,6 +313,40 @@ const recent = getRecentPosts(5);
 
 ---
 
+## 📺 **VIDEOS & PODCASTS** (`videos.ts`, `podcasts.ts`)
+
+### **Videos Structure**
+
+```typescript
+interface Video {
+  id: string;
+  slug: string;
+  title: string;
+  embedUrl: string;
+  duration: string;
+  categories: string[];
+  tags: string[];
+  // ...
+}
+```
+
+### **Podcasts Structure**
+
+```typescript
+interface Podcast {
+  id: string;
+  slug: string;
+  title: string;
+  audioUrl: string;
+  season: number;
+  episode: number;
+  categories: string[];
+  // ...
+}
+```
+
+---
+
 ## 🗺️ **WORDPRESS MAPPING**
 
 ### **How Mock Data Maps to WordPress**
@@ -318,7 +356,10 @@ const recent = getRecentPosts(5);
 | `site-pages.ts` | **Pages** (post_type: 'page') |
 | `portfolio-projects.ts` | **Custom Post Type: 'portfolio'** or 'project' |
 | `blog-posts.ts` | **Posts** (post_type: 'post') |
+| `videos.ts` | **Custom Post Type: 'video'** |
+| `podcasts.ts` | **Custom Post Type: 'podcast'** |
 | `faqs.ts` | **Custom Post Type: 'faq'** |
+| `taxonomies.ts` | **Taxonomy Definitions** |
 | `projectGroups` | **Custom Taxonomy: 'project_group'** |
 | `projectTags` | **Custom Taxonomy: 'project_tag'** |
 | `projectTypes` | **Custom Taxonomy: 'project_type'** |
@@ -613,6 +654,6 @@ console.log(results);
 
 ---
 
-**Last Updated:** December 25, 2024  
-**Version:** 2.0  
+**Last Updated:** February 16, 2026  
+**Version:** 2.1
 **Status:** ✅ **PRODUCTION READY**

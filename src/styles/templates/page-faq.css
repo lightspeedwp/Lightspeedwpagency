@@ -1,20 +1,20 @@
 /**
  * FAQ Page Template Styles
- * 
- * Dedicated styles for FAQ page layout and components.
- * 100% CSS variables, reusable classes.
+ *
+ * Funky Neon Redesign — FAQ page with:
+ *   - Gradient hero with orbs and mesh
+ *   - Glassmorphism stat cards with glow hover
+ *   - Neon category icons with gradient background
+ *   - Glow-on-open accordion items
+ *   - Full dark mode overrides
+ *   - Reduced motion support
+ *
+ * 100% CSS variables, BEM naming: .faq-page__*
  */
 
 /* ============================================
-   HERO & BREADCRUMBS
+   1. HERO SECTION
    ============================================ */
-
-.faq-page__breadcrumbs {
-  padding-top: var(--spacing-4);
-  padding-bottom: var(--spacing-4);
-  background-color: var(--background);
-  border-bottom: 1px solid var(--border-soft);
-}
 
 .faq-page__hero {
   background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
@@ -34,10 +34,11 @@
   opacity: 0.3;
   filter: blur(80px);
   transform: translate(30%, -30%);
+  pointer-events: none;
 }
 
 .faq-page__hero-content {
-  max-width: var(--max-w-4xl);
+  max-width: var(--wp--style--global--content-size);
   text-align: center;
   position: relative;
   z-index: 10;
@@ -48,11 +49,13 @@
 }
 
 .faq-page__hero-badge {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   padding: var(--spacing-2) var(--spacing-4);
   margin-bottom: var(--spacing-6);
   background-color: var(--overlay-white-15);
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border-radius: var(--radius-full);
   border: 1px solid var(--overlay-white-subtle);
   font-size: var(--text-small);
@@ -73,7 +76,7 @@
 }
 
 .faq-page__hero-highlight {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  background: linear-gradient(135deg, var(--color-white), var(--accent));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -100,12 +103,15 @@
   text-align: center;
 }
 
+
 /* ============================================
-   STATS SECTION
+   2. STATS SECTION — Glassmorphism + Glow
    ============================================ */
 
 .faq-page__stats-section {
+  position: relative;
   background-color: var(--background);
+  overflow: hidden;
 }
 
 .faq-page__stats-container {
@@ -134,9 +140,18 @@
 .faq-page__stat-card {
   text-align: center;
   padding: var(--spacing-6);
-  background-color: var(--card);
-  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--card) 80%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: var(--radius-xl);
   border: 1px solid var(--border-soft);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.faq-page__stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-glow);
+  border-color: color-mix(in srgb, var(--primary) 30%, transparent);
 }
 
 .faq-page__stat-value {
@@ -144,7 +159,10 @@
   font-size: var(--text-h2);
   font-weight: var(--font-weight-bold);
   margin-bottom: var(--spacing-1);
-  color: var(--primary);
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .faq-page__stat-label {
@@ -153,12 +171,37 @@
   color: var(--muted-foreground);
 }
 
+
 /* ============================================
-   FAQ CATEGORIES
+   3. FAQ CATEGORIES — Gradient bg + neon icons
    ============================================ */
 
 .faq-page__categories-section {
-  background-color: var(--muted);
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    180deg,
+    var(--muted) 0%,
+    color-mix(in srgb, var(--muted) 60%, var(--background)) 100%
+  );
+}
+
+/* Subtle mesh overlay */
+.faq-page__categories-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--primary) 3%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--primary) 3%, transparent) 1px, transparent 1px);
+  background-size: 56px 56px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.faq-page__categories-section > * {
+  position: relative;
+  z-index: 1;
 }
 
 .faq-page__categories-container {
@@ -178,18 +221,27 @@
   gap: var(--spacing-4);
   padding-bottom: var(--spacing-4);
   margin-bottom: var(--spacing-8);
-  border-bottom: 2px solid var(--border);
+  border-bottom: 2px solid transparent;
+  border-image: linear-gradient(90deg, var(--primary), var(--accent), transparent) 1;
 }
 
+/* Neon gradient icon wrapper */
 .faq-page__category-icon {
   width: 48px;
   height: 48px;
-  border-radius: var(--radius);
-  background-color: var(--primary-soft);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 15%, transparent), color-mix(in srgb, var(--accent) 10%, transparent));
+  border: 1px solid color-mix(in srgb, var(--primary) 20%, transparent);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--primary);
+  flex-shrink: 0;
+  transition: box-shadow 0.3s ease;
+}
+
+.faq-page__category-header:hover .faq-page__category-icon {
+  box-shadow: var(--shadow-glow-sm);
 }
 
 .faq-page__category-title {
@@ -207,8 +259,9 @@
   color: var(--muted-foreground);
 }
 
+
 /* ============================================
-   ACCORDION
+   4. ACCORDION — Glow on open/hover
    ============================================ */
 
 .faq-page__accordion-list {
@@ -218,10 +271,24 @@
 }
 
 .faq-page__accordion-item {
-  background-color: var(--card);
-  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--card) 85%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: var(--radius-xl);
   border: 1px solid var(--border-soft);
   overflow: hidden;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.faq-page__accordion-item:hover {
+  border-color: color-mix(in srgb, var(--primary) 20%, transparent);
+}
+
+/* Active/expanded state — neon glow border */
+.faq-page__accordion-item--open,
+.faq-page__accordion-item:has(.faq-page__accordion-content) {
+  border-color: color-mix(in srgb, var(--primary) 35%, transparent);
+  box-shadow: var(--shadow-glow-sm);
 }
 
 .faq-page__accordion-button {
@@ -249,11 +316,12 @@
   color: var(--primary);
   flex-shrink: 0;
   transition: transform 0.3s ease;
+  filter: drop-shadow(0 0 3px color-mix(in srgb, var(--primary) 30%, transparent));
 }
 
 .faq-page__accordion-content {
   padding: 0 var(--spacing-6) var(--spacing-6) var(--spacing-6);
-  border-top: 1px solid var(--border-soft);
+  border-top: 1px solid color-mix(in srgb, var(--primary) 10%, transparent);
 }
 
 .faq-page__accordion-text {
@@ -262,6 +330,118 @@
   line-height: var(--line-height-relaxed);
   color: var(--muted-foreground);
   padding-top: var(--spacing-4);
-  /* margin-top converted to padding-top — answer spacing from question */
   margin-bottom: 0;
+}
+
+
+/* ============================================
+   5. DARK MODE OVERRIDES
+   ============================================ */
+
+/* Hero: deeper gradient in dark */
+.dark .faq-page__hero {
+  background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 70%, var(--background)) 0%, color-mix(in srgb, var(--accent) 40%, var(--background)) 100%);
+}
+
+.dark .faq-page__hero-orb {
+  opacity: 0.5;
+}
+
+/* Stats: stronger glass + glow */
+.dark .faq-page__stat-card {
+  background: color-mix(in srgb, var(--card) 50%, transparent);
+  border-color: color-mix(in srgb, var(--primary) 10%, transparent);
+}
+
+.dark .faq-page__stat-card:hover {
+  box-shadow: var(--shadow-neon);
+  border-color: color-mix(in srgb, var(--primary) 40%, transparent);
+}
+
+/* Categories section dark */
+.dark .faq-page__categories-section {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--background) 80%, var(--primary)) 0%,
+    var(--background) 100%
+  );
+}
+
+.dark .faq-page__categories-section::before {
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--primary) 6%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--primary) 6%, transparent) 1px, transparent 1px);
+}
+
+.dark .faq-page__category-icon {
+  background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 25%, transparent), color-mix(in srgb, var(--accent) 15%, transparent));
+  border-color: color-mix(in srgb, var(--primary) 35%, transparent);
+}
+
+.dark .faq-page__category-header:hover .faq-page__category-icon {
+  box-shadow: var(--shadow-glow);
+}
+
+/* Accordion dark: neon glow */
+.dark .faq-page__accordion-item {
+  background: color-mix(in srgb, var(--card) 50%, transparent);
+  border-color: color-mix(in srgb, var(--primary) 8%, transparent);
+}
+
+.dark .faq-page__accordion-item:hover {
+  border-color: color-mix(in srgb, var(--primary) 30%, transparent);
+  box-shadow: var(--shadow-glow-sm);
+}
+
+.dark .faq-page__accordion-item--open,
+.dark .faq-page__accordion-item:has(.faq-page__accordion-content) {
+  border-color: color-mix(in srgb, var(--primary) 50%, transparent);
+  box-shadow: var(--shadow-neon);
+}
+
+.dark .faq-page__accordion-chevron {
+  filter: drop-shadow(0 0 5px color-mix(in srgb, var(--primary) 50%, transparent));
+}
+
+
+/* ============================================
+   6. REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .faq-page__stat-card,
+  .faq-page__accordion-item,
+  .faq-page__accordion-chevron {
+    transition: none;
+  }
+
+  .faq-page__stat-card:hover {
+    transform: none;
+  }
+}
+
+
+/* ============================================
+   7. MOBILE OVERRIDES
+   ============================================ */
+
+@media (max-width: 767px) {
+  .faq-page__hero-orb {
+    width: 200px;
+    height: 200px;
+  }
+
+  .faq-page__category-header {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .faq-page__accordion-button {
+    padding: var(--spacing-4) var(--spacing-5);
+  }
+
+  .faq-page__accordion-content {
+    padding: 0 var(--spacing-5) var(--spacing-5) var(--spacing-5);
+  }
 }

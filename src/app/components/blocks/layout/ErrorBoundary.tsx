@@ -19,7 +19,6 @@
 import React, { Component, ReactNode } from 'react';
 import { AlertTriangle, RefreshCw, Home, ChevronDown, ChevronUp } from 'lucide-react';
 import { Button } from '../design/Buttons';
-import '@/styles/components/error-boundary.css';
 
 interface ErrorBoundaryProps {
   /** Child components to monitor for errors */
@@ -113,7 +112,7 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
         >
           <div
             style={{
-              maxWidth: '600px',
+              maxWidth: 'var(--wp--style--global--content-size)',
               width: '100%',
               textAlign: 'center',
             }}
@@ -284,7 +283,7 @@ export function ErrorFallback({
           fontSize: 'var(--text-base)',
           color: 'var(--muted-foreground)',
           textAlign: 'center',
-          maxWidth: '400px',
+          maxWidth: 'var(--wp--style--global--content-size)',
         }}
       >
         {error?.message || 'An unexpected error occurred.'}

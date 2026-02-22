@@ -11,33 +11,23 @@
  * @see /src/styles/templates/single-post.css
  */
 
-import { Container } from '@/app/components/common/Container';
-import { Section } from '@/app/components/common/Section';
-import { Breadcrumbs } from '@/app/components/common/Breadcrumbs';
-import { statusPost } from '@/app/data/posts-formats';
 import { MessageSquare, Heart, Share2 } from 'lucide-react';
-import '@/styles/blocks/post-formats/status.css';
-import '@/styles/templates/single-post.css';
 
 export function SingleStatusTemplate() {
   const post = statusPost;
 
   return (
     <>
-      <section className="single-post-breadcrumbs">
-        <Container>
-          <Breadcrumbs 
-            items={[
-              { label: 'Home', href: '/' },
-              { label: 'Blog', href: '/blog' },
-              { label: 'Status Updates', href: '/blog/format/status' },
-              { label: 'Status' }
-            ]}
-          />
-        </Container>
-      </section>
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Blog', href: '/blog' },
+          { label: 'Status', href: '/status-archive' },
+          { label: 'Update' },
+        ]}
+      />
 
-      <Section spacing="lg">
+      <article>
         <Container>
           <div className="wp-block-status-single">
             <article className="wp-block-status-card">
@@ -77,7 +67,7 @@ export function SingleStatusTemplate() {
             </article>
           </div>
         </Container>
-      </Section>
+      </article>
     </>
   );
 }

@@ -71,7 +71,6 @@ export const NavigationContext = createContext<NavigationContextType | null>(nul
  * navigateTo('/about');     // → /about (path passed through)
  */
 export function useNavigation(): NavigationContextType {
-  // Always call React Router hooks (Rules of Hooks compliance)
   const routerNavigate = useRouterNavigate();
   const location = useRouterLocation();
 
@@ -85,6 +84,9 @@ export function useNavigation(): NavigationContextType {
 
   const navigateTo = useCallback(
     (pageOrPath: string) => {
+      // scroll to top on navigation
+      window.scrollTo(0, 0);
+      
       if (context) {
         context.navigateTo(pageOrPath);
       } else {

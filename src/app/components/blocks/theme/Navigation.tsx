@@ -8,7 +8,6 @@
 import React from 'react';
 import * as NavigationMenuPrimitive from '@radix-ui/react-navigation-menu';
 import { ChevronDown } from 'lucide-react';
-import '@/styles/blocks/theme/nav-block.css';
 
 const NavigationMenu = React.forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Root>,
@@ -113,8 +112,12 @@ const NavigationMenuIndicator = React.forwardRef<
 ));
 NavigationMenuIndicator.displayName = NavigationMenuPrimitive.Indicator.displayName;
 
+// Export alias for standard usage
+const Navigation = NavigationMenu;
+
 export {
   navigationMenuTriggerStyle,
+  Navigation,
   NavigationMenu,
   NavigationMenuList,
   NavigationMenuItem,

@@ -16,9 +16,9 @@
  */
 
 import { useState, useCallback, useRef, useEffect } from 'react';
-import { Breadcrumbs } from '../common/Breadcrumbs';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { Copy, Check, Palette, Type, RulerIcon, BoxSelect, Circle, Layers, Zap, Eye } from 'lucide-react';
-import '@/styles/templates/design-tokens-reference.css';
+
 
 /* ═══════════════════════════════════════════
  * Token Data Definitions
@@ -318,9 +318,7 @@ export function DesignTokensReferenceTemplate() {
   return (
     <>
       {/* Breadcrumbs */}
-      <section className="wp-block-breadcrumbs-section wp-block-breadcrumbs-section--border">
-        <Breadcrumbs items={breadcrumbs} />
-      </section>
+      <BreadcrumbPart items={breadcrumbs} />
 
       <div className="tokens-ref">
         <div className="tokens-ref__inner">

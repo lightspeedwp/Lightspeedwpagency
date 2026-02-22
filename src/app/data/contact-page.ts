@@ -5,13 +5,14 @@
  * Real content extracted from https://lightspeedwp.agency/contact
  * 
  * **REAL CONTENT SOURCE:** https://lightspeedwp.agency/contact
- * **Last Updated:** 2025-01-09
+ * **Last Updated:** 2026-02-16
  * 
  * WordPress: Maps to page-contact.html template
  */
 
-import { Mail, Phone, MapPin, Clock, MessageSquare, Headphones } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, MessageSquare, Headphones, Award, Users } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
+import type { FAQ } from './faqs';
 
 /**
  * Contact Methods Interface
@@ -68,23 +69,23 @@ export const contactPageHero = {
     icon: 'MessageSquare',
     text: 'Get In Touch'
   },
-  title: 'Let\'s Build Something Amazing Together',
+  title: 'Let\'s build something amazing together',
   titleHighlight: 'Amazing', // Word to highlight
-  description: 'Whether you need a new WordPress website, WooCommerce store, or ongoing support - we\'re here to help. Send us a message and we\'ll get back to you within 24 hours.',
+  description: 'Whether you need a new <i>WordPress</i> website, <i>WooCommerce</i> store, or ongoing support - we\'re here to help. Send us a message and we\'ll get back to you within 24 hours.',
   stats: [
     {
-      icon: 'Award',
-      value: '22+',
+      icon: Award,
+      number: '22+',
       label: 'Years Experience'
     },
     {
-      icon: 'Users',
-      value: '120+',
+      icon: Users,
+      number: '120+',
       label: 'Websites Hosted'
     },
     {
-      icon: 'Clock',
-      value: '24hrs',
+      icon: Clock,
+      number: '24hrs',
       label: 'Response Time'
     }
   ]
@@ -103,7 +104,7 @@ export const contactPageReasons: WhyContactReason[] = [
   {
     icon: MessageSquare,
     title: 'Expert Consultation',
-    description: 'Get professional advice on your WordPress and WooCommerce projects from our experienced team'
+    description: 'Get professional advice on your <i>WordPress</i> and <i>WooCommerce</i> projects from our experienced team'
   },
   {
     icon: Headphones,
@@ -122,11 +123,6 @@ export const contactPageReasons: WhyContactReason[] = [
  * 
  * Real FAQs from LightSpeed contact page
  */
-export interface FAQ {
-  question: string;
-  answer: string;
-}
-
 export const contactPageFAQs: FAQ[] = [
   {
     question: 'What is the best way to contact LightSpeed?',

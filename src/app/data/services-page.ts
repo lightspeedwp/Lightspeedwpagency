@@ -5,7 +5,7 @@
  * Real content extracted from https://lightspeedwp.agency/services
  * 
  * **REAL CONTENT SOURCE:** https://lightspeedwp.agency/services
- * **Last Updated:** 2025-01-09
+ * **Last Updated:** 2026-02-16
  * 
  * WordPress: Maps to page-services.html template
  */
@@ -26,23 +26,23 @@ export interface Benefit {
 export const servicesPageBenefits: Benefit[] = [
   {
     icon: Award,
-    title: '22+ Years Experience',
-    description: 'Established in 2003, we\'ve been building WordPress websites since the platform\'s early days'
+    title: '22+ years experience',
+    description: 'Established in 2003, we\'ve been building <i>WordPress</i> websites since the platform\'s early days'
   },
   {
     icon: Users,
-    title: '120+ Websites Hosted',
-    description: 'Trusted by over 120 businesses with safe, stable managed WordPress hosting'
+    title: '120+ websites hosted',
+    description: 'Trusted by over 120 businesses with safe, stable managed <i>WordPress</i> hosting'
   },
   {
     icon: Heart,
-    title: 'WooExpert Certified',
-    description: 'Official WooCommerce Expert agency partner - proven expertise in eCommerce solutions'
+    title: 'WooExpert certified',
+    description: 'Official <i>WooCommerce</i> Expert agency partner - proven expertise in eCommerce solutions'
   },
   {
     icon: TrendingUp,
-    title: 'Proven Results',
-    description: 'Hundreds of successful WordPress and WooCommerce projects delivered globally'
+    title: 'Proven results',
+    description: 'Hundreds of successful <i>WordPress</i> and <i>WooCommerce</i> projects delivered globally'
   }
 ];
 
@@ -52,18 +52,18 @@ export const servicesPageBenefits: Benefit[] = [
  * Real industries from LightSpeed portfolio
  */
 export const servicesPageIndustries: string[] = [
-  'Tourism & Travel',
-  'Ecommerce & Retail',
-  'Professional Services',
-  'Healthcare & Medical',
-  'Education & Training',
-  'Non-Profit Organizations',
-  'Real Estate',
-  'Finance & Insurance',
+  'Tourism & travel',
+  'Ecommerce & retail',
+  'Professional services',
+  'Healthcare & medical',
+  'Education & training',
+  'Non-profit organizations',
+  'Real estate',
+  'Finance & insurance',
   'Technology & SaaS',
-  'Hospitality & Events',
+  'Hospitality & events',
   'Manufacturing',
-  'Legal Services'
+  'Legal services'
 ];
 
 /**
@@ -80,27 +80,27 @@ export interface ProcessStep {
 export const servicesPageProcess: ProcessStep[] = [
   {
     step: 1,
-    title: 'Discovery Call',
+    title: 'Discovery call',
     description: 'We discuss your business goals, requirements, and vision for the project'
   },
   {
     step: 2,
-    title: 'Proposal & Planning',
+    title: 'Proposal & planning',
     description: 'Detailed project scope, timeline, and transparent pricing proposal'
   },
   {
     step: 3,
-    title: 'Design & Development',
+    title: 'Design & development',
     description: 'Collaborative design and expert development with regular progress updates'
   },
   {
     step: 4,
-    title: 'Testing & Launch',
+    title: 'Testing & launch',
     description: 'Comprehensive quality assurance testing followed by smooth launch'
   },
   {
     step: 5,
-    title: 'Ongoing Support',
+    title: 'Ongoing support',
     description: 'Continued maintenance, updates, and optimization to ensure long-term success'
   }
 ];
@@ -118,15 +118,15 @@ export interface FAQ {
 export const servicesPageFAQs: FAQ[] = [
   {
     question: 'What services does LightSpeed offer?',
-    answer: 'We offer comprehensive WordPress and WooCommerce services including Discovery & Planning, Custom Design, Theme & Plugin Development, WooCommerce Development, Content Strategy, SEO Optimization, Website Maintenance, Migrations, Security Services, Managed Hosting, Email Marketing (Mailchimp), and Ongoing Support. We handle everything from simple website updates to complex enterprise solutions.'
+    answer: 'We offer comprehensive <i>WordPress</i> and <i>WooCommerce</i> services including Discovery & Planning, Custom Design, Theme & Plugin Development, WooCommerce Development, Content Strategy, SEO Optimization, Website Maintenance, Migrations, Security Services, Managed Hosting, Email Marketing (Mailchimp), and Ongoing Support. We handle everything from simple website updates to complex enterprise solutions.'
   },
   {
     question: 'How long does a typical project take?',
-    answer: 'Project timelines vary based on scope and complexity. A simple website redesign typically takes 4-6 weeks, a custom WooCommerce store takes 8-12 weeks, and complex enterprise projects may take 3-6 months. We provide detailed timelines during the proposal stage and keep you updated with regular progress reports throughout development.'
+    answer: 'Project timelines vary based on scope and complexity. A simple website redesign typically takes 4-6 weeks, a custom <i>WooCommerce</i> store takes 8-12 weeks, and complex enterprise projects may take 3-6 months. We provide detailed timelines during the proposal stage and keep you updated with regular progress reports throughout development.'
   },
   {
     question: 'Do you work with existing WordPress sites?',
-    answer: 'Absolutely! We work with both new and existing WordPress sites. We can build new sites from scratch, redesign existing sites, add new functionality, optimize performance, fix bugs and errors, migrate sites from other platforms, and provide ongoing maintenance. Our team can work with any WordPress setup regardless of when it was built.'
+    answer: 'Absolutely! We work with both new and existing <i>WordPress</i> sites. We can build new sites from scratch, redesign existing sites, add new functionality, optimize performance, fix bugs and errors, migrate sites from other platforms, and provide ongoing maintenance. Our team can work with any <i>WordPress</i> setup regardless of when it was built.'
   },
   {
     question: 'What is your pricing structure?',
@@ -134,7 +134,7 @@ export const servicesPageFAQs: FAQ[] = [
   },
   {
     question: 'Do you provide ongoing support after launch?',
-    answer: 'Yes! We offer comprehensive support and maintenance packages including WordPress core updates, plugin updates, security monitoring, daily backups, performance optimization, bug fixes, content updates, and priority technical support. We also provide training for your team to manage the site independently if preferred.'
+    answer: 'Yes! We offer comprehensive support and maintenance packages including <i>WordPress</i> core updates, plugin updates, security monitoring, daily backups, performance optimization, bug fixes, content updates, and priority technical support. We also provide training for your team to manage the site independently if preferred.'
   },
   {
     question: 'Can you help with SEO and digital marketing?',
@@ -142,11 +142,11 @@ export const servicesPageFAQs: FAQ[] = [
   },
   {
     question: 'Are you a WooCommerce expert agency?',
-    answer: 'Yes! We are an official WooExpert certified agency - WooCommerce\'s highest certification for agencies. We have extensive experience building custom WooCommerce stores, integrating payment gateways, setting up inventory management, implementing custom shipping solutions, and optimizing store performance for conversions.'
+    answer: 'Yes! We are an official <i>WooExpert</i> certified agency - <i>WooCommerce\'s</i> highest certification for agencies. We have extensive experience building custom <i>WooCommerce</i> stores, integrating payment gateways, setting up inventory management, implementing custom shipping solutions, and optimizing store performance for conversions.'
   },
   {
     question: 'Do you offer managed WordPress hosting?',
-    answer: 'Yes! We provide safe and stable managed WordPress hosting for over 120 websites. Our hosting includes automated daily backups, security monitoring, performance optimization, uptime monitoring, WordPress updates, and priority technical support. We use enterprise-grade infrastructure to ensure your site is fast, secure, and always available.'
+    answer: 'Yes! We provide safe and stable managed <i>WordPress</i> hosting for over 120 websites. Our hosting includes automated daily backups, security monitoring, performance optimization, uptime monitoring, <i>WordPress</i> updates, and priority technical support. We use enterprise-grade infrastructure to ensure your site is fast, secure, and always available.'
   }
 ];
 
@@ -158,9 +158,9 @@ export const servicesPageHero = {
     icon: 'Sparkles',
     text: 'WordPress & WooCommerce Experts'
   },
-  title: 'Expert WordPress Services',
+  title: 'Expert WordPress services',
   titleHighlight: 'WordPress', // Word to highlight
-  description: 'Comprehensive WordPress and WooCommerce services to build, grow, and maintain your online presence. From custom development to ongoing support, we\'ve got you covered.',
+  description: 'Comprehensive <i>WordPress</i> and <i>WooCommerce</i> services to build, grow, and maintain your online presence. From custom development to ongoing support, we\'ve got you covered.',
   buttons: [
     {
       text: 'Get Started',
@@ -179,8 +179,8 @@ export const servicesPageHero = {
  * CTA Section Data
  */
 export const servicesPageCTA = {
-  title: 'Ready to Start Your WordPress Project?',
-  description: 'Let\'s discuss how we can help you achieve your goals with expert WordPress and WooCommerce solutions.',
+  title: 'Ready to start your WordPress project?',
+  description: 'Let\'s discuss how we can help you achieve your goals with expert <i>WordPress</i> and <i>WooCommerce</i> solutions.',
   buttons: [
     {
       text: 'Contact Us',

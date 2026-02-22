@@ -19,9 +19,8 @@
 
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
-import { useNavigation } from '../../contexts/NavigationContext';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 
-import { Breadcrumbs } from '../common/Breadcrumbs';
 import { Heading } from '../common/Heading';
 import { Paragraph } from '../blocks/text/Paragraph';
 import { useState } from 'react';
@@ -35,7 +34,7 @@ import {
   ArrowRight,
   Check
 } from 'lucide-react';
-import '@/styles/templates/component-showcase.css';
+
 
 /**
  * WordPress Blocks Catalog
@@ -191,7 +190,6 @@ const blockCategories = [
 ];
 
 export function BlockDocumentation() {
-  const { navigateTo } = useNavigation();
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
 
   const filteredCategories = selectedCategory === 'all'
@@ -217,15 +215,13 @@ export function BlockDocumentation() {
         }}
       >
         {/* Breadcrumbs */}
-        <section className="wp-block-breadcrumbs-section">
-            <Breadcrumbs
-              items={[
-                { label: 'Home', page: 'home' },
-                { label: 'Developer Tools', page: 'dev-tools' },
-                { label: 'Block Documentation' }
-              ]}
-            />
-        </section>
+        <BreadcrumbPart
+          items={[
+            { label: 'Home', page: 'home' },
+            { label: 'Developer Tools', page: 'dev-tools' },
+            { label: 'Block Documentation' },
+          ]}
+        />
 
         {/* Header */}
         <Section background="default" spacing="lg">
@@ -234,8 +230,8 @@ export function BlockDocumentation() {
               <div
                 className="wp-inline-flex wp-items-center wp-justify-center wp-mb-6"
                 style={{
-                  width: '80px',
-                  height: '80px',
+                  width: 'var(--spacing-20)',
+                  height: 'var(--spacing-20)',
                   borderRadius: 'var(--radius-lg)',
                   backgroundColor: 'var(--secondary)'
                 }}

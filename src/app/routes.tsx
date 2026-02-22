@@ -2,180 +2,206 @@
  * LSX Design — Route Configuration
  * 
  * React Router Data Mode configuration with hierarchical WordPress-style URLs.
- * All templates are lazy-loaded for optimal code splitting.
+ * Uses static imports to prevent "Failed to fetch dynamically imported module" errors in preview environment.
  * 
  * URL Structure:
  * - `/` — Homepage
- * - `/about/*` — About section (process, culture, history, team, careers)
- * - `/services/*` — Services section (discovery, design, development, etc.)
- * - `/solutions/*` — Solutions section (wordpress, woocommerce, etc.)
+ * - `/about/*` — About section
+ * - `/services/*` — Services section
+ * - `/solutions/*` — Solutions section
  * - `/portfolio/:slug?` — Portfolio archive + single projects
- * - `/blog/*` — Blog (posts, categories, tags, authors, dates, formats)
- * - `/shop/*` — WooCommerce (products, cart, checkout)
- * - `/tours/*` — Tour Operator (archive + single tours)
+ * - `/blog/*` — Blog
+ * - `/shop/*` — WooCommerce
  * - `/dev-tools/*` — Developer tools
  * 
  * @see /src/app/utils/route-map.ts — Slug-to-path mapping
  * @see /src/app/components/layouts/RootLayout.tsx — Shared layout
  */
 
-import { createBrowserRouter, type RouteObject } from 'react-router';
-import { lazy } from 'react';
+import { createBrowserRouter, type RouteObject, useParams } from 'react-router';
 import { RootLayout } from './components/layouts/RootLayout';
 
 /* ═══════════════════════════════════════════
- * Lazy-loaded Template Components
+ * Template Imports (Static)
  * ═══════════════════════════════════════════ */
 
 // Core Pages
-const FrontPageTemplate = lazy(() => import('./components/templates/FrontPageTemplate').then(m => ({ default: m.FrontPageTemplate })));
-const Template404 = lazy(() => import('./components/templates/404Template').then(m => ({ default: m.Template404 })));
+import { FrontPageTemplate } from './components/templates/FrontPageTemplate';
+import { Template404 } from './components/templates/404Template';
 
 // About
-const AboutTemplate = lazy(() => import('./components/templates/AboutTemplate').then(m => ({ default: m.AboutTemplate })));
-const AboutProcessTemplate = lazy(() => import('./components/templates/AboutProcessTemplate').then(m => ({ default: m.AboutProcessTemplate })));
-const AboutCultureTemplate = lazy(() => import('./components/templates/AboutCultureTemplate').then(m => ({ default: m.AboutCultureTemplate })));
-const AboutHistoryTemplate = lazy(() => import('./components/templates/AboutHistoryTemplate').then(m => ({ default: m.AboutHistoryTemplate })));
-const TeamTemplate = lazy(() => import('./components/templates/TeamTemplate').then(m => ({ default: m.TeamTemplate })));
-const CareersTemplate = lazy(() => import('./components/templates/CareersTemplate').then(m => ({ default: m.CareersTemplate })));
+import { AboutTemplate } from './components/templates/AboutTemplate';
+import { AboutProcessTemplate } from './components/templates/AboutProcessTemplate';
+import { AboutCultureTemplate } from './components/templates/AboutCultureTemplate';
+import { AboutHistoryTemplate } from './components/templates/AboutHistoryTemplate';
+import { TeamTemplate } from './components/templates/TeamTemplate';
+import { CareersTemplate } from './components/templates/CareersTemplate';
 
 // Services
-const ServicesLandingTemplate = lazy(() => import('./components/templates/ServicesLandingTemplate').then(m => ({ default: m.ServicesLandingTemplate })));
-const DiscoveryServiceTemplate = lazy(() => import('./components/templates/DiscoveryServiceTemplate').then(m => ({ default: m.DiscoveryServiceTemplate })));
-const DesignServiceTemplate = lazy(() => import('./components/templates/DesignServiceTemplate').then(m => ({ default: m.DesignServiceTemplate })));
-const DevelopmentServiceTemplate = lazy(() => import('./components/templates/DevelopmentServiceTemplate').then(m => ({ default: m.DevelopmentServiceTemplate })));
-const ContentServiceTemplate = lazy(() => import('./components/templates/ContentServiceTemplate').then(m => ({ default: m.ContentServiceTemplate })));
-const ContentStrategyTemplate = lazy(() => import('./components/templates/ContentStrategyTemplate').then(m => ({ default: m.ContentStrategyTemplate })));
-const ContentCollectionTemplate = lazy(() => import('./components/templates/ContentCollectionTemplate').then(m => ({ default: m.ContentCollectionTemplate })));
-const ContentAuditTemplate = lazy(() => import('./components/templates/ContentAuditTemplate').then(m => ({ default: m.ContentAuditTemplate })));
-const SecurityServiceTemplate = lazy(() => import('./components/templates/SecurityServiceTemplate').then(m => ({ default: m.SecurityServiceTemplate })));
-const MigrationsServiceTemplate = lazy(() => import('./components/templates/MigrationsServiceTemplate').then(m => ({ default: m.MigrationsServiceTemplate })));
-const SupportServiceTemplate = lazy(() => import('./components/templates/SupportServiceTemplate').then(m => ({ default: m.SupportServiceTemplate })));
-const NewsletterServiceTemplate = lazy(() => import('./components/templates/NewsletterServiceTemplate').then(m => ({ default: m.NewsletterServiceTemplate })));
-const EmailMarketingTemplate = lazy(() => import('./components/templates/EmailMarketingTemplate').then(m => ({ default: m.EmailMarketingTemplate })));
-const TrainingTemplate = lazy(() => import('./components/templates/TrainingTemplate').then(m => ({ default: m.TrainingTemplate })));
-const HostingTemplate = lazy(() => import('./components/templates/HostingTemplate').then(m => ({ default: m.HostingTemplate })));
+import { ServicesLandingTemplate } from './components/templates/ServicesLandingTemplate';
+import { DiscoveryServiceTemplate } from './components/templates/DiscoveryServiceTemplate';
+import { DesignServiceTemplate } from './components/templates/DesignServiceTemplate';
+import { DevelopmentServiceTemplate } from './components/templates/DevelopmentServiceTemplate';
+import { ContentServiceTemplate } from './components/templates/ContentServiceTemplate';
+import { ContentStrategyTemplate } from './components/templates/ContentStrategyTemplate';
+import { ContentCollectionTemplate } from './components/templates/ContentCollectionTemplate';
+import { ContentAuditTemplate } from './components/templates/ContentAuditTemplate';
+import { SecurityServiceTemplate } from './components/templates/SecurityServiceTemplate';
+import { MigrationsServiceTemplate } from './components/templates/MigrationsServiceTemplate';
+import { SupportServiceTemplate } from './components/templates/SupportServiceTemplate';
+import { NewsletterServiceTemplate } from './components/templates/NewsletterServiceTemplate';
+import { EmailMarketingTemplate } from './components/templates/EmailMarketingTemplate';
+import { TrainingTemplate } from './components/templates/TrainingTemplate';
+import { HostingTemplate } from './components/templates/HostingTemplate';
+import { PerformanceServiceTemplate } from './components/templates/PerformanceServiceTemplate';
+import { SEOServiceTemplate } from './components/templates/SEOServiceTemplate';
+import { AccessibilityServiceTemplate } from './components/templates/AccessibilityServiceTemplate';
+import { AIEngineOptimisationTemplate } from './components/templates/AIEngineOptimisationTemplate';
+import { AnswerEngineOptimisationTemplate } from './components/templates/AnswerEngineOptimisationTemplate';
+
+// Journey Stage Pages
+import { JourneyStageTemplate } from './components/templates/JourneyStageTemplate';
 
 // Solutions
-const SolutionsTemplate = lazy(() => import('./components/templates/SolutionsTemplate').then(m => ({ default: m.SolutionsTemplate })));
-const WordPressSolutionTemplate = lazy(() => import('./components/templates/WordPressSolutionTemplate').then(m => ({ default: m.WordPressSolutionTemplate })));
-const WooCommerceSolutionTemplate = lazy(() => import('./components/templates/WooCommerceSolutionTemplate').then(m => ({ default: m.WooCommerceSolutionTemplate })));
-const TourOperatorTemplate = lazy(() => import('./components/templates/TourOperatorTemplate').then(m => ({ default: m.TourOperatorTemplate })));
-const PublishersTemplate = lazy(() => import('./components/templates/PublishersTemplate').then(m => ({ default: m.PublishersTemplate })));
-const LSXDesignTemplate = lazy(() => import('./components/templates/LSXDesignTemplate').then(m => ({ default: m.LSXDesignTemplate })));
-const LSXSolutionTemplate = lazy(() => import('./components/templates/LSXSolutionTemplate').then(m => ({ default: m.LSXSolutionTemplate })));
-const MailchimpSolutionTemplate = lazy(() => import('./components/templates/MailchimpSolutionTemplate').then(m => ({ default: m.MailchimpSolutionTemplate })));
-const WetuImporterTemplate = lazy(() => import('./components/templates/WetuImporterTemplate').then(m => ({ default: m.WetuImporterTemplate })));
-const LSXSharingTemplate = lazy(() => import('./components/templates/LSXSharingTemplate').then(m => ({ default: m.LSXSharingTemplate })));
-const LSXSearchTemplate = lazy(() => import('./components/templates/LSXSearchTemplate').then(m => ({ default: m.LSXSearchTemplate })));
+import { SolutionsTemplate } from './components/templates/SolutionsTemplate';
+import { WordPressSolutionTemplate } from './components/templates/WordPressSolutionTemplate';
+import { WooCommerceSolutionTemplate } from './components/templates/WooCommerceSolutionTemplate';
+import { TourOperatorTemplate } from './components/templates/TourOperatorTemplate';
+import { PublishersTemplate } from './components/templates/PublishersTemplate';
+import { LSXDesignTemplate } from './components/templates/LSXDesignTemplate';
+import { LSXSolutionTemplate } from './components/templates/LSXSolutionTemplate';
+import { MailchimpSolutionTemplate } from './components/templates/MailchimpSolutionTemplate';
+import { WetuImporterTemplate } from './components/templates/WetuImporterTemplate';
+import { LSXSharingTemplate } from './components/templates/LSXSharingTemplate';
+import { LSXSearchTemplate } from './components/templates/LSXSearchTemplate';
+
+// New Solution Pages
+import { WordPressRedesignTemplate } from './components/templates/WordPressRedesignTemplate';
+import { WooCommerceRedesignTemplate } from './components/templates/WooCommerceRedesignTemplate';
+import { TourOperatorDesignTemplate } from './components/templates/TourOperatorDesignTemplate';
+
+// AI Integrations (Solutions)
+import { AIIntegrationsTemplate } from './components/templates/AIIntegrationsTemplate';
+import { AIContentGenerationTemplate } from './components/templates/AIContentGenerationTemplate';
+import { AISEOTemplate } from './components/templates/AISEOTemplate';
+import { AIChatbotsTemplate } from './components/templates/AIChatbotsTemplate';
+import { AIAnalyticsTemplate } from './components/templates/AIAnalyticsTemplate';
 
 // Portfolio
-const PortfolioArchiveTemplate = lazy(() => import('./components/templates/PortfolioArchiveTemplate').then(m => ({ default: m.PortfolioArchiveTemplate })));
-const PortfolioSingleTemplate = lazy(() => import('./components/templates/PortfolioSingleTemplate').then(m => ({ default: m.PortfolioSingleTemplate })));
-const PortfolioCategoryArchiveTemplate = lazy(() => import('./components/templates/PortfolioCategoryArchiveTemplate').then(m => ({ default: m.PortfolioCategoryArchiveTemplate })));
-const PortfolioTagArchiveTemplate = lazy(() => import('./components/templates/PortfolioTagArchiveTemplate').then(m => ({ default: m.PortfolioTagArchiveTemplate })));
+import { PortfolioArchiveTemplate } from './components/templates/PortfolioArchiveTemplate';
+import { PortfolioSingleTemplate } from './components/templates/PortfolioSingleTemplate';
+import { PortfolioCategoryArchiveTemplate } from './components/templates/PortfolioCategoryArchiveTemplate';
+import { PortfolioTagArchiveTemplate } from './components/templates/PortfolioTagArchiveTemplate';
 
 // Blog
-const BlogIndexTemplate = lazy(() => import('./components/templates/BlogIndexTemplate').then(m => ({ default: m.BlogIndexTemplate })));
-const SinglePostTemplate = lazy(() => import('./components/templates/SinglePostTemplate').then(m => ({ default: m.SinglePostTemplate })));
-const SinglePostLongformTemplate = lazy(() => import('./components/templates/SinglePostLongformTemplate').then(m => ({ default: m.SinglePostLongformTemplate })));
-const CategoryArchiveTemplate = lazy(() => import('./components/templates/CategoryArchiveTemplate').then(m => ({ default: m.CategoryArchiveTemplate })));
-const AuthorArchiveTemplate = lazy(() => import('./components/templates/AuthorArchiveTemplate').then(m => ({ default: m.AuthorArchiveTemplate })));
-const TagArchiveTemplate = lazy(() => import('./components/templates/TagArchiveTemplate').then(m => ({ default: m.TagArchiveTemplate })));
-const DateArchiveTemplate = lazy(() => import('./components/templates/DateArchiveTemplate').then(m => ({ default: m.DateArchiveTemplate })));
+import { BlogIndexTemplate } from './components/templates/BlogIndexTemplate';
+import { SinglePostTemplate } from './components/templates/SinglePostTemplate';
+import { SinglePostLongformTemplate } from './components/templates/SinglePostLongformTemplate';
+import { CategoryArchiveTemplate } from './components/templates/CategoryArchiveTemplate';
+import { AuthorArchiveTemplate } from './components/templates/AuthorArchiveTemplate';
+import { TagArchiveTemplate } from './components/templates/TagArchiveTemplate';
+import { DateArchiveTemplate } from './components/templates/DateArchiveTemplate';
 
 // Videos
-const VideoArchiveTemplate = lazy(() => import('./components/templates/VideoArchiveTemplate').then(m => ({ default: m.VideoArchiveTemplate })));
-const SingleVideoPageTemplate = lazy(() => import('./components/templates/SingleVideoTemplate').then(m => ({ default: m.SingleVideoTemplate })));
-const VideoCategoryArchiveTemplate = lazy(() => import('./components/templates/VideoCategoryArchiveTemplate').then(m => ({ default: m.VideoCategoryArchiveTemplate })));
+import { VideoArchiveTemplate } from './components/templates/VideoArchiveTemplate';
+import { SingleVideoTemplate } from './components/templates/SingleVideoTemplate';
+import { VideoCategoryArchiveTemplate } from './components/templates/VideoCategoryArchiveTemplate';
+import { VideoTagArchiveTemplate } from './components/templates/VideoTagArchiveTemplate';
 
 // Podcasts
-const PodcastArchiveTemplate = lazy(() => import('./components/templates/PodcastArchiveTemplate').then(m => ({ default: m.PodcastArchiveTemplate })));
-const SinglePodcastPageTemplate = lazy(() => import('./components/templates/SinglePodcastTemplate').then(m => ({ default: m.SinglePodcastTemplate })));
+import { PodcastArchiveTemplate } from './components/templates/PodcastArchiveTemplate';
+import { SinglePodcastTemplate } from './components/templates/SinglePodcastTemplate';
+import { PodcastCategoryArchiveTemplate } from './components/templates/PodcastCategoryArchiveTemplate';
 
 // Post Formats
-const AudioArchiveTemplate = lazy(() => import('./components/templates/post-formats/AudioArchiveTemplate').then(m => ({ default: m.AudioArchiveTemplate })));
-const SingleAudioTemplate = lazy(() => import('./components/templates/post-formats/SingleAudioTemplate').then(m => ({ default: m.SingleAudioTemplate })));
-const GalleryArchiveTemplate = lazy(() => import('./components/templates/post-formats/GalleryArchiveTemplate').then(m => ({ default: m.GalleryArchiveTemplate })));
-const SingleGalleryTemplate = lazy(() => import('./components/templates/post-formats/SingleGalleryTemplate').then(m => ({ default: m.SingleGalleryTemplate })));
-const ImageArchiveTemplate = lazy(() => import('./components/templates/post-formats/ImageArchiveTemplate').then(m => ({ default: m.ImageArchiveTemplate })));
-const SingleImageTemplate = lazy(() => import('./components/templates/post-formats/SingleImageTemplate').then(m => ({ default: m.SingleImageTemplate })));
-const QuoteArchiveTemplate = lazy(() => import('./components/templates/post-formats/QuoteArchiveTemplate').then(m => ({ default: m.QuoteArchiveTemplate })));
-const SingleQuoteTemplate = lazy(() => import('./components/templates/post-formats/SingleQuoteTemplate').then(m => ({ default: m.SingleQuoteTemplate })));
-const LinkArchiveTemplate = lazy(() => import('./components/templates/post-formats/LinkArchiveTemplate').then(m => ({ default: m.LinkArchiveTemplate })));
-const SingleLinkTemplate = lazy(() => import('./components/templates/post-formats/SingleLinkTemplate').then(m => ({ default: m.SingleLinkTemplate })));
-const ChatArchiveTemplate = lazy(() => import('./components/templates/post-formats/ChatArchiveTemplate').then(m => ({ default: m.ChatArchiveTemplate })));
-const SingleChatTemplate = lazy(() => import('./components/templates/post-formats/SingleChatTemplate').then(m => ({ default: m.SingleChatTemplate })));
-const StatusArchiveTemplate = lazy(() => import('./components/templates/post-formats/StatusArchiveTemplate').then(m => ({ default: m.StatusArchiveTemplate })));
-const SingleStatusTemplate = lazy(() => import('./components/templates/post-formats/SingleStatusTemplate').then(m => ({ default: m.SingleStatusTemplate })));
-const StandardArchiveTemplate = lazy(() => import('./components/templates/post-formats/StandardArchiveTemplate').then(m => ({ default: m.StandardArchiveTemplate })));
-const SingleStandardTemplate = lazy(() => import('./components/templates/post-formats/SingleStandardTemplate').then(m => ({ default: m.SingleStandardTemplate })));
-const AsideArchiveTemplate = lazy(() => import('./components/templates/post-formats/AsideArchiveTemplate').then(m => ({ default: m.AsideArchiveTemplate })));
-const SingleAsideTemplate = lazy(() => import('./components/templates/post-formats/SingleAsideTemplate').then(m => ({ default: m.SingleAsideTemplate })));
-const AsideStreamTemplate = lazy(() => import('./components/templates/post-formats/AsideStreamTemplate').then(m => ({ default: m.AsideStreamTemplate })));
+import { AudioArchiveTemplate } from './components/templates/post-formats/AudioArchiveTemplate';
+import { SingleAudioTemplate } from './components/templates/post-formats/SingleAudioTemplate';
+import { GalleryArchiveTemplate } from './components/templates/post-formats/GalleryArchiveTemplate';
+import { SingleGalleryTemplate } from './components/templates/post-formats/SingleGalleryTemplate';
+import { ImageArchiveTemplate } from './components/templates/post-formats/ImageArchiveTemplate';
+import { SingleImageTemplate } from './components/templates/post-formats/SingleImageTemplate';
+import { QuoteArchiveTemplate } from './components/templates/post-formats/QuoteArchiveTemplate';
+import { SingleQuoteTemplate } from './components/templates/post-formats/SingleQuoteTemplate';
+import { LinkArchiveTemplate } from './components/templates/post-formats/LinkArchiveTemplate';
+import { SingleLinkTemplate } from './components/templates/post-formats/SingleLinkTemplate';
+import { ChatArchiveTemplate } from './components/templates/post-formats/ChatArchiveTemplate';
+import { SingleChatTemplate } from './components/templates/post-formats/SingleChatTemplate';
+import { StatusArchiveTemplate } from './components/templates/post-formats/StatusArchiveTemplate';
+import { SingleStatusTemplate } from './components/templates/post-formats/SingleStatusTemplate';
+import { StandardArchiveTemplate } from './components/templates/post-formats/StandardArchiveTemplate';
+import { SingleStandardTemplate } from './components/templates/post-formats/SingleStandardTemplate';
+import { AsideArchiveTemplate } from './components/templates/post-formats/AsideArchiveTemplate';
+import { SingleAsideTemplate } from './components/templates/post-formats/SingleAsideTemplate';
+import { AsideStreamTemplate } from './components/templates/post-formats/AsideStreamTemplate';
 
 // WooCommerce
-const ProductArchiveTemplate = lazy(() => import('./components/templates/ProductArchiveTemplate').then(m => ({ default: m.ProductArchiveTemplate })));
-const SingleProductTemplate = lazy(() => import('./components/templates/woocommerce/SingleProductTemplate').then(m => ({ default: m.SingleProductTemplate })));
-const CartTemplate = lazy(() => import('./components/templates/CartTemplate').then(m => ({ default: m.CartTemplate })));
-const CheckoutTemplate = lazy(() => import('./components/templates/CheckoutTemplate').then(m => ({ default: m.CheckoutTemplate })));
+import { ProductArchiveTemplate } from './components/templates/ProductArchiveTemplate';
+import { SingleProductTemplate } from './components/templates/woocommerce/SingleProductTemplate';
+import { CartTemplate } from './components/templates/CartTemplate';
+import { CheckoutTemplate } from './components/templates/CheckoutTemplate';
 
 // Tour Operator
-const TourOperatorArchiveTemplate = lazy(() => import('./components/templates/tour-operator/TourOperatorArchiveTemplate').then(m => ({ default: m.TourOperatorArchiveTemplate })));
-const SingleTourTemplate = lazy(() => import('./components/templates/tour-operator/SingleTourTemplate').then(m => ({ default: m.SingleTourTemplate })));
+import { TourOperatorArchiveTemplate } from './components/templates/tour-operator/TourOperatorArchiveTemplate';
+import { SingleTourTemplate } from './components/templates/tour-operator/SingleTourTemplate';
 
 // Utility Pages
-const ContactPageTemplate = lazy(() => import('./components/templates/ContactPageTemplate').then(m => ({ default: m.ContactPageTemplate })));
-const FAQTemplate = lazy(() => import('./components/templates/FAQTemplate').then(m => ({ default: m.FAQTemplate })));
-const PricingTemplate = lazy(() => import('./components/templates/PricingTemplate').then(m => ({ default: m.PricingTemplate })));
-const WhyChooseUsTemplate = lazy(() => import('./components/templates/WhyChooseUsTemplate').then(m => ({ default: m.WhyChooseUsTemplate })));
-const GuaranteesTemplate = lazy(() => import('./components/templates/GuaranteesTemplate').then(m => ({ default: m.GuaranteesTemplate })));
-const ROICalculatorTemplate = lazy(() => import('./components/templates/ROICalculatorTemplate').then(m => ({ default: m.ROICalculatorTemplate })));
-const TestimonialsTemplate = lazy(() => import('./components/templates/TestimonialsTemplate').then(m => ({ default: m.TestimonialsTemplate })));
-const SearchResultsPageTemplate = lazy(() => import('./components/templates/SearchResultsPageTemplate').then(m => ({ default: m.SearchResultsPageTemplate })));
-const PrivacyPolicyTemplate = lazy(() => import('./components/templates/PrivacyPolicyTemplate').then(m => ({ default: m.PrivacyPolicyTemplate })));
-const TermsOfServiceTemplate = lazy(() => import('./components/templates/TermsOfServiceTemplate').then(m => ({ default: m.TermsOfServiceTemplate })));
-const SiteMapTemplate = lazy(() => import('./components/templates/SiteMapTemplate').then(m => ({ default: m.SiteMapTemplate })));
-const StyleGuideTemplate = lazy(() => import('./components/templates/StyleGuideTemplate').then(m => ({ default: m.StyleGuideTemplate })));
-const TutorialsTemplate = lazy(() => import('./components/templates/TutorialsTemplate').then(m => ({ default: m.TutorialsTemplate })));
+import { ContactPageTemplate } from './components/templates/ContactPageTemplate';
+import { FAQTemplate } from './components/templates/FAQTemplate';
+import { PricingTemplate } from './components/templates/PricingTemplate';
+import { WhyChooseUsTemplate } from './components/templates/WhyChooseUsTemplate';
+import { GuaranteesTemplate } from './components/templates/GuaranteesTemplate';
+import { ROICalculatorTemplate } from './components/templates/ROICalculatorTemplate';
+import { TestimonialsTemplate } from './components/templates/TestimonialsTemplate';
+
+// Testimonial Templates (Archive + Singles)
+import { TestimonialArchiveTemplate } from './components/templates/testimonials/TestimonialArchiveTemplate';
+import { SingleTestimonialTemplate } from './components/templates/testimonials/SingleTestimonialTemplate';
+import { SingleTestimonialAudioTemplate } from './components/templates/testimonials/SingleTestimonialAudioTemplate';
+import { SingleTestimonialVideoTemplate } from './components/templates/testimonials/SingleTestimonialVideoTemplate';
+import { SingleTestimonialGalleryTemplate } from './components/templates/testimonials/SingleTestimonialGalleryTemplate';
+
+import { SearchResultsPageTemplate } from './components/templates/SearchResultsPageTemplate';
+import { PrivacyPolicyTemplate } from './components/templates/PrivacyPolicyTemplate';
+import { TermsOfServiceTemplate } from './components/templates/TermsOfServiceTemplate';
+import { SiteMapTemplate } from './components/templates/SiteMapTemplate';
+import { StyleGuideTemplate } from './components/templates/StyleGuideTemplate';
+import { TutorialsTemplate } from './components/templates/TutorialsTemplate';
 
 // Legacy / Misc
-const ArchiveTemplate = lazy(() => import('./components/templates/ArchiveTemplate').then(m => ({ default: m.ArchiveTemplate })));
-const ArchiveWithFiltersTemplate = lazy(() => import('./components/templates/ArchiveWithFiltersTemplate').then(m => ({ default: m.ArchiveWithFiltersTemplate })));
-const IndexTemplate = lazy(() => import('./components/templates/IndexTemplate').then(m => ({ default: m.IndexTemplate })));
-const SingleTemplate = lazy(() => import('./components/templates/SingleTemplate').then(m => ({ default: m.SingleTemplate })));
-const SearchResultsTemplate = lazy(() => import('./components/templates/SearchResultsTemplate').then(m => ({ default: m.SearchResultsTemplate })));
-const WordPressBlocksProofOfConcept = lazy(() => import('./components/templates/WordPressBlocksProofOfConcept').then(m => ({ default: m.WordPressBlocksProofOfConcept })));
-const SectionStyleExample = lazy(() => import('./components/templates/SectionStyleExample').then(m => ({ default: m.SectionStyleExample })));
-const FeatureShowcaseTemplate = lazy(() => import('./components/templates/FeatureShowcaseTemplate').then(m => ({ default: m.FeatureShowcaseTemplate })));
+import { ArchiveTemplate } from './components/templates/ArchiveTemplate';
+import { ArchiveWithFiltersTemplate } from './components/templates/ArchiveWithFiltersTemplate';
+import { IndexTemplate } from './components/templates/IndexTemplate';
+import { SingleTemplate } from './components/templates/SingleTemplate';
+import { SearchResultsTemplate } from './components/templates/SearchResultsTemplate';
+import { WordPressBlocksProofOfConcept } from './components/templates/WordPressBlocksProofOfConcept';
+import { SectionStyleExample } from './components/templates/SectionStyleExample';
+import { FeatureShowcaseTemplate } from './components/templates/FeatureShowcaseTemplate';
 
 // Dev Tools
-const DevToolsTemplate = lazy(() => import('./components/templates/DevToolsTemplate').then(m => ({ default: m.DevToolsTemplate })));
-const TemplateTester = lazy(() => import('./components/templates/TemplateTester').then(m => ({ default: m.TemplateTester })));
-const ComponentShowcase = lazy(() => import('./components/templates/ComponentShowcase').then(m => ({ default: m.ComponentShowcase })));
-const DesignSystemTest = lazy(() => import('./components/blocks/dev-tools/DesignSystemTest').then(m => ({ default: m.DesignSystemTest })));
-const ComplianceScorecard = lazy(() => import('./components/blocks/dev-tools/ComplianceScorecard').then(m => ({ default: m.ComplianceScorecard })));
-const BlockDocumentation = lazy(() => import('./components/templates/BlockDocumentation').then(m => ({ default: m.BlockDocumentation })));
-const ComponentAPI = lazy(() => import('./components/templates/ComponentAPI').then(m => ({ default: m.ComponentAPI })));
-const DesignBlocksShowcase = lazy(() => import('./components/templates/DesignBlocksShowcase').then(m => ({ default: m.DesignBlocksShowcase })));
-const ButtonShowcase = lazy(() => import('./components/templates/ButtonShowcase').then(m => ({ default: m.ButtonShowcase })));
-const HeaderFooterComparison = lazy(() => import('./components/templates/HeaderFooterComparison').then(m => ({ default: m.HeaderFooterComparison })));
-const IconLibrary = lazy(() => import('./components/templates/IconLibrary').then(m => ({ default: m.IconLibrary })));
-const LivePreview = lazy(() => import('./components/templates/LivePreview').then(m => ({ default: m.LivePreview })));
-const SectionPresetsShowcase = lazy(() => import('./components/templates/SectionPresetsShowcase').then(m => ({ default: m.SectionPresetsShowcase })));
-const ThemeBlocksShowcase = lazy(() => import('./components/templates/ThemeBlocksShowcase').then(m => ({ default: m.ThemeBlocksShowcase })));
-const DesignTokensReferenceTemplate = lazy(() => import('./components/templates/DesignTokensReferenceTemplate').then(m => ({ default: m.DesignTokensReferenceTemplate })));
-const DeploymentReadinessTemplate = lazy(() => import('./components/templates/DeploymentReadinessTemplate').then(m => ({ default: m.DeploymentReadinessTemplate })));
-const DesignPlaygroundTemplate = lazy(() => import('./components/templates/DesignPlaygroundTemplate').then(m => ({ default: m.DesignPlaygroundTemplate })));
-const CodeQualityDashboardTemplate = lazy(() => import('./components/templates/CodeQualityDashboardTemplate').then(m => ({ default: m.CodeQualityDashboardTemplate })));
-const DocsGeneratorTemplate = lazy(() => import('./components/templates/DocsGeneratorTemplate').then(m => ({ default: m.DocsGeneratorTemplate })));
-const SnippetGeneratorTemplate = lazy(() => import('./components/templates/SnippetGeneratorTemplate').then(m => ({ default: m.SnippetGeneratorTemplate })));
+import { DevToolsTemplate } from './components/templates/DevToolsTemplate';
+import { TemplateTester } from './components/templates/TemplateTester';
+import { ComponentShowcase } from './components/templates/ComponentShowcase';
+import { DesignSystemTest } from './components/blocks/dev-tools/DesignSystemTest';
+import { ComplianceScorecard } from './components/blocks/dev-tools/ComplianceScorecard';
+import { BlockDocumentation } from './components/templates/BlockDocumentation';
+import { ComponentAPI } from './components/templates/ComponentAPI';
+import { DesignBlocksShowcase } from './components/templates/DesignBlocksShowcase';
+import { ButtonShowcase } from './components/templates/ButtonShowcase';
+import { HeaderFooterComparison } from './components/templates/HeaderFooterComparison';
+import { IconLibrary } from './components/templates/IconLibrary';
+import { LivePreview } from './components/templates/LivePreview';
+import { SectionPresetsShowcase } from './components/templates/SectionPresetsShowcase';
+import { ThemeBlocksShowcase } from './components/templates/ThemeBlocksShowcase';
+import { DesignTokensReferenceTemplate } from './components/templates/DesignTokensReferenceTemplate';
+import { DeploymentReadinessTemplate } from './components/templates/DeploymentReadinessTemplate';
+import { DesignPlaygroundTemplate } from './components/templates/DesignPlaygroundTemplate';
+import { CodeQualityDashboardTemplate } from './components/templates/CodeQualityDashboardTemplate';
+import { DocsGeneratorTemplate } from './components/templates/DocsGeneratorTemplate';
+import { SnippetGeneratorTemplate } from './components/templates/SnippetGeneratorTemplate';
 
 /* ═══════════════════════════════════════════
  * Route Wrapper Components (for params)
  * ═══════════════════════════════════════════ */
-
-import { useParams } from 'react-router';
 
 function PortfolioSingleRoute() {
   const { slug } = useParams();
@@ -223,18 +249,16 @@ function SingleTourRoute() {
 }
 
 function PortfolioCategoryRoute() {
-  const { slug } = useParams();
-  return <PortfolioCategoryArchiveTemplate category={slug} />;
+  return <PortfolioCategoryArchiveTemplate />;
 }
 
 function PortfolioTagRoute() {
-  const { slug } = useParams();
-  return <PortfolioTagArchiveTemplate tag={slug} />;
+  return <PortfolioTagArchiveTemplate />;
 }
 
 function SingleVideoRoute() {
   const { slug } = useParams();
-  return <SingleVideoPageTemplate slug={slug} />;
+  return <SingleVideoTemplate slug={slug} />;
 }
 
 function VideoCategoryRoute() {
@@ -244,8 +268,40 @@ function VideoCategoryRoute() {
 
 function SinglePodcastRoute() {
   const { slug } = useParams();
-  return <SinglePodcastPageTemplate slug={slug} />;
+  return <SinglePodcastTemplate slug={slug} />;
 }
+
+function PodcastCategoryRoute() {
+  return <PodcastCategoryArchiveTemplate />;
+}
+
+function SingleTestimonialRoute() {
+  const { slug } = useParams();
+  return <SingleTestimonialTemplate slug={slug} />;
+}
+
+function SingleTestimonialAudioRoute() {
+  const { slug } = useParams();
+  return <SingleTestimonialAudioTemplate slug={slug} />;
+}
+
+function SingleTestimonialVideoRoute() {
+  const { slug } = useParams();
+  return <SingleTestimonialVideoTemplate slug={slug} />;
+}
+
+function SingleTestimonialGalleryRoute() {
+  const { slug } = useParams();
+  return <SingleTestimonialGalleryTemplate slug={slug} />;
+}
+
+/* Journey Stage route wrappers */
+function JourneyIgniteRoute() { return <JourneyStageTemplate slug="ignite" />; }
+function JourneyCreateRoute() { return <JourneyStageTemplate slug="create" />; }
+function JourneyBuildRoute() { return <JourneyStageTemplate slug="build" />; }
+function JourneyLaunchRoute() { return <JourneyStageTemplate slug="launch" />; }
+function JourneyGrowRoute() { return <JourneyStageTemplate slug="grow" />; }
+function JourneyEvolveRoute() { return <JourneyStageTemplate slug="evolve" />; }
 
 /* ═══════════════════════════════════════════
  * Route Definitions
@@ -283,6 +339,19 @@ const routes: RouteObject[] = [
       { path: 'services/email-marketing', Component: EmailMarketingTemplate },
       { path: 'services/training', Component: TrainingTemplate },
       { path: 'services/hosting', Component: HostingTemplate },
+      { path: 'services/performance', Component: PerformanceServiceTemplate },
+      { path: 'services/seo', Component: SEOServiceTemplate },
+      { path: 'services/accessibility', Component: AccessibilityServiceTemplate },
+      { path: 'services/ai-engine-optimisation', Component: AIEngineOptimisationTemplate },
+      { path: 'services/answer-engine-optimisation', Component: AnswerEngineOptimisationTemplate },
+
+      /* ── Journey Stage Pages ── */
+      { path: 'services/ignite', Component: JourneyIgniteRoute },
+      { path: 'services/create', Component: JourneyCreateRoute },
+      { path: 'services/build', Component: JourneyBuildRoute },
+      { path: 'services/launch', Component: JourneyLaunchRoute },
+      { path: 'services/grow', Component: JourneyGrowRoute },
+      { path: 'services/evolve', Component: JourneyEvolveRoute },
 
       /* ── Solutions ── */
       { path: 'solutions', Component: SolutionsTemplate },
@@ -296,6 +365,18 @@ const routes: RouteObject[] = [
       { path: 'solutions/wetu-importer', Component: WetuImporterTemplate },
       { path: 'solutions/lsx-sharing', Component: LSXSharingTemplate },
       { path: 'solutions/lsx-search', Component: LSXSearchTemplate },
+
+      /* ── New Solution Pages ── */
+      { path: 'solutions/wordpress-redesign', Component: WordPressRedesignTemplate },
+      { path: 'solutions/woocommerce-redesign', Component: WooCommerceRedesignTemplate },
+      { path: 'solutions/tour-operator-design', Component: TourOperatorDesignTemplate },
+
+      /* ── AI Integrations (Solutions) ── */
+      { path: 'solutions/ai-integrations', Component: AIIntegrationsTemplate },
+      { path: 'solutions/ai-content-generation', Component: AIContentGenerationTemplate },
+      { path: 'solutions/ai-seo', Component: AISEOTemplate },
+      { path: 'solutions/ai-chatbots', Component: AIChatbotsTemplate },
+      { path: 'solutions/ai-analytics', Component: AIAnalyticsTemplate },
 
       /* ── Portfolio ── */
       { path: 'portfolio', Component: PortfolioArchiveTemplate },
@@ -356,10 +437,12 @@ const routes: RouteObject[] = [
       { path: 'videos', Component: VideoArchiveTemplate },
       { path: 'video/:slug', Component: SingleVideoRoute },
       { path: 'videos/category/:slug', Component: VideoCategoryRoute },
+      { path: 'videos/tag/:slug', Component: VideoTagArchiveTemplate },
 
       /* ── Podcasts ── */
       { path: 'podcasts', Component: PodcastArchiveTemplate },
       { path: 'podcast/:slug', Component: SinglePodcastRoute },
+      { path: 'podcasts/category/:slug', Component: PodcastCategoryRoute },
 
       /* ── Utility Pages ── */
       { path: 'contact', Component: ContactPageTemplate },
@@ -369,6 +452,14 @@ const routes: RouteObject[] = [
       { path: 'guarantees', Component: GuaranteesTemplate },
       { path: 'roi-calculator', Component: ROICalculatorTemplate },
       { path: 'testimonials', Component: TestimonialsTemplate },
+
+      /* ── Testimonials (Archive + Singles) ── */
+      { path: 'testimonials/archive', Component: TestimonialArchiveTemplate },
+      { path: 'testimonials/audio/:slug', Component: SingleTestimonialAudioRoute },
+      { path: 'testimonials/video/:slug', Component: SingleTestimonialVideoRoute },
+      { path: 'testimonials/gallery/:slug', Component: SingleTestimonialGalleryRoute },
+      { path: 'testimonials/:slug', Component: SingleTestimonialRoute },
+
       { path: 'search', Component: SearchResultsPageTemplate },
       { path: 'privacy-policy', Component: PrivacyPolicyTemplate },
       { path: 'terms-of-service', Component: TermsOfServiceTemplate },
@@ -402,13 +493,13 @@ const routes: RouteObject[] = [
       { path: 'dev-tools/live-preview', Component: LivePreview },
       { path: 'dev-tools/section-presets-showcase', Component: SectionPresetsShowcase },
       { path: 'dev-tools/theme-blocks-showcase', Component: ThemeBlocksShowcase },
-      { path: 'dev-tools/style-guide', Component: StyleGuideTemplate },
       { path: 'dev-tools/design-tokens-reference', Component: DesignTokensReferenceTemplate },
       { path: 'dev-tools/deployment-readiness', Component: DeploymentReadinessTemplate },
       { path: 'dev-tools/design-playground', Component: DesignPlaygroundTemplate },
       { path: 'dev-tools/code-quality-dashboard', Component: CodeQualityDashboardTemplate },
       { path: 'dev-tools/docs-generator', Component: DocsGeneratorTemplate },
       { path: 'dev-tools/snippet-generator', Component: SnippetGeneratorTemplate },
+      { path: 'dev-tools/style-guide', Component: StyleGuideTemplate }, // Duplicate path allowed for dev tools
 
       /* ── 404 Catch-All ── */
       { path: '404', Component: Template404 },

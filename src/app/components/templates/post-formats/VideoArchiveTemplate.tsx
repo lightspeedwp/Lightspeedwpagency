@@ -14,35 +14,28 @@
 
 import { Container } from '@/app/components/common/Container';
 import { Section } from '@/app/components/common/Section';
-import { Breadcrumbs } from '@/app/components/common/Breadcrumbs';
+import { BreadcrumbPart } from '@/app/components/parts/BreadcrumbPart';
 import { allPosts } from '@/app/data/posts-formats';
 import { Play, Clock, Eye } from 'lucide-react';
-import { useNavigation } from '@/app/contexts/NavigationContext';
-import '@/styles/blocks/post-formats/video.css';
-import '@/styles/sections/media-grid.css';
-import '@/styles/templates/archive.css';
+import { Link } from 'react-router';
+
 
 export function VideoArchiveTemplate() {
-  const { navigateTo } = useNavigation();
   const videoPosts = allPosts.filter(post => post.format === 'video');
   // Duplicate for visual effect
   const posts = [...videoPosts, ...videoPosts, ...videoPosts, ...videoPosts];
 
   return (
     <>
-      <section className="archive-breadcrumbs">
-        <Container>
-          <Breadcrumbs 
-            items={[
-              { label: 'Home', href: '/' },
-              { label: 'Blog', href: '/blog' },
-              { label: 'Video Library', href: '/blog/format/video' }
-            ]}
-          />
-        </Container>
-      </section>
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Blog', href: '/blog' },
+          { label: 'Video' },
+        ]}
+      />
 
-      <Section spacing="lg" sectionStyle="dark">
+      <Section spacing="lg">
         <Container>
           <header className="archive-header">
             <h1 className="archive-header__title">Video Library</h1>
@@ -51,13 +44,10 @@ export function VideoArchiveTemplate() {
 
           <div className="wp-section-media-grid">
             {posts.map((post, index) => (
-              <article 
-                key={`${post.id}-${index}`} 
+              <Link 
+                key={`${post.id}-${index}`}
+                to="#"
                 className="wp-block-video-card"
-                onClick={() => navigateTo('video-single')}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); navigateTo('video-single'); } }}
               >
                 <div className="wp-block-video-card__thumb">
                   {post._embedded?.['wp:featuredmedia']?.[0]?.source_url && (
@@ -85,7 +75,7 @@ export function VideoArchiveTemplate() {
                     <span className="wp-block-video-card__meta-item"><Eye size={12} /> 1.2k views</span>
                   </div>
                 </div>
-              </article>
+              </Link>
             ))}
           </div>
         </Container>

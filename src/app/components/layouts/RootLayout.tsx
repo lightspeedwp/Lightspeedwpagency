@@ -59,11 +59,14 @@ class ChromeErrorBoundary extends Component<
           role="alert"
           style={{
             padding: 'var(--spacing-4)',
-            backgroundColor: 'var(--destructive-soft, #fef2f2)',
-            color: 'var(--destructive, #cc0000)',
+            backgroundColor: 'var(--destructive-soft)',
+            color: 'var(--destructive)',
             fontFamily: 'var(--font-primary)',
             fontSize: 'var(--text-sm)',
             textAlign: 'center',
+            border: '1px solid var(--destructive)',
+            borderRadius: 'var(--radius-md)',
+            margin: 'var(--spacing-4)',
           }}
         >
           {this.props.name} failed to load.{' '}
@@ -77,6 +80,7 @@ class ChromeErrorBoundary extends Component<
               cursor: 'pointer',
               fontFamily: 'inherit',
               fontSize: 'inherit',
+              padding: 0,
             }}
           >
             Reload page
@@ -124,31 +128,19 @@ export function RootLayout() {
       <ScrollToTop />
       <RouteAnnouncer />
       <SkipLink />
-      <div
-        className="lsx-design-prototype"
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          minHeight: '100vh',
-        }}
-      >
+      <div className="lsx-design-prototype">
         <ChromeErrorBoundary name="SiteHeader">
           <SiteHeader />
         </ChromeErrorBoundary>
-        <main
-          id="main-content"
-          role="main"
-          style={{
-            flex: '1 1 auto',
-            backgroundColor: 'var(--background)',
-          }}
-        >
+        
+        <main id="main-content" role="main">
           <Suspense fallback={<PageLoader />}>
             <ErrorBoundary>
               <Outlet />
             </ErrorBoundary>
           </Suspense>
         </main>
+        
         <ChromeErrorBoundary name="SiteFooter">
           <SiteFooter />
         </ChromeErrorBoundary>

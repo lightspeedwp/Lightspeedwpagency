@@ -17,7 +17,7 @@
 import { Section } from '../common/Section';
 import { Container } from '../common/Container';
 import { CheckCircle } from 'lucide-react';
-import '@/styles/patterns/use-cases-grid.css';
+
 
 /**
  * Use Case Item Interface

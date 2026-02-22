@@ -1,5 +1,4 @@
 import * as React from "react"
-import "@/styles/blocks/design/card.css"
 
 const Card = React.forwardRef<
   HTMLDivElement,

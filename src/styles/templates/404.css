@@ -1,57 +1,55 @@
 /**
- * 404 Error Page Styles
- * 
- * WordPress Template: 404.html
- * 
- * 100% CSS variables.
+ * 404 Page Styles — Funky Neon Pass
+ *
+ * Funky treatments:
+ *  - Neon glow warning icon
+ *  - Gradient search suggestion chips on hover
+ *  - Glassmorphism suggestion cards (dark mode)
+ *  - Neon icon containers with glow
+ *  - Neon focus glow on search input
+ *  - Full dark mode + reduced-motion guards
+ *
+ * BEM naming: .error-*
+ * 100% CSS variables, zero hardcoded values.
  */
 
-.wp-404-template {
-  min-height: 60vh;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Hero Section */
+/* Hero */
 .error-hero {
-  padding-top: var(--spacing-16);
-  padding-bottom: var(--spacing-16);
+  padding: var(--spacing-20) 0;
   text-align: center;
   background-color: var(--background);
 }
 
 .error-hero__icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  color: var(--warning);
+  background-color: var(--warning-soft);
   width: 80px;
   height: 80px;
   border-radius: var(--radius-full);
-  background-color: var(--muted);
-  color: var(--primary);
-  margin-bottom: var(--spacing-6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--spacing-8);
 }
 
 .error-hero__description {
   max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-  color: var(--muted-foreground);
-  margin-bottom: var(--spacing-8);
+  margin: 0 auto var(--spacing-8);
   font-size: var(--text-lg);
+  color: var(--muted-foreground);
 }
 
-/* Search Box */
+/* Search Bar */
 .error-search {
-  max-width: 480px;
+  max-width: 500px;
   margin: 0 auto var(--spacing-8);
   display: flex;
   gap: var(--spacing-2);
 }
 
 .error-search__input-wrapper {
+  flex-grow: 1;
   position: relative;
-  flex: 1;
 }
 
 .error-search__icon {
@@ -60,104 +58,212 @@
   top: 50%;
   transform: translateY(-50%);
   color: var(--muted-foreground);
-  pointer-events: none;
 }
 
 .error-search__input {
   width: 100%;
-  height: 48px;
-  padding: 0 var(--spacing-4) 0 var(--spacing-10);
+  padding: var(--spacing-3) var(--spacing-3) var(--spacing-3) var(--spacing-10);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background-color: var(--background);
-  color: var(--foreground);
+  border-radius: var(--radius-md);
   font-family: var(--font-primary);
   font-size: var(--text-base);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  background-color: var(--background);
+  color: var(--foreground);
 }
 
 .error-search__input:focus {
-  outline: none;
+  outline: 2px solid var(--primary);
   border-color: var(--primary);
-  box-shadow: 0 0 0 2px var(--primary-soft);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--primary) 25%, transparent);
+}
+
+/* Suggestions */
+.error-search-suggestions {
+  max-width: 600px;
+  margin: 0 auto var(--spacing-8);
+  text-align: center;
+}
+
+.error-search-suggestions__label {
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  margin-bottom: var(--spacing-2);
+}
+
+.error-search-suggestions__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--spacing-2);
+}
+
+.error-search-suggestions__chip {
+  background-color: var(--card);
+  color: var(--foreground);
+  padding: var(--spacing-1) var(--spacing-3);
+  border-radius: var(--radius-full);
+  font-size: var(--text-sm);
+  font-family: var(--font-secondary);
+  cursor: pointer;
+  border: 1px solid var(--border-soft);
+  transition: all var(--transition-base) var(--ease-out);
+}
+
+.error-search-suggestions__chip:hover {
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: var(--color-white);
+  border-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--primary) 20%, transparent);
 }
 
 .error-actions {
-  display: flex;
-  justify-content: center;
-  gap: var(--spacing-4);
+  margin-top: var(--spacing-8);
 }
 
-/* Suggestions Section */
+/* Helpful Links */
 .error-suggestions {
-  background-color: var(--muted);
+  background-color: var(--card);
 }
 
 .error-suggestions__grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--spacing-8);
+  gap: var(--spacing-6);
 }
 
 @media (min-width: 768px) {
+  .error-suggestions__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
   .error-suggestions__grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
 .error-suggestion-card {
-  background-color: var(--card);
+  background-color: var(--background);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  padding: var(--spacing-6);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: transform 0.2s ease;
 }
 
 .error-suggestion-card:hover {
   transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
+  border-color: var(--primary);
 }
 
-.error-suggestion-card__image-container {
-  height: 160px;
-  overflow: hidden;
-  background-color: var(--muted);
+/* Neon glow on suggestion card icon */
+.error-suggestion-card__icon-container {
+  color: var(--primary);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 12%, transparent), color-mix(in srgb, var(--accent) 8%, transparent));
+  padding: var(--spacing-3);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-4);
+  transition: box-shadow var(--transition-base) var(--ease-out);
 }
 
-.error-suggestion-card__image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
-.error-suggestion-card:hover .error-suggestion-card__image {
-  transform: scale(1.05);
+.error-suggestion-card:hover .error-suggestion-card__icon-container {
+  box-shadow: 0 0 12px color-mix(in srgb, var(--primary) 20%, transparent);
 }
 
 .error-suggestion-card__content {
-  padding: var(--spacing-6);
-  text-align: center;
+  width: 100%;
 }
 
 .error-suggestion-card__title {
-  font-size: var(--text-xl);
-  font-weight: var(--font-weight-bold);
+  font-size: var(--text-lg);
+  margin-bottom: var(--spacing-2);
+}
+
+.error-suggestion-card__description {
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
   margin-bottom: var(--spacing-4);
-  color: var(--foreground);
 }
 
-.error-suggestion-card__link {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--spacing-2);
+/* CTA */
+.error-cta {
+  background-color: var(--muted);
+}
+
+.error-cta__buttons {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-4);
+}
+
+/* ============================================
+   DARK MODE OVERRIDES
+   ============================================ */
+
+.dark .error-hero {
+  background-color: var(--background);
+}
+
+.dark .error-hero__icon {
+  background-color: color-mix(in srgb, var(--warning) 15%, transparent);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--warning) 20%, transparent);
+}
+
+.dark .error-suggestions {
+  background-color: color-mix(in srgb, var(--background) 95%, var(--primary) 5%);
+}
+
+.dark .error-suggestion-card {
+  background-color: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border-color: var(--glass-border);
+}
+
+.dark .error-suggestion-card:hover {
+  border-color: var(--primary);
+  box-shadow: 0 0 16px color-mix(in srgb, var(--primary) 20%, transparent);
+}
+
+.dark .error-suggestion-card__icon-container {
+  background-color: color-mix(in srgb, var(--primary) 15%, transparent);
+  box-shadow: 0 0 8px color-mix(in srgb, var(--primary) 15%, transparent);
+}
+
+.dark .error-search-suggestions__chip {
+  background-color: color-mix(in srgb, var(--primary) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--primary) 20%, transparent);
+}
+
+.dark .error-search-suggestions__chip:hover {
+  background-color: color-mix(in srgb, var(--primary) 20%, transparent);
   color: var(--primary);
-  font-weight: var(--font-weight-medium);
-  text-decoration: none;
-  transition: gap 0.2s ease;
+  box-shadow: 0 0 8px color-mix(in srgb, var(--primary) 15%, transparent);
 }
 
-.error-suggestion-card__link:hover {
-  gap: var(--spacing-3);
-  text-decoration: underline;
+.dark .error-search__input {
+  background-color: var(--card);
+  border-color: var(--glass-border);
+}
+
+.dark .error-search__input:focus {
+  box-shadow: 0 0 12px color-mix(in srgb, var(--primary) 25%, transparent);
+}
+
+.dark .error-cta {
+  background-color: color-mix(in srgb, var(--background) 95%, var(--primary) 5%);
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .error-suggestion-card:hover,
+  .error-search-suggestions__chip:hover {
+    transform: none;
+  }
 }

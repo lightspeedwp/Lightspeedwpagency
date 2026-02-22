@@ -1,0 +1,151 @@
+/**
+ * Portfolio Tag Archive Template Styles — Funky Neon Pass
+ *
+ * Additional styles for the tag archive variant of the portfolio.
+ * Extends portfolio-archive.css with sidebar layout and tag cloud.
+ *
+ * Funky treatments:
+ * - Sidebar widgets → glassmorphism (backdrop-filter: blur)
+ * - Tag cloud items → gradient fill on hover + neon glow
+ * - Active tag → gradient background + neon shadow
+ * - Full dark mode overrides
+ * - prefers-reduced-motion guards
+ *
+ * BEM: .portfolio-tag-archive / .portfolio-tag-cloud
+ */
+
+/* ============================================
+ * LAYOUT — Main + Sidebar
+ * ============================================ */
+
+.portfolio-tag-archive__layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-12);
+}
+
+@media (min-width: 1024px) {
+  .portfolio-tag-archive__layout {
+    grid-template-columns: 1fr 280px;
+  }
+}
+
+.portfolio-tag-archive__main {
+  min-width: 0;
+}
+
+/* ============================================
+ * SIDEBAR — Glassmorphism widgets
+ * ============================================ */
+
+.portfolio-tag-archive__sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+}
+
+@media (min-width: 1024px) {
+  .portfolio-tag-archive__sidebar {
+    position: sticky;
+    top: var(--spacing-8);
+    align-self: start;
+  }
+}
+
+.portfolio-tag-archive__sidebar-widget {
+  padding: var(--spacing-6);
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  transition: border-color var(--transition-base) var(--ease-out);
+}
+
+.portfolio-tag-archive__sidebar-widget:hover {
+  border-color: color-mix(in srgb, var(--primary) 25%, transparent);
+}
+
+/* ============================================
+ * TAG CLOUD — Neon gradient pills
+ * ============================================ */
+
+.portfolio-tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-2);
+}
+
+.portfolio-tag-cloud__item {
+  display: inline-block;
+  padding: var(--spacing-1) var(--spacing-3);
+  background: var(--secondary);
+  color: var(--foreground);
+  font-family: var(--font-secondary);
+  font-size: var(--text-small);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  transition: all var(--transition-fast) var(--ease-in-out);
+}
+
+.portfolio-tag-cloud__item:hover {
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: var(--color-white);
+  border-color: transparent;
+  box-shadow: 0 0 12px color-mix(in srgb, var(--primary) 25%, transparent);
+  transform: translateY(-1px);
+}
+
+.portfolio-tag-cloud__item--active {
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: var(--color-white);
+  border-color: transparent;
+  box-shadow: 0 0 10px color-mix(in srgb, var(--primary) 20%, transparent);
+}
+
+.portfolio-tag-cloud__item--active:hover {
+  color: var(--color-white);
+  box-shadow: 0 0 16px color-mix(in srgb, var(--primary) 35%, transparent);
+}
+
+/* ============================================
+ * DARK MODE
+ * ============================================ */
+
+.dark .portfolio-tag-archive__sidebar-widget {
+  background: color-mix(in srgb, var(--card) 50%, transparent);
+  border-color: var(--glass-border);
+}
+
+.dark .portfolio-tag-archive__sidebar-widget:hover {
+  border-color: color-mix(in srgb, var(--primary) 35%, transparent);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--primary) 10%, transparent);
+}
+
+.dark .portfolio-tag-cloud__item {
+  background: color-mix(in srgb, var(--card) 70%, transparent);
+  border-color: var(--border-soft);
+}
+
+.dark .portfolio-tag-cloud__item:hover {
+  box-shadow: 0 0 16px color-mix(in srgb, var(--primary) 35%, transparent);
+}
+
+.dark .portfolio-tag-cloud__item--active {
+  box-shadow: 0 0 14px color-mix(in srgb, var(--primary) 30%, transparent);
+}
+
+.dark .portfolio-tag-cloud__item--active:hover {
+  box-shadow: 0 0 20px color-mix(in srgb, var(--primary) 45%, transparent);
+}
+
+/* ============================================
+ * REDUCED MOTION
+ * ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-tag-cloud__item:hover {
+    transform: none;
+  }
+}

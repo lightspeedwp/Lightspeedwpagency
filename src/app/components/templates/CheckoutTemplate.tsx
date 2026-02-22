@@ -9,7 +9,7 @@
 import { Container } from '../common/Container';
 import { Heading } from '../common/Heading';
 import { allProducts } from '../../data/woocommerce';
-import '@/styles/woocommerce/checkout.css';
+
 
 export function CheckoutTemplate() {
   const cartItems = [

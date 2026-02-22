@@ -13,7 +13,7 @@ import { LucideIcon } from 'lucide-react';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { InteractiveCard, InteractiveCardContent } from '../common/InteractiveCard';
-import '@/styles/patterns/why-choose-us.css';
+
 
 export interface Reason {
   icon: LucideIcon;

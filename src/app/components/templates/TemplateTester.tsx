@@ -21,8 +21,10 @@
  */
 
 import { Button } from '../blocks/design/Buttons';
-import { useNavigation } from '../../contexts/NavigationContext';
-import { Breadcrumbs } from '../common/Breadcrumbs';
+import { Link } from 'react-router';
+import { slugToPath } from '../../utils/route-map';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
+import { FAQSection } from '../patterns/FAQSection';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { useState } from 'react';
@@ -53,7 +55,7 @@ import {
   Grid3x3,
   MapPin
 } from 'lucide-react';
-import '@/styles/templates/template-tester.css';
+
 
 /**
  * WordPress Template Categories
@@ -207,17 +209,26 @@ const templateCategories = [
   },
   {
     id: 'post-formats',
-    title: 'Post Formats',
-    description: 'WordPress post format archives and single views',
+    title: 'Post Formats & Content Types',
+    description: 'WordPress post format archives, single views, and custom content types',
     icon: Layers,
     color: 'var(--accent)',
     pages: [
+      // Videos
+      { label: 'Video Archive', page: 'videos', slug: '/videos', template: 'archive-video.html' },
+      { label: 'Single Video', page: 'video-single', slug: '/video/getting-started-block-themes', template: 'single-video.html' },
+      
+      // Podcasts
+      { label: 'Podcast Archive', page: 'podcasts', slug: '/podcasts', template: 'archive-podcast.html' },
+      { label: 'Single Podcast', page: 'podcast-single', slug: '/podcast/welcome-to-lsx-design', template: 'single-podcast.html' },
+
+      // Standard Formats
       { label: 'Audio Archive', page: 'audio-archive', slug: '/audio-archive', template: 'archive-audio.html' },
-      { label: 'Video Archive', page: 'video-archive', slug: '/video-archive', template: 'archive-video.html' },
+      { label: 'Video Archive (Format)', page: 'video-archive', slug: '/video-archive', template: 'archive-video.html' },
       { label: 'Gallery Archive', page: 'gallery-archive', slug: '/gallery-archive', template: 'archive-gallery.html' },
       { label: 'Aside Stream', page: 'aside-stream', slug: '/aside-stream', template: 'archive-aside.html' },
       { label: 'Single Audio', page: 'audio-single', slug: '/audio-single', template: 'single-audio.html' },
-      { label: 'Single Video', page: 'video-single', slug: '/video-single', template: 'single-video.html' },
+      { label: 'Single Video (Format)', page: 'video-single', slug: '/video-single', template: 'single-video.html' },
       { label: 'Single Gallery', page: 'gallery-single', slug: '/gallery-single', template: 'single-gallery.html' },
       { label: 'Image Archive', page: 'image-archive', slug: '/image-archive', template: 'archive-image.html' },
       { label: 'Quote Archive', page: 'quote-archive', slug: '/quote-archive', template: 'archive-quote.html' },
@@ -225,17 +236,10 @@ const templateCategories = [
       { label: 'Chat Archive', page: 'chat-archive', slug: '/chat-archive', template: 'archive-chat.html' },
       { label: 'Status Archive', page: 'status-archive', slug: '/status-archive', template: 'archive-status.html' },
       { label: 'Standard Archive', page: 'standard-archive', slug: '/standard-archive', template: 'archive.html' },
-      { label: 'Audio Archive', page: 'audio-archive', slug: '/audio-archive', template: 'archive-audio.html' },
-      { label: 'Video Archive', page: 'video-archive', slug: '/video-archive', template: 'archive-video.html' },
-      { label: 'Gallery Archive', page: 'gallery-archive', slug: '/gallery-archive', template: 'archive-gallery.html' },
-      { label: 'Image Archive', page: 'image-archive', slug: '/image-archive', template: 'archive-image.html' },
       { label: 'Aside Archive', page: 'aside-archive', slug: '/aside-archive', template: 'archive-aside.html' },
       { label: 'Single Chat', page: 'chat-single', slug: '/chat-single', template: 'single-chat.html' },
       { label: 'Single Status', page: 'status-single', slug: '/status-single', template: 'single-status.html' },
       { label: 'Single Standard', page: 'standard-single', slug: '/standard-single', template: 'single.html' },
-      { label: 'Single Audio', page: 'audio-single', slug: '/audio-single', template: 'single-audio.html' },
-      { label: 'Single Video', page: 'video-single', slug: '/video-single', template: 'single-video.html' },
-      { label: 'Single Gallery', page: 'gallery-single', slug: '/gallery-single', template: 'single-gallery.html' },
       { label: 'Single Image', page: 'image-single', slug: '/image-single', template: 'single-image.html' },
       { label: 'Single Quote', page: 'quote-single', slug: '/quote-single', template: 'single-quote.html' },
       { label: 'Single Link', page: 'link-single', slug: '/link-single', template: 'single-link.html' },
@@ -308,7 +312,6 @@ const templateCategories = [
 ];
 
 export function TemplateTester() {
-  const { navigateTo } = useNavigation();
   const [sortBy, setSortBy] = useState<'category' | 'type'>('category');
 
   // Calculate stats
@@ -361,15 +364,13 @@ export function TemplateTester() {
   return (
     <>
         {/* Breadcrumbs */}
-        <section className="wp-block-breadcrumbs-section">
-            <Breadcrumbs
-              items={[
-                { label: 'Home', page: 'home' },
-                { label: 'Developer Tools', page: 'dev-tools' },
-                { label: 'Template Tester' }
-              ]}
-            />
-        </section>
+        <BreadcrumbPart
+          items={[
+            { label: 'Home', page: 'front-page' },
+            { label: 'Developer Tools', page: 'dev-tools' },
+            { label: 'Template Tester' },
+          ]}
+        />
 
         {/* Hero Header */}
         <Section background="default" spacing="lg">
@@ -510,9 +511,9 @@ export function TemplateTester() {
                         {/* Archetype Pages Grid */}
                         <div className="wp-grid-3-cols template-tester__pages-grid">
                           {archetype.pages.map((page) => (
-                            <button
+                            <Link
                               key={page.page}
-                              onClick={() => navigateTo(page.page)}
+                              to={slugToPath(page.page)}
                               className="template-tester__page-button"
                             >
                               <div className="template-tester__page-button-header">
@@ -527,7 +528,7 @@ export function TemplateTester() {
                               <span className="template-tester__page-template">
                                 {page.template}
                               </span>
-                            </button>
+                            </Link>
                           ))}
                         </div>
                       </div>
@@ -537,9 +538,9 @@ export function TemplateTester() {
                   /* Regular Pages Grid */
                   <div className="wp-grid-3-cols template-tester__pages-grid">
                     {category.pages?.map((page) => (
-                      <button
+                      <Link
                         key={page.page}
-                        onClick={() => navigateTo(page.page)}
+                        to={slugToPath(page.page)}
                         className="template-tester__page-button"
                       >
                         <div className="template-tester__page-button-header">
@@ -554,7 +555,7 @@ export function TemplateTester() {
                         <span className="template-tester__page-template">
                           {page.template}
                         </span>
-                      </button>
+                      </Link>
                     ))}
                   </div>
                 )}
@@ -587,9 +588,9 @@ export function TemplateTester() {
                 {/* Archetype Pages Grid */}
                 <div className="wp-grid-3-cols template-tester__pages-grid">
                   {templatesByType[type].map((page) => (
-                    <button
+                    <Link
                       key={page.page}
-                      onClick={() => navigateTo(page.page)}
+                      to={slugToPath(page.page)}
                       className="template-tester__page-button"
                     >
                       <div className="template-tester__page-button-header">
@@ -604,24 +605,13 @@ export function TemplateTester() {
                       <span className="template-tester__page-template">
                         {page.template}
                       </span>
-                    </button>
+                    </Link>
                   ))}
                 </div>
               </Container>
             </Section>
           ))
         )}
-
-        {/* Footer Note */}
-        <Section background="default" spacing="lg">
-          <Container>
-            <div className="template-tester__footer-card">
-              <p className="template-tester__footer-text">
-                All templates use 100% CSS variables from <code className="template-tester__code">theme.css</code> • Lexend/Manrope fonts • WCAG 2.1 AA compliant • WordPress FSE compatible
-              </p>
-            </div>
-          </Container>
-        </Section>
     </>
   );
 }

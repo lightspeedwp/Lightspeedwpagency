@@ -19,6 +19,9 @@
  * - Custom taxonomies registered
  */
 
+import { projectGroups, projectTags, projectTypes, TaxonomyTerm } from './taxonomies';
+export { projectGroups, projectTags, projectTypes };
+
 export interface PortfolioProject {
   id: string;
   slug: string;
@@ -62,65 +65,7 @@ export interface PortfolioProject {
 }
 
 /**
- * Project Groups (Industries/Sectors)
- * Based on project_group taxonomy
- */
-export const projectGroups = [
-  { slug: 'ecommerce', name: 'E-commerce', count: 12 },
-  { slug: 'healthcare', name: 'Healthcare & Medical', count: 8 },
-  { slug: 'travel-tourism', name: 'Travel & Tourism', count: 6 },
-  { slug: 'technology', name: 'Technology & SaaS', count: 10 },
-  { slug: 'nonprofit', name: 'Non-Profit & Education', count: 5 },
-  { slug: 'professional-services', name: 'Professional Services', count: 7 },
-  { slug: 'retail', name: 'Retail & Consumer Goods', count: 6 },
-  { slug: 'real-estate', name: 'Real Estate', count: 4 }
-] as const;
-
-/**
- * Project Tags (Technologies/Features)
- * Based on project_tag taxonomy
- */
-export const projectTags = [
-  { slug: 'wordpress', name: 'WordPress', count: 42 },
-  { slug: 'woocommerce', name: 'WooCommerce', count: 28 },
-  { slug: 'block-theme', name: 'Block Theme', count: 35 },
-  { slug: 'fse', name: 'Full Site Editing', count: 30 },
-  { slug: 'gutenberg', name: 'Gutenberg', count: 38 },
-  { slug: 'acf', name: 'Advanced Custom Fields', count: 25 },
-  { slug: 'accessibility', name: 'Accessibility (WCAG)', count: 40 },
-  { slug: 'performance', name: 'Performance Optimization', count: 35 },
-  { slug: 'seo', name: 'SEO', count: 32 },
-  { slug: 'multisite', name: 'WordPress Multisite', count: 8 },
-  { slug: 'membership', name: 'Membership Site', count: 6 },
-  { slug: 'multilingual', name: 'Multilingual', count: 12 },
-  { slug: 'headless', name: 'Headless WordPress', count: 5 },
-  { slug: 'design-system', name: 'Design System', count: 15 },
-  { slug: 'migration', name: 'Site Migration', count: 10 },
-  { slug: 'tour-operator', name: 'Tour Operator Plugin', count: 8 },
-  { slug: 'lsx-theme', name: 'LSX Theme', count: 12 },
-  { slug: 'custom-plugin', name: 'Custom Plugin', count: 18 },
-  { slug: 'api-integration', name: 'API Integration', count: 14 },
-  { slug: 'booking-system', name: 'Booking System', count: 9 }
-] as const;
-
-/**
- * Project Types
- * Based on project_type taxonomy
- */
-export const projectTypes = [
-  { slug: 'new-build', name: 'New Website Build', count: 25 },
-  { slug: 'redesign', name: 'Website Redesign', count: 18 },
-  { slug: 'migration', name: 'Platform Migration', count: 10 },
-  { slug: 'optimization', name: 'Performance Optimization', count: 12 },
-  { slug: 'maintenance', name: 'Ongoing Maintenance', count: 30 },
-  { slug: 'consulting', name: 'Consulting & Strategy', count: 8 }
-] as const;
-
-/**
  * Portfolio Projects
- * Real projects from LightSpeed WordPress Agency
- * 
- * Content sourced from https://lightspeedwp.agency/portfolio
  */
 export const portfolioProjects: PortfolioProject[] = [
   // ─────────────────────────────────────────────
@@ -131,7 +76,7 @@ export const portfolioProjects: PortfolioProject[] = [
     slug: 'armd-digital',
     title: 'ARMD Digital - Email Security Platform',
     excerpt: 'Achieving what other agencies could not achieve. ARMD Digital partnered with LightSpeed to enhance their online presence and streamline their services for email security.',
-    featuredImage: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1200',
+    featuredImage: 'https://images.unsplash.com/photo-1616560091035-863cdf9e23e6?w=1200',
     client: 'ARMD Digital',
     projectGroups: ['technology', 'ecommerce'],
     projectTags: ['wordpress', 'woocommerce', 'block-theme', 'accessibility', 'performance', 'custom-plugin', 'api-integration'],
@@ -168,7 +113,7 @@ export const portfolioProjects: PortfolioProject[] = [
     slug: 'kalahari-safaris',
     title: 'Kalahari Safaris - African Safari Experiences',
     excerpt: 'A comprehensive tour operator website showcasing luxury safari experiences across Southern Africa, complete with real-time availability, online bookings, and Wetu integration.',
-    featuredImage: 'https://images.unsplash.com/photo-1577971132997-c10be9372519?w=1200',
+    featuredImage: 'https://images.unsplash.com/photo-1760199078524-800c6f5648bc?w=1200',
     client: 'Kalahari Safaris',
     projectGroups: ['travel-tourism'],
     projectTags: ['wordpress', 'woocommerce', 'tour-operator', 'lsx-theme', 'booking-system', 'api-integration', 'performance', 'seo'],
@@ -205,7 +150,7 @@ export const portfolioProjects: PortfolioProject[] = [
     slug: 'green-horizons-health',
     title: 'Green Horizons Health - Integrative Medicine Practice',
     excerpt: 'A WCAG 2.1 AA compliant healthcare website with appointment booking, practitioner profiles, and patient resource library built on WordPress Full Site Editing.',
-    featuredImage: 'https://images.unsplash.com/photo-1691934286085-c88039d93dae?w=1200',
+    featuredImage: 'https://images.unsplash.com/photo-1762625570087-6d98fca29531?w=1200',
     client: 'Green Horizons Health',
     projectGroups: ['healthcare'],
     projectTags: ['wordpress', 'block-theme', 'fse', 'accessibility', 'performance', 'seo', 'acf'],
@@ -242,7 +187,7 @@ export const portfolioProjects: PortfolioProject[] = [
     slug: 'cape-coastal-properties',
     title: 'Cape Coastal Properties - Luxury Real Estate',
     excerpt: 'A high-end property listing platform with advanced search, virtual tours, and agent management for luxury coastal properties in the Western Cape.',
-    featuredImage: 'https://images.unsplash.com/photo-1652878530627-cc6f063e3947?w=1200',
+    featuredImage: 'https://images.unsplash.com/photo-1770185998570-db739db7af47?w=1200',
     client: 'Cape Coastal Properties',
     projectGroups: ['real-estate', 'professional-services'],
     projectTags: ['wordpress', 'acf', 'performance', 'seo', 'custom-plugin', 'api-integration'],
@@ -279,7 +224,7 @@ export const portfolioProjects: PortfolioProject[] = [
     slug: 'wanderlust-student-travel',
     title: 'Wanderlust Student Travel - Educational Tours',
     excerpt: 'A student travel platform combining educational tour management, group booking, and parent communication portals — powered by the Tour Operator plugin and WooCommerce.',
-    featuredImage: 'https://images.unsplash.com/photo-1770563182398-e2e8d2a9501d?w=1200',
+    featuredImage: 'https://images.unsplash.com/photo-1764072970350-2ce4f354a483?w=1200',
     client: 'Wanderlust Student Travel',
     projectGroups: ['travel-tourism', 'nonprofit'],
     projectTags: ['wordpress', 'woocommerce', 'tour-operator', 'lsx-theme', 'booking-system', 'accessibility', 'custom-plugin'],
@@ -316,7 +261,7 @@ export const portfolioProjects: PortfolioProject[] = [
     slug: 'velvet-and-vine',
     title: 'Velvet & Vine - Artisan Wine E-commerce',
     excerpt: 'A premium WooCommerce wine store with subscription boxes, age verification, temperature-controlled shipping integration, and a wine club membership system.',
-    featuredImage: 'https://images.unsplash.com/photo-1758611974022-ca3182694951?w=1200',
+    featuredImage: 'https://images.unsplash.com/photo-1771003601879-6b9c0f26a1d5?w=1200',
     client: 'Velvet & Vine',
     projectGroups: ['ecommerce', 'retail'],
     projectTags: ['wordpress', 'woocommerce', 'performance', 'seo', 'custom-plugin', 'membership'],
@@ -353,7 +298,7 @@ export const portfolioProjects: PortfolioProject[] = [
     slug: 'atlas-adventures',
     title: 'Atlas Adventures - Multi-Destination Tour Operator',
     excerpt: 'A large-scale tour operator platform managing 200+ tours across 15 countries with Wetu integration, multi-currency pricing, and real-time availability calendars.',
-    featuredImage: 'https://images.unsplash.com/photo-1761926488116-9a5040fb1384?w=1200',
+    featuredImage: 'https://images.unsplash.com/photo-1765142849387-fe8a2eaff7f2?w=1200',
     client: 'Atlas Adventures',
     projectGroups: ['travel-tourism'],
     projectTags: ['wordpress', 'woocommerce', 'tour-operator', 'lsx-theme', 'booking-system', 'api-integration', 'multilingual', 'performance'],
@@ -390,7 +335,7 @@ export const portfolioProjects: PortfolioProject[] = [
     slug: 'ubuntu-foundation',
     title: 'Ubuntu Foundation - Community Development Non-Profit',
     excerpt: 'An accessible, multilingual non-profit website with donation processing, volunteer management, project showcases, and impact reporting dashboards.',
-    featuredImage: 'https://images.unsplash.com/photo-1673724534205-c1cc5519a26b?w=1200',
+    featuredImage: 'https://images.unsplash.com/photo-1560220604-1985ebfe28b1?w=1200',
     client: 'Ubuntu Foundation',
     projectGroups: ['nonprofit'],
     projectTags: ['wordpress', 'woocommerce', 'block-theme', 'fse', 'accessibility', 'multilingual', 'performance', 'design-system'],

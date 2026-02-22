@@ -1,19 +1,61 @@
 /**
- * Author Archive Template Styles
+ * Author Archive Template Styles — Funky Neon Pass
  *
  * WordPress template: templates/archive-author.html
  * BEM naming: .author-*
  * 100% CSS variables — no hardcoded values.
+ *
+ * Funky treatments:
+ * - Author profile → glassmorphism + animated gradient stripe
+ * - Avatar → neon gradient border ring + hover glow
+ * - Role badge → neon gradient fill
+ * - Social links → gradient fill on hover + glow
+ * - Section titles → gradient underline ::after
+ * - Full dark mode
+ * - prefers-reduced-motion guards
  */
 
 /* ============================================
-   AUTHOR HEADER
+   ANIMATED GRADIENT STRIPE — Author
+   ============================================ */
+
+@keyframes authorStripeShimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ============================================
+   AUTHOR HEADER — Glassmorphism
    ============================================ */
 
 .author-header {
+  position: relative;
   padding: var(--spacing-12) 0;
-  background-color: var(--muted);
-  border-bottom: 1px solid var(--border-soft);
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--glass-border);
+  overflow: hidden;
+}
+
+/* Animated gradient stripe along top */
+.author-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    var(--primary) 25%,
+    var(--accent) 50%,
+    var(--primary) 75%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: authorStripeShimmer 4s linear infinite;
+  z-index: 1;
 }
 
 .author-profile {
@@ -30,6 +72,7 @@
   }
 }
 
+/* Neon gradient avatar ring */
 .author-profile__avatar {
   width: 120px;
   height: 120px;
@@ -37,7 +80,18 @@
   background-size: cover;
   background-position: center;
   flex-shrink: 0;
-  border: 3px solid var(--primary);
+  border: 3px solid transparent;
+  background-clip: padding-box;
+  box-shadow:
+    0 0 0 3px var(--primary),
+    0 0 16px color-mix(in srgb, var(--primary) 25%, transparent);
+  transition: box-shadow var(--transition-base) var(--ease-out);
+}
+
+.author-profile__avatar:hover {
+  box-shadow:
+    0 0 0 3px var(--primary),
+    0 0 24px color-mix(in srgb, var(--primary) 40%, transparent);
 }
 
 .author-profile__info {
@@ -51,17 +105,22 @@
   }
 }
 
+/* Neon role badge */
 .author-profile__badge {
   display: inline-block;
   padding: var(--spacing-1) var(--spacing-3);
-  background-color: var(--muted);
-  color: var(--muted-foreground);
-  border-radius: var(--radius);
+  background: linear-gradient(135deg,
+    color-mix(in srgb, var(--primary) 12%, transparent),
+    color-mix(in srgb, var(--accent) 8%, transparent)
+  );
+  color: var(--primary);
+  border-radius: var(--radius-full);
   font-family: var(--font-secondary);
   font-size: var(--text-small);
   font-weight: var(--font-weight-medium);
   margin-bottom: var(--spacing-2);
-  border: 1px solid var(--border-soft);
+  border: 1px solid color-mix(in srgb, var(--primary) 20%, transparent);
+  box-shadow: 0 0 8px color-mix(in srgb, var(--primary) 10%, transparent);
 }
 
 .author-profile__name {
@@ -107,11 +166,11 @@
   color: var(--muted-foreground);
 }
 
+/* Social Links — Gradient fill on hover */
 .author-profile__social {
   display: flex;
   gap: var(--spacing-2);
   padding-top: var(--spacing-4);
-  /* margin-top converted to padding-top */
   justify-content: center;
 }
 
@@ -131,14 +190,16 @@
   border: 1px solid var(--border);
   color: var(--muted-foreground);
   background: transparent;
-  transition: all var(--transition-base) ease;
+  transition: all var(--transition-base) var(--ease-out);
   text-decoration: none;
 }
 
 .author-profile__social-link:hover {
-  color: var(--primary);
-  border-color: var(--primary);
-  background-color: var(--primary-soft);
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: var(--color-white);
+  border-color: transparent;
+  box-shadow: 0 0 12px color-mix(in srgb, var(--primary) 30%, transparent);
+  transform: translateY(-2px);
 }
 
 .author-profile__social-link:focus-visible {
@@ -157,6 +218,19 @@
   font-weight: var(--font-weight-bold);
   color: var(--foreground);
   margin: 0 0 var(--spacing-8) 0;
+  position: relative;
+  display: inline-block;
+}
+
+/* Gradient underline on section title */
+.author-posts__title::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  margin-top: var(--spacing-3);
+  border-radius: var(--radius-full);
 }
 
 .author-posts__badge-wrapper {
@@ -175,11 +249,59 @@
    ============================================ */
 
 .dark .author-header {
-  background-color: color-mix(in srgb, var(--foreground) 5%, transparent);
-  border-color: var(--border);
+  background: color-mix(in srgb, var(--card) 50%, transparent);
+  border-color: var(--glass-border);
+}
+
+.dark .author-header::before {
+  box-shadow: 0 0 8px color-mix(in srgb, var(--primary) 30%, transparent);
+}
+
+.dark .author-profile__avatar {
+  box-shadow:
+    0 0 0 3px var(--primary),
+    0 0 20px color-mix(in srgb, var(--primary) 35%, transparent);
+}
+
+.dark .author-profile__avatar:hover {
+  box-shadow:
+    0 0 0 3px var(--primary),
+    0 0 32px color-mix(in srgb, var(--primary) 50%, transparent);
 }
 
 .dark .author-profile__badge {
-  background-color: color-mix(in srgb, var(--foreground) 8%, transparent);
-  border-color: var(--border);
+  background: color-mix(in srgb, var(--primary) 15%, transparent);
+  border-color: color-mix(in srgb, var(--primary) 30%, transparent);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--primary) 15%, transparent);
+}
+
+.dark .author-profile__social-link {
+  border-color: var(--border-soft);
+  background: color-mix(in srgb, var(--card) 60%, transparent);
+}
+
+.dark .author-profile__social-link:hover {
+  box-shadow: 0 0 16px color-mix(in srgb, var(--primary) 40%, transparent);
+}
+
+.dark .author-posts__title::after {
+  box-shadow: 0 0 6px color-mix(in srgb, var(--primary) 25%, transparent);
+}
+
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .author-header::before {
+    animation: none;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    background-size: 100% 100%;
+  }
+
+  .author-profile__social-link:hover,
+  .author-profile__avatar:hover {
+    transform: none;
+  }
 }

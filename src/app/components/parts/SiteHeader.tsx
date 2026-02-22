@@ -6,11 +6,18 @@
  * Global navigation chrome with modern animated mega menus.
  * Rebuilt to use WordPress Block classes and CSS variables.
  * 
+ * **Funky Neon Mobile Menu:**
+ * - Opens below the header as a full-viewport overlay
+ * - Burger icon morphs to X when open
+ * - Accordion sub-menus with neon glow accents
+ * - Staggered entrance animations
+ * - Body scroll lock when open
+ * 
  * **Structure:**
  * - `wp-block-group` (Header Container)
- *   - `wp-block-site-logo` (Logo)
- *   - `wp-block-navigation` (Desktop Nav)
- *   - `wp-block-group` (Actions: Theme/Search/Mobile)
+ * - `wp-block-site-logo` (Logo)
+ * - `wp-block-navigation` (Desktop Nav)
+ * - `wp-block-group` (Actions: Theme/Search/Mobile)
  * 
  * **Styling:**
  * - Uses `wp-block-*` classes for structural layout
@@ -21,27 +28,44 @@
  */
 
 import { SiteLogo } from '../blocks/theme/SiteLogo';
-import { useNavigation } from '../../contexts/NavigationContext';
-import { useLocation as useRouterLocation } from 'react-router';
-import { blogCategories } from '../../data/blog-posts';
+import { useLocation as useRouterLocation, Link } from 'react-router';
+import { slugToPath } from '../../utils/route-map';
+import { blogCategories } from '../../data/taxonomies';
+import { developmentProcess } from '../../data/process';
+import { serviceJourney } from '../../data/service-journey';
 import { Menu, X, ChevronDown, Search, Sun, Moon } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { GlobalSearchOverlay } from '../patterns/GlobalSearchOverlay';
-import '@/styles/blocks/theme/site-header.css';
-import '@/styles/responsive.css';
+/* site-header.css and responsive.css are loaded globally via index.css */
 
 interface SiteHeaderProps {
   variant?: 'default' | 'simple';
 }
 
 export function SiteHeader({ variant = 'default' }: SiteHeaderProps) {
-  const { navigateTo } = useNavigation();
   const location = useRouterLocation();
   const currentPath = location.pathname;
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [expandedMobileMenu, setExpandedMobileMenu] = useState<string | null>(null);
+  const headerRef = useRef<HTMLElement>(null);
   
   // State for mega menus
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
+  const menuTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const handleMenuEnter = (label: string) => {
+    if (menuTimerRef.current) {
+      clearTimeout(menuTimerRef.current);
+      menuTimerRef.current = null;
+    }
+    setActiveMenu(label);
+  };
+
+  const handleMenuLeave = () => {
+    menuTimerRef.current = setTimeout(() => {
+      setActiveMenu(null);
+    }, 300);
+  };
   
   const [searchOpen, setSearchOpen] = useState(false);
   const [isDark, setIsDark] = useState(false);
@@ -76,7 +100,38 @@ export function SiteHeader({ variant = 'default' }: SiteHeaderProps) {
     setMobileMenuOpen(false);
     setActiveMenu(null);
     setSearchOpen(false);
+    setExpandedMobileMenu(null);
   }, [currentPath]);
+
+  // Body scroll lock when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.classList.add('mobile-menu-open');
+    } else {
+      document.body.classList.remove('mobile-menu-open');
+    }
+    return () => {
+      document.body.classList.remove('mobile-menu-open');
+    };
+  }, [mobileMenuOpen]);
+
+  // Set CSS variable for header height so mobile menu positions below
+  // Update on mount, resize, and menu toggle
+  useEffect(() => {
+    const updateHeaderHeight = () => {
+      if (headerRef.current) {
+        const height = headerRef.current.offsetHeight;
+        document.documentElement.style.setProperty('--mobile-header-height', `${height}px`);
+      }
+    };
+
+    updateHeaderHeight();
+    window.addEventListener('resize', updateHeaderHeight);
+    
+    return () => {
+      window.removeEventListener('resize', updateHeaderHeight);
+    };
+  }, [mobileMenuOpen]);
 
   // Keyboard shortcut: Ctrl+K / Cmd+K to open search
   useEffect(() => {
@@ -85,13 +140,17 @@ export function SiteHeader({ variant = 'default' }: SiteHeaderProps) {
         e.preventDefault();
         setSearchOpen(prev => !prev);
       }
-      if (e.key === 'Escape' && searchOpen) {
-        setSearchOpen(false);
+      if (e.key === 'Escape') {
+        if (searchOpen) setSearchOpen(false);
+        if (mobileMenuOpen) {
+          setMobileMenuOpen(false);
+          setExpandedMobileMenu(null);
+        }
       }
     };
     document.addEventListener('keydown', handleKeyDown);
     return () => document.removeEventListener('keydown', handleKeyDown);
-  }, [searchOpen]);
+  }, [searchOpen, mobileMenuOpen]);
 
   const toggleTheme = () => {
     const newTheme = !isDark;
@@ -101,6 +160,19 @@ export function SiteHeader({ variant = 'default' }: SiteHeaderProps) {
     localStorage.setItem('style-variation', newTheme ? 'dark' : 'light');
   };
 
+  const toggleMobileMenu = useCallback(() => {
+    setMobileMenuOpen(prev => {
+      if (prev) {
+        setExpandedMobileMenu(null);
+      }
+      return !prev;
+    });
+  }, []);
+
+  const toggleMobileSubmenu = useCallback((label: string) => {
+    setExpandedMobileMenu(prev => prev === label ? null : label);
+  }, []);
+
   // Default header pattern with enhanced mega menus
   const navItems = [
     { 
@@ -108,46 +180,19 @@ export function SiteHeader({ variant = 'default' }: SiteHeaderProps) {
       page: 'services',
       isActive: currentPath === '/services' || currentPath.startsWith('/services/'),
       hasMegaMenu: true,
-      megaMenuSections: [
-        {
-          title: 'Core Services',
-          items: [
-            { label: 'Discovery', page: 'discovery', description: 'Website discovery & exploration' },
-            { label: 'Design', page: 'design', description: 'Custom design & branding' },
-            { label: 'Development', page: 'development', description: 'WordPress & WooCommerce development' },
-            { label: 'Support', page: 'support', description: '24/7 technical support' }
-          ]
-        },
-        {
-          title: 'Infrastructure',
-          items: [
-            { label: 'Hosting', page: 'hosting', description: 'Managed WordPress hosting' },
-            { label: 'Migrations', page: 'migrations', description: 'Seamless platform migrations' },
-            { label: 'Security', page: 'security', description: 'WordPress security' }
-          ]
-        },
-        {
-          title: 'Content & Marketing',
-          items: [
-            { label: 'Content Strategy', page: 'content-strategy', description: 'Strategic planning' },
-            { label: 'Content Collection', page: 'content-collection', description: 'Content gathering' },
-            { label: 'Content Audit', page: 'content-audit', description: 'Content analysis' },
-            { label: 'Email Marketing', page: 'email-marketing', description: 'Email campaigns' }
-          ]
-        },
-        {
-          title: 'Training',
-          items: [
-            { label: 'Training', page: 'training', description: 'WordPress training' }
-          ]
-        }
-      ]
+      /** Journey-style mega menu — rendered differently from standard columns */
+      isJourneyMenu: true,
+      menuTitle: 'Your Website Journey',
+      menuDescription: 'Every great website follows a path. Find the service for wherever you are on yours.',
+      megaMenuSections: [] as any[], // journey rendered from serviceJourney data
     },
     { 
-      label: 'Solutions',
+      label: 'Solutions', 
       page: 'solutions',
       isActive: currentPath === '/solutions' || currentPath.startsWith('/solutions/'),
       hasMegaMenu: true,
+      menuTitle: 'Built for your industry',
+      menuDescription: 'Platform-specific and industry-targeted solutions tailored to your sector.',
       megaMenuSections: [
         {
           title: 'Platforms',
@@ -157,10 +202,28 @@ export function SiteHeader({ variant = 'default' }: SiteHeaderProps) {
           ]
         },
         {
+          title: 'Website Projects',
+          items: [
+            { label: 'WordPress Redesign', page: 'wordpress-redesign', description: 'Transform your existing site' },
+            { label: 'WooCommerce Redesign', page: 'woocommerce-redesign', description: 'Rebuild your online store' },
+            { label: 'Tour Operator Design', page: 'tour-operator-design', description: 'Custom tour website & itineraries' }
+          ]
+        },
+        {
           title: 'Industries',
           items: [
             { label: 'Tour Operators', page: 'tour-operators', description: 'Travel & booking platforms' },
             { label: 'Publishers', page: 'publishers', description: 'Digital publishing solutions' }
+          ]
+        },
+        {
+          title: 'AI Solutions',
+          items: [
+            { label: 'AI Integrations', page: 'ai-integrations', description: 'AI-powered WordPress' },
+            { label: 'AI Content Generation', page: 'ai-content-generation', description: 'Automated content at scale' },
+            { label: 'AI-Powered SEO', page: 'ai-seo', description: 'Intelligent search optimisation' },
+            { label: 'AI Chatbots', page: 'ai-chatbots', description: 'Conversational agents 24/7' },
+            { label: 'AI Analytics', page: 'ai-analytics', description: 'Predictive insights & reporting' }
           ]
         }
       ]
@@ -170,6 +233,8 @@ export function SiteHeader({ variant = 'default' }: SiteHeaderProps) {
       page: 'portfolio-archive',
       isActive: currentPath === '/portfolio' || currentPath.startsWith('/portfolio/'),
       hasMegaMenu: true,
+      menuTitle: 'Our work speaks for itself',
+      menuDescription: 'Browse real client projects by industry or service type.',
       megaMenuSections: [
         {
           title: 'By Industry',
@@ -194,6 +259,8 @@ export function SiteHeader({ variant = 'default' }: SiteHeaderProps) {
       page: 'about',
       isActive: currentPath === '/about' || currentPath.startsWith('/about/'),
       hasMegaMenu: true,
+      menuTitle: 'Get to know us',
+      menuDescription: 'Learn about the team, culture, and process behind our work.',
       megaMenuSections: [
         {
           title: 'Company',
@@ -217,6 +284,8 @@ export function SiteHeader({ variant = 'default' }: SiteHeaderProps) {
       page: 'blog',
       isActive: currentPath === '/blog' || currentPath.startsWith('/blog/'),
       hasMegaMenu: true,
+      menuTitle: 'Insights & resources',
+      menuDescription: 'Stay updated with the latest in WordPress, WooCommerce, and web development.',
       megaMenuSections: [
         {
           title: 'Categories',
@@ -247,18 +316,21 @@ export function SiteHeader({ variant = 'default' }: SiteHeaderProps) {
   ];
 
   return (
-    <header className="wp-block-template-part site-header">
+    <header
+      ref={headerRef}
+      className={`wp-block-template-part site-header ${mobileMenuOpen ? 'site-header--menu-open' : ''}`}
+    >
       <div className="site-header__container">
         
         {/* Logo Block */}
         <div className="wp-block-site-logo">
-          <button
-            onClick={() => navigateTo('front-page')}
+          <Link
+            to={slugToPath('front-page')}
             aria-label="LSX Design - Home"
             className="site-header__logo-button"
           >
-            <SiteLogo width="220px" alt="LSX Design Logo" theme={isDark ? 'dark' : 'light'} />
-          </button>
+            <SiteLogo width="220px" alt="LSX Design Logo" theme={isDark ? 'dark' : 'light'} linkHref="" />
+          </Link>
         </div>
 
         {/* Desktop Navigation */}
@@ -268,13 +340,14 @@ export function SiteHeader({ variant = 'default' }: SiteHeaderProps) {
               <li 
                 key={item.page} 
                 className={`site-header__nav-item ${item.hasMegaMenu ? 'has-child' : ''}`}
-                onMouseEnter={() => item.hasMegaMenu && setActiveMenu(item.label)}
-                onMouseLeave={() => item.hasMegaMenu && setActiveMenu(null)}
+                onMouseEnter={() => item.hasMegaMenu && handleMenuEnter(item.label)}
+                onMouseLeave={() => item.hasMegaMenu && handleMenuLeave()}
               >
-                <button
-                  onClick={() => navigateTo(item.page)}
+                <Link
+                  to={slugToPath(item.page)}
                   className={`site-header__nav-link ${item.isActive ? 'site-header__nav-link--active' : ''} ${activeMenu === item.label ? 'site-header__nav-link--open' : ''}`}
                   aria-expanded={activeMenu === item.label}
+                  aria-haspopup={item.hasMegaMenu ? 'true' : undefined}
                 >
                   {item.label}
                   {item.hasMegaMenu && (
@@ -283,44 +356,119 @@ export function SiteHeader({ variant = 'default' }: SiteHeaderProps) {
                       className="site-header__nav-link-icon"
                     />
                   )}
-                </button>
+                </Link>
 
                 {/* Mega Menu Dropdown */}
-                {item.hasMegaMenu && activeMenu === item.label && item.megaMenuSections && (
-                  <div className="site-header__mega-menu">
-                    <div className="site-header__mega-menu-grid" style={{ gridTemplateColumns: `repeat(${item.megaMenuSections.length}, 1fr)` }}>
-                      {item.megaMenuSections.map((section, idx) => (
-                        <div key={idx} className="site-header__mega-menu-column">
-                          {section.title && (
-                            <h3 className="site-header__mega-menu-section-title">
-                              {section.title}
-                            </h3>
-                          )}
-                          <ul className="site-header__mega-menu-list">
-                            {section.items.map((subItem, subIdx) => (
-                              <li key={subIdx}>
-                                <button
-                                  onClick={() => {
-                                    navigateTo(subItem.page);
-                                    setActiveMenu(null);
-                                  }}
-                                  className="site-header__mega-menu-link"
+                {item.hasMegaMenu && (
+                  <div 
+                    className={`site-header__mega-menu ${item.isJourneyMenu ? 'site-header__mega-menu--journey' : ''}`}
+                    style={{
+                      display: activeMenu === item.label ? 'block' : 'none',
+                    }}
+                  >
+                    {/* Mega Menu Header */}
+                    {item.menuTitle && (
+                      <div className="site-header__mega-menu-header">
+                        <h2 className="site-header__mega-menu-title">{item.menuTitle}</h2>
+                        {item.menuDescription && (
+                          <p className="site-header__mega-menu-desc">{item.menuDescription}</p>
+                        )}
+                      </div>
+                    )}
+
+                    {/* ── Journey-style rendering (Services) ── */}
+                    {item.isJourneyMenu ? (
+                      <div className="journey-mega" role="list" aria-label="Service journey phases">
+                        {/* Connecting timeline rail */}
+                        <div className="journey-mega__rail" aria-hidden="true" />
+
+                        {serviceJourney.map((phase, phaseIdx) => {
+                          const PhaseIcon = phase.icon;
+                          return (
+                            <div
+                              key={phase.step}
+                              className="journey-mega__phase"
+                              role="listitem"
+                              style={{ '--phase-accent': phase.accent, animationDelay: `${phaseIdx * 60}ms` } as React.CSSProperties}
+                            >
+                              {/* Step pip + icon */}
+                              <div className="journey-mega__pip">
+                                <span className="journey-mega__step-number">{phase.step}</span>
+                                <PhaseIcon size={16} className="journey-mega__step-icon" />
+                              </div>
+
+                              {/* Phase label + tagline */}
+                              <div className="journey-mega__header">
+                                <Link
+                                  to={slugToPath(`journey-${phase.name.toLowerCase()}`)}
+                                  onClick={() => setActiveMenu(null)}
+                                  className="journey-mega__name"
                                 >
-                                  <span className="site-header__mega-menu-link-label">
-                                    {subItem.label}
-                                  </span>
-                                  {subItem.description && (
-                                    <span className="site-header__mega-menu-link-description">
-                                      {subItem.description}
+                                  {phase.name}
+                                </Link>
+                                <span className="journey-mega__tagline">{phase.tagline}</span>
+                              </div>
+
+                              {/* Service links */}
+                              <ul className="journey-mega__links">
+                                {phase.services.map((svc) => (
+                                  <li key={svc.page}>
+                                    <Link
+                                      to={slugToPath(svc.page)}
+                                      onClick={() => setActiveMenu(null)}
+                                      className="journey-mega__link"
+                                    >
+                                      <span className="journey-mega__link-label">
+                                        {svc.label}
+                                        {svc.badge && (
+                                          <span className="journey-mega__badge">
+                                            {svc.badge}
+                                          </span>
+                                        )}
+                                      </span>
+                                      <span className="journey-mega__link-desc">{svc.description}</span>
+                                    </Link>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    ) : (
+                      /* ── Standard column rendering ── */
+                      <div className="site-header__mega-menu-grid">
+                        {item.megaMenuSections && item.megaMenuSections.map((section, idx) => (
+                          <div key={idx} className="site-header__mega-menu-column">
+                            {section.title && (
+                              <h3 className="site-header__mega-menu-section-title">
+                                {section.title}
+                              </h3>
+                            )}
+                            <ul className="site-header__mega-menu-list">
+                              {section.items.map((subItem, subIdx) => (
+                                <li key={subIdx}>
+                                  <Link
+                                    to={slugToPath(subItem.page)}
+                                    onClick={() => setActiveMenu(null)}
+                                    className="site-header__mega-menu-link"
+                                  >
+                                    <span className="site-header__mega-menu-link-label">
+                                      {subItem.label}
                                     </span>
-                                  )}
-                                </button>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      ))}
-                    </div>
+                                    {subItem.description && (
+                                      <span className="site-header__mega-menu-link-description">
+                                        {subItem.description}
+                                      </span>
+                                    )}
+                                  </Link>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 )}
               </li>
@@ -332,7 +480,7 @@ export function SiteHeader({ variant = 'default' }: SiteHeaderProps) {
         <div className="site-header__actions">
           <button 
             onClick={toggleTheme}
-            aria-label="Toggle theme"
+            aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
             className="site-header__theme-toggle"
           >
             {isDark ? <Sun size={20} /> : <Moon size={20} />}
@@ -346,11 +494,13 @@ export function SiteHeader({ variant = 'default' }: SiteHeaderProps) {
             <Search size={20} />
           </button>
 
-          {/* Mobile Menu Toggle */}
+          {/* Mobile Menu Toggle — Burger / X */}
           <button
-            className="site-header__mobile-toggle"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Menu"
+            className={`site-header__mobile-toggle ${mobileMenuOpen ? 'site-header__mobile-toggle--open' : ''}`}
+            onClick={toggleMobileMenu}
+            aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-menu"
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -363,77 +513,171 @@ export function SiteHeader({ variant = 'default' }: SiteHeaderProps) {
         onClose={() => setSearchOpen(false)}
       />
 
-      {/* Mobile Navigation Menu */}
+      {/* ============================================
+          FUNKY NEON MOBILE MENU
+          Opens below header, full viewport height
+          ============================================ */}
       {mobileMenuOpen && (
-        <div className="site-header__mobile-menu">
-          <div className="site-header__mobile-menu-header">
-            <div className="wp-block-site-logo">
-              <SiteLogo width="180px" alt="LSX Design Logo" theme={isDark ? 'dark' : 'light'} />
-            </div>
-            <button 
-              className="site-header__mobile-menu-close"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              <X size={24} />
-            </button>
-          </div>
-          
-          <nav className="site-header__mobile-nav">
-            <ul className="site-header__mobile-nav-list">
-              {navItems.map((item) => (
-                <li key={item.page} className="site-header__mobile-nav-item">
-                  <button
-                    onClick={() => {
-                      navigateTo(item.page);
-                      setMobileMenuOpen(false);
-                    }}
-                    className={`site-header__mobile-nav-link ${item.isActive ? 'site-header__mobile-nav-link--active' : ''}`}
-                  >
-                    {item.label}
-                  </button>
-                  {item.hasMegaMenu && item.megaMenuSections && (
-                    <div className="site-header__mobile-submenu">
-                      {item.megaMenuSections.map((section, sIdx) => (
-                        <div key={sIdx}>
-                          {section.title && (
-                            <div className="site-header__mega-menu-section-title wp-mt-4">
-                              {section.title}
+        <div
+          id="mobile-menu"
+          className="site-header__mobile-menu"
+          role="navigation"
+          aria-label="Mobile navigation"
+        >
+          <div className="site-header__mobile-menu-inner">
+            <nav className="site-header__mobile-nav">
+              <ul className="site-header__mobile-nav-list">
+                {navItems.map((item) => (
+                  <li key={item.page} className="site-header__mobile-nav-item">
+                    {/* Main nav link row */}
+                    {item.hasMegaMenu ? (
+                      <button
+                        onClick={() => toggleMobileSubmenu(item.label)}
+                        className={`site-header__mobile-nav-link ${item.isActive ? 'site-header__mobile-nav-link--active' : ''}`}
+                        aria-expanded={expandedMobileMenu === item.label}
+                      >
+                        <span>{item.label}</span>
+                        <ChevronDown
+                          size={18}
+                          className={`site-header__mobile-nav-chevron ${expandedMobileMenu === item.label ? 'site-header__mobile-nav-chevron--open' : ''}`}
+                        />
+                      </button>
+                    ) : (
+                      <Link
+                        to={slugToPath(item.page)}
+                        className={`site-header__mobile-nav-link ${item.isActive ? 'site-header__mobile-nav-link--active' : ''}`}
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        <span>{item.label}</span>
+                      </Link>
+                    )}
+
+                    {/* Accordion submenu */}
+                    {item.hasMegaMenu && expandedMobileMenu === item.label && (
+                      <div className="site-header__mobile-submenu">
+                        {/* Menu description for mobile */}
+                        {item.menuTitle && (
+                          <div className="site-header__mobile-submenu-header">
+                            <div className="site-header__mobile-submenu-header-title">{item.menuTitle}</div>
+                            {item.menuDescription && (
+                              <div className="site-header__mobile-submenu-header-desc">{item.menuDescription}</div>
+                            )}
+                          </div>
+                        )}
+
+                        {/* View all link for parent */}
+                        <ul className="site-header__mobile-submenu-list">
+                          <li>
+                            <Link
+                              to={slugToPath(item.page)}
+                              className="site-header__mobile-submenu-link site-header__mobile-submenu-link--view-all"
+                              onClick={() => setMobileMenuOpen(false)}
+                            >
+                              View all {item.label.toLowerCase()}
+                            </Link>
+                          </li>
+                        </ul>
+
+                        {/* Journey-style mobile submenu */}
+                        {item.isJourneyMenu ? (
+                          serviceJourney.map((phase, pIdx) => (
+                            <div key={pIdx}>
+                              <div
+                                className="site-header__mobile-submenu-section-title"
+                                style={{ color: phase.accent } as React.CSSProperties}
+                              >
+                                {phase.step} {phase.name}
+                              </div>
+                              <ul className="site-header__mobile-submenu-list">
+                                {phase.services.map((svc, sIdx) => (
+                                  <li key={sIdx}>
+                                    <Link
+                                      to={slugToPath(svc.page)}
+                                      className="site-header__mobile-submenu-link"
+                                      onClick={() => setMobileMenuOpen(false)}
+                                    >
+                                      <span>
+                                        {svc.label}
+                                        {svc.badge && (
+                                          <span className="journey-mega__badge">
+                                            {svc.badge}
+                                          </span>
+                                        )}
+                                      </span>
+                                      <span className="site-header__mobile-submenu-link-desc">
+                                        {svc.description}
+                                      </span>
+                                    </Link>
+                                  </li>
+                                ))}
+                              </ul>
                             </div>
-                          )}
-                          <ul className="site-header__mega-menu-list">
-                            {section.items.map((sub, subIdx) => (
-                              <li key={subIdx}>
-                                <button
-                                  onClick={() => {
-                                    navigateTo(sub.page);
-                                    setMobileMenuOpen(false);
-                                  }}
-                                  className="site-header__mobile-submenu-link"
-                                >
-                                  {sub.label}
-                                </button>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </li>
-              ))}
-              <li className="wp-mt-6">
-                <button
-                  onClick={() => {
-                    navigateTo('contact');
-                    setMobileMenuOpen(false);
-                  }}
-                  className="wp-block-button__link is-style-primary wp-w-full wp-justify-center"
-                >
-                  Contact Us
-                </button>
-              </li>
-            </ul>
-          </nav>
+                          ))
+                        ) : (
+                          item.megaMenuSections && item.megaMenuSections.map((section, sIdx) => (
+                            <div key={sIdx}>
+                              {section.title && (
+                                <div className="site-header__mobile-submenu-section-title">
+                                  {section.title}
+                                </div>
+                              )}
+                              <ul className="site-header__mobile-submenu-list">
+                                {section.items.map((sub, subIdx) => (
+                                  <li key={subIdx}>
+                                    <Link
+                                      to={slugToPath(sub.page)}
+                                      className="site-header__mobile-submenu-link"
+                                      onClick={() => setMobileMenuOpen(false)}
+                                    >
+                                      <span>{sub.label}</span>
+                                      {sub.description && (
+                                        <span className="site-header__mobile-submenu-link-desc">
+                                          {sub.description}
+                                        </span>
+                                      )}
+                                    </Link>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          ))
+                        )}
+                      </div>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </nav>
+
+            {/* CTA Button */}
+            <div className="site-header__mobile-cta-wrapper">
+              <Link
+                to={slugToPath('contact')}
+                className="site-header__mobile-cta"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Get in touch
+              </Link>
+            </div>
+
+            {/* Theme & Search row */}
+            <div className="site-header__mobile-actions-row">
+              <button onClick={toggleTheme} aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}>
+                {isDark ? <Sun size={18} /> : <Moon size={18} />}
+                <span>{isDark ? 'Light mode' : 'Dark mode'}</span>
+              </button>
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  setTimeout(() => setSearchOpen(true), 200);
+                }}
+                aria-label="Search"
+              >
+                <Search size={18} />
+                <span>Search</span>
+              </button>
+            </div>
+          </div>
         </div>
       )}
     </header>

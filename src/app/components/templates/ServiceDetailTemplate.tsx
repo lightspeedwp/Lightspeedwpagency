@@ -1,26 +1,35 @@
 /**
- * Service Detail Template
- * 
- * WordPress template: templates/page-service-detail.html
- * 
- * Pattern order: Breadcrumbs → Hero → Overview → Features → Process → Sub-Services → Why Choose → Benefits → Related Services → FAQs → CTA
+ * Service Detail Template — Funky Neon Redesign
+ *
+ * Generic service detail page with neon mesh hero, glass feature cards,
+ * holographic process steps, and FunkyCTA. All content driven by
+ * centralised data from `/src/app/data/service-page.ts`.
+ *
+ * Migration notes:
+ *  - `useNavigation()` → declarative `<Link>` from react-router
+ *  - `CTASection` → `FunkyCTA`
+ *  - Inline styles → BEM classes in service-detail.css
+ *  - `motion/react` → `useScrollReveal`
+ *
+ * @see /src/styles/templates/service-detail.css
+ * @see /src/app/data/service-page.ts
  */
 
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
-import { Breadcrumbs } from '../common/Breadcrumbs';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { Buttons, Button } from '../blocks/design/Buttons';
 import { FAQSection } from '../patterns/FAQSection';
-import { CTASection } from '../patterns/CTASection';
-import { Hero } from '../patterns/Hero';
-import { 
-  Code,
+import { FunkyCTA } from '../patterns/FunkyCTA';
+import {
   CheckCircle,
   ArrowRight,
-  Clock
+  Clock,
+  Sparkles,
 } from 'lucide-react';
-import { useNavigation } from '../../contexts/NavigationContext';
-import '@/styles/templates/service-detail.css';
+import { Link } from 'react-router';
+import { ScrollReveal } from '../../hooks/useScrollReveal';
+import { slugToPath } from '../../utils/route-map';
 
 // Import centralized data
 import {
@@ -34,145 +43,141 @@ import {
   servicePageDeliverables,
   servicePageRelated,
   servicePageFAQs,
-  servicePageCTA
+  servicePageCTA,
 } from '../../data/service-page';
 
 interface ServiceDetailTemplateProps {
   slug?: string;
 }
 
-export function ServiceDetailTemplate({ slug = 'wordpress-development' }: ServiceDetailTemplateProps) {
-  const { navigateTo } = useNavigation();
-
+export function ServiceDetailTemplate({
+  slug = 'wordpress-development',
+}: ServiceDetailTemplateProps) {
   return (
-    <>
-      {/* Breadcrumbs */}
-      <section className="wp-block-breadcrumbs-section">
-        <Breadcrumbs 
-          items={[
-            { label: 'Home', href: '/' },
-            { label: 'Services', href: '/services' },
-            { label: servicePageHero.title }
-          ]}
-        />
+    <div className="service-detail">
+      {/* ============================================
+          BREADCRUMBS
+          ============================================ */}
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Services', href: '/services' },
+          { label: servicePageHero.title },
+        ]}
+      />
+
+      {/* ============================================
+          HERO — Neon Mesh
+          ============================================ */}
+      <section className="service-detail__hero">
+        {/* Decorative layers */}
+        <div className="service-detail__hero-mesh" aria-hidden="true" />
+        <div className="service-detail__hero-orb service-detail__hero-orb--1" aria-hidden="true" />
+        <div className="service-detail__hero-orb service-detail__hero-orb--2" aria-hidden="true" />
+
+        <Container>
+          <ScrollReveal animation="fade-up">
+            <div className="service-detail__hero-content">
+              {/* Neon Badge */}
+              <div className="service-detail__hero-badge">
+                <Sparkles size={14} className="service-detail__badge-icon" />
+                <span>{servicePageHero.badge.text}</span>
+              </div>
+
+              <h1 className="service-detail__hero-title">
+                Expert{' '}
+                <span className="service-detail__hero-highlight">WordPress</span>{' '}
+                Development Services
+              </h1>
+
+              <p className="service-detail__hero-tagline">
+                {servicePageHero.tagline}
+              </p>
+
+              <p className="service-detail__hero-desc">
+                {servicePageHero.description}
+              </p>
+
+              <Buttons align="center">
+                <Button
+                  page="contact"
+                  size="lg"
+                  variant="default"
+                  className="neon-hover"
+                >
+                  Get a Quote
+                </Button>
+                <Button
+                  page="portfolio"
+                  size="lg"
+                  variant="outline"
+                  className="neon-hover"
+                >
+                  View Our Work
+                </Button>
+              </Buttons>
+            </div>
+          </ScrollReveal>
+        </Container>
       </section>
 
-      {/* Hero Section */}
-      <Section 
-        spacing="xl"
-        className="service-detail__hero"
-      >
-        {/* Gradient orb decorations */}
-        <div className="service-detail__hero-orb" />
-
-        <Container>
-          <div className="service-detail__hero-content">
-            <div className="service-detail__hero-badge">
-              <Code size={14} style={{ display: 'inline', marginRight: 'var(--spacing-2)' }} />
-              {servicePageHero.badge.text}
-            </div>
-
-            <h1 className="service-detail__hero-title">
-              Expert <span className="service-detail__hero-highlight">WordPress</span> Development Services
-            </h1>
-
-            <p className="service-detail__hero-tagline">
-              {servicePageHero.tagline}
-            </p>
-
-            <p className="wp-block-service-hero__description">
-              {servicePageHero.description}
-            </p>
-
-            <Buttons alignment="center" gap="md">
-              <Button 
-                page="contact" 
-                size="lg"
-                variant="default"
-                className="service-detail__hero-btn-primary"
-              >
-                Get a Quote
-              </Button>
-              <Button 
-                page="portfolio" 
-                size="lg"
-                variant="outline"
-                className="service-detail__hero-btn-outline"
-              >
-                View Our Work
-              </Button>
-            </Buttons>
-          </div>
-        </Container>
-      </Section>
-
-      {/* Overview Section */}
+      {/* ============================================
+          OVERVIEW — Stats Grid
+          ============================================ */}
       <Section spacing="xl" className="service-detail__overview-section">
         <Container>
-          <div className="wp-max-w-6xl wp-mx-auto">
+          <ScrollReveal animation="fade-up">
             <div className="service-detail__section-header">
               <h2 className="service-detail__title">
                 {servicePageOverview.title}
               </h2>
-
               <p className="service-detail__description">
                 {servicePageOverview.description}
               </p>
             </div>
+          </ScrollReveal>
 
-            {/* Stats */}
-            <div className="service-detail__stats-grid">
-              {servicePageOverview.stats.map((stat, index) => {
-                const Icon = stat.icon;
-                return (
-                  <div
-                    key={index}
-                    className="service-detail__stat-card"
-                  >
+          <div className="service-detail__stats-grid">
+            {servicePageOverview.stats.map((stat, index) => {
+              const Icon = stat.icon;
+              return (
+                <ScrollReveal key={index} animation="fade-up" delay={index * 100}>
+                  <div className="service-detail__stat-card">
                     <Icon size={32} className="service-detail__stat-icon" />
-                    <div className="service-detail__stat-value">
-                      {stat.value}
-                    </div>
-                    <div className="service-detail__stat-label">
-                      {stat.label}
-                    </div>
-                    <p className="service-detail__stat-desc">
-                      {stat.description}
-                    </p>
+                    <div className="service-detail__stat-value">{stat.value}</div>
+                    <div className="service-detail__stat-label">{stat.label}</div>
+                    <p className="service-detail__stat-desc">{stat.description}</p>
                   </div>
-                );
-              })}
-            </div>
+                </ScrollReveal>
+              );
+            })}
           </div>
         </Container>
       </Section>
 
-      {/* Features Section */}
+      {/* ============================================
+          FEATURES — Glass Cards
+          ============================================ */}
       <Section spacing="xl" className="service-detail__features-section">
         <Container>
-          <div className="wp-max-w-6xl wp-mx-auto">
+          <ScrollReveal animation="fade-up">
             <div className="service-detail__section-header">
-              <h2 className="service-detail__title">
-                What We Build
-              </h2>
-
+              <h2 className="service-detail__title">What We Build</h2>
               <p className="service-detail__description">
                 Comprehensive WordPress development services for modern websites
               </p>
             </div>
+          </ScrollReveal>
 
-            <div className="wp-grid-3-cols wp-gap-8">
-              {servicePageFeatures.map((feature, index) => {
-                const Icon = feature.icon;
-                return (
-                  <div
-                    key={index}
-                    className="service-detail__feature-card"
-                  >
+          <div className="service-detail__features-grid">
+            {servicePageFeatures.map((feature, index) => {
+              const Icon = feature.icon;
+              return (
+                <ScrollReveal key={index} animation="fade-up" delay={index * 80}>
+                  <div className="service-detail__feature-card">
                     <div className="service-detail__feature-icon-wrapper">
                       <Icon size={28} className="service-detail__feature-icon" />
                     </div>
-
                     <h3 className="service-detail__feature-title">
                       {feature.title}
                     </h3>
@@ -180,103 +185,86 @@ export function ServiceDetailTemplate({ slug = 'wordpress-development' }: Servic
                       {feature.description}
                     </p>
                   </div>
-                );
-              })}
-            </div>
+                </ScrollReveal>
+              );
+            })}
           </div>
         </Container>
       </Section>
 
-      {/* Process Section */}
+      {/* ============================================
+          PROCESS — Numbered Steps
+          ============================================ */}
       <Section spacing="xl" className="service-detail__process-section">
         <Container>
-          <div className="wp-max-w-6xl wp-mx-auto">
+          <ScrollReveal animation="fade-up">
             <div className="service-detail__section-header">
-              <h2 className="service-detail__title">
-                Our Development Process
-              </h2>
-
+              <h2 className="service-detail__title">Our Development Process</h2>
               <p className="service-detail__description">
                 From discovery to launch, we follow a proven process
               </p>
             </div>
+          </ScrollReveal>
 
-            <div className="wp-grid-3-cols wp-gap-8">
-              {servicePageProcess.map((step, index) => (
-                <div
-                  key={index}
-                  className="service-detail__process-card"
-                >
-                  {/* Step Number Badge */}
+          <div className="service-detail__process-grid">
+            {servicePageProcess.map((step, index) => (
+              <ScrollReveal key={index} animation="fade-up" delay={index * 100}>
+                <div className="service-detail__process-card">
                   <div className="service-detail__process-number">
                     {step.number}
                   </div>
-
-                  <h3 className="service-detail__process-title wp-mt-2">
-                    {step.title}
-                  </h3>
-
+                  <h3 className="service-detail__process-title">{step.title}</h3>
                   {step.duration && (
-                    <div className="wp-flex wp-items-center wp-text-small wp-font-semibold wp-text-primary wp-mb-3">
-                      <Clock size={14} className="wp-mr-2" />
+                    <div className="service-detail__process-duration">
+                      <Clock size={14} />
                       {step.duration}
                     </div>
                   )}
-
                   <p className="service-detail__process-desc">
                     {step.description}
                   </p>
                 </div>
-              ))}
-            </div>
+              </ScrollReveal>
+            ))}
           </div>
         </Container>
       </Section>
 
-      {/* Sub-Services Section */}
+      {/* ============================================
+          SUB-SERVICES
+          ============================================ */}
       <Section spacing="xl" className="service-detail__services-section">
         <Container>
-          <div className="wp-max-w-6xl wp-mx-auto">
+          <ScrollReveal animation="fade-up">
             <div className="service-detail__section-header">
-              <h2 className="service-detail__title">
-                Specialized Services
-              </h2>
-
+              <h2 className="service-detail__title">Specialized Services</h2>
               <p className="service-detail__description">
                 Deep expertise in specific WordPress development areas
               </p>
             </div>
+          </ScrollReveal>
 
-            <div className="wp-grid-2-cols wp-gap-8">
-              {servicePageSubServices.map((subService, index) => {
-                const Icon = subService.icon;
-                return (
-                  <div
-                    key={index}
-                    className="service-detail__package-card"
-                  >
+          <div className="service-detail__sub-services-grid">
+            {servicePageSubServices.map((subService, index) => {
+              const Icon = subService.icon;
+              return (
+                <ScrollReveal key={index} animation="fade-up" delay={index * 100}>
+                  <div className="service-detail__package-card">
                     <div className="service-detail__service-icon-wrapper">
                       <Icon size={32} />
                     </div>
-
                     <h3 className="service-detail__service-title">
                       {subService.title}
                     </h3>
-
                     <p className="service-detail__service-desc">
                       {subService.description}
                     </p>
-
-                    {/* Features List */}
                     <ul className="service-detail__feature-list">
                       {subService.features.map((feature, idx) => (
-                        <li
-                          key={idx}
-                          className="service-detail__feature-item"
-                        >
-                          <CheckCircle 
-                            size={20} 
-                            className="service-detail__feature-icon wp-mt-1"
+                        <li key={idx} className="service-detail__feature-item">
+                          <CheckCircle
+                            size={20}
+                            className="service-detail__check-icon"
                           />
                           <span className="service-detail__feature-text">
                             {feature}
@@ -285,39 +273,36 @@ export function ServiceDetailTemplate({ slug = 'wordpress-development' }: Servic
                       ))}
                     </ul>
                   </div>
-                );
-              })}
-            </div>
+                </ScrollReveal>
+              );
+            })}
           </div>
         </Container>
       </Section>
 
-      {/* Why Choose LightSpeed Section */}
+      {/* ============================================
+          WHY CHOOSE LIGHTSPEED
+          ============================================ */}
       <Section spacing="xl" className="service-detail__overview-section">
         <Container>
-          <div className="wp-max-w-6xl wp-mx-auto">
+          <ScrollReveal animation="fade-up">
             <div className="service-detail__section-header">
-              <h2 className="service-detail__title">
-                Why Choose LightSpeed
-              </h2>
-
+              <h2 className="service-detail__title">Why Choose LightSpeed</h2>
               <p className="service-detail__description">
                 What sets us apart from other WordPress development agencies
               </p>
             </div>
+          </ScrollReveal>
 
-            <div className="wp-grid-2-cols wp-gap-8">
-              {servicePageWhyChoose.map((reason, index) => {
-                const Icon = reason.icon;
-                return (
-                  <div
-                    key={index}
-                    className="service-detail__stat-card"
-                  >
+          <div className="service-detail__why-grid">
+            {servicePageWhyChoose.map((reason, index) => {
+              const Icon = reason.icon;
+              return (
+                <ScrollReveal key={index} animation="fade-up" delay={index * 100}>
+                  <div className="service-detail__stat-card">
                     <div className="service-detail__service-icon-wrapper">
                       <Icon size={28} />
                     </div>
-
                     <h3 className="service-detail__service-title">
                       {reason.title}
                     </h3>
@@ -325,93 +310,87 @@ export function ServiceDetailTemplate({ slug = 'wordpress-development' }: Servic
                       {reason.description}
                     </p>
                   </div>
-                );
-              })}
-            </div>
+                </ScrollReveal>
+              );
+            })}
           </div>
         </Container>
       </Section>
 
-      {/* Benefits & Deliverables Section */}
+      {/* ============================================
+          BENEFITS & DELIVERABLES
+          ============================================ */}
       <Section spacing="xl" className="service-detail__benefits-section">
         <Container>
-          <div className="wp-max-w-6xl wp-mx-auto">
-            <div className="wp-grid-2-cols wp-gap-12">
-              {/* Benefits */}
+          <div className="service-detail__benefits-grid">
+            {/* Benefits */}
+            <ScrollReveal animation="fade-right">
               <div>
                 <h2 className="service-detail__section-subtitle">
                   Service Benefits
                 </h2>
-
                 <ul className="service-detail__feature-list">
                   {servicePageBenefits.map((benefit, index) => (
-                    <li
-                      key={index}
-                      className="service-detail__feature-item wp-mb-4"
-                    >
-                      <CheckCircle 
-                        size={20} 
-                        className="service-detail__feature-icon wp-mt-1"
+                    <li key={index} className="service-detail__feature-item">
+                      <CheckCircle
+                        size={20}
+                        className="service-detail__check-icon"
                       />
-                      <span className="service-detail__feature-text wp-text-base">
+                      <span className="service-detail__feature-text">
                         {benefit}
                       </span>
                     </li>
                   ))}
                 </ul>
               </div>
+            </ScrollReveal>
 
-              {/* Deliverables */}
+            {/* Deliverables */}
+            <ScrollReveal animation="fade-left" delay={150}>
               <div>
                 <h2 className="service-detail__section-subtitle">
                   What You'll Receive
                 </h2>
-
                 <ul className="service-detail__feature-list">
                   {servicePageDeliverables.map((deliverable, index) => (
-                    <li
-                      key={index}
-                      className="service-detail__feature-item wp-mb-4"
-                    >
-                      <CheckCircle 
-                        size={20} 
-                        className="service-detail__feature-icon wp-mt-1"
+                    <li key={index} className="service-detail__feature-item">
+                      <CheckCircle
+                        size={20}
+                        className="service-detail__check-icon"
                       />
-                      <span className="service-detail__feature-text wp-text-base">
+                      <span className="service-detail__feature-text">
                         {deliverable}
                       </span>
                     </li>
                   ))}
                 </ul>
               </div>
-            </div>
+            </ScrollReveal>
           </div>
         </Container>
       </Section>
 
-      {/* Related Services Section */}
+      {/* ============================================
+          RELATED SERVICES — <Link> navigation
+          ============================================ */}
       <Section spacing="xl" className="service-detail__related-section">
         <Container>
-          <div className="wp-max-w-6xl wp-mx-auto">
+          <ScrollReveal animation="fade-up">
             <div className="service-detail__section-header">
-              <h2 className="service-detail__title">
-                Related Services
-              </h2>
-
+              <h2 className="service-detail__title">Related Services</h2>
               <p className="service-detail__description">
                 Complementary services to enhance your WordPress website
               </p>
             </div>
+          </ScrollReveal>
 
-            <div className="wp-grid-3-cols wp-gap-8">
-              {servicePageRelated.map((relatedService, index) => (
-                <div
-                  key={index}
-                  onClick={() => navigateTo(relatedService.page as any)}
-                  role="button"
-                  tabIndex={0}
-                  onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); navigateTo(relatedService.page as any); } }}
+          <div className="service-detail__related-grid">
+            {servicePageRelated.map((relatedService, index) => (
+              <ScrollReveal key={index} animation="fade-up" delay={index * 100}>
+                <Link
+                  to={slugToPath(relatedService.page) || `/services/${relatedService.page}`}
                   className="service-detail__related-card"
+                  aria-label={`Learn more about ${relatedService.title}`}
                 >
                   <h3 className="service-detail__related-title">
                     {relatedService.title}
@@ -419,34 +398,44 @@ export function ServiceDetailTemplate({ slug = 'wordpress-development' }: Servic
                   <p className="service-detail__related-desc">
                     {relatedService.description}
                   </p>
-                  <div className="service-detail__related-link">
+                  <span className="service-detail__related-link">
                     Learn More <ArrowRight size={16} />
-                  </div>
-                </div>
-              ))}
-            </div>
+                  </span>
+                </Link>
+              </ScrollReveal>
+            ))}
           </div>
         </Container>
       </Section>
 
-      {/* FAQ Section */}
-      <FAQSection
-        title="Frequently Asked Questions"
-        description="Common questions about WordPress development"
-        faqs={servicePageFAQs}
-        variant="muted"
-      />
+      {/* ============================================
+          FAQ
+          ============================================ */}
+      <ScrollReveal animation="fade-up">
+        <FAQSection
+          title="Frequently Asked Questions"
+          description="Common questions about WordPress development"
+          faqs={servicePageFAQs}
+          variant="muted"
+        />
+      </ScrollReveal>
 
-      {/* CTA Section */}
-      <CTASection
+      {/* ============================================
+          CTA — FunkyCTA
+          ============================================ */}
+      <FunkyCTA
         title={servicePageCTA.title}
         description={servicePageCTA.description}
-        primaryButtonText={servicePageCTA.buttons[0].text}
-        primaryButtonPage={servicePageCTA.buttons[0].page as any}
-        secondaryButtonText={servicePageCTA.buttons[1].text}
-        secondaryButtonPage={servicePageCTA.buttons[1].page as any}
-        gradient="blue"
+        buttonText={servicePageCTA.buttons[0].text}
+        buttonPage={servicePageCTA.buttons[0].page}
+        benefits={[
+          'Expert WordPress developers',
+          'Transparent project management',
+          'Fixed-price project quotes',
+          'Post-launch support included',
+          'WCAG 2.1 AA compliant builds',
+        ]}
       />
-    </>
+    </div>
   );
 }

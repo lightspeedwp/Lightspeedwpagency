@@ -253,6 +253,6 @@
 }
 
 .hero-section--with-gradient .hero-icon-container {
-  color: var(--color-white) !important;
+  color: var(--color-white);
   opacity: 0.15;
 }

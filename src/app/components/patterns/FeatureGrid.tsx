@@ -13,10 +13,11 @@
  */
 
 import { LucideIcon } from 'lucide-react';
+import { Link } from 'react-router';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
-import { useNavigation } from '../../contexts/NavigationContext';
-import '@/styles/patterns/feature-grid.css';
+import { getPageUrl } from '../../data/pages';
+
 
 export interface FeatureGridItem {
   /** Lucide icon component */
@@ -76,8 +77,6 @@ export function FeatureGrid({
   backgroundColor,
   maxWidth = 'full'
 }: FeatureGridProps) {
-  const { navigateTo } = useNavigation();
-
   // Grid column classes
   const gridClasses = {
     1: 'wp-grid-1-col',
@@ -137,13 +136,9 @@ export function FeatureGrid({
               const Icon = item.icon;
               const itemId = item.id || `feature-${index}`;
 
-              const CardWrapper = item.link ? 'a' : 'div';
+              const CardWrapper = item.link ? Link : 'div';
               const cardProps = item.link ? {
-                href: `#${item.link}`,
-                onClick: (e: React.MouseEvent) => {
-                  e.preventDefault();
-                  navigateTo(item.link!);
-                },
+                to: getPageUrl(item.link),
                 className: 'feature-grid__item-link'
               } : {};
 

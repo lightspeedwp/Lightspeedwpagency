@@ -32,7 +32,7 @@ import { LucideIcon } from 'lucide-react';
 import { Section } from '../common/Section';
 import { CheckCircle } from 'lucide-react';
 import { useState } from 'react';
-import '@/styles/patterns/solutions-detail-grid.css';
+
 
 export interface SolutionDetail {
   /** Unique ID for hover state */

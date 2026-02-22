@@ -90,6 +90,46 @@
 }
 
 /* ============================================
+   NEON / GLOW KEYFRAMES
+   ============================================ */
+
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 8px color-mix(in srgb, var(--neon-color) 30%, transparent),
+                0 0 20px color-mix(in srgb, var(--neon-color) 15%, transparent);
+  }
+  50% {
+    box-shadow: 0 0 16px color-mix(in srgb, var(--neon-color) 50%, transparent),
+                0 0 40px color-mix(in srgb, var(--neon-color) 25%, transparent);
+  }
+}
+
+@keyframes neonBorderFlow {
+  0% {
+    border-color: var(--primary);
+    box-shadow: 0 0 6px color-mix(in srgb, var(--primary) 25%, transparent);
+  }
+  50% {
+    border-color: var(--neon-color);
+    box-shadow: 0 0 12px color-mix(in srgb, var(--neon-color) 40%, transparent);
+  }
+  100% {
+    border-color: var(--primary);
+    box-shadow: 0 0 6px color-mix(in srgb, var(--primary) 25%, transparent);
+  }
+}
+
+@keyframes neonTextGlow {
+  0%, 100% {
+    text-shadow: 0 0 6px color-mix(in srgb, var(--neon-color) 30%, transparent);
+  }
+  50% {
+    text-shadow: 0 0 14px color-mix(in srgb, var(--neon-color) 50%, transparent),
+                 0 0 30px color-mix(in srgb, var(--neon-color) 20%, transparent);
+  }
+}
+
+/* ============================================
    UTILITY CLASSES
    ============================================ */
 
@@ -132,8 +172,72 @@
   .animate-slide-down,
   .animate-scale-in,
   .animate-spin,
-  .animate-pulse {
+  .animate-pulse,
+  .neon-glow-pulse,
+  .neon-border-flow,
+  .neon-text-glow {
     animation: none !important;
     transition: none !important;
   }
+
+  .neon-hover:hover {
+    box-shadow: var(--shadow-glow-sm);
+    transform: none;
+  }
+}
+
+/* ============================================
+   NEON / GLOW UTILITY CLASSES
+   ============================================ */
+
+/** Pulsing neon glow — use on cards, badges, CTAs */
+.neon-glow-pulse {
+  animation: glowPulse 2.5s ease-in-out infinite;
+}
+
+/** Flowing neon border — use on cards, sections */
+.neon-border-flow {
+  animation: neonBorderFlow 3s ease-in-out infinite;
+}
+
+/** Neon text shimmer */
+.neon-text-glow {
+  animation: neonTextGlow 2.5s ease-in-out infinite;
+}
+
+/* ============================================
+   NEON BUTTON HOVER
+   ============================================ */
+
+/**
+ * Apply .neon-hover to any button for neon glow on hover.
+ * Works with the design-system --primary and --neon-color vars.
+ */
+.neon-hover {
+  transition: box-shadow var(--transition-base) var(--ease-in-out),
+              transform var(--transition-base) var(--ease-in-out);
+}
+
+.neon-hover:hover {
+  box-shadow: var(--shadow-neon);
+  transform: translateY(-1px);
+}
+
+.neon-hover:active {
+  box-shadow: var(--shadow-glow-sm);
+  transform: translateY(0);
+}
+
+/* ============================================
+   NEON FOCUS RINGS (Inputs)
+   ============================================ */
+
+/**
+ * Apply .neon-focus to inputs/textareas for neon focus ring.
+ */
+.neon-focus:focus-visible {
+  outline: none;
+  border-color: var(--neon-color);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--neon-color) 20%, transparent),
+              0 0 12px color-mix(in srgb, var(--neon-color) 25%, transparent);
 }

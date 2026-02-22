@@ -8,32 +8,26 @@
 
 import { Container } from '@/app/components/common/Container';
 import { Section } from '@/app/components/common/Section';
-import { Breadcrumbs } from '@/app/components/common/Breadcrumbs';
+import { BreadcrumbPart } from '@/app/components/parts/BreadcrumbPart';
 import { allPosts } from '@/app/data/posts-formats';
 import { Mic, Play } from 'lucide-react';
-import { useNavigation } from '@/app/contexts/NavigationContext';
-import '@/styles/blocks/post-formats/audio.css';
-import '@/styles/sections/media-grid.css';
+import { Link } from 'react-router';
+
 
 export function AudioArchiveTemplate() {
-  const { navigateTo } = useNavigation();
   const audioPosts = allPosts.filter(post => post.format === 'audio');
   // Duplicate for visual effect
   const posts = [...audioPosts, ...audioPosts, ...audioPosts];
 
   return (
     <>
-      <section className="archive-breadcrumbs">
-        <Container>
-          <Breadcrumbs 
-            items={[
-              { label: 'Home', href: '/' },
-              { label: 'Blog', href: '/blog' },
-              { label: 'Audio', href: '/audio-archive' }
-            ]}
-          />
-        </Container>
-      </section>
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Blog', href: '/blog' },
+          { label: 'Audio' },
+        ]}
+      />
 
       <Section spacing="lg">
         <Container>
@@ -44,13 +38,10 @@ export function AudioArchiveTemplate() {
 
           <div className="wp-section-media-grid">
             {posts.map((post, index) => (
-              <article 
-                key={`${post.id}-${index}`} 
+              <Link 
+                key={`${post.id}-${index}`}
+                to="#"
                 className="wp-block-audio-card"
-                onClick={() => navigateTo('audio-single')}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); navigateTo('audio-single'); } }}
               >
                 <div className="wp-block-audio-card__media">
                   {post._embedded?.['wp:featuredmedia']?.[0]?.source_url && (
@@ -82,7 +73,7 @@ export function AudioArchiveTemplate() {
                     {new Date(post.date).toLocaleDateString()}
                   </div>
                 </div>
-              </article>
+              </Link>
             ))}
           </div>
         </Container>

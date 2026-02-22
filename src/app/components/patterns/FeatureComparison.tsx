@@ -16,7 +16,7 @@ import { Container } from '../common/Container';
 import { Heading } from '../common/Heading';
 import { Check, X } from 'lucide-react';
 import type { ComparisonFeature } from '../../data/comparisons';
-import '@/styles/patterns/feature-comparison.css';
+
 
 export interface FeatureComparisonProps {
   heading?: string;

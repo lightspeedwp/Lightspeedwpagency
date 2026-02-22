@@ -1,0 +1,75 @@
+/**
+ * Section Presets Showcase Styles
+ *
+ * Theme: "Structural Blueprints"
+ * BEM naming: .presets-showcase-*
+ * 100% CSS variables.
+ */
+
+.presets-showcase {
+  background-color: var(--background);
+  min-height: 100vh;
+}
+
+/* Hero Section */
+.presets-showcase__hero {
+  position: relative;
+  padding: var(--spacing-20) 0;
+  overflow: hidden;
+  text-align: center;
+  background: radial-gradient(circle at 50% -20%, var(--primary-soft) 0%, transparent 60%);
+  color: var(--foreground);
+}
+
+.presets-showcase__hero-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h1);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-4);
+}
+
+.presets-showcase__hero-desc {
+  font-family: var(--font-secondary);
+  font-size: var(--text-lg);
+  color: var(--muted-foreground);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Section Wrapper */
+.presets-showcase__item {
+  margin-bottom: var(--spacing-12);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.presets-showcase__item-header {
+  padding: var(--spacing-4);
+  background: var(--card);
+  border-bottom: 1px solid var(--border-soft);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.presets-showcase__item-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+}
+
+.presets-showcase__item-code {
+  font-family: monospace;
+  font-size: var(--text-xs);
+  color: var(--primary);
+  background: var(--primary-soft);
+  padding: var(--spacing-1) var(--spacing-2);
+  border-radius: var(--radius-sm);
+}
+
+/* Preview Area */
+.presets-showcase__preview {
+  /* No padding here as the section styles have their own */
+}

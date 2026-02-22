@@ -1,0 +1,118 @@
+/**
+ * Theme Blocks Showcase Styles
+ *
+ * Theme: "Structural Blueprints"
+ * BEM naming: .theme-showcase-*
+ * 100% CSS variables.
+ */
+
+.theme-showcase {
+  background-color: var(--background);
+  min-height: 100vh;
+}
+
+/* Hero Section */
+.theme-showcase__hero {
+  position: relative;
+  padding: var(--spacing-20) 0;
+  overflow: hidden;
+  text-align: center;
+  background: radial-gradient(circle at 50% -20%, var(--primary-soft) 0%, transparent 60%);
+  color: var(--foreground);
+}
+
+.theme-showcase__hero-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h1);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-4);
+}
+
+.theme-showcase__hero-desc {
+  font-family: var(--font-secondary);
+  font-size: var(--text-lg);
+  color: var(--muted-foreground);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Sections */
+.theme-showcase__section {
+  padding: var(--spacing-16) 0;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.theme-showcase__section:last-child {
+  border-bottom: none;
+}
+
+.theme-showcase__section-header {
+  margin-bottom: var(--spacing-8);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+.theme-showcase__section-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h3);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  margin: 0;
+}
+
+.theme-showcase__section-icon {
+  color: var(--primary);
+  padding: var(--spacing-2);
+  background: var(--primary-soft);
+  border-radius: var(--radius-md);
+}
+
+/* Demo Containers */
+.theme-showcase__demo {
+  background: var(--card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-8);
+  margin-bottom: var(--spacing-8);
+}
+
+.theme-showcase__demo-title {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-bold);
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+  margin-bottom: var(--spacing-4);
+  display: block;
+}
+
+/* Context Variants */
+.theme-showcase__context-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-8);
+}
+
+@media (min-width: 768px) {
+  .theme-showcase__context-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.theme-showcase__context-card {
+  padding: var(--spacing-8);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-soft);
+}
+
+.theme-showcase__context-card--light {
+  background-color: #FFFFFF;
+  color: #090909;
+}
+
+.theme-showcase__context-card--dark {
+  background-color: #090909;
+  color: #FFFFFF;
+}

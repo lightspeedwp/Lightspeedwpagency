@@ -32,10 +32,9 @@ import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { Heading } from '../common/Heading';
 import { Paragraph } from '../blocks/text/Paragraph';
-import { Breadcrumbs } from '../common/Breadcrumbs';
-import { CTASection } from '../patterns/CTASection';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
+import { FunkyCTA } from '../patterns/FunkyCTA';
 import { AlertCircle } from 'lucide-react';
-import '@/styles/templates/single.css';
 
 /**
  * SingleTemplate Props
@@ -55,14 +54,12 @@ export function SingleTemplate({
   return (
     <>
       {/* Breadcrumbs */}
-      <section className="wp-block-breadcrumbs-section">
-        <Breadcrumbs 
-          items={[
-            { label: 'Home', page: 'front-page' },
-            { label: title }
-          ]}
-        />
-      </section>
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', page: 'front-page' },
+          { label: title },
+        ]}
+      />
 
       {/* Page Header */}
       <Section spacing="lg">
@@ -99,17 +96,17 @@ export function SingleTemplate({
       </Section>
 
       {/* CTA Section */}
-      <CTASection
+      <FunkyCTA
         title="Need a Custom Template?"
         description="We can help you create custom WordPress templates tailored to your specific content types and business needs."
-        primaryButton={{
-          text: 'Get Started',
-          page: 'contact'
-        }}
-        secondaryButton={{
-          text: 'View Services',
-          page: 'services'
-        }}
+        buttonText="Get Started"
+        buttonPage="contact"
+        benefits={[
+          'Custom post type templates',
+          'Block pattern libraries',
+          'Full Site Editing support',
+          'Accessibility built-in'
+        ]}
       />
     </>
   );

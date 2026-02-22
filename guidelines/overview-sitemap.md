@@ -1,16 +1,16 @@
 # Site Structure & Navigation
 
-**Version:** 2.0  
-**Last Updated:** February 16, 2026
+**Version:** 2.1
+**Last Updated:** February 18, 2026
 
 ---
 
 ## Summary
 
-The LSX Design prototype contains **120+ routes** across **11 sections**, mapping to WordPress templates, custom post types, and WooCommerce pages. Every route is lazy-loaded and wrapped in a shared `<RootLayout>` (header, footer, skip-link).
+The LSX Design prototype contains **129 routes** across **11 sections**, mapping to WordPress templates, custom post types, and WooCommerce pages. Every route is lazy-loaded and wrapped in a shared `<RootLayout>` (header, footer, skip-link).
 
-**Route file:** `/src/app/routes.tsx`  
-**Slug resolver:** `/src/app/utils/route-map.ts`  
+**Route file:** `/src/app/routes.tsx`
+**Slug resolver:** `/src/app/utils/route-map.ts`
 **Navigation data:** `/src/app/data/pages.ts`
 
 ---
@@ -60,7 +60,7 @@ The LSX Design prototype contains **120+ routes** across **11 sections**, mappin
 
 ---
 
-### Solutions Section (10 pages)
+### Solutions Section (18 pages)
 
 | URL | Template | Notes |
 |-----|----------|-------|
@@ -75,6 +75,14 @@ The LSX Design prototype contains **120+ routes** across **11 sections**, mappin
 | `/solutions/wetu-importer` | WetuImporterTemplate | Wetu importer solution |
 | `/solutions/lsx-sharing` | LSXSharingTemplate | LSX Sharing plugin |
 | `/solutions/lsx-search` | LSXSearchTemplate | LSX Search plugin |
+| `/solutions/wordpress-redesign` | WordPressRedesignTemplate | WordPress redesign solution |
+| `/solutions/woocommerce-redesign` | WooCommerceRedesignTemplate | WooCommerce redesign solution |
+| `/solutions/tour-operator-design` | TourOperatorDesignTemplate | Tour operator design solution |
+| `/solutions/ai-integrations` | AIIntegrationsTemplate | AI integrations landing hub |
+| `/solutions/ai-content-generation` | AIContentGenerationTemplate | AI content generation sub-page |
+| `/solutions/ai-seo` | AISEOTemplate | AI-powered SEO sub-page |
+| `/solutions/ai-chatbots` | AIChatbotsTemplate | AI chatbots sub-page |
+| `/solutions/ai-analytics` | AIAnalyticsTemplate | AI analytics & insights sub-page |
 
 ---
 
@@ -234,6 +242,20 @@ All dev tools are behind `/dev-tools/`. These are **not** part of the production
 
 ---
 
+### Redirect Rules
+
+Common redirect patterns used in the site:
+
+| Source | Target | Reason |
+|--------|--------|--------|
+| `/search-legacy` | `/search` | Legacy search path redirection |
+| `/services/content-strategy` | `/services/content/strategy` | Hierarchy normalization |
+| `/blog/page/1` | `/blog` | Pagination canonicalization |
+| `/admin` | `/wp-admin` | WordPress admin alias |
+| `/login` | `/wp-login.php` | WordPress login alias |
+
+---
+
 ### Error Pages
 
 | URL | Template | Notes |
@@ -281,7 +303,15 @@ LSX Design (/)
 │   ├── Mailchimp (/solutions/mailchimp)
 │   ├── Wetu Importer (/solutions/wetu-importer)
 │   ├── LSX Sharing (/solutions/lsx-sharing)
-│   └── LSX Search (/solutions/lsx-search)
+│   ├── LSX Search (/solutions/lsx-search)
+│   ├── WordPress Redesign (/solutions/wordpress-redesign)
+│   ├── WooCommerce Redesign (/solutions/woocommerce-redesign)
+│   ├── Tour Operator Design (/solutions/tour-operator-design)
+│   ├── AI Integrations (/solutions/ai-integrations)
+│   ├── AI Content Generation (/solutions/ai-content-generation)
+│   ├── AI SEO (/solutions/ai-seo)
+│   ├── AI Chatbots (/solutions/ai-chatbots)
+│   └── AI Analytics (/solutions/ai-analytics)
 │
 ├── Portfolio (/portfolio)
 │   ├── :slug — Single Project
@@ -420,45 +450,62 @@ Home > Tours > Tour Name
 
 ```
 Home  |  About ▼  |  Services ▼  |  Solutions ▼  |  Portfolio  |  Blog  |  Contact
-         ├ Process      ├ Discovery       ├ WordPress
-         ├ Culture      ├ Design          ├ WooCommerce
-         ├ History      ├ Development     ├ Tour Operators
-         ├ Team         ├ Content         ├ Publishers
-         └ Careers      ├ Security        ├ LSX Design
-                        ├ Migrations      ├ LSX Theme
-                        ├ Support         ├ Mailchimp
-                        ├ Newsletter      ├ Wetu Importer
-                        ├ Training        ├ LSX Sharing
-                        └ Hosting         └ LSX Search
+         ├ Process      ├ Discovery       ├ Platforms
+         ├ Culture      ├ Design          │  ├ WordPress
+         ├ History      ├ Development     │  └ WooCommerce
+         ├ Team         ├ Content         ├ Website Projects
+         └ Careers      ├ Security        │  ├ WordPress Redesign
+                        ├ Migrations      │  ├ WooCommerce Redesign
+                        ├ Support         │  └ Tour Operator Design
+                        ├ Newsletter      ├ Industries
+                        ├ Training        │  ├ Tour Operators
+                        └ Hosting         │  └ Publishers
+                                          └ AI Solutions
+                                             ├ AI Integrations
+                                             ├ AI Content Generation
+                                             ├ AI-Powered SEO
+                                             ├ AI Chatbots
+                                             └ AI Analytics
 ```
 
 ### Footer Navigation
 
-**Column 1: Company**
-- About → `/about`
-- Team → `/about/team`
+**Column 1: Services**
+- WordPress design → `/services/design`
+- WooCommerce development → `/solutions/woocommerce`
+- WordPress hosting → `/services/hosting`
+- Block theme development → `/services/development`
+- Support & maintenance → `/services/support`
+
+**Column 2: Solutions**
+- Tour operators → `/solutions/tour-operators`
+- Publishers → `/solutions/publishers`
+- Enterprise WordPress → `/solutions/wordpress`
+- WooCommerce scale → `/solutions/woocommerce`
+- AI Integrations → `/solutions/ai-integrations`
+- Migrations → `/services/migrations`
+
+**Column 3: Company**
+- About us → `/about`
+- Portfolio → `/portfolio`
+- Blog → `/blog`
 - Careers → `/about/careers`
 - Contact → `/contact`
 
-**Column 2: Services**
-- Discovery → `/services/discovery`
-- Design → `/services/design`
-- Development → `/services/development`
-- Content → `/services/content`
-- Hosting → `/services/hosting`
-
-**Column 3: Solutions**
-- WordPress → `/solutions/wordpress`
-- WooCommerce → `/solutions/woocommerce`
-- Tour Operators → `/solutions/tour-operators`
-- LSX Theme → `/solutions/lsx-theme`
-
-**Column 4: Resources**
-- Blog → `/blog`
-- Portfolio → `/portfolio`
+**Column 4: Support**
+- Contact support → `/contact`
+- FAQs → `/faq`
 - Tutorials → `/tutorials`
-- FAQ → `/faq`
+- Dev Tools → `/dev-tools`
 - Style Guide → `/style-guide`
+- Terms of service → `/terms-of-service`
+- Privacy policy → `/privacy-policy`
+
+**Trust Metrics Bar (linked cards):**
+- 200+ Projects shipped → `/portfolio`
+- 10+ Years experience → `/about/history`
+- 99% Client satisfaction → `/testimonials`
+- 4.9 Avg review score → `/why-choose-us`
 
 ---
 
@@ -511,7 +558,7 @@ Home  |  About ▼  |  Services ▼  |  Solutions ▼  |  Portfolio  |  Blog  | 
 | Homepage | 1 | — | 1 |
 | About | 6 | — | 6 |
 | Services | 15 | — | 15 |
-| Solutions | 10 | — | 10 |
+| Solutions | 18 | — | 18 |
 | Portfolio | 1 | 3 | 4 |
 | Blog | 5 | 6 + 21 formats | 32 |
 | Videos | 1 | 2 | 3 |
@@ -522,11 +569,11 @@ Home  |  About ▼  |  Services ▼  |  Solutions ▼  |  Portfolio  |  Blog  | 
 | Legacy/Misc | 7 | — | 7 |
 | Dev Tools | 20 | — | 20 |
 | Error | 2 | — | 2 |
-| **Total** | **86** | **35** | **121** |
+| **Total** | **94** | **35** | **129** |
 
 ---
 
-**Last Updated:** February 16, 2026  
-**Total Routes:** 121  
-**Total Template Files:** 90+  
+**Last Updated:** February 18, 2026
+**Total Routes:** 129
+**Total Template Files:** 90+
 **Maintained By:** LSX Design Team

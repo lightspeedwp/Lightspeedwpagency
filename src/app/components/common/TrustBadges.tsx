@@ -11,7 +11,6 @@
  */
 
 import { Award, Zap, Shield, Briefcase } from 'lucide-react';
-import '@/styles/components/trust-badges.css';
 
 export function TrustBadges() {
   return (

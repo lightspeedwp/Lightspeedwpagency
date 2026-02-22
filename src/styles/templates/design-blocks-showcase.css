@@ -1,0 +1,116 @@
+/**
+ * Design Blocks Showcase Styles
+ *
+ * Theme: "Structural Blueprints"
+ * BEM naming: .design-showcase-*
+ * 100% CSS variables.
+ */
+
+.design-showcase {
+  background-color: var(--background);
+  min-height: 100vh;
+}
+
+/* Hero Section */
+.design-showcase__hero {
+  position: relative;
+  padding: var(--spacing-20) 0;
+  overflow: hidden;
+  text-align: center;
+  background: radial-gradient(circle at 50% -20%, var(--secondary-foreground) 0%, transparent 60%);
+  color: var(--foreground);
+}
+
+.design-showcase__hero-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h1);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-4);
+}
+
+.design-showcase__hero-desc {
+  font-family: var(--font-secondary);
+  font-size: var(--text-lg);
+  color: var(--muted-foreground);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Sections */
+.design-showcase__section {
+  padding: var(--spacing-16) 0;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.design-showcase__section:last-child {
+  border-bottom: none;
+}
+
+.design-showcase__section-header {
+  margin-bottom: var(--spacing-8);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+.design-showcase__section-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h3);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  margin: 0;
+}
+
+.design-showcase__section-icon {
+  color: var(--secondary);
+  padding: var(--spacing-2);
+  background: var(--secondary-foreground);
+  border-radius: var(--radius-md);
+}
+
+/* Demo Containers */
+.design-showcase__demo {
+  background: var(--card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-8);
+  margin-bottom: var(--spacing-8);
+}
+
+.design-showcase__demo-title {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-bold);
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+  margin-bottom: var(--spacing-4);
+  display: block;
+}
+
+/* Layout Grid for smaller components */
+.design-showcase__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-8);
+}
+
+@media (min-width: 768px) {
+  .design-showcase__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Specific Component Overrides for Demo */
+.design-showcase .wp-block-columns {
+  border: 1px dashed var(--border);
+  padding: var(--spacing-4);
+  background: var(--background);
+}
+
+.design-showcase .wp-block-column {
+  border: 1px solid var(--border-soft);
+  padding: var(--spacing-4);
+  background: var(--card);
+  text-align: center;
+}

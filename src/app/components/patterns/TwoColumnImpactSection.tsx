@@ -13,7 +13,7 @@ import { LucideIcon } from 'lucide-react';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { IconFeaturesList, IconFeature } from './IconFeaturesList';
-import '@/styles/patterns/two-column-impact.css';
+
 
 export interface ContentBox {
   /** Main content text */

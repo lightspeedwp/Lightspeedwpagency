@@ -9,7 +9,6 @@
 
 import { useState, useEffect } from 'react';
 import { ChevronUp } from 'lucide-react'; // Better than text arrow
-import '@/styles/back-to-top.css';
 
 export function BackToTopButton() {
   const [isVisible, setIsVisible] = useState(false);

@@ -1,24 +1,34 @@
 /**
- * Pricing Template
- * 
+ * Pricing Template — Funky Neon Redesign
+ *
  * WordPress template: templates/page-pricing.html
- * 
- * Pattern order: Breadcrumbs → Hero → Website Packages → Support Packages → Feature Comparison → Payment Options → CTA
+ *
+ * Migrated to funky neon aesthetic with:
+ * - Neon hero section (mesh-grid + orb-glow + badge)
+ * - useScrollReveal instead of motion/react
+ * - BEM CSS from /src/styles/templates/pricing-page.css
+ * - All values from CSS variables
+ * - FunkyCTA pattern for bottom CTA
+ *
+ * Pattern order: Breadcrumbs → Funky Hero → Website Packages → Support Packages → Payment Options → FunkyCTA
+ *
+ * @see /src/styles/templates/pricing-page.css
+ * @see /src/app/data/pricing-page.ts
  */
 
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
-import { Breadcrumbs } from '../common/Breadcrumbs';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { Button } from '../blocks/design/Buttons';
-import { CTASection } from '../patterns/CTASection';
-import { Hero } from '../patterns/Hero';
-import { 
-  DollarSign,
+import { FunkyCTA } from '../patterns/FunkyCTA';
+import {
   Check,
   X,
-  Zap
+  Zap,
+  Sparkles,
 } from 'lucide-react';
-import '@/styles/templates/pricing-page.css';
+import { useScrollReveal, ScrollReveal } from '../../hooks/useScrollReveal';
+
 
 // Import centralized data
 import {
@@ -26,41 +36,70 @@ import {
   websitePackages,
   supportPackages,
   paymentOptions,
-  pricingCTA
+  pricingCTA,
 } from '../../data/pricing-page';
 
 export function PricingTemplate() {
+  const heroRef = useScrollReveal<HTMLDivElement>();
+
   return (
     <>
-        {/* Breadcrumbs */}
-        <section className="wp-block-breadcrumbs-section">
-          <Breadcrumbs 
-            items={[
-              { label: 'Home', href: '/' },
-              { label: pricingPageHero.title }
-            ]}
-          />
-        </section>
+      {/* Breadcrumbs */}
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', page: 'home' },
+          { label: 'Pricing' },
+        ]}
+      />
 
-        {/* Hero Section */}
-        <Hero
-          variant="service"
-          align="center"
-          maxWidth="4xl"
-          gradient="cyan"
-          badge={{
-            icon: DollarSign,
-            text: pricingPageHero.badge.text
-          }}
-          title="Simple, Transparent Pricing"
-          titleHighlight="Transparent"
-          description={pricingPageHero.description}
-        />
+      {/* Funky Neon Hero */}
+      <section className="pricing-page__hero">
+        <div className="pricing-page__hero-mesh" aria-hidden="true" />
+        <div className="pricing-page__hero-orb pricing-page__hero-orb--1" aria-hidden="true" />
+        <div className="pricing-page__hero-orb pricing-page__hero-orb--2" aria-hidden="true" />
 
-        {/* Website Packages Section */}
-        <Section spacing="xl" className="pricing-page__packages-section">
-          <Container>
-            <div className="wp-max-w-6xl">
+        <Container>
+          <div ref={heroRef} className="pricing-page__hero-inner">
+            <div className="pricing-page__hero-badge">
+              <Sparkles size={14} />
+              {pricingPageHero.badge.text}
+            </div>
+
+            <h1 className="pricing-page__hero-title">
+              Simple, <span className="pricing-page__hero-highlight">Transparent</span> Pricing
+            </h1>
+
+            <p className="pricing-page__hero-description">
+              {pricingPageHero.description}
+            </p>
+
+            {/* Quick stats */}
+            <div className="pricing-page__hero-stats">
+              {[
+                { value: '3', label: 'Build Packages' },
+                { value: '3', label: 'Support Plans' },
+                { value: '100%', label: 'Transparent' },
+                { value: '0', label: 'Hidden Fees' },
+              ].map((stat, i) => (
+                <div key={i} className="pricing-page__hero-stat">
+                  <span className="pricing-page__hero-stat-value">{stat.value}</span>
+                  <span className="pricing-page__hero-stat-label">{stat.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* Website Packages Section */}
+      <Section spacing="xl" className="pricing-page__packages-section">
+        {/* Decorative orbs */}
+        <div className="pricing-page__section-orb pricing-page__section-orb--1" aria-hidden="true" />
+        <div className="pricing-page__section-orb pricing-page__section-orb--2" aria-hidden="true" />
+
+        <Container>
+          <div className="wp-max-w-6xl wp-mx-auto">
+            <ScrollReveal animation="fade-up">
               <div className="pricing-page__section-header">
                 <h2 className="pricing-page__section-title">
                   Website Build Packages
@@ -69,13 +108,14 @@ export function PricingTemplate() {
                   One-time investment to build your WordPress website
                 </p>
               </div>
+            </ScrollReveal>
 
-              <div className="pricing-page__packages-grid">
-                {websitePackages.map((plan) => {
-                  const Icon = plan.icon;
-                  return (
+            <div className="pricing-page__packages-grid">
+              {websitePackages.map((plan, idx) => {
+                const Icon = plan.icon;
+                return (
+                  <ScrollReveal key={plan.id} animation="fade-up" delay={idx * 100}>
                     <div
-                      key={plan.id}
                       className={`pricing-page__package-card ${plan.popular ? 'pricing-page__package-card--popular' : ''}`}
                     >
                       {plan.popular && (
@@ -132,23 +172,25 @@ export function PricingTemplate() {
                       <Button
                         page={plan.cta.page as any}
                         size="lg"
-                        variant={plan.popular ? 'default' : 'outline'}
+                        variant={plan.popular ? 'primary' : 'outline'}
                         className="wp-w-full"
                       >
                         {plan.cta.text}
                       </Button>
                     </div>
-                  );
-                })}
-              </div>
+                  </ScrollReveal>
+                );
+              })}
             </div>
-          </Container>
-        </Section>
+          </div>
+        </Container>
+      </Section>
 
-        {/* Support Packages Section */}
-        <Section spacing="xl" className="pricing-page__support-section">
-          <Container>
-            <div className="wp-max-w-6xl">
+      {/* Support Packages Section */}
+      <Section spacing="xl" className="pricing-page__support-section">
+        <Container>
+          <div className="wp-max-w-6xl wp-mx-auto">
+            <ScrollReveal animation="fade-up">
               <div className="pricing-page__section-header">
                 <h2 className="pricing-page__section-title">
                   Support & Maintenance Plans
@@ -157,13 +199,14 @@ export function PricingTemplate() {
                   Monthly plans to keep your website secure, fast, and up-to-date
                 </p>
               </div>
+            </ScrollReveal>
 
-              <div className="pricing-page__packages-grid">
-                {supportPackages.map((plan) => {
-                  const Icon = plan.icon;
-                  return (
+            <div className="pricing-page__packages-grid">
+              {supportPackages.map((plan, idx) => {
+                const Icon = plan.icon;
+                return (
+                  <ScrollReveal key={plan.id} animation="fade-up" delay={idx * 100}>
                     <div
-                      key={plan.id}
                       className={`pricing-page__package-card ${plan.popular ? 'pricing-page__package-card--popular' : ''}`}
                     >
                       {plan.popular && (
@@ -220,23 +263,25 @@ export function PricingTemplate() {
                       <Button
                         page={plan.cta.page as any}
                         size="lg"
-                        variant={plan.popular ? 'default' : 'outline'}
+                        variant={plan.popular ? 'primary' : 'outline'}
                         className="wp-w-full"
                       >
                         {plan.cta.text}
                       </Button>
                     </div>
-                  );
-                })}
-              </div>
+                  </ScrollReveal>
+                );
+              })}
             </div>
-          </Container>
-        </Section>
+          </div>
+        </Container>
+      </Section>
 
-        {/* Payment Options Section */}
-        <Section spacing="lg" className="pricing-page__payment-section">
-          <Container>
-            <div className="wp-max-w-4xl wp-mx-auto">
+      {/* Payment Options Section */}
+      <Section spacing="lg" className="pricing-page__payment-section">
+        <Container>
+          <div className="wp-max-w-4xl wp-mx-auto">
+            <ScrollReveal animation="fade-up">
               <div className="pricing-page__section-header">
                 <h2 className="pricing-page__section-title">
                   {paymentOptions.title}
@@ -245,14 +290,15 @@ export function PricingTemplate() {
                   {paymentOptions.description}
                 </p>
               </div>
+            </ScrollReveal>
 
-              <div className="pricing-page__payment-grid">
-                {paymentOptions.options.map((option, index) => (
-                  <div
-                    key={index}
-                    className="pricing-page__payment-card"
-                  >
-                    <Zap size={32} className="pricing-page__payment-icon" />
+            <div className="pricing-page__payment-grid">
+              {paymentOptions.options.map((option, index) => (
+                <ScrollReveal key={index} animation="fade-up" delay={index * 100}>
+                  <div className="pricing-page__payment-card">
+                    <div className="pricing-page__payment-icon-wrapper">
+                      <Zap size={28} className="pricing-page__payment-icon" />
+                    </div>
                     <h3 className="pricing-page__payment-title">
                       {option.name}
                     </h3>
@@ -266,22 +312,29 @@ export function PricingTemplate() {
                       {option.terms}
                     </p>
                   </div>
-                ))}
-              </div>
+                </ScrollReveal>
+              ))}
             </div>
-          </Container>
-        </Section>
+          </div>
+        </Container>
+      </Section>
 
-        {/* CTA Section */}
-        <CTASection
-          title={pricingCTA.title}
-          description={pricingCTA.description}
-          primaryButtonText={pricingCTA.buttons[0].text}
-          primaryButtonPage={pricingCTA.buttons[0].page as any}
-          secondaryButtonText={pricingCTA.buttons[1]?.text}
-          secondaryButtonPage={pricingCTA.buttons[1]?.page as any}
-          gradient="cyan"
-        />
+      {/* CTA Section */}
+      <FunkyCTA
+        title={pricingCTA.title}
+        description={pricingCTA.description}
+        buttonText={pricingCTA.buttons[0].text}
+        buttonPage={pricingCTA.buttons[0].page}
+        benefits={[
+          'No hidden fees or surprises',
+          'Flexible payment options',
+          'Custom quotes for complex projects',
+          'Money-back satisfaction guarantee',
+          'Free initial consultation',
+        ]}
+      />
     </>
   );
 }
+
+export default PricingTemplate;

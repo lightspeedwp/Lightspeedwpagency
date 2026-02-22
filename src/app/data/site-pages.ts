@@ -101,6 +101,70 @@ export const sitePages: SitePage[] = [
     showInNav: false
   },
   {
+    id: 'wordpress-redesign',
+    slug: 'wordpress-redesign',
+    title: 'WordPress Website Redesign',
+    excerpt: 'Transform your outdated WordPress site into a modern, high-performance platform that converts visitors into customers.',
+    parent: 'solutions',
+    showInNav: false
+  },
+  {
+    id: 'woocommerce-redesign',
+    slug: 'woocommerce-redesign',
+    title: 'WooCommerce Store Redesign',
+    excerpt: 'Rebuild your WooCommerce store for higher conversions, faster load times, and a checkout experience customers love.',
+    parent: 'solutions',
+    showInNav: false
+  },
+  {
+    id: 'tour-operator-design',
+    slug: 'tour-operator-design',
+    title: 'Tour Operator Website & Tour Design',
+    excerpt: 'Showcase your tours with stunning itineraries, interactive maps, and a booking experience that turns browsers into travelers.',
+    parent: 'solutions',
+    showInNav: false
+  },
+  {
+    id: 'ai-integrations',
+    slug: 'ai-integrations',
+    title: 'AI Integrations for WordPress',
+    excerpt: 'Supercharge your WordPress site with AI-powered content, SEO, chatbots, and analytics.',
+    parent: 'solutions',
+    showInNav: true
+  },
+  {
+    id: 'ai-content-generation',
+    slug: 'ai-content-generation',
+    title: 'AI Content Generation',
+    excerpt: 'Create high-quality, on-brand content at scale with AI-powered writing and media tools.',
+    parent: 'solutions',
+    showInNav: false
+  },
+  {
+    id: 'ai-seo',
+    slug: 'ai-seo',
+    title: 'AI-Powered SEO',
+    excerpt: 'Automated keyword analysis, content scoring, schema markup, and competitor monitoring.',
+    parent: 'solutions',
+    showInNav: false
+  },
+  {
+    id: 'ai-chatbots',
+    slug: 'ai-chatbots',
+    title: 'AI Chatbots for WordPress',
+    excerpt: 'Deploy intelligent chatbots that qualify leads, answer FAQs, and engage visitors 24/7.',
+    parent: 'solutions',
+    showInNav: false
+  },
+  {
+    id: 'ai-analytics',
+    slug: 'ai-analytics',
+    title: 'AI Analytics & Insights',
+    excerpt: 'Turn raw data into actionable strategies with predictive models and automated reporting.',
+    parent: 'solutions',
+    showInNav: false
+  },
+  {
     id: 'mailchimp',
     slug: 'mailchimp',
     title: 'Mailchimp',
@@ -483,7 +547,7 @@ export const sitePages: SitePage[] = [
   {
     id: 'policies-publishing-principles',
     slug: 'policies-publishing-principles',
-    title: 'Publishing Principles',
+    title: 'Publishing principles',
     excerpt: 'Our publishing standards',
     parent: 'policies',
     showInNav: false
@@ -491,7 +555,7 @@ export const sitePages: SitePage[] = [
   {
     id: 'policies-diversity-content',
     slug: 'policies-diversity-content',
-    title: 'Diversity Content',
+    title: 'Diversity content',
     excerpt: 'Our commitment to diverse content',
     parent: 'policies',
     showInNav: false
@@ -499,7 +563,7 @@ export const sitePages: SitePage[] = [
   {
     id: 'policies-diversity-staffing',
     slug: 'policies-diversity-staffing',
-    title: 'Diversity Staffing',
+    title: 'Diversity staffing',
     excerpt: 'Our commitment to diverse staffing',
     parent: 'policies',
     showInNav: false
@@ -531,9 +595,27 @@ export const sitePages: SitePage[] = [
   {
     id: 'policies-ownership-funding',
     slug: 'policies-ownership-funding',
-    title: 'Ownership & Funding',
+    title: 'Ownership & funding',
     excerpt: 'Ownership and funding information',
     parent: 'policies',
+    showInNav: false
+  },
+  
+  // Videos & Podcasts
+  {
+    id: 'videos',
+    slug: 'videos',
+    title: 'Videos',
+    excerpt: 'Watch our latest videos and tutorials',
+    template: 'video-archive',
+    showInNav: false
+  },
+  {
+    id: 'podcasts',
+    slug: 'podcasts',
+    title: 'Podcasts',
+    excerpt: 'Listen to the LSX Design podcast',
+    template: 'podcast-archive',
     showInNav: false
   },
   
@@ -541,21 +623,21 @@ export const sitePages: SitePage[] = [
   {
     id: 'privacy-policy',
     slug: 'privacy-policy',
-    title: 'Privacy Policy',
+    title: 'Privacy policy',
     excerpt: 'How we handle your data',
     showInNav: false
   },
   {
     id: 'terms-conditions',
     slug: 'terms-conditions',
-    title: 'Terms & Conditions',
+    title: 'Terms & conditions',
     excerpt: 'Terms and conditions',
     showInNav: false
   },
   {
     id: 'website-development-project-terms-conditions',
     slug: 'website-development-project-terms-conditions',
-    title: 'Website Development Project Terms & Conditions',
+    title: 'Website development project terms & conditions',
     excerpt: 'Project-specific terms',
     showInNav: false
   },
@@ -564,7 +646,7 @@ export const sitePages: SitePage[] = [
   {
     id: 'getting-started-with-lightspeed',
     slug: 'getting-started-with-lightspeed',
-    title: 'Getting Started with LightSpeed',
+    title: 'Getting started with LightSpeed',
     excerpt: 'New client onboarding guide',
     template: 'page',
     showInNav: false
@@ -574,21 +656,21 @@ export const sitePages: SitePage[] = [
   {
     id: 'thank-you-newsletter-subscribe',
     slug: 'thank-you-newsletter-subscribe',
-    title: 'Thank You - Newsletter',
+    title: 'Thank you - Newsletter',
     template: 'page',
     showInNav: false
   },
   {
     id: 'thank-you-for-subscribing',
     slug: 'thank-you-for-subscribing',
-    title: 'Thank You for Subscribing',
+    title: 'Thank you for subscribing',
     template: 'page',
     showInNav: false
   },
   {
     id: 'thank-you-content-audit-post',
     slug: 'thank-you-content-audit-post',
-    title: 'Thank You - Content Audit',
+    title: 'Thank you - Content audit',
     template: 'page',
     showInNav: false
   },

@@ -11,33 +11,21 @@
  * @see /src/styles/templates/archive.css
  */
 
-import { Container } from '@/app/components/common/Container';
-import { Section } from '@/app/components/common/Section';
-import { Breadcrumbs } from '@/app/components/common/Breadcrumbs';
-import { allPosts } from '@/app/data/posts-formats';
-import { Activity, MessageSquare, Heart, Share2 } from 'lucide-react';
-import { useNavigation } from '@/app/contexts/NavigationContext';
-import '@/styles/blocks/post-formats/status.css';
-import '@/styles/templates/archive.css';
+import { Link } from 'react-router';
 
 export function StatusArchiveTemplate() {
-  const { navigateTo } = useNavigation();
   const statusPosts = allPosts.filter(post => post.format === 'status');
   const posts = [...statusPosts, ...statusPosts, ...statusPosts];
 
   return (
     <>
-      <section className="archive-breadcrumbs">
-        <Container>
-          <Breadcrumbs 
-            items={[
-              { label: 'Home', href: '/' },
-              { label: 'Blog', href: '/blog' },
-              { label: 'Status Updates', href: '/blog/format/status' }
-            ]}
-          />
-        </Container>
-      </section>
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Blog', href: '/blog' },
+          { label: 'Status Updates' },
+        ]}
+      />
 
       <Section spacing="lg">
         <Container>
@@ -51,13 +39,10 @@ export function StatusArchiveTemplate() {
 
             <div className="status-archive__feed">
               {posts.map((post, index) => (
-                <article 
-                  key={`${post.id}-${index}`} 
+                <Link 
+                  key={`${post.id}-${index}`}
+                  to="#"
                   className="wp-block-status-card"
-                  onClick={() => navigateTo('status-single')}
-                  role="button"
-                  tabIndex={0}
-                  onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); navigateTo('status-single'); } }}
                 >
                   <div className="wp-block-status-card__header">
                     <div className="wp-block-status-card__avatar" />
@@ -89,7 +74,7 @@ export function StatusArchiveTemplate() {
                       </div>
                     </div>
                   </div>
-                </article>
+                </Link>
               ))}
             </div>
           </div>

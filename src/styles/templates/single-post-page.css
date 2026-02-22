@@ -1,9 +1,12 @@
 /**
- * Single Post (Longform) Template Styles
+ * Single Post (Longform) Template Styles — Funky Neon Pass
  * 
  * Dedicated styles for long-form blog post layout and components.
- * All vertical spacing via blockGap (CSS gap) -- zero margin.
- * All styling uses CSS variables for complete user control.
+ * Funky treatments: glassmorphism cards, animated gradient stripes,
+ * neon comment cards, gradient underlines.
+ *
+ * BEM naming: .single-post__*
+ * 100% CSS variables, zero hardcoded values.
  */
 
 /* ============================================
@@ -35,19 +38,42 @@
  * Card with image, category badge, and title
  */
 .single-post__related-card {
-  /* Appearance */
-  background-color: var(--card);
-  border: 1px solid var(--border);
+  /* Appearance — Glassmorphism */
+  position: relative;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
   border-radius: var(--radius-lg);
   overflow: hidden;
   
   /* Transition */
-  transition: all 0.2s ease;
+  transition: all var(--transition-slow) var(--ease-out);
+}
+
+/* Animated gradient top stripe */
+.single-post__related-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
+  background-size: 200% 100%;
+  animation: spLongformStripe 4s linear infinite;
+  z-index: 2;
+}
+
+@keyframes spLongformStripe {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
 }
 
 .single-post__related-card:hover {
   transform: translateY(-4px);
-  box-shadow: var(--shadow-hover);
+  box-shadow: 0 0 20px color-mix(in srgb, var(--primary) 15%, transparent);
+  border-color: color-mix(in srgb, var(--primary) 25%, transparent);
 }
 
 /**
@@ -86,13 +112,14 @@
   /* Spacing */
   padding: var(--spacing-1) var(--spacing-3);
   
-  /* Appearance */
-  background-color: var(--secondary);
-  color: var(--secondary-foreground);
+  /* Appearance — Neon pill */
+  background: color-mix(in srgb, var(--primary) 10%, transparent);
+  color: var(--primary);
+  border: 1px solid color-mix(in srgb, var(--primary) 20%, transparent);
   border-radius: var(--radius-full);
   
   /* Typography */
-  font-family: var(--font-primary);
+  font-family: var(--font-secondary);
   font-size: var(--text-small);
   font-weight: var(--font-weight-medium);
 }
@@ -161,21 +188,29 @@
 }
 
 /* ============================================
- * COMMENT CARD
+ * COMMENT CARD — GLASSMORPHISM
  * ============================================ */
 
 /**
- * Individual comment card
- * Contains avatar, author, date, and content
+ * Individual comment card — frosted glass treatment
  */
 .single-post__comment {
   /* Spacing */
   padding: var(--spacing-6);
   
-  /* Appearance */
-  background-color: var(--card);
-  border: 1px solid var(--border);
+  /* Appearance — Glassmorphism */
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
   border-radius: var(--radius-lg);
+  transition: border-color var(--transition-base) var(--ease-out),
+              box-shadow var(--transition-base) var(--ease-out);
+}
+
+.single-post__comment:hover {
+  border-color: color-mix(in srgb, var(--primary) 20%, transparent);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--primary) 8%, transparent);
 }
 
 /**
@@ -189,8 +224,7 @@
 }
 
 /**
- * Comment avatar
- * Circular profile picture
+ * Comment avatar — neon ring
  */
 .single-post__comment-avatar {
   /* Size */
@@ -198,10 +232,12 @@
   height: 48px;
   flex-shrink: 0;
   
-  /* Appearance */
+  /* Appearance — Neon gradient border */
   border-radius: var(--radius-full);
   background-size: cover;
   background-position: center;
+  border: 2px solid color-mix(in srgb, var(--primary) 30%, transparent);
+  box-shadow: 0 0 8px color-mix(in srgb, var(--primary) 12%, transparent);
 }
 
 /**
@@ -272,9 +308,11 @@
   /* Spacing */
   padding: var(--spacing-8);
   
-  /* Appearance */
-  background-color: var(--muted);
-  border: 1px solid var(--border);
+  /* Appearance — Glassmorphism */
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
   border-radius: var(--radius-lg);
   
   /* Layout */
@@ -327,10 +365,51 @@
  * DARK MODE SUPPORT
  * ============================================ */
 
-/**
- * All colors use CSS variables which automatically
- * adapt to light/dark mode via theme-light.css and
- * theme-dark.css
- * 
- * No additional dark mode styles needed
- */
+.dark .single-post__related-card {
+  background: color-mix(in srgb, var(--card) 50%, transparent);
+  border-color: var(--border-soft);
+}
+
+.dark .single-post__related-card:hover {
+  box-shadow: 0 0 24px color-mix(in srgb, var(--primary) 20%, transparent);
+  border-color: color-mix(in srgb, var(--primary) 30%, transparent);
+}
+
+.dark .single-post__category-badge {
+  background: color-mix(in srgb, var(--primary) 15%, transparent);
+  border-color: color-mix(in srgb, var(--primary) 25%, transparent);
+}
+
+.dark .single-post__comment {
+  background: color-mix(in srgb, var(--card) 50%, transparent);
+  border-color: var(--border-soft);
+}
+
+.dark .single-post__comment:hover {
+  border-color: color-mix(in srgb, var(--primary) 25%, transparent);
+  box-shadow: 0 0 16px color-mix(in srgb, var(--primary) 12%, transparent);
+}
+
+.dark .single-post__comment-avatar {
+  border-color: color-mix(in srgb, var(--primary) 40%, transparent);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--primary) 18%, transparent);
+}
+
+.dark .single-post__comment-cta {
+  background: color-mix(in srgb, var(--card) 40%, transparent);
+  border-color: var(--border-soft);
+}
+
+/* ============================================
+ * REDUCED MOTION
+ * ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .single-post__related-card::before {
+    animation: none;
+  }
+
+  .single-post__related-card:hover {
+    transform: none;
+  }
+}

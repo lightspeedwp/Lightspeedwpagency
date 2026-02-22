@@ -10,7 +10,7 @@
  */
 
 import { LucideIcon } from 'lucide-react';
-import '@/styles/patterns/process-steps.css';
+
 
 export interface ProcessStep {
   /** Step number */

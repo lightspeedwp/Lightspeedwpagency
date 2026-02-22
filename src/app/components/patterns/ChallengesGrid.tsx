@@ -22,7 +22,7 @@
 
 import { LucideIcon } from 'lucide-react';
 import { Section } from '../common/Section';
-import '@/styles/patterns/challenges-grid.css';
+
 
 export interface Challenge {
   /** Lucide icon component */

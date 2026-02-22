@@ -50,6 +50,8 @@
  * - videoFAQs - Video Content (3 items)
  * - podcastFAQs - Podcast Content (3 items)
  * - searchFAQs - Search Functionality (2 items)
+ * - portfolioCategoryFAQs - Portfolio Category (3 items)
+ * - blogCategoryFAQs - Blog Category (3 items)
  * 
  * @example
  * // Import specific FAQ collection
@@ -682,5 +684,43 @@ export const searchFAQs: FAQ[] = [
   {
     question: 'Can I filter search results?',
     answer: 'Yes! Search results can be filtered by content type (Blog, Portfolio, Videos, Podcasts, Pages) and sorted by relevance, date, or popularity. Category-specific filters appear based on the content type you select.'
+  }
+];
+
+/**
+ * Portfolio Category FAQs
+ * Questions about browsing portfolio by category
+ */
+export const portfolioCategoryFAQs: FAQ[] = [
+  {
+    question: 'How are portfolio projects categorised?',
+    answer: 'Projects are grouped by industry sector such as E-commerce, Healthcare, Travel & Tourism, Technology, and more. Each category page shows all projects in that sector with relevant filters.'
+  },
+  {
+    question: 'Can I view projects by technology used?',
+    answer: 'Yes. Use the tag archive pages to browse projects by technology — WordPress, WooCommerce, Block Theme, Full Site Editing, ACF, and many more. Tags appear on every project card.'
+  },
+  {
+    question: 'Do category pages show project results?',
+    answer: 'Every project page includes measurable results such as performance scores, conversion improvements, and client testimonials. Category archives surface these highlights so you can compare outcomes.'
+  }
+];
+
+/**
+ * Blog Category FAQs
+ * Questions about browsing blog by category
+ */
+export const blogCategoryFAQs: FAQ[] = [
+  {
+    question: 'What topics does the blog cover?',
+    answer: 'We publish across six main categories: Industry News, Tutorials, Case Studies, Agency Life, Development, and Design. Each category page lets you filter and sort posts within that topic.'
+  },
+  {
+    question: 'How often are new posts published?',
+    answer: 'We aim for two to four new articles per month, covering WordPress best practices, development tutorials, client success stories, and agency updates. Subscribe to our newsletter to stay informed.'
+  },
+  {
+    question: 'Can I filter posts by author or date?',
+    answer: 'Yes. Blog posts can be filtered by category, tag, author, and publication date. Use the archive navigation or click author names and tags on any post to find related content.'
   }
 ];

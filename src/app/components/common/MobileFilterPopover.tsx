@@ -28,7 +28,6 @@
 import { X } from 'lucide-react';
 import { useEffect, useRef } from 'react';
 import { Button } from '../blocks/design/Buttons';
-import '@/styles/components/mobile-filter-popover.css';
 
 export interface FilterOption {
   id: string;
@@ -58,9 +57,19 @@ interface MobileFilterPopoverProps {
   options: FilterOption[];
   
   /**
-   * Currently selected option ID
+   * Currently selected option ID (single select mode)
    */
-  selectedOption: string;
+  selectedOption?: string;
+
+  /**
+   * Currently selected option IDs (multi select mode)
+   */
+  selectedOptions?: string[];
+
+  /**
+   * Whether to allow multiple selections
+   */
+  multiple?: boolean;
   
   /**
    * Callback when option is selected
@@ -88,6 +97,8 @@ export function MobileFilterPopover({
   title,
   options,
   selectedOption,
+  selectedOptions = [],
+  multiple = false,
   onSelect,
   allLabel = 'All'
 }: MobileFilterPopoverProps) {
@@ -135,7 +146,16 @@ export function MobileFilterPopover({
 
   const handleSelect = (optionId: string) => {
     onSelect(optionId);
-    onClose();
+    if (!multiple) {
+      onClose();
+    }
+  };
+
+  const isSelected = (id: string) => {
+    if (multiple) {
+      return selectedOptions.includes(id);
+    }
+    return selectedOption === id;
   };
 
   if (!isOpen) return null;
@@ -175,25 +195,27 @@ export function MobileFilterPopover({
 
         {/* Filter Options */}
         <div className="mobile-filter-popover__list">
-          {/* All option */}
-          <button
-            onClick={() => handleSelect('all')}
-            className={`mobile-filter-popover__option ${selectedOption === 'all' ? 'mobile-filter-popover__option--selected' : ''}`}
-          >
-            <span>{allLabel}</span>
-            {selectedOption === 'all' && (
-              <span className="mobile-filter-popover__check">
-                ✓
-              </span>
-            )}
-          </button>
+          {/* All option (only show if not multi-select or specialized logic) */}
+          {!multiple && (
+            <button
+              onClick={() => handleSelect('all')}
+              className={`mobile-filter-popover__option ${isSelected('all') ? 'mobile-filter-popover__option--selected' : ''}`}
+            >
+              <span>{allLabel}</span>
+              {isSelected('all') && (
+                <span className="mobile-filter-popover__check">
+                  ✓
+                </span>
+              )}
+            </button>
+          )}
 
           {/* Individual options */}
           {options.map((option) => (
             <button
               key={option.id}
               onClick={() => handleSelect(option.id)}
-              className={`mobile-filter-popover__option ${selectedOption === option.id ? 'mobile-filter-popover__option--selected' : ''}`}
+              className={`mobile-filter-popover__option ${isSelected(option.id) ? 'mobile-filter-popover__option--selected' : ''}`}
             >
               <span>{option.label}</span>
               <div className="mobile-filter-popover__option-content">
@@ -202,7 +224,7 @@ export function MobileFilterPopover({
                     ({option.count})
                   </span>
                 )}
-                {selectedOption === option.id && (
+                {isSelected(option.id) && (
                   <span className="mobile-filter-popover__check">
                     ✓
                   </span>

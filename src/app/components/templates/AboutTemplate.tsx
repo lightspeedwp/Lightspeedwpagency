@@ -1,31 +1,39 @@
 /**
- * About Template
- * 
+ * About Template — "Digital Artisans" Funky Redesign
+ *
  * WordPress template: templates/page-about.html
- * 
- * About page showcasing company story, mission, values, and timeline.
- * Pattern order: Breadcrumbs → Hero → Story → Mission/Vision → Values → Stats → Timeline → Expertise → FAQs → CTA
+ *
+ * Theme: Neon gradients, floating orbs, glow cards, glass accents
+ * Features:
+ * - Parallax hero with floating orbs
+ * - Glow border cards for mission/vision/expertise
+ * - Animated stats bar with neon grid overlay
+ * - Story section with alternating columns
+ * - Timeline integration
+ * - FAQ section
+ * - FunkyCTA conversion section
+ * - ScrollReveal entry animations
+ * - 100% CSS variable compliance
+ *
+ * STRICT DESIGN SYSTEM COMPLIANCE:
+ * - No inline Tailwind classes
+ * - All styling via @/styles/templates/page-about.css
+ * - BEM naming throughout (about-overview__*)
  */
 
 import { Container } from '../common/Container';
-import { Section } from '../common/Section';
-import { Breadcrumbs } from '../common/Breadcrumbs';
 import { FAQSection } from '../patterns/FAQSection';
-import { CTASection } from '../patterns/CTASection';
-import { Hero } from '../patterns/Hero';
-import { StatsGrid } from '../patterns/StatsGrid';
 import { Timeline } from '../patterns/Timeline';
 import { Heading } from '../blocks/text/Heading';
 import { Paragraph } from '../blocks/text/Paragraph';
-import { 
-  Heart,
-  Award,
-  Users,
-  Globe,
-  Target,
-  Lightbulb
-} from 'lucide-react';
-import '@/styles/templates/page-about.css';
+import { FunkyCTA } from '../patterns/FunkyCTA';
+import { StatsSection } from '../patterns/StatsSection';
+import { ContentStatsWidget } from '../patterns/ContentStatsWidget';
+import { RelatedContentWidget } from '../patterns/RelatedContentWidget';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
+import { useHeroParallax } from '../../hooks/useHeroParallax';
+import { ScrollReveal } from '../../hooks/useScrollReveal';
+import { ScrollDownArrow } from '../common/ScrollDownArrow';
 
 // Import centralized data
 import {
@@ -41,282 +49,343 @@ import {
 } from '../../data/about-page';
 
 export function AboutTemplate() {
+  const parallaxRef = useHeroParallax(0.5);
+
   return (
     <>
       {/* Breadcrumbs */}
-      <section className="wp-block-breadcrumbs-section">
-        <Breadcrumbs 
-          items={[
-            { label: 'Home', href: '/' },
-            { label: 'About Us' }
-          ]}
-        />
-      </section>
-
-      {/* Hero Section */}
-      <Hero
-        variant="page"
-        align="center"
-        maxWidth="4xl"
-        gradient="blue"
-        spacing="xl"
-        badge={{
-          icon: Heart,
-          text: 'ABOUT LIGHTSPEED'
-        }}
-        title="Web Design, Development & Workflow You Can Trust"
-        titleHighlight="Trust"
-        description={aboutPageHero.description}
-        stats={aboutPageHero.stats.map(stat => {
-          const icons = { Award, Users, Globe };
-          const Icon = icons[stat.icon as keyof typeof icons];
-          return {
-            icon: Icon,
-            value: stat.value,
-            label: stat.label
-          };
-        })}
-        className="about-page__hero"
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'About' },
+        ]}
       />
 
-      {/* Story Section */}
-      <Section spacing="xl" className="about-page__story-section">
+      {/* ============================================
+          1. HERO SECTION (Parallax + Floating Orbs)
+          ============================================ */}
+      <section className="about-overview__hero">
+        {/* Parallax Background */}
+        <img
+          ref={parallaxRef}
+          src="https://images.unsplash.com/photo-1704730777582-dd8bef55a8c6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMG5lb24lMjBkaWdpdGFsJTIwYXJ0aXNhbiUyMHRlYW13b3JrfGVufDF8fHx8MTc3MTQ5MzMxNnww&ixlib=rb-4.1.0&q=80&w=1080"
+          alt="Abstract neon digital artisan teamwork"
+          className="about-overview__hero-bg"
+        />
+
+        {/* Gradient Overlay */}
+        <div className="about-overview__hero-overlay" />
+
+        {/* Floating Orbs */}
+        <div className="about-overview__hero-orb about-overview__hero-orb--1" />
+        <div className="about-overview__hero-orb about-overview__hero-orb--2" />
+        <div className="about-overview__hero-orb about-overview__hero-orb--3" />
+
         <Container>
-          <div className="wp-max-w-4xl wp-mx-auto">
-            <div className="about-page__section-header">
-              <Heading level={2} className="about-page__section-title">
+          <div className="about-overview__hero-content">
+            <span className="about-overview__hero-badge">
+              ⚡ About LightSpeed
+            </span>
+
+            <h1 className="about-overview__hero-title">
+              {aboutPageHero.title}
+            </h1>
+
+            <p className="about-overview__hero-subtitle">
+              {aboutPageHero.description}
+            </p>
+          </div>
+        </Container>
+        <ScrollDownArrow targetId="about-story" />
+      </section>
+
+      {/* ============================================
+          2. STORY SECTION
+          ============================================ */}
+      <section id="about-story" className="about-overview__story">
+        <Container>
+          <ScrollReveal animation="fade-up">
+            <div className="about-overview__story-header">
+              <h2 className="about-overview__section-title">
                 {aboutPageStory.title}
-              </Heading>
-
-              <Paragraph className="about-page__section-desc">
+              </h2>
+              <p className="about-overview__section-desc">
                 {aboutPageStory.subtitle}
-              </Paragraph>
+              </p>
             </div>
+          </ScrollReveal>
 
-            <div className="about-page__story-content">
-              {aboutPageStory.content.map((item, index) => (
-                <div
-                  key={index}
-                  className="about-page__story-card"
-                >
-                  <Heading level={3} className="about-page__story-card-title">
-                    {item.heading}
+          <div className="about-overview__story-grid">
+            {aboutPageStory.content.map((block, index) => (
+              <ScrollReveal key={index} animation="fade-up" delay={index * 120}>
+                <div className="about-overview__card">
+                  <div className="about-overview__card-glow" />
+                  <div className="about-overview__card-inner">
+                    <Heading level={3} className="about-overview__card-title">
+                      {block.heading}
+                    </Heading>
+                    <Paragraph className="about-overview__card-desc">
+                      {block.text}
+                    </Paragraph>
+                  </div>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* ============================================
+          3. MISSION & VISION (Glow Cards)
+          ============================================ */}
+      <section className="about-overview__cards-section">
+        <Container>
+          <ScrollReveal animation="fade-up">
+            <div className="about-overview__story-header">
+              <h2 className="about-overview__section-title">
+                Our purpose
+              </h2>
+              <p className="about-overview__section-desc">
+                What drives us every single day.
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <div className="about-overview__cards-grid">
+            {/* Mission Card */}
+            <ScrollReveal animation="fade-up" delay={0}>
+              <div className="about-overview__card">
+                <div className="about-overview__card-glow" />
+                <div className="about-overview__card-inner">
+                  <div className="about-overview__card-icon-wrapper">
+                    🎯
+                  </div>
+                  <Heading level={3} className="about-overview__card-title">
+                    {aboutPageMissionVision.mission.title}
                   </Heading>
-                  <Paragraph className="about-page__story-card-text">
-                    {item.text}
+                  <Paragraph className="about-overview__card-desc">
+                    {aboutPageMissionVision.mission.description}
                   </Paragraph>
                 </div>
-              ))}
-            </div>
-          </div>
-        </Container>
-      </Section>
-
-      {/* Mission/Vision Section */}
-      <Section spacing="xl" className="about-page__mission-section">
-        <Container>
-          <div className="wp-max-w-6xl wp-mx-auto">
-            <div className="about-page__section-header">
-              <Heading level={2} className="about-page__section-title">
-                Our Mission & Vision
-              </Heading>
-
-              <Paragraph className="about-page__section-desc">
-                The principles that guide our work and define our future
-              </Paragraph>
-            </div>
-
-            <div className="about-page__mission-grid">
-              {/* Mission */}
-              <div className="about-page__mission-card">
-                <div className="about-page__icon-wrapper">
-                  <Target size={28} />
-                </div>
-
-                <Heading level={3} className="about-page__card-title">
-                  {aboutPageMissionVision.mission.title}
-                </Heading>
-                <Paragraph className="about-page__card-desc">
-                  {aboutPageMissionVision.mission.description}
-                </Paragraph>
               </div>
+            </ScrollReveal>
 
-              {/* Vision */}
-              <div className="about-page__mission-card">
-                <div className="about-page__icon-wrapper">
-                  <Lightbulb size={28} />
+            {/* Vision Card */}
+            <ScrollReveal animation="fade-up" delay={120}>
+              <div className="about-overview__card">
+                <div className="about-overview__card-glow" />
+                <div className="about-overview__card-inner">
+                  <div className="about-overview__card-icon-wrapper">
+                    🔮
+                  </div>
+                  <Heading level={3} className="about-overview__card-title">
+                    {aboutPageMissionVision.vision.title}
+                  </Heading>
+                  <Paragraph className="about-overview__card-desc">
+                    {aboutPageMissionVision.vision.description}
+                  </Paragraph>
                 </div>
-
-                <Heading level={3} className="about-page__card-title">
-                  {aboutPageMissionVision.vision.title}
-                </Heading>
-                <Paragraph className="about-page__card-desc">
-                  {aboutPageMissionVision.vision.description}
-                </Paragraph>
               </div>
-            </div>
+            </ScrollReveal>
           </div>
         </Container>
-      </Section>
+      </section>
 
-      {/* Core Values Section */}
-      <Section spacing="xl" className="about-page__values-section">
+      {/* ============================================
+          4. VALUES (Icon Glow Cards)
+          ============================================ */}
+      <section className="about-overview__cards-section" style={{ backgroundColor: 'var(--background)' }}>
         <Container>
-          <div className="wp-max-w-6xl wp-mx-auto">
-            <div className="about-page__section-header">
-              <Heading level={2} className="about-page__section-title">
-                Our Core Values
-              </Heading>
-
-              <Paragraph className="about-page__section-desc">
-                The principles that define how we work and deliver results
-              </Paragraph>
+          <ScrollReveal animation="fade-up">
+            <div className="about-overview__story-header">
+              <h2 className="about-overview__section-title">
+                Our values
+              </h2>
+              <p className="about-overview__section-desc">
+                The principles that guide everything we do.
+              </p>
             </div>
+          </ScrollReveal>
 
-            <div className="about-page__values-grid">
-              {aboutPageValues.map((value, index) => {
-                const Icon = value.icon;
-                return (
-                  <div
-                    key={index}
-                    className="about-page__value-card"
-                  >
-                    <div className="about-page__icon-wrapper">
-                      <Icon size={24} />
+          <div className="about-overview__cards-grid">
+            {aboutPageValues.map((value, index) => {
+              const Icon = value.icon;
+              return (
+                <ScrollReveal key={index} animation="fade-up" delay={index * 100}>
+                  <div className="about-overview__card">
+                    <div className="about-overview__card-glow" />
+                    <div className="about-overview__card-inner">
+                      <div className="about-overview__card-icon-wrapper">
+                        <Icon size={28} />
+                      </div>
+                      <Heading level={3} className="about-overview__card-title">
+                        {value.title}
+                      </Heading>
+                      <Paragraph className="about-overview__card-desc">
+                        {value.description}
+                      </Paragraph>
                     </div>
-
-                    <Heading level={3} className="about-page__card-title">
-                      {value.title}
-                    </Heading>
-                    <Paragraph className="about-page__card-desc">
-                      {value.description}
-                    </Paragraph>
                   </div>
-                );
-              })}
-            </div>
+                </ScrollReveal>
+              );
+            })}
           </div>
         </Container>
-      </Section>
+      </section>
 
-      {/* Stats Section */}
-      <Section spacing="xl" className="about-page__stats-section">
+      {/* ============================================
+          5. STATS BAR (Gradient + Neon Grid)
+          ============================================ */}
+      <div className="about-overview__stats">
+        <StatsSection
+          title="Our impact in numbers"
+          description="Over a decade of delivering digital excellence."
+          stats={aboutPageStats}
+          variant="funky"
+        />
+      </div>
+
+      {/* ============================================
+          6. TIMELINE
+          ============================================ */}
+      <section className="about-overview__story">
         <Container>
-          <div className="wp-max-w-6xl wp-mx-auto">
-            <div className="about-page__section-header">
-              <Heading level={2} className="about-page__section-title">
-                LightSpeed by the Numbers
-              </Heading>
-
-              <Paragraph className="about-page__section-desc">
-                Our track record speaks for itself
-              </Paragraph>
+          <ScrollReveal animation="fade-up">
+            <div className="about-overview__story-header">
+              <h2 className="about-overview__section-title">
+                Our journey
+              </h2>
+              <p className="about-overview__section-desc">
+                Key milestones that shaped who we are today.
+              </p>
             </div>
+          </ScrollReveal>
 
-            <StatsGrid
-              stats={aboutPageStats}
-              variant="cards"
-              columns={3}
-              iconSize="lg"
-            />
-          </div>
+          <ScrollReveal animation="fade-up" delay={150}>
+            <Timeline items={aboutPageTimeline} />
+          </ScrollReveal>
         </Container>
-      </Section>
+      </section>
 
-      {/* Timeline Section */}
-      <Section spacing="xl" className="about-page__timeline-section">
+      {/* ============================================
+          7. EXPERTISE (Glow Cards)
+          ============================================ */}
+      <section className="about-overview__cards-section">
         <Container>
-          <div className="wp-max-w-4xl wp-mx-auto">
-            <div className="about-page__section-header">
-              <Heading level={2} className="about-page__section-title">
-                Our Journey
-              </Heading>
-
-              <Paragraph className="about-page__section-desc">
-                Key milestones in LightSpeed's 22+ year history
-              </Paragraph>
+          <ScrollReveal animation="fade-up">
+            <div className="about-overview__story-header">
+              <h2 className="about-overview__section-title">
+                Our expertise
+              </h2>
+              <p className="about-overview__section-desc">
+                Deep specializations that set us apart.
+              </p>
             </div>
+          </ScrollReveal>
 
-            <Timeline
-              items={aboutPageTimeline}
-              variant="cards"
-              dotSize="lg"
-            />
-          </div>
-        </Container>
-      </Section>
-
-      {/* Expertise Section */}
-      <Section spacing="xl" className="about-page__expertise-section">
-        <Container>
-          <div className="wp-max-w-6xl wp-mx-auto">
-            <div className="about-page__section-header">
-              <Heading level={2} className="about-page__section-title">
-                Our Expertise
-              </Heading>
-
-              <Paragraph className="about-page__section-desc">
-                Specialized knowledge in key industries and platforms
-              </Paragraph>
-            </div>
-
-            <div className="about-page__expertise-grid">
-              {aboutPageExpertise.map((area, index) => {
-                const Icon = area.icon;
-                return (
-                  <div
-                    key={index}
-                    className="about-page__expertise-card"
-                  >
-                    <div className="about-page__icon-wrapper">
-                      <Icon size={28} />
+          <div className="about-overview__cards-grid">
+            {aboutPageExpertise.map((item, index) => {
+              const Icon = item.icon;
+              return (
+                <ScrollReveal key={index} animation="fade-up" delay={index * 120}>
+                  <div className="about-overview__card">
+                    <div className="about-overview__card-glow" />
+                    <div className="about-overview__card-inner">
+                      <div className="about-overview__card-icon-wrapper">
+                        <Icon size={28} />
+                      </div>
+                      <Heading level={3} className="about-overview__card-title">
+                        {item.title}
+                      </Heading>
+                      <Paragraph className="about-overview__card-desc">
+                        {item.description}
+                      </Paragraph>
                     </div>
-
-                    <Heading level={3} className="about-page__card-title">
-                      {area.title}
-                    </Heading>
-                    <Paragraph className="about-page__card-desc">
-                      {area.description}
-                    </Paragraph>
                   </div>
-                );
-              })}
-            </div>
+                </ScrollReveal>
+              );
+            })}
           </div>
         </Container>
-      </Section>
+      </section>
 
-      {/* FAQ Section */}
-      <Section spacing="xl" className="about-page__faq-section">
+      {/* ============================================
+          8. FAQ SECTION
+          ============================================ */}
+      <section className="about-overview__story">
         <Container>
-          <div className="about-page__faq-container">
-            <div className="about-page__section-header">
-              <Heading level={2} className="about-page__section-title">
-                Frequently Asked Questions
-              </Heading>
-              <Paragraph className="about-page__section-desc">
-                Learn more about LightSpeed and how we work
-              </Paragraph>
+          <ScrollReveal animation="fade-up">
+            <div className="about-overview__story-header">
+              <h2 className="about-overview__section-title">
+                Questions about us?
+              </h2>
+              <p className="about-overview__section-desc">
+                Everything you need to know about working with LightSpeed.
+              </p>
             </div>
+          </ScrollReveal>
 
-            <FAQSection 
-              faqs={aboutPageFAQs}
-              openFaq={null}
-              setOpenFaq={() => {}}
-            />
-          </div>
+          <ScrollReveal animation="fade-up" delay={100}>
+            <div className="about-overview__faq-wrapper">
+              <FAQSection
+                faqs={aboutPageFAQs}
+                variant="default"
+              />
+            </div>
+          </ScrollReveal>
         </Container>
-      </Section>
+      </section>
 
-      {/* CTA Section */}
-      <CTASection
+      {/* ============================================
+          8b. AGENCY STATS (Dynamic Content Widget)
+          ============================================ */}
+      <section className="about-overview__cards-section">
+        <Container>
+          <ScrollReveal animation="fade-up">
+            <div className="about-overview__story-header">
+              <h2 className="about-overview__section-title">
+                By the Numbers
+              </h2>
+              <p className="about-overview__section-desc">
+                Real content from our blog, portfolio, and client testimonials.
+              </p>
+            </div>
+          </ScrollReveal>
+          <ContentStatsWidget
+            include={['blog', 'portfolio', 'testimonials', 'experience']}
+            variant="funky"
+          />
+        </Container>
+      </section>
+
+      {/* ============================================
+          8c. RELATED CONTENT (Dynamic Widget)
+          ============================================ */}
+      <section className="about-overview__story">
+        <Container>
+          <RelatedContentWidget
+            tags={['wordpress', 'block-theme', 'accessibility']}
+            count={4}
+            title="From Our Blog & Portfolio"
+            label="See Our Work"
+          />
+        </Container>
+      </section>
+
+      {/* ============================================
+          9. CTA SECTION (FunkyCTA)
+          ============================================ */}
+      <FunkyCTA
         title={aboutPageCTA.title}
         description={aboutPageCTA.description}
-        primaryButtonText={aboutPageCTA.buttons[0].text}
-        primaryButtonPage={aboutPageCTA.buttons[0].page as any}
-        secondaryButtonText={aboutPageCTA.buttons[1].text}
-        secondaryButtonPage={aboutPageCTA.buttons[1].page as any}
-        gradient="blue"
+        buttonText={aboutPageCTA.buttons[0].text}
+        buttonPage={aboutPageCTA.buttons[0].page}
+        benefits={[
+          'Free initial consultation',
+          '15+ years of WordPress expertise',
+          'Transparent project pricing',
+          'Post-launch support included'
+        ]}
       />
     </>
   );

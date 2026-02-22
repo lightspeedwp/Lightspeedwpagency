@@ -46,27 +46,27 @@
 
 /* Button Overrides */
 /* Primary button in accent section */
-.cta-inline__button--primary {
-  background-color: var(--background) !important;
-  color: var(--foreground) !important;
-  border-color: var(--background) !important;
+.cta-inline__button--primary .wp-block-button__link {
+  background-color: var(--background);
+  color: var(--foreground);
+  border-color: var(--background);
 }
 
-.cta-inline__button--primary:hover {
-  background-color: var(--overlay-white-opaque) !important;
-  border-color: var(--overlay-white-opaque) !important;
+.cta-inline__button--primary .wp-block-button__link:hover {
+  background-color: var(--overlay-white-opaque);
+  border-color: var(--overlay-white-opaque);
 }
 
 /* Secondary button in accent section */
-.cta-inline__button--secondary {
-  background-color: transparent !important;
-  border-color: var(--accent-foreground) !important;
-  color: var(--accent-foreground) !important;
+.cta-inline__button--secondary .wp-block-button__link {
+  background-color: transparent;
+  border-color: var(--accent-foreground);
+  color: var(--accent-foreground);
 }
 
-.cta-inline__button--secondary:hover {
-  background-color: var(--overlay-white-soft) !important;
-  color: var(--accent-foreground) !important;
+.cta-inline__button--secondary .wp-block-button__link:hover {
+  background-color: var(--overlay-white-soft);
+  color: var(--accent-foreground);
 }
 
 /* Icon */

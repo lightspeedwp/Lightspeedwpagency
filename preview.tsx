@@ -3,11 +3,7 @@ import React from 'react';
 import { withThemeByClassName } from '@storybook/addon-themes';
 
 // Import all design system styles (order matters!)
-import '../src/styles/fonts.css';
-import '../src/styles/theme-base.css';
-import '../src/styles/theme-light.css';
-import '../src/styles/theme-dark.css';
-import '../src/styles/global.css';
+import './src/styles/index.css';
 
 /**
  * Global Decorator - Wraps all stories

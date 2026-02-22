@@ -14,7 +14,7 @@
 
 import { Mail, Check } from 'lucide-react';
 import { useState } from 'react';
-import '@/styles/patterns/newsletter-signup.css';
+
 
 export interface NewsletterSignupProps {
   /** Main heading */

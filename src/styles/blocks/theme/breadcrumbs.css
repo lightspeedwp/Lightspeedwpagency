@@ -1,20 +1,27 @@
 /**
- * Breadcrumbs Block Styles
- * 
+ * Breadcrumbs Block Styles — Funky `//` Prefix
+ *
  * WordPress Block: .wp-block-breadcrumbs
- * 100% CSS variables.
+ *
+ * Visual style: `// HOME   // SERVICES   // CONTENT   // STRATEGY`
+ * - Mono font, uppercase, wide letter-spacing
+ * - Decorative `//` prefix on every crumb
+ * - Neon hover glow on links
+ * - Current item highlighted with subtle card background
+ *
+ * 100% CSS variables — user-controllable via theme files.
+ *
+ * @see /src/app/components/blocks/theme/Breadcrumbs.tsx
+ * @see /src/app/components/parts/BreadcrumbPart.tsx
  */
 
-/**
- * Breadcrumb Section Wrapper
- * 
- * Tight, compact section for breadcrumb navigation.
- * Fluid padding: 16px → 32px horizontal, 8px → 12px vertical.
- * Vertical padding uses --section-padding-y-sm token from theme-base.css.
- */
+/* ============================================
+   SECTION WRAPPER  (used by BreadcrumbPart)
+   ============================================ */
+
 .wp-block-breadcrumbs-section {
-  padding-top: var(--section-padding-y-sm);
-  padding-bottom: var(--section-padding-y-sm);
+  padding-top: var(--spacing-3);
+  padding-bottom: var(--spacing-3);
   padding-left: var(--section-padding-x);
   padding-right: var(--section-padding-x);
   max-width: var(--section-max-width);
@@ -27,66 +34,145 @@
   margin-bottom: 0;
 }
 
-/* Border variant — subtle bottom border for visual separation */
+/* Border variant — subtle bottom border with neon accent line */
 .wp-block-breadcrumbs-section--border {
   border-bottom: 1px solid var(--border-soft);
+  background: var(--background);
+  position: relative;
 }
 
+.wp-block-breadcrumbs-section--border::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--primary-soft) 50%,
+    transparent 100%
+  );
+  opacity: 0.6;
+}
+
+/* ============================================
+   NAV CONTAINER
+   ============================================ */
+
 .wp-block-breadcrumbs {
-  font-family: var(--font-secondary);
-  font-size: var(--text-small);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
   margin-bottom: 0;
   color: var(--muted-foreground);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
 }
+
+/* ============================================
+   LIST (horizontal layout)
+   ============================================ */
 
 .wp-block-breadcrumbs__list {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: var(--spacing-2);
+  gap: var(--spacing-4);
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
+/* ============================================
+   ITEM (each crumb)
+   ============================================ */
+
 .wp-block-breadcrumbs__item {
   display: flex;
   align-items: center;
-  gap: var(--spacing-2);
+  gap: var(--spacing-1);
 }
 
-.wp-block-breadcrumbs__separator {
-  color: var(--border);
-  display: flex;
-  align-items: center;
+/* ============================================
+   // PREFIX  (decorative, hidden from a11y)
+   ============================================ */
+
+.wp-block-breadcrumbs__prefix {
+  color: var(--muted-foreground);
+  opacity: 0.5;
+  font-weight: var(--font-weight-normal);
+  user-select: none;
+  pointer-events: none;
 }
+
+/* ============================================
+   LINK  (clickable crumbs)
+   ============================================ */
 
 .wp-block-breadcrumbs__link {
   color: var(--muted-foreground);
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: color var(--transition-fast), background var(--transition-fast), box-shadow var(--transition-fast);
   background: none;
-  border: none;
-  padding: 0;
+  border: 1px solid transparent;
+  padding: var(--spacing-0-5) var(--spacing-1-5);
+  border-radius: var(--radius-sm);
   font: inherit;
   cursor: pointer;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: var(--spacing-1);
 }
 
 .wp-block-breadcrumbs__link:hover {
   color: var(--primary);
-  text-decoration: underline;
+  background: var(--primary-soft);
+  border-color: var(--primary-soft);
+  box-shadow: 0 0 6px var(--primary-soft);
 }
+
+.wp-block-breadcrumbs__link:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   CURRENT  (active / last crumb)
+   ============================================ */
 
 .wp-block-breadcrumbs__current {
   color: var(--foreground);
-  font-weight: var(--font-weight-medium);
-}
-
-.wp-block-breadcrumbs__current-wrapper {
-  display: flex;
+  font-weight: var(--font-weight-semibold);
+  background: var(--card);
+  padding: var(--spacing-0-5) var(--spacing-2);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-soft);
+  display: inline-flex;
   align-items: center;
   gap: var(--spacing-1);
+}
+
+/* ============================================
+   ICON  (optional per-crumb icon)
+   ============================================ */
+
+.wp-block-breadcrumbs__icon {
+  flex-shrink: 0;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+/* Tighter gap on small screens */
+@media (max-width: 640px) {
+  .wp-block-breadcrumbs__list {
+    gap: var(--spacing-2);
+  }
+
+  .wp-block-breadcrumbs-section {
+    padding-top: var(--spacing-2);
+    padding-bottom: var(--spacing-2);
+  }
 }

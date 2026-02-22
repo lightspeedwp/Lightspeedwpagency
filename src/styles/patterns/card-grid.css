@@ -3,6 +3,7 @@
  * 
  * BEM-compliant styles for the CardGrid component.
  * All vertical spacing via blockGap (CSS gap) -- zero margin.
+ * Updated for "Funky" design system.
  */
 
 /* Empty State */
@@ -20,7 +21,7 @@
   color: var(--muted-foreground);
 }
 
-/* Card */
+/* Card - Glassmorphism Base */
 .card-grid__card {
   display: flex;
   flex-direction: column;
@@ -30,12 +31,31 @@
   overflow: hidden;
   transition: all var(--transition-base) var(--ease-in-out);
   height: 100%;
+  position: relative;
 }
 
+/* Hover Effect: Lift & Glow */
 .card-grid__card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px -10px var(--shadow-primary);
   border-color: var(--primary);
+}
+
+/* Funky: Animated Border Gradient on Hover (Pseudo-element) */
+.card-grid__card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card-grid__card:hover::after {
+  opacity: 1;
 }
 
 /* Image Container */
@@ -58,11 +78,11 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .card-grid__card:hover .card-grid__image {
-  transform: scale(1.05);
+  transform: scale(1.08);
 }
 
 /* Badges */
@@ -77,9 +97,10 @@
   font-weight: var(--font-weight-bold);
   text-transform: uppercase;
   letter-spacing: var(--letter-spacing-wider);
-  background-color: var(--overlay-backdrop);
+  background-color: color-mix(in srgb, var(--color-black) 60%, transparent); /* Always dark overlay for legibility */
   color: var(--color-white);
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(8px);
+  border: 1px solid color-mix(in srgb, var(--color-white) 20%, transparent);
 }
 
 .card-grid__badge--inline {
@@ -93,10 +114,11 @@
   letter-spacing: var(--letter-spacing-wider);
 }
 
-/* Badge Variants */
+/* Badge Variants (Funky) */
 .card-grid__badge--primary {
   background-color: var(--primary);
   color: var(--primary-foreground);
+  box-shadow: 0 0 10px var(--primary-soft);
 }
 
 .card-grid__badge--success {
@@ -121,6 +143,7 @@
   flex-direction: column;
   gap: var(--spacing-3);
   flex-grow: 1;
+  background: linear-gradient(180deg, var(--card) 0%, color-mix(in srgb, var(--card) 95%, transparent) 100%);
 }
 
 .card-grid__content--minimal {
@@ -129,7 +152,7 @@
   background: none;
 }
 
-/* Service Icon */
+/* Service Icon (Funky Glow) */
 .card-grid__service-icon {
   width: var(--spacing-12);
   height: var(--spacing-12);
@@ -139,6 +162,14 @@
   background-color: var(--primary-soft);
   color: var(--primary);
   border-radius: var(--radius-lg);
+  transition: all 0.3s ease;
+}
+
+.card-grid__card:hover .card-grid__service-icon {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  box-shadow: 0 0 15px var(--primary-soft);
+  transform: scale(1.1) rotate(-5deg);
 }
 
 /* Meta */
@@ -165,6 +196,7 @@
 
 .card-grid__meta-link:hover {
   color: var(--primary);
+  text-shadow: 0 0 5px var(--primary-soft);
 }
 
 /* Title */
@@ -174,6 +206,11 @@
   font-weight: var(--font-weight-bold);
   color: var(--foreground);
   line-height: var(--line-height-snug);
+  transition: color 0.2s ease;
+}
+
+.card-grid__card:hover .card-grid__title {
+  color: var(--primary);
 }
 
 .card-grid__title--minimal {
@@ -210,4 +247,5 @@
 .card-grid__cta:hover {
   gap: var(--spacing-3);
   color: var(--primary-dark);
+  text-shadow: 0 0 5px var(--primary-soft);
 }

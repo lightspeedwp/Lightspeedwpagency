@@ -1,0 +1,674 @@
+/**
+ * Content Service Page Styles - Funky Redesign
+ * 
+ * Theme: "Digital Ink"
+ * Style: Pink/Violet/Paper, Typewriter, Editing Marks, Clean Typography
+ * 
+ * STRICT DESIGN SYSTEM COMPLIANCE:
+ * - Fonts: var(--font-primary), var(--font-secondary), var(--font-mono)
+ * - Spacing: var(--spacing-*)
+ * - Radius: var(--radius-*)
+ * - Colors: Semantic variables from theme-*.css
+ * - NO hardcoded hex/rgba — all derived via color-mix() or system tokens
+ */
+
+/* ============================================
+   THEME VARIABLES (Scoped)
+   ============================================ */
+
+.content-page__hero,
+.content-page__why,
+.content-page__services,
+.content-page__process,
+.content-page__cta {
+  /* Map local variables to Global Design System Tokens */
+  
+  --ink-bg: var(--background);
+  --ink-text: var(--foreground);
+  --ink-card-bg: var(--card);
+  --ink-border: var(--border);
+  --ink-muted: var(--muted-foreground);
+
+  /* Digital Ink Theme Specifics */
+  --ink-primary: var(--category-pink);    /* Pink — Creativity */
+  --ink-secondary: var(--category-violet); /* Violet — Depth */
+  --ink-accent: var(--category-cyan);     /* Cyan — Digital */
+  --ink-paper: color-mix(in srgb, var(--background) 95%, var(--muted-foreground));
+  --ink-mark: var(--category-red);        /* Red — Editing Marks */
+
+  /* Gradients */
+  --gradient-ink: linear-gradient(135deg, var(--ink-primary), var(--ink-secondary));
+  --gradient-flow: linear-gradient(to right, var(--ink-secondary), var(--ink-primary));
+
+  /* Glassmorphism */
+  --ink-glass-bg: var(--glass-bg);
+  --ink-glass-border: var(--glass-border);
+  --ink-glass-text: var(--glass-text);
+
+  /* Glows */
+  --ink-glow: 0 0 30px color-mix(in srgb, var(--ink-primary) 30%, transparent);
+}
+
+/* Dark Mode Overrides */
+.dark .content-page__hero,
+.dark .content-page__why,
+.dark .content-page__services,
+.dark .content-page__process,
+.dark .content-page__cta {
+  --ink-paper: color-mix(in srgb, var(--card) 80%, var(--background));
+  --ink-glass-bg: var(--glass-bg);
+}
+
+/* ============================================
+   HERO SECTION (The Art of Words)
+   ============================================ */
+
+.content-page__hero {
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--ink-bg);
+  color: var(--ink-text);
+  overflow: hidden;
+  padding: var(--spacing-24) 0;
+}
+
+/* Background Texture */
+.content-page__hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(var(--ink-border) 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.5;
+  z-index: 0;
+}
+
+/* Floating Manuscript Pages */
+.content-page__floating-page {
+  position: absolute;
+  width: 200px;
+  height: 280px;
+  background: var(--ink-card-bg);
+  border: 1px solid var(--ink-border);
+  box-shadow: var(--shadow-xl);
+  border-radius: var(--radius-sm);
+  z-index: 1;
+  opacity: 0.6;
+  padding: var(--spacing-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+  animation: floatPaper 8s ease-in-out infinite;
+}
+
+.content-page__floating-page--left {
+  top: 15%;
+  left: 5%;
+  transform: rotate(-5deg);
+  animation-delay: 0s;
+}
+
+.content-page__floating-page--right {
+  bottom: 15%;
+  right: 5%;
+  transform: rotate(5deg);
+  animation-delay: 4s;
+}
+
+@keyframes floatPaper {
+  0%, 100% { transform: translateY(0) rotate(-5deg); }
+  50% { transform: translateY(-20px) rotate(-2deg); }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .content-page__floating-page {
+    animation: none;
+  }
+}
+
+.content-page__line {
+  height: 4px;
+  background: var(--ink-border);
+  border-radius: var(--radius-full);
+}
+
+.content-page__line--long { width: 100%; }
+.content-page__line--medium { width: 70%; }
+.content-page__line--short { width: 40%; }
+
+/* Red Pen Mark (floating page decoration) */
+.content-page__pen-mark {
+  position: absolute;
+  bottom: var(--spacing-10);
+  right: var(--spacing-10);
+  width: 60px;
+  height: 4px;
+  background: var(--ink-mark);
+  transform: rotate(-15deg);
+  opacity: 0.5;
+}
+
+.content-page__hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 64rem;
+  margin: 0 auto;
+}
+
+.content-page__draft-badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: var(--letter-spacing-widest);
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin-bottom: var(--spacing-6);
+  border: 1px dashed var(--ink-border);
+  padding: var(--spacing-1) var(--spacing-3);
+  border-radius: var(--radius-sm);
+}
+
+.content-page__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h1);
+  font-weight: var(--font-weight-black);
+  line-height: var(--line-height-tight);
+  margin-bottom: var(--spacing-6);
+  color: var(--ink-text);
+  letter-spacing: var(--letter-spacing-tight);
+  position: relative;
+}
+
+.content-page__highlight {
+  position: relative;
+  color: var(--ink-primary);
+  display: inline-block;
+}
+
+.content-page__highlight::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0.2em;
+  background: var(--ink-primary);
+  opacity: 0.2;
+  z-index: -1;
+  transform: skewX(-10deg);
+}
+
+/* Typewriter Cursor */
+.content-page__cursor {
+  display: inline-block;
+  width: 4px;
+  height: 1em;
+  background: var(--ink-primary);
+  margin-left: 4px;
+  vertical-align: middle;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .content-page__cursor {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+.content-page__description-wrapper {
+  position: relative;
+  display: inline-block;
+  max-width: 42rem;
+  margin: 0 auto var(--spacing-12);
+}
+
+.content-page__description {
+  font-family: var(--font-secondary);
+  font-size: var(--text-xl);
+  line-height: var(--line-height-relaxed);
+  color: var(--ink-muted);
+}
+
+/* Editing Marks — using mono font for handwritten look */
+.content-page__edit-mark {
+  position: absolute;
+  font-family: var(--font-mono);
+  color: var(--ink-mark);
+  font-size: var(--text-sm);
+  transform: rotate(-15deg);
+  pointer-events: none;
+}
+
+.content-page__edit-mark--stet {
+  top: -10px;
+  right: -20px;
+}
+
+.content-page__edit-mark--insert {
+  bottom: -10px;
+  right: 0;
+  transform: rotate(-5deg);
+}
+
+.content-page__buttons {
+  display: flex;
+  gap: var(--spacing-4);
+  justify-content: center;
+}
+
+/* ============================================
+   WHY SECTION (The Pen is Mightier)
+   ============================================ */
+
+.content-page__why {
+  background-color: var(--ink-bg);
+  padding: var(--spacing-24) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Mesh grid overlay */
+.content-page__why::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--border-soft) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border-soft) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.content-page__why-content {
+  text-align: center;
+  max-width: 48rem;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.content-page__icon-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  background: var(--gradient-ink);
+  color: var(--color-white);
+  border-radius: var(--radius-full);
+  margin-bottom: var(--spacing-8);
+  box-shadow: var(--ink-glow);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.content-page__icon-circle:hover {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 0 40px color-mix(in srgb, var(--ink-primary) 40%, transparent);
+}
+
+.content-page__section-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-bold);
+  color: var(--ink-text);
+  margin-bottom: var(--spacing-6);
+  position: relative;
+  display: inline-block;
+}
+
+/* Gradient underline on section titles */
+.content-page__section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--gradient-ink);
+  border-radius: var(--radius-full);
+  opacity: 0.7;
+}
+
+.content-page__section-desc {
+  font-family: var(--font-secondary);
+  font-size: var(--text-lg);
+  color: var(--ink-muted);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--spacing-8);
+}
+
+/* ============================================
+   SERVICES GRID (Sticky Notes → Glassmorphism)
+   ============================================ */
+
+.content-page__services {
+  background-color: var(--ink-card-bg);
+  padding: var(--spacing-24) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle gradient accent at top of section */
+.content-page__services::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--gradient-ink);
+}
+
+.content-page__services-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-6);
+  margin-top: var(--spacing-16);
+}
+
+@media (min-width: 640px) {
+  .content-page__services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .content-page__services-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.content-page__service-card {
+  background: var(--ink-glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--ink-glass-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-8);
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animated gradient top stripe */
+.content-page__service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--ink-primary), var(--ink-secondary), var(--ink-accent), var(--ink-primary));
+  background-size: 200% 100%;
+  opacity: 0;
+  transition: opacity var(--transition-base);
+  animation: inkStripeShimmer 3s linear infinite;
+}
+
+.content-page__service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--ink-glow);
+  border-color: color-mix(in srgb, var(--ink-primary) 40%, transparent);
+}
+
+.content-page__service-card:hover::before {
+  opacity: 1;
+}
+
+@keyframes inkStripeShimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Neon icon wrapper */
+.content-page__service-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: var(--gradient-ink);
+  color: var(--color-white);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-6);
+  box-shadow: 0 0 16px color-mix(in srgb, var(--ink-primary) 25%, transparent);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.content-page__service-card:hover .content-page__service-icon {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 0 24px color-mix(in srgb, var(--ink-primary) 40%, transparent);
+}
+
+.content-page__service-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--ink-text);
+  margin-bottom: var(--spacing-3);
+}
+
+.content-page__service-desc {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+  line-height: var(--line-height-relaxed);
+}
+
+/* ============================================
+   PROCESS SECTION (Timeline → Glassmorphism)
+   ============================================ */
+
+.content-page__process {
+  background-color: var(--ink-bg);
+  padding: var(--spacing-24) 0;
+  border-top: 1px solid var(--ink-border);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Mesh grid overlay */
+.content-page__process::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--border-soft) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border-soft) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.25;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.content-page__process-header {
+  text-align: center;
+  margin-bottom: var(--spacing-16);
+  position: relative;
+  z-index: 1;
+}
+
+.content-page__process-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+  max-width: 48rem;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.content-page__process-step {
+  display: flex;
+  gap: var(--spacing-6);
+  padding: var(--spacing-6);
+  background: var(--ink-glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--ink-glass-border);
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Gradient left accent on hover */
+.content-page__process-step::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: var(--gradient-ink);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.content-page__process-step:hover {
+  border-color: color-mix(in srgb, var(--ink-primary) 40%, transparent);
+  transform: translateX(4px);
+  box-shadow: var(--ink-glow);
+}
+
+.content-page__process-step:hover::before {
+  opacity: 1;
+}
+
+/* Gradient numbered badge */
+.content-page__step-marker {
+  width: 44px;
+  height: 44px;
+  background: var(--gradient-ink);
+  color: var(--color-white);
+  border: none;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--text-sm);
+  flex-shrink: 0;
+  box-shadow: 0 0 16px color-mix(in srgb, var(--ink-primary) 30%, transparent);
+  transition: box-shadow var(--transition-base), transform var(--transition-base);
+}
+
+.content-page__process-step:hover .content-page__step-marker {
+  box-shadow: 0 0 28px color-mix(in srgb, var(--ink-primary) 50%, transparent);
+  transform: scale(1.1);
+}
+
+.content-page__step-content {
+  flex: 1;
+}
+
+.content-page__step-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--ink-text);
+  margin-bottom: var(--spacing-2);
+}
+
+.content-page__step-desc {
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  color: var(--ink-muted);
+}
+
+/* ============================================
+   DARK MODE OVERRIDES (Body Sections)
+   ============================================ */
+
+/* Why section */
+.dark .content-page__why::before {
+  opacity: 0.15;
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--ink-primary) 15%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--ink-primary) 15%, transparent) 1px, transparent 1px);
+}
+
+.dark .content-page__icon-circle {
+  box-shadow: 0 0 36px color-mix(in srgb, var(--ink-primary) 40%, transparent);
+}
+
+/* Services section */
+.dark .content-page__service-card {
+  background: color-mix(in srgb, var(--card) 60%, transparent);
+  border-color: color-mix(in srgb, var(--ink-primary) 12%, transparent);
+}
+
+.dark .content-page__service-card:hover {
+  background: color-mix(in srgb, var(--card) 80%, transparent);
+  border-color: color-mix(in srgb, var(--ink-primary) 30%, transparent);
+  box-shadow: 0 0 36px color-mix(in srgb, var(--ink-primary) 25%, transparent);
+}
+
+.dark .content-page__service-icon {
+  box-shadow: 0 0 20px color-mix(in srgb, var(--ink-primary) 35%, transparent);
+}
+
+/* Process section */
+.dark .content-page__process::before {
+  opacity: 0.12;
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--ink-secondary) 15%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--ink-secondary) 15%, transparent) 1px, transparent 1px);
+}
+
+.dark .content-page__process-step {
+  background: color-mix(in srgb, var(--card) 60%, transparent);
+  border-color: color-mix(in srgb, var(--ink-primary) 12%, transparent);
+}
+
+.dark .content-page__process-step:hover {
+  background: color-mix(in srgb, var(--card) 80%, transparent);
+  border-color: color-mix(in srgb, var(--ink-primary) 30%, transparent);
+  box-shadow: 0 0 30px color-mix(in srgb, var(--ink-primary) 20%, transparent);
+}
+
+.dark .content-page__step-marker {
+  box-shadow: 0 0 20px color-mix(in srgb, var(--ink-primary) 40%, transparent);
+}
+
+/* ============================================
+   REDUCED MOTION (Body Sections)
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .content-page__service-card::before {
+    animation: none;
+  }
+
+  .content-page__service-card:hover,
+  .content-page__process-step:hover {
+    transform: none;
+  }
+
+  .content-page__service-card:hover .content-page__service-icon,
+  .content-page__icon-circle:hover,
+  .content-page__process-step:hover .content-page__step-marker {
+    transform: none;
+  }
+}
+
+/* ============================================
+   UTILITIES
+   ============================================ */
+
+.content-page__text-center { text-align: center; }
+.content-page__max-w-2xl { max-width: 42rem; margin-left: auto; margin-right: auto; }

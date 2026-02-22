@@ -10,17 +10,17 @@
  */
 
 import { ReactNode } from 'react';
-import '@/styles/components/section.css';
 
 interface SectionProps {
   children: ReactNode;
   
   /**
    * Vertical spacing (padding top/bottom)
+   * - 'none': No padding (component controls its own padding)
    * - 'xs': Compact spacing (--section-padding-y-sm, 8px → 12px) — breadcrumbs, pagination
    * - 'sm' | 'md' | 'lg' | 'xl': Standard spacing (--section-padding-y, 48px → 80px)
    */
-  spacing?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  spacing?: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   
   /**
    * Background color variant
@@ -69,7 +69,9 @@ export function Section({
   const styleClass = sectionStyle ? `is-style-${sectionStyle}` : '';
   
   // Compact modifier for xs spacing
-  const compactClass = spacing === 'xs' ? 'lsx-section--compact' : '';
+  const compactClass = spacing === 'xs' ? 'lsx-section--compact' 
+    : spacing === 'none' ? 'lsx-section--none' 
+    : '';
   
   // Compose final class string — NO wp-block-group (avoids default gap/padding)
   const combinedClassName = [

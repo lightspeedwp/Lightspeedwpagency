@@ -20,7 +20,7 @@
 
 import { useState } from 'react';
 import { Filter, X, SlidersHorizontal } from 'lucide-react';
-import '@/styles/patterns/taxonomy-filter.css';
+
 
 export interface TaxonomyItem {
   slug: string;

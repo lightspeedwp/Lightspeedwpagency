@@ -1,118 +1,215 @@
-/**
- * Portfolio Tag Archive Template
- *
- * WordPress template: templates/taxonomy-project_tag.html
- * Taxonomy archive archetype filtering portfolio by tag.
- */
-
+import { useParams, Navigate, Link } from 'react-router';
+import { slugToPath } from '../../utils/route-map';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
-import { Breadcrumbs } from '../common/Breadcrumbs';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
+import { ArchiveCTA } from '../patterns/ArchiveCTA';
 import { FAQSection } from '../patterns/FAQSection';
-import { CTASection } from '../patterns/CTASection';
+import { StickyBookCallButton } from '../blocks/layout/StickyBookCallButton';
 import { Heading } from '../blocks/text/Heading';
 import { Paragraph } from '../blocks/text/Paragraph';
-import { ArrowRight, Tag } from 'lucide-react';
-import { portfolioProjects, projectTags } from '../../data/portfolio-projects';
+import { useStaggerReveal } from '../../hooks/useScrollReveal';
+import { useMicroInteractions } from '../../hooks/useMicroInteractions';
 import { portfolioFAQs } from '../../data/faqs';
-import { useNavigation } from '../../contexts/NavigationContext';
+import { portfolioPageCTA } from '../../data/cta';
+import { getPortfolioItemsByTag, portfolioArchiveItems } from '../../data/archive-items';
+import { Skeleton } from '../blocks/layout/Skeleton';
+import { useState, useEffect } from 'react';
 
-interface Props { tag?: string; }
 
-export function PortfolioTagArchiveTemplate({ tag }: Props) {
-  const { navigateTo } = useNavigation();
-  const tagInfo = projectTags.find(t => t.slug === tag) || projectTags[0];
-  const filtered = tag
-    ? portfolioProjects.filter(p => p.projectTags.includes(tag))
-    : portfolioProjects;
+export function PortfolioTagArchiveTemplate() {
+  const { slug } = useParams<{ slug: string }>();
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Simulate loading
+  useEffect(() => {
+    setIsLoading(true);
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 600);
+    return () => clearTimeout(timer);
+  }, [slug]);
+
+  if (!slug) return <Navigate to="/portfolio" />;
+
+  const filteredItems = getPortfolioItemsByTag(slug);
+  
+  // Format tag name from slug
+  const tagName = slug.split('-').map(s => s.charAt(0).toUpperCase() + s.slice(1)).join(' ');
+
+  // Get all unique tags for the sidebar cloud
+  const allTags = Array.from(new Set(portfolioArchiveItems.flatMap(item => item.tags))).sort();
+
+  // Scroll reveal
+  const { containerRef, itemStyle } = useStaggerReveal({
+    stagger: 100,
+    animation: 'fade-up',
+    duration: 600,
+    threshold: 0.1
+  });
+
+  // Reusing PortfolioCard logic
+  function PortfolioCard({ item }: { item: typeof filteredItems[0] }) {
+    const { hoverLift } = useMicroInteractions({ scaleOnHover: 1.01, duration: 300 });
+    const liftProps = hoverLift(12);
+
+    return (
+      <Link
+        to={slugToPath(`portfolio-single-${item.slug}`)}
+        className="portfolio-card"
+        aria-label={`View ${item.title} project`}
+      >
+        <article
+          {...liftProps}
+          className="portfolio-card__article"
+          style={liftProps.style}
+        >
+          <div className="portfolio-card__image-container">
+            <img 
+              src={item.imageUrl}
+              alt={item.title}
+              className="portfolio-card__image"
+            />
+            <span className="portfolio-card__category-badge">
+              {item.category}
+            </span>
+          </div>
+
+          <div className="portfolio-card__content">
+            <Heading level={3} className="portfolio-card__title">
+              {item.title}
+            </Heading>
+
+            <Paragraph className="portfolio-card__excerpt">
+              {item.excerpt}
+            </Paragraph>
+
+            <div className="portfolio-card__tags">
+              {item.tags.map((tag, index) => (
+                <span key={index} className="portfolio-card__tag">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+        </article>
+      </Link>
+    );
+  }
 
   return (
     <>
-      <section style={{ padding: 'var(--spacing-4) 0' }}>
-        <Container>
-          <Breadcrumbs
-            items={[
-              { label: 'Home', page: 'front-page' },
-              { label: 'Portfolio', page: 'portfolio-archive' },
-              { label: tagInfo.name }
-            ]}
-          />
-        </Container>
-      </section>
-
-      <Section spacing="md">
-        <Container>
-          <div className="wp-max-w-4xl">
-            <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-2)' }}>
-              <Tag size={24} style={{ color: 'var(--primary)' }} />
-              <Heading level={1}>{tagInfo.name}</Heading>
-            </div>
-            <Paragraph>
-              Projects featuring {tagInfo.name.toLowerCase()} technology and expertise.
-            </Paragraph>
-            <Paragraph style={{ color: 'var(--muted-foreground)', fontSize: 'var(--text-small)', fontFamily: 'var(--font-secondary)' }}>
-              Number of results: <strong style={{ color: 'var(--foreground)' }}>{filtered.length}</strong>
-            </Paragraph>
-          </div>
-        </Container>
-      </Section>
-
-      <Section spacing="lg">
-        <Container>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: 'var(--spacing-6)' }}>
-            {filtered.map(project => (
-              <article
-                key={project.id}
-                style={{
-                  background: 'var(--card)',
-                  border: '1px solid var(--border)',
-                  borderRadius: 'var(--radius-lg)',
-                  overflow: 'hidden',
-                  cursor: 'pointer',
-                  transition: 'transform var(--transition-base) var(--ease-in-out), box-shadow var(--transition-base) var(--ease-in-out)'
-                }}
-                onClick={() => navigateTo(`/portfolio/${project.slug}`)}
-                tabIndex={0}
-                role="link"
-                onKeyDown={e => e.key === 'Enter' && navigateTo(`/portfolio/${project.slug}`)}
-              >
-                <div style={{ aspectRatio: '16/9', overflow: 'hidden' }}>
-                  <img src={project.featuredImage} alt={project.title} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                </div>
-                <div style={{ padding: 'var(--spacing-4)', display: 'flex', flexDirection: 'column', gap: 'var(--spacing-2)' }}>
-                  <h2 style={{ fontSize: 'var(--text-lg)', fontFamily: 'var(--font-primary)', fontWeight: 'var(--font-weight-medium)', color: 'var(--foreground)' }}>
-                    {project.title}
-                  </h2>
-                  <p style={{ fontSize: 'var(--text-small)', fontFamily: 'var(--font-secondary)', color: 'var(--muted-foreground)' }}>
-                    {project.excerpt}
-                  </p>
-                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: 'var(--spacing-1)', fontSize: 'var(--text-small)', color: 'var(--primary)', fontFamily: 'var(--font-primary)', fontWeight: 'var(--font-weight-medium)' }}>
-                    View Case Study <ArrowRight size={14} />
-                  </span>
-                </div>
-              </article>
-            ))}
-          </div>
-          {filtered.length === 0 && (
-            <div style={{ textAlign: 'center', padding: 'var(--spacing-12) 0' }}>
-              <Paragraph>No projects with this tag yet.</Paragraph>
-            </div>
-          )}
-        </Container>
-      </Section>
-
-      <Section spacing="md" background="muted">
-        <Container>
-          <FAQSection title="Portfolio FAQ" faqs={portfolioFAQs.slice(0, 3)} />
-        </Container>
-      </Section>
-
-      <CTASection
-        title="Need Similar Technology?"
-        description="We have deep expertise across all the technologies showcased in our portfolio. Let us help with yours."
-        primaryButtonText="Contact Us"
-        primaryButtonPage="contact"
+      {/* Breadcrumbs */}
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', page: 'front-page' },
+          { label: 'Portfolio', page: 'portfolio-archive' },
+          { label: 'Tags', href: '/portfolio' },
+          { label: tagName },
+        ]}
       />
+
+      {/* Header */}
+      <Section spacing="xl" className="portfolio-archive__header">
+        <div className="portfolio-archive__gradient-overlay" aria-hidden="true" />
+        <div className="portfolio-archive__orb" aria-hidden="true" />
+
+        <Container className="portfolio-archive__header-container">
+          <div className="portfolio-archive__header-content">
+            <span className="portfolio-archive__badge">
+              Tag
+            </span>
+
+            <Heading level={1} className="portfolio-archive__title">
+              {tagName}
+            </Heading>
+
+            <Paragraph size="large" className="portfolio-archive__description">
+              Projects tagged with <strong>{tagName}</strong>. Explore how we implement specific technologies and features.
+            </Paragraph>
+          </div>
+        </Container>
+      </Section>
+
+      {/* Content Area with Sidebar */}
+      <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
+        <Container>
+          <div className="portfolio-tag-archive__layout">
+            
+            {/* Main Content */}
+            <div className="portfolio-tag-archive__main">
+               <div className="wp-grid-2-cols wp-gap-8" ref={containerRef}>
+                {isLoading ? (
+                   Array.from({ length: 4 }).map((_, index) => (
+                    <div key={index} className="portfolio-skeleton-card">
+                      <Skeleton height="var(--spacing-48)" className="wp-mb-4" variant="rectangular" />
+                      <Skeleton width="60%" height="var(--spacing-6)" className="wp-mb-2" variant="text" />
+                      <Skeleton width="100%" height="var(--spacing-4)" className="wp-mb-1" variant="text" />
+                      <Skeleton width="100%" height="var(--spacing-4)" className="wp-mb-1" variant="text" />
+                    </div>
+                  ))
+                ) : filteredItems.length > 0 ? (
+                  filteredItems.map((item, index) => (
+                    <div key={item.id} style={itemStyle(index)}>
+                      <PortfolioCard item={item} />
+                    </div>
+                  ))
+                ) : (
+                  <div className="wp-col-span-full wp-text-center wp-py-12">
+                    <Paragraph>No projects found with this tag.</Paragraph>
+                    <Link to="/portfolio" className="wp-inline-block wp-mt-4 wp-text-primary hover:wp-underline">
+                      View all projects
+                    </Link>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* Sidebar */}
+            <aside className="portfolio-tag-archive__sidebar">
+              <div className="portfolio-tag-archive__sidebar-widget">
+                <Heading level={3} className="wp-mb-4">All Tags</Heading>
+                <div className="portfolio-tag-cloud">
+                  {allTags.map(tag => {
+                    const isActive = tag.toLowerCase() === tagName.toLowerCase();
+                    const tagSlug = tag.toLowerCase().replace(/\s+/g, '-');
+                    return (
+                      <Link 
+                        key={tag} 
+                        to={`/portfolio/tag/${tagSlug}`}
+                        className={`portfolio-tag-cloud__item ${isActive ? 'portfolio-tag-cloud__item--active' : ''}`}
+                      >
+                        {tag}
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
+              
+              <div className="portfolio-tag-archive__sidebar-widget wp-mt-8">
+                 <Heading level={3} className="wp-mb-4">Need Help?</Heading>
+                 <Paragraph className="wp-text-sm wp-mb-4">
+                   Looking for a specific solution? Our team specializes in custom WordPress development.
+                 </Paragraph>
+                 <Link to="/contact" className="wp-button wp-button--primary wp-w-full wp-justify-center">
+                   Contact Us
+                 </Link>
+              </div>
+            </aside>
+
+          </div>
+        </Container>
+      </Section>
+
+      <ArchiveCTA ctaData={portfolioPageCTA} />
+
+      <FAQSection
+        title="Common Questions"
+        description="Frequently asked questions about our services."
+        faqs={portfolioFAQs.slice(0, 3)} 
+      />
+
+      <StickyBookCallButton />
     </>
   );
 }

@@ -30,7 +30,7 @@
  */
 
 import { Search, SlidersHorizontal, Grid, List, X } from 'lucide-react';
-import '@/styles/patterns/filter-bar.css';
+
 
 export interface FilterOption {
   label: string;

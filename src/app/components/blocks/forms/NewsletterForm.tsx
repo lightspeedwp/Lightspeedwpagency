@@ -11,7 +11,6 @@
 import { useState, FormEvent } from 'react';
 import { Mail, Send, CheckCircle2, AlertCircle } from 'lucide-react';
 import { Button } from '../../blocks/design/Buttons';
-import '@/styles/blocks/forms/newsletter-form.css';
 
 export interface NewsletterFormProps {
   /** Subscribe handler */

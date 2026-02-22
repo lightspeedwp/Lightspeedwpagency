@@ -18,7 +18,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Phone } from 'lucide-react';
-import '@/styles/components/sticky-book-call.css';
+import { useReducedMotion } from '../../../hooks/useReducedMotion';
 
 export function StickyBookCallButton() {
   const [isVisible, setIsVisible] = useState(false);
@@ -41,10 +41,8 @@ export function StickyBookCallButton() {
     return () => window.removeEventListener('scroll', toggleVisibility);
   }, []);
 
-  // Check if user prefers reduced motion
-  const prefersReducedMotion = 
-    typeof window !== 'undefined' && 
-    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Check if user prefers reduced motion (reactive — updates if user toggles mid-session)
+  const prefersReducedMotion = useReducedMotion();
 
   return (
     <AnimatePresence>

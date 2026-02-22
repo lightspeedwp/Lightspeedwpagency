@@ -7,7 +7,6 @@
  */
 
 import React from 'react';
-import '@/styles/blocks/text/heading.css';
 
 export interface HeadingProps {
   /** The heading level (1-6) */

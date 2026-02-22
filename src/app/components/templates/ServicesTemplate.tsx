@@ -15,17 +15,16 @@ import { Buttons, Button } from '../blocks/design/Buttons';
 import { WhyChooseUs } from '../patterns/WhyChooseUs';
 import { WordPressServices } from '../patterns/WordPressServices';
 import { ProcessSteps } from '../patterns/ProcessSteps';
-import { CTASection } from '../patterns/CTASection';
 import { FAQSection } from '../patterns/FAQSection';
 import { Hero } from '../patterns/Hero';
-import { useNavigation } from '../../contexts/NavigationContext';
+import { FunkyCTA } from '../patterns/FunkyCTA';
 import { useState } from 'react';
 import { 
   ArrowRight,
   Sparkles,
   CheckCircle
 } from 'lucide-react';
-import '@/styles/templates/services-page.css';
+import { ScrollReveal } from '../../hooks/useScrollReveal';
 
 // Import centralized data
 import { servicesSimplified } from '../../data/services';
@@ -37,7 +36,6 @@ import {
 } from '../../data/services-page';
 
 export function ServicesTemplate() {
-  const { navigateTo } = useNavigation();
   const [hoveredService, setHoveredService] = useState<string | null>(null);
 
   // Use centralized real data
@@ -84,102 +82,121 @@ export function ServicesTemplate() {
       />
 
       {/* Services Grid */}
-      <WordPressServices
-        title="What We Do"
-        description="Comprehensive WordPress services for every need"
-        services={services.map(service => ({
-          icon: service.icon,
-          title: service.title,
-          description: service.description,
-          features: service.features,
-          link: service.page,
-          linkText: "Learn More"
-        }))}
-        columns={3}
-        spacing="xl"
-      />
+      <ScrollReveal animation="fade-up">
+        <WordPressServices
+          title="What We Do"
+          description="Comprehensive WordPress services for every need"
+          services={services.map(service => ({
+            icon: service.icon,
+            title: service.title,
+            description: service.description,
+            features: service.features,
+            link: service.page,
+            linkText: "Learn More"
+          }))}
+          columns={3}
+          spacing="xl"
+        />
+      </ScrollReveal>
 
       {/* Why Choose Us */}
-      <WhyChooseUs
-        title="Why Choose LightSpeed?"
-        description="Your trusted WordPress partner"
-        reasons={benefits}
-        columns={3}
-        spacing="xl"
-      />
+      <ScrollReveal animation="fade-up">
+        <WhyChooseUs
+          title="Why Choose LightSpeed?"
+          description="Your trusted WordPress partner"
+          reasons={benefits}
+          columns={3}
+          spacing="xl"
+        />
+      </ScrollReveal>
 
       {/* Process Section */}
       <Section spacing="xl" className="services-page__process-section">
         <Container>
-          <div className="services-page__section-header">
-            <h2 className="services-page__section-title">
-              How We Work
-            </h2>
+          <ScrollReveal animation="fade-up">
+            <div className="services-page__section-header">
+              <h2 className="services-page__section-title">
+                How We Work
+              </h2>
 
-            <p className="services-page__section-description">
-              Our streamlined process from start to finish
-            </p>
-          </div>
+              <p className="services-page__section-description">
+                Our streamlined process from start to finish
+              </p>
+            </div>
+          </ScrollReveal>
 
-          <ProcessSteps steps={processSteps} />
+          <ScrollReveal animation="fade-up" delay={150}>
+            <ProcessSteps steps={processSteps} />
+          </ScrollReveal>
         </Container>
       </Section>
 
       {/* Industries Section */}
       <Section spacing="xl" className="services-page__industries-section">
         <Container>
-          <div className="services-page__section-header">
-            <h2 className="services-page__section-title">
-              Industries We Serve
-            </h2>
+          <ScrollReveal animation="fade-up">
+            <div className="services-page__section-header">
+              <h2 className="services-page__section-title">
+                Industries We Serve
+              </h2>
 
-            <p className="services-page__section-description">
-              Experience across diverse sectors
-            </p>
-          </div>
+              <p className="services-page__section-description">
+                Experience across diverse sectors
+              </p>
+            </div>
+          </ScrollReveal>
 
           <div className="services-page__industries-grid">
             {industries.map((industry, index) => (
-              <div
-                key={index}
-                className="services-page__industry-card"
-              >
-                <CheckCircle size={20} className="services-page__industry-icon" />
-                <span className="services-page__industry-name">
-                  {industry}
-                </span>
-              </div>
+              <ScrollReveal key={index} animation="fade-up" delay={index * 50}>
+                <div
+                  className="services-page__industry-card"
+                >
+                  <CheckCircle size={20} className="services-page__industry-icon" />
+                  <span className="services-page__industry-name">
+                    {industry}
+                  </span>
+                </div>
+              </ScrollReveal>
             ))}
           </div>
         </Container>
       </Section>
 
       {/* CTA Section */}
-      <CTASection
+      <FunkyCTA
         title="Ready to Start Your Project?"
         description="Let's discuss your needs and create a custom solution that drives results. Schedule a free consultation today."
-        primaryButtonText="Contact Us"
-        primaryButtonPage="contact"
-        secondaryButtonText="View Our Work"
-        secondaryButtonPage="portfolio"
-        gradient="blue"
+        buttonText="Contact Us"
+        buttonPage="contact"
+        benefits={[
+          'Free initial consultation',
+          'Custom strategy & proposal',
+          'Transparent fixed-price quotes',
+          'Dedicated project manager',
+          'Post-launch support included'
+        ]}
       />
       
       {/* FAQ Section */}
       <Section spacing="xl" className="services-page__faq-section">
         <Container>
           <div className="wp-max-w-4xl wp-mx-auto">
-            <div className="services-page__faq-header">
-              <h2 className="services-page__section-title">
-                Frequently Asked Questions
-              </h2>
+            <ScrollReveal animation="fade-up">
+              <div className="services-page__faq-header">
+                <h2 className="services-page__section-title">
+                  Frequently Asked Questions
+                </h2>
 
-              <p className="services-page__section-description">
-                Common questions about our services
-              </p>
-            </div>
+                <p className="services-page__section-description">
+                  Common questions about our services
+                </p>
+              </div>
+            </ScrollReveal>
 
-            <FAQSection faqs={faqs} />
+            <ScrollReveal animation="fade-up" delay={100}>
+              <FAQSection faqs={faqs} />
+            </ScrollReveal>
           </div>
         </Container>
       </Section>

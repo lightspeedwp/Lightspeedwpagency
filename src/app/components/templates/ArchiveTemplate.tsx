@@ -9,22 +9,19 @@
 
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
-import { Breadcrumbs } from '../common/Breadcrumbs';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { CardGrid } from '../patterns/CardGrid';
 import { PaginationNav } from '../patterns/PaginationNav';
 import { Heading } from '../blocks/text/Heading';
 import { Paragraph } from '../blocks/text/Paragraph';
 import { Button } from '../blocks/design/Buttons';
-import { useNavigation } from '../../contexts/NavigationContext';
 import { ArchiveCTA } from '../patterns/ArchiveCTA';
 import { generalArchiveCTA } from '../../data/cta';
 import { generalArchiveItems } from '../../data/archive-items';
 import { useState } from 'react';
 import { ArrowUpDown } from 'lucide-react';
-import '@/styles/templates/archive.css';
 
 export function ArchiveTemplate() {
-  const { navigateTo } = useNavigation();
   const [currentPage, setCurrentPage] = useState(1);
   const totalResults = generalArchiveItems.length;
   const resultsPerPage = 10;
@@ -34,14 +31,12 @@ export function ArchiveTemplate() {
   return (
     <>
       {/* Breadcrumbs */}
-      <section className="wp-block-breadcrumbs-section">
-          <Breadcrumbs 
-            items={[
-              { label: 'Home', href: '/' },
-              { label: 'Archive' }
-            ]}
-          />
-      </section>
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Archive' },
+        ]}
+      />
 
       {/* Archive Content Section */}
       <Section spacing="xl">
@@ -80,7 +75,6 @@ export function ArchiveTemplate() {
             <div className="archive-grid archive-grid--3-cols">
               <CardGrid
                 items={generalArchiveItems.slice((currentPage - 1) * resultsPerPage, currentPage * resultsPerPage)}
-                navigateTo={navigateTo}
                 columns={3}
               />
             </div>

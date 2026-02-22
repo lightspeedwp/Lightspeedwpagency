@@ -154,25 +154,25 @@
 }
 
 /* Button Variants overrides for gradient backgrounds */
-.cta-section__button--primary-highlighted {
-  background-color: var(--color-white) !important;
-  color: var(--primary) !important;
-  border-color: var(--color-white) !important;
+.cta-section__button--primary-highlighted .wp-block-button__link {
+  background-color: var(--color-white);
+  color: var(--primary);
+  border-color: var(--color-white);
 }
 
-.cta-section__button--primary-highlighted:hover {
-  background-color: var(--overlay-white-opaque) !important;
+.cta-section__button--primary-highlighted .wp-block-button__link:hover {
+  background-color: var(--overlay-white-opaque);
   transform: translateY(-2px);
 }
 
-.cta-section__button--secondary-highlighted {
-  border-color: var(--overlay-white-medium) !important;
-  color: var(--color-white) !important;
+.cta-section__button--secondary-highlighted .wp-block-button__link {
+  border-color: var(--overlay-white-medium);
+  color: var(--color-white);
 }
 
-.cta-section__button--secondary-highlighted:hover {
-  background-color: var(--overlay-white-soft) !important;
-  border-color: var(--color-white) !important;
+.cta-section__button--secondary-highlighted .wp-block-button__link:hover {
+  background-color: var(--overlay-white-soft);
+  border-color: var(--color-white);
 }
 
 /* Trust Indicators */

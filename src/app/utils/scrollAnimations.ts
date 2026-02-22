@@ -20,6 +20,7 @@
  */
 
 import { Variants } from 'motion/react';
+import { prefersReducedMotion } from './animations';
 
 /**
  * Fade In Animation
@@ -290,11 +291,9 @@ export const viewportRepeat = {
  * Respects user's motion preferences
  */
 export const createAccessibleVariants = (variants: Variants): Variants => {
-  const prefersReducedMotion = 
-    typeof window !== 'undefined' && 
-    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const reducedMotion = prefersReducedMotion();
   
-  if (prefersReducedMotion) {
+  if (reducedMotion) {
     // Return simplified variants without motion
     return {
       hidden: { opacity: 0 },

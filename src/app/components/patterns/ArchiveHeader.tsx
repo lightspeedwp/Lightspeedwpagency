@@ -12,7 +12,8 @@
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { Heading } from '../common/Heading';
-import '@/styles/patterns/archive-header.css';
+import { Paragraph } from '../blocks/text/Paragraph';
+/* archive-header.css loaded globally via index.css */
 
 interface ArchiveHeaderProps {
   title: string;
@@ -32,9 +33,9 @@ export function ArchiveHeader({ title, description, count }: ArchiveHeaderProps)
 
           {/* Optional Description */}
           {description && (
-            <p className="archive-header__description">
+            <Paragraph className="archive-header__description">
               {description}
-            </p>
+            </Paragraph>
           )}
 
           {/* Optional Count */}

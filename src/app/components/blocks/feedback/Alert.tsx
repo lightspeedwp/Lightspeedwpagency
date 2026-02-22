@@ -6,7 +6,6 @@
  */
 
 import React from 'react';
-import '@/styles/blocks/feedback/alert.css';
 
 export interface AlertProps {
   children: React.ReactNode;

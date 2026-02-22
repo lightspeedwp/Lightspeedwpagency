@@ -26,7 +26,7 @@ import { Container } from '../common/Container';
 import { Heading } from '../common/Heading';
 import { Button } from '../blocks/design/Buttons';
 import { ArrowRight } from 'lucide-react';
-import '@/styles/patterns/cta-inline.css';
+
 
 export interface CTAInlineProps {
   heading?: string;

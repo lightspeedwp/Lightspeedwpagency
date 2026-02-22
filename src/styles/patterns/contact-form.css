@@ -112,7 +112,8 @@
   padding: var(--spacing-3) var(--spacing-4);
   font-family: var(--font-primary);
   font-size: var(--text-base);
-  background-color: var(--background);
+  background-color: color-mix(in srgb, var(--background) 50%, transparent);
+  backdrop-filter: blur(4px);
   color: var(--foreground);
   border: 1px solid var(--border-soft);
   border-radius: var(--radius-lg);
@@ -128,8 +129,8 @@
 .contact-form__input:focus,
 .contact-form__textarea:focus {
   border-color: var(--primary);
-  outline: 2px solid var(--ring);
-  outline-offset: 0;
+  background-color: color-mix(in srgb, var(--background) 80%, transparent);
+  box-shadow: 0 0 0 2px var(--ring), 0 0 15px color-mix(in srgb, var(--primary) 20%, transparent);
 }
 
 .contact-form__submit {

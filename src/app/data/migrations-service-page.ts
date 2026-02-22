@@ -173,3 +173,26 @@ export const migrationsCTA = {
     { text: "Talk to an Expert", page: "contact" }
   ]
 };
+
+/**
+ * Related Services
+ *
+ * Cross-links shown in the RelatedServicesGrid pattern before the CTA.
+ */
+export const migrationsRelatedServices = [
+  {
+    title: 'Hosting & Infrastructure',
+    description: 'Enterprise-grade WordPress hosting optimised for speed, security and uptime.',
+    page: 'hosting',
+  },
+  {
+    title: 'Security Hardening',
+    description: 'Proactive threat monitoring, malware removal and firewall management.',
+    page: 'security',
+  },
+  {
+    title: 'Performance Optimisation',
+    description: 'Core Web Vitals tuning, caching strategies and image optimisation.',
+    page: 'performance',
+  },
+];

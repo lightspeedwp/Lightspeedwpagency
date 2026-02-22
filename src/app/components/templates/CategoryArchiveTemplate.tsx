@@ -1,210 +1,257 @@
 /**
- * Category Archive Template
- * 
+ * Category Archive Template — Funky Neon Pass
+ *
  * WordPress template: templates/archive-category.html
- * 
- * Pattern order: Breadcrumbs → Category Header → Post Grid → NewsletterSignup → CTAInline → Pagination
+ * Content hub archetype for blog categories.
+ *
+ * Features:
+ * - Neon gradient wash on header
+ * - Gradient underline on title
+ * - Neon glow cards on hover (dark mode)
+ * - Neon active category pill
+ * - Scroll-triggered reveal animations
+ * - 100% CSS variables, zero hardcoded values
+ *
+ * Pattern order: Breadcrumbs -> Category Header -> TaxonomyFilter -> Post Grid -> FAQs -> CTA
+ *
+ * @see /guidelines/templates/overview-templates.md
  */
 
+import { useState, useMemo } from 'react';
+import { Link } from 'react-router';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
-import { Breadcrumbs } from '../common/Breadcrumbs';
-import { PaginationNav } from '../patterns/PaginationNav';
-import { NewsletterSignup } from '../patterns/NewsletterSignup';
-import { CTAInline } from '../patterns/CTAInline';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
+import { TaxonomyFilter } from '../patterns/TaxonomyFilter';
+import { FAQSection } from '../patterns/FAQSection';
+import { FunkyCTA } from '../patterns/FunkyCTA';
 import { Heading } from '../blocks/text/Heading';
 import { Paragraph } from '../blocks/text/Paragraph';
-import { useNavigation } from '../../contexts/NavigationContext';
-import { blogCategories, getPostsByCategory, getAuthorBySlug } from '../../data/blog-posts';
-import { User, Calendar, Clock } from 'lucide-react';
-import '@/styles/templates/archive.css';
 import { Badge } from '../blocks/design/Badge';
+import { ScrollReveal } from '../../hooks/useScrollReveal';
+import { User, Calendar, Clock, ArrowRight } from 'lucide-react';
+import { blogCategories } from '../../data/taxonomies';
+import { getPostsByCategory, getAuthorBySlug, postTags } from '../../data/blog-posts';
+import { blogCategoryFAQs } from '../../data/faqs';
 
 interface CategoryArchiveTemplateProps {
   category?: string;
 }
 
-export function CategoryArchiveTemplate({ category: categorySlug = 'wordpress-development' }: CategoryArchiveTemplateProps) {
-  const { navigateTo } = useNavigation();
-  
-  // Find category from centralized data
+export function CategoryArchiveTemplate({ category: categorySlug = 'development' }: CategoryArchiveTemplateProps) {
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const [sort, setSort] = useState('recent');
+
   const category = blogCategories.find(c => c.slug === categorySlug) || blogCategories[0];
-  
-  // Get posts for this category
-  const categoryPosts = getPostsByCategory(categorySlug);
-  
-  // Get all categories for sidebar
-  const allCategories = blogCategories;
+  const categoryName = category.name;
+
+  const toggleTag = (slug: string) => {
+    setSelectedTags(prev =>
+      prev.includes(slug) ? prev.filter(s => s !== slug) : [...prev, slug]
+    );
+  };
+  const clearAll = () => setSelectedTags([]);
+
+  /** Posts for this category, optionally filtered by tag */
+  const filtered = useMemo(() => {
+    let result = getPostsByCategory(categorySlug);
+
+    if (selectedTags.length > 0) {
+      result = result.filter(p => p.tags.some(t => selectedTags.includes(t)));
+    }
+
+    switch (sort) {
+      case 'featured':
+        result.sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0));
+        break;
+      default:
+        result.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    }
+    return result;
+  }, [categorySlug, selectedTags, sort]);
+
+  /** Tags that actually appear in this category's posts */
+  const tagsInCategory = useMemo(() => {
+    const all = getPostsByCategory(categorySlug);
+    const tagSlugs = new Set(all.flatMap(p => p.tags));
+    return postTags
+      .filter(t => tagSlugs.has(t.slug))
+      .map(t => ({
+        slug: t.slug,
+        name: t.name,
+        count: all.filter(p => p.tags.includes(t.slug)).length
+      }));
+  }, [categorySlug]);
 
   return (
     <>
       {/* Breadcrumbs */}
-      <section className="wp-block-breadcrumbs-section">
-          <Breadcrumbs 
-            items={[
-              { label: 'Home', href: '/' },
-              { label: 'Resources & Insights', href: '/blog' },
-              { label: category.name }
-            ]}
-          />
-      </section>
-      
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', page: 'front-page' },
+          { label: 'Blog', href: '/blog' },
+          { label: categoryName },
+        ]}
+      />
+
       {/* Category Header */}
-      <div className="archive-header">
+      <Section spacing="lg" className="archive-header">
         <Container>
-          <div className="wp-max-w-3xl wp-mx-auto">
-            <div className="wp-mb-4">
-              <Badge variant="secondary">
-                Category
-              </Badge>
-            </div>
-            <Heading level={1} className="archive-header__title">
-              {category.name}
-            </Heading>
-            <Paragraph className="archive-header__description">
-              {category.description}
-            </Paragraph>
-            <Paragraph className="archive-controls__count wp-mt-4">
-              {categoryPosts.length} {categoryPosts.length === 1 ? 'post' : 'posts'} in this category
-            </Paragraph>
-          </div>
-        </Container>
-      </div>
-
-      {/* Main Content with Sidebar */}
-      <Section spacing="xl">
-        <Container>
-          <div className="archive-layout--sidebar">
-            {/* Post List */}
-            <div>
-              <div className="archive-grid archive-grid--1-col">
-                {categoryPosts.map((post) => {
-                  const author = getAuthorBySlug(post.author);
-                  return (
-                    <article 
-                      key={post.id}
-                      className="archive-card wp-flex-row"
-                      onClick={() => navigateTo(`post-${post.slug}`)}
-                      role="button"
-                      tabIndex={0}
-                      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); navigateTo(`post-${post.slug}`); } }}
-                    >
-                      {/* Post Image */}
-                      <div className="archive-card__image-wrapper wp-hidden md:wp-block">
-                        <img 
-                          src={post.featuredImage}
-                          alt={post.title}
-                          className="archive-card__image"
-                        />
-                      </div>
-
-                      {/* Post Content */}
-                      <div className="archive-card__content">
-                        <Heading level={2} className="archive-card__title">
-                          <a 
-                            href={`#post-${post.slug}`}
-                            onClick={(e) => {
-                              e.preventDefault();
-                              navigateTo(`post-${post.slug}`);
-                            }}
-                            aria-label={`Read: ${post.title}`}
-                          >
-                            {post.title}
-                          </a>
-                        </Heading>
-
-                        <Paragraph className="archive-card__excerpt">
-                          {post.excerpt}
-                        </Paragraph>
-
-                        {/* Post Meta */}
-                        <div className="archive-card__meta">
-                          {author && (
-                            <div className="archive-card__meta-item">
-                              <User size={16} />
-                              <a
-                                href={`#author-${post.author}`}
-                                onClick={(e) => {
-                                  e.preventDefault();
-                                  navigateTo(`author-${post.author}`);
-                                }}
-                                className="wp-link"
-                                aria-label={`View all posts by ${author.name}`}
-                              >
-                                {author.name}
-                              </a>
-                            </div>
-                          )}
-                          <div className="archive-card__meta-item">
-                            <Calendar size={16} />
-                            <span>
-                              {new Date(post.date).toLocaleDateString('en-US', { 
-                                year: 'numeric', 
-                                month: 'short', 
-                                day: 'numeric' 
-                              })}
-                            </span>
-                          </div>
-                          <div className="archive-card__meta-item">
-                            <Clock size={16} />
-                            <span>
-                              {post.readingTime}
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    </article>
-                  );
-                })}
-              </div>
-
-              {/* Newsletter Signup */}
-              <div className="wp-mt-12">
-                <NewsletterSignup />
-              </div>
-
-              {/* CTA Inline */}
-              <div className="wp-mt-12">
-                <CTAInline />
-              </div>
-
-              {/* Pagination */}
-              {categoryPosts.length > 10 && (
-                <div className="archive-pagination">
-                  <PaginationNav 
-                    currentPage={1}
-                    totalPages={Math.ceil(categoryPosts.length / 10)}
-                  />
-                </div>
+          <ScrollReveal animation="fade-up" duration={600}>
+            <div className="wp-max-w-3xl wp-mx-auto wp-text-center">
+              <Badge variant="secondary">Category</Badge>
+              <Heading level={1} className="archive-header__title">
+                {category.name}
+              </Heading>
+              {category.description && (
+                <Paragraph className="archive-header__description">
+                  {category.description}
+                </Paragraph>
               )}
             </div>
-
-            {/* Sidebar */}
-            <aside className="archive-sidebar">
-              <div className="archive-sidebar__widget">
-                <Heading level={3} className="archive-sidebar__title">
-                  All Categories
-                </Heading>
-                <ul className="archive-sidebar__list">
-                  {allCategories.map((cat) => (
-                    <li key={cat.slug}>
-                      <button
-                        onClick={() => navigateTo(`category-${cat.slug}`)}
-                        className={`archive-sidebar__link ${cat.slug === categorySlug ? 'archive-sidebar__link--active' : ''}`}
-                      >
-                        <span>{cat.name}</span>
-                        <span className="related-tag__count">
-                          {cat.count}
-                        </span>
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </aside>
-          </div>
+          </ScrollReveal>
         </Container>
       </Section>
+
+      {/* Category sidebar nav */}
+      <Section spacing="sm" style={{ borderBottom: '1px solid var(--border-soft)' }}>
+        <Container>
+          <ScrollReveal animation="fade-up" duration={400}>
+            <nav className="archive-category-nav" aria-label="Blog categories">
+              <div className="archive-category-nav__list">
+                {blogCategories.map(cat => (
+                  <Link
+                    key={cat.slug}
+                    to={`/blog/category/${cat.slug}`}
+                    className={`archive-category-nav__item ${cat.slug === categorySlug ? 'archive-category-nav__item--active' : ''}`}
+                    aria-current={cat.slug === categorySlug ? 'page' : undefined}
+                  >
+                    {cat.name}
+                    <span className="archive-category-nav__count">{cat.count}</span>
+                  </Link>
+                ))}
+              </div>
+            </nav>
+          </ScrollReveal>
+        </Container>
+      </Section>
+
+      {/* TaxonomyFilter (tag sub-filter) */}
+      {tagsInCategory.length > 0 && (
+        <Section spacing="md">
+          <Container>
+            <ScrollReveal animation="fade-up" duration={400}>
+              <TaxonomyFilter
+                categories={tagsInCategory}
+                selectedCategories={selectedTags}
+                onCategoryToggle={toggleTag}
+                onClearAll={clearAll}
+                resultCount={filtered.length}
+                sortValue={sort}
+                onSortChange={setSort}
+                sortOptions={[
+                  { label: 'Most recent', value: 'recent' },
+                  { label: 'Featured', value: 'featured' }
+                ]}
+                label="Filter by tag"
+              />
+            </ScrollReveal>
+          </Container>
+        </Section>
+      )}
+
+      {/* Post Grid */}
+      <Section spacing="xl">
+        <Container>
+          {filtered.length > 0 ? (
+            <div className="blog-index__grid">
+              {filtered.map((post, index) => {
+                const author = getAuthorBySlug(post.author);
+                return (
+                  <ScrollReveal
+                    key={post.id}
+                    animation="fade-up"
+                    duration={500}
+                    delay={index * 80}
+                  >
+                    <Link
+                      to={`/blog/${post.slug}`}
+                      className="blog-index__post-card"
+                      aria-label={`Read ${post.title}`}
+                    >
+                      <div className="blog-index__post-image-wrap">
+                        <img
+                          src={post.featuredImage}
+                          alt={post.title}
+                          className="blog-index__post-image"
+                          loading="lazy"
+                        />
+                      </div>
+                      <div className="blog-index__post-content">
+                        <div className="blog-index__post-categories">
+                          {post.tags.slice(0, 2).map(tag => (
+                            <span key={tag} className="blog-index__category-chip">{tag}</span>
+                          ))}
+                        </div>
+                        <h3 className="blog-index__post-title">{post.title}</h3>
+                        <p className="blog-index__post-excerpt">{post.excerpt}</p>
+                        <div className="blog-index__post-meta">
+                          {author && (
+                            <span className="blog-index__meta-item">
+                              <User size={14} />
+                              {author.name}
+                            </span>
+                          )}
+                          <span className="blog-index__meta-item">
+                            <Calendar size={14} />
+                            {new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+                          </span>
+                          <span className="blog-index__meta-item">
+                            <Clock size={14} />
+                            {post.readingTime}
+                          </span>
+                        </div>
+                        <span className="blog-index__read-more">
+                          Read article <ArrowRight size={14} />
+                        </span>
+                      </div>
+                    </Link>
+                  </ScrollReveal>
+                );
+              })}
+            </div>
+          ) : (
+            <div className="blog-index__empty">
+              <Heading level={3}>No posts found</Heading>
+              <Paragraph>
+                No posts match the current filters.{' '}
+                <button onClick={clearAll} className="blog-index__empty-link">Clear all filters</button>
+              </Paragraph>
+            </div>
+          )}
+        </Container>
+      </Section>
+
+      {/* FAQs */}
+      <FAQSection
+        title="Category questions"
+        description={`Common questions about our ${category.name.toLowerCase()} content.`}
+        faqs={blogCategoryFAQs.slice(0, 3)}
+      />
+
+      {/* CTA */}
+      <FunkyCTA
+        title="Stay updated"
+        description="Subscribe to our newsletter for the latest WordPress development insights."
+        buttonText="Subscribe"
+        buttonPage="newsletter"
+        benefits={[
+          'Weekly WordPress tips',
+          'Exclusive tutorials',
+          'Industry news roundup',
+          'Free resource downloads'
+        ]}
+      />
     </>
   );
 }

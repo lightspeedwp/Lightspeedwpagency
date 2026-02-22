@@ -8,7 +8,6 @@
  */
 
 import React from 'react';
-import '@/styles/blocks/text/paragraph.css';
 
 export interface ParagraphProps {
   /** Paragraph content */

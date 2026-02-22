@@ -10,7 +10,7 @@
 
 import { Check, LucideIcon } from 'lucide-react';
 import React from 'react';
-import '@/styles/patterns/process-timeline.css';
+
 
 export interface ProcessStep {
   id: string;

@@ -16,7 +16,7 @@ import { productCategories, productTags } from './taxonomies';
 
 export interface WooProductMeta {
   key: string;
-  value: any;
+  value: string | number | boolean | Record<string, unknown>[];
 }
 
 export interface WooProduct {

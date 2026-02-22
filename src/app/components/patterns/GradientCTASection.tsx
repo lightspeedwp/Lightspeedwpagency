@@ -12,7 +12,7 @@ import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { Button } from '../blocks/design/Buttons';
 import { ReactNode } from 'react';
-import '@/styles/patterns/gradient-cta-section.css';
+
 
 export interface GradientCTASectionProps {
   /** Section title */

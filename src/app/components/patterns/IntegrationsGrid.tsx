@@ -22,7 +22,7 @@
 
 import { LucideIcon } from 'lucide-react';
 import { Section } from '../common/Section';
-import '@/styles/patterns/integrations-grid.css';
+
 
 export interface Integration {
   /** Integration name */

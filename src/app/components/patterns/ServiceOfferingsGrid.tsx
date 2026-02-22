@@ -15,7 +15,7 @@ import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { Button } from '../blocks/design/Buttons';
 import { useState } from 'react';
-import '@/styles/patterns/service-offerings-grid.css';
+
 
 export interface ServiceOffering {
   /** Unique identifier */

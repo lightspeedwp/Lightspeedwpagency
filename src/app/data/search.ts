@@ -1,26 +1,15 @@
 /**
- * Search Data & Utilities
- *
- * Unified search index across all content types:
- * blog posts, portfolio projects, videos, podcasts, and site pages.
- *
- * **WordPress Mapping:**
- * - WP_Query with 's' parameter for native search
- * - Custom post types included via 'post_type' => array(...)
- * - Relevance weighting via custom SQL or Relevanssi/SearchWP plugin
- *
- * @see /src/app/components/templates/SearchResultsTemplate.tsx
+ * Unified Search Index
+ * 
+ * Centralized search functionality for the prototype.
+ * Aggregates content from all data sources into a normalized search index.
  */
 
-import { blogPosts, type BlogPost } from './blog-posts';
-import { portfolioProjects, type PortfolioProject } from './portfolio-projects';
-import { videos, type Video } from './videos';
-import { podcasts, type Podcast } from './podcasts';
-import { sitePages, type SitePage } from './site-pages';
-
-/* ═══════════════════════════════════════════
- * Types
- * ═══════════════════════════════════════════ */
+import { sitePages } from './site-pages';
+import { blogPosts } from './blog-posts';
+import { portfolioProjects } from './portfolio-projects';
+import { videos } from './videos';
+import { podcasts } from './podcasts';
 
 export type ContentType = 'blog' | 'portfolio' | 'video' | 'podcast' | 'page';
 
@@ -28,31 +17,22 @@ export type SortOption = 'relevance' | 'recent' | 'popular' | 'featured';
 
 export interface SearchResult {
   id: string;
-  slug: string;
   title: string;
   excerpt: string;
   contentType: ContentType;
-  date: string;
   url: string;
-  featuredImage?: string;
-  relevanceScore: number;
-  /** Extra metadata for display (duration, author, category, etc.) */
-  meta?: Record<string, string>;
+  date?: string;
+  meta?: {
+    duration?: string;
+    views?: string;
+    readingTime?: string;
+  };
+  relevance?: number; // Internal scoring
 }
-
-export interface SearchFilters {
-  query: string;
-  contentTypes: ContentType[];
-  sort: SortOption;
-}
-
-/* ═══════════════════════════════════════════
- * Content-Type Labels & Colors
- * ═══════════════════════════════════════════ */
 
 export const contentTypeLabels: Record<ContentType, string> = {
-  blog: 'Blog',
-  portfolio: 'Portfolio',
+  blog: 'Article',
+  portfolio: 'Project',
   video: 'Video',
   podcast: 'Podcast',
   page: 'Page',
@@ -61,267 +41,152 @@ export const contentTypeLabels: Record<ContentType, string> = {
 export const contentTypeColors: Record<ContentType, string> = {
   blog: 'var(--primary)',
   portfolio: 'var(--accent)',
-  video: 'var(--info)',
-  podcast: 'var(--success)',
+  video: 'var(--category-red)', 
+  podcast: 'var(--category-violet)',
   page: 'var(--muted-foreground)',
 };
 
-/* ═══════════════════════════════════════════
- * Scoring Helpers
- * ═══════════════════════════════════════════ */
-
-function scoreMatch(text: string, query: string): number {
-  const lower = text.toLowerCase();
-  const q = query.toLowerCase();
-  if (!q) return 0;
-
-  // Exact title match
-  if (lower === q) return 100;
-  // Title starts with query
-  if (lower.startsWith(q)) return 80;
-  // Title contains query as whole word
-  const wordBoundary = new RegExp(`\\b${q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i');
-  if (wordBoundary.test(text)) return 60;
-  // Partial match
-  if (lower.includes(q)) return 40;
-
-  // Multi-word: check each word
-  const words = q.split(/\s+/).filter(Boolean);
-  const matchCount = words.filter(w => lower.includes(w)).length;
-  if (matchCount > 0) return (matchCount / words.length) * 30;
-
-  return 0;
+interface SearchOptions {
+  query: string;
+  contentTypes?: ContentType[];
+  sort?: SortOption;
 }
-
-/* ═══════════════════════════════════════════
- * Index Builders
- * ═══════════════════════════════════════════ */
-
-function indexBlogPosts(query: string): SearchResult[] {
-  return blogPosts
-    .map((post: BlogPost) => {
-      const titleScore = scoreMatch(post.title, query);
-      const excerptScore = scoreMatch(post.excerpt, query) * 0.5;
-      const tagScore = post.tags.some(t =>
-        t.toLowerCase().includes(query.toLowerCase())
-      )
-        ? 20
-        : 0;
-      const relevanceScore = titleScore + excerptScore + tagScore;
-      if (relevanceScore === 0) return null;
-      return {
-        id: post.id,
-        slug: post.slug,
-        title: post.title,
-        excerpt: post.excerpt,
-        contentType: 'blog' as ContentType,
-        date: post.date,
-        url: `/blog/${post.slug}`,
-        featuredImage: post.featuredImage,
-        relevanceScore,
-        meta: {
-          author: post.author,
-          readingTime: post.readingTime,
-          categories: post.categories.join(', '),
-        },
-      };
-    })
-    .filter(Boolean) as SearchResult[];
-}
-
-function indexPortfolioProjects(query: string): SearchResult[] {
-  return portfolioProjects
-    .map((project: PortfolioProject) => {
-      const titleScore = scoreMatch(project.title, query);
-      const clientScore = scoreMatch(project.client, query) * 0.6;
-      const excerptScore = scoreMatch(project.excerpt, query) * 0.4;
-      const tagScore = project.projectTags.some(t =>
-        t.toLowerCase().includes(query.toLowerCase())
-      )
-        ? 15
-        : 0;
-      const relevanceScore = titleScore + clientScore + excerptScore + tagScore;
-      if (relevanceScore === 0) return null;
-      return {
-        id: project.id,
-        slug: project.slug,
-        title: project.title,
-        excerpt: project.excerpt,
-        contentType: 'portfolio' as ContentType,
-        date: '',
-        url: `/portfolio/${project.slug}`,
-        featuredImage: project.featuredImage,
-        relevanceScore,
-        meta: {
-          client: project.client,
-          groups: project.projectGroups.join(', '),
-        },
-      };
-    })
-    .filter(Boolean) as SearchResult[];
-}
-
-function indexVideos(query: string): SearchResult[] {
-  return videos
-    .map((video: Video) => {
-      const titleScore = scoreMatch(video.title, query);
-      const excerptScore = scoreMatch(video.excerpt, query) * 0.5;
-      const tagScore = video.tags.some(t =>
-        t.toLowerCase().includes(query.toLowerCase())
-      )
-        ? 15
-        : 0;
-      const relevanceScore = titleScore + excerptScore + tagScore;
-      if (relevanceScore === 0) return null;
-      return {
-        id: video.id,
-        slug: video.slug,
-        title: video.title,
-        excerpt: video.excerpt,
-        contentType: 'video' as ContentType,
-        date: video.date,
-        url: `/video/${video.slug}`,
-        featuredImage: video.featuredImage,
-        relevanceScore,
-        meta: {
-          duration: video.duration,
-          author: video.author,
-          views: String(video.views),
-        },
-      };
-    })
-    .filter(Boolean) as SearchResult[];
-}
-
-function indexPodcasts(query: string): SearchResult[] {
-  return podcasts
-    .map((pod: Podcast) => {
-      const titleScore = scoreMatch(pod.title, query);
-      const excerptScore = scoreMatch(pod.excerpt, query) * 0.5;
-      const catScore = pod.categories.some(c =>
-        c.toLowerCase().includes(query.toLowerCase())
-      )
-        ? 10
-        : 0;
-      const relevanceScore = titleScore + excerptScore + catScore;
-      if (relevanceScore === 0) return null;
-      return {
-        id: pod.id,
-        slug: pod.slug,
-        title: pod.title,
-        excerpt: pod.excerpt,
-        contentType: 'podcast' as ContentType,
-        date: pod.date,
-        url: `/podcast/${pod.slug}`,
-        featuredImage: pod.featuredImage,
-        relevanceScore,
-        meta: {
-          season: `S${pod.season}`,
-          episode: `E${pod.episode}`,
-          duration: pod.duration,
-          listens: String(pod.listens),
-        },
-      };
-    })
-    .filter(Boolean) as SearchResult[];
-}
-
-function indexPages(query: string): SearchResult[] {
-  return sitePages
-    .map((page: SitePage) => {
-      const titleScore = scoreMatch(page.title, query);
-      const excerptScore = page.excerpt
-        ? scoreMatch(page.excerpt, query) * 0.4
-        : 0;
-      const relevanceScore = titleScore + excerptScore;
-      if (relevanceScore === 0) return null;
-      return {
-        id: page.id,
-        slug: page.slug,
-        title: page.title,
-        excerpt: page.excerpt || '',
-        contentType: 'page' as ContentType,
-        date: '',
-        url: page.slug === 'home' ? '/' : `/${page.slug}`,
-        relevanceScore,
-      };
-    })
-    .filter(Boolean) as SearchResult[];
-}
-
-/* ═══════════════════════════════════════════
- * Main Search Function
- * ═══════════════════════════════════════════ */
 
 /**
- * Search all content types
- *
- * @param filters - Search query, content type filters, and sort option
- * @returns Filtered and sorted search results
+ * Search all content across the site
  */
-export function searchAllContent(filters: SearchFilters): SearchResult[] {
-  const { query, contentTypes, sort } = filters;
-  if (!query.trim()) return [];
+export const searchAllContent = ({ query, contentTypes = [], sort = 'relevance' }: SearchOptions): SearchResult[] => {
+  const q = query.toLowerCase();
+  
+  // If no query and sort is relevance, return nothing (or everything if you prefer empty state to be full list)
+  // For this search page, usually empty query means "show nothing" or "show recent" if sort is recent.
+  // But SearchResultsTemplate handles empty query by showing empty state.
+  if (!q && sort === 'relevance') return [];
 
-  const allResults: SearchResult[] = [];
+  let results: SearchResult[] = [];
 
-  if (contentTypes.length === 0 || contentTypes.includes('blog')) {
-    allResults.push(...indexBlogPosts(query));
-  }
-  if (contentTypes.length === 0 || contentTypes.includes('portfolio')) {
-    allResults.push(...indexPortfolioProjects(query));
-  }
-  if (contentTypes.length === 0 || contentTypes.includes('video')) {
-    allResults.push(...indexVideos(query));
-  }
-  if (contentTypes.length === 0 || contentTypes.includes('podcast')) {
-    allResults.push(...indexPodcasts(query));
-  }
-  if (contentTypes.length === 0 || contentTypes.includes('page')) {
-    allResults.push(...indexPages(query));
+  // Map Pages
+  sitePages.forEach(page => {
+    if (!q || page.title.toLowerCase().includes(q) || (page.excerpt && page.excerpt.toLowerCase().includes(q))) {
+      results.push({
+        id: page.id,
+        title: page.title,
+        excerpt: page.excerpt || '',
+        contentType: 'page',
+        url: `/${page.slug}`
+      });
+    }
+  });
+
+  // Map Blog Posts
+  blogPosts.forEach(post => {
+    if (!q || post.title.toLowerCase().includes(q) || post.excerpt.toLowerCase().includes(q)) {
+      results.push({
+        id: post.id,
+        title: post.title,
+        excerpt: post.excerpt,
+        contentType: 'blog',
+        url: `/blog/${post.slug}`,
+        date: post.date,
+        meta: { readingTime: post.readingTime }
+      });
+    }
+  });
+
+  // Map Portfolio
+  portfolioProjects.forEach(project => {
+    if (!q || project.title.toLowerCase().includes(q) || project.excerpt.toLowerCase().includes(q)) {
+      results.push({
+        id: project.id,
+        title: project.title,
+        excerpt: project.excerpt,
+        contentType: 'portfolio',
+        url: `/portfolio/${project.slug}`,
+        date: project.date
+      });
+    }
+  });
+
+  // Map Videos
+  videos.forEach(video => {
+     if (!q || video.title.toLowerCase().includes(q) || video.excerpt.toLowerCase().includes(q)) {
+       results.push({
+         id: video.id,
+         title: video.title,
+         excerpt: video.excerpt,
+         contentType: 'video',
+         url: `/video/${video.slug}`,
+         date: video.date,
+         meta: { duration: video.duration, views: video.views?.toString() }
+       });
+     }
+  });
+
+  // Map Podcasts
+  podcasts.forEach(podcast => {
+     if (!q || podcast.title.toLowerCase().includes(q) || podcast.excerpt.toLowerCase().includes(q)) {
+       results.push({
+         id: podcast.id,
+         title: podcast.title,
+         excerpt: podcast.excerpt,
+         contentType: 'podcast',
+         url: `/podcast/${podcast.slug}`,
+         date: podcast.date,
+         meta: { duration: podcast.duration }
+       });
+     }
+  });
+  
+  // Filter by content type
+  if (contentTypes.length > 0) {
+    results = results.filter(r => contentTypes.includes(r.contentType));
   }
 
   // Sort
-  switch (sort) {
-    case 'relevance':
-      allResults.sort((a, b) => b.relevanceScore - a.relevanceScore);
-      break;
-    case 'recent':
-      allResults.sort((a, b) => {
-        if (!a.date && !b.date) return 0;
-        if (!a.date) return 1;
-        if (!b.date) return -1;
-        return new Date(b.date).getTime() - new Date(a.date).getTime();
-      });
-      break;
-    case 'popular':
-      // For blog: featured first, for video: views, etc.
-      allResults.sort((a, b) => {
-        const aViews = parseInt(a.meta?.views || '0');
-        const bViews = parseInt(b.meta?.views || '0');
-        return bViews - aViews || b.relevanceScore - a.relevanceScore;
-      });
-      break;
-    case 'featured':
-      // Featured content first, then by relevance
-      allResults.sort((a, b) => b.relevanceScore - a.relevanceScore);
-      break;
+  if (sort === 'recent') {
+    results.sort((a, b) => {
+      const dateA = a.date ? new Date(a.date).getTime() : 0;
+      const dateB = b.date ? new Date(b.date).getTime() : 0;
+      return dateB - dateA;
+    });
+  } else if (sort === 'popular') {
+    // Simple mock popularity: videos/podcasts with views/listens come first, then others
+    results.sort((a, b) => {
+      const viewsA = parseInt(a.meta?.views || '0');
+      const viewsB = parseInt(b.meta?.views || '0');
+      return viewsB - viewsA;
+    });
   }
-
-  return allResults;
-}
+  
+  return results;
+};
 
 /**
- * Get result counts by content type
+ * Get counts for each content type from a result set
  */
-export function getResultCountsByType(
-  results: SearchResult[]
-): Record<ContentType, number> {
-  return {
-    blog: results.filter(r => r.contentType === 'blog').length,
-    portfolio: results.filter(r => r.contentType === 'portfolio').length,
-    video: results.filter(r => r.contentType === 'video').length,
-    podcast: results.filter(r => r.contentType === 'podcast').length,
-    page: results.filter(r => r.contentType === 'page').length,
+export const getResultCountsByType = (results: SearchResult[]) => {
+  const counts: Record<ContentType | 'all', number> = {
+    all: results.length,
+    blog: 0,
+    portfolio: 0,
+    video: 0,
+    podcast: 0,
+    page: 0
   };
-}
+
+  results.forEach(result => {
+    if (Object.prototype.hasOwnProperty.call(counts, result.contentType)) {
+      counts[result.contentType]++;
+    }
+  });
+
+  return counts;
+};
+
+// Legacy support for older components (if any)
+export const performSearch = (query: string): (SearchResult & { type?: ContentType })[] => {
+  return searchAllContent({ query }).map(r => ({
+    ...r,
+    type: r.contentType // map contentType back to type for legacy
+  }));
+};

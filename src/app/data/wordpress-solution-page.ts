@@ -1,166 +1,135 @@
 /**
  * WordPress Solution Page Data
  * 
- * Mock data for the WordPress Solution page (WordPressSolutionTemplate).
- * All exports use lowercase "wordpress" to match template imports.
+ * Content for the WordPress Solution template.
  */
 
-import { Code, Layout, Settings, Shield, Globe, Database, Zap, Users, BarChart3, Award } from 'lucide-react';
+import { Layout, Smartphone, Zap, Search, Lock, Edit3, Globe, BarChart, Server, Database } from 'lucide-react';
 
 export const wordpressSolutionHero = {
-  title: "Enterprise WordPress Solutions",
-  titleHighlight: "WordPress",
-  tagline: "Scalable, secure, and high-performance WordPress development for ambitious brands.",
-  description: "We build custom WordPress solutions that power the world's most demanding websites.",
-  badge: { text: "WORDPRESS EXPERTS", icon: Code },
-  primaryButton: { text: "Discuss Your Project", page: "contact" },
-  secondaryButton: { text: "Our WordPress Work", page: "portfolio" }
+  title: "Enterprise-Grade WordPress Solutions",
+  titleHighlight: "WordPress Solutions",
+  tagline: "Scalable, secure, and high-performance WordPress websites built for growth.",
+  description: "We build custom WordPress websites that are fast, secure, and easy to manage.",
+  badge: { text: "WORDPRESS EXPERTS", icon: Layout },
+  primaryButton: { text: "Start Project", page: "contact" },
+  secondaryButton: { text: "Our Work", page: "portfolio-archive" }
 };
 
 export const wordpressSolutionOverview = {
   title: "WordPress by the Numbers",
-  description: "Why the world's top brands choose WordPress for their digital presence.",
+  description: "Why WordPress is the world's most popular content management system.",
   stats: [
     {
       icon: Globe,
       value: "43%",
-      label: "of the Web",
-      description: "WordPress powers over 43% of all websites globally"
+      label: "Market Share",
+      description: "Of the entire web is powered by WordPress"
     },
     {
-      icon: Users,
-      value: "500M+",
-      label: "Sites Built",
-      description: "Over 500 million sites run on WordPress"
+      icon: BarChart,
+      value: "60%",
+      label: "CMS Market",
+      description: "WordPress dominates the CMS market share"
     },
     {
-      icon: BarChart3,
-      value: "99.9%",
-      label: "Uptime",
-      description: "Enterprise-grade reliability and performance"
+      icon: Server,
+      value: "100%",
+      label: "Ownership",
+      description: "You own your data and content completely"
     },
     {
-      icon: Award,
-      value: "60K+",
-      label: "Free Plugins",
-      description: "The largest plugin ecosystem in the world"
+      icon: Database,
+      value: "50k+",
+      label: "Plugins",
+      description: "Extensible ecosystem for any functionality"
     }
   ]
 };
 
 export const wordpressSolutionFeatures = [
   {
-    icon: Layout,
-    title: "Full Site Editing (FSE)",
-    description: "Modern block-based themes giving you complete control over your layout."
+    icon: Edit3,
+    title: "Full Site Editing",
+    description: "Empower your team with the modern block editor. Manage content easily without code."
   },
   {
-    icon: Settings,
-    title: "Custom Functionality",
-    description: "Extensible architecture allowing us to build any feature you can imagine."
-  },
-  {
-    icon: Shield,
-    title: "Enterprise Security",
-    description: "Hardened implementations suitable for high-compliance industries."
-  },
-  {
-    icon: Globe,
-    title: "SEO Friendly",
-    description: "Built-in features and structure that search engines love."
-  },
-  {
-    icon: Database,
-    title: "Data Ownership",
-    description: "You own your data and content, free from platform lock-in."
-  },
-  {
-    icon: Code,
-    title: "Headless Capabilities",
-    description: "Decoupled architectures using React/Next.js for ultimate performance."
+    icon: Smartphone,
+    title: "Responsive By Design",
+    description: "Mobile-first approach ensuring your site looks perfect on every device."
   },
   {
     icon: Zap,
     title: "Performance Optimized",
-    description: "Core Web Vitals optimization built into every project."
+    description: "Built for speed with core web vitals in mind. Fast loading = better SEO."
   },
   {
-    icon: Users,
-    title: "Multi-User Support",
-    description: "Granular roles and permissions for teams of any size."
+    icon: Search,
+    title: "SEO Ready",
+    description: "Clean code structure and semantic markup that search engines love."
+  },
+  {
+    icon: Lock,
+    title: "Secure Architecture",
+    description: "Hardened security practices to protect your data and your users."
+  },
+  {
+    icon: Layout,
+    title: "Custom Block Themes",
+    description: "Bespoke designs implemented as lightweight, maintainable block themes."
   }
 ];
 
 export const wordpressSolutionUseCases = [
   {
     title: "Corporate Websites",
-    description: "Enterprise-grade corporate sites with multi-language support, custom workflows, and advanced permissions.",
-    icon: Globe,
-    features: ["Multi-language support", "Custom workflows", "Role-based access"]
+    description: "Professional digital presence for enterprises and corporations.",
+    industries: ["Finance", "Technology", "Healthcare"],
+    features: ["Custom Branding", "Team Directories", "Investor Relations"]
   },
   {
-    title: "E-Commerce Platforms",
-    description: "Full-featured online stores powered by WooCommerce with inventory management and payment processing.",
-    icon: Database,
-    features: ["WooCommerce integration", "Payment gateways", "Inventory management"]
+    title: "E-Commerce Stores",
+    description: "Scalable online stores powered by WooCommerce.",
+    industries: ["Retail", "Fashion", "B2B"],
+    features: ["Product Catalogs", "Payment Integration", "Inventory Management"]
   },
   {
-    title: "Membership Sites",
-    description: "Subscription-based platforms with gated content, user profiles, and recurring billing.",
-    icon: Users,
-    features: ["Content gating", "Recurring billing", "User profiles"]
+    title: "Content Publishers",
+    description: "High-traffic news and media publications.",
+    industries: ["Media", "Publishing", "Education"],
+    features: ["Ad Integration", "Subscription Paywalls", "Advanced Editorial Tools"]
   },
   {
-    title: "Publishing Platforms",
-    description: "High-traffic editorial sites with advanced content management, scheduling, and multi-author workflows.",
-    icon: Layout,
-    features: ["Multi-author support", "Editorial workflows", "SEO optimization"]
+    title: "SaaS Marketing Sites",
+    description: "Conversion-focused websites for software companies.",
+    industries: ["SaaS", "Startups", "Mobile Apps"],
+    features: ["Pricing Tables", "Integration with CRM", "Lead Generation"]
   }
 ];
 
 export const wordpressSolutionPricing = {
-  title: "WordPress Development Packages",
-  description: "Transparent pricing for every stage of your WordPress journey.",
+  title: "Development Packages",
+  description: "Transparent pricing for your WordPress project.",
   packages: [
     {
       name: "Starter",
-      description: "Perfect for small businesses getting started online.",
-      price: "From $3,500",
-      features: [
-        "5-10 page WordPress site",
-        "Mobile-responsive design",
-        "Basic SEO setup",
-        "Contact form integration",
-        "30-day support"
-      ],
+      description: "Perfect for small businesses",
+      price: "$2,500",
+      features: ["Custom Theme", "5 Pages", "Contact Form", "Basic SEO", "Mobile Responsive"],
       recommended: false
     },
     {
-      name: "Professional",
-      description: "Ideal for growing businesses that need advanced features.",
-      price: "From $8,500",
-      features: [
-        "10-25 page WordPress site",
-        "Custom theme development",
-        "Advanced SEO strategy",
-        "WooCommerce integration",
-        "Performance optimization",
-        "90-day support"
-      ],
+      name: "Business",
+      description: "For growing companies",
+      price: "$5,000",
+      features: ["Custom Theme", "10 Pages", "Advanced Forms", "Performance Optimization", "Analytics Integration", "CMS Training"],
       recommended: true
     },
     {
       name: "Enterprise",
-      description: "For large organizations requiring custom solutions.",
-      price: "From $25,000",
-      features: [
-        "Unlimited pages",
-        "Custom plugin development",
-        "Headless WordPress option",
-        "Multi-site configuration",
-        "Dedicated project manager",
-        "12-month support"
-      ],
+      description: "Large scale applications",
+      price: "Custom",
+      features: ["Custom Theme", "Unlimited Pages", "Custom Functionality", "API Integrations", "Security Hardening", "Priority Support"],
       recommended: false
     }
   ]
@@ -168,48 +137,28 @@ export const wordpressSolutionPricing = {
 
 export const wordpressSolutionFAQs = [
   {
-    question: "Why should I choose WordPress over other platforms?",
-    answer: "WordPress powers over 43% of all websites, offers unmatched flexibility, and has the largest ecosystem of plugins and themes. It's open-source, SEO-friendly, and scales from small blogs to enterprise applications."
+    question: "Why should I choose WordPress?",
+    answer: "WordPress is flexible, scalable, and easy to use. It powers over 40% of the web and offers a vast ecosystem of plugins and themes."
   },
   {
-    question: "How long does a custom WordPress project take?",
-    answer: "Timeline depends on complexity. A standard business site takes 4-8 weeks, while enterprise projects with custom functionality may take 12-20 weeks. We provide detailed timelines during the discovery phase."
+    question: "Is WordPress secure?",
+    answer: "Yes, when properly maintained. We implement best security practices, including regular updates, secure hosting, and security plugins to keep your site safe."
   },
   {
-    question: "Do you provide ongoing support after launch?",
-    answer: "Yes, all packages include post-launch support. We also offer monthly maintenance plans that cover updates, security monitoring, backups, and performance optimization."
+    question: "Can I manage the content myself?",
+    answer: "Absolutely. WordPress is designed for content management. We provide training so you can easily update text, images, and create new pages."
   },
   {
-    question: "Can you migrate my existing site to WordPress?",
-    answer: "Absolutely. We handle migrations from any platform including Squarespace, Wix, Drupal, and custom-built sites. We ensure zero downtime and complete content preservation."
-  },
-  {
-    question: "Is WordPress secure for enterprise use?",
-    answer: "Yes, with proper hardening. We implement security best practices including WAF protection, two-factor authentication, regular security audits, and automated malware scanning."
-  },
-  {
-    question: "What is headless WordPress?",
-    answer: "Headless WordPress uses WordPress as a content management backend while serving the frontend through React, Next.js, or other modern frameworks. This provides superior performance and flexibility."
+    question: "Do you offer ongoing support?",
+    answer: "Yes, we offer maintenance packages to ensure your site remains secure, fast, and up-to-date with the latest WordPress versions."
   }
 ];
 
 export const wordpressSolutionCTA = {
-  title: "Ready to Scale with WordPress?",
-  description: "Partner with an agency that knows the platform inside and out.",
+  title: "Ready to Upgrade Your Web Presence?",
+  description: "Join hundreds of successful businesses powering their growth with our WordPress solutions.",
   buttons: [
-    { text: "Get a Free Quote", page: "contact" },
-    { text: "View Our Work", page: "portfolio" }
-  ]
-};
-
-export const wordpressSolutionServices = {
-  title: "Our WordPress Capabilities",
-  services: [
-    "Custom Theme Development",
-    "Plugin Development",
-    "Headless WordPress",
-    "Performance Optimization",
-    "WordPress Multisite",
-    "Migration to WordPress"
+    { text: "Get a Quote", page: "contact" },
+    { text: "View Portfolio", page: "portfolio-archive" }
   ]
 };

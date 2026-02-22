@@ -8,7 +8,7 @@
  * @see {@link /guidelines/patterns/LogoGrid.md}
  */
 
-import '@/styles/patterns/logo-grid.css';
+
 
 export interface Logo {
   /** Company/product name */

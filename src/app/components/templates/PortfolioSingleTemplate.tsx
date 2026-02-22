@@ -8,13 +8,13 @@
 
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
-import { Breadcrumbs } from '../common/Breadcrumbs';
-import { CTASection } from '../patterns/CTASection';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
+import { FunkyCTA } from '../patterns/FunkyCTA';
 import { Hero } from '../patterns/Hero';
 import { TestimonialGrid } from '../patterns/TestimonialGrid';
 import { Heading } from '../blocks/text/Heading';
 import { Paragraph } from '../blocks/text/Paragraph';
-import '@/styles/templates/portfolio-single.css';
+import { Code, Calendar, Clock, Users, DollarSign, ArrowRight } from 'lucide-react';
 
 // Import centralized data
 import {
@@ -39,15 +39,13 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
   return (
     <>
       {/* Breadcrumbs */}
-      <section className="wp-block-breadcrumbs-section">
-        <Breadcrumbs 
-          items={[
-            { label: 'Home', href: '/' },
-            { label: 'Portfolio', href: '/portfolio' },
-            { label: projectPageHero.title }
-          ]}
-        />
-      </section>
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Portfolio', href: '/portfolio' },
+          { label: slug },
+        ]}
+      />
 
       {/* Hero Section */}
       <Hero
@@ -395,14 +393,17 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
       </Section>
 
       {/* CTA Section */}
-      <CTASection
+      <FunkyCTA
         title={projectPageCTA.title}
         description={projectPageCTA.description}
-        primaryButtonText={projectPageCTA.buttons[0].text}
-        primaryButtonPage={projectPageCTA.buttons[0].page}
-        secondaryButtonText={projectPageCTA.buttons[1].text}
-        secondaryButtonPage={projectPageCTA.buttons[1].page}
-        gradient="blue"
+        buttonText={projectPageCTA.buttons[0].text}
+        buttonPage={projectPageCTA.buttons[0].page}
+        benefits={[
+          'Custom WordPress solutions tailored to your goals',
+          'Full-stack development & design expertise',
+          'Ongoing support & maintenance included',
+          'Proven track record with 150+ projects'
+        ]}
       />
     </>
   );

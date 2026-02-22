@@ -14,6 +14,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import React from 'react';
+import { useReducedMotion } from './useReducedMotion';
 
 type AnimationType = 'fade' | 'fade-up' | 'fade-down' | 'fade-left' | 'fade-right' | 'scale' | 'none';
 
@@ -55,10 +56,9 @@ export function useScrollReveal(options: ScrollRevealOptions = {}): ScrollReveal
   const [isVisible, setIsVisible] = useState(false);
   const [hasAnimated, setHasAnimated] = useState(false);
 
-  // Check for reduced motion preference
-  const prefersReducedMotion = respectReducedMotion && 
-    typeof window !== 'undefined' && 
-    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Check for reduced motion preference (reactive — updates if user toggles mid-session)
+  const systemPrefersReducedMotion = useReducedMotion();
+  const prefersReducedMotion = respectReducedMotion && systemPrefersReducedMotion;
 
   useEffect(() => {
     const element = ref.current;
@@ -219,9 +219,9 @@ export function useStaggerReveal(options: StaggerRevealOptions = {}): StaggerRev
   const containerRef = useRef<HTMLElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
-  const prefersReducedMotion = respectReducedMotion && 
-    typeof window !== 'undefined' && 
-    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Check for reduced motion preference (reactive — updates if user toggles mid-session)
+  const systemPrefersReducedMotion = useReducedMotion();
+  const prefersReducedMotion = respectReducedMotion && systemPrefersReducedMotion;
 
   useEffect(() => {
     const element = containerRef.current;

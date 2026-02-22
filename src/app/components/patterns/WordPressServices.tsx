@@ -11,7 +11,7 @@
 import { LucideIcon, ArrowRight, CheckCircle } from 'lucide-react';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
-import '@/styles/patterns/wordpress-services.css';
+
 
 export interface WordPressServiceItem {
   icon: LucideIcon;

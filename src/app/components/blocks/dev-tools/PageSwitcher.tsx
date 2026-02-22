@@ -10,7 +10,6 @@
  */
 
 import { useState } from 'react';
-import '@/styles/blocks/dev-tools/page-switcher.css';
 import { pageSwitcherGroups } from '../../../../data/page-switcher';
 
 export interface PageSwitcherProps {

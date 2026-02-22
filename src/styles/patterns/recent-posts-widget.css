@@ -1,0 +1,183 @@
+/**
+ * RecentPostsWidget Pattern Styles
+ *
+ * WordPress block: wp:latest-posts equivalent
+ * BEM: .recent-posts-widget__*
+ */
+
+.recent-posts-widget {
+  padding: var(--spacing-12) var(--spacing-0);
+}
+
+.recent-posts-widget__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: var(--spacing-8);
+}
+
+.recent-posts-widget__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h3);
+  font-weight: var(--font-weight-medium);
+  color: var(--foreground);
+  letter-spacing: var(--letter-spacing-tight);
+  line-height: var(--line-height-snug);
+}
+
+.recent-posts-widget__view-all {
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--primary);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  transition: color var(--transition-base) var(--ease-in-out);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+}
+
+.recent-posts-widget__view-all:hover {
+  color: var(--primary-dark);
+}
+
+.recent-posts-widget__view-all:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+.recent-posts-widget__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-6);
+}
+
+@media (min-width: 768px) {
+  .recent-posts-widget__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .recent-posts-widget__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ── Card ── */
+
+.recent-posts-widget__card {
+  display: flex;
+  flex-direction: column;
+  background: var(--card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition:
+    transform var(--transition-base) var(--ease-out),
+    box-shadow var(--transition-base) var(--ease-out),
+    border-color var(--transition-base) var(--ease-out);
+  text-decoration: none;
+  color: inherit;
+}
+
+.recent-posts-widget__card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
+  border-color: var(--primary);
+}
+
+.recent-posts-widget__card:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.recent-posts-widget__image-wrap {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.recent-posts-widget__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow) var(--ease-out);
+}
+
+.recent-posts-widget__card:hover .recent-posts-widget__image {
+  transform: scale(1.05);
+}
+
+.recent-posts-widget__category-badge {
+  position: absolute;
+  top: var(--spacing-3);
+  left: var(--spacing-3);
+  font-family: var(--font-secondary);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-wider);
+  text-transform: uppercase;
+  color: var(--primary-foreground);
+  background: var(--primary);
+  padding: var(--spacing-1) var(--spacing-3);
+  border-radius: var(--radius-full);
+}
+
+.recent-posts-widget__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+  padding: var(--spacing-5);
+  flex: 1;
+}
+
+.recent-posts-widget__post-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-medium);
+  color: var(--foreground);
+  line-height: var(--line-height-snug);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.recent-posts-widget__excerpt {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-relaxed);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.recent-posts-widget__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  padding-top: var(--spacing-2);
+  margin-top: auto;
+  font-family: var(--font-secondary);
+  font-size: var(--text-xs);
+  color: var(--muted-foreground);
+}
+
+.recent-posts-widget__meta-divider {
+  width: 3px;
+  height: 3px;
+  border-radius: var(--radius-full);
+  background: var(--muted-foreground);
+  opacity: 0.5;
+}
+
+.recent-posts-widget__meta-icon {
+  color: var(--primary);
+  flex-shrink: 0;
+}

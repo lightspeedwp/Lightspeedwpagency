@@ -7,24 +7,22 @@
 
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
-import { Breadcrumbs } from '../common/Breadcrumbs';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { FAQSection } from '../patterns/FAQSection';
-import { CTASection } from '../patterns/CTASection';
+import { FunkyCTA } from '../patterns/FunkyCTA';
 import { Heading } from '../blocks/text/Heading';
 import { Paragraph } from '../blocks/text/Paragraph';
 import { Clock, Calendar, Eye, Tag, Play } from 'lucide-react';
 import { getVideoBySlug, getRelatedVideos, videoCategories, videos } from '../../data/videos';
 import { videoFAQs } from '../../data/faqs';
-import { useNavigation } from '../../contexts/NavigationContext';
-import '@/styles/templates/single-video.css';
-import '@/styles/templates/video-archive.css';
+import { Link } from 'react-router';
+
 
 interface SingleVideoTemplateProps {
   slug?: string;
 }
 
 export function SingleVideoTemplate({ slug }: SingleVideoTemplateProps) {
-  const { navigateTo } = useNavigation();
   const video = slug ? getVideoBySlug(slug) : videos[0];
   const related = video ? getRelatedVideos(video.slug) : [];
 
@@ -44,17 +42,13 @@ export function SingleVideoTemplate({ slug }: SingleVideoTemplateProps) {
   return (
     <>
       {/* Breadcrumbs */}
-      <section style={{ padding: 'var(--spacing-4) 0' }}>
-        <Container>
-          <Breadcrumbs
-            items={[
-              { label: 'Home', page: 'front-page' },
-              { label: 'Videos', page: 'videos' },
-              { label: video.title }
-            ]}
-          />
-        </Container>
-      </section>
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', page: 'front-page' },
+          { label: 'Videos', href: '/videos' },
+          { label: video.title },
+        ]}
+      />
 
       {/* Video Player */}
       <Section spacing="md">
@@ -84,25 +78,24 @@ export function SingleVideoTemplate({ slug }: SingleVideoTemplateProps) {
                   <Eye size={14} /> {video.views.toLocaleString()} views
                 </span>
                 {cat && (
-                  <button
+                  <Link
+                    to={`/videos/category/${cat.slug}`}
                     className="video-archive__category"
-                    onClick={() => navigateTo(`/videos/category/${cat.slug}`)}
-                    style={{ cursor: 'pointer', border: 'none' }}
                   >
                     {cat.name}
-                  </button>
+                  </Link>
                 )}
               </div>
 
               <div className="single-video__tags">
                 {video.tags.map(tag => (
-                  <button
+                  <Link
                     key={tag}
+                    to={`/videos/tag/${tag}`}
                     className="single-video__tag"
-                    onClick={() => navigateTo(`/videos/tag/${tag}`)}
                   >
                     <Tag size={10} /> {tag}
-                  </button>
+                  </Link>
                 ))}
               </div>
 
@@ -117,15 +110,12 @@ export function SingleVideoTemplate({ slug }: SingleVideoTemplateProps) {
         <Section spacing="md" background="muted">
           <Container>
             <Heading level={2}>Related Videos</Heading>
-            <div className="single-video__related-grid" style={{ marginTop: 'var(--spacing-6)' }}>
+            <div className="single-video__related-grid wp-mt-6">
               {related.map(rv => (
-                <article
+                <Link
                   key={rv.id}
+                  to={`/video/${rv.slug}`}
                   className="video-archive__card"
-                  onClick={() => navigateTo(`/video/${rv.slug}`)}
-                  tabIndex={0}
-                  role="link"
-                  onKeyDown={e => e.key === 'Enter' && navigateTo(`/video/${rv.slug}`)}
                   aria-label={`Watch: ${rv.title}`}
                 >
                   <div className="video-archive__thumbnail">
@@ -145,7 +135,7 @@ export function SingleVideoTemplate({ slug }: SingleVideoTemplateProps) {
                       </span>
                     </div>
                   </div>
-                </article>
+                </Link>
               ))}
             </div>
           </Container>
@@ -160,11 +150,18 @@ export function SingleVideoTemplate({ slug }: SingleVideoTemplateProps) {
       </Section>
 
       {/* CTA */}
-      <CTASection
+      <FunkyCTA
         title="Need Custom Training?"
         description="We provide bespoke video training packages for teams adopting WordPress block themes."
-        primaryButtonText="Contact Us"
-        primaryButtonPage="contact"
+        buttonText="Contact Us"
+        buttonPage="contact"
+        benefits={[
+          'Tailored video training',
+          'Block theme workshops',
+          'Design system masterclasses',
+          'WordPress FSE deep-dives',
+          'Flexible scheduling'
+        ]}
       />
     </>
   );

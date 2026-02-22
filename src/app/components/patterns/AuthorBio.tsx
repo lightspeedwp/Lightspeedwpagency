@@ -9,7 +9,7 @@
  */
 
 import { Linkedin, Twitter, Globe, Mail } from 'lucide-react';
-import '@/styles/patterns/author-bio.css';
+
 
 export interface AuthorSocial {
   linkedin?: string;

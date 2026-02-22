@@ -6,10 +6,10 @@
  * WordPress solutions page for WordPress development services.
  * 
  * Pattern order:
- * Breadcrumbs → Hero → Overview → Features → Use Cases → Pricing → Comparison → Benefits → FAQs → CTA
+ * Breadcrumbs → Funky Hero → Overview → Features → Use Cases → Pricing → Comparison → Benefits → FAQs → CTA
  * 
  * **Migration Status:**
- * - ✅ Hero → Hero pattern
+ * - ✅ Hero → Custom Funky Hero (page-solution-wordpress.css)
  * - ✅ Overview → StatsGrid pattern
  * - ✅ Features → FeatureGrid pattern
  * - ✅ Use Cases → UseCasesGrid pattern
@@ -17,22 +17,23 @@
  * - ✅ Comparison → FeatureComparison pattern (adapted)
  * - ✅ Benefits → BenefitsGrid pattern
  * - ✅ FAQs → FAQSection pattern
- * - ✅ CTA → CTASection pattern
- * 
- * **Code Reduction:** ~887 → ~250 lines (72% reduction)
+ * - ✅ CTA → FunkyCTA pattern
  */
 
 import { Container } from '../common/Container';
-import { Breadcrumbs } from '../common/Breadcrumbs';
-import { Hero } from '../patterns/Hero';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { StatsGrid } from '../patterns/StatsGrid';
 import { FeatureGrid } from '../patterns/FeatureGrid';
 import { UseCasesGrid } from '../patterns/UseCasesGrid';
 import { PricingTable } from '../patterns/PricingTable';
 import { BenefitsGrid } from '../patterns/BenefitsGrid';
 import { FAQSection } from '../patterns/FAQSection';
-import { CTASection } from '../patterns/CTASection';
-import { Code, ShoppingCart, Shield } from 'lucide-react';
+import { FunkyCTA } from '../patterns/FunkyCTA';
+import { Code, ShoppingCart, Shield, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router';
+import { getPageUrl } from '../../data/pages';
+import { ScrollReveal } from '../../hooks/useScrollReveal';
+
 
 // Import centralized data
 import {
@@ -45,7 +46,7 @@ import {
   wordpressSolutionCTA
 } from '../../data/wordpress-solution-page';
 
-import { PricingPackage, PricingFeature } from '../../data/pricing';
+import { PricingPackage } from '../../data/pricing';
 
 export function WordPressSolutionTemplate() {
   // Transform pricing data for PricingTable pattern
@@ -96,68 +97,124 @@ export function WordPressSolutionTemplate() {
   ];
 
   return (
-    <>
-        {/* Breadcrumbs */}
-        <section className="wp-block-breadcrumbs-section wp-block-breadcrumbs-section--border">
-            <Breadcrumbs 
-              items={[
-                { label: 'Home', href: '/' },
-                { label: 'Solutions', href: '/solutions' },
-                { label: wordpressSolutionHero.title }
-              ]}
-            />
-        </section>
-
-        {/* Hero Section */}
-        <Hero
-          variant="service"
-          align="center"
-          maxWidth="4xl"
-          gradient="blue"
-          spacing="xl"
-          badge={{
-            icon: Code,
-            text: wordpressSolutionHero.badge.text
-          }}
-          title={wordpressSolutionHero.title}
-          titleHighlight={wordpressSolutionHero.titleHighlight}
-          description={wordpressSolutionHero.tagline}
-          subtitle={wordpressSolutionHero.description}
-          buttons={[
-            {
-              label: 'Get a Free Quote',
-              page: 'contact',
-              variant: 'default',
-              style: {
-                backgroundColor: 'var(--primary-foreground)',
-                color: 'var(--primary)'
-              }
-            },
-            {
-              label: 'View Portfolio',
-              page: 'portfolio',
-              variant: 'outline',
-              style: {
-                borderColor: 'var(--primary-foreground)',
-                color: 'var(--primary-foreground)'
-              }
-            }
+    <div className="wordpress-page">
+        {/* ── Breadcrumbs ── */}
+        <BreadcrumbPart
+          items={[
+            { label: 'Home', page: 'front-page' },
+            { label: 'Solutions', href: '/solutions' },
+            { label: 'WordPress' },
           ]}
         />
 
+        {/* ============================================
+            FUNKY HERO SECTION
+            ============================================ */}
+        <section className="wordpress-page__hero">
+          <div className="wordpress-page__hero-grid"></div>
+          
+          <Container>
+            <div className="wp-grid-2-cols wp-items-center wp-gap-12">
+              {/* Left: Content */}
+              <div className="wordpress-page__hero-content">
+                <ScrollReveal animation="fade-right">
+                  {/* Badge */}
+                  <div className="wordpress-page__badge">
+                    <Code size={14} />
+                    {wordpressSolutionHero.badge.text}
+                  </div>
+
+                  {/* Title */}
+                  <h1 className="wordpress-page__title">
+                    Enterprise-Grade <br />
+                    <span className="wordpress-page__highlight">WordPress Solutions</span>
+                  </h1>
+
+                  {/* Description */}
+                  <p className="wordpress-page__tagline">
+                    {wordpressSolutionHero.tagline}
+                  </p>
+
+                  {/* Buttons */}
+                  <div className="wp-flex wp-gap-4">
+                    <Link 
+                      className="wordpress-page__btn-primary"
+                      to={getPageUrl('contact')}
+                    >
+                      {wordpressSolutionHero.primaryButton.text} <ArrowRight size={18} />
+                    </Link>
+                    <Link 
+                      className="wordpress-page__btn-outline"
+                      to={getPageUrl('portfolio-archive')}
+                    >
+                      {wordpressSolutionHero.secondaryButton.text}
+                    </Link>
+                  </div>
+                </ScrollReveal>
+              </div>
+
+              {/* Right: Visual (Code Window) */}
+              <div className="wordpress-page__visual wp-hide-mobile">
+                <ScrollReveal animation="fade-left" delay={200}>
+                  <div className="wordpress-page__orb wordpress-page__orb--1"></div>
+                  <div className="wordpress-page__orb wordpress-page__orb--2"></div>
+                  
+                  <div className="wordpress-page__code-window">
+                    <div className="wordpress-page__window-header">
+                      <div className="wordpress-page__dots">
+                        <div className="wordpress-page__dot wordpress-page__dot--red"></div>
+                        <div className="wordpress-page__dot wordpress-page__dot--yellow"></div>
+                        <div className="wordpress-page__dot wordpress-page__dot--green"></div>
+                      </div>
+                      <div className="wordpress-page__filename">/src/wp-config.php</div>
+                    </div>
+                    <div className="wordpress-page__code-content">
+                      <pre>
+                        <code>
+<span className="token keyword">&lt;?php</span>
+<span className="token comment">// LSX Design System Configuration</span>
+
+<span className="token function">define</span>(<span className="token string">'WP_CACHE'</span>, <span className="token keyword">true</span>);
+<span className="token function">define</span>(<span className="token string">'WP_ENVIRONMENT_TYPE'</span>, <span className="token string">'production'</span>);
+
+<span className="token comment">// Performance Settings</span>
+<span className="token keyword">$performance</span> = [
+  <span className="token string">'caching'</span> =&gt; <span className="token string">'redis'</span>,
+  <span className="token string">'loading'</span> =&gt; <span className="token string">'lazy'</span>,
+  <span className="token string">'vitals'</span>  =&gt; <span className="token string">'optimized'</span>
+];
+
+<span className="token comment">// Initialize Security</span>
+<span className="token function">lsx_init_security</span>(<span className="token keyword">$performance</span>);
+                        </code>
+                      </pre>
+                    </div>
+                  </div>
+                </ScrollReveal>
+              </div>
+            </div>
+          </Container>
+        </section>
+
         {/* Overview Stats Section */}
-        <StatsGrid
-          title={wordpressSolutionOverview.title}
-          description={wordpressSolutionOverview.description}
-          stats={wordpressSolutionOverview.stats.map(stat => ({
-            icon: stat.icon,
-            value: stat.value,
-            label: stat.label,
-            description: stat.description
-          }))}
-          columns={4}
-          variant="default"
-        />
+        <section className="wordpress-page__stats">
+          <Container>
+            <ScrollReveal animation="fade-up">
+              <StatsGrid
+                title={wordpressSolutionOverview.title}
+                description={wordpressSolutionOverview.description}
+                stats={wordpressSolutionOverview.stats.map(stat => ({
+                  icon: stat.icon,
+                  value: stat.value,
+                  label: stat.label,
+                  description: stat.description
+                }))}
+                columns={4}
+                variant="default"
+              />
+            </ScrollReveal>
+          </Container>
+        </section>
 
         {/* Features Section */}
         <FeatureGrid
@@ -204,15 +261,18 @@ export function WordPressSolutionTemplate() {
         />
 
         {/* CTA Section */}
-        <CTASection
+        <FunkyCTA
           title={wordpressSolutionCTA.title}
           description={wordpressSolutionCTA.description}
-          primaryButtonText={wordpressSolutionCTA.buttons[0].text}
-          primaryButtonPage={wordpressSolutionCTA.buttons[0].page as any}
-          secondaryButtonText={wordpressSolutionCTA.buttons[1]?.text}
-          secondaryButtonPage={wordpressSolutionCTA.buttons[1]?.page as any}
-          gradient="blue"
+          buttonText={wordpressSolutionCTA.buttons[0].text}
+          buttonPage={wordpressSolutionCTA.buttons[0].page}
+          benefits={[
+            'Custom WordPress & WooCommerce solutions',
+            'Full Site Editing with block themes',
+            'Enterprise-grade security & performance',
+            'Ongoing maintenance & support plans'
+          ]}
         />
-    </>
+    </div>
   );
 }

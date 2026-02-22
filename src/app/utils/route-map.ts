@@ -44,6 +44,19 @@ const SLUG_TO_PATH: Record<string, string> = {
   'email-marketing': '/services/email-marketing',
   'training': '/services/training',
   'hosting': '/services/hosting',
+  'performance': '/services/performance',
+  'seo': '/services/seo',
+  'accessibility': '/services/accessibility',
+  'ai-engine-optimisation': '/services/ai-engine-optimisation',
+  'answer-engine-optimisation': '/services/answer-engine-optimisation',
+
+  /* ── Journey Stage Pages ── */
+  'journey-ignite': '/services/ignite',
+  'journey-create': '/services/create',
+  'journey-build': '/services/build',
+  'journey-launch': '/services/launch',
+  'journey-grow': '/services/grow',
+  'journey-evolve': '/services/evolve',
 
   /* ── Services (legacy "with suffix" routes) ── */
   'discovery-service': '/services/discovery',
@@ -66,6 +79,18 @@ const SLUG_TO_PATH: Record<string, string> = {
   'wetu-importer': '/solutions/wetu-importer',
   'lsx-sharing': '/solutions/lsx-sharing',
   'lsx-search': '/solutions/lsx-search',
+
+  /* ── New Solution Pages ── */
+  'wordpress-redesign': '/solutions/wordpress-redesign',
+  'woocommerce-redesign': '/solutions/woocommerce-redesign',
+  'tour-operator-design': '/solutions/tour-operator-design',
+
+  /* ── AI Integrations ── */
+  'ai-integrations': '/solutions/ai-integrations',
+  'ai-content-generation': '/solutions/ai-content-generation',
+  'ai-seo': '/solutions/ai-seo',
+  'ai-chatbots': '/solutions/ai-chatbots',
+  'ai-analytics': '/solutions/ai-analytics',
 
   /* ── Solutions (legacy "with suffix" routes) ── */
   'wordpress-solutions': '/solutions/wordpress',
@@ -125,8 +150,8 @@ const SLUG_TO_PATH: Record<string, string> = {
   'woocommerce-development': '/services',
   'block-theme-development': '/services',
   'design-systems': '/services',
-  'accessibility-services': '/services',
-  'performance-optimization': '/services',
+  'accessibility-services': '/services/accessibility',
+  'performance-optimization': '/services/performance',
   'site-migration': '/services',
   'maintenance-support': '/services',
 
@@ -258,6 +283,12 @@ export function slugToPath(slug: string): string {
   if (slug.startsWith('portfolio-single-')) {
     return `/portfolio/${slug.replace('portfolio-single-', '')}`;
   }
+  if (slug.startsWith('portfolio-category-')) {
+    return `/portfolio/category/${slug.replace('portfolio-category-', '')}`;
+  }
+  if (slug.startsWith('portfolio-tag-')) {
+    return `/portfolio/tag/${slug.replace('portfolio-tag-', '')}`;
+  }
   if (slug.startsWith('product-single-')) {
     return `/shop/${slug.replace('product-single-', '')}`;
   }
@@ -296,7 +327,10 @@ export function slugToPath(slug: string): string {
   if (slug.startsWith('video-category-')) {
     return `/videos/category/${slug.replace('video-category-', '')}`;
   }
-  if (slug.startsWith('video-') && !slug.startsWith('video-archive')) {
+  if (slug.startsWith('video-tag-')) {
+    return `/videos/tag/${slug.replace('video-tag-', '')}`;
+  }
+  if (slug.startsWith('video-') && !slug.startsWith('video-archive') && !slug.startsWith('video-tag-')) {
     return `/video/${slug.replace('video-', '')}`;
   }
 
@@ -307,6 +341,28 @@ export function slugToPath(slug: string): string {
   if (slug.startsWith('podcast-') && !slug.startsWith('podcast-archive')) {
     return `/podcast/${slug.replace('podcast-', '')}`;
   }
+
+  // Testimonial patterns
+  if (slug === 'testimonial-archive') return '/testimonials/archive';
+  if (slug.startsWith('testimonial-audio-')) {
+    return `/testimonials/audio/${slug.replace('testimonial-audio-', '')}`;
+  }
+  if (slug.startsWith('testimonial-video-')) {
+    return `/testimonials/video/${slug.replace('testimonial-video-', '')}`;
+  }
+  if (slug.startsWith('testimonial-gallery-')) {
+    return `/testimonials/gallery/${slug.replace('testimonial-gallery-', '')}`;
+  }
+  if (slug.startsWith('testimonial-standard-')) {
+    return `/testimonials/${slug.replace('testimonial-standard-', '')}`;
+  }
+  if (slug.startsWith('testimonial-')) {
+    return `/testimonials/${slug.replace('testimonial-', '')}`;
+  }
+
+  // Date archive patterns
+  const dateYearMatch = slug.match(/^date-(\d{4})$/);
+  if (dateYearMatch) return `/blog/date/${dateYearMatch[1]}`;
 
   // 3. Fallback: treat as path
   return `/${slug}`;
@@ -329,8 +385,14 @@ export function pathToSlug(path: string): string {
   if (PATH_TO_SLUG[normalized]) return PATH_TO_SLUG[normalized];
 
   // 2. Dynamic patterns
-  const portfolioMatch = normalized.match(/^\/portfolio\/(.+)$/);
+  const portfolioMatch = normalized.match(/^\/portfolio\/(?!category|tag)(.+)$/);
   if (portfolioMatch) return `portfolio-single-${portfolioMatch[1]}`;
+
+  const portfolioCatMatch = normalized.match(/^\/portfolio\/category\/(.+)$/);
+  if (portfolioCatMatch) return `portfolio-category-${portfolioCatMatch[1]}`;
+
+  const portfolioTagMatch = normalized.match(/^\/portfolio\/tag\/(.+)$/);
+  if (portfolioTagMatch) return `portfolio-tag-${portfolioTagMatch[1]}`;
 
   const shopMatch = normalized.match(/^\/shop\/(.+)$/);
   if (shopMatch) return `product-single-${shopMatch[1]}`;
@@ -357,6 +419,9 @@ export function pathToSlug(path: string): string {
   const videoCatMatch = normalized.match(/^\/videos\/category\/(.+)$/);
   if (videoCatMatch) return `video-category-${videoCatMatch[1]}`;
 
+  const videoTagMatch = normalized.match(/^\/videos\/tag\/(.+)$/);
+  if (videoTagMatch) return `video-tag-${videoTagMatch[1]}`;
+
   const videoMatch = normalized.match(/^\/video\/(.+)$/);
   if (videoMatch) return `video-${videoMatch[1]}`;
 
@@ -366,6 +431,21 @@ export function pathToSlug(path: string): string {
 
   const podcastMatch = normalized.match(/^\/podcast\/(.+)$/);
   if (podcastMatch) return `podcast-${podcastMatch[1]}`;
+
+  // Testimonial patterns
+  if (normalized === '/testimonials/archive') return 'testimonial-archive';
+  const testimonialAudioMatch = normalized.match(/^\/testimonials\/audio\/(.+)$/);
+  if (testimonialAudioMatch) return `testimonial-audio-${testimonialAudioMatch[1]}`;
+  const testimonialVideoMatch = normalized.match(/^\/testimonials\/video\/(.+)$/);
+  if (testimonialVideoMatch) return `testimonial-video-${testimonialVideoMatch[1]}`;
+  const testimonialGalleryMatch = normalized.match(/^\/testimonials\/gallery\/(.+)$/);
+  if (testimonialGalleryMatch) return `testimonial-gallery-${testimonialGalleryMatch[1]}`;
+  const testimonialStandardMatch = normalized.match(/^\/testimonials\/(.+)$/);
+  if (testimonialStandardMatch) return `testimonial-standard-${testimonialStandardMatch[1]}`;
+
+  // Date archive patterns
+  const dateYearMatch = normalized.match(/^\/blog\/date\/(\d{4})$/);
+  if (dateYearMatch) return `date-${dateYearMatch[1]}`;
 
   // 3. Fallback: strip leading slash
   return normalized.replace(/^\//, '') || 'front-page';

@@ -20,7 +20,6 @@
  */
 
 import { motion } from 'motion/react';
-import '@/styles/components/loading-states.css';
 
 /**
  * Loading Spinner Component

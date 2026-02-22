@@ -5,23 +5,21 @@
  * Content hub archetype for podcast episodes.
  */
 
+import { Link } from 'react-router';
 import { useState, useMemo } from 'react';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
-import { Breadcrumbs } from '../common/Breadcrumbs';
 import { TaxonomyFilter } from '../patterns/TaxonomyFilter';
 import { FAQSection } from '../patterns/FAQSection';
-import { CTASection } from '../patterns/CTASection';
+import { FunkyCTA } from '../patterns/FunkyCTA';
 import { Heading } from '../blocks/text/Heading';
 import { Paragraph } from '../blocks/text/Paragraph';
 import { Headphones, Clock, Calendar } from 'lucide-react';
 import { podcasts, podcastCategories } from '../../data/podcasts';
 import { podcastFAQs } from '../../data/faqs';
-import { useNavigation } from '../../contexts/NavigationContext';
-import '@/styles/templates/podcast-archive.css';
+
 
 export function PodcastArchiveTemplate() {
-  const { navigateTo } = useNavigation();
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [sort, setSort] = useState('recent');
 
@@ -53,16 +51,13 @@ export function PodcastArchiveTemplate() {
 
   return (
     <>
-      <section style={{ padding: 'var(--spacing-4) 0' }}>
-        <Container>
-          <Breadcrumbs
-            items={[
-              { label: 'Home', page: 'front-page' },
-              { label: 'Podcasts' }
-            ]}
-          />
-        </Container>
-      </section>
+      {/* Breadcrumbs */}
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', page: 'front-page' },
+          { label: 'Podcasts' },
+        ]}
+      />
 
       <Section spacing="md">
         <Container>
@@ -88,15 +83,12 @@ export function PodcastArchiveTemplate() {
             label="Filter Episodes"
           />
 
-          <div className="podcast-archive__list" style={{ marginTop: 'var(--spacing-8)' }}>
+          <div className="podcast-archive__list wp-mt-8">
             {filtered.map(ep => (
-              <article
+              <Link
                 key={ep.id}
+                to={`/podcast/${ep.slug}`}
                 className="podcast-archive__card"
-                onClick={() => navigateTo(`/podcast/${ep.slug}`)}
-                tabIndex={0}
-                role="link"
-                onKeyDown={e => e.key === 'Enter' && navigateTo(`/podcast/${ep.slug}`)}
                 aria-label={`Listen: ${ep.title}`}
               >
                 <div className="podcast-archive__artwork">
@@ -119,12 +111,12 @@ export function PodcastArchiveTemplate() {
                     </span>
                   </div>
                 </div>
-              </article>
+              </Link>
             ))}
           </div>
 
           {filtered.length === 0 && (
-            <div style={{ textAlign: 'center', padding: 'var(--spacing-12) 0' }}>
+            <div className="wp-text-center wp-py-12">
               <Paragraph>No episodes found matching your filters.</Paragraph>
             </div>
           )}
@@ -137,11 +129,18 @@ export function PodcastArchiveTemplate() {
         </Container>
       </Section>
 
-      <CTASection
+      <FunkyCTA
         title="Want to Be a Guest?"
         description="We are always looking for interesting voices from the WordPress community. Get in touch to discuss appearing on the show."
-        primaryButtonText="Contact Us"
-        primaryButtonPage="contact"
+        buttonText="Contact Us"
+        buttonPage="contact"
+        benefits={[
+          'Share your WordPress expertise',
+          'Reach a developer audience',
+          'Cross-promote your brand',
+          'Network with industry leaders',
+          'Published across all platforms'
+        ]}
       />
     </>
   );

@@ -10,8 +10,8 @@
  */
 
 import React from 'react';
-import { useNavigation } from '@/app/contexts/NavigationContext';
-import '@/styles/blocks/design/button.css';
+import { Link } from 'react-router';
+import { slugToPath } from '@/app/utils/route-map';
 
 export interface ButtonsProps {
   /** Layout orientation */
@@ -100,8 +100,6 @@ export function Button({
   target,
   rel
 }: ButtonProps) {
-  const { navigateTo } = useNavigation();
-  
   // Build WordPress block classes
   const sizeClass = size === 'sm' ? 'is-style-small' : size === 'lg' ? 'is-style-large' : '';
   
@@ -120,8 +118,6 @@ export function Button({
     className: 'wp-block-button__link',
     'aria-label': ariaLabel,
     'aria-disabled': disabled,
-    // Note: Inline styles removed in favor of CSS classes in button.css
-    // Logic for disabled styling is handled in CSS via :disabled or aria-disabled
   };
 
   const content = (
@@ -148,20 +144,18 @@ export function Button({
     );
   }
 
-  // Handle internal navigation
+  // Handle internal navigation via declarative <Link>
   if (page && !disabled) {
     return (
       <div className={wrapperClasses}>
-        <button
-          {...commonProps}
-          onClick={e => {
-            if (onClick) onClick(e);
-            navigateTo(page);
-          }}
-          type="button"
+        <Link
+          to={slugToPath(page)}
+          className={commonProps.className}
+          aria-label={ariaLabel}
+          onClick={onClick as any}
         >
           {content}
-        </button>
+        </Link>
       </div>
     );
   }

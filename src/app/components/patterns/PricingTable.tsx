@@ -18,7 +18,7 @@ import { Button } from '../blocks/design/Buttons';
 import { Grid } from '../blocks/design/Grid';
 import { Check } from 'lucide-react';
 import type { PricingPackage } from '../../data/pricing';
-import '@/styles/patterns/pricing-table.css';
+
 
 export interface PricingTableProps {
   heading?: string;

@@ -10,7 +10,7 @@
 import { LucideIcon } from 'lucide-react';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
-import '@/styles/patterns/feature-icon-grid.css';
+
 
 export interface FeatureIcon {
   /** Unique identifier */

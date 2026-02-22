@@ -1,85 +1,112 @@
 /**
  * Process Data
  * 
- * Centralized process/workflow steps for the LSX Design methodology.
- * Used in AboutProcessTemplate and other process-related pages.
- * 
- * In WordPress, this would be custom fields or a repeater field.
+ * Detailed breakdown of the LSX Design development process.
+ * Used on: About -> Process page, Services pages
  */
 
-import { ProcessStep } from '../components/patterns/ProcessTimeline';
-import { 
-  MessageSquare, 
-  Lightbulb, 
-  Palette, 
-  Code, 
-  TestTube, 
-  Rocket 
-} from 'lucide-react';
+import { Search, PenTool, Code, CheckCircle, Rocket, HeartHandshake } from 'lucide-react';
+import type { ComponentType } from 'react';
 
-export const designProcess: ProcessStep[] = [
+export interface ProcessStep {
+  id: string;
+  number: string;
+  title: string;
+  description: string;
+  icon: ComponentType<{ size?: number; className?: string }>;
+  details: string[];
+  duration?: string;
+}
+
+export const developmentProcess: ProcessStep[] = [
   {
     id: 'discovery',
-    number: 1,
+    number: '01',
     title: 'Discovery & Strategy',
-    description: 'We begin by understanding your business goals, target audience, and technical requirements through in-depth consultations.',
-    icon: MessageSquare,
-    duration: '1-2 weeks',
-  },
-  {
-    id: 'planning',
-    number: 2,
-    title: 'Planning & Architecture',
-    description: 'Create detailed project plans, site architecture, and content strategy aligned with your objectives and user needs.',
-    icon: Lightbulb,
-    duration: '1 week',
+    description: 'We dive deep into your business goals, audience needs, and technical requirements to build a solid roadmap.',
+    icon: Search,
+    details: [
+      'Stakeholder interviews',
+      'Competitor analysis',
+      'Technical requirements gathering',
+      'Content strategy planning',
+      'Project roadmap creation'
+    ],
+    duration: '1-2 Weeks'
   },
   {
     id: 'design',
-    number: 3,
+    number: '02',
     title: 'Design & Prototyping',
-    description: 'Design beautiful, accessible interfaces with a focus on user experience and brand consistency across all devices.',
-    icon: Palette,
-    duration: '2-3 weeks',
+    description: 'We craft intuitive, accessible, and on-brand user interfaces using modern design systems.',
+    icon: PenTool,
+    details: [
+      'Wireframing & UX flow',
+      'UI design & visual language',
+      'Interactive prototyping',
+      'Design system creation',
+      'Accessibility review'
+    ],
+    duration: '2-4 Weeks'
   },
   {
     id: 'development',
-    number: 4,
-    title: 'Development',
-    description: 'Build your site using modern WordPress block themes, ensuring performance, security, and scalability.',
+    number: '03',
+    title: 'Development & Build',
+    description: 'Our senior developers bring designs to life using clean, semantic, and performant code.',
     icon: Code,
-    duration: '3-4 weeks',
+    details: [
+      'WordPress block theme development',
+      'Component library build',
+      'Functionality implementation',
+      'Integrations setup',
+      'Performance optimization'
+    ],
+    duration: '4-8 Weeks'
   },
   {
-    id: 'testing',
-    number: 5,
-    title: 'Testing & QA',
-    description: 'Rigorous testing across devices, browsers, and accessibility standards to ensure flawless functionality.',
-    icon: TestTube,
-    duration: '1 week',
+    id: 'qa',
+    number: '04',
+    title: 'Quality Assurance',
+    description: 'Rigorous testing across devices, browsers, and assistive technologies to ensure a flawless experience.',
+    icon: CheckCircle,
+    details: [
+      'Cross-browser testing',
+      'Mobile responsiveness check',
+      'WCAG 2.1 AA accessibility audit',
+      'Performance benchmarking',
+      'Security scanning'
+    ],
+    duration: '1-2 Weeks'
   },
   {
     id: 'launch',
-    number: 6,
-    title: 'Launch & Support',
-    description: 'Smooth deployment with comprehensive training and ongoing support to ensure your continued success.',
+    number: '05',
+    title: 'Launch & Training',
+    description: 'Seamless deployment to production and empowering your team to manage the content.',
     icon: Rocket,
-    duration: 'Ongoing',
+    details: [
+      'Migration to production server',
+      'DNS propagation',
+      'CMS training for your team',
+      'Documentation handover',
+      'Post-launch monitoring'
+    ],
+    duration: '1 Week'
   },
+  {
+    id: 'support',
+    number: '06',
+    title: 'Growth & Support',
+    description: 'Ongoing partnership to keep your site secure, fast, and evolving with your business.',
+    icon: HeartHandshake,
+    details: [
+      'Regular maintenance & updates',
+      'Security monitoring',
+      'Performance tuning',
+      'Continuous improvement',
+      'Strategic consulting'
+    ],
+    duration: 'Ongoing'
+  }
 ];
-
-// Abbreviated process (4 steps) for condensed displays
-export const condensedProcess = designProcess.slice(0, 4);
-
-// Helper functions
-export function getProcessStepById(id: string): ProcessStep | undefined {
-  return designProcess.find(step => step.id === id);
-}
-
-export function getProcessStepByNumber(number: number): ProcessStep | undefined {
-  return designProcess.find(step => step.number === number);
-}
-
-export function getTotalProcessDuration(): string {
-  return '8-12 weeks';
-}

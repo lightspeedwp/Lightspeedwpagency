@@ -13,7 +13,7 @@ import { Section } from '../common/Section';
 import { Button } from '../blocks/design/Buttons';
 import { Heading } from '../common/Heading';
 import { motion } from 'motion/react';
-import '@/styles/templates/feature-showcase.css';
+
 
 import { 
   InteractiveCard,

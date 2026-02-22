@@ -10,7 +10,6 @@
 
 import { useState } from 'react';
 import { Copy, Check, Code2, Eye, Settings } from 'lucide-react';
-import '@/styles/blocks/dev-tools/component-playground.css';
 
 export interface PropDefinition {
   name: string;

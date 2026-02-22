@@ -12,7 +12,7 @@
  * @see /tasks/task-list.md — Section 16
  */
 
-import { Breadcrumbs } from '../common/Breadcrumbs';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import {
   Activity,
   BarChart3,
@@ -41,7 +41,17 @@ import {
   CircleCheck,
   CheckCircle,
 } from 'lucide-react';
-import '@/styles/templates/code-quality-dashboard.css';
+import { blogPosts } from '../../data/blog-posts';
+import { portfolioProjects } from '../../data/portfolio-projects';
+import { videos } from '../../data/videos';
+import { podcasts } from '../../data/podcasts';
+import { services } from '../../data/services';
+import { teamMembers } from '../../data/team';
+import { testimonials } from '../../data/testimonials';
+import { allProducts } from '../../data/woocommerce';
+import { tours } from '../../data/tour-operator';
+import * as faqsData from '../../data/faqs';
+
 
 /* ═══════════════════════════════════════════
  * Static Analysis Data
@@ -81,16 +91,16 @@ const routeStats = [
 
 /** Data file stats */
 const dataFileStats = [
-  { name: 'Blog Posts', file: 'blog-posts.ts', entries: 12, icon: <FileText size={18} /> },
-  { name: 'Portfolio Projects', file: 'portfolio-projects.ts', entries: 6, icon: <BookOpen size={18} /> },
-  { name: 'Videos', file: 'videos.ts', entries: 6, icon: <Video size={18} /> },
-  { name: 'Podcasts', file: 'podcasts.ts', entries: 4, icon: <Headphones size={18} /> },
-  { name: 'FAQs', file: 'faqs.ts', entries: 13, icon: <FileText size={18} /> },
-  { name: 'Services', file: 'services.ts', entries: 12, icon: <Wrench size={18} /> },
-  { name: 'Team Members', file: 'team.ts', entries: 8, icon: <Component size={18} /> },
-  { name: 'Testimonials', file: 'testimonials.ts', entries: 9, icon: <FileText size={18} /> },
-  { name: 'Products', file: 'woocommerce.ts', entries: 6, icon: <ShoppingCart size={18} /> },
-  { name: 'Tours', file: 'tour-operator.ts', entries: 4, icon: <Map size={18} /> },
+  { name: 'Blog Posts', file: 'blog-posts.ts', entries: blogPosts.length, icon: <FileText size={18} /> },
+  { name: 'Portfolio Projects', file: 'portfolio-projects.ts', entries: portfolioProjects.length, icon: <BookOpen size={18} /> },
+  { name: 'Videos', file: 'videos.ts', entries: videos.length, icon: <Video size={18} /> },
+  { name: 'Podcasts', file: 'podcasts.ts', entries: podcasts.length, icon: <Headphones size={18} /> },
+  { name: 'FAQs', file: 'faqs.ts', entries: Object.keys(faqsData).filter(k => k.endsWith('FAQs')).length, icon: <FileText size={18} /> },
+  { name: 'Services', file: 'services.ts', entries: services.length, icon: <Wrench size={18} /> },
+  { name: 'Team Members', file: 'team.ts', entries: teamMembers.length, icon: <Component size={18} /> },
+  { name: 'Testimonials', file: 'testimonials.ts', entries: testimonials.length, icon: <FileText size={18} /> },
+  { name: 'Products', file: 'woocommerce.ts', entries: allProducts.length, icon: <ShoppingCart size={18} /> },
+  { name: 'Tours', file: 'tour-operator.ts', entries: tours.length, icon: <Map size={18} /> },
 ];
 
 /** Design token categories */
@@ -213,15 +223,13 @@ export function CodeQualityDashboardTemplate() {
   return (
     <>
       {/* Breadcrumbs */}
-      <section className="wp-block-breadcrumbs-section wp-block-breadcrumbs-section--border">
-        <Breadcrumbs
-          items={[
-            { label: 'Home', page: 'home' },
-            { label: 'Developer Tools', page: 'dev-tools' },
-            { label: 'Code Quality Dashboard' },
-          ]}
-        />
-      </section>
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', page: 'home' },
+          { label: 'Dev Tools', page: 'dev-tools' },
+          { label: 'Code Quality' },
+        ]}
+      />
 
       {/* Hero */}
       <div className="cq-dashboard__hero">

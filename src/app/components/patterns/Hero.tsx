@@ -27,7 +27,7 @@ import { Section } from '../common/Section';
 import { Buttons, Button } from '../blocks/design/Buttons';
 import { Breadcrumbs } from '../common/Breadcrumbs';
 import type { LucideIcon } from 'lucide-react';
-import '@/styles/patterns/hero.css';
+
 
 // ============================================
 // TYPESCRIPT INTERFACES

@@ -12,11 +12,9 @@ import { Container } from '@/app/components/common/Container';
 import { Section } from '@/app/components/common/Section';
 import { allTourContent } from '@/app/data/tour-operator';
 import { MapPin, Calendar, Star, Check } from 'lucide-react';
-import { useNavigation } from '@/app/contexts/NavigationContext';
-import '@/styles/templates/tour-operator-archive.css';
+import { Link } from 'react-router';
 
 export function TourOperatorArchiveTemplate() {
-  const { navigateTo } = useNavigation();
   const tours = allTourContent.filter(item => item.type === 'tour');
   const accommodations = allTourContent.filter(item => item.type === 'accommodation');
 
@@ -65,7 +63,7 @@ export function TourOperatorArchiveTemplate() {
                   />
                   <div className="to-archive__tour-footer">
                     <span className="to-archive__tour-price">{tour.price_from}</span>
-                    <button className="to-archive__tour-link">View Itinerary</button>
+                    <Link to={`/tour/${tour.id}`} className="to-archive__tour-link">View Itinerary</Link>
                   </div>
                 </div>
               </article>

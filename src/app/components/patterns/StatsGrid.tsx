@@ -9,7 +9,7 @@
  */
 
 import { LucideIcon } from 'lucide-react';
-import '@/styles/patterns/stats-grid.css';
+
 
 export interface StatItem {
   /** Lucide icon component */

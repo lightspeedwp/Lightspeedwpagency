@@ -1,0 +1,627 @@
+/**
+ * Design Service Page Styles - Funky Redesign
+ * 
+ * Theme: "Pixel Perfect Blueprint"
+ * Style: Indigo/Cyan/White, Grid Lines, Rulers, Wireframes, Technical Art
+ * 
+ * STRICT DESIGN SYSTEM COMPLIANCE:
+ * - Fonts: var(--font-primary), var(--font-secondary)
+ * - Spacing: var(--spacing-*)
+ * - Radius: var(--radius-*)
+ * - Colors: Semantic variables from theme-*.css
+ * - NO hardcoded hex/rgba — all derived via color-mix() or system tokens
+ */
+
+/* ============================================
+   THEME VARIABLES (Scoped)
+   ============================================ */
+
+.design-page__hero,
+.design-page__overview,
+.design-page__showcase,
+.design-page__services,
+.design-page__process,
+.design-page__cta {
+  /* Map local variables to Global Design System Tokens */
+  
+  --blueprint-bg: var(--background);
+  --blueprint-text: var(--foreground);
+  --blueprint-card-bg: var(--card);
+  --blueprint-border: var(--border);
+  --blueprint-muted: var(--muted-foreground);
+
+  /* Blueprint Theme Specifics */
+  --blueprint-primary: var(--category-indigo); /* Indigo — Structure/Layout */
+  --blueprint-secondary: var(--category-cyan); /* Cyan — Precision/Digital */
+  --blueprint-accent: var(--category-pink);    /* Pink — Creativity/Highlight */
+  --blueprint-grid: color-mix(in srgb, var(--blueprint-primary) 10%, transparent);
+
+  /* Gradients */
+  --gradient-blueprint: linear-gradient(135deg, var(--blueprint-primary), var(--blueprint-secondary));
+  --gradient-overlay: linear-gradient(to bottom, transparent 0%, var(--blueprint-bg) 100%);
+
+  /* Glassmorphism */
+  --blueprint-glass-bg: var(--glass-bg);
+  --blueprint-glass-border: var(--glass-border);
+  --blueprint-glass-text: var(--glass-text);
+
+  /* Glows */
+  --blueprint-glow: 0 0 30px color-mix(in srgb, var(--blueprint-primary) 20%, transparent);
+}
+
+/* Dark Mode Overrides */
+.dark .design-page__hero,
+.dark .design-page__overview,
+.dark .design-page__showcase,
+.dark .design-page__services,
+.dark .design-page__process,
+.dark .design-page__cta {
+  --blueprint-glass-bg: var(--glass-bg);
+}
+
+/* ============================================
+   HERO SECTION (The Blueprint)
+   ============================================ */
+
+.design-page__hero {
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--blueprint-bg);
+  color: var(--blueprint-text);
+  overflow: hidden;
+  padding: var(--spacing-24) 0;
+}
+
+/* Grid Background */
+.design-page__hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(var(--blueprint-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--blueprint-grid) 1px, transparent 1px);
+  background-size: 40px 40px;
+  z-index: 0;
+}
+
+/* Crosshairs */
+.design-page__crosshair {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  z-index: 1;
+}
+
+.design-page__crosshair::before,
+.design-page__crosshair::after {
+  content: '';
+  position: absolute;
+  background: var(--blueprint-primary);
+}
+
+.design-page__crosshair::before {
+  top: 9px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+}
+
+.design-page__crosshair::after {
+  top: 0;
+  left: 9px;
+  width: 2px;
+  height: 100%;
+}
+
+.design-page__crosshair--tl { top: 40px; left: 40px; }
+.design-page__crosshair--tr { top: 40px; right: 40px; }
+.design-page__crosshair--bl { bottom: 40px; left: 40px; }
+.design-page__crosshair--br { bottom: 40px; right: 40px; }
+
+/* Hero Content */
+.design-page__hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 64rem;
+  margin: 0 auto;
+}
+
+.design-page__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  background: color-mix(in srgb, var(--blueprint-primary) 10%, transparent);
+  border: 1px solid var(--blueprint-primary);
+  color: var(--blueprint-primary);
+  padding: var(--spacing-2) var(--spacing-4);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: var(--letter-spacing-widest);
+  margin-bottom: var(--spacing-8);
+  box-shadow: 0 0 15px color-mix(in srgb, var(--blueprint-primary) 20%, transparent);
+}
+
+.design-page__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h1);
+  font-weight: var(--font-weight-black);
+  line-height: var(--line-height-tight);
+  margin-bottom: var(--spacing-6);
+  color: var(--blueprint-text);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+.design-page__highlight {
+  position: relative;
+  display: inline-block;
+  color: transparent;
+  background: var(--gradient-blueprint);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.design-page__description {
+  font-family: var(--font-secondary);
+  font-size: var(--text-xl);
+  line-height: var(--line-height-relaxed);
+  color: var(--blueprint-muted);
+  max-width: 42rem;
+  margin: 0 auto var(--spacing-12);
+}
+
+/* Hero Buttons */
+.design-page__hero-buttons {
+  display: flex;
+  gap: var(--spacing-4);
+  justify-content: center;
+}
+
+/* Floating UI Elements (Wireframes) */
+.design-page__wireframe {
+  position: absolute;
+  border: 1px solid var(--blueprint-primary);
+  background: color-mix(in srgb, var(--blueprint-bg) 80%, transparent);
+  backdrop-filter: blur(4px);
+  z-index: 1;
+  opacity: 0.6;
+  box-shadow: var(--shadow-lg);
+}
+
+.design-page__wireframe--1 {
+  top: 20%;
+  left: 5%;
+  width: 200px;
+  height: 140px;
+  border-radius: var(--radius-md);
+  padding: var(--spacing-4);
+  transform: rotate(-5deg);
+  animation: floatWireframe 6s ease-in-out infinite;
+}
+
+.design-page__wireframe--2 {
+  bottom: 20%;
+  right: 5%;
+  width: 180px;
+  height: 240px;
+  border-radius: var(--radius-md);
+  padding: var(--spacing-4);
+  transform: rotate(5deg);
+  animation: floatWireframe 8s ease-in-out infinite reverse;
+}
+
+@keyframes floatWireframe {
+  0%, 100% { transform: translateY(0) rotate(var(--r, 0deg)); }
+  50% { transform: translateY(-20px) rotate(var(--r, 0deg)); }
+}
+
+.design-page__wire-line {
+  height: 8px;
+  background: var(--blueprint-border);
+  margin-bottom: var(--spacing-2);
+  border-radius: var(--radius-full);
+}
+
+.design-page__wire-block {
+  height: 60px;
+  background: color-mix(in srgb, var(--blueprint-primary) 10%, transparent);
+  margin-bottom: var(--spacing-4);
+  border-radius: var(--radius-sm);
+  border: 1px dashed var(--blueprint-primary);
+}
+
+/* ============================================
+   OVERVIEW SECTION (Why LightSpeed)
+   ============================================ */
+
+.design-page__overview {
+  background-color: var(--blueprint-card-bg);
+  padding: var(--spacing-24) 0;
+  position: relative;
+  border-top: 1px solid var(--blueprint-border);
+}
+
+.design-page__overview-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-16);
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .design-page__overview-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.design-page__section-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-bold);
+  color: var(--blueprint-text);
+  margin-bottom: var(--spacing-6);
+}
+
+.design-page__section-desc {
+  font-family: var(--font-secondary);
+  font-size: var(--text-lg);
+  color: var(--blueprint-muted);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--spacing-8);
+}
+
+.design-page__feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.design-page__feature-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-medium);
+  color: var(--blueprint-text);
+}
+
+.design-page__feature-icon {
+  color: var(--blueprint-primary);
+}
+
+/* Visual Stack */
+.design-page__stack {
+  position: relative;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.design-page__layer {
+  position: absolute;
+  width: 300px;
+  height: 200px;
+  background: var(--blueprint-bg);
+  border: 1px solid var(--blueprint-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  transition: transform 0.5s ease;
+}
+
+.design-page__layer:nth-child(1) {
+  transform: translateY(40px) scale(0.9);
+  z-index: 1;
+  opacity: 0.5;
+  background: color-mix(in srgb, var(--blueprint-primary) 5%, var(--blueprint-bg));
+}
+
+.design-page__layer:nth-child(2) {
+  transform: translateY(20px) scale(0.95);
+  z-index: 2;
+  opacity: 0.8;
+  background: color-mix(in srgb, var(--blueprint-primary) 10%, var(--blueprint-bg));
+}
+
+.design-page__layer:nth-child(3) {
+  transform: translateY(0) scale(1);
+  z-index: 3;
+  border-color: var(--blueprint-primary);
+  background: var(--blueprint-bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-6);
+  text-align: center;
+}
+
+.design-page__stack:hover .design-page__layer:nth-child(1) {
+  transform: translateY(60px) scale(0.9) rotate(-5deg);
+}
+
+.design-page__stack:hover .design-page__layer:nth-child(2) {
+  transform: translateY(30px) scale(0.95) rotate(5deg);
+}
+
+.design-page__stack:hover .design-page__layer:nth-child(3) {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: var(--shadow-2xl), var(--blueprint-glow);
+}
+
+/* Layer Content (inside top layer) */
+.design-page__layer-icon {
+  color: var(--blueprint-primary);
+  margin-bottom: var(--spacing-4);
+}
+
+.design-page__layer-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--blueprint-text);
+}
+
+.design-page__layer-subtitle {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--blueprint-muted);
+}
+
+/* ============================================
+   SHOWCASE SECTION (Portfolio)
+   ============================================ */
+
+.design-page__showcase {
+  background-color: var(--blueprint-bg);
+  padding: var(--spacing-24) 0;
+  position: relative;
+}
+
+.design-page__showcase-header {
+  text-align: center;
+  margin-bottom: var(--spacing-16);
+}
+
+.design-page__showcase-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-8);
+}
+
+@media (min-width: 768px) {
+  .design-page__showcase-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.design-page__project-card {
+  group: true;
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--blueprint-border);
+}
+
+.design-page__project-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.design-page__project-card:hover .design-page__project-image {
+  transform: scale(1.1);
+}
+
+.design-page__project-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, color-mix(in srgb, var(--color-black) 80%, transparent), transparent);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: var(--spacing-6);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.design-page__project-card:hover .design-page__project-overlay {
+  opacity: 1;
+}
+
+.design-page__project-tag {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--blueprint-secondary);
+  margin-bottom: var(--spacing-2);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+}
+
+.design-page__project-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-white);
+}
+
+/* ============================================
+   SERVICES GRID (Tools)
+   ============================================ */
+
+.design-page__services {
+  background-color: var(--blueprint-card-bg);
+  padding: var(--spacing-24) 0;
+  position: relative;
+}
+
+.design-page__services-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-6);
+  margin-top: var(--spacing-16);
+}
+
+@media (min-width: 640px) {
+  .design-page__services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .design-page__services-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.design-page__service-card {
+  background: var(--blueprint-bg);
+  border: 1px solid var(--blueprint-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-8);
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.design-page__service-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, transparent 50%, var(--blueprint-primary) 50%);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.design-page__service-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--blueprint-primary);
+  box-shadow: var(--shadow-lg);
+}
+
+.design-page__service-card:hover::after {
+  opacity: 1;
+}
+
+.design-page__service-icon {
+  width: var(--spacing-12);
+  height: var(--spacing-12);
+  background: color-mix(in srgb, var(--blueprint-primary) 10%, transparent);
+  color: var(--blueprint-primary);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--spacing-6);
+  transition: all var(--transition-base);
+}
+
+.design-page__service-card:hover .design-page__service-icon {
+  background: var(--blueprint-primary);
+  color: var(--color-white);
+}
+
+.design-page__service-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--blueprint-text);
+  margin-bottom: var(--spacing-3);
+}
+
+.design-page__service-desc {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--blueprint-muted);
+  line-height: var(--line-height-relaxed);
+}
+
+/* ============================================
+   PROCESS SECTION (Timeline)
+   ============================================ */
+
+.design-page__process {
+  background-color: var(--blueprint-bg);
+  padding: var(--spacing-24) 0;
+  border-top: 1px solid var(--blueprint-border);
+}
+
+.design-page__process-timeline {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin-top: var(--spacing-16);
+}
+
+.design-page__process-line {
+  position: absolute;
+  top: 24px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--blueprint-border);
+  z-index: 0;
+}
+
+.design-page__process-step {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  flex: 1;
+  padding: 0 var(--spacing-4);
+}
+
+.design-page__step-circle {
+  width: 50px;
+  height: 50px;
+  background: var(--blueprint-card-bg);
+  border: 2px solid var(--blueprint-primary);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--spacing-6);
+  font-family: var(--font-mono);
+  font-weight: var(--font-weight-bold);
+  color: var(--blueprint-primary);
+  transition: all var(--transition-base);
+}
+
+.design-page__process-step:hover .design-page__step-circle {
+  background: var(--blueprint-primary);
+  color: var(--color-white);
+  transform: scale(1.1);
+  box-shadow: 0 0 15px color-mix(in srgb, var(--blueprint-primary) 40%, transparent);
+}
+
+.design-page__step-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--blueprint-text);
+  margin-bottom: var(--spacing-2);
+}
+
+.design-page__step-desc {
+  font-family: var(--font-secondary);
+  font-size: var(--text-xs);
+  color: var(--blueprint-muted);
+  line-height: var(--line-height-relaxed);
+}
+
+/* ============================================
+   UTILITIES
+   ============================================ */
+
+.design-page__text-center { text-align: center; }
+.design-page__max-w-2xl { max-width: 42rem; margin-left: auto; margin-right: auto; }

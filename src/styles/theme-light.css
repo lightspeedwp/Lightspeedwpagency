@@ -107,6 +107,13 @@
    */
   --primary-soft: #1E6AFF1A;       /* 10% primary blue */
   
+  /**
+   * Funky Neon Color (Light Mode)
+   * Usage: Glow effects, neon shadows
+   * Hex: #1E6AFF (Matches Primary for consistency, but brighter in context)
+   */
+  --neon-color: #1E6AFF;
+  
   
   /* ----------------------------------------
      Secondary Brand Colors
@@ -406,19 +413,19 @@
    * Glass background (subtle)
    * Usage: Glassmorphism cards, hero overlays
    */
-  --glass-bg: #FFFFFF14;         /* 8% white */
+  --glass-bg: rgba(255, 255, 255, 0.6);         /* Frosted glass base */
   
   /**
    * Glass background (stronger)
    * Usage: Prominent glass elements
    */
-  --glass-bg-strong: #FFFFFF26;  /* 15% white */
+  --glass-bg-strong: rgba(255, 255, 255, 0.85);  /* Near opaque glass */
   
   /**
    * Glass border color
    * Usage: Borders on glass elements
    */
-  --glass-border: #00000014;           /* 8% black */
+  --glass-border: rgba(0, 0, 0, 0.08);           /* Subtle border */
   
   /**
    * Glass text color
@@ -434,12 +441,12 @@
   /**
    * Shadows optimized for light backgrounds
    */
-  --shadow-sm: 0 1px 3px #0000000D;
-  --shadow-md: 0 4px 6px #0000000D;
-  --shadow-lg: 0 10px 40px #00000026;
-  --shadow-xl: 0 20px 40px #0000001F;
-  --shadow-primary: 0 4px 12px #1E6AFF4D;  /* Blue glow */
-  --shadow-hover: 0 8px 16px #0000001A;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.15);
+  --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.12);
+  --shadow-primary: 0 4px 12px rgba(30, 106, 255, 0.3);  /* Blue glow */
+  --shadow-hover: 0 8px 16px rgba(0, 0, 0, 0.1);
   
   /**
    * Legacy elevation shadow (brutalist style)
@@ -491,11 +498,12 @@
    * Logo for light mode uses DARK wordmark
    * The Logo component automatically switches based on theme
    * 
-   * Logo colors (never change):
-   * - Icon: #FF3131 (red) and #CC3F23 (dark red) - Lightning bolt
-   * - Wordmark: Dark (#090909) in light mode, Light (#FFFFFF) in dark mode
+   * Logo colors:
+   * - Icon: #127EFF (blue) - Lightning bolt
+   * - Wordmark: Dark (#090909) in light mode
+   * Brand rules: Blue bolt + black text (light mode)
    */
   --logo-wordmark-color: #090909;       /* Dark wordmark for light backgrounds */
-  --logo-icon-primary: #FF3131;     /* Red - never changes */
-  --logo-icon-secondary: #CC3F23;   /* Dark red - never changes */
+  --logo-icon-primary: #127EFF;         /* Blue bolt — brand standard */
+  --logo-icon-secondary: #127EFF;       /* Blue bolt — consistent fill */
 }

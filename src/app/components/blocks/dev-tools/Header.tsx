@@ -11,7 +11,6 @@
 
 import React from 'react';
 import { Breadcrumbs } from '../../common/Breadcrumbs';
-import '@/styles/blocks/dev-tools/header.css';
 
 /**
  * Single stat card data

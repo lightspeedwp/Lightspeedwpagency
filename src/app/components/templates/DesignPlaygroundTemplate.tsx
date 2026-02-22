@@ -14,9 +14,8 @@
  */
 
 import { useState, useCallback, useMemo } from 'react';
-import { Breadcrumbs } from '../common/Breadcrumbs';
 import { RotateCcw, Copy, Check, Palette, Type, Ruler, Circle, Layers } from 'lucide-react';
-import '@/styles/templates/design-playground.css';
+
 
 /* ═══════════════════════════════════════════
  * Types
@@ -210,9 +209,7 @@ export function DesignPlaygroundTemplate() {
       {overrideStyleBlock}
 
       {/* Breadcrumbs */}
-      <section className="wp-block-breadcrumbs-section wp-block-breadcrumbs-section--border">
-        <Breadcrumbs items={breadcrumbs} />
-      </section>
+      <BreadcrumbPart items={breadcrumbs} />
 
       <div className="playground">
         {/* Header */}

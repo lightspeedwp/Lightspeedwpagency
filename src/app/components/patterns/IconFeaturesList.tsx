@@ -23,7 +23,6 @@
  */
 
 import { LucideIcon } from 'lucide-react';
-import '@/styles/icon-features-list.css';
 
 export interface IconFeature {
   /** Icon component */

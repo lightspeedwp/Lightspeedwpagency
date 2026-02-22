@@ -27,8 +27,8 @@ import {
   RotateCcw,
   RefreshCw,
 } from 'lucide-react';
-import { Breadcrumbs } from '../common/Breadcrumbs';
-import '@/styles/templates/deployment-readiness.css';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
+
 
 /* ═══════════════════════════════════════════
  * Types
@@ -308,10 +308,9 @@ export function DeploymentReadinessTemplate() {
   return (
     <>
       {/* Breadcrumbs */}
-      <section className="wp-block-breadcrumbs-section wp-block-breadcrumbs-section--border">
-        <Breadcrumbs items={breadcrumbs} />
-      </section>
+      <BreadcrumbPart items={breadcrumbs} />
 
+      {/* Hero Section */}
       <div className="deploy">
         <div className="deploy__inner">
 

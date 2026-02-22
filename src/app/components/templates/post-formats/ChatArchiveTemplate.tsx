@@ -11,33 +11,21 @@
  * @see /src/styles/templates/archive.css
  */
 
-import { Container } from '@/app/components/common/Container';
-import { Section } from '@/app/components/common/Section';
-import { Breadcrumbs } from '@/app/components/common/Breadcrumbs';
-import { allPosts } from '@/app/data/posts-formats';
-import { MessageCircle, User } from 'lucide-react';
-import { useNavigation } from '@/app/contexts/NavigationContext';
-import '@/styles/blocks/post-formats/chat.css';
-import '@/styles/templates/archive.css';
+import { Link } from 'react-router';
 
 export function ChatArchiveTemplate() {
-  const { navigateTo } = useNavigation();
   const chatPosts = allPosts.filter(post => post.format === 'chat');
   const posts = [...chatPosts, ...chatPosts, ...chatPosts];
 
   return (
     <>
-      <section className="archive-breadcrumbs">
-        <Container>
-          <Breadcrumbs 
-            items={[
-              { label: 'Home', href: '/' },
-              { label: 'Blog', href: '/blog' },
-              { label: 'Chats', href: '/chat-archive' }
-            ]}
-          />
-        </Container>
-      </section>
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Blog', href: '/blog' },
+          { label: 'Chat Logs' },
+        ]}
+      />
 
       <Section spacing="lg">
         <Container>
@@ -48,13 +36,10 @@ export function ChatArchiveTemplate() {
 
           <div className="archive-feed">
             {posts.map((post, index) => (
-              <article 
-                key={`${post.id}-${index}`} 
+              <Link 
+                key={`${post.id}-${index}`}
+                to="#"
                 className="wp-block-chat-card"
-                onClick={() => navigateTo('chat-single')}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); navigateTo('chat-single'); } }}
               >
                 <div className="wp-block-chat-card__inner">
                   <div className="wp-block-chat-card__icon">
@@ -73,7 +58,7 @@ export function ChatArchiveTemplate() {
                     </div>
                   </div>
                 </div>
-              </article>
+              </Link>
             ))}
           </div>
         </Container>

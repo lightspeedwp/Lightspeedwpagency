@@ -76,28 +76,29 @@
   align-items: center;
 }
 
-/* Variants */
-.wp-block-button.is-style-secondary .wp-block-button__link {
+/* Variants — use :where() to keep specificity low (0,2,0)
+   so that pattern-level overrides win via cascade order. */
+.wp-block-button:where(.is-style-secondary) .wp-block-button__link {
   background-color: var(--secondary);
   color: var(--secondary-foreground);
 }
 
-.wp-block-button.is-style-secondary .wp-block-button__link:hover {
+.wp-block-button:where(.is-style-secondary) .wp-block-button__link:hover {
   opacity: 0.9;
 }
 
-.wp-block-button.is-style-outline .wp-block-button__link {
+.wp-block-button:where(.is-style-outline) .wp-block-button__link {
   background-color: transparent;
   border-color: var(--primary);
   color: var(--primary);
 }
 
-.wp-block-button.is-style-outline .wp-block-button__link:hover {
+.wp-block-button:where(.is-style-outline) .wp-block-button__link:hover {
   background-color: var(--primary);
   color: var(--primary-foreground);
 }
 
-.wp-block-button.is-style-cta .wp-block-button__link {
+.wp-block-button:where(.is-style-cta) .wp-block-button__link {
   background-color: var(--accent);
   color: var(--accent-foreground);
   font-weight: var(--font-weight-bold);
@@ -106,19 +107,19 @@
   box-shadow: var(--shadow-md);
 }
 
-.wp-block-button.is-style-cta .wp-block-button__link:hover {
+.wp-block-button:where(.is-style-cta) .wp-block-button__link:hover {
   opacity: 0.9;
   transform: translateY(-1px);
   box-shadow: var(--shadow-lg);
 }
 
-/* Sizes */
-.wp-block-button.is-style-small .wp-block-button__link {
+/* Sizes — use :where() for same reason */
+.wp-block-button:where(.is-style-small) .wp-block-button__link {
   padding: var(--spacing-1) var(--spacing-3);
   font-size: var(--text-sm);
 }
 
-.wp-block-button.is-style-large .wp-block-button__link {
+.wp-block-button:where(.is-style-large) .wp-block-button__link {
   padding: var(--spacing-3) var(--spacing-6);
   font-size: var(--text-lg);
 }

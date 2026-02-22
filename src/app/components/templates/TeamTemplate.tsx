@@ -1,308 +1,289 @@
 /**
- * Team Page Template
- * 
- * WordPress template: templates/page-team.html
- * 
- * All styling in /src/styles/templates/team-page.css (user-editable)
- * 
- * Team page showcasing LightSpeed team members and culture.
- * Pattern order: Breadcrumbs → Hero → Leadership → Team Grid → Culture → Stats → Departments → FAQs → CTA
+ * Team Page Template — Funky Redesign
+ *
+ * Features:
+ * - Neon Community Theme
+ * - Parallax Hero
+ * - Interactive Member Cards with hover reveals
+ * - Culture grid + stats bar
+ * - ScrollReveal entry animations
+ * - 100% CSS variable compliance
  */
 
 import { Container } from '../common/Container';
-import { Section } from '../common/Section';
-import { Breadcrumbs } from '../common/Breadcrumbs';
-import { Hero } from '../patterns/Hero';
-import { TeamGrid } from '../patterns/TeamGrid';
-import { 
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
+import { FunkyCTA } from '../patterns/FunkyCTA';
+import { FAQSection } from '../patterns/FAQSection';
+import { Heading } from '../blocks/text/Heading';
+import { Paragraph } from '../blocks/text/Paragraph';
+import { useHeroParallax } from '../../hooks/useHeroParallax';
+import { ScrollReveal } from '../../hooks/useScrollReveal';
+import { teamPageFAQs, teamPageMembers, teamPageLeadership } from '../../data/team-page';
+import {
   Users,
   Globe,
-  Award,
   Mail,
-  CheckCircle
+  Linkedin,
+  Twitter,
+  Heart,
+  Zap,
+  Smile,
+  Coffee
 } from 'lucide-react';
-import '@/styles/templates/team-page.css';
-
-// Import centralized data
-import {
-  teamPageHero,
-  teamPageMembers,
-  teamPageCulture,
-  teamPageStats,
-  teamPageDepartments,
-  teamPageFAQs,
-  teamPageLeadership,
-  teamPageCTA
-} from '../../data/team-page';
 
 export function TeamTemplate() {
+  const parallaxRef = useHeroParallax(0.5);
+
   return (
     <>
       {/* Breadcrumbs */}
-      <section className="wp-block-breadcrumbs-section">
-        <Breadcrumbs 
-          items={[
-            { label: 'Home', href: '/' },
-            { label: 'Team' }
-          ]}
-        />
-      </section>
-
-      {/* Hero Section */}
-      <Hero
-        variant="page"
-        align="center"
-        maxWidth="4xl"
-        gradient="blue"
-        spacing="xl"
-        badge={{
-          icon: Users,
-          text: 'MEET OUR TEAM'
-        }}
-        title="The People Behind LightSpeed"
-        titleHighlight="People"
-        description={teamPageHero.description}
-        stats={teamPageHero.stats.map(stat => {
-          const icons = { Users, Globe, Award };
-          const Icon = icons[stat.icon as keyof typeof icons];
-          return {
-            icon: Icon,
-            value: stat.value,
-            label: stat.label
-          };
-        })}
-        className="team-page__hero"
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Team' },
+        ]}
       />
 
-      {/* Leadership Section */}
-      <Section spacing="xl" className="team-page__leadership-section">
+      {/* ── Hero ── */}
+      <section className="team-page__hero">
+        <img
+          ref={parallaxRef}
+          src="https://images.unsplash.com/photo-1746470621261-f176b4b124a9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMGNvbm5lY3Rpb24lMjBuZW9uJTIwcGVvcGxlJTIwbmV0d29ya3xlbnwxfHx8fDE3NzEzNTg4Mzl8MA&ixlib=rb-4.1.0&q=80&w=1080"
+          alt="Abstract neon connection network"
+          className="team-page__hero-bg"
+        />
+        <div className="team-page__hero-overlay" />
+
         <Container>
-          <div className="wp-max-w-6xl wp-mx-auto">
-            {/* Section Header */}
-            <div className="template-section-header">
-              <Heading level={2} className="template-section-header__title">
-                Our Leadership
+          <div className="team-page__hero-content">
+            <span className="team-page__hero-badge">
+              <Users size={16} className="team-page__hero-badge-icon" />
+              Meet the Team
+            </span>
+
+            <h1 className="team-page__hero-title">
+              The People Behind LightSpeed
+            </h1>
+
+            <p className="team-page__hero-subtitle">
+              A diverse group of WordPress experts, designers, and strategists united by a passion for digital excellence.
+            </p>
+          </div>
+        </Container>
+      </section>
+
+      {/* ── Leadership (Glass Cards) ── */}
+      <section className="team-page__leadership">
+        <Container>
+          <ScrollReveal animation="fade-up">
+            <div className="team-page__section-header">
+              <Heading level={2} className="team-page__section-title">
+                Our leadership
               </Heading>
-              <Paragraph className="template-section-header__description">
-                Meet the team guiding LightSpeed's vision and growth
-              </Paragraph>
+              <p className="team-page__section-desc">
+                Guiding the vision and culture of LSX.
+              </p>
             </div>
+          </ScrollReveal>
 
-            {/* Leadership Grid */}
-            <div className="team-page__leadership-grid">
-              {teamPageLeadership.map((member, index) => (
-                <div key={index} className="team-page__leadership-card">
-                  <Heading level={3} className="team-page__leadership-name">
-                    {member.name}
-                  </Heading>
-
-                  <Paragraph className="team-page__leadership-role">
-                    {member.role}
-                  </Paragraph>
-
-                  <Paragraph className="team-page__leadership-bio">
-                    {member.bio}
-                  </Paragraph>
-
-                  {/* Highlights */}
-                  <div className="team-page__leadership-highlights">
-                    {member.highlights.map((highlight, idx) => (
-                      <div key={idx} className="team-page__leadership-highlight">
-                        <CheckCircle size={16} className="team-page__leadership-highlight-icon" />
-                        <span className="team-page__leadership-highlight-text">
-                          {highlight}
-                        </span>
-                      </div>
-                    ))}
+          <div className="team-page__leadership-grid">
+            {teamPageLeadership.map((leader, index) => (
+              <ScrollReveal key={index} animation="fade-up" delay={index * 100}>
+                <div className="team-page__leader-card">
+                  <div className="team-page__leader-image-wrapper">
+                    <img
+                      src={leader.photo || `https://ui-avatars.com/api/?name=${leader.name}&background=random`}
+                      alt={leader.name}
+                      className="team-page__leader-image"
+                    />
+                    {/* Social Overlay */}
+                    <div className="team-page__leader-social-overlay">
+                      {leader.social?.linkedin && (
+                        <a href={leader.social.linkedin} className="team-page__leader-social-link" aria-label={`${leader.name} on LinkedIn`}>
+                          <Linkedin size={20} />
+                        </a>
+                      )}
+                      {leader.social?.twitter && (
+                        <a href={leader.social.twitter} className="team-page__leader-social-link" aria-label={`${leader.name} on Twitter`}>
+                          <Twitter size={20} />
+                        </a>
+                      )}
+                    </div>
                   </div>
 
-                  {/* Email */}
-                  <a
-                    href={`mailto:${member.email}`}
-                    className="team-page__leadership-email"
-                  >
-                    <Mail size={16} />
-                    {member.email}
-                  </a>
+                  <div className="team-page__leader-content">
+                    <div className="team-page__leader-role">
+                      {leader.role}
+                    </div>
+                    <h3 className="team-page__leader-name">
+                      {leader.name}
+                    </h3>
+                    <p className="team-page__leader-bio">
+                      {leader.bio}
+                    </p>
+
+                    {leader.social?.email && (
+                      <a href={`mailto:${leader.social.email}`} className="team-page__leader-email">
+                        <Mail size={16} />
+                        {leader.social.email}
+                      </a>
+                    )}
+                  </div>
                 </div>
-              ))}
-            </div>
+              </ScrollReveal>
+            ))}
           </div>
         </Container>
-      </Section>
+      </section>
 
-      {/* Full Team Grid */}
-      <Section spacing="xl" className="team-page__full-team-section">
+      {/* ── Team Members (Grid) ── */}
+      <section className="team-page__grid-section">
         <Container>
-          <div className="wp-max-w-6xl wp-mx-auto">
-            {/* Section Header */}
-            <div className="template-section-header">
-              <Heading level={2} className="template-section-header__title">
-                Our Complete Team
+          <ScrollReveal animation="fade-up">
+            <div className="team-page__section-header">
+              <Heading level={2} className="team-page__section-title">
+                The crew
               </Heading>
-              <Paragraph className="template-section-header__description">
-                11 WordPress experts dedicated to your success
-              </Paragraph>
+              <p className="team-page__section-desc">
+                Developers, designers, and problem solvers.
+              </p>
             </div>
+          </ScrollReveal>
 
-            <TeamGrid members={teamPageMembers} />
-          </div>
-        </Container>
-      </Section>
+          <div className="team-page__members-grid">
+            {teamPageMembers.map((member, index) => (
+              <ScrollReveal key={index} animation="fade-up" delay={index * 60}>
+                <div className="team-page__member-card">
+                  <div className="team-page__member-image-wrapper">
+                    <img
+                      src={member.photo || `https://ui-avatars.com/api/?name=${member.name}&background=random`}
+                      alt={member.name}
+                      className="team-page__member-photo"
+                    />
+                    <div className="team-page__member-gradient" />
+                  </div>
 
-      {/* Culture & Values Section */}
-      <Section spacing="xl" className="team-page__culture-section">
-        <Container>
-          <div className="wp-max-w-6xl wp-mx-auto">
-            {/* Section Header */}
-            <div className="template-section-header">
-              <Heading level={2} className="template-section-header__title">
-                Our Team Culture
-              </Heading>
-              <Paragraph className="template-section-header__description">
-                The values that define how we work together
-              </Paragraph>
-            </div>
+                  <div className="team-page__member-info">
+                    <h3 className="team-page__member-name">
+                      {member.name}
+                    </h3>
+                    <p className="team-page__member-role">
+                      {member.role}
+                    </p>
 
-            {/* Values Grid */}
-            <div className="team-page__values-grid">
-              {teamPageCulture.map((value, index) => {
-                const Icon = value.icon;
-                return (
-                  <div key={index} className="team-page__value-card">
-                    <div className="team-page__value-icon">
-                      <Icon size={28} />
+                    <div className="team-page__member-socials">
+                      {member.social?.linkedin && (
+                        <a href={member.social.linkedin} aria-label={`${member.name} LinkedIn`}>
+                          <Linkedin size={18} className="team-page__member-social-icon" />
+                        </a>
+                      )}
+                      {member.social?.twitter && (
+                        <a href={member.social.twitter} aria-label={`${member.name} Twitter`}>
+                          <Twitter size={18} className="team-page__member-social-icon" />
+                        </a>
+                      )}
                     </div>
+                  </div>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </Container>
+      </section>
 
-                    <Heading level={3} className="team-page__value-title">
-                      {value.title}
+      {/* ── Culture & Values ── */}
+      <section className="team-page__culture">
+        <Container>
+          <ScrollReveal animation="fade-up">
+            <div className="team-page__section-header">
+              <Heading level={2} className="team-page__section-title">
+                Our culture
+              </Heading>
+              <p className="team-page__section-desc">
+                What brings us together.
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <div className="team-page__culture-grid">
+            {[
+              { icon: Heart, title: 'Passion First', desc: 'We love what we do and it shows in our work.' },
+              { icon: Zap, title: 'Move Fast', desc: 'We iterate quickly and embrace change.' },
+              { icon: Globe, title: 'Remote Native', desc: 'Work from anywhere, deliver everywhere.' },
+              { icon: Smile, title: 'No Ego', desc: 'Great ideas can come from anyone.' },
+              { icon: Coffee, title: 'Always Learning', desc: 'We invest in our growth and skills.' },
+              { icon: Users, title: 'Inclusion', desc: 'We celebrate diversity in all forms.' }
+            ].map((item, index) => {
+              const Icon = item.icon;
+              return (
+                <ScrollReveal key={index} animation="fade-up" delay={index * 80}>
+                  <div className="team-page__culture-card">
+                    <div className="team-page__culture-icon">
+                      <Icon size={24} />
+                    </div>
+                    <Heading level={3} className="team-page__culture-card-title">
+                      {item.title}
                     </Heading>
-
-                    <Paragraph className="team-page__value-description">
-                      {value.description}
+                    <Paragraph className="team-page__culture-card-desc">
+                      {item.desc}
                     </Paragraph>
                   </div>
-                );
-              })}
-            </div>
+                </ScrollReveal>
+              );
+            })}
           </div>
         </Container>
-      </Section>
+      </section>
 
-      {/* Team Stats Section */}
-      <Section spacing="xl" className="team-page__stats-section">
+      {/* ── Stats Section ── */}
+      <section className="team-page__stats">
         <Container>
-          <div className="wp-max-w-6xl wp-mx-auto">
-            {/* Section Header */}
-            <div className="template-section-header">
-              <Heading level={2} className="template-section-header__title">
-                Team by the Numbers
-              </Heading>
-              <Paragraph className="template-section-header__description">
-                Our team's expertise and reach
-              </Paragraph>
-            </div>
-
-            {/* Stats Grid */}
-            <div className="team-page__stats-grid">
-              {teamPageStats.map((stat, index) => {
-                const Icon = stat.icon;
-                return (
-                  <div key={index} className="team-page__stat-card">
-                    <div className="team-page__stat-icon">
-                      <Icon size={32} />
-                    </div>
-
-                    <div className="team-page__stat-value">
-                      {stat.value}
-                    </div>
-
-                    <div className="team-page__stat-label">
-                      {stat.label}
-                    </div>
-
-                    <Paragraph className="team-page__value-description">
-                      {stat.description}
-                    </Paragraph>
-                  </div>
-                );
-              })}
-            </div>
+          <div className="team-page__stats-grid">
+            {[
+              { number: '100%', label: 'Remote' },
+              { number: '5', label: 'Continents' },
+              { number: '12', label: 'Languages' },
+              { number: '50+', label: 'Pet Dogs' }
+            ].map((stat, i) => (
+              <ScrollReveal key={i} animation="scale" delay={i * 100}>
+                <div className="team-page__stat-item">
+                  <div className="team-page__stat-number">{stat.number}</div>
+                  <div className="team-page__stat-label">{stat.label}</div>
+                </div>
+              </ScrollReveal>
+            ))}
           </div>
         </Container>
-      </Section>
+      </section>
 
-      {/* Departments Section */}
-      <Section spacing="xl" className="team-page__departments-section">
+      {/* ── FAQ Section ── */}
+      <section className="team-page__faq">
         <Container>
-          <div className="wp-max-w-6xl wp-mx-auto">
-            {/* Section Header */}
-            <div className="template-section-header">
-              <Heading level={2} className="template-section-header__title">
-                Our Departments
-              </Heading>
-              <Paragraph className="template-section-header__description">
-                Specialized teams working together for your success
-              </Paragraph>
+          <ScrollReveal animation="fade-up">
+            <div className="team-page__faq-wrapper">
+              <FAQSection
+                title="Team FAQs"
+                description="Common questions about our team."
+                faqs={teamPageFAQs}
+                variant="default"
+              />
             </div>
-
-            {/* Departments Grid */}
-            <div className="team-page__departments-grid">
-              {teamPageDepartments.map((dept, index) => {
-                const Icon = dept.icon;
-                return (
-                  <div key={index} className="team-page__department-card">
-                    <div className="team-page__department-icon">
-                      <Icon size={28} />
-                    </div>
-
-                    <Heading level={3} className="team-page__department-name">
-                      {dept.title}
-                    </Heading>
-
-                    <Paragraph className="team-page__department-count">
-                      {dept.memberCount} {dept.memberCount === 1 ? 'member' : 'members'}
-                    </Paragraph>
-
-                    <Paragraph className="team-page__department-description">
-                      {dept.description}
-                    </Paragraph>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
+          </ScrollReveal>
         </Container>
-      </Section>
+      </section>
 
-      {/* FAQ Section */}
-      <Section spacing="xl" className="team-page__faq-section">
-        <Container>
-          <div className="wp-max-w-3xl wp-mx-auto">
-            {/* Section Header */}
-            <div className="template-section-header template-section-header--compact">
-              <Heading level={2} className="template-section-header__title">
-                Team FAQs
-              </Heading>
-              <Paragraph className="template-section-header__description">
-                Common questions about our team and culture
-              </Paragraph>
-            </div>
-
-            <FAQSection faqs={teamPageFAQs} />
-          </div>
-        </Container>
-      </Section>
-
-      {/* CTA Section */}
-      <CTASection
-        title={teamPageCTA.title}
-        description={teamPageCTA.description}
-        primaryButtonText={teamPageCTA.buttons[0].text}
-        primaryButtonPage={teamPageCTA.buttons[0].page as any}
-        secondaryButtonText={teamPageCTA.buttons[1].text}
-        secondaryButtonPage={teamPageCTA.buttons[1].page as any}
-        gradient="blue"
+      {/* ── CTA Section ── */}
+      <FunkyCTA
+        title="Join the team?"
+        description="We are always looking for talented individuals to join our mission."
+        buttonText="View Careers"
+        buttonPage="careers"
+        benefits={[
+          'Remote-first work culture',
+          'Competitive compensation',
+          'Learning & growth budget',
+          'Work with cutting-edge WordPress tech'
+        ]}
       />
     </>
   );

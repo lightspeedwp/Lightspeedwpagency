@@ -11,13 +11,7 @@
  * @see /src/styles/templates/archive.css
  */
 
-import { Container } from '@/app/components/common/Container';
-import { Section } from '@/app/components/common/Section';
-import { Breadcrumbs } from '@/app/components/common/Breadcrumbs';
-import { allPosts } from '@/app/data/posts-formats';
 import { Download, ExternalLink } from 'lucide-react';
-import '@/styles/blocks/post-formats/link.css';
-import '@/styles/templates/archive.css';
 
 export function LinkArchiveTemplate() {
   const linkPosts = allPosts.filter(post => post.format === 'link');
@@ -25,17 +19,13 @@ export function LinkArchiveTemplate() {
 
   return (
     <>
-      <section className="archive-breadcrumbs">
-        <Container>
-          <Breadcrumbs 
-            items={[
-              { label: 'Home', href: '/' },
-              { label: 'Blog', href: '/blog' },
-              { label: 'Downloads', href: '/link-archive' }
-            ]}
-          />
-        </Container>
-      </section>
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Blog', href: '/blog' },
+          { label: 'Links' },
+        ]}
+      />
 
       <Section spacing="lg">
         <Container>

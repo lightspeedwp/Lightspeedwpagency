@@ -13,12 +13,11 @@ import { Container } from '../../common/Container';
 import { Section } from '../../common/Section';
 import { Heading } from '../../common/Heading';
 import { Check, X, AlertTriangle, TrendingUp, Zap, ArrowLeft } from 'lucide-react';
-import { useNavigation } from '../../../contexts/NavigationContext';
+import { Link } from 'react-router';
+import { slugToPath } from '../../../utils/route-map';
 import { DesignSystemPerformanceTester, type ComplianceScorecard as ComplianceScorecardType, type PerformanceTestResult } from '../../../utils/performanceTester';
-import '@/styles/blocks/dev-tools/compliance-scorecard.css';
 
 export function ComplianceScorecard() {
-  const { navigateTo } = useNavigation();
   const [scorecard, setScorecard] = useState<ComplianceScorecardType | null>(null);
   const [results, setResults] = useState<PerformanceTestResult[]>([]);
   const [loading, setLoading] = useState(true);
@@ -68,13 +67,13 @@ export function ComplianceScorecard() {
       <main className="wp-block-devtools-compliance-scorecard">
         <Section background="default" className="wp-py-24">
           <Container>
-            <button 
-              onClick={() => navigateTo('dev-tools')}
+            <Link 
+              to={slugToPath('dev-tools')}
               className="wp-block-devtools-compliance-scorecard__back-button"
             >
               <ArrowLeft size={16} />
               Back to Dev Tools
-            </button>
+            </Link>
             <div className="wp-block-devtools-compliance-scorecard__loading">
               <div className="wp-block-devtools-compliance-scorecard__spinner" />
               <Heading level={2}>Running Compliance Tests...</Heading>
@@ -93,13 +92,13 @@ export function ComplianceScorecard() {
       <main className="wp-block-devtools-compliance-scorecard">
         <Section background="default" className="wp-py-24">
           <Container>
-            <button 
-              onClick={() => navigateTo('dev-tools')}
+            <Link 
+              to={slugToPath('dev-tools')}
               className="wp-block-devtools-compliance-scorecard__back-button"
             >
               <ArrowLeft size={16} />
               Back to Dev Tools
-            </button>
+            </Link>
             <div className="wp-block-devtools-compliance-scorecard__loading">
               <div className="wp-block-devtools-compliance-scorecard__error-icon">
                 <X size={32} />
@@ -127,13 +126,13 @@ export function ComplianceScorecard() {
       {/* Hero Section */}
       <Section background="default" className="wp-py-16">
         <Container>
-          <button 
-            onClick={() => navigateTo('dev-tools')}
+          <Link 
+            to={slugToPath('dev-tools')}
             className="wp-block-devtools-compliance-scorecard__back-button"
           >
             <ArrowLeft size={16} />
             Back to Dev Tools
-          </button>
+          </Link>
           <div className="wp-block-devtools-compliance-scorecard__header">
             <div className="wp-block-devtools-compliance-scorecard__badge">
               <Zap size={16} />

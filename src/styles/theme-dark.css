@@ -115,6 +115,13 @@
    */
   --primary-soft: #7BE7FF1A;      /* 10% primary cyan */
   
+  /**
+   * Funky Neon Color (Dark Mode)
+   * Usage: Glow effects, neon shadows
+   * Hex: #7BE7FF (Matches Primary for consistency)
+   */
+  --neon-color: #7BE7FF;
+  
   
   /* ----------------------------------------
      Secondary Brand Colors (Dark Mode)
@@ -410,19 +417,19 @@
    * Glass background (subtle, dark mode)
    * Usage: Glassmorphism cards, hero overlays
    */
-  --glass-bg: #00000014;               /* 8% black */
+  --glass-bg: rgba(0, 0, 0, 0.4);               /* Darker glass base */
   
   /**
    * Glass background (stronger, dark mode)
    * Usage: Prominent glass elements
    */
-  --glass-bg-strong: #00000026;        /* 15% black */
+  --glass-bg-strong: rgba(0, 0, 0, 0.75);        /* Near opaque dark glass */
   
   /**
    * Glass border color (dark mode)
    * Usage: Borders on glass elements
    */
-  --glass-border: #FFFFFF14;     /* 8% white */
+  --glass-border: rgba(255, 255, 255, 0.1);     /* Subtle white border */
   
   /**
    * Glass text color (dark mode)
@@ -498,11 +505,12 @@
    * Logo for dark mode uses LIGHT wordmark
    * The Logo component automatically switches based on theme
    * 
-   * Logo colors (never change):
-   * - Icon: #FF3131 (red) and #CC3F23 (dark red) - Lightning bolt
-   * - Wordmark: Light (#FFFFFF) in dark mode, Dark (#090909) in light mode
+   * Logo colors:
+   * - Icon: White in dark mode (all-white logo variant)
+   * - Wordmark: Light (#FFFFFF) in dark mode
+   * Brand rules: All white logo (dark mode)
    */
   --logo-wordmark-color: #FFFFFF;  /* Light wordmark for dark backgrounds */
-  --logo-icon-primary: #FF3131;      /* Red - never changes */
-  --logo-icon-secondary: #CC3F23;    /* Dark red - never changes */
+  --logo-icon-primary: #FFFFFF;    /* White bolt — all-white logo in dark mode */
+  --logo-icon-secondary: #FFFFFF;  /* White bolt — consistent fill */
 }

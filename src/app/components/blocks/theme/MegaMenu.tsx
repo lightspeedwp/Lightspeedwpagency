@@ -10,7 +10,6 @@
 
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
-import '@/styles/blocks/theme/mega-menu.css';
 
 export interface MegaMenuItem {
   label: string;

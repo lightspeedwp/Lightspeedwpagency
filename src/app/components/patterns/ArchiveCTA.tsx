@@ -34,7 +34,7 @@ import { Section } from '../common/Section';
 import { Button } from '../blocks/design/Buttons';
 import { EnquiryModal } from '../ui/EnquiryModal';
 import type { CTAData } from '../../data/cta';
-import '@/styles/patterns/archive-cta.css';
+
 
 export interface ArchiveCTAProps {
   /** CTA content data */
@@ -90,13 +90,13 @@ export function ArchiveCTA({
               aria-label="Call to action"
             >
               <Button
-                variant={ctaData.buttonVariant || 'primary'}
+                variant={ctaData.variant === 'highlighted' ? 'primary' : 'outline'}
                 size="lg"
                 onClick={() => setIsModalOpen(true)}
-                data-variant={ctaData.buttonVariant || 'primary'}
+                data-variant={ctaData.variant || 'default'}
                 aria-haspopup="dialog"
               >
-                {ctaData.buttonText}
+                {ctaData.primaryButton.text}
               </Button>
             </div>
           </div>
@@ -107,8 +107,8 @@ export function ArchiveCTA({
       <EnquiryModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        title={ctaData.modalTitle || ctaData.title}
-        description={ctaData.modalDescription || ctaData.description}
+        title={ctaData.title}
+        description={ctaData.description}
         onSubmit={handleEnquirySubmit}
       />
     </>

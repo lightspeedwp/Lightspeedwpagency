@@ -13,11 +13,10 @@
 
 import { Container } from '@/app/components/common/Container';
 import { Section } from '@/app/components/common/Section';
-import { Breadcrumbs } from '@/app/components/common/Breadcrumbs';
+import { BreadcrumbPart } from '@/app/components/parts/BreadcrumbPart';
 import { allPosts } from '@/app/data/posts-formats';
 import { MessageSquare, Hash, Share2, MoreHorizontal } from 'lucide-react';
-import '@/styles/blocks/post-formats/aside-stream.css';
-import '@/styles/templates/archive.css';
+
 
 export function AsideStreamTemplate() {
   const asidePosts = allPosts.filter(post => post.format === 'aside');
@@ -28,18 +27,13 @@ export function AsideStreamTemplate() {
 
   return (
     <>
-      {/* Breadcrumbs */}
-      <section className="archive-breadcrumbs">
-        <Container>
-          <Breadcrumbs 
-            items={[
-              { label: 'Home', href: '/' },
-              { label: 'Blog', href: '/blog' },
-              { label: 'Status Updates', href: '/blog/format/aside-stream' }
-            ]}
-          />
-        </Container>
-      </section>
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Blog', href: '/blog' },
+          { label: 'Stream' },
+        ]}
+      />
 
       <Section spacing="lg">
         <Container>

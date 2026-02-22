@@ -1,274 +1,117 @@
 /**
- * Data Index - Centralized Data Exports
- * 
- * Import all mock data from a single location.
- * This file provides a clean API for accessing all site data.
- * 
- * **Usage:**
- * ```typescript
- * import { portfolioProjects, blogPosts, sitePages } from '../data';
- * ```
- * 
- * **Data Structure:**
- * - Site Pages: Complete page hierarchy and navigation
- * - Portfolio Projects: Real-world WordPress/WooCommerce projects
- * - Blog Posts: 2025 blog posts with authors and tags
- * - FAQs: Question collections for all templates
- * 
- * **WordPress Mapping:**
- * - Pages → WordPress Pages (post_type: 'page')
- * - Projects → Custom Post Type: 'portfolio' or 'project'
- * - Posts → WordPress Posts (post_type: 'post')
- * - FAQs → Custom Post Type: 'faq'
+ * Data Exports
+ *
+ * Central export file for all data modules.
+ *
+ * NOTE: Some page-specific data files define local interfaces (FAQ, ProcessStep)
+ * that collide with canonical definitions in faqs.ts / process.ts.
+ * Those files are excluded from this barrel and must be imported directly:
+ *   - pages.ts          (deprecated wrapper — use site-pages.ts)
+ *   - services-page.ts  (local ProcessStep + FAQ)
+ *   - services-detailed.ts (local ProcessStep)
+ *   - service-page.ts   (local ProcessStep)
  */
 
-// ========================================
-// SITE PAGES & NAVIGATION
-// ========================================
+/* Core content */
+export * from './site-pages';
+export * from './blog-posts';
+export * from './portfolio-projects';
+export * from './services';
+export * from './solutions';
+export * from './about';
+export * from './team';
+export * from './careers-page';
+export * from './contact-page';
+export * from './faqs';
+export * from './pricing';
+export * from './testimonials';
+export * from './guarantees';
+export * from './front-page';
+export * from './process';
+export * from './cta';
+export * from './logos';
+export * from './hosting';
+export * from './taxonomies';
+export * from './tutorials';
+export * from './videos';
+export * from './podcasts';
+export * from './search';
+export * from './legal';
+export * from './company';
+export * from './maintenance';
+export * from './social-proof';
+export * from './seo';
+export * from './woocommerce';
+export * from './posts-formats';
+export * from './tour-operator';
+export * from './comparisons';
+export * from './archive-items';
 
-export {
-  // Pages
-  sitePages,
-  mainNavigation,
-  footerNavigation,
-  
-  // Helper Functions
-  getPageBySlug,
-  getPageTitle,
-  getPageUrl,
-  getChildPages,
-  getBreadcrumbs,
-  
-  // Types
-  type SitePage
-} from './site-pages';
+/* Solution pages */
+export * from './mailchimp-solution-page';
+export * from './wetu-solution-page';
+export * from './lsx-solution-page';
+export * from './wordpress-solution-page';
+export * from './woocommerce-solution-page';
+export * from './tour-operators-solution-page';
+export * from './publishers-solution-page';
 
-// ========================================
-// PORTFOLIO PROJECTS
-// ========================================
+/* Service pages (collision-free only) */
+export * from './services-landing-page';
+export * from './content-service-page';
+export * from './design-service-page';
+export * from './development-service-page';
+export * from './discovery-service-page';
+export * from './migrations-service-page';
+export * from './newsletter-service-page';
+export * from './security-service-page';
+export * from './support-service-page';
+export * from './performance-service-page';
+export * from './accessibility-service-page';
+export * from './ai-engine-service-page';
+export * from './answer-engine-service-page';
 
-export {
-  // Projects
-  portfolioProjects,
-  featuredProjects,
-  
-  // Taxonomies (Custom)
-  projectGroups,  // project_group taxonomy
-  projectTags,    // project_tag taxonomy
-  projectTypes,   // project_type taxonomy
-  
-  // Helper Functions
-  getProjectBySlug,
-  getProjectsByGroup,
-  getProjectsByTag,
-  getProjectsByType,
-  getRecentProjects,
-  searchProjects,
-  
-  // Types
-  type PortfolioProject
-} from './portfolio-projects';
+/* Template-specific data */
+export * from './why-choose-us-page';
+export * from './why-choose-us';
+export * from './faq-page';
+export * from './portfolio-archive-page';
+export * from './blog-index-page';
+export * from './blog-post-page';
+export * from './portfolio-project-page';
+export * from './guarantees-page';
+export * from './team-page';
+export * from './roi-calculator-page';
+export * from './author-archive';
+export * from './about-page';
+export * from './hosting-page';
+export * from './pricing-page';
+export * from './homepage';
+export * from './error-404';
+export * from './404-page';
+export * from './publishers-page';
+export * from './tour-operator-page';
+export * from './tour-operator-design-page';
+export * from './wetu-importer-page';
+export * from './lsx-search-page';
+export * from './lsx-sharing-page';
+export * from './lsx-design-page';
+export * from './woocommerce-redesign-page';
+export * from './wordpress-redesign-page';
 
-// ========================================
-// BLOG POSTS
-// ========================================
+/* Extended data */
+export * from './faqs-extended';
+export * from './testimonials-extended';
+export * from './solutions-detailed';
 
-export {
-  // Posts
-  blogPosts,
-  featuredPosts,
-  
-  // Authors
-  blogAuthors,
-  
-  // Taxonomies
-  blogCategories,  // category taxonomy
-  postTags,        // post_tag taxonomy
-  
-  // Helper Functions
-  getPostBySlug,
-  getAuthorBySlug,
-  getPostsByAuthor,
-  getPostsByCategory,
-  getPostsByTag,
-  getRecentPosts,
-  searchPosts,
-  
-  // Types
-  type BlogPost,
-  type BlogAuthor
-} from './blog-posts';
+/* UI data */
+export * from './page-switcher';
 
-// ========================================
-// FAQS
-// ========================================
+/* AI Integrations */
+export * from './ai-integrations-page';
 
-export {
-  // FAQ Collections
-  homepageFAQs,
-  servicesFAQs,
-  portfolioFAQs,
-  blogFAQs,
-  aboutFAQs,
-  contactFAQs,
-  teamFAQs,
-  processFAQs,
-  cultureFAQs,
-  historyFAQs,
-  hostingFAQs,
-  generalFAQs,
-  technicalFAQs,
-  
-  // Types
-  type FAQ
-} from './faqs';
+/* Service Journey */
+export * from './service-journey';
 
-// ========================================
-// BACKWARD COMPATIBILITY EXPORTS
-// ========================================
-
-// Legacy exports for existing code
-export { mainPages, allPages } from './pages';
-export { industries, categories, technologies } from './portfolio-projects';
-export { blogAuthors as authors } from './blog-posts';
-
-// ========================================
-// PRICING & PACKAGES
-// ========================================
-
-export {
-  // Packages
-  websitePackages,
-  maintenancePackages,
-  alacarte,
-  
-  // Helper Functions
-  getPackageBySlug,
-  getRecommendedPackage,
-  getPackagesByCategory,
-  
-  // Types
-  type PricingPackage,
-  type PricingFeature
-} from './pricing';
-
-// ========================================
-// LOGOS & SOCIAL PROOF
-// ========================================
-
-export {
-  // Logos
-  clientLogos,
-  partnerLogos,
-  awardLogos,
-  certificationLogos,
-  allLogos,
-  
-  // Helper Functions
-  getLogoById,
-  getLogosByCategory,
-  getLogosForHomepage,
-  getLogosForAboutPage,
-  getLogosForPortfolio,
-  
-  // Types
-  type Logo
-} from './logos';
-
-// ========================================
-// FEATURE COMPARISONS
-// ========================================
-
-export {
-  // Comparisons
-  websiteFeatureComparison,
-  maintenanceFeatureComparison,
-  
-  // Helper Functions
-  getFeatureById,
-  getFeaturesByCategory,
-  getAllCategories,
-  
-  // Types
-  type ComparisonFeature
-} from './comparisons';
-
-// ========================================
-// DATA STATISTICS
-// ========================================
-
-/**
- * Get data statistics for dashboard/admin use
- */
-export function getDataStats() {
-  const { portfolioProjects } = require('./portfolio-projects');
-  const { blogPosts, blogAuthors } = require('./blog-posts');
-  const { sitePages } = require('./site-pages');
-  
-  return {
-    pages: {
-      total: sitePages.length,
-      published: sitePages.filter((p: any) => p.showInNav).length,
-      parents: sitePages.filter((p: any) => !p.parent).length,
-      children: sitePages.filter((p: any) => p.parent).length
-    },
-    portfolio: {
-      total: portfolioProjects.length,
-      featured: portfolioProjects.filter((p: any) => p.featured).length,
-      groups: new Set(portfolioProjects.flatMap((p: any) => p.projectGroups)).size,
-      tags: new Set(portfolioProjects.flatMap((p: any) => p.projectTags)).size
-    },
-    blog: {
-      total: blogPosts.length,
-      featured: blogPosts.filter((p: any) => p.featured).length,
-      authors: blogAuthors.length,
-      categories: blogPosts.reduce((acc: any, p: any) => {
-        p.categories.forEach((cat: string) => acc.add(cat));
-        return acc;
-      }, new Set()).size,
-      tags: blogPosts.reduce((acc: any, p: any) => {
-        p.tags.forEach((tag: string) => acc.add(tag));
-        return acc;
-      }, new Set()).size
-    }
-  };
-}
-
-/**
- * Get all content for search indexing
- */
-export function getAllContent() {
-  const { portfolioProjects } = require('./portfolio-projects');
-  const { blogPosts } = require('./blog-posts');
-  const { sitePages } = require('./site-pages');
-  
-  return {
-    pages: sitePages,
-    projects: portfolioProjects,
-    posts: blogPosts
-  };
-}
-
-/**
- * Search all content types
- */
-export function searchAllContent(query: string) {
-  const { searchProjects } = require('./portfolio-projects');
-  const { searchPosts } = require('./blog-posts');
-  const { sitePages, getPageUrl } = require('./site-pages');
-  
-  const lowerQuery = query.toLowerCase();
-  
-  return {
-    projects: searchProjects(query),
-    posts: searchPosts(query),
-    pages: sitePages.filter((p: any) =>
-      p.title.toLowerCase().includes(lowerQuery) ||
-      (p.excerpt && p.excerpt.toLowerCase().includes(lowerQuery))
-    ).map((p: any) => ({
-      ...p,
-      url: getPageUrl(p.slug),
-      type: 'page'
-    }))
-  };
-}
+/* Journey Stage Pages */
+export * from './journey-stage-pages';

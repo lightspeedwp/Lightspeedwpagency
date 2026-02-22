@@ -11,32 +11,21 @@
  * @see /src/styles/templates/archive.css
  */
 
-import { Container } from '@/app/components/common/Container';
-import { Section } from '@/app/components/common/Section';
-import { Breadcrumbs } from '@/app/components/common/Breadcrumbs';
-import { allPosts } from '@/app/data/posts-formats';
-import { useNavigation } from '@/app/contexts/NavigationContext';
-import '@/styles/blocks/post-formats/standard.css';
-import '@/styles/templates/archive.css';
+import { Link } from 'react-router';
 
 export function StandardArchiveTemplate() {
-  const { navigateTo } = useNavigation();
   const standardPosts = allPosts.filter(post => post.format === 'standard');
   const posts = [...standardPosts, ...standardPosts, ...standardPosts];
 
   return (
     <>
-      <section className="archive-breadcrumbs">
-        <Container>
-          <Breadcrumbs 
-            items={[
-              { label: 'Home', href: '/' },
-              { label: 'Blog', href: '/blog' },
-              { label: 'Articles', href: '/blog/format/standard' }
-            ]}
-          />
-        </Container>
-      </section>
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Blog', href: '/blog' },
+          { label: 'Articles' },
+        ]}
+      />
 
       <Section spacing="lg">
         <Container>
@@ -47,13 +36,10 @@ export function StandardArchiveTemplate() {
 
           <div className="standard-archive__grid">
             {posts.map((post, index) => (
-              <article 
-                key={`${post.id}-${index}`} 
+              <Link 
+                key={`${post.id}-${index}`}
+                to="#"
                 className="wp-block-standard-card"
-                onClick={() => navigateTo('standard-single')}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); navigateTo('standard-single'); } }}
               >
                 <div className="wp-block-standard-card__thumb">
                   {post._embedded?.['wp:featuredmedia']?.[0]?.source_url && (
@@ -77,7 +63,7 @@ export function StandardArchiveTemplate() {
                   />
                   <span className="wp-block-standard-card__read-more">Read More &rarr;</span>
                 </div>
-              </article>
+              </Link>
             ))}
           </div>
         </Container>

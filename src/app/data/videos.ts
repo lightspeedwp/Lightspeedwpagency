@@ -11,6 +11,9 @@
  * @see /guidelines/templates/video-archive.md
  */
 
+import { videoCategories, videoTags, TaxonomyTerm } from './taxonomies';
+export { videoCategories, videoTags };
+
 export interface Video {
   id: string;
   slug: string;
@@ -29,55 +32,8 @@ export interface Video {
   views: number;
 }
 
-export interface VideoCategory {
-  slug: string;
-  name: string;
-  description: string;
-  count: number;
-}
-
-export interface VideoTag {
-  slug: string;
-  name: string;
-  count: number;
-}
-
-/**
- * Video Categories
- */
-export const videoCategories: VideoCategory[] = [
-  {
-    slug: 'tutorials',
-    name: 'Tutorials',
-    description: 'Step-by-step guides for WordPress and WooCommerce development.',
-    count: 2
-  },
-  {
-    slug: 'webinars',
-    name: 'Webinars',
-    description: 'Live and recorded sessions with industry experts.',
-    count: 1
-  },
-  {
-    slug: 'case-studies',
-    name: 'Case Studies',
-    description: 'Video walkthroughs of our client projects and results.',
-    count: 1
-  }
-];
-
-/**
- * Video Tags
- */
-export const videoTags: VideoTag[] = [
-  { slug: 'wordpress', name: 'WordPress', count: 3 },
-  { slug: 'block-theme', name: 'Block Theme', count: 2 },
-  { slug: 'gutenberg', name: 'Gutenberg', count: 2 },
-  { slug: 'woocommerce', name: 'WooCommerce', count: 1 },
-  { slug: 'performance', name: 'Performance', count: 1 },
-  { slug: 'accessibility', name: 'Accessibility', count: 1 },
-  { slug: 'design-system', name: 'Design System', count: 1 }
-];
+export type VideoCategory = TaxonomyTerm;
+export type VideoTag = TaxonomyTerm;
 
 /**
  * Videos
@@ -86,7 +42,7 @@ export const videos: Video[] = [
   {
     id: 'getting-started-block-themes',
     slug: 'getting-started-block-themes',
-    title: 'Getting Started with WordPress Block Themes',
+    title: 'Getting started with WordPress block themes',
     excerpt: 'Learn the fundamentals of WordPress Full Site Editing and block themes. This tutorial covers theme.json configuration, template hierarchy, and pattern creation.',
     content: 'In this comprehensive tutorial, we walk through everything you need to know to get started with WordPress block themes. From setting up your development environment to creating your first custom template, this video covers the essentials of modern WordPress theming.',
     featuredImage: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200',
@@ -103,7 +59,7 @@ export const videos: Video[] = [
   {
     id: 'design-system-wordpress',
     slug: 'design-system-wordpress',
-    title: 'Building a Design System for WordPress',
+    title: 'Building a design system for WordPress',
     excerpt: 'Discover how to implement a scalable design system using CSS variables, theme.json presets, and reusable block patterns for enterprise WordPress projects.',
     content: 'Design systems are essential for maintaining consistency across large WordPress projects. This video demonstrates our approach to building token-driven design systems that integrate seamlessly with WordPress Full Site Editing.',
     featuredImage: 'https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=1200',
@@ -120,7 +76,7 @@ export const videos: Video[] = [
   {
     id: 'woocommerce-performance-webinar',
     slug: 'woocommerce-performance-webinar',
-    title: 'WooCommerce Performance Masterclass',
+    title: 'WooCommerce performance masterclass',
     excerpt: 'Join our team as we discuss advanced performance optimization techniques for WooCommerce stores, including caching strategies, database optimization, and lazy loading.',
     content: 'In this recorded webinar, our senior developers share battle-tested strategies for optimising WooCommerce store performance. Learn about server-side caching, image optimization, critical CSS, and more.',
     featuredImage: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200',
@@ -137,7 +93,7 @@ export const videos: Video[] = [
   {
     id: 'accessible-wordpress-walkthrough',
     slug: 'accessible-wordpress-walkthrough',
-    title: 'Accessibility Audit: Real Client Walkthrough',
+    title: 'Accessibility audit: Real client walkthrough',
     excerpt: 'Watch as we perform a live accessibility audit on a client website, identifying WCAG 2.1 AA violations and implementing fixes in real time using block theme patterns.',
     content: 'Accessibility is not optional. In this case study video, we walk through a real client project where we audited and remediated accessibility issues to achieve full WCAG 2.1 AA compliance.',
     featuredImage: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?w=1200',

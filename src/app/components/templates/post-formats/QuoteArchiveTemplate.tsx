@@ -13,11 +13,10 @@
 
 import { Container } from '@/app/components/common/Container';
 import { Section } from '@/app/components/common/Section';
-import { Breadcrumbs } from '@/app/components/common/Breadcrumbs';
+import { BreadcrumbPart } from '@/app/components/parts/BreadcrumbPart';
 import { allPosts } from '@/app/data/posts-formats';
 import { Quote } from 'lucide-react';
-import '@/styles/blocks/post-formats/quote.css';
-import '@/styles/templates/archive.css';
+
 
 export function QuoteArchiveTemplate() {
   const quotePosts = allPosts.filter(post => post.format === 'quote');
@@ -25,19 +24,15 @@ export function QuoteArchiveTemplate() {
 
   return (
     <>
-      <section className="archive-breadcrumbs">
-        <Container>
-          <Breadcrumbs 
-            items={[
-              { label: 'Home', href: '/' },
-              { label: 'Blog', href: '/blog' },
-              { label: 'Quotes', href: '/quote-archive' }
-            ]}
-          />
-        </Container>
-      </section>
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Blog', href: '/blog' },
+          { label: 'Quotes' },
+        ]}
+      />
 
-      <Section spacing="lg" sectionStyle="secondary">
+      <Section spacing="lg">
         <Container>
           <header className="archive-header">
             <h1 className="archive-header__title">Inspiration &amp; Quotes</h1>

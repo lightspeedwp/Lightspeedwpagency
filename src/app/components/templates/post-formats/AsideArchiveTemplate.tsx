@@ -13,31 +13,24 @@
 
 import { Container } from '@/app/components/common/Container';
 import { Section } from '@/app/components/common/Section';
-import { Breadcrumbs } from '@/app/components/common/Breadcrumbs';
+import { BreadcrumbPart } from '@/app/components/parts/BreadcrumbPart';
 import { allPosts } from '@/app/data/posts-formats';
 import { Hash } from 'lucide-react';
-import { useNavigation } from '@/app/contexts/NavigationContext';
-import '@/styles/blocks/post-formats/aside.css';
-import '@/styles/templates/archive.css';
+import { Link } from 'react-router';
 
 export function AsideArchiveTemplate() {
-  const { navigateTo } = useNavigation();
   const asidePosts = allPosts.filter(post => post.format === 'aside');
   const posts = [...asidePosts, ...asidePosts, ...asidePosts, ...asidePosts];
 
   return (
     <>
-      <section className="archive-breadcrumbs">
-        <Container>
-          <Breadcrumbs 
-            items={[
-              { label: 'Home', href: '/' },
-              { label: 'Blog', href: '/blog' },
-              { label: 'Quick Updates', href: '/aside-archive' }
-            ]}
-          />
-        </Container>
-      </section>
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Blog', href: '/blog' },
+          { label: 'Notes' },
+        ]}
+      />
 
       <Section spacing="lg">
         <Container>
@@ -49,13 +42,10 @@ export function AsideArchiveTemplate() {
 
             <div className="wp-block-aside-timeline">
               {posts.map((post, index) => (
-                <article 
-                  key={`${post.id}-${index}`} 
+                <Link 
+                  key={`${post.id}-${index}`}
+                  to="#"
                   className="wp-block-aside-timeline-item"
-                  onClick={() => navigateTo('aside-single')}
-                  role="button"
-                  tabIndex={0}
-                  onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); navigateTo('aside-single'); } }}
                 >
                   <div className="wp-block-aside-marker"></div>
                   
@@ -71,7 +61,7 @@ export function AsideArchiveTemplate() {
                       </div>
                     </div>
                   </div>
-                </article>
+                </Link>
               ))}
             </div>
           </div>

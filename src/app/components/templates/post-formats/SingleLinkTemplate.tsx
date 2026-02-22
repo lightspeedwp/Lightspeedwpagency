@@ -8,30 +8,26 @@
 
 import { Container } from '@/app/components/common/Container';
 import { Section } from '@/app/components/common/Section';
-import { Breadcrumbs } from '@/app/components/common/Breadcrumbs';
-import { linkPost } from '@/app/data/posts-formats';
 import { Link as LinkIcon, ExternalLink, Calendar } from 'lucide-react';
-import '@/styles/blocks/post-formats/link.css';
-import '@/styles/templates/single-post.css';
+
+import { BreadcrumbPart } from '@/app/components/parts/BreadcrumbPart';
+import { linkPost } from '@/app/data/posts-formats';
 
 export function SingleLinkTemplate() {
   const post = linkPost;
 
   return (
     <>
-      <section className="single-post-breadcrumbs">
-          <Container>
-            <Breadcrumbs 
-              items={[
-                { label: 'Home', href: '/' },
-                { label: 'Blog', href: '/blog' },
-                { label: 'Links', href: '/link-archive' },
-                { label: 'Link' }
-              ]}
-            />
-          </Container>
-        </section>
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Blog', href: '/blog' },
+          { label: 'Links', href: '/link-archive' },
+          { label: post.title.rendered },
+        ]}
+      />
 
+      <article>
         <Section spacing="lg">
           <Container>
             <div className="wp-max-w-2xl wp-mx-auto">
@@ -62,6 +58,7 @@ export function SingleLinkTemplate() {
           </Container>
         </Section>
 
+      </article>
     </>
   );
 }

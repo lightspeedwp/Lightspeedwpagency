@@ -13,7 +13,7 @@
  */
 
 import { useState, useMemo, useCallback } from 'react';
-import { useNavigation } from '../../contexts/NavigationContext';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import {
   Search,
   ChevronRight,
@@ -31,7 +31,7 @@ import {
   SearchX,
   BookOpen,
 } from 'lucide-react';
-import '@/styles/templates/docs-generator.css';
+
 
 /* ═══════════════════════════════════════════
  * Types
@@ -118,23 +118,24 @@ const componentDocs: ComponentDoc[] = [
   },
   {
     id: 'breadcrumbs',
-    name: 'Breadcrumbs',
-    category: 'Common',
-    filePath: '/src/app/components/blocks/theme/Breadcrumbs.tsx',
+    name: 'Breadcrumbs + BreadcrumbPart',
+    category: 'Parts',
+    filePath: '/src/app/components/parts/BreadcrumbPart.tsx',
     cssPath: '/src/styles/blocks/theme/breadcrumbs.css',
-    description: 'Navigation breadcrumb trail. WordPress concept: Template part (parts/breadcrumbs.html). Uses wp-block-breadcrumbs-section wrapper class. Single canonical implementation with proxy re-exports.',
+    description: 'Navigation breadcrumb trail. WordPress concept: Template part (parts/breadcrumbs.html). The BreadcrumbPart wrapper provides the standard wp-block-breadcrumbs-section container with optional --border variant. Use BreadcrumbPart in templates; use raw Breadcrumbs only inside hero overlays or custom block compositions.',
     wpBlock: 'core/navigation (breadcrumbs)',
     props: [
-      { name: 'items', type: 'BreadcrumbItem[]', required: true, description: 'Array of breadcrumb items with label and optional page slug' },
+      { name: 'items', type: 'BreadcrumbItem[]', required: true, description: 'Array of breadcrumb items with label and optional href string' },
+      { name: 'variant', type: "'default' | 'border'", required: false, default: "'border'", description: 'Section wrapper variant (border adds bottom accent line)' },
     ],
-    importStatement: "import { Breadcrumbs } from '../common/Breadcrumbs';",
-    usageExample: `<section className="wp-block-breadcrumbs-section wp-block-breadcrumbs-section--border">
-  <Breadcrumbs items={[
-    { label: 'Home', page: 'home' },
-    { label: 'Services', page: 'services' },
+    importStatement: "import { BreadcrumbPart } from '../parts/BreadcrumbPart';",
+    usageExample: `<BreadcrumbPart
+  items={[
+    { label: 'Home', href: '/' },
+    { label: 'Services', href: '/services' },
     { label: 'Design' },
-  ]} />
-</section>`,
+  ]}
+/>`,
     seeAlso: ['Section', 'Container'],
     usedIn: ['AboutTemplate', 'ServicesLandingTemplate', 'BlogIndexTemplate', 'PortfolioArchiveTemplate'],
   },
@@ -640,7 +641,6 @@ const badgeClass: Record<string, string> = {
  * ═══════════════════════════════════════════ */
 
 export function DocsGeneratorTemplate() {
-  const { navigateTo } = useNavigation();
   const [searchQuery, setSearchQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState<string>('All');
   const [expandedProps, setExpandedProps] = useState<Set<string>>(new Set());
@@ -715,15 +715,13 @@ export function DocsGeneratorTemplate() {
   return (
     <>
       {/* Breadcrumbs */}
-      <section className="wp-block-breadcrumbs-section wp-block-breadcrumbs-section--border">
-        <Breadcrumbs
-          items={[
-            { label: 'Home', page: 'home' },
-            { label: 'Developer Tools', page: 'dev-tools' },
-            { label: 'Documentation Generator' },
-          ]}
-        />
-      </section>
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', page: 'home' },
+          { label: 'Developer Tools', page: 'dev-tools' },
+          { label: 'Documentation Generator' },
+        ]}
+      />
 
       <div className="docs-gen">
         {/* Hero */}

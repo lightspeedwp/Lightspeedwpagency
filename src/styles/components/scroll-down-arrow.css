@@ -1,12 +1,16 @@
 /**
  * Scroll Down Arrow Styles
- * 
+ *
+ * Positioned absolutely at the bottom of the parent hero section.
+ * The parent MUST have `position: relative` (enforced by layout.css
+ * hero fullscreen rule).
+ *
  * 100% CSS variables.
  */
 
 .scroll-down-arrow {
   position: absolute;
-  bottom: var(--spacing-8);
+  bottom: var(--spacing-6);
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -19,12 +23,29 @@
   color: var(--foreground);
   cursor: pointer;
   z-index: 10;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition: opacity var(--transition-base) var(--ease-out),
+              transform var(--transition-base) var(--ease-out);
   animation: scroll-bounce 2s infinite;
+}
+
+/* On hero sections with light-on-dark text, inherit the hero's foreground */
+.front-page__hero .scroll-down-arrow,
+.hero-home .scroll-down-arrow,
+.about-overview__hero .scroll-down-arrow,
+.contact-page__hero .scroll-down-arrow,
+[class*="page__hero"] .scroll-down-arrow,
+[class*="-hero"] .scroll-down-arrow {
+  color: var(--primary-foreground, var(--foreground));
 }
 
 .scroll-down-arrow:hover {
   opacity: 0.8;
+}
+
+.scroll-down-arrow:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+  border-radius: var(--radius-full);
 }
 
 .scroll-down-arrow__icon {
@@ -44,9 +65,23 @@
   }
 }
 
-/* Hide on mobile landscape if height is small */
+/* Hide on very short viewports (landscape phones) */
 @media (max-height: 500px) {
   .scroll-down-arrow {
     display: none;
+  }
+}
+
+/* Hide on small mobile screens where heroes are auto-height */
+@media (max-width: 640px) {
+  .scroll-down-arrow {
+    display: none;
+  }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-down-arrow {
+    animation: none;
   }
 }

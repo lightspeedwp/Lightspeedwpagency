@@ -1,25 +1,32 @@
 /**
- * Development Service Template
+ * Development Service Template - Funky Redesign
  * 
- * WordPress template: templates/page-development-service.html
+ * Theme: "Code Growth" (Emerald/Blue)
  * 
- * Development service page showcasing WordPress and WooCommerce development.
+ * Features:
+ * - Terminal Hero with typing effect
+ * - Matrix/Circuit background patterns
+ * - System Status Overview
+ * - Execution Pipeline Timeline
  * 
- * Pattern order:
- * Hero → Overview → Services → Process → CTA
+ * STRICT DESIGN SYSTEM COMPLIANCE:
+ * - No inline Tailwind classes
+ * - All styling via @/styles/templates/page-service-development.css
+ * - Colors mapped to global semantic tokens for auto light/dark
  */
 
+import { useEffect, useState } from 'react';
 import { Container } from '../common/Container';
-import { Section } from '../common/Section';
-import { Heading } from '../blocks/text/Heading';
-import { Paragraph } from '../blocks/text/Paragraph';
-import { Hero } from '../patterns/Hero';
-import { ServiceOfferingsGrid } from '../patterns/ServiceOfferingsGrid';
-import { ProcessSteps } from '../patterns/ProcessSteps';
-import { CTASection } from '../patterns/CTASection';
+import { Button } from '../blocks/design/Buttons';
+import { FunkyCTA } from '../patterns/FunkyCTA';
+import { RelatedServicesGrid } from '../patterns/RelatedServicesGrid';
+import { IncludedInSolutions } from '../patterns/IncludedInSolutions';
+import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
+import { developmentServiceDetailed } from '../../data/services-detailed';
+import { ScrollReveal } from '../../hooks/useScrollReveal';
+import { ScrollDownArrow } from '../common/ScrollDownArrow';
 import { 
   Code,
-  ArrowRight,
   Globe,
   ShoppingCart,
   Move,
@@ -30,142 +37,320 @@ import {
   Rocket,
   Shield,
   TrendingUp,
-  CheckCircle
+  CheckCircle,
+  Terminal,
+  Cpu,
+  Server,
+  Database
 } from 'lucide-react';
-import '@/styles/templates/service-detail.css';
-
-// Import detailed data
-import { developmentServiceDetailed } from '../../data/services-detailed';
-import { developmentProcess } from '../../data/company';
 
 export function DevelopmentServiceTemplate() {
   const data = developmentServiceDetailed;
+  const [typedText, setTypedText] = useState('');
+  const fullText = "Engineering the Future of WordPress";
 
-  // Icon mapping for Sub-services
+  useEffect(() => {
+    let index = 0;
+    const timer = setInterval(() => {
+      setTypedText(fullText.slice(0, index + 1));
+      index++;
+      if (index === fullText.length) clearInterval(timer);
+    }, 100);
+    return () => clearInterval(timer);
+  }, []);
+
+  // Icon mapping
   const serviceIcons: Record<string, any> = {
     'wordpress-websites': Globe,
     'woocommerce-stores': ShoppingCart,
     'migrations': Move,
     'theme-development': Layout,
-    'plugin-development': Plug
+    'plugin-development': Plug,
+    'api-integration': Server,
+    'headless-wordpress': Cpu,
+    'custom-wordpress': Code
   };
 
-  // Icon mapping for Process steps (from company.ts)
   const processIcons: Record<string, any> = {
-    'discover': Search,
-    'plan': Map,
-    'build': Code,
-    'publish': Rocket,
-    'maintain': Shield,
+    'architecture': Map,
+    'development': Code,
+    'testing': Search,
+    'deployment': Rocket,
+    'maintenance': Shield,
     'grow': TrendingUp
   };
 
-  // Map data to component formats
-  const offerings = data.subServices.map(service => ({
-    id: service.id,
-    icon: serviceIcons[service.id] || Code,
-    title: service.title,
-    description: service.description,
-    buttonText: `More About ${service.title}`,
-    buttonPage: 'contact' as const
-  }));
-
-  // Use developmentProcess from company.ts as services-detailed.ts process is empty
-  const processSteps = developmentProcess.map(step => ({
-    step: step.number,
-    icon: processIcons[step.id] || CheckCircle,
-    title: step.title,
-    description: step.description
-  }));
-
   return (
     <>
-      {/* Hero Section */}
-      <Hero
-        variant="service"
-        align="left"
-        maxWidth="6xl"
-        gradient="blue"
-        spacing="xl"
-        badge={{
-          icon: Code,
-          text: 'Development'
-        }}
-        title={data.headline}
-        description={data.tagline}
-        buttons={[
-          {
-            label: 'Consult us on WordPress',
-            page: 'contact',
-            variant: 'default',
-            icon: ArrowRight,
-          },
-          {
-            label: 'View Case Studies',
-            page: 'portfolio-archive',
-            variant: 'outline',
-            style: {
-              borderColor: 'var(--overlay-white-medium)',
-              color: 'var(--color-white)',
-              backgroundColor: 'transparent'
-            }
-          }
-        ]}
-      />
-
-      {/* Overview Section (Why LightSpeed) */}
-      <Section spacing="xl" background="muted">
+      {/* ============================================
+          HERO SECTION (Terminal)
+          ============================================ */}
+      <section className="dev-page__hero">
+        <div className="dev-page__code-rain" aria-hidden="true" />
+        <div className="dev-page__scan-line" aria-hidden="true" />
+        <div className="dev-page__glow-orb" aria-hidden="true" />
+        <div className="dev-page__glow-orb dev-page__glow-orb--secondary" aria-hidden="true" />
+        
         <Container>
-          <div className="wp-text-center wp-max-w-4xl wp-mx-auto">
-            <Heading level={2} align="center" className="wp-mb-6">
-              {data.whyLightSpeed.title}
-            </Heading>
-            <Paragraph size="large" align="center" style={{ color: 'var(--muted-foreground)' }}>
-              {data.whyLightSpeed.description}
-            </Paragraph>
+          <ScrollReveal animation="fade-up">
+            <div className="dev-page__hero-content">
+              <span className="dev-page__hero-badge">⚡ Custom WordPress Development</span>
+              <div className="dev-page__terminal-window">
+                <div className="dev-page__terminal-header">
+                  <div className="dev-page__terminal-dots">
+                    <div className="dev-page__terminal-dot dev-page__terminal-dot--red" />
+                    <div className="dev-page__terminal-dot dev-page__terminal-dot--yellow" />
+                    <div className="dev-page__terminal-dot dev-page__terminal-dot--green" />
+                  </div>
+                  <div className="dev-page__terminal-title">
+                    user@lightspeed:~/projects/future
+                  </div>
+                </div>
+                
+                <div className="dev-page__terminal-body">
+                  <div className="dev-page__command">
+                    $ init_sequence --optimize
+                  </div>
+                  
+                  <h1 className="dev-page__hero-title">
+                    {typedText}<span className="dev-page__cursor" />
+                  </h1>
+                  
+                  <p className="dev-page__hero-desc">
+                    {'>'} {data.tagline}
+                    <br />
+                    {'>'} System Status: <span className="dev-page__status-ok">OPTIMAL</span>
+                  </p>
+
+                  <div className="dev-page__hero-actions">
+                    <Button
+                      variant="default"
+                      size="lg"
+                      page="contact"
+                      className="dev-page__cta-button"
+                    >
+                      Execute Project
+                    </Button>
+                    <Button
+                      variant="outline"
+                      size="lg"
+                      page="portfolio-archive"
+                      className="dev-page__outline-button"
+                    >
+                      View Source Code
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ScrollReveal>
+        </Container>
+        <ScrollDownArrow targetId="dev-overview" />
+      </section>
+
+      {/* ============================================
+          OVERVIEW (System Status)
+          ============================================ */}
+      <section id="dev-overview" className="dev-page__overview">
+        <Container>
+          <div className="dev-page__overview-grid">
+            <ScrollReveal animation="fade-right">
+              <div className="dev-page__system-status">
+                <div className="dev-page__status-card">
+                  <div className="dev-page__status-icon-wrapper">
+                    <Cpu size={120} />
+                  </div>
+                  
+                  <h3 className="dev-page__status-title">
+                    <Terminal className="dev-page__feature-icon" />
+                    System Architecture
+                  </h3>
+                  
+                  <ul className="dev-page__status-list">
+                    <li className="dev-page__status-item">
+                      <span>Core Framework</span>
+                      <span className="dev-page__status-value">WordPress / Headless</span>
+                    </li>
+                    <li className="dev-page__status-item">
+                      <span>Performance</span>
+                      <span className="dev-page__status-value">99.9% Uptime</span>
+                    </li>
+                    <li className="dev-page__status-item">
+                      <span>Security Protocol</span>
+                      <span className="dev-page__status-value">Enterprise Grade</span>
+                    </li>
+                    <li className="dev-page__status-item">
+                      <span>Integration</span>
+                      <span className="dev-page__status-value">API First</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal animation="fade-left">
+              <div className="dev-page__content">
+                <span className="dev-page__label">
+                  Why LightSpeed?
+                </span>
+                <h2 className="dev-page__section-title">
+                  Code that <span className="dev-page__gradient-text">Scales</span>
+                </h2>
+                <p className="dev-page__text">
+                  {data.whyLightSpeed.description}
+                </p>
+                <div className="dev-page__feature-grid">
+                  {[
+                    'Clean Architecture',
+                    'CI/CD Pipelines',
+                    'Automated Testing',
+                    'Performance Audits'
+                  ].map((item, i) => (
+                    <div key={i} className="dev-page__feature-item">
+                      <CheckCircle size={16} className="dev-page__feature-icon" />
+                      {item}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </ScrollReveal>
           </div>
         </Container>
-      </Section>
+      </section>
 
-      {/* Development Services Offerings */}
-      <ServiceOfferingsGrid
-        title="Our Development Services"
-        description={data.description}
-        offerings={offerings}
-        columns={3}
-        backgroundColor="var(--background)"
-        spacing="xl"
-      />
-
-      {/* Process Steps Section */}
-      <Section spacing="xl">
+      {/* ============================================
+          SERVICES GRID (Tech Stack)
+          ============================================ */}
+      <section className="dev-page__services">
         <Container>
-          <div className="wp-text-center wp-mb-12">
-            <Heading level={2} align="center" className="wp-mb-4">
-              Our Development Process
-            </Heading>
-            <Paragraph size="large" align="center" className="wp-max-w-2xl wp-mx-auto" style={{ color: 'var(--muted-foreground)' }}>
-              A systematic approach to building high-quality WordPress solutions
-            </Paragraph>
+          <div className="dev-page__text-center">
+            <ScrollReveal animation="fade-up">
+              <h2 className="dev-page__section-title dev-page__section-title--neon">
+                <span className="dev-page__bracket">{'<'}</span>Capabilities <span className="dev-page__bracket">{'/>'}</span>
+              </h2>
+              <p className="dev-page__text dev-page__max-w-2xl">
+                Full-stack expertise for modern web applications.
+              </p>
+            </ScrollReveal>
           </div>
 
-          <ProcessSteps
-            steps={processSteps}
-            columns={3}
-            variant="cards"
-            badgeStyle="circle"
-            maxWidth="6xl"
-          />
+          <div className="dev-page__services-grid">
+            {data.subServices.map((service, index) => {
+              const Icon = serviceIcons[service.id] || Code;
+              return (
+                <ScrollReveal key={index} animation="fade-up" delay={index * 50}>
+                  <div className="dev-page__card">
+                    <div className="dev-page__card-icon">
+                      <Icon size={24} />
+                    </div>
+                    
+                    <h3 className="dev-page__card-title">
+                      {service.title}
+                    </h3>
+                    
+                    <p className="dev-page__card-desc">
+                      {service.description}
+                    </p>
+                    
+                    <div className="dev-page__tech-stack">
+                      {['React', 'PHP', 'Node'].map((tech, i) => (
+                        <span key={i} className="dev-page__tech-badge">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </ScrollReveal>
+              );
+            })}
+          </div>
         </Container>
-      </Section>
+      </section>
 
-      {/* CTA Section */}
-      <CTASection
+      {/* ============================================
+          PROCESS (Execution Pipeline)
+          ============================================ */}
+      <section className="dev-page__process">
+        <Container>
+          <div className="dev-page__text-center" style={{ paddingBottom: 'var(--spacing-16)' }}>
+            <ScrollReveal animation="fade-up">
+              <h2 className="dev-page__section-title dev-page__section-title--neon">
+                Execution Pipeline
+              </h2>
+              <p className="dev-page__text dev-page__max-w-2xl">
+                Our systematic approach to deployment.
+              </p>
+            </ScrollReveal>
+          </div>
+
+          <div className="dev-page__timeline">
+            <div className="dev-page__timeline-line" />
+            
+            <div className="dev-page__timeline-steps">
+              {data.process.steps.map((step, index) => {
+                const Icon = processIcons[step.id] || Code;
+                const isEven = index % 2 === 0;
+                
+                return (
+                  <ScrollReveal key={index} animation={isEven ? 'fade-left' : 'fade-right'} delay={index * 100}>
+                    <div className={`dev-page__timeline-item ${isEven ? 'dev-page__timeline-item--right' : 'dev-page__timeline-item--left'}`}>
+                      
+                      {/* Marker */}
+                      <div className="dev-page__timeline-marker">
+                        <div className="dev-page__timeline-dot" />
+                      </div>
+
+                      {/* Content */}
+                      <div className="dev-page__timeline-content">
+                        <div className="dev-page__timeline-header">
+                          <h3 className="dev-page__timeline-title">
+                            <span className="dev-page__timeline-number">0{step.number} </span>
+                            {step.title}
+                          </h3>
+                        </div>
+                        <p className="dev-page__timeline-desc">
+                          {step.description}
+                        </p>
+                      </div>
+                    </div>
+                  </ScrollReveal>
+                );
+              })}
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* ============================================
+          CTA SECTION
+          ============================================ */}
+      {data.relatedServices && data.relatedServices.length > 0 && (
+        <RelatedServicesGrid
+          title="Related Services"
+          subtitle="Extend your build with these complementary services"
+          services={data.relatedServices}
+        />
+      )}
+      <IncludedInSolutions
+        serviceSlug="development"
+        subtitle="Our development service is included in these complete solution packages"
+      />
+      <ServiceTestimonial
+        serviceSlug="development"
+        subtitle="Hear from clients who built exceptional WordPress experiences with us"
+      />
+      <FunkyCTA
         title={data.cta.title}
         description={data.cta.description}
-        primaryButtonText={data.cta.buttonText}
-        primaryButtonPage={data.cta.buttonPage as any}
-        gradient="blue"
+        buttonText={data.cta.buttonText}
+        buttonPage={data.cta.buttonPage}
+        benefits={[
+          'Clean, documented codebase',
+          'Automated CI/CD pipelines',
+          'Enterprise-grade security',
+          '99.9% uptime guarantee',
+          'Ongoing maintenance & support'
+        ]}
       />
     </>
   );

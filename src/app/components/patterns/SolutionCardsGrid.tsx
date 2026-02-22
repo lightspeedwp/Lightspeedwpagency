@@ -12,10 +12,11 @@
  */
 
 import { LucideIcon } from 'lucide-react';
+import { Link } from 'react-router';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
-import { useNavigation } from '../../contexts/NavigationContext';
-import '@/styles/patterns/solution-cards-grid.css';
+import { getPageUrl } from '../../data/pages';
+
 
 export interface SolutionCard {
   /** Unique solution ID */
@@ -61,8 +62,6 @@ export function SolutionCardsGrid({
   backgroundColor = 'var(--background)',
   maxWidth = 'full'
 }: SolutionCardsGridProps) {
-  const { navigateTo } = useNavigation();
-
   // Build grid classes
   const gridClasses = [
     'solution-cards__grid',
@@ -101,13 +100,9 @@ export function SolutionCardsGrid({
             const Icon = solution.icon;
 
             return (
-              <a
+              <Link
                 key={solution.id}
-                href={`#${solution.link}`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  if (solution.link) navigateTo(solution.link);
-                }}
+                to={getPageUrl(solution.link)}
                 className="solution-cards__card-link"
                 aria-label={`Learn more about ${solution.title}`}
               >

@@ -12,7 +12,7 @@
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { LucideIcon } from 'lucide-react';
-import '@/styles/patterns/values-section.css';
+
 
 export interface Value {
   icon: LucideIcon;

@@ -21,11 +21,11 @@
  */
 
 import { useState } from 'react';
+import { Link } from 'react-router';
 import { Hero } from '../patterns/Hero';
-import { CTASection } from '../patterns/CTASection';
+import { FunkyCTA } from '../patterns/FunkyCTA';
 import { Section } from '../common/Section';
 import { Container } from '../common/Container';
-import { useNavigation } from '../../contexts/NavigationContext';
 import { Clock, BookOpen, ArrowRight, SearchX } from 'lucide-react';
 import {
   tutorials,
@@ -33,15 +33,13 @@ import {
   getTutorialsByCategory,
   type TutorialCategory,
 } from '../../data/tutorials';
-import '@/styles/templates/tutorials-page.css';
-import '@/styles/templates/archive.css';
+
 
 /* ═══════════════════════════════════════════
  * COMPONENT
  * ═══════════════════════════════════════════ */
 
 export function TutorialsTemplate() {
-  const { navigateTo } = useNavigation();
   const [activeCategory, setActiveCategory] = useState<TutorialCategory>('All');
 
   const filteredTutorials = getTutorialsByCategory(activeCategory);
@@ -89,18 +87,10 @@ export function TutorialsTemplate() {
             {filteredTutorials.length > 0 ? (
               <div className="tutorials__grid">
                 {filteredTutorials.map((tutorial) => (
-                  <article
+                  <Link
                     key={tutorial.id}
+                    to="/blog"
                     className="tutorials__card"
-                    onClick={() => navigateTo('blog')}
-                    role="button"
-                    tabIndex={0}
-                    onKeyDown={(e) => {
-                      if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        navigateTo('blog');
-                      }
-                    }}
                     aria-label={`${tutorial.title} — ${tutorial.difficulty} level, ${tutorial.readTime} read`}
                   >
                     {/* Thumbnail */}
@@ -145,7 +135,7 @@ export function TutorialsTemplate() {
                         </span>
                       </div>
                     </div>
-                  </article>
+                  </Link>
                 ))}
               </div>
             ) : (
@@ -177,15 +167,18 @@ export function TutorialsTemplate() {
       {/* ============================================
           3. CTA
           ============================================ */}
-      <CTASection
+      <FunkyCTA
         title="Need Hands-On Help?"
         description="Our team offers training sessions and workshops tailored to your team's skill level and project goals."
-        primaryButtonText="Contact Us"
-        primaryButtonPage="contact"
-        secondaryButtonText="View Services"
-        secondaryButtonPage="services"
-        variant="highlighted"
-        gradient="blue"
+        buttonText="Contact Us"
+        buttonPage="contact"
+        benefits={[
+          'Tailored training sessions',
+          'Team skill assessments',
+          'Hands-on workshops',
+          'Block theme mastery',
+          'Ongoing mentorship'
+        ]}
       />
     </>
   );

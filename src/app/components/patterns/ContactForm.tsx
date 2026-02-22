@@ -18,7 +18,7 @@
 import { Send, CheckCircle, AlertCircle } from 'lucide-react';
 import { useState } from 'react';
 import { Button } from '../blocks/design/Buttons';
-import '@/styles/patterns/contact-form.css';
+
 
 export interface ContactFormProps {
   /** Form heading */

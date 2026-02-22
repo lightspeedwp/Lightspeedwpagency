@@ -96,3 +96,119 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+/* ============================================
+   HERO FULLSCREEN VIEWPORT
+   ============================================
+   Forces all hero sections to fill exactly one viewport
+   on page load so the scroll-down arrow is always visible.
+   User-adjustable via --hero-min-height in theme-base.css.
+   Mobile: reverts to auto height so content flows naturally.
+*/
+
+.front-page__hero,
+.hero-home,
+.about-overview__hero,
+.contact-page__hero,
+.blog-index__hero,
+.team-page__hero,
+.sg-hero,
+.faq-page__hero,
+.design-page__hero,
+.dev-page__hero,
+.content-page__hero,
+.disc-hero,
+.mig-hero,
+.seo-hero,
+.support-page__hero,
+.hosting-lab__hero,
+.newsletter-page__hero,
+.security-page__hero,
+.perf-page__hero,
+.strategy-page__hero,
+.training-page__hero,
+.a11y-page__hero,
+.aio-page__hero,
+.aeo-page__hero,
+.history-page__hero,
+.culture-page__hero,
+.process-page__hero,
+.wetu-importer__hero,
+.lsx-sharing__hero,
+.lsx-search__hero,
+.mailchimp-page__hero,
+.single-project__hero,
+.redesign-page__hero,
+.tour-design-page__hero,
+.single-post-hero {
+  min-height: var(--hero-min-height, 100vh);
+  position: relative;
+}
+
+/* Mobile: let hero content flow naturally */
+@media (max-width: 640px) {
+  .front-page__hero,
+  .hero-home,
+  .about-overview__hero,
+  .contact-page__hero,
+  .blog-index__hero,
+  .team-page__hero,
+  .sg-hero,
+  .faq-page__hero,
+  .design-page__hero,
+  .dev-page__hero,
+  .content-page__hero,
+  .disc-hero,
+  .mig-hero,
+  .seo-hero,
+  .support-page__hero,
+  .hosting-lab__hero,
+  .newsletter-page__hero,
+  .security-page__hero,
+  .perf-page__hero,
+  .strategy-page__hero,
+  .training-page__hero,
+  .a11y-page__hero,
+  .aio-page__hero,
+  .aeo-page__hero,
+  .history-page__hero,
+  .culture-page__hero,
+  .process-page__hero,
+  .wetu-importer__hero,
+  .lsx-sharing__hero,
+  .lsx-search__hero,
+  .mailchimp-page__hero,
+  .single-project__hero,
+  .redesign-page__hero,
+  .tour-design-page__hero,
+  .single-post-hero {
+    min-height: auto;
+  }
+}
+
+/* ============================================
+   ROOT LAYOUT STRUCTURE
+   ============================================ */
+
+/**
+ * Main prototype wrapper.
+ * Provides full-height flex column for sticky footer pattern.
+ */
+.lsx-design-prototype {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-primary);
+}
+
+/**
+ * Main content area.
+ * Fills remaining vertical space between header and footer.
+ */
+#main-content {
+  flex: 1 1 auto;
+  width: 100%;
+  background-color: var(--background);
+}

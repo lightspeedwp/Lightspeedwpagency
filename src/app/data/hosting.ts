@@ -1,163 +1,93 @@
 /**
- * Hosting Plans Data
+ * Hosting Data
  * 
- * Centralized hosting plan data for the LSX Design hosting services.
- * Used in HostingTemplate and service pages.
- * 
- * In WordPress, this would be a Custom Post Type: 'hosting_plan' with
- * custom fields for pricing, features, and plan details.
+ * Hosting plans and features for the Hosting Service page.
  */
 
-import { LucideIcon, Server, Lock, Zap, Clock, HeadphonesIcon, Globe } from 'lucide-react';
+import { Server, Shield, Zap, Clock, Database, Cloud } from 'lucide-react';
 
-/**
- * Hosting Plan Interface
- * 
- * Defines a hosting plan for the PricingTable pattern.
- * 
- * @property {string} id - Unique identifier
- * @property {string} name - Plan name
- * @property {string} description - Plan description
- * @property {string} price - Monthly price display
- * @property {string} period - Billing period
- * @property {string[]} features - List of features
- * @property {boolean} featured - Whether this plan is featured
- * @property {string} ctaText - Call-to-action button text
- * @property {string} ctaLink - Call-to-action link
- */
-export interface HostingPlan {
-  id: string;
-  name: string;
-  description: string;
-  price: string;
-  period: string;
-  features: string[];
-  featured?: boolean;
-  ctaText: string;
-  ctaLink: string;
-}
-
-/**
- * Hosting Feature with Icon Interface
- * 
- * Defines a feature for the features grid display.
- * 
- * @property {LucideIcon} icon - Icon component
- * @property {string} title - Feature title
- * @property {string} description - Feature description
- */
-export interface HostingFeatureDisplay {
-  icon: LucideIcon;
-  title: string;
-  description: string;
-}
-
-/**
- * Hosting Plans Data
- * 
- * Three tiers of managed WordPress hosting.
- */
-export const hostingPlans: HostingPlan[] = [
+export const hostingPlans = [
   {
     id: 'starter',
     name: 'Starter',
-    description: 'Perfect for small business websites and blogs',
     price: '$29',
-    period: 'per month',
+    period: '/month',
+    description: 'Perfect for small business websites and blogs.',
     features: [
-      '1 WordPress site',
-      '10 GB SSD storage',
-      '25,000 monthly visits',
-      'Free SSL certificate',
-      'Daily backups',
-      'Email support',
-      'WordPress auto-updates',
-      'Malware scanning'
+      '1 WordPress Site',
+      '10GB SSD Storage',
+      '25k Visits Monthly',
+      'Free SSL Certificate',
+      'Daily Backups',
+      '24/7 Support'
     ],
-    ctaText: 'Get Started',
-    ctaLink: '/contact'
+    recommended: false
   },
   {
-    id: 'professional',
-    name: 'Professional',
-    description: 'For growing businesses with multiple sites',
-    price: '$79',
-    period: 'per month',
+    id: 'growth',
+    name: 'Growth',
+    price: '$59',
+    period: '/month',
+    description: 'Ideal for growing businesses and e-commerce stores.',
     features: [
-      '3 WordPress sites',
-      '30 GB SSD storage',
-      '100,000 monthly visits',
-      'Free SSL certificates',
-      'Daily backups',
-      'Priority email & chat support',
-      'WordPress auto-updates',
-      'Malware scanning & removal',
-      'Staging environments',
-      'CDN integration'
+      '3 WordPress Sites',
+      '25GB SSD Storage',
+      '100k Visits Monthly',
+      'Free SSL & CDN',
+      'Daily Backups',
+      'Priority Support',
+      'Staging Environment'
     ],
-    featured: true,
-    ctaText: 'Start Free Trial',
-    ctaLink: '/contact'
+    recommended: true
   },
   {
-    id: 'enterprise',
-    name: 'Enterprise',
-    description: 'For high-traffic sites requiring maximum performance',
-    price: '$199',
-    period: 'per month',
+    id: 'business',
+    name: 'Business',
+    price: '$99',
+    period: '/month',
+    description: 'High performance for mission-critical websites.',
     features: [
-      'Unlimited WordPress sites',
-      '100 GB SSD storage',
-      '500,000 monthly visits',
-      'Free SSL certificates',
-      'Hourly backups',
-      '24/7 priority support',
-      'WordPress auto-updates',
-      'Malware scanning & removal',
-      'Staging environments',
-      'CDN integration',
-      'Dedicated server resources',
-      'White-label options'
+      '10 WordPress Sites',
+      '50GB SSD Storage',
+      '500k Visits Monthly',
+      'Advanced Security',
+      'Real-time Backups',
+      'VIP Support',
+      'Staging & Cloning'
     ],
-    ctaText: 'Contact Sales',
-    ctaLink: '/contact'
+    recommended: false
   }
 ];
 
-/**
- * Hosting Features Grid Data
- * 
- * Features displayed in the features grid section.
- */
-export const hostingFeatures: HostingFeatureDisplay[] = [
+export const hostingFeatures = [
   {
     icon: Zap,
-    title: 'Blazing Fast Performance',
-    description: 'Optimized WordPress hosting with SSD storage, advanced caching, and CDN integration for lightning-fast load times.'
+    title: 'Blazing Fast Speed',
+    description: 'Optimized server stack with NGINX, PHP 8.2, and object caching for sub-second load times.'
   },
   {
-    icon: Lock,
-    title: 'Enterprise Security',
-    description: 'Daily malware scans, SSL certificates, firewall protection, and automatic security updates keep your site secure.'
+    icon: Shield,
+    title: 'Fortified Security',
+    description: 'Enterprise-grade firewalls, malware scanning, and DDoS protection included standard.'
   },
   {
     icon: Clock,
-    title: 'Automatic Backups',
-    description: 'Daily automated backups with one-click restore. Your WordPress data is always safe and recoverable.'
+    title: '99.9% Uptime',
+    description: 'Reliable infrastructure ensuring your site is always available for your customers.'
+  },
+  {
+    icon: Database,
+    title: 'Automated Backups',
+    description: 'Daily off-site backups with one-click restore ensuring your data is never lost.'
+  },
+  {
+    icon: Cloud,
+    title: 'Global CDN',
+    description: 'Content delivery network with 200+ points of presence for fast loading worldwide.'
   },
   {
     icon: Server,
-    title: '99.9% Uptime Guarantee',
-    description: 'Enterprise-grade infrastructure ensures your WordPress site is always online and accessible to visitors.'
-  },
-  {
-    icon: HeadphonesIcon,
-    title: 'Expert Support',
-    description: 'WordPress specialists available 24/7 via chat, email, or phone to help with any hosting issues.'
-  },
-  {
-    icon: Globe,
-    title: 'Staging Environments',
-    description: 'Test changes safely with one-click staging environments before pushing updates to your live site.'
-  },
+    title: 'Managed Updates',
+    description: 'We handle WordPress core, theme, and plugin updates safely to prevent conflicts.'
+  }
 ];

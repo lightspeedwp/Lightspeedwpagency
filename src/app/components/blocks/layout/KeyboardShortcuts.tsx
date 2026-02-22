@@ -20,13 +20,12 @@
  */
 
 import { useState, useEffect, useCallback, useMemo } from 'react';
-import { useNavigation } from '@/app/contexts/NavigationContext';
+import { useNavigate } from 'react-router';
 import { useKeyboardShortcuts, formatShortcut, type KeyboardShortcut } from '@/app/hooks/useKeyboardShortcuts';
 import { Keyboard, X } from 'lucide-react';
-import '@/styles/components/keyboard-shortcuts.css';
 
 export function KeyboardShortcuts() {
-  const { navigateTo } = useNavigation();
+  const navigate = useNavigate();
   const [showHelp, setShowHelp] = useState(false);
 
   // Define all keyboard shortcuts
@@ -67,22 +66,22 @@ export function KeyboardShortcuts() {
     },
     {
       key: 'h',
-      action: () => navigateTo('/'),
+      action: () => navigate('/'),
       description: 'Go to homepage'
     },
     {
       key: 'b',
-      action: () => navigateTo('/blog'),
+      action: () => navigate('/blog'),
       description: 'Go to blog'
     },
     {
       key: 'p',
-      action: () => navigateTo('/portfolio'),
+      action: () => navigate('/portfolio'),
       description: 'Go to portfolio'
     },
     {
       key: 'c',
-      action: () => navigateTo('/contact'),
+      action: () => navigate('/contact'),
       description: 'Go to contact'
     }
   ];

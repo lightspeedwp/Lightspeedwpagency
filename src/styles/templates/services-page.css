@@ -1,13 +1,16 @@
 /**
- * Services Page Template Styles
- * 
- * Dedicated styles for the Services Overview page.
- * Note: Core patterns (Why Choose Us, Services Grid) use dedicated pattern CSS files.
+ * Services Page Template Styles — Funky Neon Pass
+ *
+ * BEM naming, 100% CSS variables, zero hardcoded hex/rgba.
+ * Dark-mode neon glows, gradient underlines, dot-grid overlays.
  */
+
+/* ============================================
+   SECTION HEADERS (Shared)
+   ============================================ */
 
 .services-page__section-header {
   text-align: center;
-  /* margin-bottom removed — handled by parent gap */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,6 +29,21 @@
   color: var(--foreground);
 }
 
+/* Gradient underline on section titles */
+.services-page__section-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  margin: var(--spacing-4) auto 0;
+  border-radius: var(--radius-full);
+}
+
+.dark .services-page__section-title::after {
+  box-shadow: var(--shadow-glow-sm);
+}
+
 .services-page__section-description {
   font-family: var(--font-primary);
   font-size: var(--text-lg);
@@ -41,6 +59,24 @@
 
 .services-page__process-section {
   background-color: var(--background);
+  position: relative;
+}
+
+/* Neon accent line divider */
+.services-page__process-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  border-radius: var(--radius-full);
+}
+
+.dark .services-page__process-section::before {
+  box-shadow: var(--shadow-glow-sm);
 }
 
 /* ============================================
@@ -49,12 +85,57 @@
 
 .services-page__industries-section {
   background-color: var(--muted);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Neon accent line divider */
+.services-page__industries-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  border-radius: var(--radius-full);
+  z-index: 2;
+}
+
+.dark .services-page__industries-section::before {
+  box-shadow: var(--shadow-glow-sm);
+}
+
+/* Drifting dot-grid overlay (dark mode) */
+.dark .services-page__industries-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, var(--overlay-white-soft) 1px, transparent 1px);
+  background-size: 32px 32px;
+  opacity: 0.15;
+  pointer-events: none;
+  animation: services-dots-drift 30s linear infinite;
+}
+
+@keyframes services-dots-drift {
+  0%   { transform: translate(0, 0); }
+  100% { transform: translate(32px, 32px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dark .services-page__industries-section::after {
+    animation: none;
+  }
 }
 
 .services-page__industries-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--spacing-4);
+  position: relative;
+  z-index: 1;
 }
 
 @media (min-width: 640px) {
@@ -83,18 +164,33 @@
   display: flex;
   align-items: center;
   gap: var(--spacing-3);
-  transition: all 0.2s ease;
+  transition: all var(--transition-slow) var(--ease-out);
 }
 
 .services-page__industry-card:hover {
   border-color: var(--primary);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-sm);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Dark mode: neon border glow on hover */
+.dark .services-page__industry-card:hover {
+  border-color: var(--neon-color);
+  box-shadow: var(--shadow-neon);
 }
 
 .services-page__industry-icon {
   color: var(--primary);
   flex-shrink: 0;
+  transition: all var(--transition-slow) var(--ease-out);
+}
+
+.dark .services-page__industry-icon {
+  color: var(--neon-color);
+}
+
+.services-page__industry-card:hover .services-page__industry-icon {
+  transform: scale(1.15);
 }
 
 .services-page__industry-name {
@@ -110,11 +206,28 @@
 
 .services-page__faq-section {
   background-color: var(--background);
+  position: relative;
+}
+
+/* Neon accent line divider */
+.services-page__faq-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  border-radius: var(--radius-full);
+}
+
+.dark .services-page__faq-section::before {
+  box-shadow: var(--shadow-glow-sm);
 }
 
 .services-page__faq-header {
   text-align: center;
-  /* margin-bottom removed — handled by parent gap */
   display: flex;
   flex-direction: column;
   align-items: center;
