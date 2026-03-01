@@ -5,6 +5,7 @@
  * Route: /solutions/ai-integrations/chatbots
  */
 
+import '../../../styles/templates/page-solution-ai.css';
 import { Bot } from 'lucide-react';
 import { AISubPageTemplate } from './AISubPageTemplate';
 import {

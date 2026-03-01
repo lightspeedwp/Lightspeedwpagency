@@ -14,6 +14,8 @@
  * - Hierarchical structure (parent/child pages)
  */
 
+import { slugToPath } from '../utils/route-map';
+
 export interface SitePage {
   id: string;
   slug: string;
@@ -35,8 +37,8 @@ export const sitePages: SitePage[] = [
   {
     id: 'home',
     slug: 'home',
-    title: 'Expert WordPress & WooCommerce solutions',
-    excerpt: 'We build extraordinary websites for all types of businesses.',
+    title: 'Structured Publishing Systems for WordPress',
+    excerpt: 'We engineer governed WordPress systems — tokenised design, accessible markup, and measurable performance.',
     template: 'front-page',
     showInNav: false,
     order: 1
@@ -56,7 +58,7 @@ export const sitePages: SitePage[] = [
     id: 'wordpress',
     slug: 'wordpress',
     title: 'WordPress',
-    excerpt: 'World-class WordPress development from inception all the way to deployment, providing the customised functionality and design you need to meet your needs.',
+    excerpt: 'WordPress development with governed tokens, patterns, and performance targets.',
     parent: 'solutions',
     showInNav: false
   },
@@ -64,7 +66,7 @@ export const sitePages: SitePage[] = [
     id: 'woocommerce',
     slug: 'woocommerce',
     title: 'WooCommerce',
-    excerpt: 'Tailor-made world class eCommerce functionality that delivers, we provide tailored solutions that increase profitability & eCommerce needs.',
+    excerpt: 'WooCommerce systems: checkout governance, inventory rules, conversion tracking.',
     parent: 'solutions',
     showInNav: false
   },
@@ -128,7 +130,7 @@ export const sitePages: SitePage[] = [
     id: 'ai-integrations',
     slug: 'ai-integrations',
     title: 'AI Integrations for WordPress',
-    excerpt: 'Supercharge your WordPress site with AI-powered content, SEO, chatbots, and analytics.',
+    excerpt: 'Add production-ready AI to your WordPress stack: content, SEO, chatbots, and analytics.',
     parent: 'solutions',
     showInNav: true
   },
@@ -900,9 +902,14 @@ export const sitePages: SitePage[] = [
 
 /**
  * Main Navigation (Header)
- * Real navigation from https://lightspeedwp.agency
+ * 2026 Strategic IA: Work / Solutions / Systems / Insights / About / Contact
+ * Updated Feb 27, 2026 for Phase 1 Task 1.3
  */
 export const mainNavigation = [
+  {
+    label: 'Work',
+    page: 'portfolio-archive' as const
+  },
   {
     label: 'Solutions',
     page: 'solutions' as const,
@@ -914,22 +921,29 @@ export const mainNavigation = [
     ]
   },
   {
-    label: 'Services',
-    page: 'services' as const,
+    label: 'Systems',
+    page: 'systems-hub' as const,
     children: [
-      { label: 'Discovery', page: 'discovery' as const },
-      { label: 'Design', page: 'design' as const },
-      { label: 'Development', page: 'development' as const },
-      { label: 'Support', page: 'support' as const }
+      { label: 'Design Tokens', page: 'design-tokens' as const },
+      { label: 'Pattern Governance', page: 'pattern-governance' as const },
+      { label: 'Editorial Workflows', page: 'editorial-workflows' as const },
+      { label: 'AI Search Readiness', page: 'ai-search-readiness' as const },
+      { label: 'Performance & Reliability', page: 'performance-reliability' as const }
     ]
   },
   {
-    label: 'Portfolio',
-    page: 'portfolio-archive' as const
+    label: 'Insights',
+    page: 'blog' as const
   },
   {
-    label: 'Blog',
-    page: 'blog' as const
+    label: 'About',
+    page: 'about' as const,
+    children: [
+      { label: 'About Us', page: 'about' as const },
+      { label: 'Our Team', page: 'team' as const },
+      { label: 'Our Culture', page: 'about-culture' as const },
+      { label: 'Our Process', page: 'about-process' as const }
+    ]
   },
   {
     label: 'Contact',
@@ -969,8 +983,8 @@ export const footerNavigation = {
       { label: 'Discovery', page: 'discovery' as const },
       { label: 'Design', page: 'design' as const },
       { label: 'Development', page: 'development' as const },
-      { label: 'Support', page: 'support' as const },
-      { label: 'Hosting', page: 'hosting' as const }
+      { label: 'Hosting & Support', page: 'hosting' as const },
+      { label: 'AI Search & Visibility', page: 'ai-search-visibility' as const }
     ]
   },
   solutions: {
@@ -1014,12 +1028,12 @@ export function getPageTitle(slug: string): string {
 
 /**
  * Get page URL by slug
+ * 
+ * Delegates to slugToPath() in route-map.ts which maintains the
+ * canonical slug → hierarchical-URL mapping for the entire site.
  */
 export function getPageUrl(slug: string): string {
-  if (slug === 'home') return '/';
-  if (slug === 'blog') return '/blog';
-  if (slug === 'portfolio-archive') return '/portfolio';
-  return `/${slug}`;
+  return slugToPath(slug);
 }
 
 /**

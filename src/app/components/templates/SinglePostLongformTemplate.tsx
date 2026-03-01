@@ -16,6 +16,7 @@
  *               Newsletter CTA → Footer Actions
  */
 
+import '../../../styles/templates/single-post-page.css';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
@@ -26,6 +27,8 @@ import { Badge } from '../blocks/design/Badge';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { Calendar, Clock, Share2, Bookmark } from 'lucide-react';
 import { useState } from 'react';
+import { RelatedPosts } from '../patterns/RelatedPosts';
+import type { RelatedPost } from '../patterns/RelatedPosts';
 
 // Table of contents data
 const tocItems = [
@@ -34,6 +37,46 @@ const tocItems = [
   { id: 'best-season', label: 'Best season to visit' },
   { id: 'what-to-pack', label: 'What to pack' },
   { id: 'conclusion', label: 'Conclusion' },
+];
+
+// Related posts data
+const relatedPosts: RelatedPost[] = [
+  {
+    id: '1',
+    slug: 'wildlife-photography-tips',
+    title: 'Wildlife photography tips for safari enthusiasts',
+    excerpt:
+      'Master the art of capturing stunning wildlife moments with these essential photography tips and camera settings for your safari adventure.',
+    featuredImage:
+      'https://images.unsplash.com/photo-1551524164-687a55dd1126?w=800',
+    category: 'Travel tips',
+    readingTime: '6 min read',
+    date: '2024-12-10',
+  },
+  {
+    id: '2',
+    slug: 'choosing-safari-destination',
+    title: 'How to choose the perfect safari destination',
+    excerpt:
+      'From the Serengeti to Kruger National Park, discover how to select the ideal African safari destination based on your interests and budget.',
+    featuredImage:
+      'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=800',
+    category: 'Destinations',
+    readingTime: '7 min read',
+    date: '2024-12-08',
+  },
+  {
+    id: '3',
+    slug: 'safari-safety-essentials',
+    title: 'Safari safety: Essential precautions for travellers',
+    excerpt:
+      'Stay safe on your African safari adventure with these crucial safety tips, health precautions, and emergency preparedness guidelines.',
+    featuredImage:
+      'https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=800',
+    category: 'Travel tips',
+    readingTime: '5 min read',
+    date: '2024-12-05',
+  },
 ];
 
 export function SinglePostLongformTemplate() {
@@ -47,7 +90,7 @@ export function SinglePostLongformTemplate() {
       <BreadcrumbPart
         items={[
           { label: 'Home', page: 'front-page' },
-          { label: 'Blog', href: '/blog' },
+          { label: 'Insights', href: '/insights' },
           { label: 'The Ultimate Guide to Planning Your First Safari' },
         ]}
       />
@@ -260,6 +303,14 @@ export function SinglePostLongformTemplate() {
             </article>
           </div>
         </Container>
+      </Section>
+
+      {/* Related Posts */}
+      <Section spacing="xl">
+        <RelatedPosts
+          posts={relatedPosts}
+          currentPostSlug="ultimate-guide-first-safari"
+        />
       </Section>
 
       {/* Newsletter CTA */}

@@ -6,6 +6,7 @@
  * Displays a single link post.
  */
 
+import '../../../../styles/templates/single-post.css';
 import { Container } from '@/app/components/common/Container';
 import { Section } from '@/app/components/common/Section';
 import { Link as LinkIcon, ExternalLink, Calendar } from 'lucide-react';
@@ -21,7 +22,7 @@ export function SingleLinkTemplate() {
       <BreadcrumbPart
         items={[
           { label: 'Home', href: '/' },
-          { label: 'Blog', href: '/blog' },
+          { label: 'Insights', href: '/insights' },
           { label: 'Links', href: '/link-archive' },
           { label: post.title.rendered },
         ]}

@@ -8,6 +8,7 @@
  * @see /src/styles/templates/feature-showcase.css
  */
 
+import '../../../styles/templates/feature-showcase.css';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { Button } from '../blocks/design/Buttons';

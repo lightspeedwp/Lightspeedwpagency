@@ -14,6 +14,7 @@
  * @see /src/styles/templates/button-showcase.css
  */
 
+import '../../../styles/templates/button-showcase.css';
 import { Container } from '../common/Container';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { Button, Buttons } from '../blocks/design/Buttons';

@@ -14,6 +14,7 @@
  * @see /src/styles/templates/icon-library.css
  */
 
+import '../../../styles/templates/icon-library.css';
 import { useState } from 'react';
 import { Container } from '../common/Container';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';

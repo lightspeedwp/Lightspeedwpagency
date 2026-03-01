@@ -10,7 +10,7 @@ export const publishersSolutionHero = {
   title: "WordPress for High-Traffic Publishers",
   subtitle: "Scalable, performant, and revenue-focused publishing platforms for modern media.",
   badge: { text: "MEDIA EXPERTS", icon: Newspaper },
-  primaryButton: { text: "Learn More", page: "contact" },
+  primaryButton: { text: "Request a Systems Audit", page: "contact" },
   secondaryButton: { text: "Case Studies", page: "portfolio-archive" }
 };
 

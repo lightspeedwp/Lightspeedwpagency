@@ -15,6 +15,8 @@
  * NO Tailwind classes — WordPress utility classes + CSS variables only.
  */
 
+/* Route-level CSS */
+import '../../../styles/templates/solutions-page.css';
 import { FunkyCTA } from '../patterns/FunkyCTA';
 import { Section } from '../common/Section';
 import { Container } from '../common/Container';

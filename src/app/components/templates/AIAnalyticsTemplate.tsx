@@ -5,6 +5,7 @@
  * Route: /solutions/ai-integrations/analytics
  */
 
+import '../../../styles/templates/page-solution-ai.css';
 import { LineChart } from 'lucide-react';
 import { AISubPageTemplate } from './AISubPageTemplate';
 import {

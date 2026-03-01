@@ -20,6 +20,7 @@
  * @see {@link /guidelines/components/overview-components.md}
  */
 
+import '../../../styles/templates/component-showcase.css';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { Button } from '../blocks/design/Buttons';

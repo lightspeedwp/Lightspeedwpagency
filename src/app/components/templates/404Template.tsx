@@ -7,6 +7,8 @@
  * Uses dedicated CSS variables from 404.css.
  */
 
+/* Route-level CSS */
+import '../../../styles/templates/404.css';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { Heading } from '../blocks/text/Heading';

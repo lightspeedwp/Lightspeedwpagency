@@ -108,7 +108,7 @@ export const PortfolioSlider: React.FC<PortfolioSliderProps> = ({
             <div key={project.id} className="portfolio-slider__slide-wrapper">
               <Link 
                 className="portfolio-slider__card"
-                to={`/portfolio/${project.slug}`}
+                to={`/work/${project.slug}`}
               >
                 {/* Image */}
                 <div className="portfolio-slider__image-container">

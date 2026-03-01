@@ -86,7 +86,7 @@ export function RecentPostsWidget({
         {filteredPosts.map((post, index) => (
           <Link
             key={post.id}
-            to={`/blog/${post.slug}`}
+            to={`/insights/${post.slug}`}
             className="recent-posts-widget__card"
             style={itemStyle(index)}
           >

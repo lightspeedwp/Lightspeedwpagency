@@ -1,0 +1,10 @@
+/**
+ * Performance Reliability System Styles
+ *
+ * Imports shared system page styles.
+ * No custom overrides needed.
+ *
+ * @see /src/styles/templates/system-page-shared.css
+ */
+
+@import './system-page-shared.css';

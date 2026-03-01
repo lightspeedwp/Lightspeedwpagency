@@ -6,6 +6,7 @@
  * Displays the WooCommerce cart page.
  */
 
+import '../../../styles/woocommerce/cart.css';
 import { Container } from '../common/Container';
 import { Heading } from '../common/Heading';
 import { allProducts } from '../../data/woocommerce';

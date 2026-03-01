@@ -6,6 +6,7 @@
  * Displays a single quote with emphasis on typography.
  */
 
+import '../../../../styles/templates/single-post.css';
 import { Quote } from 'lucide-react';
 
 export function SingleQuoteTemplate() {
@@ -16,7 +17,7 @@ export function SingleQuoteTemplate() {
       <BreadcrumbPart
         items={[
           { label: 'Home', href: '/' },
-          { label: 'Blog', href: '/blog' },
+          { label: 'Insights', href: '/insights' },
           { label: 'Quotes', href: '/quote-archive' },
           { label: post.title.rendered },
         ]}

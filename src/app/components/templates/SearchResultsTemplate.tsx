@@ -17,6 +17,7 @@
  * @see /src/styles/templates/search.css — Styles
  */
 
+import '../../../styles/templates/search.css';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';

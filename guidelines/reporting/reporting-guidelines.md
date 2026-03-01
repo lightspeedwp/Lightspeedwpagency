@@ -13,6 +13,21 @@ This document defines the standards for creating, naming, and organizing all pro
 
 ---
 
+## 🚨 **CRITICAL RULE: NO REPORTS IN PROJECT ROOT**
+
+**ALL reports, session summaries, status updates, and documentation output MUST be created inside the `/reports/` directory. NEVER create `.md` files in the project root (`/`).**
+
+The project root should contain ONLY configuration files (e.g. `package.json`, `tsconfig.json`, `vite.config.ts`, `vercel.json`, `.eslintrc`). Any `.md` file found in the root is a violation and must be moved to `/reports/[category]/` immediately.
+
+**Enforcement:**
+- ❌ **FORBIDDEN:** Creating any `.md` file in `/` (project root)
+- ❌ **FORBIDDEN:** Creating reports in `/public/`, `/content/`, or `/src/`
+- ✅ **REQUIRED:** All reports go in `/reports/[category]/YYYY-MM-DD-description.md`
+- ✅ **REQUIRED:** All guidelines go in `/guidelines/`
+- ✅ **REQUIRED:** All task tracking goes in `/tasks/`
+
+---
+
 ## 📁 **DIRECTORY STRUCTURE**
 
 All reports must be stored in the `/reports/` directory:

@@ -7,6 +7,7 @@
  * Pattern order: Breadcrumbs -> Archive Header -> TaxonomyFilter -> Video Grid -> FAQ -> CTA
  */
 
+import '../../../styles/templates/video-archive.css';
 import { useState, useMemo } from 'react';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';

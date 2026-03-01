@@ -5,6 +5,7 @@
  * Single detail archetype for video content.
  */
 
+import '../../../styles/templates/single-video.css';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';

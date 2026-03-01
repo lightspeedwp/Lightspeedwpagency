@@ -1,0 +1,77 @@
+/**
+ * Route Loading Fallback Styles
+ * 
+ * CRITICAL: Uses ONLY CSS variables from design system.
+ * 
+ * Design System Tokens:
+ * - Background: var(--background) — Light: #FFFFFF, Dark: #0A0A0A
+ * - Spinner border: var(--muted) — Light: #E5E7EB, Dark: #27272A
+ * - Spinner active: var(--primary) — Light: #2563EB, Dark: #3B82F6
+ * 
+ * Accessibility:
+ * - Reduced motion support (animation disabled)
+ * - Screen reader announcement via aria-live
+ * - Focus-visible support
+ * 
+ * @requires /src/styles/theme-light.css
+ * @requires /src/styles/theme-dark.css
+ */
+
+.route-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: var(--background);
+}
+
+.route-loading__spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid var(--muted);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: route-loading-spin 1s linear infinite;
+}
+
+@keyframes route-loading-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ============================================
+   REDUCED MOTION SUPPORT
+   ============================================ */
+
+/**
+ * Disable animation for users who prefer reduced motion
+ * Show static spinner with opacity to indicate loading
+ */
+@media (prefers-reduced-motion: reduce) {
+  .route-loading__spinner {
+    animation: none;
+    border-top-color: var(--primary);
+    opacity: 0.6;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY UTILITIES
+   ============================================ */
+
+/**
+ * Screen reader only text
+ * Visually hidden but accessible to assistive technology
+ */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

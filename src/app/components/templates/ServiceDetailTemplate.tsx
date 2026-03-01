@@ -15,12 +15,17 @@
  * @see /src/app/data/service-page.ts
  */
 
+import '../../../styles/templates/service-detail.css';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { Buttons, Button } from '../blocks/design/Buttons';
 import { FAQSection } from '../patterns/FAQSection';
 import { FunkyCTA } from '../patterns/FunkyCTA';
+import { RelatedServices } from '../patterns/RelatedServices';
+import { IncludedSolutions } from '../patterns/IncludedSolutions';
+import { ServiceTestimonials } from '../patterns/ServiceTestimonials';
+import { ServiceCaseStudies } from '../patterns/ServiceCaseStudies';
 import {
   CheckCircle,
   ArrowRight,
@@ -405,6 +410,60 @@ export function ServiceDetailTemplate({
               </ScrollReveal>
             ))}
           </div>
+        </Container>
+      </Section>
+
+      {/* ============================================
+          INCLUDED IN SOLUTIONS
+          ============================================ */}
+      <Section spacing="lg">
+        <Container>
+          <IncludedSolutions
+            serviceSlug={slug}
+            title="Included in These Solutions"
+            description="This service is a core component of these comprehensive solutions."
+          />
+        </Container>
+      </Section>
+
+      {/* ============================================
+          RELATED SERVICES
+          ============================================ */}
+      <Section spacing="lg">
+        <Container>
+          <RelatedServices
+            serviceSlug={slug}
+            title="Services That Work Great Together"
+            description="These complementary services enhance and extend this offering."
+          />
+        </Container>
+      </Section>
+
+      {/* ============================================
+          CLIENT TESTIMONIALS
+          ============================================ */}
+      <Section spacing="lg">
+        <Container>
+          <ServiceTestimonials
+            serviceSlug={slug}
+            title="What Our Clients Say"
+            description="Real feedback from real clients who've experienced our services."
+            limit={3}
+          />
+        </Container>
+      </Section>
+
+      {/* ============================================
+          CASE STUDIES
+          ============================================ */}
+      <Section spacing="lg">
+        <Container>
+          <ServiceCaseStudies
+            serviceSlug={slug}
+            title="Real Projects, Real Results"
+            description="See how we've helped clients succeed with this service."
+            limit={2}
+          />
         </Container>
       </Section>
 

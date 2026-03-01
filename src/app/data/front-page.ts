@@ -29,10 +29,10 @@ import {
  */
 export const frontPageHero = {
   badge: 'WordPress & WooCommerce Experts Since 2003',
-  title: 'Build Better WordPress Sites Faster',
-  description: 'Expert WordPress and WooCommerce development by a certified agency with 22+ years of experience building high-performance, accessible websites.',
+  title: 'Structured Publishing Systems for WordPress',
+  description: 'We engineer governed WordPress systems — tokenised design, accessible markup, and measurable performance — so your editors publish with confidence and your site stays coherent at scale.',
   primaryButton: {
-    text: 'Get Started',
+    text: 'Request a Systems Audit',
     page: 'contact'
   },
   secondaryButton: {
@@ -172,7 +172,7 @@ export const frontPageMidCTA = {
   title: 'WordPress Experts You Can Trust',
   description: 'From startups to enterprise, we partner with businesses to build WordPress solutions that perform, scale, and convert.',
   primaryButton: {
-    text: 'Start Your Project',
+    text: 'Request a Systems Audit',
     page: 'contact'
   }
 };
@@ -304,7 +304,7 @@ export const frontPageBottomCTA = {
   title: 'Ready to Build Better WordPress Sites?',
   description: 'Let\'s discuss your project and how LightSpeed can help you achieve your digital goals.',
   primaryButton: {
-    text: 'Get in Touch',
+    text: 'Request a Systems Audit',
     page: 'contact'
   },
   secondaryButton: {

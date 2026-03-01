@@ -22,12 +22,12 @@ export const wetuImporterHero = {
   description: 'Seamlessly import and sync tour data from Wetu directly into your WordPress website. Automate your tour operator content management with our powerful integration plugin.',
   cta: {
     primary: {
-      text: 'Get Started',
+      text: 'Request a Systems Audit',
       page: 'contact' as const
     },
     secondary: {
       text: 'View Documentation',
-      page: 'support' as const
+      page: 'hosting' as const
     }
   }
 };
@@ -173,7 +173,7 @@ export const wetuImporterPricing = {
         'Regular updates'
       ],
       cta: {
-        text: 'Get Started',
+        text: 'Request a Systems Audit',
         page: 'contact' as const
       },
       popular: false
@@ -196,7 +196,7 @@ export const wetuImporterPricing = {
         'Bulk management tools'
       ],
       cta: {
-        text: 'Get Started',
+        text: 'Request a Systems Audit',
         page: 'contact' as const
       },
       popular: true
@@ -266,7 +266,7 @@ export const wetuImporterCTA = {
   description: 'Join hundreds of tour operators who have streamlined their content management with Wetu Importer. Get started today with a 14-day money-back guarantee.',
   buttons: [
     {
-      text: 'Get Started Now',
+      text: 'Request a Systems Audit',
       page: 'contact' as const
     },
     {

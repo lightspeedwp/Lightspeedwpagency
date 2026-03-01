@@ -20,6 +20,9 @@
  * - BEM naming throughout
  */
 
+/* Route-level CSS */
+import '../../../styles/templates/contact-page.css';
+import '../../../styles/templates/page-contact.css';
 import { Container } from '../common/Container';
 import { ContactForm } from '../patterns/ContactForm';
 import { FAQSection } from '../patterns/FAQSection';
@@ -50,6 +53,7 @@ import {
   contactPageFAQs,
   contactPageOffice
 } from '../../data/contact-page';
+import { contactHeroMessaging } from '../../data/three-tier-model';
 
 export function ContactPageTemplate() {
   const parallaxRef = useHeroParallax(0.5);
@@ -91,17 +95,31 @@ export function ContactPageTemplate() {
           <div className="contact-page__hero-content">
             <span className="contact-page__hero-badge">
               <MessageSquare size={16} />
-              {contactPageHero.badge.text}
+              {contactHeroMessaging.badge}
             </span>
 
             <h1 className="contact-page__hero-title">
-              Let's Build Something <br />
-              Amazing Together
+              {contactHeroMessaging.title.line1} <br />
+              <span style={{ color: 'var(--accent)' }}>
+                {contactHeroMessaging.title.line2}
+              </span>
             </h1>
 
             <p className="contact-page__hero-subtitle">
-              {contactPageHero.description}
+              {contactHeroMessaging.subtitle}
             </p>
+
+            {/* Systems Audit Features List */}
+            <ul className="contact-page__hero-features">
+              {contactHeroMessaging.features.map((feature, index) => (
+                <li key={index} className="contact-page__hero-feature">
+                  <Award size={18} style={{ color: 'var(--accent)' }} />
+                  <span style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-base)' }}>
+                    {feature}
+                  </span>
+                </li>
+              ))}
+            </ul>
           </div>
         </Container>
         <ScrollDownArrow targetId="contact-main" />

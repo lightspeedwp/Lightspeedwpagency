@@ -11,6 +11,7 @@
  * @see /src/styles/templates/archive.css
  */
 
+import '../../../../styles/templates/archive.css';
 import { Download, ExternalLink } from 'lucide-react';
 
 export function LinkArchiveTemplate() {
@@ -22,7 +23,7 @@ export function LinkArchiveTemplate() {
       <BreadcrumbPart
         items={[
           { label: 'Home', href: '/' },
-          { label: 'Blog', href: '/blog' },
+          { label: 'Insights', href: '/insights' },
           { label: 'Links' },
         ]}
       />

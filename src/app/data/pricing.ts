@@ -91,7 +91,7 @@ export const websitePackages: PricingPackage[] = [
     timeline: '2-3 weeks',
     support: '30 days post-launch',
     cta: {
-      text: 'Get Started',
+      text: 'Request a Systems Audit',
       action: 'get-quote'
     }
   },
@@ -144,7 +144,7 @@ export const websitePackages: PricingPackage[] = [
     timeline: '4-6 weeks',
     support: '90 days post-launch',
     cta: {
-      text: 'Get Started',
+      text: 'Request a Systems Audit',
       action: 'book-call'
     }
   },
@@ -243,7 +243,7 @@ export const maintenancePackages: PricingPackage[] = [
     timeline: 'Ongoing',
     support: 'Email support (48hr response)',
     cta: {
-      text: 'Get Started',
+      text: 'Request a Systems Audit',
       action: 'contact'
     }
   },
@@ -285,7 +285,7 @@ export const maintenancePackages: PricingPackage[] = [
     timeline: 'Ongoing',
     support: 'Priority email + chat (24hr response)',
     cta: {
-      text: 'Get Started',
+      text: 'Request a Systems Audit',
       action: 'contact'
     }
   },

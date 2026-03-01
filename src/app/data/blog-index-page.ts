@@ -15,5 +15,5 @@ export const blogIndexHero = {
 export const blogIndexCTA = {
   title: "Join Our Newsletter",
   description: "Get the latest WordPress insights delivered straight to your inbox. No spam, just code.",
-  button: { text: "Subscribe", page: "newsletter" }
+  button: { text: "Subscribe", page: "newsletter-service" }
 };

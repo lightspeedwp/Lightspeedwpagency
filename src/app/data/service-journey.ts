@@ -61,8 +61,7 @@ export const serviceJourney: JourneyPhase[] = [
     accent: 'var(--category-violet)',
     services: [
       { label: 'Discovery & Strategy', page: 'discovery', description: 'Goals, audience & roadmap' },
-      { label: 'Content Audit', page: 'content-audit', description: 'Analyse gaps & opportunities' },
-      { label: 'Content Strategy', page: 'content-strategy', description: 'Plan your message & voice' },
+      { label: 'Content Operations', page: 'content', description: 'Audit, strategy & collection' },
     ],
   },
   {
@@ -73,8 +72,7 @@ export const serviceJourney: JourneyPhase[] = [
     accent: 'var(--category-pink)',
     services: [
       { label: 'Web Design', page: 'design', description: 'Beautiful, accessible UI' },
-      { label: 'Content Collection', page: 'content-collection', description: 'Gather & organise assets' },
-      { label: 'Email Marketing', page: 'email-marketing', description: 'Campaign design & flows' },
+      { label: 'Content Operations', page: 'content', description: 'Collection & email marketing' },
     ],
   },
   {
@@ -86,7 +84,7 @@ export const serviceJourney: JourneyPhase[] = [
     services: [
       { label: 'WordPress Dev', page: 'development', description: 'Block themes & plugins' },
       { label: 'Security', page: 'security', description: 'Firewalls & hardening' },
-      { label: 'Migrations', page: 'migrations', description: 'Zero-downtime moves' },
+      { label: 'Hosting & Support', page: 'hosting', description: 'Infrastructure & migrations' },
     ],
   },
   {
@@ -97,7 +95,7 @@ export const serviceJourney: JourneyPhase[] = [
     accent: 'var(--category-amber)',
     services: [
       { label: 'Hosting', page: 'hosting', description: 'Managed WordPress infra' },
-      { label: 'Training', page: 'training', description: 'Empower your team' },
+      { label: 'Training', page: 'training', description: 'Hands-on editor competence' },
     ],
   },
   {
@@ -107,10 +105,9 @@ export const serviceJourney: JourneyPhase[] = [
     tagline: 'Optimise. Rank. Scale.',
     accent: 'var(--category-green)',
     services: [
-      { label: 'Performance', page: 'performance', description: 'Core Web Vitals & speed' },
-      { label: 'SEO', page: 'seo', description: 'Rank higher organically' },
-      { label: 'Accessibility', page: 'accessibility', description: 'WCAG AA/AAA compliance', badge: 'NEW' },
-      { label: 'Support', page: 'support', description: 'Ongoing care & updates' },
+      { label: 'Performance & A11y', page: 'performance', description: 'Speed + WCAG compliance' },
+      { label: 'AI Search & Visibility', page: 'ai-search-visibility', description: 'SEO + AI citations' },
+      { label: 'Hosting & Support', page: 'hosting', description: 'Ongoing care & updates' },
     ],
   },
   {
@@ -120,8 +117,7 @@ export const serviceJourney: JourneyPhase[] = [
     tagline: 'AI-power. Future-proof.',
     accent: 'var(--category-indigo)',
     services: [
-      { label: 'AI Engine Optimisation', page: 'ai-engine-optimisation', description: 'Cut AI costs 60 %', badge: 'NEW' },
-      { label: 'Answer Engine (AEO)', page: 'answer-engine-optimisation', description: 'Get cited by AI', badge: 'NEW' },
+      { label: 'AI Search & Visibility', page: 'ai-search-visibility', description: 'AI engine + AEO unified', badge: 'NEW' },
       { label: 'All Services →', page: 'services', description: 'See the full picture' },
     ],
   },

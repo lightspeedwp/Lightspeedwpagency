@@ -1,157 +1,244 @@
 /**
  * Print Styles
  * 
- * Optimized for printing.
- * Uses CSS variables for consistent typography.
+ * Optimized styles for printing
+ * Clean, readable printed output
+ * 
+ * Features:
+ * - Remove unnecessary elements
+ * - Optimize typography
+ * - Force light mode
+ * - Add page breaks
+ * - Show link URLs
+ * 
+ * Design System:
+ * - Print-specific overrides
+ * - Accessibility-first
  */
 
 @media print {
-  /* Reset background and text colors */
-  body {
+  /* General */
+  * {
     background: white !important;
     color: black !important;
-    font-family: var(--font-primary) !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
   }
 
-  /* Hide navigation, buttons, and decorative elements */
-  header, 
-  footer, 
-  nav, 
-  button, 
-  .no-print,
-  .wp-block-navigation,
+  /* Page Setup */
+  @page {
+    margin: 2cm;
+    size: A4;
+  }
+
+  /* Hide Interactive Elements */
+  button,
+  .button,
+  .toast,
+  .toast-container,
+  .lightbox,
+  .scroll-progress,
+  .scroll-back-to-top,
+  .scroll-down-arrow,
+  .filter-bar,
+  .pagination-nav,
+  nav,
   .site-header,
   .site-footer,
-  .skip-link,
-  .scroll-down-arrow,
-  .back-to-top,
-  .sidebar,
-  .cookie-consent,
-  [role="dialog"],
-  [aria-hidden="true"] {
+  .mobile-menu,
+  .mega-menu,
+  .style-switcher,
+  .layout-switcher,
+  .demo-controls {
     display: none !important;
   }
 
-  /* Layout Adjustments */
-  main {
-    margin: 0 !important;
-    padding: 0 !important;
-    width: 100% !important;
-    max-width: 100% !important;
+  /* Hide Decorative Elements */
+  .gradient-orb,
+  .background-animation,
+  video,
+  audio,
+  iframe {
+    display: none !important;
   }
 
-  .container, 
-  .wp-block-group {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-    max-width: 100% !important;
-    width: 100% !important;
+  /* Typography */
+  body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 12pt;
+    line-height: 1.6;
   }
 
-  /* Typography Optimization */
-  h1, h2, h3, h4, h5, h6 {
-    color: black !important;
+  h1 {
+    font-size: 24pt;
     page-break-after: avoid;
-    break-after: avoid;
   }
 
-  p, ul, ol {
-    color: black !important;
-    widows: 3;
+  h2 {
+    font-size: 20pt;
+    page-break-after: avoid;
+  }
+
+  h3 {
+    font-size: 16pt;
+    page-break-after: avoid;
+  }
+
+  h4,
+  h5,
+  h6 {
+    font-size: 14pt;
+    page-break-after: avoid;
+  }
+
+  p {
     orphans: 3;
+    widows: 3;
+  }
+
+  /* Page Breaks */
+  section,
+  article,
+  .portfolio-card,
+  .blog-card,
+  .testimonial-card {
+    page-break-inside: avoid;
   }
 
   /* Links */
   a {
-    text-decoration: underline !important;
+    text-decoration: underline;
     color: black !important;
   }
 
-  /* Show URL for external links (optional) */
-  /*
-  a[href^="http"]:after {
+  /* Show link URLs */
+  a[href]:after {
     content: " (" attr(href) ")";
-    font-size: 0.8em;
+    font-size: 10pt;
+    color: #666 !important;
   }
-  */
+
+  /* Don't show URLs for internal links */
+  a[href^="#"]:after,
+  a[href^="/"]:after {
+    content: "";
+  }
 
   /* Images */
   img {
     max-width: 100% !important;
-    height: auto !important;
     page-break-inside: avoid;
-    break-inside: avoid;
   }
 
-  /* Sections */
-  section {
-    page-break-inside: auto;
-    break-inside: auto;
-  }
-
-  /* Table styles */
+  /* Tables */
   table {
-    border-collapse: collapse !important;
-    width: 100% !important;
+    border-collapse: collapse;
+    width: 100%;
   }
 
-  th, td {
-    border: 1px solid #ddd !important;
-    padding: var(--spacing-2) !important;
+  table,
+  th,
+  td {
+    border: 1px solid black !important;
   }
 
-  /* Specific Component Overrides */
-  .hero-section {
+  th,
+  td {
+    padding: 8pt;
+    text-align: left;
+  }
+
+  thead {
+    display: table-header-group;
+  }
+
+  /* Code Blocks */
+  pre,
+  code {
+    border: 1px solid #ccc !important;
+    padding: 4pt;
+    font-family: 'Courier New', monospace;
+    font-size: 10pt;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  /* Lists */
+  ul,
+  ol {
+    margin-left: 20pt;
+  }
+
+  /* Block Quotes */
+  blockquote {
+    border-left: 3pt solid #ccc !important;
+    padding-left: 12pt;
+    margin-left: 0;
+    font-style: italic;
+  }
+
+  /* Hero Sections */
+  .hero-home,
+  .hero {
+    padding: 20pt 0 !important;
     min-height: auto !important;
-    padding: 2rem 0 !important;
-    background: none !important;
   }
 
-  .hero-section::before,
-  .hero-section::after {
-    display: none !important;
+  /* Cards */
+  .portfolio-card,
+  .blog-card,
+  .service-card,
+  .testimonial-card {
+    border: 1px solid #ccc !important;
+    padding: 12pt;
+    margin-bottom: 12pt;
   }
 
-  /* Utility classes */
-  .text-white, 
-  .text-primary-foreground {
-    color: black !important;
+  /* Grids */
+  .wp-grid-2-cols,
+  .wp-grid-3-cols,
+  .wp-grid-4-cols {
+    display: block !important;
   }
 
-  .bg-primary, 
-  .bg-secondary, 
-  .bg-accent, 
-  .bg-muted,
-  .bg-card {
-    background-color: transparent !important;
-    border: none !important;
-  }
-  
-  /* Print Typography Overrides */
-  h1 {
-    font-size: 24pt !important;
-    font-family: var(--font-primary) !important;
-    font-weight: 700 !important;
-    margin-top: 0 !important;
+  .wp-grid-2-cols > *,
+  .wp-grid-3-cols > *,
+  .wp-grid-4-cols > * {
+    page-break-inside: avoid;
+    margin-bottom: 12pt;
   }
 
-  h2 {
-    font-size: 18pt !important;
-    font-family: var(--font-primary) !important;
-    font-weight: 600 !important;
-    margin-top: 18pt !important;
+  /* Stats */
+  .stats-grid {
+    display: block !important;
   }
 
-  h3 {
-    font-size: 14pt !important;
-    font-family: var(--font-primary) !important;
-    font-weight: 600 !important;
-    margin-top: 14pt !important;
+  .stat-counter {
+    display: inline-block;
+    margin: 8pt;
   }
 
-  p {
-    font-size: 11pt !important;
-    font-family: var(--font-primary) !important;
-    line-height: var(--line-height-normal) !important;
+  /* Remove Animations */
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  /* Print Header */
+  body::before {
+    content: "";
+    display: block;
+    margin-bottom: 20pt;
+  }
+
+  /* Print Footer */
+  body::after {
+    content: "Printed from: " attr(data-url);
+    display: block;
+    margin-top: 20pt;
+    padding-top: 12pt;
+    border-top: 1px solid #ccc;
+    font-size: 10pt;
+    color: #666 !important;
   }
 }

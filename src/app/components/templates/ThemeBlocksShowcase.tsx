@@ -11,6 +11,7 @@
  * @see /src/styles/templates/theme-blocks-showcase.css
  */
 
+import '../../../styles/templates/theme-blocks-showcase.css';
 import { Container } from '../common/Container';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
@@ -137,7 +138,7 @@ export function ThemeBlocksShowcase() {
               <Pagination 
                 currentPage={2}
                 totalPages={10}
-                baseUrl="/blog/page"
+                baseUrl="/insights/page"
               />
             </div>
           </section>

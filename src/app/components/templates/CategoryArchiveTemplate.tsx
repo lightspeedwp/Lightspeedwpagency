@@ -17,6 +17,8 @@
  * @see /guidelines/templates/overview-templates.md
  */
 
+import '../../../styles/templates/archive.css';
+import '../../../styles/templates/page-category-archive.css';
 import { useState, useMemo } from 'react';
 import { Link } from 'react-router';
 import { Container } from '../common/Container';
@@ -89,7 +91,7 @@ export function CategoryArchiveTemplate({ category: categorySlug = 'development'
       <BreadcrumbPart
         items={[
           { label: 'Home', page: 'front-page' },
-          { label: 'Blog', href: '/blog' },
+          { label: 'Insights', href: '/insights' },
           { label: categoryName },
         ]}
       />
@@ -122,7 +124,7 @@ export function CategoryArchiveTemplate({ category: categorySlug = 'development'
                 {blogCategories.map(cat => (
                   <Link
                     key={cat.slug}
-                    to={`/blog/category/${cat.slug}`}
+                    to={`/insights/category/${cat.slug}`}
                     className={`archive-category-nav__item ${cat.slug === categorySlug ? 'archive-category-nav__item--active' : ''}`}
                     aria-current={cat.slug === categorySlug ? 'page' : undefined}
                   >
@@ -164,7 +166,7 @@ export function CategoryArchiveTemplate({ category: categorySlug = 'development'
       <Section spacing="xl">
         <Container>
           {filtered.length > 0 ? (
-            <div className="blog-index__grid">
+            <div className="category-archive__grid">
               {filtered.map((post, index) => {
                 const author = getAuthorBySlug(post.author);
                 return (
@@ -175,43 +177,140 @@ export function CategoryArchiveTemplate({ category: categorySlug = 'development'
                     delay={index * 80}
                   >
                     <Link
-                      to={`/blog/${post.slug}`}
-                      className="blog-index__post-card"
+                      to={`/insights/${post.slug}`}
+                      className="category-archive__post-card"
                       aria-label={`Read ${post.title}`}
                     >
-                      <div className="blog-index__post-image-wrap">
+                      <div className="category-archive__post-image-wrap">
                         <img
                           src={post.featuredImage}
                           alt={post.title}
-                          className="blog-index__post-image"
+                          className="category-archive__post-image"
                           loading="lazy"
                         />
                       </div>
-                      <div className="blog-index__post-content">
-                        <div className="blog-index__post-categories">
+                      <div 
+                        className="category-archive__post-content"
+                        style={{
+                          padding: 'var(--spacing-6)',
+                          display: 'flex',
+                          flexDirection: 'column',
+                          gap: 'var(--spacing-4)',
+                          flex: '1'
+                        }}
+                      >
+                        <div 
+                          className="category-archive__post-categories"
+                          style={{
+                            display: 'flex',
+                            flexWrap: 'wrap',
+                            gap: 'var(--spacing-2)',
+                            marginBottom: 'var(--spacing-2)'
+                          }}
+                        >
                           {post.tags.slice(0, 2).map(tag => (
-                            <span key={tag} className="blog-index__category-chip">{tag}</span>
+                            <span 
+                              key={tag} 
+                              className="category-archive__category-chip"
+                              style={{
+                                padding: 'var(--spacing-1) var(--spacing-3)',
+                                background: 'linear-gradient(135deg, color-mix(in srgb, var(--secondary) 12%, transparent), color-mix(in srgb, var(--accent) 8%, transparent))',
+                                color: 'var(--secondary)',
+                                border: '1px solid color-mix(in srgb, var(--secondary) 20%, transparent)',
+                                borderRadius: 'var(--radius-full)',
+                                fontFamily: 'var(--font-secondary)',
+                                fontSize: 'var(--text-xs)',
+                                fontWeight: 'var(--font-weight-semibold)',
+                                textTransform: 'capitalize',
+                                letterSpacing: 'var(--letter-spacing-wide)'
+                              }}
+                            >
+                              {tag}
+                            </span>
                           ))}
                         </div>
-                        <h3 className="blog-index__post-title">{post.title}</h3>
-                        <p className="blog-index__post-excerpt">{post.excerpt}</p>
-                        <div className="blog-index__post-meta">
+                        <h3 
+                          className="category-archive__post-title"
+                          style={{
+                            fontFamily: 'var(--font-primary)',
+                            fontSize: 'var(--text-xl)',
+                            fontWeight: 'var(--font-weight-bold)',
+                            lineHeight: 'var(--line-height-tight)',
+                            color: 'var(--foreground)',
+                            margin: '0',
+                            letterSpacing: 'var(--letter-spacing-tight)'
+                          }}
+                        >
+                          {post.title}
+                        </h3>
+                        <p 
+                          className="category-archive__post-excerpt"
+                          style={{
+                            fontFamily: 'var(--font-primary)',
+                            fontSize: 'var(--text-sm)',
+                            lineHeight: 'var(--line-height-relaxed)',
+                            color: 'var(--muted-foreground)',
+                            margin: '0',
+                            display: '-webkit-box',
+                            WebkitLineClamp: 3,
+                            WebkitBoxOrient: 'vertical',
+                            overflow: 'hidden'
+                          }}
+                        >
+                          {post.excerpt}
+                        </p>
+                        <div 
+                          className="category-archive__post-meta"
+                          style={{
+                            display: 'flex',
+                            flexWrap: 'wrap',
+                            alignItems: 'center',
+                            gap: 'var(--spacing-4)',
+                            marginTop: 'auto',
+                            paddingTop: 'var(--spacing-4)',
+                            borderTop: '1px solid var(--border-soft)',
+                            fontFamily: 'var(--font-secondary)',
+                            fontSize: 'var(--text-xs)',
+                            color: 'var(--muted-foreground)'
+                          }}
+                        >
                           {author && (
-                            <span className="blog-index__meta-item">
+                            <span 
+                              className="category-archive__meta-item"
+                              style={{
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                gap: 'var(--spacing-1-5)'
+                              }}
+                            >
                               <User size={14} />
                               {author.name}
                             </span>
                           )}
-                          <span className="blog-index__meta-item">
+                          <span 
+                            className="category-archive__meta-item"
+                            style={{
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              gap: 'var(--spacing-1-5)'
+                            }}
+                          >
                             <Calendar size={14} />
                             {new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
                           </span>
-                          <span className="blog-index__meta-item">
+                          <span 
+                            className="category-archive__meta-item"
+                            style={{
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              gap: 'var(--spacing-1-5)'
+                            }}
+                          >
                             <Clock size={14} />
                             {post.readingTime}
                           </span>
                         </div>
-                        <span className="blog-index__read-more">
+                        <span className="category-archive__read-more">
                           Read article <ArrowRight size={14} />
                         </span>
                       </div>
@@ -221,11 +320,11 @@ export function CategoryArchiveTemplate({ category: categorySlug = 'development'
               })}
             </div>
           ) : (
-            <div className="blog-index__empty">
+            <div className="category-archive__empty">
               <Heading level={3}>No posts found</Heading>
               <Paragraph>
                 No posts match the current filters.{' '}
-                <button onClick={clearAll} className="blog-index__empty-link">Clear all filters</button>
+                <button onClick={clearAll} className="category-archive__empty-link">Clear all filters</button>
               </Paragraph>
             </div>
           )}
@@ -244,7 +343,7 @@ export function CategoryArchiveTemplate({ category: categorySlug = 'development'
         title="Stay updated"
         description="Subscribe to our newsletter for the latest WordPress development insights."
         buttonText="Subscribe"
-        buttonPage="newsletter"
+        buttonPage="newsletter-service"
         benefits={[
           'Weekly WordPress tips',
           'Exclusive tutorials',

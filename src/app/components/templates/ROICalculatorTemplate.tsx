@@ -15,6 +15,7 @@
  * @see /src/app/data/roi-calculator-page.ts
  */
 
+import '../../../styles/templates/roi-calculator.css';
 import { Container } from '../common/Container';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { FunkyCTA } from '../patterns/FunkyCTA';

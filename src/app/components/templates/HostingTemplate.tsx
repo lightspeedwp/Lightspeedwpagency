@@ -21,6 +21,9 @@
  */
 
 import { useState, useCallback } from 'react';
+/* Route-level CSS */
+import '../../../styles/templates/hosting-page.css';
+import '../../../styles/templates/page-service-hosting.css';
 import { Container } from '../common/Container';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { Button } from '../blocks/design/Buttons';

@@ -20,6 +20,7 @@
 
 import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { useNavigate } from 'react-router';
+import { useFocusManagement } from '../../hooks/useFocusManagement';
 import { slugToPath } from '../../utils/route-map';
 import {
   searchAllContent,
@@ -143,6 +144,8 @@ export function GlobalSearchOverlay({
   const navigate = useNavigate();
   const inputRef = useRef<HTMLInputElement>(null);
   const resultsRef = useRef<HTMLDivElement>(null);
+  const overlayRef = useRef<HTMLDivElement>(null);
+  const { trapFocus, restoreFocus } = useFocusManagement();
 
   const [query, setQuery] = useState(initialQuery);
   const [debouncedQuery, setDebouncedQuery] = useState(initialQuery);
@@ -166,6 +169,14 @@ export function GlobalSearchOverlay({
       requestAnimationFrame(() => {
         inputRef.current?.focus();
       });
+      // Focus trap
+      if (overlayRef.current) {
+        const cleanup = trapFocus(overlayRef.current);
+        return () => {
+          cleanup?.();
+          restoreFocus();
+        };
+      }
     } else {
       // Reset state when closing
       setQuery('');
@@ -324,6 +335,7 @@ export function GlobalSearchOverlay({
       aria-modal="true"
       aria-label="Search"
       onKeyDown={handleKeyDown}
+      ref={overlayRef}
     >
       {/* Backdrop */}
       <div

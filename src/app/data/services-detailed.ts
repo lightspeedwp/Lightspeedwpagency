@@ -236,7 +236,7 @@ export const seoServiceDetailed: DetailedService = {
   cta: {
     title: 'Ready to Rank Higher?',
     description: 'Stop losing traffic to your competitors. Let\'s build an SEO strategy that puts your brand in front of the right audience at the right time.',
-    buttonText: 'Get Your Free SEO Audit',
+    buttonText: 'Request a Systems Audit',
     buttonPage: 'contact'
   },
 
@@ -265,9 +265,9 @@ export const seoServiceDetailed: DetailedService = {
 export const performanceServiceDetailed: DetailedService = {
   id: 'performance',
   slug: 'performance',
-  headline: 'Lightning Fast WordPress',
-  tagline: 'Optimize your site for speed, stability, and superior user experience. Core Web Vitals focused.',
-  description: 'Speed is a feature. We make your WordPress site fly.',
+  headline: 'Lightning Fast & Fully Accessible WordPress',
+  tagline: 'Optimize your site for speed, stability, and WCAG compliance. Core Web Vitals + accessibility unified.',
+  description: 'Speed and accessibility in one service — because both affect your rankings and user experience.',
   
   whyLightSpeed: {
     title: 'Speed converts. Latency kills.',
@@ -294,6 +294,16 @@ export const performanceServiceDetailed: DetailedService = {
       id: 'asset-optimization',
       title: 'Asset Optimization',
       description: 'Image compression, lazy loading, script deferral, and font optimization to minimize initial page weight.'
+    },
+    {
+      id: 'wcag-audit',
+      title: 'WCAG Compliance Audit',
+      description: 'Manual + automated accessibility audit against WCAG 2.1 AA/AAA with a prioritised remediation report.'
+    },
+    {
+      id: 'remediation',
+      title: 'Accessibility Remediation',
+      description: 'Fixing colour contrast, keyboard traps, missing alt text, ARIA misuse, and focus management across your site.'
     }
   ],
   
@@ -350,12 +360,12 @@ export const performanceServiceDetailed: DetailedService = {
     {
       title: 'SEO Services',
       description: 'Performance and SEO go hand-in-hand — faster sites rank higher in search results.',
-      page: 'seo'
+      page: 'ai-search-visibility'
     },
     {
       title: 'WordPress Support',
       description: 'Ongoing maintenance and monitoring to keep your site performing at its best.',
-      page: 'support'
+      page: 'hosting'
     }
   ]
 };
@@ -437,8 +447,8 @@ export const contentServiceDetailed: DetailedService = {
   
   cta: {
     title: 'Tell Your Story',
-    description: 'Ready to elevate your brand with professional content? Let\'s create something your audience will love to read.',
-    buttonText: 'Start Your Content Project',
+    description: 'Ready to build a content system that compounds? Let\'s create something your audience will love to read.',
+    buttonText: 'Request a Systems Audit',
     buttonPage: 'contact'
   },
 
@@ -446,12 +456,12 @@ export const contentServiceDetailed: DetailedService = {
     {
       title: 'SEO Services',
       description: 'Ensure your content is optimized for search engines and drives organic traffic.',
-      page: 'seo'
+      page: 'ai-search-visibility'
     },
     {
-      title: 'Email Marketing',
+      title: 'Newsletter & Email',
       description: 'Distribute your content through strategic email campaigns that convert.',
-      page: 'newsletter'
+      page: 'content'
     },
     {
       title: 'Website Design',
@@ -660,7 +670,7 @@ export const newsletterServiceDetailed: DetailedService = {
   cta: {
     title: 'Stop Sending into the Void',
     description: 'Let\'s build an email list that actually drives revenue for your business.',
-    buttonText: 'Start Your Campaign',
+    buttonText: 'Request a Systems Audit',
     buttonPage: 'contact'
   },
 
@@ -678,7 +688,7 @@ export const newsletterServiceDetailed: DetailedService = {
     {
       title: 'SEO Services',
       description: 'Drive organic traffic to your newsletter signup pages.',
-      page: 'seo'
+      page: 'ai-search-visibility'
     }
   ]
 };
@@ -728,6 +738,16 @@ export const designServiceDetailed: DetailedService = {
       id: 'branding',
       title: 'Digital Branding',
       description: 'Translating your brand guidelines into a cohesive digital design system for the web.'
+    },
+    {
+      id: 'figma-prototyping',
+      title: 'Figma Prototyping',
+      description: 'Interactive Figma prototypes that validate user flows, micro-interactions, and responsive layouts before development begins.'
+    },
+    {
+      id: 'design-systems',
+      title: 'Design Systems',
+      description: 'Scalable component libraries with documented tokens, patterns, and usage guidelines for consistent cross-team design.'
     }
   ],
   
@@ -771,7 +791,7 @@ export const designServiceDetailed: DetailedService = {
   cta: {
     title: 'Ready for a Redesign?',
     description: 'Let\'s create a website that your customers will love and your competitors will envy.',
-    buttonText: 'Start Your Project',
+    buttonText: 'Request a Systems Audit',
     buttonPage: 'contact'
   },
 
@@ -900,7 +920,7 @@ export const developmentServiceDetailed: DetailedService = {
     {
       title: 'Ongoing Support',
       description: 'Post-launch maintenance, updates, and bug fixes to keep everything running.',
-      page: 'support'
+      page: 'hosting'
     }
   ]
 };
@@ -991,7 +1011,7 @@ export const discoveryServiceDetailed: DetailedService = {
   cta: {
     title: 'Start on Solid Ground',
     description: 'Invest in a discovery phase to ensure your project\'s success.',
-    buttonText: 'Start Discovery',
+    buttonText: 'Request a Systems Audit',
     buttonPage: 'contact'
   }
 };
@@ -1074,7 +1094,7 @@ export const accessibilityServiceDetailed: DetailedService = {
   cta: {
     title: 'Make Your Site Accessible Today',
     description: 'Don\'t wait for a lawsuit. Proactive accessibility improves SEO, widens your audience, and demonstrates your brand values.',
-    buttonText: 'Book an Accessibility Audit',
+    buttonText: 'Request a Systems Audit',
     buttonPage: 'contact'
   },
 
@@ -1087,7 +1107,7 @@ export const accessibilityServiceDetailed: DetailedService = {
     {
       title: 'SEO Services',
       description: 'Accessibility and SEO share many best practices — improve both simultaneously.',
-      page: 'seo'
+      page: 'ai-search-visibility'
     },
     {
       title: 'Website Design',
@@ -1175,7 +1195,7 @@ export const aiEngineOptimisationDetailed: DetailedService = {
   cta: {
     title: 'Optimise Your AI Stack',
     description: 'Stop overspending on AI API calls. Our engineers will cut your inference costs by up to 60% while maintaining output quality.',
-    buttonText: 'Get an AI Audit',
+    buttonText: 'Request a Systems Audit',
     buttonPage: 'contact'
   },
 
@@ -1276,7 +1296,7 @@ export const answerEngineOptimisationDetailed: DetailedService = {
   cta: {
     title: 'Get Cited by AI Engines',
     description: 'The next generation of search is here. Position your brand as the authoritative answer before your competitors do.',
-    buttonText: 'Start AEO Strategy',
+    buttonText: 'Request a Systems Audit',
     buttonPage: 'contact'
   },
 
@@ -1284,7 +1304,7 @@ export const answerEngineOptimisationDetailed: DetailedService = {
     {
       title: 'SEO Services',
       description: 'Traditional SEO and AEO work together — rank in Google and get cited by AI.',
-      page: 'seo'
+      page: 'ai-search-visibility'
     },
     {
       title: 'Content Strategy',
@@ -1306,7 +1326,7 @@ export const trainingServiceDetailed: DetailedService = {
   id: 'training',
   slug: 'training',
   headline: 'WordPress Mastery for Your Team',
-  tagline: 'Empower your editors, marketers, and developers with expert-led WordPress training — from block editing basics to advanced theme customisation.',
+  tagline: 'Give your editors, marketers, and developers hands-on WordPress competence — from block editing basics to advanced theme customisation.',
   description: 'Structured training programmes that turn your team into confident WordPress operators, reducing your dependency on external developers.',
 
   whyLightSpeed: {
@@ -1377,7 +1397,7 @@ export const trainingServiceDetailed: DetailedService = {
   cta: {
     title: 'Upskill Your Team Today',
     description: 'Stop relying on external help for every content update. Our training programmes give your team the confidence to manage and grow your WordPress site independently.',
-    buttonText: 'Book a Training Session',
+    buttonText: 'Request a Systems Audit',
     buttonPage: 'contact'
   },
 
@@ -1385,7 +1405,7 @@ export const trainingServiceDetailed: DetailedService = {
     {
       title: 'WordPress Support',
       description: 'Ongoing support for your team after training — we\'re always here to help.',
-      page: 'support'
+      page: 'hosting'
     },
     {
       title: 'WordPress Development',
@@ -1496,7 +1516,7 @@ export const hostingServiceDetailed: DetailedService = {
     {
       title: 'Ongoing Support',
       description: 'Managed hosting plus proactive support — the ultimate peace-of-mind package.',
-      page: 'support'
+      page: 'hosting'
     }
   ]
 };

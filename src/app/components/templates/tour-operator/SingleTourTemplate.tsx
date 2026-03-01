@@ -8,6 +8,7 @@
  * @see /src/styles/templates/single-tour.css
  */
 
+import '../../../../styles/templates/single-tour.css';
 import { Container } from '@/app/components/common/Container';
 import { Section } from '@/app/components/common/Section';
 import { Breadcrumbs } from '@/app/components/common/Breadcrumbs';

@@ -11,7 +11,7 @@ export const tourOperatorsSolutionHero = {
   subtitle: "Manage itineraries, bookings, and destinations with our specialized LSX Tour Operator plugin ecosystem.",
   badge: { text: "TRAVEL TECH EXPERTS", icon: Map },
   primaryButton: { text: "View Demo", page: "tour-operators" }, // Pointing to archive as demo
-  secondaryButton: { text: "Get Started", page: "contact" }
+  secondaryButton: { text: "Request a Systems Audit", page: "contact" }
 };
 
 export const tourOperatorsSolutionFeatures = {
@@ -53,5 +53,5 @@ export const tourOperatorsSolutionFeatures = {
 export const tourOperatorsSolutionCTA = {
   title: "Ready to Scale Your Travel Business?",
   description: "Join hundreds of tour operators using LSX to power their digital presence.",
-  button: { text: "Book a Demo", page: "contact" }
+  button: { text: "Request a Systems Audit", page: "contact" }
 };

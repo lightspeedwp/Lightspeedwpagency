@@ -107,9 +107,9 @@ export const aiLandingHero: AIHero = {
   title: 'AI-Powered WordPress',
   titleHighlight: 'AI-Powered',
   tagline:
-    'Supercharge your WordPress site with cutting-edge artificial intelligence. Automate content, optimise SEO, engage visitors 24/7, and unlock actionable insights.',
+    'Add production-ready AI tooling to your WordPress stack. Automate content, optimise SEO, engage visitors 24/7, and unlock actionable insights.',
   badge: { text: 'AI FOR WORDPRESS', icon: Brain },
-  primaryButton: { text: 'Get Started', page: 'contact' },
+  primaryButton: { text: 'Request a Systems Audit', page: 'contact' },
   secondaryButton: { text: 'See Solutions', page: 'solutions' },
 };
 
@@ -232,7 +232,7 @@ export const aiLandingCTA: AICTA = {
   description:
     'Join forward-thinking businesses already leveraging AI to grow faster, rank higher, and engage deeper.',
   buttons: [
-    { text: 'Book a Consultation', page: 'contact' },
+    { text: 'Request a Systems Audit', page: 'contact' },
     { text: 'View Our Work', page: 'portfolio-archive' },
   ],
 };
@@ -247,7 +247,7 @@ export const aiContentHero: AIHero = {
   tagline:
     'Create high-quality, on-brand content at scale. From blog posts to product descriptions, AI handles the heavy lifting while you keep creative control.',
   badge: { text: 'AI CONTENT', icon: PenTool },
-  primaryButton: { text: 'Start Creating', page: 'contact' },
+  primaryButton: { text: 'Request a Systems Audit', page: 'contact' },
   secondaryButton: { text: 'Back to AI Hub', page: 'ai-integrations' },
 };
 
@@ -429,7 +429,7 @@ export const aiSEOHero: AIHero = {
   tagline:
     'Stop guessing, start ranking. AI analyses your content in real time, suggests improvements, and automates the technical SEO that moves the needle.',
   badge: { text: 'INTELLIGENT SEO', icon: Search },
-  primaryButton: { text: 'Boost Rankings', page: 'contact' },
+  primaryButton: { text: 'Request a Systems Audit', page: 'contact' },
   secondaryButton: { text: 'Back to AI Hub', page: 'ai-integrations' },
 };
 
@@ -613,7 +613,7 @@ export const aiChatbotsHero: AIHero = {
   tagline:
     'Deploy intelligent conversational agents that understand your business, answer questions instantly, and convert visitors into customers around the clock.',
   badge: { text: 'SMART CHATBOTS', icon: Bot },
-  primaryButton: { text: 'Deploy a Bot', page: 'contact' },
+  primaryButton: { text: 'Request a Systems Audit', page: 'contact' },
   secondaryButton: { text: 'Back to AI Hub', page: 'ai-integrations' },
 };
 
@@ -797,7 +797,7 @@ export const aiAnalyticsHero: AIHero = {
   tagline:
     'Transform raw data into strategic decisions. AI analyses visitor behaviour, predicts trends, and delivers actionable reports — automatically.',
   badge: { text: 'SMART ANALYTICS', icon: LineChart },
-  primaryButton: { text: 'Unlock Insights', page: 'contact' },
+  primaryButton: { text: 'Request a Systems Audit', page: 'contact' },
   secondaryButton: { text: 'Back to AI Hub', page: 'ai-integrations' },
 };
 

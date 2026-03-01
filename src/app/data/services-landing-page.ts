@@ -11,7 +11,7 @@ export const servicesLandingHero = {
   title: "Comprehensive WordPress Solutions",
   subtitle: "From custom block themes to complex WooCommerce stores, we build high-performance digital experiences.",
   badge: { text: "OUR EXPERTISE", icon: Layers },
-  primaryButton: { text: "Discuss Your Project", page: "contact" }
+  primaryButton: { text: "Request a Systems Audit", page: "contact" }
 };
 
 export const servicesIntro = {
@@ -21,7 +21,7 @@ export const servicesIntro = {
 
 export const servicesTechStack = {
   title: "Built on Modern Foundations",
-  description: "We leverage the latest WordPress technologies to deliver future-proof websites.",
+  description: "We use WordPress FSE, theme.json, and Interactivity API for governed sites.",
   items: [
     {
       icon: Code,
@@ -44,5 +44,5 @@ export const servicesTechStack = {
 export const servicesCTA = {
   title: "Find the Right Solution",
   description: "Not sure exactly what you need? Our discovery process helps define the perfect roadmap.",
-  button: { text: "Start Discovery", page: "contact" }
+  button: { text: "Request a Systems Audit", page: "contact" }
 };

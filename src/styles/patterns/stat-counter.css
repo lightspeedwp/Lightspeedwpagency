@@ -1,0 +1,189 @@
+/**
+ * StatCounter Pattern Styles
+ * 
+ * WordPress pattern: .stat-counter
+ * Animated statistic with count-up effect
+ * 
+ * Features:
+ * - Count-up animation on scroll
+ * - Large number display
+ * - Optional icon
+ * - Prefix/suffix support
+ * - Color variants (default, primary, accent)
+ * 
+ * Design System:
+ * - 100% CSS variables
+ * - BEM naming (.stat-counter__element)
+ */
+
+/* Container */
+.stat-counter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-3);
+  padding: var(--spacing-6);
+  text-align: center;
+}
+
+/* Icon */
+.stat-counter__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  color: hsl(var(--primary));
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.stat-counter:hover .stat-counter__icon {
+  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Value Container */
+.stat-counter__value {
+  display: flex;
+  align-items: baseline;
+  gap: var(--spacing-1);
+  font-family: var(--font-primary);
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* Number */
+.stat-counter__number {
+  font-size: var(--text-5xl);
+  color: var(--foreground);
+}
+
+/* Prefix */
+.stat-counter__prefix {
+  font-size: var(--text-3xl);
+  color: hsl(var(--primary));
+  opacity: 0.8;
+}
+
+/* Suffix */
+.stat-counter__suffix {
+  font-size: var(--text-2xl);
+  color: hsl(var(--primary));
+  opacity: 0.8;
+}
+
+/* Label */
+.stat-counter__label {
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  font-weight: 500;
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Variant: Primary */
+.stat-counter--primary .stat-counter__icon {
+  background: hsl(var(--primary) / 0.1);
+  border-color: hsl(var(--primary) / 0.2);
+  color: hsl(var(--primary));
+}
+
+.stat-counter--primary .stat-counter__number {
+  color: hsl(var(--primary));
+}
+
+.stat-counter--primary .stat-counter__prefix,
+.stat-counter--primary .stat-counter__suffix {
+  color: hsl(var(--primary));
+}
+
+/* Variant: Accent */
+.stat-counter--accent .stat-counter__icon {
+  background: hsl(var(--accent) / 0.1);
+  border-color: hsl(var(--accent) / 0.2);
+  color: hsl(var(--accent));
+}
+
+.stat-counter--accent .stat-counter__number {
+  color: hsl(var(--accent));
+}
+
+.stat-counter--accent .stat-counter__prefix,
+.stat-counter--accent .stat-counter__suffix {
+  color: hsl(var(--accent));
+}
+
+/* Dark mode enhancements */
+.dark .stat-counter__icon {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.dark .stat-counter:hover .stat-counter__icon {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.dark .stat-counter--primary .stat-counter__icon {
+  background: hsl(var(--primary) / 0.08);
+  border-color: hsl(var(--primary) / 0.15);
+}
+
+.dark .stat-counter--accent .stat-counter__icon {
+  background: hsl(var(--accent) / 0.08);
+  border-color: hsl(var(--accent) / 0.15);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .stat-counter__icon {
+    transition: none;
+  }
+
+  .stat-counter:hover .stat-counter__icon {
+    transform: none;
+  }
+}
+
+/* Responsive: Mobile (< 768px) */
+@media (max-width: 767px) {
+  .stat-counter {
+    padding: var(--spacing-4);
+  }
+
+  .stat-counter__icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .stat-counter__icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .stat-counter__number {
+    font-size: var(--text-4xl);
+  }
+
+  .stat-counter__prefix {
+    font-size: var(--text-2xl);
+  }
+
+  .stat-counter__suffix {
+    font-size: var(--text-xl);
+  }
+
+  .stat-counter__label {
+    font-size: var(--text-sm);
+  }
+}
+
+/* Responsive: Tablet (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .stat-counter__number {
+    font-size: var(--text-4xl);
+  }
+}

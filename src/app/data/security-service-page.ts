@@ -10,7 +10,7 @@ export const securityServiceHero = {
   title: "WordPress Security Services",
   subtitle: "Proactive protection for your mission-critical websites. Sleep soundly knowing your data is safe.",
   badge: { text: "SECURITY HARDENING", icon: Shield },
-  primaryButton: { text: "Secure Your Site", page: "contact" }
+  primaryButton: { text: "Request a Systems Audit", page: "contact" }
 };
 
 export const securityServiceFeatures = {
@@ -52,5 +52,5 @@ export const securityServiceProcess = {
 export const securityServiceCTA = {
   title: "Don't Wait for a Breach",
   description: "Prevention is cheaper than recovery. Secure your business today.",
-  button: { text: "Get a Security Audit", page: "contact" }
+  button: { text: "Request a Systems Audit", page: "contact" }
 };

@@ -77,7 +77,7 @@ export function TrendingTopicsWidget({
           slug: c.slug,
           name: c.name,
           count: c.count || 0,
-          url: `/blog/category/${c.slug}`,
+          url: `/insights/category/${c.slug}`,
           source: 'blog-categories',
         })),
     });
@@ -94,7 +94,7 @@ export function TrendingTopicsWidget({
           slug: t.slug,
           name: t.name,
           count: t.count || 0,
-          url: `/blog/tag/${t.slug}`,
+          url: `/insights/tag/${t.slug}`,
           source: 'blog-tags',
         })),
     });
@@ -111,7 +111,7 @@ export function TrendingTopicsWidget({
           slug: g.slug,
           name: g.name,
           count: g.count || 0,
-          url: `/portfolio/category/${g.slug}`,
+          url: `/work/category/${g.slug}`,
           source: 'project-groups',
         })),
     });
@@ -128,7 +128,7 @@ export function TrendingTopicsWidget({
           slug: t.slug,
           name: t.name,
           count: t.count || 0,
-          url: `/portfolio/tag/${t.slug}`,
+          url: `/work/tag/${t.slug}`,
           source: 'project-tags',
         })),
     });

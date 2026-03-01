@@ -34,6 +34,7 @@
  * @see {@link /guidelines/templates/index.md}
  */
 
+import '../../../styles/templates/index.css';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { Heading } from '../blocks/text/Heading';
@@ -121,7 +122,7 @@ export function IndexTemplate() {
               <Link 
                 key={post.id}
                 className="wp-index-card"
-                to={`/blog/${post.slug}`}
+                to={`/insights/${post.slug}`}
               >
                 {/* Featured Image */}
                 <div className="wp-index-card__image-wrapper">

@@ -75,7 +75,7 @@ export const FeaturedProjectText: React.FC<FeaturedProjectTextProps> = ({
 
           <Link 
             className="featured-project-text__cta"
-            to={`/portfolio/${project.slug}`}
+            to={`/work/${project.slug}`}
           >
             Read Case Study <ArrowRight size={18} />
           </Link>

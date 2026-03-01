@@ -85,7 +85,7 @@ export const FeaturedProjectVideo: React.FC<FeaturedProjectVideoProps> = ({
 
           <Link 
             className="featured-project-video__cta"
-            to={`/portfolio/${project.slug}`}
+            to={`/work/${project.slug}`}
           >
             View Full Case Study <ArrowRight size={18} />
           </Link>

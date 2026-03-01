@@ -2,24 +2,34 @@
  * LSX Design — Route Configuration
  * 
  * React Router Data Mode configuration with hierarchical WordPress-style URLs.
- * Uses static imports to prevent "Failed to fetch dynamically imported module" errors in preview environment.
+ * 
+ * Code Splitting Strategy (Phase 1 - Task 1.6):
+ * - Core pages (42 templates): Static imports for fast initial load
+ * - Non-core pages (75 templates): Lazy-loaded with React.lazy() + Suspense
+ * - Dev tools (20 templates): Lazy-loaded (not needed in production browsing)
+ * - WooCommerce (4 templates): Lazy-loaded (e-commerce functionality)
+ * - Post formats (20 templates): Lazy-loaded (rarely visited)
+ * - Media archives (12 templates): Lazy-loaded (niche content)
  * 
  * URL Structure:
  * - `/` — Homepage
  * - `/about/*` — About section
  * - `/services/*` — Services section
  * - `/solutions/*` — Solutions section
- * - `/portfolio/:slug?` — Portfolio archive + single projects
- * - `/blog/*` — Blog
+ * - `/work/:slug?` — Work archive + single projects
+ * - `/insights/*` — Insights (blog)
  * - `/shop/*` — WooCommerce
  * - `/dev-tools/*` — Developer tools
  * 
  * @see /src/app/utils/route-map.ts — Slug-to-path mapping
  * @see /src/app/components/layouts/RootLayout.tsx — Shared layout
+ * @see /reports/2026-02/2026-02-27-route-code-splitting-audit.md — Full audit report
  */
 
-import { createBrowserRouter, type RouteObject, useParams } from 'react-router';
+import { lazy, Suspense } from 'react';
+import { createBrowserRouter, Navigate, type RouteObject, useParams } from 'react-router';
 import { RootLayout } from './components/layouts/RootLayout';
+import { RouteLoadingFallback } from './components/ui/RouteLoadingFallback';
 
 /* ═══════════════════════════════════════════
  * Template Imports (Static)
@@ -43,24 +53,62 @@ import { DiscoveryServiceTemplate } from './components/templates/DiscoveryServic
 import { DesignServiceTemplate } from './components/templates/DesignServiceTemplate';
 import { DevelopmentServiceTemplate } from './components/templates/DevelopmentServiceTemplate';
 import { ContentServiceTemplate } from './components/templates/ContentServiceTemplate';
-import { ContentStrategyTemplate } from './components/templates/ContentStrategyTemplate';
-import { ContentCollectionTemplate } from './components/templates/ContentCollectionTemplate';
-import { ContentAuditTemplate } from './components/templates/ContentAuditTemplate';
 import { SecurityServiceTemplate } from './components/templates/SecurityServiceTemplate';
-import { MigrationsServiceTemplate } from './components/templates/MigrationsServiceTemplate';
-import { SupportServiceTemplate } from './components/templates/SupportServiceTemplate';
-import { NewsletterServiceTemplate } from './components/templates/NewsletterServiceTemplate';
-import { EmailMarketingTemplate } from './components/templates/EmailMarketingTemplate';
 import { TrainingTemplate } from './components/templates/TrainingTemplate';
 import { HostingTemplate } from './components/templates/HostingTemplate';
 import { PerformanceServiceTemplate } from './components/templates/PerformanceServiceTemplate';
-import { SEOServiceTemplate } from './components/templates/SEOServiceTemplate';
-import { AccessibilityServiceTemplate } from './components/templates/AccessibilityServiceTemplate';
-import { AIEngineOptimisationTemplate } from './components/templates/AIEngineOptimisationTemplate';
-import { AnswerEngineOptimisationTemplate } from './components/templates/AnswerEngineOptimisationTemplate';
 
-// Journey Stage Pages
-import { JourneyStageTemplate } from './components/templates/JourneyStageTemplate';
+// AI Search & Visibility (consolidated: SEO + Analytics + AI Engine + Answer Engine)
+import { AISearchServiceTemplate } from './components/templates/AISearchServiceTemplate';
+
+// AI Search & Visibility Sub-Services (restored from Task 2.3 consolidation)
+import { SEOServiceTemplate } from './components/templates/SEOServiceTemplate';
+import { AnalyticsServiceTemplate } from './components/templates/AnalyticsServiceTemplate';
+import { AIEngineServiceTemplate } from './components/templates/AIEngineServiceTemplate';
+import { AnswerEngineServiceTemplate } from './components/templates/AnswerEngineServiceTemplate';
+
+// Performance Sub-Services
+import { AccessibilityServiceTemplate } from './components/templates/AccessibilityServiceTemplate';
+
+// Hosting Sub-Services
+import { MigrationsServiceTemplate } from './components/templates/MigrationsServiceTemplate';
+import { SupportServiceTemplate } from './components/templates/SupportServiceTemplate';
+
+// Content Sub-Services
+import { ContentStrategyServiceTemplate } from './components/templates/ContentStrategyServiceTemplate';
+import { ContentCollectionServiceTemplate } from './components/templates/ContentCollectionServiceTemplate';
+import { ContentAuditServiceTemplate } from './components/templates/ContentAuditServiceTemplate';
+import { NewsletterServiceTemplate } from './components/templates/NewsletterServiceTemplate';
+import { EmailMarketingServiceTemplate } from './components/templates/EmailMarketingServiceTemplate';
+
+// AI Services Landing
+import { AIServicesLandingTemplate } from './components/templates/AIServicesLandingTemplate';
+
+// Content Services Landing
+import { ContentServicesLandingTemplate } from './components/templates/ContentServicesLandingTemplate';
+
+// New Content Sub-Services
+import { ContentCreationServiceTemplate } from './components/templates/ContentCreationServiceTemplate';
+import { ContentCopywritingServiceTemplate } from './components/templates/ContentCopywritingServiceTemplate';
+import { ContentSEOServiceTemplate } from './components/templates/ContentSEOServiceTemplate';
+import { ContentGovernanceServiceTemplate } from './components/templates/ContentGovernanceServiceTemplate';
+
+// Design Sub-Services
+import { FigmaPrototypingServiceTemplate } from './components/templates/FigmaPrototypingServiceTemplate';
+import { DesignSystemsServiceTemplate } from './components/templates/DesignSystemsServiceTemplate';
+
+// Journey Stage Pages (Lazy - Phase 1.6)
+const JourneyStageTemplate = lazy(() => import('./components/templates/JourneyStageTemplate').then(m => ({ default: m.JourneyStageTemplate })));
+
+// Systems Hub (Phase 1 - Tasks 1.1, 1.2)
+import { SystemsHubTemplate } from './components/templates/SystemsHubTemplate';
+import { DesignTokensSystemTemplate } from './components/templates/DesignTokensSystemTemplate';
+import { PatternGovernanceSystemTemplate } from './components/templates/PatternGovernanceSystemTemplate';
+
+// Systems child pages (lazy-loaded - Phase 1 - Task 1.2)
+const EditorialWorkflowsSystemTemplate = lazy(() => import('./components/templates/EditorialWorkflowsSystemTemplate'));
+const AISearchReadinessSystemTemplate = lazy(() => import('./components/templates/AISearchReadinessSystemTemplate'));
+const PerformanceReliabilitySystemTemplate = lazy(() => import('./components/templates/PerformanceReliabilitySystemTemplate'));
 
 // Solutions
 import { SolutionsTemplate } from './components/templates/SolutionsTemplate';
@@ -102,47 +150,47 @@ import { AuthorArchiveTemplate } from './components/templates/AuthorArchiveTempl
 import { TagArchiveTemplate } from './components/templates/TagArchiveTemplate';
 import { DateArchiveTemplate } from './components/templates/DateArchiveTemplate';
 
-// Videos
-import { VideoArchiveTemplate } from './components/templates/VideoArchiveTemplate';
-import { SingleVideoTemplate } from './components/templates/SingleVideoTemplate';
-import { VideoCategoryArchiveTemplate } from './components/templates/VideoCategoryArchiveTemplate';
-import { VideoTagArchiveTemplate } from './components/templates/VideoTagArchiveTemplate';
+// Videos (Lazy - Phase 1.6)
+const VideoArchiveTemplate = lazy(() => import('./components/templates/VideoArchiveTemplate').then(m => ({ default: m.VideoArchiveTemplate })));
+const SingleVideoTemplate = lazy(() => import('./components/templates/SingleVideoTemplate').then(m => ({ default: m.SingleVideoTemplate })));
+const VideoCategoryArchiveTemplate = lazy(() => import('./components/templates/VideoCategoryArchiveTemplate').then(m => ({ default: m.VideoCategoryArchiveTemplate })));
+const VideoTagArchiveTemplate = lazy(() => import('./components/templates/VideoTagArchiveTemplate').then(m => ({ default: m.VideoTagArchiveTemplate })));
 
-// Podcasts
-import { PodcastArchiveTemplate } from './components/templates/PodcastArchiveTemplate';
-import { SinglePodcastTemplate } from './components/templates/SinglePodcastTemplate';
-import { PodcastCategoryArchiveTemplate } from './components/templates/PodcastCategoryArchiveTemplate';
+// Podcasts (Lazy - Phase 1.6)
+const PodcastArchiveTemplate = lazy(() => import('./components/templates/PodcastArchiveTemplate').then(m => ({ default: m.PodcastArchiveTemplate })));
+const SinglePodcastTemplate = lazy(() => import('./components/templates/SinglePodcastTemplate').then(m => ({ default: m.SinglePodcastTemplate })));
+const PodcastCategoryArchiveTemplate = lazy(() => import('./components/templates/PodcastCategoryArchiveTemplate').then(m => ({ default: m.PodcastCategoryArchiveTemplate })));
 
-// Post Formats
-import { AudioArchiveTemplate } from './components/templates/post-formats/AudioArchiveTemplate';
-import { SingleAudioTemplate } from './components/templates/post-formats/SingleAudioTemplate';
-import { GalleryArchiveTemplate } from './components/templates/post-formats/GalleryArchiveTemplate';
-import { SingleGalleryTemplate } from './components/templates/post-formats/SingleGalleryTemplate';
-import { ImageArchiveTemplate } from './components/templates/post-formats/ImageArchiveTemplate';
-import { SingleImageTemplate } from './components/templates/post-formats/SingleImageTemplate';
-import { QuoteArchiveTemplate } from './components/templates/post-formats/QuoteArchiveTemplate';
-import { SingleQuoteTemplate } from './components/templates/post-formats/SingleQuoteTemplate';
-import { LinkArchiveTemplate } from './components/templates/post-formats/LinkArchiveTemplate';
-import { SingleLinkTemplate } from './components/templates/post-formats/SingleLinkTemplate';
-import { ChatArchiveTemplate } from './components/templates/post-formats/ChatArchiveTemplate';
-import { SingleChatTemplate } from './components/templates/post-formats/SingleChatTemplate';
-import { StatusArchiveTemplate } from './components/templates/post-formats/StatusArchiveTemplate';
-import { SingleStatusTemplate } from './components/templates/post-formats/SingleStatusTemplate';
-import { StandardArchiveTemplate } from './components/templates/post-formats/StandardArchiveTemplate';
-import { SingleStandardTemplate } from './components/templates/post-formats/SingleStandardTemplate';
-import { AsideArchiveTemplate } from './components/templates/post-formats/AsideArchiveTemplate';
-import { SingleAsideTemplate } from './components/templates/post-formats/SingleAsideTemplate';
-import { AsideStreamTemplate } from './components/templates/post-formats/AsideStreamTemplate';
+// Post Formats (Lazy - Phase 1.6)
+const AudioArchiveTemplate = lazy(() => import('./components/templates/post-formats/AudioArchiveTemplate').then(m => ({ default: m.AudioArchiveTemplate })));
+const SingleAudioTemplate = lazy(() => import('./components/templates/post-formats/SingleAudioTemplate').then(m => ({ default: m.SingleAudioTemplate })));
+const GalleryArchiveTemplate = lazy(() => import('./components/templates/post-formats/GalleryArchiveTemplate').then(m => ({ default: m.GalleryArchiveTemplate })));
+const SingleGalleryTemplate = lazy(() => import('./components/templates/post-formats/SingleGalleryTemplate').then(m => ({ default: m.SingleGalleryTemplate })));
+const ImageArchiveTemplate = lazy(() => import('./components/templates/post-formats/ImageArchiveTemplate').then(m => ({ default: m.ImageArchiveTemplate })));
+const SingleImageTemplate = lazy(() => import('./components/templates/post-formats/SingleImageTemplate').then(m => ({ default: m.SingleImageTemplate })));
+const QuoteArchiveTemplate = lazy(() => import('./components/templates/post-formats/QuoteArchiveTemplate').then(m => ({ default: m.QuoteArchiveTemplate })));
+const SingleQuoteTemplate = lazy(() => import('./components/templates/post-formats/SingleQuoteTemplate').then(m => ({ default: m.SingleQuoteTemplate })));
+const LinkArchiveTemplate = lazy(() => import('./components/templates/post-formats/LinkArchiveTemplate').then(m => ({ default: m.LinkArchiveTemplate })));
+const SingleLinkTemplate = lazy(() => import('./components/templates/post-formats/SingleLinkTemplate').then(m => ({ default: m.SingleLinkTemplate })));
+const ChatArchiveTemplate = lazy(() => import('./components/templates/post-formats/ChatArchiveTemplate').then(m => ({ default: m.ChatArchiveTemplate })));
+const SingleChatTemplate = lazy(() => import('./components/templates/post-formats/SingleChatTemplate').then(m => ({ default: m.SingleChatTemplate })));
+const StatusArchiveTemplate = lazy(() => import('./components/templates/post-formats/StatusArchiveTemplate').then(m => ({ default: m.StatusArchiveTemplate })));
+const SingleStatusTemplate = lazy(() => import('./components/templates/post-formats/SingleStatusTemplate').then(m => ({ default: m.SingleStatusTemplate })));
+const StandardArchiveTemplate = lazy(() => import('./components/templates/post-formats/StandardArchiveTemplate').then(m => ({ default: m.StandardArchiveTemplate })));
+const SingleStandardTemplate = lazy(() => import('./components/templates/post-formats/SingleStandardTemplate').then(m => ({ default: m.SingleStandardTemplate })));
+const AsideArchiveTemplate = lazy(() => import('./components/templates/post-formats/AsideArchiveTemplate').then(m => ({ default: m.AsideArchiveTemplate })));
+const SingleAsideTemplate = lazy(() => import('./components/templates/post-formats/SingleAsideTemplate').then(m => ({ default: m.SingleAsideTemplate })));
+const AsideStreamTemplate = lazy(() => import('./components/templates/post-formats/AsideStreamTemplate').then(m => ({ default: m.AsideStreamTemplate })));
 
-// WooCommerce
-import { ProductArchiveTemplate } from './components/templates/ProductArchiveTemplate';
-import { SingleProductTemplate } from './components/templates/woocommerce/SingleProductTemplate';
-import { CartTemplate } from './components/templates/CartTemplate';
-import { CheckoutTemplate } from './components/templates/CheckoutTemplate';
+// WooCommerce (Lazy - Phase 1.6)
+const ProductArchiveTemplate = lazy(() => import('./components/templates/ProductArchiveTemplate').then(m => ({ default: m.ProductArchiveTemplate })));
+const SingleProductTemplate = lazy(() => import('./components/templates/woocommerce/SingleProductTemplate').then(m => ({ default: m.SingleProductTemplate })));
+const CartTemplate = lazy(() => import('./components/templates/CartTemplate').then(m => ({ default: m.CartTemplate })));
+const CheckoutTemplate = lazy(() => import('./components/templates/CheckoutTemplate').then(m => ({ default: m.CheckoutTemplate })));
 
-// Tour Operator
-import { TourOperatorArchiveTemplate } from './components/templates/tour-operator/TourOperatorArchiveTemplate';
-import { SingleTourTemplate } from './components/templates/tour-operator/SingleTourTemplate';
+// Tour Operator (Lazy - Phase 1.6)
+const TourOperatorArchiveTemplate = lazy(() => import('./components/templates/tour-operator/TourOperatorArchiveTemplate').then(m => ({ default: m.TourOperatorArchiveTemplate })));
+const SingleTourTemplate = lazy(() => import('./components/templates/tour-operator/SingleTourTemplate').then(m => ({ default: m.SingleTourTemplate })));
 
 // Utility Pages
 import { ContactPageTemplate } from './components/templates/ContactPageTemplate';
@@ -153,12 +201,12 @@ import { GuaranteesTemplate } from './components/templates/GuaranteesTemplate';
 import { ROICalculatorTemplate } from './components/templates/ROICalculatorTemplate';
 import { TestimonialsTemplate } from './components/templates/TestimonialsTemplate';
 
-// Testimonial Templates (Archive + Singles)
-import { TestimonialArchiveTemplate } from './components/templates/testimonials/TestimonialArchiveTemplate';
-import { SingleTestimonialTemplate } from './components/templates/testimonials/SingleTestimonialTemplate';
-import { SingleTestimonialAudioTemplate } from './components/templates/testimonials/SingleTestimonialAudioTemplate';
-import { SingleTestimonialVideoTemplate } from './components/templates/testimonials/SingleTestimonialVideoTemplate';
-import { SingleTestimonialGalleryTemplate } from './components/templates/testimonials/SingleTestimonialGalleryTemplate';
+// Testimonial Templates (Archive + Singles) (Lazy - Phase 1.6)
+const TestimonialArchiveTemplate = lazy(() => import('./components/templates/testimonials/TestimonialArchiveTemplate').then(m => ({ default: m.TestimonialArchiveTemplate })));
+const SingleTestimonialTemplate = lazy(() => import('./components/templates/testimonials/SingleTestimonialTemplate').then(m => ({ default: m.SingleTestimonialTemplate })));
+const SingleTestimonialAudioTemplate = lazy(() => import('./components/templates/testimonials/SingleTestimonialAudioTemplate').then(m => ({ default: m.SingleTestimonialAudioTemplate })));
+const SingleTestimonialVideoTemplate = lazy(() => import('./components/templates/testimonials/SingleTestimonialVideoTemplate').then(m => ({ default: m.SingleTestimonialVideoTemplate })));
+const SingleTestimonialGalleryTemplate = lazy(() => import('./components/templates/testimonials/SingleTestimonialGalleryTemplate').then(m => ({ default: m.SingleTestimonialGalleryTemplate })));
 
 import { SearchResultsPageTemplate } from './components/templates/SearchResultsPageTemplate';
 import { PrivacyPolicyTemplate } from './components/templates/PrivacyPolicyTemplate';
@@ -167,41 +215,66 @@ import { SiteMapTemplate } from './components/templates/SiteMapTemplate';
 import { StyleGuideTemplate } from './components/templates/StyleGuideTemplate';
 import { TutorialsTemplate } from './components/templates/TutorialsTemplate';
 
-// Legacy / Misc
-import { ArchiveTemplate } from './components/templates/ArchiveTemplate';
-import { ArchiveWithFiltersTemplate } from './components/templates/ArchiveWithFiltersTemplate';
-import { IndexTemplate } from './components/templates/IndexTemplate';
-import { SingleTemplate } from './components/templates/SingleTemplate';
-import { SearchResultsTemplate } from './components/templates/SearchResultsTemplate';
-import { WordPressBlocksProofOfConcept } from './components/templates/WordPressBlocksProofOfConcept';
-import { SectionStyleExample } from './components/templates/SectionStyleExample';
-import { FeatureShowcaseTemplate } from './components/templates/FeatureShowcaseTemplate';
+// Legacy / Misc (Lazy - Phase 1.6)
+const ArchiveTemplate = lazy(() => import('./components/templates/ArchiveTemplate').then(m => ({ default: m.ArchiveTemplate })));
+const ArchiveWithFiltersTemplate = lazy(() => import('./components/templates/ArchiveWithFiltersTemplate').then(m => ({ default: m.ArchiveWithFiltersTemplate })));
+const IndexTemplate = lazy(() => import('./components/templates/IndexTemplate').then(m => ({ default: m.IndexTemplate })));
+const SingleTemplate = lazy(() => import('./components/templates/SingleTemplate').then(m => ({ default: m.SingleTemplate })));
+const SearchResultsTemplate = lazy(() => import('./components/templates/SearchResultsTemplate').then(m => ({ default: m.SearchResultsTemplate })));
+const WordPressBlocksProofOfConcept = lazy(() => import('./components/templates/WordPressBlocksProofOfConcept').then(m => ({ default: m.WordPressBlocksProofOfConcept })));
+const SectionStyleExample = lazy(() => import('./components/templates/SectionStyleExample').then(m => ({ default: m.SectionStyleExample })));
+const FeatureShowcaseTemplate = lazy(() => import('./components/templates/FeatureShowcaseTemplate').then(m => ({ default: m.FeatureShowcaseTemplate })));
 
-// Dev Tools
-import { DevToolsTemplate } from './components/templates/DevToolsTemplate';
-import { TemplateTester } from './components/templates/TemplateTester';
-import { ComponentShowcase } from './components/templates/ComponentShowcase';
-import { DesignSystemTest } from './components/blocks/dev-tools/DesignSystemTest';
-import { ComplianceScorecard } from './components/blocks/dev-tools/ComplianceScorecard';
-import { BlockDocumentation } from './components/templates/BlockDocumentation';
-import { ComponentAPI } from './components/templates/ComponentAPI';
-import { DesignBlocksShowcase } from './components/templates/DesignBlocksShowcase';
-import { ButtonShowcase } from './components/templates/ButtonShowcase';
-import { HeaderFooterComparison } from './components/templates/HeaderFooterComparison';
-import { IconLibrary } from './components/templates/IconLibrary';
-import { LivePreview } from './components/templates/LivePreview';
-import { SectionPresetsShowcase } from './components/templates/SectionPresetsShowcase';
-import { ThemeBlocksShowcase } from './components/templates/ThemeBlocksShowcase';
-import { DesignTokensReferenceTemplate } from './components/templates/DesignTokensReferenceTemplate';
-import { DeploymentReadinessTemplate } from './components/templates/DeploymentReadinessTemplate';
-import { DesignPlaygroundTemplate } from './components/templates/DesignPlaygroundTemplate';
-import { CodeQualityDashboardTemplate } from './components/templates/CodeQualityDashboardTemplate';
-import { DocsGeneratorTemplate } from './components/templates/DocsGeneratorTemplate';
-import { SnippetGeneratorTemplate } from './components/templates/SnippetGeneratorTemplate';
+// Dev Tools (Lazy - Phase 1.6 — Priority 1)
+const DevToolsTemplate = lazy(() => import('./components/templates/DevToolsTemplate').then(m => ({ default: m.DevToolsTemplate })));
+const TemplateTester = lazy(() => import('./components/templates/TemplateTester').then(m => ({ default: m.TemplateTester })));
+const ComponentShowcase = lazy(() => import('./components/templates/ComponentShowcase').then(m => ({ default: m.ComponentShowcase })));
+const DesignSystemTest = lazy(() => import('./components/blocks/dev-tools/DesignSystemTest').then(m => ({ default: m.DesignSystemTest })));
+const ComplianceScorecard = lazy(() => import('./components/blocks/dev-tools/ComplianceScorecard').then(m => ({ default: m.ComplianceScorecard })));
+const BlockDocumentation = lazy(() => import('./components/templates/BlockDocumentation').then(m => ({ default: m.BlockDocumentation })));
+const ComponentAPI = lazy(() => import('./components/templates/ComponentAPI').then(m => ({ default: m.ComponentAPI })));
+const DesignBlocksShowcase = lazy(() => import('./components/templates/DesignBlocksShowcase').then(m => ({ default: m.DesignBlocksShowcase })));
+const ButtonShowcase = lazy(() => import('./components/templates/ButtonShowcase').then(m => ({ default: m.ButtonShowcase })));
+const HeaderFooterComparison = lazy(() => import('./components/templates/HeaderFooterComparison').then(m => ({ default: m.HeaderFooterComparison })));
+const IconLibrary = lazy(() => import('./components/templates/IconLibrary').then(m => ({ default: m.IconLibrary })));
+const LivePreview = lazy(() => import('./components/templates/LivePreview').then(m => ({ default: m.LivePreview })));
+const SectionPresetsShowcase = lazy(() => import('./components/templates/SectionPresetsShowcase').then(m => ({ default: m.SectionPresetsShowcase })));
+const ThemeBlocksShowcase = lazy(() => import('./components/templates/ThemeBlocksShowcase').then(m => ({ default: m.ThemeBlocksShowcase })));
+const DesignTokensReferenceTemplate = lazy(() => import('./components/templates/DesignTokensReferenceTemplate').then(m => ({ default: m.DesignTokensReferenceTemplate })));
+const DeploymentReadinessTemplate = lazy(() => import('./components/templates/DeploymentReadinessTemplate').then(m => ({ default: m.DeploymentReadinessTemplate })));
+const DesignPlaygroundTemplate = lazy(() => import('./components/templates/DesignPlaygroundTemplate').then(m => ({ default: m.DesignPlaygroundTemplate })));
+const CodeQualityDashboardTemplate = lazy(() => import('./components/templates/CodeQualityDashboardTemplate').then(m => ({ default: m.CodeQualityDashboardTemplate })));
+const DocsGeneratorTemplate = lazy(() => import('./components/templates/DocsGeneratorTemplate').then(m => ({ default: m.DocsGeneratorTemplate })));
+const SnippetGeneratorTemplate = lazy(() => import('./components/templates/SnippetGeneratorTemplate').then(m => ({ default: m.SnippetGeneratorTemplate })));
 
 /* ═══════════════════════════════════════════
  * Route Wrapper Components (for params)
  * ═══════════════════════════════════════════ */
+
+// Systems child pages (lazy-loaded)
+function EditorialWorkflowsSystemRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <EditorialWorkflowsSystemTemplate />
+    </Suspense>
+  );
+}
+
+function AISearchReadinessSystemRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <AISearchReadinessSystemTemplate />
+    </Suspense>
+  );
+}
+
+function PerformanceReliabilitySystemRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <PerformanceReliabilitySystemTemplate />
+    </Suspense>
+  );
+}
 
 function PortfolioSingleRoute() {
   const { slug } = useParams();
@@ -240,12 +313,20 @@ function DateArchiveRoute() {
 
 function SingleProductRoute() {
   const { slug } = useParams();
-  return <SingleProductTemplate slug={slug} />;
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <SingleProductTemplate slug={slug} />
+    </Suspense>
+  );
 }
 
 function SingleTourRoute() {
   const { slug } = useParams();
-  return <SingleTourTemplate />;
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <SingleTourTemplate />
+    </Suspense>
+  );
 }
 
 function PortfolioCategoryRoute() {
@@ -258,50 +339,579 @@ function PortfolioTagRoute() {
 
 function SingleVideoRoute() {
   const { slug } = useParams();
-  return <SingleVideoTemplate slug={slug} />;
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <SingleVideoTemplate slug={slug} />
+    </Suspense>
+  );
 }
 
 function VideoCategoryRoute() {
   const { slug } = useParams();
-  return <VideoCategoryArchiveTemplate category={slug} />;
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <VideoCategoryArchiveTemplate category={slug} />
+    </Suspense>
+  );
 }
 
 function SinglePodcastRoute() {
   const { slug } = useParams();
-  return <SinglePodcastTemplate slug={slug} />;
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <SinglePodcastTemplate slug={slug} />
+    </Suspense>
+  );
 }
 
 function PodcastCategoryRoute() {
-  return <PodcastCategoryArchiveTemplate />;
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <PodcastCategoryArchiveTemplate />
+    </Suspense>
+  );
 }
 
 function SingleTestimonialRoute() {
   const { slug } = useParams();
-  return <SingleTestimonialTemplate slug={slug} />;
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <SingleTestimonialTemplate slug={slug} />
+    </Suspense>
+  );
 }
 
 function SingleTestimonialAudioRoute() {
   const { slug } = useParams();
-  return <SingleTestimonialAudioTemplate slug={slug} />;
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <SingleTestimonialAudioTemplate slug={slug} />
+    </Suspense>
+  );
 }
 
 function SingleTestimonialVideoRoute() {
   const { slug } = useParams();
-  return <SingleTestimonialVideoTemplate slug={slug} />;
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <SingleTestimonialVideoTemplate slug={slug} />
+    </Suspense>
+  );
 }
 
 function SingleTestimonialGalleryRoute() {
   const { slug } = useParams();
-  return <SingleTestimonialGalleryTemplate slug={slug} />;
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <SingleTestimonialGalleryTemplate slug={slug} />
+    </Suspense>
+  );
 }
 
-/* Journey Stage route wrappers */
-function JourneyIgniteRoute() { return <JourneyStageTemplate slug="ignite" />; }
-function JourneyCreateRoute() { return <JourneyStageTemplate slug="create" />; }
-function JourneyBuildRoute() { return <JourneyStageTemplate slug="build" />; }
-function JourneyLaunchRoute() { return <JourneyStageTemplate slug="launch" />; }
-function JourneyGrowRoute() { return <JourneyStageTemplate slug="grow" />; }
-function JourneyEvolveRoute() { return <JourneyStageTemplate slug="evolve" />; }
+/* Journey Stage route wrappers (Lazy with Suspense) */
+function JourneyIgniteRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <JourneyStageTemplate slug="ignite" />
+    </Suspense>
+  );
+}
+function JourneyCreateRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <JourneyStageTemplate slug="create" />
+    </Suspense>
+  );
+}
+function JourneyBuildRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <JourneyStageTemplate slug="build" />
+    </Suspense>
+  );
+}
+function JourneyLaunchRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <JourneyStageTemplate slug="launch" />
+    </Suspense>
+  );
+}
+function JourneyGrowRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <JourneyStageTemplate slug="grow" />
+    </Suspense>
+  );
+}
+function JourneyEvolveRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <JourneyStageTemplate slug="evolve" />
+    </Suspense>
+  );
+}
+
+/* ═══════════════════════════════════════════
+ * Lazy Route Wrappers (Non-Parameterized)
+ * ═══════════════════════════════════════════ */
+
+// WooCommerce
+function ProductArchiveRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <ProductArchiveTemplate />
+    </Suspense>
+  );
+}
+
+function CartRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <CartTemplate />
+    </Suspense>
+  );
+}
+
+function CheckoutRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <CheckoutTemplate />
+    </Suspense>
+  );
+}
+
+// Tour Operator
+function TourOperatorArchiveRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <TourOperatorArchiveTemplate />
+    </Suspense>
+  );
+}
+
+// Videos
+function VideoArchiveRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <VideoArchiveTemplate />
+    </Suspense>
+  );
+}
+
+function VideoTagArchiveRoute() {
+  const { slug } = useParams();
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <VideoTagArchiveTemplate tag={slug} />
+    </Suspense>
+  );
+}
+
+// Podcasts
+function PodcastArchiveRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <PodcastArchiveTemplate />
+    </Suspense>
+  );
+}
+
+// Testimonials
+function TestimonialArchiveRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <TestimonialArchiveTemplate />
+    </Suspense>
+  );
+}
+
+// Post Formats
+function AudioArchiveRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <AudioArchiveTemplate />
+    </Suspense>
+  );
+}
+
+function SingleAudioRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <SingleAudioTemplate />
+    </Suspense>
+  );
+}
+
+function GalleryArchiveRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <GalleryArchiveTemplate />
+    </Suspense>
+  );
+}
+
+function SingleGalleryRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <SingleGalleryTemplate />
+    </Suspense>
+  );
+}
+
+function ImageArchiveRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <ImageArchiveTemplate />
+    </Suspense>
+  );
+}
+
+function SingleImageRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <SingleImageTemplate />
+    </Suspense>
+  );
+}
+
+function QuoteArchiveRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <QuoteArchiveTemplate />
+    </Suspense>
+  );
+}
+
+function SingleQuoteRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <SingleQuoteTemplate />
+    </Suspense>
+  );
+}
+
+function LinkArchiveRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <LinkArchiveTemplate />
+    </Suspense>
+  );
+}
+
+function SingleLinkRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <SingleLinkTemplate />
+    </Suspense>
+  );
+}
+
+function ChatArchiveRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <ChatArchiveTemplate />
+    </Suspense>
+  );
+}
+
+function SingleChatRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <SingleChatTemplate />
+    </Suspense>
+  );
+}
+
+function StatusArchiveRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <StatusArchiveTemplate />
+    </Suspense>
+  );
+}
+
+function SingleStatusRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <SingleStatusTemplate />
+    </Suspense>
+  );
+}
+
+function StandardArchiveRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <StandardArchiveTemplate />
+    </Suspense>
+  );
+}
+
+function SingleStandardRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <SingleStandardTemplate />
+    </Suspense>
+  );
+}
+
+function AsideArchiveRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <AsideArchiveTemplate />
+    </Suspense>
+  );
+}
+
+function SingleAsideRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <SingleAsideTemplate />
+    </Suspense>
+  );
+}
+
+function AsideStreamRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <AsideStreamTemplate />
+    </Suspense>
+  );
+}
+
+// Legacy / Misc
+function ArchiveRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <ArchiveTemplate />
+    </Suspense>
+  );
+}
+
+function ArchiveWithFiltersRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <ArchiveWithFiltersTemplate />
+    </Suspense>
+  );
+}
+
+function IndexRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <IndexTemplate />
+    </Suspense>
+  );
+}
+
+function SingleRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <SingleTemplate />
+    </Suspense>
+  );
+}
+
+function SearchResultsRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <SearchResultsTemplate />
+    </Suspense>
+  );
+}
+
+function WordPressBlocksPoCRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <WordPressBlocksProofOfConcept />
+    </Suspense>
+  );
+}
+
+function SectionStyleExampleRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <SectionStyleExample />
+    </Suspense>
+  );
+}
+
+function FeatureShowcaseRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <FeatureShowcaseTemplate />
+    </Suspense>
+  );
+}
+
+// Dev Tools
+function DevToolsRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <DevToolsTemplate />
+    </Suspense>
+  );
+}
+
+function TemplateTesterRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <TemplateTester />
+    </Suspense>
+  );
+}
+
+function ComponentShowcaseRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <ComponentShowcase />
+    </Suspense>
+  );
+}
+
+function DesignSystemTestRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <DesignSystemTest />
+    </Suspense>
+  );
+}
+
+function ComplianceScorecardRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <ComplianceScorecard />
+    </Suspense>
+  );
+}
+
+function BlockDocumentationRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <BlockDocumentation />
+    </Suspense>
+  );
+}
+
+function ComponentAPIRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <ComponentAPI />
+    </Suspense>
+  );
+}
+
+function DesignBlocksShowcaseRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <DesignBlocksShowcase />
+    </Suspense>
+  );
+}
+
+function ButtonShowcaseRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <ButtonShowcase />
+    </Suspense>
+  );
+}
+
+function HeaderFooterComparisonRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <HeaderFooterComparison />
+    </Suspense>
+  );
+}
+
+function IconLibraryRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <IconLibrary />
+    </Suspense>
+  );
+}
+
+function LivePreviewRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <LivePreview />
+    </Suspense>
+  );
+}
+
+function SectionPresetsShowcaseRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <SectionPresetsShowcase />
+    </Suspense>
+  );
+}
+
+function ThemeBlocksShowcaseRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <ThemeBlocksShowcase />
+    </Suspense>
+  );
+}
+
+function DesignTokensReferenceRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <DesignTokensReferenceTemplate />
+    </Suspense>
+  );
+}
+
+function DeploymentReadinessRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <DeploymentReadinessTemplate />
+    </Suspense>
+  );
+}
+
+function DesignPlaygroundRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <DesignPlaygroundTemplate />
+    </Suspense>
+  );
+}
+
+function CodeQualityDashboardRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <CodeQualityDashboardTemplate />
+    </Suspense>
+  );
+}
+
+function DocsGeneratorRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <DocsGeneratorTemplate />
+    </Suspense>
+  );
+}
+
+function SnippetGeneratorRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <SnippetGeneratorTemplate />
+    </Suspense>
+  );
+}
+
+function StyleGuideRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <StyleGuideTemplate />
+    </Suspense>
+  );
+}
 
 /* ═══════════════════════════════════════════
  * Route Definitions
@@ -328,22 +938,41 @@ const routes: RouteObject[] = [
       { path: 'services/discovery', Component: DiscoveryServiceTemplate },
       { path: 'services/design', Component: DesignServiceTemplate },
       { path: 'services/development', Component: DevelopmentServiceTemplate },
-      { path: 'services/content', Component: ContentServiceTemplate },
-      { path: 'services/content/strategy', Component: ContentStrategyTemplate },
-      { path: 'services/content/collection', Component: ContentCollectionTemplate },
-      { path: 'services/content/audit', Component: ContentAuditTemplate },
+      { path: 'services/content', Component: ContentServicesLandingTemplate },
+      { path: 'services/content/overview', Component: ContentServiceTemplate },
+      { path: 'services/content/strategy', Component: ContentStrategyServiceTemplate },
+      { path: 'services/content/collection', Component: ContentCollectionServiceTemplate },
+      { path: 'services/content/audit', Component: ContentAuditServiceTemplate },
+      { path: 'services/content/creation', Component: ContentCreationServiceTemplate },
+      { path: 'services/content/copywriting', Component: ContentCopywritingServiceTemplate },
+      { path: 'services/content/seo-content', Component: ContentSEOServiceTemplate },
+      { path: 'services/content/governance', Component: ContentGovernanceServiceTemplate },
       { path: 'services/security', Component: SecurityServiceTemplate },
       { path: 'services/migrations', Component: MigrationsServiceTemplate },
       { path: 'services/support', Component: SupportServiceTemplate },
       { path: 'services/newsletter', Component: NewsletterServiceTemplate },
-      { path: 'services/email-marketing', Component: EmailMarketingTemplate },
+      { path: 'services/email-marketing', Component: EmailMarketingServiceTemplate },
       { path: 'services/training', Component: TrainingTemplate },
       { path: 'services/hosting', Component: HostingTemplate },
       { path: 'services/performance', Component: PerformanceServiceTemplate },
-      { path: 'services/seo', Component: SEOServiceTemplate },
       { path: 'services/accessibility', Component: AccessibilityServiceTemplate },
-      { path: 'services/ai-engine-optimisation', Component: AIEngineOptimisationTemplate },
-      { path: 'services/answer-engine-optimisation', Component: AnswerEngineOptimisationTemplate },
+      { path: 'services/figma-prototyping', Component: FigmaPrototypingServiceTemplate },
+      { path: 'services/design-systems', Component: DesignSystemsServiceTemplate },
+
+      /* ── AI Services Landing + Sub-Services ── */
+      { path: 'services/ai', Component: AIServicesLandingTemplate },
+      { path: 'services/ai/search-visibility', Component: AISearchServiceTemplate },
+      { path: 'services/ai/seo', Component: SEOServiceTemplate },
+      { path: 'services/ai/analytics', Component: AnalyticsServiceTemplate },
+      { path: 'services/ai/engine-optimisation', Component: AIEngineServiceTemplate },
+      { path: 'services/ai/answer-engine-optimisation', Component: AnswerEngineServiceTemplate },
+
+      /* ── AI Services Legacy Redirects (backward compatibility) ── */
+      { path: 'services/ai-search-visibility', element: <Navigate to="/services/ai/search-visibility" replace /> },
+      { path: 'services/seo', element: <Navigate to="/services/ai/seo" replace /> },
+      { path: 'services/analytics', element: <Navigate to="/services/ai/analytics" replace /> },
+      { path: 'services/ai-engine-optimisation', element: <Navigate to="/services/ai/engine-optimisation" replace /> },
+      { path: 'services/answer-engine-optimisation', element: <Navigate to="/services/ai/answer-engine-optimisation" replace /> },
 
       /* ── Journey Stage Pages ── */
       { path: 'services/ignite', Component: JourneyIgniteRoute },
@@ -352,6 +981,14 @@ const routes: RouteObject[] = [
       { path: 'services/launch', Component: JourneyLaunchRoute },
       { path: 'services/grow', Component: JourneyGrowRoute },
       { path: 'services/evolve', Component: JourneyEvolveRoute },
+
+      /* ── Systems Hub (Phase 1 - Tasks 1.1, 1.2) ── */
+      { path: 'systems', Component: SystemsHubTemplate },
+      { path: 'systems/design-tokens', Component: DesignTokensSystemTemplate },
+      { path: 'systems/pattern-governance', Component: PatternGovernanceSystemTemplate },
+      { path: 'systems/editorial-workflows', Component: EditorialWorkflowsSystemRoute },
+      { path: 'systems/ai-search-readiness', Component: AISearchReadinessSystemRoute },
+      { path: 'systems/performance-reliability', Component: PerformanceReliabilitySystemRoute },
 
       /* ── Solutions ── */
       { path: 'solutions', Component: SolutionsTemplate },
@@ -378,69 +1015,69 @@ const routes: RouteObject[] = [
       { path: 'solutions/ai-chatbots', Component: AIChatbotsTemplate },
       { path: 'solutions/ai-analytics', Component: AIAnalyticsTemplate },
 
-      /* ── Portfolio ── */
-      { path: 'portfolio', Component: PortfolioArchiveTemplate },
-      { path: 'portfolio/:slug', Component: PortfolioSingleRoute },
-      { path: 'portfolio/category/:slug', Component: PortfolioCategoryRoute },
-      { path: 'portfolio/tag/:slug', Component: PortfolioTagRoute },
+      /* ── Work ── */
+      { path: 'work', Component: PortfolioArchiveTemplate },
+      { path: 'work/:slug', Component: PortfolioSingleRoute },
+      { path: 'work/category/:slug', Component: PortfolioCategoryRoute },
+      { path: 'work/tag/:slug', Component: PortfolioTagRoute },
 
-      /* ── Blog ── */
-      { path: 'blog', Component: BlogIndexTemplate },
-      { path: 'blog/single-post', Component: SinglePostLongformTemplate },
-      { path: 'blog/category', Component: CategoryArchiveTemplate },
-      { path: 'blog/category/:slug', Component: CategoryArchiveRoute },
-      { path: 'blog/author', Component: AuthorArchiveTemplate },
-      { path: 'blog/author/:slug', Component: AuthorArchiveRoute },
-      { path: 'blog/tag', Component: TagArchiveTemplate },
-      { path: 'blog/tag/:slug', Component: TagArchiveRoute },
-      { path: 'blog/date', Component: DateArchiveTemplate },
-      { path: 'blog/date/:year', Component: DateArchiveRoute },
-      { path: 'blog/date/:year/:month', Component: DateArchiveRoute },
+      /* ── Insights ── */
+      { path: 'insights', Component: BlogIndexTemplate },
+      { path: 'insights/single-post', Component: SinglePostLongformTemplate },
+      { path: 'insights/category', Component: CategoryArchiveTemplate },
+      { path: 'insights/category/:slug', Component: CategoryArchiveRoute },
+      { path: 'insights/author', Component: AuthorArchiveTemplate },
+      { path: 'insights/author/:slug', Component: AuthorArchiveRoute },
+      { path: 'insights/tag', Component: TagArchiveTemplate },
+      { path: 'insights/tag/:slug', Component: TagArchiveRoute },
+      { path: 'insights/date', Component: DateArchiveTemplate },
+      { path: 'insights/date/:year', Component: DateArchiveRoute },
+      { path: 'insights/date/:year/:month', Component: DateArchiveRoute },
 
-      /* ── Blog Post Formats ── */
-      { path: 'blog/format/audio', Component: AudioArchiveTemplate },
-      { path: 'blog/format/audio/single', Component: SingleAudioTemplate },
-      { path: 'blog/format/video', Component: VideoArchiveTemplate },
-      { path: 'blog/format/video/single', Component: SingleVideoRoute },
-      { path: 'blog/format/gallery', Component: GalleryArchiveTemplate },
-      { path: 'blog/format/gallery/single', Component: SingleGalleryTemplate },
-      { path: 'blog/format/image', Component: ImageArchiveTemplate },
-      { path: 'blog/format/image/single', Component: SingleImageTemplate },
-      { path: 'blog/format/quote', Component: QuoteArchiveTemplate },
-      { path: 'blog/format/quote/single', Component: SingleQuoteTemplate },
-      { path: 'blog/format/link', Component: LinkArchiveTemplate },
-      { path: 'blog/format/link/single', Component: SingleLinkTemplate },
-      { path: 'blog/format/chat', Component: ChatArchiveTemplate },
-      { path: 'blog/format/chat/single', Component: SingleChatTemplate },
-      { path: 'blog/format/status', Component: StatusArchiveTemplate },
-      { path: 'blog/format/status/single', Component: SingleStatusTemplate },
-      { path: 'blog/format/standard', Component: StandardArchiveTemplate },
-      { path: 'blog/format/standard/single', Component: SingleStandardTemplate },
-      { path: 'blog/format/aside', Component: AsideArchiveTemplate },
-      { path: 'blog/format/aside/single', Component: SingleAsideTemplate },
-      { path: 'blog/format/aside-stream', Component: AsideStreamTemplate },
+      /* ── Insights Post Formats ── */
+      { path: 'insights/format/audio', Component: AudioArchiveRoute },
+      { path: 'insights/format/audio/single', Component: SingleAudioRoute },
+      { path: 'insights/format/video', Component: VideoArchiveRoute },
+      { path: 'insights/format/video/single', Component: SingleVideoRoute },
+      { path: 'insights/format/gallery', Component: GalleryArchiveRoute },
+      { path: 'insights/format/gallery/single', Component: SingleGalleryRoute },
+      { path: 'insights/format/image', Component: ImageArchiveRoute },
+      { path: 'insights/format/image/single', Component: SingleImageRoute },
+      { path: 'insights/format/quote', Component: QuoteArchiveRoute },
+      { path: 'insights/format/quote/single', Component: SingleQuoteRoute },
+      { path: 'insights/format/link', Component: LinkArchiveRoute },
+      { path: 'insights/format/link/single', Component: SingleLinkRoute },
+      { path: 'insights/format/chat', Component: ChatArchiveRoute },
+      { path: 'insights/format/chat/single', Component: SingleChatRoute },
+      { path: 'insights/format/status', Component: StatusArchiveRoute },
+      { path: 'insights/format/status/single', Component: SingleStatusRoute },
+      { path: 'insights/format/standard', Component: StandardArchiveRoute },
+      { path: 'insights/format/standard/single', Component: SingleStandardRoute },
+      { path: 'insights/format/aside', Component: AsideArchiveRoute },
+      { path: 'insights/format/aside/single', Component: SingleAsideRoute },
+      { path: 'insights/format/aside-stream', Component: AsideStreamRoute },
 
-      /* ── Blog single post (must be last in blog section) ── */
-      { path: 'blog/:slug', Component: SinglePostRoute },
+      /* ── Insights single post (must be last in insights section) ── */
+      { path: 'insights/:slug', Component: SinglePostRoute },
 
       /* ── WooCommerce ── */
-      { path: 'shop', Component: ProductArchiveTemplate },
+      { path: 'shop', Component: ProductArchiveRoute },
       { path: 'shop/:slug', Component: SingleProductRoute },
-      { path: 'cart', Component: CartTemplate },
-      { path: 'checkout', Component: CheckoutTemplate },
+      { path: 'cart', Component: CartRoute },
+      { path: 'checkout', Component: CheckoutRoute },
 
       /* ── Tour Operator ── */
-      { path: 'tours', Component: TourOperatorArchiveTemplate },
+      { path: 'tours', Component: TourOperatorArchiveRoute },
       { path: 'tours/:slug', Component: SingleTourRoute },
 
       /* ── Videos ── */
-      { path: 'videos', Component: VideoArchiveTemplate },
+      { path: 'videos', Component: VideoArchiveRoute },
       { path: 'video/:slug', Component: SingleVideoRoute },
       { path: 'videos/category/:slug', Component: VideoCategoryRoute },
-      { path: 'videos/tag/:slug', Component: VideoTagArchiveTemplate },
+      { path: 'videos/tag/:slug', Component: VideoTagArchiveRoute },
 
       /* ── Podcasts ── */
-      { path: 'podcasts', Component: PodcastArchiveTemplate },
+      { path: 'podcasts', Component: PodcastArchiveRoute },
       { path: 'podcast/:slug', Component: SinglePodcastRoute },
       { path: 'podcasts/category/:slug', Component: PodcastCategoryRoute },
 
@@ -454,7 +1091,7 @@ const routes: RouteObject[] = [
       { path: 'testimonials', Component: TestimonialsTemplate },
 
       /* ── Testimonials (Archive + Singles) ── */
-      { path: 'testimonials/archive', Component: TestimonialArchiveTemplate },
+      { path: 'testimonials/archive', Component: TestimonialArchiveRoute },
       { path: 'testimonials/audio/:slug', Component: SingleTestimonialAudioRoute },
       { path: 'testimonials/video/:slug', Component: SingleTestimonialVideoRoute },
       { path: 'testimonials/gallery/:slug', Component: SingleTestimonialGalleryRoute },
@@ -468,38 +1105,38 @@ const routes: RouteObject[] = [
       { path: 'tutorials', Component: TutorialsTemplate },
 
       /* ── Legacy / Misc ── */
-      { path: 'archive', Component: ArchiveTemplate },
-      { path: 'archive/filters', Component: ArchiveWithFiltersTemplate },
-      { path: 'index', Component: IndexTemplate },
-      { path: 'single', Component: SingleTemplate },
-      { path: 'search-legacy', Component: SearchResultsTemplate },
-      { path: 'wordpress-blocks-poc', Component: WordPressBlocksProofOfConcept },
-      { path: 'section-style-example', Component: SectionStyleExample },
-      { path: 'feature-showcase', Component: FeatureShowcaseTemplate },
+      { path: 'archive', Component: ArchiveRoute },
+      { path: 'archive/filters', Component: ArchiveWithFiltersRoute },
+      { path: 'index', Component: IndexRoute },
+      { path: 'single', Component: SingleRoute },
+      { path: 'search-legacy', Component: SearchResultsRoute },
+      { path: 'wordpress-blocks-poc', Component: WordPressBlocksPoCRoute },
+      { path: 'section-style-example', Component: SectionStyleExampleRoute },
+      { path: 'feature-showcase', Component: FeatureShowcaseRoute },
 
       /* ── Dev Tools ── */
-      { path: 'dev-tools', Component: DevToolsTemplate },
-      { path: 'dev-tools/template-tester', Component: TemplateTester },
-      { path: 'dev-tools/component-showcase', Component: ComponentShowcase },
-      { path: 'dev-tools/design-system-test', Component: DesignSystemTest },
-      { path: 'dev-tools/compliance-scorecard', Component: ComplianceScorecard },
-      { path: 'dev-tools/feature-showcase', Component: FeatureShowcaseTemplate },
-      { path: 'dev-tools/block-documentation', Component: BlockDocumentation },
-      { path: 'dev-tools/component-api', Component: ComponentAPI },
-      { path: 'dev-tools/design-blocks-showcase', Component: DesignBlocksShowcase },
-      { path: 'dev-tools/button-showcase', Component: ButtonShowcase },
-      { path: 'dev-tools/header-footer-comparison', Component: HeaderFooterComparison },
-      { path: 'dev-tools/icon-library', Component: IconLibrary },
-      { path: 'dev-tools/live-preview', Component: LivePreview },
-      { path: 'dev-tools/section-presets-showcase', Component: SectionPresetsShowcase },
-      { path: 'dev-tools/theme-blocks-showcase', Component: ThemeBlocksShowcase },
-      { path: 'dev-tools/design-tokens-reference', Component: DesignTokensReferenceTemplate },
-      { path: 'dev-tools/deployment-readiness', Component: DeploymentReadinessTemplate },
-      { path: 'dev-tools/design-playground', Component: DesignPlaygroundTemplate },
-      { path: 'dev-tools/code-quality-dashboard', Component: CodeQualityDashboardTemplate },
-      { path: 'dev-tools/docs-generator', Component: DocsGeneratorTemplate },
-      { path: 'dev-tools/snippet-generator', Component: SnippetGeneratorTemplate },
-      { path: 'dev-tools/style-guide', Component: StyleGuideTemplate }, // Duplicate path allowed for dev tools
+      { path: 'dev-tools', Component: DevToolsRoute },
+      { path: 'dev-tools/template-tester', Component: TemplateTesterRoute },
+      { path: 'dev-tools/component-showcase', Component: ComponentShowcaseRoute },
+      { path: 'dev-tools/design-system-test', Component: DesignSystemTestRoute },
+      { path: 'dev-tools/compliance-scorecard', Component: ComplianceScorecardRoute },
+      { path: 'dev-tools/feature-showcase', Component: FeatureShowcaseRoute },
+      { path: 'dev-tools/block-documentation', Component: BlockDocumentationRoute },
+      { path: 'dev-tools/component-api', Component: ComponentAPIRoute },
+      { path: 'dev-tools/design-blocks-showcase', Component: DesignBlocksShowcaseRoute },
+      { path: 'dev-tools/button-showcase', Component: ButtonShowcaseRoute },
+      { path: 'dev-tools/header-footer-comparison', Component: HeaderFooterComparisonRoute },
+      { path: 'dev-tools/icon-library', Component: IconLibraryRoute },
+      { path: 'dev-tools/live-preview', Component: LivePreviewRoute },
+      { path: 'dev-tools/section-presets-showcase', Component: SectionPresetsShowcaseRoute },
+      { path: 'dev-tools/theme-blocks-showcase', Component: ThemeBlocksShowcaseRoute },
+      { path: 'dev-tools/design-tokens-reference', Component: DesignTokensReferenceRoute },
+      { path: 'dev-tools/deployment-readiness', Component: DeploymentReadinessRoute },
+      { path: 'dev-tools/design-playground', Component: DesignPlaygroundRoute },
+      { path: 'dev-tools/code-quality-dashboard', Component: CodeQualityDashboardRoute },
+      { path: 'dev-tools/docs-generator', Component: DocsGeneratorRoute },
+      { path: 'dev-tools/snippet-generator', Component: SnippetGeneratorRoute },
+      { path: 'dev-tools/style-guide', Component: StyleGuideRoute }, // Duplicate path allowed for dev tools
 
       /* ── 404 Catch-All ── */
       { path: '404', Component: Template404 },

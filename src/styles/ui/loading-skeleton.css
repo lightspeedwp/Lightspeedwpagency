@@ -1,0 +1,149 @@
+/**
+ * LoadingSkeleton Styles
+ * 
+ * Skeleton loading placeholders
+ * 
+ * Features:
+ * - Shimmer animation
+ * - Multiple variants (text, card, image, circle, button)
+ * - Responsive sizing
+ * 
+ * Design System:
+ * - 100% CSS variables
+ * - BEM naming (.skeleton__element)
+ */
+
+/* Base Skeleton */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s ease-in-out infinite;
+  border-radius: var(--radius);
+}
+
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Container */
+.skeleton-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+/* Text Variant */
+.skeleton--text {
+  height: 16px;
+  border-radius: var(--radius);
+}
+
+/* Card Variant */
+.skeleton--card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.skeleton__image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s ease-in-out infinite;
+}
+
+.skeleton__content {
+  padding: var(--spacing-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+/* Image Variant */
+.skeleton--image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-lg);
+}
+
+/* Circle Variant */
+.skeleton--circle {
+  border-radius: var(--radius-full);
+}
+
+/* Button Variant */
+.skeleton--button {
+  height: 40px;
+  border-radius: var(--radius-full);
+}
+
+/* Dark mode */
+.dark .skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.03) 0%,
+    rgba(255, 255, 255, 0.08) 50%,
+    rgba(255, 255, 255, 0.03) 100%
+  );
+}
+
+.dark .skeleton--card {
+  background: rgba(255, 255, 255, 0.02);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.dark .skeleton__image {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.03) 0%,
+    rgba(255, 255, 255, 0.08) 50%,
+    rgba(255, 255, 255, 0.03) 100%
+  );
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .skeleton,
+  .skeleton__image {
+    animation: none;
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .dark .skeleton,
+  .dark .skeleton__image {
+    background: rgba(255, 255, 255, 0.05);
+  }
+}
+
+/* Responsive: Mobile */
+@media (max-width: 767px) {
+  .skeleton--text {
+    height: 14px;
+  }
+
+  .skeleton__content {
+    padding: var(--spacing-3);
+    gap: var(--spacing-2);
+  }
+
+  .skeleton--button {
+    height: 36px;
+  }
+}

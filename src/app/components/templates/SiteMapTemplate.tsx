@@ -15,10 +15,12 @@
  * @see /guidelines/routing/routing-complete-reference.md
  */
 
+import '../../../styles/templates/site-map.css';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { Link } from 'react-router';
+import { Button } from '../blocks/design/Buttons';
 import { slugToPath } from '../../utils/route-map';
 import { blogPosts, blogAuthors, blogCategories } from '../../data/blog-posts';
 import { postTags } from '../../data/blog-posts';
@@ -31,8 +33,14 @@ import { testimonialEntries } from '../../data/testimonials-extended';
 import { tutorials } from '../../data/tutorials';
 import { productCategories, productTags } from '../../data/taxonomies';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
+import {
+  Home, Briefcase, Lightbulb, Brain, Folder, FileText,
+  MessageSquare, Layers, Video, Headphones, Star,
+  ShoppingCart, Map, BookOpen, Archive, Wrench,
+  AlertCircle, Globe, CheckCircle, ChevronRight, Search,
+  Settings,
+} from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
-
 
 /* ═══════════════════════════════════════════
  * Types
@@ -56,7 +64,7 @@ interface SiteMapSection {
  * ═══════════════════════════════════════════ */
 
 export function SiteMapTemplate() {
-  const heroRef = useScrollReveal<HTMLDivElement>();
+  const { ref: heroRef, style: heroStyle } = useScrollReveal();
 
   /* ── 1. Core Pages ── */
   const corePages: SiteMapPage[] = [
@@ -87,23 +95,35 @@ export function SiteMapTemplate() {
     { id: 'services', label: 'Services Landing', status: 'active' },
     { id: 'discovery', label: 'Discovery & Strategy', status: 'active' },
     { id: 'design', label: 'Design', status: 'active' },
+    { id: 'figma-prototyping', label: 'Figma Prototyping', status: 'active' },
+    { id: 'design-systems-service', label: 'Design Systems', status: 'active' },
     { id: 'development', label: 'Development', status: 'active' },
-    { id: 'content', label: 'Content', status: 'active' },
-    { id: 'content-strategy', label: 'Content Strategy', status: 'active' },
-    { id: 'content-collection', label: 'Content Collection', status: 'active' },
-    { id: 'content-audit', label: 'Content Audit', status: 'active' },
     { id: 'security', label: 'Security', status: 'active' },
     { id: 'migrations', label: 'Migrations', status: 'active' },
     { id: 'support', label: 'Support & Maintenance', status: 'active' },
-    { id: 'newsletter-service', label: 'Newsletter Service', status: 'active' },
-    { id: 'email-marketing', label: 'Email Marketing', status: 'active' },
     { id: 'training', label: 'Training', status: 'active' },
     { id: 'hosting', label: 'Hosting', status: 'active' },
     { id: 'performance', label: 'Performance Optimisation', status: 'active' },
-    { id: 'seo', label: 'SEO', status: 'active' },
     { id: 'accessibility', label: 'Accessibility Compliance', status: 'active' },
-    { id: 'ai-engine-optimisation', label: 'AI Engine Optimisation', status: 'active' },
-    { id: 'answer-engine-optimisation', label: 'Answer Engine Optimisation (AEO)', status: 'active' },
+    { id: 'newsletter-service', label: 'Newsletter Service', status: 'active' },
+    { id: 'email-marketing', label: 'Email Marketing', status: 'active' },
+    /* AI Services Category */
+    { id: 'ai-services-landing', label: '⬡ AI Services (Category)', status: 'active' },
+    { id: 'ai-search-visibility', label: '↳ AI Search & Visibility', status: 'active' },
+    { id: 'seo', label: '↳ Technical SEO', status: 'active' },
+    { id: 'analytics', label: '↳ Analytics & Reporting', status: 'active' },
+    { id: 'ai-engine-optimisation', label: '↳ AI Engine Optimisation', status: 'active' },
+    { id: 'answer-engine-optimisation', label: '↳ Answer Engine Optimisation', status: 'active' },
+    /* Content Services Category */
+    { id: 'content', label: '⬡ Content Services (Category)', status: 'active' },
+    { id: 'content-overview', label: '↳ Content Overview', status: 'active' },
+    { id: 'content-strategy', label: '↳ Content Strategy', status: 'active' },
+    { id: 'content-collection', label: '↳ Content Collection', status: 'active' },
+    { id: 'content-audit', label: '↳ Content Audit', status: 'active' },
+    { id: 'content-creation', label: '↳ Content Creation', status: 'active' },
+    { id: 'content-copywriting', label: '↳ Copywriting & UX Writing', status: 'active' },
+    { id: 'content-seo-content', label: '↳ SEO Content', status: 'active' },
+    { id: 'content-governance', label: '↳ Content Governance', status: 'active' },
     /* Journey Stage Pages */
     { id: 'journey-ignite', label: '01 Ignite — Discovery & Strategy', status: 'active' },
     { id: 'journey-create', label: '02 Create — Design & Content', status: 'active' },
@@ -140,6 +160,16 @@ export function SiteMapTemplate() {
     { id: 'ai-analytics', label: 'AI Analytics & Insights', status: 'active' },
   ];
 
+  /* ── 4b. Systems Hub ── */
+  const systemsPages: SiteMapPage[] = [
+    { id: 'systems', label: 'Systems Hub Dashboard', status: 'active' },
+    { id: 'design-tokens', label: 'Design Tokens System', status: 'active' },
+    { id: 'pattern-governance', label: 'Pattern Governance System', status: 'active' },
+    { id: 'editorial-workflows', label: 'Editorial Workflows System', status: 'active' },
+    { id: 'ai-search-readiness', label: 'AI Search Readiness System', status: 'active' },
+    { id: 'performance-reliability', label: 'Performance & Reliability System', status: 'active' },
+  ];
+
   /* ── 5. Portfolio (dynamic from data) ── */
   const uniquePortfolioCategories = Array.from(
     new Set(portfolioArchiveItems.map((item) => item.category))
@@ -167,9 +197,9 @@ export function SiteMapTemplate() {
     })),
   ];
 
-  /* ── 6. Blog & Archives (dynamic) ── */
+  /* ── 6. Insights & Archives (dynamic) ── */
   const blogArchivePages: SiteMapPage[] = [
-    { id: 'blog', label: 'Blog Index', status: 'active' },
+    { id: 'insights', label: 'Insights Index', status: 'active' },
     { id: 'single-post', label: 'Single Post (Longform Demo)', status: 'active' },
     ...blogCategories.map((cat) => ({
       id: `category-${cat.slug}`,
@@ -383,7 +413,7 @@ export function SiteMapTemplate() {
   /* Date archive slug-to-path helper */
   function dateSlugToPath(id: string): string {
     const match = id.match(/^date-(\d{4})$/);
-    if (match) return `/blog/date/${match[1]}`;
+    if (match) return `/insights/date/${match[1]}`;
     return slugToPath(id);
   }
 
@@ -396,9 +426,10 @@ export function SiteMapTemplate() {
     { title: 'Services', icon: Briefcase, color: 'var(--category-green)', pages: servicePages },
     { title: 'Solutions', icon: Lightbulb, color: 'var(--category-amber)', pages: solutionPages },
     { title: 'AI Integrations', icon: Brain, color: 'var(--category-violet)', pages: aiPages },
-    { title: 'Portfolio', icon: Folder, color: 'var(--category-pink)', pages: portfolioPages },
-    { title: 'Blog & Archives', icon: FileText, color: 'var(--category-blue)', pages: blogArchivePages },
-    { title: 'Blog Posts', icon: MessageSquare, color: 'var(--category-cyan)', pages: singlePostPages },
+    { title: 'Systems Hub', icon: Settings, color: 'var(--category-cyan)', pages: systemsPages },
+    { title: 'Work', icon: Folder, color: 'var(--category-pink)', pages: portfolioPages },
+    { title: 'Insights & Archives', icon: FileText, color: 'var(--category-blue)', pages: blogArchivePages },
+    { title: 'Insight Posts', icon: MessageSquare, color: 'var(--category-cyan)', pages: singlePostPages },
     { title: 'Post Formats', icon: Layers, color: 'var(--category-violet)', pages: postFormatPages },
     { title: 'Videos', icon: Video, color: 'var(--category-pink)', pages: videoPages },
     { title: 'Podcasts', icon: Headphones, color: 'var(--category-cyan)', pages: podcastPagesList },
@@ -445,7 +476,7 @@ export function SiteMapTemplate() {
         <div className="site-map__hero-orb" aria-hidden="true" />
 
         <Container>
-          <div ref={heroRef} className="site-map__hero-inner">
+          <div ref={heroRef} className="site-map__hero-inner" style={heroStyle}>
             <div className="site-map__hero-badge">
               <Globe size={14} />
               Site Map

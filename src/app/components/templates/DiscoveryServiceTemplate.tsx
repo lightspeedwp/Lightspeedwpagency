@@ -23,16 +23,23 @@
  */
 
 import { useState, useEffect } from 'react';
+/* Route-level CSS */
+import '../../../styles/templates/page-service-discovery.css';
 import { Link } from 'react-router';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { Button } from '../blocks/design/Buttons';
 import { FunkyCTA } from '../patterns/FunkyCTA';
+import { RelatedServicesInPhase } from '../patterns/RelatedServicesInPhase';
 import { IncludedInSolutions } from '../patterns/IncludedInSolutions';
 import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
+import { ServicePricingTimeline } from '../patterns/ServicePricingTimeline';
 import { discoveryServiceDetailed } from '../../data/services-detailed';
+import { servicePricingTimeline } from '../../data/services';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
+import { ScrollDownArrow } from '../common/ScrollDownArrow';
+import { JourneyPhaseIndicator } from '../ui/JourneyPhaseIndicator';
 import { slugToPath } from '../../utils/route-map';
 import {
   Search,
@@ -138,6 +145,9 @@ export function DiscoveryServiceTemplate() {
         ]}
       />
 
+      {/* Journey Phase Indicator */}
+      <JourneyPhaseIndicator currentPhase="ignite" currentServicePage="discovery" />
+
       {/* ============================================
           1. HERO — "RADAR SCAN"
           ============================================ */}
@@ -209,6 +219,8 @@ export function DiscoveryServiceTemplate() {
             </ScrollReveal>
           </div>
         </Container>
+
+        <ScrollDownArrow />
       </section>
 
       {/* ============================================
@@ -448,6 +460,31 @@ export function DiscoveryServiceTemplate() {
         serviceSlug="discovery"
         subtitle="See how our discovery process set the foundation for project success"
       />
+      
+      {/* ============================================
+          PRICING & TIMELINE
+          ============================================ */}
+      {servicePricingTimeline.discovery && (
+        <ScrollReveal animation="fade-up">
+          <section className="discovery-service__pricing-section">
+            <Container>
+              <ServicePricingTimeline
+                pricing={servicePricingTimeline.discovery.pricing}
+                timeline={servicePricingTimeline.discovery.timeline}
+                showPhases={true}
+                showVariables={true}
+              />
+            </Container>
+          </section>
+        </ScrollReveal>
+      )}
+      
+      {/* Related Services in Ignite Phase */}
+      <RelatedServicesInPhase 
+        currentPhase="ignite"
+        currentServicePage="discovery"
+      />
+
       <FunkyCTA
         title={data.cta.title}
         description={data.cta.description}

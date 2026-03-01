@@ -18,6 +18,8 @@
  */
 
 import { Link } from 'react-router';
+/* Route-level CSS */
+import '../../../styles/templates/single-post-page.css';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
@@ -41,7 +43,6 @@ import {
 import { blogCategories } from '../../data/taxonomies';
 import { blogFAQs } from '../../data/faqs';
 
-
 interface SinglePostTemplateProps {
   slug: string;
 }
@@ -55,7 +56,7 @@ export function SinglePostTemplate({ slug }: SinglePostTemplateProps) {
         <Container>
           <Heading level={1}>Post not found</Heading>
           <Paragraph>The post you are looking for does not exist.</Paragraph>
-          <Button variant="primary" page="blog-index">
+          <Button variant="primary" page="blog">
             Back to blog
           </Button>
         </Container>
@@ -79,11 +80,13 @@ export function SinglePostTemplate({ slug }: SinglePostTemplateProps) {
 
   return (
     <article>
+      {/* JSON-LD Structured Data — rendered server-side in WordPress via wp_head */}
+
       {/* Breadcrumbs */}
       <BreadcrumbPart
         items={[
           { label: 'Home', page: 'front-page' },
-          { label: 'Blog', href: '/blog' },
+          { label: 'Insights', href: '/insights' },
           { label: post.title },
         ]}
       />
@@ -99,7 +102,7 @@ export function SinglePostTemplate({ slug }: SinglePostTemplateProps) {
                 {post.categories.map(cat => (
                   <Link
                     key={cat}
-                    to={`/blog/category/${cat}`}
+                    to={`/insights/category/${cat}`}
                     className="single-post-hero__category"
                   >
                     {getCategoryName(cat)}
@@ -129,7 +132,7 @@ export function SinglePostTemplate({ slug }: SinglePostTemplateProps) {
                     />
                     <div className="single-post-meta__author-info">
                       <Link
-                        to={`/blog/author/${author.slug}`}
+                        to={`/insights/author/${author.slug}`}
                         className="single-post-meta__author-name"
                       >
                         {author.name}
@@ -222,7 +225,7 @@ export function SinglePostTemplate({ slug }: SinglePostTemplateProps) {
                   {post.tags.map(tag => (
                     <Link
                       key={tag}
-                      to={`/blog/tag/${tag}`}
+                      to={`/insights/tag/${tag}`}
                       className="single-post-tag"
                     >
                       {tag}
@@ -270,10 +273,10 @@ export function SinglePostTemplate({ slug }: SinglePostTemplateProps) {
                 Subscribe to our newsletter for more WordPress insights delivered straight to your inbox.
               </p>
               <div className="single-post__newsletter-actions">
-                <Button variant="primary" page="newsletter">
+                <Button variant="primary" page="newsletter-service">
                   Subscribe
                 </Button>
-                <Button variant="outline" page="blog-index">
+                <Button variant="outline" page="blog">
                   Read more
                 </Button>
               </div>
@@ -300,7 +303,7 @@ export function SinglePostTemplate({ slug }: SinglePostTemplateProps) {
                   delay={i * 100}
                 >
                   <Link
-                    to={`/blog/${relPost.slug}`}
+                    to={`/insights/${relPost.slug}`}
                     className="blog-index__post-card"
                     aria-label={`Read ${relPost.title}`}
                   >

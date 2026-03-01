@@ -9,6 +9,7 @@
  * Hero -> Stats -> Features -> Sub-Page Cards -> FAQs -> CTA
  */
 
+import '../../../styles/templates/page-solution-ai.css';
 import { Container } from '../common/Container';
 import { StatsGrid } from '../patterns/StatsGrid';
 import { FeatureGrid } from '../patterns/FeatureGrid';
@@ -18,6 +19,7 @@ import { Brain, Sparkles, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router';
 import { slugToPath } from '../../utils/route-map';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
+import { ScrollDownArrow } from '../common/ScrollDownArrow';
 
 
 import {
@@ -98,6 +100,8 @@ export function AIIntegrationsTemplate() {
             </div>
           </div>
         </Container>
+
+        <ScrollDownArrow />
       </section>
 
       {/* ════════════════ STATS ════════════════ */}

@@ -21,6 +21,8 @@
  * - BEM naming throughout (about-overview__*)
  */
 
+/* Route-level CSS */
+import '../../../styles/templates/page-about.css';
 import { Container } from '../common/Container';
 import { FAQSection } from '../patterns/FAQSection';
 import { Timeline } from '../patterns/Timeline';

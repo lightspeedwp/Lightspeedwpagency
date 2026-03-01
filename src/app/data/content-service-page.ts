@@ -196,7 +196,7 @@ export const contentPackages = [
       'WordPress publishing',
       'Monthly performance report'
     ],
-    cta: { text: 'Get Started', page: 'contact' as const },
+    cta: { text: 'Request a Systems Audit', page: 'contact' as const },
     popular: false
   },
   {
@@ -219,7 +219,7 @@ export const contentPackages = [
       'Social media content repurposing',
       'Bi-weekly strategy calls'
     ],
-    cta: { text: 'Get Started', page: 'contact' as const },
+    cta: { text: 'Request a Systems Audit', page: 'contact' as const },
     popular: true
   },
   {

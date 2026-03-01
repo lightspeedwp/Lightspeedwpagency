@@ -9,6 +9,7 @@
  * @see /src/styles/templates/dev-tools.css
  */
 
+import '../../../styles/templates/dev-tools.css';
 import {
   Code2,
   TestTube2,

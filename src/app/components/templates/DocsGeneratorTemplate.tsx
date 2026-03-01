@@ -8,10 +8,10 @@
  * WordPress template: N/A (dev tool)
  * BEM naming: .docs-gen-*
  *
- * @see /src/styles/templates/docs-generator.css
  * @see /tasks/task-list.md — Section 14
  */
 
+import '../../../styles/templates/docs-generator.css';
 import { useState, useMemo, useCallback } from 'react';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import {

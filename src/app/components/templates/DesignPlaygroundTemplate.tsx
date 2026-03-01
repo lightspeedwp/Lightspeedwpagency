@@ -9,13 +9,12 @@
  * BEM naming: .playground-*
  * 100% CSS variables — no Tailwind, no hardcoded values.
  *
- * @see /src/styles/templates/design-playground.css
  * @see /tasks/task-list.md — Section 12
  */
 
+import '../../../styles/templates/design-playground.css';
 import { useState, useCallback, useMemo } from 'react';
 import { RotateCcw, Copy, Check, Palette, Type, Ruler, Circle, Layers } from 'lucide-react';
-
 
 /* ═══════════════════════════════════════════
  * Types

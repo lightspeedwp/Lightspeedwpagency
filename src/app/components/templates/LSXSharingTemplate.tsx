@@ -23,12 +23,14 @@
  * - BEM naming throughout
  */
 
+import '../../../styles/templates/lsx-sharing-page.css';
 import { Container } from '@/app/components/common/Container';
 import { FunkyCTA } from '@/app/components/patterns/FunkyCTA';
 import { FAQSection } from '@/app/components/patterns/FAQSection';
 import { Buttons } from '@/app/components/blocks/design/Buttons';
 import { useHeroParallax } from '../../hooks/useHeroParallax';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
+import { ScrollDownArrow } from '../common/ScrollDownArrow';
 import { Share2 } from 'lucide-react';
 
 import {
@@ -95,6 +97,8 @@ export function LSXSharingTemplate() {
             />
           </div>
         </Container>
+
+        <ScrollDownArrow />
       </section>
 
       {/* ============================================

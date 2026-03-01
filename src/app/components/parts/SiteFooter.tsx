@@ -50,49 +50,45 @@ import {
    ────────────────────────────────────────────── */
 
 const footerColumns = {
-  services: {
-    title: 'Services',
-    links: [
-      { label: 'All services', page: 'services' },
-      { label: 'Discovery & strategy', page: 'discovery' },
-      { label: 'Web design', page: 'design' },
-      { label: 'WordPress development', page: 'development' },
-      { label: 'Performance', page: 'performance' },
-      { label: 'SEO', page: 'seo' },
-      { label: 'Accessibility', page: 'accessibility' },
-    ],
-  },
-  solutions: {
-    title: 'Solutions',
-    links: [
-      { label: 'WordPress', page: 'wordpress' },
-      { label: 'WooCommerce', page: 'woocommerce' },
-      { label: 'Tour operators', page: 'tour-operators' },
-      { label: 'AI integrations', page: 'ai-integrations' },
-      { label: 'Hosting', page: 'hosting' },
-      { label: 'Migrations', page: 'migrations' },
-    ],
-  },
-  resources: {
-    title: 'Resources',
-    links: [
-      { label: 'Blog', page: 'blog' },
-      { label: 'Tutorials', page: 'tutorials' },
-      { label: 'FAQ', page: 'faq' },
-      { label: 'Pricing', page: 'pricing' },
-      { label: 'Why choose us', page: 'why-choose-us' },
-      { label: 'ROI calculator', page: 'roi-calculator' },
-    ],
-  },
   company: {
     title: 'Company',
     links: [
       { label: 'About us', page: 'about' },
       { label: 'Our team', page: 'team' },
-      { label: 'Portfolio', page: 'portfolio' },
-      { label: 'Testimonials', page: 'testimonials' },
+      { label: 'How we work', page: 'about-process' },
+      { label: 'Our story', page: 'about-history' },
       { label: 'Careers', page: 'careers' },
-      { label: 'Contact', page: 'contact' },
+    ],
+  },
+  systems: {
+    title: 'Systems',
+    links: [
+      { label: 'All systems', page: 'systems' },
+      { label: 'Design Tokens', page: 'design-tokens' },
+      { label: 'Pattern Governance', page: 'pattern-governance' },
+      { label: 'Editorial Workflows', page: 'editorial-workflows' },
+      { label: 'AI & Search', page: 'ai-search-readiness' },
+      { label: 'Performance', page: 'performance-reliability' },
+    ],
+  },
+  proof: {
+    title: 'Proof',
+    links: [
+      { label: 'Our work', page: 'portfolio' },
+      { label: 'Testimonials', page: 'testimonials' },
+      { label: 'Why choose us', page: 'why-choose-us' },
+      { label: 'Our guarantees', page: 'guarantees' },
+      { label: 'Pricing', page: 'pricing' },
+    ],
+  },
+  contact: {
+    title: 'Contact',
+    links: [
+      { label: 'Get in touch', page: 'contact' },
+      { label: 'Request audit', page: 'contact' },
+      { label: 'FAQ', page: 'faq' },
+      { label: 'Support', page: 'support-service' },
+      { label: 'ROI calculator', page: 'roi-calculator' },
     ],
   },
 };

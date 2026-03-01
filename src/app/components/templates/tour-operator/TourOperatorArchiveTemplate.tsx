@@ -8,6 +8,7 @@
  * @see /src/styles/templates/tour-operator-archive.css
  */
 
+import '../../../../styles/templates/tour-operator-archive.css';
 import { Container } from '@/app/components/common/Container';
 import { Section } from '@/app/components/common/Section';
 import { allTourContent } from '@/app/data/tour-operator';
@@ -63,7 +64,7 @@ export function TourOperatorArchiveTemplate() {
                   />
                   <div className="to-archive__tour-footer">
                     <span className="to-archive__tour-price">{tour.price_from}</span>
-                    <Link to={`/tour/${tour.id}`} className="to-archive__tour-link">View Itinerary</Link>
+                    <Link to={`/tours/${tour.id}`} className="to-archive__tour-link">View Itinerary</Link>
                   </div>
                 </div>
               </article>

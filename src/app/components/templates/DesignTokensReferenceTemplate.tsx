@@ -15,6 +15,7 @@
  * @see /src/styles/theme-dark.css — Dark mode colors
  */
 
+import '../../../styles/templates/design-tokens-reference.css';
 import { useState, useCallback, useRef, useEffect } from 'react';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { Copy, Check, Palette, Type, RulerIcon, BoxSelect, Circle, Layers, Zap, Eye } from 'lucide-react';

@@ -55,7 +55,7 @@ export function QueryLoopGallery({
         return (
           <Link
             key={post.id}
-            to="/blog/format/gallery/single"
+            to="/insights/format/gallery/single"
             className="query-loop-card query-loop-card--clickable"
             ref={index === 0 ? containerRef as any : undefined}
             style={itemStyle(index)}

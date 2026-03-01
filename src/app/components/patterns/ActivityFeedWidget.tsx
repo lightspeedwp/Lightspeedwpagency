@@ -62,7 +62,7 @@ export function ActivityFeedWidget({
           title: post.title,
           excerpt: post.excerpt,
           date: post.date,
-          url: `/blog/${post.slug}`,
+          url: `/insights/${post.slug}`,
           meta: author ? `By ${author.name}` : undefined,
         });
       });
@@ -76,7 +76,7 @@ export function ActivityFeedWidget({
           title: project.title,
           excerpt: project.excerpt,
           date: project.date || '2025-01-01',
-          url: `/portfolio/${project.slug}`,
+          url: `/work/${project.slug}`,
           meta: project.client,
         });
       });

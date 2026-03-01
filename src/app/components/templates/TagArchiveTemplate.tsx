@@ -12,6 +12,7 @@
  * Pattern order: Breadcrumbs -> Archive Header -> Related Tags -> Card Grid -> FAQs -> CTA
  */
 
+import '../../../styles/templates/archive.css';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
@@ -55,7 +56,7 @@ export function TagArchiveTemplate({
 
   const breadcrumbs = [
     { label: 'Home', href: '/' },
-    { label: 'Blog', href: '/blog' },
+    { label: 'Insights', href: '/insights' },
     { label: tagData?.name || tag },
   ];
 
@@ -87,7 +88,7 @@ export function TagArchiveTemplate({
               {relatedTags.map((relatedTag) => (
                 <Link
                   key={relatedTag.slug}
-                  to={`/blog/tag/${relatedTag.slug}`}
+                  to={`/insights/tag/${relatedTag.slug}`}
                   className="related-tag"
                 >
                   #{relatedTag.name}
@@ -126,7 +127,7 @@ export function TagArchiveTemplate({
               description={`No posts have been tagged with "${tagData?.name || tag}" yet.`}
               action={{
                 label: 'View all tags',
-                href: '/blog/tag',
+                href: '/insights/tag',
               }}
             />
           )}
@@ -145,7 +146,7 @@ export function TagArchiveTemplate({
             }}
             secondaryButton={{
               label: 'Browse all tags',
-              href: '/blog/tag',
+              href: '/insights/tag',
             }}
           />
         </Container>
@@ -172,7 +173,7 @@ export function TagArchiveTemplate({
             <PaginationNav
               currentPage={currentPage}
               totalPages={totalPages}
-              baseUrl={`/blog/tag/${tag}`}
+              baseUrl={`/insights/tag/${tag}`}
             />
           </Container>
         </Section>
@@ -190,7 +191,7 @@ export function TagArchiveTemplate({
         title="Stay Updated with WordPress Insights"
         description="Subscribe to our newsletter for the latest WordPress development tips, tutorials, and industry news."
         buttonText="Subscribe to Newsletter"
-        buttonPage="newsletter"
+        buttonPage="newsletter-service"
         benefits={[
           'Weekly WordPress tips',
           'Development best practices',

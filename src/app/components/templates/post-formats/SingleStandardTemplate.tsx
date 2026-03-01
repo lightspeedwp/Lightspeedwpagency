@@ -10,6 +10,7 @@
  * @see /src/styles/templates/single-post.css
  */
 
+import '../../../../styles/templates/single-post.css';
 import { User, Calendar, Tag } from 'lucide-react';
 
 export function SingleStandardTemplate() {
@@ -20,7 +21,7 @@ export function SingleStandardTemplate() {
       <BreadcrumbPart
         items={[
           { label: 'Home', href: '/' },
-          { label: 'Blog', href: '/blog' },
+          { label: 'Insights', href: '/insights' },
           { label: post.title.rendered },
         ]}
       />

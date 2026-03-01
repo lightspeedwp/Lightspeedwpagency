@@ -20,6 +20,7 @@
  * @see /src/app/data/tutorials.ts
  */
 
+import '../../../styles/templates/tutorials-page.css';
 import { useState } from 'react';
 import { Link } from 'react-router';
 import { Hero } from '../patterns/Hero';
@@ -89,7 +90,7 @@ export function TutorialsTemplate() {
                 {filteredTutorials.map((tutorial) => (
                   <Link
                     key={tutorial.id}
-                    to="/blog"
+                    to="/insights"
                     className="tutorials__card"
                     aria-label={`${tutorial.title} — ${tutorial.difficulty} level, ${tutorial.readTime} read`}
                   >

@@ -11,6 +11,7 @@
  * @see /src/styles/templates/single-post.css
  */
 
+import '../../../../styles/templates/single-post.css';
 import { MessageSquare, Heart, Share2 } from 'lucide-react';
 
 export function SingleStatusTemplate() {
@@ -21,9 +22,9 @@ export function SingleStatusTemplate() {
       <BreadcrumbPart
         items={[
           { label: 'Home', href: '/' },
-          { label: 'Blog', href: '/blog' },
+          { label: 'Insights', href: '/insights' },
           { label: 'Status', href: '/status-archive' },
-          { label: 'Update' },
+          { label: post.title },
         ]}
       />
 

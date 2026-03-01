@@ -13,9 +13,11 @@
  * @see /src/styles/templates/page-solution-ecommerce.css
  */
 
+import '../../../styles/templates/page-solution-ecommerce.css';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
+import { ScrollDownArrow } from '../common/ScrollDownArrow';
 import {
   ShoppingBag,
   CreditCard,
@@ -93,6 +95,8 @@ export function WooCommerceSolutionTemplate() {
             </div>
           </ScrollReveal>
         </Container>
+
+        <ScrollDownArrow />
       </section>
 
       {/* ============================================
@@ -217,7 +221,7 @@ export function WooCommerceSolutionTemplate() {
                 >
                   {data.cta.buttonText}
                 </a>
-                <a href="/portfolio" className="ecommerce-page__btn-outline">
+                <a href="/work" className="ecommerce-page__btn-outline">
                   View Case Studies
                 </a>
               </div>

@@ -1,154 +1,145 @@
 /**
- * Stats Grid Pattern Styles
+ * StatsGrid Pattern Styles
  * 
- * BEM-compliant styles for the StatsGrid component.
- * All vertical spacing via blockGap (CSS gap) -- zero margin.
+ * WordPress pattern: .stats-grid
+ * Grid layout for displaying multiple statistics
+ * 
+ * Features:
+ * - Responsive grid (1 → 2 → 4 columns)
+ * - Optional header with title/description
+ * - Section background variants
+ * - Gradient top stripe
+ * 
+ * Design System:
+ * - 100% CSS variables
+ * - BEM naming (.stats-grid__element)
  */
 
+/* Container */
 .stats-grid {
-  display: grid;
-  gap: var(--spacing-8);
-  width: 100%;
+  position: relative;
+  padding: var(--spacing-16) var(--spacing-6);
+  background: rgba(255, 255, 255, 0.03);
+  border-top: 3px solid transparent;
+  background-image: linear-gradient(
+    90deg,
+    hsl(var(--primary)),
+    hsl(var(--accent))
+  );
+  background-size: 100% 3px;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-clip: padding-box, border-box;
+  background-origin: padding-box, border-box;
 }
 
-.stats-grid--2-cols {
-  grid-template-columns: repeat(1, 1fr);
-}
-
-@media (min-width: 640px) {
-  .stats-grid--2-cols {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-.stats-grid--3-cols {
-  grid-template-columns: repeat(1, 1fr);
-}
-
-@media (min-width: 640px) {
-  .stats-grid--3-cols {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  .stats-grid--3-cols {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-.stats-grid--4-cols {
-  grid-template-columns: repeat(2, 1fr);
-}
-
-@media (min-width: 1024px) {
-  .stats-grid--4-cols {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-/* Stat Item -- flex column with blockGap */
-.stat-item {
+.stats-grid__container {
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-2);
+  gap: var(--spacing-12);
 }
 
-.stat-item--left {
-  align-items: flex-start;
-  text-align: left;
-}
-
-.stat-item--center {
-  align-items: center;
+/* Header */
+.stats-grid__header {
   text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-/* Card Variant */
-.stat-item--cards {
-  padding: var(--spacing-6);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--border-soft);
-  background-color: var(--card);
-  transition: all 0.3s ease;
-}
-
-.stat-item--cards:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-  border-color: var(--primary);
-}
-
-/* Icon Wrapper */
-.stat-icon-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: var(--radius-md);
-}
-
-.stat-icon-wrapper--default {
-  background-color: transparent;
-  width: auto;
-  height: auto;
-}
-
-.stat-icon-wrapper--cards {
-  width: 48px;
-  height: 48px;
-  background-color: var(--primary-soft);
-  color: var(--primary);
-}
-
-.stat-icon-wrapper--hero {
-  width: 56px;
-  height: 56px;
-  background-color: var(--overlay-white-subtle);
-  border-radius: var(--radius-full);
-  color: var(--color-white);
-  backdrop-filter: blur(4px);
-}
-
-/* Value */
-.stat-value {
+.stats-grid__title {
   font-family: var(--font-primary);
-  font-weight: var(--font-weight-bold);
-  line-height: var(--line-height-tight);
-}
-
-.stat-value--default {
   font-size: var(--text-4xl);
+  font-weight: 700;
   color: var(--foreground);
+  margin: 0 0 var(--spacing-4) 0;
 }
 
-.stat-value--hero {
-  font-size: var(--text-5xl);
-  color: var(--color-white);
-  text-shadow: 0 2px 4px var(--overlay-extra-light);
-}
-
-/* Label */
-.stat-label {
-  font-family: var(--font-primary);
-  font-weight: var(--font-weight-medium);
-  line-height: var(--line-height-snug);
-}
-
-.stat-label--default {
+.stats-grid__description {
+  font-family: var(--font-secondary);
   font-size: var(--text-lg);
   color: var(--muted-foreground);
+  margin: 0;
+  line-height: 1.6;
 }
 
-.stat-label--hero {
-  font-size: var(--text-lg);
-  color: var(--overlay-white-opaque);
-  font-weight: var(--font-weight-semibold);
+/* Items Grid */
+.stats-grid__items {
+  display: grid;
+  gap: var(--spacing-8);
 }
 
-/* Description */
-.stat-description {
-  font-family: var(--font-primary);
-  font-size: var(--text-base);
-  color: var(--muted-foreground);
-  line-height: var(--line-height-normal);
+/* Variant: Gradient Background */
+.stats-grid--gradient {
+  background: linear-gradient(
+    135deg,
+    rgba(139, 92, 246, 0.05),
+    rgba(59, 130, 246, 0.05)
+  );
+}
+
+/* Variant: Glassmorphism */
+.stats-grid--glassmorphism {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+}
+
+/* Dark mode */
+.dark .stats-grid {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.dark .stats-grid--gradient {
+  background: linear-gradient(
+    135deg,
+    rgba(139, 92, 246, 0.03),
+    rgba(59, 130, 246, 0.03)
+  );
+}
+
+.dark .stats-grid--glassmorphism {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Responsive: Mobile (< 768px) */
+@media (max-width: 767px) {
+  .stats-grid {
+    padding: var(--spacing-12) var(--spacing-4);
+  }
+
+  .stats-grid__container {
+    gap: var(--spacing-8);
+  }
+
+  .stats-grid__title {
+    font-size: var(--text-3xl);
+  }
+
+  .stats-grid__description {
+    font-size: var(--text-base);
+  }
+
+  .stats-grid__items {
+    gap: var(--spacing-6);
+  }
+}
+
+/* Responsive: Tablet (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .stats-grid {
+    padding: var(--spacing-14) var(--spacing-5);
+  }
+
+  .stats-grid__container {
+    gap: var(--spacing-10);
+  }
+
+  .stats-grid__title {
+    font-size: var(--text-3xl);
+  }
 }

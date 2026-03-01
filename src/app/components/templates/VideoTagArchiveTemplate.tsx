@@ -9,6 +9,7 @@
  * @see /guidelines/templates/overview-templates.md
  */
 
+import '../../../styles/templates/video-archive.css';
 import { useParams, Navigate, Link } from 'react-router';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';

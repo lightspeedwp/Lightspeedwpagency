@@ -16,6 +16,8 @@
  */
 
 import { useState } from 'react';
+/* Route-level CSS */
+import '../../../styles/templates/page-services-landing.css';
 import { Container } from '../common/Container';
 import { Button } from '../blocks/design/Buttons';
 import { useHeroParallax } from '../../hooks/useHeroParallax';
@@ -34,12 +36,15 @@ import {
   Cpu,
   Globe,
   Zap,
-  Layers
+  Layers,
+  Brain,
+  FileText as FileTextIcon,
 } from 'lucide-react';
 
 // Import mock data
 import { services } from '../../data/services';
 import { clientLogos } from '../../data/logos';
+import { servicesHeroMessaging } from '../../data/three-tier-model';
 
 // Dynamic content widgets
 import { ContentStatsWidget } from '../patterns/ContentStatsWidget';
@@ -88,21 +93,23 @@ export function ServicesLandingTemplate() {
             <ScrollReveal animation="fade-up">
               <div className="services-landing__hero-badge">
                 <Cpu size={14} />
-                SYSTEM.INIT_SERVICES
+                {servicesHeroMessaging.badge}
               </div>
 
               <h1 className="services-landing__hero-title">
-                Your Digital <br />
-                <span style={{ color: 'var(--nexus-primary)' }}>Success Nexus</span>
+                {servicesHeroMessaging.title.line1} <br />
+                <span style={{ color: 'var(--nexus-primary)' }}>
+                  {servicesHeroMessaging.title.line2}
+                </span>
               </h1>
 
               <p className="services-landing__hero-subtitle">
-                We design and develop high-performance digital experiences that take your business to the next dimension.
+                {servicesHeroMessaging.subtitle}
               </p>
 
               <div className="services-landing__hero-buttons">
-                <Button variant="default" size="lg" page="contact">
-                  Start a project
+                <Button variant="default" size="lg" page={servicesHeroMessaging.cta.primary.page}>
+                  {servicesHeroMessaging.cta.primary.text}
                 </Button>
                 <Button variant="outline" size="lg" page="portfolio-archive">
                   View our work
@@ -183,6 +190,79 @@ export function ServicesLandingTemplate() {
               </div>
             </div>
           </ScrollReveal>
+        </Container>
+      </section>
+
+      {/* ============================================
+          SERVICE CATEGORY HUBS
+          ============================================ */}
+      <section className="services-landing__categories">
+        <Container>
+          <ScrollReveal animation="fade-up">
+            <div className="services-landing__grid-header">
+              <div className="services-landing__grid-badge">
+                <Layers size={14} />
+                Specialist Hubs
+              </div>
+              <h2 className="services-landing__grid-title">
+                Explore by Discipline
+              </h2>
+              <p className="services-landing__grid-desc">
+                Deep-dive into our specialist service categories — each with dedicated sub-services, case studies, and pricing.
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <div className="services-landing__category-grid">
+            <ScrollReveal animation="fade-up" delay={0}>
+              <Link to="/services/ai" className="services-landing__category-card services-landing__category-card--ai">
+                <div className="services-landing__category-glow" />
+                <div className="services-landing__category-icon">
+                  <Brain size={28} />
+                </div>
+                <h3 className="services-landing__category-title">AI Services</h3>
+                <p className="services-landing__category-desc">
+                  AI Search & Visibility, Technical SEO, Analytics, AI Engine Optimisation, and Answer Engine Optimisation.
+                </p>
+                <ul className="services-landing__category-list">
+                  <li>AI Search & Visibility</li>
+                  <li>Technical SEO</li>
+                  <li>Analytics & Reporting</li>
+                  <li>AI Engine Optimisation</li>
+                  <li>Answer Engine Optimisation</li>
+                </ul>
+                <div className="services-landing__category-link">
+                  Explore AI Services
+                  <ArrowRight size={16} />
+                </div>
+              </Link>
+            </ScrollReveal>
+
+            <ScrollReveal animation="fade-up" delay={120}>
+              <Link to="/services/content" className="services-landing__category-card services-landing__category-card--content">
+                <div className="services-landing__category-glow" />
+                <div className="services-landing__category-icon">
+                  <FileTextIcon size={28} />
+                </div>
+                <h3 className="services-landing__category-title">Content Services</h3>
+                <p className="services-landing__category-desc">
+                  Full-lifecycle content — from audit and strategy through creation, copywriting, SEO content, and governance.
+                </p>
+                <ul className="services-landing__category-list">
+                  <li>Content Audit</li>
+                  <li>Content Strategy</li>
+                  <li>Content Creation</li>
+                  <li>Copywriting & UX Writing</li>
+                  <li>SEO Content</li>
+                  <li>Content Governance</li>
+                </ul>
+                <div className="services-landing__category-link">
+                  Explore Content Services
+                  <ArrowRight size={16} />
+                </div>
+              </Link>
+            </ScrollReveal>
+          </div>
         </Container>
       </section>
 

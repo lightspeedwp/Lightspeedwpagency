@@ -10,7 +10,7 @@ export const wetuSolutionHero = {
   title: "Wetu Importer for WordPress",
   subtitle: "Display your Wetu itineraries directly on your WordPress website with ease.",
   badge: { text: "TRAVEL TECH", icon: Globe },
-  primaryButton: { text: "Get the Plugin", page: "contact" }
+  primaryButton: { text: "Request a Systems Audit", page: "contact" }
 };
 
 export const wetuSolutionFeatures = {
@@ -37,5 +37,5 @@ export const wetuSolutionFeatures = {
 export const wetuSolutionCTA = {
   title: "Simplify Your Tour Management",
   description: "Save hours of manual data entry. Let the importer do the work.",
-  button: { text: "Learn More", page: "contact" }
+  button: { text: "Request a Systems Audit", page: "contact" }
 };

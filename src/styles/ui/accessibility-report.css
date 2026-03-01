@@ -1,0 +1,334 @@
+/**
+ * AccessibilityReport Styles
+ * 
+ * Visual report of accessibility audit results
+ * 
+ * Features:
+ * - Score display with color coding
+ * - Collapsible categories
+ * - Issue severity indicators
+ * - Recommendations
+ * 
+ * Design System:
+ * - 100% CSS variables
+ * - BEM naming (.a11y-report__element)
+ */
+
+/* Container */
+.a11y-report {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+/* Score Card */
+.a11y-report__score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-4);
+  padding: var(--spacing-8);
+  background: rgba(255, 255, 255, 0.03);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-lg);
+  text-align: center;
+}
+
+.a11y-report__score-value {
+  font-family: var(--font-primary);
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.a11y-report__score-label {
+  font-family: var(--font-secondary);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.a11y-report__score-stats {
+  display: flex;
+  gap: var(--spacing-6);
+  margin-top: var(--spacing-2);
+}
+
+.a11y-report__stat {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+}
+
+/* Score Variants */
+.a11y-report__score--success {
+  border-color: hsl(142, 76%, 36%);
+}
+
+.a11y-report__score--success .a11y-report__score-value {
+  color: hsl(142, 76%, 36%);
+}
+
+.a11y-report__score--success .a11y-report__score-label {
+  color: hsl(142, 76%, 36%);
+}
+
+.a11y-report__score--warning {
+  border-color: hsl(38, 92%, 50%);
+}
+
+.a11y-report__score--warning .a11y-report__score-value {
+  color: hsl(38, 92%, 50%);
+}
+
+.a11y-report__score--warning .a11y-report__score-label {
+  color: hsl(38, 92%, 50%);
+}
+
+.a11y-report__score--error {
+  border-color: hsl(0, 84%, 60%);
+}
+
+.a11y-report__score--error .a11y-report__score-value {
+  color: hsl(0, 84%, 60%);
+}
+
+.a11y-report__score--error .a11y-report__score-label {
+  color: hsl(0, 84%, 60%);
+}
+
+/* Categories */
+.a11y-report__categories {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.a11y-report__category {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+/* Category Header */
+.a11y-report__category-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-4);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.a11y-report__category-header:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.a11y-report__category-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--foreground);
+  text-align: left;
+}
+
+.a11y-report__category-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+.a11y-report__category-count {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+}
+
+/* Issues */
+.a11y-report__issues {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  padding: 0 var(--spacing-4) var(--spacing-4) var(--spacing-4);
+}
+
+.a11y-report__issue {
+  padding: var(--spacing-4);
+  background: rgba(255, 255, 255, 0.02);
+  border-left: 3px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.a11y-report__issue-header {
+  display: flex;
+  gap: var(--spacing-3);
+}
+
+.a11y-report__issue-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+}
+
+.a11y-report__issue-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.a11y-report__issue-message {
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  font-weight: 500;
+  color: var(--foreground);
+}
+
+.a11y-report__issue-element {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+}
+
+.a11y-report__issue-element code {
+  font-family: 'Monaco', 'Courier New', monospace;
+  font-size: var(--text-xs);
+  padding: 2px 6px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: hsl(var(--primary));
+}
+
+.a11y-report__issue-recommendation {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  padding: var(--spacing-2);
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: var(--radius);
+}
+
+/* Issue Type Variants */
+.a11y-report__issue--error {
+  border-left-color: hsl(0, 84%, 60%);
+}
+
+.a11y-report__issue--error .a11y-report__issue-icon {
+  background: hsl(0, 84%, 60% / 0.1);
+  color: hsl(0, 84%, 60%);
+}
+
+.a11y-report__issue--warning {
+  border-left-color: hsl(38, 92%, 50%);
+}
+
+.a11y-report__issue--warning .a11y-report__issue-icon {
+  background: hsl(38, 92%, 50% / 0.1);
+  color: hsl(38, 92%, 50%);
+}
+
+.a11y-report__issue--info {
+  border-left-color: hsl(142, 76%, 36%);
+}
+
+.a11y-report__issue--info .a11y-report__issue-icon {
+  background: hsl(142, 76%, 36% / 0.1);
+  color: hsl(142, 76%, 36%);
+}
+
+/* Dark mode */
+.dark .a11y-report__score {
+  background: rgba(255, 255, 255, 0.02);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.dark .a11y-report__category {
+  background: rgba(255, 255, 255, 0.02);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.dark .a11y-report__category-header:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.dark .a11y-report__issue {
+  background: rgba(255, 255, 255, 0.01);
+}
+
+.dark .a11y-report__issue-element code {
+  background: rgba(0, 0, 0, 0.5);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.dark .a11y-report__issue-recommendation {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .a11y-report__category-header {
+    transition: none;
+  }
+}
+
+/* Responsive: Mobile */
+@media (max-width: 767px) {
+  .a11y-report__score {
+    padding: var(--spacing-6);
+  }
+
+  .a11y-report__score-value {
+    font-size: 48px;
+  }
+
+  .a11y-report__score-label {
+    font-size: var(--text-lg);
+  }
+
+  .a11y-report__score-stats {
+    flex-direction: column;
+    gap: var(--spacing-2);
+  }
+
+  .a11y-report__category-header {
+    padding: var(--spacing-3);
+  }
+
+  .a11y-report__category-title {
+    font-size: var(--text-base);
+  }
+
+  .a11y-report__category-count {
+    font-size: var(--text-xs);
+  }
+
+  .a11y-report__issues {
+    padding: 0 var(--spacing-3) var(--spacing-3) var(--spacing-3);
+  }
+
+  .a11y-report__issue {
+    padding: var(--spacing-3);
+  }
+
+  .a11y-report__issue-message {
+    font-size: var(--text-sm);
+  }
+
+  .a11y-report__issue-element,
+  .a11y-report__issue-recommendation {
+    font-size: var(--text-xs);
+  }
+}

@@ -15,7 +15,9 @@
  */
 
 import { useState, useMemo } from 'react';
-import { Link } from 'react-router';
+/* Route-level CSS */
+import '../../../styles/templates/blog-index-page.css';
+import { Link, useNavigate } from 'react-router';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
@@ -59,7 +61,7 @@ function parseReadMinutes(readingTime: string): number {
 function NeonStackCard({ post }: { post: BlogPost }) {
   const author = getAuthor(post.author);
   return (
-    <Link to={`/blog/${post.slug}`} className="blog-neon" aria-label={`Read ${post.title}`}>
+    <Link to={`/insights/${post.slug}`} className="blog-neon" aria-label={`Read ${post.title}`}>
       <article className="blog-neon__wrap">
         <div className="blog-neon__img-box">
           <img
@@ -113,7 +115,7 @@ function MagazineCard({ post }: { post: BlogPost }) {
   const barWidth = `${Math.min(minutes * 10, 100)}%`;
 
   return (
-    <Link to={`/blog/${post.slug}`} className="blog-mag" aria-label={`Read ${post.title}`}>
+    <Link to={`/insights/${post.slug}`} className="blog-mag" aria-label={`Read ${post.title}`}>
       <article className="blog-mag__wrap">
         <div className="blog-mag__img-box">
           <img
@@ -179,7 +181,7 @@ function MagazineCard({ post }: { post: BlogPost }) {
 function StreamCard({ post }: { post: BlogPost }) {
   const author = getAuthor(post.author);
   return (
-    <Link to={`/blog/${post.slug}`} className="blog-stream" aria-label={`Read ${post.title}`}>
+    <Link to={`/insights/${post.slug}`} className="blog-stream" aria-label={`Read ${post.title}`}>
       <article className="blog-stream__wrap">
         <div className="blog-stream__img-box">
           <img
@@ -233,6 +235,7 @@ function StreamCard({ post }: { post: BlogPost }) {
    ───────────────────────────────────────────── */
 
 export function BlogIndexTemplate() {
+  const navigate = useNavigate();
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [sort, setSort] = useState('recent');
   const [viewMode, setViewMode] = useState<ViewMode>('grid-3');
@@ -320,7 +323,7 @@ export function BlogIndexTemplate() {
           <Container>
             <ScrollReveal animation="fade-up" duration={600} delay={100}>
               <Link
-                to={`/blog/${featuredPost.slug}`}
+                to={`/insights/${featuredPost.slug}`}
                 className="blog-index__featured-card"
                 aria-label={`Read ${featuredPost.title}`}
               >
@@ -386,8 +389,13 @@ export function BlogIndexTemplate() {
             label="Explore"
             maxPerSection={8}
             showSections={false}
-            onTopicClick={(slug) => {
-              if (!selectedCategories.includes(slug)) toggleCategory(slug);
+            onTopicClick={(slug, source) => {
+              // Navigate to category or tag archive page
+              if (source === 'blog-categories') {
+                navigate(`/insights/category/${slug}`);
+              } else if (source === 'blog-tags') {
+                navigate(`/insights/tag/${slug}`);
+              }
             }}
           />
 

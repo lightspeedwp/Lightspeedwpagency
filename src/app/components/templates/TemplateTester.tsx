@@ -20,6 +20,7 @@
  * @see {@link /guidelines/templates/overview-templates.md}
  */
 
+import '../../../styles/templates/template-tester.css';
 import { Button } from '../blocks/design/Buttons';
 import { Link } from 'react-router';
 import { slugToPath } from '../../utils/route-map';
@@ -87,10 +88,10 @@ const templateCategories = [
         description: 'Category, tag, author, date archives',
         icon: Tag,
         pages: [
-          { label: 'Category: News', page: 'category-news', slug: '/blog/category/news', template: 'category.html' },
-          { label: 'Tag: Gutenberg', page: 'tag-gutenberg', slug: '/blog/tag/gutenberg', template: 'tag.html' },
-          { label: 'Author: Editor', page: 'author-editor', slug: '/blog/author/editor', template: 'author.html' },
-          { label: 'Date: 2024', page: 'date-2024', slug: '/blog/2024', template: 'date.html' },
+          { label: 'Category: News', page: 'category-news', slug: '/insights/category/news', template: 'category.html' },
+          { label: 'Tag: Gutenberg', page: 'tag-gutenberg', slug: '/insights/tag/gutenberg', template: 'tag.html' },
+          { label: 'Author: Editor', page: 'author-editor', slug: '/insights/author/editor', template: 'author.html' },
+          { label: 'Date: 2024', page: 'date-2024', slug: '/insights/date/2024', template: 'date.html' },
         ]
       },
       {
@@ -100,9 +101,9 @@ const templateCategories = [
         description: 'Single posts, portfolio pieces with rich content',
         icon: FileText,
         pages: [
-          { label: 'Single Post', page: 'single', slug: '/blog/getting-started-with-block-themes', template: 'single.html' },
-          { label: 'Single Post (Longform)', page: 'single-post', slug: '/blog/longform-post', template: 'single.html' },
-          { label: 'Portfolio Single: EcoMarket', page: 'portfolio-single-eco-market-woocommerce', slug: '/portfolio/eco-market-woocommerce', template: 'single-portfolio.html' },
+          { label: 'Single Post', page: 'single', slug: '/insights/getting-started-with-block-themes', template: 'single.html' },
+          { label: 'Single Post (Longform)', page: 'single-post', slug: '/insights/single-post', template: 'single.html' },
+          { label: 'Portfolio Single: EcoMarket', page: 'portfolio-single-eco-market-woocommerce', slug: '/work/eco-market-woocommerce', template: 'single-portfolio.html' },
         ]
       },
       {

@@ -11,6 +11,7 @@
  * @see /tasks/task-list.md — Section 15
  */
 
+import '../../../styles/templates/snippet-generator.css';
 import { useState, useMemo, useCallback } from 'react';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import {

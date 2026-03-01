@@ -14,6 +14,7 @@
  * @see /src/styles/templates/page-lsx-design.css
  */
 
+import '../../../styles/templates/page-lsx-design.css';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
@@ -25,6 +26,7 @@ import { FunkyCTA } from '../patterns/FunkyCTA';
 import { FAQSection } from '../patterns/FAQSection';
 import { Button } from '../blocks/design/Buttons';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
+import { ScrollDownArrow } from '../common/ScrollDownArrow';
 import { Layers, Zap, ArrowRight, Sparkles } from 'lucide-react';
 
 
@@ -86,6 +88,8 @@ export function LSXDesignTemplate() {
             </div>
           </ScrollReveal>
         </Container>
+
+        <ScrollDownArrow />
       </section>
 
       {/* ============================================

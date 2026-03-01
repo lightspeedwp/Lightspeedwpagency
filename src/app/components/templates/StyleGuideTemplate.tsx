@@ -15,6 +15,7 @@
  * 100% CSS variables — zero hardcoded values.
  */
 
+import '../../../styles/templates/page-styleguide.css';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { Button } from '../blocks/design/Buttons';

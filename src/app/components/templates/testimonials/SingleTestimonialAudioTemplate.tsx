@@ -12,6 +12,7 @@
  * @see /src/styles/templates/testimonial-single.css
  */
 
+import '../../../../styles/templates/testimonial-single.css';
 import { Star, ArrowLeft, Play, Pause, Mic, Clock } from 'lucide-react';
 import { Link, useParams } from 'react-router';
 import { useState } from 'react';

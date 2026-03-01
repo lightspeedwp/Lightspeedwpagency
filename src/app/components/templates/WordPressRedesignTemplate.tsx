@@ -13,6 +13,7 @@
  * @see /src/app/data/wordpress-redesign-page.ts
  */
 
+import '../../../styles/templates/page-solution-redesign.css';
 import { Container } from '../common/Container';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { FAQSection } from '../patterns/FAQSection';

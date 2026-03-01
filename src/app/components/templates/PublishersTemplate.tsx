@@ -31,6 +31,7 @@
  * @see /guidelines/templates/overview-templates.md
  */
 
+import '../../../styles/templates/publishers-page.css';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';

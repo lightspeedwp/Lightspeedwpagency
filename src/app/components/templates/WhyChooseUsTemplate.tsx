@@ -17,6 +17,7 @@
  * @see /src/app/data/why-choose-us.ts
  */
 
+import '../../../styles/templates/why-choose-us.css';
 import { Container } from '../common/Container';
 import { Button } from '../blocks/design/Buttons';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';

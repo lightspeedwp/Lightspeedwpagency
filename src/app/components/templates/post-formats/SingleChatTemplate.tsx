@@ -6,6 +6,7 @@
  * Displays a single chat transcript.
  */
 
+import '../../../../styles/templates/single-post.css';
 import { MessageCircle, User, Calendar } from 'lucide-react';
 
 export function SingleChatTemplate() {
@@ -16,7 +17,7 @@ export function SingleChatTemplate() {
       <BreadcrumbPart
         items={[
           { label: 'Home', href: '/' },
-          { label: 'Blog', href: '/blog' },
+          { label: 'Insights', href: '/insights' },
           { label: 'Chat', href: '/chat-archive' },
           { label: post.title.rendered },
         ]}

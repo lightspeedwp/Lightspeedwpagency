@@ -16,6 +16,8 @@
  * @see /src/app/data/pricing-page.ts
  */
 
+/* Route-level CSS */
+import '../../../styles/templates/pricing-page.css';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
@@ -28,6 +30,7 @@ import {
   Sparkles,
 } from 'lucide-react';
 import { useScrollReveal, ScrollReveal } from '../../hooks/useScrollReveal';
+import { ScrollDownArrow } from '../common/ScrollDownArrow';
 
 
 // Import centralized data
@@ -89,6 +92,8 @@ export function PricingTemplate() {
             </div>
           </div>
         </Container>
+
+        <ScrollDownArrow />
       </section>
 
       {/* Website Packages Section */}

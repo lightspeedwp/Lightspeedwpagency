@@ -11,6 +11,8 @@
  * @see /src/styles/templates/single-post.css
  */
 
+import '../../../../styles/templates/single-post.css';
+import '../../../../styles/templates/single-video.css';
 import { Container } from '@/app/components/common/Container';
 import { Section } from '@/app/components/common/Section';
 import { BreadcrumbPart } from '@/app/components/parts/BreadcrumbPart';
@@ -26,7 +28,7 @@ export function SingleVideoTemplate() {
       <BreadcrumbPart
         items={[
           { label: 'Home', href: '/' },
-          { label: 'Blog', href: '/blog' },
+          { label: 'Insights', href: '/insights' },
           { label: 'Video', href: '/video-archive' },
           { label: post.title.rendered },
         ]}

@@ -16,6 +16,7 @@
  * @see /src/app/data/careers-page.ts
  */
 
+import '../../../styles/templates/careers-page.css';
 import { Container } from '../common/Container';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { Button } from '../blocks/design/Buttons';

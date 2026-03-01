@@ -276,6 +276,133 @@ export const blogPosts: BlogPost[] = [
   }
 ];
 
+// ─────────────────────────────────────────────
+// NEW POSTS — Insights Sub-Categories (Task 2.5)
+// Research, Build Notes, Editorial Systems, AI Governance
+// ─────────────────────────────────────────────
+
+/**
+ * Insights sub-category posts
+ * These posts populate the 4 new Insights sub-categories
+ */
+export const insightsSubCategoryPosts: BlogPost[] = [
+  // ── Research ──
+  {
+    id: 'core-web-vitals-2026-benchmark-study',
+    slug: 'core-web-vitals-2026-benchmark-study',
+    title: 'Core Web Vitals 2026: Our Benchmark Study of 500 WordPress Sites',
+    excerpt: 'We analysed Core Web Vitals data across 500 WordPress sites to uncover which hosting stacks, theme architectures, and plugin combinations deliver the best real-world performance.',
+    featuredImage: 'https://images.unsplash.com/photo-1766297247924-6638d54e7c89?w=1200',
+    author: 'warwick-booth',
+    categories: ['research'],
+    tags: ['performance', 'wordpress'],
+    date: '2026-02-20',
+    readingTime: '14 min read',
+    featured: true
+  },
+  {
+    id: 'block-theme-adoption-rates-agency-survey',
+    slug: 'block-theme-adoption-rates-agency-survey',
+    title: 'Block Theme Adoption Rates: A 2026 Agency Survey',
+    excerpt: 'We surveyed 120 WordPress agencies worldwide to understand how block theme adoption is progressing — the barriers, the wins, and the tipping point for migration.',
+    featuredImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200',
+    author: 'ash-shaw',
+    categories: ['research'],
+    tags: ['block-theme', 'fse', 'wordpress'],
+    date: '2026-02-05',
+    readingTime: '11 min read',
+    featured: false
+  },
+
+  // ── Build Notes ──
+  {
+    id: 'build-notes-design-token-pipeline',
+    slug: 'build-notes-design-token-pipeline',
+    title: 'Build Notes: Creating a Design Token Pipeline for WordPress Block Themes',
+    excerpt: 'A behind-the-scenes look at how we built an automated pipeline that syncs design tokens from Figma to theme.json, CSS custom properties, and block style variations.',
+    featuredImage: 'https://images.unsplash.com/photo-1564931768730-7e4d8e240044?w=1200',
+    author: 'warwick-booth',
+    categories: ['build-notes'],
+    tags: ['design-system', 'block-theme', 'wordpress'],
+    date: '2026-02-15',
+    readingTime: '10 min read',
+    featured: true
+  },
+  {
+    id: 'build-notes-woocommerce-checkout-blocks',
+    slug: 'build-notes-woocommerce-checkout-blocks',
+    title: 'Build Notes: Rebuilding a WooCommerce Checkout with Block-Based Architecture',
+    excerpt: 'Technical notes from our recent project migrating a high-traffic WooCommerce checkout to the new block-based checkout — including performance benchmarks and gotchas.',
+    featuredImage: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200',
+    author: 'lourens-visser',
+    categories: ['build-notes'],
+    tags: ['woocommerce', 'block-theme', 'performance'],
+    date: '2026-01-30',
+    readingTime: '8 min read',
+    featured: false
+  },
+
+  // ── Editorial Systems ──
+  {
+    id: 'structured-content-models-wordpress-fse',
+    slug: 'structured-content-models-wordpress-fse',
+    title: 'Structured Content Models for WordPress Full Site Editing',
+    excerpt: 'How we design content models that work across WordPress block patterns, custom post types, and headless frontends — with governance rules that keep editorial teams productive.',
+    featuredImage: 'https://images.unsplash.com/photo-1695548487477-32cd8f3b2f35?w=1200',
+    author: 'ash-shaw',
+    categories: ['editorial-systems'],
+    tags: ['wordpress', 'fse', 'design-system'],
+    date: '2026-02-10',
+    readingTime: '9 min read',
+    featured: true
+  },
+  {
+    id: 'editorial-workflow-automation-wordpress',
+    slug: 'editorial-workflow-automation-wordpress',
+    title: 'Automating Editorial Workflows in WordPress: From Draft to Publish',
+    excerpt: 'A practical guide to automating content review, approval chains, and publishing schedules in WordPress — using native tools, custom REST endpoints, and third-party integrations.',
+    featuredImage: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200',
+    author: 'lourens-visser',
+    categories: ['editorial-systems'],
+    tags: ['wordpress', 'workflow'],
+    date: '2026-01-22',
+    readingTime: '7 min read',
+    featured: false
+  },
+
+  // ── AI Governance ──
+  {
+    id: 'responsible-ai-usage-wordpress-agencies',
+    slug: 'responsible-ai-usage-wordpress-agencies',
+    title: 'Responsible AI Usage for WordPress Agencies: A Governance Framework',
+    excerpt: 'Our internal framework for responsible AI usage — covering content generation policies, client disclosure requirements, quality assurance checkpoints, and data privacy guardrails.',
+    featuredImage: 'https://images.unsplash.com/photo-1717501220725-83f151c447e7?w=1200',
+    author: 'ash-shaw',
+    categories: ['ai-governance'],
+    tags: ['ai', 'workflow'],
+    date: '2026-02-24',
+    readingTime: '12 min read',
+    featured: true
+  },
+  {
+    id: 'ai-content-quality-assurance-checklist',
+    slug: 'ai-content-quality-assurance-checklist',
+    title: 'AI Content QA: Our 15-Point Quality Assurance Checklist',
+    excerpt: 'Before any AI-assisted content goes live on a client site, it passes through our 15-point QA checklist — covering accuracy, tone, accessibility, SEO, and ethical disclosure.',
+    featuredImage: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200',
+    author: 'warwick-booth',
+    categories: ['ai-governance'],
+    tags: ['ai', 'workflow', 'accessibility'],
+    date: '2026-02-01',
+    readingTime: '6 min read',
+    featured: false
+  },
+];
+
+// Merge sub-category posts into main blogPosts for unified access
+// Insert at beginning so they appear as most recent
+blogPosts.unshift(...insightsSubCategoryPosts);
+
 /**
  * Featured Posts
  * Posts marked as featured for homepage display

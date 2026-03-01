@@ -34,9 +34,15 @@ const SLUG_TO_PATH: Record<string, string> = {
   'design': '/services/design',
   'development': '/services/development',
   'content': '/services/content',
+  'content-services-landing': '/services/content',
+  'content-overview': '/services/content/overview',
   'content-strategy': '/services/content/strategy',
   'content-collection': '/services/content/collection',
   'content-audit': '/services/content/audit',
+  'content-creation': '/services/content/creation',
+  'content-copywriting': '/services/content/copywriting',
+  'content-seo-content': '/services/content/seo-content',
+  'content-governance': '/services/content/governance',
   'security': '/services/security',
   'migrations': '/services/migrations',
   'support': '/services/support',
@@ -45,10 +51,15 @@ const SLUG_TO_PATH: Record<string, string> = {
   'training': '/services/training',
   'hosting': '/services/hosting',
   'performance': '/services/performance',
-  'seo': '/services/seo',
+  'ai-services-landing': '/services/ai',
+  'ai-search-visibility': '/services/ai/search-visibility',
+  'seo': '/services/ai/seo',
   'accessibility': '/services/accessibility',
-  'ai-engine-optimisation': '/services/ai-engine-optimisation',
-  'answer-engine-optimisation': '/services/answer-engine-optimisation',
+  'ai-engine-optimisation': '/services/ai/engine-optimisation',
+  'answer-engine-optimisation': '/services/ai/answer-engine-optimisation',
+  'analytics': '/services/ai/analytics',
+  'figma-prototyping': '/services/figma-prototyping',
+  'design-systems-service': '/services/design-systems',
 
   /* ── Journey Stage Pages ── */
   'journey-ignite': '/services/ignite',
@@ -57,6 +68,15 @@ const SLUG_TO_PATH: Record<string, string> = {
   'journey-launch': '/services/launch',
   'journey-grow': '/services/grow',
   'journey-evolve': '/services/evolve',
+
+  /* ── Systems Hub (Phase 1 - Tasks 1.1, 1.2) ── */
+  'systems': '/systems',
+  'systems-hub': '/systems',
+  'design-tokens': '/systems/design-tokens',
+  'pattern-governance': '/systems/pattern-governance',
+  'editorial-workflows': '/systems/editorial-workflows',
+  'ai-search-readiness': '/systems/ai-search-readiness',
+  'performance-reliability': '/systems/performance-reliability',
 
   /* ── Services (legacy "with suffix" routes) ── */
   'discovery-service': '/services/discovery',
@@ -101,18 +121,28 @@ const SLUG_TO_PATH: Record<string, string> = {
   'lsx-design-solutions': '/solutions/lsx',
   'lsx-design': '/solutions/lsx',
 
-  /* ── Portfolio ── */
-  'portfolio': '/portfolio',
-  'portfolio-archive': '/portfolio',
-  'portfolio-single': '/portfolio',
+  /* ── Work ── */
+  'portfolio': '/work',
+  'portfolio-archive': '/work',
+  'portfolio-single': '/work',
+  'work': '/work',
+  'work-archive': '/work',
 
-  /* ── Blog ── */
-  'blog': '/blog',
-  'single-post': '/blog',
-  'category': '/blog/category',
-  'author': '/blog/author',
-  'tag-archive': '/blog/tag',
-  'date-archive': '/blog/date',
+  /* ── Insights ── */
+  'blog': '/insights',  // Backward compatibility
+  'insights': '/insights',  // New preferred slug
+  'insights-archive': '/insights',
+  'single-post': '/insights',
+  'category': '/insights/category',
+  'author': '/insights/author',
+  'tag-archive': '/insights/tag',
+  'date-archive': '/insights/date',
+
+  /* ── Insights Sub-Categories (Task 2.5) ── */
+  'insights-research': '/insights/category/research',
+  'insights-build-notes': '/insights/category/build-notes',
+  'insights-editorial-systems': '/insights/category/editorial-systems',
+  'insights-ai-governance': '/insights/category/ai-governance',
 
   /* ── Contact ── */
   'contact': '/contact',
@@ -149,7 +179,7 @@ const SLUG_TO_PATH: Record<string, string> = {
   'wordpress-development': '/services',
   'woocommerce-development': '/services',
   'block-theme-development': '/services',
-  'design-systems': '/services',
+  'design-systems': '/services/design-systems',   // Active route exists
   'accessibility-services': '/services/accessibility',
   'performance-optimization': '/services/performance',
   'site-migration': '/services',
@@ -205,29 +235,29 @@ const SLUG_TO_PATH: Record<string, string> = {
   'single': '/single',
 
   /* ── Post Formats (Archives) ── */
-  'audio-archive': '/blog/format/audio',
-  'video-archive': '/blog/format/video',
-  'gallery-archive': '/blog/format/gallery',
-  'image-archive': '/blog/format/image',
-  'quote-archive': '/blog/format/quote',
-  'link-archive': '/blog/format/link',
-  'chat-archive': '/blog/format/chat',
-  'status-archive': '/blog/format/status',
-  'standard-archive': '/blog/format/standard',
-  'aside-archive': '/blog/format/aside',
-  'aside-stream': '/blog/format/aside-stream',
+  'audio-archive': '/insights/format/audio',
+  'video-archive': '/insights/format/video',
+  'gallery-archive': '/insights/format/gallery',
+  'image-archive': '/insights/format/image',
+  'quote-archive': '/insights/format/quote',
+  'link-archive': '/insights/format/link',
+  'chat-archive': '/insights/format/chat',
+  'status-archive': '/insights/format/status',
+  'standard-archive': '/insights/format/standard',
+  'aside-archive': '/insights/format/aside',
+  'aside-stream': '/insights/format/aside-stream',
 
   /* ── Post Formats (Singles) ── */
-  'audio-single': '/blog/format/audio/single',
-  'video-single': '/blog/format/video/single',
-  'gallery-single': '/blog/format/gallery/single',
-  'image-single': '/blog/format/image/single',
-  'quote-single': '/blog/format/quote/single',
-  'link-single': '/blog/format/link/single',
-  'chat-single': '/blog/format/chat/single',
-  'status-single': '/blog/format/status/single',
-  'standard-single': '/blog/format/standard/single',
-  'aside-single': '/blog/format/aside/single',
+  'audio-single': '/insights/format/audio/single',
+  'video-single': '/insights/format/video/single',
+  'gallery-single': '/insights/format/gallery/single',
+  'image-single': '/insights/format/image/single',
+  'quote-single': '/insights/format/quote/single',
+  'link-single': '/insights/format/link/single',
+  'chat-single': '/insights/format/chat/single',
+  'status-single': '/insights/format/status/single',
+  'standard-single': '/insights/format/standard/single',
+  'aside-single': '/insights/format/aside/single',
 
   /* ── WooCommerce ── */
   'product-archive': '/shop',
@@ -262,12 +292,12 @@ for (const [slug, path] of Object.entries(SLUG_TO_PATH)) {
  * Convert a legacy flat slug to a hierarchical URL path.
  * 
  * Handles both static slugs and dynamic patterns like:
- * - `portfolio-single-{project}` → `/portfolio/{project}`
- * - `post-{slug}` → `/blog/{slug}`
- * - `category-{slug}` → `/blog/category/{slug}`
- * - `author-{slug}` → `/blog/author/{slug}`
- * - `tag-{tag}` → `/blog/tag/{tag}`
- * - `date-{year}-{month}` → `/blog/date/{year}/{month}`
+ * - `work-single-{project}` → `/work/{project}`
+ * - `insight-{slug}` → `/insights/{slug}`
+ * - `category-{slug}` → `/insights/category/{slug}`
+ * - `author-{slug}` → `/insights/author/{slug}`
+ * - `tag-{tag}` → `/insights/tag/{tag}`
+ * - `date-{year}-{month}` → `/insights/date/{year}/{month}`
  * - `service-{name}` → `/services/{name}`
  * - `solution-{name}` → `/solutions/{name}`
  * - `product-single-{slug}` → `/shop/{slug}`
@@ -280,33 +310,33 @@ export function slugToPath(slug: string): string {
   if (SLUG_TO_PATH[slug]) return SLUG_TO_PATH[slug];
 
   // 2. Dynamic patterns
-  if (slug.startsWith('portfolio-single-')) {
-    return `/portfolio/${slug.replace('portfolio-single-', '')}`;
+  if (slug.startsWith('portfolio-single-') || slug.startsWith('work-single-')) {
+    return `/work/${slug.replace('portfolio-single-', '').replace('work-single-', '')}`;
   }
-  if (slug.startsWith('portfolio-category-')) {
-    return `/portfolio/category/${slug.replace('portfolio-category-', '')}`;
+  if (slug.startsWith('portfolio-category-') || slug.startsWith('work-category-')) {
+    return `/work/category/${slug.replace('portfolio-category-', '').replace('work-category-', '')}`;
   }
-  if (slug.startsWith('portfolio-tag-')) {
-    return `/portfolio/tag/${slug.replace('portfolio-tag-', '')}`;
+  if (slug.startsWith('portfolio-tag-') || slug.startsWith('work-tag-')) {
+    return `/work/tag/${slug.replace('portfolio-tag-', '').replace('work-tag-', '')}`;
   }
   if (slug.startsWith('product-single-')) {
     return `/shop/${slug.replace('product-single-', '')}`;
   }
-  if (slug.startsWith('post-')) {
-    return `/blog/${slug.replace('post-', '')}`;
+  if (slug.startsWith('post-') || slug.startsWith('insight-')) {
+    return `/insights/${slug.replace('post-', '').replace('insight-', '')}`;
   }
   if (slug.startsWith('category-')) {
-    return `/blog/category/${slug.replace('category-', '')}`;
+    return `/insights/category/${slug.replace('category-', '')}`;
   }
   if (slug.startsWith('author-')) {
-    return `/blog/author/${slug.replace('author-', '')}`;
+    return `/insights/author/${slug.replace('author-', '')}`;
   }
   if (slug.startsWith('tag-')) {
-    return `/blog/tag/${slug.replace('tag-', '')}`;
+    return `/insights/tag/${slug.replace('tag-', '')}`;
   }
   if (slug.startsWith('date-')) {
     const parts = slug.replace('date-', '').split('-');
-    return `/blog/date/${parts[0]}${parts[1] ? '/' + parts[1] : ''}`;
+    return `/insights/date/${parts[0]}${parts[1] ? '/' + parts[1] : ''}`;
   }
   if (slug.startsWith('service-')) {
     const serviceName = slug.replace('service-', '');
@@ -362,7 +392,7 @@ export function slugToPath(slug: string): string {
 
   // Date archive patterns
   const dateYearMatch = slug.match(/^date-(\d{4})$/);
-  if (dateYearMatch) return `/blog/date/${dateYearMatch[1]}`;
+  if (dateYearMatch) return `/insights/date/${dateYearMatch[1]}`;
 
   // 3. Fallback: treat as path
   return `/${slug}`;
@@ -385,31 +415,31 @@ export function pathToSlug(path: string): string {
   if (PATH_TO_SLUG[normalized]) return PATH_TO_SLUG[normalized];
 
   // 2. Dynamic patterns
-  const portfolioMatch = normalized.match(/^\/portfolio\/(?!category|tag)(.+)$/);
-  if (portfolioMatch) return `portfolio-single-${portfolioMatch[1]}`;
+  const workMatch = normalized.match(/^\/work\/(?!category|tag)(.+)$/);
+  if (workMatch) return `work-single-${workMatch[1]}`;
 
-  const portfolioCatMatch = normalized.match(/^\/portfolio\/category\/(.+)$/);
-  if (portfolioCatMatch) return `portfolio-category-${portfolioCatMatch[1]}`;
+  const workCatMatch = normalized.match(/^\/work\/category\/(.+)$/);
+  if (workCatMatch) return `work-category-${workCatMatch[1]}`;
 
-  const portfolioTagMatch = normalized.match(/^\/portfolio\/tag\/(.+)$/);
-  if (portfolioTagMatch) return `portfolio-tag-${portfolioTagMatch[1]}`;
+  const workTagMatch = normalized.match(/^\/work\/tag\/(.+)$/);
+  if (workTagMatch) return `work-tag-${workTagMatch[1]}`;
 
   const shopMatch = normalized.match(/^\/shop\/(.+)$/);
   if (shopMatch) return `product-single-${shopMatch[1]}`;
 
-  const blogPostMatch = normalized.match(/^\/blog\/(?!category|author|tag|date|format)(.+)$/);
-  if (blogPostMatch) return `post-${blogPostMatch[1]}`;
+  const insightsPostMatch = normalized.match(/^\/insights\/(?!category|author|tag|date|format)(.+)$/);
+  if (insightsPostMatch) return `post-${insightsPostMatch[1]}`;
 
-  const categoryMatch = normalized.match(/^\/blog\/category\/(.+)$/);
+  const categoryMatch = normalized.match(/^\/insights\/category\/(.+)$/);
   if (categoryMatch) return `category-${categoryMatch[1]}`;
 
-  const authorMatch = normalized.match(/^\/blog\/author\/(.+)$/);
+  const authorMatch = normalized.match(/^\/insights\/author\/(.+)$/);
   if (authorMatch) return `author-${authorMatch[1]}`;
 
-  const tagMatch = normalized.match(/^\/blog\/tag\/(.+)$/);
+  const tagMatch = normalized.match(/^\/insights\/tag\/(.+)$/);
   if (tagMatch) return `tag-${tagMatch[1]}`;
 
-  const dateMatch = normalized.match(/^\/blog\/date\/(\d{4})(?:\/(\d{1,2}))?$/);
+  const dateMatch = normalized.match(/^\/insights\/date\/(\d{4})(?:\/(\d{1,2}))?$/);
   if (dateMatch) return `date-${dateMatch[1]}${dateMatch[2] ? '-' + dateMatch[2] : ''}`;
 
   const toursMatch = normalized.match(/^\/tours\/(.+)$/);
@@ -444,7 +474,7 @@ export function pathToSlug(path: string): string {
   if (testimonialStandardMatch) return `testimonial-standard-${testimonialStandardMatch[1]}`;
 
   // Date archive patterns
-  const dateYearMatch = normalized.match(/^\/blog\/date\/(\d{4})$/);
+  const dateYearMatch = normalized.match(/^\/insights\/date\/(\d{4})$/);
   if (dateYearMatch) return `date-${dateYearMatch[1]}`;
 
   // 3. Fallback: strip leading slash

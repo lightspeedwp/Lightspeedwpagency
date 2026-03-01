@@ -9,6 +9,7 @@
  * - WCAG 2.1 AA compliant
  */
 
+import '../../../styles/templates/component-showcase.css';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 

@@ -30,7 +30,11 @@ export const blogCategories: TaxonomyTerm[] = [
   { id: 3, slug: 'case-studies', name: 'Case Studies', count: 8 },
   { id: 4, slug: 'agency-life', name: 'Agency Life', count: 15 },
   { id: 5, slug: 'development', name: 'Development', count: 30 },
-  { id: 6, slug: 'design', name: 'Design', count: 18 }
+  { id: 6, slug: 'design', name: 'Design', count: 18 },
+  { id: 7, slug: 'research', name: 'Research', count: 6, description: 'Deep dives into web technology research, data-driven findings, and industry analysis.' },
+  { id: 8, slug: 'build-notes', name: 'Build Notes', count: 8, description: 'Behind-the-scenes technical notes from real projects — architecture decisions, tooling choices, and lessons learnt.' },
+  { id: 9, slug: 'editorial-systems', name: 'Editorial Systems', count: 5, description: 'Content workflows, editorial governance, structured content models, and publishing automation.' },
+  { id: 10, slug: 'ai-governance', name: 'AI Governance', count: 4, description: 'Responsible AI usage, governance frameworks, ethical considerations, and AI policy for web teams.' },
 ];
 
 export const blogTags: TaxonomyTerm[] = [

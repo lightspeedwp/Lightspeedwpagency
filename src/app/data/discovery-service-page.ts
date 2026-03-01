@@ -10,7 +10,7 @@ export const discoveryServiceHero = {
   title: "Digital Discovery & Strategy",
   subtitle: "We dig deep to uncover the insights that will drive your project's success before writing a single line of code.",
   badge: { text: "STRATEGY FIRST", icon: Compass },
-  primaryButton: { text: "Book a Workshop", page: "contact" },
+  primaryButton: { text: "Request a Systems Audit", page: "contact" },
   secondaryButton: { text: "Learn More", page: "#process" }
 };
 
@@ -81,5 +81,5 @@ export const discoveryServiceDeliverables = {
 export const discoveryServiceCTA = {
   title: "Start on Solid Ground",
   description: "Invest in a discovery phase to ensure your project's success.",
-  button: { text: "Start Discovery", page: "contact" }
+  button: { text: "Request a Systems Audit", page: "contact" }
 };

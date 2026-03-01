@@ -24,7 +24,7 @@ export const wooRedesignHero = {
     'Rebuild your WooCommerce store for higher conversions, faster load times, and a checkout experience customers love.',
   description:
     'We audit your existing store, fix conversion killers, and rebuild it with modern block-based architecture and optimised shopping flows.',
-  primaryButton: { text: 'Redesign My Store', page: 'contact' },
+  primaryButton: { text: 'Request a Systems Audit', page: 'contact' },
   secondaryButton: { text: 'See Results', page: 'portfolio-archive' },
 };
 
@@ -108,7 +108,7 @@ export const wooRedesignServices = {
     { icon: Search, title: 'Store Audit', page: 'discovery', description: 'Analytics-driven conversion audit.' },
     { icon: PenTool, title: 'UX Design', page: 'design', description: 'Conversion-optimised store design.' },
     { icon: Code, title: 'WooCommerce Dev', page: 'development', description: 'Custom block theme development.' },
-    { icon: Package, title: 'Product Migration', page: 'migrations', description: 'Safe product & order migration.' },
+    { icon: Package, title: 'Product Migration', page: 'hosting', description: 'Safe product & order migration.' },
     { icon: CreditCard, title: 'Payments', page: 'woocommerce', description: 'Payment gateway integration.' },
     { icon: Truck, title: 'Shipping', page: 'woocommerce', description: 'Shipping rules & automation.' },
     { icon: Zap, title: 'Performance', page: 'performance', description: 'Sub-second product page loads.' },

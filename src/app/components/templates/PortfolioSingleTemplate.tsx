@@ -6,12 +6,21 @@
  * Pattern order: Breadcrumbs → Hero → Meta → Challenge → Solution → Results → Features → Gallery → Process → Testimonial → Related Projects → CTA
  */
 
+/* Route-level CSS */
+import '../../../styles/templates/portfolio-single.css';
+import '../../../styles/templates/single-project.css';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { FunkyCTA } from '../patterns/FunkyCTA';
 import { Hero } from '../patterns/Hero';
 import { TestimonialGrid } from '../patterns/TestimonialGrid';
+import { ProjectCaseStudy } from '../patterns/ProjectCaseStudy';
+import { TechnologyStack } from '../patterns/TechnologyStack';
+import {
+  armdCaseStudy,
+  armdTechnologyStack,
+} from '../../data/portfolio-case-study-enhanced';
 import { Heading } from '../blocks/text/Heading';
 import { Paragraph } from '../blocks/text/Paragraph';
 import { Code, Calendar, Clock, Users, DollarSign, ArrowRight } from 'lucide-react';
@@ -42,7 +51,7 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
       <BreadcrumbPart
         items={[
           { label: 'Home', href: '/' },
-          { label: 'Portfolio', href: '/portfolio' },
+          { label: 'Work', href: '/work' },
           { label: slug },
         ]}
       />
@@ -186,83 +195,24 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
         </Container>
       </Section>
 
-      {/* Challenge Section */}
-      <Section spacing="xl" className="portfolio-single__challenge-section">
-        <Container>
-          <div className="wp-max-w-4xl wp-mx-auto">
-            <Heading level={2} className="portfolio-single__section-title">
-              {projectPageChallenge.title}
-            </Heading>
+      {/* Case Study: Challenge / Solution / Results */}
+      <ProjectCaseStudy
+        challenge={armdCaseStudy.challenge}
+        solution={armdCaseStudy.solution}
+        results={armdCaseStudy.results}
+        variant="glassmorphism"
+      />
 
-            <Paragraph size="large" className="portfolio-single__section-description">
-              "{projectPageChallenge.description}"
-            </Paragraph>
+      {/* Technology Stack */}
+      <TechnologyStack
+        technologies={armdTechnologyStack}
+        title="Technology Stack"
+        description="Modern technologies and tools used to deliver this project"
+        groupByCategory={true}
+        variant="badges"
+      />
 
-            <div className="wp-grid-2-cols wp-gap-6">
-              {projectPageChallenge.keyIssues.map((issue, index) => {
-                const Icon = issue.icon;
-                return (
-                  <div
-                    key={index}
-                    className="portfolio-single__card"
-                  >
-                    <div className="portfolio-single__icon-box portfolio-single__icon-box--destructive">
-                      <Icon size={24} />
-                    </div>
-                    <Heading level={3} className="portfolio-single__card-title">
-                      {issue.issue}
-                    </Heading>
-                    <Paragraph className="portfolio-single__card-text">
-                      {issue.description}
-                    </Paragraph>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </Container>
-      </Section>
-
-      {/* Solution Section */}
-      <Section spacing="xl" className="portfolio-single__solution-section">
-        <Container>
-          <div className="wp-max-w-4xl wp-mx-auto">
-            <Heading level={2} className="portfolio-single__section-title">
-              {projectPageSolution.title}
-            </Heading>
-
-            <Paragraph className="portfolio-single__section-description">
-              {projectPageSolution.description}
-            </Paragraph>
-
-            <div className="wp-flex wp-flex-col wp-gap-4">
-              {projectPageSolution.keyFeatures.map((feature, index) => {
-                const Icon = feature.icon;
-                return (
-                  <div
-                    key={index}
-                    className="portfolio-single__feature-card"
-                  >
-                    <div className="portfolio-single__icon-box portfolio-single__icon-box--success">
-                      <Icon size={24} />
-                    </div>
-                    <div className="wp-flex-1">
-                      <Heading level={3} className="portfolio-single__card-title">
-                        {feature.feature}
-                      </Heading>
-                      <Paragraph className="portfolio-single__card-text">
-                        {feature.description}
-                      </Paragraph>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </Container>
-      </Section>
-
-      {/* Results Section */}
+      {/* Results Section (kept for backward compatibility) */}
       <Section spacing="xl" className="portfolio-single__results-section">
         <Container>
           <div className="wp-max-w-6xl wp-mx-auto">

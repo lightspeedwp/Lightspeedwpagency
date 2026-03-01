@@ -28,5 +28,5 @@ export const whyChooseUsStats = [
 export const whyChooseUsCTA = {
   title: "Experience the Difference",
   description: "Stop wrestling with bloated themes and unreliable freelancers. Switch to a professional agency workflow.",
-  button: { text: "Get Started", page: "contact" }
+  button: { text: "Request a Systems Audit", page: "contact" }
 };

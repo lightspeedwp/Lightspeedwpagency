@@ -20,7 +20,7 @@ import {
   Target, FileText, Users, Lightbulb, Palette, Image,
   Mail, Layers, Shield, GitBranch, Server, GraduationCap,
   Gauge, BarChart, Eye, Wrench, Cpu, Sparkles,
-  CheckCircle, ArrowRight, Clock, MessageSquare,
+  CheckCircle, ArrowRight, Clock, MessageSquare, LineChart,
 } from 'lucide-react';
 
 /* ─────────────────────────────────────────────
@@ -126,16 +126,10 @@ export const journeyStages: JourneyStageData[] = [
         icon: Target,
       },
       {
-        page: 'content-audit',
-        title: 'Content Audit',
-        description: 'Analyse every page — what to keep, improve, or remove.',
+        page: 'content',
+        title: 'Content Operations',
+        description: 'Audit, strategy, collection, and email marketing — unified.',
         icon: FileText,
-      },
-      {
-        page: 'content-strategy',
-        title: 'Content Strategy',
-        description: 'Define your voice, message hierarchy, and publishing plan.',
-        icon: Lightbulb,
       },
     ],
     deliverables: [
@@ -195,16 +189,17 @@ export const journeyStages: JourneyStageData[] = [
         icon: Palette,
       },
       {
-        page: 'content-collection',
-        title: 'Content Collection',
-        description: 'Gather, organise, and optimise all site assets.',
-        icon: Image,
+        page: 'design',
+        title: 'Figma Prototyping & Design Systems',
+        description: 'Interactive prototypes and scalable design systems — now part of Design.',
+        icon: Layers,
+        badge: 'MERGED',
       },
       {
-        page: 'email-marketing',
-        title: 'Email Marketing',
-        description: 'Campaign design, automation flows, and newsletter templates.',
-        icon: Mail,
+        page: 'content',
+        title: 'Content Operations',
+        description: 'Content collection, email marketing, and newsletters — unified.',
+        icon: Image,
       },
     ],
     deliverables: [
@@ -330,14 +325,14 @@ export const journeyStages: JourneyStageData[] = [
     services: [
       {
         page: 'hosting',
-        title: 'Managed Hosting',
-        description: 'High-performance WordPress infrastructure with 99.9 % uptime.',
-        icon: Server,
+        title: 'Hosting & Support',
+        description: 'Infrastructure, migrations, and ongoing care — consolidated.',
+        icon: GitBranch,
       },
       {
         page: 'training',
         title: 'Training',
-        description: 'Empower your team with hands-on WordPress editor training.',
+        description: 'Give your editors hands-on WordPress competence with structured training.',
         icon: GraduationCap,
       },
     ],
@@ -393,26 +388,20 @@ export const journeyStages: JourneyStageData[] = [
     services: [
       {
         page: 'performance',
-        title: 'Performance Optimisation',
-        description: 'Core Web Vitals, Lighthouse 100, and sub-second loads.',
+        title: 'Performance & Accessibility',
+        description: 'Core Web Vitals, Lighthouse 100, WCAG compliance — unified.',
         icon: Gauge,
       },
       {
-        page: 'seo',
-        title: 'SEO',
-        description: 'On-page, technical, and content SEO to rank higher.',
+        page: 'ai-search-visibility',
+        title: 'AI Search & Visibility',
+        description: 'SEO, analytics, AI engine, and answer engine — one service.',
         icon: BarChart,
-      },
-      {
-        page: 'accessibility',
-        title: 'Accessibility Compliance',
-        description: 'WCAG 2.1 audits, remediation, and ongoing monitoring.',
-        icon: Eye,
         badge: 'NEW',
       },
       {
-        page: 'support',
-        title: 'Support & Maintenance',
+        page: 'hosting',
+        title: 'Hosting & Support',
         description: 'Updates, backups, uptime monitoring, and priority support.',
         icon: Wrench,
       },
@@ -468,17 +457,10 @@ export const journeyStages: JourneyStageData[] = [
     ],
     services: [
       {
-        page: 'ai-engine-optimisation',
-        title: 'AI Engine Optimisation',
-        description: 'Cut inference costs 60 %, triple speed, maintain quality.',
+        page: 'ai-search-visibility',
+        title: 'AI Search & Visibility',
+        description: 'AI engine + answer engine optimisation — unified service.',
         icon: Cpu,
-        badge: 'NEW',
-      },
-      {
-        page: 'answer-engine-optimisation',
-        title: 'Answer Engine Optimisation',
-        description: 'Get your brand cited by AI search engines.',
-        icon: Sparkles,
         badge: 'NEW',
       },
     ],

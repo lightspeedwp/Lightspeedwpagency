@@ -12,6 +12,7 @@
  * @see /src/styles/templates/testimonial-archive.css
  */
 
+import '../../../../styles/templates/testimonial-archive.css';
 import { useState } from 'react';
 import { Section } from '../../common/Section';
 import { Hero } from '../../patterns/Hero';

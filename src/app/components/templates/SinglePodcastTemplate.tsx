@@ -5,6 +5,7 @@
  * Single detail archetype for a podcast episode.
  */
 
+import '../../../styles/templates/podcast-archive.css';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';

@@ -17,6 +17,7 @@
  * @see {@link /guidelines/blocks/overview-blocks.md}
  */
 
+import '../../../styles/templates/design-blocks-showcase.css';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';

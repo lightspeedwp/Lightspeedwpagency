@@ -21,6 +21,7 @@
  * @see /src/styles/templates/page-journey-stage.css
  */
 
+import '../../../styles/templates/page-journey-stage.css';
 import { Link } from 'react-router';
 import React from 'react';
 import { slugToPath } from '../../utils/route-map';

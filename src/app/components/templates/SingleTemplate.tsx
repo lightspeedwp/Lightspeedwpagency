@@ -28,6 +28,7 @@
  * @see {@link /guidelines/templates/single.md}
  */
 
+import '../../../styles/templates/single.css';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { Heading } from '../common/Heading';

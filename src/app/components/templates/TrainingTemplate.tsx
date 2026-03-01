@@ -17,6 +17,7 @@
  * @see /src/styles/templates/page-service-training.css
  */
 
+import '../../../styles/templates/page-service-training.css';
 import { Container } from '../common/Container';
 import { FAQSection } from '../patterns/FAQSection';
 import { FunkyCTA } from '../patterns/FunkyCTA';
@@ -24,6 +25,7 @@ import { RelatedServicesGrid } from '../patterns/RelatedServicesGrid';
 import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
 import { Button } from '../blocks/design/Buttons';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
+import { ScrollDownArrow } from '../common/ScrollDownArrow';
 import {
   BookOpen, Video, Users, Award, PlayCircle, Check,
   Lightbulb, Brain, Target, Zap, Clock, Calendar
@@ -211,6 +213,8 @@ export function TrainingTemplate() {
             </div>
           </div>
         </Container>
+
+        <ScrollDownArrow />
       </section>
 
       {/* ════════════════════════════════════════

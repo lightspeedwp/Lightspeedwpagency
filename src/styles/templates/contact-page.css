@@ -181,6 +181,46 @@
   margin: 0 auto;
 }
 
+/* Hero Features List (Systems Audit) */
+.contact-page__hero-features {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+  margin-top: var(--spacing-8);
+  padding: 0;
+  list-style: none;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact-page__hero-feature {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  color: var(--overlay-white-heavy);
+  padding: var(--spacing-2) 0;
+}
+
+.contact-page__hero-feature svg {
+  flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+  .contact-page__hero-features {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--spacing-4) var(--spacing-8);
+    justify-content: center;
+  }
+  
+  .contact-page__hero-feature {
+    flex: 0 1 auto;
+  }
+}
+
 
 /* ============================================
    SECTION HEADER (Shared)

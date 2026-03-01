@@ -16,12 +16,17 @@
  * - Fonts: var(--font-primary), var(--font-secondary), var(--font-mono) only
  */
 
+/* Route-level CSS */
+import '../../../styles/templates/page-service-content.css';
 import { Container } from '../common/Container';
 import { FunkyCTA } from '../patterns/FunkyCTA';
 import { RelatedServicesGrid } from '../patterns/RelatedServicesGrid';
 import { IncludedInSolutions } from '../patterns/IncludedInSolutions';
 import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
+import { ServicePricingTimeline } from '../patterns/ServicePricingTimeline';
+import { servicePricingTimeline } from '../../data/services';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
+import { ScrollDownArrow } from '../common/ScrollDownArrow';
 import { 
   PenTool, 
   Edit3, 
@@ -95,6 +100,8 @@ export function ContentServiceTemplate() {
             </ScrollReveal>
           </div>
         </Container>
+
+        <ScrollDownArrow />
       </section>
 
       {/* ============================================
@@ -201,6 +208,25 @@ export function ContentServiceTemplate() {
         serviceSlug="content"
         subtitle="See how our content strategy drives real business results"
       />
+      
+      {/* ============================================
+          PRICING & TIMELINE
+          ============================================ */}
+      {servicePricingTimeline.content && (
+        <ScrollReveal animation="fade-up">
+          <section className="content-service__pricing-section">
+            <Container>
+              <ServicePricingTimeline
+                pricing={servicePricingTimeline.content.pricing}
+                timeline={servicePricingTimeline.content.timeline}
+                showPhases={true}
+                showVariables={true}
+              />
+            </Container>
+          </section>
+        </ScrollReveal>
+      )}
+      
       <FunkyCTA
         title={data.cta.title}
         description={data.cta.description}

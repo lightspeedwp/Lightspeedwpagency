@@ -51,7 +51,7 @@ export const wordpressSolutionFeatures = [
   {
     icon: Edit3,
     title: "Full Site Editing",
-    description: "Empower your team with the modern block editor. Manage content easily without code."
+    description: "Equip your team with the block editor — patterns, templates, and guardrails — so they manage content without code."
   },
   {
     icon: Smartphone,

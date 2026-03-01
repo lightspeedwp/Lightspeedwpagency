@@ -24,7 +24,7 @@ interface FunkyCTAProps {
   buttonText: string;
   buttonPage?: string;
   buttonHref?: string;
-  benefits: string[];
+  benefits?: string[];
   className?: string;
 }
 
@@ -34,7 +34,7 @@ export function FunkyCTA({
   buttonText, 
   buttonPage, 
   buttonHref = '#', 
-  benefits,
+  benefits = [],
   className = ''
 }: FunkyCTAProps) {
   return (
@@ -69,6 +69,7 @@ export function FunkyCTA({
               </div>
             </div>
 
+            {benefits.length > 0 && (
             <div className="funky-cta__benefits">
               <ul className="funky-cta__list">
                 {benefits.map((benefit, index) => (
@@ -81,6 +82,7 @@ export function FunkyCTA({
                 ))}
               </ul>
             </div>
+            )}
           </div>
         </ScrollReveal>
       </Container>

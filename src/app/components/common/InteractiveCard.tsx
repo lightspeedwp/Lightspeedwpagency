@@ -15,7 +15,7 @@
  * @example
  * ```tsx
  * <InteractiveCard
- *   href="/blog/post-slug"
+ *   href="/insights/post-slug"
  *   variant="elevated"
  *   hoverEffect="lift"
  * >

@@ -13,6 +13,7 @@
  * @see /src/app/data/woocommerce-redesign-page.ts
  */
 
+import '../../../styles/templates/page-solution-redesign.css';
 import { Container } from '../common/Container';
 import { FAQSection } from '../patterns/FAQSection';
 import { ScrollReveal } from '../../hooks/useScrollReveal';

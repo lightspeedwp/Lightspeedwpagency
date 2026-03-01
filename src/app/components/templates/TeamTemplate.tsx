@@ -10,6 +10,9 @@
  * - 100% CSS variable compliance
  */
 
+/* Route-level CSS */
+import '../../../styles/templates/page-team.css';
+import '../../../styles/templates/team-page.css';
 import { Container } from '../common/Container';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { FunkyCTA } from '../patterns/FunkyCTA';

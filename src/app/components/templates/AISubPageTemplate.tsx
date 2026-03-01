@@ -11,6 +11,7 @@
  * Hero -> Stats -> Features -> Use Cases -> Pricing -> FAQs -> CTA
  */
 
+import '../../../styles/templates/page-solution-ai.css';
 import { Container } from '../common/Container';
 import { StatsGrid } from '../patterns/StatsGrid';
 import { FeatureGrid } from '../patterns/FeatureGrid';
@@ -21,6 +22,7 @@ import { FunkyCTA } from '../patterns/FunkyCTA';
 import { ArrowRight, type LucideIcon } from 'lucide-react';
 import { Link } from 'react-router';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
+import { ScrollDownArrow } from '../common/ScrollDownArrow';
 import { PricingPackage } from '../../data/pricing';
 
 
@@ -150,6 +152,8 @@ export function AISubPageTemplate({
             </div>
           </div>
         </Container>
+
+        <ScrollDownArrow />
       </section>
 
       {/* ════════════════ STATS ════════════════ */}

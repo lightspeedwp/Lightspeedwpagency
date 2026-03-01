@@ -20,6 +20,7 @@
  * - ✅ CTA → FunkyCTA pattern
  */
 
+import '../../../styles/templates/page-solution-wordpress.css';
 import { Container } from '../common/Container';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { StatsGrid } from '../patterns/StatsGrid';
@@ -33,6 +34,7 @@ import { Code, ShoppingCart, Shield, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router';
 import { getPageUrl } from '../../data/pages';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
+import { ScrollDownArrow } from '../common/ScrollDownArrow';
 
 
 // Import centralized data
@@ -194,6 +196,8 @@ export function WordPressSolutionTemplate() {
               </div>
             </div>
           </Container>
+
+          <ScrollDownArrow />
         </section>
 
         {/* Overview Stats Section */}

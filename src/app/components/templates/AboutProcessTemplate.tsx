@@ -31,6 +31,8 @@ import {
   Settings
 } from 'lucide-react';
 
+/* Route-level CSS */
+import '../../../styles/templates/page-about-process.css';
 
 export function AboutProcessTemplate() {
   const parallaxRef = useHeroParallax(0.3);

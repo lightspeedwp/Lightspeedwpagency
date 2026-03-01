@@ -15,6 +15,7 @@
  * @see /src/styles/templates/archive.css
  */
 
+import '../../../styles/templates/author-archive.css';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
@@ -75,7 +76,7 @@ export function AuthorArchiveTemplate({
 function AllAuthorsIndex() {
   const breadcrumbs = [
     { label: 'Home', href: '/' },
-    { label: 'Blog', href: '/blog' },
+    { label: 'Insights', href: '/insights' },
     { label: 'Authors' },
   ];
 
@@ -184,7 +185,7 @@ function AuthorCard({ author }: { author: BlogAuthor }) {
 
   return (
     <Link
-      to={`/blog/author/${author.slug}`}
+      to={`/insights/author/${author.slug}`}
       className="archive-card"
       aria-label={`View posts by ${author.name}`}
     >
@@ -246,8 +247,8 @@ function SingleAuthorArchive({
           <p className="archive-header__description">
             Sorry, we couldn't find the author you're looking for.
           </p>
-          <Link to="/blog" className="wp-block-button__link" style={{ marginTop: 'var(--spacing-6)', display: 'inline-block' }}>
-            Back to blog
+          <Link to="/insights" className="wp-block-button__link" style={{ marginTop: 'var(--spacing-6)', display: 'inline-block' }}>
+            Back to insights
           </Link>
         </Container>
       </Section>
@@ -260,8 +261,8 @@ function SingleAuthorArchive({
 
   const breadcrumbs = [
     { label: 'Home', href: '/' },
-    { label: 'Blog', href: '/blog' },
-    { label: 'Authors', href: '/blog/author' },
+    { label: 'Insights', href: '/insights' },
+    { label: 'Authors', href: '/insights/author' },
     { label: author.name },
   ];
 
@@ -375,7 +376,7 @@ function SingleAuthorArchive({
                 <PaginationNav
                   currentPage={currentPage}
                   totalPages={totalPages}
-                  baseUrl={`/blog/author/${authorSlug}`}
+                  baseUrl={`/insights/author/${authorSlug}`}
                 />
               </div>
             )}

@@ -15,6 +15,7 @@
  * @see {@link SearchResultsTemplate}
  */
 
+import '../../../styles/templates/search.css';
 import { SearchResultsTemplate } from './SearchResultsTemplate';
 
 /**

@@ -92,7 +92,7 @@ export const newsletterCTA: CTAData = {
   description: "Join 5,000+ developers and business owners receiving our monthly WordPress insights, tips, and resources.",
   primaryButton: {
     text: "Subscribe Now",
-    page: "newsletter", // Assuming a newsletter anchor or page
+    page: "newsletter-service",
     icon: Mail
   },
   variant: "glass"
@@ -143,7 +143,7 @@ export const generalArchiveCTA: CTAData = {
   description: "Browse our latest articles, resources, and updates.",
   primaryButton: {
     text: "View All",
-    page: "archive",
+    page: "blog",
     icon: ArrowRight
   },
   variant: "default"

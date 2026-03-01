@@ -17,6 +17,7 @@
  * @see /src/app/data/testimonials.ts
  */
 
+import '../../../styles/templates/testimonials-page.css';
 import { useState } from 'react';
 import { Container } from '../common/Container';
 import { Button } from '../blocks/design/Buttons';

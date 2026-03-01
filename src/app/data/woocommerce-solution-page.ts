@@ -51,7 +51,7 @@ export const woocommerceSolutionFeatures = {
 };
 
 export const woocommerceSolutionCTA = {
-  title: "Launch Your Dream Store Today",
-  description: "Leverage the power of WooCommerce with our expert development team.",
+  title: "Launch a Governed WooCommerce Store",
+  description: "Build on WooCommerce with governed checkout, inventory, and conversion systems.",
   button: { text: "Consult with an Expert", page: "contact" }
 };

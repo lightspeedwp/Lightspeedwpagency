@@ -1,317 +1,233 @@
 /**
- * Accessibility Compliance Service Template — Funky Redesign
- *
- * Theme: "Universal Access" (Purple / Teal / Inclusive)
- *
- * Sections:
- *  1. Hero — WCAG compliance dashboard, score cards
- *  2. Why — Checklist + WCAG level visualisation
- *  3. Services — Audit, remediation, inclusive design, assistive testing
- *  4. Process — 5-step compliance workflow
- *  5. Stats — Accessibility impact metrics
- *  6. FunkyCTA — Conversion block
- *
- * STRICT DESIGN SYSTEM COMPLIANCE:
- *  - Zero Tailwind classes
- *  - All styling via /src/styles/templates/page-service-accessibility.css
- *  - Colors from semantic tokens (auto light / dark)
- *  - Fonts: var(--font-primary), var(--font-secondary) only
+ * Accessibility Service Template
+ * 
+ * Sub-service page for Web Accessibility under Performance
+ * Route: /services/accessibility
+ * Parent: /services/performance
  */
 
-import { Container } from '../common/Container';
-import { Section } from '../common/Section';
-import { BreadcrumbPart } from '../parts/BreadcrumbPart';
-import { Button } from '../blocks/design/Buttons';
-import { FunkyCTA } from '../patterns/FunkyCTA';
-import { RelatedServicesGrid } from '../patterns/RelatedServicesGrid';
-import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
-import { ScrollReveal } from '../../hooks/useScrollReveal';
-import { accessibilityServiceDetailed } from '../../data/services-detailed';
-import {
-  accessibilityServiceWcagLevels,
-  accessibilityServiceChecklist,
-  accessibilityServiceStats,
-  accessibilityServiceIcons,
-} from '../../data/accessibility-service-page';
+import { Eye, Ear, Keyboard, MousePointer, CheckCircle, Shield } from 'lucide-react';
+import { Link } from 'react-router';
 
-import {
-  Accessibility,
-  Eye,
-  Keyboard,
-  MonitorSmartphone,
-  CheckCircle,
-  FileSearch,
-  ClipboardCheck,
-  Wrench,
-  RefreshCw,
-  Shield,
-} from 'lucide-react';
+export const AccessibilityServiceTemplate = () => {
+  const benefits = [
+    {
+      icon: Eye,
+      title: 'Visual Accessibility',
+      description: 'WCAG 2.1 AA/AAA compliant color contrast, text sizing, and screen reader optimization.'
+    },
+    {
+      icon: Ear,
+      title: 'Audio & Video Accessibility',
+      description: 'Captions, transcripts, and audio descriptions for all multimedia content.'
+    },
+    {
+      icon: Keyboard,
+      title: 'Keyboard Navigation',
+      description: 'Full keyboard operability with clear focus indicators and logical tab order.'
+    },
+    {
+      icon: MousePointer,
+      title: 'Motor Accessibility',
+      description: 'Large touch targets, generous spacing, and support for assistive input devices.'
+    },
+    {
+      icon: CheckCircle,
+      title: 'WCAG Compliance Audits',
+      description: 'Comprehensive testing against WCAG 2.1 Level AA/AAA standards with detailed reports.'
+    },
+    {
+      icon: Shield,
+      title: 'Legal Compliance',
+      description: 'Meet ADA, Section 508, and international accessibility regulations.'
+    }
+  ];
 
-/* ─────────────────────────────────────────────
-   STATIC DATA
-   ───────────────────────────────────────────── */
+  const wcagLevels = [
+    {
+      level: 'Level A',
+      description: 'Essential accessibility features',
+      criteria: [
+        'Text alternatives for images',
+        'Keyboard accessible functionality',
+        'Meaningful link text',
+        'Proper heading hierarchy'
+      ]
+    },
+    {
+      level: 'Level AA',
+      description: 'Enhanced accessibility (industry standard)',
+      criteria: [
+        '4.5:1 contrast ratio minimum',
+        'Resizable text up to 200%',
+        'Multiple navigation methods',
+        'Consistent navigation patterns'
+      ]
+    },
+    {
+      level: 'Level AAA',
+      description: 'Highest accessibility standard',
+      criteria: [
+        '7:1 contrast ratio minimum',
+        'Sign language interpretation',
+        'Extended audio descriptions',
+        'Context-sensitive help'
+      ]
+    }
+  ];
 
-const serviceIcons = accessibilityServiceIcons.services;
-const processIcons = accessibilityServiceIcons.process;
-const wcagLevels = accessibilityServiceWcagLevels;
-const complianceChecklist = accessibilityServiceChecklist;
-const resultStats = accessibilityServiceStats;
+  const deliverables = [
+    'Complete WCAG 2.1 accessibility audit',
+    'Accessibility remediation roadmap',
+    'Screen reader optimization',
+    'Keyboard navigation fixes',
+    'Color contrast corrections',
+    'ARIA landmark implementation',
+    'Form accessibility enhancement',
+    'Monthly compliance monitoring'
+  ];
 
-/* ─────────────────────────────────────────────
-   TEMPLATE
-   ───────────────────────────────────────────── */
-
-export function AccessibilityServiceTemplate() {
-  const data = accessibilityServiceDetailed;
+  const results = [
+    { metric: '100%', label: 'WCAG 2.1 AA Compliance' },
+    { metric: '0', label: 'Critical Accessibility Errors' },
+    { metric: '30%', label: 'Broader Audience Reach' },
+    { metric: '2-3 mo', label: 'Time to Full Compliance' }
+  ];
 
   return (
-    <>
-      {/* ── Breadcrumbs ── */}
-      <BreadcrumbPart
-        items={[
-          { label: 'Home', page: 'front-page' },
-          { label: 'Services', page: 'services' },
-          { label: 'Accessibility' },
-        ]}
-      />
-
-      {/* ============================================
-          1. HERO — "UNIVERSAL ACCESS"
-          ============================================ */}
-      <section className="a11y-page__hero">
-        <div className="a11y-page__grid-bg" aria-hidden="true" />
-
-        <Container>
-          <div className="a11y-page__hero-content">
-            <ScrollReveal animation="fade-up">
-              <span className="a11y-page__badge">
-                <Accessibility size={14} />
-                WCAG 2.1 AA/AAA Compliant
-              </span>
-
-              <h1 className="a11y-page__title">
-                Accessible{' '}
-                <span className="a11y-gradient-text">For Everyone</span>
-              </h1>
-
-              <p className="a11y-page__description">{data.tagline}</p>
-
-              <div style={{ display: 'flex', gap: 'var(--spacing-4)', justifyContent: 'center', flexWrap: 'wrap' }}>
-                <Button variant="default" size="lg" page="contact" className="a11y-hero__btn-primary">
-                  Book an Audit
-                </Button>
-                <Button variant="outline" size="lg" page="portfolio-archive" className="a11y-hero__btn-outline">
-                  View Case Studies
-                </Button>
-              </div>
-            </ScrollReveal>
-
-            {/* Compliance Dashboard */}
-            <ScrollReveal animation="fade-up" delay={200}>
-              <div className="a11y-page__dashboard">
-                <div className="a11y-page__dashboard-header">
-                  <span className="a11y-page__dashboard-title">Compliance Score</span>
-                  <span className="a11y-page__dashboard-status">
-                    <CheckCircle size={14} />
-                    PASSING
-                  </span>
-                </div>
-
-                <div className="a11y-page__score-grid">
-                  <div className="a11y-page__score-item">
-                    <div className="a11y-page__score-value">100%</div>
-                    <div className="a11y-page__score-label">Perceivable</div>
-                  </div>
-                  <div className="a11y-page__score-item">
-                    <div className="a11y-page__score-value">100%</div>
-                    <div className="a11y-page__score-label">Operable</div>
-                  </div>
-                  <div className="a11y-page__score-item">
-                    <div className="a11y-page__score-value">100%</div>
-                    <div className="a11y-page__score-label">Understandable</div>
-                  </div>
-                  <div className="a11y-page__score-item">
-                    <div className="a11y-page__score-value">100%</div>
-                    <div className="a11y-page__score-label">Robust</div>
-                  </div>
-                </div>
-              </div>
-            </ScrollReveal>
+    <div className="accessibility-service">
+      {/* Hero Section */}
+      <section className="accessibility-service__hero">
+        <div className="accessibility-service__hero-content">
+          <div className="accessibility-service__breadcrumb">
+            <Link to="/services" className="accessibility-service__breadcrumb-link">Services</Link>
+            <span className="accessibility-service__breadcrumb-separator">/</span>
+            <Link to="/services/performance" className="accessibility-service__breadcrumb-link">Performance</Link>
+            <span className="accessibility-service__breadcrumb-separator">/</span>
+            <span className="accessibility-service__breadcrumb-current">Accessibility</span>
           </div>
-        </Container>
+          
+          <h1 className="accessibility-service__hero-title">
+            Web Accessibility Services
+          </h1>
+          
+          <p className="accessibility-service__hero-description">
+            Make your website accessible to everyone. Achieve WCAG 2.1 AA/AAA compliance, reduce legal risk, 
+            and expand your audience by 20-30% with inclusive design.
+          </p>
+          
+          <div className="accessibility-service__hero-cta">
+            <Link to="/contact" className="accessibility-service__cta-button accessibility-service__cta-button--primary">
+              Get Accessibility Audit
+            </Link>
+            <Link to="/services/performance" className="accessibility-service__cta-button accessibility-service__cta-button--secondary">
+              View Parent Service
+            </Link>
+          </div>
+        </div>
       </section>
 
-      {/* ============================================
-          2. WHY — "COMPLIANCE MATTERS"
-          ============================================ */}
-      <section className="a11y-page__why">
-        <Container>
-          <div className="a11y-page__why-grid">
-            <ScrollReveal animation="fade-right">
-              <div>
-                <span className="a11y-page__section-label">Why Accessibility</span>
-                <h2 className="a11y-page__section-title">
-                  Inclusion That{' '}
-                  <span className="a11y-gradient-text">Protects &amp; Grows</span>
-                </h2>
-                <p className="a11y-page__section-desc">{data.whyLightSpeed.description}</p>
-
-                <div className="a11y-page__checklist">
-                  {complianceChecklist.map((item, i) => (
-                    <div key={i} className="a11y-page__check-item">
-                      <CheckCircle size={18} className="a11y-page__check-icon" />
-                      <span>{item}</span>
-                    </div>
-                  ))}
+      {/* Benefits Grid */}
+      <section className="accessibility-service__benefits">
+        <div className="accessibility-service__section-header">
+          <h2 className="accessibility-service__section-title">What We Fix</h2>
+          <p className="accessibility-service__section-description">
+            Comprehensive accessibility services covering all disability types
+          </p>
+        </div>
+        
+        <div className="accessibility-service__benefits-grid">
+          {benefits.map((benefit, index) => {
+            const Icon = benefit.icon;
+            return (
+              <div key={index} className="accessibility-service__benefit-card">
+                <div className="accessibility-service__benefit-icon">
+                  <Icon className="accessibility-service__benefit-icon-svg" />
                 </div>
+                <h3 className="accessibility-service__benefit-title">{benefit.title}</h3>
+                <p className="accessibility-service__benefit-description">{benefit.description}</p>
               </div>
-            </ScrollReveal>
+            );
+          })}
+        </div>
+      </section>
 
-            <ScrollReveal animation="fade-left">
-              <div className="a11y-page__levels">
-                {wcagLevels.map((level) => (
-                  <div
-                    key={level.level}
-                    className={`a11y-page__level-card ${level.active ? 'a11y-page__level-card--active' : ''}`}
-                  >
-                    <div className="a11y-page__level-badge">{level.level}</div>
-                    <div className="a11y-page__level-info">
-                      <h4>{level.name}</h4>
-                      <p>{level.description}</p>
-                    </div>
-                  </div>
+      {/* WCAG Levels */}
+      <section className="accessibility-service__wcag">
+        <div className="accessibility-service__section-header">
+          <h2 className="accessibility-service__section-title">WCAG Compliance Levels</h2>
+          <p className="accessibility-service__section-description">
+            We help you achieve the right accessibility level for your needs
+          </p>
+        </div>
+        
+        <div className="accessibility-service__wcag-grid">
+          {wcagLevels.map((level, index) => (
+            <div key={index} className="accessibility-service__wcag-card">
+              <div className="accessibility-service__wcag-badge">{level.level}</div>
+              <h3 className="accessibility-service__wcag-title">{level.description}</h3>
+              <ul className="accessibility-service__wcag-list">
+                {level.criteria.map((item, itemIndex) => (
+                  <li key={itemIndex} className="accessibility-service__wcag-list-item">
+                    {item}
+                  </li>
                 ))}
-              </div>
-            </ScrollReveal>
-          </div>
-        </Container>
+              </ul>
+            </div>
+          ))}
+        </div>
       </section>
 
-      {/* ============================================
-          3. SERVICES — "ACCESSIBILITY SUITE"
-          ============================================ */}
-      <section className="a11y-page__services">
-        <Container>
-          <div className="a11y-page__services-header">
-            <ScrollReveal animation="fade-up">
-              <span className="a11y-page__section-label">What We Deliver</span>
-              <h2 className="a11y-page__section-title">
-                Comprehensive{' '}
-                <span className="a11y-gradient-text">Accessibility Suite</span>
-              </h2>
-              <p className="a11y-page__section-desc">
-                End-to-end accessibility services from audit to ongoing compliance monitoring.
-              </p>
-            </ScrollReveal>
-          </div>
-
-          <div className="a11y-page__services-grid">
-            {data.subServices.map((service, index) => {
-              const Icon = serviceIcons[service.id] || Accessibility;
-              return (
-                <ScrollReveal key={service.id} animation="fade-up" delay={index * 80}>
-                  <div className="a11y-page__service-card">
-                    <div className="a11y-page__service-icon">
-                      <Icon size={24} />
-                    </div>
-                    <h3 className="a11y-page__service-title">{service.title}</h3>
-                    <p className="a11y-page__service-desc">{service.description}</p>
-                  </div>
-                </ScrollReveal>
-              );
-            })}
-          </div>
-        </Container>
+      {/* Deliverables */}
+      <section className="accessibility-service__deliverables">
+        <div className="accessibility-service__section-header">
+          <h2 className="accessibility-service__section-title">What You Get</h2>
+          <p className="accessibility-service__section-description">
+            Complete accessibility implementation and ongoing monitoring
+          </p>
+        </div>
+        
+        <div className="accessibility-service__deliverables-grid">
+          {deliverables.map((item, index) => (
+            <div key={index} className="accessibility-service__deliverable-item">
+              <div className="accessibility-service__deliverable-icon">✓</div>
+              <div className="accessibility-service__deliverable-text">{item}</div>
+            </div>
+          ))}
+        </div>
       </section>
 
-      {/* ============================================
-          4. PROCESS — "COMPLIANCE WORKFLOW"
-          ============================================ */}
-      <section className="a11y-page__process">
-        <Container>
-          <div className="a11y-page__process-header">
-            <ScrollReveal animation="fade-up">
-              <span className="a11y-page__section-label">Methodology</span>
-              <h2 className="a11y-page__section-title">
-                {data.process.title.split(' ').slice(0, -1).join(' ')}{' '}
-                <span className="a11y-gradient-text">{data.process.title.split(' ').slice(-1)}</span>
-              </h2>
-              <p className="a11y-page__section-desc">{data.process.description}</p>
-            </ScrollReveal>
-          </div>
-
-          <div className="a11y-page__step-list">
-            {data.process.steps.map((step, index) => {
-              const Icon = processIcons[step.id] || Keyboard;
-              return (
-                <ScrollReveal key={step.id} animation="fade-up" delay={index * 80}>
-                  <div className="a11y-page__step-card">
-                    <div className="a11y-page__step-number">0{step.number}</div>
-                    <div>
-                      <h3 className="a11y-page__step-title">{step.title}</h3>
-                      <p className="a11y-page__step-desc">{step.description}</p>
-                    </div>
-                  </div>
-                </ScrollReveal>
-              );
-            })}
-          </div>
-        </Container>
+      {/* Results Section */}
+      <section className="accessibility-service__results">
+        <div className="accessibility-service__section-header">
+          <h2 className="accessibility-service__section-title">Expected Outcomes</h2>
+          <p className="accessibility-service__section-description">
+            Measurable improvements in accessibility and compliance
+          </p>
+        </div>
+        
+        <div className="accessibility-service__results-grid">
+          {results.map((result, index) => (
+            <div key={index} className="accessibility-service__result-card">
+              <div className="accessibility-service__result-metric">{result.metric}</div>
+              <div className="accessibility-service__result-label">{result.label}</div>
+            </div>
+          ))}
+        </div>
       </section>
 
-      {/* ============================================
-          5. STATS — "IMPACT METRICS"
-          ============================================ */}
-      <section className="a11y-page__stats">
-        <Container>
-          <div className="a11y-page__stats-header">
-            <ScrollReveal animation="fade-up">
-              <span className="a11y-page__section-label">Proven Impact</span>
-              <h2 className="a11y-page__section-title">
-                Accessibility{' '}
-                <span className="a11y-gradient-text">Delivers Results</span>
-              </h2>
-            </ScrollReveal>
-          </div>
-
-          <div className="a11y-page__stats-grid">
-            {resultStats.map((stat, index) => (
-              <ScrollReveal key={index} animation="fade-up" delay={index * 80}>
-                <div className="a11y-page__stat-card">
-                  <div className="a11y-page__stat-value">{stat.value}</div>
-                  <div className="a11y-page__stat-label">{stat.label}</div>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </Container>
+      {/* CTA Section */}
+      <section className="accessibility-service__cta">
+        <div className="accessibility-service__cta-content">
+          <h2 className="accessibility-service__cta-title">Ready for Inclusive Design?</h2>
+          <p className="accessibility-service__cta-description">
+            Get a free accessibility audit and discover how to make your website accessible to everyone.
+          </p>
+          <Link to="/contact" className="accessibility-service__cta-button accessibility-service__cta-button--primary">
+            Request Free Audit
+          </Link>
+        </div>
       </section>
-
-      {/* ── CTA ── */}
-      {data.relatedServices && data.relatedServices.length > 0 && (
-        <RelatedServicesGrid
-          title="Related Services"
-          subtitle="Build an inclusive web experience with these complementary services"
-          services={data.relatedServices}
-        />
-      )}
-      <ServiceTestimonial
-        serviceSlug="accessibility"
-        subtitle="See how we helped clients achieve full WCAG compliance"
-      />
-      <FunkyCTA
-        title={data.cta.title}
-        description={data.cta.description}
-        buttonText={data.cta.buttonText}
-        buttonPage={data.cta.buttonPage}
-        benefits={[
-          'Comprehensive WCAG 2.1 AA/AAA audit',
-          'Prioritised remediation roadmap',
-          'Assistive technology testing',
-          'Ongoing compliance monitoring',
-          'Legal risk reduction',
-        ]}
-      />
-    </>
+    </div>
   );
-}
+};

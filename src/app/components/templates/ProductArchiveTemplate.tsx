@@ -5,6 +5,7 @@
  * Demonstrates support for Simple, Subscription, Composite, and Bundle products.
  */
 
+import '../../../styles/woocommerce/product-archive.css';
 import { Container } from '../common/Container';
 import { Heading } from '../common/Heading';
 import { Paragraph } from '../blocks/text/Paragraph';

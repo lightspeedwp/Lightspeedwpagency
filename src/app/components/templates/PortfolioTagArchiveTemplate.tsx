@@ -1,3 +1,4 @@
+import '../../../styles/templates/portfolio-tag-archive.css';
 import { useParams, Navigate, Link } from 'react-router';
 import { slugToPath } from '../../utils/route-map';
 import { Container } from '../common/Container';
@@ -176,7 +177,7 @@ export function PortfolioTagArchiveTemplate() {
                     return (
                       <Link 
                         key={tag} 
-                        to={`/portfolio/tag/${tagSlug}`}
+                        to={`/work/tag/${tagSlug}`}
                         className={`portfolio-tag-cloud__item ${isActive ? 'portfolio-tag-cloud__item--active' : ''}`}
                       >
                         {tag}

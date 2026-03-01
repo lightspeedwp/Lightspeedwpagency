@@ -1,0 +1,204 @@
+/**
+ * ErrorBoundary Styles
+ * 
+ * Error fallback UI for crashed components
+ * 
+ * Features:
+ * - Centered error message
+ * - Icon display
+ * - Error details (dev mode)
+ * - Reset button
+ * 
+ * Design System:
+ * - 100% CSS variables
+ * - BEM naming (.error-boundary__element)
+ */
+
+/* Container */
+.error-boundary {
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-8);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.error-boundary__container {
+  max-width: 600px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-6);
+}
+
+/* Icon */
+.error-boundary__icon {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: hsl(0, 84%, 60% / 0.1);
+  border: 1px solid hsl(0, 84%, 60% / 0.2);
+  border-radius: var(--radius-full);
+  color: hsl(0, 84%, 60%);
+}
+
+/* Title */
+.error-boundary__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  color: var(--foreground);
+  margin: 0;
+}
+
+/* Description */
+.error-boundary__description {
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  color: var(--muted-foreground);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Details */
+.error-boundary__details {
+  width: 100%;
+  margin-top: var(--spacing-4);
+  text-align: left;
+}
+
+.error-boundary__summary {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--foreground);
+  cursor: pointer;
+  padding: var(--spacing-3);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: background-color 0.3s ease;
+}
+
+.error-boundary__summary:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.error-boundary__stack {
+  padding: var(--spacing-4);
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-top: var(--spacing-2);
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.error-boundary__stack strong {
+  font-family: var(--font-secondary);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--foreground);
+  display: block;
+  margin-bottom: var(--spacing-2);
+}
+
+.error-boundary__stack pre {
+  font-family: 'Monaco', 'Courier New', monospace;
+  font-size: var(--text-xs);
+  color: var(--muted-foreground);
+  margin: 0 0 var(--spacing-4) 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+  line-height: 1.5;
+}
+
+/* Button */
+.error-boundary__button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-3) var(--spacing-6);
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  border: none;
+  border-radius: var(--radius-full);
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.error-boundary__button:hover {
+  background: hsl(var(--accent));
+  transform: scale(1.05);
+}
+
+/* Dark mode */
+.dark .error-boundary {
+  background: rgba(255, 255, 255, 0.02);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.dark .error-boundary__summary {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.dark .error-boundary__summary:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.dark .error-boundary__stack {
+  background: rgba(0, 0, 0, 0.5);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .error-boundary__summary,
+  .error-boundary__button {
+    transition: none;
+  }
+
+  .error-boundary__button:hover {
+    transform: none;
+  }
+}
+
+/* Responsive: Mobile */
+@media (max-width: 767px) {
+  .error-boundary {
+    min-height: 300px;
+    padding: var(--spacing-4);
+  }
+
+  .error-boundary__container {
+    gap: var(--spacing-4);
+  }
+
+  .error-boundary__icon {
+    width: 64px;
+    height: 64px;
+  }
+
+  .error-boundary__icon svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  .error-boundary__title {
+    font-size: var(--text-2xl);
+  }
+
+  .error-boundary__description {
+    font-size: var(--text-sm);
+  }
+}

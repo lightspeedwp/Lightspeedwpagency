@@ -12,6 +12,8 @@
  * @see /src/styles/templates/archive.css
  */
 
+import '../../../../styles/templates/archive.css';
+import '../../../../styles/templates/video-archive.css';
 import { Container } from '@/app/components/common/Container';
 import { Section } from '@/app/components/common/Section';
 import { BreadcrumbPart } from '@/app/components/parts/BreadcrumbPart';
@@ -30,7 +32,7 @@ export function VideoArchiveTemplate() {
       <BreadcrumbPart
         items={[
           { label: 'Home', href: '/' },
-          { label: 'Blog', href: '/blog' },
+          { label: 'Insights', href: '/insights' },
           { label: 'Video' },
         ]}
       />

@@ -5,6 +5,7 @@
  * Route: /solutions/ai-integrations/content-generation
  */
 
+import '../../../styles/templates/page-solution-ai.css';
 import { PenTool } from 'lucide-react';
 import { AISubPageTemplate } from './AISubPageTemplate';
 import {

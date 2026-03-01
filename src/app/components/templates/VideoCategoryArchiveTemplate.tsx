@@ -5,6 +5,7 @@
  * Taxonomy archive archetype filtering videos by category.
  */
 
+import '../../../styles/templates/video-archive.css';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';

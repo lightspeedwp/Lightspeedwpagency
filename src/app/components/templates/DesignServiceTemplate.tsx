@@ -15,13 +15,20 @@
  * - Colors mapped to global semantic tokens for auto light/dark
  */
 
+/* Route-level CSS */
+import '../../../styles/templates/page-service-design.css';
 import { Container } from '../common/Container';
 import { Button } from '../blocks/design/Buttons';
 import { FunkyCTA } from '../patterns/FunkyCTA';
 import { RelatedServicesGrid } from '../patterns/RelatedServicesGrid';
+import { RelatedServicesInPhase } from '../patterns/RelatedServicesInPhase';
 import { IncludedInSolutions } from '../patterns/IncludedInSolutions';
 import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
+import { ServicePricingTimeline } from '../patterns/ServicePricingTimeline';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
+import { JourneyPhaseIndicator } from '../ui/JourneyPhaseIndicator';
 import { designServiceDetailed } from '../../data/services-detailed';
+import { servicePricingTimeline } from '../../data/services';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { ScrollDownArrow } from '../common/ScrollDownArrow';
 import { 
@@ -38,7 +45,9 @@ import {
   MousePointer2,
   Eye,
   Crop,
-  Grid
+  Grid,
+  Figma,
+  Component,
 } from 'lucide-react';
 
 export function DesignServiceTemplate() {
@@ -51,7 +60,9 @@ export function DesignServiceTemplate() {
     'landing-pages': Layout,
     'icons-illustrations': PenTool,
     'product-images': ShoppingBag,
-    'branding': Palette
+    'branding': Palette,
+    'figma-prototyping': Figma,
+    'design-systems': Component,
   };
 
   // Showcase projects (design portfolio preview)
@@ -75,6 +86,18 @@ export function DesignServiceTemplate() {
 
   return (
     <>
+      {/* Breadcrumbs */}
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', page: 'front-page' },
+          { label: 'Services', page: 'services' },
+          { label: 'Web Design' },
+        ]}
+      />
+
+      {/* Journey Phase Indicator */}
+      <JourneyPhaseIndicator currentPhase="create" currentServicePage="design" />
+
       {/* ============================================
           HERO SECTION (The Blueprint)
           ============================================ */}
@@ -316,6 +339,31 @@ export function DesignServiceTemplate() {
         serviceSlug="design"
         subtitle="Hear from clients who transformed their brand with our design expertise"
       />
+      
+      {/* ============================================
+          PRICING & TIMELINE
+          ============================================ */}
+      {servicePricingTimeline.design && (
+        <ScrollReveal animation="fade-up">
+          <section className="design-service__pricing-section">
+            <Container>
+              <ServicePricingTimeline
+                pricing={servicePricingTimeline.design.pricing}
+                timeline={servicePricingTimeline.design.timeline}
+                showPhases={true}
+                showVariables={true}
+              />
+            </Container>
+          </section>
+        </ScrollReveal>
+      )}
+      
+      {/* Related Services in Create Phase */}
+      <RelatedServicesInPhase 
+        currentPhase="create"
+        currentServicePage="design"
+      />
+
       <FunkyCTA
         title={data.cta.title}
         description={data.cta.description}

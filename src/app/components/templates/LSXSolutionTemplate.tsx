@@ -28,6 +28,7 @@
  * @see {@link /guidelines/templates/solution-detail.md}
  */
 
+import '../../../styles/templates/solution-detail.css';
 import { SolutionDetailTemplate } from './SolutionDetailTemplate';
 import { getSolutionBySlug } from '../../data/solutions';
 

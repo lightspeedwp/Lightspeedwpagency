@@ -9,6 +9,7 @@
  * Hero → Services Grid → Why Choose Us → Process → Industries → CTA → FAQs
  */
 
+import '../../../styles/templates/services-page.css';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { Buttons, Button } from '../blocks/design/Buttons';
@@ -18,6 +19,7 @@ import { ProcessSteps } from '../patterns/ProcessSteps';
 import { FAQSection } from '../patterns/FAQSection';
 import { Hero } from '../patterns/Hero';
 import { FunkyCTA } from '../patterns/FunkyCTA';
+import { ServiceComparisonTable } from '../patterns/ServiceComparisonTable';
 import { useState } from 'react';
 import { 
   ArrowRight,
@@ -97,6 +99,20 @@ export function ServicesTemplate() {
           columns={3}
           spacing="xl"
         />
+      </ScrollReveal>
+
+      {/* ============================================
+          SERVICE COMPARISON TABLE
+          ============================================ */}
+      <ScrollReveal animation="fade-up">
+        <Section spacing="xl">
+          <Container>
+            <ServiceComparisonTable
+              title="Compare Our Services"
+              description="See what's included in each service offering at a glance."
+            />
+          </Container>
+        </Section>
       </ScrollReveal>
 
       {/* Why Choose Us */}

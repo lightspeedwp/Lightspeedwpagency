@@ -67,6 +67,53 @@ export interface ServicePricing {
 }
 
 /**
+ * Detailed Service Pricing
+ * 
+ * Extended pricing information for service detail pages.
+ */
+export interface ServicePricingDetailed {
+  /** Minimum price (USD) */
+  min: number;
+  
+  /** Maximum price (USD) */
+  max: number;
+  
+  /** Pricing unit */
+  unit: 'project' | 'monthly' | 'hourly';
+  
+  /** Starting price label */
+  startingFrom: string;
+  
+  /** What affects pricing */
+  variables: string[];
+  
+  /** What's included in price */
+  includes: string[];
+}
+
+/**
+ * Service Timeline
+ * 
+ * Timeline information for a service.
+ */
+export interface ServiceTimeline {
+  /** Estimated duration (number) */
+  duration: number;
+  
+  /** Timeline unit */
+  unit: 'weeks' | 'months';
+  
+  /** Phase breakdown */
+  phases: {
+    name: string;
+    duration: string;
+  }[];
+  
+  /** What affects timeline */
+  variables: string[];
+}
+
+/**
  * All Services (12 offerings across 4 categories)
  */
 export const services: Service[] = [
@@ -429,7 +476,7 @@ export const services: Service[] = [
     name: 'Security hardening',
     slug: 'security-hardening',
     tagline: 'Protect your website from threats',
-    description: 'Comprehensive security audit and hardening to protect against attacks and vulnerabilities.',
+    description: 'Proactive WordPress security: malware scanning, hardening, and incident response.',
     category: 'support',
     icon: Shield,
     features: [
@@ -698,7 +745,7 @@ export const servicesSimplified: SimpleService[] = [
   {
     id: 'discovery',
     icon: Search,
-    title: 'Discovery',
+    title: 'Discovery & Strategy',
     description: 'By understanding your business, we\'re able to deliver online success.',
     page: 'discovery',
     features: [
@@ -714,15 +761,15 @@ export const servicesSimplified: SimpleService[] = [
     id: 'design',
     icon: Palette,
     title: 'Design',
-    description: 'Expert design guidance on how best to optimise website performance.',
+    description: 'Expert design guidance including Figma prototyping, design systems, and UI/UX.',
     page: 'design',
     features: [
       'New website design',
       'Website redesign',
-      'Brand identity',
-      'Digital asset creation',
+      'Figma prototyping',
+      'Design systems',
       'WooCommerce store design',
-      'Design systems'
+      'Brand identity'
     ]
   },
   {
@@ -741,55 +788,25 @@ export const servicesSimplified: SimpleService[] = [
     ]
   },
   {
-    id: 'support',
-    icon: Zap,
-    title: 'Support',
-    description: 'Expertise you can confidently rely on for WordPress website support.',
-    page: 'support',
+    id: 'content',
+    icon: FileText,
+    title: 'Content Operations',
+    description: 'Strategy, auditing, collection, newsletters, and email marketing — all content needs fulfilled.',
+    page: 'content',
     features: [
-      'Design & development',
-      'Bug fixes',
-      'Error resolution',
-      'Browser compatibility',
-      'Security monitoring',
-      'Performance optimization'
-    ]
-  },
-  {
-    id: 'hosting',
-    icon: HardDrive,
-    title: 'Hosting',
-    description: 'Safe and stable managed WordPress hosting that gives you peace of mind.',
-    page: 'hosting',
-    features: [
-      'Threat detection & blocking',
-      'Multiple daily backups',
-      'Regular WordPress updates',
-      'Caching optimization',
-      'High traffic handling',
-      'Secure platform'
-    ]
-  },
-  {
-    id: 'migrations',
-    icon: RefreshCw,
-    title: 'Migrations',
-    description: 'We\'re experts at migration achieved smoothly and without data loss.',
-    page: 'migrations',
-    features: [
-      'Host-to-host migration',
-      'CMS to WordPress',
-      'Multisite conversion',
-      'Large-scale moves',
-      'Testing & validation',
-      'Zero downtime'
+      'Content strategy',
+      'Content audit',
+      'Content collection',
+      'Newsletter & email marketing',
+      'AI-powered generation',
+      'Workflow implementation'
     ]
   },
   {
     id: 'security',
     icon: Shield,
     title: 'Security',
-    description: 'World-class expertise, focused on protecting your website.',
+    description: 'Proactive WordPress security: malware scanning, hardening, and incident response.',
     page: 'security',
     features: [
       'Security audits',
@@ -801,33 +818,516 @@ export const servicesSimplified: SimpleService[] = [
     ]
   },
   {
-    id: 'content',
-    icon: FileText,
-    title: 'Content',
-    description: 'Auditing, strategy and creation, all your content needs fulfilled.',
-    page: 'content',
+    id: 'hosting',
+    icon: HardDrive,
+    title: 'Hosting & Support',
+    description: 'Managed hosting, ongoing support, maintenance, and seamless migrations.',
+    page: 'hosting',
     features: [
-      'Content audit',
-      'Content strategy',
-      'Content creation',
-      'AI-powered generation',
-      'Content-first design approach',
-      'Workflow implementation'
+      'Managed WordPress hosting',
+      'Ongoing support & maintenance',
+      'Platform migrations',
+      'Multiple daily backups',
+      'Performance monitoring',
+      'Security updates'
     ]
   },
   {
-    id: 'mailchimp',
-    icon: MessageSquare,
-    title: 'Mailchimp',
-    description: 'We can help you make the most of Mailchimp email marketing.',
-    page: 'mailchimp',
+    id: 'performance',
+    icon: Zap,
+    title: 'Performance & Accessibility',
+    description: 'Lightning-fast Core Web Vitals and WCAG 2.1 AA/AAA compliance in one service.',
+    page: 'performance',
     features: [
-      'Mailchimp setup',
-      'Email campaigns',
-      'List management',
-      'Automation workflows',
-      'Integration',
-      'Email marketing strategy'
+      'Core Web Vitals audit',
+      'Speed optimisation',
+      'WCAG compliance audit',
+      'Accessibility remediation',
+      'Assistive tech testing',
+      'Ongoing monitoring'
+    ]
+  },
+  {
+    id: 'ai-search',
+    icon: Brain,
+    title: 'AI Search & Visibility',
+    description: 'SEO, analytics, AI engine optimisation, and answer engine optimisation unified.',
+    page: 'ai-search-visibility',
+    features: [
+      'Technical SEO',
+      'Analytics & reporting',
+      'AI engine optimisation',
+      'Answer engine optimisation',
+      'Citation tracking',
+      'Monthly visibility reports'
+    ]
+  },
+  {
+    id: 'training',
+    icon: MessageSquare,
+    title: 'Training & Enablement',
+    description: 'Empowering your team with WordPress, WooCommerce, and design system training.',
+    page: 'training',
+    features: [
+      'WordPress editor training',
+      'WooCommerce operations',
+      'Design system usage',
+      'Content workflow training',
+      'Custom documentation',
+      'Ongoing mentoring'
     ]
   }
 ];
+
+/**
+ * Service Pricing & Timeline Data
+ * 
+ * Detailed pricing and timeline information for each service.
+ * Used on individual service detail pages.
+ */
+export const servicePricingTimeline: Record<string, { pricing: ServicePricingDetailed; timeline: ServiceTimeline }> = {
+  discovery: {
+    pricing: {
+      min: 3000,
+      max: 10000,
+      unit: 'project',
+      startingFrom: 'Starting from $3,000',
+      variables: [
+        'Scope of research required',
+        'Number of stakeholder interviews',
+        'Competitive analysis depth',
+        'Technical complexity',
+        'Documentation requirements'
+      ],
+      includes: [
+        'Stakeholder interviews',
+        'User research & personas',
+        'Competitive analysis report',
+        'Strategic roadmap',
+        'Requirements documentation',
+        'Technical specification',
+        'Project timeline'
+      ]
+    },
+    timeline: {
+      duration: 3,
+      unit: 'weeks',
+      phases: [
+        { name: 'Stakeholder Interviews', duration: '1 week' },
+        { name: 'Research & Analysis', duration: '1 week' },
+        { name: 'Strategy Development', duration: '0.5 weeks' },
+        { name: 'Documentation & Handoff', duration: '0.5 weeks' }
+      ],
+      variables: [
+        'Number of stakeholders',
+        'Research complexity',
+        'Feedback turnaround time',
+        'Documentation requirements'
+      ]
+    }
+  },
+  
+  design: {
+    pricing: {
+      min: 5000,
+      max: 25000,
+      unit: 'project',
+      startingFrom: 'Starting from $5,000',
+      variables: [
+        'Number of unique page designs',
+        'Complexity of interactions',
+        'Custom illustrations or graphics',
+        'Design system requirements',
+        'Number of revision rounds'
+      ],
+      includes: [
+        'User research and personas',
+        'Wireframes for all pages',
+        'High-fidelity mockups',
+        'Interactive prototype',
+        'Design system documentation',
+        'Source files (Figma/Sketch)',
+        'Brand guidelines integration'
+      ]
+    },
+    timeline: {
+      duration: 5,
+      unit: 'weeks',
+      phases: [
+        { name: 'Discovery & Research', duration: '1 week' },
+        { name: 'Wireframing', duration: '1 week' },
+        { name: 'Visual Design', duration: '2 weeks' },
+        { name: 'Prototyping & Handoff', duration: '1 week' }
+      ],
+      variables: [
+        'Number of pages/screens',
+        'Complexity of features',
+        'Feedback turnaround time',
+        'Stakeholder availability'
+      ]
+    }
+  },
+  
+  development: {
+    pricing: {
+      min: 10000,
+      max: 100000,
+      unit: 'project',
+      startingFrom: 'Starting from $10,000',
+      variables: [
+        'Number of custom features',
+        'API integrations required',
+        'Database complexity',
+        'Third-party services',
+        'Performance requirements',
+        'Security requirements'
+      ],
+      includes: [
+        'Custom WordPress theme',
+        'Plugin development',
+        'API integrations',
+        'Database optimization',
+        'Custom post types',
+        'Advanced custom fields',
+        'Multi-site setup (if needed)',
+        'Migration assistance'
+      ]
+    },
+    timeline: {
+      duration: 10,
+      unit: 'weeks',
+      phases: [
+        { name: 'Planning & Architecture', duration: '1 week' },
+        { name: 'Core Development', duration: '5 weeks' },
+        { name: 'Integration & Testing', duration: '2 weeks' },
+        { name: 'Deployment & Handoff', duration: '2 weeks' }
+      ],
+      variables: [
+        'Feature complexity',
+        'Integration requirements',
+        'Testing requirements',
+        'Content migration needs'
+      ]
+    }
+  },
+  
+  content: {
+    pricing: {
+      min: 2000,
+      max: 15000,
+      unit: 'project',
+      startingFrom: 'Starting from $2,000',
+      variables: [
+        'Amount of content to create/migrate',
+        'Content audit requirements',
+        'SEO optimization depth',
+        'Content strategy complexity',
+        'Number of content types'
+      ],
+      includes: [
+        'Content strategy',
+        'Content migration',
+        'Content audit',
+        'SEO optimization',
+        'Meta data optimization',
+        'Content guidelines',
+        'Training materials'
+      ]
+    },
+    timeline: {
+      duration: 4,
+      unit: 'weeks',
+      phases: [
+        { name: 'Content Audit', duration: '1 week' },
+        { name: 'Strategy Development', duration: '1 week' },
+        { name: 'Content Creation/Migration', duration: '1.5 weeks' },
+        { name: 'Optimization & QA', duration: '0.5 weeks' }
+      ],
+      variables: [
+        'Content volume',
+        'Migration complexity',
+        'Content creation needs',
+        'Review cycles'
+      ]
+    }
+  },
+  
+  seo: {
+    pricing: {
+      min: 1500,
+      max: 5000,
+      unit: 'monthly',
+      startingFrom: 'Starting from $1,500/month',
+      variables: [
+        'Website size and complexity',
+        'Competitive landscape',
+        'Target keywords',
+        'Geographic targeting',
+        'Monthly reporting requirements'
+      ],
+      includes: [
+        'SEO optimization',
+        'Schema markup',
+        'Meta data optimization',
+        'Sitemap generation',
+        'Performance optimization',
+        'Core Web Vitals tuning',
+        'Monthly reporting'
+      ]
+    },
+    timeline: {
+      duration: 3,
+      unit: 'months',
+      phases: [
+        { name: 'Initial Audit & Setup', duration: '2 weeks' },
+        { name: 'Ongoing Optimization', duration: '10 weeks' }
+      ],
+      variables: [
+        'Site size',
+        'Current SEO state',
+        'Competition level',
+        'Goal aggressiveness'
+      ]
+    }
+  },
+  
+  performance: {
+    pricing: {
+      min: 2000,
+      max: 8000,
+      unit: 'project',
+      startingFrom: 'Starting from $2,000',
+      variables: [
+        'Current performance baseline',
+        'Number of optimization areas',
+        'Caching complexity',
+        'Image optimization needs',
+        'Code optimization requirements'
+      ],
+      includes: [
+        'Performance optimization',
+        'Core Web Vitals tuning',
+        'Image optimization',
+        'Caching implementation',
+        'Database optimization',
+        'Code minification',
+        'CDN setup'
+      ]
+    },
+    timeline: {
+      duration: 2,
+      unit: 'weeks',
+      phases: [
+        { name: 'Performance Audit', duration: '0.5 weeks' },
+        { name: 'Optimization Implementation', duration: '1 week' },
+        { name: 'Testing & Validation', duration: '0.5 weeks' }
+      ],
+      variables: [
+        'Current performance state',
+        'Site complexity',
+        'Testing requirements',
+        'Target metrics'
+      ]
+    }
+  },
+  
+  security: {
+    pricing: {
+      min: 1000,
+      max: 5000,
+      unit: 'project',
+      startingFrom: 'Starting from $1,000',
+      variables: [
+        'Current security state',
+        'Vulnerability assessment needs',
+        'Hardening requirements',
+        'Monitoring setup',
+        'Compliance requirements'
+      ],
+      includes: [
+        'Security hardening',
+        'SSL certificate setup',
+        'Regular security updates',
+        'Malware scanning',
+        'Regular backups',
+        'Firewall configuration',
+        'Security monitoring setup'
+      ]
+    },
+    timeline: {
+      duration: 1,
+      unit: 'weeks',
+      phases: [
+        { name: 'Security Audit', duration: '2 days' },
+        { name: 'Hardening Implementation', duration: '2 days' },
+        { name: 'Testing & Documentation', duration: '1 day' }
+      ],
+      variables: [
+        'Current security posture',
+        'Site complexity',
+        'Compliance needs',
+        'Monitoring requirements'
+      ]
+    }
+  },
+  
+  accessibility: {
+    pricing: {
+      min: 3000,
+      max: 15000,
+      unit: 'project',
+      startingFrom: 'Starting from $3,000',
+      variables: [
+        'WCAG compliance level (A, AA, AAA)',
+        'Number of templates/pages',
+        'Current accessibility state',
+        'Remediation requirements',
+        'Testing depth'
+      ],
+      includes: [
+        'Accessibility audit',
+        'WCAG compliance review',
+        'Remediation implementation',
+        'Screen reader testing',
+        'Keyboard navigation testing',
+        'Documentation',
+        'Training materials'
+      ]
+    },
+    timeline: {
+      duration: 3,
+      unit: 'weeks',
+      phases: [
+        { name: 'Accessibility Audit', duration: '1 week' },
+        { name: 'Remediation Implementation', duration: '1.5 weeks' },
+        { name: 'Testing & Documentation', duration: '0.5 weeks' }
+      ],
+      variables: [
+        'Site complexity',
+        'WCAG level target',
+        'Current state',
+        'Testing requirements'
+      ]
+    }
+  },
+  
+  support: {
+    pricing: {
+      min: 500,
+      max: 3000,
+      unit: 'monthly',
+      startingFrom: 'Starting from $500/month',
+      variables: [
+        'Support hours included',
+        'Response time SLA',
+        'Number of sites',
+        'Update frequency',
+        'Monitoring requirements'
+      ],
+      includes: [
+        'WordPress updates',
+        'Plugin updates',
+        'Bug fixes',
+        'Technical support',
+        '24/7 monitoring',
+        'Regular backups',
+        'Emergency response',
+        'Monthly reports'
+      ]
+    },
+    timeline: {
+      duration: 1,
+      unit: 'months',
+      phases: [
+        { name: 'Ongoing Monthly Support', duration: 'Continuous' }
+      ],
+      variables: [
+        'Support tier',
+        'Site complexity',
+        'Update frequency',
+        'Issue volume'
+      ]
+    }
+  },
+  
+  migrations: {
+    pricing: {
+      min: 5000,
+      max: 30000,
+      unit: 'project',
+      startingFrom: 'Starting from $5,000',
+      variables: [
+        'Content volume',
+        'Platform complexity',
+        'Custom functionality',
+        'Data structure complexity',
+        'Testing requirements'
+      ],
+      includes: [
+        'Content migration',
+        'Migration planning',
+        'Database migration',
+        'SEO preservation',
+        'URL redirects',
+        'Testing & validation',
+        'Post-migration support'
+      ]
+    },
+    timeline: {
+      duration: 8,
+      unit: 'weeks',
+      phases: [
+        { name: 'Migration Planning', duration: '1 week' },
+        { name: 'Data Migration', duration: '3 weeks' },
+        { name: 'Testing & Validation', duration: '2 weeks' },
+        { name: 'Go-Live & Support', duration: '2 weeks' }
+      ],
+      variables: [
+        'Content volume',
+        'Platform complexity',
+        'Custom features',
+        'Testing depth'
+      ]
+    }
+  },
+  
+  newsletter: {
+    pricing: {
+      min: 2000,
+      max: 10000,
+      unit: 'project',
+      startingFrom: 'Starting from $2,000',
+      variables: [
+        'Integration complexity',
+        'Custom functionality',
+        'Template requirements',
+        'Automation needs',
+        'List management features'
+      ],
+      includes: [
+        'Newsletter plugin setup',
+        'API integration',
+        'Custom templates',
+        'Subscription forms',
+        'List management',
+        'Automation setup',
+        'Analytics integration'
+      ]
+    },
+    timeline: {
+      duration: 3,
+      unit: 'weeks',
+      phases: [
+        { name: 'Planning & Design', duration: '1 week' },
+        { name: 'Development & Integration', duration: '1.5 weeks' },
+        { name: 'Testing & Launch', duration: '0.5 weeks' }
+      ],
+      variables: [
+        'Integration complexity',
+        'Custom features',
+        'Testing requirements',
+        'Content preparation'
+      ]
+    }
+  }
+};

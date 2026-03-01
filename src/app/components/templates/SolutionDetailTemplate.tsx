@@ -14,6 +14,7 @@
  * @see /src/styles/templates/solution-detail.css
  */
 
+import '../../../styles/templates/solution-detail.css';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';

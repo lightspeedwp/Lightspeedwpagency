@@ -24,7 +24,7 @@ export const wpRedesignHero = {
     'Transform your outdated WordPress site into a modern, high-performance platform that converts visitors into customers.',
   description:
     'We audit your existing site, preserve what works, and rebuild it with modern block theme architecture, fluid typography, and blazing speed.',
-  primaryButton: { text: 'Start Your Redesign', page: 'contact' },
+  primaryButton: { text: 'Request a Systems Audit', page: 'contact' },
   secondaryButton: { text: 'View Case Studies', page: 'portfolio-archive' },
 };
 
@@ -111,7 +111,7 @@ export const wpRedesignServices = {
     { icon: Globe, title: 'Content Migration', page: 'content', description: 'Safe content migration with SEO redirects.' },
     { icon: Zap, title: 'Performance', page: 'performance', description: 'Core Web Vitals optimisation for speed.' },
     { icon: Shield, title: 'Security', page: 'security', description: 'Hardened security setup and monitoring.' },
-    { icon: BarChart3, title: 'SEO', page: 'seo', description: 'SEO preservation and enhancement.' },
+    { icon: BarChart3, title: 'AI Search', page: 'ai-search-visibility', description: 'SEO preservation and enhancement.' },
     { icon: Settings, title: 'Training', page: 'training', description: 'Team training on the new CMS.' },
   ],
 };

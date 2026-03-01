@@ -22,5 +22,5 @@ export const roiCalculatorDefaults = {
 export const roiCalculatorCTA = {
   title: "Get a Detailed Analysis",
   description: "Want a more specific breakdown tailored to your industry data? Let's chat.",
-  button: { text: "Book Strategy Call", page: "contact" }
+  button: { text: "Request a Systems Audit", page: "contact" }
 };

@@ -14,6 +14,7 @@
  * @see {@link /guidelines/templates/date-archive.md}
  */
 
+import '../../../styles/templates/archive.css';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
@@ -73,11 +74,11 @@ export function DateArchiveTemplate({
 
   const breadcrumbs = [
     { label: 'Home', href: '/' },
-    { label: 'Blog', href: '/blog' },
-    { label: 'Archives', href: '/blog/archives' },
+    { label: 'Insights', href: '/insights' },
+    { label: 'Archives', href: '/insights/date' },
     ...(month
       ? [
-          { label: year.toString(), href: `/blog/${year}` },
+          { label: year.toString(), href: `/insights/date/${year}` },
           { label: monthName },
         ]
       : [{ label: year.toString() }]),
@@ -153,7 +154,7 @@ export function DateArchiveTemplate({
               description={`No posts were published in ${title}.`}
               action={{
                 label: 'View All Archives',
-                href: '/blog/archives',
+                href: '/insights/date',
               }}
             />
           )}
@@ -167,7 +168,7 @@ export function DateArchiveTemplate({
             <PaginationNav
               currentPage={currentPage}
               totalPages={totalPages}
-              baseUrl={month ? `/blog/${year}/${month}` : `/blog/${year}`}
+              baseUrl={month ? `/insights/date/${year}/${month}` : `/insights/date/${year}`}
             />
           </Container>
         </Section>
@@ -193,7 +194,7 @@ export function DateArchiveTemplate({
         title="Ready to Start Your Project?"
         description="Let's build something amazing together with WordPress."
         buttonText="Subscribe Now"
-        buttonPage="newsletter"
+        buttonPage="newsletter-service"
         benefits={[
           'Weekly WordPress insights',
           'Development best practices',
@@ -231,7 +232,7 @@ function MonthGrid({ year }: { year: number }) {
       {monthCounts.map((item) => (
         <Link
           key={item.month}
-          to={`/blog/date/${year}/${item.month}`}
+          to={`/insights/date/${year}/${item.month}`}
           className={`month-card ${item.count === 0 ? 'month-card--empty' : ''}`}
         >
           <Heading level={4} className="month-card__name">
@@ -263,12 +264,12 @@ function getAdjacentPeriods(year: number, month?: number) {
     return {
       prevPeriod: {
         label: `${getMonthName(prevMonth)} ${prevYear}`,
-        url: `/blog/date/${prevYear}/${prevMonth}`,
+        url: `/insights/date/${prevYear}/${prevMonth}`,
       },
       nextPeriod: !isFuture
         ? {
             label: `${getMonthName(nextMonth)} ${nextYear}`,
-            url: `/blog/date/${nextYear}/${nextMonth}`,
+            url: `/insights/date/${nextYear}/${nextMonth}`,
           }
         : null,
     };
@@ -278,12 +279,12 @@ function getAdjacentPeriods(year: number, month?: number) {
     return {
       prevPeriod: {
         label: (year - 1).toString(),
-        url: `/blog/date/${year - 1}`,
+        url: `/insights/date/${year - 1}`,
       },
       nextPeriod: !isFuture
         ? {
             label: (year + 1).toString(),
-            url: `/blog/date/${year + 1}`,
+            url: `/insights/date/${year + 1}`,
           }
         : null,
     };

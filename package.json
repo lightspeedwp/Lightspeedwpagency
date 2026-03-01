@@ -4,13 +4,6 @@
   "type": "module",
   "scripts": {
     "build": "vite build",
-    "test": "vitest run",
-    "test:watch": "vitest",
-    "test:ui": "vitest --ui",
-    "test:coverage": "vitest run --coverage",
-    "test:devtools": "vitest run __tests__/templates",
-    "test:devtools:watch": "vitest __tests__/templates",
-    "test:a11y": "vitest run --grep 'accessibility|violations|WCAG'",
     "lint": "eslint src/app --ext .tsx,.ts",
     "lint:fix": "eslint src/app --ext .tsx,.ts --fix",
     "lint:templates": "eslint src/app/components/templates --ext .tsx",
@@ -79,8 +72,7 @@
     "@tailwindcss/vite": "4.1.12",
     "@vitejs/plugin-react": "4.7.0",
     "tailwindcss": "4.1.12",
-    "vite": "6.3.5",
-    "vitest": "0.34.6"
+    "vite": "6.3.5"
   },
   "peerDependencies": {
     "react": "18.3.1",

@@ -11,6 +11,7 @@
  * @see /src/styles/templates/archive.css
  */
 
+import '../../../../styles/templates/archive.css';
 import { Link } from 'react-router';
 
 export function StatusArchiveTemplate() {
@@ -22,7 +23,7 @@ export function StatusArchiveTemplate() {
       <BreadcrumbPart
         items={[
           { label: 'Home', href: '/' },
-          { label: 'Blog', href: '/blog' },
+          { label: 'Insights', href: '/insights' },
           { label: 'Status Updates' },
         ]}
       />

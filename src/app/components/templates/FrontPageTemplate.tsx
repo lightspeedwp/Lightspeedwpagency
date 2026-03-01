@@ -17,6 +17,8 @@
  */
 
 import { useRef } from 'react';
+/* Route-level CSS */
+import '../../../styles/templates/page-front-page.css';
 import { HeroHome } from '../patterns/HeroHome'; // Kept for reference but replaced inline
 import { FeatureGrid } from '../patterns/FeatureGrid';
 import { StatsSection } from '../patterns/StatsSection';
@@ -27,12 +29,15 @@ import { FAQSection } from '../patterns/FAQSection';
 import { FunkyCTA } from '../patterns/FunkyCTA';
 import { TrendingTopicsWidget } from '../patterns/TrendingTopicsWidget';
 import { ActivityFeedWidget } from '../patterns/ActivityFeedWidget';
+import { ClientLogoGrid } from '../patterns/ClientLogoGrid';
+import { homepageLogos } from '../../data/client-logos';
 import { Section } from '../common/Section';
 import { Container } from '../common/Container';
 import { Button } from '../blocks/design/Buttons';
 import { useHeroParallax } from '../../hooks/useHeroParallax';
 import { Sparkles, ArrowRight } from 'lucide-react';
 import { ScrollDownArrow } from '../common/ScrollDownArrow';
+import { ProofStrip } from '../patterns/ProofStrip';
 
 import {
   frontPageHero,
@@ -114,8 +119,15 @@ export function FrontPageTemplate() {
             </div>
           </div>
         </Container>
-        <ScrollDownArrow targetId="why-choose-section" />
+        <ScrollDownArrow targetId="proof-strip" />
       </section>
+
+      {/* ============================================
+          1b. PROOF STRIP (VP2 — Social Proof)
+          ============================================ */}
+      <div id="proof-strip">
+        <ProofStrip variant="neon" />
+      </div>
 
       {/* ============================================
           2. WHY CHOOSE LIGHTSPEED
@@ -185,7 +197,7 @@ export function FrontPageTemplate() {
               description: project.description,
               image: project.image,
               badge: { text: project.category, variant: 'primary' },
-              href: `/portfolio/${project.slug}`,
+              href: `/work/${project.slug}`,
               ctaText: 'View Case Study →'
             }))}
             columns={3}
@@ -280,7 +292,21 @@ export function FrontPageTemplate() {
       </div>
 
       {/* ============================================
-          8b. EXPLORE OUR EXPERTISE (Dynamic Widget)
+          8b. TRUSTED BY (Client Logos)
+          ============================================ */}
+      <div className="front-page__section front-page__section--glass">
+        <ClientLogoGrid
+          logos={homepageLogos}
+          title="Trusted by industry leaders"
+          description="We partner with the best tools and platforms to deliver exceptional WordPress solutions"
+          columns={4}
+          size="md"
+          variant="glassmorphism"
+        />
+      </div>
+
+      {/* ============================================
+          8c. EXPLORE OUR EXPERTISE (Dynamic Widget)
           ============================================ */}
       <div className="front-page__section front-page__section--default">
         <Container>
@@ -315,7 +341,7 @@ export function FrontPageTemplate() {
                 { label: post.date },
                 { label: post.readingTime }
               ],
-              href: `/blog/${post.slug}`,
+              href: `/insights/${post.slug}`,
               ctaText: 'Read Article →'
             }))}
             columns={3}

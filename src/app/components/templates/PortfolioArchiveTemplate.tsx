@@ -15,6 +15,9 @@
  * - Colors mapped to global semantic tokens for auto light/dark
  */
 
+/* Route-level CSS */
+import '../../../styles/templates/portfolio-archive.css';
+
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';

@@ -31,8 +31,8 @@ import {
 } from 'lucide-react';
 
 export const aboutPageHero = {
-  title: "We are digital artisans",
-  description: "A passionate team of designers, developers, and strategists dedicated to crafting exceptional digital experiences.",
+  title: "We build structured publishing systems",
+  description: "A systems engineering team specialising in WordPress governance, design tokens, and editorial safety — so your site stays coherent under scale and compliance.",
   image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=80",
   stats: [
     { value: "15+", label: "Years Experience", icon: "Award" },
@@ -63,11 +63,11 @@ export const aboutPageStory = {
 export const aboutPageMissionVision = {
   mission: {
     title: "Our mission",
-    description: "To empower businesses with innovative digital solutions that drive growth, foster connection, and create lasting value in an ever-evolving digital world."
+    description: "To deliver governed publishing systems that editors can operate independently — tokenised, accessible, and measurable from day one."
   },
   vision: {
     title: "Our vision",
-    description: "To be the global standard for digital excellence, where creativity meets technology to solve the most complex challenges for forward-thinking brands."
+    description: "To set the standard for governed WordPress publishing — where every token, template, and pattern is documented, testable, and maintainable."
   }
 };
 

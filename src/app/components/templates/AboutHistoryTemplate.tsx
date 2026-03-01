@@ -9,6 +9,8 @@
  * - 100% CSS variable compliance, zero Tailwind classes
  */
 
+/* Route-level CSS */
+import '../../../styles/templates/page-about-history.css';
 import { Container } from '../common/Container';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { FunkyCTA } from '../patterns/FunkyCTA';

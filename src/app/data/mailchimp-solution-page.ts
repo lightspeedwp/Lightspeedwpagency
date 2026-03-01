@@ -169,7 +169,7 @@ export const mailchimpPackages = [
       "Basic audience segmentation",
       "30-day post-launch support"
     ],
-    cta: { text: "Get Started", page: "contact" },
+    cta: { text: "Request a Systems Audit", page: "contact" },
     popular: false
   },
   {
@@ -190,7 +190,7 @@ export const mailchimpPackages = [
       "Revenue attribution setup",
       "90-day post-launch support"
     ],
-    cta: { text: "Get Started", page: "contact" },
+    cta: { text: "Request a Systems Audit", page: "contact" },
     popular: true
   },
   {
@@ -263,8 +263,8 @@ export const mailchimpFAQs = [
  * CTA Section
  */
 export const mailchimpCTA = {
-  title: "Supercharge Your Email Marketing",
-  description: "Let us handle the technical setup so you can focus on crafting messages that convert. Expert Mailchimp integration for WordPress and WooCommerce.",
+  title: "Automate and Govern Your Email Marketing",
+  description: "We handle the technical integration so your team can focus on messages that convert. Expert Mailchimp setup for WordPress and WooCommerce.",
   button: { text: "Get Integrated", page: "contact" },
   buttons: [
     { text: "Start Your Integration", page: "contact" },

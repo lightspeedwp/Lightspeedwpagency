@@ -10,6 +10,7 @@
  * @see /src/styles/templates/header-footer-comparison.css
  */
 
+import '../../../styles/templates/header-footer-comparison.css';
 import { Container } from '../common/Container';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { ScrollReveal } from '../../hooks/useScrollReveal';

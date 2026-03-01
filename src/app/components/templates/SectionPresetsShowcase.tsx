@@ -11,6 +11,7 @@
  * @see /src/styles/section-styles.css
  */
 
+import '../../../styles/templates/section-presets-showcase.css';
 import { Container } from '../common/Container';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { ScrollReveal } from '../../hooks/useScrollReveal';

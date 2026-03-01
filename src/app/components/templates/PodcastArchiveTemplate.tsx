@@ -5,6 +5,7 @@
  * Content hub archetype for podcast episodes.
  */
 
+import '../../../styles/templates/podcast-archive.css';
 import { Link } from 'react-router';
 import { useState, useMemo } from 'react';
 import { Container } from '../common/Container';

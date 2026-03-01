@@ -23,17 +23,17 @@ export const homepageHero = {
     icon: 'Sparkles',
     text: 'WordPress & WooCommerce Experts Since 2003'
   },
-  title: 'Expert WordPress & WooCommerce solutions',
-  titleHighlight: 'WordPress', // Word to highlight with gradient
-  description: 'We build extraordinary websites for all types of businesses.',
+  title: 'Structured Publishing Systems for WordPress',
+  titleHighlight: 'Publishing Systems', // Word to highlight with gradient
+  description: 'We engineer governed WordPress systems — tokenised design, accessible markup, and measurable performance — so your editors publish with confidence and your site stays coherent at scale.',
   buttons: [
     {
-      text: 'Get Started',
+      text: 'Request a Systems Audit',
       page: 'contact',
       variant: 'default'
     },
     {
-      text: 'View Our Services',
+      text: 'View Our Systems',
       page: 'services',
       variant: 'outline'
     }
@@ -96,7 +96,7 @@ export const homepageServices = [
   {
     icon: 'Shield',
     title: 'Security',
-    description: 'World-class security expertise to protect your website',
+    description: 'Security governance: daily scanning, patching, and incident playbooks',
     slug: 'security'
   },
   {
@@ -285,7 +285,7 @@ export const homepageCTA = {
   description: 'Let\'s discuss how we can help you achieve your WordPress goals.',
   buttons: [
     {
-      text: 'Start Your Project',
+      text: 'Request a Systems Audit',
       page: 'contact',
       variant: 'default'
     },

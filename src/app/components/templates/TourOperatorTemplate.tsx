@@ -20,6 +20,7 @@
  * **Code Reduction:** 491 → 183 lines (62.7% reduction)
  */
 
+import '../../../styles/templates/page-solution-tour-design.css';
 import { Hero } from '../patterns/Hero';
 import { ChallengesGrid } from '../patterns/ChallengesGrid';
 import { SolutionsDetailGrid } from '../patterns/SolutionsDetailGrid';

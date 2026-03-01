@@ -14,6 +14,10 @@
  * - Lazy-loaded templates for code splitting
  * - NavigationContext bridge for backward compatibility
  * 
+ * **Phase 2 Updates (Feb 27, 2026):**
+ * - /portfolio → /work
+ * - /blog → /insights
+ * 
  * @see /src/app/routes.tsx — Route configuration
  * @see /src/app/components/layouts/RootLayout.tsx — Shared layout
  * @see /src/app/contexts/NavigationContext.tsx — Navigation bridge

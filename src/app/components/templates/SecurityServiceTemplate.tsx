@@ -17,14 +17,21 @@
  */
 
 import { useState, useEffect } from 'react';
+import '../../../styles/templates/page-service-security.css';
 import { Container } from '../common/Container';
 import { FAQSection } from '../patterns/FAQSection';
 import { FunkyCTA } from '../patterns/FunkyCTA';
 import { RelatedServicesGrid } from '../patterns/RelatedServicesGrid';
+import { RelatedServicesInPhase } from '../patterns/RelatedServicesInPhase';
 import { IncludedInSolutions } from '../patterns/IncludedInSolutions';
 import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
+import { ServicePricingTimeline } from '../patterns/ServicePricingTimeline';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
+import { JourneyPhaseIndicator } from '../ui/JourneyPhaseIndicator';
+import { servicePricingTimeline } from '../../data/services';
 import { Button } from '../blocks/design/Buttons';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
+import { ScrollDownArrow } from '../common/ScrollDownArrow';
 import { 
   Shield, Lock, Terminal, Activity, Eye, Search, 
   AlertTriangle, CheckCircle, Server, Zap, Trash2, FileCode
@@ -65,6 +72,18 @@ export function SecurityServiceTemplate() {
 
   return (
     <>
+      {/* Breadcrumbs */}
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', page: 'front-page' },
+          { label: 'Services', page: 'services' },
+          { label: 'Security' },
+        ]}
+      />
+
+      {/* Journey Phase Indicator */}
+      <JourneyPhaseIndicator currentPhase="build" currentServicePage="security" />
+
       {/* ============================================
           HERO SECTION (The Fortress)
           ============================================ */}
@@ -147,6 +166,8 @@ export function SecurityServiceTemplate() {
             </div>
           </div>
         </Container>
+
+        <ScrollDownArrow />
       </section>
 
       {/* ============================================
@@ -344,6 +365,31 @@ export function SecurityServiceTemplate() {
         serviceSlug="security"
         subtitle="Clients who trust us to protect their WordPress infrastructure"
       />
+      
+      {/* ============================================
+          PRICING & TIMELINE
+          ============================================ */}
+      {servicePricingTimeline.security && (
+        <ScrollReveal animation="fade-up">
+          <section className="security-service__pricing-section">
+            <Container>
+              <ServicePricingTimeline
+                pricing={servicePricingTimeline.security.pricing}
+                timeline={servicePricingTimeline.security.timeline}
+                showPhases={true}
+                showVariables={true}
+              />
+            </Container>
+          </section>
+        </ScrollReveal>
+      )}
+      
+      {/* Related Services in Build Phase */}
+      <RelatedServicesInPhase 
+        currentPhase="build"
+        currentServicePage="security"
+      />
+
       <FunkyCTA
         title={data.cta.title}
         description={data.cta.description}

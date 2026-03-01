@@ -115,7 +115,7 @@ export function Button({
   const wrapperClasses = `wp-block-button ${sizeClass} ${variantClass} ${className}`.trim();
   
   const commonProps = {
-    className: 'wp-block-button__link',
+    className: `wp-block-button__link btn-ripple ${variant === 'primary' || variant === 'cta' ? 'hover-lift-sm' : ''}`.trim(),
     'aria-label': ariaLabel,
     'aria-disabled': disabled,
   };

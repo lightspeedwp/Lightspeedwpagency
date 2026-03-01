@@ -11,6 +11,7 @@
  * @see /src/styles/templates/design-blocks-showcase.css
  */
 
+import '../../../styles/templates/design-blocks-showcase.css';
 import { Container } from '../common/Container';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { ScrollReveal } from '../../hooks/useScrollReveal';

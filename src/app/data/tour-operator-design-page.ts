@@ -24,7 +24,7 @@ export const tourDesignHero = {
     'Showcase your tours with stunning itineraries, interactive maps, and a booking experience that turns browsers into travelers.',
   description:
     'We specialise in WordPress websites for tour operators — from multi-day safari itineraries to city walking tours, we make every trip irresistible.',
-  primaryButton: { text: 'Start Your Project', page: 'contact' },
+  primaryButton: { text: 'Request a Systems Audit', page: 'contact' },
   secondaryButton: { text: 'View Tour Demos', page: 'tour-operators' },
 };
 

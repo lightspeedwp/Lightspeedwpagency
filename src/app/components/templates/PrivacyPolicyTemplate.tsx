@@ -21,6 +21,7 @@
  * - BEM naming throughout
  */
 
+import '../../../styles/templates/page-legal.css';
 import { Container } from '../common/Container';
 import { FunkyCTA } from '../patterns/FunkyCTA';
 import { Heading } from '../blocks/text/Heading';

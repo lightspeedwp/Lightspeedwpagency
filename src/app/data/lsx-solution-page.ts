@@ -43,5 +43,5 @@ export const lsxSolutionFeatures = {
 export const lsxSolutionCTA = {
   title: "Build Better with LSX",
   description: "Join thousands of developers using the LSX framework.",
-  button: { text: "Get Started", page: "contact" }
+  button: { text: "Request a Systems Audit", page: "contact" }
 };

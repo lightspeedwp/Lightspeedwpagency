@@ -5,6 +5,7 @@
  * Route: /solutions/ai-integrations/seo
  */
 
+import '../../../styles/templates/page-solution-ai.css';
 import { Search } from 'lucide-react';
 import { AISubPageTemplate } from './AISubPageTemplate';
 import {

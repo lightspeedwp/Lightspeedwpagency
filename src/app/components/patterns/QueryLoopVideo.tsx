@@ -56,7 +56,7 @@ export function QueryLoopVideo({
         return (
           <Link
             key={post.id}
-            to="/blog/format/video/single"
+            to="/insights/format/video/single"
             className="query-loop-card query-loop-card--clickable"
             ref={index === 0 ? containerRef as any : undefined}
             style={itemStyle(index)}

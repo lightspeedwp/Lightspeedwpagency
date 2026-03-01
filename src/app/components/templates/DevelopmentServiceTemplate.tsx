@@ -16,13 +16,20 @@
  */
 
 import { useEffect, useState } from 'react';
+/* Route-level CSS */
+import '../../../styles/templates/page-service-development.css';
 import { Container } from '../common/Container';
 import { Button } from '../blocks/design/Buttons';
 import { FunkyCTA } from '../patterns/FunkyCTA';
 import { RelatedServicesGrid } from '../patterns/RelatedServicesGrid';
+import { RelatedServicesInPhase } from '../patterns/RelatedServicesInPhase';
 import { IncludedInSolutions } from '../patterns/IncludedInSolutions';
 import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
+import { ServicePricingTimeline } from '../patterns/ServicePricingTimeline';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
+import { JourneyPhaseIndicator } from '../ui/JourneyPhaseIndicator';
 import { developmentServiceDetailed } from '../../data/services-detailed';
+import { servicePricingTimeline } from '../../data/services';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { ScrollDownArrow } from '../common/ScrollDownArrow';
 import { 
@@ -82,6 +89,18 @@ export function DevelopmentServiceTemplate() {
 
   return (
     <>
+      {/* Breadcrumbs */}
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', page: 'front-page' },
+          { label: 'Services', page: 'services' },
+          { label: 'WordPress Development' },
+        ]}
+      />
+
+      {/* Journey Phase Indicator */}
+      <JourneyPhaseIndicator currentPhase="build" currentServicePage="development" />
+
       {/* ============================================
           HERO SECTION (Terminal)
           ============================================ */}
@@ -339,6 +358,31 @@ export function DevelopmentServiceTemplate() {
         serviceSlug="development"
         subtitle="Hear from clients who built exceptional WordPress experiences with us"
       />
+      
+      {/* ============================================
+          PRICING & TIMELINE
+          ============================================ */}
+      {servicePricingTimeline.development && (
+        <ScrollReveal animation="fade-up">
+          <section className="dev-service__pricing-section">
+            <Container>
+              <ServicePricingTimeline
+                pricing={servicePricingTimeline.development.pricing}
+                timeline={servicePricingTimeline.development.timeline}
+                showPhases={true}
+                showVariables={true}
+              />
+            </Container>
+          </section>
+        </ScrollReveal>
+      )}
+      
+      {/* Related Services in Build Phase */}
+      <RelatedServicesInPhase 
+        currentPhase="build"
+        currentServicePage="development"
+      />
+
       <FunkyCTA
         title={data.cta.title}
         description={data.cta.description}

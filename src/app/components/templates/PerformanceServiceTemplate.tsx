@@ -17,11 +17,18 @@
  * - Fonts: var(--font-primary), var(--font-secondary), var(--font-mono) only
  */
 
+import '../../../styles/templates/page-service-performance.css';
 import { Container } from '../common/Container';
 import { FunkyCTA } from '../patterns/FunkyCTA';
 import { RelatedServicesGrid } from '../patterns/RelatedServicesGrid';
+import { RelatedServicesInPhase } from '../patterns/RelatedServicesInPhase';
 import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
+import { ServicePricingTimeline } from '../patterns/ServicePricingTimeline';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
+import { JourneyPhaseIndicator } from '../ui/JourneyPhaseIndicator';
+import { servicePricingTimeline } from '../../data/services';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
+import { ScrollDownArrow } from '../common/ScrollDownArrow';
 import { 
   Zap, 
   Gauge, 
@@ -32,7 +39,9 @@ import {
   Settings, 
   Smartphone,
   Layers,
-  Search
+  Search,
+  Eye,
+  Shield,
 } from 'lucide-react';
 
 import { performanceServiceDetailed } from '../../data/services-detailed';
@@ -45,7 +54,9 @@ export function PerformanceServiceTemplate() {
     'speed-audit': Gauge,
     'code-optimization': Layers,
     'caching-strategy': Server,
-    'asset-optimization': Smartphone
+    'asset-optimization': Smartphone,
+    'wcag-audit': Eye,
+    'remediation': Shield,
   };
 
   // Icon mapping for Process steps
@@ -59,6 +70,18 @@ export function PerformanceServiceTemplate() {
 
   return (
     <div className="performance-page">
+      {/* Breadcrumbs */}
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', page: 'front-page' },
+          { label: 'Services', page: 'services' },
+          { label: 'Performance & Accessibility' },
+        ]}
+      />
+
+      {/* Journey Phase Indicator */}
+      <JourneyPhaseIndicator currentPhase="grow" currentServicePage="performance" />
+
       {/* ============================================
           HERO SECTION (Light Speed)
           ============================================ */}
@@ -71,7 +94,7 @@ export function PerformanceServiceTemplate() {
             <ScrollReveal animation="fade-down">
               <div className="perf-page__badge">
                 <Zap size={14} fill="currentColor" />
-                <span>CORE WEB VITALS OPTIMIZED</span>
+                <span>PERFORMANCE + WCAG COMPLIANCE</span>
               </div>
               
               <h1 className="perf-page__title">
@@ -114,6 +137,8 @@ export function PerformanceServiceTemplate() {
             </ScrollReveal>
           </div>
         </Container>
+
+        <ScrollDownArrow />
       </section>
 
       {/* ============================================
@@ -176,7 +201,7 @@ export function PerformanceServiceTemplate() {
         <Container>
           <div className="perf-page__text-center">
             <ScrollReveal animation="fade-up">
-              <h2 className="perf-page__section-title">Performance Features</h2>
+              <h2 className="perf-page__section-title">Performance & Accessibility Features</h2>
               <p className="perf-page__section-desc perf-page__max-w-2xl">
                 Comprehensive optimization covering every layer of your stack.
               </p>
@@ -251,6 +276,31 @@ export function PerformanceServiceTemplate() {
         serviceSlug="performance"
         subtitle="Hear from clients who experienced dramatic speed improvements"
       />
+      
+      {/* ============================================
+          PRICING & TIMELINE
+          ============================================ */}
+      {servicePricingTimeline.performance && (
+        <ScrollReveal animation="fade-up">
+          <section className="performance-service__pricing-section">
+            <Container>
+              <ServicePricingTimeline
+                pricing={servicePricingTimeline.performance.pricing}
+                timeline={servicePricingTimeline.performance.timeline}
+                showPhases={true}
+                showVariables={true}
+              />
+            </Container>
+          </section>
+        </ScrollReveal>
+      )}
+      
+      {/* Related Services in Grow Phase */}
+      <RelatedServicesInPhase 
+        currentPhase="grow"
+        currentServicePage="performance"
+      />
+
       <FunkyCTA
         title={data.cta.title}
         description={data.cta.description}
@@ -259,8 +309,8 @@ export function PerformanceServiceTemplate() {
         benefits={[
           'Instant Load Time Reduction',
           'Better Google Rankings',
-          'Higher Conversion Rates',
-          'Detailed Speed Report'
+          'WCAG 2.1 AA/AAA Compliance',
+          'Detailed Speed & Accessibility Report'
         ]}
       />
     </div>

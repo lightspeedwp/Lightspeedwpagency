@@ -13,6 +13,7 @@
  * @see /src/app/data/tour-operator-design-page.ts
  */
 
+import '../../../styles/templates/page-solution-tour-design.css';
 import { Container } from '../common/Container';
 import { FAQSection } from '../patterns/FAQSection';
 import { ScrollReveal } from '../../hooks/useScrollReveal';

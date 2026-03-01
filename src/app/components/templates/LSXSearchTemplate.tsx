@@ -23,6 +23,7 @@
  * - BEM naming throughout
  */
 
+import '../../../styles/templates/lsx-search-page.css';
 import { Section } from '@/app/components/common/Section';
 import { Container } from '@/app/components/common/Container';
 import { FunkyCTA } from '@/app/components/patterns/FunkyCTA';
@@ -30,6 +31,7 @@ import { FAQSection } from '@/app/components/patterns/FAQSection';
 import { Buttons } from '@/app/components/blocks/design/Buttons';
 import { useHeroParallax } from '../../hooks/useHeroParallax';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
+import { ScrollDownArrow } from '../common/ScrollDownArrow';
 import { Search } from 'lucide-react';
 
 import {
@@ -96,6 +98,8 @@ export function LSXSearchTemplate() {
             />
           </div>
         </Container>
+
+        <ScrollDownArrow />
       </section>
 
       {/* ============================================

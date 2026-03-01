@@ -12,6 +12,7 @@
  * @see /tasks/task-list.md — Section 16
  */
 
+import '../../../styles/templates/code-quality-dashboard.css';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import {
   Activity,

@@ -13,10 +13,10 @@
  * - All spacing: WordPress block gap classes
  * - Fully responsive and accessible (WCAG 2.1 AA)
  * 
- * @see /src/styles/wordpress-blocks.css
  * @see /guidelines/Guidelines.md
  */
 
+import '../../../styles/templates/design-blocks-showcase.css';
 import { Link } from 'react-router';
 import { slugToPath } from '../../utils/route-map';
 import { Home, ArrowRight, Check, Star, Award, Shield } from 'lucide-react';

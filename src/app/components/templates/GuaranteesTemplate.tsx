@@ -16,6 +16,7 @@
  * @see /src/app/data/guarantees-page.ts
  */
 
+import '../../../styles/templates/guarantees.css';
 import { Container } from '../common/Container';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { FunkyCTA } from '../patterns/FunkyCTA';

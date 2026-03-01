@@ -12,6 +12,7 @@
  * @see /src/styles/templates/testimonial-single.css
  */
 
+import '../../../../styles/templates/testimonial-single.css';
 import { Star, Calendar, Briefcase, Tag, ArrowLeft } from 'lucide-react';
 import { Link, useParams } from 'react-router';
 import { Section } from '../../common/Section';

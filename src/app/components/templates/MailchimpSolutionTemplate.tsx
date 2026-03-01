@@ -19,6 +19,7 @@
  * @see /src/app/data/mailchimp-solution-page.ts
  */
 
+import '../../../styles/templates/mailchimp-solution-page.css';
 import { Check, Rocket, ArrowRight, Quote } from 'lucide-react';
 import { Section } from '../common/Section';
 import { Container } from '../common/Container';
@@ -26,6 +27,7 @@ import { Button } from '../blocks/design/Buttons';
 import { FAQSection } from '../patterns/FAQSection';
 import { FunkyCTA } from '../patterns/FunkyCTA';
 import { ScrollReveal, StaggerReveal } from '../../hooks/useScrollReveal';
+import { ScrollDownArrow } from '../common/ScrollDownArrow';
 
 
 import {
@@ -94,6 +96,8 @@ export function MailchimpSolutionTemplate() {
             </ScrollReveal>
           </div>
         </Container>
+
+        <ScrollDownArrow />
       </section>
 
       {/* ════════════════════════════════════════

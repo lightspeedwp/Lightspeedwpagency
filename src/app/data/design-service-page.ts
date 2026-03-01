@@ -16,10 +16,10 @@
 import { Palette, PenTool, Layout, Monitor, Layers, Eye } from 'lucide-react';
 
 export const designServiceHero = {
-  title: "World-Class UI/UX Design",
+  title: "Token-Driven UI Design for WordPress FSE",
   subtitle: "We create intuitive, engaging, and beautiful digital experiences that captivate users and drive conversions.",
   badge: { text: "DESIGN SERVICES", icon: Palette },
-  primaryButton: { text: "Start a Project", page: "contact" },
+  primaryButton: { text: "Request a Systems Audit", page: "contact" },
   secondaryButton: { text: "View Portfolio", page: "portfolio" }
 };
 
@@ -100,6 +100,6 @@ export const designServiceFAQs = [
 
 export const designServiceCTA = {
   title: "Let's Design Something Beautiful",
-  description: "Ready to elevate your brand's digital presence?",
-  button: { text: "Book a Design Sprint", page: "contact" }
+  description: "Ready to govern your brand's digital system?",
+  button: { text: "Request a Systems Audit", page: "contact" }
 };

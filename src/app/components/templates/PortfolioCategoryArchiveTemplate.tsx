@@ -1,4 +1,5 @@
 import { useParams, Navigate, Link } from 'react-router';
+import '../../../styles/templates/portfolio-archive.css';
 import { slugToPath } from '../../utils/route-map';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';

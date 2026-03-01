@@ -147,7 +147,7 @@ export const solutions: Solution[] = [
       'Real Estate',
       'Financial Services',
     ],
-    buttonText: 'Get Started',
+    buttonText: 'Request a Systems Audit',
     buttonPage: 'contact',
     featured: true,
   },

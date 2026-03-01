@@ -14,6 +14,7 @@
  * @see /src/styles/templates/page-single-product.css
  */
 
+import '../../../../styles/templates/page-single-product.css';
 import { useState } from 'react';
 import { Container } from '@/app/components/common/Container';
 import { Section } from '@/app/components/common/Section';

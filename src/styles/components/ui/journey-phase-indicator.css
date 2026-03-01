@@ -1,0 +1,253 @@
+/**
+ * Journey Phase Indicator Component Styles
+ * 
+ * Compact horizontal journey phase timeline for service pages.
+ * Shows all 6 phases with the current phase highlighted.
+ * 
+ * BEM Block: .journey-phase-indicator
+ * 
+ * @see /src/app/components/ui/JourneyPhaseIndicator.tsx
+ */
+
+/* ============================================
+   WRAPPER
+   ============================================ */
+
+.journey-phase-indicator {
+  background: var(--background);
+  border-bottom: 1px solid var(--border);
+  padding: var(--spacing-4) var(--section-padding-x);
+}
+
+.journey-phase-indicator__inner {
+  max-width: var(--container-max-w);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+}
+
+.journey-phase-indicator__label {
+  font-family: var(--font-secondary);
+  font-size: var(--text-small);
+  font-weight: var(--font-weight-medium);
+  color: var(--muted-foreground);
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ============================================
+   TRACK — Horizontal phase timeline
+   ============================================ */
+
+.journey-phase-indicator__track {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex: 1;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+.journey-phase-indicator__track::-webkit-scrollbar {
+  height: 4px;
+}
+
+.journey-phase-indicator__track::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.journey-phase-indicator__track::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: var(--radius);
+}
+
+/* ============================================
+   CONNECTOR — Lines between phases
+   ============================================ */
+
+.journey-phase-indicator__connector {
+  width: 32px;
+  height: 2px;
+  background: var(--border);
+  flex-shrink: 0;
+  transition: background 0.3s ease;
+}
+
+.journey-phase-indicator__connector--filled {
+  background: linear-gradient(
+    90deg,
+    var(--connector-from) 0%,
+    var(--connector-to) 100%
+  );
+}
+
+/* ============================================
+   NODE — Individual phase
+   ============================================ */
+
+.journey-phase-indicator__node {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2);
+  border-radius: var(--radius);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.journey-phase-indicator__node:hover {
+  background: var(--muted);
+}
+
+.journey-phase-indicator__node:focus-visible {
+  outline: 2px solid var(--node-accent);
+  outline-offset: 2px;
+}
+
+/* Node pip (icon circle) */
+.journey-phase-indicator__pip {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--muted);
+  border: 2px solid var(--border);
+  color: var(--muted-foreground);
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+/* Node label (phase name) */
+.journey-phase-indicator__node-label {
+  font-family: var(--font-secondary);
+  font-size: var(--text-small);
+  font-weight: var(--font-weight-medium);
+  color: var(--muted-foreground);
+  white-space: nowrap;
+  transition: color 0.3s ease;
+}
+
+/* ============================================
+   NODE STATES
+   ============================================ */
+
+/* Completed phase */
+.journey-phase-indicator__node--completed .journey-phase-indicator__pip {
+  background: var(--node-accent);
+  border-color: var(--node-accent);
+  color: var(--primary-foreground);
+}
+
+/* Active (current) phase */
+.journey-phase-indicator__node--active .journey-phase-indicator__pip {
+  background: var(--node-accent);
+  border-color: var(--node-accent);
+  color: var(--primary-foreground);
+  box-shadow: 0 0 0 4px rgba(var(--node-accent-rgb, 139, 92, 246), 0.2);
+  animation: journey-pulse 2s ease-in-out infinite;
+}
+
+.journey-phase-indicator__node--active .journey-phase-indicator__node-label {
+  color: var(--foreground);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Future phase */
+.journey-phase-indicator__node--future .journey-phase-indicator__pip {
+  opacity: 0.5;
+}
+
+.journey-phase-indicator__node--future .journey-phase-indicator__node-label {
+  opacity: 0.5;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes journey-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 4px rgba(var(--node-accent-rgb, 139, 92, 246), 0.2);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(var(--node-accent-rgb, 139, 92, 246), 0.1);
+  }
+}
+
+/* ============================================
+   RESPONSIVE — Mobile
+   ============================================ */
+
+@media (max-width: 768px) {
+  .journey-phase-indicator {
+    padding: var(--spacing-3) var(--spacing-4);
+  }
+
+  .journey-phase-indicator__inner {
+    gap: var(--spacing-3);
+  }
+
+  .journey-phase-indicator__label {
+    font-size: var(--text-xs);
+  }
+
+  .journey-phase-indicator__node {
+    padding: var(--spacing-1);
+  }
+
+  .journey-phase-indicator__pip {
+    width: 24px;
+    height: 24px;
+  }
+
+  /* Hide labels on mobile to save space */
+  .journey-phase-indicator__node-label {
+    display: none;
+  }
+
+  .journey-phase-indicator__connector {
+    width: 16px;
+  }
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .journey-phase-indicator__node,
+  .journey-phase-indicator__pip,
+  .journey-phase-indicator__node-label,
+  .journey-phase-indicator__connector {
+    transition: none;
+  }
+
+  .journey-phase-indicator__node--active .journey-phase-indicator__pip {
+    animation: none;
+  }
+}
+
+/* ============================================
+   DARK MODE
+   ============================================ */
+
+[data-theme="dark"] .journey-phase-indicator {
+  background: var(--background);
+  border-bottom-color: var(--border);
+}
+
+[data-theme="dark"] .journey-phase-indicator__pip {
+  background: var(--muted);
+}
+
+[data-theme="dark"] .journey-phase-indicator__node--completed .journey-phase-indicator__pip,
+[data-theme="dark"] .journey-phase-indicator__node--active .journey-phase-indicator__pip {
+  background: var(--node-accent);
+}

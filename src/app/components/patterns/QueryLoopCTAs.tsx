@@ -43,8 +43,8 @@ const defaultCTAs: CTAItem[] = [
     id: 'cta-portfolio',
     title: 'See Our Work',
     description: 'Browse our portfolio of successful WordPress and WooCommerce projects.',
-    buttonText: 'View Portfolio',
-    buttonPage: '/portfolio',
+    buttonText: 'View Work',
+    buttonPage: '/work',
     gradient: 'var(--gradient-purple)',
   },
   {

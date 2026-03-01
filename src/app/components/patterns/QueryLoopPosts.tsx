@@ -44,7 +44,7 @@ export function QueryLoopPosts({
       {posts.map((post, index) => (
         <Link
           key={post.id}
-          to={`/blog/${post.slug}`}
+          to={`/insights/${post.slug}`}
           className="query-loop-card query-loop-card--clickable"
           ref={index === 0 ? containerRef as any : undefined}
           style={itemStyle(index)}

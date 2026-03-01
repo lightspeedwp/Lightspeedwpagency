@@ -1,0 +1,41 @@
+/**
+ * ScrollProgress Styles
+ * 
+ * Visual indicator of page scroll progress
+ * Fixed bar at top of page
+ * 
+ * Features:
+ * - Fixed positioning at top
+ * - Smooth width transition
+ * - Customizable color
+ * 
+ * Design System:
+ * - 100% CSS variables
+ * - BEM naming (.scroll-progress__element)
+ */
+
+/* Container */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9998;
+  background: transparent;
+  overflow: hidden;
+}
+
+/* Progress Bar */
+.scroll-progress__bar {
+  height: 100%;
+  background: hsl(var(--primary));
+  transition: width 0.1s ease;
+  box-shadow: 0 0 8px currentColor;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-progress__bar {
+    transition: none;
+  }
+}

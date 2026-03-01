@@ -1,0 +1,22 @@
+/**
+ * Analytics Service Template Styles
+ * 
+ * BEM Methodology: .analytics-service
+ * Parent Service: AI Search & Visibility
+ * 
+ * Inherits base service template styles structure
+ * All CSS variables from theme-base.css and theme-light.css
+ */
+
+@layer components {
+  /* This file uses the same structure as seo-service.css */
+  /* We alias analytics-service classes to match the seo-service structure */
+
+  .analytics-service__hero {
+    background: var(--background);
+    padding: var(--spacing-24) var(--spacing-6);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+}

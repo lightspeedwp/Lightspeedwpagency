@@ -15,6 +15,7 @@
  * - Colors mapped to global semantic tokens for auto light/dark
  */
 
+import '../../../styles/templates/single-project.css';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';

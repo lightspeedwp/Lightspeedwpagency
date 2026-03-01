@@ -170,9 +170,9 @@ export const lsxSearchFAQs = [
 export const lsxSearchCTA = {
   title: "Stop Losing Visitors",
   description: "If they can't find it, they can't buy it. Upgrade your site search today and watch engagement soar.",
-  button: { text: "Get Started", page: "contact" },
+  button: { text: "Request a Systems Audit", page: "contact" },
   buttons: [
-    { text: "Get Started", page: "contact" },
+    { text: "Request a Systems Audit", page: "contact" },
     { text: "View Demo", page: "contact" }
   ]
 };

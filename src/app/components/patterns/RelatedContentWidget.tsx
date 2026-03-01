@@ -70,7 +70,7 @@ export function RelatedContentWidget({
             excerpt: post.excerpt,
             image: post.featuredImage,
             type: 'blog',
-            url: `/blog/${post.slug}`,
+            url: `/insights/${post.slug}`,
           });
         }
       });
@@ -90,7 +90,7 @@ export function RelatedContentWidget({
             excerpt: project.excerpt,
             image: project.featuredImage,
             type: 'project',
-            url: `/portfolio/${project.slug}`,
+            url: `/work/${project.slug}`,
           });
         }
       });

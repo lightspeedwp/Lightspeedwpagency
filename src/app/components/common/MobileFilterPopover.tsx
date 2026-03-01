@@ -26,8 +26,9 @@
  */
 
 import { X } from 'lucide-react';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useCallback } from 'react';
 import { Button } from '../blocks/design/Buttons';
+import { useFocusManagement } from '../../hooks/useFocusManagement';
 
 export interface FilterOption {
   id: string;
@@ -103,6 +104,18 @@ export function MobileFilterPopover({
   allLabel = 'All'
 }: MobileFilterPopoverProps) {
   const popoverRef = useRef<HTMLDivElement>(null);
+  const { trapFocus, restoreFocus } = useFocusManagement();
+
+  // Focus trap
+  useEffect(() => {
+    if (isOpen && popoverRef.current) {
+      const cleanup = trapFocus(popoverRef.current);
+      return () => {
+        cleanup?.();
+        restoreFocus();
+      };
+    }
+  }, [isOpen, trapFocus, restoreFocus]);
 
   // Handle escape key
   useEffect(() => {

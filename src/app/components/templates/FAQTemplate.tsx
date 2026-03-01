@@ -6,6 +6,8 @@
  * Pattern order: Breadcrumbs → Hero → Stats → FAQ Categories → CTA
  */
 
+/* Route-level CSS */
+import '../../../styles/templates/page-faq.css';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
@@ -16,7 +18,6 @@ import {
   ChevronDown
 } from 'lucide-react';
 import { useState } from 'react';
-
 
 // Import centralized data
 import {
@@ -39,6 +40,8 @@ export function FAQTemplate() {
 
   return (
     <>
+      {/* JSON-LD Structured Data — rendered server-side in WordPress via wp_head */}
+
       {/* Breadcrumbs */}
       <BreadcrumbPart
         items={[

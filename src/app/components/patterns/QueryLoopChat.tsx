@@ -56,7 +56,7 @@ export function QueryLoopChat({
         return (
           <Link
             key={post.id}
-            to="/blog/format/chat/single"
+            to="/insights/format/chat/single"
             className="query-loop-card query-loop-card--clickable"
             ref={index === 0 ? containerRef as any : undefined}
             style={itemStyle(index)}

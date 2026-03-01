@@ -44,7 +44,7 @@ export function QueryLoopPortfolio({
       {projects.map((project, index) => (
         <Link
           key={project.id}
-          to={`/portfolio/${project.slug}`}
+          to={`/work/${project.slug}`}
           className="query-loop-card query-loop-card--clickable"
           ref={index === 0 ? containerRef as any : undefined}
           style={itemStyle(index)}

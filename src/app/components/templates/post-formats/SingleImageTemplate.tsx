@@ -6,6 +6,7 @@
  * Displays a single image post with focus on the visual content.
  */
 
+import '../../../../styles/templates/single-post.css';
 import { Camera, Calendar, User } from 'lucide-react';
 
 export function SingleImageTemplate() {
@@ -16,7 +17,7 @@ export function SingleImageTemplate() {
       <BreadcrumbPart
         items={[
           { label: 'Home', href: '/' },
-          { label: 'Blog', href: '/blog' },
+          { label: 'Insights', href: '/insights' },
           { label: 'Photography', href: '/image-archive' },
           { label: post.title.rendered },
         ]}

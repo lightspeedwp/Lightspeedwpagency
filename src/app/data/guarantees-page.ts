@@ -12,7 +12,7 @@ export const guaranteesPageHero = {
   tagline: "We believe trust is earned through accountability. That's why we put our skin in the game.",
   description: "Most agencies are afraid to commit to results. We're not. We believe that if we don't deliver value, you shouldn't pay. It's that simple.",
   badge: { text: "PEACE OF MIND", icon: ShieldCheck },
-  primaryButton: { text: "Start a Project", page: "contact" }
+  primaryButton: { text: "Request a Systems Audit", page: "contact" }
 };
 
 export const guaranteesPageIntro = {

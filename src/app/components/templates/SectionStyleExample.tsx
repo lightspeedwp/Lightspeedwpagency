@@ -10,6 +10,7 @@
  * - Consistent with WordPress FSE section style system
  */
 
+import '../../../styles/templates/section-presets-showcase.css';
 import { Section } from '../common/Section';
 import { Container } from '../common/Container';
 import { Button } from '../blocks/design/Buttons';

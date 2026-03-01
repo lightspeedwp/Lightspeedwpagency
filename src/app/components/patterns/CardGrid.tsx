@@ -16,7 +16,7 @@
  *       title: 'Blog Post Title',
  *       description: 'Post excerpt...',
  *       image: '/images/post.jpg',
- *       href: '/blog/post-slug',
+ *       href: '/insights/post-slug',
  *       meta: [
  *         { icon: Calendar, label: 'Jan 21, 2025' },
  *         { icon: User, label: 'John Doe' }

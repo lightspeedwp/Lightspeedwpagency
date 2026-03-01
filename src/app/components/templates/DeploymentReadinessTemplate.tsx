@@ -7,10 +7,10 @@
  * 100% CSS variables — no Tailwind.
  * BEM naming: .deploy-*
  *
- * @see /src/styles/templates/deployment-readiness.css
  * @see /tasks/task-list.md Section 21
  */
 
+import '../../../styles/templates/deployment-readiness.css';
 import { useState, useCallback, useMemo } from 'react';
 import {
   Gauge,

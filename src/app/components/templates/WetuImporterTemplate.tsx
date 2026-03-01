@@ -22,6 +22,7 @@
  * - BEM naming throughout
  */
 
+import '../../../styles/templates/wetu-importer-page.css';
 import { Check } from 'lucide-react';
 import { Section } from '@/app/components/common/Section';
 import { Container } from '@/app/components/common/Container';

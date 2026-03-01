@@ -6,6 +6,7 @@
  * Displays the WooCommerce checkout page.
  */
 
+import '../../../styles/woocommerce/checkout.css';
 import { Container } from '../common/Container';
 import { Heading } from '../common/Heading';
 import { allProducts } from '../../data/woocommerce';

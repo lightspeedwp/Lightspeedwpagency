@@ -20,7 +20,14 @@
  */
 
 import { Variants } from 'motion/react';
-import { prefersReducedMotion } from './animations';
+
+/**
+ * Check if user prefers reduced motion
+ */
+const prefersReducedMotion = (): boolean => {
+  if (typeof window === 'undefined') return false;
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+};
 
 /**
  * Fade In Animation

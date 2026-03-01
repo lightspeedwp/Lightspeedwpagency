@@ -12,7 +12,7 @@ export const performanceServiceHero = {
   title: 'WordPress Performance Optimisation',
   subtitle: 'Blazing-fast load times, perfect Core Web Vitals scores, and a user experience that keeps visitors coming back.',
   badge: { text: 'CORE WEB VITALS OPTIMISED', icon: Zap },
-  primaryButton: { text: 'Speed Up Your Site', page: 'contact' },
+  primaryButton: { text: 'Request a Systems Audit', page: 'contact' },
 };
 
 export const performanceServiceFeatures = {
