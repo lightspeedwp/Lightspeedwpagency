@@ -18,9 +18,8 @@ import '../../../styles/templates/solution-detail.css';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
-import { Button } from '../blocks/design/Buttons';
-import { TestimonialGrid } from '../patterns/TestimonialGrid';
-import { SocialProof } from '../patterns/SocialProof';
+import { FeatureList } from '../patterns/FeatureList';
+import { CheckList } from '../patterns/CheckList';
 import { FAQSection } from '../patterns/FAQSection';
 import { FunkyCTA } from '../patterns/FunkyCTA';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
@@ -152,22 +151,7 @@ export function SolutionDetailTemplate({ solution }: SolutionDetailProps) {
                 <h3 className="solution-detail__subsection-title">
                   Key Benefits
                 </h3>
-                <ul className="solution-detail__benefits-list">
-                  {solution.benefits.map((benefit, index) => (
-                    <li
-                      key={index}
-                      className="solution-detail__benefit-item"
-                    >
-                      <Check
-                        size={20}
-                        className="solution-detail__check-icon"
-                      />
-                      <span className="solution-detail__benefit-text">
-                        {benefit}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
+                <CheckList items={solution.benefits} />
               </div>
             </ScrollReveal>
 
@@ -251,28 +235,12 @@ export function SolutionDetailTemplate({ solution }: SolutionDetailProps) {
             </div>
           </ScrollReveal>
 
-          <div className="solution-detail__features-grid">
-            {solution.features.map((feature, index) => {
-              const Icon = feature.icon;
-              return (
-                <ScrollReveal key={index} animation="fade-up" delay={index * 80}>
-                  <div className="solution-detail__feature-card">
-                    <div className="solution-detail__feature-icon-wrapper">
-                      <Icon size={28} strokeWidth={2} />
-                    </div>
-
-                    <h3 className="solution-detail__feature-title">
-                      {feature.title}
-                    </h3>
-
-                    <p className="solution-detail__feature-desc">
-                      {feature.description}
-                    </p>
-                  </div>
-                </ScrollReveal>
-              );
-            })}
-          </div>
+          <FeatureList 
+            items={solution.features}
+            columns={3}
+            variant="glass"
+            iconStyle="rounded"
+          />
         </Container>
       </Section>
 

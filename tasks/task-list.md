@@ -3,11 +3,36 @@
 **Purpose:** Single all-purpose open task tracker for the LSX Design project.
 **Rule:** This file must NEVER be deleted. Completed tasks are checked off and periodically archived.
 
-**Last Updated:** February 28, 2026
+**Last Updated:** March 1, 2026
 
 ---
 
 ## Open Tasks
+
+### Session 15 — Full System Audit & Orchestration — March 2, 2026
+- [x] **Created Orchestrator v4.0:** `/prompts/00-ORCHESTRATOR.md` — Centralized multi-audit/implementation entry point.
+- [x] **Full System Audit Report:** `/reports/2026-03-02-full-system-audit.md` — Identified legacy hex colors, monospace font violations, and oversized CSS files.
+- [x] **Task 3.1: Split `page-service-hosting.css`:** Modularize 1350-line CSS file into 7 specialized modules.
+- [x] **Task 3.2: Tokenize Mono Fonts:** Defined `var(--font-mono)` in `theme-base.css` and replaced hardcoded monospace strings in 12 files.
+- [x] **Task 3.3: Remediation pass for hex colors:** Replaced hex values in `theme-blocks-showcase.css` and `page-service-hosting.css` with semantic CSS variables and tokenized terminal colors.
+- [x] **Task 3.4: Modularize `FrontPageTemplate`:** Extracted inline Splash Hero into `HeroSplash.tsx` pattern component.
+
+### File Optimization & Memory Reduction (March 1, 2026) — IN PROGRESS 🔥
+- [ ] **See dedicated task list:** `/tasks/file-optimization-tasks.md` (81-110 hours, 4 phases)
+- [ ] **Audit report:** `/reports/2026-03/file-optimization-audit-report.md`
+- [ ] **Prompt:** `/prompts/optimization/2026-03-01-file-optimization-and-memory-reduction.md`
+- [x] ~~Phase 1: CSS Base Extraction (Weeks 1-2)~~ — ✅ COMPLETE: Card base, Grid utilities, Hero base (33 templates, ~2,000 lines CSS saved)
+- [x] ~~Phase 2: Pattern Component Extraction (Weeks 3-4)~~ — ✅ COMPLETE: PostCard (Phase 2.1b, 455 lines), StatsGrid (Phase 2.2, 51 lines), FeatureList + CheckList (Phase 2.3b, 324 lines) — **Total: ~875 lines JSX saved across 28 templates**
+- [ ] Phase 3: Template Refactoring (Weeks 5-6) — Archive base, Service base, BlogIndex, ServicesLanding
+- [ ] Phase 4: Optimization & Polish (Weeks 7-8) — SVG optimization, Data file splitting, Performance benchmarking
+- **Expected Impact:** 4,500+ lines CSS saved, 80% DRY violation reduction, 20-30% build time improvement
+
+### Phase 2.3b — FeatureList + CheckList Expansion — ✅ COMPLETE (March 1, 2026)
+- [x] ~~17 templates migrated to FeatureList + CheckList~~ — ~324 lines JSX saved
+- [x] ~~Completion report~~ — `/reports/2026-03/phase-2-3b-completion-report.md`
+- [x] ~~CHANGELOG updated~~ — Phase 2.3b marked COMPLETE with all 17 templates listed
+- [ ] **Next: Phase 2.4 — TestimonialCard Component** (~350 lines savings across 10-12 templates)
+- [ ] **Next: Phase 2.5 — FunkyCTA Expansion** (~400 lines savings across 15-20 templates)
 
 ### Phase 2 IA Restructure (Feb 27, 2026) — IN PROGRESS
 - [x] ~~Task 2.1: Rename /portfolio → /work~~ — ✅ COMPLETE: Routes, route-map, 15 templates, navigation, breadcrumbs updated. Zero broken links (Feb 27, 2026)

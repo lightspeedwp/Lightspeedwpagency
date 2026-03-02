@@ -1,20 +1,27 @@
 /**
- * Portfolio Archive Styles - Funky Redesign
+ * Portfolio Archive Template Styles — Funky Neon Pass
  *
- * Theme: "The Gallery"
- * Style: Spotlight effects, Masonry feel, High contrast
- *
- * 3 view modes:
- *   --cols-3  "Polaroid"   – compact image-heavy tiles, minimal text
- *   --cols-2  "Spotlight"  – glassmorphism overlay, gradient reveal
- *   --cols-1  "Editorial"  – horizontal image + detailed content
- *
- * STRICT DESIGN SYSTEM COMPLIANCE:
- * - Fonts: var(--font-primary), var(--font-secondary)
- * - Spacing: var(--spacing-*)
- * - Radius: var(--radius-*)
- * - Colors: Semantic variables from theme-*.css
+ * WordPress template: templates/archive-portfolio.html
+ * Portfolio (Work) archive with filtering, search, and grid display.
+ * BEM naming: .portfolio-archive-*
+ * 100% CSS variables, no hardcoded values.
  */
+
+/* ============================================
+   BASE IMPORTS — Phase 1 Optimization
+   ============================================ */
+
+/**
+ * Import shared base modules to reduce duplication
+ * @see /docs/css-base-extraction-guide.md
+ */
+@import '../base/grid-utilities.css';
+@import '../base/card-base.css';
+@import '../patterns/hero/hero-base.css';
+
+/* ============================================
+   PORTFOLIO ARCHIVE STYLES
+   ============================================ */
 
 /* ============================================
    HEADER

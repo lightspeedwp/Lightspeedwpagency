@@ -5,17 +5,20 @@
  * Pulls data from centralized blog-posts.ts data file.
  *
  * WordPress equivalent: wp:latest-posts block
+ * ✨ UPDATED: Now uses PostCard pattern component (Phase 2.1b)
  *
  * @example
  * <RecentPostsWidget count={3} />
+ * @see /src/app/components/patterns/PostCard.tsx
  */
 
-import { useScrollReveal, useStaggerReveal } from '../../hooks/useScrollReveal';
+import { useScrollReveal } from '../../hooks/useScrollReveal';
 import { blogPosts, blogAuthors } from '../../data/blog-posts';
 import { blogCategories } from '../../data/taxonomies';
 import { Link } from 'react-router';
 import { getPageUrl } from '../../data/pages';
-import { Calendar, Clock, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
+import { PostCardGrid } from './PostCard';
 
 
 interface RecentPostsWidgetProps {
@@ -29,6 +32,34 @@ interface RecentPostsWidgetProps {
   categoryFilter?: string;
 }
 
+/**
+ * Convert blog post to PostCard format
+ */
+function convertToPostCardFormat(post: any) {
+  const getCategoryName = (categorySlug: string) => {
+    const cat = blogCategories.find(c => c.slug === categorySlug);
+    return cat?.name || categorySlug;
+  };
+
+  const author = blogAuthors.find(a => a.slug === post.author);
+
+  return {
+    ...post,
+    url: `/insights/${post.slug}`,
+    category: post.categories[0] ? {
+      name: getCategoryName(post.categories[0]),
+      slug: post.categories[0]
+    } : undefined,
+    author: author ? {
+      name: author.name,
+      slug: author.slug,
+      avatar: author.avatar,
+      bio: author.bio
+    } : undefined,
+    tags: post.categories.slice(1).map((cat: string) => getCategoryName(cat))
+  };
+}
+
 export function RecentPostsWidget({
   count = 3,
   title = 'Latest from the Blog',
@@ -36,26 +67,12 @@ export function RecentPostsWidget({
   categoryFilter,
 }: RecentPostsWidgetProps) {
   const { ref: headerRef, style: headerStyle } = useScrollReveal({ animation: 'fade-up' });
-  const { containerRef, itemStyle } = useStaggerReveal({ stagger: 120, animation: 'fade-up' });
 
   // Filter and sort posts by date
   const filteredPosts = blogPosts
     .filter(post => !categoryFilter || post.categories.includes(categoryFilter))
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .slice(0, count);
-
-  const getCategoryName = (categorySlug: string) => {
-    const cat = blogCategories.find(c => c.slug === categorySlug);
-    return cat?.name || categorySlug;
-  };
-
-  const formatDate = (dateStr: string) => {
-    return new Date(dateStr).toLocaleDateString('en-US', {
-      month: 'short',
-      day: 'numeric',
-      year: 'numeric',
-    });
-  };
 
   if (filteredPosts.length === 0) return null;
 
@@ -78,50 +95,17 @@ export function RecentPostsWidget({
         )}
       </div>
 
-      {/* Post Grid */}
-      <div
-        className="recent-posts-widget__grid"
-        ref={containerRef as React.RefObject<HTMLDivElement>}
-      >
-        {filteredPosts.map((post, index) => (
-          <Link
-            key={post.id}
-            to={`/insights/${post.slug}`}
-            className="recent-posts-widget__card"
-            style={itemStyle(index)}
-          >
-            {/* Image */}
-            <div className="recent-posts-widget__image-wrap">
-              <img
-                src={post.featuredImage}
-                alt={post.title}
-                className="recent-posts-widget__image"
-                loading="lazy"
-              />
-              {post.categories[0] && (
-                <span className="recent-posts-widget__category-badge">
-                  {getCategoryName(post.categories[0])}
-                </span>
-              )}
-            </div>
-
-            {/* Body */}
-            <div className="recent-posts-widget__body">
-              <h3 className="recent-posts-widget__post-title">{post.title}</h3>
-              <p className="recent-posts-widget__excerpt">{post.excerpt}</p>
-
-              {/* Meta */}
-              <div className="recent-posts-widget__meta">
-                <Calendar size={12} className="recent-posts-widget__meta-icon" />
-                <span>{formatDate(post.date)}</span>
-                <span className="recent-posts-widget__meta-divider" />
-                <Clock size={12} className="recent-posts-widget__meta-icon" />
-                <span>{post.readingTime}</span>
-              </div>
-            </div>
-          </Link>
-        ))}
-      </div>
+      {/* Post Grid - Using PostCardGrid */}
+      <PostCardGrid
+        posts={filteredPosts.map(convertToPostCardFormat)}
+        variant="vertical"
+        columns={3}
+        showImages={true}
+        showExcerpts={true}
+        showMeta={true}
+        showCategory={true}
+        showReadingTime={true}
+      />
     </div>
   );
 }

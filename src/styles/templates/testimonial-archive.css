@@ -1,8 +1,26 @@
 /**
- * Testimonial Archive Template Styles
+ * Testimonial Archive Template Styles — Funky Neon Pass
  *
- * BEM: .testimonial-archive, .testimonial-archive__*
+ * Testimonial archive and single testimonial templates.
+ * BEM naming: .testimonial-archive__*, .single-testimonial__*
+ * 100% CSS variables, zero hardcoded values.
  */
+
+/* ============================================
+   BASE IMPORTS — Phase 1 Optimization
+   ============================================ */
+
+/**
+ * Import shared base modules to reduce duplication
+ * @see /docs/css-base-extraction-guide.md
+ */
+@import '../base/grid-utilities.css';
+@import '../base/card-base.css';
+@import '../patterns/hero/hero-base.css';
+
+/* ============================================
+   TESTIMONIAL ARCHIVE STYLES
+   ============================================ */
 
 .testimonial-archive__filters {
   display: flex;

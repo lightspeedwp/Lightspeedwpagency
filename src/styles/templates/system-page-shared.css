@@ -1,16 +1,32 @@
 /**
- * Shared System Page Styles
+ * Systems Page Shared Styles
  *
- * Common styles for all 5 system child pages.
- * Each system uses this as base, then can override with specific BEM classes.
+ * Shared styles for all 5 Systems child pages:
+ * - Design Tokens System
+ * - Pattern Governance System
+ * - Editorial Workflows System
+ * - AI Search Readiness System
+ * - Performance & Reliability System
  *
- * Used by:
- * - design-tokens-system.css
- * - pattern-governance-system.css
- * - editorial-workflows-system.css
- * - ai-search-readiness-system.css
- * - performance-reliability-system.css
+ * BEM naming: .system-page__*
+ * 100% CSS variables, zero hardcoded values.
  */
+
+/* ============================================
+   BASE IMPORTS — Phase 1 Optimization
+   ============================================ */
+
+/**
+ * Import shared base modules to reduce duplication
+ * @see /docs/css-base-extraction-guide.md
+ */
+@import '../base/grid-utilities.css';
+@import '../base/card-base.css';
+@import '../patterns/hero/hero-base.css';
+
+/* ============================================
+   SYSTEM PAGE STYLES
+   ============================================ */
 
 /* Base Container */
 .system-page {

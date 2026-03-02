@@ -1,41 +1,25 @@
 /**
- * Mailchimp Solution Page Styles — "Growth Engine" Funky Redesign
+ * Mailchimp Solution Page Styles
  *
- * Theme: "Growth Engine" — emerald + violet neon, data-stream visuals.
- *
- * STRICT DESIGN SYSTEM COMPLIANCE:
- * - All colors mapped to semantic tokens or color-mix()
- * - NO hardcoded hex — auto light/dark via system tokens
- * - BEM naming: .mailchimp-page__*
- * - Fonts: var(--font-primary), var(--font-secondary) only
- * - Button overrides via :where(.wp-block-button__link)
- *
- * @see /src/app/components/templates/MailchimpSolutionTemplate.tsx
- * @see /src/app/data/mailchimp-solution-page.ts
+ * BEM naming: .mailchimp-*
+ * 100% CSS variables, zero hardcoded values.
  */
 
-:root {
-  /* Growth Engine Identity — mapped to design system */
-  --growth-bg: var(--background);
-  --growth-text: var(--foreground);
-  --growth-primary: var(--category-green);
-  --growth-secondary: var(--category-violet);
-  --growth-accent: var(--category-pink);
-  --growth-surface: var(--card);
-  --growth-border: var(--border-soft);
-  --growth-muted: var(--muted-foreground);
-}
+/* ============================================
+   BASE IMPORTS — Phase 1 Optimization
+   ============================================ */
 
-.dark {
-  --growth-bg: var(--background);
-  --growth-text: var(--foreground);
-  --growth-primary: var(--category-green);
-  --growth-secondary: var(--category-violet);
-  --growth-accent: var(--category-pink);
-  --growth-surface: var(--card);
-  --growth-border: var(--border-soft);
-  --growth-muted: var(--muted-foreground);
-}
+/**
+ * Import shared base modules to reduce duplication
+ * @see /docs/css-base-extraction-guide.md
+ */
+@import '../base/grid-utilities.css';
+@import '../base/card-base.css';
+@import '../patterns/hero/hero-base.css';
+
+/* ============================================
+   MAILCHIMP SOLUTION STYLES
+   ============================================ */
 
 /* ============================================
    SHARED — Section header pattern

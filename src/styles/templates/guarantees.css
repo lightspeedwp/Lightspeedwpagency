@@ -1,18 +1,25 @@
 /**
- * Guarantees Template — Funky Neon Styles
+ * Guarantees Page Styles
  *
- * WordPress template: templates/page-guarantees.html
- * BEM block: .guar
- *
- * Sections:
- *   1. Hero
- *   2. Core guarantees grid
- *   3. How It Works (process steps)
- *   4. Trust Signals (stat cards)
- *   5. FAQ + CTA
- *
- * @see /src/app/components/templates/GuaranteesTemplate.tsx
+ * BEM naming: .guarantees-*
+ * 100% CSS variables, zero hardcoded values.
  */
+
+/* ============================================
+   BASE IMPORTS — Phase 1 Optimization
+   ============================================ */
+
+/**
+ * Import shared base modules to reduce duplication
+ * @see /docs/css-base-extraction-guide.md
+ */
+@import '../base/grid-utilities.css';
+@import '../base/card-base.css';
+@import '../patterns/hero/hero-base.css';
+
+/* ============================================
+   GUARANTEES PAGE STYLES
+   ============================================ */
 
 /* ============================================
    1. HERO

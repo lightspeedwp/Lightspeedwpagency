@@ -1,13 +1,25 @@
 /**
- * Legal Page Template Styles — Funky Neon Redesign
+ * Legal Page Template Styles
  *
- * Templates: PrivacyPolicyTemplate, TermsOfServiceTemplate
- * Theme: Neon shield/balance motif, glassmorphism content cards
- *
- * 100% CSS variables — no hardcoded color/spacing values.
- * BEM naming throughout.
+ * BEM naming: .legal-page__*
+ * 100% CSS variables, zero hardcoded values.
  */
 
+/* ============================================
+   BASE IMPORTS — Phase 1 Optimization
+   ============================================ */
+
+/**
+ * Import shared base modules to reduce duplication
+ * @see /docs/css-base-extraction-guide.md
+ */
+@import '../base/grid-utilities.css';
+@import '../base/card-base.css';
+@import '../patterns/hero/hero-base.css';
+
+/* ============================================
+   LEGAL PAGE STYLES
+   ============================================ */
 
 /* ============================================================
    PAGE CONTAINER
@@ -17,7 +29,6 @@
   position: relative;
   overflow: hidden;
 }
-
 
 /* ============================================================
    FUNKY HERO SECTION (Parallax + Mesh Grid + Floating Orbs)
@@ -160,7 +171,6 @@
   color: var(--muted-foreground);
   opacity: 0.8;
 }
-
 
 /* ============================================================
    LEGACY HERO (kept for backward compatibility)

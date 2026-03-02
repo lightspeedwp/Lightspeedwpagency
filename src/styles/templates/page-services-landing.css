@@ -13,6 +13,17 @@
  */
 
 /* ============================================
+   BASE IMPORTS — Phase 1 Optimization
+   ============================================ */
+
+/**
+ * Import shared base modules to reduce duplication
+ * @see /docs/css-base-extraction-guide.md
+ */
+@import '../patterns/hero/hero-base.css';
+@import '../base/grid-utilities.css';
+
+/* ============================================
    THEME VARIABLES (Scoped)
    ============================================ */
 
@@ -61,40 +72,20 @@
 }
 
 /* ============================================
-   HERO SECTION (3D Grid Horizon)
+   HERO SECTION — Uses hero-base.css
    ============================================ */
 
+/**
+ * Services landing uses hero-base with custom grid overlay
+ * Base hero structure comes from hero-base.css
+ * This file adds services-specific 3D grid and portal rings
+ */
+
 .services-landing__hero {
-  position: relative;
-  min-height: 85vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--nexus-bg);
-  color: var(--nexus-text);
-  overflow: hidden;
-  padding: var(--spacing-24) 0;
+  /* Extends hero-base hero-variant-service hero-spacing-spacious */
 }
 
-.services-landing__hero-bg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.15;
-  filter: blur(20px);
-  z-index: 0;
-}
-
-.services-landing__hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at center, transparent 0%, var(--nexus-bg) 80%);
-  z-index: 1;
-}
-
-/* 3D Grid Effect */
+/* 3D Grid Effect (Services-specific) */
 .services-landing__hero-grid {
   position: absolute;
   inset: 0;

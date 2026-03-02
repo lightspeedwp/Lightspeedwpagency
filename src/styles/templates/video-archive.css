@@ -1,12 +1,26 @@
 /**
- * Video Archive Styles — Funky Neon Pass
- * 
- * Funky treatments: glassmorphism cards, neon play icon,
- * gradient category badges, animated gradient stripe.
+ * Video Archive Template Styles — Funky Neon Pass
  *
- * BEM naming: .video-archive__*
+ * Video archive and single video templates with funky neon treatments.
+ * BEM naming: .video-archive__*, .single-video__*
  * 100% CSS variables, zero hardcoded values.
  */
+
+/* ============================================
+   BASE IMPORTS — Phase 1 Optimization
+   ============================================ */
+
+/**
+ * Import shared base modules to reduce duplication
+ * @see /docs/css-base-extraction-guide.md
+ */
+@import '../base/grid-utilities.css';
+@import '../base/card-base.css';
+@import '../patterns/hero/hero-base.css';
+
+/* ============================================
+   VIDEO ARCHIVE STYLES
+   ============================================ */
 
 .video-archive__grid {
   display: grid;

@@ -1,0 +1,162 @@
+/**
+ * CheckList Pattern Styles
+ * 
+ * Simple checklist component for benefits, features, deliverables.
+ * 100% CSS variable compliance — all colors, spacing, typography use CSS variables.
+ * ONLY uses var(--font-primary) and var(--font-secondary) for fonts.
+ * 
+ * Variants:
+ * - default: Standard checklist with primary color checks
+ * - compact: Smaller sizing for tight spaces
+ * - large: Larger sizing for emphasis
+ */
+
+/* ============================================
+   BASE CHECKLIST
+   ============================================ */
+
+.checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+/* ============================================
+   CHECKLIST ITEM
+   ============================================ */
+
+.checklist__item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-3);
+}
+
+/* Icon */
+.checklist__icon {
+  width: var(--spacing-5);
+  height: var(--spacing-5);
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--primary);
+  transition: color 0.2s ease;
+}
+
+/* Text */
+.checklist__text {
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  line-height: 1.6;
+  color: var(--foreground);
+}
+
+/* Hover effect */
+.checklist__item:hover .checklist__icon {
+  color: var(--primary);
+}
+
+/* ============================================
+   VARIANT: COMPACT
+   ============================================ */
+
+.checklist--compact {
+  gap: var(--spacing-2);
+}
+
+.checklist--compact .checklist__item {
+  gap: var(--spacing-2);
+}
+
+.checklist--compact .checklist__icon {
+  width: var(--spacing-4);
+  height: var(--spacing-4);
+}
+
+.checklist--compact .checklist__text {
+  font-size: var(--text-sm);
+}
+
+/* ============================================
+   VARIANT: LARGE
+   ============================================ */
+
+.checklist--large {
+  gap: var(--spacing-4);
+}
+
+.checklist--large .checklist__item {
+  gap: var(--spacing-4);
+}
+
+.checklist--large .checklist__icon {
+  width: var(--spacing-6);
+  height: var(--spacing-6);
+}
+
+.checklist--large .checklist__text {
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-medium);
+}
+
+/* ============================================
+   DARK MODE
+   ============================================ */
+
+[data-theme="dark"] .checklist__icon {
+  color: var(--primary);
+}
+
+[data-theme="dark"] .checklist__text {
+  color: var(--foreground);
+}
+
+[data-theme="dark"] .checklist__item:hover .checklist__icon {
+  filter: drop-shadow(0 0 8px rgba(var(--primary-rgb), 0.6));
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .checklist__icon {
+    stroke-width: 2.5;
+  }
+  
+  .checklist__text {
+    font-weight: var(--font-weight-medium);
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .checklist__icon {
+    transition: none;
+  }
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+/* Mobile: Larger spacing for better readability */
+@media (max-width: 768px) {
+  .checklist {
+    gap: var(--spacing-3);
+  }
+  
+  .checklist__item {
+    gap: var(--spacing-3);
+  }
+  
+  .checklist__text {
+    font-size: var(--text-base);
+  }
+  
+  .checklist--compact .checklist__text {
+    font-size: var(--text-sm);
+  }
+}

@@ -25,6 +25,7 @@
  * - Lexend for headings/body
  * - Manrope for small text
  * - Tailwind spacing classes
+ * - ✨ UPDATED: Now uses PostCard pattern component (Phase 2.1b)
  * 
  * **Accessibility:**
  * - Keyboard navigation for filters
@@ -32,6 +33,7 @@
  * - WCAG 2.1 AA compliant
  * 
  * @see {@link /guidelines/templates/index.md}
+ * @see /src/app/components/patterns/PostCard.tsx
  */
 
 import '../../../styles/templates/index.css';
@@ -43,9 +45,33 @@ import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { NewsletterSignup } from '../patterns/NewsletterSignup';
 import { FunkyCTA } from '../patterns/FunkyCTA';
 import { Link } from 'react-router';
-import { blogPosts, blogCategories } from '../../data/blog-posts';
+import { blogPosts, blogAuthors } from '../../data/blog-posts';
+import { blogCategories } from '../../data/taxonomies';
 import { useState } from 'react';
-import { Calendar, User, Clock } from 'lucide-react';
+import { PostCardGrid } from '../patterns/PostCard';
+
+/**
+ * Convert blog post to PostCard format
+ */
+function convertToPostCardFormat(post: any) {
+  const author = blogAuthors.find(a => a.slug === post.author);
+  
+  return {
+    ...post,
+    url: `/insights/${post.slug}`,
+    category: post.categories[0] ? {
+      name: post.categories[0],
+      slug: post.categories[0].toLowerCase().replace(/\s+/g, '-')
+    } : undefined,
+    author: author ? {
+      name: author.name,
+      slug: author.slug,
+      avatar: author.avatar,
+      bio: author.bio
+    } : undefined,
+    tags: post.categories.slice(1) || []
+  };
+}
 
 export function IndexTemplate() {
   const [activeCategory, setActiveCategory] = useState('All');
@@ -116,59 +142,17 @@ export function IndexTemplate() {
             ))}
           </div>
 
-          {/* Posts Grid */}
-          <div className="wp-index-grid">
-            {currentPosts.map((post) => (
-              <Link 
-                key={post.id}
-                className="wp-index-card"
-                to={`/insights/${post.slug}`}
-              >
-                {/* Featured Image */}
-                <div className="wp-index-card__image-wrapper">
-                  <img 
-                    src={post.featuredImage} 
-                    alt={post.title}
-                    className="wp-index-card__image"
-                  />
-                  <div className="wp-index-card__category">
-                    {post.categories[0]}
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className="wp-index-card__content">
-                  <div className="wp-index-card__meta">
-                    <span className="wp-index-card__meta-item">
-                      <Calendar size={14} />
-                      {new Date(post.date).toLocaleDateString()}
-                    </span>
-                    <span className="wp-index-card__meta-item">
-                      <Clock size={14} />
-                      {post.readingTime} min read
-                    </span>
-                  </div>
-
-                  <Heading level={3} className="wp-index-card__title">
-                    {post.title}
-                  </Heading>
-
-                  <Paragraph className="wp-index-card__excerpt">
-                    {post.excerpt}
-                  </Paragraph>
-
-                  <div className="wp-index-card__footer">
-                    <div className="wp-index-card__author-avatar">
-                      <User size={16} style={{ color: 'var(--muted-foreground)' }} />
-                    </div>
-                    <span className="wp-index-card__author-name">
-                      {post.author}
-                    </span>
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
+          {/* Posts Grid - Using PostCardGrid */}
+          <PostCardGrid
+            posts={currentPosts.map(convertToPostCardFormat)}
+            variant="vertical"
+            columns={3}
+            showImages={true}
+            showExcerpts={true}
+            showMeta={true}
+            showCategory={true}
+            showReadingTime={true}
+          />
 
           {/* Pagination */}
           {totalPages > 1 && (

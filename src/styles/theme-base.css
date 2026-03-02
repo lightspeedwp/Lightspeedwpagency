@@ -348,6 +348,11 @@
   /* Constant colors (theme-independent) */
   --color-white: #FFFFFF;
   --color-black: #000000;
+
+  /* Status Colors (Terminal) */
+  --color-terminal-red: #ff5f57;
+  --color-terminal-yellow: #febc2e;
+  --color-terminal-green: #28c840;
   
   /* ============================================
      Z-INDEX SCALE

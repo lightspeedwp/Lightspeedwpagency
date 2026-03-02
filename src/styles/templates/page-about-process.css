@@ -1,23 +1,28 @@
 /**
- * About Process Page Styles — "Neon Blueprint" Funky Redesign
+ * About Process Page Template Styles
  *
- * Template: AboutProcessTemplate
- * Theme: Blueprint grid, glowing timeline, glass methodology cards
- *
- * Modes:
- *   :root (light) — white bg, blue accents, subtle grid
- *   .dark          — near-black bg, cyan neon glows, grid overlay
- *
- * 100% CSS variables — no hardcoded color/spacing values.
- * BEM naming throughout.
+ * BEM naming: .about-process-*
+ * 100% CSS variables, zero hardcoded values.
  */
 
-
 /* ============================================
-   HERO SECTION (Blueprint Theme)
+   BASE IMPORTS — Phase 1 Optimization
    ============================================ */
 
-.process-page__hero {
+/**
+ * Import shared base modules to reduce duplication
+ * @see /docs/css-base-extraction-guide.md
+ */
+@import '../base/grid-utilities.css';
+@import '../base/card-base.css';
+@import '../patterns/hero/hero-base.css';
+
+/* ============================================
+   ABOUT PROCESS STYLES
+   ============================================ */
+
+/* Hero Section */
+.about-process__hero {
   position: relative;
   min-height: 80vh;
   display: flex;
@@ -28,7 +33,7 @@
 }
 
 /* Blueprint grid overlay on hero */
-.process-page__hero::after {
+.about-process__hero::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -41,7 +46,7 @@
   z-index: 1;
 }
 
-.process-page__hero-bg {
+.about-process__hero-bg {
   position: absolute;
   top: 0;
   left: 0;
@@ -52,21 +57,21 @@
   mix-blend-mode: luminosity;
 }
 
-.process-page__hero-overlay {
+.about-process__hero-overlay {
   position: absolute;
   inset: 0;
   background: radial-gradient(circle at center, transparent 0%, var(--sidebar) 100%);
   z-index: 1;
 }
 
-.process-page__hero-content {
+.about-process__hero-content {
   position: relative;
   z-index: 2;
   text-align: center;
   max-width: 64rem;
 }
 
-.process-page__hero-badge {
+.about-process__hero-badge {
   display: inline-flex;
   align-items: center;
   gap: var(--spacing-2);
@@ -96,20 +101,20 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .process-page__hero-badge {
+  .about-process__hero-badge {
     animation: none;
   }
 }
 
-.process-page__hero-badge-icon {
+.about-process__hero-badge-icon {
   color: var(--primary);
 }
 
-.dark .process-page__hero-badge-icon {
+.dark .about-process__hero-badge-icon {
   color: var(--neon-color);
 }
 
-.process-page__hero-title {
+.about-process__hero-title {
   font-family: var(--font-primary);
   font-size: clamp(3rem, 5vw, 4.5rem);
   font-weight: var(--font-weight-black);
@@ -121,11 +126,11 @@
   margin-bottom: var(--spacing-6);
 }
 
-.dark .process-page__hero-title {
+.dark .about-process__hero-title {
   filter: drop-shadow(0 0 12px color-mix(in srgb, var(--neon-color) 35%, transparent));
 }
 
-.process-page__hero-subtitle {
+.about-process__hero-subtitle {
   font-family: var(--font-secondary);
   font-size: var(--text-xl);
   line-height: var(--line-height-relaxed);
@@ -135,18 +140,15 @@
 }
 
 
-/* ============================================
-   PROCESS STEPS (Vertical Snake Timeline)
-   ============================================ */
-
-.process-page__steps {
+/* Process Steps (Vertical Snake Timeline) */
+.about-process__steps {
   position: relative;
   padding: var(--spacing-24) 0;
   background-color: var(--background);
 }
 
 /* Neon accent line at section top */
-.process-page__steps::before {
+.about-process__steps::before {
   content: '';
   position: absolute;
   top: 0;
@@ -159,12 +161,12 @@
   box-shadow: var(--shadow-glow-sm);
 }
 
-.process-page__steps-header {
+.about-process__steps-header {
   text-align: center;
   margin-bottom: var(--spacing-16);
 }
 
-.process-page__steps-title {
+.about-process__steps-title {
   font-family: var(--font-primary);
   font-size: var(--text-4xl);
   font-weight: var(--font-weight-bold);
@@ -172,7 +174,7 @@
   color: var(--foreground);
 }
 
-.process-page__steps-title::after {
+.about-process__steps-title::after {
   content: '';
   display: block;
   width: 60px;
@@ -182,23 +184,23 @@
   border-radius: var(--radius-full);
 }
 
-.dark .process-page__steps-title::after {
+.dark .about-process__steps-title::after {
   box-shadow: var(--shadow-glow-sm);
 }
 
-.process-page__steps-desc {
+.about-process__steps-desc {
   font-family: var(--font-secondary);
   font-size: var(--text-lg);
   color: var(--muted-foreground);
   line-height: var(--line-height-relaxed);
 }
 
-.process-page__steps-container {
+.about-process__steps-container {
   position: relative;
 }
 
 /* Vertical neon line */
-.process-page__timeline-line {
+.about-process__timeline-line {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -223,19 +225,19 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .process-page__timeline-line {
+  .about-process__timeline-line {
     animation: none;
   }
 }
 
 @media (max-width: 768px) {
-  .process-page__timeline-line {
+  .about-process__timeline-line {
     left: var(--spacing-8);
   }
 }
 
 /* Step item */
-.process-page__step-item {
+.about-process__step-item {
   position: relative;
   margin-bottom: var(--spacing-24);
   display: flex;
@@ -243,12 +245,12 @@
   align-items: center;
 }
 
-.process-page__step-item:last-child {
+.about-process__step-item:last-child {
   margin-bottom: 0;
 }
 
 /* Content Card */
-.process-page__step-content {
+.about-process__step-content {
   background: var(--glass-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -256,7 +258,7 @@
   overflow: hidden;
 }
 
-.process-page__step-content::before {
+.about-process__step-content::before {
   content: '';
   position: absolute;
   top: 0;
@@ -269,51 +271,51 @@
   border-radius: var(--radius-xl) var(--radius-xl) 0 0;
 }
 
-.dark .process-page__step-content {
+.dark .about-process__step-content {
   background: var(--card);
   border-color: var(--border-soft);
 }
 
-.process-page__step-content:hover {
+.about-process__step-content:hover {
   transform: translateY(-5px);
   box-shadow: var(--shadow-lg);
   border-color: var(--primary);
 }
 
-.dark .process-page__step-content:hover {
+.dark .about-process__step-content:hover {
   box-shadow: var(--shadow-neon);
   border-color: var(--neon-color);
 }
 
 /* Desktop: Alternating sides */
 @media (min-width: 769px) {
-  .process-page__step-item:nth-child(odd) {
+  .about-process__step-item:nth-child(odd) {
     justify-content: flex-start;
   }
 
-  .process-page__step-item:nth-child(even) {
+  .about-process__step-item:nth-child(even) {
     justify-content: flex-end;
   }
 
-  .process-page__step-item:nth-child(odd) .process-page__step-content {
+  .about-process__step-item:nth-child(odd) .about-process__step-content {
     margin-right: 55%;
   }
 
-  .process-page__step-item:nth-child(even) .process-page__step-content {
+  .about-process__step-item:nth-child(even) .about-process__step-content {
     margin-left: 55%;
   }
 }
 
 /* Mobile: Stacked */
 @media (max-width: 768px) {
-  .process-page__step-content {
+  .about-process__step-content {
     width: calc(100% - var(--spacing-16));
     margin-left: var(--spacing-16);
   }
 }
 
 /* Center node (phase number) */
-.process-page__step-node {
+.about-process__step-node {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -335,12 +337,12 @@
               box-shadow var(--transition-slow) var(--ease-out);
 }
 
-.process-page__step-item:hover .process-page__step-node {
+.about-process__step-item:hover .about-process__step-node {
   transform: translate(-50%, -50%) scale(1.15);
   box-shadow: var(--shadow-neon-intense);
 }
 
-.dark .process-page__step-node {
+.dark .about-process__step-node {
   background: linear-gradient(135deg, var(--neon-color), var(--accent));
   color: var(--sidebar);
   border: none;
@@ -348,20 +350,20 @@
 }
 
 @media (max-width: 768px) {
-  .process-page__step-node {
+  .about-process__step-node {
     left: var(--spacing-8);
   }
 }
 
 /* Step content layout */
-.process-page__step-header {
+.about-process__step-header {
   display: flex;
   align-items: center;
   gap: var(--spacing-4);
   margin-bottom: var(--spacing-4);
 }
 
-.process-page__step-icon {
+.about-process__step-icon {
   background: linear-gradient(135deg, var(--primary), var(--secondary));
   color: var(--color-white);
   box-shadow: 0 0 16px color-mix(in srgb, var(--primary) 30%, transparent);
@@ -371,29 +373,29 @@
   flex-shrink: 0;
 }
 
-.dark .process-page__step-icon {
+.dark .about-process__step-icon {
   background: linear-gradient(135deg, var(--neon-color), var(--accent));
   color: var(--color-white);
   box-shadow: 0 0 16px color-mix(in srgb, var(--neon-color) 40%, transparent);
 }
 
-.process-page__step-content:hover .process-page__step-icon {
+.about-process__step-content:hover .about-process__step-icon {
   transform: scale(1.1);
   box-shadow: 0 0 24px color-mix(in srgb, var(--primary) 50%, transparent);
 }
 
-.dark .process-page__step-content:hover .process-page__step-icon {
+.dark .about-process__step-content:hover .about-process__step-icon {
   box-shadow: 0 0 24px color-mix(in srgb, var(--neon-color) 60%, transparent);
 }
 
-.process-page__step-title {
+.about-process__step-title {
   font-family: var(--font-primary);
   font-size: var(--text-xl);
   font-weight: var(--font-weight-bold);
   color: var(--foreground);
 }
 
-.process-page__step-desc {
+.about-process__step-desc {
   font-family: var(--font-secondary);
   font-size: var(--text-base);
   color: var(--muted-foreground);
@@ -402,13 +404,13 @@
 }
 
 /* Deliverables */
-.process-page__deliverables {
+.about-process__deliverables {
   margin-top: var(--spacing-6);
   padding-top: var(--spacing-6);
   border-top: 1px solid var(--border-soft);
 }
 
-.process-page__deliverables-title {
+.about-process__deliverables-title {
   font-family: var(--font-primary);
   font-size: var(--text-xs);
   text-transform: uppercase;
@@ -418,13 +420,13 @@
   font-weight: var(--font-weight-semibold);
 }
 
-.process-page__deliverables-list {
+.about-process__deliverables-list {
   display: flex;
   flex-wrap: wrap;
   gap: var(--spacing-2);
 }
 
-.process-page__tag {
+.about-process__tag {
   font-family: var(--font-secondary);
   font-size: var(--text-xs);
   padding: var(--spacing-1) var(--spacing-3);
@@ -435,23 +437,20 @@
   cursor: default;
 }
 
-.dark .process-page__tag {
+.dark .about-process__tag {
   background: color-mix(in srgb, var(--neon-color) 10%, transparent);
   color: var(--neon-color);
 }
 
-.process-page__tag:hover {
+.about-process__tag:hover {
   background: var(--primary);
   color: var(--primary-foreground);
   box-shadow: var(--shadow-glow-sm);
 }
 
 
-/* ============================================
-   METHODOLOGY / CORE PRINCIPLES
-   ============================================ */
-
-.process-page__methodology {
+/* Methodology / Core Principles */
+.about-process__methodology {
   padding: var(--spacing-20) 0;
   background-color: var(--card);
   position: relative;
@@ -459,7 +458,7 @@
 }
 
 /* Dot-grid overlay (dark mode) */
-.dark .process-page__methodology::before {
+.dark .about-process__methodology::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -477,17 +476,17 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .dark .process-page__methodology::before {
+  .dark .about-process__methodology::before {
     animation: none;
   }
 }
 
-.process-page__methodology-header {
+.about-process__methodology-header {
   text-align: center;
   margin-bottom: var(--spacing-16);
 }
 
-.process-page__methodology-title {
+.about-process__methodology-title {
   font-family: var(--font-primary);
   font-size: var(--text-4xl);
   font-weight: var(--font-weight-bold);
@@ -495,7 +494,7 @@
   color: var(--foreground);
 }
 
-.process-page__methodology-title::after {
+.about-process__methodology-title::after {
   content: '';
   display: block;
   width: 60px;
@@ -505,38 +504,38 @@
   border-radius: var(--radius-full);
 }
 
-.dark .process-page__methodology-title::after {
+.dark .about-process__methodology-title::after {
   box-shadow: var(--shadow-glow-sm);
 }
 
-.process-page__methodology-desc {
+.about-process__methodology-desc {
   font-family: var(--font-secondary);
   font-size: var(--text-lg);
   color: var(--muted-foreground);
   line-height: var(--line-height-relaxed);
 }
 
-.process-page__grid {
+.about-process__grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--spacing-6);
 }
 
 @media (min-width: 768px) {
-  .process-page__grid {
+  .about-process__grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 /* Principle card — uses about-overview__card base + horizontal layout */
-.process-page__principle-inner {
+.about-process__principle-inner {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   gap: var(--spacing-4);
 }
 
-.process-page__principle-title {
+.about-process__principle-title {
   font-family: var(--font-primary);
   font-size: var(--text-lg);
   font-weight: var(--font-weight-bold);
@@ -544,43 +543,40 @@
   color: var(--foreground);
 }
 
-.process-page__principle-desc {
+.about-process__principle-desc {
   font-family: var(--font-secondary);
   font-size: var(--text-sm);
   color: var(--muted-foreground);
   line-height: var(--line-height-relaxed);
 }
 
-.process-page__methodology .about-overview__card {
+.about-process__methodology .about-overview__card {
   background: var(--glass-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-color: var(--glass-border);
 }
 
-.dark .process-page__methodology .about-overview__card {
+.dark .about-process__methodology .about-overview__card {
   background: var(--glass-bg);
   border-color: var(--glass-border);
 }
 
-.dark .process-page__methodology .about-overview__card:hover {
+.dark .about-process__methodology .about-overview__card:hover {
   border-color: var(--neon-color);
   box-shadow: 0 0 20px color-mix(in srgb, var(--neon-color) 20%, transparent);
 }
 
 
-/* ============================================
-   FAQ SECTION
-   ============================================ */
-
-.process-page__faq {
+/* FAQ Section */
+.about-process__faq {
   padding: var(--spacing-20) 0;
   background-color: var(--background);
   position: relative;
 }
 
 /* Neon divider at top */
-.process-page__faq::before {
+.about-process__faq::before {
   content: '';
   position: absolute;
   top: 0;
@@ -593,7 +589,7 @@
   box-shadow: var(--shadow-glow-sm);
 }
 
-.process-page__faq-wrapper {
+.about-process__faq-wrapper {
   max-width: 768px;
   margin: 0 auto;
 }
@@ -616,7 +612,7 @@
 
 /* --- Step Content Cards: Glassmorphism + Stripe --- */
 
-.process-page__step-content {
+.about-process__step-content {
   background: var(--glass-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -624,7 +620,7 @@
   overflow: hidden;
 }
 
-.process-page__step-content::before {
+.about-process__step-content::before {
   content: '';
   position: absolute;
   top: 0;
@@ -640,37 +636,37 @@
 
 /* --- Step Icons: Neon Gradient Wrapper --- */
 
-.process-page__step-icon {
+.about-process__step-icon {
   background: linear-gradient(135deg, var(--primary), var(--secondary));
   color: var(--color-white);
   box-shadow: 0 0 16px color-mix(in srgb, var(--primary) 30%, transparent);
 }
 
-.dark .process-page__step-icon {
+.dark .about-process__step-icon {
   background: linear-gradient(135deg, var(--neon-color), var(--accent));
   color: var(--color-white);
   box-shadow: 0 0 16px color-mix(in srgb, var(--neon-color) 40%, transparent);
 }
 
-.process-page__step-content:hover .process-page__step-icon {
+.about-process__step-content:hover .about-process__step-icon {
   transform: scale(1.1);
   box-shadow: 0 0 24px color-mix(in srgb, var(--primary) 50%, transparent);
 }
 
-.dark .process-page__step-content:hover .process-page__step-icon {
+.dark .about-process__step-content:hover .about-process__step-icon {
   box-shadow: 0 0 24px color-mix(in srgb, var(--neon-color) 60%, transparent);
 }
 
 
 /* --- Step Node: Enhanced Neon Gradient --- */
 
-.process-page__step-node {
+.about-process__step-node {
   background: linear-gradient(135deg, var(--primary), var(--secondary));
   color: var(--color-white);
   border: none;
 }
 
-.dark .process-page__step-node {
+.dark .about-process__step-node {
   background: linear-gradient(135deg, var(--neon-color), var(--accent));
   color: var(--sidebar);
   border: none;
@@ -680,19 +676,19 @@
 
 /* --- Principle Cards in Methodology: Glassmorphism --- */
 
-.process-page__methodology .about-overview__card {
+.about-process__methodology .about-overview__card {
   background: var(--glass-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-color: var(--glass-border);
 }
 
-.dark .process-page__methodology .about-overview__card {
+.dark .about-process__methodology .about-overview__card {
   background: var(--glass-bg);
   border-color: var(--glass-border);
 }
 
-.dark .process-page__methodology .about-overview__card:hover {
+.dark .about-process__methodology .about-overview__card:hover {
   border-color: var(--neon-color);
   box-shadow: 0 0 20px color-mix(in srgb, var(--neon-color) 20%, transparent);
 }
@@ -700,20 +696,20 @@
 
 /* --- Enhanced Dark Mode Section Backgrounds --- */
 
-.dark .process-page__steps {
+.dark .about-process__steps {
   background-color: var(--background);
 }
 
-.dark .process-page__methodology {
+.dark .about-process__methodology {
   background-color: color-mix(in srgb, var(--background) 95%, var(--primary) 5%);
 }
 
-.dark .process-page__step-content {
+.dark .about-process__step-content {
   background: var(--glass-bg);
   border-color: var(--glass-border);
 }
 
-.dark .process-page__step-content:hover {
+.dark .about-process__step-content:hover {
   border-color: var(--neon-color);
 }
 
@@ -723,19 +719,19 @@
    ============================================================ */
 
 @media (prefers-reduced-motion: reduce) {
-  .process-page__step-content::before {
+  .about-process__step-content::before {
     animation: none;
   }
 
-  .process-page__step-content:hover {
+  .about-process__step-content:hover {
     transform: none;
   }
 
-  .process-page__step-content:hover .process-page__step-icon {
+  .about-process__step-content:hover .about-process__step-icon {
     transform: none;
   }
 
-  .process-page__step-item:hover .process-page__step-node {
+  .about-process__step-item:hover .about-process__step-node {
     transform: translate(-50%, -50%);
   }
 }

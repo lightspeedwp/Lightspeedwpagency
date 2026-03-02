@@ -1,17 +1,26 @@
 /**
- * About Page Styles — "Neon Parallax" Funky Redesign
+ * About Page Template Styles — Funky Neon Pass
  *
- * Template: AboutTemplate
- * Theme: Neon gradients, floating orbs, glow cards, glass accents
- *
- * Modes:
- *   :root (light) — white bg, blue neon accents, subtle glows
- *   .dark          — near-black bg, cyan neon glows, full intensity
- *
- * 100% CSS variables — no hardcoded color/spacing values.
- * BEM naming throughout.
+ * BEM naming: .about-*
+ * 100% CSS variables, zero hardcoded values.
+ * Funky gradient orbs, glassmorphism stats, neon borders.
  */
 
+/* ============================================
+   BASE IMPORTS — Phase 1 Optimization
+   ============================================ */
+
+/**
+ * Import shared base modules to reduce duplication
+ * @see /docs/css-base-extraction-guide.md
+ */
+@import '../base/grid-utilities.css';
+@import '../base/card-base.css';
+@import '../patterns/hero/hero-base.css';
+
+/* ============================================
+   ABOUT PAGE STYLES
+   ============================================ */
 
 /* ============================================
    HERO SECTION

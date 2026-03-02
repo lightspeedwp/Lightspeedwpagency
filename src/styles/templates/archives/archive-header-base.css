@@ -1,0 +1,100 @@
+/**
+ * Archive Header Base Styles
+ *
+ * Shared header styles for all archive templates.
+ * 100% CSS variables — ONLY uses fonts, colors, spacing, and typography from design system.
+ * 
+ * Used by:
+ * - Category archives
+ * - Tag archives
+ * - Author archives
+ * - Date archives
+ * - Portfolio archives
+ * - Video archives
+ * - Podcast archives
+ * - Testimonial archives
+ * 
+ * @see /src/styles/templates/archive.css
+ */
+
+/* ============================================
+   ARCHIVE HEADER
+   ============================================ */
+
+.archive-header {
+  padding-top: var(--spacing-12);
+  padding-bottom: var(--spacing-12);
+  background-color: var(--background);
+  text-align: center;
+  border-bottom: 1px solid var(--border-soft);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Gradient wash behind archive header */
+.archive-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 60%, color-mix(in srgb, var(--primary) 5%, transparent), transparent 70%);
+  pointer-events: none;
+}
+
+.dark .archive-header::before {
+  background: radial-gradient(ellipse at 50% 60%, color-mix(in srgb, var(--primary) 10%, transparent), transparent 70%);
+}
+
+.archive-header__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-4xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-4);
+  color: var(--foreground);
+  line-height: var(--line-height-tight);
+  position: relative;
+}
+
+/* Gradient underline on archive titles */
+.archive-header__title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  margin: var(--spacing-4) auto 0;
+  border-radius: var(--radius-full);
+}
+
+.dark .archive-header__title::after {
+  box-shadow: var(--shadow-glow-sm);
+}
+
+.archive-header__description {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  color: var(--muted-foreground);
+  max-width: 65ch;
+  margin: 0 auto;
+  line-height: var(--line-height-relaxed);
+}
+
+/* ============================================
+   BREADCRUMBS
+   ============================================ */
+
+.archive-breadcrumbs {
+  padding-top: var(--spacing-4);
+  padding-bottom: var(--spacing-4);
+  background-color: var(--background);
+  border-bottom: 1px solid var(--border-soft);
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .archive-header::before {
+    animation: none;
+  }
+}

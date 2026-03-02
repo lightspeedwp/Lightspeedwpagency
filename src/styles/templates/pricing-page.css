@@ -1,19 +1,25 @@
 /**
- * Pricing Page Template Styles
+ * Pricing Page Styles
  *
- * Funky Neon Redesign — dedicated styles for the Pricing page.
- * 100% CSS variables, no hardcoded values.
  * BEM naming: .pricing-page__*
- *
- * Sections:
- *   1. Funky Neon Hero (mesh grid, orbs, gradient text)
- *   2. Website Packages (glow cards, glassmorphism popular)
- *   3. Support Packages (gradient bg, glow cards)
- *   4. Payment Options (glassmorphism cards, neon icons)
- *   5. Dark mode overrides
- *   6. Reduced motion
- *   7. Mobile overrides
+ * 100% CSS variables, zero hardcoded values.
  */
+
+/* ============================================
+   BASE IMPORTS — Phase 1 Optimization
+   ============================================ */
+
+/**
+ * Import shared base modules to reduce duplication
+ * @see /docs/css-base-extraction-guide.md
+ */
+@import '../base/grid-utilities.css';
+@import '../base/card-base.css';
+@import '../patterns/hero/hero-base.css';
+
+/* ============================================
+   PRICING PAGE STYLES
+   ============================================ */
 
 /* ============================================
    1. FUNKY NEON HERO

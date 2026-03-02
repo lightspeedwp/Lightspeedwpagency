@@ -8,8 +8,7 @@
  * @see {@link /guidelines/patterns/TestimonialGrid.md}
  */
 
-import { Star } from 'lucide-react';
-
+import { TestimonialCard, type TestimonialCardData } from './TestimonialCard';
 
 export interface Testimonial {
   /** Testimonial quote/text */
@@ -36,7 +35,7 @@ export interface TestimonialGridProps {
   /** Number of columns (1-3, default: 3) */
   columns?: 1 | 2 | 3;
   /** Visual variant */
-  variant?: 'default' | 'cards' | 'minimal' | 'featured' | 'funky';
+  variant?: 'default' | 'cards' | 'minimal' | 'featured' | 'funky' | 'glass';
   /** Show ratings */
   showRating?: boolean;
   /** Show avatars */
@@ -49,6 +48,11 @@ export interface TestimonialGridProps {
   gap?: string;
 }
 
+/**
+ * TestimonialGrid Component
+ *
+ * Renders a grid of TestimonialCard components.
+ */
 export function TestimonialGrid({
   testimonials,
   columns = 3,
@@ -68,27 +72,17 @@ export function TestimonialGrid({
   // Max width class
   const maxWidthClass = maxWidth !== 'none' ? `wp-max-w-${maxWidth}` : '';
 
-  // Render stars for rating
-  const renderStars = (rating: number) => {
-    return (
-      <div className="testimonial-card__rating">
-        {[...Array(5)].map((_, i) => {
-          const starClasses = [
-            'testimonial-card__star',
-            i < rating ? 'testimonial-card__star--filled' : 'testimonial-card__star--empty'
-          ].filter(Boolean).join(' ');
-
-          return (
-            <Star
-              key={i}
-              size={16}
-              className={starClasses}
-            />
-          );
-        })}
-      </div>
-    );
+  // Map variant names to TestimonialCard variants
+  const cardVariantMap: Record<string, 'default' | 'glass' | 'funky' | 'compact' | 'minimal' | 'featured'> = {
+    cards: 'default',
+    default: 'default',
+    minimal: 'minimal',
+    featured: 'featured',
+    funky: 'funky',
+    glass: 'glass',
   };
+
+  const cardVariant = cardVariantMap[variant] || 'default';
 
   return (
     <div className={maxWidthClass}>
@@ -97,67 +91,26 @@ export function TestimonialGrid({
         style={{ gap }}
       >
         {testimonials.map((testimonial, index) => {
-          // Build card classes
-          const cardClasses = [
-            'testimonial-card',
-            `testimonial-card--${variant}`
-          ].filter(Boolean).join(' ');
+          const cardData: TestimonialCardData = {
+            quote: testimonial.quote,
+            author: testimonial.author,
+            role: testimonial.role,
+            company: testimonial.company,
+            avatar: testimonial.avatar,
+            rating: testimonial.rating,
+            date: testimonial.date,
+            companyLogo: testimonial.companyLogo,
+          };
 
           return (
-            <div
+            <TestimonialCard
               key={index}
-              className={cardClasses}
-            >
-              {/* Rating */}
-              {showRating && testimonial.rating && renderStars(testimonial.rating)}
-
-              {/* Quote */}
-              <blockquote className="testimonial-card__quote">
-                "{testimonial.quote}"
-              </blockquote>
-
-              {/* Author Info */}
-              <div className="testimonial-card__author">
-                {/* Avatar */}
-                {showAvatar && testimonial.avatar && (
-                  <img
-                    src={testimonial.avatar}
-                    alt={testimonial.author}
-                    className="testimonial-card__avatar"
-                  />
-                )}
-
-                {/* Author Details */}
-                <div className="testimonial-card__author-details">
-                  <div className="testimonial-card__author-name">
-                    {testimonial.author}
-                  </div>
-
-                  {(testimonial.role || testimonial.company) && (
-                    <div className="testimonial-card__author-role">
-                      {testimonial.role}
-                      {testimonial.role && testimonial.company && ' at '}
-                      {testimonial.company}
-                    </div>
-                  )}
-
-                  {testimonial.date && (
-                    <div className="testimonial-card__author-date">
-                      {testimonial.date}
-                    </div>
-                  )}
-                </div>
-
-                {/* Company Logo */}
-                {showCompanyLogo && testimonial.companyLogo && (
-                  <img
-                    src={testimonial.companyLogo}
-                    alt={`${testimonial.company} logo`}
-                    className="testimonial-card__company-logo"
-                  />
-                )}
-              </div>
-            </div>
+              testimonial={cardData}
+              variant={cardVariant}
+              showRating={showRating}
+              showAvatar={showAvatar}
+              showCompanyLogo={showCompanyLogo}
+            />
           );
         })}
       </div>

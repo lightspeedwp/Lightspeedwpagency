@@ -18,7 +18,9 @@
 
 import '../../../styles/templates/careers-page.css';
 import { Container } from '../common/Container';
+import { Section } from '../common/Section';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
+import { FeatureList } from '../patterns/FeatureList';
 import { Button } from '../blocks/design/Buttons';
 import { FunkyCTA } from '../patterns/FunkyCTA';
 import { useHeroParallax } from '../../hooks/useHeroParallax';
@@ -94,19 +96,13 @@ export function CareersTemplate() {
             </h2>
           </ScrollReveal>
 
-          <div className="careers__benefits-grid">
-            {careersPageBenefits.benefits.map((benefit) => (
-              <ScrollReveal key={benefit.title} animation="fade-up">
-                <article className="careers__benefit-card">
-                  <div className="careers__benefit-icon">
-                    <benefit.icon size={28} />
-                  </div>
-                  <h3 className="careers__benefit-title">{benefit.title}</h3>
-                  <p className="careers__benefit-desc">{benefit.description}</p>
-                </article>
-              </ScrollReveal>
-            ))}
-          </div>
+          <FeatureList 
+            items={careersPageBenefits.benefits}
+            columns={4}
+            variant="glass"
+            iconStyle="rounded"
+            className="careers__benefits-grid"
+          />
         </Container>
       </section>
 

@@ -6,6 +6,9 @@
 
 import { Target, Users, FileText, TrendingUp, Calendar, Award } from 'lucide-react';
 import { Link } from 'react-router';
+import { FeatureList } from '../patterns/FeatureList';
+import { CheckList } from '../patterns/CheckList';
+import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
 
 export const ContentStrategyServiceTemplate = () => {
   const benefits = [
@@ -62,20 +65,13 @@ export const ContentStrategyServiceTemplate = () => {
           <p className="content-strategy-service__section-description">Comprehensive strategy services that align content with business goals</p>
         </div>
         
-        <div className="content-strategy-service__benefits-grid">
-          {benefits.map((benefit, index) => {
-            const Icon = benefit.icon;
-            return (
-              <div key={index} className="content-strategy-service__benefit-card">
-                <div className="content-strategy-service__benefit-icon">
-                  <Icon className="content-strategy-service__benefit-icon-svg" />
-                </div>
-                <h3 className="content-strategy-service__benefit-title">{benefit.title}</h3>
-                <p className="content-strategy-service__benefit-description">{benefit.description}</p>
-              </div>
-            );
-          })}
-        </div>
+        <FeatureList 
+          items={benefits}
+          columns={3}
+          variant="glass"
+          iconStyle="rounded"
+          className="content-strategy-service__benefits-grid"
+        />
       </section>
 
       <section className="content-strategy-service__deliverables">
@@ -84,14 +80,11 @@ export const ContentStrategyServiceTemplate = () => {
           <p className="content-strategy-service__section-description">Complete strategic framework for content success</p>
         </div>
         
-        <div className="content-strategy-service__deliverables-grid">
-          {deliverables.map((item, index) => (
-            <div key={index} className="content-strategy-service__deliverable-item">
-              <div className="content-strategy-service__deliverable-icon">✓</div>
-              <div className="content-strategy-service__deliverable-text">{item}</div>
-            </div>
-          ))}
-        </div>
+        <CheckList 
+          items={deliverables}
+          variant="default"
+          className="content-strategy-service__deliverables-grid"
+        />
       </section>
 
       <section className="content-strategy-service__results">
@@ -108,6 +101,9 @@ export const ContentStrategyServiceTemplate = () => {
           ))}
         </div>
       </section>
+
+      {/* Client Testimonials */}
+      <ServiceTestimonial serviceSlug="content-strategy" />
 
       <section className="content-strategy-service__cta">
         <div className="content-strategy-service__cta-content">

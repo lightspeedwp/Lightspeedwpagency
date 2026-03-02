@@ -1,21 +1,37 @@
 /**
- * Tour Operator Archive Template Styles
+ * Tour Operator Archive Styles
  *
- * BEM naming: .to-archive-*
- * 100% CSS variables.
+ * BEM naming: .tour-operator-archive__*
+ * 100% CSS variables, zero hardcoded values.
  */
+
+/* ============================================
+   BASE IMPORTS — Phase 1 Optimization
+   ============================================ */
+
+/**
+ * Import shared base modules to reduce duplication
+ * @see /docs/css-base-extraction-guide.md
+ */
+@import '../base/grid-utilities.css';
+@import '../base/card-base.css';
+@import '../patterns/hero/hero-base.css';
+
+/* ============================================
+   TOUR OPERATOR ARCHIVE STYLES
+   ============================================ */
 
 /* ============================================
    HERO
    ============================================ */
 
-.to-archive__hero {
+.tour-operator-archive__hero {
   background-color: var(--primary);
   color: var(--primary-foreground);
   padding: var(--spacing-20) 0;
 }
 
-.to-archive__hero-title {
+.tour-operator-archive__hero-title {
   font-family: var(--font-primary);
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: var(--font-weight-bold);
@@ -23,7 +39,7 @@
   color: inherit;
 }
 
-.to-archive__hero-desc {
+.tour-operator-archive__hero-desc {
   font-family: var(--font-primary);
   font-size: var(--text-xl);
   opacity: 0.9;
@@ -36,7 +52,7 @@
    SECTION TITLE
    ============================================ */
 
-.to-archive__section-title {
+.tour-operator-archive__section-title {
   font-family: var(--font-primary);
   font-size: var(--text-h2);
   font-weight: var(--font-weight-bold);
@@ -49,7 +65,7 @@
    TOURS GRID
    ============================================ */
 
-.to-archive__tours-grid {
+.tour-operator-archive__tours-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--spacing-8);
@@ -57,13 +73,13 @@
 }
 
 @media (min-width: 768px) {
-  .to-archive__tours-grid {
+  .tour-operator-archive__tours-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (min-width: 1024px) {
-  .to-archive__tours-grid {
+  .tour-operator-archive__tours-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
@@ -73,7 +89,7 @@
    TOUR CARD
    ============================================ */
 
-.to-archive__tour-card {
+.tour-operator-archive__tour-card {
   background-color: var(--card);
   border-radius: var(--radius-xl);
   overflow: hidden;
@@ -84,34 +100,34 @@
               box-shadow var(--transition-base) ease;
 }
 
-.to-archive__tour-card:hover {
+.tour-operator-archive__tour-card:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-xl);
 }
 
-.to-archive__tour-card:focus-visible {
+.tour-operator-archive__tour-card:focus-visible {
   outline: 2px solid var(--primary);
   outline-offset: 2px;
 }
 
-.to-archive__tour-image-wrapper {
+.tour-operator-archive__tour-image-wrapper {
   position: relative;
   height: 256px;
   overflow: hidden;
 }
 
-.to-archive__tour-image {
+.tour-operator-archive__tour-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.5s ease;
 }
 
-.to-archive__tour-card:hover .to-archive__tour-image {
+.tour-operator-archive__tour-card:hover .tour-operator-archive__tour-image {
   transform: scale(1.05);
 }
 
-.to-archive__tour-duration {
+.tour-operator-archive__tour-duration {
   position: absolute;
   top: var(--spacing-4);
   right: var(--spacing-4);
@@ -128,11 +144,11 @@
   gap: var(--spacing-1);
 }
 
-.to-archive__tour-body {
+.tour-operator-archive__tour-body {
   padding: var(--spacing-6);
 }
 
-.to-archive__tour-location {
+.tour-operator-archive__tour-location {
   display: flex;
   align-items: center;
   gap: var(--spacing-2);
@@ -142,7 +158,7 @@
   margin-bottom: var(--spacing-2);
 }
 
-.to-archive__tour-title {
+.tour-operator-archive__tour-title {
   font-family: var(--font-primary);
   font-size: var(--text-xl);
   font-weight: var(--font-weight-bold);
@@ -151,11 +167,11 @@
   transition: color var(--transition-base) ease;
 }
 
-.to-archive__tour-card:hover .to-archive__tour-title {
+.tour-operator-archive__tour-card:hover .tour-operator-archive__tour-title {
   color: var(--primary);
 }
 
-.to-archive__tour-excerpt {
+.tour-operator-archive__tour-excerpt {
   font-family: var(--font-primary);
   font-size: var(--text-sm);
   color: var(--muted-foreground);
@@ -167,7 +183,7 @@
   overflow: hidden;
 }
 
-.to-archive__tour-footer {
+.tour-operator-archive__tour-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -176,14 +192,14 @@
   margin-top: auto;
 }
 
-.to-archive__tour-price {
+.tour-operator-archive__tour-price {
   font-family: var(--font-primary);
   font-size: var(--text-lg);
   font-weight: var(--font-weight-bold);
   color: var(--primary);
 }
 
-.to-archive__tour-link {
+.tour-operator-archive__tour-link {
   font-family: var(--font-primary);
   font-size: var(--text-sm);
   font-weight: var(--font-weight-semibold);
@@ -194,7 +210,7 @@
   padding: 0;
 }
 
-.to-archive__tour-link:hover {
+.tour-operator-archive__tour-link:hover {
   text-decoration: underline;
 }
 
@@ -203,14 +219,14 @@
    ACCOMMODATIONS GRID
    ============================================ */
 
-.to-archive__acc-grid {
+.tour-operator-archive__acc-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--spacing-8);
 }
 
 @media (min-width: 768px) {
-  .to-archive__acc-grid {
+  .tour-operator-archive__acc-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -220,7 +236,7 @@
    ACCOMMODATION CARD
    ============================================ */
 
-.to-archive__acc-card {
+.tour-operator-archive__acc-card {
   display: flex;
   flex-direction: column;
   background-color: var(--card);
@@ -234,46 +250,46 @@
 }
 
 @media (min-width: 768px) {
-  .to-archive__acc-card {
+  .tour-operator-archive__acc-card {
     flex-direction: row;
   }
 }
 
-.to-archive__acc-card:hover {
+.tour-operator-archive__acc-card:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-xl);
 }
 
-.to-archive__acc-card:focus-visible {
+.tour-operator-archive__acc-card:focus-visible {
   outline: 2px solid var(--primary);
   outline-offset: 2px;
 }
 
-.to-archive__acc-image-wrapper {
+.tour-operator-archive__acc-image-wrapper {
   height: 256px;
   position: relative;
   overflow: hidden;
 }
 
 @media (min-width: 768px) {
-  .to-archive__acc-image-wrapper {
+  .tour-operator-archive__acc-image-wrapper {
     width: 40%;
     height: auto;
   }
 }
 
-.to-archive__acc-image {
+.tour-operator-archive__acc-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.5s ease;
 }
 
-.to-archive__acc-card:hover .to-archive__acc-image {
+.tour-operator-archive__acc-card:hover .tour-operator-archive__acc-image {
   transform: scale(1.05);
 }
 
-.to-archive__acc-body {
+.tour-operator-archive__acc-body {
   padding: var(--spacing-6);
   display: flex;
   flex-direction: column;
@@ -281,12 +297,12 @@
 }
 
 @media (min-width: 768px) {
-  .to-archive__acc-body {
+  .tour-operator-archive__acc-body {
     width: 60%;
   }
 }
 
-.to-archive__acc-stars {
+.tour-operator-archive__acc-stars {
   display: flex;
   align-items: center;
   gap: var(--spacing-1);
@@ -294,7 +310,7 @@
   margin-bottom: var(--spacing-2);
 }
 
-.to-archive__acc-title {
+.tour-operator-archive__acc-title {
   font-family: var(--font-primary);
   font-size: var(--text-2xl);
   font-weight: var(--font-weight-bold);
@@ -303,11 +319,11 @@
   transition: color var(--transition-base) ease;
 }
 
-.to-archive__acc-card:hover .to-archive__acc-title {
+.tour-operator-archive__acc-card:hover .tour-operator-archive__acc-title {
   color: var(--primary);
 }
 
-.to-archive__acc-desc {
+.tour-operator-archive__acc-desc {
   font-family: var(--font-primary);
   font-size: var(--text-sm);
   color: var(--muted-foreground);
@@ -315,14 +331,14 @@
   margin: 0 0 var(--spacing-4) 0;
 }
 
-.to-archive__acc-amenities {
+.tour-operator-archive__acc-amenities {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: var(--spacing-2);
   margin-bottom: var(--spacing-6);
 }
 
-.to-archive__acc-amenity {
+.tour-operator-archive__acc-amenity {
   display: flex;
   align-items: center;
   gap: var(--spacing-2);
@@ -331,26 +347,26 @@
   color: var(--foreground);
 }
 
-.to-archive__acc-amenity-icon {
+.tour-operator-archive__acc-amenity-icon {
   color: var(--primary);
   flex-shrink: 0;
 }
 
-.to-archive__acc-footer {
+.tour-operator-archive__acc-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-top: auto;
 }
 
-.to-archive__acc-price {
+.tour-operator-archive__acc-price {
   font-family: var(--font-primary);
   font-size: var(--text-lg);
   font-weight: var(--font-weight-bold);
   color: var(--foreground);
 }
 
-.to-archive__acc-book-btn {
+.tour-operator-archive__acc-book-btn {
   padding: var(--spacing-2) var(--spacing-4);
   background-color: var(--primary);
   color: var(--primary-foreground);
@@ -363,11 +379,11 @@
   transition: background-color var(--transition-base) ease;
 }
 
-.to-archive__acc-book-btn:hover {
+.tour-operator-archive__acc-book-btn:hover {
   opacity: 0.9;
 }
 
-.to-archive__acc-book-btn:focus-visible {
+.tour-operator-archive__acc-book-btn:focus-visible {
   outline: 2px solid var(--primary);
   outline-offset: 2px;
 }
@@ -377,18 +393,18 @@
    DARK MODE
    ============================================ */
 
-.dark .to-archive__tour-card,
-.dark .to-archive__acc-card {
+.dark .tour-operator-archive__tour-card,
+.dark .tour-operator-archive__acc-card {
   background-color: var(--card);
   border-color: var(--border);
 }
 
-.dark .to-archive__tour-card:hover,
-.dark .to-archive__acc-card:hover {
+.dark .tour-operator-archive__tour-card:hover,
+.dark .tour-operator-archive__acc-card:hover {
   box-shadow: var(--shadow-neon);
 }
 
-.dark .to-archive__tour-duration {
+.dark .tour-operator-archive__tour-duration {
   background-color: var(--overlay-dark);
   color: var(--primary-foreground);
 }

@@ -17,9 +17,9 @@
  * ```
  */
 
-import { Star } from 'lucide-react';
 import { getTestimonialsForService, getFeaturedTestimonials, type ServiceTestimonial } from '../../data/service-testimonials';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
+import { TestimonialCard, type TestimonialCardData } from './TestimonialCard';
 // CSS imported centrally via /src/styles/index.css
 
 export interface ServiceTestimonialsProps {
@@ -40,6 +40,22 @@ export interface ServiceTestimonialsProps {
   
   /** Additional CSS classes */
   className?: string;
+}
+
+/**
+ * Maps a ServiceTestimonial to TestimonialCardData
+ */
+function mapToCardData(t: ServiceTestimonial): TestimonialCardData {
+  return {
+    quote: t.quote,
+    author: t.clientName,
+    role: t.role,
+    company: t.company,
+    avatar: t.photo,
+    rating: t.rating,
+    companyLogo: t.companyLogo,
+    serviceTags: t.serviceTags,
+  };
 }
 
 /**
@@ -96,107 +112,16 @@ export const ServiceTestimonials = ({
       <div className="service-testimonials__grid">
         {displayTestimonials.map((testimonial) => (
           <ScrollReveal key={testimonial.id} animation="fade-up">
-            <TestimonialCard testimonial={testimonial} />
+            <TestimonialCard
+              testimonial={mapToCardData(testimonial)}
+              variant="glass"
+              showRating={true}
+              showAvatar={true}
+              showServiceTags={true}
+            />
           </ScrollReveal>
         ))}
       </div>
-    </div>
-  );
-};
-
-/**
- * TestimonialCard Sub-Component
- * 
- * Individual testimonial card with quote, rating, and client info.
- */
-const TestimonialCard = ({ testimonial }: { testimonial: ServiceTestimonial }) => {
-  return (
-    <div className="service-testimonials__card">
-      {/* Quote */}
-      <blockquote className="service-testimonials__quote" style={{
-        fontFamily: 'var(--font-primary)',
-        fontSize: 'var(--text-base)',
-        color: 'var(--foreground)'
-      }}>
-        "{testimonial.quote}"
-      </blockquote>
-      
-      {/* Rating (if exists) */}
-      {testimonial.rating && (
-        <div className="service-testimonials__rating" role="img" aria-label={`${testimonial.rating} out of 5 stars`}>
-          {Array.from({ length: 5 }).map((_, i) => (
-            <Star 
-              key={i} 
-              className={i < testimonial.rating! ? 'filled' : 'empty'}
-              size={16}
-              fill={i < testimonial.rating! ? 'currentColor' : 'none'}
-            />
-          ))}
-        </div>
-      )}
-      
-      {/* Client Info */}
-      <div className="service-testimonials__client">
-        {testimonial.photo && (
-          <img 
-            src={testimonial.photo} 
-            alt={testimonial.clientName}
-            className="service-testimonials__photo"
-            width={48}
-            height={48}
-          />
-        )}
-        <div className="service-testimonials__details">
-          <p className="service-testimonials__name" style={{
-            fontFamily: 'var(--font-primary)',
-            fontSize: 'var(--text-base)',
-            color: 'var(--foreground)'
-          }}>
-            {testimonial.clientName}
-          </p>
-          <p className="service-testimonials__role" style={{
-            fontFamily: 'var(--font-secondary)',
-            fontSize: 'var(--text-sm)',
-            color: 'var(--muted-foreground)'
-          }}>
-            {testimonial.role}, {testimonial.company}
-          </p>
-        </div>
-      </div>
-      
-      {/* Service Tags */}
-      {testimonial.serviceTags && testimonial.serviceTags.length > 0 && (
-        <div className="service-testimonials__tags">
-          {testimonial.serviceTags.map(tag => (
-            <span 
-              key={tag} 
-              className="service-testimonials__tag"
-              style={{
-                fontFamily: 'var(--font-secondary)',
-                fontSize: 'var(--text-xs)'
-              }}
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-      )}
-      
-      {/* Project Details (if exists) */}
-      {testimonial.project && (
-        <div className="service-testimonials__project" style={{
-          fontFamily: 'var(--font-secondary)',
-          fontSize: 'var(--text-sm)',
-          color: 'var(--muted-foreground)'
-        }}>
-          <strong style={{ color: 'var(--foreground)' }}>
-            {testimonial.project.name}
-          </strong>
-          {testimonial.project.description && (
-            <span> — {testimonial.project.description}</span>
-          )}
-        </div>
-      )}
     </div>
   );
 };

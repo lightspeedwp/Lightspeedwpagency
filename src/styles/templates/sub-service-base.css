@@ -1,19 +1,30 @@
 /**
- * Sub-Service Template Base Styles
- * 
- * Shared styles for all sub-service pages
- * Can be imported and extended by specific service CSS files
- * 
- * Design System Compliance:
- * - All colors use CSS variables
- * - All spacing uses CSS variables
- * - All typography uses CSS variables
- * - Font families: var(--font-primary) and var(--font-secondary) only
+ * Sub-Service Base Styles
+ *
+ * Shared base styles for all sub-service templates (AI & Content categories).
+ * BEM naming: .sub-service-base__*
+ * 100% CSS variables, zero hardcoded values.
  */
+
+/* ============================================
+   BASE IMPORTS — Phase 1 Optimization
+   ============================================ */
+
+/**
+ * Import shared base modules to reduce duplication
+ * @see /docs/css-base-extraction-guide.md
+ */
+@import '../base/grid-utilities.css';
+@import '../base/card-base.css';
+@import '../patterns/hero/hero-base.css';
+
+/* ============================================
+   SUB-SERVICE BASE STYLES
+   ============================================ */
 
 @layer components {
   /* Hero Section Base */
-  .sub-service-hero {
+  .sub-service-base__hero {
     background: var(--background);
     padding: var(--spacing-24) var(--spacing-6);
     text-align: center;
@@ -21,7 +32,7 @@
     overflow: hidden;
   }
 
-  .sub-service-hero::before {
+  .sub-service-base__hero::before {
     content: '';
     position: absolute;
     top: -50%;
@@ -33,7 +44,7 @@
     pointer-events: none;
   }
 
-  .sub-service-hero-content {
+  .sub-service-base__hero-content {
     max-width: 800px;
     margin: 0 auto;
     position: relative;
@@ -41,7 +52,7 @@
   }
 
   /* Breadcrumb Base */
-  .sub-service-breadcrumb {
+  .sub-service-base__breadcrumb {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -51,27 +62,27 @@
     font-size: var(--text-sm);
   }
 
-  .sub-service-breadcrumb-link {
+  .sub-service-base__breadcrumb-link {
     color: var(--muted-foreground);
     text-decoration: none;
     transition: color 0.2s ease;
   }
 
-  .sub-service-breadcrumb-link:hover {
+  .sub-service-base__breadcrumb-link:hover {
     color: var(--primary);
   }
 
-  .sub-service-breadcrumb-separator {
+  .sub-service-base__breadcrumb-separator {
     color: var(--muted-foreground);
   }
 
-  .sub-service-breadcrumb-current {
+  .sub-service-base__breadcrumb-current {
     color: var(--foreground);
     font-weight: var(--font-weight-medium);
   }
 
   /* Hero Typography */
-  .sub-service-hero-title {
+  .sub-service-base__hero-title {
     font-family: var(--font-primary);
     font-size: var(--text-h1);
     font-weight: var(--font-weight-bold);
@@ -80,7 +91,7 @@
     line-height: var(--leading-tight);
   }
 
-  .sub-service-hero-description {
+  .sub-service-base__hero-description {
     font-family: var(--font-primary);
     font-size: var(--text-lg);
     color: var(--muted-foreground);
@@ -88,7 +99,7 @@
     line-height: var(--leading-relaxed);
   }
 
-  .sub-service-hero-cta {
+  .sub-service-base__hero-cta {
     display: flex;
     gap: var(--spacing-4);
     justify-content: center;
@@ -96,12 +107,12 @@
   }
 
   /* Section Headers Base */
-  .sub-service-section-header {
+  .sub-service-base__section-header {
     text-align: center;
     margin-bottom: var(--spacing-12);
   }
 
-  .sub-service-section-title {
+  .sub-service-base__section-title {
     font-family: var(--font-primary);
     font-size: var(--text-h2);
     font-weight: var(--font-weight-bold);
@@ -109,7 +120,7 @@
     margin-bottom: var(--spacing-4);
   }
 
-  .sub-service-section-description {
+  .sub-service-base__section-description {
     font-family: var(--font-primary);
     font-size: var(--text-lg);
     color: var(--muted-foreground);
@@ -118,12 +129,12 @@
   }
 
   /* Benefits Section Base */
-  .sub-service-benefits {
+  .sub-service-base__benefits {
     padding: var(--spacing-24) var(--spacing-6);
     background: var(--card);
   }
 
-  .sub-service-benefits-grid {
+  .sub-service-base__benefits-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: var(--spacing-8);
@@ -131,7 +142,7 @@
     margin: 0 auto;
   }
 
-  .sub-service-benefit-card {
+  .sub-service-base__benefit-card {
     background: var(--background);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
@@ -139,13 +150,13 @@
     transition: all 0.3s ease;
   }
 
-  .sub-service-benefit-card:hover {
+  .sub-service-base__benefit-card:hover {
     border-color: var(--primary);
     box-shadow: var(--shadow-lg);
     transform: translateY(-2px);
   }
 
-  .sub-service-benefit-icon {
+  .sub-service-base__benefit-icon {
     width: 48px;
     height: 48px;
     background: var(--primary);
@@ -156,13 +167,13 @@
     margin-bottom: var(--spacing-4);
   }
 
-  .sub-service-benefit-icon-svg {
+  .sub-service-base__benefit-icon-svg {
     width: 24px;
     height: 24px;
     color: var(--primary-foreground);
   }
 
-  .sub-service-benefit-title {
+  .sub-service-base__benefit-title {
     font-family: var(--font-primary);
     font-size: var(--text-h4);
     font-weight: var(--font-weight-semibold);
@@ -170,7 +181,7 @@
     margin-bottom: var(--spacing-3);
   }
 
-  .sub-service-benefit-description {
+  .sub-service-base__benefit-description {
     font-family: var(--font-primary);
     font-size: var(--text-base);
     color: var(--muted-foreground);
@@ -178,12 +189,12 @@
   }
 
   /* Results Section Base */
-  .sub-service-results {
+  .sub-service-base__results {
     padding: var(--spacing-24) var(--spacing-6);
     background: var(--card);
   }
 
-  .sub-service-results-grid {
+  .sub-service-base__results-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: var(--spacing-8);
@@ -191,7 +202,7 @@
     margin: 0 auto;
   }
 
-  .sub-service-result-card {
+  .sub-service-base__result-card {
     background: var(--background);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
@@ -199,7 +210,7 @@
     text-align: center;
   }
 
-  .sub-service-result-metric {
+  .sub-service-base__result-metric {
     font-family: var(--font-primary);
     font-size: var(--text-h1);
     font-weight: var(--font-weight-bold);
@@ -208,7 +219,7 @@
     line-height: 1;
   }
 
-  .sub-service-result-label {
+  .sub-service-base__result-label {
     font-family: var(--font-secondary);
     font-size: var(--text-sm);
     color: var(--muted-foreground);
@@ -216,18 +227,18 @@
   }
 
   /* CTA Section Base */
-  .sub-service-cta {
+  .sub-service-base__cta {
     padding: var(--spacing-24) var(--spacing-6);
     background: var(--primary);
     text-align: center;
   }
 
-  .sub-service-cta-content {
+  .sub-service-base__cta-content {
     max-width: 700px;
     margin: 0 auto;
   }
 
-  .sub-service-cta-title {
+  .sub-service-base__cta-title {
     font-family: var(--font-primary);
     font-size: var(--text-h2);
     font-weight: var(--font-weight-bold);
@@ -235,7 +246,7 @@
     margin-bottom: var(--spacing-4);
   }
 
-  .sub-service-cta-description {
+  .sub-service-base__cta-description {
     font-family: var(--font-primary);
     font-size: var(--text-lg);
     color: var(--primary-foreground);
@@ -245,7 +256,7 @@
   }
 
   /* Buttons Base */
-  .sub-service-cta-button {
+  .sub-service-base__cta-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -260,79 +271,79 @@
     border: 2px solid transparent;
   }
 
-  .sub-service-cta-button--primary {
+  .sub-service-base__cta-button--primary {
     background: var(--primary);
     color: var(--primary-foreground);
     border-color: var(--primary);
   }
 
-  .sub-service-cta-button--primary:hover {
+  .sub-service-base__cta-button--primary:hover {
     background: var(--primary-dark);
     border-color: var(--primary-dark);
     transform: translateY(-2px);
     box-shadow: var(--shadow-lg);
   }
 
-  .sub-service-cta-button--secondary {
+  .sub-service-base__cta-button--secondary {
     background: transparent;
     color: var(--primary);
     border-color: var(--primary);
   }
 
-  .sub-service-cta-button--secondary:hover {
+  .sub-service-base__cta-button--secondary:hover {
     background: var(--primary);
     color: var(--primary-foreground);
   }
 
   /* Responsive Base */
   @media (max-width: 768px) {
-    .sub-service-hero {
+    .sub-service-base__hero {
       padding: var(--spacing-16) var(--spacing-4);
     }
 
-    .sub-service-benefits,
-    .sub-service-results,
-    .sub-service-cta {
+    .sub-service-base__benefits,
+    .sub-service-base__results,
+    .sub-service-base__cta {
       padding: var(--spacing-16) var(--spacing-4);
     }
 
-    .sub-service-benefits-grid {
+    .sub-service-base__benefits-grid {
       grid-template-columns: 1fr;
     }
 
-    .sub-service-results-grid {
+    .sub-service-base__results-grid {
       grid-template-columns: repeat(2, 1fr);
     }
 
-    .sub-service-hero-cta {
+    .sub-service-base__hero-cta {
       flex-direction: column;
     }
 
-    .sub-service-cta-button {
+    .sub-service-base__cta-button {
       width: 100%;
     }
   }
 
   /* Dark Mode Base */
   @media (prefers-color-scheme: dark) {
-    .sub-service-hero::before {
+    .sub-service-base__hero::before {
       opacity: 0.05;
     }
 
-    .sub-service-benefit-card:hover {
+    .sub-service-base__benefit-card:hover {
       box-shadow: var(--shadow-xl);
     }
   }
 
   /* Reduced Motion Base */
   @media (prefers-reduced-motion: reduce) {
-    .sub-service-benefit-card,
-    .sub-service-cta-button {
+    .sub-service-base__benefit-card,
+    .sub-service-base__cta-button {
       transition: none;
     }
 
-    .sub-service-benefit-card:hover,
-    .sub-service-cta-button--primary:hover {
+    .sub-service-base__benefit-card:hover,
+    .sub-service-base__cta-button--primary:hover {
       transform: none;
     }
   }

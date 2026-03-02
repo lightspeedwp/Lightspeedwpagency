@@ -8,6 +8,8 @@
 
 import { HeadphonesIcon, Clock, Wrench, Shield, Zap, TrendingUp } from 'lucide-react';
 import { Link } from 'react-router';
+import { FeatureList } from '../patterns/FeatureList';
+import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
 
 export const SupportServiceTemplate = () => {
   const benefits = [
@@ -108,20 +110,13 @@ export const SupportServiceTemplate = () => {
           </p>
         </div>
         
-        <div className="support-service__benefits-grid">
-          {benefits.map((benefit, index) => {
-            const Icon = benefit.icon;
-            return (
-              <div key={index} className="support-service__benefit-card">
-                <div className="support-service__benefit-icon">
-                  <Icon className="support-service__benefit-icon-svg" />
-                </div>
-                <h3 className="support-service__benefit-title">{benefit.title}</h3>
-                <p className="support-service__benefit-description">{benefit.description}</p>
-              </div>
-            );
-          })}
-        </div>
+        <FeatureList 
+          items={benefits}
+          columns={3}
+          variant="glass"
+          iconStyle="rounded"
+          className="support-service__benefits-grid"
+        />
       </section>
 
       <section className="support-service__plans">
@@ -164,6 +159,9 @@ export const SupportServiceTemplate = () => {
           ))}
         </div>
       </section>
+
+      {/* Client Testimonials */}
+      <ServiceTestimonial serviceSlug="support" />
 
       <section className="support-service__cta">
         <div className="support-service__cta-content">

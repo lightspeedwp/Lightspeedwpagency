@@ -6,16 +6,18 @@
  * A compact testimonial component for inline placement on service/solution pages.
  * Shows 2-3 testimonials in a horizontal layout with quotes and ratings.
  * 
+ * Uses the shared TestimonialCard component for card rendering.
+ * 
  * Design Token Compliance:
  * - Typography: var(--text-*) only
  * - Colors: var(--*) semantic roles
- * - Spacing: Tailwind classes only
- * - Fonts: Lexend (headings), Manrope (body)
+ * - Fonts: var(--font-primary), var(--font-secondary)
  * 
- * @see /guidelines/patterns/TestimonialInline.md
+ * @see /src/styles/patterns/testimonial-inline.css
+ * @see /src/app/components/patterns/TestimonialCard.tsx
  */
 
-import { Star, Quote } from 'lucide-react';
+import { TestimonialCard, type TestimonialCardData } from './TestimonialCard';
 
 
 export interface TestimonialInlineProps {
@@ -56,57 +58,27 @@ export function TestimonialInline({
       <div 
         className={`testimonial-inline__grid testimonial-inline__grid--${gridCols}-cols`}
       >
-        {testimonials.map((testimonial, index) => (
-          <div
-            key={index}
-            className={`testimonial-inline__card ${compact ? 'testimonial-inline__card--compact' : 'testimonial-inline__card--default'}`}
-          >
-            {/* Quote Icon */}
-            <Quote 
-              size={32} 
-              className="testimonial-inline__quote-icon"
+        {testimonials.map((testimonial, index) => {
+          const cardData: TestimonialCardData = {
+            quote: testimonial.quote,
+            author: testimonial.author,
+            role: testimonial.role,
+            company: testimonial.company,
+            rating: testimonial.rating,
+            avatar: testimonial.image,
+          };
+
+          return (
+            <TestimonialCard
+              key={index}
+              testimonial={cardData}
+              variant={compact ? 'compact' : 'default'}
+              showRating={true}
+              showAvatar={!!testimonial.image}
+              showQuoteIcon={true}
             />
-
-            {/* Rating */}
-            {testimonial.rating && (
-              <div className="testimonial-inline__rating">
-                {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star 
-                    key={i} 
-                    size={16} 
-                    className="testimonial-inline__star"
-                  />
-                ))}
-              </div>
-            )}
-
-            {/* Quote */}
-            <p className={`testimonial-inline__quote ${compact ? 'testimonial-inline__quote--compact' : 'testimonial-inline__quote--default'}`}>
-              "{testimonial.quote}"
-            </p>
-
-            {/* Author Info */}
-            <div className="testimonial-inline__author-wrapper">
-              {testimonial.image && (
-                <div className="testimonial-inline__avatar">
-                  <img
-                    src={testimonial.image}
-                    alt={testimonial.author}
-                    className="testimonial-inline__avatar-img"
-                  />
-                </div>
-              )}
-              <div className="testimonial-inline__author-details">
-                <div className="testimonial-inline__author-name">
-                  {testimonial.author}
-                </div>
-                <div className="testimonial-inline__author-role">
-                  {testimonial.role}, {testimonial.company}
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );

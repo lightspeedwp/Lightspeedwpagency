@@ -1,26 +1,34 @@
 /**
- * 404 Page Styles — Funky Neon Pass
+ * 404 Error Page Styles
  *
- * Funky treatments:
- *  - Neon glow warning icon
- *  - Gradient search suggestion chips on hover
- *  - Glassmorphism suggestion cards (dark mode)
- *  - Neon icon containers with glow
- *  - Neon focus glow on search input
- *  - Full dark mode + reduced-motion guards
- *
- * BEM naming: .error-*
+ * BEM naming: .error-404__*
  * 100% CSS variables, zero hardcoded values.
  */
 
+/* ============================================
+   BASE IMPORTS — Phase 1 Optimization
+   ============================================ */
+
+/**
+ * Import shared base modules to reduce duplication
+ * @see /docs/css-base-extraction-guide.md
+ */
+@import '../base/grid-utilities.css';
+@import '../base/card-base.css';
+@import '../patterns/hero/hero-base.css';
+
+/* ============================================
+   404 PAGE STYLES
+   ============================================ */
+
 /* Hero */
-.error-hero {
+.error-404__hero {
   padding: var(--spacing-20) 0;
   text-align: center;
   background-color: var(--background);
 }
 
-.error-hero__icon {
+.error-404__icon {
   color: var(--warning);
   background-color: var(--warning-soft);
   width: 80px;
@@ -32,7 +40,7 @@
   margin: 0 auto var(--spacing-8);
 }
 
-.error-hero__description {
+.error-404__description {
   max-width: 600px;
   margin: 0 auto var(--spacing-8);
   font-size: var(--text-lg);
@@ -40,19 +48,19 @@
 }
 
 /* Search Bar */
-.error-search {
+.error-404__search {
   max-width: 500px;
   margin: 0 auto var(--spacing-8);
   display: flex;
   gap: var(--spacing-2);
 }
 
-.error-search__input-wrapper {
+.error-404__input-wrapper {
   flex-grow: 1;
   position: relative;
 }
 
-.error-search__icon {
+.error-404__icon {
   position: absolute;
   left: var(--spacing-3);
   top: 50%;
@@ -60,7 +68,7 @@
   color: var(--muted-foreground);
 }
 
-.error-search__input {
+.error-404__input {
   width: 100%;
   padding: var(--spacing-3) var(--spacing-3) var(--spacing-3) var(--spacing-10);
   border: 1px solid var(--border);
@@ -71,33 +79,33 @@
   color: var(--foreground);
 }
 
-.error-search__input:focus {
+.error-404__input:focus {
   outline: 2px solid var(--primary);
   border-color: var(--primary);
   box-shadow: 0 0 12px color-mix(in srgb, var(--primary) 25%, transparent);
 }
 
 /* Suggestions */
-.error-search-suggestions {
+.error-404__search-suggestions {
   max-width: 600px;
   margin: 0 auto var(--spacing-8);
   text-align: center;
 }
 
-.error-search-suggestions__label {
+.error-404__search-suggestions__label {
   font-size: var(--text-sm);
   color: var(--muted-foreground);
   margin-bottom: var(--spacing-2);
 }
 
-.error-search-suggestions__list {
+.error-404__search-suggestions__list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: var(--spacing-2);
 }
 
-.error-search-suggestions__chip {
+.error-404__search-suggestions__chip {
   background-color: var(--card);
   color: var(--foreground);
   padding: var(--spacing-1) var(--spacing-3);
@@ -109,7 +117,7 @@
   transition: all var(--transition-base) var(--ease-out);
 }
 
-.error-search-suggestions__chip:hover {
+.error-404__search-suggestions__chip:hover {
   background: linear-gradient(135deg, var(--primary), var(--accent));
   color: var(--color-white);
   border-color: transparent;
@@ -117,34 +125,34 @@
   box-shadow: 0 4px 12px color-mix(in srgb, var(--primary) 20%, transparent);
 }
 
-.error-actions {
+.error-404__actions {
   margin-top: var(--spacing-8);
 }
 
 /* Helpful Links */
-.error-suggestions {
+.error-404__suggestions {
   background-color: var(--card);
 }
 
-.error-suggestions__grid {
+.error-404__suggestions__grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--spacing-6);
 }
 
 @media (min-width: 768px) {
-  .error-suggestions__grid {
+  .error-404__suggestions__grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (min-width: 1024px) {
-  .error-suggestions__grid {
+  .error-404__suggestions__grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
-.error-suggestion-card {
+.error-404__suggestion-card {
   background-color: var(--background);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
@@ -155,13 +163,13 @@
   transition: transform 0.2s ease;
 }
 
-.error-suggestion-card:hover {
+.error-404__suggestion-card:hover {
   transform: translateY(-4px);
   border-color: var(--primary);
 }
 
 /* Neon glow on suggestion card icon */
-.error-suggestion-card__icon-container {
+.error-404__suggestion-card__icon-container {
   color: var(--primary);
   background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 12%, transparent), color-mix(in srgb, var(--accent) 8%, transparent));
   padding: var(--spacing-3);
@@ -170,31 +178,31 @@
   transition: box-shadow var(--transition-base) var(--ease-out);
 }
 
-.error-suggestion-card:hover .error-suggestion-card__icon-container {
+.error-404__suggestion-card:hover .error-404__suggestion-card__icon-container {
   box-shadow: 0 0 12px color-mix(in srgb, var(--primary) 20%, transparent);
 }
 
-.error-suggestion-card__content {
+.error-404__suggestion-card__content {
   width: 100%;
 }
 
-.error-suggestion-card__title {
+.error-404__suggestion-card__title {
   font-size: var(--text-lg);
   margin-bottom: var(--spacing-2);
 }
 
-.error-suggestion-card__description {
+.error-404__suggestion-card__description {
   font-size: var(--text-sm);
   color: var(--muted-foreground);
   margin-bottom: var(--spacing-4);
 }
 
 /* CTA */
-.error-cta {
+.error-404__cta {
   background-color: var(--muted);
 }
 
-.error-cta__buttons {
+.error-404__cta__buttons {
   display: flex;
   justify-content: center;
   gap: var(--spacing-4);
@@ -204,56 +212,56 @@
    DARK MODE OVERRIDES
    ============================================ */
 
-.dark .error-hero {
+.dark .error-404__hero {
   background-color: var(--background);
 }
 
-.dark .error-hero__icon {
+.dark .error-404__icon {
   background-color: color-mix(in srgb, var(--warning) 15%, transparent);
   box-shadow: 0 0 12px color-mix(in srgb, var(--warning) 20%, transparent);
 }
 
-.dark .error-suggestions {
+.dark .error-404__suggestions {
   background-color: color-mix(in srgb, var(--background) 95%, var(--primary) 5%);
 }
 
-.dark .error-suggestion-card {
+.dark .error-404__suggestion-card {
   background-color: var(--glass-bg);
   backdrop-filter: blur(12px);
   border-color: var(--glass-border);
 }
 
-.dark .error-suggestion-card:hover {
+.dark .error-404__suggestion-card:hover {
   border-color: var(--primary);
   box-shadow: 0 0 16px color-mix(in srgb, var(--primary) 20%, transparent);
 }
 
-.dark .error-suggestion-card__icon-container {
+.dark .error-404__suggestion-card__icon-container {
   background-color: color-mix(in srgb, var(--primary) 15%, transparent);
   box-shadow: 0 0 8px color-mix(in srgb, var(--primary) 15%, transparent);
 }
 
-.dark .error-search-suggestions__chip {
+.dark .error-404__search-suggestions__chip {
   background-color: color-mix(in srgb, var(--primary) 10%, transparent);
   border: 1px solid color-mix(in srgb, var(--primary) 20%, transparent);
 }
 
-.dark .error-search-suggestions__chip:hover {
+.dark .error-404__search-suggestions__chip:hover {
   background-color: color-mix(in srgb, var(--primary) 20%, transparent);
   color: var(--primary);
   box-shadow: 0 0 8px color-mix(in srgb, var(--primary) 15%, transparent);
 }
 
-.dark .error-search__input {
+.dark .error-404__search__input {
   background-color: var(--card);
   border-color: var(--glass-border);
 }
 
-.dark .error-search__input:focus {
+.dark .error-404__search__input:focus {
   box-shadow: 0 0 12px color-mix(in srgb, var(--primary) 25%, transparent);
 }
 
-.dark .error-cta {
+.dark .error-404__cta {
   background-color: color-mix(in srgb, var(--background) 95%, var(--primary) 5%);
 }
 
@@ -262,8 +270,8 @@
    ============================================ */
 
 @media (prefers-reduced-motion: reduce) {
-  .error-suggestion-card:hover,
-  .error-search-suggestions__chip:hover {
+  .error-404__suggestion-card:hover,
+  .error-404__search-suggestions__chip:hover {
     transform: none;
   }
 }

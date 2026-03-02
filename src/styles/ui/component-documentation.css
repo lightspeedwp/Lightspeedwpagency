@@ -132,7 +132,7 @@
 .component-docs__prop-name,
 .component-docs__prop-type,
 .component-docs__prop-default {
-  font-family: 'Monaco', 'Courier New', monospace;
+  font-family: var(--font-mono);
   font-size: var(--text-xs);
   padding: 2px 6px;
   background: rgba(0, 0, 0, 0.3);
@@ -244,7 +244,7 @@
 }
 
 .component-docs__code code {
-  font-family: 'Monaco', 'Courier New', monospace;
+  font-family: var(--font-mono);
   font-size: var(--text-sm);
   color: rgba(255, 255, 255, 0.9);
   line-height: 1.6;
@@ -286,7 +286,7 @@
 }
 
 .component-docs__variable {
-  font-family: 'Monaco', 'Courier New', monospace;
+  font-family: var(--font-mono);
   font-size: var(--text-xs);
   padding: var(--spacing-2) var(--spacing-3);
   background: rgba(0, 0, 0, 0.3);

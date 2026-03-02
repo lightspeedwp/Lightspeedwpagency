@@ -1,145 +1,297 @@
 /**
  * StatsGrid Pattern Styles
  * 
- * WordPress pattern: .stats-grid
- * Grid layout for displaying multiple statistics
+ * Inline stats grid component (no Section/Container wrappers).
+ * 100% CSS variable compliance — all colors, spacing, typography, borders use CSS variables.
  * 
- * Features:
- * - Responsive grid (1 → 2 → 4 columns)
- * - Optional header with title/description
- * - Section background variants
- * - Gradient top stripe
- * 
- * Design System:
- * - 100% CSS variables
- * - BEM naming (.stats-grid__element)
+ * Variants:
+ * - default: Standard grid with borders
+ * - inline: Compact inline display (for hero headers)
+ * - compact: Smaller sizing
+ * - cards: Card-style with backgrounds
  */
 
-/* Container */
+/* ============================================
+   BASE STATS GRID
+   ============================================ */
+
 .stats-grid {
-  position: relative;
-  padding: var(--spacing-16) var(--spacing-6);
-  background: rgba(255, 255, 255, 0.03);
-  border-top: 3px solid transparent;
-  background-image: linear-gradient(
-    90deg,
-    hsl(var(--primary)),
-    hsl(var(--accent))
-  );
-  background-size: 100% 3px;
-  background-position: top;
-  background-repeat: no-repeat;
-  background-clip: padding-box, border-box;
-  background-origin: padding-box, border-box;
+  display: grid;
+  gap: var(--spacing-6);
+  width: 100%;
 }
 
-.stats-grid__container {
-  max-width: 1200px;
-  margin: 0 auto;
+/* Column variants */
+.stats-grid--cols-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.stats-grid--cols-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.stats-grid--cols-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* Responsive: Stack on mobile */
+@media (max-width: 768px) {
+  .stats-grid--cols-2,
+  .stats-grid--cols-3,
+  .stats-grid--cols-4 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Responsive: 2 columns on tablet */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .stats-grid--cols-3,
+  .stats-grid--cols-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ============================================
+   STAT ITEM (Base)
+   ============================================ */
+
+.stats-grid__item {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-12);
-}
-
-/* Header */
-.stats-grid__header {
+  align-items: center;
   text-align: center;
-  max-width: 800px;
-  margin: 0 auto;
+  gap: var(--spacing-2);
 }
 
-.stats-grid__title {
+/* Icon wrapper */
+.stats-grid__icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--spacing-12);
+  height: var(--spacing-12);
+  margin-bottom: var(--spacing-2);
+  border-radius: var(--radius);
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.stats-grid__icon {
+  width: var(--spacing-6);
+  height: var(--spacing-6);
+}
+
+/* Number */
+.stats-grid__number {
   font-family: var(--font-primary);
-  font-size: var(--text-4xl);
-  font-weight: 700;
-  color: var(--foreground);
-  margin: 0 0 var(--spacing-4) 0;
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.2;
+  color: var(--primary);
 }
 
+/* Label */
+.stats-grid__label {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.4;
+  color: var(--foreground);
+  opacity: 0.8;
+}
+
+/* Description */
 .stats-grid__description {
   font-family: var(--font-secondary);
-  font-size: var(--text-lg);
+  font-size: var(--text-xs);
+  line-height: 1.5;
   color: var(--muted-foreground);
-  margin: 0;
-  line-height: 1.6;
+  margin-top: var(--spacing-1);
 }
 
-/* Items Grid */
-.stats-grid__items {
-  display: grid;
-  gap: var(--spacing-8);
-}
+/* ============================================
+   VARIANT: DEFAULT (Bordered)
+   ============================================ */
 
-/* Variant: Gradient Background */
-.stats-grid--gradient {
-  background: linear-gradient(
-    135deg,
-    rgba(139, 92, 246, 0.05),
-    rgba(59, 130, 246, 0.05)
-  );
-}
-
-/* Variant: Glassmorphism */
-.stats-grid--glassmorphism {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+.stats-grid--default .stats-grid__item {
+  padding: var(--spacing-6);
+  border: 1px solid var(--border);
   border-radius: var(--radius-lg);
+  background: var(--card);
+  transition: all 0.3s ease;
 }
 
-/* Dark mode */
-.dark .stats-grid {
-  background-color: rgba(255, 255, 255, 0.02);
+.stats-grid--default .stats-grid__item:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
 }
 
-.dark .stats-grid--gradient {
-  background: linear-gradient(
-    135deg,
-    rgba(139, 92, 246, 0.03),
-    rgba(59, 130, 246, 0.03)
-  );
-}
-
-.dark .stats-grid--glassmorphism {
-  background: rgba(255, 255, 255, 0.03);
-  border-color: rgba(255, 255, 255, 0.08);
-}
-
-/* Responsive: Mobile (< 768px) */
-@media (max-width: 767px) {
-  .stats-grid {
-    padding: var(--spacing-12) var(--spacing-4);
-  }
-
-  .stats-grid__container {
-    gap: var(--spacing-8);
-  }
-
-  .stats-grid__title {
-    font-size: var(--text-3xl);
-  }
-
-  .stats-grid__description {
-    font-size: var(--text-base);
-  }
-
-  .stats-grid__items {
-    gap: var(--spacing-6);
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .stats-grid--default .stats-grid__item:hover {
+    transform: none;
   }
 }
 
-/* Responsive: Tablet (768px - 1023px) */
-@media (min-width: 768px) and (max-width: 1023px) {
-  .stats-grid {
-    padding: var(--spacing-14) var(--spacing-5);
-  }
+/* ============================================
+   VARIANT: INLINE (Compact, for hero headers)
+   ============================================ */
 
-  .stats-grid__container {
-    gap: var(--spacing-10);
-  }
+.stats-grid--inline {
+  gap: var(--spacing-8);
+  margin-top: var(--spacing-8);
+}
 
-  .stats-grid__title {
-    font-size: var(--text-3xl);
+.stats-grid--inline .stats-grid__item {
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+.stats-grid--inline .stats-grid__number {
+  font-size: var(--text-h3);
+  color: var(--primary);
+}
+
+.stats-grid--inline .stats-grid__label {
+  font-size: var(--text-sm);
+  opacity: 0.7;
+}
+
+.stats-grid--inline .stats-grid__icon-wrapper {
+  display: none; /* Hide icons in inline variant */
+}
+
+/* ============================================
+   VARIANT: COMPACT (Smaller sizing)
+   ============================================ */
+
+.stats-grid--compact {
+  gap: var(--spacing-4);
+}
+
+.stats-grid--compact .stats-grid__item {
+  padding: var(--spacing-4);
+}
+
+.stats-grid--compact .stats-grid__number {
+  font-size: var(--text-h4);
+}
+
+.stats-grid--compact .stats-grid__label {
+  font-size: var(--text-xs);
+}
+
+.stats-grid--compact .stats-grid__icon-wrapper {
+  width: var(--spacing-8);
+  height: var(--spacing-8);
+  margin-bottom: var(--spacing-1);
+}
+
+.stats-grid--compact .stats-grid__icon {
+  width: var(--spacing-4);
+  height: var(--spacing-4);
+}
+
+/* ============================================
+   VARIANT: CARDS (Card-style with backgrounds)
+   ============================================ */
+
+.stats-grid--cards .stats-grid__item {
+  padding: var(--spacing-8);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+}
+
+.stats-grid--cards .stats-grid__item:hover {
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary);
+  transform: translateY(-4px);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .stats-grid--cards .stats-grid__item:hover {
+    transform: none;
+  }
+}
+
+.stats-grid--cards .stats-grid__number {
+  font-size: var(--text-h1);
+  margin-bottom: var(--spacing-2);
+}
+
+.stats-grid--cards .stats-grid__label {
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-semibold);
+}
+
+.stats-grid--cards .stats-grid__icon-wrapper {
+  width: var(--spacing-16);
+  height: var(--spacing-16);
+  margin-bottom: var(--spacing-4);
+}
+
+.stats-grid--cards .stats-grid__icon {
+  width: var(--spacing-8);
+  height: var(--spacing-8);
+}
+
+/* ============================================
+   DARK MODE
+   ============================================ */
+
+[data-theme="dark"] .stats-grid__number {
+  color: var(--primary);
+}
+
+[data-theme="dark"] .stats-grid__label {
+  color: var(--foreground);
+  opacity: 0.9;
+}
+
+[data-theme="dark"] .stats-grid--default .stats-grid__item,
+[data-theme="dark"] .stats-grid--cards .stats-grid__item {
+  background: var(--card);
+  border-color: var(--border);
+}
+
+[data-theme="dark"] .stats-grid--default .stats-grid__item:hover,
+[data-theme="dark"] .stats-grid--cards .stats-grid__item:hover {
+  border-color: var(--primary);
+  box-shadow: 0 0 20px rgba(var(--primary-rgb), 0.3);
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+/* Focus states */
+.stats-grid__item:focus-within {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .stats-grid__item {
+    border-width: 2px;
+  }
+  
+  .stats-grid__number {
+    font-weight: var(--font-weight-extrabold);
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .stats-grid__item,
+  .stats-grid--default .stats-grid__item,
+  .stats-grid--cards .stats-grid__item {
+    transition: none;
   }
 }

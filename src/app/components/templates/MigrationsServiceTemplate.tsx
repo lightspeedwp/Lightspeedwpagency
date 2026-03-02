@@ -8,6 +8,8 @@
 
 import { Package, Database, CloudUpload, CheckCircle, Shield, Zap } from 'lucide-react';
 import { Link } from 'react-router';
+import { FeatureList } from '../patterns/FeatureList';
+import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
 
 export const MigrationsServiceTemplate = () => {
   const benefits = [
@@ -114,20 +116,13 @@ export const MigrationsServiceTemplate = () => {
           </p>
         </div>
         
-        <div className="migrations-service__benefits-grid">
-          {benefits.map((benefit, index) => {
-            const Icon = benefit.icon;
-            return (
-              <div key={index} className="migrations-service__benefit-card">
-                <div className="migrations-service__benefit-icon">
-                  <Icon className="migrations-service__benefit-icon-svg" />
-                </div>
-                <h3 className="migrations-service__benefit-title">{benefit.title}</h3>
-                <p className="migrations-service__benefit-description">{benefit.description}</p>
-              </div>
-            );
-          })}
-        </div>
+        <FeatureList 
+          items={benefits}
+          columns={3}
+          variant="glass"
+          iconStyle="rounded"
+          className="migrations-service__benefits-grid"
+        />
       </section>
 
       <section className="migrations-service__types">
@@ -188,6 +183,9 @@ export const MigrationsServiceTemplate = () => {
           ))}
         </div>
       </section>
+
+      {/* Client Testimonials */}
+      <ServiceTestimonial serviceSlug="migrations" />
 
       <section className="migrations-service__cta">
         <div className="migrations-service__cta-content">

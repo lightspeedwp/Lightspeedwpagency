@@ -24,7 +24,9 @@
 import '../../../styles/templates/contact-page.css';
 import '../../../styles/templates/page-contact.css';
 import { Container } from '../common/Container';
-import { ContactForm } from '../patterns/ContactForm';
+import { Section } from '../common/Section';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
+import { CheckList } from '../patterns/CheckList';
 import { FAQSection } from '../patterns/FAQSection';
 import { FunkyCTA } from '../patterns/FunkyCTA';
 import { StatsSection } from '../patterns/StatsSection';
@@ -110,16 +112,14 @@ export function ContactPageTemplate() {
             </p>
 
             {/* Systems Audit Features List */}
-            <ul className="contact-page__hero-features">
-              {contactHeroMessaging.features.map((feature, index) => (
-                <li key={index} className="contact-page__hero-feature">
-                  <Award size={18} style={{ color: 'var(--accent)' }} />
-                  <span style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-base)' }}>
-                    {feature}
-                  </span>
-                </li>
-              ))}
-            </ul>
+            <div className="contact-page__hero-features-wrapper">
+              <CheckList 
+                items={contactHeroMessaging.features}
+                icon={Award}
+                variant="default"
+                className="contact-page__hero-features"
+              />
+            </div>
           </div>
         </Container>
         <ScrollDownArrow targetId="contact-main" />

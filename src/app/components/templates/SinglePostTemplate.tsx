@@ -12,6 +12,7 @@
  * - Newsletter CTA with neon glow
  * - Scroll-triggered reveal animations
  * - 100% CSS variables, zero hardcoded values
+ * - ✨ UPDATED: Related posts now use PostCard pattern component (Phase 2.1b)
  *
  * Pattern order: Breadcrumbs → Hero → Featured Image → Content → Tags →
  *               Author Bio → Newsletter CTA → Related Posts → FAQ → CTA
@@ -29,6 +30,7 @@ import { FAQSection } from '../patterns/FAQSection';
 import { FunkyCTA } from '../patterns/FunkyCTA'; // Updated to FunkyCTA
 import { Button } from '../blocks/design/Buttons';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
+import { PostCardGrid } from '../patterns/PostCard';
 import {
   Calendar,
   Clock,
@@ -39,12 +41,38 @@ import {
   getPostBySlug,
   getAuthorBySlug,
   blogPosts,
+  blogAuthors,
 } from '../../data/blog-posts';
 import { blogCategories } from '../../data/taxonomies';
 import { blogFAQs } from '../../data/faqs';
 
 interface SinglePostTemplateProps {
   slug: string;
+}
+
+/**
+ * Convert blog post to PostCard format
+ */
+function convertToPostCardFormat(post: any) {
+  const author = blogAuthors.find(a => a.slug === post.author);
+  
+  return {
+    ...post,
+    url: `/insights/${post.slug}`,
+    category: post.categories[0] ? {
+      name: blogCategories.find(c => c.slug === post.categories[0])?.name || post.categories[0],
+      slug: post.categories[0]
+    } : undefined,
+    author: author ? {
+      name: author.name,
+      slug: author.slug,
+      avatar: author.avatar,
+      bio: author.bio
+    } : undefined,
+    tags: post.categories.slice(1).map((cat: string) => 
+      blogCategories.find(c => c.slug === cat)?.name || cat
+    )
+  };
 }
 
 export function SinglePostTemplate({ slug }: SinglePostTemplateProps) {
@@ -294,45 +322,10 @@ export function SinglePostTemplate({ slug }: SinglePostTemplateProps) {
                 Related articles
               </Heading>
             </ScrollReveal>
-            <div className="blog-index__grid">
-              {relatedPosts.map((relPost, i) => (
-                <ScrollReveal
-                  key={relPost.id}
-                  animation="fade-up"
-                  duration={500}
-                  delay={i * 100}
-                >
-                  <Link
-                    to={`/insights/${relPost.slug}`}
-                    className="blog-index__post-card"
-                    aria-label={`Read ${relPost.title}`}
-                  >
-                    <div className="blog-index__post-image-wrap">
-                      <img
-                        src={relPost.featuredImage}
-                        alt={relPost.title}
-                        className="blog-index__post-image"
-                        loading="lazy"
-                      />
-                    </div>
-                    <div className="blog-index__post-content">
-                      <div className="blog-index__post-categories">
-                        {relPost.categories.slice(0, 2).map(cat => (
-                          <span key={cat} className="blog-index__category-chip">
-                            {getCategoryName(cat)}
-                          </span>
-                        ))}
-                      </div>
-                      <h3 className="blog-index__post-title">{relPost.title}</h3>
-                      <p className="blog-index__post-excerpt">{relPost.excerpt}</p>
-                      <span className="blog-index__read-more">
-                        Read article <ArrowRight size={14} />
-                      </span>
-                    </div>
-                  </Link>
-                </ScrollReveal>
-              ))}
-            </div>
+            <PostCardGrid
+              posts={relatedPosts.map(convertToPostCardFormat)}
+              className="blog-index__grid"
+            />
           </Container>
         </Section>
       )}

@@ -17,6 +17,7 @@ import { Container } from '../common/Container';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { FunkyCTA } from '../patterns/FunkyCTA';
 import { FAQSection } from '../patterns/FAQSection';
+import { StatsSection } from '../patterns/StatsSection';
 import { Heading } from '../blocks/text/Heading';
 import { Paragraph } from '../blocks/text/Paragraph';
 import { useHeroParallax } from '../../hooks/useHeroParallax';
@@ -239,25 +240,14 @@ export function TeamTemplate() {
       </section>
 
       {/* ── Stats Section ── */}
-      <section className="team-page__stats">
-        <Container>
-          <div className="team-page__stats-grid">
-            {[
-              { number: '100%', label: 'Remote' },
-              { number: '5', label: 'Continents' },
-              { number: '12', label: 'Languages' },
-              { number: '50+', label: 'Pet Dogs' }
-            ].map((stat, i) => (
-              <ScrollReveal key={i} animation="scale" delay={i * 100}>
-                <div className="team-page__stat-item">
-                  <div className="team-page__stat-number">{stat.number}</div>
-                  <div className="team-page__stat-label">{stat.label}</div>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </Container>
-      </section>
+      <StatsSection
+        stats={[
+          { number: '100%', label: 'Remote' },
+          { number: '5', label: 'Continents' },
+          { number: '12', label: 'Languages' },
+          { number: '50+', label: 'Pet Dogs' }
+        ]}
+      />
 
       {/* ── FAQ Section ── */}
       <section className="team-page__faq">

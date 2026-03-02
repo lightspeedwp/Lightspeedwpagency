@@ -8,6 +8,9 @@
 
 import { Eye, Ear, Keyboard, MousePointer, CheckCircle, Shield } from 'lucide-react';
 import { Link } from 'react-router';
+import { FeatureList } from '../patterns/FeatureList';
+import { CheckList } from '../patterns/CheckList';
+import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
 
 export const AccessibilityServiceTemplate = () => {
   const benefits = [
@@ -136,20 +139,13 @@ export const AccessibilityServiceTemplate = () => {
           </p>
         </div>
         
-        <div className="accessibility-service__benefits-grid">
-          {benefits.map((benefit, index) => {
-            const Icon = benefit.icon;
-            return (
-              <div key={index} className="accessibility-service__benefit-card">
-                <div className="accessibility-service__benefit-icon">
-                  <Icon className="accessibility-service__benefit-icon-svg" />
-                </div>
-                <h3 className="accessibility-service__benefit-title">{benefit.title}</h3>
-                <p className="accessibility-service__benefit-description">{benefit.description}</p>
-              </div>
-            );
-          })}
-        </div>
+        <FeatureList 
+          items={benefits}
+          columns={3}
+          variant="glass"
+          iconStyle="rounded"
+          className="accessibility-service__benefits-grid"
+        />
       </section>
 
       {/* WCAG Levels */}
@@ -187,14 +183,11 @@ export const AccessibilityServiceTemplate = () => {
           </p>
         </div>
         
-        <div className="accessibility-service__deliverables-grid">
-          {deliverables.map((item, index) => (
-            <div key={index} className="accessibility-service__deliverable-item">
-              <div className="accessibility-service__deliverable-icon">✓</div>
-              <div className="accessibility-service__deliverable-text">{item}</div>
-            </div>
-          ))}
-        </div>
+        <CheckList 
+          items={deliverables}
+          variant="default"
+          className="accessibility-service__deliverables-grid"
+        />
       </section>
 
       {/* Results Section */}
@@ -215,6 +208,9 @@ export const AccessibilityServiceTemplate = () => {
           ))}
         </div>
       </section>
+
+      {/* Client Testimonials */}
+      <ServiceTestimonial serviceSlug="accessibility" />
 
       {/* CTA Section */}
       <section className="accessibility-service__cta">

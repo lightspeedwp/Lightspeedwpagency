@@ -7,17 +7,32 @@
  */
 
 /* ============================================
-   HERO — Neon Mesh
+   BASE IMPORTS — Phase 1 Optimization
    ============================================ */
 
+/**
+ * Import shared base modules to reduce duplication
+ * @see /docs/css-base-extraction-guide.md
+ */
+@import '../base/grid-utilities.css';
+@import '../base/card-base.css';
+@import '../patterns/hero/hero-base.css';
+
+/* ============================================
+   HERO — Uses hero-base with service variant
+   ============================================ */
+
+/**
+ * Service detail hero extends hero-base hero-variant-service
+ * Base structure comes from hero-base.css
+ * This file adds service-specific mesh and orb customizations
+ */
+
 .service-detail__hero {
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(135deg, var(--background) 0%, var(--muted) 100%);
-  padding: var(--spacing-16) 0 var(--spacing-20);
+  /* Extends hero-base hero-variant-service */
 }
 
-/* Mesh grid background */
+/* Service-specific mesh grid background */
 .service-detail__hero-mesh {
   position: absolute;
   inset: 0;
@@ -28,7 +43,7 @@
   pointer-events: none;
 }
 
-/* Gradient orbs */
+/* Gradient orbs (service-specific positions) */
 .service-detail__hero-orb {
   position: absolute;
   border-radius: var(--radius-full);

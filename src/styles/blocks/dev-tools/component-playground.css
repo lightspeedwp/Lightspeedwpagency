@@ -250,7 +250,7 @@
   background-color: var(--muted);
   border: 1px solid var(--border-soft);
   border-radius: var(--radius-lg);
-  font-family: monospace;
+  font-family: var(--font-mono);
   font-size: var(--text-small);
   color: var(--foreground);
   line-height: var(--line-height-relaxed);
@@ -271,7 +271,7 @@
   background-color: var(--muted);
   border: 1px solid var(--border-soft);
   border-radius: var(--radius-lg);
-  font-family: monospace;
+  font-family: var(--font-mono);
   font-size: var(--text-small);
   color: var(--foreground);
   margin-top: var(--spacing-2);

@@ -1,13 +1,25 @@
 /**
- * Single Post Template Styles — Funky Neon Pass
- * 
- * Styles for single post editorial pages.
- * Funky treatments: glassmorphism cards, animated gradient stripes,
- * neon blockquotes, gradient underlines, neon tag chips, author card glow.
+ * Single Post Template Styles
  *
- * BEM naming: .single-post-*
+ * BEM naming: .single-post__*
  * 100% CSS variables, zero hardcoded values.
  */
+
+/* ============================================
+   BASE IMPORTS — Phase 1 Optimization
+   ============================================ */
+
+/**
+ * Import shared base modules to reduce duplication
+ * @see /docs/css-base-extraction-guide.md
+ */
+@import '../base/grid-utilities.css';
+@import '../base/card-base.css';
+@import '../patterns/hero/hero-base.css';
+
+/* ============================================
+   SINGLE POST STYLES
+   ============================================ */
 
 /* ============================================
    HERO

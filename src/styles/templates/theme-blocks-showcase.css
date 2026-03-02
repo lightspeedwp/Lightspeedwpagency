@@ -108,11 +108,11 @@
 }
 
 .theme-showcase__context-card--light {
-  background-color: #FFFFFF;
-  color: #090909;
+  background-color: var(--color-white);
+  color: var(--foreground-light, #090909);
 }
 
 .theme-showcase__context-card--dark {
-  background-color: #090909;
-  color: #FFFFFF;
+  background-color: var(--background-dark, #090909);
+  color: var(--color-white);
 }

@@ -1,0 +1,428 @@
+/**
+ * TestimonialCard Pattern Styles
+ *
+ * Shared card component for all testimonial patterns.
+ * Variants: default, glass, funky, compact, minimal, featured.
+ *
+ * BEM block: .testimonial-card
+ *
+ * @see /src/app/components/patterns/TestimonialCard.tsx
+ */
+
+/* ============================================
+   BASE CARD
+   ============================================ */
+
+.testimonial-card {
+  display: flex;
+  flex-direction: column;
+  padding: var(--spacing-8);
+  background-color: var(--card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  height: 100%;
+  gap: var(--spacing-4);
+}
+
+.testimonial-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+/* ============================================
+   VARIANT: GLASS (Glassmorphism)
+   ============================================ */
+
+.testimonial-card--glass {
+  background: color-mix(in srgb, var(--card) 70%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid color-mix(in srgb, var(--neon-color, var(--primary)) 10%, transparent);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animated gradient stripe (top) */
+.testimonial-card--glass::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
+  background-size: 200% 100%;
+  animation: testimonialCardStripe 3s ease-in-out infinite;
+}
+
+@keyframes testimonialCardStripe {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.testimonial-card--glass:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--neon-color, var(--primary)) 35%, transparent);
+  box-shadow: 0 8px 32px color-mix(in srgb, var(--neon-color, var(--primary)) 10%, transparent);
+}
+
+.dark .testimonial-card--glass {
+  background: color-mix(in srgb, var(--foreground) 5%, transparent);
+  border-color: color-mix(in srgb, var(--foreground) 8%, transparent);
+}
+
+.dark .testimonial-card--glass:hover {
+  border-color: color-mix(in srgb, var(--neon-color, var(--primary)) 40%, transparent);
+  box-shadow: 0 8px 32px color-mix(in srgb, var(--neon-color, var(--primary)) 12%, transparent);
+}
+
+.dark .testimonial-card--glass::before {
+  box-shadow: 0 0 10px color-mix(in srgb, var(--neon-color, var(--primary)) 25%, transparent);
+}
+
+/* ============================================
+   VARIANT: FUNKY (Neon Gradient Border)
+   ============================================ */
+
+.testimonial-card--funky {
+  background: var(--card);
+  border: 1px solid transparent;
+  position: relative;
+  background-clip: padding-box;
+  box-shadow: var(--shadow-sm);
+}
+
+.testimonial-card--funky::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-lg);
+  padding: 2px;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.testimonial-card--funky:hover {
+  box-shadow: var(--shadow-neon);
+}
+
+/* ============================================
+   VARIANT: COMPACT
+   ============================================ */
+
+.testimonial-card--compact {
+  padding: var(--spacing-5);
+  gap: var(--spacing-3);
+}
+
+.testimonial-card--compact .testimonial-card__quote {
+  font-size: var(--text-base);
+}
+
+/* ============================================
+   VARIANT: MINIMAL
+   ============================================ */
+
+.testimonial-card--minimal {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+/* ============================================
+   VARIANT: FEATURED
+   ============================================ */
+
+.testimonial-card--featured {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border: none;
+}
+
+.testimonial-card--featured .testimonial-card__quote {
+  color: var(--primary-foreground);
+}
+
+.testimonial-card--featured .testimonial-card__author-role,
+.testimonial-card--featured .testimonial-card__author-date {
+  color: var(--primary-foreground);
+  opacity: 0.8;
+}
+
+/* ============================================
+   ELEMENTS
+   ============================================ */
+
+/* Quote Icon */
+.testimonial-card__quote-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-foreground);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--neon-color, var(--primary)) 18%, transparent);
+  flex-shrink: 0;
+}
+
+.dark .testimonial-card__quote-icon {
+  box-shadow: 0 0 16px color-mix(in srgb, var(--neon-color, var(--primary)) 30%, transparent);
+}
+
+/* Rating */
+.testimonial-card__rating {
+  display: flex;
+  gap: 2px;
+  color: var(--warning);
+}
+
+.testimonial-card__star--filled {
+  color: var(--warning);
+}
+
+.testimonial-card__star--empty {
+  color: var(--muted-foreground);
+  opacity: 0.3;
+}
+
+.dark .testimonial-card__star--filled {
+  filter: drop-shadow(0 0 4px color-mix(in srgb, var(--warning) 50%, transparent));
+}
+
+/* Quote */
+.testimonial-card__quote {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  line-height: var(--line-height-relaxed);
+  font-style: italic;
+  color: var(--foreground);
+  margin: 0;
+  flex: 1;
+}
+
+/* Service Badge */
+.testimonial-card__service-badge {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-secondary);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--primary);
+  background: color-mix(in srgb, var(--primary) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--primary) 15%, transparent);
+  border-radius: var(--radius-full);
+  padding: var(--spacing-1) var(--spacing-3);
+  width: fit-content;
+}
+
+.dark .testimonial-card__service-badge {
+  color: var(--neon-color, var(--primary));
+  background: color-mix(in srgb, var(--neon-color, var(--primary)) 8%, transparent);
+  border-color: color-mix(in srgb, var(--neon-color, var(--primary)) 15%, transparent);
+}
+
+/* Service Tags */
+.testimonial-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-2);
+}
+
+.testimonial-card__tag {
+  display: inline-block;
+  padding: var(--spacing-1) var(--spacing-3);
+  font-family: var(--font-secondary);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-medium);
+  background: color-mix(in srgb, var(--primary) 10%, transparent);
+  color: var(--primary);
+  border-radius: var(--radius);
+  text-transform: capitalize;
+  border: 1px solid color-mix(in srgb, var(--primary) 20%, transparent);
+}
+
+.dark .testimonial-card__tag {
+  background: color-mix(in srgb, var(--primary) 20%, transparent);
+  border-color: color-mix(in srgb, var(--primary) 40%, transparent);
+}
+
+/* ============================================
+   AUTHOR SECTION
+   ============================================ */
+
+.testimonial-card__author {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  margin-top: auto;
+  padding-top: var(--spacing-4);
+  border-top: 1px solid color-mix(in srgb, var(--border) 30%, transparent);
+}
+
+/* Avatar (image) */
+.testimonial-card__avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-full);
+  object-fit: cover;
+  border: 2px solid var(--border);
+  flex-shrink: 0;
+}
+
+/* Avatar (initials fallback) */
+.testimonial-card__avatar-initials {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-foreground);
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-semibold);
+  flex-shrink: 0;
+  box-shadow: 0 0 8px color-mix(in srgb, var(--neon-color, var(--primary)) 15%, transparent);
+}
+
+.dark .testimonial-card__avatar-initials {
+  box-shadow: 0 0 12px color-mix(in srgb, var(--neon-color, var(--primary)) 25%, transparent);
+}
+
+.dark .testimonial-card__avatar {
+  border-color: color-mix(in srgb, var(--primary) 30%, transparent);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--primary) 20%, transparent);
+}
+
+/* Author Details */
+.testimonial-card__author-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.testimonial-card__author-name {
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--text-base);
+  color: var(--foreground);
+  line-height: var(--line-height-snug);
+}
+
+.testimonial-card__author-role {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-snug);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.testimonial-card__author-date {
+  font-family: var(--font-secondary);
+  font-size: var(--text-xs);
+  color: var(--muted-foreground);
+  margin-top: var(--spacing-1);
+}
+
+/* Company Logo */
+.testimonial-card__company-logo {
+  height: 24px;
+  width: auto;
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+}
+
+.testimonial-card:hover .testimonial-card__company-logo {
+  opacity: 1;
+}
+
+/* ============================================
+   DARK MODE ENHANCEMENTS
+   ============================================ */
+
+.dark .testimonial-card--default {
+  box-shadow:
+    0 4px 16px color-mix(in srgb, var(--primary) 8%, transparent),
+    0 0 24px color-mix(in srgb, var(--primary) 4%, transparent);
+}
+
+.dark .testimonial-card--default:hover {
+  border-color: color-mix(in srgb, var(--primary) 40%, transparent);
+  box-shadow:
+    0 8px 24px color-mix(in srgb, var(--primary) 15%, transparent),
+    0 0 32px color-mix(in srgb, var(--primary) 8%, transparent);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 419px) {
+  .testimonial-card {
+    padding: var(--spacing-6);
+  }
+
+  .testimonial-card__quote {
+    font-size: var(--text-base);
+  }
+
+  .testimonial-card__avatar {
+    width: 40px;
+    height: 40px;
+  }
+
+  .testimonial-card__avatar-initials {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .testimonial-card {
+    transition: none;
+  }
+
+  .testimonial-card:hover {
+    transform: none;
+  }
+
+  .testimonial-card--glass::before {
+    animation: none;
+    background-position: 0% 50%;
+  }
+}
+
+/* ============================================
+   PRINT
+   ============================================ */
+
+@media print {
+  .testimonial-card {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .testimonial-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}

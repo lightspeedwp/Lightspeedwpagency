@@ -22,6 +22,9 @@ import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { Buttons, Button } from '../blocks/design/Buttons';
 import { FAQSection } from '../patterns/FAQSection';
 import { FunkyCTA } from '../patterns/FunkyCTA';
+import { StatsGrid } from '../patterns/StatsGrid';
+import { FeatureList } from '../patterns/FeatureList';
+import { CheckList } from '../patterns/CheckList';
 import { RelatedServices } from '../patterns/RelatedServices';
 import { IncludedSolutions } from '../patterns/IncludedSolutions';
 import { ServiceTestimonials } from '../patterns/ServiceTestimonials';
@@ -142,21 +145,7 @@ export function ServiceDetailTemplate({
             </div>
           </ScrollReveal>
 
-          <div className="service-detail__stats-grid">
-            {servicePageOverview.stats.map((stat, index) => {
-              const Icon = stat.icon;
-              return (
-                <ScrollReveal key={index} animation="fade-up" delay={index * 100}>
-                  <div className="service-detail__stat-card">
-                    <Icon size={32} className="service-detail__stat-icon" />
-                    <div className="service-detail__stat-value">{stat.value}</div>
-                    <div className="service-detail__stat-label">{stat.label}</div>
-                    <p className="service-detail__stat-desc">{stat.description}</p>
-                  </div>
-                </ScrollReveal>
-              );
-            })}
-          </div>
+          <StatsGrid stats={servicePageOverview.stats} />
         </Container>
       </Section>
 
@@ -174,26 +163,12 @@ export function ServiceDetailTemplate({
             </div>
           </ScrollReveal>
 
-          <div className="service-detail__features-grid">
-            {servicePageFeatures.map((feature, index) => {
-              const Icon = feature.icon;
-              return (
-                <ScrollReveal key={index} animation="fade-up" delay={index * 80}>
-                  <div className="service-detail__feature-card">
-                    <div className="service-detail__feature-icon-wrapper">
-                      <Icon size={28} className="service-detail__feature-icon" />
-                    </div>
-                    <h3 className="service-detail__feature-title">
-                      {feature.title}
-                    </h3>
-                    <p className="service-detail__feature-desc">
-                      {feature.description}
-                    </p>
-                  </div>
-                </ScrollReveal>
-              );
-            })}
-          </div>
+          <FeatureList 
+            items={servicePageFeatures}
+            columns={3}
+            variant="glass"
+            iconStyle="rounded"
+          />
         </Container>
       </Section>
 
@@ -264,19 +239,7 @@ export function ServiceDetailTemplate({
                     <p className="service-detail__service-desc">
                       {subService.description}
                     </p>
-                    <ul className="service-detail__feature-list">
-                      {subService.features.map((feature, idx) => (
-                        <li key={idx} className="service-detail__feature-item">
-                          <CheckCircle
-                            size={20}
-                            className="service-detail__check-icon"
-                          />
-                          <span className="service-detail__feature-text">
-                            {feature}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
+                    <CheckList items={subService.features} variant="compact" />
                   </div>
                 </ScrollReveal>
               );
@@ -334,19 +297,7 @@ export function ServiceDetailTemplate({
                 <h2 className="service-detail__section-subtitle">
                   Service Benefits
                 </h2>
-                <ul className="service-detail__feature-list">
-                  {servicePageBenefits.map((benefit, index) => (
-                    <li key={index} className="service-detail__feature-item">
-                      <CheckCircle
-                        size={20}
-                        className="service-detail__check-icon"
-                      />
-                      <span className="service-detail__feature-text">
-                        {benefit}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
+                <CheckList items={servicePageBenefits} />
               </div>
             </ScrollReveal>
 
@@ -356,19 +307,7 @@ export function ServiceDetailTemplate({
                 <h2 className="service-detail__section-subtitle">
                   What You'll Receive
                 </h2>
-                <ul className="service-detail__feature-list">
-                  {servicePageDeliverables.map((deliverable, index) => (
-                    <li key={index} className="service-detail__feature-item">
-                      <CheckCircle
-                        size={20}
-                        className="service-detail__check-icon"
-                      />
-                      <span className="service-detail__feature-text">
-                        {deliverable}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
+                <CheckList items={servicePageDeliverables} />
               </div>
             </ScrollReveal>
           </div>

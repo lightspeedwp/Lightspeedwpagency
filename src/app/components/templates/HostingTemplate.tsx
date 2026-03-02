@@ -29,6 +29,7 @@ import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { Button } from '../blocks/design/Buttons';
 import { FunkyCTA } from '../patterns/FunkyCTA';
 import { FAQSection } from '../patterns/FAQSection';
+import { FeatureList } from '../patterns/FeatureList';
 import { RelatedServicesGrid } from '../patterns/RelatedServicesGrid';
 import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
 import { HostingContactModal } from '../patterns/HostingContactModal';

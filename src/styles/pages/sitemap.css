@@ -258,7 +258,7 @@
 }
 
 .sitemap__route-path {
-  font-family: 'Monaco', 'Courier New', monospace;
+  font-family: var(--font-mono);
   font-size: var(--text-xs);
   color: hsl(var(--primary));
   background: rgba(0, 0, 0, 0.3);

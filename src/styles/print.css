@@ -64,7 +64,7 @@
 
   /* Typography */
   body {
-    font-family: 'Georgia', 'Times New Roman', serif;
+    font-family: var(--font-primary);
     font-size: 12pt;
     line-height: 1.6;
   }
@@ -157,7 +157,7 @@
   code {
     border: 1px solid #ccc !important;
     padding: 4pt;
-    font-family: 'Courier New', monospace;
+    font-family: var(--font-mono);
     font-size: 10pt;
     white-space: pre-wrap;
     word-wrap: break-word;

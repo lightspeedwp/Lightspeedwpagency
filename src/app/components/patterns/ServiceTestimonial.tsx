@@ -6,25 +6,18 @@
  * no testimonials match the given service — safe to include in every
  * service template without conditional checks.
  *
- * Funky treatments:
- *   - Glassmorphism card surface (backdrop-filter: blur)
- *   - Animated gradient top stripe (serviceTestimonialStripe)
- *   - Neon gradient quote icon wrapper
- *   - Gradient section title underline
- *   - Star rating neon glow
- *   - Card hover lift + neon border glow
- *   - `.dark` mode overrides
- *   - `prefers-reduced-motion` guards via CSS
+ * Uses the shared TestimonialCard component for card rendering.
  *
  * WordPress block mapping: wp:group + wp:columns
  *
  * @see /src/styles/patterns/service-testimonial.css
+ * @see /src/app/components/patterns/TestimonialCard.tsx
  */
 
-import { Star, Quote } from 'lucide-react';
 import { Container } from '../common/Container';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { testimonials, type ExtendedTestimonial } from '../../data/testimonials';
+import { TestimonialCard, type TestimonialCardData } from './TestimonialCard';
 
 /**
  * Maps service-detail slugs (from services-detailed.ts) to the
@@ -42,13 +35,21 @@ const SERVICE_SLUG_TO_TESTIMONIAL_TYPE: Record<string, string[]> = {
   seo:                          ['SEO'],
   content:                      ['Strategy', 'Content'],
   'content-strategy':           ['Strategy', 'Content'],
+  'content-creation':           ['Content'],
+  'content-copywriting':        ['Content', 'Copywriting'],
+  'content-seo':                ['SEO', 'Content'],
+  'content-governance':         ['Content', 'Strategy'],
+  'content-collection':         ['Content'],
+  'content-audit':              ['Content', 'Strategy'],
   support:                      ['Support', 'Maintenance'],
   migrations:                   ['Migration'],
   performance:                  ['Performance'],
   training:                     ['Training'],
   accessibility:                ['Accessibility'],
   newsletter:                   ['Newsletter', 'Email'],
+  'email-marketing':            ['Email', 'Newsletter'],
   hosting:                      ['Hosting'],
+  'figma-prototyping':          ['Design'],
   'ai-engine-optimisation':     [],
   'answer-engine-optimisation': [],
 };
@@ -77,16 +78,18 @@ function getTestimonialsForService(
 }
 
 /**
- * Returns the initials (first letter of first + last name) for the
- * avatar fallback.
+ * Maps an ExtendedTestimonial to TestimonialCardData.
  */
-function getInitials(name: string): string {
-  return name
-    .split(' ')
-    .map((n) => n[0])
-    .join('')
-    .toUpperCase()
-    .slice(0, 2);
+function mapToCardData(t: ExtendedTestimonial): TestimonialCardData {
+  return {
+    quote: t.quote,
+    author: t.author,
+    role: t.role,
+    company: t.company,
+    avatar: t.avatar,
+    rating: t.rating,
+    service: t.service,
+  };
 }
 
 /* ── Props ── */
@@ -138,64 +141,14 @@ export function ServiceTestimonial({
               animation="fade-up"
               delay={index * 150}
             >
-              <article
-                className="service-testimonial__card"
-                aria-label={`Testimonial from ${testimonial.author}`}
-              >
-                <div className="service-testimonial__card-inner">
-                  {/* Quote Icon */}
-                  <div className="service-testimonial__quote-icon-wrap">
-                    <Quote size={20} strokeWidth={2} />
-                  </div>
-
-                  {/* Rating */}
-                  {testimonial.rating && (
-                    <div
-                      className="service-testimonial__rating"
-                      role="img"
-                      aria-label={`${testimonial.rating} out of 5 stars`}
-                    >
-                      {Array.from({ length: testimonial.rating }).map(
-                        (_, i) => (
-                          <Star
-                            key={i}
-                            size={14}
-                            className="service-testimonial__star"
-                          />
-                        )
-                      )}
-                    </div>
-                  )}
-
-                  {/* Quote */}
-                  <p className="service-testimonial__quote">
-                    &ldquo;{testimonial.quote}&rdquo;
-                  </p>
-
-                  {/* Service badge */}
-                  {testimonial.service && (
-                    <span className="service-testimonial__service-badge">
-                      {testimonial.service}
-                    </span>
-                  )}
-
-                  {/* Author */}
-                  <div className="service-testimonial__author">
-                    <div className="service-testimonial__author-avatar">
-                      {getInitials(testimonial.author)}
-                    </div>
-                    <div className="service-testimonial__author-info">
-                      <span className="service-testimonial__author-name">
-                        {testimonial.author}
-                      </span>
-                      <span className="service-testimonial__author-role">
-                        {testimonial.role}
-                        {testimonial.company && `, ${testimonial.company}`}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </article>
+              <TestimonialCard
+                testimonial={mapToCardData(testimonial)}
+                variant="glass"
+                showRating={true}
+                showAvatar={true}
+                showQuoteIcon={true}
+                showServiceBadge={true}
+              />
             </ScrollReveal>
           ))}
         </div>

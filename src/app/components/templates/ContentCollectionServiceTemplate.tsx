@@ -6,6 +6,11 @@
 
 import { Camera, Video, Mic, FileText, Users, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router';
+import '../../../styles/templates/sub-service-compact.css';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
+import { FeatureList } from '../patterns/FeatureList';
+import { CheckList } from '../patterns/CheckList';
+import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
 
 export const ContentCollectionServiceTemplate = () => {
   const benefits = [
@@ -30,13 +35,13 @@ export const ContentCollectionServiceTemplate = () => {
     <div className="sub-service-compact" data-service="content-collection">
       <section className="sub-service-compact__hero">
         <div className="sub-service-compact__hero-content">
-          <div className="sub-service-compact__breadcrumb">
-            <Link to="/services" className="sub-service-compact__breadcrumb-link">Services</Link>
-            <span className="sub-service-compact__breadcrumb-separator">/</span>
-            <Link to="/services/content" className="sub-service-compact__breadcrumb-link">Content</Link>
-            <span className="sub-service-compact__breadcrumb-separator">/</span>
-            <span className="sub-service-compact__breadcrumb-current">Content Collection</span>
-          </div>
+          <BreadcrumbPart
+            links={[
+              { to: '/services', label: 'Services' },
+              { to: '/services/content', label: 'Content' },
+              { label: 'Content Collection' }
+            ]}
+          />
           
           <h1 className="sub-service-compact__hero-title">Content Collection Services</h1>
           
@@ -61,20 +66,13 @@ export const ContentCollectionServiceTemplate = () => {
           <h2 className="sub-service-compact__section-title">Content Collection Services</h2>
         </div>
         
-        <div className="sub-service-compact__benefits-grid">
-          {benefits.map((benefit, index) => {
-            const Icon = benefit.icon;
-            return (
-              <div key={index} className="sub-service-compact__benefit-card">
-                <div className="sub-service-compact__benefit-icon">
-                  <Icon className="sub-service-compact__benefit-icon-svg" />
-                </div>
-                <h3 className="sub-service-compact__benefit-title">{benefit.title}</h3>
-                <p className="sub-service-compact__benefit-description">{benefit.description}</p>
-              </div>
-            );
-          })}
-        </div>
+        <FeatureList 
+          items={benefits}
+          columns={3}
+          variant="glass"
+          iconStyle="rounded"
+          className="sub-service-compact__benefits-grid"
+        />
       </section>
 
       <section className="sub-service-compact__deliverables">
@@ -82,14 +80,11 @@ export const ContentCollectionServiceTemplate = () => {
           <h2 className="sub-service-compact__section-title">What You Get</h2>
         </div>
         
-        <div className="sub-service-compact__deliverables-grid">
-          {deliverables.map((item, index) => (
-            <div key={index} className="sub-service-compact__deliverable-item">
-              <div className="sub-service-compact__deliverable-icon">✓</div>
-              <div className="sub-service-compact__deliverable-text">{item}</div>
-            </div>
-          ))}
-        </div>
+        <CheckList 
+          items={deliverables}
+          variant="default"
+          className="sub-service-compact__deliverables-grid"
+        />
       </section>
 
       <section className="sub-service-compact__results">
@@ -106,6 +101,9 @@ export const ContentCollectionServiceTemplate = () => {
           ))}
         </div>
       </section>
+
+      {/* Client Testimonials */}
+      <ServiceTestimonial serviceSlug="content-collection" />
 
       <section className="sub-service-compact__cta">
         <div className="sub-service-compact__cta-content">

@@ -25,8 +25,8 @@ import { ViewSwitcher, type ViewMode } from '../common/ViewSwitcher';
 import { FunkyCTA } from '../patterns/FunkyCTA';
 import { SocialProof } from '../patterns/SocialProof';
 import { FAQSection } from '../patterns/FAQSection';
+import { StatsGrid } from '../patterns/StatsGrid';
 import { ContentStatsWidget } from '../patterns/ContentStatsWidget';
-import { TrendingTopicsWidget } from '../patterns/TrendingTopicsWidget';
 import { StickyBookCallButton } from '../blocks/layout/StickyBookCallButton';
 import { Skeleton } from '../blocks/layout/Skeleton';
 import { TaxonomyFilter } from '../common/TaxonomyFilter';
@@ -228,22 +228,13 @@ export function PortfolioArchiveTemplate() {
               From simple websites to complex enterprise solutions.
             </Paragraph>
 
-            <div className="portfolio-archive__stats">
-              <div>
-                <div className="portfolio-archive__stat-value portfolio-archive__stat-value--primary">
-                  150+
-                </div>
-                <div className="portfolio-archive__stat-label">Projects Delivered</div>
-              </div>
-              <div>
-                <div className="portfolio-archive__stat-value">98%</div>
-                <div className="portfolio-archive__stat-label">Client Satisfaction</div>
-              </div>
-              <div>
-                <div className="portfolio-archive__stat-value">15+</div>
-                <div className="portfolio-archive__stat-label">Industries Served</div>
-              </div>
-            </div>
+            <StatsGrid
+              stats={[
+                { number: '150+', label: 'Projects Delivered' },
+                { number: '98%', label: 'Client Satisfaction' },
+                { number: '15+', label: 'Industries Served' }
+              ]}
+            />
           </div>
         </Container>
       </Section>
@@ -366,19 +357,6 @@ export function PortfolioArchiveTemplate() {
       <Section spacing="lg">
         <Container>
           <ContentStatsWidget include={['portfolio', 'clients', 'experience', 'testimonials']} />
-        </Container>
-      </Section>
-
-      {/* Browse by Industry & Technology */}
-      <Section spacing="lg">
-        <Container>
-          <TrendingTopicsWidget
-            sources={['project-groups', 'project-tags']}
-            title="Browse by Industry & Technology"
-            label="Explore Projects"
-            description="Filter our portfolio by the industries we serve and technologies we use."
-            maxPerSection={10}
-          />
         </Container>
       </Section>
 

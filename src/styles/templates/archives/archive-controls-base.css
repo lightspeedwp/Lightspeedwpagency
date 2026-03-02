@@ -1,0 +1,43 @@
+/**
+ * Archive Controls Base Styles
+ *
+ * Shared control styles for archive templates (filters, sorting, pagination, counts).
+ * 100% CSS variables — ONLY uses fonts, colors, spacing, and typography from design system.
+ * 
+ * Used by:
+ * - Archive filter controls
+ * - Sort controls
+ * - Pagination
+ * - Result counts
+ * - View switchers
+ * 
+ * @see /src/styles/templates/archive.css
+ */
+
+/* ============================================
+   ARCHIVE CONTROLS
+   ============================================ */
+
+.archive-controls__count {
+  font-family: var(--font-secondary);
+  font-size: var(--text-small);
+  color: var(--muted-foreground);
+}
+
+/* ============================================
+   PAGINATION
+   ============================================ */
+
+.archive-pagination {
+  padding-top: var(--spacing-12);
+  display: flex;
+  justify-content: center;
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  /* Pagination transition overrides would go here if needed */
+}

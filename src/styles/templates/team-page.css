@@ -1,21 +1,25 @@
 /**
- * Team Page Template — Funky Neon Styles
+ * Team Page Styles
  *
- * WordPress template: templates/page-team.html
- * BEM block: .team-page
- *
- * Sections:
- *   1. Hero (parallax + badge + gradient title)
- *   2. Leadership (glassmorphism cards + gradient stripe + social overlay)
- *   3. Team Members (glow border cards + gradient overlay)
- *   4. Culture & Values (glassmorphism + neon icon wrappers)
- *   5. Stats (glassmorphism + gradient stat values + mesh grid)
- *   6. FAQ (wrapper only — FAQSection handles itself)
- *   7. CTA (FunkyCTA handles itself)
- *
- * @see /src/app/components/templates/TeamTemplate.tsx
+ * BEM naming: .team-page__*
+ * 100% CSS variables, zero hardcoded values.
  */
 
+/* ============================================
+   BASE IMPORTS — Phase 1 Optimization
+   ============================================ */
+
+/**
+ * Import shared base modules to reduce duplication
+ * @see /docs/css-base-extraction-guide.md
+ */
+@import '../base/grid-utilities.css';
+@import '../base/card-base.css';
+@import '../patterns/hero/hero-base.css';
+
+/* ============================================
+   TEAM PAGE STYLES
+   ============================================ */
 
 /* ============================================
    1. HERO

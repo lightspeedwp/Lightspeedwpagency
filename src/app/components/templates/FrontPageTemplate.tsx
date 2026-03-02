@@ -16,10 +16,9 @@
  * via the Container component. Header and footer match the same max-width.
  */
 
-import { useRef } from 'react';
 /* Route-level CSS */
 import '../../../styles/templates/page-front-page.css';
-import { HeroHome } from '../patterns/HeroHome'; // Kept for reference but replaced inline
+import { HeroSplash } from '../patterns/HeroSplash';
 import { FeatureGrid } from '../patterns/FeatureGrid';
 import { StatsSection } from '../patterns/StatsSection';
 import { ProcessSteps } from '../patterns/ProcessSteps';
@@ -34,9 +33,7 @@ import { homepageLogos } from '../../data/client-logos';
 import { Section } from '../common/Section';
 import { Container } from '../common/Container';
 import { Button } from '../blocks/design/Buttons';
-import { useHeroParallax } from '../../hooks/useHeroParallax';
-import { Sparkles, ArrowRight } from 'lucide-react';
-import { ScrollDownArrow } from '../common/ScrollDownArrow';
+import { ArrowRight } from 'lucide-react';
 import { ProofStrip } from '../patterns/ProofStrip';
 
 import {
@@ -54,73 +51,27 @@ import {
 } from '../../data/front-page';
 
 export function FrontPageTemplate() {
-  const parallaxRef = useHeroParallax(0.4);
-
   return (
     <>
       {/* ============================================
-          1. HERO SECTION (Neon Parallax)
+          1. HERO SECTION (Neon Splash)
           ============================================ */}
-      <section className="front-page__hero">
-        {/* Parallax Background */}
-        <img 
-          ref={parallaxRef}
-          src="https://images.unsplash.com/photo-1635776063328-153b13e3c245?q=80&w=2832&auto=format&fit=crop"
-          alt="Abstract neon grid background"
-          className="front-page__hero-bg"
-        />
-        
-        {/* Overlays */}
-        <div className="front-page__hero-overlay" />
-        <div className="front-page__hero-grid" />
-        
-        {/* Floating Orbs */}
-        <div className="front-page__hero-orb front-page__hero-orb--1" />
-        <div className="front-page__hero-orb front-page__hero-orb--2" />
-        <div className="front-page__hero-orb front-page__hero-orb--3" />
-
-        <Container>
-          <div className="front-page__hero-content">
-            {/* Badge */}
-            <div className="front-page__hero-badge">
-              <Sparkles size={16} style={{ color: 'var(--color-white)' }} />
-              {frontPageHero.badge}
-            </div>
-            
-            {/* Title */}
-            <h1 className="front-page__hero-title">
-              Build Better WordPress Sites <br />
-              <span className="front-page__hero-title-gradient">Faster & Funkier</span>
-            </h1>
-            
-            {/* Subtitle */}
-            <p className="front-page__hero-subtitle">
-              {frontPageHero.description}
-            </p>
-
-            {/* Actions */}
-            <div className="front-page__hero-actions">
-              <Button
-                variant="primary"
-                size="xl"
-                page={frontPageHero.primaryButton.page as any}
-                className="has-shadow-neon"
-              >
-                {frontPageHero.primaryButton.text}
-              </Button>
-              <Button
-                variant="outline"
-                size="xl"
-                page={frontPageHero.secondaryButton.page as any}
-                className="front-page__hero-btn--outline"
-              >
-                {frontPageHero.secondaryButton.text}
-              </Button>
-            </div>
-          </div>
-        </Container>
-        <ScrollDownArrow targetId="proof-strip" />
-      </section>
+      <HeroSplash 
+        badge={frontPageHero.badge}
+        titlePrefix="Build Better WordPress Sites"
+        titleGradient="Faster & Funkier"
+        description={frontPageHero.description}
+        primaryButton={{
+          text: frontPageHero.primaryButton.text,
+          page: frontPageHero.primaryButton.page
+        }}
+        secondaryButton={{
+          text: frontPageHero.secondaryButton.text,
+          page: frontPageHero.secondaryButton.page
+        }}
+        bgImage="https://images.unsplash.com/photo-1635776063328-153b13e3c245?q=80&w=2832&auto=format&fit=crop"
+        targetId="proof-strip"
+      />
 
       {/* ============================================
           1b. PROOF STRIP (VP2 — Social Proof)

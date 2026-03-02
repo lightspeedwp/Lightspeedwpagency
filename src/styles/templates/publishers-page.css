@@ -1,12 +1,25 @@
 /**
  * Publishers Solution Page Styles
  *
- * Funky Neon Redesign for the Publishers landing page.
- * BEM naming: .publishers__*
+ * BEM naming: .publishers-*
  * 100% CSS variables, zero hardcoded values.
- *
- * @see /src/app/components/templates/PublishersTemplate.tsx
  */
+
+/* ============================================
+   BASE IMPORTS — Phase 1 Optimization
+   ============================================ */
+
+/**
+ * Import shared base modules to reduce duplication
+ * @see /docs/css-base-extraction-guide.md
+ */
+@import '../base/grid-utilities.css';
+@import '../base/card-base.css';
+@import '../patterns/hero/hero-base.css';
+
+/* ============================================
+   PUBLISHERS SOLUTION STYLES
+   ============================================ */
 
 /* ============================================
    HERO SECTION — Neon Parallax

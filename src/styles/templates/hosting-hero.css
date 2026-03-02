@@ -1,0 +1,161 @@
+/**
+ * Hosting Page — Hero & Stats
+ */
+
+.hosting-lab__hero {
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--background);
+  color: var(--hl-text);
+  overflow: hidden;
+  padding: var(--spacing-32) 0 var(--spacing-16);
+}
+
+.hosting-lab__hero-mesh {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 15% 30%, var(--hl-glow-violet) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 60% at 85% 70%, var(--hl-glow-cyan) 0%, transparent 70%);
+  filter: blur(80px);
+}
+
+.hosting-lab__hero-grid {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--hl-cyan) 6%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--hl-cyan) 6%, transparent) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
+}
+
+.hosting-lab__hero-inner {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  max-width: var(--wp--style--global--content-size);
+  margin: 0 auto;
+}
+
+.hosting-lab__hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--hl-cyan);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+  padding: var(--spacing-2) var(--spacing-5);
+  border: 1px solid color-mix(in srgb, var(--hl-cyan) 40%, transparent);
+  border-radius: var(--radius-full);
+  background: color-mix(in srgb, var(--hl-cyan) 10%, transparent);
+  margin-bottom: var(--spacing-8);
+  backdrop-filter: blur(8px);
+}
+
+.hosting-lab__hero-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h1);
+  font-weight: var(--font-weight-black);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+  color: var(--hl-text);
+  margin-bottom: var(--spacing-6);
+}
+
+.hosting-lab__hero-title-glow {
+  background: linear-gradient(135deg, var(--hl-violet), var(--hl-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hosting-lab__hero-desc {
+  font-family: var(--font-secondary);
+  font-size: var(--text-lead);
+  color: var(--hl-text-muted);
+  line-height: var(--line-height-relaxed);
+  max-width: 38rem;
+  margin: 0 auto var(--spacing-10);
+}
+
+.hosting-lab__hero-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-4);
+}
+
+@media (min-width: 480px) {
+  .hosting-lab__hero-buttons {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+.hosting-lab__stats {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-4);
+  margin-top: var(--spacing-16);
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 768px) {
+  .hosting-lab__stats {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.hosting-lab__stat {
+  text-align: center;
+  padding: var(--spacing-6);
+  border: 1px solid var(--hl-glass-border);
+  border-radius: var(--radius-xl);
+  background: var(--hl-glass);
+  backdrop-filter: blur(12px);
+  transition: border-color var(--transition-base) var(--ease-out),
+              box-shadow var(--transition-base) var(--ease-out);
+}
+
+.hosting-lab__stat:hover {
+  border-color: color-mix(in srgb, var(--hl-cyan) 50%, transparent);
+  box-shadow: 0 0 20px var(--hl-glow-cyan);
+}
+
+.hosting-lab__stat-icon {
+  color: var(--hl-cyan);
+  margin-bottom: var(--spacing-2);
+}
+
+.hosting-lab__stat-value {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-weight-bold);
+  line-height: 1;
+  margin-bottom: var(--spacing-1);
+  background: linear-gradient(135deg, var(--hl-violet), var(--hl-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hosting-lab__stat-label {
+  font-family: var(--font-secondary);
+  font-size: var(--text-xs);
+  color: var(--hl-text-muted);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+}

@@ -1,31 +1,30 @@
 /**
- * Contact Page Styles — "Communication Hub" Funky Redesign
+ * Contact Page Styles — Funky Neon Pass
  *
- * Template: ContactPageTemplate
- * Theme: Neon communication, glassmorphism form, floating icons, radial gradients
- *
- * Modes:
- *   :root (light) — white bg, primary blue accents, glass form
- *   .dark          — near-black bg, neon cyan glows, full intensity
- *
- * 100% CSS variables — no hardcoded color/spacing values.
- * BEM naming throughout.
+ * BEM naming: .contact-page__*
+ * 100% CSS variables, zero hardcoded values.
  */
 
+/* ============================================
+   BASE IMPORTS — Phase 1 Optimization
+   ============================================ */
+
+/**
+ * Import shared base modules to reduce duplication
+ * @see /docs/css-base-extraction-guide.md
+ */
+@import '../base/grid-utilities.css';
+@import '../base/card-base.css';
+@import '../patterns/hero/hero-base.css';
 
 /* ============================================
-   PAGE CONTAINER
+   CONTACT PAGE STYLES
    ============================================ */
 
 .contact-page {
   position: relative;
   overflow: hidden;
 }
-
-
-/* ============================================
-   HERO SECTION (Parallax + Floating Orbs)
-   ============================================ */
 
 .contact-page__hero {
   position: relative;

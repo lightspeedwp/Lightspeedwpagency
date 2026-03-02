@@ -10,8 +10,10 @@
  * - Glow cards with dark-mode neon hover
  * - Scroll-triggered reveal animations
  * - 100% CSS variables, zero hardcoded values
+ * - ✨ UPDATED: Now uses PostCard pattern component (Phase 2.1b)
  *
  * @see /guidelines/templates/overview-templates.md
+ * @see /src/app/components/patterns/PostCard.tsx
  */
 
 import { useState, useMemo } from 'react';
@@ -35,6 +37,7 @@ import { blogPosts, blogAuthors, type BlogPost, type BlogAuthor } from '../../da
 import { blogCategories } from '../../data/taxonomies';
 import { blogFAQs } from '../../data/faqs';
 import { blogIndexHero, blogIndexCTA } from '../../data/blog-index-page';
+import { PostCard, PostCardGrid } from '../patterns/PostCard';
 
 /* ─────────────────────────────────────────────
    HELPERS
@@ -53,181 +56,26 @@ function parseReadMinutes(readingTime: string): number {
   return match ? parseInt(match[0], 10) : 5;
 }
 
-/* ─────────────────────────────────────────────
-   CARD VARIANT 1 — NEON STACK (3-col)
-   Vertical card with glowing top-border accent
-   ───────────────────────────────────────────── */
-
-function NeonStackCard({ post }: { post: BlogPost }) {
+/**
+ * Convert BlogPost to the format expected by PostCard
+ */
+function convertBlogPost(post: BlogPost) {
   const author = getAuthor(post.author);
-  return (
-    <Link to={`/insights/${post.slug}`} className="blog-neon" aria-label={`Read ${post.title}`}>
-      <article className="blog-neon__wrap">
-        <div className="blog-neon__img-box">
-          <img
-            src={post.featuredImage}
-            alt={post.title}
-            className="blog-neon__img"
-            loading="lazy"
-          />
-          {post.categories[0] && (
-            <span className="blog-neon__category">
-              {getCategoryName(post.categories[0])}
-            </span>
-          )}
-        </div>
-        <div className="blog-neon__body">
-          <h3 className="blog-neon__title">{post.title}</h3>
-          <p className="blog-neon__excerpt">{post.excerpt}</p>
-          <div className="blog-neon__meta">
-            {author && (
-              <span className="blog-neon__meta-item">
-                <User size={12} />
-                {author.name}
-              </span>
-            )}
-            <span className="blog-neon__meta-item">
-              <Calendar size={12} />
-              {new Date(post.date).toLocaleDateString('en-US', {
-                month: 'short',
-                day: 'numeric',
-              })}
-            </span>
-            <span className="blog-neon__read-more">
-              Read <ArrowRight size={12} />
-            </span>
-          </div>
-        </div>
-      </article>
-    </Link>
-  );
-}
-
-/* ─────────────────────────────────────────────
-   CARD VARIANT 2 — MAGAZINE (2-col)
-   Larger image, author avatar, reading-time bar
-   ───────────────────────────────────────────── */
-
-function MagazineCard({ post }: { post: BlogPost }) {
-  const author = getAuthor(post.author);
-  const minutes = parseReadMinutes(post.readingTime);
-  /* A decorative bar width — 10 min ≈ full */
-  const barWidth = `${Math.min(minutes * 10, 100)}%`;
-
-  return (
-    <Link to={`/insights/${post.slug}`} className="blog-mag" aria-label={`Read ${post.title}`}>
-      <article className="blog-mag__wrap">
-        <div className="blog-mag__img-box">
-          <img
-            src={post.featuredImage}
-            alt={post.title}
-            className="blog-mag__img"
-            loading="lazy"
-          />
-          {post.featured && <span className="blog-mag__label">Featured</span>}
-          <div
-            className="blog-mag__time-bar"
-            style={{ width: barWidth }}
-            aria-hidden="true"
-          />
-        </div>
-        <div className="blog-mag__body">
-          <div className="blog-mag__categories">
-            {post.categories.map((cat) => (
-              <span key={cat} className="blog-index__category-chip">
-                {getCategoryName(cat)}
-              </span>
-            ))}
-          </div>
-          <h3 className="blog-mag__title">{post.title}</h3>
-          <p className="blog-mag__excerpt">{post.excerpt}</p>
-          <div className="blog-mag__footer">
-            {author && (
-              <div className="blog-mag__author">
-                <img
-                  src={author.avatar}
-                  alt={author.name}
-                  className="blog-mag__avatar"
-                  loading="lazy"
-                />
-                <div className="blog-mag__author-info">
-                  <span className="blog-mag__author-name">{author.name}</span>
-                  <span className="blog-mag__date">
-                    {new Date(post.date).toLocaleDateString('en-US', {
-                      year: 'numeric',
-                      month: 'short',
-                      day: 'numeric',
-                    })}
-                  </span>
-                </div>
-              </div>
-            )}
-            <span className="blog-mag__reading-time">
-              <Clock size={12} />
-              {post.readingTime}
-            </span>
-          </div>
-        </div>
-      </article>
-    </Link>
-  );
-}
-
-/* ─────────────────────────────────────────────
-   CARD VARIANT 3 — STREAM (1-col list)
-   Horizontal row with thumbnail, timeline feel
-   ───────────────────────────────────────────── */
-
-function StreamCard({ post }: { post: BlogPost }) {
-  const author = getAuthor(post.author);
-  return (
-    <Link to={`/insights/${post.slug}`} className="blog-stream" aria-label={`Read ${post.title}`}>
-      <article className="blog-stream__wrap">
-        <div className="blog-stream__img-box">
-          <img
-            src={post.featuredImage}
-            alt={post.title}
-            className="blog-stream__img"
-            loading="lazy"
-          />
-          <span className="blog-stream__indicator" aria-hidden="true" />
-        </div>
-        <div className="blog-stream__body">
-          <div className="blog-stream__top">
-            {post.categories[0] && (
-              <span className="blog-stream__category">
-                {getCategoryName(post.categories[0])}
-              </span>
-            )}
-            <span className="blog-stream__date">
-              {new Date(post.date).toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'short',
-                day: 'numeric',
-              })}
-            </span>
-          </div>
-          <h3 className="blog-stream__title">{post.title}</h3>
-          <p className="blog-stream__excerpt">{post.excerpt}</p>
-          <div className="blog-stream__bottom">
-            {author && (
-              <span className="blog-stream__meta-item">
-                <User size={12} />
-                {author.name}
-              </span>
-            )}
-            <span className="blog-stream__meta-item">
-              <Clock size={12} />
-              {post.readingTime}
-            </span>
-            <span className="blog-stream__cta">
-              Read article <ArrowRight size={12} />
-            </span>
-          </div>
-        </div>
-      </article>
-    </Link>
-  );
+  return {
+    ...post,
+    url: `/insights/${post.slug}`,
+    category: post.categories[0] ? {
+      name: getCategoryName(post.categories[0]),
+      slug: post.categories[0]
+    } : undefined,
+    author: author ? {
+      name: author.name,
+      slug: author.slug,
+      avatar: author.avatar,
+      bio: author.bio
+    } : undefined,
+    tags: post.categories.slice(1).map(cat => getCategoryName(cat))
+  };
 }
 
 /* ─────────────────────────────────────────────
@@ -274,20 +122,9 @@ export function BlogIndexTemplate() {
   /** Featured post (first featured or first post) */
   const featuredPost = blogPosts.find((p) => p.featured) || blogPosts[0];
 
-  /** Card component per view */
-  const CardComponent =
-    viewMode === 'grid-3'
-      ? NeonStackCard
-      : viewMode === 'grid-2'
-        ? MagazineCard
-        : StreamCard;
-
-  const gridClass =
-    viewMode === 'grid-3'
-      ? 'blog-index__grid--cols-3'
-      : viewMode === 'grid-2'
-        ? 'blog-index__grid--cols-2'
-        : 'blog-index__grid--cols-1';
+  /** Map view mode to PostCard variant and grid columns */
+  const postCardVariant = viewMode === 'grid-3' ? 'vertical' : viewMode === 'grid-2' ? 'horizontal' : 'minimal';
+  const gridColumns = viewMode === 'grid-3' ? 3 : viewMode === 'grid-2' ? 2 : 1;
 
   return (
     <>
@@ -297,19 +134,19 @@ export function BlogIndexTemplate() {
       />
 
       {/* Archive Header */}
-      <Section spacing="xl" className="blog-index__hero">
-        <div className="blog-index__hero-gradient" aria-hidden="true" />
-        <div className="blog-index__hero-orb" aria-hidden="true" />
-        <div className="blog-index__hero-orb-2" aria-hidden="true" />
+      <Section spacing="xl" className="hero-base hero-variant-archive blog-index__hero">
+        <div className="hero-base__gradient" aria-hidden="true" />
+        <div className="hero-base__orb hero-base__orb--primary" aria-hidden="true" />
+        <div className="hero-base__orb hero-base__orb--secondary" aria-hidden="true" />
 
         <Container>
           <ScrollReveal animation="fade-up" duration={600}>
-            <div className="blog-index__section-header--large">
-              <span className="blog-index__badge">{blogIndexHero.badge.text}</span>
-              <Heading level={1} className="blog-index__section-title">
+            <div className="hero-base__content blog-index__section-header--large">
+              <span className="hero-base__badge blog-index__badge">{blogIndexHero.badge.text}</span>
+              <Heading level={1} className="hero-base__title blog-index__section-title">
                 {blogIndexHero.title}
               </Heading>
-              <Paragraph className="blog-index__section-description">
+              <Paragraph className="hero-base__description blog-index__section-description">
                 {blogIndexHero.subtitle}
               </Paragraph>
             </div>
@@ -317,64 +154,21 @@ export function BlogIndexTemplate() {
         </Container>
       </Section>
 
-      {/* Featured Post */}
+      {/* Featured Post - Using PostCard 'featured' variant */}
       {featuredPost && (
         <Section spacing="lg">
           <Container>
             <ScrollReveal animation="fade-up" duration={600} delay={100}>
-              <Link
-                to={`/insights/${featuredPost.slug}`}
-                className="blog-index__featured-card"
-                aria-label={`Read ${featuredPost.title}`}
-              >
-                <div className="blog-index__featured-image-wrap">
-                  <img
-                    src={featuredPost.featuredImage}
-                    alt={featuredPost.title}
-                    className="blog-index__featured-image"
-                    loading="lazy"
-                  />
-                  <span className="blog-index__featured-label">Featured</span>
-                </div>
-                <div className="blog-index__featured-content">
-                  <div className="blog-index__featured-categories">
-                    {featuredPost.categories.map((cat) => (
-                      <span key={cat} className="blog-index__category-chip">
-                        {getCategoryName(cat)}
-                      </span>
-                    ))}
-                  </div>
-                  <Heading level={2} className="blog-index__featured-title">
-                    {featuredPost.title}
-                  </Heading>
-                  <Paragraph className="blog-index__featured-excerpt">
-                    {featuredPost.excerpt}
-                  </Paragraph>
-                  <div className="blog-index__featured-meta">
-                    {(() => {
-                      const author = getAuthor(featuredPost.author);
-                      return author ? (
-                        <span className="blog-index__meta-item">
-                          <User size={14} />
-                          {author.name}
-                        </span>
-                      ) : null;
-                    })()}
-                    <span className="blog-index__meta-item">
-                      <Calendar size={14} />
-                      {new Date(featuredPost.date).toLocaleDateString('en-US', {
-                        year: 'numeric',
-                        month: 'short',
-                        day: 'numeric',
-                      })}
-                    </span>
-                    <span className="blog-index__meta-item">
-                      <Clock size={14} />
-                      {featuredPost.readingTime}
-                    </span>
-                  </div>
-                </div>
-              </Link>
+              <PostCard
+                post={convertBlogPost(featuredPost)}
+                variant="featured"
+                showImage={true}
+                showExcerpt={true}
+                showMeta={true}
+                showTags={false}
+                showCategory={true}
+                showReadingTime={true}
+              />
             </ScrollReveal>
           </Container>
         </Section>
@@ -432,22 +226,21 @@ export function BlogIndexTemplate() {
         </Container>
       </Section>
 
-      {/* Post Grid */}
+      {/* Post Grid - Using PostCardGrid pattern component */}
       <Section spacing="xl">
         <Container>
           {filtered.length > 0 ? (
-            <div className={`blog-index__grid ${gridClass}`}>
-              {filtered.map((post, index) => (
-                <ScrollReveal
-                  key={post.id}
-                  animation="fade-up"
-                  duration={500}
-                  delay={index * 80}
-                >
-                  <CardComponent post={post} />
-                </ScrollReveal>
-              ))}
-            </div>
+            <ScrollReveal animation="fade-up" duration={500}>
+              <PostCardGrid
+                posts={filtered.map(convertBlogPost)}
+                variant={postCardVariant}
+                showImages={true}
+                showExcerpts={true}
+                showMeta={true}
+                showTags={false}
+                columns={gridColumns as 2 | 3}
+              />
+            </ScrollReveal>
           ) : (
             <div className="blog-index__empty">
               <Heading level={3}>No posts found</Heading>

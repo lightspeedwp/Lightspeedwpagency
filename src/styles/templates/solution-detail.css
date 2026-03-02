@@ -8,17 +8,32 @@
  */
 
 /* ============================================
-   HERO
+   BASE IMPORTS — Phase 1 Optimization
    ============================================ */
 
+/**
+ * Import shared base modules to reduce duplication
+ * @see /docs/css-base-extraction-guide.md
+ */
+@import '../base/grid-utilities.css';
+@import '../base/card-base.css';
+@import '../patterns/hero/hero-base.css';
+
+/* ============================================
+   HERO — Uses hero-base
+   ============================================ */
+
+/**
+ * Solution detail hero extends hero-base
+ * Base structure comes from hero-base.css
+ * This file adds solution-specific mesh and orb customizations
+ */
+
 .solution-detail__hero {
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(135deg, var(--background) 0%, var(--muted) 100%);
-  padding: var(--spacing-16) 0 var(--spacing-20);
+  /* Extends hero-base */
 }
 
-/* Mesh grid background */
+/* Solution-specific mesh grid background */
 .solution-detail__hero-mesh {
   position: absolute;
   inset: 0;
@@ -29,7 +44,7 @@
   pointer-events: none;
 }
 
-/* Gradient orbs */
+/* Gradient orbs (solution-specific positions) */
 .solution-detail__hero-orb {
   position: absolute;
   border-radius: var(--radius-full);

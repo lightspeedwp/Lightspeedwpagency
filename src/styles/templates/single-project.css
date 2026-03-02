@@ -1,34 +1,25 @@
 /**
- * Single Project Styles — Funky Neon Pass
+ * Single Project Template Styles
  *
- * Theme: "The Exhibit" (Immersive/Detail)
- *
- * Funky treatments:
- *  - Animated gradient stripe on meta card
- *  - Glassmorphism meta sidebar + gallery items
- *  - Gradient metric values (both modes)
- *  - Gradient section title underlines (body h2 ::after)
- *  - Neon tech tags with glow hover
- *  - Gallery neon hover glow
- *  - Neon nav link hover
- *  - Full dark mode overrides
- *  - prefers-reduced-motion guards
- *
- * STRICT DESIGN SYSTEM COMPLIANCE:
- * - Fonts: var(--font-primary), var(--font-secondary), var(--font-mono)
- * - Spacing: var(--spacing-*)
- * - Radius: var(--radius-*)
- * - Colors: Semantic variables from theme-*.css
+ * BEM naming: .single-project__*
+ * 100% CSS variables, zero hardcoded values.
  */
 
 /* ============================================
-   ANIMATED GRADIENT STRIPE
+   BASE IMPORTS — Phase 1 Optimization
    ============================================ */
 
-@keyframes projectMetaStripe {
-  0%   { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
-}
+/**
+ * Import shared base modules to reduce duplication
+ * @see /docs/css-base-extraction-guide.md
+ */
+@import '../base/grid-utilities.css';
+@import '../base/card-base.css';
+@import '../patterns/hero/hero-base.css';
+
+/* ============================================
+   SINGLE PROJECT STYLES
+   ============================================ */
 
 /* ============================================
    HERO SECTION

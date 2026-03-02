@@ -11,10 +11,12 @@
  * - Neon active category pill
  * - Scroll-triggered reveal animations
  * - 100% CSS variables, zero hardcoded values
+ * - ✨ UPDATED: Now uses PostCard pattern component (Phase 2.1b)
  *
  * Pattern order: Breadcrumbs -> Category Header -> TaxonomyFilter -> Post Grid -> FAQs -> CTA
  *
  * @see /guidelines/templates/overview-templates.md
+ * @see /src/app/components/patterns/PostCard.tsx
  */
 
 import '../../../styles/templates/archive.css';
@@ -35,9 +37,32 @@ import { User, Calendar, Clock, ArrowRight } from 'lucide-react';
 import { blogCategories } from '../../data/taxonomies';
 import { getPostsByCategory, getAuthorBySlug, postTags } from '../../data/blog-posts';
 import { blogCategoryFAQs } from '../../data/faqs';
+import { PostCardGrid } from '../patterns/PostCard';
 
 interface CategoryArchiveTemplateProps {
   category?: string;
+}
+
+/**
+ * Convert blog post to PostCard format
+ */
+function convertToPostCardFormat(post: any) {
+  const author = getAuthorBySlug(post.author);
+  return {
+    ...post,
+    url: `/insights/${post.slug}`,
+    category: post.tags?.[0] ? {
+      name: post.tags[0],
+      slug: post.tags[0]
+    } : undefined,
+    author: author ? {
+      name: author.name,
+      slug: author.slug,
+      avatar: author.avatar,
+      bio: author.bio
+    } : undefined,
+    tags: post.tags || []
+  };
 }
 
 export function CategoryArchiveTemplate({ category: categorySlug = 'development' }: CategoryArchiveTemplateProps) {
@@ -166,159 +191,11 @@ export function CategoryArchiveTemplate({ category: categorySlug = 'development'
       <Section spacing="xl">
         <Container>
           {filtered.length > 0 ? (
-            <div className="category-archive__grid">
-              {filtered.map((post, index) => {
-                const author = getAuthorBySlug(post.author);
-                return (
-                  <ScrollReveal
-                    key={post.id}
-                    animation="fade-up"
-                    duration={500}
-                    delay={index * 80}
-                  >
-                    <Link
-                      to={`/insights/${post.slug}`}
-                      className="category-archive__post-card"
-                      aria-label={`Read ${post.title}`}
-                    >
-                      <div className="category-archive__post-image-wrap">
-                        <img
-                          src={post.featuredImage}
-                          alt={post.title}
-                          className="category-archive__post-image"
-                          loading="lazy"
-                        />
-                      </div>
-                      <div 
-                        className="category-archive__post-content"
-                        style={{
-                          padding: 'var(--spacing-6)',
-                          display: 'flex',
-                          flexDirection: 'column',
-                          gap: 'var(--spacing-4)',
-                          flex: '1'
-                        }}
-                      >
-                        <div 
-                          className="category-archive__post-categories"
-                          style={{
-                            display: 'flex',
-                            flexWrap: 'wrap',
-                            gap: 'var(--spacing-2)',
-                            marginBottom: 'var(--spacing-2)'
-                          }}
-                        >
-                          {post.tags.slice(0, 2).map(tag => (
-                            <span 
-                              key={tag} 
-                              className="category-archive__category-chip"
-                              style={{
-                                padding: 'var(--spacing-1) var(--spacing-3)',
-                                background: 'linear-gradient(135deg, color-mix(in srgb, var(--secondary) 12%, transparent), color-mix(in srgb, var(--accent) 8%, transparent))',
-                                color: 'var(--secondary)',
-                                border: '1px solid color-mix(in srgb, var(--secondary) 20%, transparent)',
-                                borderRadius: 'var(--radius-full)',
-                                fontFamily: 'var(--font-secondary)',
-                                fontSize: 'var(--text-xs)',
-                                fontWeight: 'var(--font-weight-semibold)',
-                                textTransform: 'capitalize',
-                                letterSpacing: 'var(--letter-spacing-wide)'
-                              }}
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
-                        <h3 
-                          className="category-archive__post-title"
-                          style={{
-                            fontFamily: 'var(--font-primary)',
-                            fontSize: 'var(--text-xl)',
-                            fontWeight: 'var(--font-weight-bold)',
-                            lineHeight: 'var(--line-height-tight)',
-                            color: 'var(--foreground)',
-                            margin: '0',
-                            letterSpacing: 'var(--letter-spacing-tight)'
-                          }}
-                        >
-                          {post.title}
-                        </h3>
-                        <p 
-                          className="category-archive__post-excerpt"
-                          style={{
-                            fontFamily: 'var(--font-primary)',
-                            fontSize: 'var(--text-sm)',
-                            lineHeight: 'var(--line-height-relaxed)',
-                            color: 'var(--muted-foreground)',
-                            margin: '0',
-                            display: '-webkit-box',
-                            WebkitLineClamp: 3,
-                            WebkitBoxOrient: 'vertical',
-                            overflow: 'hidden'
-                          }}
-                        >
-                          {post.excerpt}
-                        </p>
-                        <div 
-                          className="category-archive__post-meta"
-                          style={{
-                            display: 'flex',
-                            flexWrap: 'wrap',
-                            alignItems: 'center',
-                            gap: 'var(--spacing-4)',
-                            marginTop: 'auto',
-                            paddingTop: 'var(--spacing-4)',
-                            borderTop: '1px solid var(--border-soft)',
-                            fontFamily: 'var(--font-secondary)',
-                            fontSize: 'var(--text-xs)',
-                            color: 'var(--muted-foreground)'
-                          }}
-                        >
-                          {author && (
-                            <span 
-                              className="category-archive__meta-item"
-                              style={{
-                                display: 'inline-flex',
-                                alignItems: 'center',
-                                gap: 'var(--spacing-1-5)'
-                              }}
-                            >
-                              <User size={14} />
-                              {author.name}
-                            </span>
-                          )}
-                          <span 
-                            className="category-archive__meta-item"
-                            style={{
-                              display: 'inline-flex',
-                              alignItems: 'center',
-                              gap: 'var(--spacing-1-5)'
-                            }}
-                          >
-                            <Calendar size={14} />
-                            {new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
-                          </span>
-                          <span 
-                            className="category-archive__meta-item"
-                            style={{
-                              display: 'inline-flex',
-                              alignItems: 'center',
-                              gap: 'var(--spacing-1-5)'
-                            }}
-                          >
-                            <Clock size={14} />
-                            {post.readingTime}
-                          </span>
-                        </div>
-                        <span className="category-archive__read-more">
-                          Read article <ArrowRight size={14} />
-                        </span>
-                      </div>
-                    </Link>
-                  </ScrollReveal>
-                );
-              })}
-            </div>
+            <PostCardGrid
+              posts={filtered.map(convertToPostCardFormat)}
+              animation="fade-up"
+              delay={80}
+            />
           ) : (
             <div className="category-archive__empty">
               <Heading level={3}>No posts found</Heading>

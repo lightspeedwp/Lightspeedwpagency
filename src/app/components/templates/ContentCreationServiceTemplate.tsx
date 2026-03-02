@@ -6,6 +6,9 @@
 
 import { PenTool, BookOpen, FileText, Newspaper, Award, Users } from 'lucide-react';
 import { Link } from 'react-router';
+import { FeatureList } from '../patterns/FeatureList';
+import { CheckList } from '../patterns/CheckList';
+import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
 
 export const ContentCreationServiceTemplate = () => {
   const benefits = [
@@ -73,20 +76,13 @@ export const ContentCreationServiceTemplate = () => {
           </p>
         </div>
 
-        <div className="sub-service-compact__benefits-grid">
-          {benefits.map((benefit, index) => {
-            const Icon = benefit.icon;
-            return (
-              <div key={index} className="sub-service-compact__benefit-card">
-                <div className="sub-service-compact__benefit-icon">
-                  <Icon className="sub-service-compact__benefit-icon-svg" aria-hidden="true" />
-                </div>
-                <h3 className="sub-service-compact__benefit-title">{benefit.title}</h3>
-                <p className="sub-service-compact__benefit-description">{benefit.description}</p>
-              </div>
-            );
-          })}
-        </div>
+        <FeatureList 
+          items={benefits}
+          columns={3}
+          variant="glass"
+          iconStyle="rounded"
+          className="sub-service-compact__benefits-grid"
+        />
       </section>
 
       {/* Deliverables */}
@@ -98,14 +94,11 @@ export const ContentCreationServiceTemplate = () => {
           </p>
         </div>
 
-        <div className="sub-service-compact__deliverables-grid">
-          {deliverables.map((item, index) => (
-            <div key={index} className="sub-service-compact__deliverable-item">
-              <div className="sub-service-compact__deliverable-icon" aria-hidden="true">✓</div>
-              <span className="sub-service-compact__deliverable-text">{item}</span>
-            </div>
-          ))}
-        </div>
+        <CheckList 
+          items={deliverables}
+          variant="default"
+          className="sub-service-compact__deliverables-grid"
+        />
       </section>
 
       {/* Results */}
@@ -126,6 +119,9 @@ export const ContentCreationServiceTemplate = () => {
           ))}
         </div>
       </section>
+
+      {/* Client Testimonials */}
+      <ServiceTestimonial serviceSlug="content-creation" />
 
       {/* CTA */}
       <section className="sub-service-compact__cta">

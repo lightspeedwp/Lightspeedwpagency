@@ -12,6 +12,7 @@
  * - Reading time
  * - Hover lift effect
  * - ScrollReveal animations
+ * - ✨ UPDATED: Now uses PostCard pattern component (Phase 2.1b)
  *
  * Design System:
  * - 100% CSS variables
@@ -20,13 +21,11 @@
  * - Dedicated CSS file
  *
  * @see /guidelines/patterns/RelatedPosts.md
+ * @see /src/app/components/patterns/PostCard.tsx
  */
 
-import { Button } from '../blocks/design/Buttons';
-import { Badge } from '../blocks/design/Badge';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
-import { Clock, ArrowRight } from 'lucide-react';
-import { useNavigation } from '../../contexts/NavigationContext';
+import { PostCardGrid } from './PostCard';
 
 export interface RelatedPost {
   id: string;
@@ -44,9 +43,22 @@ export interface RelatedPostsProps {
   currentPostSlug?: string;
 }
 
-export const RelatedPosts = ({ posts, currentPostSlug }: RelatedPostsProps) => {
-  const { navigateToPage } = useNavigation();
+/**
+ * Convert RelatedPost to PostCard format
+ */
+function convertToPostCardFormat(post: RelatedPost) {
+  return {
+    ...post,
+    url: `/insights/${post.slug}`,
+    category: {
+      name: post.category,
+      slug: post.category.toLowerCase().replace(/\s+/g, '-')
+    },
+    tags: []
+  };
+}
 
+export const RelatedPosts = ({ posts, currentPostSlug }: RelatedPostsProps) => {
   // Filter out current post and limit to 3
   const relatedPosts = posts
     .filter((post) => post.slug !== currentPostSlug)
@@ -68,89 +80,16 @@ export const RelatedPosts = ({ posts, currentPostSlug }: RelatedPostsProps) => {
           </div>
         </ScrollReveal>
 
-        <div className="related-posts__grid wp-grid-3-cols">
-          {relatedPosts.map((post, index) => (
-            <ScrollReveal
-              key={post.id}
-              animation="fade-up"
-              duration={500}
-              delay={index * 100}
-            >
-              <article className="related-posts__card">
-                {/* Gradient top stripe */}
-                <div className="related-posts__stripe" aria-hidden="true" />
-
-                {/* Featured image */}
-                <div className="related-posts__image-wrapper">
-                  <img
-                    src={post.featuredImage}
-                    alt={post.title}
-                    className="related-posts__image"
-                    loading="lazy"
-                  />
-                  
-                  {/* Category badge overlay */}
-                  <div className="related-posts__category">
-                    <Badge variant="secondary" size="sm">
-                      {post.category}
-                    </Badge>
-                  </div>
-                </div>
-
-                {/* Card content */}
-                <div className="related-posts__content">
-                  <h3 className="related-posts__card-title">
-                    <a
-                      href={`/insights/${post.slug}`}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        navigateToPage('single-post', post.slug);
-                      }}
-                      className="related-posts__link"
-                    >
-                      {post.title}
-                    </a>
-                  </h3>
-
-                  <p className="related-posts__excerpt">{post.excerpt}</p>
-
-                  {/* Meta */}
-                  <div className="related-posts__meta">
-                    <div className="related-posts__meta-item">
-                      <Clock size={14} />
-                      <span className="related-posts__meta-text">
-                        {post.readingTime}
-                      </span>
-                    </div>
-                    <span className="related-posts__meta-separator">·</span>
-                    <time
-                      className="related-posts__date"
-                      dateTime={post.date}
-                    >
-                      {new Date(post.date).toLocaleDateString('en-US', {
-                        month: 'short',
-                        day: 'numeric',
-                        year: 'numeric',
-                      })}
-                    </time>
-                  </div>
-
-                  {/* Read more link */}
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    className="related-posts__cta"
-                    onClick={() => navigateToPage('single-post', post.slug)}
-                    aria-label={`Read ${post.title}`}
-                  >
-                    Read article
-                    <ArrowRight size={16} />
-                  </Button>
-                </div>
-              </article>
-            </ScrollReveal>
-          ))}
-        </div>
+        <PostCardGrid
+          posts={relatedPosts.map(convertToPostCardFormat)}
+          variant="vertical"
+          columns={3}
+          showImages={true}
+          showExcerpts={true}
+          showMeta={true}
+          showCategory={true}
+          showReadingTime={true}
+        />
       </div>
     </section>
   );

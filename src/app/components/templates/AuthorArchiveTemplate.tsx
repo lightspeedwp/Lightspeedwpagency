@@ -10,9 +10,11 @@
  *  - `CTASection` → `FunkyCTA`
  *  - Inline styles → BEM classes in author-archive.css + archive.css
  *  - Funky neon hero with mesh-grid + orb-glow + badge
+ * - ✨ UPDATED: Now uses PostCard pattern component (Phase 2.1b)
  *
  * @see /src/styles/templates/author-archive.css
  * @see /src/styles/templates/archive.css
+ * @see /src/app/components/patterns/PostCard.tsx
  */
 
 import '../../../styles/templates/author-archive.css';
@@ -31,6 +33,28 @@ import { slugToPath } from '../../utils/route-map';
 import { blogAuthors, blogPosts, getPostsByAuthor, getAuthorBySlug, type BlogAuthor, type BlogPost } from '../../data/blog-posts';
 import { clientLogos } from '../../data/logos';
 import { authorArchiveHero } from '../../data/author-archive';
+import { PostCardGrid } from '../patterns/PostCard';
+
+/**
+ * Convert blog post to PostCard format
+ */
+function convertToPostCardFormat(post: BlogPost, author: BlogAuthor) {
+  return {
+    ...post,
+    url: slugToPath(`post-${post.slug}`),
+    category: post.categories[0] ? {
+      name: post.categories[0],
+      slug: post.categories[0]
+    } : undefined,
+    author: {
+      name: author.name,
+      slug: author.slug,
+      avatar: author.avatar,
+      bio: author.bio
+    },
+    tags: post.categories || []
+  };
+}
 
 /* ────────────────────────────────────────────
    Props
@@ -359,11 +383,11 @@ function SingleAuthorArchive({
             </h2>
 
             {currentPosts.length > 0 ? (
-              <div className="wp-grid-3-cols" style={{ gap: 'var(--spacing-8)' }}>
-                {currentPosts.map((post) => (
-                  <PostCard key={post.id} post={post} author={author} />
-                ))}
-              </div>
+              <PostCardGrid
+                posts={currentPosts.map(post => convertToPostCardFormat(post, author))}
+                columns={3}
+                spacing="8"
+              />
             ) : (
               <p className="archive-header__description" style={{ textAlign: 'center' }}>
                 No posts found for this author.
@@ -397,53 +421,6 @@ function SingleAuthorArchive({
         ]}
       />
     </>
-  );
-}
-
-/* ============================================
-   POST CARD (used in single-author view)
-   ============================================ */
-
-function PostCard({ post, author }: { post: BlogPost; author: BlogAuthor }) {
-  return (
-    <Link
-      to={slugToPath(`post-${post.slug}`)}
-      className="archive-card"
-      aria-label={`Read: ${post.title}`}
-    >
-      <div className="archive-card__image-wrapper" style={{ aspectRatio: '16 / 9' }}>
-        <img
-          src={post.featuredImage}
-          alt={post.title}
-          className="archive-card__image"
-          loading="lazy"
-        />
-      </div>
-
-      <div className="archive-card__content">
-        <div className="author-posts__badge-wrapper">
-          <Badge variant="outline" size="sm">
-            {post.categories[0] || 'General'}
-          </Badge>
-        </div>
-
-        <h3 className="archive-card__title" style={{ color: 'var(--foreground)' }}>
-          {post.title}
-        </h3>
-
-        <p className="archive-card__excerpt">
-          {post.excerpt}
-        </p>
-
-        <div className="archive-card__meta">
-          <span className="author-posts__meta-text">
-            <Calendar size={12} style={{ marginRight: 'var(--spacing-1)', display: 'inline' }} />
-            {formatDate(post.date)}
-          </span>
-          <span className="author-posts__meta-text">{post.readingTime}</span>
-        </div>
-      </div>
-    </Link>
   );
 }
 

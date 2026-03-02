@@ -6,6 +6,9 @@
 
 import { Edit3, Type, MousePointer, Mail, Megaphone, BookOpen } from 'lucide-react';
 import { Link } from 'react-router';
+import { FeatureList } from '../patterns/FeatureList';
+import { CheckList } from '../patterns/CheckList';
+import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
 
 export const ContentCopywritingServiceTemplate = () => {
   const benefits = [
@@ -71,20 +74,13 @@ export const ContentCopywritingServiceTemplate = () => {
             Conversion-focused copywriting across every touchpoint
           </p>
         </div>
-        <div className="sub-service-compact__benefits-grid">
-          {benefits.map((benefit, index) => {
-            const Icon = benefit.icon;
-            return (
-              <div key={index} className="sub-service-compact__benefit-card">
-                <div className="sub-service-compact__benefit-icon">
-                  <Icon className="sub-service-compact__benefit-icon-svg" aria-hidden="true" />
-                </div>
-                <h3 className="sub-service-compact__benefit-title">{benefit.title}</h3>
-                <p className="sub-service-compact__benefit-description">{benefit.description}</p>
-              </div>
-            );
-          })}
-        </div>
+        <FeatureList 
+          items={benefits}
+          columns={3}
+          variant="glass"
+          iconStyle="rounded"
+          className="sub-service-compact__benefits-grid"
+        />
       </section>
 
       <section className="sub-service-compact__deliverables">
@@ -92,14 +88,11 @@ export const ContentCopywritingServiceTemplate = () => {
           <h2 className="sub-service-compact__section-title">What You Get</h2>
           <p className="sub-service-compact__section-description">Complete copywriting deliverables</p>
         </div>
-        <div className="sub-service-compact__deliverables-grid">
-          {deliverables.map((item, index) => (
-            <div key={index} className="sub-service-compact__deliverable-item">
-              <div className="sub-service-compact__deliverable-icon" aria-hidden="true">✓</div>
-              <span className="sub-service-compact__deliverable-text">{item}</span>
-            </div>
-          ))}
-        </div>
+        <CheckList 
+          items={deliverables}
+          variant="default"
+          className="sub-service-compact__deliverables-grid"
+        />
       </section>
 
       <section className="sub-service-compact__results">
@@ -116,6 +109,9 @@ export const ContentCopywritingServiceTemplate = () => {
           ))}
         </div>
       </section>
+
+      {/* Client Testimonials */}
+      <ServiceTestimonial serviceSlug="content-copywriting" />
 
       <section className="sub-service-compact__cta">
         <div className="sub-service-compact__cta-content">
