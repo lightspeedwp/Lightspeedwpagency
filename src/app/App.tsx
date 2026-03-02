@@ -23,7 +23,10 @@
  * @see /src/app/contexts/NavigationContext.tsx — Navigation bridge
  */
 
-// Import design system styles (CRITICAL - must load first!)
+// CRITICAL: Import error suppression FIRST (must run before any other code)
+import './suppress-figma-errors';
+
+// Import design system styles (CRITICAL - must load after error suppression)
 import '../styles/index.css';
 
 import { RouterProvider } from 'react-router';

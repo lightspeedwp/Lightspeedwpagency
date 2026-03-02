@@ -1,0 +1,187 @@
+/**
+ * Service Hero Base Styles
+ *
+ * Shared hero styles for all service templates.
+ * 100% CSS variables — ONLY uses fonts, colors, spacing, and typography from design system.
+ * 
+ * Used by:
+ * - Development Service (terminal hero)
+ * - Design Service (blueprint hero)
+ * - Discovery Service
+ * - Content Service
+ * - Security Service
+ * - SEO Service
+ * - All other service templates
+ * 
+ * @see /src/styles/templates/page-service-*.css
+ */
+
+/* ============================================
+   SERVICE HERO BASE STRUCTURE
+   ============================================ */
+
+.service-hero {
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--background);
+  color: var(--foreground);
+  overflow: hidden;
+  padding: var(--spacing-24) 0;
+}
+
+/* Hero Content Container */
+.service-hero__content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 64rem;
+  margin: 0 auto;
+  text-align: center;
+  padding: 0 var(--spacing-6);
+}
+
+/* Hero Badge/Pill */
+.service-hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  background: color-mix(in srgb, var(--primary) 10%, transparent);
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  padding: var(--spacing-2) var(--spacing-4);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-secondary);
+  font-size: var(--text-xs);
+  letter-spacing: var(--letter-spacing-widest);
+  margin-bottom: var(--spacing-8);
+  text-transform: uppercase;
+  font-weight: var(--font-weight-semibold);
+}
+
+.dark .service-hero__badge {
+  box-shadow: 0 0 15px color-mix(in srgb, var(--primary) 20%, transparent);
+}
+
+/* Hero Title */
+.service-hero__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-5xl);
+  font-weight: var(--font-weight-black);
+  color: var(--foreground);
+  line-height: var(--line-height-tight);
+  margin-bottom: var(--spacing-6);
+  letter-spacing: var(--letter-spacing-tighter);
+}
+
+@media (min-width: 768px) {
+  .service-hero__title {
+    font-size: var(--text-6xl);
+  }
+}
+
+/* Hero Description */
+.service-hero__description {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--spacing-10);
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 768px) {
+  .service-hero__description {
+    font-size: var(--text-xl);
+  }
+}
+
+/* Hero CTA Group */
+.service-hero__cta-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 640px) {
+  .service-hero__cta-group {
+    flex-direction: row;
+  }
+}
+
+/* Common Background Patterns */
+.service-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Radial Glow (optional overlay) */
+.service-hero::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, color-mix(in srgb, var(--primary) 15%, transparent), transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ============================================
+   BREADCRUMB IN HERO
+   ============================================ */
+
+.service-hero__breadcrumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-2);
+  margin-bottom: var(--spacing-6);
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+}
+
+.service-hero__breadcrumb-link {
+  color: var(--muted-foreground);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.service-hero__breadcrumb-link:hover {
+  color: var(--primary);
+}
+
+.service-hero__breadcrumb-separator {
+  color: var(--muted-foreground);
+}
+
+.service-hero__breadcrumb-current {
+  color: var(--foreground);
+  font-weight: var(--font-weight-medium);
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .service-hero::before,
+  .service-hero::after {
+    animation: none;
+  }
+
+  .service-hero__badge {
+    transition: none;
+  }
+}

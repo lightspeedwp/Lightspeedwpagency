@@ -1,0 +1,346 @@
+/**
+ * Security Service Page Styles — Phase 3.3 Optimized
+ * 
+ * Theme: "Digital Fortress"
+ * Style: Red/Orange/Yellow, Shield, Lock, Fortress elements
+ * 
+ * STRICT DESIGN SYSTEM COMPLIANCE:
+ * - Fonts: var(--font-primary), var(--font-secondary)
+ * - Spacing: var(--spacing-*)
+ * - Radius: var(--radius-*)
+ * - Colors: Semantic variables from theme-*.css
+ * - NO hardcoded hex/rgba — all derived via color-mix() or system tokens
+ * 
+ * Phase 3.3 Optimization:
+ * - Imports service-base.css for all shared structure
+ * - ONLY unique security/fortress theme styles remain
+ * - Optimized from shared service-pages-shared.css pattern
+ */
+
+/* ============================================
+   IMPORT SERVICE BASE (Phase 3.2)
+   ============================================ */
+
+@import './service-base.css';
+
+/* ============================================
+   SECURITY THEME VARIABLES
+   ============================================ */
+
+.security-page__hero,
+.security-page__overview,
+.security-page__services,
+.security-page__process,
+.security-page__cta {
+  /* Map theme colors to category colors */
+  --primary: var(--category-red);     /* Alert/Security */
+  --secondary: var(--category-orange); /* Warning/Protection */
+  --accent: var(--category-yellow);   /* Caution/Visibility */
+  
+  /* Security-specific variables */
+  --security-shield-glow: 0 0 30px color-mix(in srgb, var(--primary) 25%, transparent);
+  --security-lock-glow: 0 0 20px color-mix(in srgb, var(--secondary) 20%, transparent);
+  --security-alert-gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+}
+
+/* Dark mode overrides */
+.dark .security-page__hero,
+.dark .security-page__overview,
+.dark .security-page__services,
+.dark .security-page__process,
+.dark .security-page__cta {
+  /* Glass variables already responsive to dark mode */
+}
+
+/* ============================================
+   UNIQUE DECORATIVE ELEMENTS (Fortress Theme)
+   ============================================ */
+
+/* Hexagonal Shield Pattern (Override base hero::before) */
+.security-page__hero::before {
+  background-image: 
+    repeating-linear-gradient(60deg, transparent, transparent 30px, color-mix(in srgb, var(--primary) 8%, transparent) 30px, color-mix(in srgb, var(--primary) 8%, transparent) 31px),
+    repeating-linear-gradient(120deg, transparent, transparent 30px, color-mix(in srgb, var(--primary) 8%, transparent) 30px, color-mix(in srgb, var(--primary) 8%, transparent) 31px),
+    repeating-linear-gradient(180deg, transparent, transparent 30px, color-mix(in srgb, var(--primary) 8%, transparent) 30px, color-mix(in srgb, var(--primary) 8%, transparent) 31px);
+  opacity: 0.3;
+}
+
+/* Security Scan Lines */
+.security-page__scan-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--security-alert-gradient);
+  opacity: 0.5;
+  animation: securityScan 4s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes securityScan {
+  0% { top: 0%; opacity: 0; }
+  50% { opacity: 0.5; }
+  100% { top: 100%; opacity: 0; }
+}
+
+/* ============================================
+   SHIELD BADGE (Unique Component)
+   ============================================ */
+
+.security-page__shield-badge {
+  position: relative;
+  width: 120px;
+  height: 140px;
+  margin: 0 auto var(--spacing-8);
+}
+
+.security-page__shield-icon {
+  width: 100%;
+  height: 100%;
+  background: var(--card);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  border: 3px solid var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: var(--security-shield-glow);
+}
+
+.security-page__shield-icon svg {
+  width: 48px;
+  height: 48px;
+  color: var(--primary);
+}
+
+.security-page__shield-pulse {
+  position: absolute;
+  inset: -10px;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  border: 2px solid var(--primary);
+  opacity: 0;
+  animation: shieldPulse 2s ease-out infinite;
+}
+
+@keyframes shieldPulse {
+  0% { opacity: 0.6; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.2); }
+}
+
+/* ============================================
+   SECURITY LEVEL INDICATOR
+   ============================================ */
+
+.security-page__level-indicator {
+  display: flex;
+  gap: var(--spacing-2);
+  align-items: center;
+  padding: var(--spacing-4);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.security-page__level-bar {
+  flex: 1;
+  height: 8px;
+  background: var(--muted);
+  border-radius: var(--radius-full);
+  position: relative;
+  overflow: hidden;
+}
+
+.security-page__level-bar.active {
+  background: var(--security-alert-gradient);
+  box-shadow: var(--security-lock-glow);
+}
+
+.security-page__level-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-bold);
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+}
+
+/* ============================================
+   THREAT ALERT CARD
+   ============================================ */
+
+.security-page__threat-card {
+  position: relative;
+  padding: var(--spacing-6);
+  background: var(--card);
+  border: 2px solid var(--border);
+  border-left: 6px solid var(--primary);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.security-page__threat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: var(--security-alert-gradient);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.security-page__threat-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary);
+}
+
+.security-page__threat-card:hover::before {
+  opacity: 0.05;
+}
+
+.dark .security-page__threat-card:hover {
+  box-shadow: var(--security-shield-glow);
+}
+
+/* ============================================
+   LOCK ICON ANIMATION
+   ============================================ */
+
+.security-page__lock-icon {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--security-alert-gradient);
+  color: var(--primary-foreground);
+  border-radius: var(--radius);
+  margin-bottom: var(--spacing-4);
+  position: relative;
+  animation: lockPulse 3s ease-in-out infinite;
+}
+
+@keyframes lockPulse {
+  0%, 100% { transform: scale(1); box-shadow: var(--security-lock-glow); }
+  50% { transform: scale(1.05); box-shadow: var(--security-shield-glow); }
+}
+
+/* ============================================
+   VULNERABILITY SCORE
+   ============================================ */
+
+.security-page__vulnerability-score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--spacing-6);
+  background: var(--card);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.security-page__score-value {
+  font-family: var(--font-primary);
+  font-size: var(--text-6xl);
+  font-weight: var(--font-weight-black);
+  color: var(--secondary);
+  line-height: 1;
+  margin-bottom: var(--spacing-2);
+}
+
+.security-page__score-label {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+}
+
+.security-page__score-status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  margin-top: var(--spacing-3);
+  padding: var(--spacing-2) var(--spacing-4);
+  background: color-mix(in srgb, var(--secondary) 10%, transparent);
+  border-radius: var(--radius-full);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-bold);
+  color: var(--secondary);
+}
+
+/* ============================================
+   FIREWALL STATUS GRID
+   ============================================ */
+
+.security-page__firewall-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: var(--spacing-1);
+  padding: var(--spacing-4);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.security-page__firewall-cell {
+  aspect-ratio: 1;
+  background: var(--muted);
+  border-radius: var(--radius-sm);
+  transition: background 0.2s ease;
+}
+
+.security-page__firewall-cell.active {
+  background: var(--secondary);
+  box-shadow: 0 0 8px color-mix(in srgb, var(--secondary) 30%, transparent);
+}
+
+.security-page__firewall-cell:hover {
+  background: var(--primary);
+}
+
+/* ============================================
+   GRADIENT TEXT (Security emphasis)
+   ============================================ */
+
+.security-page__gradient-text {
+  background: var(--security-alert-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .security-page__scan-line {
+    animation: none;
+    display: none;
+  }
+
+  .security-page__shield-pulse {
+    animation: none;
+    opacity: 0;
+  }
+
+  .security-page__lock-icon {
+    animation: none;
+  }
+
+  .security-page__threat-card {
+    transition: none;
+  }
+
+  .security-page__threat-card:hover {
+    transform: none;
+  }
+
+  .security-page__firewall-cell {
+    transition: none;
+  }
+}

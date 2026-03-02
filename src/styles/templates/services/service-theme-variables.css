@@ -1,0 +1,133 @@
+/**
+ * Service Theme Variables Base
+ *
+ * Pattern for scoped theme variables in service templates.
+ * This file documents the standard pattern — individual services import and override.
+ * 100% CSS variables — ONLY uses fonts, colors, spacing, and typography from design system.
+ * 
+ * Usage Pattern:
+ * Each service template defines theme-scoped variables mapped to global design tokens.
+ * This allows theme consistency while maintaining global design system compliance.
+ * 
+ * Example Implementation (in individual service CSS):
+ * 
+ * ```css
+ * .dev-page__hero,
+ * .dev-page__section {
+ *   --theme-bg: var(--background);
+ *   --theme-text: var(--foreground);
+ *   --theme-primary: var(--category-green);
+ *   --theme-secondary: var(--category-blue);
+ *   --theme-glass-bg: var(--glass-bg);
+ * }
+ * ```
+ * 
+ * @see /src/styles/templates/page-service-development.css (Example)
+ * @see /src/styles/templates/page-service-design.css (Example)
+ */
+
+/* ============================================
+   THEME VARIABLE PATTERN (Documentation Only)
+   ============================================ */
+
+/**
+ * Standard Theme Variable Pattern
+ * 
+ * All service templates should follow this pattern:
+ * 
+ * 1. Map base colors to global design tokens
+ *    --theme-bg: var(--background);
+ *    --theme-text: var(--foreground);
+ *    --theme-card-bg: var(--card);
+ *    --theme-border: var(--border);
+ *    --theme-muted: var(--muted-foreground);
+ * 
+ * 2. Map theme colors to category colors
+ *    --theme-primary: var(--category-*);     // Service-specific category
+ *    --theme-secondary: var(--category-*);   // Complementary category
+ *    --theme-accent: var(--category-*);      // Highlight category
+ * 
+ * 3. Define gradients using theme colors
+ *    --gradient-theme: linear-gradient(135deg, var(--theme-primary), var(--theme-secondary));
+ *    --gradient-overlay: linear-gradient(to bottom, transparent, var(--theme-bg));
+ * 
+ * 4. Map glassmorphism variables
+ *    --theme-glass-bg: var(--glass-bg);
+ *    --theme-glass-border: var(--glass-border);
+ *    --theme-glass-text: var(--glass-text);
+ * 
+ * 5. Define glow/shadow effects
+ *    --theme-glow: 0 0 30px color-mix(in srgb, var(--theme-primary) 20%, transparent);
+ *    --theme-glow-intense: 0 0 50px color-mix(in srgb, var(--theme-primary) 35%, transparent);
+ * 
+ * 6. Add dark mode overrides
+ *    .dark .service-page__section {
+ *      --theme-glass-bg: var(--glass-bg);
+ *      // Override any theme variables that need dark-mode adjustments
+ *    }
+ */
+
+/* ============================================
+   CATEGORY COLOR REFERENCE
+   ============================================ */
+
+/**
+ * Available Category Colors (from design system):
+ * 
+ * var(--category-green)      // Development, Growth, Stability
+ * var(--category-blue)       // Technology, Logic, Trust
+ * var(--category-indigo)     // Structure, Architecture, Systems
+ * var(--category-cyan)       // Precision, Digital, Data
+ * var(--category-pink)       // Creativity, Design, Highlights
+ * var(--category-purple)     // Discovery, Innovation, Strategy
+ * var(--category-orange)     // Content, Communication, Energy
+ * var(--category-red)        // Security, Alerts, Critical
+ * var(--category-yellow)     // Performance, Speed, Optimization
+ * 
+ * Use these to create theme-specific color schemes while maintaining
+ * design system compliance!
+ */
+
+/* ============================================
+   RECOMMENDED THEME COMBINATIONS
+   ============================================ */
+
+/**
+ * Development Service:
+ * - Primary: var(--category-green)   // Growth/Code
+ * - Secondary: var(--category-blue)  // Tech/Logic
+ * - Accent: var(--category-indigo)   // Architecture
+ * 
+ * Design Service:
+ * - Primary: var(--category-indigo)  // Structure/Layout
+ * - Secondary: var(--category-cyan)  // Precision/Digital
+ * - Accent: var(--category-pink)     // Creativity/Highlight
+ * 
+ * Discovery Service:
+ * - Primary: var(--category-purple)  // Discovery/Innovation
+ * - Secondary: var(--category-pink)  // Ideation/Creativity
+ * - Accent: var(--category-cyan)     // Research/Data
+ * 
+ * Content Service:
+ * - Primary: var(--category-orange)  // Communication/Content
+ * - Secondary: var(--category-pink)  // Creativity/Writing
+ * - Accent: var(--category-purple)   // Strategy/Planning
+ * 
+ * Security Service:
+ * - Primary: var(--category-red)     // Security/Protection
+ * - Secondary: var(--category-blue)  // Trust/Reliability
+ * - Accent: var(--category-indigo)   // Systems/Architecture
+ * 
+ * Performance Service:
+ * - Primary: var(--category-yellow)  // Speed/Optimization
+ * - Secondary: var(--category-green) // Growth/Efficiency
+ * - Accent: var(--category-cyan)     // Data/Analytics
+ * 
+ * SEO Service:
+ * - Primary: var(--category-blue)    // Trust/Authority
+ * - Secondary: var(--category-green) // Growth/Visibility
+ * - Accent: var(--category-yellow)   // Performance/Rankings
+ */
+
+/* This file is documentation-only. No actual styles defined here. */
+/* Individual service templates implement their own scoped theme variables. */

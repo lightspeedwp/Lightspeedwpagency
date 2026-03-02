@@ -1,0 +1,474 @@
+/**
+ * Content Strategy Service Page Styles — Phase 3.3 Batch 5 Optimized
+ * 
+ * BEM Methodology: .content-strategy-service
+ * Theme: "Planning & Roadmap"
+ * Style: Purple/Pink/Cyan, Roadmap diagrams, Timeline dots, Strategy boards, Planning grids
+ * 
+ * STRICT DESIGN SYSTEM COMPLIANCE:
+ * - Fonts: var(--font-primary), var(--font-secondary)
+ * - Spacing: var(--spacing-*)
+ * - Radius: var(--radius-*)
+ * - Colors: Semantic variables from theme-*.css
+ * - NO hardcoded hex/rgba — all derived via color-mix() or system tokens
+ * 
+ * Phase 3.3 Optimization:
+ * - Imports service-base.css for all shared structure
+ * - ONLY unique strategy/planning theme styles remain
+ * - Enhanced from minimal/minified base (5 lines) to full-featured (220 lines)
+ */
+
+/* ============================================
+   IMPORT SERVICE BASE (Phase 3.2)
+   ============================================ */
+
+@import './service-base.css';
+
+/* ============================================
+   STRATEGY THEME VARIABLES
+   ============================================ */
+
+.content-strategy-service__hero,
+.content-strategy-service__benefits,
+.content-strategy-service__phases,
+.content-strategy-service__deliverables,
+.content-strategy-service__results,
+.content-strategy-service__cta {
+  /* Map theme colors to category colors */
+  --primary: var(--category-purple);  /* Strategy/Planning */
+  --secondary: var(--category-pink);  /* Innovation/Creative */
+  --accent: var(--category-cyan);     /* Process/Structure */
+  
+  /* Strategy-specific variables */
+  --strategy-glow: 0 0 25px color-mix(in srgb, var(--primary) 20%, transparent);
+  --strategy-gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+}
+
+/* Dark mode overrides */
+.dark .content-strategy-service__hero,
+.dark .content-strategy-service__benefits,
+.dark .content-strategy-service__phases,
+.dark .content-strategy-service__deliverables,
+.dark .content-strategy-service__results,
+.dark .content-strategy-service__cta {
+  /* Glass variables already responsive to dark mode */
+}
+
+/* ============================================
+   UNIQUE DECORATIVE ELEMENTS (Strategy Theme)
+   ============================================ */
+
+/* Strategy Grid Pattern (Override base hero::before) */
+.content-strategy-service__hero::before {
+  background-image:
+    linear-gradient(90deg, var(--border) 1px, transparent 1px),
+    linear-gradient(0deg, var(--border) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.1;
+  mask-image: radial-gradient(circle at center, black 30%, transparent 70%);
+}
+
+/* ============================================
+   ROADMAP TIMELINE (Unique Component)
+   ============================================ */
+
+.content-strategy-service__roadmap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+  max-width: 800px;
+  margin: 0 auto;
+  padding: var(--spacing-8) 0;
+}
+
+/* Vertical timeline line */
+.content-strategy-service__roadmap::before {
+  content: '';
+  position: absolute;
+  left: 30px;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(
+    to bottom,
+    var(--primary),
+    var(--secondary),
+    var(--accent)
+  );
+  border-radius: var(--radius-full);
+}
+
+.content-strategy-service__roadmap-step {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-6);
+}
+
+.content-strategy-service__roadmap-dot {
+  flex-shrink: 0;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--strategy-gradient);
+  color: var(--primary-foreground);
+  border-radius: var(--radius-full);
+  font-family: var(--font-mono);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-bold);
+  box-shadow: var(--strategy-glow);
+  z-index: 1;
+  position: relative;
+}
+
+.content-strategy-service__roadmap-dot::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: var(--radius-full);
+  background: var(--strategy-gradient);
+  opacity: 0.3;
+  animation: dotPulse 2s ease-in-out infinite;
+}
+
+@keyframes dotPulse {
+  0%, 100% { transform: scale(1); opacity: 0.3; }
+  50% { transform: scale(1.2); opacity: 0; }
+}
+
+.content-strategy-service__roadmap-content {
+  flex: 1;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--primary);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-6);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.content-strategy-service__roadmap-content:hover {
+  transform: translateX(8px);
+  box-shadow: var(--shadow-lg);
+}
+
+.content-strategy-service__roadmap-phase {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-bold);
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+  margin-bottom: var(--spacing-2);
+}
+
+.content-strategy-service__roadmap-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h4);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-3);
+}
+
+.content-strategy-service__roadmap-description {
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-relaxed);
+}
+
+/* ============================================
+   STRATEGY BOARD KANBAN (Unique Component)
+   ============================================ */
+
+.content-strategy-service__strategy-board {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-6);
+  margin-bottom: var(--spacing-12);
+}
+
+.content-strategy-service__board-column {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-top: 4px solid var(--primary);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-6);
+}
+
+.content-strategy-service__board-column:nth-child(2) {
+  border-top-color: var(--secondary);
+}
+
+.content-strategy-service__board-column:nth-child(3) {
+  border-top-color: var(--accent);
+}
+
+.content-strategy-service__board-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-4);
+  padding-bottom: var(--spacing-3);
+  border-bottom: 1px solid var(--border);
+}
+
+.content-strategy-service__board-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+}
+
+.content-strategy-service__board-count {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: var(--primary);
+  color: var(--primary-foreground);
+  border-radius: var(--radius-full);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-bold);
+}
+
+.content-strategy-service__board-cards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.content-strategy-service__board-card {
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--spacing-4);
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+.content-strategy-service__board-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.content-strategy-service__board-card-title {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-2);
+}
+
+.content-strategy-service__board-card-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--muted-foreground);
+}
+
+/* ============================================
+   PLANNING MATRIX GRID
+   ============================================ */
+
+.content-strategy-service__planning-matrix {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-6);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .content-strategy-service__planning-matrix {
+    grid-template-columns: 1fr;
+  }
+}
+
+.content-strategy-service__matrix-quadrant {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-8);
+  position: relative;
+  overflow: hidden;
+}
+
+.content-strategy-service__matrix-quadrant::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60px;
+  height: 60px;
+  background: var(--primary);
+  opacity: 0.1;
+  border-radius: 0 var(--radius-lg) 0 100%;
+}
+
+.content-strategy-service__matrix-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-bold);
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+  margin-bottom: var(--spacing-3);
+}
+
+.content-strategy-service__matrix-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h4);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-4);
+}
+
+.content-strategy-service__matrix-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.content-strategy-service__matrix-item {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  padding-left: var(--spacing-6);
+  position: relative;
+}
+
+.content-strategy-service__matrix-item::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--primary);
+  font-weight: var(--font-weight-bold);
+}
+
+/* ============================================
+   STRATEGY METRICS DASHBOARD
+   ============================================ */
+
+.content-strategy-service__metrics-dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-6);
+  margin-bottom: var(--spacing-12);
+}
+
+.content-strategy-service__metric-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-6);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.content-strategy-service__metric-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--strategy-gradient);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.content-strategy-service__metric-card:hover::before {
+  transform: scaleX(1);
+}
+
+.content-strategy-service__metric-value {
+  font-family: var(--font-primary);
+  font-size: var(--text-5xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--primary);
+  line-height: 1;
+  margin-bottom: var(--spacing-2);
+}
+
+.content-strategy-service__metric-label {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-relaxed);
+}
+
+/* ============================================
+   BREADCRUMB (Override for service)
+   ============================================ */
+
+.content-strategy-service__breadcrumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-2);
+  margin-bottom: var(--spacing-6);
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+}
+
+.content-strategy-service__breadcrumb-link {
+  color: var(--muted-foreground);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.content-strategy-service__breadcrumb-link:hover {
+  color: var(--primary);
+}
+
+.content-strategy-service__breadcrumb-separator {
+  color: var(--muted-foreground);
+}
+
+.content-strategy-service__breadcrumb-current {
+  color: var(--foreground);
+  font-weight: var(--font-weight-medium);
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .content-strategy-service__roadmap-dot::before {
+    animation: none;
+    opacity: 0.3;
+  }
+
+  .content-strategy-service__roadmap-content {
+    transition: none;
+  }
+
+  .content-strategy-service__roadmap-content:hover {
+    transform: none;
+  }
+
+  .content-strategy-service__board-card {
+    transition: none;
+  }
+
+  .content-strategy-service__board-card:hover {
+    transform: none;
+  }
+
+  .content-strategy-service__metric-card::before {
+    transition: none;
+  }
+}

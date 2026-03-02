@@ -1,0 +1,285 @@
+/**
+ * Service Sections Base Styles
+ *
+ * Shared section layout styles for all service templates.
+ * 100% CSS variables — ONLY uses fonts, colors, spacing, and typography from design system.
+ * 
+ * Used by:
+ * - Overview sections
+ * - Benefits sections
+ * - Features sections
+ * - Deliverables sections
+ * - Results sections
+ * 
+ * @see /src/styles/templates/page-service-*.css
+ */
+
+/* ============================================
+   SERVICE SECTION BASE
+   ============================================ */
+
+.service-section {
+  padding: var(--spacing-20) 0;
+  background-color: var(--background);
+}
+
+.service-section--alt {
+  background-color: var(--muted);
+}
+
+.service-section--card {
+  background-color: var(--card);
+  border-top: 1px solid var(--border-soft);
+  border-bottom: 1px solid var(--border-soft);
+}
+
+/* Section Container */
+.service-section__container {
+  max-width: 75rem;
+  margin: 0 auto;
+  padding: 0 var(--spacing-6);
+}
+
+/* Section Header */
+.service-section__header {
+  text-align: center;
+  margin-bottom: var(--spacing-12);
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.service-section__label {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+  margin-bottom: var(--spacing-4);
+  display: block;
+}
+
+.service-section__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-4xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+  line-height: var(--line-height-tight);
+  margin-bottom: var(--spacing-4);
+}
+
+@media (min-width: 768px) {
+  .service-section__title {
+    font-size: var(--text-5xl);
+  }
+}
+
+.service-section__description {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-relaxed);
+}
+
+/* Section Content */
+.service-section__content {
+  position: relative;
+}
+
+/* ============================================
+   GRID LAYOUTS
+   ============================================ */
+
+.service-section__grid {
+  display: grid;
+  gap: var(--spacing-8);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .service-section__grid--2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .service-section__grid--3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .service-section__grid--4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ============================================
+   BENEFITS GRID
+   ============================================ */
+
+.service-benefits {
+  display: grid;
+  gap: var(--spacing-6);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .service-benefits {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .service-benefits {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Benefit Card */
+.service-benefit {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  padding: var(--spacing-6);
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.service-benefit:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary);
+}
+
+.dark .service-benefit:hover {
+  box-shadow: var(--shadow-neon);
+}
+
+.service-benefit__icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: var(--primary-foreground);
+  flex-shrink: 0;
+}
+
+.dark .service-benefit__icon {
+  box-shadow: 0 0 20px color-mix(in srgb, var(--primary) 30%, transparent);
+}
+
+.service-benefit__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  line-height: var(--line-height-snug);
+}
+
+.service-benefit__description {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-normal);
+}
+
+/* ============================================
+   FEATURES LIST
+   ============================================ */
+
+.service-features {
+  display: grid;
+  gap: var(--spacing-4);
+}
+
+.service-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-3);
+  padding: var(--spacing-4);
+  background-color: var(--muted);
+  border-radius: var(--radius);
+  border-left: 3px solid var(--primary);
+}
+
+.service-feature__icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  color: var(--primary);
+}
+
+.service-feature__content {
+  flex: 1;
+}
+
+.service-feature__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-1);
+}
+
+.service-feature__description {
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-normal);
+}
+
+/* ============================================
+   STATS/METRICS
+   ============================================ */
+
+.service-stats {
+  display: grid;
+  gap: var(--spacing-8);
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (min-width: 768px) {
+  .service-stats {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.service-stat {
+  text-align: center;
+}
+
+.service-stat__value {
+  font-family: var(--font-primary);
+  font-size: var(--text-4xl);
+  font-weight: var(--font-weight-black);
+  color: var(--primary);
+  line-height: var(--line-height-none);
+  margin-bottom: var(--spacing-2);
+}
+
+.service-stat__label {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .service-benefit {
+    transition: none;
+  }
+
+  .service-benefit:hover {
+    transform: none;
+  }
+}

@@ -1,0 +1,144 @@
+/**
+ * Service Template Base Styles — Phase 3.2 Consolidated
+ *
+ * Unified base for all service templates.
+ * BEM naming, 100% CSS variables, zero hardcoded hex/rgba.
+ * 
+ * Phase 3.2 Optimization: Extracted modular service base files
+ * @see /src/styles/templates/services/service-hero-base.css
+ * @see /src/styles/templates/services/service-sections-base.css
+ * @see /src/styles/templates/services/service-process-base.css
+ * @see /src/styles/templates/services/service-cta-base.css
+ * @see /src/styles/templates/services/service-theme-variables.css (documentation)
+ */
+
+/* ============================================
+   BASE IMPORTS — Phase 3.2 Service Consolidation
+   ============================================ */
+
+/**
+ * Import shared service base modules
+ * These modules are used by ALL service templates
+ */
+@import './services/service-hero-base.css';
+@import './services/service-sections-base.css';
+@import './services/service-process-base.css';
+@import './services/service-cta-base.css';
+
+/**
+ * All service-specific shared styles now live in modular base files.
+ * This file serves as the import orchestrator for service templates.
+ * 
+ * Individual service templates can:
+ * 1. Import service-base.css for all base styles
+ * 2. OR import specific modules for lighter weight
+ * 3. Define theme-specific variables (see service-theme-variables.css for pattern)
+ * 4. Add unique decorative elements (matrix rain, blueprints, etc.)
+ * 
+ * Example usage in template CSS:
+ * @import './service-base.css';  // All service base styles
+ * 
+ * Then add theme variables:
+ * .dev-page__hero {
+ *   --theme-primary: var(--category-green);
+ *   --theme-secondary: var(--category-blue);
+ * }
+ * 
+ * OR for lighter weight:
+ * @import './services/service-hero-base.css';
+ * @import './services/service-sections-base.css';
+ */
+
+/* ============================================
+   SHARED SERVICE UTILITIES
+   ============================================ */
+
+/**
+ * Utilities used across multiple service templates
+ * (Add shared utilities here that don't fit in other modules)
+ */
+
+/* Service Page Container */
+.service-page {
+  background-color: var(--background);
+  color: var(--foreground);
+  min-height: 100vh;
+}
+
+/* Service Spacing */
+.service-spacer {
+  padding: var(--spacing-20) 0;
+}
+
+.service-spacer--sm {
+  padding: var(--spacing-12) 0;
+}
+
+.service-spacer--lg {
+  padding: var(--spacing-32) 0;
+}
+
+/* Service Divider */
+.service-divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--border), transparent);
+  margin: var(--spacing-12) 0;
+}
+
+/* Service Badge (Shared across sections) */
+.service-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-1) var(--spacing-3);
+  background: color-mix(in srgb, var(--primary) 10%, transparent);
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  border-radius: var(--radius-full);
+  font-family: var(--font-secondary);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+}
+
+.dark .service-badge {
+  box-shadow: 0 0 12px color-mix(in srgb, var(--primary) 20%, transparent);
+}
+
+/* Service Icon Container (Shared) */
+.service-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: var(--primary-foreground);
+  flex-shrink: 0;
+}
+
+.dark .service-icon {
+  box-shadow: 0 0 20px color-mix(in srgb, var(--primary) 30%, transparent);
+}
+
+.service-icon--sm {
+  width: 32px;
+  height: 32px;
+}
+
+.service-icon--lg {
+  width: 64px;
+  height: 64px;
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .service-badge {
+    transition: none;
+  }
+}

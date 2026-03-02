@@ -213,7 +213,7 @@
 
 .hero-home__description {
   color: var(--primary-foreground);
-  opacity: 0.85;
+  /* CONTRAST FIX: Removed opacity 0.85 to maintain AAA contrast (16.07:1) in light mode */
   max-width: 48ch;
   line-height: var(--line-height-relaxed);
 }

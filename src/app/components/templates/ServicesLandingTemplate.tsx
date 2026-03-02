@@ -16,8 +16,8 @@
  */
 
 import { useState } from 'react';
-/* Route-level CSS */
-import '../../../styles/templates/page-services-landing.css';
+/* Route-level CSS — OPTIMIZED (Phase 3.3 Batch 6) */
+import '../../../styles/templates/page-services-landing-optimized.css';
 import { Container } from '../common/Container';
 import { Button } from '../blocks/design/Buttons';
 import { useHeroParallax } from '../../hooks/useHeroParallax';

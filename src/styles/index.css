@@ -269,13 +269,26 @@
 /* Sub-Service Templates (Feb 28, 2026 — Task 2.3 Restoration) */
 @import './templates/sub-service-base.css';
 @import './templates/sub-service-compact.css';
-@import './templates/seo-service.css';
-@import './templates/analytics-service.css';
-@import './templates/ai-engine-service.css';
-@import './templates/answer-engine-service.css';
-@import './templates/accessibility-service.css';
-@import './templates/migrations-service.css';
-@import './templates/support-service.css';
+
+/* Service Template Base (Phase 3.2 — March 2, 2026) */
+@import './templates/service-base.css';
+
+/* Optimized Service Templates (Phase 3.3 — March 2, 2026) */
+@import './templates/page-service-development-optimized.css';
+@import './templates/page-service-design-optimized.css';
+@import './templates/page-service-discovery-optimized.css';
+@import './templates/page-service-performance-optimized.css';
+@import './templates/seo-service-optimized.css';
+@import './templates/page-service-content-optimized.css';
+@import './templates/page-service-security-optimized.css';
+@import './templates/migrations-service-optimized.css';
+@import './templates/support-service-optimized.css';
+@import './templates/analytics-service-optimized.css';
+@import './templates/accessibility-service-optimized.css';
+@import './templates/ai-engine-service-optimized.css';
+@import './templates/answer-engine-service-optimized.css';
+
+/* Non-Optimized Service Templates (Legacy) */
 @import './templates/content-strategy-service.css';
 
 /* Template-specific CSS — now route-level imports in each template component:

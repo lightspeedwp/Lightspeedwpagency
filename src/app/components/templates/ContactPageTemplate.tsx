@@ -32,6 +32,7 @@ import { FunkyCTA } from '../patterns/FunkyCTA';
 import { StatsSection } from '../patterns/StatsSection';
 import { Heading } from '../blocks/text/Heading';
 import { Paragraph } from '../blocks/text/Paragraph';
+import { ContactForm } from '../ui/ContactForm';
 import { useHeroParallax } from '../../hooks/useHeroParallax';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { ScrollDownArrow } from '../common/ScrollDownArrow';
@@ -59,6 +60,14 @@ import { contactHeroMessaging } from '../../data/three-tier-model';
 
 export function ContactPageTemplate() {
   const parallaxRef = useHeroParallax(0.5);
+
+  // Handle contact form submission
+  const handleFormSubmit = async (data: any) => {
+    // In production, this would call an API endpoint
+    console.log('Contact form submitted:', data);
+    // Mock API call
+    await new Promise(resolve => setTimeout(resolve, 1000));
+  };
 
   return (
     <div className="contact-page">
@@ -175,7 +184,7 @@ export function ContactPageTemplate() {
             {/* Right Column: Form */}
             <ScrollReveal animation="fade-up" delay={150}>
               <div className="contact-page__form-wrapper">
-                <ContactForm />
+                <ContactForm onSubmit={handleFormSubmit} />
               </div>
             </ScrollReveal>
           </div>
