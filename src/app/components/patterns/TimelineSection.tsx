@@ -9,14 +9,14 @@
 
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
-import { LucideIcon } from 'lucide-react';
+import type { UniversalIcon } from '../../utils/icon-map';
 
 
 export interface TimelineItem {
   year: string;
   title: string;
   description: string;
-  icon?: LucideIcon; // Optional icon for timeline items
+  icon?: UniversalIcon; // Optional icon for timeline items
 }
 
 interface TimelineSectionProps {

@@ -108,6 +108,20 @@
   --primary-soft: #1E6AFF1A;       /* 10% primary blue */
   
   /**
+   * Primary light variant
+   * Usage: Gradient endpoints, lighter accent backgrounds
+   * Hex: #5B9AFF (lighter shade of primary)
+   */
+  --primary-light: #5B9AFF;          /* Lighter blue for gradients */
+
+  /**
+   * Primary RGB (raw channel values)
+   * Usage: rgba() patterns where color-mix() isn't supported
+   * Values: 30, 106, 255 (from #1E6AFF)
+   */
+  --primary-rgb: 30, 106, 255;
+
+  /**
    * Funky Neon Color (Light Mode)
    * Usage: Glow effects, neon shadows
    * Hex: #1E6AFF (Matches Primary for consistency, but brighter in context)
@@ -504,6 +518,19 @@
    * Brand rules: Blue bolt + black text (light mode)
    */
   --logo-wordmark-color: #090909;       /* Dark wordmark for light backgrounds */
-  --logo-icon-primary: #127EFF;         /* Blue bolt — brand standard */
-  --logo-icon-secondary: #127EFF;       /* Blue bolt — consistent fill */
+  --logo-icon-primary: #1D4ED8;    /* Blue bolt — matches primary */
+  --logo-icon-secondary: #1E6AFF;  /* Primary blue fill */
+
+  /* ============================================
+     ICON COLOR TOKENS (Light Mode)
+     ============================================ */
+
+  --icon-color-default: var(--foreground);
+  --icon-color-muted: var(--muted-foreground);
+  --icon-color-primary: var(--primary);
+  --icon-color-success: var(--success);
+  --icon-color-warning: var(--warning);
+  --icon-color-destructive: var(--destructive);
+  --icon-color-on-primary: var(--primary-foreground);
+  --icon-color-on-dark: var(--color-white);
 }

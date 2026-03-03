@@ -9,7 +9,7 @@
  * @see {@link /guidelines/patterns/ProcessSteps.md}
  */
 
-import { LucideIcon } from 'lucide-react';
+import type { UniversalIcon } from '../../utils/icon-map';
 
 
 export interface ProcessStep {
@@ -20,7 +20,7 @@ export interface ProcessStep {
   /** Step description */
   description: string;
   /** Optional icon instead of number */
-  icon?: LucideIcon;
+  icon?: UniversalIcon;
 }
 
 export interface ProcessStepsProps {

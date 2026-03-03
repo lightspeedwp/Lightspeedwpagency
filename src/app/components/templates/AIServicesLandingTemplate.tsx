@@ -13,14 +13,14 @@
  *
  * STRICT DESIGN SYSTEM COMPLIANCE:
  * - Zero Tailwind classes
- * - All styling via /src/styles/templates/page-service-ai-landing.css
+ * - All styling via /src/styles/templates/page-service-ai-landing-optimized.css
  * - Colors mapped to global semantic tokens for auto light/dark
  * - Fonts: var(--font-primary), var(--font-secondary) only
  *
- * @see /src/styles/templates/page-service-ai-landing.css
+ * @see /src/styles/templates/page-service-ai-landing-optimized.css
  */
 
-import '../../../styles/templates/page-service-ai-landing.css';
+import '../../../styles/templates/page-service-ai-landing-optimized.css';
 import { Link } from 'react-router';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { ScrollDownArrow } from '../common/ScrollDownArrow';

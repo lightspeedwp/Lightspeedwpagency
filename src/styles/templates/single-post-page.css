@@ -1,16 +1,30 @@
 /**
- * Single Post (Longform) Template Styles — Funky Neon Pass
+ * Single Post (Longform) Template Styles — Funky Neon Pass (OPTIMIZED)
  * 
  * Dedicated styles for long-form blog post layout and components.
  * Funky treatments: glassmorphism cards, animated gradient stripes,
  * neon comment cards, gradient underlines.
+ *
+ * PHASE 4.1 OPTIMIZATION:
+ * - Imports blog-base.css for shared blog structure
+ * - Contains ONLY unique longform features (comments, related cards)
  *
  * BEM naming: .single-post__*
  * 100% CSS variables, zero hardcoded values.
  */
 
 /* ============================================
- * RELATED ARTICLES SECTION
+   BASE IMPORTS — Phase 4.1 Optimization
+   ============================================ */
+
+/**
+ * Import shared blog base structure
+ * Provides: heroes, post meta, editorial content, author bios, etc.
+ */
+@import './blog-base.css';
+
+/* ============================================
+ * RELATED ARTICLES SECTION — UNIQUE STYLE
  * ============================================ */
 
 /**
@@ -344,22 +358,6 @@
   color: var(--muted-foreground);
   line-height: var(--line-height-normal);
 }
-
-/* ============================================
- * RESPONSIVE DESIGN
- * ============================================ */
-
-/**
- * Mobile (< 768px)
- * - Related grid: 1 column
- * - Comments: Full width within container
- */
-
-/**
- * Desktop (>= 768px)
- * - Related grid: 3 columns
- * - Comments: Constrained to 896px
- */
 
 /* ============================================
  * DARK MODE SUPPORT

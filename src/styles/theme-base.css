@@ -92,6 +92,7 @@
      ---------------------------------------- */
   
   --letter-spacing-tight: -0.025em;  /* Large headings (H1-H2) */
+  --letter-spacing-tighter: -0.04em; /* Display/hero titles — tighter than tight */
   --letter-spacing-normal: 0;        /* Body text, standard headings */
   --letter-spacing-wide: 0.025em;    /* Buttons, labels, small text */
   --letter-spacing-wider: 0.05em;    /* Uppercase text, categories */
@@ -290,9 +291,35 @@
      Tablet Portrait:  768px  (iPads / vertical tablets)
      Tablet Landscape: 1024px (Horizontal tablets / small laptops)
      Desktop:          1440px (Standard desktop screens)
-  */
+   */
   
-
+  /* ----------------------------------------
+     Core Breakpoints
+     ---------------------------------------- */
+  
+  /* Accessibility: WCAG 1.4.4 browser zoom support (400% zoom) */
+  --breakpoint-zoomed-in: 280px;
+  
+  /* Mobile devices */
+  --breakpoint-mobile-compact: 320px;       /* Small phones (iPhone SE) */
+  --breakpoint-mobile: 480px;               /* Standard mobile, landscape (WordPress standard) */
+  
+  /* Tablets and small screens */
+  --breakpoint-small: 600px;                /* Small tablets, large phablets */
+  --breakpoint-editorial: 640px;            /* Editorial layouts, blog streams (existing usage) */
+  --breakpoint-tablet-portrait: 768px;      /* Tablets vertical, iPad portrait */
+  
+  /* WordPress-specific breakpoints */
+  --breakpoint-medium: 782px;               /* WordPress adminbar height change */
+  --breakpoint-large: 960px;                /* WordPress admin sidebar auto-fold */
+  
+  /* Desktop and large screens */
+  --breakpoint-tablet-landscape: 1024px;    /* Desktop menu switch, iPad landscape */
+  --breakpoint-xlarge: 1080px;              /* HD laptops (1920x1080) */
+  --breakpoint-wide: 1280px;                /* Wide desktop layouts (existing usage) */
+  --breakpoint-desktop: 1440px;             /* Standard desktop monitors */
+  --breakpoint-xhuge: 1920px;               /* Ultra-wide displays (1080p+) */
+  
   /* ============================================
      SHADOW SYSTEM
      ============================================ */
@@ -382,4 +409,24 @@
   --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
   --ease-out: cubic-bezier(0, 0, 0.2, 1);
   --ease-in: cubic-bezier(0.4, 0, 1, 1);
+
+  /* ============================================
+     ICON TOKENS
+     ============================================ */
+
+  /* Icon Sizes */
+  --icon-size-xs: 14px;    /* Inline badges, micro indicators */
+  --icon-size-sm: 16px;    /* Metadata, small UI elements */
+  --icon-size-md: 20px;    /* Standard UI icons */
+  --icon-size-base: 24px;  /* Default icon size */
+  --icon-size-lg: 28px;    /* Feature cards, emphasis */
+  --icon-size-xl: 32px;    /* Hero decorative, section icons */
+  --icon-size-2xl: 40px;   /* Large decorative elements */
+  --icon-size-3xl: 48px;   /* Hero splash icons */
+
+  /* Phosphor Duotone Secondary Layer Opacity */
+  --icon-duotone-opacity: 0.2;
+
+  /* Icon Transition */
+  --icon-transition: color var(--transition-base) var(--ease-out);
 }

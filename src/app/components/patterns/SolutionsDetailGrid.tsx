@@ -28,7 +28,7 @@
  * ```
  */
 
-import { LucideIcon } from 'lucide-react';
+import type { UniversalIcon } from '../../utils/icon-map';
 import { Section } from '../common/Section';
 import { CheckCircle } from 'lucide-react';
 import { useState } from 'react';
@@ -38,7 +38,7 @@ export interface SolutionDetail {
   /** Unique ID for hover state */
   id: string;
   /** Lucide icon component */
-  icon: LucideIcon;
+  icon: UniversalIcon;
   /** Solution title */
   title: string;
   /** Solution description */
@@ -51,7 +51,7 @@ export interface SolutionsDetailGridProps {
   /** Optional badge text above title */
   badge?: string;
   /** Optional badge icon */
-  badgeIcon?: LucideIcon;
+  badgeIcon?: UniversalIcon;
   /** Main heading */
   title?: string;
   /** Description text below heading */
@@ -67,7 +67,7 @@ export interface SolutionsDetailGridProps {
   /** Maximum width container */
   maxWidth?: 'full' | '4xl' | '5xl' | '6xl';
   /** Feature icon (default: CheckCircle) */
-  featureIcon?: LucideIcon;
+  featureIcon?: UniversalIcon;
 }
 
 export function SolutionsDetailGrid({

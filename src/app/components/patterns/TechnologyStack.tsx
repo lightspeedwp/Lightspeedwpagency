@@ -21,12 +21,12 @@
  */
 
 import { ScrollReveal } from '../../hooks/useScrollReveal';
-import type { LucideIcon } from 'lucide-react';
+import type { UniversalIcon } from '../../utils/icon-map';
 
 export interface Technology {
   id: string;
   name: string;
-  icon?: LucideIcon;
+  icon?: UniversalIcon;
   logo?: string;
   category: 'frontend' | 'backend' | 'devops' | 'tools' | 'design';
   color?: string;

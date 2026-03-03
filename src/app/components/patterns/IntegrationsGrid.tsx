@@ -20,7 +20,7 @@
  * @see {@link /guidelines/patterns/IntegrationsGrid.md}
  */
 
-import { LucideIcon } from 'lucide-react';
+import type { UniversalIcon } from '../../utils/icon-map';
 import { Section } from '../common/Section';
 
 
@@ -29,15 +29,15 @@ export interface Integration {
   name: string;
   /** Integration description */
   description: string;
-  /** Lucide icon component */
-  icon: LucideIcon;
+  /** Icon component (Lucide or Phosphor) */
+  icon: UniversalIcon;
 }
 
 export interface IntegrationsGridProps {
   /** Optional badge text above title */
   badge?: string;
   /** Optional badge icon */
-  badgeIcon?: LucideIcon;
+  badgeIcon?: UniversalIcon;
   /** Main heading */
   title?: string;
   /** Description text below heading */

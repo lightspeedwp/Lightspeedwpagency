@@ -15,6 +15,7 @@ import { Container } from '../common/Container';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { FunkyCTA } from '../patterns/FunkyCTA';
 import { FAQSection } from '../patterns/FAQSection';
+import { StatsGrid } from '../patterns/StatsGrid';
 import { Heading } from '../blocks/text/Heading';
 import { Paragraph } from '../blocks/text/Paragraph';
 import { useHeroParallax } from '../../hooks/useHeroParallax';
@@ -198,23 +199,14 @@ export function AboutHistoryTemplate() {
             </p>
           </div>
 
-          <div className="history-page__stats-grid">
-            {[
+          <StatsGrid
+            stats={[
               { number: '500+', label: 'Projects Delivered' },
               { number: '150+', label: 'Happy Clients' },
               { number: '10', label: 'Years Experience' },
               { number: '25', label: 'Team Members' }
-            ].map((stat, i) => (
-              <div key={i} className="history-page__stat-item">
-                <div className="history-page__stat-value">
-                  {stat.number}
-                </div>
-                <div className="history-page__stat-label">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
-          </div>
+            ]}
+          />
         </Container>
       </section>
 

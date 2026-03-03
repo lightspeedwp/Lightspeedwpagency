@@ -113,7 +113,7 @@
 }
 
 [data-theme="dark"] .checklist__item:hover .checklist__icon {
-  filter: drop-shadow(0 0 8px rgba(var(--primary-rgb), 0.6));
+  filter: drop-shadow(0 0 8px color-mix(in srgb, var(--primary) 60%, transparent));
 }
 
 /* ============================================

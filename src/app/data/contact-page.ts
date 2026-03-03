@@ -11,14 +11,14 @@
  */
 
 import { Mail, Phone, MapPin, Clock, MessageSquare, Headphones, Award, Users } from 'lucide-react';
-import type { LucideIcon } from 'lucide-react';
+import type { UniversalIcon } from '../utils/icon-map';
 import type { FAQ } from './faqs';
 
 /**
  * Contact Methods Interface
  */
 export interface ContactMethod {
-  icon: LucideIcon;
+  icon: UniversalIcon;
   title: string;
   description: string;
   value: string;
@@ -95,7 +95,7 @@ export const contactPageHero = {
  * Why Contact Us Section
  */
 export interface WhyContactReason {
-  icon: LucideIcon;
+  icon: UniversalIcon;
   title: string;
   description: string;
 }

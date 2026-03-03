@@ -1,5 +1,5 @@
 /**
- * Blog Index Styles - Funky Redesign
+ * Blog Index Styles - Funky Redesign (OPTIMIZED)
  *
  * Theme: "The Feed"
  * Style: Monospace accents, Glitch hover, Signal strength
@@ -9,6 +9,10 @@
  *   --cols-2  "Magazine"    – larger image, diagonal label, author avatar
  *   --cols-1  "Stream"      – timeline-style horizontal row
  *
+ * PHASE 4.1 OPTIMIZATION:
+ * - Imports blog-base.css for shared blog structure
+ * - Contains ONLY unique "Feed" theme decorations (3 card variants)
+ *
  * STRICT DESIGN SYSTEM COMPLIANCE:
  * - Fonts: var(--font-primary), var(--font-secondary), var(--font-mono)
  * - Spacing: var(--spacing-*)
@@ -17,94 +21,20 @@
  */
 
 /* ============================================
-   BASE IMPORTS — Phase 1 Optimization
+   BASE IMPORTS — Phase 4.1 Optimization
    ============================================ */
 
 /**
- * Import shared base modules to reduce duplication
- * @see /docs/css-base-extraction-guide.md
+ * Import shared blog base structure
+ * Provides: heroes, badges, titles, categories, meta, cards, pagination, etc.
  */
+@import './blog-base.css';
 @import '../base/grid-utilities.css';
 @import '../patterns/hero/hero-base.css';
 
 /* ============================================
-   HERO — Uses hero-base.css
+   FEATURED CARD — UNIQUE THEME ELEMENTS
    ============================================ */
-
-/**
- * Blog index uses hero-base with custom overrides
- * Hero structure, gradient, and orbs come from hero-base.css
- */
-.blog-index__hero {
-  /* Extends hero-base — only add blog-specific overrides here */
-}
-
-/* Blog-specific hero customizations */
-.blog-index__section-header--large {
-  position: relative;
-  z-index: 1;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.blog-index__badge {
-  display: inline-block;
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  color: var(--primary);
-  border: 1px solid var(--primary);
-  padding: var(--spacing-2) var(--spacing-4);
-  border-radius: var(--radius-sm);
-  margin-bottom: var(--spacing-6);
-  text-transform: uppercase;
-  letter-spacing: var(--letter-spacing-wider);
-  background: color-mix(in srgb, var(--primary) 10%, transparent);
-}
-
-.blog-index__section-title {
-  font-family: var(--font-primary);
-  font-size: var(--text-5xl);
-  font-weight: var(--font-weight-black);
-  margin-bottom: var(--spacing-6);
-  color: var(--foreground);
-  line-height: var(--line-height-tight);
-}
-
-.blog-index__section-description {
-  font-family: var(--font-secondary);
-  font-size: var(--text-xl);
-  color: var(--muted-foreground);
-  line-height: var(--line-height-relaxed);
-}
-
-/* ============================================
-   FEATURED POST CARD
-   ============================================ */
-
-.blog-index__featured-card {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--spacing-8);
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-xl);
-  overflow: hidden;
-  text-decoration: none;
-  color: inherit;
-  transition: all var(--transition-slow) var(--ease-out);
-}
-
-@media (min-width: 768px) {
-  .blog-index__featured-card {
-    grid-template-columns: 1.5fr 1fr;
-  }
-}
-
-.blog-index__featured-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--primary);
-  box-shadow: var(--shadow-lg);
-}
 
 .blog-index__featured-image-wrap {
   position: relative;
@@ -114,9 +44,6 @@
 }
 
 .blog-index__featured-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
   transition: transform var(--transition-slower) var(--ease-out);
 }
 

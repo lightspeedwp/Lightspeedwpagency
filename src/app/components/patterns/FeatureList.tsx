@@ -22,18 +22,24 @@
  *   - glass: Glassmorphism effect (dark mode optimized)
  *   - minimal: Clean minimal style without borders
  *   - compact: Smaller sizing for tight spaces
+ *   - glow: Neon glow border with gradient accent (dark mode optimized)
+ * 
+ * Icon Sizes:
+ *   - sm: 32×32px icon wrapper, 16px icon
+ *   - md: 48×48px icon wrapper, 24px icon (default)
+ *   - lg: 56×56px icon wrapper, 28px icon
  * 
  * @see /src/styles/patterns/feature-list.css
  */
 
 import '@/styles/patterns/feature-list.css';
-import { LucideIcon } from 'lucide-react';
+import type { UniversalIcon } from '../../utils/icon-map';
 import { Link } from 'react-router';
 import { slugToPath } from '../../utils/route-map';
 
 export interface FeatureItem {
-  /** Lucide icon component */
-  icon: LucideIcon;
+  /** Icon component (Lucide or Phosphor) */
+  icon: UniversalIcon;
   /** Feature title */
   title: string;
   /** Feature description */
@@ -52,9 +58,11 @@ export interface FeatureListProps {
   /** Number of columns (responsive, defaults to 3) */
   columns?: 1 | 2 | 3 | 4;
   /** Visual variant */
-  variant?: 'cards' | 'glass' | 'minimal' | 'compact';
+  variant?: 'cards' | 'glass' | 'minimal' | 'compact' | 'glow';
   /** Icon style */
   iconStyle?: 'circular' | 'square' | 'rounded';
+  /** Icon size */
+  iconSize?: 'sm' | 'md' | 'lg';
   /** Optional CSS class name */
   className?: string;
 }
@@ -99,6 +107,7 @@ export function FeatureList({
   columns = 3,
   variant = 'cards',
   iconStyle = 'rounded',
+  iconSize = 'md',
   className = ''
 }: FeatureListProps) {
   return (
@@ -124,7 +133,7 @@ export function FeatureList({
               role="listitem"
             >
               {/* Icon */}
-              <div className={`feature-list__icon-wrapper feature-list__icon-wrapper--${iconStyle}`}>
+              <div className={`feature-list__icon-wrapper feature-list__icon-wrapper--${iconStyle} feature-list__icon-wrapper--${iconSize}`}>
                 <Icon className="feature-list__icon" aria-hidden="true" />
               </div>
               

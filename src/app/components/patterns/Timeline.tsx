@@ -9,7 +9,7 @@
  * @see {@link /guidelines/patterns/Timeline.md}
  */
 
-import { LucideIcon } from 'lucide-react';
+import type { UniversalIcon } from '../../utils/icon-map';
 
 
 export interface TimelineItem {
@@ -22,7 +22,7 @@ export interface TimelineItem {
   /** Event/step description */
   description: string;
   /** Optional icon for the timeline dot */
-  icon?: LucideIcon;
+  icon?: UniversalIcon;
   /** Optional custom color for the dot */
   dotColor?: string;
 }

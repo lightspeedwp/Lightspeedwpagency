@@ -27,6 +27,7 @@ import { VideoTestimonial } from '../patterns/VideoTestimonial';
 import { SocialProof } from '../patterns/SocialProof';
 import { FAQSection } from '../patterns/FAQSection';
 import { FunkyCTA } from '../patterns/FunkyCTA';
+import { StatsGrid } from '../patterns/StatsGrid';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { Filter, Star, MessageSquare } from 'lucide-react';
 
@@ -138,17 +139,15 @@ export function TestimonialsTemplate() {
           ============================================ */}
       <section className="test-page__stats">
         <Container>
-          <div className="test-page__stats-grid">
-            {testimonialStats.map((stat, index) => (
-              <ScrollReveal key={index} animation="fade-up">
-                <article className="test-page__stat-card">
-                  <Star size={24} className="test-page__stat-icon" />
-                  <div className="test-page__stat-value">{stat.number}</div>
-                  <div className="test-page__stat-label">{stat.label}</div>
-                </article>
-              </ScrollReveal>
-            ))}
-          </div>
+          <StatsGrid
+            stats={testimonialStats.map((stat) => ({
+              number: stat.number,
+              label: stat.label,
+              icon: Star
+            }))}
+            columns={4}
+            variant="cards"
+          />
         </Container>
       </section>
 

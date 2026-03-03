@@ -10,22 +10,8 @@
  * WordPress: Maps to templates/single-portfolio.html
  */
 
-import { 
-  TrendingUp,
-  Users,
-  Award,
-  Calendar,
-  Clock,
-  DollarSign,
-  ExternalLink,
-  Code,
-  Zap,
-  CheckCircle,
-  Target,
-  Lightbulb,
-  BarChart
-} from 'lucide-react';
-import type { LucideIcon } from 'lucide-react';
+import type { UniversalIcon } from '../utils/icon-map';
+import { Code, Target, Clock, Users, CheckCircle, Zap, Lightbulb, BarChart, TrendingUp, Award } from 'lucide-react';
 import { portfolioProjects } from './portfolio-projects';
 
 /**
@@ -163,7 +149,7 @@ export const projectPageSolution = {
  * Results/Metrics
  */
 export interface ProjectResult {
-  icon: LucideIcon;
+  icon: UniversalIcon;
   metric: string;
   value: string;
   description: string;

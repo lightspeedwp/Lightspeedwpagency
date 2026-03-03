@@ -14,7 +14,7 @@
  * @see /src/app/components/templates/JourneyStageTemplate.tsx
  */
 
-import type { LucideIcon } from 'lucide-react';
+import type { UniversalIcon } from '../utils/icon-map';
 import {
   Search, PenTool, Code, Rocket, TrendingUp, Brain,
   Target, FileText, Users, Lightbulb, Palette, Image,
@@ -40,7 +40,7 @@ export interface JourneyServiceCard {
   /** Short description */
   description: string;
   /** Lucide icon */
-  icon: LucideIcon;
+  icon: UniversalIcon;
   /** Optional badge ("NEW", "HOT") */
   badge?: string;
 }
@@ -60,7 +60,7 @@ export interface JourneyStageData {
   /** Phase tagline */
   tagline: string;
   /** Lucide icon for the phase */
-  icon: LucideIcon;
+  icon: UniversalIcon;
   /** Neon accent CSS variable */
   accent: string;
   /** Estimated duration label */

@@ -35,7 +35,7 @@ import { RelatedServicesInPhase } from '../patterns/RelatedServicesInPhase';
 import { IncludedInSolutions } from '../patterns/IncludedInSolutions';
 import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
 import { ServicePricingTimeline } from '../patterns/ServicePricingTimeline';
-import { discoveryServiceDetailed } from '../../data/services-detailed';
+import { discoveryServiceDetailed } from '../../data/services';
 import { servicePricingTimeline } from '../../data/services';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { ScrollDownArrow } from '../common/ScrollDownArrow';

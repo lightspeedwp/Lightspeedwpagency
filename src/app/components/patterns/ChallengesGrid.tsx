@@ -20,13 +20,13 @@
  * @see {@link /guidelines/patterns/ChallengesGrid.md}
  */
 
-import { LucideIcon } from 'lucide-react';
+import type { UniversalIcon } from '../../utils/icon-map';
 import { Section } from '../common/Section';
 
 
 export interface Challenge {
   /** Lucide icon component */
-  icon: LucideIcon;
+  icon: UniversalIcon;
   /** Challenge title */
   title: string;
   /** Challenge description */
@@ -37,7 +37,7 @@ export interface ChallengesGridProps {
   /** Optional badge text above title */
   badge?: string;
   /** Optional badge icon */
-  badgeIcon?: LucideIcon;
+  badgeIcon?: UniversalIcon;
   /** Main heading */
   title?: string;
   /** Description text below heading */

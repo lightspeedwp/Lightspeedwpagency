@@ -11,11 +11,10 @@
 
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
-import { LucideIcon } from 'lucide-react';
-
+import type { UniversalIcon } from '../../utils/icon-map';
 
 export interface Value {
-  icon: LucideIcon;
+  icon: UniversalIcon;
   title: string;
   description: string;
 }

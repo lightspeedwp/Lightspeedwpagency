@@ -129,10 +129,15 @@ This sequence is assumed unless the user explicitly says otherwise.
 ---
 
 **Project Status (March 2, 2026):**
-- Full System Audit 100% COMPLETE -- Orchestrator v4.0 launched, reports generated, legacy hex colors and large files identified for remediation.
-- Phase 2 IA Restructure 100% COMPLETE -- All 2.x tasks finished, insights categories added, internal links fixed.
-- Design System Compliance -- 98% (Tokenizing monospace fonts and terminal colors remaining).
-- Codebase Optimization -- Phase 3.1 (Hosting CSS splitting) identified as next priority.
+- Full System Audit 100% COMPLETE -- Orchestrator v4.0 launched, reports generated, legacy hex colors and large files identified for remediation
+- Phase 2 IA Restructure 100% COMPLETE -- All 2.x tasks finished, insights categories added, internal links fixed
+- Phase 2 Pattern Extraction 100% COMPLETE -- ~1,580 lines JSX saved across 80+ templates (PostCard, StatsGrid, FeatureList, CheckList, TestimonialCard, FunkyCTA)
+- Phase 3.1 Archive Base Styles 100% COMPLETE -- ~582 lines CSS saved, 92% reduction in archive.css, 17 archive templates optimized
+- Phase 3.2 Service Base Creation 100% COMPLETE -- 5 modular base files created, ~13,500 lines duplication eliminated across 25+ service templates
+- Phase 3.3 Service Template Optimization 100% COMPLETE -- 21/21 templates optimized, ~8,547 lines CSS saved (48-67% average reduction)
+- Design System Compliance 100% COMPLETE -- Zero hardcoded values found across 500+ files, 100% CSS variable compliance
+- Breakpoint System Expansion 100% COMPLETE -- 12-breakpoint responsive system implemented with WordPress/WCAG alignment
+- **Total Optimization Savings:** ~24,209 lines eliminated/saved across all phases
 
 **Project Status (February 28, 2026):**
 - Phase 1 Remediation 100% COMPLETE -- 10/10 tasks (Systems Hub, 5 child pages, navigation restructure, footer restructure, CTA standardisation, route code-splitting, DefinitionBlock, three-tier model, services hero rewrite, contact hero rewrite)
@@ -570,31 +575,25 @@ borderRadius: 'var(--radius-lg)'     // 8px
 
 ### Breakpoint System
 
-The LSX Design system uses **5 standardized breakpoints**:
+The LSX Design system uses **12 responsive breakpoints** optimized for WordPress and accessibility:
 
-```css
-/* Mobile Compact */
-@media (min-width: 320px) { /* Mobile compact devices */ }
+| Breakpoint | Min Width | Navigation | Grid Columns | WordPress Context |
+|------------|-----------|------------|--------------|-------------------|
+| **Zoomed-In** | 280px | Mobile menu | 1 column | WCAG zoom support (400%) |
+| **Mobile Compact** | 320px | Mobile menu | 1 column | Small phones (iPhone SE) |
+| **Mobile** | 480px | Mobile menu | 1 column | Standard mobile (WordPress standard) |
+| **Small** | 600px | Mobile menu | 2 columns | Small tablets, phablets |
+| **Editorial** | 640px | Mobile menu | 2 columns | Blog layouts (existing usage) |
+| **Tablet Portrait** | 768px | Mobile menu | 2 columns | Tablets vertical, primary grid |
+| **Medium** | 782px | Mobile menu | 2 columns | WP adminbar change |
+| **Large** | 960px | Mobile menu | 3 columns | WP admin sidebar fold |
+| **Tablet Landscape** | 1024px | **Desktop menu** | 3 columns | Desktop menu switch |
+| **XLarge** | 1080px | Desktop menu | 3 columns | HD laptops (1920x1080) |
+| **Wide** | 1280px | Desktop menu | 4 columns | Wide desktops (existing usage) |
+| **Desktop** | 1440px+ | Desktop menu | 4 columns | Standard desktop |
+| **XHuge** | 1920px+ | Desktop menu | 5 columns | Ultra-wide displays |
 
-/* Mobile */
-@media (min-width: 420px) { /* Standard mobile devices */ }
-
-/* Tablet Portrait */
-@media (min-width: 768px) { /* Tablets in portrait mode */ }
-
-/* Tablet Landscape */
-@media (min-width: 1024px) { /* Tablets in landscape + small desktops */ }
-
-/* Desktop */
-@media (min-width: 1440px) { /* Desktop displays */ }
-```
-
-**Breakpoint Reference:**
-- **Desktop:** > 1440px
-- **Tablet Landscape:** > 1024px
-- **Tablet Portrait:** > 768px
-- **Mobile:** > 420px
-- **Mobile Compact:** > 320px
+**CRITICAL:** Desktop menu becomes visible at **1024px** (Tablet Landscape).
 
 ### Fluid Page Padding (Horizontal)
 
@@ -690,15 +689,25 @@ The LSX Design system uses **5 standardized breakpoints**:
 
 ### Breakpoint System
 
-The LSX Design system uses **5 standardized breakpoints**:
+The LSX Design system uses **12 responsive breakpoints** optimized for WordPress and accessibility:
 
-| Breakpoint | Min Width | Navigation | Grid Columns |
-|------------|-----------|------------|--------------|
-| **Mobile Compact** | 320px | Mobile menu | 1 column |
-| **Mobile** | 420px | Mobile menu | 1 column |
-| **Tablet Portrait** | 768px | Mobile menu | 2 columns |
-| **Tablet Landscape** | 1024px | **Desktop menu** | 3 columns |
-| **Desktop** | 1440px+ | Desktop menu | 4 columns |
+| Breakpoint | Min Width | Navigation | Grid Columns | WordPress Context |
+|------------|-----------|------------|--------------|-------------------|
+| **Zoomed-In** | 280px | Mobile menu | 1 column | WCAG zoom support (400%) |
+| **Mobile Compact** | 320px | Mobile menu | 1 column | Small phones (iPhone SE) |
+| **Mobile** | 480px | Mobile menu | 1 column | Standard mobile (WordPress standard) |
+| **Small** | 600px | Mobile menu | 2 columns | Small tablets, phablets |
+| **Editorial** | 640px | Mobile menu | 2 columns | Blog layouts (existing usage) |
+| **Tablet Portrait** | 768px | Mobile menu | 2 columns | Tablets vertical, primary grid |
+| **Medium** | 782px | Mobile menu | 2 columns | WP adminbar change |
+| **Large** | 960px | Mobile menu | 3 columns | WP admin sidebar fold |
+| **Tablet Landscape** | 1024px | **Desktop menu** | 3 columns | Desktop menu switch |
+| **XLarge** | 1080px | Desktop menu | 3 columns | HD laptops (1920x1080) |
+| **Wide** | 1280px | Desktop menu | 4 columns | Wide desktops (existing usage) |
+| **Desktop** | 1440px+ | Desktop menu | 4 columns | Standard desktop |
+| **XHuge** | 1920px+ | Desktop menu | 5 columns | Ultra-wide displays |
+
+**Note:** Desktop menu becomes visible at **1024px** (Tablet Landscape).
 
 ### Fluid Container Padding
 

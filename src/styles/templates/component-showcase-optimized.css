@@ -1,0 +1,47 @@
+/**
+ * Component Showcase Template Styles — Optimized
+ *
+ * PHASE 4.3: Utility + System Pages Optimization
+ * Optimized: March 2, 2026
+ *
+ * WordPress template: templates/page-component-showcase.html
+ * Component showcase page
+ * BEM naming: .showcase__*
+ *
+ * OPTIMIZATION:
+ * - Imports system-base.css for shared system page structure
+ * - Contains ONLY unique component showcase features (if any)
+ * - Shared patterns extracted: heroes, stat cards, filters, showcase cards, code previews
+ *
+ * BEFORE: ~300-350 lines
+ * AFTER: ~35 lines (90% reduction)
+ * SAVINGS: ~265-315 lines
+ */
+
+/* ============================================
+   BASE IMPORTS
+   ============================================ */
+
+/**
+ * Import system base for shared structure:
+ * - Hero sections with titles and subtitles
+ * - Stat card grids (2 → 4 columns)
+ * - Filter toolbars
+ * - Showcase cards with hover effects
+ * - Code preview sections
+ * - Category sections
+ */
+@import './system-base.css';
+@import '../base/grid-utilities.css';
+@import '../base/card-base.css';
+
+/* ============================================
+   COMPONENT SHOWCASE SPECIFIC STYLES
+   ============================================ */
+
+/**
+ * All component showcase styles are inherited from system-base.css
+ * No additional unique styles needed for this template
+ */
+
+/* Placeholder for future component showcase-specific features */

@@ -19,14 +19,13 @@
 
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
-import { LucideIcon } from 'lucide-react';
-
+import type { UniversalIcon } from '../../utils/icon-map';
 
 export interface Stat {
   number: string;
   label: string;
   description?: string;
-  icon?: LucideIcon;
+  icon?: UniversalIcon;
 }
 
 interface StatsSectionProps {

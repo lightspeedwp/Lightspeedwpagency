@@ -287,9 +287,14 @@
 @import './templates/accessibility-service-optimized.css';
 @import './templates/ai-engine-service-optimized.css';
 @import './templates/answer-engine-service-optimized.css';
+@import './templates/content-strategy-service-optimized.css';
+@import './templates/page-service-training-optimized.css';
+@import './templates/page-services-landing-optimized.css';
 
-/* Non-Optimized Service Templates (Legacy) */
-@import './templates/content-strategy-service.css';
+/* Batch 7: Landing/Parent Templates (March 2, 2026) */
+@import './templates/page-service-ai-landing-optimized.css';
+@import './templates/page-service-content-landing-optimized.css';
+@import './templates/page-service-design-systems-optimized.css';
 
 /* Template-specific CSS — now route-level imports in each template component:
  *

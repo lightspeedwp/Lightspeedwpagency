@@ -10,24 +10,7 @@
  * WordPress: Maps to templates/page-development-service.html
  */
 
-import { 
-  Code,
-  Layers,
-  Package,
-  Database,
-  Zap,
-  Shield,
-  GitBranch,
-  Settings,
-  CheckCircle,
-  Blocks,
-  Puzzle,
-  Workflow,
-  Terminal,
-  FileCode,
-  Rocket
-} from 'lucide-react';
-import type { LucideIcon } from 'lucide-react';
+import type { UniversalIcon } from '../utils/icon-map';
 
 /**
  * Service Hero Content
@@ -82,7 +65,7 @@ export const developmentServiceOverview = {
  */
 export interface DevelopmentService {
   id: string;
-  icon: LucideIcon;
+  icon: UniversalIcon;
   title: string;
   description: string;
   features: string[];

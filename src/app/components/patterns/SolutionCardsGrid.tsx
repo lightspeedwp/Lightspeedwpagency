@@ -11,7 +11,7 @@
  * @see {@link /guidelines/patterns/SolutionCardsGrid.md}
  */
 
-import { LucideIcon } from 'lucide-react';
+import type { UniversalIcon } from '../../utils/icon-map';
 import { Link } from 'react-router';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
@@ -22,7 +22,7 @@ export interface SolutionCard {
   /** Unique solution ID */
   id: string;
   /** Lucide icon component */
-  icon: LucideIcon;
+  icon: UniversalIcon;
   /** Solution title */
   title: string;
   /** Solution description */
@@ -37,7 +37,7 @@ export interface SolutionCardsGridProps {
   /** Optional badge text above title */
   badge?: string;
   /** Optional badge icon */
-  badgeIcon?: LucideIcon;
+  badgeIcon?: UniversalIcon;
   /** Section title */
   title: string;
   /** Section description */

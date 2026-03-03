@@ -7,7 +7,7 @@
  * Commonly used on solution/service pages to highlight key features.
  */
 
-import { LucideIcon } from 'lucide-react';
+import type { UniversalIcon } from '../../utils/icon-map';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 
@@ -16,7 +16,7 @@ export interface FeatureIcon {
   /** Unique identifier */
   id: string;
   /** Icon component */
-  icon: LucideIcon;
+  icon: UniversalIcon;
   /** Feature title */
   title: string;
   /** Feature description */

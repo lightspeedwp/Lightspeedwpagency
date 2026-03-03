@@ -16,10 +16,11 @@
  *
  * 100 % CSS variables — no hardcoded colours or sizes.
  *
+ * @see /src/app/utils/icon-map.ts
  * @see /src/styles/components/scroll-down-arrow.css
  */
 
-import { ChevronDown } from 'lucide-react';
+import { CaretDown as ChevronDown } from '@phosphor-icons/react';
 import { useEffect, useState, useRef, useCallback } from 'react';
 
 interface ScrollDownArrowProps {

@@ -1,116 +1,37 @@
 /**
- * Single Post Template Styles
+ * Single Post Template Styles (OPTIMIZED)
  *
  * BEM naming: .single-post__*
- * 100% CSS variables, zero hardcoded values.
+ *
+ * PHASE 4.1 OPTIMIZATION:
+ * - Imports blog-base.css for shared blog structure
+ * - Contains ONLY unique single post theme decorations
+ *
+ * STRICT DESIGN SYSTEM COMPLIANCE:
+ * - Fonts: var(--font-primary), var(--font-secondary), var(--font-mono)
+ * - Spacing: var(--spacing-*)
+ * - Radius: var(--radius-*)
+ * - Colors: Semantic variables from theme-*.css
  */
 
 /* ============================================
-   BASE IMPORTS — Phase 1 Optimization
+   BASE IMPORTS — Phase 4.1 Optimization
    ============================================ */
 
 /**
- * Import shared base modules to reduce duplication
- * @see /docs/css-base-extraction-guide.md
+ * Import shared blog base structure
+ * Provides: heroes, post meta, editorial content, author bios, etc.
  */
+@import './blog-base.css';
 @import '../base/grid-utilities.css';
 @import '../base/card-base.css';
 @import '../patterns/hero/hero-base.css';
 
 /* ============================================
-   SINGLE POST STYLES
+   UNIQUE SINGLE POST THEME ELEMENTS
    ============================================ */
 
-/* ============================================
-   HERO
-   ============================================ */
-
-.single-post-hero {
-  position: relative;
-  overflow: hidden;
-  background-color: var(--background);
-  padding: var(--spacing-12) 0;
-  border-bottom: 1px solid var(--border-soft);
-}
-
-.single-post-hero__orb {
-  position: absolute;
-  top: -100px;
-  right: -100px;
-  width: 500px;
-  height: 500px;
-  border-radius: 50%;
-  background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
-  opacity: 0.15;
-  filter: blur(80px);
-  pointer-events: none;
-}
-
-.single-post-hero__container {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-6);
-  max-width: 800px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 10;
-}
-
-.single-post-hero__categories {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--spacing-2);
-}
-
-.single-post-hero__category {
-  font-family: var(--font-secondary);
-  font-size: var(--text-xs);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--primary);
-  text-decoration: none;
-  background-color: color-mix(in srgb, var(--primary) 8%, transparent);
-  padding: var(--spacing-1) var(--spacing-3);
-  border-radius: var(--radius-full);
-  border: 1px solid color-mix(in srgb, var(--primary) 25%, transparent);
-  transition: all var(--transition-base) var(--ease-out);
-  box-shadow: 0 0 0 0 transparent;
-}
-
-.single-post-hero__category:hover {
-  border-color: var(--primary);
-  background-color: color-mix(in srgb, var(--primary) 15%, transparent);
-  color: var(--primary);
-  box-shadow: 0 0 12px color-mix(in srgb, var(--primary) 25%, transparent);
-}
-
-.single-post-hero__title {
-  font-family: var(--font-primary);
-  font-size: var(--text-h1);
-  font-weight: 800;
-  color: var(--foreground);
-  margin: 0;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-}
-
-/* ============================================
-   META ROW
-   ============================================ */
-
-.single-post-meta {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--spacing-6);
-  font-family: var(--font-secondary);
-  font-size: var(--text-sm);
-  color: var(--muted-foreground);
-  padding-top: var(--spacing-6);
-  border-top: 1px solid var(--border-soft);
-}
-
+/* Funky lead text (intro paragraph) */
 .single-post-meta__lead {
   font-family: var(--font-secondary);
   font-size: var(--text-lead);
@@ -118,12 +39,7 @@
   line-height: var(--line-height-relaxed);
 }
 
-.single-post-meta__author {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-3);
-}
-
+/* Avatar with neon glow */
 .single-post-meta__avatar {
   width: 40px;
   height: 40px;
@@ -167,7 +83,7 @@
 }
 
 /* ============================================
-   FEATURED IMAGE
+   FEATURED IMAGE — FUNKY STYLE
    ============================================ */
 
 .single-post-featured-image {
@@ -248,423 +164,201 @@
   gap: var(--spacing-2);
 }
 
-.single-post-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--spacing-2);
+.single-post-tags__tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--secondary);
+  background: color-mix(in srgb, var(--secondary) 10%, transparent);
   padding: var(--spacing-1-5) var(--spacing-3);
-  background: var(--glass-bg);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid var(--border-soft);
   border-radius: var(--radius-full);
-  font-family: var(--font-secondary);
-  font-size: var(--text-sm);
-  color: var(--muted-foreground);
+  border: 1px solid color-mix(in srgb, var(--secondary) 20%, transparent);
   text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
   transition: all var(--transition-base) var(--ease-out);
 }
 
-.single-post-tag:hover {
-  background: linear-gradient(135deg, var(--primary), var(--accent));
-  color: var(--color-white);
-  border-color: transparent;
-  box-shadow: 0 0 14px color-mix(in srgb, var(--primary) 35%, transparent);
-  transform: translateY(-1px);
+.single-post-tags__tag:hover {
+  background: color-mix(in srgb, var(--secondary) 20%, transparent);
+  border-color: var(--secondary);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--secondary) 25%, transparent);
 }
 
 /* ============================================
-   AUTHOR BIO — GLASSMORPHISM + GRADIENT STRIPE
+   AUTHOR BIO CARD — FUNKY STYLE
    ============================================ */
 
-.single-post__author-card {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-6);
+.single-post-author-bio {
+  max-width: 800px;
+  margin: var(--spacing-16) auto;
+  padding: var(--spacing-10);
   background: var(--glass-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--glass-border);
+  border: 1px solid var(--border);
   border-radius: var(--radius-xl);
-  padding: var(--spacing-8);
-  margin-top: var(--spacing-12);
-  overflow: hidden;
-  transition: all var(--transition-slow) var(--ease-out);
+  box-shadow: inset 0 0 30px color-mix(in srgb, var(--primary) 3%, transparent),
+              var(--shadow-lg);
 }
 
-/* Animated gradient top stripe */
-.single-post__author-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
-  background-size: 200% 100%;
-  animation: singlePostStripe 4s linear infinite;
+.single-post-author-bio__header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-6);
+  margin-bottom: var(--spacing-6);
 }
 
-@keyframes singlePostStripe {
-  0%   { background-position: 0% 50%; }
-  100% { background-position: 200% 50%; }
-}
-
-.single-post__author-card:hover {
-  box-shadow: 0 0 20px color-mix(in srgb, var(--primary) 15%, transparent);
-  border-color: color-mix(in srgb, var(--primary) 25%, transparent);
-  transform: translateY(-2px);
-}
-
-.single-post__author-avatar {
+.single-post-author-bio__avatar {
   width: 80px;
   height: 80px;
   border-radius: var(--radius-full);
   object-fit: cover;
+  border: 3px solid color-mix(in srgb, var(--primary) 40%, transparent);
+  box-shadow: 0 0 20px color-mix(in srgb, var(--primary) 20%, transparent);
   flex-shrink: 0;
-  border: 3px solid transparent;
-  background-origin: border-box;
-  background-clip: content-box, border-box;
-  background-image:
-    linear-gradient(var(--background), var(--background)),
-    linear-gradient(135deg, var(--primary), var(--accent));
-  box-shadow: 0 0 12px color-mix(in srgb, var(--primary) 20%, transparent);
 }
 
-.single-post__author-info {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-1);
+.single-post-author-bio__info {
+  flex: 1;
 }
 
-.single-post__author-name {
+.single-post-author-bio__name {
   font-family: var(--font-primary);
-  font-size: var(--text-h4);
-  font-weight: var(--font-weight-semibold);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-weight-bold);
   color: var(--foreground);
+  margin-bottom: var(--spacing-1);
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+.single-post-author-bio__name:hover {
+  color: var(--primary);
+}
+
+.single-post-author-bio__role {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+}
+
+.single-post-author-bio__description {
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  color: var(--foreground);
+  line-height: var(--line-height-relaxed);
   margin: 0;
 }
 
-.single-post__author-role {
-  font-family: var(--font-secondary);
-  font-size: var(--text-sm);
-  color: var(--primary);
-  font-weight: var(--font-weight-medium);
+.single-post-author-bio__links {
+  display: flex;
+  gap: var(--spacing-3);
+  margin-top: var(--spacing-4);
 }
 
-.single-post__author-bio {
+.single-post-author-bio__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  background: color-mix(in srgb, var(--primary) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--primary) 25%, transparent);
+  color: var(--primary);
+  text-decoration: none;
+  transition: all var(--transition-base) var(--ease-out);
+}
+
+.single-post-author-bio__link:hover {
+  background: color-mix(in srgb, var(--primary) 20%, transparent);
+  border-color: var(--primary);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--primary) 25%, transparent);
+}
+
+/* ============================================
+   RELATED POSTS — FUNKY STYLE
+   ============================================ */
+
+.single-post-related {
+  max-width: 1200px;
+  margin: var(--spacing-20) auto;
+  padding: var(--spacing-12) 0;
+  border-top: 1px solid var(--border-soft);
+}
+
+.single-post-related__header {
+  text-align: center;
+  margin-bottom: var(--spacing-10);
+}
+
+.single-post-related__badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--primary);
+  background: color-mix(in srgb, var(--primary) 10%, transparent);
+  padding: var(--spacing-1-5) var(--spacing-4);
+  border-radius: var(--radius-full);
+  border: 1px solid color-mix(in srgb, var(--primary) 25%, transparent);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+  margin-bottom: var(--spacing-4);
+}
+
+.single-post-related__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-4xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-3);
+}
+
+.single-post-related__description {
   font-family: var(--font-secondary);
-  font-size: var(--text-base);
+  font-size: var(--text-lg);
   color: var(--muted-foreground);
-  margin-top: var(--spacing-2);
   line-height: var(--line-height-relaxed);
 }
 
 /* ============================================
-   NEWSLETTER CTA — GLASSMORPHISM + NEON GLOW
-   ============================================ */
-
-.single-post__newsletter {
-  position: relative;
-  background: var(--glass-bg);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius-xl);
-  padding: var(--spacing-12);
-  text-align: center;
-  margin-top: var(--spacing-12);
-  overflow: hidden;
-  box-shadow: 0 0 40px color-mix(in srgb, var(--primary) 8%, transparent);
-}
-
-/* Mesh grid overlay */
-.single-post__newsletter::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(to right, color-mix(in srgb, var(--primary) 6%, transparent) 1px, transparent 1px),
-    linear-gradient(to bottom, color-mix(in srgb, var(--primary) 6%, transparent) 1px, transparent 1px);
-  background-size: 32px 32px;
-  mask-image: radial-gradient(circle at 50% 50%, black 30%, transparent 70%);
-  pointer-events: none;
-  z-index: 0;
-}
-
-.single-post__newsletter > * {
-  position: relative;
-  z-index: 1;
-}
-
-.single-post__newsletter-title {
-  font-family: var(--font-primary);
-  font-size: var(--text-h2);
-  font-weight: 700;
-  margin-bottom: var(--spacing-4);
-  color: var(--foreground);
-  /* Gradient underline */
-  display: inline-block;
-  position: relative;
-}
-
-.single-post__newsletter-title::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60%;
-  height: 3px;
-  background: linear-gradient(90deg, var(--primary), var(--accent));
-  border-radius: var(--radius-full);
-}
-
-.single-post__newsletter-description {
-  font-family: var(--font-secondary);
-  font-size: var(--text-lg);
-  color: var(--muted-foreground);
-  margin-bottom: var(--spacing-8);
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.single-post__newsletter-actions {
-  display: flex;
-  justify-content: center;
-  gap: var(--spacing-4);
-  flex-wrap: wrap;
-}
-
-/* ============================================
-   RELATED POSTS HEADING — GRADIENT UNDERLINE
-   ============================================ */
-
-.single-post__related-heading {
-  position: relative;
-  display: inline-block;
-}
-
-.single-post__related-heading::after {
-  content: '';
-  position: absolute;
-  bottom: -6px;
-  left: 0;
-  width: 60px;
-  height: 3px;
-  background: linear-gradient(90deg, var(--primary), var(--accent));
-  border-radius: var(--radius-full);
-}
-
-/* ============================================
-   NARROW MODIFIER
-   ============================================ */
-
-.single-post-body--narrow,
-.single-post__author-card--narrow,
-.single-post__newsletter--narrow {
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* ============================================
-   LONGFORM GRID (TOC + Content)
-   ============================================ */
-
-.single-post-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--spacing-12);
-}
-
-@media (min-width: 1024px) {
-  .single-post-grid {
-    grid-template-columns: 240px 1fr;
-    gap: var(--spacing-16);
-  }
-}
-
-/* ============================================
-   TABLE OF CONTENTS — GLASSMORPHISM SIDEBAR
-   ============================================ */
-
-.single-post-sidebar {
-  position: relative;
-}
-
-@media (min-width: 1024px) {
-  .single-post-sidebar {
-    position: sticky;
-    top: var(--spacing-8);
-    align-self: start;
-  }
-}
-
-.single-post-toc {
-  background: var(--glass-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius-lg);
-  padding: var(--spacing-6);
-}
-
-.single-post-toc__title {
-  font-family: var(--font-primary);
-  font-size: var(--text-sm);
-  font-weight: var(--font-weight-semibold);
-  color: var(--foreground);
-  text-transform: uppercase;
-  letter-spacing: var(--letter-spacing-wider);
-  margin-bottom: var(--spacing-4);
-  padding-bottom: var(--spacing-3);
-  border-bottom: 1px solid var(--border-soft);
-}
-
-.single-post-toc__list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-1);
-}
-
-.single-post-toc__link {
-  display: block;
-  font-family: var(--font-secondary);
-  font-size: var(--text-sm);
-  color: var(--muted-foreground);
-  text-decoration: none;
-  padding: var(--spacing-2) var(--spacing-3);
-  border-radius: var(--radius-md);
-  border-left: 2px solid transparent;
-  transition: all var(--transition-base) var(--ease-out);
-}
-
-.single-post-toc__link:hover {
-  color: var(--primary);
-  background: color-mix(in srgb, var(--primary) 8%, transparent);
-}
-
-.single-post-toc__link--active {
-  color: var(--primary);
-  font-weight: var(--font-weight-medium);
-  border-left-color: var(--primary);
-  background: color-mix(in srgb, var(--primary) 10%, transparent);
-  box-shadow: inset -2px 0 8px color-mix(in srgb, var(--primary) 8%, transparent);
-}
-
-/* ============================================
-   CONTENT SECTION (Longform host)
-   ============================================ */
-
-.single-post-content-section {
-  background-color: var(--background);
-}
-
-/* ============================================
-   RESPONSIVE
-   ============================================ */
-
-@media (max-width: 767px) {
-  .single-post__author-card {
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-  }
-}
-
-/* ============================================
-   DARK MODE
+   DARK MODE OVERRIDES
    ============================================ */
 
 .dark .single-post-hero {
-  border-bottom-color: var(--border-soft);
-}
-
-.dark .single-post-hero__orb {
-  opacity: 0.25;
-}
-
-.dark .single-post-hero__category {
-  background-color: color-mix(in srgb, var(--primary) 12%, transparent);
-  border-color: color-mix(in srgb, var(--primary) 30%, transparent);
-}
-
-.dark .single-post-hero__category:hover {
-  box-shadow: 0 0 16px color-mix(in srgb, var(--primary) 35%, transparent);
-}
-
-.dark .single-post-meta {
-  border-top-color: var(--border-soft);
-}
-
-.dark .single-post-meta__avatar {
-  border-color: color-mix(in srgb, var(--primary) 50%, transparent);
-  box-shadow: 0 0 12px color-mix(in srgb, var(--primary) 25%, transparent);
-}
-
-.dark .single-post-featured-image {
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
-  border-color: var(--border-soft);
+  background: linear-gradient(180deg, var(--background) 0%, color-mix(in srgb, var(--background) 90%, var(--primary)) 100%);
 }
 
 .dark .single-post-body blockquote {
-  background: color-mix(in srgb, var(--card) 60%, transparent);
-  box-shadow: inset 0 0 40px color-mix(in srgb, var(--primary) 8%, transparent),
-              0 4px 20px rgba(0, 0, 0, 0.3);
-}
-
-.dark .single-post-tags {
-  border-top-color: var(--border-soft);
-}
-
-.dark .single-post-tag {
-  background: color-mix(in srgb, var(--card) 50%, transparent);
-  border-color: var(--border-soft);
-}
-
-.dark .single-post-tag:hover {
-  box-shadow: 0 0 18px color-mix(in srgb, var(--primary) 40%, transparent);
-}
-
-.dark .single-post__author-card {
-  background: color-mix(in srgb, var(--card) 50%, transparent);
-  border-color: var(--border-soft);
-}
-
-.dark .single-post__author-card:hover {
-  box-shadow: 0 0 28px color-mix(in srgb, var(--primary) 20%, transparent);
-  border-color: color-mix(in srgb, var(--primary) 30%, transparent);
-}
-
-.dark .single-post__author-avatar {
-  box-shadow: 0 0 18px color-mix(in srgb, var(--primary) 30%, transparent);
-}
-
-.dark .single-post__newsletter {
   background: color-mix(in srgb, var(--card) 40%, transparent);
-  border-color: var(--border-soft);
-  box-shadow: 0 0 50px color-mix(in srgb, var(--primary) 12%, transparent);
+  box-shadow: inset 0 0 30px color-mix(in srgb, var(--primary) 8%, transparent),
+              var(--shadow-neon);
 }
 
-.dark .single-post__newsletter::before {
-  background-image:
-    linear-gradient(to right, color-mix(in srgb, var(--primary) 10%, transparent) 1px, transparent 1px),
-    linear-gradient(to bottom, color-mix(in srgb, var(--primary) 10%, transparent) 1px, transparent 1px);
+.dark .single-post-tags__tag {
+  background: color-mix(in srgb, var(--secondary) 15%, transparent);
+  border-color: color-mix(in srgb, var(--secondary) 30%, transparent);
 }
 
-.dark .single-post-toc {
-  background: color-mix(in srgb, var(--card) 50%, transparent);
-  border-color: var(--border-soft);
+.dark .single-post-tags__tag:hover {
+  box-shadow: var(--shadow-neon);
 }
 
-.dark .single-post-toc__link--active {
-  box-shadow: inset -2px 0 12px color-mix(in srgb, var(--primary) 12%, transparent);
+.dark .single-post-author-bio {
+  background: color-mix(in srgb, var(--card) 40%, transparent);
+  border-color: color-mix(in srgb, var(--primary) 20%, transparent);
+  box-shadow: inset 0 0 30px color-mix(in srgb, var(--primary) 8%, transparent),
+              var(--shadow-neon);
+}
+
+.dark .single-post-author-bio__avatar {
+  box-shadow: 0 0 30px color-mix(in srgb, var(--primary) 30%, transparent);
+}
+
+.dark .single-post-related__badge {
+  background: color-mix(in srgb, var(--primary) 15%, transparent);
+  border-color: color-mix(in srgb, var(--primary) 30%, transparent);
 }
 
 /* ============================================
@@ -672,17 +366,16 @@
    ============================================ */
 
 @media (prefers-reduced-motion: reduce) {
-  .single-post__author-card::before {
-    animation: none;
+  .single-post-meta__avatar,
+  .single-post-tags__tag,
+  .single-post-author-bio__link,
+  .single-post-meta__author-name {
+    transition: none;
   }
 
-  .single-post-hero__orb {
-    display: none;
-  }
-
-  .single-post-hero__category:hover,
-  .single-post-tag:hover,
-  .single-post__author-card:hover {
+  .single-post-meta__avatar:hover,
+  .single-post-tags__tag:hover,
+  .single-post-author-bio__link:hover {
     transform: none;
   }
 }

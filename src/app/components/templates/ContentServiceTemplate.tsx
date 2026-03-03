@@ -37,7 +37,7 @@ import {
 } from 'lucide-react';
 
 // Import detailed data
-import { contentServiceDetailed } from '../../data/services-detailed';
+import { contentServiceDetailed } from '../../data/services';
 
 export function ContentServiceTemplate() {
   const data = contentServiceDetailed;

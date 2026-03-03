@@ -1,8 +1,12 @@
 /**
- * Insights Landing Page Styles
+ * Insights Landing Page Styles (OPTIMIZED)
  * 
  * BEM Methodology: .insights-landing
  * Route: /insights/
+ *
+ * PHASE 4.1 OPTIMIZATION:
+ * - Imports blog-base.css for shared blog structure (post cards, grids)
+ * - Contains ONLY unique insights landing features
  * 
  * Design System Compliance:
  * - All colors use CSS variables from theme-light.css/theme-dark.css
@@ -11,6 +15,16 @@
  * - Font families: var(--font-primary) and var(--font-secondary) only
  * - No hardcoded values
  */
+
+/* ============================================
+   BASE IMPORTS — Phase 4.1 Optimization
+   ============================================ */
+
+/**
+ * Import shared blog base structure
+ * Provides: post cards, post grids, pagination, etc.
+ */
+@import './blog-base.css';
 
 @layer components {
 

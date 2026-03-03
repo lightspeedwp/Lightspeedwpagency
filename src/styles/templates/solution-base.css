@@ -1,0 +1,647 @@
+/**
+ * Solution Pages Base Styles — Shared Solution Page Patterns
+ *
+ * PHASE 4.2: About + Solution Pages Optimization
+ * Created: March 2, 2026
+ *
+ * Provides comprehensive shared structure for all solution page templates:
+ * - Hero sections with animated grid backdrops
+ * - Floating gradient orbs
+ * - Scoped CSS variables for per-page accent colors
+ * - Feature grids with glassmorphism cards
+ * - Benefits sections with icon highlights
+ * - Process timelines with gradient connectors
+ * - Tech stack displays with logo grids
+ * - Case study sections
+ * - CTA sections with gradient backgrounds
+ * - Dark mode overrides
+ * - Reduced motion support
+ *
+ * Templates using this base:
+ * - page-solution-ai.css
+ * - page-solution-ecommerce.css
+ * - page-solution-redesign.css
+ * - page-solution-tour-design.css
+ * - page-solution-wordpress.css
+ *
+ * STRICT DESIGN SYSTEM COMPLIANCE:
+ * - Fonts: var(--font-primary), var(--font-secondary), var(--font-mono)
+ * - Spacing: var(--spacing-*)
+ * - Radius: var(--radius-*)
+ * - Colors: Semantic variables from theme-*.css + scoped --*-accent
+ * - NO hardcoded values
+ */
+
+/* ============================================
+   SCOPED CSS VARIABLES
+   ============================================ */
+
+/**
+ * Base accent colors (can be overridden per solution page)
+ */
+.ai-page,
+.ecommerce-page,
+.redesign-page,
+.tour-design-page,
+.wordpress-page {
+  --solution-accent: var(--wp--preset--color--neon-cyan);
+  --solution-accent-alt: var(--wp--preset--color--neon-pink);
+  --solution-hero-bg: color-mix(in srgb, var(--wp--preset--color--deep-purple) 18%, var(--color-black));
+  --solution-card-bg: color-mix(in srgb, var(--foreground) 4%, transparent);
+  --solution-card-border: color-mix(in srgb, var(--foreground) 10%, transparent);
+  --solution-grid-color: color-mix(in srgb, var(--solution-accent) 12%, transparent);
+}
+
+/* Per-page accent overrides */
+.ai-page { --solution-accent: var(--wp--preset--color--neon-cyan); --solution-accent-alt: var(--wp--preset--color--neon-pink); }
+.ecommerce-page { --solution-accent: var(--wp--preset--color--neon-lime); --solution-accent-alt: var(--wp--preset--color--neon-yellow); }
+.redesign-page { --solution-accent: var(--wp--preset--color--neon-pink); --solution-accent-alt: var(--wp--preset--color--neon-cyan); }
+.tour-design-page { --solution-accent: var(--wp--preset--color--neon-yellow); --solution-accent-alt: var(--wp--preset--color--neon-lime); }
+.wordpress-page { --solution-accent: var(--wp--preset--color--neon-cyan); --solution-accent-alt: var(--wp--preset--color--neon-pink); }
+
+/* ============================================
+   HERO SECTIONS — ANIMATED GRID BACKDROP
+   ============================================ */
+
+/**
+ * Solution hero with 80vh min-height and grid animation
+ */
+.ai-page__hero,
+.ecommerce-page__hero,
+.redesign-page__hero,
+.tour-design-page__hero,
+.wordpress-page__hero {
+  position: relative;
+  background-color: var(--solution-hero-bg);
+  padding-top: var(--section-padding-y);
+  padding-bottom: var(--section-padding-y);
+  overflow: hidden;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+}
+
+/**
+ * Animated grid backdrop with radial mask
+ */
+.ai-page__hero-grid,
+.ecommerce-page__hero-grid,
+.redesign-page__hero-grid,
+.tour-design-page__hero-grid,
+.wordpress-page__hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--solution-grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--solution-grid-color) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: center center;
+  mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
+  z-index: 0;
+  animation: solution-grid-drift 25s linear infinite;
+}
+
+@keyframes solution-grid-drift {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(40px); }
+}
+
+/**
+ * Floating gradient orbs
+ */
+.ai-page__orb,
+.ecommerce-page__orb,
+.redesign-page__orb,
+.tour-design-page__orb,
+.wordpress-page__orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.ai-page__orb--1,
+.ecommerce-page__orb--1,
+.redesign-page__orb--1,
+.tour-design-page__orb--1,
+.wordpress-page__orb--1 {
+  width: 420px;
+  height: 420px;
+  background: var(--solution-accent);
+  opacity: 0.18;
+  top: -10%;
+  right: 5%;
+  animation: solution-float 8s ease-in-out infinite;
+}
+
+.ai-page__orb--2,
+.ecommerce-page__orb--2,
+.redesign-page__orb--2,
+.tour-design-page__orb--2,
+.wordpress-page__orb--2 {
+  width: 320px;
+  height: 320px;
+  background: var(--solution-accent-alt);
+  opacity: 0.12;
+  bottom: -5%;
+  left: 10%;
+  animation: solution-float 10s ease-in-out infinite reverse;
+}
+
+@keyframes solution-float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50%      { transform: translateY(-20px) scale(1.05); }
+}
+
+/**
+ * Hero content containers
+ */
+.ai-page__hero-content,
+.ecommerce-page__hero-content,
+.redesign-page__hero-content,
+.tour-design-page__hero-content,
+.wordpress-page__hero-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/**
+ * Hero badges
+ */
+.ai-page__hero-badge,
+.ecommerce-page__hero-badge,
+.redesign-page__hero-badge,
+.tour-design-page__hero-badge,
+.wordpress-page__hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2) var(--spacing-5);
+  background: color-mix(in srgb, var(--solution-accent) 15%, transparent);
+  backdrop-filter: blur(12px);
+  border: 1px solid color-mix(in srgb, var(--solution-accent) 30%, transparent);
+  border-radius: var(--radius-full);
+  color: var(--solution-accent);
+  font-family: var(--font-mono);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+  margin-bottom: var(--spacing-6);
+  box-shadow: 0 0 16px color-mix(in srgb, var(--solution-accent) 20%, transparent);
+}
+
+/**
+ * Hero titles
+ */
+.ai-page__hero-title,
+.ecommerce-page__hero-title,
+.redesign-page__hero-title,
+.tour-design-page__hero-title,
+.wordpress-page__hero-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-5xl);
+  font-weight: var(--font-weight-black);
+  color: var(--color-white);
+  line-height: var(--line-height-tight);
+  margin-bottom: var(--spacing-6);
+}
+
+@media (min-width: 768px) {
+  .ai-page__hero-title,
+  .ecommerce-page__hero-title,
+  .redesign-page__hero-title,
+  .tour-design-page__hero-title,
+  .wordpress-page__hero-title {
+    font-size: var(--text-6xl);
+  }
+}
+
+/**
+ * Hero subtitles
+ */
+.ai-page__hero-subtitle,
+.ecommerce-page__hero-subtitle,
+.redesign-page__hero-subtitle,
+.tour-design-page__hero-subtitle,
+.wordpress-page__hero-subtitle {
+  font-family: var(--font-secondary);
+  font-size: var(--text-xl);
+  color: var(--overlay-white-heavy);
+  line-height: var(--line-height-relaxed);
+  max-width: 65ch;
+  margin: 0 auto var(--spacing-8);
+}
+
+/* ============================================
+   FEATURE GRIDS — GLASSMORPHISM CARDS
+   ============================================ */
+
+/**
+ * Feature sections
+ */
+.ai-page__features,
+.ecommerce-page__features,
+.redesign-page__features,
+.tour-design-page__features,
+.wordpress-page__features {
+  padding: var(--spacing-20) 0;
+  background-color: var(--background);
+}
+
+/**
+ * Feature grids — responsive 1 → 2 → 3 columns
+ */
+.ai-page__features-grid,
+.ecommerce-page__features-grid,
+.redesign-page__features-grid,
+.tour-design-page__features-grid,
+.wordpress-page__features-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-6);
+}
+
+@media (min-width: 768px) {
+  .ai-page__features-grid,
+  .ecommerce-page__features-grid,
+  .redesign-page__features-grid,
+  .tour-design-page__features-grid,
+  .wordpress-page__features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .ai-page__features-grid,
+  .ecommerce-page__features-grid,
+  .redesign-page__features-grid,
+  .tour-design-page__features-grid,
+  .wordpress-page__features-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/**
+ * Feature cards with glassmorphism
+ */
+.ai-page__feature-card,
+.ecommerce-page__feature-card,
+.redesign-page__feature-card,
+.tour-design-page__feature-card,
+.wordpress-page__feature-card {
+  background: var(--solution-card-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--solution-card-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  transition: all var(--transition-slow) var(--ease-out);
+}
+
+.ai-page__feature-card:hover,
+.ecommerce-page__feature-card:hover,
+.redesign-page__feature-card:hover,
+.tour-design-page__feature-card:hover,
+.wordpress-page__feature-card:hover {
+  background: color-mix(in srgb, var(--solution-accent) 8%, var(--solution-card-bg));
+  border-color: color-mix(in srgb, var(--solution-accent) 30%, transparent);
+  box-shadow: 0 0 20px color-mix(in srgb, var(--solution-accent) 15%, transparent);
+  transform: translateY(-4px);
+}
+
+/**
+ * Feature icons
+ */
+.ai-page__feature-icon,
+.ecommerce-page__feature-icon,
+.redesign-page__feature-icon,
+.tour-design-page__feature-icon,
+.wordpress-page__feature-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: color-mix(in srgb, var(--solution-accent) 15%, transparent);
+  color: var(--solution-accent);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-slow) var(--ease-out);
+}
+
+.ai-page__feature-card:hover .ai-page__feature-icon,
+.ecommerce-page__feature-card:hover .ecommerce-page__feature-icon,
+.redesign-page__feature-card:hover .redesign-page__feature-icon,
+.tour-design-page__feature-card:hover .tour-design-page__feature-icon,
+.wordpress-page__feature-card:hover .wordpress-page__feature-icon {
+  background: var(--solution-accent);
+  color: var(--color-white);
+  box-shadow: 0 0 16px color-mix(in srgb, var(--solution-accent) 30%, transparent);
+}
+
+/**
+ * Feature titles
+ */
+.ai-page__feature-title,
+.ecommerce-page__feature-title,
+.redesign-page__feature-title,
+.tour-design-page__feature-title,
+.wordpress-page__feature-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+  margin: 0;
+}
+
+/**
+ * Feature descriptions
+ */
+.ai-page__feature-desc,
+.ecommerce-page__feature-desc,
+.redesign-page__feature-desc,
+.tour-design-page__feature-desc,
+.wordpress-page__feature-desc {
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-relaxed);
+}
+
+/* ============================================
+   BENEFITS SECTIONS
+   ============================================ */
+
+/**
+ * Benefits sections with gradient backgrounds
+ */
+.ai-page__benefits,
+.ecommerce-page__benefits,
+.redesign-page__benefits,
+.tour-design-page__benefits,
+.wordpress-page__benefits {
+  padding: var(--spacing-24) 0;
+  background: linear-gradient(135deg, var(--solution-accent) 0%, var(--solution-accent-alt) 100%);
+  position: relative;
+  color: var(--color-white);
+  overflow: hidden;
+}
+
+.ai-page__benefits::before,
+.ecommerce-page__benefits::before,
+.redesign-page__benefits::before,
+.tour-design-page__benefits::before,
+.wordpress-page__benefits::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--overlay-white-soft) 1px, transparent 1px),
+    linear-gradient(90deg, var(--overlay-white-soft) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.15;
+  pointer-events: none;
+  animation: solution-grid-drift 20s linear infinite;
+}
+
+/**
+ * Benefits grids
+ */
+.ai-page__benefits-grid,
+.ecommerce-page__benefits-grid,
+.redesign-page__benefits-grid,
+.tour-design-page__benefits-grid,
+.wordpress-page__benefits-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-8);
+}
+
+@media (min-width: 768px) {
+  .ai-page__benefits-grid,
+  .ecommerce-page__benefits-grid,
+  .redesign-page__benefits-grid,
+  .tour-design-page__benefits-grid,
+  .wordpress-page__benefits-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .ai-page__benefits-grid,
+  .ecommerce-page__benefits-grid,
+  .redesign-page__benefits-grid,
+  .tour-design-page__benefits-grid,
+  .wordpress-page__benefits-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ============================================
+   PROCESS SECTIONS
+   ============================================ */
+
+/**
+ * Process sections
+ */
+.ai-page__process,
+.ecommerce-page__process,
+.redesign-page__process,
+.tour-design-page__process,
+.wordpress-page__process {
+  padding: var(--spacing-20) 0;
+  background-color: var(--card);
+}
+
+/**
+ * Process timelines
+ */
+.ai-page__process-timeline,
+.ecommerce-page__process-timeline,
+.redesign-page__process-timeline,
+.tour-design-page__process-timeline,
+.wordpress-page__process-timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-12);
+}
+
+/**
+ * Process step cards
+ */
+.ai-page__process-step,
+.ecommerce-page__process-step,
+.redesign-page__process-step,
+.tour-design-page__process-step,
+.wordpress-page__process-step {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-6);
+  padding: var(--spacing-8);
+  background: var(--background);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-slow) var(--ease-out);
+}
+
+@media (min-width: 768px) {
+  .ai-page__process-step,
+  .ecommerce-page__process-step,
+  .redesign-page__process-step,
+  .tour-design-page__process-step,
+  .wordpress-page__process-step {
+    grid-template-columns: 80px 1fr;
+  }
+}
+
+.ai-page__process-step:hover,
+.ecommerce-page__process-step:hover,
+.redesign-page__process-step:hover,
+.tour-design-page__process-step:hover,
+.wordpress-page__process-step:hover {
+  border-color: var(--solution-accent);
+  box-shadow: 0 0 20px color-mix(in srgb, var(--solution-accent) 12%, transparent);
+}
+
+/**
+ * Process step numbers
+ */
+.ai-page__process-number,
+.ecommerce-page__process-number,
+.redesign-page__process-number,
+.tour-design-page__process-number,
+.wordpress-page__process-number {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--solution-accent), var(--solution-accent-alt));
+  color: var(--color-white);
+  border-radius: var(--radius-full);
+  font-family: var(--font-primary);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-weight-black);
+  box-shadow: 0 0 16px color-mix(in srgb, var(--solution-accent) 25%, transparent);
+}
+
+/* ============================================
+   CTA SECTIONS
+   ============================================ */
+
+/**
+ * CTA sections with gradient backgrounds
+ */
+.ai-page__cta,
+.ecommerce-page__cta,
+.redesign-page__cta,
+.tour-design-page__cta,
+.wordpress-page__cta {
+  padding: var(--spacing-24) 0;
+  background: linear-gradient(135deg, var(--solution-accent) 0%, var(--solution-accent-alt) 100%);
+  position: relative;
+  color: var(--color-white);
+  text-align: center;
+  overflow: hidden;
+}
+
+.ai-page__cta::before,
+.ecommerce-page__cta::before,
+.redesign-page__cta::before,
+.tour-design-page__cta::before,
+.wordpress-page__cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, var(--overlay-white-soft) 1px, transparent 1px);
+  background-size: 32px 32px;
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+/**
+ * CTA content containers
+ */
+.ai-page__cta-content,
+.ecommerce-page__cta-content,
+.redesign-page__cta-content,
+.tour-design-page__cta-content,
+.wordpress-page__cta-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/**
+ * CTA titles
+ */
+.ai-page__cta-title,
+.ecommerce-page__cta-title,
+.redesign-page__cta-title,
+.tour-design-page__cta-title,
+.wordpress-page__cta-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-4xl);
+  font-weight: var(--font-weight-black);
+  color: var(--color-white);
+  margin-bottom: var(--spacing-6);
+}
+
+/**
+ * CTA button groups
+ */
+.ai-page__cta-buttons,
+.ecommerce-page__cta-buttons,
+.redesign-page__cta-buttons,
+.tour-design-page__cta-buttons,
+.wordpress-page__cta-buttons {
+  display: flex;
+  gap: var(--spacing-4);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .ai-page__hero-grid,
+  .ecommerce-page__hero-grid,
+  .redesign-page__hero-grid,
+  .tour-design-page__hero-grid,
+  .wordpress-page__hero-grid,
+  .ai-page__benefits::before,
+  .ecommerce-page__benefits::before,
+  .redesign-page__benefits::before,
+  .tour-design-page__benefits::before,
+  .wordpress-page__benefits::before {
+    animation: none;
+  }
+
+  .ai-page__orb,
+  .ecommerce-page__orb,
+  .redesign-page__orb,
+  .tour-design-page__orb,
+  .wordpress-page__orb {
+    animation: none;
+  }
+
+  .ai-page__feature-card:hover,
+  .ecommerce-page__feature-card:hover,
+  .redesign-page__feature-card:hover,
+  .tour-design-page__feature-card:hover,
+  .wordpress-page__feature-card:hover {
+    transform: none;
+  }
+}

@@ -26,7 +26,7 @@ import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { Buttons, Button } from '../blocks/design/Buttons';
 import { Breadcrumbs } from '../common/Breadcrumbs';
-import type { LucideIcon } from 'lucide-react';
+import type { UniversalIcon } from '../../utils/icon-map';
 
 
 // ============================================
@@ -34,7 +34,7 @@ import type { LucideIcon } from 'lucide-react';
 // ============================================
 
 export interface HeroBadge {
-  icon?: LucideIcon;
+  icon?: UniversalIcon;
   text: string;
 }
 
@@ -46,7 +46,7 @@ export interface HeroButton {
 }
 
 export interface HeroStat {
-  icon?: LucideIcon;
+  icon?: UniversalIcon;
   value: string;
   label: string;
 }
@@ -87,7 +87,7 @@ export interface HeroProps {
   stats?: HeroStat[];
 
   // Hero Icon (Large, right side)
-  heroIcon?: LucideIcon;
+  heroIcon?: UniversalIcon;
   
   // Layout
   variant?: HeroVariant;

@@ -22,11 +22,11 @@
  * ```
  */
 
-import { LucideIcon } from 'lucide-react';
+import type { UniversalIcon } from '../../utils/icon-map';
 
 export interface IconFeature {
   /** Icon component */
-  icon: LucideIcon;
+  icon: UniversalIcon;
   /** Feature title */
   title: string;
   /** Feature description */

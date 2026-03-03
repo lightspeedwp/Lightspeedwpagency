@@ -12,7 +12,8 @@
  * @see /src/styles/patterns/included-solutions.css
  */
 
-import { LucideIcon, Package, ShoppingCart, Plane, Globe, FileText, Newspaper } from 'lucide-react';
+import { Package, ShoppingCart, Plane, Globe, FileText, Newspaper } from 'lucide-react';
+import type { UniversalIcon } from '../utils/icon-map';
 
 /**
  * Solution Reference Interface
@@ -24,7 +25,7 @@ export interface SolutionReference {
   slug: string;
   title: string;
   tagline: string;
-  icon: LucideIcon;
+  icon: UniversalIcon;
   featured?: boolean;
   pricing?: {
     from: string;

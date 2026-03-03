@@ -8,13 +8,14 @@
  * @see {@link /guidelines/patterns/WordPressServices.md}
  */
 
-import { LucideIcon, ArrowRight, CheckCircle } from 'lucide-react';
+import { ArrowRight, CheckCircle } from 'lucide-react';
+import type { UniversalIcon } from '../../utils/icon-map';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 
 
 export interface WordPressServiceItem {
-  icon: LucideIcon;
+  icon: UniversalIcon;
   title: string;
   description: string;
   features: string[];

@@ -28,6 +28,7 @@ import { Section } from '@/app/components/common/Section';
 import { Container } from '@/app/components/common/Container';
 import { FunkyCTA } from '@/app/components/patterns/FunkyCTA';
 import { FAQSection } from '@/app/components/patterns/FAQSection';
+import { FeatureList } from '@/app/components/patterns/FeatureList';
 import { Buttons } from '@/app/components/blocks/design/Buttons';
 import { Heading } from '@/app/components/common/Heading';
 import { Paragraph } from '@/app/components/blocks/text/Paragraph';
@@ -118,25 +119,12 @@ export function WetuImporterTemplate() {
           </ScrollReveal>
 
           <div className="wetu-importer__features-grid">
-            {wetuImporterFeatures.map((feature, index) => {
-              const Icon = feature.icon;
-              return (
-                <ScrollReveal key={index} animation="fade-up" delay={index * 80}>
-                  <div className="wetu-importer__feature-card">
-                    <div className="wetu-importer__feature-glow" />
-                    <div className="wetu-importer__feature-icon">
-                      <Icon />
-                    </div>
-                    <Heading level={3} className="wetu-importer__feature-title">
-                      {feature.title}
-                    </Heading>
-                    <Paragraph className="wetu-importer__feature-description">
-                      {feature.description}
-                    </Paragraph>
-                  </div>
-                </ScrollReveal>
-              );
-            })}
+            <FeatureList
+              items={wetuImporterFeatures}
+              columns={3}
+              variant="glow"
+              iconSize="md"
+            />
           </div>
         </Container>
       </section>

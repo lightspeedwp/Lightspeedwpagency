@@ -44,7 +44,7 @@ import {
   Shield,
 } from 'lucide-react';
 
-import { performanceServiceDetailed } from '../../data/services-detailed';
+import { performanceServiceDetailed } from '../../data/services';
 
 export function PerformanceServiceTemplate() {
   const data = performanceServiceDetailed;

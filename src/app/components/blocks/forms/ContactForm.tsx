@@ -16,7 +16,7 @@
  */
 
 import { useState, FormEvent } from 'react';
-import { InputField, TextareaField } from './FormField';
+import { FormField, TextAreaField } from './FormField';
 
 export interface ContactFormData {
   name: string;
@@ -128,8 +128,8 @@ export function ContactForm({
       className={`wp-block-contact-form ${className}`}
     >
       {/* Name Field */}
-      <InputField
-        id="name"
+      <FormField
+        name="name"
         label="Name"
         type="text"
         value={formData.name}
@@ -141,8 +141,8 @@ export function ContactForm({
       />
 
       {/* Email Field */}
-      <InputField
-        id="email"
+      <FormField
+        name="email"
         label="Email"
         type="email"
         value={formData.email}
@@ -151,27 +151,25 @@ export function ContactForm({
         required
         disabled={isSubmitting}
         placeholder="john@example.com"
-        prefixIcon={<span>✉️</span>}
       />
 
       {/* Phone Field */}
       {showPhone && (
-        <InputField
-          id="phone"
+        <FormField
+          name="phone"
           label="Phone"
           type="tel"
-          value={formData.phone}
+          value={formData.phone || ''}
           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
           disabled={isSubmitting}
           placeholder="+1 (555) 123-4567"
-          prefixIcon={<span>📞</span>}
         />
       )}
 
       {/* Subject Field */}
       {showSubject && (
-        <InputField
-          id="subject"
+        <FormField
+          name="subject"
           label="Subject"
           type="text"
           value={formData.subject}
@@ -181,13 +179,13 @@ export function ContactForm({
           disabled={isSubmitting}
           placeholder="How can we help?"
           maxLength={100}
-          showCounter
+          showCharCount
         />
       )}
 
       {/* Message Field */}
-      <TextareaField
-        id="message"
+      <TextAreaField
+        name="message"
         label="Message"
         value={formData.message}
         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
@@ -197,7 +195,7 @@ export function ContactForm({
         placeholder="Tell us more about your project..."
         rows={6}
         maxLength={500}
-        showCounter
+        showCharCount
       />
 
       {/* Success/Error Messages */}

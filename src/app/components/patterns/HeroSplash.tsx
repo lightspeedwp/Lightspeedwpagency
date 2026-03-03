@@ -21,7 +21,8 @@ import { Container } from '../common/Container';
 import { Button } from '../blocks/design/Buttons';
 import { useHeroParallax } from '../../hooks/useHeroParallax';
 import { ScrollDownArrow } from '../common/ScrollDownArrow';
-import { Sparkles, LucideIcon } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
+import type { UniversalIcon } from '../../utils/icon-map';
 
 export interface HeroSplashButton {
   text: string;
@@ -30,7 +31,7 @@ export interface HeroSplashButton {
 
 export interface HeroSplashProps {
   badge: string;
-  badgeIcon?: LucideIcon;
+  badgeIcon?: UniversalIcon;
   titlePrefix?: string;
   titleGradient: string;
   description: string;

@@ -18,6 +18,8 @@ import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { ScrollDownArrow } from '../common/ScrollDownArrow';
+import { StatsGrid } from '../patterns/StatsGrid';
+import { FeatureList } from '../patterns/FeatureList';
 import {
   ShoppingBag,
   CreditCard,
@@ -28,7 +30,6 @@ import {
   Zap,
   ArrowRight,
 } from 'lucide-react';
-
 
 import { woocommerceSolutionDetailed } from '../../data/solutions-detailed';
 
@@ -105,15 +106,15 @@ export function WooCommerceSolutionTemplate() {
       <section className="ecommerce-page__stats">
         <Container>
           <ScrollReveal animation="fade-up">
-            <div className="ecommerce-page__stats-grid">
-              {data.results.map((result, index) => (
-                <div key={index} className="ecommerce-page__stat-item">
-                  <span className="ecommerce-page__stat-number">{result.stat}</span>
-                  <span className="ecommerce-page__stat-label">{result.label}</span>
-                  <p className="ecommerce-page__stat-desc">{result.description}</p>
-                </div>
-              ))}
-            </div>
+            <StatsGrid
+              stats={data.results.map((result) => ({
+                number: result.stat,
+                label: result.label,
+                description: result.description
+              }))}
+              columns={4}
+              variant="cards"
+            />
           </ScrollReveal>
         </Container>
       </section>

@@ -10,17 +10,7 @@
  * WordPress: Maps to templates/single.html (single post)
  */
 
-import { 
-  Calendar, 
-  User, 
-  Clock,
-  Tag,
-  Share2,
-  Bookmark,
-  ThumbsUp,
-  MessageCircle
-} from 'lucide-react';
-import type { LucideIcon } from 'lucide-react';
+import type { UniversalIcon } from '../utils/icon-map';
 import { blogPosts, blogAuthors, blogCategories } from './blog-posts';
 
 /**
@@ -196,7 +186,7 @@ export const relatedBlogPosts = blogPosts.slice(1, 4); // Get 3 related posts
  * Post Actions/Share
  */
 export interface PostAction {
-  icon: LucideIcon;
+  icon: UniversalIcon;
   label: string;
   action: string;
   count?: number;
@@ -204,18 +194,18 @@ export interface PostAction {
 
 export const postActions: PostAction[] = [
   {
-    icon: ThumbsUp,
+    icon: 'ThumbsUp',
     label: 'Like',
     action: 'like',
     count: 127
   },
   {
-    icon: Bookmark,
+    icon: 'Bookmark',
     label: 'Bookmark',
     action: 'bookmark'
   },
   {
-    icon: Share2,
+    icon: 'Share2',
     label: 'Share',
     action: 'share'
   }

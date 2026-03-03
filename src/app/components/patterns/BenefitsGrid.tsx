@@ -12,15 +12,16 @@
 
 import { Section } from '../common/Section';
 import { Container } from '../common/Container';
-import { ArrowRight, LucideIcon } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
+import type { UniversalIcon } from '../../utils/icon-map';
 
 
 /**
  * Benefit Item Interface
  */
 export interface Benefit {
-  /** Icon component from lucide-react */
-  icon: LucideIcon;
+  /** Icon component (Lucide or Phosphor) */
+  icon: UniversalIcon;
   /** Benefit title */
   title: string;
   /** Benefit description */

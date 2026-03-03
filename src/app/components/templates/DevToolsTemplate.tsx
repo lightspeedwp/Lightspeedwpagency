@@ -185,6 +185,15 @@ const devTools: DevTool[] = [
     category: 'Design',
   },
   {
+    id: 'phosphor-icon-reference',
+    title: 'Phosphor Icon Reference',
+    description: 'Lucide-to-Phosphor migration map with 6 weight variants, search, and copy-to-clipboard.',
+    icon: <Target size={32} />,
+    path: '/dev-tools/phosphor-icon-reference',
+    category: 'Design',
+    badge: 'NEW',
+  },
+  {
     id: 'style-guide',
     title: 'Style Guide',
     description: 'Complete visual style guide with typography, colors, and spacing tokens.',

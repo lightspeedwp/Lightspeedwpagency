@@ -1,0 +1,183 @@
+/**
+ * Content Services Landing Page — Phase 3.3 Optimized
+ * 
+ * BEM Methodology: .content-landing
+ * Route: /services/content/
+ * Theme: "Content Storytelling" (Orange/Red narrative-driven content)
+ * 
+ * Imports service-base.css for all shared structure (hero, sections, process, CTA).
+ * Contains ONLY unique content-specific decorative elements.
+ * 
+ * Design System Compliance:
+ * - All colors use CSS variables from theme-light.css/theme-dark.css
+ * - All spacing uses CSS variables from theme-base.css
+ * - All typography uses CSS variables from theme-base.css
+ * - Font families: var(--font-primary) and var(--font-secondary) only
+ */
+
+/* ============================================
+   IMPORT SERVICE BASE (Phase 3.2)
+   ============================================ */
+
+@import './service-base.css';
+
+@layer components {
+
+  /* ============================================
+     CONTENT STORYTELLING THEME VARIABLES
+     ============================================ */
+
+  .content-landing {
+    --service-primary: var(--category-orange);    /* Content Creation */
+    --service-secondary: var(--category-red);     /* Content Power */
+    --service-accent: var(--accent);              /* Narrative Flow */
+  }
+
+  /* ============================================
+     CONTENT-SPECIFIC HERO DECORATIONS
+     ============================================ */
+
+  .content-landing__hero::before {
+    content: '';
+    position: absolute;
+    top: -30%;
+    left: -30%;
+    width: 160%;
+    height: 160%;
+    background:
+      radial-gradient(circle at 25% 50%, var(--service-secondary) 0%, transparent 45%),
+      radial-gradient(circle at 75% 50%, var(--service-primary) 0%, transparent 45%);
+    opacity: 0.04;
+    pointer-events: none;
+  }
+
+  .content-landing__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    background: var(--service-primary);
+    color: var(--primary-foreground);
+    font-family: var(--font-secondary);
+    font-size: var(--text-xs);
+    font-weight: var(--font-weight-semibold);
+    padding: var(--spacing-1) var(--spacing-4);
+    border-radius: var(--radius-full);
+    margin-bottom: var(--spacing-6);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .content-landing__hero-highlight {
+    background: linear-gradient(135deg, var(--service-primary), var(--service-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ============================================
+     CONTENT SERVICE CARDS (Enhanced with Features List)
+     ============================================ */
+
+  .content-landing__service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--service-primary), var(--service-secondary));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .content-landing__service-card:hover::before {
+    opacity: 1;
+  }
+
+  .content-landing__service-icon {
+    width: 56px;
+    height: 56px;
+    background: var(--service-primary);
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--spacing-6);
+  }
+
+  .content-landing__service-icon-svg {
+    width: 28px;
+    height: 28px;
+    color: var(--primary-foreground);
+  }
+
+  .content-landing__service-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--spacing-6) 0;
+  }
+
+  .content-landing__service-feature {
+    font-family: var(--font-secondary);
+    font-size: var(--text-sm);
+    color: var(--muted-foreground);
+    padding: var(--spacing-1) 0;
+    padding-left: var(--spacing-5);
+    position: relative;
+  }
+
+  .content-landing__service-feature::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--service-primary);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--text-sm);
+  }
+
+  .content-landing__service-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    font-family: var(--font-primary);
+    font-size: var(--text-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--service-primary);
+    text-decoration: none;
+    transition: gap 0.2s ease;
+    margin-top: auto;
+  }
+
+  .content-landing__service-link:hover {
+    gap: var(--spacing-3);
+  }
+
+  /* ============================================
+     CONTENT PROCESS STEPS (Numbered Workflow)
+     ============================================ */
+
+  .content-landing__process-number {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    background: var(--service-primary);
+    color: var(--primary-foreground);
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-primary);
+    font-size: var(--text-h4);
+    font-weight: var(--font-weight-bold);
+  }
+
+  /* ============================================
+     REDUCED MOTION
+     ============================================ */
+
+  @media (prefers-reduced-motion: reduce) {
+    .content-landing__service-link:hover {
+      gap: var(--spacing-2);
+    }
+  }
+}

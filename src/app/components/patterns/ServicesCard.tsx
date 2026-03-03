@@ -28,7 +28,7 @@
  * <ServicesCard service={wordpressServices[0]} />
  */
 
-import { ArrowRight, LucideIcon } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router';
 import { getPageUrl } from '../../data/pages';
 import type { Service } from '../../data/services';

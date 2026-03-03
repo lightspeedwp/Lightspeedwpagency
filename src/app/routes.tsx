@@ -237,6 +237,7 @@ const DesignBlocksShowcase = lazy(() => import('./components/templates/DesignBlo
 const ButtonShowcase = lazy(() => import('./components/templates/ButtonShowcase').then(m => ({ default: m.ButtonShowcase })));
 const HeaderFooterComparison = lazy(() => import('./components/templates/HeaderFooterComparison').then(m => ({ default: m.HeaderFooterComparison })));
 const IconLibrary = lazy(() => import('./components/templates/IconLibrary').then(m => ({ default: m.IconLibrary })));
+const PhosphorIconReference = lazy(() => import('./components/templates/PhosphorIconReference').then(m => ({ default: m.PhosphorIconReference })));
 const LivePreview = lazy(() => import('./components/templates/LivePreview').then(m => ({ default: m.LivePreview })));
 const SectionPresetsShowcase = lazy(() => import('./components/templates/SectionPresetsShowcase').then(m => ({ default: m.SectionPresetsShowcase })));
 const ThemeBlocksShowcase = lazy(() => import('./components/templates/ThemeBlocksShowcase').then(m => ({ default: m.ThemeBlocksShowcase })));
@@ -833,6 +834,14 @@ function IconLibraryRoute() {
   );
 }
 
+function PhosphorIconReferenceRoute() {
+  return (
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <PhosphorIconReference />
+    </Suspense>
+  );
+}
+
 function LivePreviewRoute() {
   return (
     <Suspense fallback={<RouteLoadingFallback />}>
@@ -1127,6 +1136,7 @@ const routes: RouteObject[] = [
       { path: 'dev-tools/button-showcase', Component: ButtonShowcaseRoute },
       { path: 'dev-tools/header-footer-comparison', Component: HeaderFooterComparisonRoute },
       { path: 'dev-tools/icon-library', Component: IconLibraryRoute },
+      { path: 'dev-tools/phosphor-icon-reference', Component: PhosphorIconReferenceRoute },
       { path: 'dev-tools/live-preview', Component: LivePreviewRoute },
       { path: 'dev-tools/section-presets-showcase', Component: SectionPresetsShowcaseRoute },
       { path: 'dev-tools/theme-blocks-showcase', Component: ThemeBlocksShowcaseRoute },

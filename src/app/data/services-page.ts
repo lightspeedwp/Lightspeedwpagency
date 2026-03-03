@@ -10,7 +10,8 @@
  * WordPress: Maps to page-services.html template
  */
 
-import { Users, TrendingUp, Award, Heart, LucideIcon } from 'lucide-react';
+import { Users, TrendingUp, Award, Heart } from 'lucide-react';
+import type { UniversalIcon } from '../utils/icon-map';
 
 /**
  * Why Choose LightSpeed Section
@@ -18,7 +19,7 @@ import { Users, TrendingUp, Award, Heart, LucideIcon } from 'lucide-react';
  * Real stats and benefits from LightSpeed WP Agency
  */
 export interface Benefit {
-  icon: LucideIcon;
+  icon: UniversalIcon;
   title: string;
   description: string;
 }

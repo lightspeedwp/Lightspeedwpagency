@@ -11,7 +11,7 @@
  * @see /src/app/components/parts/SiteHeader.tsx
  */
 
-import type { LucideIcon } from 'lucide-react';
+import type { UniversalIcon } from '../utils/icon-map';
 import {
   Search,
   PenTool,
@@ -39,7 +39,7 @@ export interface JourneyPhase {
   /** Short punchy verb — the phase name */
   name: string;
   /** Icon for the phase */
-  icon: LucideIcon;
+  icon: UniversalIcon;
   /** One-liner shown under the phase name */
   tagline: string;
   /** Neon accent colour for this phase (CSS variable) */

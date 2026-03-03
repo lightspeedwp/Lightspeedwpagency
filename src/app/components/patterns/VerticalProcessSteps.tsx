@@ -9,14 +9,13 @@
  * @see {@link /guidelines/patterns/VerticalProcessSteps.md}
  */
 
-import { LucideIcon } from 'lucide-react';
-
+import type { UniversalIcon } from '../../utils/icon-map';
 
 export interface VerticalProcessStep {
   /** Step number */
   step: number;
   /** Step icon */
-  icon: LucideIcon;
+  icon: UniversalIcon;
   /** Step title */
   title: string;
   /** Step description */

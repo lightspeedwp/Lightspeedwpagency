@@ -17,7 +17,7 @@
  * @see /src/styles/patterns/proof-strip.css
  */
 
-import type { LucideIcon } from 'lucide-react';
+import type { UniversalIcon } from '../../utils/icon-map';
 import { Users, Star, Calendar, Award } from 'lucide-react';
 
 /* ============================================
@@ -25,8 +25,8 @@ import { Users, Star, Calendar, Award } from 'lucide-react';
    ============================================ */
 
 export interface ProofStripStat {
-  /** Icon component from lucide-react */
-  icon: LucideIcon;
+  /** Icon component (Lucide or Phosphor) */
+  icon: UniversalIcon;
   /** The numeric value to display (e.g. "500+", "4.9/5") */
   value: string;
   /** Description label (e.g. "Projects Delivered") */

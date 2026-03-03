@@ -1,163 +1,236 @@
 # Icon System Overview
 
-**Version:** 1.0  
-**Last Updated:** December 25, 2024
+**Version:** 2.0
+**Last Updated:** March 3, 2026
 
 ---
 
 ## Overview
 
-The LSX Design System uses **lucide-react** for all icons. Icons must be verified to exist before importing.
+The LSX Design System is migrating from **lucide-react** to **@phosphor-icons/react**. During the transition period, both libraries operate in parallel. **All new icon usage should prefer Phosphor.**
 
-**Critical Rule:** ALWAYS verify icon exists using bash tool before importing.
+**Full iconography guideline:** [design-tokens/iconography.md](./design-tokens/iconography.md)
 
 ---
 
-## 🎨 Icon Library
+## Icon Libraries
 
-**Package:** `lucide-react`  
-**License:** ISC (Free to use)  
-**Icons Available:** 1000+ icons  
+### Phosphor Icons (PRIMARY — New Standard)
+
+**Package:** `@phosphor-icons/react`
+**Icons Available:** 1,200+ icons, 6 weight variants each
+**Documentation:** https://phosphoricons.com
+**License:** MIT (Free to use)
+
+```tsx
+import { ArrowRight, Calendar, Check } from '@phosphor-icons/react';
+
+<ArrowRight size={24} weight="bold" />
+<Calendar size={20} weight="regular" />
+<Check size={20} weight="fill" />
+```
+
+**Key advantage:** 6 weight variants per icon (thin, light, regular, bold, fill, duotone).
+
+### Lucide React (LEGACY — Being Replaced)
+
+**Package:** `lucide-react`
+**Icons Available:** 1,400+ icons (stroke-based only)
 **Documentation:** https://lucide.dev
+**Status:** Active in 262 files, being phased out
+
+```tsx
+import { ArrowRight, Calendar, Check } from 'lucide-react';
+
+<ArrowRight size={24} />
+<Calendar size={20} />
+```
 
 ---
 
-## ✅ Verification Process (REQUIRED)
+## Phosphor Weight System (6 Variants)
 
-### Before Using ANY Icon
+| Weight | Visual | Use Case |
+|---|---|---|
+| **thin** | Hairline strokes | Large decorative icons (32px+) |
+| **light** | Delicate strokes | Metadata companions, secondary content |
+| **regular** | Standard (DEFAULT) | UI icons, navigation, default usage |
+| **bold** | Heavy strokes | CTAs, emphasis, active states |
+| **fill** | Solid shapes | Active/selected states, social media, status |
+| **duotone** | Two-tone opacity | Heroes, feature cards, marketing ("Funky") |
 
-**Step 1: Search for icon in lucide-react**
+### Default Weight by Context
+
+| Context | Weight |
+|---|---|
+| Navigation (arrows, chevrons) | `regular` |
+| CTA buttons | `bold` |
+| Status indicators (check, alert) | `fill` |
+| Content metadata (calendar, clock) | `regular` |
+| Hero section decorative | `duotone` |
+| Feature card icons | `duotone` |
+| Social media | `fill` |
+| Active/selected toggle | `fill` |
+| Inactive/unselected toggle | `regular` |
+
+---
+
+## Verification Process (REQUIRED)
+
+### Before Using ANY Phosphor Icon
+
+**Step 1: Check the DevTools reference page**
+Navigate to `/dev-tools/phosphor-icon-reference` for the complete migration map.
+
+**Step 2: Search for the icon**
+```bash
+grep -i "ArrowRight" @phosphor-icons/react/dist/index.d.ts
+```
+
+**Step 3: Import with weight**
+```tsx
+import { ArrowRight } from '@phosphor-icons/react';
+<ArrowRight size={24} weight="bold" />
+```
+
+### Before Using ANY Lucide Icon (Legacy)
+
 ```bash
 grep -i "Search" lucide-react/dist/esm/icons/index.js
 ```
 
-**Step 2: Verify exact export name**
-```bash
-grep "Engine" lucide-react/dist/esm/icons/index.js
-```
+---
 
-**Step 3: Import verified icon**
-```tsx
-import { Search, ChevronRight, Menu } from 'lucide-react';
-```
+## Icon Size Design Tokens
+
+Use CSS variables from `theme-base.css`:
+
+| Token | Value | Usage |
+|---|---|---|
+| `--icon-size-xs` | 14px | Inline badges, micro indicators |
+| `--icon-size-sm` | 16px | Metadata, small UI |
+| `--icon-size-md` | 20px | Standard UI icons |
+| `--icon-size-base` | 24px | Default size |
+| `--icon-size-lg` | 28px | Feature cards, emphasis |
+| `--icon-size-xl` | 32px | Hero decorative, section icons |
+| `--icon-size-2xl` | 40px | Large decorative |
+| `--icon-size-3xl` | 48px | Hero splash icons |
 
 ---
 
-## 🎯 Common Icons by Category
+## Common Icons by Category
 
 ### Navigation Icons
 ```tsx
-import { 
-  Menu,           // Hamburger menu
-  X,              // Close icon
-  ChevronDown,    // Dropdown indicator
-  ChevronRight,   // Next/Forward
-  ChevronLeft,    // Previous/Back
-  ChevronUp,      // Collapse/Up
-  ArrowRight,     // Call-to-action arrows
-  ArrowLeft       // Back navigation
-} from 'lucide-react';
+import {
+  ArrowRight,        // CTA arrows (weight: bold)
+  ArrowLeft,         // Back navigation
+  CaretRight,        // Next/forward (was: ChevronRight)
+  CaretLeft,         // Previous/back (was: ChevronLeft)
+  CaretDown,         // Dropdown (was: ChevronDown)
+  CaretUp,           // Collapse (was: ChevronUp)
+  ArrowSquareOut,    // External link (was: ExternalLink)
+  House,             // Home (was: Home)
+  List as MenuIcon,  // Hamburger menu (was: Menu)
+} from '@phosphor-icons/react';
 ```
 
-### UI Icons
+### Feedback & Status Icons
 ```tsx
 import {
-  Search,         // Search functionality
-  Filter,         // Filtering
-  Grid,           // Grid view
-  List,           // List view
-  Settings,       // Settings/Configuration
-  MoreVertical,   // More options (vertical)
-  MoreHorizontal  // More options (horizontal)
-} from 'lucide-react';
+  Check,             // Success/complete (weight: bold)
+  CheckCircle,       // Success filled (weight: fill)
+  Warning,           // Alert triangle (was: AlertTriangle)
+  WarningCircle,     // Alert circle (was: AlertCircle)
+  X,                 // Close/cancel
+  XCircle,           // Error filled
+  Info,              // Information
+  Question,          // Help (was: HelpCircle)
+} from '@phosphor-icons/react';
 ```
 
-### Social Icons
+### Content & Meta Icons
 ```tsx
 import {
-  Github,         // GitHub
-  Twitter,        // Twitter/X
-  Linkedin,       // LinkedIn
-  Facebook,       // Facebook
-  Instagram,      // Instagram
-  Youtube,        // YouTube
-  Mail            // Email
-} from 'lucide-react';
+  Calendar,          // Date metadata (weight: regular)
+  Clock,             // Time/duration
+  Users,             // Team/people
+  User,              // Single person
+  FileText,          // Document
+  Tag,               // Category/tag
+  BookOpen,          // Reading (weight: duotone)
+  Envelope,          // Email (was: Mail)
+  MagnifyingGlass,   // Search (was: Search)
+} from '@phosphor-icons/react';
 ```
 
-### WordPress/Development Icons
+### Decorative & Brand Icons
 ```tsx
 import {
-  Code,           // Development
-  Layout,         // Page layout
-  Palette,        // Design/Theming
-  Database,       // Database
-  Server,         // Hosting/Server
-  Globe,          // Website/Global
-  Zap,            // Performance
-  Shield,         // Security
-  Lock            // Privacy/Security
-} from 'lucide-react';
+  Lightning,         // Performance (was: Zap, weight: duotone)
+  Star,              // Rating (weight: fill for active)
+  Trophy,            // Awards (was: Award, weight: duotone)
+  Sparkle,           // Magic (was: Sparkles, weight: duotone)
+  Rocket,            // Launch (weight: duotone)
+  Brain,             // AI/intelligence (weight: duotone)
+} from '@phosphor-icons/react';
 ```
 
-### Action Icons
+### Social Media Icons
 ```tsx
 import {
-  Plus,           // Add
-  Minus,          // Remove
-  Edit,           // Edit
-  Trash2,         // Delete
-  Download,       // Download
-  Upload,         // Upload
-  Copy,           // Copy
-  ExternalLink,   // External link
-  Send            // Send/Submit
-} from 'lucide-react';
+  TwitterLogo,       // Twitter/X (weight: fill)
+  LinkedinLogo,      // LinkedIn (weight: fill)
+  FacebookLogo,      // Facebook (weight: fill)
+  InstagramLogo,     // Instagram (weight: fill)
+  YoutubeLogo,       // YouTube (weight: fill)
+  Globe,             // Website/global
+} from '@phosphor-icons/react';
 ```
 
-### Status Icons
+### Data & Analytics Icons
 ```tsx
 import {
-  Check,          // Success/Complete
-  X,              // Error/Cancel
-  AlertCircle,    // Warning
-  Info,           // Information
-  HelpCircle,     // Help/Question
-  Clock,          // Time/Pending
-  CheckCircle     // Success (filled)
-} from 'lucide-react';
+  TrendUp,           // Growth (was: TrendingUp)
+  ChartBar,          // Bar charts (was: BarChart3)
+  ChartLine,         // Line charts (was: LineChart)
+  ChartPie,          // Pie charts (was: PieChart)
+  CurrencyDollar,    // Money (was: DollarSign)
+  Database,          // Database
+} from '@phosphor-icons/react';
 ```
 
 ---
 
-## 🎨 Icon Usage Patterns
+## Icon Usage Patterns
 
-### Basic Icon
+### Phosphor Icon with Weight
 ```tsx
-import { Search } from 'lucide-react';
+import { ArrowRight } from '@phosphor-icons/react';
 
-<Search size={20} color="var(--foreground)" />
+// CTA button icon (bold weight for emphasis)
+<ArrowRight size={20} weight="bold" />
+
+// Hero decorative icon (duotone for visual depth)
+<Lightning size={48} weight="duotone" />
+
+// Status indicator (fill for solid visual)
+<CheckCircle size={20} weight="fill" style={{ color: 'var(--success)' }} />
 ```
 
-### Icon with Custom Size
+### Icon with CSS Variable Color
 ```tsx
-<Search size={24} />     // 24×24px
-<Search size={32} />     // 32×32px
-<Search size={16} />     // 16×16px
+<MagnifyingGlass size={20} weight="regular" style={{ color: 'var(--muted-foreground)' }} />
+<Warning size={20} weight="fill" style={{ color: 'var(--destructive)' }} />
+<Star size={20} weight="fill" style={{ color: 'var(--warning)' }} />
 ```
 
-### Icon with Custom Color
+### Duotone Icons (Unique to Phosphor)
 ```tsx
-<Search color="var(--primary)" />
-<Check color="var(--accent)" />
-<AlertCircle color="var(--destructive)" />
-```
-
-### Icon with Stroke Width
-```tsx
-<Search strokeWidth={2} />     // Standard
-<Search strokeWidth={1.5} />   // Thinner
-<Search strokeWidth={2.5} />   // Bolder
+// Duotone renders two-tone: primary stroke + semi-transparent fill
+<Shield size={32} weight="duotone" style={{ color: 'var(--primary)' }} />
+<Rocket size={40} weight="duotone" style={{ color: 'var(--accent)' }} />
+<BookOpen size={24} weight="duotone" style={{ color: 'var(--foreground)' }} />
 ```
 
 ### Icon in Button
@@ -165,130 +238,109 @@ import { Search } from 'lucide-react';
 <button style={{
   display: 'flex',
   alignItems: 'center',
-  gap: '8px'
+  gap: 'var(--spacing-2)'
 }}>
-  <Search size={18} />
+  <MagnifyingGlass size={18} weight="regular" aria-hidden="true" />
   Search
 </button>
 ```
 
-### Icon-Only Button
+### Icon-Only Button (Accessible)
 ```tsx
-<button 
-  aria-label="Search"
+<button
+  aria-label="Close dialog"
   style={{
-    padding: '12px',
+    padding: 'var(--spacing-3)',
     borderRadius: 'var(--radius)',
     border: 'none',
     backgroundColor: 'var(--primary)',
     color: 'var(--primary-foreground)',
-    cursor: 'pointer'
+    cursor: 'pointer',
+    minWidth: '44px',
+    minHeight: '44px'
   }}
 >
-  <Search size={20} />
+  <X size={20} weight="bold" aria-hidden="true" />
 </button>
 ```
 
 ---
 
-## 📏 Icon Size Guidelines
-
-| Size | Usage | Example |
-|------|-------|---------|
-| 16px | Small UI, inline text | Inline link icons |
-| 18px | Buttons, navigation | Button icons |
-| 20px | Default UI icons | Standard icons |
-| 24px | Section icons | Feature icons |
-| 32px | Large feature icons | Hero section icons |
-| 48px+ | Hero icons | Large decorative icons |
-
----
-
-## ♿ Accessibility
+## Accessibility
 
 ### ARIA Labels for Icon-Only Buttons
 ```tsx
 <button aria-label="Search">
-  <Search size={20} />
-</button>
-
-<button aria-label="Close menu">
-  <X size={20} />
+  <MagnifyingGlass size={20} weight="regular" aria-hidden="true" />
 </button>
 ```
 
 ### Decorative Icons (Hidden from Screen Readers)
 ```tsx
-<div aria-hidden="true">
-  <Zap size={24} color="var(--primary)" />
-</div>
+<span aria-hidden="true">
+  <Lightning size={24} weight="duotone" style={{ color: 'var(--primary)' }} />
+</span>
 <span>Fast Performance</span>
 ```
 
-### Icon with Text Label
-```tsx
-<button>
-  <Search size={18} aria-hidden="true" />
-  <span>Search</span>
-</button>
-```
+### Weight Accessibility Constraints
+
+| Weight | Minimum Size | Notes |
+|---|---|---|
+| thin | 24px | Hairline strokes need extra contrast |
+| light | 20px | Suitable for most contexts |
+| regular | 16px | Default, safest option |
+| bold | 16px | High visibility |
+| fill | 16px | Highest visibility |
+| duotone | 20px | Primary layer must meet 3:1 contrast |
 
 ---
 
-## 🎯 Icon Naming Conventions
+## Naming Differences (Lucide -> Phosphor)
 
-### Never Assume Icon Names
+| Lucide | Phosphor | Notes |
+|---|---|---|
+| `ChevronRight` | `CaretRight` | Chevron -> Caret |
+| `ExternalLink` | `ArrowSquareOut` | Different metaphor |
+| `AlertTriangle` | `Warning` | Simplified name |
+| `Zap` | `Lightning` | Different metaphor |
+| `Mail` | `Envelope` | Different metaphor |
+| `Search` | `MagnifyingGlass` | Descriptive name |
+| `EyeOff` | `EyeSlash` | Slash variant |
+| `RefreshCw` | `ArrowsClockwise` | Descriptive name |
+| `Share2` | `ShareNetwork` | Descriptive name |
+| `TrendingUp` | `TrendUp` | Shortened |
+| `Home` | `House` | Different metaphor |
+| `Settings` | `GearSix` | Different metaphor |
+| `Send` | `PaperPlaneTilt` | Different metaphor |
+| `Bot` | `Robot` | Different name |
+| `Award` | `Trophy` | Different metaphor |
 
-❌ **Wrong (Assumed):**
-```tsx
-import { Engine } from 'lucide-react';  // May not exist!
-```
-
-✅ **Correct (Verified):**
-```bash
-# First verify
-grep "Engine" lucide-react/dist/esm/icons/index.js
-
-# Then import
-import { Cog } from 'lucide-react';  // Verified to exist
-```
-
----
-
-## ✅ Best Practices
-
-### Do's ✅
-- Verify icon exists before importing
-- Use consistent sizes across similar contexts
-- Provide ARIA labels for icon-only buttons
-- Use semantic icon names
-- Match icon color to context (primary, destructive, etc.)
-
-### Don'ts ❌
-- Don't assume icon names exist
-- Don't use custom SVGs when lucide has equivalent
-- Don't forget accessibility labels
-- Don't use icons smaller than 16px (touch targets)
-- Don't use too many different icon sizes
+**Full mapping:** See `/reports/2026-03/phosphor-icon-audit.md`
 
 ---
 
-## 📚 WordPress Implementation
+## Migration Status
 
-### In WordPress Blocks
+- **262 files** currently use `lucide-react`
+- **@phosphor-icons/react** installed in parallel
+- **~97%** icon coverage (direct Phosphor equivalents)
+- **DevTools page** available at `/dev-tools/phosphor-icon-reference`
 
-Icons can be registered as SVG assets or inline SVG:
-
-```php
-// Icon as inline SVG
-<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-  <path d="..." />
-</svg>
-```
+**Migration tasks:** See `/tasks/phosphor-migration-tasks.md`
 
 ---
 
-**Last Updated:** December 25, 2024  
-**Icon Library:** lucide-react  
-**Total Icons:** 1000+  
-**Verification:** Required before use
+## Related Documentation
+
+- **Iconography Design Tokens:** [design-tokens/iconography.md](./design-tokens/iconography.md)
+- **Migration Audit:** `/reports/2026-03/phosphor-icon-audit.md`
+- **Migration Tasks:** `/tasks/phosphor-migration-tasks.md`
+- **DevTools Reference:** `/dev-tools/phosphor-icon-reference`
+
+---
+
+**Last Updated:** March 3, 2026
+**Primary Icon Library:** @phosphor-icons/react
+**Legacy Icon Library:** lucide-react (being phased out)
+**Migration Status:** Parallel operation

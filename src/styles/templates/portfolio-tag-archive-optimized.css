@@ -1,0 +1,173 @@
+/**
+ * Portfolio Tag Archive Template Styles — Optimized
+ *
+ * PHASE 4.1 BATCH 2: Portfolio Template Optimization
+ * Optimized: March 2, 2026
+ *
+ * WordPress template: templates/tag-archive-portfolio.html
+ * Tag-filtered portfolio archive with sidebar
+ * BEM naming: .portfolio-tag-archive__*, .portfolio-tag-cloud__*
+ *
+ * OPTIMIZATION:
+ * - Imports portfolio-base.css for shared portfolio structure
+ * - Imports portfolio-archive-optimized.css for archive-specific styles
+ * - Keeps only tag-archive unique styles (sidebar, tag cloud)
+ *
+ * BEFORE: 151 lines
+ * AFTER: ~80 lines (47% reduction)
+ * SAVINGS: ~71 lines
+ */
+
+/* ============================================
+   BASE IMPORTS
+   ============================================ */
+
+/**
+ * Import portfolio base and archive styles:
+ * - Portfolio headers, badges, stats
+ * - Filter toolbars
+ * - Project cards (all 3 variants)
+ * - Project grids
+ */
+@import './portfolio-base.css';
+@import './portfolio-archive-optimized.css';
+
+/* ============================================
+   TAG ARCHIVE SPECIFIC STYLES
+   ============================================ */
+
+/* ============================================
+   LAYOUT — MAIN + SIDEBAR
+   ============================================ */
+
+.portfolio-tag-archive__layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-12);
+}
+
+@media (min-width: 1024px) {
+  .portfolio-tag-archive__layout {
+    grid-template-columns: 1fr 280px;
+  }
+}
+
+.portfolio-tag-archive__main {
+  min-width: 0;
+}
+
+/* ============================================
+   SIDEBAR — GLASSMORPHISM WIDGETS
+   ============================================ */
+
+.portfolio-tag-archive__sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+}
+
+@media (min-width: 1024px) {
+  .portfolio-tag-archive__sidebar {
+    position: sticky;
+    top: var(--spacing-8);
+    align-self: start;
+  }
+}
+
+.portfolio-tag-archive__sidebar-widget {
+  padding: var(--spacing-6);
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  transition: border-color var(--transition-base) var(--ease-out);
+}
+
+.portfolio-tag-archive__sidebar-widget:hover {
+  border-color: color-mix(in srgb, var(--primary) 25%, transparent);
+}
+
+/* ============================================
+   TAG CLOUD — NEON GRADIENT PILLS
+   ============================================ */
+
+.portfolio-tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-2);
+}
+
+.portfolio-tag-cloud__item {
+  display: inline-block;
+  padding: var(--spacing-1) var(--spacing-3);
+  background: var(--secondary);
+  color: var(--foreground);
+  font-family: var(--font-secondary);
+  font-size: var(--text-small);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  transition: all var(--transition-fast) var(--ease-in-out);
+}
+
+.portfolio-tag-cloud__item:hover {
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: var(--color-white);
+  border-color: transparent;
+  box-shadow: 0 0 12px color-mix(in srgb, var(--primary) 25%, transparent);
+  transform: translateY(-1px);
+}
+
+.portfolio-tag-cloud__item--active {
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: var(--color-white);
+  border-color: transparent;
+  box-shadow: 0 0 10px color-mix(in srgb, var(--primary) 20%, transparent);
+}
+
+.portfolio-tag-cloud__item--active:hover {
+  color: var(--color-white);
+  box-shadow: 0 0 16px color-mix(in srgb, var(--primary) 35%, transparent);
+}
+
+/* ============================================
+   DARK MODE
+   ============================================ */
+
+.dark .portfolio-tag-archive__sidebar-widget {
+  background: color-mix(in srgb, var(--card) 50%, transparent);
+  border-color: var(--glass-border);
+}
+
+.dark .portfolio-tag-archive__sidebar-widget:hover {
+  border-color: color-mix(in srgb, var(--primary) 35%, transparent);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--primary) 10%, transparent);
+}
+
+.dark .portfolio-tag-cloud__item {
+  background: color-mix(in srgb, var(--card) 70%, transparent);
+  border-color: var(--border-soft);
+}
+
+.dark .portfolio-tag-cloud__item:hover {
+  box-shadow: 0 0 16px color-mix(in srgb, var(--primary) 35%, transparent);
+}
+
+.dark .portfolio-tag-cloud__item--active {
+  box-shadow: 0 0 14px color-mix(in srgb, var(--primary) 30%, transparent);
+}
+
+.dark .portfolio-tag-cloud__item--active:hover {
+  box-shadow: 0 0 20px color-mix(in srgb, var(--primary) 45%, transparent);
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-tag-cloud__item:hover {
+    transform: none;
+  }
+}

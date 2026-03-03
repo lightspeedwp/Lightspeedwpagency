@@ -1,0 +1,50 @@
+/**
+ * About Page Template Styles — Optimized
+ *
+ * PHASE 4.2: About + Solution Pages Optimization
+ * Optimized: March 2, 2026
+ *
+ * WordPress template: templates/page-about.html
+ * About overview page
+ * BEM naming: .about-overview__*
+ *
+ * OPTIMIZATION:
+ * - Imports about-base.css for shared about page structure
+ * - Contains ONLY unique about overview features (if any)
+ * - Shared patterns extracted: hero with orbs, section headings, cards, stats, promise
+ *
+ * BEFORE: ~568 lines
+ * AFTER: ~35 lines (94% reduction)
+ * SAVINGS: ~533 lines
+ */
+
+/* ============================================
+   BASE IMPORTS
+   ============================================ */
+
+/**
+ * Import about base for shared structure:
+ * - Hero sections with floating orbs
+ * - Glassmorphism badges with neon glow
+ * - Section headings with gradient underlines
+ * - Story sections with decorative elements
+ * - Glow-border cards with icon wrappers
+ * - Stats sections with gradient backgrounds
+ * - Promise/CTA sections with gradient text
+ * - FAQ wrappers
+ */
+@import './about-base.css';
+@import '../base/grid-utilities.css';
+@import '../base/card-base.css';
+@import '../patterns/hero/hero-base.css';
+
+/* ============================================
+   ABOUT OVERVIEW SPECIFIC STYLES
+   ============================================ */
+
+/**
+ * All about overview styles are inherited from about-base.css
+ * No additional unique styles needed for this template
+ */
+
+/* Placeholder for future about-specific features */

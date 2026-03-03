@@ -51,7 +51,7 @@ import {
 } from '../../data/hosting-page';
 
 import { hostingFAQs } from '../../data/faqs';
-import { hostingServiceDetailed } from '../../data/services-detailed';
+import { hostingServiceDetailed } from '../../data/services';
 
 export function HostingTemplate() {
   /* ── Modal state ── */
@@ -267,22 +267,12 @@ export function HostingTemplate() {
             </div>
           </ScrollReveal>
 
-          <div className="hosting-lab__features-grid">
-            {hostingFeatures.map((feature, idx) => {
-              const Icon = feature.icon;
-              return (
-                <ScrollReveal key={idx} animation="fade-up" delay={idx * 50}>
-                  <div className="hosting-lab__feature-card">
-                    <div className="hosting-lab__feature-icon">
-                      <Icon size={24} />
-                    </div>
-                    <h3 className="hosting-lab__feature-name">{feature.title}</h3>
-                    <p className="hosting-lab__feature-text">{feature.description}</p>
-                  </div>
-                </ScrollReveal>
-              );
-            })}
-          </div>
+          <FeatureList
+            items={hostingFeatures}
+            columns={3}
+            variant="glow"
+            iconSize="md"
+          />
         </Container>
       </section>
 

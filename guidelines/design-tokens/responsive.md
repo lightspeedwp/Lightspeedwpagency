@@ -6,46 +6,96 @@ Complete guidelines for implementing fluid/responsive styles across all template
 
 ### Standard Breakpoints
 
-The LSX Design system uses 5 standardized breakpoints for responsive design:
+The LSX Design system uses **12 responsive breakpoints** optimized for WordPress and accessibility:
 
-| Breakpoint | Min Width | Max Width | Navigation | Grid Columns |
-|------------|-----------|-----------|------------|--------------|
-| **Mobile Compact** | 320px | 419px | Mobile menu | 1 column |
-| **Mobile** | 420px | 767px | Mobile menu | 1 column |
-| **Tablet Portrait** | 768px | 1023px | Mobile menu | 2 columns |
-| **Tablet Landscape** | 1024px | 1439px | Desktop menu | 3 columns |
-| **Desktop** | 1440px+ | — | Desktop menu | 4 columns |
+| Breakpoint | Variable | Min Width | Purpose | WordPress Context |
+|------------|----------|-----------|---------|-------------------|
+| **Zoomed-In** | `--breakpoint-zoomed-in` | 280px | Browser zoom support | WCAG 1.4.4 compliance (400% zoom) |
+| **Mobile Compact** | `--breakpoint-mobile-compact` | 320px | Small phones | iPhone SE, small devices |
+| **Mobile** | `--breakpoint-mobile` | 480px | Large phones, landscape | iPhone Plus, Android (WordPress standard) |
+| **Small** | `--breakpoint-small` | 600px | Small tablets | iPad Mini portrait, large phablets |
+| **Editorial** | `--breakpoint-editorial` | 640px | Blog layouts, streams | Editorial content (existing usage) |
+| **Tablet Portrait** | `--breakpoint-tablet-portrait` | 768px | Tablets vertical | iPad portrait, primary grid breakpoint |
+| **Medium** | `--breakpoint-medium` | 782px | WP adminbar change | WordPress toolbar breakpoint |
+| **Large** | `--breakpoint-large` | 960px | Admin sidebar fold | WordPress admin UI breakpoint |
+| **Tablet Landscape** | `--breakpoint-tablet-landscape` | 1024px | **Desktop menu switch** | iPad landscape, desktop menu visible |
+| **XLarge** | `--breakpoint-xlarge` | 1080px | HD laptops | 1920x1080 screens |
+| **Wide** | `--breakpoint-wide` | 1280px | Wide layouts | 1280p+ screens (existing usage) |
+| **Desktop** | `--breakpoint-desktop` | 1440px | Standard desktop | 1440p monitors |
+| **XHuge** | `--breakpoint-xhuge` | 1920px | Ultra-wide | 1080p+ displays, ultrawide monitors |
+
+**CRITICAL:** Desktop menu becomes visible at **1024px** (Tablet Landscape).
 
 ### CSS Variables
 
 ```css
 :root {
-  /* Breakpoint values (for reference) */
+  /* Accessibility */
+  --breakpoint-zoomed-in: 280px;
+  
+  /* Mobile */
   --breakpoint-mobile-compact: 320px;
-  --breakpoint-mobile: 420px;
+  --breakpoint-mobile: 480px;
+  
+  /* Tablets */
+  --breakpoint-small: 600px;
+  --breakpoint-editorial: 640px;
   --breakpoint-tablet-portrait: 768px;
+  
+  /* WordPress-specific */
+  --breakpoint-medium: 782px;
+  --breakpoint-large: 960px;
+  
+  /* Desktop */
   --breakpoint-tablet-landscape: 1024px;
+  --breakpoint-xlarge: 1080px;
+  --breakpoint-wide: 1280px;
   --breakpoint-desktop: 1440px;
+  --breakpoint-xhuge: 1920px;
 }
 ```
 
 ### Media Queries
 
 ```css
+/* Zoomed-In (280px+) — WCAG accessibility */
+@media (min-width: 280px) { }
+
 /* Mobile compact (320px+) */
 @media (min-width: 320px) { }
 
-/* Mobile (420px+) */
-@media (min-width: 420px) { }
+/* Mobile (480px+) — WordPress standard */
+@media (min-width: 480px) { }
 
-/* Tablet portrait (768px+) — Mobile menu still visible */
+/* Small tablets (600px+) */
+@media (min-width: 600px) { }
+
+/* Editorial layouts (640px+) */
+@media (min-width: 640px) { }
+
+/* Tablet portrait (768px+) — Primary grid breakpoint */
 @media (min-width: 768px) { }
+
+/* WordPress adminbar (782px+) */
+@media (min-width: 782px) { }
+
+/* WordPress sidebar (960px+) */
+@media (min-width: 960px) { }
 
 /* Tablet landscape (1024px+) — Desktop menu visible */
 @media (min-width: 1024px) { }
 
+/* HD laptops (1080px+) */
+@media (min-width: 1080px) { }
+
+/* Wide desktops (1280px+) */
+@media (min-width: 1280px) { }
+
 /* Desktop (1440px+) */
 @media (min-width: 1440px) { }
+
+/* Ultra-wide (1920px+) */
+@media (min-width: 1920px) { }
 ```
 
 ---
@@ -285,7 +335,7 @@ p, .text-base, .wp-block-paragraph {
 }
 ```
 
-### Mobile (420px+)
+### Mobile (480px+)
 
 **Features:**
 - Mobile menu visible
@@ -294,7 +344,7 @@ p, .text-base, .wp-block-paragraph {
 - Base font size: 16px
 
 ```css
-@media (min-width: 420px) {
+@media (min-width: 480px) {
   html {
     font-size: 16px;
   }
@@ -619,7 +669,143 @@ export const ResponsiveSection = () => {
 
 ---
 
-**Last Updated:** January 22, 2025  
-**System Version:** 1.0  
+## 🔌 WordPress Compatibility
+
+### Adminbar Breakpoint (782px)
+
+The WordPress adminbar changes height at 782px:
+- **Below 782px:** 46px height (mobile)
+- **Above 782px:** 32px height (desktop)
+
+**Implementation:**
+
+```css
+@media (min-width: 782px) {
+  body.admin-bar .site-header {
+    top: 46px;
+  }
+  
+  body.admin-bar .site-header.sticky {
+    top: 46px;
+  }
+}
+
+@media (max-width: 781px) {
+  body.admin-bar .site-header {
+    top: 0; /* Mobile adminbar doesn't affect fixed elements */
+  }
+}
+```
+
+**Usage:**
+```tsx
+// Header component automatically adjusts for WordPress adminbar
+<header className="site-header sticky">
+  {/* Content */}
+</header>
+```
+
+### Admin Sidebar Fold (960px)
+
+The WordPress admin sidebar auto-folds at 960px. Use this breakpoint for editor-specific layouts:
+
+**Implementation:**
+
+```css
+@media (min-width: 960px) {
+  /* Account for visible admin sidebar */
+  .block-editor-writing-flow {
+    max-width: calc(100% - 280px);
+  }
+}
+```
+
+---
+
+## ♿ Accessibility Support
+
+### Browser Zoom (280px)
+
+Support users with 400% browser zoom (WCAG 1.4.4):
+
+**Implementation:**
+
+```css
+@media (min-width: 280px) {
+  /* Minimum touch targets for accessibility */
+  button, a, input, select {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Prevent horizontal scroll at extreme zoom */
+  body {
+    overflow-x: hidden;
+  }
+  
+  /* Force single column layouts */
+  .wp-grid-2-cols,
+  .wp-grid-3-cols,
+  .wp-grid-4-cols {
+    grid-template-columns: 1fr;
+  }
+}
+```
+
+**Testing:**
+- Set browser zoom to 100% (baseline)
+- Set browser zoom to 200% → should trigger ~640px styles
+- Set browser zoom to 300% → should trigger ~480px styles
+- Set browser zoom to 400% → should trigger 280px styles
+
+**Requirements:**
+- ✅ No horizontal scroll at any zoom level
+- ✅ All touch targets minimum 44×44px
+- ✅ Text remains readable (no truncation)
+- ✅ Layouts degrade gracefully (single column at 400%)
+
+### Editorial Breakpoint (640px)
+
+The 640px breakpoint is optimized for editorial content (blog posts, portfolios):
+
+**Implementation:**
+
+```css
+@media (min-width: 640px) {
+  /* Editorial stream layouts */
+  .blog-stream__wrap,
+  .pf-editorial__wrap {
+    grid-template-columns: auto 1fr;
+  }
+  
+  /* Horizontal button rows */
+  .service-page__cta-buttons {
+    flex-direction: row;
+  }
+}
+```
+
+**Usage:**
+```tsx
+// Blog stream layout (editorial content)
+<div className="blog-stream__wrap">
+  <div className="blog-stream__img-box">...</div>
+  <div className="blog-stream__body">...</div>
+</div>
+```
+
+---
+
+## 🚀 Related Documentation
+
+- **[Typography Guide](./typography.md)** - Complete typography system
+- **[Spacing Guide](./spacing.md)** - Spacing scale and patterns
+- **[Main Guidelines](../Guidelines.md)** - System principles
+- **[WordPress Utilities](./wordpress-utilities.md)** - Responsive utility classes
+
+---
+
+**Last Updated:** March 2, 2026  
+**System Version:** 2.0 (Expanded Breakpoints)  
 **Design System:** LSX Design  
-**Responsive System:** Fluid (320px → 1440px+)
+**Responsive System:** Fluid (280px → 1920px) — 12 breakpoints

@@ -13,6 +13,7 @@ import { Section } from '../common/Section';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { Buttons, Button } from '../blocks/design/Buttons';
 import { FunkyCTA } from '../patterns/FunkyCTA';
+import { StatsGrid } from '../patterns/StatsGrid';
 import { 
   HelpCircle,
   ChevronDown
@@ -84,43 +85,26 @@ export function FAQTemplate() {
       <Section spacing="lg" className="faq-page__stats-section">
         <Container>
           <div className="faq-page__stats-container">
-            <div className="faq-page__stats-grid">
-              <div className="faq-page__stat-card">
-                <div className="faq-page__stat-value">
-                  {faqStats.totalQuestions}+
-                </div>
-                <div className="faq-page__stat-label">
-                  Questions Answered
-                </div>
-              </div>
-
-              <div className="faq-page__stat-card">
-                <div className="faq-page__stat-value">
-                  {faqStats.categories}
-                </div>
-                <div className="faq-page__stat-label">
-                  Categories
-                </div>
-              </div>
-
-              <div className="faq-page__stat-card">
-                <div className="faq-page__stat-value">
-                  {faqStats.avgResponseTime}
-                </div>
-                <div className="faq-page__stat-label">
-                  Avg Response Time
-                </div>
-              </div>
-
-              <div className="faq-page__stat-card">
-                <div className="faq-page__stat-value">
-                  {faqStats.satisfaction}
-                </div>
-                <div className="faq-page__stat-label">
-                  Satisfaction Rate
-                </div>
-              </div>
-            </div>
+            <StatsGrid
+              stats={[
+                {
+                  value: `${faqStats.totalQuestions}+`,
+                  label: 'Questions Answered'
+                },
+                {
+                  value: `${faqStats.categories}`,
+                  label: 'Categories'
+                },
+                {
+                  value: `${faqStats.avgResponseTime}`,
+                  label: 'Avg Response Time'
+                },
+                {
+                  value: `${faqStats.satisfaction}`,
+                  label: 'Satisfaction Rate'
+                }
+              ]}
+            />
           </div>
         </Container>
       </Section>

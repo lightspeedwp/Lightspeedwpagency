@@ -20,7 +20,7 @@ import {
   HeartHandshake,
   DollarSign
 } from 'lucide-react';
-import type { LucideIcon } from 'lucide-react';
+import type { UniversalIcon } from '../utils/icon-map';
 
 /* ── Hero ── */
 
@@ -47,7 +47,7 @@ interface PackageFeature {
 interface PricingPackage {
   id: string;
   name: string;
-  icon: LucideIcon;
+  icon: UniversalIcon;
   tagline: string;
   price: {
     display: string;

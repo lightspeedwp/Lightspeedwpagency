@@ -20,7 +20,7 @@
  */
 
 import { useCountUpRef } from '../../hooks/useCountUp';
-import { LucideIcon } from 'lucide-react';
+import type { UniversalIcon } from '../../utils/icon-map';
 
 export interface StatCounterProps {
   /** Target value to count to */
@@ -36,7 +36,7 @@ export interface StatCounterProps {
   /** Animation duration (ms) */
   duration?: number;
   /** Optional icon */
-  icon?: LucideIcon;
+  icon?: UniversalIcon;
   /** Color variant */
   variant?: 'default' | 'primary' | 'accent';
 }

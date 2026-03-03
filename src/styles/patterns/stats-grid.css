@@ -263,7 +263,7 @@
 [data-theme="dark"] .stats-grid--default .stats-grid__item:hover,
 [data-theme="dark"] .stats-grid--cards .stats-grid__item:hover {
   border-color: var(--primary);
-  box-shadow: 0 0 20px rgba(var(--primary-rgb), 0.3);
+  box-shadow: 0 0 20px color-mix(in srgb, var(--primary) 30%, transparent);
 }
 
 /* ============================================

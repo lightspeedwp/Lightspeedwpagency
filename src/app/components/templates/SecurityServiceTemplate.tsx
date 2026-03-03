@@ -26,6 +26,7 @@ import { RelatedServicesInPhase } from '../patterns/RelatedServicesInPhase';
 import { IncludedInSolutions } from '../patterns/IncludedInSolutions';
 import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
 import { ServicePricingTimeline } from '../patterns/ServicePricingTimeline';
+import { StatsGrid } from '../patterns/StatsGrid';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { JourneyPhaseIndicator } from '../ui/JourneyPhaseIndicator';
 import { servicePricingTimeline } from '../../data/services';
@@ -38,7 +39,7 @@ import {
 } from 'lucide-react';
 
 // Import detailed data
-import { securityServiceDetailed } from '../../data/services-detailed';
+import { securityServiceDetailed } from '../../data/services';
 
 export function SecurityServiceTemplate() {
   const data = securityServiceDetailed;
@@ -312,32 +313,16 @@ export function SecurityServiceTemplate() {
           ============================================ */}
       <section className="security-page__stats">
         <Container>
-          <div className="security-page__stats-grid">
-            <ScrollReveal animation="scale" delay={0}>
-              <div className="security-page__stat-item">
-                <div className="security-page__stat-value security-page__stat-value--red">24/7</div>
-                <div className="security-page__stat-label">Monitoring</div>
-              </div>
-            </ScrollReveal>
-            <ScrollReveal animation="scale" delay={100}>
-              <div className="security-page__stat-item">
-                <div className="security-page__stat-value security-page__stat-value--green">100%</div>
-                <div className="security-page__stat-label">Uptime Goal</div>
-              </div>
-            </ScrollReveal>
-            <ScrollReveal animation="scale" delay={200}>
-              <div className="security-page__stat-item">
-                <div className="security-page__stat-value security-page__stat-value--blue">&lt;1hr</div>
-                <div className="security-page__stat-label">Response Time</div>
-              </div>
-            </ScrollReveal>
-            <ScrollReveal animation="scale" delay={300}>
-              <div className="security-page__stat-item">
-                <div className="security-page__stat-value security-page__stat-value--yellow">Zero</div>
-                <div className="security-page__stat-label">Data Loss</div>
-              </div>
-            </ScrollReveal>
-          </div>
+          <StatsGrid
+            stats={[
+              { number: '24/7', label: 'Monitoring' },
+              { number: '100%', label: 'Uptime Goal' },
+              { number: '<1hr', label: 'Response Time' },
+              { number: 'Zero', label: 'Data Loss' }
+            ]}
+            columns={4}
+            variant="cards"
+          />
         </Container>
       </section>
 

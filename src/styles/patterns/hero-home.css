@@ -189,6 +189,9 @@
    ============================================ */
 
 .hero-home__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h1);
+  font-weight: var(--font-weight-bold);
   color: var(--primary-foreground);
   letter-spacing: var(--letter-spacing-tight);
   line-height: var(--line-height-tight);
@@ -212,6 +215,8 @@
    ============================================ */
 
 .hero-home__description {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
   color: var(--primary-foreground);
   /* CONTRAST FIX: Removed opacity 0.85 to maintain AAA contrast (16.07:1) in light mode */
   max-width: 48ch;

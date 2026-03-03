@@ -24,6 +24,8 @@
  * - Uses CSS variables for all styling
  * - Fully responsive with mobile menu overlay
  * 
+ * **Icons:** Migrated to Phosphor Icons (Phase 6 Task 6.1 - March 3, 2026)
+ * 
  * @see /src/app/data/site-pages.ts - Navigation data source
  */
 
@@ -31,7 +33,14 @@ import { SiteLogo } from '../blocks/theme/SiteLogo';
 import { useLocation as useRouterLocation, Link } from 'react-router';
 import { slugToPath } from '../../utils/route-map';
 import { blogCategories } from '../../data/taxonomies';
-import { Menu, X, ChevronDown, Search, Sun, Moon } from 'lucide-react';
+import { 
+  List as Menu, 
+  X, 
+  CaretDown as ChevronDown, 
+  MagnifyingGlass as Search, 
+  Sun, 
+  Moon 
+} from '@phosphor-icons/react';
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { GlobalSearchOverlay } from '../patterns/GlobalSearchOverlay';
 /* site-header.css and responsive.css are loaded globally via index.css */

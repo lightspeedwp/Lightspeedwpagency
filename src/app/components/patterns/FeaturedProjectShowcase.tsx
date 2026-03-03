@@ -35,7 +35,7 @@
  * ```
  */
 
-import { LucideIcon } from 'lucide-react';
+import type { UniversalIcon } from '../../utils/icon-map';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { Button } from '../blocks/design/Buttons';
@@ -71,7 +71,7 @@ export interface FeaturedProjectShowcaseProps {
   /** Optional badge text above title */
   badge?: string;
   /** Optional badge icon */
-  badgeIcon?: LucideIcon;
+  badgeIcon?: UniversalIcon;
   /** Section title */
   title: string;
   /** Section description */

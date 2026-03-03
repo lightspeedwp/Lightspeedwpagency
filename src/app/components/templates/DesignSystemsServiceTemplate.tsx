@@ -2,8 +2,17 @@
  * Design Systems Service Template
  * Route: /services/design-systems
  * Parent: /services/design
+ * 
+ * STRICT DESIGN SYSTEM COMPLIANCE:
+ * - Zero Tailwind classes
+ * - All styling via /src/styles/templates/page-service-design-systems-optimized.css
+ * - Colors mapped to global semantic tokens for auto light/dark
+ * - Fonts: var(--font-primary), var(--font-secondary) only
+ * 
+ * @see /src/styles/templates/page-service-design-systems-optimized.css
  */
 
+import '../../../styles/templates/page-service-design-systems-optimized.css';
 import { Layers, Palette, Code, BookOpen, Zap, Award } from 'lucide-react';
 import { Link } from 'react-router';
 

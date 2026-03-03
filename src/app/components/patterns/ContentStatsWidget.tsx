@@ -18,11 +18,11 @@ import { portfolioProjects } from '../../data/portfolio-projects';
 import { testimonials } from '../../data/testimonials';
 import { services } from '../../data/services';
 import { FileText, Briefcase, MessageSquare, Wrench, Star, Users, Globe, Zap } from 'lucide-react';
-import type { LucideIcon } from 'lucide-react';
+import type { UniversalIcon } from '../../utils/icon-map';
 
 
 interface StatItem {
-  icon: LucideIcon;
+  icon: UniversalIcon;
   value: number;
   suffix?: string;
   label: string;

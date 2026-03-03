@@ -8,17 +8,16 @@
  * @see /guidelines/patterns/ProcessTimeline.md
  */
 
-import { Check, LucideIcon } from 'lucide-react';
+import { Check } from 'lucide-react';
+import type { UniversalIcon } from '../../utils/icon-map';
 import React from 'react';
-
 
 export interface ProcessStep {
   id: string;
   number: number;
   title: string;
   description: string;
-  icon?: LucideIcon;
-  duration?: string;
+  icon?: UniversalIcon;
 }
 
 export interface ProcessTimelineProps {

@@ -9,7 +9,7 @@
  * @see {@link /guidelines/patterns/TwoColumnImpactSection.md}
  */
 
-import { LucideIcon } from 'lucide-react';
+import type { UniversalIcon } from '../../utils/icon-map';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { IconFeaturesList, IconFeature } from './IconFeaturesList';
@@ -24,7 +24,7 @@ export interface ContentBox {
 
 export interface ImagePlaceholder {
   /** Placeholder icon */
-  icon: LucideIcon;
+  icon: UniversalIcon;
   /** Placeholder label */
   label: string;
 }

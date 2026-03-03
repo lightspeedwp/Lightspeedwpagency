@@ -116,6 +116,20 @@
   --primary-soft: #7BE7FF1A;      /* 10% primary cyan */
   
   /**
+   * Primary light variant (dark mode)
+   * Usage: Gradient endpoints, lighter accent backgrounds
+   * Hex: #A8F0FF (lighter shade of primary cyan)
+   */
+  --primary-light: #A8F0FF;        /* Lighter cyan for gradients */
+
+  /**
+   * Primary RGB (raw channel values, dark mode)
+   * Usage: rgba() patterns where color-mix() isn't supported
+   * Values: 123, 231, 255 (from #7BE7FF)
+   */
+  --primary-rgb: 123, 231, 255;
+
+  /**
    * Funky Neon Color (Dark Mode)
    * Usage: Glow effects, neon shadows
    * Hex: #7BE7FF (Matches Primary for consistency)
@@ -513,4 +527,20 @@
   --logo-wordmark-color: #FFFFFF;  /* Light wordmark for dark backgrounds */
   --logo-icon-primary: #FFFFFF;    /* White bolt — all-white logo in dark mode */
   --logo-icon-secondary: #FFFFFF;  /* White bolt — consistent fill */
+
+  /* ============================================
+     ICON COLOR TOKENS (Dark Mode)
+     ============================================ */
+
+  --icon-color-default: var(--foreground);
+  --icon-color-muted: var(--muted-foreground);
+  --icon-color-primary: var(--primary);
+  --icon-color-success: var(--success);
+  --icon-color-warning: var(--warning);
+  --icon-color-destructive: var(--destructive);
+  --icon-color-on-primary: var(--primary-foreground);
+  --icon-color-on-dark: var(--color-white);
+
+  /* Phosphor duotone opacity — slightly lower for dark backgrounds */
+  --icon-duotone-opacity: 0.15;
 }

@@ -9,14 +9,14 @@
  * @see {@link /guidelines/patterns/WhyChooseUs.md}
  */
 
-import { LucideIcon } from 'lucide-react';
+import type { UniversalIcon } from '../../utils/icon-map';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { InteractiveCard, InteractiveCardContent } from '../common/InteractiveCard';
 
 
 export interface Reason {
-  icon: LucideIcon;
+  icon: UniversalIcon;
   title: string;
   description: string;
 }

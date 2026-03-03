@@ -12,7 +12,8 @@
  * @see {@link /guidelines/data/solutions.md}
  */
 
-import { LucideIcon, Palette, Code, ShoppingCart } from 'lucide-react';
+import { Palette, Code, ShoppingCart } from 'lucide-react';
+import type { UniversalIcon } from '../utils/icon-map';
 
 /**
  * Solution Category Types
@@ -31,7 +32,7 @@ export type SolutionCategory = 'agency' | 'cms' | 'ecommerce';
  * @property {string} tagline - Short one-liner
  * @property {string} description - Detailed description
  * @property {SolutionCategory} category - Solution category
- * @property {LucideIcon} icon - Icon component
+ * @property {UniversalIcon} icon - Icon component
  * @property {string[]} features - Key features list
  * @property {string[]} services - Included services (references service slugs)
  * @property {SolutionPricing} pricing - Pricing information
@@ -49,7 +50,7 @@ export interface Solution {
   tagline: string;
   description: string;
   category: SolutionCategory;
-  icon: LucideIcon;
+  icon: UniversalIcon;
   features: string[];
   services: string[]; // Service slugs
   pricing: SolutionPricing;

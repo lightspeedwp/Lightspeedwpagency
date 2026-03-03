@@ -24,7 +24,7 @@
 
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { AlertCircle, Lightbulb, TrendingUp, ArrowRight } from 'lucide-react';
-import type { LucideIcon } from 'lucide-react';
+import type { UniversalIcon } from '../../utils/icon-map';
 
 export interface CaseStudyMetric {
   label: string;
@@ -47,7 +47,7 @@ export interface ProjectCaseStudyProps {
   variant?: 'default' | 'glassmorphism';
 }
 
-const SectionIcon: Record<string, LucideIcon> = {
+const SectionIcon: Record<string, UniversalIcon> = {
   challenge: AlertCircle,
   solution: Lightbulb,
   results: TrendingUp,

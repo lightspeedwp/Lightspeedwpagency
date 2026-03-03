@@ -7,7 +7,8 @@
  * Commonly used on service pages for conversion-focused calls-to-action.
  */
 
-import { LucideIcon, CheckCircle } from 'lucide-react';
+import { CheckCircle } from 'lucide-react';
+import type { UniversalIcon } from '../../utils/icon-map';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { Button } from '../blocks/design/Buttons';
@@ -32,7 +33,7 @@ export interface GradientCTASectionProps {
   /** Optional graphic element (icon or component) */
   graphic?: ReactNode;
   /** Button icon */
-  buttonIcon?: LucideIcon;
+  buttonIcon?: UniversalIcon;
   /** Section spacing */
   spacing?: 'sm' | 'md' | 'lg' | 'xl';
   /** Show background pattern */

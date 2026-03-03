@@ -26,7 +26,7 @@
  */
 
 import '@/styles/patterns/stats-grid.css';
-import { LucideIcon } from 'lucide-react';
+import type { UniversalIcon } from '../../utils/icon-map';
 
 export interface Stat {
   /** Stat number/value (e.g., "150+", "98%", "5 years") */
@@ -36,7 +36,7 @@ export interface Stat {
   /** Optional extended description */
   description?: string;
   /** Optional icon */
-  icon?: LucideIcon;
+  icon?: UniversalIcon;
 }
 
 export interface StatsGridProps {

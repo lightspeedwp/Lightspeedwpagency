@@ -17,6 +17,7 @@ import '../../../styles/templates/page-solution-redesign.css';
 import { Container } from '../common/Container';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { FAQSection } from '../patterns/FAQSection';
+import { StatsGrid } from '../patterns/StatsGrid';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { Link } from 'react-router';
 import { slugToPath } from '../../utils/route-map';
@@ -175,17 +176,15 @@ export function WordPressRedesignTemplate() {
               <p className="redesign-page__section-desc">Average improvements our clients see after a website redesign.</p>
             </div>
           </ScrollReveal>
-          <div className="redesign-page__stats-grid">
-            {wpRedesignResults.map((stat, i) => (
-              <ScrollReveal key={i} animation="fade-up" delay={i * 80}>
-                <div className="redesign-page__stat-card">
-                  <div className="redesign-page__stat-value">{stat.stat}</div>
-                  <div className="redesign-page__stat-label">{stat.label}</div>
-                  <p className="redesign-page__stat-desc">{stat.description}</p>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
+          <StatsGrid
+            stats={wpRedesignResults.map((r) => ({
+              number: r.stat,
+              label: r.label,
+              description: r.description
+            }))}
+            columns={4}
+            variant="cards"
+          />
         </Container>
       </section>
 

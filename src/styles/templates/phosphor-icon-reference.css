@@ -1,0 +1,399 @@
+/**
+ * Phosphor Icon Reference — DevTools Page Styles
+ *
+ * BEM naming, 100% CSS variables.
+ * @see /src/app/components/templates/PhosphorIconReference.tsx
+ */
+
+/* ============================================
+   PAGE LAYOUT
+   ============================================ */
+
+.phosphor-ref {
+  background-color: var(--background);
+  color: var(--foreground);
+  min-height: 100vh;
+}
+
+.phosphor-ref__hero {
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+  color: var(--color-white);
+  padding: var(--spacing-16) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.phosphor-ref__hero-inner {
+  max-width: var(--section-max-width);
+  margin: 0 auto;
+  padding: 0 var(--section-padding-x);
+  position: relative;
+  z-index: 1;
+}
+
+.phosphor-ref__hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-1-5) var(--spacing-4);
+  background: color-mix(in srgb, var(--color-white) 15%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-white) 25%, transparent);
+  border-radius: var(--radius-full);
+  font-family: var(--font-secondary);
+  font-size: var(--text-xs);
+  letter-spacing: var(--letter-spacing-wider);
+  text-transform: uppercase;
+  color: var(--color-white);
+  margin-bottom: var(--spacing-6);
+}
+
+.phosphor-ref__hero-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h1);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  margin-bottom: var(--spacing-4);
+}
+
+.phosphor-ref__hero-desc {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  opacity: 0.85;
+  max-width: 50ch;
+  line-height: var(--line-height-relaxed);
+}
+
+.phosphor-ref__hero-stats {
+  display: flex;
+  gap: var(--spacing-10);
+  margin-top: var(--spacing-8);
+  padding-top: var(--spacing-6);
+  border-top: 1px solid color-mix(in srgb, var(--color-white) 15%, transparent);
+}
+
+.phosphor-ref__hero-stat-value {
+  font-family: var(--font-primary);
+  font-size: var(--text-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-white);
+  line-height: 1;
+}
+
+.phosphor-ref__hero-stat-label {
+  font-family: var(--font-secondary);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+  opacity: 0.6;
+  margin-top: var(--spacing-1);
+}
+
+
+/* ============================================
+   CONTROLS BAR
+   ============================================ */
+
+.phosphor-ref__controls {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+  background: color-mix(in srgb, var(--background) 90%, transparent);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-soft);
+  padding: var(--spacing-4) 0;
+}
+
+.phosphor-ref__controls-inner {
+  max-width: var(--section-max-width);
+  margin: 0 auto;
+  padding: 0 var(--section-padding-x);
+  display: flex;
+  gap: var(--spacing-4);
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.phosphor-ref__search {
+  flex: 1;
+  min-width: 200px;
+  padding: var(--spacing-2) var(--spacing-4);
+  background: var(--card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  color: var(--foreground);
+  outline: none;
+  transition: border-color var(--transition-base) var(--ease-out);
+}
+
+.phosphor-ref__search:focus {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-focus-ring);
+}
+
+.phosphor-ref__search::placeholder {
+  color: var(--muted-foreground);
+}
+
+.phosphor-ref__weight-selector {
+  display: flex;
+  gap: var(--spacing-1);
+  background: var(--card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-1);
+}
+
+.phosphor-ref__weight-btn {
+  padding: var(--spacing-1-5) var(--spacing-3);
+  border: none;
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--muted-foreground);
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  cursor: pointer;
+  transition: all var(--transition-base) var(--ease-out);
+  white-space: nowrap;
+}
+
+.phosphor-ref__weight-btn:hover {
+  color: var(--foreground);
+  background: color-mix(in srgb, var(--primary) 10%, transparent);
+}
+
+.phosphor-ref__weight-btn--active {
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.phosphor-ref__weight-btn--active:hover {
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.phosphor-ref__size-selector {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.phosphor-ref__size-label {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  white-space: nowrap;
+}
+
+.phosphor-ref__size-input {
+  width: 80px;
+  padding: var(--spacing-1-5) var(--spacing-3);
+  background: var(--card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--foreground);
+  text-align: center;
+}
+
+
+/* ============================================
+   ICON GRID
+   ============================================ */
+
+.phosphor-ref__content {
+  max-width: var(--section-max-width);
+  margin: 0 auto;
+  padding: var(--spacing-8) var(--section-padding-x);
+}
+
+.phosphor-ref__category {
+  margin-bottom: var(--spacing-10);
+}
+
+.phosphor-ref__category-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h3);
+  font-weight: var(--font-weight-medium);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-2);
+}
+
+.phosphor-ref__category-count {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  margin-bottom: var(--spacing-6);
+}
+
+.phosphor-ref__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: var(--spacing-3);
+}
+
+.phosphor-ref__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-5) var(--spacing-3);
+  background: var(--card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all var(--transition-base) var(--ease-out);
+  position: relative;
+}
+
+.phosphor-ref__card:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-glow-sm);
+  transform: translateY(-2px);
+}
+
+.phosphor-ref__card-icon {
+  color: var(--foreground);
+  transition: color var(--transition-base) var(--ease-out);
+}
+
+.phosphor-ref__card:hover .phosphor-ref__card-icon {
+  color: var(--primary);
+}
+
+.phosphor-ref__card-name {
+  font-family: var(--font-secondary);
+  font-size: var(--text-xs);
+  color: var(--muted-foreground);
+  text-align: center;
+  word-break: break-word;
+  line-height: 1.3;
+}
+
+.phosphor-ref__card-lucide {
+  font-family: var(--font-secondary);
+  font-size: 10px;
+  color: var(--primary);
+  text-align: center;
+  opacity: 0.7;
+}
+
+.phosphor-ref__card--copied {
+  border-color: var(--success);
+}
+
+.phosphor-ref__card--copied .phosphor-ref__card-icon {
+  color: var(--success);
+}
+
+
+/* ============================================
+   WEIGHT COMPARISON SECTION
+   ============================================ */
+
+.phosphor-ref__comparison {
+  margin-bottom: var(--spacing-10);
+}
+
+.phosphor-ref__comparison-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h3);
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--spacing-6);
+}
+
+.phosphor-ref__comparison-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: var(--spacing-4);
+}
+
+.phosphor-ref__comparison-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-3);
+  padding: var(--spacing-6);
+  background: var(--card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  text-align: center;
+}
+
+.phosphor-ref__comparison-weight {
+  font-family: var(--font-secondary);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+  color: var(--muted-foreground);
+}
+
+
+/* ============================================
+   EMPTY STATE
+   ============================================ */
+
+.phosphor-ref__empty {
+  text-align: center;
+  padding: var(--spacing-16) 0;
+}
+
+.phosphor-ref__empty-icon {
+  color: var(--muted-foreground);
+  margin-bottom: var(--spacing-4);
+}
+
+.phosphor-ref__empty-text {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  color: var(--muted-foreground);
+}
+
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+  .phosphor-ref__controls-inner {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .phosphor-ref__weight-selector {
+    overflow-x: auto;
+    flex-shrink: 0;
+  }
+
+  .phosphor-ref__comparison-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .phosphor-ref__grid {
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  }
+
+  .phosphor-ref__hero-stats {
+    flex-direction: column;
+    gap: var(--spacing-4);
+  }
+}
+
+@media (max-width: 480px) {
+  .phosphor-ref__comparison-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .phosphor-ref__card:hover {
+    transform: none;
+  }
+}

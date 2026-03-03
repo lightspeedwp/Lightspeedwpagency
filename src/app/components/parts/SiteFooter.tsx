@@ -25,6 +25,8 @@
  * All styling in /src/styles/blocks/theme/site-footer.css
  * 100 % CSS variables — zero hardcoded values.
  *
+ * **Icons:** Migrated to Phosphor Icons (Phase 6 Task 6.1 - March 3, 2026)
+ *
  * @see /src/styles/blocks/theme/site-footer.css
  * @see /src/app/components/common/Logo.tsx
  */
@@ -34,16 +36,15 @@ import { Link } from 'react-router';
 import { getPageUrl } from '../../data/pages';
 import { Logo } from '../common/Logo';
 import {
-  Facebook,
-  Instagram,
-  Twitter,
-  Linkedin,
-  Youtube,
-  Github,
+  FacebookLogo as Facebook,
+  InstagramLogo as Instagram,
+  TwitterLogo as Twitter,
+  LinkedinLogo as Linkedin,
+  YoutubeLogo as Youtube,
+  GithubLogo as Github,
   ArrowRight,
-  CheckCircle2,
-} from 'lucide-react';
-
+  CheckCircle as CheckCircle2,
+} from '@phosphor-icons/react';
 
 /* ──────────────────────────────────────────────
    DATA — navigation, socials, metrics

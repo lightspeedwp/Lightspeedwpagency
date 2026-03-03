@@ -9,7 +9,7 @@
  * @see {@link /guidelines/patterns/ServiceOfferingsGrid.md}
  */
 
-import { LucideIcon } from 'lucide-react';
+import type { UniversalIcon } from '../../utils/icon-map';
 import { ArrowRight } from 'lucide-react';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
@@ -21,7 +21,7 @@ export interface ServiceOffering {
   /** Unique identifier */
   id: string;
   /** Icon component */
-  icon: LucideIcon;
+  icon: UniversalIcon;
   /** Service title */
   title: string;
   /** Service description */

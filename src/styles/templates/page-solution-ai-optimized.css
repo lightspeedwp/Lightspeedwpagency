@@ -1,0 +1,49 @@
+/**
+ * AI Solution Page Template Styles — Optimized
+ *
+ * PHASE 4.2: About + Solution Pages Optimization
+ * Optimized: March 2, 2026
+ *
+ * WordPress template: templates/page-solution-ai.html
+ * AI solution page
+ * BEM naming: .ai-page__*
+ *
+ * OPTIMIZATION:
+ * - Imports solution-base.css for shared solution page structure
+ * - Contains ONLY unique AI-specific features (if any)
+ * - Shared patterns extracted: hero with grid, orbs, features, benefits, process, CTA
+ *
+ * BEFORE: Estimate ~400-450 lines
+ * AFTER: ~35 lines (92% reduction)
+ * SAVINGS: ~365-415 lines
+ */
+
+/* ============================================
+   BASE IMPORTS
+   ============================================ */
+
+/**
+ * Import solution base for shared structure:
+ * - Hero with animated grid backdrop
+ * - Floating gradient orbs
+ * - Scoped CSS variables
+ * - Feature grids with glassmorphism
+ * - Benefits sections
+ * - Process timelines
+ * - CTA sections
+ */
+@import './solution-base.css';
+@import '../base/grid-utilities.css';
+@import '../base/card-base.css';
+@import '../patterns/hero/hero-base.css';
+
+/* ============================================
+   AI SOLUTION SPECIFIC STYLES
+   ============================================ */
+
+/**
+ * All AI solution styles are inherited from solution-base.css
+ * AI-specific accent colors set via .ai-page class in solution-base
+ */
+
+/* Placeholder for future AI-specific features */

@@ -30,7 +30,7 @@ import {
   BookOpen, Video, Users, Award, PlayCircle, Check,
   Lightbulb, Brain, Target, Zap, Clock, Calendar
 } from 'lucide-react';
-import { trainingServiceDetailed } from '../../data/services-detailed';
+import { trainingServiceDetailed } from '../../data/services';
 
 /* ─────────────────────────────────────────────
    DATA (inline — no separate data file yet)

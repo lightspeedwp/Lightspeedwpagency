@@ -22,15 +22,16 @@
  */
 
 import '@/styles/patterns/checklist.css';
-import { LucideIcon, CheckCircle } from 'lucide-react';
+import { CheckCircle } from 'lucide-react';
+import type { UniversalIcon } from '../../utils/icon-map';
 
 export interface CheckListProps {
   /** Array of items (strings or objects with text + optional icon) */
-  items: (string | { text: string; icon?: LucideIcon })[];
+  items: (string | { text: string; icon?: UniversalIcon })[];
   /** Visual variant */
   variant?: 'default' | 'compact' | 'large';
   /** Custom icon to use instead of CheckCircle */
-  icon?: LucideIcon;
+  icon?: UniversalIcon;
   /** Optional CSS class name */
   className?: string;
 }

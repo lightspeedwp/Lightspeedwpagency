@@ -20,7 +20,10 @@
            msg.includes('setupMessageChannel') ||
            msg.includes('figma.com/webpack-artifacts') ||
            msg.includes('figma_app') ||
-           msg.includes('webpack-artifacts');
+           msg.includes('webpack-artifacts') ||
+           msg.includes('Message aborted') ||
+           msg.includes('eS.setupMessageChannel') ||
+           msg.includes('e.onload');
   };
 
   // LAYER 0: Patch the Error constructor itself (most aggressive)

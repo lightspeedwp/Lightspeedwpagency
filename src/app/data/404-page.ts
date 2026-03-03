@@ -9,16 +9,8 @@
  * WordPress: Maps to templates/404.html
  */
 
-import { 
-  Home,
-  FileText,
-  Users,
-  Briefcase,
-  Mail,
-  Search,
-  ArrowRight
-} from 'lucide-react';
-import type { LucideIcon } from 'lucide-react';
+import type { UniversalIcon } from '../utils/icon-map';
+import { Home, Briefcase, FileText, Users, Mail } from 'lucide-react';
 
 /**
  * 404 Page Hero Content
@@ -34,7 +26,7 @@ export const error404Hero = {
  * Helpful Navigation Link Interface
  */
 export interface HelpfulLink {
-  icon: LucideIcon;
+  icon: UniversalIcon;
   title: string;
   description: string;
   page: string;

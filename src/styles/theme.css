@@ -427,3 +427,12 @@
  * - 100% CSS variables for user control
  */
 @import './templates/publishers-page.css';
+
+/**
+ * 38. Phosphor Icon Reference DevTools Page
+ * - Icon grid with search/filter
+ * - Weight comparison section
+ * - Copy-to-clipboard cards
+ * - 100% CSS variables for user control
+ */
+@import './templates/phosphor-icon-reference.css';

@@ -27,6 +27,7 @@ import '../../../styles/templates/lsx-sharing-page.css';
 import { Container } from '@/app/components/common/Container';
 import { FunkyCTA } from '@/app/components/patterns/FunkyCTA';
 import { FAQSection } from '@/app/components/patterns/FAQSection';
+import { FeatureList } from '@/app/components/patterns/FeatureList';
 import { Buttons } from '@/app/components/blocks/design/Buttons';
 import { useHeroParallax } from '../../hooks/useHeroParallax';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
@@ -115,23 +116,12 @@ export function LSXSharingTemplate() {
             </div>
           </ScrollReveal>
 
-          <div className="lsx-sharing__features-grid">
-            {lsxSharingFeatures.map((feature, index) => {
-              const Icon = feature.icon;
-              return (
-                <ScrollReveal key={index} animation="fade-up" delay={index * 80}>
-                  <div className="lsx-sharing__feature-card">
-                    <div className="lsx-sharing__feature-glow" />
-                    <div className="lsx-sharing__feature-icon">
-                      <Icon />
-                    </div>
-                    <h3 className="lsx-sharing__feature-title">{feature.title}</h3>
-                    <p className="lsx-sharing__feature-description">{feature.description}</p>
-                  </div>
-                </ScrollReveal>
-              );
-            })}
-          </div>
+          <FeatureList
+            items={lsxSharingFeatures}
+            columns={3}
+            variant="glow"
+            iconSize="md"
+          />
         </Container>
       </section>
 

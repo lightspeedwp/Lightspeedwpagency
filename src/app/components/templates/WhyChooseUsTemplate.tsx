@@ -26,6 +26,7 @@ import { TestimonialGrid } from '../patterns/TestimonialGrid';
 import { SocialProof } from '../patterns/SocialProof';
 import { FAQSection } from '../patterns/FAQSection';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
+import { StatsGrid } from '../patterns/StatsGrid';
 import { testimonials } from '../../data/testimonials';
 import { clientLogos } from '../../data/logos';
 import { aboutFAQs } from '../../data/faqs';
@@ -130,17 +131,14 @@ export function WhyChooseUsTemplate() {
           ============================================ */}
       <section className="wcu__stats">
         <Container>
-          <div className="wcu__stats-grid">
-            {whyChooseUsStats.map((stat, index) => (
-              <ScrollReveal key={index} animation="fade-up">
-                <article className="wcu__stat-card">
-                  <Star size={32} className="wcu__stat-icon" />
-                  <div className="wcu__stat-value">{stat.value}</div>
-                  <div className="wcu__stat-label">{stat.label}</div>
-                </article>
-              </ScrollReveal>
-            ))}
-          </div>
+          <StatsGrid
+            stats={whyChooseUsStats.map((stat) => ({
+              number: stat.value,
+              label: stat.label
+            }))}
+            columns={3}
+            variant="cards"
+          />
         </Container>
       </section>
 

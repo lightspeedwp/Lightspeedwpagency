@@ -7,7 +7,8 @@
  * **Last Updated:** 2025-02-17
  */
 
-import { LucideIcon, ShoppingBag, CreditCard, Truck, BarChart3, Globe, ShieldCheck } from 'lucide-react';
+import { ShoppingBag, CreditCard, Truck, BarChart3, Globe, ShieldCheck } from 'lucide-react';
+import type { UniversalIcon } from '../utils/icon-map';
 
 /**
  * Solution Feature Interface
@@ -15,7 +16,7 @@ import { LucideIcon, ShoppingBag, CreditCard, Truck, BarChart3, Globe, ShieldChe
 export interface SolutionFeature {
   title: string;
   description: string;
-  icon?: LucideIcon;
+  icon?: UniversalIcon;
 }
 
 /**

@@ -12,7 +12,7 @@
  * - BEM naming
  */
 
-import { LucideIcon } from 'lucide-react';
+import type { UniversalIcon } from '../../utils/icon-map';
 import { Link } from 'react-router';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
@@ -20,8 +20,8 @@ import { getPageUrl } from '../../data/pages';
 
 
 export interface FeatureGridItem {
-  /** Lucide icon component */
-  icon: LucideIcon;
+  /** Icon component (Lucide or Phosphor) */
+  icon: UniversalIcon;
   /** Feature/service title */
   title: string;
   /** Feature/service description */
@@ -40,7 +40,7 @@ export interface FeatureGridProps {
   /** Optional badge text above title */
   badge?: string;
   /** Optional badge icon */
-  badgeIcon?: LucideIcon;
+  badgeIcon?: UniversalIcon;
   /** Section title */
   title: string;
   /** Optional title highlight (applies gradient effect) */
