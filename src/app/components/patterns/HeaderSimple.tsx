@@ -4,12 +4,13 @@
  * WordPress concept: Block pattern — lsx-design/layout/header-simple
  * 
  * Simple horizontal navigation header with dropdown support.
+ * @see /src/app/utils/icon-map.ts
  * Uses design system tokens for all styling.
  */
 
 import { Logo } from '../common/Logo';
 import { Container } from '../common/Container';
-import { ChevronDown } from 'lucide-react';
+import { CaretDown as ChevronDown } from '@phosphor-icons/react';
 import { useState } from 'react';
 
 interface NavItem {
@@ -83,8 +84,8 @@ export function HeaderSimple({
                       <span>{item.label}</span>
                       {item.hasDropdown && (
                         <ChevronDown 
-                          size={20} 
-                          strokeWidth={2}
+                          size={16} 
+                          weight="bold"
                           className={chevronClasses}
                         />
                       )}

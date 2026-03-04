@@ -21,6 +21,14 @@
  * - No inline Tailwind classes
  * - All styling via @/styles/templates/lsx-search-page.css
  * - BEM naming throughout
+ *
+ * PATTERN COMPONENTS:
+ * - ✅ FeatureList — Key Features section (glow variant)
+ * - ✅ FAQSection — FAQ section
+ * - ✅ FunkyCTA — Final conversion section
+ *
+ * @see /src/styles/templates/lsx-search-page.css
+ * @migrated March 3, 2026 — Migrated inline feature grid to FeatureList component
  */
 
 import '../../../styles/templates/lsx-search-page.css';
@@ -28,11 +36,12 @@ import { Section } from '@/app/components/common/Section';
 import { Container } from '@/app/components/common/Container';
 import { FunkyCTA } from '@/app/components/patterns/FunkyCTA';
 import { FAQSection } from '@/app/components/patterns/FAQSection';
+import { FeatureList } from '@/app/components/patterns/FeatureList';
 import { Buttons } from '@/app/components/blocks/design/Buttons';
 import { useHeroParallax } from '../../hooks/useHeroParallax';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { ScrollDownArrow } from '../common/ScrollDownArrow';
-import { Search } from 'lucide-react';
+import { MagnifyingGlass as Search } from '@phosphor-icons/react';
 
 import {
   lsxSearchHero,
@@ -116,23 +125,19 @@ export function LSXSearchTemplate() {
             </div>
           </ScrollReveal>
 
-          <div className="lsx-search__features-grid">
-            {lsxSearchFeatures.map((feature, index) => {
-              const Icon = feature.icon;
-              return (
-                <ScrollReveal key={index} animation="fade-up" delay={index * 80}>
-                  <div className="lsx-search__feature-card">
-                    <div className="lsx-search__feature-glow" />
-                    <div className="lsx-search__feature-icon">
-                      <Icon />
-                    </div>
-                    <h3 className="lsx-search__feature-title">{feature.title}</h3>
-                    <p className="lsx-search__feature-description">{feature.description}</p>
-                  </div>
-                </ScrollReveal>
-              );
-            })}
-          </div>
+          <ScrollReveal animation="fade-up" delay={100}>
+            <FeatureList
+              items={lsxSearchFeatures.map((feature) => ({
+                icon: feature.icon,
+                title: feature.title,
+                description: feature.description
+              }))}
+              columns={3}
+              variant="glow"
+              iconSize="md"
+              iconStyle="rounded"
+            />
+          </ScrollReveal>
         </Container>
       </section>
 

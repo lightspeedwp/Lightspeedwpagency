@@ -22,9 +22,7 @@ import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { FunkyCTA } from '../patterns/FunkyCTA';
 import { FAQSection } from '../patterns/FAQSection';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
-import { Check, ShieldCheck } from 'lucide-react';
-
-
+import { Check, ShieldCheck } from '@phosphor-icons/react';
 
 /* ── Data imports ── */
 import {

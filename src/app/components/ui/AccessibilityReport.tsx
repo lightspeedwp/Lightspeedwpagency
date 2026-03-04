@@ -15,11 +15,12 @@
  * - 100% CSS variables
  * - BEM naming (.a11y-report)
  *
+ * @see /src/app/utils/icon-map.ts
  * @see /guidelines/components/AccessibilityReport.md
  */
 
 import { useState } from 'react';
-import { CheckCircle, XCircle, AlertTriangle, Info, ChevronDown, ChevronUp } from 'lucide-react';
+import { CheckCircle, XCircle, Warning as AlertTriangle, Info, CaretDown as ChevronDown, CaretUp as ChevronUp } from '@phosphor-icons/react';
 import { AccessibilityResults, AccessibilityIssue } from '../../hooks/useAccessibilityCheck';
 
 export interface AccessibilityReportProps {

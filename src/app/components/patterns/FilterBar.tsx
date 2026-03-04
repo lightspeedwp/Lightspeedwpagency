@@ -18,10 +18,11 @@
  * - BEM naming (.filter-bar)
  * - Dedicated CSS file
  *
+ * @see /src/app/utils/icon-map.ts
  * @see /guidelines/patterns/FilterBar.md
  */
 
-import { Search, X, SlidersHorizontal, ArrowUpDown } from 'lucide-react';
+import { MagnifyingGlass as Search, X, SlidersHorizontal, ArrowsDownUp as ArrowUpDown } from '@phosphor-icons/react';
 
 export interface FilterBarProps {
   // Search

@@ -12,15 +12,13 @@
  * @see /src/styles/templates/archive.css
  */
 
-import '../../../../styles/templates/archive.css';
 import '../../../../styles/templates/video-archive.css';
 import { Container } from '@/app/components/common/Container';
 import { Section } from '@/app/components/common/Section';
 import { BreadcrumbPart } from '@/app/components/parts/BreadcrumbPart';
 import { allPosts } from '@/app/data/posts-formats';
-import { Play, Clock, Eye } from 'lucide-react';
+import { Play, Clock, Eye } from '@phosphor-icons/react';
 import { Link } from 'react-router';
-
 
 export function VideoArchiveTemplate() {
   const videoPosts = allPosts.filter(post => post.format === 'video');

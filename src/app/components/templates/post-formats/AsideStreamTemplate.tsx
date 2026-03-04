@@ -16,8 +16,7 @@ import { Container } from '@/app/components/common/Container';
 import { Section } from '@/app/components/common/Section';
 import { BreadcrumbPart } from '@/app/components/parts/BreadcrumbPart';
 import { allPosts } from '@/app/data/posts-formats';
-import { MessageSquare, Hash, Share2, MoreHorizontal } from 'lucide-react';
-
+import { ChatCircle as MessageSquare, Hash, ShareNetwork as Share2, DotsThree as MoreHorizontal } from '@phosphor-icons/react';
 
 export function AsideStreamTemplate() {
   const asidePosts = allPosts.filter(post => post.format === 'aside');

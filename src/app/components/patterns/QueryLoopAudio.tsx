@@ -1,15 +1,8 @@
 /**
- * Query Loop — Audio Post Format
- *
- * WordPress pattern: core/query + audio post-template
- *
- * Renders audio posts (podcasts, interviews) with play indicators,
- * duration badges, and waveform-style visual cues.
- *
- * @see /src/styles/patterns/query-loop.css
+ * QueryLoopAudio Pattern — LSX Design
  */
 
-import { Mic, Clock, Play } from 'lucide-react';
+import { Microphone as Mic, Clock, Play } from '@phosphor-icons/react';
 import { Link } from 'react-router';
 import { QueryLoop } from './QueryLoop';
 import { useStaggerReveal } from '../../hooks/useScrollReveal';

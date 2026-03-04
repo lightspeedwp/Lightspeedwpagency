@@ -16,6 +16,12 @@
  *  8. FAQ (accordion)
  *  9. CTA (gradient section)
  *
+ * Pattern Components:
+ * - ✅ FeatureList — Tech features (6 items) + Why choose benefits (4 items)
+ * - ✅ StatsGrid — Performance stats (4 items)
+ *
+ * @migrated March 3, 2026 — Phase 3.1: Migrated inline stats grid and benefits grid to StatsGrid + FeatureList (~80 lines saved)
+ * 
  * @see /src/styles/templates/page-service-hosting.css
  * @see /src/app/data/hosting-page.ts
  */
@@ -30,10 +36,11 @@ import { Button } from '../blocks/design/Buttons';
 import { FunkyCTA } from '../patterns/FunkyCTA';
 import { FAQSection } from '../patterns/FAQSection';
 import { FeatureList } from '../patterns/FeatureList';
+import { StatsGrid } from '../patterns/StatsGrid';
 import { RelatedServicesGrid } from '../patterns/RelatedServicesGrid';
 import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
 import { HostingContactModal } from '../patterns/HostingContactModal';
-import { Check, X, Rocket, Phone, Shield } from 'lucide-react';
+import { Check, X, Rocket, Phone, Shield } from '@phosphor-icons/react';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 
 /* ── Data imports (single source of truth) ── */
@@ -51,7 +58,6 @@ import {
 } from '../../data/hosting-page';
 
 import { hostingFAQs } from '../../data/faqs';
-import { hostingServiceDetailed } from '../../data/services';
 
 export function HostingTemplate() {
   /* ── Modal state ── */
@@ -123,24 +129,16 @@ export function HostingTemplate() {
               </div>
 
               {/* Stats strip — with uptime tick animation on values */}
-              <div className="hosting-lab__stats">
-                {hostingStats.map((stat, index) => {
-                  const Icon = stat.icon;
-                  return (
-                    <ScrollReveal key={stat.label} animation="fade-up" delay={index * 100}>
-                      <div className="hosting-lab__stat">
-                        <div className="hosting-lab__stat-icon">
-                          <Icon size={20} />
-                        </div>
-                        <div className="hosting-lab__stat-value hosting-lab__uptime-tick">
-                          {stat.value}
-                        </div>
-                        <div className="hosting-lab__stat-label">{stat.label}</div>
-                      </div>
-                    </ScrollReveal>
-                  );
-                })}
-              </div>
+              <StatsGrid
+                stats={hostingStats.map(stat => ({
+                  number: stat.value,
+                  label: stat.label,
+                  icon: stat.icon
+                }))}
+                columns={4}
+                variant="inline"
+                className="hosting-lab__stats"
+              />
             </div>
           </ScrollReveal>
         </Container>
@@ -298,24 +296,12 @@ export function HostingTemplate() {
             </div>
           </ScrollReveal>
 
-          <div className="hosting-lab__why-grid hosting-lab__content-layer">
-            {whyChooseHosting.benefits.map((benefit, idx) => {
-              const Icon = benefit.icon;
-              return (
-                <ScrollReveal key={idx} animation="fade-up" delay={idx * 100}>
-                  <div className="hosting-lab__why-card hosting-lab__card--holographic">
-                    <div className="hosting-lab__why-icon">
-                      <Icon size={22} />
-                    </div>
-                    <div>
-                      <h3 className="hosting-lab__why-title">{benefit.title}</h3>
-                      <p className="hosting-lab__why-desc">{benefit.description}</p>
-                    </div>
-                  </div>
-                </ScrollReveal>
-              );
-            })}
-          </div>
+          <FeatureList
+            items={whyChooseHosting.benefits}
+            columns={2}
+            variant="glass"
+            iconSize="md"
+          />
         </Container>
       </section>
 
@@ -462,13 +448,6 @@ export function HostingTemplate() {
       {/* ============================================
           9. CTA — with modal trigger
           ============================================ */}
-      {hostingServiceDetailed.relatedServices && hostingServiceDetailed.relatedServices.length > 0 && (
-        <RelatedServicesGrid
-          title="Related Services"
-          subtitle="Enhance your hosting with these complementary services"
-          services={hostingServiceDetailed.relatedServices}
-        />
-      )}
       <ServiceTestimonial
         serviceSlug="hosting"
         subtitle="Trusted by businesses for reliable WordPress hosting"

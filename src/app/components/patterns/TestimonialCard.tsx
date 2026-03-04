@@ -23,7 +23,7 @@
  * @see /guidelines/patterns/TestimonialCard.md
  */
 
-import { Star, Quote } from 'lucide-react';
+import { Star, Quotes } from '@phosphor-icons/react';
 
 /* ── Props ── */
 
@@ -116,7 +116,7 @@ export function TestimonialCard({
       {/* Quote Icon */}
       {showQuoteIcon && (
         <div className="testimonial-card__quote-icon" aria-hidden="true">
-          <Quote size={20} strokeWidth={2} />
+          <Quotes size={20} strokeWidth={2} />
         </div>
       )}
 

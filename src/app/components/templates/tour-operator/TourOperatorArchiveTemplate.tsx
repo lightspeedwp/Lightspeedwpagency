@@ -12,7 +12,7 @@ import '../../../../styles/templates/tour-operator-archive.css';
 import { Container } from '@/app/components/common/Container';
 import { Section } from '@/app/components/common/Section';
 import { allTourContent } from '@/app/data/tour-operator';
-import { MapPin, Calendar, Star, Check } from 'lucide-react';
+import { MapPin, Calendar, Star, Check } from '@phosphor-icons/react';
 import { Link } from 'react-router';
 
 export function TourOperatorArchiveTemplate() {

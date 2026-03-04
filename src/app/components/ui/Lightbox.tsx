@@ -18,11 +18,12 @@
  * - BEM naming (.lightbox)
  * - Dedicated CSS file
  *
+ * @see /src/app/utils/icon-map.ts
  * @see /guidelines/components/Lightbox.md
  */
 
 import { useEffect, useState } from 'react';
-import { X, ChevronLeft, ChevronRight, ZoomIn } from 'lucide-react';
+import { X, CaretLeft as ChevronLeft, CaretRight as ChevronRight, MagnifyingGlassPlus as ZoomIn } from '@phosphor-icons/react';
 import { useFocusTrap } from '../../hooks/useFocusTrap';
 
 export interface LightboxImage {

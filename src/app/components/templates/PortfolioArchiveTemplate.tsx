@@ -36,7 +36,7 @@ import { Heading } from '../blocks/text/Heading';
 import { Paragraph } from '../blocks/text/Paragraph';
 import { useStaggerReveal } from '../../hooks/useScrollReveal';
 import { useState, useEffect } from 'react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight } from '@phosphor-icons/react';
 import { portfolioFAQs } from '../../data/faqs';
 import { clientLogos } from '../../data/logos';
 import { portfolioPageCTA } from '../../data/cta';

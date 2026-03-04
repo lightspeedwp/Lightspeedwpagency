@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Filter, Check, ChevronDown } from 'lucide-react';
+import { Funnel as Filter, Check, CaretDown as ChevronDown } from '@phosphor-icons/react';
 import { MobileFilterPopover, FilterOption } from './MobileFilterPopover';
 
 export interface SortOption {

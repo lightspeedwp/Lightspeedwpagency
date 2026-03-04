@@ -35,7 +35,7 @@ import { Heading } from '../common/Heading';
 import { Paragraph } from '../blocks/text/Paragraph';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { FunkyCTA } from '../patterns/FunkyCTA';
-import { AlertCircle } from 'lucide-react';
+import { WarningCircle } from '@phosphor-icons/react';
 
 /**
  * SingleTemplate Props
@@ -76,7 +76,7 @@ export function SingleTemplate({
               </div>
             ) : (
               <div className="wp-single-empty-state">
-                <AlertCircle 
+                <WarningCircle 
                   size={24}
                   className="wp-single-empty-state__icon"
                 />

@@ -17,12 +17,12 @@
  */
 
 import { Fragment } from 'react';
-import { Check } from 'lucide-react';
+import { Check } from '@phosphor-icons/react';
 import { 
   featureCategories, 
-  serviceComparisons, 
-  serviceIncludesFeature
-} from '../../data/service-comparison';
+  type FeatureCategory,
+  type FeatureItem 
+} from '../../data/service-comparison-features';
 // CSS imported centrally via /src/styles/index.css
 
 export interface ServiceComparisonTableProps {

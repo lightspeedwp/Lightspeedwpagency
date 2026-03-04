@@ -10,8 +10,7 @@ import '../../../styles/woocommerce/cart.css';
 import { Container } from '../common/Container';
 import { Heading } from '../common/Heading';
 import { allProducts } from '../../data/woocommerce';
-import { X, Minus, Plus } from 'lucide-react';
-
+import { X, Minus, Plus } from '@phosphor-icons/react';
 
 export function CartTemplate() {
   // Mock cart items

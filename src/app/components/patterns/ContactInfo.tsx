@@ -1,16 +1,16 @@
 /**
  * Contact Info Pattern
  * 
- * WordPress pattern: lsx-design/content/contact-info
+ * Contact information cards (phone, email, address, hours).
+ * Maps to WordPress pattern: lsx-design/content/contact-info
  * 
- * Displays contact information (phone, email, address, hours, social links) in a structured format.
- * Commonly used on Contact pages, footer sections, and location pages.
- * 
- * @see {@link /guidelines/patterns/ContactInfo.md}
+ * **Design Token Compliance:**
+ * - Uses /src/styles/patterns/contact-info.css
+ * - 100% CSS variables
+ * - BEM naming
  */
 
-import { Phone, Mail, MapPin, Clock, Globe, MessageCircle } from 'lucide-react';
-
+import { Phone, EnvelopeSimple as Mail, MapPin, Clock, Globe, Chat as MessageCircle } from '@phosphor-icons/react';
 
 export type ContactInfoType = 'phone' | 'email' | 'address' | 'hours' | 'website' | 'chat';
 

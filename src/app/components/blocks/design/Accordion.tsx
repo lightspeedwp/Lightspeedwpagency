@@ -27,11 +27,12 @@
  * </Accordion>
  * ```
  * 
+ * @see /src/app/utils/icon-map.ts
  * @see /guidelines/blocks/design/Accordion.md for complete documentation
  */
 
 import React, { useState, useRef, useEffect } from 'react';
-import { ChevronDown } from 'lucide-react';
+import { CaretDown as ChevronDown } from '@phosphor-icons/react';
 
 /**
  * Individual Accordion Item Props
@@ -152,6 +153,7 @@ export function AccordionItem({
         <ChevronDown 
           className={`wp-block-accordion__icon ${isOpen ? 'wp-block-accordion__icon--open' : ''}`}
           size={20}
+          weight="bold"
           aria-hidden="true"
         />
       </button>

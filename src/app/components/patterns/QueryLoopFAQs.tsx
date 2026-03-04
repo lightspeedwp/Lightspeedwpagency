@@ -1,14 +1,8 @@
 /**
- * Query Loop — FAQs
- *
- * WordPress pattern: core/query + faq post-template
- *
- * Renders FAQ items as expandable accordion cards.
- *
- * @see /src/styles/patterns/query-loop.css
+ * QueryLoopFAQs Pattern — LSX Design
  */
 
-import { HelpCircle, ChevronDown } from 'lucide-react';
+import { Question as HelpCircle, CaretDown as ChevronDown } from '@phosphor-icons/react';
 import { useState } from 'react';
 import { QueryLoop } from './QueryLoop';
 import { useScrollReveal } from '../../hooks/useScrollReveal';

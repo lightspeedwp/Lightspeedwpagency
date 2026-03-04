@@ -1,25 +1,17 @@
 /**
  * Case Study Preview Pattern
  * 
- * WordPress Pattern: lsx-design/content/case-study-preview
+ * Case study card preview with metrics and CTA for LSX Design.
+ * Maps to WordPress pattern: lsx-design/content/case-study-preview
  * 
- * Featured case study highlights with results and key metrics.
- * Maps to WordPress Group block with Media & Text blocks.
- * 
- * All styling in /src/styles/case-study-preview.css (user-editable)
- * 
- * Design Token Compliance:
- * - Typography: CSS variables only
- * - Colors: CSS variables only
- * - Spacing: CSS variables only
- * - Fonts: var(--font-primary), var(--font-secondary)
- * 
- * @see /guidelines/patterns/CaseStudyPreview.md
+ * **Design Token Compliance:**
+ * - Uses /src/styles/patterns/case-study-preview.css
+ * - 100% CSS variables
+ * - BEM naming
  */
 
-import { ArrowRight, TrendingUp } from 'lucide-react';
+import { ArrowRight, TrendUp } from '@phosphor-icons/react';
 import { Button } from '../blocks/design/Buttons';
-
 
 export interface CaseStudyMetric {
   label: string;
@@ -121,7 +113,7 @@ export function CaseStudyPreview({
                     {metric.value}
                   </span>
                   {metric.change && (
-                    <TrendingUp
+                    <TrendUp
                       size={20}
                       className="case-study-preview__metric-icon"
                     />

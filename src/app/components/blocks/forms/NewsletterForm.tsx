@@ -5,11 +5,12 @@
  * 
  * Production-grade newsletter subscription form.
  * 
+ * @see /src/app/utils/icon-map.ts
  * @see /src/styles/blocks/forms/newsletter-form.css
  */
 
 import { useState, FormEvent } from 'react';
-import { Mail, Send, CheckCircle2, AlertCircle } from 'lucide-react';
+import { EnvelopeSimple as Mail, PaperPlaneRight as Send, CheckCircle as CheckCircle2, WarningCircle as AlertCircle } from '@phosphor-icons/react';
 import { Button } from '../../blocks/design/Buttons';
 
 export interface NewsletterFormProps {

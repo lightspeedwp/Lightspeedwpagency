@@ -28,19 +28,51 @@ import { servicePricingTimeline } from '../../data/services';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { ScrollDownArrow } from '../common/ScrollDownArrow';
 import { 
-  PenTool, 
-  Edit3, 
+  PenNib as PenTool, 
+  PencilLine as Edit3, 
   FileText, 
   BookOpen, 
   Feather, 
-  Layout
-} from 'lucide-react';
+  SquaresFour as Layout
+} from '@phosphor-icons/react';
 
 // Import detailed data
-import { contentServiceDetailed } from '../../data/services';
+import { 
+  contentHero,
+  whyContentStrategy,
+  contentServices,
+  contentProcess
+} from '../../data/content-service-page';
 
 export function ContentServiceTemplate() {
-  const data = contentServiceDetailed;
+  // Build a unified data object from imports
+  const data = {
+    tagline: contentHero.description,
+    whyLightSpeed: {
+      title: whyContentStrategy.title,
+      description: whyContentStrategy.description
+    },
+    subServices: contentServices.map((service, i) => ({
+      id: `service-${i}`,
+      title: service.title,
+      description: service.description
+    })),
+    process: {
+      steps: contentProcess.map((step, i) => ({
+        id: `step-${i}`,
+        number: `0${i + 1}`,
+        title: step.title,
+        description: step.description
+      }))
+    },
+    relatedServices: [],
+    cta: {
+      title: "Ready to Transform Your Content?",
+      description: "Let's create compelling content that engages your audience and drives results.",
+      buttonText: "Start Content Strategy",
+      buttonPage: "contact" as const
+    }
+  };
 
   // Icon mapping for Sub-services
   const serviceIcons: Record<string, any> = {

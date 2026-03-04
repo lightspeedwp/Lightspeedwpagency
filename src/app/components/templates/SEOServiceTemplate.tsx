@@ -19,20 +19,26 @@
  * - BEM methodology for all class names
  * - No hardcoded colors or spacing values
  * - Font families: var(--font-primary) and var(--font-secondary) only
+ * 
+ * Pattern Components:
+ * - ✅ FeatureList — Benefits grid (6 items, 3 columns, glow variant)
+ * 
+ * @migrated March 3, 2026 — Phase 3.1: Migrated inline benefits grid to FeatureList component (~80 lines saved)
  */
 
-import { Search, TrendingUp, Target, BarChart3, FileSearch, Award } from 'lucide-react';
+import { MagnifyingGlass, TrendUp, Target, ChartBar, FileMagnifyingGlass, Trophy } from '@phosphor-icons/react';
 import { Link } from 'react-router';
+import { FeatureList } from '../patterns/FeatureList';
 
 export const SEOServiceTemplate = () => {
   const benefits = [
     {
-      icon: Search,
+      icon: MagnifyingGlass,
       title: 'Keyword Research & Strategy',
       description: 'Data-driven keyword analysis to target high-value search terms your audience is actually using.'
     },
     {
-      icon: TrendingUp,
+      icon: TrendUp,
       title: 'Technical SEO Optimization',
       description: 'Fix crawl errors, improve site architecture, and ensure search engines can properly index your content.'
     },
@@ -42,17 +48,17 @@ export const SEOServiceTemplate = () => {
       description: 'Optimize meta tags, headings, content structure, and internal linking for maximum relevance.'
     },
     {
-      icon: BarChart3,
+      icon: ChartBar,
       title: 'Performance Tracking',
       description: 'Monitor rankings, traffic, and conversions with comprehensive analytics and reporting.'
     },
     {
-      icon: FileSearch,
+      icon: FileMagnifyingGlass,
       title: 'Content Optimization',
       description: 'Enhance existing content and create new SEO-optimized pages that rank and convert.'
     },
     {
-      icon: Award,
+      icon: Trophy,
       title: 'Competitive Analysis',
       description: 'Understand your competitive landscape and identify opportunities to outrank competitors.'
     }
@@ -146,20 +152,12 @@ export const SEOServiceTemplate = () => {
           </p>
         </div>
         
-        <div className="seo-service__benefits-grid">
-          {benefits.map((benefit, index) => {
-            const Icon = benefit.icon;
-            return (
-              <div key={index} className="seo-service__benefit-card">
-                <div className="seo-service__benefit-icon">
-                  <Icon className="seo-service__benefit-icon-svg" />
-                </div>
-                <h3 className="seo-service__benefit-title">{benefit.title}</h3>
-                <p className="seo-service__benefit-description">{benefit.description}</p>
-              </div>
-            );
-          })}
-        </div>
+        <FeatureList 
+          items={benefits} 
+          columns={3} 
+          variant="glow" 
+          iconSize="lg"
+        />
       </section>
 
       {/* Deliverables Timeline */}

@@ -7,6 +7,15 @@
  * - Alternating Milestone Timeline with glow cards
  * - Glassmorphism Stats Section
  * - 100% CSS variable compliance, zero Tailwind classes
+ * 
+ * PATTERN COMPONENTS:
+ * - ✅ StatsGrid — Company milestones (3 stats, 3 columns)
+ * - ✅ FAQSection — FAQ accordion
+ * - ✅ FunkyCTA — Final CTA section
+ * - ⚠️ Milestones Timeline — Custom year-based layout (kept inline due to specialized structure)
+ * 
+ * @note Milestones timeline kept inline due to year-based vertical layout with custom positioning
+ * @migrated March 3, 2026 — Phase 3.3: Documented pattern usage, no additional extraction needed
  */
 
 /* Route-level CSS */
@@ -22,14 +31,13 @@ import { useHeroParallax } from '../../hooks/useHeroParallax';
 import { aboutFAQs } from '../../data/faqs';
 import {
   Rocket,
-  Award,
+  Trophy as Award,
   Users,
-  TrendingUp,
+  TrendUp,
   Globe,
-  Sparkles,
-  History
-} from 'lucide-react';
-
+  Sparkle,
+  ClockCounterClockwise as History
+} from '@phosphor-icons/react';
 
 export function AboutHistoryTemplate() {
   const parallaxRef = useHeroParallax(0.4);
@@ -61,13 +69,13 @@ export function AboutHistoryTemplate() {
     },
     {
       year: '2022',
-      icon: TrendingUp,
+      icon: TrendUp,
       title: 'FSE pioneers',
       description: 'Early adoption of WordPress Full Site Editing. Developed proprietary pattern libraries and contributed to the WordPress community.'
     },
     {
       year: '2024',
-      icon: Sparkles,
+      icon: Sparkle,
       title: 'Design system leaders',
       description: 'Released LSX Design System 2.0 with enhanced token support, accessibility features, and modern development workflows. 500+ projects delivered.'
     }

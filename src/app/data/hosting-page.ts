@@ -18,14 +18,16 @@
  *
  * @see /src/app/components/templates/HostingTemplate.tsx
  * @see /src/styles/templates/page-service-hosting.css
+ * 
+ * @migrated March 3, 2026 — Lucide icons → Phosphor icons (Server → HardDrives, Activity → Pulse, Gauge → Speedometer)
  */
 
 import {
-  Server, Shield, Zap, Globe, Database, Clock,
-  Headphones, RefreshCw, Award, CheckCircle,
-  Cpu, Wifi, HardDrive, Lock, BarChart3, Rocket,
-  ArrowRight, Activity, Eye, Gauge
-} from 'lucide-react';
+  HardDrives, Shield, Lightning, Globe, Database, Clock,
+  Headphones, ArrowsClockwise, Trophy, CheckCircle,
+  Cpu, WifiHigh, HardDrive, Lock, ChartBar, Rocket,
+  ArrowRight, Pulse, Eye, Speedometer
+} from '@phosphor-icons/react';
 
 /* ─────────────────────────────────────────────
  * 0. Breadcrumbs
@@ -40,7 +42,7 @@ export const hostingBreadcrumbs = [
  * 1. Hero
  * ───────────────────────────────────────────── */
 export const hostingPageHero = {
-  badge: { text: 'Next-gen infrastructure', icon: Server },
+  badge: { text: 'Next-gen infrastructure', icon: HardDrives },
   title: 'High-velocity WordPress hosting',
   description:
     'Enterprise-grade servers tuned for WordPress. Sub-second load times, ironclad security, and 24/7 expert support — so you can focus on growing your business.',
@@ -52,8 +54,8 @@ export const hostingPageHero = {
  * 2. Performance Stats
  * ───────────────────────────────────────────── */
 export const hostingStats = [
-  { value: '99.99%', label: 'Uptime SLA', icon: Activity },
-  { value: '<200ms', label: 'Avg. TTFB', icon: Gauge },
+  { value: '99.99%', label: 'Uptime SLA', icon: Pulse },
+  { value: '<200ms', label: 'Avg. TTFB', icon: Speedometer },
   { value: '200+', label: 'Edge locations', icon: Globe },
   { value: '24/7', label: 'Expert support', icon: Headphones }
 ];
@@ -65,7 +67,7 @@ export const hostingPlans = [
   {
     id: 'starter',
     name: 'Starter',
-    icon: Server,
+    icon: HardDrives,
     tagline: 'For small business websites and blogs',
     price: { display: '$49', period: '/mo' },
     description:
@@ -92,7 +94,7 @@ export const hostingPlans = [
   {
     id: 'pro',
     name: 'Pro',
-    icon: Zap,
+    icon: Lightning,
     tagline: 'For growing businesses and e-commerce',
     price: { display: '$99', period: '/mo' },
     description:
@@ -150,7 +152,7 @@ export const hostingPlans = [
  * ───────────────────────────────────────────── */
 export const hostingFeatures = [
   {
-    icon: Zap,
+    icon: Lightning,
     title: 'Blazing fast speed',
     description:
       'Optimized server stack with Nginx, PHP 8.3, and Redis object caching for sub-second page loads.'
@@ -180,7 +182,7 @@ export const hostingFeatures = [
       'Our team of WordPress engineers is available 24/7 via chat, phone, and ticket to resolve any issue.'
   },
   {
-    icon: RefreshCw,
+    icon: ArrowsClockwise,
     title: 'Free site migration',
     description:
       'We handle the entire migration process with zero downtime — switch to us completely risk-free.'
@@ -214,7 +216,7 @@ export const whyChooseHosting = {
         'SSH access, WP-CLI, Git integration, and staging environments for streamlined development workflows.'
     },
     {
-      icon: BarChart3,
+      icon: ChartBar,
       title: 'Scalable architecture',
       description:
         'Seamlessly handle traffic spikes with auto-scaling resources — no manual upgrades needed.'
@@ -267,7 +269,7 @@ export const hostingGuarantees = {
         'We guarantee 99.99% uptime backed by our service level agreement with credits for any downtime.'
     },
     {
-      icon: Award,
+      icon: Trophy,
       title: 'Free migration',
       description:
         'Our experts handle your migration with zero downtime — we make the switch effortless.'
@@ -321,7 +323,7 @@ export const hostingTechSpecs = [
   { icon: Cpu, label: 'NVMe SSD' },
   { icon: Globe, label: 'Global CDN' },
   { icon: Shield, label: 'WAF Pro' },
-  { icon: Wifi, label: '10 Gbps' }
+  { icon: WifiHigh, label: '10 Gbps' }
 ];
 
 /* ─────────────────────────────────────────────

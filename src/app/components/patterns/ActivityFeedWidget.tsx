@@ -16,8 +16,7 @@ import { blogPosts, blogAuthors } from '../../data/blog-posts';
 import { portfolioProjects } from '../../data/portfolio-projects';
 import { testimonials } from '../../data/testimonials';
 import { Link } from 'react-router';
-import { FileText, Briefcase, MessageSquare, Calendar } from 'lucide-react';
-
+import { FileText, Briefcase, ChatDots, CalendarBlank } from '@phosphor-icons/react';
 
 interface FeedItem {
   id: string;
@@ -119,7 +118,7 @@ export function ActivityFeedWidget({
   const typeIcons: Record<string, typeof FileText> = {
     blog: FileText,
     project: Briefcase,
-    testimonial: MessageSquare,
+    testimonial: ChatDots,
   };
 
   const typeLabels: Record<string, string> = {
@@ -179,7 +178,7 @@ export function ActivityFeedWidget({
                 </Link>
                 <p className="activity-feed__item-excerpt">{item.excerpt}</p>
                 <div className="activity-feed__item-meta">
-                  <Calendar size={12} className="activity-feed__item-meta-icon" />
+                  <CalendarBlank size={12} className="activity-feed__item-meta-icon" />
                   <span>{formatDate(item.date)}</span>
                   {item.meta && (
                     <>

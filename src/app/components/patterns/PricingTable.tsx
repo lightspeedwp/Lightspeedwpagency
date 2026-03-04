@@ -16,9 +16,8 @@ import { Container } from '../common/Container';
 import { Heading } from '../common/Heading';
 import { Button } from '../blocks/design/Buttons';
 import { Grid } from '../blocks/design/Grid';
-import { Check } from 'lucide-react';
+import { Check } from '@phosphor-icons/react';
 import type { PricingPackage } from '../../data/pricing';
-
 
 export interface PricingTableProps {
   heading?: string;

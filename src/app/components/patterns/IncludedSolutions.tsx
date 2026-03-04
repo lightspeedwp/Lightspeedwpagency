@@ -25,7 +25,7 @@
  */
 
 import { Link } from 'react-router';
-import { ArrowRight, Package } from 'lucide-react';
+import { ArrowRight, Package } from '@phosphor-icons/react';
 import { getSolutionsForService, getFeaturedSolutionsForService, type SolutionReference } from '../../data/service-solution-map';
 import { useScrollReveal, ScrollReveal } from '../../hooks/useScrollReveal';
 // CSS imported centrally via /src/styles/index.css

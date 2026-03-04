@@ -1,15 +1,8 @@
 /**
- * Query Loop — Posts (Standard Blog)
- *
- * WordPress pattern: core/query + post post-template
- *
- * Renders standard blog posts as cards with featured images,
- * categories, excerpts, and author metadata.
- *
- * @see /src/styles/patterns/query-loop.css
+ * QueryLoopPosts Pattern — LSX Design
  */
 
-import { Calendar, Clock, User } from 'lucide-react';
+import { Calendar, Clock, User } from '@phosphor-icons/react';
 import { Link } from 'react-router';
 import { QueryLoop } from './QueryLoop';
 import { useStaggerReveal } from '../../hooks/useScrollReveal';

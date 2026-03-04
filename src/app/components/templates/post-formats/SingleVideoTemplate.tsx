@@ -17,8 +17,7 @@ import { Container } from '@/app/components/common/Container';
 import { Section } from '@/app/components/common/Section';
 import { BreadcrumbPart } from '@/app/components/parts/BreadcrumbPart';
 import { videoPost } from '@/app/data/posts-formats';
-import { ThumbsUp, Share2 } from 'lucide-react';
-
+import { ThumbsUp, ShareNetwork as Share2 } from '@phosphor-icons/react';
 
 export function SingleVideoTemplate() {
   const post = videoPost;

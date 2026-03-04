@@ -20,7 +20,7 @@ import { ArchiveCTA } from '../patterns/ArchiveCTA';
 import { generalArchiveCTA } from '../../data/cta';
 import { generalArchiveItems } from '../../data/archive-items';
 import { useState } from 'react';
-import { ArrowUpDown } from 'lucide-react';
+import { ArrowsDownUp } from '@phosphor-icons/react';
 
 export function ArchiveTemplate() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -67,7 +67,7 @@ export function ArchiveTemplate() {
                   className="wp-flex wp-items-center wp-gap-2"
                 >
                   Sort
-                  <ArrowUpDown size={16} />
+                  <ArrowsDownUp size={16} />
                 </Button>
               </div>
             </div>

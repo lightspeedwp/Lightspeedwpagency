@@ -1,15 +1,16 @@
 /**
  * Author Bio Pattern
  * 
- * WordPress pattern: lsx-design/content/author-bio
+ * Author biography with social links for blog posts.
+ * Maps to WordPress pattern: lsx-design/content/author-bio
  * 
- * Displays author information with avatar, bio, social links, and post count.
- * 
- * @see {@link /guidelines/patterns/AuthorBio.md}
+ * **Design Token Compliance:**
+ * - Uses /src/styles/patterns/author-bio.css
+ * - 100% CSS variables
+ * - BEM naming
  */
 
-import { Linkedin, Twitter, Globe, Mail } from 'lucide-react';
-
+import { LinkedinLogo as Linkedin, TwitterLogo as Twitter, Globe, EnvelopeSimple as Mail } from '@phosphor-icons/react';
 
 export interface AuthorSocial {
   linkedin?: string;

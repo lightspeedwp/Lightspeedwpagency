@@ -34,13 +34,16 @@ import { tutorials } from '../../data/tutorials';
 import { productCategories, productTags } from '../../data/taxonomies';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
 import {
-  Home, Briefcase, Lightbulb, Brain, Folder, FileText,
-  MessageSquare, Layers, Video, Headphones, Star,
-  ShoppingCart, Map, BookOpen, Archive, Wrench,
-  AlertCircle, Globe, CheckCircle, ChevronRight, Search,
-  Settings,
-} from 'lucide-react';
-import type { LucideIcon } from 'lucide-react';
+  House, Briefcase, Lightbulb, Brain, Folder, FileText,
+  ChatCircle, Stack, VideoCamera, Headphones, Star,
+  ShoppingCart, MapTrifold, BookOpen, Archive, Wrench,
+  WarningCircle as AlertCircle, Globe, CheckCircle, CaretRight as ChevronRight, MagnifyingGlass as Search,
+  Gear as Settings,
+} from '@phosphor-icons/react';
+import type { Icon as PhosphorIcon } from '@phosphor-icons/react';
+
+// Type for icon components (Phosphor)
+type UniversalIconComponent = typeof PhosphorIcon;
 
 /* ═══════════════════════════════════════════
  * Types
@@ -54,7 +57,7 @@ interface SiteMapPage {
 
 interface SiteMapSection {
   title: string;
-  icon: LucideIcon;
+  icon: UniversalIconComponent;
   color: string;
   pages: SiteMapPage[];
 }
@@ -422,20 +425,20 @@ export function SiteMapTemplate() {
    * ═══════════════════════════════════════════ */
 
   const siteMapSections: SiteMapSection[] = [
-    { title: 'Core Pages', icon: Home, color: 'var(--primary)', pages: corePages },
+    { title: 'Core Pages', icon: House, color: 'var(--primary)', pages: corePages },
     { title: 'Services', icon: Briefcase, color: 'var(--category-green)', pages: servicePages },
     { title: 'Solutions', icon: Lightbulb, color: 'var(--category-amber)', pages: solutionPages },
     { title: 'AI Integrations', icon: Brain, color: 'var(--category-violet)', pages: aiPages },
     { title: 'Systems Hub', icon: Settings, color: 'var(--category-cyan)', pages: systemsPages },
     { title: 'Work', icon: Folder, color: 'var(--category-pink)', pages: portfolioPages },
     { title: 'Insights & Archives', icon: FileText, color: 'var(--category-blue)', pages: blogArchivePages },
-    { title: 'Insight Posts', icon: MessageSquare, color: 'var(--category-cyan)', pages: singlePostPages },
-    { title: 'Post Formats', icon: Layers, color: 'var(--category-violet)', pages: postFormatPages },
-    { title: 'Videos', icon: Video, color: 'var(--category-pink)', pages: videoPages },
+    { title: 'Insight Posts', icon: ChatCircle, color: 'var(--category-cyan)', pages: singlePostPages },
+    { title: 'Post Formats', icon: Stack, color: 'var(--category-violet)', pages: postFormatPages },
+    { title: 'Videos', icon: VideoCamera, color: 'var(--category-pink)', pages: videoPages },
     { title: 'Podcasts', icon: Headphones, color: 'var(--category-cyan)', pages: podcastPagesList },
     { title: 'Testimonials', icon: Star, color: 'var(--category-amber)', pages: testimonialPages },
     { title: 'WooCommerce', icon: ShoppingCart, color: 'var(--category-green)', pages: wooCommercePages },
-    { title: 'Tour Operator', icon: Map, color: 'var(--category-blue)', pages: tourPages },
+    { title: 'Tour Operator', icon: MapTrifold, color: 'var(--category-blue)', pages: tourPages },
     { title: 'Tutorials', icon: BookOpen, color: 'var(--category-indigo)', pages: tutorialPages },
     { title: 'Legacy / Misc', icon: Archive, color: 'var(--muted-foreground)', pages: legacyPages },
     { title: 'Developer Tools', icon: Wrench, color: 'var(--category-indigo)', pages: devToolsPages },

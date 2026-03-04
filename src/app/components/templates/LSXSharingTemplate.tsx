@@ -21,6 +21,15 @@
  * - No inline Tailwind classes
  * - All styling via @/styles/templates/lsx-sharing-page.css
  * - BEM naming throughout
+ * 
+ * PATTERN COMPONENTS:
+ * - ✅ FeatureList — Key features (glassmorphism variant)
+ * - ✅ FeatureList — Benefits grid (4 items, 2 columns)
+ * - ✅ ProcessTimeline — 4-step process (numbered variant)
+ * - ✅ FAQSection — FAQ accordion
+ * - ✅ FunkyCTA — Final CTA section
+ * 
+ * @migrated March 3, 2026 — Phase 3.2: Migrated inline benefits + process (~65 lines saved)
  */
 
 import '../../../styles/templates/lsx-sharing-page.css';
@@ -28,11 +37,12 @@ import { Container } from '@/app/components/common/Container';
 import { FunkyCTA } from '@/app/components/patterns/FunkyCTA';
 import { FAQSection } from '@/app/components/patterns/FAQSection';
 import { FeatureList } from '@/app/components/patterns/FeatureList';
+import { ProcessTimeline } from '@/app/components/patterns/ProcessTimeline';
 import { Buttons } from '@/app/components/blocks/design/Buttons';
 import { useHeroParallax } from '../../hooks/useHeroParallax';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { ScrollDownArrow } from '../common/ScrollDownArrow';
-import { Share2 } from 'lucide-react';
+import { ShareNetwork as Share2 } from '@phosphor-icons/react';
 
 import {
   lsxSharingHero,
@@ -139,16 +149,12 @@ export function LSXSharingTemplate() {
             </div>
           </ScrollReveal>
 
-          <div className="lsx-sharing__benefits-grid">
-            {lsxSharingBenefits.map((benefit, index) => (
-              <ScrollReveal key={index} animation="fade-up" delay={index * 100}>
-                <div className="lsx-sharing__benefit-card">
-                  <h3 className="lsx-sharing__benefit-title">{benefit.title}</h3>
-                  <p className="lsx-sharing__benefit-description">{benefit.description}</p>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
+          <FeatureList
+            items={lsxSharingBenefits}
+            columns={2}
+            variant="glow"
+            iconSize="md"
+          />
         </Container>
       </section>
 
@@ -164,19 +170,10 @@ export function LSXSharingTemplate() {
             </div>
           </ScrollReveal>
 
-          <div className="lsx-sharing__process-grid">
-            {lsxSharingProcess.map((step, index) => (
-              <ScrollReveal key={index} animation="fade-up" delay={index * 120}>
-                <div className="lsx-sharing__process-step">
-                  <div className="lsx-sharing__process-number">{step.step}</div>
-                  <div className="lsx-sharing__process-content">
-                    <h3 className="lsx-sharing__process-title">{step.title}</h3>
-                    <p className="lsx-sharing__process-description">{step.description}</p>
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
+          <ProcessTimeline
+            steps={lsxSharingProcess}
+            variant="numbered"
+          />
         </Container>
       </section>
 

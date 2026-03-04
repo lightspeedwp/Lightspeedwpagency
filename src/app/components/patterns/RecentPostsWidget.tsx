@@ -1,25 +1,13 @@
 /**
- * RecentPostsWidget Pattern
- *
- * Displays the latest blog posts in a responsive card grid.
- * Pulls data from centralized blog-posts.ts data file.
- *
- * WordPress equivalent: wp:latest-posts block
- * ✨ UPDATED: Now uses PostCard pattern component (Phase 2.1b)
- *
- * @example
- * <RecentPostsWidget count={3} />
- * @see /src/app/components/patterns/PostCard.tsx
+ * Recent Posts Widget — LSX Design
  */
 
-import { useScrollReveal } from '../../hooks/useScrollReveal';
-import { blogPosts, blogAuthors } from '../../data/blog-posts';
-import { blogCategories } from '../../data/taxonomies';
-import { Link } from 'react-router';
+import React from 'react';
 import { getPageUrl } from '../../data/pages';
-import { ArrowRight } from 'lucide-react';
+import { Link } from 'react-router';
+import { ArrowRight } from '@phosphor-icons/react';
+import { blogPosts } from '../../data/blog-posts';
 import { PostCardGrid } from './PostCard';
-
 
 interface RecentPostsWidgetProps {
   /** Number of posts to display (default: 3) */

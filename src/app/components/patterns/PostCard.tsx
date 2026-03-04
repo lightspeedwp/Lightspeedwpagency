@@ -9,7 +9,7 @@
  */
 
 import { Link } from 'react-router';
-import { Calendar, Clock, User, Tag, ArrowRight } from 'lucide-react';
+import { CalendarBlank, Clock, User, Tag, ArrowRight } from '@phosphor-icons/react';
 import type { BlogPost } from '@/data/posts';
 
 /**
@@ -187,7 +187,7 @@ export const PostCard = ({
                     fontFamily: 'var(--font-secondary)',
                   }}
                 >
-                  <Calendar className="post-card__icon" size={16} aria-hidden="true" />
+                  <CalendarBlank className="post-card__icon" size={16} aria-hidden="true" />
                   <time dateTime={post.date}>
                     {new Date(post.date).toLocaleDateString('en-US', {
                       year: 'numeric',

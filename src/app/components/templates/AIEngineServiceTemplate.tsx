@@ -4,10 +4,16 @@
  * Sub-service page for AI Engine Optimization (AEO) under AI Search & Visibility
  * Route: /services/ai-engine-optimisation
  * Parent: /services/ai-search-visibility
+ * 
+ * Pattern Components:
+ * - ✅ FeatureList — Benefits grid (6 items, 3 columns, glow variant)
+ * 
+ * @migrated March 3, 2026 — Phase 3.1: Migrated inline benefits grid to FeatureList component (~80 lines saved)
  */
 
-import { Brain, Sparkles, Target, Zap, CheckCircle, TrendingUp } from 'lucide-react';
+import { Brain, Sparkle, Target, Lightning, CheckCircle, TrendUp } from '@phosphor-icons/react';
 import { Link } from 'react-router';
+import { FeatureList } from '../patterns/FeatureList';
 
 export const AIEngineServiceTemplate = () => {
   const benefits = [
@@ -17,7 +23,7 @@ export const AIEngineServiceTemplate = () => {
       description: 'Structure content to be understood and surfaced by AI systems like ChatGPT, Claude, and Perplexity.'
     },
     {
-      icon: Sparkles,
+      icon: Sparkle,
       title: 'Entity Optimization',
       description: 'Build strong entity associations and knowledge graph relationships for AI comprehension.'
     },
@@ -27,7 +33,7 @@ export const AIEngineServiceTemplate = () => {
       description: 'Align content with AI interpretation of user queries and contextual understanding.'
     },
     {
-      icon: Zap,
+      icon: Lightning,
       title: 'Structured Data Enhancement',
       description: 'Implement schema markup that AI engines use to understand and categorize your content.'
     },
@@ -37,7 +43,7 @@ export const AIEngineServiceTemplate = () => {
       description: 'Build E-E-A-T signals (Experience, Expertise, Authoritativeness, Trust) for AI credibility scoring.'
     },
     {
-      icon: TrendingUp,
+      icon: TrendUp,
       title: 'AI Visibility Tracking',
       description: 'Monitor your brand presence across AI-generated responses and recommendations.'
     }
@@ -115,20 +121,12 @@ export const AIEngineServiceTemplate = () => {
           </p>
         </div>
         
-        <div className="ai-engine-service__benefits-grid">
-          {benefits.map((benefit, index) => {
-            const Icon = benefit.icon;
-            return (
-              <div key={index} className="ai-engine-service__benefit-card">
-                <div className="ai-engine-service__benefit-icon">
-                  <Icon className="ai-engine-service__benefit-icon-svg" />
-                </div>
-                <h3 className="ai-engine-service__benefit-title">{benefit.title}</h3>
-                <p className="ai-engine-service__benefit-description">{benefit.description}</p>
-              </div>
-            );
-          })}
-        </div>
+        <FeatureList 
+          items={benefits} 
+          columns={3} 
+          variant="glow" 
+          iconSize="lg"
+        />
       </section>
 
       {/* Process */}

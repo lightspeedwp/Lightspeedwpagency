@@ -24,7 +24,7 @@
  */
 
 import { useState, useEffect, useCallback } from 'react';
-import { ChevronLeft, ChevronRight, Star, Play } from 'lucide-react';
+import { CaretLeft, CaretRight, Star, Play } from '@phosphor-icons/react';
 import { useReducedMotion } from '../../hooks/useReducedMotion';
 
 export interface TestimonialSlide {
@@ -198,7 +198,7 @@ export const TestimonialSlider = ({
             className="testimonial-slider__nav-button testimonial-slider__nav-button--prev"
             aria-label="Previous testimonial"
           >
-            <ChevronLeft size={24} />
+            <CaretLeft size={24} />
           </button>
 
           {/* Dot Indicators */}
@@ -222,7 +222,7 @@ export const TestimonialSlider = ({
             className="testimonial-slider__nav-button testimonial-slider__nav-button--next"
             aria-label="Next testimonial"
           >
-            <ChevronRight size={24} />
+            <CaretRight size={24} />
           </button>
         </div>
 

@@ -27,7 +27,7 @@ import { SocialProof } from '../patterns/SocialProof';
 import { Badge } from '../blocks/design/Badge';
 import { FunkyCTA } from '../patterns/FunkyCTA';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
-import { Calendar, User, Clock, MapPin, Twitter, Linkedin, Globe, PenTool, ArrowRight } from 'lucide-react';
+import { Calendar, User, Clock, MapPin, TwitterLogo, LinkedinLogo, Globe, PenNib, ArrowRight } from '@phosphor-icons/react';
 import { Link } from 'react-router';
 import { slugToPath } from '../../utils/route-map';
 import { blogAuthors, blogPosts, getPostsByAuthor, getAuthorBySlug, type BlogAuthor, type BlogPost } from '../../data/blog-posts';
@@ -145,7 +145,7 @@ function AllAuthorsIndex() {
               {/* Neon badge */}
               <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 'var(--spacing-6)' }}>
                 <Badge variant="primary" size="sm">
-                  <PenTool size={12} style={{ marginRight: 'var(--spacing-1)' }} />
+                  <PenNib size={12} style={{ marginRight: 'var(--spacing-1)' }} />
                   {authorArchiveHero.badge.text}
                 </Badge>
               </div>
@@ -317,7 +317,7 @@ function SingleAuthorArchive({
                 {/* Meta */}
                 <div className="author-profile__meta">
                   <div className="author-profile__meta-item">
-                    <PenTool size={14} />
+                    <PenNib size={14} />
                     <span className="author-profile__meta-text">
                       {authorPosts.length} {authorPosts.length === 1 ? 'article' : 'articles'}
                     </span>
@@ -341,7 +341,7 @@ function SingleAuthorArchive({
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        <Twitter size={16} />
+                        <TwitterLogo size={16} />
                       </a>
                     )}
                     {author.social.linkedin && (
@@ -352,7 +352,7 @@ function SingleAuthorArchive({
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        <Linkedin size={16} />
+                        <LinkedinLogo size={16} />
                       </a>
                     )}
                     {author.social.github && (

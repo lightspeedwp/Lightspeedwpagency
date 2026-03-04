@@ -22,7 +22,7 @@
  */
 
 import '@/styles/patterns/checklist.css';
-import { CheckCircle } from 'lucide-react';
+import { CheckCircle } from '@phosphor-icons/react';
 import type { UniversalIcon } from '../../utils/icon-map';
 
 export interface CheckListProps {

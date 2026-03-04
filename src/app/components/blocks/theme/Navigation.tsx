@@ -3,11 +3,12 @@
  * 
  * WordPress Block: core/navigation
  * Category: Theme
+ * @see /src/app/utils/icon-map.ts
  */
 
 import React from 'react';
 import * as NavigationMenuPrimitive from '@radix-ui/react-navigation-menu';
-import { ChevronDown } from 'lucide-react';
+import { CaretDown as ChevronDown } from '@phosphor-icons/react';
 
 const NavigationMenu = React.forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Root>,

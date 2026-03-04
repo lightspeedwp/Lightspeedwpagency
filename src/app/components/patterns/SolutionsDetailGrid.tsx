@@ -1,22 +1,18 @@
 /**
- * Solutions Detail Grid Pattern Component
+ * SolutionsDetailGrid Pattern
  * 
- * WordPress Pattern: lsx-design/content/solutions-detail-grid
+ * Grid of solution cards with expandable details.
+ * Maps to WordPress pattern: lsx-design/listing/solutions-detail
  * 
- * Displays a grid of detailed solution cards with icons, descriptions,
- * and feature lists. Includes hover effects for enhanced interactivity.
+ * **Design Token Compliance:**
+ * - Uses /src/styles/patterns/solutions-detail-grid.css
+ * - 100% CSS variables
+ * - BEM naming
  * 
- * **Design System Compliance:**
- * - Typography: var(--font-primary) Lexend
- * - Spacing: CSS variables (--spacing-*)
- * - Colors: Semantic color variables
- * - Grid: WordPress utility classes (.wp-grid-*-cols)
- * - Interactions: Smooth hover transitions
- * 
- * @example
+ * **Usage Example:**
  * ```tsx
  * import { SolutionsDetailGrid } from '../patterns/SolutionsDetailGrid';
- * import { Calendar, CheckCircle } from 'lucide-react';
+ * import { Calendar, CheckCircle } from '@phosphor-icons/react';
  * 
  * <SolutionsDetailGrid
  *   badge="OUR SOLUTIONS"
@@ -30,7 +26,7 @@
 
 import type { UniversalIcon } from '../../utils/icon-map';
 import { Section } from '../common/Section';
-import { CheckCircle } from 'lucide-react';
+import { CheckCircle } from '@phosphor-icons/react';
 import { useState } from 'react';
 
 

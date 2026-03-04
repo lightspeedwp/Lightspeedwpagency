@@ -17,11 +17,12 @@
  * - BEM naming (.toast)
  * - Dedicated CSS file
  *
+ * @see /src/app/utils/icon-map.ts
  * @see /guidelines/components/Toast.md
  */
 
 import { useEffect, useState } from 'react';
-import { X, CheckCircle, XCircle, AlertTriangle, Info } from 'lucide-react';
+import { X, CheckCircle, XCircle, Warning as AlertTriangle, Info } from '@phosphor-icons/react';
 
 export interface ToastProps {
   /** Toast message */

@@ -5,11 +5,12 @@
  * 
  * Animated mega menu with glassmorphism effects.
  * 
+ * @see /src/app/utils/icon-map.ts
  * @see /src/styles/blocks/theme/mega-menu.css
  */
 
 import React from 'react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight } from '@phosphor-icons/react';
 
 export interface MegaMenuItem {
   label: string;

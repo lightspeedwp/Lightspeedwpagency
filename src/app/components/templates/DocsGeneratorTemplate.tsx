@@ -15,23 +15,22 @@ import '../../../styles/templates/docs-generator.css';
 import { useState, useMemo, useCallback } from 'react';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import {
-  Search,
-  ChevronRight,
+  MagnifyingGlass,
+  CaretRight,
   Copy,
   Check,
   FileText,
-  Layers,
-  Blocks,
-  Component,
-  Code2,
+  Stack,
+  Cube,
+  DotsSix,
+  CodeBlock,
   Database,
-  Puzzle,
-  PenTool,
+  PuzzlePiece,
+  PenNib,
   FileCode,
-  SearchX,
+  MagnifyingGlassMinus,
   BookOpen,
-} from 'lucide-react';
-
+} from '@phosphor-icons/react';
 
 /* ═══════════════════════════════════════════
  * Types
@@ -614,11 +613,11 @@ const results = searchAllContent('wordpress themes');`,
 
 const categoryMeta: Record<string, { icon: React.ReactNode; label: string }> = {
   Templates: { icon: <FileText size={18} />, label: 'Templates' },
-  Patterns: { icon: <Puzzle size={18} />, label: 'Patterns' },
-  Blocks: { icon: <Blocks size={18} />, label: 'Blocks' },
-  Common: { icon: <Component size={18} />, label: 'Common' },
-  Parts: { icon: <PenTool size={18} />, label: 'Parts' },
-  Hooks: { icon: <Code2 size={18} />, label: 'Hooks' },
+  Patterns: { icon: <PuzzlePiece size={18} />, label: 'Patterns' },
+  Blocks: { icon: <Cube size={18} />, label: 'Blocks' },
+  Common: { icon: <DotsSix size={18} />, label: 'Common' },
+  Parts: { icon: <PenNib size={18} />, label: 'Parts' },
+  Hooks: { icon: <CodeBlock size={18} />, label: 'Hooks' },
   Data: { icon: <Database size={18} />, label: 'Data Files' },
 };
 
@@ -759,7 +758,7 @@ export function DocsGeneratorTemplate() {
         <div className="docs-gen__search-bar">
           <div className="docs-gen__search-wrapper">
             <div className="docs-gen__search-input-wrap">
-              <Search size={18} className="docs-gen__search-icon" />
+              <MagnifyingGlass size={18} className="docs-gen__search-icon" />
               <input
                 type="text"
                 className="docs-gen__search-input"
@@ -816,7 +815,7 @@ export function DocsGeneratorTemplate() {
           <div className="docs-gen__main">
             {grouped.length === 0 ? (
               <div className="docs-gen__empty">
-                <SearchX size={48} className="docs-gen__empty-icon" />
+                <MagnifyingGlassMinus size={48} className="docs-gen__empty-icon" />
                 <h3 className="docs-gen__empty-title">No results found</h3>
                 <p className="docs-gen__empty-desc">
                   Try a different search term or clear the category filter.
@@ -872,7 +871,7 @@ export function DocsGeneratorTemplate() {
                             onClick={() => toggleProps(doc.id)}
                             aria-expanded={expandedProps.has(doc.id)}
                           >
-                            <ChevronRight
+                            <CaretRight
                               size={16}
                               className={`docs-gen__props-toggle-icon ${expandedProps.has(doc.id) ? 'docs-gen__props-toggle-icon--open' : ''}`}
                             />
@@ -971,7 +970,7 @@ export function DocsGeneratorTemplate() {
                                 onClick={() => target && scrollToDoc(target.id)}
                                 title={`See: ${ref}`}
                               >
-                                <Layers size={12} />
+                                <Stack size={12} />
                                 {ref}
                               </button>
                             );

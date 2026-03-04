@@ -5,6 +5,7 @@
  * 
  * Real-time testing and validation of design system compliance.
  * 
+ * @see /src/app/utils/icon-map.ts
  * @see /src/styles/blocks/dev-tools/compliance-scorecard.css
  */
 
@@ -12,7 +13,7 @@ import { useEffect, useState } from 'react';
 import { Container } from '../../common/Container';
 import { Section } from '../../common/Section';
 import { Heading } from '../../common/Heading';
-import { Check, X, AlertTriangle, TrendingUp, Zap, ArrowLeft } from 'lucide-react';
+import { CheckCircle, WarningCircle, XCircle, Lightning, ArrowLeft, X, TrendUp, Check, Warning as AlertTriangle } from '@phosphor-icons/react';
 import { Link } from 'react-router';
 import { slugToPath } from '../../../utils/route-map';
 import { DesignSystemPerformanceTester, type ComplianceScorecard as ComplianceScorecardType, type PerformanceTestResult } from '../../../utils/performanceTester';
@@ -135,7 +136,7 @@ export function ComplianceScorecard() {
           </Link>
           <div className="wp-block-devtools-compliance-scorecard__header">
             <div className="wp-block-devtools-compliance-scorecard__badge">
-              <Zap size={16} />
+              <Lightning size={16} />
               Real-Time Performance Testing
             </div>
 
@@ -190,13 +191,13 @@ export function ComplianceScorecard() {
             <ScoreCard
               title="Fluid Typography"
               score={scorecard.fluidTypography}
-              icon={<TrendingUp size={24} />}
+              icon={<TrendUp size={24} />}
               description="Responsive type scaling with clamp()"
             />
             <ScoreCard
               title="Fluid Spacing"
               score={scorecard.fluidSpacing}
-              icon={<TrendingUp size={24} />}
+              icon={<TrendUp size={24} />}
               description="Consistent spacing with Tailwind"
             />
             <ScoreCard
@@ -220,7 +221,7 @@ export function ComplianceScorecard() {
             <ScoreCard
               title="Core Web Vitals"
               score={scorecard.coreWebVitals}
-              icon={<Zap size={24} />}
+              icon={<Lightning size={24} />}
               description="Performance metrics"
             />
           </div>

@@ -1,0 +1,217 @@
+/**
+ * LSX Design System — Funky/Neon Theme Layer
+ * 
+ * Opt-in enhancement layer for the "Funky" neon aesthetic.
+ * 
+ * This file consolidates all neon-specific styling, glow effects, and
+ * vibrant gradients that enhance the base design system with a bold,
+ * modern, cyberpunk-inspired visual language.
+ * 
+ * Activation Strategy:
+ * - Apply `.funky` class to <body> or root element to activate
+ * - All styles are opt-in enhancements that layer on top of base theme
+ * - Disabling this layer (removing .funky class) should not break the design
+ * 
+ * @see theme-base.css — Base theme tokens (typography, spacing, layout)
+ * @see theme-light.css — Light mode semantic colors
+ * @see theme-dark.css — Dark mode semantic colors
+ * @see theme-variables.css — Extended palette (neon colors, gradients, page identity)
+ */
+
+:root {
+  /* ============================================
+     NEON COLOR PALETTE
+     ============================================
+     
+     Core neon colors for the funky aesthetic.
+     These map to WordPress preset namespace for block editor integration.
+  */
+  
+  --wp--preset--color--neon-pink: #ff00ff;
+  --wp--preset--color--neon-cyan: #00ffff;
+  --wp--preset--color--neon-lime: #00ff00;
+  --wp--preset--color--neon-yellow: #ffff00;
+  --wp--preset--color--deep-purple: #2d0059;
+  
+  
+  /* ============================================
+     NEON GRADIENTS
+     ============================================
+     
+     Vibrant multi-color gradients for hero sections, backgrounds,
+     and accent elements.
+  */
+  
+  --wp--preset--gradient--neon-hero: linear-gradient(135deg, var(--wp--preset--color--neon-pink), var(--wp--preset--color--neon-cyan));
+  --wp--preset--gradient--neon-glow: linear-gradient(45deg, var(--wp--preset--color--neon-pink), var(--wp--preset--color--neon-cyan));
+  
+  
+  /* ============================================
+     NEON GLOW SHADOWS (Enhanced)
+     ============================================
+     
+     These extend the base neon shadows defined in theme-base.css
+     with more intense glow effects for the funky aesthetic.
+  */
+  
+  /* Intense neon glow with multi-layer spreading */
+  --shadow-neon-ultra: 
+    0 0 12px var(--neon-color, #7BE7FF), 
+    0 0 40px color-mix(in srgb, var(--neon-color, #7BE7FF) 60%, transparent), 
+    0 0 80px color-mix(in srgb, var(--neon-color, #7BE7FF) 30%, transparent),
+    0 0 120px color-mix(in srgb, var(--neon-color, #7BE7FF) 15%, transparent);
+  
+  /* Pulsing glow (for @keyframes animations) */
+  --shadow-neon-pulse-start: 
+    0 0 8px var(--neon-color, #7BE7FF), 
+    0 0 20px color-mix(in srgb, var(--neon-color, #7BE7FF) 40%, transparent);
+  
+  --shadow-neon-pulse-end: 
+    0 0 15px var(--neon-color, #7BE7FF), 
+    0 0 40px color-mix(in srgb, var(--neon-color, #7BE7FF) 60%, transparent), 
+    0 0 70px color-mix(in srgb, var(--neon-color, #7BE7FF) 30%, transparent);
+  
+  
+  /* ============================================
+     PAGE IDENTITY COLORS
+     ============================================
+     
+     Custom color palettes for specific page types/features.
+     These remain consistent across light/dark modes.
+  */
+  
+  /* Grading Page Identity */
+  --grading-primary: #ec4899;
+  --grading-secondary: #06b6d4;
+  --grading-accent: #84cc16;
+  --grading-hero-from: #7c3aed;
+  --grading-hero-via: #ec4899;
+  --grading-hero-to: #f97316;
+  --grading-hero-dark-from: #4c1d95;
+  --grading-hero-dark-via: #831843;
+  --grading-hero-dark-to: #9a3412;
+  
+  /* Packaging Page Identity */
+  --packaging-primary: #10b981;
+  --packaging-secondary: #14b8a6;
+  --packaging-accent: #f59e0b;
+  --packaging-hero-from: #059669;
+  --packaging-hero-via: #14b8a6;
+  --packaging-hero-to: #06b6d4;
+  --packaging-hero-dark-from: #064e3b;
+  --packaging-hero-dark-via: #0f766e;
+  --packaging-hero-dark-to: #155e75;
+}
+
+
+/* ============================================
+   FUNKY MODE ENHANCEMENTS
+   ============================================
+   
+   When .funky class is applied to body/root element,
+   these enhancements activate.
+*/
+
+.funky {
+  /* Enhanced primary color with more vibrant cyan */
+  --primary: #7BE7FF;
+  
+  /* Boost neon color intensity */
+  --neon-color: #7BE7FF;
+  
+  /* Enhanced glow effects on interactive elements */
+  --shadow-glow: 0 0 20px color-mix(in srgb, var(--primary) 40%, transparent);
+}
+
+/* Dark mode adjustments for funky theme */
+.dark.funky {
+  /* Even more intense neon in dark mode */
+  --neon-color: #00FFFF;
+  
+  /* Darker background for better neon contrast */
+  --background: #0a0a0a;
+  
+  /* Boost glow shadows in dark mode */
+  --shadow-glow: 0 0 25px color-mix(in srgb, var(--primary) 50%, transparent);
+}
+
+
+/* ============================================
+   FUNKY ANIMATION OVERRIDES
+   ============================================
+   
+   Enhanced animations for neon aesthetic (pulsing, glowing, etc.)
+   All animations respect prefers-reduced-motion.
+*/
+
+@keyframes neon-pulse {
+  0%, 100% {
+    box-shadow: var(--shadow-neon-pulse-start);
+  }
+  50% {
+    box-shadow: var(--shadow-neon-pulse-end);
+  }
+}
+
+@keyframes neon-glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 8px var(--neon-color));
+  }
+  50% {
+    filter: drop-shadow(0 0 16px var(--neon-color));
+  }
+}
+
+/* Neon flicker effect (subtle) */
+@keyframes neon-flicker {
+  0%, 100% {
+    opacity: 1;
+  }
+  5% {
+    opacity: 0.9;
+  }
+  10% {
+    opacity: 1;
+  }
+  15% {
+    opacity: 0.95;
+  }
+  20% {
+    opacity: 1;
+  }
+}
+
+/* Apply to funky mode elements */
+.funky .neon-pulse {
+  animation: neon-pulse 2s ease-in-out infinite;
+}
+
+.funky .neon-glow {
+  animation: neon-glow 3s ease-in-out infinite;
+}
+
+.funky .neon-flicker {
+  animation: neon-flicker 5s linear infinite;
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .funky .neon-pulse,
+  .funky .neon-glow,
+  .funky .neon-flicker {
+    animation: none;
+  }
+}
+
+
+/* ============================================
+   DARK MODE FUNKY ADJUSTMENTS
+   ============================================
+   
+   Fine-tune neon colors and effects specifically for dark mode.
+*/
+
+.dark {
+  /* Neon colors may need slight adjustments in dark mode */
+  /* Currently inheriting from :root - add overrides here if needed */
+}

@@ -1,17 +1,10 @@
 /**
- * Query Loop — Services
- *
- * WordPress pattern: core/query + service post-template
- *
- * Renders service offerings as cards with icons, features, and pricing.
- *
- * @see /src/styles/patterns/query-loop.css
+ * QueryLoopServices Pattern — LSX Design
  */
 
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight } from '@phosphor-icons/react';
 import { Link } from 'react-router';
 import { QueryLoop } from './QueryLoop';
-import { useStaggerReveal } from '../../hooks/useScrollReveal';
 import type { Service } from '../../data/services';
 
 export interface QueryLoopServicesProps {
@@ -27,11 +20,6 @@ export function QueryLoopServices({
   description,
   columns = 3,
 }: QueryLoopServicesProps) {
-  const { containerRef, itemStyle } = useStaggerReveal({
-    animation: 'fade-up',
-    stagger: 80,
-  });
-
   return (
     <QueryLoop
       heading={heading}
@@ -40,7 +28,7 @@ export function QueryLoopServices({
       isEmpty={services.length === 0}
       emptyMessage="No services found."
     >
-      {services.map((service, index) => {
+      {services.map((service) => {
         const Icon = service.icon;
 
         return (
@@ -48,8 +36,6 @@ export function QueryLoopServices({
             key={service.id}
             to={`/services/${service.slug}`}
             className="query-loop-card query-loop-card--clickable"
-            ref={index === 0 ? containerRef as any : undefined}
-            style={itemStyle(index)}
             aria-label={`Learn more: ${service.name}`}
           >
             <div className="query-loop-card__body">

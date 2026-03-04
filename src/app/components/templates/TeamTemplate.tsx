@@ -24,16 +24,18 @@ import { useHeroParallax } from '../../hooks/useHeroParallax';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { teamPageFAQs, teamPageMembers, teamPageLeadership } from '../../data/team-page';
 import {
-  Users,
-  Globe,
-  Mail,
-  Linkedin,
-  Twitter,
+  LinkedinLogo,
+  TwitterLogo,
+  GithubLogo,
+  EnvelopeSimple,
+  MapPin,
   Heart,
-  Zap,
-  Smile,
+  Trophy,
+  TrendUp,
+  Lightning,
+  Smiley,
   Coffee
-} from 'lucide-react';
+} from '@phosphor-icons/react';
 
 export function TeamTemplate() {
   const parallaxRef = useHeroParallax(0.5);
@@ -61,7 +63,7 @@ export function TeamTemplate() {
         <Container>
           <div className="team-page__hero-content">
             <span className="team-page__hero-badge">
-              <Users size={16} className="team-page__hero-badge-icon" />
+              <Heart size={16} className="team-page__hero-badge-icon" />
               Meet the Team
             </span>
 
@@ -104,12 +106,12 @@ export function TeamTemplate() {
                     <div className="team-page__leader-social-overlay">
                       {leader.social?.linkedin && (
                         <a href={leader.social.linkedin} className="team-page__leader-social-link" aria-label={`${leader.name} on LinkedIn`}>
-                          <Linkedin size={20} />
+                          <LinkedinLogo size={20} />
                         </a>
                       )}
                       {leader.social?.twitter && (
                         <a href={leader.social.twitter} className="team-page__leader-social-link" aria-label={`${leader.name} on Twitter`}>
-                          <Twitter size={20} />
+                          <TwitterLogo size={20} />
                         </a>
                       )}
                     </div>
@@ -128,7 +130,7 @@ export function TeamTemplate() {
 
                     {leader.social?.email && (
                       <a href={`mailto:${leader.social.email}`} className="team-page__leader-email">
-                        <Mail size={16} />
+                        <EnvelopeSimple size={16} />
                         {leader.social.email}
                       </a>
                     )}
@@ -178,12 +180,12 @@ export function TeamTemplate() {
                     <div className="team-page__member-socials">
                       {member.social?.linkedin && (
                         <a href={member.social.linkedin} aria-label={`${member.name} LinkedIn`}>
-                          <Linkedin size={18} className="team-page__member-social-icon" />
+                          <LinkedinLogo size={18} className="team-page__member-social-icon" />
                         </a>
                       )}
                       {member.social?.twitter && (
                         <a href={member.social.twitter} aria-label={`${member.name} Twitter`}>
-                          <Twitter size={18} className="team-page__member-social-icon" />
+                          <TwitterLogo size={18} className="team-page__member-social-icon" />
                         </a>
                       )}
                     </div>
@@ -212,11 +214,11 @@ export function TeamTemplate() {
           <div className="team-page__culture-grid">
             {[
               { icon: Heart, title: 'Passion First', desc: 'We love what we do and it shows in our work.' },
-              { icon: Zap, title: 'Move Fast', desc: 'We iterate quickly and embrace change.' },
-              { icon: Globe, title: 'Remote Native', desc: 'Work from anywhere, deliver everywhere.' },
-              { icon: Smile, title: 'No Ego', desc: 'Great ideas can come from anyone.' },
+              { icon: Lightning, title: 'Move Fast', desc: 'We iterate quickly and embrace change.' },
+              { icon: MapPin, title: 'Remote Native', desc: 'Work from anywhere, deliver everywhere.' },
+              { icon: Smiley, title: 'No Ego', desc: 'Great ideas can come from anyone.' },
               { icon: Coffee, title: 'Always Learning', desc: 'We invest in our growth and skills.' },
-              { icon: Users, title: 'Inclusion', desc: 'We celebrate diversity in all forms.' }
+              { icon: GithubLogo, title: 'Inclusion', desc: 'We celebrate diversity in all forms.' }
             ].map((item, index) => {
               const Icon = item.icon;
               return (

@@ -14,6 +14,7 @@
  * Design System:
  * - 100% CSS variables
  * - BEM naming (.error-boundary)
+ * @see /src/app/utils/icon-map.ts
  *
  * Usage:
  * ```tsx
@@ -24,7 +25,7 @@
  */
 
 import { Component, ReactNode } from 'react';
-import { AlertTriangle, RefreshCw } from 'lucide-react';
+import { Warning as AlertTriangle, ArrowsClockwise as RefreshCw } from '@phosphor-icons/react';
 
 interface ErrorBoundaryProps {
   children: ReactNode;

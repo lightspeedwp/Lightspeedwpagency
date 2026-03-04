@@ -11,8 +11,7 @@ import { Container } from '@/app/components/common/Container';
 import { Section } from '@/app/components/common/Section';
 import { BreadcrumbPart } from '@/app/components/parts/BreadcrumbPart';
 import { audioPost } from '@/app/data/posts-formats';
-import { Play, SkipBack, SkipForward, Volume2, Calendar, User, Clock } from 'lucide-react';
-
+import { Play, SkipBack, SkipForward, SpeakerHigh as Volume2, Calendar, User, Clock } from '@phosphor-icons/react';
 
 export function SingleAudioTemplate() {
   const post = audioPost;

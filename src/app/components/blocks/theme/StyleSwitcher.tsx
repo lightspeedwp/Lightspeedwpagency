@@ -5,10 +5,12 @@
  * 
  * Allows users to switch between style variations (light/dark themes).
  * 
+ * @see /src/app/utils/icon-map.ts
  * @see /src/styles/blocks/theme/style-switcher.css
  */
 
 import { useEffect, useState } from 'react';
+import { Sun, Moon } from '@phosphor-icons/react';
 
 type StyleVariation = 'light' | 'dark';
 
@@ -93,16 +95,11 @@ export function StyleSwitcher({ className = '' }: StyleSwitcherProps) {
         aria-pressed={currentStyle === 'light'}
         className={`wp-block-style-switcher__button ${currentStyle === 'light' ? 'wp-block-style-switcher__button--active' : ''}`}
       >
-        {/* Sun icon */}
-        <svg 
-          viewBox="0 0 24 24" 
-          strokeLinecap="round" 
-          strokeLinejoin="round"
-          className="wp-block-style-switcher__icon"
-        >
-          <circle cx="12" cy="12" r="4"/>
-          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
-        </svg>
+        <Sun 
+          size={16}
+          weight={currentStyle === 'light' ? 'fill' : 'regular'}
+          className="wp-block-style-switcher__icon" 
+        />
         Light
       </button>
 
@@ -113,15 +110,11 @@ export function StyleSwitcher({ className = '' }: StyleSwitcherProps) {
         aria-pressed={currentStyle === 'dark'}
         className={`wp-block-style-switcher__button ${currentStyle === 'dark' ? 'wp-block-style-switcher__button--active' : ''}`}
       >
-        {/* Moon icon */}
-        <svg 
-          viewBox="0 0 24 24" 
-          strokeLinecap="round" 
-          strokeLinejoin="round"
-          className="wp-block-style-switcher__icon"
-        >
-          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-        </svg>
+        <Moon 
+          size={16}
+          weight={currentStyle === 'dark' ? 'fill' : 'regular'}
+          className="wp-block-style-switcher__icon" 
+        />
         Dark
       </button>
     </div>

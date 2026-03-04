@@ -30,7 +30,7 @@ import {
   type SearchResult,
 } from '../../data/search';
 import {
-  Search,
+  MagnifyingGlass as Search,
   X,
   FileText,
   Folder,
@@ -39,9 +39,8 @@ import {
   Globe,
   ArrowRight,
   Clock,
-  CornerDownLeft,
-} from 'lucide-react';
-
+  ArrowElbowDownLeft as CornerDownLeft,
+} from '@phosphor-icons/react';
 
 /* ═══════════════════════════════════════════
  * Constants

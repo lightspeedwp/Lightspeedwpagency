@@ -1,10 +1,11 @@
 /**
  * Checkbox Block Component
+ * @see /src/app/utils/icon-map.ts
  */
 
 import React from 'react';
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
-import { Check } from 'lucide-react';
+import { Check } from '@phosphor-icons/react';
 
 export const Checkbox = React.forwardRef<
   React.ElementRef<typeof CheckboxPrimitive.Root>,

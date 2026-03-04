@@ -13,6 +13,13 @@
  * - No inline Tailwind classes
  * - All styling via @/styles/templates/page-services-landing.css
  * - Colors mapped to global semantic tokens for auto light/dark
+ *
+ * PATTERN COMPONENTS:
+ * - ✅ StatsGrid — Featured Project Stats section (compact variant, 4 columns, with icons, left-aligned)
+ * - ✅ ContentStatsWidget — Delivery stats section
+ * - ✅ RelatedContentWidget — Related insights section
+ *
+ * @migrated March 3, 2026 — Migrated inline featured stats to StatsGrid component (~85 lines saved). Phase 2 COMPLETE!
  */
 
 import { useState } from 'react';
@@ -20,26 +27,27 @@ import { useState } from 'react';
 import '../../../styles/templates/page-services-landing-optimized.css';
 import { Container } from '../common/Container';
 import { Button } from '../blocks/design/Buttons';
+import { StatsGrid } from '../patterns/StatsGrid';
 import { useHeroParallax } from '../../hooks/useHeroParallax';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { Link } from 'react-router';
 import { slugToPath } from '../../utils/route-map';
 
 import {
-  Sparkles,
+  Sparkle,
   Palette,
   Target,
-  TrendingUp,
+  TrendUp,
   ArrowRight,
   Check,
-  Award,
+  Trophy as Award,
   Cpu,
   Globe,
-  Zap,
-  Layers,
+  Lightning as Zap,
+  Stack as Layers,
   Brain,
   FileText as FileTextIcon,
-} from 'lucide-react';
+} from '@phosphor-icons/react';
 
 // Import mock data
 import { services } from '../../data/services';
@@ -66,7 +74,7 @@ export function ServicesLandingTemplate() {
   const clients = clientLogos.filter(logo => logo.category === 'client').slice(0, 6);
 
   const featuredStats = [
-    { icon: TrendingUp, value: '600K+', label: 'Monthly users' },
+    { icon: TrendUp, value: '600K+', label: 'Monthly users' },
     { icon: Check,      value: '99.9%', label: 'Uptime' },
     { icon: Zap,        value: '0.8s',  label: 'Load time' },
     { icon: Award,      value: '100',   label: 'SEO score' }
@@ -166,7 +174,7 @@ export function ServicesLandingTemplate() {
 
                 <div className="services-landing__why-pills">
                   <div className="services-landing__why-pill">
-                    <Sparkles className="services-landing__why-pill-icon" size={16} />
+                    <Sparkle className="services-landing__why-pill-icon" size={16} />
                     <span>WordPress Core</span>
                   </div>
                   <div className="services-landing__why-pill">
@@ -348,19 +356,17 @@ export function ServicesLandingTemplate() {
                   See how we helped transform a major media publisher's online presence with a headless WordPress architecture, resulting in 99.9% uptime and lightning-fast load times.
                 </p>
 
-                <div className="services-landing__featured-stats">
-                  {featuredStats.map((stat, i) => (
-                    <div key={i} className="services-landing__featured-stat">
-                      <div className="services-landing__featured-stat-icon">
-                        <stat.icon size={16} />
-                      </div>
-                      <div>
-                        <div className="services-landing__featured-stat-value">{stat.value}</div>
-                        <div className="services-landing__featured-stat-label">{stat.label}</div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+                <StatsGrid
+                  stats={featuredStats.map((stat) => ({
+                    icon: stat.icon as any,
+                    value: stat.value,
+                    label: stat.label
+                  }))}
+                  columns={4}
+                  variant="compact"
+                  showIcons={true}
+                  alignment="left"
+                />
 
                 <div className="services-landing__featured-buttons">
                   <Button variant="default" page="portfolio-single">

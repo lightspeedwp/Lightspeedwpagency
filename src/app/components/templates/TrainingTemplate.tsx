@@ -27,10 +27,9 @@ import { Button } from '../blocks/design/Buttons';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { ScrollDownArrow } from '../common/ScrollDownArrow';
 import {
-  BookOpen, Video, Users, Award, PlayCircle, Check,
-  Lightbulb, Brain, Target, Zap, Clock, Calendar
-} from 'lucide-react';
-import { trainingServiceDetailed } from '../../data/services';
+  BookOpen, VideoCamera as Video, Users, Trophy as Award, PlayCircle, Check,
+  Lightbulb, Brain, Crosshair as Target, Lightning as Zap, Clock, Calendar
+} from '@phosphor-icons/react';
 
 /* ─────────────────────────────────────────────
    DATA (inline — no separate data file yet)
@@ -357,15 +356,8 @@ export function TrainingTemplate() {
       </section>
 
       {/* ════════════════════════════════════════
-          4. RELATED SERVICES
+          4. RELATED SERVICES (Optional)
           ════════════════════════════════════════ */}
-      {trainingServiceDetailed.relatedServices && trainingServiceDetailed.relatedServices.length > 0 && (
-        <RelatedServicesGrid
-          title="Related Services"
-          subtitle="Complement your training with these additional services"
-          services={trainingServiceDetailed.relatedServices}
-        />
-      )}
 
       <ServiceTestimonial
         serviceSlug="training"

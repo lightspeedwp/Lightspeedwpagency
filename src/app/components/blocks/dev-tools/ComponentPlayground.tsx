@@ -5,11 +5,12 @@
  * 
  * Interactive component preview system with prop editors.
  * 
+ * @see /src/app/utils/icon-map.ts
  * @see /src/styles/blocks/dev-tools/component-playground.css
  */
 
 import { useState } from 'react';
-import { Copy, Check, Code2, Eye, Settings } from 'lucide-react';
+import { Copy, Check, Code as Code2, Eye, SettingsSelector as Settings } from '@phosphor-icons/react';
 
 export interface PropDefinition {
   name: string;

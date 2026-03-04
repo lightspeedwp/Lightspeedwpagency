@@ -5,10 +5,11 @@
  * 
  * Displays team members in a responsive grid.
  * 
+ * @see /src/app/utils/icon-map.ts
  * @see {@link /guidelines/patterns/TeamGrid.md}
  */
 
-import { Linkedin, Twitter, Mail, Globe } from 'lucide-react';
+import { LinkedinLogo as Linkedin, TwitterLogo as Twitter, Envelope as Mail, Globe } from '@phosphor-icons/react';
 
 
 export interface TeamMember {
@@ -142,7 +143,7 @@ export function TeamGrid({
                         aria-label={`${member.name} on LinkedIn`}
                         className="team-card__social-link"
                       >
-                        <Linkedin size={18} />
+                        <Linkedin size={20} weight="fill" />
                       </a>
                     )}
 
@@ -154,7 +155,7 @@ export function TeamGrid({
                         aria-label={`${member.name} on Twitter`}
                         className="team-card__social-link"
                       >
-                        <Twitter size={18} />
+                        <Twitter size={20} weight="fill" />
                       </a>
                     )}
 
@@ -164,7 +165,7 @@ export function TeamGrid({
                         aria-label={`Email ${member.name}`}
                         className="team-card__social-link"
                       >
-                        <Mail size={18} />
+                        <Mail size={20} weight="fill" />
                       </a>
                     )}
 
@@ -176,7 +177,7 @@ export function TeamGrid({
                         aria-label={`${member.name}'s website`}
                         className="team-card__social-link"
                       >
-                        <Globe size={18} />
+                        <Globe size={20} weight="fill" />
                       </a>
                     )}
                   </div>

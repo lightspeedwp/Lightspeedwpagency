@@ -28,22 +28,22 @@ import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { ScrollDownArrow } from '../common/ScrollDownArrow';
 import { Container } from '../common/Container';
 import {
-  FileSearch,
+  FileMagnifyingGlass,
   Target,
-  PenTool,
+  PenNib,
   Camera,
-  Edit3,
-  Search,
+  PencilSimple,
+  MagnifyingGlass,
   ShieldCheck,
   ArrowRight,
   BookOpen,
-} from 'lucide-react';
+} from '@phosphor-icons/react';
 
 /** Content sub-service definitions */
 const contentServices = [
   {
     id: 'audit',
-    icon: FileSearch,
+    icon: FileMagnifyingGlass,
     name: 'Content Audit',
     description:
       'Comprehensive inventory and analysis of your existing content to identify performance gaps, redundancies, and optimisation opportunities.',
@@ -71,7 +71,7 @@ const contentServices = [
   },
   {
     id: 'creation',
-    icon: PenTool,
+    icon: PenNib,
     name: 'Content Creation',
     description:
       'Professional content production — from blog posts and landing pages to whitepapers, case studies, and social media content.',
@@ -99,7 +99,7 @@ const contentServices = [
   },
   {
     id: 'copywriting',
-    icon: Edit3,
+    icon: PencilSimple,
     name: 'Copywriting & UX Writing',
     description:
       'Conversion-focused copywriting for websites, campaigns, and product interfaces that drives action.',
@@ -113,7 +113,7 @@ const contentServices = [
   },
   {
     id: 'seo-content',
-    icon: Search,
+    icon: MagnifyingGlass,
     name: 'SEO Content',
     description:
       'Keyword-optimised content that ranks in search engines while providing genuine value to your audience.',

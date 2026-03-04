@@ -28,10 +28,11 @@
  * />
  * ```
  * 
+ * @see /src/app/utils/icon-map.ts
  * @see {@link /guidelines/patterns/CardGrid.md}
  */
 
-import { ChevronRight, ExternalLink } from 'lucide-react';
+import { CaretRight as ChevronRight, ArrowSquareOut as ExternalLink } from '@phosphor-icons/react';
 import { Link } from 'react-router';
 
 

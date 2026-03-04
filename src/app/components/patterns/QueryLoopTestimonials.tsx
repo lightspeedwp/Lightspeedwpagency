@@ -1,15 +1,8 @@
 /**
- * Query Loop — Testimonials
- *
- * WordPress pattern: core/query + testimonial post-template
- *
- * Renders testimonial entries as cards with format badges, ratings,
- * and author info. Clickable to navigate to single testimonial view.
- *
- * @see /src/styles/patterns/query-loop.css
+ * QueryLoopTestimonials Pattern — LSX Design
  */
 
-import { Star, Mic, Video, Images, Quote } from 'lucide-react';
+import { Star, Microphone as Mic, Video, Images, Quotes as Quote } from '@phosphor-icons/react';
 import { Link } from 'react-router';
 import { QueryLoop } from './QueryLoop';
 import { useStaggerReveal } from '../../hooks/useScrollReveal';

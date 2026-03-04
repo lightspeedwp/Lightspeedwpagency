@@ -16,7 +16,7 @@
  */
 
 import { useState, useRef, useEffect, useCallback, type FormEvent } from 'react';
-import { X, Rocket, CheckCircle, Loader2 } from 'lucide-react';
+import { X, Rocket, CheckCircle, Spinner } from '@phosphor-icons/react';
 import { Button } from '../blocks/design/Buttons';
 
 export interface HostingContactModalProps {
@@ -290,7 +290,7 @@ export function HostingContactModal({
                       <span className="wp-block-button__link">
                         {formState === 'submitting' ? (
                           <>
-                            <Loader2 size={16} className="hosting-lab__modal-spinner" />
+                            <Spinner size={16} className="hosting-lab__modal-spinner" />
                             <span>Sending…</span>
                           </>
                         ) : (

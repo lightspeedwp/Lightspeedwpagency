@@ -14,10 +14,11 @@
  * <ErrorBoundary fallback={<ErrorFallback />}>
  *   <YourComponent />
  * </ErrorBoundary>
+ * @see /src/app/utils/icon-map.ts
  */
 
 import React, { Component, ReactNode } from 'react';
-import { AlertTriangle, RefreshCw, Home, ChevronDown, ChevronUp } from 'lucide-react';
+import { Warning as AlertTriangle, ArrowsClockwise as RefreshCw, House as Home, CaretDown as ChevronDown, CaretUp as ChevronUp } from '@phosphor-icons/react';
 import { Button } from '../design/Buttons';
 
 interface ErrorBoundaryProps {

@@ -1,14 +1,8 @@
 /**
- * Query Loop — Solutions
- *
- * WordPress pattern: core/query + solution post-template
- *
- * Renders solution packages as cards with benefits and included services.
- *
- * @see /src/styles/patterns/query-loop.css
+ * QueryLoopSolutions Pattern — LSX Design
  */
 
-import { ArrowRight, CheckCircle } from 'lucide-react';
+import { ArrowRight, CheckCircle } from '@phosphor-icons/react';
 import { Link } from 'react-router';
 import { QueryLoop } from './QueryLoop';
 import { useStaggerReveal } from '../../hooks/useScrollReveal';

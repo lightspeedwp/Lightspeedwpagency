@@ -1,20 +1,11 @@
 /**
- * Benefits Grid Pattern
- * 
- * Displays related benefits or items with icons and "Learn More" links.
- * Maps to WordPress pattern: lsx-design/content/benefits
- * 
- * **Design Token Compliance:**
- * - Uses /src/styles/patterns/benefits-grid.css
- * - 100% CSS variables
- * - BEM naming
+ * BenefitsGrid Pattern — LSX Design
  */
 
 import { Section } from '../common/Section';
 import { Container } from '../common/Container';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight } from '@phosphor-icons/react';
 import type { UniversalIcon } from '../../utils/icon-map';
-
 
 /**
  * Benefit Item Interface

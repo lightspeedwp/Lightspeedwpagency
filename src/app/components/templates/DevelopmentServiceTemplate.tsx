@@ -13,6 +13,16 @@
  * - No inline Tailwind classes
  * - All styling via @/styles/templates/page-service-development.css
  * - Colors mapped to global semantic tokens for auto light/dark
+ *
+ * PATTERN COMPONENTS:
+ * - ✅ FeatureList — Tech Stack capabilities section (glow variant)
+ * - ✅ ProcessTimeline — Execution Pipeline section (vertical orientation)
+ * - ✅ FunkyCTA — Final conversion section
+ * - ✅ ServiceTestimonial — Testimonial section
+ * - ✅ ServicePricingTimeline — Pricing & timeline section
+ * - ✅ RelatedServicesInPhase — Related services navigation
+ *
+ * @migrated March 3, 2026 — Migrated inline services grid to FeatureList and inline process timeline to ProcessTimeline components
  */
 
 import { useEffect, useState } from 'react';
@@ -21,38 +31,71 @@ import '../../../styles/templates/page-service-development.css';
 import { Container } from '../common/Container';
 import { Button } from '../blocks/design/Buttons';
 import { FunkyCTA } from '../patterns/FunkyCTA';
-import { RelatedServicesGrid } from '../patterns/RelatedServicesGrid';
+import { FeatureList } from '../patterns/FeatureList';
+import { ProcessTimeline } from '../patterns/ProcessTimeline';
 import { RelatedServicesInPhase } from '../patterns/RelatedServicesInPhase';
 import { IncludedInSolutions } from '../patterns/IncludedInSolutions';
 import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
 import { ServicePricingTimeline } from '../patterns/ServicePricingTimeline';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { JourneyPhaseIndicator } from '../ui/JourneyPhaseIndicator';
-import { developmentServiceDetailed } from '../../data/services';
+import { 
+  developmentServiceHero, 
+  developmentServiceOverview, 
+  developmentServices as developmentServiceFeatures, 
+  developmentProcess 
+} from '../../data/development-service-page';
 import { servicePricingTimeline } from '../../data/services';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { ScrollDownArrow } from '../common/ScrollDownArrow';
 import { 
   Code,
   Globe,
-  ShoppingCart,
-  Move,
-  Layout,
+  ShoppingCart as ShoppingBag,
+  ArrowsLeftRight as Move,
+  SquaresFour as Layout,
   Plug,
-  Search,
-  Map,
+  MagnifyingGlass as Search,
+  MapTrifold as Map,
   Rocket,
   Shield,
-  TrendingUp,
+  TrendUp,
   CheckCircle,
   Terminal,
   Cpu,
-  Server,
-  Database
-} from 'lucide-react';
+  Database,
+  HardDrives as Server
+} from '@phosphor-icons/react';
 
 export function DevelopmentServiceTemplate() {
-  const data = developmentServiceDetailed;
+  // Build unified data object
+  const data = {
+    tagline: developmentServiceOverview.description,
+    whyLightSpeed: {
+      description: developmentServiceOverview.description
+    },
+    subServices: developmentServiceFeatures.map((service, i) => ({
+      id: service.slug || `service-${i}`,
+      title: service.title,
+      description: service.description
+    })),
+    process: {
+      steps: developmentProcess.map((step, i) => ({
+        id: step.slug || `step-${i}`,
+        number: `${i + 1}`,
+        title: step.title,
+        description: step.description
+      }))
+    },
+    relatedServices: [],
+    cta: {
+      title: "Ready to Build Your Custom WordPress Solution?",
+      description: "Let's engineer a scalable, high-performance WordPress application that drives your business forward.",
+      buttonText: "Start Your Project",
+      buttonPage: "contact" as const
+    }
+  };
+  
   const [typedText, setTypedText] = useState('');
   const fullText = "Engineering the Future of WordPress";
 
@@ -69,7 +112,7 @@ export function DevelopmentServiceTemplate() {
   // Icon mapping
   const serviceIcons: Record<string, any> = {
     'wordpress-websites': Globe,
-    'woocommerce-stores': ShoppingCart,
+    'woocommerce-stores': ShoppingBag,
     'migrations': Move,
     'theme-development': Layout,
     'plugin-development': Plug,
@@ -84,7 +127,7 @@ export function DevelopmentServiceTemplate() {
     'testing': Search,
     'deployment': Rocket,
     'maintenance': Shield,
-    'grow': TrendingUp
+    'grow': TrendUp
   };
 
   return (
@@ -253,36 +296,19 @@ export function DevelopmentServiceTemplate() {
             </ScrollReveal>
           </div>
 
-          <div className="dev-page__services-grid">
-            {data.subServices.map((service, index) => {
-              const Icon = serviceIcons[service.id] || Code;
-              return (
-                <ScrollReveal key={index} animation="fade-up" delay={index * 50}>
-                  <div className="dev-page__card">
-                    <div className="dev-page__card-icon">
-                      <Icon size={24} />
-                    </div>
-                    
-                    <h3 className="dev-page__card-title">
-                      {service.title}
-                    </h3>
-                    
-                    <p className="dev-page__card-desc">
-                      {service.description}
-                    </p>
-                    
-                    <div className="dev-page__tech-stack">
-                      {['React', 'PHP', 'Node'].map((tech, i) => (
-                        <span key={i} className="dev-page__tech-badge">
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </ScrollReveal>
-              );
-            })}
-          </div>
+          <ScrollReveal animation="fade-up" delay={100}>
+            <FeatureList
+              items={developmentServiceFeatures.map((service) => ({
+                icon: service.icon,
+                title: service.title,
+                description: service.description
+              }))}
+              columns={3}
+              variant="glow"
+              iconSize="md"
+              iconStyle="rounded"
+            />
+          </ScrollReveal>
         </Container>
       </section>
 
@@ -291,52 +317,21 @@ export function DevelopmentServiceTemplate() {
           ============================================ */}
       <section className="dev-page__process">
         <Container>
-          <div className="dev-page__text-center" style={{ paddingBottom: 'var(--spacing-16)' }}>
-            <ScrollReveal animation="fade-up">
-              <h2 className="dev-page__section-title dev-page__section-title--neon">
-                Execution Pipeline
-              </h2>
-              <p className="dev-page__text dev-page__max-w-2xl">
-                Our systematic approach to deployment.
-              </p>
-            </ScrollReveal>
-          </div>
-
-          <div className="dev-page__timeline">
-            <div className="dev-page__timeline-line" />
-            
-            <div className="dev-page__timeline-steps">
-              {data.process.steps.map((step, index) => {
-                const Icon = processIcons[step.id] || Code;
-                const isEven = index % 2 === 0;
-                
-                return (
-                  <ScrollReveal key={index} animation={isEven ? 'fade-left' : 'fade-right'} delay={index * 100}>
-                    <div className={`dev-page__timeline-item ${isEven ? 'dev-page__timeline-item--right' : 'dev-page__timeline-item--left'}`}>
-                      
-                      {/* Marker */}
-                      <div className="dev-page__timeline-marker">
-                        <div className="dev-page__timeline-dot" />
-                      </div>
-
-                      {/* Content */}
-                      <div className="dev-page__timeline-content">
-                        <div className="dev-page__timeline-header">
-                          <h3 className="dev-page__timeline-title">
-                            <span className="dev-page__timeline-number">0{step.number} </span>
-                            {step.title}
-                          </h3>
-                        </div>
-                        <p className="dev-page__timeline-desc">
-                          {step.description}
-                        </p>
-                      </div>
-                    </div>
-                  </ScrollReveal>
-                );
-              })}
-            </div>
-          </div>
+          <ScrollReveal animation="fade-up">
+            <ProcessTimeline
+              heading="Execution Pipeline"
+              description="Our systematic approach to deployment."
+              steps={developmentProcess.map((step, i) => ({
+                id: step.slug || `step-${i}`,
+                number: i + 1,
+                title: step.title,
+                description: step.description,
+                icon: step.icon
+              }))}
+              showNumbers={true}
+              orientation="vertical"
+            />
+          </ScrollReveal>
         </Container>
       </section>
 
@@ -344,7 +339,7 @@ export function DevelopmentServiceTemplate() {
           CTA SECTION
           ============================================ */}
       {data.relatedServices && data.relatedServices.length > 0 && (
-        <RelatedServicesGrid
+        <RelatedServicesInPhase
           title="Related Services"
           subtitle="Extend your build with these complementary services"
           services={data.relatedServices}

@@ -18,7 +18,7 @@
  */
 
 import type { UniversalIcon } from '../../utils/icon-map';
-import { Users, Star, Calendar, Award } from 'lucide-react';
+import { Users, Star, CalendarBlank, Trophy } from '@phosphor-icons/react';
 
 /* ============================================
    TYPES
@@ -49,8 +49,8 @@ interface ProofStripProps {
 const defaultStats: ProofStripStat[] = [
   { icon: Users, value: '500+', label: 'Projects Delivered' },
   { icon: Star, value: '4.9/5', label: 'Average Client Rating' },
-  { icon: Calendar, value: '22+', label: 'Years WordPress Experience' },
-  { icon: Award, value: '98%', label: 'Client Retention Rate' },
+  { icon: CalendarBlank, value: '22+', label: 'Years WordPress Experience' },
+  { icon: Trophy, value: '98%', label: 'Client Retention Rate' },
 ];
 
 /* ============================================

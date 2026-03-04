@@ -1,13 +1,8 @@
 /**
- * Gradient CTA Section Pattern
- * 
- * WordPress pattern: lsx-design/cta/gradient-cta-section
- * 
- * Full-width gradient CTA section with benefits checklist and optional graphic.
- * Commonly used on service pages for conversion-focused calls-to-action.
+ * GradientCTASection Pattern — LSX Design
  */
 
-import { CheckCircle } from 'lucide-react';
+import { CheckCircle } from '@phosphor-icons/react';
 import type { UniversalIcon } from '../../utils/icon-map';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';

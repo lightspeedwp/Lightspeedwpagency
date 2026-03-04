@@ -12,12 +12,19 @@
  * - Smooth fade-in animation
  * - Respects reduced motion
  * - WCAG AAA compliant (48×48px touch target)
- * - Keyboard accessible
+ * @example
+ * ```tsx
+ * // In App.tsx or layout
+ * import { StickyBookCallButton } from './components/blocks/layout/StickyBookCallButton';
+ * 
+ * <StickyBookCallButton />
+ * ```
+ * @see /src/app/utils/icon-map.ts
  */
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Phone } from 'lucide-react';
+import { Phone } from '@phosphor-icons/react';
 import { useReducedMotion } from '../../../hooks/useReducedMotion';
 
 export function StickyBookCallButton() {

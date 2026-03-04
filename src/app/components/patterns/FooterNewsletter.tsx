@@ -4,13 +4,14 @@
  * WordPress concept: Block pattern — lsx-design/layout/footer-newsletter
  * 
  * Alternative footer with newsletter subscription, social links, and link columns.
+ * @see /src/app/utils/icon-map.ts
  * All styling in /src/styles/footer-newsletter.css (user-editable)
  */
 
 import { Logo } from '../common/Logo';
 import { Button } from '../blocks/design/Buttons';
 import { Container } from '../common/Container';
-import { Facebook, Instagram, Twitter, Linkedin, Youtube } from 'lucide-react';
+import { FacebookLogo as Facebook, InstagramLogo as Instagram, TwitterLogo as Twitter, LinkedinLogo as Linkedin, YoutubeLogo as Youtube } from '@phosphor-icons/react';
 
 
 interface FooterColumn {
@@ -185,7 +186,7 @@ export function FooterNewsletter({
                       aria-label={social.label}
                       className="footer-newsletter__social-link"
                     >
-                      <IconComponent size={16} strokeWidth={2} />
+                      <IconComponent size={20} weight="fill" />
                     </a>
                   );
                 })}

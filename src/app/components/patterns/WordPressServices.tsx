@@ -1,18 +1,10 @@
 /**
- * WordPress Services Pattern Component
- * 
- * WordPress Pattern: lsx-design/content/wordpress-services
- * 
- * Displays a grid of services with detailed features and links.
- * 
- * @see {@link /guidelines/patterns/WordPressServices.md}
+ * WordPressServices Pattern — LSX Design
  */
 
-import { ArrowRight, CheckCircle } from 'lucide-react';
+import { ArrowRight, CheckCircle } from '@phosphor-icons/react';
 import type { UniversalIcon } from '../../utils/icon-map';
 import { Container } from '../common/Container';
-import { Section } from '../common/Section';
-
 
 export interface WordPressServiceItem {
   icon: UniversalIcon;

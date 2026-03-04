@@ -18,16 +18,22 @@
  * - BEM methodology for all class names
  * - No hardcoded colors or spacing values
  * - Font families: var(--font-primary) and var(--font-secondary) only
+ * 
+ * Pattern Components:
+ * - ✅ FeatureList — Benefits grid (6 items, 3 columns, glow variant)
+ * 
+ * @migrated March 3, 2026 — Phase 3.1: Migrated inline benefits grid to FeatureList component (~80 lines saved)
  */
 
 import '@/styles/templates/analytics-service.css';
-import { BarChart3, Target, TrendingUp, Users, LineChart, PieChart } from 'lucide-react';
+import { ChartBar, Target, TrendUp, Users, ChartLine, ChartPie } from '@phosphor-icons/react';
 import { Link } from 'react-router';
+import { FeatureList } from '../patterns/FeatureList';
 
 export const AnalyticsServiceTemplate = () => {
   const benefits = [
     {
-      icon: BarChart3,
+      icon: ChartBar,
       title: 'Data Collection & Integration',
       description: 'Set up comprehensive tracking across all touchpoints to capture meaningful user behavior data.'
     },
@@ -37,7 +43,7 @@ export const AnalyticsServiceTemplate = () => {
       description: 'Define and monitor key performance indicators that align with your business objectives.'
     },
     {
-      icon: TrendingUp,
+      icon: TrendUp,
       title: 'Traffic & Behavior Analysis',
       description: 'Understand how visitors interact with your site and identify opportunities for improvement.'
     },
@@ -47,12 +53,12 @@ export const AnalyticsServiceTemplate = () => {
       description: 'Break down your audience into meaningful segments to personalize content and marketing.'
     },
     {
-      icon: LineChart,
+      icon: ChartLine,
       title: 'Performance Reporting',
       description: 'Actionable insights delivered through custom dashboards and automated reports.'
     },
     {
-      icon: PieChart,
+      icon: ChartPie,
       title: 'Attribution Modeling',
       description: 'Understand which channels and touchpoints drive conversions across the customer journey.'
     }
@@ -116,20 +122,12 @@ export const AnalyticsServiceTemplate = () => {
           </p>
         </div>
         
-        <div className="analytics-service__benefits-grid">
-          {benefits.map((benefit, index) => {
-            const Icon = benefit.icon;
-            return (
-              <div key={index} className="analytics-service__benefit-card">
-                <div className="analytics-service__benefit-icon">
-                  <Icon className="analytics-service__benefit-icon-svg" />
-                </div>
-                <h3 className="analytics-service__benefit-title">{benefit.title}</h3>
-                <p className="analytics-service__benefit-description">{benefit.description}</p>
-              </div>
-            );
-          })}
-        </div>
+        <FeatureList
+          items={benefits}
+          columns={3}
+          variant="glow"
+          iconSize="lg"
+        />
       </section>
 
       {/* Deliverables */}

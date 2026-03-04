@@ -19,7 +19,15 @@
  *  - Colors from semantic tokens (auto light / dark)
  *  - Fonts: var(--font-primary), var(--font-secondary), var(--font-mono) only
  *
+ * PATTERN COMPONENTS:
+ * - ✅ StatsGrid — Hero stats section (3-column layout)
+ * - ✅ FunkyCTA — Final conversion section
+ * - ✅ ServiceTestimonial — Testimonial section
+ * - ✅ ServicePricingTimeline — Pricing & timeline section
+ * - ✅ RelatedServicesInPhase — Related services navigation
+ *
  * @see /guidelines/templates/overview-templates.md
+ * @migrated March 3, 2026 — Migrated inline StatCounter to StatsGrid component
  */
 
 import { useState, useEffect } from 'react';
@@ -28,67 +36,68 @@ import '../../../styles/templates/page-service-discovery.css';
 import { Link } from 'react-router';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
-import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { Button } from '../blocks/design/Buttons';
 import { FunkyCTA } from '../patterns/FunkyCTA';
+import { StatsGrid } from '../patterns/StatsGrid';
 import { RelatedServicesInPhase } from '../patterns/RelatedServicesInPhase';
 import { IncludedInSolutions } from '../patterns/IncludedInSolutions';
 import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
 import { ServicePricingTimeline } from '../patterns/ServicePricingTimeline';
-import { discoveryServiceDetailed } from '../../data/services';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
+import { JourneyPhaseIndicator } from '../ui/JourneyPhaseIndicator';
+import { 
+  discoveryServiceHero,
+  discoveryServiceOverview,
+  discoveryServiceProcess,
+  discoveryServiceDeliverables,
+  discoveryServiceCTA
+} from '../../data/discovery-service-page';
 import { servicePricingTimeline } from '../../data/services';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { ScrollDownArrow } from '../common/ScrollDownArrow';
-import { JourneyPhaseIndicator } from '../ui/JourneyPhaseIndicator';
 import { slugToPath } from '../../utils/route-map';
-import {
-  Search,
-  ArrowRight,
-  Target,
-  ShieldAlert,
-  Telescope,
-  CheckCircle,
-  Radar,
-  ScanSearch,
-  FileText,
-  BarChart3,
+import { 
+  MagnifyingGlass as Search,
   Users,
-  Globe,
-  Crosshair,
-  Zap,
-  BookOpen,
-  PieChart,
+  ChartLine as TrendingUp,
+  Target,
   Lightbulb,
-  Award,
-  Clock,
-} from 'lucide-react';
+  FileText,
+  Presentation as PresentationChart,
+  CheckCircle,
+  MapTrifold as Map,
+  Compass,
+  Binoculars,
+  Strategy,
+  ArrowRight
+} from '@phosphor-icons/react';
 
 /* ─────────────────────────────────────────────
    STATIC DATA
    ───────────────────────────────────────────── */
 
 const heroStats = [
-  { value: '250+', label: 'Projects Launched', icon: Zap },
-  { value: '98%', label: 'Client Satisfaction', icon: Award },
-  { value: '12yr', label: 'Industry Experience', icon: Clock },
+  { value: '250+', label: 'Projects Launched', icon: Search },
+  { value: '98%', label: 'Client Satisfaction', icon: CheckCircle },
+  { value: '12yr', label: 'Industry Experience', icon: Compass },
 ];
 
 const subServiceIcons: Record<string, typeof Target> = {
   'goal-alignment': Target,
-  'risk-mitigation': ShieldAlert,
-  'opportunity-spotting': Telescope,
+  'risk-mitigation': Binoculars,
+  'opportunity-spotting': Strategy,
 };
 
 const deliverables = [
   { icon: FileText, title: 'Technical Specification', desc: 'Detailed architecture & stack recommendations' },
-  { icon: BarChart3, title: 'Competitor Analysis', desc: 'Market landscape & opportunity report' },
+  { icon: PresentationChart, title: 'Competitor Analysis', desc: 'Market landscape & opportunity report' },
   { icon: Users, title: 'User Personas', desc: 'Audience profiles & journey maps' },
-  { icon: Globe, title: 'Sitemap & IA', desc: 'Information architecture & navigation structure' },
-  { icon: PieChart, title: 'Budget & Timeline', desc: 'Transparent cost breakdown & milestones' },
-  { icon: BookOpen, title: 'Strategy Playbook', desc: 'Actionable roadmap to launch day' },
+  { icon: Map, title: 'Sitemap & IA', desc: 'Information architecture & navigation structure' },
+  { icon: TrendingUp, title: 'Budget & Timeline', desc: 'Transparent cost breakdown & milestones' },
+  { icon: Lightbulb, title: 'Strategy Playbook', desc: 'Actionable roadmap to launch day' },
 ];
 
-const processIcons = [ScanSearch, Users, Crosshair, Lightbulb, Target];
+const processIcons = [Search, Users, Target, Lightbulb, Target];
 
 /* ─────────────────────────────────────────────
    ANIMATED COUNTER HOOK
@@ -132,7 +141,34 @@ function StatCounter({ value, label }: { value: string; label: string }) {
    ───────────────────────────────────────────── */
 
 export function DiscoveryServiceTemplate() {
-  const data = discoveryServiceDetailed;
+  // Build unified data object from imports
+  const data = {
+    tagline: discoveryServiceHero.subtitle || "Before you build, know exactly what to build.",
+    whyLightSpeed: {
+      description: discoveryServiceOverview.description
+    },
+    subServices: discoveryServiceOverview.benefits?.map((benefit, i) => ({
+      id: `benefit-${i}`,
+      title: benefit.title,
+      description: benefit.description
+    })) || [],
+    process: {
+      description: discoveryServiceProcess.description,
+      steps: discoveryServiceProcess.steps.map((step, i) => ({
+        id: `step-${i}`,
+        number: `${i + 1}`,
+        title: step.title,
+        description: step.description
+      }))
+    },
+    relatedServices: [],
+    cta: {
+      title: discoveryServiceCTA.title,
+      description: discoveryServiceCTA.description,
+      buttonText: discoveryServiceCTA.buttonText,
+      buttonPage: "contact" as const
+    }
+  };
 
   return (
     <>
@@ -177,7 +213,7 @@ export function DiscoveryServiceTemplate() {
           <div className="disc-hero__content">
             <ScrollReveal animation="fade-up">
               <span className="disc-hero__badge">
-                <Radar size={14} />
+                <Search size={14} />
                 Strategic Discovery
               </span>
 
@@ -211,11 +247,14 @@ export function DiscoveryServiceTemplate() {
 
             {/* Mini Stat Bar */}
             <ScrollReveal animation="fade-up" delay={200}>
-              <div className="disc-hero__stats">
-                {heroStats.map((s) => (
-                  <StatCounter key={s.label} value={s.value} label={s.label} />
-                ))}
-              </div>
+              <StatsGrid
+                stats={heroStats.map((s) => ({
+                  value: s.value,
+                  label: s.label
+                }))}
+                columns={3}
+                variant="default"
+              />
             </ScrollReveal>
           </div>
         </Container>
@@ -240,7 +279,7 @@ export function DiscoveryServiceTemplate() {
                 />
                 {/* Floating Intel Card */}
                 <div className="disc-why__intel-card">
-                  <ScanSearch size={20} />
+                  <Search size={20} />
                   <div>
                     <span className="disc-why__intel-title">Deep Analysis</span>
                     <span className="disc-why__intel-sub">Risk-free project launch</span>

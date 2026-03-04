@@ -16,7 +16,7 @@ import { Container } from '@/app/components/common/Container';
 import { Section } from '@/app/components/common/Section';
 import { BreadcrumbPart } from '@/app/components/parts/BreadcrumbPart';
 import { allPosts } from '@/app/data/posts-formats';
-import { Hash } from 'lucide-react';
+import { Hash } from '@phosphor-icons/react';
 import { Link } from 'react-router';
 
 export function AsideArchiveTemplate() {

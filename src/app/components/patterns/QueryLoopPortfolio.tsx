@@ -1,15 +1,8 @@
 /**
- * Query Loop — Portfolio Case Studies
- *
- * WordPress pattern: core/query + portfolio post-template
- *
- * Renders portfolio projects with featured images, technology tags,
- * and result highlights.
- *
- * @see /src/styles/patterns/query-loop.css
+ * QueryLoopPortfolio Pattern — LSX Design
  */
 
-import { Briefcase, ExternalLink } from 'lucide-react';
+import { Briefcase, ArrowSquareOut as ExternalLink } from '@phosphor-icons/react';
 import { Link } from 'react-router';
 import { QueryLoop } from './QueryLoop';
 import { useStaggerReveal } from '../../hooks/useScrollReveal';

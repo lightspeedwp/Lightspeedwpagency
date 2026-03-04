@@ -14,9 +14,8 @@ import React from 'react';
 import { Section } from '../common/Section';
 import { Container } from '../common/Container';
 import { Heading } from '../common/Heading';
-import { Check, X } from 'lucide-react';
+import { Check, X } from '@phosphor-icons/react';
 import type { ComparisonFeature } from '../../data/comparisons';
-
 
 export interface FeatureComparisonProps {
   heading?: string;

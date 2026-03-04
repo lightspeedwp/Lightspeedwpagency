@@ -31,29 +31,20 @@ import { testimonials } from '../../data/testimonials';
 import { clientLogos } from '../../data/logos';
 import { aboutFAQs } from '../../data/faqs';
 import {
-  Award,
-  Shield,
+  Rocket,
   Users,
-  Zap,
+  Target as Crosshair,
+  Trophy,
   Heart,
-  TrendingUp,
-  CheckCircle,
-  Star,
-  Clock,
-  Target,
-  Briefcase,
-  MessageCircle,
-  DollarSign,
+  Gauge,
   Palette,
-  Blocks,
-  Eye,
-  Lock,
+  Code,
   Headphones,
   GraduationCap,
   ThumbsUp,
-  Server,
-  Sparkles
-} from 'lucide-react';
+  HardDrives as Server,
+  Sparkle as Sparkles
+} from '@phosphor-icons/react';
 
 
 
@@ -72,9 +63,7 @@ import { guarantees } from '../../data/guarantees';
 
 /* ── Icon Mapping for dynamic data ── */
 const iconMap: Record<string, React.ComponentType<any>> = {
-  Award, Shield, Users, Zap, Heart, TrendingUp, CheckCircle,
-  Star, Clock, Target, Briefcase, MessageCircle, DollarSign,
-  Palette, Blocks, Eye, Lock, Headphones, GraduationCap,
+  Trophy, Users, Crosshair, Heart, Gauge, Palette, Code, Headphones, GraduationCap,
   ThumbsUp, Server
 };
 
@@ -158,7 +147,7 @@ export function WhyChooseUsTemplate() {
 
           <div className="wcu__vp-grid">
             {competitiveAdvantages.map((item) => {
-              const Icon = item.icon ? iconMap[item.icon] : Award;
+              const Icon = item.icon ? iconMap[item.icon] : Trophy;
               return (
                 <ScrollReveal key={item.id} animation="fade-up">
                   <article className="wcu__vp-card">
@@ -227,7 +216,7 @@ export function WhyChooseUsTemplate() {
 
           <div className="wcu__guarantee-grid">
             {guarantees.slice(0, 3).map((guarantee) => {
-              const Icon = guarantee.icon ? iconMap[guarantee.icon] : Shield;
+              const Icon = guarantee.icon ? iconMap[guarantee.icon] : Trophy;
               return (
                 <ScrollReveal key={guarantee.id} animation="fade-up">
                   <article className="wcu__guarantee-card">

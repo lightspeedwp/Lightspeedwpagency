@@ -14,6 +14,18 @@
  * - All styling via @/styles/templates/page-service-security.css
  * - Colors mapped to global semantic tokens for auto light/dark
  * - Fonts: var(--font-primary), var(--font-secondary), var(--font-mono) only
+ *
+ * PATTERN COMPONENTS:
+ * - ✅ FeatureList — Defense Protocols section (glow variant, 4 columns)
+ * - ✅ ProcessTimeline — Security Protocol section (vertical orientation)
+ * - ✅ StatsGrid — Security metrics section (cards variant)
+ * - ✅ FunkyCTA — Final conversion section
+ * - ✅ FAQSection — FAQ section
+ * - ✅ ServiceTestimonial — Testimonial section
+ * - ✅ ServicePricingTimeline — Pricing & timeline section
+ * - ✅ RelatedServicesInPhase — Related services navigation
+ *
+ * @migrated March 3, 2026 — Migrated inline defense protocols grid to FeatureList and inline security protocol grid to ProcessTimeline components
  */
 
 import { useState, useEffect } from 'react';
@@ -21,6 +33,8 @@ import '../../../styles/templates/page-service-security.css';
 import { Container } from '../common/Container';
 import { FAQSection } from '../patterns/FAQSection';
 import { FunkyCTA } from '../patterns/FunkyCTA';
+import { FeatureList } from '../patterns/FeatureList';
+import { ProcessTimeline } from '../patterns/ProcessTimeline';
 import { RelatedServicesGrid } from '../patterns/RelatedServicesGrid';
 import { RelatedServicesInPhase } from '../patterns/RelatedServicesInPhase';
 import { IncludedInSolutions } from '../patterns/IncludedInSolutions';
@@ -34,15 +48,59 @@ import { Button } from '../blocks/design/Buttons';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { ScrollDownArrow } from '../common/ScrollDownArrow';
 import { 
-  Shield, Lock, Terminal, Activity, Eye, Search, 
-  AlertTriangle, CheckCircle, Server, Zap, Trash2, FileCode
-} from 'lucide-react';
+  Shield, 
+  Lock, 
+  Terminal, 
+  ChartLineUp as Activity, 
+  Eye, 
+  MagnifyingGlass as Search, 
+  Warning as AlertTriangle, 
+  CheckCircle, 
+  HardDrives as Server, 
+  Lightning as Zap, 
+  Trash, 
+  FileCode
+} from '@phosphor-icons/react';
 
 // Import detailed data
-import { securityServiceDetailed } from '../../data/services';
+import { 
+  securityServiceHero,
+  securityServiceFeatures,
+  securityServiceProcess,
+  securityServiceCTA
+} from '../../data/security-service-page';
 
 export function SecurityServiceTemplate() {
-  const data = securityServiceDetailed;
+  // Build a unified data object from imports
+  const data = {
+    tagline: securityServiceHero.subtitle || "Your WordPress site is under attack 24/7.",
+    whyLightSpeed: {
+      description: securityServiceFeatures.description || "Comprehensive protection against hackers, malware, and data breaches"
+    },
+    subServices: securityServiceFeatures.features?.map((feat, i) => ({
+      id: `service-${i}`,
+      title: feat.title,
+      description: feat.description
+    })) || [],
+    process: {
+      title: securityServiceProcess.title,
+      description: securityServiceProcess.description || "Our systematic approach to securing your WordPress site",
+      steps: securityServiceProcess.steps.map((step, i) => ({
+        id: `step-${i}`,
+        number: `${i + 1}`,
+        title: step.title,
+        description: step.description
+      }))
+    },
+    relatedServices: [],
+    cta: {
+      title: securityServiceCTA.title,
+      description: securityServiceCTA.description,
+      buttonText: securityServiceCTA.buttonText,
+      buttonPage: "contact" as const
+    }
+  };
+  
   const [logs, setLogs] = useState<string[]>([]);
 
   // Simulated Terminal Logs
@@ -235,33 +293,19 @@ export function SecurityServiceTemplate() {
             <div className="security-page__divider" />
           </div>
 
-          <div className="security-page__services-grid">
-            {data.subServices.map((service, index) => {
-              const Icon = service.id === 'security-audit' ? Search : AlertTriangle;
-              return (
-                <ScrollReveal key={service.id || index} animation="fade-up" delay={index * 50}>
-                  <div className="security-page__service-card">
-                    <div className="security-page__icon-box">
-                      <Icon size={24} />
-                    </div>
-                    <h3 className="security-page__service-title">
-                      {service.title}
-                    </h3>
-                    <p className="security-page__service-desc">
-                      {service.description}
-                    </p>
-                    <Button 
-                      variant="link" 
-                      page="contact"
-                      className="security-page__service-btn"
-                    >
-                      DEPLOY_PROTOCOL &gt;
-                    </Button>
-                  </div>
-                </ScrollReveal>
-              );
-            })}
-          </div>
+          <ScrollReveal animation="fade-up" delay={100}>
+            <FeatureList
+              items={securityServiceFeatures.features.map((feat) => ({
+                icon: feat.icon as any, // Features already have icons from data
+                title: feat.title,
+                description: feat.description
+              }))}
+              columns={4}
+              variant="glow"
+              iconSize="md"
+              iconStyle="rounded"
+            />
+          </ScrollReveal>
         </Container>
       </section>
 
@@ -270,41 +314,20 @@ export function SecurityServiceTemplate() {
           ============================================ */}
       <section className="security-page__process">
         <Container>
-          <div className="security-page__process-header">
-            <ScrollReveal animation="fade-up">
-              <h2 className="security-page__process-title">
-                {data.process.title}
-              </h2>
-              <p className="security-page__process-desc">
-                {data.process.description}
-              </p>
-            </ScrollReveal>
-          </div>
-
-          <div className="security-page__process-grid">
-            {data.process.steps.map((step, index) => {
-              const StepIcon = [Search, Trash2, Server, FileCode, Eye][index] || CheckCircle;
-              
-              return (
-                <ScrollReveal key={step.id || index} animation="fade-up" delay={index * 100}>
-                  <div className="security-page__step-card">
-                    <div className="security-page__step-number">
-                      STEP_0{step.number}
-                    </div>
-                    <div className="security-page__step-icon">
-                      <StepIcon size={24} />
-                    </div>
-                    <h3 className="security-page__step-title">
-                      {step.title}
-                    </h3>
-                    <p className="security-page__step-desc">
-                      {step.description}
-                    </p>
-                  </div>
-                </ScrollReveal>
-              );
-            })}
-          </div>
+          <ScrollReveal animation="fade-up">
+            <ProcessTimeline
+              heading={securityServiceProcess.title}
+              description={securityServiceProcess.description || "Our systematic approach to securing your WordPress site"}
+              steps={securityServiceProcess.steps.map((step, i) => ({
+                id: `step-${i}`,
+                number: i + 1,
+                title: step.step,
+                description: step.description
+              }))}
+              showNumbers={true}
+              orientation="vertical"
+            />
+          </ScrollReveal>
         </Container>
       </section>
 

@@ -11,9 +11,8 @@ import { Container } from '@/app/components/common/Container';
 import { Section } from '@/app/components/common/Section';
 import { BreadcrumbPart } from '@/app/components/parts/BreadcrumbPart';
 import { allPosts } from '@/app/data/posts-formats';
-import { Mic, Play } from 'lucide-react';
+import { Microphone as Mic, Play } from '@phosphor-icons/react';
 import { Link } from 'react-router';
-
 
 export function AudioArchiveTemplate() {
   const audioPosts = allPosts.filter(post => post.format === 'audio');

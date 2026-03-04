@@ -15,33 +15,32 @@
 import '../../../styles/templates/code-quality-dashboard.css';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import {
-  Activity,
-  BarChart3,
-  Code2,
+  Pulse,
+  ChartBar,
+  CodeBlock,
   Database,
   FileCode,
-  Layers,
-  LayoutGrid,
+  Stack,
+  SquaresFour,
   Palette,
-  Route,
+  Path,
   Shield,
-  SwatchBook,
-  Type,
+  Swatches,
+  TextT,
   Ruler,
-  Columns3,
-  Blocks,
+  Columns,
+  Cube,
   FileText,
   Headphones,
-  Video,
+  VideoCamera,
   ShoppingCart,
-  Map,
+  MapTrifold,
   BookOpen,
-  PenTool,
-  Component,
+  PenNib,
+  DotsSix,
   Wrench,
-  CircleCheck,
   CheckCircle,
-} from 'lucide-react';
+} from '@phosphor-icons/react';
 import { blogPosts } from '../../data/blog-posts';
 import { portfolioProjects } from '../../data/portfolio-projects';
 import { videos } from '../../data/videos';
@@ -60,12 +59,12 @@ import * as faqsData from '../../data/faqs';
 
 /** Component counts by category */
 const componentCounts = [
-  { name: 'Templates', count: 90, icon: <LayoutGrid size={20} /> },
-  { name: 'Patterns', count: 54, icon: <Layers size={20} /> },
-  { name: 'Blocks', count: 66, icon: <Blocks size={20} /> },
-  { name: 'Common', count: 8, icon: <Component size={20} /> },
-  { name: 'Parts', count: 2, icon: <PenTool size={20} /> },
-  { name: 'Hooks', count: 12, icon: <Code2 size={20} /> },
+  { name: 'Templates', count: 90, icon: <SquaresFour size={20} /> },
+  { name: 'Patterns', count: 54, icon: <Stack size={20} /> },
+  { name: 'Blocks', count: 66, icon: <Cube size={20} /> },
+  { name: 'Common', count: 8, icon: <DotsSix size={20} /> },
+  { name: 'Parts', count: 2, icon: <PenNib size={20} /> },
+  { name: 'Hooks', count: 12, icon: <CodeBlock size={20} /> },
   { name: 'Data Files', count: 71, icon: <Database size={20} /> },
   { name: 'CSS Files', count: 145, icon: <Palette size={20} /> },
 ];
@@ -94,14 +93,14 @@ const routeStats = [
 const dataFileStats = [
   { name: 'Blog Posts', file: 'blog-posts.ts', entries: blogPosts.length, icon: <FileText size={18} /> },
   { name: 'Portfolio Projects', file: 'portfolio-projects.ts', entries: portfolioProjects.length, icon: <BookOpen size={18} /> },
-  { name: 'Videos', file: 'videos.ts', entries: videos.length, icon: <Video size={18} /> },
+  { name: 'Videos', file: 'videos.ts', entries: videos.length, icon: <VideoCamera size={18} /> },
   { name: 'Podcasts', file: 'podcasts.ts', entries: podcasts.length, icon: <Headphones size={18} /> },
   { name: 'FAQs', file: 'faqs.ts', entries: Object.keys(faqsData).filter(k => k.endsWith('FAQs')).length, icon: <FileText size={18} /> },
   { name: 'Services', file: 'services.ts', entries: services.length, icon: <Wrench size={18} /> },
-  { name: 'Team Members', file: 'team.ts', entries: teamMembers.length, icon: <Component size={18} /> },
+  { name: 'Team Members', file: 'team.ts', entries: teamMembers.length, icon: <DotsSix size={18} /> },
   { name: 'Testimonials', file: 'testimonials.ts', entries: testimonials.length, icon: <FileText size={18} /> },
   { name: 'Products', file: 'woocommerce.ts', entries: allProducts.length, icon: <ShoppingCart size={18} /> },
-  { name: 'Tours', file: 'tour-operator.ts', entries: tours.length, icon: <Map size={18} /> },
+  { name: 'Tours', file: 'tour-operator.ts', entries: tours.length, icon: <MapTrifold size={18} /> },
 ];
 
 /** Design token categories */
@@ -237,7 +236,7 @@ export function CodeQualityDashboardTemplate() {
         <div className="cq-dashboard__hero-orb" aria-hidden="true" />
         <div className="cq-dashboard__hero-inner">
           <div className="cq-dashboard__hero-badge">
-            <Activity size={14} />
+            <Pulse size={14} />
             Code Quality
           </div>
           <h1 className="cq-dashboard__hero-title">Code Quality Dashboard</h1>
@@ -290,7 +289,7 @@ export function CodeQualityDashboardTemplate() {
         <div className="cq-dashboard__section">
           <div className="cq-dashboard__section-header">
             <div className="cq-dashboard__section-icon">
-              <Component size={18} />
+              <DotsSix size={18} />
             </div>
             <h2 className="cq-dashboard__section-title">Component Inventory</h2>
             <span className="cq-dashboard__section-badge cq-dashboard__section-badge--info">
@@ -314,7 +313,7 @@ export function CodeQualityDashboardTemplate() {
         <div className="cq-dashboard__section">
           <div className="cq-dashboard__section-header">
             <div className="cq-dashboard__section-icon">
-              <Route size={18} />
+              <Path size={18} />
             </div>
             <h2 className="cq-dashboard__section-title">Route Statistics</h2>
             <span className="cq-dashboard__section-badge cq-dashboard__section-badge--success">
@@ -367,7 +366,7 @@ export function CodeQualityDashboardTemplate() {
         <div className="cq-dashboard__section">
           <div className="cq-dashboard__section-header">
             <div className="cq-dashboard__section-icon">
-              <SwatchBook size={18} />
+              <Swatches size={18} />
             </div>
             <h2 className="cq-dashboard__section-title">Design Token Inventory</h2>
             <span className="cq-dashboard__section-badge cq-dashboard__section-badge--info">
@@ -423,7 +422,7 @@ export function CodeQualityDashboardTemplate() {
         <div className="cq-dashboard__section">
           <div className="cq-dashboard__section-header">
             <div className="cq-dashboard__section-icon">
-              <CircleCheck size={18} />
+              <CheckCircle size={18} />
             </div>
             <h2 className="cq-dashboard__section-title">Compliance Scores</h2>
             <span className="cq-dashboard__section-badge cq-dashboard__section-badge--success">

@@ -1,19 +1,13 @@
 /**
- * Featured Project (Text) Pattern
- * 
- * A single featured project with a prominent text testimonial.
- * 
- * Dependencies:
- * - lucide-react
- * - /src/styles/patterns/featured-project-text.css
+ * Featured Project Text Pattern
  */
 
 import React from 'react';
-import { portfolioProjects } from '../../data/portfolio-projects';
+import { Container } from '../common/Container';
+import { Section } from '../common/Section';
 import { ImageWithFallback } from '../figma/ImageWithFallback';
 import { Link } from 'react-router';
-import { ArrowRight, Star } from 'lucide-react';
-
+import { ArrowRight, Star } from '@phosphor-icons/react';
 
 interface FeaturedProjectTextProps {
   projectSlug?: string;

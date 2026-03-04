@@ -1,14 +1,8 @@
 /**
- * Query Loop — Chat Post Format
- *
- * WordPress pattern: core/query + chat post-template
- *
- * Renders chat/transcript posts with conversation bubble previews.
- *
- * @see /src/styles/patterns/query-loop.css
+ * QueryLoopChat Pattern — LSX Design
  */
 
-import { MessageSquare, Calendar } from 'lucide-react';
+import { Chat as MessageSquare, Calendar } from '@phosphor-icons/react';
 import { Link } from 'react-router';
 import { QueryLoop } from './QueryLoop';
 import { useStaggerReveal } from '../../hooks/useScrollReveal';

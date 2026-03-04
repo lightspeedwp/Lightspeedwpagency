@@ -3,9 +3,10 @@
  * 
  * Non-WordPress UI utility for hero sections.
  * Provides visual affordance for scrolling.
+ * @see /src/app/utils/icon-map.ts
  */
 
-import { ChevronDown } from 'lucide-react';
+import { CaretDown as ChevronDown } from '@phosphor-icons/react';
 
 interface ScrollDownArrowProps {
   targetId: string;
@@ -25,7 +26,7 @@ export function ScrollDownArrow({ targetId }: ScrollDownArrowProps) {
       className="scroll-down-arrow"
       aria-label="Scroll to content"
     >
-      <ChevronDown className="scroll-down-arrow__icon" strokeWidth={2} />
+      <ChevronDown className="scroll-down-arrow__icon" weight="bold" />
     </button>
   );
 }

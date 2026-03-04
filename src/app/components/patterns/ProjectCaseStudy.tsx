@@ -23,7 +23,7 @@
  */
 
 import { ScrollReveal } from '../../hooks/useScrollReveal';
-import { AlertCircle, Lightbulb, TrendingUp, ArrowRight } from 'lucide-react';
+import { Warning, Lightbulb, TrendUp, ArrowRight } from '@phosphor-icons/react';
 import type { UniversalIcon } from '../../utils/icon-map';
 
 export interface CaseStudyMetric {
@@ -48,9 +48,9 @@ export interface ProjectCaseStudyProps {
 }
 
 const SectionIcon: Record<string, UniversalIcon> = {
-  challenge: AlertCircle,
+  challenge: Warning,
   solution: Lightbulb,
-  results: TrendingUp,
+  results: TrendUp,
 };
 
 export const ProjectCaseStudy = ({

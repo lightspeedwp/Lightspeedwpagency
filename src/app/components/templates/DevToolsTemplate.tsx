@@ -11,43 +11,42 @@
 
 import '../../../styles/templates/dev-tools.css';
 import {
-  Code2,
-  TestTube2,
+  CodeBlock,
+  TestTube,
   Eye,
-  FileCode2,
-  Puzzle,
+  FileCode,
+  PuzzlePiece,
   Palette,
   Layout,
-  Activity,
-  ChevronRight,
+  Pulse,
+  CaretRight,
   BookOpen,
-  Blocks,
-  MousePointer,
-  Layers,
-  Paintbrush,
-  SwatchBook,
-  ClipboardCheck,
+  Cube,
+  Cursor,
+  Stack,
+  PaintBrush,
+  Swatches,
+  ClipboardText,
   Wrench,
   Rocket,
   SlidersHorizontal,
-  BarChart3,
-  FileSearch,
+  ChartBar,
+  MagnifyingGlass,
   Scissors,
-  Map,
-  ExternalLink,
+  MapTrifold,
+  ArrowSquareOut,
   Hash,
-  CheckCircle2,
+  CheckCircle,
   Circle,
   Clock,
-  Target,
+  Crosshair,
   GitBranch,
-  FolderKanban,
-} from 'lucide-react';
+  Folder,
+} from '@phosphor-icons/react';
 import { Link } from 'react-router';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { Section } from '../common/Section';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
-
 
 interface DevTool {
   id: string;
@@ -65,7 +64,7 @@ const devTools: DevTool[] = [
     id: 'template-tester',
     title: 'Template Tester',
     description: 'Test all 90+ templates with instant switching and live preview.',
-    icon: <TestTube2 size={32} />,
+    icon: <TestTube size={32} />,
     path: '/dev-tools/template-tester',
     category: 'Testing',
     badge: 'Essential',
@@ -74,7 +73,7 @@ const devTools: DevTool[] = [
     id: 'compliance-scorecard',
     title: 'Compliance Scorecard',
     description: 'Real-time WCAG 2.1 AA/AAA compliance testing with 26+ automated checks.',
-    icon: <Activity size={32} />,
+    icon: <Pulse size={32} />,
     path: '/dev-tools/compliance-scorecard',
     category: 'Testing',
     badge: 'Essential',
@@ -85,7 +84,7 @@ const devTools: DevTool[] = [
     id: 'component-showcase',
     title: 'Component Showcase',
     description: 'Browse all 85+ components with live examples and code snippets.',
-    icon: <Puzzle size={32} />,
+    icon: <PuzzlePiece size={32} />,
     path: '/dev-tools/component-showcase',
     category: 'Development',
   },
@@ -101,7 +100,7 @@ const devTools: DevTool[] = [
     id: 'live-preview',
     title: 'Live Preview',
     description: 'Live component preview tool with interactive property editor.',
-    icon: <MousePointer size={32} />,
+    icon: <Cursor size={32} />,
     path: '/dev-tools/live-preview',
     category: 'Development',
   },
@@ -120,7 +119,7 @@ const devTools: DevTool[] = [
     id: 'design-tokens-reference',
     title: 'Design Tokens Reference',
     description: 'Complete reference of all CSS custom properties — colors, typography, spacing, shadows, radii.',
-    icon: <SwatchBook size={32} />,
+    icon: <Swatches size={32} />,
     path: '/dev-tools/design-tokens-reference',
     category: 'Design',
   },
@@ -145,7 +144,7 @@ const devTools: DevTool[] = [
     id: 'theme-blocks-showcase',
     title: 'Theme Blocks Showcase',
     description: 'Showcase all WordPress theme blocks (Site Logo, Navigation, etc.).',
-    icon: <Blocks size={32} />,
+    icon: <Cube size={32} />,
     path: '/dev-tools/theme-blocks-showcase',
     category: 'Design',
     badge: 'New',
@@ -154,7 +153,7 @@ const devTools: DevTool[] = [
     id: 'button-showcase',
     title: 'Button Showcase',
     description: 'Complete button system showcase with all 5 variants and 3 sizes (WCAG AAA compliant).',
-    icon: <MousePointer size={32} />,
+    icon: <Cursor size={32} />,
     path: '/dev-tools/button-showcase',
     category: 'Design',
     badge: 'New',
@@ -163,7 +162,7 @@ const devTools: DevTool[] = [
     id: 'section-presets-showcase',
     title: 'Section Presets Showcase',
     description: 'Showcase all 17 section style presets with WordPress FSE mapping.',
-    icon: <Layers size={32} />,
+    icon: <Stack size={32} />,
     path: '/dev-tools/section-presets-showcase',
     category: 'Design',
     badge: 'New',
@@ -180,7 +179,7 @@ const devTools: DevTool[] = [
     id: 'icon-library',
     title: 'Icon Library',
     description: 'Complete Lucide React icon reference with copy-paste code snippets.',
-    icon: <Paintbrush size={32} />,
+    icon: <PaintBrush size={32} />,
     path: '/dev-tools/icon-library',
     category: 'Design',
   },
@@ -188,7 +187,7 @@ const devTools: DevTool[] = [
     id: 'phosphor-icon-reference',
     title: 'Phosphor Icon Reference',
     description: 'Lucide-to-Phosphor migration map with 6 weight variants, search, and copy-to-clipboard.',
-    icon: <Target size={32} />,
+    icon: <Crosshair size={32} />,
     path: '/dev-tools/phosphor-icon-reference',
     category: 'Design',
     badge: 'NEW',
@@ -207,7 +206,7 @@ const devTools: DevTool[] = [
     id: 'block-documentation',
     title: 'Block Documentation',
     description: 'Complete WordPress block library with usage examples and guidelines.',
-    icon: <FileCode2 size={32} />,
+    icon: <FileCode size={32} />,
     path: '/dev-tools/block-documentation',
     category: 'Documentation',
   },
@@ -215,7 +214,7 @@ const devTools: DevTool[] = [
     id: 'component-api',
     title: 'Component API',
     description: 'TypeScript interfaces and complete API reference for all components.',
-    icon: <Code2 size={32} />,
+    icon: <CodeBlock size={32} />,
     path: '/dev-tools/component-api',
     category: 'Documentation',
   },
@@ -223,7 +222,7 @@ const devTools: DevTool[] = [
     id: 'docs-generator',
     title: 'Documentation Generator',
     description: 'Auto-generated docs from JSDoc — structured component reference with props tables, usage examples, and cross-links.',
-    icon: <FileSearch size={32} />,
+    icon: <MagnifyingGlass size={32} />,
     path: '/dev-tools/docs-generator',
     category: 'Documentation',
   },
@@ -241,7 +240,7 @@ const devTools: DevTool[] = [
     id: 'deployment-readiness',
     title: 'Deployment Readiness',
     description: 'Pre-deploy checklist with simulated Lighthouse scores, link checker, accessibility audit, and WordPress FSE compatibility.',
-    icon: <ClipboardCheck size={32} />,
+    icon: <ClipboardText size={32} />,
     path: '/dev-tools/deployment-readiness',
     category: 'Deployment',
   },
@@ -251,7 +250,7 @@ const devTools: DevTool[] = [
     id: 'code-quality-dashboard',
     title: 'Code Quality Dashboard',
     description: 'Static analysis — component counts, route stats, CSS architecture, design token inventory, and compliance scores.',
-    icon: <BarChart3 size={32} />,
+    icon: <ChartBar size={32} />,
     path: '/dev-tools/code-quality-dashboard',
     category: 'Analytics',
   },
@@ -271,11 +270,11 @@ const categoryOrder: DevTool['category'][] = [
 ];
 
 const categoryIcons: Record<string, React.ReactNode> = {
-  Testing: <TestTube2 size={20} />,
+  Testing: <TestTube size={20} />,
   Development: <Wrench size={20} />,
   Design: <Palette size={20} />,
-  Documentation: <FileCode2 size={20} />,
-  Analytics: <BarChart3 size={20} />,
+  Documentation: <FileCode size={20} />,
+  Analytics: <ChartBar size={20} />,
   Deployment: <Rocket size={20} />,
 };
 
@@ -293,10 +292,10 @@ const categoryDescriptions: Record<string, string> = {
  * ═══════════════════════════════════════════ */
 
 const quickLinks = [
-  { label: 'Site Map', path: '/site-map', icon: <Map size={16} /> },
+  { label: 'Site Map', path: '/site-map', icon: <MapTrifold size={16} /> },
   { label: 'Style Guide', path: '/style-guide', icon: <BookOpen size={16} /> },
   { label: 'FAQ', path: '/faq', icon: <Hash size={16} /> },
-  { label: 'Home', path: '/', icon: <ExternalLink size={16} /> },
+  { label: 'Home', path: '/', icon: <ArrowSquareOut size={16} /> },
 ];
 
 /* ═══════════════════════════════════════════
@@ -336,7 +335,7 @@ const roadmapGroups: RoadmapGroup[] = [
   },
   {
     title: 'Accessibility & Compliance',
-    icon: <Activity size={18} />,
+    icon: <Pulse size={18} />,
     category: 'general',
     tasks: [
       { name: 'WCAG 2.1 AA compliance (all templates)', status: 'completed', meta: 'Dec 26, 2024' },
@@ -350,7 +349,7 @@ const roadmapGroups: RoadmapGroup[] = [
   },
   {
     title: 'Testing & QA',
-    icon: <TestTube2 size={18} />,
+    icon: <TestTube size={18} />,
     category: 'general',
     tasks: [
       { name: 'Design system tests (107 tests)', status: 'completed', meta: 'Dec 26, 2024' },
@@ -380,7 +379,7 @@ const roadmapGroups: RoadmapGroup[] = [
   /* ── Project-Specific Tasks ── */
   {
     title: 'Template Migration (Funky Neon)',
-    icon: <FolderKanban size={18} />,
+    icon: <Folder size={18} />,
     category: 'project',
     tasks: [
       { name: 'ROI Calculator template', status: 'completed', meta: 'Funky hero + BEM CSS' },
@@ -402,7 +401,7 @@ const roadmapGroups: RoadmapGroup[] = [
   },
   {
     title: 'WordPress Blocks & Patterns',
-    icon: <Blocks size={18} />,
+    icon: <Cube size={18} />,
     category: 'project',
     tasks: [
       { name: 'Block guidelines (66/66 complete)', status: 'completed', meta: 'Jan 22, 2025' },
@@ -458,7 +457,7 @@ const roadmapGroups: RoadmapGroup[] = [
   },
   {
     title: 'Documentation & Reporting',
-    icon: <FileCode2 size={18} />,
+    icon: <FileCode size={18} />,
     category: 'project',
     tasks: [
       { name: 'JSDoc standards established', status: 'completed', meta: 'Dec 27, 2024' },
@@ -501,7 +500,7 @@ export function DevToolsTemplate() {
   const statusIcon = (status: RoadmapStatus) => {
     switch (status) {
       case 'completed':
-        return <CheckCircle2 size={16} className="devtools__roadmap-task-icon--completed" />;
+        return <CheckCircle size={16} className="devtools__roadmap-task-icon--completed" />;
       case 'in-progress':
         return <Clock size={16} className="devtools__roadmap-task-icon--in-progress" />;
       case 'planned':
@@ -597,7 +596,7 @@ export function DevToolsTemplate() {
                     </div>
                     <div className="devtools__tool-title-row">
                       <h3 className="devtools__tool-title">{tool.title}</h3>
-                      <ChevronRight size={16} className="devtools__tool-arrow" />
+                      <CaretRight size={16} className="devtools__tool-arrow" />
                     </div>
                     <p className="devtools__tool-desc">{tool.description}</p>
                   </Link>
@@ -612,7 +611,7 @@ export function DevToolsTemplate() {
           }
           <div className="devtools__roadmap">
             <div className="devtools__roadmap-header">
-              <Target size={20} />
+              <Crosshair size={20} />
               <h2 className="devtools__roadmap-title">Project Roadmap</h2>
             </div>
             <p className="devtools__roadmap-subtitle">

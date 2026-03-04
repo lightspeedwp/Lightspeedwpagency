@@ -33,7 +33,7 @@ import { homepageLogos } from '../../data/client-logos';
 import { Section } from '../common/Section';
 import { Container } from '../common/Container';
 import { Button } from '../blocks/design/Buttons';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight } from '@phosphor-icons/react';
 import { ProofStrip } from '../patterns/ProofStrip';
 
 import {

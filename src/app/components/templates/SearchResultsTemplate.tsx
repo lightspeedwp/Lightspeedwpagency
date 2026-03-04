@@ -36,18 +36,17 @@ import {
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import { useSearchParams } from 'react-router';
 import {
-  Search,
-  Calendar,
+  MagnifyingGlass,
   ArrowRight,
-  AlertCircle,
+  WarningCircle,
   FileText,
   Folder,
-  Video,
+  VideoCamera,
   Headphones,
   Globe,
   Clock,
   Eye,
-} from 'lucide-react';
+} from '@phosphor-icons/react';
 
 /* ═══════════════════════════════════════════
  * Content-type icon map
@@ -56,7 +55,7 @@ import {
 const contentTypeIcons: Record<ContentType, typeof FileText> = {
   blog: FileText,
   portfolio: Folder,
-  video: Video,
+  video: VideoCamera,
   podcast: Headphones,
   page: Globe,
 };
@@ -209,7 +208,7 @@ export function SearchResultsTemplate() {
                 marginBottom: 'var(--spacing-8)',
               }}
             >
-              <Search
+              <MagnifyingGlass
                 size={22}
                 style={{
                   position: 'absolute',
@@ -443,7 +442,7 @@ export function SearchResultsTemplate() {
             ) : query ? (
               /* No Results */
               <div className="search-no-results">
-                <AlertCircle
+                <WarningCircle
                   size={48}
                   className="search-no-results__icon"
                 />
@@ -473,7 +472,7 @@ export function SearchResultsTemplate() {
                 className="search-no-results"
                 style={{ borderStyle: 'solid' }}
               >
-                <Search
+                <MagnifyingGlass
                   size={48}
                   className="search-no-results__icon"
                 />

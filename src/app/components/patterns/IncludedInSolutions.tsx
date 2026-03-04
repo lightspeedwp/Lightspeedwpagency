@@ -20,7 +20,7 @@
  */
 
 import { Link } from 'react-router';
-import { ArrowRight, Check } from 'lucide-react';
+import { ArrowRight, Check } from '@phosphor-icons/react';
 import { Container } from '../common/Container';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { slugToPath } from '../../utils/route-map';

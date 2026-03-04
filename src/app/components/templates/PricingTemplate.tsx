@@ -26,12 +26,11 @@ import { FunkyCTA } from '../patterns/FunkyCTA';
 import {
   Check,
   X,
-  Zap,
-  Sparkles,
-} from 'lucide-react';
+  Lightning as Zap,
+  Sparkle as Sparkles,
+} from '@phosphor-icons/react';
 import { useScrollReveal, ScrollReveal } from '../../hooks/useScrollReveal';
 import { ScrollDownArrow } from '../common/ScrollDownArrow';
-
 
 // Import centralized data
 import {

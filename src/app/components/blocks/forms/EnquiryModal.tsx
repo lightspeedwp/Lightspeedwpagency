@@ -5,11 +5,12 @@
  * 
  * Modal popup with contact form for lead generation.
  * 
+ * @see /src/app/utils/icon-map.ts
  * @see /src/styles/blocks/forms/enquiry-modal.css
  */
 
 import React, { useState, useEffect, useRef } from 'react';
-import { X } from 'lucide-react';
+import { X } from '@phosphor-icons/react';
 import { Button } from '../design/Buttons';
 import { toast } from 'sonner';
 import { useFocusManagement } from '../../../hooks/useFocusManagement';

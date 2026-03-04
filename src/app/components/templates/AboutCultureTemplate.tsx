@@ -7,6 +7,15 @@
  * - Organic Value Cards with gradient icons
  * - Interactive Perks Grid
  * - 100% CSS variable compliance
+ * 
+ * PATTERN COMPONENTS:
+ * - ✅ FeatureList — Core values (4 items, 2 columns, glass variant)
+ * - ✅ FeatureList — Environment items (4 items, 2 columns, minimal variant)
+ * - ✅ FeatureList — Perks grid (6 items, 3 columns, glass variant)
+ * - ✅ FAQSection — FAQ accordion
+ * - ✅ FunkyCTA — Final CTA section
+ * 
+ * @migrated March 3, 2026 — Phase 3.3: Migrated inline grids (~70 lines saved)
  */
 
 /* Route-level CSS */
@@ -15,6 +24,7 @@ import { Container } from '../common/Container';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { FunkyCTA } from '../patterns/FunkyCTA';
 import { FAQSection } from '../patterns/FAQSection';
+import { FeatureList } from '../patterns/FeatureList';
 import { Heading } from '../blocks/text/Heading';
 import { Paragraph } from '../blocks/text/Paragraph';
 import { useHeroParallax } from '../../hooks/useHeroParallax';
@@ -22,15 +32,15 @@ import { cultureFAQs } from '../../data/faqs';
 import {
   Heart,
   Users,
-  Zap,
-  Award,
+  Lightning as Zap,
+  Trophy as Award,
   Coffee,
   Code,
-  Sprout,
-  Globe2,
-  Smile,
+  Plant as Sprout,
+  Globe as Globe2,
+  Smiley as Smile,
   Laptop
-} from 'lucide-react';
+} from '@phosphor-icons/react';
 
 
 export function AboutCultureTemplate() {
@@ -87,45 +97,32 @@ export function AboutCultureTemplate() {
             </p>
           </div>
 
-          <div className="culture-page__values-grid">
-            {[
+          <FeatureList
+            items={[
               {
                 icon: Heart,
                 title: 'People First',
-                desc: 'We prioritize the wellbeing and growth of our team members above all else. Happy people make great software.'
+                description: 'We prioritize the wellbeing and growth of our team members above all else. Happy people make great software.'
               },
               {
                 icon: Zap,
                 title: 'Excellence',
-                desc: "We maintain the highest standards in our code, design, and client relationships. Good enough isn't good enough."
+                description: "We maintain the highest standards in our code, design, and client relationships. Good enough isn't good enough."
               },
               {
                 icon: Sprout,
                 title: 'Continuous Growth',
-                desc: 'Learning and improvement are built into our daily work. We fail fast, learn faster, and always level up.'
+                description: 'Learning and improvement are built into our daily work. We fail fast, learn faster, and always level up.'
               },
               {
                 icon: Globe2,
                 title: 'Remote-First',
-                desc: 'We embrace distributed work, giving everyone flexibility and autonomy to work where they are most productive.'
+                description: 'We embrace distributed work, giving everyone flexibility and autonomy to work where they are most productive.'
               }
-            ].map((value, index) => {
-              const Icon = value.icon;
-              return (
-                <div key={index} className="culture-page__value-card">
-                  <div className="culture-page__value-icon">
-                    <Icon size={32} />
-                  </div>
-                  <Heading level={3} className="culture-page__value-title">
-                    {value.title}
-                  </Heading>
-                  <Paragraph className="culture-page__value-desc">
-                    {value.desc}
-                  </Paragraph>
-                </div>
-              );
-            })}
-          </div>
+            ]}
+            columns={2}
+            variant="glass"
+          />
         </Container>
       </section>
 
@@ -138,22 +135,16 @@ export function AboutCultureTemplate() {
                 How we work
               </h2>
 
-              <div className="culture-page__environment-list">
-                {[
-                  { title: 'Flexible Hours', desc: "Work when you're most productive. Output > Hours." },
-                  { title: 'Async Default', desc: 'Deep work is protected. No unnecessary meetings.' },
-                  { title: 'Open Feedback', desc: 'Honest, constructive feedback helps us all grow.' },
-                  { title: 'Playful Spirit', desc: 'We take our work seriously, but not ourselves.' }
-                ].map((item, i) => (
-                  <div key={i} className="culture-page__environment-item">
-                    <div className="culture-page__environment-dot" />
-                    <div>
-                      <h3 className="culture-page__environment-item-title">{item.title}</h3>
-                      <p className="culture-page__environment-item-desc">{item.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
+              <FeatureList
+                items={[
+                  { title: 'Flexible Hours', description: "Work when you're most productive. Output > Hours." },
+                  { title: 'Async Default', description: 'Deep work is protected. No unnecessary meetings.' },
+                  { title: 'Open Feedback', description: 'Honest, constructive feedback helps us all grow.' },
+                  { title: 'Playful Spirit', description: 'We take our work seriously, but not ourselves.' }
+                ]}
+                columns={2}
+                variant="minimal"
+              />
             </div>
 
             <div className="culture-page__cta-card-wrapper">
@@ -185,33 +176,18 @@ export function AboutCultureTemplate() {
             </p>
           </div>
 
-          <div className="culture-page__perks-grid">
-            {[
-              { icon: Award, title: 'Top Tier Salary', desc: 'Market-leading compensation.' },
-              { icon: Laptop, title: 'Tech Budget', desc: '$3k for your dream setup.' },
-              { icon: Code, title: 'Learning Fund', desc: 'Unlimited books & courses.' },
-              { icon: Heart, title: 'Full Health', desc: 'Comprehensive coverage.' },
-              { icon: Globe2, title: 'Remote Freedom', desc: 'Work from anywhere.' },
-              { icon: Coffee, title: 'Unlimited PTO', desc: 'Rest when you need it.' }
-            ].map((perk, index) => {
-              const Icon = perk.icon;
-              return (
-                <div key={index} className="culture-page__perk-card">
-                  <div className="culture-page__perk-icon">
-                    <Icon size={20} />
-                  </div>
-                  <div>
-                    <h3 className="culture-page__perk-title">
-                      {perk.title}
-                    </h3>
-                    <p className="culture-page__perk-desc">
-                      {perk.desc}
-                    </p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+          <FeatureList
+            items={[
+              { icon: Award, title: 'Top Tier Salary', description: 'Market-leading compensation.' },
+              { icon: Laptop, title: 'Tech Budget', description: '$3k for your dream setup.' },
+              { icon: Code, title: 'Learning Fund', description: 'Unlimited books & courses.' },
+              { icon: Heart, title: 'Full Health', description: 'Comprehensive coverage.' },
+              { icon: Globe2, title: 'Remote Freedom', description: 'Work from anywhere.' },
+              { icon: Coffee, title: 'Unlimited PTO', description: 'Rest when you need it.' }
+            ]}
+            columns={3}
+            variant="glass"
+          />
         </Container>
       </section>
 

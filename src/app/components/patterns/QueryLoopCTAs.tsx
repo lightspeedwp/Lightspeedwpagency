@@ -1,15 +1,8 @@
 /**
- * Query Loop — CTAs (Call to Action)
- *
- * WordPress pattern: core/query + cta post-template
- *
- * Renders CTA blocks as cards with gradient backgrounds, headings,
- * descriptions, and action buttons. Perfect for mashup pages.
- *
- * @see /src/styles/patterns/query-loop.css
+ * QueryLoopCTAs Pattern — LSX Design
  */
 
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight } from '@phosphor-icons/react';
 import { Link } from 'react-router';
 import { QueryLoop } from './QueryLoop';
 import { useStaggerReveal } from '../../hooks/useScrollReveal';

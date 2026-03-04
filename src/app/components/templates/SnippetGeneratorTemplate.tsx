@@ -15,23 +15,23 @@ import '../../../styles/templates/snippet-generator.css';
 import { useState, useMemo, useCallback } from 'react';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import {
-  Search,
+  MagnifyingGlass,
   Copy,
   Check,
-  Code2,
-  Layers,
-  LayoutGrid,
-  BarChart3,
+  CodeBlock,
+  Stack,
+  SquaresFour,
+  ChartBar,
   Star,
   Megaphone,
   ArrowRight,
-  Sparkles,
-  SearchX,
+  Sparkle,
+  MagnifyingGlassMinus,
   FileCode,
   FileText,
   Globe,
   SlidersHorizontal,
-} from 'lucide-react';
+} from '@phosphor-icons/react';
 
 
 /* ═══════════════════════════════════════════
@@ -70,24 +70,24 @@ interface PatternDef {
  * ═══════════════════════════════════════════ */
 
 const CATEGORY_META: Record<PatternCategory, { label: string; icon: React.ReactNode }> = {
-  layout:  { label: 'Layout',   icon: <LayoutGrid size={14} /> },
-  hero:    { label: 'Hero',     icon: <Sparkles size={14} /> },
+  layout:  { label: 'Layout',   icon: <SquaresFour size={14} /> },
+  hero:    { label: 'Hero',     icon: <Sparkle size={14} /> },
   content: { label: 'Content',  icon: <FileText size={14} /> },
   cta:     { label: 'CTA',      icon: <Megaphone size={14} /> },
-  listing: { label: 'Listing',  icon: <Layers size={14} /> },
+  listing: { label: 'Listing',  icon: <Stack size={14} /> },
   nav:     { label: 'Nav',      icon: <ArrowRight size={14} /> },
-  meta:    { label: 'Meta',     icon: <BarChart3 size={14} /> },
+  meta:    { label: 'Meta',     icon: <ChartBar size={14} /> },
   related: { label: 'Related',  icon: <Star size={14} /> },
 };
 
 const CATEGORY_ICONS: Record<PatternCategory, React.ReactNode> = {
-  layout:  <LayoutGrid size={16} />,
-  hero:    <Sparkles size={16} />,
+  layout:  <SquaresFour size={16} />,
+  hero:    <Sparkle size={16} />,
   content: <FileText size={16} />,
   cta:     <Megaphone size={16} />,
-  listing: <Layers size={16} />,
+  listing: <Stack size={16} />,
   nav:     <ArrowRight size={16} />,
-  meta:    <BarChart3 size={16} />,
+  meta:    <ChartBar size={16} />,
   related: <Star size={16} />,
 };
 
@@ -1671,7 +1671,7 @@ import '${selectedPattern.cssPath.replace('/src/', '@/')}';`;
           <div className="snippet-gen__hero-orb" />
           <div className="snippet-gen__hero-inner">
             <span className="snippet-gen__hero-badge">
-              <Code2 size={12} />
+              <CodeBlock size={12} />
               Dev Tool
             </span>
             <h1 className="snippet-gen__hero-title">Snippet Generator</h1>
@@ -1689,7 +1689,7 @@ import '${selectedPattern.cssPath.replace('/src/', '@/')}';`;
 
             {/* Search */}
             <div className="snippet-gen__search">
-              <Search size={16} className="snippet-gen__search-icon" />
+              <MagnifyingGlass size={16} className="snippet-gen__search-icon" />
               <input
                 type="text"
                 className="snippet-gen__search-input"
@@ -1738,7 +1738,7 @@ import '${selectedPattern.cssPath.replace('/src/', '@/')}';`;
               </ul>
             ) : (
               <div className="snippet-gen__no-results">
-                <SearchX size={32} className="snippet-gen__no-results-icon" />
+                <MagnifyingGlassMinus size={32} className="snippet-gen__no-results-icon" />
                 <span className="snippet-gen__no-results-text">No patterns found</span>
               </div>
             )}
@@ -1880,7 +1880,7 @@ import '${selectedPattern.cssPath.replace('/src/', '@/')}';`;
             ) : (
               /* Empty state */
               <div className="snippet-gen__empty">
-                <Code2 size={56} className="snippet-gen__empty-icon" />
+                <CodeBlock size={56} className="snippet-gen__empty-icon" />
                 <h2 className="snippet-gen__empty-title">Select a Pattern</h2>
                 <p className="snippet-gen__empty-desc">
                   Choose a BEM pattern from the sidebar to generate copy-ready JSX, CSS and WordPress block markup.

@@ -16,11 +16,12 @@
  * - 100% CSS variables
  * - BEM naming (.component-docs)
  *
+ * @see /src/app/utils/icon-map.ts
  * @see /guidelines/components/ComponentDocumentation.md
  */
 
 import { useState } from 'react';
-import { Copy, Check, Code, Eye, Accessibility, Lightbulb, Palette } from 'lucide-react';
+import { Copy, Check, Code, Eye, Accessibility, Lightbulb, Palette } from '@phosphor-icons/react';
 import { ComponentDocs } from '../../hooks/useComponentDocs';
 
 export interface ComponentDocumentationProps {

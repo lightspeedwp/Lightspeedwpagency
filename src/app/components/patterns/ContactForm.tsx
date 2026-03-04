@@ -1,24 +1,18 @@
 /**
  * Contact Form Pattern
  * 
- * WordPress Pattern: lsx-design/content/contact-form
+ * Full-featured contact form with validation and success/error states.
+ * Maps to WordPress pattern: lsx-design/forms/contact
  * 
- * A complete contact form with validation and success/error states.
- * Maps to WordPress Contact Form 7 or Gravity Forms.
- * 
- * Design Token Compliance:
- * - Typography: var(--text-*) only
- * - Colors: var(--*) semantic roles
- * - Spacing: Tailwind classes only
- * - Fonts: Lexend (headings), Manrope (body)
- * 
- * @see /guidelines/patterns/ContactForm.md
+ * **Design Token Compliance:**
+ * - Uses /src/styles/patterns/contact-form.css
+ * - 100% CSS variables
+ * - BEM naming
  */
 
-import { Send, CheckCircle, AlertCircle } from 'lucide-react';
+import { Send, CheckCircle, AlertCircle } from '@phosphor-icons/react';
 import { useState } from 'react';
 import { Button } from '../blocks/design/Buttons';
-
 
 export interface ContactFormProps {
   /** Form heading */

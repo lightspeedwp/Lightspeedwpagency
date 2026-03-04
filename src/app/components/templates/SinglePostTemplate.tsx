@@ -32,11 +32,11 @@ import { Button } from '../blocks/design/Buttons';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { PostCardGrid } from '../patterns/PostCard';
 import {
-  Calendar,
-  Clock,
-  Tag,
+  Calendar as CalendarIcon,
+  Clock as ClockIcon,
+  Tag as TagIcon,
   ArrowRight,
-} from 'lucide-react';
+} from '@phosphor-icons/react';
 import {
   getPostBySlug,
   getAuthorBySlug,
@@ -172,7 +172,7 @@ export function SinglePostTemplate({ slug }: SinglePostTemplateProps) {
                   </div>
                 )}
                 <div className="single-post-meta__item">
-                  <Calendar size={16} />
+                  <CalendarIcon size={16} />
                   <span className="single-post-meta__text">
                     {new Date(post.date).toLocaleDateString('en-US', {
                       year: 'numeric',
@@ -182,7 +182,7 @@ export function SinglePostTemplate({ slug }: SinglePostTemplateProps) {
                   </span>
                 </div>
                 <div className="single-post-meta__item">
-                  <Clock size={16} />
+                  <ClockIcon size={16} />
                   <span className="single-post-meta__text">
                     {post.readingTime}
                   </span>
@@ -248,7 +248,7 @@ export function SinglePostTemplate({ slug }: SinglePostTemplateProps) {
           <Container>
             <ScrollReveal animation="fade-up" duration={400}>
               <div className="single-post-tags__wrapper">
-                <Tag size={16} className="single-post-tags__icon" />
+                <TagIcon size={16} className="single-post-tags__icon" />
                 <div className="single-post-tags__list">
                   {post.tags.map(tag => (
                     <Link

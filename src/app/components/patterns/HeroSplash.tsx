@@ -16,12 +16,11 @@
  * @see /src/styles/patterns/hero/hero-base.css — Base structure
  */
 
-import { useRef } from 'react';
-import { Container } from '../common/Container';
-import { Button } from '../blocks/design/Buttons';
 import { useHeroParallax } from '../../hooks/useHeroParallax';
 import { ScrollDownArrow } from '../common/ScrollDownArrow';
-import { Sparkles } from 'lucide-react';
+import { Container } from '../common/Container';
+import { Button } from '../blocks/design/Buttons';
+import { Sparkle } from '@phosphor-icons/react';
 import type { UniversalIcon } from '../../utils/icon-map';
 
 export interface HeroSplashButton {
@@ -43,7 +42,7 @@ export interface HeroSplashProps {
 
 export function HeroSplash({
   badge,
-  badgeIcon: BadgeIcon = Sparkles,
+  badgeIcon: BadgeIcon = Sparkle,
   titlePrefix,
   titleGradient,
   description,

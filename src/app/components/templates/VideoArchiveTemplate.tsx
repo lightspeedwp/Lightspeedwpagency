@@ -17,7 +17,7 @@ import { FAQSection } from '../patterns/FAQSection';
 import { FunkyCTA } from '../patterns/FunkyCTA';
 import { Heading } from '../blocks/text/Heading';
 import { Paragraph } from '../blocks/text/Paragraph';
-import { Play, Clock, Eye, Calendar } from 'lucide-react';
+import { Play, Clock, Eye, Calendar } from '@phosphor-icons/react';
 import { videos, videoCategories } from '../../data/videos';
 import { videoFAQs } from '../../data/faqs';
 import { Link } from 'react-router';

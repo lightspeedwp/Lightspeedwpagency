@@ -1,46 +1,36 @@
 /**
- * LSX Design System — Funky/Neon Theme Variables
+ * LSX Design System — Extended Theme Variables
  * 
- * New neon color palette and gradients for the "Funky" redesign.
- * These are added to the WordPress preset namespace.
+ * Extended color palette and theme-specific tokens that don't fit
+ * in the core semantic system (theme-light.css / theme-dark.css).
+ * 
+ * This file is for:
+ * - Feature-specific color palettes
+ * - Experimental color tokens
+ * - Additional gradients beyond core semantic gradients
+ * 
+ * For funky/neon aesthetic, see theme-funky.css.
+ * 
+ * @see theme-base.css — Base theme tokens
+ * @see theme-light.css — Light mode semantic colors
+ * @see theme-dark.css — Dark mode semantic colors
+ * @see theme-funky.css — Funky/neon aesthetic layer
  */
 
 :root {
-  /* Neon Color Palette */
-  --wp--preset--color--neon-pink: #ff00ff;
-  --wp--preset--color--neon-cyan: #00ffff;
-  --wp--preset--color--neon-lime: #00ff00;
-  --wp--preset--color--neon-yellow: #ffff00;
-  --wp--preset--color--deep-purple: #2d0059;
-
-  /* Gradients */
-  --wp--preset--gradient--neon-hero: linear-gradient(135deg, var(--wp--preset--color--neon-pink), var(--wp--preset--color--neon-cyan));
-  --wp--preset--gradient--neon-glow: linear-gradient(45deg, var(--wp--preset--color--neon-pink), var(--wp--preset--color--neon-cyan));
-
-  /* Grading Page Identity */
-  --grading-primary: #ec4899;
-  --grading-secondary: #06b6d4;
-  --grading-accent: #84cc16;
-  --grading-hero-from: #7c3aed;
-  --grading-hero-via: #ec4899;
-  --grading-hero-to: #f97316;
-  --grading-hero-dark-from: #4c1d95;
-  --grading-hero-dark-via: #831843;
-  --grading-hero-dark-to: #9a3412;
-
-  /* Packaging Page Identity */
-  --packaging-primary: #10b981;
-  --packaging-secondary: #14b8a6;
-  --packaging-accent: #f59e0b;
-  --packaging-hero-from: #059669;
-  --packaging-hero-via: #14b8a6;
-  --packaging-hero-to: #06b6d4;
-  --packaging-hero-dark-from: #064e3b;
-  --packaging-hero-dark-via: #0f766e;
-  --packaging-hero-dark-to: #155e75;
+  /* ============================================
+     RESERVED FOR FUTURE EXTENSIONS
+     ============================================
+     
+     This file is intentionally minimal.
+     Add extended palette tokens here as needed:
+     - Feature-specific colors
+     - Experimental gradients
+     - Custom theme variations
+  */
 }
 
-/* Dark Mode Overrides if needed */
+/* Dark Mode Overrides */
 .dark {
-  /* Adjustments for dark mode can go here */
+  /* Add dark mode overrides for extended variables here */
 }

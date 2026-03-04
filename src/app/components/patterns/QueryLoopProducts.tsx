@@ -1,14 +1,8 @@
 /**
- * Query Loop — WooCommerce Products
- *
- * WordPress pattern: woocommerce/product-query
- *
- * Renders products with images, prices, sale badges, and stock status.
- *
- * @see /src/styles/patterns/query-loop.css
+ * QueryLoopProducts Pattern — LSX Design
  */
 
-import { ShoppingCart, Tag } from 'lucide-react';
+import { ShoppingCart, Tag } from '@phosphor-icons/react';
 import { Link } from 'react-router';
 import { QueryLoop } from './QueryLoop';
 import { useStaggerReveal } from '../../hooks/useScrollReveal';

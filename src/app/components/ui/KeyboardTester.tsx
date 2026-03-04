@@ -13,15 +13,13 @@
  * Design System:
  * - 100% CSS variables
  * - BEM naming (.keyboard-tester)
+ * @see /src/app/utils/icon-map.ts
  *
  * Usage:
- * ```tsx
- * <KeyboardTester />
- * ```
  */
 
 import { useState, useEffect } from 'react';
-import { Keyboard, Eye, EyeOff } from 'lucide-react';
+import { Keyboard, Eye, EyeSlash as EyeOff } from '@phosphor-icons/react';
 
 export const KeyboardTester = () => {
   const [isActive, setIsActive] = useState(false);

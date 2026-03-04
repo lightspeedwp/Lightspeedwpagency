@@ -21,7 +21,7 @@
  */
 
 import { useState } from 'react';
-import { ExternalLink, Eye } from 'lucide-react';
+import { ArrowSquareOut, Eye } from '@phosphor-icons/react';
 import { Lightbox, LightboxImage } from '../ui/Lightbox';
 
 export interface PortfolioCardProps {
@@ -129,7 +129,7 @@ export const PortfolioCard = ({
               rel="noopener noreferrer"
             >
               View Live Site
-              <ExternalLink size={16} />
+              <ArrowSquareOut size={16} />
             </a>
           )}
         </div>

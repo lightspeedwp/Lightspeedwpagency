@@ -1,17 +1,10 @@
 /**
  * Portfolio Slider Pattern
- * 
- * A responsive slider showcasing portfolio projects with a "Funky" neon aesthetic.
- * 
- * Dependencies:
- * - react-slick
- * - lucide-react
- * - /src/styles/patterns/portfolio-slider.css
  */
 
 import React from 'react';
 import Slider from 'react-slick';
-import { ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
+import { CaretLeft as ChevronLeft, CaretRight as ChevronRight, ArrowSquareOut as ExternalLink } from '@phosphor-icons/react';
 import { Link } from 'react-router';
 import { portfolioProjects } from '../../data/portfolio-projects';
 import { ImageWithFallback } from '../figma/ImageWithFallback';

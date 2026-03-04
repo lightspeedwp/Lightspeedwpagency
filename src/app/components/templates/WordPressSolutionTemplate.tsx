@@ -30,12 +30,11 @@ import { PricingTable } from '../patterns/PricingTable';
 import { BenefitsGrid } from '../patterns/BenefitsGrid';
 import { FAQSection } from '../patterns/FAQSection';
 import { FunkyCTA } from '../patterns/FunkyCTA';
-import { Code, ShoppingCart, Shield, ArrowRight } from 'lucide-react';
+import { Code, ShoppingBag as ShoppingCart, Shield, ArrowRight } from '@phosphor-icons/react';
 import { Link } from 'react-router';
 import { getPageUrl } from '../../data/pages';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { ScrollDownArrow } from '../common/ScrollDownArrow';
-
 
 // Import centralized data
 import {

@@ -22,7 +22,7 @@
  */
 
 import { ScrollReveal } from '../../hooks/useScrollReveal';
-import { Star, Quote } from 'lucide-react';
+import { Star, Quotes } from '@phosphor-icons/react';
 
 export interface FeaturedTestimonialProps {
   quote: string;
@@ -74,7 +74,7 @@ export const FeaturedTestimonial = ({
             {/* Quote Icon */}
             {showQuoteIcon && (
               <div className="featured-testimonial__quote-icon" aria-hidden="true">
-                <Quote size={48} />
+                <Quotes size={48} />
               </div>
             )}
 

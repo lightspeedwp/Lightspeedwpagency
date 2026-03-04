@@ -13,6 +13,15 @@
  * - No inline Tailwind classes
  * - All styling via @/styles/templates/page-service-design.css
  * - Colors mapped to global semantic tokens for auto light/dark
+ *
+ * PATTERN COMPONENTS:
+ * - ✅ FeatureList — Design Features section (glow variant, 3 columns)
+ * - ✅ FunkyCTA — Final conversion section
+ * - ✅ ServiceTestimonial — Testimonial section
+ * - ✅ ServicePricingTimeline — Pricing & timeline section
+ * - ✅ RelatedServicesInPhase — Related services navigation
+ *
+ * @migrated March 3, 2026 — Migrated inline design features grid to FeatureList component (~60 lines saved)
  */
 
 /* Route-level CSS */
@@ -20,6 +29,7 @@ import '../../../styles/templates/page-service-design.css';
 import { Container } from '../common/Container';
 import { Button } from '../blocks/design/Buttons';
 import { FunkyCTA } from '../patterns/FunkyCTA';
+import { FeatureList } from '../patterns/FeatureList';
 import { RelatedServicesGrid } from '../patterns/RelatedServicesGrid';
 import { RelatedServicesInPhase } from '../patterns/RelatedServicesInPhase';
 import { IncludedInSolutions } from '../patterns/IncludedInSolutions';
@@ -27,31 +37,61 @@ import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
 import { ServicePricingTimeline } from '../patterns/ServicePricingTimeline';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { JourneyPhaseIndicator } from '../ui/JourneyPhaseIndicator';
-import { designServiceDetailed } from '../../data/services';
+import { 
+  designServiceHero,
+  designServiceOverview,
+  designServiceProcess,
+  designServiceCapabilities
+} from '../../data/design-service-page';
 import { servicePricingTimeline } from '../../data/services';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { ScrollDownArrow } from '../common/ScrollDownArrow';
 import { 
-  Palette,
+  PaintBrush as Palette,
   ArrowRight,
   Monitor,
-  RefreshCw,
-  Layout,
-  PenTool,
+  ArrowsClockwise as RefreshCw,
+  SquaresFour as Layout,
+  PenNib as PenTool,
   ShoppingBag,
-  Sparkles,
+  Sparkle as Sparkles,
   CheckCircle,
-  Layers,
-  MousePointer2,
+  Stack as Layers,
+  Mouse as MousePointer2,
   Eye,
   Crop,
-  Grid,
-  Figma,
-  Component,
-} from 'lucide-react';
+  GridFour as Grid,
+  FigmaLogo as Figma,
+  SelectionAll as Component,
+} from '@phosphor-icons/react';
 
 export function DesignServiceTemplate() {
-  const data = designServiceDetailed;
+  // Build a unified data object from imports
+  const data = {
+    tagline: designServiceHero.subtitle || "Strategic, user-focused design that drives results",
+    whyLightSpeed: {
+      description: designServiceOverview.description
+    },
+    subServices: designServiceCapabilities.capabilities.map((cap, i) => ({
+      id: `cap-${i}`,
+      title: cap.title,
+      description: cap.description
+    })),
+    process: {
+      steps: designServiceProcess.steps.map((step, i) => ({
+        id: `step-${i}`,
+        title: step.title,
+        description: step.description
+      }))
+    },
+    relatedServices: [],
+    cta: {
+      title: "Ready to Elevate Your Brand?",
+      description: "Let's create stunning designs that captivate your audience and drive conversions.",
+      buttonText: "Start Design Project",
+      buttonPage: "contact" as const
+    }
+  };
 
   // Icon mapping for Sub-services
   const serviceIcons: Record<string, any> = {
@@ -75,7 +115,7 @@ export function DesignServiceTemplate() {
     {
       name: 'Brand Identity System',
       tag: 'Branding',
-      image: 'https://images.unsplash.com/photo-1759390304277-df4f95509186?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2xvcmZ1bCUyMGJyYW5kaW5nJTIwaWRlbnRpdHklMjBkZXNpZ258ZW58MXx8fHwxNzcxNDg2NjE5fDA&ixlib=rb-4.1.0&q=80&w=1080'
+      image: 'https://images.unsplash.com/photo-1759390304277-df4f95509186?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2xvcmZ1bCUyMGJyYW5kaW5nJTIwZWRpdGlvbiUyMGRlc2lnbnxlbnwxfHx8fDE3NzE0ODY2MTZ8MA&ixlib=rb-4.1.0&q=80&w=1080'
     },
     {
       name: 'Mobile App Interface',
@@ -260,28 +300,19 @@ export function DesignServiceTemplate() {
             </div>
           </ScrollReveal>
 
-          <div className="design-page__services-grid">
-            {data.subServices.map((service, index) => {
-              const Icon = serviceIcons[service.id] || Sparkles;
-              return (
-                <ScrollReveal key={index} animation="fade-up" delay={index * 60}>
-                  <div className="design-page__service-card">
-                    <div className="design-page__service-icon">
-                      <Icon size={28} />
-                    </div>
-                    
-                    <h3 className="design-page__service-title">
-                      {service.title}
-                    </h3>
-                    
-                    <p className="design-page__service-desc">
-                      {service.description}
-                    </p>
-                  </div>
-                </ScrollReveal>
-              );
-            })}
-          </div>
+          <ScrollReveal animation="fade-up" delay={100}>
+            <FeatureList
+              items={designServiceOverview.features.map((feat) => ({
+                icon: feat.icon as any,
+                title: feat.title,
+                description: feat.description
+              }))}
+              columns={3}
+              variant="glow"
+              iconSize="lg"
+              iconStyle="rounded"
+            />
+          </ScrollReveal>
         </Container>
       </section>
 

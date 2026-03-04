@@ -10,12 +10,13 @@
  * This is the canonical breadcrumb pattern used site-wide.
  * Templates should consume this via the BreadcrumbPart template part.
  *
+ * @see /src/app/utils/icon-map.ts
  * @see /src/styles/blocks/theme/breadcrumbs.css
  * @see /src/app/components/parts/BreadcrumbPart.tsx
  */
 
 import React from 'react';
-import { MoreHorizontal } from 'lucide-react';
+import { DotsThree as MoreHorizontal } from '@phosphor-icons/react';
 import { Link } from 'react-router';
 import { slugToPath } from '@/app/utils/route-map';
 

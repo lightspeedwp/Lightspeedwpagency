@@ -34,8 +34,8 @@ import {
 } from '../../utils/scrollAnimations';
 
 import { 
-  Sparkles, 
-  Zap, 
+  Sparkle, 
+  Lightning, 
   Rocket, 
   Code, 
   Palette, 
@@ -44,7 +44,7 @@ import {
   CheckCircle,
   Tag,
   Calendar
-} from 'lucide-react';
+} from '@phosphor-icons/react';
 
 export function FeatureShowcaseTemplate() {
   return (
@@ -59,7 +59,7 @@ export function FeatureShowcaseTemplate() {
             className="showcase__hero-inner"
           >
             <div className="showcase__hero-title-row">
-              <Sparkles 
+              <Sparkle 
                 size={32} 
                 style={{ color: 'var(--primary)' }}
               />
@@ -102,7 +102,7 @@ export function FeatureShowcaseTemplate() {
           >
             {[
               { label: 'New Templates', value: '2', icon: Layout },
-              { label: 'Animation Variants', value: '15+', icon: Zap },
+              { label: 'Animation Variants', value: '15+', icon: Lightning },
               { label: 'Card Combinations', value: '25', icon: Palette },
               { label: 'Loading Components', value: '8+', icon: Rocket }
             ].map((stat) => (

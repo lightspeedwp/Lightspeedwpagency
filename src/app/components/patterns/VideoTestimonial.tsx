@@ -1,21 +1,17 @@
 /**
- * VideoTestimonial Pattern Component
+ * Video Testimonial Pattern
  * 
- * A reusable pattern for displaying video testimonials with thumbnails,
- * play button overlays, and client information.
+ * Video testimonial card with play button and metadata.
+ * Maps to WordPress pattern: lsx-design/content/video-testimonial
  * 
- * **Design System Compliance:**
- * - Colors: CSS variables only (var(--primary), var(--background), etc.)
- * - Typography: Lexend (headings), Manrope (body)
- * - Spacing: CSS variables (var(--spacing-*))
- * - Border Radius: CSS variables (var(--radius-*))
- * 
- * @see {@link /guidelines/patterns/VideoTestimonial.md}
+ * **Design Token Compliance:**
+ * - Uses /src/styles/patterns/video-testimonial.css
+ * - 100% CSS variables
+ * - BEM naming
  */
 
-import { PlayCircle, Clock } from 'lucide-react';
+import { PlayCircle, Clock } from '@phosphor-icons/react';
 import { useState } from 'react';
-
 
 export interface VideoTestimonialItem {
   /** Video title */

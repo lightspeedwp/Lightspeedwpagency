@@ -1,23 +1,14 @@
 /**
- * Use Cases Grid Pattern
+ * UseCasesGrid Pattern
  * 
- * Displays industry-specific use cases with features and tags.
- * Maps to WordPress pattern: lsx-design/content/use-cases
- * 
- * **Design Token Compliance:**
- * - Typography: Uses ONLY CSS variables (var(--text-*), var(--font-*))
- * - Fonts: var(--font-primary) and var(--font-secondary) ONLY
- * - Colors: Uses ONLY CSS variables (var(--*))
- * - Spacing: Uses ONLY CSS variables (var(--spacing-*))
- * - Border Radius: Uses ONLY CSS variables (var(--radius*))
- * 
- * @see {@link /guidelines/patterns/UseCasesGrid.md}
+ * Grid display for use cases with icons and descriptions.
+ * Maps to WordPress pattern: lsx-design/listing/use-cases
  */
 
+import type { UniversalIcon } from '../../utils/icon-map';
 import { Section } from '../common/Section';
 import { Container } from '../common/Container';
-import { CheckCircle } from 'lucide-react';
-
+import { CheckCircle } from '@phosphor-icons/react';
 
 /**
  * Use Case Item Interface

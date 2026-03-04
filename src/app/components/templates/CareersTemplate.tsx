@@ -25,7 +25,7 @@ import { Button } from '../blocks/design/Buttons';
 import { FunkyCTA } from '../patterns/FunkyCTA';
 import { useHeroParallax } from '../../hooks/useHeroParallax';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
-import { Briefcase, MapPin, Clock, ArrowRight } from 'lucide-react';
+import { Briefcase, MapPin, Clock, ArrowRight } from '@phosphor-icons/react';
 
 
 

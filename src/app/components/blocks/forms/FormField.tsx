@@ -5,11 +5,12 @@
  * 
  * Enhanced form field with real-time validation indicators.
  * 
+ * @see /src/app/utils/icon-map.ts
  * @see /src/styles/blocks/forms/form-field.css
  */
 
 import React, { useState, useEffect } from 'react';
-import { CheckCircle2, AlertCircle, Eye, EyeOff } from 'lucide-react';
+import { CheckCircle as CheckCircle2, WarningCircle as AlertCircle, Eye, EyeSlash as EyeOff } from '@phosphor-icons/react';
 import { useShake } from '../../../hooks/useMicroInteractions';
 
 export interface FormFieldProps {

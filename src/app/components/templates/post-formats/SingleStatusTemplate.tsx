@@ -12,7 +12,7 @@
  */
 
 import '../../../../styles/templates/single-post.css';
-import { MessageSquare, Heart, Share2 } from 'lucide-react';
+import { ChatCircle as MessageSquare, Heart, ShareNetwork as Share2 } from '@phosphor-icons/react';
 
 export function SingleStatusTemplate() {
   const post = statusPost;

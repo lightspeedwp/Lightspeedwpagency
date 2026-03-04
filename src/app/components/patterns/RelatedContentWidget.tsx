@@ -15,8 +15,7 @@ import { useScrollReveal, useStaggerReveal } from '../../hooks/useScrollReveal';
 import { blogPosts } from '../../data/blog-posts';
 import { portfolioProjects } from '../../data/portfolio-projects';
 import { Link } from 'react-router';
-import { ArrowRight } from 'lucide-react';
-
+import { ArrowRight } from '@phosphor-icons/react';
 
 interface RelatedItem {
   id: string;

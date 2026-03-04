@@ -21,12 +21,12 @@ import { Heading } from '../common/Heading';
 import { Paragraph } from '../blocks/text/Paragraph';
 import { Section } from '../common/Section';
 import {
-  Sparkles,
-  Layers,
+  Sparkle as Sparkles,
+  Stack as Layers,
   ShoppingCart,
   Palette,
   ShieldCheck,
-} from 'lucide-react';
+} from '@phosphor-icons/react';
 import { frontPageHero } from '../../data/front-page';
 import { GlobalSearchOverlay } from './GlobalSearchOverlay';
 /* hero-home.css loaded globally via index.css */
@@ -137,7 +137,7 @@ export function HeroHome() {
                     className={`hero-home__card hero-home__card--${index + 1}`}
                   >
                     <div className="hero-home__card-icon">
-                      <Icon size={20} strokeWidth={1.5} />
+                      <Icon size={20} weight="duotone" />
                     </div>
                     <span className="hero-home__card-label">{card.label}</span>
                     <span className="hero-home__card-meta">{card.meta}</span>

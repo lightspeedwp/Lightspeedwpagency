@@ -9,7 +9,7 @@
 import '../../../../styles/templates/single-post.css';
 import { Container } from '@/app/components/common/Container';
 import { Section } from '@/app/components/common/Section';
-import { Link as LinkIcon, ExternalLink, Calendar } from 'lucide-react';
+import { Link as LinkIcon, ArrowSquareOut as ExternalLink, Calendar } from '@phosphor-icons/react';
 
 import { BreadcrumbPart } from '@/app/components/parts/BreadcrumbPart';
 import { linkPost } from '@/app/data/posts-formats';

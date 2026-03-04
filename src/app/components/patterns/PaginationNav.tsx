@@ -7,11 +7,12 @@
  * Keyboard navigable with clear focus states.
  * Modern design with soft borders and smooth transitions.
  * 
+ * @see /src/app/utils/icon-map.ts
  * All styling in /src/styles/pagination-nav.css (user-editable)
  */
 
 import { Container } from '../common/Container';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { CaretLeft as ChevronLeft, CaretRight as ChevronRight } from '@phosphor-icons/react';
 
 
 interface PaginationNavProps {
@@ -86,7 +87,7 @@ export function PaginationNav({ currentPage, totalPages, onPageChange }: Paginat
             aria-label="Previous page"
             className={prevButtonClasses}
           >
-            <ChevronLeft size={16} strokeWidth={2.5} />
+            <ChevronLeft size={16} weight="bold" />
             <span>Previous</span>
           </button>
 
@@ -135,7 +136,7 @@ export function PaginationNav({ currentPage, totalPages, onPageChange }: Paginat
             className={nextButtonClasses}
           >
             <span>Next</span>
-            <ChevronRight size={16} strokeWidth={2.5} />
+            <ChevronRight size={16} weight="bold" />
           </button>
         </div>
 

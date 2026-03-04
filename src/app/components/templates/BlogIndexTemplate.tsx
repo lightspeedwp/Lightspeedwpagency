@@ -32,7 +32,7 @@ import { TrendingTopicsWidget } from '../patterns/TrendingTopicsWidget';
 import { Heading } from '../blocks/text/Heading';
 import { Paragraph } from '../blocks/text/Paragraph';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
-import { Calendar, Clock, User, ArrowRight } from 'lucide-react';
+import { Calendar, Clock, User, ArrowRight } from '@phosphor-icons/react';
 import { blogPosts, blogAuthors, type BlogPost, type BlogAuthor } from '../../data/blog-posts';
 import { blogCategories } from '../../data/taxonomies';
 import { blogFAQs } from '../../data/faqs';

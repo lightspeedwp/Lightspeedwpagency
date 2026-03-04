@@ -31,8 +31,7 @@ import { Link } from 'react-router';
 import { blogPosts } from '../../data/blog-posts';
 import { clientLogos } from '../../data/logos';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
-import { Calendar, ChevronLeft, ChevronRight } from 'lucide-react';
-
+import { Calendar, CaretLeft as ChevronLeft, CaretRight as ChevronRight } from '@phosphor-icons/react';
 
 interface DateArchiveTemplateProps {
   year: number;

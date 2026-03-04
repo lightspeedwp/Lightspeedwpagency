@@ -21,11 +21,16 @@ import { Hero } from '../patterns/Hero';
 import { FunkyCTA } from '../patterns/FunkyCTA';
 import { ServiceComparisonTable } from '../patterns/ServiceComparisonTable';
 import { useState } from 'react';
-import { 
+import {
+  Code,
+  PaintBrush as Palette,
+  MagnifyingGlass as Search,
+  PenNib as PenTool,
+  Wrench,
   ArrowRight,
-  Sparkles,
+  Sparkle,
   CheckCircle
-} from 'lucide-react';
+} from '@phosphor-icons/react';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 
 // Import centralized data
@@ -57,7 +62,7 @@ export function ServicesTemplate() {
         gradient="blue"
         spacing="xl"
         badge={{
-          icon: Sparkles,
+          icon: Sparkle,
           text: 'OUR SERVICES'
         }}
         title="WordPress & WooCommerce Services"

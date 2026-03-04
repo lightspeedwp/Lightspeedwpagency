@@ -9,10 +9,11 @@
  * **Design Token Compliance:**
  * - Uses /src/styles/newsletter-signup.css
  * - 100% CSS variables
- * - BEM naming
+ * @see /src/app/utils/icon-map.ts
+ * @see /src/styles/newsletter-signup.css
  */
 
-import { Mail, Check } from 'lucide-react';
+import { EnvelopeSimple as Mail, Check } from '@phosphor-icons/react';
 import { useState } from 'react';
 
 

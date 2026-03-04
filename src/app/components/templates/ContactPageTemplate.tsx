@@ -37,16 +37,20 @@ import { useHeroParallax } from '../../hooks/useHeroParallax';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { ScrollDownArrow } from '../common/ScrollDownArrow';
 import {
-  Mail,
-  MessageSquare,
-  Headphones,
   MapPin,
+  Phone,
+  Envelope,
+  EnvelopeSimple as Mail,
+  ChatCircleDots as MessageSquare,
+  Headphones,
   Clock,
+  CheckCircle,
   ArrowRight,
-  Award,
+  Lightning,
+  Medal as Award,
   Users,
-  Zap
-} from 'lucide-react';
+  Lightning as Zap
+} from '@phosphor-icons/react';
 
 // Import centralized data
 import {

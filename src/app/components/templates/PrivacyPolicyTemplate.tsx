@@ -28,8 +28,7 @@ import { Heading } from '../blocks/text/Heading';
 import { Paragraph } from '../blocks/text/Paragraph';
 import { useHeroParallax } from '../../hooks/useHeroParallax';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
-import { Shield, Lock, Eye, FileText, AlertCircle, CheckCircle } from 'lucide-react';
-
+import { Shield, Lock, Eye, FileText, WarningCircle as AlertCircle, CheckCircle } from '@phosphor-icons/react';
 
 // Import Mock Data
 import { privacyPolicyContent } from '../../data/legal';

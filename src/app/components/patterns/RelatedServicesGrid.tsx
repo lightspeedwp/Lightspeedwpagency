@@ -10,7 +10,7 @@
  */
 
 import { Link } from 'react-router';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight, Sparkle } from '@phosphor-icons/react';
 import { Container } from '../common/Container';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { slugToPath } from '../../utils/route-map';
@@ -56,7 +56,7 @@ export function RelatedServicesGrid({
                 aria-label={`Learn more about ${service.title}`}
               >
                 <div className="related-services-grid__card-icon">
-                  <Sparkles size={20} strokeWidth={1.5} />
+                  <Sparkle size={20} strokeWidth={1.5} />
                 </div>
                 <h3 className="related-services-grid__card-title">
                   {service.title}

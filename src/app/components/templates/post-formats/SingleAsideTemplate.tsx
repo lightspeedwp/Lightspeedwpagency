@@ -11,7 +11,7 @@ import { Container } from '@/app/components/common/Container';
 import { Section } from '@/app/components/common/Section';
 import { BreadcrumbPart } from '@/app/components/parts/BreadcrumbPart';
 import { asidePost } from '@/app/data/posts-formats';
-import { Hash, Calendar } from 'lucide-react';
+import { Hash, Calendar } from '@phosphor-icons/react';
 
 export function SingleAsideTemplate() {
   const post = asidePost;

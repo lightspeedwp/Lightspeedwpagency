@@ -15,12 +15,23 @@
  * - All styling via @/styles/templates/page-service-performance.css
  * - Colors mapped to global semantic tokens for auto light/dark
  * - Fonts: var(--font-primary), var(--font-secondary), var(--font-mono) only
+ *
+ * PATTERN COMPONENTS:
+ * - ✅ FeatureList — Performance Features section (glow variant, 4 columns)
+ * - ✅ ProcessTimeline — 5-Step Protocol section (vertical orientation)
+ * - ✅ FunkyCTA — Final conversion section
+ * - ✅ ServiceTestimonial — Testimonial section
+ * - ✅ ServicePricingTimeline — Pricing & timeline section
+ * - ✅ RelatedServicesInPhase — Related services navigation
+ *
+ * @migrated March 3, 2026 — Migrated inline features grid to FeatureList and inline process steps to ProcessTimeline components. Converted all Lucide icons to Phosphor equivalents.
  */
 
 import '../../../styles/templates/page-service-performance.css';
 import { Container } from '../common/Container';
 import { FunkyCTA } from '../patterns/FunkyCTA';
-import { RelatedServicesGrid } from '../patterns/RelatedServicesGrid';
+import { FeatureList } from '../patterns/FeatureList';
+import { ProcessTimeline } from '../patterns/ProcessTimeline';
 import { RelatedServicesInPhase } from '../patterns/RelatedServicesInPhase';
 import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
 import { ServicePricingTimeline } from '../patterns/ServicePricingTimeline';
@@ -30,24 +41,74 @@ import { servicePricingTimeline } from '../../data/services';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { ScrollDownArrow } from '../common/ScrollDownArrow';
 import { 
-  Zap, 
+  Lightning as Zap, 
   Gauge, 
-  Server, 
-  Activity, 
-  BarChart, 
+  HardDrives as Server, 
+  ChartLineUp as Activity, 
+  ChartBar as BarChart, 
   CheckCircle, 
-  Settings, 
-  Smartphone,
-  Layers,
-  Search,
+  Gear as Settings, 
+  DeviceMobile as Smartphone,
+  Stack as Layers,
+  MagnifyingGlass as Search,
   Eye,
   Shield,
-} from 'lucide-react';
-
-import { performanceServiceDetailed } from '../../data/services';
+} from '@phosphor-icons/react';
 
 export function PerformanceServiceTemplate() {
-  const data = performanceServiceDetailed;
+  // Mock data for performance service
+  const data = {
+    tagline: "Faster load times mean better conversions and higher rankings.",
+    whyLightSpeed: {
+      description: "We use industry-leading tools and optimization techniques to ensure your WordPress site delivers lightning-fast performance across all devices."
+    },
+    subServices: [
+      {
+        id: 'speed-audit',
+        title: 'Speed Audit',
+        description: 'Comprehensive performance analysis with actionable recommendations.'
+      },
+      {
+        id: 'code-optimization',
+        title: 'Code Optimization',
+        description: 'Clean, efficient code that loads faster and uses fewer resources.'
+      },
+      {
+        id: 'image-optimization',
+        title: 'Image Optimization',
+        description: 'Automated image compression and next-gen format conversion.'
+      }
+    ],
+    process: {
+      steps: [
+        {
+          id: 'audit',
+          number: '1',
+          title: 'Performance Audit',
+          description: 'We analyze your site to identify bottlenecks and opportunities.'
+        },
+        {
+          id: 'optimize',
+          number: '2',
+          title: 'Optimization',
+          description: 'We implement proven techniques to improve load times.'
+        },
+        {
+          id: 'monitor',
+          number: '3',
+          title: 'Monitoring',
+          description: 'We track performance metrics to ensure sustained improvements.'
+        }
+      ]
+    },
+    relatedServices: [],
+    cta: {
+      title: "Ready to Speed Up Your Site?",
+      description: "Let's optimize your WordPress performance for better user experience and SEO.",
+      buttonText: "Get Started",
+      buttonPage: "contact" as const
+    }
+  };
 
   // Icon mapping for Sub-services
   const serviceIcons: Record<string, any> = {
@@ -208,22 +269,19 @@ export function PerformanceServiceTemplate() {
             </ScrollReveal>
           </div>
           
-          <div className="perf-page__services-grid">
-            {data.subServices.map((service, index) => {
-              const Icon = serviceIcons[service.id] || Zap;
-              return (
-                <ScrollReveal key={service.id || index} animation="fade-up" delay={index * 50}>
-                  <div className="perf-page__service-card">
-                    <div className="perf-page__service-icon">
-                      <Icon size={24} />
-                    </div>
-                    <h3 className="perf-page__service-title">{service.title}</h3>
-                    <p className="perf-page__service-desc">{service.description}</p>
-                  </div>
-                </ScrollReveal>
-              );
-            })}
-          </div>
+          <ScrollReveal animation="fade-up" delay={100}>
+            <FeatureList
+              items={performanceServiceFeatures.features.map((feat) => ({
+                icon: feat.icon as any,
+                title: feat.title,
+                description: feat.description
+              }))}
+              columns={4}
+              variant="glow"
+              iconSize="md"
+              iconStyle="rounded"
+            />
+          </ScrollReveal>
         </Container>
       </section>
 
@@ -232,41 +290,27 @@ export function PerformanceServiceTemplate() {
           ============================================ */}
       <section className="perf-page__process">
         <Container>
-          <div className="perf-page__process-header">
-            <ScrollReveal animation="fade-up">
-              <h2 className="perf-page__section-title">
-                {data.process.title}
-              </h2>
-              <p className="perf-page__section-desc perf-page__max-w-2xl">
-                {data.process.description}
-              </p>
-            </ScrollReveal>
-          </div>
-
-          <div className="perf-page__step-list">
-            {data.process.steps.map((step, index) => {
-              const Icon = processIcons[step.id] || Settings;
-              return (
-                <ScrollReveal key={step.id || index} animation="fade-up" delay={index * 100}>
-                  <div className="perf-page__step-card">
-                    <div className="perf-page__step-icon">
-                      <Icon size={32} />
-                    </div>
-                    <div>
-                      <h3 className="perf-page__step-title">{step.title}</h3>
-                      <p className="perf-page__step-desc">{step.description}</p>
-                    </div>
-                  </div>
-                </ScrollReveal>
-              );
-            })}
-          </div>
+          <ScrollReveal animation="fade-up">
+            <ProcessTimeline
+              heading={performanceServiceProcess.title}
+              description="Our systematic 5-step approach to WordPress performance optimization"
+              steps={performanceServiceProcess.steps.map((step, i) => ({
+                id: step.step.toLowerCase(),
+                number: i + 1,
+                title: step.step,
+                description: step.description,
+                icon: step.icon as any
+              }))}
+              showNumbers={true}
+              orientation="vertical"
+            />
+          </ScrollReveal>
         </Container>
       </section>
 
       {/* CTA Section */}
       {data.relatedServices && data.relatedServices.length > 0 && (
-        <RelatedServicesGrid
+        <RelatedServicesInPhase
           title="Related Services"
           subtitle="Maximise site speed with these complementary services"
           services={data.relatedServices}

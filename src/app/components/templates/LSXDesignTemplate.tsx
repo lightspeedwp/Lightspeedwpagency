@@ -27,7 +27,7 @@ import { FAQSection } from '../patterns/FAQSection';
 import { Button } from '../blocks/design/Buttons';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { ScrollDownArrow } from '../common/ScrollDownArrow';
-import { Layers, Zap, ArrowRight, Sparkles } from 'lucide-react';
+import { Stack as Layers, Lightning as Zap, ArrowRight, Sparkle as Sparkles } from '@phosphor-icons/react';
 
 
 // Import centralized data

@@ -23,7 +23,7 @@ import {
 } from '../../data/portfolio-case-study-enhanced';
 import { Heading } from '../blocks/text/Heading';
 import { Paragraph } from '../blocks/text/Paragraph';
-import { Code, Calendar, Clock, Users, DollarSign, ArrowRight } from 'lucide-react';
+import { Code, Calendar, Clock, Users, CurrencyDollar, ArrowRight } from '@phosphor-icons/react';
 
 // Import centralized data
 import {
@@ -146,7 +146,7 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
               {/* Budget */}
               <div>
                 <div className="portfolio-single__meta-label">
-                  <DollarSign size={12} />
+                  <CurrencyDollar size={12} />
                   Budget
                 </div>
                 <div className="portfolio-single__meta-value">

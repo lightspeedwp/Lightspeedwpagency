@@ -18,7 +18,7 @@
  */
 
 import { Link } from 'react-router';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight } from '@phosphor-icons/react';
 import { getCaseStudiesForService, getFeaturedCaseStudies, type ServiceCaseStudy } from '../../data/service-case-studies';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 // CSS imported centrally via /src/styles/index.css

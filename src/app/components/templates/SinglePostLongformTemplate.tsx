@@ -25,7 +25,7 @@ import { Button } from '../blocks/design/Buttons';
 import { ScrollProgress } from '../blocks/layout/ScrollProgress';
 import { Badge } from '../blocks/design/Badge';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
-import { Calendar, Clock, Share2, Bookmark } from 'lucide-react';
+import { Calendar, Clock, ShareNetwork, BookmarkSimple } from '@phosphor-icons/react';
 import { useState } from 'react';
 import { RelatedPosts } from '../patterns/RelatedPosts';
 import type { RelatedPost } from '../patterns/RelatedPosts';
@@ -146,11 +146,11 @@ export function SinglePostLongformTemplate() {
               {/* Action buttons */}
               <div className="single-post__newsletter-actions">
                 <Button variant="outline" size="sm" aria-label="Share this post">
-                  <Share2 size={18} />
+                  <ShareNetwork size={18} />
                   Share
                 </Button>
                 <Button variant="outline" size="sm" aria-label="Bookmark this post">
-                  <Bookmark size={18} />
+                  <BookmarkSimple size={18} />
                   Save
                 </Button>
               </div>

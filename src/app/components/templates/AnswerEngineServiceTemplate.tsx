@@ -4,15 +4,21 @@
  * Sub-service page for Answer Engine Optimization (AEO) under AI Search & Visibility
  * Route: /services/answer-engine-optimisation
  * Parent: /services/ai-search-visibility
+ * 
+ * Pattern Components:
+ * - ✅ FeatureList — Benefits grid (6 items, 3 columns, glow variant)
+ * 
+ * @migrated March 3, 2026 — Phase 3.1: Migrated inline benefits grid to FeatureList component (~80 lines saved)
  */
 
-import { MessageSquare, Lightbulb, Users, Award, TrendingUp, Target } from 'lucide-react';
+import { ChatCircle, Lightbulb, Users, Trophy, TrendUp, Target } from '@phosphor-icons/react';
 import { Link } from 'react-router';
+import { FeatureList } from '../patterns/FeatureList';
 
 export const AnswerEngineServiceTemplate = () => {
   const benefits = [
     {
-      icon: MessageSquare,
+      icon: ChatCircle,
       title: 'Conversational Content Optimization',
       description: 'Structure content to answer natural language questions that users ask AI assistants and voice search.'
     },
@@ -27,12 +33,12 @@ export const AnswerEngineServiceTemplate = () => {
       description: 'Identify and answer the exact questions your target audience is asking across all platforms.'
     },
     {
-      icon: Award,
+      icon: Trophy,
       title: 'Authority Building',
       description: 'Establish your brand as the definitive source for answers in your industry or niche.'
     },
     {
-      icon: TrendingUp,
+      icon: TrendUp,
       title: 'Zero-Click Optimization',
       description: 'Capture visibility even when users get answers without clicking through to websites.'
     },
@@ -135,20 +141,12 @@ export const AnswerEngineServiceTemplate = () => {
           </p>
         </div>
         
-        <div className="answer-engine-service__benefits-grid">
-          {benefits.map((benefit, index) => {
-            const Icon = benefit.icon;
-            return (
-              <div key={index} className="answer-engine-service__benefit-card">
-                <div className="answer-engine-service__benefit-icon">
-                  <Icon className="answer-engine-service__benefit-icon-svg" />
-                </div>
-                <h3 className="answer-engine-service__benefit-title">{benefit.title}</h3>
-                <p className="answer-engine-service__benefit-description">{benefit.description}</p>
-              </div>
-            );
-          })}
-        </div>
+        <FeatureList 
+          items={benefits} 
+          columns={3} 
+          variant="glow" 
+          iconSize="lg"
+        />
       </section>
 
       {/* Process Timeline */}

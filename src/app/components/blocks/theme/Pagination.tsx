@@ -3,10 +3,11 @@
  * 
  * WordPress Block: core/query-pagination
  * Style: .wp-block-pagination
+ * @see /src/app/utils/icon-map.ts
  */
 
 import React from 'react';
-import { ChevronLeft, ChevronRight, MoreHorizontal } from 'lucide-react';
+import { CaretLeft as ChevronLeft, CaretRight as ChevronRight, DotsThreeOutline as MoreHorizontal } from '@phosphor-icons/react';
 
 export interface PaginationProps {
   currentPage: number;

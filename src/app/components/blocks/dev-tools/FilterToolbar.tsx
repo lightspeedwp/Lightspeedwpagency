@@ -6,11 +6,12 @@
  * Renders responsive filter toolbar with optional search.
  * Mobile: Shows popover. Desktop: Shows inline buttons.
  * 
+ * @see /src/app/utils/icon-map.ts
  * @see /src/styles/blocks/dev-tools/filter-toolbar.css
  */
 
 import React, { useState } from 'react';
-import { Search, Filter } from 'lucide-react';
+import { MagnifyingGlass as Search, Funnel as Filter } from '@phosphor-icons/react';
 import { MobileFilterPopover } from '../../common/MobileFilterPopover';
 
 export interface FilterOption {

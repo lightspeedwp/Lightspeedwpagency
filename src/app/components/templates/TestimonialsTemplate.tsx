@@ -29,9 +29,7 @@ import { FAQSection } from '../patterns/FAQSection';
 import { FunkyCTA } from '../patterns/FunkyCTA';
 import { StatsGrid } from '../patterns/StatsGrid';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
-import { Filter, Star, MessageSquare } from 'lucide-react';
-
-
+import { Funnel as Filter, Star, ChatCircle as MessageSquare } from '@phosphor-icons/react';
 
 /* ── Data imports ── */
 import {

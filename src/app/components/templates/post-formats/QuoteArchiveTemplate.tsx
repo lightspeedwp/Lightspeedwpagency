@@ -16,8 +16,7 @@ import { Container } from '@/app/components/common/Container';
 import { Section } from '@/app/components/common/Section';
 import { BreadcrumbPart } from '@/app/components/parts/BreadcrumbPart';
 import { allPosts } from '@/app/data/posts-formats';
-import { Quote } from 'lucide-react';
-
+import { Quotes as Quote } from '@phosphor-icons/react';
 
 export function QuoteArchiveTemplate() {
   const quotePosts = allPosts.filter(post => post.format === 'quote');

@@ -5,7 +5,8 @@
  * Adapts simple API to Radix API.
  */
 
-import { LucideIcon, Check } from 'lucide-react';
+import { Check } from '@phosphor-icons/react';
+import type { UniversalIcon } from '../../utils/icon-map';
 import {
   DropdownMenu as DropdownMenuBlock,
   DropdownMenuTrigger,
@@ -18,7 +19,7 @@ import {
 
 export interface DropdownMenuItem {
   label: string;
-  icon?: LucideIcon;
+  icon?: UniversalIcon;
   onClick?: () => void;
   disabled?: boolean;
   destructive?: boolean;

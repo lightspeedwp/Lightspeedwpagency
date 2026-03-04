@@ -16,7 +16,7 @@
  * ```
  */
 
-import { DollarSign, Clock, Check } from 'lucide-react';
+import { CurrencyDollar, Clock, Check } from '@phosphor-icons/react';
 import { Button } from '../blocks/design/Buttons';
 import type { ServicePricingDetailed, ServiceTimeline } from '../../data/services';
 // CSS imported centrally via /src/styles/index.css
@@ -74,7 +74,7 @@ export const ServicePricingTimeline = ({
         {/* Pricing Card */}
         <div className="service-pricing__card service-pricing__card--pricing">
           <div className="service-pricing__card-header">
-            <DollarSign className="service-pricing__icon" size={32} aria-hidden="true" />
+            <CurrencyDollar className="service-pricing__icon" size={32} aria-hidden="true" />
             <h3 style={{ 
               fontFamily: 'var(--font-primary)',
               fontSize: 'var(--text-h3)',

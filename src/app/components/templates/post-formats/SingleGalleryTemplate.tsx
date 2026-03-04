@@ -11,9 +11,8 @@ import { Container } from '@/app/components/common/Container';
 import { Section } from '@/app/components/common/Section';
 import { BreadcrumbPart } from '@/app/components/parts/BreadcrumbPart';
 import { galleryPost } from '@/app/data/posts-formats';
-import { Image, Calendar, User } from 'lucide-react';
+import { Images as Image, Calendar, User } from '@phosphor-icons/react';
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
-
 
 export function SingleGalleryTemplate() {
   const post = galleryPost;

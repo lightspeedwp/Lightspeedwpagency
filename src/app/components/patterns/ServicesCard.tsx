@@ -21,14 +21,11 @@
  *   ├── List (core/list innerBlock)
  *   └── Button (core/button innerBlock with link style)
  * 
- * @example
- * import { ServicesCard } from '../patterns/ServicesCard';
- * import { wordpressServices } from '../../data/services';
- * 
- * <ServicesCard service={wordpressServices[0]} />
+ * @see /src/app/utils/icon-map.ts
+ * @see /patterns/overview-patterns.md
  */
 
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, CheckCircle } from '@phosphor-icons/react';
 import { Link } from 'react-router';
 import { getPageUrl } from '../../data/pages';
 import type { Service } from '../../data/services';
@@ -76,7 +73,7 @@ export function ServicesCard({
 
       {/* Icon innerBlock */}
       <div className="services-card__icon">
-        <Icon size={32} strokeWidth={2} />
+        <Icon size={40} weight="duotone" />
       </div>
 
       {/* Heading innerBlock (core/heading) */}
@@ -97,28 +94,12 @@ export function ServicesCard({
             className="services-card__feature-item"
           >
             {/* Checkmark icon */}
-            <svg
+            <CheckCircle 
+              size={20} 
+              weight="fill"
               className="services-card__check-icon"
-              width="20"
-              height="20"
-              viewBox="0 0 20 20"
-              fill="none"
-            >
-              <circle
-                cx="10"
-                cy="10"
-                r="9"
-                fill="var(--primary)"
-                opacity="0.1"
-              />
-              <path
-                d="M6 10L9 13L14 7"
-                stroke="var(--primary)"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
+              style={{ color: 'var(--primary)', opacity: 0.8 }}
+            />
             <span>{feature}</span>
           </li>
         ))}
@@ -132,7 +113,8 @@ export function ServicesCard({
       >
         <span>{service.link.text}</span>
         <ArrowRight 
-          size={20} 
+          size={16} 
+          weight="bold"
           className="services-card__arrow"
         />
       </Link>

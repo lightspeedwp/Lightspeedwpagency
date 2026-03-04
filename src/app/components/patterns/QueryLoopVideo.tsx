@@ -1,14 +1,8 @@
 /**
- * Query Loop — Video Post Format
- *
- * WordPress pattern: core/query + video post-template
- *
- * Renders video posts with thumbnails, play overlays, and duration.
- *
- * @see /src/styles/patterns/query-loop.css
+ * QueryLoopVideo Pattern — LSX Design
  */
 
-import { Video, Clock, Play } from 'lucide-react';
+import { Video, Clock, Play } from '@phosphor-icons/react';
 import { Link } from 'react-router';
 import { QueryLoop } from './QueryLoop';
 import { useStaggerReveal } from '../../hooks/useScrollReveal';

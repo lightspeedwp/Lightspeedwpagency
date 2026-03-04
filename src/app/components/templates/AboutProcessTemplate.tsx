@@ -6,12 +6,21 @@
  * - Vertical "Snake" Timeline with alternating cards
  * - Glassmorphism Methodology Cards
  * - 100% CSS variable compliance
+ * 
+ * PATTERN COMPONENTS:
+ * - ✅ ProcessTimeline — 5-step process (detailed timeline variant)
+ * - ✅ FeatureList — 4 principles (4 items, 2 columns, glass variant)
+ * - ✅ FAQSection — FAQ accordion
+ * - ✅ FunkyCTA — Final CTA section
+ * 
+ * @migrated March 3, 2026 — Phase 3.3: Migrated inline principles grid (~50 lines saved)
  */
 
 import { Container } from '../common/Container';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { FunkyCTA } from '../patterns/FunkyCTA';
 import { FAQSection } from '../patterns/FAQSection';
+import { FeatureList } from '../patterns/FeatureList';
 import { Heading } from '../blocks/text/Heading';
 import { Paragraph } from '../blocks/text/Paragraph';
 import { useHeroParallax } from '../../hooks/useHeroParallax';
@@ -23,13 +32,13 @@ import {
   Rocket,
   Code,
   Palette,
-  TestTube,
+  TestTube as Flask,
   Globe,
-  Zap,
-  Layers,
-  Search,
-  Settings
-} from 'lucide-react';
+  Lightning as Zap,
+  Stack as Layers,
+  MagnifyingGlass as Search,
+  Gear as Settings
+} from '@phosphor-icons/react';
 
 /* Route-level CSS */
 import '../../../styles/templates/page-about-process.css';
@@ -203,50 +212,33 @@ export function AboutProcessTemplate() {
             </p>
           </div>
 
-          <div className="process-page__grid">
-            {[
+          <FeatureList
+            items={[
               {
                 icon: Users,
                 title: 'Collaborative Partnership',
-                desc: 'We work as an extension of your team, not as external vendors. Regular communication loops keep everyone aligned.'
+                description: 'We work as an extension of your team, not as external vendors. Regular communication loops keep everyone aligned.'
               },
               {
-                icon: TestTube,
+                icon: Flask,
                 title: 'Iterative Development',
-                desc: 'Agile sprints with regular demos ensuring we stay on track and adapt quickly to changing requirements.'
+                description: 'Agile sprints with regular demos ensuring we stay on track and adapt quickly to changing requirements.'
               },
               {
                 icon: Globe,
                 title: 'Standards-First',
-                desc: 'WCAG AA compliance, semantic HTML, and WordPress coding standards are non-negotiable in every project.'
+                description: 'WCAG AA compliance, semantic HTML, and WordPress coding standards are non-negotiable in every project.'
               },
               {
                 icon: CheckCircle,
                 title: 'Quality Assurance',
-                desc: 'Multiple rounds of testing across devices, browsers, and assistive technologies before launch.'
+                description: 'Multiple rounds of testing across devices, browsers, and assistive technologies before launch.'
               }
-            ].map((item, index) => {
-              const Icon = item.icon;
-              return (
-                <div key={index} className="about-overview__card">
-                  <div className="about-overview__card-glow" />
-                  <div className="about-overview__card-inner process-page__principle-inner">
-                    <div className="about-overview__card-icon-wrapper">
-                      <Icon size={24} />
-                    </div>
-                    <div>
-                      <Heading level={3} className="process-page__principle-title">
-                        {item.title}
-                      </Heading>
-                      <Paragraph className="process-page__principle-desc">
-                        {item.desc}
-                      </Paragraph>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+            ]}
+            columns={2}
+            variant="glass"
+            iconSize="md"
+          />
         </Container>
       </section>
 

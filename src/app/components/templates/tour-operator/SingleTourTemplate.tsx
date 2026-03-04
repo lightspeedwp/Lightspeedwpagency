@@ -13,7 +13,7 @@ import { Container } from '@/app/components/common/Container';
 import { Section } from '@/app/components/common/Section';
 import { Breadcrumbs } from '@/app/components/common/Breadcrumbs';
 import { tours } from '@/app/data/tour-operator';
-import { MapPin, Calendar, Check, Info } from 'lucide-react';
+import { MapPin, Calendar, Check, Info } from '@phosphor-icons/react';
 
 export function SingleTourTemplate() {
   const tour = tours[0]; // Default to first tour for demo

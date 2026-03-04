@@ -1,22 +1,14 @@
 /**
  * Funky CTA Pattern
  * 
- * A bold, high-energy call-to-action section with neon accents,
- * grid backgrounds, and a distinctive layout.
- * 
- * Features:
- * - "Funky" aesthetic (neon shadows, grid patterns)
- * - Feature list with checkmarks
- * - Responsive layout (stack on mobile, side-by-side on desktop)
- * - Fully reusable
+ * High-impact call-to-action section with gradient backgrounds, animated orbs,
+ * and emphasis features for the LSX Design "Funky" aesthetic.
  */
 
-import { Section } from '../common/Section';
 import { Container } from '../common/Container';
 import { Button } from '../blocks/design/Buttons';
-import { Check } from 'lucide-react';
+import { Check } from '@phosphor-icons/react';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
-
 
 interface FunkyCTAProps {
   title: string;
@@ -38,7 +30,7 @@ export function FunkyCTA({
   className = ''
 }: FunkyCTAProps) {
   return (
-    <Section 
+    <Container 
       spacing="none" 
       className={`funky-cta ${className}`}
     >
@@ -86,6 +78,6 @@ export function FunkyCTA({
           </div>
         </ScrollReveal>
       </Container>
-    </Section>
+    </Container>
   );
 }

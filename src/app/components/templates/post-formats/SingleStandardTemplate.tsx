@@ -11,7 +11,7 @@
  */
 
 import '../../../../styles/templates/single-post.css';
-import { User, Calendar, Tag } from 'lucide-react';
+import { User, Calendar, Tag } from '@phosphor-icons/react';
 
 export function SingleStandardTemplate() {
   const post = standardPost;

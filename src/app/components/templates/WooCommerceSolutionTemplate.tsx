@@ -10,7 +10,12 @@
  * - Colors via scoped CSS variables (no hardcoded hex in JSX)
  * - Fonts: var(--font-primary), var(--font-secondary), var(--font-mono)
  *
+ * PATTERN COMPONENTS:
+ * - ✅ StatsGrid — Results/metrics section
+ * - ✅ FeatureList — Enterprise features grid (glow variant)
+ *
  * @see /src/styles/templates/page-solution-ecommerce.css
+ * @migrated March 3, 2026 — Migrated inline feature grid to FeatureList component
  */
 
 import '../../../styles/templates/page-solution-ecommerce.css';
@@ -24,12 +29,12 @@ import {
   ShoppingBag,
   CreditCard,
   Truck,
-  BarChart3,
+  ChartBar as BarChart3,
   Globe,
   ShieldCheck,
-  Zap,
+  Lightning as Zap,
   ArrowRight,
-} from 'lucide-react';
+} from '@phosphor-icons/react';
 
 import { woocommerceSolutionDetailed } from '../../data/solutions-detailed';
 
@@ -138,23 +143,19 @@ export function WooCommerceSolutionTemplate() {
             </div>
           </ScrollReveal>
 
-          <div className="ecommerce-page__features-grid">
-            {data.features.map((feature, index) => {
-              const Icon = featureIcons[feature.title] || Zap;
-              return (
-                <ScrollReveal key={index} animation="fade-up" delay={index * 80}>
-                  <div className="ecommerce-page__feature-card">
-                    <div className="ecommerce-page__feature-icon">
-                      <Icon size={24} />
-                    </div>
-                    <h3 className="ecommerce-page__feature-title">{feature.title}</h3>
-                    <p className="ecommerce-page__feature-desc">{feature.description}</p>
-                    <div className="ecommerce-page__feature-corner" aria-hidden="true" />
-                  </div>
-                </ScrollReveal>
-              );
-            })}
-          </div>
+          <ScrollReveal animation="fade-up" delay={100}>
+            <FeatureList
+              items={data.features.map((feature, index) => ({
+                icon: featureIcons[feature.title] || Zap,
+                title: feature.title,
+                description: feature.description
+              }))}
+              columns={3}
+              variant="glow"
+              iconSize="md"
+              iconStyle="rounded"
+            />
+          </ScrollReveal>
         </Container>
       </section>
 

@@ -35,17 +35,16 @@ import { Link } from 'react-router';
 import { slugToPath } from '../../utils/route-map';
 import { journeyStages } from '../../data/journey-stage-pages';
 import type { JourneyServiceCard } from '../../data/journey-stage-pages';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight } from '@phosphor-icons/react';
 import { 
   trackRelatedServiceClick, 
-  trackViewAllPhaseServices,
   trackRelatedServicesImpression,
-  type JourneyPhase 
+  type JourneyPhase
 } from '../../utils/analytics';
 
 export interface RelatedServicesInPhaseProps {
   /** Current phase slug (e.g. "create") */
-  currentPhase: string;
+  currentPhase: JourneyPhase;
   /** Current service page slug to exclude (e.g. "figma-prototyping") */
   currentServicePage: string;
   /** Optional className for wrapper */
@@ -82,7 +81,7 @@ export function RelatedServicesInPhase({
   // Track impression when component mounts
   useEffect(() => {
     trackRelatedServicesImpression(
-      currentPhase as JourneyPhase,
+      currentPhase,
       currentServicePage,
       relatedServices.length
     );
@@ -91,17 +90,9 @@ export function RelatedServicesInPhase({
   // Handle service card click
   const handleServiceClick = (clickedServicePage: string) => {
     trackRelatedServiceClick(
-      currentPhase as JourneyPhase,
+      currentPhase,
       currentServicePage,
       clickedServicePage
-    );
-  };
-
-  // Handle "View All" link click
-  const handleViewAllClick = () => {
-    trackViewAllPhaseServices(
-      currentPhase as JourneyPhase,
-      currentServicePage
     );
   };
 
@@ -167,7 +158,6 @@ export function RelatedServicesInPhase({
           <Link
             to={slugToPath(`journey-${currentPhase}`)}
             className="related-services-in-phase__view-all"
-            onClick={handleViewAllClick}
           >
             View All {phaseData.name} Services
             <ArrowRight size={16} aria-hidden="true" />

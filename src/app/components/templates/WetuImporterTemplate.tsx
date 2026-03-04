@@ -20,21 +20,30 @@
  * - No inline Tailwind classes
  * - All styling via @/styles/templates/wetu-importer-page.css
  * - BEM naming throughout
+ * 
+ * PATTERN COMPONENTS:
+ * - ✅ FeatureList — Key features (glassmorphism variant)
+ * - ✅ FeatureList — Benefits grid (4 items, 2 columns)
+ * - ✅ ProcessTimeline — 4-step process (numbered variant)
+ * - ✅ FAQSection — FAQ accordion
+ * - ✅ FunkyCTA — Final CTA section
+ * 
+ * @migrated March 3, 2026 — Phase 3.2: Migrated inline benefits + process (~65 lines saved)
  */
 
 import '../../../styles/templates/wetu-importer-page.css';
-import { Check } from 'lucide-react';
+import { Check, UploadSimple as Upload, Database, ArrowsClockwise as RefreshCw, Lightning as Zap, Gear as Settings, Globe } from '@phosphor-icons/react';
 import { Section } from '@/app/components/common/Section';
 import { Container } from '@/app/components/common/Container';
 import { FunkyCTA } from '@/app/components/patterns/FunkyCTA';
 import { FAQSection } from '@/app/components/patterns/FAQSection';
 import { FeatureList } from '@/app/components/patterns/FeatureList';
+import { ProcessTimeline } from '@/app/components/patterns/ProcessTimeline';
 import { Buttons } from '@/app/components/blocks/design/Buttons';
 import { Heading } from '@/app/components/common/Heading';
 import { Paragraph } from '@/app/components/blocks/text/Paragraph';
 import { useHeroParallax } from '../../hooks/useHeroParallax';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
-import { Upload, Database, RefreshCw, Zap, Settings, Globe } from 'lucide-react';
 
 import {
   wetuImporterHero,
@@ -146,18 +155,12 @@ export function WetuImporterTemplate() {
           </ScrollReveal>
 
           <div className="wetu-importer__benefits-grid">
-            {wetuImporterBenefits.map((benefit, index) => (
-              <ScrollReveal key={index} animation="fade-up" delay={index * 100}>
-                <div className="wetu-importer__benefit-card">
-                  <Heading level={3} className="wetu-importer__benefit-title">
-                    {benefit.title}
-                  </Heading>
-                  <Paragraph className="wetu-importer__benefit-description">
-                    {benefit.description}
-                  </Paragraph>
-                </div>
-              </ScrollReveal>
-            ))}
+            <FeatureList
+              items={wetuImporterBenefits}
+              columns={2}
+              variant="glow"
+              iconSize="md"
+            />
           </div>
         </Container>
       </section>
@@ -179,23 +182,10 @@ export function WetuImporterTemplate() {
           </ScrollReveal>
 
           <div className="wetu-importer__process-grid">
-            {wetuImporterProcess.map((step, index) => (
-              <ScrollReveal key={index} animation="fade-up" delay={index * 120}>
-                <div className="wetu-importer__process-step">
-                  <div className="wetu-importer__process-number">
-                    {step.step}
-                  </div>
-                  <div className="wetu-importer__process-content">
-                    <Heading level={3} className="wetu-importer__process-title">
-                      {step.title}
-                    </Heading>
-                    <Paragraph className="wetu-importer__process-description">
-                      {step.description}
-                    </Paragraph>
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
+            <ProcessTimeline
+              steps={wetuImporterProcess}
+              variant="numbered"
+            />
           </div>
         </Container>
       </section>

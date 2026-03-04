@@ -17,12 +17,13 @@
  * 
  * <KeyboardShortcuts />
  * ```
+ * @see /src/app/utils/icon-map.ts
  */
 
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import { useNavigate } from 'react-router';
 import { useKeyboardShortcuts, formatShortcut, type KeyboardShortcut } from '@/app/hooks/useKeyboardShortcuts';
-import { Keyboard, X } from 'lucide-react';
+import { Keyboard, X } from '@phosphor-icons/react';
 
 export function KeyboardShortcuts() {
   const navigate = useNavigate();

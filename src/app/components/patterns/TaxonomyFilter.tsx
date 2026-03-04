@@ -1,26 +1,17 @@
 /**
- * TaxonomyFilter Pattern Component
- *
- * Reusable taxonomy filter for all archive pages.
- * Supports multi-select category chips, active filters panel,
- * sort options, result counts, and a full-screen mobile interface.
- *
- * WordPress pattern: lsx-design/nav/taxonomy-filter
- *
- * @example
- * <TaxonomyFilter
- *   categories={videoCategories.map(c => ({ slug: c.slug, name: c.name, count: c.count }))}
- *   selectedCategories={selected}
- *   onCategoryToggle={(slug) => toggle(slug)}
- *   resultCount={filteredItems.length}
- *   sortValue={sort}
- *   onSortChange={setSort}
- * />
+ * Taxonomy Filter Pattern
+ * 
+ * Filter UI for taxonomy terms (categories, tags, post formats).
+ * Maps to WordPress pattern: lsx-design/nav/taxonomy-filter
+ * 
+ * **Design Token Compliance:**
+ * - Uses /src/styles/patterns/taxonomy-filter.css
+ * - 100% CSS variables
+ * - BEM naming
  */
 
 import { useState } from 'react';
-import { Filter, X, SlidersHorizontal } from 'lucide-react';
-
+import { Funnel as Filter, X, Sliders as SlidersHorizontal } from '@phosphor-icons/react';
 
 export interface TaxonomyItem {
   slug: string;

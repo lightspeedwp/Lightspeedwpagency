@@ -33,8 +33,8 @@ import {
   CheckCircle,
   ArrowRight,
   Clock,
-  Sparkles,
-} from 'lucide-react';
+  Sparkle as Sparkles,
+} from '@phosphor-icons/react';
 import { Link } from 'react-router';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { slugToPath } from '../../utils/route-map';

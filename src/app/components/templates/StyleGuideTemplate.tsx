@@ -21,16 +21,16 @@ import { Section } from '../common/Section';
 import { Button } from '../blocks/design/Buttons';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import {
-  Zap,
-  Sparkles,
-  Type,
+  Lightning as Zap,
+  Sparkle as Sparkles,
+  TextAa as Type,
   Palette,
   Square,
-  Layers,
-  MousePointer,
+  Stack as Layers,
+  CursorClick as MousePointer,
   CreditCard,
-  Move
-} from 'lucide-react';
+  ArrowsOut as Move
+} from '@phosphor-icons/react';
 
 /* ───────── DATA ───────── */
 

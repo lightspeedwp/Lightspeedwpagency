@@ -7,7 +7,7 @@
  */
 
 import '../../../../styles/templates/single-post.css';
-import { Camera, Calendar, User } from 'lucide-react';
+import { Camera, Calendar, User } from '@phosphor-icons/react';
 
 export function SingleImageTemplate() {
   const post = imagePost;

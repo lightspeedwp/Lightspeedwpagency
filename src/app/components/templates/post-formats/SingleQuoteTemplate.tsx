@@ -7,7 +7,7 @@
  */
 
 import '../../../../styles/templates/single-post.css';
-import { Quote } from 'lucide-react';
+import { Quotes as Quote } from '@phosphor-icons/react';
 
 export function SingleQuoteTemplate() {
   const post = quotePost;

@@ -1,14 +1,8 @@
 /**
- * Query Loop — Gallery Post Format
- *
- * WordPress pattern: core/query + gallery post-template
- *
- * Renders gallery posts with thumbnail strips and image counts.
- *
- * @see /src/styles/patterns/query-loop.css
+ * QueryLoopGallery Pattern — LSX Design
  */
 
-import { Images, Calendar } from 'lucide-react';
+import { Images, Calendar } from '@phosphor-icons/react';
 import { Link } from 'react-router';
 import { QueryLoop } from './QueryLoop';
 import { useStaggerReveal } from '../../hooks/useScrollReveal';

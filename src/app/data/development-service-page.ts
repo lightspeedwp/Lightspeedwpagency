@@ -17,7 +17,7 @@ import type { UniversalIcon } from '../utils/icon-map';
  */
 export const developmentServiceHero = {
   badge: {
-    icon: Code,
+    icon: 'Code' as UniversalIcon,
     text: 'Development Service'
   },
   title: 'Expert WordPress Development for Modern Websites',
@@ -34,25 +34,25 @@ export const developmentServiceOverview = {
   description: 'Custom development gives you complete control over functionality, design, and user experience. Unlike off-the-shelf themes and plugins, custom solutions are tailored to your exact needs, optimized for performance, and built to scale with your business.',
   stats: [
     {
-      icon: Zap,
+      icon: 'Lightning' as UniversalIcon,
       value: '2.5x',
       label: 'Faster',
       description: 'Than page builders'
     },
     {
-      icon: Shield,
+      icon: 'Shield' as UniversalIcon,
       value: '99.9%',
       label: 'Secure',
       description: 'Code security standards'
     },
     {
-      icon: Rocket,
+      icon: 'Rocket' as UniversalIcon,
       value: '10x',
       label: 'Scalability',
       description: 'Better performance at scale'
     },
     {
-      icon: Code,
+      icon: 'Code' as UniversalIcon,
       value: '100%',
       label: 'Custom',
       description: 'Tailored to your needs'
@@ -74,7 +74,7 @@ export interface DevelopmentService {
 export const developmentServices: DevelopmentService[] = [
   {
     id: 'theme-dev',
-    icon: Layers,
+    icon: 'Layers' as UniversalIcon,
     title: 'Custom Theme Development',
     description: 'Block themes built with Full Site Editing, theme.json, and modern WordPress standards.',
     features: [
@@ -88,7 +88,7 @@ export const developmentServices: DevelopmentService[] = [
   },
   {
     id: 'plugin-dev',
-    icon: Package,
+    icon: 'Package' as UniversalIcon,
     title: 'Plugin Development',
     description: 'Custom plugins that extend WordPress functionality with clean, maintainable code.',
     features: [
@@ -102,7 +102,7 @@ export const developmentServices: DevelopmentService[] = [
   },
   {
     id: 'block-dev',
-    icon: Blocks,
+    icon: 'Blocks' as UniversalIcon,
     title: 'Custom Block Development',
     description: 'Gutenberg blocks built with React for powerful, reusable content components.',
     features: [
@@ -116,7 +116,7 @@ export const developmentServices: DevelopmentService[] = [
   },
   {
     id: 'headless',
-    icon: Terminal,
+    icon: 'Terminal' as UniversalIcon,
     title: 'Headless WordPress',
     description: 'WordPress as a headless CMS with REST API or GraphQL for modern front-ends.',
     features: [
@@ -130,7 +130,7 @@ export const developmentServices: DevelopmentService[] = [
   },
   {
     id: 'integrations',
-    icon: Puzzle,
+    icon: 'Puzzle' as UniversalIcon,
     title: 'Third-Party Integrations',
     description: 'Connect WordPress with external services, APIs, and platforms.',
     features: [
@@ -144,7 +144,7 @@ export const developmentServices: DevelopmentService[] = [
   },
   {
     id: 'optimization',
-    icon: Zap,
+    icon: 'Zap' as UniversalIcon,
     title: 'Performance Optimization',
     description: 'Code optimization, caching strategies, and database tuning for speed.',
     features: [
@@ -196,7 +196,7 @@ export const developmentProcess = [
     step: 1,
     title: 'Planning & Architecture',
     description: 'Define requirements, technical architecture, and development roadmap.',
-    icon: FileCode,
+    icon: 'FileCode' as UniversalIcon,
     deliverables: [
       'Technical specifications',
       'Database schema',
@@ -209,7 +209,7 @@ export const developmentProcess = [
     step: 2,
     title: 'Development & Coding',
     description: 'Build custom solutions using WordPress best practices and modern standards.',
-    icon: Code,
+    icon: 'Code' as UniversalIcon,
     deliverables: [
       'Custom theme/plugin code',
       'Block development',
@@ -222,7 +222,7 @@ export const developmentProcess = [
     step: 3,
     title: 'Testing & QA',
     description: 'Comprehensive testing including functionality, performance, and security.',
-    icon: CheckCircle,
+    icon: 'CheckCircle' as UniversalIcon,
     deliverables: [
       'Unit tests',
       'Integration tests',
@@ -235,7 +235,7 @@ export const developmentProcess = [
     step: 4,
     title: 'Deployment & Support',
     description: 'Launch to production with monitoring, documentation, and ongoing support.',
-    icon: Rocket,
+    icon: 'Rocket' as UniversalIcon,
     deliverables: [
       'Production deployment',
       'Developer documentation',
@@ -251,32 +251,32 @@ export const developmentProcess = [
  */
 export const developmentStandards = [
   {
-    icon: Code,
+    icon: 'Code' as UniversalIcon,
     title: 'WordPress Coding Standards',
     description: 'All code follows official WordPress PHP, JavaScript, and CSS coding standards.'
   },
   {
-    icon: Shield,
+    icon: 'Shield' as UniversalIcon,
     title: 'Security Best Practices',
     description: 'Input validation, output escaping, nonces, and capability checks built-in.'
   },
   {
-    icon: Zap,
+    icon: 'Zap' as UniversalIcon,
     title: 'Performance First',
     description: 'Optimized queries, efficient algorithms, and minimal resource usage.'
   },
   {
-    icon: GitBranch,
+    icon: 'GitBranch' as UniversalIcon,
     title: 'Version Control',
     description: 'Git workflow with feature branches, code reviews, and semantic versioning.'
   },
   {
-    icon: Database,
+    icon: 'Database' as UniversalIcon,
     title: 'Database Optimization',
     description: 'Proper indexing, efficient queries, and database migration strategies.'
   },
   {
-    icon: Settings,
+    icon: 'Settings' as UniversalIcon,
     title: 'Scalability',
     description: 'Architecture designed to handle growth in traffic, content, and features.'
   }
@@ -338,32 +338,32 @@ export const developmentPackages = [
  */
 export const whyChooseDevelopment = [
   {
-    icon: Code,
+    icon: 'Code' as UniversalIcon,
     title: 'Modern WordPress Development',
     description: 'We use the latest WordPress features including Full Site Editing, block patterns, and theme.json for future-proof solutions.'
   },
   {
-    icon: Zap,
+    icon: 'Zap' as UniversalIcon,
     title: 'Performance Optimized',
     description: 'Our code is lean, efficient, and optimized for speed. We build fast websites that scale.'
   },
   {
-    icon: Shield,
+    icon: 'Shield' as UniversalIcon,
     title: 'Security Focused',
     description: '10+ years security expertise with proactive security measures built into every project.'
   },
   {
-    icon: GitBranch,
+    icon: 'GitBranch' as UniversalIcon,
     title: 'Professional Workflow',
     description: 'Git version control, code reviews, automated testing, and continuous integration.'
   },
   {
-    icon: Settings,
+    icon: 'Settings' as UniversalIcon,
     title: 'Maintainable Code',
     description: 'Clean, well-documented code that follows WordPress standards and best practices.'
   },
   {
-    icon: Rocket,
+    icon: 'Rocket' as UniversalIcon,
     title: 'Ongoing Support',
     description: 'We support and maintain the code we write with updates, bug fixes, and enhancements.'
   }

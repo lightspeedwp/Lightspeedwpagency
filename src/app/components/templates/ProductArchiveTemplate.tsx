@@ -10,8 +10,7 @@ import { Container } from '../common/Container';
 import { Heading } from '../common/Heading';
 import { Paragraph } from '../blocks/text/Paragraph';
 import { allProducts } from '../../data/woocommerce';
-import { ShoppingCart, Filter } from 'lucide-react';
-
+import { ShoppingCart, Funnel as Filter } from '@phosphor-icons/react';
 
 export function ProductArchiveTemplate() {
   return (

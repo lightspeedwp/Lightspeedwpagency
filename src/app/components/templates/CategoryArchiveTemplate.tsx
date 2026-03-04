@@ -33,7 +33,7 @@ import { Heading } from '../blocks/text/Heading';
 import { Paragraph } from '../blocks/text/Paragraph';
 import { Badge } from '../blocks/design/Badge';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
-import { User, Calendar, Clock, ArrowRight } from 'lucide-react';
+import { User, Calendar, Clock, ArrowRight } from '@phosphor-icons/react';
 import { blogCategories } from '../../data/taxonomies';
 import { getPostsByCategory, getAuthorBySlug, postTags } from '../../data/blog-posts';
 import { blogCategoryFAQs } from '../../data/faqs';

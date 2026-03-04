@@ -28,7 +28,14 @@
  * - All styling via @/styles/templates/publishers-page.css
  * - BEM naming throughout
  *
+ * PATTERN COMPONENTS:
+ * - ✅ StatsGrid — Overview stats section (4-column layout)
+ * - ✅ FeatureList — Newsroom features section (glow variant)
+ * - ✅ FAQSection — FAQ section
+ * - ✅ FunkyCTA — Final conversion section
+ *
  * @see /guidelines/templates/overview-templates.md
+ * @migrated March 3, 2026 — Migrated inline feature grid to FeatureList component
  */
 
 import '../../../styles/templates/publishers-page.css';
@@ -38,13 +45,13 @@ import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { FunkyCTA } from '../patterns/FunkyCTA';
 import { FAQSection } from '../patterns/FAQSection';
 import { StatsGrid } from '../patterns/StatsGrid';
+import { FeatureList } from '../patterns/FeatureList';
 import { Heading } from '../blocks/text/Heading';
 import { Paragraph } from '../blocks/text/Paragraph';
 import { Buttons } from '../blocks/design/Buttons';
 import { useHeroParallax } from '../../hooks/useHeroParallax';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
-import { BookOpen, Sparkles } from 'lucide-react';
-
+import { BookOpen, Sparkles } from '@phosphor-icons/react';
 
 // Import centralized data
 import {
@@ -161,23 +168,19 @@ export function PublishersTemplate() {
             </div>
           </ScrollReveal>
 
-          <div className="publishers__features-grid">
-            {publishersFeatures.map((feature, index) => {
-              const Icon = feature.icon;
-              return (
-                <ScrollReveal key={index} animation="fade-up" delay={index * 80}>
-                  <div className="publishers__feature-card">
-                    <div className="publishers__feature-glow" />
-                    <div className="publishers__feature-icon">
-                      <Icon size={24} />
-                    </div>
-                    <h3 className="publishers__feature-title">{feature.title}</h3>
-                    <p className="publishers__feature-desc">{feature.description}</p>
-                  </div>
-                </ScrollReveal>
-              );
-            })}
-          </div>
+          <ScrollReveal animation="fade-up" delay={100}>
+            <FeatureList
+              items={publishersFeatures.map((feature) => ({
+                icon: feature.icon,
+                title: feature.title,
+                description: feature.description
+              }))}
+              columns={3}
+              variant="glow"
+              iconSize="md"
+              iconStyle="rounded"
+            />
+          </ScrollReveal>
         </Container>
       </Section>
 

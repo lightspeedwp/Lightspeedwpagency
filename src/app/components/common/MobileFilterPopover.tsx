@@ -25,7 +25,7 @@
  * - Backdrop blur effect
  */
 
-import { X } from 'lucide-react';
+import { X, Check } from '@phosphor-icons/react';
 import { useEffect, useRef, useCallback } from 'react';
 import { Button } from '../blocks/design/Buttons';
 import { useFocusManagement } from '../../hooks/useFocusManagement';
@@ -217,7 +217,7 @@ export function MobileFilterPopover({
               <span>{allLabel}</span>
               {isSelected('all') && (
                 <span className="mobile-filter-popover__check">
-                  ✓
+                  <Check size={18} weight="bold" />
                 </span>
               )}
             </button>
@@ -239,7 +239,7 @@ export function MobileFilterPopover({
                 )}
                 {isSelected(option.id) && (
                   <span className="mobile-filter-popover__check">
-                    ✓
+                    <Check size={18} weight="bold" />
                   </span>
                 )}
               </div>

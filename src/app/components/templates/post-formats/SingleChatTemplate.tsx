@@ -7,7 +7,7 @@
  */
 
 import '../../../../styles/templates/single-post.css';
-import { MessageCircle, User, Calendar } from 'lucide-react';
+import { Chat as MessageCircle, User, Calendar } from '@phosphor-icons/react';
 
 export function SingleChatTemplate() {
   const post = chatPost;

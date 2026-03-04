@@ -15,20 +15,29 @@
  * - Colors: CSS variables only (--growth-* aliases)
  * - Button styling via :where(.wp-block-button__link)
  *
+ * PATTERN COMPONENTS:
+ * - ✅ FeatureList — Tech Stack features section (glow variant)
+ * - ✅ FeatureList — Benefits grid (4 items, 2 columns, glass variant)
+ * - ✅ ProcessTimeline — 4-step implementation process
+ * - ✅ FAQSection — FAQ section (accordion variant)
+ * - ✅ FunkyCTA — Final conversion section
+ *
  * @see /src/styles/templates/mailchimp-solution-page.css
  * @see /src/app/data/mailchimp-solution-page.ts
+ * @migrated March 3, 2026 — Phase 3.2: Migrated inline benefits grid + process timeline (~60 lines saved)
  */
 
 import '../../../styles/templates/mailchimp-solution-page.css';
-import { Check, Rocket, ArrowRight, Quote } from 'lucide-react';
+import { Check, Rocket, ArrowRight, Quotes as Quote } from '@phosphor-icons/react';
 import { Section } from '../common/Section';
 import { Container } from '../common/Container';
 import { Button } from '../blocks/design/Buttons';
 import { FAQSection } from '../patterns/FAQSection';
 import { FunkyCTA } from '../patterns/FunkyCTA';
+import { FeatureList } from '../patterns/FeatureList';
+import { ProcessTimeline } from '../patterns/ProcessTimeline';
 import { ScrollReveal, StaggerReveal } from '../../hooks/useScrollReveal';
 import { ScrollDownArrow } from '../common/ScrollDownArrow';
-
 
 import {
   whyMailchimp,
@@ -116,26 +125,12 @@ export function MailchimpSolutionTemplate() {
             </div>
           </ScrollReveal>
 
-          <div className="mailchimp-page__stats-grid">
-            {whyMailchimp.benefits.map((benefit, index) => {
-              const Icon = benefit.icon;
-              return (
-                <ScrollReveal key={index} animation="fade-up" delay={index * 100}>
-                  <div className="mailchimp-page__stat-card">
-                    <div className="mailchimp-page__stat-icon">
-                      <Icon size={24} />
-                    </div>
-                    <h3 className="mailchimp-page__stat-title">
-                      {benefit.title}
-                    </h3>
-                    <p className="mailchimp-page__stat-desc">
-                      {benefit.description}
-                    </p>
-                  </div>
-                </ScrollReveal>
-              );
-            })}
-          </div>
+          <FeatureList
+            items={whyMailchimp.benefits}
+            columns={2}
+            variant="glass"
+            iconSize="md"
+          />
         </Container>
       </section>
 
@@ -162,26 +157,19 @@ export function MailchimpSolutionTemplate() {
             </div>
           </ScrollReveal>
 
-          <div className="mailchimp-page__features-grid">
-            {mailchimpFeatures.map((feature, index) => {
-              const Icon = feature.icon;
-              return (
-                <ScrollReveal key={index} animation="fade-up" delay={index * 80}>
-                  <div className="mailchimp-page__feature-card">
-                    <div className="mailchimp-page__feature-icon-wrap">
-                      <Icon size={24} />
-                    </div>
-                    <h3 className="mailchimp-page__feature-title">
-                      {feature.title}
-                    </h3>
-                    <p className="mailchimp-page__feature-desc">
-                      {feature.description}
-                    </p>
-                  </div>
-                </ScrollReveal>
-              );
-            })}
-          </div>
+          <ScrollReveal animation="fade-up" delay={100}>
+            <FeatureList
+              items={mailchimpFeatures.map((feature) => ({
+                icon: feature.icon,
+                title: feature.title,
+                description: feature.description
+              }))}
+              columns={3}
+              variant="glow"
+              iconSize="md"
+              iconStyle="rounded"
+            />
+          </ScrollReveal>
         </Container>
       </section>
 
@@ -209,27 +197,18 @@ export function MailchimpSolutionTemplate() {
             </div>
           </ScrollReveal>
 
-          <div className="mailchimp-page__process-grid">
-            {mailchimpProcess.map((step, index) => (
-              <ScrollReveal key={index} animation="fade-up" delay={index * 100}>
-                <div className="mailchimp-page__step">
-                  <span className="mailchimp-page__step-number">
-                    0{step.step}
-                  </span>
-                  <h3 className="mailchimp-page__step-title">
-                    {step.title}
-                  </h3>
-                  <p className="mailchimp-page__step-desc">
-                    {step.description}
-                  </p>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
+          <ProcessTimeline
+            steps={mailchimpProcess.map((step) => ({
+              step: step.step,
+              title: step.title,
+              description: step.description
+            }))}
+            variant="numbered"
+          />
         </Container>
       </section>
 
-      {/* ════════════════════════════════════════
+      {/* ═══════════════════════════════════════
           5. PRICING — "The Investment"
           ════════════════════════════════════════ */}
       <section className="mailchimp-page__pricing">

@@ -1,19 +1,13 @@
 /**
- * Featured Project (Video) Pattern
- * 
- * A single featured project with a video testimonial/showcase.
- * 
- * Dependencies:
- * - lucide-react
- * - /src/styles/patterns/featured-project-video.css
+ * Featured Project Video Pattern
  */
 
 import React from 'react';
-import { portfolioProjects } from '../../data/portfolio-projects';
+import { Container } from '../common/Container';
+import { Section } from '../common/Section';
 import { ImageWithFallback } from '../figma/ImageWithFallback';
 import { Link } from 'react-router';
-import { ArrowRight, Play, Film } from 'lucide-react';
-
+import { ArrowRight, Play, FilmStrip as Film } from '@phosphor-icons/react';
 
 interface FeaturedProjectVideoProps {
   projectSlug?: string;

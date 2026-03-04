@@ -12,7 +12,7 @@
  */
 
 import '../../../../styles/templates/archive.css';
-import { Download, ExternalLink } from 'lucide-react';
+import { DownloadSimple as Download, ArrowSquareOut as ExternalLink } from '@phosphor-icons/react';
 
 export function LinkArchiveTemplate() {
   const linkPosts = allPosts.filter(post => post.format === 'link');

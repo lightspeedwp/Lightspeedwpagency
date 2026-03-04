@@ -15,9 +15,9 @@ import { Buttons, Button } from '../blocks/design/Buttons';
 import { FunkyCTA } from '../patterns/FunkyCTA';
 import { StatsGrid } from '../patterns/StatsGrid';
 import { 
-  HelpCircle,
-  ChevronDown
-} from 'lucide-react';
+  Question as HelpCircle,
+  CaretDown as ChevronDown
+} from '@phosphor-icons/react';
 import { useState } from 'react';
 
 // Import centralized data

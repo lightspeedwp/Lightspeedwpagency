@@ -17,9 +17,17 @@ import { blogPosts } from '../../data/blog-posts';
 import { portfolioProjects } from '../../data/portfolio-projects';
 import { testimonials } from '../../data/testimonials';
 import { services } from '../../data/services';
-import { FileText, Briefcase, MessageSquare, Wrench, Star, Users, Globe, Zap } from 'lucide-react';
+import { 
+  FileText, 
+  Briefcase, 
+  ChatDots, 
+  Wrench, 
+  Star, 
+  Users, 
+  Globe, 
+  Lightning 
+} from '@phosphor-icons/react';
 import type { UniversalIcon } from '../../utils/icon-map';
-
 
 interface StatItem {
   icon: UniversalIcon;
@@ -94,9 +102,9 @@ export function ContentStatsWidget({
   const autoStats: Record<string, StatItem> = {
     blog: { icon: FileText, value: blogPosts.length, label: 'Blog Posts', suffix: '+' },
     portfolio: { icon: Briefcase, value: portfolioProjects.length, label: 'Projects Delivered', suffix: '+' },
-    testimonials: { icon: MessageSquare, value: testimonials.length, label: 'Client Testimonials' },
+    testimonials: { icon: ChatDots, value: testimonials.length, label: 'Client Testimonials' },
     services: { icon: Wrench, value: services.length, label: 'Services Offered' },
-    experience: { icon: Zap, value: 22, label: 'Years Experience', suffix: '+' },
+    experience: { icon: Lightning, value: 22, label: 'Years Experience', suffix: '+' },
     clients: { icon: Users, value: 130, label: 'Happy Clients', suffix: '+' },
   };
 

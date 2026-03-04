@@ -16,7 +16,7 @@ import { Container } from '@/app/components/common/Container';
 import { Section } from '@/app/components/common/Section';
 import { BreadcrumbPart } from '@/app/components/parts/BreadcrumbPart';
 import { allPosts } from '@/app/data/posts-formats';
-import { Layers } from 'lucide-react';
+import { Stack as Layers } from '@phosphor-icons/react';
 import { Link } from 'react-router';
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
 

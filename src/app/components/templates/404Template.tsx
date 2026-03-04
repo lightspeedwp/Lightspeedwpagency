@@ -14,7 +14,7 @@ import { Section } from '../common/Section';
 import { Heading } from '../blocks/text/Heading';
 import { Paragraph } from '../blocks/text/Paragraph';
 import { Button } from '../blocks/design/Buttons';
-import { AlertTriangle, Search, Home, ArrowRight } from 'lucide-react';
+import { Warning, MagnifyingGlass, House, ArrowRight } from '@phosphor-icons/react';
 
 // Import centralized data
 import {
@@ -30,7 +30,7 @@ export function Template404() {
       <Section className="error-hero">
         <Container>
           <div className="error-hero__icon">
-            <AlertTriangle size={40} strokeWidth={2} />
+            <Warning size={40} weight="duotone" />
           </div>
           
           <Heading level={1} className="wp-mb-6">
@@ -44,7 +44,7 @@ export function Template404() {
           {/* Search Bar */}
           <div className="error-search">
             <div className="error-search__input-wrapper">
-              <Search className="error-search__icon" size={20} />
+              <MagnifyingGlass className="error-search__icon" size={20} />
               <input 
                 type="text" 
                 className="error-search__input" 
@@ -72,7 +72,7 @@ export function Template404() {
           )}
 
           <div className="error-actions">
-            <Button variant="outline" href="/" icon={<Home size={18} />}>
+            <Button variant="outline" href="/" icon={<House size={18} />}>
               Back to Home
             </Button>
           </div>

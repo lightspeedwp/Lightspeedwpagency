@@ -26,12 +26,12 @@ import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { useState } from 'react';
 import {
   Calculator,
-  TrendingUp,
-  Zap,
+  TrendUp,
+  Lightning as Zap,
   Shield,
-  Search,
+  MagnifyingGlass as Search,
   Clock
-} from 'lucide-react';
+} from '@phosphor-icons/react';
 
 
 
@@ -252,7 +252,7 @@ export function ROICalculatorTemplate() {
                 {/* Projected Annual Gain — hero card */}
                 <div className="roi-calc__result-card roi-calc__result-card--hero">
                   <p className="roi-calc__result-label">
-                    <TrendingUp size={16} />
+                    <TrendUp size={16} />
                     Projected Annual Gain
                   </p>
                   <p className="roi-calc__result-value">${fmt(totalAnnualGain)}</p>

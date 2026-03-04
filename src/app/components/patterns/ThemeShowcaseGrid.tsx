@@ -1,25 +1,17 @@
 /**
- * Theme Showcase Grid Pattern
+ * ThemeShowcaseGrid Pattern
  * 
- * WordPress pattern: lsx-design/content/theme-showcase-grid
- * 
- * Grid of theme/product cards with category badges, hover effects, and feature lists.
- * Commonly used to showcase products, themes, or offerings with checkmark features.
- * 
- * All styling in /src/styles/theme-showcase-grid.css (user-editable)
- * 
- * @see {@link /guidelines/patterns/ThemeShowcaseGrid.md}
+ * Grid of theme/template showcases with preview images and features.
  */
 
-import { CheckCircle } from 'lucide-react';
+import { CheckCircle } from '@phosphor-icons/react';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
-
 
 export interface ThemeShowcase {
   /** Unique identifier */
   id: string;
-  /** Theme/product name */
+  /** Theme/template name */
   name: string;
   /** Description */
   description: string;
@@ -34,7 +26,7 @@ export interface ThemeShowcaseGridProps {
   title?: string;
   /** Section description */
   description?: string;
-  /** Array of themes/products */
+  /** Array of themes/templates */
   themes: ThemeShowcase[];
   /** Number of columns (2-4, default: 2) */
   columns?: 2 | 3 | 4;

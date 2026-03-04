@@ -18,12 +18,16 @@ import '../../../styles/templates/solution-detail.css';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
+import { Button } from '../blocks/design/Buttons';
 import { FeatureList } from '../patterns/FeatureList';
 import { CheckList } from '../patterns/CheckList';
+import { TestimonialGrid } from '../patterns/TestimonialGrid';
+import { SocialProof } from '../patterns/SocialProof';
 import { FAQSection } from '../patterns/FAQSection';
 import { FunkyCTA } from '../patterns/FunkyCTA';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
-import { Check, ArrowRight, LucideIcon, Sparkles } from 'lucide-react';
+import { Check, ArrowRight, Sparkle } from '@phosphor-icons/react';
+import type { UniversalIcon } from '../../utils/icon-map';
 import { Link } from 'react-router';
 import { slugToPath } from '../../utils/route-map';
 import { testimonials } from '../../data/testimonials';
@@ -40,7 +44,7 @@ interface SolutionDetailProps {
     features: Array<{
       title: string;
       description: string;
-      icon: LucideIcon;
+      icon: UniversalIcon;
     }>;
     benefits: string[];
     useCases: Array<{
@@ -93,7 +97,7 @@ export function SolutionDetailTemplate({ solution }: SolutionDetailProps) {
             <div className="solution-detail__hero-inner">
               {/* Neon badge */}
               <div className="solution-detail__hero-badge">
-                <Sparkles size={14} className="solution-detail__badge-pulse" />
+                <Sparkle size={14} className="solution-detail__badge-pulse" />
                 <span>{solution.category}</span>
               </div>
 

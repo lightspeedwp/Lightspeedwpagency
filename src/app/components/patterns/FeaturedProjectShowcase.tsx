@@ -1,46 +1,33 @@
 /**
  * Featured Project Showcase Pattern
  * 
- * WordPress pattern: lsx-design/content/featured-project-showcase
+ * Large hero-style showcase for a single featured project.
+ * Maps to WordPress pattern: lsx-design/hero/featured-project
  * 
- * Displays a featured project/case study with stats, testimonial, and CTA.
- * Two-column layout: Content (left) + Image with testimonial overlay (right).
+ * **Design Token Compliance:**
+ * - Uses /src/styles/patterns/featured-project-showcase.css
+ * - Typography: ONLY CSS variables (var(--text-*))
+ * - Fonts: Lexend (headings), Manrope (body)
+ * - Colors: ONLY CSS variables (var(--*))
+ * - Spacing: ONLY rem values and CSS variables
+ * - Border Radius: ONLY CSS variables (var(--radius*))
  * 
- * All styling in /src/styles/featured-project-showcase.css (user-editable)
+ * **WordPress Mapping:**
+ * - Pattern Slug: lsx-design/hero/featured-project
+ * - Max Width: 1400px (container)
+ * - Full-bleed background
  * 
- * **Usage:**
- * ```tsx
- * <FeaturedProjectShowcase
- *   badge="FEATURED PROJECT"
- *   badgeIcon={Sparkles}
- *   title="Our work speaks for itself"
- *   description="See our recent case study and discover how we helped transform their online presence."
- *   stats={[
- *     { value: '500K+', label: 'Websites Hosted' },
- *     { value: '15+', label: 'Years Experience' }
- *   ]}
- *   ctaLabel="View Full Project"
- *   ctaPage="portfolio"
- *   image={{
- *     src: 'https://...',
- *     alt: 'Featured project mockup'
- *   }}
- *   testimonial={{
- *     initials: 'JL',
- *     name: 'James Laughton',
- *     role: 'Marketing Operations Specialist',
- *     quote: 'Professional, skilled and supportive...'
- *   }}
- * />
- * ```
+ * @see {@link /guidelines/patterns/FeaturedProjectShowcase.md}
  */
 
-import type { UniversalIcon } from '../../utils/icon-map';
-import { Container } from '../common/Container';
+import React from 'react';
+import { Link } from 'react-router';
+import { getPageUrl } from '../../data/pages';
+import { ImageWithFallback } from '../figma/ImageWithFallback';
 import { Section } from '../common/Section';
+import { Container } from '../common/Container';
 import { Button } from '../blocks/design/Buttons';
-import { ExternalLink } from 'lucide-react';
-
+import { ExternalLink } from '@phosphor-icons/react';
 
 export interface FeaturedProjectStat {
   /** Stat value (e.g., "500K+", "99.9%") */

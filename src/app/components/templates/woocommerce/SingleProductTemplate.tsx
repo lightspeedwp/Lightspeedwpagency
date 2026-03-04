@@ -27,15 +27,19 @@ import { ScrollReveal } from '@/app/hooks/useScrollReveal';
 import { allProducts } from '@/app/data/woocommerce';
 import { 
   ShoppingCart, 
-  Check, 
-  RefreshCw, 
-  Layers, 
-  Box, 
+  Heart, 
+  ShareNetwork as Share2, 
+  Tag, 
+  Info, 
+  Truck, 
+  ArrowsClockwise as RefreshCw, 
+  Stack as Layers, 
+  Package as Box, 
   Star, 
   ShieldCheck, 
-  Zap, 
+  Lightning as Zap, 
   CreditCard 
-} from 'lucide-react';
+} from '@phosphor-icons/react';
 
 export function SingleProductTemplate({ slug = 'lsx-theme-pro' }: { slug?: string }) {
   const product = allProducts.find(p => p.slug === slug) || allProducts[0];

@@ -102,8 +102,8 @@ export const LUCIDE_TO_PHOSPHOR: Record<string, string> = {
   BookOpen: 'BookOpen',
   Hash: 'Hash',
   Newspaper: 'Newspaper',
-  FileCheck: 'FileCheck',
-  FileSearch: 'MagnifyingGlass',
+  FileCheck: 'FileText', // FileCheck doesn't exist in Phosphor, use FileText
+  FileSearch: 'FileMagnifyingGlass',
   FileCode: 'FileCode',
   Type: 'TextT',
   Bookmark: 'BookmarkSimple',
@@ -125,7 +125,7 @@ export const LUCIDE_TO_PHOSPHOR: Record<string, string> = {
   // Decorative & Brand
   Zap: 'Lightning',
   Star: 'Star',
-  Award: 'Trophy',
+  Award: 'Trophy', // Award doesn't exist in Phosphor, use Trophy
   Sparkles: 'Sparkle',
   Rocket: 'Rocket',
   Lightbulb: 'Lightbulb',
@@ -171,6 +171,7 @@ export const LUCIDE_TO_PHOSPHOR: Record<string, string> = {
   PieChart: 'ChartPie',
   DollarSign: 'CurrencyDollar',
   Database: 'Database',
+  Server: 'HardDrives', // Server doesn't exist in Phosphor, use HardDrives
 
   // Business & Professional
   Shield: 'Shield',

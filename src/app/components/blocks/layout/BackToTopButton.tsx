@@ -5,10 +5,11 @@
  * Helps users return to top of long pages (accessibility + UX).
  * 
  * In WordPress: Implemented as small theme script (assets/js/back-to-top.js)
+ * @see /src/app/utils/icon-map.ts
  */
 
 import { useState, useEffect } from 'react';
-import { ChevronUp } from 'lucide-react'; // Better than text arrow
+import { CaretUp } from '@phosphor-icons/react';
 
 export function BackToTopButton() {
   const [isVisible, setIsVisible] = useState(false);
@@ -44,7 +45,7 @@ export function BackToTopButton() {
       aria-label="Back to top"
       className={buttonClasses}
     >
-      <ChevronUp size={24} />
+      <CaretUp size={24} weight="bold" />
     </button>
   );
 }

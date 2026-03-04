@@ -28,14 +28,13 @@ import { Heading } from '../blocks/text/Heading';
 import { Paragraph } from '../blocks/text/Paragraph';
 import { useHeroParallax } from '../../hooks/useHeroParallax';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
-import { FileCheck, Scale, AlertTriangle, CheckCircle2, XCircle, Users } from 'lucide-react';
-
+import { FileText, Scales as Scale, Warning as AlertTriangle, CheckCircle, XCircle, Users } from '@phosphor-icons/react';
 
 // Import Mock Data
 import { termsOfServiceContent } from '../../data/legal';
 
 // Icon mapping
-const icons = [FileCheck, CheckCircle2, Users, CheckCircle2, Scale, XCircle, AlertTriangle];
+const icons = [FileText, CheckCircle, Users, CheckCircle, Scale, XCircle, AlertTriangle];
 
 export function TermsOfServiceTemplate() {
   const parallaxRef = useHeroParallax(0.5);

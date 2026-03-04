@@ -1,16 +1,9 @@
 /**
- * Service Offerings Grid Pattern
- * 
- * WordPress pattern: lsx-design/content/service-offerings-grid
- * 
- * Displays a grid of service offerings with icons, hover effects, and CTA buttons.
- * Commonly used on service pages to showcase core offerings.
- * 
- * @see {@link /guidelines/patterns/ServiceOfferingsGrid.md}
+ * ServiceOfferingsGrid Pattern — LSX Design
  */
 
 import type { UniversalIcon } from '../../utils/icon-map';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight } from '@phosphor-icons/react';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { Button } from '../blocks/design/Buttons';

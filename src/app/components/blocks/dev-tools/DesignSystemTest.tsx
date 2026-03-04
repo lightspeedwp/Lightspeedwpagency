@@ -12,7 +12,7 @@
 import React from 'react';
 import { Container } from '../../common/Container';
 import { Section } from '../../common/Section';
-import { Check } from 'lucide-react';
+import { Check } from '@phosphor-icons/react';
 
 export function DesignSystemTest() {
   return (
@@ -31,7 +31,7 @@ export function DesignSystemTest() {
 
             {/* Status Badge */}
             <div className="wp-block-devtools-design-system-test__badge">
-              <Check size={16} />
+              <Check size={16} weight="bold" />
               100% CSS Variables Compliant
             </div>
           </div>
@@ -238,7 +238,7 @@ export function DesignSystemTest() {
               ].map((item, index) => (
                 <div key={index} className="wp-block-devtools-design-system-test__check-item">
                   <div className="wp-block-devtools-design-system-test__check-icon">
-                    <Check size={16} />
+                    <Check size={16} weight="bold" />
                   </div>
                   <p className="wp-block-devtools-design-system-test__check-text">
                     {item}

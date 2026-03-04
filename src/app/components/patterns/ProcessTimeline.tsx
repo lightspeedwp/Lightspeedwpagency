@@ -1,14 +1,13 @@
 /**
  * Process Timeline Pattern
  * 
- * WordPress Pattern: lsx-design/content/process-timeline
+ * Vertical timeline showing sequential process steps.
+ * Maps to WordPress pattern: lsx-design/content/process-timeline
  * 
- * A vertical timeline showing step-by-step process flow.
- * 
- * @see /guidelines/patterns/ProcessTimeline.md
+ * Uses ProcessTimeline.css for styling.
  */
 
-import { Check } from 'lucide-react';
+import { Check } from '@phosphor-icons/react';
 import type { UniversalIcon } from '../../utils/icon-map';
 import React from 'react';
 
