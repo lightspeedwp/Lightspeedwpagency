@@ -9,20 +9,20 @@
  */
 
 import { 
-  Zap, 
+  Lightning, 
   Palette, 
   Users,
   Wrench,
   Eye,
-  LayoutGrid,
+  SquaresFour,
   ShoppingCart,
   Code,
-  Layers,
-  Search,
-  MessageCircle,
+  Stack,
+  MagnifyingGlass,
+  ChatCircle,
   Headphones,
   Rocket
-} from 'lucide-react';
+} from '@phosphor-icons/react';
 
 /**
  * Hero Section
@@ -54,7 +54,7 @@ export const frontPageWhyChoose = {
   description: 'We bring 22+ years of WordPress expertise, a certified WooCommerce partnership, and a passion for building sites that perform.',
   features: [
     {
-      icon: Zap,
+      icon: Lightning,
       title: 'Fastest Development',
       description: 'Streamlined processes and modern tooling let us deliver high-quality WordPress sites faster than industry averages.'
     },
@@ -79,7 +79,7 @@ export const frontPageWhyChoose = {
       description: 'Every site meets WCAG 2.1 AA standards by default — because the web should be usable by everyone.'
     },
     {
-      icon: LayoutGrid,
+      icon: SquaresFour,
       title: 'Design System Experts',
       description: 'From tokens to templates, we build scalable design systems that keep your brand consistent across every page.'
     }
@@ -94,7 +94,7 @@ export const frontPageServices = {
   description: 'Comprehensive WordPress and WooCommerce solutions tailored to your business goals.',
   items: [
     {
-      icon: Layers,
+      icon: Stack,
       title: 'WordPress Block Themes',
       description: 'Custom block themes built on the WordPress Full Site Editing framework with modern design patterns and reusable components.',
       image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80',
@@ -186,13 +186,13 @@ export const frontPageProcess = {
   steps: [
     {
       step: 1,
-      icon: Search,
+      icon: MagnifyingGlass,
       title: 'Discover',
       description: 'We learn about your business, goals, and audience to define the right approach.'
     },
     {
       step: 2,
-      icon: LayoutGrid,
+      icon: SquaresFour,
       title: 'Ecosystem',
       description: 'We map your WordPress ecosystem — themes, plugins, hosting, and integrations.'
     },

@@ -16,10 +16,10 @@ import {
   Database,
   Globe,
   Cpu,
-  Figma,
-  Github,
-  Zap,
-} from 'lucide-react';
+  FigmaLogo,
+  GithubLogo,
+  Lightning,
+} from '@phosphor-icons/react';
 import type { CaseStudySection } from '../components/patterns/ProjectCaseStudy';
 import type { Technology } from '../components/patterns/TechnologyStack';
 
@@ -185,7 +185,7 @@ export const armdTechnologyStack: Technology[] = [
   {
     id: 'github-actions',
     name: 'GitHub Actions',
-    icon: Github,
+    icon: GithubLogo,
     category: 'devops',
     color: '#2088ff',
   },
@@ -210,7 +210,7 @@ export const armdTechnologyStack: Technology[] = [
   {
     id: 'figma',
     name: 'Figma',
-    icon: Figma,
+    icon: FigmaLogo,
     category: 'design',
     color: '#f24e1e',
   },

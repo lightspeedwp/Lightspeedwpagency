@@ -1,19 +1,20 @@
 /**
- * Live Preview
+ * Live Preview Template
  * 
- * Live component preview tool with editable props.
+ * Interactive component preview environment with live code editing
+ * and real-time rendering.
  * 
  * **Design System:**
  * - 100% CSS variables from theme.css
  * - WCAG 2.1 AA compliant
  */
 
-import '../../../styles/templates/component-showcase.css';
+import '../../../styles/templates/component-showcase-optimized.css';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
-import { Eye } from 'lucide-react';
+import { Eye } from '@phosphor-icons/react';
 
 export function LivePreview() {
   return (
@@ -76,7 +77,8 @@ export function LivePreview() {
                   lineHeight: 1.5
                 }}
               >
-                Live component preview tool with editable props
+                Interactive component preview environment with live code editing
+                and real-time rendering.
               </p>
             </div>
           </Container>

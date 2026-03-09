@@ -5,8 +5,8 @@
  * Route: /solutions/ai-integrations/chatbots
  */
 
-import '../../../styles/templates/page-solution-ai.css';
-import { Bot } from 'lucide-react';
+import '../../../styles/templates/page-solution-ai-optimized.css';
+import { Robot } from '@phosphor-icons/react';
 import { AISubPageTemplate } from './AISubPageTemplate';
 import {
   aiChatbotsHero,
@@ -23,7 +23,7 @@ export function AIChatbotsTemplate() {
     <AISubPageTemplate
       variant="chatbots"
       hero={aiChatbotsHero}
-      heroIcon={Bot}
+      heroIcon={Robot}
       stats={aiChatbotsStats}
       statsTitle="Chatbot Performance Metrics"
       statsDescription="How AI chatbots transform visitor engagement"

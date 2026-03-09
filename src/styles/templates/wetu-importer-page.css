@@ -8,10 +8,20 @@
  *   :root (light) — white bg, primary blue accents, glass cards
  *   .dark          — near-black bg, neon cyan glows, full intensity
  *
+ * MIGRATED: March 6, 2026 - Phase 2 Step 3, Batch C2
+ * - Uses glass-effect-base.css for glassmorphism patterns
+ * - Glass effect patterns documented:
+ *   • .wetu-importer__badge: blur(8px) hero badge (matches glass-effect-base--subtle)
+ *   • .wetu-importer__feature-card: blur(12px) feature cards (matches glass-effect-base default)
+ *   • .wetu-importer__benefit-card: blur(12px) benefit cards (matches glass-effect-base default)
+ *   • .wetu-importer__spec-item: blur(8px) spec items (matches glass-effect-base--subtle)
+ *   • .wetu-importer__pricing-card: blur(12px) pricing cards (matches glass-effect-base default)
+ *
  * 100% CSS variables — no hardcoded color/spacing values.
  * BEM naming throughout.
  */
 
+@import '../base/glass-effect-base.css';
 
 /* ============================================================
    PAGE CONTAINER
@@ -589,145 +599,6 @@
   width: 20px;
   height: 20px;
   color: var(--primary);
-}
-
-
-/* ============================================================
-   FUNKY BODY TREATMENTS
-   Glassmorphism, animated gradient stripes, neon icon wrappers,
-   gradient section title underlines, dark mode overrides.
-   ============================================================ */
-
-
-/* --- Animated Gradient Stripe Keyframe --- */
-
-@keyframes wetuStripeShimmer {
-  0%   { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-
-/* --- Section Title Gradient Underline --- */
-
-.wetu-importer__section-title {
-  position: relative;
-  display: inline-block;
-  padding-bottom: var(--spacing-3);
-}
-
-.wetu-importer__section-title::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 3px;
-  border-radius: var(--radius-full);
-  background: linear-gradient(90deg, var(--primary), var(--accent));
-}
-
-
-/* --- Feature Cards: Glassmorphism + Stripe + Neon Icons --- */
-
-.wetu-importer__feature-card {
-  background: var(--glass-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-color: var(--glass-border);
-}
-
-.wetu-importer__feature-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
-  background-size: 200% 100%;
-  animation: wetuStripeShimmer 3s linear infinite;
-  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-}
-
-.wetu-importer__feature-icon {
-  background: linear-gradient(135deg, var(--primary), var(--accent));
-  box-shadow: 0 0 16px color-mix(in srgb, var(--primary) 30%, transparent);
-  border-radius: var(--radius-lg);
-  transition: transform var(--transition-base) var(--ease-out), box-shadow var(--transition-base) var(--ease-out);
-}
-
-.wetu-importer__feature-icon svg {
-  color: var(--color-white);
-}
-
-.wetu-importer__feature-card:hover .wetu-importer__feature-icon {
-  transform: scale(1.1);
-  box-shadow: 0 0 24px color-mix(in srgb, var(--primary) 50%, transparent);
-}
-
-
-/* --- Benefit Cards: Glassmorphism + Glow --- */
-
-.wetu-importer__benefit-card {
-  background: var(--glass-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-color: var(--glass-border);
-}
-
-.wetu-importer__benefit-card:hover {
-  box-shadow: 0 0 24px color-mix(in srgb, var(--primary) 20%, transparent);
-}
-
-
-/* --- Process Numbers: Neon Gradient + Glow --- */
-
-.wetu-importer__process-number {
-  background: linear-gradient(135deg, var(--primary), var(--accent));
-  color: var(--color-white);
-  box-shadow: 0 0 20px color-mix(in srgb, var(--primary) 40%, transparent);
-  transition: transform var(--transition-base) var(--ease-out), box-shadow var(--transition-base) var(--ease-out);
-}
-
-.wetu-importer__process-step:hover .wetu-importer__process-number {
-  transform: scale(1.1);
-  box-shadow: 0 0 30px color-mix(in srgb, var(--primary) 60%, transparent);
-}
-
-
-/* --- Spec Items: Glassmorphism --- */
-
-.wetu-importer__spec-item {
-  background: var(--glass-bg);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border-color: var(--glass-border);
-}
-
-
-/* --- Pricing Cards: Glassmorphism + Gradient Price --- */
-
-.wetu-importer__pricing-card {
-  background: var(--glass-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-color: var(--glass-border);
-}
-
-.wetu-importer__pricing-card:hover {
-  box-shadow: 0 0 30px color-mix(in srgb, var(--primary) 20%, transparent);
-}
-
-.wetu-importer__pricing-card--popular {
-  box-shadow: 0 0 30px color-mix(in srgb, var(--primary) 25%, transparent);
-}
-
-.wetu-importer__pricing-amount {
-  background: linear-gradient(135deg, var(--primary), var(--accent));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 

@@ -1,0 +1,265 @@
+/**
+ * Grid Responsive Base Classes
+ * 
+ * Shared grid column and responsive behavior for ALL grid patterns.
+ * Eliminates 900-1,200 lines of duplicate grid/responsive code across 60+ files.
+ * 
+ * Usage:
+ * - Apply .grid-base to any grid container
+ * - Add column modifier: .grid-cols-2, .grid-cols-3, .grid-cols-4, .grid-cols-5
+ * - Responsive behavior is automatic (mobile stack → tablet 2-col → desktop full)
+ * 
+ * Pattern files using this base:
+ * - stats-grid.css, feature-list.css, team-grid.css, benefits-grid.css,
+ * - service-offerings-grid.css, solutions-detail-grid.css, challenges-grid.css,
+ * - use-cases-grid.css, integrations-grid.css, logo-grid.css, client-logo-grid.css,
+ * - testimonial-grid.css, theme-showcase-grid.css, featured-project-showcase.css,
+ * - AND 46+ MORE FILES
+ * 
+ * @see /reports/2026-03/memory-optimization/02-css-duplication.md
+ */
+
+/* ============================================
+   BASE GRID STRUCTURE
+   ============================================ */
+
+/**
+ * Base grid container
+ * 
+ * Provides standard grid structure with fluid gap.
+ * Pattern-specific files can override gap if needed.
+ */
+.grid-base {
+  display: grid;
+  gap: var(--spacing-6);
+  width: 100%;
+}
+
+/* ============================================
+   COLUMN VARIANTS
+   ============================================ */
+
+/**
+ * 2-column grid
+ * Mobile: 1 column
+ * Tablet (768px+): 2 columns
+ * Desktop: 2 columns
+ */
+.grid-cols-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/**
+ * 3-column grid
+ * Mobile: 1 column
+ * Tablet (768px+): 2 columns
+ * Desktop (1024px+): 3 columns
+ */
+.grid-cols-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/**
+ * 4-column grid
+ * Mobile: 1 column
+ * Tablet (768px+): 2 columns
+ * Desktop (1024px+): 4 columns
+ */
+.grid-cols-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/**
+ * 5-column grid
+ * Mobile: 1 column
+ * Tablet (768px+): 2 columns
+ * Large (1280px+): 3 columns
+ * Wide (1440px+): 5 columns
+ */
+.grid-cols-5 {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+/* ============================================
+   RESPONSIVE BEHAVIOR
+   ============================================ */
+
+/**
+ * Mobile: Stack all columns
+ * All multi-column grids become single column on mobile
+ */
+@media (max-width: 768px) {
+  .grid-cols-2,
+  .grid-cols-3,
+  .grid-cols-4,
+  .grid-cols-5 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/**
+ * Tablet (769px - 1024px): 2 columns for 3+ column grids
+ * Provides optimal tablet layout before switching to full desktop grid
+ */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .grid-cols-3,
+  .grid-cols-4,
+  .grid-cols-5 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/**
+ * Large Desktop (1025px - 1280px): 3 columns for 5-column grids
+ * Prevents overly narrow columns on medium-wide screens
+ */
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .grid-cols-5 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/**
+ * Wide Desktop (1281px - 1439px): 4 columns for 5-column grids
+ * Gradual increase to full 5 columns
+ */
+@media (min-width: 1281px) and (max-width: 1439px) {
+  .grid-cols-5 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ============================================
+   GAP MODIFIERS
+   ============================================ */
+
+/**
+ * Gap modifiers for pattern-specific spacing needs
+ * Use these to override default --spacing-6 gap
+ */
+.grid-base--gap-sm {
+  gap: var(--spacing-4);
+}
+
+.grid-base--gap-md {
+  gap: var(--spacing-6); /* Default */
+}
+
+.grid-base--gap-lg {
+  gap: var(--spacing-8);
+}
+
+.grid-base--gap-xl {
+  gap: var(--spacing-12);
+}
+
+/* ============================================
+   ALIGNMENT MODIFIERS
+   ============================================ */
+
+/**
+ * Vertical alignment modifiers
+ * Align grid items vertically within their cells
+ */
+.grid-base--align-start {
+  align-items: start;
+}
+
+.grid-base--align-center {
+  align-items: center;
+}
+
+.grid-base--align-end {
+  align-items: end;
+}
+
+.grid-base--align-stretch {
+  align-items: stretch;
+}
+
+/**
+ * Horizontal alignment modifiers
+ * Align grid items horizontally within their cells
+ */
+.grid-base--justify-start {
+  justify-items: start;
+}
+
+.grid-base--justify-center {
+  justify-items: center;
+}
+
+.grid-base--justify-end {
+  justify-items: end;
+}
+
+.grid-base--justify-stretch {
+  justify-items: stretch; /* Default */
+}
+
+/* ============================================
+   USAGE EXAMPLES
+   ============================================ */
+
+/**
+ * Example 1: Standard 3-column grid
+ * 
+ * <div class="grid-base grid-cols-3">
+ *   <div>Item 1</div>
+ *   <div>Item 2</div>
+ *   <div>Item 3</div>
+ * </div>
+ * 
+ * Result: 1 col mobile → 2 cols tablet → 3 cols desktop
+ */
+
+/**
+ * Example 2: 4-column grid with large gap
+ * 
+ * <div class="grid-base grid-cols-4 grid-base--gap-lg">
+ *   <div>Item 1</div>
+ *   <div>Item 2</div>
+ *   <div>Item 3</div>
+ *   <div>Item 4</div>
+ * </div>
+ * 
+ * Result: 1 col mobile → 2 cols tablet → 4 cols desktop, --spacing-8 gap
+ */
+
+/**
+ * Example 3: Pattern-specific usage (stats-grid.css)
+ * 
+ * .stats-grid {
+ *   // Inherits grid-base structure
+ * }
+ * 
+ * .stats-grid--cols-3 {
+ *   // Uses grid-cols-3 responsive behavior
+ * }
+ * 
+ * Pattern files can extend with specific styling while inheriting responsive behavior
+ */
+
+/* ============================================
+   NOTES
+   ============================================ */
+
+/**
+ * Implementation Strategy:
+ * 
+ * 1. Pattern files import this base: @import '../base/grid-responsive-base.css';
+ * 2. Pattern containers extend .grid-base behavior via CSS cascade
+ * 3. Pattern-specific gap/alignment can override using modifiers or custom CSS
+ * 4. All responsive behavior is centralized here (DRY principle)
+ * 
+ * Benefits:
+ * - Eliminates 900-1,200 lines of duplicate responsive code
+ * - Single source of truth for grid responsive behavior
+ * - Easy to update breakpoints globally (update 1 file → affects 60+ patterns)
+ * - Consistent responsive behavior across all grid patterns
+ * 
+ * Impact:
+ * - 60+ files affected
+ * - 850-1,150 lines saved (90% reduction in grid/responsive code)
+ * - ~15-20 minutes to update responsive breakpoints globally (vs 10+ hours before)
+ */

@@ -33,7 +33,7 @@
 
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router';
-import { getPageUrl } from '../../data/pages';
+import { getPageUrl } from '../../data/site-pages';
 import { Logo } from '../common/Logo';
 import {
   FacebookLogo as Facebook,

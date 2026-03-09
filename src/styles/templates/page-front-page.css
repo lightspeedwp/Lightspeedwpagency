@@ -13,6 +13,7 @@
  * @see /docs/css-base-extraction-guide.md
  */
 @import '../patterns/hero/hero-base.css';
+@import '../patterns/hero/hero-variants.css';
 @import '../base/grid-utilities.css';
 
 /* ============================================
@@ -52,6 +53,24 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+/* Front page hero action buttons */
+.front-page__hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-4);
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 2; /* Above overlays and orbs */
+}
+
+@media (max-width: 639px) {
+  .front-page__hero-actions {
+    flex-direction: column;
+    width: 100%;
+  }
 }
 
 /* Sections */

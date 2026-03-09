@@ -9,18 +9,25 @@
  * Pattern order:
  * Hero → Challenges → Features → Process → Services → Results → Pricing → FAQs → CTA
  *
+ * Pattern Components:
+ * - ✅ FeatureList — Tour features grid (glow variant, 3 columns)
+ * - ✅ StatsGrid — Platform performance stats (cards variant, 4 columns)
+ * - ✅ FAQSection — Tour operator FAQ section
+ *
  * @see /src/styles/templates/page-solution-tour-design.css
  * @see /src/app/data/tour-operator-design-page.ts
+ * @migrated March 4, 2026 — Migrated inline feature grid to FeatureList and inline stats to StatsGrid (~30 lines saved)
  */
 
 import '../../../styles/templates/page-solution-tour-design.css';
 import { Container } from '../common/Container';
 import { FAQSection } from '../patterns/FAQSection';
+import { FeatureList } from '../patterns/FeatureList';
+import { StatsGrid } from '../patterns/StatsGrid';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { Link } from 'react-router';
 import { slugToPath } from '../../utils/route-map';
-import { ArrowRight, Check, AlertTriangle, Compass } from 'lucide-react';
-
+import { ArrowRight, Check, Warning, Compass } from '@phosphor-icons/react';
 
 import {
   tourDesignHero,
@@ -95,7 +102,7 @@ export function TourOperatorDesignTemplate() {
             {tourDesignChallenges.items.map((item, i) => (
               <ScrollReveal key={i} animation="fade-up" delay={i * 60}>
                 <div className="tour-design-page__challenge-item">
-                  <AlertTriangle size={18} className="tour-design-page__challenge-icon" />
+                  <Warning size={18} className="tour-design-page__challenge-icon" />
                   <p className="tour-design-page__challenge-text">{item}</p>
                 </div>
               </ScrollReveal>
@@ -113,19 +120,7 @@ export function TourOperatorDesignTemplate() {
               <p className="tour-design-page__section-desc">{tourDesignFeatures.description}</p>
             </div>
           </ScrollReveal>
-          <div className="tour-design-page__feature-grid">
-            {tourDesignFeatures.items.map((feat, i) => (
-              <ScrollReveal key={i} animation="fade-up" delay={i * 60}>
-                <div className="tour-design-page__feature-card">
-                  <div className="tour-design-page__feature-icon">
-                    <feat.icon size={20} />
-                  </div>
-                  <h3 className="tour-design-page__feature-title">{feat.title}</h3>
-                  <p className="tour-design-page__feature-desc">{feat.description}</p>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
+          <FeatureList items={tourDesignFeatures.items} columns={3} variant="glow" />
         </Container>
       </section>
 
@@ -203,17 +198,11 @@ export function TourOperatorDesignTemplate() {
               <p className="tour-design-page__section-desc">How tour operators benefit from our specialised platform.</p>
             </div>
           </ScrollReveal>
-          <div className="tour-design-page__stats-grid">
-            {tourDesignResults.map((stat, i) => (
-              <ScrollReveal key={i} animation="fade-up" delay={i * 80}>
-                <div className="tour-design-page__stat-card">
-                  <div className="tour-design-page__stat-value">{stat.stat}</div>
-                  <div className="tour-design-page__stat-label">{stat.label}</div>
-                  <p className="tour-design-page__stat-desc">{stat.description}</p>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
+          <StatsGrid
+            stats={tourDesignResults.map(r => ({ value: r.stat, label: r.label, description: r.description }))}
+            columns={4}
+            variant="cards"
+          />
         </Container>
       </section>
 

@@ -34,8 +34,8 @@ import {
 } from '../../data/journey-stage-pages';
 import {
   CheckCircle, ArrowRight, ArrowLeft, Clock, FileText,
-  ChevronRight,
-} from 'lucide-react';
+  CaretRight,
+} from '@phosphor-icons/react';
 
 
 /* ─────────────────────────────────────────────
@@ -317,7 +317,7 @@ export function JourneyStageTemplate({ slug }: JourneyStageTemplateProps) {
                     <p className="journey-stage__service-desc">{service.description}</p>
 
                     <div className="journey-stage__service-arrow">
-                      Learn more <ChevronRight size={16} />
+                      Learn more <CaretRight size={16} />
                     </div>
                   </Link>
                 </ScrollReveal>

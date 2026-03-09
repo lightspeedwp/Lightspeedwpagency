@@ -13,6 +13,15 @@
 @import './micro-interactions.css';
 @import './advanced-animations.css';
 
+/* 1.5. Base Classes (Pattern Extraction - Phase 2, March 6, 2026)
+ * Shared base classes extracted from 280+ files to eliminate ~3,500-5,600 lines of duplication.
+ * See /reports/2026-03/memory-optimization/02-css-duplication.md for analysis.
+ */
+@import './base/grid-responsive-base.css';      /* Grid/responsive patterns (60+ files, 850-1,150 lines saved) */
+@import './base/icon-wrapper-base.css';         /* Icon wrapper patterns (50+ files, 540-840 lines saved) */
+@import './base/glass-effect-base.css';         /* Glassmorphism patterns (35+ files, 600-950 lines saved) */
+@import './base/card-base.css';                 /* Card structure patterns (40+ files, 520-920 lines saved) */
+
 /* 2. WordPress Blocks */
 @import './wordpress-blocks.css';
 @import './wordpress-blocks-extended.css';
@@ -389,7 +398,6 @@
  * @import './templates/deployment-readiness.css';      → DeploymentReadinessTemplate.tsx
  * @import './templates/design-playground.css';         → DesignPlaygroundTemplate.tsx
  * @import './templates/docs-generator.css';            → DocsGeneratorTemplate.tsx
- * @import './templates/snippet-generator.css';         → SnippetGeneratorTemplate.tsx
  */
 
 /* Dev Tools Blocks — route-level only

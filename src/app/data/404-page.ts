@@ -10,7 +10,7 @@
  */
 
 import type { UniversalIcon } from '../utils/icon-map';
-import { Home, Briefcase, FileText, Users, Mail } from 'lucide-react';
+import { House, Briefcase, FileText, Users, Envelope } from '@phosphor-icons/react';
 
 /**
  * 404 Page Hero Content
@@ -37,7 +37,7 @@ export interface HelpfulLink {
  */
 export const helpfulLinks: HelpfulLink[] = [
   {
-    icon: Home,
+    icon: House,
     title: 'Go to Homepage',
     description: 'Start from the beginning and explore our services',
     page: 'home'
@@ -61,7 +61,7 @@ export const helpfulLinks: HelpfulLink[] = [
     page: 'about'
   },
   {
-    icon: Mail,
+    icon: Envelope,
     title: 'Contact Us',
     description: 'Get in touch with our team for help',
     page: 'contact'

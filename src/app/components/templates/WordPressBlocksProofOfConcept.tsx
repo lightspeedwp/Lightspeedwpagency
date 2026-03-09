@@ -19,7 +19,7 @@
 import '../../../styles/templates/design-blocks-showcase.css';
 import { Link } from 'react-router';
 import { slugToPath } from '../../utils/route-map';
-import { Home, ArrowRight, Check, Star, Award, Shield } from 'lucide-react';
+import { House, ArrowRight, Check, Star, Trophy, Shield } from '@phosphor-icons/react';
 
 export function WordPressBlocksProofOfConcept() {
   return (
@@ -47,7 +47,7 @@ export function WordPressBlocksProofOfConcept() {
                   className="wp-block-button__link"
                   aria-label="Get Started"
                 >
-                  <Home size={20} />
+                  <House size={20} />
                   Get Started
                 </Link>
               </div>
@@ -114,7 +114,7 @@ export function WordPressBlocksProofOfConcept() {
                 <div className="wp-block-card">
                   <div className="wp-block-group has-small-gap">
                     <div className="wp-block-row">
-                      <Award size={32} style={{ color: 'var(--primary)' }} />
+                      <Trophy size={32} style={{ color: 'var(--primary)' }} />
                       <h3 className="wp-block-heading">
                         WordPress Native
                       </h3>

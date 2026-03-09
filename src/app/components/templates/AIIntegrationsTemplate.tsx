@@ -9,13 +9,13 @@
  * Hero -> Stats -> Features -> Sub-Page Cards -> FAQs -> CTA
  */
 
-import '../../../styles/templates/page-solution-ai.css';
+import '../../../styles/templates/page-solution-ai-optimized.css';
 import { Container } from '../common/Container';
 import { StatsGrid } from '../patterns/StatsGrid';
 import { FeatureGrid } from '../patterns/FeatureGrid';
 import { FAQSection } from '../patterns/FAQSection';
 import { FunkyCTA } from '../patterns/FunkyCTA';
-import { Brain, Sparkles, ArrowRight } from 'lucide-react';
+import { Brain, Sparkle, ArrowRight } from '@phosphor-icons/react';
 import { Link } from 'react-router';
 import { slugToPath } from '../../utils/route-map';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
@@ -84,13 +84,13 @@ export function AIIntegrationsTemplate() {
                   <div className="ai-page__brain-ring ai-page__brain-ring--3" />
                   <Brain size={72} className="ai-page__brain-icon" />
                   <div className="ai-page__orbit-node ai-page__orbit-node--1">
-                    <Sparkles size={16} />
+                    <Sparkle size={16} />
                   </div>
                   <div className="ai-page__orbit-node ai-page__orbit-node--2">
                     <ArrowRight size={16} />
                   </div>
                   <div className="ai-page__orbit-node ai-page__orbit-node--3">
-                    <Sparkles size={16} />
+                    <Sparkle size={16} />
                   </div>
                   <div className="ai-page__orbit-node ai-page__orbit-node--4">
                     <ArrowRight size={16} />

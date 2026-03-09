@@ -1,10 +1,16 @@
 /**
  * Solution Detail Page Styles
  *
- * WordPress template: templates/page-solution-detail.html
- * BEM naming: .solution-detail-*
- * 100% CSS variables — no hardcoded values.
- * Full light/dark mode support.
+ * BEM naming: .solution-detail__*
+ * 100% CSS variables, zero hardcoded values.
+ * 
+ * MIGRATED: March 6, 2026 - Phase 2 Step 3, Batch C1
+ * - Uses glass-effect-base.css for glassmorphism patterns
+ * - Glass effect patterns documented:
+ *   • .solution-detail__pricing-sidebar: blur(12px) pricing card (matches glass-effect-base default)
+ *   • .solution-detail__feature-card: blur(12px) feature cards (matches glass-effect-base default)
+ *   • .solution-detail__spec-card: blur(12px) spec cards (matches glass-effect-base default)
+ *   • .solution-detail__integration-item: blur(12px) integration cards (matches glass-effect-base default)
  */
 
 /* ============================================
@@ -17,6 +23,7 @@
  */
 @import '../base/grid-utilities.css';
 @import '../base/card-base.css';
+@import '../base/glass-effect-base.css';
 @import '../patterns/hero/hero-base.css';
 
 /* ============================================

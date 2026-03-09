@@ -11,7 +11,7 @@
  * **Optimization:** Part of Memory Optimization Task 1.2 — services.ts consolidation
  */
 
-import { Palette, Code, Search, FileText, Shield, Zap, Brain, MessageSquare, HardDrive } from 'lucide-react';
+import { Palette, Code, MagnifyingGlass, FileText, Shield, Lightning, Brain, ChatCentered, HardDrive } from '@phosphor-icons/react';
 import type { SimpleService } from './types';
 
 /**
@@ -20,7 +20,7 @@ import type { SimpleService } from './types';
 export const servicesSimplified: SimpleService[] = [
   {
     id: 'discovery',
-    icon: Search,
+    icon: MagnifyingGlass,
     title: 'Discovery & Strategy',
     description: 'By understanding your business, we\'re able to deliver online success.',
     page: 'discovery',
@@ -110,7 +110,7 @@ export const servicesSimplified: SimpleService[] = [
   },
   {
     id: 'performance',
-    icon: Zap,
+    icon: Lightning,
     title: 'Performance & Accessibility',
     description: 'Lightning-fast Core Web Vitals and WCAG 2.1 AA/AAA compliance in one service.',
     page: 'performance',
@@ -140,7 +140,7 @@ export const servicesSimplified: SimpleService[] = [
   },
   {
     id: 'training',
-    icon: MessageSquare,
+    icon: ChatCentered,
     title: 'Training & Enablement',
     description: 'Empowering your team with WordPress, WooCommerce, and design system training.',
     page: 'training',

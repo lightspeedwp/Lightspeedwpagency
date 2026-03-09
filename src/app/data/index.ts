@@ -24,7 +24,7 @@ export * from './careers-page';
 export * from './contact-page';
 export * from './faqs';
 export * from './pricing';
-export * from './testimonials';
+export * from './testimonials-consolidated';
 export * from './guarantees';
 export * from './front-page';
 export * from './process';
@@ -101,7 +101,6 @@ export * from './wordpress-redesign-page';
 
 /* Extended data */
 export * from './faqs-extended';
-export * from './testimonials-extended';
 export * from './solutions-detailed';
 
 /* UI data */

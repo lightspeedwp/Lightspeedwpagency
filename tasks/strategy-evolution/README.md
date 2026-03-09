@@ -14,9 +14,9 @@
 
 | # | Task List | Dependencies | Est. Hours | Status |
 |---|---|---|---|---|
-| 1 | [phase-1-critical.md](./phase-1-critical.md) | None — start immediately | 80-110h | PENDING |
-| 2 | [phase-2-ia-and-navigation.md](./phase-2-ia-and-navigation.md) | Phase 1 (nav) | 24-34h | PENDING |
-| 3 | [phase-3-design-system-compliance.md](./phase-3-design-system-compliance.md) | None | 4-8h | PENDING |
+| 1 | [phase-1-critical.md](./phase-1-critical.md) | None — start immediately | 80-110h | ✅ COMPLETE |
+| 2 | [phase-2-ia-and-navigation.md](./phase-2-ia-and-navigation.md) | Phase 1 (nav) | 24-34h | 40% (critical 100%) |
+| 3 | [phase-3-design-system-compliance.md](./phase-3-design-system-compliance.md) | None | 4-8h | 80% COMPLETE |
 | 4 | [phase-4-content-and-messaging.md](./phase-4-content-and-messaging.md) | Phase 2 | 40-56h | PENDING |
 | 5 | [phase-5-patterns-and-blocks.md](./phase-5-patterns-and-blocks.md) | Phase 3 | 34-48h | PENDING |
 | 6 | [phase-6-proof-and-conversion.md](./phase-6-proof-and-conversion.md) | Phase 4, 5 | 23-32h | PENDING |

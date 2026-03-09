@@ -22,7 +22,7 @@
 
 import React from 'react';
 import { Link } from 'react-router';
-import { getPageUrl } from '../../data/pages';
+import { getPageUrl } from '../../data/site-pages';
 import { ImageWithFallback } from '../figma/ImageWithFallback';
 import { Section } from '../common/Section';
 import { Container } from '../common/Container';

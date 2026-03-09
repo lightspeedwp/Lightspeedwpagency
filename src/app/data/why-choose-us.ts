@@ -14,13 +14,18 @@
  * - Freelancers
  * - Large agencies
  * - Offshore development
+ * 
+ * **Merged from why-choose-us-page.ts (March 5, 2026)**
+ * - Added hero, intro, stats, and CTA data
  */
+
+import { Trophy, CheckCircle, TrendUp } from '@phosphor-icons/react';
 
 export interface CompetitiveAdvantage {
   id: string;
   title: string;
   description: string;
-  icon?: string; // Lucide icon name
+  icon?: string; // Phosphor icon name
   proof?: string; // Social proof or stat
 }
 
@@ -407,4 +412,33 @@ export const roiFactors = {
     diy: 150,        // DIY time + tools
     professional: 150 // Maintenance plan
   }
+};
+
+/**
+ * Why Choose Us Page Content
+ * (Merged from why-choose-us-page.ts)
+ */
+
+export const whyChooseUsHero = {
+  title: "Why LightSpeed?",
+  subtitle: "We're not just another agency. We're your long-term technical partner in the WordPress ecosystem.",
+  badge: { text: "THE DIFFERENCE", icon: Trophy },
+  primaryButton: { text: "See Our Work", page: "portfolio-archive" }
+};
+
+export const whyChooseUsIntro = {
+  title: "Decades of Experience",
+  description: "With over 20 years in the industry, we've seen the web evolve. We combine deep historical knowledge with cutting-edge block theme expertise to build sites that last."
+};
+
+export const whyChooseUsStats = [
+  { value: "20+", label: "Years in Business" },
+  { value: "500+", label: "Projects Launched" },
+  { value: "100%", label: "In-House Team" }
+];
+
+export const whyChooseUsCTA = {
+  title: "Experience the Difference",
+  description: "Stop wrestling with bloated themes and unreliable freelancers. Switch to a professional agency workflow.",
+  button: { text: "Request a Systems Audit", page: "contact" }
 };

@@ -26,8 +26,7 @@
  */
 
 import { useEffect, useState } from 'react';
-/* Route-level CSS */
-import '../../../styles/templates/page-service-development.css';
+/* Route-level CSS — optimized version loaded globally via index.css */
 import { Container } from '../common/Container';
 import { Button } from '../blocks/design/Buttons';
 import { FunkyCTA } from '../patterns/FunkyCTA';

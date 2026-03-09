@@ -1,0 +1,94 @@
+/**
+ * Flexbox Utilities
+ *
+ * Flexbox display, alignment, justification, and direction utilities.
+ * All utilities use CSS variables where applicable.
+ */
+
+/* ============================================
+   FLEXBOX UTILITIES
+   ============================================ */
+
+/* Display */
+.wp-flex { display: flex; }
+.wp-inline-flex { display: inline-flex; }
+
+/* Justify Content */
+.wp-justify-start { justify-content: flex-start; }
+.wp-justify-center { justify-content: center; }
+.wp-justify-end { justify-content: flex-end; }
+.wp-justify-between { justify-content: space-between; }
+.wp-justify-around { justify-content: space-around; }
+.wp-justify-evenly { justify-content: space-evenly; }
+
+/* Align Items */
+.wp-items-center { align-items: center; }
+.wp-items-start { align-items: flex-start; }
+.wp-items-end { align-items: flex-end; }
+.wp-items-stretch { align-items: stretch; }
+.wp-items-baseline { align-items: baseline; }
+
+/* Flex Direction */
+.wp-flex-row { flex-direction: row; }
+.wp-flex-col { flex-direction: column; }
+.wp-flex-row-reverse { flex-direction: row-reverse; }
+.wp-flex-col-reverse { flex-direction: column-reverse; }
+.wp-flex-wrap { flex-wrap: wrap; }
+.wp-flex-nowrap { flex-wrap: nowrap; }
+
+/* Flex Item Utilities */
+.shrink-0 { flex-shrink: 0; }
+.grow-0 { flex-grow: 0; }
+.grow { flex-grow: 1; }
+.wp-flex-1 { flex: 1 1 0%; }
+.wp-flex-auto { flex: 1 1 auto; }
+.wp-flex-none { flex: none; }
+
+/* Flex Shorthand Combinations */
+.wp-flex-center { 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+}
+.wp-flex-between { 
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+}
+.wp-flex-start { 
+  display: flex; 
+  align-items: center; 
+  justify-content: flex-start; 
+}
+.wp-flex-end { 
+  display: flex; 
+  align-items: center; 
+  justify-content: flex-end; 
+}
+
+/* Additional Flexbox Utilities (legacy support) */
+.wp-flex-items-center {
+  display: flex;
+  align-items: center;
+}
+
+.wp-flex-justify-center {
+  display: flex;
+  justify-content: center;
+}
+
+.wp-flex-justify-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.wp-flex-responsive {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .wp-flex-responsive {
+    flex-direction: row;
+  }
+}

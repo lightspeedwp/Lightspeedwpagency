@@ -3,17 +3,13 @@
  *
  * WordPress template: templates/page-pricing.html
  *
- * Migrated to funky neon aesthetic with:
- * - Neon hero section (mesh-grid + orb-glow + badge)
- * - useScrollReveal instead of motion/react
- * - BEM CSS from /src/styles/templates/pricing-page.css
- * - All values from CSS variables
- * - FunkyCTA pattern for bottom CTA
- *
- * Pattern order: Breadcrumbs → Funky Hero → Website Packages → Support Packages → Payment Options → FunkyCTA
+ * Pattern Components:
+ * - ✅ StatsGrid — Hero quick stats (inline variant, 4 columns)
+ * - ✅ FunkyCTA — Final conversion section
  *
  * @see /src/styles/templates/pricing-page.css
  * @see /src/app/data/pricing-page.ts
+ * @migrated March 4, 2026 — Migrated hero stats to StatsGrid (~12 lines saved)
  */
 
 /* Route-level CSS */
@@ -23,6 +19,7 @@ import { Section } from '../common/Section';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { Button } from '../blocks/design/Buttons';
 import { FunkyCTA } from '../patterns/FunkyCTA';
+import { StatsGrid } from '../patterns/StatsGrid';
 import {
   Check,
   X,
@@ -76,19 +73,14 @@ export function PricingTemplate() {
             </p>
 
             {/* Quick stats */}
-            <div className="pricing-page__hero-stats">
-              {[
-                { value: '3', label: 'Build Packages' },
-                { value: '3', label: 'Support Plans' },
-                { value: '100%', label: 'Transparent' },
-                { value: '0', label: 'Hidden Fees' },
-              ].map((stat, i) => (
-                <div key={i} className="pricing-page__hero-stat">
-                  <span className="pricing-page__hero-stat-value">{stat.value}</span>
-                  <span className="pricing-page__hero-stat-label">{stat.label}</span>
-                </div>
-              ))}
-            </div>
+            <StatsGrid
+              stats={[
+                { number: '3', label: 'Build Packages' },
+                { number: '3', label: 'Support Plans' },
+                { number: '100%', label: 'Transparent' },
+                { number: '0', label: 'Hidden Fees' },
+              ]}
+            />
           </div>
         </Container>
 

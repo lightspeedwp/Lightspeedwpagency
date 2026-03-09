@@ -13,13 +13,13 @@
 
 import type { UniversalIcon } from '../utils/icon-map';
 import {
-  Search,
-  PenTool,
+  MagnifyingGlass,
+  PenNib,
   Code,
   Rocket,
-  TrendingUp,
+  TrendUp,
   Brain,
-} from 'lucide-react';
+} from '@phosphor-icons/react';
 
 /* ─────────────────────────────────────────────
    Types
@@ -56,7 +56,7 @@ export const serviceJourney: JourneyPhase[] = [
   {
     step: '01',
     name: 'Ignite',
-    icon: Search,
+    icon: MagnifyingGlass,
     tagline: 'Uncover. Research. Strategise.',
     accent: 'var(--category-violet)',
     services: [
@@ -67,7 +67,7 @@ export const serviceJourney: JourneyPhase[] = [
   {
     step: '02',
     name: 'Create',
-    icon: PenTool,
+    icon: PenNib,
     tagline: 'Design. Prototype. Inspire.',
     accent: 'var(--category-pink)',
     services: [
@@ -101,7 +101,7 @@ export const serviceJourney: JourneyPhase[] = [
   {
     step: '05',
     name: 'Grow',
-    icon: TrendingUp,
+    icon: TrendUp,
     tagline: 'Optimise. Rank. Scale.',
     accent: 'var(--category-green)',
     services: [

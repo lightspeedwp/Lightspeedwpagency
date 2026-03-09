@@ -3,6 +3,10 @@
  * Route: /services/design-systems
  * Parent: /services/design
  * 
+ * Pattern Components:
+ * - ✅ FeatureList — Benefits grid (glow variant, 3 columns)
+ * - ✅ StatsGrid — Results metrics (cards variant, 4 columns)
+ *
  * STRICT DESIGN SYSTEM COMPLIANCE:
  * - Zero Tailwind classes
  * - All styling via /src/styles/templates/page-service-design-systems-optimized.css
@@ -10,29 +14,33 @@
  * - Fonts: var(--font-primary), var(--font-secondary) only
  * 
  * @see /src/styles/templates/page-service-design-systems-optimized.css
+ * @migrated March 4, 2026 — Migrated inline benefits grid to FeatureList and results to StatsGrid (~25 lines saved)
  */
 
 import '../../../styles/templates/page-service-design-systems-optimized.css';
-import { Layers, Palette, Code, BookOpen, Zap, Award } from 'lucide-react';
+import { Stack, Palette, Code, BookOpen, Lightning, Trophy } from '@phosphor-icons/react';
 import { Link } from 'react-router';
+import { FeatureList } from '../patterns/FeatureList';
+import { StatsGrid } from '../patterns/StatsGrid';
+import { CheckList } from '../patterns/CheckList';
 
 export const DesignSystemsServiceTemplate = () => {
   const benefits = [
-    { icon: Layers, title: 'Component Library Creation', description: 'Build a comprehensive library of reusable UI components in Figma and code.' },
+    { icon: Stack, title: 'Component Library Creation', description: 'Build a comprehensive library of reusable UI components in Figma and code.' },
     { icon: Palette, title: 'Design Token System', description: 'Colors, typography, spacing, and styling tokens for perfect consistency.' },
     { icon: Code, title: 'Code Implementation', description: 'React, WordPress, or platform-specific component implementations.' },
     { icon: BookOpen, title: 'Documentation Site', description: 'Searchable documentation with live examples and usage guidelines.' },
-    { icon: Zap, title: 'Faster Development', description: 'Reduce design-to-development time by 60% with pre-built components.' },
-    { icon: Award, title: 'Brand Consistency', description: 'Ensure perfect brand consistency across all products and platforms.' }
+    { icon: Lightning, title: 'Faster Development', description: 'Reduce design-to-development time by 60% with pre-built components.' },
+    { icon: Trophy, title: 'Brand Consistency', description: 'Ensure perfect brand consistency across all products and platforms.' }
   ];
 
   const deliverables = ['Figma component library', 'Design token system', 'React/WordPress components', 'Documentation website', 'Usage guidelines', 'Governance framework', 'Implementation training'];
 
   const results = [
-    { metric: '60%', label: 'Faster UI Development' },
-    { metric: '90%', label: 'Brand Consistency Score' },
-    { metric: '50%', label: 'Reduction in Design Debt' },
-    { metric: '6-12 wks', label: 'Build Timeline' }
+    { value: '60%', label: 'Faster UI Development' },
+    { value: '90%', label: 'Brand Consistency Score' },
+    { value: '50%', label: 'Reduction in Design Debt' },
+    { value: '6-12 wks', label: 'Build Timeline' }
   ];
 
   return (
@@ -71,18 +79,7 @@ export const DesignSystemsServiceTemplate = () => {
         </div>
         
         <div className="sub-service-compact__benefits-grid">
-          {benefits.map((benefit, index) => {
-            const Icon = benefit.icon;
-            return (
-              <div key={index} className="sub-service-compact__benefit-card">
-                <div className="sub-service-compact__benefit-icon">
-                  <Icon className="sub-service-compact__benefit-icon-svg" />
-                </div>
-                <h3 className="sub-service-compact__benefit-title">{benefit.title}</h3>
-                <p className="sub-service-compact__benefit-description">{benefit.description}</p>
-              </div>
-            );
-          })}
+          <FeatureList items={benefits} columns={3} variant="glow" />
         </div>
       </section>
 
@@ -92,12 +89,7 @@ export const DesignSystemsServiceTemplate = () => {
         </div>
         
         <div className="sub-service-compact__deliverables-grid">
-          {deliverables.map((item, index) => (
-            <div key={index} className="sub-service-compact__deliverable-item">
-              <div className="sub-service-compact__deliverable-icon">✓</div>
-              <div className="sub-service-compact__deliverable-text">{item}</div>
-            </div>
-          ))}
+          <CheckList items={deliverables} />
         </div>
       </section>
 
@@ -107,12 +99,7 @@ export const DesignSystemsServiceTemplate = () => {
         </div>
         
         <div className="sub-service-compact__results-grid">
-          {results.map((result, index) => (
-            <div key={index} className="sub-service-compact__result-card">
-              <div className="sub-service-compact__result-metric">{result.metric}</div>
-              <div className="sub-service-compact__result-label">{result.label}</div>
-            </div>
-          ))}
+          <StatsGrid stats={results} columns={4} variant="cards" />
         </div>
       </section>
 

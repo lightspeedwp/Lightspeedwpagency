@@ -9,7 +9,7 @@
  */
 
 import { Link } from 'react-router';
-import { ChevronRight, FileText, Check } from 'lucide-react';
+import { CaretRight, FileText, Check } from '@phosphor-icons/react';
 import { editorialWorkflowsSystem } from '../../data/systems-hub';
 import { serviceTiers } from '../../data/three-tier-model';
 import '@/styles/templates/editorial-workflows-system.css';
@@ -24,7 +24,7 @@ export const EditorialWorkflowsSystemTemplate = () => {
         <Link to="/systems" className="system-page__breadcrumb-link">
           Systems
         </Link>
-        <ChevronRight className="system-page__breadcrumb-separator" />
+        <CaretRight className="system-page__breadcrumb-separator" />
         <span className="system-page__breadcrumb-current">Editorial Workflows</span>
       </nav>
 
@@ -139,7 +139,7 @@ export const EditorialWorkflowsSystemTemplate = () => {
                 <p className="system-page__tier-description">{tier.description}</p>
                 <Link to="/services" className="system-page__tier-link">
                   Learn More
-                  <ChevronRight className="system-page__tier-link-icon" />
+                  <CaretRight className="system-page__tier-link-icon" />
                 </Link>
               </div>
             ))}

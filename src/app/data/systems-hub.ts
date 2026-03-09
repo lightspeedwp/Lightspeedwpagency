@@ -20,7 +20,7 @@ export interface SystemPillar {
   name: string;
   tagline: string;
   description: string;
-  icon: string; // Lucide icon name
+  icon: string; // Phosphor icon name
   color: string; // CSS variable
   benefits: string[];
   tiers: ('foundation' | 'growth' | 'enterprise')[]; // Which tiers include this system
@@ -111,7 +111,7 @@ export const aiSearchReadinessSystem: SystemPillar = {
   tagline: 'Answer Engine Optimization',
   description:
     'Optimize for AI-powered search engines (ChatGPT, Perplexity, Google SGE). Advanced schema markup, structured data, and content formatting that make your site the source AI tools cite.',
-  icon: 'Sparkles',
+  icon: 'Sparkle',
   color: 'var(--warning)', // Amber/gold
   benefits: [
     '3-5x improvement in AI search visibility',
@@ -135,7 +135,7 @@ export const performanceReliabilitySystem: SystemPillar = {
   tagline: 'Core Web Vitals & Uptime',
   description:
     'Sub-1-second page load times and 99.9% uptime. Core Web Vitals optimization, performance monitoring, and reliability engineering that keeps your site fast under load.',
-  icon: 'Zap',
+  icon: 'Lightning',
   color: 'var(--destructive)', // Red/pink
   benefits: [
     'Sub-1-second page loads (LCP)',

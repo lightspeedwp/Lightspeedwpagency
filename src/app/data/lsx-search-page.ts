@@ -4,14 +4,14 @@
  * Mock data for the LSX Search page (LSXSearchTemplate).
  */
 
-import { Search, Zap, Filter, Layout, Settings, Globe, Database, CheckCircle } from 'lucide-react';
+import { MagnifyingGlass, Lightning, Funnel, Layout, GearSix, Globe, Database, CheckCircle } from '@phosphor-icons/react';
 
 export const lsxSearchHero = {
   title: "LSX Search",
   titleHighlight: "Search",
   description: "Powerful, faceted search for WordPress powered by Algolia or standard WP search. Help visitors find content instantly with as-you-type results, faceted filtering, and custom results layouts.",
   subtitle: "Powerful, faceted search for WordPress powered by Algolia or standard WP search.",
-  badge: { text: "ADVANCED SEARCH", icon: Search },
+  badge: { text: "ADVANCED SEARCH", icon: MagnifyingGlass },
   primaryButton: { text: "Upgrade Search", page: "contact" },
   cta: {
     primary: { text: "Upgrade Search", page: "contact" },
@@ -21,12 +21,12 @@ export const lsxSearchHero = {
 
 export const lsxSearchFeatures = [
   {
-    icon: Zap,
+    icon: Lightning,
     title: "Instant Results",
     description: "As-you-type search results for a lightning-fast user experience."
   },
   {
-    icon: Filter,
+    icon: Funnel,
     title: "Faceted Filtering",
     description: "Allow users to filter results by category, tag, date, or custom taxonomy."
   },
@@ -46,7 +46,7 @@ export const lsxSearchFeatures = [
     description: "Search across all post types including pages, portfolio items, and WooCommerce products."
   },
   {
-    icon: Settings,
+    icon: GearSix,
     title: "Search Analytics",
     description: "Track what visitors are searching for and optimize your content strategy accordingly."
   }

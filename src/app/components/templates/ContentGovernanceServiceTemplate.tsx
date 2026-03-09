@@ -4,7 +4,7 @@
  * Parent: /services/content
  */
 
-import { ShieldCheck, BookOpen, Users, CheckSquare, FileText, BarChart3 } from 'lucide-react';
+import { ShieldCheck, BookOpen, Users, CheckSquare, FileText, ChartBar } from '@phosphor-icons/react';
 import { Link } from 'react-router';
 import { FeatureList } from '../patterns/FeatureList';
 import { CheckList } from '../patterns/CheckList';
@@ -17,7 +17,7 @@ export const ContentGovernanceServiceTemplate = () => {
     { icon: Users, title: 'Approval Workflows', description: 'Design efficient review and approval processes that balance speed with quality control.' },
     { icon: CheckSquare, title: 'Compliance Frameworks', description: 'Ensure content meets accessibility (WCAG), legal, regulatory, and brand compliance requirements.' },
     { icon: FileText, title: 'Content Lifecycle Management', description: 'Policies for content creation, review, archival, and deletion to keep your library relevant.' },
-    { icon: BarChart3, title: 'Quality Reporting', description: 'Regular audits and dashboards tracking content quality, consistency, and compliance metrics.' },
+    { icon: ChartBar, title: 'Quality Reporting', description: 'Regular audits and dashboards tracking content quality, consistency, and compliance metrics.' },
   ];
 
   const deliverables = [

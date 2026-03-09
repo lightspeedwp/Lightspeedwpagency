@@ -3,10 +3,10 @@
  */
 
 import React from 'react';
-import { getPageUrl } from '../../data/pages';
+import { getPageUrl } from '../../data/site-pages';
 import { Link } from 'react-router';
 import { ArrowRight } from '@phosphor-icons/react';
-import { blogPosts } from '../../data/blog-posts';
+import { blogPosts, blogCategories, blogAuthors } from '../../data/blog-posts';
 import { PostCardGrid } from './PostCard';
 
 interface RecentPostsWidgetProps {
@@ -54,8 +54,6 @@ export function RecentPostsWidget({
   showViewAll = true,
   categoryFilter,
 }: RecentPostsWidgetProps) {
-  const { ref: headerRef, style: headerStyle } = useScrollReveal({ animation: 'fade-up' });
-
   // Filter and sort posts by date
   const filteredPosts = blogPosts
     .filter(post => !categoryFilter || post.categories.includes(categoryFilter))
@@ -67,11 +65,7 @@ export function RecentPostsWidget({
   return (
     <div className="recent-posts-widget">
       {/* Header */}
-      <div
-        className="recent-posts-widget__header"
-        ref={headerRef as React.RefObject<HTMLDivElement>}
-        style={headerStyle}
-      >
+      <div className="recent-posts-widget__header">
         <h2 className="recent-posts-widget__title">{title}</h2>
         {showViewAll && (
           <Link

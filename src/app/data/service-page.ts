@@ -13,15 +13,15 @@
 import { 
   Code, 
   Layout, 
-  Blocks,
+  GridFour,
   Package,
   Palette,
-  Zap,
+  Lightning,
   CheckCircle,
   ArrowRight,
   Users,
-  Award,
+  Trophy,
   Clock,
-  Target
-} from 'lucide-react';
+  Crosshair
+} from '@phosphor-icons/react';
 import type { UniversalIcon } from '../utils/icon-map';

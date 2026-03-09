@@ -19,7 +19,8 @@
  */
 
 import { Link } from 'react-router';
-import * as Icons from 'lucide-react';
+import { ArrowRight, Check, Palette, Layout, FileText, Sparkle, Lightning } from '@phosphor-icons/react';
+import type { Icon } from '@phosphor-icons/react';
 import {
   systemPillars,
   systemsHubHero,
@@ -29,6 +30,14 @@ import {
 import { serviceTiers } from '../../data/three-tier-model';
 import { slugToPath } from '../../utils/route-map';
 import '@/styles/templates/systems-hub-template.css';
+
+const iconMap: Record<string, Icon> = {
+  Palette,
+  Layout,
+  FileText,
+  Sparkle,
+  Lightning,
+};
 
 export const SystemsHubTemplate = () => {
   return (
@@ -82,9 +91,7 @@ export const SystemsHubTemplate = () => {
         {/* Systems Grid */}
         <div className="systems-hub__systems-grid">
           {systemPillars.map(system => {
-            const IconComponent = Icons[system.icon as keyof typeof Icons] as React.FC<{
-              className?: string;
-            }>;
+            const IconComponent = iconMap[system.icon];
 
             return (
               <Link
@@ -131,7 +138,7 @@ export const SystemsHubTemplate = () => {
 
                 {/* Arrow indicator */}
                 <div className="systems-hub__system-arrow">
-                  <Icons.ArrowRight className="systems-hub__system-arrow-icon" />
+                  <ArrowRight className="systems-hub__system-arrow-icon" />
                 </div>
               </Link>
             );
@@ -161,7 +168,7 @@ export const SystemsHubTemplate = () => {
             <ul className="systems-hub__tier-card-systems">
               {tierIntegration.foundation.systems.map((system, index) => (
                 <li key={index} className="systems-hub__tier-card-system">
-                  <Icons.Check className="systems-hub__tier-card-system-icon" />
+                  <Check className="systems-hub__tier-card-system-icon" />
                   <span>{system}</span>
                 </li>
               ))}
@@ -171,7 +178,7 @@ export const SystemsHubTemplate = () => {
             </p>
             <Link to="/services" className="systems-hub__tier-card-link">
               Learn More
-              <Icons.ArrowRight className="systems-hub__tier-card-link-icon" />
+              <ArrowRight className="systems-hub__tier-card-link-icon" />
             </Link>
           </div>
 
@@ -185,7 +192,7 @@ export const SystemsHubTemplate = () => {
             <ul className="systems-hub__tier-card-systems">
               {tierIntegration.growth.systems.map((system, index) => (
                 <li key={index} className="systems-hub__tier-card-system">
-                  <Icons.Check className="systems-hub__tier-card-system-icon" />
+                  <Check className="systems-hub__tier-card-system-icon" />
                   <span>{system}</span>
                 </li>
               ))}
@@ -195,7 +202,7 @@ export const SystemsHubTemplate = () => {
             </p>
             <Link to="/services" className="systems-hub__tier-card-link">
               Learn More
-              <Icons.ArrowRight className="systems-hub__tier-card-link-icon" />
+              <ArrowRight className="systems-hub__tier-card-link-icon" />
             </Link>
           </div>
 
@@ -208,7 +215,7 @@ export const SystemsHubTemplate = () => {
             <ul className="systems-hub__tier-card-systems">
               {tierIntegration.enterprise.systems.map((system, index) => (
                 <li key={index} className="systems-hub__tier-card-system">
-                  <Icons.Check className="systems-hub__tier-card-system-icon" />
+                  <Check className="systems-hub__tier-card-system-icon" />
                   <span>{system}</span>
                 </li>
               ))}
@@ -218,7 +225,7 @@ export const SystemsHubTemplate = () => {
             </p>
             <Link to="/services" className="systems-hub__tier-card-link">
               Learn More
-              <Icons.ArrowRight className="systems-hub__tier-card-link-icon" />
+              <ArrowRight className="systems-hub__tier-card-link-icon" />
             </Link>
           </div>
         </div>

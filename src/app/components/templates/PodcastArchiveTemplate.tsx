@@ -5,7 +5,7 @@
  * Content hub archetype for podcast episodes.
  */
 
-import '../../../styles/templates/podcast-archive.css';
+import '../../../styles/templates/podcast-archive-optimized.css';
 import { Link } from 'react-router';
 import { useState, useMemo } from 'react';
 import { Container } from '../common/Container';
@@ -15,7 +15,7 @@ import { FAQSection } from '../patterns/FAQSection';
 import { FunkyCTA } from '../patterns/FunkyCTA';
 import { Heading } from '../blocks/text/Heading';
 import { Paragraph } from '../blocks/text/Paragraph';
-import { Headphones, Clock, Calendar } from 'lucide-react';
+import { Headphones, Clock, Calendar } from '@phosphor-icons/react';
 import { podcasts, podcastCategories } from '../../data/podcasts';
 import { podcastFAQs } from '../../data/faqs';
 

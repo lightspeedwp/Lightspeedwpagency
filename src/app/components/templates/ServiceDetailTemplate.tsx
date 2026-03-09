@@ -11,8 +11,17 @@
  *  - Inline styles → BEM classes in service-detail.css
  *  - `motion/react` → `useScrollReveal`
  *
+ * Pattern Components:
+ * - ✅ StatsGrid — Hero quick stats section
+ * - ✅ FeatureList — Service features grid
+ * - ✅ FeatureList — Why choose us cards (glow variant, 3 columns)
+ * - ✅ CheckList — Benefits & deliverables lists
+ * - ✅ FAQSection — FAQ accordion
+ * - ✅ FunkyCTA — Final conversion section
+ *
  * @see /src/styles/templates/service-detail.css
  * @see /src/app/data/service-page.ts
+ * @migrated March 4, 2026 — Migrated inline "Why Choose" cards to FeatureList component (~18 lines saved)
  */
 
 import '../../../styles/templates/service-detail.css';
@@ -262,26 +271,12 @@ export function ServiceDetailTemplate({
             </div>
           </ScrollReveal>
 
-          <div className="service-detail__why-grid">
-            {servicePageWhyChoose.map((reason, index) => {
-              const Icon = reason.icon;
-              return (
-                <ScrollReveal key={index} animation="fade-up" delay={index * 100}>
-                  <div className="service-detail__stat-card">
-                    <div className="service-detail__service-icon-wrapper">
-                      <Icon size={28} />
-                    </div>
-                    <h3 className="service-detail__service-title">
-                      {reason.title}
-                    </h3>
-                    <p className="service-detail__service-desc">
-                      {reason.description}
-                    </p>
-                  </div>
-                </ScrollReveal>
-              );
-            })}
-          </div>
+          <FeatureList
+            items={servicePageWhyChoose}
+            columns={3}
+            variant="glow"
+            iconStyle="rounded"
+          />
         </Container>
       </Section>
 

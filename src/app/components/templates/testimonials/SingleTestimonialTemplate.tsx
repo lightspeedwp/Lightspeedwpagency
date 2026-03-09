@@ -13,7 +13,7 @@
  */
 
 import '../../../../styles/templates/testimonial-single.css';
-import { Star, Calendar, Briefcase, Tag, ArrowLeft } from 'lucide-react';
+import { Star, Calendar, Briefcase, Tag, ArrowLeft } from '@phosphor-icons/react';
 import { Link, useParams } from 'react-router';
 import { Section } from '../../common/Section';
 import { FunkyCTA } from '../../patterns/FunkyCTA';

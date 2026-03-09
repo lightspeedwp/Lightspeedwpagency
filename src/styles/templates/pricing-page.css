@@ -3,6 +3,13 @@
  *
  * BEM naming: .pricing-page__*
  * 100% CSS variables, zero hardcoded values.
+ *
+ * MIGRATED: March 6, 2026 - Phase 2 Step 3, Batch C3
+ * - Uses glass-effect-base.css for glassmorphism patterns
+ * - Glass effect patterns documented:
+ *   • .pricing-page__featured-badge: blur(12px) featured plan badge (matches glass-effect-base default)
+ *   • .pricing-page__featured-card: blur(16px) featured plan card (custom 16px - preserved)
+ *   • .pricing-page__payment-card: blur(12px) payment method cards (matches glass-effect-base default)
  */
 
 /* ============================================
@@ -15,6 +22,7 @@
  */
 @import '../base/grid-utilities.css';
 @import '../base/card-base.css';
+@import '../base/glass-effect-base.css';
 @import '../patterns/hero/hero-base.css';
 
 /* ============================================

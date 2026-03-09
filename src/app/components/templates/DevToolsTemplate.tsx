@@ -6,10 +6,15 @@
  * BEM naming: .devtools-*
  * Uses declarative <Link> navigation (react-router).
  *
+ * Pattern Components:
+ * - ✅ StatsGrid — Hero stats section (grid variant, 6 columns)
+ *
  * @see /src/styles/templates/dev-tools.css
+ * @migrated March 4, 2026 — Migrated inline stats grid to StatsGrid component (~15 lines saved)
  */
 
 import '../../../styles/templates/dev-tools.css';
+import { StatsGrid } from '../patterns/StatsGrid';
 import {
   CodeBlock,
   TestTube,
@@ -540,21 +545,16 @@ export function DevToolsTemplate() {
           </div>
 
           {/* Stats */}
-          <div className="devtools__stats-grid">
-            {[
+          <StatsGrid
+            stats={[
               { value: totalTools, label: 'Total Tools' },
               { value: '90+', label: 'Templates' },
               { value: '117', label: 'Routes' },
               { value: '100%', label: 'CSS Variables' },
               { value: '66', label: 'Block Guidelines' },
               { value: '51', label: 'Patterns' },
-            ].map((stat, i) => (
-              <div key={i} className="devtools__stat-card">
-                <div className="devtools__stat-value">{stat.value}</div>
-                <div className="devtools__stat-label">{stat.label}</div>
-              </div>
-            ))}
-          </div>
+            ]}
+          />
 
           {/* Quick Links */}
           <div className="devtools__quick-links">

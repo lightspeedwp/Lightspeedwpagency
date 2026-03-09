@@ -16,7 +16,7 @@
  */
 
 /* Route-level CSS */
-import '../../../styles/templates/portfolio-archive.css';
+import '../../../styles/templates/portfolio-archive-optimized.css';
 
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';

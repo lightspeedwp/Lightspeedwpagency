@@ -7,37 +7,44 @@
  * Layout matches approved "Funky" neon aesthetic:
  * 
  * 1. Funky Hero (Custom neon implementation)
- * 2. Solutions Grid (4 solution cards in 2×2 grid)
- * 3. Why Choose Our Solutions (6 feature cards, 3-col grid)
+ * 2. Solutions Grid (custom cards with badge variants + tag pills)
+ * 3. Why Choose Our Solutions (FeatureList pattern, 3-col grid)
  * 4. CTA (FunkyCTA pattern)
  * 
+ * Pattern Components:
+ * - ✅ FeatureList — Why choose section (glow variant, 3 columns)
+ * - ✅ FunkyCTA — Final conversion section
+ *
  * All styling uses CSS variables from /src/styles/.
  * NO Tailwind classes — WordPress utility classes + CSS variables only.
+ *
+ * @migrated March 4, 2026 — Migrated "Why Choose" inline grid to FeatureList (~20 lines saved)
  */
 
 /* Route-level CSS */
 import '../../../styles/templates/solutions-page.css';
 import { FunkyCTA } from '../patterns/FunkyCTA';
+import { FeatureList } from '../patterns/FeatureList';
 import { Section } from '../common/Section';
 import { Container } from '../common/Container';
 import { Button } from '../blocks/design/Buttons';
 import {
   ShoppingCart,
-  Server,
-  Blocks,
+  HardDrive,
+  Cube,
   Gauge,
   ShieldCheck,
-  Accessibility,
-  Scaling,
+  Wheelchair,
+  Scales,
   Headphones,
   ArrowRight,
-  ChevronRight,
-  Sparkles,
-  RefreshCw,
+  CaretRight,
+  Sparkle,
+  ArrowsClockwise,
   Compass,
   Brain
-} from 'lucide-react';
-import type { LucideIcon } from 'lucide-react';
+} from '@phosphor-icons/react';
+import type { Icon } from '@phosphor-icons/react';
 
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { Link } from 'react-router';
@@ -50,7 +57,7 @@ import { solutions } from '../../data/solutions';
 
 interface SolutionCard {
   id: string;
-  icon: LucideIcon;
+  icon: Icon;
   badge: string;
   badgeVariant: 'featured' | 'enterprise' | 'ecommerce';
   title: string;
@@ -92,7 +99,7 @@ const mappedSolutions: SolutionCard[] = solutions.map(solution => {
 // Add Managed Hosting manually as it's not in the main solutions array yet
 const hostingCard: SolutionCard = {
   id: 'managed-hosting',
-  icon: Server,
+  icon: HardDrive,
   badge: 'ENTERPRISE',
   badgeVariant: 'enterprise',
   title: 'Managed Hosting',
@@ -105,7 +112,7 @@ const solutionCards: SolutionCard[] = [...mappedSolutions, hostingCard,
   // Website Project Solutions
   {
     id: 'wordpress-redesign',
-    icon: RefreshCw,
+    icon: ArrowsClockwise,
     badge: 'FEATURED',
     badgeVariant: 'featured',
     title: 'WordPress Redesign',
@@ -146,14 +153,14 @@ const solutionCards: SolutionCard[] = [...mappedSolutions, hostingCard,
 ];
 
 interface WhyCard {
-  icon: LucideIcon;
+  icon: Icon;
   title: string;
   description: string;
 }
 
 const whyChooseCards: WhyCard[] = [
   {
-    icon: Blocks,
+    icon: Cube,
     title: 'Modern Architecture',
     description: 'Full Site Editing, block themes, and modern PHP that scales for enterprise needs.',
   },
@@ -168,12 +175,12 @@ const whyChooseCards: WhyCard[] = [
     description: 'Multi-layered security with automated updates, monitoring, and compliance support.',
   },
   {
-    icon: Accessibility,
+    icon: Wheelchair,
     title: 'Fully Accessible',
     description: 'WCAG 2.1 AA compliant with proper semantics, keyboard navigation, and screen reader support.',
   },
   {
-    icon: Scaling,
+    icon: Scales,
     title: 'Scalable & Flexible',
     description: 'Built to grow with your business, from a single site to an enterprise multisite network.',
   },
@@ -205,13 +212,13 @@ export function SolutionsTemplate() {
               {/* Breadcrumbs */}
               <nav className="solutions-hero__breadcrumbs" aria-label="Breadcrumb">
                 <Link to="/">Home</Link>
-                <ChevronRight size={14} />
+                <CaretRight size={14} />
                 <span aria-current="page">Solutions</span>
               </nav>
 
               {/* Badge */}
               <div className="solutions-hero__badge">
-                <Sparkles size={14} style={{ display: 'inline', marginRight: '8px', verticalAlign: 'middle' }} />
+                <Sparkle size={14} style={{ display: 'inline', marginRight: '8px', verticalAlign: 'middle' }} />
                 Comprehensive Solutions
               </div>
 
@@ -328,26 +335,15 @@ export function SolutionsTemplate() {
             </ScrollReveal>
 
             {/* Feature Grid */}
-            <div className="solutions-why__grid">
-              {whyChooseCards.map((card, index) => {
-                const Icon = card.icon;
-                return (
-                  <ScrollReveal key={card.title} animation="fade-up" delay={index * 80}>
-                    <div className="solutions-why__card">
-                      <div className="solutions-why__card-icon">
-                        <Icon size={24} />
-                      </div>
-                      <h3 className="solutions-why__card-title">
-                        {card.title}
-                      </h3>
-                      <p className="solutions-why__card-description">
-                        {card.description}
-                      </p>
-                    </div>
-                  </ScrollReveal>
-                );
-              })}
-            </div>
+            <FeatureList
+              items={whyChooseCards.map(card => ({
+                icon: card.icon,
+                title: card.title,
+                description: card.description,
+              }))}
+              columns={3}
+              variant="glow"
+            />
           </div>
         </Container>
       </Section>

@@ -8,7 +8,7 @@
  */
 
 /* Route-level CSS */
-import '../../../styles/templates/404.css';
+import '../../../styles/templates/404-optimized.css';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { Heading } from '../blocks/text/Heading';

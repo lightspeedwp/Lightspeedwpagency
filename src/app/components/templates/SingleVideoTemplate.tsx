@@ -13,7 +13,7 @@ import { FAQSection } from '../patterns/FAQSection';
 import { FunkyCTA } from '../patterns/FunkyCTA';
 import { Heading } from '../blocks/text/Heading';
 import { Paragraph } from '../blocks/text/Paragraph';
-import { Clock, Calendar, Eye, Tag, Play } from 'lucide-react';
+import { Clock, Calendar, Eye, Tag, Play } from '@phosphor-icons/react';
 import { getVideoBySlug, getRelatedVideos, videoCategories, videos } from '../../data/videos';
 import { videoFAQs } from '../../data/faqs';
 import { Link } from 'react-router';

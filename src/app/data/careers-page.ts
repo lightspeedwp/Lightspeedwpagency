@@ -14,11 +14,11 @@
 import { 
   Coffee, 
   Laptop, 
-  HeartHandshake, 
-  TrendingUp,
+  Handshake, 
+  TrendUp,
   MapPin,
   Clock
-} from 'lucide-react';
+} from '@phosphor-icons/react';
 
 export const careersPageHero = {
   title: "Build the Future With Us",
@@ -35,12 +35,12 @@ export const careersPageBenefits = {
       description: "Work from anywhere in the world. We focus on output, not hours in a chair."
     },
     {
-      icon: TrendingUp,
+      icon: TrendUp,
       title: "Growth Budget",
       description: "Annual stipend for courses, conferences, and books to keep you sharp."
     },
     {
-      icon: HeartHandshake,
+      icon: Handshake,
       title: "Health & Wellness",
       description: "Comprehensive health coverage and wellness programs for you and your family."
     },

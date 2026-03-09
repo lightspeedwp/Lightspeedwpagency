@@ -10,7 +10,7 @@
  * **Optimization:** Part of Memory Optimization Task 1.2 — services.ts consolidation
  */
 
-import { Palette, Code, Search, FileText, Globe, Shield, Zap, Accessibility, Brain, MessageSquare } from 'lucide-react';
+import { Palette, Code, MagnifyingGlass, FileText, Globe, Shield, Lightning, Wheelchair, Brain, ChatCentered } from '@phosphor-icons/react';
 import type { Service, ServiceCategory } from './types';
 
 /**
@@ -57,7 +57,7 @@ export const services: Service[] = [
     tagline: 'User-centered design that drives engagement',
     description: 'Design intuitive interfaces and seamless user experiences based on research and best practices. We create designs that users love and that drive business results.',
     category: 'design',
-    icon: Search,
+    icon: MagnifyingGlass,
     features: [
       'User research & personas',
       'Information architecture',
@@ -219,7 +219,7 @@ export const services: Service[] = [
     tagline: 'Strategic planning for digital success',
     description: 'Define your digital strategy with research-driven insights and actionable recommendations.',
     category: 'strategy',
-    icon: Search,
+    icon: MagnifyingGlass,
     features: [
       'Stakeholder interviews',
       'Competitor analysis',
@@ -282,7 +282,7 @@ export const services: Service[] = [
     tagline: 'Increase visibility and organic traffic',
     description: 'Improve your search engine rankings with technical SEO, content optimization, and ongoing monitoring.',
     category: 'strategy',
-    icon: Search,
+    icon: MagnifyingGlass,
     features: [
       'Technical SEO audit',
       'Keyword research',
@@ -411,7 +411,7 @@ export const services: Service[] = [
     tagline: 'Lightning-fast Core Web Vitals scores',
     description: 'Optimise your WordPress site for speed, stability, and superior user experience with sub-second load times.',
     category: 'strategy',
-    icon: Zap,
+    icon: Lightning,
     features: [
       'Core Web Vitals audit',
       'Code & database optimisation',
@@ -442,7 +442,7 @@ export const services: Service[] = [
     tagline: 'WCAG 2.1 AA/AAA compliant websites',
     description: 'Audit, remediate, and build WordPress sites that welcome every visitor regardless of ability or assistive technology.',
     category: 'strategy',
-    icon: Accessibility,
+    icon: Wheelchair,
     features: [
       'WCAG 2.1 compliance audit',
       'Accessibility remediation',
@@ -504,7 +504,7 @@ export const services: Service[] = [
     tagline: 'Get cited by ChatGPT, Perplexity & AI Overviews',
     description: 'Optimise your content to be the answer AI engines serve — the new front page of the internet.',
     category: 'strategy',
-    icon: MessageSquare,
+    icon: ChatCentered,
     features: [
       'AI visibility audit',
       'Schema & structured data',

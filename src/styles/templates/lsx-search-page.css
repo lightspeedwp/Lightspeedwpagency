@@ -2,11 +2,24 @@
  * LSX Search Product Page Styles — Funky Neon Redesign
  *
  * Template: LSXSearchTemplate
- * Theme: Neon search pulses, glassmorphism cards, floating orbs
+ * Theme: Neon search, glassmorphism cards, floating orbs
+ *
+ * MIGRATED: March 6, 2026 - Phase 2 Step 3, Batch C2
+ * - Uses glass-effect-base.css for glassmorphism patterns
+ * - Glass effect patterns documented:
+ *   • .lsx-search__hero-badge: blur(8px) hero badge (matches glass-effect-base--subtle)
+ *   • .lsx-search__feature-card: blur(12px) feature cards (matches glass-effect-base default)
+ *   • .lsx-search__benefit-card: blur(12px) benefit cards (matches glass-effect-base default)
+ *   • .lsx-search__integration-card: blur(12px) integration cards (matches glass-effect-base default)
+ *   • .lsx-search__spec-item: blur(8px) spec items (matches glass-effect-base--subtle)
+ *   • .lsx-search__pricing-card: blur(12px) pricing cards (matches glass-effect-base default)
+ *   • .lsx-search__cta: blur(16px) CTA section (custom 16px - preserved)
  *
  * 100% CSS variables — no hardcoded color/spacing values.
  * BEM naming throughout.
  */
+
+@import '../base/glass-effect-base.css';
 
 /* ============================================
    BASE IMPORTS — Phase 1 Optimization

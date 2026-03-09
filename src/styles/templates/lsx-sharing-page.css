@@ -4,10 +4,21 @@
  * Template: LSXSharingTemplate
  * Theme: Neon social connections, glassmorphism cards, floating orbs
  *
+ * MIGRATED: March 6, 2026 - Phase 2 Step 3, Batch C2
+ * - Uses glass-effect-base.css for glassmorphism patterns
+ * - Glass effect patterns documented:
+ *   • .lsx-sharing__hero-badge: blur(8px) hero badge (matches glass-effect-base--subtle)
+ *   • .lsx-sharing__feature-card: blur(12px) feature cards (matches glass-effect-base default)
+ *   • .lsx-sharing__benefit-card: blur(12px) benefit cards (matches glass-effect-base default)
+ *   • .lsx-sharing__network-card: blur(12px) social network cards (matches glass-effect-base default)
+ *   • .lsx-sharing__stat-item: blur(8px) stat items (matches glass-effect-base--subtle)
+ *   • .lsx-sharing__cta: blur(16px) CTA section (custom 16px - preserved)
+ *
  * 100% CSS variables — no hardcoded color/spacing values.
  * BEM naming throughout.
  */
 
+@import '../base/glass-effect-base.css';
 
 /* ============================================================
    PAGE CONTAINER

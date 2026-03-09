@@ -13,7 +13,7 @@
  */
 
 import '../../../../styles/templates/testimonial-single.css';
-import { Star, ArrowLeft, Images, ExternalLink, TrendingUp } from 'lucide-react';
+import { Star, ArrowLeft, Images, ArrowSquareOut, TrendUp } from '@phosphor-icons/react';
 import { Link, useParams } from 'react-router';
 import { useState } from 'react';
 import { Section } from '../../common/Section';
@@ -228,7 +228,7 @@ export function SingleTestimonialGalleryTemplate({ slug }: { slug?: string }) {
                   gap: 'var(--spacing-3)',
                 }}
               >
-                <TrendingUp size={24} style={{ color: 'var(--primary)' }} />
+                <TrendUp size={24} style={{ color: 'var(--primary)' }} />
                 Project Results
               </h2>
               <div className="single-testimonial__results">

@@ -23,10 +23,11 @@
  * @see /src/app/contexts/NavigationContext.tsx — Navigation bridge
  */
 
-// CRITICAL: Import error suppression FIRST (must run before any other code)
-import './suppress-figma-errors';
+// BLOCKER #3 FIX (March 9, 2026): Disabled error suppression for deployment
+// Error suppression was interfering with Figma Make deployment initialization
+// import './suppress-figma-errors';
 
-// Import design system styles (CRITICAL - must load after error suppression)
+// Import design system styles
 import '../styles/index.css';
 
 import { RouterProvider } from 'react-router';

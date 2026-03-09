@@ -1,32 +1,29 @@
 /**
  * Contact Page Template — "Communication Hub" Funky Redesign
  *
- * Theme: Neon communication, glassmorphism form, floating orbs
- * Features:
- * - Parallax hero with floating orbs
- * - Neon glow badge
- * - Glassmorphism form wrapper
- * - Contact method cards with neon hover
- * - "Why Contact Us" reason cards
- * - Stats bar with neon grid overlay
- * - FAQ section
- * - FunkyCTA conversion section
- * - ScrollReveal entry animations
- * - 100% CSS variable compliance
+ * Pattern Components:
+ * - ✅ CheckList — Hero features list
+ * - ✅ FeatureList — "Why work with us" reason cards (glow variant, 3 columns)
+ * - ✅ StatsSection — Stats bar
+ * - ✅ FAQSection — Contact FAQs
+ * - ✅ FunkyCTA — Final conversion section
  *
  * STRICT DESIGN SYSTEM COMPLIANCE:
  * - No inline Tailwind classes
  * - All styling via @/styles/templates/contact-page.css
  * - BEM naming throughout
+ *
+ * @migrated March 4, 2026 — Migrated "Why Contact Us" inline grid to FeatureList (~20 lines saved)
+ * @fixed March 4, 2026 — Removed broken import for non-existent page-contact.css
  */
 
 /* Route-level CSS */
 import '../../../styles/templates/contact-page.css';
-import '../../../styles/templates/page-contact.css';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { CheckList } from '../patterns/CheckList';
+import { FeatureList } from '../patterns/FeatureList';
 import { FAQSection } from '../patterns/FAQSection';
 import { FunkyCTA } from '../patterns/FunkyCTA';
 import { StatsSection } from '../patterns/StatsSection';
@@ -211,29 +208,15 @@ export function ContactPageTemplate() {
             </div>
           </ScrollReveal>
 
-          <div className="contact-page__reasons-grid">
-            {contactPageReasons.map((reason, index) => {
-              const Icon = reason.icon;
-              return (
-                <ScrollReveal key={index} animation="fade-up" delay={index * 100}>
-                  <div className="contact-page__reason-card">
-                    <div className="contact-page__reason-glow" />
-                    <div className="contact-page__reason-inner">
-                      <div className="contact-page__reason-icon">
-                        <Icon size={28} />
-                      </div>
-                      <Heading level={3} className="contact-page__reason-title">
-                        {reason.title}
-                      </Heading>
-                      <Paragraph className="contact-page__reason-desc">
-                        {reason.description}
-                      </Paragraph>
-                    </div>
-                  </div>
-                </ScrollReveal>
-              );
-            })}
-          </div>
+          <FeatureList
+            items={contactPageReasons.map(reason => ({
+              icon: reason.icon,
+              title: reason.title,
+              description: reason.description,
+            }))}
+            variant="glow"
+            columns={3}
+          />
         </Container>
       </section>
 

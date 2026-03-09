@@ -5,8 +5,8 @@
  * Route: /solutions/ai-integrations/seo
  */
 
-import '../../../styles/templates/page-solution-ai.css';
-import { Search } from 'lucide-react';
+import '../../../styles/templates/page-solution-ai-optimized.css';
+import { MagnifyingGlass } from '@phosphor-icons/react';
 import { AISubPageTemplate } from './AISubPageTemplate';
 import {
   aiSEOHero,
@@ -23,7 +23,7 @@ export function AISEOTemplate() {
     <AISubPageTemplate
       variant="seo"
       hero={aiSEOHero}
-      heroIcon={Search}
+      heroIcon={MagnifyingGlass}
       stats={aiSEOStats}
       statsTitle="SEO Intelligence Impact"
       statsDescription="What AI-driven SEO delivers for your business"

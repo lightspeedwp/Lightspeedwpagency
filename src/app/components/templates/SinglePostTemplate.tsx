@@ -26,8 +26,6 @@ import { Section } from '../common/Section';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { Heading } from '../common/Heading';
 import { Paragraph } from '../blocks/text/Paragraph';
-import { FAQSection } from '../patterns/FAQSection';
-import { FunkyCTA } from '../patterns/FunkyCTA'; // Updated to FunkyCTA
 import { Button } from '../blocks/design/Buttons';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { PostCardGrid } from '../patterns/PostCard';
@@ -37,6 +35,11 @@ import {
   Tag as TagIcon,
   ArrowRight,
 } from '@phosphor-icons/react';
+
+// ✨ LAZY-LOADED PATTERNS (Phase 3 Week 2 - March 6, 2026)
+// Below-the-fold patterns loaded on-demand for better performance
+import { LazyFAQSection } from '../patterns/lazy/LazyFAQSection';
+import { LazyFunkyCTA } from '../patterns/lazy/LazyFunkyCTA';
 import {
   getPostBySlug,
   getAuthorBySlug,
@@ -331,14 +334,14 @@ export function SinglePostTemplate({ slug }: SinglePostTemplateProps) {
       )}
 
       {/* FAQs */}
-      <FAQSection
+      <LazyFAQSection
         title="Blog questions"
         description="Common questions about our blog and content."
         faqs={blogFAQs.slice(0, 3)}
       />
 
       {/* CTA */}
-      <FunkyCTA
+      <LazyFunkyCTA
         title="Ready to start your project?"
         description="Let's build something amazing together with WordPress."
         buttonText="Get started"

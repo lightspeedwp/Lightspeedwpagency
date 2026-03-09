@@ -27,7 +27,6 @@
  * @migrated March 3, 2026 — Migrated inline features grid to FeatureList and inline process steps to ProcessTimeline components. Converted all Lucide icons to Phosphor equivalents.
  */
 
-import '../../../styles/templates/page-service-performance.css';
 import { Container } from '../common/Container';
 import { FunkyCTA } from '../patterns/FunkyCTA';
 import { FeatureList } from '../patterns/FeatureList';

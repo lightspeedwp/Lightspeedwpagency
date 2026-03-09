@@ -4,14 +4,14 @@
  * Mock data for the LSX Sharing page (LSXSharingTemplate).
  */
 
-import { Share2, Zap, Layout, Settings, Globe, Shield, Smartphone, BarChart2 } from 'lucide-react';
+import { ShareNetwork, Lightning, Layout, GearSix, Globe, Shield, DeviceMobile, ChartBar } from '@phosphor-icons/react';
 
 export const lsxSharingHero = {
   title: "LSX Sharing",
   titleHighlight: "Sharing",
   description: "A lightweight, performance-focused social sharing plugin for WordPress. No external scripts, no API calls — just fast, beautiful SVG share buttons.",
   subtitle: "A lightweight, performance-focused social sharing plugin for WordPress.",
-  badge: { text: "SOCIAL SHARING", icon: Share2 },
+  badge: { text: "SOCIAL SHARING", icon: ShareNetwork },
   primaryButton: { text: "Download Now", page: "https://wordpress.org/plugins/lsx-sharing/" },
   cta: {
     primary: { text: "Download Now", page: "contact" },
@@ -21,7 +21,7 @@ export const lsxSharingHero = {
 
 export const lsxSharingFeatures = [
   {
-    icon: Zap,
+    icon: Lightning,
     title: "Blazing Fast",
     description: "No external scripts or heavy API calls. Just pure, fast SVG icons."
   },
@@ -31,12 +31,12 @@ export const lsxSharingFeatures = [
     description: "Includes a custom block to place share buttons anywhere in your layout."
   },
   {
-    icon: Settings,
+    icon: GearSix,
     title: "Customizable",
     description: "Choose which networks to display and customize colors to match your brand."
   },
   {
-    icon: Smartphone,
+    icon: DeviceMobile,
     title: "Mobile Optimized",
     description: "Responsive share buttons that look great on all devices and screen sizes."
   },
@@ -46,7 +46,7 @@ export const lsxSharingFeatures = [
     description: "No tracking scripts or cookies. Share buttons that respect your visitors' privacy."
   },
   {
-    icon: BarChart2,
+    icon: ChartBar,
     title: "Share Counts",
     description: "Optional share count display to show social proof and encourage more sharing."
   }

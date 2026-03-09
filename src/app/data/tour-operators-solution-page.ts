@@ -4,12 +4,12 @@
  * Content for the Tour Operators Solution template.
  */
 
-import { Map, Calendar, Globe, Users, CreditCard, Layout } from 'lucide-react';
+import { MapTrifold, Calendar, Globe, Users, CreditCard, Layout } from '@phosphor-icons/react';
 
 export const tourOperatorsSolutionHero = {
   title: "The Ultimate WordPress Solution for Tour Operators",
   subtitle: "Manage itineraries, bookings, and destinations with our specialized LSX Tour Operator plugin ecosystem.",
-  badge: { text: "TRAVEL TECH EXPERTS", icon: Map },
+  badge: { text: "TRAVEL TECH EXPERTS", icon: MapTrifold },
   primaryButton: { text: "View Demo", page: "tour-operators" }, // Pointing to archive as demo
   secondaryButton: { text: "Request a Systems Audit", page: "contact" }
 };
@@ -33,7 +33,7 @@ export const tourOperatorsSolutionFeatures = {
       description: "Integrate with popular booking engines or use our native enquiry forms."
     },
     {
-      icon: Map,
+      icon: MapTrifold,
       title: "Interactive Maps",
       description: "Visualise routes and locations with integrated Google Maps or OpenStreetMap."
     },

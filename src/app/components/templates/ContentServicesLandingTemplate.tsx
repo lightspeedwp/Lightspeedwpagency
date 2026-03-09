@@ -4,14 +4,9 @@
  * Parent landing page for all content-related services.
  * Route: /services/content/
  *
- * Sub-services:
- * - /services/content/audit (Content Audit)
- * - /services/content/strategy (Content Strategy)
- * - /services/content/creation (Content Creation)
- * - /services/content/collection (Content Collection)
- * - /services/content/copywriting (Copywriting & UX Writing)
- * - /services/content/seo-content (SEO Content)
- * - /services/content/governance (Content Governance)
+ * Pattern Components:
+ * - ✅ FeatureList — Service cards (glow variant, 2 columns, with links + sub-features)
+ * - ✅ ProcessTimeline — 4-step content process (horizontal orientation)
  *
  * STRICT DESIGN SYSTEM COMPLIANCE:
  * - Zero Tailwind classes
@@ -20,6 +15,7 @@
  * - Fonts: var(--font-primary), var(--font-secondary) only
  *
  * @see /src/styles/templates/page-service-content-landing-optimized.css
+ * @migrated March 4, 2026 — Migrated inline services grid to FeatureList and process to ProcessTimeline (~40 lines saved)
  */
 
 import '../../../styles/templates/page-service-content-landing-optimized.css';
@@ -27,6 +23,8 @@ import { Link } from 'react-router';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { ScrollDownArrow } from '../common/ScrollDownArrow';
 import { Container } from '../common/Container';
+import { FeatureList } from '../patterns/FeatureList';
+import { ProcessTimeline } from '../patterns/ProcessTimeline';
 import {
   FileMagnifyingGlass,
   Target,
@@ -35,7 +33,6 @@ import {
   PencilSimple,
   MagnifyingGlass,
   ShieldCheck,
-  ArrowRight,
   BookOpen,
 } from '@phosphor-icons/react';
 
@@ -165,6 +162,23 @@ const processSteps = [
   },
 ];
 
+/* ── Map data to pattern component shapes ── */
+const serviceItems = contentServices.map((s) => ({
+  icon: s.icon,
+  title: s.name,
+  description: s.description,
+  features: s.features,
+  link: s.path,
+  linkText: 'Learn more →',
+}));
+
+const timelineSteps = processSteps.map((s, i) => ({
+  id: `content-process-${i + 1}`,
+  number: i + 1,
+  title: s.title,
+  description: s.description,
+}));
+
 export function ContentServicesLandingTemplate() {
   return (
     <div className="content-landing">
@@ -230,36 +244,11 @@ export function ContentServicesLandingTemplate() {
             </ScrollReveal>
           </div>
 
-          <div className="content-landing__services-grid">
-            {contentServices.map((service, index) => {
-              const Icon = service.icon;
-              return (
-                <ScrollReveal key={service.id} animation="fade-up" delay={index * 80}>
-                  <Link
-                    to={service.path}
-                    className="content-landing__service-card"
-                    aria-label={`Learn more about ${service.name}`}
-                  >
-                    <div className="content-landing__service-icon">
-                      <Icon className="content-landing__service-icon-svg" aria-hidden="true" />
-                    </div>
-                    <h3 className="content-landing__service-name">{service.name}</h3>
-                    <p className="content-landing__service-desc">{service.description}</p>
-                    <ul className="content-landing__service-features">
-                      {service.features.map((feature) => (
-                        <li key={feature} className="content-landing__service-feature">
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-                    <span className="content-landing__service-link">
-                      Learn more <ArrowRight size={16} aria-hidden="true" />
-                    </span>
-                  </Link>
-                </ScrollReveal>
-              );
-            })}
-          </div>
+          <FeatureList
+            items={serviceItems}
+            columns={2}
+            variant="glow"
+          />
         </Container>
       </section>
 
@@ -279,19 +268,10 @@ export function ContentServicesLandingTemplate() {
             </ScrollReveal>
           </div>
 
-          <div className="content-landing__process-grid">
-            {processSteps.map((step, index) => (
-              <ScrollReveal key={step.title} animation="fade-up" delay={index * 100}>
-                <div className="content-landing__process-step">
-                  <div className="content-landing__process-number">{index + 1}</div>
-                  <div className="content-landing__process-content">
-                    <h3 className="content-landing__process-title">{step.title}</h3>
-                    <p className="content-landing__process-desc">{step.description}</p>
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
+          <ProcessTimeline
+            steps={timelineSteps}
+            orientation="horizontal"
+          />
         </Container>
       </section>
 

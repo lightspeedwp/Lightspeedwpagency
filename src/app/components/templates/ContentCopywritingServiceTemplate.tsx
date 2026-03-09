@@ -4,7 +4,7 @@
  * Parent: /services/content
  */
 
-import { Edit3, Type, MousePointer, Mail, Megaphone, BookOpen } from 'lucide-react';
+import { PencilSimple, TextT, Cursor, Envelope, Megaphone, BookOpen } from '@phosphor-icons/react';
 import { Link } from 'react-router';
 import { FeatureList } from '../patterns/FeatureList';
 import { CheckList } from '../patterns/CheckList';
@@ -12,10 +12,10 @@ import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
 
 export const ContentCopywritingServiceTemplate = () => {
   const benefits = [
-    { icon: Edit3, title: 'Website Copywriting', description: 'Clear, compelling website copy that communicates your value proposition and drives conversions.' },
-    { icon: Type, title: 'UX Microcopy', description: 'Button labels, error messages, tooltips, and interface text that guides users effortlessly.' },
-    { icon: MousePointer, title: 'CTA Optimisation', description: 'A/B tested calls-to-action that maximise click-through rates and conversion.' },
-    { icon: Mail, title: 'Email Campaigns', description: 'Subject lines, body copy, and sequences that nurture leads through your sales funnel.' },
+    { icon: PencilSimple, title: 'Website Copywriting', description: 'Clear, compelling website copy that communicates your value proposition and drives conversions.' },
+    { icon: TextT, title: 'UX Microcopy', description: 'Button labels, error messages, tooltips, and interface text that guides users effortlessly.' },
+    { icon: Cursor, title: 'CTA Optimisation', description: 'A/B tested calls-to-action that maximise click-through rates and conversion.' },
+    { icon: Envelope, title: 'Email Campaigns', description: 'Subject lines, body copy, and sequences that nurture leads through your sales funnel.' },
     { icon: Megaphone, title: 'Ad & Campaign Copy', description: 'Punchy headlines and persuasive copy for paid search, social ads, and display campaigns.' },
     { icon: BookOpen, title: 'Brand Voice & Tone', description: 'Develop a distinctive brand voice with guidelines your entire team can follow.' },
   ];

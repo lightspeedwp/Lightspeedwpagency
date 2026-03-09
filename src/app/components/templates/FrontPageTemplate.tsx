@@ -22,10 +22,7 @@ import { HeroSplash } from '../patterns/HeroSplash';
 import { FeatureGrid } from '../patterns/FeatureGrid';
 import { StatsSection } from '../patterns/StatsSection';
 import { ProcessSteps } from '../patterns/ProcessSteps';
-import { TestimonialGrid } from '../patterns/TestimonialGrid';
 import { CardGrid } from '../patterns/CardGrid';
-import { FAQSection } from '../patterns/FAQSection';
-import { FunkyCTA } from '../patterns/FunkyCTA';
 import { TrendingTopicsWidget } from '../patterns/TrendingTopicsWidget';
 import { ActivityFeedWidget } from '../patterns/ActivityFeedWidget';
 import { ClientLogoGrid } from '../patterns/ClientLogoGrid';
@@ -35,6 +32,12 @@ import { Container } from '../common/Container';
 import { Button } from '../blocks/design/Buttons';
 import { ArrowRight } from '@phosphor-icons/react';
 import { ProofStrip } from '../patterns/ProofStrip';
+
+// ✨ LAZY-LOADED PATTERNS (Phase 3 Week 2 - March 6, 2026)
+// Below-the-fold patterns loaded on-demand for better performance
+import { LazyTestimonialGrid } from '../patterns/lazy/LazyTestimonialGrid';
+import { LazyFAQSection } from '../patterns/lazy/LazyFAQSection';
+import { LazyFunkyCTA } from '../patterns/lazy/LazyFunkyCTA';
 
 import {
   frontPageHero,
@@ -183,7 +186,7 @@ export function FrontPageTemplate() {
       {/* ============================================
           6. CTA BANNER
           ============================================ */}
-      <FunkyCTA
+      <LazyFunkyCTA
         title={frontPageMidCTA.title}
         description={frontPageMidCTA.description}
         buttonText={frontPageMidCTA.primaryButton.text}
@@ -231,7 +234,7 @@ export function FrontPageTemplate() {
             </h2>
           </div>
 
-          <TestimonialGrid
+          <LazyTestimonialGrid
             testimonials={frontPageTestimonials}
             columns={3}
             variant="cards"
@@ -332,7 +335,7 @@ export function FrontPageTemplate() {
       {/* ============================================
           10. COMMON QUESTIONS
           ============================================ */}
-      <FAQSection
+      <LazyFAQSection
         title="Common Questions"
         faqs={frontPageFAQs}
         variant="default"
@@ -341,7 +344,7 @@ export function FrontPageTemplate() {
       {/* ============================================
           11. BOTTOM CTA
           ============================================ */}
-      <FunkyCTA
+      <LazyFunkyCTA
         title={frontPageBottomCTA.title}
         description={frontPageBottomCTA.description}
         buttonText={frontPageBottomCTA.primaryButton.text}

@@ -4,7 +4,7 @@
  * Mock data for the Discovery Service page (DiscoveryServiceTemplate).
  */
 
-import { Search, Map, Compass, Target, FileText, Lightbulb } from 'lucide-react';
+import { MagnifyingGlass, MapTrifold, Compass, Crosshair, FileText, Lightbulb } from '@phosphor-icons/react';
 
 export const discoveryServiceHero = {
   title: "Digital Discovery & Strategy",
@@ -19,12 +19,12 @@ export const discoveryServiceOverview = {
   description: "Skipping discovery is the leading cause of project failure. Our process ensures we build the right thing, for the right people, for the right reasons.",
   features: [
     {
-      icon: Target,
+      icon: Crosshair,
       title: "Goal Alignment",
       description: "Aligning stakeholders on business objectives and success metrics."
     },
     {
-      icon: Map,
+      icon: MapTrifold,
       title: "Risk Mitigation",
       description: "Identifying technical and operational risks early in the process."
     },

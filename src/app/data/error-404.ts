@@ -4,7 +4,7 @@
  * Content for the 404 Not Found page.
  */
 
-import { Search, Home, ArrowRight } from 'lucide-react';
+import { MagnifyingGlass, House, ArrowRight } from '@phosphor-icons/react';
 
 export const error404Content = {
   title: "404 - Page Not Found",
@@ -14,7 +14,7 @@ export const error404Content = {
   backButton: {
     text: "Back to Home",
     url: "/",
-    icon: Home
+    icon: House
   },
   searchPlaceholder: "Search our site...",
   suggestedLinks: [

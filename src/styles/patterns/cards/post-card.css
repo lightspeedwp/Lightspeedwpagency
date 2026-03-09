@@ -4,6 +4,10 @@
  * Reusable post card component styles used across 20+ templates.
  * 100% CSS variables, zero hardcoded values.
  *
+ * MIGRATED: Phase 2 Base Extraction (January 2026)
+ * ✅ Already uses card-base.css for base card structure
+ * ✅ Phase 2 Pilot (March 6, 2026): Verified compliance - No additional migration needed
+ *
  * @see /src/app/components/patterns/PostCard.tsx
  */
 

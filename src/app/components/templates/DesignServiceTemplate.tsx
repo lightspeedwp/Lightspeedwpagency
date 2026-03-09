@@ -24,8 +24,7 @@
  * @migrated March 3, 2026 — Migrated inline design features grid to FeatureList component (~60 lines saved)
  */
 
-/* Route-level CSS */
-import '../../../styles/templates/page-service-design.css';
+/* Route-level CSS — optimized version loaded globally via index.css */
 import { Container } from '../common/Container';
 import { Button } from '../blocks/design/Buttons';
 import { FunkyCTA } from '../patterns/FunkyCTA';

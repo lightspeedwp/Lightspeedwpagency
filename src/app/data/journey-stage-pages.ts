@@ -16,12 +16,12 @@
 
 import type { UniversalIcon } from '../utils/icon-map';
 import {
-  Search, PenTool, Code, Rocket, TrendingUp, Brain,
-  Target, FileText, Users, Lightbulb, Palette, Image,
-  Mail, Layers, Shield, GitBranch, Server, GraduationCap,
-  Gauge, BarChart, Eye, Wrench, Cpu, Sparkles,
-  CheckCircle, ArrowRight, Clock, MessageSquare, LineChart,
-} from 'lucide-react';
+  MagnifyingGlass, PenNib, Code, Rocket, TrendUp, Brain,
+  Crosshair, FileText, Users, Lightbulb, Palette, Image,
+  Envelope, Stack, Shield, GitBranch, HardDrive, GraduationCap,
+  Gauge, ChartBar, Eye, Wrench, Cpu, Sparkle,
+  CheckCircle, ArrowRight, Clock, ChatCentered, ChartLine,
+} from '@phosphor-icons/react';
 
 /* ─────────────────────────────────────────────
    Types
@@ -39,7 +39,7 @@ export interface JourneyServiceCard {
   title: string;
   /** Short description */
   description: string;
-  /** Lucide icon */
+  /** Phosphor icon */
   icon: UniversalIcon;
   /** Optional badge ("NEW", "HOT") */
   badge?: string;
@@ -59,7 +59,7 @@ export interface JourneyStageData {
   name: string;
   /** Phase tagline */
   tagline: string;
-  /** Lucide icon for the phase */
+  /** Phosphor icon for the phase */
   icon: UniversalIcon;
   /** Neon accent CSS variable */
   accent: string;
@@ -103,7 +103,7 @@ export const journeyStages: JourneyStageData[] = [
     step: '01',
     name: 'Ignite',
     tagline: 'Uncover. Research. Strategise.',
-    icon: Search,
+    icon: MagnifyingGlass,
     accent: 'var(--category-violet)',
     duration: '2 – 4 weeks',
     description:
@@ -123,7 +123,7 @@ export const journeyStages: JourneyStageData[] = [
         page: 'discovery',
         title: 'Discovery & Strategy',
         description: 'Workshops, stakeholder interviews, and a prioritised roadmap.',
-        icon: Target,
+        icon: Crosshair,
       },
       {
         page: 'content',
@@ -166,7 +166,7 @@ export const journeyStages: JourneyStageData[] = [
     step: '02',
     name: 'Create',
     tagline: 'Design. Prototype. Inspire.',
-    icon: PenTool,
+    icon: PenNib,
     accent: 'var(--category-pink)',
     duration: '3 – 6 weeks',
     description:
@@ -192,7 +192,7 @@ export const journeyStages: JourneyStageData[] = [
         page: 'design',
         title: 'Figma Prototyping & Design Systems',
         description: 'Interactive prototypes and scalable design systems — now part of Design.',
-        icon: Layers,
+        icon: Stack,
         badge: 'MERGED',
       },
       {
@@ -370,7 +370,7 @@ export const journeyStages: JourneyStageData[] = [
     step: '05',
     name: 'Grow',
     tagline: 'Optimise. Rank. Scale.',
-    icon: TrendingUp,
+    icon: TrendUp,
     accent: 'var(--category-green)',
     duration: 'Ongoing',
     description:
@@ -396,7 +396,7 @@ export const journeyStages: JourneyStageData[] = [
         page: 'ai-search-visibility',
         title: 'AI Search & Visibility',
         description: 'SEO, analytics, AI engine, and answer engine — one service.',
-        icon: BarChart,
+        icon: ChartBar,
         badge: 'NEW',
       },
       {

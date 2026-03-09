@@ -1,9 +1,29 @@
 /**
  * Contact Info Pattern Styles
  * 
+ * MIGRATED: March 6, 2026 - Phase 2 Step 3, Batch B2
+ * - Uses icon-wrapper-base.css for icon wrapper structure
+ * - Removed ~36 lines of duplicate icon wrapper code (4 variants × ~9 lines each)
+ * - Icon wrappers: 4 variants with different sizes and colors
+ *   • Cards: 48px, rounded-lg, primary-soft background
+ *   • Sidebar: 40px, rounded, background with muted-foreground
+ *   • Minimal: No explicit wrapper sizing (text-flow)
+ *   • Default: 48px, rounded-lg, primary-soft background (matches cards)
+ * 
  * BEM-compliant styles for the ContactInfo component.
  * All vertical spacing via blockGap (CSS gap) -- zero margin.
+ * 100% CSS variables.
  */
+
+/* ============================================
+   BASE IMPORTS
+   ============================================ */
+
+@import '../base/icon-wrapper-base.css';
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
 
 .contact-info {
   width: 100%;

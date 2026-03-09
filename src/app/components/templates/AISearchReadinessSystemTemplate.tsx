@@ -9,7 +9,7 @@
  */
 
 import { Link } from 'react-router';
-import { ChevronRight, Sparkles, Check } from 'lucide-react';
+import { CaretRight, Sparkle, Check } from '@phosphor-icons/react';
 import { aiSearchReadinessSystem } from '../../data/systems-hub';
 import { serviceTiers } from '../../data/three-tier-model';
 import '@/styles/templates/ai-search-readiness-system.css';
@@ -24,14 +24,14 @@ export const AISearchReadinessSystemTemplate = () => {
         <Link to="/systems" className="system-page__breadcrumb-link">
           Systems
         </Link>
-        <ChevronRight className="system-page__breadcrumb-separator" />
+        <CaretRight className="system-page__breadcrumb-separator" />
         <span className="system-page__breadcrumb-current">AI Search Readiness</span>
       </nav>
 
       <section className="system-page__hero">
         <div className="system-page__hero-content">
           <div className="system-page__hero-icon">
-            <Sparkles className="system-page__hero-icon-svg" />
+            <Sparkle className="system-page__hero-icon-svg" />
           </div>
           <h1 className="system-page__hero-title">{system.name}</h1>
           <p className="system-page__hero-tagline">{system.tagline}</p>
@@ -140,7 +140,7 @@ export const AISearchReadinessSystemTemplate = () => {
                 <p className="system-page__tier-description">{tier.description}</p>
                 <Link to="/services" className="system-page__tier-link">
                   Learn More
-                  <ChevronRight className="system-page__tier-link-icon" />
+                  <CaretRight className="system-page__tier-link-icon" />
                 </Link>
               </div>
             ))}

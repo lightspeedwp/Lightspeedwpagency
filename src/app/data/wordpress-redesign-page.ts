@@ -10,14 +10,14 @@
  */
 
 import {
-  Search, PenTool, Code, Rocket, RefreshCw, Zap,
-  BarChart3, Shield, Eye, Smartphone, ArrowUpRight,
-  CheckCircle, Globe, FileText, Settings
-} from 'lucide-react';
+  MagnifyingGlass, PenNib, Code, Rocket, ArrowsClockwise, Lightning,
+  ChartBar, Shield, Eye, DeviceMobile, ArrowSquareOut,
+  CheckCircle, Globe, FileText, GearSix
+} from '@phosphor-icons/react';
 
 /* ── Hero ── */
 export const wpRedesignHero = {
-  badge: { text: 'WEBSITE REDESIGN', icon: RefreshCw },
+  badge: { text: 'WEBSITE REDESIGN', icon: ArrowsClockwise },
   title: 'WordPress Website Redesign',
   highlight: 'Redesign',
   tagline:
@@ -52,7 +52,7 @@ export const wpRedesignProcess = {
     {
       number: '01',
       title: 'Site Audit & Discovery',
-      icon: Search,
+      icon: MagnifyingGlass,
       description: 'We analyse your current site — content inventory, SEO performance, analytics, and technical debt — to understand what to keep and what to rebuild.',
       deliverables: ['Content audit report', 'SEO baseline metrics', 'Technical debt assessment', 'Stakeholder interviews'],
       duration: '1 Week',
@@ -68,7 +68,7 @@ export const wpRedesignProcess = {
     {
       number: '03',
       title: 'Design & Prototyping',
-      icon: PenTool,
+      icon: PenNib,
       description: 'Create a modern, accessible design system with your brand identity, then prototype key pages for approval.',
       deliverables: ['Design system (tokens, components)', 'High-fidelity mockups', 'Interactive prototype', 'Accessibility review'],
       duration: '2-3 Weeks',
@@ -105,14 +105,14 @@ export const wpRedesignServices = {
   title: 'What\'s Included',
   description: 'Every redesign bundles these core services into one streamlined engagement.',
   items: [
-    { icon: Search, title: 'Discovery & Audit', page: 'discovery', description: 'Comprehensive site audit and stakeholder discovery.' },
-    { icon: PenTool, title: 'Web Design', page: 'design', description: 'Modern responsive design with your brand identity.' },
+    { icon: MagnifyingGlass, title: 'Discovery & Audit', page: 'discovery', description: 'Comprehensive site audit and stakeholder discovery.' },
+    { icon: PenNib, title: 'Web Design', page: 'design', description: 'Modern responsive design with your brand identity.' },
     { icon: Code, title: 'WordPress Development', page: 'development', description: 'Custom block theme with FSE architecture.' },
     { icon: Globe, title: 'Content Migration', page: 'content', description: 'Safe content migration with SEO redirects.' },
-    { icon: Zap, title: 'Performance', page: 'performance', description: 'Core Web Vitals optimisation for speed.' },
+    { icon: Lightning, title: 'Performance', page: 'performance', description: 'Core Web Vitals optimisation for speed.' },
     { icon: Shield, title: 'Security', page: 'security', description: 'Hardened security setup and monitoring.' },
-    { icon: BarChart3, title: 'AI Search', page: 'ai-search-visibility', description: 'SEO preservation and enhancement.' },
-    { icon: Settings, title: 'Training', page: 'training', description: 'Team training on the new CMS.' },
+    { icon: ChartBar, title: 'AI Search', page: 'ai-search-visibility', description: 'SEO preservation and enhancement.' },
+    { icon: GearSix, title: 'Training', page: 'training', description: 'Team training on the new CMS.' },
   ],
 };
 

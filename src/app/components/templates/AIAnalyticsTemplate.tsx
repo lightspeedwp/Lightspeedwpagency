@@ -5,8 +5,8 @@
  * Route: /solutions/ai-integrations/analytics
  */
 
-import '../../../styles/templates/page-solution-ai.css';
-import { LineChart } from 'lucide-react';
+import '../../../styles/templates/page-solution-ai-optimized.css';
+import { ChartLine } from '@phosphor-icons/react';
 import { AISubPageTemplate } from './AISubPageTemplate';
 import {
   aiAnalyticsHero,
@@ -23,7 +23,7 @@ export function AIAnalyticsTemplate() {
     <AISubPageTemplate
       variant="analytics"
       hero={aiAnalyticsHero}
-      heroIcon={LineChart}
+      heroIcon={ChartLine}
       stats={aiAnalyticsStats}
       statsTitle="Analytics Impact"
       statsDescription="What AI-powered analytics delivers for your business"

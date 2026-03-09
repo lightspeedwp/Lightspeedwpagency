@@ -8,7 +8,7 @@ import { CaretLeft as ChevronLeft, CaretRight as ChevronRight, ArrowSquareOut as
 import { Link } from 'react-router';
 import { portfolioProjects } from '../../data/portfolio-projects';
 import { ImageWithFallback } from '../figma/ImageWithFallback';
-import { getPageUrl } from '../../data/pages';
+import { getPageUrl } from '../../data/site-pages';
 
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';

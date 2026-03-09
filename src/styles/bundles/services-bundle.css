@@ -1,0 +1,126 @@
+/**
+ * Services Route Bundle
+ * 
+ * Routes: /services/*, /services/*/sub-service-*
+ * Size: ~15-25KB gzipped
+ * Priority: Critical (core business route)
+ * 
+ * This bundle includes:
+ * - service-base.css (1,890 lines) — Service structure base
+ * - 5 service shared/base files
+ * - 26 service template files
+ * - 14 service pattern files
+ * 
+ * Total: 45 files, ~15-25KB gzipped
+ * 
+ * Design System Compliance:
+ * - All fonts use var(--font-primary) / var(--font-secondary)
+ * - All colors use semantic CSS variables
+ * - All spacing uses var(--spacing-*) tokens
+ * - BEM naming conventions
+ * - WordPress utility classes (.wp-*)
+ * 
+ * @see /reports/2026-03/memory-optimization/route-to-css-mapping.md
+ */
+
+/* ============================================
+   SERVICES STRUCTURE BASE
+   ============================================ */
+
+/* Service Structure Base (781 lines) */
+@import '../templates/service-base.css';
+
+/* Service Shared Styles (5 files) */
+@import '../templates/service-pages-shared.css';
+@import '../templates/sub-service-base.css';
+@import '../templates/sub-service-compact.css';
+@import '../templates/common-template-headers.css';
+
+/* ============================================
+   SERVICE TEMPLATES
+   ============================================ */
+
+/* Main Service Landing */
+@import '../templates/page-services-landing-optimized.css';
+
+/* Service Detail Layout */
+@import '../templates/service-detail.css';
+
+/* Individual Service Templates (21 files) */
+@import '../templates/page-service-development-optimized.css';
+@import '../templates/page-service-design-optimized.css';
+@import '../templates/page-service-discovery-optimized.css';
+@import '../templates/page-service-performance-optimized.css';
+@import '../templates/seo-service-optimized.css';
+@import '../templates/page-service-content-optimized.css';
+@import '../templates/page-service-security-optimized.css';
+@import '../templates/migrations-service-optimized.css';
+@import '../templates/support-service-optimized.css';
+@import '../templates/analytics-service-optimized.css';
+@import '../templates/accessibility-service-optimized.css';
+@import '../templates/ai-engine-service-optimized.css';
+@import '../templates/answer-engine-service-optimized.css';
+@import '../templates/content-strategy-service-optimized.css';
+@import '../templates/page-service-training-optimized.css';
+@import '../templates/page-service-hosting.css';
+
+/* Landing/Parent Service Templates (3 files) */
+@import '../templates/page-service-ai-landing-optimized.css';
+@import '../templates/page-service-content-landing-optimized.css';
+@import '../templates/page-service-design-systems-optimized.css';
+
+/* ============================================
+   SERVICE PATTERNS
+   ============================================ */
+
+/* Service-Specific Patterns (14 files) */
+@import '../patterns/services-card.css';
+@import '../patterns/service-offerings-grid.css';
+@import '../patterns/service-testimonial.css';
+@import '../patterns/service-testimonials.css';
+@import '../patterns/service-case-studies.css';
+@import '../patterns/service-comparison-table.css';
+@import '../patterns/service-pricing-timeline.css';
+@import '../patterns/included-solutions.css';
+@import '../patterns/related-services.css';
+@import '../patterns/related-services-grid.css';
+@import '../patterns/wordpress-services.css';
+@import '../patterns/why-choose-us.css';
+@import '../patterns/use-cases-grid.css';
+@import '../patterns/solutions-detail-grid.css';
+
+/* ============================================
+   BUNDLE INFO
+   ============================================ */
+
+/**
+ * Services Bundle Summary:
+ * 
+ * Base Files: 5 files (service-base + 4 shared, ~10-12KB gzipped)
+ * Templates: 26 files (~5-8KB gzipped)
+ * Patterns: 14 files (~3-5KB gzipped)
+ * 
+ * Total: 45 files, ~15-25KB gzipped
+ * 
+ * Routes Served:
+ * - /services (Services landing)
+ * - /services/:service (Individual services)
+ * - /services/:parent/:sub-service (Sub-services)
+ * 
+ * Service Categories:
+ * - WordPress & WooCommerce (Development, Design, Performance)
+ * - AI & Search (SEO, Analytics, AI Engine, Answer Engine)
+ * - Content & Strategy (Content Strategy, Content Services)
+ * - Support & Maintenance (Support, Security, Migrations)
+ * - Training & Hosting
+ * 
+ * Loading Strategy:
+ * - Load on route match: /services/*
+ * - Preload on hover: Service navigation links
+ * - Cache: Long-term (service pages rarely change)
+ * 
+ * Expected Impact:
+ * - 48-62% reduction vs. loading all CSS (201KB → 75-105KB)
+ * - Faster FCP on service pages
+ * - Improved Lighthouse score
+ */

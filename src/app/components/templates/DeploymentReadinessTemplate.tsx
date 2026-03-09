@@ -14,19 +14,19 @@ import '../../../styles/templates/deployment-readiness.css';
 import { useState, useCallback, useMemo } from 'react';
 import {
   Gauge,
-  LinkIcon,
-  Accessibility,
+  LinkSimple,
+  Wheelchair,
   Package,
-  Blocks,
-  ClipboardCheck,
-  CheckCircle2,
+  Cube,
+  ClipboardText,
+  CheckCircle,
   XCircle,
-  AlertTriangle,
+  Warning,
   Play,
-  Download,
-  RotateCcw,
-  RefreshCw,
-} from 'lucide-react';
+  DownloadSimple,
+  ArrowCounterClockwise,
+  ArrowsClockwise,
+} from '@phosphor-icons/react';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 
 
@@ -188,9 +188,9 @@ function StatusIcon({ status }: { status: CheckStatus }) {
   const iconClass = `deploy__check-icon deploy__check-icon--${status}`;
   switch (status) {
     case 'pass':
-      return <CheckCircle2 size={20} className={iconClass} />;
+      return <CheckCircle size={20} className={iconClass} />;
     case 'warning':
-      return <AlertTriangle size={20} className={iconClass} />;
+      return <Warning size={20} className={iconClass} />;
     case 'fail':
       return <XCircle size={20} className={iconClass} />;
   }
@@ -323,7 +323,7 @@ export function DeploymentReadinessTemplate() {
 
             {hasRun && (
               <div className={`deploy__overall-score ${overallClass}`}>
-                <CheckCircle2 size={20} />
+                <CheckCircle size={20} />
                 Overall Score: {overallScore}%
               </div>
             )}
@@ -337,12 +337,12 @@ export function DeploymentReadinessTemplate() {
               >
                 {isRunning ? (
                   <>
-                    <RefreshCw size={18} style={{ animation: 'spin 1s linear infinite' }} />
+                    <ArrowsClockwise size={18} style={{ animation: 'spin 1s linear infinite' }} />
                     Running Checks...
                   </>
                 ) : hasRun ? (
                   <>
-                    <RotateCcw size={18} />
+                    <ArrowCounterClockwise size={18} />
                     Re-Run All Checks
                   </>
                 ) : (
@@ -420,7 +420,7 @@ export function DeploymentReadinessTemplate() {
               {/* Broken Links */}
               {renderSection(
                 'Broken Link Checker',
-                <LinkIcon size={22} />,
+                <LinkSimple size={22} />,
                 audit.brokenLinks,
                 {
                   label: `${audit.brokenLinks.filter(i => i.status === 'pass').length}/${audit.brokenLinks.length} passed`,
@@ -431,7 +431,7 @@ export function DeploymentReadinessTemplate() {
               {/* WordPress FSE Compatibility */}
               {renderSection(
                 'WordPress FSE Compatibility',
-                <Blocks size={22} />,
+                <Cube size={22} />,
                 audit.wpCompat,
                 {
                   label: `${audit.wpCompat.filter(i => i.status === 'pass').length}/${audit.wpCompat.length} passed`,
@@ -457,7 +457,7 @@ export function DeploymentReadinessTemplate() {
                   onClick={exportJSON}
                   aria-label="Export report as JSON"
                 >
-                  <Download size={16} />
+                  <DownloadSimple size={16} />
                   Export JSON Report
                 </button>
                 <button
@@ -468,7 +468,7 @@ export function DeploymentReadinessTemplate() {
                   }}
                   aria-label="Reset dashboard"
                 >
-                  <RotateCcw size={16} />
+                  <ArrowCounterClockwise size={16} />
                   Reset
                 </button>
               </div>

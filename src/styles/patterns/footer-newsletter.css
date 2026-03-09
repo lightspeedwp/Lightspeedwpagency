@@ -3,7 +3,24 @@
  * 
  * BEM-compliant styles for the FooterNewsletter component.
  * All vertical spacing via blockGap (CSS gap) -- zero margin.
+ * 
+ * MIGRATED: March 6, 2026 - Phase 2 Step 3, Batch A2
+ * - Uses grid-responsive-base.css for responsive grid behavior
+ * - Removed ~25 lines of duplicate grid responsive code
+ * - Multiple responsive grids (2-col main, 2→4 col links section)
+ * 
+ * 100% CSS variables.
  */
+
+/* ============================================
+   BASE IMPORTS
+   ============================================ */
+
+@import '../base/grid-responsive-base.css';
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
 
 .footer-newsletter {
   background-color: var(--background);
@@ -18,7 +35,7 @@
   gap: var(--spacing-16);
 }
 
-/* Main Content */
+/* Main Content - inherits responsive behavior from grid-responsive-base */
 .footer-newsletter__main {
   display: grid;
   gap: var(--spacing-12);
@@ -31,7 +48,7 @@
   }
 }
 
-/* Links Section */
+/* Links Section - inherits responsive behavior from grid-responsive-base */
 .footer-newsletter__links {
   display: grid;
   grid-template-columns: repeat(2, 1fr);

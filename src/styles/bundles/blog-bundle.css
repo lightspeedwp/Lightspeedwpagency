@@ -1,0 +1,104 @@
+/**
+ * Blog Route Bundle
+ * 
+ * Routes: /insights/*, /insights/author/*, /insights/category/*, /insights/tag/*, /insights/formats/*
+ * Size: ~8-12KB gzipped
+ * Priority: Critical (high-traffic route)
+ * 
+ * This bundle includes:
+ * - blog-base.css (664 lines) — Blog structure base
+ * - 5 blog template files
+ * - 6 blog pattern files
+ * - 11 post format block files
+ * 
+ * Total: 22 files, ~8-12KB gzipped
+ * 
+ * Design System Compliance:
+ * - All fonts use var(--font-primary) / var(--font-secondary)
+ * - All colors use semantic CSS variables
+ * - All spacing uses var(--spacing-*) tokens
+ * - BEM naming conventions
+ * - WordPress utility classes (.wp-*)
+ * 
+ * @see /reports/2026-03/memory-optimization/route-to-css-mapping.md
+ */
+
+/* ============================================
+   BLOG STRUCTURE BASE
+   ============================================ */
+
+/* Blog Structure Base (664 lines) */
+@import '../templates/blog-base.css';
+
+/* ============================================
+   BLOG TEMPLATES
+   ============================================ */
+
+/* Main Blog Templates */
+@import '../templates/blog-index-page.css';
+@import '../templates/single-post-page.css';
+@import '../templates/single-post.css';
+@import '../templates/author-archive.css';
+@import '../templates/page-insights-landing.css';
+
+/* ============================================
+   BLOG PATTERNS
+   ============================================ */
+
+/* Blog-Specific Patterns (6 files) */
+@import '../patterns/author-bio.css';
+@import '../patterns/related-posts.css';
+@import '../patterns/recent-posts-widget.css';
+@import '../patterns/related-content-widget.css';
+@import '../patterns/content-stats-widget.css';
+@import '../patterns/trending-topics-widget.css';
+
+/* ============================================
+   POST FORMAT BLOCKS
+   ============================================ */
+
+/* Post Format Block Styles (11 files) */
+@import '../blocks/post-formats/aside-stream.css';
+@import '../blocks/post-formats/aside.css';
+@import '../blocks/post-formats/audio.css';
+@import '../blocks/post-formats/chat.css';
+@import '../blocks/post-formats/gallery.css';
+@import '../blocks/post-formats/image.css';
+@import '../blocks/post-formats/link.css';
+@import '../blocks/post-formats/quote.css';
+@import '../blocks/post-formats/standard.css';
+@import '../blocks/post-formats/status.css';
+@import '../blocks/post-formats/video.css';
+
+/* ============================================
+   BUNDLE INFO
+   ============================================ */
+
+/**
+ * Blog Bundle Summary:
+ * 
+ * Base Files: 1 file (blog-base.css, 664 lines)
+ * Templates: 5 files (~4-6KB gzipped)
+ * Patterns: 6 files (~2-3KB gzipped)
+ * Blocks: 11 files (~2-3KB gzipped)
+ * 
+ * Total: 23 files, ~8-12KB gzipped
+ * 
+ * Routes Served:
+ * - /insights (Blog index)
+ * - /insights/:slug (Single posts)
+ * - /insights/author/:author (Author archives)
+ * - /insights/category/:category (Category archives)
+ * - /insights/tag/:tag (Tag archives)
+ * - /insights/formats/* (Post format archives)
+ * 
+ * Loading Strategy:
+ * - Load on route match: /insights/*
+ * - Preload on hover: Blog navigation links
+ * - Cache: Medium-term (content updates regularly)
+ * 
+ * Expected Impact:
+ * - 54-66% reduction vs. loading all CSS (201KB → 68-92KB)
+ * - Faster FCP on blog routes
+ * - Improved Lighthouse score
+ */

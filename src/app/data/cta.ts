@@ -10,7 +10,7 @@
  * - Resource (Download/View)
  */
 
-import { Mail, Calendar, ArrowRight, Download, MessageSquare, Search, ShoppingCart } from 'lucide-react';
+import { Envelope, Calendar, ArrowRight, DownloadSimple, ChatCentered, MagnifyingGlass, ShoppingCart } from '@phosphor-icons/react';
 import type { ComponentType } from 'react';
 
 export interface CTAData {
@@ -78,7 +78,7 @@ export const auditCTA: CTAData = {
   primaryButton: {
     text: "Request an Audit",
     page: "contact",
-    icon: Search
+    icon: MagnifyingGlass
   },
   variant: "minimal"
 };
@@ -93,7 +93,7 @@ export const newsletterCTA: CTAData = {
   primaryButton: {
     text: "Subscribe Now",
     page: "newsletter-service",
-    icon: Mail
+    icon: Envelope
   },
   variant: "glass"
 };
@@ -123,7 +123,7 @@ export const portfolioPageCTA: CTAData = {
   primaryButton: {
     text: "Get a Quote",
     page: "contact",
-    icon: MessageSquare
+    icon: ChatCentered
   },
   variant: "default"
 };

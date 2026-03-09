@@ -4,7 +4,7 @@
  * Content for the WordPress Solution template.
  */
 
-import { Layout, Smartphone, Zap, Search, Lock, Edit3, Globe, BarChart, Server, Database } from 'lucide-react';
+import { Layout, DeviceMobile, Lightning, MagnifyingGlass, Lock, PencilSimple, Globe, ChartBar, HardDrives, Database } from '@phosphor-icons/react';
 
 export const wordpressSolutionHero = {
   title: "Enterprise-Grade WordPress Solutions",
@@ -27,13 +27,13 @@ export const wordpressSolutionOverview = {
       description: "Of the entire web is powered by WordPress"
     },
     {
-      icon: BarChart,
+      icon: ChartBar,
       value: "60%",
       label: "CMS Market",
       description: "WordPress dominates the CMS market share"
     },
     {
-      icon: Server,
+      icon: HardDrives,
       value: "100%",
       label: "Ownership",
       description: "You own your data and content completely"
@@ -49,22 +49,22 @@ export const wordpressSolutionOverview = {
 
 export const wordpressSolutionFeatures = [
   {
-    icon: Edit3,
+    icon: PencilSimple,
     title: "Full Site Editing",
     description: "Equip your team with the block editor — patterns, templates, and guardrails — so they manage content without code."
   },
   {
-    icon: Smartphone,
+    icon: DeviceMobile,
     title: "Responsive By Design",
     description: "Mobile-first approach ensuring your site looks perfect on every device."
   },
   {
-    icon: Zap,
+    icon: Lightning,
     title: "Performance Optimized",
     description: "Built for speed with core web vitals in mind. Fast loading = better SEO."
   },
   {
-    icon: Search,
+    icon: MagnifyingGlass,
     title: "SEO Ready",
     description: "Clean code structure and semantic markup that search engines love."
   },

@@ -9,32 +9,31 @@
  * - Editorial Pipeline Timeline
  * - Sticky Note Services Grid
  * 
+ * Pattern Components:
+ * - ✅ FeatureList — Editorial services grid (glow variant, 3 columns)
+ * - ✅ ProcessTimeline — Editorial pipeline (vertical orientation)
+ * - ✅ FunkyCTA — Final conversion section
+ *
  * STRICT DESIGN SYSTEM COMPLIANCE:
  * - Zero inline styles (except CSS variable dynamic values)
  * - All styling via @/styles/templates/page-service-content.css
  * - Colors mapped to global semantic tokens for auto light/dark
  * - Fonts: var(--font-primary), var(--font-secondary), var(--font-mono) only
+ *
+ * @migrated March 4, 2026 — Migrated inline services grid to FeatureList and inline process to ProcessTimeline (~40 lines saved)
  */
 
-/* Route-level CSS */
-import '../../../styles/templates/page-service-content.css';
 import { Container } from '../common/Container';
 import { FunkyCTA } from '../patterns/FunkyCTA';
-import { RelatedServicesGrid } from '../patterns/RelatedServicesGrid';
+import { FeatureList } from '../patterns/FeatureList';
+import { ProcessTimeline } from '../patterns/ProcessTimeline';
 import { IncludedInSolutions } from '../patterns/IncludedInSolutions';
 import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
 import { ServicePricingTimeline } from '../patterns/ServicePricingTimeline';
 import { servicePricingTimeline } from '../../data/services';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { ScrollDownArrow } from '../common/ScrollDownArrow';
-import { 
-  PenNib as PenTool, 
-  PencilLine as Edit3, 
-  FileText, 
-  BookOpen, 
-  Feather, 
-  SquaresFour as Layout
-} from '@phosphor-icons/react';
+import { Feather } from '@phosphor-icons/react';
 
 // Import detailed data
 import { 
@@ -44,44 +43,15 @@ import {
   contentProcess
 } from '../../data/content-service-page';
 
+/* ── Map process data to ProcessTimeline shape ── */
+const processSteps = contentProcess.map((step) => ({
+  id: `content-step-${step.step}`,
+  number: step.step,
+  title: step.title,
+  description: step.description,
+}));
+
 export function ContentServiceTemplate() {
-  // Build a unified data object from imports
-  const data = {
-    tagline: contentHero.description,
-    whyLightSpeed: {
-      title: whyContentStrategy.title,
-      description: whyContentStrategy.description
-    },
-    subServices: contentServices.map((service, i) => ({
-      id: `service-${i}`,
-      title: service.title,
-      description: service.description
-    })),
-    process: {
-      steps: contentProcess.map((step, i) => ({
-        id: `step-${i}`,
-        number: `0${i + 1}`,
-        title: step.title,
-        description: step.description
-      }))
-    },
-    relatedServices: [],
-    cta: {
-      title: "Ready to Transform Your Content?",
-      description: "Let's create compelling content that engages your audience and drives results.",
-      buttonText: "Start Content Strategy",
-      buttonPage: "contact" as const
-    }
-  };
-
-  // Icon mapping for Sub-services
-  const serviceIcons: Record<string, any> = {
-    'content-strategy': Layout,
-    'copywriting': PenTool,
-    'blog-content': BookOpen,
-    'editing': Edit3
-  };
-
   return (
     <div className="content-page">
       {/* ============================================
@@ -124,7 +94,7 @@ export function ContentServiceTemplate() {
               
               <div className="content-page__description-wrapper">
                 <p className="content-page__description">
-                  {data.tagline}
+                  {contentHero.description}
                 </p>
                 {/* Editing Marks — uses BEM class */}
                 <span className="content-page__edit-mark content-page__edit-mark--insert">^ insert magic</span>
@@ -148,11 +118,11 @@ export function ContentServiceTemplate() {
               </div>
               
               <h2 className="content-page__section-title">
-                {data.whyLightSpeed.title}
+                {whyContentStrategy.title}
               </h2>
               
               <p className="content-page__section-desc">
-                {data.whyLightSpeed.description}
+                {whyContentStrategy.description}
               </p>
             </div>
           </ScrollReveal>
@@ -174,20 +144,11 @@ export function ContentServiceTemplate() {
           </div>
 
           <div className="content-page__services-grid">
-            {data.subServices.map((service, index) => {
-              const Icon = serviceIcons[service.id] || FileText;
-              return (
-                <ScrollReveal key={service.id} animation="fade-up" delay={index * 50}>
-                  <div className="content-page__service-card">
-                    <div className="content-page__service-icon">
-                      <Icon size={24} strokeWidth={1.5} />
-                    </div>
-                    <h3 className="content-page__service-title">{service.title}</h3>
-                    <p className="content-page__service-desc">{service.description}</p>
-                  </div>
-                </ScrollReveal>
-              );
-            })}
+            <FeatureList
+              items={contentServices}
+              columns={3}
+              variant="glow"
+            />
           </div>
         </Container>
       </section>
@@ -207,31 +168,15 @@ export function ContentServiceTemplate() {
           </div>
 
           <div className="content-page__process-timeline">
-            {data.process.steps.map((step, index) => (
-              <ScrollReveal key={step.id || index} animation="fade-right" delay={index * 100}>
-                <div className="content-page__process-step">
-                  <div className="content-page__step-marker">
-                    {step.number}
-                  </div>
-                  <div className="content-page__step-content">
-                    <h4 className="content-page__step-title">{step.title}</h4>
-                    <p className="content-page__step-desc">{step.description}</p>
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
+            <ProcessTimeline
+              steps={processSteps}
+              orientation="vertical"
+            />
           </div>
         </Container>
       </section>
 
       {/* CTA Section */}
-      {data.relatedServices && data.relatedServices.length > 0 && (
-        <RelatedServicesGrid
-          title="Related Services"
-          subtitle="Amplify your content with these complementary services"
-          services={data.relatedServices}
-        />
-      )}
       <IncludedInSolutions
         serviceSlug="content"
         subtitle="Our content service is part of these comprehensive solution packages"
@@ -260,10 +205,10 @@ export function ContentServiceTemplate() {
       )}
       
       <FunkyCTA
-        title={data.cta.title}
-        description={data.cta.description}
-        buttonText={data.cta.buttonText}
-        buttonPage={data.cta.buttonPage}
+        title="Ready to Transform Your Content?"
+        description="Let's create compelling content that engages your audience and drives results."
+        buttonText="Start Content Strategy"
+        buttonPage="contact"
         benefits={[
           'Brand Voice Guidelines',
           'SEO Content Strategy',

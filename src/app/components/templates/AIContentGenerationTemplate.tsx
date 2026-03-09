@@ -5,8 +5,8 @@
  * Route: /solutions/ai-integrations/content-generation
  */
 
-import '../../../styles/templates/page-solution-ai.css';
-import { PenTool } from 'lucide-react';
+import '../../../styles/templates/page-solution-ai-optimized.css';
+import { PenNib } from '@phosphor-icons/react';
 import { AISubPageTemplate } from './AISubPageTemplate';
 import {
   aiContentHero,
@@ -23,7 +23,7 @@ export function AIContentGenerationTemplate() {
     <AISubPageTemplate
       variant="content"
       hero={aiContentHero}
-      heroIcon={PenTool}
+      heroIcon={PenNib}
       stats={aiContentStats}
       statsTitle="Content Generation Impact"
       statsDescription="How AI transforms your content workflow"

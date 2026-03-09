@@ -1,10 +1,30 @@
 /**
- * Portfolio Single Template Styles
+ * Single Portfolio/Project Page Styles
+ *
+ * BEM naming: .portfolio-single__*
+ * 100% CSS variables, zero hardcoded values.
  * 
- * Dedicated styles for single portfolio project layout.
- * 100% CSS variables, no hardcoded values.
- * Enhanced with "Funky" Neon aesthetic for dark mode.
+ * MIGRATED: March 6, 2026 - Phase 2 Step 3, Batch C1
+ * - Uses glass-effect-base.css for glassmorphism patterns
+ * - Glass effect patterns documented:
+ *   • .portfolio-single__meta-card: blur(10px) meta info cards (custom 10px - preserved)
+ *   • .portfolio-single__deliverable-item: blur(10px) deliverable cards (custom 10px - preserved)
+ *   • .portfolio-single__testimonial: blur(10px) testimonial card (custom 10px - preserved)
+ *   • .portfolio-single__stat-card: blur(10px) stat cards (custom 10px - preserved)
  */
+
+/* ============================================
+   BASE IMPORTS — Phase 1 Optimization
+   ============================================ */
+
+/**
+ * Import shared base modules to reduce duplication
+ * @see /docs/css-base-extraction-guide.md
+ */
+@import '../base/grid-utilities.css';
+@import '../base/card-base.css';
+@import '../base/glass-effect-base.css';
+@import '../patterns/hero/hero-base.css';
 
 /* ============================================
    BREADCRUMBS SECTION

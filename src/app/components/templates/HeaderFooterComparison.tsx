@@ -16,7 +16,7 @@ import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { Heading } from '../common/Heading';
 import { Paragraph } from '../blocks/text/Paragraph';
-import { Layout, PanelTop, PanelBottom } from 'lucide-react';
+import { Layout, Rows, Columns } from '@phosphor-icons/react';
 import { SiteHeader } from '../parts/SiteHeader';
 import { SiteFooter } from '../parts/SiteFooter';
 
@@ -50,7 +50,7 @@ export function HeaderFooterComparison() {
         <section className="comparison__section">
           <ScrollReveal animation="fade-up" delay={100}>
             <h2 className="comparison__section-title">
-              <PanelTop size={28} className="wp-text-primary" />
+              <Rows size={28} className="wp-text-primary" />
               Header Variations
             </h2>
             
@@ -73,7 +73,7 @@ export function HeaderFooterComparison() {
                   <span>parts/header-transparent.html</span>
                 </div>
                 <div className="comparison__preview-content" style={{ position: 'relative', minHeight: '100px', background: 'var(--primary-dark)' }}>
-                  <div style={{ padding: '1rem', color: 'white', textAlign: 'center', fontSize: '0.8rem' }}>
+                  <div style={{ padding: 'var(--spacing-4)', color: 'white', textAlign: 'center', fontSize: 'var(--text-xs)' }}>
                     (Simulated dark background)
                   </div>
                   <SiteHeader />
@@ -87,7 +87,7 @@ export function HeaderFooterComparison() {
         <section className="comparison__section">
           <ScrollReveal animation="fade-up" delay={200}>
             <h2 className="comparison__section-title">
-              <PanelBottom size={28} className="wp-text-primary" />
+              <Columns size={28} className="wp-text-primary" />
               Footer Variations
             </h2>
 
@@ -111,7 +111,7 @@ export function HeaderFooterComparison() {
                 </div>
                 <div className="comparison__preview-content">
                   {/* Simulate minimal footer by hiding some sections via CSS or passing props if supported */}
-                  <div style={{ padding: 'var(--spacing-8)', textAlign: 'center', background: 'var(--background)' }}>
+                  <div style={{ padding: 'var(--spacing-4)', color: 'white', textAlign: 'center', fontSize: 'var(--text-xs)' }}>
                     <p style={{ margin: 0, fontSize: 'var(--text-sm)', color: 'var(--muted-foreground)' }}>
                       &copy; {new Date().getFullYear()} LSX Design. All rights reserved.
                     </p>

@@ -1,0 +1,62 @@
+/**
+ * Pattern Placeholder Styles
+ * 
+ * Reserves space for lazy-loaded patterns to prevent layout shift
+ * 
+ * Design System Compliance:
+ * - All colors use CSS variables (var(--muted))
+ * - Border radius uses var(--radius*) tokens
+ * - NO hardcoded values
+ * - No animations (just placeholder)
+ * 
+ * User Control:
+ * Users can customize by editing:
+ * - /src/styles/theme-light.css (--muted color)
+ * - /src/styles/theme-dark.css (dark mode --muted)
+ * - /src/styles/theme-base.css (--radius-lg)
+ * 
+ * @see /src/app/components/patterns/PatternPlaceholder.tsx
+ * @see /reports/2026-03/phase-3-step-4-task-4-1-plan.md
+ */
+
+/* ============================================================================
+   Pattern Placeholder Container
+   ============================================================================ */
+
+.pattern-placeholder {
+  /* Layout */
+  width: 100%;
+  display: block;
+  
+  /* Colors - uses CSS variable */
+  background-color: var(--muted);
+  
+  /* Border Radius - uses CSS variable */
+  border-radius: var(--radius-lg);
+  
+  /* No animations or transitions (just placeholder) */
+}
+
+/* ============================================================================
+   Responsive Adjustments (Optional)
+   ============================================================================ */
+
+/**
+ * Mobile: Smaller min-height if not specified
+ */
+@media (max-width: 768px) {
+  .pattern-placeholder {
+    /* Let minHeight prop control size */
+    /* No default min-height here to avoid conflicts */
+  }
+}
+
+/**
+ * Desktop: Larger min-height if not specified
+ */
+@media (min-width: 1024px) {
+  .pattern-placeholder {
+    /* Let minHeight prop control size */
+    /* No default min-height here to avoid conflicts */
+  }
+}

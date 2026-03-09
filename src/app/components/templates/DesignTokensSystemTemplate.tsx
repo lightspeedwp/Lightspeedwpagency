@@ -18,7 +18,7 @@
  */
 
 import { Link } from 'react-router';
-import { ChevronRight, Palette, Check } from 'lucide-react';
+import { CaretRight, Palette, Check } from '@phosphor-icons/react';
 import { designTokensSystem } from '../../data/systems-hub';
 import { serviceTiers } from '../../data/three-tier-model';
 import '@/styles/templates/design-tokens-system.css';
@@ -34,7 +34,7 @@ export const DesignTokensSystemTemplate = () => {
         <Link to="/systems" className="system-page__breadcrumb-link">
           Systems
         </Link>
-        <ChevronRight className="system-page__breadcrumb-separator" />
+        <CaretRight className="system-page__breadcrumb-separator" />
         <span className="system-page__breadcrumb-current">Design Tokens</span>
       </nav>
 
@@ -174,7 +174,7 @@ export const DesignTokensSystemTemplate = () => {
                 </p>
                 <Link to="/services" className="design-tokens-system__tier-link">
                   Learn More
-                  <ChevronRight className="design-tokens-system__tier-link-icon" />
+                  <CaretRight className="design-tokens-system__tier-link-icon" />
                 </Link>
               </div>
             ))}

@@ -35,6 +35,73 @@
   text-align: center;
 }
 
+/* ============================================
+   HERO BACKGROUND IMAGE (PARALLAX)
+   ============================================ */
+
+/**
+ * Background image with parallax effect
+ * - Fixed positioning for parallax effect
+ * - Covers entire hero section
+ * - Object-fit cover maintains aspect ratio
+ * - Transform will be controlled by JavaScript
+ * - Low z-index (behind all overlays)
+ */
+.hero-base__bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120%; /* Extra height for parallax movement */
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+  will-change: transform; /* Optimize for animation */
+}
+
+/**
+ * Fullscreen hero background
+ * Extend height for better parallax effect
+ */
+.hero-spacing-fullscreen .hero-base__bg {
+  height: 130%;
+}
+
+/**
+ * Background overlay (darkens image for readability)
+ * - Positioned above background image
+ * - Semi-transparent black gradient
+ * - Darkest at center for text readability
+ */
+.hero-base__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--color-black) 40%, transparent) 0%,
+    color-mix(in srgb, var(--color-black) 60%, transparent) 50%,
+    color-mix(in srgb, var(--color-black) 40%, transparent) 100%
+  );
+  z-index: 0;
+  pointer-events: none;
+}
+
+/**
+ * Dark theme overlay adjustment
+ * Slightly lighter overlay in dark mode
+ */
+[data-theme="dark"] .hero-base__overlay {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--color-black) 50%, transparent) 0%,
+    color-mix(in srgb, var(--color-black) 70%, transparent) 50%,
+    color-mix(in srgb, var(--color-black) 50%, transparent) 100%
+  );
+}
+
 /**
  * Hero with left alignment
  * Use .hero-base--left for left-aligned text
@@ -239,6 +306,45 @@
  */
 .hero-base__content--narrow {
   max-width: 600px;
+}
+
+/* ============================================
+   HERO ALIGNMENT UTILITIES
+   ============================================ */
+
+/**
+ * Center alignment (default for most heroes)
+ */
+.hero-align-center {
+  text-align: center;
+}
+
+.hero-align-center .hero-base__actions {
+  justify-content: center;
+}
+
+/**
+ * Left alignment (for content-heavy heroes)
+ */
+.hero-align-left {
+  text-align: left;
+}
+
+.hero-align-left .hero-base__actions {
+  justify-content: flex-start;
+}
+
+/**
+ * Mobile: always center align
+ */
+@media (max-width: 767px) {
+  .hero-align-left {
+    text-align: center;
+  }
+
+  .hero-align-left .hero-base__actions {
+    justify-content: center;
+  }
 }
 
 /* ============================================
@@ -508,13 +614,17 @@
    ============================================ */
 
 /**
- * Disable orb animations for users who prefer reduced motion
+ * Disable orb animations and parallax for users who prefer reduced motion
  */
 @media (prefers-reduced-motion: reduce) {
   .hero-base__orb--primary,
   .hero-base__orb--secondary,
   .hero-base__orb--accent {
     animation: none;
+  }
+
+  .hero-base__bg {
+    transform: none !important; /* Disable parallax transform */
   }
 
   @keyframes floatOrb {
@@ -533,6 +643,7 @@
  * - Reduce padding
  * - Smaller orbs
  * - Simpler gradients
+ * - Reduce parallax effect
  */
 @media (max-width: 767px) {
   .hero-base {
@@ -542,6 +653,10 @@
   .hero-base--fullscreen {
     min-height: auto;
     padding: var(--spacing-20) 0;
+  }
+
+  .hero-base__bg {
+    height: 110%; /* Less extra height on mobile */
   }
 
   .hero-base__orb--primary {

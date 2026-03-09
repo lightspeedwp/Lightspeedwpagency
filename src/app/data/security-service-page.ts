@@ -4,7 +4,7 @@
  * Mock data for the Security Service page (SecurityServiceTemplate).
  */
 
-import { Shield, Lock, Eye, AlertTriangle, FileCheck, Server } from 'lucide-react';
+import { Shield, Lock, Eye, Warning, FileText, HardDrives } from '@phosphor-icons/react';
 
 export const securityServiceHero = {
   title: "WordPress Security Services",
@@ -27,12 +27,12 @@ export const securityServiceFeatures = {
       description: "Real-time uptime and security monitoring with instant alerts."
     },
     {
-      icon: Server,
+      icon: HardDrives,
       title: "Firewall Configuration",
       description: "Web Application Firewall (WAF) setup to block attacks."
     },
     {
-      icon: FileCheck,
+      icon: FileText,
       title: "Audit Logs",
       description: "Detailed tracking of all user activity and file changes."
     }

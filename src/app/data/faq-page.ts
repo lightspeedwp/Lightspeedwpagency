@@ -8,11 +8,11 @@
  */
 
 import {
-  HelpCircle,
+  Question,
   Wrench,
-  Server,
+  HardDrives,
   CreditCard
-} from 'lucide-react';
+} from '@phosphor-icons/react';
 
 /* ============================================
    HERO
@@ -23,7 +23,7 @@ export const faqPageHero = {
   tagline: "Your questions, answered.",
   description:
     "Everything you need to know about our services, process, and technical approach. Can't find your answer? Reach out — we're always happy to help.",
-  badge: { text: "SUPPORT CENTER", icon: HelpCircle }
+  badge: { text: "SUPPORT CENTER", icon: Question }
 };
 
 /* ============================================
@@ -46,7 +46,7 @@ export const faqCategories = [
     id: 'general',
     title: 'General',
     description: 'Basics about LSX Design and how we work.',
-    icon: HelpCircle,
+    icon: Question,
     faqs: [
       {
         question: "What does LSX Design specialise in?",
@@ -107,7 +107,7 @@ export const faqCategories = [
     id: 'technical',
     title: 'Technical',
     description: 'Hosting, security, FSE, and code questions.',
-    icon: Server,
+    icon: HardDrives,
     faqs: [
       {
         question: "What is a WordPress block theme?",

@@ -4,7 +4,7 @@
  * Content for the Publishers solution landing page.
  */
 
-import { BookOpen, Workflow, Zap, Globe, Shield, Users, BarChart, PenTool } from 'lucide-react';
+import { BookOpen, FlowArrow, Lightning, Globe, Shield, Users, ChartBar, PenNib } from '@phosphor-icons/react';
 
 export const publishersHero = {
   title: 'Digital Publishing Solutions for Modern Media',
@@ -42,7 +42,7 @@ export const publishersOverview = {
       value: '30%',
       label: 'Workflow Efficiency',
       description: 'Average improvement in editorial speed',
-      icon: Workflow
+      icon: FlowArrow
     },
     {
       value: '99.9%',
@@ -54,7 +54,7 @@ export const publishersOverview = {
       value: '2x',
       label: 'Ad Revenue',
       description: 'Optimized ad placements and speed',
-      icon: BarChart
+      icon: ChartBar
     }
   ]
 };
@@ -63,12 +63,12 @@ export const publishersFeatures = [
   {
     title: 'Custom Editorial Workflows',
     description: 'Tailored publishing pipelines that match your newsroom\'s specific needs, from draft to editor review to publication.',
-    icon: PenTool
+    icon: PenNib
   },
   {
     title: 'High-Performance Delivery',
     description: 'Lightning-fast page loads essential for retaining readers and ranking high in search engines and Google News.',
-    icon: Zap
+    icon: Lightning
   },
   {
     title: 'Paywall & Subscription Models',
@@ -83,12 +83,12 @@ export const publishersFeatures = [
   {
     title: 'Advanced Ad Management',
     description: 'Strategic ad slots and programmatic integration designed to maximize revenue without killing user experience.',
-    icon: BarChart
+    icon: ChartBar
   },
   {
     title: 'Migration Services',
     description: 'Expert migration from legacy CMS platforms to modern, scalable WordPress architectures.',
-    icon: Workflow
+    icon: FlowArrow
   }
 ];
 
@@ -109,13 +109,13 @@ export const publishersProcess = [
     step: '03',
     title: 'Workflow Integration',
     description: 'We configure the WordPress dashboard to mirror your newsroom\'s approval and publishing processes.',
-    icon: Workflow
+    icon: FlowArrow
   },
   {
     step: '04',
     title: 'Migration & Launch',
     description: 'We safely migrate your archives and launch your new site with zero downtime for your readers.',
-    icon: Zap
+    icon: Lightning
   }
 ];
 

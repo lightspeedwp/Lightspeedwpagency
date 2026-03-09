@@ -5,20 +5,20 @@
  */
 
 import { 
-  Plane,
+  Airplane,
   Calendar,
   CreditCard,
   Users,
   Globe,
   MapPin,
-  Search,
-  Smartphone,
+  MagnifyingGlass,
+  DeviceMobile,
   Star,
-  MessageSquare,
-  TrendingUp,
-  Zap,
+  ChatCentered,
+  TrendUp,
+  Lightning,
   Shield
-} from 'lucide-react';
+} from '@phosphor-icons/react';
 
 export const tourOperatorHero = {
   title: "WordPress Websites for Tour Operators",
@@ -39,7 +39,7 @@ export const tourOperatorHero = {
       variant: 'secondary'
     }
   ],
-  heroIcon: Plane
+  heroIcon: Airplane
 };
 
 export const tourOperatorChallenges = {
@@ -131,7 +131,7 @@ export const tourOperatorSolutions = {
     },
     {
       id: 'seo-marketing',
-      icon: Search,
+      icon: MagnifyingGlass,
       title: 'SEO & Marketing Tools',
       description: 'Attract more travelers with SEO optimization, social media integration, and analytics.',
       features: [
@@ -145,7 +145,7 @@ export const tourOperatorSolutions = {
     },
     {
       id: 'mobile-responsive',
-      icon: Smartphone,
+      icon: DeviceMobile,
       title: 'Mobile-First Design',
       description: 'Fully responsive design ensures perfect experience on all devices from phones to desktops.',
       features: [
@@ -187,7 +187,7 @@ export const tourOperatorIntegrations = {
     {
       name: 'Mailchimp',
       description: 'Email marketing and automation platform',
-      icon: MessageSquare
+      icon: ChatCentered
     },
     {
       name: 'TripAdvisor',
@@ -199,12 +199,12 @@ export const tourOperatorIntegrations = {
 
 export const tourOperatorBenefits = [
   { 
-    icon: TrendingUp, 
+    icon: TrendUp, 
     value: '+45%', 
     label: 'Increase Bookings' 
   },
   { 
-    icon: Zap, 
+    icon: Lightning, 
     value: '70%', 
     label: 'Time Saved' 
   },

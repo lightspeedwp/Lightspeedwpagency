@@ -1,27 +1,29 @@
 /**
- * Single Post (Longform) Template Styles — Funky Neon Pass (OPTIMIZED)
- * 
- * Dedicated styles for long-form blog post layout and components.
- * Funky treatments: glassmorphism cards, animated gradient stripes,
- * neon comment cards, gradient underlines.
+ * Single Post Page (Enhanced) Styles
  *
- * PHASE 4.1 OPTIMIZATION:
- * - Imports blog-base.css for shared blog structure
- * - Contains ONLY unique longform features (comments, related cards)
- *
- * BEM naming: .single-post__*
+ * BEM naming: .single-post-page__*
  * 100% CSS variables, zero hardcoded values.
+ * 
+ * MIGRATED: March 6, 2026 - Phase 2 Step 3, Batch C1
+ * - Uses glass-effect-base.css for glassmorphism patterns
+ * - Glass effect patterns documented:
+ *   • .single-post-page__meta-item: blur(10px) meta cards (custom 10px - preserved)
+ *   • .single-post-page__blockquote: blur(10px) quotes (custom 10px - preserved)
+ *   • .single-post-page__author-card: blur(10px) author card (custom 10px - preserved)
  */
 
 /* ============================================
-   BASE IMPORTS — Phase 4.1 Optimization
+   BASE IMPORTS — Phase 1 Optimization
    ============================================ */
 
 /**
- * Import shared blog base structure
- * Provides: heroes, post meta, editorial content, author bios, etc.
+ * Import shared base modules to reduce duplication
+ * @see /docs/css-base-extraction-guide.md
  */
-@import './blog-base.css';
+@import '../base/grid-utilities.css';
+@import '../base/card-base.css';
+@import '../base/glass-effect-base.css';
+@import '../patterns/hero/hero-base.css';
 
 /* ============================================
  * RELATED ARTICLES SECTION — UNIQUE STYLE
@@ -31,14 +33,14 @@
  * Related articles grid
  * Responsive: 1 col mobile → 3 cols desktop
  */
-.single-post__related-grid {
+.single-post-page__related-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--spacing-8);
 }
 
 @media (min-width: 768px) {
-  .single-post__related-grid {
+  .single-post-page__related-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
@@ -51,7 +53,7 @@
  * Individual article card
  * Card with image, category badge, and title
  */
-.single-post__related-card {
+.single-post-page__related-card {
   /* Appearance — Glassmorphism */
   position: relative;
   background: var(--glass-bg);
@@ -66,7 +68,7 @@
 }
 
 /* Animated gradient top stripe */
-.single-post__related-card::before {
+.single-post-page__related-card::before {
   content: '';
   position: absolute;
   top: 0;
@@ -84,7 +86,7 @@
   100% { background-position: 200% 50%; }
 }
 
-.single-post__related-card:hover {
+.single-post-page__related-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 0 20px color-mix(in srgb, var(--primary) 15%, transparent);
   border-color: color-mix(in srgb, var(--primary) 25%, transparent);
@@ -94,7 +96,7 @@
  * Article card image
  * 16:9 aspect ratio
  */
-.single-post__related-image {
+.single-post-page__related-image {
   aspect-ratio: 16 / 9;
   background-size: cover;
   background-position: center;
@@ -104,7 +106,7 @@
  * Article card content area
  * Contains category badge and title
  */
-.single-post__related-content {
+.single-post-page__related-content {
   padding: var(--spacing-6);
   display: flex;
   flex-direction: column;
@@ -119,7 +121,7 @@
  * Category badge
  * Pill-shaped label above article title
  */
-.single-post__category-badge {
+.single-post-page__category-badge {
   /* Display */
   display: inline-block;
   
@@ -142,7 +144,7 @@
  * Article title link
  * Hover effect changes color
  */
-.single-post__article-title {
+.single-post-page__article-title {
   /* Typography */
   font-family: var(--font-primary);
   font-size: var(--text-h3);
@@ -157,7 +159,7 @@
   transition: color 0.2s ease;
 }
 
-.single-post__article-title:hover {
+.single-post-page__article-title:hover {
   color: var(--primary);
 }
 
@@ -169,7 +171,7 @@
  * Comments container wrapper
  * Constrains width for readability
  */
-.single-post__comments-wrapper {
+.single-post-page__comments-wrapper {
   max-width: 896px;
   margin-left: auto;
   margin-right: auto;
@@ -179,14 +181,14 @@
  * Comments section header
  * Icon + title layout
  */
-.single-post__comments-header {
+.single-post-page__comments-header {
   display: flex;
   align-items: center;
   gap: var(--spacing-3);
   padding-bottom: var(--spacing-8);
 }
 
-.single-post__comments-header svg {
+.single-post-page__comments-header svg {
   color: var(--foreground);
 }
 
@@ -194,7 +196,7 @@
  * Comments list container
  * Vertical stack with spacing
  */
-.single-post__comments-list {
+.single-post-page__comments-list {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-6);
@@ -208,7 +210,7 @@
 /**
  * Individual comment card — frosted glass treatment
  */
-.single-post__comment {
+.single-post-page__comment {
   /* Spacing */
   padding: var(--spacing-6);
   
@@ -222,7 +224,7 @@
               box-shadow var(--transition-base) var(--ease-out);
 }
 
-.single-post__comment:hover {
+.single-post-page__comment:hover {
   border-color: color-mix(in srgb, var(--primary) 20%, transparent);
   box-shadow: 0 0 12px color-mix(in srgb, var(--primary) 8%, transparent);
 }
@@ -231,7 +233,7 @@
  * Comment content layout
  * Avatar on left, content on right
  */
-.single-post__comment-content {
+.single-post-page__comment-content {
   display: flex;
   align-items: flex-start;
   gap: var(--spacing-4);
@@ -240,7 +242,7 @@
 /**
  * Comment avatar — neon ring
  */
-.single-post__comment-avatar {
+.single-post-page__comment-avatar {
   /* Size */
   width: 48px;
   height: 48px;
@@ -258,7 +260,7 @@
  * Comment text container
  * Holds author, date, and comment text
  */
-.single-post__comment-text-wrapper {
+.single-post-page__comment-text-wrapper {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -269,7 +271,7 @@
  * Comment meta
  * Author name + date layout
  */
-.single-post__comment-meta {
+.single-post-page__comment-meta {
   display: flex;
   align-items: center;
   gap: var(--spacing-3);
@@ -278,7 +280,7 @@
 /**
  * Comment author name
  */
-.single-post__comment-author {
+.single-post-page__comment-author {
   /* Typography */
   font-family: var(--font-primary);
   font-size: var(--text-base);
@@ -289,7 +291,7 @@
 /**
  * Comment date
  */
-.single-post__comment-date {
+.single-post-page__comment-date {
   /* Typography */
   font-family: var(--font-secondary);
   font-size: var(--text-small);
@@ -299,7 +301,7 @@
 /**
  * Comment text
  */
-.single-post__comment-text {
+.single-post-page__comment-text {
   /* Typography */
   font-family: var(--font-primary);
   font-size: var(--text-base);
@@ -318,7 +320,7 @@
  * Leave a reply CTA card
  * Centered call-to-action to encourage comments
  */
-.single-post__comment-cta {
+.single-post-page__comment-cta {
   /* Spacing */
   padding: var(--spacing-8);
   
@@ -340,7 +342,7 @@
 /**
  * CTA title
  */
-.single-post__cta-title {
+.single-post-page__cta-title {
   /* Typography */
   font-family: var(--font-primary);
   font-size: var(--text-h3);
@@ -351,7 +353,7 @@
 /**
  * CTA description
  */
-.single-post__cta-description {
+.single-post-page__cta-description {
   /* Typography */
   font-family: var(--font-primary);
   font-size: var(--text-base);
@@ -363,37 +365,37 @@
  * DARK MODE SUPPORT
  * ============================================ */
 
-.dark .single-post__related-card {
+.dark .single-post-page__related-card {
   background: color-mix(in srgb, var(--card) 50%, transparent);
   border-color: var(--border-soft);
 }
 
-.dark .single-post__related-card:hover {
+.dark .single-post-page__related-card:hover {
   box-shadow: 0 0 24px color-mix(in srgb, var(--primary) 20%, transparent);
   border-color: color-mix(in srgb, var(--primary) 30%, transparent);
 }
 
-.dark .single-post__category-badge {
+.dark .single-post-page__category-badge {
   background: color-mix(in srgb, var(--primary) 15%, transparent);
   border-color: color-mix(in srgb, var(--primary) 25%, transparent);
 }
 
-.dark .single-post__comment {
+.dark .single-post-page__comment {
   background: color-mix(in srgb, var(--card) 50%, transparent);
   border-color: var(--border-soft);
 }
 
-.dark .single-post__comment:hover {
+.dark .single-post-page__comment:hover {
   border-color: color-mix(in srgb, var(--primary) 25%, transparent);
   box-shadow: 0 0 16px color-mix(in srgb, var(--primary) 12%, transparent);
 }
 
-.dark .single-post__comment-avatar {
+.dark .single-post-page__comment-avatar {
   border-color: color-mix(in srgb, var(--primary) 40%, transparent);
   box-shadow: 0 0 12px color-mix(in srgb, var(--primary) 18%, transparent);
 }
 
-.dark .single-post__comment-cta {
+.dark .single-post-page__comment-cta {
   background: color-mix(in srgb, var(--card) 40%, transparent);
   border-color: var(--border-soft);
 }
@@ -403,11 +405,11 @@
  * ============================================ */
 
 @media (prefers-reduced-motion: reduce) {
-  .single-post__related-card::before {
+  .single-post-page__related-card::before {
     animation: none;
   }
 
-  .single-post__related-card:hover {
+  .single-post-page__related-card:hover {
     transform: none;
   }
 }

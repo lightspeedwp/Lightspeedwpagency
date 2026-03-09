@@ -6,12 +6,12 @@
  * @see /src/app/components/templates/PerformanceServiceTemplate.tsx
  */
 
-import { Gauge, Server, Smartphone, Layers, BarChart, Search, Zap, CheckCircle, Activity } from 'lucide-react';
+import { Gauge, HardDrive, DeviceMobile, Stack, ChartBar, MagnifyingGlass, Lightning, CheckCircle, Pulse } from '@phosphor-icons/react';
 
 export const performanceServiceHero = {
   title: 'WordPress Performance Optimisation',
   subtitle: 'Blazing-fast load times, perfect Core Web Vitals scores, and a user experience that keeps visitors coming back.',
-  badge: { text: 'CORE WEB VITALS OPTIMISED', icon: Zap },
+  badge: { text: 'CORE WEB VITALS OPTIMISED', icon: Lightning },
   primaryButton: { text: 'Request a Systems Audit', page: 'contact' },
 };
 
@@ -24,17 +24,17 @@ export const performanceServiceFeatures = {
       description: 'Full Lighthouse & WebPageTest analysis with a prioritised action plan.',
     },
     {
-      icon: Layers,
+      icon: Stack,
       title: 'Code Optimisation',
       description: 'Critical CSS extraction, JS defer/async, unused code elimination.',
     },
     {
-      icon: Server,
+      icon: HardDrive,
       title: 'Caching Strategy',
       description: 'Server-side, edge, and browser caching configured for instant repeat visits.',
     },
     {
-      icon: Smartphone,
+      icon: DeviceMobile,
       title: 'Asset Optimisation',
       description: 'AVIF/WebP images, font subsetting, lazy loading for below-the-fold media.',
     },
@@ -44,11 +44,11 @@ export const performanceServiceFeatures = {
 export const performanceServiceProcess = {
   title: 'Our 5-Step Protocol',
   steps: [
-    { step: 'Benchmark', description: 'Lighthouse CI baseline on desktop & mobile.', icon: BarChart },
-    { step: 'Analyse', description: 'Waterfall audit — identify bottlenecks.', icon: Search },
-    { step: 'Optimise', description: 'Code-split, compress, cache, and defer.', icon: Zap },
+    { step: 'Benchmark', description: 'Lighthouse CI baseline on desktop & mobile.', icon: ChartBar },
+    { step: 'Analyse', description: 'Waterfall audit — identify bottlenecks.', icon: MagnifyingGlass },
+    { step: 'Optimise', description: 'Code-split, compress, cache, and defer.', icon: Lightning },
     { step: 'Validate', description: 'Re-test against Web Vitals thresholds.', icon: CheckCircle },
-    { step: 'Monitor', description: 'Continuous RUM alerting via Analytics.', icon: Activity },
+    { step: 'Monitor', description: 'Continuous RUM alerting via Analytics.', icon: Pulse },
   ],
 };
 

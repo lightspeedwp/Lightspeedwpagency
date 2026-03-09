@@ -5,25 +5,25 @@
  */
 
 import { 
-  Layers,
+  Stack,
   Palette,
   Code,
-  Zap,
+  Lightning,
   Shield,
-  Smartphone,
-  TrendingUp,
-  Settings,
+  DeviceMobile,
+  TrendUp,
+  GearSix,
   FileText,
   Globe,
-  Search,
+  MagnifyingGlass,
   CheckCircle
-} from 'lucide-react';
+} from '@phosphor-icons/react';
 
 // LSX Design features
 export const lsxDesignFeatures = [
   {
     id: 'block-themes',
-    icon: Layers,
+    icon: Stack,
     title: 'Modern Block Themes',
     description: 'Built entirely with WordPress blocks and Full Site Editing (FSE) for maximum flexibility and user control.'
   },
@@ -35,7 +35,7 @@ export const lsxDesignFeatures = [
   },
   {
     id: 'performance',
-    icon: Zap,
+    icon: Lightning,
     title: 'Performance Optimized',
     description: 'Lightning-fast load times with optimized code, minimal dependencies, and efficient asset loading.'
   },
@@ -47,13 +47,13 @@ export const lsxDesignFeatures = [
   },
   {
     id: 'responsive',
-    icon: Smartphone,
+    icon: DeviceMobile,
     title: 'Mobile-First Design',
     description: 'Fully responsive layouts that look perfect on all devices from phones to large desktop screens.'
   },
   {
     id: 'seo',
-    icon: Search,
+    icon: MagnifyingGlass,
     title: 'SEO Optimized',
     description: 'Built-in SEO best practices, schema markup, and semantic HTML for better search rankings.'
   }
@@ -101,13 +101,13 @@ export const lsxBenefits = [
   },
   {
     id: 'scalable',
-    icon: TrendingUp,
+    icon: TrendUp,
     title: 'Scalable Architecture',
     description: 'Built to grow with your business from startup to enterprise without performance loss.'
   },
   {
     id: 'customization',
-    icon: Settings,
+    icon: GearSix,
     title: 'Easy Customization',
     description: 'Global styles, theme.json configuration, and pattern library for quick customization.'
   },
@@ -149,7 +149,7 @@ export const lsxProcessSteps = [
     step: 5,
     title: 'Training & Support',
     description: 'User training, documentation, and ongoing support for your team.',
-    icon: Settings
+    icon: GearSix
   }
 ];
 

@@ -12,7 +12,7 @@
  * @see /src/styles/templates/testimonial-archive.css
  */
 
-import '../../../../styles/templates/testimonial-archive.css';
+import '../../../../styles/templates/testimonial-archive-optimized.css';
 import { useState } from 'react';
 import { Section } from '../../common/Section';
 import { Hero } from '../../patterns/Hero';
@@ -24,7 +24,7 @@ import {
   testimonialCategories,
   type TestimonialEntry,
 } from '../../../data/testimonials-extended';
-import { Star, Mic, Video, Images, Quote, Users } from 'lucide-react';
+import { Star, Microphone, VideoCamera, Images, Quotes, Users } from '@phosphor-icons/react';
 
 export function TestimonialArchiveTemplate() {
   const [activeFilter, setActiveFilter] = useState('all');
@@ -39,15 +39,15 @@ export function TestimonialArchiveTemplate() {
   const stats = [
     { icon: Users, value: '500+', label: 'Happy Clients' },
     { icon: Star, value: '4.9/5', label: 'Average Rating' },
-    { icon: Quote, value: `${testimonialEntries.length}`, label: 'Testimonials' },
-    { icon: Video, value: '30+', label: 'Countries Served' },
+    { icon: Quotes, value: `${testimonialEntries.length}`, label: 'Testimonials' },
+    { icon: VideoCamera, value: '30+', label: 'Countries Served' },
   ];
 
   const formatIcons: Record<string, any> = {
     all: Users,
-    standard: Quote,
-    audio: Mic,
-    video: Video,
+    standard: Quotes,
+    audio: Microphone,
+    video: VideoCamera,
     gallery: Images,
   };
 
@@ -98,7 +98,7 @@ export function TestimonialArchiveTemplate() {
             aria-label="Filter testimonials by format"
           >
             {testimonialCategories.map((cat) => {
-              const Icon = formatIcons[cat.slug] || Quote;
+              const Icon = formatIcons[cat.slug] || Quotes;
               return (
                 <button
                   key={cat.slug}

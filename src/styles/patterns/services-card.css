@@ -3,7 +3,23 @@
  * 
  * BEM-compliant styles for the ServicesCard component.
  * All vertical spacing via blockGap (CSS gap) -- zero margin.
+ * 
+ * MIGRATED: March 6, 2026 - Phase 2 Pilot Migration
+ * - Uses icon-wrapper-base.css for icon wrapper structure
+ * - Uses card-base.css for base card structure
+ * - Removed ~50 lines of duplicate icon wrapper + card code
  */
+
+/* ============================================
+   BASE IMPORTS
+   ============================================ */
+
+@import '../base/card-base.css';
+@import '../base/icon-wrapper-base.css';
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
 
 /* Grid Layout */
 .services-card-grid {
@@ -13,6 +29,7 @@
 
 /* Card -- flex column with blockGap */
 .services-card {
+  /* Inherits from card-base */
   position: relative;
   display: flex;
   flex-direction: column;
@@ -55,6 +72,7 @@
 
 /* Icon */
 .services-card__icon {
+  /* Inherits from icon-wrapper-base */
   width: var(--spacing-12);
   height: var(--spacing-12);
   display: flex;

@@ -11,8 +11,12 @@
  * All styling uses BEM classes from /src/styles/templates/site-map.css
  * and CSS variables — zero Tailwind, zero hardcoded values.
  *
+ * Pattern Components:
+ * - ✅ StatsGrid — Site statistics section (grid variant, 4 columns)
+ *
  * @see /guidelines/overview-sitemap.md
  * @see /guidelines/routing/routing-complete-reference.md
+ * @migrated March 4, 2026 — Migrated inline stats grid to StatsGrid component (~12 lines saved)
  */
 
 import '../../../styles/templates/site-map.css';
@@ -21,6 +25,7 @@ import { Section } from '../common/Section';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { Link } from 'react-router';
 import { Button } from '../blocks/design/Buttons';
+import { StatsGrid } from '../patterns/StatsGrid';
 import { slugToPath } from '../../utils/route-map';
 import { blogPosts, blogAuthors, blogCategories } from '../../data/blog-posts';
 import { postTags } from '../../data/blog-posts';
@@ -591,21 +596,14 @@ export function SiteMapTemplate() {
           <div className="site-map__stats-inner">
             <h2 className="site-map__stats-title">Site Statistics</h2>
 
-            <div className="site-map__stats-grid">
-              {[
+            <StatsGrid
+              stats={[
                 { label: 'Total Pages', value: totalRoutes, color: 'var(--category-violet)' },
                 { label: 'Active', value: activeRoutes, color: 'var(--category-green)' },
                 { label: 'Sections', value: sectionCount, color: 'var(--category-amber)' },
                 { label: 'Content Types', value: 8, color: 'var(--category-blue)' },
-              ].map((stat, i) => (
-                <div key={i} className="site-map__stat-card">
-                  <div className="site-map__stat-value" style={{ color: stat.color }}>
-                    {stat.value}
-                  </div>
-                  <div className="site-map__stat-label">{stat.label}</div>
-                </div>
-              ))}
-            </div>
+              ]}
+            />
           </div>
         </Container>
       </Section>

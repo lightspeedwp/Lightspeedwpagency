@@ -4,12 +4,12 @@
  * WordPress template: templates/archive-podcast_category.html
  * Content hub archetype for podcast category archives.
  *
- * Pattern order: Breadcrumbs -> Category Header -> Episode List -> FAQs -> CTA
+ * Pattern order: Breadcrumbs -> Category Header -> Podcast List -> FAQs -> CTA
  *
  * @see /guidelines/templates/overview-templates.md
  */
 
-import '../../../styles/templates/podcast-archive.css';
+import '../../../styles/templates/podcast-archive-optimized.css';
 import { useParams, Navigate, Link } from 'react-router';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
@@ -19,7 +19,7 @@ import { FunkyCTA } from '../patterns/FunkyCTA';
 import { Heading } from '../blocks/text/Heading';
 import { Paragraph } from '../blocks/text/Paragraph';
 import { Badge } from '../blocks/design/Badge';
-import { Headphones, Clock, Calendar } from 'lucide-react';
+import { Headphones, Clock, Calendar } from '@phosphor-icons/react';
 import { getPodcastsByCategory, podcastCategories } from '../../data/podcasts';
 import { podcastFAQs } from '../../data/faqs';
 
@@ -91,7 +91,7 @@ export function PodcastCategoryArchiveTemplate() {
         </Container>
       </Section>
 
-      {/* Episode List */}
+      {/* Podcast List */}
       <Section spacing="xl">
         <Container>
           {episodes.length > 0 ? (

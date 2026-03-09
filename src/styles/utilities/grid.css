@@ -1,0 +1,84 @@
+/**
+ * Grid Utilities
+ *
+ * CSS Grid layout utilities with responsive breakpoints.
+ * All utilities use CSS variables for gap spacing.
+ */
+
+/* ============================================
+   GRID UTILITIES
+   ============================================ */
+
+/* Display */
+.wp-grid { display: grid; }
+
+/* Grid Template Columns */
+.wp-grid-1-col {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-6);
+}
+.wp-grid-2-cols { 
+  display: grid; 
+  grid-template-columns: repeat(2, 1fr); 
+  gap: var(--spacing-6); 
+}
+.wp-grid-3-cols { 
+  display: grid; 
+  grid-template-columns: repeat(3, 1fr); 
+  gap: var(--spacing-6); 
+}
+.wp-grid-4-cols { 
+  display: grid; 
+  grid-template-columns: repeat(4, 1fr); 
+  gap: var(--spacing-6); 
+}
+.wp-grid-5-cols { 
+  display: grid; 
+  grid-template-columns: repeat(5, 1fr); 
+  gap: var(--spacing-6); 
+}
+.wp-grid-6-cols { 
+  display: grid; 
+  grid-template-columns: repeat(6, 1fr); 
+  gap: var(--spacing-6); 
+}
+.wp-grid-12-cols { 
+  display: grid; 
+  grid-template-columns: repeat(12, 1fr); 
+  gap: var(--spacing-6); 
+}
+.wp-grid-auto { 
+  display: grid; 
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+  gap: var(--spacing-6); 
+}
+
+/* Column Spans */
+.wp-col-span-1 { grid-column: span 1 / span 1; }
+.wp-col-span-2 { grid-column: span 2 / span 2; }
+.wp-col-span-3 { grid-column: span 3 / span 3; }
+.wp-col-span-4 { grid-column: span 4 / span 4; }
+.wp-col-span-5 { grid-column: span 5 / span 5; }
+.wp-col-span-6 { grid-column: span 6 / span 6; }
+.wp-col-span-8 { grid-column: span 8 / span 8; }
+.wp-col-span-12 { grid-column: span 12 / span 12; }
+.wp-col-span-full { grid-column: 1 / -1; }
+
+/* Responsive grid breakpoints */
+@media (max-width: 768px) {
+  .wp-grid-2-cols,
+  .wp-grid-3-cols,
+  .wp-grid-4-cols,
+  .wp-grid-6-cols,
+  .wp-grid-12-cols {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .wp-grid-3-cols,
+  .wp-grid-4-cols {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

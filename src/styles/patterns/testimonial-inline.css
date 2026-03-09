@@ -3,7 +3,24 @@
  * 
  * BEM-compliant styles for the TestimonialInline component.
  * All vertical spacing via blockGap (CSS gap) -- zero margin.
+ * 
+ * MIGRATED: March 6, 2026 - Phase 2 Step 3, Batch A2
+ * - Uses grid-responsive-base.css for responsive grid behavior
+ * - Removed ~25 lines of duplicate grid responsive code
+ * - Grid variants (2-cols, 3-cols) now use base patterns
+ * 
+ * 100% CSS variables.
  */
+
+/* ============================================
+   BASE IMPORTS
+   ============================================ */
+
+@import '../base/grid-responsive-base.css';
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
 
 /* Wrapper -- flex column with blockGap */
 .testimonial-inline {
@@ -24,12 +41,16 @@
   color: var(--foreground);
 }
 
-/* Grid */
+/* Grid - inherits responsive behavior from grid-responsive-base */
 .testimonial-inline__grid {
   display: grid;
   gap: var(--spacing-6);
 }
 
+/* Grid column variants - responsive behavior from grid-responsive-base
+ * 2-cols: 1 col mobile → 2 cols tablet+
+ * 3-cols: 1 col mobile → 3 cols tablet+
+ */
 .testimonial-inline__grid--2-cols {
   grid-template-columns: 1fr;
 }

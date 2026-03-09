@@ -1,7 +1,7 @@
 /**
  * Icon Library
  * 
- * Browse and search the complete Lucide icon library.
+ * Browse and search the complete Phosphor icon library.
  * Features:
  * - Live search
  * - Copy-to-clipboard (JSX)
@@ -19,22 +19,28 @@ import { useState } from 'react';
 import { Container } from '../common/Container';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
-import * as LucideIcons from 'lucide-react';
-import { Search, Check } from 'lucide-react';
+import * as PhosphorIcons from '@phosphor-icons/react';
+import { MagnifyingGlass, Check } from '@phosphor-icons/react';
 
 
 export function IconLibrary() {
   const [search, setSearch] = useState('');
   const [copied, setCopied] = useState<string | null>(null);
 
-  // Filter icons based on search
-  const icons = Object.keys(LucideIcons)
-    .filter((name) => name !== 'createLucideIcon' && name !== 'default') // Exclude internal functions
+  // Filter icons based on search — exclude non-icon exports
+  const icons = Object.keys(PhosphorIcons)
+    .filter((name) =>
+      name !== 'IconContext' &&
+      name !== 'IconBase' &&
+      name !== 'SSR' &&
+      name !== 'default' &&
+      typeof (PhosphorIcons as Record<string, unknown>)[name] === 'object'
+    )
     .filter((name) => name.toLowerCase().includes(search.toLowerCase()))
     .sort();
 
   const handleCopy = (name: string) => {
-    const importStatement = `import { ${name} } from 'lucide-react';`;
+    const importStatement = `import { ${name} } from '@phosphor-icons/react';`;
     navigator.clipboard.writeText(importStatement);
     setCopied(name);
     setTimeout(() => setCopied(null), 2000);
@@ -56,7 +62,7 @@ export function IconLibrary() {
           <ScrollReveal animation="fade-up">
             <h1 className="icon-lib__hero-title">Icon Library</h1>
             <p className="icon-lib__hero-desc">
-              Complete Lucide icon set. Click any icon to copy the import statement.
+              Complete Phosphor icon set. Click any icon to copy the import statement.
               Use icons sparingly and semantically.
             </p>
           </ScrollReveal>
@@ -67,7 +73,7 @@ export function IconLibrary() {
         {/* Search */}
         <div className="icon-lib__search-wrapper">
           <div className="icon-lib__search">
-            <Search className="icon-lib__search-icon" size={20} />
+            <MagnifyingGlass className="icon-lib__search-icon" size={20} />
             <input
               type="text"
               className="icon-lib__input"
@@ -84,7 +90,7 @@ export function IconLibrary() {
           {icons.length > 0 ? (
             icons.map((name) => {
               // @ts-ignore - Dynamic access to icon components
-              const IconComponent = LucideIcons[name];
+              const IconComponent = (PhosphorIcons as Record<string, unknown>)[name] as React.FC<{ className?: string; size?: number }>;
               if (!IconComponent) return null;
 
               return (
@@ -92,7 +98,7 @@ export function IconLibrary() {
                   key={name} 
                   className="icon-lib__card"
                   onClick={() => handleCopy(name)}
-                  title={`Copy: import { ${name} } from 'lucide-react';`}
+                  title={`Copy: import { ${name} } from '@phosphor-icons/react';`}
                 >
                   <IconComponent className="icon-lib__icon" size={32} />
                   <span className="icon-lib__name">{name}</span>
@@ -101,7 +107,7 @@ export function IconLibrary() {
             })
           ) : (
             <div className="icon-lib__empty">
-              No icons found matching "{search}"
+              No icons found matching &quot;{search}&quot;
             </div>
           )}
         </div>

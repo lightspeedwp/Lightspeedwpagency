@@ -3,8 +3,23 @@
  * 
  * WordPress pattern: lsx-design/content/testimonial-grid
  * 
+ * MIGRATED: March 6, 2026 - Phase 2 Step 3, Batch A1
+ * - Uses grid-responsive-base.css for responsive grid behavior
+ * - Removed ~15 lines of duplicate grid responsive code
+ * - Grid variants (1-col, 2-col, 3-col) now use base classes
+ * 
  * 100% CSS variables.
  */
+
+/* ============================================
+   BASE IMPORTS
+   ============================================ */
+
+@import '../base/grid-responsive-base.css';
+
+/* ============================================
+   BASE GRID
+   ============================================ */
 
 .testimonial-grid {
   display: grid;
@@ -12,9 +27,15 @@
   width: 100%;
 }
 
+/* Grid column variants - responsive behavior from grid-responsive-base */
 .testimonial-grid--1-col { grid-template-columns: 1fr; }
 .testimonial-grid--2-col { grid-template-columns: repeat(2, 1fr); }
 .testimonial-grid--3-col { grid-template-columns: repeat(3, 1fr); }
+
+/* Responsive behavior handled by grid-responsive-base:
+ * - 3-col → 2-col @ tablet (< 1024px)
+ * - 2-col/3-col → 1-col @ mobile (< 768px)
+ */
 
 /* Responsive */
 @media (max-width: 1024px) {

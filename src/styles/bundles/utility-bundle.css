@@ -1,0 +1,142 @@
+/**
+ * Utility Route Bundle
+ * 
+ * Routes: /contact, /faq, /privacy-policy, /terms, /styleguide, /pricing, 
+ *         /roi-calculator, /why-choose-us, /guarantees, /testimonials/*, 
+ *         /hosting/*, /search, /sitemap, /tutorials, /publishers
+ * Size: ~12-18KB gzipped
+ * Priority: Medium (static/utility pages)
+ * 
+ * This bundle includes:
+ * - utility-base.css (672 lines) — Utility structure base
+ * - 24 utility template files
+ * - 10 utility pattern files
+ * 
+ * Total: 35 files, ~12-18KB gzipped
+ * 
+ * Design System Compliance:
+ * - All fonts use var(--font-primary) / var(--font-secondary)
+ * - All colors use semantic CSS variables
+ * - All spacing uses var(--spacing-*) tokens
+ * - BEM naming conventions
+ * - WordPress utility classes (.wp-*)
+ * 
+ * @see /reports/2026-03/memory-optimization/route-to-css-mapping.md
+ */
+
+/* ============================================
+   UTILITY STRUCTURE BASE
+   ============================================ */
+
+/* Utility Structure Base (672 lines) */
+@import '../templates/utility-base.css';
+
+/* ============================================
+   UTILITY TEMPLATES
+   ============================================ */
+
+/* Core Utility Templates */
+@import '../templates/404-optimized.css';
+@import '../templates/contact-page.css';
+@import '../templates/page-contact.css';
+@import '../templates/page-faq.css';
+@import '../templates/page-legal.css';
+@import '../templates/page-styleguide.css';
+@import '../templates/pricing-page.css';
+@import '../templates/roi-calculator.css';
+@import '../templates/why-choose-us.css';
+@import '../templates/guarantees.css';
+@import '../templates/testimonials-page.css';
+@import '../templates/testimonial-archive-optimized.css';
+@import '../templates/testimonial-single.css';
+
+/* Hosting Templates (8 files) */
+@import '../templates/hosting-page.css';
+@import '../templates/hosting-base.css';
+@import '../templates/hosting-features.css';
+@import '../templates/hosting-hero.css';
+@import '../templates/hosting-lab-styles.css';
+@import '../templates/hosting-migration.css';
+@import '../templates/hosting-plans.css';
+@import '../templates/hosting-testimonials.css';
+
+/* Other Utility Templates */
+@import '../templates/search.css';
+@import '../templates/site-map.css';
+@import '../templates/tutorials-page.css';
+@import '../templates/publishers-page.css';
+
+/* ============================================
+   UTILITY PATTERNS
+   ============================================ */
+
+/* Utility-Specific Patterns (10 files) */
+@import '../patterns/contact-form.css';
+@import '../patterns/contact-info.css';
+@import '../patterns/cta-inline.css';
+@import '../patterns/logo-grid.css';
+@import '../patterns/gradient-cta-section.css';
+@import '../patterns/challenges-grid.css';
+@import '../patterns/integrations-grid.css';
+@import '../patterns/feature-icon-grid.css';
+@import '../patterns/global-search.css';
+@import '../patterns/funky-cta.css';
+
+/* ============================================
+   BUNDLE INFO
+   ============================================ */
+
+/**
+ * Utility Bundle Summary:
+ * 
+ * Base Files: 1 file (utility-base.css, 672 lines, ~3.0KB gzipped)
+ * Templates: 24 files (~7-10KB gzipped)
+ * Patterns: 10 files (~3-5KB gzipped)
+ * 
+ * Total: 35 files, ~12-18KB gzipped
+ * 
+ * Routes Served:
+ * - /404 (Error page)
+ * - /contact (Contact page)
+ * - /faq (FAQ page)
+ * - /privacy-policy, /terms (Legal pages)
+ * - /styleguide (Style guide)
+ * - /pricing (Pricing page)
+ * - /roi-calculator (ROI calculator)
+ * - /why-choose-us (Why choose us page)
+ * - /guarantees (Guarantees page)
+ * - /testimonials (Testimonials archive)
+ * - /testimonials/:slug (Single testimonial)
+ * - /hosting/* (Hosting pages)
+ * - /search (Search results)
+ * - /sitemap (Site map)
+ * - /tutorials (Tutorials page)
+ * - /publishers (Publishers page)
+ * 
+ * Utility Features:
+ * - Error state sections with icon wrappers
+ * - Search forms with focus states
+ * - Search result cards
+ * - Contact heroes with floating icons
+ * - Grid backgrounds
+ * - Form elements (contact forms)
+ * - Sitemap sections
+ * - FAQ accordion
+ * - Pricing tables
+ * - ROI calculator interface
+ * - Logo grids
+ * - Challenges grids
+ * - Integrations grids
+ * - Feature icon grids
+ * - Funky CTA sections
+ * 
+ * Loading Strategy:
+ * - Load on route match: utility pages
+ * - Preload on hover: Footer/utility navigation links
+ * - Cache: Long-term (static pages rarely change)
+ * 
+ * Expected Impact:
+ * - 51-64% reduction vs. loading all CSS (201KB → 72-98KB)
+ * - Faster FCP on utility pages
+ * - Improved Lighthouse score
+ */

@@ -4,16 +4,29 @@
  * Shared card component for all testimonial patterns.
  * Variants: default, glass, funky, compact, minimal, featured.
  *
+ * MIGRATED: March 6, 2026 - Phase 2 Pilot Migration
+ * - Uses glass-effect-base.css for glassmorphism variant
+ * - Uses card-base.css for base card structure
+ * - Removed ~60 lines of duplicate glass effect + card code
+ *
  * BEM block: .testimonial-card
  *
  * @see /src/app/components/patterns/TestimonialCard.tsx
  */
 
 /* ============================================
+   BASE IMPORTS
+   ============================================ */
+
+@import '../base/card-base.css';
+@import '../base/glass-effect-base.css';
+
+/* ============================================
    BASE CARD
    ============================================ */
 
 .testimonial-card {
+  /* Inherits from card-base */
   display: flex;
   flex-direction: column;
   padding: var(--spacing-8);
@@ -32,9 +45,11 @@
 
 /* ============================================
    VARIANT: GLASS (Glassmorphism)
+   Uses glass-effect-base.css
    ============================================ */
 
 .testimonial-card--glass {
+  /* Inherits from glass-effect-base */
   background: color-mix(in srgb, var(--card) 70%, transparent);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);

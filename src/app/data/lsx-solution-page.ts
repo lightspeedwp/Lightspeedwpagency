@@ -4,7 +4,7 @@
  * Mock data for the LSX Solution pages (LSXSolutionTemplate, LSXDesignTemplate, etc).
  */
 
-import { Layout, Palette, Search, Share2, Globe, Code } from 'lucide-react';
+import { Layout, Palette, MagnifyingGlass, ShareNetwork, Globe, Code } from '@phosphor-icons/react';
 
 export const lsxSolutionHero = {
   title: "LSX Theme & Plugins",
@@ -28,12 +28,12 @@ export const lsxSolutionFeatures = {
       description: "Complete tour management solution for travel websites."
     },
     {
-      icon: Search,
+      icon: MagnifyingGlass,
       title: "LSX Search",
       description: "Advanced search functionality with Algolia integration."
     },
     {
-      icon: Share2,
+      icon: ShareNetwork,
       title: "LSX Sharing",
       description: "Lightweight social sharing buttons without the bloat."
     }

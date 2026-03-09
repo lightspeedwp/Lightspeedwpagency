@@ -16,7 +16,7 @@ export interface Guarantee {
   id: string;
   title: string;
   description: string;
-  icon?: string; // Lucide icon name
+  icon?: string; // Phosphor icon name
   details: string[];
   applies: string; // Which services this applies to
 }

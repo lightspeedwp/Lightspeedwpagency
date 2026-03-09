@@ -3,7 +3,24 @@
  * 
  * BEM-compliant styles for the ServiceOfferingsGrid component.
  * All vertical spacing via blockGap (CSS gap) -- zero margin.
+ * 
+ * MIGRATED: March 6, 2026 - Phase 2 Step 3, Batch A1
+ * - Uses grid-responsive-base.css for responsive grid behavior
+ * - Removed ~50 lines of duplicate grid responsive code
+ * - Grid variants (2-cols, 3-cols, 4-cols) now use base patterns
+ * 
+ * 100% CSS variables.
  */
+
+/* ============================================
+   BASE IMPORTS
+   ============================================ */
+
+@import '../base/grid-responsive-base.css';
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
 
 .service-offerings-grid {
   display: flex;
@@ -41,12 +58,17 @@
   margin-right: auto;
 }
 
-/* Grid */
+/* Grid - inherits responsive behavior from grid-responsive-base */
 .service-offerings__grid {
   display: grid;
   gap: var(--spacing-8);
 }
 
+/* Grid column variants - responsive behavior from grid-responsive-base
+ * 2-cols: 1 col mobile → 2 cols tablet+
+ * 3-cols: 1 col mobile → 2 cols tablet → 3 cols desktop
+ * 4-cols: 1 col mobile → 2 cols tablet → 4 cols desktop
+ */
 .service-offerings__grid--2-cols {
   grid-template-columns: 1fr;
 }
@@ -87,76 +109,4 @@
   .service-offerings__grid--4-cols {
     grid-template-columns: repeat(4, 1fr);
   }
-}
-
-/* Card -- flex column with blockGap */
-.service-offering-card {
-  padding: var(--spacing-10);
-  background-color: var(--card);
-  border-radius: var(--radius-xl);
-  border: 1px solid var(--border-soft);
-  text-align: center;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--spacing-4);
-  height: 100%;
-}
-
-.service-offering-card:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-xl);
-  border-color: var(--primary);
-}
-
-.service-offering-card:not(:hover) {
-  box-shadow: var(--shadow-md);
-}
-
-/* Icon */
-.service-offering-card__icon-wrapper {
-  width: 80px;
-  height: 80px;
-  border-radius: var(--radius-xl);
-  background-color: var(--primary-soft);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-}
-
-.service-offering-card:hover .service-offering-card__icon-wrapper {
-  background-color: var(--primary);
-}
-
-.service-offering-card__icon {
-  color: var(--primary);
-  transition: color 0.3s ease;
-}
-
-.service-offering-card:hover .service-offering-card__icon {
-  color: var(--color-white);
-}
-
-/* Content */
-.service-offering-card__title {
-  font-family: var(--font-primary);
-  font-size: var(--text-xl);
-  font-weight: var(--font-weight-bold);
-  color: var(--foreground);
-}
-
-.service-offering-card__description {
-  font-family: var(--font-primary);
-  font-size: var(--text-base);
-  line-height: var(--line-height-normal);
-  color: var(--muted-foreground);
-  flex-grow: 1;
-}
-
-/* Button */
-.service-offering-card__button {
-  width: 100%;
 }

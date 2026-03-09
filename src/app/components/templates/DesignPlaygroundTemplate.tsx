@@ -14,7 +14,7 @@
 
 import '../../../styles/templates/design-playground.css';
 import { useState, useCallback, useMemo } from 'react';
-import { RotateCcw, Copy, Check, Palette, Type, Ruler, Circle, Layers } from 'lucide-react';
+import { ArrowCounterClockwise, Copy, Check, Palette, TextT, Ruler, Circle, Stack } from '@phosphor-icons/react';
 
 /* ═══════════════════════════════════════════
  * Types
@@ -129,10 +129,10 @@ const typeWeights = [
 
 const tabs: { id: TabId; label: string; icon: typeof Palette }[] = [
   { id: 'colors', label: 'Colors', icon: Palette },
-  { id: 'typography', label: 'Typography', icon: Type },
+  { id: 'typography', label: 'Typography', icon: TextT },
   { id: 'spacing', label: 'Spacing', icon: Ruler },
   { id: 'radius', label: 'Radius', icon: Circle },
-  { id: 'shadows', label: 'Shadows', icon: Layers },
+  { id: 'shadows', label: 'Shadows', icon: Stack },
 ];
 
 /* ═══════════════════════════════════════════
@@ -228,7 +228,7 @@ export function DesignPlaygroundTemplate() {
             onClick={resetAll}
             aria-label="Reset all overrides"
           >
-            <RotateCcw size={14} style={{ marginRight: 'var(--spacing-1)', verticalAlign: 'middle' }} />
+            <ArrowCounterClockwise size={14} style={{ marginRight: 'var(--spacing-1)', verticalAlign: 'middle' }} />
             Reset All
           </button>
 

@@ -5,7 +5,7 @@
  * Aggregates data from centralized sources.
  */
 
-import { Users } from 'lucide-react';
+import { Users } from '@phosphor-icons/react';
 import { teamFAQs } from './faqs';
 import { teamMembers, leadershipTeam } from './team';
 

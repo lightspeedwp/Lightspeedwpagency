@@ -1,6 +1,13 @@
 /**
  * Included In Solutions Pattern Styles
  * 
+ * MIGRATED: March 6, 2026 - Phase 2 Step 3, Batch B2
+ * - Uses icon-wrapper-base.css for icon wrapper structure
+ * - Removed ~18 lines of duplicate icon wrapper code (2 types × ~9 lines each)
+ * - Icon wrappers: 2 types
+ *   • Header icon: 64px (--lg), rounded-lg, gradient background (primary → secondary)
+ *   • Card icon: 56px (--md), rounded, muted background
+ * 
  * WordPress block: Custom query block showing related solutions
  * BEM naming: .included-solutions__*
  * 
@@ -12,6 +19,16 @@
  * - Spacing: var(--spacing-*)
  * - Borders: var(--radius-*)
  */
+
+/* ============================================
+   BASE IMPORTS
+   ============================================ */
+
+@import '../base/icon-wrapper-base.css';
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
 
 /* ============================================
    CONTAINER

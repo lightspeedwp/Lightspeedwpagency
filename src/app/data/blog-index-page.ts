@@ -4,7 +4,7 @@
  * Content for the main blog listing page.
  */
 
-import { BookOpen } from 'lucide-react';
+import { BookOpen } from '@phosphor-icons/react';
 
 export const blogIndexHero = {
   title: "Insights & Resources",

@@ -7,21 +7,21 @@
  * @module data/service-case-studies
  */
 
-import type { LucideIcon } from 'lucide-react';
+import type { Icon } from '@phosphor-icons/react';
 import { 
-  TrendingDown, 
-  TrendingUp, 
-  Smartphone, 
-  Zap, 
+  TrendDown, 
+  TrendUp, 
+  DeviceMobile, 
+  Lightning, 
   Users, 
-  Target,
+  Crosshair,
   ShieldCheck,
-  Search,
+  MagnifyingGlass,
   Gauge,
   Globe,
   Lock,
-  LifeBuoy
-} from 'lucide-react';
+  Lifebuoy
+} from '@phosphor-icons/react';
 
 /**
  * Case Study Result Metric
@@ -36,7 +36,7 @@ export interface CaseStudyResult {
   label: string;
   
   /** Optional icon */
-  icon?: LucideIcon;
+  icon?: Icon;
 }
 
 /**
@@ -106,17 +106,17 @@ export const allCaseStudies: ServiceCaseStudy[] = [
       {
         metric: '45%',
         label: 'Lower bounce rate',
-        icon: TrendingDown
+        icon: TrendDown
       },
       {
         metric: '2.5x',
         label: 'Mobile conversions',
-        icon: Smartphone
+        icon: DeviceMobile
       },
       {
         metric: '0.8s',
         label: 'Page load time',
-        icon: Zap
+        icon: Lightning
       }
     ],
     technologies: ['WordPress', 'React', 'Tailwind CSS'],
@@ -134,7 +134,7 @@ export const allCaseStudies: ServiceCaseStudy[] = [
       {
         metric: '65%',
         label: 'Brand recognition',
-        icon: TrendingUp
+        icon: TrendUp
       },
       {
         metric: '100%',
@@ -193,7 +193,7 @@ export const allCaseStudies: ServiceCaseStudy[] = [
       {
         metric: '0.8s',
         label: 'Page load time',
-        icon: Zap
+        icon: Lightning
       },
       {
         metric: '95+',
@@ -203,7 +203,7 @@ export const allCaseStudies: ServiceCaseStudy[] = [
       {
         metric: '40%',
         label: 'Increase in sales',
-        icon: TrendingUp
+        icon: TrendUp
       }
     ],
     featured: true
@@ -222,17 +222,17 @@ export const allCaseStudies: ServiceCaseStudy[] = [
       {
         metric: '320%',
         label: 'Organic traffic',
-        icon: TrendingUp
+        icon: TrendUp
       },
       {
         metric: 'Page 1',
         label: 'For 25+ keywords',
-        icon: Search
+        icon: MagnifyingGlass
       },
       {
         metric: '3x',
         label: 'Organic conversions',
-        icon: Target
+        icon: Crosshair
       }
     ],
     featured: true
@@ -256,7 +256,7 @@ export const allCaseStudies: ServiceCaseStudy[] = [
       {
         metric: 'Zero',
         label: 'Accessibility issues',
-        icon: Target
+        icon: Crosshair
       },
       {
         metric: '45%',
@@ -290,7 +290,7 @@ export const allCaseStudies: ServiceCaseStudy[] = [
       {
         metric: 'A+',
         label: 'Security rating',
-        icon: Target
+        icon: Crosshair
       }
     ],
     featured: true
@@ -314,7 +314,7 @@ export const allCaseStudies: ServiceCaseStudy[] = [
       {
         metric: '<2hr',
         label: 'Response time',
-        icon: LifeBuoy
+        icon: Lifebuoy
       },
       {
         metric: 'Zero',
@@ -348,7 +348,7 @@ export const allCaseStudies: ServiceCaseStudy[] = [
       {
         metric: '3x',
         label: 'Faster site',
-        icon: Zap
+        icon: Lightning
       }
     ],
     featured: true
@@ -367,7 +367,7 @@ export const allCaseStudies: ServiceCaseStudy[] = [
       {
         metric: '100%',
         label: 'Stakeholder alignment',
-        icon: Target
+        icon: Crosshair
       },
       {
         metric: '18mo',
@@ -377,7 +377,7 @@ export const allCaseStudies: ServiceCaseStudy[] = [
       {
         metric: '$500K',
         label: 'Budget savings',
-        icon: TrendingDown
+        icon: TrendDown
       }
     ],
     featured: true
@@ -401,12 +401,12 @@ export const allCaseStudies: ServiceCaseStudy[] = [
       {
         metric: '150%',
         label: 'Organic traffic',
-        icon: TrendingUp
+        icon: TrendUp
       },
       {
         metric: '5x',
         label: 'Content ROI',
-        icon: Target
+        icon: Crosshair
       }
     ],
     featured: true
@@ -425,17 +425,17 @@ export const allCaseStudies: ServiceCaseStudy[] = [
       {
         metric: '120%',
         label: 'Subscriber growth',
-        icon: TrendingUp
+        icon: TrendUp
       },
       {
         metric: '45%',
         label: 'Open rate',
-        icon: Target
+        icon: Crosshair
       },
       {
         metric: '90%',
         label: 'Time savings',
-        icon: Zap
+        icon: Lightning
       }
     ],
     featured: true

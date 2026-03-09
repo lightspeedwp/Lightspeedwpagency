@@ -5,16 +5,18 @@
  * with mesh hero, neon-glow cards, process steps, and
  * guarantee previews. All content data-driven.
  *
- * Sections:
- *  1. Hero (mesh grid + orb glow + badge + title)
- *  2. Stats (stat cards with neon accent)
- *  3. Value Propositions (competitive advantages)
- *  4. Process Steps (proven process)
- *  5. Guarantee Preview (risk-free commitment)
- *  6. Patterns (TestimonialGrid, SocialProof, FAQ, CTA)
+ * Pattern Components:
+ * - ✅ StatsGrid — Stats section (cards variant, 3 columns)
+ * - ✅ ProcessTimeline — Our proven process
+ * - ✅ FeatureList — Risk-free guarantees (glow variant, 3 columns)
+ * - ✅ TestimonialGrid — Client testimonials
+ * - ✅ SocialProof — Client logos
+ * - ✅ FAQSection — FAQ section
+ * - ✅ FunkyCTA — Final conversion section
  *
  * @see /src/styles/templates/why-choose-us.css
  * @see /src/app/data/why-choose-us.ts
+ * @migrated March 4, 2026 — Migrated process steps → ProcessTimeline, guarantees → FeatureList (~30 lines saved)
  */
 
 import '../../../styles/templates/why-choose-us.css';
@@ -27,6 +29,8 @@ import { SocialProof } from '../patterns/SocialProof';
 import { FAQSection } from '../patterns/FAQSection';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { StatsGrid } from '../patterns/StatsGrid';
+import { ProcessTimeline } from '../patterns/ProcessTimeline';
+import { FeatureList } from '../patterns/FeatureList';
 import { testimonials } from '../../data/testimonials';
 import { clientLogos } from '../../data/logos';
 import { aboutFAQs } from '../../data/faqs';
@@ -50,14 +54,12 @@ import {
 
 /* ── Data imports ── */
 import {
-  competitiveAdvantages
-} from '../../data/why-choose-us';
-import {
+  competitiveAdvantages,
   whyChooseUsHero,
   whyChooseUsIntro,
   whyChooseUsStats,
   whyChooseUsCTA
-} from '../../data/why-choose-us-page';
+} from '../../data/why-choose-us';
 import { developmentProcess } from '../../data/process';
 import { guarantees } from '../../data/guarantees';
 
@@ -181,22 +183,15 @@ export function WhyChooseUsTemplate() {
             </div>
           </ScrollReveal>
 
-          <div className="wcu__process-grid">
-            {developmentProcess.map((step) => {
-              const Icon = step.icon;
-              return (
-                <ScrollReveal key={step.id} animation="fade-up">
-                  <article className="wcu__step-card">
-                    <div className="wcu__step-num">{step.number}</div>
-                    <div>
-                      <h3 className="wcu__step-title">{step.title}</h3>
-                      <p className="wcu__step-desc">{step.description}</p>
-                    </div>
-                  </article>
-                </ScrollReveal>
-              );
-            })}
-          </div>
+          <ProcessTimeline
+            steps={developmentProcess.map((step) => ({
+              id: step.id,
+              number: step.number,
+              title: step.title,
+              description: step.description,
+              icon: step.icon
+            }))}
+          />
         </Container>
       </section>
 
@@ -214,20 +209,15 @@ export function WhyChooseUsTemplate() {
             </div>
           </ScrollReveal>
 
-          <div className="wcu__guarantee-grid">
-            {guarantees.slice(0, 3).map((guarantee) => {
-              const Icon = guarantee.icon ? iconMap[guarantee.icon] : Trophy;
-              return (
-                <ScrollReveal key={guarantee.id} animation="fade-up">
-                  <article className="wcu__guarantee-card">
-                    <Icon size={48} className="wcu__guarantee-icon" />
-                    <h3 className="wcu__guarantee-title">{guarantee.title}</h3>
-                    <p className="wcu__guarantee-desc">{guarantee.description}</p>
-                  </article>
-                </ScrollReveal>
-              );
-            })}
-          </div>
+          <FeatureList
+            items={guarantees.slice(0, 3).map((guarantee) => ({
+              title: guarantee.title,
+              description: guarantee.description,
+              icon: guarantee.icon ? iconMap[guarantee.icon] : Trophy
+            }))}
+            variant="glow"
+            columns={3}
+          />
 
           <div className="wcu__section-footer">
             <Button page="guarantees" variant="outline">

@@ -1,0 +1,176 @@
+/**
+ * Gradient Utilities
+ *
+ * Gradient backgrounds and decorative gradient orbs.
+ * All utilities reference gradient CSS variables from theme-base.css.
+ */
+
+/* ============================================
+   GRADIENT BACKGROUND UTILITIES
+   ============================================ */
+
+/* Blue Gradient */
+.wp-gradient-blue {
+  background: var(--gradient-blue);
+  color: var(--color-white);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Purple Gradient */
+.wp-gradient-purple {
+  background: var(--gradient-purple);
+  color: var(--color-white);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Purple Light Gradient */
+.wp-gradient-purple-light {
+  background: var(--gradient-purple-light);
+  color: var(--color-white);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Purple Indigo Gradient */
+.wp-gradient-purple-indigo {
+  background: var(--gradient-purple-indigo);
+  color: var(--color-white);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Red Gradient */
+.wp-gradient-red {
+  background: var(--gradient-red);
+  color: var(--color-white);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Green Gradient */
+.wp-gradient-green {
+  background: var(--gradient-green);
+  color: var(--color-white);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Amber Gradient */
+.wp-gradient-amber {
+  background: var(--gradient-amber);
+  color: var(--color-white);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Cyan Gradient */
+.wp-gradient-cyan {
+  background: var(--gradient-cyan);
+  color: var(--color-white);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Sky Gradient */
+.wp-gradient-sky {
+  background: var(--gradient-sky);
+  color: var(--color-white);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Slate Dark Gradient */
+.wp-gradient-slate {
+  background: var(--gradient-slate);
+  color: var(--color-white);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Violet Gradient */
+.wp-gradient-violet {
+  background: var(--gradient-violet);
+  color: var(--color-white);
+  position: relative;
+  overflow: hidden;
+}
+
+
+/* ============================================
+   GRADIENT ORB DECORATIONS
+   ============================================ */
+
+/* Base Orb Styles */
+.wp-gradient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Orb Color Variants */
+.wp-gradient-orb--blue {
+  background: radial-gradient(circle, color-mix(in srgb, var(--category-blue) 30%, transparent) 0%, transparent 70%);
+}
+
+.wp-gradient-orb--purple {
+  background: radial-gradient(circle, color-mix(in srgb, var(--category-violet) 30%, transparent) 0%, transparent 70%);
+}
+
+.wp-gradient-orb--red {
+  background: radial-gradient(circle, color-mix(in srgb, var(--category-red) 30%, transparent) 0%, transparent 70%);
+}
+
+.wp-gradient-orb--green {
+  background: radial-gradient(circle, color-mix(in srgb, var(--category-green) 30%, transparent) 0%, transparent 70%);
+}
+
+.wp-gradient-orb--amber {
+  background: radial-gradient(circle, color-mix(in srgb, var(--category-amber) 30%, transparent) 0%, transparent 70%);
+}
+
+.wp-gradient-orb--cyan {
+  background: radial-gradient(circle, color-mix(in srgb, var(--category-cyan) 30%, transparent) 0%, transparent 70%);
+}
+
+/* Orb Position Variants */
+.wp-gradient-orb--top-right {
+  top: 0;
+  right: 0;
+  width: min(500px, 40vw);
+  height: min(500px, 40vw);
+  transform: translate(30%, -30%);
+}
+
+.wp-gradient-orb--top-left {
+  top: 0;
+  left: 0;
+  width: min(500px, 40vw);
+  height: min(500px, 40vw);
+  transform: translate(-30%, -30%);
+}
+
+.wp-gradient-orb--bottom-right {
+  bottom: 0;
+  right: 0;
+  width: min(500px, 40vw);
+  height: min(500px, 40vw);
+  transform: translate(30%, 30%);
+}
+
+.wp-gradient-orb--bottom-left {
+  bottom: 0;
+  left: 0;
+  width: min(500px, 40vw);
+  height: min(500px, 40vw);
+  transform: translate(-30%, 30%);
+}
+
+/* Smaller Orb Variant */
+.wp-gradient-orb--small {
+  width: min(384px, 30vw);
+  height: min(384px, 30vw);
+}

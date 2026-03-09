@@ -9,8 +9,7 @@
  * @see /reports/2026-03/phosphor-icon-audit.md
  */
 
-import type { LucideIcon } from 'lucide-react';
-import type { IconWeight } from '@phosphor-icons/react';
+import type { Icon, IconWeight } from '@phosphor-icons/react';
 
 // ============================================
 // TYPE DEFINITIONS
@@ -20,19 +19,11 @@ import type { IconWeight } from '@phosphor-icons/react';
  * Phosphor icon component type.
  * Matches the signature of Phosphor's exported icon components.
  */
-export type PhosphorIconComponent = React.ComponentType<{
-  size?: number | string;
-  weight?: IconWeight;
-  color?: string;
-  className?: string;
-  style?: React.CSSProperties;
-  alt?: string;
-  mirrored?: boolean;
-}>;
+export type PhosphorIconComponent = Icon;
 
 /**
- * Universal icon component type — accepts either Lucide or Phosphor icons.
- * Use this in component props that need to support both libraries.
+ * Universal icon component type — now resolves to Phosphor Icon type.
+ * Kept as an alias for backward compatibility across the codebase.
  *
  * @example
  * interface FeatureCardProps {
@@ -40,7 +31,7 @@ export type PhosphorIconComponent = React.ComponentType<{
  *   title: string;
  * }
  */
-export type UniversalIcon = LucideIcon | PhosphorIconComponent;
+export type UniversalIcon = Icon;
 
 /**
  * Icon weight recommendation for different UI contexts.
@@ -138,6 +129,9 @@ export const LUCIDE_TO_PHOSPHOR: Record<string, string> = {
   Scale: 'Scales',
   Target: 'Crosshair',
   MousePointer: 'Cursor',
+  HeartHandshake: 'Handshake',
+  Smile: 'Smiley',
+  Crown: 'Crown',
 
   // Media
   Play: 'Play',
@@ -181,7 +175,7 @@ export const LUCIDE_TO_PHOSPHOR: Record<string, string> = {
   Phone: 'Phone',
   MapPin: 'MapPin',
   Send: 'PaperPlaneTilt',
-  MessageSquare: 'ChatSquare',
+  MessageSquare: 'ChatCentered',
   MessageCircle: 'ChatCircle',
   Lock: 'Lock',
 
@@ -207,9 +201,12 @@ export const LUCIDE_TO_PHOSPHOR: Record<string, string> = {
   Download: 'DownloadSimple',
   Upload: 'UploadSimple',
   CloudUpload: 'CloudArrowUp',
+  Cloud: 'Cloud',
   Loader2: 'SpinnerGap',
   RotateCcw: 'ArrowCounterClockwise',
   ShoppingCart: 'ShoppingCart',
+  CreditCard: 'CreditCard',
+  Truck: 'Truck',
   Link: 'Link',
   LinkIcon: 'Link',
   BoxSelect: 'Selection',
@@ -222,6 +219,9 @@ export const LUCIDE_TO_PHOSPHOR: Record<string, string> = {
   Keyboard: 'Keyboard',
   List: 'List',
   Circle: 'Circle',
+  Smartphone: 'DeviceMobile',
+  Monitor: 'Monitor',
+  Blocks: 'GridFour',
 };
 
 // ============================================

@@ -4,7 +4,7 @@
  * Content for the Maintenance Mode page.
  */
 
-import { Clock, RefreshCcw } from 'lucide-react';
+import { Clock, ArrowCounterClockwise } from '@phosphor-icons/react';
 
 export const maintenanceModeContent = {
   active: false, // Set to true to enable maintenance mode
@@ -15,5 +15,5 @@ export const maintenanceModeContent = {
   estimatedTime: "Check back in a few hours.",
   socialLinks: true, // Show social links
   contactEmail: "support@lightspeedwp.agency",
-  icon: RefreshCcw
+  icon: ArrowCounterClockwise
 };

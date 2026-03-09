@@ -13,7 +13,7 @@
  */
 
 import '../../../../styles/templates/testimonial-single.css';
-import { Star, ArrowLeft, Play, Clock, Video } from 'lucide-react';
+import { Star, ArrowLeft, Play, Clock, VideoCamera } from '@phosphor-icons/react';
 import { Link, useParams } from 'react-router';
 import { Section } from '../../common/Section';
 import { FunkyCTA } from '../../patterns/FunkyCTA';
@@ -192,7 +192,7 @@ export function SingleTestimonialVideoTemplate({ slug }: { slug?: string }) {
             <div className="single-testimonial__meta-item">
               <div className="single-testimonial__meta-label">Format</div>
               <div className="single-testimonial__meta-value">
-                <Video size={14} style={{ display: 'inline', verticalAlign: 'middle' }} /> Video Testimonial
+                <VideoCamera size={14} style={{ display: 'inline', verticalAlign: 'middle' }} /> Video Testimonial
               </div>
             </div>
           </div>

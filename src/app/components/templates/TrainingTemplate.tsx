@@ -17,7 +17,6 @@
  * @see /src/styles/templates/page-service-training.css
  */
 
-import '../../../styles/templates/page-service-training.css';
 import { Container } from '../common/Container';
 import { FAQSection } from '../patterns/FAQSection';
 import { FunkyCTA } from '../patterns/FunkyCTA';

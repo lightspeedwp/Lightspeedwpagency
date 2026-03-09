@@ -13,7 +13,7 @@
  * @see /src/styles/patterns/related-services.css
  */
 
-import { LucideIcon, Palette, Code, Zap, Search, ShieldCheck, FileText, Eye, Target, HardDrive, Brain, GraduationCap } from 'lucide-react';
+import { type Icon, Palette, Code, Lightning, MagnifyingGlass, ShieldCheck, FileText, Eye, Crosshair, HardDrive, Brain, GraduationCap } from '@phosphor-icons/react';
 
 /**
  * Service Reference Interface
@@ -25,7 +25,7 @@ export interface ServiceReference {
   slug: string;
   title: string;
   description: string;
-  icon: LucideIcon;
+  icon: Icon;
 }
 
 /**
@@ -61,7 +61,7 @@ export const allServiceReferences: ServiceReference[] = [
     slug: 'performance',
     title: 'Performance & Accessibility',
     description: 'Lightning-fast Core Web Vitals and WCAG 2.1 AA/AAA compliance in one service.',
-    icon: Zap,
+    icon: Lightning,
   },
   {
     id: 'ai-search-visibility',
@@ -96,7 +96,7 @@ export const allServiceReferences: ServiceReference[] = [
     slug: 'discovery',
     title: 'Discovery & Strategy',
     description: 'Research, planning, and strategic roadmaps before development begins.',
-    icon: Target,
+    icon: Crosshair,
   },
   {
     id: 'training',

@@ -15,7 +15,7 @@ import '../../../styles/templates/theme-blocks-showcase.css';
 import { Container } from '../common/Container';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
-import { Code, Navigation as NavIcon, Image as ImageIcon, Link as LinkIcon, List } from 'lucide-react';
+import { Code, NavigationArrow, ImageSquare, LinkSimple, List } from '@phosphor-icons/react';
 
 // Block Imports
 import { SiteLogo } from '../blocks/theme/SiteLogo';
@@ -63,7 +63,7 @@ export function ThemeBlocksShowcase() {
         <ScrollReveal animation="fade-up" delay={100}>
           <section className="theme-showcase__section">
             <div className="theme-showcase__section-header">
-              <ImageIcon className="theme-showcase__section-icon" size={20} />
+              <ImageSquare className="theme-showcase__section-icon" size={20} />
               <h2 className="theme-showcase__section-title">Site Identity</h2>
             </div>
             
@@ -90,7 +90,7 @@ export function ThemeBlocksShowcase() {
         <ScrollReveal animation="fade-up" delay={200}>
           <section className="theme-showcase__section">
             <div className="theme-showcase__section-header">
-              <NavIcon className="theme-showcase__section-icon" size={20} />
+              <NavigationArrow className="theme-showcase__section-icon" size={20} />
               <h2 className="theme-showcase__section-title">Navigation</h2>
             </div>
 

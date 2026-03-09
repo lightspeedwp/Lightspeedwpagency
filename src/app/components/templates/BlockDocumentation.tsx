@@ -28,14 +28,13 @@ import { useState } from 'react';
 import {
   FileText,
   Code,
-  Type,
-  Image as ImageIcon,
+  TextT,
+  ImageSquare,
   Layout,
-  Grid,
+  GridFour,
   ArrowRight,
   Check
-} from 'lucide-react';
-
+} from '@phosphor-icons/react';
 
 /**
  * WordPress Blocks Catalog
@@ -49,7 +48,7 @@ const blockCategories = [
       {
         id: 'buttons',
         name: 'Buttons Block',
-        icon: Type,
+        icon: TextT,
         description: 'WordPress Buttons block with 3 size variants (sm, md, lg)',
         props: ['variant', 'size', 'alignment', 'orientation'],
         usage: 'CTAs, navigation, forms',
@@ -58,7 +57,7 @@ const blockCategories = [
       {
         id: 'heading',
         name: 'Heading Block',
-        icon: Type,
+        icon: TextT,
         description: 'WordPress Heading block with H1-H6 levels',
         props: ['level', 'textAlign', 'content'],
         usage: 'Section titles, page headings',
@@ -67,7 +66,7 @@ const blockCategories = [
       {
         id: 'image',
         name: 'Image Block',
-        icon: ImageIcon,
+        icon: ImageSquare,
         description: 'WordPress Image block with alt text and captions',
         props: ['src', 'alt', 'caption', 'width', 'height'],
         usage: 'Content images, featured images',
@@ -83,7 +82,7 @@ const blockCategories = [
       {
         id: 'site-title',
         name: 'Site Title',
-        icon: Type,
+        icon: TextT,
         description: 'Site title with link to homepage',
         props: ['level', 'isLink'],
         usage: 'Site header, branding',
@@ -92,7 +91,7 @@ const blockCategories = [
       {
         id: 'site-logo',
         name: 'Site Logo',
-        icon: ImageIcon,
+        icon: ImageSquare,
         description: 'Site logo with automatic theme switching (220px width)',
         props: ['width', 'height', 'isLink'],
         usage: 'Site header, footer',
@@ -101,7 +100,7 @@ const blockCategories = [
       {
         id: 'site-tagline',
         name: 'Site Tagline',
-        icon: Type,
+        icon: TextT,
         description: 'Site tagline/description',
         props: [],
         usage: 'Site header, branding',
@@ -144,7 +143,7 @@ const blockCategories = [
       {
         id: 'group',
         name: 'Group',
-        icon: Grid,
+        icon: GridFour,
         description: 'WordPress Group block for grouping content',
         props: ['tagName', 'layout', 'backgroundColor'],
         usage: 'Content sections, layout',
@@ -153,7 +152,7 @@ const blockCategories = [
       {
         id: 'stack',
         name: 'Stack',
-        icon: Grid,
+        icon: GridFour,
         description: 'Vertical stack layout',
         props: ['spacing', 'orientation'],
         usage: 'Vertical content flow',
@@ -162,7 +161,7 @@ const blockCategories = [
       {
         id: 'row',
         name: 'Row',
-        icon: Grid,
+        icon: GridFour,
         description: 'Horizontal row layout',
         props: ['spacing', 'wrap', 'verticalAlignment'],
         usage: 'Horizontal content flow',
@@ -171,7 +170,7 @@ const blockCategories = [
       {
         id: 'grid',
         name: 'Grid',
-        icon: Grid,
+        icon: GridFour,
         description: 'CSS Grid layout',
         props: ['columns', 'gap', 'minItemWidth'],
         usage: 'Card grids, galleries',
@@ -180,7 +179,7 @@ const blockCategories = [
       {
         id: 'columns',
         name: 'Columns',
-        icon: Grid,
+        icon: GridFour,
         description: 'WordPress Columns block',
         props: ['columns', 'isStackedOnMobile'],
         usage: 'Multi-column layouts',

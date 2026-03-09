@@ -1,18 +1,15 @@
 /**
  * Video Archive Template
- * 
- * WordPress template: archive-video.html
- * 
- * Displays a grid of video posts.
- * 100% CSS variables — no Tailwind.
- * BEM naming: .wp-block-video-*
- * 
- * @see /src/styles/blocks/post-formats/video.css
- * @see /src/styles/sections/media-grid.css
- * @see /src/styles/templates/archive.css
+ *
+ * WordPress template: templates/archive-video.html
+ * Video post format archive template.
+ *
+ * Pattern order: Breadcrumbs -> Archive Header -> Video Grid -> FAQs -> CTA
+ *
+ * @see /guidelines/templates/overview-templates.md
  */
 
-import '../../../../styles/templates/video-archive.css';
+import '../../../../styles/templates/video-archive-optimized.css';
 import { Container } from '@/app/components/common/Container';
 import { Section } from '@/app/components/common/Section';
 import { BreadcrumbPart } from '@/app/components/parts/BreadcrumbPart';

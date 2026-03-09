@@ -6,7 +6,7 @@
  * Parent: /services/performance
  */
 
-import { Eye, Ear, Keyboard, MousePointer, CheckCircle, Shield } from 'lucide-react';
+import { Eye, Ear, Keyboard, Cursor, CheckCircle, Shield } from '@phosphor-icons/react';
 import { Link } from 'react-router';
 import { FeatureList } from '../patterns/FeatureList';
 import { CheckList } from '../patterns/CheckList';
@@ -30,7 +30,7 @@ export const AccessibilityServiceTemplate = () => {
       description: 'Full keyboard operability with clear focus indicators and logical tab order.'
     },
     {
-      icon: MousePointer,
+      icon: Cursor,
       title: 'Motor Accessibility',
       description: 'Large touch targets, generous spacing, and support for assistive input devices.'
     },

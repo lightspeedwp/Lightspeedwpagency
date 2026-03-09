@@ -5,16 +5,16 @@
  * Used on: Home, Landing Pages, Case Studies
  */
 
-import { Users, Star, Award, TrendingUp, ShieldCheck } from 'lucide-react';
+import { Users, Star, Trophy, TrendUp, ShieldCheck } from '@phosphor-icons/react';
 import { testimonials } from './testimonials';
 import { clientLogos, partnerLogos, certificationLogos } from './logos';
 
 export const socialProofStats = [
   { value: "500+", label: "Projects Launched", icon: Users },
-  { value: "98%", label: "Client Retention", icon: TrendingUp },
+  { value: "98%", label: "Client Retention", icon: TrendUp },
   { value: "10+", label: "Years Experience", icon: ShieldCheck },
   { value: "4.9/5", label: "Average Rating", icon: Star },
-  { value: "20+", label: "Industry Awards", icon: Award }
+  { value: "20+", label: "Industry Awards", icon: Trophy }
 ];
 
 export const trustedByLogos = [

@@ -4,7 +4,7 @@
  * Parent: /services/content
  */
 
-import { Search, FileCheck, TrendingDown, AlertCircle, Target, Award } from 'lucide-react';
+import { MagnifyingGlass, ListChecks as FileCheck, TrendDown, WarningCircle, Crosshair, Trophy } from '@phosphor-icons/react';
 import { Link } from 'react-router';
 import { FeatureList } from '../patterns/FeatureList';
 import { CheckList } from '../patterns/CheckList';
@@ -12,12 +12,12 @@ import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
 
 export const ContentAuditServiceTemplate = () => {
   const benefits = [
-    { icon: Search, title: 'Complete Content Inventory', description: 'Catalog every page, post, and asset with metadata and performance metrics.' },
+    { icon: MagnifyingGlass, title: 'Complete Content Inventory', description: 'Catalog every page, post, and asset with metadata and performance metrics.' },
     { icon: FileCheck, title: 'Quality Assessment', description: 'Evaluate content against E-E-A-T, readability, and brand consistency standards.' },
-    { icon: TrendingDown, title: 'Performance Analysis', description: 'Identify low-performing content and optimization opportunities.' },
-    { icon: AlertCircle, title: 'Gap Analysis', description: 'Find missing topics and content gaps in your market coverage.' },
-    { icon: Target, title: 'SEO Evaluation', description: 'Assess keyword targeting, meta data, and technical SEO issues.' },
-    { icon: Award, title: 'Actionable Recommendations', description: 'Prioritized action plan: update, consolidate, redirect, or delete.' }
+    { icon: TrendDown, title: 'Performance Analysis', description: 'Identify low-performing content and optimization opportunities.' },
+    { icon: WarningCircle, title: 'Gap Analysis', description: 'Find missing topics and content gaps in your market coverage.' },
+    { icon: Crosshair, title: 'SEO Evaluation', description: 'Assess keyword targeting, meta data, and technical SEO issues.' },
+    { icon: Trophy, title: 'Actionable Recommendations', description: 'Prioritized action plan: update, consolidate, redirect, or delete.' }
   ];
 
   const deliverables = ['Complete content inventory spreadsheet', 'Performance dashboard', 'Quality scorecard', 'Gap analysis report', 'SEO audit findings', 'Action plan with priorities', 'Content refresh roadmap'];

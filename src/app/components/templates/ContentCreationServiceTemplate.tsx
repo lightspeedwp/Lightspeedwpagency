@@ -4,7 +4,7 @@
  * Parent: /services/content
  */
 
-import { PenTool, BookOpen, FileText, Newspaper, Award, Users } from 'lucide-react';
+import { PenNib, BookOpen, FileText, Newspaper, Trophy, Users } from '@phosphor-icons/react';
 import { Link } from 'react-router';
 import { FeatureList } from '../patterns/FeatureList';
 import { CheckList } from '../patterns/CheckList';
@@ -12,11 +12,11 @@ import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
 
 export const ContentCreationServiceTemplate = () => {
   const benefits = [
-    { icon: PenTool, title: 'Blog Posts & Articles', description: 'Engaging, SEO-optimised long-form content that establishes authority and drives organic traffic.' },
+    { icon: PenNib, title: 'Blog Posts & Articles', description: 'Engaging, SEO-optimised long-form content that establishes authority and drives organic traffic.' },
     { icon: BookOpen, title: 'Case Studies & Whitepapers', description: 'In-depth content showcasing your expertise, methodology, and client results.' },
     { icon: FileText, title: 'Landing Page Copy', description: 'Conversion-focused copy for service pages, product pages, and campaign landing pages.' },
     { icon: Newspaper, title: 'Social Media Content', description: 'Platform-specific content calendars with engaging posts, graphics direction, and hashtag strategy.' },
-    { icon: Award, title: 'Email Newsletter Content', description: 'Regular newsletter content that nurtures leads and keeps your audience engaged.' },
+    { icon: Trophy, title: 'Email Newsletter Content', description: 'Regular newsletter content that nurtures leads and keeps your audience engaged.' },
     { icon: Users, title: 'Thought Leadership', description: 'Executive bylines, opinion pieces, and industry commentary that positions your brand as a leader.' },
   ];
 

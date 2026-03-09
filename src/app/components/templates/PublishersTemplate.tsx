@@ -51,7 +51,7 @@ import { Paragraph } from '../blocks/text/Paragraph';
 import { Buttons } from '../blocks/design/Buttons';
 import { useHeroParallax } from '../../hooks/useHeroParallax';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
-import { BookOpen, Sparkles } from '@phosphor-icons/react';
+import { BookOpen, Sparkle as Sparkles } from '@phosphor-icons/react';
 
 // Import centralized data
 import {

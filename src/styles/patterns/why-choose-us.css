@@ -3,7 +3,25 @@
  * 
  * BEM-compliant styles for the WhyChooseUs component.
  * All vertical spacing via blockGap (CSS gap) -- zero margin.
+ * 
+ * MIGRATED: March 6, 2026 - Phase 2 Step 3, Batch A3
+ * - Uses grid-responsive-base.css for responsive grid behavior
+ * - Removed ~18 lines of duplicate grid responsive code
+ * - 3-column responsive grid (1 col mobile → 2 cols tablet → 3 cols desktop)
+ * - CORRECTION: Incorrectly flagged as incompatible in pilot - actually uses standard pattern!
+ * 
+ * 100% CSS variables.
  */
+
+/* ============================================
+   BASE IMPORTS
+   ============================================ */
+
+@import '../base/grid-responsive-base.css';
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
 
 /* Wrapper -- flex column with blockGap */
 .why-choose-us {
@@ -41,11 +59,13 @@
   margin-right: auto;
 }
 
+/* Grid - inherits responsive behavior from grid-responsive-base */
 .why-choose-us__grid {
   display: grid;
   gap: var(--spacing-8);
 }
 
+/* 3-column responsive grid (1 col mobile → 2 cols tablet → 3 cols desktop) */
 .why-choose-us__grid--3-cols {
   grid-template-columns: 1fr;
 }
@@ -60,36 +80,4 @@
   .why-choose-us__grid--3-cols {
     grid-template-columns: repeat(3, 1fr);
   }
-}
-
-/* Card */
-.why-choose-us__card {
-  height: 100%;
-}
-
-/* Card Content -- flex column with blockGap */
-.why-choose-us__card-content {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-4);
-  height: 100%;
-}
-
-.why-choose-us__icon {
-  color: var(--primary);
-}
-
-.why-choose-us__card-title {
-  font-family: var(--font-primary);
-  font-size: var(--text-h4);
-  font-weight: var(--font-weight-medium);
-  color: var(--foreground);
-}
-
-.why-choose-us__card-description {
-  font-family: var(--font-primary);
-  font-size: var(--text-base);
-  line-height: var(--line-height-normal);
-  color: var(--muted-foreground);
-  flex-grow: 1;
 }

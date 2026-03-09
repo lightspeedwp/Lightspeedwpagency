@@ -1,4 +1,4 @@
-import '../../../styles/templates/portfolio-tag-archive.css';
+import '../../../styles/templates/portfolio-tag-archive-optimized.css';
 import { useParams, Navigate, Link } from 'react-router';
 import { slugToPath } from '../../utils/route-map';
 import { Container } from '../common/Container';

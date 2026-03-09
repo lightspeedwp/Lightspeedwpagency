@@ -1,17 +1,18 @@
 /**
- * Blog Index Styles - Funky Redesign (OPTIMIZED)
+ * Blog Index Page Styles (OPTIMIZED)
  *
- * Theme: "The Feed"
- * Style: Monospace accents, Glitch hover, Signal strength
- *
- * 3 view modes:
- *   --cols-3  "Neon Stack"  – vertical card, glowing top-border accent
- *   --cols-2  "Magazine"    – larger image, diagonal label, author avatar
- *   --cols-1  "Stream"      – timeline-style horizontal row
+ * BEM naming: .blog-index__*
  *
  * PHASE 4.1 OPTIMIZATION:
  * - Imports blog-base.css for shared blog structure
- * - Contains ONLY unique "Feed" theme decorations (3 card variants)
+ * - Contains ONLY unique blog index variants
+ *
+ * MIGRATED: March 6, 2026 - Phase 2 Step 3, Batch C1
+ * - Uses glass-effect-base.css for glassmorphism patterns
+ * - Glass effect patterns documented:
+ *   • .blog-index__featured-card (dark mode): blur(12px) featured card (matches glass-effect-base default)
+ *   • .blog-neon__wrap (dark mode): blur(8px) neon card wrapper (matches glass-effect-base--subtle)
+ *   • .blog-mag__wrap (dark mode): blur(8px) magazine card wrapper (matches glass-effect-base--subtle)
  *
  * STRICT DESIGN SYSTEM COMPLIANCE:
  * - Fonts: var(--font-primary), var(--font-secondary), var(--font-mono)
@@ -26,11 +27,10 @@
 
 /**
  * Import shared blog base structure
- * Provides: heroes, badges, titles, categories, meta, cards, pagination, etc.
+ * Provides: heroes, post meta, editorial content, author bios, etc.
  */
 @import './blog-base.css';
-@import '../base/grid-utilities.css';
-@import '../patterns/hero/hero-base.css';
+@import '../base/glass-effect-base.css';
 
 /* ============================================
    FEATURED CARD — UNIQUE THEME ELEMENTS

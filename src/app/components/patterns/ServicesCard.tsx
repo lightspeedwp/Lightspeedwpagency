@@ -27,7 +27,7 @@
 
 import { ArrowRight, CheckCircle } from '@phosphor-icons/react';
 import { Link } from 'react-router';
-import { getPageUrl } from '../../data/pages';
+import { getPageUrl } from '../../data/site-pages';
 import type { Service } from '../../data/services';
 
 

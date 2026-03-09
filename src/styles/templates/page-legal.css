@@ -3,6 +3,14 @@
  *
  * BEM naming: .legal-page__*
  * 100% CSS variables, zero hardcoded values.
+ *
+ * MIGRATED: March 6, 2026 - Phase 2 Step 3, Batch C3
+ * - Uses glass-effect-base.css for glassmorphism patterns
+ * - Glass effect patterns documented:
+ *   • .legal-page__hero-badge: blur(8px) legal badge (matches glass-effect-base--subtle)
+ *   • .legal-page__icon-wrapper: blur(12px) icon wrapper (matches glass-effect-base default)
+ *   • .dark .legal-page__section: blur(12px) section cards dark mode (matches glass-effect-base default)
+ *   • .dark .legal-page__contact-box: blur(12px) contact box dark mode (matches glass-effect-base default)
  */
 
 /* ============================================
@@ -15,6 +23,7 @@
  */
 @import '../base/grid-utilities.css';
 @import '../base/card-base.css';
+@import '../base/glass-effect-base.css';
 @import '../patterns/hero/hero-base.css';
 
 /* ============================================

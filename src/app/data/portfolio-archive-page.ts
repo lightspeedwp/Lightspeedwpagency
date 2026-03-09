@@ -4,7 +4,7 @@
  * Content for the main portfolio listing page.
  */
 
-import { Briefcase } from 'lucide-react';
+import { Briefcase } from '@phosphor-icons/react';
 
 export const portfolioArchiveHero = {
   title: "Our Work",

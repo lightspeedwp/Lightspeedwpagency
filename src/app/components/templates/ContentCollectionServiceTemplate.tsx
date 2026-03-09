@@ -4,7 +4,7 @@
  * Parent: /services/content
  */
 
-import { Camera, Video, Mic, FileText, Users, CheckCircle } from 'lucide-react';
+import { Camera, VideoCamera, Microphone, FileText, Users, CheckCircle } from '@phosphor-icons/react';
 import { Link } from 'react-router';
 import '../../../styles/templates/sub-service-compact.css';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
@@ -15,8 +15,8 @@ import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
 export const ContentCollectionServiceTemplate = () => {
   const benefits = [
     { icon: Camera, title: 'Professional Photography', description: 'High-quality product, team, and location photography for web and marketing.' },
-    { icon: Video, title: 'Video Production', description: 'Engaging video content from product demos to customer testimonials.' },
-    { icon: Mic, title: 'Interview & Testimonial Recording', description: 'Capture authentic customer stories and expert interviews.' },
+    { icon: VideoCamera, title: 'Video Production', description: 'Engaging video content from product demos to customer testimonials.' },
+    { icon: Microphone, title: 'Interview & Testimonial Recording', description: 'Capture authentic customer stories and expert interviews.' },
     { icon: FileText, title: 'Subject Matter Expert Interviews', description: 'Extract knowledge from your team to create authoritative content.' },
     { icon: Users, title: 'User-Generated Content Curation', description: 'Collect and organize customer content, reviews, and social media posts.' },
     { icon: CheckCircle, title: 'Content Rights & Licensing', description: 'Ensure all collected content has proper permissions and usage rights.' }

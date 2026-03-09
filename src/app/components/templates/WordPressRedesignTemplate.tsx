@@ -21,8 +21,7 @@ import { StatsGrid } from '../patterns/StatsGrid';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { Link } from 'react-router';
 import { slugToPath } from '../../utils/route-map';
-import { ArrowRight, Check, AlertTriangle } from 'lucide-react';
-
+import { ArrowRight, Check, Warning } from '@phosphor-icons/react';
 
 import {
   wpRedesignHero,
@@ -93,7 +92,7 @@ export function WordPressRedesignTemplate() {
             {wpRedesignChallenges.items.map((item, i) => (
               <ScrollReveal key={i} animation="fade-up" delay={i * 60}>
                 <div className="redesign-page__challenge-item">
-                  <AlertTriangle size={18} className="redesign-page__challenge-icon" />
+                  <Warning size={18} className="redesign-page__challenge-icon" />
                   <p className="redesign-page__challenge-text">{item}</p>
                 </div>
               </ScrollReveal>

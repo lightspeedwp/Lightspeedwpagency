@@ -27,7 +27,7 @@ import { Hero } from '../patterns/Hero';
 import { FunkyCTA } from '../patterns/FunkyCTA';
 import { Section } from '../common/Section';
 import { Container } from '../common/Container';
-import { Clock, BookOpen, ArrowRight, SearchX } from 'lucide-react';
+import { Clock, BookOpen, ArrowRight, MagnifyingGlassMinus } from '@phosphor-icons/react';
 import {
   tutorials,
   tutorialCategories,
@@ -143,7 +143,7 @@ export function TutorialsTemplate() {
               /* Empty State */
               <div className="archive-empty" role="status">
                 <div className="archive-empty__icon">
-                  <SearchX size={64} />
+                  <MagnifyingGlassMinus size={64} />
                 </div>
                 <h2 className="archive-empty__title">
                   No tutorials in &ldquo;{activeCategory}&rdquo; yet

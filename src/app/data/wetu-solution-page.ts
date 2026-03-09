@@ -4,7 +4,7 @@
  * Mock data for the Wetu Importer page (WetuImporterTemplate).
  */
 
-import { Globe, RefreshCw, Image, Map } from 'lucide-react';
+import { Globe, ArrowsClockwise, Image, MapTrifold } from '@phosphor-icons/react';
 
 export const wetuSolutionHero = {
   title: "Wetu Importer for WordPress",
@@ -17,7 +17,7 @@ export const wetuSolutionFeatures = {
   title: "Seamless Content Sync",
   features: [
     {
-      icon: RefreshCw,
+      icon: ArrowsClockwise,
       title: "Auto-Sync",
       description: "Keep your website itineraries updated automatically when you make changes in Wetu."
     },
@@ -27,7 +27,7 @@ export const wetuSolutionFeatures = {
       description: "Import high-resolution images and virtual tours directly into your media library."
     },
     {
-      icon: Map,
+      icon: MapTrifold,
       title: "Interactive Maps",
       description: "Embed Wetu's interactive maps to showcase destinations and routes."
     }

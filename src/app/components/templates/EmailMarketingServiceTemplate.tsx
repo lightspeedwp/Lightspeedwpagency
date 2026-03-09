@@ -4,7 +4,7 @@
  * Parent: /services/content
  */
 
-import { Mail, Target, Zap, Users, BarChart3, TrendingUp } from 'lucide-react';
+import { Envelope, Crosshair, Lightning, Users, ChartBar, TrendUp } from '@phosphor-icons/react';
 import { Link } from 'react-router';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { FeatureList } from '../patterns/FeatureList';
@@ -13,12 +13,12 @@ import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
 
 export const EmailMarketingServiceTemplate = () => {
   const benefits = [
-    { icon: Mail, title: 'Campaign Strategy & Planning', description: 'Strategic email campaigns aligned with sales cycles and customer journeys.' },
-    { icon: Target, title: 'Advanced Segmentation', description: 'Behavioral targeting, dynamic content, and personalized messaging at scale.' },
-    { icon: Zap, title: 'Marketing Automation', description: 'Sophisticated workflows that nurture leads and drive conversions automatically.' },
+    { icon: Envelope, title: 'Campaign Strategy & Planning', description: 'Strategic email campaigns aligned with sales cycles and customer journeys.' },
+    { icon: Crosshair, title: 'Advanced Segmentation', description: 'Behavioral targeting, dynamic content, and personalized messaging at scale.' },
+    { icon: Lightning, title: 'Marketing Automation', description: 'Sophisticated workflows that nurture leads and drive conversions automatically.' },
     { icon: Users, title: 'List Growth & Acquisition', description: 'Lead magnets, landing pages, and campaigns designed to grow your list.' },
-    { icon: BarChart3, title: 'A/B Testing & Optimization', description: 'Continuous testing and improvement of subject lines, content, and CTAs.' },
-    { icon: TrendingUp, title: 'Revenue Attribution', description: 'Track email marketing contribution to revenue and customer lifetime value.' }
+    { icon: ChartBar, title: 'A/B Testing & Optimization', description: 'Continuous testing and improvement of subject lines, content, and CTAs.' },
+    { icon: TrendUp, title: 'Revenue Attribution', description: 'Track email marketing contribution to revenue and customer lifetime value.' }
   ];
 
   const deliverables = ['Email marketing strategy', 'Campaign calendar', 'Email template library', 'Automation workflows', 'Segmentation strategy', 'Monthly performance reports', 'Conversion optimization roadmap'];

@@ -1,0 +1,178 @@
+/**
+ * Site Footer — Base Styles
+ *
+ * Wrapper, neon top border, background orbs, container, divider.
+ * Split from site-footer.css for maintainability (March 5, 2026).
+ *
+ * @see site-footer-newsletter.css — Newsletter CTA strip
+ * @see site-footer-content.css — Brand, nav columns, metrics, social, bottom bar
+ */
+
+
+/* ============================================
+   FOOTER WRAPPER
+   ============================================ */
+
+.site-footer {
+  position: relative;
+  overflow: hidden;
+  font-family: var(--font-secondary);
+}
+
+/* ---- Dark ---- */
+.site-footer--dark {
+  background-color: var(--sidebar);
+  color: var(--sidebar-foreground);
+}
+
+/* ---- Light ---- */
+.site-footer--light {
+  background-color: var(--card);
+  color: var(--foreground);
+}
+
+
+/* ============================================
+   ANIMATED NEON TOP BORDER  (3 px shimmer)
+   ============================================ */
+
+.site-footer__neon-border {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--primary) 20%,
+    var(--secondary) 40%,
+    var(--neon-color, var(--primary)) 50%,
+    var(--secondary) 60%,
+    var(--primary) 80%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: footer-neon-sweep 5s ease-in-out infinite alternate;
+}
+
+.site-footer__neon-border::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  filter: blur(8px);
+  opacity: 0.55;
+}
+
+@keyframes footer-neon-sweep {
+  0%   { background-position: 0% 0; }
+  100% { background-position: 100% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-footer__neon-border {
+    animation: none;
+    background-size: 100% 100%;
+  }
+}
+
+
+/* ============================================
+   BACKGROUND ORBS  (dark-mode only)
+   ============================================ */
+
+.site-footer__orb {
+  position: absolute;
+  border-radius: var(--radius-full);
+  pointer-events: none;
+  filter: blur(100px);
+  opacity: 0.07;
+}
+
+.site-footer--light .site-footer__orb { display: none; }
+
+.site-footer__orb--1 {
+  width: 500px;
+  height: 500px;
+  background: var(--primary);
+  top: -160px;
+  left: -120px;
+}
+
+.site-footer__orb--2 {
+  width: 350px;
+  height: 350px;
+  background: var(--secondary);
+  bottom: -100px;
+  right: -80px;
+}
+
+.site-footer__orb--3 {
+  width: 280px;
+  height: 280px;
+  background: var(--neon-color, var(--primary));
+  top: 40%;
+  left: 55%;
+  opacity: 0.04;
+}
+
+/* Subtle grid-dot overlay (dark only) */
+.site-footer--dark::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--primary) 6%, transparent) 1px,
+    transparent 1px
+  );
+  background-size: var(--spacing-10) var(--spacing-10);
+  pointer-events: none;
+  z-index: 0;
+}
+
+
+/* ============================================
+   CONTAINER
+   ============================================ */
+
+.site-footer__container {
+  position: relative;
+  z-index: 1;
+  max-width: var(--section-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 var(--section-padding-x);
+}
+
+
+/* ============================================
+   DIVIDER
+   ============================================ */
+
+.site-footer__divider {
+  height: 1px;
+  border: none;
+  margin: 0;
+}
+
+.site-footer--dark .site-footer__divider {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, var(--sidebar-foreground) 10%, transparent) 30%,
+    color-mix(in srgb, var(--primary) 15%, transparent) 50%,
+    color-mix(in srgb, var(--sidebar-foreground) 10%, transparent) 70%,
+    transparent
+  );
+}
+
+.site-footer--light .site-footer__divider {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--border-soft) 30%,
+    color-mix(in srgb, var(--primary) 20%, transparent) 50%,
+    var(--border-soft) 70%,
+    transparent
+  );
+}

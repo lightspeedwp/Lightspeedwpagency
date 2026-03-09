@@ -12,7 +12,7 @@
  * @see /src/styles/patterns/included-solutions.css
  */
 
-import { Package, ShoppingCart, Plane, Globe, FileText, Newspaper } from 'lucide-react';
+import { Package, ShoppingCart, Airplane, Globe, FileText, Newspaper } from '@phosphor-icons/react';
 import type { UniversalIcon } from '../utils/icon-map';
 
 /**
@@ -76,7 +76,7 @@ export const allSolutions: SolutionReference[] = [
     slug: 'tour-operator-design',
     title: 'Tour Operator Website Design',
     tagline: 'Specialized booking systems and stunning destination showcases for travel businesses',
-    icon: Plane,
+    icon: Airplane,
     featured: true,
     pricing: {
       from: '$10,000',
@@ -102,7 +102,7 @@ export const allSolutions: SolutionReference[] = [
     slug: 'tour-operators-solution',
     title: 'Tour Operators Solution',
     tagline: 'Complete booking and itinerary management systems for tour operators',
-    icon: Plane,
+    icon: Airplane,
   },
 ];
 

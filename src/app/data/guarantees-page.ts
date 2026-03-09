@@ -4,7 +4,7 @@
  * Content for the Guarantees overview page.
  */
 
-import { ShieldCheck, Clock, CheckCircle, RefreshCw, Lock, Award, Users, Star, ThumbsUp } from 'lucide-react';
+import { ShieldCheck, Clock, CheckCircle, ArrowsClockwise, Lock, Trophy, Users, Star, ThumbsUp } from '@phosphor-icons/react';
 
 export const guaranteesPageHero = {
   title: "Our Commitments",
@@ -101,7 +101,7 @@ export const trustSignals = {
       description: "Average clutch rating"
     },
     {
-      icon: Award,
+      icon: Trophy,
       stat: "100%",
       label: "Success Rate",
       description: "Project completion"

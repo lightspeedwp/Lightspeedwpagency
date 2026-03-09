@@ -8,7 +8,7 @@
  * @see /src/styles/templates/tour-operator-archive.css
  */
 
-import '../../../../styles/templates/tour-operator-archive.css';
+import '../../../../styles/templates/tour-operator-archive-optimized.css';
 import { Container } from '@/app/components/common/Container';
 import { Section } from '@/app/components/common/Section';
 import { allTourContent } from '@/app/data/tour-operator';

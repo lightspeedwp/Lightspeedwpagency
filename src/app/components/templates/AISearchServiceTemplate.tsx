@@ -6,6 +6,12 @@
  *
  * Task 2.3: Service consolidation (22 → ~10)
  *
+ * Pattern Components:
+ * - ✅ FeatureList — Service pillar cards (glow variant, 2 columns, with sub-features)
+ * - ✅ StatsGrid — Hero stats (inline variant, 4 columns)
+ * - ✅ ProcessTimeline — 4-step process (horizontal orientation)
+ * - ✅ FunkyCTA — Final conversion section
+ *
  * STRICT DESIGN SYSTEM COMPLIANCE:
  * - Zero Tailwind classes
  * - All styling via /src/styles/templates/page-service-ai-search.css
@@ -13,35 +19,32 @@
  * - Fonts: var(--font-primary), var(--font-secondary) only
  *
  * @see /src/styles/templates/page-service-ai-search.css
+ * @migrated March 4, 2026 — Migrated inline pillar cards to FeatureList, hero stats to StatsGrid, process to ProcessTimeline (~50 lines saved)
  */
 
 import '../../../styles/templates/page-service-ai-search.css';
 import { Container } from '../common/Container';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { FunkyCTA } from '../patterns/FunkyCTA';
+import { FeatureList } from '../patterns/FeatureList';
+import { StatsGrid } from '../patterns/StatsGrid';
+import { ProcessTimeline } from '../patterns/ProcessTimeline';
 import { RelatedServicesGrid } from '../patterns/RelatedServicesGrid';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { ScrollDownArrow } from '../common/ScrollDownArrow';
 import {
-  Search,
-  BarChart,
+  MagnifyingGlass,
+  ChartBar,
   Brain,
-  MessageSquare,
-  CheckCircle,
-  Target,
-  TrendingUp,
-  Zap,
+  ChatCentered,
   Eye,
-  Globe,
-  FileText,
-  Shield,
-} from 'lucide-react';
+} from '@phosphor-icons/react';
 
 /** Service pillars — the 4 merged sub-services */
 const pillars = [
   {
     id: 'seo',
-    icon: Search,
+    icon: MagnifyingGlass,
     name: 'Technical SEO',
     description:
       'Comprehensive technical SEO audits, keyword research, on-page optimisation, and ongoing monitoring to dominate organic search results.',
@@ -55,7 +58,7 @@ const pillars = [
   },
   {
     id: 'analytics',
-    icon: BarChart,
+    icon: ChartBar,
     name: 'Analytics & Reporting',
     description:
       'Data-driven insights with custom dashboards, conversion tracking, and actionable reporting that connects marketing spend to revenue.',
@@ -83,7 +86,7 @@ const pillars = [
   },
   {
     id: 'answer-engine',
-    icon: MessageSquare,
+    icon: ChatCentered,
     name: 'Answer Engine Optimisation',
     description:
       'Get cited by ChatGPT, Perplexity, and AI Overviews. Optimise your content to be the answer AI engines serve.',
@@ -104,6 +107,22 @@ const processSteps = [
   { number: '03', title: 'Implement', description: 'Technical fixes, content restructuring, schema, and AI model tuning.' },
   { number: '04', title: 'Measure', description: 'Ongoing tracking, citation monitoring, and monthly performance reports.' },
 ];
+
+/* ── Map pillars to FeatureList shape ── */
+const pillarItems = pillars.map((p) => ({
+  icon: p.icon,
+  title: p.name,
+  description: p.description,
+  features: p.features,
+}));
+
+/* ── Map process steps to ProcessTimeline shape ── */
+const timelineSteps = processSteps.map((s) => ({
+  id: `ai-step-${s.number}`,
+  number: parseInt(s.number, 10),
+  title: s.title,
+  description: s.description,
+}));
 
 export function AISearchServiceTemplate() {
   return (
@@ -146,24 +165,14 @@ export function AISearchServiceTemplate() {
           </ScrollReveal>
 
           <ScrollReveal animation="fade-up">
-            <div className="ai-search-page__hero-stats">
-              <div className="ai-search-page__stat">
-                <span className="ai-search-page__stat-value">60%</span>
-                <span className="ai-search-page__stat-label">Lower AI costs</span>
-              </div>
-              <div className="ai-search-page__stat">
-                <span className="ai-search-page__stat-value">5+</span>
-                <span className="ai-search-page__stat-label">AI engines tracked</span>
-              </div>
-              <div className="ai-search-page__stat">
-                <span className="ai-search-page__stat-value">3x</span>
-                <span className="ai-search-page__stat-label">Organic growth</span>
-              </div>
-              <div className="ai-search-page__stat">
-                <span className="ai-search-page__stat-value">100%</span>
-                <span className="ai-search-page__stat-label">Schema coverage</span>
-              </div>
-            </div>
+            <StatsGrid
+              stats={[
+                { value: '60%', label: 'Lower AI costs' },
+                { value: '5+', label: 'AI engines tracked' },
+                { value: '3x', label: 'Organic growth' },
+                { value: '100%', label: 'Schema coverage' },
+              ]}
+            />
           </ScrollReveal>
 
           <ScrollDownArrow />
@@ -183,30 +192,11 @@ export function AISearchServiceTemplate() {
             </p>
           </ScrollReveal>
 
-          <div className="ai-search-page__pillars-grid">
-            {pillars.map((pillar) => {
-              const IconComp = pillar.icon;
-              return (
-                <ScrollReveal key={pillar.id} animation="fade-up">
-                  <div className="ai-search-page__pillar-card">
-                    <div className="ai-search-page__pillar-icon">
-                      <IconComp style={{ width: 24, height: 24 }} />
-                    </div>
-                    <h3 className="ai-search-page__pillar-name">{pillar.name}</h3>
-                    <p className="ai-search-page__pillar-description">{pillar.description}</p>
-                    <ul className="ai-search-page__pillar-features">
-                      {pillar.features.map((feat) => (
-                        <li key={feat} className="ai-search-page__pillar-feature">
-                          <CheckCircle style={{ width: 14, height: 14 }} />
-                          {feat}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </ScrollReveal>
-              );
-            })}
-          </div>
+          <FeatureList
+            items={pillarItems}
+            columns={2}
+            variant="glow"
+          />
         </Container>
       </section>
 
@@ -219,17 +209,10 @@ export function AISearchServiceTemplate() {
             <h2 className="ai-search-page__process-title">How we amplify your signal</h2>
           </ScrollReveal>
 
-          <div className="ai-search-page__process-grid">
-            {processSteps.map((step) => (
-              <ScrollReveal key={step.number} animation="fade-up">
-                <div className="ai-search-page__process-step">
-                  <div className="ai-search-page__step-number">{step.number}</div>
-                  <h3 className="ai-search-page__step-title">{step.title}</h3>
-                  <p className="ai-search-page__step-desc">{step.description}</p>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
+          <ProcessTimeline
+            steps={timelineSteps}
+            orientation="horizontal"
+          />
         </Container>
       </section>
 

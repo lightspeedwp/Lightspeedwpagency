@@ -10,7 +10,7 @@
  * WordPress: Maps to page-contact.html template
  */
 
-import { Mail, Phone, MapPin, Clock, MessageSquare, Headphones, Award, Users } from 'lucide-react';
+import { Envelope, Phone, MapPin, Clock, ChatCentered, Headphones, Trophy, Users } from '@phosphor-icons/react';
 import type { UniversalIcon } from '../utils/icon-map';
 import type { FAQ } from './faqs';
 
@@ -32,7 +32,7 @@ export interface ContactMethod {
  */
 export const contactPageMethods: ContactMethod[] = [
   {
-    icon: Mail,
+    icon: Envelope,
     title: 'Email Us',
     description: 'Send us an email and we\'ll respond within 24 hours',
     value: 'hello@lightspeedwp.agency',
@@ -66,7 +66,7 @@ export const contactPageMethods: ContactMethod[] = [
  */
 export const contactPageHero = {
   badge: {
-    icon: 'MessageSquare',
+    icon: 'ChatCentered',
     text: 'Get In Touch'
   },
   title: 'Let\'s build something amazing together',
@@ -74,7 +74,7 @@ export const contactPageHero = {
   description: 'Whether you need a new <i>WordPress</i> website, <i>WooCommerce</i> store, or ongoing support - we\'re here to help. Send us a message and we\'ll get back to you within 24 hours.',
   stats: [
     {
-      icon: Award,
+      icon: Trophy,
       number: '22+',
       label: 'Years Experience'
     },
@@ -102,7 +102,7 @@ export interface WhyContactReason {
 
 export const contactPageReasons: WhyContactReason[] = [
   {
-    icon: MessageSquare,
+    icon: ChatCentered,
     title: 'Expert Consultation',
     description: 'Get professional advice on your <i>WordPress</i> and <i>WooCommerce</i> projects from our experienced team'
   },
@@ -112,7 +112,7 @@ export const contactPageReasons: WhyContactReason[] = [
     description: 'Direct access to our support team for technical assistance and ongoing maintenance'
   },
   {
-    icon: Mail,
+    icon: Envelope,
     title: 'Quick Response',
     description: 'We respond to all inquiries within 24 hours during business hours'
   }

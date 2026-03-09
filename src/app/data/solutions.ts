@@ -12,7 +12,7 @@
  * @see {@link /guidelines/data/solutions.md}
  */
 
-import { Palette, Code, ShoppingCart } from 'lucide-react';
+import { Palette, Code, ShoppingCart } from '@phosphor-icons/react';
 import type { UniversalIcon } from '../utils/icon-map';
 
 /**

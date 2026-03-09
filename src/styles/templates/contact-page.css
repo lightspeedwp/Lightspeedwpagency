@@ -3,6 +3,12 @@
  *
  * BEM naming: .contact-page__*
  * 100% CSS variables, zero hardcoded values.
+ * 
+ * MIGRATED: March 6, 2026 - Phase 2 Step 3, Batch C1
+ * - Uses glass-effect-base.css for glassmorphism patterns
+ * - 2 glass effect patterns documented:
+ *   • .contact-page__badge: blur(8px) badge pattern (custom - pill shape + neon glow)
+ *   • .contact-page__form-wrapper: blur(12px) form container (matches glass-effect-base default)
  */
 
 /* ============================================
@@ -15,6 +21,7 @@
  */
 @import '../base/grid-utilities.css';
 @import '../base/card-base.css';
+@import '../base/glass-effect-base.css';
 @import '../patterns/hero/hero-base.css';
 
 /* ============================================

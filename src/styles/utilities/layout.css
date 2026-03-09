@@ -1,0 +1,125 @@
+/**
+ * Layout Utilities
+ *
+ * Text alignment, width, max-width, display, position, and overflow utilities.
+ * All utilities use CSS variables where applicable.
+ */
+
+/* ============================================
+   TEXT ALIGNMENT UTILITIES
+   ============================================ */
+
+.wp-text-left { text-align: left; }
+.wp-text-center { text-align: center; }
+.wp-text-right { text-align: right; }
+.wp-text-justify { text-align: justify; }
+
+/* ============================================
+   WIDTH & MAX-WIDTH UTILITIES
+   ============================================ */
+
+.wp-max-w-prose { max-width: 65ch; margin-left: auto; margin-right: auto; }
+.wp-max-w-sm { max-width: 640px; margin-left: auto; margin-right: auto; }
+.wp-max-w-md { max-width: 768px; margin-left: auto; margin-right: auto; }
+.wp-max-w-lg { max-width: 1024px; margin-left: auto; margin-right: auto; }
+.wp-max-w-xl { max-width: 1280px; margin-left: auto; margin-right: auto; }
+.wp-max-w-2xl { max-width: 1536px; margin-left: auto; margin-right: auto; }
+.wp-max-w-3xl { max-width: 768px; margin-left: auto; margin-right: auto; }
+.wp-max-w-4xl { max-width: 896px; margin-left: auto; margin-right: auto; }
+.wp-max-w-6xl { max-width: 1152px; margin-left: auto; margin-right: auto; }
+.wp-max-w-full { max-width: 100%; }
+.wp-w-full { width: 100%; }
+.wp-w-auto { width: auto; }
+
+/* ============================================
+   SIZE UTILITIES
+   ============================================ */
+
+.wp-w-8 { width: var(--spacing-8); min-width: var(--spacing-8); }
+.wp-h-8 { height: var(--spacing-8); min-height: var(--spacing-8); }
+.wp-w-10 { width: var(--spacing-10); min-width: var(--spacing-10); }
+.wp-h-10 { height: var(--spacing-10); min-height: var(--spacing-10); }
+.wp-w-12 { width: var(--spacing-12); min-width: var(--spacing-12); }
+.wp-h-12 { height: var(--spacing-12); min-height: var(--spacing-12); }
+.wp-w-16 { width: var(--spacing-16); min-width: var(--spacing-16); }
+.wp-h-16 { height: var(--spacing-16); min-height: var(--spacing-16); }
+.wp-h-auto { height: auto; }
+.wp-h-full { height: 100%; }
+
+/* ============================================
+   DISPLAY UTILITIES
+   ============================================ */
+
+.wp-block-display { display: block; }
+.wp-inline { display: inline; }
+.wp-inline-block { display: inline-block; }
+.wp-hidden { display: none; }
+
+/* ============================================
+   POSITION & OVERFLOW UTILITIES
+   ============================================ */
+
+.wp-relative { position: relative; }
+.wp-absolute { position: absolute; }
+.wp-fixed { position: fixed; }
+.wp-sticky { position: sticky; }
+.wp-top-24 { top: var(--spacing-24); }
+.wp-overflow-hidden { overflow: hidden; }
+.wp-overflow-auto { overflow: auto; }
+.wp-overflow-scroll { overflow: scroll; }
+.wp-z-10 { z-index: 10; }
+
+/* ============================================
+   BORDER RADIUS UTILITIES
+   ============================================ */
+
+.wp-rounded { border-radius: var(--radius); }
+.wp-rounded-lg { border-radius: var(--radius-lg); }
+.wp-rounded-xl { border-radius: var(--radius-xl); }
+.wp-rounded-2xl { border-radius: var(--radius-2xl); }
+.wp-rounded-full { border-radius: var(--radius-full); }
+.wp-rounded-none { border-radius: 0; }
+
+/* ============================================
+   BORDER UTILITIES
+   ============================================ */
+
+.wp-border { border: 1px solid var(--border); }
+.wp-border-2 { border: 2px solid var(--border); }
+.wp-border-border { border-color: var(--border); }
+.wp-border-border-soft { border-color: var(--border-soft); }
+.wp-border-primary { border: 1px solid var(--primary); }
+.wp-border-none { border: none; }
+
+.border-default { border: 1px solid var(--border); }
+.border-soft { border: 1px solid var(--border-soft); }
+.border-extra-soft { border: 1px solid var(--border-extra-soft); }
+.border-primary { border: 1px solid var(--primary); }
+.border-none { border: none; }
+
+/* ============================================
+   SHADOW UTILITIES
+   ============================================ */
+
+.wp-shadow-sm { box-shadow: var(--shadow-sm); }
+.wp-shadow-md { box-shadow: var(--shadow-md); }
+.wp-shadow-lg { box-shadow: var(--shadow-lg); }
+.wp-shadow-none { box-shadow: none; }
+
+/* ============================================
+   TRANSITION UTILITIES
+   ============================================ */
+
+.wp-transition-all { transition: all var(--transition-base) ease; }
+.wp-transition-colors { transition: color var(--transition-base) ease, background-color var(--transition-base) ease, border-color var(--transition-base) ease; }
+.wp-transition-transform { transition: transform var(--transition-base) ease; }
+
+/* ============================================
+   LAYOUT UTILITIES (WordPress)
+   ============================================ */
+
+.wp-block {
+  max-width: var(--wp--style--global--content-size, 1200px);
+  margin-left: auto;
+  margin-right: auto;
+}

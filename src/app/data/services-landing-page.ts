@@ -5,12 +5,12 @@
  * Aggregates service categories and provides the high-level pitch.
  */
 
-import { Layers, Zap, Code, Shield } from 'lucide-react';
+import { Stack, Lightning, Code, Shield } from '@phosphor-icons/react';
 
 export const servicesLandingHero = {
   title: "Comprehensive WordPress Solutions",
   subtitle: "From custom block themes to complex WooCommerce stores, we build high-performance digital experiences.",
-  badge: { text: "OUR EXPERTISE", icon: Layers },
+  badge: { text: "OUR EXPERTISE", icon: Stack },
   primaryButton: { text: "Request a Systems Audit", page: "contact" }
 };
 
@@ -29,7 +29,7 @@ export const servicesTechStack = {
       description: "Native WordPress block themes for maximum control and performance."
     },
     {
-      icon: Zap,
+      icon: Lightning,
       title: "React & TypeScript",
       description: "Modern JavaScript for dynamic, interactive user experiences."
     },

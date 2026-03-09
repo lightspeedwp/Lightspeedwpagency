@@ -234,7 +234,13 @@ Understand how React components map to WordPress:
 - Mobile performance? -> Read **[mobile/performance.md](./mobile/performance.md)**
 - Mobile forms? -> Read **[mobile/forms.md](./mobile/forms.md)**
 
-#### Step 7: Read Infrastructure Guidelines (As Needed)
+#### Step 7: Read Development Guidelines (As Needed)
+**BEFORE writing CSS or optimizing memory**, read the relevant development guidelines:
+- Writing CSS? -> Read **[development/css-guidelines.md](./development/css-guidelines.md)**
+- Optimizing CSS memory? -> Read **[development/css-memory-optimization.md](./development/css-memory-optimization.md)**
+- Using BEM naming? -> Read **[development/bem-naming-conventions.md](./development/bem-naming-conventions.md)**
+
+#### Step 8: Read Infrastructure Guidelines (As Needed)
 **BEFORE working on infrastructure**, read the relevant infrastructure guidelines:
 - Storybook configuration? -> Read **[storybook/storybook-configuration.md](./storybook/storybook-configuration.md)**
 - Importing assets? -> Read **[imports/import-guidelines.md](./imports/import-guidelines.md)**
@@ -323,6 +329,11 @@ guidelines/
 │
 ├── code-documentation/       # Code standards
 │   └── JSDOC-STANDARDS.md   # JSDoc & TypeScript documentation standards
+│
+├── development/              # Development guidelines
+│   ├── css-guidelines.md    # CSS architecture, BEM, design system integration
+│   ├── css-memory-optimization.md  # Memory optimization strategies
+│   └── bem-naming-conventions.md   # Detailed BEM naming guide
 │
 ├── testing/                  # Testing guidelines
 │   ├── TESTING-STANDARDS.md  # Testing standards & coverage requirements

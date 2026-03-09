@@ -4,7 +4,7 @@
  * Parent: /services/design
  */
 
-import { Figma, Zap, Users, Layout, MousePointer, Award } from 'lucide-react';
+import { FigmaLogo, Lightning, Users, Layout, Cursor, Trophy } from '@phosphor-icons/react';
 import { Link } from 'react-router';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { FeatureList } from '../patterns/FeatureList';
@@ -13,12 +13,12 @@ import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
 
 export const FigmaPrototypingServiceTemplate = () => {
   const benefits = [
-    { icon: Figma, title: 'Interactive Prototypes', description: 'Clickable, realistic prototypes that demonstrate the complete user experience.' },
-    { icon: Zap, title: 'Rapid Iteration', description: 'Quick iterations and design refinement based on stakeholder feedback.' },
+    { icon: FigmaLogo, title: 'Interactive Prototypes', description: 'Clickable, realistic prototypes that demonstrate the complete user experience.' },
+    { icon: Lightning, title: 'Rapid Iteration', description: 'Quick iterations and design refinement based on stakeholder feedback.' },
     { icon: Users, title: 'Stakeholder Alignment', description: 'Get everyone on the same page before development begins.' },
     { icon: Layout, title: 'Component Libraries', description: 'Reusable design systems that scale across your entire product.' },
-    { icon: MousePointer, title: 'User Testing Ready', description: 'Prototypes optimized for user testing and feedback collection.' },
-    { icon: Award, title: 'Developer Handoff', description: 'Clean, documented designs with specs ready for development.' }
+    { icon: Cursor, title: 'User Testing Ready', description: 'Prototypes optimized for user testing and feedback collection.' },
+    { icon: Trophy, title: 'Developer Handoff', description: 'Clean, documented designs with specs ready for development.' }
   ];
 
   const deliverables = ['Interactive Figma prototype', 'Component library', 'Design system documentation', 'User flow diagrams', 'Responsive breakpoints', 'Developer handoff package', 'Design revision rounds (3)'];

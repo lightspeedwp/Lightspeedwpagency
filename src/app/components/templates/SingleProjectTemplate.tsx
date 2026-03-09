@@ -22,7 +22,7 @@ import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { FunkyCTA } from '../patterns/FunkyCTA';
 import { Button } from '../blocks/design/Buttons';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
-import { ArrowLeft, ArrowRight, ExternalLink, Calendar, Layers, Tag } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ArrowSquareOut, Calendar, Stack, Tag } from '@phosphor-icons/react';
 import { getProjectBySlug } from '../../data/portfolio';
 import { Link } from 'react-router';
 
@@ -88,7 +88,7 @@ export function SingleProjectTemplate({ slug }: SingleProjectTemplateProps) {
                   onClick={() => window.open(project.websiteUrl, '_blank')}
                   className="wp-flex wp-items-center wp-gap-2"
                 >
-                  Visit Live Site <ExternalLink size={16} />
+                  Visit Live Site <ArrowSquareOut size={16} />
                 </Button>
               )}
             </ScrollReveal>
@@ -118,7 +118,7 @@ export function SingleProjectTemplate({ slug }: SingleProjectTemplateProps) {
               <ScrollReveal animation="fade-right">
                 <div className="single-project__meta-card">
                   <div className="single-project__meta-group">
-                    <span className="single-project__meta-label"><Layers size={14} style={{ display: 'inline', marginRight: '4px' }}/> Industry</span>
+                    <span className="single-project__meta-label"><Stack size={14} style={{ display: 'inline', marginRight: '4px' }}/> Industry</span>
                     <span className="single-project__meta-value">{project.industry}</span>
                   </div>
                   

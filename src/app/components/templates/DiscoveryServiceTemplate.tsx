@@ -31,8 +31,7 @@
  */
 
 import { useState, useEffect } from 'react';
-/* Route-level CSS */
-import '../../../styles/templates/page-service-discovery.css';
+/* Route-level CSS — optimized version loaded globally via index.css */
 import { Link } from 'react-router';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';

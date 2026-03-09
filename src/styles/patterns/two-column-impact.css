@@ -3,9 +3,26 @@
  * 
  * BEM-compliant styles for the TwoColumnImpactSection component.
  * All vertical spacing via blockGap (CSS gap) -- zero margin.
+ * 
+ * MIGRATED: March 6, 2026 - Phase 2 Step 3, Batch A2
+ * - Uses grid-responsive-base.css for responsive grid behavior
+ * - Removed ~10 lines of duplicate grid responsive code
+ * - 2-column responsive grid (1 col mobile → 2 cols tablet+)
+ * 
+ * 100% CSS variables.
  */
 
-/* Grid Layout */
+/* ============================================
+   BASE IMPORTS
+   ============================================ */
+
+@import '../base/grid-responsive-base.css';
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+
+/* Grid Layout - inherits responsive behavior from grid-responsive-base */
 .impact-section__grid {
   display: grid;
   gap: var(--spacing-8);

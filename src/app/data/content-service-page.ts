@@ -7,16 +7,16 @@
 
 import {
   FileText,
-  Target,
-  TrendingUp,
+  Crosshair,
+  TrendUp,
   Users,
-  Edit3,
-  Search,
-  CheckCircle2,
-  BarChart,
+  PencilSimple,
+  MagnifyingGlass,
+  CheckCircle,
+  ChartBar,
   Calendar,
-  Sparkles
-} from 'lucide-react';
+  Sparkle
+} from '@phosphor-icons/react';
 
 /**
  * Hero Section
@@ -48,17 +48,17 @@ export const whyContentStrategy = {
       description: 'Connect with your target audience through relevant, valuable content that addresses their needs and pain points.'
     },
     {
-      icon: TrendingUp,
+      icon: TrendUp,
       title: 'Improve SEO Rankings',
       description: 'Rank higher in search results with SEO-optimized content that targets the right keywords and provides value to users.'
     },
     {
-      icon: Target,
+      icon: Crosshair,
       title: 'Build Authority',
       description: 'Establish thought leadership and brand authority with expert content that demonstrates your knowledge and expertise.'
     },
     {
-      icon: CheckCircle2,
+      icon: CheckCircle,
       title: 'Drive Conversions',
       description: 'Turn visitors into customers with persuasive content that guides users through the buying journey.'
     }
@@ -70,12 +70,12 @@ export const whyContentStrategy = {
  */
 export const contentServices = [
   {
-    icon: Target,
+    icon: Crosshair,
     title: 'Content Strategy',
     description: 'Comprehensive content planning: audience research, keyword strategy, content calendar, and editorial guidelines.'
   },
   {
-    icon: Edit3,
+    icon: PencilSimple,
     title: 'Professional Writing',
     description: 'Expert content creation by experienced writers specializing in your industry and target audience.'
   },
@@ -85,12 +85,12 @@ export const contentServices = [
     description: 'Thorough editing for clarity, grammar, style consistency, and brand voice alignment.'
   },
   {
-    icon: Search,
+    icon: MagnifyingGlass,
     title: 'SEO Optimization',
     description: 'Keyword research, on-page SEO, meta descriptions, internal linking, and search intent alignment.'
   },
   {
-    icon: BarChart,
+    icon: ChartBar,
     title: 'Content Audits',
     description: 'Comprehensive analysis of existing content with recommendations for updates, improvements, and pruning.'
   },

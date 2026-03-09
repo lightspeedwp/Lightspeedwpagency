@@ -7,7 +7,7 @@
  * **Last Updated:** 2025-02-17
  */
 
-import { ShoppingBag, CreditCard, Truck, BarChart3, Globe, ShieldCheck } from 'lucide-react';
+import { ShoppingBag, CreditCard, Truck, ChartBar, Globe, ShieldCheck } from '@phosphor-icons/react';
 import type { UniversalIcon } from '../utils/icon-map';
 
 /**
@@ -139,7 +139,7 @@ export const woocommerceSolutionDetailed: DetailedSolution = {
     {
       title: 'Conversion Analytics',
       description: 'Deep insights into shopper behavior, cart abandonment, and sales performance.',
-      icon: BarChart3
+      icon: ChartBar
     },
     {
       title: 'Global Scale',

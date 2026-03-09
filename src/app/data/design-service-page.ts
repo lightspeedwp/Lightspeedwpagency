@@ -13,7 +13,7 @@
  * - CTA
  */
 
-import { Palette, PenTool, Layout, Monitor, Layers, Eye } from 'lucide-react';
+import { Palette, PenNib, Layout, Monitor, Stack, Eye } from '@phosphor-icons/react';
 
 export const designServiceHero = {
   title: "Token-Driven UI Design for WordPress FSE",
@@ -38,7 +38,7 @@ export const designServiceOverview = {
       description: "WCAG compliant designs ensuring usability for everyone."
     },
     {
-      icon: Layers,
+      icon: Stack,
       title: "Design Systems",
       description: "Scalable component libraries for consistent branding."
     }

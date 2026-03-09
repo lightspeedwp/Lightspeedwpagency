@@ -3,6 +3,15 @@
  *
  * BEM naming: .team-page__*
  * 100% CSS variables, zero hardcoded values.
+ * 
+ * MIGRATED: March 6, 2026 - Phase 2 Step 3, Batch C1
+ * - Uses glass-effect-base.css for glassmorphism patterns
+ * - Glass effect patterns documented:
+ *   • .team-page__badge: blur(8px) badge (matches glass-effect-base--subtle)
+ *   • .team-page__leader-card: blur(10px) leader cards (custom 10px - preserved)
+ *   • .team-page__social-link: blur(8px) social icons (matches glass-effect-base--subtle)
+ *   • .team-page__culture-card: blur(10px) culture cards (custom 10px - preserved)
+ *   • .team-page__stat-item: blur(10px) stat cards (custom 10px - preserved)
  */
 
 /* ============================================
@@ -15,6 +24,7 @@
  */
 @import '../base/grid-utilities.css';
 @import '../base/card-base.css';
+@import '../base/glass-effect-base.css';
 @import '../patterns/hero/hero-base.css';
 
 /* ============================================

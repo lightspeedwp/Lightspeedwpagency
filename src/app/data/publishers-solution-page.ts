@@ -4,7 +4,7 @@
  * Content for the Publishers Solution template.
  */
 
-import { Newspaper, Rss, Layers, Users, TrendingUp, Zap } from 'lucide-react';
+import { Newspaper, Rss, Stack, Users, TrendUp, Lightning } from '@phosphor-icons/react';
 
 export const publishersSolutionHero = {
   title: "WordPress for High-Traffic Publishers",
@@ -18,17 +18,17 @@ export const publishersSolutionFeatures = {
   title: "Engineered for Reach",
   features: [
     {
-      icon: Layers,
+      icon: Stack,
       title: "Content Architecture",
       description: "Optimized data structures and taxonomies for complex editorial workflows."
     },
     {
-      icon: TrendingUp,
+      icon: TrendUp,
       title: "Ad Tech Integration",
       description: "Seamless integration with ad servers and header bidding for maximum revenue."
     },
     {
-      icon: Zap,
+      icon: Lightning,
       title: "Core Web Vitals",
       description: "Lightning-fast performance to meet Google's rigorous page experience signals."
     },

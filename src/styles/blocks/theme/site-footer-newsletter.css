@@ -1,0 +1,174 @@
+/**
+ * Site Footer — Newsletter CTA Strip
+ *
+ * Newsletter heading, form, input, button, and success state.
+ * Split from site-footer.css for maintainability (March 5, 2026).
+ *
+ * @see site-footer-base.css — Wrapper, border, orbs, container
+ * @see site-footer-content.css — Brand, nav columns, metrics, social, bottom bar
+ */
+
+/* ============================================
+   NEWSLETTER CTA STRIP
+   ============================================ */
+
+.site-footer__newsletter {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+  padding: var(--spacing-14) 0 var(--spacing-12);
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .site-footer__newsletter {
+    flex-direction: row;
+    text-align: left;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.site-footer__newsletter-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1-5);
+  flex: 1;
+}
+
+.site-footer__newsletter-heading {
+  font-family: var(--font-primary);
+  font-size: var(--text-h4);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-tight);
+  line-height: var(--line-height-tight);
+  margin: 0;
+}
+
+.site-footer--dark .site-footer__newsletter-heading {
+  color: var(--sidebar-foreground);
+}
+
+.site-footer--light .site-footer__newsletter-heading {
+  color: var(--foreground);
+}
+
+/* Neon word highlight */
+.site-footer__newsletter-heading .site-footer__neon-text {
+  color: var(--primary);
+}
+
+.site-footer--dark .site-footer__newsletter-heading .site-footer__neon-text {
+  text-shadow: 0 0 14px color-mix(in srgb, var(--primary) 50%, transparent);
+}
+
+.site-footer__newsletter-sub {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-normal);
+  opacity: 0.55;
+  margin: 0;
+}
+
+/* Form */
+.site-footer__newsletter-form {
+  display: flex;
+  gap: var(--spacing-2);
+  width: 100%;
+  max-width: 440px;
+}
+
+.site-footer__newsletter-input {
+  flex: 1;
+  padding: var(--spacing-3) var(--spacing-5);
+  border-radius: var(--radius-full);
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-regular);
+  outline: none;
+  transition: border-color var(--transition-base) ease,
+              box-shadow var(--transition-base) ease;
+}
+
+.site-footer--dark .site-footer__newsletter-input {
+  background: color-mix(in srgb, var(--sidebar-foreground) 6%, transparent);
+  border: 1px solid color-mix(in srgb, var(--sidebar-foreground) 12%, transparent);
+  color: var(--sidebar-foreground);
+}
+
+.site-footer--light .site-footer__newsletter-input {
+  background: var(--background);
+  border: 1px solid var(--border);
+  color: var(--foreground);
+}
+
+.site-footer__newsletter-input::placeholder { opacity: 0.35; }
+
+.site-footer__newsletter-input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--primary) 20%, transparent);
+}
+
+.site-footer--dark .site-footer__newsletter-input:focus {
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--primary) 20%, transparent),
+              var(--shadow-glow-sm);
+}
+
+.site-footer__newsletter-button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-1-5);
+  padding: var(--spacing-3) var(--spacing-6);
+  border-radius: var(--radius-full);
+  background: var(--primary);
+  color: var(--primary-foreground);
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-wide);
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: transform var(--transition-base) ease,
+              box-shadow var(--transition-base) ease;
+}
+
+.site-footer__newsletter-button:hover,
+.site-footer__newsletter-button:focus-visible {
+  transform: translateY(-1px);
+}
+
+.site-footer--dark .site-footer__newsletter-button:hover,
+.site-footer--dark .site-footer__newsletter-button:focus-visible {
+  box-shadow: var(--shadow-neon);
+}
+
+.site-footer--light .site-footer__newsletter-button:hover,
+.site-footer--light .site-footer__newsletter-button:focus-visible {
+  box-shadow: var(--shadow-glow);
+}
+
+/* Success state */
+.site-footer__newsletter-success {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-3) var(--spacing-5);
+  border-radius: var(--radius-full);
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+.site-footer--dark .site-footer__newsletter-success {
+  background: color-mix(in srgb, var(--success) 12%, transparent);
+  color: var(--success);
+  border: 1px solid color-mix(in srgb, var(--success) 20%, transparent);
+}
+
+.site-footer--light .site-footer__newsletter-success {
+  background: var(--success-soft);
+  color: var(--success);
+  border: 1px solid color-mix(in srgb, var(--success) 25%, transparent);
+}

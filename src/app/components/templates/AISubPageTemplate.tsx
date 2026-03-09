@@ -11,7 +11,7 @@
  * Hero -> Stats -> Features -> Use Cases -> Pricing -> FAQs -> CTA
  */
 
-import '../../../styles/templates/page-solution-ai.css';
+import '../../../styles/templates/page-solution-ai-optimized.css';
 import { Container } from '../common/Container';
 import { StatsGrid } from '../patterns/StatsGrid';
 import { FeatureGrid } from '../patterns/FeatureGrid';
@@ -19,7 +19,7 @@ import { UseCasesGrid } from '../patterns/UseCasesGrid';
 import { PricingTable } from '../patterns/PricingTable';
 import { FAQSection } from '../patterns/FAQSection';
 import { FunkyCTA } from '../patterns/FunkyCTA';
-import { ArrowRight, type LucideIcon } from 'lucide-react';
+import { ArrowRight, type Icon } from '@phosphor-icons/react';
 import { Link } from 'react-router';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { ScrollDownArrow } from '../common/ScrollDownArrow';
@@ -41,7 +41,7 @@ interface AISubPageProps {
   variant: string;
   hero: AIHero;
   /** Icon displayed in the animated brain graphic */
-  heroIcon: LucideIcon;
+  heroIcon: Icon;
   stats: AIStat[];
   statsTitle: string;
   statsDescription: string;

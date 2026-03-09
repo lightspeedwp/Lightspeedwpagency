@@ -4,14 +4,14 @@
  * Mock data for the Mailchimp Solution page (MailchimpSolutionTemplate).
  */
 
-import { Mail, Zap, Users, BarChart2, CheckCircle, Settings, Target, RefreshCw, Shield, TrendingUp, Layers } from 'lucide-react';
+import { Envelope, Lightning, Users, ChartBar, CheckCircle, GearSix, Crosshair, ArrowsClockwise, Shield, TrendUp, Stack } from '@phosphor-icons/react';
 
 export const mailchimpSolutionHero = {
   title: "Mailchimp for WordPress",
   titleHighlight: "Mailchimp",
   description: "Seamlessly integrate your email marketing with your WordPress website and WooCommerce store. Automate workflows, sync contacts, and track performance all in one place.",
   subtitle: "Seamlessly integrate your email marketing with your WordPress website and WooCommerce store.",
-  badge: { text: "EMAIL INTEGRATION", icon: Mail },
+  badge: { text: "EMAIL INTEGRATION", icon: Envelope },
   primaryButton: { text: "Connect Now", page: "contact" },
   cta: {
     primary: { text: "Get Integration", page: "contact" },
@@ -28,12 +28,12 @@ export const mailchimpSolutionFeatures = {
       description: "Automatically sync WordPress users and WooCommerce customers to Mailchimp audiences."
     },
     {
-      icon: Zap,
+      icon: Lightning,
       title: "Automated Workflows",
       description: "Trigger email series based on user actions, purchases, or sign-ups."
     },
     {
-      icon: BarChart2,
+      icon: ChartBar,
       title: "E-commerce Data",
       description: "Send purchase data to Mailchimp for targeted product recommendations and ROI tracking."
     }
@@ -60,17 +60,17 @@ export const whyMailchimp = {
       description: "Sync your WordPress users, WooCommerce customers, and form subscribers into a single Mailchimp audience for targeted campaigns."
     },
     {
-      icon: Zap,
+      icon: Lightning,
       title: "Marketing Automation",
       description: "Set up abandoned cart emails, welcome series, post-purchase follow-ups, and re-engagement campaigns that run on autopilot."
     },
     {
-      icon: BarChart2,
+      icon: ChartBar,
       title: "Revenue Attribution",
       description: "Track exactly how much revenue each email campaign generates with WooCommerce purchase data synced to Mailchimp."
     },
     {
-      icon: Target,
+      icon: Crosshair,
       title: "Advanced Segmentation",
       description: "Segment audiences by purchase history, browsing behaviour, location, and engagement level for hyper-targeted emails."
     }
@@ -87,22 +87,22 @@ export const mailchimpFeatures = [
     description: "Bidirectional sync keeps your Mailchimp audiences and WordPress user base perfectly aligned."
   },
   {
-    icon: RefreshCw,
+    icon: ArrowsClockwise,
     title: "WooCommerce Integration",
     description: "Sync products, orders, and customer data for powerful e-commerce email automation."
   },
   {
-    icon: Layers,
+    icon: Stack,
     title: "Custom Sign-up Forms",
     description: "Beautiful, conversion-optimized sign-up forms that match your brand and integrate with the block editor."
   },
   {
-    icon: Zap,
+    icon: Lightning,
     title: "Automated Campaigns",
     description: "Welcome emails, abandoned carts, post-purchase follow-ups, and win-back campaigns — all automated."
   },
   {
-    icon: BarChart2,
+    icon: ChartBar,
     title: "Analytics Dashboard",
     description: "Track opens, clicks, revenue, and ROI directly in your WordPress dashboard without leaving your site."
   },

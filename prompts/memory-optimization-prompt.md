@@ -1,480 +1,173 @@
-# Memory Optimization Audit Prompt
+# Memory Optimization Prompt (Revised)
 
-**Prompt Type:** Codebase Analysis & Optimization  
-**Created:** March 2, 2026  
-**Category:** Performance & Architecture  
-**Related Reports:** `/reports/2026-03/memory-optimization-audit.md`  
-**Related Tasks:** `/tasks/memory-optimization-tasks.md`
+**Prompt Type:** Codebase Analysis & Optimization
+**Created:** March 2, 2026
+**Revised:** March 5, 2026
+**Category:** Performance & Architecture
+**Related Report:** `/reports/2026-03/memory-reduction-audit-march-5.md`
+**Related Tasks:** `/tasks/memory-reduction-tasks.md`
 
 ---
 
 ## Objective
 
-Conduct a comprehensive audit of the LSX Design codebase to identify and reduce memory usage, file size, and complexity through strategic file splitting, DRY pattern extraction, CSS consolidation, layer cleanup, SVG optimization, and component variant reduction.
+Reduce the LSX Design codebase memory footprint by splitting oversized files, consolidating duplicate data, removing orphaned CSS, flattening component nesting, and enforcing DRY architecture across templates, patterns, data, and CSS.
 
 ---
 
-## Audit Scope
+## Audit Scope (6 Pillars)
 
-### 1. File Size Analysis
+### 1. Break Up Large Files
 
-**Large Files Identification:**
-- [ ] Identify all files > 500 lines (TSX, TS, CSS)
-- [ ] Identify all files > 1000 lines (TSX, TS, CSS)
-- [ ] Identify all files > 2000 lines (TSX, TS, CSS)
-- [ ] Calculate total lines and average file size per category
-- [ ] Identify bloat patterns (duplicated code, unused imports, commented code)
+**Thresholds:**
+- **Critical:** > 1,000 lines (split immediately)
+- **High:** 500-1,000 lines (split or refactor)
+- **Medium:** 300-500 lines (evaluate for extraction)
 
-**File Categories to Audit:**
-- [ ] **Template files:** `/src/app/components/templates/*.tsx`
-- [ ] **CSS files:** `/src/styles/**/*.css`
-- [ ] **Pattern files:** `/src/app/components/patterns/*.tsx`
-- [ ] **Data files:** `/src/app/data/*.ts`
-- [ ] **Component files:** `/src/app/components/**/*.tsx`
-- [ ] **Utility files:** `/src/app/utils/*.ts`
-- [ ] **Hook files:** `/src/app/hooks/*.ts`
+**File Categories:**
+| Category | Location | Count | Total Lines |
+|----------|----------|-------|-------------|
+| Templates (TSX) | `/src/app/components/templates/` | 159 | ~36,000 |
+| CSS Templates | `/src/styles/templates/` | 145+ | ~78,000 |
+| Patterns (TSX) | `/src/app/components/patterns/` | 105 | ~16,000 |
+| CSS Patterns | `/src/styles/patterns/` | 90+ | ~18,000 |
+| Data Files | `/src/app/data/` | 126 | ~26,500 |
+| Routes | `/src/app/routes.tsx` | 1 | 1,147 |
+| Utilities | `/src/app/utils/` | 6 | 2,325 |
 
-**Splitting Opportunities:**
-- [ ] Templates with multiple page views (can split into separate files)
-- [ ] Data files with multiple categories (can split by category)
-- [ ] CSS files with multiple unrelated sections (can split by purpose)
-- [ ] Pattern files with multiple unrelated patterns (can split by type)
+**Splitting Strategies:**
+- **routes.tsx (1,147 lines):** Split into route groups (`/routes/about.ts`, `/routes/services.ts`, `/routes/solutions.ts`, etc.) with a barrel file
+- **Data files > 500 lines:** Split by sub-category (e.g., `faqs.ts` into `faqs/homepage.ts`, `faqs/services.ts`, etc.)
+- **CSS > 800 lines:** Extract repeated sections into base/shared files or split by media query / section concern
+- **Templates > 500 lines:** Extract repeated JSX into pattern components
 
----
+### 2. Remove Duplicate and Orphaned CSS (DRY)
 
-### 2. DRY Pattern Analysis
+**Critical Finding: 31 "-optimized" CSS duplicates**
 
-**Code Duplication Detection:**
-- [ ] Scan for repeated JSX structures across templates (3+ occurrences)
-- [ ] Scan for repeated CSS patterns across files (3+ occurrences)
-- [ ] Scan for repeated TypeScript logic across components
-- [ ] Identify extractable patterns not yet in `/patterns/`
-- [ ] Identify extractable hooks not yet in `/hooks/`
-- [ ] Identify extractable utilities not yet in `/utils/`
+After Phase 3.3 optimization, 31 template CSS files exist in BOTH original and optimized versions. Both are loaded:
+- Original imported at component level: `import '@/styles/templates/analytics-service.css'`
+- Optimized imported globally via `index.css`: `@import './templates/analytics-service-optimized.css'`
 
-**Pattern Extraction Candidates:**
-- [ ] Repeated hero structures
-- [ ] Repeated card layouts
-- [ ] Repeated form structures
-- [ ] Repeated navigation patterns
-- [ ] Repeated grid layouts
-- [ ] Repeated modal/dialog structures
-- [ ] Repeated animation patterns
+**Action:** For each pair, determine which is active and delete the unused file. Update imports.
 
----
+**Estimated Savings:** ~9,743 lines (optimized files) or more (original files) depending on which version is kept.
 
-### 3. CSS File Reduction
+**Data File Consolidation:**
+- `testimonials.ts` + `testimonials-extended.ts` + `testimonials-enhanced.ts` = 896 lines (3 files -> 1)
+- `faqs.ts` + `faqs-extended.ts` = 1,587 lines (merge or split by page context)
+- `pages.ts` + `site-pages.ts` + `site-pages/pages.ts` = 979 lines (clarify canonical source)
+- `hosting.ts` + `hosting-page.ts` = 438 lines (merge into one)
+- `why-choose-us.ts` + `why-choose-us-page.ts` = 440 lines (merge into one)
 
-**CSS Bloat Identification:**
-- [ ] Identify CSS files > 500 lines
-- [ ] Identify CSS files > 1000 lines
-- [ ] Identify duplicate selectors across files
-- [ ] Identify unused CSS classes (not referenced in TSX)
-- [ ] Identify overly specific selectors (4+ levels deep)
-- [ ] Identify redundant media queries
-- [ ] Identify duplicate color/spacing/font declarations
+### 3. CSS File Review & Reduction
 
-**CSS Consolidation Opportunities:**
-- [ ] Base CSS files that can be merged
-- [ ] Pattern CSS files with shared utilities
-- [ ] Template CSS files with shared sections
-- [ ] Duplicate responsive breakpoints
-- [ ] Duplicate animation keyframes
-- [ ] Duplicate pseudo-element styles
+**Files > 800 lines (split candidates):**
 
-**CSS Splitting Opportunities:**
-- [ ] Large template CSS files (split by section)
-- [ ] Monolithic utility files (split by category)
-- [ ] Base files with multiple concerns (split by purpose)
+| File | Lines | Action |
+|------|-------|--------|
+| `blocks/theme/site-header.css` | 1,051 | Split: base, mega-menu variants, responsive |
+| `templates/page-journey-stage.css` | 1,050 | Split: hero, content sections, interactive |
+| `templates/page-service-discovery.css` | 1,045 | Replace with optimized + base |
+| `templates/page-services-landing.css` | 986 | Replace with optimized version |
+| `templates/mailchimp-solution-page.css` | 961 | Extract shared solution styles |
+| `templates/page-solution-tour-design.css` | 939 | Extract shared solution styles |
+| `templates/page-solution-redesign.css` | 917 | Extract shared solution styles |
+| `templates/page-service-development.css` | 891 | Replace with optimized + base |
+| `templates/blog-index-page.css` | 848 | Split: hero, grid, sidebar, pagination |
+| `templates/page-solution-ecommerce.css` | 844 | Extract shared solution styles |
+| `templates/contact-page.css` | 840 | Split: hero, form, info, map |
+| `templates/wetu-importer-page.css` | 833 | Split into sections |
+| `templates/lsx-search-page.css` | 823 | Split: search, results, filters |
+| `templates/about-base.css` | 823 | Already a base -- review for unused selectors |
+| `blocks/theme/site-footer.css` | 817 | Split: base, widget areas, responsive |
+| `utilities.css` | 805 | Split by category: grid, text, display, spacing |
+| `section-styles.css` | 794 | Split by section variant |
 
----
-
-### 4. Layer & Component Cleanup
+### 4. Clean Up Layers & Components
 
 **Hidden/Unused Layer Detection:**
-- [ ] Scan for commented-out components
-- [ ] Scan for unused imports in templates
-- [ ] Scan for unreferenced components
-- [ ] Scan for orphaned CSS files (no corresponding TSX)
-- [ ] Scan for orphaned SVG files (no imports)
-- [ ] Scan for unused data exports
+- [ ] Scan for commented-out JSX in all templates
+- [ ] Scan for unused imports (imported but never referenced in JSX)
+- [ ] Scan for orphaned CSS files (no corresponding TSX component)
+- [ ] Scan for orphaned data exports (exported but never imported)
+- [ ] Identify and remove dead CSS selectors (classes not used in any TSX)
 
 **Nested Layer Reduction:**
-- [ ] Identify components with 5+ levels of nesting
-- [ ] Identify unnecessary wrapper divs
-- [ ] Identify redundant container components
-- [ ] Identify over-engineered component hierarchies
-- [ ] Recommend flattening strategies
+- [ ] Identify components with 5+ levels of `div` nesting
+- [ ] Identify unnecessary wrapper `div` elements
+- [ ] Replace nested `div`s with semantic HTML (`section`, `article`, `nav`, `aside`)
+- [ ] Flatten component hierarchies where intermediate wrappers add no value
 
----
+### 5. Flatten Complex SVGs & Vectors
 
-### 5. SVG Optimization
+**Note:** This project uses Phosphor Icons (no custom SVGs in `/src/imports/`). SVG optimization applies to:
+- Inline SVG decorations in templates (gradient orbs, circuit patterns, etc.)
+- CSS-based SVG backgrounds
+- Any future SVG imports
 
-**SVG Complexity Analysis:**
-- [ ] Identify all SVG files in `/src/imports/`
-- [ ] Measure SVG file sizes
-- [ ] Count paths/groups per SVG
-- [ ] Identify SVGs with 10+ paths
-- [ ] Identify SVGs with nested groups 3+ levels deep
-- [ ] Identify SVGs with unnecessary metadata/comments
+**Actions:**
+- [ ] Audit inline SVG complexity in hero sections
+- [ ] Replace complex SVG decorations with CSS equivalents where possible
+- [ ] Ensure CSS `background-image` SVGs are minified
 
-**SVG Flattening Opportunities:**
-- [ ] Complex vector shapes that can be simplified
-- [ ] Grouped paths that can be merged
-- [ ] Unnecessary transforms that can be baked in
-- [ ] Gradients that can be replaced with CSS
-- [ ] Filters that can be replaced with CSS
+### 6. Trim Component Variants
 
-**SVG Optimization Techniques:**
-- [ ] Remove comments and metadata
-- [ ] Merge adjacent paths
-- [ ] Simplify path data (reduce precision)
-- [ ] Remove unused definitions
-- [ ] Replace complex shapes with simpler ones
+**Variant Analysis Targets:**
+- [ ] Hero pattern: How many variant props? Can any be merged?
+- [ ] Card patterns (PostCard, PortfolioCard, ServicesCard): Consolidate shared styling
+- [ ] CTA patterns (FunkyCTA, CTAInline, CTASection, GradientCTASection): 4 CTA patterns -- can any merge?
+- [ ] Stats patterns (StatsGrid, StatsSection, StatCounter): 3 stats patterns -- consolidate?
+- [ ] Testimonial patterns (TestimonialCard, TestimonialGrid, TestimonialSlider, TestimonialInline, FeaturedTestimonial, VideoTestimonial, ServiceTestimonial, ServiceTestimonials): 8 testimonial patterns -- reduce to 3-4?
+- [ ] Related patterns (RelatedPosts, RelatedServices, RelatedServicesGrid, RelatedServicesInPhase, RelatedContentWidget): 5 related patterns -- consolidate?
 
----
-
-### 6. Component Variant Reduction
-
-**Variant Analysis:**
-- [ ] Identify components with 5+ variants
-- [ ] Identify components with 10+ variants
-- [ ] Calculate total variant combinations per component
-- [ ] Identify variant logic that can be replaced with props
-
-**Component Property Conversion:**
-- [ ] Variants that differ only by color (use color prop)
-- [ ] Variants that differ only by size (use size prop)
-- [ ] Variants that differ only by spacing (use spacing prop)
-- [ ] Variants that differ only by icon (use icon prop)
-- [ ] Variants that differ only by text (use children prop)
-
-**Variant Consolidation:**
-- [ ] Merge similar variants
-- [ ] Remove unused variants
-- [ ] Replace variant logic with conditional props
-- [ ] Document recommended variant reduction strategies
-
----
-
-## Audit Methodology
-
-### Step 1: Automated File Analysis
-
-```bash
-# Count lines in all TypeScript files
-find src -name "*.tsx" -o -name "*.ts" | xargs wc -l | sort -rn > /tmp/tsx-lines.txt
-
-# Count lines in all CSS files
-find src/styles -name "*.css" | xargs wc -l | sort -rn > /tmp/css-lines.txt
-
-# Find large files (> 500 lines)
-find src -type f \( -name "*.tsx" -o -name "*.ts" -o -name "*.css" \) -exec wc -l {} + | awk '$1 > 500' | sort -rn
-
-# Find duplicate CSS selectors
-grep -r "^\.[a-z]" src/styles --include="*.css" | sort | uniq -d
-
-# Find unused imports
-# (manual review required)
-```
-
-### Step 2: Pattern Detection
-
-**Manual Review:**
-- Open top 20 largest template files
-- Identify repeated JSX structures (3+ occurrences)
-- Mark candidates for pattern extraction
-- Estimate lines saved per extraction
-
-**Automated Detection:**
-- Use AST parsing to find duplicate JSX subtrees
-- Use CSS parser to find duplicate rule blocks
-- Generate candidate pattern list
-
-### Step 3: Component Analysis
-
-**Component Hierarchy:**
-- Map component import trees
-- Identify circular dependencies
-- Identify deep nesting (5+ levels)
-- Recommend flattening strategies
-
-**Variant Analysis:**
-- Count variants per component
-- Analyze variant differences
-- Identify property conversion opportunities
-
-### Step 4: SVG Analysis
-
-**File Size:**
-- List all SVG files by size
-- Identify large SVGs (> 10KB)
-- Count paths per SVG
-- Identify optimization candidates
-
-**Complexity:**
-- Measure nesting depth
-- Count transforms
-- Count gradients/filters
-- Recommend simplification strategies
+**Property Conversion:**
+- Replace variants that differ only by color with a `color` prop
+- Replace variants that differ only by size with a `size` prop
+- Replace variants that differ only by layout with a `layout` prop
 
 ---
 
 ## Success Metrics
 
-### Quantitative Goals
-
-- [ ] **File Count Reduction:** Reduce files > 1000 lines by 50%
-- [ ] **Average File Size:** Reduce average file size by 25%
-- [ ] **CSS Duplication:** Reduce duplicate CSS by 30%
-- [ ] **JSX Duplication:** Reduce duplicate JSX by 20%
-- [ ] **SVG Size:** Reduce SVG total size by 15%
-- [ ] **Component Variants:** Reduce total variants by 25%
-- [ ] **Nested Layers:** Reduce 5+ level nesting by 40%
-
-### Qualitative Goals
-
-- [ ] **Maintainability:** Easier to locate and update code
-- [ ] **Performance:** Faster build times and smaller bundle size
-- [ ] **Clarity:** Clearer component responsibilities
-- [ ] **Reusability:** More DRY patterns extracted
-- [ ] **Consistency:** Unified approach to variants
+| Metric | Target |
+|--------|--------|
+| Files > 1,000 lines | Reduce from 10 to 0 |
+| Duplicate CSS pairs eliminated | 31 pairs resolved |
+| Data file consolidation | ~3,000 lines saved |
+| CSS total reduction | 15-20% (~17,000-23,000 lines) |
+| Average CSS file size | Reduce from 264 to < 200 lines |
+| Component pattern count | Reduce testimonial patterns from 8 to 4 |
+| routes.tsx | Split from 1,147 lines to < 200 per file |
 
 ---
 
-## Report Structure
+## Execution Order
 
-The audit report (`/reports/2026-03/memory-optimization-audit.md`) should include:
-
-### Section 1: Executive Summary
-- Total lines analyzed
-- Total files analyzed
-- Top 10 largest files
-- Key findings summary
-- Estimated optimization potential
-
-### Section 2: File Size Analysis
-- Files > 2000 lines (critical)
-- Files > 1000 lines (high priority)
-- Files > 500 lines (medium priority)
-- File size distribution chart
-- Splitting recommendations
-
-### Section 3: DRY Pattern Analysis
-- Duplicate JSX patterns found
-- Duplicate CSS patterns found
-- Extractable pattern candidates
-- Estimated lines saved per extraction
-- Priority ranking
-
-### Section 4: CSS Reduction Opportunities
-- Largest CSS files
-- Duplicate selectors
-- Unused classes
-- Consolidation opportunities
-- Splitting opportunities
-- Estimated reduction potential
-
-### Section 5: Layer Cleanup
-- Unused imports count
-- Orphaned files count
-- Deep nesting instances
-- Cleanup recommendations
-
-### Section 6: SVG Optimization
-- SVG file inventory
-- Large SVG files (> 10KB)
-- Complex SVGs (10+ paths)
-- Optimization opportunities
-- Estimated size reduction
-
-### Section 7: Component Variant Analysis
-- Components with 5+ variants
-- Components with 10+ variants
-- Property conversion opportunities
-- Variant reduction strategies
-
-### Section 8: Action Plan
-- Priority 1 tasks (immediate)
-- Priority 2 tasks (short-term)
-- Priority 3 tasks (long-term)
-- Estimated impact per task
-- Implementation timeline
+1. **Phase 1 (Quick Wins):** Resolve 31 duplicate CSS pairs, consolidate duplicate data files
+2. **Phase 2 (File Splitting):** Split routes.tsx, split CSS files > 800 lines, split data files > 500 lines
+3. **Phase 3 (Pattern Consolidation):** Merge similar patterns (testimonials, CTAs, stats, related)
+4. **Phase 4 (Layer Cleanup):** Remove unused imports, orphaned files, flatten nesting
 
 ---
 
-## Task List Structure
+## Design System Compliance (Non-Negotiable)
 
-The task list (`/tasks/memory-optimization-tasks.md`) should include:
-
-### Priority 1: Critical (Immediate Action)
-- Files > 2000 lines (split immediately)
-- Critical DRY violations (extract patterns)
-- Unused files (delete)
-
-### Priority 2: High (Next Sprint)
-- Files > 1000 lines (split or consolidate)
-- High-value pattern extractions
-- CSS consolidation opportunities
-- Large SVG optimizations
-
-### Priority 3: Medium (Future Sprints)
-- Files > 500 lines (evaluate)
-- Medium-value pattern extractions
-- Component variant reductions
-- Layer flattening
-
-### Priority 4: Low (Backlog)
-- Minor optimizations
-- Optional refactorings
-- Documentation updates
-
----
-
-## Design System Compliance Requirements
-
-**CRITICAL:** All optimizations MUST maintain 100% CSS variable compliance.
-
-### Typography Enforcement
-- [ ] All fonts use `var(--font-primary)` or `var(--font-secondary)`
-- [ ] NEVER hardcode font names like `'Lexend, sans-serif'`
-- [ ] All font sizes use `var(--text-*)` tokens
-- [ ] All font weights use `var(--font-weight-*)` tokens
-
-### Spacing Enforcement
-- [ ] All spacing uses `var(--spacing-*)` tokens
-- [ ] NEVER hardcode px values for padding/margin/gap
-- [ ] Use WordPress utility classes (`.wp-*`) for layout
-
-### Color Enforcement
-- [ ] All colors use semantic CSS variables
-- [ ] NEVER hardcode hex values
-- [ ] Use `color-mix()` for transparency effects
-
-### Border Radius Enforcement
-- [ ] All border radius uses `var(--radius*)` tokens
-- [ ] NEVER hardcode border-radius px values
-
-### User Control Principle
-- [ ] Users must be able to update entire site styling by editing CSS files alone
-- [ ] NO hardcoded values in TSX files (except truly dynamic values)
-- [ ] All static styling comes from CSS files and CSS variables
-
----
-
-## Constraints & Guidelines
-
-### File Splitting Rules
-1. **Keep related code together:** Don't split files that share tight coupling
-2. **Maintain clear boundaries:** Each file should have a single clear purpose
-3. **Preserve imports:** Update all import paths when splitting
-4. **Test after splitting:** Verify no broken references
-
-### DRY Pattern Rules
-1. **3+ occurrences rule:** Only extract patterns used 3+ times
-2. **Meaningful abstraction:** Pattern should represent a clear concept
-3. **Flexible enough:** Pattern should accommodate variations
-4. **Well-documented:** Include JSDoc and usage examples
-
-### CSS Reduction Rules
-1. **No functionality loss:** Consolidation must preserve all styles
-2. **Maintain specificity:** Don't introduce specificity conflicts
-3. **Preserve dark mode:** All dark mode styles must remain
-4. **Keep responsive:** All breakpoints must remain functional
-
-### Component Variant Rules
-1. **Maintain API compatibility:** Don't break existing usage
-2. **Prefer props over variants:** Use component properties when possible
-3. **Document changes:** Update component documentation
-4. **Test all conversions:** Verify all variant use cases still work
+All changes MUST maintain:
+- [ ] 100% CSS variable usage (`var(--font-primary)`, `var(--spacing-*)`, `var(--primary)`, etc.)
+- [ ] WordPress utility classes only (`.wp-*` prefix, no Tailwind)
+- [ ] Font faces from CSS only (`var(--font-primary)` for Lexend, `var(--font-secondary)` for Manrope)
+- [ ] User can update entire site styling by editing CSS files alone
+- [ ] Reduced motion support (`prefers-reduced-motion`)
+- [ ] WCAG 2.1 AA compliance
 
 ---
 
 ## Deliverables
 
-1. **Audit Report:** `/reports/2026-03/memory-optimization-audit.md`
-   - Comprehensive analysis of all findings
-   - Quantified optimization opportunities
-   - Prioritized recommendations
-
-2. **Task List:** `/tasks/memory-optimization-tasks.md`
-   - Prioritized action items
-   - Estimated effort per task
-   - Estimated impact per task
-   - Implementation order
-
-3. **File Split Plan:** (if applicable)
-   - Files to split
-   - New file structure
-   - Import update strategy
-
-4. **Pattern Extraction Plan:** (if applicable)
-   - Patterns to extract
-   - Component API design
-   - Migration strategy
-
-5. **CSS Consolidation Plan:** (if applicable)
-   - CSS files to merge
-   - CSS files to split
-   - Refactoring strategy
-
----
-
-## Execution Instructions
-
-### For AI Agent:
-
-1. **Run file size analysis:**
-   - Use `bash` tool to count lines in all files
-   - Generate sorted lists by file size
-   - Identify files > 500, 1000, 2000 lines
-
-2. **Scan for patterns:**
-   - Read top 20 largest template files
-   - Identify repeated JSX structures
-   - Count occurrences of each pattern
-   - Estimate extraction value
-
-3. **Analyze CSS:**
-   - Read all CSS files in `/src/styles/`
-   - Identify duplicate selectors
-   - Identify consolidation opportunities
-   - Measure potential reduction
-
-4. **Review components:**
-   - Scan component files for deep nesting
-   - Identify unused imports
-   - Count component variants
-   - Recommend optimizations
-
-5. **Analyze SVGs:**
-   - List all SVG files in `/src/imports/`
-   - Measure file sizes
-   - Identify complex SVGs
-   - Recommend optimizations
-
-6. **Generate report:**
-   - Write comprehensive findings to `/reports/2026-03/memory-optimization-audit.md`
-   - Include all analysis sections
-   - Provide quantified recommendations
-   - Estimate optimization impact
-
-7. **Create task list:**
-   - Write prioritized tasks to `/tasks/memory-optimization-tasks.md`
-   - Organize by priority (1-4)
-   - Include effort and impact estimates
-   - Provide implementation order
-
----
-
-## Notes
-
-- This audit focuses on **memory and file size optimization**
-- All optimizations must maintain **100% CSS variable compliance**
-- All optimizations must preserve **functionality and design**
-- Prioritize **high-impact, low-effort** optimizations first
-- Use **DRY principles** to reduce duplication
-- Maintain **clear file organization** and **logical boundaries**
+1. **Audit Report:** `/reports/2026-03/memory-reduction-audit-march-5.md`
+2. **Task List:** `/tasks/memory-reduction-tasks.md`
+3. **Updated General Task List:** `/tasks/task-list.md` (add follow-up items)
 
 ---
 

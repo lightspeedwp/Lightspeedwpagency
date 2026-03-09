@@ -20,7 +20,7 @@
  * @see {@link /guidelines/components/overview-components.md}
  */
 
-import '../../../styles/templates/component-showcase.css';
+import '../../../styles/templates/component-showcase-optimized.css';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { Button } from '../blocks/design/Buttons';
@@ -30,17 +30,17 @@ import { Heading } from '../common/Heading';
 import { Paragraph } from '../blocks/text/Paragraph';
 import { useState } from 'react';
 import {
-  Layers,
-  Box,
+  Stack,
+  Cube,
   Code,
   Layout,
-  MousePointerClick,
+  CursorClick,
   Palette,
-  Zap,
+  Lightning,
   ArrowRight,
-  Search,
-  Grid3x3
-} from 'lucide-react';
+  MagnifyingGlass,
+  GridNine
+} from '@phosphor-icons/react';
 
 
 /**
@@ -51,7 +51,7 @@ const componentCategories = [
     id: 'common',
     title: 'Common Components',
     description: 'Token-enforcing wrapper components for consistent design',
-    icon: Box,
+    icon: Cube,
     color: 'var(--primary)',
     components: [
       { name: 'Container', file: '/common/Container.tsx', description: 'Max-width container with responsive padding', usage: 'Layout structure' },
@@ -64,7 +64,7 @@ const componentCategories = [
     id: 'patterns',
     title: 'Patterns',
     description: 'Reusable content patterns and sections',
-    icon: Layers,
+    icon: Stack,
     color: 'var(--accent)',
     components: [
       { name: 'Hero', file: '/patterns/Hero.tsx', description: 'Page hero with title, description, and CTA', usage: 'Page headers' },
@@ -88,7 +88,7 @@ const componentCategories = [
     id: 'blocks',
     title: 'WordPress Blocks',
     description: 'WordPress core blocks as React components',
-    icon: Grid3x3,
+    icon: GridNine,
     color: 'var(--secondary)',
     components: [
       { name: 'Button/Buttons', file: '/blocks/design/Buttons.tsx', description: 'WordPress button block', usage: 'CTAs and links' },
@@ -120,7 +120,7 @@ const componentCategories = [
     id: 'ui',
     title: 'UI Components',
     description: 'Interactive UI components and utilities',
-    icon: MousePointerClick,
+    icon: CursorClick,
     color: 'var(--accent)',
     components: [
       { name: 'PageSwitcher', file: '/ui/PageSwitcher.tsx', description: 'Development page navigation tool', usage: 'Development only' },
@@ -247,7 +247,7 @@ export function ComponentShowcase() {
             <div className="wp-flex wp-flex-col wp-gap-6">
               {/* Search */}
               <div className="wp-relative">
-                <Search
+                <MagnifyingGlass
                   size={20}
                   style={{
                     position: 'absolute',

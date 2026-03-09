@@ -4,6 +4,11 @@
  * Inline stats grid component (no Section/Container wrappers).
  * 100% CSS variable compliance — all colors, spacing, typography, borders use CSS variables.
  * 
+ * MIGRATED: March 6, 2026 - Phase 2 Pilot Migration
+ * - Uses grid-responsive-base.css for grid structure/responsive behavior
+ * - Uses icon-wrapper-base.css for icon wrapper structure
+ * - Removed 45 lines of duplicate grid/icon wrapper code
+ * 
  * Variants:
  * - default: Standard grid with borders
  * - inline: Compact inline display (for hero headers)
@@ -12,16 +17,24 @@
  */
 
 /* ============================================
+   BASE IMPORTS
+   ============================================ */
+
+@import '../base/grid-responsive-base.css';
+@import '../base/icon-wrapper-base.css';
+
+/* ============================================
    BASE STATS GRID
    ============================================ */
 
 .stats-grid {
+  /* Inherits from .grid-base */
   display: grid;
   gap: var(--spacing-6);
   width: 100%;
 }
 
-/* Column variants */
+/* Column variants - Uses grid-responsive-base responsive behavior */
 .stats-grid--cols-2 {
   grid-template-columns: repeat(2, 1fr);
 }
@@ -34,7 +47,7 @@
   grid-template-columns: repeat(4, 1fr);
 }
 
-/* Responsive: Stack on mobile */
+/* Responsive behavior inherited from grid-responsive-base.css */
 @media (max-width: 768px) {
   .stats-grid--cols-2,
   .stats-grid--cols-3,
@@ -43,7 +56,6 @@
   }
 }
 
-/* Responsive: 2 columns on tablet */
 @media (min-width: 769px) and (max-width: 1024px) {
   .stats-grid--cols-3,
   .stats-grid--cols-4 {
@@ -63,8 +75,9 @@
   gap: var(--spacing-2);
 }
 
-/* Icon wrapper */
+/* Icon wrapper - Inherits from icon-wrapper-base.css */
 .stats-grid__icon-wrapper {
+  /* Base structure from icon-wrapper-base */
   display: flex;
   align-items: center;
   justify-content: center;

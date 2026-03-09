@@ -9,7 +9,7 @@
  * @see /guidelines/templates/overview-templates.md
  */
 
-import '../../../styles/templates/video-archive.css';
+import '../../../styles/templates/video-archive-optimized.css';
 import { useParams, Navigate, Link } from 'react-router';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
@@ -19,7 +19,7 @@ import { FunkyCTA } from '../patterns/FunkyCTA';
 import { Heading } from '../blocks/text/Heading';
 import { Paragraph } from '../blocks/text/Paragraph';
 import { Badge } from '../blocks/design/Badge';
-import { Play, Clock, Eye, Calendar } from 'lucide-react';
+import { Play, Clock, Eye, Calendar } from '@phosphor-icons/react';
 import { getVideosByTag, videoTags } from '../../data/videos';
 import { videoFAQs } from '../../data/faqs';
 

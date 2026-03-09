@@ -4,7 +4,7 @@
  * Parent: /services/content
  */
 
-import { Mail, Users, TrendingUp, Calendar, BarChart, Award } from 'lucide-react';
+import { Envelope, Users, TrendUp, Calendar, ChartBar, Trophy } from '@phosphor-icons/react';
 import { Link } from 'react-router';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { FeatureList } from '../patterns/FeatureList';
@@ -13,12 +13,12 @@ import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
 
 export const NewsletterServiceTemplate = () => {
   const benefits = [
-    { icon: Mail, title: 'Newsletter Strategy & Planning', description: 'Content calendar, editorial themes, and subscriber growth strategies.' },
+    { icon: Envelope, title: 'Newsletter Strategy & Planning', description: 'Content calendar, editorial themes, and subscriber growth strategies.' },
     { icon: Users, title: 'List Building & Segmentation', description: 'Grow your list and segment by behavior, interests, and engagement level.' },
-    { icon: TrendingUp, title: 'Content Creation & Design', description: 'Engaging newsletter content with on-brand design templates.' },
+    { icon: TrendUp, title: 'Content Creation & Design', description: 'Engaging newsletter content with on-brand design templates.' },
     { icon: Calendar, title: 'Automated Email Sequences', description: 'Welcome series, nurture campaigns, and re-engagement flows.' },
-    { icon: BarChart, title: 'Performance Optimization', description: 'A/B testing, analytics, and continuous improvement based on data.' },
-    { icon: Award, title: 'Platform Setup & Management', description: 'Mailchimp, ConvertKit, or custom ESP setup and ongoing management.' }
+    { icon: ChartBar, title: 'Performance Optimization', description: 'A/B testing, analytics, and continuous improvement based on data.' },
+    { icon: Trophy, title: 'Platform Setup & Management', description: 'Mailchimp, ConvertKit, or custom ESP setup and ongoing management.' }
   ];
 
   const deliverables = ['Newsletter strategy document', 'Content calendar (6-12 months)', 'Email template design', 'List segmentation setup', 'Automated sequences', 'Monthly analytics reports', 'Subscriber growth plan'];

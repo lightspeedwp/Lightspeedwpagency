@@ -7,7 +7,7 @@
  * Import these types in individual service files to ensure consistent data structure.
  */
 
-import { LucideIcon } from 'lucide-react';
+import { type Icon } from '@phosphor-icons/react';
 
 /**
  * Service Process Step Interface
@@ -30,7 +30,7 @@ export interface SubService {
   id: string;
   title: string;
   description: string;
-  icon?: LucideIcon;
+  icon?: Icon;
 }
 
 /**
@@ -131,7 +131,7 @@ export interface ServiceTimeline {
  */
 export interface SimpleService {
   id: string;
-  icon: LucideIcon;
+  icon: Icon;
   title: string;
   description: string;
   page: string;
@@ -150,7 +150,7 @@ export interface Service {
   tagline: string;
   description: string;
   category: ServiceCategory;
-  icon: LucideIcon;
+  icon: Icon;
   features: string[];
   pricing: ServicePricing;
   deliverables: string[];

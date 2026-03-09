@@ -4,8 +4,12 @@
  * Comprehensive demonstration of Option 1 & 2 features.
  * 100% CSS variables — no Tailwind.
  * BEM naming: .showcase-*
+ *
+ * Pattern Components:
+ * - ✅ StatsGrid — Feature stats section (cards variant, 4 columns, with icons)
  * 
  * @see /src/styles/templates/feature-showcase.css
+ * @migrated March 4, 2026 — Migrated inline stats grid to StatsGrid component (~25 lines saved)
  */
 
 import '../../../styles/templates/feature-showcase.css';
@@ -14,7 +18,7 @@ import { Section } from '../common/Section';
 import { Button } from '../blocks/design/Buttons';
 import { Heading } from '../common/Heading';
 import { motion } from 'motion/react';
-
+import { StatsGrid } from '../patterns/StatsGrid';
 
 import { 
   InteractiveCard,
@@ -92,38 +96,14 @@ export function FeatureShowcaseTemplate() {
       {/* Feature Stats */}
       <Section background="muted" spacing="md">
         <Container>
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewportOptions}
-            className="wp-grid-4-cols"
-            style={{ gap: 'var(--spacing-6)' }}
-          >
-            {[
+          <StatsGrid
+            stats={[
               { label: 'New Templates', value: '2', icon: Layout },
               { label: 'Animation Variants', value: '15+', icon: Lightning },
               { label: 'Card Combinations', value: '25', icon: Palette },
               { label: 'Loading Components', value: '8+', icon: Rocket }
-            ].map((stat) => (
-              <motion.div
-                key={stat.label}
-                variants={staggerItem}
-                className="showcase__stat-card"
-              >
-                <stat.icon 
-                  size={32} 
-                  style={{ color: 'var(--primary)', margin: '0 auto var(--spacing-4)' }}
-                />
-                <div className="showcase__stat-value">
-                  {stat.value}
-                </div>
-                <div className="showcase__stat-label">
-                  {stat.label}
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
+            ]}
+          />
         </Container>
       </Section>
 

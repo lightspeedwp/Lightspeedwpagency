@@ -10,7 +10,7 @@
  * WordPress: Maps to page-services.html template
  */
 
-import { Users, TrendingUp, Award, Heart } from 'lucide-react';
+import { Users, TrendUp, Trophy, Heart } from '@phosphor-icons/react';
 import type { UniversalIcon } from '../utils/icon-map';
 
 /**
@@ -26,7 +26,7 @@ export interface Benefit {
 
 export const servicesPageBenefits: Benefit[] = [
   {
-    icon: Award,
+    icon: Trophy,
     title: '22+ years experience',
     description: 'Established in 2003, we\'ve been building <i>WordPress</i> websites since the platform\'s early days'
   },
@@ -41,7 +41,7 @@ export const servicesPageBenefits: Benefit[] = [
     description: 'Official <i>WooCommerce</i> Expert agency partner - proven expertise in eCommerce solutions'
   },
   {
-    icon: TrendingUp,
+    icon: TrendUp,
     title: 'Proven results',
     description: 'Hundreds of successful <i>WordPress</i> and <i>WooCommerce</i> projects delivered globally'
   }

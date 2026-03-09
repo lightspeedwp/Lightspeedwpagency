@@ -20,16 +20,16 @@ import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { Button, Buttons } from '../blocks/design/Buttons';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { 
-  Type, 
+  TextT, 
   Palette, 
-  Maximize, 
-  MousePointer2, 
-  Zap, 
+  ArrowsOutSimple, 
+  Cursor, 
+  Lightning, 
   ArrowRight, 
-  Download, 
-  Settings,
+  DownloadSimple, 
+  Gear,
   Play
-} from 'lucide-react';
+} from '@phosphor-icons/react';
 
 
 export function ButtonShowcase() {
@@ -81,7 +81,7 @@ export function ButtonShowcase() {
         <ScrollReveal animation="fade-up" delay={200}>
           <section className="btn-showcase__section">
             <div className="btn-showcase__section-header">
-              <Maximize className="btn-showcase__section-icon" size={20} />
+              <ArrowsOutSimple className="btn-showcase__section-icon" size={20} />
               <h2 className="btn-showcase__section-title">Size Scale</h2>
             </div>
 
@@ -117,7 +117,7 @@ export function ButtonShowcase() {
         <ScrollReveal animation="fade-up" delay={300}>
           <section className="btn-showcase__section">
             <div className="btn-showcase__section-header">
-              <Zap className="btn-showcase__section-icon" size={20} />
+              <Lightning className="btn-showcase__section-icon" size={20} />
               <h2 className="btn-showcase__section-title">Icon Integration</h2>
             </div>
 
@@ -127,10 +127,10 @@ export function ButtonShowcase() {
                 <Button variant="primary" icon={<Play size={16} />}>
                   Start Now
                 </Button>
-                <Button variant="secondary" icon={<Settings size={16} />}>
+                <Button variant="secondary" icon={<Gear size={16} />}>
                   Configure
                 </Button>
-                <Button variant="outline" icon={<Download size={16} />}>
+                <Button variant="outline" icon={<DownloadSimple size={16} />}>
                   Download
                 </Button>
                 {/* Note: Button component doesn't explicitly support trailing icon prop yet, 
@@ -144,7 +144,7 @@ export function ButtonShowcase() {
         <ScrollReveal animation="fade-up" delay={400}>
           <section className="btn-showcase__section">
             <div className="btn-showcase__section-header">
-              <MousePointer2 className="btn-showcase__section-icon" size={20} />
+              <Cursor className="btn-showcase__section-icon" size={20} />
               <h2 className="btn-showcase__section-title">Interactive States</h2>
             </div>
 

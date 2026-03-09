@@ -5,7 +5,7 @@
  * Used on: About -> Process page, Services pages
  */
 
-import { Search, PenTool, Code, CheckCircle, Rocket, HeartHandshake } from 'lucide-react';
+import { MagnifyingGlass, PenNib, Code, CheckCircle, Rocket, Handshake } from '@phosphor-icons/react';
 import type { ComponentType } from 'react';
 
 export interface ProcessStep {
@@ -24,7 +24,7 @@ export const developmentProcess: ProcessStep[] = [
     number: '01',
     title: 'Discovery & Strategy',
     description: 'We dive deep into your business goals, audience needs, and technical requirements to build a solid roadmap.',
-    icon: Search,
+    icon: MagnifyingGlass,
     details: [
       'Stakeholder interviews',
       'Competitor analysis',
@@ -39,7 +39,7 @@ export const developmentProcess: ProcessStep[] = [
     number: '02',
     title: 'Design & Prototyping',
     description: 'We craft intuitive, accessible, and on-brand user interfaces using modern design systems.',
-    icon: PenTool,
+    icon: PenNib,
     details: [
       'Wireframing & UX flow',
       'UI design & visual language',
@@ -99,7 +99,7 @@ export const developmentProcess: ProcessStep[] = [
     number: '06',
     title: 'Growth & Support',
     description: 'Ongoing partnership to keep your site secure, fast, and evolving with your business.',
-    icon: HeartHandshake,
+    icon: Handshake,
     details: [
       'Regular maintenance & updates',
       'Security monitoring',

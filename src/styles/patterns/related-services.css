@@ -1,6 +1,12 @@
 /**
  * Related Services Pattern Styles
  * 
+ * MIGRATED: March 6, 2026 - Phase 2 Step 3, Batch B Pilot
+ * - Uses icon-wrapper-base.css for icon wrapper structure
+ * - Removed ~10 lines of duplicate icon wrapper code
+ * - Icon wrapper: 48px square with rounded corners (custom size between --sm and --md)
+ * - Custom hover: gradient background (primary → secondary) + color flip
+ * 
  * WordPress block: Custom query block showing related services
  * BEM naming: .related-services__*
  * 
@@ -12,6 +18,16 @@
  * - Spacing: var(--spacing-*)
  * - Borders: var(--radius-*)
  */
+
+/* ============================================
+   BASE IMPORTS
+   ============================================ */
+
+@import '../base/icon-wrapper-base.css';
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
 
 /* ============================================
    CONTAINER

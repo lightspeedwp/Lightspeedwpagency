@@ -11,7 +11,7 @@
  */
 
 import type { UniversalIcon } from '../utils/icon-map';
-import { Code, Target, Clock, Users, CheckCircle, Zap, Lightbulb, BarChart, TrendingUp, Award } from 'lucide-react';
+import { Code, Crosshair, Clock, Users, CheckCircle, Lightning, Lightbulb, ChartBar, TrendUp, Trophy } from '@phosphor-icons/react';
 import { portfolioProjects } from './portfolio-projects';
 
 /**
@@ -88,7 +88,7 @@ export const projectPageChallenge = {
   description: 'We needed to customise multiple applications to suit our particular business model. Before partnering with LightSpeed, we struggled to find a company who could provide technically strong coding expertise, coupled with the benefits that only years of experience can provide. This impacted our ability to complete our unique product offerings.',
   keyIssues: [
     {
-      icon: Target,
+      icon: Crosshair,
       issue: 'Custom Business Model',
       description: 'Required multiple applications customized to fit unique business requirements'
     },
@@ -123,7 +123,7 @@ export const projectPageSolution = {
       description: 'Custom partner portal allowing commission/discount selection at sign-up, eliminating manual backend work'
     },
     {
-      icon: Zap,
+      icon: Lightning,
       feature: 'WooCommerce Customization',
       description: 'Heavily customized WooCommerce to support unique email security product offerings'
     },
@@ -138,7 +138,7 @@ export const projectPageSolution = {
       description: 'Intuitive interface for both partners and end customers to configure email security products'
     },
     {
-      icon: BarChart,
+      icon: ChartBar,
       feature: 'Backend Automation',
       description: 'Automated workflows reducing manual operations and improving operational efficiency'
     }
@@ -157,7 +157,7 @@ export interface ProjectResult {
 
 export const projectPageResults: ProjectResult[] = [
   {
-    icon: TrendingUp,
+    icon: TrendUp,
     metric: 'Operational Efficiency',
     value: 'Enhanced',
     description: 'Minimised manual inputs on the backend through partner portal automation'
@@ -175,7 +175,7 @@ export const projectPageResults: ProjectResult[] = [
     description: 'Partner commission/discount selection at sign-up successfully implemented'
   },
   {
-    icon: Award,
+    icon: Trophy,
     metric: 'Code Quality',
     value: 'Expert',
     description: 'Technically strong coding expertise meeting enterprise standards'

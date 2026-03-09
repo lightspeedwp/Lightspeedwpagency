@@ -16,7 +16,7 @@ import type { UniversalIcon } from '../../utils/icon-map';
 import { Link } from 'react-router';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
-import { getPageUrl } from '../../data/pages';
+import { getPageUrl } from '../../data/site-pages';
 
 
 export interface FeatureGridItem {

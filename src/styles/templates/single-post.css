@@ -7,6 +7,12 @@
  * - Imports blog-base.css for shared blog structure
  * - Contains ONLY unique single post theme decorations
  *
+ * MIGRATED: March 6, 2026 - Phase 2 Step 3, Batch C1
+ * - Uses glass-effect-base.css for glassmorphism patterns
+ * - Glass effect patterns documented:
+ *   • .single-post blockquote: blur(12px) funky quote (matches glass-effect-base default)
+ *   • .single-post-author-bio: blur(12px) author card (matches glass-effect-base default)
+ *
  * STRICT DESIGN SYSTEM COMPLIANCE:
  * - Fonts: var(--font-primary), var(--font-secondary), var(--font-mono)
  * - Spacing: var(--spacing-*)
@@ -23,9 +29,7 @@
  * Provides: heroes, post meta, editorial content, author bios, etc.
  */
 @import './blog-base.css';
-@import '../base/grid-utilities.css';
-@import '../base/card-base.css';
-@import '../patterns/hero/hero-base.css';
+@import '../base/glass-effect-base.css';
 
 /* ============================================
    UNIQUE SINGLE POST THEME ELEMENTS

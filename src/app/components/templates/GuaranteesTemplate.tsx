@@ -12,8 +12,15 @@
  *  4. Trust Signals (stat cards)
  *  5. FAQ + CTA
  *
+ * Pattern Components:
+ * - ✅ ProcessTimeline — How it works steps (horizontal orientation)
+ * - ✅ StatsGrid — Trust signal stat cards (cards variant, 4 columns)
+ * - ✅ FAQSection — Guarantees FAQ section
+ * - ✅ FunkyCTA — Final conversion section
+ *
  * @see /src/styles/templates/guarantees.css
  * @see /src/app/data/guarantees-page.ts
+ * @migrated March 4, 2026 — Migrated inline process steps to ProcessTimeline and trust signals to StatsGrid (~30 lines saved)
  */
 
 import '../../../styles/templates/guarantees.css';
@@ -21,6 +28,8 @@ import { Container } from '../common/Container';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { FunkyCTA } from '../patterns/FunkyCTA';
 import { FAQSection } from '../patterns/FAQSection';
+import { StatsGrid } from '../patterns/StatsGrid';
+import { ProcessTimeline } from '../patterns/ProcessTimeline';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { Check, ShieldCheck } from '@phosphor-icons/react';
 
@@ -33,6 +42,21 @@ import {
   guaranteesFAQs,
   guaranteesCTA
 } from '../../data/guarantees-page';
+
+/* ── Map data to pattern component shapes ── */
+const processTimelineSteps = guaranteesProcess.steps.map((s) => ({
+  id: `guar-step-${s.number}`,
+  number: parseInt(s.number, 10),
+  title: s.title,
+  description: s.description,
+}));
+
+const trustStats = trustSignals.signals.map((s) => ({
+  value: s.stat,
+  label: s.label,
+  description: s.description,
+  icon: s.icon,
+}));
 
 export function GuaranteesTemplate() {
   return (
@@ -136,19 +160,10 @@ export function GuaranteesTemplate() {
             </div>
           </ScrollReveal>
 
-          <div className="guar__process-grid">
-            {guaranteesProcess.steps.map((step) => (
-              <ScrollReveal key={step.number} animation="fade-up">
-                <article className="guar__step-card">
-                  <div className="guar__step-num">{step.number}</div>
-                  <div>
-                    <h3 className="guar__step-title">{step.title}</h3>
-                    <p className="guar__step-desc">{step.description}</p>
-                  </div>
-                </article>
-              </ScrollReveal>
-            ))}
-          </div>
+          <ProcessTimeline
+            steps={processTimelineSteps}
+            orientation="horizontal"
+          />
         </Container>
       </section>
 
@@ -164,21 +179,11 @@ export function GuaranteesTemplate() {
             </div>
           </ScrollReveal>
 
-          <div className="guar__trust-grid">
-            {trustSignals.signals.map((signal, index) => {
-              const Icon = signal.icon;
-              return (
-                <ScrollReveal key={index} animation="fade-up">
-                  <article className="guar__trust-card">
-                    <Icon size={32} className="guar__trust-icon" />
-                    <div className="guar__trust-stat">{signal.stat}</div>
-                    <div className="guar__trust-label">{signal.label}</div>
-                    <p className="guar__trust-desc">{signal.description}</p>
-                  </article>
-                </ScrollReveal>
-              );
-            })}
-          </div>
+          <StatsGrid
+            stats={trustStats}
+            columns={4}
+            variant="cards"
+          />
         </Container>
       </section>
 

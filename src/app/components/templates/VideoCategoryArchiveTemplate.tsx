@@ -1,11 +1,11 @@
 /**
  * Video Category Archive Template
  *
- * WordPress template: templates/taxonomy-video_category.html
- * Taxonomy archive archetype filtering videos by category.
+ * WordPress template: templates/archive-video_category.html
+ * Category archive for video post format
  */
 
-import '../../../styles/templates/video-archive.css';
+import '../../../styles/templates/video-archive-optimized.css';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
@@ -13,7 +13,7 @@ import { FAQSection } from '../patterns/FAQSection';
 import { FunkyCTA } from '../patterns/FunkyCTA';
 import { Heading } from '../blocks/text/Heading';
 import { Paragraph } from '../blocks/text/Paragraph';
-import { Play, Clock, Eye, Calendar } from 'lucide-react';
+import { Play, Clock, Eye, Calendar } from '@phosphor-icons/react';
 import { getVideosByCategory, getVideoCategoryBySlug, videoCategories, videos } from '../../data/videos';
 import { videoFAQs } from '../../data/faqs';
 import { Link } from 'react-router';

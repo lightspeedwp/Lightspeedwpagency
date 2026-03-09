@@ -4,7 +4,7 @@
  * Parent: /services/content
  */
 
-import { Search, TrendingUp, FileText, Target, BarChart3, RefreshCw } from 'lucide-react';
+import { MagnifyingGlass, TrendUp, FileText, Crosshair, ChartBar, ArrowsClockwise } from '@phosphor-icons/react';
 import { Link } from 'react-router';
 import { FeatureList } from '../patterns/FeatureList';
 import { CheckList } from '../patterns/CheckList';
@@ -12,12 +12,12 @@ import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
 
 export const ContentSEOServiceTemplate = () => {
   const benefits = [
-    { icon: Search, title: 'Keyword-Targeted Articles', description: 'Research-backed content targeting high-value search terms with genuine user intent.' },
-    { icon: TrendingUp, title: 'Topic Cluster Strategy', description: 'Interconnected pillar pages and cluster content that builds topical authority.' },
+    { icon: MagnifyingGlass, title: 'Keyword-Targeted Articles', description: 'Research-backed content targeting high-value search terms with genuine user intent.' },
+    { icon: TrendUp, title: 'Topic Cluster Strategy', description: 'Interconnected pillar pages and cluster content that builds topical authority.' },
     { icon: FileText, title: 'Meta & Schema Writing', description: 'Optimised meta titles, descriptions, and structured data for maximum click-through rates.' },
-    { icon: Target, title: 'Search Intent Matching', description: 'Content aligned to informational, navigational, commercial, and transactional intent.' },
-    { icon: BarChart3, title: 'Performance Tracking', description: 'Keyword ranking, organic traffic, and conversion metrics with monthly reporting.' },
-    { icon: RefreshCw, title: 'Content Refresh Programme', description: 'Systematic updates to existing content to maintain and improve search rankings.' },
+    { icon: Crosshair, title: 'Search Intent Matching', description: 'Content aligned to informational, navigational, commercial, and transactional intent.' },
+    { icon: ChartBar, title: 'Performance Tracking', description: 'Keyword ranking, organic traffic, and conversion metrics with monthly reporting.' },
+    { icon: ArrowsClockwise, title: 'Content Refresh Programme', description: 'Systematic updates to existing content to maintain and improve search rankings.' },
   ];
 
   const deliverables = [

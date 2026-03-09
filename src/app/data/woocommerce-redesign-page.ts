@@ -10,10 +10,10 @@
  */
 
 import {
-  ShoppingCart, CreditCard, Package, TrendingUp, RefreshCw,
-  Search, PenTool, Code, Rocket, CheckCircle, Truck,
-  BarChart3, ShieldCheck, Globe, Zap, Settings, Eye
-} from 'lucide-react';
+  ShoppingCart, CreditCard, Package, TrendUp, ArrowsClockwise,
+  MagnifyingGlass, PenNib, Code, Rocket, CheckCircle, Truck,
+  ChartBar, ShieldCheck, Globe, Lightning, GearSix, Eye
+} from '@phosphor-icons/react';
 
 /* ── Hero ── */
 export const wooRedesignHero = {
@@ -52,7 +52,7 @@ export const wooRedesignProcess = {
     {
       number: '01',
       title: 'Store Audit & Analytics',
-      icon: Search,
+      icon: MagnifyingGlass,
       description: 'Deep-dive into your store analytics, conversion funnel, and customer behaviour to identify exactly where you\'re losing sales.',
       deliverables: ['Conversion funnel analysis', 'Heatmap & session review', 'Product page audit', 'Competitor benchmarking'],
       duration: '1 Week',
@@ -68,7 +68,7 @@ export const wooRedesignProcess = {
     {
       number: '03',
       title: 'Store Design',
-      icon: PenTool,
+      icon: PenNib,
       description: 'Create a brand-aligned store design with optimised product pages, category layouts, and a friction-free cart/checkout.',
       deliverables: ['Product page designs', 'Category & shop pages', 'Cart & checkout flow', 'Mobile-first mockups'],
       duration: '2-3 Weeks',
@@ -105,13 +105,13 @@ export const wooRedesignServices = {
   title: 'Everything Your Store Needs',
   description: 'A complete redesign engagement covering every aspect of your e-commerce experience.',
   items: [
-    { icon: Search, title: 'Store Audit', page: 'discovery', description: 'Analytics-driven conversion audit.' },
-    { icon: PenTool, title: 'UX Design', page: 'design', description: 'Conversion-optimised store design.' },
+    { icon: MagnifyingGlass, title: 'Store Audit', page: 'discovery', description: 'Analytics-driven conversion audit.' },
+    { icon: PenNib, title: 'UX Design', page: 'design', description: 'Conversion-optimised store design.' },
     { icon: Code, title: 'WooCommerce Dev', page: 'development', description: 'Custom block theme development.' },
     { icon: Package, title: 'Product Migration', page: 'hosting', description: 'Safe product & order migration.' },
     { icon: CreditCard, title: 'Payments', page: 'woocommerce', description: 'Payment gateway integration.' },
     { icon: Truck, title: 'Shipping', page: 'woocommerce', description: 'Shipping rules & automation.' },
-    { icon: Zap, title: 'Performance', page: 'performance', description: 'Sub-second product page loads.' },
+    { icon: Lightning, title: 'Performance', page: 'performance', description: 'Sub-second product page loads.' },
     { icon: ShieldCheck, title: 'Security', page: 'security', description: 'PCI compliance & fraud protection.' },
   ],
 };

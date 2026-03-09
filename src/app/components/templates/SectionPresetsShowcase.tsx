@@ -16,8 +16,7 @@ import { Container } from '../common/Container';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { Button } from '../blocks/design/Buttons';
-import { Layers } from 'lucide-react';
-
+import { Stack } from '@phosphor-icons/react';
 
 const presetCategories = [
   {
@@ -89,7 +88,7 @@ export function SectionPresetsShowcase() {
           <div key={category.category} className="wp-mb-12">
             <ScrollReveal animation="fade-up" delay={catIndex * 100}>
               <div className="wp-flex wp-items-center wp-gap-3 wp-mb-6">
-                <Layers size={20} className="wp-text-primary" />
+                <Stack size={20} className="wp-text-primary" />
                 <h2 className="wp-text-h3 wp-font-bold">{category.category} Styles</h2>
               </div>
 

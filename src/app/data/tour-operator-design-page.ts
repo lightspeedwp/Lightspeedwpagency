@@ -10,10 +10,10 @@
  */
 
 import {
-  Map, Compass, Camera, Calendar, Globe, Users,
-  Search, PenTool, Code, Rocket, CheckCircle, CreditCard,
-  Plane, Mountain, Sun, Star, FileText, Settings
-} from 'lucide-react';
+  MapTrifold, Compass, Camera, Calendar, Globe, Users,
+  MagnifyingGlass, PenNib, Code, Rocket, CheckCircle, CreditCard,
+  Airplane, Mountains, Sun, Star, FileText, GearSix
+} from '@phosphor-icons/react';
 
 /* ── Hero ── */
 export const tourDesignHero = {
@@ -52,7 +52,7 @@ export const tourDesignProcess = {
     {
       number: '01',
       title: 'Travel Discovery',
-      icon: Search,
+      icon: MagnifyingGlass,
       description: 'We learn your tour products, target travellers, booking flow, and competitive landscape to build the right strategy.',
       deliverables: ['Tour product audit', 'Traveler persona profiles', 'Competitor analysis', 'Content inventory'],
       duration: '1 Week',
@@ -68,7 +68,7 @@ export const tourDesignProcess = {
     {
       number: '03',
       title: 'Visual Design',
-      icon: PenTool,
+      icon: PenNib,
       description: 'Create an immersive, travel-inspired design that showcases your destinations with full-width imagery and interactive maps.',
       deliverables: ['Tour page designs', 'Destination page layouts', 'Mobile booking flow', 'Interactive map prototype'],
       duration: '2-3 Weeks',
@@ -105,13 +105,13 @@ export const tourDesignFeatures = {
   title: 'Built for the Travel Industry',
   description: 'Specialised features that generic website builders simply cannot offer.',
   items: [
-    { icon: Map, title: 'Interactive Route Maps', description: 'Visualise tour routes with interactive maps showing stops, distances, and points of interest.' },
+    { icon: MapTrifold, title: 'Interactive Route Maps', description: 'Visualise tour routes with interactive maps showing stops, distances, and points of interest.' },
     { icon: Calendar, title: 'Day-by-Day Itineraries', description: 'Beautiful itinerary layouts with daily activities, meals, accommodation, and travel details.' },
     { icon: Camera, title: 'Immersive Galleries', description: 'Full-screen photo and video galleries that bring destinations to life.' },
     { icon: Globe, title: 'Destination Pages', description: 'Rich destination content with related tours, travel info, and seasonal highlights.' },
     { icon: CreditCard, title: 'Booking Integration', description: 'Connect with booking engines, accept deposits, and manage availability calendars.' },
     { icon: Users, title: 'Traveller Reviews', description: 'Collect and showcase authentic traveller reviews with photos and ratings.' },
-    { icon: Mountain, title: 'Accommodation Showcases', description: 'Dedicated accommodation pages linked to tours with amenities and photos.' },
+    { icon: Mountains, title: 'Accommodation Showcases', description: 'Dedicated accommodation pages linked to tours with amenities and photos.' },
     { icon: Star, title: 'WETU Integration', description: 'Import and sync tour content directly from WETU for African tour operators.' },
   ],
 };
@@ -121,11 +121,11 @@ export const tourDesignServices = {
   title: 'What\'s Included',
   description: 'A complete tour website solution from strategy to launch.',
   items: [
-    { icon: Search, title: 'Travel Discovery', page: 'discovery', description: 'Tour product & market research.' },
-    { icon: PenTool, title: 'Tour UX Design', page: 'design', description: 'Travel-focused responsive design.' },
+    { icon: MagnifyingGlass, title: 'Travel Discovery', page: 'discovery', description: 'Tour product & market research.' },
+    { icon: PenNib, title: 'Tour UX Design', page: 'design', description: 'Travel-focused responsive design.' },
     { icon: Code, title: 'WordPress + LSX TO', page: 'development', description: 'LSX Tour Operator plugin setup.' },
     { icon: Globe, title: 'Content Design', page: 'content', description: 'Tour & destination content creation.' },
-    { icon: Map, title: 'WETU Importer', page: 'wetu-importer', description: 'Automated tour content sync.' },
+    { icon: MapTrifold, title: 'WETU Importer', page: 'wetu-importer', description: 'Automated tour content sync.' },
     { icon: CreditCard, title: 'Booking Setup', page: 'woocommerce', description: 'Booking engine integration.' },
   ],
 };

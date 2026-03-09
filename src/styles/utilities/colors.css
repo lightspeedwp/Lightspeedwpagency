@@ -1,0 +1,77 @@
+/**
+ * Color Utilities
+ *
+ * Background and text color utilities.
+ * All utilities reference color CSS variables from theme-light.css and theme-dark.css.
+ */
+
+/* ============================================
+   BACKGROUND COLOR UTILITIES
+   ============================================ */
+
+.bg-background { background-color: var(--background); }
+.bg-foreground { background-color: var(--foreground); }
+.bg-card { background-color: var(--card); }
+.bg-muted { background-color: var(--muted); }
+.bg-primary { background-color: var(--primary); }
+.bg-secondary { background-color: var(--secondary); }
+.bg-accent { background-color: var(--accent); }
+
+/* wp-prefixed background colors */
+.wp-bg-background { background-color: var(--background); }
+.wp-bg-foreground { background-color: var(--foreground); }
+.wp-bg-card { background-color: var(--card); }
+.wp-bg-muted { background-color: var(--muted); }
+.wp-bg-primary { background-color: var(--primary); }
+.wp-bg-primary-soft { background-color: var(--primary-soft); }
+.wp-bg-secondary { background-color: var(--secondary); }
+.wp-bg-accent { background-color: var(--accent); }
+.wp-bg-destructive { background-color: var(--destructive); }
+.wp-bg-success { background-color: var(--success); }
+.wp-bg-success-soft { background-color: var(--success-soft); }
+.wp-bg-transparent { background-color: transparent; }
+
+/* ============================================
+   TEXT COLOR UTILITIES
+   ============================================ */
+
+.text-foreground { color: var(--foreground); }
+.text-muted-foreground { color: var(--muted-foreground); }
+.text-primary { color: var(--primary); }
+.text-primary-foreground { color: var(--primary-foreground); }
+.text-card-foreground { color: var(--card-foreground); }
+.text-destructive { color: var(--destructive); }
+.text-accent-foreground { color: var(--accent-foreground); }
+
+/* wp-prefixed text colors */
+.wp-text-foreground { color: var(--foreground); }
+.wp-text-muted-foreground { color: var(--muted-foreground); }
+.wp-text-primary { color: var(--primary); }
+.wp-text-primary-foreground { color: var(--primary-foreground); }
+.wp-text-secondary-foreground { color: var(--secondary-foreground); }
+.wp-text-card-foreground { color: var(--card-foreground); }
+.wp-text-destructive { color: var(--destructive); }
+.wp-text-destructive-foreground { color: var(--destructive-foreground); }
+.wp-text-accent-foreground { color: var(--accent-foreground); }
+.wp-text-success { color: var(--success); }
+
+/* ============================================
+   HOVER STATE UTILITIES
+   ============================================ */
+
+.wp-hover\:text-primary:hover { color: var(--primary); }
+.wp-hover\:text-foreground:hover { color: var(--foreground); }
+.wp-hover\:bg-muted:hover { background-color: var(--muted); }
+.wp-hover\:bg-accent:hover { background-color: var(--accent); }
+.wp-hover\:border-primary:hover { border-color: var(--primary); }
+
+.hover\:wp-text-primary:hover { color: var(--primary); }
+.hover\:wp-border-primary:hover { border-color: var(--primary); }
+.hover\:wp-shadow-lg:hover { box-shadow: var(--shadow-lg); }
+.hover\:wp-shadow-md:hover { box-shadow: var(--shadow-md); }
+
+/* Group hover utilities */
+.group:hover .group-hover\:wp-text-primary { color: var(--primary); }
+.group:hover .group-hover\:wp-border-primary { border-color: var(--primary); }
+.group:hover .group-hover\:wp-translate-x-1 { transform: translateX(var(--spacing-1)); }
+.group:hover .group-hover\:wp-shadow-md { box-shadow: var(--shadow-md); }

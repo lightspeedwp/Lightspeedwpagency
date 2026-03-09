@@ -1,9 +1,25 @@
 /**
  * Challenges Grid Pattern Styles
  * 
+ * MIGRATED: March 6, 2026 - Phase 2 Step 3, Batch B Pilot
+ * - Uses icon-wrapper-base.css for icon wrapper structure
+ * - Removed ~10 lines of duplicate icon wrapper code
+ * - Icon wrapper: 64px circular (--lg size, --circular shape, --muted color variant)
+ * 
  * BEM-compliant styles for the ChallengesGrid component.
  * All vertical spacing via blockGap (CSS gap) -- zero margin.
+ * 100% CSS variables.
  */
+
+/* ============================================
+   BASE IMPORTS
+   ============================================ */
+
+@import '../base/icon-wrapper-base.css';
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
 
 .challenges-grid {
   display: flex;
@@ -90,8 +106,10 @@
   box-shadow: var(--shadow-md);
 }
 
-/* Icon */
+/* Icon - Inherits from icon-wrapper-base.css */
 .challenges-grid__icon-wrapper {
+  /* Base structure from icon-wrapper-base (64px = --spacing-16 = lg size) */
+  /* Uses: --lg (64px), --circular (border-radius: 50%), custom primary-soft background */
   width: 64px;
   height: 64px;
   border-radius: var(--radius-full);

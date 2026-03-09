@@ -5,7 +5,7 @@
  * Single detail archetype for a podcast episode.
  */
 
-import '../../../styles/templates/podcast-archive.css';
+import '../../../styles/templates/podcast-archive-optimized.css';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
@@ -13,7 +13,7 @@ import { FAQSection } from '../patterns/FAQSection';
 import { FunkyCTA } from '../patterns/FunkyCTA';
 import { Heading } from '../blocks/text/Heading';
 import { Paragraph } from '../blocks/text/Paragraph';
-import { Clock, Calendar, Headphones, ExternalLink } from 'lucide-react';
+import { Clock, Calendar, Headphones, ArrowSquareOut } from '@phosphor-icons/react';
 import { getPodcastBySlug, getRelatedPodcasts, podcasts } from '../../data/podcasts';
 import { podcastFAQs } from '../../data/faqs';
 import { Link } from 'react-router';
@@ -83,22 +83,22 @@ export function SinglePodcastTemplate({ slug }: Props) {
                 <div className="single-podcast__subscribe">
                   {episode.subscribeLinks.apple && (
                     <a href={episode.subscribeLinks.apple} className="single-podcast__subscribe-link" target="_blank" rel="noopener noreferrer">
-                      <ExternalLink size={14} /> Apple Podcasts
+                      <ArrowSquareOut size={14} /> Apple Podcasts
                     </a>
                   )}
                   {episode.subscribeLinks.spotify && (
                     <a href={episode.subscribeLinks.spotify} className="single-podcast__subscribe-link" target="_blank" rel="noopener noreferrer">
-                      <ExternalLink size={14} /> Spotify
+                      <ArrowSquareOut size={14} /> Spotify
                     </a>
                   )}
                   {episode.subscribeLinks.google && (
                     <a href={episode.subscribeLinks.google} className="single-podcast__subscribe-link" target="_blank" rel="noopener noreferrer">
-                      <ExternalLink size={14} /> Google Podcasts
+                      <ArrowSquareOut size={14} /> Google Podcasts
                     </a>
                   )}
                   {episode.subscribeLinks.rss && (
                     <a href={episode.subscribeLinks.rss} className="single-podcast__subscribe-link" target="_blank" rel="noopener noreferrer">
-                      <ExternalLink size={14} /> RSS Feed
+                      <ArrowSquareOut size={14} /> RSS Feed
                     </a>
                   )}
                 </div>

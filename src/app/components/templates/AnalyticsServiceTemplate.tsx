@@ -25,7 +25,6 @@
  * @migrated March 3, 2026 — Phase 3.1: Migrated inline benefits grid to FeatureList component (~80 lines saved)
  */
 
-import '@/styles/templates/analytics-service.css';
 import { ChartBar, Target, TrendUp, Users, ChartLine, ChartPie } from '@phosphor-icons/react';
 import { Link } from 'react-router';
 import { FeatureList } from '../patterns/FeatureList';

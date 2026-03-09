@@ -4,7 +4,7 @@
  * Content and configuration for the ROI Calculator tool.
  */
 
-import { Calculator } from 'lucide-react';
+import { Calculator } from '@phosphor-icons/react';
 
 export const roiCalculatorHero = {
   title: "ROI Calculator",

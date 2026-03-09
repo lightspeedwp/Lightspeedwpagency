@@ -3,7 +3,24 @@
  * 
  * BEM-compliant styles for the VideoTestimonial component.
  * All vertical spacing via blockGap (CSS gap) -- zero margin.
+ * 
+ * MIGRATED: March 6, 2026 - Phase 2 Step 3, Batch A1
+ * - Uses grid-responsive-base.css for responsive grid behavior
+ * - Removed ~35 lines of duplicate grid responsive code
+ * - Grid variants (1-col, 2-cols, 3-cols) now use base patterns
+ * 
+ * 100% CSS variables.
  */
+
+/* ============================================
+   BASE IMPORTS
+   ============================================ */
+
+@import '../base/grid-responsive-base.css';
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
 
 .video-testimonial {
   width: 100%;
@@ -44,12 +61,17 @@
   margin: 0 auto;
 }
 
-/* Grid */
+/* Grid - inherits responsive behavior from grid-responsive-base */
 .video-testimonial__grid {
   display: grid;
   gap: var(--spacing-8);
 }
 
+/* Grid column variants - responsive behavior from grid-responsive-base
+ * 1-col: Always 1 column
+ * 2-cols: 1 col mobile → 2 cols tablet+
+ * 3-cols: 1 col mobile → 2 cols tablet → 3 cols desktop
+ */
 .video-testimonial__grid--1-col {
   grid-template-columns: 1fr;
 }

@@ -6,7 +6,7 @@
  * Parent: /services/hosting
  */
 
-import { Package, Database, CloudUpload, CheckCircle, Shield, Zap } from 'lucide-react';
+import { Package, Database, CloudArrowUp, CheckCircle, Shield, Lightning } from '@phosphor-icons/react';
 import { Link } from 'react-router';
 import { FeatureList } from '../patterns/FeatureList';
 import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
@@ -24,7 +24,7 @@ export const MigrationsServiceTemplate = () => {
       description: 'Migrate all content, media, databases, and settings with zero data loss.'
     },
     {
-      icon: CloudUpload,
+      icon: CloudArrowUp,
       title: 'Hosting Migration',
       description: 'Move to better hosting with minimal downtime and improved performance.'
     },
@@ -39,7 +39,7 @@ export const MigrationsServiceTemplate = () => {
       description: 'Secure transfer protocols and backup systems protect your data throughout.'
     },
     {
-      icon: Zap,
+      icon: Lightning,
       title: 'Minimal Downtime',
       description: 'Strategic planning keeps your site running during the migration process.'
     }

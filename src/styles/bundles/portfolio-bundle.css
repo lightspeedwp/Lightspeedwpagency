@@ -1,0 +1,103 @@
+/**
+ * Portfolio Route Bundle
+ * 
+ * Routes: /work/*, /work/category/*, /work/tag/*, /tour-operators/*
+ * Size: ~8-12KB gzipped
+ * Priority: Critical (showcase route)
+ * 
+ * This bundle includes:
+ * - portfolio-base.css (842 lines) — Portfolio structure base
+ * - 6 portfolio template files
+ * - 8 portfolio pattern files
+ * 
+ * Total: 15 files, ~8-12KB gzipped
+ * 
+ * Design System Compliance:
+ * - All fonts use var(--font-primary) / var(--font-secondary)
+ * - All colors use semantic CSS variables
+ * - All spacing uses var(--spacing-*) tokens
+ * - BEM naming conventions
+ * - WordPress utility classes (.wp-*)
+ * 
+ * @see /reports/2026-03/memory-optimization/route-to-css-mapping.md
+ */
+
+/* ============================================
+   PORTFOLIO STRUCTURE BASE
+   ============================================ */
+
+/* Portfolio Structure Base (842 lines) */
+@import '../templates/portfolio-base.css';
+
+/* ============================================
+   PORTFOLIO TEMPLATES
+   ============================================ */
+
+/* Main Portfolio Templates (4 files) */
+@import '../templates/portfolio-archive-optimized.css';
+@import '../templates/portfolio-single.css';
+@import '../templates/single-project-optimized.css';
+@import '../templates/portfolio-tag-archive-optimized.css';
+
+/* Tour Operator Templates (2 files) */
+@import '../templates/tour-operator-archive-optimized.css';
+@import '../templates/single-tour.css';
+
+/* ============================================
+   PORTFOLIO PATTERNS
+   ============================================ */
+
+/* Portfolio-Specific Patterns (8 files) */
+@import '../patterns/case-study-preview.css';
+@import '../patterns/featured-project-showcase.css';
+@import '../patterns/featured-project-text.css';
+@import '../patterns/featured-project-video.css';
+@import '../patterns/portfolio-slider.css';
+@import '../patterns/project-case-study.css';
+@import '../patterns/portfolio-card.css';
+@import '../patterns/portfolio-gallery.css';
+
+/* ============================================
+   BUNDLE INFO
+   ============================================ */
+
+/**
+ * Portfolio Bundle Summary:
+ * 
+ * Base Files: 1 file (portfolio-base.css, 842 lines, ~3.7KB gzipped)
+ * Templates: 6 files (~3-4KB gzipped)
+ * Patterns: 8 files (~3-4KB gzipped)
+ * 
+ * Total: 15 files, ~8-12KB gzipped
+ * 
+ * Routes Served:
+ * - /work (Portfolio archive)
+ * - /work/:slug (Single project)
+ * - /work/category/:category (Category archives)
+ * - /work/tag/:tag (Tag archives)
+ * - /tour-operators (Tour operator archive)
+ * - /tour-operators/:slug (Single tour operator)
+ * 
+ * Portfolio Features:
+ * - Portfolio heroes with spotlight orbs
+ * - Client badge displays
+ * - Stats/metrics with gradient text
+ * - Project meta cards (glassmorphism)
+ * - Standard project cards (3 variants: Polaroid, Spotlight, Editorial)
+ * - Responsive grids (1→2→3 columns)
+ * - Filter toolbars (sticky)
+ * - Case study sections
+ * - Testimonial quotes
+ * - Related projects sections
+ * - Previous/next navigation
+ * 
+ * Loading Strategy:
+ * - Load on route match: /work/* or /tour-operators/*
+ * - Preload on hover: Portfolio navigation links
+ * - Cache: Long-term (portfolio rarely changes)
+ * 
+ * Expected Impact:
+ * - 54-66% reduction vs. loading all CSS (201KB → 68-92KB)
+ * - Faster FCP on portfolio pages
+ * - Improved Lighthouse score
+ */

@@ -32,7 +32,7 @@ import { FAQSection } from '../patterns/FAQSection';
 import { FunkyCTA } from '../patterns/FunkyCTA';
 import { Code, ShoppingBag as ShoppingCart, Shield, ArrowRight } from '@phosphor-icons/react';
 import { Link } from 'react-router';
-import { getPageUrl } from '../../data/pages';
+import { getPageUrl } from '../../data/site-pages';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { ScrollDownArrow } from '../common/ScrollDownArrow';
 

@@ -1,9 +1,25 @@
 /**
- * Single Template Styles
- * 
- * Styles for the generic SingleTemplate fallback.
- * Follows BEM naming and uses CSS variables.
+ * Single Post Template Styles — Funky Neon Redesign
+ *
+ * Template: SinglePostTemplate
+ * Theme: Long-form editorial content with glassmorphism accents
+ *
+ * MIGRATED: March 6, 2026 - Phase 2 Step 3, Batch C3
+ * - Uses glass-effect-base.css for glassmorphism patterns
+ * - Glass effect patterns documented:
+ *   • .single-post__category-badge: blur(8px) category badge (matches glass-effect-base--subtle)
+ *   • .single-post__share-card: blur(12px) share floating card (matches glass-effect-base default)
+ *
+ * 100% CSS variables — no hardcoded color/spacing values.
+ * BEM naming throughout.
  */
+
+/* ============================================
+   BASE IMPORTS
+   ============================================ */
+@import '../base/grid-utilities.css';
+@import '../base/card-base.css';
+@import '../base/glass-effect-base.css';
 
 .wp-single-page-wrapper {
   display: flex;

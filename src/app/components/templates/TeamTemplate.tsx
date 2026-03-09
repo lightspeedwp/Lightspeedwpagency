@@ -1,22 +1,23 @@
 /**
  * Team Page Template — Funky Redesign
  *
- * Features:
- * - Neon Community Theme
- * - Parallax Hero
- * - Interactive Member Cards with hover reveals
- * - Culture grid + stats bar
- * - ScrollReveal entry animations
- * - 100% CSS variable compliance
+ * Pattern Components:
+ * - ✅ FeatureList — Culture values grid (glow variant, 3 columns)
+ * - ✅ StatsSection — Team stats
+ * - ✅ FAQSection — Team FAQs
+ * - ✅ FunkyCTA — Careers CTA
+ *
+ * @migrated March 4, 2026 — Migrated culture grid to FeatureList (~18 lines saved)
  */
 
 /* Route-level CSS */
-import '../../../styles/templates/page-team.css';
+import '../../../styles/templates/page-team-optimized.css';
 import '../../../styles/templates/team-page.css';
 import { Container } from '../common/Container';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { FunkyCTA } from '../patterns/FunkyCTA';
 import { FAQSection } from '../patterns/FAQSection';
+import { FeatureList } from '../patterns/FeatureList';
 import { StatsSection } from '../patterns/StatsSection';
 import { Heading } from '../blocks/text/Heading';
 import { Paragraph } from '../blocks/text/Paragraph';
@@ -211,33 +212,18 @@ export function TeamTemplate() {
             </div>
           </ScrollReveal>
 
-          <div className="team-page__culture-grid">
-            {[
-              { icon: Heart, title: 'Passion First', desc: 'We love what we do and it shows in our work.' },
-              { icon: Lightning, title: 'Move Fast', desc: 'We iterate quickly and embrace change.' },
-              { icon: MapPin, title: 'Remote Native', desc: 'Work from anywhere, deliver everywhere.' },
-              { icon: Smiley, title: 'No Ego', desc: 'Great ideas can come from anyone.' },
-              { icon: Coffee, title: 'Always Learning', desc: 'We invest in our growth and skills.' },
-              { icon: GithubLogo, title: 'Inclusion', desc: 'We celebrate diversity in all forms.' }
-            ].map((item, index) => {
-              const Icon = item.icon;
-              return (
-                <ScrollReveal key={index} animation="fade-up" delay={index * 80}>
-                  <div className="team-page__culture-card">
-                    <div className="team-page__culture-icon">
-                      <Icon size={24} />
-                    </div>
-                    <Heading level={3} className="team-page__culture-card-title">
-                      {item.title}
-                    </Heading>
-                    <Paragraph className="team-page__culture-card-desc">
-                      {item.desc}
-                    </Paragraph>
-                  </div>
-                </ScrollReveal>
-              );
-            })}
-          </div>
+          <FeatureList
+            items={[
+              { icon: Heart, title: 'Passion First', description: 'We love what we do and it shows in our work.' },
+              { icon: Lightning, title: 'Move Fast', description: 'We iterate quickly and embrace change.' },
+              { icon: MapPin, title: 'Remote Native', description: 'Work from anywhere, deliver everywhere.' },
+              { icon: Smiley, title: 'No Ego', description: 'Great ideas can come from anyone.' },
+              { icon: Coffee, title: 'Always Learning', description: 'We invest in our growth and skills.' },
+              { icon: GithubLogo, title: 'Inclusion', description: 'We celebrate diversity in all forms.' }
+            ]}
+            variant="glow"
+            columns={3}
+          />
         </Container>
       </section>
 

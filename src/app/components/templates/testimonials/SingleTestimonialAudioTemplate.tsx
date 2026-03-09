@@ -13,7 +13,7 @@
  */
 
 import '../../../../styles/templates/testimonial-single.css';
-import { Star, ArrowLeft, Play, Pause, Mic, Clock } from 'lucide-react';
+import { Star, ArrowLeft, Play, Pause, Microphone, Clock } from '@phosphor-icons/react';
 import { Link, useParams } from 'react-router';
 import { useState } from 'react';
 import { Section } from '../../common/Section';
@@ -160,7 +160,7 @@ export function SingleTestimonialAudioTemplate({ slug }: { slug?: string }) {
             {testimonial.audio?.transcript && (
               <div className="single-testimonial__transcript">
                 <h3 className="single-testimonial__transcript-title">
-                  <Mic size={16} style={{ display: 'inline', verticalAlign: 'middle', marginRight: 'var(--spacing-2)' }} />
+                  <Microphone size={16} style={{ display: 'inline', verticalAlign: 'middle', marginRight: 'var(--spacing-2)' }} />
                   Transcript
                 </h3>
                 <p className="single-testimonial__transcript-text">

@@ -1,0 +1,94 @@
+/**
+ * Media Route Bundle
+ * 
+ * Routes: /videos/*, /podcasts/*
+ * Size: ~6-8KB gzipped
+ * Priority: Low (specialty content)
+ * 
+ * This bundle includes:
+ * - media-archive-base.css (392 lines) — Media structure base
+ * - 4 media archive template files
+ * - 1 media pattern file
+ * 
+ * Total: 6 files, ~6-8KB gzipped
+ * 
+ * Design System Compliance:
+ * - All fonts use var(--font-primary) / var(--font-secondary)
+ * - All colors use semantic CSS variables
+ * - All spacing uses var(--spacing-*) tokens
+ * - BEM naming conventions
+ * - WordPress utility classes (.wp-*)
+ * 
+ * @see /reports/2026-03/memory-optimization/route-to-css-mapping.md
+ */
+
+/* ============================================
+   MEDIA STRUCTURE BASE
+   ============================================ */
+
+/* Media Archive Structure Base (392 lines) */
+@import '../templates/media-archive-base.css';
+
+/* ============================================
+   MEDIA TEMPLATES
+   ============================================ */
+
+/* Video Archive Templates */
+@import '../templates/video-archive-optimized.css';
+@import '../templates/single-video.css';
+
+/* Podcast Archive Templates */
+@import '../templates/podcast-archive-optimized.css';
+/* Note: single-podcast.css will be added when created */
+
+/* ============================================
+   MEDIA PATTERNS
+   ============================================ */
+
+/* Media-Specific Patterns (1 file) */
+@import '../patterns/video-testimonial.css';
+
+/* ============================================
+   BUNDLE INFO
+   ============================================ */
+
+/**
+ * Media Bundle Summary:
+ * 
+ * Base Files: 1 file (media-archive-base.css, 392 lines, ~1.7KB gzipped)
+ * Templates: 3-4 files (~2-3KB gzipped)
+ * Patterns: 1 file (~0.5-1KB gzipped)
+ * 
+ * Total: 5-6 files, ~6-8KB gzipped
+ * 
+ * Routes Served:
+ * - /videos (Video archive)
+ * - /videos/:slug (Single video)
+ * - /videos/category/:category (Video category archives)
+ * - /videos/tag/:tag (Video tag archives)
+ * - /podcasts (Podcast archive)
+ * - /podcasts/:slug (Single podcast)
+ * - /podcasts/category/:category (Podcast category archives)
+ * 
+ * Media Features:
+ * - Responsive grids (1→2→3 columns)
+ * - Glassmorphism cards with animated gradient stripes
+ * - 16:9 video thumbnails with play overlays
+ * - 1:1 podcast artwork with neon borders
+ * - Gradient play icons with neon glow
+ * - Duration/episode badges
+ * - Media meta sections
+ * - Podcast player UI (podcast-archive specific)
+ * - Subscribe links (podcast-archive specific)
+ * - Video testimonial cards
+ * 
+ * Loading Strategy:
+ * - Load on route match: /videos/* or /podcasts/*
+ * - Preload on hover: Media navigation links
+ * - Cache: Medium-term (media content updates regularly)
+ * 
+ * Expected Impact:
+ * - 56-67% reduction vs. loading all CSS (201KB → 66-88KB)
+ * - Faster FCP on media pages
+ * - Improved Lighthouse score
+ */

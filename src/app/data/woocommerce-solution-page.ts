@@ -4,7 +4,7 @@
  * Content for the WooCommerce Solution template.
  */
 
-import { ShoppingCart, CreditCard, TrendingUp, Truck, Package, Settings } from 'lucide-react';
+import { ShoppingCart, CreditCard, TrendUp, Truck, Package, GearSix } from '@phosphor-icons/react';
 
 export const woocommerceSolutionHero = {
   title: "High-Performance WooCommerce Stores",
@@ -18,7 +18,7 @@ export const woocommerceSolutionFeatures = {
   title: "Complete E-Commerce Features",
   features: [
     {
-      icon: Settings,
+      icon: GearSix,
       title: "Custom Development",
       description: "Tailored functionality to match your unique business model and workflows."
     },
@@ -28,7 +28,7 @@ export const woocommerceSolutionFeatures = {
       description: "Seamless integration with Stripe, PayPal, and regional payment providers."
     },
     {
-      icon: TrendingUp,
+      icon: TrendUp,
       title: "Conversion Focused",
       description: "Optimized checkout flows and user journeys to maximize sales."
     },

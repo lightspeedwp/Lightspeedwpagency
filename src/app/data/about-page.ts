@@ -18,24 +18,24 @@
 import { 
   Heart, 
   Lightbulb, 
-  Target, 
+  Crosshair, 
   Users, 
-  Award,
-  Smile,
+  Trophy,
+  Smiley,
   Globe,
   Code,
-  Zap,
+  Lightning,
   Shield,
-  TrendingUp,
+  TrendUp,
   CheckCircle
-} from 'lucide-react';
+} from '@phosphor-icons/react';
 
 export const aboutPageHero = {
   title: "We build structured publishing systems",
   description: "A systems engineering team specialising in WordPress governance, design tokens, and editorial safety — so your site stays coherent under scale and compliance.",
   image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=80",
   stats: [
-    { value: "15+", label: "Years Experience", icon: "Award" },
+    { value: "15+", label: "Years Experience", icon: "Trophy" },
     { value: "50+", label: "Team Members", icon: "Users" },
     { value: "Global", label: "Client Base", icon: "Globe" }
   ]
@@ -83,7 +83,7 @@ export const aboutPageValues = [
     description: "Constantly seeking better, smarter ways to solve problems."
   },
   {
-    icon: Target,
+    icon: Crosshair,
     title: "Integrity",
     description: "Honest, transparent, and ethical in all our dealings."
   },
@@ -98,7 +98,7 @@ export const aboutPageValues = [
     description: "We never settle for good enough. Excellence is our baseline."
   },
   {
-    icon: TrendingUp,
+    icon: TrendUp,
     title: "Growth",
     description: "Committed to the continuous growth of our clients and our team."
   }
@@ -106,8 +106,8 @@ export const aboutPageValues = [
 
 export const aboutPageStats = [
   { number: "50+", label: "Team Members", icon: Users },
-  { number: "15", label: "Years in Business", icon: Award },
-  { number: "500+", label: "Happy Clients", icon: Smile },
+  { number: "15", label: "Years in Business", icon: Trophy },
+  { number: "500+", label: "Happy Clients", icon: Smiley },
   { number: "1k+", label: "Projects Delivered", icon: CheckCircle }
 ];
 
@@ -141,7 +141,7 @@ export const aboutPageExpertise = [
     description: "Custom themes, plugins, and complex integrations built on the world's most popular CMS."
   },
   {
-    icon: Zap,
+    icon: Lightning,
     title: "Performance optimization",
     description: "Speed is a feature. We optimize every line of code for maximum performance and SEO ranking."
   },

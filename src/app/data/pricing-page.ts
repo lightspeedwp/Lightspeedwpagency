@@ -13,13 +13,13 @@
 
 import {
   Rocket,
-  Zap,
+  Lightning,
   Crown,
   Shield,
   Wrench,
-  HeartHandshake,
-  DollarSign
-} from 'lucide-react';
+  Handshake,
+  CurrencyDollar
+} from '@phosphor-icons/react';
 import type { UniversalIcon } from '../utils/icon-map';
 
 /* ── Hero ── */
@@ -28,7 +28,7 @@ export const pricingPageHero = {
   title: "Simple, Transparent Pricing",
   subtitle: "Choose the plan that fits your business needs. No hidden fees.",
   badge: {
-    icon: DollarSign,
+    icon: CurrencyDollar,
     text: "TRANSPARENT PRICING"
   },
   description: "Choose the plan that fits your business needs. All plans include our quality guarantee, dedicated project management, and post-launch support."
@@ -95,7 +95,7 @@ export const websitePackages: PricingPackage[] = [
   {
     id: "professional",
     name: "Professional",
-    icon: Zap,
+    icon: Lightning,
     tagline: "For growing businesses",
     price: {
       display: "$9,999",
@@ -206,7 +206,7 @@ export const supportPackages: PricingPackage[] = [
   {
     id: "premium",
     name: "Premium",
-    icon: HeartHandshake,
+    icon: Handshake,
     tagline: "Full-service partnership",
     price: {
       display: "$2,499",

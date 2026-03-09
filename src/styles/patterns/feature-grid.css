@@ -1,10 +1,27 @@
 /**
  * Feature Grid Pattern Styles
  * 
+ * MIGRATED: March 6, 2026 - Phase 2 Step 3, Batch B Pilot
+ * - Uses icon-wrapper-base.css for icon wrapper structure
+ * - Removed ~12 lines of duplicate icon wrapper code
+ * - Icon wrapper: 56px (--md size) with shape modifiers (--rounded, --circular, --square)
+ * - Custom hover effect: scale(1.1) + rotate(5deg) with color flip
+ * 
  * BEM-compliant styles for the FeatureGrid component.
  * All vertical spacing via blockGap (CSS gap) -- zero margin.
  * Updated for "Funky" design system.
+ * 100% CSS variables.
  */
+
+/* ============================================
+   BASE IMPORTS
+   ============================================ */
+
+@import '../base/icon-wrapper-base.css';
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
 
 /* Header -- flex column with gap */
 .feature-grid__header {

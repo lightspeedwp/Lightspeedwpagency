@@ -7,14 +7,14 @@
  * WordPress Mapping: Product/Solution detail page
  */
 
-import { Server, Download, RefreshCw, Zap, Check, Shield } from 'lucide-react';
+import { HardDrives, DownloadSimple, ArrowsClockwise, Lightning, Check, Shield } from '@phosphor-icons/react';
 
 /**
  * Hero Section Data
  */
 export const wetuImporterHero = {
   badge: {
-    icon: Server,
+    icon: HardDrives,
     text: 'WETU INTEGRATION'
   },
   title: 'Wetu Importer',
@@ -37,17 +37,17 @@ export const wetuImporterHero = {
  */
 export const wetuImporterFeatures = [
   {
-    icon: Download,
+    icon: DownloadSimple,
     title: 'Automatic Data Import',
     description: 'Import tours, accommodations, and itineraries directly from your Wetu account with one click.'
   },
   {
-    icon: RefreshCw,
+    icon: ArrowsClockwise,
     title: 'Real-Time Sync',
     description: 'Keep your website content automatically synchronized with your Wetu database. Updates happen in real-time.'
   },
   {
-    icon: Zap,
+    icon: Lightning,
     title: 'Fast Performance',
     description: 'Optimized import process that handles thousands of tours without slowing down your website.'
   },
@@ -62,7 +62,7 @@ export const wetuImporterFeatures = [
     description: 'Map Wetu fields to your custom post types and taxonomies for complete control over your content structure.'
   },
   {
-    icon: Server,
+    icon: HardDrives,
     title: 'Bulk Operations',
     description: 'Import, update, or delete multiple tours at once with our powerful bulk management tools.'
   }

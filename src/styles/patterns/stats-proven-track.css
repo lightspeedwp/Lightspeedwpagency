@@ -1,6 +1,13 @@
 /**
  * Stats — "Proven Track Record" variant
  * 
+ * MIGRATED: March 6, 2026 - Phase 2 Step 3, Batch B2
+ * - Uses icon-wrapper-base.css for icon wrapper structure
+ * - Removed ~11 lines of duplicate icon wrapper code
+ * - Icon wrapper: 56px circular (--md size), glass effect with neon border
+ * - Custom hover: scale(1.08) + rotate(3deg) + color flip to accent
+ * - Unique glass styling: transparent primary background with border glow
+ * 
  * A self-contained dark panel that sits on any page background.
  * Uses an always-dark surface so the neon glow pops in both
  * light AND dark site modes — no separate .dark overrides needed.
@@ -20,6 +27,15 @@
  * @see /src/app/components/patterns/StatsSection.tsx
  */
 
+/* ============================================
+   BASE IMPORTS
+   ============================================ */
+
+@import '../base/icon-wrapper-base.css';
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
 
 /* ============================================
    1. SECTION WRAPPER — Always-dark panel

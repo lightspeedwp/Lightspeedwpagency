@@ -1,9 +1,24 @@
 /**
  * Aside Post Format Styles
  * 
+ * MIGRATED: March 6, 2026 - Phase 2 Step 3, Batch B2
+ * - Uses icon-wrapper-base.css for icon wrapper structure
+ * - Removed ~9 lines of duplicate icon wrapper code
+ * - Icon wrapper: 40px circular (custom size between --sm and --md), muted background
+ * 
  * WordPress Template: single-aside.html, archive-aside.html
  * 100% CSS variables.
  */
+
+/* ============================================
+   BASE IMPORTS
+   ============================================ */
+
+@import '../../base/icon-wrapper-base.css';
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
 
 /* Single Aside */
 .wp-block-aside-single {

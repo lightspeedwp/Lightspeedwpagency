@@ -9,12 +9,12 @@
  * - WCAG 2.1 AA compliant
  */
 
-import '../../../styles/templates/component-showcase.css';
+import '../../../styles/templates/component-showcase-optimized.css';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
-import { FileCode } from 'lucide-react';
+import { FileCode } from '@phosphor-icons/react';
 
 export function ComponentAPI() {
   return (

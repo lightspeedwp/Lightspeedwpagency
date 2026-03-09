@@ -1,9 +1,23 @@
 /**
- * Mailchimp Solution Page Styles
+ * Mailchimp Solution Page Styles — Funky Neon Redesign
  *
- * BEM naming: .mailchimp-*
- * 100% CSS variables, zero hardcoded values.
+ * Template: MailchimpSolutionTemplate
+ * Theme: Neon email automation, glassmorphism cards, floating orbs
+ *
+ * MIGRATED: March 6, 2026 - Phase 2 Step 3, Batch C2
+ * - Uses glass-effect-base.css for glassmorphism patterns
+ * - Glass effect patterns documented:
+ *   • .mailchimp-solution__hero-badge: blur(8px) hero badge (matches glass-effect-base--subtle)
+ *   • .mailchimp-solution__feature-card: blur(12px) feature cards (matches glass-effect-base default)
+ *   • .mailchimp-solution__benefit-card: blur(12px) benefit cards (matches glass-effect-base default)
+ *   • .mailchimp-solution__integration-card: blur(12px) integration cards (matches glass-effect-base default)
+ *   • .mailchimp-solution__pricing-card: blur(12px) pricing cards (matches glass-effect-base default)
+ *
+ * 100% CSS variables — no hardcoded color/spacing values.
+ * BEM naming throughout.
  */
+
+@import '../base/glass-effect-base.css';
 
 /* ============================================
    BASE IMPORTS — Phase 1 Optimization

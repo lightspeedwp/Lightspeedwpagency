@@ -1,29 +1,35 @@
 /**
- * FAQ Page Template Styles
+ * FAQ Page Styles — Funky Neon Redesign
  *
- * Funky Neon Redesign — FAQ page with:
- *   - Gradient hero with orbs and mesh
- *   - Glassmorphism stat cards with glow hover
- *   - Neon category icons with gradient background
- *   - Glow-on-open accordion items
- *   - Full dark mode overrides
- *   - Reduced motion support
+ * Template: FAQTemplate
+ * Theme: Neon FAQ interface, glassmorphism cards, search focus glow
  *
- * 100% CSS variables, BEM naming: .faq-page__*
+ * MIGRATED: March 6, 2026 - Phase 2 Step 3, Batch C2
+ * - Uses glass-effect-base.css for glassmorphism patterns
+ * - Glass effect patterns documented:
+ *   • .page-faq__search-bar: blur(12px) search bar (matches glass-effect-base default)
+ *   • .page-faq__category-card: blur(12px) category cards (matches glass-effect-base default)
+ *   • .page-faq__question-card: blur(8px) question cards (matches glass-effect-base--subtle)
+ *   • .page-faq__stat-card: blur(12px) stat cards (matches glass-effect-base default)
+ *
+ * 100% CSS variables — no hardcoded color/spacing values.
+ * BEM naming throughout.
  */
+
+@import '../base/glass-effect-base.css';
 
 /* ============================================
    1. HERO SECTION
    ============================================ */
 
-.faq-page__hero {
+.page-faq__hero {
   background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
   color: var(--primary-foreground);
   position: relative;
   overflow: hidden;
 }
 
-.faq-page__hero-orb {
+.page-faq__hero-orb {
   position: absolute;
   top: 0;
   right: 0;
@@ -37,7 +43,7 @@
   pointer-events: none;
 }
 
-.faq-page__hero-content {
+.page-faq__hero-content {
   max-width: var(--wp--style--global--content-size);
   text-align: center;
   position: relative;
@@ -48,7 +54,7 @@
   align-items: center;
 }
 
-.faq-page__hero-badge {
+.page-faq__hero-badge {
   display: inline-flex;
   align-items: center;
   padding: var(--spacing-2) var(--spacing-4);
@@ -65,7 +71,7 @@
   letter-spacing: var(--letter-spacing-wider);
 }
 
-.faq-page__hero-title {
+.page-faq__hero-title {
   font-family: var(--font-primary);
   font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: var(--font-weight-bold);
@@ -75,14 +81,14 @@
   color: var(--primary-foreground);
 }
 
-.faq-page__hero-highlight {
+.page-faq__hero-highlight {
   background: linear-gradient(135deg, var(--color-white), var(--accent));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-.faq-page__hero-tagline {
+.page-faq__hero-tagline {
   font-family: var(--font-primary);
   font-size: var(--text-xl);
   line-height: var(--line-height-tight);
@@ -93,7 +99,7 @@
   text-align: center;
 }
 
-.faq-page__hero-desc {
+.page-faq__hero-desc {
   font-family: var(--font-primary);
   font-size: var(--text-lg);
   line-height: var(--line-height-relaxed);
@@ -108,36 +114,36 @@
    2. STATS SECTION — Glassmorphism + Glow
    ============================================ */
 
-.faq-page__stats-section {
+.page-faq__stats-section {
   position: relative;
   background-color: var(--background);
   overflow: hidden;
 }
 
-.faq-page__stats-container {
+.page-faq__stats-container {
   max-width: 1280px;
   margin: 0 auto;
 }
 
-.faq-page__stats-grid {
+.page-faq__stats-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--spacing-6);
 }
 
 @media (min-width: 768px) {
-  .faq-page__stats-grid {
+  .page-faq__stats-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (min-width: 1024px) {
-  .faq-page__stats-grid {
+  .page-faq__stats-grid {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 
-.faq-page__stat-card {
+.page-faq__stat-card {
   text-align: center;
   padding: var(--spacing-6);
   background: color-mix(in srgb, var(--card) 80%, transparent);
@@ -148,13 +154,13 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-.faq-page__stat-card:hover {
+.page-faq__stat-card:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-glow);
   border-color: color-mix(in srgb, var(--primary) 30%, transparent);
 }
 
-.faq-page__stat-value {
+.page-faq__stat-value {
   font-family: var(--font-primary);
   font-size: var(--text-h2);
   font-weight: var(--font-weight-bold);
@@ -165,7 +171,7 @@
   background-clip: text;
 }
 
-.faq-page__stat-label {
+.page-faq__stat-label {
   font-family: var(--font-secondary);
   font-size: var(--text-small);
   color: var(--muted-foreground);
@@ -176,7 +182,7 @@
    3. FAQ CATEGORIES — Gradient bg + neon icons
    ============================================ */
 
-.faq-page__categories-section {
+.page-faq__categories-section {
   position: relative;
   overflow: hidden;
   background: linear-gradient(
@@ -187,7 +193,7 @@
 }
 
 /* Subtle mesh overlay */
-.faq-page__categories-section::before {
+.page-faq__categories-section::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -199,23 +205,23 @@
   z-index: 0;
 }
 
-.faq-page__categories-section > * {
+.page-faq__categories-section > * {
   position: relative;
   z-index: 1;
 }
 
-.faq-page__categories-container {
+.page-faq__categories-container {
   max-width: 1280px;
   margin: 0 auto;
 }
 
-.faq-page__category-list {
+.page-faq__category-list {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-12);
 }
 
-.faq-page__category-header {
+.page-faq__category-header {
   display: flex;
   align-items: center;
   gap: var(--spacing-4);
@@ -226,7 +232,7 @@
 }
 
 /* Neon gradient icon wrapper */
-.faq-page__category-icon {
+.page-faq__category-icon {
   width: 48px;
   height: 48px;
   border-radius: var(--radius-lg);
@@ -240,11 +246,11 @@
   transition: box-shadow 0.3s ease;
 }
 
-.faq-page__category-header:hover .faq-page__category-icon {
+.page-faq__category-header:hover .page-faq__category-icon {
   box-shadow: var(--shadow-glow-sm);
 }
 
-.faq-page__category-title {
+.page-faq__category-title {
   font-family: var(--font-primary);
   font-size: var(--text-h3);
   font-weight: var(--font-weight-bold);
@@ -252,7 +258,7 @@
   margin-bottom: var(--spacing-1);
 }
 
-.faq-page__category-desc {
+.page-faq__category-desc {
   font-family: var(--font-secondary);
   font-size: var(--text-small);
   line-height: var(--line-height-relaxed);
@@ -264,13 +270,13 @@
    4. ACCORDION — Glow on open/hover
    ============================================ */
 
-.faq-page__accordion-list {
+.page-faq__accordion-list {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-4);
 }
 
-.faq-page__accordion-item {
+.page-faq__accordion-item {
   background: color-mix(in srgb, var(--card) 85%, transparent);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -280,18 +286,18 @@
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.faq-page__accordion-item:hover {
+.page-faq__accordion-item:hover {
   border-color: color-mix(in srgb, var(--primary) 20%, transparent);
 }
 
 /* Active/expanded state — neon glow border */
-.faq-page__accordion-item--open,
-.faq-page__accordion-item:has(.faq-page__accordion-content) {
+.page-faq__accordion-item--open,
+.page-faq__accordion-item:has(.page-faq__accordion-content) {
   border-color: color-mix(in srgb, var(--primary) 35%, transparent);
   box-shadow: var(--shadow-glow-sm);
 }
 
-.faq-page__accordion-button {
+.page-faq__accordion-button {
   width: 100%;
   padding: var(--spacing-5) var(--spacing-6);
   display: flex;
@@ -304,7 +310,7 @@
   text-align: left;
 }
 
-.faq-page__accordion-title {
+.page-faq__accordion-title {
   font-family: var(--font-primary);
   font-size: var(--text-lg);
   font-weight: var(--font-weight-semibold);
@@ -312,19 +318,19 @@
   margin: 0;
 }
 
-.faq-page__accordion-chevron {
+.page-faq__accordion-chevron {
   color: var(--primary);
   flex-shrink: 0;
   transition: transform 0.3s ease;
   filter: drop-shadow(0 0 3px color-mix(in srgb, var(--primary) 30%, transparent));
 }
 
-.faq-page__accordion-content {
+.page-faq__accordion-content {
   padding: 0 var(--spacing-6) var(--spacing-6) var(--spacing-6);
   border-top: 1px solid color-mix(in srgb, var(--primary) 10%, transparent);
 }
 
-.faq-page__accordion-text {
+.page-faq__accordion-text {
   font-family: var(--font-primary);
   font-size: var(--text-base);
   line-height: var(--line-height-relaxed);
@@ -339,27 +345,27 @@
    ============================================ */
 
 /* Hero: deeper gradient in dark */
-.dark .faq-page__hero {
+.dark .page-faq__hero {
   background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 70%, var(--background)) 0%, color-mix(in srgb, var(--accent) 40%, var(--background)) 100%);
 }
 
-.dark .faq-page__hero-orb {
+.dark .page-faq__hero-orb {
   opacity: 0.5;
 }
 
 /* Stats: stronger glass + glow */
-.dark .faq-page__stat-card {
+.dark .page-faq__stat-card {
   background: color-mix(in srgb, var(--card) 50%, transparent);
   border-color: color-mix(in srgb, var(--primary) 10%, transparent);
 }
 
-.dark .faq-page__stat-card:hover {
+.dark .page-faq__stat-card:hover {
   box-shadow: var(--shadow-neon);
   border-color: color-mix(in srgb, var(--primary) 40%, transparent);
 }
 
 /* Categories section dark */
-.dark .faq-page__categories-section {
+.dark .page-faq__categories-section {
   background: linear-gradient(
     180deg,
     color-mix(in srgb, var(--background) 80%, var(--primary)) 0%,
@@ -367,39 +373,39 @@
   );
 }
 
-.dark .faq-page__categories-section::before {
+.dark .page-faq__categories-section::before {
   background-image:
     linear-gradient(color-mix(in srgb, var(--primary) 6%, transparent) 1px, transparent 1px),
     linear-gradient(90deg, color-mix(in srgb, var(--primary) 6%, transparent) 1px, transparent 1px);
 }
 
-.dark .faq-page__category-icon {
+.dark .page-faq__category-icon {
   background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 25%, transparent), color-mix(in srgb, var(--accent) 15%, transparent));
   border-color: color-mix(in srgb, var(--primary) 35%, transparent);
 }
 
-.dark .faq-page__category-header:hover .faq-page__category-icon {
+.dark .page-faq__category-header:hover .page-faq__category-icon {
   box-shadow: var(--shadow-glow);
 }
 
 /* Accordion dark: neon glow */
-.dark .faq-page__accordion-item {
+.dark .page-faq__accordion-item {
   background: color-mix(in srgb, var(--card) 50%, transparent);
   border-color: color-mix(in srgb, var(--primary) 8%, transparent);
 }
 
-.dark .faq-page__accordion-item:hover {
+.dark .page-faq__accordion-item:hover {
   border-color: color-mix(in srgb, var(--primary) 30%, transparent);
   box-shadow: var(--shadow-glow-sm);
 }
 
-.dark .faq-page__accordion-item--open,
-.dark .faq-page__accordion-item:has(.faq-page__accordion-content) {
+.dark .page-faq__accordion-item--open,
+.dark .page-faq__accordion-item:has(.page-faq__accordion-content) {
   border-color: color-mix(in srgb, var(--primary) 50%, transparent);
   box-shadow: var(--shadow-neon);
 }
 
-.dark .faq-page__accordion-chevron {
+.dark .page-faq__accordion-chevron {
   filter: drop-shadow(0 0 5px color-mix(in srgb, var(--primary) 50%, transparent));
 }
 
@@ -409,13 +415,13 @@
    ============================================ */
 
 @media (prefers-reduced-motion: reduce) {
-  .faq-page__stat-card,
-  .faq-page__accordion-item,
-  .faq-page__accordion-chevron {
+  .page-faq__stat-card,
+  .page-faq__accordion-item,
+  .page-faq__accordion-chevron {
     transition: none;
   }
 
-  .faq-page__stat-card:hover {
+  .page-faq__stat-card:hover {
     transform: none;
   }
 }
@@ -426,22 +432,22 @@
    ============================================ */
 
 @media (max-width: 767px) {
-  .faq-page__hero-orb {
+  .page-faq__hero-orb {
     width: 200px;
     height: 200px;
   }
 
-  .faq-page__category-header {
+  .page-faq__category-header {
     flex-direction: column;
     align-items: flex-start;
     text-align: left;
   }
 
-  .faq-page__accordion-button {
+  .page-faq__accordion-button {
     padding: var(--spacing-4) var(--spacing-5);
   }
 
-  .faq-page__accordion-content {
+  .page-faq__accordion-content {
     padding: 0 var(--spacing-5) var(--spacing-5) var(--spacing-5);
   }
 }

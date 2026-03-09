@@ -27,19 +27,19 @@ import { ScrollDownArrow } from '../common/ScrollDownArrow';
 import { Container } from '../common/Container';
 import {
   BookOpen,
-  Search,
+  MagnifyingGlass,
   FileCode,
-  Workflow,
-  Bot,
+  TreeStructure,
+  Robot,
   ArrowRight,
-  TrendingUp,
-} from 'lucide-react';
+  TrendUp,
+} from '@phosphor-icons/react';
 
 /** Insights sub-category definitions */
 const insightsCategories = [
   {
     id: 'research',
-    icon: Search,
+    icon: MagnifyingGlass,
     name: 'Research',
     description:
       'Deep dives into web technology research, data-driven findings, and industry analysis from real-world benchmarks and surveys.',
@@ -69,7 +69,7 @@ const insightsCategories = [
   },
   {
     id: 'editorial-systems',
-    icon: Workflow,
+    icon: TreeStructure,
     name: 'Editorial Systems',
     description:
       'Content workflows, editorial governance, structured content models, and publishing automation that keeps teams productive.',
@@ -84,7 +84,7 @@ const insightsCategories = [
   },
   {
     id: 'ai-governance',
-    icon: Bot,
+    icon: Robot,
     name: 'AI Governance',
     description:
       'Responsible AI usage, governance frameworks, ethical considerations, and AI policy for web teams building in the AI era.',
@@ -114,7 +114,7 @@ const insightsCategories = [
   },
   {
     id: 'industry-news',
-    icon: TrendingUp,
+    icon: TrendUp,
     name: 'Industry News',
     description:
       'WordPress ecosystem updates, platform announcements, and analysis of trends shaping the future of web development.',

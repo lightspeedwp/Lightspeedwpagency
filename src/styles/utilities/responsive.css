@@ -1,0 +1,67 @@
+/**
+ * Responsive Utilities
+ *
+ * Responsive breakpoint variants and visibility utilities.
+ * All spacing utilities reference CSS variables from theme-base.css.
+ */
+
+/* ============================================
+   RESPONSIVE VISIBILITY UTILITIES
+   ============================================ */
+
+/* Hide on mobile — !important allowed for responsive visibility toggles */
+@media (max-width: 768px) {
+  .wp-hide-mobile { display: none !important; }
+}
+
+/* Hide on tablet */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .wp-hide-tablet { display: none !important; }
+}
+
+/* Hide on desktop */
+@media (min-width: 1025px) {
+  .wp-hide-desktop { display: none !important; }
+}
+
+/* ============================================
+   RESPONSIVE BREAKPOINT VARIANTS (wp-prefixed)
+   ============================================ */
+
+/* md: breakpoint (768px+) */
+@media (min-width: 768px) {
+  .md\:wp-block { display: block; }
+  .md\:wp-flex { display: flex; }
+  .md\:wp-grid { display: grid; }
+  .md\:wp-hidden { display: none; }
+  .md\:wp-inline-flex { display: inline-flex; }
+  .md\:wp-py-12 { padding-top: var(--spacing-12); padding-bottom: var(--spacing-12); }
+  .md\:wp-py-16 { padding-top: var(--spacing-16); padding-bottom: var(--spacing-16); }
+  .md\:wp-py-20 { padding-top: var(--spacing-20); padding-bottom: var(--spacing-20); }
+  .md\:wp-px-8 { padding-left: var(--spacing-8); padding-right: var(--spacing-8); }
+  .md\:wp-gap-8 { gap: var(--spacing-8); }
+  .md\:wp-gap-12 { gap: var(--spacing-12); }
+  .md\:wp-flex-row { flex-direction: row; }
+  .md\:wp-grid-2-cols { grid-template-columns: repeat(2, 1fr); }
+  .md\:wp-grid-3-cols { grid-template-columns: repeat(3, 1fr); }
+  .md\:wp-grid-6-cols { grid-template-columns: repeat(6, 1fr); }
+  .md\:wp-grid-12-cols { grid-template-columns: repeat(12, 1fr); }
+  .md\:wp-col-span-4 { grid-column: span 4 / span 4; }
+  .md\:wp-col-span-8 { grid-column: span 8 / span 8; }
+}
+
+/* lg: breakpoint (1024px+) */
+@media (min-width: 1024px) {
+  .lg\:wp-block { display: block; }
+  .lg\:wp-flex { display: flex; }
+  .lg\:wp-grid { display: grid; }
+  .lg\:wp-hidden { display: none; }
+  .lg\:wp-py-16 { padding-top: var(--spacing-16); padding-bottom: var(--spacing-16); }
+  .lg\:wp-py-20 { padding-top: var(--spacing-20); padding-bottom: var(--spacing-20); }
+  .lg\:wp-py-24 { padding-top: var(--spacing-24); padding-bottom: var(--spacing-24); }
+  .lg\:wp-gap-12 { gap: var(--spacing-12); }
+  .lg\:wp-gap-16 { gap: var(--spacing-16); }
+  .lg\:wp-grid-3-cols { grid-template-columns: repeat(3, 1fr); }
+  .lg\:wp-grid-4-cols { grid-template-columns: repeat(4, 1fr); }
+  .lg\:wp-grid-6-cols { grid-template-columns: repeat(6, 1fr); }
+}

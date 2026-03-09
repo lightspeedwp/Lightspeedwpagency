@@ -16,15 +16,15 @@ import { Container } from '../common/Container';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { 
-  Layers, 
+  Stack, 
   CreditCard, 
-  ChevronDown, 
+  CaretDown, 
   Minus, 
   Layout,
-  Grid as GridIcon,
-  Columns as ColumnsIcon,
-  Maximize
-} from 'lucide-react';
+  GridFour,
+  Columns,
+  ArrowsOutSimple
+} from '@phosphor-icons/react';
 
 // Block Imports
 import { Card, CardHeader, CardTitle, CardContent, CardFooter, CardDescription } from '../blocks/design/Card';
@@ -35,7 +35,6 @@ import { Spacer } from '../blocks/design/Spacer';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '../blocks/design/Tabs';
 import { Button } from '../blocks/design/Buttons';
 import { Group } from '../blocks/design/Group';
-import { Stack } from '../blocks/design/Stack';
 import { Grid } from '../blocks/design/Grid';
 import { Columns, Column } from '../blocks/design/Columns';
 
@@ -108,7 +107,7 @@ export function DesignBlocksShowcase() {
         <ScrollReveal animation="fade-up" delay={200}>
           <section className="design-showcase__section">
             <div className="design-showcase__section-header">
-              <ChevronDown className="design-showcase__section-icon" size={20} />
+              <CaretDown className="design-showcase__section-icon" size={20} />
               <h2 className="design-showcase__section-title">Interactive</h2>
             </div>
 

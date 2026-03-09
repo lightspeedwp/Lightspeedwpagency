@@ -29,7 +29,6 @@
  */
 
 import { useState, useEffect } from 'react';
-import '../../../styles/templates/page-service-security.css';
 import { Container } from '../common/Container';
 import { FAQSection } from '../patterns/FAQSection';
 import { FunkyCTA } from '../patterns/FunkyCTA';

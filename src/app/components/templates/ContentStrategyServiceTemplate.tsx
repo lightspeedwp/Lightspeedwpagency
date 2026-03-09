@@ -4,7 +4,7 @@
  * Parent: /services/content
  */
 
-import { Target, Users, FileText, TrendingUp, Calendar, Award } from 'lucide-react';
+import { Crosshair, Users, FileText, TrendUp, Calendar, Trophy } from '@phosphor-icons/react';
 import { Link } from 'react-router';
 import { FeatureList } from '../patterns/FeatureList';
 import { CheckList } from '../patterns/CheckList';
@@ -12,12 +12,12 @@ import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
 
 export const ContentStrategyServiceTemplate = () => {
   const benefits = [
-    { icon: Target, title: 'Audience Research & Personas', description: 'Deep understanding of your target audience needs and content preferences.' },
+    { icon: Crosshair, title: 'Audience Research & Personas', description: 'Deep understanding of your target audience needs and content preferences.' },
     { icon: Users, title: 'Competitive Content Analysis', description: 'Identify content gaps and opportunities in your market.' },
     { icon: FileText, title: 'Content Pillar Development', description: 'Build comprehensive topic clusters that establish authority.' },
-    { icon: TrendingUp, title: 'SEO Content Planning', description: 'Keyword-driven content roadmap aligned with search intent.' },
+    { icon: TrendUp, title: 'SEO Content Planning', description: 'Keyword-driven content roadmap aligned with search intent.' },
     { icon: Calendar, title: 'Editorial Calendar Creation', description: '12-month content calendar with themes, topics, and distribution schedule.' },
-    { icon: Award, title: 'Content Governance Framework', description: 'Brand voice guidelines, style guides, and quality standards.' }
+    { icon: Trophy, title: 'Content Governance Framework', description: 'Brand voice guidelines, style guides, and quality standards.' }
   ];
 
   const deliverables = ['Content audit report', 'Audience personas (3-5)', 'Content pillar framework', 'Keyword strategy document', '12-month editorial calendar', 'Content style guide', 'Distribution strategy'];

@@ -9,7 +9,7 @@
  */
 
 import { Link } from 'react-router';
-import { ChevronRight, Zap, Check } from 'lucide-react';
+import { CaretRight, Lightning, Check } from '@phosphor-icons/react';
 import { performanceReliabilitySystem } from '../../data/systems-hub';
 import { serviceTiers } from '../../data/three-tier-model';
 import '@/styles/templates/performance-reliability-system.css';
@@ -24,14 +24,14 @@ export const PerformanceReliabilitySystemTemplate = () => {
         <Link to="/systems" className="system-page__breadcrumb-link">
           Systems
         </Link>
-        <ChevronRight className="system-page__breadcrumb-separator" />
+        <CaretRight className="system-page__breadcrumb-separator" />
         <span className="system-page__breadcrumb-current">Performance Reliability</span>
       </nav>
 
       <section className="system-page__hero">
         <div className="system-page__hero-content">
           <div className="system-page__hero-icon">
-            <Zap className="system-page__hero-icon-svg" />
+            <Lightning className="system-page__hero-icon-svg" />
           </div>
           <h1 className="system-page__hero-title">{system.name}</h1>
           <p className="system-page__hero-tagline">{system.tagline}</p>
@@ -139,7 +139,7 @@ export const PerformanceReliabilitySystemTemplate = () => {
                 <p className="system-page__tier-description">{tier.description}</p>
                 <Link to="/services" className="system-page__tier-link">
                   Learn More
-                  <ChevronRight className="system-page__tier-link-icon" />
+                  <CaretRight className="system-page__tier-link-icon" />
                 </Link>
               </div>
             ))}

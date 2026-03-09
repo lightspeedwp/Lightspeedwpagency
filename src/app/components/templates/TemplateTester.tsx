@@ -30,33 +30,32 @@ import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { useState } from 'react';
 import { 
-  Home,
+  House,
   Briefcase,
   ShoppingCart,
-  Layers,
+  Stack,
   BookOpen,
   Info,
-  Server,
+  HardDrive,
   Users,
   FileText,
-  AlertCircle,
+  WarningCircle,
   Code,
-  Search,
+  MagnifyingGlass,
   Calendar,
   User,
   Tag,
   FolderOpen,
   Star,
-  TrendingUp,
-  MessageSquare,
-  Award,
+  TrendUp,
+  ChatCentered,
+  Trophy,
   CheckCircle,
   ArrowRight,
-  Filter,
-  Grid3x3,
+  Funnel,
+  GridNine,
   MapPin
-} from 'lucide-react';
-
+} from '@phosphor-icons/react';
 
 /**
  * WordPress Template Categories
@@ -121,7 +120,7 @@ const templateCategories = [
         name: 'Utility Page',
         archetype: 'Page',
         description: 'Contact, FAQ, search, error pages',
-        icon: AlertCircle,
+        icon: WarningCircle,
         pages: [
           { label: 'Contact Page', page: 'contact', slug: '/contact', template: 'page.html' },
           { label: 'FAQs', page: 'faq', slug: '/resources/faqs', template: 'page.html' },
@@ -135,7 +134,7 @@ const templateCategories = [
     id: 'homepage',
     title: 'Homepage',
     description: 'Front page template (front-page.html)',
-    icon: Home,
+    icon: House,
     color: 'var(--primary)',
     pages: [
       { label: 'Front Page', page: 'front-page', slug: '/', template: 'front-page.html' },
@@ -174,7 +173,7 @@ const templateCategories = [
     id: 'conversion',
     title: 'Conversion Pages',
     description: 'High-value conversion and decision pages',
-    icon: TrendingUp,
+    icon: TrendUp,
     color: 'var(--primary)',
     pages: [
       { label: 'Pricing', page: 'pricing', slug: '/pricing', template: 'page-pricing.html' },
@@ -202,7 +201,7 @@ const templateCategories = [
     id: 'hosting',
     title: 'Hosting Pages',
     description: 'Hosting plans and features',
-    icon: Server,
+    icon: HardDrive,
     color: 'var(--secondary)',
     pages: [
       { label: 'Hosting Overview', page: 'hosting', slug: '/hosting', template: 'page-hosting.html' },
@@ -212,7 +211,7 @@ const templateCategories = [
     id: 'post-formats',
     title: 'Post Formats & Content Types',
     description: 'WordPress post format archives, single views, and custom content types',
-    icon: Layers,
+    icon: Stack,
     color: 'var(--accent)',
     pages: [
       // Videos
@@ -424,7 +423,7 @@ export function TemplateTester() {
             <div className="template-tester__toolbar">
               {/* Sort Controls */}
               <div className="template-tester__sort-controls">
-                <Filter size={20} style={{ color: 'var(--muted-foreground)' }} />
+                <Funnel size={20} style={{ color: 'var(--muted-foreground)' }} />
                 <span className="template-tester__sort-label">
                   Sort by:
                 </span>
@@ -449,7 +448,7 @@ export function TemplateTester() {
                 variant="outline"
                 size="md"
                 page="component-showcase"
-                icon={<Grid3x3 size={20} />}
+                icon={<GridNine size={20} />}
                 aria-label="View Component Showcase"
               >
                 Component Showcase

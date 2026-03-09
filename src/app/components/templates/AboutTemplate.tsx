@@ -3,28 +3,26 @@
  *
  * WordPress template: templates/page-about.html
  *
- * Theme: Neon gradients, floating orbs, glow cards, glass accents
- * Features:
- * - Parallax hero with floating orbs
- * - Glow border cards for mission/vision/expertise
- * - Animated stats bar with neon grid overlay
- * - Story section with alternating columns
- * - Timeline integration
- * - FAQ section
- * - FunkyCTA conversion section
- * - ScrollReveal entry animations
- * - 100% CSS variable compliance
+ * Pattern Components:
+ * - ✅ FeatureList — Values grid (glow variant, 3 columns)
+ * - ✅ FeatureList — Expertise grid (glow variant, 3 columns)
+ * - ✅ StatsSection — Impact stats
+ * - ✅ FAQSection — About FAQs
+ * - ✅ FunkyCTA — Final conversion section
  *
  * STRICT DESIGN SYSTEM COMPLIANCE:
  * - No inline Tailwind classes
  * - All styling via @/styles/templates/page-about.css
  * - BEM naming throughout (about-overview__*)
+ *
+ * @migrated March 4, 2026 — Migrated Values + Expertise inline grids to FeatureList (~40 lines saved)
  */
 
 /* Route-level CSS */
-import '../../../styles/templates/page-about.css';
+import '../../../styles/templates/page-about-optimized.css';
 import { Container } from '../common/Container';
 import { FAQSection } from '../patterns/FAQSection';
+import { FeatureList } from '../patterns/FeatureList';
 import { Timeline } from '../patterns/Timeline';
 import { Heading } from '../blocks/text/Heading';
 import { Paragraph } from '../blocks/text/Paragraph';
@@ -209,29 +207,15 @@ export function AboutTemplate() {
             </div>
           </ScrollReveal>
 
-          <div className="about-overview__cards-grid">
-            {aboutPageValues.map((value, index) => {
-              const Icon = value.icon;
-              return (
-                <ScrollReveal key={index} animation="fade-up" delay={index * 100}>
-                  <div className="about-overview__card">
-                    <div className="about-overview__card-glow" />
-                    <div className="about-overview__card-inner">
-                      <div className="about-overview__card-icon-wrapper">
-                        <Icon size={28} />
-                      </div>
-                      <Heading level={3} className="about-overview__card-title">
-                        {value.title}
-                      </Heading>
-                      <Paragraph className="about-overview__card-desc">
-                        {value.description}
-                      </Paragraph>
-                    </div>
-                  </div>
-                </ScrollReveal>
-              );
-            })}
-          </div>
+          <FeatureList
+            items={aboutPageValues.map(value => ({
+              icon: value.icon,
+              title: value.title,
+              description: value.description
+            }))}
+            variant="glow"
+            columns={3}
+          />
         </Container>
       </section>
 
@@ -285,29 +269,15 @@ export function AboutTemplate() {
             </div>
           </ScrollReveal>
 
-          <div className="about-overview__cards-grid">
-            {aboutPageExpertise.map((item, index) => {
-              const Icon = item.icon;
-              return (
-                <ScrollReveal key={index} animation="fade-up" delay={index * 120}>
-                  <div className="about-overview__card">
-                    <div className="about-overview__card-glow" />
-                    <div className="about-overview__card-inner">
-                      <div className="about-overview__card-icon-wrapper">
-                        <Icon size={28} />
-                      </div>
-                      <Heading level={3} className="about-overview__card-title">
-                        {item.title}
-                      </Heading>
-                      <Paragraph className="about-overview__card-desc">
-                        {item.description}
-                      </Paragraph>
-                    </div>
-                  </div>
-                </ScrollReveal>
-              );
-            })}
-          </div>
+          <FeatureList
+            items={aboutPageExpertise.map(item => ({
+              icon: item.icon,
+              title: item.title,
+              description: item.description
+            }))}
+            variant="glow"
+            columns={3}
+          />
         </Container>
       </section>
 

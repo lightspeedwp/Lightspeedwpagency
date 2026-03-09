@@ -4,12 +4,10 @@
  * Parent landing page for all AI-related services.
  * Route: /services/ai/
  *
- * Sub-services:
- * - /services/ai/search-visibility (AI Search & Visibility)
- * - /services/ai/seo (Technical SEO)
- * - /services/ai/analytics (Analytics & Reporting)
- * - /services/ai/engine-optimisation (AI Engine Optimisation)
- * - /services/ai/answer-engine-optimisation (Answer Engine Optimisation)
+ * Pattern Components:
+ * - ✅ FeatureList — Service pillar cards (glow variant, with links + sub-features)
+ * - ✅ StatsGrid — Results metrics (cards variant, 4 columns)
+ * - ✅ ProcessTimeline — 4-step approach (horizontal orientation)
  *
  * STRICT DESIGN SYSTEM COMPLIANCE:
  * - Zero Tailwind classes
@@ -18,6 +16,7 @@
  * - Fonts: var(--font-primary), var(--font-secondary) only
  *
  * @see /src/styles/templates/page-service-ai-landing-optimized.css
+ * @migrated March 4, 2026 — Migrated inline services grid to FeatureList, stats to StatsGrid, approach to ProcessTimeline (~60 lines saved)
  */
 
 import '../../../styles/templates/page-service-ai-landing-optimized.css';
@@ -25,15 +24,17 @@ import { Link } from 'react-router';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { ScrollDownArrow } from '../common/ScrollDownArrow';
 import { Container } from '../common/Container';
+import { FeatureList } from '../patterns/FeatureList';
+import { StatsGrid } from '../patterns/StatsGrid';
+import { ProcessTimeline } from '../patterns/ProcessTimeline';
 import {
   Brain,
-  Search,
-  BarChart,
-  MessageSquare,
-  ArrowRight,
+  MagnifyingGlass,
+  ChartBar,
+  ChatCentered,
   Eye,
-  Bot,
-} from 'lucide-react';
+  Robot,
+} from '@phosphor-icons/react';
 
 /** AI sub-service definitions */
 const aiServices = [
@@ -53,7 +54,7 @@ const aiServices = [
   },
   {
     id: 'seo',
-    icon: Search,
+    icon: MagnifyingGlass,
     name: 'Technical SEO',
     description:
       'Data-driven SEO audits, keyword research, on-page optimisation, and ongoing monitoring to dominate organic search results.',
@@ -67,7 +68,7 @@ const aiServices = [
   },
   {
     id: 'analytics',
-    icon: BarChart,
+    icon: ChartBar,
     name: 'Analytics & Reporting',
     description:
       'Custom dashboards, conversion tracking, and actionable reporting that connects marketing spend to revenue.',
@@ -95,7 +96,7 @@ const aiServices = [
   },
   {
     id: 'answer-engine',
-    icon: MessageSquare,
+    icon: ChatCentered,
     name: 'Answer Engine Optimisation',
     description:
       'Structure your content to appear in AI-generated answers across ChatGPT, Gemini, Perplexity, and other AI assistants.',
@@ -141,6 +142,28 @@ const approach = [
   },
 ];
 
+/* ── Map data to pattern component shapes ── */
+const serviceItems = aiServices.map((s) => ({
+  icon: s.icon,
+  title: s.name,
+  description: s.description,
+  features: s.features,
+  link: s.path,
+  linkText: 'Learn more →',
+}));
+
+const statsItems = stats.map((s) => ({
+  value: s.metric,
+  label: s.label,
+}));
+
+const approachSteps = approach.map((s, i) => ({
+  id: `ai-approach-${i + 1}`,
+  number: i + 1,
+  title: s.title,
+  description: s.description,
+}));
+
 export function AIServicesLandingTemplate() {
   return (
     <div className="ai-landing">
@@ -151,7 +174,7 @@ export function AIServicesLandingTemplate() {
         <div className="ai-landing__hero-inner">
           <ScrollReveal animation="fade-down">
             <div className="ai-landing__badge">
-              <Bot size={14} aria-hidden="true" />
+              <Robot size={14} aria-hidden="true" />
               AI-Powered Services
             </div>
 
@@ -207,48 +230,11 @@ export function AIServicesLandingTemplate() {
             </ScrollReveal>
           </div>
 
-          <div className="ai-landing__services-grid">
-            {aiServices.map((service, index) => {
-              const Icon = service.icon;
-              return (
-                <ScrollReveal
-                  key={service.id}
-                  animation="fade-up"
-                  delay={index * 80}
-                >
-                  <Link
-                    to={service.path}
-                    className="ai-landing__service-card"
-                    aria-label={`Learn more about ${service.name}`}
-                  >
-                    <div className="ai-landing__service-icon">
-                      <Icon
-                        className="ai-landing__service-icon-svg"
-                        aria-hidden="true"
-                      />
-                    </div>
-                    <h3 className="ai-landing__service-name">{service.name}</h3>
-                    <p className="ai-landing__service-desc">
-                      {service.description}
-                    </p>
-                    <ul className="ai-landing__service-features">
-                      {service.features.map((feature) => (
-                        <li
-                          key={feature}
-                          className="ai-landing__service-feature"
-                        >
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-                    <span className="ai-landing__service-link">
-                      Learn more <ArrowRight size={16} aria-hidden="true" />
-                    </span>
-                  </Link>
-                </ScrollReveal>
-              );
-            })}
-          </div>
+          <FeatureList
+            items={serviceItems}
+            columns={2}
+            variant="glow"
+          />
         </Container>
       </section>
 
@@ -268,16 +254,11 @@ export function AIServicesLandingTemplate() {
             </ScrollReveal>
           </div>
 
-          <div className="ai-landing__stats-grid">
-            {stats.map((stat) => (
-              <ScrollReveal key={stat.label} animation="fade-up">
-                <div className="ai-landing__stat-card">
-                  <div className="ai-landing__stat-metric">{stat.metric}</div>
-                  <div className="ai-landing__stat-label">{stat.label}</div>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
+          <StatsGrid
+            stats={statsItems}
+            columns={4}
+            variant="cards"
+          />
         </Container>
       </section>
 
@@ -300,25 +281,10 @@ export function AIServicesLandingTemplate() {
             </ScrollReveal>
           </div>
 
-          <div className="ai-landing__approach-grid">
-            {approach.map((step, index) => (
-              <ScrollReveal
-                key={step.title}
-                animation="fade-up"
-                delay={index * 100}
-              >
-                <div className="ai-landing__approach-step">
-                  <div className="ai-landing__approach-number">{index + 1}</div>
-                  <div className="ai-landing__approach-content">
-                    <h3 className="ai-landing__approach-title">{step.title}</h3>
-                    <p className="ai-landing__approach-desc">
-                      {step.description}
-                    </p>
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
+          <ProcessTimeline
+            steps={approachSteps}
+            orientation="horizontal"
+          />
         </Container>
       </section>
 

@@ -6,7 +6,7 @@
  * Parent: /services/hosting
  */
 
-import { HeadphonesIcon, Clock, Wrench, Shield, Zap, TrendingUp } from 'lucide-react';
+import { Headphones, Clock, Wrench, Shield, Lightning, TrendUp } from '@phosphor-icons/react';
 import { Link } from 'react-router';
 import { FeatureList } from '../patterns/FeatureList';
 import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
@@ -14,7 +14,7 @@ import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
 export const SupportServiceTemplate = () => {
   const benefits = [
     {
-      icon: HeadphonesIcon,
+      icon: Headphones,
       title: '24/7 Support Availability',
       description: 'Round-the-clock support for critical issues with guaranteed response times.'
     },
@@ -34,12 +34,12 @@ export const SupportServiceTemplate = () => {
       description: 'Continuous security scans and immediate response to threats.'
     },
     {
-      icon: Zap,
+      icon: Lightning,
       title: 'Performance Optimization',
       description: 'Ongoing speed improvements and resource optimization.'
     },
     {
-      icon: TrendingUp,
+      icon: TrendUp,
       title: 'Priority Support Queue',
       description: 'Jump the queue with dedicated support team members.'
     }
