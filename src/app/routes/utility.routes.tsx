@@ -24,114 +24,60 @@
  * @see /src/styles/bundles/utility-bundle.css
  */
 
+import React, { lazy, Suspense } from 'react';
 import { type RouteObject } from 'react-router';
 import { loadCSSBundle } from '../utils/css-bundle-loader';
+import { RouteLoadingFallback } from '../components/ui/RouteLoadingFallback';
 
 /* ═══════════════════════════════════════════
- * Template Imports
+ * Lazy Template Imports
  * ═══════════════════════════════════════════ */
 
-import { ContactPageTemplate } from '../components/templates/ContactPageTemplate';
-import { FAQTemplate } from '../components/templates/FAQTemplate';
-import { PricingTemplate } from '../components/templates/PricingTemplate';
-import { WhyChooseUsTemplate } from '../components/templates/WhyChooseUsTemplate';
-import { GuaranteesTemplate } from '../components/templates/GuaranteesTemplate';
-import { ROICalculatorTemplate } from '../components/templates/ROICalculatorTemplate';
-import { SearchResultsPageTemplate } from '../components/templates/SearchResultsPageTemplate';
-import { PrivacyPolicyTemplate } from '../components/templates/PrivacyPolicyTemplate';
-import { TermsOfServiceTemplate } from '../components/templates/TermsOfServiceTemplate';
-import { SiteMapTemplate } from '../components/templates/SiteMapTemplate';
-import { StyleGuideTemplate } from '../components/templates/StyleGuideTemplate';
-import { TutorialsTemplate } from '../components/templates/TutorialsTemplate';
+const ContactPageTemplate = lazy(() => import('../components/templates/ContactPageTemplate').then(m => ({ default: m.ContactPageTemplate })));
+const FAQTemplate = lazy(() => import('../components/templates/FAQTemplate').then(m => ({ default: m.FAQTemplate })));
+const PricingTemplate = lazy(() => import('../components/templates/PricingTemplate').then(m => ({ default: m.PricingTemplate })));
+const WhyChooseUsTemplate = lazy(() => import('../components/templates/WhyChooseUsTemplate').then(m => ({ default: m.WhyChooseUsTemplate })));
+const GuaranteesTemplate = lazy(() => import('../components/templates/GuaranteesTemplate').then(m => ({ default: m.GuaranteesTemplate })));
+const ROICalculatorTemplate = lazy(() => import('../components/templates/ROICalculatorTemplate').then(m => ({ default: m.ROICalculatorTemplate })));
+const SearchResultsPageTemplate = lazy(() => import('../components/templates/SearchResultsPageTemplate').then(m => ({ default: m.SearchResultsPageTemplate })));
+const PrivacyPolicyTemplate = lazy(() => import('../components/templates/PrivacyPolicyTemplate').then(m => ({ default: m.PrivacyPolicyTemplate })));
+const TermsOfServiceTemplate = lazy(() => import('../components/templates/TermsOfServiceTemplate').then(m => ({ default: m.TermsOfServiceTemplate })));
+const SiteMapTemplate = lazy(() => import('../components/templates/SiteMapTemplate').then(m => ({ default: m.SiteMapTemplate })));
+const StyleGuideTemplate = lazy(() => import('../components/templates/StyleGuideTemplate').then(m => ({ default: m.StyleGuideTemplate })));
+const TutorialsTemplate = lazy(() => import('../components/templates/TutorialsTemplate').then(m => ({ default: m.TutorialsTemplate })));
+
+/* ═══════════════════════════════════════════
+ * Route Wrapper Components
+ * ═══════════════════════════════════════════ */
+
+function ContactPageRoute() { loadCSSBundle('utility'); return <Suspense fallback={<RouteLoadingFallback />}><ContactPageTemplate /></Suspense>; }
+function FAQRoute() { loadCSSBundle('utility'); return <Suspense fallback={<RouteLoadingFallback />}><FAQTemplate /></Suspense>; }
+function PricingRoute() { loadCSSBundle('utility'); return <Suspense fallback={<RouteLoadingFallback />}><PricingTemplate /></Suspense>; }
+function WhyChooseUsRoute() { loadCSSBundle('utility'); return <Suspense fallback={<RouteLoadingFallback />}><WhyChooseUsTemplate /></Suspense>; }
+function GuaranteesRoute() { loadCSSBundle('utility'); return <Suspense fallback={<RouteLoadingFallback />}><GuaranteesTemplate /></Suspense>; }
+function ROICalculatorRoute() { loadCSSBundle('utility'); return <Suspense fallback={<RouteLoadingFallback />}><ROICalculatorTemplate /></Suspense>; }
+function SearchResultsRoute() { loadCSSBundle('utility'); return <Suspense fallback={<RouteLoadingFallback />}><SearchResultsPageTemplate /></Suspense>; }
+function PrivacyPolicyRoute() { loadCSSBundle('utility'); return <Suspense fallback={<RouteLoadingFallback />}><PrivacyPolicyTemplate /></Suspense>; }
+function TermsOfServiceRoute() { loadCSSBundle('utility'); return <Suspense fallback={<RouteLoadingFallback />}><TermsOfServiceTemplate /></Suspense>; }
+function SiteMapRoute() { loadCSSBundle('utility'); return <Suspense fallback={<RouteLoadingFallback />}><SiteMapTemplate /></Suspense>; }
+function StyleGuideRoute() { loadCSSBundle('utility'); return <Suspense fallback={<RouteLoadingFallback />}><StyleGuideTemplate /></Suspense>; }
+function TutorialsRoute() { loadCSSBundle('utility'); return <Suspense fallback={<RouteLoadingFallback />}><TutorialsTemplate /></Suspense>; }
 
 /* ═══════════════════════════════════════════
  * Route Definitions
  * ═══════════════════════════════════════════ */
 
 export const utilityRoutes: RouteObject[] = [
-  /* ── Utility Pages (Utility Bundle) ── */
-  {
-    path: 'contact',
-    lazy: async () => {
-      await loadCSSBundle('utility');
-      return { Component: ContactPageTemplate };
-    },
-  },
-  {
-    path: 'faq',
-    lazy: async () => {
-      await loadCSSBundle('utility');
-      return { Component: FAQTemplate };
-    },
-  },
-  {
-    path: 'pricing',
-    lazy: async () => {
-      await loadCSSBundle('utility');
-      return { Component: PricingTemplate };
-    },
-  },
-  {
-    path: 'why-choose-us',
-    lazy: async () => {
-      await loadCSSBundle('utility');
-      return { Component: WhyChooseUsTemplate };
-    },
-  },
-  {
-    path: 'guarantees',
-    lazy: async () => {
-      await loadCSSBundle('utility');
-      return { Component: GuaranteesTemplate };
-    },
-  },
-  {
-    path: 'roi-calculator',
-    lazy: async () => {
-      await loadCSSBundle('utility');
-      return { Component: ROICalculatorTemplate };
-    },
-  },
-  {
-    path: 'search',
-    lazy: async () => {
-      await loadCSSBundle('utility');
-      return { Component: SearchResultsPageTemplate };
-    },
-  },
-  {
-    path: 'privacy-policy',
-    lazy: async () => {
-      await loadCSSBundle('utility');
-      return { Component: PrivacyPolicyTemplate };
-    },
-  },
-  {
-    path: 'terms-of-service',
-    lazy: async () => {
-      await loadCSSBundle('utility');
-      return { Component: TermsOfServiceTemplate };
-    },
-  },
-  {
-    path: 'site-map',
-    lazy: async () => {
-      await loadCSSBundle('utility');
-      return { Component: SiteMapTemplate };
-    },
-  },
-  {
-    path: 'style-guide',
-    lazy: async () => {
-      await loadCSSBundle('utility');
-      return { Component: StyleGuideTemplate };
-    },
-  },
-  {
-    path: 'tutorials',
-    lazy: async () => {
-      await loadCSSBundle('utility');
-      return { Component: TutorialsTemplate };
-    },
-  },
+  { path: 'contact', Component: ContactPageRoute },
+  { path: 'faq', Component: FAQRoute },
+  { path: 'pricing', Component: PricingRoute },
+  { path: 'why-choose-us', Component: WhyChooseUsRoute },
+  { path: 'guarantees', Component: GuaranteesRoute },
+  { path: 'roi-calculator', Component: ROICalculatorRoute },
+  { path: 'search', Component: SearchResultsRoute },
+  { path: 'privacy-policy', Component: PrivacyPolicyRoute },
+  { path: 'terms-of-service', Component: TermsOfServiceRoute },
+  { path: 'site-map', Component: SiteMapRoute },
+  { path: 'style-guide', Component: StyleGuideRoute },
+  { path: 'tutorials', Component: TutorialsRoute },
 ];

@@ -13,6 +13,14 @@
  *   • .mailchimp-solution__integration-card: blur(12px) integration cards (matches glass-effect-base default)
  *   • .mailchimp-solution__pricing-card: blur(12px) pricing cards (matches glass-effect-base default)
  *
+ * OPTIMIZED: March 10, 2026 - Phase 3 Step 5.2, Media Query Consolidation
+ * - Migrated to responsive grid utilities (responsive-grids.css)
+ * - Removed 17 lines of duplicate media query code
+ * - Grid patterns now use utility classes:
+ *   • .mailchimp-page__stats-grid: Uses .responsive-grid-4-cols
+ *   • .mailchimp-page__features-grid: Uses .responsive-grid-3-cols + .responsive-grid-gap-8
+ *   • .mailchimp-page__process-grid: Uses .responsive-grid-3-cols
+ *
  * 100% CSS variables — no hardcoded color/spacing values.
  * BEM naming throughout.
  */
@@ -30,6 +38,7 @@
 @import '../base/grid-utilities.css';
 @import '../base/card-base.css';
 @import '../patterns/hero/hero-base.css';
+@import '../utilities/responsive-grids.css';
 
 /* ============================================
    MAILCHIMP SOLUTION STYLES
@@ -251,22 +260,16 @@
   position: relative;
 }
 
+/**
+ * Stats Grid — 1 → 2 → 4 columns
+ * Responsive behavior provided by .responsive-grid-4-cols utility class
+ * @see /src/styles/utilities/responsive-grids.css
+ */
 .mailchimp-page__stats-grid {
+  /* Fallback base styles (utility class provides responsive behavior) */
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--spacing-6);
-}
-
-@media (min-width: 768px) {
-  .mailchimp-page__stats-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  .mailchimp-page__stats-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
 }
 
 /* Stat card — glassmorphism (enhance existing) */
@@ -359,22 +362,17 @@
   background-color: var(--growth-bg);
 }
 
+/**
+ * Features Grid — 1 → 2 → 3 columns
+ * Responsive behavior provided by .responsive-grid-3-cols utility class
+ * Gap override provided by .responsive-grid-gap-8 utility class
+ * @see /src/styles/utilities/responsive-grids.css
+ */
 .mailchimp-page__features-grid {
+  /* Fallback base styles (utility classes provide responsive behavior + gap override) */
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--spacing-8);
-}
-
-@media (min-width: 768px) {
-  .mailchimp-page__features-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  .mailchimp-page__features-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
 }
 
 /* Feature card — glassmorphism + animated stripe */
@@ -530,22 +528,16 @@
   50% { opacity: 0.5; transform: scale(0.8); }
 }
 
+/**
+ * Process Grid — 1 → 2 → 3 columns
+ * Responsive behavior provided by .responsive-grid-3-cols utility class
+ * @see /src/styles/utilities/responsive-grids.css
+ */
 .mailchimp-page__process-grid {
+  /* Fallback base styles (utility class provides responsive behavior) */
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--spacing-6);
-}
-
-@media (min-width: 768px) {
-  .mailchimp-page__process-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  .mailchimp-page__process-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
 }
 
 /* Process step — glassmorphism */

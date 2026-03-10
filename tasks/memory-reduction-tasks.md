@@ -147,10 +147,13 @@ For each pair: update the template component import to use the optimized version
 
 4 solution template CSS files are 844-961 lines each with significant shared patterns.
 
-- [ ] Audit shared selectors across: `mailchimp-solution-page.css` (961), `page-solution-tour-design.css` (939), `page-solution-redesign.css` (917), `page-solution-ecommerce.css` (844)
-- [ ] Identify common hero, feature grid, benefits, process, CTA section styles
-- [ ] Verify `solution-base.css` (647 lines) already covers these -- if so, optimize templates to import base
-- [ ] Create optimized versions of each solution template CSS
+- [x] Audit shared selectors across: `mailchimp-solution-page.css` (961), `page-solution-tour-design.css` (939), `page-solution-redesign.css` (917), `page-solution-ecommerce.css` (844)
+- [x] Identify common hero, feature grid, benefits, process, CTA section styles
+- [x] Verify `solution-base.css` (647 lines) already covers these -- if so, optimize templates to import base
+- [x] Create optimized version: `mailchimp-solution-page-optimized.css` (~450 lines, saves ~500 lines)
+- [ ] Create optimized version: `page-solution-tour-design-optimized.css`
+- [ ] Create optimized version: `page-solution-redesign-optimized.css`
+- [ ] Create optimized version: `page-solution-ecommerce-optimized.css`
 - [ ] Update component imports
 
 ### P3.2 Consolidate Testimonial Patterns (8 -> 4)

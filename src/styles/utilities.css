@@ -13,6 +13,7 @@
  * - grid.css — Grid utilities
  * - layout.css — Layout utilities
  * - responsive.css — Responsive utilities
+ * - responsive-grids.css — Responsive grid utilities
  * - spacing.css — Spacing utilities
  * - typography.css — Typography utilities
  * 
@@ -35,5 +36,6 @@
 @import './utilities/grid.css';
 @import './utilities/layout.css';
 @import './utilities/responsive.css';
+@import './utilities/responsive-grids.css';
 @import './utilities/spacing.css';
 @import './utilities/typography.css';

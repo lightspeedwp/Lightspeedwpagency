@@ -10,81 +10,103 @@
  * CSS Bundles:
  * - Portfolio routes load 'portfolio' bundle (~8-12KB gzipped)
  * - Blog routes load 'blog' bundle (~8-12KB gzipped)
- * 
- * @see /src/app/utils/css-bundle-loader.ts
- * @see /src/styles/bundles/portfolio-bundle.css
- * @see /src/styles/bundles/blog-bundle.css
  */
 
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { useParams, type RouteObject } from 'react-router';
+import { RouteLoadingFallback } from '../components/ui/RouteLoadingFallback';
 import { loadCSSBundle } from '../utils/css-bundle-loader';
 
 /* ═══════════════════════════════════════════
- * Template Imports
+ * Lazy Template Imports
  * ═══════════════════════════════════════════ */
 
 // Portfolio
-import { PortfolioArchiveTemplate } from '../components/templates/PortfolioArchiveTemplate';
-import { PortfolioSingleTemplate } from '../components/templates/PortfolioSingleTemplate';
-import { PortfolioCategoryArchiveTemplate } from '../components/templates/PortfolioCategoryArchiveTemplate';
-import { PortfolioTagArchiveTemplate } from '../components/templates/PortfolioTagArchiveTemplate';
+const PortfolioArchiveTemplate = lazy(() => import('../components/templates/PortfolioArchiveTemplate').then(m => ({ default: m.PortfolioArchiveTemplate })));
+const PortfolioSingleTemplate = lazy(() => import('../components/templates/PortfolioSingleTemplate').then(m => ({ default: m.PortfolioSingleTemplate })));
+const PortfolioCategoryArchiveTemplate = lazy(() => import('../components/templates/PortfolioCategoryArchiveTemplate').then(m => ({ default: m.PortfolioCategoryArchiveTemplate })));
+const PortfolioTagArchiveTemplate = lazy(() => import('../components/templates/PortfolioTagArchiveTemplate').then(m => ({ default: m.PortfolioTagArchiveTemplate })));
 
 // Blog
-import { BlogIndexTemplate } from '../components/templates/BlogIndexTemplate';
-import { SinglePostTemplate } from '../components/templates/SinglePostTemplate';
-import { SinglePostLongformTemplate } from '../components/templates/SinglePostLongformTemplate';
-import { CategoryArchiveTemplate } from '../components/templates/CategoryArchiveTemplate';
-import { AuthorArchiveTemplate } from '../components/templates/AuthorArchiveTemplate';
-import { TagArchiveTemplate } from '../components/templates/TagArchiveTemplate';
-import { DateArchiveTemplate } from '../components/templates/DateArchiveTemplate';
+const BlogIndexTemplate = lazy(() => import('../components/templates/BlogIndexTemplate').then(m => ({ default: m.BlogIndexTemplate })));
+const SinglePostTemplate = lazy(() => import('../components/templates/SinglePostTemplate').then(m => ({ default: m.SinglePostTemplate })));
+const SinglePostLongformTemplate = lazy(() => import('../components/templates/SinglePostLongformTemplate').then(m => ({ default: m.SinglePostLongformTemplate })));
+const CategoryArchiveTemplate = lazy(() => import('../components/templates/CategoryArchiveTemplate').then(m => ({ default: m.CategoryArchiveTemplate })));
+const AuthorArchiveTemplate = lazy(() => import('../components/templates/AuthorArchiveTemplate').then(m => ({ default: m.AuthorArchiveTemplate })));
+const TagArchiveTemplate = lazy(() => import('../components/templates/TagArchiveTemplate').then(m => ({ default: m.TagArchiveTemplate })));
+const DateArchiveTemplate = lazy(() => import('../components/templates/DateArchiveTemplate').then(m => ({ default: m.DateArchiveTemplate })));
 
 /* ═══════════════════════════════════════════
  * Route Wrapper Components
  * ═══════════════════════════════════════════ */
 
 // Portfolio routes
+function PortfolioArchiveRoute() {
+  loadCSSBundle('portfolio');
+  return <Suspense fallback={<RouteLoadingFallback />}><PortfolioArchiveTemplate /></Suspense>;
+}
+
 function PortfolioSingleRoute() {
   const { slug } = useParams();
-  return <PortfolioSingleTemplate slug={slug} />;
+  loadCSSBundle('portfolio');
+  return <Suspense fallback={<RouteLoadingFallback />}><PortfolioSingleTemplate slug={slug} /></Suspense>;
 }
 
 function PortfolioCategoryRoute() {
-  return <PortfolioCategoryArchiveTemplate />;
+  loadCSSBundle('portfolio');
+  return <Suspense fallback={<RouteLoadingFallback />}><PortfolioCategoryArchiveTemplate /></Suspense>;
 }
 
 function PortfolioTagRoute() {
-  return <PortfolioTagArchiveTemplate />;
+  loadCSSBundle('portfolio');
+  return <Suspense fallback={<RouteLoadingFallback />}><PortfolioTagArchiveTemplate /></Suspense>;
 }
 
 // Blog routes
+function BlogIndexRoute() {
+  loadCSSBundle('blog');
+  return <Suspense fallback={<RouteLoadingFallback />}><BlogIndexTemplate /></Suspense>;
+}
+
+function SinglePostLongformRoute() {
+  loadCSSBundle('blog');
+  return <Suspense fallback={<RouteLoadingFallback />}><SinglePostLongformTemplate /></Suspense>;
+}
+
 function SinglePostRoute() {
   const { slug } = useParams();
-  return <SinglePostTemplate slug={slug} />;
+  loadCSSBundle('blog');
+  return <Suspense fallback={<RouteLoadingFallback />}><SinglePostTemplate slug={slug} /></Suspense>;
 }
 
 function CategoryArchiveRoute() {
   const { slug } = useParams();
-  return <CategoryArchiveTemplate category={slug} />;
+  loadCSSBundle('blog');
+  return <Suspense fallback={<RouteLoadingFallback />}><CategoryArchiveTemplate category={slug} /></Suspense>;
 }
 
 function AuthorArchiveRoute() {
   const { slug } = useParams();
-  return <AuthorArchiveTemplate author={slug} />;
+  loadCSSBundle('blog');
+  return <Suspense fallback={<RouteLoadingFallback />}><AuthorArchiveTemplate author={slug} /></Suspense>;
 }
 
 function TagArchiveRoute() {
   const { slug } = useParams();
-  return <TagArchiveTemplate tag={slug || 'wordpress'} />;
+  loadCSSBundle('blog');
+  return <Suspense fallback={<RouteLoadingFallback />}><TagArchiveTemplate tag={slug || 'wordpress'} /></Suspense>;
 }
 
 function DateArchiveRoute() {
   const { year, month } = useParams();
+  loadCSSBundle('blog');
   return (
-    <DateArchiveTemplate
-      year={year ? parseInt(year) : new Date().getFullYear()}
-      month={month ? parseInt(month) : undefined}
-    />
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <DateArchiveTemplate
+        year={year ? parseInt(year) : new Date().getFullYear()}
+        month={month ? parseInt(month) : undefined}
+      />
+    </Suspense>
   );
 }
 
@@ -94,120 +116,22 @@ function DateArchiveRoute() {
 
 export const contentRoutes: RouteObject[] = [
   /* ── Work (Portfolio Bundle) ── */
-  {
-    path: 'work',
-    lazy: async () => {
-      await loadCSSBundle('portfolio');
-      return { Component: PortfolioArchiveTemplate };
-    },
-  },
-  {
-    path: 'work/:slug',
-    lazy: async () => {
-      await loadCSSBundle('portfolio');
-      return { Component: PortfolioSingleRoute };
-    },
-  },
-  {
-    path: 'work/category/:slug',
-    lazy: async () => {
-      await loadCSSBundle('portfolio');
-      return { Component: PortfolioCategoryRoute };
-    },
-  },
-  {
-    path: 'work/tag/:slug',
-    lazy: async () => {
-      await loadCSSBundle('portfolio');
-      return { Component: PortfolioTagRoute };
-    },
-  },
+  { path: 'work', Component: PortfolioArchiveRoute },
+  { path: 'work/:slug', Component: PortfolioSingleRoute },
+  { path: 'work/category/:slug', Component: PortfolioCategoryRoute },
+  { path: 'work/tag/:slug', Component: PortfolioTagRoute },
 
   /* ── Insights (Blog Bundle) ── */
-  {
-    path: 'insights',
-    lazy: async () => {
-      await loadCSSBundle('blog');
-      return { Component: BlogIndexTemplate };
-    },
-  },
-  {
-    path: 'insights/single-post',
-    lazy: async () => {
-      await loadCSSBundle('blog');
-      return { Component: SinglePostLongformTemplate };
-    },
-  },
-  {
-    path: 'insights/category',
-    lazy: async () => {
-      await loadCSSBundle('blog');
-      return { Component: CategoryArchiveTemplate };
-    },
-  },
-  {
-    path: 'insights/category/:slug',
-    lazy: async () => {
-      await loadCSSBundle('blog');
-      return { Component: CategoryArchiveRoute };
-    },
-  },
-  {
-    path: 'insights/author',
-    lazy: async () => {
-      await loadCSSBundle('blog');
-      return { Component: AuthorArchiveTemplate };
-    },
-  },
-  {
-    path: 'insights/author/:slug',
-    lazy: async () => {
-      await loadCSSBundle('blog');
-      return { Component: AuthorArchiveRoute };
-    },
-  },
-  {
-    path: 'insights/tag',
-    lazy: async () => {
-      await loadCSSBundle('blog');
-      return { Component: TagArchiveTemplate };
-    },
-  },
-  {
-    path: 'insights/tag/:slug',
-    lazy: async () => {
-      await loadCSSBundle('blog');
-      return { Component: TagArchiveRoute };
-    },
-  },
-  {
-    path: 'insights/date',
-    lazy: async () => {
-      await loadCSSBundle('blog');
-      return { Component: DateArchiveTemplate };
-    },
-  },
-  {
-    path: 'insights/date/:year',
-    lazy: async () => {
-      await loadCSSBundle('blog');
-      return { Component: DateArchiveRoute };
-    },
-  },
-  {
-    path: 'insights/date/:year/:month',
-    lazy: async () => {
-      await loadCSSBundle('blog');
-      return { Component: DateArchiveRoute };
-    },
-  },
-
-  /* ── Insights single post (must be last in insights section) ── */
-  {
-    path: 'insights/:slug',
-    lazy: async () => {
-      await loadCSSBundle('blog');
-      return { Component: SinglePostRoute };
-    },
-  },
+  { path: 'insights', Component: BlogIndexRoute },
+  { path: 'insights/single-post', Component: SinglePostLongformRoute },
+  { path: 'insights/category', Component: CategoryArchiveRoute },
+  { path: 'insights/category/:slug', Component: CategoryArchiveRoute },
+  { path: 'insights/author', Component: AuthorArchiveRoute },
+  { path: 'insights/author/:slug', Component: AuthorArchiveRoute },
+  { path: 'insights/tag', Component: TagArchiveRoute },
+  { path: 'insights/tag/:slug', Component: TagArchiveRoute },
+  { path: 'insights/date', Component: DateArchiveRoute },
+  { path: 'insights/date/:year', Component: DateArchiveRoute },
+  { path: 'insights/date/:year/:month', Component: DateArchiveRoute },
+  { path: 'insights/:slug', Component: SinglePostRoute },
 ];
