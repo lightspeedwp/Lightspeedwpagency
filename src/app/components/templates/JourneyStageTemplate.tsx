@@ -237,7 +237,7 @@ export function JourneyStageTemplate({ slug }: JourneyStageTemplateProps) {
         style={{ '--phase-accent': data.accent } as React.CSSProperties}
       >
         <ScrollReveal animation="fade-up">
-          <div className="journey-stage__description-inner">
+          <div className="journey-stage__description-inner wp-grid-2-cols">
             <div className="journey-stage__desc-block">
               <h2 className="journey-stage__desc-heading">What happens during {data.name}?</h2>
               <p className="journey-stage__desc-text">{data.description}</p>
@@ -264,7 +264,7 @@ export function JourneyStageTemplate({ slug }: JourneyStageTemplateProps) {
             </h2>
           </ScrollReveal>
 
-          <div className="journey-stage__outcomes-grid">
+          <div className="journey-stage__outcomes-grid wp-grid-3-cols">
             {data.outcomes.map((outcome, idx) => (
               <ScrollReveal key={idx} animation="fade-up" delay={idx * 80}>
                 <div className="journey-stage__outcome-item">
@@ -294,7 +294,7 @@ export function JourneyStageTemplate({ slug }: JourneyStageTemplateProps) {
             </p>
           </ScrollReveal>
 
-          <div className="journey-stage__services-grid">
+          <div className="journey-stage__services-grid wp-grid-3-cols">
             {data.services.map((service, idx) => {
               const ServiceIcon = service.icon;
               return (

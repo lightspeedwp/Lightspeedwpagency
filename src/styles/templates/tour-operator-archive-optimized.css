@@ -74,27 +74,11 @@
 }
 
 /* ============================================
-   TOURS GRID
+   TOURS GRID — Migrated to .wp-grid-3-cols utility class
+   Previous: .tour-operator-archive__tours-grid (1→2→3 columns, 768px→1024px)
+   Migration: March 10, 2026 — Template uses .wp-grid-3-cols with inline spacing
+   Lines saved: 14 lines (grid base + 2 media queries)
    ============================================ */
-
-.tour-operator-archive__tours-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--spacing-8);
-  margin-bottom: var(--spacing-16);
-}
-
-@media (min-width: 768px) {
-  .tour-operator-archive__tours-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  .tour-operator-archive__tours-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
 
 /* ============================================
    TOUR CARD — UNIQUE TOUR STYLES

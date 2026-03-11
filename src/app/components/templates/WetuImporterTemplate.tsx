@@ -131,8 +131,6 @@ export function WetuImporterTemplate() {
             <FeatureList
               items={wetuImporterFeatures}
               columns={3}
-              variant="glow"
-              iconSize="md"
             />
           </div>
         </Container>
@@ -154,14 +152,12 @@ export function WetuImporterTemplate() {
             </div>
           </ScrollReveal>
 
-          <div className="wetu-importer__benefits-grid">
-            <FeatureList
-              items={wetuImporterBenefits}
-              columns={2}
-              variant="glow"
-              iconSize="md"
-            />
-          </div>
+          <FeatureList
+            items={wetuImporterBenefits}
+            columns={2}
+            variant="glow"
+            iconSize="md"
+          />
         </Container>
       </section>
 
@@ -181,12 +177,10 @@ export function WetuImporterTemplate() {
             </div>
           </ScrollReveal>
 
-          <div className="wetu-importer__process-grid">
-            <ProcessTimeline
-              steps={wetuImporterProcess}
-              variant="numbered"
-            />
-          </div>
+          <ProcessTimeline
+            steps={wetuImporterProcess}
+            variant="numbered"
+          />
         </Container>
       </section>
 
@@ -204,7 +198,7 @@ export function WetuImporterTemplate() {
           </ScrollReveal>
 
           <ScrollReveal animation="fade-up" delay={100}>
-            <div className="wetu-importer__specs-grid">
+            <div className="wetu-importer__specs-grid responsive-grid-2-cols">
               {wetuImporterSpecs.specs.map((spec, index) => (
                 <div key={index} className="wetu-importer__spec-item">
                   <span className="wetu-importer__spec-label">

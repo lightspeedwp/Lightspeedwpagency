@@ -26,6 +26,7 @@ import { Container } from '../common/Container';
 import { Heading } from '../common/Heading';
 import { Button } from '../blocks/design/Buttons';
 import { ArrowRight } from '@phosphor-icons/react';
+import '@/styles/patterns/cta-inline.css';
 
 export interface CTAInlineProps {
   heading?: string;
@@ -55,22 +56,22 @@ export function CTAInline({
   return (
     <Section sectionStyle="cta-accent" spacing="sm" className="cta-inline">
       <Container maxWidth="800px">
-        <div className="cta-inline__container">
+        <div className="cta-base__container cta-inline__container">
           {/* Heading */}
           <Heading 
             level={3} 
-            className="cta-inline__heading"
+            className="cta-base__title cta-inline__heading"
           >
             {heading}
           </Heading>
           
           {/* Description */}
-          <p className="cta-inline__description">
+          <p className="cta-base__description cta-inline__description">
             {description}
           </p>
           
           {/* Buttons */}
-          <div className="cta-inline__buttons">
+          <div className="cta-base__actions cta-base__actions--centered">
             <Button 
               size="md" 
               href={buttonHref}

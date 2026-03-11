@@ -115,7 +115,7 @@ export function TestimonialCard({
     >
       {/* Quote Icon */}
       {showQuoteIcon && (
-        <div className="testimonial-card__quote-icon" aria-hidden="true">
+        <div className="testimonial-base__quote-icon testimonial-card__quote-icon" aria-hidden="true">
           <Quotes size={20} strokeWidth={2} />
         </div>
       )}
@@ -123,7 +123,7 @@ export function TestimonialCard({
       {/* Rating */}
       {showRating && testimonial.rating && (
         <div
-          className="testimonial-card__rating"
+          className="testimonial-base__rating testimonial-card__rating"
           role="img"
           aria-label={`${testimonial.rating} out of 5 stars`}
         >
@@ -131,10 +131,10 @@ export function TestimonialCard({
             <Star
               key={i}
               size={16}
-              className={`testimonial-card__star ${
+              className={`testimonial-base__star ${
                 i < testimonial.rating!
                   ? 'testimonial-card__star--filled'
-                  : 'testimonial-card__star--empty'
+                  : 'testimonial-base__star--empty'
               }`}
               fill={i < testimonial.rating! ? 'currentColor' : 'none'}
             />
@@ -143,7 +143,7 @@ export function TestimonialCard({
       )}
 
       {/* Quote */}
-      <blockquote className="testimonial-card__quote">
+      <blockquote className="testimonial-base__quote testimonial-card__quote">
         &ldquo;{testimonial.quote}&rdquo;
       </blockquote>
 
@@ -168,7 +168,7 @@ export function TestimonialCard({
         )}
 
       {/* Author */}
-      <div className="testimonial-card__author">
+      <div className="testimonial-base__author testimonial-card__author">
         {/* Avatar */}
         {showAvatar && (
           <>
@@ -176,12 +176,12 @@ export function TestimonialCard({
               <img
                 src={testimonial.avatar}
                 alt={testimonial.author}
-                className="testimonial-card__avatar"
+                className="testimonial-base__avatar testimonial-card__avatar"
                 width={48}
                 height={48}
               />
             ) : (
-              <div className="testimonial-card__avatar-initials">
+              <div className="testimonial-base__avatar-initials testimonial-card__avatar-initials">
                 {getInitials(testimonial.author)}
               </div>
             )}
@@ -189,12 +189,12 @@ export function TestimonialCard({
         )}
 
         {/* Author Details */}
-        <div className="testimonial-card__author-details">
-          <div className="testimonial-card__author-name">
+        <div className="testimonial-base__author-details testimonial-card__author-details">
+          <div className="testimonial-base__author-name testimonial-card__author-name">
             {testimonial.author}
           </div>
           {(testimonial.role || testimonial.company) && (
-            <div className="testimonial-card__author-role">
+            <div className="testimonial-base__author-role testimonial-card__author-role">
               {testimonial.role}
               {testimonial.role && testimonial.company && ' at '}
               {testimonial.company}
@@ -212,7 +212,7 @@ export function TestimonialCard({
           <img
             src={testimonial.companyLogo}
             alt={`${testimonial.company} logo`}
-            className="testimonial-card__company-logo"
+            className="testimonial-base__company-logo testimonial-card__company-logo"
           />
         )}
       </div>

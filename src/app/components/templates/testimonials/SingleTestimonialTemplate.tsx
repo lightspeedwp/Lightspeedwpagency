@@ -39,19 +39,11 @@ export function SingleTestimonialTemplate({ slug }: { slug?: string }) {
   return (
     <>
       {/* Back link */}
-      <Section spacing="xs" style={{ backgroundColor: 'var(--background)' }}>
-        <div className="wp-max-w-6xl" style={{ margin: '0 auto' }}>
+      <Section spacing="xs" background="default">
+        <div className="wp-max-w-6xl">
           <Link
             to="/testimonials"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: 'var(--spacing-2)',
-              fontFamily: 'var(--font-primary)',
-              fontSize: 'var(--text-sm)',
-              color: 'var(--primary)',
-              textDecoration: 'none',
-            }}
+            className="single-testimonial__back-link"
           >
             <ArrowLeft size={16} /> Back to Testimonials
           </Link>
@@ -97,7 +89,7 @@ export function SingleTestimonialTemplate({ slug }: { slug?: string }) {
 
       {/* Full Story */}
       {testimonial.fullStory && (
-        <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
+        <Section spacing="xl" background="default">
           <div
             className="single-testimonial__story-inner"
             ref={storyRef as any}
@@ -111,7 +103,7 @@ export function SingleTestimonialTemplate({ slug }: { slug?: string }) {
 
       {/* Metadata */}
       <Section spacing="xl" background="muted">
-        <div className="wp-max-w-4xl" style={{ margin: '0 auto' }}>
+        <div className="wp-max-w-4xl">
           <div className="single-testimonial__meta">
             <div className="single-testimonial__meta-item">
               <div className="single-testimonial__meta-label">Service</div>
@@ -141,8 +133,8 @@ export function SingleTestimonialTemplate({ slug }: { slug?: string }) {
       </Section>
 
       {/* Related */}
-      <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
-        <div className="wp-max-w-6xl" style={{ margin: '0 auto' }}>
+      <Section spacing="xl" background="default">
+        <div className="wp-max-w-6xl">
           <QueryLoopTestimonials
             testimonials={related}
             heading="More Success Stories"

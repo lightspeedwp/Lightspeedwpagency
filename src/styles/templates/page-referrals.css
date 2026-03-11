@@ -1,0 +1,237 @@
+/**
+ * Referrals Page Styles
+ *
+ * 100% CSS variables, BEM naming, light/dark mode aware.
+ */
+
+.referrals-page {
+  --ref-primary: var(--category-green);
+  --ref-bg: var(--background);
+  --ref-surface: var(--card);
+  --ref-text: var(--foreground);
+  --ref-muted: color-mix(in srgb, var(--foreground) 70%, transparent);
+  --ref-border: var(--border-soft);
+
+  background-color: var(--ref-bg);
+  color: var(--ref-text);
+  min-height: 100vh;
+}
+
+/* ============================================
+   HERO
+   ============================================ */
+
+.referrals-page__hero {
+  position: relative;
+  padding: var(--spacing-32) 0 var(--spacing-24);
+  text-align: center;
+  border-bottom: 1px solid var(--ref-border);
+}
+
+.referrals-page__hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-6);
+}
+
+.referrals-page__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-bold);
+  color: var(--ref-primary);
+  background: color-mix(in srgb, var(--ref-primary) 10%, transparent);
+  padding: var(--spacing-2) var(--spacing-4);
+  border-radius: var(--radius-full);
+  border: 1px solid color-mix(in srgb, var(--ref-primary) 30%, transparent);
+}
+
+.referrals-page__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-6xl);
+  font-weight: var(--font-weight-black);
+  line-height: var(--line-height-tight);
+}
+
+.referrals-page__highlight {
+  background: linear-gradient(90deg, var(--category-green), var(--category-cyan));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.referrals-page__desc {
+  font-family: var(--font-secondary);
+  font-size: var(--text-xl);
+  color: var(--ref-muted);
+  line-height: var(--line-height-relaxed);
+  max-width: 600px;
+}
+
+/* ============================================
+   HOW IT WORKS
+   ============================================ */
+
+.referrals-page__steps-section {
+  padding: var(--section-padding-y) 0;
+  background: var(--ref-bg);
+}
+
+.referrals-page__step-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-8);
+}
+
+.referrals-page__step {
+  background: var(--ref-surface);
+  border: 1px solid var(--ref-border);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-8);
+  position: relative;
+  text-align: center;
+  transition: transform var(--transition-base) var(--ease-in-out);
+}
+
+.referrals-page__step:hover {
+  transform: translateY(-4px);
+  border-color: var(--ref-primary);
+}
+
+.referrals-page__step-number {
+  position: absolute;
+  top: calc(var(--spacing-4) * -1);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 48px;
+  height: 48px;
+  background: var(--ref-primary);
+  color: var(--primary-foreground);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-primary);
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-bold);
+  border: 4px solid var(--ref-bg);
+}
+
+.referrals-page__step-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-weight-bold);
+  margin: var(--spacing-6) 0 var(--spacing-3);
+}
+
+.referrals-page__step-desc {
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  color: var(--ref-muted);
+  line-height: var(--line-height-relaxed);
+}
+
+/* ============================================
+   FORM SECTION
+   ============================================ */
+
+.referrals-page__form-section {
+  padding: var(--section-padding-y) 0;
+  background: color-mix(in srgb, var(--category-green) 5%, var(--ref-bg));
+  border-top: 1px solid var(--ref-border);
+}
+
+.referrals-page__form-wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+  background: var(--ref-surface);
+  border: 1px solid var(--ref-border);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-8) var(--spacing-12);
+  box-shadow: var(--shadow-lg);
+}
+
+.referrals-page__form-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-3xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-2);
+  text-align: center;
+}
+
+.referrals-page__form-desc {
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  color: var(--ref-muted);
+  text-align: center;
+  margin-bottom: var(--spacing-8);
+}
+
+.referrals-page__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+.referrals-page__form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.referrals-page__label {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--ref-text);
+}
+
+.referrals-page__input {
+  width: 100%;
+  padding: var(--spacing-3) var(--spacing-4);
+  background: var(--ref-bg);
+  border: 1px solid var(--ref-border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  color: var(--ref-text);
+  transition: border-color var(--transition-fast) var(--ease-out);
+}
+
+.referrals-page__input:focus {
+  outline: none;
+  border-color: var(--ref-primary);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--ref-primary) 20%, transparent);
+}
+
+/* ============================================
+   DARK MODE OVERRIDES
+   ============================================ */
+
+.dark .referrals-page__step {
+  background: color-mix(in srgb, var(--card) 40%, transparent);
+}
+
+.dark .referrals-page__form-wrapper {
+  background: color-mix(in srgb, var(--card) 80%, transparent);
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .referrals-page__step {
+    transition: none;
+  }
+  .referrals-page__step:hover {
+    transform: none;
+  }
+}

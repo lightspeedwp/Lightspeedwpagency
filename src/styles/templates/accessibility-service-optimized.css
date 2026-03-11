@@ -291,7 +291,7 @@
   right: 0;
   bottom: 0;
   width: 40px;
-  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3));
+  background: linear-gradient(to right, transparent, color-mix(in srgb, var(--color-white) 30%, transparent));
   animation: scoreShimmer 2s infinite;
 }
 
@@ -340,7 +340,7 @@
   border: 3px solid transparent;
   border-radius: var(--radius-full);
   background: conic-gradient(from 0deg, var(--primary), var(--accent), var(--primary)) border-box;
-  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask: linear-gradient(black 0 0) padding-box, linear-gradient(black 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   animation: iconRotate 3s linear infinite;

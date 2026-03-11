@@ -250,8 +250,8 @@ export function WordPressBlocksProofOfConcept() {
                     'Light/Dark modes — automatic switching'
                   ].map((benefit, index) => (
                     <div key={index} className="wp-block-row">
-                      <Check size={24} style={{ color: 'var(--success)', flexShrink: 0 }} />
-                      <p className="wp-block-paragraph" style={{ margin: 0 }}>
+                      <Check size={24} style={{ color: 'var(--success)' }} className="shrink-0" />
+                      <p className="wp-block-paragraph wp-mb-0">
                         {benefit}
                       </p>
                     </div>
@@ -268,8 +268,8 @@ export function WordPressBlocksProofOfConcept() {
                     'Responsive — mobile-first design'
                   ].map((benefit, index) => (
                     <div key={index} className="wp-block-row">
-                      <Check size={24} style={{ color: 'var(--success)', flexShrink: 0 }} />
-                      <p className="wp-block-paragraph" style={{ margin: 0 }}>
+                      <Check size={24} style={{ color: 'var(--success)' }} className="shrink-0" />
+                      <p className="wp-block-paragraph wp-mb-0">
                         {benefit}
                       </p>
                     </div>

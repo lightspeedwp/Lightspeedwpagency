@@ -17,6 +17,7 @@
 .site-header {
   position: sticky;
   top: 0;
+  margin-top: 0;  /* Explicit reset - prevents gap above header */
   z-index: var(--z-sticky);
   background: color-mix(in srgb, var(--background) 85%, transparent);
   backdrop-filter: blur(12px);

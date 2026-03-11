@@ -217,7 +217,7 @@ export function LSXSharingTemplate() {
           </ScrollReveal>
 
           <ScrollReveal animation="fade-up" delay={100}>
-            <div className="lsx-sharing__specs-grid">
+            <div className="lsx-sharing__specs-grid responsive-grid-2-cols">
               {lsxSharingSpecs.specs.map((spec, index) => (
                 <div key={index} className="lsx-sharing__spec-item">
                   <span className="lsx-sharing__spec-label">{spec.label}</span>

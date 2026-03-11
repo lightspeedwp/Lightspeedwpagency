@@ -2,8 +2,10 @@
  * Funky CTA Pattern Styles
  * 
  * Neon glow aesthetic with grid background.
- * Uses CSS variables for consistent theming.
+ * Uses cta-base.css for common styling.
  */
+
+@import './base/cta-base.css';
 
 .funky-cta {
   position: relative;
@@ -61,27 +63,18 @@
 }
 
 .funky-cta__title {
-  font-family: var(--font-primary);
   font-size: var(--text-h2);
-  font-weight: 700;
   color: var(--foreground);
   margin-bottom: var(--spacing-4);
-  line-height: 1.1;
 }
 
 .funky-cta__description {
-  font-family: var(--font-secondary);
   font-size: var(--text-lg);
   color: var(--muted-foreground);
   margin-bottom: var(--spacing-8);
-  line-height: 1.6;
 }
 
-.funky-cta__action {
-  display: flex;
-  gap: var(--spacing-4);
-}
-
+/* Benefits list */
 .funky-cta__benefits {
   flex: 1;
   max-width: 400px;

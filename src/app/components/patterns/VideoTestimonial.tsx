@@ -65,11 +65,7 @@ export function VideoTestimonial({
     '7xl': 'wp-max-w-7xl' // assuming this utility exists, otherwise standard naming
   }[maxWidth] || 'wp-max-w-6xl';
 
-  const gridClass = {
-    1: 'video-testimonial__grid--1-col',
-    2: 'video-testimonial__grid--2-cols',
-    3: 'video-testimonial__grid--3-cols'
-  }[columns];
+  const gridClass = `grid-base grid-cols-${columns}`;
 
   return (
     <div className="video-testimonial">
@@ -93,7 +89,7 @@ export function VideoTestimonial({
 
       {/* Video Grid */}
       <div className={maxWidthClass} style={{ margin: '0 auto' }}>
-        <div className={`video-testimonial__grid ${gridClass}`}>
+        <div className={gridClass}>
           {videos.map((video, index) => (
             <div
               key={index}
@@ -152,13 +148,15 @@ export function VideoTestimonial({
                 )}
 
                 {/* Client Info */}
-                <div className="video-testimonial__client-info">
-                  <p className="video-testimonial__client-name">
-                    {video.clientName}
-                  </p>
-                  <p className="video-testimonial__client-role">
-                    {video.clientRole} at {video.company}
-                  </p>
+                <div className="testimonial-base__author">
+                  <div className="testimonial-base__author-details">
+                    <p className="testimonial-base__author-name">
+                      {video.clientName}
+                    </p>
+                    <p className="testimonial-base__author-role">
+                      {video.clientRole} at {video.company}
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>

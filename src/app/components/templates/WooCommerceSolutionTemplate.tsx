@@ -8,7 +8,7 @@
  * STRICT DESIGN SYSTEM COMPLIANCE:
  * - All styling via BEM classes in page-solution-ecommerce.css
  * - Colors via scoped CSS variables (no hardcoded hex in JSX)
- * - Fonts: var(--font-primary), var(--font-secondary), var(--font-mono)
+ * - Fonts: var(--font-primary), var(--font-secondary)
  *
  * PATTERN COMPONENTS:
  * - ✅ StatsGrid — Results/metrics section

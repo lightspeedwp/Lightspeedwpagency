@@ -250,19 +250,6 @@
   gap: var(--spacing-8);
 }
 
-@media (min-width: 768px) {
-  .pricing-page__packages-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  .pricing-page__packages-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-
 /* ============================================
    PACKAGE CARD — Glow + Glassmorphism
    ============================================ */

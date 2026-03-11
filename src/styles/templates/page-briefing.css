@@ -1,0 +1,236 @@
+/**
+ * Briefing Form Page Styles
+ *
+ * 100% CSS variables, BEM naming, light/dark mode aware.
+ */
+
+.briefing-page {
+  --briefing-primary: var(--primary);
+  --briefing-bg: var(--background);
+  --briefing-surface: var(--card);
+  --briefing-text: var(--foreground);
+  --briefing-muted: color-mix(in srgb, var(--foreground) 70%, transparent);
+  --briefing-border: var(--border-soft);
+
+  background-color: var(--briefing-bg);
+  color: var(--briefing-text);
+  min-height: 100vh;
+}
+
+/* ============================================
+   HERO
+   ============================================ */
+
+.briefing-page__hero {
+  position: relative;
+  padding: var(--spacing-24) 0 var(--spacing-16);
+  text-align: center;
+  border-bottom: 1px solid var(--briefing-border);
+}
+
+.briefing-page__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-5xl);
+  font-weight: var(--font-weight-black);
+  margin-bottom: var(--spacing-4);
+  line-height: var(--line-height-tight);
+}
+
+.briefing-page__highlight {
+  background: linear-gradient(90deg, var(--category-blue), var(--category-purple));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.briefing-page__desc {
+  font-family: var(--font-secondary);
+  font-size: var(--text-lg);
+  color: var(--briefing-muted);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ============================================
+   FORM SECTION
+   ============================================ */
+
+.briefing-page__form-section {
+  padding: var(--section-padding-y) 0;
+  background: color-mix(in srgb, var(--briefing-primary) 3%, var(--briefing-bg));
+}
+
+.briefing-page__form-container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: var(--briefing-surface);
+  border: 1px solid var(--briefing-border);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-8) var(--spacing-12);
+  box-shadow: var(--shadow-lg);
+}
+
+.briefing-page__stepper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-8);
+  padding-bottom: var(--spacing-6);
+  border-bottom: 1px solid var(--briefing-border);
+}
+
+.briefing-page__step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-2);
+  color: var(--briefing-muted);
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+}
+
+.briefing-page__step--active {
+  color: var(--briefing-primary);
+}
+
+.briefing-page__step-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  background: var(--briefing-bg);
+  border: 2px solid var(--briefing-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast) var(--ease-out);
+}
+
+.briefing-page__step--active .briefing-page__step-icon {
+  background: var(--briefing-primary);
+  border-color: var(--briefing-primary);
+  color: var(--primary-foreground);
+}
+
+.briefing-page__step--completed .briefing-page__step-icon {
+  background: var(--briefing-surface);
+  border-color: var(--briefing-primary);
+  color: var(--briefing-primary);
+}
+
+/* Form Elements */
+.briefing-page__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+.briefing-page__form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.briefing-page__label {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--briefing-text);
+}
+
+.briefing-page__input,
+.briefing-page__select,
+.briefing-page__textarea {
+  width: 100%;
+  padding: var(--spacing-3) var(--spacing-4);
+  background: var(--briefing-bg);
+  border: 1px solid var(--briefing-border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  color: var(--briefing-text);
+  transition: border-color var(--transition-fast) var(--ease-out);
+}
+
+.briefing-page__textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.briefing-page__input:focus,
+.briefing-page__select:focus,
+.briefing-page__textarea:focus {
+  outline: none;
+  border-color: var(--briefing-primary);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--briefing-primary) 20%, transparent);
+}
+
+/* Radio Cards Grid */
+.briefing-page__radio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-4);
+}
+
+.briefing-page__radio-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: var(--spacing-4);
+  background: var(--briefing-bg);
+  border: 1px solid var(--briefing-border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-fast) var(--ease-out);
+}
+
+.briefing-page__radio-card:hover {
+  border-color: color-mix(in srgb, var(--briefing-primary) 50%, var(--briefing-border));
+}
+
+.briefing-page__radio-card input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+}
+
+.briefing-page__radio-card:has(input[type="radio"]:checked) {
+  border-color: var(--briefing-primary);
+  background: color-mix(in srgb, var(--briefing-primary) 5%, transparent);
+}
+
+.briefing-page__radio-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-bold);
+  color: var(--briefing-text);
+  margin-bottom: var(--spacing-1);
+}
+
+.briefing-page__radio-desc {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--briefing-muted);
+}
+
+.briefing-page__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--spacing-4);
+  margin-top: var(--spacing-6);
+  padding-top: var(--spacing-6);
+  border-top: 1px solid var(--briefing-border);
+}
+
+/* ============================================
+   DARK MODE OVERRIDES
+   ============================================ */
+
+.dark .briefing-page__form-container {
+  background: color-mix(in srgb, var(--card) 60%, transparent);
+}
+
+.dark .briefing-page__step-icon {
+  background: color-mix(in srgb, var(--background) 50%, transparent);
+}

@@ -286,22 +286,22 @@
 
 @media print {
   .wp-block-quote {
-    color: black;
+    color: var(--foreground);
     font-size: 11pt;
-    border-left: 2pt solid black;
+    border-left: 2pt solid var(--foreground);
     page-break-inside: avoid;
   }
   
   .wp-block-quote__citation {
-    color: #666;
+    color: var(--muted-foreground);
   }
   
   .wp-block-quote--pullquote {
-    border-color: black;
+    border-color: var(--foreground);
   }
   
   .wp-block-quote--testimonial {
-    border: 1pt solid black;
+    border: 1pt solid var(--foreground);
     box-shadow: none;
   }
 }

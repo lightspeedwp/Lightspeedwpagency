@@ -90,26 +90,18 @@ export const ServiceTestimonials = ({
     <div className={`service-testimonials ${className}`}>
       {/* Header */}
       <div className="service-testimonials__header">
-        <h2 style={{ 
-          fontFamily: 'var(--font-primary)',
-          fontSize: 'var(--text-h2)',
-          color: 'var(--foreground)'
-        }}>
+        <h2 className="service-testimonials__title">
           {title}
         </h2>
         {description && (
-          <p style={{ 
-            fontFamily: 'var(--font-secondary)',
-            fontSize: 'var(--text-base)',
-            color: 'var(--muted-foreground)'
-          }}>
+          <p className="service-testimonials__description">
             {description}
           </p>
         )}
       </div>
       
       {/* Testimonials Grid */}
-      <div className="service-testimonials__grid">
+      <div className="grid-base wp-grid-3-cols">
         {displayTestimonials.map((testimonial) => (
           <ScrollReveal key={testimonial.id} animation="fade-up">
             <TestimonialCard

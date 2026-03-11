@@ -1,0 +1,127 @@
+/**
+ * Getting Started Page Styles
+ *
+ * 100% CSS variables, BEM naming, light/dark mode aware.
+ */
+
+.onboarding-page {
+  --ob-primary: var(--primary);
+  --ob-accent: var(--category-blue);
+  --ob-bg: var(--background);
+  --ob-surface: var(--card);
+  --ob-text: var(--foreground);
+  --ob-muted: color-mix(in srgb, var(--foreground) 70%, transparent);
+  --ob-border: var(--border-soft);
+
+  background-color: var(--ob-bg);
+  color: var(--ob-text);
+  min-height: 100vh;
+}
+
+/* ============================================
+   HERO
+   ============================================ */
+
+.onboarding-page__hero {
+  position: relative;
+  padding: var(--spacing-24) 0 var(--spacing-16);
+  text-align: center;
+  border-bottom: 1px solid var(--ob-border);
+  background: radial-gradient(circle at top, color-mix(in srgb, var(--ob-primary) 10%, transparent) 0%, transparent 70%);
+}
+
+.onboarding-page__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-bold);
+  color: var(--ob-primary);
+  background: color-mix(in srgb, var(--ob-primary) 10%, transparent);
+  padding: var(--spacing-2) var(--spacing-4);
+  border-radius: var(--radius-full);
+  border: 1px solid color-mix(in srgb, var(--ob-primary) 30%, transparent);
+  margin-bottom: var(--spacing-6);
+}
+
+.onboarding-page__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-5xl);
+  font-weight: var(--font-weight-black);
+  margin-bottom: var(--spacing-4);
+  line-height: var(--line-height-tight);
+}
+
+.onboarding-page__highlight {
+  background: linear-gradient(90deg, var(--ob-accent), var(--ob-primary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.onboarding-page__desc {
+  font-family: var(--font-secondary);
+  font-size: var(--text-lg);
+  color: var(--ob-muted);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ============================================
+   RESOURCES SECTION
+   ============================================ */
+
+.onboarding-page__resources {
+  padding: var(--section-padding-y) 0;
+  background: var(--ob-bg);
+}
+
+.onboarding-page__section-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-3xl);
+  font-weight: var(--font-weight-bold);
+  text-align: center;
+  margin-bottom: var(--spacing-12);
+}
+
+.onboarding-page__card {
+  background: var(--ob-surface);
+  border: 1px solid var(--ob-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-6);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: all var(--transition-fast) var(--ease-out);
+}
+
+.onboarding-page__card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: color-mix(in srgb, var(--ob-primary) 50%, transparent);
+}
+
+.onboarding-page__card-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-2);
+}
+
+.onboarding-page__card-desc {
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  color: var(--ob-muted);
+  margin-bottom: var(--spacing-6);
+  flex-grow: 1;
+}
+
+/* ============================================
+   DARK MODE OVERRIDES
+   ============================================ */
+
+.dark .onboarding-page__card {
+  background: color-mix(in srgb, var(--card) 40%, transparent);
+}

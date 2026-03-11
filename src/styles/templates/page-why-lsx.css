@@ -1,0 +1,209 @@
+/**
+ * Why LSX Page Styles
+ *
+ * 100% CSS variables, BEM naming, light/dark mode aware.
+ */
+
+.why-lsx-page {
+  --lsx-primary: var(--category-indigo);
+  --lsx-accent: var(--category-purple);
+  --lsx-bg: var(--background);
+  --lsx-surface: var(--card);
+  --lsx-text: var(--foreground);
+  --lsx-muted: color-mix(in srgb, var(--foreground) 70%, transparent);
+  --lsx-border: var(--border-soft);
+  --lsx-glow: color-mix(in srgb, var(--lsx-primary) 15%, transparent);
+
+  background-color: var(--lsx-bg);
+  color: var(--lsx-text);
+  min-height: 100vh;
+}
+
+/* ============================================
+   HERO
+   ============================================ */
+
+.why-lsx-page__hero {
+  position: relative;
+  padding: var(--spacing-32) 0 var(--spacing-24);
+  overflow: hidden;
+  text-align: center;
+  border-bottom: 1px solid var(--lsx-border);
+}
+
+.why-lsx-page__hero-glow {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 800px;
+  height: 400px;
+  background: radial-gradient(circle at top, var(--lsx-glow) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.why-lsx-page__hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-6);
+}
+
+.why-lsx-page__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-bold);
+  color: var(--lsx-primary);
+  background: color-mix(in srgb, var(--lsx-primary) 10%, transparent);
+  padding: var(--spacing-2) var(--spacing-4);
+  border-radius: var(--radius-full);
+  border: 1px solid color-mix(in srgb, var(--lsx-primary) 30%, transparent);
+}
+
+.why-lsx-page__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-6xl);
+  font-weight: var(--font-weight-black);
+  line-height: var(--line-height-tight);
+  color: var(--lsx-text);
+}
+
+.why-lsx-page__highlight {
+  background: linear-gradient(90deg, var(--lsx-accent), var(--lsx-primary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.why-lsx-page__desc {
+  font-family: var(--font-secondary);
+  font-size: var(--text-xl);
+  color: var(--lsx-muted);
+  line-height: var(--line-height-relaxed);
+  max-width: 600px;
+}
+
+.why-lsx-page__actions {
+  display: flex;
+  gap: var(--spacing-4);
+  justify-content: center;
+  margin-top: var(--spacing-4);
+}
+
+/* ============================================
+   PAIN POINTS
+   ============================================ */
+
+.why-lsx-page__pain-points {
+  padding: var(--section-padding-y) 0;
+  background: color-mix(in srgb, var(--category-blue) 5%, var(--lsx-bg));
+  border-bottom: 1px solid var(--lsx-border);
+}
+
+.why-lsx-page__pain-card {
+  background: var(--lsx-surface);
+  border: 1px solid var(--lsx-border);
+  padding: var(--spacing-8);
+  border-radius: var(--radius-lg);
+  height: 100%;
+  transition: transform var(--transition-base) var(--ease-in-out),
+              box-shadow var(--transition-base) var(--ease-in-out);
+}
+
+.why-lsx-page__pain-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--lsx-accent);
+  box-shadow: 0 10px 30px color-mix(in srgb, var(--lsx-accent) 15%, transparent);
+}
+
+.why-lsx-page__pain-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--lsx-text);
+  margin-bottom: var(--spacing-4);
+}
+
+.why-lsx-page__pain-desc {
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  color: var(--lsx-muted);
+  line-height: var(--line-height-relaxed);
+}
+
+/* ============================================
+   FEATURES
+   ============================================ */
+
+.why-lsx-page__features {
+  padding: var(--section-padding-y) 0;
+  background: var(--lsx-bg);
+}
+
+.why-lsx-page__section-header {
+  margin-bottom: var(--spacing-16);
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.why-lsx-page__section-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-4xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--lsx-text);
+  margin-bottom: var(--spacing-4);
+}
+
+.why-lsx-page__section-desc {
+  font-family: var(--font-secondary);
+  font-size: var(--text-lg);
+  color: var(--lsx-muted);
+  line-height: var(--line-height-relaxed);
+}
+
+/* ============================================
+   TESTIMONIAL
+   ============================================ */
+
+.why-lsx-page__testimonial {
+  padding: var(--section-padding-y) 0;
+  background: color-mix(in srgb, var(--category-blue) 5%, var(--lsx-bg));
+  border-top: 1px solid var(--lsx-border);
+}
+
+.why-lsx-page__testimonial-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* ============================================
+   DARK MODE OVERRIDES
+   ============================================ */
+
+.dark .why-lsx-page__pain-card {
+  background: color-mix(in srgb, var(--card) 60%, transparent);
+}
+
+.dark .why-lsx-page__pain-card:hover {
+  background: color-mix(in srgb, var(--card) 80%, transparent);
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .why-lsx-page__pain-card:hover {
+    transform: none;
+  }
+}

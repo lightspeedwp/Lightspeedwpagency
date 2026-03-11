@@ -88,7 +88,7 @@ export function WordPressRedesignTemplate() {
               <p className="redesign-page__section-desc">{wpRedesignChallenges.description}</p>
             </div>
           </ScrollReveal>
-          <div className="redesign-page__challenge-grid">
+          <div className="redesign-page__challenge-grid responsive-grid-2-cols">
             {wpRedesignChallenges.items.map((item, i) => (
               <ScrollReveal key={i} animation="fade-up" delay={i * 60}>
                 <div className="redesign-page__challenge-item">
@@ -110,7 +110,7 @@ export function WordPressRedesignTemplate() {
               <p className="redesign-page__section-desc">{wpRedesignProcess.description}</p>
             </div>
           </ScrollReveal>
-          <div className="redesign-page__process-grid">
+          <div className="redesign-page__process-grid responsive-grid-3-cols">
             {wpRedesignProcess.steps.map((step, i) => (
               <ScrollReveal key={step.number} animation="fade-up" delay={i * 80}>
                 <div className="redesign-page__process-step">

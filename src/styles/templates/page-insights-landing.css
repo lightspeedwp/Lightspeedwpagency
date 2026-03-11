@@ -209,7 +209,7 @@
     border-color: var(--primary);
     box-shadow: 
       0 0 0 1px var(--primary),
-      0 8px 24px rgba(0, 0, 0, 0.1),
+      0 8px 24px color-mix(in srgb, var(--color-black) 10%, transparent),
       0 0 40px var(--primary-glow);
     transform: translateY(-4px);
   }
@@ -351,7 +351,7 @@
   .insights-landing__category-card[data-category="research"]:focus-visible {
     box-shadow: 
       0 0 0 1px var(--primary),
-      0 8px 24px rgba(0, 0, 0, 0.1),
+      0 8px 24px color-mix(in srgb, var(--color-black) 10%, transparent),
       0 0 40px var(--primary-glow);
   }
 
@@ -359,7 +359,7 @@
   .insights-landing__category-card[data-category="build-notes"]:focus-visible {
     box-shadow: 
       0 0 0 1px var(--accent),
-      0 8px 24px rgba(0, 0, 0, 0.1),
+      0 8px 24px color-mix(in srgb, var(--color-black) 10%, transparent),
       0 0 40px var(--accent-glow);
   }
 
@@ -367,7 +367,7 @@
   .insights-landing__category-card[data-category="editorial-systems"]:focus-visible {
     box-shadow: 
       0 0 0 1px var(--success),
-      0 8px 24px rgba(0, 0, 0, 0.1),
+      0 8px 24px color-mix(in srgb, var(--color-black) 10%, transparent),
       0 0 40px var(--success-glow);
   }
 
@@ -375,7 +375,7 @@
   .insights-landing__category-card[data-category="ai-governance"]:focus-visible {
     box-shadow: 
       0 0 0 1px var(--warning),
-      0 8px 24px rgba(0, 0, 0, 0.1),
+      0 8px 24px color-mix(in srgb, var(--color-black) 10%, transparent),
       0 0 40px var(--warning-glow);
   }
 
@@ -383,7 +383,7 @@
   .insights-landing__category-card[data-category="tutorials"]:focus-visible {
     box-shadow: 
       0 0 0 1px var(--info),
-      0 8px 24px rgba(0, 0, 0, 0.1),
+      0 8px 24px color-mix(in srgb, var(--color-black) 10%, transparent),
       0 0 40px var(--info-glow);
   }
 
@@ -398,7 +398,7 @@
     .insights-landing__category-card[data-category="ai-governance"]:focus-visible,
     .insights-landing__category-card[data-category="tutorials"]:hover,
     .insights-landing__category-card[data-category="tutorials"]:focus-visible {
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 8px 24px color-mix(in srgb, var(--color-black) 10%, transparent);
     }
   }
 
@@ -471,7 +471,7 @@
 
   .insights-landing__topic-card:hover {
     border-color: var(--primary);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 16px color-mix(in srgb, var(--color-black) 8%, transparent);
     transform: translateY(-2px);
   }
 

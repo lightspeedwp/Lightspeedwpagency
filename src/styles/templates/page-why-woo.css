@@ -1,0 +1,209 @@
+/**
+ * Why WooCommerce Page Styles
+ *
+ * 100% CSS variables, BEM naming, light/dark mode aware.
+ */
+
+.why-woo-page {
+  --woo-primary: var(--category-pink);
+  --woo-accent: var(--category-cyan);
+  --woo-bg: var(--background);
+  --woo-surface: var(--card);
+  --woo-text: var(--foreground);
+  --woo-muted: color-mix(in srgb, var(--foreground) 70%, transparent);
+  --woo-border: var(--border-soft);
+  --woo-glow: color-mix(in srgb, var(--woo-primary) 15%, transparent);
+
+  background-color: var(--woo-bg);
+  color: var(--woo-text);
+  min-height: 100vh;
+}
+
+/* ============================================
+   HERO
+   ============================================ */
+
+.why-woo-page__hero {
+  position: relative;
+  padding: var(--spacing-32) 0 var(--spacing-24);
+  overflow: hidden;
+  text-align: center;
+  border-bottom: 1px solid var(--woo-border);
+}
+
+.why-woo-page__hero-glow {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 800px;
+  height: 400px;
+  background: radial-gradient(circle at top, var(--woo-glow) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.why-woo-page__hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-6);
+}
+
+.why-woo-page__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-bold);
+  color: var(--woo-primary);
+  background: color-mix(in srgb, var(--woo-primary) 10%, transparent);
+  padding: var(--spacing-2) var(--spacing-4);
+  border-radius: var(--radius-full);
+  border: 1px solid color-mix(in srgb, var(--woo-primary) 30%, transparent);
+}
+
+.why-woo-page__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-6xl);
+  font-weight: var(--font-weight-black);
+  line-height: var(--line-height-tight);
+  color: var(--woo-text);
+}
+
+.why-woo-page__highlight {
+  background: linear-gradient(90deg, var(--woo-accent), var(--woo-primary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.why-woo-page__desc {
+  font-family: var(--font-secondary);
+  font-size: var(--text-xl);
+  color: var(--woo-muted);
+  line-height: var(--line-height-relaxed);
+  max-width: 600px;
+}
+
+.why-woo-page__actions {
+  display: flex;
+  gap: var(--spacing-4);
+  justify-content: center;
+  margin-top: var(--spacing-4);
+}
+
+/* ============================================
+   PAIN POINTS
+   ============================================ */
+
+.why-woo-page__pain-points {
+  padding: var(--section-padding-y) 0;
+  background: color-mix(in srgb, var(--category-indigo) 5%, var(--woo-bg));
+  border-bottom: 1px solid var(--woo-border);
+}
+
+.why-woo-page__pain-card {
+  background: var(--woo-surface);
+  border: 1px solid var(--woo-border);
+  padding: var(--spacing-8);
+  border-radius: var(--radius-lg);
+  height: 100%;
+  transition: transform var(--transition-base) var(--ease-in-out),
+              box-shadow var(--transition-base) var(--ease-in-out);
+}
+
+.why-woo-page__pain-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--woo-accent);
+  box-shadow: 0 10px 30px color-mix(in srgb, var(--woo-accent) 15%, transparent);
+}
+
+.why-woo-page__pain-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--woo-text);
+  margin-bottom: var(--spacing-4);
+}
+
+.why-woo-page__pain-desc {
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  color: var(--woo-muted);
+  line-height: var(--line-height-relaxed);
+}
+
+/* ============================================
+   FEATURES
+   ============================================ */
+
+.why-woo-page__features {
+  padding: var(--section-padding-y) 0;
+  background: var(--woo-bg);
+}
+
+.why-woo-page__section-header {
+  margin-bottom: var(--spacing-16);
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.why-woo-page__section-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-4xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--woo-text);
+  margin-bottom: var(--spacing-4);
+}
+
+.why-woo-page__section-desc {
+  font-family: var(--font-secondary);
+  font-size: var(--text-lg);
+  color: var(--woo-muted);
+  line-height: var(--line-height-relaxed);
+}
+
+/* ============================================
+   TESTIMONIAL
+   ============================================ */
+
+.why-woo-page__testimonial {
+  padding: var(--section-padding-y) 0;
+  background: color-mix(in srgb, var(--category-indigo) 5%, var(--woo-bg));
+  border-top: 1px solid var(--woo-border);
+}
+
+.why-woo-page__testimonial-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* ============================================
+   DARK MODE OVERRIDES
+   ============================================ */
+
+.dark .why-woo-page__pain-card {
+  background: color-mix(in srgb, var(--card) 60%, transparent);
+}
+
+.dark .why-woo-page__pain-card:hover {
+  background: color-mix(in srgb, var(--card) 80%, transparent);
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .why-woo-page__pain-card:hover {
+    transform: none;
+  }
+}

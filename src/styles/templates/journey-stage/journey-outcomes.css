@@ -1,0 +1,116 @@
+/**
+ * Journey Stage — Outcomes Section
+ *
+ * Grid of outcome cards with icons showing what users achieve at this phase.
+ * Uses glassmorphism for cards in dark mode.
+ *
+ * BEM: .journey-stage__outcomes*
+ * 100% CSS variables — zero hardcoded colors/fonts/spacing
+ */
+
+/* ============================================
+   OUTCOMES LIST
+   ============================================ */
+
+.journey-stage__outcomes {
+  padding: var(--section-padding-y) var(--section-padding-x);
+  background: var(--card);
+}
+
+.journey-stage__outcomes-inner {
+  max-width: var(--section-max-width);
+  margin: 0 auto;
+}
+
+.journey-stage__outcomes-heading {
+  font-family: var(--font-primary);
+  font-size: var(--text-h3);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  margin: 0 0 var(--spacing-8) 0;
+  text-align: center;
+  position: relative;
+  padding-bottom: var(--spacing-4);
+}
+
+.journey-stage__outcomes-heading::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: var(--spacing-16);
+  height: var(--wp--preset--border-width--2);
+  background: linear-gradient(90deg, var(--phase-accent, var(--primary)), var(--accent));
+  border-radius: var(--radius-full);
+}
+
+.journey-stage__outcomes-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-4);
+}
+
+@media (min-width: 640px) {
+  .journey-stage__outcomes-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1024px) {
+  .journey-stage__outcomes-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.journey-stage__outcome-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-3);
+  padding: var(--spacing-4);
+  border-radius: var(--radius-lg);
+  background: var(--background);
+  border: var(--wp--preset--border-width--1) solid var(--border-soft);
+  transition: border-color var(--transition-base) ease;
+}
+
+.journey-stage__outcome-item:hover {
+  border-color: color-mix(in srgb, var(--phase-accent) 40%, transparent);
+}
+
+.journey-stage__outcome-icon {
+  flex-shrink: 0;
+  color: var(--phase-accent);
+  margin-top: var(--spacing-0);
+}
+
+.journey-stage__outcome-text {
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  color: var(--foreground);
+  line-height: var(--line-height-normal);
+}
+
+/* ============================================
+   DARK MODE
+   ============================================ */
+
+.dark .journey-stage__outcomes {
+  background: color-mix(in srgb, var(--background) 95%, var(--primary) 5%);
+}
+
+.dark .journey-stage__outcome-item {
+  background: color-mix(in srgb, var(--card) 60%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-color: color-mix(in srgb, var(--border) 60%, transparent);
+}
+
+.dark .journey-stage__outcome-item:hover {
+  border-color: color-mix(in srgb, var(--phase-accent) 60%, transparent);
+  box-shadow: var(--shadow-glow-sm);
+}
+
+.dark .journey-stage__outcomes-heading::after {
+  box-shadow: var(--shadow-glow-sm);
+}

@@ -1,0 +1,19 @@
+/**
+ * Journey Stage Template — Orchestrator
+ *
+ * Imports all modular journey stage component styles.
+ * This is a clean import-only orchestrator file.
+ *
+ * Landing pages for each of the 6 website-journey phases:
+ * Ignite → Create → Build → Launch → Grow → Evolve
+ *
+ * BEM naming: .journey-stage__*, .journey-progress__*
+ * 100% CSS variables — zero hardcoded colors/fonts/spacing
+ */
+
+@import './journey-hero.css';
+@import './journey-progress.css';
+@import './journey-outcomes.css';
+@import './journey-services.css';
+@import './journey-deliverables.css';
+@import './journey-navigation.css';

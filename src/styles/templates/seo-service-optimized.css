@@ -215,7 +215,7 @@
   right: 0;
   bottom: 0;
   width: 30px;
-  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3));
+  background: linear-gradient(to right, transparent, color-mix(in srgb, var(--color-white) 30%, transparent));
   animation: shimmer 2s infinite;
 }
 

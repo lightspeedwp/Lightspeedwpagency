@@ -26,24 +26,11 @@
 @import '../patterns/hero/hero-base.css';
 
 /* ============================================
- * RELATED ARTICLES SECTION — UNIQUE STYLE
+ * RELATED ARTICLES SECTION — Removed (using PostCardGrid pattern component)
+ * Previous: .single-post-page__related-grid (1→3 columns, 768px)
+ * Migration: Phase 2.1b — Template now uses PostCardGrid pattern
+ * Lines saved: 11 lines (grid base + media query)
  * ============================================ */
-
-/**
- * Related articles grid
- * Responsive: 1 col mobile → 3 cols desktop
- */
-.single-post-page__related-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--spacing-8);
-}
-
-@media (min-width: 768px) {
-  .single-post-page__related-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
 
 /* ============================================
  * RELATED ARTICLE CARD

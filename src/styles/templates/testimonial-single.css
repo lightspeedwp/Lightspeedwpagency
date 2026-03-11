@@ -5,6 +5,21 @@
  * Covers all 4 variants: standard, audio, video, gallery.
  */
 
+.single-testimonial__back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  color: var(--primary);
+  text-decoration: none;
+  transition: color var(--transition-base) ease;
+}
+
+.single-testimonial__back-link:hover {
+  color: var(--primary-hover);
+}
+
 /* ── Hero Section ── */
 .single-testimonial__hero {
   padding: var(--section-padding-y) var(--section-padding-x);
@@ -107,6 +122,12 @@
   border-left: 4px solid var(--primary);
 }
 
+.single-testimonial__quote--center {
+  text-align: center;
+  border-left: none;
+  padding-left: 0;
+}
+
 /* ── Full Story ── */
 .single-testimonial__story {
   padding: var(--section-padding-y) var(--section-padding-x);
@@ -130,6 +151,24 @@
   font-size: var(--text-lg);
   line-height: var(--line-height-relaxed);
   color: var(--muted-foreground);
+}
+
+/* ── Author variations ── */
+.single-testimonial__author-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-4);
+  margin-bottom: var(--spacing-8);
+}
+
+.single-testimonial__rating--center {
+  justify-content: center;
+}
+
+.single-testimonial__icon-inline {
+  display: inline;
+  vertical-align: middle;
 }
 
 /* ── Meta Sidebar ── */
@@ -231,11 +270,32 @@
 }
 
 .single-testimonial__audio-progress-bar {
-  width: 35%;
   height: 100%;
   background-color: var(--primary);
   border-radius: var(--radius-full);
   transition: width var(--transition-slow) var(--ease-in-out);
+}
+
+.single-testimonial__waveform {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  height: var(--spacing-10);
+}
+
+.single-testimonial__waveform-bar {
+  width: 3px;
+  border-radius: var(--radius-full);
+  transition: background-color var(--transition-base) var(--ease-in-out);
+}
+
+.single-testimonial__waveform-bar--active {
+  background-color: var(--primary);
+}
+
+.single-testimonial__waveform-bar--inactive {
+  background-color: var(--muted);
 }
 
 .single-testimonial__transcript {
@@ -380,6 +440,36 @@
 }
 
 /* ── Project Results ── */
+.single-testimonial__results-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h3);
+  font-weight: var(--font-weight-medium);
+  color: var(--foreground);
+  text-align: center;
+  margin-bottom: var(--spacing-8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-3);
+}
+
+.single-testimonial__results-icon {
+  color: var(--primary);
+}
+
+.single-testimonial__tech-section {
+  text-align: center;
+  margin-top: var(--spacing-10);
+}
+
+.single-testimonial__tech-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h5);
+  font-weight: var(--font-weight-medium);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-4);
+}
+
 .single-testimonial__results {
   display: grid;
   grid-template-columns: repeat(2, 1fr);

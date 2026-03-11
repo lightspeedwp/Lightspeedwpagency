@@ -34,6 +34,7 @@ import { Section } from '../common/Section';
 import { Button } from '../blocks/design/Buttons';
 import { EnquiryModal } from '../ui/EnquiryModal';
 import type { CTAData } from '../../data/cta';
+import '@/styles/patterns/archive-cta.css';
 
 
 export interface ArchiveCTAProps {
@@ -72,20 +73,20 @@ export function ArchiveCTA({
       >
         <Container>
           {/* Content wrapper with section style utility classes */}
-          <div className="section-content-narrow section-content-layer">
+          <div className="section-content-narrow section-content-layer cta-base__container cta-base__container--centered">
             {/* Heading innerBlock - Inherits section style typography */}
-            <h2 className="archive-cta__heading">
+            <h2 className="cta-base__title archive-cta__heading">
               {ctaData.title}
             </h2>
 
             {/* Paragraph innerBlock - Inherits section style typography */}
-            <p className="archive-cta__description">
+            <p className="cta-base__description archive-cta__description">
               {ctaData.description}
             </p>
 
             {/* Buttons Block innerBlock - Single button with data-variant */}
             <div 
-              className="archive-cta__buttons"
+              className="cta-base__actions cta-base__actions--centered"
               role="group"
               aria-label="Call to action"
             >

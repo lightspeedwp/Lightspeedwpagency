@@ -26,6 +26,7 @@
 import { Section } from '../common/Section';
 import { Container } from '../common/Container';
 import { Button } from '../blocks/design/Buttons';
+import '@/styles/patterns/cta-section.css';
 
 
 type GradientVariant = 
@@ -111,21 +112,21 @@ export function CTASection({
       )}
 
       <Container className="cta-section__container">
-        <div className="cta-section__content">
+        <div className="cta-base__container cta-base__container--centered cta-section__content">
           {/* Title */}
-          <h2 className="cta-section__title">
+          <h2 className="cta-base__title cta-section__title">
             {title}
           </h2>
 
           {/* Description */}
           {description && (
-            <p className="cta-section__description">
+            <p className="cta-base__description cta-section__description">
               {description}
             </p>
           )}
 
           {/* CTA Buttons */}
-          <div className="cta-section__buttons">
+          <div className="cta-base__actions cta-base__actions--centered cta-section__buttons">
             {/* Primary Button */}
             <Button 
               variant={(isHighlighted || hasGradient) ? 'secondary' : 'primary'}

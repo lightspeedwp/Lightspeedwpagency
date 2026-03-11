@@ -155,7 +155,7 @@ export function LSXSearchTemplate() {
             </div>
           </ScrollReveal>
 
-          <div className="lsx-search__benefits-grid">
+          <div className="lsx-search__benefits-grid responsive-grid-2-cols">
             {lsxSearchBenefits.map((benefit, index) => (
               <ScrollReveal key={index} animation="fade-up" delay={index * 100}>
                 <div className="lsx-search__benefit-card">
@@ -208,7 +208,7 @@ export function LSXSearchTemplate() {
             </div>
           </ScrollReveal>
 
-          <div className="lsx-search__capabilities-grid">
+          <div className="lsx-search__capabilities-grid responsive-grid-2-cols">
             {lsxSearchCapabilities.capabilities.map((capability, index) => (
               <ScrollReveal key={index} animation="fade-up" delay={index * 100}>
                 <div className="lsx-search__capability-category">
@@ -239,7 +239,7 @@ export function LSXSearchTemplate() {
           </ScrollReveal>
 
           <ScrollReveal animation="fade-up" delay={100}>
-            <div className="lsx-search__specs-grid">
+            <div className="lsx-search__specs-grid responsive-grid-2-cols">
               {lsxSearchSpecs.specs.map((spec, index) => (
                 <div key={index} className="lsx-search__spec-item">
                   <span className="lsx-search__spec-label">{spec.label}</span>

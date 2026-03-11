@@ -224,7 +224,7 @@
   left: 0;
   right: 0;
   height: 30%;
-  background: linear-gradient(to top, transparent, rgba(255, 255, 255, 0.2));
+  background: linear-gradient(to top, transparent, color-mix(in srgb, var(--color-white) 20%, transparent));
   border-radius: var(--radius-sm) var(--radius-sm) 0 0;
 }
 

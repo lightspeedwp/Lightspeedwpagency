@@ -93,7 +93,7 @@ export function TeamTemplate() {
             </div>
           </ScrollReveal>
 
-          <div className="team-page__leadership-grid">
+          <div className="team-page__leadership-grid responsive-grid-2-cols">
             {teamPageLeadership.map((leader, index) => (
               <ScrollReveal key={index} animation="fade-up" delay={index * 100}>
                 <div className="team-page__leader-card">
@@ -157,7 +157,7 @@ export function TeamTemplate() {
             </div>
           </ScrollReveal>
 
-          <div className="team-page__members-grid">
+          <div className="team-page__members-grid responsive-grid-3-cols">
             {teamPageMembers.map((member, index) => (
               <ScrollReveal key={index} animation="fade-up" delay={index * 60}>
                 <div className="team-page__member-card">

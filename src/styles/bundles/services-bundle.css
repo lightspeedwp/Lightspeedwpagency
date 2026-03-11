@@ -1,7 +1,7 @@
 /**
  * Services Route Bundle
  * 
- * Routes: /services/*, /services/*/sub-service-*
+ * Routes: /services/*, /services/sub-service-*
  * Size: ~15-25KB gzipped
  * Priority: Critical (core business route)
  * 

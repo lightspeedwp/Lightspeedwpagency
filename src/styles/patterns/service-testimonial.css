@@ -7,6 +7,9 @@
  * BEM block: .service-testimonial
  */
 
+@import '../base/grid-responsive-base.css';
+@import '../base/testimonial-base.css';
+
 /* ── Section ── */
 .service-testimonial {
   padding: var(--spacing-16) 0;
@@ -59,19 +62,6 @@
   font-size: var(--text-lead);
   color: var(--muted-foreground);
   padding-top: var(--spacing-3);
-}
-
-/* ── Grid ── */
-.service-testimonial__grid {
-  display: grid;
-  gap: var(--spacing-8);
-  grid-template-columns: 1fr;
-}
-
-@media (min-width: 768px) {
-  .service-testimonial__grid--2 {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }
 
 /* ── Mobile ── */

@@ -327,12 +327,12 @@
   /* Mode-specific shadows (sm, md, lg, xl, hover, primary) are defined in theme-light.css and theme-dark.css */
   /* Only mode-agnostic shadows are defined here */
   
-  --shadow-2xl: 0 25px 50px rgba(0, 0, 0, 0.2);
-  --shadow-inner: inset 0 2px 4px rgba(0, 0, 0, 0.06);
-  --shadow-card-hover: 0 10px 20px rgba(0, 0, 0, 0.1);
-  --shadow-mega-menu: 0 20px 60px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.1);
-  --shadow-subtle: 0 1px 2px rgba(0, 0, 0, 0.1);
-  --shadow-cta: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-2xl: 0 25px 50px color-mix(in srgb, var(--color-black) 20%, transparent);
+  --shadow-inner: inset 0 2px 4px color-mix(in srgb, var(--color-black) 6%, transparent);
+  --shadow-card-hover: 0 10px 20px color-mix(in srgb, var(--color-black) 10%, transparent);
+  --shadow-mega-menu: 0 20px 60px color-mix(in srgb, var(--color-black) 15%, transparent), 0 0 0 1px color-mix(in srgb, var(--color-white) 10%, transparent);
+  --shadow-subtle: 0 1px 2px color-mix(in srgb, var(--color-black) 10%, transparent);
+  --shadow-cta: 0 4px 6px -1px color-mix(in srgb, var(--color-black) 10%, transparent), 0 2px 4px -1px color-mix(in srgb, var(--color-black) 6%, transparent);
   --shadow-focus-ring: 0 0 0 3px color-mix(in srgb, var(--ring) 15%, transparent);
   --shadow-focus-error: 0 0 0 3px color-mix(in srgb, var(--destructive) 15%, transparent);
   --shadow-focus-success: 0 0 0 3px color-mix(in srgb, var(--success) 15%, transparent);
@@ -347,26 +347,26 @@
      ============================================ */
   
   /* Modal & Backdrop Overlays */
-  --overlay-backdrop: rgba(0, 0, 0, 0.5);         /* Modal backdrop */
-  --overlay-dark: rgba(0, 0, 0, 0.7);             /* Dark overlay (media controls) */
-  --overlay-darker: rgba(0, 0, 0, 0.8);           /* Darker overlay (covers, gradients) */
-  --overlay-medium: rgba(0, 0, 0, 0.4);           /* Medium overlay */
-  --overlay-light: rgba(0, 0, 0, 0.2);            /* Light overlay */
-  --overlay-30: rgba(0, 0, 0, 0.3);               /* Between light and medium */
-  --overlay-15: rgba(0, 0, 0, 0.15);               /* Between extra-light and light */
-  --overlay-extra-light: rgba(0, 0, 0, 0.1);      /* Very subtle dark overlay */
-  --overlay-subtle: rgba(0, 0, 0, 0.05);          /* Barely visible dark overlay */
+  --overlay-backdrop: color-mix(in srgb, var(--color-black) 50%, transparent);         /* Modal backdrop */
+  --overlay-dark: color-mix(in srgb, var(--color-black) 70%, transparent);             /* Dark overlay (media controls) */
+  --overlay-darker: color-mix(in srgb, var(--color-black) 80%, transparent);           /* Darker overlay (covers, gradients) */
+  --overlay-medium: color-mix(in srgb, var(--color-black) 40%, transparent);           /* Medium overlay */
+  --overlay-light: color-mix(in srgb, var(--color-black) 20%, transparent);            /* Light overlay */
+  --overlay-30: color-mix(in srgb, var(--color-black) 30%, transparent);               /* Between light and medium */
+  --overlay-15: color-mix(in srgb, var(--color-black) 15%, transparent);               /* Between extra-light and light */
+  --overlay-extra-light: color-mix(in srgb, var(--color-black) 10%, transparent);      /* Very subtle dark overlay */
+  --overlay-subtle: color-mix(in srgb, var(--color-black) 5%, transparent);          /* Barely visible dark overlay */
   
   /* White overlays (for dark backgrounds) */
-  --overlay-white-soft: rgba(255, 255, 255, 0.1);   /* Subtle white overlay */
-  --overlay-white-15: rgba(255, 255, 255, 0.15);    /* Badge/glass backgrounds */
-  --overlay-white-subtle: rgba(255, 255, 255, 0.2); /* Subtle white (stats, badges) */
-  --overlay-white-medium: rgba(255, 255, 255, 0.3); /* Medium white overlay */
-  --overlay-white-muted: rgba(255, 255, 255, 0.7);  /* Muted white text */
-  --overlay-white-heavy: rgba(255, 255, 255, 0.8);  /* Heavy white (translucent text) */
-  --overlay-white-85: rgba(255, 255, 255, 0.85);    /* Near-opaque white text */
-  --overlay-white-opaque: rgba(255, 255, 255, 0.9); /* Near-opaque white (CTA buttons) */
-  --overlay-white-strong: rgba(255, 255, 255, 0.95); /* Strong white text */
+  --overlay-white-soft: color-mix(in srgb, var(--color-white) 10%, transparent);   /* Subtle white overlay */
+  --overlay-white-15: color-mix(in srgb, var(--color-white) 15%, transparent);    /* Badge/glass backgrounds */
+  --overlay-white-subtle: color-mix(in srgb, var(--color-white) 20%, transparent); /* Subtle white (stats, badges) */
+  --overlay-white-medium: color-mix(in srgb, var(--color-white) 30%, transparent); /* Medium white overlay */
+  --overlay-white-muted: color-mix(in srgb, var(--color-white) 70%, transparent);  /* Muted white text */
+  --overlay-white-heavy: color-mix(in srgb, var(--color-white) 80%, transparent);  /* Heavy white (translucent text) */
+  --overlay-white-85: color-mix(in srgb, var(--color-white) 85%, transparent);    /* Near-opaque white text */
+  --overlay-white-opaque: color-mix(in srgb, var(--color-white) 90%, transparent); /* Near-opaque white (CTA buttons) */
+  --overlay-white-strong: color-mix(in srgb, var(--color-white) 95%, transparent); /* Strong white text */
   
   /* Constant colors (theme-independent) */
   --color-white: #FFFFFF;

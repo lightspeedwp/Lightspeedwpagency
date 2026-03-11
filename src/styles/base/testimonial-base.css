@@ -1,0 +1,128 @@
+/**
+ * Testimonial Base Classes
+ * 
+ * Shared structure for all testimonial components.
+ * Eliminates duplicate CSS across 8 testimonial files.
+ * 
+ * Usage:
+ * - Import in pattern CSS: @import '../base/testimonial-base.css';
+ * - Use base classes in React components alongside block classes.
+ */
+
+/* ============================================
+   QUOTE ICON
+   ============================================ */
+
+.testimonial-base__quote-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+/* ============================================
+   RATING
+   ============================================ */
+
+.testimonial-base__rating {
+  display: flex;
+  gap: 2px;
+}
+
+.testimonial-base__star {
+  color: var(--warning);
+}
+
+.testimonial-base__star--empty {
+  color: var(--muted-foreground);
+  opacity: 0.3;
+}
+
+/* ============================================
+   QUOTE TEXT
+   ============================================ */
+
+.testimonial-base__quote {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  line-height: var(--line-height-relaxed);
+  font-style: italic;
+  color: var(--foreground);
+  margin: 0;
+}
+
+/* ============================================
+   AUTHOR SECTION
+   ============================================ */
+
+.testimonial-base__author {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+}
+
+/* Avatar Image */
+.testimonial-base__avatar {
+  border-radius: var(--radius-full);
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+/* Avatar Initials */
+.testimonial-base__avatar-initials {
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-foreground);
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-semibold);
+  flex-shrink: 0;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+}
+
+/* Author Details Container */
+.testimonial-base__author-details {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+/* Author Name */
+.testimonial-base__author-name {
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  line-height: var(--line-height-snug);
+}
+
+/* Author Role */
+.testimonial-base__author-role {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-snug);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Company Logo */
+.testimonial-base__company-logo {
+  object-fit: contain;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.testimonial-base__company-logo:hover {
+  opacity: 1;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .testimonial-base__company-logo {
+    transition: none;
+  }
+}

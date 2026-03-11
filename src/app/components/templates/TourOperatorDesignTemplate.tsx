@@ -98,7 +98,7 @@ export function TourOperatorDesignTemplate() {
               <p className="tour-design-page__section-desc">{tourDesignChallenges.description}</p>
             </div>
           </ScrollReveal>
-          <div className="tour-design-page__challenge-grid">
+          <div className="tour-design-page__challenge-grid responsive-grid-2-cols">
             {tourDesignChallenges.items.map((item, i) => (
               <ScrollReveal key={i} animation="fade-up" delay={i * 60}>
                 <div className="tour-design-page__challenge-item">
@@ -133,7 +133,7 @@ export function TourOperatorDesignTemplate() {
               <p className="tour-design-page__section-desc">{tourDesignProcess.description}</p>
             </div>
           </ScrollReveal>
-          <div className="tour-design-page__process-grid">
+          <div className="tour-design-page__process-grid responsive-grid-3-cols">
             {tourDesignProcess.steps.map((step, i) => (
               <ScrollReveal key={step.number} animation="fade-up" delay={i * 80}>
                 <div className="tour-design-page__process-step">
@@ -170,7 +170,7 @@ export function TourOperatorDesignTemplate() {
               <p className="tour-design-page__section-desc">{tourDesignServices.description}</p>
             </div>
           </ScrollReveal>
-          <div className="tour-design-page__services-grid">
+          <div className="tour-design-page__services-grid responsive-grid-3-cols">
             {tourDesignServices.items.map((svc, i) => (
               <ScrollReveal key={i} animation="fade-up" delay={i * 60}>
                 <Link

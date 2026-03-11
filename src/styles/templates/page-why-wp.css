@@ -1,0 +1,209 @@
+/**
+ * Why WordPress Page Styles
+ *
+ * 100% CSS variables, BEM naming, light/dark mode aware.
+ */
+
+.why-wp-page {
+  --wp-primary: var(--category-blue);
+  --wp-accent: var(--category-cyan);
+  --wp-bg: var(--background);
+  --wp-surface: var(--card);
+  --wp-text: var(--foreground);
+  --wp-muted: color-mix(in srgb, var(--foreground) 70%, transparent);
+  --wp-border: var(--border-soft);
+  --wp-glow: color-mix(in srgb, var(--wp-primary) 15%, transparent);
+
+  background-color: var(--wp-bg);
+  color: var(--wp-text);
+  min-height: 100vh;
+}
+
+/* ============================================
+   HERO
+   ============================================ */
+
+.why-wp-page__hero {
+  position: relative;
+  padding: var(--spacing-32) 0 var(--spacing-24);
+  overflow: hidden;
+  text-align: center;
+  border-bottom: 1px solid var(--wp-border);
+}
+
+.why-wp-page__hero-glow {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 800px;
+  height: 400px;
+  background: radial-gradient(circle at top, var(--wp-glow) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.why-wp-page__hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-6);
+}
+
+.why-wp-page__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-bold);
+  color: var(--wp-primary);
+  background: color-mix(in srgb, var(--wp-primary) 10%, transparent);
+  padding: var(--spacing-2) var(--spacing-4);
+  border-radius: var(--radius-full);
+  border: 1px solid color-mix(in srgb, var(--wp-primary) 30%, transparent);
+}
+
+.why-wp-page__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-6xl);
+  font-weight: var(--font-weight-black);
+  line-height: var(--line-height-tight);
+  color: var(--wp-text);
+}
+
+.why-wp-page__highlight {
+  background: linear-gradient(90deg, var(--wp-accent), var(--wp-primary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.why-wp-page__desc {
+  font-family: var(--font-secondary);
+  font-size: var(--text-xl);
+  color: var(--wp-muted);
+  line-height: var(--line-height-relaxed);
+  max-width: 600px;
+}
+
+.why-wp-page__actions {
+  display: flex;
+  gap: var(--spacing-4);
+  justify-content: center;
+  margin-top: var(--spacing-4);
+}
+
+/* ============================================
+   PAIN POINTS
+   ============================================ */
+
+.why-wp-page__pain-points {
+  padding: var(--section-padding-y) 0;
+  background: color-mix(in srgb, var(--category-indigo) 5%, var(--wp-bg));
+  border-bottom: 1px solid var(--wp-border);
+}
+
+.why-wp-page__pain-card {
+  background: var(--wp-surface);
+  border: 1px solid var(--wp-border);
+  padding: var(--spacing-8);
+  border-radius: var(--radius-lg);
+  height: 100%;
+  transition: transform var(--transition-base) var(--ease-in-out),
+              box-shadow var(--transition-base) var(--ease-in-out);
+}
+
+.why-wp-page__pain-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--wp-accent);
+  box-shadow: 0 10px 30px color-mix(in srgb, var(--wp-accent) 15%, transparent);
+}
+
+.why-wp-page__pain-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--wp-text);
+  margin-bottom: var(--spacing-4);
+}
+
+.why-wp-page__pain-desc {
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  color: var(--wp-muted);
+  line-height: var(--line-height-relaxed);
+}
+
+/* ============================================
+   FEATURES
+   ============================================ */
+
+.why-wp-page__features {
+  padding: var(--section-padding-y) 0;
+  background: var(--wp-bg);
+}
+
+.why-wp-page__section-header {
+  margin-bottom: var(--spacing-16);
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.why-wp-page__section-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-4xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--wp-text);
+  margin-bottom: var(--spacing-4);
+}
+
+.why-wp-page__section-desc {
+  font-family: var(--font-secondary);
+  font-size: var(--text-lg);
+  color: var(--wp-muted);
+  line-height: var(--line-height-relaxed);
+}
+
+/* ============================================
+   TESTIMONIAL
+   ============================================ */
+
+.why-wp-page__testimonial {
+  padding: var(--section-padding-y) 0;
+  background: color-mix(in srgb, var(--category-indigo) 5%, var(--wp-bg));
+  border-top: 1px solid var(--wp-border);
+}
+
+.why-wp-page__testimonial-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* ============================================
+   DARK MODE OVERRIDES
+   ============================================ */
+
+.dark .why-wp-page__pain-card {
+  background: color-mix(in srgb, var(--card) 60%, transparent);
+}
+
+.dark .why-wp-page__pain-card:hover {
+  background: color-mix(in srgb, var(--card) 80%, transparent);
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .why-wp-page__pain-card:hover {
+    transform: none;
+  }
+}

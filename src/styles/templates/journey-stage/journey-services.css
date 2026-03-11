@@ -1,0 +1,255 @@
+/**
+ * Journey Stage — Services Section
+ *
+ * Grid of clickable service cards with animated gradient stripe.
+ * Each card links to a specific service related to this journey phase.
+ *
+ * BEM: .journey-stage__services*, .journey-stage__service-*
+ * 100% CSS variables — zero hardcoded colors/fonts/spacing
+ */
+
+/* ============================================
+   ANIMATED GRADIENT STRIPE
+   Used on service card top border
+   ============================================ */
+
+@keyframes journeyCardStripe {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ============================================
+   SERVICES GRID
+   Clickable cards linking to individual services
+   ============================================ */
+
+.journey-stage__services {
+  padding: var(--section-padding-y) var(--section-padding-x);
+}
+
+.journey-stage__services-inner {
+  max-width: var(--section-max-width);
+  margin: 0 auto;
+}
+
+.journey-stage__services-heading {
+  font-family: var(--font-primary);
+  font-size: var(--text-h3);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  margin: 0 0 var(--spacing-2) 0;
+  text-align: center;
+  position: relative;
+  padding-bottom: var(--spacing-4);
+}
+
+.journey-stage__services-heading::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: var(--spacing-16);
+  height: var(--wp--preset--border-width--2);
+  background: linear-gradient(90deg, var(--phase-accent, var(--primary)), var(--accent));
+  border-radius: var(--radius-full);
+}
+
+.journey-stage__services-subheading {
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  color: var(--muted-foreground);
+  text-align: center;
+  margin: 0 0 var(--spacing-8) 0;
+}
+
+.journey-stage__services-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-6);
+}
+
+@media (min-width: 768px) {
+  .journey-stage__services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .journey-stage__services-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Service card */
+.journey-stage__service-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  padding: var(--spacing-6);
+  border-radius: var(--radius-xl);
+  border: var(--wp--preset--border-width--1) solid var(--border-soft);
+  background: var(--card);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all var(--transition-base) ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animated gradient stripe at top */
+.journey-stage__service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--wp--preset--border-width--2);
+  background: linear-gradient(90deg,
+    transparent 0%,
+    var(--phase-accent, var(--primary)) 25%,
+    var(--accent) 50%,
+    var(--phase-accent, var(--primary)) 75%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: journeyCardStripe 4s linear infinite;
+  z-index: 1;
+}
+
+.journey-stage__service-card:hover {
+  border-color: color-mix(in srgb, var(--phase-accent) 40%, transparent);
+  box-shadow:
+    0 0 var(--spacing-5) color-mix(in srgb, var(--phase-accent) 10%, transparent),
+    var(--shadow-md);
+  transform: translateY(calc(var(--wp--preset--spacing--1, 4px) * -0.5));
+}
+
+.journey-stage__service-card:hover::before {
+  opacity: 1;
+}
+
+.journey-stage__service-card:focus-visible {
+  outline: var(--wp--preset--border-width--2) solid var(--primary);
+  outline-offset: var(--wp--preset--border-width--2);
+}
+
+/* Card header with icon */
+.journey-stage__service-card-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+.journey-stage__service-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--spacing-10);
+  height: var(--spacing-10);
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--phase-accent) 12%, transparent);
+  color: var(--phase-accent);
+  flex-shrink: 0;
+}
+
+.journey-stage__service-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  margin: 0;
+}
+
+.journey-stage__service-card:hover .journey-stage__service-title {
+  color: var(--phase-accent);
+}
+
+/* Card description */
+.journey-stage__service-desc {
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-relaxed);
+  margin: 0;
+}
+
+/* Optional badge */
+.journey-stage__service-badge {
+  position: absolute;
+  top: var(--spacing-4);
+  right: var(--spacing-4);
+  display: inline-flex;
+  padding: var(--spacing-0) var(--spacing-3);
+  font-family: var(--font-primary);
+  font-size: var(--text-2xs);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+  color: var(--primary-foreground);
+  background: var(--phase-accent);
+  border-radius: var(--radius-full);
+  line-height: var(--line-height-normal);
+}
+
+/* Arrow indicator (appears on hover) */
+.journey-stage__service-arrow {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--phase-accent);
+  margin-top: auto;
+  opacity: 0;
+  transform: translateX(calc(var(--spacing-2) * -1));
+  transition: all var(--transition-base) ease;
+}
+
+.journey-stage__service-card:hover .journey-stage__service-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ============================================
+   DARK MODE
+   ============================================ */
+
+.dark .journey-stage__service-card {
+  background: color-mix(in srgb, var(--card) 60%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-color: color-mix(in srgb, var(--border) 60%, transparent);
+}
+
+.dark .journey-stage__service-card:hover {
+  border-color: color-mix(in srgb, var(--phase-accent) 60%, transparent);
+  box-shadow: 
+    0 0 var(--spacing-6) color-mix(in srgb, var(--phase-accent) 20%, transparent),
+    var(--shadow-glow-md);
+}
+
+.dark .journey-stage__services-heading::after {
+  box-shadow: var(--shadow-glow-sm);
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .journey-stage__service-card::before {
+    animation: none;
+  }
+  
+  .journey-stage__service-card:hover .journey-stage__service-arrow {
+    transform: none;
+  }
+  
+  .journey-stage__service-card,
+  .journey-stage__service-title,
+  .journey-stage__service-arrow {
+    transition: none;
+  }
+}

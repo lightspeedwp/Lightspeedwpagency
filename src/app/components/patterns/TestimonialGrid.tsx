@@ -66,7 +66,8 @@ export function TestimonialGrid({
   // Build grid classes
   const gridClasses = [
     'testimonial-grid',
-    `testimonial-grid--${columns}-col`
+    'grid-base',
+    `grid-cols-${columns}`
   ].filter(Boolean).join(' ');
 
   // Max width class

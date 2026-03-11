@@ -293,7 +293,7 @@ export function MailchimpSolutionTemplate() {
         <div className="mailchimp-page__case-study-overlay" />
 
         <Container>
-          <div className="mailchimp-page__case-study-inner">
+          <div className="mailchimp-page__case-study-inner responsive-grid-2-cols">
             {/* Quote side */}
             <ScrollReveal animation="fade-right">
               <div className="mailchimp-page__case-study-quote">

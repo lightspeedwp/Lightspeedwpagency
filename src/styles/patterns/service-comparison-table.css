@@ -353,7 +353,7 @@
 @media print {
   .service-comparison__table-container {
     overflow-x: visible;
-    border: 1px solid #ccc;
+    border: 1px solid var(--border);
     box-shadow: none;
   }
   
@@ -370,6 +370,6 @@
   }
   
   .service-comparison__checkmark {
-    color: #000;
+    color: var(--foreground);
   }
 }

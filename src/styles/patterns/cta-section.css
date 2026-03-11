@@ -5,6 +5,8 @@
  * All vertical spacing via blockGap (CSS gap) -- zero margin.
  */
 
+@import './base/cta-base.css';
+
 /* Section Layout */
 .cta-section--default {
   background-color: var(--background);
@@ -71,23 +73,11 @@
   z-index: 1;
 }
 
-/* Content -- flex column with blockGap */
-.cta-section__content {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-4);
-  align-items: center;
-  text-align: center;
-  max-width: var(--wp--style--global--narrow-size);
-  margin-left: auto;
-  margin-right: auto;
-}
+/* Content -- Uses cta-base classes now */
 
-/* Title */
+/* Title overrides */
 .cta-section__title {
-  font-family: var(--font-primary);
   font-size: var(--text-3xl);
-  font-weight: var(--font-weight-bold);
   line-height: var(--line-height-tight);
   text-transform: uppercase;
   letter-spacing: var(--letter-spacing-normal);
@@ -114,12 +104,11 @@
   }
 }
 
-/* Description */
+/* Description overrides */
 .cta-section__description {
-  font-family: var(--font-secondary);
-  font-size: var(--text-lg);
-  max-width: 60ch;
-  line-height: var(--line-height-relaxed);
+  font-size: var(--text-xl);
+  max-width: 800px;
+  text-align: center;
 }
 
 .cta-section--default .cta-section__description {
@@ -128,32 +117,17 @@
 
 .cta-section--highlighted .cta-section__description,
 [class*="wp-gradient-"] .cta-section__description {
-  color: var(--overlay-white-opaque);
+  color: var(--overlay-white-medium);
 }
 
 @media (min-width: 768px) {
   .cta-section__description {
-    font-size: var(--text-xl);
-  }
-}
-
-/* Buttons */
-.cta-section__buttons {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-4);
-  align-items: center;
-  justify-content: center;
-  padding-top: var(--spacing-4);
-}
-
-@media (min-width: 480px) {
-  .cta-section__buttons {
-    flex-direction: row;
+    font-size: var(--text-2xl);
   }
 }
 
 /* Button Variants overrides for gradient backgrounds */
+/* These map to cta-base__button--inverted but kept for specific cta-section modifier logic */
 .cta-section__button--primary-highlighted .wp-block-button__link {
   background-color: var(--color-white);
   color: var(--primary);
@@ -166,7 +140,8 @@
 }
 
 .cta-section__button--secondary-highlighted .wp-block-button__link {
-  border-color: var(--overlay-white-medium);
+  background-color: transparent;
+  border-color: var(--overlay-white-opaque);
   color: var(--color-white);
 }
 
@@ -181,16 +156,16 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: var(--spacing-6);
-  padding-top: var(--spacing-4);
-  font-family: var(--font-secondary);
-  font-size: var(--text-sm);
+  margin-top: var(--spacing-6);
 }
 
 .cta-section__trust-item {
   display: flex;
   align-items: center;
   gap: var(--spacing-2);
-  color: var(--overlay-white-opaque);
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--overlay-white-medium);
 }
 
 .cta-section__trust-check {
@@ -202,5 +177,5 @@
   background-color: var(--overlay-white-subtle);
   border-radius: 50%;
   font-size: var(--text-2xs);
-  font-weight: bold;
+  color: var(--color-white);
 }

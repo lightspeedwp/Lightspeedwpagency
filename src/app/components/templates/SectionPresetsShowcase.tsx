@@ -145,7 +145,7 @@ export function SectionPresetsShowcase() {
                       )}
 
                       {category.category === 'Stats' && (
-                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2rem', textAlign: 'center' }}>
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 'var(--spacing-8)', textAlign: 'center' }}>
                           <div>
                             <div className="stat-number">100%</div>
                             <div className="stat-label">Uptime</div>

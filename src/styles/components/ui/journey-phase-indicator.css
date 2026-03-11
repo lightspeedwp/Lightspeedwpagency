@@ -150,7 +150,7 @@
   background: var(--node-accent);
   border-color: var(--node-accent);
   color: var(--primary-foreground);
-  box-shadow: 0 0 0 4px rgba(var(--node-accent-rgb, 139, 92, 246), 0.2);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--node-accent, #8b5cf6) 20%, transparent);
   animation: journey-pulse 2s ease-in-out infinite;
 }
 
@@ -174,10 +174,10 @@
 
 @keyframes journey-pulse {
   0%, 100% {
-    box-shadow: 0 0 0 4px rgba(var(--node-accent-rgb, 139, 92, 246), 0.2);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--node-accent, #8b5cf6) 20%, transparent);
   }
   50% {
-    box-shadow: 0 0 0 8px rgba(var(--node-accent-rgb, 139, 92, 246), 0.1);
+    box-shadow: 0 0 0 8px color-mix(in srgb, var(--node-accent, #8b5cf6) 10%, transparent);
   }
 }
 

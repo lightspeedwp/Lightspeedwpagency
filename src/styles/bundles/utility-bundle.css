@@ -65,6 +65,19 @@
 @import '../templates/site-map.css';
 @import '../templates/tutorials-page.css';
 @import '../templates/publishers-page.css';
+@import '../templates/page-why-landing.css';
+@import '../templates/page-why-mailchimp.css';
+@import '../templates/page-why-lsx.css';
+@import '../templates/page-why-lightspeed.css';
+@import '../templates/page-why-tour.css';
+@import '../templates/page-website-packages.css';
+@import '../templates/page-referrals.css';
+@import '../templates/page-free-consultation.css';
+@import '../templates/page-free-woo-consultation.css';
+@import '../templates/page-briefing.css';
+@import '../templates/page-thank-you.css';
+@import '../templates/page-client-feedback.css';
+@import '../templates/page-getting-started.css';
 
 /* ============================================
    UTILITY PATTERNS

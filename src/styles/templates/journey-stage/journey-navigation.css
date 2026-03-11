@@ -1,0 +1,140 @@
+/**
+ * Journey Stage — Navigation
+ *
+ * Previous/Next phase navigation at bottom of page.
+ * Allows users to navigate through the 6-phase journey.
+ *
+ * BEM: .journey-stage__nav*
+ * 100% CSS variables — zero hardcoded colors/fonts/spacing
+ */
+
+/* ============================================
+   PREV / NEXT NAVIGATION
+   Horizontal journey nav at the bottom
+   ============================================ */
+
+.journey-stage__nav {
+  padding: var(--spacing-8) var(--section-padding-x);
+  border-top: var(--wp--preset--border-width--1) solid var(--border-soft);
+}
+
+.journey-stage__nav-inner {
+  max-width: var(--section-max-width);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: var(--spacing-4);
+}
+
+.journey-stage__nav-link {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+  padding: var(--spacing-4) var(--spacing-6);
+  border-radius: var(--radius-xl);
+  border: var(--wp--preset--border-width--1) solid var(--border-soft);
+  background: var(--card);
+  text-decoration: none;
+  transition: all var(--transition-base) ease;
+  flex: 1;
+  max-width: 50%;
+}
+
+.journey-stage__nav-link:hover {
+  border-color: color-mix(in srgb, var(--nav-accent, var(--primary)) 40%, transparent);
+  box-shadow: 0 0 var(--spacing-4) color-mix(in srgb, var(--nav-accent, var(--primary)) 12%, transparent);
+}
+
+.journey-stage__nav-link:focus-visible {
+  outline: var(--wp--preset--border-width--2) solid var(--primary);
+  outline-offset: var(--wp--preset--border-width--2);
+}
+
+.journey-stage__nav-link--next {
+  flex-direction: row-reverse;
+  text-align: right;
+  margin-left: auto;
+}
+
+.journey-stage__nav-pip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--spacing-10);
+  height: var(--spacing-10);
+  border-radius: var(--radius-full);
+  background: color-mix(in srgb, var(--nav-accent, var(--primary)) 12%, transparent);
+  color: var(--nav-accent, var(--primary));
+  flex-shrink: 0;
+}
+
+.journey-stage__nav-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-0);
+}
+
+.journey-stage__nav-label {
+  font-family: var(--font-secondary);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+}
+
+.journey-stage__nav-name {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+}
+
+.journey-stage__nav-link:hover .journey-stage__nav-name {
+  color: var(--nav-accent, var(--primary));
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 767px) {
+  .journey-stage__nav-inner {
+    flex-direction: column;
+  }
+  
+  .journey-stage__nav-link {
+    max-width: 100%;
+  }
+  
+  .journey-stage__nav-link--next {
+    flex-direction: row-reverse;
+  }
+}
+
+/* ============================================
+   DARK MODE
+   ============================================ */
+
+.dark .journey-stage__nav {
+  border-top-color: var(--glass-border);
+}
+
+.dark .journey-stage__nav-link {
+  background: color-mix(in srgb, var(--card) 60%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-color: color-mix(in srgb, var(--border) 60%, transparent);
+}
+
+.dark .journey-stage__nav-link:hover {
+  border-color: color-mix(in srgb, var(--nav-accent, var(--primary)) 60%, transparent);
+  box-shadow: 
+    0 0 var(--spacing-5) color-mix(in srgb, var(--nav-accent, var(--primary)) 20%, transparent),
+    var(--shadow-glow-sm);
+}
+
+.dark .journey-stage__nav-pip {
+  box-shadow: 0 0 var(--spacing-2) color-mix(in srgb, var(--nav-accent, var(--primary)) 20%, transparent);
+}

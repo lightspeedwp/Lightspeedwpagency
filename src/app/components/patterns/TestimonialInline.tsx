@@ -56,7 +56,7 @@ export function TestimonialInline({
 
       {/* Testimonials Grid */}
       <div 
-        className={`testimonial-inline__grid testimonial-inline__grid--${gridCols}-cols`}
+        className={`grid-base grid-cols-${gridCols}`}
       >
         {testimonials.map((testimonial, index) => {
           const cardData: TestimonialCardData = {

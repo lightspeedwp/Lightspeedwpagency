@@ -124,7 +124,7 @@
 .related-services-in-phase__card:hover {
   border-color: var(--card-accent, var(--primary));
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 24px var(--shadow-sm);
 }
 
 .related-services-in-phase__card:focus-visible {

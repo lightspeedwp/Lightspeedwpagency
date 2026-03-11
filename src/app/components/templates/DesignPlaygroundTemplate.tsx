@@ -100,14 +100,14 @@ const radiusTokens: RadiusToken[] = [
 ];
 
 const shadowTokens: ShadowToken[] = [
-  { name: '--shadow-sm', variable: '--shadow-sm', value: '0 1px 3px rgba(0,0,0,0.05)' },
-  { name: '--shadow-md', variable: '--shadow-md', value: '0 4px 6px rgba(0,0,0,0.05)' },
-  { name: '--shadow-lg', variable: '--shadow-lg', value: '0 10px 40px rgba(0,0,0,0.15)' },
-  { name: '--shadow-xl', variable: '--shadow-xl', value: '0 20px 40px rgba(0,0,0,0.12)' },
-  { name: '--shadow-hover', variable: '--shadow-hover', value: '0 8px 16px rgba(0,0,0,0.1)' },
-  { name: '--shadow-inner', variable: '--shadow-inner', value: 'inset 0 2px 4px rgba(0,0,0,0.06)' },
-  { name: '--shadow-neon', variable: '--shadow-neon', value: '0 0 8px #7BE7FF, 0 0 20px rgba(123,231,255,0.4)' },
-  { name: '--shadow-glow', variable: '--shadow-glow', value: '0 0 15px rgba(30,106,255,0.3)' },
+  { name: '--shadow-sm', variable: '--shadow-sm', value: '0 1px 3px color-mix(in srgb, var(--color-black) 5%, transparent)' },
+  { name: '--shadow-md', variable: '--shadow-md', value: '0 4px 6px color-mix(in srgb, var(--color-black) 5%, transparent)' },
+  { name: '--shadow-lg', variable: '--shadow-lg', value: '0 10px 40px color-mix(in srgb, var(--color-black) 15%, transparent)' },
+  { name: '--shadow-xl', variable: '--shadow-xl', value: '0 20px 40px color-mix(in srgb, var(--color-black) 12%, transparent)' },
+  { name: '--shadow-hover', variable: '--shadow-hover', value: '0 8px 16px color-mix(in srgb, var(--color-black) 10%, transparent)' },
+  { name: '--shadow-inner', variable: '--shadow-inner', value: 'inset 0 2px 4px color-mix(in srgb, var(--color-black) 6%, transparent)' },
+  { name: '--shadow-neon', variable: '--shadow-neon', value: '0 0 8px var(--neon-color), 0 0 20px color-mix(in srgb, var(--neon-color) 40%, transparent)' },
+  { name: '--shadow-glow', variable: '--shadow-glow', value: '0 0 15px color-mix(in srgb, var(--primary) 30%, transparent)' },
 ];
 
 const typeFonts = [

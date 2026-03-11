@@ -301,7 +301,7 @@
 
 .morph-border:hover {
   border-color: hsl(var(--primary));
-  box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+  box-shadow: 0 0 20px color-mix(in srgb, var(--primary) 30%, transparent);
 }
 
 /* ============================================
@@ -413,10 +413,10 @@
 @keyframes pulse-glow {
   0%,
   100% {
-    box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+    box-shadow: 0 0 20px color-mix(in srgb, var(--primary) 30%, transparent);
   }
   50% {
-    box-shadow: 0 0 40px rgba(139, 92, 246, 0.6);
+    box-shadow: 0 0 40px color-mix(in srgb, var(--primary) 60%, transparent);
   }
 }
 
@@ -518,9 +518,9 @@
 .skeleton-shimmer {
   background: linear-gradient(
     90deg,
-    rgba(255, 255, 255, 0.05) 0%,
-    rgba(255, 255, 255, 0.1) 50%,
-    rgba(255, 255, 255, 0.05) 100%
+    color-mix(in srgb, var(--color-white) 5%, transparent) 0%,
+    color-mix(in srgb, var(--color-white) 10%, transparent) 50%,
+    color-mix(in srgb, var(--color-white) 5%, transparent) 100%
   );
   background-size: 200% 100%;
   animation: skeleton-shimmer 1.5s ease-in-out infinite;
@@ -606,7 +606,7 @@
 
   .skeleton-shimmer {
     animation: none;
-    background: rgba(255, 255, 255, 0.05);
+    background: color-mix(in srgb, var(--color-white) 5%, transparent);
   }
 
   .dots-loading span {
@@ -637,15 +637,15 @@
 .dark .skeleton-shimmer {
   background: linear-gradient(
     90deg,
-    rgba(255, 255, 255, 0.03) 0%,
-    rgba(255, 255, 255, 0.06) 50%,
-    rgba(255, 255, 255, 0.03) 100%
+    color-mix(in srgb, var(--color-white) 3%, transparent) 0%,
+    color-mix(in srgb, var(--color-white) 6%, transparent) 50%,
+    color-mix(in srgb, var(--color-white) 3%, transparent) 100%
   );
   background-size: 200% 100%;
 }
 
 .dark .morph-border:hover {
-  box-shadow: 0 0 24px rgba(139, 92, 246, 0.4);
+  box-shadow: 0 0 24px color-mix(in srgb, var(--primary) 40%, transparent);
 }
 
 .dark .pulse-glow-animation {
@@ -655,9 +655,9 @@
 @keyframes pulse-glow-dark {
   0%,
   100% {
-    box-shadow: 0 0 24px rgba(139, 92, 246, 0.4);
+    box-shadow: 0 0 24px color-mix(in srgb, var(--primary) 40%, transparent);
   }
   50% {
-    box-shadow: 0 0 48px rgba(139, 92, 246, 0.7);
+    box-shadow: 0 0 48px color-mix(in srgb, var(--primary) 70%, transparent);
   }
 }

@@ -90,7 +90,7 @@ export const FeaturedProjectText: React.FC<FeaturedProjectTextProps> = ({
           <div style={{
             position: 'absolute',
             inset: 0,
-            background: 'linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 40%)',
+            background: 'linear-gradient(to top, color-mix(in srgb, var(--color-black) 80%, transparent) 0%, transparent 40%)',
             pointerEvents: 'none'
           }} />
         </div>

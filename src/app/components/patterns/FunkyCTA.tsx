@@ -9,6 +9,7 @@ import { Container } from '../common/Container';
 import { Button } from '../blocks/design/Buttons';
 import { Check } from '@phosphor-icons/react';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
+import '@/styles/patterns/funky-cta.css';
 
 interface FunkyCTAProps {
   title: string;
@@ -41,14 +42,14 @@ export function FunkyCTA({
         <ScrollReveal animation="fade-up">
           <div className="funky-cta__inner">
             <div className="funky-cta__content">
-              <h2 className="funky-cta__title">
+              <h2 className="cta-base__title funky-cta__title">
                 {title}
               </h2>
-              <p className="funky-cta__description">
+              <p className="cta-base__description funky-cta__description">
                 {description}
               </p>
               
-              <div className="funky-cta__action">
+              <div className="cta-base__actions funky-cta__action">
                 <Button 
                   variant="default" 
                   size="lg" 

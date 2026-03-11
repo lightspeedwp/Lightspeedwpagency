@@ -2,8 +2,10 @@
  * Gradient CTA Section Pattern Styles
  * 
  * BEM-compliant styles for the GradientCTASection component.
- * All vertical spacing via blockGap (CSS gap) -- zero margin.
+ * Uses cta-base.css for common styling.
  */
+
+@import './base/cta-base.css';
 
 .gradient-cta-section {
   position: relative;
@@ -38,7 +40,7 @@
   }
 }
 
-/* Content Column -- flex column with blockGap */
+/* Content Column */
 .gradient-cta-section__content {
   flex: 1;
   display: flex;
@@ -46,20 +48,13 @@
   gap: var(--spacing-6);
 }
 
-/* Title */
+/* Typography overrides */
 .gradient-cta-section__title {
-  font-family: var(--font-primary);
   font-size: var(--text-h1);
-  font-weight: var(--font-weight-bold);
-  line-height: var(--line-height-snug);
   letter-spacing: var(--letter-spacing-tight);
 }
 
-/* Description */
 .gradient-cta-section__description {
-  font-family: var(--font-primary);
-  font-size: var(--text-lg);
-  line-height: var(--line-height-normal);
   opacity: 0.95;
 }
 
@@ -67,6 +62,7 @@
 .gradient-cta-section__benefits {
   list-style: none;
   padding: 0;
+  margin: 0;
   display: flex;
   flex-direction: column;
   gap: var(--spacing-3);
@@ -84,7 +80,7 @@
 }
 
 .gradient-cta-section__benefit-text {
-  font-family: var(--font-primary);
+  font-family: var(--font-secondary);
   font-size: var(--text-base);
   color: var(--primary-foreground);
 }

@@ -1,0 +1,209 @@
+/**
+ * Why LightSpeed Page Styles
+ *
+ * 100% CSS variables, BEM naming, light/dark mode aware.
+ */
+
+.why-lightspeed-page {
+  --ls-primary: var(--primary);
+  --ls-accent: var(--category-cyan);
+  --ls-bg: var(--background);
+  --ls-surface: var(--card);
+  --ls-text: var(--foreground);
+  --ls-muted: color-mix(in srgb, var(--foreground) 70%, transparent);
+  --ls-border: var(--border-soft);
+  --ls-glow: color-mix(in srgb, var(--ls-primary) 15%, transparent);
+
+  background-color: var(--ls-bg);
+  color: var(--ls-text);
+  min-height: 100vh;
+}
+
+/* ============================================
+   HERO
+   ============================================ */
+
+.why-lightspeed-page__hero {
+  position: relative;
+  padding: var(--spacing-32) 0 var(--spacing-24);
+  overflow: hidden;
+  text-align: center;
+  border-bottom: 1px solid var(--ls-border);
+}
+
+.why-lightspeed-page__hero-glow {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 800px;
+  height: 400px;
+  background: radial-gradient(circle at top, var(--ls-glow) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.why-lightspeed-page__hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-6);
+}
+
+.why-lightspeed-page__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-bold);
+  color: var(--ls-primary);
+  background: color-mix(in srgb, var(--ls-primary) 10%, transparent);
+  padding: var(--spacing-2) var(--spacing-4);
+  border-radius: var(--radius-full);
+  border: 1px solid color-mix(in srgb, var(--ls-primary) 30%, transparent);
+}
+
+.why-lightspeed-page__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-6xl);
+  font-weight: var(--font-weight-black);
+  line-height: var(--line-height-tight);
+  color: var(--ls-text);
+}
+
+.why-lightspeed-page__highlight {
+  background: linear-gradient(90deg, var(--ls-accent), var(--ls-primary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.why-lightspeed-page__desc {
+  font-family: var(--font-secondary);
+  font-size: var(--text-xl);
+  color: var(--ls-muted);
+  line-height: var(--line-height-relaxed);
+  max-width: 600px;
+}
+
+.why-lightspeed-page__actions {
+  display: flex;
+  gap: var(--spacing-4);
+  justify-content: center;
+  margin-top: var(--spacing-4);
+}
+
+/* ============================================
+   PAIN POINTS
+   ============================================ */
+
+.why-lightspeed-page__pain-points {
+  padding: var(--section-padding-y) 0;
+  background: color-mix(in srgb, var(--category-indigo) 5%, var(--ls-bg));
+  border-bottom: 1px solid var(--ls-border);
+}
+
+.why-lightspeed-page__pain-card {
+  background: var(--ls-surface);
+  border: 1px solid var(--ls-border);
+  padding: var(--spacing-8);
+  border-radius: var(--radius-lg);
+  height: 100%;
+  transition: transform var(--transition-base) var(--ease-in-out),
+              box-shadow var(--transition-base) var(--ease-in-out);
+}
+
+.why-lightspeed-page__pain-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--ls-accent);
+  box-shadow: 0 10px 30px color-mix(in srgb, var(--ls-accent) 15%, transparent);
+}
+
+.why-lightspeed-page__pain-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--ls-text);
+  margin-bottom: var(--spacing-4);
+}
+
+.why-lightspeed-page__pain-desc {
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  color: var(--ls-muted);
+  line-height: var(--line-height-relaxed);
+}
+
+/* ============================================
+   FEATURES
+   ============================================ */
+
+.why-lightspeed-page__features {
+  padding: var(--section-padding-y) 0;
+  background: var(--ls-bg);
+}
+
+.why-lightspeed-page__section-header {
+  margin-bottom: var(--spacing-16);
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.why-lightspeed-page__section-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-4xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--ls-text);
+  margin-bottom: var(--spacing-4);
+}
+
+.why-lightspeed-page__section-desc {
+  font-family: var(--font-secondary);
+  font-size: var(--text-lg);
+  color: var(--ls-muted);
+  line-height: var(--line-height-relaxed);
+}
+
+/* ============================================
+   TESTIMONIAL
+   ============================================ */
+
+.why-lightspeed-page__testimonial {
+  padding: var(--section-padding-y) 0;
+  background: color-mix(in srgb, var(--category-indigo) 5%, var(--ls-bg));
+  border-top: 1px solid var(--ls-border);
+}
+
+.why-lightspeed-page__testimonial-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* ============================================
+   DARK MODE OVERRIDES
+   ============================================ */
+
+.dark .why-lightspeed-page__pain-card {
+  background: color-mix(in srgb, var(--card) 60%, transparent);
+}
+
+.dark .why-lightspeed-page__pain-card:hover {
+  background: color-mix(in srgb, var(--card) 80%, transparent);
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .why-lightspeed-page__pain-card:hover {
+    transform: none;
+  }
+}

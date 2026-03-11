@@ -58,7 +58,7 @@
   grid-template-columns: repeat(4, 1fr);
   gap: var(--spacing-4);
   padding: var(--spacing-6);
-  background: rgba(255, 255, 255, 0.03);
+  background: color-mix(in srgb, var(--color-white) 3%, transparent);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
 }
@@ -104,7 +104,7 @@
 .sitemap__search-input {
   width: 100%;
   padding: var(--spacing-3) var(--spacing-4) var(--spacing-3) var(--spacing-12);
-  background: rgba(255, 255, 255, 0.03);
+  background: color-mix(in srgb, var(--color-white) 3%, transparent);
   border: 1px solid var(--border);
   border-radius: var(--radius-full);
   font-family: var(--font-secondary);
@@ -120,7 +120,7 @@
 .sitemap__search-input:focus {
   outline: none;
   border-color: hsl(var(--primary));
-  background: rgba(255, 255, 255, 0.05);
+  background: color-mix(in srgb, var(--color-white) 5%, transparent);
 }
 
 /* Categories */
@@ -132,7 +132,7 @@
 
 .sitemap__category {
   padding: var(--spacing-3) var(--spacing-4);
-  background: rgba(255, 255, 255, 0.03);
+  background: color-mix(in srgb, var(--color-white) 3%, transparent);
   border: 1px solid var(--border);
   border-radius: var(--radius-full);
   font-family: var(--font-secondary);
@@ -147,7 +147,7 @@
 }
 
 .sitemap__category:hover {
-  background: rgba(255, 255, 255, 0.05);
+  background: color-mix(in srgb, var(--color-white) 5%, transparent);
   color: var(--foreground);
 }
 
@@ -159,7 +159,7 @@
 
 .sitemap__category-count {
   padding: 2px 6px;
-  background: rgba(0, 0, 0, 0.3);
+  background: color-mix(in srgb, var(--color-black) 30%, transparent);
   border-radius: var(--radius-full);
   font-size: var(--text-xs);
 }
@@ -204,7 +204,7 @@
   align-items: center;
   gap: var(--spacing-4);
   padding: var(--spacing-4);
-  background: rgba(255, 255, 255, 0.03);
+  background: color-mix(in srgb, var(--color-white) 3%, transparent);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   text-decoration: none;
@@ -213,7 +213,7 @@
 
 .sitemap__route:hover {
   transform: translateX(4px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--color-black) 20%, transparent);
   border-color: hsl(var(--primary) / 0.5);
 }
 
@@ -261,7 +261,7 @@
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   color: hsl(var(--primary));
-  background: rgba(0, 0, 0, 0.3);
+  background: color-mix(in srgb, var(--color-black) 30%, transparent);
   padding: 2px 6px;
   border-radius: var(--radius);
   width: fit-content;
@@ -310,7 +310,7 @@
 /* Footer */
 .sitemap__footer {
   padding: var(--spacing-6);
-  background: rgba(255, 255, 255, 0.03);
+  background: color-mix(in srgb, var(--color-white) 3%, transparent);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   display: flex;
@@ -359,32 +359,32 @@
 
 /* Dark mode */
 .dark .sitemap__stats {
-  background: rgba(255, 255, 255, 0.02);
-  border-color: rgba(255, 255, 255, 0.08);
+  background: color-mix(in srgb, var(--color-white) 2%, transparent);
+  border-color: color-mix(in srgb, var(--color-white) 8%, transparent);
 }
 
 .dark .sitemap__search-input {
-  background: rgba(255, 255, 255, 0.02);
-  border-color: rgba(255, 255, 255, 0.08);
+  background: color-mix(in srgb, var(--color-white) 2%, transparent);
+  border-color: color-mix(in srgb, var(--color-white) 8%, transparent);
 }
 
 .dark .sitemap__search-input:focus {
-  background: rgba(255, 255, 255, 0.03);
+  background: color-mix(in srgb, var(--color-white) 3%, transparent);
 }
 
 .dark .sitemap__category {
-  background: rgba(255, 255, 255, 0.02);
-  border-color: rgba(255, 255, 255, 0.08);
+  background: color-mix(in srgb, var(--color-white) 2%, transparent);
+  border-color: color-mix(in srgb, var(--color-white) 8%, transparent);
 }
 
 .dark .sitemap__route {
-  background: rgba(255, 255, 255, 0.02);
-  border-color: rgba(255, 255, 255, 0.08);
+  background: color-mix(in srgb, var(--color-white) 2%, transparent);
+  border-color: color-mix(in srgb, var(--color-white) 8%, transparent);
 }
 
 .dark .sitemap__footer {
-  background: rgba(255, 255, 255, 0.02);
-  border-color: rgba(255, 255, 255, 0.08);
+  background: color-mix(in srgb, var(--color-white) 2%, transparent);
+  border-color: color-mix(in srgb, var(--color-white) 8%, transparent);
 }
 
 /* Reduced motion */

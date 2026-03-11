@@ -187,17 +187,17 @@ export function DesignBlocksShowcase() {
 
               <span className="design-showcase__demo-title">Grid (Auto-fit)</span>
               <Grid minWidth="150px" gap="md" className="wp-mb-8">
-                <div style={{ background: 'var(--card)', padding: '1rem', border: '1px solid var(--border-soft)' }}>Item 1</div>
-                <div style={{ background: 'var(--card)', padding: '1rem', border: '1px solid var(--border-soft)' }}>Item 2</div>
-                <div style={{ background: 'var(--card)', padding: '1rem', border: '1px solid var(--border-soft)' }}>Item 3</div>
-                <div style={{ background: 'var(--card)', padding: '1rem', border: '1px solid var(--border-soft)' }}>Item 4</div>
+                <div style={{ background: 'var(--card)', padding: 'var(--spacing-4)', border: '1px solid var(--border-soft)' }}>Item 1</div>
+                <div style={{ background: 'var(--card)', padding: 'var(--spacing-4)', border: '1px solid var(--border-soft)' }}>Item 2</div>
+                <div style={{ background: 'var(--card)', padding: 'var(--spacing-4)', border: '1px solid var(--border-soft)' }}>Item 3</div>
+                <div style={{ background: 'var(--card)', padding: 'var(--spacing-4)', border: '1px solid var(--border-soft)' }}>Item 4</div>
               </Grid>
 
               <span className="design-showcase__demo-title">Stack (Vertical Flex)</span>
               <Stack gap="md">
-                <div style={{ background: 'var(--muted)', padding: '0.5rem' }}>Stack Item 1</div>
-                <div style={{ background: 'var(--muted)', padding: '0.5rem' }}>Stack Item 2</div>
-                <div style={{ background: 'var(--muted)', padding: '0.5rem' }}>Stack Item 3</div>
+                <div style={{ background: 'var(--muted)', padding: 'var(--spacing-2)' }}>Stack Item 1</div>
+                <div style={{ background: 'var(--muted)', padding: 'var(--spacing-2)' }}>Stack Item 2</div>
+                <div style={{ background: 'var(--muted)', padding: 'var(--spacing-2)' }}>Stack Item 3</div>
               </Stack>
             </div>
           </section>

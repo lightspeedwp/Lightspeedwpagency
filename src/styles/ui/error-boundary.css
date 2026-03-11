@@ -21,7 +21,7 @@
   align-items: center;
   justify-content: center;
   padding: var(--spacing-8);
-  background: rgba(255, 255, 255, 0.03);
+  background: color-mix(in srgb, var(--color-white) 3%, transparent);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
 }
@@ -80,19 +80,19 @@
   color: var(--foreground);
   cursor: pointer;
   padding: var(--spacing-3);
-  background: rgba(255, 255, 255, 0.05);
+  background: color-mix(in srgb, var(--color-white) 5%, transparent);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   transition: background-color 0.3s ease;
 }
 
 .error-boundary__summary:hover {
-  background: rgba(255, 255, 255, 0.08);
+  background: color-mix(in srgb, var(--color-white) 8%, transparent);
 }
 
 .error-boundary__stack {
   padding: var(--spacing-4);
-  background: rgba(0, 0, 0, 0.3);
+  background: color-mix(in srgb, var(--color-black) 30%, transparent);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   margin-top: var(--spacing-2);
@@ -143,22 +143,22 @@
 
 /* Dark mode */
 .dark .error-boundary {
-  background: rgba(255, 255, 255, 0.02);
-  border-color: rgba(255, 255, 255, 0.08);
+  background: color-mix(in srgb, var(--color-white) 2%, transparent);
+  border-color: color-mix(in srgb, var(--color-white) 8%, transparent);
 }
 
 .dark .error-boundary__summary {
-  background: rgba(255, 255, 255, 0.03);
-  border-color: rgba(255, 255, 255, 0.08);
+  background: color-mix(in srgb, var(--color-white) 3%, transparent);
+  border-color: color-mix(in srgb, var(--color-white) 8%, transparent);
 }
 
 .dark .error-boundary__summary:hover {
-  background: rgba(255, 255, 255, 0.05);
+  background: color-mix(in srgb, var(--color-white) 5%, transparent);
 }
 
 .dark .error-boundary__stack {
-  background: rgba(0, 0, 0, 0.5);
-  border-color: rgba(255, 255, 255, 0.08);
+  background: color-mix(in srgb, var(--color-black) 50%, transparent);
+  border-color: color-mix(in srgb, var(--color-white) 8%, transparent);
 }
 
 /* Reduced motion */

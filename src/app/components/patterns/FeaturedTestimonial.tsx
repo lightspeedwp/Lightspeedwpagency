@@ -73,7 +73,7 @@ export const FeaturedTestimonial = ({
 
             {/* Quote Icon */}
             {showQuoteIcon && (
-              <div className="featured-testimonial__quote-icon" aria-hidden="true">
+              <div className="testimonial-base__quote-icon featured-testimonial__quote-icon" aria-hidden="true">
                 <Quotes size={48} />
               </div>
             )}
@@ -81,7 +81,7 @@ export const FeaturedTestimonial = ({
             {/* Rating (if provided) */}
             {rating && (
               <div
-                className="featured-testimonial__rating"
+                className="testimonial-base__rating featured-testimonial__rating"
                 aria-label={`Rating: ${rating} out of 5 stars`}
               >
                 {renderStars(rating)}
@@ -89,29 +89,29 @@ export const FeaturedTestimonial = ({
             )}
 
             {/* Quote */}
-            <blockquote className="featured-testimonial__quote">
+            <blockquote className="testimonial-base__quote featured-testimonial__quote">
               "{quote}"
             </blockquote>
 
             {/* Author Section */}
-            <div className="featured-testimonial__author">
+            <div className="testimonial-base__author featured-testimonial__author">
               {/* Author Photo */}
               {author.photo && (
                 <img
                   src={author.photo}
                   alt={author.name}
-                  className="featured-testimonial__author-photo"
+                  className="testimonial-base__avatar featured-testimonial__author-photo"
                 />
               )}
 
-              <div className="featured-testimonial__author-info">
+              <div className="testimonial-base__author-details featured-testimonial__author-info">
                 {/* Name */}
-                <div className="featured-testimonial__author-name">
+                <div className="testimonial-base__author-name featured-testimonial__author-name">
                   {author.name}
                 </div>
 
                 {/* Role & Company */}
-                <div className="featured-testimonial__author-role">
+                <div className="testimonial-base__author-role featured-testimonial__author-role">
                   {author.role} at {author.company}
                 </div>
               </div>
@@ -121,7 +121,7 @@ export const FeaturedTestimonial = ({
                 <img
                   src={author.companyLogo}
                   alt={`${author.company} logo`}
-                  className="featured-testimonial__company-logo"
+                  className="testimonial-base__company-logo featured-testimonial__company-logo"
                 />
               )}
             </div>

@@ -412,7 +412,7 @@
 
 @media print {
   .service-pricing__card {
-    border: 1px solid #ccc;
+    border: 1px solid var(--border);
     box-shadow: none;
     page-break-inside: avoid;
   }

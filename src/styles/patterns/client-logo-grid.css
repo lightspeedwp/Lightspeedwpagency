@@ -32,7 +32,7 @@
 
 /* Glassmorphism variant */
 .client-logo-grid__container--glass {
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--card);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid var(--border);
@@ -122,11 +122,11 @@
 }
 
 a.client-logo-grid__link:hover {
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: var(--muted);
 }
 
 a.client-logo-grid__link:focus-visible {
-  outline: 2px solid hsl(var(--primary));
+  outline: 2px solid var(--primary);
   outline-offset: 2px;
 }
 
@@ -204,8 +204,8 @@ a.client-logo-grid__link:focus-visible {
 
 /* Dark mode enhancements */
 .dark .client-logo-grid__container--glass {
-  background: rgba(255, 255, 255, 0.02);
-  border-color: rgba(255, 255, 255, 0.08);
+  background: color-mix(in srgb, var(--card) 40%, transparent);
+  border-color: var(--border-soft);
 }
 
 .dark .client-logo-grid__logo {

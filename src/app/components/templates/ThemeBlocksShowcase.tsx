@@ -71,16 +71,16 @@ export function ThemeBlocksShowcase() {
               <div className="theme-showcase__context-card theme-showcase__context-card--light">
                 <span className="theme-showcase__demo-title">Light Context</span>
                 <SiteLogo width={180} />
-                <p style={{ marginTop: '1rem', opacity: 0.8 }}>Logo automatically uses dark text/icon.</p>
+                <p style={{ marginTop: 'var(--spacing-4)', opacity: 0.8 }}>Logo automatically uses dark text/icon.</p>
               </div>
 
               <div className="theme-showcase__context-card theme-showcase__context-card--dark">
-                <span className="theme-showcase__demo-title" style={{ color: 'rgba(255,255,255,0.7)' }}>Dark Context</span>
+                <span className="theme-showcase__demo-title" style={{ color: 'color-mix(in srgb, var(--foreground) 70%, transparent)' }}>Dark Context</span>
                 {/* We simulate dark mode by wrapping in a class if needed, or relying on component logic */}
                 <div className="dark" style={{ background: 'transparent' }}>
                   <SiteLogo width={180} />
                 </div>
-                <p style={{ marginTop: '1rem', opacity: 0.8 }}>Logo automatically switches to light text/icon.</p>
+                <p style={{ marginTop: 'var(--spacing-4)', opacity: 0.8 }}>Logo automatically switches to light text/icon.</p>
               </div>
             </div>
           </section>
@@ -96,7 +96,7 @@ export function ThemeBlocksShowcase() {
 
             <div className="theme-showcase__demo">
               <span className="theme-showcase__demo-title">Standard Navigation</span>
-              <div style={{ border: '1px solid var(--border-soft)', padding: '1rem', borderRadius: 'var(--radius-md)' }}>
+              <div style={{ border: '1px solid var(--border-soft)', padding: 'var(--spacing-4)', borderRadius: 'var(--radius-md)' }}>
                 <Navigation 
                   items={mockNavItems}
                   orientation="horizontal"
@@ -106,7 +106,7 @@ export function ThemeBlocksShowcase() {
 
             <div className="theme-showcase__demo">
               <span className="theme-showcase__demo-title">Mega Menu Preview</span>
-              <p style={{ marginBottom: '1rem' }}>Hover over "Services" to see the mega menu interaction.</p>
+              <p style={{ marginBottom: 'var(--spacing-4)' }}>Hover over "Services" to see the mega menu interaction.</p>
               <div style={{ height: '300px', border: '1px solid var(--border-soft)', borderRadius: 'var(--radius-md)', position: 'relative' }}>
                 <MegaMenu />
               </div>

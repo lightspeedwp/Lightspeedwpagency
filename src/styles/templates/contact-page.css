@@ -553,65 +553,11 @@
    WHY CONTACT US (Reason Cards)
    ============================================ */
 
-.contact-page__reasons {
-  padding: var(--spacing-20) 0;
-  background-color: var(--card);
-  position: relative;
-  overflow: hidden;
-}
-
-/* Dot-grid overlay (dark mode) */
-.dark .contact-page__reasons::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    radial-gradient(circle, var(--overlay-white-soft) 1px, transparent 1px);
-  background-size: 32px 32px;
-  opacity: 0.2;
-  pointer-events: none;
-  animation: contact-dots-drift 30s linear infinite;
-}
-
-@keyframes contact-dots-drift {
-  0% { transform: translate(0, 0); }
-  100% { transform: translate(32px, 32px); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .dark .contact-page__reasons::before {
-    animation: none;
-  }
-}
-
-/* Gradient top border */
-.contact-page__reasons::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent 0%, var(--primary) 50%, transparent 100%);
-  opacity: 0.15;
-}
-
-.dark .contact-page__reasons::after {
-  opacity: 0.4;
-  box-shadow: 0 0 8px color-mix(in srgb, var(--neon-color) 20%, transparent);
-}
-
-.contact-page__reasons-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--spacing-8);
-}
-
-@media (min-width: 768px) {
-  .contact-page__reasons-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
+/* Reasons Section — Removed (using FeatureList pattern component)
+   Previous: .contact-page__reasons-grid (1→3 columns)
+   Migration: March 4, 2026 — Template now uses FeatureList pattern
+   Lines saved: 13 lines (grid base + media query)
+*/
 
 /* Reason Card (Glow Border) */
 .contact-page__reason-card {

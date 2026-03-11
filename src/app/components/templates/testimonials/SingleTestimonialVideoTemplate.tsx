@@ -41,19 +41,11 @@ export function SingleTestimonialVideoTemplate({ slug }: { slug?: string }) {
   return (
     <>
       {/* Back Link */}
-      <Section spacing="xs" style={{ backgroundColor: 'var(--background)' }}>
-        <div className="wp-max-w-6xl" style={{ margin: '0 auto' }}>
+      <Section spacing="xs" background="default">
+        <div className="wp-max-w-6xl">
           <Link
             to="/testimonials"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: 'var(--spacing-2)',
-              fontFamily: 'var(--font-primary)',
-              fontSize: 'var(--text-sm)',
-              color: 'var(--primary)',
-              textDecoration: 'none',
-            }}
+            className="single-testimonial__back-link"
           >
             <ArrowLeft size={16} /> Back to Testimonials
           </Link>
@@ -61,8 +53,8 @@ export function SingleTestimonialVideoTemplate({ slug }: { slug?: string }) {
       </Section>
 
       {/* Video Player */}
-      <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
-        <div className="wp-max-w-6xl" style={{ margin: '0 auto' }}>
+      <Section spacing="xl" background="default">
+        <div className="wp-max-w-6xl">
           <div
             ref={videoRef as any}
             style={videoStyle}
@@ -102,47 +94,29 @@ export function SingleTestimonialVideoTemplate({ slug }: { slug?: string }) {
       {/* Quote + Author */}
       <Section spacing="xl" background="muted">
         <div
-          className="wp-max-w-4xl"
-          style={{ margin: '0 auto' }}
+          className="wp-max-w-4xl wp-text-center"
           ref={quoteRef as any}
         >
           <div style={quoteStyle}>
             {/* Title */}
-            <h1
-              style={{
-                fontFamily: 'var(--font-primary)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 'var(--font-weight-medium)',
-                color: 'var(--foreground)',
-                marginBottom: 'var(--spacing-8)',
-                textAlign: 'center',
-              }}
-            >
+            <h1 className="single-testimonial__story-title">
               {testimonial.title}
             </h1>
 
             {/* Author Card */}
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                gap: 'var(--spacing-4)',
-                marginBottom: 'var(--spacing-8)',
-              }}
-            >
+            <div className="single-testimonial__author-center">
               <img
                 src={testimonial.avatar}
                 alt={testimonial.author}
                 className="single-testimonial__avatar"
               />
-              <div style={{ textAlign: 'center' }}>
+              <div className="wp-text-center">
                 <div className="single-testimonial__author-name">{testimonial.author}</div>
                 <div className="single-testimonial__author-role">{testimonial.role}</div>
                 <div className="single-testimonial__author-company">{testimonial.company}</div>
               </div>
 
-              <div className="single-testimonial__rating">
+              <div className="single-testimonial__rating single-testimonial__rating--center">
                 {[...Array(5)].map((_, i) => (
                   <Star
                     key={i}
@@ -154,22 +128,13 @@ export function SingleTestimonialVideoTemplate({ slug }: { slug?: string }) {
             </div>
 
             {/* Quote */}
-            <blockquote className="single-testimonial__quote" style={{ textAlign: 'center', borderLeft: 'none', paddingLeft: 0 }}>
+            <blockquote className="single-testimonial__quote single-testimonial__quote--center">
               "{testimonial.quote}"
             </blockquote>
 
             {/* Video description */}
             {testimonial.video?.description && (
-              <p
-                style={{
-                  fontFamily: 'var(--font-primary)',
-                  fontSize: 'var(--text-base)',
-                  lineHeight: 'var(--line-height-relaxed)',
-                  color: 'var(--muted-foreground)',
-                  marginTop: 'var(--spacing-8)',
-                  textAlign: 'center',
-                }}
-              >
+              <p className="single-testimonial__story-text wp-mt-8">
                 {testimonial.video.description}
               </p>
             )}
@@ -178,8 +143,8 @@ export function SingleTestimonialVideoTemplate({ slug }: { slug?: string }) {
       </Section>
 
       {/* Metadata */}
-      <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
-        <div className="wp-max-w-4xl" style={{ margin: '0 auto' }}>
+      <Section spacing="xl" background="default">
+        <div className="wp-max-w-4xl">
           <div className="single-testimonial__meta">
             <div className="single-testimonial__meta-item">
               <div className="single-testimonial__meta-label">Service</div>
@@ -192,7 +157,7 @@ export function SingleTestimonialVideoTemplate({ slug }: { slug?: string }) {
             <div className="single-testimonial__meta-item">
               <div className="single-testimonial__meta-label">Format</div>
               <div className="single-testimonial__meta-value">
-                <VideoCamera size={14} style={{ display: 'inline', verticalAlign: 'middle' }} /> Video Testimonial
+                <VideoCamera size={14} className="single-testimonial__icon-inline" /> Video Testimonial
               </div>
             </div>
           </div>
@@ -201,7 +166,7 @@ export function SingleTestimonialVideoTemplate({ slug }: { slug?: string }) {
 
       {/* Related */}
       <Section spacing="xl" background="muted">
-        <div className="wp-max-w-6xl" style={{ margin: '0 auto' }}>
+        <div className="wp-max-w-6xl">
           <QueryLoopTestimonials
             testimonials={related}
             heading="More Testimonials"

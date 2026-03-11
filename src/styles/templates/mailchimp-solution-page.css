@@ -762,31 +762,17 @@
 }
 
 .mailchimp-page__case-study-inner {
-  position: relative;
-  z-index: 1;
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--spacing-12);
   align-items: center;
 }
 
-@media (min-width: 1024px) {
-  .mailchimp-page__case-study-inner {
-    grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-16);
-  }
-}
+/* Case study grid now uses .responsive-grid-2-cols utility class
+   Migration: March 10, 2026 — Media query removed (4 lines saved)
+*/
 
-.mailchimp-page__case-study-label {
-  display: block;
-  font-family: var(--font-mono);
-  font-size: var(--text-sm);
-  letter-spacing: var(--letter-spacing-wider);
-  color: var(--growth-primary);
-  margin-bottom: var(--spacing-4);
-}
-
-.mailchimp-page__blockquote {
+.mailchimp-page__case-study-quote {
   font-family: var(--font-primary);
   font-size: clamp(1.5rem, 3vw, 2.5rem);
   font-weight: var(--font-weight-bold);

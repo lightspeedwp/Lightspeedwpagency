@@ -99,8 +99,8 @@ export const TestimonialSlider = ({
       <Star
         key={i}
         size={20}
-        className={`testimonial-slider__star ${
-          i < rating ? 'testimonial-slider__star--filled' : ''
+        className={`testimonial-base__star ${
+          i < rating ? 'testimonial-slider__star--filled' : 'testimonial-base__star--empty'
         }`}
         fill={i < rating ? 'currentColor' : 'none'}
       />
@@ -160,31 +160,31 @@ export const TestimonialSlider = ({
           )}
 
           {/* Quote */}
-          <blockquote className="testimonial-slider__quote">
+          <blockquote className="testimonial-base__quote testimonial-slider__quote">
             "{currentTestimonial.quote}"
           </blockquote>
 
           {/* Rating */}
           {showRatings && (
-            <div className="testimonial-slider__rating" aria-label={`Rating: ${currentTestimonial.rating} out of 5 stars`}>
+            <div className="testimonial-base__rating testimonial-slider__rating" aria-label={`Rating: ${currentTestimonial.rating} out of 5 stars`}>
               {renderStars(currentTestimonial.rating)}
             </div>
           )}
 
           {/* Author */}
-          <div className="testimonial-slider__author">
+          <div className="testimonial-base__author testimonial-slider__author">
             {currentTestimonial.author.photo && (
               <img
                 src={currentTestimonial.author.photo}
                 alt={currentTestimonial.author.name}
-                className="testimonial-slider__author-photo"
+                className="testimonial-base__avatar testimonial-slider__author-photo"
               />
             )}
-            <div className="testimonial-slider__author-info">
-              <div className="testimonial-slider__author-name">
+            <div className="testimonial-base__author-details testimonial-slider__author-info">
+              <div className="testimonial-base__author-name testimonial-slider__author-name">
                 {currentTestimonial.author.name}
               </div>
-              <div className="testimonial-slider__author-role">
+              <div className="testimonial-base__author-role testimonial-slider__author-role">
                 {currentTestimonial.author.role}, {currentTestimonial.author.company}
               </div>
             </div>

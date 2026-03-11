@@ -376,7 +376,7 @@
  * @import './templates/wetu-importer-page.css';        → WetuImporterTemplate.tsx
  * @import './templates/lsx-sharing-page.css';          → LSXSharingTemplate.tsx
  * @import './templates/lsx-search-page.css';           → LSXSearchTemplate.tsx
- * @import './templates/page-journey-stage.css';        → JourneyStageTemplate.tsx
+ * @import './templates/journey-stage/journey-stage-base.css'; → JourneyStageTemplate.tsx
  * @import './templates/page-single-product.css';       → SingleProductTemplate.tsx
  * @import './templates/tour-operator-archive.css';     → TourOperatorArchiveTemplate.tsx
  * @import './templates/single-tour.css';               → SingleTourTemplate.tsx

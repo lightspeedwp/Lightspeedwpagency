@@ -1,0 +1,209 @@
+/**
+ * Why Tour Operator Page Styles
+ *
+ * 100% CSS variables, BEM naming, light/dark mode aware.
+ */
+
+.why-tour-page {
+  --tour-primary: var(--category-emerald);
+  --tour-accent: var(--category-cyan);
+  --tour-bg: var(--background);
+  --tour-surface: var(--card);
+  --tour-text: var(--foreground);
+  --tour-muted: color-mix(in srgb, var(--foreground) 70%, transparent);
+  --tour-border: var(--border-soft);
+  --tour-glow: color-mix(in srgb, var(--tour-primary) 15%, transparent);
+
+  background-color: var(--tour-bg);
+  color: var(--tour-text);
+  min-height: 100vh;
+}
+
+/* ============================================
+   HERO
+   ============================================ */
+
+.why-tour-page__hero {
+  position: relative;
+  padding: var(--spacing-32) 0 var(--spacing-24);
+  overflow: hidden;
+  text-align: center;
+  border-bottom: 1px solid var(--tour-border);
+}
+
+.why-tour-page__hero-glow {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 800px;
+  height: 400px;
+  background: radial-gradient(circle at top, var(--tour-glow) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.why-tour-page__hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-6);
+}
+
+.why-tour-page__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-bold);
+  color: var(--tour-primary);
+  background: color-mix(in srgb, var(--tour-primary) 10%, transparent);
+  padding: var(--spacing-2) var(--spacing-4);
+  border-radius: var(--radius-full);
+  border: 1px solid color-mix(in srgb, var(--tour-primary) 30%, transparent);
+}
+
+.why-tour-page__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-6xl);
+  font-weight: var(--font-weight-black);
+  line-height: var(--line-height-tight);
+  color: var(--tour-text);
+}
+
+.why-tour-page__highlight {
+  background: linear-gradient(90deg, var(--tour-accent), var(--tour-primary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.why-tour-page__desc {
+  font-family: var(--font-secondary);
+  font-size: var(--text-xl);
+  color: var(--tour-muted);
+  line-height: var(--line-height-relaxed);
+  max-width: 600px;
+}
+
+.why-tour-page__actions {
+  display: flex;
+  gap: var(--spacing-4);
+  justify-content: center;
+  margin-top: var(--spacing-4);
+}
+
+/* ============================================
+   PAIN POINTS
+   ============================================ */
+
+.why-tour-page__pain-points {
+  padding: var(--section-padding-y) 0;
+  background: color-mix(in srgb, var(--category-teal) 5%, var(--tour-bg));
+  border-bottom: 1px solid var(--tour-border);
+}
+
+.why-tour-page__pain-card {
+  background: var(--tour-surface);
+  border: 1px solid var(--tour-border);
+  padding: var(--spacing-8);
+  border-radius: var(--radius-lg);
+  height: 100%;
+  transition: transform var(--transition-base) var(--ease-in-out),
+              box-shadow var(--transition-base) var(--ease-in-out);
+}
+
+.why-tour-page__pain-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--tour-accent);
+  box-shadow: 0 10px 30px color-mix(in srgb, var(--tour-accent) 15%, transparent);
+}
+
+.why-tour-page__pain-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--tour-text);
+  margin-bottom: var(--spacing-4);
+}
+
+.why-tour-page__pain-desc {
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  color: var(--tour-muted);
+  line-height: var(--line-height-relaxed);
+}
+
+/* ============================================
+   FEATURES
+   ============================================ */
+
+.why-tour-page__features {
+  padding: var(--section-padding-y) 0;
+  background: var(--tour-bg);
+}
+
+.why-tour-page__section-header {
+  margin-bottom: var(--spacing-16);
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.why-tour-page__section-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-4xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--tour-text);
+  margin-bottom: var(--spacing-4);
+}
+
+.why-tour-page__section-desc {
+  font-family: var(--font-secondary);
+  font-size: var(--text-lg);
+  color: var(--tour-muted);
+  line-height: var(--line-height-relaxed);
+}
+
+/* ============================================
+   TESTIMONIAL
+   ============================================ */
+
+.why-tour-page__testimonial {
+  padding: var(--section-padding-y) 0;
+  background: color-mix(in srgb, var(--category-teal) 5%, var(--tour-bg));
+  border-top: 1px solid var(--tour-border);
+}
+
+.why-tour-page__testimonial-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* ============================================
+   DARK MODE OVERRIDES
+   ============================================ */
+
+.dark .why-tour-page__pain-card {
+  background: color-mix(in srgb, var(--card) 60%, transparent);
+}
+
+.dark .why-tour-page__pain-card:hover {
+  background: color-mix(in srgb, var(--card) 80%, transparent);
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .why-tour-page__pain-card:hover {
+    transform: none;
+  }
+}

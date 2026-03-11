@@ -215,7 +215,7 @@
    * Destructive/Error soft background (10% opacity)
    * Usage: Error badges, soft highlights
    */
-  --destructive-soft: rgba(239, 68, 68, 0.1);
+  --destructive-soft: color-mix(in srgb, var(--destructive) 10%, transparent);
   
   
   /* ----------------------------------------
@@ -241,7 +241,7 @@
    * Warning soft background (10% opacity)
    * Usage: Warning badges, soft highlights
    */
-  --warning-soft: rgba(245, 158, 11, 0.1);
+  --warning-soft: color-mix(in srgb, var(--warning) 10%, transparent);
   
   
   /* ----------------------------------------
@@ -267,7 +267,7 @@
    * Success soft background (10% opacity)
    * Usage: Success badges, soft highlights
    */
-  --success-soft: rgba(22, 163, 74, 0.1);
+  --success-soft: color-mix(in srgb, var(--success) 10%, transparent);
   
   
   /* ----------------------------------------
@@ -427,19 +427,19 @@
    * Glass background (subtle)
    * Usage: Glassmorphism cards, hero overlays
    */
-  --glass-bg: rgba(255, 255, 255, 0.6);         /* Frosted glass base */
+  --glass-bg: color-mix(in srgb, var(--color-white) 60%, transparent);         /* Frosted glass base */
   
   /**
    * Glass background (stronger)
    * Usage: Prominent glass elements
    */
-  --glass-bg-strong: rgba(255, 255, 255, 0.85);  /* Near opaque glass */
+  --glass-bg-strong: color-mix(in srgb, var(--color-white) 85%, transparent);  /* Near opaque glass */
   
   /**
    * Glass border color
    * Usage: Borders on glass elements
    */
-  --glass-border: rgba(0, 0, 0, 0.08);           /* Subtle border */
+  --glass-border: color-mix(in srgb, var(--color-black) 8%, transparent);           /* Subtle border */
   
   /**
    * Glass text color
@@ -455,12 +455,12 @@
   /**
    * Shadows optimized for light backgrounds
    */
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.05);
-  --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.15);
-  --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.12);
-  --shadow-primary: 0 4px 12px rgba(30, 106, 255, 0.3);  /* Blue glow */
-  --shadow-hover: 0 8px 16px rgba(0, 0, 0, 0.1);
+  --shadow-sm: 0 1px 3px color-mix(in srgb, var(--color-black) 5%, transparent);
+  --shadow-md: 0 4px 6px color-mix(in srgb, var(--color-black) 5%, transparent);
+  --shadow-lg: 0 10px 40px color-mix(in srgb, var(--color-black) 15%, transparent);
+  --shadow-xl: 0 20px 40px color-mix(in srgb, var(--color-black) 12%, transparent);
+  --shadow-primary: 0 4px 12px color-mix(in srgb, var(--primary) 30%, transparent);  /* Blue glow */
+  --shadow-hover: 0 8px 16px color-mix(in srgb, var(--color-black) 10%, transparent);
   
   /**
    * Legacy elevation shadow (brutalist style)

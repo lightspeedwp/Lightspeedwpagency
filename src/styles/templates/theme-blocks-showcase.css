@@ -109,10 +109,10 @@
 
 .theme-showcase__context-card--light {
   background-color: var(--color-white);
-  color: var(--foreground-light, #090909);
+  color: var(--foreground);
 }
 
 .theme-showcase__context-card--dark {
-  background-color: var(--background-dark, #090909);
+  background-color: var(--background);
   color: var(--color-white);
 }

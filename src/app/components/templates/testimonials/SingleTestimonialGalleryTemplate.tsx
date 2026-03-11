@@ -45,19 +45,11 @@ export function SingleTestimonialGalleryTemplate({ slug }: { slug?: string }) {
   return (
     <>
       {/* Back Link */}
-      <Section spacing="xs" style={{ backgroundColor: 'var(--background)' }}>
-        <div className="wp-max-w-6xl" style={{ margin: '0 auto' }}>
+      <Section spacing="xs" background="default">
+        <div className="wp-max-w-6xl">
           <Link
             to="/testimonials"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: 'var(--spacing-2)',
-              fontFamily: 'var(--font-primary)',
-              fontSize: 'var(--text-sm)',
-              color: 'var(--primary)',
-              textDecoration: 'none',
-            }}
+            className="single-testimonial__back-link"
           >
             <ArrowLeft size={16} /> Back to Testimonials
           </Link>
@@ -65,50 +57,15 @@ export function SingleTestimonialGalleryTemplate({ slug }: { slug?: string }) {
       </Section>
 
       {/* Project Title */}
-      <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
-        <div className="wp-max-w-6xl" style={{ margin: '0 auto', textAlign: 'center' }}>
-          <span
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: 'var(--spacing-2)',
-              fontFamily: 'var(--font-secondary)',
-              fontSize: 'var(--text-xs)',
-              fontWeight: 'var(--font-weight-semibold)',
-              letterSpacing: 'var(--letter-spacing-wider)',
-              textTransform: 'uppercase',
-              color: 'var(--primary)',
-              backgroundColor: 'var(--primary-soft)',
-              padding: 'var(--spacing-1-5) var(--spacing-4)',
-              borderRadius: 'var(--radius-full)',
-              marginBottom: 'var(--spacing-6)',
-            }}
-          >
+      <Section spacing="xl" background="default">
+        <div className="wp-max-w-6xl wp-text-center">
+          <span className="single-testimonial__tech-tag wp-inline-flex wp-align-center wp-gap-2 wp-mb-6">
             <Images size={14} /> Portfolio Case Study
           </span>
-          <h1
-            style={{
-              fontFamily: 'var(--font-primary)',
-              fontSize: 'var(--text-h1)',
-              fontWeight: 'var(--font-weight-medium)',
-              lineHeight: 'var(--line-height-tight)',
-              color: 'var(--foreground)',
-              marginTop: 'var(--spacing-4)',
-            }}
-          >
+          <h1 className="single-testimonial__story-title wp-mt-4">
             {testimonial.gallery?.projectTitle || testimonial.title}
           </h1>
-          <p
-            style={{
-              fontFamily: 'var(--font-primary)',
-              fontSize: 'var(--text-lg)',
-              lineHeight: 'var(--line-height-relaxed)',
-              color: 'var(--muted-foreground)',
-              marginTop: 'var(--spacing-4)',
-              maxWidth: '640px',
-              margin: 'var(--spacing-4) auto 0',
-            }}
-          >
+          <p className="single-testimonial__story-text wp-max-w-3xl wp-mt-4 wp-mx-auto">
             {testimonial.gallery?.projectDescription}
           </p>
         </div>
@@ -118,7 +75,6 @@ export function SingleTestimonialGalleryTemplate({ slug }: { slug?: string }) {
       <Section spacing="xl" background="muted">
         <div
           className="wp-max-w-6xl"
-          style={{ margin: '0 auto' }}
           ref={galleryRef as any}
         >
           <div style={galleryStyle}>
@@ -165,40 +121,36 @@ export function SingleTestimonialGalleryTemplate({ slug }: { slug?: string }) {
       </Section>
 
       {/* Client Quote */}
-      <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
+      <Section spacing="xl" background="default">
         <div
           className="wp-max-w-4xl"
-          style={{ margin: '0 auto' }}
           ref={quoteRef as any}
         >
           <div style={quoteStyle}>
-            <div className="single-testimonial__author-card" style={{ justifyContent: 'center' }}>
+            <div className="single-testimonial__author-center">
               <img
                 src={testimonial.avatar}
                 alt={testimonial.author}
                 className="single-testimonial__avatar"
               />
-              <div className="single-testimonial__author-info">
+              <div className="wp-text-center">
                 <div className="single-testimonial__author-name">{testimonial.author}</div>
                 <div className="single-testimonial__author-role">{testimonial.role}</div>
                 <div className="single-testimonial__author-company">{testimonial.company}</div>
               </div>
+
+              <div className="single-testimonial__rating single-testimonial__rating--center">
+                {[...Array(5)].map((_, i) => (
+                  <Star
+                    key={i}
+                    size={20}
+                    className={i < testimonial.rating ? 'single-testimonial__star--filled' : ''}
+                  />
+                ))}
+              </div>
             </div>
 
-            <div className="single-testimonial__rating" style={{ justifyContent: 'center', marginTop: 'var(--spacing-4)' }}>
-              {[...Array(5)].map((_, i) => (
-                <Star
-                  key={i}
-                  size={20}
-                  className={i < testimonial.rating ? 'single-testimonial__star--filled' : ''}
-                />
-              ))}
-            </div>
-
-            <blockquote
-              className="single-testimonial__quote"
-              style={{ textAlign: 'center', borderLeft: 'none', paddingLeft: 0, marginTop: 'var(--spacing-6)' }}
-            >
+            <blockquote className="single-testimonial__quote single-testimonial__quote--center">
               "{testimonial.quote}"
             </blockquote>
           </div>

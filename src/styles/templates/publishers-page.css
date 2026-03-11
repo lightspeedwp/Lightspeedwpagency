@@ -214,26 +214,11 @@
 }
 
 /* ============================================
-   FEATURES GRID
+   FEATURES GRID — Removed (using FeatureList pattern component)
+   Previous: .publishers__features-grid (1→2→3 columns, 768px→1024px)
+   Migration: March 10, 2026 — Template uses FeatureList for newsroom features
+   Lines saved: 17 lines (grid base + 2 media queries)
    ============================================ */
-
-.publishers__features-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--spacing-8);
-}
-
-@media (min-width: 768px) {
-  .publishers__features-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  .publishers__features-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
 
 .publishers__feature-card {
   position: relative;

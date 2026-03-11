@@ -83,7 +83,7 @@
   gap: var(--spacing-4);
   padding: var(--spacing-20);
   text-align: center;
-  background: rgba(255, 255, 255, 0.03);
+  background: color-mix(in srgb, var(--card) 40%, transparent);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
 }
@@ -111,8 +111,8 @@
 
 /* Dark mode */
 .dark .portfolio-gallery__empty {
-  background: rgba(255, 255, 255, 0.02);
-  border-color: rgba(255, 255, 255, 0.08);
+  background: color-mix(in srgb, var(--card) 20%, transparent);
+  border-color: var(--border-soft);
 }
 
 /* Reduced motion */

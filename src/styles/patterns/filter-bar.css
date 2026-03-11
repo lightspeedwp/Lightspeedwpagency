@@ -2,26 +2,12 @@
  * FilterBar Pattern Styles
  * 
  * WordPress pattern: .filter-bar
- * Complete filter interface with search, categories, sorting
- * 
- * Features:
- * - Search input with icon
- * - Category chips (multi-select)
- * - Sort dropdown with direction toggle
- * - Clear filters button
- * - Active filter count badge
- * - Results count display
- * 
- * Design System:
- * - 100% CSS variables
- * - BEM naming (.filter-bar__element)
- * - Reduced motion support
+ * Search, sort, and filter controls for archives
  */
 
-/* Container */
 .filter-bar {
   padding: var(--spacing-6);
-  background: rgba(255, 255, 255, 0.05);
+  background: color-mix(in srgb, var(--card) 40%, transparent);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   display: flex;
@@ -29,19 +15,26 @@
   gap: var(--spacing-4);
 }
 
-/* Top Row */
-.filter-bar__top {
+/* Header (Search & Sort) */
+.filter-bar__header {
   display: flex;
+  flex-direction: column;
   gap: var(--spacing-4);
-  align-items: center;
-  flex-wrap: wrap;
 }
 
-/* Search Input */
+@media (min-width: 768px) {
+  .filter-bar__header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+/* Search */
 .filter-bar__search {
   position: relative;
   flex: 1;
-  min-width: 250px;
+  max-width: 400px;
 }
 
 .filter-bar__search-icon {
@@ -56,19 +49,19 @@
 .filter-bar__search-input {
   width: 100%;
   padding: var(--spacing-3) var(--spacing-10);
-  background: rgba(255, 255, 255, 0.05);
+  background: color-mix(in srgb, var(--card) 60%, transparent);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   font-family: var(--font-secondary);
-  font-size: var(--text-base);
+  font-size: var(--text-sm);
   color: var(--foreground);
-  transition: border-color 0.3s ease, background-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .filter-bar__search-input:focus {
   outline: none;
-  border-color: hsl(var(--primary));
-  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--primary);
+  background: var(--card);
 }
 
 .filter-bar__search-input::placeholder {
@@ -77,207 +70,222 @@
 
 .filter-bar__search-clear {
   position: absolute;
-  right: var(--spacing-3);
+  right: var(--spacing-2);
   top: 50%;
   transform: translateY(-50%);
-  width: 24px;
-  height: 24px;
-  background: none;
-  border: none;
-  color: var(--muted-foreground);
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: transparent;
+  color: var(--muted-foreground);
   cursor: pointer;
-  border-radius: var(--radius);
-  transition: color 0.2s ease, background-color 0.2s ease;
+  border-radius: var(--radius-full);
+  transition: all 0.2s ease;
 }
 
 .filter-bar__search-clear:hover {
   color: var(--foreground);
-  background: rgba(255, 255, 255, 0.1);
+  background: color-mix(in srgb, var(--card) 80%, transparent);
 }
 
-/* Sort Controls */
+/* Sort */
 .filter-bar__sort {
   display: flex;
   align-items: center;
   gap: var(--spacing-2);
-  background: rgba(255, 255, 255, 0.05);
+  background: color-mix(in srgb, var(--card) 60%, transparent);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: var(--spacing-2);
+  padding: 0 var(--spacing-2);
 }
 
-.filter-bar__sort-icon {
+.filter-bar__sort-label {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
   color: var(--muted-foreground);
-  margin-left: var(--spacing-1);
+  padding-left: var(--spacing-2);
 }
 
 .filter-bar__sort-select {
+  appearance: none;
   background: transparent;
   border: none;
-  font-family: var(--font-secondary);
-  font-size: var(--text-base);
-  color: var(--foreground);
-  cursor: pointer;
-  padding: var(--spacing-1) var(--spacing-2);
-  border-radius: var(--radius);
-  transition: background-color 0.2s ease;
-}
-
-.filter-bar__sort-select:hover {
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.filter-bar__sort-select:focus {
-  outline: 2px solid hsl(var(--primary));
-  outline-offset: 2px;
-}
-
-.filter-bar__sort-select option {
-  background: hsl(var(--background));
-  color: var(--foreground);
-}
-
-.filter-bar__sort-direction {
-  width: 32px;
-  height: 32px;
-  background: none;
-  border: none;
-  color: var(--muted-foreground);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  border-radius: var(--radius);
-  transition: color 0.2s ease, background-color 0.2s ease;
-}
-
-.filter-bar__sort-direction:hover {
-  color: var(--foreground);
-  background: rgba(255, 255, 255, 0.1);
-}
-
-/* Clear Filters Button */
-.filter-bar__clear {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-2);
-  padding: var(--spacing-2) var(--spacing-4);
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
+  padding: var(--spacing-2) var(--spacing-6) var(--spacing-2) var(--spacing-2);
   font-family: var(--font-secondary);
   font-size: var(--text-sm);
   font-weight: 500;
   color: var(--foreground);
   cursor: pointer;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
+  outline: none;
+  position: relative;
 }
 
-.filter-bar__clear:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: hsl(var(--primary));
+/* Custom chevron using pseudo-element */
+.filter-bar__sort-wrapper {
+  position: relative;
 }
 
-.filter-bar__clear-badge {
+.filter-bar__sort-wrapper::after {
+  content: '';
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid var(--muted-foreground);
+  pointer-events: none;
+}
+
+.filter-bar__sort-select:hover {
+  background-color: color-mix(in srgb, var(--card) 80%, transparent);
+}
+
+.filter-bar__sort-direction {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 20px;
-  height: 20px;
-  padding: 0 var(--spacing-1);
-  background: hsl(var(--primary));
-  color: hsl(var(--primary-foreground));
-  border-radius: var(--radius-full);
-  font-size: var(--text-xs);
-  font-weight: 600;
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-left: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted-foreground);
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-/* Category Chips */
+.filter-bar__sort-direction:hover {
+  color: var(--foreground);
+  background: color-mix(in srgb, var(--card) 80%, transparent);
+}
+
+/* Filters Body */
+.filter-bar__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  padding-top: var(--spacing-4);
+  border-top: 1px solid var(--border);
+}
+
+/* Categories List */
 .filter-bar__categories {
   display: flex;
   flex-wrap: wrap;
   gap: var(--spacing-2);
 }
 
-.filter-bar__chip {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-2);
-  padding: var(--spacing-2) var(--spacing-3);
-  background: rgba(255, 255, 255, 0.05);
+.filter-bar__category {
+  padding: var(--spacing-2) var(--spacing-4);
+  background: transparent;
   border: 1px solid var(--border);
   border-radius: var(--radius-full);
   font-family: var(--font-secondary);
   font-size: var(--text-sm);
-  font-weight: 500;
   color: var(--foreground);
   cursor: pointer;
-  transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+  transition: all 0.3s ease;
 }
 
-.filter-bar__chip:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: hsl(var(--primary));
-  transform: scale(1.05);
+.filter-bar__category:hover {
+  border-color: var(--primary);
+  color: var(--primary);
 }
 
-.filter-bar__chip--active {
-  background: hsl(var(--primary));
-  color: hsl(var(--primary-foreground));
-  border-color: hsl(var(--primary));
+.filter-bar__category--active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--primary-foreground);
 }
 
-.filter-bar__chip--active:hover {
-  background: hsl(var(--accent));
-  border-color: hsl(var(--accent));
+/* Active Filters */
+.filter-bar__active {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-2);
 }
 
-.filter-bar__chip svg {
-  flex-shrink: 0;
-}
-
-/* Results Count */
-.filter-bar__results {
+.filter-bar__active-label {
   font-family: var(--font-secondary);
   font-size: var(--text-sm);
   color: var(--muted-foreground);
-  padding-top: var(--spacing-2);
-  border-top: 1px solid var(--border);
+  margin-right: var(--spacing-2);
 }
 
-/* Dark mode enhancements */
-.dark .filter-bar {
-  background: rgba(255, 255, 255, 0.03);
-  border-color: rgba(255, 255, 255, 0.08);
+.filter-bar__clear {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2) var(--spacing-4);
+  background: color-mix(in srgb, var(--card) 60%, transparent);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-.dark .filter-bar__search-input,
-.dark .filter-bar__sort,
-.dark .filter-bar__clear,
-.dark .filter-bar__chip {
-  background: rgba(255, 255, 255, 0.03);
-  border-color: rgba(255, 255, 255, 0.08);
+.filter-bar__clear:hover {
+  background: var(--card);
+  border-color: var(--primary);
+  color: var(--foreground);
 }
 
-.dark .filter-bar__search-input:focus {
-  background: rgba(255, 255, 255, 0.05);
+/* Filter Chip */
+.filter-bar__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2) var(--spacing-3);
+  background: color-mix(in srgb, var(--card) 60%, transparent);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--foreground);
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-.dark .filter-bar__sort-select option {
-  background: hsl(220, 13%, 13%);
+.filter-bar__chip:hover {
+  background: var(--card);
+  border-color: var(--primary);
+  transform: scale(1.05);
 }
 
-/* Reduced motion support */
+.filter-bar__chip-remove {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: var(--radius-full);
+  background: var(--muted);
+  color: var(--muted-foreground);
+  transition: all 0.2s ease;
+}
+
+.filter-bar__chip:hover .filter-bar__chip-remove {
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .filter-bar__search-input,
-  .filter-bar__search-clear,
-  .filter-bar__sort-select,
-  .filter-bar__sort-direction,
+  .filter-bar__category,
   .filter-bar__clear,
-  .filter-bar__chip {
+  .filter-bar__chip,
+  .filter-bar__chip-remove {
     transition: none;
   }
 
@@ -286,48 +294,20 @@
   }
 }
 
-/* Responsive: Mobile (< 768px) */
-@media (max-width: 767px) {
-  .filter-bar {
-    padding: var(--spacing-4);
-  }
-
-  .filter-bar__top {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .filter-bar__search {
-    min-width: 100%;
-  }
-
-  .filter-bar__sort {
-    width: 100%;
-    justify-content: space-between;
-  }
-
-  .filter-bar__sort-select {
-    flex: 1;
-  }
-
-  .filter-bar__clear {
-    width: 100%;
-    justify-content: center;
-  }
-
-  .filter-bar__categories {
-    gap: var(--spacing-1);
-  }
-
-  .filter-bar__chip {
-    font-size: var(--text-xs);
-    padding: var(--spacing-1) var(--spacing-2);
-  }
+/* Dark mode enhancements */
+.dark .filter-bar {
+  background: color-mix(in srgb, var(--card) 30%, transparent);
+  border-color: var(--border-soft);
 }
 
-/* Responsive: Tablet (768px - 1023px) */
-@media (min-width: 768px) and (max-width: 1023px) {
-  .filter-bar__search {
-    min-width: 200px;
-  }
+.dark .filter-bar__search-input,
+.dark .filter-bar__sort,
+.dark .filter-bar__clear,
+.dark .filter-bar__chip {
+  background: color-mix(in srgb, var(--card) 50%, transparent);
+  border-color: var(--border-soft);
+}
+
+.dark .filter-bar__search-input:focus {
+  background: var(--card);
 }

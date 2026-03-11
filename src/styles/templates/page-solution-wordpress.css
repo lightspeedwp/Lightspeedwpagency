@@ -12,15 +12,17 @@
   --wp-neon-pink: var(--wp--preset--color--neon-pink);
   --wp-neon-purple: var(--wp--preset--color--deep-purple);
   --wp-neon-cyan: var(--wp--preset--color--neon-cyan);
-  --wp-hero-bg: color-mix(in srgb, var(--wp-neon-purple) 15%, var(--color-black));
-  --wp-card-bg: var(--overlay-white-soft);
-  --wp-card-border: var(--overlay-white-10);
+  
+  /* Adaptive theme variables */
+  --wp-hero-bg: color-mix(in srgb, var(--wp-neon-purple) 15%, var(--background));
+  --wp-card-bg: var(--card);
+  --wp-card-border: var(--border-soft);
   --wp-grid-color: color-mix(in srgb, var(--wp-neon-pink) 15%, transparent);
-  --wp-code-text: color-mix(in srgb, var(--category-indigo) 65%, var(--color-white));
-  --wp-code-string: color-mix(in srgb, var(--wp-neon-cyan) 65%, var(--color-white));
+  --wp-code-text: color-mix(in srgb, var(--category-indigo) 65%, var(--foreground));
+  --wp-code-string: color-mix(in srgb, var(--wp-neon-cyan) 65%, var(--foreground));
 
   /* Additional scoped colors */
-  --wp-stats-bg: color-mix(in srgb, var(--wp-neon-purple) 25%, var(--color-black));
+  --wp-stats-bg: color-mix(in srgb, var(--wp-neon-purple) 25%, var(--background));
 }
 
 /* ============================================
@@ -47,7 +49,7 @@
     linear-gradient(90deg, var(--wp-grid-color) 1px, transparent 1px);
   background-size: 40px 40px;
   background-position: center center;
-  mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
+  mask-image: radial-gradient(circle at center, var(--background) 40%, transparent 80%);
   z-index: 0;
   animation: wp-grid-move 20s linear infinite;
 }
@@ -88,7 +90,7 @@
   font-size: clamp(3rem, 6vw, 5rem);
   font-weight: 800;
   line-height: 1.1;
-  color: var(--color-white);
+  color: var(--foreground);
   margin-bottom: var(--spacing-6);
   text-shadow: 0 0 20px color-mix(in srgb, var(--wp-neon-pink) 50%, transparent);
 }
@@ -120,7 +122,7 @@
 /* Description */
 .wordpress-page__tagline {
   font-size: var(--text-xl);
-  color: color-mix(in srgb, var(--color-white) 80%, transparent);
+  color: color-mix(in srgb, var(--foreground) 80%, transparent);
   max-width: 540px;
   margin-bottom: var(--spacing-8);
   line-height: 1.6;
@@ -133,7 +135,7 @@
   gap: var(--spacing-2);
   padding: var(--spacing-3) var(--spacing-6);
   background: var(--wp-neon-pink);
-  color: var(--color-black);
+  color: var(--background);
   font-weight: 700;
   border-radius: var(--radius);
   text-decoration: none;
@@ -142,7 +144,7 @@
 }
 
 .wordpress-page__btn-primary:hover {
-  background: var(--color-white);
+  background: var(--foreground);
   box-shadow: 0 0 25px color-mix(in srgb, var(--wp-neon-pink) 60%, transparent);
   transform: translateY(-2px);
 }
@@ -153,8 +155,8 @@
   gap: var(--spacing-2);
   padding: var(--spacing-3) var(--spacing-6);
   background: transparent;
-  border: 1px solid color-mix(in srgb, var(--color-white) 30%, transparent);
-  color: var(--color-white);
+  border: 1px solid color-mix(in srgb, var(--foreground) 30%, transparent);
+  color: var(--foreground);
   font-weight: 600;
   border-radius: var(--radius);
   text-decoration: none;
@@ -199,8 +201,8 @@
   display: flex;
   align-items: center;
   padding: var(--spacing-3);
-  background: var(--overlay-white-soft);
-  border-bottom: 1px solid var(--overlay-white-10);
+  background: var(--card);
+  border-bottom: 1px solid var(--border-soft);
 }
 
 .wordpress-page__dots {
@@ -222,7 +224,7 @@
 .wordpress-page__filename {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
-  color: color-mix(in srgb, var(--color-white) 50%, transparent);
+  color: color-mix(in srgb, var(--foreground) 50%, transparent);
 }
 
 .wordpress-page__code-content {
@@ -236,7 +238,7 @@
 .token.keyword { color: var(--wp-neon-pink); }
 .token.function { color: var(--wp-neon-cyan); }
 .token.string { color: var(--wp-code-string); }
-.token.comment { color: color-mix(in srgb, var(--color-white) 30%, transparent); }
+.token.comment { color: color-mix(in srgb, var(--foreground) 30%, transparent); }
 
 /* Decorative Elements */
 .wordpress-page__orb {
@@ -277,12 +279,12 @@
 .wordpress-page__stats {
   padding: var(--spacing-12) 0;
   background: linear-gradient(180deg, var(--wp-hero-bg) 0%, var(--wp-stats-bg) 100%);
-  border-bottom: 1px solid var(--overlay-white-soft);
+  border-bottom: 1px solid var(--border-soft);
 }
 
 /* Stat card — glassmorphism + animated stripe */
 .wordpress-page__stat-card {
-  background: color-mix(in srgb, var(--color-white) 5%, transparent);
+  background: color-mix(in srgb, var(--foreground) 5%, transparent);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--wp-card-border);
@@ -325,7 +327,7 @@
 
 /* Neon stat icon */
 .wordpress-page__stat-icon {
-  color: var(--color-white);
+  color: var(--foreground);
   background: linear-gradient(135deg, var(--wp-neon-pink), var(--wp-neon-purple));
   width: 48px;
   height: 48px;
@@ -348,7 +350,7 @@
   font-family: var(--font-primary);
   font-size: var(--text-3xl);
   font-weight: 800;
-  color: var(--color-white);
+  color: var(--foreground);
   margin-bottom: var(--spacing-1);
 }
 
@@ -364,7 +366,7 @@
 
 .wordpress-page__stat-desc {
   font-size: var(--text-sm);
-  color: color-mix(in srgb, var(--color-white) 60%, transparent);
+  color: color-mix(in srgb, var(--foreground) 60%, transparent);
 }
 
 /* ============================================

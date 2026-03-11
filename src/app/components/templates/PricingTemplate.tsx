@@ -106,7 +106,7 @@ export function PricingTemplate() {
               </div>
             </ScrollReveal>
 
-            <div className="pricing-page__packages-grid">
+            <div className="pricing-page__packages-grid responsive-grid-3-cols">
               {websitePackages.map((plan, idx) => {
                 const Icon = plan.icon;
                 return (
@@ -197,7 +197,7 @@ export function PricingTemplate() {
               </div>
             </ScrollReveal>
 
-            <div className="pricing-page__packages-grid">
+            <div className="pricing-page__packages-grid responsive-grid-3-cols">
               {supportPackages.map((plan, idx) => {
                 const Icon = plan.icon;
                 return (

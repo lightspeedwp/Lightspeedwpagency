@@ -39,7 +39,7 @@
 
 /* Core System Templates */
 @import '../templates/systems-hub-template.css';
-@import '../templates/page-journey-stage.css';
+@import '../templates/journey-stage/journey-stage-base.css';
 
 /* AI/Content System Templates */
 @import '../templates/ai-search-readiness-system.css';

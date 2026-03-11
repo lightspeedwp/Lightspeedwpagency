@@ -131,8 +131,8 @@ export function ServiceTestimonial({
 
         {/* Cards */}
         <div
-          className={`service-testimonial__grid${
-            matched.length > 1 ? ' service-testimonial__grid--2' : ''
+          className={`grid-base ${
+            matched.length > 1 ? 'grid-cols-2' : 'grid-cols-1'
           }`}
         >
           {matched.map((testimonial, index) => (

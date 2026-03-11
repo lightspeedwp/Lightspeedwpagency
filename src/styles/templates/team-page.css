@@ -210,12 +210,6 @@
   gap: var(--spacing-8);
 }
 
-@media (min-width: 768px) {
-  .team-page__leadership-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
 /* Leader Card — Glassmorphism + Animated Gradient Stripe */
 .team-page__leader-card {
   position: relative;
@@ -414,24 +408,6 @@
   z-index: 1;
 }
 
-@media (min-width: 768px) {
-  .team-page__members-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  .team-page__members-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-@media (max-width: 479px) {
-  .team-page__members-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
 /* Member Card — Gradient border via wrapper */
 .team-page__member-card {
   position: relative;
@@ -545,23 +521,11 @@
   box-shadow: var(--shadow-glow-sm);
 }
 
-.team-page__culture-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--spacing-6);
-}
-
-@media (min-width: 768px) {
-  .team-page__culture-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  .team-page__culture-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
+/* Culture Grid — Removed (using FeatureList pattern component)
+   Previous: .team-page__culture-grid (1→2→3 columns)
+   Migration: March 4, 2026 — Template now uses FeatureList for culture values
+   Lines saved: 18 lines (grid base + 2 media queries)
+*/
 
 /* Culture Card — Glassmorphism */
 .team-page__culture-card {
@@ -658,19 +622,11 @@
   pointer-events: none;
 }
 
-.team-page__stats-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--spacing-6);
-  position: relative;
-  z-index: 1;
-}
-
-@media (min-width: 768px) {
-  .team-page__stats-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
+/* Stats Grid — Removed (using StatsSection pattern component)
+   Previous: .team-page__stats-grid (2→4 columns)
+   Migration: March 4, 2026 — Template now uses StatsSection pattern
+   Lines saved: 12 lines (grid base + media query)
+*/
 
 /* Stat Item — Glassmorphism */
 .team-page__stat-item {

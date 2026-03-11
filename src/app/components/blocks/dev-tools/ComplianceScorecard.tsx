@@ -363,7 +363,7 @@ function TestResult({ result }: { result: PerformanceTestResult }) {
     <div 
       className="wp-block-devtools-compliance-scorecard__result-item"
       style={{
-        backgroundColor: result.passed ? 'var(--background)' : 'rgba(var(--destructive-rgb), 0.05)',
+        backgroundColor: result.passed ? 'var(--background)' : 'color-mix(in srgb, var(--destructive) 5%, transparent)',
         borderColor: result.passed ? 'var(--border-extra-soft)' : 'var(--border-soft)',
       }}
     >

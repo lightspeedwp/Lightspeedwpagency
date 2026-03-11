@@ -10,7 +10,7 @@
 
 import { Link } from 'react-router';
 import { CalendarBlank, Clock, User, Tag, ArrowRight } from '@phosphor-icons/react';
-import type { BlogPost } from '@/data/blog-posts';
+import type { BlogPost } from '../../data/blog-posts';
 
 /**
  * PostCard component props

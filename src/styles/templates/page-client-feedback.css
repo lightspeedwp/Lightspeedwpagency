@@ -1,0 +1,188 @@
+/**
+ * Client Feedback Form Page Styles
+ *
+ * 100% CSS variables, BEM naming, light/dark mode aware.
+ */
+
+.feedback-page {
+  --fb-primary: var(--primary);
+  --fb-bg: var(--background);
+  --fb-surface: var(--card);
+  --fb-text: var(--foreground);
+  --fb-muted: color-mix(in srgb, var(--foreground) 70%, transparent);
+  --fb-border: var(--border-soft);
+  --fb-star: var(--category-yellow);
+
+  background-color: var(--fb-bg);
+  color: var(--fb-text);
+  min-height: 100vh;
+}
+
+/* ============================================
+   HERO
+   ============================================ */
+
+.feedback-page__hero {
+  position: relative;
+  padding: var(--spacing-24) 0 var(--spacing-16);
+  text-align: center;
+  border-bottom: 1px solid var(--fb-border);
+}
+
+.feedback-page__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-5xl);
+  font-weight: var(--font-weight-black);
+  margin-bottom: var(--spacing-4);
+  line-height: var(--line-height-tight);
+}
+
+.feedback-page__highlight {
+  background: linear-gradient(90deg, var(--category-yellow), var(--category-green));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.feedback-page__desc {
+  font-family: var(--font-secondary);
+  font-size: var(--text-lg);
+  color: var(--fb-muted);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ============================================
+   FORM SECTION
+   ============================================ */
+
+.feedback-page__form-section {
+  padding: var(--section-padding-y) 0;
+  background: color-mix(in srgb, var(--fb-primary) 3%, var(--fb-bg));
+}
+
+.feedback-page__form-container {
+  max-width: 700px;
+  margin: 0 auto;
+  background: var(--fb-surface);
+  border: 1px solid var(--fb-border);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-8) var(--spacing-12);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Star Rating */
+.feedback-page__rating {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-4);
+  margin-bottom: var(--spacing-8);
+  padding-bottom: var(--spacing-8);
+  border-bottom: 1px solid var(--fb-border);
+}
+
+.feedback-page__stars {
+  display: flex;
+  gap: var(--spacing-2);
+}
+
+.feedback-page__star-btn {
+  background: none;
+  border: none;
+  color: var(--fb-muted);
+  cursor: pointer;
+  padding: var(--spacing-2);
+  transition: all var(--transition-fast) var(--ease-out);
+}
+
+.feedback-page__star-btn:hover,
+.feedback-page__star-btn:focus-visible,
+.feedback-page__star-btn--active {
+  color: var(--fb-star);
+  transform: scale(1.1);
+}
+
+.feedback-page__rating-label {
+  font-family: var(--font-secondary);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--fb-text);
+}
+
+/* Form Elements */
+.feedback-page__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+.feedback-page__form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.feedback-page__label {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--fb-text);
+}
+
+.feedback-page__input,
+.feedback-page__textarea {
+  width: 100%;
+  padding: var(--spacing-3) var(--spacing-4);
+  background: var(--fb-bg);
+  border: 1px solid var(--fb-border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  color: var(--fb-text);
+  transition: border-color var(--transition-fast) var(--ease-out);
+}
+
+.feedback-page__textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.feedback-page__input:focus,
+.feedback-page__textarea:focus {
+  outline: none;
+  border-color: var(--fb-primary);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--fb-primary) 20%, transparent);
+}
+
+.feedback-page__checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-3);
+  cursor: pointer;
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--fb-muted);
+  line-height: var(--line-height-relaxed);
+}
+
+.feedback-page__checkbox {
+  margin-top: var(--spacing-1);
+  accent-color: var(--fb-primary);
+  width: 16px;
+  height: 16px;
+}
+
+.feedback-page__actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: var(--spacing-4);
+}
+
+/* ============================================
+   DARK MODE OVERRIDES
+   ============================================ */
+
+.dark .feedback-page__form-container {
+  background: color-mix(in srgb, var(--card) 60%, transparent);
+}

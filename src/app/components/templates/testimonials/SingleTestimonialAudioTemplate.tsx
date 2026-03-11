@@ -43,19 +43,11 @@ export function SingleTestimonialAudioTemplate({ slug }: { slug?: string }) {
   return (
     <>
       {/* Back Link */}
-      <Section spacing="xs" style={{ backgroundColor: 'var(--background)' }}>
-        <div className="wp-max-w-6xl" style={{ margin: '0 auto' }}>
+      <Section spacing="xs" background="default">
+        <div className="wp-max-w-6xl">
           <Link
             to="/testimonials"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: 'var(--spacing-2)',
-              fontFamily: 'var(--font-primary)',
-              fontSize: 'var(--text-sm)',
-              color: 'var(--primary)',
-              textDecoration: 'none',
-            }}
+            className="single-testimonial__back-link"
           >
             <ArrowLeft size={16} /> Back to Testimonials
           </Link>
@@ -97,8 +89,8 @@ export function SingleTestimonialAudioTemplate({ slug }: { slug?: string }) {
       </div>
 
       {/* Audio Player Section */}
-      <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
-        <div className="wp-max-w-4xl" style={{ margin: '0 auto' }}>
+      <Section spacing="xl" background="default">
+        <div className="wp-max-w-4xl">
           <div
             className="single-testimonial__audio-player"
             ref={playerRef as any}
@@ -115,7 +107,7 @@ export function SingleTestimonialAudioTemplate({ slug }: { slug?: string }) {
               <div className="single-testimonial__audio-info">
                 <div className="single-testimonial__audio-title">{testimonial.title}</div>
                 <div className="single-testimonial__audio-duration">
-                  <Clock size={14} style={{ display: 'inline', verticalAlign: 'middle' }} />{' '}
+                  <Clock size={14} className="single-testimonial__icon-inline" />{' '}
                   {testimonial.audio?.duration || '0:00'} &middot; Audio Testimonial
                 </div>
               </div>
@@ -130,27 +122,14 @@ export function SingleTestimonialAudioTemplate({ slug }: { slug?: string }) {
             </div>
 
             {/* Waveform visualization (decorative) */}
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '3px',
-                height: 'var(--spacing-10)',
-              }}
-            >
+            <div className="single-testimonial__waveform">
               {Array.from({ length: 40 }, (_, i) => {
                 const height = Math.random() * 60 + 20;
                 return (
                   <div
                     key={i}
-                    style={{
-                      width: '3px',
-                      height: `${height}%`,
-                      backgroundColor: i < 14 ? 'var(--primary)' : 'var(--muted)',
-                      borderRadius: 'var(--radius-full)',
-                      transition: 'background-color var(--transition-base) var(--ease-in-out)',
-                    }}
+                    className={`single-testimonial__waveform-bar ${i < 14 ? 'single-testimonial__waveform-bar--active' : 'single-testimonial__waveform-bar--inactive'}`}
+                    style={{ height: `${height}%` }}
                   />
                 );
               })}
@@ -160,7 +139,7 @@ export function SingleTestimonialAudioTemplate({ slug }: { slug?: string }) {
             {testimonial.audio?.transcript && (
               <div className="single-testimonial__transcript">
                 <h3 className="single-testimonial__transcript-title">
-                  <Microphone size={16} style={{ display: 'inline', verticalAlign: 'middle', marginRight: 'var(--spacing-2)' }} />
+                  <Microphone size={16} className="single-testimonial__icon-inline wp-mr-2" />
                   Transcript
                 </h3>
                 <p className="single-testimonial__transcript-text">
@@ -174,7 +153,7 @@ export function SingleTestimonialAudioTemplate({ slug }: { slug?: string }) {
 
       {/* Metadata */}
       <Section spacing="xl" background="muted">
-        <div className="wp-max-w-4xl" style={{ margin: '0 auto' }}>
+        <div className="wp-max-w-4xl">
           <div className="single-testimonial__meta">
             <div className="single-testimonial__meta-item">
               <div className="single-testimonial__meta-label">Service</div>
@@ -193,8 +172,8 @@ export function SingleTestimonialAudioTemplate({ slug }: { slug?: string }) {
       </Section>
 
       {/* Related */}
-      <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
-        <div className="wp-max-w-6xl" style={{ margin: '0 auto' }}>
+      <Section spacing="xl" background="default">
+        <div className="wp-max-w-6xl">
           <QueryLoopTestimonials
             testimonials={related}
             heading="More Testimonials"

@@ -18,6 +18,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
     <Sonner
       theme="system"
       className="toaster group"
+      style={{ position: 'fixed', zIndex: 9999, pointerEvents: 'none' }}
       toastOptions={{
         classNames: {
           toast: "group toast",

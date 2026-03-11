@@ -124,7 +124,6 @@ function ScrollToTop() {
 export function RootLayout() {
   return (
     <>
-      <Toaster />
       <ScrollToTop />
       <RouteAnnouncer />
       <SkipLink />
@@ -147,6 +146,7 @@ export function RootLayout() {
       </div>
       <BackToTopButton />
       <KeyboardShortcuts />
+      <Toaster />
     </>
   );
 }

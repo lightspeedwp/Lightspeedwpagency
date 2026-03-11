@@ -8,6 +8,7 @@ import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { Button } from '../blocks/design/Buttons';
 import { ReactNode } from 'react';
+import '@/styles/patterns/gradient-cta-section.css';
 
 
 export interface GradientCTASectionProps {
@@ -72,12 +73,12 @@ export function GradientCTASection({
           {/* Left: Content */}
           <div className="gradient-cta-section__content">
             {/* Title */}
-            <h2 className="gradient-cta-section__title">
+            <h2 className="cta-base__title gradient-cta-section__title">
               {title}
             </h2>
 
             {/* Description */}
-            <p className="gradient-cta-section__description">
+            <p className="cta-base__description gradient-cta-section__description">
               {description}
             </p>
 
@@ -97,15 +98,17 @@ export function GradientCTASection({
             </ul>
 
             {/* CTA Button */}
-            <Button
-              variant="default"
-              size="lg"
-              page={buttonPage}
-              className="gradient-cta-section__button"
-            >
-              {buttonText}
-              {ButtonIcon && <ButtonIcon size={20} />}
-            </Button>
+            <div className="cta-base__actions">
+              <Button
+                variant="default"
+                size="lg"
+                page={buttonPage}
+                className="gradient-cta-section__button"
+              >
+                {buttonText}
+                {ButtonIcon && <ButtonIcon size={20} />}
+              </Button>
+            </div>
           </div>
 
           {/* Right: Graphic */}
