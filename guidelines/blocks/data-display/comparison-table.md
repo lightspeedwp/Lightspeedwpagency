@@ -6,6 +6,7 @@
 A responsive comparison table for products, services, or pricing plans.
 
 ## Features
+
 - Side-by-side comparison
 - Sticky header
 - Highlight differences
@@ -16,27 +17,27 @@ A responsive comparison table for products, services, or pricing plans.
 ## Component
 
 ```tsx
-import { ComparisonTable } from '@/app/components/blocks/data-display/ComparisonTable';
+import { ComparisonTable } from "@/app/components/blocks/data-display/ComparisonTable";
 
 <ComparisonTable
   items={[
     {
-      id: 'basic',
-      name: 'Basic',
-      price: '$10',
-      features: { users: 1, storage: '10GB', support: false }
+      id: "basic",
+      name: "Basic",
+      price: "$10",
+      features: { users: 1, storage: "10GB", support: false },
     },
     {
-      id: 'pro',
-      name: 'Pro',
-      price: '$20',
-      badge: 'Popular',
-      features: { users: 5, storage: '50GB', support: true }
-    }
+      id: "pro",
+      name: "Pro",
+      price: "$20",
+      badge: "Popular",
+      features: { users: 5, storage: "50GB", support: true },
+    },
   ]}
   onRemove={handleRemove}
   onAddMore={handleAddMore}
-/>
+/>;
 ```
 
 ## Structure
@@ -52,6 +53,7 @@ import { ComparisonTable } from '@/app/components/blocks/data-display/Comparison
 ## CSS Variables
 
 Uses standard design tokens:
+
 - Colors: `var(--card)`, `var(--muted)`, `var(--accent)`, `var(--border)`
 - Typography: `var(--font-primary)`, `var(--text-h4)`, `var(--text-base)`
 - Spacing: `var(--spacing-*)`
