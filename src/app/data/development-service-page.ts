@@ -350,7 +350,7 @@ export const whyChooseDevelopment = [
   {
     icon: 'Shield' as UniversalIcon,
     title: 'Security Focused',
-    description: '10+ years security expertise with proactive security measures built into every project.'
+    description: '20+ years security expertise with proactive security measures built into every project.'
   },
   {
     icon: 'GitBranch' as UniversalIcon,

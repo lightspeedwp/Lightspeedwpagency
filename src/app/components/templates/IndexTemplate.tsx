@@ -14,11 +14,11 @@
  * - Post Grid
  * - Pagination
  * - NewsletterSignup
- * - CTASection
+ * - FunkyCTA
  * 
  * **Conversion Strategy:**
  * - NewsletterSignup: Capture blog readers
- * - CTASection: Convert interested visitors
+ * - FunkyCTA: Convert interested visitors
  * 
  * **Design System:**
  * - 100% CSS variables from theme.css

@@ -66,7 +66,7 @@
  * 
  * @example
  * // With additional styling
- * <Logo theme="dark" className="mb-6" />
+ * <Logo theme="dark" className="wp-mb-6" />
  * 
  * @example
  * // As clickable link (typical header usage)
@@ -151,10 +151,10 @@ interface LogoProps {
    * - Alignment: items-center
    * 
    * @example
-   * className="mb-6"
+   * className="wp-mb-6"
    * 
    * @example
-   * className="mx-auto"
+   * className="wp-mx-auto"
    */
   className?: string;
 }

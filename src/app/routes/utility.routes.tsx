@@ -24,78 +24,75 @@
  * @see /src/styles/bundles/utility-bundle.css
  */
 
-import React, { lazy, Suspense } from 'react';
+import React from 'react';
 import { type RouteObject } from 'react-router';
 import { loadCSSBundle } from '../utils/css-bundle-loader';
-import { RouteLoadingFallback } from '../components/ui/RouteLoadingFallback';
 
 /* ═══════════════════════════════════════════
- * Lazy Template Imports
+ * Static Template Imports
  * ═══════════════════════════════════════════ */
 
-const ContactPageTemplate = lazy(() => import('../components/templates/ContactPageTemplate').then(m => ({ default: m.ContactPageTemplate })));
-const FreeConsultationTemplate = lazy(() => import('../components/templates/FreeConsultationTemplate').then(m => ({ default: m.FreeConsultationTemplate })));
-const FreeWooConsultationTemplate = lazy(() => import('../components/templates/FreeWooConsultationTemplate').then(m => ({ default: m.FreeWooConsultationTemplate })));
-const ClientIntakeFormTemplate = lazy(() => import('../components/templates/ClientIntakeFormTemplate').then(m => ({ default: m.ClientIntakeFormTemplate })));
-const ClientFeedbackTemplate = lazy(() => import('../components/templates/ClientFeedbackTemplate').then(m => ({ default: m.ClientFeedbackTemplate })));
-const GenericThankYouTemplate = lazy(() => import('../components/templates/GenericThankYouTemplate').then(m => ({ default: m.GenericThankYouTemplate })));
-const FAQTemplate = lazy(() => import('../components/templates/FAQTemplate').then(m => ({ default: m.FAQTemplate })));
-const PricingTemplate = lazy(() => import('../components/templates/PricingTemplate').then(m => ({ default: m.PricingTemplate })));
-const WebsitePackagesTemplate = lazy(() => import('../components/templates/WebsitePackagesTemplate').then(m => ({ default: m.WebsitePackagesTemplate })));
-const ReferralsTemplate = lazy(() => import('../components/templates/ReferralsTemplate').then(m => ({ default: m.ReferralsTemplate })));
-const WhyChooseUsTemplate = lazy(() => import('../components/templates/WhyChooseUsTemplate').then(m => ({ default: m.WhyChooseUsTemplate })));
-const WhyLandingTemplate = lazy(() => import('../components/templates/WhyLandingTemplate').then(m => ({ default: m.WhyLandingTemplate })));
-const WhyWooTemplate = lazy(() => import('../components/templates/WhyWooTemplate').then(m => ({ default: m.WhyWooTemplate })));
-const WhyWPTemplate = lazy(() => import('../components/templates/WhyWPTemplate').then(m => ({ default: m.WhyWPTemplate })));
-const WhyMailchimpTemplate = lazy(() => import('../components/templates/WhyMailchimpTemplate').then(m => ({ default: m.WhyMailchimpTemplate })));
-const WhyLSXTemplate = lazy(() => import('../components/templates/WhyLSXTemplate').then(m => ({ default: m.WhyLSXTemplate })));
-const WhyLightSpeedTemplate = lazy(() => import('../components/templates/WhyLightSpeedTemplate').then(m => ({ default: m.WhyLightSpeedTemplate })));
-const WhyTourOperatorTemplate = lazy(() => import('../components/templates/WhyTourOperatorTemplate').then(m => ({ default: m.WhyTourOperatorTemplate })));
-const GuaranteesTemplate = lazy(() => import('../components/templates/GuaranteesTemplate').then(m => ({ default: m.GuaranteesTemplate })));
-const ROICalculatorTemplate = lazy(() => import('../components/templates/ROICalculatorTemplate').then(m => ({ default: m.ROICalculatorTemplate })));
-const SearchResultsPageTemplate = lazy(() => import('../components/templates/SearchResultsPageTemplate').then(m => ({ default: m.SearchResultsPageTemplate })));
-const PrivacyPolicyTemplate = lazy(() => import('../components/templates/PrivacyPolicyTemplate').then(m => ({ default: m.PrivacyPolicyTemplate })));
-const TermsOfServiceTemplate = lazy(() => import('../components/templates/TermsOfServiceTemplate').then(m => ({ default: m.TermsOfServiceTemplate })));
-const GenericPolicyTemplate = lazy(() => import('../components/templates/GenericPolicyTemplate').then(m => ({ default: m.GenericPolicyTemplate })));
-const GettingStartedTemplate = lazy(() => import('../components/templates/GettingStartedTemplate').then(m => ({ default: m.GettingStartedTemplate })));
-const NewsletterUtilityTemplate = lazy(() => import('../components/templates/NewsletterUtilityTemplate').then(m => ({ default: m.NewsletterUtilityTemplate })));
-const SiteMapTemplate = lazy(() => import('../components/templates/SiteMapTemplate').then(m => ({ default: m.SiteMapTemplate })));
-const StyleGuideTemplate = lazy(() => import('../components/templates/StyleGuideTemplate').then(m => ({ default: m.StyleGuideTemplate })));
-const TutorialsTemplate = lazy(() => import('../components/templates/TutorialsTemplate').then(m => ({ default: m.TutorialsTemplate })));
+import { ContactPageTemplate } from '../components/templates/ContactPageTemplate';
+import { FreeConsultationTemplate } from '../components/templates/FreeConsultationTemplate';
+import { FreeWooConsultationTemplate } from '../components/templates/FreeWooConsultationTemplate';
+import { ClientIntakeFormTemplate } from '../components/templates/ClientIntakeFormTemplate';
+import { ClientFeedbackTemplate } from '../components/templates/ClientFeedbackTemplate';
+import { GenericThankYouTemplate } from '../components/templates/GenericThankYouTemplate';
+import { FAQTemplate } from '../components/templates/FAQTemplate';
+import { PricingTemplate } from '../components/templates/PricingTemplate';
+import { WebsitePackagesTemplate } from '../components/templates/WebsitePackagesTemplate';
+import { ReferralsTemplate } from '../components/templates/ReferralsTemplate';
+import { WhyChooseUsTemplate } from '../components/templates/WhyChooseUsTemplate';
+import { WhyLandingTemplate } from '../components/templates/WhyLandingTemplate';
+import { WhyWooTemplate } from '../components/templates/WhyWooTemplate';
+import { WhyWPTemplate } from '../components/templates/WhyWPTemplate';
+import { WhyMailchimpTemplate } from '../components/templates/WhyMailchimpTemplate';
+import { WhyLSXTemplate } from '../components/templates/WhyLSXTemplate';
+import { WhyLightSpeedTemplate } from '../components/templates/WhyLightSpeedTemplate';
+import { GuaranteesTemplate } from '../components/templates/GuaranteesTemplate';
+import { ROICalculatorTemplate } from '../components/templates/ROICalculatorTemplate';
+import { SearchResultsPageTemplate } from '../components/templates/SearchResultsPageTemplate';
+import { PrivacyPolicyTemplate } from '../components/templates/PrivacyPolicyTemplate';
+import { TermsOfServiceTemplate } from '../components/templates/TermsOfServiceTemplate';
+import { GenericPolicyTemplate } from '../components/templates/GenericPolicyTemplate';
+import { GettingStartedTemplate } from '../components/templates/GettingStartedTemplate';
+import { NewsletterUtilityTemplate } from '../components/templates/NewsletterUtilityTemplate';
+import { SiteMapTemplate } from '../components/templates/SiteMapTemplate';
+import { StyleGuideTemplate } from '../components/templates/StyleGuideTemplate';
+import { TutorialsTemplate } from '../components/templates/TutorialsTemplate';
 
 /* ═══════════════════════════════════════════
  * Route Wrapper Components
  * ═══════════════════════════════════════════ */
 
-function ContactPageRoute() { loadCSSBundle('utility'); return <Suspense fallback={<RouteLoadingFallback />}><ContactPageTemplate /></Suspense>; }
-function FreeConsultationRoute() { loadCSSBundle('utility'); return <Suspense fallback={<RouteLoadingFallback />}><FreeConsultationTemplate /></Suspense>; }
-function FreeWooConsultationRoute() { loadCSSBundle('utility'); return <Suspense fallback={<RouteLoadingFallback />}><FreeWooConsultationTemplate /></Suspense>; }
-function ClientIntakeFormRoute() { loadCSSBundle('utility'); return <Suspense fallback={<RouteLoadingFallback />}><ClientIntakeFormTemplate /></Suspense>; }
-function ClientFeedbackRoute() { loadCSSBundle('utility'); return <Suspense fallback={<RouteLoadingFallback />}><ClientFeedbackTemplate /></Suspense>; }
-function GenericThankYouRoute() { loadCSSBundle('utility'); return <Suspense fallback={<RouteLoadingFallback />}><GenericThankYouTemplate /></Suspense>; }
-function FAQRoute() { loadCSSBundle('utility'); return <Suspense fallback={<RouteLoadingFallback />}><FAQTemplate /></Suspense>; }
-function PricingRoute() { loadCSSBundle('utility'); return <Suspense fallback={<RouteLoadingFallback />}><PricingTemplate /></Suspense>; }
-function WebsitePackagesRoute() { loadCSSBundle('utility'); return <Suspense fallback={<RouteLoadingFallback />}><WebsitePackagesTemplate /></Suspense>; }
-function ReferralsRoute() { loadCSSBundle('utility'); return <Suspense fallback={<RouteLoadingFallback />}><ReferralsTemplate /></Suspense>; }
-function WhyChooseUsRoute() { loadCSSBundle('utility'); return <Suspense fallback={<RouteLoadingFallback />}><WhyChooseUsTemplate /></Suspense>; }
-function WhyLandingRoute() { loadCSSBundle('utility'); return <Suspense fallback={<RouteLoadingFallback />}><WhyLandingTemplate /></Suspense>; }
-function WhyWooRoute() { loadCSSBundle('utility'); return <Suspense fallback={<RouteLoadingFallback />}><WhyWooTemplate /></Suspense>; }
-function WhyWPRoute() { loadCSSBundle('utility'); return <Suspense fallback={<RouteLoadingFallback />}><WhyWPTemplate /></Suspense>; }
-function WhyMailchimpRoute() { loadCSSBundle('utility'); return <Suspense fallback={<RouteLoadingFallback />}><WhyMailchimpTemplate /></Suspense>; }
-function WhyLSXRoute() { loadCSSBundle('utility'); return <Suspense fallback={<RouteLoadingFallback />}><WhyLSXTemplate /></Suspense>; }
-function WhyLightSpeedRoute() { loadCSSBundle('utility'); return <Suspense fallback={<RouteLoadingFallback />}><WhyLightSpeedTemplate /></Suspense>; }
-function WhyTourOperatorRoute() { loadCSSBundle('utility'); return <Suspense fallback={<RouteLoadingFallback />}><WhyTourOperatorTemplate /></Suspense>; }
-function GuaranteesRoute() { loadCSSBundle('utility'); return <Suspense fallback={<RouteLoadingFallback />}><GuaranteesTemplate /></Suspense>; }
-function ROICalculatorRoute() { loadCSSBundle('utility'); return <Suspense fallback={<RouteLoadingFallback />}><ROICalculatorTemplate /></Suspense>; }
-function SearchResultsRoute() { loadCSSBundle('utility'); return <Suspense fallback={<RouteLoadingFallback />}><SearchResultsPageTemplate /></Suspense>; }
-function PrivacyPolicyRoute() { loadCSSBundle('utility'); return <Suspense fallback={<RouteLoadingFallback />}><PrivacyPolicyTemplate /></Suspense>; }
-function TermsOfServiceRoute() { loadCSSBundle('utility'); return <Suspense fallback={<RouteLoadingFallback />}><TermsOfServiceTemplate /></Suspense>; }
-function GenericPolicyRoute() { loadCSSBundle('utility'); return <Suspense fallback={<RouteLoadingFallback />}><GenericPolicyTemplate /></Suspense>; }
-function GettingStartedRoute() { loadCSSBundle('utility'); return <Suspense fallback={<RouteLoadingFallback />}><GettingStartedTemplate /></Suspense>; }
-function NewsletterUtilityRoute() { loadCSSBundle('utility'); return <Suspense fallback={<RouteLoadingFallback />}><NewsletterUtilityTemplate /></Suspense>; }
-function SiteMapRoute() { loadCSSBundle('utility'); return <Suspense fallback={<RouteLoadingFallback />}><SiteMapTemplate /></Suspense>; }
-function StyleGuideRoute() { loadCSSBundle('utility'); return <Suspense fallback={<RouteLoadingFallback />}><StyleGuideTemplate /></Suspense>; }
-function TutorialsRoute() { loadCSSBundle('utility'); return <Suspense fallback={<RouteLoadingFallback />}><TutorialsTemplate /></Suspense>; }
+function ContactPageRoute() { loadCSSBundle('utility'); return <ContactPageTemplate />; }
+function FreeConsultationRoute() { loadCSSBundle('utility'); return <FreeConsultationTemplate />; }
+function FreeWooConsultationRoute() { loadCSSBundle('utility'); return <FreeWooConsultationTemplate />; }
+function ClientIntakeFormRoute() { loadCSSBundle('utility'); return <ClientIntakeFormTemplate />; }
+function ClientFeedbackRoute() { loadCSSBundle('utility'); return <ClientFeedbackTemplate />; }
+function GenericThankYouRoute() { loadCSSBundle('utility'); return <GenericThankYouTemplate />; }
+function FAQRoute() { loadCSSBundle('utility'); return <FAQTemplate />; }
+function PricingRoute() { loadCSSBundle('utility'); return <PricingTemplate />; }
+function WebsitePackagesRoute() { loadCSSBundle('utility'); return <WebsitePackagesTemplate />; }
+function ReferralsRoute() { loadCSSBundle('utility'); return <ReferralsTemplate />; }
+function WhyChooseUsRoute() { loadCSSBundle('utility'); return <WhyChooseUsTemplate />; }
+function WhyLandingRoute() { loadCSSBundle('utility'); return <WhyLandingTemplate />; }
+function WhyWooRoute() { loadCSSBundle('utility'); return <WhyWooTemplate />; }
+function WhyWPRoute() { loadCSSBundle('utility'); return <WhyWPTemplate />; }
+function WhyMailchimpRoute() { loadCSSBundle('utility'); return <WhyMailchimpTemplate />; }
+function WhyLSXRoute() { loadCSSBundle('utility'); return <WhyLSXTemplate />; }
+function WhyLightSpeedRoute() { loadCSSBundle('utility'); return <WhyLightSpeedTemplate />; }
+function GuaranteesRoute() { loadCSSBundle('utility'); return <GuaranteesTemplate />; }
+function ROICalculatorRoute() { loadCSSBundle('utility'); return <ROICalculatorTemplate />; }
+function SearchResultsRoute() { loadCSSBundle('utility'); return <SearchResultsPageTemplate />; }
+function PrivacyPolicyRoute() { loadCSSBundle('utility'); return <PrivacyPolicyTemplate />; }
+function TermsOfServiceRoute() { loadCSSBundle('utility'); return <TermsOfServiceTemplate />; }
+function GenericPolicyRoute() { loadCSSBundle('utility'); return <GenericPolicyTemplate />; }
+function GettingStartedRoute() { loadCSSBundle('utility'); return <GettingStartedTemplate />; }
+function NewsletterUtilityRoute() { loadCSSBundle('utility'); return <NewsletterUtilityTemplate />; }
+function SiteMapRoute() { loadCSSBundle('utility'); return <SiteMapTemplate />; }
+function StyleGuideRoute() { loadCSSBundle('utility'); return <StyleGuideTemplate />; }
+function TutorialsRoute() { loadCSSBundle('utility'); return <TutorialsTemplate />; }
 
 /* ═══════════════════════════════════════════
  * Route Definitions
@@ -129,7 +126,6 @@ export const utilityRoutes: RouteObject[] = [
   { path: 'why-mailchimp', Component: WhyMailchimpRoute },
   { path: 'why-lsx', Component: WhyLSXRoute },
   { path: 'why-lightspeed', Component: WhyLightSpeedRoute },
-  { path: 'why-tour-operator', Component: WhyTourOperatorRoute },
   { path: 'guarantees', Component: GuaranteesRoute },
   { path: 'roi-calculator', Component: ROICalculatorRoute },
   { path: 'search', Component: SearchResultsRoute },

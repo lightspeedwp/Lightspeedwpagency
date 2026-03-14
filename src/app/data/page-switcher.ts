@@ -48,7 +48,6 @@ export const pageSwitcherGroups = [
       { id: 'solutions', label: 'Solutions Overview' },
       { id: 'wordpress-solutions', label: 'WordPress Solutions' },
       { id: 'woocommerce-solutions', label: 'WooCommerce Solutions' },
-      { id: 'tour-operator-solutions', label: 'Tour Operator Solutions' },
       { id: 'lsx-design-solutions', label: 'LSX Design Solutions' },
       { id: 'hosting', label: 'Hosting Solutions' },
       { id: 'ai-integrations', label: 'AI Integrations' },

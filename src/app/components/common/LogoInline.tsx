@@ -190,10 +190,10 @@ interface LogoProps {
    * **Note:** Container already has flex display
    * 
    * @example
-   * className="mb-6"
+   * className="wp-mb-6"
    * 
    * @example
-   * className="hidden md:block" // Hide on mobile
+   * className="wp-hidden md:wp-block" // Hide on mobile
    */
   className?: string;
 }
@@ -240,7 +240,7 @@ export function LogoInline({
   // Icon only (compact variant)
   if (variant === 'compact') {
     return (
-      <div className={className} style={{ display: 'flex', alignItems: 'center' }}>
+      <div className={`wp-flex wp-items-center ${className || ''}`}>
         <svg width={w} height={h} viewBox="0 0 48 68" fill="none" xmlns="http://www.w3.org/2000/svg">
           <title>LSX Design</title>
           <g id="Icon">
@@ -254,7 +254,7 @@ export function LogoInline({
   
   // Full logo with wordmark
   return (
-    <div className={className} style={{ display: 'flex', alignItems: 'center' }}>
+    <div className={`wp-flex wp-items-center ${className || ''}`}>
       <svg width={w} height={h} viewBox="0 0 220 70" fill="none" xmlns="http://www.w3.org/2000/svg">
         <title>LSX Design</title>
         {/* Lightning bolt icon (two-tone, sharp geometric facets) */}
@@ -272,7 +272,7 @@ export function LogoInline({
             x="60" 
             y="24" 
             fill={textColor}
-            fontFamily="var(--font-primary)" 
+            className="wp-font-primary"
             fontSize="16" 
             fontWeight="600" 
             letterSpacing="1"
@@ -284,7 +284,7 @@ export function LogoInline({
             x="60" 
             y="54" 
             fill={textColor}
-            fontFamily="var(--font-primary)" 
+            className="wp-font-primary"
             fontSize="32" 
             fontWeight="800" 
             letterSpacing="-0.5"

@@ -41,13 +41,13 @@
  * <FitText
  *   as="h1"
  *   containerSize={12}
- *   style={{ color: 'var(--primary)' }}
+ *   className="wp-text-primary"
  * >
  *   Get Started Today
  * </FitText>
  * 
  * // In a hero section
- * <Section style={{ backgroundColor: 'var(--primary)' }}>
+ * <Section className="wp-bg-primary">
  *   <Container>
  *     <FitText as="h1" containerSize={15}>
  *       BUILD BETTER SITES
@@ -154,16 +154,14 @@ export function FitText({
       className={className}
     >
       <Component
+        className="wp-w-full wp-m-0 wp-font-primary"
         style={{
           // Use clamp() for responsive sizing (works in all modern browsers)
           fontSize: clampFallback,
-          fontFamily: 'var(--font-primary)',
           fontWeight,
           lineHeight,
           letterSpacing,
           textAlign,
-          width: '100%',
-          margin: 0,
           ...style
         }}
         aria-label={ariaLabel}
@@ -237,11 +235,9 @@ export function FitTextCallout({
 }) {
   return (
     <div
+      className="wp-px-6 wp-py-12 wp-rounded-xl wp-mb-6"
       style={{
         backgroundColor,
-        padding: 'var(--spacing-12) var(--spacing-6)',
-        borderRadius: 'var(--radius-xl)',
-        marginBottom: 'var(--spacing-6)'
       }}
     >
       <FitText

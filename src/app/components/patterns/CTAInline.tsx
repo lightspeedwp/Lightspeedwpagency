@@ -42,7 +42,7 @@ export interface CTAInlineProps {
  * CTAInline Pattern Component
  * 
  * Compact CTA for breaking up long-form content.
- * Smaller than CTASection with 800px max-width.
+ * Smaller than FunkyCTA with 800px max-width.
  */
 export function CTAInline({
   heading = "Ready to Get Started?",

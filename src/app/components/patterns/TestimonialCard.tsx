@@ -8,8 +8,6 @@
  *   - default: Standard card with border
  *   - glass: Glassmorphism with backdrop blur
  *   - funky: Neon gradient border (dark mode glow)
- *   - compact: Smaller padding, condensed layout
- *   - minimal: No background/border
  *   - featured: Primary background
  *
  * Design System Compliance:
@@ -54,7 +52,7 @@ export interface TestimonialCardProps {
   /** Testimonial data */
   testimonial: TestimonialCardData;
   /** Visual variant */
-  variant?: 'default' | 'glass' | 'funky' | 'compact' | 'minimal' | 'featured';
+  variant?: 'default' | 'glass' | 'funky' | 'featured';
   /** Show star rating */
   showRating?: boolean;
   /** Show author avatar */
@@ -75,8 +73,10 @@ export interface TestimonialCardProps {
  * Returns initials (first letter of first + last name) for avatar fallback.
  */
 function getInitials(name: string): string {
+  if (!name || typeof name !== 'string') return '';
   return name
     .split(' ')
+    .filter(n => n.length > 0)
     .map((n) => n[0])
     .join('')
     .toUpperCase()

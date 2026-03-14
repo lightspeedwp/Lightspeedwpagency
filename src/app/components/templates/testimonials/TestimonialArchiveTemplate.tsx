@@ -67,7 +67,7 @@ export function TestimonialArchiveTemplate() {
       />
 
       {/* Stats */}
-      <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
+      <Section spacing="xl" className="wp-bg-background">
         <div
           ref={statsRef as any}
           style={statsStyle}
@@ -77,7 +77,7 @@ export function TestimonialArchiveTemplate() {
             const Icon = stat.icon;
             return (
               <div key={stat.label} className="testimonial-archive__stat">
-                <Icon size={24} style={{ color: 'var(--primary)', marginBottom: 'var(--spacing-2)' }} />
+                <Icon size={24} className="wp-text-primary wp-mb-2" />
                 <div className="testimonial-archive__stat-value">{stat.value}</div>
                 <div className="testimonial-archive__stat-label">{stat.label}</div>
               </div>
@@ -88,7 +88,7 @@ export function TestimonialArchiveTemplate() {
 
       {/* Filter + Grid */}
       <Section spacing="xl" background="muted">
-        <div className="wp-max-w-6xl" style={{ margin: '0 auto' }}>
+        <div className="wp-max-w-6xl wp-mx-auto">
           {/* Format Filters */}
           <div
             ref={filterRef as any}

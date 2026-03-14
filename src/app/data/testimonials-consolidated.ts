@@ -13,7 +13,7 @@
  * - Post Meta: gallery images, project data, results metrics
  *
  * **REAL CONTENT SOURCE:** https://lightspeedwp.agency
- * **Last Updated:** March 5, 2026 (Consolidated from 3 files)
+ * **Last Updated:** March 5,2026 (Consolidated from 3 files)
  */
 
 import type { Testimonial as BaseTestimonial } from '../components/patterns/TestimonialGrid';
@@ -259,7 +259,7 @@ export const testimonialStats = [
   { number: "500+", label: "Happy Clients" },
   { number: "98%", label: "Satisfaction Rate" },
   { number: "30+", label: "Countries Served" },
-  { number: "10+", label: "Years Experience" }
+  { number: "20+", label: "Years Experience" }
 ];
 
 /* ══════════════════════════════════════════

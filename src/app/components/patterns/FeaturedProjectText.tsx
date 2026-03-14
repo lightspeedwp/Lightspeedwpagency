@@ -87,12 +87,7 @@ export const FeaturedProjectText: React.FC<FeaturedProjectTextProps> = ({
           />
           
           {/* Overlay gradient */}
-          <div style={{
-            position: 'absolute',
-            inset: 0,
-            background: 'linear-gradient(to top, color-mix(in srgb, var(--color-black) 80%, transparent) 0%, transparent 40%)',
-            pointerEvents: 'none'
-          }} />
+          <div className="featured-project-text__image-overlay" />
         </div>
 
       </div>

@@ -21,7 +21,7 @@
  */
 
 import { useState } from 'react';
-import { Copy, Check, Code, Eye, Accessibility, Lightbulb, Palette } from '@phosphor-icons/react';
+import { Copy, Check, Code, Eye, Wheelchair as Accessibility, Lightbulb, Palette } from '@phosphor-icons/react';
 import { ComponentDocs } from '../../hooks/useComponentDocs';
 
 export interface ComponentDocumentationProps {

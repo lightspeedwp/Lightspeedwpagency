@@ -131,14 +131,14 @@ const solutionCards: SolutionCard[] = [...mappedSolutions, hostingCard,
     link: 'woocommerce-redesign',
   },
   {
-    id: 'tour-operator-design',
+    id: 'tour-operator',
     icon: Compass,
-    badge: 'ENTERPRISE',
+    badge: 'TOURISM',
     badgeVariant: 'enterprise',
-    title: 'Tour Operator Design',
-    description: 'Showcase your tours with stunning itineraries, interactive maps, and a booking experience that turns browsers into travelers.',
-    tags: ['Tour Operator', 'Itineraries', 'Maps', 'Bookings'],
-    link: 'tour-operator-design',
+    title: 'Tour Operator Solutions',
+    description: 'The ultimate digital engine for travel pioneers. Real-time availability calendars, dynamic seasonal pricing, and automated confirmations.',
+    tags: ['Tourism', 'Booking', 'Wetu', 'Itineraries'],
+    link: 'tour-operators',
   },
   {
     id: 'ai-integrations',
@@ -218,7 +218,7 @@ export function SolutionsTemplate() {
 
               {/* Badge */}
               <div className="solutions-hero__badge">
-                <Sparkle size={14} style={{ display: 'inline', marginRight: '8px', verticalAlign: 'middle' }} />
+                <Sparkle size={14} className="wp-inline wp-mr-2" style={{ verticalAlign: 'middle' }} />
                 Comprehensive Solutions
               </div>
 

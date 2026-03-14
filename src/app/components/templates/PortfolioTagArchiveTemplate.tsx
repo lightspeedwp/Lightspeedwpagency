@@ -133,7 +133,7 @@ export function PortfolioTagArchiveTemplate() {
       </Section>
 
       {/* Content Area with Sidebar */}
-      <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
+      <Section spacing="xl" className="wp-bg-background">
         <Container>
           <div className="portfolio-tag-archive__layout">
             
@@ -156,9 +156,9 @@ export function PortfolioTagArchiveTemplate() {
                     </div>
                   ))
                 ) : (
-                  <div className="wp-col-span-full wp-text-center wp-py-12">
+                  <div className="archive-empty-state archive-empty-state--col-span">
                     <Paragraph>No projects found with this tag.</Paragraph>
-                    <Link to="/portfolio" className="wp-inline-block wp-mt-4 wp-text-primary hover:wp-underline">
+                    <Link to="/portfolio" className="archive-empty-state__link">
                       View all projects
                     </Link>
                   </div>
@@ -189,7 +189,7 @@ export function PortfolioTagArchiveTemplate() {
               
               <div className="portfolio-tag-archive__sidebar-widget wp-mt-8">
                  <Heading level={3} className="wp-mb-4">Need Help?</Heading>
-                 <Paragraph className="wp-text-sm wp-mb-4">
+                 <Paragraph className="portfolio-tag-archive__sidebar-desc">
                    Looking for a specific solution? Our team specializes in custom WordPress development.
                  </Paragraph>
                  <Link to="/contact" className="wp-button wp-button--primary wp-w-full wp-justify-center">

@@ -103,27 +103,29 @@ export function NewsletterUtilityTemplate() {
               </p>
 
               {content.showForm && content.formType === 'manage' && (
-                <form className="thank-you-page__form" style={{ width: '100%', marginBottom: 'var(--spacing-8)' }}>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--spacing-4)', textAlign: 'left', background: 'var(--background)', padding: 'var(--spacing-6)', borderRadius: 'var(--radius-lg)', border: '1px solid var(--border-soft)' }}>
-                    <label style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-3)', cursor: 'pointer' }}>
-                      <input type="checkbox" defaultChecked style={{ accentColor: 'var(--primary)', width: 'var(--spacing-5)', height: 'var(--spacing-5)' }} />
-                      <span style={{ fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-base)', color: 'var(--foreground)' }}>Weekly Insights & Updates</span>
+                <form className="thank-you-page__form wp-mb-8">
+                  <div className="wp-flex wp-flex-col wp-gap-4 wp-text-left wp-bg-background wp-p-6 wp-rounded-lg wp-border wp-border-border-soft">
+                    <label className="wp-flex wp-items-center wp-gap-3 wp-cursor-pointer">
+                      <input type="checkbox" defaultChecked className="wp-w-5 wp-h-5 wp-accent-primary" />
+                      <span className="wp-font-secondary wp-text-base wp-text-foreground">Weekly Insights & Updates</span>
                     </label>
-                    <label style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-3)', cursor: 'pointer' }}>
-                      <input type="checkbox" defaultChecked style={{ accentColor: 'var(--primary)', width: 'var(--spacing-5)', height: 'var(--spacing-5)' }} />
-                      <span style={{ fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-base)', color: 'var(--foreground)' }}>Product Releases</span>
+                    <label className="wp-flex wp-items-center wp-gap-3 wp-cursor-pointer">
+                      <input type="checkbox" defaultChecked className="wp-w-5 wp-h-5 wp-accent-primary" />
+                      <span className="wp-font-secondary wp-text-base wp-text-foreground">Product Releases</span>
                     </label>
-                    <label style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-3)', cursor: 'pointer' }}>
-                      <input type="checkbox" style={{ accentColor: 'var(--primary)', width: 'var(--spacing-5)', height: 'var(--spacing-5)' }} />
-                      <span style={{ fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-base)', color: 'var(--foreground)' }}>Partner Offers</span>
+                    <label className="wp-flex wp-items-center wp-gap-3 wp-cursor-pointer">
+                      <input type="checkbox" className="wp-w-5 wp-h-5 wp-accent-primary" />
+                      <span className="wp-font-secondary wp-text-base wp-text-foreground">Partner Offers</span>
                     </label>
-                    <Button type="button" variant="primary" style={{ marginTop: 'var(--spacing-4)', width: '100%' }}>Save Preferences</Button>
+                    <div className="wp-mt-4">
+                      <Button type="button" variant="primary">Save Preferences</Button>
+                    </div>
                   </div>
                 </form>
               )}
 
               {content.showForm && content.formType === 'confirm' && (
-                <div className="thank-you-page__actions" style={{ marginBottom: 'var(--spacing-8)' }}>
+                <div className="thank-you-page__actions wp-mb-8">
                   <Button page="thank-you-newsletter-subscribe" size="lg" variant="primary">
                     Yes, Unsubscribe Me
                   </Button>
@@ -134,7 +136,7 @@ export function NewsletterUtilityTemplate() {
               )}
 
               {content.showForm && content.formType === 'reengage' && (
-                <div className="thank-you-page__actions" style={{ marginBottom: 'var(--spacing-8)' }}>
+                <div className="thank-you-page__actions wp-mb-8">
                   <Button page="home" size="lg" variant="primary">
                     Yes, Keep Me Subscribed!
                   </Button>

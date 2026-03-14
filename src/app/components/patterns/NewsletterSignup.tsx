@@ -98,11 +98,11 @@ export function NewsletterSignup({
     status === 'success' ? 'newsletter-signup__button--success' : ''
   ].filter(Boolean).join(' ');
 
-  // Max width override for layout styles (handled by CSS generally but keeping prop logic)
-  const maxWidth = layout === 'sidebar' ? '100%' : layout === 'inline' ? '800px' : '600px';
+  // Max width override for layout styles mapped to WP utility classes
+  const maxWidthClass = layout === 'sidebar' ? 'wp-w-full' : layout === 'inline' ? 'wp-max-w-4xl' : 'wp-max-w-3xl';
 
   return (
-    <div className={containerClasses} style={{ maxWidth, margin: layout === 'centered' ? '0 auto' : undefined }}>
+    <div className={`${containerClasses} ${layout === 'centered' ? 'wp-mx-auto' : ''} ${maxWidthClass}`}>
       <div className="newsletter-signup__content">
         {/* Header Content */}
         <div className="newsletter-signup__header">

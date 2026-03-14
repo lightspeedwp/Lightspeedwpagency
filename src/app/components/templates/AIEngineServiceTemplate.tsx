@@ -14,6 +14,14 @@
 import { Brain, Sparkle, Target, Lightning, CheckCircle, TrendUp } from '@phosphor-icons/react';
 import { Link } from 'react-router';
 import { FeatureList } from '../patterns/FeatureList';
+import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
+import { Container } from '../common/Container';
+import { FunkyCTA } from '../patterns/FunkyCTA';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
+import { JourneyPhaseIndicator } from '../ui/JourneyPhaseIndicator';
+import { StatsGrid } from '../patterns/StatsGrid';
+import { ProcessTimeline } from '../patterns/ProcessTimeline';
+import { ScrollReveal } from '../../hooks/useScrollReveal';
 
 export const AIEngineServiceTemplate = () => {
   const benefits = [
@@ -80,113 +88,130 @@ export const AIEngineServiceTemplate = () => {
   ];
 
   return (
-    <div className="ai-engine-service">
+    <div className="wp-w-full wp-flex wp-flex-col">
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', page: 'front-page' },
+          { label: 'Services', page: 'services' },
+          { label: 'AI Search & Visibility', page: 'services/ai-search-visibility' },
+          { label: 'AI Engine Optimization' },
+        ]}
+      />
+
+      <JourneyPhaseIndicator currentPhase="ignite" currentServicePage="ai-engine-optimization" />
+
       {/* Hero Section */}
-      <section className="ai-engine-service__hero">
-        <div className="ai-engine-service__hero-content">
-          <div className="ai-engine-service__breadcrumb">
-            <Link to="/services" className="ai-engine-service__breadcrumb-link">Services</Link>
-            <span className="ai-engine-service__breadcrumb-separator">/</span>
-            <Link to="/services/ai-search-visibility" className="ai-engine-service__breadcrumb-link">AI Search & Visibility</Link>
-            <span className="ai-engine-service__breadcrumb-separator">/</span>
-            <span className="ai-engine-service__breadcrumb-current">AI Engine Optimization</span>
+      <section style={{ position: 'relative', minHeight: '60vh', display: 'flex', alignItems: 'center', backgroundColor: 'var(--background)', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', inset: 0, opacity: 0.1, backgroundImage: 'radial-gradient(circle at center, var(--border) 1px, transparent 1px)', backgroundSize: '24px 24px', zIndex: 0 }} aria-hidden="true" />
+        
+        <Container>
+          <div style={{ position: 'relative', zIndex: 1, maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
+            <ScrollReveal animation="fade-up">
+              <h1 style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-h1)', color: 'var(--foreground)', marginBottom: 'var(--spacing-6)' }}>
+                AI Engine Optimization (AEO)
+              </h1>
+              
+              <p style={{ fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-xl)', color: 'var(--muted-foreground)', marginBottom: 'var(--spacing-10)', lineHeight: 1.6 }}>
+                Position your brand for the AI-powered future of search. Get cited by ChatGPT, Claude, 
+                Perplexity, and other AI systems that are becoming the new search engines.
+              </p>
+              
+              <div className="wp-flex wp-justify-center wp-gap-4 wp-flex-wrap">
+                <Link to="/contact" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: 'var(--spacing-3) var(--spacing-8)', backgroundColor: 'var(--primary)', color: 'var(--primary-foreground)', borderRadius: 'var(--radius)', fontFamily: 'var(--font-secondary)', fontWeight: 'var(--font-weight-bold)', textDecoration: 'none' }}>
+                  Get AI Visibility Audit
+                </Link>
+                <Link to="/services/ai-search-visibility" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: 'var(--spacing-3) var(--spacing-8)', backgroundColor: 'transparent', color: 'var(--foreground)', border: '1px solid var(--border)', borderRadius: 'var(--radius)', fontFamily: 'var(--font-secondary)', fontWeight: 'var(--font-weight-medium)', textDecoration: 'none' }}>
+                  View Parent Service
+                </Link>
+              </div>
+            </ScrollReveal>
           </div>
-          
-          <h1 className="ai-engine-service__hero-title">
-            AI Engine Optimization (AEO)
-          </h1>
-          
-          <p className="ai-engine-service__hero-description">
-            Position your brand for the AI-powered future of search. Get cited by ChatGPT, Claude, 
-            Perplexity, and other AI systems that are becoming the new search engines.
-          </p>
-          
-          <div className="ai-engine-service__hero-cta">
-            <Link to="/contact" className="ai-engine-service__cta-button ai-engine-service__cta-button--primary">
-              Get AI Visibility Audit
-            </Link>
-            <Link to="/services/ai-search-visibility" className="ai-engine-service__cta-button ai-engine-service__cta-button--secondary">
-              View Parent Service
-            </Link>
-          </div>
-        </div>
+        </Container>
       </section>
 
       {/* Benefits Grid */}
-      <section className="ai-engine-service__benefits">
-        <div className="ai-engine-service__section-header">
-          <h2 className="ai-engine-service__section-title">Why AI Engine Optimization Matters</h2>
-          <p className="ai-engine-service__section-description">
-            AI systems are becoming primary information sources. Be visible where your audience asks questions.
-          </p>
-        </div>
-        
-        <FeatureList 
-          items={benefits} 
-          columns={3} 
-          variant="glow" 
-          iconSize="lg"
-        />
+      <section style={{ padding: 'var(--spacing-24) 0', backgroundColor: 'var(--muted)' }}>
+        <Container>
+          <div style={{ textAlign: 'center', marginBottom: 'var(--spacing-16)' }}>
+            <ScrollReveal animation="fade-up">
+              <h2 style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-h2)', color: 'var(--foreground)', marginBottom: 'var(--spacing-4)' }}>Why AI Engine Optimization Matters</h2>
+              <p style={{ fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-lg)', color: 'var(--muted-foreground)', maxWidth: '600px', margin: '0 auto' }}>
+                AI systems are becoming primary information sources. Be visible where your audience asks questions.
+              </p>
+            </ScrollReveal>
+          </div>
+          
+          <ScrollReveal animation="fade-up" delay={100}>
+            <FeatureList 
+              items={benefits.map(b => ({ ...b, icon: b.icon as any }))}
+              columns={3}
+              variant="glow"
+              iconSize="lg"
+            />
+          </ScrollReveal>
+        </Container>
       </section>
 
       {/* Process */}
-      <section className="ai-engine-service__process">
-        <div className="ai-engine-service__section-header">
-          <h2 className="ai-engine-service__section-title">Our Process</h2>
-          <p className="ai-engine-service__section-description">
-            Four-phase approach to AI engine visibility
-          </p>
-        </div>
-        
-        <div className="ai-engine-service__process-grid">
-          {process.map((phase, index) => (
-            <div key={index} className="ai-engine-service__process-card">
-              <div className="ai-engine-service__process-number">{index + 1}</div>
-              <h3 className="ai-engine-service__process-title">{phase.title}</h3>
-              <p className="ai-engine-service__process-description">{phase.description}</p>
-              <ul className="ai-engine-service__process-list">
-                {phase.deliverables.map((item, itemIndex) => (
-                  <li key={itemIndex} className="ai-engine-service__process-list-item">
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
+      <section style={{ padding: 'var(--spacing-24) 0', backgroundColor: 'var(--background)' }}>
+        <Container>
+          <div style={{ textAlign: 'center', marginBottom: 'var(--spacing-16)' }}>
+            <ScrollReveal animation="fade-up">
+              <h2 style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-h2)', color: 'var(--foreground)', marginBottom: 'var(--spacing-4)' }}>Our Process</h2>
+              <p style={{ fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-lg)', color: 'var(--muted-foreground)', maxWidth: '600px', margin: '0 auto' }}>
+                Four-phase approach to AI engine visibility
+              </p>
+            </ScrollReveal>
+          </div>
+          
+          <ScrollReveal animation="fade-up">
+            <ProcessTimeline
+              heading=""
+              description=""
+              steps={process.map((phase, index) => ({
+                id: `phase-${index}`,
+                number: index + 1,
+                title: phase.title,
+                description: `${phase.description}. Deliverables: ${phase.deliverables.join(', ')}`
+              }))}
+              showNumbers={true}
+              orientation="vertical"
+            />
+          </ScrollReveal>
+        </Container>
       </section>
 
       {/* Results */}
-      <section className="ai-engine-service__results">
-        <div className="ai-engine-service__section-header">
-          <h2 className="ai-engine-service__section-title">Expected Results</h2>
-          <p className="ai-engine-service__section-description">
-            Measurable improvements in AI visibility and brand presence
-          </p>
-        </div>
-        
-        <div className="ai-engine-service__results-grid">
-          {results.map((result, index) => (
-            <div key={index} className="ai-engine-service__result-card">
-              <div className="ai-engine-service__result-metric">{result.metric}</div>
-              <div className="ai-engine-service__result-label">{result.label}</div>
-            </div>
-          ))}
-        </div>
+      <section style={{ padding: 'var(--spacing-24) 0', backgroundColor: 'var(--card)' }}>
+        <Container>
+          <div style={{ textAlign: 'center', marginBottom: 'var(--spacing-16)' }}>
+            <ScrollReveal animation="fade-up">
+              <h2 style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-h2)', color: 'var(--foreground)', marginBottom: 'var(--spacing-4)' }}>Expected Results</h2>
+              <p style={{ fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-lg)', color: 'var(--muted-foreground)', maxWidth: '600px', margin: '0 auto' }}>
+                Measurable improvements in AI visibility and brand presence
+              </p>
+            </ScrollReveal>
+          </div>
+          
+          <ScrollReveal animation="fade-up" delay={100}>
+            <StatsGrid
+              stats={results.map((r, i) => ({ id: `stat-${i}`, value: r.metric, label: r.label }))}
+              columns={4}
+              variant="cards"
+            />
+          </ScrollReveal>
+        </Container>
       </section>
 
+      <ServiceTestimonial serviceSlug="ai-search" />
+
       {/* CTA */}
-      <section className="ai-engine-service__cta">
-        <div className="ai-engine-service__cta-content">
-          <h2 className="ai-engine-service__cta-title">Ready for AI-Powered Visibility?</h2>
-          <p className="ai-engine-service__cta-description">
-            Get a free AI visibility audit and see where your brand appears (or doesn't) in AI responses.
-          </p>
-          <Link to="/contact" className="ai-engine-service__cta-button ai-engine-service__cta-button--primary">
-            Request Free Audit
-          </Link>
-        </div>
-      </section>
+      <FunkyCTA
+        title="Ready for AI-Powered Visibility?"
+        description="Get a free AI visibility audit and see where your brand appears (or doesn't) in AI responses."
+        buttonText="Request Free Audit"
+        buttonPage="contact"
+      />
     </div>
   );
 };

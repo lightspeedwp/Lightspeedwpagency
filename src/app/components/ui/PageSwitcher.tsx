@@ -1,1 +1,1 @@
-export { PageSwitcher } from '@/app/components/blocks/dev-tools/PageSwitcher';
+export { PageSwitcher } from '../blocks/dev-tools/PageSwitcher';

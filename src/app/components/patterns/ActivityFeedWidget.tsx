@@ -182,7 +182,7 @@ export function ActivityFeedWidget({
                   <span>{formatDate(item.date)}</span>
                   {item.meta && (
                     <>
-                      <span style={{ color: 'var(--muted-foreground)', opacity: 0.5 }}>|</span>
+                      <span className="wp-text-muted-foreground wp-opacity-50">|</span>
                       <span>{item.meta}</span>
                     </>
                   )}

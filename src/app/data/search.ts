@@ -38,12 +38,12 @@ export const contentTypeLabels: Record<ContentType, string> = {
   page: 'Page',
 };
 
-export const contentTypeColors: Record<ContentType, string> = {
-  blog: 'var(--primary)',
-  portfolio: 'var(--accent)',
-  video: 'var(--category-red)', 
-  podcast: 'var(--category-violet)',
-  page: 'var(--muted-foreground)',
+export const contentTypeColorClass: Record<ContentType, string> = {
+  blog: 'wp-text-primary',
+  portfolio: 'wp-text-accent',
+  video: 'wp-text-category-red', 
+  podcast: 'wp-text-category-violet',
+  page: 'wp-text-muted-foreground',
 };
 
 interface SearchOptions {

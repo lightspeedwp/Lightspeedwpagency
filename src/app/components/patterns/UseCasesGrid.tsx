@@ -63,14 +63,10 @@ export function UseCasesGrid({
   return (
     <Section 
       spacing="xl" 
-      style={{ 
-        backgroundColor: variant === 'muted' 
-          ? 'var(--muted)' 
-          : 'var(--background)' 
-      }}
+      background={variant === 'muted' ? 'muted' : 'default'}
     >
       <Container>
-        <div className="wp-max-w-6xl" style={{ margin: '0 auto' }}>
+        <div className="wp-max-w-6xl wp-mx-auto">
           {/* Section Header */}
           {(title || description) && (
             <div className="use-cases-grid__header">

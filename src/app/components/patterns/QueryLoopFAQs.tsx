@@ -46,18 +46,13 @@ export function QueryLoopFAQs({
                 aria-expanded={openIndex === index}
                 aria-controls={`faq-answer-${index}`}
               >
-                <span style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-3)' }}>
-                  <HelpCircle size={20} style={{ color: 'var(--primary)', flexShrink: 0 }} />
+                <span className="wp-flex wp-items-center wp-gap-3">
+                  <HelpCircle size={20} className="wp-text-primary wp-shrink-0" />
                   {faq.question}
                 </span>
                 <ChevronDown
                   size={20}
-                  style={{
-                    color: 'var(--muted-foreground)',
-                    flexShrink: 0,
-                    transition: 'transform var(--transition-base) var(--ease-in-out)',
-                    transform: openIndex === index ? 'rotate(180deg)' : 'rotate(0deg)',
-                  }}
+                  className={`wp-text-muted-foreground wp-shrink-0 transition-transform duration-300 ease-in-out ${openIndex === index ? 'wp-rotate-180' : ''}`}
                 />
               </button>
 

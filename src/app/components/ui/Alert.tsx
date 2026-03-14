@@ -45,7 +45,7 @@ export function Alert({
       {description}
       {children}
       {action && (
-        <div style={{ marginTop: 'var(--spacing-3)' }}>
+        <div className="wp-mt-3">
           <Button 
             variant="outline" 
             size="sm" 

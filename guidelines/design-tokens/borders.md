@@ -1,211 +1,48 @@
-# Border Tokens
+# Borders Guidelines — Design Tokens
 
-**Version:** 1.0  
-**Last Updated:** December 25, 2024
-
----
-
-## Overview
-
-Border tokens include border colors, widths, and styles. All borders use CSS variables for theme compatibility.
+**Category:** Design Tokens  
+**Version:** 1.1.0  
+**Last Updated:** 2026-03-11  
+**Status:** Active  
+**Template Used:** _templates/design-token-template.md  
 
 ---
 
-## 🎨 Border Colors
+## 🎯 Philosophy
+Borders in the Funky aesthetic are prominent, glowing, and often vibrant. We rely entirely on our CSS variables for all border treatments. **No hardcoded px values or Tailwind classes.**
 
-### Standard Border
+## 📏 CSS Variables
+Define and use these variables from `/src/styles/theme-base.css` and related style files:
+
 ```css
---border: rgba(117, 117, 117, 1);           /* Medium gray (both modes) */
+:root {
+  --border-width-1: 1px;
+  --border-width-2: 2px;
+  
+  --border-color-default: var(--border);
+  --border-color-neon: var(--wp--preset--color--neon-pink);
+}
 ```
 
-**Usage:**
-```tsx
-<div style={{ border: '1px solid var(--border)' }}>
-  Standard bordered element
-</div>
-```
+## 🏗 BEM Usage Example
 
-**Use Cases:** Form inputs, strong dividers, table borders
+### Neon Borders
+Neon borders are a staple of the "Funky" design system. Combine thick borders with bright, neon CSS color variables.
 
----
-
-### Soft Border (Modern Design)
 ```css
-/* Light Mode */
---border-soft: rgba(0, 0, 0, 0.08);         /* 8% black */
+.card {
+  border: 2px solid var(--border);
+  border-radius: var(--radius-md);
+  transition: border-color 0.3s ease;
+}
 
-/* Dark Mode */
---border-soft: rgba(255, 255, 255, 0.08);   /* 8% white */
+.card:hover,
+.card--is-active {
+  border-color: var(--wp--preset--color--neon-pink);
+}
 ```
 
-**Usage:**
-```tsx
-<div style={{ border: '1px solid var(--border-soft)' }}>
-  Soft bordered card
-</div>
-```
-
-**Use Cases:** Cards, subtle containers, modern dividers
-
----
-
-### Extra Soft Border (Very Subtle)
-```css
-/* Light Mode */
---border-extra-soft: rgba(0, 0, 0, 0.04);   /* 4% black */
-
-/* Dark Mode */
---border-extra-soft: rgba(255, 255, 255, 0.04); /* 4% white */
-```
-
-**Usage:**
-```tsx
-<hr style={{ 
-  border: 'none',
-  borderTop: '1px solid var(--border-extra-soft)'
-}} />
-```
-
-**Use Cases:** Section dividers, very subtle separation
-
----
-
-## 📏 Border Widths
-
-### Width Scale
-```css
-border-width: 1px;      /* Standard - Most common */
-border-width: 2px;      /* Emphasis - Buttons, focus states */
-border-width: 4px;      /* Strong - Accent elements */
-```
-
-**Usage:**
-```tsx
-// Standard border
-<div style={{ border: '1px solid var(--border)' }} />
-
-// Emphasis border
-<div style={{ border: '2px solid var(--primary)' }} />
-
-// Strong accent
-<div style={{ borderLeft: '4px solid var(--primary)' }} />
-```
-
----
-
-## 🎯 Border Styles
-
-### Solid (Default)
-```tsx
-<div style={{ border: '1px solid var(--border)' }} />
-```
-
-### Dashed
-```tsx
-<div style={{ border: '1px dashed var(--border)' }} />
-```
-**Use Case:** Placeholders, draft states
-
-### None
-```tsx
-<div style={{ border: 'none' }} />
-```
-
----
-
-## 🎨 Common Border Patterns
-
-### Card with Soft Border
-```tsx
-<div style={{
-  border: '1px solid var(--border-soft)',
-  borderRadius: 'var(--radius-lg)',
-  padding: '24px',
-  backgroundColor: 'var(--card)'
-}}>
-  Card content
-</div>
-```
-
-### Form Input
-```tsx
-<input style={{
-  border: '1px solid var(--border)',
-  borderRadius: 'var(--radius)',
-  padding: '12px 16px',
-  outline: 'none',
-  transition: 'border-color 0.2s'
-}} />
-```
-
-### Button with Border
-```tsx
-<button style={{
-  border: '2px solid var(--primary)',
-  borderRadius: 'var(--radius)',
-  padding: '10px 24px',
-  backgroundColor: 'transparent',
-  color: 'var(--primary)'
-}}>
-  Outline Button
-</button>
-```
-
-### Accent Border (Left)
-```tsx
-<div style={{
-  borderLeft: '4px solid var(--primary)',
-  paddingLeft: '16px'
-}}>
-  Accented content block
-</div>
-```
-
-### Divider
-```tsx
-<hr style={{
-  border: 'none',
-  borderTop: '1px solid var(--border-extra-soft)',
-  margin: '32px 0'
-}} />
-```
-
----
-
-## ♿ Accessibility
-
-### Focus States
-
-**Visible focus outline:**
-```tsx
-<button style={{
-  outline: '2px solid var(--ring)',
-  outlineOffset: '2px'
-}}>
-  Focused button
-</button>
-```
-
-**Minimum contrast:** 3:1 ratio for borders against background
-
----
-
-## ✅ Best Practices
-
-### Do's ✅
-- Use soft borders (`--border-soft`) for modern aesthetic
-- Use standard border (`--border`) for form inputs
-- Use 1px width for most borders
-- Use 2px for focus states and emphasis
-
-### Don'ts ❌
-- Don't hard-code border colors
-- Don't use borders thicker than 4px
-- Don't forget border-radius for modern look
-- Don't mix border styles inconsistently
-
----
-
-**Last Updated:** December 25, 2024  
-**Border Colors:** 3 (standard, soft, extra-soft)  
-**Border Widths:** 3 (1px, 2px, 4px)
+## 🚫 Anti-Patterns
+- **Do NOT** use `border-2 border-red-500` (No Tailwind).
+- **Do NOT** write `border: 2px solid #FF00FF;` (No hardcoded hex color values).
+- **Do NOT** create inline styles for borders unless calculating dynamic UI state (very rare).

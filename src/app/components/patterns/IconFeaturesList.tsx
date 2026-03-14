@@ -42,10 +42,10 @@ export interface IconFeaturesListProps {
   iconBoxSize?: number;
   /** Gap between items */
   gap?: 'sm' | 'md' | 'lg';
-  /** Icon background color override */
-  iconBackground?: string;
-  /** Icon color override */
-  iconColor?: string;
+  /** Icon background class override */
+  iconBackgroundClass?: string;
+  /** Icon color class override */
+  iconColorClass?: string;
 }
 
 export function IconFeaturesList({
@@ -53,8 +53,8 @@ export function IconFeaturesList({
   iconSize = 24,
   iconBoxSize = 48,
   gap = 'md',
-  iconBackground = 'var(--primary)',
-  iconColor = 'white'
+  iconBackgroundClass = 'wp-bg-primary',
+  iconColorClass = 'wp-text-white'
 }: IconFeaturesListProps) {
   
   const listClass = `icon-features-list icon-features-list--gap-${gap}`;
@@ -71,14 +71,10 @@ export function IconFeaturesList({
           >
             {/* Icon Box */}
             <div
-              className="icon-features-list__icon-box"
-              style={{
-                width: `${iconBoxSize}px`,
-                height: `${iconBoxSize}px`,
-                backgroundColor: iconBackground,
-              }}
+              className={`icon-features-list__icon-box ${iconBackgroundClass}`}
+              style={iconBoxSize ? { width: `${iconBoxSize}px`, height: `${iconBoxSize}px` } : undefined}
             >
-              <Icon size={iconSize} style={{ color: iconColor }} />
+              <Icon size={iconSize} className={iconColorClass} />
             </div>
 
             {/* Content */}

@@ -49,7 +49,7 @@ export interface ChallengesGridProps {
   /** Section spacing */
   spacing?: 'sm' | 'md' | 'lg' | 'xl';
   /** Background color */
-  backgroundColor?: string;
+  background?: 'default' | 'card' | 'muted' | 'transparent';
   /** Maximum width container */
   maxWidth?: 'full' | '4xl' | '5xl' | '6xl';
 }
@@ -62,7 +62,7 @@ export function ChallengesGrid({
   challenges,
   columns = 4,
   spacing = 'xl',
-  backgroundColor = 'var(--background)',
+  background = 'default',
   maxWidth = '6xl'
 }: ChallengesGridProps) {
   // Map columns to WordPress utility classes
@@ -77,7 +77,7 @@ export function ChallengesGrid({
     : `wp-max-w-${maxWidth} wp-mx-auto`;
 
   return (
-    <Section spacing={spacing} style={{ backgroundColor }}>
+    <Section spacing={spacing} background={background as any}>
       <div className={maxWidthClass}>
         {/* Section Header */}
         {(badge || title || description) && (

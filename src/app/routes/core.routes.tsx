@@ -21,9 +21,8 @@
  * @see /src/styles/bundles/
  */
 
-import React, { lazy, Suspense } from 'react';
+import React from 'react';
 import { Navigate, type RouteObject } from 'react-router';
-import { RouteLoadingFallback } from '../components/ui/RouteLoadingFallback';
 import { loadCSSBundle } from '../utils/css-bundle-loader';
 
 /* ═══════════════════════════════════════════
@@ -33,103 +32,98 @@ import { loadCSSBundle } from '../utils/css-bundle-loader';
 // Core Pages
 import { FrontPageTemplate } from '../components/templates/FrontPageTemplate';
 
-/* ═══════════════════════════════════════════
- * Lazy Template Imports
- * ═══════════════════════════════════════════ */
-
 // About
-const AboutTemplate = lazy(() => import('../components/templates/AboutTemplate').then(m => ({ default: m.AboutTemplate })));
-const AboutProcessTemplate = lazy(() => import('../components/templates/AboutProcessTemplate').then(m => ({ default: m.AboutProcessTemplate })));
-const AboutCultureTemplate = lazy(() => import('../components/templates/AboutCultureTemplate').then(m => ({ default: m.AboutCultureTemplate })));
-const AboutHistoryTemplate = lazy(() => import('../components/templates/AboutHistoryTemplate').then(m => ({ default: m.AboutHistoryTemplate })));
-const TeamTemplate = lazy(() => import('../components/templates/TeamTemplate').then(m => ({ default: m.TeamTemplate })));
-const CareersTemplate = lazy(() => import('../components/templates/CareersTemplate').then(m => ({ default: m.CareersTemplate })));
+import { AboutTemplate } from '../components/templates/AboutTemplate';
+import { AboutProcessTemplate } from '../components/templates/AboutProcessTemplate';
+import { AboutCultureTemplate } from '../components/templates/AboutCultureTemplate';
+import { AboutHistoryTemplate } from '../components/templates/AboutHistoryTemplate';
+import { TeamTemplate } from '../components/templates/TeamTemplate';
+import { CareersTemplate } from '../components/templates/CareersTemplate';
 
 // Services
-const ServicesLandingTemplate = lazy(() => import('../components/templates/ServicesLandingTemplate').then(m => ({ default: m.ServicesLandingTemplate })));
-const DiscoveryServiceTemplate = lazy(() => import('../components/templates/DiscoveryServiceTemplate').then(m => ({ default: m.DiscoveryServiceTemplate })));
-const DesignServiceTemplate = lazy(() => import('../components/templates/DesignServiceTemplate').then(m => ({ default: m.DesignServiceTemplate })));
-const DevelopmentServiceTemplate = lazy(() => import('../components/templates/DevelopmentServiceTemplate').then(m => ({ default: m.DevelopmentServiceTemplate })));
-const ContentServiceTemplate = lazy(() => import('../components/templates/ContentServiceTemplate').then(m => ({ default: m.ContentServiceTemplate })));
-const SecurityServiceTemplate = lazy(() => import('../components/templates/SecurityServiceTemplate').then(m => ({ default: m.SecurityServiceTemplate })));
-const TrainingTemplate = lazy(() => import('../components/templates/TrainingTemplate').then(m => ({ default: m.TrainingTemplate })));
-const HostingTemplate = lazy(() => import('../components/templates/HostingTemplate').then(m => ({ default: m.HostingTemplate })));
-const PerformanceServiceTemplate = lazy(() => import('../components/templates/PerformanceServiceTemplate').then(m => ({ default: m.PerformanceServiceTemplate })));
+import { ServicesLandingTemplate } from '../components/templates/ServicesLandingTemplate';
+import { DiscoveryServiceTemplate } from '../components/templates/DiscoveryServiceTemplate';
+import { DesignServiceTemplate } from '../components/templates/DesignServiceTemplate';
+import { DevelopmentServiceTemplate } from '../components/templates/DevelopmentServiceTemplate';
+import { ContentServiceTemplate } from '../components/templates/ContentServiceTemplate';
+import { SecurityServiceTemplate } from '../components/templates/SecurityServiceTemplate';
+import { TrainingTemplate } from '../components/templates/TrainingTemplate';
+import { HostingTemplate } from '../components/templates/HostingTemplate';
+import { PerformanceServiceTemplate } from '../components/templates/PerformanceServiceTemplate';
 
 // AI Search & Visibility
-const AISearchServiceTemplate = lazy(() => import('../components/templates/AISearchServiceTemplate').then(m => ({ default: m.AISearchServiceTemplate })));
-const SEOServiceTemplate = lazy(() => import('../components/templates/SEOServiceTemplate').then(m => ({ default: m.SEOServiceTemplate })));
-const AnalyticsServiceTemplate = lazy(() => import('../components/templates/AnalyticsServiceTemplate').then(m => ({ default: m.AnalyticsServiceTemplate })));
-const AIEngineServiceTemplate = lazy(() => import('../components/templates/AIEngineServiceTemplate').then(m => ({ default: m.AIEngineServiceTemplate })));
-const AnswerEngineServiceTemplate = lazy(() => import('../components/templates/AnswerEngineServiceTemplate').then(m => ({ default: m.AnswerEngineServiceTemplate })));
+import { AISearchServiceTemplate } from '../components/templates/AISearchServiceTemplate';
+import { SEOServiceTemplate } from '../components/templates/SEOServiceTemplate';
+import { AnalyticsServiceTemplate } from '../components/templates/AnalyticsServiceTemplate';
+import { AIEngineServiceTemplate } from '../components/templates/AIEngineServiceTemplate';
+import { AnswerEngineServiceTemplate } from '../components/templates/AnswerEngineServiceTemplate';
 
 // Performance Sub-Services
-const AccessibilityServiceTemplate = lazy(() => import('../components/templates/AccessibilityServiceTemplate').then(m => ({ default: m.AccessibilityServiceTemplate })));
+import { AccessibilityServiceTemplate } from '../components/templates/AccessibilityServiceTemplate';
 
 // Hosting Sub-Services
-const MigrationsServiceTemplate = lazy(() => import('../components/templates/MigrationsServiceTemplate').then(m => ({ default: m.MigrationsServiceTemplate })));
-const SupportServiceTemplate = lazy(() => import('../components/templates/SupportServiceTemplate').then(m => ({ default: m.SupportServiceTemplate })));
+import { MigrationsServiceTemplate } from '../components/templates/MigrationsServiceTemplate';
+import { SupportServiceTemplate } from '../components/templates/SupportServiceTemplate';
 
 // Content Sub-Services
-const ContentStrategyServiceTemplate = lazy(() => import('../components/templates/ContentStrategyServiceTemplate').then(m => ({ default: m.ContentStrategyServiceTemplate })));
-const ContentCollectionServiceTemplate = lazy(() => import('../components/templates/ContentCollectionServiceTemplate').then(m => ({ default: m.ContentCollectionServiceTemplate })));
-const ContentAuditServiceTemplate = lazy(() => import('../components/templates/ContentAuditServiceTemplate').then(m => ({ default: m.ContentAuditServiceTemplate })));
-const NewsletterServiceTemplate = lazy(() => import('../components/templates/NewsletterServiceTemplate').then(m => ({ default: m.NewsletterServiceTemplate })));
-const EmailMarketingServiceTemplate = lazy(() => import('../components/templates/EmailMarketingServiceTemplate').then(m => ({ default: m.EmailMarketingServiceTemplate })));
+import { ContentStrategyServiceTemplate } from '../components/templates/ContentStrategyServiceTemplate';
+import { ContentCollectionServiceTemplate } from '../components/templates/ContentCollectionServiceTemplate';
+import { ContentAuditServiceTemplate } from '../components/templates/ContentAuditServiceTemplate';
+import { NewsletterServiceTemplate } from '../components/templates/NewsletterServiceTemplate';
+import { EmailMarketingServiceTemplate } from '../components/templates/EmailMarketingServiceTemplate';
 
 // AI Services Landing
-const AIServicesLandingTemplate = lazy(() => import('../components/templates/AIServicesLandingTemplate').then(m => ({ default: m.AIServicesLandingTemplate })));
+import { AIServicesLandingTemplate } from '../components/templates/AIServicesLandingTemplate';
 
 // Content Services Landing
-const ContentServicesLandingTemplate = lazy(() => import('../components/templates/ContentServicesLandingTemplate').then(m => ({ default: m.ContentServicesLandingTemplate })));
+import { ContentServicesLandingTemplate } from '../components/templates/ContentServicesLandingTemplate';
 
 // New Content Sub-Services
-const ContentCreationServiceTemplate = lazy(() => import('../components/templates/ContentCreationServiceTemplate').then(m => ({ default: m.ContentCreationServiceTemplate })));
-const ContentCopywritingServiceTemplate = lazy(() => import('../components/templates/ContentCopywritingServiceTemplate').then(m => ({ default: m.ContentCopywritingServiceTemplate })));
-const ContentSEOServiceTemplate = lazy(() => import('../components/templates/ContentSEOServiceTemplate').then(m => ({ default: m.ContentSEOServiceTemplate })));
-const ContentGovernanceServiceTemplate = lazy(() => import('../components/templates/ContentGovernanceServiceTemplate').then(m => ({ default: m.ContentGovernanceServiceTemplate })));
+import { ContentCreationServiceTemplate } from '../components/templates/ContentCreationServiceTemplate';
+import { ContentCopywritingServiceTemplate } from '../components/templates/ContentCopywritingServiceTemplate';
+import { ContentSEOServiceTemplate } from '../components/templates/ContentSEOServiceTemplate';
+import { ContentGovernanceServiceTemplate } from '../components/templates/ContentGovernanceServiceTemplate';
 
 // Design Sub-Services
-const FigmaPrototypingServiceTemplate = lazy(() => import('../components/templates/FigmaPrototypingServiceTemplate').then(m => ({ default: m.FigmaPrototypingServiceTemplate })));
-const DesignSystemsServiceTemplate = lazy(() => import('../components/templates/DesignSystemsServiceTemplate').then(m => ({ default: m.DesignSystemsServiceTemplate })));
+import { FigmaPrototypingServiceTemplate } from '../components/templates/FigmaPrototypingServiceTemplate';
+import { DesignSystemsServiceTemplate } from '../components/templates/DesignSystemsServiceTemplate';
 
-// Journey Stage Pages (Lazy)
-const JourneyStageTemplate = lazy(() => import('../components/templates/JourneyStageTemplate').then(m => ({ default: m.JourneyStageTemplate })));
+// Journey Stage Pages
+import { JourneyStageTemplate } from '../components/templates/JourneyStageTemplate';
 
 // Systems Hub
-const SystemsHubTemplate = lazy(() => import('../components/templates/SystemsHubTemplate').then(m => ({ default: m.SystemsHubTemplate })));
-const DesignTokensSystemTemplate = lazy(() => import('../components/templates/DesignTokensSystemTemplate').then(m => ({ default: m.DesignTokensSystemTemplate })));
-const PatternGovernanceSystemTemplate = lazy(() => import('../components/templates/PatternGovernanceSystemTemplate').then(m => ({ default: m.PatternGovernanceSystemTemplate })));
+import { SystemsHubTemplate } from '../components/templates/SystemsHubTemplate';
+import { DesignTokensSystemTemplate } from '../components/templates/DesignTokensSystemTemplate';
+import { PatternGovernanceSystemTemplate } from '../components/templates/PatternGovernanceSystemTemplate';
 
-// Systems child pages (lazy-loaded)
-const EditorialWorkflowsSystemTemplate = lazy(() => import('../components/templates/EditorialWorkflowsSystemTemplate').then(m => ({ default: m.default || m.EditorialWorkflowsSystemTemplate })));
-const AISearchReadinessSystemTemplate = lazy(() => import('../components/templates/AISearchReadinessSystemTemplate').then(m => ({ default: m.default || m.AISearchReadinessSystemTemplate })));
-const PerformanceReliabilitySystemTemplate = lazy(() => import('../components/templates/PerformanceReliabilitySystemTemplate').then(m => ({ default: m.default || m.PerformanceReliabilitySystemTemplate })));
+// Systems child pages
+import { EditorialWorkflowsSystemTemplate } from '../components/templates/EditorialWorkflowsSystemTemplate';
+import { AISearchReadinessSystemTemplate } from '../components/templates/AISearchReadinessSystemTemplate';
+import { PerformanceReliabilitySystemTemplate } from '../components/templates/PerformanceReliabilitySystemTemplate';
 
 // Solutions
-const SolutionsTemplate = lazy(() => import('../components/templates/SolutionsTemplate').then(m => ({ default: m.SolutionsTemplate })));
-const WordPressSolutionTemplate = lazy(() => import('../components/templates/WordPressSolutionTemplate').then(m => ({ default: m.WordPressSolutionTemplate })));
-const WooCommerceSolutionTemplate = lazy(() => import('../components/templates/WooCommerceSolutionTemplate').then(m => ({ default: m.WooCommerceSolutionTemplate })));
-const TourOperatorTemplate = lazy(() => import('../components/templates/TourOperatorTemplate').then(m => ({ default: m.TourOperatorTemplate })));
-const PublishersTemplate = lazy(() => import('../components/templates/PublishersTemplate').then(m => ({ default: m.PublishersTemplate })));
-const LSXDesignTemplate = lazy(() => import('../components/templates/LSXDesignTemplate').then(m => ({ default: m.LSXDesignTemplate })));
-const LSXSolutionTemplate = lazy(() => import('../components/templates/LSXSolutionTemplate').then(m => ({ default: m.LSXSolutionTemplate })));
-const MailchimpSolutionTemplate = lazy(() => import('../components/templates/MailchimpSolutionTemplate').then(m => ({ default: m.MailchimpSolutionTemplate })));
-const WetuImporterTemplate = lazy(() => import('../components/templates/WetuImporterTemplate').then(m => ({ default: m.WetuImporterTemplate })));
-const LSXSharingTemplate = lazy(() => import('../components/templates/LSXSharingTemplate').then(m => ({ default: m.LSXSharingTemplate })));
-const LSXSearchTemplate = lazy(() => import('../components/templates/LSXSearchTemplate').then(m => ({ default: m.LSXSearchTemplate })));
+import { SolutionsTemplate } from '../components/templates/SolutionsTemplate';
+import { WordPressSolutionTemplate } from '../components/templates/WordPressSolutionTemplate';
+import { WooCommerceSolutionTemplate } from '../components/templates/WooCommerceSolutionTemplate';
+import { TourOperatorSolutionsTemplate } from '../components/templates/TourOperatorSolutionsTemplate';
+import { PublishersTemplate } from '../components/templates/PublishersTemplate';
+import { LSXDesignTemplate } from '../components/templates/LSXDesignTemplate';
+import { LSXSolutionTemplate } from '../components/templates/LSXSolutionTemplate';
+import { MailchimpSolutionTemplate } from '../components/templates/MailchimpSolutionTemplate';
+import { WetuImporterTemplate } from '../components/templates/WetuImporterTemplate';
+import { LSXSharingTemplate } from '../components/templates/LSXSharingTemplate';
+import { LSXSearchTemplate } from '../components/templates/LSXSearchTemplate';
 
 // New Solution Pages
-const WordPressRedesignTemplate = lazy(() => import('../components/templates/WordPressRedesignTemplate').then(m => ({ default: m.WordPressRedesignTemplate })));
-const WooCommerceRedesignTemplate = lazy(() => import('../components/templates/WooCommerceRedesignTemplate').then(m => ({ default: m.WooCommerceRedesignTemplate })));
-const TourOperatorDesignTemplate = lazy(() => import('../components/templates/TourOperatorDesignTemplate').then(m => ({ default: m.TourOperatorDesignTemplate })));
+import { WordPressRedesignTemplate } from '../components/templates/WordPressRedesignTemplate';
+import { WooCommerceRedesignTemplate } from '../components/templates/WooCommerceRedesignTemplate';
 
 // AI Integrations (Solutions)
-const AIIntegrationsTemplate = lazy(() => import('../components/templates/AIIntegrationsTemplate').then(m => ({ default: m.AIIntegrationsTemplate })));
-const AIContentGenerationTemplate = lazy(() => import('../components/templates/AIContentGenerationTemplate').then(m => ({ default: m.AIContentGenerationTemplate })));
-const AISEOTemplate = lazy(() => import('../components/templates/AISEOTemplate').then(m => ({ default: m.AISEOTemplate })));
-const AIChatbotsTemplate = lazy(() => import('../components/templates/AIChatbotsTemplate').then(m => ({ default: m.AIChatbotsTemplate })));
-const AIAnalyticsTemplate = lazy(() => import('../components/templates/AIAnalyticsTemplate').then(m => ({ default: m.AIAnalyticsTemplate })));
+import { AIIntegrationsTemplate } from '../components/templates/AIIntegrationsTemplate';
+import { AIContentGenerationTemplate } from '../components/templates/AIContentGenerationTemplate';
+import { AISEOTemplate } from '../components/templates/AISEOTemplate';
+import { AIChatbotsTemplate } from '../components/templates/AIChatbotsTemplate';
+import { AIAnalyticsTemplate } from '../components/templates/AIAnalyticsTemplate';
 
 
 /* ═══════════════════════════════════════════
@@ -137,84 +131,83 @@ const AIAnalyticsTemplate = lazy(() => import('../components/templates/AIAnalyti
  * ═══════════════════════════════════════════ */
 
 // About
-function AboutRoute() { loadCSSBundle('about'); return <Suspense fallback={<RouteLoadingFallback />}><AboutTemplate /></Suspense>; }
-function AboutProcessRoute() { loadCSSBundle('about'); return <Suspense fallback={<RouteLoadingFallback />}><AboutProcessTemplate /></Suspense>; }
-function AboutCultureRoute() { loadCSSBundle('about'); return <Suspense fallback={<RouteLoadingFallback />}><AboutCultureTemplate /></Suspense>; }
-function AboutHistoryRoute() { loadCSSBundle('about'); return <Suspense fallback={<RouteLoadingFallback />}><AboutHistoryTemplate /></Suspense>; }
-function TeamRoute() { loadCSSBundle('about'); return <Suspense fallback={<RouteLoadingFallback />}><TeamTemplate /></Suspense>; }
-function CareersRoute() { loadCSSBundle('about'); return <Suspense fallback={<RouteLoadingFallback />}><CareersTemplate /></Suspense>; }
+function AboutRoute() { loadCSSBundle('about'); return <AboutTemplate />; }
+function AboutProcessRoute() { loadCSSBundle('about'); return <AboutProcessTemplate />; }
+function AboutCultureRoute() { loadCSSBundle('about'); return <AboutCultureTemplate />; }
+function AboutHistoryRoute() { loadCSSBundle('about'); return <AboutHistoryTemplate />; }
+function TeamRoute() { loadCSSBundle('about'); return <TeamTemplate />; }
+function CareersRoute() { loadCSSBundle('about'); return <CareersTemplate />; }
 
 // Services
-function ServicesLandingRoute() { loadCSSBundle('services'); return <Suspense fallback={<RouteLoadingFallback />}><ServicesLandingTemplate /></Suspense>; }
-function DiscoveryServiceRoute() { loadCSSBundle('services'); return <Suspense fallback={<RouteLoadingFallback />}><DiscoveryServiceTemplate /></Suspense>; }
-function DesignServiceRoute() { loadCSSBundle('services'); return <Suspense fallback={<RouteLoadingFallback />}><DesignServiceTemplate /></Suspense>; }
-function DevelopmentServiceRoute() { loadCSSBundle('services'); return <Suspense fallback={<RouteLoadingFallback />}><DevelopmentServiceTemplate /></Suspense>; }
-function ContentServiceRoute() { loadCSSBundle('services'); return <Suspense fallback={<RouteLoadingFallback />}><ContentServiceTemplate /></Suspense>; }
-function SecurityServiceRoute() { loadCSSBundle('services'); return <Suspense fallback={<RouteLoadingFallback />}><SecurityServiceTemplate /></Suspense>; }
-function TrainingRoute() { loadCSSBundle('services'); return <Suspense fallback={<RouteLoadingFallback />}><TrainingTemplate /></Suspense>; }
-function HostingRoute() { loadCSSBundle('services'); return <Suspense fallback={<RouteLoadingFallback />}><HostingTemplate /></Suspense>; }
-function PerformanceServiceRoute() { loadCSSBundle('services'); return <Suspense fallback={<RouteLoadingFallback />}><PerformanceServiceTemplate /></Suspense>; }
+function ServicesLandingRoute() { loadCSSBundle('services'); return <ServicesLandingTemplate />; }
+function DiscoveryServiceRoute() { loadCSSBundle('services'); return <DiscoveryServiceTemplate />; }
+function DesignServiceRoute() { loadCSSBundle('services'); return <DesignServiceTemplate />; }
+function DevelopmentServiceRoute() { loadCSSBundle('services'); return <DevelopmentServiceTemplate />; }
+function ContentServiceRoute() { loadCSSBundle('services'); return <ContentServiceTemplate />; }
+function SecurityServiceRoute() { loadCSSBundle('services'); return <SecurityServiceTemplate />; }
+function TrainingRoute() { loadCSSBundle('services'); return <TrainingTemplate />; }
+function HostingRoute() { loadCSSBundle('services'); return <HostingTemplate />; }
+function PerformanceServiceRoute() { loadCSSBundle('services'); return <PerformanceServiceTemplate />; }
 
-function AISearchServiceRoute() { loadCSSBundle('services'); return <Suspense fallback={<RouteLoadingFallback />}><AISearchServiceTemplate /></Suspense>; }
-function SEOServiceRoute() { loadCSSBundle('services'); return <Suspense fallback={<RouteLoadingFallback />}><SEOServiceTemplate /></Suspense>; }
-function AnalyticsServiceRoute() { loadCSSBundle('services'); return <Suspense fallback={<RouteLoadingFallback />}><AnalyticsServiceTemplate /></Suspense>; }
-function AIEngineServiceRoute() { loadCSSBundle('services'); return <Suspense fallback={<RouteLoadingFallback />}><AIEngineServiceTemplate /></Suspense>; }
-function AnswerEngineServiceRoute() { loadCSSBundle('services'); return <Suspense fallback={<RouteLoadingFallback />}><AnswerEngineServiceTemplate /></Suspense>; }
-function AccessibilityServiceRoute() { loadCSSBundle('services'); return <Suspense fallback={<RouteLoadingFallback />}><AccessibilityServiceTemplate /></Suspense>; }
-function MigrationsServiceRoute() { loadCSSBundle('services'); return <Suspense fallback={<RouteLoadingFallback />}><MigrationsServiceTemplate /></Suspense>; }
-function SupportServiceRoute() { loadCSSBundle('services'); return <Suspense fallback={<RouteLoadingFallback />}><SupportServiceTemplate /></Suspense>; }
-function ContentStrategyServiceRoute() { loadCSSBundle('services'); return <Suspense fallback={<RouteLoadingFallback />}><ContentStrategyServiceTemplate /></Suspense>; }
-function ContentCollectionServiceRoute() { loadCSSBundle('services'); return <Suspense fallback={<RouteLoadingFallback />}><ContentCollectionServiceTemplate /></Suspense>; }
-function ContentAuditServiceRoute() { loadCSSBundle('services'); return <Suspense fallback={<RouteLoadingFallback />}><ContentAuditServiceTemplate /></Suspense>; }
-function NewsletterServiceRoute() { loadCSSBundle('services'); return <Suspense fallback={<RouteLoadingFallback />}><NewsletterServiceTemplate /></Suspense>; }
-function EmailMarketingServiceRoute() { loadCSSBundle('services'); return <Suspense fallback={<RouteLoadingFallback />}><EmailMarketingServiceTemplate /></Suspense>; }
-function AIServicesLandingRoute() { loadCSSBundle('services'); return <Suspense fallback={<RouteLoadingFallback />}><AIServicesLandingTemplate /></Suspense>; }
-function ContentServicesLandingRoute() { loadCSSBundle('services'); return <Suspense fallback={<RouteLoadingFallback />}><ContentServicesLandingTemplate /></Suspense>; }
-function ContentCreationServiceRoute() { loadCSSBundle('services'); return <Suspense fallback={<RouteLoadingFallback />}><ContentCreationServiceTemplate /></Suspense>; }
-function ContentCopywritingServiceRoute() { loadCSSBundle('services'); return <Suspense fallback={<RouteLoadingFallback />}><ContentCopywritingServiceTemplate /></Suspense>; }
-function ContentSEOServiceRoute() { loadCSSBundle('services'); return <Suspense fallback={<RouteLoadingFallback />}><ContentSEOServiceTemplate /></Suspense>; }
-function ContentGovernanceServiceRoute() { loadCSSBundle('services'); return <Suspense fallback={<RouteLoadingFallback />}><ContentGovernanceServiceTemplate /></Suspense>; }
-function FigmaPrototypingServiceRoute() { loadCSSBundle('services'); return <Suspense fallback={<RouteLoadingFallback />}><FigmaPrototypingServiceTemplate /></Suspense>; }
-function DesignSystemsServiceRoute() { loadCSSBundle('services'); return <Suspense fallback={<RouteLoadingFallback />}><DesignSystemsServiceTemplate /></Suspense>; }
+function AISearchServiceRoute() { loadCSSBundle('services'); return <AISearchServiceTemplate />; }
+function SEOServiceRoute() { loadCSSBundle('services'); return <SEOServiceTemplate />; }
+function AnalyticsServiceRoute() { loadCSSBundle('services'); return <AnalyticsServiceTemplate />; }
+function AIEngineServiceRoute() { loadCSSBundle('services'); return <AIEngineServiceTemplate />; }
+function AnswerEngineServiceRoute() { loadCSSBundle('services'); return <AnswerEngineServiceTemplate />; }
+function AccessibilityServiceRoute() { loadCSSBundle('services'); return <AccessibilityServiceTemplate />; }
+function MigrationsServiceRoute() { loadCSSBundle('services'); return <MigrationsServiceTemplate />; }
+function SupportServiceRoute() { loadCSSBundle('services'); return <SupportServiceTemplate />; }
+function ContentStrategyServiceRoute() { loadCSSBundle('services'); return <ContentStrategyServiceTemplate />; }
+function ContentCollectionServiceRoute() { loadCSSBundle('services'); return <ContentCollectionServiceTemplate />; }
+function ContentAuditServiceRoute() { loadCSSBundle('services'); return <ContentAuditServiceTemplate />; }
+function NewsletterServiceRoute() { loadCSSBundle('services'); return <NewsletterServiceTemplate />; }
+function EmailMarketingServiceRoute() { loadCSSBundle('services'); return <EmailMarketingServiceTemplate />; }
+function AIServicesLandingRoute() { loadCSSBundle('services'); return <AIServicesLandingTemplate />; }
+function ContentServicesLandingRoute() { loadCSSBundle('services'); return <ContentServicesLandingTemplate />; }
+function ContentCreationServiceRoute() { loadCSSBundle('services'); return <ContentCreationServiceTemplate />; }
+function ContentCopywritingServiceRoute() { loadCSSBundle('services'); return <ContentCopywritingServiceTemplate />; }
+function ContentSEOServiceRoute() { loadCSSBundle('services'); return <ContentSEOServiceTemplate />; }
+function ContentGovernanceServiceRoute() { loadCSSBundle('services'); return <ContentGovernanceServiceTemplate />; }
+function FigmaPrototypingServiceRoute() { loadCSSBundle('services'); return <FigmaPrototypingServiceTemplate />; }
+function DesignSystemsServiceRoute() { loadCSSBundle('services'); return <DesignSystemsServiceTemplate />; }
 
 // Systems Hub
-function SystemsHubRoute() { loadCSSBundle('system'); return <Suspense fallback={<RouteLoadingFallback />}><SystemsHubTemplate /></Suspense>; }
-function DesignTokensSystemRoute() { loadCSSBundle('system'); return <Suspense fallback={<RouteLoadingFallback />}><DesignTokensSystemTemplate /></Suspense>; }
-function PatternGovernanceSystemRoute() { loadCSSBundle('system'); return <Suspense fallback={<RouteLoadingFallback />}><PatternGovernanceSystemTemplate /></Suspense>; }
+function SystemsHubRoute() { loadCSSBundle('system'); return <SystemsHubTemplate />; }
+function DesignTokensSystemRoute() { loadCSSBundle('system'); return <DesignTokensSystemTemplate />; }
+function PatternGovernanceSystemRoute() { loadCSSBundle('system'); return <PatternGovernanceSystemTemplate />; }
 
 // Systems child pages
-function EditorialWorkflowsSystemRoute() { loadCSSBundle('system'); return <Suspense fallback={<RouteLoadingFallback />}><EditorialWorkflowsSystemTemplate /></Suspense>; }
-function AISearchReadinessSystemRoute() { loadCSSBundle('system'); return <Suspense fallback={<RouteLoadingFallback />}><AISearchReadinessSystemTemplate /></Suspense>; }
-function PerformanceReliabilitySystemRoute() { loadCSSBundle('system'); return <Suspense fallback={<RouteLoadingFallback />}><PerformanceReliabilitySystemTemplate /></Suspense>; }
+function EditorialWorkflowsSystemRoute() { loadCSSBundle('system'); return <EditorialWorkflowsSystemTemplate />; }
+function AISearchReadinessSystemRoute() { loadCSSBundle('system'); return <AISearchReadinessSystemTemplate />; }
+function PerformanceReliabilitySystemRoute() { loadCSSBundle('system'); return <PerformanceReliabilitySystemTemplate />; }
 
 // Journey Stage routes
-function JourneyIgniteRoute() { loadCSSBundle('services'); return <Suspense fallback={<RouteLoadingFallback />}><JourneyStageTemplate slug="ignite" /></Suspense>; }
-function JourneyCreateRoute() { loadCSSBundle('services'); return <Suspense fallback={<RouteLoadingFallback />}><JourneyStageTemplate slug="create" /></Suspense>; }
-function JourneyBuildRoute() { loadCSSBundle('services'); return <Suspense fallback={<RouteLoadingFallback />}><JourneyStageTemplate slug="build" /></Suspense>; }
-function JourneyLaunchRoute() { loadCSSBundle('services'); return <Suspense fallback={<RouteLoadingFallback />}><JourneyStageTemplate slug="launch" /></Suspense>; }
-function JourneyGrowRoute() { loadCSSBundle('services'); return <Suspense fallback={<RouteLoadingFallback />}><JourneyStageTemplate slug="grow" /></Suspense>; }
-function JourneyEvolveRoute() { loadCSSBundle('services'); return <Suspense fallback={<RouteLoadingFallback />}><JourneyStageTemplate slug="evolve" /></Suspense>; }
+function JourneyIgniteRoute() { loadCSSBundle('services'); return <JourneyStageTemplate slug="ignite" />; }
+function JourneyCreateRoute() { loadCSSBundle('services'); return <JourneyStageTemplate slug="create" />; }
+function JourneyBuildRoute() { loadCSSBundle('services'); return <JourneyStageTemplate slug="build" />; }
+function JourneyLaunchRoute() { loadCSSBundle('services'); return <JourneyStageTemplate slug="launch" />; }
+function JourneyGrowRoute() { loadCSSBundle('services'); return <JourneyStageTemplate slug="grow" />; }
+function JourneyEvolveRoute() { loadCSSBundle('services'); return <JourneyStageTemplate slug="evolve" />; }
 
 // Solutions
-function SolutionsRoute() { loadCSSBundle('solutions'); return <Suspense fallback={<RouteLoadingFallback />}><SolutionsTemplate /></Suspense>; }
-function WordPressSolutionRoute() { loadCSSBundle('solutions'); return <Suspense fallback={<RouteLoadingFallback />}><WordPressSolutionTemplate /></Suspense>; }
-function WooCommerceSolutionRoute() { loadCSSBundle('solutions'); return <Suspense fallback={<RouteLoadingFallback />}><WooCommerceSolutionTemplate /></Suspense>; }
-function TourOperatorRoute() { loadCSSBundle('solutions'); return <Suspense fallback={<RouteLoadingFallback />}><TourOperatorTemplate /></Suspense>; }
-function PublishersRoute() { loadCSSBundle('solutions'); return <Suspense fallback={<RouteLoadingFallback />}><PublishersTemplate /></Suspense>; }
-function LSXDesignRoute() { loadCSSBundle('solutions'); return <Suspense fallback={<RouteLoadingFallback />}><LSXDesignTemplate /></Suspense>; }
-function LSXSolutionRoute() { loadCSSBundle('solutions'); return <Suspense fallback={<RouteLoadingFallback />}><LSXSolutionTemplate /></Suspense>; }
-function MailchimpSolutionRoute() { loadCSSBundle('solutions'); return <Suspense fallback={<RouteLoadingFallback />}><MailchimpSolutionTemplate /></Suspense>; }
-function WetuImporterRoute() { loadCSSBundle('solutions'); return <Suspense fallback={<RouteLoadingFallback />}><WetuImporterTemplate /></Suspense>; }
-function LSXSharingRoute() { loadCSSBundle('solutions'); return <Suspense fallback={<RouteLoadingFallback />}><LSXSharingTemplate /></Suspense>; }
-function LSXSearchRoute() { loadCSSBundle('solutions'); return <Suspense fallback={<RouteLoadingFallback />}><LSXSearchTemplate /></Suspense>; }
-function WordPressRedesignRoute() { loadCSSBundle('solutions'); return <Suspense fallback={<RouteLoadingFallback />}><WordPressRedesignTemplate /></Suspense>; }
-function WooCommerceRedesignRoute() { loadCSSBundle('solutions'); return <Suspense fallback={<RouteLoadingFallback />}><WooCommerceRedesignTemplate /></Suspense>; }
-function TourOperatorDesignRoute() { loadCSSBundle('solutions'); return <Suspense fallback={<RouteLoadingFallback />}><TourOperatorDesignTemplate /></Suspense>; }
-function AIIntegrationsRoute() { loadCSSBundle('solutions'); return <Suspense fallback={<RouteLoadingFallback />}><AIIntegrationsTemplate /></Suspense>; }
-function AIContentGenerationRoute() { loadCSSBundle('solutions'); return <Suspense fallback={<RouteLoadingFallback />}><AIContentGenerationTemplate /></Suspense>; }
-function AISEORoute() { loadCSSBundle('solutions'); return <Suspense fallback={<RouteLoadingFallback />}><AISEOTemplate /></Suspense>; }
-function AIChatbotsRoute() { loadCSSBundle('solutions'); return <Suspense fallback={<RouteLoadingFallback />}><AIChatbotsTemplate /></Suspense>; }
-function AIAnalyticsRoute() { loadCSSBundle('solutions'); return <Suspense fallback={<RouteLoadingFallback />}><AIAnalyticsTemplate /></Suspense>; }
+function SolutionsRoute() { loadCSSBundle('solutions'); return <SolutionsTemplate />; }
+function WordPressSolutionRoute() { loadCSSBundle('solutions'); return <WordPressSolutionTemplate />; }
+function WooCommerceSolutionRoute() { loadCSSBundle('solutions'); return <WooCommerceSolutionTemplate />; }
+function TourOperatorRoute() { loadCSSBundle('solutions'); return <TourOperatorSolutionsTemplate />; }
+function PublishersRoute() { loadCSSBundle('solutions'); return <PublishersTemplate />; }
+function LSXDesignRoute() { loadCSSBundle('solutions'); return <LSXDesignTemplate />; }
+function LSXSolutionRoute() { loadCSSBundle('solutions'); return <LSXSolutionTemplate />; }
+function MailchimpSolutionRoute() { loadCSSBundle('solutions'); return <MailchimpSolutionTemplate />; }
+function WetuImporterRoute() { loadCSSBundle('solutions'); return <WetuImporterTemplate />; }
+function LSXSharingRoute() { loadCSSBundle('solutions'); return <LSXSharingTemplate />; }
+function LSXSearchRoute() { loadCSSBundle('solutions'); return <LSXSearchTemplate />; }
+function WordPressRedesignRoute() { loadCSSBundle('solutions'); return <WordPressRedesignTemplate />; }
+function WooCommerceRedesignRoute() { loadCSSBundle('solutions'); return <WooCommerceRedesignTemplate />; }
+function AIIntegrationsRoute() { loadCSSBundle('solutions'); return <AIIntegrationsTemplate />; }
+function AIContentGenerationRoute() { loadCSSBundle('solutions'); return <AIContentGenerationTemplate />; }
+function AISEORoute() { loadCSSBundle('solutions'); return <AISEOTemplate />; }
+function AIChatbotsRoute() { loadCSSBundle('solutions'); return <AIChatbotsTemplate />; }
+function AIAnalyticsRoute() { loadCSSBundle('solutions'); return <AIAnalyticsTemplate />; }
 
 
 /* ═══════════════════════════════════════════
@@ -304,7 +297,6 @@ export const coreRoutes: RouteObject[] = [
   { path: 'solutions/lsx-search', Component: LSXSearchRoute },
   { path: 'solutions/wordpress-redesign', Component: WordPressRedesignRoute },
   { path: 'solutions/woocommerce-redesign', Component: WooCommerceRedesignRoute },
-  { path: 'solutions/tour-operator-design', Component: TourOperatorDesignRoute },
   { path: 'solutions/ai-integrations', Component: AIIntegrationsRoute },
   { path: 'solutions/ai-content-generation', Component: AIContentGenerationRoute },
   { path: 'solutions/ai-seo', Component: AISEORoute },

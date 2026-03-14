@@ -10,36 +10,42 @@ import { Headphones, Clock, Wrench, Shield, Lightning, TrendUp } from '@phosphor
 import { Link } from 'react-router';
 import { FeatureList } from '../patterns/FeatureList';
 import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
+import { Container } from '../common/Container';
+import { FunkyCTA } from '../patterns/FunkyCTA';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
+import { JourneyPhaseIndicator } from '../ui/JourneyPhaseIndicator';
+import { StatsGrid } from '../patterns/StatsGrid';
+import { ScrollReveal } from '../../hooks/useScrollReveal';
 
 export const SupportServiceTemplate = () => {
   const benefits = [
     {
-      icon: Headphones,
+      icon: Headphones as any,
       title: '24/7 Support Availability',
       description: 'Round-the-clock support for critical issues with guaranteed response times.'
     },
     {
-      icon: Clock,
+      icon: Clock as any,
       title: 'Fast Response Times',
       description: 'Under 1 hour response for critical issues, under 4 hours for standard requests.'
     },
     {
-      icon: Wrench,
+      icon: Wrench as any,
       title: 'Proactive Maintenance',
       description: 'Regular updates, backups, and monitoring to prevent issues before they occur.'
     },
     {
-      icon: Shield,
+      icon: Shield as any,
       title: 'Security Monitoring',
       description: 'Continuous security scans and immediate response to threats.'
     },
     {
-      icon: Lightning,
+      icon: Lightning as any,
       title: 'Performance Optimization',
       description: 'Ongoing speed improvements and resource optimization.'
     },
     {
-      icon: TrendUp,
+      icon: TrendUp as any,
       title: 'Priority Support Queue',
       description: 'Jump the queue with dedicated support team members.'
     }
@@ -64,116 +70,147 @@ export const SupportServiceTemplate = () => {
   ];
 
   const results = [
-    { metric: '<1hr', label: 'Critical Issue Response' },
-    { metric: '99.9%', label: 'Uptime Guarantee' },
-    { metric: '4.9/5', label: 'Customer Satisfaction' },
-    { metric: '24/7', label: 'Support Availability' }
+    { id: 'metric-1', value: '<1hr', label: 'Critical Issue Response' },
+    { id: 'metric-2', value: '99.9%', label: 'Uptime Guarantee' },
+    { id: 'metric-3', value: '4.9/5', label: 'Customer Satisfaction' },
+    { id: 'metric-4', value: '24/7', label: 'Support Availability' }
   ];
 
   return (
-    <div className="support-service">
-      <section className="support-service__hero">
-        <div className="support-service__hero-content">
-          <div className="support-service__breadcrumb">
-            <Link to="/services" className="support-service__breadcrumb-link">Services</Link>
-            <span className="support-service__breadcrumb-separator">/</span>
-            <Link to="/services/hosting" className="support-service__breadcrumb-link">Hosting</Link>
-            <span className="support-service__breadcrumb-separator">/</span>
-            <span className="support-service__breadcrumb-current">Support</span>
+    <div className="wp-w-full wp-flex wp-flex-col">
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', page: 'front-page' },
+          { label: 'Services', page: 'services' },
+          { label: 'Support' },
+        ]}
+      />
+
+      <JourneyPhaseIndicator currentPhase="build" currentServicePage="support" />
+
+      <section style={{ position: 'relative', minHeight: '60vh', display: 'flex', alignItems: 'center', backgroundColor: 'var(--background)', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', inset: 0, opacity: 0.1, backgroundImage: 'linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px)', backgroundSize: '40px 40px', zIndex: 0 }} aria-hidden="true" />
+        
+        <Container>
+          <div style={{ position: 'relative', zIndex: 1, maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
+            <ScrollReveal animation="fade-up">
+              <h1 style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-h1)', color: 'var(--foreground)', marginBottom: 'var(--spacing-6)' }}>
+                Website Support & Maintenance
+              </h1>
+              
+              <p style={{ fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-xl)', color: 'var(--muted-foreground)', marginBottom: 'var(--spacing-10)', lineHeight: 1.6 }}>
+                Focus on your business while we keep your website running perfectly. Proactive maintenance, 
+                fast support, and peace of mind with 24/7 monitoring and expert care.
+              </p>
+              
+              <div className="wp-flex wp-justify-center wp-gap-4 wp-flex-wrap">
+                <Link to="/contact" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: 'var(--spacing-3) var(--spacing-8)', backgroundColor: 'var(--primary)', color: 'var(--primary-foreground)', borderRadius: 'var(--radius)', fontFamily: 'var(--font-secondary)', fontWeight: 'var(--font-weight-bold)', textDecoration: 'none' }}>
+                  Get Support Plan
+                </Link>
+                <Link to="/services/hosting" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: 'var(--spacing-3) var(--spacing-8)', backgroundColor: 'transparent', color: 'var(--foreground)', border: '1px solid var(--border)', borderRadius: 'var(--radius)', fontFamily: 'var(--font-secondary)', fontWeight: 'var(--font-weight-medium)', textDecoration: 'none' }}>
+                  View Parent Service
+                </Link>
+              </div>
+            </ScrollReveal>
+          </div>
+        </Container>
+      </section>
+
+      <section style={{ padding: 'var(--spacing-24) 0', backgroundColor: 'var(--muted)' }}>
+        <Container>
+          <div style={{ textAlign: 'center', marginBottom: 'var(--spacing-16)' }}>
+            <ScrollReveal animation="fade-up">
+              <h2 style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-h2)', color: 'var(--foreground)', marginBottom: 'var(--spacing-4)' }}>Support Features</h2>
+              <p style={{ fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-lg)', color: 'var(--muted-foreground)', maxWidth: '600px', margin: '0 auto' }}>
+                Comprehensive support and maintenance for WordPress and WooCommerce sites
+              </p>
+            </ScrollReveal>
           </div>
           
-          <h1 className="support-service__hero-title">
-            Website Support & Maintenance
-          </h1>
-          
-          <p className="support-service__hero-description">
-            Focus on your business while we keep your website running perfectly. Proactive maintenance, 
-            fast support, and peace of mind with 24/7 monitoring and expert care.
-          </p>
-          
-          <div className="support-service__hero-cta">
-            <Link to="/contact" className="support-service__cta-button support-service__cta-button--primary">
-              Get Support Plan
-            </Link>
-            <Link to="/services/hosting" className="support-service__cta-button support-service__cta-button--secondary">
-              View Parent Service
-            </Link>
+          <ScrollReveal animation="fade-up" delay={100}>
+            <FeatureList 
+              items={benefits}
+              columns={3}
+              variant="glow"
+              iconStyle="rounded"
+            />
+          </ScrollReveal>
+        </Container>
+      </section>
+
+      <section style={{ padding: 'var(--spacing-24) 0', backgroundColor: 'var(--background)' }}>
+        <Container>
+          <div style={{ textAlign: 'center', marginBottom: 'var(--spacing-16)' }}>
+            <ScrollReveal animation="fade-up">
+              <h2 style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-h2)', color: 'var(--foreground)', marginBottom: 'var(--spacing-4)' }}>Support Plans</h2>
+              <p style={{ fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-lg)', color: 'var(--muted-foreground)', maxWidth: '600px', margin: '0 auto' }}>
+                Choose the support level that fits your needs
+              </p>
+            </ScrollReveal>
           </div>
-        </div>
+          
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 'var(--spacing-8)' }}>
+            {plans.map((plan, index) => (
+              <ScrollReveal key={index} animation="fade-up" delay={index * 100}>
+                <div style={{ padding: 'var(--spacing-8)', backgroundColor: 'var(--card)', border: '1px solid var(--border)', borderRadius: 'var(--radius-xl)', height: '100%', display: 'flex', flexDirection: 'column' }}>
+                  <h3 style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-2xl)', color: 'var(--foreground)', marginBottom: 'var(--spacing-2)' }}>{plan.name}</h3>
+                  <div style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-h3)', color: 'var(--primary)', marginBottom: 'var(--spacing-6)' }}>{plan.price}</div>
+                  <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 'var(--spacing-4)', flex: 1 }}>
+                    {plan.features.map((feature, fIndex) => (
+                      <li key={fIndex} style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-3)', fontFamily: 'var(--font-secondary)', color: 'var(--muted-foreground)' }}>
+                        <div style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: 'var(--primary)', flexShrink: 0 }} />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                  <div style={{ marginTop: 'var(--spacing-8)' }}>
+                    <Link to="/contact" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%', padding: 'var(--spacing-3)', backgroundColor: index === 1 ? 'var(--primary)' : 'transparent', color: index === 1 ? 'var(--primary-foreground)' : 'var(--foreground)', border: index === 1 ? 'none' : '1px solid var(--border)', borderRadius: 'var(--radius)', fontFamily: 'var(--font-secondary)', fontWeight: 'var(--font-weight-medium)', textDecoration: 'none' }}>
+                      Choose Plan
+                    </Link>
+                  </div>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </Container>
       </section>
 
-      <section className="support-service__benefits">
-        <div className="support-service__section-header">
-          <h2 className="support-service__section-title">Support Features</h2>
-          <p className="support-service__section-description">
-            Comprehensive support and maintenance for WordPress and WooCommerce sites
-          </p>
-        </div>
-        
-        <FeatureList 
-          items={benefits}
-          columns={3}
-          variant="glass"
-          iconStyle="rounded"
-          className="support-service__benefits-grid"
-        />
-      </section>
-
-      <section className="support-service__plans">
-        <div className="support-service__section-header">
-          <h2 className="support-service__section-title">Support Plans</h2>
-          <p className="support-service__section-description">
-            Choose the support level that fits your needs
-          </p>
-        </div>
-        
-        <div className="support-service__plans-grid">
-          {plans.map((plan, index) => (
-            <div key={index} className="support-service__plan-card">
-              <h3 className="support-service__plan-name">{plan.name}</h3>
-              <div className="support-service__plan-price">{plan.price}</div>
-              <ul className="support-service__plan-features">
-                {plan.features.map((feature, fIndex) => (
-                  <li key={fIndex} className="support-service__plan-feature">{feature}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="support-service__results">
-        <div className="support-service__section-header">
-          <h2 className="support-service__section-title">Support Metrics</h2>
-          <p className="support-service__section-description">
-            Our commitment to excellent support
-          </p>
-        </div>
-        
-        <div className="support-service__results-grid">
-          {results.map((result, index) => (
-            <div key={index} className="support-service__result-card">
-              <div className="support-service__result-metric">{result.metric}</div>
-              <div className="support-service__result-label">{result.label}</div>
-            </div>
-          ))}
-        </div>
+      <section style={{ padding: 'var(--spacing-24) 0', backgroundColor: 'var(--muted)' }}>
+        <Container>
+          <div style={{ textAlign: 'center', marginBottom: 'var(--spacing-16)' }}>
+            <ScrollReveal animation="fade-up">
+              <h2 style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-h2)', color: 'var(--foreground)', marginBottom: 'var(--spacing-4)' }}>Support Metrics</h2>
+              <p style={{ fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-lg)', color: 'var(--muted-foreground)', maxWidth: '600px', margin: '0 auto' }}>
+                Our commitment to excellent support
+              </p>
+            </ScrollReveal>
+          </div>
+          
+          <ScrollReveal animation="fade-up" delay={100}>
+            <StatsGrid
+              stats={results}
+              columns={4}
+              variant="cards"
+            />
+          </ScrollReveal>
+        </Container>
       </section>
 
       {/* Client Testimonials */}
       <ServiceTestimonial serviceSlug="support" />
 
-      <section className="support-service__cta">
-        <div className="support-service__cta-content">
-          <h2 className="support-service__cta-title">Ready for Peace of Mind?</h2>
-          <p className="support-service__cta-description">
-            Get a free consultation and find the perfect support plan for your website.
-          </p>
-          <Link to="/contact" className="support-service__cta-button support-service__cta-button--primary">
-            Request Free Consultation
-          </Link>
-        </div>
-      </section>
+      <FunkyCTA
+        title="Ready for Peace of Mind?"
+        description="Get a free consultation and find the perfect support plan for your website."
+        buttonText="Request Free Consultation"
+        buttonPage="contact"
+        benefits={[
+          '24/7 dedicated support team',
+          'Proactive security monitoring',
+          'Regular backups and updates',
+          'Guaranteed response times'
+        ]}
+      />
     </div>
   );
 };

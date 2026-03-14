@@ -44,8 +44,8 @@ export interface TestimonialGridProps {
   showCompanyLogo?: boolean;
   /** Max width constraint */
   maxWidth?: '4xl' | '5xl' | '6xl' | 'none';
-  /** Custom gap between testimonials */
-  gap?: string;
+  /** Custom gap size */
+  gap?: 'sm' | 'md' | 'lg' | 'xl';
 }
 
 /**
@@ -61,13 +61,21 @@ export function TestimonialGrid({
   showAvatar = true,
   showCompanyLogo = false,
   maxWidth = '6xl',
-  gap = 'var(--spacing-8)'
+  gap = 'lg'
 }: TestimonialGridProps) {
+  // Map gap prop to WP utility classes
+  const gapClass = {
+    sm: 'wp-gap-4',
+    md: 'wp-gap-6',
+    lg: 'wp-gap-8',
+    xl: 'wp-gap-12'
+  }[gap] || 'wp-gap-8';
+
   // Build grid classes
   const gridClasses = [
     'testimonial-grid',
-    'grid-base',
-    `grid-cols-${columns}`
+    `wp-grid-${columns}-cols`,
+    gapClass
   ].filter(Boolean).join(' ');
 
   // Max width class
@@ -89,7 +97,6 @@ export function TestimonialGrid({
     <div className={maxWidthClass}>
       <div
         className={gridClasses}
-        style={{ gap }}
       >
         {testimonials.map((testimonial, index) => {
           const cardData: TestimonialCardData = {

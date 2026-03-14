@@ -5,7 +5,7 @@
  * Real content extracted from https://lightspeedwp.agency/about
  * 
  * **REAL CONTENT SOURCE:** https://lightspeedwp.agency/about
- * **Last Updated:** 2026-02-16
+ * **Last Updated:** 2026-03-14
  */
 
 /**
@@ -36,9 +36,9 @@ export const aboutStats: AboutStat[] = [
     description: 'Across 30 countries'
   },
   { 
-    number: '10+', 
+    number: '20+', 
     label: 'Years experience',
-    description: 'In WordPress development'
+    description: 'Since 2003'
   },
   { 
     number: '98%', 
@@ -76,32 +76,52 @@ export const companyValues = [
 /**
  * Company History
  * 
- * Timeline of key milestones.
+ * Timeline of key milestones starting from the 2003 founding.
  */
 export const companyHistory = [
   {
-    year: '2014',
-    title: 'Founded',
-    description: 'LightSpeed was established as a boutique WordPress agency in Cape Town.'
+    year: '2003',
+    title: 'Founded in Cape Town',
+    description: 'LightSpeed was established by Ash Shaw as a web development consultancy in Cape Town, South Africa, initially building custom PHP websites for local businesses.'
   },
   {
-    year: '2016',
-    title: 'WooCommerce Focus',
-    description: 'Pivoted to specialize in complex WooCommerce implementations and custom extensions.'
+    year: '2005',
+    title: 'WordPress adoption',
+    description: 'Recognised WordPress as the future of web publishing and began building client sites exclusively on the platform, becoming one of the earliest WordPress agencies in South Africa.'
+  },
+  {
+    year: '2008',
+    title: 'First international clients',
+    description: 'Expanded beyond South Africa to serve tourism and hospitality clients across East Africa, building multilingual WordPress sites for safari operators and lodges.'
+  },
+  {
+    year: '2012',
+    title: 'LSX Theme & Tour Operator plugin',
+    description: 'Released the LSX Theme and Tour Operator plugin to the WordPress.org repository, establishing LightSpeed as a recognised contributor to the WordPress ecosystem.'
+  },
+  {
+    year: '2015',
+    title: 'WooCommerce specialisation',
+    description: 'Pivoted to specialise in complex WooCommerce implementations, building custom extensions and payment gateway integrations for the African e-commerce market.'
   },
   {
     year: '2018',
-    title: 'LSX Theme Launch',
-    description: 'Released the LSX Theme and Tour Operator plugin to the WordPress repository.'
+    title: 'Gutenberg early adopter',
+    description: 'Embraced the Gutenberg block editor from day one, building custom blocks and block patterns for client sites ahead of the broader WordPress community.'
   },
   {
-    year: '2021',
-    title: 'Remote-First',
-    description: 'Transitioned to a fully remote team structure, hiring talent globally.'
+    year: '2020',
+    title: 'Remote-first transition',
+    description: 'Transitioned to a fully remote team structure, enabling hiring of top talent across South Africa and internationally while maintaining strong team culture.'
   },
   {
-    year: '2024',
-    title: 'FSE Adoption',
-    description: 'Fully embraced Full Site Editing and block themes for all new client projects.'
+    year: '2023',
+    title: 'Design system practice',
+    description: 'Launched the LSX Design System practice, offering tokenised, accessible, and governed WordPress block themes built on Full Site Editing architecture.'
+  },
+  {
+    year: '2025',
+    title: 'AI-powered workflows',
+    description: 'Integrated AI-assisted development workflows for content strategy, accessibility auditing, and automated testing, setting new efficiency standards for WordPress agencies.'
   }
 ];

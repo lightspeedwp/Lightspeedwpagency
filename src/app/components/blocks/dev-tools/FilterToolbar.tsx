@@ -64,10 +64,9 @@ export function DevToolsFilterToolbar({
         {/* Mobile: Filter Popover */}
         <div className="wp-block-devtools-filter-toolbar__mobile">
           <button 
-            className="wp-block-devtools-filter-toolbar__mobile-toggle"
+            className="wp-block-devtools-filter-toolbar__mobile-toggle wp-flex wp-items-center wp-gap-2 wp-px-4 wp-py-2 wp-rounded-full wp-border wp-border-border wp-bg-background"
             onClick={() => setIsMobileOpen(true)}
             aria-label="Open filters"
-            style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-2)', padding: 'var(--spacing-2) var(--spacing-4)', borderRadius: 'var(--radius-full)', border: '1px solid var(--border)', background: 'var(--background)' }}
           >
             <Filter size={16} />
             <span>{mobileButtonLabel}</span>

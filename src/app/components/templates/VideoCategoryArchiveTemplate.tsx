@@ -41,8 +41,8 @@ export function VideoCategoryArchiveTemplate({ category }: Props) {
           <div className="wp-max-w-4xl">
             <Heading level={1}>{cat?.name || 'Video Category'}</Heading>
             {cat?.description && <Paragraph>{cat.description}</Paragraph>}
-            <Paragraph className="wp-text-muted-foreground wp-text-sm wp-font-secondary">
-              Number of results: <strong className="wp-text-foreground">{filtered.length}</strong>
+            <Paragraph className="archive-results-count">
+              Number of results: <strong>{filtered.length}</strong>
             </Paragraph>
           </div>
         </Container>
@@ -76,7 +76,7 @@ export function VideoCategoryArchiveTemplate({ category }: Props) {
               </Link>
             ))}
             {filtered.length === 0 && (
-              <div className="wp-text-center wp-py-12">
+              <div className="archive-empty-state">
                 <Paragraph>No videos found in this category.</Paragraph>
               </div>
             )}

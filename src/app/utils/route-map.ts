@@ -103,7 +103,6 @@ const SLUG_TO_PATH: Record<string, string> = {
   /* ── New Solution Pages ── */
   'wordpress-redesign': '/solutions/wordpress-redesign',
   'woocommerce-redesign': '/solutions/woocommerce-redesign',
-  'tour-operator-design': '/solutions/tour-operator-design',
 
   /* ── AI Integrations ── */
   'ai-integrations': '/solutions/ai-integrations',
@@ -259,15 +258,6 @@ const SLUG_TO_PATH: Record<string, string> = {
   'standard-single': '/insights/format/standard/single',
   'aside-single': '/insights/format/aside/single',
 
-  /* ── WooCommerce ── */
-  'product-archive': '/shop',
-  'cart': '/cart',
-  'checkout': '/checkout',
-
-  /* ── Tour Operator ── */
-  'tour-operator-archive': '/tours',
-  'tour-single': '/tours',
-
   /* ── Videos ── */
   'videos-archive': '/videos',
   'videos': '/videos',
@@ -300,7 +290,6 @@ for (const [slug, path] of Object.entries(SLUG_TO_PATH)) {
  * - `date-{year}-{month}` → `/insights/date/{year}/{month}`
  * - `service-{name}` → `/services/{name}`
  * - `solution-{name}` → `/solutions/{name}`
- * - `product-single-{slug}` → `/shop/{slug}`
  * 
  * @param slug - Flat slug from legacy navigation
  * @returns Hierarchical URL path
@@ -318,9 +307,6 @@ export function slugToPath(slug: string): string {
   }
   if (slug.startsWith('portfolio-tag-') || slug.startsWith('work-tag-')) {
     return `/work/tag/${slug.replace('portfolio-tag-', '').replace('work-tag-', '')}`;
-  }
-  if (slug.startsWith('product-single-')) {
-    return `/shop/${slug.replace('product-single-', '')}`;
   }
   if (slug.startsWith('post-') || slug.startsWith('insight-')) {
     return `/insights/${slug.replace('post-', '').replace('insight-', '')}`;
@@ -349,8 +335,8 @@ export function slugToPath(slug: string): string {
   if (slug.startsWith('dev-tools/')) {
     return `/dev-tools/${slug.replace('dev-tools/', '')}`;
   }
-  if (slug.startsWith('tour-single-')) {
-    return `/tours/${slug.replace('tour-single-', '')}`;
+  if (slug.startsWith('tutorial-')) {
+    return `/tutorials/${slug.replace('tutorial-', '')}`;
   }
 
   // Video patterns
@@ -424,9 +410,6 @@ export function pathToSlug(path: string): string {
   const workTagMatch = normalized.match(/^\/work\/tag\/(.+)$/);
   if (workTagMatch) return `work-tag-${workTagMatch[1]}`;
 
-  const shopMatch = normalized.match(/^\/shop\/(.+)$/);
-  if (shopMatch) return `product-single-${shopMatch[1]}`;
-
   const insightsPostMatch = normalized.match(/^\/insights\/(?!category|author|tag|date|format)(.+)$/);
   if (insightsPostMatch) return `post-${insightsPostMatch[1]}`;
 
@@ -442,8 +425,8 @@ export function pathToSlug(path: string): string {
   const dateMatch = normalized.match(/^\/insights\/date\/(\d{4})(?:\/(\d{1,2}))?$/);
   if (dateMatch) return `date-${dateMatch[1]}${dateMatch[2] ? '-' + dateMatch[2] : ''}`;
 
-  const toursMatch = normalized.match(/^\/tours\/(.+)$/);
-  if (toursMatch) return `tour-single-${toursMatch[1]}`;
+  const tutorialsMatch = normalized.match(/^\/tutorials\/(.+)$/);
+  if (tutorialsMatch) return `tutorial-${tutorialsMatch[1]}`;
 
   // Video patterns
   const videoCatMatch = normalized.match(/^\/videos\/category\/(.+)$/);

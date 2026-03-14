@@ -14,25 +14,24 @@
  * @see /src/styles/bundles/media-bundle.css
  */
 
-import React, { lazy, Suspense } from 'react';
+import React from 'react';
 import { useParams, type RouteObject } from 'react-router';
-import { RouteLoadingFallback } from '../components/ui/RouteLoadingFallback';
 import { loadCSSBundle } from '../utils/css-bundle-loader';
 
 /* ═══════════════════════════════════════════
- * Lazy Template Imports
+ * Static Template Imports
  * ═══════════════════════════════════════════ */
 
 // Videos
-const VideoArchiveTemplate = lazy(() => import('../components/templates/VideoArchiveTemplate').then(m => ({ default: m.VideoArchiveTemplate })));
-const SingleVideoTemplate = lazy(() => import('../components/templates/SingleVideoTemplate').then(m => ({ default: m.SingleVideoTemplate })));
-const VideoCategoryArchiveTemplate = lazy(() => import('../components/templates/VideoCategoryArchiveTemplate').then(m => ({ default: m.VideoCategoryArchiveTemplate })));
-const VideoTagArchiveTemplate = lazy(() => import('../components/templates/VideoTagArchiveTemplate').then(m => ({ default: m.VideoTagArchiveTemplate })));
+import { VideoArchiveTemplate } from '../components/templates/VideoArchiveTemplate';
+import { SingleVideoTemplate } from '../components/templates/SingleVideoTemplate';
+import { VideoCategoryArchiveTemplate } from '../components/templates/VideoCategoryArchiveTemplate';
+import { VideoTagArchiveTemplate } from '../components/templates/VideoTagArchiveTemplate';
 
 // Podcasts
-const PodcastArchiveTemplate = lazy(() => import('../components/templates/PodcastArchiveTemplate').then(m => ({ default: m.PodcastArchiveTemplate })));
-const SinglePodcastTemplate = lazy(() => import('../components/templates/SinglePodcastTemplate').then(m => ({ default: m.SinglePodcastTemplate })));
-const PodcastCategoryArchiveTemplate = lazy(() => import('../components/templates/PodcastCategoryArchiveTemplate').then(m => ({ default: m.PodcastCategoryArchiveTemplate })));
+import { PodcastArchiveTemplate } from '../components/templates/PodcastArchiveTemplate';
+import { SinglePodcastTemplate } from '../components/templates/SinglePodcastTemplate';
+import { PodcastCategoryArchiveTemplate } from '../components/templates/PodcastCategoryArchiveTemplate';
 
 /* ═══════════════════════════════════════════
  * Route Wrapper Components
@@ -41,70 +40,42 @@ const PodcastCategoryArchiveTemplate = lazy(() => import('../components/template
 // Videos
 function VideoArchiveRoute() {
   loadCSSBundle('media');
-  return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <VideoArchiveTemplate />
-    </Suspense>
-  );
+  return <VideoArchiveTemplate />;
 }
 
 function SingleVideoRoute() {
   const { slug } = useParams();
   loadCSSBundle('media');
-  return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <SingleVideoTemplate slug={slug} />
-    </Suspense>
-  );
+  return <SingleVideoTemplate slug={slug} />;
 }
 
 function VideoCategoryRoute() {
   const { slug } = useParams();
   loadCSSBundle('media');
-  return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <VideoCategoryArchiveTemplate category={slug} />
-    </Suspense>
-  );
+  return <VideoCategoryArchiveTemplate category={slug} />;
 }
 
 function VideoTagArchiveRoute() {
   const { slug } = useParams();
   loadCSSBundle('media');
-  return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <VideoTagArchiveTemplate tag={slug} />
-    </Suspense>
-  );
+  return <VideoTagArchiveTemplate tag={slug} />;
 }
 
 // Podcasts
 function PodcastArchiveRoute() {
   loadCSSBundle('media');
-  return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <PodcastArchiveTemplate />
-    </Suspense>
-  );
+  return <PodcastArchiveTemplate />;
 }
 
 function SinglePodcastRoute() {
   const { slug } = useParams();
   loadCSSBundle('media');
-  return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <SinglePodcastTemplate slug={slug} />
-    </Suspense>
-  );
+  return <SinglePodcastTemplate slug={slug} />;
 }
 
 function PodcastCategoryRoute() {
   loadCSSBundle('media');
-  return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <PodcastCategoryArchiveTemplate />
-    </Suspense>
-  );
+  return <PodcastCategoryArchiveTemplate />;
 }
 
 /* ═══════════════════════════════════════════

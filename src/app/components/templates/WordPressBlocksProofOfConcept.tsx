@@ -92,7 +92,7 @@ export function WordPressBlocksProofOfConcept() {
                 <div className="wp-block-card">
                   <div className="wp-block-group has-small-gap">
                     <div className="wp-block-row">
-                      <Shield size={32} style={{ color: 'var(--primary)' }} />
+                      <Shield size={32} className="wp-text-primary" />
                       <h3 className="wp-block-heading">
                         100% CSS Variables
                       </h3>
@@ -114,7 +114,7 @@ export function WordPressBlocksProofOfConcept() {
                 <div className="wp-block-card">
                   <div className="wp-block-group has-small-gap">
                     <div className="wp-block-row">
-                      <Trophy size={32} style={{ color: 'var(--primary)' }} />
+                      <Trophy size={32} className="wp-text-primary" />
                       <h3 className="wp-block-heading">
                         WordPress Native
                       </h3>
@@ -136,7 +136,7 @@ export function WordPressBlocksProofOfConcept() {
                 <div className="wp-block-card">
                   <div className="wp-block-group has-small-gap">
                     <div className="wp-block-row">
-                      <Star size={32} style={{ color: 'var(--primary)' }} />
+                      <Star size={32} className="wp-text-primary" />
                       <h3 className="wp-block-heading">
                         Light & Dark Modes
                       </h3>
@@ -183,7 +183,7 @@ export function WordPressBlocksProofOfConcept() {
                     ❌ Before (Old Way)
                   </h3>
                   <pre className="wp-block-code">
-{`<div className="flex flex-col gap-4 p-6">
+{`<div className="wp-flex wp-flex-col wp-gap-4 wp-p-6">
   <button 
     style={{
       backgroundColor: 'var(--primary)',
@@ -250,7 +250,7 @@ export function WordPressBlocksProofOfConcept() {
                     'Light/Dark modes — automatic switching'
                   ].map((benefit, index) => (
                     <div key={index} className="wp-block-row">
-                      <Check size={24} style={{ color: 'var(--success)' }} className="shrink-0" />
+                      <Check size={24} className="wp-text-success wp-shrink-0" />
                       <p className="wp-block-paragraph wp-mb-0">
                         {benefit}
                       </p>
@@ -268,7 +268,7 @@ export function WordPressBlocksProofOfConcept() {
                     'Responsive — mobile-first design'
                   ].map((benefit, index) => (
                     <div key={index} className="wp-block-row">
-                      <Check size={24} style={{ color: 'var(--success)' }} className="shrink-0" />
+                      <Check size={24} className="wp-text-success wp-shrink-0" />
                       <p className="wp-block-paragraph wp-mb-0">
                         {benefit}
                       </p>

@@ -45,8 +45,8 @@ export interface TeamGridProps {
   showSocial?: boolean;
   /** Max width constraint */
   maxWidth?: '4xl' | '5xl' | '6xl' | 'none';
-  /** Custom gap between members */
-  gap?: string;
+  /** Custom gap size */
+  gap?: 'sm' | 'md' | 'lg' | 'xl';
   /** Align content */
   align?: 'center' | 'left';
 }
@@ -58,9 +58,17 @@ export function TeamGrid({
   showBio = true,
   showSocial = true,
   maxWidth = '6xl',
-  gap = 'var(--spacing-8)',
+  gap = 'lg',
   align = 'center'
 }: TeamGridProps) {
+  // Map gap prop to WP utility classes
+  const gapClass = {
+    sm: 'wp-gap-4',
+    md: 'wp-gap-6',
+    lg: 'wp-gap-8',
+    xl: 'wp-gap-12'
+  }[gap] || 'wp-gap-8';
+
   // Grid classes
   const gridClasses = [
     'team-grid',
@@ -73,8 +81,7 @@ export function TeamGrid({
   return (
     <div className={maxWidthClass}>
       <div
-        className={gridClasses}
-        style={{ gap }}
+        className={`${gridClasses} ${gapClass}`}
       >
         {members.map((member, index) => {
           // Card classes

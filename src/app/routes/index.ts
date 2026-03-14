@@ -36,8 +36,6 @@ import { coreRoutes } from './core.routes';
 import { contentRoutes } from './content.routes';
 import { mediaRoutes } from './media.routes';
 import { postFormatRoutes } from './post-formats.routes';
-import { woocommerceRoutes } from './woocommerce.routes';
-import { tourOperatorRoutes } from './tour-operator.routes';
 import { testimonialsRoutes } from './testimonials.routes';
 import { utilityRoutes } from './utility.routes';
 import { legacyRoutes } from './legacy.routes';
@@ -63,12 +61,6 @@ const routes: RouteObject[] = [
 
       // Media routes (Videos, Podcasts)
       ...mediaRoutes,
-
-      // WooCommerce routes (Shop, Cart, Checkout)
-      ...woocommerceRoutes,
-
-      // Tour operator routes (Tours)
-      ...tourOperatorRoutes,
 
       // Testimonials routes
       ...testimonialsRoutes,

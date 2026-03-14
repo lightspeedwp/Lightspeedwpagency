@@ -60,25 +60,14 @@ export const DefinitionBlock = ({
           <header className="definition-block__header">
             {title && (
               <h2 
-                className="definition-block__title"
-                style={{
-                  fontFamily: 'var(--font-primary)',
-                  fontSize: 'var(--text-h2)',
-                  fontWeight: 'var(--font-weight-semibold)',
-                  color: 'var(--foreground)'
-                }}
+                className="definition-block__title wp-font-primary wp-text-h2 wp-font-semibold wp-text-foreground"
               >
                 {title}
               </h2>
             )}
             {tagline && (
               <p 
-                className="definition-block__tagline"
-                style={{
-                  fontFamily: 'var(--font-secondary)',
-                  fontSize: 'var(--text-lg)',
-                  color: 'var(--muted-foreground)'
-                }}
+                className="definition-block__tagline wp-font-secondary wp-text-lg wp-text-muted-foreground"
               >
                 {tagline}
               </p>
@@ -97,37 +86,21 @@ export const DefinitionBlock = ({
               {/* Section Heading */}
               <h3 
                 id={`definition-section-${index}`}
-                className="definition-block__section-heading"
-                style={{
-                  fontFamily: 'var(--font-primary)',
-                  fontSize: 'var(--text-h4)',
-                  fontWeight: 'var(--font-weight-semibold)',
-                  color: 'var(--primary)'
-                }}
+                className="definition-block__section-heading wp-font-primary wp-text-h4 wp-font-semibold wp-text-primary"
               >
                 {section.heading}
               </h3>
 
               {/* Section Content */}
               <div 
-                className="definition-block__section-content"
-                style={{
-                  fontFamily: 'var(--font-secondary)',
-                  fontSize: 'var(--text-base)',
-                  color: 'var(--foreground)'
-                }}
+                className="definition-block__section-content wp-font-secondary wp-text-base wp-text-foreground"
                 dangerouslySetInnerHTML={{ __html: section.content }}
               />
 
               {/* Optional Items List */}
               {section.items && section.items.length > 0 && (
                 <ul 
-                  className="definition-block__section-items"
-                  style={{
-                    fontFamily: 'var(--font-secondary)',
-                    fontSize: 'var(--text-base)',
-                    color: 'var(--foreground)'
-                  }}
+                  className="definition-block__section-items wp-font-secondary wp-text-base wp-text-foreground"
                 >
                   {section.items.map((item, itemIndex) => (
                     <li 

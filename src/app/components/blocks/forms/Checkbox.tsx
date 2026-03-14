@@ -17,7 +17,7 @@ export const Checkbox = React.forwardRef<
     {...props}
   >
     <CheckboxPrimitive.Indicator className="wp-block-checkbox__indicator">
-      <Check className="h-4 w-4" />
+      <Check className="wp-h-4 wp-w-4" />
     </CheckboxPrimitive.Indicator>
   </CheckboxPrimitive.Root>
 ));

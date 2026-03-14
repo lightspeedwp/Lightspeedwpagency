@@ -31,7 +31,7 @@ export interface ThemeShowcaseGridProps {
   /** Number of columns (2-4, default: 2) */
   columns?: 2 | 3 | 4;
   /** Background color */
-  backgroundColor?: string;
+  background?: 'default' | 'card' | 'muted' | 'transparent';
   /** Section spacing */
   spacing?: 'sm' | 'md' | 'lg' | 'xl';
   /** Max width constraint */
@@ -45,7 +45,7 @@ export function ThemeShowcaseGrid({
   description,
   themes,
   columns = 2,
-  backgroundColor = 'var(--muted)',
+  background = 'muted',
   spacing = 'xl',
   maxWidth = '6xl',
   checkmarkSize = 16
@@ -57,7 +57,7 @@ export function ThemeShowcaseGrid({
   const maxWidthClass = maxWidth !== 'none' ? `wp-max-w-${maxWidth}` : '';
 
   return (
-    <Section spacing={spacing} style={{ backgroundColor }}>
+    <Section spacing={spacing} background={background as any}>
       <Container>
         {/* Section Header */}
         {(title || description) && (
@@ -77,7 +77,7 @@ export function ThemeShowcaseGrid({
         )}
 
         {/* Themes Grid */}
-        <div className={`theme-showcase__grid ${gridClass} ${maxWidthClass}`} style={{ margin: '0 auto' }}>
+        <div className={`theme-showcase__grid ${gridClass} ${maxWidthClass} wp-mx-auto`}>
           {themes.map((theme) => {
             return (
               <div

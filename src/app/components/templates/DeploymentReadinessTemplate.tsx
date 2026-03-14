@@ -337,7 +337,7 @@ export function DeploymentReadinessTemplate() {
               >
                 {isRunning ? (
                   <>
-                    <ArrowsClockwise size={18} style={{ animation: 'spin 1s linear infinite' }} />
+                    <ArrowsClockwise size={18} className="wp-animate-spin" />
                     Running Checks...
                   </>
                 ) : hasRun ? (

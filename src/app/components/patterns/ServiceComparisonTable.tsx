@@ -68,19 +68,11 @@ export const ServiceComparisonTable = ({
     <div className={`service-comparison ${className}`}>
       {/* Header */}
       <div className="service-comparison__header">
-        <h2 style={{ 
-          fontFamily: 'var(--font-primary)',
-          fontSize: 'var(--text-h2)',
-          color: 'var(--foreground)'
-        }}>
+        <h2 className="wp-font-primary wp-text-h2 wp-text-foreground">
           {title}
         </h2>
         {description && (
-          <p style={{ 
-            fontFamily: 'var(--font-secondary)',
-            fontSize: 'var(--text-base)',
-            color: 'var(--muted-foreground)'
-          }}>
+          <p className="wp-font-secondary wp-text-base wp-text-muted-foreground">
             {description}
           </p>
         )}
@@ -92,27 +84,15 @@ export const ServiceComparisonTable = ({
           {/* Header Row - Service Names */}
           <thead>
             <tr>
-              <th className="service-comparison__feature-header" style={{
-                fontFamily: 'var(--font-primary)',
-                fontSize: 'var(--text-base)',
-                color: 'var(--foreground)'
-              }}>
+              <th className="service-comparison__feature-header wp-font-primary wp-text-base wp-text-foreground">
                 Features
               </th>
               {displayServices.map(service => (
                 <th key={service.slug} className="service-comparison__service-header">
-                  <div className="service-comparison__service-name" style={{
-                    fontFamily: 'var(--font-primary)',
-                    fontSize: 'var(--text-lg)',
-                    color: 'hsl(var(--primary))'
-                  }}>
+                  <div className="service-comparison__service-name wp-font-primary wp-text-lg wp-text-primary">
                     {service.name}
                   </div>
-                  <div className="service-comparison__service-description" style={{
-                    fontFamily: 'var(--font-secondary)',
-                    fontSize: 'var(--text-sm)',
-                    color: 'var(--muted-foreground)'
-                  }}>
+                  <div className="service-comparison__service-description wp-font-secondary wp-text-sm wp-text-muted-foreground">
                     {service.description}
                   </div>
                 </th>
@@ -128,11 +108,7 @@ export const ServiceComparisonTable = ({
                 <tr className="service-comparison__category-row">
                   <td 
                     colSpan={displayServices.length + 1}
-                    style={{
-                      fontFamily: 'var(--font-primary)',
-                      fontSize: 'var(--text-base)',
-                      color: 'hsl(var(--primary))'
-                    }}
+                    className="wp-font-primary wp-text-base wp-text-primary"
                   >
                     {category.name}
                   </td>
@@ -141,11 +117,7 @@ export const ServiceComparisonTable = ({
                 {/* Feature Rows */}
                 {category.features.map(feature => (
                   <tr key={feature} className="service-comparison__feature-row">
-                    <td className="service-comparison__feature-name" style={{
-                      fontFamily: 'var(--font-secondary)',
-                      fontSize: 'var(--text-base)',
-                      color: 'var(--foreground)'
-                    }}>
+                    <td className="service-comparison__feature-name wp-font-secondary wp-text-base wp-text-foreground">
                       {feature}
                     </td>
                     {displayServices.map(service => (
@@ -168,11 +140,7 @@ export const ServiceComparisonTable = ({
       </div>
       
       {/* Mobile Note */}
-      <p className="service-comparison__mobile-note" style={{
-        fontFamily: 'var(--font-secondary)',
-        fontSize: 'var(--text-sm)',
-        color: 'var(--muted-foreground)'
-      }}>
+      <p className="service-comparison__mobile-note wp-font-secondary wp-text-sm wp-text-muted-foreground">
         Scroll horizontally to see all services
       </p>
     </div>

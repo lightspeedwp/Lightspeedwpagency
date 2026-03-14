@@ -53,51 +53,55 @@ const processSteps = contentProcess.map((step) => ({
 
 export function ContentServiceTemplate() {
   return (
-    <div className="content-page">
+    <div className="wp-w-full wp-flex wp-flex-col">
       {/* ============================================
           HERO SECTION (The Art of Words)
           ============================================ */}
-      <section className="content-page__hero">
+      <section style={{ position: 'relative', minHeight: '80vh', display: 'flex', alignItems: 'center', backgroundColor: 'var(--background)', overflow: 'hidden' }}>
+        {/* Paper texture background */}
+        <div style={{ position: 'absolute', inset: 0, opacity: 0.03, backgroundImage: 'url("https://www.transparenttextures.com/patterns/cream-paper.png")', zIndex: 0 }} aria-hidden="true" />
+        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '100%', background: 'linear-gradient(to bottom, rgba(var(--background-rgb), 0) 0%, var(--background) 100%)', zIndex: 0 }} aria-hidden="true" />
+        
         {/* Floating Manuscript Pages Background */}
-        <div className="content-page__floating-page content-page__floating-page--left" aria-hidden="true">
-          <div className="content-page__line content-page__line--long"></div>
-          <div className="content-page__line content-page__line--long"></div>
-          <div className="content-page__line content-page__line--short"></div>
-          <div className="content-page__line content-page__line--medium"></div>
-          <div className="content-page__line content-page__line--long"></div>
+        <div style={{ position: 'absolute', left: '-5%', top: '20%', width: '300px', height: '400px', backgroundColor: 'var(--card)', border: '1px solid var(--border)', borderRadius: 'var(--radius)', transform: 'rotate(-15deg)', padding: 'var(--spacing-8)', display: 'flex', flexDirection: 'column', gap: 'var(--spacing-4)', opacity: 0.4, boxShadow: 'var(--shadow-xl)', zIndex: 0 }} aria-hidden="true">
+          <div style={{ width: '80%', height: '8px', backgroundColor: 'var(--border)', borderRadius: 'var(--radius-full)' }}></div>
+          <div style={{ width: '90%', height: '8px', backgroundColor: 'var(--border)', borderRadius: 'var(--radius-full)' }}></div>
+          <div style={{ width: '60%', height: '8px', backgroundColor: 'var(--border)', borderRadius: 'var(--radius-full)' }}></div>
+          <div style={{ width: '70%', height: '8px', backgroundColor: 'var(--border)', borderRadius: 'var(--radius-full)' }}></div>
+          <div style={{ width: '85%', height: '8px', backgroundColor: 'var(--border)', borderRadius: 'var(--radius-full)' }}></div>
         </div>
         
-        <div className="content-page__floating-page content-page__floating-page--right" aria-hidden="true">
-           <div className="content-page__line content-page__line--long"></div>
-           <div className="content-page__line content-page__line--medium"></div>
-           <div className="content-page__line content-page__line--long"></div>
-           <div className="content-page__line content-page__line--long"></div>
-           {/* Red Pen Mark — uses BEM class */}
-           <div className="content-page__pen-mark" />
+        <div style={{ position: 'absolute', right: '-5%', top: '10%', width: '300px', height: '400px', backgroundColor: 'var(--card)', border: '1px solid var(--border)', borderRadius: 'var(--radius)', transform: 'rotate(10deg)', padding: 'var(--spacing-8)', display: 'flex', flexDirection: 'column', gap: 'var(--spacing-4)', opacity: 0.4, boxShadow: 'var(--shadow-xl)', zIndex: 0 }} aria-hidden="true">
+           <div style={{ width: '90%', height: '8px', backgroundColor: 'var(--border)', borderRadius: 'var(--radius-full)' }}></div>
+           <div style={{ width: '75%', height: '8px', backgroundColor: 'var(--border)', borderRadius: 'var(--radius-full)' }}></div>
+           <div style={{ width: '85%', height: '8px', backgroundColor: 'var(--border)', borderRadius: 'var(--radius-full)' }}></div>
+           <div style={{ width: '65%', height: '8px', backgroundColor: 'var(--border)', borderRadius: 'var(--radius-full)' }}></div>
+           {/* Red Pen Mark */}
+           <div style={{ position: 'absolute', top: '40%', right: '20%', width: '40px', height: '40px', border: '2px solid #ff5f56', borderRadius: '50%', transform: 'scale(1.5) rotate(-20deg)', opacity: 0.8 }} />
         </div>
 
         <Container>
-          <div className="content-page__hero-content">
+          <div style={{ position: 'relative', zIndex: 1, textAlign: 'center', maxWidth: '800px', margin: '0 auto' }}>
             <ScrollReveal animation="fade-down">
-              <div className="content-page__draft-badge">
+              <div style={{ display: 'inline-block', fontFamily: 'var(--font-mono)', fontSize: 'var(--text-sm)', color: 'var(--muted-foreground)', letterSpacing: '0.1em', marginBottom: 'var(--spacing-6)' }}>
                 — DRAFT v1.0 —
               </div>
 
-              <h1 className="content-page__title">
+              <h1 style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-h1)', color: 'var(--foreground)', lineHeight: 1.1, marginBottom: 'var(--spacing-6)', position: 'relative', display: 'inline-block' }}>
                 Content That <br />
-                <span className="content-page__highlight">Connects</span>
-                <span className="content-page__cursor"></span>
+                <span style={{ color: 'transparent', backgroundImage: 'linear-gradient(90deg, var(--primary), var(--secondary))', WebkitBackgroundClip: 'text', backgroundClip: 'text' }}>Connects</span>
+                <span style={{ display: 'inline-block', width: '4px', height: '1em', backgroundColor: 'var(--primary)', marginLeft: '8px', verticalAlign: 'text-bottom', animation: 'blink 1s step-end infinite' }}></span>
                 
-                {/* Editing Marks — uses BEM class */}
-                <span className="content-page__edit-mark content-page__edit-mark--stet">stet</span>
+                {/* Editing Marks */}
+                <span style={{ position: 'absolute', bottom: '-10px', right: '-40px', fontFamily: 'var(--font-mono)', fontSize: 'var(--text-lg)', color: '#ff5f56', transform: 'rotate(-15deg)', fontStyle: 'italic' }}>stet</span>
               </h1>
               
-              <div className="content-page__description-wrapper">
-                <p className="content-page__description">
+              <div style={{ position: 'relative', maxWidth: '600px', margin: '0 auto' }}>
+                <p style={{ fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-xl)', color: 'var(--muted-foreground)', lineHeight: 1.6, marginBottom: 'var(--spacing-10)' }}>
                   {contentHero.description}
                 </p>
-                {/* Editing Marks — uses BEM class */}
-                <span className="content-page__edit-mark content-page__edit-mark--insert">^ insert magic</span>
+                {/* Editing Marks */}
+                <span style={{ position: 'absolute', bottom: '-20px', left: '20%', fontFamily: 'var(--font-mono)', fontSize: 'var(--text-sm)', color: '#ff5f56', transform: 'rotate(-5deg)' }}>^ insert magic</span>
               </div>
             </ScrollReveal>
           </div>
@@ -109,19 +113,19 @@ export function ContentServiceTemplate() {
       {/* ============================================
           WHY LIGHTSPEED (The Pen is Mightier)
           ============================================ */}
-      <section className="content-page__why">
+      <section style={{ padding: 'var(--spacing-24) 0', backgroundColor: 'var(--muted)' }}>
         <Container>
           <ScrollReveal animation="fade-up">
-            <div className="content-page__why-content">
-              <div className="content-page__icon-circle">
-                <Feather size={32} />
+            <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <div style={{ width: '80px', height: '80px', backgroundColor: 'color-mix(in srgb, var(--primary) 10%, transparent)', color: 'var(--primary)', borderRadius: 'var(--radius-full)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 'var(--spacing-8)' }}>
+                <Feather size={40} weight="duotone" />
               </div>
               
-              <h2 className="content-page__section-title">
+              <h2 style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-h2)', color: 'var(--foreground)', marginBottom: 'var(--spacing-6)' }}>
                 {whyContentStrategy.title}
               </h2>
               
-              <p className="content-page__section-desc">
+              <p style={{ fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-lg)', color: 'var(--muted-foreground)', lineHeight: 1.6 }}>
                 {whyContentStrategy.description}
               </p>
             </div>
@@ -132,18 +136,18 @@ export function ContentServiceTemplate() {
       {/* ============================================
           SERVICES GRID (Sticky Notes)
           ============================================ */}
-      <section className="content-page__services" id="services">
+      <section id="services" style={{ padding: 'var(--spacing-24) 0', backgroundColor: 'var(--background)' }}>
         <Container>
-          <div className="content-page__text-center">
+          <div style={{ textAlign: 'center', marginBottom: 'var(--spacing-16)' }}>
             <ScrollReveal animation="fade-up">
-              <h2 className="content-page__section-title">Editorial Services</h2>
-              <p className="content-page__section-desc content-page__max-w-2xl">
+              <h2 style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-h2)', color: 'var(--foreground)', marginBottom: 'var(--spacing-4)' }}>Editorial Services</h2>
+              <p style={{ fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-lg)', color: 'var(--muted-foreground)', maxWidth: '600px', margin: '0 auto' }}>
                 Comprehensive content solutions for your brand.
               </p>
             </ScrollReveal>
           </div>
 
-          <div className="content-page__services-grid">
+          <div>
             <FeatureList
               items={contentServices}
               columns={3}
@@ -156,18 +160,18 @@ export function ContentServiceTemplate() {
       {/* ============================================
           PROCESS (Editorial Pipeline)
           ============================================ */}
-      <section className="content-page__process" id="process">
+      <section id="process" style={{ padding: 'var(--spacing-24) 0', backgroundColor: 'var(--card)' }}>
         <Container>
-          <div className="content-page__process-header">
+          <div style={{ textAlign: 'center', marginBottom: 'var(--spacing-16)' }}>
             <ScrollReveal animation="fade-up">
-              <h2 className="content-page__section-title">From Draft to Publish</h2>
-              <p className="content-page__section-desc content-page__max-w-2xl">
+              <h2 style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-h2)', color: 'var(--foreground)', marginBottom: 'var(--spacing-4)' }}>From Draft to Publish</h2>
+              <p style={{ fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-lg)', color: 'var(--muted-foreground)', maxWidth: '600px', margin: '0 auto' }}>
                 Our rigorous editorial process ensures quality.
               </p>
             </ScrollReveal>
           </div>
 
-          <div className="content-page__process-timeline">
+          <div>
             <ProcessTimeline
               steps={processSteps}
               orientation="vertical"
@@ -191,7 +195,7 @@ export function ContentServiceTemplate() {
           ============================================ */}
       {servicePricingTimeline.content && (
         <ScrollReveal animation="fade-up">
-          <section className="content-service__pricing-section">
+          <section style={{ padding: 'var(--spacing-24) 0', backgroundColor: 'var(--background)' }}>
             <Container>
               <ServicePricingTimeline
                 pricing={servicePricingTimeline.content.pricing}

@@ -112,7 +112,7 @@ export function ContactPageTemplate() {
 
             <h1 className="contact-page__hero-title">
               {contactHeroMessaging.title.line1} <br />
-              <span style={{ color: 'var(--accent)' }}>
+              <span className="wp-text-accent">
                 {contactHeroMessaging.title.line2}
               </span>
             </h1>
@@ -237,7 +237,7 @@ export function ContactPageTemplate() {
         <Container>
           <ScrollReveal animation="fade-up">
             <div className="contact-page__office-card">
-              <MapPin size={32} style={{ color: 'var(--primary)', margin: '0 auto var(--spacing-4)' }} />
+              <MapPin size={32} className="wp-text-primary wp-mx-auto wp-mb-4" />
               <h3 className="contact-page__office-name">
                 {contactPageOffice.name}
               </h3>
@@ -247,7 +247,7 @@ export function ContactPageTemplate() {
                 {contactPageOffice.address.country}
               </p>
               <p className="contact-page__office-hours">
-                <Clock size={14} style={{ display: 'inline', verticalAlign: 'middle', marginRight: 'var(--spacing-1)' }} />
+                <Clock size={14} className="wp-inline wp-mr-1 wp-align-middle" />
                 {contactPageOffice.hours}
               </p>
             </div>

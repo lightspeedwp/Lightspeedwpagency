@@ -74,7 +74,7 @@ export function ProofStrip({
         {stats.map((stat, index) => {
           const IconComponent = stat.icon;
           return (
-            <div key={stat.label} style={{ display: 'contents' }}>
+            <div key={stat.label} className="wp-contents">
               {/* Divider between items (not before first) */}
               {index > 0 && <div className="proof-strip__divider" aria-hidden="true" />}
 

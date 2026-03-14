@@ -17,8 +17,8 @@ const Toaster = ({ ...props }: ToasterProps) => {
   return (
     <Sonner
       theme="system"
-      className="toaster group"
-      style={{ position: 'fixed', zIndex: 9999, pointerEvents: 'none' }}
+      className="toaster group wp-fixed wp-pointer-events-none"
+      style={{ zIndex: 9999 }}
       toastOptions={{
         classNames: {
           toast: "group toast",

@@ -101,100 +101,31 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
 
       // Default fallback UI
       return (
-        <div
-          style={{
-            minHeight: '100vh',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            backgroundColor: 'var(--background)',
-            padding: 'var(--spacing-6)',
-          }}
-        >
-          <div
-            style={{
-              maxWidth: 'var(--wp--style--global--content-size)',
-              width: '100%',
-              textAlign: 'center',
-            }}
-          >
+        <div className="error-boundary-full">
+          <div className="error-boundary-full__container">
             {/* Error Icon */}
-            <div
-              style={{
-                width: 'var(--spacing-20)',
-                height: 'var(--spacing-20)',
-                borderRadius: '50%',
-                backgroundColor: 'var(--destructive)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                margin: '0 auto var(--spacing-6)',
-                opacity: 0.9,
-              }}
-            >
-              <AlertTriangle size={40} style={{ color: 'var(--destructive-foreground)' }} />
+            <div className="error-boundary-full__icon-wrapper">
+              <AlertTriangle size={40} className="error-boundary-full__icon" />
             </div>
 
             {/* Heading */}
-            <h1
-              style={{
-                fontFamily: 'var(--font-primary)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 'var(--font-weight-semibold)',
-                color: 'var(--foreground)',
-                marginBottom: 'var(--spacing-4)',
-              }}
-            >
+            <h1 className="error-boundary-full__title">
               Something went wrong
             </h1>
 
             {/* Description */}
-            <p
-              className="wp-mb-8"
-              style={{
-                fontFamily: 'var(--font-secondary)',
-                fontSize: 'var(--text-lg)',
-                color: 'var(--muted-foreground)',
-                lineHeight: '1.7',
-              }}
-            >
+            <p className="error-boundary-full__description">
               We're sorry, but something unexpected happened. Please try refreshing the page or
               returning to the homepage.
             </p>
 
             {/* Error Details (Development Only) */}
             {process.env.NODE_ENV === 'development' && this.state.error && (
-              <div
-                className="wp-mb-8"
-                style={{
-                  backgroundColor: 'var(--muted)',
-                  border: '1px solid var(--border)',
-                  borderRadius: 'var(--radius-lg)',
-                  padding: 'var(--spacing-4)',
-                  textAlign: 'left',
-                }}
-              >
-                <p
-                  style={{
-                    fontFamily: 'var(--font-primary)',
-                    fontSize: 'var(--text-base)',
-                    fontWeight: 'var(--font-weight-semibold)',
-                    color: 'var(--destructive)',
-                    marginBottom: 'var(--spacing-2)',
-                  }}
-                >
+              <div className="error-boundary-full__details">
+                <p className="error-boundary-full__details-title">
                   Error Details (Development Mode):
                 </p>
-                <pre
-                  style={{
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: 'var(--text-small)',
-                    color: 'var(--foreground)',
-                    whiteSpace: 'pre-wrap',
-                    wordBreak: 'break-word',
-                    margin: 0,
-                  }}
-                >
+                <pre className="error-boundary-full__details-content">
                   {this.state.error.toString()}
                   {this.state.errorInfo && this.state.errorInfo.componentStack}
                 </pre>
@@ -207,11 +138,7 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
                 variant="default"
                 size="lg"
                 onClick={this.handleReload}
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: 'var(--spacing-2)',
-                }}
+                className="error-boundary__action-btn"
               >
                 <RefreshCw size={20} />
                 Reload Page
@@ -221,11 +148,7 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
                 variant="outline"
                 size="lg"
                 onClick={this.handleGoHome}
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: 'var(--spacing-2)',
-                }}
+                className="error-boundary__action-btn"
               >
                 <Home size={20} />
                 Go to Homepage
@@ -254,39 +177,14 @@ export function ErrorFallback({
   resetError?: () => void;
 }) {
   return (
-    <div
-      className="error-fallback"
-    >
-      <AlertTriangle
-        size={48}
-        style={{
-          color: 'var(--destructive)',
-          marginBottom: 'var(--spacing-4)',
-        }}
-      />
+    <div className="error-fallback">
+      <AlertTriangle size={48} className="error-fallback__icon" />
       
-      <h3
-        className="wp-mb-2"
-        style={{
-          fontFamily: 'var(--font-primary)',
-          fontSize: 'var(--text-h4)',
-          fontWeight: 'var(--font-weight-semibold)',
-          color: 'var(--foreground)',
-        }}
-      >
+      <h3 className="error-fallback__title">
         Error Loading Component
       </h3>
       
-      <p
-        className="wp-mb-6"
-        style={{
-          fontFamily: 'var(--font-secondary)',
-          fontSize: 'var(--text-base)',
-          color: 'var(--muted-foreground)',
-          textAlign: 'center',
-          maxWidth: 'var(--wp--style--global--content-size)',
-        }}
-      >
+      <p className="error-fallback__description">
         {error?.message || 'An unexpected error occurred.'}
       </p>
       
@@ -295,11 +193,7 @@ export function ErrorFallback({
           variant="outline"
           size="sm"
           onClick={resetError}
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: 'var(--spacing-2)',
-          }}
+          className="error-fallback__btn"
         >
           <RefreshCw size={16} />
           Try Again

@@ -50,7 +50,7 @@ export function HeaderFooterComparison() {
         <section className="comparison__section">
           <ScrollReveal animation="fade-up" delay={100}>
             <h2 className="comparison__section-title">
-              <Rows size={28} className="wp-text-primary" />
+              <Rows size={28} className="comparison__section-icon" />
               Header Variations
             </h2>
             
@@ -61,7 +61,7 @@ export function HeaderFooterComparison() {
                   <span>Default Header</span>
                   <span>parts/header.html</span>
                 </div>
-                <div className="comparison__preview-content" style={{ position: 'relative', minHeight: '100px' }}>
+                <div className="comparison__preview-content wp-relative" style={{ minHeight: '6rem' }}>
                   <SiteHeader />
                 </div>
               </div>
@@ -72,8 +72,8 @@ export function HeaderFooterComparison() {
                   <span>Transparent Overlay Header</span>
                   <span>parts/header-transparent.html</span>
                 </div>
-                <div className="comparison__preview-content" style={{ position: 'relative', minHeight: '100px', background: 'var(--primary-dark)' }}>
-                  <div style={{ padding: 'var(--spacing-4)', color: 'white', textAlign: 'center', fontSize: 'var(--text-xs)' }}>
+                <div className="comparison__preview-content wp-relative wp-bg-primary-dark" style={{ minHeight: '6rem' }}>
+                  <div className="wp-p-4 wp-text-center wp-text-xs wp-text-white">
                     (Simulated dark background)
                   </div>
                   <SiteHeader />
@@ -87,7 +87,7 @@ export function HeaderFooterComparison() {
         <section className="comparison__section">
           <ScrollReveal animation="fade-up" delay={200}>
             <h2 className="comparison__section-title">
-              <Columns size={28} className="wp-text-primary" />
+              <Columns size={28} className="comparison__section-icon" />
               Footer Variations
             </h2>
 
@@ -111,8 +111,8 @@ export function HeaderFooterComparison() {
                 </div>
                 <div className="comparison__preview-content">
                   {/* Simulate minimal footer by hiding some sections via CSS or passing props if supported */}
-                  <div style={{ padding: 'var(--spacing-4)', color: 'white', textAlign: 'center', fontSize: 'var(--text-xs)' }}>
-                    <p style={{ margin: 0, fontSize: 'var(--text-sm)', color: 'var(--muted-foreground)' }}>
+                  <div className="wp-p-4 wp-text-center wp-text-xs wp-text-white">
+                    <p className="wp-m-0 wp-text-sm wp-text-muted-foreground">
                       &copy; {new Date().getFullYear()} LSX Design. All rights reserved.
                     </p>
                   </div>

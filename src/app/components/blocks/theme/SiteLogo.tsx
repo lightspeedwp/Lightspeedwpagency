@@ -105,7 +105,7 @@ export interface SiteLogoProps {
    * Use for spacing, display, or alignment adjustments.
    * 
    * @example
-   * className="mx-auto mb-4"
+   * className="wp-mx-auto wp-mb-4"
    */
   className?: string;
   

@@ -185,6 +185,10 @@
   color: var(--foreground);
 }
 
+.date-navigation__icon {
+  color: var(--muted-foreground);
+}
+
 /* ============================================
    MONTH GRID (Date Archives)
    ============================================ */

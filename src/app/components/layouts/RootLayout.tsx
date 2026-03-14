@@ -57,31 +57,12 @@ class ChromeErrorBoundary extends Component<
       return (
         <div
           role="alert"
-          style={{
-            padding: 'var(--spacing-4)',
-            backgroundColor: 'var(--destructive-soft)',
-            color: 'var(--destructive)',
-            fontFamily: 'var(--font-primary)',
-            fontSize: 'var(--text-sm)',
-            textAlign: 'center',
-            border: '1px solid var(--destructive)',
-            borderRadius: 'var(--radius-md)',
-            margin: 'var(--spacing-4)',
-          }}
+          className="wp-p-4 wp-bg-destructive-soft wp-text-destructive wp-font-primary wp-text-sm wp-text-center wp-border wp-border-destructive wp-rounded-md wp-m-4"
         >
           {this.props.name} failed to load.{' '}
           <button
             onClick={() => window.location.reload()}
-            style={{
-              textDecoration: 'underline',
-              background: 'none',
-              border: 'none',
-              color: 'inherit',
-              cursor: 'pointer',
-              fontFamily: 'inherit',
-              fontSize: 'inherit',
-              padding: 0,
-            }}
+            className="wp-underline wp-bg-transparent wp-border-none wp-text-inherit wp-cursor-pointer wp-font-inherit wp-text-inherit wp-p-0"
           >
             Reload page
           </button>

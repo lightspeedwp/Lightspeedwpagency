@@ -48,8 +48,6 @@ import { podcasts } from '../../data/podcasts';
 import { services } from '../../data/services';
 import { teamMembers } from '../../data/team';
 import { testimonials } from '../../data/testimonials';
-import { allProducts } from '../../data/woocommerce';
-import { tours } from '../../data/tour-operator';
 import * as faqsData from '../../data/faqs';
 
 
@@ -79,7 +77,6 @@ const routeStats = [
   { name: 'Blog Section', value: '26 + dynamic', status: 'neutral' as const },
   { name: 'Videos Section', value: '3 + dynamic', status: 'neutral' as const },
   { name: 'Podcasts Section', value: '2 + dynamic', status: 'neutral' as const },
-  { name: 'WooCommerce', value: '4', status: 'neutral' as const },
   { name: 'Tour Operator', value: '2 + dynamic', status: 'neutral' as const },
   { name: 'Dev Tools', value: '19', status: 'neutral' as const },
   { name: 'Utility Pages', value: '14', status: 'neutral' as const },
@@ -99,8 +96,6 @@ const dataFileStats = [
   { name: 'Services', file: 'services.ts', entries: services.length, icon: <Wrench size={18} /> },
   { name: 'Team Members', file: 'team.ts', entries: teamMembers.length, icon: <DotsSix size={18} /> },
   { name: 'Testimonials', file: 'testimonials.ts', entries: testimonials.length, icon: <FileText size={18} /> },
-  { name: 'Products', file: 'woocommerce.ts', entries: allProducts.length, icon: <ShoppingCart size={18} /> },
-  { name: 'Tours', file: 'tour-operator.ts', entries: tours.length, icon: <MapTrifold size={18} /> },
 ];
 
 /** Design token categories */
@@ -276,7 +271,7 @@ export function CodeQualityDashboardTemplate() {
             </div>
             <h2 className="cq-dashboard__section-title">Overall Quality Score</h2>
             <span className="cq-dashboard__section-badge cq-dashboard__section-badge--success">
-              <CheckCircle size={12} style={{ marginRight: 'var(--spacing-1)' }} />
+              <CheckCircle size={12} className="wp-mr-1" />
               Excellent
             </span>
           </div>
@@ -402,8 +397,8 @@ export function CodeQualityDashboardTemplate() {
           </div>
           <div className="cq-dashboard__section-body">
             <div className="cq-dashboard__css-list">
-              <div className="cq-dashboard__css-row" style={{ fontWeight: 'var(--font-weight-semibold)' }}>
-                <span className="cq-dashboard__css-file" style={{ fontFamily: 'var(--font-primary)' }}>File</span>
+              <div className="cq-dashboard__css-row wp-font-semibold">
+                <span className="cq-dashboard__css-file wp-font-primary">File</span>
                 <span className="cq-dashboard__css-size">Lines</span>
                 <span className="cq-dashboard__css-category">Category</span>
               </div>

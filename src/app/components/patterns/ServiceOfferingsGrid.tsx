@@ -37,7 +37,7 @@ export interface ServiceOfferingsGridProps {
   /** Number of columns (2-4, default: 3) */
   columns?: 2 | 3 | 4;
   /** Background color override */
-  backgroundColor?: string;
+  background?: 'default' | 'card' | 'muted' | 'transparent';
   /** Section spacing */
   spacing?: 'sm' | 'md' | 'lg' | 'xl';
   /** Max width constraint */
@@ -49,7 +49,7 @@ export function ServiceOfferingsGrid({
   description,
   offerings,
   columns = 3,
-  backgroundColor = 'var(--muted)',
+  background = 'muted',
   spacing = 'xl',
   maxWidth = '6xl'
 }: ServiceOfferingsGridProps) {
@@ -62,7 +62,7 @@ export function ServiceOfferingsGrid({
   const maxWidthClass = maxWidth !== 'none' ? `wp-max-w-${maxWidth}` : '';
 
   return (
-    <Section spacing={spacing} style={{ backgroundColor }}>
+    <Section spacing={spacing} background={background as any}>
       <Container>
         {/* Section Header */}
         {(title || description) && (
@@ -82,7 +82,7 @@ export function ServiceOfferingsGrid({
         )}
 
         {/* Services Grid */}
-        <div className={`service-offerings__grid ${gridClass} ${maxWidthClass}`} style={{ margin: '0 auto' }}>
+        <div className={`service-offerings__grid ${gridClass} ${maxWidthClass} wp-mx-auto`}>
           {offerings.map((offering) => {
             const Icon = offering.icon;
             

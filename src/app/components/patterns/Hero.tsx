@@ -374,12 +374,12 @@ export function Hero({
         
         {/* Hero Content Layout */}
         {heroIcon ? (
-          <div className="wp-grid-2-cols" style={{ alignItems: 'center', gap: 'var(--spacing-12)' }}>
+          <div className="wp-grid-2-cols wp-items-center wp-gap-12">
             {/* Left: Content */}
             {renderHeroContent()}
             
             {/* Right: Large Icon */}
-            <div className="hero-icon-container" style={{ display: 'flex', justifyContent: 'center', color: 'var(--primary)' }}>
+            <div className="hero-icon-container wp-flex wp-justify-center wp-text-primary">
               {(() => {
                 const Icon = heroIcon;
                 return <Icon size={180} strokeWidth={1} />;

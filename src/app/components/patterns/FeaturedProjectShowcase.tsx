@@ -27,7 +27,7 @@ import { ImageWithFallback } from '../figma/ImageWithFallback';
 import { Section } from '../common/Section';
 import { Container } from '../common/Container';
 import { Button } from '../blocks/design/Buttons';
-import { ExternalLink } from '@phosphor-icons/react';
+import { ArrowSquareOut as ExternalLink } from '@phosphor-icons/react';
 
 export interface FeaturedProjectStat {
   /** Stat value (e.g., "500K+", "99.9%") */
@@ -76,7 +76,7 @@ export interface FeaturedProjectShowcaseProps {
   /** Section spacing */
   spacing?: 'sm' | 'md' | 'lg' | 'xl';
   /** Background color override */
-  backgroundColor?: string;
+  background?: 'default' | 'card' | 'muted' | 'transparent';
   /** Reverse layout (image left, content right) */
   reverseLayout?: boolean;
 }
@@ -92,7 +92,7 @@ export function FeaturedProjectShowcase({
   image,
   testimonial,
   spacing = 'xl',
-  backgroundColor = 'var(--background)',
+  background = 'default',
   reverseLayout = false
 }: FeaturedProjectShowcaseProps) {
   // Build grid classes
@@ -102,7 +102,7 @@ export function FeaturedProjectShowcase({
   ].filter(Boolean).join(' ');
 
   return (
-    <Section spacing={spacing} style={{ backgroundColor }}>
+    <Section spacing={spacing} background={background as any}>
       <Container>
         <div className={gridClasses}>
           {/* Content Column */}

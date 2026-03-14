@@ -235,7 +235,7 @@ export function ComplianceScorecard() {
             Detailed Test Results
           </Heading>
 
-          <div className="wp-grid-1-col" style={{ gap: 'var(--spacing-6)' }}>
+          <div className="wp-grid-1-col wp-gap-6">
             {categories.map(category => {
               const categoryResults = results.filter(r => r.category === category);
               const passedCount = categoryResults.filter(r => r.passed).length;
@@ -261,7 +261,7 @@ export function ComplianceScorecard() {
                     </div>
                   </div>
 
-                  <div className="wp-grid-1-col" style={{ gap: 'var(--spacing-4)' }}>
+                  <div className="wp-grid-1-col wp-gap-4">
                     {categoryResults.map((result, index) => (
                       <TestResult key={index} result={result} />
                     ))}
@@ -377,23 +377,20 @@ function TestResult({ result }: { result: PerformanceTestResult }) {
         {result.passed ? <Check size={14} /> : <X size={14} />}
       </div>
 
-      <div style={{ flex: 1 }}>
+      <div className="wp-flex-1">
         <div className="wp-block-devtools-compliance-scorecard__result-title">
           {result.test}
         </div>
 
         <div 
-          className="wp-block-devtools-compliance-scorecard__result-details"
-          style={{
-            marginBottom: result.recommendation ? '8px' : '0'
-          }}
+          className={`wp-block-devtools-compliance-scorecard__result-details ${result.recommendation ? 'wp-mb-2' : ''}`}
         >
           {result.details}
         </div>
 
         {result.recommendation && (
           <div className="wp-block-devtools-compliance-scorecard__recommendation">
-            <AlertTriangle size={14} style={{ marginTop: '2px', flexShrink: 0 }} />
+            <AlertTriangle size={14} className="wp-shrink-0 wp-mt-1" />
             <span>{result.recommendation}</span>
           </div>
         )}

@@ -159,9 +159,8 @@ export function SinglePostLongformTemplate() {
               <img
                 src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=1400"
                 alt="African safari landscape"
-                className="single-post-featured-image"
+                className="single-post-featured-image single-post-featured-image--longform"
                 loading="lazy"
-                style={{ aspectRatio: '21/9' }}
               />
             </div>
           </ScrollReveal>

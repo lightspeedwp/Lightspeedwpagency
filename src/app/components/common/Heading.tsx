@@ -26,48 +26,48 @@ export function Heading({ level, children, className = '', id }: HeadingProps) {
   
   // Font Size Classes (mapped to utilities.css)
   const sizeClasses = {
-    1: 'text-h1',
-    2: 'text-h2',
-    3: 'text-h3',
-    4: 'text-h4',
-    5: 'text-h5',
-    6: 'text-h6',
+    1: 'wp-text-h1',
+    2: 'wp-text-h2',
+    3: 'wp-text-h3',
+    4: 'wp-text-h4',
+    5: 'wp-text-h5',
+    6: 'wp-text-h6',
   };
 
   // Font Weight Classes (Standardized to Medium 500)
   const weightClasses = {
-    1: 'font-medium',
-    2: 'font-medium',
-    3: 'font-medium',
-    4: 'font-medium',
-    5: 'font-medium',
-    6: 'font-medium',
+    1: 'wp-font-medium',
+    2: 'wp-font-medium',
+    3: 'wp-font-medium',
+    4: 'wp-font-medium',
+    5: 'wp-font-medium',
+    6: 'wp-font-medium',
   };
 
   // Line Height Classes
   const leadingClasses = {
-    1: 'leading-tight',  // 1.1
-    2: 'leading-snug',   // 1.25
-    3: 'leading-snug',   // 1.25
-    4: 'leading-normal', // 1.5
-    5: 'leading-normal', // 1.5
-    6: 'leading-normal', // 1.5
+    1: 'wp-leading-tight',  // 1.1
+    2: 'wp-leading-snug',   // 1.25
+    3: 'wp-leading-snug',   // 1.25
+    4: 'wp-leading-normal', // 1.5
+    5: 'wp-leading-normal', // 1.5
+    6: 'wp-leading-normal', // 1.5
   };
 
   // Letter Spacing Classes
   const trackingClasses = {
-    1: 'tracking-tight',  // -0.025em
-    2: 'tracking-tight',  // -0.025em
-    3: 'tracking-normal', // 0
-    4: 'tracking-normal', // 0
-    5: 'tracking-normal', // 0
-    6: 'tracking-wide',   // 0.025em (Labels)
+    1: 'wp-tracking-tight',  // -0.025em
+    2: 'wp-tracking-tight',  // -0.025em
+    3: 'wp-tracking-normal', // 0
+    4: 'wp-tracking-normal', // 0
+    5: 'wp-tracking-normal', // 0
+    6: 'wp-tracking-wide',   // 0.025em (Labels)
   };
   
   // Construct className
   // Added font-primary explicitly, though it should be inherited from body/theme
   // Added color-foreground explicitly
-  const combinedClassName = `font-primary ${sizeClasses[level]} ${weightClasses[level]} ${leadingClasses[level]} ${trackingClasses[level]} text-foreground ${className}`;
+  const combinedClassName = `wp-font-primary ${sizeClasses[level]} ${weightClasses[level]} ${leadingClasses[level]} ${trackingClasses[level]} wp-text-foreground ${className}`.trim();
 
   return (
     <Tag 

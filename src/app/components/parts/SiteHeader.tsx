@@ -228,14 +228,12 @@ export function SiteHeader({ variant = 'default' }: SiteHeaderProps) {
           title: 'Website Projects',
           items: [
             { label: 'WordPress Redesign', page: 'wordpress-redesign', description: 'Transform your existing site' },
-            { label: 'WooCommerce Redesign', page: 'woocommerce-redesign', description: 'Rebuild your online store' },
-            { label: 'Tour Operator Design', page: 'tour-operator-design', description: 'Custom tour website & itineraries' }
+            { label: 'WooCommerce Redesign', page: 'woocommerce-redesign', description: 'Rebuild your online store' }
           ]
         },
         {
           title: 'Industries',
           items: [
-            { label: 'Tour Operators', page: 'tour-operators', description: 'Travel & booking platforms' },
             { label: 'Publishers', page: 'publishers', description: 'Digital publishing solutions' }
           ]
         },

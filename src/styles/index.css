@@ -1,4 +1,5 @@
 /* 1. Core System */
+/* Force Vite Tailwind Reload */
 @import './fonts.css';
 @import './presets/index.css';
 @import './resets.css';
@@ -134,11 +135,6 @@
 /* Embed Blocks */
 @import './blocks/embed/embed-base.css';
 
-/* WooCommerce Blocks */
-@import './blocks/woocommerce/product-search.css';
-@import './blocks/woocommerce/mini-cart.css';
-@import './blocks/woocommerce/woo-base.css';
-
 /* Forms */
 @import './blocks/forms/input.css';
 @import './blocks/forms/textarea.css';
@@ -171,7 +167,6 @@
 @import './patterns/archive-header.css';
 @import './patterns/card-grid.css';
 @import './patterns/case-study-preview.css';
-@import './patterns/cta-section.css';
 @import './patterns/definition-block.css';
 @import './patterns/faq-section.css';
 @import './patterns/featured-project-showcase.css';
@@ -215,7 +210,6 @@
 @import './patterns/cta-inline.css';
 @import './patterns/empty-state.css';
 @import './patterns/logo-grid.css';
-@import './patterns/gradient-cta-section.css';
 @import './patterns/author-bio.css';
 @import './patterns/challenges-grid.css';
 @import './patterns/integrations-grid.css';
@@ -224,7 +218,6 @@
 @import './patterns/use-cases-grid.css';
 @import './patterns/vertical-process-steps.css';
 @import './patterns/video-testimonial.css';
-@import './patterns/testimonial-inline.css';
 @import './patterns/why-choose-us.css';
 @import './patterns/wordpress-services.css';
 @import './patterns/two-column-impact.css';
@@ -270,7 +263,6 @@
 @import './templates/service-pages-shared.css';
 @import './templates/service-detail.css';
 @import './templates/solution-detail.css';
-@import './templates/services-page.css';
 @import './templates/solutions-page.css';
 @import './templates/single-post.css';
 @import './templates/single.css';
@@ -278,145 +270,34 @@
 
 /* Sub-Service Templates (Feb 28, 2026 — Task 2.3 Restoration) */
 @import './templates/sub-service-base.css';
-@import './templates/sub-service-compact.css';
 
 /* Service Template Base (Phase 3.2 — March 2, 2026) */
 @import './templates/service-base.css';
 
+/* Route Bundle Base Files (consolidated from /styles/bundles/ — March 13, 2026)
+ * These base files were previously only loaded via bundle imports in css-bundle-loader.ts.
+ * Moving them here eliminates ~200 duplicate CSS @import resolutions from bundle files.
+ */
+@import './templates/blog-base.css';
+@import './templates/portfolio-base.css';
+@import './templates/about-base.css';
+@import './templates/utility-base.css';
+@import './templates/media-archive-base.css';
+@import './templates/system-base.css';
+@import './templates/system-page-shared.css';
+@import './templates/solution-base.css';
+
 /* Optimized Service Templates (Phase 3.3 — March 2, 2026) */
-@import './templates/page-service-development-optimized.css';
-@import './templates/page-service-design-optimized.css';
-@import './templates/page-service-discovery-optimized.css';
-@import './templates/page-service-performance-optimized.css';
 @import './templates/seo-service-optimized.css';
-@import './templates/page-service-content-optimized.css';
-@import './templates/page-service-security-optimized.css';
-@import './templates/migrations-service-optimized.css';
-@import './templates/support-service-optimized.css';
-@import './templates/analytics-service-optimized.css';
 @import './templates/accessibility-service-optimized.css';
-@import './templates/ai-engine-service-optimized.css';
 @import './templates/answer-engine-service-optimized.css';
 @import './templates/content-strategy-service-optimized.css';
 @import './templates/page-service-training-optimized.css';
-@import './templates/page-services-landing-optimized.css';
 
 /* Batch 7: Landing/Parent Templates (March 2, 2026) */
-@import './templates/page-service-ai-landing-optimized.css';
-@import './templates/page-service-content-landing-optimized.css';
-@import './templates/page-service-design-systems-optimized.css';
 
-/* Template-specific CSS — now route-level imports in each template component:
- *
- * @import './templates/page-front-page.css';           → FrontPageTemplate.tsx
- * @import './templates/page-about.css';                → AboutTemplate.tsx
- * @import './templates/page-about-process.css';        → AboutProcessTemplate.tsx
- * @import './templates/page-about-culture.css';        → AboutCultureTemplate.tsx
- * @import './templates/page-about-history.css';        → AboutHistoryTemplate.tsx
- * @import './templates/page-team.css';                 → TeamTemplate.tsx
- * @import './templates/team-page.css';                 → TeamTemplate.tsx
- * @import './templates/contact-page.css';              → ContactPageTemplate.tsx
- * @import './templates/page-contact.css';              → ContactPageTemplate.tsx
- * @import './templates/page-faq.css';                  → FAQTemplate.tsx
- * @import './templates/page-legal.css';                → PrivacyPolicyTemplate.tsx / TermsOfServiceTemplate.tsx
- * @import './templates/page-styleguide.css';           → StyleGuideTemplate.tsx
- * @import './templates/pricing-page.css';              → PricingTemplate.tsx
- * @import './templates/roi-calculator.css';            → ROICalculatorTemplate.tsx
- * @import './templates/why-choose-us.css';             → WhyChooseUsTemplate.tsx
- * @import './templates/guarantees.css';                → GuaranteesTemplate.tsx
- * @import './templates/testimonials-page.css';         → TestimonialsTemplate.tsx
- * @import './templates/testimonial-archive.css';       → TestimonialArchiveTemplate.tsx
- * @import './templates/testimonial-single.css';        → SingleTestimonialTemplate.tsx
- * @import './templates/hosting-page.css';              → HostingTemplate.tsx
- * @import './templates/blog-index-page.css';           → BlogIndexTemplate.tsx
- * @import './templates/single-post-page.css';          → SinglePostTemplate.tsx / SinglePostLongformTemplate.tsx
- * @import './templates/author-archive.css';            → AuthorArchiveTemplate.tsx
- * @import './templates/portfolio-archive.css';         → PortfolioArchiveTemplate.tsx
- * @import './templates/portfolio-single.css';          → PortfolioSingleTemplate.tsx
- * @import './templates/single-project.css';            → PortfolioSingleTemplate.tsx
- * @import './templates/portfolio-tag-archive.css';     → PortfolioTagArchiveTemplate.tsx
- * @import './templates/video-archive.css';             → VideoArchiveTemplate.tsx
- * @import './templates/single-video.css';              → SingleVideoTemplate.tsx
- * @import './templates/podcast-archive.css';           → PodcastArchiveTemplate.tsx
- * @import './templates/search.css';                    → SearchResultsPageTemplate.tsx
- * @import './templates/site-map.css';                  → SiteMapTemplate.tsx
- * @import './templates/tutorials-page.css';            → TutorialsTemplate.tsx
- * @import './templates/careers-page.css';              → CareersTemplate.tsx
- * @import './templates/publishers-page.css';           → PublishersTemplate.tsx
- * @import './templates/404.css';                       → 404Template.tsx
- * @import './templates/index.css';                     → IndexTemplate.tsx
- *
- * Service templates:
- * @import './templates/page-services-landing.css';     → ServicesLandingTemplate.tsx
- * @import './templates/page-service-development.css';  → DevelopmentServiceTemplate.tsx
- * @import './templates/page-service-design.css';       → DesignServiceTemplate.tsx
- * @import './templates/page-service-discovery.css';    → DiscoveryServiceTemplate.tsx
- * @import './templates/page-service-content.css';      → ContentServiceTemplate.tsx
- * @import './templates/page-service-security.css';     → SecurityServiceTemplate.tsx
- * @import './templates/page-service-migrations.css';   → MigrationsServiceTemplate.tsx
- * @import './templates/page-service-support.css';      → SupportServiceTemplate.tsx
- * @import './templates/page-service-hosting.css';      → HostingTemplate.tsx
- * @import './templates/page-service-newsletter.css';   → NewsletterServiceTemplate.tsx
- * @import './templates/page-service-strategy.css';     → ContentStrategyTemplate.tsx
- * @import './templates/page-service-training.css';     → TrainingTemplate.tsx
- * @import './templates/page-service-performance.css';  → PerformanceServiceTemplate.tsx
- * @import './templates/page-service-seo.css';          → SEOServiceTemplate.tsx
- * @import './templates/page-service-accessibility.css'; → AccessibilityServiceTemplate.tsx
- * @import './templates/page-service-ai-engine.css';    → AIEngineOptimisationTemplate.tsx
- * @import './templates/page-service-aeo.css';          → AnswerEngineOptimisationTemplate.tsx
- *
- * Solution templates:
- * @import './templates/page-solution-wordpress.css';   → WordPressSolutionTemplate.tsx
- * @import './templates/page-solution-ai.css';          → AIIntegrationsTemplate.tsx
- * @import './templates/page-solution-ecommerce.css';   → WooCommerceSolutionTemplate.tsx
- * @import './templates/page-solution-redesign.css';    → WordPressRedesignTemplate.tsx / WooCommerceRedesignTemplate.tsx
- * @import './templates/page-solution-tour-design.css'; → TourOperatorDesignTemplate.tsx
- * @import './templates/page-lsx-design.css';           → LSXDesignTemplate.tsx
- * @import './templates/mailchimp-solution-page.css';   → MailchimpSolutionTemplate.tsx
- * @import './templates/wetu-importer-page.css';        → WetuImporterTemplate.tsx
- * @import './templates/lsx-sharing-page.css';          → LSXSharingTemplate.tsx
- * @import './templates/lsx-search-page.css';           → LSXSearchTemplate.tsx
- * @import './templates/journey-stage/journey-stage-base.css'; → JourneyStageTemplate.tsx
- * @import './templates/page-single-product.css';       → SingleProductTemplate.tsx
- * @import './templates/tour-operator-archive.css';     → TourOperatorArchiveTemplate.tsx
- * @import './templates/single-tour.css';               → SingleTourTemplate.tsx
- * @import './templates/woocommerce.css';               → ProductArchiveTemplate.tsx / CartTemplate.tsx / CheckoutTemplate.tsx
- *
- * Dev tools (dev-only):
- * @import './templates/dev-tools.css';                 → DevToolsTemplate.tsx
- * @import './templates/template-tester.css';           → TemplateTester.tsx
- * @import './templates/component-showcase.css';        → ComponentShowcase.tsx
- * @import './templates/feature-showcase.css';          → FeatureShowcaseTemplate.tsx
- * @import './templates/design-blocks-showcase.css';    → DesignBlocksShowcase.tsx
- * @import './templates/button-showcase.css';           → ButtonShowcase.tsx
- * @import './templates/header-footer-comparison.css';  → HeaderFooterComparison.tsx
- * @import './templates/icon-library.css';              → IconLibrary.tsx
- * @import './templates/section-presets-showcase.css';   → SectionPresetsShowcase.tsx
- * @import './templates/theme-blocks-showcase.css';     → ThemeBlocksShowcase.tsx
- * @import './templates/code-quality-dashboard.css';    → CodeQualityDashboardTemplate.tsx
- * @import './templates/design-tokens-reference.css';   → DesignTokensReferenceTemplate.tsx
- * @import './templates/deployment-readiness.css';      → DeploymentReadinessTemplate.tsx
- * @import './templates/design-playground.css';         → DesignPlaygroundTemplate.tsx
- * @import './templates/docs-generator.css';            → DocsGeneratorTemplate.tsx
- */
-
-/* Dev Tools Blocks — route-level only
- * @import './blocks/dev-tools/page-switcher.css';
- * @import './blocks/dev-tools/header.css';
- * @import './blocks/dev-tools/filter-toolbar.css';
- * @import './blocks/dev-tools/component-playground.css';
- * @import './blocks/dev-tools/compliance-scorecard.css';
- * @import './blocks/dev-tools/design-system-test.css';
- */
-
-/* WooCommerce Templates — route-level only
- * @import './woocommerce/cart.css';
- * @import './woocommerce/checkout.css';
- * @import './woocommerce/product-archive.css';
- * @import './woocommerce/single-product.css';
- */
-
-/* 6. Theme Parts - Deprecated, moved to blocks/theme/ */
+/* Template-specific CSS is imported at the component level.
+ * See individual template .tsx files for their CSS imports. */
 
 /* 7. Utilities & Extras */
 @import './animations.css';
@@ -442,22 +323,10 @@
 @import './header-simple.css';
 @import './icon-features-list.css';
 
-/* 8. Content Component Styles */
-/* (cleaned up Feb 25, 2026 — orphaned content CSS removed) */
-
-/* 9. Demo Component Styles — DELETED Feb 25, 2026 (all demo components orphaned and removed) */
-
-/* 11. Features Styles — DELETED Feb 25, 2026 (components orphaned and removed) */
-
-/* 12. Deployment Styles — DELETED Feb 25, 2026 (components orphaned and removed) */
-
-/* 13. Navigation Styles */
-/* (master-hub.css removed Feb 25, 2026 — component orphaned and deleted) */
-
-/* 14. Page Styles */
+/* 8. Page Styles */
 @import './pages/sitemap.css';
 
-/* 10. UI Component Styles */
+/* 9. UI Component Styles */
 @import './ui/lightbox.css';
 @import './ui/toast.css';
 @import './ui/error-boundary.css';

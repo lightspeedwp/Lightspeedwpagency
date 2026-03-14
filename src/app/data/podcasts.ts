@@ -53,7 +53,7 @@ export const podcasts: Podcast[] = [
     title: 'Welcome to the LSX Design podcast',
     excerpt: 'In our inaugural episode, we introduce the LSX Design podcast — a show about modern WordPress development, block themes, design systems, and building better websites for our clients.',
     content: 'Welcome to the very first episode of the LSX Design podcast! In this introductory episode, we share who we are, what drives our passion for WordPress and WooCommerce development, and what you can expect from this podcast series. We discuss our journey from a small Cape Town agency to a globally recognised WordPress partner, the evolution of block themes, and our vision for the future of web development.',
-    showNotes: '- Introduction to the LSX Design team\n- Our WordPress journey since 2009\n- What to expect from this podcast\n- The evolution of block themes and Full Site Editing\n- Why design systems matter\n- Upcoming episodes preview',
+    showNotes: '- Introduction to the LSX Design team\n- Our WordPress journey since 2003\n- What to expect from this podcast\n- The evolution of block themes and Full Site Editing\n- Why design systems matter\n- Upcoming episodes preview',
     featuredImage: 'https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=1200',
     audioUrl: 'https://example.com/podcasts/welcome-to-lsx-design.mp3',
     duration: '22:15',

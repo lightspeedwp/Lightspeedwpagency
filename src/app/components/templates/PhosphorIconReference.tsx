@@ -333,13 +333,8 @@ export function PhosphorIconReference() {
         <section className="phosphor-ref__comparison">
           <h2 className="phosphor-ref__comparison-title">Weight Comparison</h2>
           {SAMPLE_ICONS_FOR_COMPARISON.map(sample => (
-            <div key={sample.name} style={{ marginBottom: 'var(--spacing-6)' }}>
-              <p style={{
-                fontFamily: 'var(--font-secondary)',
-                fontSize: 'var(--text-sm)',
-                color: 'var(--muted-foreground)',
-                marginBottom: 'var(--spacing-3)'
-              }}>
+            <div key={sample.name} className="wp-mb-6">
+              <p className="wp-font-secondary wp-text-sm wp-text-muted-foreground wp-mb-3">
                 {sample.name}
               </p>
               <div className="phosphor-ref__comparison-grid">

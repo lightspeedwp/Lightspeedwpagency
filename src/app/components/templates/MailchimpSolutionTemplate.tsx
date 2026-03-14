@@ -10,7 +10,7 @@
  *
  * STRICT DESIGN SYSTEM COMPLIANCE:
  * - Zero Tailwind classes
- * - All styling via /src/styles/templates/mailchimp-solution-page.css
+ * - All styling via /src/styles/templates/mailchimp-solution-page-optimized.css
  * - Fonts: var(--font-primary), var(--font-secondary) only
  * - Colors: CSS variables only (--growth-* aliases)
  * - Button styling via :where(.wp-block-button__link)
@@ -22,12 +22,12 @@
  * - ✅ FAQSection — FAQ section (accordion variant)
  * - ✅ FunkyCTA — Final conversion section
  *
- * @see /src/styles/templates/mailchimp-solution-page.css
+ * @see /src/styles/templates/mailchimp-solution-page-optimized.css
  * @see /src/app/data/mailchimp-solution-page.ts
  * @migrated March 3, 2026 — Phase 3.2: Migrated inline benefits grid + process timeline (~60 lines saved)
  */
 
-import '../../../styles/templates/mailchimp-solution-page.css';
+import '../../../styles/templates/mailchimp-solution-page-optimized.css';
 import { Check, Rocket, ArrowRight, Quotes as Quote } from '@phosphor-icons/react';
 import { Section } from '../common/Section';
 import { Container } from '../common/Container';

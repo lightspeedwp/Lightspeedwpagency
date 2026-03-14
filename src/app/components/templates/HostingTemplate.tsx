@@ -90,7 +90,7 @@ export function HostingTemplate() {
             <div className="hosting-lab__hero-inner">
               {/* Badge */}
               <div className="hosting-lab__hero-badge">
-                <hostingPageHero.badge.icon size={14} className="animate-pulse" />
+                <hostingPageHero.badge.icon size={14} className="wp-animate-pulse" />
                 <span>{hostingPageHero.badge.text}</span>
               </div>
 

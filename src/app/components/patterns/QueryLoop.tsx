@@ -59,7 +59,7 @@ export function QueryLoop({
         </div>
       )}
 
-      <div className={maxWidthClass} style={{ margin: '0 auto' }}>
+      <div className={`${maxWidthClass} wp-mx-auto`}>
         {isEmpty ? (
           <div className="query-loop__empty">
             <p className="query-loop__empty-text">{emptyMessage}</p>

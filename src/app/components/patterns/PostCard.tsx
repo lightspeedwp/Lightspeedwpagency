@@ -9,6 +9,7 @@
  */
 
 import { Link } from 'react-router';
+import '../../../styles/patterns/cards/post-card.css';
 import { CalendarBlank, Clock, User, Tag, ArrowRight } from '@phosphor-icons/react';
 import type { BlogPost } from '../../data/blog-posts';
 
@@ -138,25 +139,13 @@ export const PostCard = ({
           )}
 
           {/* Title */}
-          <h3 
-            className="post-card__title"
-            style={{
-              fontSize: 'var(--text-h4)',
-              fontFamily: 'var(--font-primary)',
-            }}
-          >
+          <h3 className="post-card__title wp-font-primary wp-text-h4">
             {post.title}
           </h3>
 
           {/* Excerpt */}
           {showExcerpt && post.excerpt && (
-            <p 
-              className="post-card__excerpt"
-              style={{
-                fontSize: 'var(--text-base)',
-                fontFamily: 'var(--font-secondary)',
-              }}
-            >
+            <p className="post-card__excerpt wp-text-base wp-font-secondary">
               {post.excerpt}
             </p>
           )}
@@ -166,13 +155,7 @@ export const PostCard = ({
             <div className="post-card__meta">
               {/* Author */}
               {post.author && (
-                <span 
-                  className="post-card__meta-item post-card__author"
-                  style={{
-                    fontSize: 'var(--text-sm)',
-                    fontFamily: 'var(--font-secondary)',
-                  }}
-                >
+                <span className="post-card__meta-item post-card__author wp-text-sm wp-font-secondary">
                   <User className="post-card__icon" size={16} aria-hidden="true" />
                   <span>{post.author.name}</span>
                 </span>
@@ -180,13 +163,7 @@ export const PostCard = ({
 
               {/* Date */}
               {post.date && (
-                <span 
-                  className="post-card__meta-item post-card__date"
-                  style={{
-                    fontSize: 'var(--text-sm)',
-                    fontFamily: 'var(--font-secondary)',
-                  }}
-                >
+                <span className="post-card__meta-item post-card__date wp-text-sm wp-font-secondary">
                   <CalendarBlank className="post-card__icon" size={16} aria-hidden="true" />
                   <time dateTime={post.date}>
                     {new Date(post.date).toLocaleDateString('en-US', {
@@ -200,13 +177,7 @@ export const PostCard = ({
 
               {/* Reading Time */}
               {showReadingTime && post.readingTime && (
-                <span 
-                  className="post-card__meta-item post-card__reading-time"
-                  style={{
-                    fontSize: 'var(--text-sm)',
-                    fontFamily: 'var(--font-secondary)',
-                  }}
-                >
+                <span className="post-card__meta-item post-card__reading-time wp-text-sm wp-font-secondary">
                   <Clock className="post-card__icon" size={16} aria-hidden="true" />
                   <span>{post.readingTime}</span>
                 </span>
@@ -219,14 +190,7 @@ export const PostCard = ({
             <div className="post-card__tags">
               <Tag className="post-card__tags-icon" size={14} aria-hidden="true" />
               {post.tags.slice(0, 3).map((tag) => (
-                <span 
-                  key={tag}
-                  className="post-card__tag"
-                  style={{
-                    fontSize: 'var(--text-xs)',
-                    fontFamily: 'var(--font-secondary)',
-                  }}
-                >
+                <span key={tag} className="post-card__tag wp-text-xs wp-font-secondary">
                   {tag}
                 </span>
               ))}

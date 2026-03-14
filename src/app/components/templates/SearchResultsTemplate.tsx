@@ -28,7 +28,7 @@ import {
   searchAllContent,
   getResultCountsByType,
   contentTypeLabels,
-  contentTypeColors,
+  contentTypeColorClass,
   type ContentType,
   type SortOption,
   type SearchResult,
@@ -181,43 +181,21 @@ export function SearchResultsTemplate() {
       <section className="search-header">
         <Container>
           <div
-            style={{
-              maxWidth: 'var(--wp--style--global--narrow-size)',
-              margin: '0 auto',
-            }}
+            className="wp-mx-auto wp-max-w-narrow"
           >
             <h1
-              style={{
-                fontFamily: 'var(--font-primary)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 'var(--font-weight-bold)',
-                color: 'var(--foreground)',
-                marginBottom: 'var(--spacing-6)',
-                textAlign: 'center',
-              }}
+              className="wp-font-primary wp-text-h2 wp-font-bold wp-text-foreground wp-mb-6 wp-text-center"
             >
               {query ? `Search Results for "${query}"` : 'Search'}
             </h1>
 
             {/* Enhanced Search Input */}
             <div
-              style={{
-                position: 'relative',
-                maxWidth: 'var(--wp--style--global--content-size)',
-                margin: '0 auto',
-                marginBottom: 'var(--spacing-8)',
-              }}
+              className="wp-mx-auto wp-mb-8 wp-relative wp-max-w-content"
             >
               <MagnifyingGlass
                 size={22}
-                style={{
-                  position: 'absolute',
-                  left: 'var(--spacing-4)',
-                  top: '50%',
-                  transform: 'translateY(-50%)',
-                  color: 'var(--muted-foreground)',
-                  pointerEvents: 'none',
-                }}
+                className="wp-text-muted-foreground wp-absolute wp-left-4 wp-top-1/2 wp--translate-y-1/2 wp-pointer-events-none"
               />
               <input
                 type="search"
@@ -228,13 +206,7 @@ export function SearchResultsTemplate() {
                 aria-label="Search all content"
               />
               <span
-                className="search-kbd"
-                style={{
-                  position: 'absolute',
-                  right: 'var(--spacing-3)',
-                  top: '50%',
-                  transform: 'translateY(-50%)',
-                }}
+                className="search-kbd wp-absolute wp-right-3 wp-top-1/2 wp--translate-y-1/2"
               >
                 Ctrl+K
               </span>
@@ -246,23 +218,16 @@ export function SearchResultsTemplate() {
       {/* Results Section */}
       <Section
         spacing="lg"
-        style={{ backgroundColor: 'var(--background)' }}
+        className="wp-bg-background"
       >
         <Container>
-          <div style={{ maxWidth: 'var(--wp--style--global--narrow-size)', margin: '0 auto' }}>
+          <div className="wp-mx-auto wp-max-w-4xl">
             {/* Filters Bar */}
             {query && (
               <>
                 <div className="search-filters">
                   <span className="search-filters__label">Filter:</span>
-                  <div
-                    className="search-filters__chips"
-                    style={{
-                      display: 'flex',
-                      flexWrap: 'wrap',
-                      gap: 'var(--spacing-2)',
-                    }}
-                  >
+                  <div className="search-filters__chips wp-flex wp-flex-wrap wp-gap-2">
                     {allContentTypes.map(type => {
                       const Icon = contentTypeIcons[type];
                       const count = typeCounts[type];
@@ -277,11 +242,8 @@ export function SearchResultsTemplate() {
                             activeTypes.includes(type)
                               ? 'search-filters__chip--active'
                               : ''
-                          }`}
+                          } ${count === 0 ? 'wp-opacity-50' : ''}`}
                           aria-pressed={activeTypes.includes(type)}
-                          style={{
-                            opacity: count === 0 ? 0.5 : 1,
-                          }}
                         >
                           <Icon size={14} />
                           {contentTypeLabels[type]}
@@ -331,16 +293,7 @@ export function SearchResultsTemplate() {
                       {' — '}
                       <button
                         onClick={() => setActiveTypes([])}
-                        style={{
-                          background: 'none',
-                          border: 'none',
-                          color: 'var(--primary)',
-                          cursor: 'pointer',
-                          fontFamily: 'var(--font-secondary)',
-                          fontSize: 'var(--text-small)',
-                          textDecoration: 'underline',
-                          padding: 0,
-                        }}
+                        className="wp-bg-none wp-border-none wp-text-primary wp-cursor-pointer wp-font-secondary wp-text-small wp-underline wp-p-0"
                       >
                         Clear filters
                       </button>
@@ -358,21 +311,13 @@ export function SearchResultsTemplate() {
                   return (
                     <button
                       key={`${result.contentType}-${result.id}`}
-                      className="search-result-card"
+                      className="search-result-card wp-text-left wp-w-full"
                       onClick={() => handleResultClick(result)}
-                      style={{
-                        textAlign: 'left',
-                        width: '100%',
-                      }}
                     >
                       {/* Meta Row */}
                       <div className="search-result-card__meta">
                         <span
-                          className="search-result-card__badge"
-                          style={{
-                            color:
-                              contentTypeColors[result.contentType],
-                          }}
+                          className={`search-result-card__badge ${contentTypeColorClass[result.contentType]}`}
                         >
                           <TypeIcon size={10} />
                           {contentTypeLabels[result.contentType]}
@@ -447,19 +392,12 @@ export function SearchResultsTemplate() {
                   className="search-no-results__icon"
                 />
                 <h2
-                  className="search-no-results__title"
-                  style={{
-                    fontFamily: 'var(--font-primary)',
-                  }}
+                  className="search-no-results__title wp-font-primary"
                 >
                   No results found
                 </h2>
                 <p
-                  className="search-no-results__text"
-                  style={{
-                    fontFamily: 'var(--font-primary)',
-                    marginBottom: 'var(--spacing-4)',
-                  }}
+                  className="search-no-results__text wp-font-primary wp-mb-4"
                 >
                   We couldn&apos;t find any content matching &quot;
                   {query}&quot;. Try a different search term or browse
@@ -468,25 +406,18 @@ export function SearchResultsTemplate() {
               </div>
             ) : (
               /* Empty State */
-              <div
-                className="search-no-results"
-                style={{ borderStyle: 'solid' }}
-              >
+              <div className="search-no-results">
                 <MagnifyingGlass
                   size={48}
                   className="search-no-results__icon"
                 />
                 <h2
-                  className="search-no-results__title"
-                  style={{
-                    fontFamily: 'var(--font-primary)',
-                  }}
+                  className="search-no-results__title wp-font-primary"
                 >
                   Start searching
                 </h2>
                 <p
-                  className="search-no-results__text"
-                  style={{ fontFamily: 'var(--font-primary)' }}
+                  className="search-no-results__text wp-font-primary"
                 >
                   Search across blog posts, portfolio projects,
                   videos, podcasts, and pages.
@@ -502,15 +433,11 @@ export function SearchResultsTemplate() {
                     <button
                       key={page}
                       onClick={() => setCurrentPage(page)}
-                      className={`search-pagination__button ${
+                      className={`search-pagination__button wp-font-primary wp-text-small ${
                         page === currentPage
                           ? 'search-pagination__button--active'
                           : ''
                       }`}
-                      style={{
-                        fontFamily: 'var(--font-primary)',
-                        fontSize: 'var(--text-small)',
-                      }}
                     >
                       {page}
                     </button>

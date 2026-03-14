@@ -18,16 +18,8 @@ import { FileCode } from '@phosphor-icons/react';
 
 export function ComponentAPI() {
   return (
-    <div
-      style={{
-        minHeight: '100vh',
-        display: 'flex',
-        flexDirection: 'column',
-        backgroundColor: 'var(--background)',
-        color: 'var(--foreground)'
-      }}
-    >
-      <div style={{ flex: 1 }}>
+    <div className="wp-min-h-screen wp-flex wp-flex-col wp-bg-background wp-text-foreground">
+      <div className="wp-flex-1">
         {/* Breadcrumbs */}
         <BreadcrumbPart
           items={[
@@ -41,43 +33,16 @@ export function ComponentAPI() {
           <Container>
             <div className="wp-text-center wp-max-w-4xl wp-mx-auto">
               <div
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  width: 'var(--spacing-20)',
-                  height: 'var(--spacing-20)',
-                  borderRadius: 'var(--radius-lg)',
-                  backgroundColor: 'var(--secondary)',
-                  marginBottom: 'var(--spacing-6)'
-                }}
+                className="showcase__hero-icon wp-bg-secondary"
               >
-                <FileCode size={40} style={{ color: 'var(--primary-foreground)' }} />
+                <FileCode size={40} className="wp-text-primary-foreground" />
               </div>
 
-              <h1
-                style={{
-                  fontSize: 'var(--text-h1)',
-                  fontFamily: 'var(--font-primary)',
-                  fontWeight: 'var(--font-weight-medium)',
-                  color: 'var(--foreground)',
-                  margin: '0 0 var(--spacing-4) 0',
-                  lineHeight: 1.2
-                }}
-              >
+              <h1 className="wp-font-primary wp-text-h1 wp-font-medium wp-text-foreground wp-mb-4 wp-leading-tight">
                 Component API Reference
               </h1>
 
-              <p
-                style={{
-                  fontSize: 'var(--text-xl)',
-                  fontFamily: 'var(--font-secondary)',
-                  fontWeight: 'var(--font-weight-regular)',
-                  color: 'var(--muted-foreground)',
-                  margin: '0 0 var(--spacing-12) 0',
-                  lineHeight: 1.5
-                }}
-              >
+              <p className="wp-font-secondary wp-text-xl wp-font-regular wp-text-muted-foreground wp-mb-12 wp-leading-normal">
                 TypeScript interfaces, prop types, and API documentation for all components
               </p>
             </div>

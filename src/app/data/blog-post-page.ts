@@ -162,10 +162,10 @@ export interface PostMeta {
 export const examplePostMeta: PostMeta = {
   author: {
     name: 'Ash Shaw',
-    role: 'Chief Executive Officer',
-    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400',
-    bio: 'CEO and founder of LightSpeed WordPress Agency. Passionate about WordPress, web design and building awesome user experiences. WordCamp community member since 2008.',
-    postCount: 15
+    role: 'Founder & CEO',
+    avatar: 'https://images.unsplash.com/photo-1769071166862-8cc3a6f2ac5c?w=400',
+    bio: 'CEO and founder of LightSpeed WordPress Agency. Passionate about WordPress, web design and building awesome user experiences. WordCamp community member since 2005.',
+    postCount: 18
   },
   publishDate: 'December 15, 2024',
   lastModified: 'January 5, 2025',
@@ -236,10 +236,10 @@ export const blogPostNewsletter = {
  */
 export const authorBio = {
   name: 'Ash Shaw',
-  role: 'Chief Executive Officer',
-  avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400',
-  bio: 'Ash Shaw is the CEO and founder of LightSpeed WordPress Agency. With over 20 years of experience in web development, Ash has been passionate about WordPress, web design, and building awesome user experiences since the platform\'s early days. He\'s been an active WordCamp community member since 2008, sharing knowledge and contributing to the WordPress ecosystem.',
-  postCount: 15,
+  role: 'Founder & CEO',
+  avatar: 'https://images.unsplash.com/photo-1769071166862-8cc3a6f2ac5c?w=400',
+  bio: 'Ash Shaw is the CEO and founder of LightSpeed WordPress Agency. With over 20 years of experience in web development, Ash has been passionate about WordPress, web design, and building awesome user experiences since the platform\'s early days. He\'s been an active WordCamp community member since 2005, sharing knowledge and contributing to the WordPress ecosystem.',
+  postCount: 18,
   social: {
     linkedin: 'https://linkedin.com/in/ashleyshaw',
     twitter: 'https://twitter.com/ashshaw',

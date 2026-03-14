@@ -21,7 +21,7 @@
  * @see /src/styles/templates/page-journey-stage.css
  */
 
-import '../../../styles/templates/page-journey-stage.css';
+import '../../../styles/templates/journey-stage/journey-stage-base.css';
 import { Link } from 'react-router';
 import React from 'react';
 import { slugToPath } from '../../utils/route-map';
@@ -61,7 +61,7 @@ function JourneyProgressBar({ currentIndex }: { currentIndex: number }) {
               : 'future';
 
           return (
-            <div key={stage.slug} style={{ display: 'contents' }}>
+            <div key={stage.slug} className="wp-contents">
               {/* Connector line (before each node except the first) */}
               {idx > 0 && (
                 <div
@@ -174,7 +174,7 @@ export function JourneyStageTemplate({ slug }: JourneyStageTemplateProps) {
 
   if (!data) {
     return (
-      <div style={{ padding: 'var(--section-padding-y) var(--section-padding-x)', textAlign: 'center' }}>
+      <div className="wp-py-16 wp-px-6 wp-text-center">
         <h1>Stage not found</h1>
         <p>The journey stage "{slug}" does not exist.</p>
       </div>

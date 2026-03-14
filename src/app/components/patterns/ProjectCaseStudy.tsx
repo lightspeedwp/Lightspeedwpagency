@@ -60,9 +60,9 @@ export const ProjectCaseStudy = ({
   variant = 'glassmorphism',
 }: ProjectCaseStudyProps) => {
   const sections = [
-    { key: 'challenge', data: challenge, color: 'var(--color-error)' },
-    { key: 'solution', data: solution, color: 'var(--color-warning)' },
-    { key: 'results', data: results, color: 'var(--color-success)' },
+    { key: 'challenge', data: challenge, colorClass: 'wp-text-destructive', bgClass: 'wp-bg-destructive' },
+    { key: 'solution', data: solution, colorClass: 'wp-text-warning', bgClass: 'wp-bg-warning' },
+    { key: 'results', data: results, colorClass: 'wp-text-success', bgClass: 'wp-bg-success' },
   ];
 
   return (
@@ -85,16 +85,14 @@ export const ProjectCaseStudy = ({
               >
                 {/* Gradient top stripe */}
                 <div
-                  className="project-case-study__stripe"
-                  style={{ backgroundColor: section.color }}
+                  className={`project-case-study__stripe ${section.bgClass}`}
                   aria-hidden="true"
                 />
 
                 {/* Header */}
                 <div className="project-case-study__header">
                   <div
-                    className="project-case-study__icon"
-                    style={{ color: section.color }}
+                    className={`project-case-study__icon ${section.colorClass}`}
                   >
                     <Icon size={28} />
                   </div>
@@ -138,8 +136,7 @@ export const ProjectCaseStudy = ({
                         className="project-case-study__metric"
                       >
                         <div
-                          className="project-case-study__metric-value"
-                          style={{ color: section.color }}
+                          className={`project-case-study__metric-value ${section.colorClass}`}
                         >
                           {metric.value}
                         </div>

@@ -2,17 +2,38 @@
  * Performance Service Page Data
  *
  * Mock data for the Performance Service page (PerformanceServiceTemplate).
+ * 
+ * Exports: performanceServiceHero, performanceServiceOverview,
+ *          performanceServiceFeatures, performanceServiceProcess,
+ *          performanceServiceStats, performanceServiceCTA
  *
  * @see /src/app/components/templates/PerformanceServiceTemplate.tsx
  */
 
-import { Gauge, HardDrive, DeviceMobile, Stack, ChartBar, MagnifyingGlass, Lightning, CheckCircle, Pulse } from '@phosphor-icons/react';
+import {
+  Gauge,
+  HardDrive,
+  DeviceMobile,
+  Stack,
+  ChartBar,
+  MagnifyingGlass,
+  Lightning,
+  CheckCircle,
+  Pulse,
+} from '@phosphor-icons/react';
 
 export const performanceServiceHero = {
   title: 'WordPress Performance Optimisation',
-  subtitle: 'Blazing-fast load times, perfect Core Web Vitals scores, and a user experience that keeps visitors coming back.',
+  subtitle:
+    'Blazing-fast load times, perfect Core Web Vitals scores, and a user experience that keeps visitors coming back.',
   badge: { text: 'CORE WEB VITALS OPTIMISED', icon: Lightning },
   primaryButton: { text: 'Request a Systems Audit', page: 'contact' },
+};
+
+export const performanceServiceOverview = {
+  title: 'Why LightSpeed Performance Matters',
+  description:
+    'Every millisecond counts. Slow sites lose visitors, tank SEO rankings, and bleed conversions. Our performance optimisation service delivers measurable speed gains backed by real-world metrics — not guesswork.',
 };
 
 export const performanceServiceFeatures = {
@@ -21,22 +42,26 @@ export const performanceServiceFeatures = {
     {
       icon: Gauge,
       title: 'Speed Audit',
-      description: 'Full Lighthouse & WebPageTest analysis with a prioritised action plan.',
+      description:
+        'Full Lighthouse & WebPageTest analysis with a prioritised action plan.',
     },
     {
       icon: Stack,
       title: 'Code Optimisation',
-      description: 'Critical CSS extraction, JS defer/async, unused code elimination.',
+      description:
+        'Critical CSS extraction, JS defer/async, unused code elimination.',
     },
     {
       icon: HardDrive,
       title: 'Caching Strategy',
-      description: 'Server-side, edge, and browser caching configured for instant repeat visits.',
+      description:
+        'Server-side, edge, and browser caching configured for instant repeat visits.',
     },
     {
       icon: DeviceMobile,
       title: 'Asset Optimisation',
-      description: 'AVIF/WebP images, font subsetting, lazy loading for below-the-fold media.',
+      description:
+        'AVIF/WebP images, font subsetting, lazy loading for below-the-fold media.',
     },
   ],
 };
@@ -44,11 +69,31 @@ export const performanceServiceFeatures = {
 export const performanceServiceProcess = {
   title: 'Our 5-Step Protocol',
   steps: [
-    { step: 'Benchmark', description: 'Lighthouse CI baseline on desktop & mobile.', icon: ChartBar },
-    { step: 'Analyse', description: 'Waterfall audit — identify bottlenecks.', icon: MagnifyingGlass },
-    { step: 'Optimise', description: 'Code-split, compress, cache, and defer.', icon: Lightning },
-    { step: 'Validate', description: 'Re-test against Web Vitals thresholds.', icon: CheckCircle },
-    { step: 'Monitor', description: 'Continuous RUM alerting via Analytics.', icon: Pulse },
+    {
+      step: 'Benchmark',
+      description: 'Lighthouse CI baseline on desktop & mobile.',
+      icon: ChartBar,
+    },
+    {
+      step: 'Analyse',
+      description: 'Waterfall audit — identify bottlenecks.',
+      icon: MagnifyingGlass,
+    },
+    {
+      step: 'Optimise',
+      description: 'Code-split, compress, cache, and defer.',
+      icon: Lightning,
+    },
+    {
+      step: 'Validate',
+      description: 'Re-test against Web Vitals thresholds.',
+      icon: CheckCircle,
+    },
+    {
+      step: 'Monitor',
+      description: 'Continuous RUM alerting via Analytics.',
+      icon: Pulse,
+    },
   ],
 };
 
@@ -61,6 +106,7 @@ export const performanceServiceStats = [
 
 export const performanceServiceCTA = {
   title: "Don't Let Speed Kill Conversions",
-  description: 'Every 100 ms of load time costs you revenue. Let us make your site fly.',
+  description:
+    'Every 100 ms of load time costs you revenue. Let us make your site fly.',
   button: { text: 'Get a Performance Audit', page: 'contact' },
 };

@@ -55,6 +55,17 @@
   margin-bottom: var(--spacing-12);
 }
 
+.showcase__hero-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--spacing-20);
+  height: var(--spacing-20);
+  background-color: var(--secondary);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--spacing-6);
+}
+
 /**
  * Hero titles
  */

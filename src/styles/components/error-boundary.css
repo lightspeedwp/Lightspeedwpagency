@@ -5,6 +5,80 @@
  * All spacing via CSS variables.
  */
 
+/* ── Full Page Error ── */
+.error-boundary-full {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--background);
+  padding: var(--spacing-6);
+}
+
+.error-boundary-full__container {
+  max-width: var(--wp--style--global--content-size);
+  width: 100%;
+  text-align: center;
+}
+
+.error-boundary-full__icon-wrapper {
+  width: var(--spacing-20);
+  height: var(--spacing-20);
+  border-radius: var(--radius-full);
+  background-color: var(--destructive);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--spacing-6);
+  opacity: 0.9;
+}
+
+.error-boundary-full__icon {
+  color: var(--destructive-foreground);
+}
+
+.error-boundary-full__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h2);
+  font-weight: 600;
+  color: var(--foreground);
+  margin-bottom: var(--spacing-4);
+}
+
+.error-boundary-full__description {
+  font-family: var(--font-secondary);
+  font-size: var(--text-lg);
+  color: var(--muted-foreground);
+  line-height: 1.7;
+  margin-bottom: var(--spacing-8);
+}
+
+.error-boundary-full__details {
+  background-color: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-4);
+  text-align: left;
+  margin-bottom: var(--spacing-8);
+}
+
+.error-boundary-full__details-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--destructive);
+  margin-bottom: var(--spacing-2);
+}
+
+.error-boundary-full__details-content {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--foreground);
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin: 0;
+}
+
 /* ── Error action buttons row ── */
 .error-boundary__actions {
   display: flex;
@@ -19,6 +93,12 @@
   }
 }
 
+.error-boundary__action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
 /* ── Lightweight fallback ── */
 .error-fallback {
   display: flex;
@@ -30,4 +110,32 @@
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   min-height: 200px;
+}
+
+.error-fallback__icon {
+  color: var(--destructive);
+  margin-bottom: var(--spacing-4);
+}
+
+.error-fallback__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h4);
+  font-weight: 600;
+  color: var(--foreground);
+  margin-bottom: var(--spacing-2);
+}
+
+.error-fallback__description {
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  color: var(--muted-foreground);
+  text-align: center;
+  max-width: var(--wp--style--global--content-size);
+  margin-bottom: var(--spacing-6);
+}
+
+.error-fallback__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
 }

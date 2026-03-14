@@ -59,14 +59,6 @@ export const sitePages: SitePage[] = [
     showInNav: false
   },
   {
-    id: 'tour-operators',
-    slug: 'tour-operators',
-    title: 'Tour Operators',
-    excerpt: 'Our LSX Tour Operator plugin is designed specifically for your industry, our Tour Operator plugin provides you with complete control over every component of your tours and itineraries.',
-    parent: 'solutions',
-    showInNav: false
-  },
-  {
     id: 'publishers',
     slug: 'publishers',
     title: 'Publishers',
@@ -103,14 +95,6 @@ export const sitePages: SitePage[] = [
     slug: 'woocommerce-redesign',
     title: 'WooCommerce Store Redesign',
     excerpt: 'Rebuild your WooCommerce store for higher conversions, faster load times, and a checkout experience customers love.',
-    parent: 'solutions',
-    showInNav: false
-  },
-  {
-    id: 'tour-operator-design',
-    slug: 'tour-operator-design',
-    title: 'Tour Operator Website & Tour Design',
-    excerpt: 'Showcase your tours with stunning itineraries, interactive maps, and a booking experience that turns browsers into travelers.',
     parent: 'solutions',
     showInNav: false
   },
@@ -192,7 +176,7 @@ export const sitePages: SitePage[] = [
     id: 'services',
     slug: 'services',
     title: 'Services',
-    excerpt: 'WordPress & WooCommerce Experts - With over 10 years\' experience with WordPress & WooCommerce Development, our solutions help you and your business succeed.',
+    excerpt: 'WordPress & WooCommerce Experts - With over 20 years\' experience with WordPress & WooCommerce Development, our solutions help you and your business succeed.',
     template: 'page',
     showInNav: true,
     order: 3
@@ -415,14 +399,6 @@ export const sitePages: SitePage[] = [
     slug: 'why-lightspeed',
     title: 'Why LightSpeed?',
     excerpt: 'Expert WordPress & WooCommerce solutions.',
-    parent: 'why',
-    showInNav: false
-  },
-  {
-    id: 'why-tour-operator',
-    slug: 'why-tour-operator',
-    title: 'Why Tour Operator?',
-    excerpt: 'Complete control over tours and itineraries.',
     parent: 'why',
     showInNav: false
   },

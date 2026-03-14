@@ -57,6 +57,10 @@
   gap: var(--spacing-3);
 }
 
+.comparison__section-icon {
+  color: var(--primary);
+}
+
 /* Preview Frame */
 .comparison__preview {
   border: 1px solid var(--border-soft);

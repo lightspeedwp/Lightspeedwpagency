@@ -9,11 +9,11 @@
  * Pattern order:
  * Hero → Challenges → Process → Included Services → Results → Pricing → FAQs → CTA
  *
- * @see /src/styles/templates/page-solution-redesign.css
+ * @see /src/styles/templates/page-solution-redesign-optimized.css
  * @see /src/app/data/woocommerce-redesign-page.ts
  */
 
-import '../../../styles/templates/page-solution-redesign.css';
+import '../../../styles/templates/page-solution-redesign-optimized.css';
 import { Container } from '../common/Container';
 import { FAQSection } from '../patterns/FAQSection';
 import { StatsGrid } from '../patterns/StatsGrid';

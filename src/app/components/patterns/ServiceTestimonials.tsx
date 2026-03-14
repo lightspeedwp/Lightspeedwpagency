@@ -101,7 +101,7 @@ export const ServiceTestimonials = ({
       </div>
       
       {/* Testimonials Grid */}
-      <div className="grid-base wp-grid-3-cols">
+      <div className="wp-grid-3-cols wp-gap-8">
         {displayTestimonials.map((testimonial) => (
           <ScrollReveal key={testimonial.id} animation="fade-up">
             <TestimonialCard

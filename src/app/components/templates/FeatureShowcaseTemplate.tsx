@@ -65,7 +65,7 @@ export function FeatureShowcaseTemplate() {
             <div className="showcase__hero-title-row">
               <Sparkle 
                 size={32} 
-                style={{ color: 'var(--primary)' }}
+                className="wp-text-primary"
               />
               <Heading level={1}>
                 Feature Showcase
@@ -130,8 +130,7 @@ export function FeatureShowcaseTemplate() {
             initial="hidden"
             whileInView="visible"
             viewport={viewportOptions}
-            className="wp-grid-2-cols"
-            style={{ gap: 'var(--spacing-8)' }}
+            className="wp-grid-2-cols wp-gap-8"
           >
             {/* Tag Archive */}
             <motion.div variants={staggerItem}>
@@ -163,7 +162,7 @@ export function FeatureShowcaseTemplate() {
                         key={feature}
                         className="showcase__feature-item"
                       >
-                        <CheckCircle size={16} style={{ color: 'var(--primary)' }} />
+                        <CheckCircle size={16} className="wp-text-primary" />
                         {feature}
                       </li>
                     ))}
@@ -206,7 +205,7 @@ export function FeatureShowcaseTemplate() {
                         key={feature}
                         className="showcase__feature-item"
                       >
-                        <CheckCircle size={16} style={{ color: 'var(--primary)' }} />
+                        <CheckCircle size={16} className="wp-text-primary" />
                         {feature}
                       </li>
                     ))}
@@ -240,7 +239,7 @@ export function FeatureShowcaseTemplate() {
             </p>
           </motion.div>
 
-          <div className="wp-grid-3-cols" style={{ gap: 'var(--spacing-6)' }}>
+          <div className="wp-grid-3-cols wp-gap-6">
             {[
               { name: 'Fade In Up', desc: 'Most common animation. Opacity + upward movement with smooth easing.', variant: fadeInUp },
               { name: 'Fade In Down', desc: 'Header animation. Opacity + downward movement for titles.', variant: fadeInDown },
@@ -302,8 +301,7 @@ export function FeatureShowcaseTemplate() {
             initial="hidden"
             whileInView="visible"
             viewport={viewportOptions}
-            className="wp-grid-3-cols"
-            style={{ gap: 'var(--spacing-6)' }}
+            className="wp-grid-3-cols wp-gap-6"
           >
             {[
               { title: 'Default + Lift', desc: 'Most common. Card rises on hover with enhanced shadow.', variant: 'default' as const, effect: 'lift' as const },

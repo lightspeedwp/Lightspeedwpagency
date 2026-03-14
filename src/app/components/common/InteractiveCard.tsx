@@ -213,14 +213,9 @@ export function InteractiveCard({
           initial={{ opacity: 0 }}
           animate={{ opacity: isHovered ? 1 : 0 }}
           transition={{ duration: 0.3 }}
+          className="wp-absolute wp-inset-0 wp-pointer-events-none"
           style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            background: 'linear-gradient(135deg, var(--primary-soft) 0%, transparent 100%)',
-            pointerEvents: 'none'
+            background: 'var(--gradient-card-hover)',
           }}
         />
       )}
@@ -231,14 +226,10 @@ export function InteractiveCard({
           initial={{ x: '-100%' }}
           animate={{ x: isHovered ? '100%' : '-100%' }}
           transition={{ duration: 0.8, ease: 'easeInOut' }}
+          className="wp-absolute wp-top-0 wp-left-0 wp-h-full wp-pointer-events-none"
           style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
             width: '50%',
-            height: '100%',
-            background: 'linear-gradient(90deg, transparent, var(--glass-bg-strong), transparent)',
-            pointerEvents: 'none'
+            background: 'var(--gradient-accent-soft)',
           }}
         />
       )}
@@ -295,11 +286,7 @@ export function InteractiveCardHeader({
 }) {
   return (
     <div 
-      className={className}
-      style={{
-        padding: 'var(--spacing-6)',
-        borderBottom: '1px solid var(--border-soft)'
-      }}
+      className={`wp-p-6 wp-border-b wp-border-border-soft ${className}`}
     >
       {children}
     </div>
@@ -319,8 +306,7 @@ export function InteractiveCardContent({
 }) {
   return (
     <div 
-      className={className}
-      style={{ padding: 'var(--spacing-6)' }}
+      className={`wp-p-6 ${className}`}
     >
       {children}
     </div>
@@ -340,11 +326,7 @@ export function InteractiveCardFooter({
 }) {
   return (
     <div 
-      className={className}
-      style={{
-        padding: 'var(--spacing-6)',
-        borderTop: '1px solid var(--border-soft)'
-      }}
+      className={`wp-p-6 wp-border-t wp-border-border-soft ${className}`}
     >
       {children}
     </div>

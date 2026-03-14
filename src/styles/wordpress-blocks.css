@@ -294,7 +294,7 @@
   font-weight: var(--font-weight-semibold);
   text-decoration: none;
   border-radius: 0 0 var(--radius) 0;
-  transition: top 0.2s ease;
+  transition: top var(--transition-base) var(--ease-in-out);
 }
 
 .wp-block-skip-link:focus {
@@ -434,7 +434,7 @@
   height: auto;
   opacity: 0.6;
   filter: grayscale(100%);
-  transition: all 0.3s ease;
+  transition: all var(--transition-slow) var(--ease-in-out);
 }
 
 .wp-block-logo-grid img:hover {

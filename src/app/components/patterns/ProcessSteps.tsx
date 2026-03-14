@@ -32,8 +32,8 @@ export interface ProcessStepsProps {
   variant?: 'default' | 'cards' | 'minimal';
   /** Badge style */
   badgeStyle?: 'circle' | 'square' | 'rounded';
-  /** Badge color override */
-  badgeColor?: string;
+  /** Badge color class */
+  badgeColorClass?: string;
   /** Max width constraint */
   maxWidth?: '4xl' | '5xl' | '6xl' | 'none';
 }
@@ -43,7 +43,7 @@ export function ProcessSteps({
   columns = 5,
   variant = 'default',
   badgeStyle = 'circle',
-  badgeColor,
+  badgeColorClass,
   maxWidth = '6xl'
 }: ProcessStepsProps) {
   // Max width class
@@ -55,10 +55,7 @@ export function ProcessSteps({
   return (
     <div className={`process-steps ${maxWidthClass}`}>
       <div
-        className={`process-steps__grid ${gridClass}`}
-        style={{
-          gap: variant === 'cards' ? 'var(--spacing-6)' : 'var(--spacing-8)'
-        }}
+        className={`process-steps__grid ${gridClass} ${variant === 'cards' ? 'wp-gap-6' : 'wp-gap-8'}`}
       >
         {steps.map((step) => {
           const Icon = step.icon;
@@ -72,10 +69,7 @@ export function ProcessSteps({
             >
               {/* Step Badge */}
               <div
-                className={`process-step__badge ${badgeShape}`}
-                style={{
-                  backgroundColor: badgeColor || undefined
-                }}
+                className={`process-step__badge ${badgeShape} ${badgeColorClass || ''}`}
               >
                 {Icon ? <Icon size={variant === 'minimal' ? 20 : 28} /> : step.step}
               </div>

@@ -131,7 +131,7 @@ export function ServiceTestimonial({
 
         {/* Cards */}
         <div
-          className={`grid-base ${
+          className={`wp-grid-3-cols ${
             matched.length > 1 ? 'grid-cols-2' : 'grid-cols-1'
           }`}
         >

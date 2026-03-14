@@ -1,8 +1,10 @@
-# Color Tokens - Complete Reference
+# Color Tokens — Design Tokens
 
-**Version:** 2.0  
-**Last Updated:** December 25, 2024  
-**Status:** ✅ Production Ready
+**Category:** Design Tokens  
+**Version:** 1.2.0  
+**Last Updated:** 2026-03-14  
+**Status:** Active  
+**Template Used:** _templates/design-token-template.md  
 
 ---
 
@@ -24,7 +26,7 @@
 
 ## Overview
 
-All colors in the LSX Design System use **semantic CSS variables** defined in `/src/styles/theme.css`. Colors automatically adapt between light and dark modes through CSS variable remapping.
+All colors in the LSX Design System use **semantic CSS variables** defined in `/src/styles/theme-light.css` and `/src/styles/theme-dark.css`. Colors automatically adapt between light and dark modes through CSS variable remapping.
 
 ### Core Principles
 

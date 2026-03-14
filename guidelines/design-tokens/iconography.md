@@ -1,9 +1,10 @@
-# Iconography Design Tokens
+# Iconography Design Tokens — Design Tokens
 
-**Version:** 1.0
-**Created:** March 3, 2026
-**Package:** `@phosphor-icons/react` (parallel with `lucide-react` during migration)
-**Icons Available:** 1,200+ icons, 6 weight variants each
+**Category:** Design Tokens  
+**Version:** 1.1.0  
+**Last Updated:** 2026-03-11  
+**Status:** Active  
+**Template Used:** _templates/design-token-template.md  
 
 ---
 

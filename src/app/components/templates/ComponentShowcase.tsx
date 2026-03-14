@@ -68,7 +68,7 @@ const componentCategories = [
     color: 'var(--accent)',
     components: [
       { name: 'Hero', file: '/patterns/Hero.tsx', description: 'Page hero with title, description, and CTA', usage: 'Page headers' },
-      { name: 'CTASection', file: '/patterns/CTASection.tsx', description: 'Call-to-action with primary/secondary buttons', usage: 'Conversion points' },
+      { name: 'FunkyCTA', file: '/patterns/FunkyCTA.tsx', description: 'Call-to-action with primary/secondary buttons', usage: 'Conversion points' },
       { name: 'FAQSection', file: '/patterns/FAQSection.tsx', description: 'Collapsible FAQ accordion', usage: 'Help content' },
       { name: 'TestimonialGrid', file: '/patterns/TestimonialGrid.tsx', description: 'Client testimonials with ratings', usage: 'Social proof' },
       { name: 'SocialProof', file: '/patterns/SocialProof.tsx', description: 'Client logos and trust badges', usage: 'Trust building' },
@@ -166,22 +166,9 @@ export function ComponentShowcase() {
   }));
 
   return (
-    <div
-      style={{
-        minHeight: '100vh',
-        display: 'flex',
-        flexDirection: 'column',
-        backgroundColor: 'var(--background)',
-        color: 'var(--foreground)'
-      }}
-    >
+    <div className="wp-min-h-screen wp-flex wp-flex-col wp-bg-background wp-text-foreground">
       {/* Main Content */}
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column'
-        }}
-      >
+      <div className="wp-flex wp-flex-col">
         {/* Breadcrumbs */}
         <BreadcrumbPart
           items={[
@@ -249,37 +236,14 @@ export function ComponentShowcase() {
               <div className="wp-relative">
                 <MagnifyingGlass
                   size={20}
-                  style={{
-                    position: 'absolute',
-                    left: 'var(--spacing-4)',
-                    top: '50%',
-                    transform: 'translateY(-50%)',
-                    color: 'var(--muted-foreground)'
-                  }}
+                  className="wp-absolute wp-left-4 wp-top-1/2 wp--translate-y-1/2 wp-text-muted-foreground wp-pointer-events-none"
                 />
                 <input
                   type="text"
                   placeholder="Search components..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  style={{
-                    width: '100%',
-                    padding: 'var(--spacing-3) var(--spacing-4) var(--spacing-3) var(--spacing-12)',
-                    backgroundColor: 'var(--background)',
-                    border: '1px solid var(--border-soft)',
-                    borderRadius: 'var(--radius-lg)',
-                    fontFamily: 'var(--font-primary)',
-                    fontSize: 'var(--text-base)',
-                    color: 'var(--foreground)',
-                    outline: 'none',
-                    transition: 'border-color 0.2s ease'
-                  }}
-                  onFocus={(e) => {
-                    e.currentTarget.style.borderColor = 'var(--primary)';
-                  }}
-                  onBlur={(e) => {
-                    e.currentTarget.style.borderColor = 'var(--border-soft)';
-                  }}
+                  className="wp-w-full wp-pl-12 wp-pr-4 wp-py-3 wp-bg-background wp-border wp-border-border-soft wp-rounded-lg wp-font-primary wp-text-base wp-text-foreground wp-outline-none focus:wp-border-primary wp-transition-colors wp-duration-200"
                 />
               </div>
 
@@ -292,43 +256,16 @@ export function ComponentShowcase() {
                   <button
                     key={filterType}
                     onClick={() => setFilter(filterType)}
-                    style={{
-                      padding: 'var(--spacing-2) var(--spacing-4)',
-                      backgroundColor: filter === filterType ? 'var(--primary)' : 'var(--background)',
-                      color: filter === filterType ? 'var(--primary-foreground)' : 'var(--foreground)',
-                      border: `1px solid ${filter === filterType ? 'var(--primary)' : 'var(--border-soft)'}`,
-                      borderRadius: 'var(--radius-lg)',
-                      fontFamily: 'var(--font-primary)',
-                      fontSize: 'var(--text-base)',
-                      fontWeight: 'var(--font-weight-medium)',
-                      cursor: 'pointer',
-                      transition: 'all 0.2s ease',
-                      textTransform: 'capitalize'
-                    }}
-                    onMouseEnter={(e) => {
-                      if (filter !== filterType) {
-                        e.currentTarget.style.borderColor = 'var(--primary)';
-                        e.currentTarget.style.backgroundColor = 'var(--card)';
-                      }
-                    }}
-                    onMouseLeave={(e) => {
-                      if (filter !== filterType) {
-                        e.currentTarget.style.borderColor = 'var(--border-soft)';
-                        e.currentTarget.style.backgroundColor = 'var(--background)';
-                      }
-                    }}
-                    onFocus={(e) => {
-                      e.currentTarget.style.outline = '2px solid var(--ring)';
-                      e.currentTarget.style.outlineOffset = '2px';
-                    }}
-                    onBlur={(e) => {
-                      e.currentTarget.style.outline = 'none';
-                    }}
+                    className={`wp-px-4 wp-py-2 wp-rounded-lg wp-font-primary wp-text-base wp-font-medium wp-capitalize wp-transition-all wp-duration-200 wp-cursor-pointer wp-border focus:wp-outline-none focus-visible:wp-ring-2 focus-visible:wp-ring-ring focus-visible:wp-ring-offset-2 ${
+                      filter === filterType 
+                        ? 'wp-bg-primary wp-text-primary-foreground wp-border-primary' 
+                        : 'wp-bg-background wp-text-foreground wp-border-border-soft hover:wp-border-primary hover:wp-bg-card'
+                    }`}
                   >
                     {filterType}
                   </button>
                 ))}
-                <div style={{ marginLeft: 'auto' }}>
+                <div className="wp-ml-auto">
                   <Button
                     variant="outline"
                     size="md"
@@ -351,20 +288,14 @@ export function ComponentShowcase() {
               {/* Category Header */}
               <div className="wp-flex wp-items-start wp-gap-4 wp-mb-8">
                 <div
+                  className="wp-w-12 wp-h-12 wp-rounded-lg wp-flex wp-items-center wp-justify-center wp-shrink-0"
                   style={{
-                    width: 'var(--spacing-12)',
-                    height: 'var(--spacing-12)',
-                    borderRadius: 'var(--radius-lg)',
-                    backgroundColor: category.color,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    flexShrink: 0
+                    backgroundColor: category.color
                   }}
                 >
                   <category.icon
                     size={24}
-                    style={{ color: 'var(--primary-foreground)' }}
+                    className="wp-text-primary-foreground"
                   />
                 </div>
                 <div>

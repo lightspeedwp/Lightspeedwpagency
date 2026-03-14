@@ -115,7 +115,7 @@ export function ClientFeedbackTemplate() {
                   <textarea id="projectImprovement" className="feedback-page__textarea" placeholder="We value honest feedback..." required></textarea>
                 </div>
 
-                <div className="feedback-page__form-group" style={{ marginTop: 'var(--spacing-4)' }}>
+                <div className="feedback-page__form-group wp-mt-4">
                   <label className="feedback-page__checkbox-label">
                     <input type="checkbox" className="feedback-page__checkbox" />
                     <span>I give permission for LightSpeed to use this feedback as a testimonial on their website and marketing materials.</span>

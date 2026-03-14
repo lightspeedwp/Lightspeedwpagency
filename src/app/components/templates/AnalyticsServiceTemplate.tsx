@@ -25,9 +25,16 @@
  * @migrated March 3, 2026 — Phase 3.1: Migrated inline benefits grid to FeatureList component (~80 lines saved)
  */
 
-import { ChartBar, Target, TrendUp, Users, ChartLine, ChartPie } from '@phosphor-icons/react';
+import { ChartBar, Target, TrendUp, Users, ChartLine, ChartPie, CheckCircle } from '@phosphor-icons/react';
 import { Link } from 'react-router';
 import { FeatureList } from '../patterns/FeatureList';
+import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
+import { Container } from '../common/Container';
+import { FunkyCTA } from '../patterns/FunkyCTA';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
+import { JourneyPhaseIndicator } from '../ui/JourneyPhaseIndicator';
+import { StatsGrid } from '../patterns/StatsGrid';
+import { ScrollReveal } from '../../hooks/useScrollReveal';
 
 export const AnalyticsServiceTemplate = () => {
   const benefits = [
@@ -80,107 +87,128 @@ export const AnalyticsServiceTemplate = () => {
   ];
 
   return (
-    <div className="analytics-service">
+    <div className="wp-w-full wp-flex wp-flex-col">
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', page: 'front-page' },
+          { label: 'Services', page: 'services' },
+          { label: 'AI Search & Visibility', page: 'services/ai-search-visibility' },
+          { label: 'Analytics' },
+        ]}
+      />
+
+      <JourneyPhaseIndicator currentPhase="ignite" currentServicePage="analytics" />
+
       {/* Hero Section */}
-      <section className="analytics-service__hero">
-        <div className="analytics-service__hero-content">
-          <div className="analytics-service__breadcrumb">
-            <Link to="/services" className="analytics-service__breadcrumb-link">Services</Link>
-            <span className="analytics-service__breadcrumb-separator">/</span>
-            <Link to="/services/ai-search-visibility" className="analytics-service__breadcrumb-link">AI Search & Visibility</Link>
-            <span className="analytics-service__breadcrumb-separator">/</span>
-            <span className="analytics-service__breadcrumb-current">Analytics</span>
+      <section style={{ position: 'relative', minHeight: '60vh', display: 'flex', alignItems: 'center', backgroundColor: 'var(--background)', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', inset: 0, opacity: 0.1, backgroundImage: 'radial-gradient(circle at center, var(--border) 1px, transparent 1px)', backgroundSize: '24px 24px', zIndex: 0 }} aria-hidden="true" />
+        
+        <Container>
+          <div style={{ position: 'relative', zIndex: 1, maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
+            <ScrollReveal animation="fade-up">
+              <h1 style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-h1)', color: 'var(--foreground)', marginBottom: 'var(--spacing-6)' }}>
+                Analytics & Data Intelligence
+              </h1>
+              
+              <p style={{ fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-xl)', color: 'var(--muted-foreground)', marginBottom: 'var(--spacing-10)', lineHeight: 1.6 }}>
+                Make data-driven decisions with confidence. Our analytics solutions help you understand 
+                your audience, track performance, and optimize for growth with actionable insights.
+              </p>
+              
+              <div className="wp-flex wp-justify-center wp-gap-4 wp-flex-wrap">
+                <Link to="/contact" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: 'var(--spacing-3) var(--spacing-8)', backgroundColor: 'var(--primary)', color: 'var(--primary-foreground)', borderRadius: 'var(--radius)', fontFamily: 'var(--font-secondary)', fontWeight: 'var(--font-weight-bold)', textDecoration: 'none' }}>
+                  Get Analytics Audit
+                </Link>
+                <Link to="/services/ai-search-visibility" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: 'var(--spacing-3) var(--spacing-8)', backgroundColor: 'transparent', color: 'var(--foreground)', border: '1px solid var(--border)', borderRadius: 'var(--radius)', fontFamily: 'var(--font-secondary)', fontWeight: 'var(--font-weight-medium)', textDecoration: 'none' }}>
+                  View Parent Service
+                </Link>
+              </div>
+            </ScrollReveal>
           </div>
-          
-          <h1 className="analytics-service__hero-title">
-            Analytics & Data Intelligence
-          </h1>
-          
-          <p className="analytics-service__hero-description">
-            Make data-driven decisions with confidence. Our analytics solutions help you understand 
-            your audience, track performance, and optimize for growth with actionable insights.
-          </p>
-          
-          <div className="analytics-service__hero-cta">
-            <Link to="/contact" className="analytics-service__cta-button analytics-service__cta-button--primary">
-              Get Analytics Audit
-            </Link>
-            <Link to="/services/ai-search-visibility" className="analytics-service__cta-button analytics-service__cta-button--secondary">
-              View Parent Service
-            </Link>
-          </div>
-        </div>
+        </Container>
       </section>
 
       {/* Benefits Grid */}
-      <section className="analytics-service__benefits">
-        <div className="analytics-service__section-header">
-          <h2 className="analytics-service__section-title">What We Offer</h2>
-          <p className="analytics-service__section-description">
-            Comprehensive analytics services that turn data into actionable business intelligence
-          </p>
-        </div>
-        
-        <FeatureList
-          items={benefits}
-          columns={3}
-          variant="glow"
-          iconSize="lg"
-        />
+      <section style={{ padding: 'var(--spacing-24) 0', backgroundColor: 'var(--muted)' }}>
+        <Container>
+          <div style={{ textAlign: 'center', marginBottom: 'var(--spacing-16)' }}>
+            <ScrollReveal animation="fade-up">
+              <h2 style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-h2)', color: 'var(--foreground)', marginBottom: 'var(--spacing-4)' }}>What We Offer</h2>
+              <p style={{ fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-lg)', color: 'var(--muted-foreground)', maxWidth: '600px', margin: '0 auto' }}>
+                Comprehensive analytics services that turn data into actionable business intelligence
+              </p>
+            </ScrollReveal>
+          </div>
+          
+          <ScrollReveal animation="fade-up" delay={100}>
+            <FeatureList
+              items={benefits.map(b => ({ ...b, icon: b.icon as any }))}
+              columns={3}
+              variant="glow"
+              iconSize="lg"
+            />
+          </ScrollReveal>
+        </Container>
       </section>
 
       {/* Deliverables */}
-      <section className="analytics-service__deliverables">
-        <div className="analytics-service__section-header">
-          <h2 className="analytics-service__section-title">What You Get</h2>
-          <p className="analytics-service__section-description">
-            Deliverables designed to give you complete visibility into your digital performance
-          </p>
-        </div>
-        
-        <div className="analytics-service__deliverables-grid">
-          {deliverables.map((deliverable, index) => (
-            <div key={index} className="analytics-service__deliverable-item">
-              <div className="analytics-service__deliverable-icon">✓</div>
-              <span className="analytics-service__deliverable-text">{deliverable}</span>
-            </div>
-          ))}
-        </div>
+      <section style={{ padding: 'var(--spacing-24) 0', backgroundColor: 'var(--background)' }}>
+        <Container>
+          <div style={{ textAlign: 'center', marginBottom: 'var(--spacing-16)' }}>
+            <ScrollReveal animation="fade-up">
+              <h2 style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-h2)', color: 'var(--foreground)', marginBottom: 'var(--spacing-4)' }}>What You Get</h2>
+              <p style={{ fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-lg)', color: 'var(--muted-foreground)', maxWidth: '600px', margin: '0 auto' }}>
+                Deliverables designed to give you complete visibility into your digital performance
+              </p>
+            </ScrollReveal>
+          </div>
+          
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 'var(--spacing-6)' }}>
+            {deliverables.map((deliverable, index) => (
+              <ScrollReveal key={index} animation="fade-up" delay={index * 100}>
+                <div style={{ padding: 'var(--spacing-6)', backgroundColor: 'var(--card)', border: '1px solid var(--border)', borderRadius: 'var(--radius-lg)', display: 'flex', alignItems: 'center', gap: 'var(--spacing-4)' }}>
+                  <div style={{ color: 'var(--primary)', flexShrink: 0 }}>
+                    <CheckCircle size={24} weight="fill" />
+                  </div>
+                  <span style={{ fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-base)', color: 'var(--foreground)' }}>{deliverable}</span>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </Container>
       </section>
 
       {/* Results */}
-      <section className="analytics-service__results">
-        <div className="analytics-service__section-header">
-          <h2 className="analytics-service__section-title">Proven Results</h2>
-          <p className="analytics-service__section-description">
-            Real outcomes from our analytics implementations
-          </p>
-        </div>
-        
-        <div className="analytics-service__results-grid">
-          {results.map((result, index) => (
-            <div key={index} className="analytics-service__result-card">
-              <div className="analytics-service__result-metric">{result.metric}</div>
-              <div className="analytics-service__result-label">{result.label}</div>
-            </div>
-          ))}
-        </div>
+      <section style={{ padding: 'var(--spacing-24) 0', backgroundColor: 'var(--card)' }}>
+        <Container>
+          <div style={{ textAlign: 'center', marginBottom: 'var(--spacing-16)' }}>
+            <ScrollReveal animation="fade-up">
+              <h2 style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-h2)', color: 'var(--foreground)', marginBottom: 'var(--spacing-4)' }}>Proven Results</h2>
+              <p style={{ fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-lg)', color: 'var(--muted-foreground)', maxWidth: '600px', margin: '0 auto' }}>
+                Real outcomes from our analytics implementations
+              </p>
+            </ScrollReveal>
+          </div>
+          
+          <ScrollReveal animation="fade-up" delay={100}>
+            <StatsGrid
+              stats={results.map((r, i) => ({ id: `analytics-stat-${i}`, value: r.metric, label: r.label }))}
+              columns={4}
+              variant="cards"
+            />
+          </ScrollReveal>
+        </Container>
       </section>
 
+      <ServiceTestimonial serviceSlug="ai-search" />
+
       {/* CTA */}
-      <section className="analytics-service__cta">
-        <div className="analytics-service__cta-content">
-          <h2 className="analytics-service__cta-title">
-            Ready to unlock your data's potential?
-          </h2>
-          <p className="analytics-service__cta-description">
-            Let's build an analytics strategy that drives measurable business growth.
-          </p>
-          <Link to="/contact" className="analytics-service__cta-button analytics-service__cta-button--primary">
-            Get Started
-          </Link>
-        </div>
-      </section>
+      <FunkyCTA
+        title="Ready to unlock your data's potential?"
+        description="Let's build an analytics strategy that drives measurable business growth."
+        buttonText="Get Started"
+        buttonPage="contact"
+      />
     </div>
   );
 };

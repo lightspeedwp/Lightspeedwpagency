@@ -5,7 +5,7 @@
  * 
  * Usage:
  * ```tsx
- * import { LazyFAQSection, LazyCTASection } from '@/components/patterns/lazy';
+ * import { LazyFAQSection, LazyFunkyCTA } from '@/components/patterns/lazy';
  * ```
  * 
  * @see /reports/2026-03/phase-3-step-4-task-4-2-plan.md
@@ -13,9 +13,6 @@
 
 export { LazyFAQSection } from './LazyFAQSection';
 export type { FAQSectionProps } from './LazyFAQSection';
-
-export { LazyCTASection } from './LazyCTASection';
-export type { CTASectionProps } from './LazyCTASection';
 
 export { LazyNewsletterSignup } from './LazyNewsletterSignup';
 export type { NewsletterSignupProps } from './LazyNewsletterSignup';

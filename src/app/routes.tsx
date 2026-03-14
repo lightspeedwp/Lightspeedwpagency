@@ -16,8 +16,6 @@
  * - content.routes.ts — Work (Portfolio), Insights (Blog)
  * - media.routes.ts — Videos, Podcasts
  * - post-formats.routes.ts — Post format archives/singles
- * - woocommerce.routes.ts — Shop, Cart, Checkout
- * - tour-operator.routes.ts — Tours
  * - testimonials.routes.ts — Testimonials
  * - utility.routes.ts — Contact, FAQ, Pricing, Search, Legal
  * - legacy.routes.ts — Archive, Index, Single, etc.

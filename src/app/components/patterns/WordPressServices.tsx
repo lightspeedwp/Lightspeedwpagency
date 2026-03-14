@@ -21,7 +21,7 @@ export interface WordPressServicesProps {
   services: WordPressServiceItem[];
   columns?: 3;
   spacing?: 'sm' | 'md' | 'lg' | 'xl';
-  backgroundColor?: string;
+  background?: 'default' | 'card' | 'muted' | 'transparent';
 }
 
 export function WordPressServices({
@@ -30,10 +30,10 @@ export function WordPressServices({
   services,
   columns = 3,
   spacing = 'xl',
-  backgroundColor
+  background = 'default'
 }: WordPressServicesProps) {
   return (
-    <Section spacing={spacing} style={{ backgroundColor }}>
+    <Section spacing={spacing} background={background as any}>
       <Container>
         {/* Section Header */}
         {(title || description) && (

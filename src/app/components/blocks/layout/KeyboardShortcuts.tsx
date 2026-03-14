@@ -111,7 +111,7 @@ export function KeyboardShortcuts() {
                 <div className="keyboard-shortcuts__icon-box">
                   <Keyboard 
                     size={24} 
-                    style={{ color: 'var(--primary-foreground)' }} 
+                    className="wp-text-primary-foreground"
                   />
                 </div>
                 <h2 

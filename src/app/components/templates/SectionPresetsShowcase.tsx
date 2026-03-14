@@ -136,7 +136,7 @@ export function SectionPresetsShowcase() {
                       {category.category === 'Testimonials' && (
                         <>
                           <h2>What our users say</h2>
-                          <div className="testimonial-card" style={{ maxWidth: '600px', margin: '0 auto' }}>
+                          <div className="testimonial-card wp-mx-auto wp-max-w-2xl">
                             <p className="testimonial-quote">"This design system has completely transformed how we build websites. It's fast, accessible, and looks amazing."</p>
                             <div className="testimonial-author">Jane Doe</div>
                             <div className="testimonial-role">CTO, TechCorp</div>
@@ -145,7 +145,7 @@ export function SectionPresetsShowcase() {
                       )}
 
                       {category.category === 'Stats' && (
-                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 'var(--spacing-8)', textAlign: 'center' }}>
+                        <div className="wp-grid-3-cols wp-gap-8 wp-text-center">
                           <div>
                             <div className="stat-number">100%</div>
                             <div className="stat-label">Uptime</div>

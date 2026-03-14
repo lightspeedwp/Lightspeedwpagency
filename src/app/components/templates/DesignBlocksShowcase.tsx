@@ -16,13 +16,13 @@ import { Container } from '../common/Container';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { 
-  Stack, 
+  Stack as StackIcon, 
   CreditCard, 
   CaretDown, 
   Minus, 
   Layout,
   GridFour,
-  Columns,
+  Columns as ColumnsIcon,
   ArrowsOutSimple
 } from '@phosphor-icons/react';
 
@@ -37,6 +37,7 @@ import { Button } from '../blocks/design/Buttons';
 import { Group } from '../blocks/design/Group';
 import { Grid } from '../blocks/design/Grid';
 import { Columns, Column } from '../blocks/design/Columns';
+import { Stack } from '../blocks/design/Stack';
 
 
 
@@ -129,7 +130,7 @@ export function DesignBlocksShowcase() {
                     <TabsTrigger value="password">Password</TabsTrigger>
                     <TabsTrigger value="settings">Settings</TabsTrigger>
                   </TabsList>
-                  <div style={{ padding: 'var(--spacing-4)', background: 'var(--card)', borderRadius: 'var(--radius-md)', marginTop: 'var(--spacing-2)' }}>
+                  <div className="wp-p-4 wp-bg-card wp-rounded-md wp-mt-2">
                     <TabsContent value="account">Manage your account details here.</TabsContent>
                     <TabsContent value="password">Change your password securely.</TabsContent>
                     <TabsContent value="settings">Adjust your preferences.</TabsContent>
@@ -187,17 +188,17 @@ export function DesignBlocksShowcase() {
 
               <span className="design-showcase__demo-title">Grid (Auto-fit)</span>
               <Grid minWidth="150px" gap="md" className="wp-mb-8">
-                <div style={{ background: 'var(--card)', padding: 'var(--spacing-4)', border: '1px solid var(--border-soft)' }}>Item 1</div>
-                <div style={{ background: 'var(--card)', padding: 'var(--spacing-4)', border: '1px solid var(--border-soft)' }}>Item 2</div>
-                <div style={{ background: 'var(--card)', padding: 'var(--spacing-4)', border: '1px solid var(--border-soft)' }}>Item 3</div>
-                <div style={{ background: 'var(--card)', padding: 'var(--spacing-4)', border: '1px solid var(--border-soft)' }}>Item 4</div>
+                <div className="wp-bg-card wp-p-4 wp-border wp-border-border-soft">Item 1</div>
+                <div className="wp-bg-card wp-p-4 wp-border wp-border-border-soft">Item 2</div>
+                <div className="wp-bg-card wp-p-4 wp-border wp-border-border-soft">Item 3</div>
+                <div className="wp-bg-card wp-p-4 wp-border wp-border-border-soft">Item 4</div>
               </Grid>
 
               <span className="design-showcase__demo-title">Stack (Vertical Flex)</span>
               <Stack gap="md">
-                <div style={{ background: 'var(--muted)', padding: 'var(--spacing-2)' }}>Stack Item 1</div>
-                <div style={{ background: 'var(--muted)', padding: 'var(--spacing-2)' }}>Stack Item 2</div>
-                <div style={{ background: 'var(--muted)', padding: 'var(--spacing-2)' }}>Stack Item 3</div>
+                <div className="wp-bg-muted wp-p-2">Stack Item 1</div>
+                <div className="wp-bg-muted wp-p-2">Stack Item 2</div>
+                <div className="wp-bg-muted wp-p-2">Stack Item 3</div>
               </Stack>
             </div>
           </section>

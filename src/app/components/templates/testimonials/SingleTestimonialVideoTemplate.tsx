@@ -94,7 +94,7 @@ export function SingleTestimonialVideoTemplate({ slug }: { slug?: string }) {
       {/* Quote + Author */}
       <Section spacing="xl" background="muted">
         <div
-          className="wp-max-w-4xl wp-text-center"
+          className="wp-max-w-4xl wp-text-center wp-mx-auto"
           ref={quoteRef as any}
         >
           <div style={quoteStyle}>
@@ -144,7 +144,7 @@ export function SingleTestimonialVideoTemplate({ slug }: { slug?: string }) {
 
       {/* Metadata */}
       <Section spacing="xl" background="default">
-        <div className="wp-max-w-4xl">
+        <div className="wp-max-w-4xl wp-mx-auto">
           <div className="single-testimonial__meta">
             <div className="single-testimonial__meta-item">
               <div className="single-testimonial__meta-label">Service</div>

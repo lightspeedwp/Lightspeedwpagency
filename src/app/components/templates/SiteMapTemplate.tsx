@@ -32,11 +32,9 @@ import { postTags } from '../../data/blog-posts';
 import { portfolioArchiveItems } from '../../data/archive-items';
 import { videos, videoCategories, videoTags } from '../../data/videos';
 import { podcasts, podcastCategories } from '../../data/podcasts';
-import { tours } from '../../data/tour-operator';
-import { allProducts } from '../../data/woocommerce';
 import { testimonialEntries } from '../../data/testimonials-extended';
 import { tutorials } from '../../data/tutorials';
-import { productCategories, productTags } from '../../data/taxonomies';
+import { sitePages } from '../../data/site-pages';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
 import {
   House, Briefcase, Lightbulb, Brain, Folder, FileText,
@@ -63,7 +61,7 @@ interface SiteMapPage {
 interface SiteMapSection {
   title: string;
   icon: UniversalIconComponent;
-  color: string;
+  colorClass: string;
   pages: SiteMapPage[];
 }
 
@@ -146,7 +144,6 @@ export function SiteMapTemplate() {
     { id: 'solutions', label: 'Solutions Landing', status: 'active' },
     { id: 'wordpress', label: 'WordPress', status: 'active' },
     { id: 'woocommerce', label: 'WooCommerce', status: 'active' },
-    { id: 'tour-operators', label: 'Tour Operators', status: 'active' },
     { id: 'publishers', label: 'Publishers', status: 'active' },
     { id: 'lsx', label: 'LSX Design', status: 'active' },
     { id: 'lsx-theme', label: 'LSX Theme', status: 'active' },
@@ -156,7 +153,6 @@ export function SiteMapTemplate() {
     { id: 'lsx-search', label: 'LSX Search', status: 'active' },
     { id: 'wordpress-redesign', label: 'WordPress Redesign', status: 'active' },
     { id: 'woocommerce-redesign', label: 'WooCommerce Redesign', status: 'active' },
-    { id: 'tour-operator-design', label: 'Tour Operator Design', status: 'active' },
   ];
 
   /* ── 4. AI Integrations ── */
@@ -321,38 +317,6 @@ export function SiteMapTemplate() {
     })()),
   ];
 
-  /* ── 12. WooCommerce (dynamic from data) ── */
-  const wooCommercePages: SiteMapPage[] = [
-    { id: 'product-archive', label: 'Shop (Product Archive)', status: 'active' },
-    ...allProducts.map((product) => ({
-      id: `product-single-${product.slug}`,
-      label: `Product: ${product.name}`,
-      status: 'active' as const,
-    })),
-    ...productCategories.map((cat) => ({
-      id: `product-category-${cat.slug}`,
-      label: `Category: ${cat.name}`,
-      status: 'active' as const,
-    })),
-    ...productTags.map((tag) => ({
-      id: `product-tag-${tag.slug}`,
-      label: `Tag: ${tag.name}`,
-      status: 'active' as const,
-    })),
-    { id: 'cart', label: 'Cart', status: 'active' },
-    { id: 'checkout', label: 'Checkout', status: 'active' },
-  ];
-
-  /* ── 13. Tour Operator (dynamic from data) ── */
-  const tourPages: SiteMapPage[] = [
-    { id: 'tour-operator-archive', label: 'Tours Archive', status: 'active' },
-    ...tours.map((tour) => ({
-      id: `tour-single-${tour.slug}`,
-      label: `Tour: ${tour.title}`,
-      status: 'active' as const,
-    })),
-  ];
-
   /* ── 14. Tutorials (dynamic from data) ── */
   const tutorialPages: SiteMapPage[] = [
     { id: 'tutorials', label: 'Tutorials Index', status: 'active' },
@@ -400,6 +364,26 @@ export function SiteMapTemplate() {
     { id: 'snippet-generator', label: 'Snippet Generator', status: 'active' },
   ];
 
+  /* ── 17. Additional Site Pages ── */
+  const predefinedIds = new Set([
+    'home', 'front-page',
+    ...corePages.map(p => p.id),
+    ...servicePages.map(p => p.id),
+    ...solutionPages.map(p => p.id),
+    ...aiPages.map(p => p.id),
+    ...systemsPages.map(p => p.id),
+    ...legacyPages.map(p => p.id),
+    ...devToolsPages.map(p => p.id),
+  ]);
+
+  const additionalPages: SiteMapPage[] = sitePages
+    .filter(page => !predefinedIds.has(page.slug) && !predefinedIds.has(page.id))
+    .map(page => ({
+      id: page.slug,
+      label: page.title,
+      status: 'active' as const,
+    }));
+
   /* ═══════════════════════════════════════════
    * Testimonial slug-to-path helper
    * ═══════════════════════════════════════════ */
@@ -430,27 +414,26 @@ export function SiteMapTemplate() {
    * ═══════════════════════════════════════════ */
 
   const siteMapSections: SiteMapSection[] = [
-    { title: 'Core Pages', icon: House, color: 'var(--primary)', pages: corePages },
-    { title: 'Services', icon: Briefcase, color: 'var(--category-green)', pages: servicePages },
-    { title: 'Solutions', icon: Lightbulb, color: 'var(--category-amber)', pages: solutionPages },
-    { title: 'AI Integrations', icon: Brain, color: 'var(--category-violet)', pages: aiPages },
-    { title: 'Systems Hub', icon: Settings, color: 'var(--category-cyan)', pages: systemsPages },
-    { title: 'Work', icon: Folder, color: 'var(--category-pink)', pages: portfolioPages },
-    { title: 'Insights & Archives', icon: FileText, color: 'var(--category-blue)', pages: blogArchivePages },
-    { title: 'Insight Posts', icon: ChatCircle, color: 'var(--category-cyan)', pages: singlePostPages },
-    { title: 'Post Formats', icon: Stack, color: 'var(--category-violet)', pages: postFormatPages },
-    { title: 'Videos', icon: VideoCamera, color: 'var(--category-pink)', pages: videoPages },
-    { title: 'Podcasts', icon: Headphones, color: 'var(--category-cyan)', pages: podcastPagesList },
-    { title: 'Testimonials', icon: Star, color: 'var(--category-amber)', pages: testimonialPages },
-    { title: 'WooCommerce', icon: ShoppingCart, color: 'var(--category-green)', pages: wooCommercePages },
-    { title: 'Tour Operator', icon: MapTrifold, color: 'var(--category-blue)', pages: tourPages },
-    { title: 'Tutorials', icon: BookOpen, color: 'var(--category-indigo)', pages: tutorialPages },
-    { title: 'Legacy / Misc', icon: Archive, color: 'var(--muted-foreground)', pages: legacyPages },
-    { title: 'Developer Tools', icon: Wrench, color: 'var(--category-indigo)', pages: devToolsPages },
+    { title: 'Core Pages', icon: House, colorClass: 'wp-text-primary', pages: corePages },
+    { title: 'Services', icon: Briefcase, colorClass: 'wp-text-category-green', pages: servicePages },
+    { title: 'Solutions', icon: Lightbulb, colorClass: 'wp-text-category-amber', pages: solutionPages },
+    { title: 'AI Integrations', icon: Brain, colorClass: 'wp-text-category-violet', pages: aiPages },
+    { title: 'Systems Hub', icon: Settings, colorClass: 'wp-text-category-cyan', pages: systemsPages },
+    { title: 'Work', icon: Folder, colorClass: 'wp-text-category-pink', pages: portfolioPages },
+    { title: 'Insights & Archives', icon: FileText, colorClass: 'wp-text-category-blue', pages: blogArchivePages },
+    { title: 'Insight Posts', icon: ChatCircle, colorClass: 'wp-text-category-cyan', pages: singlePostPages },
+    { title: 'Post Formats', icon: Stack, colorClass: 'wp-text-category-violet', pages: postFormatPages },
+    { title: 'Videos', icon: VideoCamera, colorClass: 'wp-text-category-pink', pages: videoPages },
+    { title: 'Podcasts', icon: Headphones, colorClass: 'wp-text-category-cyan', pages: podcastPagesList },
+    { title: 'Testimonials', icon: Star, colorClass: 'wp-text-category-amber', pages: testimonialPages },
+    { title: 'Tutorials', icon: BookOpen, colorClass: 'wp-text-category-indigo', pages: tutorialPages },
+    { title: 'Additional Pages', icon: FileText, colorClass: 'wp-text-category-blue', pages: additionalPages },
+    { title: 'Legacy / Misc', icon: Archive, colorClass: 'wp-text-muted-foreground', pages: legacyPages },
+    { title: 'Developer Tools', icon: Wrench, colorClass: 'wp-text-category-indigo', pages: devToolsPages },
     {
       title: 'Error Pages',
       icon: AlertCircle,
-      color: 'var(--category-red)',
+      colorClass: 'wp-text-category-red',
       pages: [{ id: '404', label: '404 Not Found', status: 'active' }],
     },
   ];
@@ -504,7 +487,6 @@ export function SiteMapTemplate() {
                 { value: blogPosts.length, label: 'Blog Posts' },
                 { value: portfolioArchiveItems.length, label: 'Projects' },
                 { value: testimonialEntries.length, label: 'Testimonials' },
-                { value: allProducts.length, label: 'Products' },
               ].map((stat, i) => (
                 <div key={i} className="site-map__hero-stat">
                   <span className="site-map__hero-stat-value">{stat.value}</span>
@@ -550,7 +532,7 @@ export function SiteMapTemplate() {
                 <div key={sectionIndex} className="site-map__card" id={anchorId}>
                   {/* Card Header */}
                   <div className="site-map__card-header">
-                    <div className="site-map__card-icon" style={{ color: section.color }}>
+                    <div className={`site-map__card-icon ${section.colorClass}`}>
                       <Icon size={20} />
                     </div>
 
@@ -598,11 +580,12 @@ export function SiteMapTemplate() {
 
             <StatsGrid
               stats={[
-                { label: 'Total Pages', value: totalRoutes, color: 'var(--category-violet)' },
-                { label: 'Active', value: activeRoutes, color: 'var(--category-green)' },
-                { label: 'Sections', value: sectionCount, color: 'var(--category-amber)' },
-                { label: 'Content Types', value: 8, color: 'var(--category-blue)' },
+                { label: 'Total Pages', number: totalRoutes.toString() },
+                { label: 'Active', number: activeRoutes.toString() },
+                { label: 'Sections', number: sectionCount.toString() },
+                { label: 'Content Types', number: '8' },
               ]}
+              columns={4}
             />
           </div>
         </Container>

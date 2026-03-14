@@ -65,7 +65,7 @@ export function VideoTestimonial({
     '7xl': 'wp-max-w-7xl' // assuming this utility exists, otherwise standard naming
   }[maxWidth] || 'wp-max-w-6xl';
 
-  const gridClass = `grid-base grid-cols-${columns}`;
+  const gridClass = `wp-grid-${columns}-cols`;
 
   return (
     <div className="video-testimonial">
@@ -88,7 +88,7 @@ export function VideoTestimonial({
       )}
 
       {/* Video Grid */}
-      <div className={maxWidthClass} style={{ margin: '0 auto' }}>
+      <div className={`${maxWidthClass} wp-mx-auto`}>
         <div className={gridClass}>
           {videos.map((video, index) => (
             <div

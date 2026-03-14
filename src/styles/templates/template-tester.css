@@ -5,6 +5,12 @@
  * Uses CSS variables for all styling.
  */
 
+.template-tester__hero {
+  max-width: var(--wp--style--global--content-size);
+  margin: 0 auto;
+  text-align: center;
+}
+
 .template-tester__hero-title {
   font-family: var(--font-primary);
   font-size: var(--text-h1);

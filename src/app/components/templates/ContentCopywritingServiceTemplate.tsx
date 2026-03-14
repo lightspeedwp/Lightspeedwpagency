@@ -4,11 +4,15 @@
  * Parent: /services/content
  */
 
-import { PencilSimple, TextT, Cursor, Envelope, Megaphone, BookOpen } from '@phosphor-icons/react';
+import { PencilSimple, TextT, Cursor, Envelope, Megaphone, BookOpen, Package } from '@phosphor-icons/react';
 import { Link } from 'react-router';
-import { FeatureList } from '../patterns/FeatureList';
+import { ServiceCapabilitiesGrid } from '../patterns/ServiceCapabilitiesGrid';
+import { AgencyStats } from '../patterns/AgencyStats';
 import { CheckList } from '../patterns/CheckList';
 import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
+import { Container } from '../common/Container';
+import { ScrollReveal } from '../../hooks/useScrollReveal';
+import { FunkyCTA } from '../patterns/FunkyCTA';
 
 export const ContentCopywritingServiceTemplate = () => {
   const benefits = [
@@ -31,98 +35,131 @@ export const ContentCopywritingServiceTemplate = () => {
   ];
 
   const results = [
-    { metric: '45%', label: 'Higher Conversions' },
-    { metric: '2.5x', label: 'Better Click-Through' },
-    { metric: '60%', label: 'Reduced Bounce Rate' },
-    { metric: '1-3 wks', label: 'Turnaround Time' },
+    { id: 'res-1', value: '45%', label: 'Higher Conversions' },
+    { id: 'res-2', value: '2.5x', label: 'Better Click-Through' },
+    { id: 'res-3', value: '60%', label: 'Reduced Bounce Rate' },
+    { id: 'res-4', value: '1-3 wks', label: 'Turnaround Time' },
   ];
 
   return (
-    <div className="sub-service-compact" data-service="content-copywriting">
-      <section className="sub-service-compact__hero">
-        <div className="sub-service-compact__hero-content">
-          <div className="sub-service-compact__breadcrumb">
-            <Link to="/services" className="sub-service-compact__breadcrumb-link">Services</Link>
-            <span className="sub-service-compact__breadcrumb-separator">/</span>
-            <Link to="/services/content" className="sub-service-compact__breadcrumb-link">Content</Link>
-            <span className="sub-service-compact__breadcrumb-separator">/</span>
-            <span className="sub-service-compact__breadcrumb-current">Copywriting & UX Writing</span>
-          </div>
-
-          <h1 className="sub-service-compact__hero-title">Copywriting & UX Writing</h1>
-
-          <p className="sub-service-compact__hero-description">
-            Words that work harder. From website headlines to interface microcopy,
-            we craft conversion-focused copy that guides users and drives action.
-          </p>
-
-          <div className="sub-service-compact__hero-cta">
-            <Link to="/contact" className="sub-service-compact__cta-button sub-service-compact__cta-button--primary">
-              Get Copy Audit
-            </Link>
-            <Link to="/services/content" className="sub-service-compact__cta-button sub-service-compact__cta-button--secondary">
-              All Content Services
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <section className="sub-service-compact__benefits">
-        <div className="sub-service-compact__section-header">
-          <h2 className="sub-service-compact__section-title">What We Write</h2>
-          <p className="sub-service-compact__section-description">
-            Conversion-focused copywriting across every touchpoint
-          </p>
-        </div>
-        <FeatureList 
-          items={benefits}
-          columns={3}
-          variant="glass"
-          iconStyle="rounded"
-          className="sub-service-compact__benefits-grid"
-        />
-      </section>
-
-      <section className="sub-service-compact__deliverables">
-        <div className="sub-service-compact__section-header">
-          <h2 className="sub-service-compact__section-title">What You Get</h2>
-          <p className="sub-service-compact__section-description">Complete copywriting deliverables</p>
-        </div>
-        <CheckList 
-          items={deliverables}
-          variant="default"
-          className="sub-service-compact__deliverables-grid"
-        />
-      </section>
-
-      <section className="sub-service-compact__results">
-        <div className="sub-service-compact__section-header">
-          <h2 className="sub-service-compact__section-title">Expected Results</h2>
-          <p className="sub-service-compact__section-description">Measurable improvements from better copy</p>
-        </div>
-        <div className="sub-service-compact__results-grid">
-          {results.map((result, index) => (
-            <div key={index} className="sub-service-compact__result-card">
-              <div className="sub-service-compact__result-metric">{result.metric}</div>
-              <div className="sub-service-compact__result-label">{result.label}</div>
+    <div className="wp-w-full wp-flex wp-flex-col" data-service="content-copywriting">
+      {/* HERO SECTION */}
+      <section 
+        style={{
+          position: 'relative',
+          padding: 'var(--spacing-32) 0',
+          backgroundColor: 'var(--background)',
+          overflow: 'hidden',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          minHeight: '60vh',
+          textAlign: 'center'
+        }}
+      >
+        <div style={{ position: 'absolute', top: 0, left: '50%', transform: 'translate(-50%, -50%)', width: '100vw', height: '100vh', background: 'radial-gradient(ellipse at bottom, rgba(var(--secondary-rgb), 0.15) 0%, transparent 70%)', zIndex: 0, pointerEvents: 'none' }} />
+        
+        <div style={{ position: 'relative', zIndex: 1, maxWidth: '800px', padding: '0 var(--spacing-8)' }}>
+          <ScrollReveal animation="fade-down">
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 'var(--spacing-2)', fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-sm)', color: 'var(--muted-foreground)', marginBottom: 'var(--spacing-6)' }}>
+              <Link to="/services" style={{ color: 'inherit', textDecoration: 'none', transition: 'color var(--transition-base)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--muted-foreground)'}>Services</Link>
+              <span style={{ color: 'var(--border)' }}>/</span>
+              <Link to="/services/content" style={{ color: 'inherit', textDecoration: 'none', transition: 'color var(--transition-base)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--muted-foreground)'}>Content</Link>
+              <span style={{ color: 'var(--border)' }}>/</span>
+              <span style={{ color: 'var(--secondary)', fontWeight: 'var(--font-weight-medium)' }}>Copywriting & UX Writing</span>
             </div>
-          ))}
+            
+            <h1 style={{ margin: '0 0 var(--spacing-6) 0', fontFamily: 'var(--font-primary)', fontSize: 'var(--text-h1)', color: 'var(--foreground)', lineHeight: '1.1' }}>
+              Copywriting & <br />
+              <span style={{ color: 'transparent', backgroundImage: 'linear-gradient(90deg, var(--secondary), var(--primary))', WebkitBackgroundClip: 'text', backgroundClip: 'text' }}>UX Writing</span>
+            </h1>
+            
+            <p style={{ margin: '0 auto var(--spacing-10) auto', fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-xl)', color: 'var(--muted-foreground)', lineHeight: '1.6', maxWidth: '600px' }}>
+              Words that work harder. From website headlines to interface microcopy,
+              we craft conversion-focused copy that guides users and drives action.
+            </p>
+            
+            <div className="wp-flex wp-justify-center wp-gap-4">
+              <Link to="/contact" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: 'var(--spacing-4) var(--spacing-8)', backgroundColor: 'var(--secondary)', color: 'var(--secondary-foreground)', borderRadius: 'var(--radius)', fontFamily: 'var(--font-primary)', fontSize: 'var(--text-base)', fontWeight: 'var(--font-weight-semibold)', textDecoration: 'none', boxShadow: '0 4px 15px rgba(var(--secondary-rgb), 0.3)' }}>
+                Get Copy Audit
+              </Link>
+              <Link to="/services/content" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: 'var(--spacing-4) var(--spacing-8)', backgroundColor: 'transparent', border: '1px solid var(--border)', color: 'var(--foreground)', borderRadius: 'var(--radius)', fontFamily: 'var(--font-primary)', fontSize: 'var(--text-base)', fontWeight: 'var(--font-weight-medium)', textDecoration: 'none' }}>
+                All Content Services
+              </Link>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
-      {/* Client Testimonials */}
+      {/* BENEFITS */}
+      <section style={{ padding: 'var(--spacing-24) 0', backgroundColor: 'var(--muted)' }}>
+        <Container>
+          <ScrollReveal animation="fade-up">
+            <ServiceCapabilitiesGrid
+              heading="What We Write"
+              subheading="Conversion-focused copywriting across every touchpoint"
+              capabilities={benefits.map((item, i) => ({
+                id: `cw-ben-${i}`,
+                title: item.title,
+                description: item.description,
+                icon: item.icon as any
+              }))}
+              columns={3}
+            />
+          </ScrollReveal>
+        </Container>
+      </section>
+
+      {/* DELIVERABLES */}
+      <section style={{ padding: 'var(--spacing-24) 0', backgroundColor: 'var(--background)' }}>
+        <Container>
+          <div className="wp-grid-2-cols wp-items-center wp-gap-16">
+            <ScrollReveal animation="fade-up">
+              <div>
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: 'var(--spacing-2)', padding: 'var(--spacing-2) var(--spacing-4)', borderRadius: 'var(--radius-full)', backgroundColor: 'var(--card)', border: '1px solid var(--border)', color: 'var(--secondary)', fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-sm)', fontWeight: 'var(--font-weight-medium)', marginBottom: 'var(--spacing-4)' }}>
+                  <Package size={16} weight="duotone" />
+                  What You Get
+                </div>
+                <h2 style={{ margin: '0 0 var(--spacing-6) 0', fontFamily: 'var(--font-primary)', fontSize: 'var(--text-h2)', color: 'var(--foreground)' }}>Complete Copywriting Deliverables</h2>
+                <p style={{ margin: '0 0 var(--spacing-8) 0', fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-lg)', color: 'var(--muted-foreground)' }}>Polished, strategic copy ready for implementation.</p>
+              </div>
+            </ScrollReveal>
+            <ScrollReveal animation="fade-up" delay={100}>
+              <div style={{ backgroundColor: 'var(--card)', border: '1px solid var(--border)', borderRadius: 'var(--radius-xl)', padding: 'var(--spacing-8)' }}>
+                <CheckList items={deliverables} columns={1} />
+              </div>
+            </ScrollReveal>
+          </div>
+        </Container>
+      </section>
+
+      {/* RESULTS */}
+      <section style={{ padding: 'var(--spacing-24) 0', backgroundColor: 'var(--muted)' }}>
+        <Container>
+          <ScrollReveal animation="fade-up">
+            <AgencyStats
+              heading="Expected Results"
+              subheading="Measurable improvements from better copy"
+              stats={results}
+              columns={4}
+            />
+          </ScrollReveal>
+        </Container>
+      </section>
+
+      {/* TESTIMONIALS */}
       <ServiceTestimonial serviceSlug="content-copywriting" />
 
-      <section className="sub-service-compact__cta">
-        <div className="sub-service-compact__cta-content">
-          <h2 className="sub-service-compact__cta-title">Ready for Copy That Converts?</h2>
-          <p className="sub-service-compact__cta-description">
-            Get a free copy audit and discover how strategic words can transform your conversion rates.
-          </p>
-          <Link to="/contact" className="sub-service-compact__cta-button sub-service-compact__cta-button--primary">
-            Request Copy Audit
-          </Link>
-        </div>
+      {/* CTA */}
+      <section>
+        <FunkyCTA
+          title="Ready for Copy That Converts?"
+          description="Get a free copy audit and discover how strategic words can transform your conversion rates."
+          buttonText="Request Copy Audit"
+          buttonPage="contact"
+          benefits={['Actionable feedback', 'Tone of voice analysis', 'Conversion rate recommendations', 'No obligation']}
+        />
       </section>
     </div>
   );

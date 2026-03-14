@@ -9,7 +9,6 @@
  * Hero → Services Grid → Why Choose Us → Process → Industries → CTA → FAQs
  */
 
-import '../../../styles/templates/services-page.css';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { Buttons, Button } from '../blocks/design/Buttons';
@@ -132,15 +131,23 @@ export function ServicesTemplate() {
       </ScrollReveal>
 
       {/* Process Section */}
-      <Section spacing="xl" className="services-page__process-section">
+      <Section spacing="xl">
         <Container>
           <ScrollReveal animation="fade-up">
-            <div className="services-page__section-header">
-              <h2 className="services-page__section-title">
+            <div className="wp-flex wp-flex-col wp-items-center wp-justify-center wp-text-center wp-mb-12">
+              <h2 className="wp-m-0 wp-mb-4" style={{ 
+                fontFamily: 'var(--font-primary)', 
+                fontSize: 'var(--text-h2)', 
+                color: 'var(--foreground)'
+              }}>
                 How We Work
               </h2>
 
-              <p className="services-page__section-description">
+              <p className="wp-m-0 wp-max-w-2xl" style={{ 
+                fontFamily: 'var(--font-secondary)', 
+                fontSize: 'var(--text-lg)', 
+                color: 'var(--muted-foreground)'
+              }}>
                 Our streamlined process from start to finish
               </p>
             </div>
@@ -153,28 +160,48 @@ export function ServicesTemplate() {
       </Section>
 
       {/* Industries Section */}
-      <Section spacing="xl" className="services-page__industries-section">
+      <Section spacing="xl" backgroundColor="var(--muted)">
         <Container>
           <ScrollReveal animation="fade-up">
-            <div className="services-page__section-header">
-              <h2 className="services-page__section-title">
+            <div className="wp-flex wp-flex-col wp-items-center wp-justify-center wp-text-center wp-mb-12">
+              <h2 className="wp-m-0 wp-mb-4" style={{ 
+                fontFamily: 'var(--font-primary)', 
+                fontSize: 'var(--text-h2)', 
+                color: 'var(--foreground)'
+              }}>
                 Industries We Serve
               </h2>
 
-              <p className="services-page__section-description">
+              <p className="wp-m-0 wp-max-w-2xl" style={{ 
+                fontFamily: 'var(--font-secondary)', 
+                fontSize: 'var(--text-lg)', 
+                color: 'var(--muted-foreground)'
+              }}>
                 Experience across diverse sectors
               </p>
             </div>
           </ScrollReveal>
 
-          <div className="services-page__industries-grid">
+          <div className="wp-grid-3-cols wp-gap-6">
             {industries.map((industry, index) => (
               <ScrollReveal key={index} animation="fade-up" delay={index * 50}>
                 <div
-                  className="services-page__industry-card"
+                  className="wp-flex wp-items-center wp-gap-3 wp-p-6"
+                  style={{
+                    backgroundColor: 'var(--card)',
+                    borderRadius: 'var(--radius)',
+                    border: '1px solid var(--border)',
+                    boxShadow: 'var(--shadow-sm)',
+                    transition: 'transform var(--transition-base), box-shadow var(--transition-base)'
+                  }}
                 >
-                  <CheckCircle size={20} className="services-page__industry-icon" />
-                  <span className="services-page__industry-name">
+                  <CheckCircle size={24} weight="duotone" color="var(--primary)" className="shrink-0" />
+                  <span style={{ 
+                    fontFamily: 'var(--font-primary)', 
+                    fontSize: 'var(--text-base)', 
+                    fontWeight: 'var(--font-weight-medium)',
+                    color: 'var(--card-foreground)'
+                  }}>
                     {industry}
                   </span>
                 </div>
@@ -200,16 +227,24 @@ export function ServicesTemplate() {
       />
       
       {/* FAQ Section */}
-      <Section spacing="xl" className="services-page__faq-section">
+      <Section spacing="xl">
         <Container>
           <div className="wp-max-w-4xl wp-mx-auto">
             <ScrollReveal animation="fade-up">
-              <div className="services-page__faq-header">
-                <h2 className="services-page__section-title">
+              <div className="wp-flex wp-flex-col wp-items-center wp-justify-center wp-text-center wp-mb-12">
+                <h2 className="wp-m-0 wp-mb-4" style={{ 
+                  fontFamily: 'var(--font-primary)', 
+                  fontSize: 'var(--text-h2)', 
+                  color: 'var(--foreground)'
+                }}>
                   Frequently Asked Questions
                 </h2>
 
-                <p className="services-page__section-description">
+                <p className="wp-m-0 wp-max-w-2xl" style={{ 
+                  fontFamily: 'var(--font-secondary)', 
+                  fontSize: 'var(--text-lg)', 
+                  color: 'var(--muted-foreground)'
+                }}>
                   Common questions about our services
                 </p>
               </div>

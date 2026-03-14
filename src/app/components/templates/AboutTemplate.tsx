@@ -194,7 +194,7 @@ export function AboutTemplate() {
       {/* ============================================
           4. VALUES (Icon Glow Cards)
           ============================================ */}
-      <section className="about-overview__cards-section" style={{ backgroundColor: 'var(--background)' }}>
+      <section className="about-overview__cards-section wp-bg-background">
         <Container>
           <ScrollReveal animation="fade-up">
             <div className="about-overview__story-header">

@@ -80,8 +80,7 @@ export function TagArchiveTemplate({
           {relatedTags.length > 0 && (
             <div ref={tagsRef} className="related-tags">
               <Paragraph
-                className="related-tags__label"
-                style={{ marginBottom: 0, marginRight: 'var(--spacing-2)' }}
+                className="related-tags__label wp-mb-0 wp-mr-2"
               >
                 Related tags:
               </Paragraph>

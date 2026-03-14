@@ -62,7 +62,7 @@ export function FAQTemplate() {
         <Container>
           <div className="faq-page__hero-content">
             <div className="faq-page__hero-badge">
-              <HelpCircle size={14} style={{ display: 'inline', marginRight: 'var(--spacing-2)' }} />
+              <HelpCircle size={14} className="wp-inline wp-mr-2" />
               {faqPageHero.badge.text}
             </div>
 

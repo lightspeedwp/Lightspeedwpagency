@@ -67,7 +67,7 @@ const templateCategories = [
     title: 'WordPress Page Archetypes',
     description: 'Core template patterns that every WordPress site uses',
     icon: Code,
-    color: 'var(--primary)',
+    bgClass: 'wp-bg-primary',
     templates: [
       {
         id: 'content-hub',
@@ -135,7 +135,7 @@ const templateCategories = [
     title: 'Homepage',
     description: 'Front page template (front-page.html)',
     icon: House,
-    color: 'var(--primary)',
+    bgClass: 'wp-bg-primary',
     pages: [
       { label: 'Front Page', page: 'front-page', slug: '/', template: 'front-page.html' },
     ]
@@ -145,7 +145,7 @@ const templateCategories = [
     title: 'Services Pages',
     description: 'Service offerings and capabilities',
     icon: Briefcase,
-    color: 'var(--accent)',
+    bgClass: 'wp-bg-accent',
     pages: [
       { label: 'Services Overview', page: 'services', slug: '/services', template: 'page-services.html' },
       { label: 'Development Service', page: 'service-development', slug: '/services/development', template: 'page-service.html' },
@@ -161,7 +161,7 @@ const templateCategories = [
     title: 'Solutions Pages',
     description: 'Solution-based offerings',
     icon: ShoppingCart,
-    color: 'var(--secondary)',
+    bgClass: 'wp-bg-secondary',
     pages: [
       { label: 'Solutions Overview', page: 'solutions', slug: '/solutions', template: 'page-solutions.html' },
       { label: 'WordPress Solutions', page: 'solution-wordpress', slug: '/solutions/wordpress', template: 'page-solution.html' },
@@ -174,7 +174,7 @@ const templateCategories = [
     title: 'Conversion Pages',
     description: 'High-value conversion and decision pages',
     icon: TrendUp,
-    color: 'var(--primary)',
+    bgClass: 'wp-bg-primary',
     pages: [
       { label: 'Pricing', page: 'pricing', slug: '/pricing', template: 'page-pricing.html' },
       { label: 'Why Choose Us', page: 'why-choose-us', slug: '/why-choose-us', template: 'page.html' },
@@ -188,7 +188,7 @@ const templateCategories = [
     title: 'About Pages',
     description: 'Company information and team',
     icon: Info,
-    color: 'var(--accent)',
+    bgClass: 'wp-bg-accent',
     pages: [
       { label: 'About Us', page: 'about', slug: '/about', template: 'page-about.html' },
       { label: 'Our Team', page: 'team', slug: '/about/team', template: 'page-team.html' },
@@ -202,7 +202,7 @@ const templateCategories = [
     title: 'Hosting Pages',
     description: 'Hosting plans and features',
     icon: HardDrive,
-    color: 'var(--secondary)',
+    bgClass: 'wp-bg-secondary',
     pages: [
       { label: 'Hosting Overview', page: 'hosting', slug: '/hosting', template: 'page-hosting.html' },
     ]
@@ -212,7 +212,7 @@ const templateCategories = [
     title: 'Post Formats & Content Types',
     description: 'WordPress post format archives, single views, and custom content types',
     icon: Stack,
-    color: 'var(--accent)',
+    bgClass: 'wp-bg-accent',
     pages: [
       // Videos
       { label: 'Video Archive', page: 'videos', slug: '/videos', template: 'archive-video.html' },
@@ -247,36 +247,11 @@ const templateCategories = [
     ]
   },
   {
-    id: 'woocommerce',
-    title: 'WooCommerce Store',
-    description: 'E-commerce templates using mock product data',
-    icon: ShoppingCart,
-    color: 'var(--primary)',
-    pages: [
-      { label: 'Product Archive', page: 'product-archive', slug: '/shop', template: 'archive-product.html' },
-      { label: 'Simple Product', page: 'product-single-lsx-theme-pro', slug: '/product/lsx-theme-pro', template: 'single-product.html' },
-      { label: 'Subscription Product', page: 'product-single-agency-maintenance', slug: '/product/agency-maintenance', template: 'single-product.html' },
-      { label: 'Bundle Product', page: 'product-single-developer-kit', slug: '/product/developer-kit', template: 'single-product.html' },
-      { label: 'Composite Product', page: 'product-single-build-your-agency-bundle', slug: '/product/build-agency-bundle', template: 'single-product.html' },
-    ]
-  },
-  {
-    id: 'tour-operator',
-    title: 'Tour Operator',
-    description: 'Travel and booking templates',
-    icon: MapPin,
-    color: 'var(--secondary)',
-    pages: [
-      { label: 'Tour Operator Archive', page: 'tour-operator-archive', slug: '/tours', template: 'archive-tour.html' },
-      { label: 'Single Tour', page: 'tour-single', slug: '/tours/garden-route-adventure', template: 'single-tour.html' },
-    ]
-  },
-  {
     id: 'system',
     title: 'System Pages',
     description: 'Design system and component testing',
     icon: Code,
-    color: 'var(--muted-foreground)',
+    bgClass: 'wp-bg-muted-foreground',
     pages: [
       { label: 'Style Guide', page: 'style-guide', slug: '/style-guide', template: 'page.html' },
       { label: 'Feature Showcase', page: 'feature-showcase', slug: '/feature-showcase', template: 'page.html' },
@@ -289,7 +264,7 @@ const templateCategories = [
     title: 'Developer Tools',
     description: 'Design system testing and documentation tools (15 tools)',
     icon: Code,
-    color: 'var(--accent)',
+    bgClass: 'wp-bg-accent',
     pages: [
       { label: 'Dev Tools Hub', page: 'dev-tools', slug: '/dev-tools', template: 'page.html' },
       { label: 'Template Tester', page: 'dev-tools/template-tester', slug: '/dev-tools/template-tester', template: 'page.html' },
@@ -375,7 +350,7 @@ export function TemplateTester() {
         {/* Hero Header */}
         <Section background="default" spacing="lg">
           <Container>
-            <div className="wp-max-w-4xl wp-text-center wp-mx-auto">
+            <div className="template-tester__hero">
               <h1 className="template-tester__hero-title">
                 WordPress Template Tester
               </h1>
@@ -423,7 +398,7 @@ export function TemplateTester() {
             <div className="template-tester__toolbar">
               {/* Sort Controls */}
               <div className="template-tester__sort-controls">
-                <Funnel size={20} style={{ color: 'var(--muted-foreground)' }} />
+                <Funnel size={20} className="wp-text-muted-foreground" />
                 <span className="template-tester__sort-label">
                   Sort by:
                 </span>
@@ -465,8 +440,7 @@ export function TemplateTester() {
                 {/* Category Header */}
                 <div className="template-tester__category-header">
                   <div
-                    className="template-tester__category-icon"
-                    style={{ backgroundColor: category.color }}
+                    className={`template-tester__category-icon ${category.bgClass}`}
                   >
                     <category.icon size={24} />
                   </div>
@@ -520,7 +494,7 @@ export function TemplateTester() {
                                 <span className="template-tester__page-label">
                                   {page.label}
                                 </span>
-                                <ArrowRight size={16} style={{ color: 'var(--primary)' }} />
+                                <ArrowRight size={16} className="wp-text-primary" />
                               </div>
                               <span className="template-tester__page-slug">
                                 {page.slug}
@@ -547,7 +521,7 @@ export function TemplateTester() {
                           <span className="template-tester__page-label">
                             {page.label}
                           </span>
-                          <ArrowRight size={16} style={{ color: 'var(--primary)' }} />
+                          <ArrowRight size={16} className="wp-text-primary" />
                         </div>
                         <span className="template-tester__page-slug">
                           {page.slug}
@@ -570,8 +544,7 @@ export function TemplateTester() {
                 {/* Category Header */}
                 <div className="template-tester__category-header">
                   <div
-                    className="template-tester__category-icon"
-                    style={{ backgroundColor: 'var(--primary)' }}
+                    className="template-tester__category-icon wp-bg-primary"
                   >
                     <Code size={24} />
                   </div>
@@ -597,7 +570,7 @@ export function TemplateTester() {
                         <span className="template-tester__page-label">
                           {page.label}
                         </span>
-                        <ArrowRight size={16} style={{ color: 'var(--primary)' }} />
+                        <ArrowRight size={16} className="wp-text-primary" />
                       </div>
                       <span className="template-tester__page-slug">
                         {page.slug}

@@ -119,65 +119,27 @@ export function MultiStepForm({
   };
 
   return (
-    <div
-      style={{
-        width: '100%',
-        maxWidth: 'var(--wp--style--global--narrow-size)',
-        margin: '0 auto',
-        fontFamily: 'var(--font-secondary)',
-      }}
-    >
+    <div className="wp-w-full wp-mx-auto wp-font-secondary wp-max-w-4xl">
       {/* Progress Bar */}
       {showProgress && (
-        <div
-          style={{
-            marginBottom: 'var(--spacing-8)',
-          }}
-        >
+        <div className="wp-mb-8">
           {/* Progress Track */}
-          <div
-            style={{
-              width: '100%',
-              height: 'var(--spacing-2)',
-              backgroundColor: 'var(--muted)',
-              borderRadius: 'var(--radius-full)',
-              overflow: 'hidden',
-            }}
-          >
+          <div className="wp-w-full wp-h-2 wp-bg-muted wp-rounded-full wp-overflow-hidden">
             <div
-              style={{
-                width: `${progress}%`,
-                height: '100%',
-                backgroundColor: 'var(--primary)',
-                transition: 'width 0.3s ease',
-              }}
+              className="wp-h-full wp-bg-primary wp-transition-all wp-duration-300 wp-ease-in-out"
+              style={{ width: `${progress}%` }}
             />
           </div>
 
           {/* Progress Text */}
-          <div
-            style={{
-              marginTop: 'var(--spacing-2)',
-              fontSize: 'var(--text-small)',
-              color: 'var(--muted-foreground)',
-              textAlign: 'center',
-            }}
-          >
+          <div className="wp-mt-2 wp-text-small wp-text-muted-foreground wp-text-center">
             Step {currentStep + 1} of {steps.length}
           </div>
         </div>
       )}
 
       {/* Step Indicators */}
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          marginBottom: 'var(--spacing-12)',
-          gap: 'var(--spacing-4)',
-          flexWrap: 'wrap',
-        }}
-      >
+      <div className="wp-flex wp-justify-between wp-mb-12 wp-gap-4 wp-flex-wrap">
         {steps.map((step, index) => {
           const isActive = index === currentStep;
           const isCompleted = index < currentStep;
@@ -187,37 +149,19 @@ export function MultiStepForm({
             <div
               key={step.id}
               onClick={() => isClickable && handleStepClick(index)}
-              style={{
-                flex: 1,
-                minWidth: '120px',
-                cursor: isClickable ? 'pointer' : 'default',
-                opacity: isActive || isCompleted ? 1 : 0.5,
-              }}
+              className={`wp-flex-1 wp-min-w-[120px] ${isClickable ? 'wp-cursor-pointer' : 'wp-cursor-default'} ${isActive || isCompleted ? 'wp-opacity-100' : 'wp-opacity-50'}`}
             >
               {/* Step Number/Icon */}
-              <div
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 'var(--spacing-2)',
-                  marginBottom: 'var(--spacing-2)',
-                }}
-              >
+              <div className="wp-flex wp-items-center wp-gap-2 wp-mb-2">
                 {showStepNumbers && (
                   <div
-                    style={{
-                      width: 'var(--spacing-8)',
-                      height: 'var(--spacing-8)',
-                      borderRadius: '50%',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      backgroundColor: isActive ? 'var(--primary)' : isCompleted ? 'var(--accent)' : 'var(--muted)',
-                      color: isActive ? 'var(--primary-foreground)' : isCompleted ? 'var(--accent-foreground)' : 'var(--muted-foreground)',
-                      fontFamily: 'var(--font-primary)',
-                      fontSize: 'var(--text-base)',
-                      fontWeight: 'var(--font-weight-medium)',
-                    }}
+                    className={`wp-w-8 wp-h-8 wp-rounded-full wp-flex wp-items-center wp-justify-center wp-font-primary wp-text-base wp-font-medium ${
+                      isActive 
+                        ? 'wp-bg-primary wp-text-primary-foreground' 
+                        : isCompleted 
+                          ? 'wp-bg-accent wp-text-accent-foreground' 
+                          : 'wp-bg-muted wp-text-muted-foreground'
+                    }`}
                   >
                     {isCompleted ? '✓' : index + 1}
                   </div>
@@ -225,12 +169,9 @@ export function MultiStepForm({
 
                 {/* Step Title */}
                 <div
-                  style={{
-                    fontFamily: 'var(--font-secondary)',
-                    fontSize: 'var(--text-base)',
-                    fontWeight: 'var(--font-weight-medium)',
-                    color: isActive ? 'var(--foreground)' : 'var(--muted-foreground)',
-                  }}
+                  className={`wp-font-secondary wp-text-base wp-font-medium ${
+                    isActive ? 'wp-text-foreground' : 'wp-text-muted-foreground'
+                  }`}
                 >
                   {step.title}
                 </div>
@@ -238,13 +179,7 @@ export function MultiStepForm({
 
               {/* Step Description */}
               {step.description && (
-                <div
-                  style={{
-                    fontSize: 'var(--text-small)',
-                    color: 'var(--muted-foreground)',
-                    marginLeft: showStepNumbers ? '2.5rem' : '0',
-                  }}
-                >
+                <div className={`wp-text-small wp-text-muted-foreground ${showStepNumbers ? 'wp-ml-10' : ''}`}>
                   {step.description}
                 </div>
               )}
@@ -254,52 +189,22 @@ export function MultiStepForm({
       </div>
 
       {/* Current Step Content */}
-      <div
-        style={{
-          backgroundColor: 'var(--card)',
-          border: '1px solid var(--border)',
-          borderRadius: 'var(--radius-lg)',
-          padding: 'var(--spacing-8)',
-          marginBottom: 'var(--spacing-8)',
-        }}
-      >
+      <div className="wp-bg-card wp-border wp-border-border wp-rounded-lg wp-p-8 wp-mb-8">
         {/* Step Title */}
-        <h2
-          style={{
-            fontFamily: 'var(--font-primary)',
-            fontSize: 'var(--text-h3)',
-            fontWeight: 'var(--font-weight-medium)',
-            marginBottom: 'var(--spacing-4)',
-            color: 'var(--foreground)',
-          }}
-        >
+        <h2 className="wp-font-primary wp-text-h3 wp-font-medium wp-mb-4 wp-text-foreground">
           {steps[currentStep].title}
         </h2>
 
         {/* Step Description */}
         {steps[currentStep].description && (
-          <p
-            style={{
-              fontSize: 'var(--text-base)',
-              color: 'var(--muted-foreground)',
-              marginBottom: 'var(--spacing-8)',
-            }}
-          >
+          <p className="wp-text-base wp-text-muted-foreground wp-mb-8">
             {steps[currentStep].description}
           </p>
         )}
 
         {/* Validation Errors */}
         {validationErrors.length > 0 && (
-          <div
-            style={{
-              padding: 'var(--spacing-4)',
-              backgroundColor: 'var(--destructive)',
-              color: 'var(--destructive-foreground)',
-              borderRadius: 'var(--radius)',
-              marginBottom: 'var(--spacing-6)',
-            }}
-          >
+          <div className="wp-p-4 wp-bg-destructive wp-text-destructive-foreground wp-rounded wp-mb-6">
             {validationErrors.map((error, index) => (
               <div key={index}>{error}</div>
             ))}
@@ -311,54 +216,23 @@ export function MultiStepForm({
       </div>
 
       {/* Navigation Buttons */}
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          gap: 'var(--spacing-4)',
-        }}
-      >
+      <div className="wp-flex wp-justify-between wp-gap-4">
         {/* Previous Button */}
         <button
           onClick={handlePrevious}
           disabled={isFirstStep}
-          style={{
-            padding: 'var(--spacing-3) var(--spacing-6)',
-            fontFamily: 'var(--font-primary)',
-            fontSize: 'var(--text-base)',
-            fontWeight: 'var(--font-weight-medium)',
-            backgroundColor: 'var(--background)',
-            color: 'var(--foreground)',
-            border: '1px solid var(--border)',
-            borderRadius: 'var(--radius)',
-            cursor: isFirstStep ? 'not-allowed' : 'pointer',
-            opacity: isFirstStep ? 0.5 : 1,
-            transition: 'all 0.2s ease',
-            minHeight: 'var(--spacing-12)',
-          }}
+          className={`wp-px-6 wp-py-3 wp-font-primary wp-text-base wp-font-medium wp-bg-background wp-text-foreground wp-border wp-border-border wp-rounded wp-transition-all wp-duration-200 wp-ease-in-out wp-min-h-12 ${isFirstStep ? 'wp-cursor-not-allowed wp-opacity-50' : 'wp-cursor-pointer wp-opacity-100'}`}
         >
           Previous
         </button>
 
         {/* Action Buttons */}
-        <div style={{ display: 'flex', gap: 'var(--spacing-4)' }}>
+        <div className="wp-flex wp-gap-4">
           {/* Cancel Button (optional) */}
           {onCancel && (
             <button
               onClick={onCancel}
-              style={{
-                padding: 'var(--spacing-3) var(--spacing-6)',
-                fontFamily: 'var(--font-primary)',
-                fontSize: 'var(--text-base)',
-                fontWeight: 'var(--font-weight-medium)',
-                backgroundColor: 'var(--background)',
-                color: 'var(--foreground)',
-                border: '1px solid var(--border)',
-                borderRadius: 'var(--radius)',
-                cursor: 'pointer',
-                transition: 'all 0.2s ease',
-                minHeight: 'var(--spacing-12)',
-              }}
+              className="wp-px-6 wp-py-3 wp-font-primary wp-text-base wp-font-medium wp-bg-background wp-text-foreground wp-border wp-border-border wp-rounded wp-cursor-pointer wp-transition-all wp-duration-200 wp-ease-in-out wp-min-h-12"
             >
               Cancel
             </button>
@@ -368,20 +242,7 @@ export function MultiStepForm({
           <button
             onClick={handleNext}
             disabled={loading}
-            style={{
-              padding: 'var(--spacing-3) var(--spacing-6)',
-              fontFamily: 'var(--font-primary)',
-              fontSize: 'var(--text-base)',
-              fontWeight: 'var(--font-weight-medium)',
-              backgroundColor: 'var(--primary)',
-              color: 'var(--primary-foreground)',
-              border: 'none',
-              borderRadius: 'var(--radius)',
-              cursor: loading ? 'not-allowed' : 'pointer',
-              opacity: loading ? 0.7 : 1,
-              transition: 'all 0.2s ease',
-              minHeight: 'var(--spacing-12)',
-            }}
+            className={`wp-px-6 wp-py-3 wp-font-primary wp-text-base wp-font-medium wp-bg-primary wp-text-primary-foreground wp-border-none wp-rounded wp-transition-all wp-duration-200 wp-ease-in-out wp-min-h-12 ${loading ? 'wp-cursor-not-allowed wp-opacity-70' : 'wp-cursor-pointer wp-opacity-100'}`}
           >
             {loading ? 'Processing...' : isLastStep ? submitText : 'Next'}
           </button>
@@ -403,20 +264,14 @@ export interface FormStepContainerProps {
 }
 
 export function FormStepContainer({ children, spacing = 'normal' }: FormStepContainerProps) {
-  const spacingMap = {
-    compact: 'var(--spacing-4)',
-    normal: 'var(--spacing-6)',
-    spacious: 'var(--spacing-8)',
+  const spacingClassMap = {
+    compact: 'wp-gap-4',
+    normal: 'wp-gap-6',
+    spacious: 'wp-gap-8',
   };
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: spacingMap[spacing],
-      }}
-    >
+    <div className={`wp-flex wp-flex-col ${spacingClassMap[spacing]}`}>
       {children}
     </div>
   );

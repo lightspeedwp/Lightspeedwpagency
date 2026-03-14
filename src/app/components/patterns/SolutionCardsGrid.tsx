@@ -47,7 +47,7 @@ export interface SolutionCardsGridProps {
   /** Section spacing */
   spacing?: 'sm' | 'md' | 'lg' | 'xl';
   /** Background color override */
-  backgroundColor?: string;
+  background?: 'default' | 'card' | 'muted' | 'transparent';
   /** Max width for content */
   maxWidth?: '4xl' | '5xl' | '6xl' | '7xl' | 'full';
 }
@@ -59,7 +59,7 @@ export function SolutionCardsGrid({
   description,
   solutions,
   spacing = 'xl',
-  backgroundColor = 'var(--background)',
+  background = 'default',
   maxWidth = 'full'
 }: SolutionCardsGridProps) {
   // Build grid classes
@@ -69,7 +69,7 @@ export function SolutionCardsGrid({
   ].filter(Boolean).join(' ');
 
   return (
-    <Section spacing={spacing} style={{ backgroundColor }}>
+    <Section spacing={spacing} background={background as any}>
       <Container>
         {/* Section Header */}
         <div className="solution-cards__header">

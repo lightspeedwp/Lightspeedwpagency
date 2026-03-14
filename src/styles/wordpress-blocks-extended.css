@@ -153,7 +153,7 @@
 .wp-block-post-content__article a {
   color: var(--primary);
   text-decoration: underline;
-  transition: all 0.2s ease;
+  transition: all var(--transition-base) var(--ease-in-out);
 }
 
 .wp-block-post-content__article a:hover {
@@ -259,7 +259,7 @@
   border: 1px solid var(--border);
   border-radius: 50%;
   color: var(--foreground);
-  transition: all 0.2s ease;
+  transition: all var(--transition-base) var(--ease-in-out);
 }
 
 .wp-block-author-box__social-link:hover {
@@ -425,7 +425,7 @@
   font-weight: var(--font-weight-medium);
   color: var(--foreground);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all var(--transition-base) var(--ease-in-out);
 }
 
 .wp-block-pagination-button:hover {

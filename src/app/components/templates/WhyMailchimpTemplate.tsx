@@ -159,7 +159,7 @@ export function WhyMailchimpTemplate() {
       <section className="why-mailchimp-page__features">
         <Container>
           <ScrollReveal animation="fade-up">
-            <div className="why-mailchimp-page__section-header wp-text-center">
+            <div className="why-mailchimp-page__section-header">
               <h2 className="why-mailchimp-page__section-title">Grow Your Audience</h2>
               <p className="why-mailchimp-page__section-desc">
                 Everything you need to build relationships and drive sales through email.
@@ -185,7 +185,7 @@ export function WhyMailchimpTemplate() {
       <section className="why-mailchimp-page__testimonial">
         <Container>
           <ScrollReveal animation="fade-up">
-            <div className="why-mailchimp-page__section-header wp-text-center">
+            <div className="why-mailchimp-page__section-header">
               <h2 className="why-mailchimp-page__section-title">Success Stories</h2>
             </div>
             <div className="why-mailchimp-page__testimonial-wrapper">

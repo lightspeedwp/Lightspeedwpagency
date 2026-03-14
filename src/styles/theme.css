@@ -151,7 +151,7 @@
  * - Trust indicators
  * - 100% CSS variables for user control
  */
-@import './patterns/cta-section.css';
+/* CTA imports consolidated to standard variants */
 
 /**
  * 14. FAQ Section pattern styles
@@ -403,7 +403,7 @@
  * - Case study with results metrics
  * - 100% CSS variables for user control
  */
-@import './templates/mailchimp-solution-page.css';
+@import './templates/mailchimp-solution-page-optimized.css';
 
 /**
  * 36. Service Pages Shared Styles

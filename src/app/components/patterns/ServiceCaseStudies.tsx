@@ -75,21 +75,9 @@ export const ServiceCaseStudies = ({
     <div className={`service-case-studies ${className}`}>
       {/* Header */}
       <div className="service-case-studies__header">
-        <h2 style={{ 
-          fontFamily: 'var(--font-primary)',
-          fontSize: 'var(--text-h2)',
-          color: 'var(--foreground)'
-        }}>
-          {title}
-        </h2>
+        <h2>{title}</h2>
         {description && (
-          <p style={{ 
-            fontFamily: 'var(--font-secondary)',
-            fontSize: 'var(--text-base)',
-            color: 'var(--muted-foreground)'
-          }}>
-            {description}
-          </p>
+          <p>{description}</p>
         )}
       </div>
       
@@ -115,65 +103,37 @@ const CaseStudyCard = ({ caseStudy }: { caseStudy: ServiceCaseStudy }) => {
     <div className="service-case-studies__card">
       {/* Project Header */}
       <div className="service-case-studies__card-header">
-        <h3 className="service-case-studies__project-name" style={{
-          fontFamily: 'var(--font-primary)',
-          fontSize: 'var(--text-h3)',
-          color: 'var(--foreground)'
-        }}>
+        <h3 className="service-case-studies__project-name">
           {caseStudy.projectName}
         </h3>
-        <p className="service-case-studies__client" style={{
-          fontFamily: 'var(--font-secondary)',
-          fontSize: 'var(--text-sm)',
-          color: 'var(--muted-foreground)'
-        }}>
+        <p className="service-case-studies__client">
           Client: {caseStudy.client}
         </p>
       </div>
       
       {/* Challenge */}
       <div className="service-case-studies__section">
-        <h4 className="service-case-studies__section-title" style={{
-          fontFamily: 'var(--font-primary)',
-          fontSize: 'var(--text-base)',
-          color: 'hsl(var(--primary))'
-        }}>
+        <h4 className="service-case-studies__section-title">
           Challenge
         </h4>
-        <p className="service-case-studies__text" style={{
-          fontFamily: 'var(--font-secondary)',
-          fontSize: 'var(--text-base)',
-          color: 'var(--foreground)'
-        }}>
+        <p className="service-case-studies__text">
           {caseStudy.challenge}
         </p>
       </div>
       
       {/* Solution */}
       <div className="service-case-studies__section">
-        <h4 className="service-case-studies__section-title" style={{
-          fontFamily: 'var(--font-primary)',
-          fontSize: 'var(--text-base)',
-          color: 'hsl(var(--primary))'
-        }}>
+        <h4 className="service-case-studies__section-title">
           Solution
         </h4>
-        <p className="service-case-studies__text" style={{
-          fontFamily: 'var(--font-secondary)',
-          fontSize: 'var(--text-base)',
-          color: 'var(--foreground)'
-        }}>
+        <p className="service-case-studies__text">
           {caseStudy.solution}
         </p>
       </div>
       
       {/* Results */}
       <div className="service-case-studies__section">
-        <h4 className="service-case-studies__section-title" style={{
-          fontFamily: 'var(--font-primary)',
-          fontSize: 'var(--text-base)',
-          color: 'hsl(var(--primary))'
-        }}>
+        <h4 className="service-case-studies__section-title">
           Results
         </h4>
         <div className="service-case-studies__results">
@@ -185,18 +145,10 @@ const CaseStudyCard = ({ caseStudy }: { caseStudy: ServiceCaseStudy }) => {
                   size={20} 
                 />
               )}
-              <span className="service-case-studies__metric" style={{
-                fontFamily: 'var(--font-primary)',
-                fontSize: 'var(--text-3xl)',
-                color: 'hsl(var(--primary))'
-              }}>
+              <span className="service-case-studies__metric">
                 {result.metric}
               </span>
-              <span className="service-case-studies__label" style={{
-                fontFamily: 'var(--font-secondary)',
-                fontSize: 'var(--text-sm)',
-                color: 'var(--muted-foreground)'
-              }}>
+              <span className="service-case-studies__label">
                 {result.label}
               </span>
             </div>
@@ -207,21 +159,13 @@ const CaseStudyCard = ({ caseStudy }: { caseStudy: ServiceCaseStudy }) => {
       {/* Technologies (if exists) */}
       {caseStudy.technologies && caseStudy.technologies.length > 0 && (
         <div className="service-case-studies__technologies">
-          <span className="service-case-studies__tech-label" style={{
-            fontFamily: 'var(--font-secondary)',
-            fontSize: 'var(--text-xs)',
-            color: 'var(--muted-foreground)'
-          }}>
+          <span className="service-case-studies__tech-label">
             Technologies:
           </span>
           {caseStudy.technologies.map(tech => (
             <span 
               key={tech} 
               className="service-case-studies__tech"
-              style={{
-                fontFamily: 'var(--font-secondary)',
-                fontSize: 'var(--text-xs)'
-              }}
             >
               {tech}
             </span>
@@ -233,11 +177,6 @@ const CaseStudyCard = ({ caseStudy }: { caseStudy: ServiceCaseStudy }) => {
       <Link 
         to={`/work/${caseStudy.portfolioSlug}`}
         className="service-case-studies__cta"
-        style={{
-          fontFamily: 'var(--font-primary)',
-          fontSize: 'var(--text-base)',
-          color: 'hsl(var(--primary))'
-        }}
       >
         View Full Case Study
         <ArrowRight className="service-case-studies__cta-icon" size={16} />
@@ -250,10 +189,6 @@ const CaseStudyCard = ({ caseStudy }: { caseStudy: ServiceCaseStudy }) => {
             <span 
               key={tag} 
               className="service-case-studies__tag"
-              style={{
-                fontFamily: 'var(--font-secondary)',
-                fontSize: 'var(--text-xs)'
-              }}
             >
               {tag}
             </span>

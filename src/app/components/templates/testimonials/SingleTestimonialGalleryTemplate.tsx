@@ -59,7 +59,7 @@ export function SingleTestimonialGalleryTemplate({ slug }: { slug?: string }) {
       {/* Project Title */}
       <Section spacing="xl" background="default">
         <div className="wp-max-w-6xl wp-text-center">
-          <span className="single-testimonial__tech-tag wp-inline-flex wp-align-center wp-gap-2 wp-mb-6">
+          <span className="single-testimonial__tech-tag wp-inline-flex wp-items-center wp-gap-2 wp-mb-6">
             <Images size={14} /> Portfolio Case Study
           </span>
           <h1 className="single-testimonial__story-title wp-mt-4">
@@ -161,26 +161,12 @@ export function SingleTestimonialGalleryTemplate({ slug }: { slug?: string }) {
       {testimonial.gallery?.results && (
         <Section spacing="xl" background="muted">
           <div
-            className="wp-max-w-6xl"
-            style={{ margin: '0 auto' }}
+            className="wp-max-w-6xl wp-mx-auto"
             ref={resultsRef as any}
           >
             <div style={resultsStyle}>
-              <h2
-                style={{
-                  fontFamily: 'var(--font-primary)',
-                  fontSize: 'var(--text-h3)',
-                  fontWeight: 'var(--font-weight-medium)',
-                  color: 'var(--foreground)',
-                  textAlign: 'center',
-                  marginBottom: 'var(--spacing-8)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: 'var(--spacing-3)',
-                }}
-              >
-                <TrendUp size={24} style={{ color: 'var(--primary)' }} />
+              <h2 className="wp-font-primary wp-text-h3 wp-font-medium wp-text-foreground wp-text-center wp-mb-8 wp-flex wp-items-center wp-justify-center wp-gap-3">
+                <TrendUp size={24} className="wp-text-primary" />
                 Project Results
               </h2>
               <div className="single-testimonial__results">
@@ -194,19 +180,13 @@ export function SingleTestimonialGalleryTemplate({ slug }: { slug?: string }) {
 
               {/* Tech Stack */}
               {testimonial.gallery.technologies && (
-                <div style={{ textAlign: 'center', marginTop: 'var(--spacing-10)' }}>
+                <div className="wp-text-center wp-pt-10">
                   <h3
-                    style={{
-                      fontFamily: 'var(--font-primary)',
-                      fontSize: 'var(--text-h5)',
-                      fontWeight: 'var(--font-weight-medium)',
-                      color: 'var(--foreground)',
-                      marginBottom: 'var(--spacing-4)',
-                    }}
+                    className="wp-font-primary wp-text-h5 wp-font-medium wp-text-foreground wp-mb-4"
                   >
                     Technologies Used
                   </h3>
-                  <div className="single-testimonial__tech-stack" style={{ justifyContent: 'center' }}>
+                  <div className="single-testimonial__tech-stack wp-justify-center">
                     {testimonial.gallery.technologies.map((tech) => (
                       <span key={tech} className="single-testimonial__tech-tag">{tech}</span>
                     ))}
@@ -219,8 +199,8 @@ export function SingleTestimonialGalleryTemplate({ slug }: { slug?: string }) {
       )}
 
       {/* Related */}
-      <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
-        <div className="wp-max-w-6xl" style={{ margin: '0 auto' }}>
+      <Section spacing="xl" className="wp-bg-background">
+        <div className="wp-max-w-6xl wp-mx-auto">
           <QueryLoopTestimonials
             testimonials={related}
             heading="More Case Studies"

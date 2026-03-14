@@ -131,9 +131,9 @@ export function SinglePodcastTemplate({ slug }: Props) {
                 <Heading level={3} className="wp-mt-8">Guests</Heading>
                 <div className="wp-flex wp-flex-col wp-gap-3 wp-mt-4">
                   {episode.guests.map((guest, i) => (
-                    <div key={i} className="wp-font-primary wp-text-base wp-text-foreground">
+                    <div key={i} className="single-podcast__guest-item">
                       <strong>{guest.name}</strong>
-                      <span className="wp-text-muted-foreground wp-font-secondary wp-text-sm">
+                      <span className="single-podcast__guest-meta">
                         {' '}&mdash; {guest.role}, {guest.company}
                       </span>
                     </div>

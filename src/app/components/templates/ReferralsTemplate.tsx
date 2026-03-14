@@ -113,7 +113,7 @@ export function ReferralsTemplate() {
                   </div>
                 </div>
 
-                <div className="wp-grid-2-cols" style={{ marginTop: 'var(--spacing-4)' }}>
+                <div className="wp-grid-2-cols wp-mt-4">
                   <div className="referrals-page__form-group">
                     <label className="referrals-page__label" htmlFor="leadName">Lead's Name</label>
                     <input type="text" id="leadName" className="referrals-page__input" placeholder="John Smith" required />
@@ -139,7 +139,7 @@ export function ReferralsTemplate() {
                   />
                 </div>
 
-                <Button type="submit" size="lg" style={{ width: '100%', justifyContent: 'center', marginTop: 'var(--spacing-4)' }}>
+                <Button type="submit" size="lg" className="wp-mt-4 wp-w-full wp-justify-center">
                   Submit Referral
                 </Button>
               </form>

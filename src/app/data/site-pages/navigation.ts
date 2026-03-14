@@ -23,7 +23,6 @@ export const mainNavigation = [
     children: [
       { label: 'WordPress', page: 'wordpress' as const },
       { label: 'WooCommerce', page: 'woocommerce' as const },
-      { label: 'Tour Operators', page: 'tour-operators' as const },
       { label: 'Publishers', page: 'publishers' as const }
     ]
   },
@@ -78,7 +77,6 @@ export const footerNavigation = {
     title: 'Our Products',
     links: [
       { label: 'LSX Theme', page: 'lsx' as const },
-      { label: 'LSX Tour Operator', page: 'tour-operators' as const },
       { label: 'Wetu Importer', page: 'wetu-importer' as const },
       { label: 'LSX Sharing', page: 'lsx-sharing' as const },
       { label: 'LSX Search', page: 'lsx-search' as const }
@@ -99,7 +97,6 @@ export const footerNavigation = {
     links: [
       { label: 'WooCommerce', page: 'woocommerce' as const },
       { label: 'WordPress', page: 'wordpress' as const },
-      { label: 'Tour Operators', page: 'tour-operators' as const },
       { label: 'Publishers', page: 'publishers' as const },
       { label: 'Videos', page: 'videos' as const },
       { label: 'Podcasts', page: 'podcasts' as const }

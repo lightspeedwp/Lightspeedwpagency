@@ -49,7 +49,7 @@ export interface IntegrationsGridProps {
   /** Section spacing */
   spacing?: 'sm' | 'md' | 'lg' | 'xl';
   /** Background color */
-  backgroundColor?: string;
+  background?: 'default' | 'card' | 'muted' | 'transparent';
   /** Maximum width container */
   maxWidth?: 'full' | '4xl' | '5xl' | '6xl';
 }
@@ -62,7 +62,7 @@ export function IntegrationsGrid({
   integrations,
   columns = 3,
   spacing = 'xl',
-  backgroundColor = 'var(--background)',
+  background = 'default',
   maxWidth = '6xl'
 }: IntegrationsGridProps) {
   // Map columns to WordPress utility classes
@@ -75,8 +75,8 @@ export function IntegrationsGrid({
   const maxWidthClass = maxWidth !== 'full' ? `wp-max-w-${maxWidth}` : '';
 
   return (
-    <Section spacing={spacing} style={{ backgroundColor }} className="integrations-grid">
-      <div className={maxWidthClass} style={{ margin: '0 auto' }}>
+    <Section spacing={spacing} background={background as any} className="integrations-grid">
+      <div className={`${maxWidthClass} wp-mx-auto`}>
         {/* Section Header */}
         {(badge || title || description) && (
           <div className="integrations-grid__header">

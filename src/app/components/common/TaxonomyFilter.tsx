@@ -128,7 +128,7 @@ export function TaxonomyFilter({
           <Filter size={16} />
           <span>Filters</span>
           {selectedValues.length > 0 && (selectedValues[0] !== 'all' && selectedValues[0] !== 'All') && (
-            <span className="wp-bg-primary wp-text-primary-foreground wp-text-xs wp-rounded-full wp-w-5 wp-h-5 wp-flex wp-items-center wp-justify-center" style={{ marginLeft: 'var(--spacing-2)' }}>
+            <span className="taxonomy-filter__mobile-count">
               {selectedValues.length}
             </span>
           )}
@@ -144,21 +144,20 @@ export function TaxonomyFilter({
         <div className="taxonomy-filter__controls">
           {/* Sort Dropdown */}
           {sortOptions && onSortChange && (
-            <div className="taxonomy-filter__sort">
-              <span className="wp-mr-2 wp-text-sm wp-text-muted-foreground">Sort by:</span>
-              <div style={{ position: 'relative', display: 'inline-flex', alignItems: 'center' }}>
+            <div className="taxonomy-filter__sort-container">
+              <span className="taxonomy-filter__sort-label">Sort by:</span>
+              <div className="taxonomy-filter__sort">
                 <select
                   value={currentSort}
                   onChange={(e) => onSortChange(e.target.value)}
                   className="taxonomy-filter__sort-select"
                   aria-label="Sort by"
-                  style={{ paddingRight: 'var(--spacing-6)', cursor: 'pointer', appearance: 'none', background: 'transparent', border: 'none', color: 'var(--foreground)', fontWeight: 'var(--font-weight-medium)', fontSize: 'var(--text-sm)' }}
                 >
                   {sortOptions.map(opt => (
                     <option key={opt.id} value={opt.id}>{opt.label}</option>
                   ))}
                 </select>
-                <ChevronDown size={14} className="taxonomy-filter__sort-icon" style={{ position: 'absolute', right: 0, pointerEvents: 'none', color: 'var(--muted-foreground)' }} />
+                <ChevronDown size={14} className="taxonomy-filter__sort-icon" />
               </div>
             </div>
           )}
@@ -176,7 +175,7 @@ export function TaxonomyFilter({
               className={`taxonomy-filter__chip ${active ? 'taxonomy-filter__chip--active' : ''}`}
               aria-pressed={active}
             >
-              {active && <Check size={14} style={{ marginRight: 'var(--spacing-1-5)' }} />}
+              {active && <Check size={14} className="taxonomy-filter__chip-icon" />}
               {option.label}
               {option.count !== undefined && (
                 <span className="taxonomy-filter__chip-count">{option.count}</span>

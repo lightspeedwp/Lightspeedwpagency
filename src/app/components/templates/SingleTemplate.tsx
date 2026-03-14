@@ -17,7 +17,7 @@
  * - Breadcrumbs
  * - PageHeader (title + meta)
  * - Content area
- * - CTASection
+ * - FunkyCTA
  * 
  * **Design System:**
  * - 100% CSS variables from theme.css

@@ -141,7 +141,7 @@ export function CategoryArchiveTemplate({ category: categorySlug = 'development'
       </Section>
 
       {/* Category sidebar nav */}
-      <Section spacing="sm" style={{ borderBottom: '1px solid var(--border-soft)' }}>
+      <Section spacing="sm" className="wp-border-b wp-border-border-soft">
         <Container>
           <ScrollReveal animation="fade-up" duration={400}>
             <nav className="archive-category-nav" aria-label="Blog categories">

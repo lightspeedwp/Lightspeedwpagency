@@ -132,7 +132,7 @@ export function PortfolioCategoryArchiveTemplate() {
       </Section>
 
       {/* Results Grid */}
-      <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
+      <Section spacing="xl" className="wp-bg-background">
         <Container>
           <div className="wp-grid-3-cols wp-gap-8" ref={containerRef}>
             {isLoading ? (
@@ -151,7 +151,7 @@ export function PortfolioCategoryArchiveTemplate() {
                 </div>
               ))
             ) : (
-              <div className="wp-col-span-full wp-text-center wp-py-12">
+              <div className="archive-empty-state archive-empty-state--col-span">
                 <Paragraph>No projects found in this category.</Paragraph>
               </div>
             )}

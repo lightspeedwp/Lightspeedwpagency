@@ -109,7 +109,7 @@ export function DateArchiveTemplate({
             )}
 
             <div className="date-navigation__current">
-              <Calendar size={16} className="wp-text-muted-foreground" />
+              <Calendar size={16} className="date-navigation__icon" />
               <span>{title}</span>
             </div>
 
@@ -227,7 +227,7 @@ function MonthGrid({ year }: { year: number }) {
   });
 
   return (
-    <div ref={monthGridRef} className="month-grid" style={{ marginTop: 'var(--spacing-8)' }}>
+    <div ref={monthGridRef} className="month-grid wp-mt-8">
       {monthCounts.map((item) => (
         <Link
           key={item.month}

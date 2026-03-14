@@ -81,15 +81,7 @@ export function useFormValidation<T extends Record<string, any>>(
         role="alert"
         aria-live="polite"
         aria-atomic="true"
-        style={{
-          fontFamily: 'var(--font-secondary)',
-          fontSize: 'var(--text-small)',
-          color: 'var(--destructive)',
-          marginTop: 'var(--spacing-1)',
-          display: 'flex',
-          alignItems: 'center',
-          gap: 'var(--spacing-1)'
-        }}
+        className="wp-font-secondary wp-text-small wp-text-destructive wp-mt-1 wp-flex wp-items-center wp-gap-1"
       >
         {/* Error icon */}
         <svg

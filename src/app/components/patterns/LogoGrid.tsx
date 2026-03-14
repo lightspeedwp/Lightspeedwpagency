@@ -42,8 +42,8 @@ export interface LogoGridProps {
   opacity?: number; 
   /** Max width constraint */
   maxWidth?: '4xl' | '5xl' | '6xl' | 'none';
-  /** Custom gap between logos */
-  gap?: string;
+  /** Custom gap size */
+  gap?: 'sm' | 'md' | 'lg' | 'xl';
   /** Align logos */
   align?: 'center' | 'left';
 }
@@ -55,28 +55,31 @@ export function LogoGrid({
   grayscale = true,
   opacity = 0.6,
   maxWidth = '6xl',
-  gap = 'var(--spacing-8)',
+  gap = 'lg',
   align = 'center'
 }: LogoGridProps) {
+  // Map gap prop to WP utility classes
+  const gapClass = {
+    sm: 'wp-gap-4',
+    md: 'wp-gap-6',
+    lg: 'wp-gap-8',
+    xl: 'wp-gap-12'
+  }[gap] || 'wp-gap-8';
+
   // Grid classes
   const gridClasses = [
     'logo-grid',
-    `logo-grid--${columns}-cols`
+    `logo-grid--${columns}-cols`,
+    gapClass
   ].filter(Boolean).join(' ');
 
   // Max width class
-  const maxWidthClass = maxWidth !== 'none' ? `wp-max-w-${maxWidth}` : '';
-
-  // Container margin
-  const containerStyle = {
-    margin: maxWidth !== 'none' ? '0 auto' : undefined
-  };
+  const maxWidthClass = maxWidth !== 'none' ? `wp-max-w-${maxWidth} wp-mx-auto` : '';
 
   return (
-    <div className={maxWidthClass} style={containerStyle}>
+    <div className={maxWidthClass}>
       <div
         className={gridClasses}
-        style={{ gap }}
       >
         {logos.map((logo, index) => {
           // Logo Item classes
@@ -104,7 +107,7 @@ export function LogoGrid({
                 />
               ) : (
                 // Fallback to text
-                <span className="logo-item__text" style={{ textAlign: align }}>
+                <span className={`logo-item__text wp-text-${align}`}>
                   {logo.name || logo.alt}
                 </span>
               )}
@@ -124,7 +127,7 @@ export function LogoGrid({
               {content}
             </a>
           ) : (
-            <div key={index} style={{ width: '100%' }}>{content}</div>
+            <div key={index} className="wp-w-full">{content}</div>
           );
         })}
       </div>

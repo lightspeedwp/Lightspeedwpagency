@@ -228,7 +228,7 @@ export function DesignPlaygroundTemplate() {
             onClick={resetAll}
             aria-label="Reset all overrides"
           >
-            <ArrowCounterClockwise size={14} style={{ marginRight: 'var(--spacing-1)', verticalAlign: 'middle' }} />
+            <ArrowCounterClockwise size={14} className="wp-mr-1" style={{ verticalAlign: 'middle' }} />
             Reset All
           </button>
 
@@ -239,8 +239,8 @@ export function DesignPlaygroundTemplate() {
             aria-label="Copy CSS overrides"
           >
             {copied
-              ? <><Check size={14} style={{ marginRight: 'var(--spacing-1)', verticalAlign: 'middle' }} /> Copied!</>
-              : <><Copy size={14} style={{ marginRight: 'var(--spacing-1)', verticalAlign: 'middle' }} /> Export CSS</>
+              ? <><Check size={14} className="wp-mr-1" style={{ verticalAlign: 'middle' }} /> Copied!</>
+              : <><Copy size={14} className="wp-mr-1" style={{ verticalAlign: 'middle' }} /> Export CSS</>
             }
           </button>
 
@@ -262,7 +262,7 @@ export function DesignPlaygroundTemplate() {
                 className={`playground__tab${activeTab === tab.id ? ' playground__tab--active' : ''}`}
                 onClick={() => setActiveTab(tab.id)}
               >
-                <Icon size={14} style={{ marginRight: 'var(--spacing-1)', verticalAlign: 'middle' }} />
+                <Icon size={14} className="wp-mr-1" style={{ verticalAlign: 'middle' }} />
                 {tab.label}
               </button>
             );
@@ -320,11 +320,11 @@ export function DesignPlaygroundTemplate() {
                 This card updates in real time as you change colour tokens above.
                 All borders, backgrounds, and text respond to your overrides.
               </p>
-              <div style={{ display: 'flex', gap: 'var(--spacing-2)', flexWrap: 'wrap' }}>
+              <div className="wp-flex wp-gap-2 wp-flex-wrap">
                 <span className="playground__preview-badge">Badge</span>
                 <span className="playground__preview-badge">Design System</span>
               </div>
-              <div style={{ display: 'flex', gap: 'var(--spacing-3)', marginTop: 'var(--spacing-4)' }}>
+              <div className="wp-flex wp-gap-3 wp-mt-4">
                 <button type="button" className="playground__preview-btn">Primary Button</button>
                 <button type="button" className="playground__preview-btn playground__preview-btn--outline">Outline</button>
               </div>

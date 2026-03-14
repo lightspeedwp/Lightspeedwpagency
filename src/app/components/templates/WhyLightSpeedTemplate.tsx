@@ -158,7 +158,7 @@ export function WhyLightSpeedTemplate() {
       <section className="why-lightspeed-page__features">
         <Container>
           <ScrollReveal animation="fade-up">
-            <div className="why-lightspeed-page__section-header wp-text-center">
+            <div className="why-lightspeed-page__section-header">
               <h2 className="why-lightspeed-page__section-title">The LightSpeed Difference</h2>
               <p className="why-lightspeed-page__section-desc">
                 We combine deep technical expertise with a genuine passion for solving complex business problems.
@@ -184,7 +184,7 @@ export function WhyLightSpeedTemplate() {
       <section className="why-lightspeed-page__testimonial">
         <Container>
           <ScrollReveal animation="fade-up">
-            <div className="why-lightspeed-page__section-header wp-text-center">
+            <div className="why-lightspeed-page__section-header">
               <h2 className="why-lightspeed-page__section-title">Client Success</h2>
             </div>
             <div className="why-lightspeed-page__testimonial-wrapper">

@@ -43,7 +43,6 @@ export * from './social-proof';
 export * from './seo';
 export * from './woocommerce';
 export * from './posts-formats';
-export * from './tour-operator';
 export * from './comparisons';
 export * from './archive-items';
 
@@ -53,7 +52,6 @@ export * from './wetu-solution-page';
 export * from './lsx-solution-page';
 export * from './wordpress-solution-page';
 export * from './woocommerce-solution-page';
-export * from './tour-operators-solution-page';
 export * from './publishers-solution-page';
 
 /* Service pages (collision-free only) */
@@ -90,8 +88,6 @@ export * from './homepage';
 export * from './error-404';
 export * from './404-page';
 export * from './publishers-page';
-export * from './tour-operator-page';
-export * from './tour-operator-design-page';
 export * from './wetu-importer-page';
 export * from './lsx-search-page';
 export * from './lsx-sharing-page';

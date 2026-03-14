@@ -133,27 +133,27 @@
    UTILITY CLASSES
    ============================================ */
 
-.animate-fade-in {
+.wp-animate-fade-in {
   animation: fadeIn var(--transition-base) var(--ease-out) forwards;
 }
 
-.animate-slide-up {
+.wp-animate-slide-up {
   animation: slideUp var(--transition-slow) var(--ease-out) forwards;
 }
 
-.animate-slide-down {
+.wp-animate-slide-down {
   animation: slideDown var(--transition-slow) var(--ease-out) forwards;
 }
 
-.animate-scale-in {
+.wp-animate-scale-in {
   animation: scaleIn var(--transition-base) var(--ease-out) forwards;
 }
 
-.animate-spin {
+.wp-animate-spin {
   animation: spin 1s linear infinite;
 }
 
-.animate-pulse {
+.wp-animate-pulse {
   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
@@ -167,12 +167,12 @@
 
 /* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
-  .animate-fade-in,
-  .animate-slide-up,
-  .animate-slide-down,
-  .animate-scale-in,
-  .animate-spin,
-  .animate-pulse,
+  .wp-animate-fade-in,
+  .wp-animate-slide-up,
+  .wp-animate-slide-down,
+  .wp-animate-scale-in,
+  .wp-animate-spin,
+  .wp-animate-pulse,
   .neon-glow-pulse,
   .neon-border-flow,
   .neon-text-glow {

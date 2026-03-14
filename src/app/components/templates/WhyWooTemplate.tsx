@@ -162,7 +162,7 @@ export function WhyWooTemplate() {
       <section className="why-woo-page__features">
         <Container>
           <ScrollReveal animation="fade-up">
-            <div className="why-woo-page__section-header wp-text-center">
+            <div className="why-woo-page__section-header">
               <h2 className="why-woo-page__section-title">The WooCommerce Advantage</h2>
               <p className="why-woo-page__section-desc">
                 Built on WordPress, designed for growth. Everything you need to succeed online.
@@ -188,7 +188,7 @@ export function WhyWooTemplate() {
       <section className="why-woo-page__testimonial">
         <Container>
           <ScrollReveal animation="fade-up">
-            <div className="why-woo-page__section-header wp-text-center">
+            <div className="why-woo-page__section-header">
               <h2 className="why-woo-page__section-title">Success Stories</h2>
             </div>
             <div className="why-woo-page__testimonial-wrapper">

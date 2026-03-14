@@ -64,13 +64,6 @@ export function WhyLandingTemplate() {
       description: 'Free, open-source products designed to help developers and designers build better WordPress websites.',
       icon: <CodeBlock size={24} weight="duotone" />,
       link: '/why-lsx'
-    },
-    {
-      id: 'tour',
-      title: 'Why Tour Operator?',
-      description: 'The ultimate digital solution for DMCs and travel agencies to build itineraries and capture direct bookings.',
-      icon: <AirplaneTilt size={24} weight="duotone" />,
-      link: '/why-tour-operator'
     }
   ];
 

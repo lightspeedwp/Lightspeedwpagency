@@ -18,71 +18,47 @@
  * @see /src/styles/bundles/utility-bundle.css
  */
 
-import React, { lazy, Suspense } from 'react';
+import React from 'react';
 import { useParams, type RouteObject } from 'react-router';
-import { RouteLoadingFallback } from '../components/ui/RouteLoadingFallback';
 import { loadCSSBundle } from '../utils/css-bundle-loader';
 
 /* ═══════════════════════════════════════════
  * Template Imports
  * ═══════════════════════════════════════════ */
 
-// Main testimonials page (static)
 import { TestimonialsTemplate } from '../components/templates/TestimonialsTemplate';
-
-// Archive + Singles (lazy)
-const TestimonialArchiveTemplate = lazy(() => import('../components/templates/testimonials/TestimonialArchiveTemplate').then(m => ({ default: m.TestimonialArchiveTemplate })));
-const SingleTestimonialTemplate = lazy(() => import('../components/templates/testimonials/SingleTestimonialTemplate').then(m => ({ default: m.SingleTestimonialTemplate })));
-const SingleTestimonialAudioTemplate = lazy(() => import('../components/templates/testimonials/SingleTestimonialAudioTemplate').then(m => ({ default: m.SingleTestimonialAudioTemplate })));
-const SingleTestimonialVideoTemplate = lazy(() => import('../components/templates/testimonials/SingleTestimonialVideoTemplate').then(m => ({ default: m.SingleTestimonialVideoTemplate })));
-const SingleTestimonialGalleryTemplate = lazy(() => import('../components/templates/testimonials/SingleTestimonialGalleryTemplate').then(m => ({ default: m.SingleTestimonialGalleryTemplate })));
+import { TestimonialArchiveTemplate } from '../components/templates/testimonials/TestimonialArchiveTemplate';
+import { SingleTestimonialTemplate } from '../components/templates/testimonials/SingleTestimonialTemplate';
+import { SingleTestimonialAudioTemplate } from '../components/templates/testimonials/SingleTestimonialAudioTemplate';
+import { SingleTestimonialVideoTemplate } from '../components/templates/testimonials/SingleTestimonialVideoTemplate';
+import { SingleTestimonialGalleryTemplate } from '../components/templates/testimonials/SingleTestimonialGalleryTemplate';
 
 /* ═══════════════════════════════════════════
  * Route Wrapper Components
  * ═══════════════════════════════════════════ */
 
 function TestimonialArchiveRoute() {
-  return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <TestimonialArchiveTemplate />
-    </Suspense>
-  );
+  return <TestimonialArchiveTemplate />;
 }
 
 function SingleTestimonialRoute() {
   const { slug } = useParams();
-  return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <SingleTestimonialTemplate slug={slug} />
-    </Suspense>
-  );
+  return <SingleTestimonialTemplate slug={slug} />;
 }
 
 function SingleTestimonialAudioRoute() {
   const { slug } = useParams();
-  return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <SingleTestimonialAudioTemplate slug={slug} />
-    </Suspense>
-  );
+  return <SingleTestimonialAudioTemplate slug={slug} />;
 }
 
 function SingleTestimonialVideoRoute() {
   const { slug } = useParams();
-  return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <SingleTestimonialVideoTemplate slug={slug} />
-    </Suspense>
-  );
+  return <SingleTestimonialVideoTemplate slug={slug} />;
 }
 
 function SingleTestimonialGalleryRoute() {
   const { slug } = useParams();
-  return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <SingleTestimonialGalleryTemplate slug={slug} />
-    </Suspense>
-  );
+  return <SingleTestimonialGalleryTemplate slug={slug} />;
 }
 
 /* ═══════════════════════════════════════════
@@ -93,44 +69,26 @@ export const testimonialsRoutes: RouteObject[] = [
   /* ── Testimonials (Utility Bundle) ── */
   {
     path: 'testimonials',
-    lazy: async () => {
-      await loadCSSBundle('utility');
-      return { Component: TestimonialsTemplate };
-    },
+    Component: TestimonialsTemplate,
   },
   {
     path: 'testimonials/archive',
-    lazy: async () => {
-      await loadCSSBundle('utility');
-      return { Component: TestimonialArchiveRoute };
-    },
+    Component: TestimonialArchiveRoute,
   },
   {
     path: 'testimonials/audio/:slug',
-    lazy: async () => {
-      await loadCSSBundle('utility');
-      return { Component: SingleTestimonialAudioRoute };
-    },
+    Component: SingleTestimonialAudioRoute,
   },
   {
     path: 'testimonials/video/:slug',
-    lazy: async () => {
-      await loadCSSBundle('utility');
-      return { Component: SingleTestimonialVideoRoute };
-    },
+    Component: SingleTestimonialVideoRoute,
   },
   {
     path: 'testimonials/gallery/:slug',
-    lazy: async () => {
-      await loadCSSBundle('utility');
-      return { Component: SingleTestimonialGalleryRoute };
-    },
+    Component: SingleTestimonialGalleryRoute,
   },
   {
     path: 'testimonials/:slug',
-    lazy: async () => {
-      await loadCSSBundle('utility');
-      return { Component: SingleTestimonialRoute };
-    },
+    Component: SingleTestimonialRoute,
   },
 ];

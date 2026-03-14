@@ -97,8 +97,7 @@ export function ServicesCard({
             <CheckCircle 
               size={20} 
               weight="fill"
-              className="services-card__check-icon"
-              style={{ color: 'var(--primary)', opacity: 0.8 }}
+              className="services-card__check-icon wp-text-primary wp-opacity-80"
             />
             <span>{feature}</span>
           </li>
@@ -157,8 +156,7 @@ export function ServicesCardGrid({
 
   return (
     <div 
-      className={`${gridClass} ${className}`}
-      style={{ gap: 'var(--spacing-8)' }}
+      className={`wp-gap-8 ${gridClass} ${className}`}
       role="list"
     >
       {services.map((service) => (

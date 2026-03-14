@@ -52,23 +52,23 @@ export function PricingTemplate() {
       />
 
       {/* Funky Neon Hero */}
-      <section className="pricing-page__hero">
-        <div className="pricing-page__hero-mesh" aria-hidden="true" />
+      <section style={{ position: 'relative', minHeight: '60vh', display: 'flex', alignItems: 'center', backgroundColor: 'var(--background)', overflow: 'hidden', padding: 'var(--spacing-24) 0' }}>
+        <div style={{ position: 'absolute', inset: 0, opacity: 0.1, backgroundImage: 'linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px)', backgroundSize: '40px 40px', zIndex: 0 }} aria-hidden="true" />
         <div className="pricing-page__hero-orb pricing-page__hero-orb--1" aria-hidden="true" />
         <div className="pricing-page__hero-orb pricing-page__hero-orb--2" aria-hidden="true" />
 
         <Container>
-          <div ref={heroRef} className="pricing-page__hero-inner">
-            <div className="pricing-page__hero-badge">
+          <div ref={heroRef} style={{ position: 'relative', zIndex: 1, textAlign: 'center', maxWidth: '800px', margin: '0 auto' }}>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 'var(--spacing-2)', padding: 'var(--spacing-2) var(--spacing-4)', backgroundColor: 'var(--card)', border: '1px solid var(--border)', borderRadius: 'var(--radius-full)', color: 'var(--primary)', fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-sm)', fontWeight: 'var(--font-weight-medium)', marginBottom: 'var(--spacing-6)' }}>
               <Sparkles size={14} />
               {pricingPageHero.badge.text}
             </div>
 
-            <h1 className="pricing-page__hero-title">
-              Simple, <span className="pricing-page__hero-highlight">Transparent</span> Pricing
+            <h1 style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-h1)', color: 'var(--foreground)', marginBottom: 'var(--spacing-6)' }}>
+              Simple, <span style={{ color: 'transparent', backgroundImage: 'linear-gradient(90deg, var(--primary), var(--secondary))', WebkitBackgroundClip: 'text', backgroundClip: 'text' }}>Transparent</span> Pricing
             </h1>
 
-            <p className="pricing-page__hero-description">
+            <p style={{ fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-xl)', color: 'var(--muted-foreground)', lineHeight: 1.6, marginBottom: 'var(--spacing-12)' }}>
               {pricingPageHero.description}
             </p>
 
@@ -88,7 +88,7 @@ export function PricingTemplate() {
       </section>
 
       {/* Website Packages Section */}
-      <Section spacing="xl" className="pricing-page__packages-section">
+      <section style={{ padding: 'var(--spacing-24) 0', backgroundColor: 'var(--card)', position: 'relative', overflow: 'hidden' }}>
         {/* Decorative orbs */}
         <div className="pricing-page__section-orb pricing-page__section-orb--1" aria-hidden="true" />
         <div className="pricing-page__section-orb pricing-page__section-orb--2" aria-hidden="true" />
@@ -96,17 +96,17 @@ export function PricingTemplate() {
         <Container>
           <div className="wp-max-w-6xl wp-mx-auto">
             <ScrollReveal animation="fade-up">
-              <div className="pricing-page__section-header">
-                <h2 className="pricing-page__section-title">
+              <div style={{ textAlign: 'center', marginBottom: 'var(--spacing-16)' }}>
+                <h2 style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-h2)', color: 'var(--foreground)', marginBottom: 'var(--spacing-4)' }}>
                   Website Build Packages
                 </h2>
-                <p className="pricing-page__section-description">
+                <p style={{ fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-lg)', color: 'var(--muted-foreground)', maxWidth: '600px', margin: '0 auto' }}>
                   One-time investment to build your WordPress website
                 </p>
               </div>
             </ScrollReveal>
 
-            <div className="pricing-page__packages-grid responsive-grid-3-cols">
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 'var(--spacing-8)' }}>
               {websitePackages.map((plan, idx) => {
                 const Icon = plan.icon;
                 return (
@@ -121,7 +121,7 @@ export function PricingTemplate() {
                       )}
 
                       <div className="pricing-page__package-icon">
-                        <Icon size={24} style={{ color: 'var(--primary)' }} />
+                        <Icon size={24} className="wp-text-primary" />
                       </div>
 
                       <h3 className="pricing-page__package-title">
@@ -180,24 +180,24 @@ export function PricingTemplate() {
             </div>
           </div>
         </Container>
-      </Section>
+      </section>
 
       {/* Support Packages Section */}
-      <Section spacing="xl" className="pricing-page__support-section">
+      <section style={{ padding: 'var(--spacing-24) 0', backgroundColor: 'var(--background)' }}>
         <Container>
           <div className="wp-max-w-6xl wp-mx-auto">
             <ScrollReveal animation="fade-up">
-              <div className="pricing-page__section-header">
-                <h2 className="pricing-page__section-title">
+              <div style={{ textAlign: 'center', marginBottom: 'var(--spacing-16)' }}>
+                <h2 style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-h2)', color: 'var(--foreground)', marginBottom: 'var(--spacing-4)' }}>
                   Support & Maintenance Plans
                 </h2>
-                <p className="pricing-page__section-description">
+                <p style={{ fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-lg)', color: 'var(--muted-foreground)', maxWidth: '600px', margin: '0 auto' }}>
                   Monthly plans to keep your website secure, fast, and up-to-date
                 </p>
               </div>
             </ScrollReveal>
 
-            <div className="pricing-page__packages-grid responsive-grid-3-cols">
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 'var(--spacing-8)' }}>
               {supportPackages.map((plan, idx) => {
                 const Icon = plan.icon;
                 return (
@@ -212,7 +212,7 @@ export function PricingTemplate() {
                       )}
 
                       <div className="pricing-page__package-icon">
-                        <Icon size={24} style={{ color: 'var(--primary)' }} />
+                        <Icon size={24} className="wp-text-primary" />
                       </div>
 
                       <h3 className="pricing-page__package-title">
@@ -271,40 +271,40 @@ export function PricingTemplate() {
             </div>
           </div>
         </Container>
-      </Section>
+      </section>
 
       {/* Payment Options Section */}
-      <Section spacing="lg" className="pricing-page__payment-section">
+      <section style={{ padding: 'var(--spacing-24) 0', backgroundColor: 'var(--muted)' }}>
         <Container>
           <div className="wp-max-w-4xl wp-mx-auto">
             <ScrollReveal animation="fade-up">
-              <div className="pricing-page__section-header">
-                <h2 className="pricing-page__section-title">
+              <div style={{ textAlign: 'center', marginBottom: 'var(--spacing-16)' }}>
+                <h2 style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-h2)', color: 'var(--foreground)', marginBottom: 'var(--spacing-4)' }}>
                   {paymentOptions.title}
                 </h2>
-                <p className="pricing-page__section-description">
+                <p style={{ fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-lg)', color: 'var(--muted-foreground)', maxWidth: '600px', margin: '0 auto' }}>
                   {paymentOptions.description}
                 </p>
               </div>
             </ScrollReveal>
 
-            <div className="pricing-page__payment-grid">
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: 'var(--spacing-6)' }}>
               {paymentOptions.options.map((option, index) => (
                 <ScrollReveal key={index} animation="fade-up" delay={index * 100}>
-                  <div className="pricing-page__payment-card">
-                    <div className="pricing-page__payment-icon-wrapper">
-                      <Zap size={28} className="pricing-page__payment-icon" />
+                  <div style={{ padding: 'var(--spacing-8)', backgroundColor: 'var(--background)', border: '1px solid var(--border)', borderRadius: 'var(--radius-xl)', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', height: '100%' }}>
+                    <div style={{ width: '64px', height: '64px', borderRadius: '50%', backgroundColor: 'color-mix(in srgb, var(--primary) 10%, transparent)', color: 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 'var(--spacing-6)' }}>
+                      <Zap size={28} />
                     </div>
-                    <h3 className="pricing-page__payment-title">
+                    <h3 style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-xl)', color: 'var(--foreground)', marginBottom: 'var(--spacing-3)' }}>
                       {option.name}
                     </h3>
-                    <p className="pricing-page__payment-description">
+                    <p style={{ fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-sm)', color: 'var(--muted-foreground)', marginBottom: 'var(--spacing-6)', lineHeight: 1.5, flex: 1 }}>
                       {option.description}
                     </p>
-                    <div className="pricing-page__payment-discount">
+                    <div style={{ display: 'inline-block', backgroundColor: 'color-mix(in srgb, var(--primary) 15%, transparent)', color: 'var(--primary)', padding: 'var(--spacing-1) var(--spacing-3)', borderRadius: 'var(--radius-full)', fontFamily: 'var(--font-mono)', fontSize: 'var(--text-sm)', fontWeight: 'var(--font-weight-bold)', marginBottom: 'var(--spacing-4)' }}>
                       {option.discount}
                     </div>
-                    <p className="pricing-page__payment-terms">
+                    <p style={{ fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-xs)', color: 'var(--muted-foreground)', margin: 0 }}>
                       {option.terms}
                     </p>
                   </div>
@@ -313,7 +313,7 @@ export function PricingTemplate() {
             </div>
           </div>
         </Container>
-      </Section>
+      </section>
 
       {/* CTA Section */}
       <FunkyCTA

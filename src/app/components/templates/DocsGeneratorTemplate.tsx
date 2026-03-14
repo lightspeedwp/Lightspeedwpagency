@@ -206,7 +206,7 @@ export function DocsGeneratorTemplate() {
           </div>
 
           {/* Category chips */}
-          <div className="docs-gen__chips" style={{ marginTop: 'var(--spacing-3)' }}>
+          <div className="docs-gen__chips wp-mt-3">
             {['All', ...categoryOrder].map(cat => (
               <button
                 key={cat}

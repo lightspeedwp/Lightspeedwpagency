@@ -110,7 +110,7 @@ export const trustSignals = {
       icon: Lock,
       stat: "Zero",
       label: "Security Breaches",
-      description: "In 10 years"
+      description: "In 20+ years"
     }
   ]
 };

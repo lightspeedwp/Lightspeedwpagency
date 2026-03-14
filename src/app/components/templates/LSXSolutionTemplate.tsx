@@ -12,7 +12,7 @@
  * - CaseStudyPreview (success stories)
  * - TestimonialGrid (client testimonials)
  * - FAQSection (solution FAQs)
- * - CTASection (conversion)
+ * - FunkyCTA (conversion)
  * 
  * **Design System:**
  * - 100% CSS variables from theme.css

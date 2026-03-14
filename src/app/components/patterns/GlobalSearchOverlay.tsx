@@ -388,10 +388,9 @@ export function GlobalSearchOverlay({
                   key={type}
                   className={`global-search__filter-chip ${
                     activeTypes.includes(type) ? 'global-search__filter-chip--active' : ''
-                  }`}
+                  } ${count === 0 && !activeTypes.includes(type) ? 'wp-opacity-40' : ''}`}
                   onClick={() => toggleType(type)}
                   aria-pressed={activeTypes.includes(type)}
-                  style={{ opacity: count === 0 && !activeTypes.includes(type) ? 0.4 : 1 }}
                 >
                   <Icon size={12} />
                   {contentTypeLabels[type]}
@@ -491,9 +490,7 @@ export function GlobalSearchOverlay({
                         </div>
                       )}
                       <div className="global-search__result-meta">
-                        <span
-                          style={{ color: `var(--primary)` }}
-                        >
+                        <span className="wp-text-primary">
                           {contentTypeLabels[result.contentType]}
                         </span>
                         {result.meta?.readingTime && (

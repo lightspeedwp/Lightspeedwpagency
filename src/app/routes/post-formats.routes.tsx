@@ -24,34 +24,33 @@
  * @see /src/styles/bundles/blog-bundle.css
  */
 
-import React, { lazy, Suspense } from 'react';
+import React from 'react';
 import { type RouteObject } from 'react-router';
-import { RouteLoadingFallback } from '../components/ui/RouteLoadingFallback';
 import { loadCSSBundle } from '../utils/css-bundle-loader';
 
 /* ═══════════════════════════════════════════
- * Lazy Template Imports
+ * Static Template Imports
  * ═══════════════════════════════════════════ */
 
-const AudioArchiveTemplate = lazy(() => import('../components/templates/post-formats/AudioArchiveTemplate').then(m => ({ default: m.AudioArchiveTemplate })));
-const SingleAudioTemplate = lazy(() => import('../components/templates/post-formats/SingleAudioTemplate').then(m => ({ default: m.SingleAudioTemplate })));
-const GalleryArchiveTemplate = lazy(() => import('../components/templates/post-formats/GalleryArchiveTemplate').then(m => ({ default: m.GalleryArchiveTemplate })));
-const SingleGalleryTemplate = lazy(() => import('../components/templates/post-formats/SingleGalleryTemplate').then(m => ({ default: m.SingleGalleryTemplate })));
-const ImageArchiveTemplate = lazy(() => import('../components/templates/post-formats/ImageArchiveTemplate').then(m => ({ default: m.ImageArchiveTemplate })));
-const SingleImageTemplate = lazy(() => import('../components/templates/post-formats/SingleImageTemplate').then(m => ({ default: m.SingleImageTemplate })));
-const QuoteArchiveTemplate = lazy(() => import('../components/templates/post-formats/QuoteArchiveTemplate').then(m => ({ default: m.QuoteArchiveTemplate })));
-const SingleQuoteTemplate = lazy(() => import('../components/templates/post-formats/SingleQuoteTemplate').then(m => ({ default: m.SingleQuoteTemplate })));
-const LinkArchiveTemplate = lazy(() => import('../components/templates/post-formats/LinkArchiveTemplate').then(m => ({ default: m.LinkArchiveTemplate })));
-const SingleLinkTemplate = lazy(() => import('../components/templates/post-formats/SingleLinkTemplate').then(m => ({ default: m.SingleLinkTemplate })));
-const ChatArchiveTemplate = lazy(() => import('../components/templates/post-formats/ChatArchiveTemplate').then(m => ({ default: m.ChatArchiveTemplate })));
-const SingleChatTemplate = lazy(() => import('../components/templates/post-formats/SingleChatTemplate').then(m => ({ default: m.SingleChatTemplate })));
-const StatusArchiveTemplate = lazy(() => import('../components/templates/post-formats/StatusArchiveTemplate').then(m => ({ default: m.StatusArchiveTemplate })));
-const SingleStatusTemplate = lazy(() => import('../components/templates/post-formats/SingleStatusTemplate').then(m => ({ default: m.SingleStatusTemplate })));
-const StandardArchiveTemplate = lazy(() => import('../components/templates/post-formats/StandardArchiveTemplate').then(m => ({ default: m.StandardArchiveTemplate })));
-const SingleStandardTemplate = lazy(() => import('../components/templates/post-formats/SingleStandardTemplate').then(m => ({ default: m.SingleStandardTemplate })));
-const AsideArchiveTemplate = lazy(() => import('../components/templates/post-formats/AsideArchiveTemplate').then(m => ({ default: m.AsideArchiveTemplate })));
-const SingleAsideTemplate = lazy(() => import('../components/templates/post-formats/SingleAsideTemplate').then(m => ({ default: m.SingleAsideTemplate })));
-const AsideStreamTemplate = lazy(() => import('../components/templates/post-formats/AsideStreamTemplate').then(m => ({ default: m.AsideStreamTemplate })));
+import { AudioArchiveTemplate } from '../components/templates/post-formats/AudioArchiveTemplate';
+import { SingleAudioTemplate } from '../components/templates/post-formats/SingleAudioTemplate';
+import { GalleryArchiveTemplate } from '../components/templates/post-formats/GalleryArchiveTemplate';
+import { SingleGalleryTemplate } from '../components/templates/post-formats/SingleGalleryTemplate';
+import { ImageArchiveTemplate } from '../components/templates/post-formats/ImageArchiveTemplate';
+import { SingleImageTemplate } from '../components/templates/post-formats/SingleImageTemplate';
+import { QuoteArchiveTemplate } from '../components/templates/post-formats/QuoteArchiveTemplate';
+import { SingleQuoteTemplate } from '../components/templates/post-formats/SingleQuoteTemplate';
+import { LinkArchiveTemplate } from '../components/templates/post-formats/LinkArchiveTemplate';
+import { SingleLinkTemplate } from '../components/templates/post-formats/SingleLinkTemplate';
+import { ChatArchiveTemplate } from '../components/templates/post-formats/ChatArchiveTemplate';
+import { SingleChatTemplate } from '../components/templates/post-formats/SingleChatTemplate';
+import { StatusArchiveTemplate } from '../components/templates/post-formats/StatusArchiveTemplate';
+import { SingleStatusTemplate } from '../components/templates/post-formats/SingleStatusTemplate';
+import { StandardArchiveTemplate } from '../components/templates/post-formats/StandardArchiveTemplate';
+import { SingleStandardTemplate } from '../components/templates/post-formats/SingleStandardTemplate';
+import { AsideArchiveTemplate } from '../components/templates/post-formats/AsideArchiveTemplate';
+import { SingleAsideTemplate } from '../components/templates/post-formats/SingleAsideTemplate';
+import { AsideStreamTemplate } from '../components/templates/post-formats/AsideStreamTemplate';
 
 /* ═══════════════════════════════════════════
  * Route Wrapper Components
@@ -60,181 +59,105 @@ const AsideStreamTemplate = lazy(() => import('../components/templates/post-form
 // Audio
 function AudioArchiveRoute() {
   loadCSSBundle('blog');
-  return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <AudioArchiveTemplate />
-    </Suspense>
-  );
+  return <AudioArchiveTemplate />;
 }
 
 function SingleAudioRoute() {
   loadCSSBundle('blog');
-  return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <SingleAudioTemplate />
-    </Suspense>
-  );
+  return <SingleAudioTemplate />;
 }
 
 // Gallery
 function GalleryArchiveRoute() {
   loadCSSBundle('blog');
-  return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <GalleryArchiveTemplate />
-    </Suspense>
-  );
+  return <GalleryArchiveTemplate />;
 }
 
 function SingleGalleryRoute() {
   loadCSSBundle('blog');
-  return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <SingleGalleryTemplate />
-    </Suspense>
-  );
+  return <SingleGalleryTemplate />;
 }
 
 // Image
 function ImageArchiveRoute() {
   loadCSSBundle('blog');
-  return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <ImageArchiveTemplate />
-    </Suspense>
-  );
+  return <ImageArchiveTemplate />;
 }
 
 function SingleImageRoute() {
   loadCSSBundle('blog');
-  return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <SingleImageTemplate />
-    </Suspense>
-  );
+  return <SingleImageTemplate />;
 }
 
 // Quote
 function QuoteArchiveRoute() {
   loadCSSBundle('blog');
-  return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <QuoteArchiveTemplate />
-    </Suspense>
-  );
+  return <QuoteArchiveTemplate />;
 }
 
 function SingleQuoteRoute() {
   loadCSSBundle('blog');
-  return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <SingleQuoteTemplate />
-    </Suspense>
-  );
+  return <SingleQuoteTemplate />;
 }
 
 // Link
 function LinkArchiveRoute() {
   loadCSSBundle('blog');
-  return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <LinkArchiveTemplate />
-    </Suspense>
-  );
+  return <LinkArchiveTemplate />;
 }
 
 function SingleLinkRoute() {
   loadCSSBundle('blog');
-  return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <SingleLinkTemplate />
-    </Suspense>
-  );
+  return <SingleLinkTemplate />;
 }
 
 // Chat
 function ChatArchiveRoute() {
   loadCSSBundle('blog');
-  return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <ChatArchiveTemplate />
-    </Suspense>
-  );
+  return <ChatArchiveTemplate />;
 }
 
 function SingleChatRoute() {
   loadCSSBundle('blog');
-  return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <SingleChatTemplate />
-    </Suspense>
-  );
+  return <SingleChatTemplate />;
 }
 
 // Status
 function StatusArchiveRoute() {
   loadCSSBundle('blog');
-  return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <StatusArchiveTemplate />
-    </Suspense>
-  );
+  return <StatusArchiveTemplate />;
 }
 
 function SingleStatusRoute() {
   loadCSSBundle('blog');
-  return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <SingleStatusTemplate />
-    </Suspense>
-  );
+  return <SingleStatusTemplate />;
 }
 
 // Standard
 function StandardArchiveRoute() {
   loadCSSBundle('blog');
-  return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <StandardArchiveTemplate />
-    </Suspense>
-  );
+  return <StandardArchiveTemplate />;
 }
 
 function SingleStandardRoute() {
   loadCSSBundle('blog');
-  return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <SingleStandardTemplate />
-    </Suspense>
-  );
+  return <SingleStandardTemplate />;
 }
 
 // Aside
 function AsideArchiveRoute() {
   loadCSSBundle('blog');
-  return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <AsideArchiveTemplate />
-    </Suspense>
-  );
+  return <AsideArchiveTemplate />;
 }
 
 function SingleAsideRoute() {
   loadCSSBundle('blog');
-  return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <SingleAsideTemplate />
-    </Suspense>
-  );
+  return <SingleAsideTemplate />;
 }
 
 function AsideStreamRoute() {
   loadCSSBundle('blog');
-  return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <AsideStreamTemplate />
-    </Suspense>
-  );
+  return <AsideStreamTemplate />;
 }
 
 /* ═══════════════════════════════════════════

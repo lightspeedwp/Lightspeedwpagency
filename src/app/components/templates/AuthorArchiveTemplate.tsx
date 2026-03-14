@@ -110,42 +110,25 @@ function AllAuthorsIndex() {
       <BreadcrumbPart items={breadcrumbs} />
 
       {/* Funky Neon Hero */}
-      <section className="archive-header" style={{ position: 'relative', overflow: 'hidden' }}>
+      <section className="archive-header wp-relative wp-overflow-hidden">
         {/* Mesh-grid decoration */}
         <div
           className="archive-header__mesh-grid"
           aria-hidden="true"
-          style={{
-            position: 'absolute',
-            inset: 0,
-            backgroundImage:
-              'linear-gradient(color-mix(in srgb, var(--primary) 8%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in srgb, var(--primary) 8%, transparent) 1px, transparent 1px)',
-            backgroundSize: '48px 48px',
-            pointerEvents: 'none',
-          }}
         />
         {/* Orb glow */}
         <div
+          className="archive-header__orb"
           aria-hidden="true"
-          style={{
-            position: 'absolute',
-            top: '-20%',
-            left: '50%',
-            transform: 'translateX(-50%)',
-            width: '600px',
-            height: '400px',
-            background: 'radial-gradient(circle, color-mix(in srgb, var(--primary) 15%, transparent) 0%, transparent 70%)',
-            pointerEvents: 'none',
-          }}
         />
 
         <Container>
           <ScrollReveal animation="fade-up">
-            <div style={{ position: 'relative' }}>
+            <div className="wp-relative">
               {/* Neon badge */}
-              <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 'var(--spacing-6)' }}>
+              <div className="wp-flex wp-justify-center wp-mb-6">
                 <Badge variant="primary" size="sm">
-                  <PenNib size={12} style={{ marginRight: 'var(--spacing-1)' }} />
+                  <PenNib size={12} className="wp-mr-1" />
                   {authorArchiveHero.badge.text}
                 </Badge>
               </div>
@@ -165,7 +148,7 @@ function AllAuthorsIndex() {
       <Section background="default" spacing="lg">
         <Container>
           <ScrollReveal animation="fade-up">
-            <div className="wp-grid-3-cols" style={{ gap: 'var(--spacing-8)' }}>
+            <div className="wp-grid-3-cols wp-gap-8">
               {blogAuthors.map((author) => (
                 <AuthorCard key={author.id} author={author} />
               ))}
@@ -214,7 +197,7 @@ function AuthorCard({ author }: { author: BlogAuthor }) {
       aria-label={`View posts by ${author.name}`}
     >
       {/* Avatar */}
-      <div className="archive-card__image-wrapper" style={{ aspectRatio: '1 / 1', maxHeight: '240px' }}>
+      <div className="archive-card__image-wrapper wp-aspect-square" style={{ maxHeight: '15rem' }}>
         <img
           src={author.avatar}
           alt={author.name}
@@ -225,7 +208,7 @@ function AuthorCard({ author }: { author: BlogAuthor }) {
 
       {/* Info */}
       <div className="archive-card__content">
-        <h3 className="archive-card__title" style={{ color: 'var(--foreground)' }}>
+        <h3 className="archive-card__title wp-text-foreground">
           {author.name}
         </h3>
 
@@ -271,7 +254,7 @@ function SingleAuthorArchive({
           <p className="archive-header__description">
             Sorry, we couldn't find the author you're looking for.
           </p>
-          <Link to="/insights" className="wp-block-button__link" style={{ marginTop: 'var(--spacing-6)', display: 'inline-block' }}>
+          <Link to="/insights" className="wp-block-button__link wp-mt-6 wp-inline-block">
             Back to insights
           </Link>
         </Container>
@@ -389,14 +372,14 @@ function SingleAuthorArchive({
                 spacing="8"
               />
             ) : (
-              <p className="archive-header__description" style={{ textAlign: 'center' }}>
+              <p className="archive-header__description wp-text-center">
                 No posts found for this author.
               </p>
             )}
 
             {/* Pagination */}
             {totalPages > 1 && (
-              <div style={{ marginTop: 'var(--spacing-12)' }}>
+              <div className="wp-mt-12">
                 <PaginationNav
                   currentPage={currentPage}
                   totalPages={totalPages}

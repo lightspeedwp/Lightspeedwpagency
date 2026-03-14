@@ -241,7 +241,7 @@ export function NewsletterForm({
         type="submit"
         variant="default"
         disabled={isSubmitting}
-        className="w-full"
+        className="wp-w-full"
       >
         {isSubmitting ? (
           <div className="wp-block-newsletter-form__submit-content">

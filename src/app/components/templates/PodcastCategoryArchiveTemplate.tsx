@@ -47,7 +47,7 @@ export function PodcastCategoryArchiveTemplate() {
       {/* Category Header */}
       <Section spacing="lg" className="archive-header">
         <Container>
-          <div className="wp-max-w-3xl wp-mx-auto wp-text-center">
+          <div className="archive-header__content">
             <Badge variant="secondary">Podcast Category</Badge>
             <Heading level={1} className="archive-header__title">
               {categoryName}
@@ -57,7 +57,7 @@ export function PodcastCategoryArchiveTemplate() {
                 {category.description}
               </Paragraph>
             )}
-            <Paragraph className="archive-controls__count" style={{ marginTop: 'var(--spacing-4)' }}>
+            <Paragraph className="archive-controls__count wp-mt-4">
               {episodes.length} {episodes.length === 1 ? 'episode' : 'episodes'}
             </Paragraph>
           </div>
@@ -65,7 +65,7 @@ export function PodcastCategoryArchiveTemplate() {
       </Section>
 
       {/* Category navigation */}
-      <Section spacing="sm" style={{ borderBottom: '1px solid var(--border-soft)' }}>
+      <Section spacing="sm" className="wp-border-b wp-border-border-soft">
         <Container>
           <nav className="archive-category-nav" aria-label="Podcast categories">
             <div className="archive-category-nav__list">

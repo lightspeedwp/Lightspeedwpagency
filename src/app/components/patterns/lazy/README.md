@@ -14,7 +14,7 @@ This directory contains lazy-loading wrappers for below-the-fold pattern compone
 | Pattern | Usage | Min Height | Lines |
 |---------|-------|------------|-------|
 | **LazyFAQSection** | FAQ accordions | 400px | 5 |
-| **LazyCTASection** | Call-to-action sections | 250px | 3 |
+| **LazyFunkyCTA** | Call-to-action sections | 250px | 3 |
 | **LazyNewsletterSignup** | Newsletter forms | 200px | 2 |
 | **LazyRelatedPosts** | Related posts grid | 500px | 6 |
 | **LazySocialProof** | Social proof sections | 300px | 4 |
@@ -47,7 +47,7 @@ function MyTemplate() {
 ```tsx
 import { 
   LazyFAQSection,
-  LazyCTASection,
+  LazyFunkyCTA,
   LazyNewsletterSignup 
 } from '@/components/patterns/lazy';
 
@@ -60,7 +60,7 @@ function BlogPostTemplate() {
       {/* All below-fold patterns lazy-load */}
       <LazyFAQSection faqs={postFAQs} />
       <LazyNewsletterSignup />
-      <LazyCTASection 
+      <LazyFunkyCTA 
         title="Ready to learn more?"
         buttonText="Get Started"
         buttonHref="/contact"
@@ -265,7 +265,7 @@ src/app/components/patterns/lazy/
 ├── README.md                      # This file
 ├── index.ts                       # Centralized exports
 ├── LazyFAQSection.tsx            # FAQ lazy wrapper
-├── LazyCTASection.tsx            # CTA lazy wrapper
+├── LazyFunkyCTA.tsx            # CTA lazy wrapper
 ├── LazyNewsletterSignup.tsx      # Newsletter lazy wrapper
 ├── LazyRelatedPosts.tsx          # Related posts lazy wrapper
 ├── LazySocialProof.tsx           # Social proof lazy wrapper

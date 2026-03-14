@@ -286,13 +286,7 @@ export function StyleGuideTemplate() {
                   <code className="sg-type__code">--font-primary</code>
                   <span className="sg-type__level">Body (Lexend)</span>
                 </div>
-                <p style={{
-                  fontFamily: 'var(--font-primary)',
-                  fontSize: 'var(--text-base)',
-                  color: 'var(--foreground)',
-                  lineHeight: 'var(--line-height-relaxed)',
-                  margin: 0,
-                }}>
+                <p className="wp-font-primary wp-text-base wp-text-foreground wp-m-0 wp-leading-relaxed">
                   The quick brown fox jumps over the lazy dog. Pack my box with five dozen liquor jugs.
                 </p>
               </div>
@@ -304,13 +298,7 @@ export function StyleGuideTemplate() {
                   <code className="sg-type__code">--font-secondary</code>
                   <span className="sg-type__level">Body (Manrope)</span>
                 </div>
-                <p style={{
-                  fontFamily: 'var(--font-secondary)',
-                  fontSize: 'var(--text-base)',
-                  color: 'var(--muted-foreground)',
-                  lineHeight: 'var(--line-height-relaxed)',
-                  margin: 0,
-                }}>
+                <p className="wp-font-secondary wp-text-base wp-text-muted-foreground wp-m-0 wp-leading-relaxed">
                   The quick brown fox jumps over the lazy dog. Pack my box with five dozen liquor jugs.
                 </p>
               </div>

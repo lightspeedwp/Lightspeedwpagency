@@ -76,7 +76,7 @@ export function HeroSplash({
         <div className="hero-base__content hero-align-center">
           {/* Badge */}
           <div className="hero-base__badge">
-            <BadgeIcon size={16} style={{ color: 'var(--color-white)' }} />
+            <BadgeIcon size={16} className="wp-text-white" />
             {badge}
           </div>
           

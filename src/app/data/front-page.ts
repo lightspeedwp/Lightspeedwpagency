@@ -65,7 +65,7 @@ export const frontPageWhyChoose = {
     },
     {
       icon: Users,
-      title: '10+ Years Experience',
+      title: '20+ Years Experience',
       description: 'Our senior developers average over a decade of WordPress expertise across hundreds of projects.'
     },
     {

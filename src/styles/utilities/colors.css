@@ -31,6 +31,19 @@
 .wp-bg-success-soft { background-color: var(--success-soft); }
 .wp-bg-transparent { background-color: transparent; }
 
+/* Opacity utilities */
+.wp-opacity-0 { opacity: 0; }
+.wp-opacity-10 { opacity: 0.1; }
+.wp-opacity-20 { opacity: 0.2; }
+.wp-opacity-30 { opacity: 0.3; }
+.wp-opacity-40 { opacity: 0.4; }
+.wp-opacity-50 { opacity: 0.5; }
+.wp-opacity-60 { opacity: 0.6; }
+.wp-opacity-70 { opacity: 0.7; }
+.wp-opacity-80 { opacity: 0.8; }
+.wp-opacity-90 { opacity: 0.9; }
+.wp-opacity-100 { opacity: 1; }
+
 /* ============================================
    TEXT COLOR UTILITIES
    ============================================ */
@@ -52,8 +65,11 @@
 .wp-text-card-foreground { color: var(--card-foreground); }
 .wp-text-destructive { color: var(--destructive); }
 .wp-text-destructive-foreground { color: var(--destructive-foreground); }
+.wp-text-accent { color: var(--accent); }
 .wp-text-accent-foreground { color: var(--accent-foreground); }
 .wp-text-success { color: var(--success); }
+.wp-text-category-red { color: var(--category-red); }
+.wp-text-category-violet { color: var(--category-violet); }
 
 /* ============================================
    HOVER STATE UTILITIES

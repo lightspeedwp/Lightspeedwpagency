@@ -199,21 +199,8 @@ export function BlockDocumentation() {
   const totalBlocks = blockCategories.reduce((sum, cat) => sum + cat.blocks.length, 0);
 
   return (
-    <div
-      style={{
-        minHeight: '100vh',
-        display: 'flex',
-        flexDirection: 'column',
-        backgroundColor: 'var(--background)',
-        color: 'var(--foreground)'
-      }}
-    >
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column'
-        }}
-      >
+    <div className="wp-min-h-screen wp-flex wp-flex-col wp-bg-background wp-text-foreground">
+      <div className="wp-flex wp-flex-col">
         {/* Breadcrumbs */}
         <BreadcrumbPart
           items={[
@@ -226,17 +213,9 @@ export function BlockDocumentation() {
         {/* Header */}
         <Section background="default" spacing="lg">
           <Container>
-            <div className="wp-text-center wp-max-w-4xl wp-mx-auto">
-              <div
-                className="wp-inline-flex wp-items-center wp-justify-center wp-mb-6"
-                style={{
-                  width: 'var(--spacing-20)',
-                  height: 'var(--spacing-20)',
-                  borderRadius: 'var(--radius-lg)',
-                  backgroundColor: 'var(--secondary)'
-                }}
-              >
-                <FileText size={40} style={{ color: 'var(--primary-foreground)' }} />
+            <div className="design-blocks-showcase__header">
+              <div className="design-blocks-showcase__icon">
+                <FileText size={40} />
               </div>
 
               <Heading level={1} className="wp-mb-4">
@@ -289,18 +268,11 @@ export function BlockDocumentation() {
               </span>
               <button
                 onClick={() => setSelectedCategory('all')}
-                style={{
-                  padding: 'var(--spacing-2) var(--spacing-4)',
-                  backgroundColor: selectedCategory === 'all' ? 'var(--primary)' : 'var(--background)',
-                  color: selectedCategory === 'all' ? 'var(--primary-foreground)' : 'var(--foreground)',
-                  border: `1px solid ${selectedCategory === 'all' ? 'var(--primary)' : 'var(--border-soft)'}`,
-                  borderRadius: 'var(--radius-lg)',
-                  fontFamily: 'var(--font-primary)',
-                  fontSize: 'var(--text-base)',
-                  fontWeight: 'var(--font-weight-medium)',
-                  cursor: 'pointer',
-                  transition: 'all 0.2s ease'
-                }}
+                className={`wp-px-4 wp-py-2 wp-rounded-lg wp-font-primary wp-text-base wp-font-medium wp-transition-all wp-duration-200 wp-cursor-pointer wp-border focus:wp-outline-none focus-visible:wp-ring-2 focus-visible:wp-ring-ring focus-visible:wp-ring-offset-2 ${
+                  selectedCategory === 'all'
+                    ? 'wp-bg-primary wp-text-primary-foreground wp-border-primary'
+                    : 'wp-bg-background wp-text-foreground wp-border-border-soft hover:wp-border-primary hover:wp-bg-card'
+                }`}
               >
                 All Blocks
               </button>
@@ -308,18 +280,11 @@ export function BlockDocumentation() {
                 <button
                   key={cat.id}
                   onClick={() => setSelectedCategory(cat.id)}
-                  style={{
-                    padding: 'var(--spacing-2) var(--spacing-4)',
-                    backgroundColor: selectedCategory === cat.id ? 'var(--primary)' : 'var(--background)',
-                    color: selectedCategory === cat.id ? 'var(--primary-foreground)' : 'var(--foreground)',
-                    border: `1px solid ${selectedCategory === cat.id ? 'var(--primary)' : 'var(--border-soft)'}`,
-                    borderRadius: 'var(--radius-lg)',
-                    fontFamily: 'var(--font-primary)',
-                    fontSize: 'var(--text-base)',
-                    fontWeight: 'var(--font-weight-medium)',
-                    cursor: 'pointer',
-                    transition: 'all 0.2s ease'
-                  }}
+                  className={`wp-px-4 wp-py-2 wp-rounded-lg wp-font-primary wp-text-base wp-font-medium wp-transition-all wp-duration-200 wp-cursor-pointer wp-border focus:wp-outline-none focus-visible:wp-ring-2 focus-visible:wp-ring-ring focus-visible:wp-ring-offset-2 ${
+                    selectedCategory === cat.id
+                      ? 'wp-bg-primary wp-text-primary-foreground wp-border-primary'
+                      : 'wp-bg-background wp-text-foreground wp-border-border-soft hover:wp-border-primary hover:wp-bg-card'
+                  }`}
                 >
                   {cat.name}
                 </button>
@@ -349,7 +314,7 @@ export function BlockDocumentation() {
                   >
                     <div className="wp-flex wp-items-start wp-gap-4">
                       <div className="showcase__block-icon-wrapper">
-                        <block.icon size={24} style={{ color: 'var(--primary-foreground)' }} />
+                        <block.icon size={24} className="wp-text-primary-foreground" />
                       </div>
 
                       <div className="showcase__block-content">

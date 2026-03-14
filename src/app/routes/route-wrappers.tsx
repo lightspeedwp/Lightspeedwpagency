@@ -36,12 +36,6 @@ import {
   PodcastArchiveTemplate,
   SinglePodcastTemplate,
   PodcastCategoryArchiveTemplate,
-  ProductArchiveTemplate,
-  SingleProductTemplate,
-  CartTemplate,
-  CheckoutTemplate,
-  TourOperatorArchiveTemplate,
-  SingleTourTemplate,
   TestimonialArchiveTemplate,
   SingleTestimonialTemplate,
   SingleTestimonialAudioTemplate,
@@ -181,33 +175,8 @@ export function JourneyEvolveRoute() {
 }
 
 /* ═══════════════════════════════════════════
- * Lazy Suspense Wrappers — WooCommerce
- * ═══════════════════════════════════════════ */
-
-export function ProductArchiveRoute() {
-  return (<Suspense fallback={<RouteLoadingFallback />}><ProductArchiveTemplate /></Suspense>);
-}
-export function SingleProductRoute() {
-  const { slug } = useParams();
-  return (<Suspense fallback={<RouteLoadingFallback />}><SingleProductTemplate slug={slug} /></Suspense>);
-}
-export function CartRoute() {
-  return (<Suspense fallback={<RouteLoadingFallback />}><CartTemplate /></Suspense>);
-}
-export function CheckoutRoute() {
-  return (<Suspense fallback={<RouteLoadingFallback />}><CheckoutTemplate /></Suspense>);
-}
-
-/* ═══════════════════════════════════════════
  * Lazy Suspense Wrappers — Tours
  * ═══════════════════════════════════════════ */
-
-export function TourOperatorArchiveRoute() {
-  return (<Suspense fallback={<RouteLoadingFallback />}><TourOperatorArchiveTemplate /></Suspense>);
-}
-export function SingleTourRoute() {
-  return (<Suspense fallback={<RouteLoadingFallback />}><SingleTourTemplate /></Suspense>);
-}
 
 /* ═══════════════════════════════════════════
  * Lazy Suspense Wrappers — Videos

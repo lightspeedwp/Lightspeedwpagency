@@ -58,7 +58,7 @@ export function VideoTagArchiveTemplate() {
             <Paragraph className="archive-header__description">
               Videos tagged with <strong>{tagName}</strong>. Explore tutorials, webinars, and case studies.
             </Paragraph>
-            <Paragraph className="archive-controls__count" style={{ marginTop: 'var(--spacing-4)' }}>
+            <Paragraph className="archive-controls__count wp-mt-4">
               {taggedVideos.length} {taggedVideos.length === 1 ? 'video' : 'videos'}
             </Paragraph>
           </div>
@@ -66,7 +66,7 @@ export function VideoTagArchiveTemplate() {
       </Section>
 
       {/* Tag cloud navigation */}
-      <Section spacing="sm" style={{ borderBottom: '1px solid var(--border-soft)' }}>
+      <Section spacing="sm" className="wp-border-b wp-border-border-soft">
         <Container>
           <nav className="archive-category-nav" aria-label="Video tags">
             <div className="archive-category-nav__list">

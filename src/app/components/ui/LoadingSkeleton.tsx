@@ -69,7 +69,7 @@ export const LoadingSkeleton = ({
         <div className="skeleton__image" />
         <div className="skeleton__content">
           <div className="skeleton skeleton--text" style={{ width: '60%' }} />
-          <div className="skeleton skeleton--text" style={{ width: '100%' }} />
+          <div className="skeleton skeleton--text wp-w-full" />
           <div className="skeleton skeleton--text" style={{ width: '80%' }} />
         </div>
       </div>
@@ -101,7 +101,7 @@ export const LoadingSkeleton = ({
     return (
       <div
         className={`skeleton skeleton--button ${className}`}
-        style={{ width: width || '120px' }}
+        style={{ width: width || '8rem' }}
       />
     );
   }

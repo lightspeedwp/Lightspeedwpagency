@@ -12,7 +12,7 @@
  * @see /src/styles/ui/route-loading-fallback.css
  */
 
-import '@/styles/ui/route-loading-fallback.css';
+import '../../../styles/ui/route-loading-fallback.css';
 
 export const RouteLoadingFallback = () => {
   return (

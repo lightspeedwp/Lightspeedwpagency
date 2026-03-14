@@ -92,7 +92,7 @@ export function ClientIntakeFormTemplate() {
                       </div>
                     </div>
 
-                    <div className="wp-grid-2-cols" style={{ marginTop: 'var(--spacing-6)' }}>
+                    <div className="wp-grid-2-cols wp-mt-6">
                       <div className="briefing-page__form-group">
                         <label className="briefing-page__label" htmlFor="email">Email Address *</label>
                         <input type="email" id="email" className="briefing-page__input" required />
@@ -103,7 +103,7 @@ export function ClientIntakeFormTemplate() {
                       </div>
                     </div>
 
-                    <div className="briefing-page__form-group" style={{ marginTop: 'var(--spacing-6)' }}>
+                    <div className="briefing-page__form-group wp-mt-6">
                       <label className="briefing-page__label" htmlFor="currentWebsite">Current Website URL (if applicable)</label>
                       <input type="url" id="currentWebsite" className="briefing-page__input" placeholder="https://" />
                     </div>
@@ -139,7 +139,7 @@ export function ClientIntakeFormTemplate() {
                       </div>
                     </div>
 
-                    <div className="briefing-page__form-group" style={{ marginTop: 'var(--spacing-6)' }}>
+                    <div className="briefing-page__form-group wp-mt-6">
                       <label className="briefing-page__label" htmlFor="budget">Estimated Budget</label>
                       <select id="budget" className="briefing-page__select">
                         <option value="">Select a range...</option>
@@ -160,7 +160,7 @@ export function ClientIntakeFormTemplate() {
                       <textarea id="projectGoals" className="briefing-page__textarea" placeholder="e.g. Increase conversion rate, modernize brand, integrate with our CRM..." required></textarea>
                     </div>
 
-                    <div className="briefing-page__form-group" style={{ marginTop: 'var(--spacing-6)' }}>
+                    <div className="briefing-page__form-group wp-mt-6">
                       <label className="briefing-page__label" htmlFor="timeline">Expected Launch Timeline</label>
                       <select id="timeline" className="briefing-page__select">
                         <option value="">Select timeline...</option>

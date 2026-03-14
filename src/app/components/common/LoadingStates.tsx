@@ -53,12 +53,12 @@ export function LoadingSpinner({
       className="loading-spinner"
     >
       <motion.div
+        className="wp-rounded-full"
         style={{
           width: spinnerSize,
           height: spinnerSize,
           border: `3px solid var(--muted)`,
-          borderTop: `3px solid ${color}`,
-          borderRadius: '50%'
+          borderTop: `3px solid ${color}`
         }}
         animate={{ rotate: 360 }}
         transition={{
@@ -94,11 +94,7 @@ export function CardSkeleton({
       {Array.from({ length: count }).map((_, index) => (
         <div
           key={index}
-          className={`loading-card-skeleton ${className}`}
-          style={{
-            backgroundColor: 'var(--card)',
-            border: '1px solid var(--border-soft)'
-          }}
+          className={`loading-card-skeleton wp-bg-card wp-border wp-border-border-soft ${className}`}
         >
           {/* Image placeholder */}
           {showImage && (
@@ -109,21 +105,21 @@ export function CardSkeleton({
           )}
           
           {/* Content */}
-          <div style={{ padding: 'var(--spacing-6)', display: 'flex', flexDirection: 'column', gap: 'var(--spacing-4)' }}>
+          <div className="wp-p-6 wp-flex wp-flex-col wp-gap-4">
             {/* Title */}
             <SkeletonLine width="80%" height={24} />
             
             {/* Description */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--spacing-2)' }}>
+            <div className="wp-flex wp-flex-col wp-gap-2">
               <SkeletonLine width="100%" />
               <SkeletonLine width="90%" />
               <SkeletonLine width="70%" />
             </div>
             
             {/* Meta */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-4)', paddingTop: 'var(--spacing-2)' }}>
+            <div className="wp-flex wp-items-center wp-gap-4 wp-pt-2">
               <SkeletonCircle size={32} />
-              <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 'var(--spacing-2)' }}>
+              <div className="wp-flex-1 wp-flex wp-flex-col wp-gap-2">
                 <SkeletonLine width="40%" height={12} />
                 <SkeletonLine width="30%" height={12} />
               </div>
@@ -151,14 +147,10 @@ export function SkeletonLine({
 }: SkeletonLineProps) {
   return (
     <motion.div
-      className={className}
+      className={`wp-bg-muted wp-rounded wp-overflow-hidden wp-relative ${className}`}
       style={{
         width,
-        height,
-        borderRadius: 'var(--radius)',
-        backgroundColor: 'var(--muted)',
-        overflow: 'hidden',
-        position: 'relative'
+        height
       }}
       animate={{
         opacity: [0.5, 1, 0.5]
@@ -170,13 +162,9 @@ export function SkeletonLine({
       }}
     >
       <motion.div
+        className="wp-absolute wp-inset-0"
         style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          background: 'linear-gradient(90deg, transparent, var(--overlay-white-soft), transparent)'
+          background: 'var(--gradient-shimmer)'
         }}
         animate={{
           x: ['-100%', '100%']
@@ -208,14 +196,10 @@ export function SkeletonBlock({
 }: SkeletonBlockProps) {
   return (
     <motion.div
-      className={className}
+      className={`wp-bg-muted wp-rounded-lg wp-overflow-hidden wp-relative ${className}`}
       style={{
         width,
-        height,
-        borderRadius: 'var(--radius-lg)',
-        backgroundColor: 'var(--muted)',
-        overflow: 'hidden',
-        position: 'relative'
+        height
       }}
       animate={{
         opacity: [0.5, 1, 0.5]
@@ -227,13 +211,9 @@ export function SkeletonBlock({
       }}
     >
       <motion.div
+        className="wp-absolute wp-inset-0"
         style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          background: 'linear-gradient(90deg, transparent, var(--overlay-white-soft), transparent)'
+          background: 'var(--gradient-shimmer)'
         }}
         animate={{
           x: ['-100%', '100%']
@@ -263,13 +243,10 @@ export function SkeletonCircle({
 }: SkeletonCircleProps) {
   return (
     <motion.div
-      className={className}
+      className={`wp-bg-muted wp-rounded-full wp-shrink-0 ${className}`}
       style={{
         width: size,
-        height: size,
-        borderRadius: '50%',
-        backgroundColor: 'var(--muted)',
-        flexShrink: 0
+        height: size
       }}
       animate={{
         opacity: [0.5, 1, 0.5]
@@ -308,27 +285,16 @@ export function ProgressBar({
   return (
     <div>
       {showLabel && (
-        <div 
-          className="loading-progress__label-row"
-          style={{
-            fontSize: 'var(--text-sm)',
-            fontFamily: 'var(--font-secondary)',
-            color: 'var(--muted-foreground)'
-          }}
-        >
+        <div className="loading-progress__label-row wp-font-secondary wp-text-sm wp-text-muted-foreground">
           <span>Loading...</span>
           <span>{clampedProgress}%</span>
         </div>
       )}
       
       <div
+        className="wp-w-full wp-bg-muted wp-rounded wp-overflow-hidden wp-relative"
         style={{
-          width: '100%',
-          height,
-          backgroundColor: 'var(--muted)',
-          borderRadius: 'var(--radius)',
-          overflow: 'hidden',
-          position: 'relative'
+          height
         }}
         role="progressbar"
         aria-valuenow={clampedProgress}
@@ -336,10 +302,9 @@ export function ProgressBar({
         aria-valuemax={100}
       >
         <motion.div
+          className="wp-h-full wp-rounded"
           style={{
-            height: '100%',
-            backgroundColor: color,
-            borderRadius: 'var(--radius)'
+            backgroundColor: color
           }}
           initial={{ width: 0 }}
           animate={{ width: `${clampedProgress}%` }}
@@ -380,11 +345,11 @@ export function DotsLoader({
       {[0, 1, 2].map((index) => (
         <motion.div
           key={index}
+          className="wp-rounded-full"
           style={{
             width: size,
             height: size,
-            backgroundColor: color,
-            borderRadius: '50%'
+            backgroundColor: color
           }}
           animate={{
             scale: [1, 1.5, 1],
@@ -431,13 +396,11 @@ export function PulseLoader({
       {[0, 1].map((index) => (
         <motion.div
           key={index}
+          className="wp-absolute wp-rounded-full"
           style={{
-            position: 'absolute',
             width: size,
             height: size,
-            borderRadius: '50%',
-            border: `3px solid ${color}`,
-            opacity: 0
+            border: `3px solid ${color}`
           }}
           animate={{
             scale: [0, 1.5],

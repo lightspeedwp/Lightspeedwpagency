@@ -35,8 +35,12 @@
   }
 }
 
-.impact-section__grid--reverse {
-  direction: rtl;
+.impact-section__col--first {
+  order: 1;
+}
+
+.impact-section__col--last {
+  order: 2;
 }
 
 /* Content Column -- flex column with blockGap */

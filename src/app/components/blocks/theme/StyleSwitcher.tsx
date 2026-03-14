@@ -77,7 +77,7 @@ export function StyleSwitcher({ className = '' }: StyleSwitcherProps) {
   if (!mounted) {
     return (
       <div className={`wp-block-style-switcher ${className}`}>
-        <div style={{ width: 'var(--spacing-32)', height: 'var(--spacing-9)' }} />
+        <div className="wp-w-32 wp-h-9" />
       </div>
     );
   }

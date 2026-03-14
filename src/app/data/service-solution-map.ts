@@ -72,18 +72,6 @@ export const allSolutions: SolutionReference[] = [
     },
   },
   {
-    id: 'tour-operator-design',
-    slug: 'tour-operator-design',
-    title: 'Tour Operator Website Design',
-    tagline: 'Specialized booking systems and stunning destination showcases for travel businesses',
-    icon: Airplane,
-    featured: true,
-    pricing: {
-      from: '$10,000',
-      label: 'Starting from',
-    },
-  },
-  {
     id: 'lsx-design',
     slug: 'lsx-design',
     title: 'LSX Design Framework',
@@ -96,13 +84,6 @@ export const allSolutions: SolutionReference[] = [
     title: 'Publishers & Media Solution',
     tagline: 'Content-first WordPress systems for publishers, magazines, and media companies',
     icon: Newspaper,
-  },
-  {
-    id: 'tour-operators-solution',
-    slug: 'tour-operators-solution',
-    title: 'Tour Operators Solution',
-    tagline: 'Complete booking and itinerary management systems for tour operators',
-    icon: Airplane,
   },
 ];
 
@@ -118,7 +99,6 @@ export const serviceSolutionMap: ServiceSolutionMap[] = [
     solutions: [
       allSolutions.find(s => s.slug === 'wordpress-redesign')!,
       allSolutions.find(s => s.slug === 'woocommerce-redesign')!,
-      allSolutions.find(s => s.slug === 'tour-operator-design')!,
     ],
   },
   
@@ -128,10 +108,8 @@ export const serviceSolutionMap: ServiceSolutionMap[] = [
     solutions: [
       allSolutions.find(s => s.slug === 'wordpress-redesign')!,
       allSolutions.find(s => s.slug === 'woocommerce-redesign')!,
-      allSolutions.find(s => s.slug === 'tour-operator-design')!,
       allSolutions.find(s => s.slug === 'lsx-design')!,
       allSolutions.find(s => s.slug === 'publishers-solution')!,
-      allSolutions.find(s => s.slug === 'tour-operators-solution')!,
     ],
   },
   
@@ -141,7 +119,6 @@ export const serviceSolutionMap: ServiceSolutionMap[] = [
     solutions: [
       allSolutions.find(s => s.slug === 'wordpress-redesign')!,
       allSolutions.find(s => s.slug === 'woocommerce-redesign')!,
-      allSolutions.find(s => s.slug === 'tour-operator-design')!,
       allSolutions.find(s => s.slug === 'lsx-design')!,
       allSolutions.find(s => s.slug === 'publishers-solution')!,
     ],
@@ -163,7 +140,6 @@ export const serviceSolutionMap: ServiceSolutionMap[] = [
     solutions: [
       allSolutions.find(s => s.slug === 'wordpress-redesign')!,
       allSolutions.find(s => s.slug === 'woocommerce-redesign')!,
-      allSolutions.find(s => s.slug === 'tour-operator-design')!,
       allSolutions.find(s => s.slug === 'publishers-solution')!,
     ],
   },
@@ -174,7 +150,6 @@ export const serviceSolutionMap: ServiceSolutionMap[] = [
     solutions: [
       allSolutions.find(s => s.slug === 'wordpress-redesign')!,
       allSolutions.find(s => s.slug === 'woocommerce-redesign')!,
-      allSolutions.find(s => s.slug === 'tour-operator-design')!,
       allSolutions.find(s => s.slug === 'lsx-design')!,
     ],
   },
@@ -185,10 +160,8 @@ export const serviceSolutionMap: ServiceSolutionMap[] = [
     solutions: [
       allSolutions.find(s => s.slug === 'wordpress-redesign')!,
       allSolutions.find(s => s.slug === 'woocommerce-redesign')!,
-      allSolutions.find(s => s.slug === 'tour-operator-design')!,
       allSolutions.find(s => s.slug === 'lsx-design')!,
       allSolutions.find(s => s.slug === 'publishers-solution')!,
-      allSolutions.find(s => s.slug === 'tour-operators-solution')!,
     ],
   },
   
@@ -198,7 +171,6 @@ export const serviceSolutionMap: ServiceSolutionMap[] = [
     solutions: [
       allSolutions.find(s => s.slug === 'wordpress-redesign')!,
       allSolutions.find(s => s.slug === 'woocommerce-redesign')!,
-      allSolutions.find(s => s.slug === 'tour-operator-design')!,
     ],
   },
   
@@ -217,7 +189,6 @@ export const serviceSolutionMap: ServiceSolutionMap[] = [
     solutions: [
       allSolutions.find(s => s.slug === 'wordpress-redesign')!,
       allSolutions.find(s => s.slug === 'woocommerce-redesign')!,
-      allSolutions.find(s => s.slug === 'tour-operator-design')!,
     ],
   },
   

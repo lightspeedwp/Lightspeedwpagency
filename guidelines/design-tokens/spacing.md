@@ -1,17 +1,77 @@
-# Spacing Tokens
+# Spacing Tokens — Design Tokens
 
-**Version:** 2.0  
-**Last Updated:** January 09, 2025
+**Category:** Design Tokens  
+**Version:** 2.0.0  
+**Last Updated:** 2026-03-14  
+**Status:** Active  
+**Template Used:** _templates/design-token-template.md  
 
 ---
 
 ## Overview
 
-All spacing uses **WordPress theme.json numeric scale (10-100)** mapped to CSS variables. This aligns with WordPress Full Site Editing and provides predictable, scalable spacing tokens.
+All spacing uses CSS variables defined in `/src/styles/theme-base.css`. Two scales are available:
 
-**Base Unit:** 10px increments  
-**Scale:** Numeric slugs 10, 20, 30, 40, 50, 60, 70, 80, 90, 100  
-**System:** WordPress FSE compatible with CSS custom properties
+1. **Primary Scale** (`--spacing-*`) — Used throughout the prototype codebase (most common)
+2. **WordPress Scale** (`--wp--preset--spacing--*`) — WordPress theme.json compatible (for block editor)
+
+**Base Unit:** 4px (0.25rem)  
+**System:** Tailwind-compatible primary scale + WordPress FSE numeric scale
+
+---
+
+## 📏 Primary Spacing Scale
+
+The primary scale is based on a 4px unit and is the most commonly used throughout the codebase:
+
+| Token | Value | Pixels | Usage |
+|-------|-------|--------|-------|
+| `var(--spacing-0)` | 0 | 0px | Reset spacing |
+| `var(--spacing-1)` | 0.25rem | 4px | Hairline gaps |
+| `var(--spacing-1-5)` | 0.375rem | 6px | Tight inline spacing |
+| `var(--spacing-2)` | 0.5rem | 8px | Small gaps, icon padding |
+| `var(--spacing-3)` | 0.75rem | 12px | Standard inline spacing |
+| `var(--spacing-4)` | 1rem | 16px | Card padding, list gaps |
+| `var(--spacing-5)` | 1.25rem | 20px | Standard component gap |
+| `var(--spacing-6)` | 1.5rem | 24px | Default block gap |
+| `var(--spacing-7)` | 1.75rem | 28px | Between components |
+| `var(--spacing-8)` | 2rem | 32px | Section inner padding |
+| `var(--spacing-9)` | 2.25rem | 36px | Expanded gaps |
+| `var(--spacing-10)` | 2.5rem | 40px | Section gaps |
+| `var(--spacing-12)` | 3rem | 48px | Large section spacing |
+| `var(--spacing-14)` | 3.5rem | 56px | Between sections |
+| `var(--spacing-16)` | 4rem | 64px | Section padding |
+| `var(--spacing-20)` | 5rem | 80px | Hero spacing |
+| `var(--spacing-24)` | 6rem | 96px | Maximum spacing |
+| `var(--spacing-28)` | 7rem | 112px | Extra large |
+| `var(--spacing-32)` | 8rem | 128px | Jumbo spacing |
+| `var(--spacing-36)` | 9rem | 144px | |
+| `var(--spacing-40)` | 10rem | 160px | |
+| `var(--spacing-48)` | 12rem | 192px | |
+| `var(--spacing-56)` | 14rem | 224px | |
+| `var(--spacing-64)` | 16rem | 256px | Maximum |
+
+### Semantic Aliases
+
+| Alias | Maps To | Pixels | Usage |
+|-------|---------|--------|-------|
+| `var(--spacing-xs)` | `var(--spacing-2)` | 8px | Tight elements |
+| `var(--spacing-sm)` | `var(--spacing-4)` | 16px | Small components |
+| `var(--spacing-md)` | `var(--spacing-6)` | 24px | Standard components |
+| `var(--spacing-lg)` | `var(--spacing-8)` | 32px | Large components |
+| `var(--spacing-xl)` | `var(--spacing-12)` | 48px | Sections |
+| `var(--spacing-2xl)` | `var(--spacing-16)` | 64px | Large sections |
+| `var(--spacing-3xl)` | `var(--spacing-24)` | 96px | Hero sections |
+| `var(--spacing-4xl)` | `var(--spacing-32)` | 128px | Maximum |
+
+### Fluid Section Padding Tokens
+
+| Token | Value | Usage |
+|-------|-------|-------|
+| `var(--section-padding-x)` | `clamp(1rem, 2vw + 0.5rem, 2rem)` | 16px → 32px horizontal |
+| `var(--section-padding-y)` | `clamp(3rem, 4vw + 1rem, 5rem)` | 48px → 80px vertical |
+| `var(--section-padding-y-sm)` | `clamp(0.5rem, 0.5vw + 0.375rem, 0.75rem)` | 8px → 12px compact |
+| `var(--section-max-width)` | `var(--wp--style--global--wide-size)` | 1440px |
 
 ---
 
@@ -285,7 +345,7 @@ Use CSS custom properties with responsive adjustments:
 
 - **Don't hard-code pixels** - Never use `padding: 24px`
 - **Don't use arbitrary values** - Avoid `padding: 37px`
-- **Don't use semantic slugs** - Never use `spacing-small`, use `spacing--30`
+- **Don't invent new spacing tokens** - Use the existing primary or WordPress scales
 - **Don't forget mobile** - Always test on small screens
 - **Don't over-space** - More is not always better
 

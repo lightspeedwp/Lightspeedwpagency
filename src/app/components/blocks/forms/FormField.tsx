@@ -157,7 +157,7 @@ export function FormField({
           role="alert"
           className="wp-block-form-field__message wp-block-form-field__message--error"
         >
-          <AlertCircle size={16} style={{ flexShrink: 0, marginTop: '2px' }} aria-hidden="true" />
+          <AlertCircle size={16} className="wp-shrink-0 wp-mt-1" aria-hidden="true" />
           <span>{error}</span>
         </div>
       )}
@@ -285,7 +285,7 @@ export function TextAreaField({
           role="alert"
           className="wp-block-form-field__message wp-block-form-field__message--error"
         >
-          <AlertCircle size={16} style={{ flexShrink: 0, marginTop: '2px' }} aria-hidden="true" />
+          <AlertCircle size={16} className="wp-shrink-0 wp-mt-1" aria-hidden="true" />
           <span>{error}</span>
         </div>
       )}

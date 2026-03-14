@@ -131,7 +131,7 @@ export function VideoArchiveTemplate() {
           </div>
 
           {filtered.length === 0 && (
-            <div className="wp-text-center wp-py-12">
+            <div className="archive-empty-state">
               <Paragraph>No videos found matching your filters. Try adjusting your selection.</Paragraph>
             </div>
           )}

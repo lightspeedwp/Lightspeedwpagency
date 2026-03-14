@@ -29,7 +29,7 @@ import type { FAQ } from './types';
 export const aboutFAQs: FAQ[] = [
   {
     question: 'How long has LSX Design been in business?',
-    answer: 'We were founded in 2014 and have been specializing in WordPress and WooCommerce development for over 10 years. We\'ve delivered 500+ successful projects for clients worldwide.'
+    answer: 'We were founded in 2003 and have been specializing in WordPress and WooCommerce development for over 20 years. We\'ve delivered 500+ successful projects for clients worldwide.'
   },
   {
     question: 'Where is your team located?',
@@ -133,7 +133,7 @@ export const teamPageFAQs: FAQ[] = [
   },
   {
     question: "What's your team's experience with WordPress?",
-    answer: "Our team collectively has 100+ years of WordPress experience. Several members are WordCamp speakers, plugin authors, and theme reviewers. We've built 500+ WordPress sites since 2014."
+    answer: "Our team collectively has 100+ years of WordPress experience. Several members are WordCamp speakers, plugin authors, and theme reviewers. We've built 500+ WordPress sites since 2003."
   },
   {
     question: "How do you ensure consistent quality across team members?",
@@ -156,7 +156,7 @@ export const whyChooseUsFAQs: FAQ[] = [
   },
   {
     question: "What happens if I'm not satisfied with the work?",
-    answer: "We have revision rounds built into every project phase. If you're still unsatisfied, we'll work to resolve concerns. We've maintained a 98% client satisfaction rate over 10+ years."
+    answer: "We have revision rounds built into every project phase. If you're still unsatisfied, we'll work to resolve concerns. We've maintained a 98% client satisfaction rate over 20+ years."
   },
   {
     question: "How do you compare to hiring an in-house developer?",

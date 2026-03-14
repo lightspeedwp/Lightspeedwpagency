@@ -35,6 +35,40 @@
 }
 
 /* ============================================
+   ARCHIVE UTILITIES
+   ============================================ */
+
+.archive-empty-state {
+  text-align: center;
+  padding: var(--spacing-12) 0;
+}
+
+.archive-empty-state--col-span {
+  grid-column: 1 / -1;
+}
+
+.archive-empty-state__link {
+  display: inline-block;
+  margin-top: var(--spacing-4);
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.archive-empty-state__link:hover {
+  text-decoration: underline;
+}
+
+.archive-results-count {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+}
+
+.archive-results-count strong {
+  color: var(--foreground);
+}
+
+/* ============================================
    REDUCED MOTION
    ============================================ */
 

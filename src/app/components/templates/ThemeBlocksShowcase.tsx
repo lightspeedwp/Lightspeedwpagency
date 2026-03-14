@@ -71,16 +71,16 @@ export function ThemeBlocksShowcase() {
               <div className="theme-showcase__context-card theme-showcase__context-card--light">
                 <span className="theme-showcase__demo-title">Light Context</span>
                 <SiteLogo width={180} />
-                <p style={{ marginTop: 'var(--spacing-4)', opacity: 0.8 }}>Logo automatically uses dark text/icon.</p>
+                <p className="wp-mt-4 wp-opacity-80">Logo automatically uses dark text/icon.</p>
               </div>
 
               <div className="theme-showcase__context-card theme-showcase__context-card--dark">
-                <span className="theme-showcase__demo-title" style={{ color: 'color-mix(in srgb, var(--foreground) 70%, transparent)' }}>Dark Context</span>
+                <span className="theme-showcase__demo-title wp-text-foreground/70">Dark Context</span>
                 {/* We simulate dark mode by wrapping in a class if needed, or relying on component logic */}
-                <div className="dark" style={{ background: 'transparent' }}>
+                <div className="dark wp-bg-transparent">
                   <SiteLogo width={180} />
                 </div>
-                <p style={{ marginTop: 'var(--spacing-4)', opacity: 0.8 }}>Logo automatically switches to light text/icon.</p>
+                <p className="wp-mt-4 wp-opacity-80">Logo automatically switches to light text/icon.</p>
               </div>
             </div>
           </section>
@@ -96,7 +96,7 @@ export function ThemeBlocksShowcase() {
 
             <div className="theme-showcase__demo">
               <span className="theme-showcase__demo-title">Standard Navigation</span>
-              <div style={{ border: '1px solid var(--border-soft)', padding: 'var(--spacing-4)', borderRadius: 'var(--radius-md)' }}>
+              <div className="wp-border wp-border-border-soft wp-p-4 wp-rounded-md">
                 <Navigation 
                   items={mockNavItems}
                   orientation="horizontal"
@@ -106,8 +106,8 @@ export function ThemeBlocksShowcase() {
 
             <div className="theme-showcase__demo">
               <span className="theme-showcase__demo-title">Mega Menu Preview</span>
-              <p style={{ marginBottom: 'var(--spacing-4)' }}>Hover over "Services" to see the mega menu interaction.</p>
-              <div style={{ height: '300px', border: '1px solid var(--border-soft)', borderRadius: 'var(--radius-md)', position: 'relative' }}>
+              <p className="wp-mb-4">Hover over "Services" to see the mega menu interaction.</p>
+              <div className="wp-border wp-border-border-soft wp-rounded-md wp-relative" style={{ height: '18rem' }}>
                 <MegaMenu />
               </div>
             </div>

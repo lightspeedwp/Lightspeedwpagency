@@ -14,89 +14,56 @@
  * - `/feature-showcase` — Feature showcase
  */
 
-import React, { lazy, Suspense } from 'react';
+import React from 'react';
 import { type RouteObject } from 'react-router';
-import { RouteLoadingFallback } from '../components/ui/RouteLoadingFallback';
 
 /* ═══════════════════════════════════════════
- * Lazy Template Imports
+ * Static Template Imports
  * ═══════════════════════════════════════════ */
 
-const ArchiveTemplate = lazy(() => import('../components/templates/ArchiveTemplate').then(m => ({ default: m.ArchiveTemplate })));
-const ArchiveWithFiltersTemplate = lazy(() => import('../components/templates/ArchiveWithFiltersTemplate').then(m => ({ default: m.ArchiveWithFiltersTemplate })));
-const IndexTemplate = lazy(() => import('../components/templates/IndexTemplate').then(m => ({ default: m.IndexTemplate })));
-const SingleTemplate = lazy(() => import('../components/templates/SingleTemplate').then(m => ({ default: m.SingleTemplate })));
-const SearchResultsTemplate = lazy(() => import('../components/templates/SearchResultsTemplate').then(m => ({ default: m.SearchResultsTemplate })));
-const WordPressBlocksProofOfConcept = lazy(() => import('../components/templates/WordPressBlocksProofOfConcept').then(m => ({ default: m.WordPressBlocksProofOfConcept })));
-const SectionStyleExample = lazy(() => import('../components/templates/SectionStyleExample').then(m => ({ default: m.SectionStyleExample })));
-const FeatureShowcaseTemplate = lazy(() => import('../components/templates/FeatureShowcaseTemplate').then(m => ({ default: m.FeatureShowcaseTemplate })));
+import { ArchiveTemplate } from '../components/templates/ArchiveTemplate';
+import { ArchiveWithFiltersTemplate } from '../components/templates/ArchiveWithFiltersTemplate';
+import { IndexTemplate } from '../components/templates/IndexTemplate';
+import { SingleTemplate } from '../components/templates/SingleTemplate';
+import { SearchResultsTemplate } from '../components/templates/SearchResultsTemplate';
+import { WordPressBlocksProofOfConcept } from '../components/templates/WordPressBlocksProofOfConcept';
+import { SectionStyleExample } from '../components/templates/SectionStyleExample';
+import { FeatureShowcaseTemplate } from '../components/templates/FeatureShowcaseTemplate';
 
 /* ═══════════════════════════════════════════
  * Route Wrapper Components
  * ═══════════════════════════════════════════ */
 
 function ArchiveRoute() {
-  return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <ArchiveTemplate />
-    </Suspense>
-  );
+  return <ArchiveTemplate />;
 }
 
 function ArchiveWithFiltersRoute() {
-  return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <ArchiveWithFiltersTemplate />
-    </Suspense>
-  );
+  return <ArchiveWithFiltersTemplate />;
 }
 
 function IndexRoute() {
-  return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <IndexTemplate />
-    </Suspense>
-  );
+  return <IndexTemplate />;
 }
 
 function SingleRoute() {
-  return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <SingleTemplate />
-    </Suspense>
-  );
+  return <SingleTemplate />;
 }
 
 function SearchResultsRoute() {
-  return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <SearchResultsTemplate />
-    </Suspense>
-  );
+  return <SearchResultsTemplate />;
 }
 
 function WordPressBlocksPoCRoute() {
-  return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <WordPressBlocksProofOfConcept />
-    </Suspense>
-  );
+  return <WordPressBlocksProofOfConcept />;
 }
 
 function SectionStyleExampleRoute() {
-  return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <SectionStyleExample />
-    </Suspense>
-  );
+  return <SectionStyleExample />;
 }
 
 function FeatureShowcaseRoute() {
-  return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <FeatureShowcaseTemplate />
-    </Suspense>
-  );
+  return <FeatureShowcaseTemplate />;
 }
 
 /* ═══════════════════════════════════════════

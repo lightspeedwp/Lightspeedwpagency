@@ -23,8 +23,8 @@ export interface TimelineItem {
   description: string;
   /** Optional icon for the timeline dot */
   icon?: UniversalIcon;
-  /** Optional custom color for the dot */
-  dotColor?: string;
+  /** Optional custom color class for the dot */
+  dotColorClass?: string;
 }
 
 export interface TimelineProps {
@@ -34,8 +34,8 @@ export interface TimelineProps {
   variant?: 'default' | 'process' | 'minimal' | 'cards';
   /** Dot size */
   dotSize?: 'sm' | 'md' | 'lg';
-  /** Line color override */
-  lineColor?: string;
+  /** Line color class override */
+  lineColorClass?: string;
   /** Max width constraint */
   maxWidth?: '3xl' | '4xl' | '5xl' | 'none';
 }
@@ -44,7 +44,7 @@ export function Timeline({
   items,
   variant = 'default',
   dotSize = 'lg',
-  lineColor,
+  lineColorClass = 'wp-bg-border-soft',
   maxWidth = '4xl'
 }: TimelineProps) {
   // Max width classes
@@ -61,10 +61,7 @@ export function Timeline({
       <div className="timeline">
         {/* Timeline Vertical Line */}
         <div
-          className={lineClasses}
-          style={{
-            backgroundColor: lineColor || 'var(--border-soft)'
-          }}
+          className={`${lineClasses} ${lineColorClass}`}
         />
 
         {/* Timeline Items */}
@@ -97,10 +94,7 @@ export function Timeline({
               <div key={index} className={itemClasses}>
                 {/* Timeline Dot/Icon */}
                 <div
-                  className={dotClasses}
-                  style={{
-                    backgroundColor: item.dotColor || 'var(--primary)'
-                  }}
+                  className={`${dotClasses} ${item.dotColorClass || 'wp-bg-primary'}`}
                 >
                   {Icon ? <Icon size={24} /> : displayText}
                 </div>

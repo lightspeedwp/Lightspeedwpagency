@@ -59,7 +59,7 @@ export interface SolutionsDetailGridProps {
   /** Section spacing */
   spacing?: 'sm' | 'md' | 'lg' | 'xl';
   /** Background color */
-  backgroundColor?: string;
+  background?: 'default' | 'card' | 'muted' | 'transparent';
   /** Maximum width container */
   maxWidth?: 'full' | '4xl' | '5xl' | '6xl';
   /** Feature icon (default: CheckCircle) */
@@ -74,7 +74,7 @@ export function SolutionsDetailGrid({
   solutions,
   columns = 3,
   spacing = 'xl',
-  backgroundColor = 'var(--muted)',
+  background = 'muted',
   maxWidth = '6xl',
   featureIcon: FeatureIcon = CheckCircle
 }: SolutionsDetailGridProps) {
@@ -87,8 +87,8 @@ export function SolutionsDetailGrid({
   const maxWidthClass = maxWidth !== 'full' ? `wp-max-w-${maxWidth}` : 'wp-max-w-full';
 
   return (
-    <Section spacing={spacing} style={{ backgroundColor }}>
-      <div className={maxWidthClass} style={{ margin: '0 auto' }}>
+    <Section spacing={spacing} background={background as any}>
+      <div className={`${maxWidthClass} wp-mx-auto`}>
         {/* Section Header */}
         {(badge || title || description) && (
           <div className="solutions-detail-grid__header">

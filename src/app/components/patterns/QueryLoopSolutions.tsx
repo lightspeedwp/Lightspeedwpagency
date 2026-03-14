@@ -57,55 +57,29 @@ export function QueryLoopSolutions({
           >
             <div className="query-loop-card__body">
               <div
-                style={{
-                  width: 'var(--spacing-12)',
-                  height: 'var(--spacing-12)',
-                  borderRadius: 'var(--radius-xl)',
-                  backgroundColor: 'var(--primary-soft)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  marginBottom: 'var(--spacing-2)',
-                }}
+                className="wp-flex wp-items-center wp-justify-center wp-bg-primary-soft wp-w-12 wp-h-12 wp-rounded-xl"
               >
-                <Icon size={24} style={{ color: 'var(--primary)' }} />
+                <Icon size={24} className="wp-text-primary" />
               </div>
 
               <h3 className="query-loop-card__title">{solution.name}</h3>
               <p className="query-loop-card__excerpt">{solution.tagline}</p>
 
               {/* Benefits */}
-              <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: 'var(--spacing-2)' }}>
+              <ul className="wp-flex wp-flex-col wp-p-0 wp-m-0 wp-list-none wp-gap-2">
                 {solution.benefits.slice(0, 4).map((benefit) => (
                   <li
                     key={benefit}
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: 'var(--spacing-2)',
-                      fontFamily: 'var(--font-primary)',
-                      fontSize: 'var(--text-sm)',
-                      color: 'var(--muted-foreground)',
-                    }}
+                    className="wp-flex wp-items-center wp-font-primary wp-text-sm wp-text-muted-foreground wp-gap-2"
                   >
-                    <CheckCircle size={14} style={{ color: 'var(--success)', flexShrink: 0 }} />
+                    <CheckCircle size={14} className="wp-shrink-0 wp-text-success" />
                     {benefit}
                   </li>
                 ))}
               </ul>
 
-              <div style={{ marginTop: 'auto', paddingTop: 'var(--spacing-4)' }}>
-                <span
-                  style={{
-                    fontFamily: 'var(--font-primary)',
-                    fontSize: 'var(--text-sm)',
-                    fontWeight: 'var(--font-weight-semibold)',
-                    color: 'var(--primary)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: 'var(--spacing-1)',
-                  }}
-                >
+              <div className="wp-mt-auto wp-pt-4">
+                <span className="wp-flex wp-items-center wp-font-primary wp-text-sm wp-font-semibold wp-text-primary wp-gap-1">
                   Explore Solution <ArrowRight size={14} />
                 </span>
               </div>

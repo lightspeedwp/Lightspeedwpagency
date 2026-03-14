@@ -138,7 +138,7 @@ export function AboutHistoryTemplate() {
               <div className="history-page__origin-glow" />
               <div className="history-page__origin-content">
                 <Paragraph className="history-page__origin-text">
-                  LSX Design was founded in 2014 by a small team of WordPress developers who saw a gap in the market for agencies that truly understood both design systems and WordPress development. While many shops could do one or the other, few could bridge the two seamlessly.
+                  LSX Design was founded in 2003 by Ash Shaw in Cape Town, South Africa. Starting as a web development consultancy, the team saw a gap in the market for agencies that truly understood both design systems and WordPress development. While many shops could do one or the other, few could bridge the two seamlessly.
                 </Paragraph>
 
                 <Paragraph className="history-page__origin-text">
@@ -211,8 +211,8 @@ export function AboutHistoryTemplate() {
             stats={[
               { number: '500+', label: 'Projects Delivered' },
               { number: '150+', label: 'Happy Clients' },
-              { number: '10', label: 'Years Experience' },
-              { number: '25', label: 'Team Members' }
+              { number: '20+', label: 'Years Experience' },
+              { number: '13', label: 'Team Members' }
             ]}
           />
         </Container>
@@ -239,7 +239,7 @@ export function AboutHistoryTemplate() {
         buttonText="Get In Touch"
         buttonPage="contact"
         benefits={[
-          'A decade of WordPress expertise',
+          'Over 20 years of WordPress expertise',
           'Long-term partnership approach',
           'Transparent & honest communication',
           'Join a growing success story'

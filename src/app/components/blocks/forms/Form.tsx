@@ -81,8 +81,7 @@ const FormItem = React.forwardRef<
     <FormItemContext.Provider value={{ id }}>
       <div
         ref={ref}
-        className={`wp-block-form-item ${className || ""}`}
-        style={{ display: "grid", gap: "var(--spacing-2)" }}
+        className={`wp-block-form-item wp-grid wp-gap-2 ${className || ""}`}
         {...props}
       />
     </FormItemContext.Provider>
@@ -142,11 +141,7 @@ const FormDescription = React.forwardRef<
     <p
       ref={ref}
       id={formDescriptionId}
-      className={className}
-      style={{
-        fontSize: "var(--text-small)",
-        color: "var(--muted-foreground)",
-      }}
+      className={`wp-text-small wp-text-muted-foreground ${className || ''}`}
       {...props}
     />
   )
@@ -168,12 +163,7 @@ const FormMessage = React.forwardRef<
     <p
       ref={ref}
       id={formMessageId}
-      className={className}
-      style={{
-        fontSize: "var(--text-small)",
-        fontWeight: "var(--font-weight-medium)",
-        color: "var(--destructive)",
-      }}
+      className={`wp-text-small wp-font-medium wp-text-destructive ${className || ''}`}
       {...props}
     >
       {body}

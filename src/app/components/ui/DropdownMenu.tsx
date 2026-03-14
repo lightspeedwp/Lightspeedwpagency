@@ -51,7 +51,7 @@ export function DropdownMenu({
         {trigger}
       </DropdownMenuTrigger>
       
-      <DropdownMenuContent side={side} align={align} style={{ minWidth }}>
+      <DropdownMenuContent side={side} align={align} style={{ '--dropdown-min-width': minWidth } as React.CSSProperties}>
         {items.map((item, index) => (
           <div key={index}>
             <DropdownMenuItemBlock
@@ -60,12 +60,12 @@ export function DropdownMenu({
               destructive={item.destructive}
             >
               {item.selected && (
-                <div style={{ marginRight: 'var(--spacing-2)', display: 'flex', alignItems: 'center' }}>
+                <div className="wp-mr-2 wp-flex wp-items-center">
                   <Check size={16} />
                 </div>
               )}
               {item.icon && !item.selected && (
-                <div style={{ marginRight: 'var(--spacing-2)', display: 'flex', alignItems: 'center' }}>
+                <div className="wp-mr-2 wp-flex wp-items-center">
                   <item.icon size={16} />
                 </div>
               )}
@@ -107,7 +107,7 @@ export function DropdownMenuWithGroups({
         {trigger}
       </DropdownMenuTrigger>
       
-      <DropdownMenuContent side={side} align={align} style={{ minWidth }}>
+      <DropdownMenuContent side={side} align={align} style={{ '--dropdown-min-width': minWidth } as React.CSSProperties}>
         {groups.map((group, groupIndex) => (
           <DropdownMenuGroupBlock key={groupIndex}>
             {group.label && (
@@ -124,12 +124,12 @@ export function DropdownMenuWithGroups({
                   destructive={item.destructive}
                 >
                   {item.selected && (
-                    <div style={{ marginRight: 'var(--spacing-2)', display: 'flex', alignItems: 'center' }}>
+                    <div className="wp-mr-2 wp-flex wp-items-center">
                       <Check size={16} />
                     </div>
                   )}
                   {item.icon && !item.selected && (
-                    <div style={{ marginRight: 'var(--spacing-2)', display: 'flex', alignItems: 'center' }}>
+                    <div className="wp-mr-2 wp-flex wp-items-center">
                       <item.icon size={16} />
                     </div>
                   )}

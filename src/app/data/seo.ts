@@ -69,7 +69,7 @@ export const organizationInfo = {
   ],
   
   // Founding Date
-  foundingDate: '2015-01-15',
+  foundingDate: '2003-01-15',
   
   // Number of Employees
   numberOfEmployees: '10-50',

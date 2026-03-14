@@ -20,13 +20,7 @@ import { Paragraph } from '../blocks/text/Paragraph';
 export function SectionStyleExample() {
   return (
     <>
-      <div
-        style={{
-          flex: 1,
-          display: 'flex',
-          flexDirection: 'column'
-        }}
-      >
+      <div className="wp-flex-1 wp-flex wp-flex-col">
         {/* Example 1: CTA Primary Style */}
         <Section sectionStyle="cta-primary">
           <Container>
@@ -113,9 +107,9 @@ export function SectionStyleExample() {
                 This Section Uses Standard Props
               </Heading>
               
-              <Paragraph style={{ fontSize: 'var(--text-lead)', color: 'var(--muted-foreground)' }} className="wp-mb-10">
-                Notice how this section requires inline styles for each element, 
-                while the section style examples above don't need any inline styles.
+              <Paragraph className="wp-text-lead wp-text-muted-foreground wp-mb-10">
+                Notice how this section requires utility classes for each element, 
+                while the section style examples above don't need any utility classes.
               </Paragraph>
               
               <div className="wp-flex wp-flex-wrap wp-gap-4 wp-justify-center">
@@ -131,21 +125,21 @@ export function SectionStyleExample() {
         <Section spacing="xl" background="card">
           <Container>
             <div className="wp-max-w-4xl wp-mx-auto">
-              <Heading level={2} className="wp-mb-6" style={{ fontSize: 'var(--text-h3)' }}>
+              <Heading level={2} className="wp-mb-6 wp-text-3xl">
                 How Section Styles Work
               </Heading>
               
-              <div style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-base)', color: 'var(--foreground)', lineHeight: 1.6 }}>
+              <div className="wp-text-base wp-text-foreground">
                 <Paragraph className="wp-mb-4">
                   Section styles are similar to WordPress block theme section styles 
-                  defined in <code style={{ fontFamily: 'var(--font-mono)', backgroundColor: 'var(--muted)', borderRadius: 'var(--radius)', padding: 'var(--spacing-1)', fontSize: 'var(--text-sm)' }}>theme.json</code>.
+                  defined in <code className="wp-bg-muted wp-p-1 wp-rounded wp-text-sm wp-font-mono">theme.json</code>.
                 </Paragraph>
                 
-                <Heading level={3} className="wp-mt-8 wp-mb-4" style={{ fontSize: 'var(--text-lg)' }}>
+                <Heading level={3} className="wp-mt-8 wp-mb-4 wp-text-lg">
                   Benefits:
                 </Heading>
                 
-                <ul style={{ listStyleType: 'disc', paddingLeft: 'var(--spacing-6)' }} className="wp-mb-6">
+                <ul className="wp-pl-6 wp-mb-6" style={{ listStyleType: 'disc' }}>
                   <li className="wp-mb-2">
                     <strong>Single source of truth:</strong> All styling in CSS
                   </li>
@@ -163,11 +157,11 @@ export function SectionStyleExample() {
                   </li>
                 </ul>
                 
-                <Heading level={3} className="wp-mt-8 wp-mb-4" style={{ fontSize: 'var(--text-lg)' }}>
+                <Heading level={3} className="wp-mt-8 wp-mb-4 wp-text-lg">
                   Usage:
                 </Heading>
                 
-                <pre style={{ backgroundColor: 'var(--muted)', padding: 'var(--spacing-4)', borderRadius: 'var(--radius)', overflow: 'auto', fontFamily: 'var(--font-mono)', fontSize: 'var(--text-sm)' }} className="wp-mb-4">
+                <pre className="wp-bg-muted wp-p-4 wp-rounded wp-overflow-auto wp-font-mono wp-text-sm wp-mb-4">
 {`<Section sectionStyle="cta-primary">
   <Container>
     <h2>Your Heading</h2>

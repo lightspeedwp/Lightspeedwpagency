@@ -107,8 +107,8 @@ export function DesignTokensReferenceTemplate() {
 
   const CopyIcon = ({ variable }: { variable: string }) => (
     copiedVar === variable
-      ? <Check size={14} style={{ color: 'var(--success)' }} />
-      : <Copy size={14} style={{ color: 'var(--muted-foreground)' }} />
+      ? <Check size={14} className="wp-text-success" />
+      : <Copy size={14} className="wp-text-muted-foreground" />
   );
 
   return (
@@ -124,7 +124,7 @@ export function DesignTokensReferenceTemplate() {
             <h1 className="tokens-ref__title">Design Tokens Reference</h1>
             <p className="tokens-ref__subtitle">
               Complete reference of all CSS custom properties in the LSX Design System.
-              Click any token to copy its <code style={{ fontFamily: 'var(--font-mono)', fontSize: 'var(--text-small)', color: 'var(--primary)', background: 'var(--primary-soft)', padding: 'var(--spacing-1) var(--spacing-2)', borderRadius: 'var(--radius)' }}>var()</code> reference.
+              Click any token to copy its <code className="wp-font-mono wp-text-sm wp-text-primary wp-bg-primary/10 wp-px-2 wp-py-1 wp-rounded">var()</code> reference.
             </p>
             <div className="tokens-ref__stats">
               <div className="tokens-ref__stat">
@@ -155,12 +155,11 @@ export function DesignTokensReferenceTemplate() {
                 <a
                   key={id}
                   href={`#${id}`}
-                  className={`tokens-ref__nav-link ${activeSection === id ? 'tokens-ref__nav-link--active' : ''}`}
+                  className={`tokens-ref__nav-link wp-flex wp-items-center wp-gap-2 ${activeSection === id ? 'tokens-ref__nav-link--active' : ''}`}
                   onClick={(e) => {
                     e.preventDefault();
                     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
                   }}
-                  style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-2)' }}
                 >
                   {icon}
                   {label}
@@ -176,7 +175,7 @@ export function DesignTokensReferenceTemplate() {
                 <div className="tokens-ref__section-header">
                   <h2 className="tokens-ref__section-title">Colors</h2>
                   <p className="tokens-ref__section-desc">
-                    Semantic color tokens. All colors automatically switch between light and dark mode via the <code style={{ fontFamily: 'var(--font-mono)', fontSize: 'var(--text-small)', color: 'var(--primary)' }}>.dark</code> class.
+                    Semantic color tokens. All colors automatically switch between light and dark mode via the <code className="wp-font-mono wp-text-sm wp-text-primary">.dark</code> class.
                   </p>
                 </div>
                 <div className="tokens-ref__color-grid">
@@ -193,7 +192,7 @@ export function DesignTokensReferenceTemplate() {
                         style={{ backgroundColor: `var(${token.variable})` }}
                       />
                       <div className="tokens-ref__color-info">
-                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <div className="wp-flex wp-justify-between wp-items-center">
                           <p className="tokens-ref__color-name">{token.variable}</p>
                           <CopyIcon variable={token.variable} />
                         </div>
@@ -209,7 +208,7 @@ export function DesignTokensReferenceTemplate() {
                 <div className="tokens-ref__section-header">
                   <h2 className="tokens-ref__section-title">Typography</h2>
                   <p className="tokens-ref__section-desc">
-                    Font families, fluid heading sizes, and body text scale. Headings use <code style={{ fontFamily: 'var(--font-mono)', fontSize: 'var(--text-small)', color: 'var(--primary)' }}>clamp()</code> for smooth responsive scaling.
+                    Font families, fluid heading sizes, and body text scale. Headings use <code className="wp-font-mono wp-text-sm wp-text-primary">clamp()</code> for smooth responsive scaling.
                   </p>
                 </div>
 
@@ -217,17 +216,17 @@ export function DesignTokensReferenceTemplate() {
                 <h3 className="tokens-ref__subsection-title">Font Families</h3>
                 <div className="tokens-ref__font-grid">
                   <button className="tokens-ref__font-card" onClick={() => copyToken('--font-primary')} title="Copy var(--font-primary)">
-                    <p className="tokens-ref__font-sample" style={{ fontFamily: 'var(--font-primary)' }}>Aa Bb Cc</p>
+                    <p className="tokens-ref__font-sample wp-font-primary">Aa Bb Cc</p>
                     <p className="tokens-ref__font-name">--font-primary</p>
                     <p className="tokens-ref__font-desc">Lexend — Headings, body, UI</p>
                   </button>
                   <button className="tokens-ref__font-card" onClick={() => copyToken('--font-secondary')} title="Copy var(--font-secondary)">
-                    <p className="tokens-ref__font-sample" style={{ fontFamily: 'var(--font-secondary)' }}>Aa Bb Cc</p>
+                    <p className="tokens-ref__font-sample wp-font-secondary">Aa Bb Cc</p>
                     <p className="tokens-ref__font-name">--font-secondary</p>
                     <p className="tokens-ref__font-desc">Manrope — Small text, metadata</p>
                   </button>
                   <button className="tokens-ref__font-card" onClick={() => copyToken('--font-mono')} title="Copy var(--font-mono)">
-                    <p className="tokens-ref__font-sample" style={{ fontFamily: 'var(--font-mono)' }}>Aa Bb Cc</p>
+                    <p className="tokens-ref__font-sample wp-font-mono">Aa Bb Cc</p>
                     <p className="tokens-ref__font-name">--font-mono</p>
                     <p className="tokens-ref__font-desc">Monospace — Code, preformatted</p>
                   </button>
@@ -262,7 +261,7 @@ export function DesignTokensReferenceTemplate() {
                 </div>
 
                 {/* Font weights */}
-                <h3 className="tokens-ref__subsection-title" style={{ marginTop: 'var(--spacing-8)' }}>Font Weights</h3>
+                <h3 className="tokens-ref__subsection-title wp-mt-8">Font Weights</h3>
                 <div className="tokens-ref__type-grid">
                   {[
                     { variable: '--font-weight-light', label: 'Light', value: '300' },
@@ -283,10 +282,8 @@ export function DesignTokensReferenceTemplate() {
                         <span className="tokens-ref__type-size">{w.value}</span>
                       </div>
                       <p
-                        className="tokens-ref__type-preview"
+                        className="tokens-ref__type-preview wp-font-primary wp-text-lg"
                         style={{
-                          fontSize: 'var(--text-lg)',
-                          fontFamily: 'var(--font-primary)',
                           fontWeight: `var(${w.variable})`,
                         }}
                       >
@@ -302,7 +299,7 @@ export function DesignTokensReferenceTemplate() {
                 <div className="tokens-ref__section-header">
                   <h2 className="tokens-ref__section-title">Spacing</h2>
                   <p className="tokens-ref__section-desc">
-                    4px base unit spacing scale. Use for padding, gap, and margin values. Maps to WordPress <code style={{ fontFamily: 'var(--font-mono)', fontSize: 'var(--text-small)', color: 'var(--primary)' }}>theme.json</code> spacing presets.
+                    4px base unit spacing scale. Use for padding, gap, and margin values. Maps to WordPress <code className="wp-font-mono wp-text-sm wp-text-primary">theme.json</code> spacing presets.
                   </p>
                 </div>
                 <div className="tokens-ref__spacing-grid">
@@ -326,7 +323,7 @@ export function DesignTokensReferenceTemplate() {
                 </div>
 
                 {/* Semantic aliases */}
-                <h3 className="tokens-ref__subsection-title" style={{ marginTop: 'var(--spacing-8)' }}>Semantic Aliases</h3>
+                <h3 className="tokens-ref__subsection-title wp-mt-8">Semantic Aliases</h3>
                 <div className="tokens-ref__spacing-grid">
                   {[
                     { variable: '--spacing-xs', px: 8, alias: '--spacing-2' },
@@ -419,7 +416,7 @@ export function DesignTokensReferenceTemplate() {
                 <div className="tokens-ref__section-header">
                   <h2 className="tokens-ref__section-title">Borders</h2>
                   <p className="tokens-ref__section-desc">
-                    Border width and style presets aligned with WordPress <code style={{ fontFamily: 'var(--font-mono)', fontSize: 'var(--text-small)', color: 'var(--primary)' }}>theme.json</code>.
+                    Border width and style presets aligned with WordPress <code className="wp-font-mono wp-text-sm wp-text-primary">theme.json</code>.
                   </p>
                 </div>
 
@@ -446,7 +443,7 @@ export function DesignTokensReferenceTemplate() {
                   ))}
                 </div>
 
-                <h3 className="tokens-ref__subsection-title" style={{ marginTop: 'var(--spacing-6)' }}>Border Styles</h3>
+                <h3 className="tokens-ref__subsection-title wp-mt-6">Border Styles</h3>
                 <div className="tokens-ref__border-grid">
                   {borderStyleTokens.map((token) => (
                     <button
@@ -514,10 +511,9 @@ export function DesignTokensReferenceTemplate() {
                     return (
                       <button
                         key={token.variable}
-                        className="tokens-ref__zindex-row"
+                        className="tokens-ref__zindex-row wp-bg-card wp-border wp-border-soft wp-rounded"
                         onClick={() => copyToken(token.variable)}
                         title={`Copy var(${token.variable})`}
-                        style={{ background: 'var(--card)', border: '1px solid var(--border-soft)', borderRadius: 'var(--radius)' }}
                       >
                         <span className="tokens-ref__zindex-var">{token.variable}</span>
                         <div className="tokens-ref__zindex-bar-wrap">
@@ -548,21 +544,20 @@ export function DesignTokensReferenceTemplate() {
                   {animationTokens.map((token) => (
                     <button
                       key={token.variable}
-                      className="tokens-ref__anim-card"
+                      className="tokens-ref__anim-card wp-text-left wp-cursor-pointer wp-border wp-border-soft"
                       onClick={() => copyToken(token.variable)}
                       title={`Copy var(${token.variable})`}
-                      style={{ textAlign: 'left', cursor: 'pointer', border: '1px solid var(--border-soft)' }}
                     >
                       <p className="tokens-ref__anim-label">{token.variable}</p>
                       <p className="tokens-ref__anim-desc">{token.label} — {token.description}</p>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-4)' }}>
+                      <div className="wp-flex wp-items-center wp-gap-4">
                         <div
                           className="tokens-ref__anim-demo"
                           style={{
                             transition: `transform ${token.value.includes('cubic') ? '300ms' : token.value} ${token.value.includes('cubic') ? token.value : 'var(--ease-in-out)'}`,
                           }}
                         />
-                        <span style={{ fontFamily: 'var(--font-mono)', fontSize: 'var(--text-xs)', color: 'var(--muted-foreground)' }}>
+                        <span className="wp-font-mono wp-text-xs wp-text-muted-foreground">
                           {token.value}
                         </span>
                       </div>

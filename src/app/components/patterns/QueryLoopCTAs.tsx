@@ -72,45 +72,28 @@ export function QueryLoopCTAs({
         <Link
           key={cta.id}
           to={cta.buttonPage}
-          className="query-loop-card query-loop-card--clickable query-loop-card--cta"
+          className={`query-loop-card query-loop-card--clickable query-loop-card--cta ${
+            cta.gradient === 'var(--gradient-purple)' ? 'wp-gradient-purple' : 'wp-gradient-blue'
+          }`}
           ref={index === 0 ? containerRef as any : undefined}
-          style={{
-            ...itemStyle(index),
-            background: cta.gradient || 'var(--gradient-blue)',
-          }}
+          style={itemStyle(index)}
           aria-label={cta.title}
         >
           <div
-            className="query-loop-card__body"
-            style={{ textAlign: 'center', alignItems: 'center' }}
+            className="query-loop-card__body wp-text-center wp-items-center"
           >
             <h3
-              className="query-loop-card__title"
-              style={{ color: 'var(--color-white)' }}
+              className="query-loop-card__title wp-text-white"
             >
               {cta.title}
             </h3>
             <p
-              className="query-loop-card__excerpt"
-              style={{ color: 'var(--overlay-white-heavy)' }}
+              className="query-loop-card__excerpt wp-text-white/80"
             >
               {cta.description}
             </p>
             <span
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: 'var(--spacing-2)',
-                fontFamily: 'var(--font-primary)',
-                fontSize: 'var(--text-base)',
-                fontWeight: 'var(--font-weight-semibold)',
-                color: 'var(--color-white)',
-                backgroundColor: 'var(--overlay-white-15)',
-                padding: 'var(--spacing-3) var(--spacing-6)',
-                borderRadius: 'var(--radius-full)',
-                marginTop: 'var(--spacing-4)',
-                transition: 'background-color var(--transition-base) var(--ease-in-out)',
-              }}
+              className="wp-inline-flex wp-items-center wp-gap-2 wp-font-primary wp-text-base wp-font-semibold wp-rounded-full wp-text-white wp-bg-white/15 wp-px-6 wp-py-3 wp-transition-colors wp-duration-200 wp-ease-in-out hover:wp-bg-white/25"
             >
               {cta.buttonText} <ArrowRight size={16} />
             </span>

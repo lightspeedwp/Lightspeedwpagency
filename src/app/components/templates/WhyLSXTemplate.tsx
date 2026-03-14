@@ -158,7 +158,7 @@ export function WhyLSXTemplate() {
       <section className="why-lsx-page__features">
         <Container>
           <ScrollReveal animation="fade-up">
-            <div className="why-lsx-page__section-header wp-text-center">
+            <div className="why-lsx-page__section-header">
               <h2 className="why-lsx-page__section-title">Built Different</h2>
               <p className="why-lsx-page__section-desc">
                 Discover the engineering philosophy behind our open-source ecosystem.
@@ -184,7 +184,7 @@ export function WhyLSXTemplate() {
       <section className="why-lsx-page__testimonial">
         <Container>
           <ScrollReveal animation="fade-up">
-            <div className="why-lsx-page__section-header wp-text-center">
+            <div className="why-lsx-page__section-header">
               <h2 className="why-lsx-page__section-title">Community Love</h2>
             </div>
             <div className="why-lsx-page__testimonial-wrapper">

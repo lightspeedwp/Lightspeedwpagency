@@ -270,7 +270,7 @@ export function PortfolioArchiveTemplate() {
       </section>
 
       {/* Portfolio Grid */}
-      <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
+      <Section spacing="xl" className="wp-bg-background">
         <Container>
           <div
             className={`portfolio-archive__grid ${gridClass}`}

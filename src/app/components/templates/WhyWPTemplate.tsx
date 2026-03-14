@@ -162,7 +162,7 @@ export function WhyWPTemplate() {
       <section className="why-wp-page__features">
         <Container>
           <ScrollReveal animation="fade-up">
-            <div className="why-wp-page__section-header wp-text-center">
+            <div className="why-wp-page__section-header">
               <h2 className="why-wp-page__section-title">The Power of Open Source</h2>
               <p className="why-wp-page__section-desc">
                 Everything you need to build a high-performance, enterprise-grade digital experience.
@@ -188,7 +188,7 @@ export function WhyWPTemplate() {
       <section className="why-wp-page__testimonial">
         <Container>
           <ScrollReveal animation="fade-up">
-            <div className="why-wp-page__section-header wp-text-center">
+            <div className="why-wp-page__section-header">
               <h2 className="why-wp-page__section-title">Success Stories</h2>
             </div>
             <div className="why-wp-page__testimonial-wrapper">

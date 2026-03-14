@@ -37,7 +37,7 @@ export function SingleProjectTemplate({ slug }: SingleProjectTemplateProps) {
   if (!project) {
     return (
       <Container>
-        <div style={{ padding: 'var(--spacing-24) 0', textAlign: 'center' }}>
+        <div className="wp-py-24 wp-text-center">
           <h1>Project Not Found</h1>
           <Link to="/portfolio">Return to Portfolio</Link>
         </div>
@@ -118,17 +118,17 @@ export function SingleProjectTemplate({ slug }: SingleProjectTemplateProps) {
               <ScrollReveal animation="fade-right">
                 <div className="single-project__meta-card">
                   <div className="single-project__meta-group">
-                    <span className="single-project__meta-label"><Stack size={14} style={{ display: 'inline', marginRight: '4px' }}/> Industry</span>
+                    <span className="single-project__meta-label"><Stack size={14} className="wp-inline wp-mr-1"/> Industry</span>
                     <span className="single-project__meta-value">{project.industry}</span>
                   </div>
                   
                   <div className="single-project__meta-group">
-                    <span className="single-project__meta-label"><Calendar size={14} style={{ display: 'inline', marginRight: '4px' }}/> Year</span>
+                    <span className="single-project__meta-label"><Calendar size={14} className="wp-inline wp-mr-1"/> Year</span>
                     <span className="single-project__meta-value">{project.completionDate || '2024'}</span>
                   </div>
 
                   <div className="single-project__meta-group">
-                    <span className="single-project__meta-label"><Tag size={14} style={{ display: 'inline', marginRight: '4px' }}/> Technologies</span>
+                    <span className="single-project__meta-label"><Tag size={14} className="wp-inline wp-mr-1"/> Technologies</span>
                     <div className="single-project__tech-stack">
                       {project.technologies?.map((tech, i) => (
                         <span key={i} className="single-project__tech-tag">{tech}</span>
@@ -191,7 +191,7 @@ export function SingleProjectTemplate({ slug }: SingleProjectTemplateProps) {
             </Link>
             
             {/* Logic to find next project could go here */}
-            <Link to="/portfolio" className="single-project__nav-link" style={{ textAlign: 'right', flexDirection: 'row-reverse' }}>
+            <Link to="/portfolio" className="single-project__nav-link wp-text-right wp-flex-row-reverse">
               <ArrowRight size={20} />
               <div>
                 <span className="single-project__nav-label">Next</span>

@@ -20,14 +20,13 @@
  * - ✅ CTA → FunkyCTA pattern
  */
 
-import '../../../styles/templates/page-solution-wordpress.css';
 import { Container } from '../common/Container';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
-import { StatsGrid } from '../patterns/StatsGrid';
-import { FeatureGrid } from '../patterns/FeatureGrid';
-import { UseCasesGrid } from '../patterns/UseCasesGrid';
+import { AgencyStats } from '../patterns/AgencyStats';
+import { ServiceCapabilitiesGrid } from '../patterns/ServiceCapabilitiesGrid';
+import { ServiceUseCases } from '../patterns/ServiceUseCases';
 import { PricingTable } from '../patterns/PricingTable';
-import { BenefitsGrid } from '../patterns/BenefitsGrid';
+import { ServiceRelatedSolutions } from '../patterns/ServiceRelatedSolutions';
 import { FAQSection } from '../patterns/FAQSection';
 import { FunkyCTA } from '../patterns/FunkyCTA';
 import { Code, ShoppingBag as ShoppingCart, Shield, ArrowRight } from '@phosphor-icons/react';
@@ -98,7 +97,7 @@ export function WordPressSolutionTemplate() {
   ];
 
   return (
-    <div className="wordpress-page">
+    <div className="wp-w-full wp-flex wp-flex-col">
         {/* ── Breadcrumbs ── */}
         <BreadcrumbPart
           items={[
@@ -111,42 +110,119 @@ export function WordPressSolutionTemplate() {
         {/* ============================================
             FUNKY HERO SECTION
             ============================================ */}
-        <section className="wordpress-page__hero">
-          <div className="wordpress-page__hero-grid"></div>
+        <section 
+          style={{
+            position: 'relative',
+            padding: 'var(--spacing-24) 0',
+            backgroundColor: 'var(--background)',
+            overflow: 'hidden'
+          }}
+        >
+          {/* Neon Grid Background */}
+          <div 
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              backgroundImage: 'linear-gradient(to right, var(--border-soft) 1px, transparent 1px), linear-gradient(to bottom, var(--border-soft) 1px, transparent 1px)',
+              backgroundSize: '40px 40px',
+              opacity: 0.1,
+              zIndex: 0
+            }}
+          />
           
           <Container>
-            <div className="wp-grid-2-cols wp-items-center wp-gap-12">
+            <div className="wp-grid-2-cols wp-items-center wp-gap-12" style={{ position: 'relative', zIndex: 1 }}>
               {/* Left: Content */}
-              <div className="wordpress-page__hero-content">
+              <div className="wp-flex wp-flex-col">
                 <ScrollReveal animation="fade-right">
                   {/* Badge */}
-                  <div className="wordpress-page__badge">
-                    <Code size={14} />
+                  <div 
+                    className="wp-inline-flex wp-items-center wp-gap-2 wp-mb-6"
+                    style={{
+                      padding: 'var(--spacing-2) var(--spacing-4)',
+                      borderRadius: 'var(--radius-full)',
+                      backgroundColor: 'var(--card)',
+                      border: '1px solid var(--border)',
+                      color: 'var(--primary)',
+                      fontFamily: 'var(--font-secondary)',
+                      fontSize: 'var(--text-sm)',
+                      fontWeight: 'var(--font-weight-medium)',
+                      boxShadow: '0 0 10px var(--primary-soft)'
+                    }}
+                  >
+                    <Code size={14} weight="bold" />
                     {wordpressSolutionHero.badge.text}
                   </div>
 
                   {/* Title */}
-                  <h1 className="wordpress-page__title">
+                  <h1 
+                    className="wp-m-0 wp-mb-6"
+                    style={{
+                      fontFamily: 'var(--font-primary)',
+                      fontSize: 'var(--text-h1)',
+                      color: 'var(--foreground)',
+                      lineHeight: '1.1'
+                    }}
+                  >
                     Enterprise-Grade <br />
-                    <span className="wordpress-page__highlight">WordPress Solutions</span>
+                    <span style={{
+                      color: 'var(--primary)',
+                      textShadow: '0 0 30px var(--primary-soft)'
+                    }}>
+                      WordPress Solutions
+                    </span>
                   </h1>
 
                   {/* Description */}
-                  <p className="wordpress-page__tagline">
+                  <p 
+                    className="wp-m-0 wp-mb-8 wp-max-w-xl"
+                    style={{
+                      fontFamily: 'var(--font-secondary)',
+                      fontSize: 'var(--text-lg)',
+                      color: 'var(--muted-foreground)',
+                      lineHeight: '1.6'
+                    }}
+                  >
                     {wordpressSolutionHero.tagline}
                   </p>
 
                   {/* Buttons */}
                   <div className="wp-flex wp-gap-4">
                     <Link 
-                      className="wordpress-page__btn-primary"
                       to={getPageUrl('contact')}
+                      className="wp-inline-flex wp-items-center wp-justify-center wp-gap-2"
+                      style={{
+                        padding: 'var(--spacing-3) var(--spacing-6)',
+                        backgroundColor: 'var(--primary)',
+                        color: 'var(--primary-foreground)',
+                        borderRadius: 'var(--radius)',
+                        fontFamily: 'var(--font-primary)',
+                        fontSize: 'var(--text-base)',
+                        fontWeight: 'var(--font-weight-semibold)',
+                        textDecoration: 'none',
+                        transition: 'box-shadow var(--transition-base)',
+                        boxShadow: '0 4px 15px var(--primary-soft)'
+                      }}
                     >
-                      {wordpressSolutionHero.primaryButton.text} <ArrowRight size={18} />
+                      {wordpressSolutionHero.primaryButton.text} <ArrowRight size={18} weight="bold" />
                     </Link>
                     <Link 
-                      className="wordpress-page__btn-outline"
                       to={getPageUrl('portfolio-archive')}
+                      className="wp-inline-flex wp-items-center wp-justify-center wp-gap-2"
+                      style={{
+                        padding: 'var(--spacing-3) var(--spacing-6)',
+                        backgroundColor: 'transparent',
+                        border: '1px solid var(--border)',
+                        color: 'var(--foreground)',
+                        borderRadius: 'var(--radius)',
+                        fontFamily: 'var(--font-primary)',
+                        fontSize: 'var(--text-base)',
+                        fontWeight: 'var(--font-weight-medium)',
+                        textDecoration: 'none'
+                      }}
                     >
                       {wordpressSolutionHero.secondaryButton.text}
                     </Link>
@@ -155,38 +231,94 @@ export function WordPressSolutionTemplate() {
               </div>
 
               {/* Right: Visual (Code Window) */}
-              <div className="wordpress-page__visual wp-hide-mobile">
+              <div className="wp-hide-mobile" style={{ position: 'relative' }}>
                 <ScrollReveal animation="fade-left" delay={200}>
-                  <div className="wordpress-page__orb wordpress-page__orb--1"></div>
-                  <div className="wordpress-page__orb wordpress-page__orb--2"></div>
                   
-                  <div className="wordpress-page__code-window">
-                    <div className="wordpress-page__window-header">
-                      <div className="wordpress-page__dots">
-                        <div className="wordpress-page__dot wordpress-page__dot--red"></div>
-                        <div className="wordpress-page__dot wordpress-page__dot--yellow"></div>
-                        <div className="wordpress-page__dot wordpress-page__dot--green"></div>
+                  {/* Floating Glowing Orbs */}
+                  <div style={{
+                    position: 'absolute',
+                    top: '-10%',
+                    right: '-10%',
+                    width: '150px',
+                    height: '150px',
+                    borderRadius: '50%',
+                    backgroundColor: 'var(--primary)',
+                    filter: 'blur(60px)',
+                    opacity: 0.3,
+                    zIndex: 0
+                  }} />
+                  <div style={{
+                    position: 'absolute',
+                    bottom: '-10%',
+                    left: '-10%',
+                    width: '200px',
+                    height: '200px',
+                    borderRadius: '50%',
+                    backgroundColor: 'var(--secondary)',
+                    filter: 'blur(70px)',
+                    opacity: 0.2,
+                    zIndex: 0
+                  }} />
+                  
+                  {/* Code Window */}
+                  <div 
+                    style={{
+                      position: 'relative',
+                      backgroundColor: '#0d1117', // Terminal dark background
+                      borderRadius: 'var(--radius-lg)',
+                      border: '1px solid var(--border-soft)',
+                      boxShadow: 'var(--shadow-2xl), 0 0 20px var(--primary-soft)',
+                      overflow: 'hidden',
+                      zIndex: 1
+                    }}
+                  >
+                    {/* Mac-style Window Header */}
+                    <div 
+                      className="wp-flex wp-items-center wp-justify-between wp-px-4 wp-py-3"
+                      style={{
+                        backgroundColor: '#161b22',
+                        borderBottom: '1px solid #30363d'
+                      }}
+                    >
+                      <div className="wp-flex wp-gap-2">
+                        <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#ff5f56' }} />
+                        <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#ffbd2e' }} />
+                        <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#27c93f' }} />
                       </div>
-                      <div className="wordpress-page__filename">/src/wp-config.php</div>
+                      <div style={{
+                        fontFamily: 'var(--font-secondary)',
+                        fontSize: 'var(--text-xs)',
+                        color: '#8b949e'
+                      }}>
+                        /src/wp-config.php
+                      </div>
+                      <div style={{ width: '44px' }} /> {/* Spacer to center the title */}
                     </div>
-                    <div className="wordpress-page__code-content">
-                      <pre>
-                        <code>
-<span className="token keyword">&lt;?php</span>
-<span className="token comment">// LSX Design System Configuration</span>
 
-<span className="token function">define</span>(<span className="token string">'WP_CACHE'</span>, <span className="token keyword">true</span>);
-<span className="token function">define</span>(<span className="token string">'WP_ENVIRONMENT_TYPE'</span>, <span className="token string">'production'</span>);
+                    {/* Code Content */}
+                    <div className="wp-p-6" style={{ overflowX: 'auto' }}>
+                      <pre style={{ margin: 0, padding: 0 }}>
+                        <code style={{
+                          fontFamily: 'monospace',
+                          fontSize: 'var(--text-sm)',
+                          lineHeight: '1.6',
+                          color: '#e6edf3'
+                        }}>
+<span style={{ color: '#ff7b72' }}>&lt;?php</span>
+<span style={{ color: '#8b949e', fontStyle: 'italic' }}>// LSX Design System Configuration</span>
 
-<span className="token comment">// Performance Settings</span>
-<span className="token keyword">$performance</span> = [
-  <span className="token string">'caching'</span> =&gt; <span className="token string">'redis'</span>,
-  <span className="token string">'loading'</span> =&gt; <span className="token string">'lazy'</span>,
-  <span className="token string">'vitals'</span>  =&gt; <span className="token string">'optimized'</span>
+<span style={{ color: '#d2a8ff' }}>define</span>(<span style={{ color: '#a5d6ff' }}>'WP_CACHE'</span>, <span style={{ color: '#79c0ff' }}>true</span>);
+<span style={{ color: '#d2a8ff' }}>define</span>(<span style={{ color: '#a5d6ff' }}>'WP_ENVIRONMENT_TYPE'</span>, <span style={{ color: '#a5d6ff' }}>'production'</span>);
+
+<span style={{ color: '#8b949e', fontStyle: 'italic' }}>// Performance Settings</span>
+<span style={{ color: '#79c0ff' }}>$performance</span> <span style={{ color: '#ff7b72' }}>=</span> [
+  <span style={{ color: '#a5d6ff' }}>'caching'</span> <span style={{ color: '#ff7b72' }}>=&gt;</span> <span style={{ color: '#a5d6ff' }}>'redis'</span>,
+  <span style={{ color: '#a5d6ff' }}>'loading'</span> <span style={{ color: '#ff7b72' }}>=&gt;</span> <span style={{ color: '#a5d6ff' }}>'lazy'</span>,
+  <span style={{ color: '#a5d6ff' }}>'vitals'</span>  <span style={{ color: '#ff7b72' }}>=&gt;</span> <span style={{ color: '#a5d6ff' }}>'optimized'</span>
 ];
 
-<span className="token comment">// Initialize Security</span>
-<span className="token function">lsx_init_security</span>(<span className="token keyword">$performance</span>);
+<span style={{ color: '#8b949e', fontStyle: 'italic' }}>// Initialize Security</span>
+<span style={{ color: '#d2a8ff' }}>lsx_init_security</span>(<span style={{ color: '#79c0ff' }}>$performance</span>);
                         </code>
                       </pre>
                     </div>
@@ -196,46 +328,61 @@ export function WordPressSolutionTemplate() {
             </div>
           </Container>
 
-          <ScrollDownArrow />
+          <div style={{ marginTop: 'var(--spacing-12)' }}>
+            <ScrollDownArrow />
+          </div>
         </section>
 
         {/* Overview Stats Section */}
         <section className="wordpress-page__stats">
           <Container>
             <ScrollReveal animation="fade-up">
-              <StatsGrid
-                title={wordpressSolutionOverview.title}
-                description={wordpressSolutionOverview.description}
-                stats={wordpressSolutionOverview.stats.map(stat => ({
+              <AgencyStats
+                heading={wordpressSolutionOverview.title}
+                subheading={wordpressSolutionOverview.description}
+                stats={wordpressSolutionOverview.stats.map((stat, i) => ({
+                  id: `stat-${i}`,
                   icon: stat.icon,
                   value: stat.value,
                   label: stat.label,
                   description: stat.description
                 }))}
                 columns={4}
-                variant="default"
               />
             </ScrollReveal>
           </Container>
         </section>
 
         {/* Features Section */}
-        <FeatureGrid
-          title="WordPress Features & Capabilities"
-          description="Everything you need for a powerful, modern website"
-          items={wordpressSolutionFeatures}
-          columns={4}
-          variant="default"
-        />
+        <Container>
+          <ServiceCapabilitiesGrid
+            heading="WordPress Features & Capabilities"
+            subheading="Everything you need for a powerful, modern website"
+            capabilities={wordpressSolutionFeatures.map((feature, i) => ({
+              id: `feature-${i}`,
+              title: feature.title,
+              description: feature.description,
+              icon: feature.icon,
+            }))}
+            columns={3}
+          />
+        </Container>
 
         {/* Use Cases Section */}
-        <UseCasesGrid
-          title="WordPress Use Cases"
-          description="WordPress adapts to any industry or business type"
-          useCases={wordpressSolutionUseCases}
-          columns={2}
-          variant="default"
-        />
+        <Container>
+          <ServiceUseCases
+            heading="WordPress Use Cases"
+            subheading="WordPress adapts to any industry or business type"
+            useCases={wordpressSolutionUseCases.map((useCase, i) => ({
+              id: `use-case-${i}`,
+              title: useCase.title,
+              description: useCase.description,
+              industries: useCase.industries,
+              features: useCase.features
+            }))}
+            columns={2}
+          />
+        </Container>
 
         {/* Pricing Section */}
         <PricingTable
@@ -246,14 +393,21 @@ export function WordPressSolutionTemplate() {
         />
 
         {/* Benefits/Related Solutions Section */}
-        <BenefitsGrid
-          title="Related Solutions"
-          description="Explore more ways to enhance your WordPress website"
-          benefits={relatedBenefits}
-          columns={3}
-          variant="default"
-          showArrows={true}
-        />
+        <Container>
+          <ServiceRelatedSolutions
+            heading="Related Solutions"
+            subheading="Explore more ways to enhance your WordPress website"
+            solutions={relatedBenefits.map((b, i) => ({
+              id: `related-${i}`,
+              icon: b.icon,
+              title: b.title,
+              description: b.description,
+              link: b.link,
+              linkText: b.linkText
+            }))}
+            columns={3}
+          />
+        </Container>
 
         {/* FAQ Section */}
         <FAQSection

@@ -34,10 +34,10 @@ export interface FeatureIconGridProps {
   columns?: 2 | 3 | 4;
   /** Icon size in pixels (default: 32) */
   iconSize?: number;
-  /** Icon box size in pixels (default: 64) */
-  iconBoxSize?: number;
+  /** Icon box class */
+  iconBoxClass?: string;
   /** Background color */
-  backgroundColor?: string;
+  background?: 'default' | 'card' | 'muted' | 'transparent';
   /** Section spacing */
   spacing?: 'sm' | 'md' | 'lg' | 'xl';
   /** Max width constraint */
@@ -50,8 +50,8 @@ export function FeatureIconGrid({
   features,
   columns = 3,
   iconSize = 32,
-  iconBoxSize = 64,
-  backgroundColor = 'var(--background)',
+  iconBoxClass = 'wp-w-16 wp-h-16',
+  background = 'default',
   spacing = 'xl',
   maxWidth = '6xl'
 }: FeatureIconGridProps) {
@@ -66,7 +66,7 @@ export function FeatureIconGrid({
   const maxWidthClass = maxWidth !== 'none' ? `wp-max-w-${maxWidth}` : '';
 
   return (
-    <Section spacing={spacing} style={{ backgroundColor }}>
+    <Section spacing={spacing} background={background as any}>
       <Container>
         {/* Section Header */}
         {(title || description) && (
@@ -97,11 +97,7 @@ export function FeatureIconGrid({
               >
                 {/* Icon Box */}
                 <div
-                  className="feature-icon-grid__icon-box"
-                  style={{
-                    width: `${iconBoxSize}px`,
-                    height: `${iconBoxSize}px`,
-                  }}
+                  className={`feature-icon-grid__icon-box ${iconBoxClass}`}
                 >
                   <Icon size={iconSize} />
                 </div>

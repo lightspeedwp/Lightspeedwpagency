@@ -145,34 +145,34 @@ export function SecurityServiceTemplate() {
       {/* ============================================
           HERO SECTION (The Fortress)
           ============================================ */}
-      <section className="security-page__hero">
-        <div className="security-page__grid-bg" aria-hidden="true" />
-        <div className="security-page__radar" aria-hidden="true" />
+      <section style={{ position: 'relative', minHeight: '90vh', display: 'flex', alignItems: 'center', backgroundColor: 'var(--background)', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', inset: 0, opacity: 0.1, backgroundImage: 'linear-gradient(var(--success) 1px, transparent 1px), linear-gradient(90deg, var(--success) 1px, transparent 1px)', backgroundSize: 'var(--gradient-grid-size)', zIndex: 0 }} aria-hidden="true" />
+        <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '800px', height: '800px', background: 'radial-gradient(circle, color-mix(in srgb, var(--success) 10%, transparent) 0%, transparent 70%)', filter: 'blur(40px)', zIndex: 0 }} aria-hidden="true" />
         
         <Container>
-          <div className="security-page__hero-grid">
-            <div className="security-page__hero-content">
+          <div className="wp-grid-2-cols wp-items-center wp-gap-16">
+            <div style={{ position: 'relative', zIndex: 1 }}>
               <ScrollReveal animation="fade-right">
-                <span className="security-page__badge">
+                <span style={{ display: 'inline-flex', alignItems: 'center', gap: 'var(--spacing-2)', padding: 'var(--spacing-2) var(--spacing-4)', backgroundColor: 'rgba(39, 201, 63, 0.1)', color: '#27c93f', borderRadius: 'var(--radius-full)', fontFamily: 'var(--font-mono)', fontSize: 'var(--text-sm)', fontWeight: 'var(--font-weight-bold)', border: '1px solid rgba(39, 201, 63, 0.3)', marginBottom: 'var(--spacing-6)' }}>
                   <Shield size={16} />
                   <span>CYBER DEFENSE ACTIVE</span>
                 </span>
                 
-                <h1 className="security-page__title">
+                <h1 style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-h1)', color: '#ffffff', marginBottom: 'var(--spacing-6)', lineHeight: 1.1 }}>
                   Digital <br />
-                  <span>Fortress.</span>
+                  <span style={{ color: '#ff5f56' }}>Fortress.</span>
                 </h1>
                 
-                <p className="security-page__desc">
+                <p style={{ fontFamily: 'var(--font-mono)', fontSize: 'var(--text-lg)', color: '#a1a1aa', lineHeight: 1.6, marginBottom: 'var(--spacing-10)' }}>
                   {data.tagline} We build an impenetrable perimeter around your digital assets.
                 </p>
 
-                <div className="security-page__buttons">
+                <div className="wp-flex wp-gap-4 wp-flex-wrap">
                   <Button
                     variant="default"
                     size="lg"
                     page="contact"
-                    className="security-page__btn-scan"
+                    style={{ backgroundColor: '#ff5f56', color: '#ffffff', border: 'none', fontFamily: 'var(--font-mono)' }}
                   >
                     <Terminal size={20} />
                     INITIATE_SCAN
@@ -181,7 +181,7 @@ export function SecurityServiceTemplate() {
                     variant="outline"
                     size="lg"
                     page="hosting"
-                    className="security-page__btn-protocols"
+                    style={{ borderColor: '#27c93f', color: '#27c93f', fontFamily: 'var(--font-mono)' }}
                   >
                     VIEW_PROTOCOLS
                   </Button>
@@ -189,35 +189,32 @@ export function SecurityServiceTemplate() {
               </ScrollReveal>
             </div>
 
-            <div className="security-page__hero-visual">
+            <div style={{ position: 'relative', zIndex: 1 }}>
                {/* Terminal Visual */}
                <ScrollReveal animation="fade-left">
-                 <div className="security-page__monitor">
-                   <div className="security-page__monitor-header">
-                     <div className="security-page__monitor-dots">
-                       <div className="security-page__monitor-dot security-page__monitor-dot--red" />
-                       <div className="security-page__monitor-dot security-page__monitor-dot--yellow" />
-                       <div className="security-page__monitor-dot security-page__monitor-dot--green" />
+                 <div style={{ backgroundColor: '#18181b', border: '1px solid #3f3f46', borderRadius: 'var(--radius-xl)', overflow: 'hidden', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.5)' }}>
+                   <div style={{ backgroundColor: '#27272a', padding: 'var(--spacing-3) var(--spacing-4)', display: 'flex', alignItems: 'center', borderBottom: '1px solid #3f3f46' }}>
+                     <div style={{ display: 'flex', gap: 'var(--spacing-2)' }}>
+                       <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#ff5f56' }} />
+                       <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#ffbd2e' }} />
+                       <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#27c93f' }} />
                      </div>
-                     <div className="security-page__monitor-user">root@lightspeed:~</div>
+                     <div style={{ flex: 1, textAlign: 'center', fontFamily: 'var(--font-mono)', fontSize: 'var(--text-sm)', color: '#a1a1aa' }}>root@lightspeed:~</div>
                    </div>
-                   <div className="security-page__monitor-screen">
-                     <div className="security-page__monitor-welcome">
+                   <div style={{ padding: 'var(--spacing-6)', fontFamily: 'var(--font-mono)', fontSize: 'var(--text-sm)', color: '#27c93f', height: '300px', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end' }}>
+                     <div style={{ color: '#a1a1aa', marginBottom: 'var(--spacing-4)' }}>
                        Welcome to LightSpeed Defense System v4.0<br/>
                        Copyright (c) 2025 LightSpeed Agency
                      </div>
                      {logs.map((log, i) => (
-                       <div key={i} className="security-page__log-entry">
-                         <span className="security-page__log-time">{new Date().toLocaleTimeString()} &gt;</span> 
-                         <span className={
-                           log.includes("detected") ? "security-page__log-alert" : 
-                           log.includes("OK") ? "security-page__log-ok" : ""
-                         }>
+                       <div key={i} style={{ marginBottom: 'var(--spacing-2)' }}>
+                         <span style={{ color: '#52525b' }}>{new Date().toLocaleTimeString()} &gt;</span> 
+                         <span style={{ color: log.includes("detected") ? '#ff5f56' : log.includes("OK") ? '#27c93f' : '#a1a1aa', marginLeft: 'var(--spacing-2)' }}>
                            {log}
                          </span>
                        </div>
                      ))}
-                     <div className="security-page__terminal-cursor">_</div>
+                     <div style={{ color: '#27c93f', animation: 'blink 1s step-end infinite' }}>_</div>
                    </div>
                  </div>
                </ScrollReveal>
@@ -231,48 +228,48 @@ export function SecurityServiceTemplate() {
       {/* ============================================
           THREAT INTEL (Why LightSpeed)
           ============================================ */}
-      <section className="security-page__threat-intel">
+      <section style={{ padding: 'var(--spacing-24) 0', backgroundColor: '#18181b', borderTop: '1px solid #27272a', borderBottom: '1px solid #27272a' }}>
         <Container>
-          <div className="security-page__intel-header">
+          <div style={{ textAlign: 'center', marginBottom: 'var(--spacing-16)' }}>
             <ScrollReveal animation="fade-up">
-              <h2 className="security-page__intel-title">
-                <span className="security-page__intel-title-accent">&gt;</span> 
+              <h2 style={{ fontFamily: 'var(--font-mono)', fontSize: 'var(--text-h2)', color: '#ffffff', marginBottom: 'var(--spacing-4)', textTransform: 'uppercase' }}>
+                <span style={{ color: '#27c93f', marginRight: 'var(--spacing-2)' }}>&gt;</span> 
                 SYSTEM_STATUS: SECURE
               </h2>
-              <p className="security-page__intel-desc">
+              <p style={{ fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-lg)', color: '#a1a1aa', maxWidth: '600px', margin: '0 auto' }}>
                 {data.whyLightSpeed.description}
               </p>
             </ScrollReveal>
           </div>
 
-          <div className="security-page__intel-grid">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 'var(--spacing-8)' }}>
             <ScrollReveal animation="fade-up" delay={0}>
-              <div className="security-page__intel-card security-page__intel-card--alert">
-                <div className="security-page__intel-icon security-page__intel-icon--alert">
+              <div style={{ backgroundColor: '#0a0a0a', border: '1px solid rgba(255, 95, 86, 0.3)', borderRadius: 'var(--radius-lg)', padding: 'var(--spacing-8)', height: '100%' }}>
+                <div style={{ color: '#ff5f56', marginBottom: 'var(--spacing-6)' }}>
                   <Activity size={32} />
                 </div>
-                <h3 className="security-page__intel-heading">Real-time Monitoring</h3>
-                <p className="security-page__intel-text">24/7 surveillance of file changes, login attempts, and traffic spikes.</p>
+                <h3 style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-xl)', color: '#ffffff', marginBottom: 'var(--spacing-3)' }}>Real-time Monitoring</h3>
+                <p style={{ fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-base)', color: '#a1a1aa', lineHeight: 1.6 }}>24/7 surveillance of file changes, login attempts, and traffic spikes.</p>
               </div>
             </ScrollReveal>
 
             <ScrollReveal animation="fade-up" delay={100}>
-              <div className="security-page__intel-card security-page__intel-card--safe">
-                <div className="security-page__intel-icon security-page__intel-icon--safe">
+              <div style={{ backgroundColor: '#0a0a0a', border: '1px solid rgba(39, 201, 63, 0.3)', borderRadius: 'var(--radius-lg)', padding: 'var(--spacing-8)', height: '100%' }}>
+                <div style={{ color: '#27c93f', marginBottom: 'var(--spacing-6)' }}>
                   <Lock size={32} />
                 </div>
-                <h3 className="security-page__intel-heading">Hardened Core</h3>
-                <p className="security-page__intel-text">Database encryption, salt key rotation, and strict file permissions.</p>
+                <h3 style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-xl)', color: '#ffffff', marginBottom: 'var(--spacing-3)' }}>Hardened Core</h3>
+                <p style={{ fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-base)', color: '#a1a1aa', lineHeight: 1.6 }}>Database encryption, salt key rotation, and strict file permissions.</p>
               </div>
             </ScrollReveal>
 
             <ScrollReveal animation="fade-up" delay={200}>
-              <div className="security-page__intel-card security-page__intel-card--info">
-                <div className="security-page__intel-icon security-page__intel-icon--info">
+              <div style={{ backgroundColor: '#0a0a0a', border: '1px solid rgba(56, 189, 248, 0.3)', borderRadius: 'var(--radius-lg)', padding: 'var(--spacing-8)', height: '100%' }}>
+                <div style={{ color: '#38bdf8', marginBottom: 'var(--spacing-6)' }}>
                   <Zap size={32} />
                 </div>
-                <h3 className="security-page__intel-heading">Rapid Response</h3>
-                <p className="security-page__intel-text">Immediate containment and cleanup if any breach attempts occur.</p>
+                <h3 style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-xl)', color: '#ffffff', marginBottom: 'var(--spacing-3)' }}>Rapid Response</h3>
+                <p style={{ fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-base)', color: '#a1a1aa', lineHeight: 1.6 }}>Immediate containment and cleanup if any breach attempts occur.</p>
               </div>
             </ScrollReveal>
           </div>
@@ -282,14 +279,14 @@ export function SecurityServiceTemplate() {
       {/* ============================================
           DEFENSE PROTOCOLS (Sub-Services)
           ============================================ */}
-      <section className="security-page__services">
+      <section style={{ padding: 'var(--spacing-24) 0', backgroundColor: '#0a0a0a' }}>
         <Container>
-          <div className="security-page__services-header">
-            <div className="security-page__divider" />
-            <h2 className="security-page__services-title">
+          <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-6)', marginBottom: 'var(--spacing-16)' }}>
+            <div style={{ flex: 1, height: '1px', backgroundColor: '#27272a' }} />
+            <h2 style={{ fontFamily: 'var(--font-mono)', fontSize: 'var(--text-h2)', color: '#ffffff', textTransform: 'uppercase', letterSpacing: '0.05em', margin: 0 }}>
               Defense Protocols
             </h2>
-            <div className="security-page__divider" />
+            <div style={{ flex: 1, height: '1px', backgroundColor: '#27272a' }} />
           </div>
 
           <ScrollReveal animation="fade-up" delay={100}>
@@ -311,7 +308,7 @@ export function SecurityServiceTemplate() {
       {/* ============================================
           SYSTEM SCAN (Process)
           ============================================ */}
-      <section className="security-page__process">
+      <section style={{ padding: 'var(--spacing-24) 0', backgroundColor: '#18181b', borderTop: '1px solid #27272a' }}>
         <Container>
           <ScrollReveal animation="fade-up">
             <ProcessTimeline
@@ -333,7 +330,7 @@ export function SecurityServiceTemplate() {
       {/* ============================================
           STATS (Metrics)
           ============================================ */}
-      <section className="security-page__stats">
+      <section style={{ padding: 'var(--spacing-24) 0', backgroundColor: '#0a0a0a' }}>
         <Container>
           <StatsGrid
             stats={[
@@ -378,7 +375,7 @@ export function SecurityServiceTemplate() {
           ============================================ */}
       {servicePricingTimeline.security && (
         <ScrollReveal animation="fade-up">
-          <section className="security-service__pricing-section">
+          <section style={{ padding: 'var(--spacing-24) 0', backgroundColor: '#18181b', borderTop: '1px solid #27272a' }}>
             <Container>
               <ServicePricingTimeline
                 pricing={servicePricingTimeline.security.pricing}

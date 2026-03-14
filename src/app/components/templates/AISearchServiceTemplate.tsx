@@ -146,7 +146,7 @@ export function AISearchServiceTemplate() {
         <div className="ai-search-page__hero-content">
           <ScrollReveal animation="fade-down">
             <div className="ai-search-page__badge">
-              <Eye style={{ width: 14, height: 14 }} />
+              <Eye size={14} />
               AI Search & Visibility
             </div>
           </ScrollReveal>

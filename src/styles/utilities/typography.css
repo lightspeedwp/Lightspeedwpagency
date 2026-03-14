@@ -12,6 +12,7 @@
 /* Font families */
 .font-primary { font-family: var(--font-primary); }
 .font-secondary { font-family: var(--font-secondary); }
+.font-mono { font-family: var(--font-mono); }
 
 /* Font sizes - LSX scale */
 .text-h1 { font-size: var(--text-h1); }
@@ -64,6 +65,9 @@
 .wp-font-medium { font-weight: var(--font-weight-medium); }
 .wp-font-semibold { font-weight: var(--font-weight-semibold); }
 .wp-font-bold { font-weight: var(--font-weight-bold); }
+.wp-font-primary { font-family: var(--font-primary); }
+.wp-font-secondary { font-family: var(--font-secondary); }
+.wp-font-mono { font-family: var(--font-mono); }
 
 /* Text transform & spacing */
 .wp-uppercase { text-transform: uppercase; }

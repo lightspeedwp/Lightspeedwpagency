@@ -100,6 +100,10 @@
   border: 1px solid var(--border-soft);
 }
 
+.single-post-featured-image--longform {
+  aspect-ratio: 21/9;
+}
+
 /* ============================================
    BODY CONTENT — FUNKY BLOCKQUOTE
    ============================================ */

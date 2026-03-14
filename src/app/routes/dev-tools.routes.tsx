@@ -28,219 +28,130 @@
  * - Style guide
  */
 
-import React, { lazy, Suspense } from 'react';
+import React from 'react';
 import { type RouteObject } from 'react-router';
-import { RouteLoadingFallback } from '../components/ui/RouteLoadingFallback';
 
 /* ═══════════════════════════════════════════
- * Lazy Template Imports
+ * Static Template Imports
  * ═══════════════════════════════════════════ */
 
-const DevToolsTemplate = lazy(() => import('../components/templates/DevToolsTemplate').then(m => ({ default: m.DevToolsTemplate })));
-const TemplateTester = lazy(() => import('../components/templates/TemplateTester').then(m => ({ default: m.TemplateTester })));
-const ComponentShowcase = lazy(() => import('../components/templates/ComponentShowcase').then(m => ({ default: m.ComponentShowcase })));
-const DesignSystemTest = lazy(() => import('../components/blocks/dev-tools/DesignSystemTest').then(m => ({ default: m.DesignSystemTest })));
-const ComplianceScorecard = lazy(() => import('../components/blocks/dev-tools/ComplianceScorecard').then(m => ({ default: m.ComplianceScorecard })));
-const BlockDocumentation = lazy(() => import('../components/templates/BlockDocumentation').then(m => ({ default: m.BlockDocumentation })));
-const ComponentAPI = lazy(() => import('../components/templates/ComponentAPI').then(m => ({ default: m.ComponentAPI })));
-const DesignBlocksShowcase = lazy(() => import('../components/templates/DesignBlocksShowcase').then(m => ({ default: m.DesignBlocksShowcase })));
-const ButtonShowcase = lazy(() => import('../components/templates/ButtonShowcase').then(m => ({ default: m.ButtonShowcase })));
-const HeaderFooterComparison = lazy(() => import('../components/templates/HeaderFooterComparison').then(m => ({ default: m.HeaderFooterComparison })));
-const IconLibrary = lazy(() => import('../components/templates/IconLibrary').then(m => ({ default: m.IconLibrary })));
-const PhosphorIconReference = lazy(() => import('../components/templates/PhosphorIconReference').then(m => ({ default: m.PhosphorIconReference })));
-const LivePreview = lazy(() => import('../components/templates/LivePreview').then(m => ({ default: m.LivePreview })));
-const SectionPresetsShowcase = lazy(() => import('../components/templates/SectionPresetsShowcase').then(m => ({ default: m.SectionPresetsShowcase })));
-const ThemeBlocksShowcase = lazy(() => import('../components/templates/ThemeBlocksShowcase').then(m => ({ default: m.ThemeBlocksShowcase })));
-const DesignTokensReferenceTemplate = lazy(() => import('../components/templates/DesignTokensReferenceTemplate').then(m => ({ default: m.DesignTokensReferenceTemplate })));
-const DeploymentReadinessTemplate = lazy(() => import('../components/templates/DeploymentReadinessTemplate').then(m => ({ default: m.DeploymentReadinessTemplate })));
-const DesignPlaygroundTemplate = lazy(() => import('../components/templates/DesignPlaygroundTemplate').then(m => ({ default: m.DesignPlaygroundTemplate })));
-const CodeQualityDashboardTemplate = lazy(() => import('../components/templates/CodeQualityDashboardTemplate').then(m => ({ default: m.CodeQualityDashboardTemplate })));
-const DocsGeneratorTemplate = lazy(() => import('../components/templates/DocsGeneratorTemplate').then(m => ({ default: m.DocsGeneratorTemplate })));
+import { DevToolsTemplate } from '../components/templates/DevToolsTemplate';
+import { TemplateTester } from '../components/templates/TemplateTester';
+import { ComponentShowcase } from '../components/templates/ComponentShowcase';
+import { DesignSystemTest } from '../components/blocks/dev-tools/DesignSystemTest';
+import { ComplianceScorecard } from '../components/blocks/dev-tools/ComplianceScorecard';
+import { BlockDocumentation } from '../components/templates/BlockDocumentation';
+import { ComponentAPI } from '../components/templates/ComponentAPI';
+import { DesignBlocksShowcase } from '../components/templates/DesignBlocksShowcase';
+import { ButtonShowcase } from '../components/templates/ButtonShowcase';
+import { HeaderFooterComparison } from '../components/templates/HeaderFooterComparison';
+import { IconLibrary } from '../components/templates/IconLibrary';
+import { PhosphorIconReference } from '../components/templates/PhosphorIconReference';
+import { LivePreview } from '../components/templates/LivePreview';
+import { SectionPresetsShowcase } from '../components/templates/SectionPresetsShowcase';
+import { ThemeBlocksShowcase } from '../components/templates/ThemeBlocksShowcase';
+import { DesignTokensReferenceTemplate } from '../components/templates/DesignTokensReferenceTemplate';
+import { DeploymentReadinessTemplate } from '../components/templates/DeploymentReadinessTemplate';
+import { DesignPlaygroundTemplate } from '../components/templates/DesignPlaygroundTemplate';
+import { CodeQualityDashboardTemplate } from '../components/templates/CodeQualityDashboardTemplate';
+import { DocsGeneratorTemplate } from '../components/templates/DocsGeneratorTemplate';
 
 // StyleGuideTemplate (static import - also used in utility.routes.tsx)
 import { StyleGuideTemplate } from '../components/templates/StyleGuideTemplate';
 
 // FeatureShowcaseTemplate (also used in legacy.routes.tsx)
-const FeatureShowcaseTemplate = lazy(() => import('../components/templates/FeatureShowcaseTemplate').then(m => ({ default: m.FeatureShowcaseTemplate })));
+import { FeatureShowcaseTemplate } from '../components/templates/FeatureShowcaseTemplate';
 
 /* ═══════════════════════════════════════════
  * Route Wrapper Components
  * ═══════════════════════════════════════════ */
 
 function DevToolsRoute() {
-  return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <DevToolsTemplate />
-    </Suspense>
-  );
+  return <DevToolsTemplate />;
 }
 
 function TemplateTesterRoute() {
-  return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <TemplateTester />
-    </Suspense>
-  );
+  return <TemplateTester />;
 }
 
 function ComponentShowcaseRoute() {
-  return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <ComponentShowcase />
-    </Suspense>
-  );
+  return <ComponentShowcase />;
 }
 
 function DesignSystemTestRoute() {
-  return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <DesignSystemTest />
-    </Suspense>
-  );
+  return <DesignSystemTest />;
 }
 
 function ComplianceScorecardRoute() {
-  return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <ComplianceScorecard />
-    </Suspense>
-  );
+  return <ComplianceScorecard />;
 }
 
 function BlockDocumentationRoute() {
-  return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <BlockDocumentation />
-    </Suspense>
-  );
+  return <BlockDocumentation />;
 }
 
 function ComponentAPIRoute() {
-  return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <ComponentAPI />
-    </Suspense>
-  );
+  return <ComponentAPI />;
 }
 
 function DesignBlocksShowcaseRoute() {
-  return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <DesignBlocksShowcase />
-    </Suspense>
-  );
+  return <DesignBlocksShowcase />;
 }
 
 function ButtonShowcaseRoute() {
-  return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <ButtonShowcase />
-    </Suspense>
-  );
+  return <ButtonShowcase />;
 }
 
 function HeaderFooterComparisonRoute() {
-  return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <HeaderFooterComparison />
-    </Suspense>
-  );
+  return <HeaderFooterComparison />;
 }
 
 function IconLibraryRoute() {
-  return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <IconLibrary />
-    </Suspense>
-  );
+  return <IconLibrary />;
 }
 
 function PhosphorIconReferenceRoute() {
-  return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <PhosphorIconReference />
-    </Suspense>
-  );
+  return <PhosphorIconReference />;
 }
 
 function LivePreviewRoute() {
-  return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <LivePreview />
-    </Suspense>
-  );
+  return <LivePreview />;
 }
 
 function SectionPresetsShowcaseRoute() {
-  return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <SectionPresetsShowcase />
-    </Suspense>
-  );
+  return <SectionPresetsShowcase />;
 }
 
 function ThemeBlocksShowcaseRoute() {
-  return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <ThemeBlocksShowcase />
-    </Suspense>
-  );
+  return <ThemeBlocksShowcase />;
 }
 
 function DesignTokensReferenceRoute() {
-  return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <DesignTokensReferenceTemplate />
-    </Suspense>
-  );
+  return <DesignTokensReferenceTemplate />;
 }
 
 function DeploymentReadinessRoute() {
-  return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <DeploymentReadinessTemplate />
-    </Suspense>
-  );
+  return <DeploymentReadinessTemplate />;
 }
 
 function DesignPlaygroundRoute() {
-  return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <DesignPlaygroundTemplate />
-    </Suspense>
-  );
+  return <DesignPlaygroundTemplate />;
 }
 
 function CodeQualityDashboardRoute() {
-  return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <CodeQualityDashboardTemplate />
-    </Suspense>
-  );
+  return <CodeQualityDashboardTemplate />;
 }
 
 function DocsGeneratorRoute() {
-  return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <DocsGeneratorTemplate />
-    </Suspense>
-  );
+  return <DocsGeneratorTemplate />;
 }
 
 function StyleGuideRoute() {
-  return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <StyleGuideTemplate />
-    </Suspense>
-  );
+  return <StyleGuideTemplate />;
 }
 
 function FeatureShowcaseRoute() {
-  return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <FeatureShowcaseTemplate />
-    </Suspense>
-  );
+  return <FeatureShowcaseTemplate />;
 }
 
 /* ═══════════════════════════════════════════

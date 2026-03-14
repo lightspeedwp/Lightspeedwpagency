@@ -41,18 +41,9 @@ export function QueryLoopServices({
             <div className="query-loop-card__body">
               {/* Icon */}
               <div
-                style={{
-                  width: 'var(--spacing-12)',
-                  height: 'var(--spacing-12)',
-                  borderRadius: 'var(--radius-xl)',
-                  backgroundColor: 'var(--primary-soft)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  marginBottom: 'var(--spacing-2)',
-                }}
+                className="wp-flex wp-items-center wp-justify-center wp-bg-primary-soft wp-w-12 wp-h-12 wp-rounded-xl"
               >
-                <Icon size={24} style={{ color: 'var(--primary)' }} />
+                <Icon size={24} className="wp-text-primary" />
               </div>
 
               <span className="query-loop-card__badge">{service.category}</span>
@@ -66,18 +57,8 @@ export function QueryLoopServices({
                 ))}
               </div>
 
-              <div className="query-loop-card__footer" style={{ border: 'none', padding: 0 }}>
-                <span
-                  style={{
-                    fontFamily: 'var(--font-primary)',
-                    fontSize: 'var(--text-sm)',
-                    fontWeight: 'var(--font-weight-semibold)',
-                    color: 'var(--primary)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: 'var(--spacing-1)',
-                  }}
-                >
+              <div className="query-loop-card__footer wp-border-none wp-p-0">
+                <span className="wp-font-primary wp-text-sm wp-font-semibold wp-text-primary wp-flex wp-items-center wp-gap-1">
                   Learn More <ArrowRight size={14} />
                 </span>
               </div>

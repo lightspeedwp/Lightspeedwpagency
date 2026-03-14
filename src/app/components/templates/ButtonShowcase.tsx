@@ -161,7 +161,7 @@ export function ButtonShowcase() {
                 <span className="btn-showcase__card-title">CTA Variant (Glows on Hover)</span>
                 <Buttons>
                   <Button variant="cta" size="lg">
-                    Get Started <span style={{ marginLeft: '8px' }}>→</span>
+                    Get Started <span className="wp-ml-2">→</span>
                   </Button>
                 </Buttons>
               </div>

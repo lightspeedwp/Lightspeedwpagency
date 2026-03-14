@@ -75,7 +75,7 @@ export function GenericPolicyTemplate() {
       {/* ============================================
           HERO SECTION (Parallax + Floating Orbs)
           ============================================ */}
-      <section className="legal-hero" ref={parallaxRef} style={{ '--section-bg': 'var(--background)' } as React.CSSProperties}>
+      <section className="legal-hero wp-bg-background" ref={parallaxRef}>
         <div className="legal-hero__glow" aria-hidden="true" />
         <div className="legal-hero__mesh" aria-hidden="true" />
         
@@ -108,10 +108,10 @@ export function GenericPolicyTemplate() {
           ============================================ */}
       <section className="legal-content">
         <Container>
-          <div className="wp-grid-3-cols" style={{ '--grid-gap': 'var(--spacing-12)' } as React.CSSProperties}>
+          <div className="wp-grid-3-cols wp-gap-12">
             
             {/* Sidebar Navigation */}
-            <aside className="legal-content__sidebar" style={{ gridColumn: '1 / 2' }}>
+            <aside className="legal-content__sidebar wp-col-span-1">
               <div className="legal-content__nav-card sticky-sidebar">
                 <h3 className="legal-content__nav-title">Other Policies</h3>
                 <nav className="legal-content__nav">

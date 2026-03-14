@@ -88,8 +88,8 @@ export interface CardGridProps {
   showCTA?: boolean;
   /** Max width constraint */
   maxWidth?: '4xl' | '5xl' | '6xl' | 'none';
-  /** Custom gap between cards */
-  gap?: string;
+  /** Custom gap size (sm, md, lg, xl) */
+  gap?: 'sm' | 'md' | 'lg' | 'xl';
   /** Empty state message */
   emptyMessage?: string;
 }
@@ -102,7 +102,7 @@ export function CardGrid({
   showDescriptions = true,
   showCTA = true,
   maxWidth = '6xl',
-  gap = 'var(--spacing-8)',
+  gap = 'lg',
   emptyMessage = 'No items found.'
 }: CardGridProps) {
   // Max width class
@@ -110,6 +110,14 @@ export function CardGrid({
 
   // Grid column class based on columns count
   const gridClass = columns === 2 ? 'wp-grid-2-cols' : columns === 3 ? 'wp-grid-3-cols' : 'wp-grid-4-cols';
+  
+  // Map gap prop to WP utility classes
+  const gapClass = {
+    sm: 'wp-gap-4',
+    md: 'wp-gap-6',
+    lg: 'wp-gap-8',
+    xl: 'wp-gap-12'
+  }[gap] || 'wp-gap-8';
 
   // Empty state
   if (items.length === 0) {
@@ -126,7 +134,7 @@ export function CardGrid({
 
   return (
     <div className={maxWidthClass}>
-      <div className={gridClass} style={{ gap }}>
+      <div className={`${gridClass} ${gapClass}`}>
         {items.map((item, index) => {
           const isExternal = item.external || item.href?.startsWith('http');
           const CardIcon = item.icon;

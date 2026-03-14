@@ -1,1 +1,1 @@
-export { StyleSwitcher, type StyleSwitcherProps } from '@/app/components/blocks/theme/StyleSwitcher';
+export { StyleSwitcher, type StyleSwitcherProps } from '../blocks/theme/StyleSwitcher';

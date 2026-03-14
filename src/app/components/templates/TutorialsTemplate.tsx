@@ -153,9 +153,8 @@ export function TutorialsTemplate() {
                   Try selecting a different filter or browse all tutorials.
                 </p>
                 <button
-                  className="tutorials__filter-btn tutorials__filter-btn--active"
+                  className="tutorials__filter-btn tutorials__filter-btn--active wp-mt-6"
                   onClick={() => setActiveCategory('All')}
-                  style={{ marginTop: 'var(--spacing-6)' }}
                 >
                   View All Tutorials
                 </button>

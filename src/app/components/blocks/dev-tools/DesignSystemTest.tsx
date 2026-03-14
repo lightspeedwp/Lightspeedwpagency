@@ -118,7 +118,7 @@ export function DesignSystemTest() {
 
           <div className="wp-block-devtools-design-system-test__grid wp-block-devtools-design-system-test__grid--3-cols">
             {/* Primary Color */}
-            <div className="wp-block-devtools-design-system-test__color-card" style={{ backgroundColor: 'var(--primary)', color: 'var(--primary-foreground)' }}>
+            <div className="wp-block-devtools-design-system-test__color-card wp-bg-primary wp-text-primary-foreground">
               <div className="wp-block-devtools-design-system-test__color-name">
                 Primary
               </div>
@@ -128,7 +128,7 @@ export function DesignSystemTest() {
             </div>
 
             {/* Secondary Color */}
-            <div className="wp-block-devtools-design-system-test__color-card" style={{ backgroundColor: 'var(--secondary)', color: 'var(--secondary-foreground)' }}>
+            <div className="wp-block-devtools-design-system-test__color-card wp-bg-secondary wp-text-secondary-foreground">
               <div className="wp-block-devtools-design-system-test__color-name">
                 Secondary
               </div>
@@ -138,7 +138,7 @@ export function DesignSystemTest() {
             </div>
 
             {/* Accent Color */}
-            <div className="wp-block-devtools-design-system-test__color-card" style={{ backgroundColor: 'var(--accent)', color: 'var(--accent-foreground)' }}>
+            <div className="wp-block-devtools-design-system-test__color-card wp-bg-accent wp-text-accent-foreground">
               <div className="wp-block-devtools-design-system-test__color-name">
                 Accent
               </div>
@@ -148,7 +148,7 @@ export function DesignSystemTest() {
             </div>
 
             {/* Muted Color */}
-            <div className="wp-block-devtools-design-system-test__color-card" style={{ backgroundColor: 'var(--muted)', color: 'var(--muted-foreground)' }}>
+            <div className="wp-block-devtools-design-system-test__color-card wp-bg-muted wp-text-muted-foreground">
               <div className="wp-block-devtools-design-system-test__color-name">
                 Muted
               </div>
@@ -158,7 +158,7 @@ export function DesignSystemTest() {
             </div>
 
             {/* Destructive Color */}
-            <div className="wp-block-devtools-design-system-test__color-card" style={{ backgroundColor: 'var(--destructive)', color: 'var(--destructive-foreground)' }}>
+            <div className="wp-block-devtools-design-system-test__color-card wp-bg-destructive wp-text-destructive-foreground">
               <div className="wp-block-devtools-design-system-test__color-name">
                 Destructive
               </div>
@@ -168,7 +168,7 @@ export function DesignSystemTest() {
             </div>
 
             {/* Card Color */}
-            <div className="wp-block-devtools-design-system-test__color-card" style={{ backgroundColor: 'var(--card)', color: 'var(--card-foreground)', border: '1px solid var(--border)' }}>
+            <div className="wp-block-devtools-design-system-test__color-card wp-bg-card wp-text-card-foreground wp-border wp-border-border">
               <div className="wp-block-devtools-design-system-test__color-name">
                 Card
               </div>

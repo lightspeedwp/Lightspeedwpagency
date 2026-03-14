@@ -32,7 +32,7 @@ export function TimelineSection({ title, description, items = [] }: TimelineSect
   }
 
   return (
-    <Section spacing="xl" style={{ backgroundColor: 'var(--muted)' }}>
+    <Section spacing="xl" className="wp-bg-muted">
       <Container>
         {/* Section Header */}
         <div className="timeline-section__header">

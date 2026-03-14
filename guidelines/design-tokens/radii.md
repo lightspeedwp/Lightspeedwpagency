@@ -1,7 +1,10 @@
-# Border Radius Tokens
+# Border Radius Tokens — Design Tokens
 
-**Version:** 1.0  
-**Last Updated:** December 25, 2024
+**Category:** Design Tokens  
+**Version:** 1.1.0  
+**Last Updated:** 2026-03-11  
+**Status:** Active  
+**Template Used:** _templates/design-token-template.md  
 
 ---
 

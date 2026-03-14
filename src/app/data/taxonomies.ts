@@ -196,26 +196,6 @@ export const videoTags: TaxonomyTerm[] = [
 ];
 
 // ─────────────────────────────────────────────
-// WooCommerce Product Taxonomies
-// ─────────────────────────────────────────────
-
-export const productCategories: TaxonomyTerm[] = [
-  { id: 400, slug: 'themes', name: 'Themes', count: 8 },
-  { id: 401, slug: 'plugins', name: 'Plugins', count: 12 },
-  { id: 402, slug: 'templates', name: 'Templates', count: 6 },
-  { id: 403, slug: 'bundles', name: 'Bundles', count: 4 },
-  { id: 404, slug: 'subscriptions', name: 'Subscriptions', count: 3 }
-];
-
-export const productTags: TaxonomyTerm[] = [
-  { id: 500, slug: 'fse', name: 'Full Site Editing', count: 10 },
-  { id: 501, slug: 'block-theme', name: 'Block Theme', count: 8 },
-  { id: 502, slug: 'services', name: 'Services', count: 5 },
-  { id: 503, slug: 'starter', name: 'Starter', count: 3 },
-  { id: 504, slug: 'premium', name: 'Premium', count: 6 }
-];
-
-// ─────────────────────────────────────────────
 // Team Taxonomies
 // ─────────────────────────────────────────────
 

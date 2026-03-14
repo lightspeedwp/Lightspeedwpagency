@@ -33,7 +33,7 @@ export function ValuesSection({ title, description, values }: ValuesSectionProps
   ].filter(Boolean).join(' ');
 
   return (
-    <Section spacing="xl" style={{ backgroundColor: 'var(--background)' }}>
+    <Section spacing="xl" className="wp-bg-background">
       <Container>
         {/* Section Header */}
         <div className="values-section__header">

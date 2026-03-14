@@ -10,7 +10,7 @@
  * - BEM naming
  */
 
-import { Send, CheckCircle, AlertCircle } from '@phosphor-icons/react';
+import { Send, CheckCircle, WarningCircle as AlertCircle } from '@phosphor-icons/react';
 import { useState } from 'react';
 import { Button } from '../blocks/design/Buttons';
 

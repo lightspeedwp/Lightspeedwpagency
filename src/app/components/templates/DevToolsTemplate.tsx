@@ -413,7 +413,6 @@ const roadmapGroups: RoadmapGroup[] = [
       { name: 'wordpress-blocks.css (37 patterns)', status: 'completed', meta: 'Jan 7, 2025' },
       { name: 'Pattern library (51 patterns)', status: 'completed', meta: 'Jan 24, 2025' },
       { name: 'BEM enforcement (all patterns)', status: 'completed', meta: 'Jan 24, 2025' },
-      { name: 'WooCommerce blocks (11/11)', status: 'completed', meta: 'Jan 22, 2025' },
       { name: 'FunkyCTA pattern', status: 'completed', meta: 'Neon CTA variant' },
       { name: 'Funky variant for TestimonialGrid', status: 'in-progress' },
       { name: 'Funky variant for SocialProof', status: 'in-progress' },
@@ -452,7 +451,6 @@ const roadmapGroups: RoadmapGroup[] = [
       { name: 'Blog posts (12 posts, 6 categories)', status: 'completed' },
       { name: 'Portfolio projects (6 case studies)', status: 'completed' },
       { name: 'Testimonials (9+ entries, 4 formats)', status: 'completed' },
-      { name: 'WooCommerce products (multiple types)', status: 'completed' },
       { name: 'Tour operator (tours + itineraries)', status: 'completed' },
       { name: 'Videos (archive + categories + tags)', status: 'completed' },
       { name: 'Podcasts (episodes + categories)', status: 'completed' },
@@ -628,13 +626,7 @@ export function DevToolsTemplate() {
             </div>
 
             {/* General Tasks */}
-            <h3 style={{
-              fontFamily: 'var(--font-primary)',
-              fontSize: 'var(--text-h4)',
-              fontWeight: 'var(--font-weight-bold)',
-              color: 'var(--foreground)',
-              marginBottom: 'var(--spacing-6)',
-            }}>
+            <h3 className="wp-font-primary wp-text-h4 wp-font-bold wp-text-foreground wp-mb-6">
               General Tasks
             </h3>
 
@@ -675,14 +667,7 @@ export function DevToolsTemplate() {
             })}
 
             {/* Project Tasks */}
-            <h3 style={{
-              fontFamily: 'var(--font-primary)',
-              fontSize: 'var(--text-h4)',
-              fontWeight: 'var(--font-weight-bold)',
-              color: 'var(--foreground)',
-              marginBottom: 'var(--spacing-6)',
-              marginTop: 'var(--spacing-12)',
-            }}>
+            <h3 className="wp-font-primary wp-text-h4 wp-font-bold wp-text-foreground wp-mb-6 wp-mt-12">
               Project Tasks
             </h3>
 

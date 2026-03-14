@@ -29,11 +29,8 @@ export function Container({
 }: ContainerProps) {
   return (
     <div 
-      className={`wp-block-group wp-block-container ${className}`} 
-      style={{
-        width: '100%',
-        ...style
-      }}
+      className={`wp-block-group wp-block-container wp-w-full ${className}`} 
+      style={style}
     >
       <div className="wp-container-inner">
         {children}

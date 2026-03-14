@@ -55,9 +55,9 @@ export const ScrollProgress = ({
   }, []);
 
   return (
-    <div className="scroll-progress" style={{ height: `${height}px` }}>
+    <div className="wp-fixed wp-top-0 wp-left-0 wp-right-0 wp-z-50 wp-pointer-events-none wp-bg-transparent" style={{ height: `${height}px` }}>
       <div
-        className="scroll-progress__bar"
+        className="wp-h-full wp-transition-all wp-duration-150 wp-ease-out"
         style={{
           width: `${progress}%`,
           background: color,

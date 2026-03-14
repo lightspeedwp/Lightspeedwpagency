@@ -425,4 +425,34 @@
 
   /* Icon Transition */
   --icon-transition: color var(--transition-base) var(--ease-out);
+
+  /* ============================================
+     SEMANTIC GRADIENT TOKENS
+     ============================================ */
+  
+  /* Primary-to-secondary text gradient (gradient text effect) */
+  --gradient-text: linear-gradient(90deg, var(--primary), var(--secondary));
+  
+  /* Decorative grid background (40px grid lines at low opacity) */
+  --gradient-grid-bg: linear-gradient(var(--border-soft) 1px, transparent 1px), linear-gradient(90deg, var(--border-soft) 1px, transparent 1px);
+  --gradient-grid-size: 40px 40px;
+  
+  /* Primary-tinted grid background (hero sections) */
+  --gradient-grid-primary: linear-gradient(rgba(var(--primary-rgb), 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(var(--primary-rgb), 0.05) 1px, transparent 1px);
+  
+  /* Loading shimmer effect */
+  --gradient-shimmer: linear-gradient(90deg, transparent, var(--overlay-white-soft), transparent);
+  
+  /* Card hover gradient */
+  --gradient-card-hover: linear-gradient(135deg, var(--card) 0%, var(--muted) 100%);
+  
+  /* Soft accent highlight */
+  --gradient-accent-soft: linear-gradient(135deg, var(--primary-soft) 0%, transparent 100%);
+  
+  /* Section fade overlays */
+  --gradient-fade-down: linear-gradient(to bottom, transparent 0%, var(--background) 100%);
+  --gradient-fade-up: linear-gradient(to top, transparent 0%, var(--background) 100%);
+  
+  /* Dark overlay for image captions */
+  --gradient-overlay-dark: linear-gradient(to top, var(--overlay-darker), transparent);
 }

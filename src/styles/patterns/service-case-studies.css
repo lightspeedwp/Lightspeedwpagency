@@ -29,12 +29,18 @@
 
 .service-case-studies__header h2 {
   margin-bottom: var(--spacing-4);
+  font-family: var(--font-primary);
+  font-size: var(--text-h2);
   font-weight: 600;
+  color: var(--foreground);
 }
 
 .service-case-studies__header p {
   margin: 0;
   line-height: 1.6;
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  color: var(--muted-foreground);
 }
 
 /* ============================================
@@ -99,15 +105,21 @@
 
 .service-case-studies__project-name {
   margin: 0 0 var(--spacing-2) 0;
+  font-family: var(--font-primary);
+  font-size: var(--text-h3);
   font-weight: 600;
   line-height: 1.3;
+  color: var(--foreground);
 }
 
 .service-case-studies__client {
   margin: 0;
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
   line-height: 1.4;
   opacity: 0.8;
   font-weight: 500;
+  color: var(--muted-foreground);
 }
 
 /* ============================================
@@ -122,14 +134,19 @@
 
 .service-case-studies__section-title {
   margin: 0;
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  color: var(--foreground);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  font-size: 0.875rem;
 }
 
 .service-case-studies__text {
   margin: 0;
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  color: var(--muted-foreground);
   line-height: 1.7;
 }
 
@@ -170,12 +187,18 @@
 
 .service-case-studies__metric {
   display: block;
+  font-family: var(--font-primary);
+  font-size: var(--text-3xl);
+  color: var(--foreground);
   font-weight: 700;
   line-height: 1.2;
 }
 
 .service-case-studies__label {
   display: block;
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
   line-height: 1.4;
   opacity: 0.8;
 }
@@ -196,6 +219,9 @@
 }
 
 .service-case-studies__tech-label {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -206,6 +232,9 @@
   background: hsl(var(--background));
   border: 1px solid hsl(var(--border) / 0.3);
   border-radius: var(--radius);
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--foreground);
   font-weight: 500;
   line-height: 1.4;
 }
@@ -218,6 +247,9 @@
   display: inline-flex;
   align-items: center;
   gap: var(--spacing-2);
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  color: var(--primary);
   font-weight: 600;
   text-decoration: none;
   transition: gap 0.3s ease;
@@ -255,6 +287,8 @@
   background: hsl(var(--primary) / 0.1);
   color: hsl(var(--primary));
   border-radius: var(--radius);
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
   text-transform: capitalize;
   font-weight: 500;
   line-height: 1.4;

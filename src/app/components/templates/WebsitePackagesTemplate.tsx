@@ -145,7 +145,7 @@ export function WebsitePackagesTemplate() {
                         ) : (
                           <XCircle weight="fill" size={20} className="packages-page__feature-icon packages-page__feature-icon--disabled" />
                         )}
-                        <span style={{ color: feature.included ? 'var(--packages-text)' : 'var(--packages-muted)' }}>
+                        <span className={feature.included ? 'wp-text-foreground' : 'wp-text-muted-foreground'}>
                           {feature.name}
                         </span>
                       </li>
@@ -156,8 +156,7 @@ export function WebsitePackagesTemplate() {
                     page="contact" 
                     variant={pkg.popular ? 'primary' : 'outline'} 
                     size="lg" 
-                    className="w-full"
-                    style={{ width: '100%', justifyContent: 'center' }}
+                    className="wp-w-full wp-justify-center"
                   >
                     Select {pkg.name}
                   </Button>

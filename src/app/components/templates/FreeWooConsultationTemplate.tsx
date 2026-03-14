@@ -113,7 +113,7 @@ export function FreeWooConsultationTemplate() {
                 <p className="woo-consult-page__calendar-desc">
                   This is a placeholder for a scheduling widget like Calendly, SavvyCal, or HubSpot Meetings.
                 </p>
-                <Button size="lg" style={{ marginTop: 'var(--spacing-4)' }}>
+                <Button size="lg" className="wp-mt-4">
                   Mock Open Scheduler
                 </Button>
               </div>

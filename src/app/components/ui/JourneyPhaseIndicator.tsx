@@ -92,7 +92,7 @@ export function JourneyPhaseIndicator({
             const PhaseIcon = stage.icon;
 
             return (
-              <div key={stage.slug} style={{ display: 'contents' }}>
+              <div key={stage.slug} className="wp-contents">
                 {/* Connector line (before each node except the first) */}
                 {idx > 0 && (
                   <div

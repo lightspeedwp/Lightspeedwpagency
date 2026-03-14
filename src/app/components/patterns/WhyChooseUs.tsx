@@ -27,7 +27,7 @@ export interface WhyChooseUsProps {
   reasons: Reason[];
   columns?: 3; // Fixed to 3 for now, expandable later
   spacing?: 'sm' | 'md' | 'lg' | 'xl';
-  backgroundColor?: string;
+  background?: 'default' | 'card' | 'muted' | 'transparent';
 }
 
 export function WhyChooseUs({
@@ -36,10 +36,10 @@ export function WhyChooseUs({
   reasons,
   columns = 3,
   spacing = 'xl',
-  backgroundColor
+  background = 'default'
 }: WhyChooseUsProps) {
   return (
-    <Section spacing={spacing} style={{ backgroundColor }}>
+    <Section spacing={spacing} background={background as any}>
       <Container>
         {/* Section Header */}
         {(title || description) && (
@@ -64,7 +64,7 @@ export function WhyChooseUs({
             const Icon = reason.icon;
             return (
               <div key={index} className="why-choose-us__card">
-                <InteractiveCard variant="elevated" hoverEffect="lift" className="h-full">
+                <InteractiveCard variant="elevated" hoverEffect="lift" className="wp-h-full">
                   <InteractiveCardContent className="why-choose-us__card-content">
                     <Icon 
                       size={48} 

@@ -35,8 +35,8 @@ export interface VerticalProcessStepsProps {
   iconSize?: number;
   /** Gap between steps */
   gap?: 'sm' | 'md' | 'lg';
-  /** Badge background color */
-  badgeBackground?: string;
+  /** Badge background class */
+  badgeBackgroundClass?: string;
   /** Show step prefix (default: true) */
   showStepPrefix?: boolean;
 }
@@ -48,7 +48,7 @@ export function VerticalProcessSteps({
   badgeSize = 40,
   iconSize = 20,
   gap = 'md',
-  badgeBackground = 'var(--primary)',
+  badgeBackgroundClass = 'wp-bg-primary',
   showStepPrefix = true
 }: VerticalProcessStepsProps) {
   return (
@@ -82,14 +82,13 @@ export function VerticalProcessSteps({
             >
               {/* Badge */}
               <div
-                className="vertical-process-steps__badge"
+                className={`vertical-process-steps__badge ${badgeBackgroundClass}`}
                 style={{
                   width: `${badgeSize}px`,
                   height: `${badgeSize}px`,
-                  backgroundColor: badgeBackground,
                 }}
               >
-                <Icon size={iconSize} style={{ color: 'var(--color-white)' }} />
+                <Icon size={iconSize} className="wp-text-white" />
               </div>
 
               {/* Content */}

@@ -106,7 +106,7 @@ export function QueryLoopTestimonials({
               <p className="query-loop-card__excerpt">"{t.quote}"</p>
 
               {/* Author */}
-              <div className="query-loop-card__author" style={{ marginTop: 'auto' }}>
+              <div className="query-loop-card__author wp-mt-auto">
                 <img src={t.avatar} alt={t.author} className="query-loop-card__avatar" loading="lazy" />
                 <div>
                   <div className="query-loop-card__author-name">{t.author}</div>

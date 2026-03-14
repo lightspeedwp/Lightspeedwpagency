@@ -118,8 +118,7 @@ export const TechnologyStack = ({
                         {tech.icon && (
                           <tech.icon
                             size={variant === 'grid' ? 32 : 20}
-                            className="technology-stack__icon"
-                            style={{ color: tech.color }}
+                            className="technology-stack__icon wp-text-primary"
                           />
                         )}
                         {tech.logo && (

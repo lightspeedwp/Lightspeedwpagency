@@ -52,7 +52,7 @@ export const dateArchiveFAQs: FAQ[] = [
   },
   {
     question: "How far back does your content archive go?",
-    answer: "Our blog archive dates back to 2014 when we founded LSX Design. While some older posts are archived, we maintain hundreds of updated, relevant articles."
+    answer: "Our blog archive dates back to 2003 when we founded LSX Design. While some older posts are archived, we maintain hundreds of updated, relevant articles."
   }
 ];
 

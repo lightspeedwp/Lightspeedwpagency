@@ -27,6 +27,8 @@
 .wp-max-w-3xl { max-width: 768px; margin-left: auto; margin-right: auto; }
 .wp-max-w-4xl { max-width: 896px; margin-left: auto; margin-right: auto; }
 .wp-max-w-6xl { max-width: 1152px; margin-left: auto; margin-right: auto; }
+.wp-max-w-narrow { max-width: var(--wp--style--global--narrow-size, 800px); margin-left: auto; margin-right: auto; }
+.wp-max-w-content { max-width: var(--wp--style--global--content-size, 768px); margin-left: auto; margin-right: auto; }
 .wp-max-w-full { max-width: 100%; }
 .wp-w-full { width: 100%; }
 .wp-w-auto { width: auto; }
@@ -47,6 +49,17 @@
 .wp-h-full { height: 100%; }
 
 /* ============================================
+   ALIGNMENT UTILITIES
+   ============================================ */
+
+.wp-align-baseline { vertical-align: baseline; }
+.wp-align-top { vertical-align: top; }
+.wp-align-middle { vertical-align: middle; }
+.wp-align-bottom { vertical-align: bottom; }
+.wp-align-text-top { vertical-align: text-top; }
+.wp-align-text-bottom { vertical-align: text-bottom; }
+
+/* ============================================
    DISPLAY UTILITIES
    ============================================ */
 
@@ -63,6 +76,16 @@
 .wp-absolute { position: absolute; }
 .wp-fixed { position: fixed; }
 .wp-sticky { position: sticky; }
+.wp-inset-0 { inset: 0; }
+.wp-top-0 { top: 0; }
+.wp-left-0 { left: 0; }
+.wp-right-0 { right: 0; }
+.wp-bottom-0 { bottom: 0; }
+.wp-top-1\/2 { top: 50%; }
+.wp-left-4 { left: var(--spacing-4); }
+.wp-right-3 { right: var(--spacing-3); }
+.wp--translate-y-1\/2 { transform: translateY(-50%); }
+.wp-pointer-events-none { pointer-events: none; }
 .wp-top-24 { top: var(--spacing-24); }
 .wp-overflow-hidden { overflow: hidden; }
 .wp-overflow-auto { overflow: auto; }

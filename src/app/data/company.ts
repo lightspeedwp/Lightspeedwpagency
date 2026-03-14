@@ -8,7 +8,7 @@ export const companyData = {
   name: 'LSX Design',
   tagline: 'WordPress & WooCommerce Agency',
   description: 'We build high-performance, accessible, and scalable WordPress solutions for forward-thinking businesses.',
-  foundingDate: '2014',
+  foundingDate: '2003',
   headquarters: {
     street: '46 Devon Street',
     suburb: 'Woodstock',
@@ -34,7 +34,7 @@ export const companyData = {
     facebook: 'https://facebook.com/lightspeedwp'
   },
   legal: {
-    registrationNumber: '2014/123456/07',
+    registrationNumber: '2003/123456/07',
     vatNumber: '4123456789'
   }
 };

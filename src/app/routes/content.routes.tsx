@@ -12,29 +12,28 @@
  * - Blog routes load 'blog' bundle (~8-12KB gzipped)
  */
 
-import React, { lazy, Suspense } from 'react';
+import React from 'react';
 import { useParams, type RouteObject } from 'react-router';
-import { RouteLoadingFallback } from '../components/ui/RouteLoadingFallback';
 import { loadCSSBundle } from '../utils/css-bundle-loader';
 
 /* ═══════════════════════════════════════════
- * Lazy Template Imports
+ * Static Template Imports
  * ═══════════════════════════════════════════ */
 
 // Portfolio
-const PortfolioArchiveTemplate = lazy(() => import('../components/templates/PortfolioArchiveTemplate').then(m => ({ default: m.PortfolioArchiveTemplate })));
-const PortfolioSingleTemplate = lazy(() => import('../components/templates/PortfolioSingleTemplate').then(m => ({ default: m.PortfolioSingleTemplate })));
-const PortfolioCategoryArchiveTemplate = lazy(() => import('../components/templates/PortfolioCategoryArchiveTemplate').then(m => ({ default: m.PortfolioCategoryArchiveTemplate })));
-const PortfolioTagArchiveTemplate = lazy(() => import('../components/templates/PortfolioTagArchiveTemplate').then(m => ({ default: m.PortfolioTagArchiveTemplate })));
+import { PortfolioArchiveTemplate } from '../components/templates/PortfolioArchiveTemplate';
+import { PortfolioSingleTemplate } from '../components/templates/PortfolioSingleTemplate';
+import { PortfolioCategoryArchiveTemplate } from '../components/templates/PortfolioCategoryArchiveTemplate';
+import { PortfolioTagArchiveTemplate } from '../components/templates/PortfolioTagArchiveTemplate';
 
 // Blog
-const BlogIndexTemplate = lazy(() => import('../components/templates/BlogIndexTemplate').then(m => ({ default: m.BlogIndexTemplate })));
-const SinglePostTemplate = lazy(() => import('../components/templates/SinglePostTemplate').then(m => ({ default: m.SinglePostTemplate })));
-const SinglePostLongformTemplate = lazy(() => import('../components/templates/SinglePostLongformTemplate').then(m => ({ default: m.SinglePostLongformTemplate })));
-const CategoryArchiveTemplate = lazy(() => import('../components/templates/CategoryArchiveTemplate').then(m => ({ default: m.CategoryArchiveTemplate })));
-const AuthorArchiveTemplate = lazy(() => import('../components/templates/AuthorArchiveTemplate').then(m => ({ default: m.AuthorArchiveTemplate })));
-const TagArchiveTemplate = lazy(() => import('../components/templates/TagArchiveTemplate').then(m => ({ default: m.TagArchiveTemplate })));
-const DateArchiveTemplate = lazy(() => import('../components/templates/DateArchiveTemplate').then(m => ({ default: m.DateArchiveTemplate })));
+import { BlogIndexTemplate } from '../components/templates/BlogIndexTemplate';
+import { SinglePostTemplate } from '../components/templates/SinglePostTemplate';
+import { SinglePostLongformTemplate } from '../components/templates/SinglePostLongformTemplate';
+import { CategoryArchiveTemplate } from '../components/templates/CategoryArchiveTemplate';
+import { AuthorArchiveTemplate } from '../components/templates/AuthorArchiveTemplate';
+import { TagArchiveTemplate } from '../components/templates/TagArchiveTemplate';
+import { DateArchiveTemplate } from '../components/templates/DateArchiveTemplate';
 
 /* ═══════════════════════════════════════════
  * Route Wrapper Components
@@ -43,70 +42,68 @@ const DateArchiveTemplate = lazy(() => import('../components/templates/DateArchi
 // Portfolio routes
 function PortfolioArchiveRoute() {
   loadCSSBundle('portfolio');
-  return <Suspense fallback={<RouteLoadingFallback />}><PortfolioArchiveTemplate /></Suspense>;
+  return <PortfolioArchiveTemplate />;
 }
 
 function PortfolioSingleRoute() {
   const { slug } = useParams();
   loadCSSBundle('portfolio');
-  return <Suspense fallback={<RouteLoadingFallback />}><PortfolioSingleTemplate slug={slug} /></Suspense>;
+  return <PortfolioSingleTemplate slug={slug} />;
 }
 
 function PortfolioCategoryRoute() {
   loadCSSBundle('portfolio');
-  return <Suspense fallback={<RouteLoadingFallback />}><PortfolioCategoryArchiveTemplate /></Suspense>;
+  return <PortfolioCategoryArchiveTemplate />;
 }
 
 function PortfolioTagRoute() {
   loadCSSBundle('portfolio');
-  return <Suspense fallback={<RouteLoadingFallback />}><PortfolioTagArchiveTemplate /></Suspense>;
+  return <PortfolioTagArchiveTemplate />;
 }
 
 // Blog routes
 function BlogIndexRoute() {
   loadCSSBundle('blog');
-  return <Suspense fallback={<RouteLoadingFallback />}><BlogIndexTemplate /></Suspense>;
+  return <BlogIndexTemplate />;
 }
 
 function SinglePostLongformRoute() {
   loadCSSBundle('blog');
-  return <Suspense fallback={<RouteLoadingFallback />}><SinglePostLongformTemplate /></Suspense>;
+  return <SinglePostLongformTemplate />;
 }
 
 function SinglePostRoute() {
   const { slug } = useParams();
   loadCSSBundle('blog');
-  return <Suspense fallback={<RouteLoadingFallback />}><SinglePostTemplate slug={slug} /></Suspense>;
+  return <SinglePostTemplate slug={slug} />;
 }
 
 function CategoryArchiveRoute() {
   const { slug } = useParams();
   loadCSSBundle('blog');
-  return <Suspense fallback={<RouteLoadingFallback />}><CategoryArchiveTemplate category={slug} /></Suspense>;
+  return <CategoryArchiveTemplate category={slug} />;
 }
 
 function AuthorArchiveRoute() {
   const { slug } = useParams();
   loadCSSBundle('blog');
-  return <Suspense fallback={<RouteLoadingFallback />}><AuthorArchiveTemplate author={slug} /></Suspense>;
+  return <AuthorArchiveTemplate author={slug} />;
 }
 
 function TagArchiveRoute() {
   const { slug } = useParams();
   loadCSSBundle('blog');
-  return <Suspense fallback={<RouteLoadingFallback />}><TagArchiveTemplate tag={slug || 'wordpress'} /></Suspense>;
+  return <TagArchiveTemplate tag={slug || 'wordpress'} />;
 }
 
 function DateArchiveRoute() {
   const { year, month } = useParams();
   loadCSSBundle('blog');
   return (
-    <Suspense fallback={<RouteLoadingFallback />}>
-      <DateArchiveTemplate
-        year={year ? parseInt(year) : new Date().getFullYear()}
-        month={month ? parseInt(month) : undefined}
-      />
-    </Suspense>
+    <DateArchiveTemplate
+      year={year ? parseInt(year) : new Date().getFullYear()}
+      month={month ? parseInt(month) : undefined}
+    />
   );
 }
 

@@ -39,7 +39,7 @@ export interface TwoColumnImpactSectionProps {
   /** Right column: Image placeholder */
   imagePlaceholder?: ImagePlaceholder;
   /** Background color */
-  backgroundColor?: string;
+  background?: 'default' | 'card' | 'muted' | 'transparent';
   /** Section spacing */
   spacing?: 'sm' | 'md' | 'lg' | 'xl';
   /** Reverse column order */
@@ -51,7 +51,7 @@ export function TwoColumnImpactSection({
   features,
   contentBox,
   imagePlaceholder,
-  backgroundColor = 'var(--background)',
+  background = 'default',
   spacing = 'xl',
   reverseColumns = false
 }: TwoColumnImpactSectionProps) {
@@ -83,16 +83,13 @@ export function TwoColumnImpactSection({
   };
 
   return (
-    <Section spacing={spacing} style={{ backgroundColor }}>
+    <Section spacing={spacing} background={background as any}>
       <Container>
         <div 
           className={`impact-section__grid ${reverseColumns ? 'impact-section__grid--reverse' : ''}`}
-          style={{ 
-            flexDirection: reverseColumns ? 'row-reverse' : 'row'
-          }}
         >
           {/* Left Column: Title + Features */}
-          <div style={{ order: reverseColumns ? 2 : 1 }}>
+          <div className={`impact-section__col ${reverseColumns ? 'impact-section__col--last' : 'impact-section__col--first'}`}>
             <h2 className="impact-section__title">
               {title}
             </h2>
@@ -101,7 +98,7 @@ export function TwoColumnImpactSection({
           </div>
 
           {/* Right Column: Content Box + Image */}
-          <div style={{ order: reverseColumns ? 1 : 2 }}>
+          <div className={`impact-section__col ${reverseColumns ? 'impact-section__col--first' : 'impact-section__col--last'}`}>
             {/* Content Box */}
             {contentBox && (
               <div className="impact-section__content-box">

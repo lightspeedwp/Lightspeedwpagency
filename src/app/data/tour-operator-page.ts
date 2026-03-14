@@ -12,12 +12,7 @@ import {
   Globe,
   MapPin,
   MagnifyingGlass,
-  DeviceMobile,
-  Star,
-  ChatCentered,
-  TrendUp,
-  Lightning,
-  Shield
+  DeviceMobile
 } from '@phosphor-icons/react';
 
 export const tourOperatorHero = {
@@ -149,109 +144,52 @@ export const tourOperatorSolutions = {
       title: 'Mobile-First Design',
       description: 'Fully responsive design ensures perfect experience on all devices from phones to desktops.',
       features: [
-        'Mobile-optimized booking',
-        'Touch-friendly navigation',
-        'Fast loading times',
-        'Progressive Web App (PWA)',
-        'Offline capabilities',
-        'App-like experience'
+        'Responsive layouts',
+        'Fast loading speeds'
       ]
     }
   ]
 };
 
 export const tourOperatorIntegrations = {
-  title: "Key Integrations",
-  description: "Connect with the tools and platforms you already use",
+  title: "Seamless Integrations",
+  description: "Connect with the tools you already use",
   items: [
     {
-      name: 'Wetu',
-      description: 'Tour operator content management and distribution platform',
-      icon: Globe
+      title: "Wetu Integration",
+      description: "Interactive itineraries and beautiful destination content."
     },
     {
-      name: 'TourCMS',
-      description: 'Online booking and reservation system for tour operators',
-      icon: Calendar
+      title: "ResRequest",
+      description: "Seamless property and accommodation management."
     },
     {
-      name: 'Stripe & PayPal',
-      description: 'Secure payment processing with global coverage',
-      icon: CreditCard
-    },
-    {
-      name: 'Google Maps',
-      description: 'Interactive maps and location services',
-      icon: MapPin
-    },
-    {
-      name: 'Mailchimp',
-      description: 'Email marketing and automation platform',
-      icon: ChatCentered
-    },
-    {
-      name: 'TripAdvisor',
-      description: 'Review integration and reputation management',
-      icon: Star
+      title: "Stripe & PayPal",
+      description: "Secure, global payment processing."
     }
   ]
 };
 
 export const tourOperatorBenefits = [
-  { 
-    icon: TrendUp, 
-    value: '+45%', 
-    label: 'Increase Bookings' 
-  },
-  { 
-    icon: Lightning, 
-    value: '70%', 
-    label: 'Time Saved' 
-  },
-  { 
-    icon: Users, 
-    value: '98%', 
-    label: 'Customer Satisfaction' 
-  },
-  { 
-    icon: Shield, 
-    value: '99.9%', 
-    label: 'Uptime Guarantee' 
-  }
+  { value: "40%", label: "Increase in Direct Bookings" },
+  { value: "50%", label: "Time Saved on Admin" },
+  { value: "100%", label: "Mobile Optimized" }
 ];
 
 export const tourOperatorFAQs = [
   {
-    question: 'Do you specialize in tour operator websites?',
-    answer: 'Yes! We have extensive experience building websites for tour operators, safari companies, adventure travel providers, and destination management companies. We understand the unique requirements of the travel industry including booking systems, itinerary management, and travel-specific integrations.'
+    question: "Do you integrate with Wetu?",
+    answer: "Yes, we fully integrate Wetu interactive itineraries to showcase beautiful destination content."
   },
   {
-    question: 'Can you integrate with Wetu or other tour operator platforms?',
-    answer: 'Absolutely! We specialize in Wetu integrations and can connect your WordPress site with TourCMS, Rezdy, FareHarbor, and other tour operator platforms. We handle all API integrations, data synchronization, and ensure seamless booking experiences.'
-  },
-  {
-    question: 'How do you handle booking and payment processing?',
-    answer: 'We implement secure booking systems with real-time availability, dynamic pricing, and deposit options. Payment processing uses PCI-compliant gateways like Stripe, PayPal, and regional processors. We support multiple currencies, automated invoicing, and secure customer data handling.'
-  },
-  {
-    question: 'Can the website support multiple languages and currencies?',
-    answer: 'Yes! We build multilingual websites using WPML or Polylang, allowing you to manage content in multiple languages. Currency conversion is handled automatically, and you can set region-specific pricing. This is essential for reaching international travelers.'
-  },
-  {
-    question: 'How do you optimize tour pages for search engines?',
-    answer: 'We implement travel-specific SEO best practices including schema markup for tours/activities, optimized imagery, fast loading times, and structured content. We also integrate with Google Maps, TripAdvisor, and social media to maximize your online visibility and bookings.'
-  },
-  {
-    question: 'What happens if we need to migrate from our current platform?',
-    answer: 'We handle complete migrations from legacy systems, custom platforms, or competitors. We migrate all tour data, itineraries, bookings, customer information, and media assets while preserving SEO rankings. We ensure zero downtime and provide training on the new system.'
+    question: "Can I manage complex pricing?",
+    answer: "Absolutely. Our booking systems handle dynamic pricing, seasonal rates, and special group discounts."
   }
 ];
 
 export const tourOperatorCTA = {
   title: "Ready to Transform Your Tour Business?",
-  description: "Let's discuss your tour operator needs and create a website that drives bookings and grows your business. Schedule a free consultation today.",
-  primaryButtonText: "Schedule Free Consultation",
-  primaryButtonPage: "contact",
-  secondaryButtonText: "View Tour Examples",
-  secondaryButtonPage: "portfolio-archive"
+  description: "Join top operators maximizing their online potential.",
+  primaryButtonText: "Get Started",
+  primaryButtonPage: "contact"
 };
