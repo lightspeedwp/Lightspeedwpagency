@@ -17,6 +17,7 @@
  * @see /src/styles/patterns/stats-proven-track.css
  */
 
+import '../../../styles/patterns/stats-proven-track.css';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import type { UniversalIcon } from '../../utils/icon-map';

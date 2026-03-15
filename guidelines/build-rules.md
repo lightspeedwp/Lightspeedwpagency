@@ -1,8 +1,8 @@
 # Prototype Build Rules — Guidelines
 
 **Category:** Development  
-**Version:** 1.1.0  
-**Last Updated:** 2026-03-11  
+**Version:** 1.2.0  
+**Last Updated:** 2026-03-15  
 **Status:** Active  
 **Template Used:** _templates/general-template.md  
 
@@ -329,6 +329,23 @@ const CardComponent = ({ title, description }) => (
 - [qa-checklist.md](./qa-checklist.md) - QA/acceptance checklist
 - [accessibility.md](./accessibility.md) - Accessibility requirements
 - [design-tokens/css-variables-overview.md](./design-tokens/css-variables-overview.md) - CSS variable system
+- [writing-guidelines.md](./writing-guidelines.md) - Markdown and documentation standards
+
+---
+
+## File Size Guidelines (Memory Optimisation)
+
+Large files degrade AI comprehension. Follow these limits:
+
+| File Type | Target Max | Action If Over |
+|---|---|---|
+| `.css` files | 400 lines | Split into sub-files (e.g. `hero/hero-base.css`, `hero/hero-variants.css`) |
+| `.tsx` components | 300 lines | Extract sub-components into separate files |
+| `.ts` data files | 500 lines | Split by category (e.g. `faqs/about.ts`, `faqs/services.ts`) |
+| `.md` guidelines | 350 lines | Split into sub-files with a parent index |
+| `.md` reports | 500 lines | Use executive summary + appendices |
+
+**Principle:** More smaller files > fewer large files. The AI processes small, focused files more accurately.
 
 ---
 
@@ -336,10 +353,11 @@ const CardComponent = ({ title, description }) => (
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 1.2.0 | 2026-03-15 | Added file size guidelines section |
 | 1.0 | March 11, 2026 | Extracted from Guidelines.md |
 
 ---
 
 **Category:** Standards  
 **Enforcement:** Required  
-**Last Updated:** March 11, 2026
+**Last Updated:** March 15, 2026

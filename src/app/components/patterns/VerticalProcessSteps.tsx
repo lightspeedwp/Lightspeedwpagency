@@ -9,6 +9,7 @@
  * @see {@link /guidelines/patterns/VerticalProcessSteps.md}
  */
 
+import '../../../styles/patterns/vertical-process-steps.css';
 import type { UniversalIcon } from '../../utils/icon-map';
 
 export interface VerticalProcessStep {

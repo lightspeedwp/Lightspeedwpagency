@@ -20,6 +20,7 @@
  * @see {@link /guidelines/patterns/ChallengesGrid.md}
  */
 
+import '../../../styles/patterns/challenges-grid.css';
 import type { UniversalIcon } from '../../utils/icon-map';
 import { Section } from '../common/Section';
 

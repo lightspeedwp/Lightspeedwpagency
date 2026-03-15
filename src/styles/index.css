@@ -180,10 +180,10 @@
 @import './patterns/solution-cards-grid.css';
 @import './patterns/stats-section.css';
 /* stats-grid.css — moved to component-level (StatsGrid.tsx) */
-@import './patterns/stats-proven-track.css';
+/* stats-proven-track.css — moved to component-level (StatsSection.tsx) */
 @import './patterns/testimonial-card.css';
 @import './patterns/testimonial-grid.css';
-@import './patterns/theme-showcase-grid.css';
+/* theme-showcase-grid.css — moved to component-level (ThemeShowcaseGrid.tsx) */
 @import './patterns/values-section.css';
 @import './patterns/pricing-table.css';
 /* archive-cta.css — moved to component-level (ArchiveCTA.tsx) */
@@ -205,28 +205,28 @@
 @import './patterns/empty-state.css';
 @import './patterns/logo-grid.css';
 @import './patterns/author-bio.css';
-@import './patterns/challenges-grid.css';
-@import './patterns/integrations-grid.css';
-@import './patterns/service-offerings-grid.css';
-@import './patterns/solutions-detail-grid.css';
-@import './patterns/use-cases-grid.css';
-@import './patterns/vertical-process-steps.css';
-@import './patterns/video-testimonial.css';
+/* challenges-grid.css — moved to component-level (ChallengesGrid.tsx) */
+/* integrations-grid.css — moved to component-level (IntegrationsGrid.tsx) */
+/* service-offerings-grid.css — moved to component-level (ServiceOfferingsGrid.tsx) */
+/* solutions-detail-grid.css — moved to component-level (SolutionsDetailGrid.tsx) */
+/* use-cases-grid.css — moved to component-level (UseCasesGrid.tsx) */
+/* vertical-process-steps.css — moved to component-level (VerticalProcessSteps.tsx) */
+/* video-testimonial.css — moved to component-level (VideoTestimonial.tsx) */
 @import './patterns/why-choose-us.css';
 @import './patterns/wordpress-services.css';
-@import './patterns/two-column-impact.css';
-@import './patterns/feature-icon-grid.css';
+/* two-column-impact.css — moved to component-level (TwoColumnImpactSection.tsx) */
+/* feature-icon-grid.css — moved to component-level (FeatureIconGrid.tsx) */
 @import './patterns/global-search.css';
 /* funky-cta.css — moved to component-level (FunkyCTA.tsx) */
 @import './patterns/query-loop.css';
 @import './patterns/related-services-grid.css';
 @import './patterns/content-stats-widget.css';
 @import './patterns/trending-topics-widget.css';
-@import './patterns/activity-feed-widget.css';
+/* activity-feed-widget.css — moved to component-level (ActivityFeedWidget.tsx) */
 @import './patterns/related-posts.css';
-@import './patterns/client-logo-grid.css';
-@import './patterns/project-case-study.css';
-@import './patterns/technology-stack.css';
+/* client-logo-grid.css — moved to component-level (ClientLogoGrid.tsx) */
+/* project-case-study.css — moved to component-level (ProjectCaseStudy.tsx) */
+/* technology-stack.css — moved to component-level (TechnologyStack.tsx) */
 @import './patterns/testimonial-slider.css';
 
 /* Service Cross-Linking Patterns (Feb 23, 2026) */
@@ -238,7 +238,7 @@
 @import './patterns/service-pricing-timeline.css';
 
 /* Dynamic Content Widget Patterns */
-@import './patterns/recent-posts-widget.css';
+/* recent-posts-widget.css — moved to component-level (RecentPostsWidget.tsx) */
 @import './patterns/related-content-widget.css';
 @import './patterns/taxonomy-filter.css';
 

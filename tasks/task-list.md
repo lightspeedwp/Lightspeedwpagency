@@ -112,8 +112,8 @@
 
 ## Current Focus (March 15, 2026)
 
-**Active:** Memory Reduction nearly complete — 98% done (87/88 tasks)
-**Status:** P4.3 Phase 1 CSS Import Optimization ✅ COMPLETE (19 @imports removed from index.css). Only P4.1 (QueryLoop consolidation) and P4.3 Phase 2 (remaining 11 imports + archive.css cleanup) remain as backlog items.
+**Active:** Comprehensive trigger word system complete — v5.2 shipped
+**Status:** Trigger System v5.2 ✅ COMPLETE (March 15, 2026) — Expanded from 4 → 20 registered triggers across 5 categories. Created 15 new prompt files (workflow, audit, scaffold, release). Rewrote prompt-triggers.md (v4.0). Updated Guidelines.md (v5.2) and prompts.md (v2.1).
 
 ---
 
@@ -121,8 +121,13 @@
 
 **Remaining Backlog (P4 — Low Priority):**
 1. P4.1 — Audit QueryLoop patterns (13 → 7), high effort (2-3 sessions)
-2. P4.3 Phase 2 — CSS Import Optimization: move remaining 11 pattern CSS files to component-level + remove 16 redundant archive.css component imports
+2. [x] ~~P4.3 Phase 2 — CSS Import Optimization~~ ✅ COMPLETE (March 15, 2026)
+3. [x] ~~Documentation Overhaul — Guidelines v5.0~~ ✅ COMPLETE (March 15, 2026)
+4. [x] ~~Guidelines Modularization — v5.1~~ ✅ COMPLETE (March 15, 2026)
+5. [x] ~~Comprehensive Trigger System — v5.2~~ ✅ COMPLETE (March 15, 2026)
+6. - [ ] Run `audit guidelines` to verify all guideline files conform to frontmatter and heading standards
+7. - [ ] Run `cleanup guidelines` to merge duplicates and deprecate outdated files
 
 **Other Potential Work:**
-3. Phase 4.4 — Industry + Specialty Pages CSS Optimization (publishers, tour-operators, pricing, guarantees, careers, legal)
-4. Deploy to Figma Make and verify all routes
+8. Phase 4.4 — Industry + Specialty Pages CSS Optimization (publishers, tour-operators, pricing, guarantees, careers, legal)
+9. Deploy to Figma Make and verify all routes

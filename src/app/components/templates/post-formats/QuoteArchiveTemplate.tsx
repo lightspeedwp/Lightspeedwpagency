@@ -12,7 +12,6 @@
  */
 
 /* archive.css — globally imported via index.css */
-import '../../../../styles/templates/post-formats/quote-archive-optimized.css';
 import { Container } from '@/app/components/common/Container';
 import { Section } from '@/app/components/common/Section';
 import { BreadcrumbPart } from '@/app/components/parts/BreadcrumbPart';

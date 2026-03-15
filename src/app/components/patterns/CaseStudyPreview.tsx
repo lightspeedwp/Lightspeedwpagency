@@ -10,6 +10,7 @@
  * - BEM naming
  */
 
+import '../../../styles/patterns/case-study-preview.css';
 import { ArrowRight, TrendUp } from '@phosphor-icons/react';
 import { Button } from '../blocks/design/Buttons';
 

@@ -1,8 +1,8 @@
 # Housekeeping Rules — Guidelines
 
 **Category:** Development
-**Version:** 1.0.0
-**Last Updated:** 2026-03-13
+**Version:** 1.1.0
+**Last Updated:** 2026-03-15
 **Status:** Active
 **Template Used:** _templates/general-template.md
 
@@ -202,4 +202,5 @@ Use this checklist during every cleanup session:
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 1.1.0 | 2026-03-15 | Updated frontmatter, added task management cross-reference |
 | 1.0.0 | 2026-03-13 | Initial creation — consolidated housekeeping rules |

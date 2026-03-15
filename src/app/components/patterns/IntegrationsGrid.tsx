@@ -20,6 +20,7 @@
  * @see {@link /guidelines/patterns/IntegrationsGrid.md}
  */
 
+import '../../../styles/patterns/integrations-grid.css';
 import type { UniversalIcon } from '../../utils/icon-map';
 import { Section } from '../common/Section';
 

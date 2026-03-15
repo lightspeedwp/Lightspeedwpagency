@@ -20,6 +20,7 @@
  * @see /guidelines/patterns/TechnologyStack.md
  */
 
+import '../../../styles/patterns/technology-stack.css';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import type { UniversalIcon } from '../../utils/icon-map';
 

@@ -1,287 +1,200 @@
 # LSX Design — Figma Make Prototype Guidelines
 
-These guidelines define how to build the **LSX Design prototype** in **Figma Make** so it can be implemented as a **WordPress block theme** with a clean, scalable architecture.
-
-This prototype validates:
-- content structure and layout patterns
-- editor workflow (patterns/templates/parts)
-- token discipline (`theme.json` presets)
-- accessibility and responsive behaviour
-
-It does **not** validate:
-- brand exploration, decorative styling, or bespoke page design
-- experimental layout variants that cannot map to WordPress blocks
-
-**Business Context:** LSX Design is a WordPress and WooCommerce web design agency specializing in modern block themes, design systems, and accessible high-performance websites.
+**Category:** Core  
+**Version:** 5.2.0  
+**Last Updated:** 2026-03-15  
+**Status:** Active  
+**Template Used:** Canonical (no template — this IS the source of truth)
 
 ---
 
-## Prompt Trigger Words (Quick Commands)
+## Purpose
 
-The following trigger words can be used instead of full prompts. See **[prompt-triggers.md](./prompt-triggers.md)** for complete details.
+This is the **single source of truth** for all project standards. Every guideline file, prompt, report, and task list must align with the rules defined here. If a sub-guideline contradicts this file, **this file wins**.
 
-| Trigger | What It Does |
-|---|---|
-| **`cleanup`** | Runs `/prompts/cleanup.md` (full audit + fix), then automatically runs `/prompts/continue.md` (next task) |
-| **`continue`** | Runs `/prompts/continue.md` only (picks up next open task) |
+**Business Context:** LSX Design is a WordPress and WooCommerce web design agency specializing in modern block themes, design systems, and accessible high-performance websites.
 
 **Environment:** This project runs in **Figma Make**. Never suggest browser refresh, cache clearing, or terminal commands.
 
 ---
 
-## CRITICAL: Project Organisation Rules (Non-Negotiable)
+## Glossary
 
-**These rules apply to EVERY task, prompt, report, and file created in this project. Read them FIRST.**
+| Term | Definition |
+|---|---|
+| **Prompt** | A Markdown instruction file that tells the AI what to audit, build, or fix |
+| **Orchestrator** | A master prompt that coordinates multiple sub-prompts in sequence |
+| **Report** | A findings document generated after running a prompt |
+| **Task List** | A checklist of actionable items derived from a report |
+| **Pattern** | A reusable WordPress block pattern (section-level UI) |
+| **Template** | A full-page layout composed of patterns |
+| **Design Token** | A CSS variable representing a design decision (color, spacing, etc.) |
+| **Trigger Word** | A short command that executes a predefined prompt |
 
-### Folder Structure (Mandatory)
+---
+
+## Trigger Words
+
+See **[prompt-triggers.md](./prompt-triggers.md)** for full details and behaviour descriptions.
+
+### Workflow (7)
+
+| Trigger | What It Does |
+|---|---|
+| `cleanup` | Full 11-step audit + fix, then next open task |
+| `continue` | Next open task from `/tasks/task-list.md` |
+| `cleanup and continue` | Alias for `cleanup` (identical behavior) |
+| `status` | Read-only project health dashboard |
+| `changelog` | Update CHANGELOG with undocumented work |
+| `sitemap` | Sync SiteMapTemplate with actual routes |
+| `process reports` | Organize, rename, archive reports |
+
+### Audits (7)
+
+| Trigger | What It Does |
+|---|---|
+| `audit tokens` | CSS variable compliance (zero hardcoded values) |
+| `audit css` | CSS architecture (imports, orphans, file sizes) |
+| `audit a11y` | WCAG 2.1 AA accessibility compliance |
+| `audit data` | Data file architecture (orphans, duplicates, types) |
+| `audit responsive` | Responsive design (breakpoints, mobile, touch) |
+| `audit styles` | Comprehensive styling audit (all of the above) |
+| `audit guidelines` | Guideline file standards (frontmatter, headings, size) |
+
+### Scaffolds (3)
+
+| Trigger | What It Does |
+|---|---|
+| `new template` | Scaffold a page template from patterns |
+| `new pattern` | Scaffold a reusable block pattern |
+| `new block` | Scaffold an atomic block component |
+
+### Guidelines (2) & Release (1)
+
+| Trigger | What It Does |
+|---|---|
+| `update guidelines` | Update content accuracy, frontmatter, template compliance |
+| `cleanup guidelines` | Merge duplicates, deprecate outdated, restructure |
+| `release` | Version bump: move Unreleased → versioned section |
+
+---
+
+## Folder Structure (Mandatory)
 
 | Content Type | Location | Notes |
 |---|---|---|
-| **Prompts** | `/prompts/` | One `.md` file per prompt. Multi-step prompts use a sub-folder with `00-ORCHESTRATOR.md` master file. |
-| **Reports** | `/reports/` | Date-prefixed or sub-folder for related sets (e.g. `/reports/2026-02/strategy-audit/`). |
-| **Tasks** | `/tasks/` | One task list per orchestrator prompt. General open tasks go in `/tasks/task-list.md`. |
-| **Guidelines** | `/guidelines/` | All guideline files. Sub-folders by category. The canonical reference is `/guidelines/Guidelines.md`. |
-| **Documentation** | `/docs/` | General project docs (quick references, attributions, org guides). NOT guidelines or reports. |
-| **Scripts** | `/scripts/` | All shell scripts (`.sh`) and utility scripts (`.ts`, `.py`). Never in root. |
+| **Prompts** | `/prompts/` | Single prompts in root. Orchestrators get a sub-folder. |
+| **Reports** | `/reports/` | Date-prefixed. See [prompts.md](./prompts.md). |
+| **Tasks** | `/tasks/` | General tasks in `task-list.md`. See [housekeeping.md](./housekeeping.md). |
+| **Guidelines** | `/guidelines/` | All guideline files. This file is canonical. |
+| **Documentation** | `/docs/` | General project docs only. |
+| **Scripts** | `/scripts/` | All shell/utility scripts. Never in root. |
 
-### The General Task List (`/tasks/task-list.md`)
+### Root Directory — Only 3 Permitted `.md` Files
 
-- **This file must always exist and must NEVER be deleted.**
-- It is the single all-purpose open task tracker for the project.
-- When any work generates follow-up actions, add them to this file.
-- Completed tasks should be checked off (`[x]`) but kept for reference.
-- Periodically archive completed tasks to a dated file in `/tasks/archive/`.
+| File | Purpose |
+|---|---|
+| `README.md` | Project README ([Readme-Guidelines.md](./Readme-Guidelines.md)) |
+| `CHANGELOG.md` | Project changelog ([Changelog-Guidelines.md](./Changelog-Guidelines.md)) |
+| `ATTRIBUTIONS.md` | License attributions |
 
-### Protected Files (Must Never Be Deleted)
-
-| File | Location | Purpose |
-|---|---|---|
-| **`CHANGELOG.md`** | `/CHANGELOG.md` (root) | Project changelog following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) format |
-| **`README.md`** | `/README.md` (root) | Project README |
-| **`ATTRIBUTIONS.md`** | `/ATTRIBUTIONS.md` (root) | License attributions (shadcn/ui, Unsplash) |
-| **`task-list.md`** | `/tasks/task-list.md` | General open task tracker |
-| **`master-task-list.md`** | `/tasks/master-task-list.md` | Consolidated task view |
-| **`Guidelines.md`** | `/guidelines/Guidelines.md` | Canonical project guidelines |
-
-**See:** [housekeeping.md](./housekeeping.md) for complete protected files list and cleanup rules
-
-**CRITICAL RULE: NEVER DELETE COMPLETED SERVICE PAGES**
-
-Service template files must NEVER be deleted, even during consolidation. Service "consolidation" means **organizing services into parent/child relationships**, NOT deleting template files.
-
-**Changelog Maintenance:**
-- `CHANGELOG.md` must follow **Keep a Changelog v1.1.0** format and **Semantic Versioning 2.0.0**
-- See [changelog-maintenance.md](./changelog-maintenance.md) for full standards
-
-### Prompt Workflow (Default Sequence)
-
-When asked to "write a prompt" or "create an audit", always follow this sequence:
-
-1. **Create the prompt** → Save to `/prompts/`
-2. **Run the audit/task** described in the prompt against the codebase
-3. **Save findings** → Write report to `/reports/`
-4. **Create a task list** → Save actionable items to `/tasks/`
-
-### Root Directory Rules
-
-- The project root (`/`) must contain ONLY configuration files and two permitted `.md` files: `README.md` and `CHANGELOG.md`.
-- **NO reports, tasks, prompts, guideline files, or documentation in the root.** Ever.
-- **NO `.sh` script files in the root.** All shell scripts MUST be created in `/scripts/`.
-- **General documentation** belongs in `/docs/`.
-
-### Design System Compliance (All Generated UI)
-
-- **ALL generated UI MUST use CSS variables** from the updated Tailwind CSS configuration and `/src/styles/global.css` for colors, spacing, borders, radius, and typography.
-- **For typography, ONLY use font faces defined in the CSS.** Never hardcode font family names.
-- **Users must be able to change the entire site's styling by updating CSS files alone.** No hardcoded inline style values or custom BEM classes outside of the permitted system.
-- **Colours:** Always use semantic CSS variables. Never hardcode hex values.
-- **Spacing:** Always use `var(--spacing-*)` tokens. Never hardcode `px` or `rem` values.
-- **Border radius:** Always use `var(--radius)`, `var(--radius-lg)`, etc.
-- **Font sizes:** Always use `var(--text-h1)` through `var(--text-h6)` for headings.
-- **Content Scope:** This website serves purely as a marketing and service portal. It features solutions and service-type content pages (including WooCommerce solutions). **All functional e-commerce components (Cart, Checkout, Product Archives, Mock Products) have been removed.** Do not build or introduce any e-commerce functional features.
+**NEVER create any other `.md` files in root.** All plans and tasks go in `/tasks/task-list.md`.
 
 ---
 
-**Project Status:** See [/docs/implementation-status.md](/docs/implementation-status.md) for complete project status and milestones.
+## Task Management
+
+**Full rules:** [housekeeping.md](./housekeeping.md)
+
+- `/tasks/task-list.md` is the single general-purpose tracker. **Never delete it.**
+- **ALL new tasks** must be added here with checkboxes (`- [ ] Task`).
+- Named task lists use `/tasks/[initiative-name]-task-list.md`.
+- Task lists are created **ONLY after** the prompt has fully completed its audit/report.
 
 ---
 
-## How to Use These Guidelines
+## Prompt Workflow
 
-**IMPORTANT:** This is the **canonical reference**. All other guideline files expand on these principles and must not contradict them.
+**Full rules:** [prompts.md](./prompts.md)
 
-### Reading Order for AI Agents
-
-Follow these steps **IN ORDER** before writing any code:
-
-#### Step 0: Understand Site Structure (REQUIRED)
-- **[routes.md](./routes.md)** -- Site structure, navigation, page hierarchy
-
-#### Step 1: Read Overview Files (REQUIRED)
-- **[components/components-vs-patterns.md](./components/components-vs-patterns.md)** -- Component system overview
-- **[design-tokens/iconography.md](./design-tokens/iconography.md)** -- Icon system and usage
-
-#### Step 2: Read Design Tokens (REQUIRED)
-Read **ALL** files in the `design-tokens/` folder:
-- **[design-tokens/colors.md](./design-tokens/colors.md)** -- Color system
-- **[design-tokens/typography.md](./design-tokens/typography.md)** -- Typography hierarchy
-- **[design-tokens/spacing.md](./design-tokens/spacing.md)** -- Spacing scale
-- **[design-tokens/css-variables-overview.md](./design-tokens/css-variables-overview.md)** -- Complete token system
-- **[design-tokens/token-examples.md](./design-tokens/token-examples.md)** -- Practical code examples
-
-#### Step 3: Read WordPress System Overviews (REQUIRED)
-- **[wordpress-mapping.md](./wordpress-mapping.md)** -- WordPress blocks & FSE system
-- **[patterns/pattern-catalog.md](./patterns/pattern-catalog.md)** -- Block patterns catalog
-- **[components/non-block-components.md](./components/non-block-components.md)** -- Non-block components (template parts, utilities)
-- **[templates/page-archetypes.md](./templates/page-archetypes.md)** -- Page templates & archetypes
-
-#### Step 4: Read Component Guidelines BEFORE Using Components (REQUIRED)
-**BEFORE using ANY component**, read its specific guidelines file:
-- Using patterns? → Read **[patterns/pattern-catalog.md](./patterns/pattern-catalog.md)** FIRST
-- Using non-block components? → Read **[components/non-block-components.md](./components/non-block-components.md)** FIRST
-- Using design tokens? → Read **[design-tokens/css-variables-overview.md](./design-tokens/css-variables-overview.md)** FIRST
-
-#### Step 5: Verify Icons BEFORE Import (REQUIRED)
-**BEFORE using ANY icon**, verify it exists and read the appropriate guidelines:
-- **ALWAYS** verify icon exists using bash tool before importing
-
-**DO NOT write code using a component or icon until you have read its specific guidelines.**
+1. **Update guidelines first** — ensure referenced guidelines reflect current codebase.
+2. **Create the prompt** → `/prompts/`.
+3. **Run the audit** → execute against codebase.
+4. **Save the report** → `/reports/YYYY-MM/`.
+5. **Create the task list** → `/tasks/` (only after report is complete).
 
 ---
 
-## Maintaining Guidelines Files
+## Protected Files
 
-When updating or creating any guidelines in this project, the following rules MUST be adhered to:
+**Full list:** [housekeeping.md](./housekeeping.md)
 
-1. **Versioning:** Every guideline file must have a version number. Every time you edit a file, increment the version (e.g., `1.0.1` for minor patches/updates, `1.1.0` for major additions).
-2. **Template Usage:** All new or updated guidelines MUST follow a template from `/guidelines/_templates/`.
-3. **Header Format:** Every file must start with a standardized header indicating the Category, Version, Last Updated date, Status, and Template Used.
-4. **Accuracy vs Codebase:** Ensure that all documented CSS variables, tokens, and font values perfectly reflect what is currently implemented in `/src/styles/` (specifically `theme-base.css`, `theme-funky.css`, and `theme-light.css/theme-dark.css`).
-5. **No Deleted Legacy Pages:** Do not delete legacy documentation unless explicitly consolidated; use deprecation notices or proper consolidation commits.
+| File | Location |
+|---|---|
+| `CHANGELOG.md` | `/CHANGELOG.md` |
+| `README.md` | `/README.md` |
+| `ATTRIBUTIONS.md` | `/ATTRIBUTIONS.md` |
+| `task-list.md` | `/tasks/task-list.md` |
+| `master-task-list.md` | `/tasks/master-task-list.md` |
+| `Guidelines.md` | `/guidelines/Guidelines.md` |
+| All service templates | `/src/app/components/templates/*Service*.tsx` |
+
+**NEVER DELETE COMPLETED SERVICE PAGES.**
 
 ---
 
-## Documentation Structure
+## File Size & Documentation Standards
 
-For complete navigation, see **[strategy/README.md](./strategy/README.md)**.
+**Full rules:** [build-rules.md](./build-rules.md) | [writing-guidelines.md](./writing-guidelines.md)
 
-**Complete File Index:** See the `design-tokens/`, `components/`, `patterns/`, `templates/`, and `strategy/` subdirectories for all guideline files.
+- `.md` guidelines: max 350 lines. Split into sub-files if over.
+- `.tsx` components: max 300 lines. Extract sub-components.
+- `.css` files: max 400 lines. Split into sub-files.
+- Every `.md` file needs frontmatter (Category, Version, Last Updated, Status).
+- One H1 per file. Sequential headings. Self-contained sections.
+
+---
+
+## Design System Compliance
+
+- **ALL UI** must use CSS variables from `/src/styles/` — colors, spacing, borders, radius, typography.
+- **Typography:** ONLY font faces defined in CSS. Never hardcode font names.
+- **Colours:** Semantic CSS variables only. Never hardcode hex values.
+- **Spacing:** `var(--spacing-*)` tokens only. Never hardcode `px` or `rem`.
+- **Icons:** `@phosphor-icons/react` only. Zero `lucide-react` imports.
+- **Router:** `react-router` only. Never `react-router-dom`.
+- **Classes:** `.wp-*` prefix for WordPress. No Tailwind utility classes.
+- **Content Scope:** Marketing and service portal only. No e-commerce features.
 
 ---
 
 ## System Principles (Non-Negotiable)
 
-1. **System-first, not page-first** - Build reusable patterns. Pages are composed, not designed.
-
-2. **Patterns over bespoke layouts** - If it can't be a pattern, it doesn't belong in the system.
-
-3. **Design System Architecture (CRITICAL)** - ALL styling and UI generation must use CSS variables from the updated Tailwind CSS configuration and `/styles/global.css`. Avoid hardcoded inline styling or custom BEM classes outside of what is specified. 
-
-4. **WordPress utility classes ONLY** - Use `.wp-*` prefixed classes where applicable. 
-
-5. **100% CSS variable compliance** - All colors, spacing, typography, and border radius MUST use CSS variables. NO hardcoded values.
-
-6. **Font family enforcement** - ONLY use font faces defined in the CSS. NEVER hardcode font names.
-
-7. **Inline styles for dynamic values ONLY** - Use `style` attributes ONLY for truly dynamic values with CSS variables.
-
-8. **Padding-First Architecture** - Use padding and gap for spacing. Avoid margin except for centering.
-
-9. **WordPress-native thinking** - Prefer core blocks and block styles.
-
-10. **Accessibility is mandatory** - Keyboard operation, focus visibility, correct semantics, reduced motion support.
-
-11. **No reports in project root** - ALL reports go in `/reports/`, ALL guidelines in `/guidelines/`, ALL tasks in `/tasks/`.
+1. **System-first, not page-first** — Build reusable patterns.
+2. **Patterns over bespoke layouts** — If it cannot be a pattern, it does not belong.
+3. **100% CSS variable compliance** — Zero hardcoded values.
+4. **Font family enforcement** — Only CSS variable font faces.
+5. **WordPress utility classes only** — `.wp-*` prefixed classes.
+6. **Inline styles for dynamic values only** — CSS variables in `style` attributes.
+7. **Padding-first architecture** — Use padding and gap. Avoid margin.
+8. **Accessibility is mandatory** — Keyboard, focus, semantics, reduced motion.
+9. **Small files over large files** — Split any file exceeding size limits.
 
 ---
 
-## Project Goals
+## Reading Order for AI Agents
 
-**See:** [project-goals.md](./project-goals.md) for complete goals, success criteria, and KPIs.
-
-### Primary Goals
-- Create a **design-system prototype** that maps directly to WordPress FSE
-- Establish a reusable **pattern catalogue** for LSX sites
-- Make the prototype **editor-realistic**
-
-### Success Criteria
-- Every screen is an instance of a recognised **archetype**
-- Every section is an instance of a registered **pattern**
-- All spacing/typography/colour references are **token-based**
-- Accessibility rules are enforced everywhere
-
----
-
-## Centralized Data System
-
-**See:** [data-files.md](./data-files.md) — All mock data centralized in `/src/app/data/` for consistency, type safety, and reusability.
-
-**Core Data Files:**
-- `pages.ts` - Site navigation & page metadata
-- `portfolio.ts` - Portfolio projects & case studies
-- `posts.ts` - Blog posts & authors
-- `faqs.ts` - FAQ collections
-
-**System Benefits:**
-1. Single Source of Truth
-2. Type Safety
-3. WordPress-Ready
-4. Reusability
-5. Token-Driven
-
----
-
-## Design Tokens & CSS Variables
-
-**See:** [design-tokens/css-variables-overview.md](./design-tokens/css-variables-overview.md) for complete token system
-
-**CRITICAL:** All UI generation MUST use CSS variables. Never hardcode values.
-
-| Category | Examples | Full Guide |
+| Step | What to Read | File |
 |---|---|---|
-| Typography | `var(--font-primary)`, `var(--text-h1)` | [typography.md](./design-tokens/typography.md) |
-| Spacing | `var(--spacing-6)`, `var(--spacing-8)` | [spacing.md](./design-tokens/spacing.md) |
-| Colors | `var(--primary)`, `var(--foreground)` | [colors.md](./design-tokens/colors.md) |
-| Borders & Radii | `var(--radius)`, `var(--radius-lg)` | [radii.md](./design-tokens/radii.md), [borders.md](./design-tokens/borders.md) |
-| Shadows | `var(--shadow-md)`, `var(--shadow-lg)` | [shadows.md](./design-tokens/shadows.md) |
-| Animations | `var(--transition-base)`, `var(--ease-out)` | [animations.md](./design-tokens/animations.md) |
-| Dark/Light Mode | Theme-aware color overrides | [dark-light-mode.md](./design-tokens/dark-light-mode.md) |
-
-**All design token files:** [design-tokens/](./design-tokens/) | [token-examples.md](./design-tokens/token-examples.md) for code examples
-
----
-
-## Layout & Responsive System
-
-**See:** [responsive.md](./design-tokens/responsive.md) — 12 responsive breakpoints, fluid typography via `clamp()`, 1→2→3-4 column responsive grids.
-
----
-
-## WordPress System
-
-**See:** [wordpress-mapping.md](./wordpress-mapping.md) for blocks, utilities, FSE mapping, and `.wp-*` class reference.
-
-| Topic | Guide |
-|---|---|
-| Page Archetypes (5 fixed) | [templates/page-archetypes.md](./templates/page-archetypes.md) |
-| Pattern Catalogue (10 categories) | [patterns/pattern-catalog.md](./patterns/pattern-catalog.md) |
-| Components vs Patterns | [components/components-vs-patterns.md](./components/components-vs-patterns.md) |
-| Non-Block Components | [components/non-block-components.md](./components/non-block-components.md) |
-
----
-
-## Accessibility (WCAG 2.1 AA)
-
-**See:** [accessibility.md](./accessibility.md) for complete checklist including structure, interaction, motion, and touch targets.
-
----
-
-## Build Rules & QA
-
-| Topic | Guide |
-|---|---|
-| Prototype Build Rules | [build-rules.md](./build-rules.md) |
-| QA / Acceptance Checklist | [qa-checklist.md](./qa-checklist.md) |
+| 0 | Site structure | [routes.md](./routes.md) |
+| 1 | Component system | [components/components-vs-patterns.md](./components/components-vs-patterns.md) |
+| 1 | Icon system | [design-tokens/iconography.md](./design-tokens/iconography.md) |
+| 2 | Design tokens (ALL) | [design-tokens/](./design-tokens/) |
+| 3 | WordPress mapping | [wordpress-mapping.md](./wordpress-mapping.md) |
+| 3 | Pattern catalog | [patterns/pattern-catalog.md](./patterns/pattern-catalog.md) |
+| 3 | Page archetypes | [templates/page-archetypes.md](./templates/page-archetypes.md) |
+| 4 | Specific guidelines | Read BEFORE using any component |
+| 5 | Icon verification | Verify icon exists BEFORE importing |
 
 ---
 
@@ -297,12 +210,31 @@ For complete navigation, see **[strategy/README.md](./strategy/README.md)**.
 | Touch Targets | [design-tokens/touch-targets.md](./design-tokens/touch-targets.md) |
 | Navigation | [routes.md](./routes.md) |
 | Templates | [_templates.md](./_templates.md) |
+| Changelog | [Changelog-Guidelines.md](./Changelog-Guidelines.md) |
+| README | [Readme-Guidelines.md](./Readme-Guidelines.md) |
+| Data Files | [data-files.md](./data-files.md) |
+| Prompts | [prompts.md](./prompts.md) |
+| Housekeeping | [housekeeping.md](./housekeeping.md) |
+| Build Rules | [build-rules.md](./build-rules.md) |
+| Writing Docs | [writing-guidelines.md](./writing-guidelines.md) |
+| Accessibility | [accessibility.md](./accessibility.md) |
+| QA Checklist | [qa-checklist.md](./qa-checklist.md) |
 
 ---
 
-**Last Updated:** March 14, 2026  
-**System Version:** 4.5  
+## Version History
+
+| Version | Date | Changes |
+|---|---|---|
+| 5.2.0 | 2026-03-15 | Expanded trigger table from 4 → 20 triggers across 5 categories |
+| 5.1.0 | 2026-03-15 | Slimmed from 329 to ~210 lines. Moved prompt workflow to prompts.md, task management to housekeeping.md, file size rules to build-rules.md, markdown rules to writing-guidelines.md |
+| 5.0.0 | 2026-03-15 | Major rewrite: task management, root file restrictions, prompt workflow, file size guidelines |
+| 4.5 | 2026-03-14 | Design system compliance, prompt triggers, protected files |
+| 4.0 | 2026-03-11 | Folder structure, system principles |
+
+---
+
+**Last Updated:** March 15, 2026  
 **Design System:** LSX Design  
 **WordPress Compatibility:** FSE (Full Site Editing)  
-**Total Routes:** ~172  
-**Total Template Files:** 130+
+**Total Routes:** ~172 | **Total Templates:** 130+

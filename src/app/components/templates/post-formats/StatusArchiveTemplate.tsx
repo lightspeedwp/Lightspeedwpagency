@@ -12,12 +12,16 @@
  */
 
 /* archive.css — globally imported via index.css */
-import '../../../../styles/templates/post-formats/status-archive-optimized.css';
 import { Link } from 'react-router';
+import { Container } from '@/app/components/common/Container';
+import { Section } from '@/app/components/common/Section';
+import { BreadcrumbPart } from '@/app/components/parts/BreadcrumbPart';
+import { allPosts } from '@/app/data/posts-formats';
+import { Lightning, Heart, ChatCircle as MessageCircle } from '@phosphor-icons/react';
 
 export function StatusArchiveTemplate() {
   const statusPosts = allPosts.filter(post => post.format === 'status');
-  const posts = [...statusPosts, ...statusPosts, ...statusPosts];
+  const posts = [...statusPosts, ...statusPosts, ...statusPosts, ...statusPosts];
 
   return (
     <>
@@ -34,49 +38,47 @@ export function StatusArchiveTemplate() {
           <div className="wp-max-w-2xl wp-mx-auto">
             <header className="status-archive__header">
               <h1 className="status-archive__title">
-                <Activity size={24} />
-                Status Feed
+                <Lightning size={24} weight="fill" />
+                Status Updates
               </h1>
+              <p className="status-archive__description">Quick updates from the team.</p>
             </header>
 
             <div className="status-archive__feed">
               {posts.map((post, index) => (
-                <Link 
+                <article
                   key={`${post.id}-${index}`}
-                  to="#"
                   className="wp-block-status-card"
                 >
-                  <div className="wp-block-status-card__header">
-                    <div className="wp-block-status-card__avatar" />
+                  <div className="wp-block-status-card__avatar">
+                    <img
+                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100"
+                      alt="Author avatar"
+                    />
+                  </div>
+                  <div className="wp-block-status-card__body">
                     <div className="wp-block-status-card__meta">
-                      <div className="status-archive__top-row">
-                        <div className="wp-block-status-card__author">
-                          LightSpeed Team
-                          <span className="wp-block-status-card__handle">@lightspeedwp</span>
-                        </div>
-                        <span className="wp-block-status-card__time">2h</span>
-                      </div>
-                      <div 
-                        className="wp-block-status-card__content"
-                        dangerouslySetInnerHTML={{ __html: post.content.rendered }} 
-                      />
-                      <div className="wp-block-status-card__footer">
-                        <button className="wp-block-status-card__action">
-                          <MessageSquare size={18} />
-                          <span>12</span>
-                        </button>
-                        <button className="wp-block-status-card__action wp-block-status-card__action--like">
-                          <Heart size={18} />
-                          <span>45</span>
-                        </button>
-                        <button className="wp-block-status-card__action wp-block-status-card__action--share">
-                          <Share2 size={18} />
-                          <span>Share</span>
-                        </button>
-                      </div>
+                      <span className="wp-block-status-card__author">Ash Shaw</span>
+                      <span className="wp-block-status-card__time">
+                        {index === 0 ? 'Just now' : index === 1 ? '1h ago' : `${index + 1}h ago`}
+                      </span>
+                    </div>
+                    <div
+                      className="wp-block-status-card__content"
+                      dangerouslySetInnerHTML={{ __html: post.content.rendered }}
+                    />
+                    <div className="wp-block-status-card__actions">
+                      <button className="wp-block-status-card__action" aria-label="Like">
+                        <Heart size={16} />
+                        <span>{Math.floor(Math.random() * 20) + 1}</span>
+                      </button>
+                      <button className="wp-block-status-card__action" aria-label="Reply">
+                        <MessageCircle size={16} />
+                        <span>{Math.floor(Math.random() * 5)}</span>
+                      </button>
                     </div>
                   </div>
-                </Link>
+                </article>
               ))}
             </div>
           </div>

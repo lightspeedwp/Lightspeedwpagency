@@ -2,6 +2,7 @@
  * Recent Posts Widget — LSX Design
  */
 
+import '../../../styles/patterns/recent-posts-widget.css';
 import React from 'react';
 import { getPageUrl } from '../../data/site-pages';
 import { Link } from 'react-router';

@@ -10,6 +10,7 @@
  * - BEM naming
  */
 
+import '../../../styles/patterns/video-testimonial.css';
 import { PlayCircle, Clock } from '@phosphor-icons/react';
 import { useState } from 'react';
 

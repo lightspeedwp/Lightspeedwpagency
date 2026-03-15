@@ -10,6 +10,7 @@
  * <ActivityFeedWidget count={6} />
  */
 
+import '../../../styles/patterns/activity-feed-widget.css';
 import { useMemo } from 'react';
 import { useScrollReveal, useStaggerReveal } from '../../hooks/useScrollReveal';
 import { blogPosts, blogAuthors } from '../../data/blog-posts';

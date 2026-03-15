@@ -2,6 +2,7 @@
  * ServiceOfferingsGrid Pattern — LSX Design
  */
 
+import '../../../styles/patterns/service-offerings-grid.css';
 import type { UniversalIcon } from '../../utils/icon-map';
 import { ArrowRight } from '@phosphor-icons/react';
 import { Container } from '../common/Container';

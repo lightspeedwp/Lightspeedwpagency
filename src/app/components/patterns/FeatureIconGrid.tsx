@@ -7,6 +7,7 @@
  * Commonly used on solution/service pages to highlight key features.
  */
 
+import '../../../styles/patterns/feature-icon-grid.css';
 import type { UniversalIcon } from '../../utils/icon-map';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';

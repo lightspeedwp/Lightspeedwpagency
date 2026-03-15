@@ -22,6 +22,7 @@
  * @see /guidelines/patterns/ProjectCaseStudy.md
  */
 
+import '../../../styles/patterns/project-case-study.css';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { Warning, Lightbulb, TrendUp, ArrowRight } from '@phosphor-icons/react';
 import type { UniversalIcon } from '../../utils/icon-map';

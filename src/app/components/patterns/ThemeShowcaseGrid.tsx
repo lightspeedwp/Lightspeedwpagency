@@ -4,6 +4,7 @@
  * Grid of theme/template showcases with preview images and features.
  */
 
+import '../../../styles/patterns/theme-showcase-grid.css';
 import { CheckCircle } from '@phosphor-icons/react';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';

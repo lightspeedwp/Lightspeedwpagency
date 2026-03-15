@@ -5,6 +5,7 @@
  * Maps to WordPress pattern: lsx-design/listing/use-cases
  */
 
+import '../../../styles/patterns/use-cases-grid.css';
 import type { UniversalIcon } from '../../utils/icon-map';
 import { Section } from '../common/Section';
 import { Container } from '../common/Container';

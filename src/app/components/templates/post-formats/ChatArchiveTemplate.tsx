@@ -12,7 +12,6 @@
  */
 
 /* archive.css — globally imported via index.css */
-import '../../../../styles/templates/post-formats/chat-archive-optimized.css';
 import { Link } from 'react-router';
 
 export function ChatArchiveTemplate() {

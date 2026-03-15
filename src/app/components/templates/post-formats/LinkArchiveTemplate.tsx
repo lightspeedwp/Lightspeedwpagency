@@ -12,8 +12,11 @@
  */
 
 /* archive.css — globally imported via index.css */
-import '../../../../styles/templates/post-formats/link-archive-optimized.css';
+import { Container } from '@/app/components/common/Container';
+import { Section } from '@/app/components/common/Section';
+import { BreadcrumbPart } from '@/app/components/parts/BreadcrumbPart';
 import { DownloadSimple as Download, ArrowSquareOut as ExternalLink } from '@phosphor-icons/react';
+import { allPosts } from '@/app/data/posts-formats';
 
 export function LinkArchiveTemplate() {
   const linkPosts = allPosts.filter(post => post.format === 'link');

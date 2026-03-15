@@ -12,8 +12,11 @@
  */
 
 /* archive.css — globally imported via index.css */
-import '../../../../styles/templates/post-formats/standard-archive-optimized.css';
 import { Link } from 'react-router';
+import { Container } from '@/app/components/common/Container';
+import { Section } from '@/app/components/common/Section';
+import { BreadcrumbPart } from '@/app/components/parts/BreadcrumbPart';
+import { allPosts } from '@/app/data/posts-formats';
 
 export function StandardArchiveTemplate() {
   const standardPosts = allPosts.filter(post => post.format === 'standard');

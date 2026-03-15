@@ -9,6 +9,7 @@
  * @see {@link /guidelines/patterns/TwoColumnImpactSection.md}
  */
 
+import '../../../styles/patterns/two-column-impact.css';
 import type { UniversalIcon } from '../../utils/icon-map';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';

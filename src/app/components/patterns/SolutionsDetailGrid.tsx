@@ -24,6 +24,7 @@
  * ```
  */
 
+import '../../../styles/patterns/solutions-detail-grid.css';
 import type { UniversalIcon } from '../../utils/icon-map';
 import { Section } from '../common/Section';
 import { CheckCircle } from '@phosphor-icons/react';

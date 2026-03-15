@@ -1,8 +1,8 @@
 # Guidelines Templates Usage Guide — Guidelines
 
 **Category:** Documentation  
-**Version:** 1.2.0  
-**Last Updated:** 2026-03-13  
+**Version:** 1.3.0  
+**Last Updated:** 2026-03-15  
 **Status:** Active  
 **Template Used:** _templates/general-template.md  
 **Location:** `/guidelines/_templates/`  
@@ -160,6 +160,62 @@
 
 ---
 
+### 8. ATTRIBUTIONS Template
+**File:** `ATTRIBUTIONS-template.md`  
+**Use for:** Listing third-party libraries, tools, and resources
+
+**When to use:**
+- Documenting dependencies
+- Acknowledging contributions
+- Licensing information
+
+**Structure:**
+- Project Name
+- Version
+- License
+- URL
+- Description
+
+---
+
+### 9. README Template
+**File:** `README-template.md`  
+**Use for:** Project overview, setup instructions, usage examples
+
+**When to use:**
+- Initial project setup
+- Providing context
+- Usage examples
+
+**Structure:**
+- Project Name
+- Description
+- Installation
+- Usage
+- Contributing
+- License
+
+---
+
+### 10. CHANGELOG Template
+**File:** `CHANGELOG-template.md`  
+**Use for:** Documenting changes, updates, and releases
+
+**When to use:**
+- Tracking changes
+- Release notes
+- Version history
+
+**Structure:**
+- Version
+- Date
+- Changes
+- Additions
+- Fixes
+- Removals
+
+---
+
 ## Template Usage Workflow
 
 ### Step 1: Choose Template
@@ -171,6 +227,9 @@ Select the appropriate template based on document type:
 - Prompt? → `prompt-template.md`
 - Tasks? → `task-list-template.md`
 - Docs? → `docs-template.md`
+- ATTRIBUTIONS? → `ATTRIBUTIONS-template.md`
+- README? → `README-template.md`
+- CHANGELOG? → `CHANGELOG-template.md`
 
 ### Step 2: Copy Template
 ```bash
@@ -294,6 +353,9 @@ Add links to related guidelines/components/tokens.
 | Prompt | `prompt-template.md` |
 | Task List | `task-list-template.md` |
 | Documentation | `docs-template.md` |
+| ATTRIBUTIONS | `ATTRIBUTIONS-template.md` |
+| README | `README-template.md` |
+| CHANGELOG | `CHANGELOG-template.md` |
 
 ---
 
@@ -316,6 +378,6 @@ Add links to related guidelines/components/tokens.
 
 ---
 
-**Last Updated:** March 13, 2026  
-**Version:** 1.2.0  
+**Last Updated:** March 15, 2026  
+**Version:** 1.3.0  
 **Maintainer:** LSX Design

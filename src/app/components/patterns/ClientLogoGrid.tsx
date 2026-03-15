@@ -21,6 +21,7 @@
  * @see /guidelines/patterns/ClientLogoGrid.md
  */
 
+import '../../../styles/patterns/client-logo-grid.css';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 
 export interface ClientLogo {
