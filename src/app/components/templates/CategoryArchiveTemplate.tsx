@@ -19,7 +19,7 @@
  * @see /src/app/components/patterns/PostCard.tsx
  */
 
-import '../../../styles/templates/archive.css';
+/* archive.css — globally imported via index.css */
 import '../../../styles/templates/page-category-archive.css';
 import { useState, useMemo } from 'react';
 import { Link } from 'react-router';

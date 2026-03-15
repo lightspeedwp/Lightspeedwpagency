@@ -9,7 +9,7 @@
  * All data sourced from /src/app/data/archive-items.ts
  */
 
-import '../../../styles/templates/archive.css';
+/* archive.css — globally imported via index.css */
 import { ArchiveHeader } from '../patterns/ArchiveHeader';
 import { FilterBar } from '../patterns/FilterBar';
 import { CardGrid } from '../patterns/CardGrid';

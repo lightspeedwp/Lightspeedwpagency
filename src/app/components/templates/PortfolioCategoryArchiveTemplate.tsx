@@ -31,7 +31,7 @@ export function PortfolioCategoryArchiveTemplate() {
     return () => clearTimeout(timer);
   }, [slug]);
 
-  if (!slug) return <Navigate to="/portfolio" />;
+  if (!slug) return <Navigate to="/work" />;
 
   const filteredItems = getPortfolioItemsByCategory(slug);
   

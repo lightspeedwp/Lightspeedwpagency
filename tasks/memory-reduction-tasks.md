@@ -160,51 +160,51 @@ For each pair: update the template component import to use the optimized version
 
 **Impact:** ~800-1,200 lines saved | **Effort:** Medium (2 sessions)
 
-- [ ] Merge `TestimonialInline` into `TestimonialCard` with `layout="inline"` prop
-- [ ] Merge `FeaturedTestimonial` into `TestimonialCard` with `variant="featured"` prop
-- [ ] Merge `ServiceTestimonial` into `TestimonialCard` with `context="service"` prop
-- [ ] Merge `ServiceTestimonials` into `TestimonialGrid` with `context="service"` prop
-- [ ] Update all template imports using merged components
-- [ ] Delete merged component files and their CSS
-- [ ] Keep: `TestimonialCard`, `TestimonialGrid`, `TestimonialSlider`, `VideoTestimonial`
+- [x] Merge `TestimonialInline` into `TestimonialCard` with `layout="inline"` prop — DELETED (zero template imports, component + CSS removed: 85+42 = 127 lines saved)
+- [x] Merge `FeaturedTestimonial` into `TestimonialCard` with `variant="featured"` prop — DELETED (zero template imports, component + CSS removed: 132+257 = 389 lines saved)
+- [x] Merge `ServiceTestimonial` into `TestimonialCard` with `context="service"` prop — KEPT AS-IS (19 template imports; already a thin wrapper around TestimonialCard with service-specific data-fetching logic that doesn't belong in TestimonialCard)
+- [x] Merge `ServiceTestimonials` into `TestimonialGrid` with `context="service"` prop — KEPT AS-IS (1 template import; already a thin wrapper around TestimonialCard with different data source)
+- [x] Update all template imports using merged components — N/A (deletions had zero imports)
+- [x] Delete merged component files and their CSS — ✅ Deleted: TestimonialInline.tsx, testimonial-inline.css, FeaturedTestimonial.tsx, featured-testimonial.css
+- [x] Keep: `TestimonialCard`, `TestimonialGrid`, `TestimonialSlider`, `VideoTestimonial` — ✅ All kept + ServiceTestimonial/ServiceTestimonials retained as active wrappers
 
 ### P3.3 Consolidate CTA Patterns (4 -> 2)
 
 **Impact:** ~400-600 lines saved | **Effort:** Low (1 session)
 
-- [ ] Merge `CTAInline` into `CTASection` with `layout="inline"` prop
-- [ ] Merge `GradientCTASection` into `CTASection` with `variant="gradient"` prop
-- [ ] Update all template imports
-- [ ] Delete merged component files and their CSS
-- [ ] Keep: `FunkyCTA` (primary neon CTA), `CTASection` (standard with variants)
+- [x] Merge `CTAInline` into `CTASection` with `layout="inline"` prop — N/A (`CTASection` and `GradientCTASection` don't exist; CTAInline (1 import), FunkyCTA (widely used), ArchiveCTA (4 imports) are all distinct active components)
+- [x] Merge `GradientCTASection` into `CTASection` with `variant="gradient"` prop — N/A (component doesn't exist)
+- [x] Update all template imports — N/A
+- [x] Delete merged component files and their CSS — N/A
+- [x] Keep: `FunkyCTA` (primary neon CTA), `CTASection` (standard with variants) — KEPT: FunkyCTA, CTAInline, ArchiveCTA (all actively used, distinct purposes)
 
 ### P3.4 Consolidate Related Content Patterns (5 -> 3)
 
 **Impact:** ~400-600 lines saved | **Effort:** Low (1 session)
 
-- [ ] Merge `RelatedServicesGrid` into `RelatedServices` with `layout="grid"` prop
-- [ ] Merge `RelatedServicesInPhase` into `RelatedServices` with `context="phase"` prop
-- [ ] Update all template imports
-- [ ] Delete merged component files and their CSS
-- [ ] Keep: `RelatedPosts`, `RelatedServices`, `RelatedContentWidget`
+- [x] Merge `RelatedServicesGrid` into `RelatedServices` with `layout="grid"` prop — N/A (fundamentally different: Grid takes explicit services prop, InPhase auto-fetches from journey data with analytics tracking)
+- [x] Merge `RelatedServicesInPhase` into `RelatedServices` with `context="phase"` prop — N/A (168 lines with unique journey-stage data fetching, analytics tracking, phase-specific icons — merging would increase complexity)
+- [x] Update all template imports — N/A
+- [x] Delete merged component files and their CSS — N/A
+- [x] Keep: `RelatedPosts`, `RelatedServices`, `RelatedContentWidget` — KEPT ALL: RelatedServicesGrid (5 imports), RelatedServicesInPhase (5 imports), RelatedServices (separate data source), RelatedPosts, RelatedContentWidget, ServiceRelatedSolutions
 
 ### P3.5 Split Large CSS Template Files (800-1,000 lines)
 
 **Impact:** Improved maintainability | **Effort:** Medium (2-3 sessions)
 
-- [ ] `page-journey-stage.css` (1,050 lines) -- split into hero + content + interactive
-- [ ] `blog-index-page.css` (848 lines) -- split into hero + grid + sidebar + pagination
-- [ ] `contact-page.css` (840 lines) -- split into hero + form + info + map
-- [ ] `wetu-importer-page.css` (833 lines) -- split into sections
-- [ ] `lsx-search-page.css` (823 lines) -- split into search + results + filters
+- [x] `page-journey-stage.css` (1,050 lines) -- split into hero + content + interactive — ALREADY SPLIT (7 modular files in `/src/styles/templates/journey-stage/`)
+- [x] `blog-index-page.css` (810 lines) -- split into hero + grid + sidebar + pagination — SPLIT into 5 modular files in `/src/styles/templates/blog-index/` (featured, card-neon, card-magazine, card-stream, shared) + orchestrator
+- [x] `contact-page.css` (793 lines) -- split into hero + form + info + map — SPLIT into 3 modular files in `/src/styles/templates/contact/` (hero, form, sections) + orchestrator
+- [x] `wetu-importer-page.css` (674 lines) -- already reduced below 800-line threshold via prior optimizations; no split needed
+- [x] `lsx-search-page.css` (813 lines) -- split into search + results + filters — SPLIT into 3 modular files in `/src/styles/templates/lsx-search/` (hero, content, funky) + orchestrator
 
 ### P3.6 Consolidate Stats Patterns (3 -> 2)
 
 **Impact:** ~200-300 lines saved | **Effort:** Low (1 session)
 
-- [ ] Merge `StatsSection` into `StatsGrid` with `layout="section"` prop
-- [ ] Update all template imports
-- [ ] Keep: `StatsGrid` (primary), `StatCounter` (animated)
+- [x] Merge `StatsSection` into `StatsGrid` with `layout="section"` prop — N/A (StatsGrid is intentionally wrapper-free for inline embedding; StatsSection adds Section/Container wrappers for standalone use. 4 template imports each. Merging would force wrapper logic onto all callers.)
+- [x] Update all template imports — N/A
+- [x] Keep: `StatsGrid` (primary), `StatCounter` (animated) — KEPT ALL: StatsGrid (inline), StatsSection (standalone), AgencyStats, ContentStatsWidget
 
 ---
 
@@ -219,24 +219,31 @@ For each pair: update the template component import to use the optimized version
 - [ ] Create unified QueryLoop with `contentType` prop
 - [ ] Migrate templates from specific QueryLoop variants
 
-### P4.2 Orphaned File Cleanup
+### P4.2 Orphaned File Cleanup ✅ COMPLETE
 
-**Impact:** Variable | **Effort:** Low (1 session)
+**Impact:** ~2,849 lines removed | **Effort:** Low (1 session)
 
-- [ ] Run orphaned CSS file scan
-- [ ] Run unused data export scan
-- [ ] Run dead CSS selector scan
-- [ ] Delete confirmed orphaned files
-- [ ] Remove confirmed dead selectors
+- [x] Run orphaned CSS file scan ✅ COMPLETE (March 15) — Found 7 orphaned CSS files
+- [x] Run unused data export scan ✅ COMPLETE (March 15) — Found 4 unused data files (publishers-solution-page.ts, wetu-solution-page.ts, lsx-solution-page.ts, woocommerce-solution-page.ts) — protected under service page rule, not deleted
+- [x] Run dead CSS selector scan ✅ COMPLETE (March 15) — All tour-related selectors confirmed dead (deleted with files), remaining active CSS selectors verified in use
+- [x] Delete confirmed orphaned files ✅ COMPLETE (March 15) — Deleted 7 CSS files: mailchimp-solution-page.css (8 lines), page-solution-redesign.css (898 lines), page-solution-tour-design.css (778 lines), page-contact.css (12 lines), page-why-tour.css (210 lines), single-tour.css (291 lines), page-solution-tour-design-optimized.css (652 lines)
+- [x] Remove confirmed dead selectors ✅ N/A — All dead selectors were in deleted files; no dead selectors in remaining active CSS
 
 ### P4.3 CSS Import Optimization (Long-term)
 
 **Impact:** Faster page loads | **Effort:** High (multiple sessions)
 
-- [ ] Identify pattern CSS files used by only 1-2 templates
-- [ ] Move those CSS imports from `index.css` to component-level imports
-- [ ] Reduce global CSS payload
-- [ ] Target: move 20-30 pattern CSS files to component-level
+- [x] Identify pattern CSS files used by only 1-2 templates ✅ COMPLETE (March 15)
+- [x] Move those CSS imports from `index.css` to component-level imports ✅ COMPLETE (March 15)
+- [x] Reduce global CSS payload ✅ COMPLETE (March 15) — 19 @import lines removed from index.css
+- [ ] Target: move 20-30 pattern CSS files to component-level (19/30 done — Phase 1 complete)
+
+**Phase 1 Results (March 15, 2026):**
+- **6 double-imported pattern CSS removed:** archive-cta, cta-inline, definition-block, funky-cta, stats-grid, featured-project-showcase
+- **5 double-imported template CSS removed:** service-detail, solution-detail, solutions-page, single-post, single
+- **5 optimized service CSS moved to component-level:** seo-service-optimized → SEOServiceTemplate, accessibility-service-optimized → AccessibilityServiceTemplate, answer-engine-service-optimized → AnswerEngineServiceTemplate, content-strategy-service-optimized → ContentStrategyServiceTemplate, page-service-training-optimized → TrainingTemplate
+- **3 single-use pattern CSS moved to component-level:** featured-project-text → FeaturedProjectText, featured-project-video → FeaturedProjectVideo, portfolio-slider → PortfolioSlider
+- **Follow-up:** 16 templates redundantly import archive.css (already global) — remove component-level imports in Phase 2
 
 ### P4.4 DocsGeneratorTemplate Data Extraction ✅ COMPLETE
 
@@ -254,9 +261,9 @@ For each pair: update the template component import to use the optimized version
 |----------|------------|----------|------------|
 | P1 (Critical) | 31 | 31 | 100% |
 | P2 (High) | 18 | 18 | 100% |
-| P3 (Medium) | 20 | 8 | 40% |
-| P4 (Low) | 7 | 0 | 0% |
-| **Total** | **76** | **57** | **75%** |
+| P3 (Medium) | 32 | 32 | 100% |
+| P4 (Low) | 7 | 5 | 71% |
+| **Total** | **88** | **86** | **98%** |
 
 ---
 
@@ -273,4 +280,4 @@ For each pair: update the template component import to use the optimized version
 
 ---
 
-**Last Updated:** March 14, 2026
+**Last Updated:** March 15, 2026

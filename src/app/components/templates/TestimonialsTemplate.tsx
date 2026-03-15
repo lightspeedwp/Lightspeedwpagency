@@ -123,7 +123,7 @@ export function TestimonialsTemplate() {
                 <Button href="/contact" size="lg">
                   Get Started
                 </Button>
-                <Button href="/portfolio" variant="secondary" size="lg">
+                <Button href="/work" variant="secondary" size="lg">
                   View Portfolio
                 </Button>
               </div>

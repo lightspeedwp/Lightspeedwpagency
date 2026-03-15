@@ -7,7 +7,7 @@
  * Pattern order: Breadcrumbs → Archive Header → Results/Sorting → Card Grid → Pagination → ArchiveCTA
  */
 
-import '../../../styles/templates/archive.css';
+/* archive.css — globally imported via index.css */
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';

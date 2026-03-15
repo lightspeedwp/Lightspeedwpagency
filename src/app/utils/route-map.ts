@@ -86,6 +86,11 @@ const SLUG_TO_PATH: Record<string, string> = {
   'migrations-service': '/services/migrations',
   'security-service': '/services/security',
   'support-service': '/services/support',
+  'performance-service': '/services/performance',
+  'accessibility-service': '/services/accessibility',
+  'hosting-service': '/services/hosting',
+  'training-service': '/services/training',
+  'woocommerce-service': '/solutions/woocommerce',
 
   /* ── Solutions ── */
   'solutions': '/solutions',
@@ -119,6 +124,7 @@ const SLUG_TO_PATH: Record<string, string> = {
   'tour-operator-solutions': '/solutions/tour-operators',
   'lsx-design-solutions': '/solutions/lsx',
   'lsx-design': '/solutions/lsx',
+  'publishers-solution': '/solutions/publishers',
 
   /* ── Work ── */
   'portfolio': '/work',

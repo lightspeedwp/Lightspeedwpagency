@@ -29,6 +29,7 @@
 import { MagnifyingGlass, TrendUp, Target, ChartBar, FileMagnifyingGlass, Trophy } from '@phosphor-icons/react';
 import { Link } from 'react-router';
 import { FeatureList } from '../patterns/FeatureList';
+import '../../../styles/templates/seo-service-optimized.css';
 
 export const SEOServiceTemplate = () => {
   const benefits = [

@@ -11,7 +11,8 @@
  * @see /src/styles/templates/archive.css
  */
 
-import '../../../../styles/templates/archive.css';
+/* archive.css — globally imported via index.css */
+import '../../../../styles/templates/post-formats/standard-archive-optimized.css';
 import { Link } from 'react-router';
 
 export function StandardArchiveTemplate() {

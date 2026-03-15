@@ -39,7 +39,7 @@ export function SingleProjectTemplate({ slug }: SingleProjectTemplateProps) {
       <Container>
         <div className="wp-py-24 wp-text-center">
           <h1>Project Not Found</h1>
-          <Link to="/portfolio">Return to Portfolio</Link>
+          <Link to="/work">Return to Portfolio</Link>
         </div>
       </Container>
     );
@@ -51,7 +51,7 @@ export function SingleProjectTemplate({ slug }: SingleProjectTemplateProps) {
       <BreadcrumbPart
         items={[
           { label: 'Home', page: 'front-page' },
-          { label: 'Portfolio', href: '/portfolio' },
+          { label: 'Portfolio', href: '/work' },
           { label: project.title },
         ]}
       />
@@ -182,7 +182,7 @@ export function SingleProjectTemplate({ slug }: SingleProjectTemplateProps) {
 
           {/* Navigation */}
           <nav className="single-project__nav">
-            <Link to="/portfolio" className="single-project__nav-link">
+            <Link to="/work" className="single-project__nav-link">
               <ArrowLeft size={20} />
               <div>
                 <span className="single-project__nav-label">Back</span>
@@ -191,7 +191,7 @@ export function SingleProjectTemplate({ slug }: SingleProjectTemplateProps) {
             </Link>
             
             {/* Logic to find next project could go here */}
-            <Link to="/portfolio" className="single-project__nav-link wp-text-right wp-flex-row-reverse">
+            <Link to="/work" className="single-project__nav-link wp-text-right wp-flex-row-reverse">
               <ArrowRight size={20} />
               <div>
                 <span className="single-project__nav-label">Next</span>

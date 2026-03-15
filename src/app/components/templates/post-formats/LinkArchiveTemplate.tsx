@@ -11,7 +11,8 @@
  * @see /src/styles/templates/archive.css
  */
 
-import '../../../../styles/templates/archive.css';
+/* archive.css — globally imported via index.css */
+import '../../../../styles/templates/post-formats/link-archive-optimized.css';
 import { DownloadSimple as Download, ArrowSquareOut as ExternalLink } from '@phosphor-icons/react';
 
 export function LinkArchiveTemplate() {

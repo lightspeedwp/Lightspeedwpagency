@@ -167,9 +167,9 @@
 @import './patterns/archive-header.css';
 @import './patterns/card-grid.css';
 @import './patterns/case-study-preview.css';
-@import './patterns/definition-block.css';
+/* definition-block.css — moved to component-level (DefinitionBlock.tsx) */
 @import './patterns/faq-section.css';
-@import './patterns/featured-project-showcase.css';
+/* featured-project-showcase.css — moved to component-level (FeaturedProjectShowcase.tsx) */
 @import './patterns/filter-bar.css';
 @import './patterns/footer-newsletter.css';
 @import './patterns/hero.css';
@@ -179,26 +179,20 @@
 @import './patterns/proof-strip.css';
 @import './patterns/solution-cards-grid.css';
 @import './patterns/stats-section.css';
-@import './patterns/stats-grid.css';
+/* stats-grid.css — moved to component-level (StatsGrid.tsx) */
 @import './patterns/stats-proven-track.css';
 @import './patterns/testimonial-card.css';
 @import './patterns/testimonial-grid.css';
 @import './patterns/theme-showcase-grid.css';
 @import './patterns/values-section.css';
 @import './patterns/pricing-table.css';
-@import './patterns/archive-cta.css';
+/* archive-cta.css — moved to component-level (ArchiveCTA.tsx) */
 @import './patterns/feature-comparison.css';
 @import './patterns/feature-grid.css';
 @import './patterns/newsletter-signup.css';
-@import './patterns/portfolio-slider.css';
-@import './patterns/featured-project-text.css';
-@import './patterns/featured-project-video.css';
-
-/* Additional Pattern - Benefits Grid */
-@import './patterns/benefits-grid.css';
-
-/* Additional Patterns */
-@import './patterns/taxonomy-filter.css';
+/* portfolio-slider.css — moved to component-level (PortfolioSlider.tsx) */
+/* featured-project-text.css — moved to component-level (FeaturedProjectText.tsx) */
+/* featured-project-video.css — moved to component-level (FeaturedProjectVideo.tsx) */
 @import './patterns/services-card.css';
 @import './patterns/team-grid.css';
 @import './patterns/timeline.css';
@@ -207,7 +201,7 @@
 @import './patterns/process-steps.css';
 @import './patterns/contact-form.css';
 @import './patterns/contact-info.css';
-@import './patterns/cta-inline.css';
+/* cta-inline.css — moved to component-level (CTAInline.tsx) */
 @import './patterns/empty-state.css';
 @import './patterns/logo-grid.css';
 @import './patterns/author-bio.css';
@@ -223,11 +217,17 @@
 @import './patterns/two-column-impact.css';
 @import './patterns/feature-icon-grid.css';
 @import './patterns/global-search.css';
-@import './patterns/funky-cta.css';
+/* funky-cta.css — moved to component-level (FunkyCTA.tsx) */
 @import './patterns/query-loop.css';
 @import './patterns/related-services-grid.css';
-@import './patterns/included-in-solutions.css';
-@import './patterns/service-testimonial.css';
+@import './patterns/content-stats-widget.css';
+@import './patterns/trending-topics-widget.css';
+@import './patterns/activity-feed-widget.css';
+@import './patterns/related-posts.css';
+@import './patterns/client-logo-grid.css';
+@import './patterns/project-case-study.css';
+@import './patterns/technology-stack.css';
+@import './patterns/testimonial-slider.css';
 
 /* Service Cross-Linking Patterns (Feb 23, 2026) */
 @import './patterns/included-solutions.css';
@@ -240,15 +240,7 @@
 /* Dynamic Content Widget Patterns */
 @import './patterns/recent-posts-widget.css';
 @import './patterns/related-content-widget.css';
-@import './patterns/content-stats-widget.css';
-@import './patterns/trending-topics-widget.css';
-@import './patterns/activity-feed-widget.css';
-@import './patterns/related-posts.css';
-@import './patterns/client-logo-grid.css';
-@import './patterns/project-case-study.css';
-@import './patterns/technology-stack.css';
-@import './patterns/testimonial-slider.css';
-@import './patterns/featured-testimonial.css';
+@import './patterns/taxonomy-filter.css';
 
 /* 5. Page/Template Styles — SHARED ONLY (route-specific CSS moved to components)
  *
@@ -261,11 +253,11 @@
 /* solutions-template.css removed — deprecated, empty file (Feb 25, 2026) */
 @import './templates/common-template-headers.css';
 @import './templates/service-pages-shared.css';
-@import './templates/service-detail.css';
-@import './templates/solution-detail.css';
-@import './templates/solutions-page.css';
-@import './templates/single-post.css';
-@import './templates/single.css';
+/* service-detail.css — moved to component-level (ServiceDetailTemplate.tsx) */
+/* solution-detail.css — moved to component-level (SolutionDetailTemplate.tsx, LSXSolutionTemplate.tsx) */
+/* solutions-page.css — moved to component-level (SolutionsTemplate.tsx) */
+/* single-post.css — moved to component-level (SingleAudio/Quote/Status/Gallery/ChatTemplate.tsx) */
+/* single.css — moved to component-level (SingleTemplate.tsx) */
 @import './templates/archive.css';
 
 /* Sub-Service Templates (Feb 28, 2026 — Task 2.3 Restoration) */
@@ -287,12 +279,13 @@
 @import './templates/system-page-shared.css';
 @import './templates/solution-base.css';
 
-/* Optimized Service Templates (Phase 3.3 — March 2, 2026) */
-@import './templates/seo-service-optimized.css';
-@import './templates/accessibility-service-optimized.css';
-@import './templates/answer-engine-service-optimized.css';
-@import './templates/content-strategy-service-optimized.css';
-@import './templates/page-service-training-optimized.css';
+/* Optimized Service Templates — moved to component-level (Phase 4.3 — March 15, 2026)
+ * seo-service-optimized.css → SEOServiceTemplate.tsx
+ * accessibility-service-optimized.css → AccessibilityServiceTemplate.tsx
+ * answer-engine-service-optimized.css → AnswerEngineServiceTemplate.tsx
+ * content-strategy-service-optimized.css → ContentStrategyServiceTemplate.tsx
+ * page-service-training-optimized.css → TrainingTemplate.tsx
+ */
 
 /* Batch 7: Landing/Parent Templates (March 2, 2026) */
 

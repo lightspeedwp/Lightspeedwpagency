@@ -31,7 +31,7 @@ export function PortfolioTagArchiveTemplate() {
     return () => clearTimeout(timer);
   }, [slug]);
 
-  if (!slug) return <Navigate to="/portfolio" />;
+  if (!slug) return <Navigate to="/work" />;
 
   const filteredItems = getPortfolioItemsByTag(slug);
   
@@ -105,7 +105,7 @@ export function PortfolioTagArchiveTemplate() {
         items={[
           { label: 'Home', page: 'front-page' },
           { label: 'Portfolio', page: 'portfolio-archive' },
-          { label: 'Tags', href: '/portfolio' },
+          { label: 'Tags', href: '/work' },
           { label: tagName },
         ]}
       />
@@ -158,7 +158,7 @@ export function PortfolioTagArchiveTemplate() {
                 ) : (
                   <div className="archive-empty-state archive-empty-state--col-span">
                     <Paragraph>No projects found with this tag.</Paragraph>
-                    <Link to="/portfolio" className="archive-empty-state__link">
+                    <Link to="/work" className="archive-empty-state__link">
                       View all projects
                     </Link>
                   </div>

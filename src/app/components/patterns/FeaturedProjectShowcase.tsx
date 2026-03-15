@@ -28,6 +28,7 @@ import { Section } from '../common/Section';
 import { Container } from '../common/Container';
 import { Button } from '../blocks/design/Buttons';
 import { ArrowSquareOut as ExternalLink } from '@phosphor-icons/react';
+import '@/styles/patterns/featured-project-showcase.css';
 
 export interface FeaturedProjectStat {
   /** Stat value (e.g., "500K+", "99.9%") */

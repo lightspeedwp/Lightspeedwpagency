@@ -14,6 +14,7 @@
 import { ChatCircle, Lightbulb, Users, Trophy, TrendUp, Target } from '@phosphor-icons/react';
 import { Link } from 'react-router';
 import { FeatureList } from '../patterns/FeatureList';
+import '../../../styles/templates/answer-engine-service-optimized.css';
 
 export const AnswerEngineServiceTemplate = () => {
   const benefits = [
@@ -107,7 +108,7 @@ export const AnswerEngineServiceTemplate = () => {
           <div className="answer-engine-service__breadcrumb">
             <Link to="/services" className="answer-engine-service__breadcrumb-link">Services</Link>
             <span className="answer-engine-service__breadcrumb-separator">/</span>
-            <Link to="/services/ai-search-visibility" className="answer-engine-service__breadcrumb-link">AI Search & Visibility</Link>
+            <Link to="/services/ai/search-visibility" className="answer-engine-service__breadcrumb-link">AI Search & Visibility</Link>
             <span className="answer-engine-service__breadcrumb-separator">/</span>
             <span className="answer-engine-service__breadcrumb-current">Answer Engine Optimization</span>
           </div>
@@ -125,7 +126,7 @@ export const AnswerEngineServiceTemplate = () => {
             <Link to="/contact" className="answer-engine-service__cta-button answer-engine-service__cta-button--primary">
               Get Question Analysis
             </Link>
-            <Link to="/services/ai-search-visibility" className="answer-engine-service__cta-button answer-engine-service__cta-button--secondary">
+            <Link to="/services/ai/search-visibility" className="answer-engine-service__cta-button answer-engine-service__cta-button--secondary">
               View Parent Service
             </Link>
           </div>

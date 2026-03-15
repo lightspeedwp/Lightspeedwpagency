@@ -1,0 +1,173 @@
+/**
+ * Blog Index — Shared Meta, Dark Mode, Reduced Motion
+ *
+ * Split from blog-index-page.css (P3.5 optimization)
+ * Contains: meta items, empty state, dark mode overrides,
+ * reduced motion preferences.
+ *
+ * @see /src/styles/templates/blog-index-page.css (orchestrator)
+ */
+
+/* ============================================
+   SHARED: META / MISC
+   ============================================ */
+
+.blog-index__meta-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--muted-foreground);
+}
+
+/* Empty State */
+.blog-index__empty {
+  text-align: center;
+  padding: var(--spacing-16);
+  background: var(--card);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.blog-index__empty-link {
+  color: var(--primary);
+  text-decoration: underline;
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+}
+
+/* ============================================
+   DARK MODE OVERRIDES
+   ============================================ */
+
+.dark .blog-index__hero {
+  background: linear-gradient(180deg, var(--background) 0%, color-mix(in srgb, var(--background) 85%, var(--primary)) 100%);
+}
+
+.dark .blog-index__hero-gradient {
+  opacity: 0.6;
+}
+
+.dark .blog-index__hero-orb {
+  opacity: 0.3;
+}
+
+.dark .blog-index__hero-orb-2 {
+  opacity: 0.25;
+}
+
+/* Featured card: neon glow in dark mode */
+.dark .blog-index__featured-card {
+  background: color-mix(in srgb, var(--card) 60%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-color: color-mix(in srgb, var(--primary) 15%, transparent);
+}
+
+.dark .blog-index__featured-card:hover {
+  box-shadow: var(--shadow-neon);
+  border-color: var(--primary);
+}
+
+/* Neon stack cards dark */
+.dark .blog-neon__wrap {
+  background: color-mix(in srgb, var(--card) 60%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-color: color-mix(in srgb, var(--primary) 8%, transparent);
+}
+
+.dark .blog-neon:hover .blog-neon__wrap {
+  box-shadow: var(--shadow-neon);
+}
+
+/* Magazine cards dark */
+.dark .blog-mag__wrap {
+  background: color-mix(in srgb, var(--card) 60%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-color: color-mix(in srgb, var(--primary) 8%, transparent);
+}
+
+.dark .blog-mag:hover .blog-mag__wrap {
+  box-shadow: var(--shadow-neon);
+}
+
+.dark .blog-mag__avatar {
+  border-color: color-mix(in srgb, var(--primary) 30%, transparent);
+}
+
+/* Stream cards dark */
+.dark .blog-stream__wrap {
+  background: color-mix(in srgb, var(--card) 50%, transparent);
+  border-color: color-mix(in srgb, var(--primary) 8%, transparent);
+}
+
+.dark .blog-stream:hover .blog-stream__wrap {
+  background: color-mix(in srgb, var(--primary) 8%, var(--card));
+  box-shadow: var(--shadow-glow-sm);
+}
+
+.dark .blog-stream__indicator {
+  box-shadow: 0 0 12px var(--neon-color);
+}
+
+/* Category chips glow in dark */
+.dark .blog-index__category-chip {
+  background: color-mix(in srgb, var(--secondary) 15%, transparent);
+  border: 1px solid color-mix(in srgb, var(--secondary) 20%, transparent);
+}
+
+/* Empty state dark */
+.dark .blog-index__empty {
+  background: color-mix(in srgb, var(--card) 50%, transparent);
+  border-color: color-mix(in srgb, var(--primary) 15%, transparent);
+}
+
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .blog-index__hero-orb,
+  .blog-index__hero-orb-2 {
+    animation: none;
+  }
+
+  .blog-neon__wrap,
+  .blog-neon__wrap::before,
+  .blog-mag__wrap,
+  .blog-stream__wrap,
+  .blog-index__featured-card,
+  .blog-neon__img,
+  .blog-mag__img,
+  .blog-stream__img,
+  .blog-index__featured-image,
+  .blog-stream__indicator,
+  .blog-mag__time-bar,
+  .blog-neon__read-more,
+  .blog-stream__cta {
+    transition: none;
+  }
+
+  .blog-neon:hover .blog-neon__wrap::before {
+    animation: none;
+  }
+
+  .blog-index__featured-card:hover,
+  .blog-mag:hover .blog-mag__wrap {
+    transform: none;
+  }
+
+  .blog-neon:hover .blog-neon__img,
+  .blog-mag:hover .blog-mag__img,
+  .blog-stream:hover .blog-stream__img,
+  .blog-index__featured-card:hover .blog-index__featured-image {
+    transform: none;
+  }
+}

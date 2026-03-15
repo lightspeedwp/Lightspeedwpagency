@@ -11,7 +11,8 @@
  * @see /src/styles/templates/archive.css
  */
 
-import '../../../../styles/templates/archive.css';
+/* archive.css — globally imported via index.css */
+import '../../../../styles/templates/post-formats/aside-stream-optimized.css';
 import { Container } from '@/app/components/common/Container';
 import { Section } from '@/app/components/common/Section';
 import { BreadcrumbPart } from '@/app/components/parts/BreadcrumbPart';

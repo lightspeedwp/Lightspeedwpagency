@@ -12,6 +12,7 @@ import { getPageUrl } from '../../data/site-pages';
 
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import '@/styles/patterns/portfolio-slider.css';
 
 interface PortfolioSliderProps {
   title?: string;

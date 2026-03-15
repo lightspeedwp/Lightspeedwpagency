@@ -1,0 +1,309 @@
+/**
+ * LSX Search — Demo, Funky Treatments, Dark Mode, Reduced Motion
+ *
+ * Split from lsx-search-page.css (P3.5 optimization)
+ * Contains: search demo, glassmorphism overrides, gradient stripes,
+ * neon icon wrappers, dark mode, reduced motion.
+ *
+ * @see /src/styles/templates/lsx-search-page.css (orchestrator)
+ */
+
+/* ============================================================
+   SEARCH DEMO (Neon Glow Input)
+   ============================================================ */
+
+.lsx-search__demo-container {
+  text-align: center;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+.lsx-search__demo-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h2);
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.lsx-search__demo-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.lsx-search__demo-icon {
+  position: absolute;
+  left: var(--spacing-4);
+  color: var(--muted-foreground);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.lsx-search__demo-input {
+  width: 100%;
+  padding: var(--spacing-4) var(--spacing-4) var(--spacing-4) var(--spacing-12);
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  color: var(--foreground);
+  background: var(--card);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-lg);
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.lsx-search__demo-input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 20px var(--primary-transparent-20);
+}
+
+.lsx-search__demo-input::placeholder {
+  color: var(--muted-foreground);
+}
+
+
+/* ============================================================
+   FUNKY BODY TREATMENTS
+   Glassmorphism, animated gradient stripes, neon icon wrappers,
+   gradient section title underlines, dark mode overrides.
+   ============================================================ */
+
+
+/* --- Animated Gradient Stripe Keyframe --- */
+
+@keyframes searchStripeShimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+
+/* --- Section Title Gradient Underline --- */
+
+.lsx-search__section-title {
+  position: relative;
+  display: inline-block;
+  padding-bottom: var(--spacing-3);
+}
+
+.lsx-search__section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+}
+
+
+/* --- Feature Cards: Glassmorphism + Stripe + Neon Icons --- */
+
+.lsx-search__feature-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-color: var(--glass-border);
+}
+
+.lsx-search__feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
+  background-size: 200% 100%;
+  animation: searchStripeShimmer 3s linear infinite;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.lsx-search__feature-icon {
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  box-shadow: 0 0 16px color-mix(in srgb, var(--primary) 30%, transparent);
+  border-radius: var(--radius-lg);
+  transition: transform var(--transition-base) var(--ease-out), box-shadow var(--transition-base) var(--ease-out);
+}
+
+.lsx-search__feature-icon svg {
+  color: var(--color-white);
+}
+
+.lsx-search__feature-card:hover .lsx-search__feature-icon {
+  transform: scale(1.1);
+  box-shadow: 0 0 24px color-mix(in srgb, var(--primary) 50%, transparent);
+}
+
+
+/* --- Benefit Cards: Glassmorphism + Glow --- */
+
+.lsx-search__benefit-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-color: var(--glass-border);
+}
+
+.lsx-search__benefit-card:hover {
+  box-shadow: 0 0 24px color-mix(in srgb, var(--primary) 20%, transparent);
+}
+
+
+/* --- Process Numbers: Neon Gradient + Glow --- */
+
+.lsx-search__process-number {
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: var(--color-white);
+  box-shadow: 0 0 20px color-mix(in srgb, var(--primary) 40%, transparent);
+  transition: transform var(--transition-base) var(--ease-out), box-shadow var(--transition-base) var(--ease-out);
+}
+
+.lsx-search__process-step:hover .lsx-search__process-number {
+  transform: scale(1.1);
+  box-shadow: 0 0 30px color-mix(in srgb, var(--primary) 60%, transparent);
+}
+
+
+/* --- Capability Categories: Glassmorphism --- */
+
+.lsx-search__capability-category {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-color: var(--glass-border);
+}
+
+.lsx-search__capability-category:hover {
+  box-shadow: 0 0 20px color-mix(in srgb, var(--primary) 15%, transparent);
+}
+
+
+/* --- Spec Items: Glassmorphism --- */
+
+.lsx-search__spec-item {
+  background: var(--glass-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-color: var(--glass-border);
+}
+
+
+/* --- Search Demo: Enhanced Neon Glow --- */
+
+.lsx-search__demo-input:focus {
+  box-shadow: 0 0 24px color-mix(in srgb, var(--primary) 30%, transparent);
+}
+
+.lsx-search__demo-container {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-12);
+}
+
+
+/* ============================================================
+   DARK MODE OVERRIDES
+   ============================================================ */
+
+.dark .lsx-search__features { background: color-mix(in srgb, var(--background) 95%, var(--primary) 5%); }
+.dark .lsx-search__process  { background: color-mix(in srgb, var(--background) 95%, var(--primary) 5%); }
+.dark .lsx-search__specs    { background: color-mix(in srgb, var(--background) 95%, var(--primary) 5%); }
+
+.dark .lsx-search__feature-card {
+  background: var(--glass-bg);
+  border-color: var(--glass-border);
+}
+
+.dark .lsx-search__feature-card:hover {
+  border-color: var(--primary);
+  box-shadow: 0 0 30px color-mix(in srgb, var(--primary) 25%, transparent);
+}
+
+.dark .lsx-search__feature-icon {
+  box-shadow: 0 0 20px color-mix(in srgb, var(--primary) 40%, transparent);
+}
+
+.dark .lsx-search__benefit-card {
+  background: var(--glass-bg);
+  border-color: var(--glass-border);
+}
+
+.dark .lsx-search__benefit-card:hover {
+  border-color: var(--primary);
+  box-shadow: 0 0 24px color-mix(in srgb, var(--primary) 30%, transparent);
+}
+
+.dark .lsx-search__process-number {
+  box-shadow: 0 0 24px color-mix(in srgb, var(--primary) 50%, transparent);
+}
+
+.dark .lsx-search__capability-category {
+  background: var(--glass-bg);
+  border-color: var(--glass-border);
+}
+
+.dark .lsx-search__capability-category:hover {
+  border-color: var(--primary);
+  box-shadow: 0 0 20px color-mix(in srgb, var(--primary) 20%, transparent);
+}
+
+.dark .lsx-search__spec-item {
+  background: var(--glass-bg);
+  border-color: var(--glass-border);
+}
+
+.dark .lsx-search__demo-container {
+  background: var(--glass-bg);
+  border-color: var(--glass-border);
+}
+
+.dark .lsx-search__demo-input {
+  background: color-mix(in srgb, var(--background) 80%, var(--primary) 5%);
+  border-color: var(--glass-border);
+}
+
+.dark .lsx-search__demo-input:focus {
+  box-shadow: 0 0 30px color-mix(in srgb, var(--primary) 40%, transparent);
+}
+
+.dark .lsx-search__section-title::after {
+  box-shadow: 0 0 8px color-mix(in srgb, var(--primary) 30%, transparent);
+}
+
+.dark .lsx-search__hero-overlay {
+  background: linear-gradient(
+    to bottom,
+    var(--overlay-dark) 0%,
+    var(--overlay-darker) 55%,
+    var(--background) 100%
+  );
+}
+
+
+/* ============================================================
+   REDUCED MOTION GUARDS
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .lsx-search__feature-card::before {
+    animation: none;
+  }
+
+  .lsx-search__feature-card:hover {
+    transform: none;
+  }
+
+  .lsx-search__feature-card:hover .lsx-search__feature-icon,
+  .lsx-search__process-step:hover .lsx-search__process-number {
+    transform: none;
+  }
+}

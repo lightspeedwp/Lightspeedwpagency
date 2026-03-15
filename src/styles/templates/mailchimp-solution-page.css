@@ -1,8 +1,0 @@
-/**
- * Mailchimp Solution Page Styles — Compatibility Shim
- * 
- * REPLACED: March 14, 2026
- * All styles now in mailchimp-solution-page-optimized.css
- * This shim exists for backward compatibility only.
- */
-@import './mailchimp-solution-page-optimized.css';

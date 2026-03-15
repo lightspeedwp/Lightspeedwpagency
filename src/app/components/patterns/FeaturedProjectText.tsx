@@ -8,6 +8,7 @@ import { Section } from '../common/Section';
 import { ImageWithFallback } from '../figma/ImageWithFallback';
 import { Link } from 'react-router';
 import { ArrowRight, Star } from '@phosphor-icons/react';
+import '@/styles/patterns/featured-project-text.css';
 
 interface FeaturedProjectTextProps {
   projectSlug?: string;

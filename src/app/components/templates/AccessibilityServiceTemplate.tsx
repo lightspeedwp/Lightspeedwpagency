@@ -11,6 +11,7 @@ import { Link } from 'react-router';
 import { FeatureList } from '../patterns/FeatureList';
 import { CheckList } from '../patterns/CheckList';
 import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
+import '../../../styles/templates/accessibility-service-optimized.css';
 
 export const AccessibilityServiceTemplate = () => {
   const benefits = [

@@ -14,7 +14,7 @@
  * @see {@link /guidelines/templates/date-archive.md}
  */
 
-import '../../../styles/templates/archive.css';
+/* archive.css — globally imported via index.css */
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';

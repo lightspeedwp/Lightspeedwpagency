@@ -172,7 +172,7 @@ export function GenericPolicyTemplate() {
         primaryButtonText="Start a Project"
         primaryButtonHref="/contact"
         secondaryButtonText="View Our Work"
-        secondaryButtonHref="/portfolio"
+        secondaryButtonHref="/work"
       />
     </div>
   );
