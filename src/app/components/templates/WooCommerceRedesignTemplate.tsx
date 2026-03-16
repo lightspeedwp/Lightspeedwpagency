@@ -20,7 +20,9 @@ import { StatsGrid } from '../patterns/StatsGrid';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { Link } from 'react-router';
 import { slugToPath } from '../../utils/route-map';
+import { getPageUrl } from '../../data/site-pages';
 import { ArrowRight, Check, Warning } from '@phosphor-icons/react';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 
 import {
   wooRedesignHero,
@@ -36,6 +38,15 @@ import {
 export function WooCommerceRedesignTemplate() {
   return (
     <div className="redesign-page redesign-page--woocommerce">
+      {/* Breadcrumbs */}
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Solutions', href: '/solutions' },
+          { label: 'WooCommerce Redesign' },
+        ]}
+      />
+
       {/* Hero */}
       <section className="redesign-page__hero">
         <Container>
@@ -211,7 +222,7 @@ export function WooCommerceRedesignTemplate() {
                     ))}
                   </ul>
                   <Link
-                    to="/contact"
+                    to={getPageUrl('contact')}
                     className="redesign-page__pricing-cta"
                   >
                     Get Started

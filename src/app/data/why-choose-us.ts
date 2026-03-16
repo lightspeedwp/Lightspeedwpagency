@@ -44,56 +44,56 @@ export interface ComparisonFeature {
 export const competitiveAdvantages: CompetitiveAdvantage[] = [
   {
     id: 'expertise',
-    title: 'WordPress Specialists',
+    title: 'WordPress specialists',
     description: 'We exclusively build WordPress and WooCommerce sites. No generic templates, no one-size-fits-all solutions. Deep expertise in the WordPress ecosystem.',
     icon: 'Award',
     proof: '150+ WordPress sites built'
   },
   {
     id: 'modern',
-    title: 'Modern Block Themes',
+    title: 'Modern block themes',
     description: 'We build with Full Site Editing (FSE) block themes—the future of WordPress. No legacy code, no page builders, just clean, maintainable WordPress.',
     icon: 'Blocks',
     proof: 'FSE certified developers'
   },
   {
     id: 'performance',
-    title: 'Performance First',
+    title: 'Performance first',
     description: 'Every site scores 90+ on Lighthouse. Core Web Vitals optimized. No bloated plugins, no slow page builders. Fast sites that convert.',
     icon: 'Zap',
     proof: 'Average Lighthouse score: 94'
   },
   {
     id: 'accessibility',
-    title: 'WCAG AA Compliant',
+    title: 'WCAG AA compliant',
     description: 'Accessibility built-in, not bolted on. Every site meets WCAG 2.1 AA standards. Legal compliance + better UX for all users.',
     icon: 'Eye',
     proof: '100% WCAG AA compliance'
   },
   {
     id: 'systems',
-    title: 'Design System Approach',
+    title: 'Design system approach',
     description: 'Token-driven design systems that scale. Consistent UI, easy maintenance, brand guidelines baked in. No more "one-off" design chaos.',
     icon: 'Palette',
     proof: 'Documented design systems'
   },
   {
     id: 'security',
-    title: 'Security Hardened',
+    title: 'Security hardened',
     description: 'Security best practices from day one. Regular updates, monitoring, and backups. No compromises on your site\'s safety.',
     icon: 'Shield',
     proof: 'Zero security breaches'
   },
   {
     id: 'support',
-    title: 'Ongoing Partnership',
+    title: 'Ongoing partnership',
     description: 'We\'re here after launch. Training, documentation, support plans. Your success is our success.',
     icon: 'Users',
     proof: '95% client retention rate'
   },
   {
     id: 'transparent',
-    title: 'Transparent Pricing',
+    title: 'Transparent pricing',
     description: 'Fixed-price packages. No hidden fees. No surprise invoices. You know exactly what you\'re paying for.',
     icon: 'DollarSign',
     proof: 'Published pricing'
@@ -315,7 +315,7 @@ export const comparisonFeatures: ComparisonFeature[] = [
  */
 export const whenToChoose = {
   lsxDesign: {
-    title: 'Choose LSX Design If:',
+    title: 'Choose LSX Design if:',
     points: [
       'You want a professional, custom WordPress site',
       'Performance and accessibility matter to your business',
@@ -327,7 +327,7 @@ export const whenToChoose = {
     ]
   },
   diyBuilder: {
-    title: 'Choose a DIY Builder If:',
+    title: 'Choose a DIY builder if:',
     points: [
       'You\'re testing an idea with minimal investment',
       'You have time to learn and build yourself',
@@ -338,7 +338,7 @@ export const whenToChoose = {
     ]
   },
   freelancer: {
-    title: 'Choose a Freelancer If:',
+    title: 'Choose a freelancer if:',
     points: [
       'You have a very limited budget',
       'You\'re comfortable with variable quality',
@@ -349,7 +349,7 @@ export const whenToChoose = {
     ]
   },
   largeAgency: {
-    title: 'Choose a Large Agency If:',
+    title: 'Choose a large agency if:',
     points: [
       'You have a large budget ($50k+)',
       'You need a full marketing team',
@@ -423,22 +423,22 @@ export const whyChooseUsHero = {
   title: "Why LightSpeed?",
   subtitle: "We're not just another agency. We're your long-term technical partner in the WordPress ecosystem.",
   badge: { text: "THE DIFFERENCE", icon: Trophy },
-  primaryButton: { text: "See Our Work", page: "portfolio-archive" }
+  primaryButton: { text: "See our work", page: "portfolio-archive" }
 };
 
 export const whyChooseUsIntro = {
-  title: "Decades of Experience",
+  title: "Decades of experience",
   description: "With over 20 years in the industry, we've seen the web evolve. We combine deep historical knowledge with cutting-edge block theme expertise to build sites that last."
 };
 
 export const whyChooseUsStats = [
-  { value: "20+", label: "Years in Business" },
-  { value: "500+", label: "Projects Launched" },
-  { value: "100%", label: "In-House Team" }
+  { value: "20+", label: "Years in business" },
+  { value: "500+", label: "Projects launched" },
+  { value: "100%", label: "In-house team" }
 ];
 
 export const whyChooseUsCTA = {
-  title: "Experience the Difference",
+  title: "Experience the difference",
   description: "Stop wrestling with bloated themes and unreliable freelancers. Switch to a professional agency workflow.",
-  button: { text: "Request a Systems Audit", page: "contact" }
+  button: { text: "Request a systems audit", page: "contact" }
 };

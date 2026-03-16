@@ -1,11 +1,5 @@
-export {
-  Command,
-  CommandDialog,
-  CommandInput,
-  CommandList,
-  CommandEmpty,
-  CommandGroup,
-  CommandItem,
-  CommandShortcut,
-  CommandSeparator,
-} from "@/app/components/blocks/utility/Command";
+/**
+ * Deprecated — Command block not yet implemented.
+ * @see cmdk for direct usage.
+ */
+export {};

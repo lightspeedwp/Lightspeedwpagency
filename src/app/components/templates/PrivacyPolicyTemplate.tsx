@@ -28,6 +28,7 @@ import { Heading } from '../blocks/text/Heading';
 import { Paragraph } from '../blocks/text/Paragraph';
 import { useHeroParallax } from '../../hooks/useHeroParallax';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { Shield, Lock, Eye, FileText, WarningCircle as AlertCircle, CheckCircle } from '@phosphor-icons/react';
 
 // Import Mock Data
@@ -41,6 +42,14 @@ export function PrivacyPolicyTemplate() {
 
   return (
     <div className="legal-page">
+      {/* Breadcrumbs */}
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Privacy Policy' },
+        ]}
+      />
+
       {/* ============================================
           1. HERO SECTION (Parallax + Floating Orbs)
           ============================================ */}
@@ -132,7 +141,7 @@ export function PrivacyPolicyTemplate() {
           3. CTA SECTION (FunkyCTA)
           ============================================ */}
       <FunkyCTA
-        title="Have Questions About Privacy?"
+        title="Have questions about privacy?"
         description="Our team is here to help. Contact us for any privacy-related inquiries."
         buttonText="Contact Us"
         buttonPage="contact"

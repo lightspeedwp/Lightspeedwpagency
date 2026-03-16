@@ -12,7 +12,9 @@ import { Link } from 'react-router';
 import { CaretRight, FileText, Check } from '@phosphor-icons/react';
 import { editorialWorkflowsSystem } from '../../data/systems-hub';
 import { serviceTiers } from '../../data/three-tier-model';
+import { getPageUrl } from '../../data/site-pages';
 import '@/styles/templates/editorial-workflows-system.css';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 
 export const EditorialWorkflowsSystemTemplate = () => {
   const system = editorialWorkflowsSystem;
@@ -20,13 +22,13 @@ export const EditorialWorkflowsSystemTemplate = () => {
 
   return (
     <div className="system-page">
-      <nav className="system-page__breadcrumbs">
-        <Link to="/systems" className="system-page__breadcrumb-link">
-          Systems
-        </Link>
-        <CaretRight className="system-page__breadcrumb-separator" />
-        <span className="system-page__breadcrumb-current">Editorial Workflows</span>
-      </nav>
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Systems', href: '/systems' },
+          { label: 'Editorial Workflows' },
+        ]}
+      />
 
       <section className="system-page__hero">
         <div className="system-page__hero-content">
@@ -137,7 +139,7 @@ export const EditorialWorkflowsSystemTemplate = () => {
                 <h3 className="system-page__tier-name">{tier.name}</h3>
                 <p className="system-page__tier-tagline">{tier.tagline}</p>
                 <p className="system-page__tier-description">{tier.description}</p>
-                <Link to="/services" className="system-page__tier-link">
+                <Link to={getPageUrl('services')} className="system-page__tier-link">
                   Learn More
                   <CaretRight className="system-page__tier-link-icon" />
                 </Link>
@@ -156,7 +158,7 @@ export const EditorialWorkflowsSystemTemplate = () => {
             Request a free workflow audit to see how structured processes can reduce
             publishing time by 40% while improving quality.
           </p>
-          <Link to="/contact" className="system-page__cta-button">
+          <Link to={getPageUrl('contact')} className="system-page__cta-button">
             Request a Workflow Audit
           </Link>
         </div>

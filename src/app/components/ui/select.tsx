@@ -1,10 +1,5 @@
-export {
-  Select,
-  SelectGroup,
-  SelectValue,
-  SelectTrigger,
-  SelectContent,
-  SelectLabel,
-  SelectItem,
-  SelectSeparator,
-} from "@/app/components/blocks/forms/Select";
+/**
+ * Deprecated — Select block not yet implemented.
+ * @see @radix-ui/react-select for direct usage.
+ */
+export {};

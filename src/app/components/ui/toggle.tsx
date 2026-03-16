@@ -1,1 +1,5 @@
-export { Toggle } from "@/app/components/blocks/forms/Toggle";
+/**
+ * Deprecated — Toggle block not yet implemented.
+ * @see @radix-ui/react-toggle for direct usage.
+ */
+export {};

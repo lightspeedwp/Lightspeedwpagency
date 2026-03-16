@@ -1,8 +1,8 @@
 # LSX Design — Figma Make Prototype Guidelines
 
 **Category:** Core  
-**Version:** 5.4.0  
-**Last Updated:** 2026-03-15  
+**Version:** 5.8.0  
+**Last Updated:** 2026-03-16  
 **Status:** Active  
 **Template Used:** Canonical (no template — this IS the source of truth)
 
@@ -49,7 +49,7 @@ See **[prompt-triggers.md](./prompt-triggers.md)** for full details and behaviou
 | `sitemap` | Sync SiteMapTemplate with actual routes |
 | `process reports` | Organize, rename, archive reports |
 
-### Audits (18)
+### Audits (19)
 
 | Trigger | What It Does |
 |---|---|
@@ -71,6 +71,7 @@ See **[prompt-triggers.md](./prompt-triggers.md)** for full details and behaviou
 | `audit functionality` | UI state wiring, dead UI detection, interaction flows |
 | `audit accessibility` | Comprehensive WCAG 2.1 AA (focus, ARIA, touch targets) |
 | `audit performance` | Render performance, assets, animations, WebGL impact |
+| `audit images` | Broken image URLs, missing alt text, asset compliance |
 
 ### Scaffolds (3)
 
@@ -87,6 +88,12 @@ See **[prompt-triggers.md](./prompt-triggers.md)** for full details and behaviou
 | `update guidelines` | Update content accuracy, frontmatter, template compliance |
 | `cleanup guidelines` | Merge duplicates, deprecate outdated, restructure |
 | `release` | Version bump: move Unreleased → versioned section |
+
+### Code Quality (1)
+
+| Trigger | What It Does |
+|---|---|
+| `apply bem` | Audit + fix missing BEM classes, map inline styles to existing CSS, flag token gaps |
 
 ---
 
@@ -170,7 +177,9 @@ See **[prompt-triggers.md](./prompt-triggers.md)** for full details and behaviou
 
 - **ALL UI** must use CSS variables from `/src/styles/` — colors, spacing, borders, radius, typography.
 - **Typography:** ONLY font faces defined in CSS. Never hardcode font names.
+- **Headings:** Always use **sentence case** (capitalise only the first word and proper nouns). Never title case. Example: "Performance & accessibility features" not "Performance & Accessibility Features".
 - **Colours:** Semantic CSS variables only. Never hardcode hex values.
+- **Neon colours:** Neon-bright foreground colours (neon-cyan, neon-pink, neon-lime, neon-yellow) must **only** appear against dark backgrounds (`var(--color-black)` or equivalent). Never use neon foreground text/icons on light surfaces — insufficient contrast. Cards or sections using neon accents must force a dark surface regardless of light/dark mode.
 - **Spacing:** `var(--spacing-*)` tokens only. Never hardcode `px` or `rem`.
 - **Icons:** `@phosphor-icons/react` only. Zero `lucide-react` imports.
 - **Router:** `react-router` only. Never `react-router-dom`.
@@ -237,6 +246,10 @@ See **[prompt-triggers.md](./prompt-triggers.md)** for full details and behaviou
 
 | Version | Date | Changes |
 |---|---|---|
+| 5.8.0 | 2026-03-16 | Added neon color rule to Design System Compliance. Neon-bright foreground colours must only appear against dark backgrounds (`var(--color-black)` or equivalent). Cards or sections using neon accents must force a dark surface regardless of light/dark mode |
+| 5.7.0 | 2026-03-16 | Added sentence case heading rule to Design System Compliance. All UI headings must use sentence case — never title case |
+| 5.6.0 | 2026-03-16 | Added `audit images` trigger. Audit triggers 18 → 19. Total triggers 32 → 33 |
+| 5.5.0 | 2026-03-16 | Added `apply bem` code quality trigger. New Code Quality category. Total triggers 31 → 32 |
 | 5.4.0 | 2026-03-15 | Expanded audit triggers from 10 → 18. Added theme, style, webgl, routing, layout, functionality, accessibility, performance audits. Total triggers 23 → 31 |
 | 5.3.0 | 2026-03-15 | Expanded audit triggers from 7 → 10 (`audit` orchestrator, `audit routes`, `audit sitemap`). Updated trigger count 20 → 23 |
 | 5.2.1 | 2026-03-15 | Added Protected column to root .md table, strengthened cleanup language for root enforcement |
@@ -248,7 +261,7 @@ See **[prompt-triggers.md](./prompt-triggers.md)** for full details and behaviou
 
 ---
 
-**Last Updated:** March 15, 2026  
+**Last Updated:** March 16, 2026  
 **Design System:** LSX Design  
 **WordPress Compatibility:** FSE (Full Site Editing)  
 **Total Routes:** ~172 | **Total Templates:** 130+

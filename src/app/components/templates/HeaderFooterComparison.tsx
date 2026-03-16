@@ -28,7 +28,7 @@ export function HeaderFooterComparison() {
         items={[
           { label: 'Home', page: 'home' as const },
           { label: 'Developer Tools', page: 'dev-tools' as const },
-          { label: 'Header/Footer Comparison' },
+          { label: 'Header/footer comparison' },
         ]}
       />
 
@@ -36,7 +36,7 @@ export function HeaderFooterComparison() {
       <section className="comparison__hero">
         <Container>
           <ScrollReveal animation="fade-up">
-            <h1 className="comparison__hero-title">Header/Footer Comparison</h1>
+            <h1 className="comparison__hero-title">Header/footer comparison</h1>
             <p className="comparison__hero-desc">
               Compare different header and footer configurations. 
               These are the global template parts used across the site.

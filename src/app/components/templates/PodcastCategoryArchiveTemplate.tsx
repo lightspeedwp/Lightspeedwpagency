@@ -10,7 +10,8 @@
  */
 
 import '../../../styles/templates/podcast-archive-optimized.css';
-import { useParams, Navigate, Link } from 'react-router';
+import { Link, Navigate, useParams } from 'react-router';
+import { getPageUrl } from '../../data/site-pages';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
@@ -27,7 +28,7 @@ import { podcastFAQs } from '../../data/faqs';
 export function PodcastCategoryArchiveTemplate() {
   const { slug } = useParams<{ slug: string }>();
 
-  if (!slug) return <Navigate to="/podcasts" />;
+  if (!slug) return <Navigate to={getPageUrl('podcasts')} />;
 
   const category = podcastCategories.find(c => c.slug === slug);
   const episodes = getPodcastsByCategory(slug);
@@ -70,7 +71,7 @@ export function PodcastCategoryArchiveTemplate() {
           <nav className="archive-category-nav" aria-label="Podcast categories">
             <div className="archive-category-nav__list">
               <Link
-                to="/podcasts"
+                to={getPageUrl('podcasts')}
                 className="archive-category-nav__item"
               >
                 All episodes
@@ -138,7 +139,7 @@ export function PodcastCategoryArchiveTemplate() {
               <Heading level={3}>No episodes found</Heading>
               <Paragraph>
                 No episodes in this category yet.{' '}
-                <Link to="/podcasts" className="blog-index__empty-link">View all episodes</Link>
+                <Link to={getPageUrl('podcasts')} className="blog-index__empty-link">View all episodes</Link>
               </Paragraph>
             </div>
           )}

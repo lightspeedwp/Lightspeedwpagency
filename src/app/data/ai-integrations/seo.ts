@@ -67,32 +67,32 @@ export const aiSEOStats: AIStat[] = [
 export const aiSEOFeatures: AIFeature[] = [
   {
     icon: MagnifyingGlass,
-    title: 'Keyword Intelligence',
+    title: 'Keyword intelligence',
     description: 'AI-driven keyword research that finds high-intent, low-competition opportunities specific to your niche.',
   },
   {
     icon: FileText,
-    title: 'Content Scoring',
+    title: 'Content scoring',
     description: 'Real-time readability, keyword density, and topical coverage scores right in the block editor.',
   },
   {
     icon: Link,
-    title: 'Smart Internal Linking',
+    title: 'Smart internal linking',
     description: 'Automatically suggests contextually relevant internal links to strengthen site architecture.',
   },
   {
     icon: Database,
-    title: 'Schema Markup',
+    title: 'Schema markup',
     description: 'Auto-generate structured data (FAQ, HowTo, Product, Article) to win rich snippets in search results.',
   },
   {
     icon: Eye,
-    title: 'Competitor Analysis',
+    title: 'Competitor analysis',
     description: 'Monitor competitor rankings, content gaps, and backlink strategies with AI-powered dashboards.',
   },
   {
     icon: ArrowsClockwise,
-    title: 'Content Decay Detection',
+    title: 'Content decay detection',
     description: 'AI identifies pages losing rankings and recommends specific updates to recover lost traffic.',
   },
 ];
@@ -113,7 +113,7 @@ export const aiSEOUseCases: AIUseCase[] = [
     features: ['Product Schema', 'Category Optimisation', 'Review Markup'],
   },
   {
-    title: 'Local Business',
+    title: 'Local business',
     description: 'Dominate local search with AI-optimised Google Business profiles, local schema, and geo-targeted content.',
     industries: ['Hospitality', 'Healthcare', 'Services'],
     features: ['Local Schema', 'NAP Consistency', 'Review Management'],
@@ -206,7 +206,7 @@ export const aiSEOFAQs: AIFAQ[] = [
 /* ── CTA ── */
 
 export const aiSEOCTA: AICTA = {
-  title: 'Stop Guessing. Start Ranking.',
+  title: 'Stop guessing. Start ranking.',
   description:
     'Let AI handle the SEO grind while you focus on creating great content and growing your business.',
   buttons: [

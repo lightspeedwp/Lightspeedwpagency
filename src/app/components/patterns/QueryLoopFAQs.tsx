@@ -20,7 +20,7 @@ export interface QueryLoopFAQsProps {
 
 export function QueryLoopFAQs({
   faqs,
-  heading = 'Frequently Asked Questions',
+  heading = 'Frequently asked questions',
   description,
 }: QueryLoopFAQsProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);

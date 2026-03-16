@@ -37,6 +37,10 @@
   /* margin-bottom removed - handled by gap */
 }
 
+.template-section-header__title--h2 {
+  font-size: var(--text-h2);
+}
+
 .template-section-header__description {
   /* Typography */
   font-family: var(--font-primary);
@@ -47,4 +51,31 @@
   /* Layout */
   max-width: var(--wp--style--global--content-size);
   margin: 0 auto;
+}
+
+.template-section-header__description--secondary {
+  font-family: var(--font-secondary);
+}
+
+/* ============================================
+ * INDUSTRY CARD
+ * ============================================ */
+
+.industry-card {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  padding: var(--spacing-6);
+  background-color: var(--card);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.industry-card__label {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-medium);
+  color: var(--card-foreground);
 }

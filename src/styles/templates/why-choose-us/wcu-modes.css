@@ -1,8 +1,11 @@
 /**
  * Why Choose Us — Dark Mode + Reduced Motion
  *
- * Sub-file 3/3 of why-choose-us.css
+ * Sub-file 3/5 of why-choose-us.css
  * BEM block: .wcu
+ *
+ * Note: .wcu-compare and .wcu-choose dark/motion rules
+ * are co-located in their own CSS files.
  */
 
 /* ============================================
@@ -34,6 +37,7 @@
   border-color: color-mix(in srgb, var(--neon-color, var(--primary)) 50%, transparent);
 }
 
+.dark .wcu__compare-section,
 .dark .wcu__stats,
 .dark .wcu__process {
   background: color-mix(in srgb, var(--foreground) 3%, var(--background));

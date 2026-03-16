@@ -1,7 +1,9 @@
-# Workflow 4, Part A: Hardcoding Audit
+# Hardcoding audit
 
-**Date:** March 13, 2026  
-**Status:** AUDIT COMPLETE  
+**Category:** Report  
+**Version:** 1.0.0  
+**Last Updated:** 2026-03-13  
+**Status:** Complete  
 **Scope:** All `.tsx` files in `/src/app/components/templates/`, `/patterns/`, `/parts/`
 
 ---
@@ -20,13 +22,13 @@ Scanned 130+ template files, 50+ pattern files, and 10+ template part files for 
 
 ---
 
-## Finding 1: Hardcoded Content Arrays in Templates (34 files)
+## Finding 1: Hardcoded content arrays in templates (34 files)
 
-### 1.1 Service Templates — `benefits[]` arrays (16 files)
+### 1.1 Service templates — `benefits[]` arrays (16 files)
 
 These templates define inline benefits/features arrays instead of importing from service data files.
 
-| # | File | Array | Lines | Data File Exists? |
+| # | File | Array | Lines | Data file exists? |
 |---|---|---|---|---|
 | 1 | `SEOServiceTemplate.tsx` | `benefits[]` | ~30 | Yes (`seo.ts` or `services/seo.ts`) |
 | 2 | `AnalyticsServiceTemplate.tsx` | `benefits[]` | ~30 | Partial |
@@ -47,14 +49,14 @@ These templates define inline benefits/features arrays instead of importing from
 
 **Estimated inline lines:** ~420 lines
 
-### 1.2 Content Service Templates — Additional (2 files)
+### 1.2 Content service templates — additional (2 files)
 
 | # | File | Array | Lines |
 |---|---|---|---|
 | 17 | `ContentSEOServiceTemplate.tsx` | `benefits[]` | ~20 |
 | 18 | `ContentGovernanceServiceTemplate.tsx` | `benefits[]` | ~20 |
 
-### 1.3 "Why" Landing Templates — `features[]` + `testimonials[]` (5 files)
+### 1.3 "Why" landing templates — `features[]` + `testimonials[]` (5 files)
 
 Each "Why" template has TWO hardcoded arrays:
 
@@ -68,21 +70,21 @@ Each "Why" template has TWO hardcoded arrays:
 
 **Estimated inline lines:** ~300 lines
 
-### 1.4 Landing/Hub Templates — `stats[]` arrays (2 files)
+### 1.4 Landing/hub templates — `stats[]` arrays (2 files)
 
 | # | File | Array | Lines |
 |---|---|---|---|
 | 24 | `AIServicesLandingTemplate.tsx` | `stats[]` | ~10 |
 | 25 | `InsightsLandingTemplate.tsx` | `stats[]` | ~10 |
 
-### 1.5 About Templates — `steps[]` / `milestones[]` (2 files)
+### 1.5 About templates — `steps[]` / `milestones[]` (2 files)
 
 | # | File | Array | Lines |
 |---|---|---|---|
 | 26 | `AboutProcessTemplate.tsx` | `steps[]` | ~40 |
 | 27 | `AboutHistoryTemplate.tsx` | `milestones[]` | ~60 |
 
-### 1.6 Utility/Marketing Templates (4 files)
+### 1.6 Utility/marketing templates (4 files)
 
 | # | File | Array | Lines |
 |---|---|---|---|
@@ -91,7 +93,7 @@ Each "Why" template has TWO hardcoded arrays:
 | 30 | `AISearchServiceTemplate.tsx` | `pillars[]` | ~40 |
 | 31 | `TestimonialsTemplate.tsx` | `services[]` (filter list) | ~5 |
 
-### 1.7 Reference/System Templates (acceptable exceptions)
+### 1.7 Reference/system templates (acceptable exceptions)
 
 | # | File | Array | Verdict |
 |---|---|---|---|
@@ -100,11 +102,11 @@ Each "Why" template has TWO hardcoded arrays:
 
 ---
 
-## Finding 2: Incorrect Company Data (4 data files)
+## Finding 2: Incorrect company data (4 data files)
 
 The company was founded in **2003**, not 2010 or 2014.
 
-| File | Field | Current Value | Correct Value |
+| File | Field | Current value | Correct value |
 |---|---|---|---|
 | `/src/app/data/company.ts` | `foundingDate` | `'2014'` | `'2003'` |
 | `/src/app/data/company.ts` | `registrationNumber` | `'2014/123456/07'` | Update year prefix |
@@ -119,19 +121,19 @@ The company was founded in **2003**, not 2010 or 2014.
 
 ---
 
-## Finding 3: Template Parts — Clean
+## Finding 3: Template parts — clean
 
 All files in `/src/app/components/parts/` (SiteHeader, SiteFooter, etc.) import content from data files or receive it via props. **No hardcoded content found.**
 
 ---
 
-## Finding 4: Pattern Components — Clean
+## Finding 4: Pattern components — clean
 
 Only 1 match found (`ProjectCaseStudy.tsx` sections array) — this is a UI structure mapping, not content. **No action needed.**
 
 ---
 
-## Summary Statistics
+## Summary statistics
 
 | Metric | Count |
 |---|---|
@@ -144,13 +146,13 @@ Only 1 match found (`ProjectCaseStudy.tsx` sections array) — this is a UI stru
 
 ---
 
-## Recommended Actions (Part A → Part B handoff)
+## Recommended actions
 
-### Priority 1: Fix founding year (Part B prerequisite)
-1. Update `company.ts` foundingDate → `'2003'`
-2. Update `about.ts` companyHistory → starts at 2003
-3. Update `about-page.ts` timeline → starts at 2003
-4. Update `team.ts` Ash Shaw bio → "founded in 2003"
+### Priority 1: Fix founding year (prerequisite)
+1. Update `company.ts` foundingDate to `'2003'`
+2. Update `about.ts` companyHistory to start at 2003
+3. Update `about-page.ts` timeline to start at 2003
+4. Update `team.ts` Ash Shaw bio to "founded in 2003"
 
 ### Priority 2: Create missing data files for hardcoded templates
 1. Create `why-pages.ts` — shared features/testimonials for 5 "Why" templates
@@ -162,7 +164,3 @@ Only 1 match found (`ProjectCaseStudy.tsx` sections array) — this is a UI stru
 1. Update 31 templates to import from data files instead of defining inline arrays
 2. Estimated effort: 3-4 hours
 3. Estimated lines moved to data: ~870 lines
-
----
-
-**Next Step:** Workflow 4, Part B — Real Content Integration (fix founding year, rebuild team.ts, rebuild about.ts)

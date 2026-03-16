@@ -6,6 +6,7 @@
 
 import { MagnifyingGlass, TrendUp, FileText, Crosshair, ChartBar, ArrowsClockwise, Package } from '@phosphor-icons/react';
 import { Link } from 'react-router';
+import { getPageUrl } from '../../data/site-pages';
 import { ServiceCapabilitiesGrid } from '../patterns/ServiceCapabilitiesGrid';
 import { AgencyStats } from '../patterns/AgencyStats';
 import { CheckList } from '../patterns/CheckList';
@@ -13,6 +14,7 @@ import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
 import { Container } from '../common/Container';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { FunkyCTA } from '../patterns/FunkyCTA';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 
 export const ContentSEOServiceTemplate = () => {
   const benefits = [
@@ -44,47 +46,35 @@ export const ContentSEOServiceTemplate = () => {
   return (
     <div className="wp-w-full wp-flex wp-flex-col" data-service="content-seo">
       {/* HERO SECTION */}
-      <section 
-        style={{
-          position: 'relative',
-          padding: 'var(--spacing-32) 0',
-          backgroundColor: 'var(--background)',
-          overflow: 'hidden',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          minHeight: '60vh',
-          textAlign: 'center'
-        }}
-      >
+      <section className="service-hero" style={{ minHeight: '60vh' }}>
         <div style={{ position: 'absolute', top: 0, left: '50%', transform: 'translate(-50%, -50%)', width: '100vw', height: '100vh', background: 'radial-gradient(ellipse at bottom, rgba(var(--secondary-rgb), 0.15) 0%, transparent 70%)', zIndex: 0, pointerEvents: 'none' }} />
         
-        <div style={{ position: 'relative', zIndex: 1, maxWidth: '800px', padding: '0 var(--spacing-8)' }}>
+        <div className="service-hero__content" style={{ position: 'relative', zIndex: 1, maxWidth: '800px', padding: '0 var(--spacing-8)' }}>
           <ScrollReveal animation="fade-down">
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 'var(--spacing-2)', fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-sm)', color: 'var(--muted-foreground)', marginBottom: 'var(--spacing-6)' }}>
-              <Link to="/services" style={{ color: 'inherit', textDecoration: 'none', transition: 'color var(--transition-base)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--muted-foreground)'}>Services</Link>
-              <span style={{ color: 'var(--border)' }}>/</span>
-              <Link to="/services/content" style={{ color: 'inherit', textDecoration: 'none', transition: 'color var(--transition-base)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--muted-foreground)'}>Content</Link>
-              <span style={{ color: 'var(--border)' }}>/</span>
-              <span style={{ color: 'var(--secondary)', fontWeight: 'var(--font-weight-medium)' }}>SEO Content</span>
-            </div>
+            <BreadcrumbPart
+              items={[
+                { label: 'Home', href: '/' },
+                { label: 'Services', href: '/services' },
+                { label: 'Content', href: '/services/content' },
+                { label: 'SEO Content' },
+              ]}
+            />
             
-            <h1 style={{ margin: '0 0 var(--spacing-6) 0', fontFamily: 'var(--font-primary)', fontSize: 'var(--text-h1)', color: 'var(--foreground)', lineHeight: '1.1' }}>
-              SEO <br />
-              <span style={{ color: 'transparent', backgroundImage: 'linear-gradient(90deg, var(--secondary), var(--primary))', WebkitBackgroundClip: 'text', backgroundClip: 'text' }}>Content</span>
+            <h1 className="service-hero__title">
+              Content SEO <br />
+              <span className="service-hero__gradient-text">Services</span>
             </h1>
             
-            <p style={{ margin: '0 auto var(--spacing-10) auto', fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-xl)', color: 'var(--muted-foreground)', lineHeight: '1.6', maxWidth: '600px' }}>
+            <p className="service-hero__description service-hero__description--centered">
               Content that ranks and converts. We combine keyword research, search intent analysis,
               and editorial quality to create content that search engines and humans love.
             </p>
             
             <div className="wp-flex wp-justify-center wp-gap-4">
-              <Link to="/contact" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: 'var(--spacing-4) var(--spacing-8)', backgroundColor: 'var(--secondary)', color: 'var(--secondary-foreground)', borderRadius: 'var(--radius)', fontFamily: 'var(--font-primary)', fontSize: 'var(--text-base)', fontWeight: 'var(--font-weight-semibold)', textDecoration: 'none', boxShadow: '0 4px 15px rgba(var(--secondary-rgb), 0.3)' }}>
+              <Link to={getPageUrl('contact')} style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: 'var(--spacing-4) var(--spacing-8)', backgroundColor: 'var(--secondary)', color: 'var(--secondary-foreground)', borderRadius: 'var(--radius)', fontFamily: 'var(--font-primary)', fontSize: 'var(--text-base)', fontWeight: 'var(--font-weight-semibold)', textDecoration: 'none', boxShadow: '0 4px 15px rgba(var(--secondary-rgb), 0.3)' }}>
                 Get SEO Content Plan
               </Link>
-              <Link to="/services/content" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: 'var(--spacing-4) var(--spacing-8)', backgroundColor: 'transparent', border: '1px solid var(--border)', color: 'var(--foreground)', borderRadius: 'var(--radius)', fontFamily: 'var(--font-primary)', fontSize: 'var(--text-base)', fontWeight: 'var(--font-weight-medium)', textDecoration: 'none' }}>
+              <Link to={getPageUrl('content')} style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: 'var(--spacing-4) var(--spacing-8)', backgroundColor: 'transparent', border: '1px solid var(--border)', color: 'var(--foreground)', borderRadius: 'var(--radius)', fontFamily: 'var(--font-primary)', fontSize: 'var(--text-base)', fontWeight: 'var(--font-weight-medium)', textDecoration: 'none' }}>
                 All Content Services
               </Link>
             </div>

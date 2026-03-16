@@ -18,7 +18,7 @@
 .wp-block-section-hero__title {
   font-family: var(--wp--preset--font-family--brand-sans);
   font-size: var(--wp--preset--font-size--800);
-  font-weight: 800;
+  font-weight: var(--font-weight-extrabold);
   line-height: var(--line-height-tight);
   margin-bottom: var(--wp--preset--spacing--30);
   color: var(--wp--preset--color--contrast);

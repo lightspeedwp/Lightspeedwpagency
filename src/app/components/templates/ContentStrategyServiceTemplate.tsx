@@ -6,10 +6,12 @@
 
 import { Crosshair, Users, FileText, TrendUp, Calendar, Trophy } from '@phosphor-icons/react';
 import { Link } from 'react-router';
+import { getPageUrl } from '../../data/site-pages';
 import { FeatureList } from '../patterns/FeatureList';
 import { CheckList } from '../patterns/CheckList';
 import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
 import '../../../styles/templates/content-strategy-service-optimized.css';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 
 export const ContentStrategyServiceTemplate = () => {
   const benefits = [
@@ -34,13 +36,14 @@ export const ContentStrategyServiceTemplate = () => {
     <div className="content-strategy-service">
       <section className="content-strategy-service__hero">
         <div className="content-strategy-service__hero-content">
-          <div className="content-strategy-service__breadcrumb">
-            <Link to="/services" className="content-strategy-service__breadcrumb-link">Services</Link>
-            <span className="content-strategy-service__breadcrumb-separator">/</span>
-            <Link to="/services/content" className="content-strategy-service__breadcrumb-link">Content</Link>
-            <span className="content-strategy-service__breadcrumb-separator">/</span>
-            <span className="content-strategy-service__breadcrumb-current">Content Strategy</span>
-          </div>
+          <BreadcrumbPart
+            items={[
+              { label: 'Home', href: '/' },
+              { label: 'Services', href: '/services' },
+              { label: 'Content', href: '/services/content' },
+              { label: 'Content Strategy' },
+            ]}
+          />
           
           <h1 className="content-strategy-service__hero-title">Content Strategy Services</h1>
           
@@ -50,10 +53,10 @@ export const ContentStrategyServiceTemplate = () => {
           </p>
           
           <div className="content-strategy-service__hero-cta">
-            <Link to="/contact" className="content-strategy-service__cta-button content-strategy-service__cta-button--primary">
+            <Link to={getPageUrl('contact')} className="content-strategy-service__cta-button content-strategy-service__cta-button--primary">
               Get Content Strategy
             </Link>
-            <Link to="/services/content" className="content-strategy-service__cta-button content-strategy-service__cta-button--secondary">
+            <Link to={getPageUrl('content')} className="content-strategy-service__cta-button content-strategy-service__cta-button--secondary">
               View Parent Service
             </Link>
           </div>
@@ -112,7 +115,7 @@ export const ContentStrategyServiceTemplate = () => {
           <p className="content-strategy-service__cta-description">
             Get a free content audit and strategy consultation.
           </p>
-          <Link to="/contact" className="content-strategy-service__cta-button content-strategy-service__cta-button--primary">
+          <Link to={getPageUrl('contact')} className="content-strategy-service__cta-button content-strategy-service__cta-button--primary">
             Request Free Audit
           </Link>
         </div>

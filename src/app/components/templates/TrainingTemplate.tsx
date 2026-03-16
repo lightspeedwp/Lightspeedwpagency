@@ -26,6 +26,7 @@ import { Button } from '../blocks/design/Buttons';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { ScrollDownArrow } from '../common/ScrollDownArrow';
 import '../../../styles/templates/page-service-training-optimized.css';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import {
   BookOpen, VideoCamera as Video, Users, Trophy as Award, PlayCircle, Check,
   Lightbulb, Brain, Crosshair as Target, Lightning as Zap, Clock, Calendar
@@ -132,6 +133,15 @@ const trainingData = {
 export function TrainingTemplate() {
   return (
     <>
+      {/* Breadcrumbs */}
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Services', href: '/services' },
+          { label: 'Training' },
+        ]}
+      />
+
       {/* ════════════════════════════════════════
           1. HERO — "The Classroom"
           ════════════════════════════════════════ */}

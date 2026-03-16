@@ -1,4 +1,5 @@
-import { useParams, Navigate, Link } from 'react-router';
+import { Link, Navigate, useParams } from 'react-router';
+import { getPageUrl } from '../../data/site-pages';
 import '../../../styles/templates/portfolio-archive-optimized.css';
 import { slugToPath } from '../../utils/route-map';
 import { Container } from '../common/Container';
@@ -31,7 +32,7 @@ export function PortfolioCategoryArchiveTemplate() {
     return () => clearTimeout(timer);
   }, [slug]);
 
-  if (!slug) return <Navigate to="/work" />;
+  if (!slug) return <Navigate to={getPageUrl('work')} />;
 
   const filteredItems = getPortfolioItemsByCategory(slug);
   
@@ -70,6 +71,7 @@ export function PortfolioCategoryArchiveTemplate() {
               src={item.imageUrl}
               alt={item.title}
               className="portfolio-card__image"
+              loading="lazy"
             />
             <span className="portfolio-card__category-badge">
               {item.category}
@@ -162,7 +164,7 @@ export function PortfolioCategoryArchiveTemplate() {
       <ArchiveCTA ctaData={portfolioPageCTA} />
 
       <FAQSection
-        title="Common Questions"
+        title="Common questions"
         description={`Frequently asked questions about our ${categoryName.toLowerCase()} services.`}
         faqs={portfolioFAQs.slice(0, 3)} 
       />

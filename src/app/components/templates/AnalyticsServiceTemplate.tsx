@@ -20,13 +20,17 @@
  * - Font families: var(--font-primary) and var(--font-secondary) only
  * 
  * Pattern Components:
- * - ✅ FeatureList — Benefits grid (6 items, 3 columns, glow variant)
+ * - FeatureList — Benefits grid (6 items, 3 columns, glow variant)
  * 
- * @migrated March 3, 2026 — Phase 3.1: Migrated inline benefits grid to FeatureList component (~80 lines saved)
+ * BEM: Uses .service-hero, .service-section, .perf-checklist shared blocks
+ *
+ * @see /src/styles/templates/service-hero.css
+ * @see /src/styles/templates/performance-service.css
  */
 
 import { ChartBar, Target, TrendUp, Users, ChartLine, ChartPie, CheckCircle } from '@phosphor-icons/react';
 import { Link } from 'react-router';
+import { getPageUrl } from '../../data/site-pages';
 import { FeatureList } from '../patterns/FeatureList';
 import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
 import { Container } from '../common/Container';
@@ -100,26 +104,26 @@ export const AnalyticsServiceTemplate = () => {
       <JourneyPhaseIndicator currentPhase="ignite" currentServicePage="analytics" />
 
       {/* Hero Section */}
-      <section style={{ position: 'relative', minHeight: '60vh', display: 'flex', alignItems: 'center', backgroundColor: 'var(--background)', overflow: 'hidden' }}>
+      <section className="service-hero" style={{ minHeight: '60vh' }}>
         <div style={{ position: 'absolute', inset: 0, opacity: 0.1, backgroundImage: 'radial-gradient(circle at center, var(--border) 1px, transparent 1px)', backgroundSize: '24px 24px', zIndex: 0 }} aria-hidden="true" />
         
         <Container>
-          <div style={{ position: 'relative', zIndex: 1, maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
+          <div className="service-hero__content service-hero__content--centered" style={{ textAlign: 'center' }}>
             <ScrollReveal animation="fade-up">
-              <h1 style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-h1)', color: 'var(--foreground)', marginBottom: 'var(--spacing-6)' }}>
+              <h1 className="service-hero__title">
                 Analytics & Data Intelligence
               </h1>
               
-              <p style={{ fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-xl)', color: 'var(--muted-foreground)', marginBottom: 'var(--spacing-10)', lineHeight: 1.6 }}>
+              <p className="service-hero__description service-hero__description--centered">
                 Make data-driven decisions with confidence. Our analytics solutions help you understand 
                 your audience, track performance, and optimize for growth with actionable insights.
               </p>
               
               <div className="wp-flex wp-justify-center wp-gap-4 wp-flex-wrap">
-                <Link to="/contact" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: 'var(--spacing-3) var(--spacing-8)', backgroundColor: 'var(--primary)', color: 'var(--primary-foreground)', borderRadius: 'var(--radius)', fontFamily: 'var(--font-secondary)', fontWeight: 'var(--font-weight-bold)', textDecoration: 'none' }}>
+                <Link to={getPageUrl('contact')} className="wp-inline-flex wp-items-center wp-justify-center wc-hero__btn-primary" style={{ borderRadius: 'var(--radius)' }}>
                   Get Analytics Audit
                 </Link>
-                <Link to="/services/ai/search-visibility" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: 'var(--spacing-3) var(--spacing-8)', backgroundColor: 'transparent', color: 'var(--foreground)', border: '1px solid var(--border)', borderRadius: 'var(--radius)', fontFamily: 'var(--font-secondary)', fontWeight: 'var(--font-weight-medium)', textDecoration: 'none' }}>
+                <Link to={getPageUrl('ai-search-visibility')} className="wp-inline-flex wp-items-center wp-justify-center wc-hero__btn-secondary">
                   View Parent Service
                 </Link>
               </div>
@@ -129,12 +133,12 @@ export const AnalyticsServiceTemplate = () => {
       </section>
 
       {/* Benefits Grid */}
-      <section style={{ padding: 'var(--spacing-24) 0', backgroundColor: 'var(--muted)' }}>
+      <section className="service-section service-section--bg-muted">
         <Container>
-          <div style={{ textAlign: 'center', marginBottom: 'var(--spacing-16)' }}>
+          <div className="service-section__header">
             <ScrollReveal animation="fade-up">
-              <h2 style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-h2)', color: 'var(--foreground)', marginBottom: 'var(--spacing-4)' }}>What We Offer</h2>
-              <p style={{ fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-lg)', color: 'var(--muted-foreground)', maxWidth: '600px', margin: '0 auto' }}>
+              <h2 className="service-section__title">What We Offer</h2>
+              <p className="service-section__description">
                 Comprehensive analytics services that turn data into actionable business intelligence
               </p>
             </ScrollReveal>
@@ -152,12 +156,12 @@ export const AnalyticsServiceTemplate = () => {
       </section>
 
       {/* Deliverables */}
-      <section style={{ padding: 'var(--spacing-24) 0', backgroundColor: 'var(--background)' }}>
+      <section className="service-section service-section--bg-background">
         <Container>
-          <div style={{ textAlign: 'center', marginBottom: 'var(--spacing-16)' }}>
+          <div className="service-section__header">
             <ScrollReveal animation="fade-up">
-              <h2 style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-h2)', color: 'var(--foreground)', marginBottom: 'var(--spacing-4)' }}>What You Get</h2>
-              <p style={{ fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-lg)', color: 'var(--muted-foreground)', maxWidth: '600px', margin: '0 auto' }}>
+              <h2 className="service-section__title">What You Get</h2>
+              <p className="service-section__description">
                 Deliverables designed to give you complete visibility into your digital performance
               </p>
             </ScrollReveal>
@@ -166,11 +170,11 @@ export const AnalyticsServiceTemplate = () => {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 'var(--spacing-6)' }}>
             {deliverables.map((deliverable, index) => (
               <ScrollReveal key={index} animation="fade-up" delay={index * 100}>
-                <div style={{ padding: 'var(--spacing-6)', backgroundColor: 'var(--card)', border: '1px solid var(--border)', borderRadius: 'var(--radius-lg)', display: 'flex', alignItems: 'center', gap: 'var(--spacing-4)' }}>
+                <div className="perf-checklist__card" style={{ padding: 'var(--spacing-6)', backgroundColor: 'var(--card)', borderRadius: 'var(--radius-lg)' }}>
                   <div style={{ color: 'var(--primary)', flexShrink: 0 }}>
                     <CheckCircle size={24} weight="fill" />
                   </div>
-                  <span style={{ fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-base)', color: 'var(--foreground)' }}>{deliverable}</span>
+                  <span className="perf-checklist__card-text">{deliverable}</span>
                 </div>
               </ScrollReveal>
             ))}
@@ -179,12 +183,12 @@ export const AnalyticsServiceTemplate = () => {
       </section>
 
       {/* Results */}
-      <section style={{ padding: 'var(--spacing-24) 0', backgroundColor: 'var(--card)' }}>
+      <section className="service-section service-section--bg-card">
         <Container>
-          <div style={{ textAlign: 'center', marginBottom: 'var(--spacing-16)' }}>
+          <div className="service-section__header">
             <ScrollReveal animation="fade-up">
-              <h2 style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-h2)', color: 'var(--foreground)', marginBottom: 'var(--spacing-4)' }}>Proven Results</h2>
-              <p style={{ fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-lg)', color: 'var(--muted-foreground)', maxWidth: '600px', margin: '0 auto' }}>
+              <h2 className="service-section__title">Proven Results</h2>
+              <p className="service-section__description">
                 Real outcomes from our analytics implementations
               </p>
             </ScrollReveal>

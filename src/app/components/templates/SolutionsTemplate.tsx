@@ -49,7 +49,9 @@ import type { Icon } from '@phosphor-icons/react';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { Link } from 'react-router';
 import { slugToPath } from '../../utils/route-map';
+import { getPageUrl } from '../../data/site-pages';
 import { solutions } from '../../data/solutions';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 
 /* ═══════════════════════════════════════════
  * DATA
@@ -200,6 +202,14 @@ export function SolutionsTemplate() {
 
   return (
     <>
+      {/* Breadcrumbs */}
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Solutions' },
+        ]}
+      />
+
       {/* ============================================
           1. FUNKY HERO SECTION
           ============================================ */}
@@ -209,13 +219,6 @@ export function SolutionsTemplate() {
         <Container>
           <ScrollReveal animation="fade-up">
             <div className="solutions-hero__content">
-              {/* Breadcrumbs */}
-              <nav className="solutions-hero__breadcrumbs" aria-label="Breadcrumb">
-                <Link to="/">Home</Link>
-                <CaretRight size={14} />
-                <span aria-current="page">Solutions</span>
-              </nav>
-
               {/* Badge */}
               <div className="solutions-hero__badge">
                 <Sparkle size={14} className="wp-inline wp-mr-2" style={{ verticalAlign: 'middle' }} />

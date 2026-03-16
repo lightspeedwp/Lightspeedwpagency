@@ -25,13 +25,13 @@ export function AISEOTemplate() {
       hero={aiSEOHero}
       heroIcon={MagnifyingGlass}
       stats={aiSEOStats}
-      statsTitle="SEO Intelligence Impact"
+      statsTitle="SEO intelligence impact"
       statsDescription="What AI-driven SEO delivers for your business"
       features={aiSEOFeatures}
-      featuresTitle="AI SEO Capabilities"
+      featuresTitle="AI SEO capabilities"
       featuresDescription="Automated intelligence for every aspect of your SEO strategy"
       useCases={aiSEOUseCases}
-      useCasesTitle="AI SEO for Every Industry"
+      useCasesTitle="AI SEO for every industry"
       useCasesDescription="Tailored SEO automation for your specific needs"
       pricing={aiSEOPricing}
       faqs={aiSEOFAQs}

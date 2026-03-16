@@ -9,6 +9,12 @@
  *
  * Pattern order:
  * Hero -> Stats -> Features -> Use Cases -> Pricing -> FAQs -> CTA
+ *
+ * BEM: .ai-page + .ai-page--{variant} (content | seo | chatbots | analytics)
+ * All hero/button/visual styles via /src/styles/templates/ai-solution-hero.css
+ * Variant scoping overrides --ai-accent / --ai-accent-alt per sub-page.
+ *
+ * @see /src/styles/templates/ai-solution-hero.css
  */
 
 import '../../../styles/templates/page-solution-ai-optimized.css';
@@ -21,10 +27,11 @@ import { FAQSection } from '../patterns/FAQSection';
 import { FunkyCTA } from '../patterns/FunkyCTA';
 import { ArrowRight, type Icon } from '@phosphor-icons/react';
 import { Link } from 'react-router';
+import { slugToPath } from '../../utils/route-map';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { ScrollDownArrow } from '../common/ScrollDownArrow';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { PricingPackage } from '../../data/pricing';
-
 
 import type {
   AIHero,
@@ -98,6 +105,16 @@ export function AISubPageTemplate({
 
   return (
     <div className={`ai-page ai-page--${variant}`}>
+      {/* Breadcrumbs */}
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Solutions', href: '/solutions' },
+          { label: 'AI Integrations', href: '/solutions/ai-integrations' },
+          { label: hero.title },
+        ]}
+      />
+
       {/* ════════════════ HERO ════════════════ */}
       <section className="ai-page__hero">
         <div className="ai-page__hero-grid" />
@@ -124,13 +141,13 @@ export function AISubPageTemplate({
 
                 <div className="wp-flex wp-gap-4">
                   <Link
-                    to={hero.primaryButton.page}
+                    to={slugToPath(hero.primaryButton.page)}
                     className="ai-page__btn-primary"
                   >
                     {hero.primaryButton.text} <ArrowRight size={18} />
                   </Link>
                   <Link
-                    to={hero.secondaryButton.page}
+                    to={slugToPath(hero.secondaryButton.page)}
                     className="ai-page__btn-outline"
                   >
                     {hero.secondaryButton.text}
@@ -206,7 +223,7 @@ export function AISubPageTemplate({
 
       {/* ════════════════ FAQS ════════════════ */}
       <FAQSection
-        title="Frequently Asked Questions"
+        title="Frequently asked questions"
         description={`Common questions about ${hero.title.toLowerCase()}`}
         faqs={faqs}
         variant="muted"

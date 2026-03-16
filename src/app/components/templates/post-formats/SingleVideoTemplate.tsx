@@ -92,7 +92,8 @@ export function SingleVideoTemplate() {
                           <img 
                             src={`https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=400&q=80&auto=format&fit=crop`} 
                             className="wp-block-video-related-item__img" 
-                            alt="Related video" 
+                            alt={`Related video: Advanced WordPress customization part ${i}`}
+                            loading="lazy"
                           />
                         </div>
                         <div>

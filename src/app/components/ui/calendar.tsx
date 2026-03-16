@@ -1,1 +1,5 @@
-export { Calendar, type CalendarProps } from "@/app/components/blocks/forms/Calendar";
+/**
+ * Deprecated — Calendar block not yet implemented.
+ * @see react-day-picker for direct usage.
+ */
+export {};

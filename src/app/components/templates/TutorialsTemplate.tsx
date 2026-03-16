@@ -23,6 +23,7 @@
 import '../../../styles/templates/tutorials-page.css';
 import { useState } from 'react';
 import { Link } from 'react-router';
+import { getPageUrl } from '../../data/site-pages';
 import { Hero } from '../patterns/Hero';
 import { FunkyCTA } from '../patterns/FunkyCTA';
 import { Section } from '../common/Section';
@@ -90,7 +91,7 @@ export function TutorialsTemplate() {
                 {filteredTutorials.map((tutorial) => (
                   <Link
                     key={tutorial.id}
-                    to="/insights"
+                    to={getPageUrl('insights')}
                     className="tutorials__card"
                     aria-label={`${tutorial.title} — ${tutorial.difficulty} level, ${tutorial.readTime} read`}
                   >
@@ -168,7 +169,7 @@ export function TutorialsTemplate() {
           3. CTA
           ============================================ */}
       <FunkyCTA
-        title="Need Hands-On Help?"
+        title="Need hands-on help?"
         description="Our team offers training sessions and workshops tailored to your team's skill level and project goals."
         buttonText="Contact Us"
         buttonPage="contact"

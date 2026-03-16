@@ -19,6 +19,7 @@
  */
 
 import { Link } from 'react-router';
+import { getPageUrl } from '../../data/site-pages';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { ScrollDownArrow } from '../common/ScrollDownArrow';
 import { Container } from '../common/Container';
@@ -36,153 +37,20 @@ import {
   BookOpen,
 } from '@phosphor-icons/react';
 
-/** Content sub-service definitions */
-const contentServices = [
-  {
-    id: 'audit',
-    icon: FileMagnifyingGlass,
-    name: 'Content Audit',
-    description:
-      'Comprehensive inventory and analysis of your existing content to identify performance gaps, redundancies, and optimisation opportunities.',
-    features: [
-      'Complete content inventory',
-      'E-E-A-T quality assessment',
-      'Performance scoring',
-      'Actionable recommendations',
-    ],
-    path: '/services/content/audit',
-  },
-  {
-    id: 'strategy',
-    icon: Target,
-    name: 'Content Strategy',
-    description:
-      'Data-driven content planning with audience research, topic clustering, editorial calendars, and measurable KPIs.',
-    features: [
-      'Audience personas & research',
-      'Content pillar framework',
-      '12-month editorial calendar',
-      'Content governance framework',
-    ],
-    path: '/services/content/strategy',
-  },
-  {
-    id: 'creation',
-    icon: PenNib,
-    name: 'Content Creation',
-    description:
-      'Professional content production — from blog posts and landing pages to whitepapers, case studies, and social media content.',
-    features: [
-      'Blog posts & articles',
-      'Landing page copy',
-      'Whitepapers & case studies',
-      'Social media content',
-    ],
-    path: '/services/content/creation',
-  },
-  {
-    id: 'collection',
-    icon: Camera,
-    name: 'Content Collection',
-    description:
-      'On-site photography, video production, interviews, and asset gathering to build a rich content library.',
-    features: [
-      'Professional photography',
-      'Video production',
-      'SME interview sessions',
-      'User-generated content curation',
-    ],
-    path: '/services/content/collection',
-  },
-  {
-    id: 'copywriting',
-    icon: PencilSimple,
-    name: 'Copywriting & UX Writing',
-    description:
-      'Conversion-focused copywriting for websites, campaigns, and product interfaces that drives action.',
-    features: [
-      'Website copy & headlines',
-      'Email campaign writing',
-      'UX microcopy & CTAs',
-      'Brand voice development',
-    ],
-    path: '/services/content/copywriting',
-  },
-  {
-    id: 'seo-content',
-    icon: MagnifyingGlass,
-    name: 'SEO Content',
-    description:
-      'Keyword-optimised content that ranks in search engines while providing genuine value to your audience.',
-    features: [
-      'Keyword-targeted articles',
-      'Topic cluster content',
-      'Meta & schema writing',
-      'Content refresh & optimisation',
-    ],
-    path: '/services/content/seo-content',
-  },
-  {
-    id: 'governance',
-    icon: ShieldCheck,
-    name: 'Content Governance',
-    description:
-      'Establish and maintain content quality standards, style guides, approval workflows, and compliance frameworks.',
-    features: [
-      'Style guide creation',
-      'Content quality standards',
-      'Approval workflow design',
-      'Compliance & accessibility checks',
-    ],
-    path: '/services/content/governance',
-  },
-];
-
-/** Process steps */
-const processSteps = [
-  {
-    title: 'Discover',
-    description:
-      'We audit your existing content, research your audience, and identify gaps and opportunities in your content landscape.',
-  },
-  {
-    title: 'Plan',
-    description:
-      'A prioritised content strategy with editorial calendars, topic clusters, and clear KPIs tied to business goals.',
-  },
-  {
-    title: 'Create',
-    description:
-      'Our editorial team produces high-quality, SEO-optimised content across all channels — from long-form articles to micro-content.',
-  },
-  {
-    title: 'Optimise',
-    description:
-      'Continuous performance analysis, A/B testing, and content refreshes to maximise engagement and conversions.',
-  },
-];
-
-/* ── Map data to pattern component shapes ── */
-const serviceItems = contentServices.map((s) => ({
-  icon: s.icon,
-  title: s.name,
-  description: s.description,
-  features: s.features,
-  link: s.path,
-  linkText: 'Learn more →',
-}));
-
-const timelineSteps = processSteps.map((s, i) => ({
-  id: `content-process-${i + 1}`,
-  number: String(i + 1),
-  title: s.title,
-  description: s.description,
-  icon: BookOpen,
-}));
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 
 export function ContentServicesLandingTemplate() {
   return (
     <div className="wp-w-full wp-flex wp-flex-col">
+      {/* Breadcrumbs */}
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Services', href: '/services' },
+          { label: 'Content Services' },
+        ]}
+      />
+
       {/* ============================================
           HERO SECTION
           ============================================ */}
@@ -269,7 +137,7 @@ export function ContentServicesLandingTemplate() {
 
             <div className="wp-flex wp-justify-center wp-gap-4">
               <Link
-                to="/contact"
+                to={getPageUrl('contact')}
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',

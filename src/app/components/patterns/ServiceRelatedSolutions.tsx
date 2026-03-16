@@ -28,26 +28,18 @@ export function ServiceRelatedSolutions({
   const gridClass = `wp-grid-${columns}-cols`;
 
   return (
-    <div className="wp-w-full" style={{ padding: 'var(--spacing-16) 0' }}>
+    <div className="wp-w-full wp-py-16">
       
       {/* Section Header */}
       {(heading || subheading) && (
         <div className="wp-flex wp-flex-col wp-items-center wp-justify-center wp-text-center wp-mb-12">
           {heading && (
-            <h2 className="wp-m-0 wp-mb-4" style={{ 
-              fontFamily: 'var(--font-primary)', 
-              fontSize: 'var(--text-h2)', 
-              color: 'var(--foreground)'
-            }}>
+            <h2 className="wp-m-0 wp-mb-4 template-section-header__title template-section-header__title--h2">
               {heading}
             </h2>
           )}
           {subheading && (
-            <p className="wp-m-0 wp-max-w-3xl" style={{ 
-              fontFamily: 'var(--font-secondary)', 
-              fontSize: 'var(--text-lg)', 
-              color: 'var(--muted-foreground)'
-            }}>
+            <p className="wp-m-0 wp-max-w-3xl template-section-header__description template-section-header__description--secondary">
               {subheading}
             </p>
           )}

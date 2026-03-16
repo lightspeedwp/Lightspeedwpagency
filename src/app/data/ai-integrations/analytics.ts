@@ -67,32 +67,32 @@ export const aiAnalyticsStats: AIStat[] = [
 export const aiAnalyticsFeatures: AIFeature[] = [
   {
     icon: ChartLine,
-    title: 'Predictive Traffic',
+    title: 'Predictive traffic',
     description: 'Forecast daily, weekly, and seasonal traffic patterns so you can plan content and campaigns in advance.',
   },
   {
     icon: Users,
-    title: 'Visitor Segmentation',
+    title: 'Visitor segmentation',
     description: 'AI clusters visitors by behaviour, intent, and lifecycle stage for precise targeting and personalisation.',
   },
   {
     icon: FileText,
-    title: 'Content Performance',
+    title: 'Content performance',
     description: 'Identify your best and worst-performing content with AI-scored health reports and improvement suggestions.',
   },
   {
     icon: Crosshair,
-    title: 'Conversion Funnels',
+    title: 'Conversion funnels',
     description: 'AI maps and monitors conversion paths, automatically flagging drop-offs and recommending fixes.',
   },
   {
     icon: Megaphone,
-    title: 'Campaign Attribution',
+    title: 'Campaign attribution',
     description: 'Multi-touch attribution powered by machine learning — see exactly which channels drive results.',
   },
   {
     icon: Database,
-    title: 'Automated Reporting',
+    title: 'Automated reporting',
     description: 'Weekly AI-generated executive reports sent to your inbox, tailored to the metrics that matter to you.',
   },
 ];
@@ -101,25 +101,25 @@ export const aiAnalyticsFeatures: AIFeature[] = [
 
 export const aiAnalyticsUseCases: AIUseCase[] = [
   {
-    title: 'Marketing Teams',
+    title: 'Marketing teams',
     description: 'Replace spreadsheet hell with AI dashboards that surface insights and recommend next actions.',
     industries: ['Agencies', 'In-House', 'Startups'],
     features: ['Campaign Dashboards', 'ROI Tracking', 'Budget Recommendations'],
   },
   {
-    title: 'E-Commerce Analytics',
+    title: 'E-Commerce analytics',
     description: 'Understand purchase behaviour, optimise product pages, and predict inventory needs.',
     industries: ['Retail', 'D2C', 'Subscriptions'],
     features: ['Product Analytics', 'Cart Analysis', 'Revenue Forecasting'],
   },
   {
-    title: 'Content Strategy',
+    title: 'Content strategy',
     description: 'Let AI analyse your content library and tell you exactly what to write, update, or retire.',
     industries: ['Publishing', 'SaaS', 'Education'],
     features: ['Content Scoring', 'Gap Analysis', 'Topic Clustering'],
   },
   {
-    title: 'Executive Reporting',
+    title: 'Executive reporting',
     description: 'Auto-generate board-ready reports with KPI summaries, trends, and strategic recommendations.',
     industries: ['Enterprise', 'Non-Profit', 'Government'],
     features: ['Custom Dashboards', 'PDF Reports', 'Benchmark Comparisons'],
@@ -129,7 +129,7 @@ export const aiAnalyticsUseCases: AIUseCase[] = [
 /* ── Pricing ── */
 
 export const aiAnalyticsPricing: { title: string; description: string; packages: AIPricingPackage[] } = {
-  title: 'Analytics Plans',
+  title: 'Analytics plans',
   description: 'Unlock AI-powered insights at the level your business needs.',
   packages: [
     {
@@ -206,7 +206,7 @@ export const aiAnalyticsFAQs: AIFAQ[] = [
 /* ── CTA ── */
 
 export const aiAnalyticsCTA: AICTA = {
-  title: 'Turn Data Into Your Competitive Advantage',
+  title: 'Turn data into your competitive advantage',
   description:
     'Stop drowning in data and start making confident decisions backed by AI-powered intelligence.',
   buttons: [

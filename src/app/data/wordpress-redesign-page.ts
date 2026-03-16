@@ -30,7 +30,7 @@ export const wpRedesignHero = {
 
 /* ── Pain Points / Challenges ── */
 export const wpRedesignChallenges = {
-  title: 'Is Your Website Holding You Back?',
+  title: 'Is your website holding you back?',
   description: 'These are the most common signs that it is time for a professional redesign.',
   items: [
     'Slow page speeds killing your SEO rankings',
@@ -46,12 +46,12 @@ export const wpRedesignChallenges = {
 
 /* ── Workflow / Process ── */
 export const wpRedesignProcess = {
-  title: 'Our Proven Redesign Workflow',
+  title: 'Our proven redesign workflow',
   description: 'A structured 6-phase process that preserves your SEO equity while modernising everything else.',
   steps: [
     {
       number: '01',
-      title: 'Site Audit & Discovery',
+      title: 'Site audit & discovery',
       icon: MagnifyingGlass,
       description: 'We analyse your current site — content inventory, SEO performance, analytics, and technical debt — to understand what to keep and what to rebuild.',
       deliverables: ['Content audit report', 'SEO baseline metrics', 'Technical debt assessment', 'Stakeholder interviews'],
@@ -59,7 +59,7 @@ export const wpRedesignProcess = {
     },
     {
       number: '02',
-      title: 'Strategy & Content Plan',
+      title: 'Strategy & content plan',
       icon: FileText,
       description: 'Define the information architecture, content strategy, and conversion funnel based on real data from the audit.',
       deliverables: ['Site map & IA document', 'Content migration plan', 'Wireframes & user flows', 'SEO redirect map'],
@@ -67,7 +67,7 @@ export const wpRedesignProcess = {
     },
     {
       number: '03',
-      title: 'Design & Prototyping',
+      title: 'Design & prototyping',
       icon: PenNib,
       description: 'Create a modern, accessible design system with your brand identity, then prototype key pages for approval.',
       deliverables: ['Design system (tokens, components)', 'High-fidelity mockups', 'Interactive prototype', 'Accessibility review'],
@@ -75,7 +75,7 @@ export const wpRedesignProcess = {
     },
     {
       number: '04',
-      title: 'Development & Build',
+      title: 'Development & build',
       icon: Code,
       description: 'Build a custom WordPress block theme with Full Site Editing, migrating your content and preserving SEO equity.',
       deliverables: ['Custom block theme', 'Pattern library', 'Content migration', '301 redirect implementation'],
@@ -91,7 +91,7 @@ export const wpRedesignProcess = {
     },
     {
       number: '06',
-      title: 'Launch & Training',
+      title: 'Launch & training',
       icon: Rocket,
       description: 'Seamless deployment with zero-downtime migration, DNS cutover, team training, and post-launch monitoring.',
       deliverables: ['Production deployment', 'CMS training session', 'Documentation package', '30-day monitoring'],
@@ -106,9 +106,9 @@ export const wpRedesignServices = {
   description: 'Every redesign bundles these core services into one streamlined engagement.',
   items: [
     { icon: MagnifyingGlass, title: 'Discovery & Audit', page: 'discovery', description: 'Comprehensive site audit and stakeholder discovery.' },
-    { icon: PenNib, title: 'Web Design', page: 'design', description: 'Modern responsive design with your brand identity.' },
+    { icon: PenNib, title: 'Web design', page: 'design', description: 'Modern responsive design with your brand identity.' },
     { icon: Code, title: 'WordPress Development', page: 'development', description: 'Custom block theme with FSE architecture.' },
-    { icon: Globe, title: 'Content Migration', page: 'content', description: 'Safe content migration with SEO redirects.' },
+    { icon: Globe, title: 'Content migration', page: 'content', description: 'Safe content migration with SEO redirects.' },
     { icon: Lightning, title: 'Performance', page: 'performance', description: 'Core Web Vitals optimisation for speed.' },
     { icon: Shield, title: 'Security', page: 'security', description: 'Hardened security setup and monitoring.' },
     { icon: ChartBar, title: 'AI Search', page: 'ai-search-visibility', description: 'SEO preservation and enhancement.' },
@@ -126,7 +126,7 @@ export const wpRedesignResults = [
 
 /* ── Pricing ── */
 export const wpRedesignPricing = {
-  title: 'Redesign Packages',
+  title: 'Redesign packages',
   description: 'Transparent pricing based on the scope and complexity of your redesign.',
   packages: [
     {

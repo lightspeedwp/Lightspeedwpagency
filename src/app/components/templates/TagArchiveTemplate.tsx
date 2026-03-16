@@ -187,7 +187,7 @@ export function TagArchiveTemplate({
 
       {/* CTA */}
       <FunkyCTA
-        title="Stay Updated with WordPress Insights"
+        title="Stay updated with WordPress insights"
         description="Subscribe to our newsletter for the latest WordPress development tips, tutorials, and industry news."
         buttonText="Subscribe to Newsletter"
         buttonPage="newsletter-service"

@@ -147,7 +147,7 @@
 }
 
 .about-process__faq-wrapper {
-  max-width: 768px;
+  max-width: var(--wp--style--global--narrow-size);
   margin: 0 auto;
 }
 

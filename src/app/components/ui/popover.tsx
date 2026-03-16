@@ -1,1 +1,5 @@
-export { Popover, PopoverTrigger, PopoverContent } from "@/app/components/blocks/utility/Popover";
+/**
+ * Deprecated — Popover block not yet implemented.
+ * @see @radix-ui/react-popover for direct usage.
+ */
+export {};

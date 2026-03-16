@@ -70,7 +70,7 @@ export const aiLandingStats: AIStat[] = [
 export const aiLandingFeatures: AIFeature[] = [
   {
     icon: Sparkle,
-    title: 'Content Generation',
+    title: 'Content generation',
     description: 'AI-powered blog posts, product descriptions, and marketing copy — on-brand and SEO-ready.',
   },
   {
@@ -80,12 +80,12 @@ export const aiLandingFeatures: AIFeature[] = [
   },
   {
     icon: ChatCentered,
-    title: 'Smart Chatbots',
+    title: 'Smart chatbots',
     description: '24/7 AI assistants that qualify leads, answer FAQs, and guide visitors to conversion.',
   },
   {
     icon: ChartLine,
-    title: 'Predictive Analytics',
+    title: 'Predictive analytics',
     description: 'Machine-learning insights that forecast traffic, identify trends, and recommend actions.',
   },
   {

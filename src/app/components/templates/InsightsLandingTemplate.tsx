@@ -22,9 +22,11 @@
 
 import '../../../styles/templates/page-insights-landing.css';
 import { Link } from 'react-router';
+import { getPageUrl } from '../../data/site-pages';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { ScrollDownArrow } from '../common/ScrollDownArrow';
 import { Container } from '../common/Container';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import {
   BookOpen,
   MagnifyingGlass,
@@ -164,6 +166,14 @@ const featuredTopics = [
 export function InsightsLandingTemplate() {
   return (
     <div className="insights-landing">
+      {/* Breadcrumbs */}
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Insights' },
+        ]}
+      />
+
       {/* ============================================
           HERO SECTION
           ============================================ */}
@@ -188,7 +198,7 @@ export function InsightsLandingTemplate() {
 
             <div className="insights-landing__hero-cta">
               <Link
-                to="/insights"
+                to={getPageUrl('insights')}
                 className="insights-landing__button insights-landing__button--primary"
               >
                 Browse All Insights
@@ -358,7 +368,7 @@ export function InsightsLandingTemplate() {
               and in-depth WordPress insights delivered monthly.
             </p>
             <Link
-              to="/contact"
+              to={getPageUrl('contact')}
               className="insights-landing__button insights-landing__button--cta"
             >
               Subscribe to Newsletter

@@ -266,6 +266,30 @@
 /* Service Template Base (Phase 3.2 — March 2, 2026) */
 @import './templates/service-base.css';
 
+/* Development Service Template (P4.3 BEM — March 16, 2026) */
+@import './templates/development-service.css';
+
+/* Service Hero + Section Shared BEM (Round 3 — March 16, 2026) */
+@import './templates/service-hero.css';
+
+/* WooCommerce Solution BEM (Round 8 — March 16, 2026) */
+@import './templates/woocommerce-solution.css';
+
+/* WordPress Solution BEM (Round 9 — March 16, 2026) */
+@import './templates/wordpress-solution.css';
+
+/* Security Service BEM (Round 9 — March 16, 2026) */
+@import './templates/security-service.css';
+
+/* Performance Service + Pricing Payment BEM (Round 10 — March 16, 2026) */
+@import './templates/performance-service.css';
+
+/* Product Page Base (Phase 4.4 — March 16, 2026) */
+@import './templates/product-base.css';
+
+/* AI Services Landing BEM (apply BEM — March 16, 2026) */
+@import './templates/ai-services-landing.css';
+
 /* Route Bundle Base Files (consolidated from /styles/bundles/ — March 13, 2026)
  * These base files were previously only loaded via bundle imports in css-bundle-loader.ts.
  * Moving them here eliminates ~200 duplicate CSS @import resolutions from bundle files.

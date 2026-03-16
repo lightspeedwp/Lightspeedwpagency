@@ -49,7 +49,7 @@ export function IconLibrary() {
   const breadcrumbs = [
     { label: 'Home', page: 'home' as const },
     { label: 'Developer Tools', page: 'dev-tools' as const },
-    { label: 'Icon Library' },
+    { label: 'Icon library' },
   ];
 
   return (
@@ -60,7 +60,7 @@ export function IconLibrary() {
       <section className="icon-lib__hero">
         <Container>
           <ScrollReveal animation="fade-up">
-            <h1 className="icon-lib__hero-title">Icon Library</h1>
+            <h1 className="icon-lib__hero-title">Icon library</h1>
             <p className="icon-lib__hero-desc">
               Complete Phosphor icon set. Click any icon to copy the import statement.
               Use icons sparingly and semantically.

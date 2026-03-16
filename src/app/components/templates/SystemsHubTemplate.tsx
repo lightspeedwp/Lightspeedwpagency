@@ -29,7 +29,9 @@ import {
 } from '../../data/systems-hub';
 import { serviceTiers } from '../../data/three-tier-model';
 import { slugToPath } from '../../utils/route-map';
+import { getPageUrl } from '../../data/site-pages';
 import '@/styles/templates/systems-hub-template.css';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 
 const iconMap: Record<string, Icon> = {
   Palette,
@@ -42,6 +44,14 @@ const iconMap: Record<string, Icon> = {
 export const SystemsHubTemplate = () => {
   return (
     <div className="systems-hub">
+      {/* Breadcrumbs */}
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Systems' },
+        ]}
+      />
+
       {/* Hero Section */}
       <section className="systems-hub__hero">
         <div className="systems-hub__hero-content">
@@ -176,8 +186,8 @@ export const SystemsHubTemplate = () => {
             <p className="systems-hub__tier-card-description">
               {tierIntegration.foundation.description}
             </p>
-            <Link to="/services" className="systems-hub__tier-card-link">
-              Learn More
+            <Link to={getPageUrl('services')} className="systems-hub__tier-card-link">
+              Explore {serviceTiers[0]?.name || 'Starter'}
               <ArrowRight className="systems-hub__tier-card-link-icon" />
             </Link>
           </div>
@@ -200,8 +210,8 @@ export const SystemsHubTemplate = () => {
             <p className="systems-hub__tier-card-description">
               {tierIntegration.growth.description}
             </p>
-            <Link to="/services" className="systems-hub__tier-card-link">
-              Learn More
+            <Link to={getPageUrl('services')} className="systems-hub__tier-card-link">
+              Explore {serviceTiers[1]?.name || 'Growth'}
               <ArrowRight className="systems-hub__tier-card-link-icon" />
             </Link>
           </div>
@@ -223,8 +233,8 @@ export const SystemsHubTemplate = () => {
             <p className="systems-hub__tier-card-description">
               {tierIntegration.enterprise.description}
             </p>
-            <Link to="/services" className="systems-hub__tier-card-link">
-              Learn More
+            <Link to={getPageUrl('services')} className="systems-hub__tier-card-link">
+              Explore {serviceTiers[2]?.name || 'Enterprise'}
               <ArrowRight className="systems-hub__tier-card-link-icon" />
             </Link>
           </div>

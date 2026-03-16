@@ -19,7 +19,7 @@
 .wp-block-section-cta__title {
   font-family: var(--wp--preset--font-family--brand-sans);
   font-size: var(--wp--preset--font-size--600);
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
   color: var(--wp--preset--color--contrast);
 }
 

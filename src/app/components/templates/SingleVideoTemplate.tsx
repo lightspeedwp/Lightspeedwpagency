@@ -152,7 +152,7 @@ export function SingleVideoTemplate({ slug }: SingleVideoTemplateProps) {
 
       {/* CTA */}
       <FunkyCTA
-        title="Need Custom Training?"
+        title="Need custom training?"
         description="We provide bespoke video training packages for teams adopting WordPress block themes."
         buttonText="Contact Us"
         buttonPage="contact"

@@ -67,12 +67,12 @@ export const aiContentStats: AIStat[] = [
 export const aiContentFeatures: AIFeature[] = [
   {
     icon: FileText,
-    title: 'Blog Post Automation',
+    title: 'Blog post automation',
     description: 'Generate SEO-optimised articles from topic briefs. Includes headings, meta descriptions, and internal links.',
   },
   {
     icon: Sparkle,
-    title: 'Product Descriptions',
+    title: 'Product descriptions',
     description: 'Bulk-create compelling WooCommerce descriptions that convert. Supports variations and A/B testing.',
   },
   {
@@ -87,7 +87,7 @@ export const aiContentFeatures: AIFeature[] = [
   },
   {
     icon: ArrowsClockwise,
-    title: 'Content Refresh',
+    title: 'Content refresh',
     description: 'Automatically identify outdated posts and suggest updates to keep content evergreen and ranking.',
   },
   {
@@ -107,13 +107,13 @@ export const aiContentUseCases: AIUseCase[] = [
     features: ['Bulk Generation', 'A/B Variations', 'SEO Metadata'],
   },
   {
-    title: 'Content Publishers',
+    title: 'Content publishers',
     description: 'Scale editorial output while maintaining quality. AI drafts, humans edit — the perfect workflow.',
     industries: ['Media', 'News', 'Education'],
     features: ['Topic Research', 'Draft Generation', 'Fact Checking'],
   },
   {
-    title: 'Marketing Agencies',
+    title: 'Marketing agencies',
     description: 'Produce client content at scale without growing headcount. White-labelled and on-brand.',
     industries: ['Agencies', 'SaaS', 'Consulting'],
     features: ['Brand Voice Training', 'Campaign Copy', 'Social Content'],
@@ -129,7 +129,7 @@ export const aiContentUseCases: AIUseCase[] = [
 /* ── Pricing ── */
 
 export const aiContentPricing: { title: string; description: string; packages: AIPricingPackage[] } = {
-  title: 'Content Generation Plans',
+  title: 'Content generation plans',
   description: 'Choose the right level of AI content support for your business.',
   packages: [
     {
@@ -204,7 +204,7 @@ export const aiContentFAQs: AIFAQ[] = [
 /* ── CTA ── */
 
 export const aiContentCTA: AICTA = {
-  title: 'Scale Your Content Without Scaling Your Team',
+  title: 'Scale your content without scaling your team',
   description:
     'See how AI content generation can transform your publishing workflow and drive real business results.',
   buttons: [

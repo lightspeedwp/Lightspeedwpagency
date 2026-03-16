@@ -206,7 +206,7 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
       {/* Technology Stack */}
       <TechnologyStack
         technologies={armdTechnologyStack}
-        title="Technology Stack"
+        title="Technology stack"
         description="Modern technologies and tools used to deliver this project"
         groupByCategory={true}
         variant="badges"

@@ -1,6 +1,6 @@
 import '../../../styles/templates/portfolio-tag-archive-optimized.css';
-import { useParams, Navigate, Link } from 'react-router';
-import { slugToPath } from '../../utils/route-map';
+import { Link, Navigate, useParams } from 'react-router';
+import { getPageUrl } from '../../data/site-pages';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
@@ -31,7 +31,7 @@ export function PortfolioTagArchiveTemplate() {
     return () => clearTimeout(timer);
   }, [slug]);
 
-  if (!slug) return <Navigate to="/work" />;
+  if (!slug) return <Navigate to={getPageUrl('work')} />;
 
   const filteredItems = getPortfolioItemsByTag(slug);
   
@@ -70,6 +70,7 @@ export function PortfolioTagArchiveTemplate() {
               src={item.imageUrl}
               alt={item.title}
               className="portfolio-card__image"
+              loading="lazy"
             />
             <span className="portfolio-card__category-badge">
               {item.category}
@@ -158,7 +159,7 @@ export function PortfolioTagArchiveTemplate() {
                 ) : (
                   <div className="archive-empty-state archive-empty-state--col-span">
                     <Paragraph>No projects found with this tag.</Paragraph>
-                    <Link to="/work" className="archive-empty-state__link">
+                    <Link to={getPageUrl('work')} className="archive-empty-state__link">
                       View all projects
                     </Link>
                   </div>
@@ -192,7 +193,7 @@ export function PortfolioTagArchiveTemplate() {
                  <Paragraph className="portfolio-tag-archive__sidebar-desc">
                    Looking for a specific solution? Our team specializes in custom WordPress development.
                  </Paragraph>
-                 <Link to="/contact" className="wp-button wp-button--primary wp-w-full wp-justify-center">
+                 <Link to={getPageUrl('contact')} className="wp-button wp-button--primary wp-w-full wp-justify-center">
                    Contact Us
                  </Link>
               </div>
@@ -205,7 +206,7 @@ export function PortfolioTagArchiveTemplate() {
       <ArchiveCTA ctaData={portfolioPageCTA} />
 
       <FAQSection
-        title="Common Questions"
+        title="Common questions"
         description="Frequently asked questions about our services."
         faqs={portfolioFAQs.slice(0, 3)} 
       />

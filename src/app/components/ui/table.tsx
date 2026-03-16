@@ -1,10 +1,5 @@
-export {
-  Table,
-  TableHeader,
-  TableBody,
-  TableFooter,
-  TableHead,
-  TableRow,
-  TableCell,
-  TableCaption,
-} from "@/app/components/blocks/text/Table";
+/**
+ * Deprecated — Table block not yet implemented.
+ * Use native HTML table with wp-block-table classes.
+ */
+export {};

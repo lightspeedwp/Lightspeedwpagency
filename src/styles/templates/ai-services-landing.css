@@ -1,0 +1,241 @@
+/**
+ * AI Services Landing Template — Hero + Section BEM
+ *
+ * Converts ~40 inline style blocks to BEM classes.
+ * Applies to AIServicesLandingTemplate.tsx hero section.
+ *
+ * BEM naming: .ai-landing__*
+ *
+ * Created: March 16, 2026 — apply BEM to AI Solutions pages
+ *
+ * @see /src/app/components/templates/AIServicesLandingTemplate.tsx
+ */
+
+/* ============================================
+   PAGE WRAPPER
+   ============================================ */
+
+.ai-landing {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+
+.ai-landing__hero {
+  position: relative;
+  padding: var(--spacing-32) 0;
+  background-color: var(--background);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  text-align: center;
+}
+
+/* Background mesh grid */
+.ai-landing__hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(var(--primary-rgb), 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(var(--primary-rgb), 0.1) 1px, transparent 1px);
+  background-size: 40px 40px;
+  z-index: 0;
+}
+
+/* Hero content wrapper */
+.ai-landing__hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  padding: 0 var(--spacing-8);
+}
+
+/* Badge */
+.ai-landing__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2) var(--spacing-4);
+  border-radius: var(--radius-full);
+  background-color: color-mix(in srgb, var(--card) 80%, transparent);
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--spacing-6);
+  box-shadow: 0 0 20px color-mix(in srgb, var(--primary) 20%, transparent);
+  backdrop-filter: blur(10px);
+}
+
+/* Title */
+.ai-landing__title {
+  margin: 0 0 var(--spacing-6) 0;
+  font-family: var(--font-primary);
+  font-size: var(--text-h1);
+  color: var(--foreground);
+  line-height: var(--line-height-tight);
+}
+
+/* Gradient highlight text */
+.ai-landing__highlight {
+  color: transparent;
+  background-image: linear-gradient(90deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-shadow: 0 0 30px color-mix(in srgb, var(--primary) 30%, transparent);
+}
+
+/* Subtitle / description */
+.ai-landing__subtitle {
+  margin: 0 auto var(--spacing-10) auto;
+  font-family: var(--font-secondary);
+  font-size: var(--text-xl);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-comfortable);
+  max-width: 600px;
+}
+
+/* Button group */
+.ai-landing__actions {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-4);
+  flex-wrap: wrap;
+}
+
+/* Primary CTA */
+.ai-landing__btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-4) var(--spacing-8);
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border-radius: var(--radius);
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 15px color-mix(in srgb, var(--primary) 30%, transparent);
+  transition:
+    background-color var(--transition-base) var(--ease-out),
+    box-shadow var(--transition-base) var(--ease-out),
+    transform var(--transition-base) var(--ease-out);
+}
+
+.ai-landing__btn-primary:hover {
+  background-color: var(--primary-dark);
+  box-shadow: 0 6px 25px color-mix(in srgb, var(--primary) 40%, transparent);
+  transform: translateY(-2px);
+}
+
+.ai-landing__btn-primary:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
+
+/* Outline / ghost button */
+.ai-landing__btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-4) var(--spacing-8);
+  background-color: transparent;
+  border: 1px solid var(--border);
+  color: var(--foreground);
+  border-radius: var(--radius);
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+  cursor: pointer;
+  backdrop-filter: blur(5px);
+  transition:
+    border-color var(--transition-base) var(--ease-out),
+    background-color var(--transition-base) var(--ease-out),
+    transform var(--transition-base) var(--ease-out);
+}
+
+.ai-landing__btn-outline:hover {
+  border-color: var(--primary);
+  background-color: color-mix(in srgb, var(--primary) 5%, transparent);
+  transform: translateY(-2px);
+}
+
+.ai-landing__btn-outline:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
+
+/* Scroll-down positioning */
+.ai-landing__scroll-down {
+  position: absolute;
+  bottom: var(--spacing-8);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+/* ============================================
+   CONTENT SECTIONS
+   ============================================ */
+
+.ai-landing__section {
+  padding: var(--spacing-24) 0;
+}
+
+.ai-landing__section--muted {
+  background-color: var(--muted);
+}
+
+.ai-landing__section--bg {
+  background-color: var(--background);
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .ai-landing__btn-primary,
+  .ai-landing__btn-outline {
+    transition: none;
+  }
+
+  .ai-landing__btn-primary:hover,
+  .ai-landing__btn-outline:hover {
+    transform: none;
+  }
+}
+
+/* ============================================
+   RESPONSIVE — Mobile
+   ============================================ */
+
+@media (max-width: 767px) {
+  .ai-landing__hero {
+    padding: var(--spacing-20) 0;
+    min-height: 60vh;
+  }
+
+  .ai-landing__actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .ai-landing__btn-primary,
+  .ai-landing__btn-outline {
+    width: 100%;
+    max-width: 320px;
+  }
+}

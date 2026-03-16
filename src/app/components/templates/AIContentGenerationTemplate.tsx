@@ -25,13 +25,13 @@ export function AIContentGenerationTemplate() {
       hero={aiContentHero}
       heroIcon={PenNib}
       stats={aiContentStats}
-      statsTitle="Content Generation Impact"
+      statsTitle="Content generation impact"
       statsDescription="How AI transforms your content workflow"
       features={aiContentFeatures}
-      featuresTitle="AI Content Capabilities"
+      featuresTitle="AI content capabilities"
       featuresDescription="Everything you need to produce quality content at scale"
       useCases={aiContentUseCases}
-      useCasesTitle="Who Benefits from AI Content?"
+      useCasesTitle="Who benefits from AI content?"
       useCasesDescription="AI-powered content creation across industries"
       pricing={aiContentPricing}
       faqs={aiContentFAQs}

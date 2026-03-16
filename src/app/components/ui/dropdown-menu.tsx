@@ -1,17 +1,6 @@
-export {
-  DropdownMenu,
-  DropdownMenuTrigger,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuCheckboxItem,
-  DropdownMenuRadioItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuShortcut,
-  DropdownMenuGroup,
-  DropdownMenuPortal,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
-  DropdownMenuRadioGroup,
-} from "@/app/components/blocks/utility/DropdownMenu";
+/**
+ * Deprecated — DropdownMenu block proxy.
+ * Use the uppercase DropdownMenu.tsx component directly.
+ * @see /src/app/components/ui/DropdownMenu.tsx
+ */
+export {};

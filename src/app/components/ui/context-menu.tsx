@@ -1,5 +1,5 @@
 /**
- * This file is deprecated and should be deleted.
- * ContextMenu has been removed from the system.
+ * Deprecated — ContextMenu block not yet implemented.
+ * @see @radix-ui/react-context-menu for direct usage.
  */
 export {};

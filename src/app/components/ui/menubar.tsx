@@ -1,18 +1,5 @@
-export {
-  Menubar,
-  MenubarMenu,
-  MenubarTrigger,
-  MenubarContent,
-  MenubarItem,
-  MenubarSeparator,
-  MenubarLabel,
-  MenubarCheckboxItem,
-  MenubarRadioGroup,
-  MenubarRadioItem,
-  MenubarPortal,
-  MenubarSubContent,
-  MenubarSubTrigger,
-  MenubarGroup,
-  MenubarSub,
-  MenubarShortcut,
-} from "@/app/components/blocks/navigation/Menubar";
+/**
+ * Deprecated — Menubar block not yet implemented.
+ * @see @radix-ui/react-menubar for direct usage.
+ */
+export {};

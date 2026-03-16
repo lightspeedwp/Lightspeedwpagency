@@ -50,7 +50,14 @@ export function TestimonialsTemplate() {
     author: t.author,
     role: t.role,
     company: t.company,
-    avatar: t.avatar || `https://images.unsplash.com/photo-${1494790108377 + index}?w=400`,
+    avatar: t.avatar || [
+      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400',
+      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400',
+      'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400',
+      'https://images.unsplash.com/photo-1689600944138-da3b150d9cb8?w=400',
+      'https://images.unsplash.com/photo-1610387694365-19fafcc86d86?w=400',
+      'https://images.unsplash.com/photo-1584940121258-c2553b66a739?w=400',
+    ][index % 6],
     rating: t.rating || 5,
     industry: t.industry?.[0] || 'General',
     service: t.serviceType?.[0] || 'WordPress'
@@ -173,7 +180,7 @@ export function TestimonialsTemplate() {
         <Container>
           <ScrollReveal animation="fade-up">
             <div className="test-page__filter-header">
-              <h2 className="test-page__filter-title">All Client Testimonials</h2>
+              <h2 className="test-page__filter-title">All client testimonials</h2>
               <p className="test-page__filter-desc">
                 Filter by industry or service to find relevant success stories
               </p>
@@ -267,7 +274,7 @@ export function TestimonialsTemplate() {
 
       <FAQSection
         faqs={testimonialPageFAQs}
-        title="Frequently Asked Questions"
+        title="Frequently asked questions"
         description="Common questions about our testimonials and client references"
       />
 

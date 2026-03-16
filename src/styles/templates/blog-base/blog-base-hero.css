@@ -91,7 +91,7 @@
 
   .single-post-hero__title {
     font-size: var(--text-h1);
-    font-weight: 800;
+    font-weight: var(--font-weight-extrabold);
     margin: 0;
     letter-spacing: -0.02em;
     line-height: 1.1;
@@ -120,7 +120,7 @@
   .single-post-hero__category {
     font-family: var(--font-secondary);
     font-size: var(--text-xs);
-    font-weight: 600;
+    font-weight: var(--font-weight-semibold);
     text-transform: uppercase;
     letter-spacing: 0.05em;
     color: var(--primary);

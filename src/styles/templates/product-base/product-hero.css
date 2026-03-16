@@ -1,0 +1,223 @@
+/**
+ * Product Base — Hero + Orbs + Badge (Sub-file 1/2)
+ *
+ * Shared hero structure for plugin/product pages:
+ * page container, parallax hero, gradient overlay,
+ * mesh grid, floating orbs, hero content, badge, title, subtitle.
+ *
+ * BEM naming: .product-hero__*
+ *
+ * @see /src/styles/templates/product-base.css (orchestrator)
+ */
+
+/* ============================================================
+   PAGE CONTAINER
+   ============================================================ */
+
+.product-hero {
+  position: relative;
+  overflow: hidden;
+}
+
+/* ============================================================
+   HERO SECTION (Parallax + Mesh Grid + Floating Orbs)
+   ============================================================ */
+
+.product-hero__section {
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  color: var(--color-white);
+  padding-top: var(--spacing-20);
+}
+
+.product-hero__bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  object-fit: cover;
+  z-index: 0;
+  transform: translateY(0);
+  will-change: transform;
+}
+
+.product-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    var(--overlay-30) 0%,
+    var(--overlay-dark) 55%,
+    var(--background) 100%
+  );
+  z-index: 1;
+}
+
+.product-hero__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--primary-transparent-10) 1px, transparent 1px),
+    linear-gradient(90deg, var(--primary-transparent-10) 1px, transparent 1px);
+  background-size: 60px 60px;
+  z-index: 2;
+  opacity: 0.4;
+}
+
+/* ============================================================
+   FLOATING ORBS (Decorative)
+   ============================================================ */
+
+.product-hero__orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: 2;
+  opacity: 0.5;
+  animation: product-float-orb 12s ease-in-out infinite alternate;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .product-hero__orb {
+    animation: none;
+  }
+}
+
+.product-hero__orb--1 {
+  width: 300px;
+  height: 300px;
+  background: var(--primary);
+  top: 10%;
+  left: -5%;
+  opacity: 0.3;
+}
+
+.product-hero__orb--2 {
+  width: 200px;
+  height: 200px;
+  background: var(--accent);
+  top: 60%;
+  right: -5%;
+  opacity: 0.25;
+  animation-delay: -4s;
+}
+
+.product-hero__orb--3 {
+  width: 150px;
+  height: 150px;
+  background: var(--chart-4);
+  bottom: 10%;
+  left: 30%;
+  opacity: 0.2;
+  animation-delay: -8s;
+}
+
+@keyframes product-float-orb {
+  0%   { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(30px, -20px) scale(1.1); }
+}
+
+/* ============================================================
+   HERO CONTENT
+   ============================================================ */
+
+.product-hero__content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-6);
+  padding: var(--spacing-16) 0;
+}
+
+.product-hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2) var(--spacing-4);
+  background: var(--primary-transparent-10);
+  border: 1px solid var(--primary-transparent-20);
+  border-radius: var(--radius-full);
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--primary);
+  backdrop-filter: blur(8px);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+}
+
+.product-hero__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h1);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-white);
+  line-height: var(--line-height-tight);
+  max-width: 800px;
+}
+
+.product-hero__highlight {
+  background: linear-gradient(135deg, var(--primary), var(--chart-4));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.product-hero__subtitle {
+  font-family: var(--font-secondary);
+  font-size: var(--text-lead);
+  color: var(--muted-foreground);
+  max-width: 600px;
+  line-height: var(--line-height-normal);
+}
+
+/* Hero CTA Buttons */
+.product-hero__actions {
+  display: flex;
+  gap: var(--spacing-4);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.product-hero__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-3) var(--spacing-6);
+  border-radius: var(--radius-lg);
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all var(--transition-base) var(--ease-out);
+}
+
+.product-hero__btn--primary {
+  background: var(--primary);
+  color: var(--primary-foreground);
+  border: none;
+}
+
+.product-hero__btn--primary:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-neon);
+}
+
+.product-hero__btn--outline {
+  background: transparent;
+  color: var(--color-white);
+  border: 1px solid var(--overlay-white-medium);
+}
+
+.product-hero__btn--outline:hover {
+  background: var(--overlay-white-soft);
+  border-color: var(--color-white);
+}

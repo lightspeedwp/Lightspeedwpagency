@@ -142,7 +142,7 @@ export function VideoArchiveTemplate() {
       <Section spacing="md" background="muted">
         <Container>
           <FAQSection
-            title="Video Library FAQ"
+            title="Video library FAQ"
             faqs={videoFAQs}
           />
         </Container>

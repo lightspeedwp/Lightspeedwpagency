@@ -1,1 +1,5 @@
-export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from "@/app/components/blocks/utility/Tooltip";
+/**
+ * Deprecated — Tooltip block not yet implemented.
+ * @see @radix-ui/react-tooltip for direct usage.
+ */
+export {};

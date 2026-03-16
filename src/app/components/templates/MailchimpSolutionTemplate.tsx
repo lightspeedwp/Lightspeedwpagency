@@ -38,6 +38,7 @@ import { FeatureList } from '../patterns/FeatureList';
 import { ProcessTimeline } from '../patterns/ProcessTimeline';
 import { ScrollReveal, StaggerReveal } from '../../hooks/useScrollReveal';
 import { ScrollDownArrow } from '../common/ScrollDownArrow';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 
 import {
   whyMailchimp,
@@ -56,6 +57,15 @@ import {
 export function MailchimpSolutionTemplate() {
   return (
     <>
+      {/* Breadcrumbs */}
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Solutions', href: '/solutions' },
+          { label: 'Mailchimp' },
+        ]}
+      />
+
       {/* ════════════════════════════════════════
           1. HERO — "The Launchpad"
           ════════════════════════════════════════ */}
@@ -346,7 +356,7 @@ export function MailchimpSolutionTemplate() {
           ════════════════════════════════════════ */}
       <FAQSection
         faqs={mailchimpFAQs}
-        title="Growth Engine FAQs"
+        title="Growth engine FAQs"
         description="Everything you need to know about scaling with Mailchimp"
         variant="accordion"
       />

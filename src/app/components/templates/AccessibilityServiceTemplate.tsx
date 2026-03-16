@@ -8,10 +8,12 @@
 
 import { Eye, Ear, Keyboard, Cursor, CheckCircle, Shield } from '@phosphor-icons/react';
 import { Link } from 'react-router';
+import { getPageUrl } from '../../data/site-pages';
 import { FeatureList } from '../patterns/FeatureList';
 import { CheckList } from '../patterns/CheckList';
 import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
 import '../../../styles/templates/accessibility-service-optimized.css';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 
 export const AccessibilityServiceTemplate = () => {
   const benefits = [
@@ -103,13 +105,14 @@ export const AccessibilityServiceTemplate = () => {
       {/* Hero Section */}
       <section className="accessibility-service__hero">
         <div className="accessibility-service__hero-content">
-          <div className="accessibility-service__breadcrumb">
-            <Link to="/services" className="accessibility-service__breadcrumb-link">Services</Link>
-            <span className="accessibility-service__breadcrumb-separator">/</span>
-            <Link to="/services/performance" className="accessibility-service__breadcrumb-link">Performance</Link>
-            <span className="accessibility-service__breadcrumb-separator">/</span>
-            <span className="accessibility-service__breadcrumb-current">Accessibility</span>
-          </div>
+          <BreadcrumbPart
+            items={[
+              { label: 'Home', href: '/' },
+              { label: 'Services', href: '/services' },
+              { label: 'Performance', href: '/services/performance' },
+              { label: 'Accessibility' },
+            ]}
+          />
           
           <h1 className="accessibility-service__hero-title">
             Web Accessibility Services
@@ -121,10 +124,10 @@ export const AccessibilityServiceTemplate = () => {
           </p>
           
           <div className="accessibility-service__hero-cta">
-            <Link to="/contact" className="accessibility-service__cta-button accessibility-service__cta-button--primary">
+            <Link to={getPageUrl('contact')} className="accessibility-service__cta-button accessibility-service__cta-button--primary">
               Get Accessibility Audit
             </Link>
-            <Link to="/services/performance" className="accessibility-service__cta-button accessibility-service__cta-button--secondary">
+            <Link to={getPageUrl('performance')} className="accessibility-service__cta-button accessibility-service__cta-button--secondary">
               View Parent Service
             </Link>
           </div>
@@ -220,7 +223,7 @@ export const AccessibilityServiceTemplate = () => {
           <p className="accessibility-service__cta-description">
             Get a free accessibility audit and discover how to make your website accessible to everyone.
           </p>
-          <Link to="/contact" className="accessibility-service__cta-button accessibility-service__cta-button--primary">
+          <Link to={getPageUrl('contact')} className="accessibility-service__cta-button accessibility-service__cta-button--primary">
             Request Free Audit
           </Link>
         </div>

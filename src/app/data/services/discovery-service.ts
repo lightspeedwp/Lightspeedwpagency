@@ -22,60 +22,60 @@ export const discoveryServiceDetailed: DetailedService = {
   description: 'Aligning stakeholders on business objectives and success metrics.',
   
   whyLightSpeed: {
-    title: 'Why Discovery Matters',
+    title: 'Why discovery matters',
     description: 'Skipping discovery is the leading cause of project failure. Our process ensures we build the right thing, for the right people, for the right reasons.'
   },
   
   subServices: [
     {
       id: 'goal-alignment',
-      title: 'Goal Alignment',
+      title: 'Goal alignment',
       description: 'Aligning stakeholders on business objectives and success metrics.'
     },
     {
       id: 'risk-mitigation',
-      title: 'Risk Mitigation',
+      title: 'Risk mitigation',
       description: 'Identifying technical and operational risks early in the process.'
     },
     {
       id: 'opportunity-spotting',
-      title: 'Opportunity Spotting',
+      title: 'Opportunity spotting',
       description: 'Uncovering hidden opportunities for innovation and competitive advantage.'
     }
   ],
   
   process: {
-    title: 'The Discovery Roadmap',
+    title: 'The discovery roadmap',
     description: 'Our systematic approach to understanding your needs.',
     steps: [
       {
         id: 'stakeholder-interviews',
         number: 1,
-        title: 'Stakeholder Interviews',
+        title: 'Stakeholder interviews',
         description: 'One-on-one sessions with key decision-makers to gather requirements.'
       },
       {
         id: 'user-research',
         number: 2,
-        title: 'User Research',
+        title: 'User research',
         description: 'Analyzing your target audience, their needs, and behaviors.'
       },
       {
         id: 'competitive-audit',
         number: 3,
-        title: 'Competitive Audit',
+        title: 'Competitive audit',
         description: 'Reviewing competitors to identify gaps and best practices.'
       },
       {
         id: 'technical-feasibility',
         number: 4,
-        title: 'Technical Feasibility',
+        title: 'Technical feasibility',
         description: 'Assessing the technology stack and integration requirements.'
       },
       {
         id: 'strategy-roadmap',
         number: 5,
-        title: 'Strategy Roadmap',
+        title: 'Strategy roadmap',
         description: 'Delivering a comprehensive plan for design and development.'
       }
     ]

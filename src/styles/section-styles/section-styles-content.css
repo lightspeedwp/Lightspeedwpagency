@@ -30,8 +30,9 @@
 .section-style-content-default h3,
 .section-style-content-default h4 {
   font-family: var(--font-primary);
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
   color: var(--foreground);
+  letter-spacing: var(--letter-spacing-tight);
   line-height: var(--line-height-snug);
   margin-bottom: var(--spacing-6);
 }
@@ -64,7 +65,7 @@
 .section-style-content-feature h2 {
   font-family: var(--font-primary);
   font-size: var(--text-h2);
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
   color: var(--foreground);
   margin-bottom: var(--spacing-6);
 }
@@ -87,7 +88,7 @@
 .section-style-content-editorial h3,
 .section-style-content-editorial h4 {
   font-family: var(--font-primary);
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
   color: var(--foreground);
   line-height: var(--line-height-snug);
   margin-top: var(--spacing-10);
@@ -126,7 +127,7 @@
 .section-style-testimonial-default h2 {
   font-family: var(--font-primary);
   font-size: var(--text-h2);
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
   color: var(--foreground);
   text-align: center;
   margin-bottom: var(--spacing-12);
@@ -152,7 +153,7 @@
 .section-style-testimonial-default .testimonial-author {
   font-family: var(--font-primary);
   font-size: var(--text-base);
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
   color: var(--foreground);
   margin-bottom: var(--spacing-1);
 }
@@ -190,7 +191,7 @@
 .section-style-testimonial-highlight h2 {
   font-family: var(--font-primary);
   font-size: var(--text-h2);
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
   color: var(--primary-foreground);
   text-align: center;
   margin-bottom: var(--spacing-12);
@@ -210,7 +211,7 @@
 .section-style-testimonial-highlight .testimonial-author {
   font-family: var(--font-primary);
   font-size: var(--text-lg);
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
   color: var(--primary-foreground);
   text-align: center;
 }
@@ -234,7 +235,7 @@
 .section-style-testimonial-grid h2 {
   font-family: var(--font-primary);
   font-size: var(--text-h2);
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
   color: var(--foreground);
   text-align: center;
   margin-bottom: var(--spacing-12);

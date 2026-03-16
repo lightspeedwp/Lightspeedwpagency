@@ -135,7 +135,7 @@
   border-radius: var(--radius-full);
   font-family: var(--font-primary);
   font-size: var(--text-sm);
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
   color: var(--primary);
   backdrop-filter: blur(8px);
   text-transform: uppercase;
@@ -145,7 +145,7 @@
 .lsx-sharing__hero-title {
   font-family: var(--font-primary);
   font-size: var(--text-h1);
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
   color: var(--color-white);
   line-height: var(--line-height-tight);
   max-width: 800px;

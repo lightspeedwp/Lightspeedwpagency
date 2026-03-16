@@ -96,7 +96,7 @@
 .front-page__section-title {
   font-family: var(--font-primary);
   font-size: var(--text-h2);
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
   color: var(--foreground);
   margin-bottom: var(--spacing-4);
 }

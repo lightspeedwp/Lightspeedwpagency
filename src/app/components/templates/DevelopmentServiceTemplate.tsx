@@ -22,47 +22,30 @@
  * - ✅ ServicePricingTimeline — Pricing & timeline section
  * - ✅ RelatedServicesInPhase — Related services navigation
  *
+ * Sub-components:
+ * - DevelopmentLowerSections — Capabilities, Process, Related,
+ *   Pricing, CTA sections
+ *
  * @migrated March 3, 2026 — Migrated inline services grid to FeatureList and inline process timeline to ProcessTimeline components
  */
 
 import { useEffect, useState } from 'react';
 import { Container } from '../common/Container';
 import { Button } from '../blocks/design/Buttons';
-import { FunkyCTA } from '../patterns/FunkyCTA';
-import { FeatureList } from '../patterns/FeatureList';
-import { ProcessTimeline } from '../patterns/ProcessTimeline';
-import { RelatedServicesInPhase } from '../patterns/RelatedServicesInPhase';
-import { IncludedInSolutions } from '../patterns/IncludedInSolutions';
-import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
-import { ServicePricingTimeline } from '../patterns/ServicePricingTimeline';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { JourneyPhaseIndicator } from '../ui/JourneyPhaseIndicator';
 import { 
   developmentServiceHero, 
   developmentServiceOverview, 
-  developmentServices as developmentServiceFeatures, 
-  developmentProcess 
 } from '../../data/development-service-page';
-import { servicePricingTimeline } from '../../data/services';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { ScrollDownArrow } from '../common/ScrollDownArrow';
+import { DevelopmentLowerSections } from './development-service/DevelopmentLowerSections';
 import { 
   Code,
-  Globe,
-  ShoppingCart as ShoppingBag,
-  ArrowsLeftRight as Move,
-  SquaresFour as Layout,
-  Plug,
-  MagnifyingGlass as Search,
-  MapTrifold as Map,
-  Rocket,
-  Shield,
-  TrendUp,
-  CheckCircle,
   Terminal,
   Cpu,
-  Database,
-  HardDrives as Server
+  CheckCircle,
 } from '@phosphor-icons/react';
 
 export function DevelopmentServiceTemplate() {
@@ -72,18 +55,9 @@ export function DevelopmentServiceTemplate() {
     whyLightSpeed: {
       description: developmentServiceOverview.description
     },
-    subServices: developmentServiceFeatures.map((service, i) => ({
-      id: service.slug || `service-${i}`,
-      title: service.title,
-      description: service.description
-    })),
+    subServices: [],
     process: {
-      steps: developmentProcess.map((step, i) => ({
-        id: step.slug || `step-${i}`,
-        number: `${i + 1}`,
-        title: step.title,
-        description: step.description
-      }))
+      steps: []
     },
     relatedServices: [],
     cta: {
@@ -107,27 +81,6 @@ export function DevelopmentServiceTemplate() {
     return () => clearInterval(timer);
   }, []);
 
-  // Icon mapping
-  const serviceIcons: Record<string, any> = {
-    'wordpress-websites': Globe,
-    'woocommerce-stores': ShoppingBag,
-    'migrations': Move,
-    'theme-development': Layout,
-    'plugin-development': Plug,
-    'api-integration': Server,
-    'headless-wordpress': Cpu,
-    'custom-wordpress': Code
-  };
-
-  const processIcons: Record<string, any> = {
-    'architecture': Map,
-    'development': Code,
-    'testing': Search,
-    'deployment': Rocket,
-    'maintenance': Shield,
-    'grow': TrendUp
-  };
-
   return (
     <>
       {/* Breadcrumbs */}
@@ -145,48 +98,48 @@ export function DevelopmentServiceTemplate() {
       {/* ============================================
           HERO SECTION (Terminal)
           ============================================ */}
-      <section style={{ position: 'relative', minHeight: '90vh', display: 'flex', alignItems: 'center', backgroundColor: 'var(--background)', overflow: 'hidden' }}>
+      <section className="dev-service__hero">
         {/* Background Effects */}
-        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.05, backgroundImage: 'linear-gradient(var(--primary) 1px, transparent 1px), linear-gradient(90deg, var(--primary) 1px, transparent 1px)', backgroundSize: '50px 50px', zIndex: 0 }} aria-hidden="true" />
+        <div className="dev-service__hero-grid" aria-hidden="true" />
         
-        <div style={{ position: 'absolute', top: '20%', right: '10%', width: '400px', height: '400px', background: 'radial-gradient(circle, var(--primary) 0%, transparent 70%)', opacity: 0.1, filter: 'blur(40px)', zIndex: 0 }} aria-hidden="true" />
+        <div className="dev-service__hero-orb" aria-hidden="true" />
         
         <Container>
           <ScrollReveal animation="fade-up">
-            <div style={{ position: 'relative', zIndex: 1, maxWidth: '800px', margin: '0 auto' }}>
-              <div style={{ display: 'inline-block', padding: 'var(--spacing-2) var(--spacing-4)', backgroundColor: 'color-mix(in srgb, var(--primary) 10%, transparent)', color: 'var(--primary)', borderRadius: 'var(--radius-full)', fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-sm)', fontWeight: 'var(--font-weight-medium)', border: '1px solid color-mix(in srgb, var(--primary) 30%, transparent)', marginBottom: 'var(--spacing-8)' }}>
+            <div className="dev-service__hero-content">
+              <div className="dev-service__badge">
                 ⚡ Custom WordPress Development
               </div>
               
               {/* Terminal Window */}
-              <div style={{ backgroundColor: 'var(--card)', border: '1px solid var(--border)', borderRadius: 'var(--radius-xl)', overflow: 'hidden', boxShadow: 'var(--shadow-2xl)' }}>
+              <div className="dev-service__terminal">
                 {/* Terminal Header */}
-                <div style={{ backgroundColor: 'color-mix(in srgb, var(--foreground) 5%, transparent)', padding: 'var(--spacing-3) var(--spacing-4)', display: 'flex', alignItems: 'center', borderBottom: '1px solid var(--border)' }}>
-                  <div style={{ display: 'flex', gap: 'var(--spacing-2)' }}>
-                    <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: 'var(--color-terminal-red)' }} />
-                    <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: 'var(--color-terminal-yellow)' }} />
-                    <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: 'var(--color-terminal-green)' }} />
+                <div className="dev-service__terminal-header">
+                  <div className="dev-service__terminal-dots">
+                    <div className="dev-service__terminal-dot dev-service__terminal-dot--red" />
+                    <div className="dev-service__terminal-dot dev-service__terminal-dot--yellow" />
+                    <div className="dev-service__terminal-dot dev-service__terminal-dot--green" />
                   </div>
-                  <div style={{ flex: 1, textAlign: 'center', fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-sm)', color: 'var(--muted-foreground)' }}>
+                  <div className="dev-service__terminal-path">
                     user@lightspeed:~/projects/future
                   </div>
                 </div>
                 
                 {/* Terminal Body */}
-                <div style={{ padding: 'var(--spacing-8) var(--spacing-6)', textAlign: 'left', fontFamily: 'var(--font-secondary)' }}>
-                  <div style={{ color: 'var(--primary)', marginBottom: 'var(--spacing-6)', fontSize: 'var(--text-lg)' }}>
+                <div className="dev-service__terminal-body">
+                  <div className="dev-service__terminal-prompt">
                     $ init_sequence --optimize
                   </div>
                   
-                  <h1 style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-h2)', color: 'var(--foreground)', marginBottom: 'var(--spacing-4)' }}>
+                  <h1 className="dev-service__terminal-heading">
                     {typedText}
-                    <span style={{ display: 'inline-block', width: '10px', height: '1em', backgroundColor: 'var(--primary)', marginLeft: '4px', verticalAlign: 'middle' }} />
+                    <span className="dev-service__terminal-cursor" />
                   </h1>
                   
-                  <p style={{ color: 'var(--muted-foreground)', lineHeight: 1.6, marginBottom: 'var(--spacing-8)', fontSize: 'var(--text-lg)' }}>
+                  <p className="dev-service__terminal-text">
                     {'>'} {data.tagline}
                     <br />
-                    {'>'} System Status: <span style={{ color: 'var(--color-terminal-green)', fontWeight: 'var(--font-weight-bold)' }}>OPTIMAL</span>
+                    {'>'} System Status: <span className="dev-service__terminal-status">OPTIMAL</span>
                   </p>
 
                   <div className="wp-flex wp-gap-4 wp-flex-wrap">
@@ -208,37 +161,37 @@ export function DevelopmentServiceTemplate() {
       {/* ============================================
           OVERVIEW (System Status)
           ============================================ */}
-      <section id="dev-overview" style={{ padding: 'var(--spacing-24) 0', backgroundColor: 'var(--muted)' }}>
+      <section id="dev-overview" className="dev-service__section dev-service__section--alt">
         <Container>
           <div className="wp-grid-2-cols wp-items-center wp-gap-16">
             <ScrollReveal animation="fade-right">
               <div>
-                <div style={{ backgroundColor: 'var(--card)', border: '1px solid var(--border)', borderRadius: 'var(--radius-xl)', padding: 'var(--spacing-8)', position: 'relative', overflow: 'hidden' }}>
-                  <div style={{ position: 'absolute', top: '-20px', right: '-20px', color: 'color-mix(in srgb, var(--primary) 10%, transparent)', zIndex: 0 }}>
+                <div className="dev-service__system-card">
+                  <div className="dev-service__system-card-icon">
                     <Cpu size={180} />
                   </div>
                   
-                  <h3 style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-h3)', color: 'var(--foreground)', marginBottom: 'var(--spacing-6)', display: 'flex', alignItems: 'center', gap: 'var(--spacing-3)', position: 'relative', zIndex: 1 }}>
+                  <h3 className="dev-service__system-title">
                     <Terminal size={24} color="var(--primary)" />
                     System Architecture
                   </h3>
                   
-                  <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 'var(--spacing-4)', position: 'relative', zIndex: 1 }}>
-                    <li style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: 'var(--spacing-4)', borderBottom: '1px solid var(--border)', fontFamily: 'var(--font-secondary)', color: 'var(--muted-foreground)' }}>
+                  <ul className="dev-service__system-list">
+                    <li className="dev-service__system-item">
                       <span>Core Framework</span>
-                      <span style={{ color: 'var(--foreground)', fontWeight: 'var(--font-weight-medium)' }}>WordPress / Headless</span>
+                      <span className="dev-service__system-value">WordPress / Headless</span>
                     </li>
-                    <li style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: 'var(--spacing-4)', borderBottom: '1px solid var(--border)', fontFamily: 'var(--font-secondary)', color: 'var(--muted-foreground)' }}>
+                    <li className="dev-service__system-item">
                       <span>Performance</span>
-                      <span style={{ color: 'var(--foreground)', fontWeight: 'var(--font-weight-medium)' }}>99.9% Uptime</span>
+                      <span className="dev-service__system-value">99.9% Uptime</span>
                     </li>
-                    <li style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: 'var(--spacing-4)', borderBottom: '1px solid var(--border)', fontFamily: 'var(--font-secondary)', color: 'var(--muted-foreground)' }}>
+                    <li className="dev-service__system-item">
                       <span>Security Protocol</span>
-                      <span style={{ color: 'var(--foreground)', fontWeight: 'var(--font-weight-medium)' }}>Enterprise Grade</span>
+                      <span className="dev-service__system-value">Enterprise Grade</span>
                     </li>
-                    <li style={{ display: 'flex', justifyContent: 'space-between', fontFamily: 'var(--font-secondary)', color: 'var(--muted-foreground)' }}>
+                    <li className="dev-service__system-item">
                       <span>Integration</span>
-                      <span style={{ color: 'var(--foreground)', fontWeight: 'var(--font-weight-medium)' }}>API First</span>
+                      <span className="dev-service__system-value">API First</span>
                     </li>
                   </ul>
                 </div>
@@ -247,23 +200,23 @@ export function DevelopmentServiceTemplate() {
 
             <ScrollReveal animation="fade-left">
               <div>
-                <span style={{ display: 'inline-block', color: 'var(--primary)', fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-sm)', fontWeight: 'var(--font-weight-bold)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 'var(--spacing-4)' }}>
+                <span className="dev-service__eyebrow">
                   Why LightSpeed?
                 </span>
-                <h2 style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-h2)', color: 'var(--foreground)', marginBottom: 'var(--spacing-6)' }}>
-                  Code that <span style={{ color: 'transparent', backgroundImage: 'linear-gradient(90deg, var(--primary), var(--secondary))', WebkitBackgroundClip: 'text', backgroundClip: 'text' }}>Scales</span>
+                <h2 className="dev-service__heading">
+                  Code that <span className="dev-service__gradient-text">Scales</span>
                 </h2>
-                <p style={{ fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-lg)', color: 'var(--muted-foreground)', lineHeight: 1.6, marginBottom: 'var(--spacing-8)' }}>
+                <p className="dev-service__description">
                   {data.whyLightSpeed.description}
                 </p>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--spacing-4)' }}>
+                <div className="dev-service__checklist">
                   {[
                     'Clean Architecture',
                     'CI/CD Pipelines',
                     'Automated Testing',
                     'Performance Audits'
                   ].map((item, i) => (
-                    <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-3)', fontFamily: 'var(--font-secondary)', color: 'var(--foreground)' }}>
+                    <div key={i} className="dev-service__check-item">
                       <CheckCircle size={20} color="var(--primary)" weight="fill" />
                       {item}
                     </div>
@@ -275,116 +228,10 @@ export function DevelopmentServiceTemplate() {
         </Container>
       </section>
 
-      {/* ============================================
-          SERVICES GRID (Tech Stack)
-          ============================================ */}
-      <section style={{ padding: 'var(--spacing-24) 0', backgroundColor: 'var(--background)' }}>
-        <Container>
-          <div style={{ textAlign: 'center', marginBottom: 'var(--spacing-16)' }}>
-            <ScrollReveal animation="fade-up">
-              <h2 style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-h2)', color: 'var(--foreground)', marginBottom: 'var(--spacing-4)' }}>
-                <span style={{ color: 'var(--primary)', opacity: 0.5 }}>{'<'}</span>Capabilities<span style={{ color: 'var(--primary)', opacity: 0.5 }}>{'/>'}</span>
-              </h2>
-              <p style={{ fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-lg)', color: 'var(--muted-foreground)', maxWidth: '600px', margin: '0 auto' }}>
-                Full-stack expertise for modern web applications.
-              </p>
-            </ScrollReveal>
-          </div>
-
-          <ScrollReveal animation="fade-up" delay={100}>
-            <FeatureList
-              items={developmentServiceFeatures.map((service) => ({
-                icon: service.icon,
-                title: service.title,
-                description: service.description
-              }))}
-              columns={3}
-              variant="glow"
-              iconSize="md"
-              iconStyle="rounded"
-            />
-          </ScrollReveal>
-        </Container>
-      </section>
-
-      {/* ============================================
-          PROCESS (Execution Pipeline)
-          ============================================ */}
-      <section style={{ padding: 'var(--spacing-24) 0', backgroundColor: 'var(--muted)' }}>
-        <Container>
-          <ScrollReveal animation="fade-up">
-            <ProcessTimeline
-              heading="Execution Pipeline"
-              description="Our systematic approach to deployment."
-              steps={developmentProcess.map((step, i) => ({
-                id: step.slug || `step-${i}`,
-                number: i + 1,
-                title: step.title,
-                description: step.description,
-                icon: step.icon
-              }))}
-              showNumbers={true}
-              orientation="vertical"
-            />
-          </ScrollReveal>
-        </Container>
-      </section>
-
-      {/* ============================================
-          CTA SECTION
-          ============================================ */}
-      {data.relatedServices && data.relatedServices.length > 0 && (
-        <RelatedServicesInPhase
-          title="Related Services"
-          subtitle="Extend your build with these complementary services"
-          services={data.relatedServices}
-        />
-      )}
-      <IncludedInSolutions
-        serviceSlug="development"
-        subtitle="Our development service is included in these complete solution packages"
-      />
-      <ServiceTestimonial
-        serviceSlug="development"
-        subtitle="Hear from clients who built exceptional WordPress experiences with us"
-      />
-      
-      {/* ============================================
-          PRICING & TIMELINE
-          ============================================ */}
-      {servicePricingTimeline.development && (
-        <ScrollReveal animation="fade-up">
-          <section style={{ padding: 'var(--spacing-24) 0', backgroundColor: 'var(--background)' }}>
-            <Container>
-              <ServicePricingTimeline
-                pricing={servicePricingTimeline.development.pricing}
-                timeline={servicePricingTimeline.development.timeline}
-                showPhases={true}
-                showVariables={true}
-              />
-            </Container>
-          </section>
-        </ScrollReveal>
-      )}
-      
-      {/* Related Services in Build Phase */}
-      <RelatedServicesInPhase 
-        currentPhase="build"
-        currentServicePage="development"
-      />
-
-      <FunkyCTA
-        title={data.cta.title}
-        description={data.cta.description}
-        buttonText={data.cta.buttonText}
-        buttonPage={data.cta.buttonPage}
-        benefits={[
-          'Clean, documented codebase',
-          'Automated CI/CD pipelines',
-          'Enterprise-grade security',
-          '99.9% uptime guarantee',
-          'Ongoing maintenance & support'
-        ]}
+      {/* Lower sections extracted for file size compliance */}
+      <DevelopmentLowerSections
+        relatedServices={data.relatedServices}
+        cta={data.cta}
       />
     </>
   );

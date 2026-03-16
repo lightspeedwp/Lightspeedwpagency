@@ -25,7 +25,7 @@ export function SectionStyleExample() {
         <Section sectionStyle="cta-primary">
           <Container>
             <div className="section-content-narrow section-content-layer">
-              <h2>Ready to Transform Your WordPress Site?</h2>
+              <h2>Ready to transform your WordPress site?</h2>
               
               <p className="lead">
                 Get started with our expert WordPress development services today. 
@@ -55,7 +55,7 @@ export function SectionStyleExample() {
         <Section sectionStyle="cta-secondary">
           <Container>
             <div className="section-content-narrow section-content-layer">
-              <h2>Need Help with WordPress?</h2>
+              <h2>Need help with WordPress?</h2>
               
               <p className="lead">
                 Our team of WordPress experts is here to help you build, optimize, 
@@ -79,7 +79,7 @@ export function SectionStyleExample() {
         <Section sectionStyle="cta-accent">
           <Container>
             <div className="section-content-narrow section-content-layer">
-              <h2>Limited Time Offer: 20% Off All Packages</h2>
+              <h2>Limited time offer: 20% off all packages</h2>
               
               <p className="lead">
                 Special offer for new clients. Book a consultation this month 
@@ -164,7 +164,7 @@ export function SectionStyleExample() {
                 <pre className="wp-bg-muted wp-p-4 wp-rounded wp-overflow-auto wp-font-mono wp-text-sm wp-mb-4">
 {`<Section sectionStyle="cta-primary">
   <Container>
-    <h2>Your Heading</h2>
+    <h2>Your heading</h2>
     <p>Your description</p>
     <Button>Your CTA</Button>
   </Container>

@@ -1,9 +1,5 @@
-export {
-  type ChartConfig,
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-  ChartLegend,
-  ChartLegendContent,
-  ChartStyle,
-} from "@/app/components/blocks/data-display/Chart";
+/**
+ * Deprecated — Chart block not yet implemented.
+ * @see recharts for direct usage.
+ */
+export {};

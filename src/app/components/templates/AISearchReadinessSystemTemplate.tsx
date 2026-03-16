@@ -12,7 +12,9 @@ import { Link } from 'react-router';
 import { CaretRight, Sparkle, Check } from '@phosphor-icons/react';
 import { aiSearchReadinessSystem } from '../../data/systems-hub';
 import { serviceTiers } from '../../data/three-tier-model';
+import { getPageUrl } from '../../data/site-pages';
 import '@/styles/templates/ai-search-readiness-system.css';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 
 export const AISearchReadinessSystemTemplate = () => {
   const system = aiSearchReadinessSystem;
@@ -20,13 +22,13 @@ export const AISearchReadinessSystemTemplate = () => {
 
   return (
     <div className="system-page">
-      <nav className="system-page__breadcrumbs">
-        <Link to="/systems" className="system-page__breadcrumb-link">
-          Systems
-        </Link>
-        <CaretRight className="system-page__breadcrumb-separator" />
-        <span className="system-page__breadcrumb-current">AI Search Readiness</span>
-      </nav>
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Systems', href: '/systems' },
+          { label: 'AI Search Readiness' },
+        ]}
+      />
 
       <section className="system-page__hero">
         <div className="system-page__hero-content">
@@ -138,7 +140,7 @@ export const AISearchReadinessSystemTemplate = () => {
                 <h3 className="system-page__tier-name">{tier.name}</h3>
                 <p className="system-page__tier-tagline">{tier.tagline}</p>
                 <p className="system-page__tier-description">{tier.description}</p>
-                <Link to="/services" className="system-page__tier-link">
+                <Link to={getPageUrl('services')} className="system-page__tier-link">
                   Learn More
                   <CaretRight className="system-page__tier-link-icon" />
                 </Link>
@@ -157,7 +159,7 @@ export const AISearchReadinessSystemTemplate = () => {
             Request a free AEO audit to see how schema markup can increase AI search
             visibility by 3-5x and position you as the cited authority.
           </p>
-          <Link to="/contact" className="system-page__cta-button">
+          <Link to={getPageUrl('contact')} className="system-page__cta-button">
             Request an AEO Audit
           </Link>
         </div>

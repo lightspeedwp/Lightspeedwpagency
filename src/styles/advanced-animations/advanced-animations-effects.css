@@ -31,8 +31,8 @@
 .morph-color {
   background: linear-gradient(
     135deg,
-    hsl(var(--primary)),
-    hsl(var(--accent))
+    var(--primary),
+    var(--accent)
   );
   background-size: 200% 200%;
   transition: background-position 0.6s ease;
@@ -52,7 +52,7 @@
 }
 
 .morph-border:hover {
-  border-color: hsl(var(--primary));
+  border-color: var(--primary);
   box-shadow: 0 0 20px color-mix(in srgb, var(--primary) 30%, transparent);
 }
 
@@ -187,9 +187,9 @@
 .text-gradient-animated {
   background: linear-gradient(
     90deg,
-    hsl(var(--primary)),
-    hsl(var(--accent)),
-    hsl(var(--primary))
+    var(--primary),
+    var(--accent),
+    var(--primary)
   );
   background-size: 200% auto;
   background-clip: text;

@@ -1,8 +1,8 @@
 # Routes — Task List
 
 **Category:** Audit  
-**Version:** 1.5.0  
-**Last Updated:** 2026-03-15  
+**Version:** 1.6.0  
+**Last Updated:** 2026-03-16  
 **Status:** Active  
 **Source Report:** `/reports/2026-03/2026-03-15-routes-audit.md`  
 **Trigger:** `routes`
@@ -48,7 +48,7 @@
 
 ### P2 — SiteMap Content Decisions
 
-- [ ] **S2.1:** Decide which utility pages to add to SiteMap — at minimum: `why` landing, `why-choose-us` sub-pages, consultation pages, policy pages (~20 candidates). Thank-you and MailPoet pages should remain excluded.
+- [x] **S2.1:** Added 25 utility pages to SiteMap across 3 new sections: "Why Choose Us" (7 pages), "Consultation & Onboarding" (8 pages), "Policies" (10 pages). Removed duplicates from Core Pages (why-choose-us, privacy-policy, terms-of-service). Thank-you and MailPoet pages excluded as specified. Updated predefinedIds set to prevent double-listing.
 - [x] **S2.2:** Add CSS rules for `.site-map__link--missing` and `.site-map__icon--warning` to `/src/styles/templates/site-map.css` — muted opacity and warning colour for broken links
 
 ### P3 — Stale References Cleanup
@@ -62,7 +62,7 @@
 | Priority | Tasks | Status |
 |---|---|---|
 | P1 (Broken) | 2 | Done |
-| P2 (Missing/Updates) | 9 | 1 Open, 8 Done |
+| P2 (Missing/Updates) | 9 | ~~1 Open,~~ 9 Done |
 | P3 (Cleanup) | 4 | 4 Done |
 | Auto-fixed | 4 | Done |
-| **Total** | **20** | **18 done, 2 open** |
+| **Total** | **20** | **20 done, 0 open** |

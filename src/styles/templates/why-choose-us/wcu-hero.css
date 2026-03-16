@@ -47,7 +47,7 @@
 .wcu__hero-inner {
   position: relative;
   z-index: 1;
-  max-width: 800px;
+  max-width: var(--wp--style--global--narrow-size);
   margin: 0 auto;
   text-align: center;
 }

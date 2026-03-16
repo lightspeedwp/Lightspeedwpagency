@@ -1,0 +1,165 @@
+/**
+ * Why Choose Us — When To Choose Cards
+ *
+ * Sub-file 5/5 of why-choose-us.css
+ * BEM block: .wcu-choose
+ *
+ * Four-column cards showing when to pick each option.
+ * LSX Design card gets a neon-highlighted treatment.
+ */
+
+/* ============================================
+   CHOOSE SECTION WRAPPER
+   ============================================ */
+
+.wcu__choose-section {
+  padding: var(--spacing-16) 0;
+  background: var(--background);
+}
+
+/* ============================================
+   CARD GRID
+   ============================================ */
+
+.wcu-choose__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-6);
+}
+
+@media (min-width: 768px) {
+  .wcu-choose__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .wcu-choose__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ============================================
+   INDIVIDUAL CARD
+   ============================================ */
+
+.wcu-choose__card {
+  padding: var(--spacing-6);
+  border-radius: var(--radius-xl);
+  background: color-mix(in srgb, var(--card) 65%, transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid color-mix(in srgb, var(--border) 30%, transparent);
+  transition: transform var(--transition-slow) ease,
+              border-color var(--transition-slow) ease,
+              box-shadow var(--transition-slow) ease;
+}
+
+.wcu-choose__card:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--neon-color, var(--primary)) 30%, transparent);
+  box-shadow: 0 8px 24px color-mix(in srgb, var(--neon-color, var(--primary)) 10%, transparent);
+}
+
+/* Highlighted card (LSX Design) */
+.wcu-choose__card--highlight {
+  border-color: color-mix(in srgb, var(--neon-color, var(--primary)) 40%, transparent);
+  background: color-mix(in srgb, var(--neon-color, var(--primary)) 6%, var(--card));
+  position: relative;
+}
+
+.wcu-choose__card--highlight::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  background: linear-gradient(90deg, var(--neon-color, var(--primary)), var(--accent));
+}
+
+/* Card header */
+.wcu-choose__card-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  margin-bottom: var(--spacing-5);
+  color: var(--neon-color, var(--primary));
+}
+
+.wcu-choose__card-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+}
+
+/* Points list */
+.wcu-choose__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2-5, var(--spacing-3));
+}
+
+.wcu-choose__list-item {
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  line-height: var(--line-height-normal);
+  color: var(--muted-foreground);
+  padding-left: var(--spacing-5);
+  position: relative;
+}
+
+.wcu-choose__list-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-full);
+  background: color-mix(in srgb, var(--neon-color, var(--primary)) 50%, transparent);
+}
+
+.wcu-choose__card--highlight .wcu-choose__list-item::before {
+  background: var(--neon-color, var(--primary));
+  box-shadow: 0 0 6px color-mix(in srgb, var(--neon-color, var(--primary)) 40%, transparent);
+}
+
+
+/* ============================================
+   DARK MODE
+   ============================================ */
+
+.dark .wcu-choose__card {
+  background: color-mix(in srgb, var(--foreground) 5%, transparent);
+  border-color: color-mix(in srgb, var(--foreground) 10%, transparent);
+}
+
+.dark .wcu-choose__card:hover {
+  background: color-mix(in srgb, var(--foreground) 8%, transparent);
+  border-color: color-mix(in srgb, var(--neon-color, var(--primary)) 40%, transparent);
+}
+
+.dark .wcu-choose__card--highlight {
+  background: color-mix(in srgb, var(--neon-color, var(--primary)) 8%, transparent);
+  border-color: color-mix(in srgb, var(--neon-color, var(--primary)) 35%, transparent);
+}
+
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .wcu-choose__card {
+    transition: none;
+  }
+  .wcu-choose__card:hover {
+    transform: none;
+  }
+}

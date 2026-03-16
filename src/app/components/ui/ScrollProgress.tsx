@@ -30,7 +30,7 @@ export interface ScrollProgressProps {
 }
 
 export const ScrollProgress = ({
-  color = 'hsl(var(--primary))',
+  color = 'var(--primary)',
   height = 3,
 }: ScrollProgressProps) => {
   const [progress, setProgress] = useState(0);

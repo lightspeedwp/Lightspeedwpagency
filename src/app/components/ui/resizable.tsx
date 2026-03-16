@@ -1,1 +1,5 @@
-export { ResizablePanelGroup, ResizablePanel, ResizableHandle } from "@/app/components/blocks/layout/Resizable";
+/**
+ * Deprecated — Resizable block not yet implemented.
+ * @see react-resizable-panels for direct usage.
+ */
+export {};

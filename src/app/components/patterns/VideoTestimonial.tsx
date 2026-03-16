@@ -50,7 +50,7 @@ export interface VideoTestimonialProps {
 
 export function VideoTestimonial({
   videos,
-  heading = 'Video Testimonials',
+  heading = 'Video testimonials',
   description,
   variant = 'grid',
   columns = 2,

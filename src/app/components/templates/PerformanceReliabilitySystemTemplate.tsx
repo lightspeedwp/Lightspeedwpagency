@@ -12,7 +12,9 @@ import { Link } from 'react-router';
 import { CaretRight, Lightning, Check } from '@phosphor-icons/react';
 import { performanceReliabilitySystem } from '../../data/systems-hub';
 import { serviceTiers } from '../../data/three-tier-model';
+import { getPageUrl } from '../../data/site-pages';
 import '@/styles/templates/performance-reliability-system.css';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 
 export const PerformanceReliabilitySystemTemplate = () => {
   const system = performanceReliabilitySystem;
@@ -20,13 +22,13 @@ export const PerformanceReliabilitySystemTemplate = () => {
 
   return (
     <div className="system-page">
-      <nav className="system-page__breadcrumbs">
-        <Link to="/systems" className="system-page__breadcrumb-link">
-          Systems
-        </Link>
-        <CaretRight className="system-page__breadcrumb-separator" />
-        <span className="system-page__breadcrumb-current">Performance Reliability</span>
-      </nav>
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Systems', href: '/systems' },
+          { label: 'Performance Reliability' },
+        ]}
+      />
 
       <section className="system-page__hero">
         <div className="system-page__hero-content">
@@ -137,7 +139,7 @@ export const PerformanceReliabilitySystemTemplate = () => {
                 <h3 className="system-page__tier-name">{tier.name}</h3>
                 <p className="system-page__tier-tagline">{tier.tagline}</p>
                 <p className="system-page__tier-description">{tier.description}</p>
-                <Link to="/services" className="system-page__tier-link">
+                <Link to={getPageUrl('services')} className="system-page__tier-link">
                   Learn More
                   <CaretRight className="system-page__tier-link-icon" />
                 </Link>
@@ -156,7 +158,7 @@ export const PerformanceReliabilitySystemTemplate = () => {
             Request a free performance audit to see how optimization can improve Core Web
             Vitals, boost conversions, and ensure 99.9% uptime.
           </p>
-          <Link to="/contact" className="system-page__cta-button">
+          <Link to={getPageUrl('contact')} className="system-page__cta-button">
             Request a Performance Audit
           </Link>
         </div>

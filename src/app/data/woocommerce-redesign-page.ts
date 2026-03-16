@@ -30,7 +30,7 @@ export const wooRedesignHero = {
 
 /* ── Pain Points ── */
 export const wooRedesignChallenges = {
-  title: 'Is Your Store Losing Sales?',
+  title: 'Is your store losing sales?',
   description: 'These common issues cost WooCommerce stores thousands in lost revenue every month.',
   items: [
     'High cart abandonment rates (industry avg. 70%)',
@@ -46,7 +46,7 @@ export const wooRedesignChallenges = {
 
 /* ── Workflow ── */
 export const wooRedesignProcess = {
-  title: 'Our Store Redesign Workflow',
+  title: 'Our store redesign workflow',
   description: 'A conversion-focused process designed specifically for e-commerce.',
   steps: [
     {
@@ -102,13 +102,13 @@ export const wooRedesignProcess = {
 
 /* ── Included Services ── */
 export const wooRedesignServices = {
-  title: 'Everything Your Store Needs',
+  title: 'Everything your store needs',
   description: 'A complete redesign engagement covering every aspect of your e-commerce experience.',
   items: [
-    { icon: MagnifyingGlass, title: 'Store Audit', page: 'discovery', description: 'Analytics-driven conversion audit.' },
+    { icon: MagnifyingGlass, title: 'Store audit', page: 'discovery', description: 'Analytics-driven conversion audit.' },
     { icon: PenNib, title: 'UX Design', page: 'design', description: 'Conversion-optimised store design.' },
     { icon: Code, title: 'WooCommerce Dev', page: 'development', description: 'Custom block theme development.' },
-    { icon: Package, title: 'Product Migration', page: 'hosting', description: 'Safe product & order migration.' },
+    { icon: Package, title: 'Product migration', page: 'hosting', description: 'Safe product & order migration.' },
     { icon: CreditCard, title: 'Payments', page: 'woocommerce', description: 'Payment gateway integration.' },
     { icon: Truck, title: 'Shipping', page: 'woocommerce', description: 'Shipping rules & automation.' },
     { icon: Lightning, title: 'Performance', page: 'performance', description: 'Sub-second product page loads.' },
@@ -126,7 +126,7 @@ export const wooRedesignResults = [
 
 /* ── Pricing ── */
 export const wooRedesignPricing = {
-  title: 'Store Redesign Packages',
+  title: 'Store redesign packages',
   description: 'Pricing based on product catalog size and integration complexity.',
   packages: [
     {

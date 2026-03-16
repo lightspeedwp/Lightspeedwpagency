@@ -36,7 +36,7 @@ export interface SLA {
 export const guarantees: Guarantee[] = [
   {
     id: 'performance',
-    title: '90+ Lighthouse Score Guarantee',
+    title: '90+ Lighthouse score guarantee',
     description: 'Your site will score 90+ on Google Lighthouse or we\'ll fix it for free.',
     icon: 'Gauge',
     details: [
@@ -51,7 +51,7 @@ export const guarantees: Guarantee[] = [
   
   {
     id: 'accessibility',
-    title: 'WCAG 2.1 AA Compliance',
+    title: 'WCAG 2.1 AA compliance',
     description: 'Your site meets WCAG 2.1 AA standards for accessibility and legal compliance.',
     icon: 'Eye',
     details: [
@@ -67,7 +67,7 @@ export const guarantees: Guarantee[] = [
   
   {
     id: 'uptime',
-    title: '99.9% Uptime Guarantee',
+    title: '99.9% uptime guarantee',
     description: 'Your site stays online and accessible 99.9% of the time.',
     icon: 'Server',
     details: [
@@ -82,7 +82,7 @@ export const guarantees: Guarantee[] = [
   
   {
     id: 'timeline',
-    title: 'On-Time Delivery',
+    title: 'On-time delivery',
     description: 'Your project launches on schedule or you get a discount.',
     icon: 'Clock',
     details: [
@@ -97,7 +97,7 @@ export const guarantees: Guarantee[] = [
   
   {
     id: 'security',
-    title: 'Security Hardening',
+    title: 'Security hardening',
     description: 'Your site is protected with WordPress security best practices.',
     icon: 'Shield',
     details: [
@@ -113,7 +113,7 @@ export const guarantees: Guarantee[] = [
   
   {
     id: 'training',
-    title: 'Comprehensive Training',
+    title: 'Comprehensive training',
     description: 'You\'ll know how to manage your site confidently.',
     icon: 'GraduationCap',
     details: [
@@ -129,7 +129,7 @@ export const guarantees: Guarantee[] = [
   
   {
     id: 'support',
-    title: 'Post-Launch Support',
+    title: 'Post-launch support',
     description: 'We\'re here after launch to help you succeed.',
     icon: 'Headphones',
     details: [
@@ -145,7 +145,7 @@ export const guarantees: Guarantee[] = [
   
   {
     id: 'satisfaction',
-    title: '100% Satisfaction',
+    title: '100% satisfaction',
     description: 'If you\'re not happy, we\'ll make it right.',
     icon: 'ThumbsUp',
     details: [
@@ -319,7 +319,7 @@ export const notCovered = [
  * Money-Back Policy
  */
 export const moneyBack = {
-  title: '30-Day Money-Back Guarantee',
+  title: '30-day money-back guarantee',
   description: 'If we haven\'t delivered what we promised within 30 days of project start, get a full refund.',
   conditions: [
     'Applies only to initial deposit (not full project cost)',

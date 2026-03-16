@@ -167,7 +167,7 @@
   border-radius: var(--radius-md);
   padding-inline: 0.5rem;
   font-size: var(--text-xs); /* 12px - Labels */
-  font-weight: 500; /* medium */
+  font-weight: var(--font-weight-medium); /* medium */
   color: var(--sidebar-foreground);
   opacity: 0.7;
   outline: none;
@@ -199,6 +199,7 @@
 .wp-block-sidebar__group-action:hover {
   background-color: var(--sidebar-accent);
   color: var(--sidebar-accent-foreground);
+  font-weight: var(--font-weight-medium);
 }
 
 /* Sidebar Menu */
@@ -244,7 +245,7 @@
 .wp-block-sidebar__menu-button[data-active="true"] {
   background-color: var(--sidebar-accent);
   color: var(--sidebar-accent-foreground);
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
 }
 
 .wp-block-sidebar__menu-button[data-size="sm"] {

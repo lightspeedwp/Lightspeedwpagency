@@ -12,19 +12,13 @@
  * STRICT DESIGN SYSTEM COMPLIANCE:
  * - Zero Tailwind classes
  * - Zero inline styles (except CSS variable dynamic values)
- * - All styling via @/styles/templates/page-service-performance.css
+ * - All styling via BEM classes in performance-service.css + service-hero.css
  * - Colors mapped to global semantic tokens for auto light/dark
  * - Fonts: var(--font-primary), var(--font-secondary), var(--font-mono) only
  *
- * PATTERN COMPONENTS:
- * - ✅ FeatureList — Performance Features section (glow variant, 4 columns)
- * - ✅ ProcessTimeline — 5-Step Protocol section (vertical orientation)
- * - ✅ FunkyCTA — Final conversion section
- * - ✅ ServiceTestimonial — Testimonial section
- * - ✅ ServicePricingTimeline — Pricing & timeline section
- * - ✅ RelatedServicesInPhase — Related services navigation
+ * BEM Blocks: .perf-hero, .perf-speedometer, .perf-checklist, .perf-comparison
  *
- * @migrated March 3, 2026 — Migrated inline features grid to FeatureList and inline process steps to ProcessTimeline components. Converted all Lucide icons to Phosphor equivalents.
+ * @see /src/styles/templates/performance-service.css
  */
 
 import { Container } from '../common/Container';
@@ -41,17 +35,7 @@ import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { ScrollDownArrow } from '../common/ScrollDownArrow';
 import { 
   Lightning as Zap, 
-  Gauge, 
-  HardDrives as Server, 
-  ChartLineUp as Activity, 
-  ChartBar as BarChart, 
   CheckCircle, 
-  Gear as Settings, 
-  DeviceMobile as Smartphone,
-  Stack as Layers,
-  MagnifyingGlass as Search,
-  Eye,
-  Shield,
 } from '@phosphor-icons/react';
 import { performanceServiceHero, performanceServiceOverview, performanceServiceFeatures, performanceServiceProcess } from '../../data/performance-service-page';
 
@@ -90,47 +74,47 @@ export function PerformanceServiceTemplate() {
       {/* ============================================
           HERO SECTION (Light Speed)
           ============================================ */}
-      <section style={{ position: 'relative', minHeight: '80vh', display: 'flex', alignItems: 'center', backgroundColor: 'var(--background)', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', inset: 0, opacity: 0.05, backgroundImage: 'linear-gradient(45deg, var(--primary) 1px, transparent 1px), linear-gradient(-45deg, var(--primary) 1px, transparent 1px)', backgroundSize: '30px 30px', zIndex: 0 }} aria-hidden="true" />
-        <div style={{ position: 'absolute', top: '20%', left: '10%', width: '400px', height: '400px', background: 'radial-gradient(circle, var(--primary) 0%, transparent 60%)', filter: 'blur(50px)', opacity: 0.15, zIndex: 0 }} aria-hidden="true" />
+      <section className="perf-hero">
+        <div className="perf-hero__grid-bg" aria-hidden="true" />
+        <div className="perf-hero__orb" aria-hidden="true" />
         
         <Container>
-          <div style={{ position: 'relative', zIndex: 1, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 'var(--spacing-16)', alignItems: 'center' }}>
+          <div className="perf-hero__grid">
             <ScrollReveal animation="fade-down">
-              <div style={{ display: 'inline-flex', alignItems: 'center', gap: 'var(--spacing-2)', padding: 'var(--spacing-2) var(--spacing-4)', backgroundColor: 'color-mix(in srgb, var(--primary) 10%, transparent)', color: 'var(--primary)', borderRadius: 'var(--radius-full)', fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-sm)', fontWeight: 'var(--font-weight-bold)', marginBottom: 'var(--spacing-6)' }}>
+              <div className="service-hero__badge service-hero__badge--primary" style={{ fontWeight: 'var(--font-weight-bold)' }}>
                 <Zap size={16} weight="fill" />
                 <span>PERFORMANCE + WCAG COMPLIANCE</span>
               </div>
               
-              <h1 style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-h1)', color: 'var(--foreground)', marginBottom: 'var(--spacing-6)', lineHeight: 1.1 }}>
-                <span style={{ color: 'transparent', backgroundImage: 'linear-gradient(90deg, var(--primary), var(--secondary))', WebkitBackgroundClip: 'text', backgroundClip: 'text' }}>High-Speed</span> <br />
+              <h1 className="service-hero__title">
+                <span className="service-hero__gradient-text">High-Speed</span> <br />
                 Optimization
               </h1>
               
-              <p style={{ fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-xl)', color: 'var(--muted-foreground)', lineHeight: 1.6, marginBottom: 'var(--spacing-10)' }}>
+              <p className="service-hero__description">
                 {data.tagline}
               </p>
             </ScrollReveal>
 
             <ScrollReveal animation="scale" delay={200}>
-              <div style={{ backgroundColor: 'var(--card)', border: '1px solid var(--border)', borderRadius: 'var(--radius-xl)', padding: 'var(--spacing-8)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 'var(--spacing-8)', boxShadow: 'var(--shadow-xl)' }}>
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 'var(--spacing-4)' }}>
-                  <div style={{ width: '160px', height: '160px', borderRadius: '50%', border: 'var(--wp--preset--border-width--8) solid color-mix(in srgb, var(--color-terminal-green) 20%, transparent)', borderTopColor: 'var(--color-terminal-green)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--font-mono)', fontSize: 'var(--text-5xl)', fontWeight: 'var(--font-weight-bold)', color: 'var(--color-terminal-green)', position: 'relative' }}>
+              <div className="perf-speedometer">
+                <div className="perf-speedometer__gauge-wrapper">
+                  <div className="perf-speedometer__gauge">
                     98
                   </div>
-                  <span style={{ fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-sm)', color: 'var(--muted-foreground)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Lighthouse Score</span>
+                  <span className="service-stat__label" style={{ letterSpacing: 'var(--letter-spacing-widest)' }}>Lighthouse Score</span>
                 </div>
                 
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 'var(--spacing-4)', width: '100%' }}>
+                <div className="perf-speedometer__metrics">
                   {[
                     { value: '0.8s', label: 'LCP' },
                     { value: '0ms', label: 'CLS' },
                     { value: '50ms', label: 'TBT' },
                     { value: '100%', label: 'SEO' },
                   ].map((metric) => (
-                    <div key={metric.label} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 'var(--spacing-1)' }}>
-                      <div style={{ fontFamily: 'var(--font-mono)', fontSize: 'var(--text-xl)', fontWeight: 'var(--font-weight-bold)', color: 'var(--foreground)' }}>{metric.value}</div>
-                      <div style={{ fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-xs)', color: 'var(--muted-foreground)' }}>{metric.label}</div>
+                    <div key={metric.label} className="perf-speedometer__metric">
+                      <div className="perf-speedometer__metric-value">{metric.value}</div>
+                      <div className="perf-speedometer__metric-label">{metric.label}</div>
                     </div>
                   ))}
                 </div>
@@ -145,25 +129,25 @@ export function PerformanceServiceTemplate() {
       {/* ============================================
           WHY LIGHTSPEED (Speed Kills Latency)
           ============================================ */}
-      <section style={{ padding: 'var(--spacing-24) 0', backgroundColor: 'var(--muted)' }}>
+      <section className="service-section service-section--bg-muted">
         <Container>
           <div className="wp-grid-2-cols wp-items-center wp-gap-16">
             <ScrollReveal animation="fade-right">
               <div>
-                <h2 style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-h2)', color: 'var(--foreground)', marginBottom: 'var(--spacing-6)' }}>
+                <h2 className="service-section__title" style={{ marginBottom: 'var(--spacing-6)' }}>
                   {data.whyLightSpeed.title}
                 </h2>
-                <p style={{ fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-lg)', color: 'var(--muted-foreground)', lineHeight: 1.6, marginBottom: 'var(--spacing-8)' }}>
+                <p className="service-section__description service-section__description--left" style={{ marginBottom: 'var(--spacing-8)', lineHeight: 'var(--line-height-comfortable)' }}>
                   {data.whyLightSpeed.description}
                 </p>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--spacing-4)' }}>
+                <div className="perf-checklist">
                   {[
                     "Google Core Web Vitals focused",
                     "Server-side caching implementation",
                     "Database optimization & cleanup",
                     "CDN content delivery network"
                   ].map((item, i) => (
-                    <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-3)', fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-lg)', color: 'var(--foreground)' }}>
+                    <div key={i} className="perf-checklist__item">
                       <CheckCircle color="var(--primary)" size={24} weight="fill" />
                       <span>{item}</span>
                     </div>
@@ -173,27 +157,29 @@ export function PerformanceServiceTemplate() {
             </ScrollReveal>
 
             <ScrollReveal animation="fade-left">
-              <div style={{ backgroundColor: 'var(--background)', border: '1px solid var(--border)', borderRadius: 'var(--radius-xl)', padding: 'var(--spacing-8)' }}>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--spacing-6)' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-4)' }}>
-                    <div style={{ fontFamily: 'var(--font-mono)', fontSize: 'var(--text-sm)', color: 'var(--muted-foreground)', width: '40px' }}>3.5s</div>
-                    <div style={{ flex: 1, backgroundColor: 'color-mix(in srgb, var(--color-terminal-red) 20%, transparent)', height: '24px', borderRadius: 'var(--radius-full)', position: 'relative' }}>
-                      <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: '80%', backgroundColor: 'var(--color-terminal-red)', borderRadius: 'var(--radius-full)' }} />
+              <div className="perf-comparison">
+                <div className="perf-comparison__bars">
+                  <div className="perf-comparison__row">
+                    <div className="perf-comparison__time perf-comparison__time--before">3.5s</div>
+                    <div className="perf-comparison__bar-track perf-comparison__bar-track--before">
+                      <div className="perf-comparison__bar-fill perf-comparison__bar-fill--before" />
                     </div>
-                    <div style={{ fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-sm)', color: 'var(--muted-foreground)', width: '60px' }}>Before</div>
+                    <div className="perf-comparison__label perf-comparison__label--before">Before</div>
                   </div>
                   
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-4)' }}>
-                    <div style={{ fontFamily: 'var(--font-mono)', fontSize: 'var(--text-sm)', color: 'var(--color-terminal-green)', fontWeight: 'var(--font-weight-bold)', width: '40px' }}>0.8s</div>
-                    <div style={{ flex: 1, backgroundColor: 'color-mix(in srgb, var(--color-terminal-green) 20%, transparent)', height: '24px', borderRadius: 'var(--radius-full)', position: 'relative' }}>
-                      <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: '20%', backgroundColor: 'var(--color-terminal-green)', borderRadius: 'var(--radius-full)' }} />
+                  <div className="perf-comparison__row">
+                    <div className="perf-comparison__time perf-comparison__time--after">0.8s</div>
+                    <div className="perf-comparison__bar-track perf-comparison__bar-track--after">
+                      <div className="perf-comparison__bar-fill perf-comparison__bar-fill--after" />
                     </div>
-                    <div style={{ fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-sm)', color: 'var(--color-terminal-green)', fontWeight: 'var(--font-weight-bold)', width: '60px' }}>After</div>
+                    <div className="perf-comparison__label perf-comparison__label--after">After</div>
                   </div>
                 </div>
                 
-                <div style={{ marginTop: 'var(--spacing-8)', textAlign: 'center', fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-sm)', color: 'var(--muted-foreground)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
-                  SPEED IMPROVEMENT: <span style={{ color: 'var(--primary)', fontWeight: 'var(--font-weight-bold)' }}>3X FASTER</span>
+                <div className="perf-comparison__result">
+                  <span className="service-stat__label" style={{ letterSpacing: 'var(--letter-spacing-widest)' }}>
+                    SPEED IMPROVEMENT: <span className="perf-comparison__result-highlight">3X FASTER</span>
+                  </span>
                 </div>
               </div>
             </ScrollReveal>
@@ -204,12 +190,12 @@ export function PerformanceServiceTemplate() {
       {/* ============================================
           SERVICES GRID (Features)
           ============================================ */}
-      <section style={{ padding: 'var(--spacing-24) 0', backgroundColor: 'var(--background)' }}>
+      <section className="service-section service-section--bg-background">
         <Container>
-          <div style={{ textAlign: 'center', marginBottom: 'var(--spacing-16)' }}>
+          <div className="service-section__header">
             <ScrollReveal animation="fade-up">
-              <h2 style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-h2)', color: 'var(--foreground)', marginBottom: 'var(--spacing-4)' }}>Performance & Accessibility Features</h2>
-              <p style={{ fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-lg)', color: 'var(--muted-foreground)', maxWidth: '600px', margin: '0 auto' }}>
+              <h2 className="service-section__title">Performance & Accessibility Features</h2>
+              <p className="service-section__description">
                 Comprehensive optimization covering every layer of your stack.
               </p>
             </ScrollReveal>
@@ -234,7 +220,7 @@ export function PerformanceServiceTemplate() {
       {/* ============================================
           PROCESS STEPS (Workflow)
           ============================================ */}
-      <section style={{ padding: 'var(--spacing-24) 0', backgroundColor: 'var(--card)' }}>
+      <section className="service-section service-section--bg-card">
         <Container>
           <ScrollReveal animation="fade-up">
             <ProcessTimeline
@@ -257,7 +243,7 @@ export function PerformanceServiceTemplate() {
       {/* CTA Section */}
       {data.relatedServices && data.relatedServices.length > 0 && (
         <RelatedServicesInPhase
-          title="Related Services"
+          title="Related services"
           subtitle="Maximise site speed with these complementary services"
           services={data.relatedServices}
         />
@@ -272,7 +258,7 @@ export function PerformanceServiceTemplate() {
           ============================================ */}
       {servicePricingTimeline.performance && (
         <ScrollReveal animation="fade-up">
-          <section style={{ padding: 'var(--spacing-24) 0', backgroundColor: 'var(--muted)' }}>
+          <section className="service-section service-section--bg-muted">
             <Container>
               <ServicePricingTimeline
                 pricing={servicePricingTimeline.performance.pricing}

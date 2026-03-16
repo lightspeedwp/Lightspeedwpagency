@@ -86,7 +86,7 @@ export function GettingStartedTemplate() {
           PROCESS TIMELINE
           ============================================ */}
       <ProcessTimeline 
-        title="Your Onboarding Journey"
+        title="Your onboarding journey"
         subtitle="What to expect in the coming weeks"
         steps={onboardingSteps}
       />
@@ -123,7 +123,7 @@ export function GettingStartedTemplate() {
           FAQ SECTION
           ============================================ */}
       <FAQSection 
-        title="Common Questions"
+        title="Common questions"
         subtitle="Everything you need to know about starting your project"
         faqs={onboardingFaqs}
       />

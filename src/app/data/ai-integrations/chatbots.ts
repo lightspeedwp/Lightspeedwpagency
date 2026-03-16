@@ -67,12 +67,12 @@ export const aiChatbotsStats: AIStat[] = [
 export const aiChatbotsFeatures: AIFeature[] = [
   {
     icon: Brain,
-    title: 'Knowledge Base Training',
+    title: 'Knowledge base training',
     description: 'Train your chatbot on your website content, product catalogue, and support docs for accurate, contextual answers.',
   },
   {
     icon: Users,
-    title: 'Lead Qualification',
+    title: 'Lead qualification',
     description: 'Automatically qualify visitors by asking the right questions and routing hot leads to your sales team.',
   },
   {
@@ -82,17 +82,17 @@ export const aiChatbotsFeatures: AIFeature[] = [
   },
   {
     icon: Lightning,
-    title: 'Live Handoff',
+    title: 'Live handoff',
     description: 'Seamless escalation to human agents when the bot reaches its limits — complete with chat history.',
   },
   {
     icon: Megaphone,
-    title: 'Proactive Engagement',
+    title: 'Proactive engagement',
     description: 'Trigger conversations based on visitor behaviour — time on page, exit intent, or specific page visits.',
   },
   {
     icon: Shield,
-    title: 'Privacy Compliant',
+    title: 'Privacy compliant',
     description: 'GDPR and CCPA compliant by design. Conversations are encrypted and anonymisable.',
   },
 ];
@@ -101,25 +101,25 @@ export const aiChatbotsFeatures: AIFeature[] = [
 
 export const aiChatbotsUseCases: AIUseCase[] = [
   {
-    title: 'Customer Support',
+    title: 'Customer support',
     description: 'Handle 80%+ of support queries instantly, freeing your team for complex issues.',
     industries: ['SaaS', 'E-Commerce', 'Services'],
     features: ['FAQ Automation', 'Ticket Creation', 'Knowledge Base'],
   },
   {
-    title: 'Lead Generation',
+    title: 'Lead generation',
     description: 'Convert anonymous visitors into qualified leads with conversational forms and smart routing.',
     industries: ['B2B', 'Real Estate', 'Finance'],
     features: ['Qualification Flows', 'CRM Integration', 'Meeting Booking'],
   },
   {
-    title: 'E-Commerce Assistant',
+    title: 'E-Commerce assistant',
     description: 'Guide shoppers to the right products, answer sizing questions, and recover abandoned carts.',
     industries: ['Fashion', 'Electronics', 'Home'],
     features: ['Product Recommendations', 'Order Tracking', 'Cart Recovery'],
   },
   {
-    title: 'Booking & Reservations',
+    title: 'Booking & reservations',
     description: 'Let visitors book appointments, tours, or tables through natural conversation.',
     industries: ['Tourism', 'Hospitality', 'Healthcare'],
     features: ['Calendar Integration', 'Availability Checks', 'Confirmation Emails'],
@@ -129,7 +129,7 @@ export const aiChatbotsUseCases: AIUseCase[] = [
 /* ── Pricing ── */
 
 export const aiChatbotsPricing: { title: string; description: string; packages: AIPricingPackage[] } = {
-  title: 'Chatbot Plans',
+  title: 'Chatbot plans',
   description: 'Deploy AI chatbots that scale with your business.',
   packages: [
     {
@@ -206,7 +206,7 @@ export const aiChatbotsFAQs: AIFAQ[] = [
 /* ── CTA ── */
 
 export const aiChatbotsCTA: AICTA = {
-  title: 'Never Miss Another Lead',
+  title: 'Never miss another lead',
   description:
     'Deploy an AI chatbot that works while you sleep. Qualify leads, answer questions, and delight visitors 24/7.',
   buttons: [

@@ -28,6 +28,7 @@
 
 import { MagnifyingGlass, TrendUp, Target, ChartBar, FileMagnifyingGlass, Trophy } from '@phosphor-icons/react';
 import { Link } from 'react-router';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { FeatureList } from '../patterns/FeatureList';
 import '../../../styles/templates/seo-service-optimized.css';
 
@@ -116,13 +117,14 @@ export const SEOServiceTemplate = () => {
       {/* Hero Section */}
       <section className="seo-service__hero">
         <div className="seo-service__hero-content">
-          <div className="seo-service__breadcrumb">
-            <Link to="/services" className="seo-service__breadcrumb-link">Services</Link>
-            <span className="seo-service__breadcrumb-separator">/</span>
-            <Link to="/services/ai" className="seo-service__breadcrumb-link">AI Services</Link>
-            <span className="seo-service__breadcrumb-separator">/</span>
-            <span className="seo-service__breadcrumb-current">SEO</span>
-          </div>
+          <BreadcrumbPart
+            items={[
+              { label: 'Home', href: '/' },
+              { label: 'Services', href: '/services' },
+              { label: 'AI Services', href: '/services/ai' },
+              { label: 'SEO' },
+            ]}
+          />
           
           <h1 className="seo-service__hero-title">
             SEO Services
@@ -137,7 +139,7 @@ export const SEOServiceTemplate = () => {
             <Link to="/contact" className="seo-service__cta-button seo-service__cta-button--primary">
               Get SEO Audit
             </Link>
-            <Link to="/services/ai" className="seo-service__cta-button seo-service__cta-button--secondary">
+            <Link to="/services/ai-search-visibility" className="seo-service__cta-button seo-service__cta-button--secondary">
               View AI Services
             </Link>
           </div>

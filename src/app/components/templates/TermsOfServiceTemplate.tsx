@@ -28,6 +28,7 @@ import { Heading } from '../blocks/text/Heading';
 import { Paragraph } from '../blocks/text/Paragraph';
 import { useHeroParallax } from '../../hooks/useHeroParallax';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { FileText, Scales as Scale, Warning as AlertTriangle, CheckCircle, XCircle, Users } from '@phosphor-icons/react';
 
 // Import Mock Data
@@ -41,14 +42,22 @@ export function TermsOfServiceTemplate() {
 
   return (
     <div className="legal-page">
+      {/* Breadcrumbs */}
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Terms of Service' },
+        ]}
+      />
+
       {/* ============================================
           1. HERO SECTION (Parallax + Floating Orbs)
           ============================================ */}
       <section className="legal-page__hero-funky">
         <img
           ref={parallaxRef}
-          src="https://images.unsplash.com/photo-1710915125520-2bb01788996a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMG5lb24lMjBsZWdhbCUyMGRvY3VtZW50JTIwc2hpZWxkfGVufDF8fHx8MTc3MTU4NDYzOXww&ixlib=rb-4.1.0&q=80&w=1080"
-          alt="Abstract neon legal document"
+          src="https://images.unsplash.com/photo-1764258559785-70de78108992?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMG5lb24lMjBjb250cmFjdCUyMGFncmVlbWVudCUyMGRpZ2l0YWx8ZW58MXx8fHwxNzczNjk3NzQzfDA&ixlib=rb-4.1.0&q=80&w=1080"
+          alt="Abstract neon digital contract"
           className="legal-page__hero-bg"
         />
         <div className="legal-page__hero-overlay-funky" />

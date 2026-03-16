@@ -1,0 +1,20 @@
+/**
+ * Product Page Base — Shared structure for plugin/product templates
+ *
+ * Serves: Wetu Importer, LSX Sharing, LSX Search, Publishers
+ * Extracted: March 16, 2026 — Phase 4.4 Product Base Extraction
+ *
+ * Usage: Each product page imports this base and extends with
+ * BEM-scoped overrides using their own prefix (.wetu-importer__*,
+ * .lsx-sharing__*, .lsx-search__*, .publishers__*).
+ *
+ * Naming: .product-hero__*, .product-section__*, .product-card__*
+ *
+ * @see /src/styles/templates/wetu-importer-page.css
+ * @see /src/styles/templates/lsx-sharing-page.css
+ * @see /src/styles/templates/lsx-search-page.css
+ * @see /src/styles/templates/publishers-page.css
+ */
+
+@import './product-base/product-hero.css';
+@import './product-base/product-sections.css';

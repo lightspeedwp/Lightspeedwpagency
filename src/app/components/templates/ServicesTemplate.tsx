@@ -90,7 +90,7 @@ export function ServicesTemplate() {
       {/* Services Grid */}
       <ScrollReveal animation="fade-up">
         <WordPressServices
-          title="What We Do"
+          title="What we do"
           description="Comprehensive WordPress services for every need"
           services={services.map(service => ({
             icon: service.icon,
@@ -112,7 +112,7 @@ export function ServicesTemplate() {
         <Section spacing="xl">
           <Container>
             <ServiceComparisonTable
-              title="Compare Our Services"
+              title="Compare our services"
               description="See what's included in each service offering at a glance."
             />
           </Container>
@@ -122,7 +122,7 @@ export function ServicesTemplate() {
       {/* Why Choose Us */}
       <ScrollReveal animation="fade-up">
         <WhyChooseUs
-          title="Why Choose LightSpeed?"
+          title="Why choose LightSpeed?"
           description="Your trusted WordPress partner"
           reasons={benefits}
           columns={3}
@@ -135,19 +135,11 @@ export function ServicesTemplate() {
         <Container>
           <ScrollReveal animation="fade-up">
             <div className="wp-flex wp-flex-col wp-items-center wp-justify-center wp-text-center wp-mb-12">
-              <h2 className="wp-m-0 wp-mb-4" style={{ 
-                fontFamily: 'var(--font-primary)', 
-                fontSize: 'var(--text-h2)', 
-                color: 'var(--foreground)'
-              }}>
+              <h2 className="wp-m-0 wp-mb-4 template-section-header__title template-section-header__title--h2">
                 How We Work
               </h2>
 
-              <p className="wp-m-0 wp-max-w-2xl" style={{ 
-                fontFamily: 'var(--font-secondary)', 
-                fontSize: 'var(--text-lg)', 
-                color: 'var(--muted-foreground)'
-              }}>
+              <p className="wp-m-0 wp-max-w-2xl template-section-header__description template-section-header__description--secondary">
                 Our streamlined process from start to finish
               </p>
             </div>
@@ -164,19 +156,11 @@ export function ServicesTemplate() {
         <Container>
           <ScrollReveal animation="fade-up">
             <div className="wp-flex wp-flex-col wp-items-center wp-justify-center wp-text-center wp-mb-12">
-              <h2 className="wp-m-0 wp-mb-4" style={{ 
-                fontFamily: 'var(--font-primary)', 
-                fontSize: 'var(--text-h2)', 
-                color: 'var(--foreground)'
-              }}>
+              <h2 className="wp-m-0 wp-mb-4 template-section-header__title template-section-header__title--h2">
                 Industries We Serve
               </h2>
 
-              <p className="wp-m-0 wp-max-w-2xl" style={{ 
-                fontFamily: 'var(--font-secondary)', 
-                fontSize: 'var(--text-lg)', 
-                color: 'var(--muted-foreground)'
-              }}>
+              <p className="wp-m-0 wp-max-w-2xl template-section-header__description template-section-header__description--secondary">
                 Experience across diverse sectors
               </p>
             </div>
@@ -186,22 +170,10 @@ export function ServicesTemplate() {
             {industries.map((industry, index) => (
               <ScrollReveal key={index} animation="fade-up" delay={index * 50}>
                 <div
-                  className="wp-flex wp-items-center wp-gap-3 wp-p-6"
-                  style={{
-                    backgroundColor: 'var(--card)',
-                    borderRadius: 'var(--radius)',
-                    border: '1px solid var(--border)',
-                    boxShadow: 'var(--shadow-sm)',
-                    transition: 'transform var(--transition-base), box-shadow var(--transition-base)'
-                  }}
+                  className="industry-card"
                 >
                   <CheckCircle size={24} weight="duotone" color="var(--primary)" className="shrink-0" />
-                  <span style={{ 
-                    fontFamily: 'var(--font-primary)', 
-                    fontSize: 'var(--text-base)', 
-                    fontWeight: 'var(--font-weight-medium)',
-                    color: 'var(--card-foreground)'
-                  }}>
+                  <span className="industry-card__label">
                     {industry}
                   </span>
                 </div>
@@ -232,19 +204,11 @@ export function ServicesTemplate() {
           <div className="wp-max-w-4xl wp-mx-auto">
             <ScrollReveal animation="fade-up">
               <div className="wp-flex wp-flex-col wp-items-center wp-justify-center wp-text-center wp-mb-12">
-                <h2 className="wp-m-0 wp-mb-4" style={{ 
-                  fontFamily: 'var(--font-primary)', 
-                  fontSize: 'var(--text-h2)', 
-                  color: 'var(--foreground)'
-                }}>
-                  Frequently Asked Questions
+                <h2 className="wp-m-0 wp-mb-4 template-section-header__title template-section-header__title--h2">
+                  Frequently asked questions
                 </h2>
 
-                <p className="wp-m-0 wp-max-w-2xl" style={{ 
-                  fontFamily: 'var(--font-secondary)', 
-                  fontSize: 'var(--text-lg)', 
-                  color: 'var(--muted-foreground)'
-                }}>
+                <p className="wp-m-0 wp-max-w-2xl template-section-header__description template-section-header__description--secondary">
                   Common questions about our services
                 </p>
               </div>

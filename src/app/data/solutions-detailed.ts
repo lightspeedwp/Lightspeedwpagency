@@ -89,7 +89,7 @@ export const woocommerceSolutionDetailed: DetailedSolution = {
   },
   
   approach: {
-    title: 'Our Commerce-First Approach',
+    title: 'Our commerce-first approach',
     description: 'We don\'t just build stores; we build revenue engines.',
     steps: [
       {
@@ -99,12 +99,12 @@ export const woocommerceSolutionDetailed: DetailedSolution = {
       },
       {
         number: 2,
-        title: 'Custom Development',
+        title: 'Custom development',
         description: 'Building a bespoke theme and functionality tailored to your unique products.'
       },
       {
         number: 3,
-        title: 'Performance Tuning',
+        title: 'Performance tuning',
         description: 'Optimizing for Core Web Vitals to ensure instant load times even with thousands of products.'
       },
       {
@@ -122,32 +122,32 @@ export const woocommerceSolutionDetailed: DetailedSolution = {
   
   features: [
     {
-      title: 'Custom Product Experience',
+      title: 'Custom product experience',
       description: 'Showcase your products with interactive galleries, 360 views, and custom configurators.',
       icon: ShoppingBag
     },
     {
-      title: 'Frictionless Checkout',
+      title: 'Frictionless checkout',
       description: 'Streamlined one-page checkout with Apple Pay, Google Pay, and localized payment options.',
       icon: CreditCard
     },
     {
-      title: 'Smart Logistics',
+      title: 'Smart logistics',
       description: 'Automated shipping calculations, tracking updates, and inventory synchronization.',
       icon: Truck
     },
     {
-      title: 'Conversion Analytics',
+      title: 'Conversion analytics',
       description: 'Deep insights into shopper behavior, cart abandonment, and sales performance.',
       icon: ChartBar
     },
     {
-      title: 'Global Scale',
+      title: 'Global scale',
       description: 'Multi-currency, multi-language support to sell to customers around the world.',
       icon: Globe
     },
     {
-      title: 'Enterprise Security',
+      title: 'Enterprise security',
       description: 'PCI-DSS compliance, fraud protection, and automated backups to keep your data safe.',
       icon: ShieldCheck
     }

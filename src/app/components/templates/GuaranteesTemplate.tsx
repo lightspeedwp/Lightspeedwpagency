@@ -108,7 +108,7 @@ export function GuaranteesTemplate() {
         <Container>
           <ScrollReveal animation="fade-up">
             <div className="guar__section-header">
-              <h2 className="guar__section-title">Our Core Guarantees</h2>
+              <h2 className="guar__section-title">Our core guarantees</h2>
               <p className="guar__section-desc">
                 Every guarantee is backed by real commitments, not empty promises
               </p>

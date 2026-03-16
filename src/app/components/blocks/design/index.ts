@@ -16,7 +16,7 @@ export { Badge } from './Badge';
 export type { BadgeProps } from './Badge';
 
 // Buttons block
-export { Buttons, ButtonBlock, Button } from './Buttons';
+export { Buttons, Button } from './Buttons';
 export type { ButtonsProps, ButtonProps } from './Buttons';
 
 // Card block

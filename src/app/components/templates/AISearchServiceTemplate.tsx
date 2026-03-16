@@ -221,7 +221,7 @@ export function AISearchServiceTemplate() {
           ══════════════════════════════════════════ */}
       <RelatedServicesGrid
         currentServiceSlug="ai-search-visibility"
-        title="Related Services"
+        title="Related services"
       />
 
       {/* ══════════════════════════════════════════

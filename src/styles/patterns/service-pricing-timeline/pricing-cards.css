@@ -27,7 +27,7 @@
 
 .service-pricing__header h2 {
   margin-bottom: var(--spacing-4);
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
 }
 
 .service-pricing__header p {
@@ -53,25 +53,25 @@
 .service-pricing__card {
   background: linear-gradient(
     135deg,
-    hsl(var(--card) / 0.6) 0%,
-    hsl(var(--card) / 0.4) 100%
+    color-mix(in srgb, var(--card) 60%, transparent) 0%,
+    color-mix(in srgb, var(--card) 40%, transparent) 100%
   );
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid hsl(var(--border) / 0.3);
+  border: 1px solid color-mix(in srgb, var(--border) 30%, transparent);
   border-radius: var(--radius-lg);
-  padding: var(--spacing-8);
+  overflow: hidden;
   box-shadow: 
-    0 4px 16px hsl(var(--foreground) / 0.05),
-    inset 0 1px 0 hsl(var(--foreground) / 0.05);
+    0 4px 16px color-mix(in srgb, var(--foreground) 5%, transparent),
+    inset 0 1px 0 color-mix(in srgb, var(--foreground) 5%, transparent);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .service-pricing__card:hover {
   transform: translateY(-4px);
   box-shadow: 
-    0 8px 24px hsl(var(--foreground) / 0.1),
-    inset 0 1px 0 hsl(var(--foreground) / 0.1);
+    0 8px 24px color-mix(in srgb, var(--foreground) 10%, transparent),
+    inset 0 1px 0 color-mix(in srgb, var(--foreground) 10%, transparent);
 }
 
 /* ============================================
@@ -84,17 +84,17 @@
   gap: var(--spacing-4);
   margin-bottom: var(--spacing-6);
   padding-bottom: var(--spacing-6);
-  border-bottom: 1px solid hsl(var(--border) / 0.3);
+  border-bottom: 1px solid color-mix(in srgb, var(--border) 30%, transparent);
 }
 
 .service-pricing__icon {
-  color: hsl(var(--primary));
+  color: var(--primary);
   flex-shrink: 0;
 }
 
 .service-pricing__card-header h3 {
   margin: 0;
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
 }
 
 /* ============================================
@@ -112,7 +112,7 @@
 
 .service-pricing__price-min,
 .service-pricing__price-max {
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
   line-height: 1.2;
 }
 
@@ -144,12 +144,12 @@
 }
 
 .service-pricing__duration-number {
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
   line-height: 1;
 }
 
 .service-pricing__duration-unit {
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
   opacity: 0.8;
 }
 
@@ -160,12 +160,12 @@
 .service-pricing__phases {
   margin-top: var(--spacing-8);
   padding-top: var(--spacing-6);
-  border-top: 1px solid hsl(var(--border) / 0.3);
+  border-top: 1px solid color-mix(in srgb, var(--border) 30%, transparent);
 }
 
 .service-pricing__phases h4 {
   margin: 0 0 var(--spacing-6) 0;
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
 }
 
 .service-pricing__phase {
@@ -186,9 +186,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   flex-shrink: 0;
-  box-shadow: 0 2px 8px hsl(var(--primary) / 0.3);
+  box-shadow: 0 2px 8px color-mix(in srgb, var(--primary) 30%, transparent);
 }
 
 .service-pricing__phase-content {
@@ -196,7 +196,7 @@
 }
 
 .service-pricing__phase-name {
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
   margin-bottom: var(--spacing-1);
   line-height: 1.4;
 }
@@ -214,13 +214,13 @@
 .service-pricing__includes {
   margin-top: var(--spacing-8);
   padding-top: var(--spacing-6);
-  border-top: 1px solid hsl(var(--border) / 0.3);
+  border-top: 1px solid color-mix(in srgb, var(--border) 30%, transparent);
 }
 
 .service-pricing__variables h4,
 .service-pricing__includes h4 {
   margin: 0 0 var(--spacing-4) 0;
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
 }
 
 .service-pricing__variables ul,
@@ -242,8 +242,8 @@
   content: '•';
   position: absolute;
   left: 0;
-  color: hsl(var(--primary));
-  font-weight: 700;
+  color: var(--primary);
+  font-weight: var(--font-weight-bold);
 }
 
 .service-pricing__includes li {
@@ -254,7 +254,7 @@
 }
 
 .service-pricing__check-icon {
-  color: hsl(var(--primary));
+  color: var(--primary);
   flex-shrink: 0;
   margin-top: 2px;
 }
@@ -268,11 +268,11 @@
   padding: var(--spacing-10);
   background: linear-gradient(
     135deg,
-    hsl(var(--muted) / 0.5) 0%,
-    hsl(var(--muted) / 0.3) 100%
+    color-mix(in srgb, var(--muted) 50%, transparent) 0%,
+    color-mix(in srgb, var(--muted) 30%, transparent) 100%
   );
   border-radius: var(--radius-lg);
-  border: 1px solid hsl(var(--border) / 0.3);
+  border: 1px solid color-mix(in srgb, var(--border) 30%, transparent);
 }
 
 .service-pricing__cta-text {
@@ -281,4 +281,15 @@
   margin-left: auto;
   margin-right: auto;
   line-height: 1.6;
+}
+
+/* ============================================
+   TIMELINE DURATION
+   ============================================ */
+
+.service-pricing__timeline-duration {
+  font-family: var(--font-primary);
+  font-size: var(--text-h3);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
 }

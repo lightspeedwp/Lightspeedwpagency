@@ -25,13 +25,13 @@ export function AIAnalyticsTemplate() {
       hero={aiAnalyticsHero}
       heroIcon={ChartLine}
       stats={aiAnalyticsStats}
-      statsTitle="Analytics Impact"
+      statsTitle="Analytics impact"
       statsDescription="What AI-powered analytics delivers for your business"
       features={aiAnalyticsFeatures}
-      featuresTitle="AI Analytics Capabilities"
+      featuresTitle="AI analytics capabilities"
       featuresDescription="Turn raw data into strategic decisions automatically"
       useCases={aiAnalyticsUseCases}
-      useCasesTitle="AI Analytics Use Cases"
+      useCasesTitle="AI analytics use cases"
       useCasesDescription="Data intelligence for every department and industry"
       pricing={aiAnalyticsPricing}
       faqs={aiAnalyticsFAQs}

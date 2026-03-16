@@ -19,12 +19,14 @@
 
 import { Stack, Palette, Code, BookOpen, Lightning, Trophy, Compass, FrameCorners } from '@phosphor-icons/react';
 import { Link } from 'react-router';
+import { getPageUrl } from '../../data/site-pages';
 import { Container } from '../common/Container';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { ServiceCapabilitiesGrid } from '../patterns/ServiceCapabilitiesGrid';
 import { AgencyStats } from '../patterns/AgencyStats';
 import { CheckList } from '../patterns/CheckList';
 import { FunkyCTA } from '../patterns/FunkyCTA';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 
 export const DesignSystemsServiceTemplate = () => {
   const benefits = [
@@ -47,6 +49,16 @@ export const DesignSystemsServiceTemplate = () => {
 
   return (
     <div className="wp-w-full wp-flex wp-flex-col" data-service="design-systems">
+      {/* Breadcrumbs */}
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Services', href: '/services' },
+          { label: 'Design', href: '/services/design' },
+          { label: 'Design Systems' },
+        ]}
+      />
+
       {/* ============================================
           HERO SECTION
           ============================================ */}
@@ -79,23 +91,6 @@ export const DesignSystemsServiceTemplate = () => {
 
         <div style={{ position: 'relative', zIndex: 1, maxWidth: '800px', padding: '0 var(--spacing-8)' }}>
           <ScrollReveal animation="fade-down">
-            <div style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: 'var(--spacing-2)',
-              fontFamily: 'var(--font-secondary)',
-              fontSize: 'var(--text-sm)',
-              color: 'var(--muted-foreground)',
-              marginBottom: 'var(--spacing-6)'
-            }}>
-              <Link to="/services" style={{ color: 'inherit', textDecoration: 'none', transition: 'color var(--transition-base)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--muted-foreground)'}>Services</Link>
-              <span style={{ color: 'var(--border)' }}>/</span>
-              <Link to="/services/design" style={{ color: 'inherit', textDecoration: 'none', transition: 'color var(--transition-base)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--muted-foreground)'}>Design</Link>
-              <span style={{ color: 'var(--border)' }}>/</span>
-              <span style={{ color: 'var(--primary)', fontWeight: 'var(--font-weight-medium)' }}>Design Systems</span>
-            </div>
-            
             <h1 style={{
               margin: '0 0 var(--spacing-6) 0',
               fontFamily: 'var(--font-primary)',
@@ -128,7 +123,7 @@ export const DesignSystemsServiceTemplate = () => {
             
             <div className="wp-flex wp-justify-center wp-gap-4">
               <Link
-                to="/contact"
+                to={getPageUrl('contact')}
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
@@ -147,7 +142,7 @@ export const DesignSystemsServiceTemplate = () => {
                 Build Design System
               </Link>
               <Link
-                to="/services/design"
+                to={getPageUrl('design')}
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',

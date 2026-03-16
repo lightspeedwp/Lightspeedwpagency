@@ -1,0 +1,340 @@
+/**
+ * Development Service Template Styles
+ *
+ * BEM Block: .dev-service
+ * Terminal-themed hero, system architecture card, capabilities section.
+ * All values via CSS variables — zero hardcoded values.
+ *
+ * @see DevelopmentServiceTemplate.tsx
+ */
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+
+.dev-service__hero {
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  background-color: var(--background);
+  overflow: hidden;
+}
+
+.dev-service__hero-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.05;
+  background-image: var(--gradient-grid-primary);
+  background-size: 50px 50px;
+  z-index: 0;
+}
+
+.dev-service__hero-orb {
+  position: absolute;
+  top: 20%;
+  right: 10%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+  opacity: 0.1;
+  filter: blur(40px);
+  z-index: 0;
+}
+
+.dev-service__hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: var(--wp--style--global--content-size);
+  margin: 0 auto;
+}
+
+/* ============================================
+   BADGE (pill label)
+   ============================================ */
+
+.dev-service__badge {
+  display: inline-block;
+  padding: var(--spacing-2) var(--spacing-4);
+  background-color: color-mix(in srgb, var(--primary) 10%, transparent);
+  color: var(--primary);
+  border-radius: var(--radius-full);
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  border: 1px solid color-mix(in srgb, var(--primary) 30%, transparent);
+  margin-bottom: var(--spacing-8);
+}
+
+/* ============================================
+   TERMINAL WINDOW
+   ============================================ */
+
+.dev-service__terminal {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-2xl);
+}
+
+.dev-service__terminal-header {
+  background-color: color-mix(in srgb, var(--foreground) 5%, transparent);
+  padding: var(--spacing-3) var(--spacing-4);
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+}
+
+.dev-service__terminal-dots {
+  display: flex;
+  gap: var(--spacing-2);
+}
+
+.dev-service__terminal-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: var(--radius-full);
+}
+
+.dev-service__terminal-dot--red {
+  background-color: var(--color-terminal-red);
+}
+
+.dev-service__terminal-dot--yellow {
+  background-color: var(--color-terminal-yellow);
+}
+
+.dev-service__terminal-dot--green {
+  background-color: var(--color-terminal-green);
+}
+
+.dev-service__terminal-path {
+  flex: 1;
+  text-align: center;
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+}
+
+.dev-service__terminal-body {
+  padding: var(--spacing-8) var(--spacing-6);
+  text-align: left;
+  font-family: var(--font-secondary);
+}
+
+.dev-service__terminal-prompt {
+  color: var(--primary);
+  margin-bottom: var(--spacing-6);
+  font-size: var(--text-lg);
+}
+
+.dev-service__terminal-heading {
+  font-family: var(--font-primary);
+  font-size: var(--text-h2);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-4);
+}
+
+.dev-service__terminal-cursor {
+  display: inline-block;
+  width: 10px;
+  height: 1em;
+  background-color: var(--primary);
+  margin-left: var(--spacing-1);
+  vertical-align: middle;
+}
+
+.dev-service__terminal-text {
+  color: var(--muted-foreground);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--spacing-8);
+  font-size: var(--text-lg);
+}
+
+.dev-service__terminal-status {
+  color: var(--color-terminal-green);
+  font-weight: var(--font-weight-bold);
+}
+
+/* ============================================
+   SECTIONS
+   ============================================ */
+
+.dev-service__section {
+  padding: var(--spacing-24) 0;
+  background-color: var(--background);
+}
+
+.dev-service__section--alt {
+  background-color: var(--muted);
+}
+
+/* ============================================
+   SYSTEM ARCHITECTURE CARD
+   ============================================ */
+
+.dev-service__system-card {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-8);
+  position: relative;
+  overflow: hidden;
+}
+
+.dev-service__system-card-icon {
+  position: absolute;
+  top: calc(-1 * var(--spacing-5));
+  right: calc(-1 * var(--spacing-5));
+  color: color-mix(in srgb, var(--primary) 10%, transparent);
+  z-index: 0;
+}
+
+.dev-service__system-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h3);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-6);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  position: relative;
+  z-index: 1;
+}
+
+.dev-service__system-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  position: relative;
+  z-index: 1;
+}
+
+.dev-service__system-item {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: var(--spacing-4);
+  border-bottom: 1px solid var(--border);
+  font-family: var(--font-secondary);
+  color: var(--muted-foreground);
+}
+
+.dev-service__system-item:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.dev-service__system-value {
+  color: var(--foreground);
+  font-weight: var(--font-weight-medium);
+}
+
+/* ============================================
+   EYEBROW + HEADINGS
+   ============================================ */
+
+.dev-service__eyebrow {
+  display: inline-block;
+  color: var(--primary);
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-widest);
+  margin-bottom: var(--spacing-4);
+}
+
+.dev-service__heading {
+  font-family: var(--font-primary);
+  font-size: var(--text-h2);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-6);
+}
+
+.dev-service__gradient-text {
+  color: transparent;
+  background-image: var(--gradient-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.dev-service__description {
+  font-family: var(--font-secondary);
+  font-size: var(--text-lg);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--spacing-8);
+}
+
+/* ============================================
+   CAPABILITIES HEADER
+   ============================================ */
+
+.dev-service__capabilities-header {
+  text-align: center;
+  margin-bottom: var(--spacing-16);
+}
+
+.dev-service__capabilities-header .dev-service__heading {
+  margin-bottom: var(--spacing-4);
+}
+
+.dev-service__capabilities-header .dev-service__description {
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0;
+}
+
+.dev-service__code-tag {
+  color: var(--primary);
+  opacity: 0.5;
+}
+
+/* ============================================
+   CHECKLIST (2-column grid)
+   ============================================ */
+
+.dev-service__checklist {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-4);
+}
+
+.dev-service__check-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  font-family: var(--font-secondary);
+  color: var(--foreground);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 767px) {
+  .dev-service__hero {
+    min-height: 70vh;
+  }
+
+  .dev-service__hero-orb {
+    width: 250px;
+    height: 250px;
+  }
+
+  .dev-service__checklist {
+    grid-template-columns: 1fr;
+  }
+
+  .dev-service__terminal-heading {
+    font-size: var(--text-h3);
+  }
+}

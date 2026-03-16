@@ -198,7 +198,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 'tour-operator-2-1-release',
     slug: 'tour-operator-2-1-release',
-    title: 'Tour Operator 2.1 Release',
+    title: 'Tour Operator 2.1 release',
     excerpt: 'Announcing the latest release of our Tour Operator plugin with new features, performance improvements, and enhanced compatibility with the latest WordPress version.',
     featuredImage: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1200',
     author: 'ash-shaw',
@@ -211,7 +211,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 'design-to-launch-bugherd-webinar',
     slug: 'design-to-launch-bugherd-webinar',
-    title: 'From Design to Launch: Recap of webinar with BugHerd',
+    title: 'From design to launch: recap of webinar with BugHerd',
     excerpt: 'Key takeaways from our collaborative webinar with BugHerd, covering best practices for streamlining the website design and development process from concept to launch.',
     featuredImage: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=1200',
     author: 'lourens-visser',
@@ -241,7 +241,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 'migrating-50-sites-block-themes',
     slug: 'migrating-50-sites-block-themes',
-    title: 'How We Migrated 50+ Sites to WordPress Block Themes',
+    title: 'How we migrated 50+ sites to WordPress block themes',
     excerpt: 'A case study on LightSpeed\'s large-scale migration project — lessons learnt, tooling decisions, and the repeatable process we developed for converting classic themes to modern block themes.',
     content: 'Over the past 18 months, our team has migrated more than 50 client websites from classic PHP-based themes to modern WordPress block themes. This was not a simple find-and-replace exercise. Each migration involved auditing existing content, mapping custom fields to block attributes, rebuilding templates in the Full Site Editor, and ensuring zero downtime during the switch. In this post, we share the migration framework we developed, the automation scripts that saved us hundreds of hours, and the key decisions that made the difference between a smooth launch and a stressful one.',
     featuredImage: 'https://images.unsplash.com/photo-1619243142206-381c5aeda31c?w=1200',
@@ -297,7 +297,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 'tour-operator-plugin-10-tips-travel-websites',
     slug: 'tour-operator-plugin-10-tips-travel-websites',
-    title: 'Tour Operator Plugin: 10 Tips for Building World-Class Travel Websites',
+    title: 'Tour Operator plugin: 10 tips for building world-class travel websites',
     excerpt: 'Make the most of the Tour Operator plugin with these 10 expert tips — from structuring itineraries and managing accommodation to integrating Wetu and optimising for mobile travellers.',
     content: 'The Tour Operator plugin is the most comprehensive WordPress solution for travel and tourism businesses. Having built and maintained it for over a decade, we have learned what separates a good travel website from a great one. In this post, we share 10 actionable tips: structuring multi-day itineraries for scannability, using accommodation post types effectively, integrating with the Wetu Importer for real-time availability, optimising high-resolution destination photography for fast loading, creating compelling destination landing pages, setting up inquiry forms that convert, implementing structured data for Google Travel results, designing for mobile-first travellers, leveraging WooCommerce for online bookings, and building seasonal pricing tables that update automatically.',
     featuredImage: 'https://images.unsplash.com/photo-1765863202146-ce81a0a3e12a?w=1200',
@@ -311,7 +311,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 'future-of-wordpress-full-site-editing',
     slug: 'future-of-wordpress-full-site-editing',
-    title: 'The Future of WordPress Full Site Editing: What to Expect in 2026 and Beyond',
+    title: 'The future of WordPress full site editing: what to expect in 2026 and beyond',
     excerpt: 'A forward-looking analysis of where WordPress Full Site Editing is headed — including the Data Views initiative, Interactivity API, collaborative editing, and the impact on agencies and theme developers.',
     content: 'WordPress Full Site Editing has matured significantly since its initial release, but the roadmap ahead is even more exciting. In this analysis, we look at the key developments coming in 2026: the Data Views initiative that will bring a unified content management experience, the Interactivity API making dynamic front-end behaviour possible without custom JavaScript, advances in collaborative editing that bring real-time multi-user editing to WordPress, the evolution of style variations and global styles, improvements to the pattern system, and what all of this means for agencies like ours who build and maintain WordPress sites at scale. We also share our predictions for how these changes will reshape the WordPress ecosystem over the next two to three years.',
     featuredImage: 'https://images.unsplash.com/photo-1760629863094-5b1e8d1aae74?w=1200',
@@ -346,7 +346,7 @@ export const march2026Posts: BlogPost[] = [
   {
     id: 'design-tokens-figma-to-wordpress-theme-json',
     slug: 'design-tokens-figma-to-wordpress-theme-json',
-    title: 'Design Tokens: From Figma to WordPress theme.json in One Pipeline',
+    title: 'Design tokens: from Figma to WordPress theme.json in one pipeline',
     excerpt: 'A step-by-step walkthrough of our automated design token pipeline — syncing colours, typography, and spacing from Figma Variables directly into theme.json and CSS custom properties.',
     content: 'Design systems only work when the tokens flow seamlessly from design to code. At LightSpeed, we have built an automated pipeline that takes design tokens defined in Figma Variables and transforms them into three outputs simultaneously: WordPress theme.json presets, CSS custom properties in our stylesheets, and documentation for editorial teams.',
     featuredImage: 'https://images.unsplash.com/photo-1642403711737-8e89f8d92b24?w=1200',
@@ -360,7 +360,7 @@ export const march2026Posts: BlogPost[] = [
   {
     id: 'wordpress-core-web-vitals-2026-field-data',
     slug: 'wordpress-core-web-vitals-2026-field-data',
-    title: 'Core Web Vitals in 2026: Real Field Data from 200 WordPress Sites We Manage',
+    title: 'Core Web Vitals in 2026: real field data from 200 WordPress sites we manage',
     excerpt: 'We pulled CrUX data from 200 WordPress sites under our care to reveal which hosting stacks, caching layers, and theme architectures actually deliver the best performance in the real world.',
     content: 'Lab metrics lie. The only performance data that matters is what real users experience in the field. We pulled Chrome User Experience Report data from 200 WordPress sites we actively manage across 15 countries and compared their Core Web Vitals scores against hosting provider, caching strategy, theme type (classic vs block), image CDN usage, and JavaScript payload size.',
     featuredImage: 'https://images.unsplash.com/photo-1543171165-6ec6ede147ca?w=1200',
@@ -388,7 +388,7 @@ export const march2026Posts: BlogPost[] = [
   {
     id: 'wordpress-hosting-stack-2026-benchmark',
     slug: 'wordpress-hosting-stack-2026-benchmark',
-    title: 'The Optimal WordPress Hosting Stack in 2026: Our Infrastructure Benchmark',
+    title: 'The optimal WordPress hosting stack in 2026: our infrastructure benchmark',
     excerpt: 'Our DevOps lead benchmarks 8 hosting configurations for WordPress — comparing TTFB, throughput, and cost across managed hosts, VPS setups, and containerised deployments.',
     content: 'Choosing the right hosting stack for WordPress in 2026 is more complex than ever. Our DevOps & Hosting Lead Marco du Plessis set up identical WordPress installations across 8 different hosting configurations and ran a battery of tests: Time to First Byte under load, concurrent user capacity, and database query performance with 100K posts.',
     featuredImage: 'https://images.unsplash.com/photo-1667984390553-7f439e6ae401?w=1200',
@@ -402,7 +402,7 @@ export const march2026Posts: BlogPost[] = [
   {
     id: 'custom-gutenberg-blocks-react-typescript',
     slug: 'custom-gutenberg-blocks-react-typescript',
-    title: 'Building Custom Gutenberg Blocks with React and TypeScript: Our Workflow',
+    title: 'Building custom Gutenberg blocks with React and TypeScript: our workflow',
     excerpt: 'How we build production-grade Gutenberg blocks using React, TypeScript, and @wordpress/scripts — including block.json configuration, InspectorControls patterns, and automated testing.',
     content: 'Every WordPress project we deliver includes custom Gutenberg blocks tailored to the client content model. In this technical deep-dive, Senior WordPress Developer Sipho Ndlovu walks through our complete process: scaffolding blocks with @wordpress/create-block, configuring block.json, and building InspectorControls with TypeScript interfaces.',
     featuredImage: 'https://images.unsplash.com/photo-1706759755832-47e53579cc0d?w=1200',
@@ -416,7 +416,7 @@ export const march2026Posts: BlogPost[] = [
   {
     id: 'technical-seo-wordpress-block-themes',
     slug: 'technical-seo-wordpress-block-themes',
-    title: 'Technical SEO for WordPress Block Themes: The Complete Checklist',
+    title: 'Technical SEO for WordPress block themes: the complete checklist',
     excerpt: 'Block themes change how WordPress renders HTML — and that impacts SEO. Our updated checklist covers schema markup, heading hierarchy, render-blocking resources, and crawl budget optimisation.',
     content: 'The shift to block themes fundamentally changes the HTML output of WordPress sites, and most SEO guides have not caught up. In this comprehensive checklist, SEO & Analytics Specialist Nina Petersen covers everything we check on every block theme launch.',
     featuredImage: 'https://images.unsplash.com/photo-1674027326347-37509301f286?w=1200',
@@ -430,7 +430,7 @@ export const march2026Posts: BlogPost[] = [
   {
     id: 'woocommerce-south-africa-payment-gateways',
     slug: 'woocommerce-south-africa-payment-gateways',
-    title: 'WooCommerce in South Africa: Payment Gateways, Shipping, and Local Compliance',
+    title: 'WooCommerce in South Africa: Payment gateways, shipping, and local compliance',
     excerpt: 'Everything you need to know about running WooCommerce in South Africa — from PayFast and Peach Payments integration to POPIA compliance, local shipping APIs, and multi-currency for African markets.',
     content: 'Running a successful WooCommerce store in South Africa comes with unique challenges that international guides simply do not cover. Over two decades, we have built and optimised dozens of South African e-commerce stores and learnt the hard way which payment gateways, shipping integrations, and compliance requirements matter most.',
     featuredImage: 'https://images.unsplash.com/photo-1766074903112-79661da9ab45?w=1200',
@@ -460,7 +460,7 @@ export const insightsSubCategoryPosts: BlogPost[] = [
   {
     id: 'core-web-vitals-2026-benchmark-study',
     slug: 'core-web-vitals-2026-benchmark-study',
-    title: 'Core Web Vitals 2026: Our Benchmark Study of 500 WordPress Sites',
+    title: 'Core Web Vitals 2026: our benchmark study of 500 WordPress sites',
     excerpt: 'We analysed Core Web Vitals data across 500 WordPress sites to uncover which hosting stacks, theme architectures, and plugin combinations deliver the best real-world performance.',
     featuredImage: 'https://images.unsplash.com/photo-1766297247924-6638d54e7c89?w=1200',
     author: 'warwick-booth',
@@ -473,7 +473,7 @@ export const insightsSubCategoryPosts: BlogPost[] = [
   {
     id: 'block-theme-adoption-rates-agency-survey',
     slug: 'block-theme-adoption-rates-agency-survey',
-    title: 'Block Theme Adoption Rates: A 2026 Agency Survey',
+    title: 'Block theme adoption rates: a 2026 agency survey',
     excerpt: 'We surveyed 120 WordPress agencies worldwide to understand how block theme adoption is progressing — the barriers, the wins, and the tipping point for migration.',
     featuredImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200',
     author: 'ash-shaw',
@@ -488,7 +488,7 @@ export const insightsSubCategoryPosts: BlogPost[] = [
   {
     id: 'build-notes-design-token-pipeline',
     slug: 'build-notes-design-token-pipeline',
-    title: 'Build Notes: Creating a Design Token Pipeline for WordPress Block Themes',
+    title: 'Build notes: creating a design token pipeline for WordPress block themes',
     excerpt: 'A behind-the-scenes look at how we built an automated pipeline that syncs design tokens from Figma to theme.json, CSS custom properties, and block style variations.',
     featuredImage: 'https://images.unsplash.com/photo-1564931768730-7e4d8e240044?w=1200',
     author: 'warwick-booth',
@@ -501,7 +501,7 @@ export const insightsSubCategoryPosts: BlogPost[] = [
   {
     id: 'build-notes-woocommerce-checkout-blocks',
     slug: 'build-notes-woocommerce-checkout-blocks',
-    title: 'Build Notes: Rebuilding a WooCommerce Checkout with Block-Based Architecture',
+    title: 'Build notes: rebuilding a WooCommerce checkout with block-based architecture',
     excerpt: 'Technical notes from our recent project migrating a high-traffic WooCommerce checkout to the new block-based checkout — including performance benchmarks and gotchas.',
     featuredImage: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200',
     author: 'lourens-visser',
@@ -516,7 +516,7 @@ export const insightsSubCategoryPosts: BlogPost[] = [
   {
     id: 'structured-content-models-wordpress-fse',
     slug: 'structured-content-models-wordpress-fse',
-    title: 'Structured Content Models for WordPress Full Site Editing',
+    title: 'Structured content models for WordPress full site editing',
     excerpt: 'How we design content models that work across WordPress block patterns, custom post types, and headless frontends — with governance rules that keep editorial teams productive.',
     featuredImage: 'https://images.unsplash.com/photo-1695548487477-32cd8f3b2f35?w=1200',
     author: 'ash-shaw',
@@ -529,7 +529,7 @@ export const insightsSubCategoryPosts: BlogPost[] = [
   {
     id: 'editorial-workflow-automation-wordpress',
     slug: 'editorial-workflow-automation-wordpress',
-    title: 'Automating Editorial Workflows in WordPress: From Draft to Publish',
+    title: 'Automating editorial workflows in WordPress: from draft to publish',
     excerpt: 'A practical guide to automating content review, approval chains, and publishing schedules in WordPress — using native tools, custom REST endpoints, and third-party integrations.',
     featuredImage: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200',
     author: 'lourens-visser',
@@ -544,7 +544,7 @@ export const insightsSubCategoryPosts: BlogPost[] = [
   {
     id: 'responsible-ai-usage-wordpress-agencies',
     slug: 'responsible-ai-usage-wordpress-agencies',
-    title: 'Responsible AI Usage for WordPress Agencies: A Governance Framework',
+    title: 'Responsible AI usage for WordPress agencies: a governance framework',
     excerpt: 'Our internal framework for responsible AI usage — covering content generation policies, client disclosure requirements, quality assurance checkpoints, and data privacy guardrails.',
     featuredImage: 'https://images.unsplash.com/photo-1717501220725-83f151c447e7?w=1200',
     author: 'ash-shaw',
@@ -557,7 +557,7 @@ export const insightsSubCategoryPosts: BlogPost[] = [
   {
     id: 'ai-content-quality-assurance-checklist',
     slug: 'ai-content-quality-assurance-checklist',
-    title: 'AI Content QA: Our 15-Point Quality Assurance Checklist',
+    title: 'AI content QA: our 15-point quality assurance checklist',
     excerpt: 'Before any AI-assisted content goes live on a client site, it passes through our 15-point QA checklist — covering accuracy, tone, accessibility, SEO, and ethical disclosure.',
     featuredImage: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200',
     author: 'warwick-booth',

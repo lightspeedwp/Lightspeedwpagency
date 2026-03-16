@@ -58,7 +58,7 @@
 .section-style-hero-primary h2,
 .section-style-hero-primary h3 {
   font-family: var(--font-primary);
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   color: var(--primary-foreground);
   letter-spacing: var(--letter-spacing-tight);
   line-height: var(--line-height-tight);
@@ -72,7 +72,7 @@
 .section-style-hero-primary p {
   font-family: var(--font-primary);
   font-size: var(--text-xl);
-  font-weight: 400;
+  font-weight: var(--font-weight-normal);
   color: var(--primary-foreground);
   /* CONTRAST FIX: Removed opacity 0.95 to maintain AAA contrast (16.07:1) in light mode */
   line-height: var(--line-height-relaxed);
@@ -99,7 +99,7 @@
 .section-style-hero-secondary h1 {
   font-family: var(--font-primary);
   font-size: var(--text-h1);
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   color: var(--foreground);
   margin-bottom: var(--spacing-6);
 }
@@ -123,7 +123,7 @@
 .section-style-hero-minimal h1 {
   font-family: var(--font-primary);
   font-size: var(--text-h1);
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   color: var(--foreground);
   margin-bottom: var(--spacing-4);
 }

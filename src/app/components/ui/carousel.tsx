@@ -1,8 +1,5 @@
-export {
-  type CarouselApi,
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselPrevious,
-  CarouselNext,
-} from "@/app/components/blocks/media/Carousel";
+/**
+ * Deprecated — Carousel block not yet implemented.
+ * @see embla-carousel-react for direct usage.
+ */
+export {};

@@ -1,0 +1,413 @@
+/**
+ * Service Hero — Shared Hero BEM Block
+ *
+ * Reusable hero pattern used across all service detail templates.
+ * All styling uses CSS variables for complete user control.
+ *
+ * BEM Block: .service-hero
+ * Usage: DesignService, DiscoveryService, ContentService, SecurityService,
+ *        PerformanceService, AnalyticsService, AIEngine, Migrations, Support, etc.
+ *
+ * User can edit this file to update all service heroes site-wide.
+ */
+
+/* ============================================
+   HERO WRAPPER
+   ============================================ */
+
+.service-hero {
+  position: relative;
+  padding: var(--spacing-32) 0;
+  background-color: var(--background);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  text-align: center;
+}
+
+.service-hero--split {
+  text-align: left;
+  min-height: 90vh;
+  align-items: stretch;
+}
+
+.service-hero--compact {
+  min-height: auto;
+  padding: var(--spacing-24) 0;
+}
+
+/* ============================================
+   HERO CONTENT WRAPPER
+   ============================================ */
+
+.service-hero__content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  padding: 0 var(--spacing-8);
+}
+
+.service-hero__content--centered {
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* ============================================
+   BADGE / EYEBROW PILL
+   ============================================ */
+
+.service-hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2) var(--spacing-4);
+  border-radius: var(--radius-full);
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--spacing-6);
+  letter-spacing: var(--letter-spacing-wider);
+}
+
+/* Default variant — primary color on transparent tint */
+.service-hero__badge--primary {
+  background-color: color-mix(in srgb, var(--primary) 10%, transparent);
+  color: var(--primary);
+}
+
+/* Outline variant — card bg with border */
+.service-hero__badge--outline {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  color: var(--primary);
+}
+
+/* Mono variant — monospace font for technical services */
+.service-hero__badge--mono {
+  font-family: var(--font-mono);
+  font-weight: var(--font-weight-bold);
+}
+
+/* Custom color variant — uses scoped --badge-color */
+.service-hero__badge--custom {
+  background-color: color-mix(in srgb, var(--badge-color, var(--primary)) 10%, transparent);
+  color: var(--badge-color, var(--primary));
+  border: 1px solid color-mix(in srgb, var(--badge-color, var(--primary)) 30%, transparent);
+}
+
+/* ============================================
+   TITLE (H1)
+   ============================================ */
+
+.service-hero__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h1);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-6);
+  line-height: var(--line-height-tight);
+}
+
+.service-hero__title--uppercase {
+  text-transform: uppercase;
+}
+
+/* ============================================
+   GRADIENT TEXT SPAN
+   ============================================ */
+
+.service-hero__gradient-text {
+  color: transparent;
+  background-image: linear-gradient(90deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* Custom gradient — uses scoped --gradient-from / --gradient-to */
+.service-hero__gradient-text--custom {
+  background-image: linear-gradient(90deg, var(--gradient-from, var(--primary)), var(--gradient-to, var(--secondary)));
+}
+
+/* ============================================
+   DESCRIPTION
+   ============================================ */
+
+.service-hero__description {
+  font-family: var(--font-secondary);
+  font-size: var(--text-xl);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-comfortable);
+  margin-bottom: var(--spacing-10);
+  max-width: 600px;
+}
+
+.service-hero__description--centered {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.service-hero__description--mono {
+  font-family: var(--font-mono);
+}
+
+/* ============================================
+   DECORATIVE ELEMENTS
+   ============================================ */
+
+/* Background grid overlay */
+.service-hero__decor-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(var(--primary-rgb), 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--primary-rgb), 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Custom-color grid — uses scoped --grid-color-rgb */
+.service-hero__decor-grid--custom {
+  background-image:
+    linear-gradient(rgba(var(--grid-color-rgb, var(--primary-rgb)), 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--grid-color-rgb, var(--primary-rgb)), 0.05) 1px, transparent 1px);
+}
+
+/* Gradient orb glow */
+.service-hero__decor-orb {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, color-mix(in srgb, var(--primary) 10%, transparent) 0%, transparent 70%);
+  filter: blur(40px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Custom orb color — uses scoped --orb-color */
+.service-hero__decor-orb--custom {
+  background: radial-gradient(circle, color-mix(in srgb, var(--orb-color, var(--primary)) 10%, transparent) 0%, transparent 70%);
+}
+
+/* Corner crosshair marks */
+.service-hero__crosshair {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.service-hero__crosshair--tl {
+  top: 10%;
+  left: 10%;
+  border-top: 2px solid var(--primary);
+  border-left: 2px solid var(--primary);
+}
+
+.service-hero__crosshair--tr {
+  top: 10%;
+  right: 10%;
+  border-top: 2px solid var(--primary);
+  border-right: 2px solid var(--primary);
+}
+
+.service-hero__crosshair--bl {
+  bottom: 10%;
+  left: 10%;
+  border-bottom: 2px solid var(--primary);
+  border-left: 2px solid var(--primary);
+}
+
+.service-hero__crosshair--br {
+  bottom: 10%;
+  right: 10%;
+  border-bottom: 2px solid var(--primary);
+  border-right: 2px solid var(--primary);
+}
+
+/* Concentric circles decoration */
+.service-hero__decor-rings {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 800px;
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.service-hero__decor-ring {
+  position: absolute;
+  border: 1px solid var(--primary);
+  border-radius: 50%;
+}
+
+.service-hero__decor-ring--1 { inset: 10%; }
+.service-hero__decor-ring--2 { inset: 30%; }
+.service-hero__decor-ring--3 { inset: 50%; }
+.service-hero__decor-ring--4 { inset: 70%; }
+
+/* ============================================
+   SECTION WRAPPERS (for below-hero sections)
+   ============================================ */
+
+.service-section {
+  padding: var(--spacing-24) 0;
+  position: relative;
+}
+
+.service-section--bg-card {
+  background-color: var(--card);
+}
+
+.service-section--bg-muted {
+  background-color: var(--muted);
+}
+
+.service-section--bg-background {
+  background-color: var(--background);
+}
+
+.service-section--overflow-hidden {
+  overflow: hidden;
+}
+
+/* ============================================
+   SECTION EYEBROW LABEL
+   ============================================ */
+
+.service-section__eyebrow {
+  display: inline-block;
+  color: var(--primary);
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-widest);
+  margin-bottom: var(--spacing-4);
+}
+
+.service-section__eyebrow--mono {
+  font-family: var(--font-mono);
+  letter-spacing: var(--letter-spacing-widest);
+}
+
+/* ============================================
+   SECTION TITLE (H2)
+   ============================================ */
+
+.service-section__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-4);
+}
+
+/* ============================================
+   SECTION DESCRIPTION
+   ============================================ */
+
+.service-section__description {
+  font-family: var(--font-secondary);
+  font-size: var(--text-lg);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-comfortable);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.service-section__description--wide {
+  max-width: 800px;
+}
+
+.service-section__description--left {
+  margin: 0;
+}
+
+/* ============================================
+   SECTION HEADER (centered title + description)
+   ============================================ */
+
+.service-section__header {
+  text-align: center;
+  margin-bottom: var(--spacing-16);
+}
+
+/* ============================================
+   BODY TEXT (descriptions inside cards/sections)
+   ============================================ */
+
+.service-body-text {
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-comfortable);
+  margin: 0;
+}
+
+.service-body-text--sm {
+  font-size: var(--text-sm);
+  line-height: var(--line-height-normal);
+}
+
+/* ============================================
+   STAT COUNTER (mono value + label)
+   ============================================ */
+
+.service-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-1);
+}
+
+.service-stat__value {
+  font-family: var(--font-mono);
+  font-size: var(--text-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--primary);
+  line-height: 1;
+}
+
+.service-stat__label {
+  font-family: var(--font-secondary);
+  font-size: var(--text-xs);
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+  .service-hero {
+    min-height: auto;
+    padding: var(--spacing-16) 0;
+  }
+
+  .service-hero__content {
+    padding: 0 var(--spacing-4);
+  }
+
+  .service-hero__crosshair {
+    display: none;
+  }
+
+  .service-hero__decor-rings {
+    width: 400px;
+    height: 400px;
+  }
+}

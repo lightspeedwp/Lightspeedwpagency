@@ -1,0 +1,191 @@
+/**
+ * Why Choose Us — Objection Cards
+ *
+ * Sub-file 6/6 of why-choose-us.css
+ * BEM block: .wcu-objection
+ *
+ * Accordion-style cards addressing common objections.
+ */
+
+/* ============================================
+   SECTION WRAPPER
+   ============================================ */
+
+.wcu__objections-section {
+  padding: var(--spacing-16) 0;
+  background: color-mix(in srgb, var(--card) 50%, var(--background));
+  position: relative;
+  overflow: hidden;
+}
+
+/* ============================================
+   CARD GRID
+   ============================================ */
+
+.wcu-objection__grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  max-width: var(--wp--style--global--narrow-size);
+  margin: 0 auto;
+}
+
+/* ============================================
+   INDIVIDUAL CARD
+   ============================================ */
+
+.wcu-objection__card {
+  border-radius: var(--radius-xl);
+  background: color-mix(in srgb, var(--card) 65%, transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid color-mix(in srgb, var(--border) 30%, transparent);
+  overflow: hidden;
+  transition: border-color var(--transition-slow) ease,
+              box-shadow var(--transition-slow) ease;
+}
+
+.wcu-objection__card:hover {
+  border-color: color-mix(in srgb, var(--neon-color, var(--primary)) 30%, transparent);
+}
+
+.wcu-objection__card--expanded {
+  border-color: color-mix(in srgb, var(--neon-color, var(--primary)) 35%, transparent);
+  box-shadow: 0 0 20px color-mix(in srgb, var(--neon-color, var(--primary)) 8%, transparent);
+}
+
+/* ============================================
+   TRIGGER BUTTON
+   ============================================ */
+
+.wcu-objection__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-4);
+  width: 100%;
+  padding: var(--spacing-5) var(--spacing-6);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  color: var(--foreground);
+}
+
+.wcu-objection__trigger:focus-visible {
+  outline: 2px solid var(--neon-color, var(--primary));
+  outline-offset: -2px;
+  border-radius: var(--radius-xl);
+}
+
+.wcu-objection__trigger-content {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-4);
+  flex: 1;
+  min-width: 0;
+}
+
+.wcu-objection__icon {
+  flex-shrink: 0;
+  color: var(--neon-color, var(--primary));
+  margin-top: var(--spacing-0-5);
+}
+
+.wcu-objection__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+.wcu-objection__question {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  font-style: italic;
+}
+
+.wcu-objection__answer {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--neon-color, var(--primary));
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+/* ============================================
+   CARET
+   ============================================ */
+
+.wcu-objection__caret {
+  flex-shrink: 0;
+  color: var(--muted-foreground);
+  transition: transform var(--transition-base) ease;
+}
+
+.wcu-objection__caret--open {
+  transform: rotate(180deg);
+}
+
+/* ============================================
+   PANEL
+   ============================================ */
+
+.wcu-objection__panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--transition-slow) ease;
+}
+
+.wcu-objection__panel--open {
+  grid-template-rows: 1fr;
+}
+
+.wcu-objection__panel > * {
+  overflow: hidden;
+}
+
+.wcu-objection__details {
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  line-height: var(--line-height-relaxed);
+  color: var(--muted-foreground);
+  padding: 0 var(--spacing-6) var(--spacing-5) var(--spacing-14);
+}
+
+
+/* ============================================
+   DARK MODE
+   ============================================ */
+
+.dark .wcu-objection__card {
+  background: color-mix(in srgb, var(--foreground) 5%, transparent);
+  border-color: color-mix(in srgb, var(--foreground) 10%, transparent);
+}
+
+.dark .wcu-objection__card:hover {
+  background: color-mix(in srgb, var(--foreground) 7%, transparent);
+  border-color: color-mix(in srgb, var(--neon-color, var(--primary)) 35%, transparent);
+}
+
+.dark .wcu-objection__card--expanded {
+  background: color-mix(in srgb, var(--foreground) 8%, transparent);
+}
+
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .wcu-objection__card {
+    transition: none;
+  }
+  .wcu-objection__caret {
+    transition: none;
+  }
+  .wcu-objection__panel {
+    transition: none;
+  }
+}

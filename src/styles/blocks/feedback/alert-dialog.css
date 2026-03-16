@@ -55,7 +55,7 @@
 .wp-block-alert-dialog__title {
   font-family: var(--font-primary);
   font-size: var(--text-lg);
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   margin: 0;
 }
 

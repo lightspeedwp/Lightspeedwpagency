@@ -12,7 +12,9 @@ import { Link } from 'react-router';
 import { CaretRight, Layout, Check } from '@phosphor-icons/react';
 import { patternGovernanceSystem } from '../../data/systems-hub';
 import { serviceTiers } from '../../data/three-tier-model';
+import { getPageUrl } from '../../data/site-pages';
 import '@/styles/templates/pattern-governance-system.css';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 
 export const PatternGovernanceSystemTemplate = () => {
   const system = patternGovernanceSystem;
@@ -20,13 +22,14 @@ export const PatternGovernanceSystemTemplate = () => {
 
   return (
     <div className="system-page">
-      <nav className="system-page__breadcrumbs">
-        <Link to="/systems" className="system-page__breadcrumb-link">
-          Systems
-        </Link>
-        <CaretRight className="system-page__breadcrumb-separator" />
-        <span className="system-page__breadcrumb-current">Pattern Governance</span>
-      </nav>
+      {/* Breadcrumbs */}
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Systems', href: '/systems' },
+          { label: 'Pattern Governance' },
+        ]}
+      />
 
       <section className="system-page__hero">
         <div className="system-page__hero-content">
@@ -137,7 +140,7 @@ export const PatternGovernanceSystemTemplate = () => {
                 <h3 className="system-page__tier-name">{tier.name}</h3>
                 <p className="system-page__tier-tagline">{tier.tagline}</p>
                 <p className="system-page__tier-description">{tier.description}</p>
-                <Link to="/services" className="system-page__tier-link">
+                <Link to={getPageUrl('services')} className="system-page__tier-link">
                   Learn More
                   <CaretRight className="system-page__tier-link-icon" />
                 </Link>
@@ -156,7 +159,7 @@ export const PatternGovernanceSystemTemplate = () => {
             Request a free pattern audit to see how governance can reduce production
             time by 50-70% while maintaining design consistency.
           </p>
-          <Link to="/contact" className="system-page__cta-button">
+          <Link to={getPageUrl('contact')} className="system-page__cta-button">
             Request a Pattern Audit
           </Link>
         </div>

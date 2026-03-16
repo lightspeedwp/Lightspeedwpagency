@@ -37,7 +37,7 @@
 
 .wp-block-table tfoot {
   background-color: var(--muted);
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
 }
 
 .wp-block-table tfoot tr {
@@ -46,7 +46,7 @@
 
 .wp-block-table th {
   height: 2.5rem;
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   color: var(--muted-foreground);
 }
 

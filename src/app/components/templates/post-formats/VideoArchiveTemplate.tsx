@@ -52,6 +52,7 @@ export function VideoArchiveTemplate() {
                       src={post._embedded['wp:featuredmedia'][0].source_url} 
                       alt={post.title.rendered} 
                       className="wp-block-video-card__img"
+                      loading="lazy"
                     />
                   )}
                   <div className="wp-block-video-card__overlay">

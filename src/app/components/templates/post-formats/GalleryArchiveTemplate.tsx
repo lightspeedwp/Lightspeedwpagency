@@ -57,6 +57,7 @@ export function GalleryArchiveTemplate() {
                         src={post._embedded['wp:featuredmedia'][0].source_url} 
                         alt={post.title.rendered} 
                         className="wp-block-gallery-card__img"
+                        loading="lazy"
                       />
                     )}
                     <div className="wp-block-gallery-card__count">

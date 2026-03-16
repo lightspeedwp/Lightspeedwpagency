@@ -1,7 +1,5 @@
 /**
- * Tooltip Component (Proxy)
- * 
- * Proxies to Tooltip Block Component (blocks/utility/Tooltip).
+ * Deprecated — Tooltip block not yet implemented.
+ * @see @radix-ui/react-tooltip for direct usage.
  */
-
-export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from '../blocks/utility/Tooltip';
+export {};

@@ -25,13 +25,13 @@ export function AIChatbotsTemplate() {
       hero={aiChatbotsHero}
       heroIcon={Robot}
       stats={aiChatbotsStats}
-      statsTitle="Chatbot Performance Metrics"
+      statsTitle="Chatbot performance metrics"
       statsDescription="How AI chatbots transform visitor engagement"
       features={aiChatbotsFeatures}
-      featuresTitle="Smart Chatbot Capabilities"
+      featuresTitle="Smart chatbot capabilities"
       featuresDescription="Intelligent conversation features built for WordPress"
       useCases={aiChatbotsUseCases}
-      useCasesTitle="AI Chatbot Use Cases"
+      useCasesTitle="AI chatbot use cases"
       useCasesDescription="Conversational AI for every business type"
       pricing={aiChatbotsPricing}
       faqs={aiChatbotsFAQs}

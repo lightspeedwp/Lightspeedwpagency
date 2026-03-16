@@ -1,0 +1,326 @@
+/**
+ * Performance Service Template — BEM Styles
+ *
+ * High-performance theme: speedometer gauge, speed comparison bars,
+ * checklist items, diagonal grid background.
+ *
+ * Blocks:
+ * - .perf-hero — Hero section with speedometer
+ * - .perf-speedometer — Lighthouse gauge card
+ * - .perf-checklist — Feature checklist items
+ * - .perf-comparison — Before/after speed bars
+ *
+ * @see PerformanceServiceTemplate.tsx
+ */
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+
+.perf-hero {
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  background-color: var(--background);
+  overflow: hidden;
+}
+
+.perf-hero__grid-bg {
+  position: absolute;
+  inset: 0;
+  opacity: 0.05;
+  background-image:
+    linear-gradient(45deg, var(--primary) 1px, transparent 1px),
+    linear-gradient(-45deg, var(--primary) 1px, transparent 1px);
+  background-size: 30px 30px;
+  z-index: 0;
+}
+
+.perf-hero__orb {
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, var(--primary) 0%, transparent 60%);
+  filter: blur(50px);
+  opacity: 0.15;
+  z-index: 0;
+}
+
+.perf-hero__grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-16);
+  align-items: center;
+}
+
+/* ============================================
+   SPEEDOMETER CARD
+   ============================================ */
+
+.perf-speedometer {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-8);
+  box-shadow: var(--shadow-xl);
+}
+
+.perf-speedometer__gauge-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-4);
+}
+
+.perf-speedometer__gauge {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: var(--wp--preset--border-width--8) solid color-mix(in srgb, var(--color-terminal-green) 20%, transparent);
+  border-top-color: var(--color-terminal-green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: var(--text-5xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-terminal-green);
+  position: relative;
+}
+
+.perf-speedometer__metrics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-4);
+  width: 100%;
+}
+
+.perf-speedometer__metric {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-1);
+}
+
+.perf-speedometer__metric-value {
+  font-family: var(--font-mono);
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+}
+
+.perf-speedometer__metric-label {
+  font-family: var(--font-secondary);
+  font-size: var(--text-xs);
+  color: var(--muted-foreground);
+}
+
+/* ============================================
+   FEATURE CHECKLIST
+   ============================================ */
+
+.perf-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.perf-checklist__item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  font-family: var(--font-secondary);
+  font-size: var(--text-lg);
+  color: var(--foreground);
+}
+
+/* Checklist card variant (used in Design Service overview) */
+.perf-checklist__card {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  padding: var(--spacing-4);
+  background-color: var(--background);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.perf-checklist__card-text {
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  color: var(--foreground);
+}
+
+/* ============================================
+   SPEED COMPARISON (Before/After)
+   ============================================ */
+
+.perf-comparison {
+  background-color: var(--background);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-8);
+}
+
+.perf-comparison__bars {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+.perf-comparison__row {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+}
+
+.perf-comparison__time {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  width: 40px;
+}
+
+.perf-comparison__time--before {
+  color: var(--muted-foreground);
+}
+
+.perf-comparison__time--after {
+  color: var(--color-terminal-green);
+  font-weight: var(--font-weight-bold);
+}
+
+.perf-comparison__bar-track {
+  flex: 1;
+  height: 24px;
+  border-radius: var(--radius-full);
+  position: relative;
+}
+
+.perf-comparison__bar-track--before {
+  background-color: color-mix(in srgb, var(--color-terminal-red) 20%, transparent);
+}
+
+.perf-comparison__bar-track--after {
+  background-color: color-mix(in srgb, var(--color-terminal-green) 20%, transparent);
+}
+
+.perf-comparison__bar-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  border-radius: var(--radius-full);
+}
+
+.perf-comparison__bar-fill--before {
+  width: 80%;
+  background-color: var(--color-terminal-red);
+}
+
+.perf-comparison__bar-fill--after {
+  width: 20%;
+  background-color: var(--color-terminal-green);
+}
+
+.perf-comparison__label {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  width: 60px;
+}
+
+.perf-comparison__label--before {
+  color: var(--muted-foreground);
+}
+
+.perf-comparison__label--after {
+  color: var(--color-terminal-green);
+  font-weight: var(--font-weight-bold);
+}
+
+.perf-comparison__result {
+  margin-top: var(--spacing-8);
+  text-align: center;
+}
+
+.perf-comparison__result-highlight {
+  color: var(--primary);
+  font-weight: var(--font-weight-bold);
+}
+
+/* ============================================
+   PRICING PAYMENT OPTIONS (shared with Pricing)
+   ============================================ */
+
+.pricing-payment__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-6);
+}
+
+.pricing-payment__card {
+  padding: var(--spacing-8);
+  background-color: var(--background);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.pricing-payment__icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: color-mix(in srgb, var(--primary) 10%, transparent);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--spacing-6);
+}
+
+.pricing-payment__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-xl);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-3);
+}
+
+.pricing-payment__desc {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  margin-bottom: var(--spacing-6);
+  line-height: var(--line-height-normal);
+  flex: 1;
+}
+
+.pricing-payment__discount {
+  display: inline-block;
+  background-color: color-mix(in srgb, var(--primary) 15%, transparent);
+  color: var(--primary);
+  padding: var(--spacing-1) var(--spacing-3);
+  border-radius: var(--radius-full);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-4);
+}
+
+.pricing-payment__terms {
+  font-family: var(--font-secondary);
+  font-size: var(--text-xs);
+  color: var(--muted-foreground);
+  margin: 0;
+}

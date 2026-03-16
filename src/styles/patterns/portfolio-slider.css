@@ -29,7 +29,7 @@
 .portfolio-slider__title {
   font-family: var(--font-primary);
   font-size: clamp(2rem, 4vw, 3.5rem);
-  font-weight: 800;
+  font-weight: var(--font-weight-bold);
   color: var(--color-white);
   margin-bottom: var(--spacing-4);
 }
@@ -135,7 +135,7 @@
 .portfolio-slider__card-title {
   font-family: var(--font-primary);
   font-size: var(--text-xl);
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
   color: var(--color-white);
   margin-bottom: var(--spacing-3);
   line-height: 1.3;

@@ -76,7 +76,7 @@
   font-family: var(--font-primary);
   font-size: var(--text-sm);
   font-style: normal;
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
   color: var(--muted-foreground);
   
   /* Spacing */
@@ -103,7 +103,7 @@
   
   /* Typography */
   font-size: var(--text-xl);
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   font-style: normal;
   
   /* Borders */
@@ -114,7 +114,7 @@
 
 .wp-block-quote--pullquote .wp-block-quote__content {
   color: var(--primary);
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
 }
 
 .wp-block-quote--pullquote .wp-block-quote__citation {
@@ -145,8 +145,29 @@
 }
 
 .wp-block-quote--testimonial .wp-block-quote__citation {
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   color: var(--foreground);
+}
+
+/* Bordered Quote */
+.wp-block-quote--bordered {
+  /* Layout */
+  background: var(--background);
+  
+  /* Spacing */
+  padding: var(--spacing-6);
+  
+  /* Borders */
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--primary);
+  border-radius: var(--radius);
+  
+  /* Shadow */
+  box-shadow: var(--shadow-sm);
+}
+
+.wp-block-quote--bordered .wp-block-quote__content {
+  font-weight: var(--font-weight-bold);
 }
 
 /* ==========================================================================
@@ -227,7 +248,7 @@
 
 /* Strong text within quotes */
 .wp-block-quote strong {
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
   color: var(--foreground);
 }
 

@@ -8,6 +8,7 @@
 
 import { Package, Database, CloudArrowUp, CheckCircle, Shield, Lightning } from '@phosphor-icons/react';
 import { Link } from 'react-router';
+import { getPageUrl } from '../../data/site-pages';
 import { FeatureList } from '../patterns/FeatureList';
 import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
 import { Container } from '../common/Container';
@@ -95,26 +96,26 @@ export const MigrationsServiceTemplate = () => {
 
       <JourneyPhaseIndicator currentPhase="build" currentServicePage="migrations" />
 
-      <section style={{ position: 'relative', minHeight: '60vh', display: 'flex', alignItems: 'center', backgroundColor: 'var(--background)', overflow: 'hidden' }}>
+      <section className="service-hero" style={{ minHeight: '60vh' }}>
         <div style={{ position: 'absolute', inset: 0, opacity: 0.1, backgroundImage: 'linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px)', backgroundSize: '40px 40px', zIndex: 0 }} aria-hidden="true" />
         
         <Container>
-          <div style={{ position: 'relative', zIndex: 1, maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
+          <div className="service-hero__content service-hero__content--centered">
             <ScrollReveal animation="fade-up">
-              <h1 style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-h1)', color: 'var(--foreground)', marginBottom: 'var(--spacing-6)' }}>
+              <h1 className="service-hero__title">
                 Website Migration Services
               </h1>
               
-              <p style={{ fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-xl)', color: 'var(--muted-foreground)', marginBottom: 'var(--spacing-10)', lineHeight: 1.6 }}>
+              <p className="service-hero__description service-hero__description--centered">
                 Move your website with confidence. Expert migrations with zero data loss, minimal downtime, 
                 and comprehensive testing ensure a smooth transition to your new platform or host.
               </p>
               
               <div className="wp-flex wp-justify-center wp-gap-4 wp-flex-wrap">
-                <Link to="/contact" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: 'var(--spacing-3) var(--spacing-8)', backgroundColor: 'var(--primary)', color: 'var(--primary-foreground)', borderRadius: 'var(--radius)', fontFamily: 'var(--font-secondary)', fontWeight: 'var(--font-weight-bold)', textDecoration: 'none' }}>
+                <Link to={getPageUrl('contact')} className="sub-service-base__hero-btn sub-service-base__hero-btn--primary">
                   Get Migration Quote
                 </Link>
-                <Link to="/services/hosting" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: 'var(--spacing-3) var(--spacing-8)', backgroundColor: 'transparent', color: 'var(--foreground)', border: '1px solid var(--border)', borderRadius: 'var(--radius)', fontFamily: 'var(--font-secondary)', fontWeight: 'var(--font-weight-medium)', textDecoration: 'none' }}>
+                <Link to={getPageUrl('hosting')} className="sub-service-base__hero-btn sub-service-base__hero-btn--outline">
                   View Parent Service
                 </Link>
               </div>
@@ -123,12 +124,12 @@ export const MigrationsServiceTemplate = () => {
         </Container>
       </section>
 
-      <section style={{ padding: 'var(--spacing-24) 0', backgroundColor: 'var(--muted)' }}>
+      <section className="service-section service-section--bg-muted">
         <Container>
-          <div style={{ textAlign: 'center', marginBottom: 'var(--spacing-16)' }}>
+          <div className="service-section__header">
             <ScrollReveal animation="fade-up">
-              <h2 style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-h2)', color: 'var(--foreground)', marginBottom: 'var(--spacing-4)' }}>Migration Expertise</h2>
-              <p style={{ fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-lg)', color: 'var(--muted-foreground)', maxWidth: '600px', margin: '0 auto' }}>
+              <h2 className="service-section__title">Migration Expertise</h2>
+              <p className="service-section__description">
                 Comprehensive migration services for every scenario
               </p>
             </ScrollReveal>
@@ -145,26 +146,26 @@ export const MigrationsServiceTemplate = () => {
         </Container>
       </section>
 
-      <section style={{ padding: 'var(--spacing-24) 0', backgroundColor: 'var(--background)' }}>
+      <section className="service-section service-section--bg-background">
         <Container>
-          <div style={{ textAlign: 'center', marginBottom: 'var(--spacing-16)' }}>
+          <div className="service-section__header">
             <ScrollReveal animation="fade-up">
-              <h2 style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-h2)', color: 'var(--foreground)', marginBottom: 'var(--spacing-4)' }}>Migration Types</h2>
-              <p style={{ fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-lg)', color: 'var(--muted-foreground)', maxWidth: '600px', margin: '0 auto' }}>
+              <h2 className="service-section__title">Migration Types</h2>
+              <p className="service-section__description">
                 We handle all types of website migrations
               </p>
             </ScrollReveal>
           </div>
           
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 'var(--spacing-8)' }}>
+          <div className="sub-service-base__types-grid">
             {migrationTypes.map((item, index) => (
               <ScrollReveal key={index} animation="fade-up" delay={index * 100}>
-                <div style={{ padding: 'var(--spacing-8)', backgroundColor: 'var(--card)', border: '1px solid var(--border)', borderRadius: 'var(--radius-xl)', height: '100%' }}>
-                  <h3 style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-xl)', color: 'var(--foreground)', marginBottom: 'var(--spacing-6)' }}>{item.type}</h3>
-                  <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 'var(--spacing-4)' }}>
+                <div className="sub-service-base__type-card">
+                  <h3 className="sub-service-base__type-card-title">{item.type}</h3>
+                  <ul className="sub-service-base__type-list">
                     {item.examples.map((example, exIndex) => (
-                      <li key={exIndex} style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-3)', fontFamily: 'var(--font-secondary)', color: 'var(--muted-foreground)' }}>
-                        <div style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: 'var(--primary)', flexShrink: 0 }} />
+                      <li key={exIndex} className="sub-service-base__type-list-item">
+                        <div className="sub-service-base__type-list-dot" />
                         {example}
                       </li>
                     ))}
@@ -176,7 +177,7 @@ export const MigrationsServiceTemplate = () => {
         </Container>
       </section>
 
-      <section style={{ padding: 'var(--spacing-24) 0', backgroundColor: 'var(--muted)' }}>
+      <section className="service-section service-section--bg-muted">
         <Container>
           <ScrollReveal animation="fade-up">
             <ProcessTimeline
@@ -195,12 +196,12 @@ export const MigrationsServiceTemplate = () => {
         </Container>
       </section>
 
-      <section style={{ padding: 'var(--spacing-24) 0', backgroundColor: 'var(--background)' }}>
+      <section className="service-section service-section--bg-background">
         <Container>
-          <div style={{ textAlign: 'center', marginBottom: 'var(--spacing-16)' }}>
+          <div className="service-section__header">
             <ScrollReveal animation="fade-up">
-              <h2 style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-h2)', color: 'var(--foreground)', marginBottom: 'var(--spacing-4)' }}>Migration Guarantees</h2>
-              <p style={{ fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-lg)', color: 'var(--muted-foreground)', maxWidth: '600px', margin: '0 auto' }}>
+              <h2 className="service-section__title">Migration Guarantees</h2>
+              <p className="service-section__description">
                 Our commitment to successful migrations
               </p>
             </ScrollReveal>

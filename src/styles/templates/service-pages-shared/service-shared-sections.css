@@ -23,7 +23,7 @@
 .service-page__section-title {
   font-family: var(--font-primary);
   font-size: var(--text-h2);
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   color: var(--foreground);
 }
 
@@ -95,7 +95,7 @@
 .service-page__benefit-title {
   font-family: var(--font-primary);
   font-size: var(--text-xl);
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   color: var(--foreground);
 }
 
@@ -158,7 +158,7 @@
 .service-page__feature-title {
   font-family: var(--font-primary);
   font-size: var(--text-xl);
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   color: var(--foreground);
 }
 
@@ -200,7 +200,7 @@
   border-radius: 50%;
   font-family: var(--font-primary);
   font-size: var(--text-xl);
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
 }
 
 /* Process content -- flex column with blockGap */
@@ -214,7 +214,7 @@
 .service-page__process-title {
   font-family: var(--font-primary);
   font-size: var(--text-lg);
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   color: var(--foreground);
 }
 
@@ -268,7 +268,7 @@
 .service-page__list-name {
   font-family: var(--font-primary);
   font-size: var(--text-base);
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   color: var(--foreground);
 }
 

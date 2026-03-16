@@ -54,7 +54,7 @@ export const KeyboardTester = () => {
       setTabIndex(index + 1);
 
       // Highlight element
-      target.style.outline = '3px solid hsl(var(--primary))';
+      target.style.outline = '3px solid var(--primary)';
       target.style.outlineOffset = '4px';
     };
 

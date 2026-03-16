@@ -12,45 +12,45 @@
 .dark .service-pricing__card {
   background: linear-gradient(
     135deg,
-    hsl(var(--card) / 0.8) 0%,
-    hsl(var(--card) / 0.6) 100%
+    color-mix(in srgb, var(--card) 80%, transparent) 0%,
+    color-mix(in srgb, var(--card) 60%, transparent) 100%
   );
-  border-color: hsl(var(--primary) / 0.3);
+  border-color: color-mix(in srgb, var(--primary) 30%, transparent);
   box-shadow: 
-    0 4px 16px hsl(var(--primary) / 0.1),
-    0 0 24px hsl(var(--primary) / 0.05),
-    inset 0 1px 0 hsl(var(--foreground) / 0.1);
+    0 4px 16px color-mix(in srgb, var(--primary) 10%, transparent),
+    0 0 24px color-mix(in srgb, var(--primary) 5%, transparent),
+    inset 0 1px 0 color-mix(in srgb, var(--foreground) 10%, transparent);
 }
 
 .dark .service-pricing__card:hover {
   box-shadow: 
-    0 8px 32px hsl(var(--primary) / 0.15),
-    0 0 32px hsl(var(--primary) / 0.1),
-    inset 0 1px 0 hsl(var(--foreground) / 0.15);
+    0 8px 32px color-mix(in srgb, var(--primary) 15%, transparent),
+    0 0 32px color-mix(in srgb, var(--primary) 10%, transparent),
+    inset 0 1px 0 color-mix(in srgb, var(--foreground) 15%, transparent);
 }
 
 .dark .service-pricing__icon {
-  filter: drop-shadow(0 0 8px hsl(var(--primary) / 0.5));
+  filter: drop-shadow(0 0 8px color-mix(in srgb, var(--primary) 50%, transparent));
 }
 
 .dark .service-pricing__phase-number {
   box-shadow: 
-    0 2px 8px hsl(var(--primary) / 0.5),
-    0 0 16px hsl(var(--primary) / 0.3);
+    0 2px 8px color-mix(in srgb, var(--primary) 50%, transparent),
+    0 0 16px color-mix(in srgb, var(--primary) 30%, transparent);
 }
 
 .dark .service-pricing__check-icon {
-  filter: drop-shadow(0 0 4px hsl(var(--primary) / 0.5));
+  filter: drop-shadow(0 0 4px color-mix(in srgb, var(--primary) 50%, transparent));
 }
 
 .dark .service-pricing__cta {
   background: linear-gradient(
     135deg,
-    hsl(var(--muted) / 0.6) 0%,
-    hsl(var(--muted) / 0.4) 100%
+    color-mix(in srgb, var(--muted) 60%, transparent) 0%,
+    color-mix(in srgb, var(--muted) 40%, transparent) 100%
   );
-  border-color: hsl(var(--primary) / 0.3);
-  box-shadow: 0 0 24px hsl(var(--primary) / 0.05);
+  border-color: color-mix(in srgb, var(--primary) 30%, transparent);
+  box-shadow: 0 0 24px color-mix(in srgb, var(--primary) 5%, transparent);
 }
 
 /* ============================================

@@ -16,6 +16,7 @@ import '../../../../styles/templates/testimonial-single.css';
 import { Star, ArrowLeft, Images, ArrowSquareOut, TrendUp } from '@phosphor-icons/react';
 import { Link, useParams } from 'react-router';
 import { useState } from 'react';
+import { getPageUrl } from '../../../data/site-pages';
 import { Section } from '../../common/Section';
 import { FunkyCTA } from '../../patterns/FunkyCTA';
 import { QueryLoopTestimonials } from '../../patterns/QueryLoopTestimonials';
@@ -48,7 +49,7 @@ export function SingleTestimonialGalleryTemplate({ slug }: { slug?: string }) {
       <Section spacing="xs" background="default">
         <div className="wp-max-w-6xl">
           <Link
-            to="/testimonials"
+            to={getPageUrl('testimonials')}
             className="single-testimonial__back-link"
           >
             <ArrowLeft size={16} /> Back to Testimonials

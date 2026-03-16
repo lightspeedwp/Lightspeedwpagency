@@ -1,0 +1,230 @@
+/**
+ * Security Service Template — BEM Styles
+ *
+ * Cyber Defense theme: terminal visuals, threat intel cards,
+ * neon green/red accent system.
+ *
+ * Blocks:
+ * - .security-hero — Hero section overrides
+ * - .security-terminal — Terminal window visual
+ * - .security-threat — Threat intel card grid
+ *
+ * @see SecurityServiceTemplate.tsx
+ */
+
+/* ============================================
+   HERO OVERRIDES
+   ============================================ */
+
+.security-hero {
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  background-color: var(--background);
+  overflow: hidden;
+}
+
+.security-hero__grid-bg {
+  position: absolute;
+  inset: 0;
+  opacity: 0.1;
+  background-image:
+    linear-gradient(var(--success) 1px, transparent 1px),
+    linear-gradient(90deg, var(--success) 1px, transparent 1px);
+  background-size: var(--gradient-grid-size);
+  z-index: 0;
+}
+
+.security-hero__radial-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, color-mix(in srgb, var(--success) 10%, transparent) 0%, transparent 70%);
+  filter: blur(40px);
+  z-index: 0;
+}
+
+.security-hero__content {
+  position: relative;
+  z-index: 1;
+}
+
+.security-hero__btn-scan {
+  background-color: var(--color-terminal-red);
+  color: var(--foreground);
+  border: none;
+  font-family: var(--font-mono);
+}
+
+.security-hero__btn-protocols {
+  border-color: var(--color-terminal-green);
+  color: var(--color-terminal-green);
+  font-family: var(--font-mono);
+}
+
+/* ============================================
+   TERMINAL VISUAL
+   ============================================ */
+
+.security-terminal {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.security-terminal__header {
+  background-color: var(--muted);
+  padding: var(--spacing-3) var(--spacing-4);
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+}
+
+.security-terminal__dots {
+  display: flex;
+  gap: var(--spacing-2);
+}
+
+.security-terminal__dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.security-terminal__dot--red {
+  background-color: var(--color-terminal-red);
+}
+
+.security-terminal__dot--yellow {
+  background-color: var(--color-terminal-yellow);
+}
+
+.security-terminal__dot--green {
+  background-color: var(--color-terminal-green);
+}
+
+.security-terminal__title {
+  flex: 1;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+}
+
+.security-terminal__body {
+  padding: var(--spacing-6);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--color-terminal-green);
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.security-terminal__welcome {
+  color: var(--muted-foreground);
+  margin-bottom: var(--spacing-4);
+}
+
+.security-terminal__log-entry {
+  margin-bottom: var(--spacing-2);
+}
+
+.security-terminal__log-time {
+  color: color-mix(in srgb, var(--muted-foreground) 50%, transparent);
+}
+
+.security-terminal__log-text {
+  margin-left: var(--spacing-2);
+}
+
+.security-terminal__log-text--ok {
+  color: var(--color-terminal-green);
+}
+
+.security-terminal__log-text--alert {
+  color: var(--color-terminal-red);
+}
+
+.security-terminal__log-text--info {
+  color: var(--muted-foreground);
+}
+
+.security-terminal__cursor {
+  color: var(--color-terminal-green);
+  animation: blink 1s step-end infinite;
+}
+
+/* ============================================
+   THREAT INTEL SECTION
+   ============================================ */
+
+.security-threat__heading {
+  font-family: var(--font-mono);
+  font-size: var(--text-h2);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-4);
+  text-transform: uppercase;
+}
+
+.security-threat__heading-prompt {
+  color: var(--color-terminal-green);
+  margin-right: var(--spacing-2);
+}
+
+.security-threat__card {
+  background-color: var(--background);
+  border: 1px solid var(--_card-accent, var(--border));
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-8);
+  height: 100%;
+}
+
+.security-threat__card--red {
+  --_card-accent: color-mix(in srgb, var(--color-terminal-red) 30%, transparent);
+}
+
+.security-threat__card--green {
+  --_card-accent: color-mix(in srgb, var(--color-terminal-green) 30%, transparent);
+}
+
+.security-threat__card--accent {
+  --_card-accent: color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
+.security-threat__card-icon {
+  margin-bottom: var(--spacing-6);
+}
+
+.security-threat__card-icon--red {
+  color: var(--color-terminal-red);
+}
+
+.security-threat__card-icon--green {
+  color: var(--color-terminal-green);
+}
+
+.security-threat__card-icon--accent {
+  color: var(--accent);
+}
+
+.security-threat__card-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-xl);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-3);
+}
+
+.security-threat__card-desc {
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-comfortable);
+}

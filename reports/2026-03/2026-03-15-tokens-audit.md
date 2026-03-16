@@ -1,6 +1,9 @@
-# Design Tokens Audit Report
+# Design tokens audit report
 
-**Date:** 2026-03-15  
+**Category:** Report  
+**Version:** 1.0.0  
+**Last Updated:** 2026-03-15  
+**Status:** Complete  
 **Trigger:** `audit tokens`  
 **Task List:** `/tasks/tokens-task-list.md`
 

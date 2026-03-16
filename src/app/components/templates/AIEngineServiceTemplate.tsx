@@ -13,6 +13,7 @@
 
 import { Brain, Sparkle, Target, Lightning, CheckCircle, TrendUp } from '@phosphor-icons/react';
 import { Link } from 'react-router';
+import { getPageUrl } from '../../data/site-pages';
 import { FeatureList } from '../patterns/FeatureList';
 import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
 import { Container } from '../common/Container';
@@ -101,26 +102,26 @@ export const AIEngineServiceTemplate = () => {
       <JourneyPhaseIndicator currentPhase="ignite" currentServicePage="ai-engine-optimization" />
 
       {/* Hero Section */}
-      <section style={{ position: 'relative', minHeight: '60vh', display: 'flex', alignItems: 'center', backgroundColor: 'var(--background)', overflow: 'hidden' }}>
+      <section className="service-hero" style={{ minHeight: '60vh' }}>
         <div style={{ position: 'absolute', inset: 0, opacity: 0.1, backgroundImage: 'radial-gradient(circle at center, var(--border) 1px, transparent 1px)', backgroundSize: '24px 24px', zIndex: 0 }} aria-hidden="true" />
         
         <Container>
-          <div style={{ position: 'relative', zIndex: 1, maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
+          <div className="service-hero__content service-hero__content--centered">
             <ScrollReveal animation="fade-up">
-              <h1 style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-h1)', color: 'var(--foreground)', marginBottom: 'var(--spacing-6)' }}>
+              <h1 className="service-hero__title">
                 AI Engine Optimization (AEO)
               </h1>
               
-              <p style={{ fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-xl)', color: 'var(--muted-foreground)', marginBottom: 'var(--spacing-10)', lineHeight: 1.6 }}>
+              <p className="service-hero__description service-hero__description--centered">
                 Position your brand for the AI-powered future of search. Get cited by ChatGPT, Claude, 
                 Perplexity, and other AI systems that are becoming the new search engines.
               </p>
               
               <div className="wp-flex wp-justify-center wp-gap-4 wp-flex-wrap">
-                <Link to="/contact" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: 'var(--spacing-3) var(--spacing-8)', backgroundColor: 'var(--primary)', color: 'var(--primary-foreground)', borderRadius: 'var(--radius)', fontFamily: 'var(--font-secondary)', fontWeight: 'var(--font-weight-bold)', textDecoration: 'none' }}>
+                <Link to={getPageUrl('contact')} className="sub-service-base__hero-btn sub-service-base__hero-btn--primary">
                   Get AI Visibility Audit
                 </Link>
-                <Link to="/services/ai/search-visibility" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: 'var(--spacing-3) var(--spacing-8)', backgroundColor: 'transparent', color: 'var(--foreground)', border: '1px solid var(--border)', borderRadius: 'var(--radius)', fontFamily: 'var(--font-secondary)', fontWeight: 'var(--font-weight-medium)', textDecoration: 'none' }}>
+                <Link to={getPageUrl('ai-search-visibility')} className="sub-service-base__hero-btn sub-service-base__hero-btn--outline">
                   View Parent Service
                 </Link>
               </div>
@@ -130,12 +131,12 @@ export const AIEngineServiceTemplate = () => {
       </section>
 
       {/* Benefits Grid */}
-      <section style={{ padding: 'var(--spacing-24) 0', backgroundColor: 'var(--muted)' }}>
+      <section className="service-section service-section--bg-muted">
         <Container>
-          <div style={{ textAlign: 'center', marginBottom: 'var(--spacing-16)' }}>
+          <div className="service-section__header">
             <ScrollReveal animation="fade-up">
-              <h2 style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-h2)', color: 'var(--foreground)', marginBottom: 'var(--spacing-4)' }}>Why AI Engine Optimization Matters</h2>
-              <p style={{ fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-lg)', color: 'var(--muted-foreground)', maxWidth: '600px', margin: '0 auto' }}>
+              <h2 className="service-section__title">Why AI Engine Optimization Matters</h2>
+              <p className="service-section__description">
                 AI systems are becoming primary information sources. Be visible where your audience asks questions.
               </p>
             </ScrollReveal>
@@ -153,12 +154,12 @@ export const AIEngineServiceTemplate = () => {
       </section>
 
       {/* Process */}
-      <section style={{ padding: 'var(--spacing-24) 0', backgroundColor: 'var(--background)' }}>
+      <section className="service-section service-section--bg-background">
         <Container>
-          <div style={{ textAlign: 'center', marginBottom: 'var(--spacing-16)' }}>
+          <div className="service-section__header">
             <ScrollReveal animation="fade-up">
-              <h2 style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-h2)', color: 'var(--foreground)', marginBottom: 'var(--spacing-4)' }}>Our Process</h2>
-              <p style={{ fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-lg)', color: 'var(--muted-foreground)', maxWidth: '600px', margin: '0 auto' }}>
+              <h2 className="service-section__title">Our Process</h2>
+              <p className="service-section__description">
                 Four-phase approach to AI engine visibility
               </p>
             </ScrollReveal>
@@ -182,12 +183,12 @@ export const AIEngineServiceTemplate = () => {
       </section>
 
       {/* Results */}
-      <section style={{ padding: 'var(--spacing-24) 0', backgroundColor: 'var(--card)' }}>
+      <section className="service-section service-section--bg-card">
         <Container>
-          <div style={{ textAlign: 'center', marginBottom: 'var(--spacing-16)' }}>
+          <div className="service-section__header">
             <ScrollReveal animation="fade-up">
-              <h2 style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-h2)', color: 'var(--foreground)', marginBottom: 'var(--spacing-4)' }}>Expected Results</h2>
-              <p style={{ fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-lg)', color: 'var(--muted-foreground)', maxWidth: '600px', margin: '0 auto' }}>
+              <h2 className="service-section__title">Expected Results</h2>
+              <p className="service-section__description">
                 Measurable improvements in AI visibility and brand presence
               </p>
             </ScrollReveal>

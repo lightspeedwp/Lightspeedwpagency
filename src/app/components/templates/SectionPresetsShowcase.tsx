@@ -63,7 +63,7 @@ export function SectionPresetsShowcase() {
   const breadcrumbs = [
     { label: 'Home', page: 'home' as const },
     { label: 'Developer Tools', page: 'dev-tools' as const },
-    { label: 'Section Presets' },
+    { label: 'Section presets' },
   ];
 
   return (
@@ -74,7 +74,7 @@ export function SectionPresetsShowcase() {
       <section className="presets-showcase__hero">
         <Container>
           <ScrollReveal animation="fade-up">
-            <h1 className="presets-showcase__hero-title">Section Presets</h1>
+            <h1 className="presets-showcase__hero-title">Section presets</h1>
             <p className="presets-showcase__hero-desc">
               Pre-configured section styles that map to WordPress block variations.
               Consistent padding, typography, and color themes.

@@ -56,7 +56,7 @@ export function TestimonialArchiveTemplate() {
       {/* Hero */}
       <Hero
         badge={{ text: 'CLIENT TESTIMONIALS' }}
-        title="Hear From Our Clients"
+        title="Hear from our clients"
         description="Real stories from real businesses. See how LightSpeed has helped companies transform their WordPress and WooCommerce platforms."
         variant="service"
         gradient="blue"

@@ -55,7 +55,7 @@
 .section-style-cta-primary h5,
 .section-style-cta-primary h6 {
   font-family: var(--font-primary);
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
   color: var(--primary-foreground);
   letter-spacing: var(--letter-spacing-tight);
   line-height: var(--line-height-snug);
@@ -69,7 +69,7 @@
 .section-style-cta-primary p {
   font-family: var(--font-primary);
   font-size: var(--text-lead);
-  font-weight: 400;
+  font-weight: var(--font-weight-normal);
   color: var(--primary-foreground);
   /* CONTRAST FIX: Removed opacity 0.95 to maintain AAA contrast (16.07:1) in light mode */
   line-height: var(--line-height-relaxed);
@@ -87,7 +87,7 @@
 .section-style-cta-primary .text-sm {
   font-family: var(--font-secondary);
   font-size: var(--text-sm);
-  font-weight: 400;
+  font-weight: var(--font-weight-normal);
   color: var(--primary-foreground);
   /* CONTRAST FIX: Removed opacity 0.9 to maintain AAA contrast in light mode */
 }
@@ -131,7 +131,7 @@
 .section-style-cta-primary .trust-indicators span {
   font-family: var(--font-primary);
   font-size: var(--text-base);
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
   color: var(--primary-foreground);
   /* CONTRAST FIX: Removed opacity 0.9 to maintain AAA contrast in light mode */
   display: flex;
@@ -153,7 +153,7 @@
 .section-style-cta-secondary h5,
 .section-style-cta-secondary h6 {
   font-family: var(--font-primary);
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
   color: var(--foreground);
   letter-spacing: var(--letter-spacing-tight);
   line-height: var(--line-height-snug);
@@ -167,7 +167,7 @@
 .section-style-cta-secondary p {
   font-family: var(--font-primary);
   font-size: var(--text-lead);
-  font-weight: 400;
+  font-weight: var(--font-weight-normal);
   color: var(--muted-foreground);
   line-height: var(--line-height-relaxed);
   margin-bottom: var(--spacing-10);
@@ -184,7 +184,7 @@
 .section-style-cta-secondary .text-sm {
   font-family: var(--font-secondary);
   font-size: var(--text-sm);
-  font-weight: 400;
+  font-weight: var(--font-weight-normal);
   color: var(--muted-foreground);
 }
 
@@ -222,7 +222,7 @@
 .section-style-cta-accent h5,
 .section-style-cta-accent h6 {
   font-family: var(--font-primary);
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
   color: var(--accent-foreground);
   letter-spacing: var(--letter-spacing-tight);
   line-height: var(--line-height-snug);
@@ -236,7 +236,7 @@
 .section-style-cta-accent p {
   font-family: var(--font-primary);
   font-size: var(--text-lead);
-  font-weight: 400;
+  font-weight: var(--font-weight-normal);
   color: var(--accent-foreground);
   /* CONTRAST FIX: Removed opacity 0.95 to maintain AAA contrast in light mode */
   line-height: var(--line-height-relaxed);

@@ -24,7 +24,8 @@
 .design-showcase__hero-title {
   font-family: var(--font-primary);
   font-size: var(--text-h1);
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-extrabold);
+  color: var(--foreground);
   margin-bottom: var(--spacing-4);
 }
 
@@ -135,7 +136,7 @@
 .wp-block-hero__title {
   font-family: var(--font-primary);
   font-size: var(--text-h1);
-  font-weight: 800;
+  font-weight: var(--font-weight-extrabold);
   color: var(--foreground);
   margin-bottom: var(--spacing-6);
 }

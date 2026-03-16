@@ -274,8 +274,8 @@ export function LogoInline({
             fill={textColor}
             className="wp-font-primary"
             fontSize="16" 
-            fontWeight="600" 
             letterSpacing="1"
+            style={{ fontWeight: 'var(--font-weight-semibold)' }}
           >
             LSX
           </text>

@@ -1,1 +1,5 @@
-export { HoverCard, HoverCardTrigger, HoverCardContent } from "@/app/components/blocks/feedback/HoverCard";
+/**
+ * Deprecated — HoverCard block not yet implemented.
+ * @see @radix-ui/react-hover-card for direct usage.
+ */
+export {};

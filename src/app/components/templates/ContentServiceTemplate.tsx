@@ -51,15 +51,26 @@ const processSteps = contentProcess.map((step) => ({
   description: step.description,
 }));
 
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
+
 export function ContentServiceTemplate() {
   return (
     <div className="wp-w-full wp-flex wp-flex-col">
+      {/* Breadcrumbs */}
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Services', href: '/services' },
+          { label: 'Content' },
+        ]}
+      />
+
       {/* ============================================
           HERO SECTION (The Art of Words)
           ============================================ */}
-      <section style={{ position: 'relative', minHeight: '80vh', display: 'flex', alignItems: 'center', backgroundColor: 'var(--background)', overflow: 'hidden' }}>
-        {/* Paper texture background */}
-        <div style={{ position: 'absolute', inset: 0, opacity: 0.03, backgroundImage: 'url("https://www.transparenttextures.com/patterns/cream-paper.png")', zIndex: 0 }} aria-hidden="true" />
+      <section className="service-hero" style={{ minHeight: '80vh' }}>
+        {/* Paper texture background — CSS noise pattern (no external dependency) */}
+        <div style={{ position: 'absolute', inset: 0, opacity: 0.03, backgroundImage: 'repeating-conic-gradient(var(--foreground) 0% 25%, transparent 0% 50%)', backgroundSize: '4px 4px', zIndex: 0 }} aria-hidden="true" />
         <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '100%', background: 'linear-gradient(to bottom, rgba(var(--background-rgb), 0) 0%, var(--background) 100%)', zIndex: 0 }} aria-hidden="true" />
         
         {/* Floating Manuscript Pages Background */}
@@ -81,15 +92,15 @@ export function ContentServiceTemplate() {
         </div>
 
         <Container>
-          <div style={{ position: 'relative', zIndex: 1, textAlign: 'center', maxWidth: '800px', margin: '0 auto' }}>
+          <div className="service-hero__content service-hero__content--centered" style={{ textAlign: 'center' }}>
             <ScrollReveal animation="fade-down">
-              <div style={{ display: 'inline-block', fontFamily: 'var(--font-mono)', fontSize: 'var(--text-sm)', color: 'var(--muted-foreground)', letterSpacing: '0.1em', marginBottom: 'var(--spacing-6)' }}>
+              <div className="service-hero__badge service-hero__badge--mono" style={{ display: 'inline-block', color: 'var(--muted-foreground)', letterSpacing: 'var(--letter-spacing-widest)' }}>
                 — DRAFT v1.0 —
               </div>
 
-              <h1 style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-h1)', color: 'var(--foreground)', lineHeight: 1.1, marginBottom: 'var(--spacing-6)', position: 'relative', display: 'inline-block' }}>
+              <h1 className="service-hero__title" style={{ position: 'relative', display: 'inline-block' }}>
                 Content That <br />
-                <span style={{ color: 'transparent', backgroundImage: 'linear-gradient(90deg, var(--primary), var(--secondary))', WebkitBackgroundClip: 'text', backgroundClip: 'text' }}>Connects</span>
+                <span className="service-hero__gradient-text">Connects</span>
                 <span style={{ display: 'inline-block', width: '4px', height: '1em', backgroundColor: 'var(--primary)', marginLeft: '8px', verticalAlign: 'text-bottom', animation: 'blink 1s step-end infinite' }}></span>
                 
                 {/* Editing Marks */}
@@ -97,7 +108,7 @@ export function ContentServiceTemplate() {
               </h1>
               
               <div style={{ position: 'relative', maxWidth: '600px', margin: '0 auto' }}>
-                <p style={{ fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-xl)', color: 'var(--muted-foreground)', lineHeight: 1.6, marginBottom: 'var(--spacing-10)' }}>
+                <p className="service-hero__description service-hero__description--centered">
                   {contentHero.description}
                 </p>
                 {/* Editing Marks */}
@@ -113,7 +124,7 @@ export function ContentServiceTemplate() {
       {/* ============================================
           WHY LIGHTSPEED (The Pen is Mightier)
           ============================================ */}
-      <section style={{ padding: 'var(--spacing-24) 0', backgroundColor: 'var(--muted)' }}>
+      <section className="service-section service-section--bg-muted">
         <Container>
           <ScrollReveal animation="fade-up">
             <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -121,11 +132,11 @@ export function ContentServiceTemplate() {
                 <Feather size={40} weight="duotone" />
               </div>
               
-              <h2 style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-h2)', color: 'var(--foreground)', marginBottom: 'var(--spacing-6)' }}>
+              <h2 className="service-section__title" style={{ marginBottom: 'var(--spacing-6)' }}>
                 {whyContentStrategy.title}
               </h2>
               
-              <p style={{ fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-lg)', color: 'var(--muted-foreground)', lineHeight: 1.6 }}>
+              <p className="service-section__description" style={{ lineHeight: 'var(--line-height-comfortable)' }}>
                 {whyContentStrategy.description}
               </p>
             </div>
@@ -136,12 +147,12 @@ export function ContentServiceTemplate() {
       {/* ============================================
           SERVICES GRID (Sticky Notes)
           ============================================ */}
-      <section id="services" style={{ padding: 'var(--spacing-24) 0', backgroundColor: 'var(--background)' }}>
+      <section id="services" className="service-section service-section--bg-background">
         <Container>
-          <div style={{ textAlign: 'center', marginBottom: 'var(--spacing-16)' }}>
+          <div className="service-section__header">
             <ScrollReveal animation="fade-up">
-              <h2 style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-h2)', color: 'var(--foreground)', marginBottom: 'var(--spacing-4)' }}>Editorial Services</h2>
-              <p style={{ fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-lg)', color: 'var(--muted-foreground)', maxWidth: '600px', margin: '0 auto' }}>
+              <h2 className="service-section__title">Editorial services</h2>
+              <p className="service-section__description">
                 Comprehensive content solutions for your brand.
               </p>
             </ScrollReveal>
@@ -160,12 +171,12 @@ export function ContentServiceTemplate() {
       {/* ============================================
           PROCESS (Editorial Pipeline)
           ============================================ */}
-      <section id="process" style={{ padding: 'var(--spacing-24) 0', backgroundColor: 'var(--card)' }}>
+      <section id="process" className="service-section service-section--bg-card">
         <Container>
-          <div style={{ textAlign: 'center', marginBottom: 'var(--spacing-16)' }}>
+          <div className="service-section__header">
             <ScrollReveal animation="fade-up">
-              <h2 style={{ fontFamily: 'var(--font-primary)', fontSize: 'var(--text-h2)', color: 'var(--foreground)', marginBottom: 'var(--spacing-4)' }}>From Draft to Publish</h2>
-              <p style={{ fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-lg)', color: 'var(--muted-foreground)', maxWidth: '600px', margin: '0 auto' }}>
+              <h2 className="service-section__title">From draft to publish</h2>
+              <p className="service-section__description">
                 Our rigorous editorial process ensures quality.
               </p>
             </ScrollReveal>

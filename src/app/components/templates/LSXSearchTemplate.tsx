@@ -42,6 +42,7 @@ import { useHeroParallax } from '../../hooks/useHeroParallax';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { ScrollDownArrow } from '../common/ScrollDownArrow';
 import { MagnifyingGlass as Search } from '@phosphor-icons/react';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 
 import {
   lsxSearchHero,
@@ -62,6 +63,15 @@ export function LSXSearchTemplate() {
 
   return (
     <div className="lsx-search">
+      {/* Breadcrumbs */}
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Solutions', href: '/solutions' },
+          { label: 'LSX Search' },
+        ]}
+      />
+
       {/* ============================================
           1. HERO SECTION (Parallax + Floating Orbs)
           ============================================ */}

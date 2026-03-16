@@ -26,7 +26,7 @@ export const contentHero = {
     icon: FileText,
     text: 'Content Services'
   },
-  title: 'Strategic Content That',
+  title: 'Strategic content that',
   titleHighlight: 'Converts',
   description: 'Transform your website with professional content strategy and creation. From SEO-optimized blog posts to compelling landing pages, we create content that engages your audience and drives measurable results.',
   cta: {
@@ -39,27 +39,27 @@ export const contentHero = {
  * Why Content Strategy Matters
  */
 export const whyContentStrategy = {
-  title: 'Why Professional Content Matters',
+  title: 'Why professional content matters',
   description: 'Great content is the foundation of digital success',
   benefits: [
     {
       icon: Users,
-      title: 'Engage Your Audience',
+      title: 'Engage your audience',
       description: 'Connect with your target audience through relevant, valuable content that addresses their needs and pain points.'
     },
     {
       icon: TrendUp,
-      title: 'Improve SEO Rankings',
+      title: 'Improve SEO rankings',
       description: 'Rank higher in search results with SEO-optimized content that targets the right keywords and provides value to users.'
     },
     {
       icon: Crosshair,
-      title: 'Build Authority',
+      title: 'Build authority',
       description: 'Establish thought leadership and brand authority with expert content that demonstrates your knowledge and expertise.'
     },
     {
       icon: CheckCircle,
-      title: 'Drive Conversions',
+      title: 'Drive conversions',
       description: 'Turn visitors into customers with persuasive content that guides users through the buying journey.'
     }
   ]
@@ -71,32 +71,32 @@ export const whyContentStrategy = {
 export const contentServices = [
   {
     icon: Crosshair,
-    title: 'Content Strategy',
+    title: 'Content strategy',
     description: 'Comprehensive content planning: audience research, keyword strategy, content calendar, and editorial guidelines.'
   },
   {
     icon: PencilSimple,
-    title: 'Professional Writing',
+    title: 'Professional writing',
     description: 'Expert content creation by experienced writers specializing in your industry and target audience.'
   },
   {
     icon: FileText,
-    title: 'Editing & Proofreading',
+    title: 'Editing & proofreading',
     description: 'Thorough editing for clarity, grammar, style consistency, and brand voice alignment.'
   },
   {
     icon: MagnifyingGlass,
-    title: 'SEO Optimization',
+    title: 'SEO optimization',
     description: 'Keyword research, on-page SEO, meta descriptions, internal linking, and search intent alignment.'
   },
   {
     icon: ChartBar,
-    title: 'Content Audits',
+    title: 'Content audits',
     description: 'Comprehensive analysis of existing content with recommendations for updates, improvements, and pruning.'
   },
   {
     icon: Calendar,
-    title: 'Content Management',
+    title: 'Content management',
     description: 'End-to-end content workflow management: planning, creation, review, publishing, and performance tracking.'
   }
 ];
@@ -107,27 +107,27 @@ export const contentServices = [
 export const contentProcess = [
   {
     step: 1,
-    title: 'Research & Discovery',
+    title: 'Research & discovery',
     description: 'Deep dive into your business, audience, competitors, and industry: audience personas, competitor analysis, keyword research, and content gap analysis.'
   },
   {
     step: 2,
-    title: 'Strategy & Planning',
+    title: 'Strategy & planning',
     description: 'Develop comprehensive content strategy: content pillars, editorial calendar, topic clusters, SEO targets, and success metrics.'
   },
   {
     step: 3,
-    title: 'Content Creation',
+    title: 'Content creation',
     description: 'Professional writing and production: research, outlining, writing, fact-checking, and incorporating SEO best practices.'
   },
   {
     step: 4,
-    title: 'Review & Optimization',
+    title: 'Review & optimization',
     description: 'Quality assurance process: editing, proofreading, SEO optimization, brand voice alignment, and client review cycles.'
   },
   {
     step: 5,
-    title: 'Publishing & Analytics',
+    title: 'Publishing & analytics',
     description: 'Content publishing and performance tracking: WordPress publishing, metadata optimization, performance monitoring, and iterative improvements.'
   }
 ];
@@ -136,7 +136,7 @@ export const contentProcess = [
  * Content Types We Create
  */
 export const contentTypes = {
-  title: 'Content Types We Create',
+  title: 'Content types we create',
   description: 'Comprehensive content solutions for every marketing need',
   types: [
     { 
@@ -282,7 +282,7 @@ export const contentFAQs = [
  * CTA Section
  */
 export const contentCTA = {
-  title: 'Ready to Transform Your Content?',
+  title: 'Ready to transform your content?',
   description: 'Get a free content strategy consultation and learn how professional content can drive traffic, engagement, and conversions for your business.',
   buttons: [
     { text: 'Get Free Consultation', page: 'contact' as const },

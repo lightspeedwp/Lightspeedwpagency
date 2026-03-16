@@ -53,7 +53,7 @@ export function SinglePodcastTemplate({ slug }: Props) {
             <div className="single-podcast__player">
               <div className="single-podcast__player-header">
                 <div className="single-podcast__cover">
-                  <img src={episode.featuredImage} alt={episode.title} />
+                  <img src={episode.featuredImage} alt={episode.title} loading="lazy" />
                 </div>
                 <div className="single-podcast__player-info">
                   <span className="single-podcast__episode-label">

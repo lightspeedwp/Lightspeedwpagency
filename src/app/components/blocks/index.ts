@@ -27,6 +27,8 @@ export * from './text/List';
 // ============================================================================
 export * from './feedback/Alert';
 export * from './feedback/Toast';
+export * from './feedback/Modal';
+export * from './feedback/AlertDialog';
 
 // ============================================================================
 // UTILITY COMPONENTS

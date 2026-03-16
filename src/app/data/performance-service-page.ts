@@ -31,35 +31,35 @@ export const performanceServiceHero = {
 };
 
 export const performanceServiceOverview = {
-  title: 'Why LightSpeed Performance Matters',
+  title: 'Why LightSpeed performance matters',
   description:
     'Every millisecond counts. Slow sites lose visitors, tank SEO rankings, and bleed conversions. Our performance optimisation service delivers measurable speed gains backed by real-world metrics — not guesswork.',
 };
 
 export const performanceServiceFeatures = {
-  title: 'What We Optimise',
+  title: 'What we optimise',
   features: [
     {
       icon: Gauge,
-      title: 'Speed Audit',
+      title: 'Speed audit',
       description:
         'Full Lighthouse & WebPageTest analysis with a prioritised action plan.',
     },
     {
       icon: Stack,
-      title: 'Code Optimisation',
+      title: 'Code optimisation',
       description:
         'Critical CSS extraction, JS defer/async, unused code elimination.',
     },
     {
       icon: HardDrive,
-      title: 'Caching Strategy',
+      title: 'Caching strategy',
       description:
         'Server-side, edge, and browser caching configured for instant repeat visits.',
     },
     {
       icon: DeviceMobile,
-      title: 'Asset Optimisation',
+      title: 'Asset optimisation',
       description:
         'AVIF/WebP images, font subsetting, lazy loading for below-the-fold media.',
     },

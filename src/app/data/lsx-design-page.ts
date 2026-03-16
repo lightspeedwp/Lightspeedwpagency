@@ -24,19 +24,19 @@ export const lsxDesignFeatures = [
   {
     id: 'block-themes',
     icon: Stack,
-    title: 'Modern Block Themes',
+    title: 'Modern block themes',
     description: 'Built entirely with WordPress blocks and Full Site Editing (FSE) for maximum flexibility and user control.'
   },
   {
     id: 'design-system',
     icon: Palette,
-    title: 'Comprehensive Design System',
+    title: 'Comprehensive design system',
     description: 'Consistent design tokens, patterns, and components ensure brand consistency across all pages.'
   },
   {
     id: 'performance',
     icon: Lightning,
-    title: 'Performance Optimized',
+    title: 'Performance optimized',
     description: 'Lightning-fast load times with optimized code, minimal dependencies, and efficient asset loading.'
   },
   {
@@ -96,25 +96,25 @@ export const lsxBenefits = [
   {
     id: 'no-code',
     icon: Code,
-    title: 'No Code Required',
+    title: 'No code required',
     description: 'Edit everything visually through the WordPress block editor - no coding knowledge needed.'
   },
   {
     id: 'scalable',
     icon: TrendUp,
-    title: 'Scalable Architecture',
+    title: 'Scalable architecture',
     description: 'Built to grow with your business from startup to enterprise without performance loss.'
   },
   {
     id: 'customization',
     icon: GearSix,
-    title: 'Easy Customization',
+    title: 'Easy customization',
     description: 'Global styles, theme.json configuration, and pattern library for quick customization.'
   },
   {
     id: 'multilingual',
     icon: Globe,
-    title: 'Multi-language Ready',
+    title: 'Multi-language ready',
     description: 'Translation-ready with support for WPML, Polylang, and WordPress multilingual features.'
   }
 ];
@@ -129,13 +129,13 @@ export const lsxProcessSteps = [
   },
   {
     step: 2,
-    title: 'Design System',
+    title: 'Design system',
     description: 'Create design tokens, color palettes, typography scales, and component library.',
     icon: Palette
   },
   {
     step: 3,
-    title: 'Theme Development',
+    title: 'Theme development',
     description: 'Build custom block themes with FSE, theme.json, and block patterns.',
     icon: Code
   },

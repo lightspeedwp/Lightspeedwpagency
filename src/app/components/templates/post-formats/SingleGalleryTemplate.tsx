@@ -52,8 +52,9 @@ export function SingleGalleryTemplate() {
                   <div key={index} className="wp-block-gallery-item">
                     <img 
                       src={imgUrl} 
-                      alt={`Gallery image ${index + 1}`} 
+                      alt={`Gallery image ${index + 1}`}
                       className="wp-block-gallery-item__img"
+                      loading="lazy"
                     />
                   </div>
                 ))}

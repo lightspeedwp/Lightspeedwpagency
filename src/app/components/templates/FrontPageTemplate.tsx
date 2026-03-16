@@ -178,7 +178,7 @@ export function FrontPageTemplate() {
           5. PROVEN TRACK RECORD
           ============================================ */}
       <StatsSection
-        title="Proven Track Record"
+        title="Proven track record"
         stats={frontPageStats}
         variant="proven-track"
       />
@@ -266,7 +266,7 @@ export function FrontPageTemplate() {
         <Container>
           <TrendingTopicsWidget
             sources={['blog-categories', 'project-groups', 'project-tags']}
-            title="Explore Our Expertise"
+            title="Explore our expertise"
             label="What We Do"
             description="Browse our work by industry, technology, or topic."
             maxPerSection={8}
@@ -336,7 +336,7 @@ export function FrontPageTemplate() {
           10. COMMON QUESTIONS
           ============================================ */}
       <LazyFAQSection
-        title="Common Questions"
+        title="Common questions"
         faqs={frontPageFAQs}
         variant="default"
       />

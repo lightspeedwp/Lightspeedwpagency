@@ -59,8 +59,9 @@ export function HeroSplash({
       <img 
         ref={parallaxRef}
         src={bgImage}
-        alt="Hero background"
+        alt=""
         className="hero-base__bg"
+        aria-hidden="true"
       />
       
       {/* Overlays */}

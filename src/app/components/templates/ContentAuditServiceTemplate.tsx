@@ -6,6 +6,7 @@
 
 import { MagnifyingGlass, ListChecks as FileCheck, TrendDown, WarningCircle, Crosshair, Trophy, Package } from '@phosphor-icons/react';
 import { Link } from 'react-router';
+import { getPageUrl } from '../../data/site-pages';
 import { Container } from '../common/Container';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { ServiceCapabilitiesGrid } from '../patterns/ServiceCapabilitiesGrid';
@@ -13,6 +14,7 @@ import { AgencyStats } from '../patterns/AgencyStats';
 import { CheckList } from '../patterns/CheckList';
 import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
 import { FunkyCTA } from '../patterns/FunkyCTA';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 
 export const ContentAuditServiceTemplate = () => {
   const benefits = [
@@ -36,47 +38,35 @@ export const ContentAuditServiceTemplate = () => {
   return (
     <div className="wp-w-full wp-flex wp-flex-col" data-service="content-audit">
       {/* HERO SECTION */}
-      <section 
-        style={{
-          position: 'relative',
-          padding: 'var(--spacing-32) 0',
-          backgroundColor: 'var(--background)',
-          overflow: 'hidden',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          minHeight: '60vh',
-          textAlign: 'center'
-        }}
-      >
+      <section className="service-hero" style={{ minHeight: '60vh' }}>
         <div style={{ position: 'absolute', top: 0, left: '50%', transform: 'translate(-50%, -50%)', width: '100vw', height: '100vh', background: 'radial-gradient(ellipse at bottom, rgba(var(--secondary-rgb), 0.1) 0%, transparent 70%)', zIndex: 0, pointerEvents: 'none' }} />
         
-        <div style={{ position: 'relative', zIndex: 1, maxWidth: '800px', padding: '0 var(--spacing-8)' }}>
+        <div className="service-hero__content" style={{ padding: '0 var(--spacing-8)' }}>
           <ScrollReveal animation="fade-down">
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 'var(--spacing-2)', fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-sm)', color: 'var(--muted-foreground)', marginBottom: 'var(--spacing-6)' }}>
-              <Link to="/services" style={{ color: 'inherit', textDecoration: 'none', transition: 'color var(--transition-base)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--muted-foreground)'}>Services</Link>
-              <span style={{ color: 'var(--border)' }}>/</span>
-              <Link to="/services/content" style={{ color: 'inherit', textDecoration: 'none', transition: 'color var(--transition-base)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--muted-foreground)'}>Content</Link>
-              <span style={{ color: 'var(--border)' }}>/</span>
-              <span style={{ color: 'var(--primary)', fontWeight: 'var(--font-weight-medium)' }}>Content Audit</span>
-            </div>
+            <BreadcrumbPart
+              items={[
+                { label: 'Home', href: '/' },
+                { label: 'Services', href: '/services' },
+                { label: 'Content', href: '/services/content' },
+                { label: 'Content Audit' },
+              ]}
+            />
             
-            <h1 style={{ margin: '0 0 var(--spacing-6) 0', fontFamily: 'var(--font-primary)', fontSize: 'var(--text-h1)', color: 'var(--foreground)', lineHeight: '1.1' }}>
+            <h1 className="service-hero__title">
               Content Audit <br />
-              <span style={{ color: 'transparent', backgroundImage: 'linear-gradient(90deg, var(--primary), var(--secondary))', WebkitBackgroundClip: 'text', backgroundClip: 'text' }}>Services</span>
+              <span className="service-hero__gradient-text">Services</span>
             </h1>
             
-            <p style={{ margin: '0 auto var(--spacing-10) auto', fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-xl)', color: 'var(--muted-foreground)', lineHeight: '1.6', maxWidth: '600px' }}>
+            <p className="service-hero__description service-hero__description--centered">
               Know exactly what content you have, how it's performing, and what to do next. Our comprehensive audits 
               reveal quick wins and long-term opportunities to improve content ROI.
             </p>
             
             <div className="wp-flex wp-justify-center wp-gap-4">
-              <Link to="/contact" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: 'var(--spacing-4) var(--spacing-8)', backgroundColor: 'var(--primary)', color: 'var(--primary-foreground)', borderRadius: 'var(--radius)', fontFamily: 'var(--font-primary)', fontSize: 'var(--text-base)', fontWeight: 'var(--font-weight-semibold)', textDecoration: 'none', boxShadow: '0 4px 15px rgba(var(--primary-rgb), 0.3)' }}>
+              <Link to={getPageUrl('contact')} className="sub-service-base__content-btn sub-service-base__content-btn--primary">
                 Get Content Audit
               </Link>
-              <Link to="/services/content" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: 'var(--spacing-4) var(--spacing-8)', backgroundColor: 'transparent', border: '1px solid var(--border)', color: 'var(--foreground)', borderRadius: 'var(--radius)', fontFamily: 'var(--font-primary)', fontSize: 'var(--text-base)', fontWeight: 'var(--font-weight-medium)', textDecoration: 'none' }}>
+              <Link to={getPageUrl('content')} className="sub-service-base__content-btn sub-service-base__content-btn--outline">
                 View Parent Service
               </Link>
             </div>
@@ -85,7 +75,7 @@ export const ContentAuditServiceTemplate = () => {
       </section>
 
       {/* BENEFITS */}
-      <section style={{ padding: 'var(--spacing-24) 0', backgroundColor: 'var(--muted)' }}>
+      <section className="service-section service-section--bg-muted">
         <Container>
           <ScrollReveal animation="fade-up">
             <ServiceCapabilitiesGrid
@@ -104,21 +94,21 @@ export const ContentAuditServiceTemplate = () => {
       </section>
 
       {/* DELIVERABLES */}
-      <section style={{ padding: 'var(--spacing-24) 0', backgroundColor: 'var(--background)' }}>
+      <section className="service-section service-section--bg-background">
         <Container>
           <div className="wp-grid-2-cols wp-items-center wp-gap-16">
             <ScrollReveal animation="fade-up">
               <div>
-                <div style={{ display: 'inline-flex', alignItems: 'center', gap: 'var(--spacing-2)', padding: 'var(--spacing-2) var(--spacing-4)', borderRadius: 'var(--radius-full)', backgroundColor: 'var(--card)', border: '1px solid var(--border)', color: 'var(--secondary)', fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-sm)', fontWeight: 'var(--font-weight-medium)', marginBottom: 'var(--spacing-4)' }}>
+                <div className="sub-service-base__eyebrow-badge">
                   <Package size={16} weight="duotone" />
                   What You Get
                 </div>
-                <h2 style={{ margin: '0 0 var(--spacing-6) 0', fontFamily: 'var(--font-primary)', fontSize: 'var(--text-h2)', color: 'var(--foreground)' }}>Actionable Reports & Roadmaps</h2>
-                <p style={{ margin: '0 0 var(--spacing-8) 0', fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-lg)', color: 'var(--muted-foreground)' }}>Clear, prioritized next steps to improve your content performance.</p>
+                <h2 className="sub-service-base__deliverables-title">Actionable Reports & Roadmaps</h2>
+                <p className="sub-service-base__deliverables-description">Clear, prioritized next steps to improve your content performance.</p>
               </div>
             </ScrollReveal>
             <ScrollReveal animation="fade-up" delay={100}>
-              <div style={{ backgroundColor: 'var(--card)', border: '1px solid var(--border)', borderRadius: 'var(--radius-xl)', padding: 'var(--spacing-8)' }}>
+              <div className="sub-service-base__deliverables-card">
                 <CheckList items={deliverables} columns={1} />
               </div>
             </ScrollReveal>
@@ -127,7 +117,7 @@ export const ContentAuditServiceTemplate = () => {
       </section>
 
       {/* RESULTS */}
-      <section style={{ padding: 'var(--spacing-24) 0', backgroundColor: 'var(--muted)' }}>
+      <section className="service-section service-section--bg-muted">
         <Container>
           <ScrollReveal animation="fade-up">
             <AgencyStats

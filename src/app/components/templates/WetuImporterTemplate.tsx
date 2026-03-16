@@ -44,6 +44,7 @@ import { Heading } from '@/app/components/common/Heading';
 import { Paragraph } from '@/app/components/blocks/text/Paragraph';
 import { useHeroParallax } from '../../hooks/useHeroParallax';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 
 import {
   wetuImporterHero,
@@ -64,6 +65,15 @@ export function WetuImporterTemplate() {
 
   return (
     <div className="wetu-importer">
+      {/* Breadcrumbs */}
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Solutions', href: '/solutions' },
+          { label: 'Wetu Importer' },
+        ]}
+      />
+
       {/* ============================================
           1. HERO SECTION (Parallax + Floating Orbs)
           ============================================ */}

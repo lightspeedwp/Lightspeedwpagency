@@ -21,6 +21,7 @@ import { StatsGrid } from '../patterns/StatsGrid';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { Link } from 'react-router';
 import { slugToPath } from '../../utils/route-map';
+import { getPageUrl } from '../../data/site-pages';
 import { ArrowRight, Check, Warning } from '@phosphor-icons/react';
 
 import {
@@ -37,6 +38,15 @@ import {
 export function WordPressRedesignTemplate() {
   return (
     <div className="redesign-page redesign-page--wordpress">
+      {/* Breadcrumbs */}
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Solutions', href: '/solutions' },
+          { label: 'WordPress Redesign' },
+        ]}
+      />
+
       {/* Hero */}
       <section className="redesign-page__hero">
         <Container>
@@ -212,7 +222,7 @@ export function WordPressRedesignTemplate() {
                     ))}
                   </ul>
                   <Link
-                    to="/contact"
+                    to={getPageUrl('contact')}
                     className="redesign-page__pricing-cta"
                   >
                     Get Started

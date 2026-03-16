@@ -338,7 +338,7 @@ export function AboutTemplate() {
           <RelatedContentWidget
             tags={['wordpress', 'block-theme', 'accessibility']}
             count={4}
-            title="From Our Blog & Portfolio"
+            title="From our blog & portfolio"
             label="See Our Work"
           />
         </Container>

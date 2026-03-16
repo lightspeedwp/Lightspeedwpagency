@@ -1,1 +1,5 @@
-export { Slider } from "@/app/components/blocks/forms/Slider";
+/**
+ * Deprecated — Slider block not yet implemented.
+ * @see @radix-ui/react-slider for direct usage.
+ */
+export {};

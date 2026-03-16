@@ -39,6 +39,7 @@ export function SingleAudioTemplate() {
                             src={post._embedded['wp:featuredmedia'][0].source_url} 
                             alt={post.title.rendered} 
                             className="wp-block-post-hero__media-img"
+                            loading="lazy"
                             />
                         )}
                     </div>

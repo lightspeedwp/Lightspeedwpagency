@@ -25,7 +25,7 @@ import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { ArrowLeft, ArrowRight, ArrowSquareOut, Calendar, Stack, Tag } from '@phosphor-icons/react';
 import { getProjectBySlug } from '../../data/portfolio';
 import { Link } from 'react-router';
-
+import { getPageUrl } from '../../data/site-pages';
 
 interface SingleProjectTemplateProps {
   slug: string;
@@ -39,7 +39,7 @@ export function SingleProjectTemplate({ slug }: SingleProjectTemplateProps) {
       <Container>
         <div className="wp-py-24 wp-text-center">
           <h1>Project Not Found</h1>
-          <Link to="/work">Return to Portfolio</Link>
+          <Link to={getPageUrl('work')}>Return to Portfolio</Link>
         </div>
       </Container>
     );
@@ -169,6 +169,7 @@ export function SingleProjectTemplate({ slug }: SingleProjectTemplateProps) {
                       src={project.imageUrl} 
                       alt="Project Screenshot"
                       className="single-project__gallery-image"
+                      loading="lazy"
                     />
                   )}
                 </div>
@@ -182,7 +183,7 @@ export function SingleProjectTemplate({ slug }: SingleProjectTemplateProps) {
 
           {/* Navigation */}
           <nav className="single-project__nav">
-            <Link to="/work" className="single-project__nav-link">
+            <Link to={getPageUrl('work')} className="single-project__nav-link">
               <ArrowLeft size={20} />
               <div>
                 <span className="single-project__nav-label">Back</span>
@@ -191,7 +192,7 @@ export function SingleProjectTemplate({ slug }: SingleProjectTemplateProps) {
             </Link>
             
             {/* Logic to find next project could go here */}
-            <Link to="/work" className="single-project__nav-link wp-text-right wp-flex-row-reverse">
+            <Link to={getPageUrl('work')} className="single-project__nav-link wp-text-right wp-flex-row-reverse">
               <ArrowRight size={20} />
               <div>
                 <span className="single-project__nav-label">Next</span>

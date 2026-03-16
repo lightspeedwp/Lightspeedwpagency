@@ -1,12 +1,5 @@
-export {
-  Drawer,
-  DrawerPortal,
-  DrawerOverlay,
-  DrawerTrigger,
-  DrawerClose,
-  DrawerContent,
-  DrawerHeader,
-  DrawerFooter,
-  DrawerTitle,
-  DrawerDescription,
-} from "@/app/components/blocks/layout/Drawer";
+/**
+ * This file is deprecated and should be deleted.
+ * Drawer block has been removed from the system.
+ */
+export {};

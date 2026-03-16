@@ -20,7 +20,7 @@ import { Link } from 'react-router';
 import { slugToPath } from '../../utils/route-map';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { ScrollDownArrow } from '../common/ScrollDownArrow';
-
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 
 import {
   aiLandingHero,
@@ -34,6 +34,15 @@ import {
 export function AIIntegrationsTemplate() {
   return (
     <div className="ai-page">
+      {/* Breadcrumbs */}
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Solutions', href: '/solutions' },
+          { label: 'AI Integrations' },
+        ]}
+      />
+
       {/* ════════════════ HERO ════════════════ */}
       <section className="ai-page__hero">
         <div className="ai-page__hero-grid" />
@@ -109,7 +118,7 @@ export function AIIntegrationsTemplate() {
         <Container>
           <ScrollReveal animation="fade-up">
             <div className="ai-page__section-header">
-              <h2 className="ai-page__section-title">AI Impact by the Numbers</h2>
+              <h2 className="ai-page__section-title">AI impact by the numbers</h2>
               <p className="ai-page__section-description">Real results from businesses using AI with WordPress</p>
             </div>
             <StatsGrid
@@ -128,7 +137,7 @@ export function AIIntegrationsTemplate() {
 
       {/* ════════════════ FEATURES ════════════════ */}
       <FeatureGrid
-        title="What AI Can Do for Your WordPress Site"
+        title="What AI can do for your WordPress site"
         description="A complete suite of AI capabilities purpose-built for WordPress"
         items={aiLandingFeatures}
         columns={3}
@@ -140,7 +149,7 @@ export function AIIntegrationsTemplate() {
         <Container>
           <div className="ai-page__cards-header">
             <ScrollReveal animation="fade-up">
-              <h2 className="ai-page__cards-title">Explore AI Solutions</h2>
+              <h2 className="ai-page__cards-title">Explore AI solutions</h2>
               <p className="ai-page__cards-description">
                 Dive deeper into each AI capability. Every solution is designed to integrate seamlessly with your WordPress site.
               </p>
@@ -176,7 +185,7 @@ export function AIIntegrationsTemplate() {
 
       {/* ════════════════ FAQS ════════════════ */}
       <FAQSection
-        title="AI Integration FAQs"
+        title="AI integration FAQs"
         description="Common questions about adding AI to WordPress"
         faqs={aiLandingFAQs}
         variant="muted"

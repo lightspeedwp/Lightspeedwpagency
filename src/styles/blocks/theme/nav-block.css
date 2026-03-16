@@ -37,7 +37,7 @@
   padding: var(--spacing-2) var(--spacing-4);
   font-family: var(--font-primary);
   font-size: var(--text-sm);
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
   transition: all 0.2s ease;
   color: var(--foreground);
   text-decoration: none;

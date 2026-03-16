@@ -1,0 +1,223 @@
+/**
+ * WordPress Solution Template — BEM Styles
+ *
+ * Neon grid hero with code window visual, floating orbs,
+ * and syntax-highlighted PHP snippet.
+ *
+ * Blocks:
+ * - .wp-solution-hero — Hero section
+ * - .wp-solution-hero__code-window — Code window visual
+ *
+ * @see WordPressHero.tsx
+ */
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+
+.wp-solution-hero {
+  position: relative;
+  padding: var(--spacing-24) 0;
+  background-color: var(--background);
+  overflow: hidden;
+}
+
+.wp-solution-hero__grid-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    linear-gradient(to right, var(--border-soft) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--border-soft) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.1;
+  z-index: 0;
+}
+
+.wp-solution-hero__content {
+  position: relative;
+  z-index: 1;
+}
+
+.wp-solution-hero__badge {
+  padding: var(--spacing-2) var(--spacing-4);
+  border-radius: var(--radius-full);
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  color: var(--primary);
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  box-shadow: 0 0 10px var(--primary-soft);
+}
+
+.wp-solution-hero__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h1);
+  color: var(--foreground);
+  line-height: var(--line-height-tight);
+}
+
+.wp-solution-hero__gradient-text {
+  color: var(--primary);
+  text-shadow: 0 0 30px var(--primary-soft);
+}
+
+.wp-solution-hero__description {
+  font-family: var(--font-secondary);
+  font-size: var(--text-lg);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-comfortable);
+}
+
+/* ---- Hero Buttons ---- */
+
+.wp-solution-hero__btn-primary {
+  padding: var(--spacing-3) var(--spacing-6);
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border-radius: var(--radius);
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+  transition: box-shadow var(--transition-base);
+  box-shadow: 0 4px 15px var(--primary-soft);
+  border: none;
+}
+
+.wp-solution-hero__btn-secondary {
+  padding: var(--spacing-3) var(--spacing-6);
+  background-color: transparent;
+  border: 1px solid var(--border);
+  color: var(--foreground);
+  border-radius: var(--radius);
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+}
+
+/* ---- Code Window Visual ---- */
+
+.wp-solution-hero__visual-wrapper {
+  position: relative;
+}
+
+.wp-solution-hero__orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  z-index: 0;
+}
+
+.wp-solution-hero__orb--primary {
+  top: -10%;
+  right: -10%;
+  width: 150px;
+  height: 150px;
+  background-color: var(--primary);
+  opacity: 0.3;
+}
+
+.wp-solution-hero__orb--secondary {
+  bottom: -10%;
+  left: -10%;
+  width: 200px;
+  height: 200px;
+  background-color: var(--secondary);
+  filter: blur(70px);
+  opacity: 0.2;
+}
+
+.wp-solution-hero__code-window {
+  position: relative;
+  background-color: var(--terminal-bg);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-soft);
+  box-shadow: var(--shadow-2xl), 0 0 20px var(--primary-soft);
+  overflow: hidden;
+  z-index: 1;
+}
+
+.wp-solution-hero__window-header {
+  background-color: var(--terminal-header-bg);
+  border-bottom: 1px solid var(--terminal-border);
+}
+
+.wp-solution-hero__traffic-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.wp-solution-hero__traffic-dot--red {
+  background-color: var(--color-terminal-red);
+}
+
+.wp-solution-hero__traffic-dot--yellow {
+  background-color: var(--color-terminal-yellow);
+}
+
+.wp-solution-hero__traffic-dot--green {
+  background-color: var(--color-terminal-green);
+}
+
+.wp-solution-hero__filename {
+  font-family: var(--font-secondary);
+  font-size: var(--text-xs);
+  color: var(--syntax-comment);
+}
+
+.wp-solution-hero__code-content {
+  overflow-x: auto;
+}
+
+.wp-solution-hero__code-pre {
+  margin: 0;
+  padding: 0;
+}
+
+.wp-solution-hero__code {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  line-height: var(--line-height-comfortable);
+  color: var(--terminal-text);
+}
+
+/* Syntax highlighting classes */
+.wp-solution-hero__syntax-keyword {
+  color: var(--syntax-keyword);
+}
+
+.wp-solution-hero__syntax-comment {
+  color: var(--syntax-comment);
+  font-style: italic;
+}
+
+.wp-solution-hero__syntax-function {
+  color: var(--syntax-function);
+}
+
+.wp-solution-hero__syntax-string {
+  color: var(--syntax-string);
+}
+
+.wp-solution-hero__syntax-variable {
+  color: var(--syntax-variable);
+}
+
+.wp-solution-hero__syntax-operator {
+  color: var(--syntax-operator);
+}
+
+.wp-solution-hero__scroll-arrow {
+  margin-top: var(--spacing-12);
+}
+
+/* Spacer for window header alignment */
+.wp-solution-hero__header-spacer {
+  width: 44px;
+}

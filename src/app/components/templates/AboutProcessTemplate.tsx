@@ -113,27 +113,27 @@ export function AboutProcessTemplate() {
       />
 
       {/* ── Hero ── */}
-      <section className="process-page__hero">
+      <section className="about-process__hero">
         <img
           ref={parallaxRef}
           src="https://images.unsplash.com/photo-1588007375181-2f890dc38ec3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMGRpZ2l0YWwlMjBibHVlcHJpbnQlMjBuZW9uJTIwdGVjaCUyMHByb2Nlc3N8ZW58MXx8fHwxNzcxMzU4NzI1fDA&ixlib=rb-4.1.0&q=80&w=1080"
           alt="Abstract digital blueprint background"
-          className="process-page__hero-bg"
+          className="about-process__hero-bg"
         />
-        <div className="process-page__hero-overlay" />
+        <div className="about-process__hero-overlay" />
 
         <Container>
-          <div className="process-page__hero-content">
-            <span className="process-page__hero-badge">
-              <Settings size={16} className="process-page__hero-badge-icon" />
+          <div className="about-process__hero-content">
+            <span className="about-process__hero-badge">
+              <Settings size={16} className="about-process__hero-badge-icon" />
               Methodology
             </span>
 
-            <h1 className="process-page__hero-title">
+            <h1 className="about-process__hero-title">
               Our Process
             </h1>
 
-            <p className="process-page__hero-subtitle">
+            <p className="about-process__hero-subtitle">
               A proven methodology that transforms ideas into exceptional WordPress experiences. Systematic, scalable, and built for success.
             </p>
           </div>
@@ -141,52 +141,52 @@ export function AboutProcessTemplate() {
       </section>
 
       {/* ── Process Steps (Vertical Timeline) ── */}
-      <section className="process-page__steps">
+      <section className="about-process__steps">
         <Container>
-          <div className="process-page__steps-header">
-            <Heading level={2} className="process-page__steps-title">
+          <div className="about-process__steps-header">
+            <Heading level={2} className="about-process__steps-title">
               Four-phase cycle
             </Heading>
-            <p className="process-page__steps-desc">
+            <p className="about-process__steps-desc">
               From discovery to delivery, every project follows our battle-tested framework.
             </p>
           </div>
 
-          <div className="process-page__steps-container">
+          <div className="about-process__steps-container">
             {/* The Vertical Line */}
-            <div className="process-page__timeline-line" />
+            <div className="about-process__timeline-line" />
 
             {steps.map((step, index) => {
               const Icon = step.icon;
               return (
-                <div key={index} className="process-page__step-item">
+                <div key={index} className="about-process__step-item">
                   {/* Center Node */}
-                  <div className="process-page__step-node">
+                  <div className="about-process__step-node">
                     {step.phase}
                   </div>
 
                   {/* Content Card */}
-                  <div className="process-page__step-content">
-                    <div className="process-page__step-header">
-                      <div className="process-page__step-icon">
+                  <div className="about-process__step-content">
+                    <div className="about-process__step-header">
+                      <div className="about-process__step-icon">
                         <Icon size={24} />
                       </div>
-                      <Heading level={3} className="process-page__step-title">
+                      <Heading level={3} className="about-process__step-title">
                         {step.title}
                       </Heading>
                     </div>
 
-                    <Paragraph className="process-page__step-desc">
+                    <Paragraph className="about-process__step-desc">
                       {step.description}
                     </Paragraph>
 
-                    <div className="process-page__deliverables">
-                      <div className="process-page__deliverables-title">
+                    <div className="about-process__deliverables">
+                      <div className="about-process__deliverables-title">
                         Key Deliverables
                       </div>
-                      <div className="process-page__deliverables-list">
+                      <div className="about-process__deliverables-list">
                         {step.deliverables.map((item, i) => (
-                          <span key={i} className="process-page__tag">
+                          <span key={i} className="about-process__tag">
                             {item}
                           </span>
                         ))}
@@ -201,13 +201,13 @@ export function AboutProcessTemplate() {
       </section>
 
       {/* ── Methodology / Principles ── */}
-      <section className="process-page__methodology">
+      <section className="about-process__methodology">
         <Container>
-          <div className="process-page__methodology-header">
-            <Heading level={2} className="process-page__methodology-title">
+          <div className="about-process__methodology-header">
+            <Heading level={2} className="about-process__methodology-title">
               Core principles
             </Heading>
-            <p className="process-page__methodology-desc">
+            <p className="about-process__methodology-desc">
               The values that drive our technical execution.
             </p>
           </div>
@@ -243,9 +243,9 @@ export function AboutProcessTemplate() {
       </section>
 
       {/* ── FAQ Section ── */}
-      <section className="process-page__faq">
+      <section className="about-process__faq">
         <Container>
-          <div className="process-page__faq-wrapper">
+          <div className="about-process__faq-wrapper">
             <FAQSection
               title="Process FAQs"
               description="Common questions about how we work."

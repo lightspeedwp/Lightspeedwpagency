@@ -82,7 +82,7 @@ export function TourOperatorSolutionTemplate() {
       {/* FAQ Section */}
       <section className="wp-py-20 wp-bg-background">
         <FAQSection
-          title="Tour Operator FAQs"
+          title="Tour operator FAQs"
           description="Common questions about tour operator websites"
           faqs={tourOperatorFAQs}
         />

@@ -21,7 +21,9 @@ import { Link } from 'react-router';
 import { CaretRight, Palette, Check } from '@phosphor-icons/react';
 import { designTokensSystem } from '../../data/systems-hub';
 import { serviceTiers } from '../../data/three-tier-model';
+import { getPageUrl } from '../../data/site-pages';
 import '@/styles/templates/design-tokens-system.css';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 
 export const DesignTokensSystemTemplate = () => {
   const system = designTokensSystem;
@@ -30,13 +32,13 @@ export const DesignTokensSystemTemplate = () => {
   return (
     <div className="system-page">
       {/* Breadcrumbs */}
-      <nav className="system-page__breadcrumbs">
-        <Link to="/systems" className="system-page__breadcrumb-link">
-          Systems
-        </Link>
-        <CaretRight className="system-page__breadcrumb-separator" />
-        <span className="system-page__breadcrumb-current">Design Tokens</span>
-      </nav>
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Systems', href: '/systems' },
+          { label: 'Design Tokens' },
+        ]}
+      />
 
       {/* Hero Section */}
       <section className="system-page__hero">
@@ -172,7 +174,7 @@ export const DesignTokensSystemTemplate = () => {
                 <p className="design-tokens-system__tier-description">
                   {tier.description}
                 </p>
-                <Link to="/services" className="design-tokens-system__tier-link">
+                <Link to={getPageUrl('services')} className="design-tokens-system__tier-link">
                   Learn More
                   <CaretRight className="design-tokens-system__tier-link-icon" />
                 </Link>
@@ -192,7 +194,7 @@ export const DesignTokensSystemTemplate = () => {
             Request a free design audit to see how tokens can standardize your brand and
             reduce development time by 60%.
           </p>
-          <Link to="/contact" className="design-tokens-system__cta-button">
+          <Link to={getPageUrl('contact')} className="design-tokens-system__cta-button">
             Request a Design Audit
           </Link>
         </div>

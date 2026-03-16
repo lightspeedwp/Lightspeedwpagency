@@ -11,6 +11,7 @@
 
 import '../../../styles/templates/video-archive-optimized.css';
 import { useParams, Navigate, Link } from 'react-router';
+import { getPageUrl } from '../../data/site-pages';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
@@ -27,7 +28,7 @@ import { videoFAQs } from '../../data/faqs';
 export function VideoTagArchiveTemplate() {
   const { slug } = useParams<{ slug: string }>();
 
-  if (!slug) return <Navigate to="/videos" />;
+  if (!slug) return <Navigate to={getPageUrl('videos')} />;
 
   const tagData = videoTags.find(t => t.slug === slug);
   const taggedVideos = getVideosByTag(slug);
@@ -70,7 +71,7 @@ export function VideoTagArchiveTemplate() {
         <Container>
           <nav className="archive-category-nav" aria-label="Video tags">
             <div className="archive-category-nav__list">
-              <Link to="/videos" className="archive-category-nav__item">
+              <Link to={getPageUrl('videos')} className="archive-category-nav__item">
                 All videos
               </Link>
               {allTags.map(tag => (
@@ -138,7 +139,7 @@ export function VideoTagArchiveTemplate() {
               <Heading level={3}>No videos found</Heading>
               <Paragraph>
                 No videos tagged with "{tagName}" yet.{' '}
-                <Link to="/videos" className="blog-index__empty-link">View all videos</Link>
+                <Link to={getPageUrl('videos')} className="blog-index__empty-link">View all videos</Link>
               </Paragraph>
             </div>
           )}

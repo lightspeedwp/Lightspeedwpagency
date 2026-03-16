@@ -47,7 +47,7 @@ export function ButtonShowcase() {
       <section className="btn-showcase__hero">
         <Container>
           <ScrollReveal animation="fade-up">
-            <h1 className="btn-showcase__hero-title">Button System</h1>
+            <h1 className="btn-showcase__hero-title">Button system</h1>
             <p className="btn-showcase__hero-desc">
               Standardized interactive elements with neon glow states, 
               fluid scaling, and WCAG AA compliance.
@@ -62,7 +62,7 @@ export function ButtonShowcase() {
           <section className="btn-showcase__section">
             <div className="btn-showcase__section-header">
               <Palette className="btn-showcase__section-icon" size={20} />
-              <h2 className="btn-showcase__section-title">Style Variants</h2>
+              <h2 className="btn-showcase__section-title">Style variants</h2>
             </div>
             
             <div className="btn-showcase__card">
@@ -82,7 +82,7 @@ export function ButtonShowcase() {
           <section className="btn-showcase__section">
             <div className="btn-showcase__section-header">
               <ArrowsOutSimple className="btn-showcase__section-icon" size={20} />
-              <h2 className="btn-showcase__section-title">Size Scale</h2>
+              <h2 className="btn-showcase__section-title">Size scale</h2>
             </div>
 
             <div className="btn-showcase__grid">
@@ -118,7 +118,7 @@ export function ButtonShowcase() {
           <section className="btn-showcase__section">
             <div className="btn-showcase__section-header">
               <Lightning className="btn-showcase__section-icon" size={20} />
-              <h2 className="btn-showcase__section-title">Icon Integration</h2>
+              <h2 className="btn-showcase__section-title">Icon integration</h2>
             </div>
 
             <div className="btn-showcase__card">
@@ -145,7 +145,7 @@ export function ButtonShowcase() {
           <section className="btn-showcase__section">
             <div className="btn-showcase__section-header">
               <Cursor className="btn-showcase__section-icon" size={20} />
-              <h2 className="btn-showcase__section-title">Interactive States</h2>
+              <h2 className="btn-showcase__section-title">Interactive states</h2>
             </div>
 
             <div className="btn-showcase__grid">

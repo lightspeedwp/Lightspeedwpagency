@@ -49,8 +49,11 @@ class ChromeErrorBoundary extends Component<
   static getDerivedStateFromError() {
     return { hasError: true };
   }
-  componentDidCatch(error: Error) {
+  componentDidCatch(error: Error, errorInfo: { componentStack?: string }) {
     console.error(`[${this.props.name}] render error:`, error);
+    if (errorInfo?.componentStack) {
+      console.error(`[${this.props.name}] Component Stack:`, errorInfo.componentStack);
+    }
   }
   render() {
     if (this.state.hasError) {

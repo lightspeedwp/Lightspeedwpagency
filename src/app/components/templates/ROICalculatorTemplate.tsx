@@ -81,7 +81,14 @@ export function ROICalculatorTemplate() {
     author: t.author,
     role: t.role,
     company: t.company,
-    avatar: t.avatar || `https://images.unsplash.com/photo-${1494790108377 + i}?w=400`,
+    avatar: t.avatar || [
+      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400',
+      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400',
+      'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400',
+      'https://images.unsplash.com/photo-1689600944138-da3b150d9cb8?w=400',
+      'https://images.unsplash.com/photo-1610387694365-19fafcc86d86?w=400',
+      'https://images.unsplash.com/photo-1584940121258-c2553b66a739?w=400',
+    ][i % 6],
     rating: t.rating || 5
   }));
 
@@ -153,7 +160,7 @@ export function ROICalculatorTemplate() {
           <div className="roi-calc__calc-grid">
             {/* ── Input Panel ── */}
             <div className="roi-calc__input-panel">
-              <h2 className="roi-calc__panel-title">Your Current Metrics</h2>
+              <h2 className="roi-calc__panel-title">Your current metrics</h2>
 
               <div className="roi-calc__field-group">
                 {/* Monthly Traffic */}
@@ -240,7 +247,7 @@ export function ROICalculatorTemplate() {
 
             {/* ── Results Panel ── */}
             <div className="roi-calc__results-panel">
-              <h2 className="roi-calc__panel-title">Your Projected ROI</h2>
+              <h2 className="roi-calc__panel-title">Your projected ROI</h2>
 
               <div className="roi-calc__results-stack">
                 {/* Current Revenue */}
@@ -293,7 +300,7 @@ export function ROICalculatorTemplate() {
         <Container>
           <ScrollReveal animation="fade-up">
             <div className="roi-calc__breakdown-header">
-              <h2 className="roi-calc__breakdown-title">How We Calculate</h2>
+              <h2 className="roi-calc__breakdown-title">How we calculate</h2>
               <p className="roi-calc__breakdown-desc">
                 Three proven ways a high-performance website increases revenue
               </p>

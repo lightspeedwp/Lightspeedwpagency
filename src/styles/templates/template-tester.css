@@ -14,7 +14,7 @@
 .template-tester__hero-title {
   font-family: var(--font-primary);
   font-size: var(--text-h1);
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
   color: var(--foreground);
   margin-bottom: var(--spacing-4);
   line-height: 1.1;
@@ -46,7 +46,7 @@
 .template-tester__stat-value {
   font-family: var(--font-primary);
   font-size: var(--text-h2);
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
   color: var(--primary);
   margin-bottom: var(--spacing-2);
 }
@@ -107,7 +107,7 @@
 .template-tester__sort-button--active {
   background-color: var(--background);
   color: var(--foreground);
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   box-shadow: 0 1px 2px color-mix(in srgb, var(--color-black) 5%, transparent);
 }
 
@@ -133,7 +133,7 @@
 .template-tester__category-title {
   font-family: var(--font-primary);
   font-size: var(--text-h3);
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   color: var(--foreground);
   margin-bottom: var(--spacing-1);
 }
@@ -178,7 +178,7 @@
 .template-tester__archetype-title {
   font-family: var(--font-primary);
   font-size: var(--text-lg);
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   color: var(--foreground);
 }
 
@@ -247,7 +247,7 @@
 .template-tester__page-label {
   font-family: var(--font-primary);
   font-size: var(--text-base);
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   color: var(--foreground);
 }
 
@@ -266,4 +266,12 @@
   font-size: var(--text-xs);
   color: var(--muted-foreground);
   font-style: italic;
+}
+
+.template-tester__counter {
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+  letter-spacing: var(--letter-spacing-tight);
 }

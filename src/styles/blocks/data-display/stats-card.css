@@ -26,7 +26,7 @@
 .wp-block-stats-card__label {
   font-family: var(--font-primary);
   font-size: var(--text-base);
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
   color: var(--muted-foreground);
   margin: 0 0 var(--spacing-2) 0;
 }
@@ -34,7 +34,7 @@
 .wp-block-stats-card__value {
   font-family: var(--font-primary);
   font-size: var(--text-h2);
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
   color: var(--foreground);
   margin: 0 0 var(--spacing-3) 0;
   line-height: var(--line-height-snug);
@@ -54,7 +54,7 @@
   padding: var(--spacing-1) var(--spacing-2);
   font-family: var(--font-primary);
   font-size: var(--text-small);
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   border-radius: var(--radius);
 }
 

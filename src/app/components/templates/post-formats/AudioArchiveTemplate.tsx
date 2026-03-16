@@ -49,6 +49,7 @@ export function AudioArchiveTemplate() {
                       src={post._embedded['wp:featuredmedia'][0].source_url} 
                       alt={post.title.rendered} 
                       className="wp-block-audio-card__img"
+                      loading="lazy"
                     />
                   )}
                   <div className="wp-block-audio-card__overlay">

@@ -1,6 +1,9 @@
-# SiteMap Sync Audit Report
+# SiteMap sync audit report
 
-**Date:** 2026-03-15  
+**Category:** Report  
+**Version:** 1.0.0  
+**Last Updated:** 2026-03-15  
+**Status:** Complete  
 **Trigger:** `sitemap`  
 **Prompt:** `/prompts/routes.md` (shared)  
 **Task List:** `/tasks/routes-task-list.md` (shared with `routes`)

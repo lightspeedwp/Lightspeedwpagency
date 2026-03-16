@@ -29,7 +29,7 @@ import {
  */
 export const frontPageHero = {
   badge: 'WordPress & WooCommerce Experts Since 2003',
-  title: 'Structured Publishing Systems for WordPress',
+  title: 'Structured publishing systems for WordPress',
   description: 'We engineer governed WordPress systems — tokenised design, accessible markup, and measurable performance — so your editors publish with confidence and your site stays coherent at scale.',
   primaryButton: {
     text: 'Request a Systems Audit',
@@ -50,37 +50,37 @@ export const frontPageHero = {
  * Why Choose LightSpeed Section — 6 features in 3-column grid
  */
 export const frontPageWhyChoose = {
-  title: 'Why Choose LightSpeed?',
+  title: 'Why choose LightSpeed?',
   description: 'We bring 22+ years of WordPress expertise, a certified WooCommerce partnership, and a passion for building sites that perform.',
   features: [
     {
       icon: Lightning,
-      title: 'Fastest Development',
+      title: 'Fastest development',
       description: 'Streamlined processes and modern tooling let us deliver high-quality WordPress sites faster than industry averages.'
     },
     {
       icon: Palette,
-      title: 'WordPress-First Design',
+      title: 'WordPress-first design',
       description: 'Every design is built for WordPress Full Site Editing — no compromises, no workarounds, just native block themes.'
     },
     {
       icon: Users,
-      title: '20+ Years Experience',
+      title: '20+ years experience',
       description: 'Our senior developers average over a decade of WordPress expertise across hundreds of projects.'
     },
     {
       icon: Wrench,
-      title: 'Customisable Tools',
+      title: 'Customisable tools',
       description: 'We build with reusable patterns, design tokens, and component libraries so your site is easy to maintain and extend.'
     },
     {
       icon: Eye,
-      title: 'WCAG Accessible',
+      title: 'WCAG accessible',
       description: 'Every site meets WCAG 2.1 AA standards by default — because the web should be usable by everyone.'
     },
     {
       icon: SquaresFour,
-      title: 'Design System Experts',
+      title: 'Design system experts',
       description: 'From tokens to templates, we build scalable design systems that keep your brand consistent across every page.'
     }
   ]
@@ -90,26 +90,26 @@ export const frontPageWhyChoose = {
  * Services Section — 3 featured services with images
  */
 export const frontPageServices = {
-  title: 'Our Services',
+  title: 'Our services',
   description: 'Comprehensive WordPress and WooCommerce solutions tailored to your business goals.',
   items: [
     {
       icon: Stack,
-      title: 'WordPress Block Themes',
+      title: 'WordPress block themes',
       description: 'Custom block themes built on the WordPress Full Site Editing framework with modern design patterns and reusable components.',
       image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80',
       link: 'development-service'
     },
     {
       icon: ShoppingCart,
-      title: 'WooCommerce Solutions',
+      title: 'WooCommerce solutions',
       description: 'Powerful online stores with custom payment gateways, subscription management, and seamless checkout experiences.',
       image: 'https://images.unsplash.com/photo-1634084462412-b54873c0a56d?w=800&q=80',
       link: 'woocommerce-solution'
     },
     {
       icon: Code,
-      title: 'Design System Solutions',
+      title: 'Design system solutions',
       description: 'Scalable design systems with reusable patterns, CSS tokens, and component libraries for consistent branding across your digital estate.',
       image: 'https://images.unsplash.com/photo-1583932692875-a42450d50acf?w=800&q=80',
       link: 'design-service'
@@ -121,7 +121,7 @@ export const frontPageServices = {
  * Featured Projects — 3 project cards
  */
 export const frontPageProjects = {
-  title: 'Featured Projects',
+  title: 'Featured projects',
   description: 'Recent work showcasing our WordPress and WooCommerce expertise.',
   projects: [
     {
@@ -169,7 +169,7 @@ export const frontPageStats = [
  * Mid-page CTA — "WordPress Experts You Can Trust"
  */
 export const frontPageMidCTA = {
-  title: 'WordPress Experts You Can Trust',
+  title: 'WordPress experts you can trust',
   description: 'From startups to enterprise, we partner with businesses to build WordPress solutions that perform, scale, and convert.',
   primaryButton: {
     text: 'Request a Systems Audit',
@@ -181,7 +181,7 @@ export const frontPageMidCTA = {
  * How We Work — 4 process steps
  */
 export const frontPageProcess = {
-  title: 'How We Work',
+  title: 'How we work',
   description: 'A proven process refined over 22 years of WordPress development.',
   steps: [
     {

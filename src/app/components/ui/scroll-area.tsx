@@ -1,1 +1,5 @@
-export { ScrollArea, ScrollBar } from "@/app/components/blocks/utility/ScrollArea";
+/**
+ * Deprecated — ScrollArea block not yet implemented.
+ * @see @radix-ui/react-scroll-area for direct usage.
+ */
+export {};

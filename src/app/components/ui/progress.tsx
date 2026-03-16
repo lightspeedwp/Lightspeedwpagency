@@ -1,1 +1,5 @@
-export { Progress } from "@/app/components/blocks/feedback/Progress";
+/**
+ * Deprecated — Progress block not yet implemented.
+ * @see @radix-ui/react-progress for direct usage.
+ */
+export {};

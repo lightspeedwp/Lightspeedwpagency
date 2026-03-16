@@ -175,7 +175,7 @@ export function DateArchiveTemplate({
 
       {/* Newsletter */}
       <NewsletterSignup
-        title="Never Miss an Update"
+        title="Never miss an update"
         description="Get the latest WordPress development tips and tutorials delivered to your inbox."
         variant="default"
       />

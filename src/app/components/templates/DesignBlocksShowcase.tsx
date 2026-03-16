@@ -56,7 +56,7 @@ export function DesignBlocksShowcase() {
       <section className="design-showcase__hero">
         <Container>
           <ScrollReveal animation="fade-up">
-            <h1 className="design-showcase__hero-title">Design Blocks</h1>
+            <h1 className="design-showcase__hero-title">Design blocks</h1>
             <p className="design-showcase__hero-desc">
               Core structural and container components for building complex layouts.
               Fully responsive and accessible.
@@ -175,7 +175,7 @@ export function DesignBlocksShowcase() {
           <section className="design-showcase__section">
             <div className="design-showcase__section-header">
               <Layout className="design-showcase__section-icon" size={20} />
-              <h2 className="design-showcase__section-title">Layout Primitives</h2>
+              <h2 className="design-showcase__section-title">Layout primitives</h2>
             </div>
 
             <div className="design-showcase__demo">

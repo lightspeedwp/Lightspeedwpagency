@@ -13,7 +13,9 @@
 
 import { ChatCircle, Lightbulb, Users, Trophy, TrendUp, Target } from '@phosphor-icons/react';
 import { Link } from 'react-router';
+import { getPageUrl } from '../../data/site-pages';
 import { FeatureList } from '../patterns/FeatureList';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import '../../../styles/templates/answer-engine-service-optimized.css';
 
 export const AnswerEngineServiceTemplate = () => {
@@ -105,13 +107,14 @@ export const AnswerEngineServiceTemplate = () => {
       {/* Hero Section */}
       <section className="answer-engine-service__hero">
         <div className="answer-engine-service__hero-content">
-          <div className="answer-engine-service__breadcrumb">
-            <Link to="/services" className="answer-engine-service__breadcrumb-link">Services</Link>
-            <span className="answer-engine-service__breadcrumb-separator">/</span>
-            <Link to="/services/ai/search-visibility" className="answer-engine-service__breadcrumb-link">AI Search & Visibility</Link>
-            <span className="answer-engine-service__breadcrumb-separator">/</span>
-            <span className="answer-engine-service__breadcrumb-current">Answer Engine Optimization</span>
-          </div>
+          <BreadcrumbPart
+            items={[
+              { label: 'Home', href: '/' },
+              { label: 'Services', href: '/services' },
+              { label: 'AI Services', href: '/services/ai' },
+              { label: 'Answer Engine Optimization' },
+            ]}
+          />
           
           <h1 className="answer-engine-service__hero-title">
             Answer Engine Optimization (AEO)
@@ -123,10 +126,10 @@ export const AnswerEngineServiceTemplate = () => {
           </p>
           
           <div className="answer-engine-service__hero-cta">
-            <Link to="/contact" className="answer-engine-service__cta-button answer-engine-service__cta-button--primary">
+            <Link to={getPageUrl('contact')} className="answer-engine-service__cta-button answer-engine-service__cta-button--primary">
               Get Question Analysis
             </Link>
-            <Link to="/services/ai/search-visibility" className="answer-engine-service__cta-button answer-engine-service__cta-button--secondary">
+            <Link to={getPageUrl('ai-search-visibility')} className="answer-engine-service__cta-button answer-engine-service__cta-button--secondary">
               View Parent Service
             </Link>
           </div>
@@ -207,7 +210,7 @@ export const AnswerEngineServiceTemplate = () => {
           <p className="answer-engine-service__cta-description">
             Get a free question analysis and see what your audience is asking.
           </p>
-          <Link to="/contact" className="answer-engine-service__cta-button answer-engine-service__cta-button--primary">
+          <Link to={getPageUrl('contact')} className="answer-engine-service__cta-button answer-engine-service__cta-button--primary">
             Request Free Analysis
           </Link>
         </div>

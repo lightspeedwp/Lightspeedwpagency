@@ -28,5 +28,5 @@
   color: var(--muted-foreground);
   font-family: var(--font-primary);
   font-size: var(--text-sm);
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
 }

@@ -43,6 +43,7 @@ import { useHeroParallax } from '../../hooks/useHeroParallax';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { ScrollDownArrow } from '../common/ScrollDownArrow';
 import { ShareNetwork as Share2 } from '@phosphor-icons/react';
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 
 import {
   lsxSharingHero,
@@ -63,6 +64,15 @@ export function LSXSharingTemplate() {
 
   return (
     <div className="lsx-sharing">
+      {/* Breadcrumbs */}
+      <BreadcrumbPart
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Solutions', href: '/solutions' },
+          { label: 'LSX Sharing' },
+        ]}
+      />
+
       {/* ============================================
           1. HERO SECTION (Parallax + Floating Orbs)
           ============================================ */}

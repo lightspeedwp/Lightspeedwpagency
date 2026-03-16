@@ -60,7 +60,8 @@ export function AsideStreamTemplate() {
                         <div className="aside-stream__avatar">
                           <img 
                             src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100" 
-                            alt="Author avatar" 
+                            alt="Ash Shaw's profile photo" 
+                            loading="lazy"
                           />
                         </div>
                         <div>

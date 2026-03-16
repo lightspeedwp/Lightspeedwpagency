@@ -88,8 +88,8 @@
 .lsx-sharing__feature-title {
   font-family: var(--font-primary);
   font-size: var(--text-xl);
-  font-weight: 600;
-  color: var(--foreground);
+  font-weight: var(--font-weight-bold);
+  color: var(--primary);
   position: relative;
   z-index: 1;
 }
@@ -131,7 +131,7 @@
 .lsx-sharing__benefit-title {
   font-family: var(--font-primary);
   font-size: var(--text-xl);
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   color: var(--foreground);
 }
 
@@ -173,7 +173,7 @@
   border-radius: 50%;
   font-family: var(--font-primary);
   font-size: var(--text-xl);
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   box-shadow: 0 0 20px color-mix(in srgb, var(--primary) 40%, transparent);
   transition: transform var(--transition-base) var(--ease-out), box-shadow var(--transition-base) var(--ease-out);
 }
@@ -193,7 +193,7 @@
 .lsx-sharing__process-title {
   font-family: var(--font-primary);
   font-size: var(--text-lg);
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   color: var(--foreground);
 }
 
@@ -263,7 +263,7 @@
 .lsx-sharing__network-name {
   font-family: var(--font-primary);
   font-size: var(--text-base);
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   color: var(--foreground);
 }
 
@@ -302,7 +302,7 @@
 .lsx-sharing__spec-label {
   font-family: var(--font-primary);
   font-size: var(--text-base);
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
   color: var(--muted-foreground);
 }
 
@@ -338,7 +338,7 @@
 .lsx-sharing__free-title {
   font-family: var(--font-primary);
   font-size: var(--text-h2);
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
   color: var(--foreground);
   background: linear-gradient(135deg, var(--primary), var(--accent));
   -webkit-background-clip: text;

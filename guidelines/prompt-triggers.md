@@ -1,8 +1,8 @@
 # Prompt Trigger Words — Registry
 
 **Category:** Workflow  
-**Version:** 6.0.0  
-**Last Updated:** 2026-03-15  
+**Version:** 7.1.0  
+**Last Updated:** 2026-03-16  
 **Status:** Active  
 **Template Used:** _templates/general-template.md
 
@@ -16,7 +16,7 @@ This project supports **trigger words** — short commands the user types instea
 
 ---
 
-## Registered Triggers (31 Total)
+## Registered Triggers (33 Total)
 
 ### Workflow Triggers (7)
 
@@ -30,7 +30,7 @@ This project supports **trigger words** — short commands the user types instea
 | `sitemap` | `/prompts/sitemap.md` | Sync SiteMapTemplate with actual routes |
 | `process reports` | `/prompts/process-reports.md` | Organize, rename, and archive reports |
 
-### Audit Triggers (18)
+### Audit Triggers (19)
 
 | Trigger | Prompt File | Description |
 |---|---|---|
@@ -52,14 +52,16 @@ This project supports **trigger words** — short commands the user types instea
 | `audit functionality` | `/prompts/audit-functionality.md` | UI state wiring, dead UI detection, interaction flows |
 | `audit accessibility` | `/prompts/audit-accessibility.md` | Comprehensive WCAG 2.1 AA (focus, ARIA, touch targets) |
 | `audit performance` | `/prompts/audit-performance.md` | Render performance, assets, animations, WebGL impact |
+| `audit images` | `/prompts/audit-images.md` | Broken image URLs, missing alt text, asset compliance |
 
-### Scaffold Triggers (3)
+### Scaffold Triggers
 
-| Trigger | Prompt File | Description |
-|---|---|---|
-| `new template` | `/prompts/new-template.md` | Scaffold a page template from patterns |
-| `new pattern` | `/prompts/new-pattern.md` | Scaffold a reusable block pattern |
-| `new block` | `/prompts/new-block.md` | Scaffold an atomic block component |
+All scaffold triggers:
+1. Read relevant guidelines (patterns, components, archetypes).
+2. Create the component file with TypeScript interface.
+3. Create the CSS file with CSS variables only.
+4. Register the route and CSS import.
+5. Update CHANGELOG.
 
 ### Guidelines Triggers (2)
 
@@ -67,6 +69,10 @@ This project supports **trigger words** — short commands the user types instea
 |---|---|---|
 | `update guidelines` | `/prompts/update-guidelines.md` | Update content accuracy, frontmatter, template compliance |
 | `cleanup guidelines` | `/prompts/cleanup-guidelines.md` | Merge duplicates, deprecate outdated, restructure |
+
+### Code Quality Triggers
+
+**`apply bem`** — Scans all `.tsx` files for 5 violation types: (A) missing BEM block class on root elements, (B) inline styles that should use CSS variables via BEM classes, (C) Tailwind utilities instead of BEM/`.wp-*`, (D) inconsistent BEM naming, (E) BEM classes referenced but undefined in CSS. Matches violations to existing CSS in `/src/styles/` (base, patterns, blocks, components). Fixes violations by applying existing classes or creating new CSS rules with 100% variable compliance. Performs token gap analysis — if the design system lacks tokens for required styles, recommends running `audit tokens` and/or `audit css`. Report saved to `/reports/YYYY-MM/bem-compliance-audit.md`.
 
 ### Release Trigger (1)
 
@@ -220,6 +226,8 @@ Every prompt execution MUST enforce:
 
 | Version | Date | Changes |
 |---|---|---|
+| 7.1.0 | 2026-03-16 | Added `audit images` audit trigger. Audit triggers 18 → 19. Total triggers 32 → 33 |
+| 7.0.0 | 2026-03-16 | Added `apply bem` code quality trigger. Added Code Quality category. Restored missing 6.0.0 entry. Total triggers 31 → 32 |
 | 6.0.0 | 2026-03-15 | Added 8 new audit triggers: `audit theme`, `audit style`, `audit webgl`, `audit routing`, `audit layout`, `audit functionality`, `audit accessibility`, `audit performance`. Audit triggers 10 → 18. Total triggers 23 → 31 |
 | 5.0.0 | 2026-03-15 | Added `audit` master orchestrator, `audit routes`, `audit sitemap`. Added compound commands (`&&`). Added comma-separated audit modifier. 20 → 23 triggers |
 | 4.0.0 | 2026-03-15 | Expanded from 4 → 20 triggers. Added 5 workflow, 7 audit, 3 scaffold, 1 release. Full behaviour details and modifier docs |

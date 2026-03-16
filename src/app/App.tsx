@@ -38,8 +38,11 @@ class AppErrorBoundary extends Component<
   static getDerivedStateFromError(error: Error) {
     return { hasError: true, error };
   }
-  componentDidCatch(error: Error) {
+  componentDidCatch(error: Error, errorInfo: { componentStack?: string }) {
     console.info('[AppErrorBoundary] Caught:', error.message);
+    if (errorInfo?.componentStack) {
+      console.info('[AppErrorBoundary] Component Stack:', errorInfo.componentStack);
+    }
   }
   render() {
     if (this.state.hasError) {

@@ -6,6 +6,7 @@
 
 import { FigmaLogo, Lightning, Users, Layout, Cursor, Trophy, Package } from '@phosphor-icons/react';
 import { Link } from 'react-router';
+import { getPageUrl } from '../../data/site-pages';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { ServiceCapabilitiesGrid } from '../patterns/ServiceCapabilitiesGrid';
 import { AgencyStats } from '../patterns/AgencyStats';
@@ -37,23 +38,10 @@ export const FigmaPrototypingServiceTemplate = () => {
   return (
     <div className="wp-w-full wp-flex wp-flex-col" data-service="figma-prototyping">
       {/* HERO SECTION */}
-      <section 
-        style={{
-          position: 'relative',
-          padding: 'var(--spacing-32) 0',
-          backgroundColor: 'var(--background)',
-          overflow: 'hidden',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          minHeight: '60vh',
-          textAlign: 'center'
-        }}
-      >
+      <section className="service-hero" style={{ minHeight: '60vh' }}>
         <div style={{ position: 'absolute', top: 0, left: '50%', transform: 'translate(-50%, -50%)', width: '100vw', height: '100vh', background: 'radial-gradient(ellipse at bottom, rgba(var(--primary-rgb), 0.1) 0%, transparent 70%)', zIndex: 0, pointerEvents: 'none' }} />
         
-        <div style={{ position: 'relative', zIndex: 1, maxWidth: '800px', padding: '0 var(--spacing-8)' }}>
+        <div className="service-hero__content" style={{ padding: '0 var(--spacing-8)' }}>
           <ScrollReveal animation="fade-down">
             <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 'var(--spacing-6)' }}>
               <BreadcrumbPart
@@ -65,21 +53,21 @@ export const FigmaPrototypingServiceTemplate = () => {
               />
             </div>
             
-            <h1 style={{ margin: '0 0 var(--spacing-6) 0', fontFamily: 'var(--font-primary)', fontSize: 'var(--text-h1)', color: 'var(--foreground)', lineHeight: '1.1' }}>
+            <h1 className="service-hero__title">
               Figma Prototyping <br />
-              <span style={{ color: 'transparent', backgroundImage: 'linear-gradient(90deg, var(--primary), var(--secondary))', WebkitBackgroundClip: 'text', backgroundClip: 'text' }}>Services</span>
+              <span className="service-hero__gradient-text">Services</span>
             </h1>
             
-            <p style={{ margin: '0 auto var(--spacing-10) auto', fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-xl)', color: 'var(--muted-foreground)', lineHeight: '1.6', maxWidth: '600px' }}>
+            <p className="service-hero__description service-hero__description--centered">
               See your product before it's built. Interactive Figma prototypes let you test ideas, get feedback, 
               and refine the experience before writing a single line of code.
             </p>
             
             <div className="wp-flex wp-justify-center wp-gap-4">
-              <Link to="/contact" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: 'var(--spacing-4) var(--spacing-8)', backgroundColor: 'var(--primary)', color: 'var(--primary-foreground)', borderRadius: 'var(--radius)', fontFamily: 'var(--font-primary)', fontSize: 'var(--text-base)', fontWeight: 'var(--font-weight-semibold)', textDecoration: 'none', boxShadow: '0 4px 15px rgba(var(--primary-rgb), 0.3)' }}>
+              <Link to={getPageUrl('contact')} style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: 'var(--spacing-4) var(--spacing-8)', backgroundColor: 'var(--primary)', color: 'var(--primary-foreground)', borderRadius: 'var(--radius)', fontFamily: 'var(--font-primary)', fontSize: 'var(--text-base)', fontWeight: 'var(--font-weight-semibold)', textDecoration: 'none', boxShadow: '0 4px 15px rgba(var(--primary-rgb), 0.3)' }}>
                 Start Prototype Project
               </Link>
-              <Link to="/services/design" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: 'var(--spacing-4) var(--spacing-8)', backgroundColor: 'transparent', border: '1px solid var(--border)', color: 'var(--foreground)', borderRadius: 'var(--radius)', fontFamily: 'var(--font-primary)', fontSize: 'var(--text-base)', fontWeight: 'var(--font-weight-medium)', textDecoration: 'none' }}>
+              <Link to={getPageUrl('design')} style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: 'var(--spacing-4) var(--spacing-8)', backgroundColor: 'transparent', border: '1px solid var(--border)', color: 'var(--foreground)', borderRadius: 'var(--radius)', fontFamily: 'var(--font-primary)', fontSize: 'var(--text-base)', fontWeight: 'var(--font-weight-medium)', textDecoration: 'none' }}>
                 View Parent Service
               </Link>
             </div>

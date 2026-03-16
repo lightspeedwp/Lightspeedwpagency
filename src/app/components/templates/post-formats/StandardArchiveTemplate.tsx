@@ -52,6 +52,7 @@ export function StandardArchiveTemplate() {
                       src={post._embedded['wp:featuredmedia'][0].source_url} 
                       alt={post.title.rendered} 
                       className="wp-block-standard-card__img"
+                      loading="lazy"
                     />
                   )}
                 </div>

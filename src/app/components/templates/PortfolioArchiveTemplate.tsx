@@ -243,7 +243,7 @@ export function PortfolioArchiveTemplate() {
       <section className="portfolio-archive__filter-section">
         <Container>
           <TaxonomyFilter
-            title="Filter Projects"
+            title="Filter projects"
             options={categoryOptions}
             selectedValues={[selectedCategory]}
             onChange={(values) => setSelectedCategory(values[0])}
@@ -348,7 +348,7 @@ export function PortfolioArchiveTemplate() {
 
       {/* FAQ */}
       <FAQSection
-        title="Frequently Asked Questions"
+        title="Frequently asked questions"
         description="Have questions about our portfolio or services? Find answers to common questions below."
         faqs={portfolioFAQs}
       />

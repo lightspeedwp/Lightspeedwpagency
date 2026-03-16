@@ -22,7 +22,7 @@ export const developmentProcess: ProcessStep[] = [
   {
     id: 'discovery',
     number: '01',
-    title: 'Discovery & Strategy',
+    title: 'Discovery & strategy',
     description: 'We dive deep into your business goals, audience needs, and technical requirements to build a solid roadmap.',
     icon: MagnifyingGlass,
     details: [
@@ -37,7 +37,7 @@ export const developmentProcess: ProcessStep[] = [
   {
     id: 'design',
     number: '02',
-    title: 'Design & Prototyping',
+    title: 'Design & prototyping',
     description: 'We craft intuitive, accessible, and on-brand user interfaces using modern design systems.',
     icon: PenNib,
     details: [
@@ -52,7 +52,7 @@ export const developmentProcess: ProcessStep[] = [
   {
     id: 'development',
     number: '03',
-    title: 'Development & Build',
+    title: 'Development & build',
     description: 'Our senior developers bring designs to life using clean, semantic, and performant code.',
     icon: Code,
     details: [
@@ -67,7 +67,7 @@ export const developmentProcess: ProcessStep[] = [
   {
     id: 'qa',
     number: '04',
-    title: 'Quality Assurance',
+    title: 'Quality assurance',
     description: 'Rigorous testing across devices, browsers, and assistive technologies to ensure a flawless experience.',
     icon: CheckCircle,
     details: [
@@ -82,7 +82,7 @@ export const developmentProcess: ProcessStep[] = [
   {
     id: 'launch',
     number: '05',
-    title: 'Launch & Training',
+    title: 'Launch & training',
     description: 'Seamless deployment to production and empowering your team to manage the content.',
     icon: Rocket,
     details: [
@@ -97,7 +97,7 @@ export const developmentProcess: ProcessStep[] = [
   {
     id: 'support',
     number: '06',
-    title: 'Growth & Support',
+    title: 'Growth & support',
     description: 'Ongoing partnership to keep your site secure, fast, and evolving with your business.',
     icon: Handshake,
     details: [

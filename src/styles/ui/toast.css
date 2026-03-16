@@ -82,7 +82,7 @@
   flex: 1;
   font-family: var(--font-secondary);
   font-size: var(--text-sm);
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
   color: var(--foreground);
   line-height: 1.5;
 }
@@ -167,17 +167,17 @@
 
 /* Variant: Info */
 .toast--info {
-  border-color: hsl(var(--primary));
-  border-left: 4px solid hsl(var(--primary));
+  border-color: var(--primary);
+  border-left: 4px solid var(--primary);
 }
 
 .toast--info .toast__icon {
-  background: hsl(var(--primary) / 0.1);
-  color: hsl(var(--primary));
+  background: color-mix(in srgb, var(--primary) 10%, transparent);
+  color: var(--primary);
 }
 
 .toast--info .toast__progress-bar {
-  background: hsl(var(--primary));
+  background: var(--primary);
 }
 
 /* Dark mode */

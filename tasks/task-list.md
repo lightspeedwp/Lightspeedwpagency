@@ -15,7 +15,7 @@
 - ✅ **Files Migrated:** 100 files (patterns, blocks, templates, utilities)
 - ✅ **Icon Mappings:** 227 complete Lucide → Phosphor mappings
 
-**Report:** `/reports/2026-03/phosphor-migration-complete.md`  
+**Report:** `/reports/2026-03/2026-03-03-phosphor-migration-complete.md`  
 **Task File:** Archived to `/tasks/archive/phosphor-migration-tasks.md`
 
 **Conclusion:** Migration is 100% complete. **No broken elements.**
@@ -46,7 +46,67 @@
 
 ### High Priority — Memory Optimization & Cleanup
 
-- [x] **Execute Unified Memory Optimization Orchestrator** — ✅ ORCHESTRATOR COMPLETE (March 15, 2026): All 4 workflows finished. Workflow 1: CSS Memory Optimization (75% — remaining 25% is advanced Phase 3 bundle optimization, deferred). Workflow 2: File Size Reduction (100% — all 4 pillars complete). Workflow 3: Codebase Cleanup (100% — all 5 audits complete). Workflow 4: Content Data Integration (100% — all 4 parts complete). Memory Reduction P1-P3 100% complete, P4 71% (2 backlog items remain: P4.1 QueryLoop consolidation, P4.3 CSS import optimization). Grand total: ~34,700+ lines eliminated/saved across all workflows.
+- [x] **Execute Unified Memory Optimization Orchestrator** — ✅ ORCHESTRATOR COMPLETE (March 15, 2026): All 4 workflows finished. Workflow 1: CSS Memory Optimization (75% — remaining 25% is advanced Phase 3 bundle optimization, deferred). Workflow 2: File Size Reduction (100% — all 4 pillars complete). Workflow 3: Codebase Cleanup (100% — all 5 audits complete). Workflow 4: Content Data Integration (100% — all 4 parts complete). Memory Reduction P1-P3 100% complete, P4 100% COMPLETE. Grand total: ~34,700+ lines eliminated/saved across all workflows.
+
+### Code Quality — BEM Compliance
+
+- [x] **Apply BEM (Round 1)** — ✅ COMPLETE (March 16, 2026): 62 violations found, 58 fixed, 4 accepted (App.tsx error boundary fallback). Created `/src/styles/templates/development-service.css` (35 BEM rules for `.dev-service` block). Extended `common-template-headers.css` with 6 rules (title--h2 modifier, description--secondary modifier, industry-card). Fixed DevelopmentServiceTemplate (40+ inline → BEM), ServicesTemplate (10 inline → BEM), 4 pattern files (section headers → BEM). No token gaps detected. Report: `/reports/2026-03/2026-03-16-bem-compliance-audit.md`
+- [x] **Apply BEM (Round 2)** — ✅ COMPLETE (March 16, 2026): Fixed 3 `fontFamily: 'monospace'` → `var(--font-mono)` token violations (WooCommerceSolutionTemplate x2, ServicesLandingTemplate x1). Filled lineHeight token gap: added `--line-height-comfortable: 1.6` to typography system. Assessed 8+ service templates with 300+ remaining inline styles. Report: `/reports/2026-03/2026-03-16-bem-compliance-audit-r2.md`
+- [x] **Apply BEM (Round 3)** — ✅ COMPLETE (March 16, 2026): Created `/src/styles/templates/service-hero.css` (333 lines, 34 BEM rules across 11 groups). Applied to DiscoveryServiceTemplate (~30 inline → BEM) and PerformanceServiceTemplate (~10 inline → BEM). Fixed 16 `font-weight: 600` → `var(--font-weight-semibold)` in service-shared-sections.css and service-shared-pricing-cta.css. Created shared `.service-hero`, `.service-section`, `.service-stat` BEM blocks for site-wide reuse. Report: `/reports/2026-03/2026-03-16-bem-compliance-audit-r3.md`
+- [x] **Apply BEM (Round 4)** — ✅ COMPLETE (March 16, 2026): Applied `service-hero.css` to 10 templates (DesignService + 9 content sub-services). Replaced ~80+ inline styles with BEM classes. DesignService: hero wrapper, grid, crosshairs, badge, title, gradient text, description, 4 section headers. 9 sub-service templates: hero wrapper, title, gradient text, description. Cumulative: 181+ inline → BEM across 21 templates, 69 CSS rules, 2 CSS files. Report: `/reports/2026-03/2026-03-16-bem-compliance-audit-r4.md`
+- [x] **Apply BEM (Round 5)** — ✅ COMPLETE (March 16, 2026): Applied BEM to remaining 4 templates (ContentService, SecurityService, ServicesLanding, PricingTemplate — ~115+ inline styles → BEM classes). Fixed ALL `font-weight: 600` violations across entire codebase: 45+ instances in 25 CSS files (templates, blocks, patterns, UI, section-styles, pages) converted to `var(--font-weight-semibold)`. Also fixed `font-weight: 500` → `var(--font-weight-medium)` and SVG fontWeight in LogoInline.tsx. **Zero `font-weight: 600` violations remain in CSS or TSX.** Cumulative BEM rounds 1-5: 296+ inline styles → BEM across 29 templates, 34+ CSS files updated.
+- [x] **Apply BEM (Round 6) — Full font-weight token sweep** — ✅ COMPLETE (March 16, 2026): Eradicated ALL remaining hardcoded `font-weight` values across entire CSS codebase. **92+ violations fixed across 40+ files:** `font-weight: 500` → `var(--font-weight-medium)` (51 instances, 33 files), `font-weight: 700` → `var(--font-weight-bold)` (35 instances, 27 files), `font-weight: 400` → `var(--font-weight-normal)` (6 instances, 2 files), `font-weight: 800` → `var(--font-weight-extrabold)` (4 instances, 4 files). Also fixed 1 hardcoded `font-family: serif` → `var(--font-secondary)` in featured-project-text.css. **Zero hardcoded font-weight values remain in CSS or TSX.** Combined with Round 5 (font-weight: 600), the codebase now has 100% font-weight token compliance.
+- [x] **Apply BEM (Round 7) — Tour Operator Sub-Components** — ✅ COMPLETE (March 16, 2026): Refactored TourOperatorSections.tsx from 100% inline styles to 100% BEM classes. **50+ inline style blocks → 0.** Replaced all JS `onMouseEnter`/`onMouseLeave` hover handlers with CSS `:hover` rules. Fixed 2 token gaps in tour-operator-solutions.css: `var(--black)` → `var(--color-black)` (undefined variable), `800px` → `var(--wp--style--global--narrow-size)` (hardcoded pixel). Split CSS file for size compliance: `tour-operator-solutions.css` (170 lines, hero + root) + `tour-operator-sections.css` (270 lines, features + outcome + CTA). Created 35+ BEM rules across `.tour-operator__feature-*`, `.tour-operator__outcome-*`, `.tour-operator__mockup-*`, `.tour-operator__cta-*` elements. **Flagged:** WooCommerceHero.tsx still has ~30+ inline styles (not in scope for this round, needs dedicated BEM pass).
+- [x] **Apply BEM (Round 8) — WooCommerce Solution** — ✅ COMPLETE (March 16, 2026): Created `/src/styles/templates/woocommerce-solution.css` (270 lines, 35 BEM rules across 3 blocks: `.wc-hero`, `.wc-approach`, `.wc-cta`). Migrated WooCommerceHero.tsx (~30 inline style blocks → 0) and WooCommerceLowerSections.tsx (~25 inline style blocks → 0). Hero: neon grid bg, ecommerce badge, gradient text, holographic product card with scanlines, skeleton bars, product footer. Approach: tech stack panel with terminal glow, tech items. CTA: radial bg, glassmorphism card, icon wrapper, primary/secondary buttons. All typography uses `var(--font-primary)`, `var(--font-secondary)`, `var(--font-mono)`. All spacing uses `var(--spacing-*)`. All colors use semantic CSS variables. **Zero inline style blocks remain in WooCommerce sub-components.** Cumulative BEM rounds 1-8: 351+ inline styles → BEM across 31 templates.
+- [x] **Apply BEM (Round 9) — WordPress Solution + Security Service** — ✅ COMPLETE (March 16, 2026): Created 2 CSS files: `/src/styles/templates/wordpress-solution.css` (210 lines, 30 BEM rules for `.wp-solution-hero` block — grid bg, badge, title, gradient text, description, buttons, code window, traffic dots, syntax highlighting classes, floating orbs) and `/src/styles/templates/security-service.css` (220 lines, 30 BEM rules across 3 blocks: `.security-hero`, `.security-terminal`, `.security-threat`). Migrated WordPressHero.tsx (~40 inline style blocks → 0, including syntax highlighting spans) and SecurityServiceTemplate.tsx (~35 inline style blocks → 0, including terminal visual, threat intel cards with scoped `--_card-accent` color variable). All typography uses `var(--font-primary)`, `var(--font-secondary)`, `var(--font-mono)`. **Zero fontFamily inline styles remain in WP/Security.** Cumulative BEM rounds 1-9: 426+ inline styles → BEM across 33 templates, 6 CSS files created.
+- [x] **Apply BEM (Round 10) — Performance + Pricing + Analytics + Design cleanup** — ✅ COMPLETE (March 16, 2026): Created `/src/styles/templates/performance-service.css` (290 lines, 35 BEM rules across 5 blocks: `.perf-hero`, `.perf-speedometer`, `.perf-checklist`, `.perf-comparison`, `.pricing-payment`). Migrated PerformanceServiceTemplate.tsx (~30 inline style blocks → BEM: speedometer gauge, metrics grid, speed comparison bars, checklist items, hero backgrounds). Migrated PricingTemplate.tsx payment options (~15 inline style blocks → BEM: icon circles, titles, descriptions, discount badges, terms). Migrated AnalyticsServiceTemplate.tsx (~12 inline style blocks → BEM: reused service-hero/service-section shared classes, deliverables cards). Fixed DesignServiceTemplate.tsx checklist items (3 fontFamily inlines → `.perf-checklist__card` + `.perf-checklist__card-text` BEM). Fixed ServicesLandingTemplate.tsx section headers (2 fontFamily inlines → `service-section__title`/`service-section__description`). **Remaining fontFamily inlines:** ContentServiceTemplate (2 decorative editing marks — acceptable), DesignPlaygroundTemplate (1 dynamic font preview — legitimate). Cumulative BEM rounds 1-10: 488+ inline styles → BEM across 38 templates, 7 CSS files created.
+- [x] **Apply BEM (Round 11) — AI Solution Pages Shared Hero** — ✅ COMPLETE
+
+- [x] **Apply BEM (Round 12) — Sub-service inline styles: AIEngineServiceTemplate + MigrationsServiceTemplate** — ✅ COMPLETE (March 16, 2026): Migrated 35 inline style blocks → BEM classes across 2 templates. Used existing `service-section` + `service-section--bg-*` modifiers (from service-hero.css) for section wrappers, `service-section__header`/`__title`/`__description` for section headers. Added 11 new BEM rules to `sub-service-base.css`: hero buttons (`.sub-service-base__hero-btn` + `--primary`/`--outline`), types grid (`.sub-service-base__types-grid`, `__type-card`, `__type-card-title`, `__type-list`, `__type-list-item`, `__type-list-dot`). Fixed redundant `textAlign: 'center'` inline on `service-hero__content--centered` (already in CSS). Remaining inline styles: 2 per template (hero minHeight + decorative grid background — both acceptable). Report: `/reports/2026-03/2026-03-16-combined-audit-report.md`. Cumulative BEM rounds 1-12: 523+ inline styles → BEM across 40 templates.
+- [x] **Apply BEM (Round 13) — Sub-service inline styles: SupportServiceTemplate** — ✅ COMPLETE (March 16, 2026): Migrated 20 inline style blocks → BEM classes. Converted hero buttons to `sub-service-base__hero-btn`, sections to `service-section` + bg modifiers, section headers to `service-section__title`/`__description`. Added 10 new BEM rules to `sub-service-base.css` for pricing plan cards: `.sub-service-base__plan-card`, `__plan-card-title`, `__plan-card-price`, `__plan-card-features`, `__plan-card-footer`, `__plan-btn` + `--primary`/`--outline`. Reused `__type-list-item` and `__type-list-dot` for feature lists. Conditional button styling preserved via className ternary. Cumulative BEM rounds 1-13: 543+ inline styles → BEM across 41 templates.
+- [x] **Apply BEM (Round 14) — Sub-service inline styles: ContentCollectionService + ContentAuditService + NewsletterService + EmailMarketingService** — ✅ COMPLETE (March 16, 2026): Migrated 32 inline style blocks → BEM classes across 4 content sub-service templates. Added 7 new BEM rules to `sub-service-base.css`: content hero buttons (`.sub-service-base__content-btn` + `--primary` with glow shadow / `--outline`), deliverables eyebrow badge (`__eyebrow-badge`), deliverables title/description (`__deliverables-title`, `__deliverables-description`), deliverables card wrapper (`__deliverables-card`). All 4 templates share identical structure: hero CTA buttons, benefits section, deliverables 2-col grid, results stats. Cumulative BEM rounds 1-14: 575+ inline styles → BEM across 45 templates.
+
+### Code Quality — Report Processing
+
+- [x] **Process reports (March 16, 2026)** — ✅ COMPLETE: Reviewed 19 active reports in `/reports/2026-03/`. Identified 1 un-prefixed report (`sentence-case-audit-report.md` — needs `2026-03-16-` prefix). Created combined audit report (`2026-03-16-combined-audit-report.md`) covering theme, CSS, tokens, styles, data audits. All other reports properly dated and organized.
+- [x] **Report rename: sentence-case-audit-report.md** — ✅ COMPLETE (March 16, 2026): Renamed to `2026-03-16-sentence-case-audit-report.md` with date prefix. Updated version to 1.1.0 with fix progress for Rounds 1-4, 6, 8. Restructured remaining violations section.
+- [x] **Process reports — session 2 (March 16, 2026)** — ✅ COMPLETE: Full report processing pass. Renamed 2 sub-directory reports (added date prefix). Standardized frontmatter on 10 reports. Reconstructed missing `phosphor-migration-complete.md` (referenced 5 times but never created). Fixed 2 broken references in task-list.md. Applied sentence case to 6 report H1 headings. 22 reports total, all compliant. Report: `/reports/2026-03/2026-03-16-process-reports-summary.md`.
+
+### Code Quality — CSS File Size Compliance
+
+- [x] **Split ai-solution-hero.css (474 lines → 400 limit)** — ✅ COMPLETE (March 16, 2026): Split sub-page card grid (~107 lines) into new `/src/styles/templates/ai-solution-cards.css`. Original file now ~390 lines (within 400-line limit). New file covers `.ai-page__cards-section`, `__cards-header`, `__cards-title`, `__cards-description`, `__cards-grid`, `__card`, `__card-icon`, `__card-title`, `__card-description`, `__card-link`. Updated import chain in `page-solution-ai-optimized.css`.
+
+### Phase 4.4 — Product Page Base Extraction
+
+- [x] **Create product-base.css** — ✅ COMPLETE (March 16, 2026)
+- [ ] **Migrate Wetu Importer to product-base** — Replace duplicated hero/section/card patterns in wetu-importer-page CSS with product-base classes. Expected savings: ~100-120 lines.
+- [ ] **Migrate LSX Sharing to product-base** — Replace duplicated hero/section/card patterns in lsx-sharing-page CSS with product-base classes. Expected savings: ~100-120 lines.
+- [ ] **Migrate LSX Search to product-base** — Replace duplicated hero/section/card patterns in lsx-search CSS with product-base classes. Expected savings: ~100-120 lines.
+- [ ] **Migrate Publishers to product-base** — Replace duplicated hero/section/card patterns in publishers-page CSS with product-base classes. Expected savings: ~80-100 lines.
+
+### Apply BEM — AI Solutions Pages
+
+- [x] **UseCasesGrid card styles (ZERO CSS → full BEM)** — ✅ COMPLETE (March 16, 2026): Created 150+ lines of BEM rules in `use-cases-grid.css` for `.use-case-card` and all children. Card container with glassmorphism border + hover lift + gradient overlay pseudo-element. Title (font-primary, h4, semibold), description (font-secondary, base, muted), industries section (label + flex-wrap tags with primary-soft badges), features list (checkmark icons, semantic `<ul>` reset). Reduced motion + responsive. **Fixes all 4 AI sub-pages:** Content Generation, AI SEO, AI Chatbots, AI Analytics.
+- [x] **AIServicesLandingTemplate hero inline → BEM** — ✅ COMPLETE (March 16, 2026): Created `ai-services-landing.css` (210 lines, 20 BEM rules for `.ai-landing__*`). Converted ~40 inline style blocks to BEM classes: hero section (80vh, centered flex), mesh grid pattern, badge (pill with glow), title (h1 + gradient highlight), subtitle (secondary font, muted), button group (primary + outline with hover/focus/active states), section wrappers (muted/bg modifiers), scroll-down positioning, responsive mobile stack, reduced motion. Applied sentence case to 5 headings. Registered in `index.css`. Zero inline styles remain.
+
+### Code Quality — Sentence Case Compliance
+
+- [x] **Sentence case (Round 1) — Recurring patterns** — ✅ COMPLETE (March 16, 2026): Fixed 3 recurring heading strings across 19 files: "Frequently Asked Questions" → "Frequently asked questions" (8 templates + 2 pattern defaults), "Related Services" → "Related services" (5 templates), "Common Questions" → "Common questions" (4 templates). Also updated JSDoc examples in FAQSection.tsx. Report: `/reports/2026-03/2026-03-16-sentence-case-audit-report.md`
+- [x] **Sentence case (Round 2) — Template inline headings (high priority)** — ✅ COMPLETE (March 16, 2026): Fixed 20 title-cased h1/h2/h3 headings hardcoded in 11 user-facing templates: ServiceDetailTemplate ("What we build"), ContentServiceTemplate ("Editorial services", "From draft to publish"), SecurityServiceTemplate ("Real-time monitoring", "Hardened core", "Rapid response"), SolutionDetailTemplate ("Key benefits", "Features & capabilities"), WhyChooseUsTemplate ("What sets us apart", "Our proven process", "Risk-free guarantees"), GuaranteesTemplate ("Our core guarantees"), ROICalculatorTemplate ("Your current metrics", "Your projected ROI", "How we calculate"), TestimonialsTemplate ("All client testimonials"), AIIntegrationsTemplate ("AI impact by the numbers", "Explore AI solutions"), SectionStyleExample (4 headings).
+- [x] **Sentence case (Round 3) — Template prop headings** — ✅ COMPLETE (March 16, 2026): Fixed 28 title-cased `title=`/`heading=` props across 20+ templates: FrontPage (2), Services (3), About (1), PortfolioArchive (1), PortfolioSingle (1), TagArchive (1), DateArchive (1), Mailchimp (1), PrivacyPolicy (1), VideoArchive (1), SingleVideo (1), Tutorials (1), DeploymentReadiness (2), GettingStarted (1), TourOperator (1), ServicesLandingHubs (1), TestimonialArchive (1), ServiceDetailLowerSections (3), AIServicesLanding (1), AIIntegrations (1).
+- [x] **Sentence case (Round 4) — AI sub-page section title props** — ✅ COMPLETE (March 16, 2026): Fixed 12 title-cased `statsTitle=`, `featuresTitle=`, `useCasesTitle=` props in 4 templates: AIContentGeneration, AISEO, AIChatbots, AIAnalytics. All AI-related proper nouns preserved uppercase.
+- [x] **Sentence case (Round 5) — Data file headings** — ✅ COMPLETE (March 16, 2026): Fixed 120+ title-cased `title:` properties across 15 data files: front-page.ts (15 fixes), service-page.ts (27 fixes), development-service-page.ts (22 fixes), content-service-page.ts (19 fixes), why-choose-us.ts (12 fixes), guarantees.ts (9 fixes), process.ts (6 fixes), performance-service-page.ts (6 fixes), lsx-design-page.ts (8 fixes), wordpress-redesign-page.ts (6 fixes), woocommerce-redesign-page.ts (8 fixes), solutions-detailed.ts (9 fixes), archive-items.ts (9 fixes), ai-integrations/ (39 fixes across 5 files: landing.ts, content-generation.ts, seo.ts, chatbots.ts, analytics.ts), discovery-service.ts (10 fixes). All proper nouns preserved (WordPress, WooCommerce, LightSpeed, WCAG, SEO, AI, FSE, GDPR).
+- [x] **Sentence case (Round 6) — Dev/showcase template headings** — ✅ COMPLETE (March 16, 2026): Fixed 12 title-cased headings + breadcrumb labels in 7 dev/showcase templates: TemplateTester ("WordPress template tester"), DevToolsTemplate ("Developer tools" x3), DesignBlocksShowcase ("Design blocks", "Layout primitives"), ButtonShowcase ("Button system", "Style variants", "Size scale", "Icon integration", "Interactive states"), HeaderFooterComparison (h1 + breadcrumb), IconLibrary (h1 + breadcrumb), SectionPresetsShowcase (h1 + breadcrumb).
+- [x] **Sentence case (Round 7) — Blog post titles** — ✅ COMPLETE (March 16, 2026): Fixed 17 title-cased blog post titles in blog-posts.ts. Converted all title-cased article titles to sentence case while preserving proper nouns (WordPress, WooCommerce, Gutenberg, React, TypeScript, BugHerd, Figma, Tour Operator, LightSpeed, Core Web Vitals, WCAG, SEO, AI, QA) and acronyms. Examples: "How We Migrated 50+ Sites to WordPress Block Themes" → "How we migrated 50+ sites to WordPress block themes", "Design Tokens: From Figma to WordPress theme.json in One Pipeline" → "Design tokens: from Figma to WordPress theme.json in one pipeline".
+- [x] **Sentence case (Round 8) — Pattern default heading props** — ✅ COMPLETE (March 16, 2026): Fixed 2 default prop values: VideoTestimonial `heading = 'Video testimonials'`, QueryLoopFAQs `heading = 'Frequently asked questions'`.
+
+### Code Quality — Token Compliance
+
+- [x] **Why Choose Us page rebuild** — ✅ COMPLETE (March 16, 2026): Deleted broken page and rebuilt from scratch. Created 2 new sub-components: `ComparisonTable.tsx` (feature comparison grid — LSX vs DIY/freelancer/agency, 24 rows), `WhenToChoose.tsx` (4 option cards). Created 2 new CSS files: `wcu-compare.css` (comparison table + mobile cards + dark mode), `wcu-choose.css` (option cards + dark mode + reduced motion). Template now renders all data from `why-choose-us.ts` (comparison table, when-to-choose, objections — previously unused). Switched FAQ from generic `aboutFAQs` to dedicated `whyChooseUsFAQs`. Fixed 6 missing Phosphor icon mappings (`Award`, `Blocks`, `Zap`, `Eye`, `Shield`, `DollarSign`) that caused `ForwardRef` crash. Applied sentence case to all data file headings. 100% CSS variable compliance, BEM classes, responsive, dark mode, reduced motion.
+- [x] **Audit layout + functionality (Why Choose Us)** — ✅ COMPLETE (March 16, 2026): Ran both `audit layout` and `audit functionality` on rebuilt Why Choose Us page. **6 issues found, 6 fixed:** (1) Hardcoded `max-width: 800px` → `var(--wp--style--global--narrow-size)` in wcu-hero.css. (2) Tooltip used `<Minus>` icon with no visible text → replaced with `<Info>` icon + `title` attribute for sighted users. (3) `objections` data (5 items) was exported but never rendered → created `ObjectionCards.tsx` sub-component (72 lines, accordion expand/collapse with ARIA, keyboard accessible) + `wcu-objections.css` (145 lines, dark mode, reduced motion). (4) Mobile comparison showed only 8/26 features with no indicator → added "Show all N features" / "Show fewer" toggle button with `useState`. (5) Array index keys → replaced with feature-name-based keys. (6) Added `wcu-objections.css` to import chain. **File sizes:** Template 288 lines (limit 300 ✅), ComparisonTable 130 lines ✅, ObjectionCards 72 lines ✅, wcu-compare.css 255 lines (limit 400 ✅), wcu-objections.css 145 lines ✅. **Accepted:** `roiFactors` not rendered (belongs to ROI Calculator page), hero orb 600px decorative dimension, table `min-width: 700px` (scroll trigger), description `max-width: 600px` (no matching token).
+- [x] **Audit images (full codebase)** — ✅ COMPLETE (March 16, 2026): Comprehensive image audit across entire codebase. **Inventory:** 102+ Unsplash URLs (47 in .tsx, 55 in .ts data), 27 `<img>` tags across 22 files, 4 ImageWithFallback usages, 6 `backgroundImage: url()` instances. **Issues found + fixed:** (1) **16 missing `loading="lazy"`** added across 14 files: SinglePodcastTemplate, AudioArchiveTemplate, SingleAudioTemplate, VideoArchiveTemplate (post-format), SingleVideoTemplate (related thumbs), GalleryArchiveTemplate, SingleGalleryTemplate, ImageArchiveTemplate, StandardArchiveTemplate, AsideStreamTemplate, StatusArchiveTemplate, PortfolioCategoryArchiveTemplate, PortfolioTagArchiveTemplate, SingleProjectTemplate (gallery fallback), ServicesLandingAbout, ServicesLandingGrid. (2) **Duplicate hero image** — PrivacyPolicy and TermsOfService shared identical URL → TermsOfService updated to unique Unsplash image. (3) **HeroSplash decorative bg** — had misleading `alt="Hero background"` → corrected to `alt="" aria-hidden="true"`. (4) **Generic alt text improved** — "Author avatar" → "Ash Shaw's profile photo" (AsideStream, StatusArchive), "Related video" → descriptive alt with part number (SingleVideoTemplate). **Accepted (no fix needed):** Duplicate avatar placeholder URLs in ROICalculator/TestimonialsTemplate (prototype data, 6 Unsplash photos cycled), `photo-1522071820081` and `photo-1460925895917` reused between data files and templates (acceptable for prototype), all `backgroundImage` divs have `role="img"` + `aria-label` ✅, all Unsplash URLs well-formed ✅, zero broken figma:asset references ✅.
+- [x] **Audit Tokens (March 16, 2026)** — ✅ COMPLETE: 98% compliant. Fixed 3 fontFamily violations. Filled lineHeight token gap (`--line-height-comfortable: 1.6`). Zero hardcoded hex/fontSize/fontWeight/spacing/borderRadius. 50+ lineHeight and 17 letterSpacing inline violations deferred to `apply bem` Round 3 (all use correct values, just inline instead of CSS). Report: `/reports/2026-03/2026-03-16-tokens-audit.md`
+- [x] **Audit CSS (March 16, 2026)** — ✅ COMPLETE: Grade A-. Zero genuine hardcoded hex in CSS (all variable defs, fallbacks, print, or comments). Zero hardcoded font-family. Import chain clean. Report: `/reports/2026-03/2026-03-16-css-audit.md`
 
 ### Completed Tasks (Archive Candidates)
 - [x] **Design System Compliance Audit** — ✅ COMPLETE (March 2, 2026): 100% PERFECT COMPLIANCE - Zero hardcoded values found across 500+ files. All typography uses var(--font-primary/secondary), all colors use semantic CSS variables, all spacing uses var(--spacing-*) tokens, 100% WordPress utility classes (.wp-*), zero Tailwind classes. Complete user control via CSS files. Report: `/reports/2026-03/design-system-compliance-audit.md`
@@ -112,106 +172,7 @@
 
 ## Current Focus (March 16, 2026)
 
-**Active:** `continue` — Root-level CSS splitting
-**Status:** Root-level CSS file size optimization (March 16, 2026):
+**Active:** `continue` — ForwardRef debugging + dead proxy cleanup
+**Status:** ForwardRef error investigation + codebase hygiene (March 16, 2026):
 
-**CSS File Size Optimization (C3.1j — 400-690 line batch): 32/32 COMPLETE**
-- ✅ Split solution-base.css (647→19 lines orchestrator + 3 sub-files)
-- ✅ Split systems-hub-template.css (646→19 lines orchestrator + 3 sub-files)
-- ✅ Split roi-calculator.css (642→16 lines orchestrator + 2 sub-files)
-- ✅ Split testimonial-single.css (639→15 lines orchestrator + 2 sub-files)
-- ✅ Split micro-interactions.css (610→15 lines orchestrator + 2 sub-files)
-- ✅ Split global-search.css (600→16 lines orchestrator + 2 sub-files)
-- (Plus 25 previously completed splits: blog-base, advanced-animations, hero-home, etc.)
-
-**CSS File Size Optimization P3 — 400-600 line batch (continued):**
-- ✅ Split feature-list.css (549→orchestrator + 2 sub-files)
-- ✅ Split stats-proven-track.css (545→orchestrator + 2 sub-files)
-- ✅ Split service-pages-shared.css (534→orchestrator + 2 sub-files)
-- ✅ Split mailchimp-solution-page-optimized.css (558→orchestrator + 2 sub-files)
-- ✅ Split design-playground.css (previously completed — orchestrator + 3 sub-files)
-- ✅ Split dev-tools.css (previously completed — orchestrator + 3 sub-files)
-- ✅ Split post-card.css (previously completed — orchestrator + 2 sub-files)
-- ✅ Split solutions-page.css (479→orchestrator + 2 sub-files)
-- ✅ Split testimonials-page.css (464→orchestrator + 2 sub-files)
-- ✅ Split page-faq.css (452→orchestrator + 2 sub-files)
-- ✅ Split content-strategy-service-optimized.css (474→orchestrator + 2 sub-files)
-- ✅ Split accessibility-service-optimized.css (453→orchestrator + 2 sub-files)
-- 7 orphan duplicate sub-files cleaned up from overlapping sessions
-- [x] Split answer-engine-service-optimized.css (506→orchestrator + 2 sub-files)
-- [x] Split page-service-training-optimized.css (512→orchestrator + 2 sub-files)
-- [x] Split single-post-page.css (401→orchestrator + 2 sub-files)
-- [x] Split system-page-shared.css (426→orchestrator + 2 sub-files)
-- [x] Split code-quality-dashboard.css (470→orchestrator + 2 sub-files)
-- [x] Split deployment-readiness.css (484→orchestrator + 2 sub-files)
-- [x] Split media-archive-base.css (427→orchestrator + 2 sub-files)
-
-**CSS P3 400-600 template batch: 19/19 COMPLETE — Zero template CSS files over 400 lines remain**
-
-**Root-level CSS File Size Optimization (March 16, 2026): 7/7 COMPLETE**
-- [x] Split responsive.css (572→orchestrator + 2 sub-files: responsive-mobile.css, responsive-desktop.css)
-- [x] Split theme-dark.css (545→orchestrator + 2 sub-files: theme-dark-colors.css, theme-dark-effects.css)
-- [x] Split theme-light.css (535→orchestrator + 2 sub-files: theme-light-colors.css, theme-light-effects.css)
-- [x] Split components.css (510→orchestrator + 2 sub-files: components-layout.css, components-ui.css)
-- [x] Split theme-base.css (471→orchestrator + 2 sub-files: theme-base-typography-spacing.css, theme-base-visual-system.css)
-- [x] Split wordpress-blocks-extended.css (451→orchestrator + 2 sub-files: wp-post-content-author.css, wp-related-category-pagination.css)
-- [x] Split wordpress-blocks.css (443→orchestrator + 2 sub-files: wp-blocks-containers.css, wp-blocks-patterns.css)
-- ℹ️ theme.css (437 lines) — Already an import orchestrator, no split needed
-
-**Milestone: Zero root-level CSS files over 400 lines remain (excluding import orchestrators)**
-
-**Non-root CSS File Size Optimization P5 (March 16, 2026): 10/10 COMPLETE**
-- [x] Split pages/sitemap.css (481→orchestrator + 2 sub-files: sitemap-layout.css, sitemap-states.css)
-- [x] Split blocks/theme/site-footer-content.css (474→orchestrator + 2 sub-files: footer-content-main.css, footer-content-bottom.css)
-- [x] Split blocks/theme/site-header-mobile.css (465→orchestrator + 2 sub-files: mobile-toggle-menu.css, mobile-submenu-cta.css)
-- [x] Split patterns/service-case-studies.css (464→orchestrator + 2 sub-files: case-studies-cards.css, case-studies-states.css)
-- [x] Split templates/site-map.css (457→orchestrator + 2 sub-files: site-map-hero-nav.css, site-map-links-stats.css)
-- [x] Split base/glass-effect-base.css (444→orchestrator + 2 sub-files: glass-core.css, glass-themes.css)
-- [x] Split patterns/hero/hero-variants.css (442→orchestrator + 2 sub-files: hero-variants-primary.css, hero-variants-secondary.css)
-- [x] Split base/card-base.css (442→orchestrator + 2 sub-files: card-base-structure.css, card-base-content.css)
-- [x] Split blocks/theme/site-header-desktop.css (429→orchestrator + 2 sub-files: desktop-nav-mega.css, desktop-journey-mega.css)
-- [x] Split patterns/query-loop.css (404→orchestrator + 2 sub-files: query-loop-base.css, query-loop-variants.css)
-
-**Milestone: Zero CSS files over 400 lines remain across entire codebase (excluding import orchestrators)**
-
-**Cleanup findings (1 fix):**
-- ✅ Fixed `#7BE7FF` hardcoded fallback in TourOperatorSolutionsTemplate.tsx → `var(--secondary)`
-- ✅ Fixed hardcoded `0.3s` in scroll-down.css → `var(--transition-base)`
-
-**Continue tasks completed (4 tasks):**
-- ✅ A1.2: Added global `:focus-visible` ring to `resets.css` — covers all interactive elements with `var(--ring)`, `:focus:not(:focus-visible)` suppression, `prefers-reduced-motion` guard
-- ✅ A1.3: Added `aria-live="polite" aria-atomic="true"` to SnippetGeneratorTemplate code output + ComplianceScorecard score card
-- ✅ A1.4: Verified terminal colour contrast ratios — all pass WCAG AA 4.5:1 (green 8.57:1, red 6.38:1, comment 6.20:1)
-- ✅ A1.5: Verified scroll-down.css reduced-motion — confirmed complete
-
-**Milestone: A11y task list 9/9 COMPLETE (0 open)**
-**Milestone: Tokens task list 13/13 COMPLETE (0 open)**
-
-**Remaining open task lists:** CSS (0 open — all batches complete), Routes (2 open — S2.1 content decision + hardcoded link migration P4)
-
----
-
-## Next Actions
-
-**Recommended execution order (type `continue` to start):**
-1. ~~**T2.4** — Add code syntax CSS variables to theme-base.css~~ ✅ COMPLETE
-2. ~~**T2.1** — Fix WordPressSolutionTemplate hardcoded colors~~ ✅ COMPLETE
-3. ~~**T2.2** — Fix PerformanceServiceTemplate hardcoded colors~~ ✅ COMPLETE
-4. ~~**T1.1** — Fix WooCommerceSolutionTemplate `#0d1117`~~ ✅ COMPLETE
-5. ~~**A1.1** — Add `prefers-reduced-motion` to scroll-down.css~~ ✅ COMPLETE
-6. ~~**R2.7** — Update routes.md guideline~~ ✅ COMPLETE
-7. ~~**R3.1** — Split core.routes.tsx~~ ✅ COMPLETE (extracted solutions.routes.tsx)
-8. ~~**S3.1** — Fix stale overview-sitemap.md references~~ ✅ COMPLETE (7 files + 4 data files)
-9. ~~**R3.2** — Footer nav review~~ ✅ RESOLVED (no issue found)
-10. ~~**R3.3** — Hardcoded link scan~~ ✅ AUDITED (128 links found — P4 migration)
-11. **S2.1** — Decide SiteMap utility pages (content decision — needs user input)
-12. **G1.1** — Run `cleanup guidelines` (split oversized files) — ✅ **COMPLETE** (March 15, 2026). **All 18 oversized guideline files split.** Deleted 8 duplicate originals after user renamed sub-files. **Files split:** colors.md (1344→hub + 4 sub-files, patterns hub further split to 2 sub-files), performance.md (863→hub + 3), data-files.md (775→hub + 3), token-examples.md (629→2 sub-files), spacing.md (622→hub + 2), reporting.md (576→hub + 2), imports.md (549→hub + 2), components-vs-patterns.md (525→hub + 2), non-block-components.md (492→hub + 2), wordpress-mapping.md (489→hub + 2), pattern-catalog.md (486→hub + 3), css-variables-overview.md (471→hub + 3), page-archetypes.md (434→hub + 2), qa-checklist.md (412→hub + 2), accessibility.md (406→hub + 2), _templates.md (382→hub + 2), build-rules.md (362→hub + 2, user-split), colors-patterns.md (389→hub + 2). Template scaffold files (_templates/*-template.md) excluded from split rule. Zero oversized guideline files remain.
-13. **C4.4** — Phase 4.4: Industry + Specialty Pages CSS Optimization — ✅ **COMPLETE** (March 15, 2026). **6 oversized CSS files split into orchestrator + sub-files:** why-choose-us.css (571→14 lines orchestrator + 3 sub-files), careers-page.css (547→14 lines orchestrator + 3 sub-files), publishers-page.css (536→13 lines orchestrator + 3 sub-files), guarantees.css (519→12 lines orchestrator + 3 sub-files), page-legal.css (469→12 lines orchestrator + 3 sub-files), service-pricing-timeline.css (431→13 lines orchestrator + 2 sub-files). **Total: 17 new sub-files created, ~3,073 lines redistributed.** 100% CSS variable compliance maintained.
-
-**Remaining Backlog (P3 — Low Priority):**
-1. P4.1 — ✅ **COMPLETE** (March 16, 2026) — QueryLoop pattern consolidation (12 → 7 files). Merged Audio+Video+Chat+Gallery → QueryLoopMedia.tsx, Services+Solutions → QueryLoopOfferings.tsx, Portfolio absorbed into QueryLoopPosts.tsx. 7 files deleted, 2 new files created, backward-compatible aliases exported. Report: `/reports/2026-03/queryloop-consolidation-audit.md`
-2. P4.3 — ✅ **COMPLETE** (March 16, 2026) — CSS import optimization. Fixed 3 duplicate import issues: (1) Deleted duplicate `components/taxonomy-filter.css` (conflicting with comprehensive `patterns/taxonomy-filter.css`), removed orphan import from index.css. (2) Fixed `ui/error-boundary.css` — replaced 5 hardcoded HSL values with `var(--destructive)`, fixed `hsl(var(--primary))` → `var(--primary)`, replaced `.dark` → `[data-theme="dark"]`, replaced hardcoded `font-weight: 600/700` → `var(--font-weight-*)`, replaced `line-height: 1.6` → `var(--line-height-relaxed)`, replaced `0.3s` → `var(--transition-base)`. (3) Fixed `ui/scroll-progress.css` — replaced `hsl(var(--primary))` → `var(--primary)`. (4) Fixed `components/error-boundary.css` — replaced `font-weight: 600` → `var(--font-weight-semibold)`, `line-height: 1.7` → `var(--line-height-relaxed)`.
-
-**Other Potential Work:**
-8. [x] ~~Phase 4.4 — Industry + Specialty Pages CSS Optimization~~ ✅ COMPLETE (March 15, 2026) — 6 CSS files split (why-choose-us, careers, publishers, guarantees, page-legal, service-pricing-timeline)
-9. Deploy to Figma Make and verify all routes
+**Dead UI Proxy Cleanup: 24/24 COMPLETE**

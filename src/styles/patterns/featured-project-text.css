@@ -79,9 +79,9 @@
 .featured-project-text__title {
   font-family: var(--font-primary);
   font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 800;
+  font-weight: var(--font-weight-bold);
   line-height: 1.1;
-  color: var(--color-white);
+  color: var(--color-white, #fafafa);
   margin-bottom: var(--spacing-6);
 }
 
@@ -108,7 +108,7 @@
   left: var(--spacing-4);
   font-size: 4rem;
   line-height: 1;
-  font-family: serif;
+  font-family: var(--font-secondary);
   color: color-mix(in srgb, var(--color-white) 10%, transparent);
   pointer-events: none;
 }
@@ -135,7 +135,7 @@
 }
 
 .featured-project-text__author-name {
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
   color: var(--wp--preset--color--neon-pink);
   font-size: var(--text-sm);
 }
@@ -153,7 +153,7 @@
   padding: var(--spacing-3) var(--spacing-8);
   background: var(--wp--preset--color--neon-cyan);
   color: var(--color-black);
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
   border-radius: var(--radius);
   text-decoration: none;
   transition: all 0.3s ease;

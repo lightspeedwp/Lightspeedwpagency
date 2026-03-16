@@ -58,7 +58,7 @@
 .dots-loading span {
   width: 8px;
   height: 8px;
-  background: hsl(var(--primary));
+  background: var(--primary);
   border-radius: var(--radius-full);
   animation: dots-bounce 1.4s infinite ease-in-out both;
 }

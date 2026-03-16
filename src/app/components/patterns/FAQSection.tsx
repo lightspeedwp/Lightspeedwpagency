@@ -49,7 +49,7 @@
  * <!-- wp:group {"layout":{"type":"constrained"}} -->
  * <div class="wp-block-group">
  *   <!-- wp:heading -->
- *   <h2>Frequently Asked Questions</h2>
+ *   <h2>Frequently asked questions</h2>
  *   <!-- /wp:heading -->
  *   
  *   <!-- wp:list {"className":"faq-accordion"} -->
@@ -78,7 +78,7 @@
  * import { homepageFAQs } from '../../data/faqs';
  * 
  * <FAQSection 
- *   title="Frequently Asked Questions"
+ *   title="Frequently asked questions"
  *   faqs={homepageFAQs}
  * />
  * 
@@ -182,15 +182,15 @@ interface FAQSectionProps {
    * Centered by default.
    * 
    * **Recommended titles:**
-   * - "Frequently Asked Questions"
-   * - "Common Questions About [Topic]"
-   * - "Need Help?"
-   * - "Your Questions Answered"
+   * - "Frequently asked questions"
+   * - "Common questions about [Topic]"
+   * - "Need help?"
+   * - "Your questions answered"
    * 
-   * @default "Frequently Asked Questions"
+   * @default "Frequently asked questions"
    * 
    * @example
-   * title="Common Questions About Our Services"
+   * title="Common questions about our services"
    * 
    * @example
    * title="WordPress Development FAQs"
@@ -281,7 +281,7 @@ interface FAQSectionProps {
 }
 
 export function FAQSection({
-  title = 'Frequently Asked Questions',
+  title = 'Frequently asked questions',
   description,
   faqs,
   variant = 'default'

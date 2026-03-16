@@ -45,7 +45,7 @@
 .lsx-search__section-title {
   font-family: var(--font-primary);
   font-size: var(--text-h2);
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   color: var(--foreground);
 }
 
@@ -118,7 +118,7 @@
 .lsx-search__feature-title {
   font-family: var(--font-primary);
   font-size: var(--text-xl);
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   color: var(--foreground);
   position: relative;
   z-index: 1;
@@ -163,7 +163,7 @@
 .lsx-search__benefit-title {
   font-family: var(--font-primary);
   font-size: var(--text-xl);
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   color: var(--foreground);
 }
 
@@ -206,7 +206,7 @@
   border-radius: 50%;
   font-family: var(--font-primary);
   font-size: var(--text-xl);
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   box-shadow: 0 0 20px var(--primary-transparent-20);
 }
 
@@ -220,7 +220,7 @@
 .lsx-search__process-title {
   font-family: var(--font-primary);
   font-size: var(--text-lg);
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   color: var(--foreground);
 }
 
@@ -260,7 +260,7 @@
 .lsx-search__capability-title {
   font-family: var(--font-primary);
   font-size: var(--text-xl);
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   color: var(--foreground);
 }
 
@@ -314,7 +314,7 @@
 .lsx-search__spec-label {
   font-family: var(--font-primary);
   font-size: var(--text-base);
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
   color: var(--muted-foreground);
 }
 

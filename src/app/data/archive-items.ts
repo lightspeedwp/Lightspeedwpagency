@@ -93,7 +93,7 @@ export const generalArchiveItems: ArchiveItem[] = [
   {
     id: '3',
     slug: 'accessibility-wcag-compliance',
-    title: 'Website Accessibility: Complete WCAG 2.1 Compliance',
+    title: 'Website accessibility: complete WCAG 2.1 compliance',
     excerpt: 'Ensure your website meets WCAG 2.1 AA standards with this comprehensive accessibility compliance guide.',
     category: 'Accessibility',
     tags: ['WCAG', 'Accessibility', 'Compliance'],
@@ -119,7 +119,7 @@ export const generalArchiveItems: ArchiveItem[] = [
   {
     id: '5',
     slug: 'headless-wordpress-jamstack',
-    title: 'Headless WordPress with Jamstack Architecture',
+    title: 'Headless WordPress with Jamstack architecture',
     excerpt: 'Build lightning-fast websites by decoupling WordPress as a headless CMS with modern frontend frameworks.',
     category: 'Development',
     tags: ['Headless', 'Jamstack', 'React'],
@@ -427,7 +427,7 @@ export interface ServiceArchiveItem {
 export const serviceArchiveItems: ServiceArchiveItem[] = [
   {
     id: '1',
-    title: 'Enterprise E-commerce Platform',
+    title: 'Enterprise e-commerce platform',
     excerpt: 'Scalable headless commerce solution with custom checkout experience.',
     category: 'ecommerce',
     imageUrl: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800',
@@ -437,7 +437,7 @@ export const serviceArchiveItems: ServiceArchiveItem[] = [
   },
   {
     id: '2',
-    title: 'Design System Implementation',
+    title: 'Design system implementation',
     excerpt: 'Component library and design tokens for consistent brand experience.',
     category: 'design',
     imageUrl: 'https://images.unsplash.com/photo-1589553416260-f586c8f1514f?w=800',
@@ -447,7 +447,7 @@ export const serviceArchiveItems: ServiceArchiveItem[] = [
   },
   {
     id: '3',
-    title: 'SaaS Dashboard Interface',
+    title: 'SaaS dashboard interface',
     excerpt: 'Modern analytics dashboard with real-time data visualization.',
     category: 'webapp',
     imageUrl: 'https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?w=800',
@@ -457,7 +457,7 @@ export const serviceArchiveItems: ServiceArchiveItem[] = [
   },
   {
     id: '4',
-    title: 'Brand Identity & Guidelines',
+    title: 'Brand identity & guidelines',
     excerpt: 'Complete brand system including logo, typography, and visual language.',
     category: 'branding',
     imageUrl: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=800',
@@ -467,7 +467,7 @@ export const serviceArchiveItems: ServiceArchiveItem[] = [
   },
   {
     id: '5',
-    title: 'WordPress Block Theme',
+    title: 'WordPress block theme',
     excerpt: 'Full Site Editing theme with custom blocks and pattern library.',
     category: 'wordpress',
     imageUrl: 'https://images.unsplash.com/photo-1535338454770-11f3ebb6e1a9?w=800',
@@ -477,7 +477,7 @@ export const serviceArchiveItems: ServiceArchiveItem[] = [
   },
   {
     id: '6',
-    title: 'Mobile App Design',
+    title: 'Mobile app design',
     excerpt: 'Native iOS and Android app with seamless user experience.',
     category: 'design',
     imageUrl: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=800',
@@ -487,7 +487,7 @@ export const serviceArchiveItems: ServiceArchiveItem[] = [
   },
   {
     id: '7',
-    title: 'Performance Optimization',
+    title: 'Performance optimization',
     excerpt: 'Speed improvements and Core Web Vitals optimization for existing site.',
     category: 'development',
     imageUrl: 'https://images.unsplash.com/photo-1580060839134-75a5edca2e99?w=800',
@@ -497,7 +497,7 @@ export const serviceArchiveItems: ServiceArchiveItem[] = [
   },
   {
     id: '8',
-    title: 'Accessibility Audit & Remediation',
+    title: 'Accessibility audit & remediation',
     excerpt: 'WCAG 2.1 AA compliance audit with implementation support.',
     category: 'development',
     imageUrl: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800',
@@ -525,7 +525,7 @@ export const serviceFilterOptions = [
  * Archive with filters page data
  */
 export const archiveWithFiltersPage = {
-  title: 'Our Services',
+  title: 'Our services',
   description: 'Explore our comprehensive range of web design and development services.',
 };
 
