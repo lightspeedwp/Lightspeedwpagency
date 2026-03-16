@@ -1,0 +1,124 @@
+/**
+ * Hero Base — Spacing Variants, Reduced Motion & Responsive
+ *
+ * Hero size variants (compact, standard, spacious, fullscreen),
+ * reduced motion support, and responsive adjustments.
+ *
+ * @see /src/styles/patterns/hero/hero-base.css (orchestrator)
+ */
+
+/* ============================================
+   HERO SPACING VARIANTS
+   ============================================ */
+
+/**
+ * Standard hero spacing (default)
+ */
+.hero-base--standard {
+  padding: var(--spacing-24) 0;
+}
+
+/**
+ * Compact hero (less vertical padding)
+ */
+.hero-base--compact {
+  padding: var(--spacing-16) 0;
+}
+
+/**
+ * Spacious hero (more vertical padding)
+ */
+.hero-base--spacious {
+  padding: var(--spacing-32) 0;
+}
+
+/**
+ * Fullscreen hero (100vh height)
+ */
+.hero-base--fullscreen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-16) 0;
+}
+
+/* ============================================
+   REDUCED MOTION SUPPORT
+   ============================================ */
+
+/**
+ * Disable orb animations and parallax for users who prefer reduced motion
+ */
+@media (prefers-reduced-motion: reduce) {
+  .hero-base__orb--primary,
+  .hero-base__orb--secondary,
+  .hero-base__orb--accent {
+    animation: none;
+  }
+
+  .hero-base__bg {
+    transform: none !important; /* Disable parallax transform */
+  }
+
+  @keyframes floatOrb {
+    0%, 100% { 
+      transform: translate(0, 0); 
+    }
+  }
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+
+/**
+ * Mobile adjustments
+ */
+@media (max-width: 767px) {
+  .hero-base {
+    padding: var(--spacing-16) 0;
+  }
+
+  .hero-base--fullscreen {
+    min-height: auto;
+    padding: var(--spacing-20) 0;
+  }
+
+  .hero-base__bg {
+    height: 110%; /* Less extra height on mobile */
+  }
+
+  .hero-base__orb--primary {
+    width: 200px;
+    height: 200px;
+  }
+
+  .hero-base__orb--secondary {
+    width: 150px;
+    height: 150px;
+  }
+
+  .hero-base__title {
+    margin-bottom: var(--spacing-4);
+  }
+
+  .hero-base__description {
+    margin-bottom: var(--spacing-6);
+  }
+}
+
+/**
+ * Tablet adjustments
+ */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hero-base__orb--primary {
+    width: 250px;
+    height: 250px;
+  }
+
+  .hero-base__orb--secondary {
+    width: 180px;
+    height: 180px;
+  }
+}

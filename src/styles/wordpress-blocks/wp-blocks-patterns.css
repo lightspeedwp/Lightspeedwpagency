@@ -1,0 +1,191 @@
+/**
+ * WordPress Core Block Styles — Patterns & Utilities
+ *
+ * Sub-file 2/2 of wordpress-blocks.css
+ * Responsive Utilities + Focus/Accessibility + Timeline Pattern + Logo Grid Pattern
+ */
+
+/* ============================================
+   RESPONSIVE UTILITIES
+   ============================================ */
+
+/**
+ * Mobile-specific styles
+ */
+@media (max-width: 767px) {
+  .alignwide,
+  .alignfull {
+    padding-left: var(--spacing-4);
+    padding-right: var(--spacing-4);
+  }
+}
+
+
+/* ============================================
+   FOCUS & ACCESSIBILITY
+   ============================================ */
+
+/**
+ * Skip link (accessibility)
+ */
+.wp-block-skip-link {
+  position: fixed;
+  top: -100%;
+  left: 0;
+  z-index: 999999;
+  padding: var(--spacing-3) var(--spacing-6);
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+  border-radius: 0 0 var(--radius) 0;
+  transition: top var(--transition-base) var(--ease-in-out);
+}
+
+.wp-block-skip-link:focus {
+  top: 0;
+  outline: 2px solid var(--foreground);
+  outline-offset: 2px;
+}
+
+
+/* ============================================
+   TIMELINE PATTERN
+   ============================================ */
+
+/**
+ * Timeline component for showing chronological events
+ */
+.wp-block-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+  margin-top: var(--spacing-12);
+  position: relative;
+}
+
+/* Vertical line connecting timeline items */
+.wp-block-timeline::before {
+  content: '';
+  position: absolute;
+  left: 1.9375rem; /* Center on 64px marker */
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: var(--border);
+}
+
+@media (min-width: 768px) {
+  .wp-block-timeline::before {
+    left: 50%;
+    transform: translateX(-1px);
+  }
+}
+
+.wp-block-timeline-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--spacing-6);
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .wp-block-timeline-item {
+    grid-template-columns: 1fr auto 1fr;
+  }
+  
+  /* Alternate left/right layout */
+  .wp-block-timeline-item:nth-child(odd) .wp-block-timeline-content {
+    grid-column: 1;
+    text-align: right;
+  }
+  
+  .wp-block-timeline-item:nth-child(odd) .wp-block-timeline-marker {
+    grid-column: 2;
+  }
+  
+  .wp-block-timeline-item:nth-child(even) .wp-block-timeline-content {
+    grid-column: 3;
+    text-align: left;
+  }
+  
+  .wp-block-timeline-item:nth-child(even) .wp-block-timeline-marker {
+    grid-column: 2;
+  }
+}
+
+.wp-block-timeline-marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.wp-block-timeline-year {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--spacing-16);
+  height: var(--spacing-16);
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border-radius: var(--radius-full);
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-bold);
+  box-shadow: var(--shadow-md);
+}
+
+.wp-block-timeline-content {
+  padding: var(--spacing-4) 0;
+}
+
+.wp-block-timeline-content .wp-block-heading {
+  margin-bottom: var(--spacing-2);
+}
+
+
+/* ============================================
+   LOGO GRID PATTERN
+   ============================================ */
+
+/**
+ * Logo grid for partner/client logos
+ */
+.wp-block-logo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-8);
+  margin-top: var(--spacing-12);
+  align-items: center;
+  justify-items: center;
+}
+
+@media (min-width: 768px) {
+  .wp-block-logo-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .wp-block-logo-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+.wp-block-logo-grid img {
+  max-width: 100%;
+  height: auto;
+  opacity: 0.6;
+  filter: grayscale(100%);
+  transition: all var(--transition-slow) var(--ease-in-out);
+}
+
+.wp-block-logo-grid img:hover {
+  opacity: 1;
+  filter: grayscale(0%);
+  transform: scale(1.05);
+}

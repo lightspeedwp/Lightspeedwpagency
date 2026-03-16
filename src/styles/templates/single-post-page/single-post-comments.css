@@ -1,0 +1,190 @@
+/**
+ * Single Post Page — Comments + CTA + Dark Mode + Reduced Motion
+ *
+ * Sub-file 2/2 of single-post-page.css
+ * BEM: .single-post-page
+ */
+
+/* ============================================
+ * COMMENTS SECTION
+ * ============================================ */
+
+.single-post-page__comments-wrapper {
+  max-width: 896px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.single-post-page__comments-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  padding-bottom: var(--spacing-8);
+}
+
+.single-post-page__comments-header svg {
+  color: var(--foreground);
+}
+
+.single-post-page__comments-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+  padding-bottom: var(--spacing-12);
+}
+
+/* ============================================
+ * COMMENT CARD — GLASSMORPHISM
+ * ============================================ */
+
+.single-post-page__comment {
+  padding: var(--spacing-6);
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  transition: border-color var(--transition-base) var(--ease-out),
+              box-shadow var(--transition-base) var(--ease-out);
+}
+
+.single-post-page__comment:hover {
+  border-color: color-mix(in srgb, var(--primary) 20%, transparent);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--primary) 8%, transparent);
+}
+
+.single-post-page__comment-content {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-4);
+}
+
+.single-post-page__comment-avatar {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border-radius: var(--radius-full);
+  background-size: cover;
+  background-position: center;
+  border: 2px solid color-mix(in srgb, var(--primary) 30%, transparent);
+  box-shadow: 0 0 8px color-mix(in srgb, var(--primary) 12%, transparent);
+}
+
+.single-post-page__comment-text-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.single-post-page__comment-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+.single-post-page__comment-author {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-medium);
+  color: var(--foreground);
+}
+
+.single-post-page__comment-date {
+  font-family: var(--font-secondary);
+  font-size: var(--text-small);
+  color: var(--muted-foreground);
+}
+
+.single-post-page__comment-text {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  color: var(--foreground);
+  line-height: var(--line-height-normal);
+  margin: 0;
+}
+
+/* ============================================
+ * COMMENT FORM CTA
+ * ============================================ */
+
+.single-post-page__comment-cta {
+  padding: var(--spacing-8);
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-4);
+}
+
+.single-post-page__cta-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h3);
+  font-weight: var(--font-weight-medium);
+  color: var(--foreground);
+}
+
+.single-post-page__cta-description {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-normal);
+}
+
+/* ============================================
+ * DARK MODE SUPPORT
+ * ============================================ */
+
+.dark .single-post-page__related-card {
+  background: color-mix(in srgb, var(--card) 50%, transparent);
+  border-color: var(--border-soft);
+}
+
+.dark .single-post-page__related-card:hover {
+  box-shadow: 0 0 24px color-mix(in srgb, var(--primary) 20%, transparent);
+  border-color: color-mix(in srgb, var(--primary) 30%, transparent);
+}
+
+.dark .single-post-page__category-badge {
+  background: color-mix(in srgb, var(--primary) 15%, transparent);
+  border-color: color-mix(in srgb, var(--primary) 25%, transparent);
+}
+
+.dark .single-post-page__comment {
+  background: color-mix(in srgb, var(--card) 50%, transparent);
+  border-color: var(--border-soft);
+}
+
+.dark .single-post-page__comment:hover {
+  border-color: color-mix(in srgb, var(--primary) 25%, transparent);
+  box-shadow: 0 0 16px color-mix(in srgb, var(--primary) 12%, transparent);
+}
+
+.dark .single-post-page__comment-avatar {
+  border-color: color-mix(in srgb, var(--primary) 40%, transparent);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--primary) 18%, transparent);
+}
+
+.dark .single-post-page__comment-cta {
+  background: color-mix(in srgb, var(--card) 40%, transparent);
+  border-color: var(--border-soft);
+}
+
+/* ============================================
+ * REDUCED MOTION
+ * ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .single-post-page__related-card::before {
+    animation: none;
+  }
+
+  .single-post-page__related-card:hover {
+    transform: none;
+  }
+}

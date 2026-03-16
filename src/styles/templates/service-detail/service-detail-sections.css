@@ -1,0 +1,254 @@
+/**
+ * Service Detail — Benefits, Related & Dark Mode
+ * 
+ * Benefits section with glassmorphism, related services,
+ * and dark mode overrides.
+ * 100% CSS variables, BEM naming.
+ * 
+ * @see /src/styles/templates/service-detail.css (orchestrator)
+ */
+
+/* ============================================
+   BENEFITS SECTION
+   ============================================ */
+
+.service-detail__benefits-section {
+  background-color: var(--background);
+  padding: var(--spacing-24) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Mesh grid overlay */
+.service-detail__benefits-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--border-soft) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border-soft) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.25;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Benefit Card — Glassmorphism */
+.service-detail__benefit-card {
+  position: relative;
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-10);
+  transition: all var(--transition-base);
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Animated gradient top stripe */
+.service-detail__benefit-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent, var(--primary)));
+  background-size: 200% 100%;
+  opacity: 0;
+  transition: opacity var(--transition-base);
+  animation: sdBenefitStripe 3s linear infinite;
+}
+
+.service-detail__benefit-card:hover {
+  transform: translateY(-6px);
+  border-color: color-mix(in srgb, var(--primary) 40%, transparent);
+  box-shadow: 0 0 30px color-mix(in srgb, var(--primary) 20%, transparent);
+}
+
+.service-detail__benefit-card:hover::before {
+  opacity: 1;
+}
+
+@keyframes sdBenefitStripe {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Benefit Glow (background accent) */
+.service-detail__benefit-glow {
+  position: absolute;
+  top: -30%;
+  right: -20%;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, color-mix(in srgb, var(--primary) 12%, transparent), transparent 70%);
+  border-radius: var(--radius-full);
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity var(--transition-base);
+  opacity: 0.5;
+}
+
+.service-detail__benefit-card:hover .service-detail__benefit-glow {
+  opacity: 1;
+}
+
+/* Benefit Icon — Neon gradient wrapper */
+.service-detail__benefit-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: var(--color-white);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--spacing-6);
+  box-shadow: 0 0 16px color-mix(in srgb, var(--primary) 25%, transparent);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+  position: relative;
+  z-index: 1;
+}
+
+.service-detail__benefit-card:hover .service-detail__benefit-icon {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 0 28px color-mix(in srgb, var(--primary) 45%, transparent);
+}
+
+/* Benefit Title */
+.service-detail__benefit-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-4);
+  position: relative;
+  z-index: 1;
+}
+
+/* Benefit Description */
+.service-detail__benefit-desc {
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-relaxed);
+  position: relative;
+  z-index: 1;
+}
+
+/* Dark mode — benefit cards */
+.dark .service-detail__benefits-section::before {
+  opacity: 0.12;
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--primary) 15%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--primary) 15%, transparent) 1px, transparent 1px);
+}
+
+.dark .service-detail__benefit-card {
+  background: color-mix(in srgb, var(--card) 60%, transparent);
+  border-color: color-mix(in srgb, var(--primary) 12%, transparent);
+}
+
+.dark .service-detail__benefit-card:hover {
+  background: color-mix(in srgb, var(--card) 80%, transparent);
+  border-color: color-mix(in srgb, var(--primary) 30%, transparent);
+  box-shadow: 0 0 36px color-mix(in srgb, var(--primary) 25%, transparent);
+}
+
+.dark .service-detail__benefit-icon {
+  box-shadow: 0 0 20px color-mix(in srgb, var(--primary) 40%, transparent);
+}
+
+/* Reduced motion — benefit cards */
+@media (prefers-reduced-motion: reduce) {
+  .service-detail__benefit-card::before {
+    animation: none;
+  }
+
+  .service-detail__benefit-card:hover {
+    transform: none;
+  }
+
+  .service-detail__benefit-card:hover .service-detail__benefit-icon {
+    transform: none;
+  }
+}
+
+/* ============================================
+   RELATED SERVICES
+   ============================================ */
+
+.service-detail__related-section {
+  background-color: var(--muted);
+}
+
+.service-detail__related-card {
+  background-color: var(--card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-8);
+  cursor: pointer;
+  transition: transform var(--transition-base) ease, box-shadow var(--transition-base) ease, border-color var(--transition-base) ease;
+}
+
+.service-detail__related-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary);
+}
+
+.service-detail__related-card:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: var(--spacing-1);
+}
+
+.service-detail__related-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-3);
+}
+
+.service-detail__related-desc {
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-normal);
+  margin-bottom: var(--spacing-4);
+}
+
+.service-detail__related-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--primary);
+  transition: gap var(--transition-base) ease;
+}
+
+.service-detail__related-card:hover .service-detail__related-link {
+  gap: var(--spacing-3);
+}
+
+/* ============================================
+   DARK MODE
+   ============================================ */
+
+.dark .service-detail__stat-card,
+.dark .service-detail__feature-card,
+.dark .service-detail__process-card,
+.dark .service-detail__package-card,
+.dark .service-detail__related-card {
+  background-color: var(--card);
+  border-color: var(--border);
+}
+
+.dark .service-detail__related-card:hover {
+  box-shadow: var(--shadow-neon);
+}

@@ -65,7 +65,7 @@ export function ComplianceScorecard() {
 
   if (loading) {
     return (
-      <main className="wp-block-devtools-compliance-scorecard">
+      <div className="wp-block-devtools-compliance-scorecard">
         <Section background="default" className="wp-py-24">
           <Container>
             <Link 
@@ -84,13 +84,13 @@ export function ComplianceScorecard() {
             </div>
           </Container>
         </Section>
-      </main>
+      </div>
     );
   }
 
   if (error) {
     return (
-      <main className="wp-block-devtools-compliance-scorecard">
+      <div className="wp-block-devtools-compliance-scorecard">
         <Section background="default" className="wp-py-24">
           <Container>
             <Link 
@@ -111,7 +111,7 @@ export function ComplianceScorecard() {
             </div>
           </Container>
         </Section>
-      </main>
+      </div>
     );
   }
 
@@ -123,7 +123,7 @@ export function ComplianceScorecard() {
   const categories = Array.from(new Set(results.map(r => r.category)));
   
   return (
-    <main className="wp-block-devtools-compliance-scorecard">
+    <div className="wp-block-devtools-compliance-scorecard">
       {/* Hero Section */}
       <Section background="default" className="wp-py-16">
         <Container>
@@ -158,6 +158,8 @@ export function ComplianceScorecard() {
           <div 
             className="wp-block-devtools-compliance-scorecard__score-card"
             style={{ borderColor: getGradeColor(scorecard.overall) }}
+            aria-live="polite"
+            aria-atomic="true"
           >
             <div 
               className="wp-block-devtools-compliance-scorecard__overall-score"
@@ -290,7 +292,7 @@ export function ComplianceScorecard() {
           </div>
         </Container>
       </Section>
-    </main>
+    </div>
   );
 }
 

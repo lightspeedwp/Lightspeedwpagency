@@ -1,0 +1,278 @@
+/**
+ * Hero Base — Content, Badge, Title, Description, Actions & Features
+ *
+ * Content container, alignment utilities, badge variants,
+ * title with gradient/glow, description, CTA actions, features list.
+ *
+ * @see /src/styles/patterns/hero/hero-base.css (orchestrator)
+ */
+
+/* ============================================
+   HERO CONTENT CONTAINER
+   ============================================ */
+
+/**
+ * Hero content wrapper
+ */
+.hero-base__content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/**
+ * Wider content container
+ */
+.hero-base__content--wide {
+  max-width: 1000px;
+}
+
+/**
+ * Narrow content container
+ */
+.hero-base__content--narrow {
+  max-width: 600px;
+}
+
+/* ============================================
+   HERO ALIGNMENT UTILITIES
+   ============================================ */
+
+/**
+ * Center alignment (default for most heroes)
+ */
+.hero-align-center {
+  text-align: center;
+}
+
+.hero-align-center .hero-base__actions {
+  justify-content: center;
+}
+
+/**
+ * Left alignment (for content-heavy heroes)
+ */
+.hero-align-left {
+  text-align: left;
+}
+
+.hero-align-left .hero-base__actions {
+  justify-content: flex-start;
+}
+
+/**
+ * Mobile: always center align
+ */
+@media (max-width: 767px) {
+  .hero-align-left {
+    text-align: center;
+  }
+
+  .hero-align-left .hero-base__actions {
+    justify-content: center;
+  }
+}
+
+/* ============================================
+   HERO BADGE
+   ============================================ */
+
+/**
+ * Hero badge/label element
+ */
+.hero-base__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2) var(--spacing-4);
+  margin-bottom: var(--spacing-6);
+  background: linear-gradient(
+    135deg, 
+    color-mix(in srgb, var(--secondary) 15%, transparent),
+    color-mix(in srgb, var(--accent) 10%, transparent)
+  );
+  border: 1px solid color-mix(in srgb, var(--secondary) 25%, transparent);
+  border-radius: var(--radius-full);
+  font-family: var(--font-secondary);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--secondary);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+}
+
+.hero-base__badge svg {
+  width: 14px;
+  height: 14px;
+}
+
+/**
+ * Primary badge variant
+ */
+.hero-base__badge--primary {
+  background: linear-gradient(
+    135deg, 
+    color-mix(in srgb, var(--primary) 15%, transparent),
+    color-mix(in srgb, var(--primary) 10%, transparent)
+  );
+  border-color: color-mix(in srgb, var(--primary) 25%, transparent);
+  color: var(--primary);
+}
+
+/* ============================================
+   HERO TITLE
+   ============================================ */
+
+/**
+ * Hero main title (H1)
+ */
+.hero-base__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h1);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--foreground);
+  margin: 0 0 var(--spacing-6) 0;
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+/**
+ * Gradient text effect
+ */
+.hero-base__title--gradient {
+  background: linear-gradient(
+    135deg,
+    var(--primary),
+    var(--secondary),
+    var(--accent)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/**
+ * Glow text effect (dark mode)
+ */
+[data-theme="dark"] .hero-base__title--glow {
+  text-shadow: 
+    0 0 20px color-mix(in srgb, var(--primary) 30%, transparent),
+    0 0 40px color-mix(in srgb, var(--primary) 20%, transparent);
+}
+
+/* ============================================
+   HERO DESCRIPTION
+   ============================================ */
+
+/**
+ * Hero description/subtitle
+ */
+.hero-base__description {
+  font-family: var(--font-primary);
+  font-size: var(--text-lead);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-relaxed);
+  color: var(--muted-foreground);
+  margin: 0 0 var(--spacing-8) 0;
+}
+
+/**
+ * Smaller description variant
+ */
+.hero-base__description--sm {
+  font-size: var(--text-base);
+}
+
+/**
+ * Larger description variant
+ */
+.hero-base__description--lg {
+  font-size: var(--text-xl);
+}
+
+/* ============================================
+   HERO ACTIONS (CTA Buttons)
+   ============================================ */
+
+/**
+ * Hero action buttons container
+ */
+.hero-base__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-4);
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-base--left .hero-base__actions {
+  justify-content: flex-start;
+}
+
+@media (max-width: 767px) {
+  .hero-base--left .hero-base__actions {
+    justify-content: center;
+  }
+}
+
+/**
+ * Stack actions vertically on mobile
+ */
+@media (max-width: 639px) {
+  .hero-base__actions--stack {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-base__actions--stack > * {
+    width: 100%;
+  }
+}
+
+/* ============================================
+   HERO FEATURES LIST
+   ============================================ */
+
+/**
+ * Hero features/benefits list
+ */
+.hero-base__features {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-6);
+  margin-top: var(--spacing-12);
+  text-align: left;
+}
+
+@media (min-width: 640px) {
+  .hero-base__features {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-base__features {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.hero-base__feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-3);
+}
+
+.hero-base__feature-icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  color: var(--primary);
+}
+
+.hero-base__feature-text {
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  color: var(--foreground);
+  margin: 0;
+}

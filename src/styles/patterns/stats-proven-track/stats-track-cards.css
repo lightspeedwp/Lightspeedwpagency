@@ -1,0 +1,315 @@
+/**
+ * Stats "Proven Track Record" — Cards + Effects + Modes
+ *
+ * Sub-file 2/2 of stats-proven-track.css
+ * Sections 7-15: Card, Icon, Number, Label, Scanlines, Glow, Dark, Motion, Mobile
+ * BEM root: .stats-track
+ */
+
+/* ============================================
+   7. STAT CARD — Animated conic border
+   ============================================ */
+
+/*
+ * The rotating-border trick:
+ *   - .stats-track__card is the visible card (inner).
+ *   - .stats-track__card-outer is a thin wrapper whose ::before
+ *     holds a conic-gradient that rotates on hover.
+ *   - The inner card covers the gradient except for a 1px border gap.
+ */
+
+.stats-track__card-outer {
+  position: relative;
+  border-radius: var(--radius-xl);
+  padding: 1px; /* border thickness */
+  background: color-mix(in srgb, var(--color-white) 8%, transparent);
+  transition: background 0.4s ease;
+}
+
+/* Conic rotating border gradient (initially hidden) */
+.stats-track__card-outer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: conic-gradient(
+    from 0deg,
+    var(--primary),
+    var(--accent),
+    var(--primary),
+    var(--accent),
+    var(--primary)
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 0;
+  animation: conicSpin 4s linear infinite paused;
+}
+
+.stats-track__card-outer:hover::before {
+  opacity: 1;
+  animation-play-state: running;
+}
+
+.stats-track__card-outer:hover {
+  background: transparent;
+}
+
+@keyframes conicSpin {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Inner card surface */
+.stats-track__card {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-3);
+  padding: var(--spacing-8) var(--spacing-6);
+  border-radius: calc(var(--radius-xl) - 1px);
+  background: color-mix(in srgb, var(--color-black) 80%, var(--primary));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: background 0.4s ease, box-shadow 0.4s ease;
+}
+
+.stats-track__card-outer:hover .stats-track__card {
+  background: color-mix(in srgb, var(--color-black) 70%, var(--primary));
+  box-shadow: 0 0 24px color-mix(in srgb, var(--primary) 20%, transparent);
+}
+
+
+/* ============================================
+   8. ICON WRAPPER
+   ============================================ */
+
+.stats-track__icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-full);
+  background: color-mix(in srgb, var(--primary) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--primary) 25%, transparent);
+  color: var(--primary);
+  transition: box-shadow 0.3s ease, transform 0.3s ease, color 0.3s ease;
+}
+
+.stats-track__card-outer:hover .stats-track__icon-wrapper {
+  box-shadow: var(--shadow-glow-sm);
+  transform: scale(1.08) rotate(3deg);
+  color: var(--accent);
+}
+
+
+/* ============================================
+   9. STAT NUMBER — Holographic shimmer
+   ============================================ */
+
+.stats-track__number {
+  font-family: var(--font-primary);
+  font-size: var(--text-5xl);
+  font-weight: var(--font-weight-black);
+  line-height: var(--line-height-tight);
+
+  /* Holographic gradient text */
+  background: linear-gradient(
+    135deg,
+    var(--color-white) 0%,
+    var(--primary) 35%,
+    var(--accent) 65%,
+    var(--color-white) 100%
+  );
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: holoShimmer 6s ease-in-out infinite;
+
+  filter: drop-shadow(0 0 10px color-mix(in srgb, var(--primary) 40%, transparent));
+}
+
+@keyframes holoShimmer {
+  0%   { background-position: 100% 50%; }
+  50%  { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+@media (min-width: 768px) {
+  .stats-track__number {
+    font-size: var(--text-6xl);
+  }
+}
+
+
+/* ============================================
+   10. LABEL & DESCRIPTION
+   ============================================ */
+
+.stats-track__label {
+  font-family: var(--font-primary);
+  font-size: var(--text-small);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+  color: var(--overlay-white-opaque);
+}
+
+.stats-track__description {
+  font-family: var(--font-secondary);
+  font-size: var(--text-xs);
+  color: var(--overlay-white-muted);
+  line-height: var(--line-height-normal);
+  max-width: 22ch;
+}
+
+
+/* ============================================
+   11. SCAN LINES (Subtle retro overlay)
+   ============================================ */
+
+.stats-track__scanlines {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    180deg,
+    transparent,
+    transparent 3px,
+    color-mix(in srgb, var(--color-white) 1.5%, transparent) 3px,
+    color-mix(in srgb, var(--color-white) 1.5%, transparent) 4px
+  );
+  opacity: 0.4;
+  border-radius: inherit;
+}
+
+
+/* ============================================
+   12. TOP GLOW LINE (neon accent at top edge)
+   ============================================ */
+
+.stats-track__glow-line {
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  z-index: 2;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--primary),
+    var(--accent),
+    var(--primary),
+    transparent
+  );
+  box-shadow:
+    0 0 8px color-mix(in srgb, var(--primary) 50%, transparent),
+    0 0 20px color-mix(in srgb, var(--primary) 25%, transparent);
+}
+
+
+/* ============================================
+   13. DARK MODE — minimal tweaks
+   ============================================ */
+
+/*
+ * Because the section is always-dark, very little
+ * needs to change. Just make orbs a touch brighter.
+ */
+.dark .stats-track__orb--left {
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--primary) 40%, transparent),
+    transparent 70%
+  );
+}
+
+.dark .stats-track__orb--right {
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--accent) 35%, transparent),
+    transparent 70%
+  );
+}
+
+.dark .stats-track__mesh {
+  background-image:
+    linear-gradient(
+      color-mix(in srgb, var(--primary) 12%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--primary) 12%, transparent) 1px,
+      transparent 1px
+    );
+}
+
+.dark .stats-track__glow-line {
+  box-shadow:
+    0 0 12px color-mix(in srgb, var(--neon-color) 60%, transparent),
+    0 0 30px color-mix(in srgb, var(--neon-color) 30%, transparent);
+}
+
+
+/* ============================================
+   14. REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .stats-track__orb--left,
+  .stats-track__orb--right {
+    animation: none;
+  }
+
+  .stats-track__title::after {
+    animation: none;
+  }
+
+  .stats-track__card-outer::before {
+    animation: none;
+  }
+
+  .stats-track__number {
+    animation: none;
+    background-position: 50% 50%;
+  }
+
+  .stats-track__card,
+  .stats-track__card-outer,
+  .stats-track__icon-wrapper {
+    transition: none;
+  }
+}
+
+
+/* ============================================
+   15. MOBILE OVERRIDES
+   ============================================ */
+
+@media (max-width: 639px) {
+  .stats-track {
+    padding: var(--spacing-12) var(--spacing-5);
+    margin-left: var(--spacing-3);
+    margin-right: var(--spacing-3);
+    border-radius: var(--radius-xl);
+  }
+
+  .stats-track__orb {
+    display: none;
+  }
+
+  .stats-track__card {
+    padding: var(--spacing-6) var(--spacing-4);
+  }
+
+  .stats-track__number {
+    font-size: var(--text-4xl);
+  }
+}

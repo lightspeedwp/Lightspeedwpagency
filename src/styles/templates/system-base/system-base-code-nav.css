@@ -1,0 +1,256 @@
+/**
+ * System Base — Code Previews, Navigation & Token Grids
+ *
+ * Code preview sections with copy buttons, sticky sidebar
+ * navigation, token display grids, and reduced motion.
+ *
+ * @see /src/styles/templates/system-base.css (orchestrator)
+ */
+
+/* ============================================
+   CODE PREVIEW SECTIONS
+   ============================================ */
+
+/**
+ * Code preview containers
+ */
+.showcase__code-preview,
+.styleguide__code-preview,
+.dev-tools__code-preview {
+  position: relative;
+  background-color: var(--sidebar);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-top: var(--spacing-4);
+}
+
+/**
+ * Code preview headers
+ */
+.showcase__code-header,
+.styleguide__code-header,
+.dev-tools__code-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-3) var(--spacing-4);
+  background-color: color-mix(in srgb, var(--foreground) 5%, transparent);
+  border-bottom: 1px solid var(--border);
+}
+
+/**
+ * Code preview titles
+ */
+.showcase__code-title,
+.styleguide__code-title,
+.dev-tools__code-title {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  margin: 0;
+}
+
+/**
+ * Copy buttons
+ */
+.showcase__copy-button,
+.styleguide__copy-button,
+.dev-tools__copy-button {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  padding: var(--spacing-1) var(--spacing-3);
+  background-color: var(--background);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--foreground);
+  cursor: pointer;
+  transition: all var(--transition-base) var(--ease-out);
+}
+
+.showcase__copy-button:hover,
+.styleguide__copy-button:hover,
+.dev-tools__copy-button:hover {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.showcase__copy-button--copied,
+.styleguide__copy-button--copied,
+.dev-tools__copy-button--copied {
+  background-color: var(--success);
+  border-color: var(--success);
+  color: var(--color-white);
+}
+
+/**
+ * Code blocks
+ */
+.showcase__code-block,
+.styleguide__code-block,
+.dev-tools__code-block {
+  padding: var(--spacing-4);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  line-height: var(--line-height-relaxed);
+  color: var(--foreground);
+  overflow-x: auto;
+  margin: 0;
+}
+
+/* ============================================
+   SECTION NAVIGATION (Sticky Sidebar)
+   ============================================ */
+
+/**
+ * Section navigation containers
+ */
+.tokens-ref__nav,
+.styleguide__nav,
+.dev-tools__nav {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .tokens-ref__body,
+  .styleguide__body,
+  .dev-tools__body {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: var(--spacing-8);
+    align-items: start;
+  }
+
+  .tokens-ref__nav,
+  .styleguide__nav,
+  .dev-tools__nav {
+    display: block;
+    position: sticky;
+    top: var(--spacing-20);
+  }
+}
+
+/**
+ * Navigation lists
+ */
+.tokens-ref__nav-list,
+.styleguide__nav-list,
+.dev-tools__nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/**
+ * Navigation items
+ */
+.tokens-ref__nav-item,
+.styleguide__nav-item,
+.dev-tools__nav-item {
+  margin-bottom: var(--spacing-1);
+}
+
+/**
+ * Navigation links
+ */
+.tokens-ref__nav-link,
+.styleguide__nav-link,
+.dev-tools__nav-link {
+  display: block;
+  padding: var(--spacing-2) var(--spacing-3);
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  transition: all var(--transition-base) var(--ease-out);
+}
+
+.tokens-ref__nav-link:hover,
+.styleguide__nav-link:hover,
+.dev-tools__nav-link:hover {
+  color: var(--foreground);
+  border-left-color: var(--border);
+}
+
+.tokens-ref__nav-link--active,
+.styleguide__nav-link--active,
+.dev-tools__nav-link--active {
+  color: var(--primary);
+  border-left-color: var(--primary);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* ============================================
+   TOKEN DISPLAY GRIDS
+   ============================================ */
+
+/**
+ * Token section containers
+ */
+.tokens-ref__section,
+.styleguide__token-section {
+  margin-bottom: var(--spacing-12);
+}
+
+/**
+ * Token grids (auto-fit responsive)
+ */
+.tokens-ref__grid,
+.styleguide__token-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-4);
+  margin-top: var(--spacing-6);
+}
+
+/**
+ * Individual token items
+ */
+.tokens-ref__token-item,
+.styleguide__token-item {
+  padding: var(--spacing-4);
+  background-color: var(--card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+/**
+ * Token names
+ */
+.tokens-ref__token-name,
+.styleguide__token-name {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--foreground);
+  font-weight: var(--font-weight-semibold);
+}
+
+/**
+ * Token values
+ */
+.tokens-ref__token-value,
+.styleguide__token-value {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--muted-foreground);
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .showcase__card:hover,
+  .styleguide__card:hover,
+  .dev-tools__card:hover {
+    transform: none;
+  }
+}

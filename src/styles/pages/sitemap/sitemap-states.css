@@ -1,0 +1,213 @@
+/**
+ * SiteMapPage Styles — States & Responsive
+ *
+ * Sub-file 2/2 of sitemap.css
+ * Empty State + Footer + Dark Mode + Reduced Motion + Responsive
+ */
+
+/* Empty State */
+.sitemap__empty {
+  text-align: center;
+  padding: var(--spacing-12);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  align-items: center;
+}
+
+.sitemap__empty p {
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  color: var(--muted-foreground);
+  margin: 0;
+}
+
+.sitemap__reset-button {
+  padding: var(--spacing-3) var(--spacing-4);
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  border: none;
+  border-radius: var(--radius);
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.sitemap__reset-button:hover {
+  background: hsl(var(--accent));
+}
+
+/* Footer */
+.sitemap__footer {
+  padding: var(--spacing-6);
+  background: color-mix(in srgb, var(--color-white) 3%, transparent);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  align-items: center;
+  text-align: center;
+}
+
+.sitemap__footer-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  color: var(--foreground);
+  margin: 0;
+}
+
+.sitemap__footer-text {
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  color: var(--muted-foreground);
+  margin: 0;
+  max-width: 600px;
+}
+
+.sitemap__footer-button {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-3) var(--spacing-4);
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  border: none;
+  border-radius: var(--radius);
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.sitemap__footer-button:hover {
+  background: hsl(var(--accent));
+}
+
+/* Dark mode */
+.dark .sitemap__stats {
+  background: color-mix(in srgb, var(--color-white) 2%, transparent);
+  border-color: color-mix(in srgb, var(--color-white) 8%, transparent);
+}
+
+.dark .sitemap__search-input {
+  background: color-mix(in srgb, var(--color-white) 2%, transparent);
+  border-color: color-mix(in srgb, var(--color-white) 8%, transparent);
+}
+
+.dark .sitemap__search-input:focus {
+  background: color-mix(in srgb, var(--color-white) 3%, transparent);
+}
+
+.dark .sitemap__category {
+  background: color-mix(in srgb, var(--color-white) 2%, transparent);
+  border-color: color-mix(in srgb, var(--color-white) 8%, transparent);
+}
+
+.dark .sitemap__route {
+  background: color-mix(in srgb, var(--color-white) 2%, transparent);
+  border-color: color-mix(in srgb, var(--color-white) 8%, transparent);
+}
+
+.dark .sitemap__footer {
+  background: color-mix(in srgb, var(--color-white) 2%, transparent);
+  border-color: color-mix(in srgb, var(--color-white) 8%, transparent);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .sitemap__search-input {
+    transition: none;
+  }
+
+  .sitemap__category {
+    transition: none;
+  }
+
+  .sitemap__route {
+    transition: none;
+  }
+
+  .sitemap__route:hover {
+    transform: none;
+  }
+
+  .sitemap__route-arrow {
+    transition: none;
+  }
+
+  .sitemap__reset-button {
+    transition: none;
+  }
+
+  .sitemap__footer-button {
+    transition: none;
+  }
+}
+
+/* Responsive: Tablet */
+@media (max-width: 1023px) {
+  .sitemap__stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Responsive: Mobile */
+@media (max-width: 767px) {
+  .sitemap {
+    padding: var(--spacing-4);
+    gap: var(--spacing-6);
+  }
+
+  .sitemap__header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .sitemap__title {
+    font-size: var(--text-3xl);
+  }
+
+  .sitemap__stats {
+    grid-template-columns: repeat(2, 1fr);
+    padding: var(--spacing-4);
+    gap: var(--spacing-3);
+  }
+
+  .sitemap__stat-value {
+    font-size: var(--text-2xl);
+  }
+
+  .sitemap__search-input {
+    font-size: var(--text-sm);
+  }
+
+  .sitemap__categories {
+    gap: var(--spacing-2);
+  }
+
+  .sitemap__category {
+    flex: 1;
+    min-width: 100px;
+    justify-content: center;
+  }
+
+  .sitemap__section-title {
+    font-size: var(--text-xl);
+  }
+
+  .sitemap__route {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: var(--spacing-3);
+  }
+
+  .sitemap__route-arrow {
+    display: none;
+  }
+}

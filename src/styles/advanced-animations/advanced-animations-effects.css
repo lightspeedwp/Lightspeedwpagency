@@ -1,0 +1,251 @@
+/**
+ * Advanced Animations — Morphing, 3D Transforms, Floating & Text Effects
+ *
+ * Shape morphing, 3D card flips, floating animations,
+ * gradient text, text reveals, and glitch effects.
+ *
+ * @see /src/styles/advanced-animations.css (orchestrator)
+ */
+
+/* ============================================
+   MORPHING EFFECTS
+   ============================================ */
+
+/**
+ * Morph shape
+ * Smooth shape transitions
+ */
+.morph-shape {
+  transition: border-radius 0.6s ease, transform 0.6s ease;
+}
+
+.morph-shape:hover {
+  border-radius: var(--radius-full);
+  transform: rotate(5deg) scale(1.02);
+}
+
+/**
+ * Morph color
+ * Smooth color transitions with gradient
+ */
+.morph-color {
+  background: linear-gradient(
+    135deg,
+    hsl(var(--primary)),
+    hsl(var(--accent))
+  );
+  background-size: 200% 200%;
+  transition: background-position 0.6s ease;
+}
+
+.morph-color:hover {
+  background-position: 100% 100%;
+}
+
+/**
+ * Morph border
+ * Border transforms and glows
+ */
+.morph-border {
+  border: 2px solid var(--border);
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.morph-border:hover {
+  border-color: hsl(var(--primary));
+  box-shadow: 0 0 20px color-mix(in srgb, var(--primary) 30%, transparent);
+}
+
+/* ============================================
+   3D TRANSFORMS
+   ============================================ */
+
+/**
+ * 3D card flip
+ * Card flips to reveal back side
+ */
+.card-3d-flip {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease;
+}
+
+.card-3d-flip:hover {
+  transform: rotateY(180deg);
+}
+
+.card-3d-flip__front,
+.card-3d-flip__back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.card-3d-flip__back {
+  transform: rotateY(180deg);
+}
+
+/**
+ * 3D cube rotation
+ * Element rotates in 3D space
+ */
+.cube-rotate {
+  transform-style: preserve-3d;
+  animation: cube-rotate-anim 10s linear infinite;
+}
+
+@keyframes cube-rotate-anim {
+  from {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+  to {
+    transform: rotateX(360deg) rotateY(360deg);
+  }
+}
+
+/**
+ * 3D perspective hover
+ * Element tilts based on mouse position
+ */
+.perspective-hover {
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+}
+
+.perspective-hover:hover {
+  transform: perspective(1000px) rotateX(5deg) rotateY(-5deg);
+}
+
+/* ============================================
+   FLOATING ANIMATIONS
+   ============================================ */
+
+/**
+ * Floating element
+ * Gentle up/down motion
+ */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+/**
+ * Floating rotate
+ * Floats and rotates
+ */
+@keyframes float-rotate {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(5deg);
+  }
+}
+
+.float-rotate-animation {
+  animation: float-rotate 4s ease-in-out infinite;
+}
+
+/**
+ * Pulse glow
+ * Pulsing glow effect
+ */
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px color-mix(in srgb, var(--primary) 30%, transparent);
+  }
+  50% {
+    box-shadow: 0 0 40px color-mix(in srgb, var(--primary) 60%, transparent);
+  }
+}
+
+.pulse-glow-animation {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* ============================================
+   TEXT ANIMATIONS
+   ============================================ */
+
+/**
+ * Gradient text animation
+ * Text with animated gradient
+ */
+.text-gradient-animated {
+  background: linear-gradient(
+    90deg,
+    hsl(var(--primary)),
+    hsl(var(--accent)),
+    hsl(var(--primary))
+  );
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-text-shift 3s linear infinite;
+}
+
+@keyframes gradient-text-shift {
+  to {
+    background-position: 200% center;
+  }
+}
+
+/**
+ * Text reveal from left
+ * Text slides in from left with mask
+ */
+@keyframes text-reveal {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.text-reveal {
+  animation: text-reveal 0.6s ease;
+}
+
+/**
+ * Text glitch effect
+ * Subtle glitch animation
+ */
+@keyframes text-glitch {
+  0%,
+  100% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+}
+
+.text-glitch {
+  animation: text-glitch 0.3s ease;
+}

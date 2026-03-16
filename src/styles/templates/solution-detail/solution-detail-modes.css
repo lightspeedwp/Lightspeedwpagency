@@ -1,0 +1,121 @@
+/**
+ * Solution Detail — Related Solutions, Dark Mode & Reduced Motion
+ *
+ * Glassmorphism related cards, dark mode overrides,
+ * and reduced motion guards.
+ *
+ * @see /src/styles/templates/solution-detail.css (orchestrator)
+ */
+
+/* ============================================
+   RELATED SOLUTIONS
+   ============================================ */
+
+.solution-detail__related-section {
+  background-color: var(--background);
+}
+
+/* Glassmorphism related cards */
+.solution-detail__related-card {
+  display: block;
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-8);
+  text-decoration: none;
+  color: inherit;
+  transition: transform var(--transition-base) ease,
+              box-shadow var(--transition-base) ease,
+              border-color var(--transition-base) ease;
+}
+
+.solution-detail__related-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 30px color-mix(in srgb, var(--primary) 20%, transparent);
+  border-color: color-mix(in srgb, var(--primary) 40%, transparent);
+}
+
+.solution-detail__related-card:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: var(--spacing-1);
+}
+
+.solution-detail__related-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--primary);
+  transition: gap var(--transition-base) ease;
+}
+
+.solution-detail__related-card:hover .solution-detail__related-link {
+  gap: var(--spacing-3);
+}
+
+/* ============================================
+   DARK MODE
+   ============================================ */
+
+.dark .solution-detail__feature-card {
+  background: color-mix(in srgb, var(--card) 60%, transparent);
+  border-color: color-mix(in srgb, var(--primary) 12%, transparent);
+}
+
+.dark .solution-detail__feature-card:hover {
+  background: color-mix(in srgb, var(--card) 80%, transparent);
+  border-color: color-mix(in srgb, var(--primary) 30%, transparent);
+  box-shadow: 0 0 36px color-mix(in srgb, var(--primary) 25%, transparent);
+}
+
+.dark .solution-detail__feature-icon-wrapper {
+  box-shadow: 0 0 20px color-mix(in srgb, var(--primary) 40%, transparent);
+}
+
+.dark .solution-detail__pricing-sidebar {
+  background: color-mix(in srgb, var(--card) 70%, transparent);
+  border-color: color-mix(in srgb, var(--primary) 15%, transparent);
+  box-shadow: 0 0 24px color-mix(in srgb, var(--primary) 15%, transparent);
+}
+
+.dark .solution-detail__spec-card {
+  background: color-mix(in srgb, var(--card) 60%, transparent);
+  border-color: color-mix(in srgb, var(--primary) 10%, transparent);
+}
+
+.dark .solution-detail__related-card {
+  background: color-mix(in srgb, var(--card) 60%, transparent);
+  border-color: color-mix(in srgb, var(--primary) 10%, transparent);
+}
+
+.dark .solution-detail__related-card:hover {
+  box-shadow: 0 0 30px color-mix(in srgb, var(--primary) 20%, transparent);
+}
+
+.dark .solution-detail__usecase-card {
+  background: color-mix(in srgb, var(--card) 60%, transparent);
+  border-color: color-mix(in srgb, var(--border) 40%, transparent);
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .solution-detail__feature-card::before {
+    animation: none;
+  }
+
+  .solution-detail__feature-card:hover,
+  .solution-detail__related-card:hover {
+    transform: none;
+  }
+
+  .solution-detail__feature-card:hover .solution-detail__feature-icon-wrapper {
+    transform: none;
+  }
+}

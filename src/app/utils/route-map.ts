@@ -6,7 +6,7 @@
  * and URL-based React Router navigation.
  * 
  * @see /src/app/contexts/NavigationContext.tsx - Consumes this mapping
- * @see /src/app/routes.tsx - Route definitions
+ * @see /src/app/routes/index.ts - Route definitions
  */
 
 /**
@@ -179,6 +179,54 @@ const SLUG_TO_PATH: Record<string, string> = {
   '404': '/404',
   'site-map': '/site-map',
   'style-guide': '/style-guide',
+  'free-consultation': '/free-consultation',
+  'free-woo-consultation': '/free-woo-consultation',
+  'briefing': '/briefing',
+  'briefing-woocommerce': '/briefing/woocommerce',
+  'briefing-wordpress': '/briefing/wordpress',
+  'briefing-redesign': '/briefing/redesign',
+  'briefing-hosting': '/briefing/hosting',
+  'client-intake-form': '/client-intake-form',
+  'client-feedback': '/client-feedback',
+  'referrals': '/referrals',
+  'website-packages': '/website-packages',
+  'getting-started-with-lightspeed': '/getting-started',
+  'getting-started': '/getting-started',
+
+  /* ── Why Pages ── */
+  'why': '/why',
+  'why-woo': '/why/woocommerce',
+  'why-wp': '/why/wordpress',
+  'why-mailchimp': '/why/mailchimp',
+  'why-lsx': '/why/lsx',
+  'why-lightspeed': '/why/lightspeed',
+
+  /* ── Thank You Pages ── */
+  'thank-you': '/thank-you',
+  'thank-you-consultation': '/thank-you/consultation',
+  'thank-you-woo-consultation': '/thank-you/woo-consultation',
+  'thank-you-contact': '/thank-you/contact',
+  'thank-you-newsletter': '/thank-you/newsletter',
+  'thank-you-briefing': '/thank-you/briefing',
+  'thank-you-feedback': '/thank-you/feedback',
+  'thank-you-referral': '/thank-you/referral',
+
+  /* ── MailPoet Utility Pages ── */
+  'newsletter-confirm': '/newsletter/confirm',
+  'newsletter-manage': '/newsletter/manage',
+  'newsletter-unsubscribe': '/newsletter/unsubscribe',
+  'newsletter-resubscribe': '/newsletter/resubscribe',
+
+  /* ── Policy Sub-Pages ── */
+  'policies': '/policies',
+  'policies-publishing-principles': '/policies/publishing-principles',
+  'policies-diversity-content': '/policies/diversity-content',
+  'policies-diversity-staffing': '/policies/diversity-staffing',
+  'policies-ethics': '/policies/ethics',
+  'policies-feedback': '/policies/feedback',
+  'policies-corrections': '/policies/corrections',
+  'policies-ownership-funding': '/policies/ownership-funding',
+  'policies-editorial': '/policies/editorial',
 
   /* ── Legacy Service Pages ── */
   'wordpress-development': '/services',
@@ -220,6 +268,7 @@ const SLUG_TO_PATH: Record<string, string> = {
   'button-showcase': '/dev-tools/button-showcase',
   'header-footer-comparison': '/dev-tools/header-footer-comparison',
   'icon-library': '/dev-tools/icon-library',
+  'phosphor-icon-reference': '/dev-tools/phosphor-icon-reference',
   'live-preview': '/dev-tools/live-preview',
   'section-presets-showcase': '/dev-tools/section-presets-showcase',
   'theme-blocks-showcase': '/dev-tools/theme-blocks-showcase',
@@ -241,7 +290,7 @@ const SLUG_TO_PATH: Record<string, string> = {
 
   /* ── Post Formats (Archives) ── */
   'audio-archive': '/insights/format/audio',
-  'video-archive': '/insights/format/video',
+  'video-format-archive': '/insights/format/video',
   'gallery-archive': '/insights/format/gallery',
   'image-archive': '/insights/format/image',
   'quote-archive': '/insights/format/quote',
@@ -267,6 +316,7 @@ const SLUG_TO_PATH: Record<string, string> = {
   /* ── Videos ── */
   'videos-archive': '/videos',
   'videos': '/videos',
+  'video-archive': '/videos',
 
   /* ── Podcasts ── */
   'podcast-archive': '/podcasts',

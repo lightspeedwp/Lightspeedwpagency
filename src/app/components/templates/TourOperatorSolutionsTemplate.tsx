@@ -50,7 +50,7 @@ export function TourOperatorSolutionsTemplate() {
             right: '-10%',
             width: '50vw',
             height: '50vw',
-            background: 'radial-gradient(circle, color-mix(in srgb, var(--neon-color, #7BE7FF) 15%, transparent) 0%, transparent 70%)',
+            background: 'radial-gradient(circle, color-mix(in srgb, var(--neon-color, var(--secondary)) 15%, transparent) 0%, transparent 70%)',
             filter: 'blur(80px)',
             zIndex: 0
           }}

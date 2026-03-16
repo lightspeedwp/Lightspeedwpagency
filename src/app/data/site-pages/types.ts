@@ -3,7 +3,7 @@
  *
  * Shared TypeScript interfaces for site page data.
  *
- * @see /guidelines/overview-sitemap.md
+ * @see /guidelines/routes.md
  */
 
 export interface SitePage {

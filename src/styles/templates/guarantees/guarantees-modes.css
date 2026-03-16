@@ -1,0 +1,68 @@
+/**
+ * Guarantees — Dark Mode + Reduced Motion
+ *
+ * Sub-file 3/3 of guarantees.css
+ * BEM block: .guar
+ */
+
+/* ============================================
+   DARK MODE
+   ============================================ */
+
+.dark .guar__hero {
+  background: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--neon-color, var(--primary)) 5%, var(--background)) 0%,
+    var(--background) 50%,
+    color-mix(in srgb, var(--neon-color, var(--primary)) 3%, var(--background)) 100%
+  );
+}
+
+.dark .guar__card,
+.dark .guar__step-card,
+.dark .guar__trust-card {
+  background: color-mix(in srgb, var(--foreground) 5%, transparent);
+  border-color: color-mix(in srgb, var(--foreground) 10%, transparent);
+}
+
+.dark .guar__card:hover,
+.dark .guar__step-card:hover,
+.dark .guar__trust-card:hover {
+  background: color-mix(in srgb, var(--foreground) 8%, transparent);
+  border-color: color-mix(in srgb, var(--neon-color, var(--primary)) 50%, transparent);
+}
+
+.dark .guar__process {
+  background: color-mix(in srgb, var(--foreground) 3%, var(--background));
+}
+
+.dark .guar__step-num {
+  box-shadow: 0 0 20px color-mix(in srgb, var(--neon-color, var(--primary)) 40%, transparent);
+}
+
+.dark .guar__card-badge {
+  box-shadow: 0 0 12px color-mix(in srgb, var(--success) 25%, transparent);
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .guar__card,
+  .guar__step-card,
+  .guar__trust-card {
+    transition: none;
+  }
+  .guar__card:hover,
+  .guar__trust-card:hover,
+  .guar__step-card:hover {
+    transform: none;
+  }
+  .guar__card:hover::before {
+    animation: none;
+  }
+  .guar__card-icon {
+    transition: none;
+  }
+}

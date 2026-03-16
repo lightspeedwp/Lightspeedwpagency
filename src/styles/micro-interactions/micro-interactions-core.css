@@ -1,0 +1,225 @@
+/**
+ * Micro-interactions — Ripple, Underline, Tilt, Focus & Scroll
+ *
+ * Button ripple, link underline animations, card tilt,
+ * input focus glow, and smooth scroll indicators.
+ *
+ * @see /src/styles/micro-interactions.css (orchestrator)
+ */
+
+/* ============================================
+   BUTTON RIPPLE EFFECT
+   ============================================ */
+
+.btn-ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-ripple::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--color-white) 40%, transparent);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease, opacity 0.6s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.btn-ripple:active::after {
+  width: 300px;
+  height: 300px;
+  opacity: 0;
+  transition: width 0s, height 0s, opacity 0.6s ease;
+}
+
+.dark .btn-ripple::after {
+  background: color-mix(in srgb, var(--color-white) 20%, transparent);
+}
+
+/* ============================================
+   LINK UNDERLINE ANIMATIONS
+   ============================================ */
+
+.link-underline {
+  position: relative;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--accent)));
+  transition: width 0.3s ease;
+}
+
+.link-underline:hover::after {
+  width: 100%;
+}
+
+.link-underline-center {
+  position: relative;
+  text-decoration: none;
+}
+
+.link-underline-center::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--accent)));
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+.link-underline-center:hover::after {
+  width: 100%;
+}
+
+.link-gradient {
+  background: linear-gradient(90deg, var(--foreground), var(--foreground));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 100%;
+  transition: background-position 0.3s ease;
+}
+
+.link-gradient:hover {
+  background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--accent)));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ============================================
+   CARD TILT ON HOVER (SUBTLE)
+   ============================================ */
+
+.card-tilt {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+.card-tilt:hover {
+  transform: perspective(1000px) rotateX(2deg) rotateY(-2deg) translateY(-8px);
+  box-shadow: 0 20px 40px color-mix(in srgb, var(--primary) 20%, transparent);
+}
+
+.card-tilt-strong {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+.card-tilt-strong:hover {
+  transform: perspective(1000px) rotateX(4deg) rotateY(-4deg) translateY(-12px);
+  box-shadow: 0 24px 48px color-mix(in srgb, var(--primary) 25%, transparent);
+}
+
+/* ============================================
+   INPUT FOCUS GLOW
+   ============================================ */
+
+.input-glow {
+  position: relative;
+  transition: border-color 0.3s ease;
+}
+
+.input-glow::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+  opacity: 0;
+  filter: blur(8px);
+  transition: opacity 0.3s ease;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.input-glow:focus::before {
+  opacity: 0.4;
+  animation: micro-pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes micro-pulse-glow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.6; }
+}
+
+.input-border-gradient {
+  border: 2px solid transparent;
+  background-image: linear-gradient(var(--background), var(--background)),
+    linear-gradient(90deg, hsl(var(--primary)), hsl(var(--accent)));
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  transition: all 0.3s ease;
+}
+
+.input-border-gradient:focus {
+  background-image: linear-gradient(var(--background), var(--background)),
+    linear-gradient(90deg, hsl(var(--primary)), hsl(var(--accent)));
+}
+
+/* ============================================
+   SMOOTH SCROLL INDICATORS
+   ============================================ */
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--accent)));
+  z-index: 9999;
+  transition: width 0.1s ease;
+}
+
+.scroll-to-top {
+  position: fixed;
+  bottom: var(--spacing-6);
+  right: var(--spacing-6);
+  width: 48px;
+  height: 48px;
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(100px);
+  transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+  z-index: 9998;
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--primary) 30%, transparent);
+}
+
+.scroll-to-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll-to-top:hover {
+  background: hsl(var(--accent));
+  animation: micro-bounce 0.6s ease;
+}
+
+@keyframes micro-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}

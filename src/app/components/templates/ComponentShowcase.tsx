@@ -17,7 +17,7 @@
  * - WCAG 2.1 AA compliant
  * - Responsive grid layout
  * 
- * @see {@link /guidelines/components/overview-components.md}
+ * @see {@link /guidelines/components/components-vs-patterns.md}
  */
 
 import '../../../styles/templates/component-showcase-optimized.css';

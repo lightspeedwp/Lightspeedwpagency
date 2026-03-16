@@ -327,10 +327,10 @@ export function WooCommerceSolutionTemplate() {
               <div 
                 className="wp-p-8 wp-flex wp-flex-col"
                 style={{
-                  backgroundColor: '#0d1117',
+                  backgroundColor: 'var(--terminal-bg)',
                   borderRadius: 'var(--radius-lg)',
                   border: '1px solid var(--border)',
-                  boxShadow: '0 20px 40px rgba(0,0,0,0.3)',
+                  boxShadow: 'var(--shadow-xl)',
                   position: 'relative',
                   overflow: 'hidden',
                   marginTop: 'var(--spacing-32)'
@@ -375,8 +375,8 @@ export function WooCommerceSolutionTemplate() {
                         color: 'var(--muted-foreground)'
                       }}
                     >
-                      <span style={{ color: 'var(--primary)', fontWeight: 'bold' }}>$</span>
-                      <span style={{ color: '#e6edf3' }}>{item}</span>
+                      <span style={{ color: 'var(--primary)', fontWeight: 'var(--font-weight-bold)' }}>$</span>
+                      <span style={{ color: 'var(--foreground)' }}>{item}</span>
                     </div>
                   ))}
                 </div>

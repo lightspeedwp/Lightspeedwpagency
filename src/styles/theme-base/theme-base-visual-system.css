@@ -1,0 +1,235 @@
+/**
+ * LSX Design System — Base Theme Variables (Visual System)
+ *
+ * Sub-file 2/2 of theme-base.css
+ * Aspect Ratios + Layout + Breakpoints + Shadows + Overlays + Z-Index + Animation + Icons + Gradients
+ *
+ * @see theme-base-typography-spacing.css — Typography & Spacing
+ */
+
+:root {
+  /* ============================================
+     ASPECT RATIO PRESETS
+     ============================================ */
+  
+  --wp--preset--aspect-ratio--square: 1 / 1;
+  --wp--preset--aspect-ratio--portrait: 3 / 4;
+  --wp--preset--aspect-ratio--landscape: 4 / 3;
+  --wp--preset--aspect-ratio--video: 16 / 9;
+  --wp--preset--aspect-ratio--ultrawide: 21 / 9;
+  --wp--preset--aspect-ratio--tall: 9 / 16;
+
+
+  /* ============================================
+     LAYOUT SIZES
+     ============================================ */
+  
+  /* Standard WordPress Layout Sizes */
+  --wp--style--global--content-size: 768px;
+  --wp--style--global--wide-size: 1440px;
+  --wp--style--global--narrow-size: 800px;
+
+  /* ----------------------------------------
+     Fluid Section Padding Tokens
+     ----------------------------------------
+     All sections (header, body, footer) use these
+     tokens for consistent fluid padding and max-width.
+     Edit ONLY these values to change site-wide section spacing.
+  */
+  --section-padding-x: clamp(1rem, 2vw + 0.5rem, 2rem);   /* 16px → 32px horizontal */
+  --section-padding-y: clamp(3rem, 4vw + 1rem, 5rem);       /* 48px → 80px vertical */
+  --section-padding-y-sm: clamp(0.5rem, 0.5vw + 0.375rem, 0.75rem); /* 8px → 12px compact (breadcrumbs, pagination) */
+  --section-max-width: var(--wp--style--global--wide-size);  /* 1440px align-wide */
+  --hero-min-height: 100vh;                                  /* fullscreen hero sections */
+  
+  /* ============================================
+     RESPONSIVE BREAKPOINTS (Reference)
+     ============================================
+     
+     Since CSS variables cannot be used in @media queries,
+     use these pixel values directly in stylesheets:
+     
+     Mobile Compact:   320px  (Small phones)
+     Mobile Landscape: 480px  (Large phones / landscape)
+     Tablet Portrait:  768px  (iPads / vertical tablets)
+     Tablet Landscape: 1024px (Horizontal tablets / small laptops)
+     Desktop:          1440px (Standard desktop screens)
+   */
+  
+  /* ----------------------------------------
+     Core Breakpoints
+     ---------------------------------------- */
+  
+  /* Accessibility: WCAG 1.4.4 browser zoom support (400% zoom) */
+  --breakpoint-zoomed-in: 280px;
+  
+  /* Mobile devices */
+  --breakpoint-mobile-compact: 320px;       /* Small phones (iPhone SE) */
+  --breakpoint-mobile: 480px;               /* Standard mobile, landscape (WordPress standard) */
+  
+  /* Tablets and small screens */
+  --breakpoint-small: 600px;                /* Small tablets, large phablets */
+  --breakpoint-editorial: 640px;            /* Editorial layouts, blog streams (existing usage) */
+  --breakpoint-tablet-portrait: 768px;      /* Tablets vertical, iPad portrait */
+  
+  /* WordPress-specific breakpoints */
+  --breakpoint-medium: 782px;               /* WordPress adminbar height change */
+  --breakpoint-large: 960px;                /* WordPress admin sidebar auto-fold */
+  
+  /* Desktop and large screens */
+  --breakpoint-tablet-landscape: 1024px;    /* Desktop menu switch, iPad landscape */
+  --breakpoint-xlarge: 1080px;              /* HD laptops (1920x1080) */
+  --breakpoint-wide: 1280px;                /* Wide desktop layouts (existing usage) */
+  --breakpoint-desktop: 1440px;             /* Standard desktop monitors */
+  --breakpoint-xhuge: 1920px;              /* Ultra-wide displays (1080p+) */
+  
+  /* ============================================
+     SHADOW SYSTEM
+     ============================================ */
+  
+  /* Mode-specific shadows (sm, md, lg, xl, hover, primary) are defined in theme-light.css and theme-dark.css */
+  /* Only mode-agnostic shadows are defined here */
+  
+  --shadow-2xl: 0 25px 50px color-mix(in srgb, var(--color-black) 20%, transparent);
+  --shadow-inner: inset 0 2px 4px color-mix(in srgb, var(--color-black) 6%, transparent);
+  --shadow-card-hover: 0 10px 20px color-mix(in srgb, var(--color-black) 10%, transparent);
+  --shadow-mega-menu: 0 20px 60px color-mix(in srgb, var(--color-black) 15%, transparent), 0 0 0 1px color-mix(in srgb, var(--color-white) 10%, transparent);
+  --shadow-subtle: 0 1px 2px color-mix(in srgb, var(--color-black) 10%, transparent);
+  --shadow-cta: 0 4px 6px -1px color-mix(in srgb, var(--color-black) 10%, transparent), 0 2px 4px -1px color-mix(in srgb, var(--color-black) 6%, transparent);
+  --shadow-focus-ring: 0 0 0 3px color-mix(in srgb, var(--ring) 15%, transparent);
+  --shadow-focus-error: 0 0 0 3px color-mix(in srgb, var(--destructive) 15%, transparent);
+  --shadow-focus-success: 0 0 0 3px color-mix(in srgb, var(--success) 15%, transparent);
+  
+  /* Neon & Glow Shadows */
+  --shadow-neon: 0 0 8px var(--neon-color, #7BE7FF), 0 0 20px color-mix(in srgb, var(--neon-color, #7BE7FF) 40%, transparent);
+  --shadow-neon-intense: 0 0 10px var(--neon-color, #7BE7FF), 0 0 30px color-mix(in srgb, var(--neon-color, #7BE7FF) 50%, transparent), 0 0 60px color-mix(in srgb, var(--neon-color, #7BE7FF) 20%, transparent);
+  --shadow-glow: 0 0 15px color-mix(in srgb, var(--primary) 30%, transparent);
+  
+  /* ============================================
+     OVERLAY SYSTEM
+     ============================================ */
+  
+  /* Modal & Backdrop Overlays */
+  --overlay-backdrop: color-mix(in srgb, var(--color-black) 50%, transparent);         /* Modal backdrop */
+  --overlay-dark: color-mix(in srgb, var(--color-black) 70%, transparent);             /* Dark overlay (media controls) */
+  --overlay-darker: color-mix(in srgb, var(--color-black) 80%, transparent);           /* Darker overlay (covers, gradients) */
+  --overlay-medium: color-mix(in srgb, var(--color-black) 40%, transparent);           /* Medium overlay */
+  --overlay-light: color-mix(in srgb, var(--color-black) 20%, transparent);            /* Light overlay */
+  --overlay-30: color-mix(in srgb, var(--color-black) 30%, transparent);               /* Between light and medium */
+  --overlay-15: color-mix(in srgb, var(--color-black) 15%, transparent);               /* Between extra-light and light */
+  --overlay-extra-light: color-mix(in srgb, var(--color-black) 10%, transparent);      /* Very subtle dark overlay */
+  --overlay-subtle: color-mix(in srgb, var(--color-black) 5%, transparent);          /* Barely visible dark overlay */
+  
+  /* White overlays (for dark backgrounds) */
+  --overlay-white-soft: color-mix(in srgb, var(--color-white) 10%, transparent);   /* Subtle white overlay */
+  --overlay-white-15: color-mix(in srgb, var(--color-white) 15%, transparent);    /* Badge/glass backgrounds */
+  --overlay-white-subtle: color-mix(in srgb, var(--color-white) 20%, transparent); /* Subtle white (stats, badges) */
+  --overlay-white-medium: color-mix(in srgb, var(--color-white) 30%, transparent); /* Medium white overlay */
+  --overlay-white-muted: color-mix(in srgb, var(--color-white) 70%, transparent);  /* Muted white text */
+  --overlay-white-heavy: color-mix(in srgb, var(--color-white) 80%, transparent);  /* Heavy white (translucent text) */
+  --overlay-white-85: color-mix(in srgb, var(--color-white) 85%, transparent);    /* Near-opaque white text */
+  --overlay-white-opaque: color-mix(in srgb, var(--color-white) 90%, transparent); /* Near-opaque white (CTA buttons) */
+  --overlay-white-strong: color-mix(in srgb, var(--color-white) 95%, transparent); /* Strong white text */
+  
+  /* Constant colors (theme-independent) */
+  --color-white: #FFFFFF;
+  --color-black: #000000;
+
+  /* Status Colors (Terminal) */
+  --color-terminal-red: #ff5f57;
+  --color-terminal-yellow: #febc2e;
+  --color-terminal-green: #28c840;
+
+  /* Terminal UI Colors */
+  --terminal-bg: #0d1117;
+  --terminal-header-bg: #161b22;
+  --terminal-border: #30363d;
+  --terminal-text: #e6edf3;
+
+  /* Code Syntax Highlighting Colors */
+  --syntax-keyword: #ff7b72;
+  --syntax-comment: #8b949e;
+  --syntax-function: #d2a8ff;
+  --syntax-string: #a5d6ff;
+  --syntax-variable: #79c0ff;
+  --syntax-operator: #ff7b72;
+  
+  /* ============================================
+     Z-INDEX SCALE
+     ============================================ */
+  
+  --z-base: 0;
+  --z-dropdown: 1000;
+  --z-sticky: 1100;
+  --z-fixed: 1200;
+  --z-modal-backdrop: 1300;
+  --z-modal: 1400;
+  --z-popover: 1500;
+  --z-tooltip: 1600;
+  
+  
+  /* ============================================
+     ANIMATION TOKENS
+     ============================================ */
+  
+  /* Durations */
+  --transition-fast: 150ms;
+  --transition-base: 200ms;
+  --transition-slow: 300ms;
+  --transition-slower: 500ms;
+  
+  /* Easings */
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+
+  /* ============================================
+     ICON TOKENS
+     ============================================ */
+
+  /* Icon Sizes */
+  --icon-size-xs: 14px;    /* Inline badges, micro indicators */
+  --icon-size-sm: 16px;    /* Metadata, small UI elements */
+  --icon-size-md: 20px;    /* Standard UI icons */
+  --icon-size-base: 24px;  /* Default icon size */
+  --icon-size-lg: 28px;    /* Feature cards, emphasis */
+  --icon-size-xl: 32px;    /* Hero decorative, section icons */
+  --icon-size-2xl: 40px;   /* Large decorative elements */
+  --icon-size-3xl: 48px;   /* Hero splash icons */
+
+  /* Phosphor Duotone Secondary Layer Opacity */
+  --icon-duotone-opacity: 0.2;
+
+  /* Icon Transition */
+  --icon-transition: color var(--transition-base) var(--ease-out);
+
+  /* ============================================
+     SEMANTIC GRADIENT TOKENS
+     ============================================ */
+  
+  /* Primary-to-secondary text gradient (gradient text effect) */
+  --gradient-text: linear-gradient(90deg, var(--primary), var(--secondary));
+  
+  /* Decorative grid background (40px grid lines at low opacity) */
+  --gradient-grid-bg: linear-gradient(var(--border-soft) 1px, transparent 1px), linear-gradient(90deg, var(--border-soft) 1px, transparent 1px);
+  --gradient-grid-size: 40px 40px;
+  
+  /* Primary-tinted grid background (hero sections) */
+  --gradient-grid-primary: linear-gradient(rgba(var(--primary-rgb), 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(var(--primary-rgb), 0.05) 1px, transparent 1px);
+  
+  /* Loading shimmer effect */
+  --gradient-shimmer: linear-gradient(90deg, transparent, var(--overlay-white-soft), transparent);
+  
+  /* Card hover gradient */
+  --gradient-card-hover: linear-gradient(135deg, var(--card) 0%, var(--muted) 100%);
+  
+  /* Soft accent highlight */
+  --gradient-accent-soft: linear-gradient(135deg, var(--primary-soft) 0%, transparent 100%);
+  
+  /* Section fade overlays */
+  --gradient-fade-down: linear-gradient(to bottom, transparent 0%, var(--background) 100%);
+  --gradient-fade-up: linear-gradient(to top, transparent 0%, var(--background) 100%);
+  
+  /* Dark overlay for image captions */
+  --gradient-overlay-dark: linear-gradient(to top, var(--overlay-darker), transparent);
+}

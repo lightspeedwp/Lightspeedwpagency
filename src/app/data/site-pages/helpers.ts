@@ -3,7 +3,7 @@
  *
  * Utility functions for querying site page data.
  *
- * @see /guidelines/overview-sitemap.md
+ * @see /guidelines/routes.md
  */
 
 import type { SitePage } from './types';

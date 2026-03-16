@@ -1,0 +1,131 @@
+/**
+ * LSX Design System — Dark Mode Theme (Effects)
+ *
+ * Sub-file 2/2 of theme-dark.css
+ * Glassmorphism + Shadows + Charts + Gradients + Logo + Icon Tokens
+ *
+ * @requires theme-dark-colors.css
+ */
+
+.dark {
+  /* ============================================
+     GLASSMORPHISM EFFECTS (Dark Mode)
+     ============================================ */
+  
+  /**
+   * Glass background (subtle, dark mode)
+   * Usage: Glassmorphism cards, hero overlays
+   */
+  --glass-bg: color-mix(in srgb, var(--color-black) 40%, transparent);               /* Darker glass base */
+  
+  /**
+   * Glass background (stronger, dark mode)
+   * Usage: Prominent glass elements
+   */
+  --glass-bg-strong: color-mix(in srgb, var(--color-black) 75%, transparent);        /* Near opaque dark glass */
+  
+  /**
+   * Glass border color (dark mode)
+   * Usage: Borders on glass elements
+   */
+  --glass-border: color-mix(in srgb, var(--color-white) 10%, transparent);     /* Subtle white border */
+  
+  /**
+   * Glass text color (dark mode)
+   * Usage: Text on glass backgrounds
+   * Hex: #FFFFFF
+   */
+  --glass-text: #FFFFFF;          /* #FFFFFF - White */
+  
+  
+  /* ============================================
+     SHADOW SYSTEM (Dark Mode)
+     ============================================ */
+  
+  /**
+   * Shadows optimized for dark backgrounds
+   * Note: Lighter shadows for better visibility on dark backgrounds
+   */
+  --shadow-sm: 0 1px 3px #00000080;
+  --shadow-md: 0 4px 6px #00000080;
+  --shadow-lg: 0 10px 40px #000000CC;
+  --shadow-xl: 0 20px 40px #000000B3;
+  --shadow-primary: 0 4px 12px #7BE7FF4D;  /* Cyan glow */
+  --shadow-hover: 0 8px 16px #00000099;
+  
+  /**
+   * Legacy elevation shadow (brutalist style, dark mode)
+   * Usage: Buttons, cards with hard shadows
+   */
+  --elevation-sm: 4px 4px 0px 0px #FFFFFF1A;
+  
+  
+  /* ============================================
+     CHART COLORS (Dark Mode)
+     ============================================ */
+  
+  /**
+   * Chart color palette (accessible, high contrast for dark mode)
+   */
+  --chart-1: #7BE7FF;  /* #7BE7FF - Bright cyan */
+  --chart-2: #1E6AFF;   /* #1E6AFF - Bright blue */
+  --chart-3: #FF6363;    /* #FF6363 - Light red */
+  --chart-4: #E1E1E1;  /* #E1E1E1 - Light gray */
+  --chart-5: #757575;  /* #757575 - Medium gray */
+  
+  
+  /* ============================================
+     GRADIENTS (Dark Mode)
+     ============================================ */
+  
+  --gradient-blue: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+  --gradient-purple: linear-gradient(135deg, #581c87 0%, #a855f7 100%);
+  --gradient-purple-light: linear-gradient(135deg, #7e22ce 0%, #c084fc 100%);
+  --gradient-purple-indigo: linear-gradient(135deg, #4c1d95 0%, #818cf8 100%);
+  --gradient-red: linear-gradient(135deg, #991b1b 0%, #f87171 100%);
+  --gradient-green: linear-gradient(135deg, #14532d 0%, #34d399 100%);
+  --gradient-amber: linear-gradient(135deg, #b45309 0%, #fbbf24 100%);
+  --gradient-cyan: linear-gradient(135deg, #155e75 0%, #22d3ee 100%);
+  --gradient-sky: linear-gradient(135deg, #0369a1 0%, #38bdf8 100%);
+  --gradient-slate: linear-gradient(135deg, #334155 0%, #94a3b8 100%);
+  --gradient-violet: linear-gradient(135deg, #5b21b6 0%, #a78bfa 100%);
+  --gradient-gold: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  --gradient-teal: linear-gradient(135deg, #0891b2 0%, #22d3ee 100%);
+  --gradient-pink: linear-gradient(135deg, #f472b6 0%, #fb7185 100%);
+  
+  --color-gold: #ffd700;
+  
+  
+  /* ============================================
+     LOGO REFERENCE (Dark Mode)
+     ============================================ */
+  
+  /**
+   * Logo for dark mode uses LIGHT wordmark
+   * The Logo component automatically switches based on theme
+   * 
+   * Logo colors:
+   * - Icon: White in dark mode (all-white logo variant)
+   * - Wordmark: Light (#FFFFFF) in dark mode
+   * Brand rules: All white logo (dark mode)
+   */
+  --logo-wordmark-color: #FFFFFF;  /* Light wordmark for dark backgrounds */
+  --logo-icon-primary: #FFFFFF;    /* White bolt — all-white logo in dark mode */
+  --logo-icon-secondary: #FFFFFF;  /* White bolt — consistent fill */
+
+  /* ============================================
+     ICON COLOR TOKENS (Dark Mode)
+     ============================================ */
+
+  --icon-color-default: var(--foreground);
+  --icon-color-muted: var(--muted-foreground);
+  --icon-color-primary: var(--primary);
+  --icon-color-success: var(--success);
+  --icon-color-warning: var(--warning);
+  --icon-color-destructive: var(--destructive);
+  --icon-color-on-primary: var(--primary-foreground);
+  --icon-color-on-dark: var(--color-white);
+
+  /* Phosphor duotone opacity — slightly lower for dark backgrounds */
+  --icon-duotone-opacity: 0.15;
+}

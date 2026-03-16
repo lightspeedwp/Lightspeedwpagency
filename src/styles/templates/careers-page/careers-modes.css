@@ -1,0 +1,79 @@
+/**
+ * Careers — Dark Mode + Reduced Motion
+ *
+ * Sub-file 3/3 of careers-page.css
+ * BEM block: .careers
+ */
+
+/* ============================================
+   DARK MODE
+   ============================================ */
+
+.dark .careers__hero-overlay {
+  background: linear-gradient(
+    to top,
+    var(--background) 0%,
+    color-mix(in srgb, var(--background) 85%, transparent) 40%,
+    color-mix(in srgb, var(--background) 40%, transparent) 100%
+  );
+}
+
+.dark .careers__benefit-card {
+  background: color-mix(in srgb, var(--foreground) 5%, transparent);
+  border-color: color-mix(in srgb, var(--foreground) 10%, transparent);
+}
+
+.dark .careers__benefit-card:hover {
+  border-color: color-mix(in srgb, var(--neon-color, var(--primary)) 50%, transparent);
+  box-shadow: 0 0 24px color-mix(in srgb, var(--neon-color, var(--primary)) 15%, transparent);
+}
+
+.dark .careers__positions {
+  background: color-mix(in srgb, var(--foreground) 3%, var(--background));
+}
+
+.dark .careers__job-card {
+  background: color-mix(in srgb, var(--foreground) 5%, transparent);
+  border-color: color-mix(in srgb, var(--foreground) 10%, transparent);
+}
+
+.dark .careers__job-card:hover {
+  border-color: color-mix(in srgb, var(--neon-color, var(--primary)) 50%, transparent);
+  box-shadow: 0 0 24px color-mix(in srgb, var(--neon-color, var(--primary)) 15%, transparent);
+}
+
+.dark .careers__culture-img-wrap {
+  border-color: color-mix(in srgb, var(--foreground) 10%, transparent);
+}
+
+.dark .careers__culture-img-wrap:hover {
+  border-color: color-mix(in srgb, var(--neon-color, var(--primary)) 50%, transparent);
+  box-shadow: 0 0 24px color-mix(in srgb, var(--neon-color, var(--primary)) 15%, transparent);
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .careers__benefit-card,
+  .careers__benefit-icon,
+  .careers__job-card,
+  .careers__culture-img,
+  .careers__culture-img-wrap {
+    transition: none;
+  }
+  .careers__benefit-card:hover,
+  .careers__culture-img-wrap:hover .careers__culture-img {
+    transform: none;
+  }
+  .careers__benefit-card:hover .careers__benefit-icon {
+    transform: none;
+  }
+  .careers__benefit-card::before {
+    animation: none;
+  }
+  .careers__job-card:hover {
+    transform: none;
+  }
+}

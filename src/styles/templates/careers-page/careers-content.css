@@ -1,0 +1,227 @@
+/**
+ * Careers — Open Positions + Culture Gallery
+ *
+ * Sub-file 2/3 of careers-page.css
+ * BEM block: .careers
+ */
+
+/* ============================================
+   3. OPEN POSITIONS
+   ============================================ */
+
+.careers__positions {
+  padding: var(--spacing-16) 0;
+  background: color-mix(in srgb, var(--card) 50%, var(--background));
+  position: relative;
+  overflow: hidden;
+}
+
+/* Mesh grid overlay (dark mode) */
+.dark .careers__positions::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--neon-color, var(--primary)) 4%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--neon-color, var(--primary)) 4%, transparent) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.careers__positions-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+  text-align: center;
+  margin-bottom: var(--spacing-12);
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.careers__positions-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--neon-color, var(--primary)), var(--accent, var(--primary)));
+  margin: var(--spacing-4) auto 0;
+  border-radius: var(--radius-full);
+}
+
+.dark .careers__positions-title::after {
+  box-shadow: var(--shadow-glow-sm);
+}
+
+.careers__positions-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* Glassmorphism job cards */
+.careers__job-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  padding: var(--spacing-6) var(--spacing-8);
+  border-radius: var(--radius-xl);
+  background: color-mix(in srgb, var(--card) 65%, transparent);
+  backdrop-filter: blur(10px);
+  border: 1px solid color-mix(in srgb, var(--neon-color, var(--primary)) 12%, transparent);
+  transition: border-color var(--transition-slow) var(--ease-out),
+              box-shadow var(--transition-slow) var(--ease-out),
+              transform var(--transition-slow) var(--ease-out);
+}
+
+@media (min-width: 768px) {
+  .careers__job-card {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.careers__job-card:hover {
+  border-color: color-mix(in srgb, var(--neon-color, var(--primary)) 45%, transparent);
+  box-shadow: 0 0 20px color-mix(in srgb, var(--neon-color, var(--primary)) 12%, transparent);
+  transform: translateY(-2px);
+}
+
+.careers__job-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1-5);
+}
+
+.careers__job-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+}
+
+.careers__job-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-4);
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+}
+
+.careers__job-meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-1-5);
+}
+
+.careers__job-apply {
+  flex-shrink: 0;
+}
+
+/* ============================================
+   4. CULTURE GALLERY
+   ============================================ */
+
+.careers__culture {
+  padding: var(--spacing-16) 0;
+  background: var(--background);
+  position: relative;
+}
+
+/* Neon divider at top */
+.careers__culture::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--neon-color, var(--primary)), var(--accent, var(--primary)));
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-glow-sm);
+}
+
+.careers__culture-header {
+  text-align: center;
+  margin-bottom: var(--spacing-12);
+}
+
+.careers__culture-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-4);
+  position: relative;
+  display: inline-block;
+}
+
+.careers__culture-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--neon-color, var(--primary)), var(--accent, var(--primary)));
+  margin: var(--spacing-4) auto 0;
+  border-radius: var(--radius-full);
+}
+
+.dark .careers__culture-title::after {
+  box-shadow: var(--shadow-glow-sm);
+}
+
+.careers__culture-desc {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  color: var(--muted-foreground);
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.careers__culture-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-6);
+}
+
+@media (min-width: 768px) {
+  .careers__culture-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Glassmorphism image wraps */
+.careers__culture-img-wrap {
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  border: 1px solid color-mix(in srgb, var(--neon-color, var(--primary)) 12%, transparent);
+  transition: border-color var(--transition-slow) var(--ease-out),
+              box-shadow var(--transition-slow) var(--ease-out);
+}
+
+.careers__culture-img-wrap:hover {
+  border-color: color-mix(in srgb, var(--neon-color, var(--primary)) 50%, transparent);
+  box-shadow: 0 0 24px color-mix(in srgb, var(--neon-color, var(--primary)) 15%, transparent);
+}
+
+.careers__culture-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.careers__culture-img-wrap:hover .careers__culture-img {
+  transform: scale(1.05);
+}

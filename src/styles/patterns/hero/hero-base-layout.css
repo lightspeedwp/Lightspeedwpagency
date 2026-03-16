@@ -1,0 +1,234 @@
+/**
+ * Hero Base — Layout, Background & Orbs
+ *
+ * Base container, parallax background image, gradient overlays,
+ * and floating orb animations.
+ *
+ * @see /src/styles/patterns/hero/hero-base.css (orchestrator)
+ */
+
+/* ============================================
+   HERO BASE CONTAINER
+   ============================================ */
+
+/**
+ * Base hero section
+ * - Relative positioning for absolute children
+ * - Background color from theme
+ * - Hidden overflow for gradients/orbs
+ * - Centered text alignment
+ * - Generous vertical padding
+ */
+.hero-base {
+  position: relative;
+  background-color: var(--background);
+  overflow: hidden;
+  padding: var(--spacing-24) 0;
+  text-align: center;
+}
+
+/* ============================================
+   HERO BACKGROUND IMAGE (PARALLAX)
+   ============================================ */
+
+/**
+ * Background image with parallax effect
+ */
+.hero-base__bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120%; /* Extra height for parallax movement */
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+  will-change: transform; /* Optimize for animation */
+}
+
+/**
+ * Fullscreen hero background
+ */
+.hero-spacing-fullscreen .hero-base__bg {
+  height: 130%;
+}
+
+/**
+ * Background overlay (darkens image for readability)
+ */
+.hero-base__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--color-black) 40%, transparent) 0%,
+    color-mix(in srgb, var(--color-black) 60%, transparent) 50%,
+    color-mix(in srgb, var(--color-black) 40%, transparent) 100%
+  );
+  z-index: 0;
+  pointer-events: none;
+}
+
+/**
+ * Dark theme overlay adjustment
+ */
+[data-theme="dark"] .hero-base__overlay {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--color-black) 50%, transparent) 0%,
+    color-mix(in srgb, var(--color-black) 70%, transparent) 50%,
+    color-mix(in srgb, var(--color-black) 50%, transparent) 100%
+  );
+}
+
+/**
+ * Hero with left alignment
+ */
+.hero-base--left {
+  text-align: left;
+}
+
+@media (max-width: 767px) {
+  .hero-base--left {
+    text-align: center;
+  }
+}
+
+/* ============================================
+   HERO GRADIENT OVERLAY
+   ============================================ */
+
+/**
+ * Gradient background overlay
+ */
+.hero-base__gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    ellipse at 50% 0%, 
+    color-mix(in srgb, var(--primary) 10%, transparent) 0%, 
+    transparent 70%
+  );
+  opacity: 0.4;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/**
+ * Secondary gradient variant
+ */
+.hero-base__gradient--secondary {
+  background: radial-gradient(
+    ellipse at 50% 0%, 
+    color-mix(in srgb, var(--secondary) 12%, transparent) 0%, 
+    transparent 70%
+  );
+}
+
+/**
+ * Accent gradient variant
+ */
+.hero-base__gradient--accent {
+  background: radial-gradient(
+    ellipse at 50% 0%, 
+    color-mix(in srgb, var(--accent) 10%, transparent) 0%, 
+    transparent 70%
+  );
+}
+
+/**
+ * Dual gradient (primary + secondary)
+ */
+.hero-base__gradient--dual {
+  background: radial-gradient(
+    ellipse at 30% 0%, 
+    color-mix(in srgb, var(--primary) 8%, transparent) 0%, 
+    transparent 50%
+  ),
+  radial-gradient(
+    ellipse at 70% 0%, 
+    color-mix(in srgb, var(--secondary) 8%, transparent) 0%, 
+    transparent 50%
+  );
+}
+
+/* ============================================
+   HERO FLOATING ORBS
+   ============================================ */
+
+/**
+ * Shared orb styles
+ */
+.hero-base__orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  z-index: 0;
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+/**
+ * Primary orb (top-left)
+ */
+.hero-base__orb--primary {
+  top: 10%;
+  left: 10%;
+  width: 300px;
+  height: 300px;
+  background: var(--primary);
+  animation: floatOrb 10s ease-in-out infinite;
+}
+
+/**
+ * Secondary orb (bottom-right)
+ */
+.hero-base__orb--secondary {
+  bottom: 10%;
+  right: 10%;
+  width: 200px;
+  height: 200px;
+  background: var(--secondary);
+  animation: floatOrb 8s ease-in-out infinite reverse;
+}
+
+/**
+ * Accent orb (optional third orb)
+ */
+.hero-base__orb--accent {
+  top: 20%;
+  right: 15%;
+  width: 250px;
+  height: 250px;
+  background: var(--accent);
+  animation: floatOrb 12s ease-in-out infinite;
+}
+
+/**
+ * Floating orb animation
+ */
+@keyframes floatOrb {
+  0% { 
+    transform: translate(0, 0); 
+  }
+  50% { 
+    transform: translate(20px, -20px); 
+  }
+  100% { 
+    transform: translate(0, 0); 
+  }
+}
+
+/**
+ * Dark mode orb enhancement
+ */
+[data-theme="dark"] .hero-base__orb {
+  opacity: 0.3;
+  filter: blur(80px);
+}

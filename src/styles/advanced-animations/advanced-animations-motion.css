@@ -1,0 +1,245 @@
+/**
+ * Advanced Animations — Parallax, Page Transitions, Stagger & Scroll Reveals
+ *
+ * Parallax scroll effects, page transition keyframes,
+ * stagger animation sequences, and advanced scroll reveals.
+ *
+ * @see /src/styles/advanced-animations.css (orchestrator)
+ */
+
+/* ============================================
+   PARALLAX EFFECTS
+   ============================================ */
+
+/**
+ * Parallax layer (slow background movement)
+ * Use with useParallax hook for best results
+ */
+.parallax-layer {
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  transition: transform 0.1s linear;
+}
+
+/**
+ * Parallax image container
+ * Prevents overflow for parallax images
+ */
+.parallax-container {
+  overflow: hidden;
+  position: relative;
+}
+
+/**
+ * Background parallax
+ * Slower background movement
+ */
+.parallax-bg {
+  position: absolute;
+  top: -10%;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  object-fit: cover;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+}
+
+/* ============================================
+   PAGE TRANSITIONS
+   ============================================ */
+
+/**
+ * Page fade transition
+ * Smooth opacity transition between pages
+ */
+@keyframes page-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.page-fade-in {
+  animation: page-fade-in 0.3s ease;
+}
+
+/**
+ * Page slide transition
+ * Slides content from bottom
+ */
+@keyframes page-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-slide-up {
+  animation: page-slide-up 0.4s ease;
+}
+
+/**
+ * Page scale transition
+ * Scales up from 95%
+ */
+@keyframes page-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.page-scale-in {
+  animation: page-scale-in 0.4s ease;
+}
+
+/* ============================================
+   STAGGER ANIMATIONS
+   ============================================ */
+
+/**
+ * Stagger item base
+ * Applied to each item in a stagger sequence
+ */
+.stagger-item {
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+/**
+ * Stagger fade-up
+ * Items fade in and move up
+ */
+.stagger-item--fade-up {
+  transform: translateY(20px);
+}
+
+/**
+ * Stagger fade-in
+ * Items just fade in
+ */
+.stagger-item--fade-in {
+  transform: none;
+}
+
+/**
+ * Stagger scale-in
+ * Items scale up from 90%
+ */
+.stagger-item--scale-in {
+  transform: scale(0.9);
+}
+
+/**
+ * Stagger slide-right
+ * Items slide in from left
+ */
+.stagger-item--slide-right {
+  transform: translateX(-20px);
+}
+
+/**
+ * Visible state (applied by JS)
+ */
+.stagger-item.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ============================================
+   ADVANCED SCROLL REVEALS
+   ============================================ */
+
+/**
+ * Blur-in effect
+ * Content blurs into focus
+ */
+@keyframes blur-in {
+  from {
+    opacity: 0;
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+.scroll-reveal-blur {
+  animation: blur-in 0.8s ease;
+}
+
+/**
+ * Rotate-in effect
+ * Content rotates into view
+ */
+@keyframes rotate-in {
+  from {
+    opacity: 0;
+    transform: rotate(-5deg) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+  }
+}
+
+.scroll-reveal-rotate {
+  animation: rotate-in 0.6s ease;
+}
+
+/**
+ * Flip-in effect
+ * Content flips into view (3D)
+ */
+@keyframes flip-in {
+  from {
+    opacity: 0;
+    transform: perspective(1000px) rotateX(-15deg);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(1000px) rotateX(0);
+  }
+}
+
+.scroll-reveal-flip {
+  animation: flip-in 0.8s ease;
+  transform-style: preserve-3d;
+}
+
+/**
+ * Elastic bounce
+ * Content bounces in with elastic easing
+ */
+@keyframes elastic-bounce {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.scroll-reveal-elastic {
+  animation: elastic-bounce 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}

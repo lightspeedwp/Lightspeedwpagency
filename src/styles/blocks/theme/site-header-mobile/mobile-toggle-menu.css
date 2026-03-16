@@ -1,0 +1,225 @@
+/**
+ * Site Header — Mobile Toggle + Menu + Nav List + Nav Links
+ *
+ * Sub-file 1/2 of site-header-mobile.css
+ * Toggle button + Menu panel + Nav list + Nav link styles
+ */
+
+/* ============================================
+   MOBILE MENU TOGGLE — FUNKY NEON BURGER / X
+   ============================================ */
+
+.site-header__mobile-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: 1px solid transparent;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  padding: var(--spacing-2);
+  color: var(--foreground);
+  width: 44px;
+  height: 44px;
+  position: relative;
+  transition: all var(--transition-base) var(--ease-out);
+}
+
+.site-header__mobile-toggle:hover {
+  color: var(--primary);
+  background: var(--primary-soft);
+  border-color: color-mix(in srgb, var(--neon-color) 30%, transparent);
+  box-shadow: var(--shadow-glow-sm);
+}
+
+.site-header__mobile-toggle:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* When menu is open, toggle gets neon glow */
+.site-header__mobile-toggle--open {
+  color: var(--primary);
+  background: var(--primary-soft);
+  border-color: color-mix(in srgb, var(--neon-color) 40%, transparent);
+  box-shadow: var(--shadow-neon);
+}
+
+@media (min-width: 1280px) {
+  .site-header__mobile-toggle {
+    display: none;
+  }
+}
+
+/* ============================================
+   FUNKY NEON MOBILE MENU
+   Opens below the header, full remaining viewport
+   ============================================ */
+
+.site-header__mobile-menu {
+  position: fixed;
+  top: var(--mobile-header-height, 65px);
+  left: 0;
+  right: 0;
+  width: 100vw;
+  height: calc(100vh - var(--mobile-header-height, 65px));
+  /* Use dvh for mobile browsers if supported */
+  height: calc(100dvh - var(--mobile-header-height, 65px));
+  background: color-mix(in srgb, var(--background) 96%, transparent);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  z-index: var(--z-fixed);
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+
+  /* Neon top border */
+  border-top: 2px solid var(--neon-color);
+  box-shadow: 
+    inset 0 2px 20px color-mix(in srgb, var(--neon-color) 10%, transparent),
+    0 0 30px color-mix(in srgb, var(--neon-color) 5%, transparent);
+
+  /* Entrance animation */
+  animation: mobileMenuReveal 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes mobileMenuReveal {
+  from {
+    opacity: 0;
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0 0 0% 0);
+  }
+}
+
+/* Inner content wrapper */
+.site-header__mobile-menu-inner {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  padding: var(--spacing-6) var(--section-padding-x);
+  padding-bottom: var(--spacing-16); /* Extra padding for bottom */
+  gap: var(--spacing-2);
+}
+
+/* ============================================
+   MOBILE NAV LIST — Staggered Items
+   ============================================ */
+
+.site-header__mobile-nav {
+  flex: 1;
+}
+
+.site-header__mobile-nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+.site-header__mobile-nav-item {
+  opacity: 0;
+  animation: mobileItemSlideIn 0.35s var(--ease-out) forwards;
+}
+
+/* Stagger each item */
+.site-header__mobile-nav-item:nth-child(1) { animation-delay: 0.05s; }
+.site-header__mobile-nav-item:nth-child(2) { animation-delay: 0.1s; }
+.site-header__mobile-nav-item:nth-child(3) { animation-delay: 0.15s; }
+.site-header__mobile-nav-item:nth-child(4) { animation-delay: 0.2s; }
+.site-header__mobile-nav-item:nth-child(5) { animation-delay: 0.25s; }
+.site-header__mobile-nav-item:nth-child(6) { animation-delay: 0.3s; }
+.site-header__mobile-nav-item:nth-child(7) { animation-delay: 0.35s; }
+.site-header__mobile-nav-item:nth-child(8) { animation-delay: 0.4s; }
+
+@keyframes mobileItemSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ============================================
+   MOBILE NAV LINK — Funky Neon Pill Style
+   ============================================ */
+
+.site-header__mobile-nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  text-align: left;
+  padding: var(--spacing-4) var(--spacing-5);
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-medium);
+  color: var(--foreground);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-xl);
+  cursor: pointer;
+  transition: all var(--transition-base) var(--ease-out);
+  position: relative;
+  text-decoration: none;
+  min-height: 48px;
+}
+
+.site-header__mobile-nav-link:hover,
+.site-header__mobile-nav-link:focus-visible {
+  color: var(--primary);
+  background: var(--primary-soft);
+  border-color: color-mix(in srgb, var(--neon-color) 25%, transparent);
+  box-shadow: var(--shadow-glow-sm);
+  padding-left: var(--spacing-7);
+}
+
+.site-header__mobile-nav-link:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Active state — neon left bar */
+.site-header__mobile-nav-link--active {
+  color: var(--primary);
+  font-weight: var(--font-weight-semibold);
+  background: var(--primary-soft);
+  border-color: color-mix(in srgb, var(--neon-color) 20%, transparent);
+}
+
+.site-header__mobile-nav-link--active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 60%;
+  background: var(--neon-color);
+  border-radius: var(--radius-full);
+  box-shadow: 0 0 8px var(--neon-color);
+}
+
+/* Chevron icon on mobile nav link */
+.site-header__mobile-nav-chevron {
+  transition: transform var(--transition-base) var(--ease-out);
+  color: var(--muted-foreground);
+  flex-shrink: 0;
+}
+
+.site-header__mobile-nav-link:hover .site-header__mobile-nav-chevron {
+  color: var(--primary);
+}
+
+.site-header__mobile-nav-chevron--open {
+  transform: rotate(180deg);
+  color: var(--primary);
+}

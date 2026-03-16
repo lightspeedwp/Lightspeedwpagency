@@ -1,0 +1,246 @@
+/**
+ * Testimonials Page — Featured + Filters + Sections + Dark Mode + Motion
+ *
+ * Sub-file 2/2 of testimonials-page.css
+ * BEM block: .test-page
+ */
+
+/* ============================================
+   3. FEATURED (handled by TestimonialGrid)
+   ============================================ */
+
+.test-page__featured {
+  padding: var(--spacing-16) 0;
+  background: var(--background);
+}
+
+
+/* ============================================
+   4. FILTER CONTROLS
+   ============================================ */
+
+.test-page__filter-section {
+  padding: var(--spacing-16) 0;
+  background: color-mix(in srgb, var(--card) 50%, var(--background));
+}
+
+.test-page__filter-header {
+  text-align: center;
+  margin-bottom: var(--spacing-12);
+}
+
+.test-page__filter-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-4);
+  display: inline-block;
+  position: relative;
+}
+
+/* Gradient underline on filter title */
+.test-page__filter-title::after {
+  content: '';
+  display: block;
+  width: 50%;
+  height: 2px;
+  margin: var(--spacing-3) auto 0;
+  border-radius: var(--radius-full);
+  background: linear-gradient(90deg, transparent, var(--neon-color, var(--primary)), var(--accent), transparent);
+}
+
+.test-page__filter-desc {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--spacing-8);
+}
+
+.test-page__filter-row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  align-items: center;
+  padding: var(--spacing-4) var(--spacing-6);
+  border-radius: var(--radius-xl);
+  background: color-mix(in srgb, var(--card) 50%, transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid color-mix(in srgb, var(--neon-color, var(--primary)) 10%, transparent);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .test-page__filter-row {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+.test-page__filter-group {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+.test-page__filter-icon {
+  color: var(--muted-foreground);
+}
+
+.test-page__filter-label {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-medium);
+  color: var(--foreground);
+}
+
+/* Neon focus glow on selects */
+.test-page__filter-select {
+  padding: var(--spacing-2) var(--spacing-4);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background-color: var(--card);
+  color: var(--foreground);
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  cursor: pointer;
+  min-height: 44px;
+  transition: border-color var(--transition-base) ease, box-shadow var(--transition-base) ease;
+}
+
+.test-page__filter-select:hover {
+  border-color: color-mix(in srgb, var(--neon-color, var(--primary)) 40%, transparent);
+}
+
+.test-page__filter-select:focus {
+  border-color: var(--neon-color, var(--primary));
+  outline: none;
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--neon-color, var(--primary)) 25%, transparent),
+              0 0 12px color-mix(in srgb, var(--neon-color, var(--primary)) 15%, transparent);
+}
+
+.test-page__filter-select:focus-visible {
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--neon-color, var(--primary)) 25%, transparent),
+              0 0 12px color-mix(in srgb, var(--neon-color, var(--primary)) 15%, transparent);
+}
+
+
+/* ============================================
+   EMPTY STATE
+   ============================================ */
+
+/* Glassmorphism empty state */
+.test-page__empty {
+  padding: var(--spacing-16) var(--spacing-8);
+  text-align: center;
+  background: color-mix(in srgb, var(--card) 60%, transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: var(--radius-xl);
+  border: 1px solid color-mix(in srgb, var(--neon-color, var(--primary)) 10%, transparent);
+}
+
+.test-page__empty-text {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  color: var(--muted-foreground);
+}
+
+
+/* ============================================
+   5. VIDEO SECTION
+   ============================================ */
+
+.test-page__video-section {
+  padding: var(--spacing-16) 0;
+  background: var(--background);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle orb behind video section */
+.test-page__video-section::before {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  right: -10%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, color-mix(in srgb, var(--accent) 15%, transparent), transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+
+/* ============================================
+   6. SOCIAL PROOF / FAQ / CTA — patterns
+   ============================================ */
+
+.test-page__social {
+  padding: var(--spacing-16) 0;
+  background: color-mix(in srgb, var(--card) 50%, var(--background));
+}
+
+
+/* ============================================
+   DARK MODE
+   ============================================ */
+
+.dark .test-page__hero {
+  background: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--neon-color, var(--primary)) 5%, var(--background)) 0%,
+    var(--background) 50%,
+    color-mix(in srgb, var(--neon-color, var(--primary)) 3%, var(--background)) 100%
+  );
+}
+
+.dark .test-page__stat-card,
+.dark .test-page__empty {
+  background: color-mix(in srgb, var(--foreground) 5%, transparent);
+  border-color: color-mix(in srgb, var(--foreground) 10%, transparent);
+}
+
+.dark .test-page__stat-card:hover {
+  background: color-mix(in srgb, var(--foreground) 8%, transparent);
+  border-color: color-mix(in srgb, var(--neon-color, var(--primary)) 50%, transparent);
+}
+
+.dark .test-page__stats,
+.dark .test-page__filter-section,
+.dark .test-page__social {
+  background: color-mix(in srgb, var(--foreground) 3%, var(--background));
+}
+
+.dark .test-page__stats::before {
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--neon-color, var(--primary)) 6%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--neon-color, var(--primary)) 6%, transparent) 1px, transparent 1px);
+}
+
+.dark .test-page__filter-select {
+  background-color: color-mix(in srgb, var(--foreground) 5%, var(--background));
+  border-color: color-mix(in srgb, var(--foreground) 15%, transparent);
+}
+
+.dark .test-page__filter-row {
+  background: color-mix(in srgb, var(--foreground) 4%, transparent);
+  border-color: color-mix(in srgb, var(--foreground) 10%, transparent);
+}
+
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .test-page__stat-card {
+    transition: none;
+  }
+  .test-page__stat-card:hover {
+    transform: none;
+  }
+}

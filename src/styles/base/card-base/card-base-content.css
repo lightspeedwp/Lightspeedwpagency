@@ -1,0 +1,170 @@
+/**
+ * Card Base — Content, Meta, Actions, Variants, States
+ *
+ * Sub-file 2/2 of card-base.css
+ * Excerpt + Meta + Read More + Layout Variants + Reduced Motion + Dark Mode
+ */
+
+/* ============================================
+   CARD EXCERPT / DESCRIPTION
+   ============================================ */
+
+.card-base__excerpt {
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  line-height: var(--line-height-relaxed);
+  color: var(--muted-foreground);
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Shorter excerpt (2 lines) */
+.card-base__excerpt--short {
+  -webkit-line-clamp: 2;
+}
+
+/* Longer excerpt (4 lines) */
+.card-base__excerpt--long {
+  -webkit-line-clamp: 4;
+}
+
+/* ============================================
+   CARD META SECTION
+   ============================================ */
+
+.card-base__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-4);
+  margin-top: auto;
+  padding-top: var(--spacing-4);
+  border-top: 1px solid var(--border-soft);
+  font-family: var(--font-secondary);
+  font-size: var(--text-xs);
+  color: var(--muted-foreground);
+}
+
+.card-base__meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-1-5);
+}
+
+.card-base__meta-item svg {
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+/* ============================================
+   CARD ACTIONS / READ MORE
+   ============================================ */
+
+.card-base__read-more {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  margin-top: var(--spacing-2);
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--primary);
+  text-decoration: none;
+  transition: gap var(--transition-fast) var(--ease-out);
+}
+
+.card-base:hover .card-base__read-more {
+  gap: var(--spacing-3);
+}
+
+.card-base__read-more svg {
+  flex-shrink: 0;
+  transition: transform var(--transition-fast) var(--ease-out);
+}
+
+.card-base:hover .card-base__read-more svg {
+  transform: translateX(4px);
+}
+
+/* ============================================
+   CARD LAYOUT VARIANTS
+   ============================================ */
+
+/* Horizontal card layout */
+.card-base--horizontal {
+  flex-direction: row;
+}
+
+@media (max-width: 767px) {
+  .card-base--horizontal {
+    flex-direction: column;
+  }
+}
+
+.card-base--horizontal .card-base__image-wrap {
+  width: 40%;
+  aspect-ratio: 4 / 3;
+}
+
+@media (max-width: 767px) {
+  .card-base--horizontal .card-base__image-wrap {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+  }
+}
+
+.card-base--horizontal .card-base__content {
+  width: 60%;
+}
+
+@media (max-width: 767px) {
+  .card-base--horizontal .card-base__content {
+    width: 100%;
+  }
+}
+
+/* ============================================
+   REDUCED MOTION SUPPORT
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .card-base,
+  .card-base__image,
+  .card-base__image-overlay,
+  .card-base__category-chip,
+  .card-base__title,
+  .card-base__read-more,
+  .card-base__read-more svg {
+    transition: none;
+  }
+
+  .card-base:hover {
+    transform: none;
+  }
+
+  .card-base:hover .card-base__image {
+    transform: none;
+  }
+
+  .card-base:hover .card-base__read-more svg {
+    transform: none;
+  }
+}
+
+/* ============================================
+   DARK MODE ENHANCEMENTS
+   ============================================ */
+
+[data-theme="dark"] .card-base--neon {
+  border-color: color-mix(in srgb, var(--primary) 20%, transparent);
+}
+
+[data-theme="dark"] .card-base--neon:hover {
+  border-color: var(--primary);
+  box-shadow: 
+    0 0 30px color-mix(in srgb, var(--primary) 30%, transparent),
+    0 8px 24px color-mix(in srgb, var(--primary) 20%, transparent);
+}

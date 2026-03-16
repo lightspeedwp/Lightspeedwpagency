@@ -1,5 +1,13 @@
 # Navigation and Information Architecture Proposal 2026
 
+**Category:** Strategy  
+**Version:** 1.0.0  
+**Last Updated:** 2026-03-15  
+**Status:** Active  
+**Template Used:** _templates/general-template.md
+
+---
+
 ## Primary navigation
 
 **Proposed top nav:**

@@ -1,0 +1,271 @@
+/**
+ * Redesign Solution Page — Sections & Components
+ *
+ * Section headers, spacing, challenge items, and process details.
+ *
+ * @see /src/styles/templates/page-solution-redesign-optimized.css (orchestrator)
+ */
+
+/* ============================================
+   SECTION HEADERS (redesign-specific underline)
+   ============================================ */
+
+.redesign-page__section-header {
+  text-align: center;
+  margin-bottom: var(--spacing-12);
+}
+
+.redesign-page__section-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-bold);
+  color: var(--redesign-text);
+  margin: 0 0 var(--spacing-4) 0;
+  position: relative;
+  display: inline-block;
+}
+
+.redesign-page__section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--redesign-accent), var(--redesign-accent-2));
+  border-radius: var(--radius-full);
+  opacity: 0.7;
+}
+
+.redesign-page__section-desc {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  color: var(--redesign-muted);
+  margin: 0;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ============================================
+   SECTION SPACING
+   ============================================ */
+
+.redesign-page__challenges {
+  padding: var(--spacing-20) 0;
+  background: var(--redesign-card);
+}
+
+.redesign-page__process {
+  padding: var(--spacing-20) 0;
+}
+
+.redesign-page__services {
+  padding: var(--spacing-20) 0;
+  background: var(--redesign-card);
+}
+
+.redesign-page__results {
+  padding: var(--spacing-20) 0;
+}
+
+.redesign-page__pricing {
+  padding: var(--spacing-20) 0;
+  background: var(--redesign-card);
+}
+
+.redesign-page__faq {
+  padding: var(--spacing-20) 0;
+}
+
+.redesign-page__cta {
+  padding: var(--spacing-20) 0;
+  background:
+    radial-gradient(ellipse at 50% 50%, var(--redesign-accent-glow) 0%, transparent 70%),
+    var(--redesign-card);
+}
+
+/* ============================================
+   CHALLENGE ITEMS (unique glassmorphism)
+   ============================================ */
+
+.redesign-page__challenge-grid {
+  gap: var(--spacing-4);
+}
+
+.redesign-page__challenge-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-3);
+  padding: var(--spacing-4);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-soft);
+  background: var(--card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.redesign-page__challenge-item:hover {
+  border-color: color-mix(in srgb, var(--redesign-accent) 40%, transparent);
+  box-shadow: 0 0 20px color-mix(in srgb, var(--redesign-accent) 15%, transparent);
+}
+
+.redesign-page__challenge-icon {
+  flex-shrink: 0;
+  color: var(--redesign-accent);
+  margin-top: var(--spacing-1);
+}
+
+.redesign-page__challenge-text {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  color: var(--redesign-text);
+  margin: 0;
+}
+
+/* ============================================
+   PROCESS DETAILS (unique step elements)
+   ============================================ */
+
+.redesign-page__process-grid {
+  gap: var(--spacing-8);
+}
+
+.redesign-page__process-step {
+  position: relative;
+  padding: var(--spacing-6);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-soft);
+  background: var(--card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all var(--transition-base);
+  overflow: hidden;
+}
+
+.redesign-page__process-step::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--redesign-accent), var(--redesign-accent-2), var(--redesign-accent));
+  background-size: 200% 100%;
+  opacity: 0;
+  transition: opacity var(--transition-base);
+  animation: redesignStripeShimmer 3s linear infinite;
+}
+
+.redesign-page__process-step:hover {
+  border-color: color-mix(in srgb, var(--redesign-accent) 40%, transparent);
+  box-shadow: 0 0 30px color-mix(in srgb, var(--redesign-accent) 20%, transparent);
+  transform: translateY(-5px);
+}
+
+.redesign-page__process-step:hover::before {
+  opacity: 1;
+}
+
+@keyframes redesignStripeShimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.redesign-page__step-header {
+  display: flex;
+  align-items: center;
+}
+
+.redesign-page__step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, var(--redesign-accent), var(--redesign-accent-2));
+  color: var(--background);
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-4);
+  box-shadow: 0 0 12px var(--redesign-accent-glow);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.redesign-page__process-step:hover .redesign-page__step-number {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px var(--redesign-accent-glow);
+}
+
+.redesign-page__step-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, var(--redesign-accent), var(--redesign-accent-2));
+  color: var(--background);
+  margin-bottom: var(--spacing-4);
+  margin-left: var(--spacing-3);
+  box-shadow: 0 0 10px var(--redesign-accent-glow);
+  transition: transform var(--transition-base);
+}
+
+.redesign-page__process-step:hover .redesign-page__step-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.redesign-page__step-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h5);
+  font-weight: var(--font-weight-semibold);
+  color: var(--redesign-text);
+  margin: 0 0 var(--spacing-3) 0;
+}
+
+.redesign-page__step-description {
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  color: var(--redesign-muted);
+  line-height: var(--line-height-relaxed);
+  margin: 0 0 var(--spacing-4) 0;
+}
+
+.redesign-page__step-deliverables {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.redesign-page__step-deliverable {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-family: var(--font-secondary);
+  font-size: var(--text-xs);
+  color: var(--redesign-muted);
+}
+
+.redesign-page__step-deliverable-icon {
+  flex-shrink: 0;
+  color: var(--redesign-accent);
+}
+
+.redesign-page__step-duration {
+  display: inline-block;
+  margin-top: var(--spacing-4);
+  padding: var(--spacing-1) var(--spacing-3);
+  background: var(--redesign-accent-soft);
+  color: var(--redesign-accent);
+  font-family: var(--font-secondary);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-semibold);
+  border-radius: var(--radius-full);
+}

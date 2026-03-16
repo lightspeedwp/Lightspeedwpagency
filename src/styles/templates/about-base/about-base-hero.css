@@ -1,0 +1,236 @@
+/**
+ * About Base — Hero Sections, Orbs, Badges & Typography
+ *
+ * Hero sections with floating gradient orbs, background images,
+ * overlays, glassmorphism badges with neon glow, titles & subtitles.
+ * 100% CSS variables, BEM naming.
+ *
+ * @see /src/styles/templates/about-base.css (orchestrator)
+ */
+
+/* ============================================
+   HERO SECTION — FLOATING ORBS
+   ============================================ */
+
+/**
+ * Standard about hero with 85vh min-height
+ */
+.about-overview__hero,
+.team-page__hero,
+.about-culture__hero,
+.about-history__hero,
+.about-process__hero {
+  position: relative;
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: var(--color-white);
+  padding-top: var(--spacing-20);
+}
+
+.team-page__hero {
+  min-height: 80vh;
+  background-color: var(--sidebar);
+}
+
+/**
+ * Hero background images
+ */
+.about-overview__hero-bg,
+.team-page__hero-bg,
+.about-culture__hero-bg,
+.about-history__hero-bg,
+.about-process__hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  object-fit: cover;
+  z-index: 0;
+  transform: translateY(0);
+  will-change: transform;
+}
+
+.team-page__hero-bg {
+  opacity: 0.5;
+  mix-blend-mode: color-dodge;
+}
+
+/**
+ * Hero overlays — gradient from transparent to background
+ */
+.about-overview__hero-overlay,
+.about-culture__hero-overlay,
+.about-history__hero-overlay,
+.about-process__hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    var(--overlay-30) 0%,
+    var(--overlay-dark) 60%,
+    var(--background) 100%
+  );
+  z-index: 1;
+}
+
+.team-page__hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 0%, var(--sidebar) 80%);
+  z-index: 1;
+}
+
+/**
+ * Floating gradient orbs — animated
+ */
+.about-overview__hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: 2;
+  opacity: 0.6;
+  animation: about-float-orb 10s ease-in-out infinite alternate;
+}
+
+.about-overview__hero-orb--1 {
+  width: 400px;
+  height: 400px;
+  background: var(--primary);
+  top: 10%;
+  right: -10%;
+}
+
+.about-overview__hero-orb--2 {
+  width: 300px;
+  height: 300px;
+  background: var(--secondary);
+  bottom: 20%;
+  left: -5%;
+  animation-delay: -5s;
+}
+
+.about-overview__hero-orb--3 {
+  width: 200px;
+  height: 200px;
+  background: var(--warning);
+  top: 60%;
+  right: 20%;
+  animation-delay: -3s;
+  opacity: 0.3;
+}
+
+@keyframes about-float-orb {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(30px, 30px); }
+}
+
+/**
+ * Hero content containers
+ */
+.about-overview__hero-content,
+.team-page__hero-content,
+.about-culture__hero-content,
+.about-history__hero-content,
+.about-process__hero-content {
+  position: relative;
+  z-index: 3;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.team-page__hero-content {
+  z-index: 2;
+  max-width: 64rem;
+}
+
+/**
+ * Glassmorphism hero badges with neon glow
+ */
+.about-overview__hero-badge,
+.team-page__hero-badge,
+.about-culture__hero-badge,
+.about-history__hero-badge,
+.about-process__hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2) var(--spacing-4);
+  background: var(--overlay-white-soft);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--overlay-white-subtle);
+  border-radius: var(--radius-full);
+  color: var(--color-white);
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--text-sm);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+  margin-bottom: var(--spacing-6);
+  box-shadow: var(--shadow-neon);
+  animation: about-badge-glow 3s ease-in-out infinite;
+}
+
+@keyframes about-badge-glow {
+  0%, 100% {
+    box-shadow: var(--shadow-neon);
+  }
+  50% {
+    box-shadow: var(--shadow-neon-intense);
+  }
+}
+
+/**
+ * Hero titles
+ */
+.about-overview__hero-title,
+.team-page__hero-title,
+.about-culture__hero-title,
+.about-history__hero-title,
+.about-process__hero-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-5xl);
+  font-weight: var(--font-weight-black);
+  line-height: var(--line-height-tight);
+  margin-bottom: var(--spacing-6);
+  text-shadow: 0 2px 4px var(--overlay-30);
+}
+
+.dark .about-overview__hero-title,
+.dark .team-page__hero-title,
+.dark .about-culture__hero-title,
+.dark .about-history__hero-title,
+.dark .about-process__hero-title {
+  text-shadow: 0 0 20px color-mix(in srgb, var(--neon-color) 30%, transparent),
+               0 0 40px color-mix(in srgb, var(--neon-color) 10%, transparent);
+}
+
+@media (min-width: 768px) {
+  .about-overview__hero-title,
+  .team-page__hero-title,
+  .about-culture__hero-title,
+  .about-history__hero-title,
+  .about-process__hero-title {
+    font-size: var(--text-6xl);
+  }
+}
+
+/**
+ * Hero subtitles
+ */
+.about-overview__hero-subtitle,
+.team-page__hero-subtitle,
+.about-culture__hero-subtitle,
+.about-history__hero-subtitle,
+.about-process__hero-subtitle {
+  font-family: var(--font-secondary);
+  font-size: var(--text-xl);
+  line-height: var(--line-height-relaxed);
+  color: var(--overlay-white-heavy);
+  max-width: 60ch;
+  margin: 0 auto;
+}

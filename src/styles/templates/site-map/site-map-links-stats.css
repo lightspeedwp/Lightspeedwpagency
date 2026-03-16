@@ -1,0 +1,187 @@
+/**
+ * Site Map Template — Links, Stats, CTA, Helpers
+ *
+ * Sub-file 2/2 of site-map.css
+ * Link Rows + Statistics + CTA + Section Backgrounds + Icon Helpers
+ */
+
+/* ═══════════════════════════════════════════
+   Link Rows
+   ═══════════════════════════════════════════ */
+
+.site-map__link {
+  width: 100%;
+  text-align: left;
+  padding: var(--spacing-3) var(--spacing-6);
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  cursor: pointer;
+  transition: background-color var(--transition-fast) var(--ease-in-out);
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  color: var(--foreground);
+  text-decoration: none;
+}
+
+.site-map__link:hover {
+  background-color: var(--muted);
+}
+
+.site-map__link:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: -2px;
+}
+
+.site-map__link--disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.site-map__link--disabled:hover {
+  background-color: transparent;
+}
+
+.site-map__link-icon {
+  flex-shrink: 0;
+}
+
+.site-map__link-label {
+  flex-grow: 1;
+}
+
+.site-map__link-arrow {
+  color: var(--muted-foreground);
+  flex-shrink: 0;
+}
+
+/* Missing route status */
+.site-map__link--missing {
+  opacity: 0.55;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+.site-map__icon--warning {
+  color: var(--color-terminal-yellow);
+}
+
+/* ═══════════════════════════════════════════
+   Statistics
+   ═══════════════════════════════════════════ */
+
+.site-map__stats {
+  background: var(--muted);
+  border-top: 1px solid var(--border-soft);
+}
+
+.site-map__stats-inner {
+  max-width: 56rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.site-map__stats-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-bold);
+  margin: 0 0 var(--spacing-8) 0;
+  color: var(--foreground);
+}
+
+.site-map__stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-6);
+}
+
+@media (min-width: 768px) {
+  .site-map__stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.site-map__stat-card {
+  background-color: var(--card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-soft);
+  padding: var(--spacing-6);
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.site-map__stat-value {
+  font-family: var(--font-primary);
+  font-size: var(--text-h1);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-2);
+  line-height: 1;
+}
+
+.site-map__stat-label {
+  font-family: var(--font-secondary);
+  font-size: var(--text-small);
+  color: var(--muted-foreground);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+}
+
+/* ═══════════════════════════════════════════
+   CTA
+   ═══════════════════════════════════════════ */
+
+.site-map__cta-inner {
+  max-width: 48rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.site-map__cta-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-bold);
+  margin: 0 0 var(--spacing-4) 0;
+  color: var(--foreground);
+}
+
+.site-map__cta-text {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  line-height: var(--line-height-relaxed);
+  color: var(--muted-foreground);
+  margin: 0 0 var(--spacing-8) 0;
+}
+
+.site-map__cta-buttons {
+  display: flex;
+  gap: var(--spacing-4);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ═══════════════════════════════════════════
+   Section Background Helpers
+   ═══════════════════════════════════════════ */
+
+.site-map__grid-section {
+  background-color: var(--background);
+}
+
+.site-map__cta-section {
+  background-color: var(--background);
+}
+
+/* ═══════════════════════════════════════════
+   Icon Color Helpers
+   ═══════════════════════════════════════════ */
+
+.site-map__icon--success {
+  color: var(--success);
+}
+
+.site-map__icon--destructive {
+  color: var(--destructive);
+}

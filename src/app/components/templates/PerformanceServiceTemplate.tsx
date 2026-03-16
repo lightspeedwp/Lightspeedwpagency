@@ -115,7 +115,7 @@ export function PerformanceServiceTemplate() {
             <ScrollReveal animation="scale" delay={200}>
               <div style={{ backgroundColor: 'var(--card)', border: '1px solid var(--border)', borderRadius: 'var(--radius-xl)', padding: 'var(--spacing-8)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 'var(--spacing-8)', boxShadow: 'var(--shadow-xl)' }}>
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 'var(--spacing-4)' }}>
-                  <div style={{ width: '160px', height: '160px', borderRadius: '50%', border: '8px solid color-mix(in srgb, #27c93f 20%, transparent)', borderTopColor: '#27c93f', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--font-mono)', fontSize: '4rem', fontWeight: 'var(--font-weight-bold)', color: '#27c93f', position: 'relative' }}>
+                  <div style={{ width: '160px', height: '160px', borderRadius: '50%', border: 'var(--wp--preset--border-width--8) solid color-mix(in srgb, var(--color-terminal-green) 20%, transparent)', borderTopColor: 'var(--color-terminal-green)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--font-mono)', fontSize: 'var(--text-5xl)', fontWeight: 'var(--font-weight-bold)', color: 'var(--color-terminal-green)', position: 'relative' }}>
                     98
                   </div>
                   <span style={{ fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-sm)', color: 'var(--muted-foreground)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Lighthouse Score</span>
@@ -177,18 +177,18 @@ export function PerformanceServiceTemplate() {
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--spacing-6)' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-4)' }}>
                     <div style={{ fontFamily: 'var(--font-mono)', fontSize: 'var(--text-sm)', color: 'var(--muted-foreground)', width: '40px' }}>3.5s</div>
-                    <div style={{ flex: 1, backgroundColor: 'color-mix(in srgb, #ff5f56 20%, transparent)', height: '24px', borderRadius: 'var(--radius-full)', position: 'relative' }}>
-                      <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: '80%', backgroundColor: '#ff5f56', borderRadius: 'var(--radius-full)' }} />
+                    <div style={{ flex: 1, backgroundColor: 'color-mix(in srgb, var(--color-terminal-red) 20%, transparent)', height: '24px', borderRadius: 'var(--radius-full)', position: 'relative' }}>
+                      <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: '80%', backgroundColor: 'var(--color-terminal-red)', borderRadius: 'var(--radius-full)' }} />
                     </div>
                     <div style={{ fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-sm)', color: 'var(--muted-foreground)', width: '60px' }}>Before</div>
                   </div>
                   
                   <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-4)' }}>
-                    <div style={{ fontFamily: 'var(--font-mono)', fontSize: 'var(--text-sm)', color: '#27c93f', fontWeight: 'var(--font-weight-bold)', width: '40px' }}>0.8s</div>
-                    <div style={{ flex: 1, backgroundColor: 'color-mix(in srgb, #27c93f 20%, transparent)', height: '24px', borderRadius: 'var(--radius-full)', position: 'relative' }}>
-                      <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: '20%', backgroundColor: '#27c93f', borderRadius: 'var(--radius-full)' }} />
+                    <div style={{ fontFamily: 'var(--font-mono)', fontSize: 'var(--text-sm)', color: 'var(--color-terminal-green)', fontWeight: 'var(--font-weight-bold)', width: '40px' }}>0.8s</div>
+                    <div style={{ flex: 1, backgroundColor: 'color-mix(in srgb, var(--color-terminal-green) 20%, transparent)', height: '24px', borderRadius: 'var(--radius-full)', position: 'relative' }}>
+                      <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: '20%', backgroundColor: 'var(--color-terminal-green)', borderRadius: 'var(--radius-full)' }} />
                     </div>
-                    <div style={{ fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-sm)', color: '#27c93f', fontWeight: 'var(--font-weight-bold)', width: '60px' }}>After</div>
+                    <div style={{ fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-sm)', color: 'var(--color-terminal-green)', fontWeight: 'var(--font-weight-bold)', width: '60px' }}>After</div>
                   </div>
                 </div>
                 

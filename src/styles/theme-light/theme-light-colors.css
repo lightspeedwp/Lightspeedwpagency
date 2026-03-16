@@ -1,0 +1,415 @@
+/**
+ * LSX Design System — Light Mode Theme (Colors)
+ *
+ * Sub-file 1/2 of theme-light.css
+ * Semantic color system: Core + Card + Popover + Brand + Status + Category + Border + Input + Sidebar
+ *
+ * @requires theme-base.css
+ */
+
+:root {
+  /* ============================================
+     SEMANTIC COLOR SYSTEM (Light Mode)
+     ============================================ */
+  
+  /* ----------------------------------------
+     Core Colors
+     ---------------------------------------- */
+  
+  /**
+   * Primary background color for the application
+   * Usage: Page background, canvas sections
+   * Contrast: Base for all foreground colors
+   */
+  --background: #FFFFFF;          /* #FFFFFF - Pure white */
+  
+  /**
+   * Primary foreground color (text on background)
+   * Usage: Body text, headings on light backgrounds
+   * Contrast: 16.07:1 on white (AAA ✓✓✓)
+   */
+  --foreground: #090909;                /* #090909 - Near black */
+  
+  
+  /* ----------------------------------------
+     Card & Container Colors
+     ---------------------------------------- */
+  
+  /**
+   * Card background color
+   * Usage: Card components, modals, panels, alternating sections
+   * Contrast: Subtle differentiation from background
+   */
+  --card: #F9FAFB;                /* #F9FAFB - Very subtle off-white for section alternation */
+  
+  /**
+   * Card foreground color (text on cards)
+   * Usage: Text inside cards and containers
+   * Contrast: 16.07:1 on card background (AAA ✓✓✓)
+   */
+  --card-foreground: #090909;           /* #090909 - Near black */
+  
+  /** Card hover background — slightly darker on hover */
+  --card-hover: #F9F9F9;                /* Very light gray */
+  
+  /** Primary dark variant — for hover states on links */
+  --primary-dark: #1554CC;              /* Darker blue */
+  
+  
+  /* ----------------------------------------
+     Popover & Dropdown Colors
+     ---------------------------------------- */
+  
+  /**
+   * Popover background color
+   * Usage: Dropdowns, tooltips, floating menus
+   * Note: Transparent by default, use card color for solid popovers
+   */
+  --popover: transparent;                   /* Transparent */
+  
+  /**
+   * Popover foreground color
+   * Usage: Text in popovers and dropdowns
+   * Contrast: 16.07:1 when on white background (AAA ✓✓✓)
+   */
+  --popover-foreground: #090909;        /* #090909 - Near black */
+  
+  
+  /* ----------------------------------------
+     Primary Brand Colors
+     ---------------------------------------- */
+  
+  /**
+   * Primary brand color
+   * Usage: Primary buttons, links, interactive elements
+   * Hex: #1E6AFF
+   * Contrast: 4.58:1 on white (AA ✓)
+   */
+  --primary: #1E6AFF;              /* #1E6AFF - Bright blue */
+  
+  /**
+   * Primary foreground color (text/icons on primary)
+   * Usage: Text on primary buttons and backgrounds
+   * Contrast: 4.52:1 on primary (AA ✓)
+   */
+  --primary-foreground: #FFFFFF;  /* #FFFFFF - White */
+  
+  /**
+   * Primary soft background (10% opacity)
+   * Usage: Category badges, tags, soft highlights
+   * Hex: #1E6AFF1A
+   * Contrast: Subtle, decorative use
+   */
+  --primary-soft: #1E6AFF1A;       /* 10% primary blue */
+  
+  /**
+   * Primary light variant
+   * Usage: Gradient endpoints, lighter accent backgrounds
+   * Hex: #5B9AFF (lighter shade of primary)
+   */
+  --primary-light: #5B9AFF;          /* Lighter blue for gradients */
+
+  /**
+   * Primary RGB (raw channel values)
+   * Usage: rgba() patterns where color-mix() isn't supported
+   * Values: 30, 106, 255 (from #1E6AFF)
+   */
+  --primary-rgb: 30, 106, 255;
+
+  /**
+   * Funky Neon Color (Light Mode)
+   * Usage: Glow effects, neon shadows
+   * Hex: #1E6AFF (Matches Primary for consistency, but brighter in context)
+   */
+  --neon-color: #1E6AFF;
+  
+  
+  /* ----------------------------------------
+     Secondary Brand Colors
+     ---------------------------------------- */
+  
+  /**
+   * Secondary brand color
+   * Usage: Secondary buttons, accent elements
+   * Hex: #7BE7FF
+   * Contrast: 1.48:1 on white (Decorative use only)
+   */
+  --secondary: #7BE7FF;           /* #7BE7FF - Light cyan */
+  
+  /**
+   * Secondary foreground color (text on secondary)
+   * Usage: Text on secondary buttons
+   * Hex: #0E3278
+   * Contrast: 9.62:1 on secondary (AAA ✓✓✓)
+   */
+  --secondary-foreground: #0E3278;  /* #0E3278 - Dark blue */
+  
+  
+  /* ----------------------------------------
+     Muted & Neutral Colors
+     ---------------------------------------- */
+  
+  /**
+   * Muted background color
+   * Usage: Disabled states, subtle backgrounds
+   * Hex: #E1E1E1
+   * Contrast: 1.22:1 on white
+   */
+  --muted: #E1E1E1;               /* #E1E1E1 - Light gray */
+  
+  /**
+   * Muted foreground color
+   * Usage: Secondary text, metadata, captions
+   * Hex: #565656
+   * Contrast: 7.35:1 on white (AAA ✓✓✓)
+   */
+  --muted-foreground: #565656;       /* #565656 - Medium gray */
+  
+  
+  /* ----------------------------------------
+     Accent Colors
+     ---------------------------------------- */
+  
+  /**
+   * Accent color for highlights
+   * Usage: Hover states, active links, badges
+   * Hex: #7BE7FF
+   * Contrast: 1.48:1 on white (Decorative use only)
+   */
+  --accent: #7BE7FF;              /* #7BE7FF - Light cyan */
+  
+  /**
+   * Accent foreground color
+   * Usage: Text on accent backgrounds
+   * Hex: #0E3278
+   * Contrast: 9.62:1 on accent (AAA ✓✓✓)
+   */
+  --accent-foreground: #0E3278;     /* #0E3278 - Dark blue */
+  
+  
+  /* ----------------------------------------
+     Destructive & Error Colors
+     ---------------------------------------- */
+  
+  /**
+   * Destructive background color
+   * Usage: Delete buttons, error messages, warnings
+   * Hex: #CC0000
+   * Contrast: 7.42:1 on white (AAA ✓✓✓)
+   */
+  --destructive: #CC0000;             /* #CC0000 - Red */
+  
+  /**
+   * Destructive foreground color
+   * Usage: Text on destructive backgrounds
+   * Contrast: 4.89:1 on destructive (AA ✓)
+   */
+  --destructive-foreground: #FFFFFF; /* #FFFFFF - White */
+  
+  /**
+   * Destructive/Error soft background (10% opacity)
+   * Usage: Error badges, soft highlights
+   */
+  --destructive-soft: color-mix(in srgb, var(--destructive) 10%, transparent);
+  
+  
+  /* ----------------------------------------
+     Warning Colors
+     ---------------------------------------- */
+  
+  /**
+   * Warning background color
+   * Usage: Cautionary messages, alerts, pending states
+   * Hex: #F59E0B
+   * Contrast: Amber for attention
+   */
+  --warning: #F59E0B;               /* #F59E0B - Amber */
+  
+  /**
+   * Warning foreground color
+   * Usage: Text on warning backgrounds
+   * Contrast: High readability on amber
+   */
+  --warning-foreground: #FFFFFF;     /* #FFFFFF - White */
+  
+  /**
+   * Warning soft background (10% opacity)
+   * Usage: Warning badges, soft highlights
+   */
+  --warning-soft: color-mix(in srgb, var(--warning) 10%, transparent);
+  
+  
+  /* ----------------------------------------
+     Success Colors
+     ---------------------------------------- */
+  
+  /**
+   * Success background color
+   * Usage: Success messages, confirmations, positive states
+   * Hex: #16A34A
+   * Contrast: 3.56:1 on white (AA Large ✓)
+   */
+  --success: #16A34A;               /* #16A34A - Green */
+  
+  /**
+   * Success foreground color
+   * Usage: Text on success backgrounds
+   * Contrast: High readability on green
+   */
+  --success-foreground: #FFFFFF;     /* #FFFFFF - White */
+  
+  /**
+   * Success soft background (10% opacity)
+   * Usage: Success badges, soft highlights
+   */
+  --success-soft: color-mix(in srgb, var(--success) 10%, transparent);
+  
+  
+  /* ----------------------------------------
+     Info Colors
+     ---------------------------------------- */
+  
+  /**
+   * Info color
+   * Usage: Informational messages, tips, highlights
+   * Hex: #0EA5E9
+   * Contrast: 3.03:1 on white (decorative / large text)
+   */
+  --info: #0EA5E9;                   /* #0EA5E9 - Sky blue */
+  
+  /**
+   * Info foreground color
+   * Usage: Text on info backgrounds
+   */
+  --info-foreground: #FFFFFF;        /* #FFFFFF - White */
+  
+  
+  /* ----------------------------------------
+     Category Colors (Decorative)
+     ---------------------------------------- */
+  
+  /**
+   * Category-specific colors for visual differentiation.
+   * Usage: SiteMap icons, tag badges, category indicators.
+   * These are decorative — not for text on backgrounds.
+   */
+  --category-green: #10B981;      /* Emerald — Services */
+  --category-amber: #F59E0B;      /* Amber — Solutions */
+  --category-pink: #EC4899;       /* Pink — Portfolio, Media */
+  --category-blue: #3B82F6;       /* Blue — Blog */
+  --category-cyan: #06B6D4;       /* Cyan — Posts */
+  --category-indigo: #6366F1;     /* Indigo — Dev Tools */
+  --category-red: #EF4444;        /* Red — Error / 404 */
+  --category-violet: #8B5CF6;     /* Violet — Summary stats */
+  
+  
+  /* ----------------------------------------
+     Border Colors
+     ---------------------------------------- */
+  
+  /**
+   * Default border color
+   * Usage: Input borders, dividers, card outlines
+   * Hex: #757575
+   * Contrast: 4.55:1 on white (AA ✓)
+   */
+  --border: #757575;              /* #757575 - Medium gray */
+  
+  /**
+   * Soft border color (modern design)
+   * Usage: Subtle card borders, section dividers
+   * Contrast: Low contrast for subtle effect
+   */
+  --border-soft: #00000014;            /* 8% black */
+  
+  /**
+   * Extra soft border color
+   * Usage: Very subtle dividers
+   * Contrast: Minimal contrast for elegant design
+   */
+  --border-extra-soft: #0000000A;      /* 4% black */
+  
+  /** Subtle border — used for feature lists, inner dividers */
+  --border-subtle: #00000010;          /* 6% black */
+  
+  
+  /* ----------------------------------------
+     Input & Form Colors
+     ---------------------------------------- */
+  
+  /**
+   * Input field background (filled state)
+   * Usage: Text inputs, textareas
+   */
+  --input: #FFFFFF;               /* #FFFFFF - White */
+  
+  /**
+   * Input field background (default)
+   * Usage: Form fields, search boxes
+   */
+  --input-background: #FFFFFF;    /* #FFFFFF - White */
+  
+  /**
+   * Focus ring color
+   * Usage: Focus outlines, keyboard navigation
+   * Hex: #0047D0
+   * Contrast: 6.72:1 on white (AA ✓)
+   */
+  --ring: #0047D0;                   /* #0047D0 - Dark blue */
+  
+  
+  /* ----------------------------------------
+     Navigation & Sidebar Colors
+     ---------------------------------------- */
+  
+  /**
+   * Sidebar background color
+   * Usage: Navigation menus, sidebars (dark in light mode)
+   * Hex: #090909
+   */
+  --sidebar: #090909;                   /* #090909 - Near black */
+  
+  /**
+   * Sidebar foreground color
+   * Usage: Text in navigation/sidebar
+   * Contrast: 16.07:1 on sidebar (AAA ✓✓✓)
+   */
+  --sidebar-foreground: #FFFFFF;  /* #FFFFFF - White */
+  
+  /**
+   * Sidebar primary color
+   * Usage: Active nav items
+   * Hex: #1E6AFF
+   */
+  --sidebar-primary: #1E6AFF;      /* #1E6AFF - Bright blue */
+  
+  /**
+   * Sidebar primary foreground
+   * Contrast: 4.52:1 on sidebar-primary (AA ✓)
+   */
+  --sidebar-primary-foreground: #FFFFFF; /* #FFFFFF - White */
+  
+  /**
+   * Sidebar accent color
+   * Hex: #7BE7FF
+   */
+  --sidebar-accent: #7BE7FF;      /* #7BE7FF - Light cyan */
+  
+  /**
+   * Sidebar accent foreground
+   * Contrast: 9.62:1 on sidebar-accent (AAA ✓✓✓)
+   */
+  --sidebar-accent-foreground: #0E3278; /* #0E3278 - Dark blue */
+  
+  /**
+   * Sidebar border color
+   * Hex: #757575
+   */
+  --sidebar-border: #757575;      /* #757575 - Medium gray */
+  
+  /**
+   * Sidebar ring (focus)
+   * Hex: #7BE7FF
+   */
+  --sidebar-ring: #7BE7FF;        /* #7BE7FF - Light cyan */
+}

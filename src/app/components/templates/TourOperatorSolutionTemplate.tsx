@@ -19,7 +19,7 @@ import {
 
 export function TourOperatorSolutionTemplate() {
   return (
-    <main className="wp-flex wp-flex-col wp-w-full wp-min-h-screen wp-bg-background">
+    <div className="wp-flex wp-flex-col wp-w-full wp-min-h-screen wp-bg-background">
       {/* Hero Section */}
       <Hero
         variant="service"
@@ -104,7 +104,7 @@ export function TourOperatorSolutionTemplate() {
           ]}
         />
       </section>
-    </main>
+    </div>
   );
 }
 

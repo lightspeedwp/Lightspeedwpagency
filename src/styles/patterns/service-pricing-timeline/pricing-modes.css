@@ -1,0 +1,151 @@
+/**
+ * Service Pricing & Timeline — Dark Mode + Responsive + Motion + Print
+ *
+ * Sub-file 2/2 of service-pricing-timeline.css
+ * BEM naming: .service-pricing__*
+ */
+
+/* ============================================
+   DARK MODE ENHANCEMENTS
+   ============================================ */
+
+.dark .service-pricing__card {
+  background: linear-gradient(
+    135deg,
+    hsl(var(--card) / 0.8) 0%,
+    hsl(var(--card) / 0.6) 100%
+  );
+  border-color: hsl(var(--primary) / 0.3);
+  box-shadow: 
+    0 4px 16px hsl(var(--primary) / 0.1),
+    0 0 24px hsl(var(--primary) / 0.05),
+    inset 0 1px 0 hsl(var(--foreground) / 0.1);
+}
+
+.dark .service-pricing__card:hover {
+  box-shadow: 
+    0 8px 32px hsl(var(--primary) / 0.15),
+    0 0 32px hsl(var(--primary) / 0.1),
+    inset 0 1px 0 hsl(var(--foreground) / 0.15);
+}
+
+.dark .service-pricing__icon {
+  filter: drop-shadow(0 0 8px hsl(var(--primary) / 0.5));
+}
+
+.dark .service-pricing__phase-number {
+  box-shadow: 
+    0 2px 8px hsl(var(--primary) / 0.5),
+    0 0 16px hsl(var(--primary) / 0.3);
+}
+
+.dark .service-pricing__check-icon {
+  filter: drop-shadow(0 0 4px hsl(var(--primary) / 0.5));
+}
+
+.dark .service-pricing__cta {
+  background: linear-gradient(
+    135deg,
+    hsl(var(--muted) / 0.6) 0%,
+    hsl(var(--muted) / 0.4) 100%
+  );
+  border-color: hsl(var(--primary) / 0.3);
+  box-shadow: 0 0 24px hsl(var(--primary) / 0.05);
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+
+/* Mobile (< 768px) */
+@media (max-width: 767px) {
+  .service-pricing__header {
+    margin-bottom: var(--spacing-8);
+  }
+  
+  .service-pricing__card {
+    padding: var(--spacing-6);
+  }
+  
+  .service-pricing__grid {
+    gap: var(--spacing-6);
+  }
+  
+  .service-pricing__price-range {
+    flex-direction: column;
+    gap: var(--spacing-1);
+  }
+  
+  .service-pricing__price-separator {
+    display: none;
+  }
+  
+  .service-pricing__cta {
+    padding: var(--spacing-8) var(--spacing-6);
+  }
+}
+
+/* Tablet (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .service-pricing__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Desktop (1024px+) */
+@media (min-width: 1024px) {
+  .service-pricing__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-10);
+  }
+  
+  .service-pricing__header {
+    margin-bottom: var(--spacing-16);
+  }
+  
+  .service-pricing__card {
+    padding: var(--spacing-10);
+  }
+  
+  .service-pricing__cta {
+    padding: var(--spacing-12);
+  }
+}
+
+/* ============================================
+   REDUCED MOTION SUPPORT
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .service-pricing__card {
+    transition: none;
+  }
+  
+  .service-pricing__card:hover {
+    transform: none;
+  }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+  .service-pricing__card {
+    border: 1px solid var(--border);
+    box-shadow: none;
+    page-break-inside: avoid;
+  }
+  
+  .service-pricing__grid {
+    display: block;
+  }
+  
+  .service-pricing__card {
+    margin-bottom: 1rem;
+  }
+  
+  .service-pricing__cta {
+    display: none;
+  }
+}

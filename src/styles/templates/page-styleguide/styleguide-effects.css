@@ -1,0 +1,206 @@
+/**
+ * Styleguide Page — Neon, Shadow & Animation Sections
+ *
+ * Visual effect showcase sections: neon glow cards,
+ * shadow presets, and animation library specimens.
+ *
+ * @see /src/styles/templates/page-styleguide.css (orchestrator)
+ */
+
+/* ============================================
+   1. NEON / GLOW EFFECTS
+   ============================================ */
+
+.styleguide__neon__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-6);
+}
+
+@media (min-width: 640px)  { .styleguide__neon__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .styleguide__neon__grid { grid-template-columns: repeat(3, 1fr); } }
+
+.styleguide__neon__card {
+  background: var(--card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-8);
+  text-align: center;
+  transition: transform var(--transition-slow) var(--ease-out);
+}
+
+.styleguide__neon__card:hover { transform: translateY(-4px); }
+
+.styleguide__neon__dot {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto var(--spacing-6);
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+}
+
+.styleguide__neon__code {
+  display: block;
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-bold);
+  color: var(--primary);
+  margin-bottom: var(--spacing-2);
+}
+
+.dark .styleguide__neon__code { color: var(--neon-color); }
+
+.styleguide__neon__label {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+}
+
+/* ============================================
+   2. SHADOW PRESETS
+   ============================================ */
+
+.styleguide__shadows__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-6);
+}
+
+@media (min-width: 768px) { .styleguide__shadows__grid { grid-template-columns: repeat(3, 1fr); } }
+
+.styleguide__shadows__card {
+  background: var(--background);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-8);
+  text-align: center;
+  transition: transform var(--transition-slow) var(--ease-out);
+}
+
+.styleguide__shadows__card:hover { transform: translateY(-4px); }
+
+.styleguide__shadows__code {
+  display: block;
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-bold);
+  color: var(--primary);
+  margin-bottom: var(--spacing-2);
+}
+
+.dark .styleguide__shadows__code { color: var(--neon-color); }
+
+.styleguide__shadows__label {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+}
+
+/* ============================================
+   3. ANIMATION LIBRARY
+   ============================================ */
+
+.styleguide__anim__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-6);
+}
+
+@media (min-width: 768px) { .styleguide__anim__grid { grid-template-columns: repeat(4, 1fr); } }
+
+.styleguide__anim__card {
+  background: var(--card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-6);
+  text-align: center;
+}
+
+.styleguide__anim__dot {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto var(--spacing-4);
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+}
+
+/* pulse */
+.styleguide__anim__dot--pulse {
+  animation: sg-anim-pulse 2s ease-in-out infinite;
+}
+
+@keyframes sg-anim-pulse {
+  0%, 100% { box-shadow: var(--shadow-neon); transform: scale(1); }
+  50%      { box-shadow: var(--shadow-neon-intense); transform: scale(1.08); }
+}
+
+/* float */
+.styleguide__anim__dot--float {
+  animation: sg-anim-float 3s ease-in-out infinite alternate;
+}
+
+@keyframes sg-anim-float {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(-12px); }
+}
+
+/* border-flow */
+.styleguide__anim__dot--border-flow {
+  border-radius: var(--radius-xl);
+  background: conic-gradient(from 0deg, var(--primary), var(--secondary), var(--accent), var(--primary));
+  animation: sg-anim-spin 3s linear infinite;
+  position: relative;
+}
+
+.styleguide__anim__dot--border-flow::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  background: var(--card);
+  border-radius: calc(var(--radius-xl) - 3px);
+}
+
+@keyframes sg-anim-spin {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* grid-drift */
+.styleguide__anim__dot--grid-drift {
+  border-radius: var(--radius-lg);
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--primary) 30%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--primary) 30%, transparent) 1px, transparent 1px);
+  background-size: 12px 12px;
+  animation: sg-anim-grid 4s linear infinite;
+}
+
+@keyframes sg-anim-grid {
+  0%   { background-position: 0 0; }
+  100% { background-position: 12px 12px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .styleguide__anim__dot--pulse,
+  .styleguide__anim__dot--float,
+  .styleguide__anim__dot--border-flow,
+  .styleguide__anim__dot--grid-drift {
+    animation: none;
+  }
+}
+
+.styleguide__anim__code {
+  display: block;
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-bold);
+  color: var(--primary);
+  margin-bottom: var(--spacing-1);
+}
+
+.dark .styleguide__anim__code { color: var(--neon-color); }
+
+.styleguide__anim__label {
+  font-family: var(--font-secondary);
+  font-size: var(--text-xs);
+  color: var(--muted-foreground);
+}

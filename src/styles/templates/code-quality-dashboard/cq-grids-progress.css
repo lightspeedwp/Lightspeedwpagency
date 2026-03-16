@@ -1,0 +1,242 @@
+/**
+ * Code Quality Dashboard — Category Grid + Metrics + Data + Tokens + CSS + Progress
+ *
+ * Sub-file 2/2 of code-quality-dashboard.css
+ * BEM: .cq-dashboard
+ */
+
+/* Category Grid */
+.cq-dashboard__category-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-4);
+}
+
+.cq-dashboard__category-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--spacing-4);
+  background-color: var(--background);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+.cq-dashboard__category-icon {
+  margin-bottom: var(--spacing-2);
+  color: var(--primary);
+}
+
+.cq-dashboard__category-count {
+  font-family: var(--font-mono);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+}
+
+.cq-dashboard__category-name {
+  font-family: var(--font-secondary);
+  font-size: var(--text-xs);
+  color: var(--muted-foreground);
+}
+
+/* Metrics List */
+.cq-dashboard__metrics-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.cq-dashboard__metric-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: var(--spacing-3);
+  border-bottom: 1px solid var(--border);
+}
+
+.cq-dashboard__metric-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.cq-dashboard__metric-name {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--foreground);
+}
+
+.cq-dashboard__metric-value {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  padding: var(--spacing-1) var(--spacing-2);
+  border-radius: var(--radius-sm);
+}
+
+.cq-dashboard__metric-value--good { background-color: var(--success-soft); color: var(--success); }
+.cq-dashboard__metric-value--neutral { background-color: var(--muted); color: var(--muted-foreground); }
+.cq-dashboard__metric-value--bad { background-color: var(--destructive-soft); color: var(--destructive); }
+
+/* Data Grid */
+.cq-dashboard__data-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.cq-dashboard__data-card {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  padding: var(--spacing-3);
+  background-color: var(--background);
+  border-radius: var(--radius-md);
+}
+
+.cq-dashboard__data-icon {
+  color: var(--accent);
+}
+
+.cq-dashboard__data-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.cq-dashboard__data-name {
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+}
+
+.cq-dashboard__data-count {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--muted-foreground);
+}
+
+/* Tokens Grid */
+.cq-dashboard__tokens-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-3);
+}
+
+.cq-dashboard__token-card {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2);
+  background-color: var(--background);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+}
+
+.cq-dashboard__token-swatch {
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+}
+
+.cq-dashboard__token-count {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+}
+
+.cq-dashboard__token-name {
+  font-family: var(--font-secondary);
+  font-size: var(--text-xs);
+  color: var(--muted-foreground);
+}
+
+/* CSS List */
+.cq-dashboard__css-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: var(--spacing-2);
+}
+
+.cq-dashboard__css-row {
+  display: grid;
+  grid-template-columns: 1fr 60px 80px;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-size: var(--text-xs);
+  padding: var(--spacing-2);
+  border-radius: var(--radius-sm);
+}
+
+.cq-dashboard__css-row:nth-child(even) {
+  background-color: var(--muted);
+}
+
+.cq-dashboard__css-file {
+  font-family: var(--font-mono);
+  color: var(--foreground);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cq-dashboard__css-size {
+  text-align: right;
+  color: var(--muted-foreground);
+}
+
+.cq-dashboard__css-category {
+  text-align: right;
+  color: var(--accent);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Progress Bars */
+.cq-dashboard__progress-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.cq-dashboard__progress-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+.cq-dashboard__progress-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--text-xs);
+}
+
+.cq-dashboard__progress-label {
+  font-family: var(--font-secondary);
+  color: var(--foreground);
+}
+
+.cq-dashboard__progress-percent {
+  font-family: var(--font-mono);
+  color: var(--muted-foreground);
+}
+
+.cq-dashboard__progress-track {
+  height: 6px;
+  background-color: var(--muted);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.cq-dashboard__progress-fill {
+  height: 100%;
+  background-color: var(--primary);
+  border-radius: var(--radius-full);
+}
+
+.cq-dashboard__progress-fill--success { background-color: var(--success); }
+.cq-dashboard__progress-fill--warning { background-color: var(--warning); }

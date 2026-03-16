@@ -1,0 +1,255 @@
+/**
+ * Service Detail — Grid Layouts
+ * 
+ * All responsive grid systems for service detail pages.
+ * Includes overview, services, process, features, sub-services,
+ * why-choose, benefits, related, and stats grids.
+ * 100% CSS variables, BEM naming.
+ * 
+ * @see /src/styles/templates/service-detail.css (orchestrator)
+ */
+
+/* ============================================
+   OVERVIEW SECTION
+   ============================================ */
+
+.service-detail__overview-section {
+  background-color: var(--muted);
+}
+
+.service-detail__section-header {
+  text-align: center;
+  margin-bottom: var(--spacing-12);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-4);
+  max-width: var(--max-w-4xl);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.service-detail__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-snug);
+  letter-spacing: var(--letter-spacing-tight);
+  color: var(--foreground);
+}
+
+.service-detail__description {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  line-height: var(--line-height-relaxed);
+  color: var(--muted-foreground);
+  max-width: 800px;
+  margin: 0 auto;
+  padding-top: var(--spacing-6);
+  /* margin-top converted to padding-top */
+}
+
+/* ============================================
+   SERVICES LIST SECTION
+   ============================================ */
+
+.service-detail__services-section {
+  background-color: var(--muted);
+}
+
+.service-detail__services-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-6);
+}
+
+@media (min-width: 768px) {
+  .service-detail__services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .service-detail__services-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ============================================
+   PROCESS SECTION
+   ============================================ */
+
+.service-detail__process-section {
+  background-color: var(--background);
+}
+
+/* Features Grid */
+.service-detail__features-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-8);
+}
+
+@media (min-width: 768px) {
+  .service-detail__features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .service-detail__features-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Process Grid */
+.service-detail__process-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-8);
+}
+
+@media (min-width: 768px) {
+  .service-detail__process-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .service-detail__process-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Process Duration */
+.service-detail__process-duration {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--primary);
+  margin-bottom: var(--spacing-3);
+}
+
+/* Sub-services Grid */
+.service-detail__sub-services-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-8);
+}
+
+@media (min-width: 768px) {
+  .service-detail__sub-services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Why Choose Grid */
+.service-detail__why-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-8);
+}
+
+@media (min-width: 768px) {
+  .service-detail__why-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Benefits Grid */
+.service-detail__benefits-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-12);
+}
+
+@media (min-width: 768px) {
+  .service-detail__benefits-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Related Services Grid */
+.service-detail__related-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-8);
+}
+
+@media (min-width: 768px) {
+  .service-detail__related-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .service-detail__related-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Check icon */
+.service-detail__check-icon {
+  color: var(--primary);
+  flex-shrink: 0;
+  margin-top: var(--spacing-0-5);
+}
+
+/* Link reset for related cards */
+a.service-detail__related-card {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+/* ============================================
+   COMING SOON (Placeholder)
+   ============================================ */
+   
+.service-detail__coming-soon {
+  text-align: center;
+  padding: var(--spacing-12);
+  background-color: var(--card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  max-width: var(--max-w-3xl);
+  margin: 0 auto;
+}
+
+.service-detail__coming-soon-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2) var(--spacing-4);
+  background-color: var(--muted);
+  border-radius: var(--radius);
+  font-size: var(--text-small);
+  font-family: var(--font-secondary);
+  color: var(--muted-foreground);
+  margin-top: var(--spacing-6);
+}
+
+/* ============================================
+   STATS GRID
+   ============================================ */
+
+.service-detail__stats-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-6);
+}
+
+@media (min-width: 768px) {
+  .service-detail__stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .service-detail__stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

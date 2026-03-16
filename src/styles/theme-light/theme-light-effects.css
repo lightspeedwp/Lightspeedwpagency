@@ -1,0 +1,125 @@
+/**
+ * LSX Design System — Light Mode Theme (Effects)
+ *
+ * Sub-file 2/2 of theme-light.css
+ * Glassmorphism + Shadows + Charts + Gradients + Logo + Icon Tokens
+ *
+ * @requires theme-light-colors.css
+ */
+
+:root {
+  /* ============================================
+     GLASSMORPHISM EFFECTS (Light Mode)
+     ============================================ */
+  
+  /**
+   * Glass background (subtle)
+   * Usage: Glassmorphism cards, hero overlays
+   */
+  --glass-bg: color-mix(in srgb, var(--color-white) 60%, transparent);         /* Frosted glass base */
+  
+  /**
+   * Glass background (stronger)
+   * Usage: Prominent glass elements
+   */
+  --glass-bg-strong: color-mix(in srgb, var(--color-white) 85%, transparent);  /* Near opaque glass */
+  
+  /**
+   * Glass border color
+   * Usage: Borders on glass elements
+   */
+  --glass-border: color-mix(in srgb, var(--color-black) 8%, transparent);           /* Subtle border */
+  
+  /**
+   * Glass text color
+   * Usage: Text on glass backgrounds
+   */
+  --glass-text: #090909;                /* #090909 - Near black */
+  
+  
+  /* ============================================
+     SHADOW SYSTEM (Light Mode)
+     ============================================ */
+  
+  /**
+   * Shadows optimized for light backgrounds
+   */
+  --shadow-sm: 0 1px 3px color-mix(in srgb, var(--color-black) 5%, transparent);
+  --shadow-md: 0 4px 6px color-mix(in srgb, var(--color-black) 5%, transparent);
+  --shadow-lg: 0 10px 40px color-mix(in srgb, var(--color-black) 15%, transparent);
+  --shadow-xl: 0 20px 40px color-mix(in srgb, var(--color-black) 12%, transparent);
+  --shadow-primary: 0 4px 12px color-mix(in srgb, var(--primary) 30%, transparent);  /* Blue glow */
+  --shadow-hover: 0 8px 16px color-mix(in srgb, var(--color-black) 10%, transparent);
+  
+  /**
+   * Legacy elevation shadow (brutalist style)
+   * Usage: Buttons, cards with hard shadows
+   */
+  --elevation-sm: 4px 4px 0px 0px #090909;
+  
+  
+  /* ============================================
+     CHART COLORS (Light Mode)
+     ============================================ */
+  
+  /**
+   * Chart color palette (accessible, high contrast)
+   */
+  --chart-1: #1E6AFF;   /* #1E6AFF - Primary blue */
+  --chart-2: #7BE7FF;  /* #7BE7FF - Light cyan */
+  --chart-3: #0E3278;    /* #0E3278 - Dark blue */
+  --chart-4: #757575;  /* #757575 - Gray */
+  --chart-5: #565656;     /* #565656 - Dark gray */
+  
+  
+  /* ============================================
+     GRADIENTS (Light Mode)
+     ============================================ */
+  
+  --gradient-blue: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+  --gradient-purple: linear-gradient(135deg, #581c87 0%, #8b5cf6 100%);
+  --gradient-purple-light: linear-gradient(135deg, #7e22ce 0%, #a855f7 100%);
+  --gradient-purple-indigo: linear-gradient(135deg, #4c1d95 0%, #6366f1 100%);
+  --gradient-red: linear-gradient(135deg, #991b1b 0%, #ef4444 100%);
+  --gradient-green: linear-gradient(135deg, #14532d 0%, #22c55e 100%);
+  --gradient-amber: linear-gradient(135deg, #b45309 0%, #f59e0b 100%);
+  --gradient-cyan: linear-gradient(135deg, #155e75 0%, #06b6d4 100%);
+  --gradient-sky: linear-gradient(135deg, #0369a1 0%, #0ea5e9 100%);
+  --gradient-slate: linear-gradient(135deg, #334155 0%, #64748b 100%);
+  --gradient-violet: linear-gradient(135deg, #5b21b6 0%, #8b5cf6 100%);
+  --gradient-gold: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  --gradient-teal: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);
+  --gradient-pink: linear-gradient(135deg, #ec4899 0%, #f43f5e 100%);
+  
+  --color-gold: #ffd700;
+
+  /* ============================================
+     LOGO REFERENCE (Light Mode)
+     ============================================ */
+  
+  /**
+   * Logo for light mode uses DARK wordmark
+   * The Logo component automatically switches based on theme
+   * 
+   * Logo colors:
+   * - Icon: #127EFF (blue) - Lightning bolt
+   * - Wordmark: Dark (#090909) in light mode
+   * Brand rules: Blue bolt + black text (light mode)
+   */
+  --logo-wordmark-color: #090909;       /* Dark wordmark for light backgrounds */
+  --logo-icon-primary: #1D4ED8;    /* Blue bolt — matches primary */
+  --logo-icon-secondary: #1E6AFF;  /* Primary blue fill */
+
+  /* ============================================
+     ICON COLOR TOKENS (Light Mode)
+     ============================================ */
+
+  --icon-color-default: var(--foreground);
+  --icon-color-muted: var(--muted-foreground);
+  --icon-color-primary: var(--primary);
+  --icon-color-success: var(--success);
+  --icon-color-warning: var(--warning);
+  --icon-color-destructive: var(--destructive);
+  --icon-color-on-primary: var(--primary-foreground);
+  --icon-color-on-dark: var(--color-white);
+}

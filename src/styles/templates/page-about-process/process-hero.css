@@ -1,0 +1,126 @@
+/**
+ * About Process Page — Hero Section
+ *
+ * Full-viewport hero with blueprint grid overlay,
+ * glassmorphism badge, gradient title.
+ *
+ * @see /src/styles/templates/page-about-process.css (orchestrator)
+ */
+
+/* Hero Section */
+.about-process__hero {
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: var(--sidebar);
+}
+
+/* Blueprint grid overlay on hero */
+.about-process__hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--overlay-white-soft) 1px, transparent 1px),
+    linear-gradient(90deg, var(--overlay-white-soft) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.08;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.about-process__hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  object-fit: cover;
+  opacity: 0.4;
+  mix-blend-mode: luminosity;
+}
+
+.about-process__hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 0%, var(--sidebar) 100%);
+  z-index: 1;
+}
+
+.about-process__hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 64rem;
+}
+
+.about-process__hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2) var(--spacing-4);
+  background: var(--overlay-white-soft);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--overlay-white-subtle);
+  border-radius: var(--radius-full);
+  color: var(--color-white);
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--text-sm);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+  margin-bottom: var(--spacing-6);
+  box-shadow: var(--shadow-neon);
+  animation: process-badge-pulse 3s ease-in-out infinite;
+}
+
+@keyframes process-badge-pulse {
+  0%, 100% {
+    box-shadow: var(--shadow-neon);
+  }
+  50% {
+    box-shadow: var(--shadow-neon-intense);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-process__hero-badge {
+    animation: none;
+  }
+}
+
+.about-process__hero-badge-icon {
+  color: var(--primary);
+}
+
+.dark .about-process__hero-badge-icon {
+  color: var(--neon-color);
+}
+
+.about-process__hero-title {
+  font-family: var(--font-primary);
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  font-weight: var(--font-weight-black);
+  letter-spacing: var(--letter-spacing-tight);
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: var(--spacing-6);
+}
+
+.dark .about-process__hero-title {
+  filter: drop-shadow(0 0 12px color-mix(in srgb, var(--neon-color) 35%, transparent));
+}
+
+.about-process__hero-subtitle {
+  font-family: var(--font-secondary);
+  font-size: var(--text-xl);
+  line-height: var(--line-height-relaxed);
+  color: var(--overlay-white-heavy);
+  max-width: 60ch;
+  margin: 0 auto;
+}

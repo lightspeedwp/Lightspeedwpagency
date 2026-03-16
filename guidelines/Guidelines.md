@@ -1,7 +1,7 @@
 # LSX Design — Figma Make Prototype Guidelines
 
 **Category:** Core  
-**Version:** 5.2.0  
+**Version:** 5.4.0  
 **Last Updated:** 2026-03-15  
 **Status:** Active  
 **Template Used:** Canonical (no template — this IS the source of truth)
@@ -49,17 +49,28 @@ See **[prompt-triggers.md](./prompt-triggers.md)** for full details and behaviou
 | `sitemap` | Sync SiteMapTemplate with actual routes |
 | `process reports` | Organize, rename, archive reports |
 
-### Audits (7)
+### Audits (18)
 
 | Trigger | What It Does |
 |---|---|
+| `audit` | **Master orchestrator** — runs ALL audit sub-triggers sequentially |
+| `audit routes` | Route map completeness audit (writes report) |
+| `audit sitemap` | SiteMap vs routes diff audit (writes report) |
 | `audit tokens` | CSS variable compliance (zero hardcoded values) |
 | `audit css` | CSS architecture (imports, orphans, file sizes) |
-| `audit a11y` | WCAG 2.1 AA accessibility compliance |
+| `audit a11y` | WCAG 2.1 AA accessibility compliance (quick) |
 | `audit data` | Data file architecture (orphans, duplicates, types) |
 | `audit responsive` | Responsive design (breakpoints, mobile, touch) |
 | `audit styles` | Comprehensive styling audit (all of the above) |
 | `audit guidelines` | Guideline file standards (frontmatter, headings, size) |
+| `audit theme` | Light/dark mode token compliance and contrast |
+| `audit style` | Funky Neon design language compliance |
+| `audit webgl` | Canvas/WebGL inventory and integration safety |
+| `audit routing` | Route integrity, link validation, logo navigation |
+| `audit layout` | Visual integrity, containers, overflow, responsiveness |
+| `audit functionality` | UI state wiring, dead UI detection, interaction flows |
+| `audit accessibility` | Comprehensive WCAG 2.1 AA (focus, ARIA, touch targets) |
+| `audit performance` | Render performance, assets, animations, WebGL impact |
 
 ### Scaffolds (3)
 
@@ -92,13 +103,13 @@ See **[prompt-triggers.md](./prompt-triggers.md)** for full details and behaviou
 
 ### Root Directory — Only 3 Permitted `.md` Files
 
-| File | Purpose |
-|---|---|
-| `README.md` | Project README ([Readme-Guidelines.md](./Readme-Guidelines.md)) |
-| `CHANGELOG.md` | Project changelog ([Changelog-Guidelines.md](./Changelog-Guidelines.md)) |
-| `ATTRIBUTIONS.md` | License attributions |
+| File | Purpose | Protected |
+|---|---|---|
+| `README.md` | Project README ([Readme-Guidelines.md](./Readme-Guidelines.md)) | ✅ Never delete |
+| `CHANGELOG.md` | Project changelog ([Changelog-Guidelines.md](./Changelog-Guidelines.md)) | ✅ Never delete |
+| `ATTRIBUTIONS.md` | License attributions | ✅ Never delete |
 
-**NEVER create any other `.md` files in root.** All plans and tasks go in `/tasks/task-list.md`.
+**NEVER create any other `.md` files in root.** All plans and tasks go in `/tasks/task-list.md`. Any guideline `.md` files found in root MUST be moved to `/guidelines/`. Any other `.md` files should be moved to the correct folder or deleted during cleanup.
 
 ---
 
@@ -226,6 +237,9 @@ See **[prompt-triggers.md](./prompt-triggers.md)** for full details and behaviou
 
 | Version | Date | Changes |
 |---|---|---|
+| 5.4.0 | 2026-03-15 | Expanded audit triggers from 10 → 18. Added theme, style, webgl, routing, layout, functionality, accessibility, performance audits. Total triggers 23 → 31 |
+| 5.3.0 | 2026-03-15 | Expanded audit triggers from 7 → 10 (`audit` orchestrator, `audit routes`, `audit sitemap`). Updated trigger count 20 → 23 |
+| 5.2.1 | 2026-03-15 | Added Protected column to root .md table, strengthened cleanup language for root enforcement |
 | 5.2.0 | 2026-03-15 | Expanded trigger table from 4 → 20 triggers across 5 categories |
 | 5.1.0 | 2026-03-15 | Slimmed from 329 to ~210 lines. Moved prompt workflow to prompts.md, task management to housekeeping.md, file size rules to build-rules.md, markdown rules to writing-guidelines.md |
 | 5.0.0 | 2026-03-15 | Major rewrite: task management, root file restrictions, prompt workflow, file size guidelines |

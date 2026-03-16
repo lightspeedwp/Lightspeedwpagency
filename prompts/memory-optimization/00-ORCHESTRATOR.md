@@ -974,7 +974,7 @@ grep -rh "^\\.\" src/styles/ | sort | uniq -c | sort -rn | awk '$1 > 1'
 - **[WordPress Blocks CSS Architecture](/guidelines/WORDPRESS-BLOCKS-CSS-ARCHITECTURE.md)** — WordPress CSS
 - **[Performance Standards](/guidelines/PERFORMANCE-STANDARDS.md)** — Performance targets
 - **[Component Overview](/guidelines/overview-components.md)** — Component system
-- **[Sitemap Overview](/guidelines/overview-sitemap.md)** — Site structure
+- **[Sitemap Overview](/guidelines/routes.md)** — Site structure
 
 ### Workflow Documentation
 - **[Prompt Generation Guidelines](/guidelines/prompts/prompt-generation-guidelines.md)** — How to create prompts

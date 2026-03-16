@@ -1,6 +1,6 @@
 # LSX Design — General Task List
 
-**Last Updated:** March 15, 2026
+**Last Updated:** March 16, 2026
 
 ## 🎉 ALL DEPLOYMENT BLOCKERS FIXED — READY FOR DEPLOYMENT!
 
@@ -110,24 +110,107 @@
 
 ---
 
-## Current Focus (March 15, 2026)
+## Current Focus (March 16, 2026)
 
-**Active:** Comprehensive trigger word system complete — v5.2 shipped
-**Status:** Trigger System v5.2 ✅ COMPLETE (March 15, 2026) — Expanded from 4 → 20 registered triggers across 5 categories. Created 15 new prompt files (workflow, audit, scaffold, release). Rewrote prompt-triggers.md (v4.0). Updated Guidelines.md (v5.2) and prompts.md (v2.1).
+**Active:** `continue` — Root-level CSS splitting
+**Status:** Root-level CSS file size optimization (March 16, 2026):
+
+**CSS File Size Optimization (C3.1j — 400-690 line batch): 32/32 COMPLETE**
+- ✅ Split solution-base.css (647→19 lines orchestrator + 3 sub-files)
+- ✅ Split systems-hub-template.css (646→19 lines orchestrator + 3 sub-files)
+- ✅ Split roi-calculator.css (642→16 lines orchestrator + 2 sub-files)
+- ✅ Split testimonial-single.css (639→15 lines orchestrator + 2 sub-files)
+- ✅ Split micro-interactions.css (610→15 lines orchestrator + 2 sub-files)
+- ✅ Split global-search.css (600→16 lines orchestrator + 2 sub-files)
+- (Plus 25 previously completed splits: blog-base, advanced-animations, hero-home, etc.)
+
+**CSS File Size Optimization P3 — 400-600 line batch (continued):**
+- ✅ Split feature-list.css (549→orchestrator + 2 sub-files)
+- ✅ Split stats-proven-track.css (545→orchestrator + 2 sub-files)
+- ✅ Split service-pages-shared.css (534→orchestrator + 2 sub-files)
+- ✅ Split mailchimp-solution-page-optimized.css (558→orchestrator + 2 sub-files)
+- ✅ Split design-playground.css (previously completed — orchestrator + 3 sub-files)
+- ✅ Split dev-tools.css (previously completed — orchestrator + 3 sub-files)
+- ✅ Split post-card.css (previously completed — orchestrator + 2 sub-files)
+- ✅ Split solutions-page.css (479→orchestrator + 2 sub-files)
+- ✅ Split testimonials-page.css (464→orchestrator + 2 sub-files)
+- ✅ Split page-faq.css (452→orchestrator + 2 sub-files)
+- ✅ Split content-strategy-service-optimized.css (474→orchestrator + 2 sub-files)
+- ✅ Split accessibility-service-optimized.css (453→orchestrator + 2 sub-files)
+- 7 orphan duplicate sub-files cleaned up from overlapping sessions
+- [x] Split answer-engine-service-optimized.css (506→orchestrator + 2 sub-files)
+- [x] Split page-service-training-optimized.css (512→orchestrator + 2 sub-files)
+- [x] Split single-post-page.css (401→orchestrator + 2 sub-files)
+- [x] Split system-page-shared.css (426→orchestrator + 2 sub-files)
+- [x] Split code-quality-dashboard.css (470→orchestrator + 2 sub-files)
+- [x] Split deployment-readiness.css (484→orchestrator + 2 sub-files)
+- [x] Split media-archive-base.css (427→orchestrator + 2 sub-files)
+
+**CSS P3 400-600 template batch: 19/19 COMPLETE — Zero template CSS files over 400 lines remain**
+
+**Root-level CSS File Size Optimization (March 16, 2026): 7/7 COMPLETE**
+- [x] Split responsive.css (572→orchestrator + 2 sub-files: responsive-mobile.css, responsive-desktop.css)
+- [x] Split theme-dark.css (545→orchestrator + 2 sub-files: theme-dark-colors.css, theme-dark-effects.css)
+- [x] Split theme-light.css (535→orchestrator + 2 sub-files: theme-light-colors.css, theme-light-effects.css)
+- [x] Split components.css (510→orchestrator + 2 sub-files: components-layout.css, components-ui.css)
+- [x] Split theme-base.css (471→orchestrator + 2 sub-files: theme-base-typography-spacing.css, theme-base-visual-system.css)
+- [x] Split wordpress-blocks-extended.css (451→orchestrator + 2 sub-files: wp-post-content-author.css, wp-related-category-pagination.css)
+- [x] Split wordpress-blocks.css (443→orchestrator + 2 sub-files: wp-blocks-containers.css, wp-blocks-patterns.css)
+- ℹ️ theme.css (437 lines) — Already an import orchestrator, no split needed
+
+**Milestone: Zero root-level CSS files over 400 lines remain (excluding import orchestrators)**
+
+**Non-root CSS File Size Optimization P5 (March 16, 2026): 10/10 COMPLETE**
+- [x] Split pages/sitemap.css (481→orchestrator + 2 sub-files: sitemap-layout.css, sitemap-states.css)
+- [x] Split blocks/theme/site-footer-content.css (474→orchestrator + 2 sub-files: footer-content-main.css, footer-content-bottom.css)
+- [x] Split blocks/theme/site-header-mobile.css (465→orchestrator + 2 sub-files: mobile-toggle-menu.css, mobile-submenu-cta.css)
+- [x] Split patterns/service-case-studies.css (464→orchestrator + 2 sub-files: case-studies-cards.css, case-studies-states.css)
+- [x] Split templates/site-map.css (457→orchestrator + 2 sub-files: site-map-hero-nav.css, site-map-links-stats.css)
+- [x] Split base/glass-effect-base.css (444→orchestrator + 2 sub-files: glass-core.css, glass-themes.css)
+- [x] Split patterns/hero/hero-variants.css (442→orchestrator + 2 sub-files: hero-variants-primary.css, hero-variants-secondary.css)
+- [x] Split base/card-base.css (442→orchestrator + 2 sub-files: card-base-structure.css, card-base-content.css)
+- [x] Split blocks/theme/site-header-desktop.css (429→orchestrator + 2 sub-files: desktop-nav-mega.css, desktop-journey-mega.css)
+- [x] Split patterns/query-loop.css (404→orchestrator + 2 sub-files: query-loop-base.css, query-loop-variants.css)
+
+**Milestone: Zero CSS files over 400 lines remain across entire codebase (excluding import orchestrators)**
+
+**Cleanup findings (1 fix):**
+- ✅ Fixed `#7BE7FF` hardcoded fallback in TourOperatorSolutionsTemplate.tsx → `var(--secondary)`
+- ✅ Fixed hardcoded `0.3s` in scroll-down.css → `var(--transition-base)`
+
+**Continue tasks completed (4 tasks):**
+- ✅ A1.2: Added global `:focus-visible` ring to `resets.css` — covers all interactive elements with `var(--ring)`, `:focus:not(:focus-visible)` suppression, `prefers-reduced-motion` guard
+- ✅ A1.3: Added `aria-live="polite" aria-atomic="true"` to SnippetGeneratorTemplate code output + ComplianceScorecard score card
+- ✅ A1.4: Verified terminal colour contrast ratios — all pass WCAG AA 4.5:1 (green 8.57:1, red 6.38:1, comment 6.20:1)
+- ✅ A1.5: Verified scroll-down.css reduced-motion — confirmed complete
+
+**Milestone: A11y task list 9/9 COMPLETE (0 open)**
+**Milestone: Tokens task list 13/13 COMPLETE (0 open)**
+
+**Remaining open task lists:** CSS (0 open — all batches complete), Routes (2 open — S2.1 content decision + hardcoded link migration P4)
 
 ---
 
 ## Next Actions
 
-**Remaining Backlog (P4 — Low Priority):**
-1. P4.1 — Audit QueryLoop patterns (13 → 7), high effort (2-3 sessions)
-2. [x] ~~P4.3 Phase 2 — CSS Import Optimization~~ ✅ COMPLETE (March 15, 2026)
-3. [x] ~~Documentation Overhaul — Guidelines v5.0~~ ✅ COMPLETE (March 15, 2026)
-4. [x] ~~Guidelines Modularization — v5.1~~ ✅ COMPLETE (March 15, 2026)
-5. [x] ~~Comprehensive Trigger System — v5.2~~ ✅ COMPLETE (March 15, 2026)
-6. - [ ] Run `audit guidelines` to verify all guideline files conform to frontmatter and heading standards
-7. - [ ] Run `cleanup guidelines` to merge duplicates and deprecate outdated files
+**Recommended execution order (type `continue` to start):**
+1. ~~**T2.4** — Add code syntax CSS variables to theme-base.css~~ ✅ COMPLETE
+2. ~~**T2.1** — Fix WordPressSolutionTemplate hardcoded colors~~ ✅ COMPLETE
+3. ~~**T2.2** — Fix PerformanceServiceTemplate hardcoded colors~~ ✅ COMPLETE
+4. ~~**T1.1** — Fix WooCommerceSolutionTemplate `#0d1117`~~ ✅ COMPLETE
+5. ~~**A1.1** — Add `prefers-reduced-motion` to scroll-down.css~~ ✅ COMPLETE
+6. ~~**R2.7** — Update routes.md guideline~~ ✅ COMPLETE
+7. ~~**R3.1** — Split core.routes.tsx~~ ✅ COMPLETE (extracted solutions.routes.tsx)
+8. ~~**S3.1** — Fix stale overview-sitemap.md references~~ ✅ COMPLETE (7 files + 4 data files)
+9. ~~**R3.2** — Footer nav review~~ ✅ RESOLVED (no issue found)
+10. ~~**R3.3** — Hardcoded link scan~~ ✅ AUDITED (128 links found — P4 migration)
+11. **S2.1** — Decide SiteMap utility pages (content decision — needs user input)
+12. **G1.1** — Run `cleanup guidelines` (split oversized files) — ✅ **COMPLETE** (March 15, 2026). **All 18 oversized guideline files split.** Deleted 8 duplicate originals after user renamed sub-files. **Files split:** colors.md (1344→hub + 4 sub-files, patterns hub further split to 2 sub-files), performance.md (863→hub + 3), data-files.md (775→hub + 3), token-examples.md (629→2 sub-files), spacing.md (622→hub + 2), reporting.md (576→hub + 2), imports.md (549→hub + 2), components-vs-patterns.md (525→hub + 2), non-block-components.md (492→hub + 2), wordpress-mapping.md (489→hub + 2), pattern-catalog.md (486→hub + 3), css-variables-overview.md (471→hub + 3), page-archetypes.md (434→hub + 2), qa-checklist.md (412→hub + 2), accessibility.md (406→hub + 2), _templates.md (382→hub + 2), build-rules.md (362→hub + 2, user-split), colors-patterns.md (389→hub + 2). Template scaffold files (_templates/*-template.md) excluded from split rule. Zero oversized guideline files remain.
+13. **C4.4** — Phase 4.4: Industry + Specialty Pages CSS Optimization — ✅ **COMPLETE** (March 15, 2026). **6 oversized CSS files split into orchestrator + sub-files:** why-choose-us.css (571→14 lines orchestrator + 3 sub-files), careers-page.css (547→14 lines orchestrator + 3 sub-files), publishers-page.css (536→13 lines orchestrator + 3 sub-files), guarantees.css (519→12 lines orchestrator + 3 sub-files), page-legal.css (469→12 lines orchestrator + 3 sub-files), service-pricing-timeline.css (431→13 lines orchestrator + 2 sub-files). **Total: 17 new sub-files created, ~3,073 lines redistributed.** 100% CSS variable compliance maintained.
+
+**Remaining Backlog (P3 — Low Priority):**
+1. P4.1 — ✅ **COMPLETE** (March 16, 2026) — QueryLoop pattern consolidation (12 → 7 files). Merged Audio+Video+Chat+Gallery → QueryLoopMedia.tsx, Services+Solutions → QueryLoopOfferings.tsx, Portfolio absorbed into QueryLoopPosts.tsx. 7 files deleted, 2 new files created, backward-compatible aliases exported. Report: `/reports/2026-03/queryloop-consolidation-audit.md`
 
 **Other Potential Work:**
-8. Phase 4.4 — Industry + Specialty Pages CSS Optimization (publishers, tour-operators, pricing, guarantees, careers, legal)
+8. [x] ~~Phase 4.4 — Industry + Specialty Pages CSS Optimization~~ ✅ COMPLETE (March 15, 2026) — 6 CSS files split (why-choose-us, careers, publishers, guarantees, page-legal, service-pricing-timeline)
 9. Deploy to Figma Make and verify all routes

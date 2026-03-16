@@ -4,7 +4,7 @@
  * Re-exports all site page data, types, navigation, and helpers.
  * Import from this module: `import { sitePages, mainNavigation } from '../data/site-pages';`
  *
- * @see /guidelines/overview-sitemap.md
+ * @see /guidelines/routes.md
  */
 
 export type { SitePage } from './types';

@@ -1,0 +1,283 @@
+/**
+ * Solution Detail — Hero & Overview
+ *
+ * Hero with mesh grid, gradient orbs, neon badge,
+ * overview section with benefits list and pricing sidebar.
+ *
+ * @see /src/styles/templates/solution-detail.css (orchestrator)
+ */
+
+/* ============================================
+   HERO — Uses hero-base
+   ============================================ */
+
+.solution-detail__hero {
+  /* Extends hero-base */
+}
+
+/* Solution-specific mesh grid background */
+.solution-detail__hero-mesh {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--primary) 6%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--primary) 6%, transparent) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+
+/* Gradient orbs (solution-specific positions) */
+.solution-detail__hero-orb {
+  position: absolute;
+  border-radius: var(--radius-full);
+  filter: blur(100px);
+  pointer-events: none;
+}
+
+.solution-detail__hero-orb--1 {
+  top: -10%;
+  right: -5%;
+  width: 30rem;
+  height: 30rem;
+  background: radial-gradient(circle, color-mix(in srgb, var(--primary) 20%, transparent), transparent 70%);
+}
+
+.solution-detail__hero-orb--2 {
+  bottom: -15%;
+  left: -10%;
+  width: 24rem;
+  height: 24rem;
+  background: radial-gradient(circle, color-mix(in srgb, var(--accent, var(--primary)) 15%, transparent), transparent 70%);
+}
+
+.solution-detail__hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 56rem;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-6);
+}
+
+/* Neon badge */
+.solution-detail__hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-1-5) var(--spacing-4);
+  border-radius: var(--radius-full);
+  background: color-mix(in srgb, var(--primary) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--primary) 25%, transparent);
+  color: var(--primary);
+  font-family: var(--font-secondary);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+}
+
+.solution-detail__badge-pulse {
+  animation: sd-pulse 2s ease-in-out infinite;
+}
+
+@keyframes sd-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .solution-detail__badge-pulse {
+    animation: none;
+  }
+}
+
+.solution-detail__hero-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h1);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+  color: var(--foreground);
+  margin: 0;
+}
+
+.solution-detail__hero-tagline {
+  font-family: var(--font-primary);
+  font-size: var(--text-xl);
+  line-height: var(--line-height-normal);
+  color: var(--muted-foreground);
+  max-width: 700px;
+  margin: 0;
+}
+
+.solution-detail__hero-actions {
+  display: flex;
+  gap: var(--spacing-4);
+  flex-wrap: wrap;
+}
+
+/* ============================================
+   OVERVIEW
+   ============================================ */
+
+.solution-detail__overview-section {
+  background-color: var(--background);
+}
+
+.solution-detail__overview-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-12);
+}
+
+@media (min-width: 1024px) {
+  .solution-detail__overview-grid {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+.solution-detail__section-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+  margin: 0 0 var(--spacing-6) 0;
+  position: relative;
+  display: inline-block;
+}
+
+.solution-detail__section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), color-mix(in srgb, var(--primary) 60%, var(--accent, var(--primary))));
+  border-radius: var(--radius-full);
+  opacity: 0.7;
+}
+
+.solution-detail__description {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  line-height: var(--line-height-relaxed);
+  color: var(--muted-foreground);
+  margin: 0 0 var(--spacing-8) 0;
+}
+
+.solution-detail__subsection-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h4);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+  margin: 0 0 var(--spacing-4) 0;
+}
+
+.solution-detail__benefits-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.solution-detail__benefit-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-3);
+}
+
+.solution-detail__check-icon {
+  color: var(--success);
+  flex-shrink: 0;
+  margin-top: calc(var(--spacing-1) / 2);
+}
+
+.solution-detail__benefit-text {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  color: var(--foreground);
+  line-height: var(--line-height-normal);
+}
+
+/* Pricing Sidebar */
+.solution-detail__pricing-sidebar {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-8);
+  position: sticky;
+  top: var(--spacing-8);
+  box-shadow: 0 0 20px color-mix(in srgb, var(--primary) 10%, transparent);
+}
+
+.solution-detail__sidebar-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h3);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+  margin: 0 0 var(--spacing-6) 0;
+  padding-bottom: var(--spacing-4);
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.solution-detail__sidebar-item {
+  margin-bottom: var(--spacing-4);
+}
+
+.solution-detail__sidebar-label {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+  margin-bottom: var(--spacing-1);
+}
+
+.solution-detail__sidebar-value {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  color: var(--foreground);
+  margin: 0;
+}
+
+/* Gradient price */
+.solution-detail__price-value {
+  font-family: var(--font-primary);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-weight-bold);
+  background: linear-gradient(135deg, var(--primary), color-mix(in srgb, var(--primary) 60%, var(--accent, var(--primary))));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+}
+
+.solution-detail__includes-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.solution-detail__include-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.solution-detail__include-text {
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  color: var(--foreground);
+}

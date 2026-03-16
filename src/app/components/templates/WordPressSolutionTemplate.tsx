@@ -264,7 +264,7 @@ export function WordPressSolutionTemplate() {
                   <div 
                     style={{
                       position: 'relative',
-                      backgroundColor: '#0d1117', // Terminal dark background
+                      backgroundColor: 'var(--terminal-bg)',
                       borderRadius: 'var(--radius-lg)',
                       border: '1px solid var(--border-soft)',
                       boxShadow: 'var(--shadow-2xl), 0 0 20px var(--primary-soft)',
@@ -276,19 +276,19 @@ export function WordPressSolutionTemplate() {
                     <div 
                       className="wp-flex wp-items-center wp-justify-between wp-px-4 wp-py-3"
                       style={{
-                        backgroundColor: '#161b22',
-                        borderBottom: '1px solid #30363d'
+                        backgroundColor: 'var(--terminal-header-bg)',
+                        borderBottom: '1px solid var(--terminal-border)'
                       }}
                     >
                       <div className="wp-flex wp-gap-2">
-                        <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#ff5f56' }} />
-                        <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#ffbd2e' }} />
-                        <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#27c93f' }} />
+                        <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: 'var(--color-terminal-red)' }} />
+                        <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: 'var(--color-terminal-yellow)' }} />
+                        <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: 'var(--color-terminal-green)' }} />
                       </div>
                       <div style={{
                         fontFamily: 'var(--font-secondary)',
                         fontSize: 'var(--text-xs)',
-                        color: '#8b949e'
+                        color: 'var(--syntax-comment)'
                       }}>
                         /src/wp-config.php
                       </div>
@@ -299,26 +299,26 @@ export function WordPressSolutionTemplate() {
                     <div className="wp-p-6" style={{ overflowX: 'auto' }}>
                       <pre style={{ margin: 0, padding: 0 }}>
                         <code style={{
-                          fontFamily: 'monospace',
+                          fontFamily: 'var(--font-mono)',
                           fontSize: 'var(--text-sm)',
                           lineHeight: '1.6',
-                          color: '#e6edf3'
+                          color: 'var(--terminal-text)'
                         }}>
-<span style={{ color: '#ff7b72' }}>&lt;?php</span>
-<span style={{ color: '#8b949e', fontStyle: 'italic' }}>// LSX Design System Configuration</span>
+<span style={{ color: 'var(--syntax-keyword)' }}>&lt;?php</span>
+<span style={{ color: 'var(--syntax-comment)', fontStyle: 'italic' }}>// LSX Design System Configuration</span>
 
-<span style={{ color: '#d2a8ff' }}>define</span>(<span style={{ color: '#a5d6ff' }}>'WP_CACHE'</span>, <span style={{ color: '#79c0ff' }}>true</span>);
-<span style={{ color: '#d2a8ff' }}>define</span>(<span style={{ color: '#a5d6ff' }}>'WP_ENVIRONMENT_TYPE'</span>, <span style={{ color: '#a5d6ff' }}>'production'</span>);
+<span style={{ color: 'var(--syntax-function)' }}>define</span>(<span style={{ color: 'var(--syntax-string)' }}>'WP_CACHE'</span>, <span style={{ color: 'var(--syntax-variable)' }}>true</span>);
+<span style={{ color: 'var(--syntax-function)' }}>define</span>(<span style={{ color: 'var(--syntax-string)' }}>'WP_ENVIRONMENT_TYPE'</span>, <span style={{ color: 'var(--syntax-string)' }}>'production'</span>);
 
-<span style={{ color: '#8b949e', fontStyle: 'italic' }}>// Performance Settings</span>
-<span style={{ color: '#79c0ff' }}>$performance</span> <span style={{ color: '#ff7b72' }}>=</span> [
-  <span style={{ color: '#a5d6ff' }}>'caching'</span> <span style={{ color: '#ff7b72' }}>=&gt;</span> <span style={{ color: '#a5d6ff' }}>'redis'</span>,
-  <span style={{ color: '#a5d6ff' }}>'loading'</span> <span style={{ color: '#ff7b72' }}>=&gt;</span> <span style={{ color: '#a5d6ff' }}>'lazy'</span>,
-  <span style={{ color: '#a5d6ff' }}>'vitals'</span>  <span style={{ color: '#ff7b72' }}>=&gt;</span> <span style={{ color: '#a5d6ff' }}>'optimized'</span>
+<span style={{ color: 'var(--syntax-comment)', fontStyle: 'italic' }}>// Performance Settings</span>
+<span style={{ color: 'var(--syntax-variable)' }}>$performance</span> <span style={{ color: 'var(--syntax-operator)' }}>=</span> [
+  <span style={{ color: 'var(--syntax-string)' }}>'caching'</span> <span style={{ color: 'var(--syntax-operator)' }}>=&gt;</span> <span style={{ color: 'var(--syntax-string)' }}>'redis'</span>,
+  <span style={{ color: 'var(--syntax-string)' }}>'loading'</span> <span style={{ color: 'var(--syntax-operator)' }}>=&gt;</span> <span style={{ color: 'var(--syntax-string)' }}>'lazy'</span>,
+  <span style={{ color: 'var(--syntax-string)' }}>'vitals'</span>  <span style={{ color: 'var(--syntax-operator)' }}>=&gt;</span> <span style={{ color: 'var(--syntax-string)' }}>'optimized'</span>
 ];
 
-<span style={{ color: '#8b949e', fontStyle: 'italic' }}>// Initialize Security</span>
-<span style={{ color: '#d2a8ff' }}>lsx_init_security</span>(<span style={{ color: '#79c0ff' }}>$performance</span>);
+<span style={{ color: 'var(--syntax-comment)', fontStyle: 'italic' }}>// Initialize Security</span>
+<span style={{ color: 'var(--syntax-function)' }}>lsx_init_security</span>(<span style={{ color: 'var(--syntax-variable)' }}>$performance</span>);
                         </code>
                       </pre>
                     </div>

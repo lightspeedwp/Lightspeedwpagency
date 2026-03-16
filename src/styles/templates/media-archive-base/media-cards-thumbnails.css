@@ -1,0 +1,170 @@
+/**
+ * Media Archive Base — Stripe + Grid + Card Structure + Thumbnails
+ *
+ * Sub-file 1/2 of media-archive-base.css
+ * BEM: .media-card, .video-archive, .podcast-archive
+ */
+
+/* ============================================
+   ANIMATED GRADIENT STRIPE — MEDIA
+   ============================================ */
+
+@keyframes mediaArchiveStripe {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+/* ============================================
+   MEDIA GRID — RESPONSIVE 1-2-3 COLUMNS
+   ============================================ */
+
+.media-archive__grid,
+.video-archive__grid,
+.podcast-archive__list {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: var(--spacing-8);
+}
+
+@media (min-width: 768px) {
+  .media-archive__grid,
+  .video-archive__grid,
+  .podcast-archive__list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .media-archive__grid,
+  .video-archive__grid,
+  .podcast-archive__list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Podcast list uses smaller gap */
+@media (min-width: 768px) {
+  .podcast-archive__list {
+    gap: var(--spacing-6);
+  }
+}
+
+/* ============================================
+   GLASSMORPHISM MEDIA CARD — BASE STRUCTURE
+   ============================================ */
+
+.media-card,
+.video-archive__card,
+.podcast-archive__card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: var(--foreground);
+  transition: transform var(--transition-slow) var(--ease-out);
+}
+
+/* Video cards have full glassmorphism wrapper */
+.video-archive__card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition:
+    transform var(--transition-slow) var(--ease-out),
+    box-shadow var(--transition-slow) var(--ease-out),
+    border-color var(--transition-base) var(--ease-out);
+}
+
+/* Podcast cards are simpler (no full wrapper) */
+.podcast-archive__card {
+  gap: var(--spacing-4);
+}
+
+/* Animated gradient top stripe */
+.video-archive__card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
+  background-size: 200% 100%;
+  animation: mediaArchiveStripe 4s linear infinite;
+  z-index: 2;
+}
+
+/* Hover lift */
+.media-card:hover,
+.video-archive__card:hover,
+.podcast-archive__card:hover {
+  transform: translateY(-4px);
+}
+
+.video-archive__card:hover {
+  box-shadow: 0 0 20px color-mix(in srgb, var(--primary) 15%, transparent);
+  border-color: color-mix(in srgb, var(--primary) 30%, transparent);
+}
+
+/* ============================================
+   MEDIA THUMBNAILS & ARTWORK — NEON BORDERS
+   ============================================ */
+
+.video-archive__thumbnail {
+  position: relative;
+  aspect-ratio: 16/9;
+  background-color: var(--muted);
+  overflow: hidden;
+}
+
+.video-archive__thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slower) var(--ease-out);
+}
+
+.video-archive__card:hover .video-archive__thumbnail img {
+  transform: scale(1.05);
+}
+
+.podcast-archive__artwork,
+.single-podcast__cover {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1/1;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background-color: var(--muted);
+  border: 2px solid color-mix(in srgb, var(--primary) 20%, transparent);
+  transition:
+    border-color var(--transition-base) var(--ease-out),
+    box-shadow var(--transition-base) var(--ease-out);
+}
+
+.single-podcast__cover {
+  max-width: 200px;
+  box-shadow: var(--shadow-md);
+  border-color: color-mix(in srgb, var(--primary) 25%, transparent);
+}
+
+.podcast-archive__card:hover .podcast-archive__artwork,
+.single-podcast__cover:hover {
+  border-color: color-mix(in srgb, var(--primary) 40%, transparent);
+  box-shadow: 0 0 16px color-mix(in srgb, var(--primary) 15%, transparent);
+}
+
+.podcast-archive__artwork img,
+.single-podcast__cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slower) var(--ease-out);
+}
+
+.podcast-archive__card:hover .podcast-archive__artwork img {
+  transform: scale(1.05);
+}

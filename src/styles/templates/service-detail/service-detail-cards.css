@@ -1,0 +1,222 @@
+/**
+ * Service Detail — Card Components
+ * 
+ * Stat cards, feature cards, process cards, and package/sub-service cards.
+ * 100% CSS variables, BEM naming.
+ * 
+ * @see /src/styles/templates/service-detail.css (orchestrator)
+ */
+
+/* ============================================
+   STAT CARDS
+   ============================================ */
+
+.service-detail__stat-card {
+  background-color: var(--card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-8);
+  text-align: center;
+  transition: transform var(--transition-base) ease, box-shadow var(--transition-base) ease;
+}
+
+.service-detail__stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.service-detail__stat-icon {
+  color: var(--primary);
+  margin-bottom: var(--spacing-4);
+}
+
+.service-detail__stat-value {
+  font-family: var(--font-primary);
+  font-size: var(--text-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--primary);
+  margin-bottom: var(--spacing-2);
+}
+
+.service-detail__stat-label {
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-2);
+}
+
+.service-detail__stat-desc {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-normal);
+  margin: 0;
+}
+
+/* ============================================
+   FEATURE CARDS
+   ============================================ */
+
+.service-detail__features-section {
+  background-color: var(--background);
+}
+
+.service-detail__feature-card {
+  background-color: var(--card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-8);
+  transition: transform var(--transition-base) ease, box-shadow var(--transition-base) ease;
+}
+
+.service-detail__feature-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.service-detail__feature-icon-wrapper {
+  width: var(--spacing-14);
+  height: var(--spacing-14);
+  background-color: var(--primary-soft);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--spacing-4);
+}
+
+.service-detail__feature-icon {
+  color: var(--primary);
+}
+
+.service-detail__feature-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-3);
+}
+
+.service-detail__feature-desc {
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-normal);
+  margin: 0;
+}
+
+/* ============================================
+   PROCESS CARDS
+   ============================================ */
+
+.service-detail__process-card {
+  background-color: var(--card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-8);
+  transition: transform var(--transition-base) ease, box-shadow var(--transition-base) ease;
+}
+
+.service-detail__process-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.service-detail__process-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--spacing-10);
+  height: var(--spacing-10);
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border-radius: var(--radius-full);
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-4);
+}
+
+.service-detail__process-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-3);
+}
+
+.service-detail__process-desc {
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-normal);
+  margin: 0;
+}
+
+/* ============================================
+   PACKAGE / SUB-SERVICE CARDS
+   ============================================ */
+
+.service-detail__package-card {
+  background-color: var(--card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-8);
+  transition: transform var(--transition-base) ease, box-shadow var(--transition-base) ease;
+}
+
+.service-detail__package-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.service-detail__service-icon-wrapper {
+  width: var(--spacing-14);
+  height: var(--spacing-14);
+  background-color: var(--primary-soft);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--spacing-4);
+  color: var(--primary);
+}
+
+.service-detail__service-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-3);
+}
+
+.service-detail__service-desc {
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-normal);
+  margin-bottom: var(--spacing-6);
+}
+
+.service-detail__feature-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.service-detail__feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-3);
+}
+
+.service-detail__feature-text {
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  color: var(--foreground);
+  line-height: var(--line-height-normal);
+}

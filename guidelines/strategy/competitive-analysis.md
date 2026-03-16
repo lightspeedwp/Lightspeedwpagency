@@ -1,5 +1,13 @@
 # Competitive Landscape Summary
 
+**Category:** Strategy  
+**Version:** 1.0.0  
+**Last Updated:** 2026-03-15  
+**Status:** Active  
+**Template Used:** _templates/general-template.md
+
+---
+
 ## AI builders and AI-assisted site platforms
 
 Major platforms market AI-assisted section generation and workflow acceleration; this compresses perceived value of page assembly.

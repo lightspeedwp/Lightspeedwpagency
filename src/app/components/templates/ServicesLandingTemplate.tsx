@@ -761,7 +761,7 @@ export function ServicesLandingTemplate() {
                     color: 'var(--primary)',
                     fontFamily: 'monospace',
                     fontSize: 'var(--text-xs)',
-                    fontWeight: 'bold',
+                    fontWeight: 'var(--font-weight-bold)',
                     letterSpacing: '0.1em',
                     marginBottom: 'var(--spacing-6)'
                   }}>

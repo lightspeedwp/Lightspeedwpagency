@@ -1,0 +1,203 @@
+/**
+ * Answer Engine Service — Imports + Variables + Decorative + Bubbles + Knowledge Graph
+ *
+ * Sub-file 1/2 of answer-engine-service-optimized.css
+ * BEM: .answer-engine-service
+ */
+
+/* ============================================
+   IMPORT SERVICE BASE (Phase 3.2)
+   ============================================ */
+
+@import '../service-base.css';
+
+/* ============================================
+   ANSWER ENGINE THEME VARIABLES
+   ============================================ */
+
+.answer-engine-service__hero,
+.answer-engine-service__benefits,
+.answer-engine-service__features,
+.answer-engine-service__process,
+.answer-engine-service__cta {
+  /* Map theme colors to category colors */
+  --primary: var(--category-cyan);    /* Knowledge/Information */
+  --secondary: var(--category-green); /* Answers/Solutions */
+  --accent: var(--category-purple);   /* Intelligence/Search */
+  
+  /* Answer Engine-specific variables */
+  --answer-glow: 0 0 20px color-mix(in srgb, var(--primary) 20%, transparent);
+  --answer-gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+}
+
+/* Dark mode overrides */
+.dark .answer-engine-service__hero,
+.dark .answer-engine-service__benefits,
+.dark .answer-engine-service__features,
+.dark .answer-engine-service__process,
+.dark .answer-engine-service__cta {
+  /* Glass variables already responsive to dark mode */
+}
+
+/* ============================================
+   UNIQUE DECORATIVE ELEMENTS (Q&A Theme)
+   ============================================ */
+
+/* Question Mark Pattern (Override base hero::before) */
+.answer-engine-service__hero::before {
+  background-image:
+    radial-gradient(circle at 20% 30%, color-mix(in srgb, var(--primary) 8%, transparent), transparent 30%),
+    radial-gradient(circle at 80% 70%, color-mix(in srgb, var(--secondary) 6%, transparent), transparent 30%),
+    radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--accent) 5%, transparent), transparent 40%);
+  opacity: 0.4;
+}
+
+/* Floating Question Marks */
+.answer-engine-service__question-marks {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.answer-engine-service__question-mark {
+  position: absolute;
+  font-family: var(--font-primary);
+  font-size: var(--text-6xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--primary);
+  opacity: 0.05;
+  animation: questionFloat 20s linear infinite;
+}
+
+@keyframes questionFloat {
+  0% { transform: translateY(100vh) rotate(0deg); }
+  100% { transform: translateY(-100vh) rotate(360deg); }
+}
+
+/* ============================================
+   Q&A CONVERSATION BUBBLES
+   ============================================ */
+
+.answer-engine-service__conversation {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  max-width: 600px;
+  margin: 0 auto var(--spacing-8);
+}
+
+.answer-engine-service__bubble {
+  display: flex;
+  gap: var(--spacing-3);
+  padding: var(--spacing-4);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  position: relative;
+  transition: transform 0.2s ease;
+}
+
+.answer-engine-service__bubble--question {
+  align-self: flex-start;
+  border-left: 4px solid var(--primary);
+}
+
+.answer-engine-service__bubble--answer {
+  align-self: flex-end;
+  border-right: 4px solid var(--secondary);
+  background: color-mix(in srgb, var(--secondary) 5%, var(--card));
+}
+
+.answer-engine-service__bubble:hover {
+  transform: translateY(-2px);
+}
+
+.dark .answer-engine-service__bubble:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.answer-engine-service__bubble-icon {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--answer-gradient);
+  color: var(--primary-foreground);
+  border-radius: var(--radius-full);
+  font-weight: var(--font-weight-bold);
+}
+
+.answer-engine-service__bubble-content {
+  flex: 1;
+}
+
+.answer-engine-service__bubble-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-bold);
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+  margin-bottom: var(--spacing-1);
+}
+
+.answer-engine-service__bubble-text {
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  color: var(--foreground);
+  line-height: var(--line-height-relaxed);
+}
+
+/* ============================================
+   KNOWLEDGE GRAPH VISUALIZATION
+   ============================================ */
+
+.answer-engine-service__knowledge-graph {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  aspect-ratio: 1;
+  margin: 0 auto;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-6);
+}
+
+.answer-engine-service__graph-node {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--answer-gradient);
+  color: var(--primary-foreground);
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-bold);
+  text-align: center;
+  box-shadow: var(--answer-glow);
+  animation: nodeGlow 3s ease-in-out infinite;
+}
+
+@keyframes nodeGlow {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; box-shadow: 0 0 30px color-mix(in srgb, var(--primary) 40%, transparent); }
+}
+
+.answer-engine-service__graph-node:nth-child(1) { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+.answer-engine-service__graph-node:nth-child(2) { top: 10%; left: 50%; transform: translate(-50%, 0); animation-delay: 0.5s; }
+.answer-engine-service__graph-node:nth-child(3) { top: 50%; right: 10%; transform: translate(0, -50%); animation-delay: 1s; }
+.answer-engine-service__graph-node:nth-child(4) { bottom: 10%; left: 50%; transform: translate(-50%, 0); animation-delay: 1.5s; }
+.answer-engine-service__graph-node:nth-child(5) { top: 50%; left: 10%; transform: translate(0, -50%); animation-delay: 2s; }
+
+.answer-engine-service__graph-connection {
+  position: absolute;
+  height: 2px;
+  background: color-mix(in srgb, var(--primary) 30%, transparent);
+  transform-origin: left;
+}

@@ -14,8 +14,7 @@
  * Pattern Components:
  * - ✅ StatsGrid — Site statistics section (grid variant, 4 columns)
  *
- * @see /guidelines/overview-sitemap.md
- * @see /guidelines/routing/routing-complete-reference.md
+ * @see /guidelines/routes.md
  * @migrated March 4, 2026 — Migrated inline stats grid to StatsGrid component (~12 lines saved)
  */
 
@@ -153,6 +152,7 @@ export function SiteMapTemplate() {
     { id: 'lsx-search', label: 'LSX Search', status: 'active' },
     { id: 'wordpress-redesign', label: 'WordPress Redesign', status: 'active' },
     { id: 'woocommerce-redesign', label: 'WooCommerce Redesign', status: 'active' },
+    { id: 'tour-operators', label: 'Tour Operators', status: 'active' },
   ];
 
   /* ── 4. AI Integrations ── */
@@ -362,6 +362,7 @@ export function SiteMapTemplate() {
     { id: 'code-quality-dashboard', label: 'Code Quality Dashboard', status: 'active' },
     { id: 'docs-generator', label: 'Documentation Generator', status: 'active' },
     { id: 'snippet-generator', label: 'Snippet Generator', status: 'active' },
+    { id: 'phosphor-icon-reference', label: 'Phosphor Icon Reference', status: 'active' },
   ];
 
   /* ── 17. Additional Site Pages ── */
@@ -546,15 +547,30 @@ export function SiteMapTemplate() {
                     <ul className="site-map__list">
                       {section.pages.map((page, pageIndex) => {
                         const path = resolvePath(page, section.title);
+                        const isMissing = page.status === 'missing';
 
                         return (
                           <li key={pageIndex}>
-                            <Link to={path} className="site-map__link">
-                              <CheckCircle
-                                size={14}
-                                className="site-map__link-icon site-map__icon--success"
-                              />
-                              <span className="site-map__link-label">{page.label}</span>
+                            <Link
+                              to={isMissing ? '#' : path}
+                              className={`site-map__link${isMissing ? ' site-map__link--missing' : ''}`}
+                              aria-disabled={isMissing || undefined}
+                            >
+                              {isMissing ? (
+                                <AlertCircle
+                                  size={14}
+                                  className="site-map__link-icon site-map__icon--warning"
+                                />
+                              ) : (
+                                <CheckCircle
+                                  size={14}
+                                  className="site-map__link-icon site-map__icon--success"
+                                />
+                              )}
+                              <span className="site-map__link-label">
+                                {page.label}
+                                {isMissing && ' (route missing)'}
+                              </span>
                               <ChevronRight
                                 size={14}
                                 className="site-map__link-arrow"

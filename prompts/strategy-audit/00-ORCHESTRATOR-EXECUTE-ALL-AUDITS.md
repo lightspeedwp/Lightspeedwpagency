@@ -65,7 +65,7 @@ Execute these audits to document what exists today.
 **Reference Files:**
 - `navigation-and-ia-2026.md`
 - `service-architecture-2026.md`
-- `/guidelines/overview-sitemap.md`
+- `/guidelines/routes.md`
 
 **Key Questions:**
 - Do current routes match proposed IA?

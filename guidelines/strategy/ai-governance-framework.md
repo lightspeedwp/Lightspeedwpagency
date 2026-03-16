@@ -1,5 +1,13 @@
 # AI Governance Framework
 
+**Category:** Strategy  
+**Version:** 1.0.0  
+**Last Updated:** 2026-03-15  
+**Status:** Active  
+**Template Used:** _templates/general-template.md
+
+---
+
 ## Purpose
 
 AI is used to accelerate drafting, analysis, and operations, but governance protects brand, legal, and editorial integrity.

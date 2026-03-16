@@ -1,5 +1,13 @@
 # Positioning Analysis 2026
 
+**Category:** Strategy  
+**Version:** 1.0.0  
+**Last Updated:** 2026-03-15  
+**Status:** Active  
+**Template Used:** _templates/general-template.md
+
+---
+
 ## What the live site communicates now
 
 The current homepage positions LightSpeed primarily as "Expert WordPress & WooCommerce solutions" and emphasises a broad capability to "build extraordinary websites for all types of businesses," with a prominent "Free consultation" primary action.

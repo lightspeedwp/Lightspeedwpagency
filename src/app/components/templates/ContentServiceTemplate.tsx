@@ -77,7 +77,7 @@ export function ContentServiceTemplate() {
            <div style={{ width: '85%', height: '8px', backgroundColor: 'var(--border)', borderRadius: 'var(--radius-full)' }}></div>
            <div style={{ width: '65%', height: '8px', backgroundColor: 'var(--border)', borderRadius: 'var(--radius-full)' }}></div>
            {/* Red Pen Mark */}
-           <div style={{ position: 'absolute', top: '40%', right: '20%', width: '40px', height: '40px', border: '2px solid #ff5f56', borderRadius: '50%', transform: 'scale(1.5) rotate(-20deg)', opacity: 0.8 }} />
+           <div style={{ position: 'absolute', top: '40%', right: '20%', width: '40px', height: '40px', border: '2px solid var(--color-terminal-red)', borderRadius: '50%', transform: 'scale(1.5) rotate(-20deg)', opacity: 0.8 }} />
         </div>
 
         <Container>
@@ -93,7 +93,7 @@ export function ContentServiceTemplate() {
                 <span style={{ display: 'inline-block', width: '4px', height: '1em', backgroundColor: 'var(--primary)', marginLeft: '8px', verticalAlign: 'text-bottom', animation: 'blink 1s step-end infinite' }}></span>
                 
                 {/* Editing Marks */}
-                <span style={{ position: 'absolute', bottom: '-10px', right: '-40px', fontFamily: 'var(--font-mono)', fontSize: 'var(--text-lg)', color: '#ff5f56', transform: 'rotate(-15deg)', fontStyle: 'italic' }}>stet</span>
+                <span style={{ position: 'absolute', bottom: '-10px', right: '-40px', fontFamily: 'var(--font-mono)', fontSize: 'var(--text-lg)', color: 'var(--color-terminal-red)', transform: 'rotate(-15deg)', fontStyle: 'italic' }}>stet</span>
               </h1>
               
               <div style={{ position: 'relative', maxWidth: '600px', margin: '0 auto' }}>
@@ -101,7 +101,7 @@ export function ContentServiceTemplate() {
                   {contentHero.description}
                 </p>
                 {/* Editing Marks */}
-                <span style={{ position: 'absolute', bottom: '-20px', left: '20%', fontFamily: 'var(--font-mono)', fontSize: 'var(--text-sm)', color: '#ff5f56', transform: 'rotate(-5deg)' }}>^ insert magic</span>
+                <span style={{ position: 'absolute', bottom: '-20px', left: '20%', fontFamily: 'var(--font-mono)', fontSize: 'var(--text-sm)', color: 'var(--color-terminal-red)', transform: 'rotate(-5deg)' }}>^ insert magic</span>
               </div>
             </ScrollReveal>
           </div>

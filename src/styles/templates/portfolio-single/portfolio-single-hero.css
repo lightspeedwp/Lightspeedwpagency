@@ -1,0 +1,147 @@
+/**
+ * Portfolio Single — Breadcrumbs, Featured Image, Meta & Tags
+ *
+ * Top-level page sections: breadcrumbs, featured image with
+ * neon glow, project meta grid, services and tech tags.
+ *
+ * @see /src/styles/templates/portfolio-single.css (orchestrator)
+ */
+
+/* ============================================
+   BREADCRUMBS SECTION
+   ============================================ */
+
+.portfolio-single__breadcrumbs {
+  padding-top: var(--spacing-4);
+  padding-bottom: var(--spacing-4);
+  background-color: var(--background);
+  border-bottom: 1px solid var(--border-soft);
+}
+
+/* ============================================
+   FEATURED IMAGE SECTION
+   ============================================ */
+
+.portfolio-single__featured-image-section {
+  background-color: var(--background);
+}
+
+.portfolio-single__featured-image-container {
+  max-width: 1152px;
+  margin: 0 auto;
+  margin-top: calc(var(--spacing-20) * -1);
+  position: relative;
+  z-index: 10;
+}
+
+.portfolio-single__featured-image {
+  width: 100%;
+  height: 31.25rem;
+  border-radius: var(--radius-lg);
+  background-size: cover;
+  background-position: center;
+  box-shadow: var(--shadow-xl);
+  border: var(--wp--preset--border-width--4) solid var(--background);
+  transition: box-shadow var(--transition-slow) var(--ease-out), transform var(--transition-slow) var(--ease-out);
+}
+
+/* Funky: Neon glow on hover or always in dark mode */
+.dark .portfolio-single__featured-image {
+  box-shadow: 0 0 30px var(--primary-soft);
+  border-color: var(--card);
+}
+
+.dark .portfolio-single__featured-image:hover {
+  box-shadow: var(--shadow-neon);
+  transform: translateY(-4px);
+}
+
+/* ============================================
+   PROJECT META SECTION
+   ============================================ */
+
+.portfolio-single__meta-section {
+  background-color: var(--background);
+  padding-top: var(--spacing-20);
+}
+
+.portfolio-single__meta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: var(--spacing-6);
+  padding-bottom: var(--spacing-8);
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.portfolio-single__meta-label {
+  font-family: var(--font-secondary);
+  font-size: var(--text-small);
+  font-weight: var(--font-weight-semibold);
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+}
+
+.portfolio-single__meta-value {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+}
+
+/* ============================================
+   SERVICES & TECH SECTION
+   ============================================ */
+
+.portfolio-single__services-grid {
+  padding-top: var(--spacing-12);
+}
+
+.portfolio-single__services-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+}
+
+.portfolio-single__tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-2);
+  padding-top: var(--spacing-4);
+}
+
+.portfolio-single__service-tag {
+  font-size: var(--text-small);
+  font-family: var(--font-secondary);
+  font-weight: var(--font-weight-semibold);
+  color: var(--primary);
+  background-color: var(--primary-soft);
+  padding: var(--spacing-1-5) var(--spacing-3);
+  border-radius: var(--radius);
+  border: 1px solid var(--primary-soft);
+  transition: all var(--transition-base) var(--ease-out);
+}
+
+.portfolio-single__service-tag:hover {
+  border-color: var(--primary);
+  box-shadow: 0 0 10px var(--primary-soft);
+}
+
+.portfolio-single__tech-tag {
+  font-size: var(--text-small);
+  font-family: var(--font-secondary);
+  color: var(--foreground);
+  background-color: var(--muted);
+  padding: var(--spacing-1-5) var(--spacing-3);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  transition: all var(--transition-base) var(--ease-out);
+}
+
+.portfolio-single__tech-tag:hover {
+  border-color: var(--foreground);
+}

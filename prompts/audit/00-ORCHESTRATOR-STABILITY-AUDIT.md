@@ -1,6 +1,6 @@
 # LSX Design Agency -- Prototype Stability Audit Orchestrator
 
-**Version:** 1.0 (March 4, 2026)
+**Version:** 1.0 (March 4,2026)
 **Type:** Multi-Phase Application Stability, Build & Architecture Audit
 **Status:** READY TO EXECUTE
 **Estimated Duration:** 4-6 hours across 7 phases
@@ -160,7 +160,7 @@ Verify all ~172 routes are correctly defined, properly imported, and produce val
 - `/src/app/routes.tsx` -- All route definitions (static + lazy imports)
 - `/src/app/utils/route-map.ts` -- Slug-to-path mapping utility
 - `/src/app/data/pages.ts` -- Navigation menus, page metadata
-- `/guidelines/overview-sitemap.md` -- Expected site structure
+- `/guidelines/routes.md` -- Expected site structure
 
 ### 6.3 Checks
 
@@ -489,7 +489,7 @@ Before declaring the audit complete:
 ### Guidelines
 - `/guidelines/Guidelines.md` (canonical reference)
 - `/guidelines/design-tokens/` (colors, typography, spacing)
-- `/guidelines/overview-sitemap.md` (site structure)
+- `/guidelines/routes.md` (site structure)
 
 ### Data
 - `/src/app/data/` (~95 data files)

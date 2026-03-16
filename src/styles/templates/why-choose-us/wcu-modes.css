@@ -1,0 +1,76 @@
+/**
+ * Why Choose Us — Dark Mode + Reduced Motion
+ *
+ * Sub-file 3/3 of why-choose-us.css
+ * BEM block: .wcu
+ */
+
+/* ============================================
+   DARK MODE
+   ============================================ */
+
+.dark .wcu__hero {
+  background: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--neon-color, var(--primary)) 5%, var(--background)) 0%,
+    var(--background) 50%,
+    color-mix(in srgb, var(--neon-color, var(--primary)) 3%, var(--background)) 100%
+  );
+}
+
+.dark .wcu__stat-card,
+.dark .wcu__vp-card,
+.dark .wcu__step-card,
+.dark .wcu__guarantee-card {
+  background: color-mix(in srgb, var(--foreground) 5%, transparent);
+  border-color: color-mix(in srgb, var(--foreground) 10%, transparent);
+}
+
+.dark .wcu__stat-card:hover,
+.dark .wcu__vp-card:hover,
+.dark .wcu__step-card:hover,
+.dark .wcu__guarantee-card:hover {
+  background: color-mix(in srgb, var(--foreground) 8%, transparent);
+  border-color: color-mix(in srgb, var(--neon-color, var(--primary)) 50%, transparent);
+}
+
+.dark .wcu__stats,
+.dark .wcu__process {
+  background: color-mix(in srgb, var(--foreground) 3%, var(--background));
+}
+
+.dark .wcu__stats::before {
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--neon-color, var(--primary)) 6%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--neon-color, var(--primary)) 6%, transparent) 1px, transparent 1px);
+}
+
+.dark .wcu__step-num {
+  box-shadow: 0 0 20px color-mix(in srgb, var(--neon-color, var(--primary)) 40%, transparent);
+}
+
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .wcu__vp-card,
+  .wcu__stat-card,
+  .wcu__step-card,
+  .wcu__guarantee-card {
+    transition: none;
+  }
+  .wcu__vp-card:hover,
+  .wcu__guarantee-card:hover,
+  .wcu__stat-card:hover,
+  .wcu__step-card:hover {
+    transform: none;
+  }
+  .wcu__vp-card:hover::before {
+    animation: none;
+  }
+  .wcu__vp-icon-wrap {
+    transition: none;
+  }
+}

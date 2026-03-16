@@ -279,8 +279,8 @@ export function DesignServiceTemplate() {
                     onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
                   />
                   <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: 'var(--spacing-6)', background: 'var(--gradient-overlay-dark)', display: 'flex', flexDirection: 'column', gap: 'var(--spacing-2)', pointerEvents: 'none' }}>
-                    <span style={{ display: 'inline-block', padding: 'var(--spacing-1) var(--spacing-3)', backgroundColor: 'var(--primary)', color: 'white', borderRadius: 'var(--radius-full)', fontSize: 'var(--text-xs)', fontWeight: 'bold', width: 'fit-content' }}>{project.tag}</span>
-                    <span style={{ color: 'white', fontFamily: 'var(--font-primary)', fontSize: 'var(--text-h4)', fontWeight: 'bold' }}>{project.name}</span>
+                    <span style={{ display: 'inline-block', padding: 'var(--spacing-1) var(--spacing-3)', backgroundColor: 'var(--primary)', color: 'var(--primary-foreground)', borderRadius: 'var(--radius-full)', fontSize: 'var(--text-xs)', fontWeight: 'var(--font-weight-bold)', width: 'fit-content' }}>{project.tag}</span>
+                    <span style={{ color: 'var(--primary-foreground)', fontFamily: 'var(--font-primary)', fontSize: 'var(--text-h4)', fontWeight: 'var(--font-weight-bold)' }}>{project.name}</span>
                   </div>
                 </div>
               </ScrollReveal>
@@ -343,7 +343,7 @@ export function DesignServiceTemplate() {
             {data.process.steps.map((step, index) => (
               <ScrollReveal key={index} animation="fade-up" delay={index * 80}>
                 <div style={{ position: 'relative', zIndex: 1, display: 'flex', gap: 'var(--spacing-8)' }}>
-                  <div style={{ flexShrink: 0, width: '48px', height: '48px', backgroundColor: 'var(--primary)', color: 'var(--primary-foreground)', borderRadius: 'var(--radius-full)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--font-primary)', fontSize: 'var(--text-lg)', fontWeight: 'bold', border: '4px solid var(--background)', boxShadow: '0 0 0 1px var(--border)' }}>
+                  <div style={{ flexShrink: 0, width: '48px', height: '48px', backgroundColor: 'var(--primary)', color: 'var(--primary-foreground)', borderRadius: 'var(--radius-full)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--font-primary)', fontSize: 'var(--text-lg)', fontWeight: 'var(--font-weight-bold)', border: '4px solid var(--background)', boxShadow: '0 0 0 1px var(--border)' }}>
                     {index + 1}
                   </div>
                   <div style={{ paddingTop: 'var(--spacing-2)' }}>

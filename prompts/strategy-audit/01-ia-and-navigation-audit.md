@@ -7,7 +7,7 @@
 Read these reference files FIRST:
 - `/guidelines/strategy/navigation-and-ia-2026.md` — Proposed IA structure
 - `/guidelines/strategy/service-architecture-2026.md` — Three-tier service model
-- `/guidelines/overview-sitemap.md` — Current sitemap
+- `/guidelines/routes.md` — Current sitemap
 
 ## Instructions
 

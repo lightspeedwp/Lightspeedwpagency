@@ -1,0 +1,287 @@
+/**
+ * Design Tokens Reference — Visual Token Sections
+ *
+ * Color swatches, typography scale, font family specimens,
+ * spacing bars, and shadow previews.
+ *
+ * @see /src/styles/templates/design-tokens-reference.css (orchestrator)
+ */
+
+/* ============================================
+   COLOR SWATCHES
+   ============================================ */
+
+.tokens-ref__color-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-4);
+}
+
+@media (min-width: 768px) {
+  .tokens-ref__color-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .tokens-ref__color-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.tokens-ref__color-card {
+  background: var(--card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  cursor: pointer;
+  transition: box-shadow var(--transition-fast) var(--ease-out),
+              border-color var(--transition-fast) var(--ease-out);
+}
+
+.tokens-ref__color-card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--border);
+}
+
+.tokens-ref__color-swatch {
+  height: 72px;
+  width: 100%;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.tokens-ref__color-info {
+  padding: var(--spacing-3) var(--spacing-4);
+}
+
+.tokens-ref__color-name {
+  font-family: var(--font-mono);
+  font-size: var(--text-small);
+  color: var(--foreground);
+  margin: 0;
+  word-break: break-all;
+}
+
+.tokens-ref__color-value {
+  font-family: var(--font-secondary);
+  font-size: var(--text-xs);
+  color: var(--muted-foreground);
+  margin-top: var(--spacing-1);
+}
+
+/* ============================================
+   TYPOGRAPHY SCALE
+   ============================================ */
+
+.tokens-ref__type-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+.tokens-ref__type-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-3);
+  padding: var(--spacing-4);
+  background: var(--card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: box-shadow var(--transition-fast) var(--ease-out);
+}
+
+@media (min-width: 768px) {
+  .tokens-ref__type-row {
+    grid-template-columns: 140px 1fr;
+    align-items: center;
+  }
+}
+
+.tokens-ref__type-row:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.tokens-ref__type-meta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+.tokens-ref__type-var {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--primary);
+}
+
+.tokens-ref__type-size {
+  font-family: var(--font-secondary);
+  font-size: var(--text-xs);
+  color: var(--muted-foreground);
+}
+
+.tokens-ref__type-preview {
+  color: var(--foreground);
+  margin: 0;
+  line-height: var(--line-height-snug);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ============================================
+   FONT FAMILY SPECIMENS
+   ============================================ */
+
+.tokens-ref__font-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-6);
+  margin-bottom: var(--spacing-8);
+}
+
+@media (min-width: 768px) {
+  .tokens-ref__font-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.tokens-ref__font-card {
+  padding: var(--spacing-6);
+  background: var(--card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+}
+
+.tokens-ref__font-sample {
+  font-size: var(--text-h2);
+  color: var(--foreground);
+  margin: 0 0 var(--spacing-4) 0;
+  line-height: var(--line-height-tight);
+}
+
+.tokens-ref__font-name {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--primary);
+  margin: 0 0 var(--spacing-1) 0;
+}
+
+.tokens-ref__font-desc {
+  font-family: var(--font-secondary);
+  font-size: var(--text-small);
+  color: var(--muted-foreground);
+  margin: 0;
+}
+
+/* ============================================
+   SPACING BARS
+   ============================================ */
+
+.tokens-ref__spacing-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.tokens-ref__spacing-row {
+  display: grid;
+  grid-template-columns: 100px 1fr 60px;
+  align-items: center;
+  gap: var(--spacing-4);
+  padding: var(--spacing-2) var(--spacing-4);
+  background: var(--card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: box-shadow var(--transition-fast) var(--ease-out);
+}
+
+.tokens-ref__spacing-row:hover {
+  box-shadow: var(--shadow-sm);
+}
+
+.tokens-ref__spacing-var {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--primary);
+}
+
+.tokens-ref__spacing-bar-wrap {
+  height: var(--spacing-4);
+  background: var(--muted);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.tokens-ref__spacing-bar {
+  height: 100%;
+  background: var(--primary);
+  border-radius: var(--radius-full);
+  transition: width var(--transition-slow) var(--ease-out);
+}
+
+.tokens-ref__spacing-px {
+  font-family: var(--font-secondary);
+  font-size: var(--text-xs);
+  color: var(--muted-foreground);
+  text-align: right;
+}
+
+/* ============================================
+   SHADOW PREVIEWS
+   ============================================ */
+
+.tokens-ref__shadow-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-6);
+}
+
+@media (min-width: 768px) {
+  .tokens-ref__shadow-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .tokens-ref__shadow-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.tokens-ref__shadow-card {
+  padding: var(--spacing-8);
+  background: var(--card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  text-align: center;
+  cursor: pointer;
+  transition: border-color var(--transition-fast) var(--ease-out);
+}
+
+.tokens-ref__shadow-card:hover {
+  border-color: var(--primary);
+}
+
+.tokens-ref__shadow-preview {
+  width: 100%;
+  height: 80px;
+  background: var(--background);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--spacing-4);
+}
+
+.tokens-ref__shadow-name {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--primary);
+  margin: 0 0 var(--spacing-1) 0;
+}
+
+.tokens-ref__shadow-desc {
+  font-family: var(--font-secondary);
+  font-size: var(--text-xs);
+  color: var(--muted-foreground);
+  margin: 0;
+}

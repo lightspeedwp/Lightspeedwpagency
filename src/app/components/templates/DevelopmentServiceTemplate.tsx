@@ -163,9 +163,9 @@ export function DevelopmentServiceTemplate() {
                 {/* Terminal Header */}
                 <div style={{ backgroundColor: 'color-mix(in srgb, var(--foreground) 5%, transparent)', padding: 'var(--spacing-3) var(--spacing-4)', display: 'flex', alignItems: 'center', borderBottom: '1px solid var(--border)' }}>
                   <div style={{ display: 'flex', gap: 'var(--spacing-2)' }}>
-                    <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#ff5f56' }} />
-                    <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#ffbd2e' }} />
-                    <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#27c93f' }} />
+                    <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: 'var(--color-terminal-red)' }} />
+                    <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: 'var(--color-terminal-yellow)' }} />
+                    <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: 'var(--color-terminal-green)' }} />
                   </div>
                   <div style={{ flex: 1, textAlign: 'center', fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-sm)', color: 'var(--muted-foreground)' }}>
                     user@lightspeed:~/projects/future
@@ -186,7 +186,7 @@ export function DevelopmentServiceTemplate() {
                   <p style={{ color: 'var(--muted-foreground)', lineHeight: 1.6, marginBottom: 'var(--spacing-8)', fontSize: 'var(--text-lg)' }}>
                     {'>'} {data.tagline}
                     <br />
-                    {'>'} System Status: <span style={{ color: '#27c93f', fontWeight: 'bold' }}>OPTIMAL</span>
+                    {'>'} System Status: <span style={{ color: 'var(--color-terminal-green)', fontWeight: 'var(--font-weight-bold)' }}>OPTIMAL</span>
                   </p>
 
                   <div className="wp-flex wp-gap-4 wp-flex-wrap">

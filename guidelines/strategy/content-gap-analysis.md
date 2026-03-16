@@ -1,5 +1,13 @@
 # Content and Product Gaps for a 2027-Ready LightSpeed Site
 
+**Category:** Strategy  
+**Version:** 1.0.0  
+**Last Updated:** 2026-03-15  
+**Status:** Active  
+**Template Used:** _templates/general-template.md
+
+---
+
 ## Missing strategic pages
 
 ### Systems hub pages

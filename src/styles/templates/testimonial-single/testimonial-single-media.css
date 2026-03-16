@@ -1,0 +1,326 @@
+/**
+ * Single Testimonial — Video, Gallery, Results, Tech, Related, Dark & Motion
+ *
+ * Video player, gallery grids, project results cards,
+ * tech stack tags, related section, dark mode, and reduced motion.
+ *
+ * @see /src/styles/templates/testimonial-single.css (orchestrator)
+ */
+
+/* ── Video Player ── */
+.single-testimonial__video-player {
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 16 / 9;
+  cursor: pointer;
+}
+
+.single-testimonial__video-thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.single-testimonial__video-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--overlay-30);
+  transition: background-color var(--transition-base) var(--ease-in-out);
+}
+
+.single-testimonial__video-player:hover .single-testimonial__video-overlay {
+  background-color: var(--overlay-medium);
+}
+
+.single-testimonial__video-play {
+  color: var(--color-white);
+  filter: drop-shadow(0 4px 8px color-mix(in srgb, var(--color-black) 30%, transparent));
+  transition: transform var(--transition-base) var(--ease-in-out);
+}
+
+.single-testimonial__video-player:hover .single-testimonial__video-play {
+  transform: scale(1.1);
+}
+
+.single-testimonial__video-duration {
+  position: absolute;
+  bottom: var(--spacing-4);
+  right: var(--spacing-4);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-white);
+  background-color: var(--overlay-dark);
+  padding: var(--spacing-1-5) var(--spacing-3);
+  border-radius: var(--radius);
+}
+
+/* ── Gallery Grid ── */
+.single-testimonial__gallery {
+  display: grid;
+  gap: var(--spacing-4);
+}
+
+.single-testimonial__gallery--main {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .single-testimonial__gallery--main {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+.single-testimonial__gallery-main-image {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: var(--radius-xl);
+}
+
+.single-testimonial__gallery-sidebar {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-4);
+}
+
+@media (min-width: 768px) {
+  .single-testimonial__gallery-sidebar {
+    grid-template-columns: 1fr;
+  }
+}
+
+.single-testimonial__gallery-thumb {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: opacity var(--transition-base) var(--ease-in-out);
+  border: 2px solid transparent;
+}
+
+.single-testimonial__gallery-thumb:hover {
+  opacity: 0.85;
+  border-color: var(--primary);
+}
+
+.single-testimonial__gallery-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-4);
+  margin-top: var(--spacing-4);
+}
+
+@media (min-width: 768px) {
+  .single-testimonial__gallery-row {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ── Project Results ── */
+.single-testimonial__results-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h3);
+  font-weight: var(--font-weight-medium);
+  color: var(--foreground);
+  text-align: center;
+  margin-bottom: var(--spacing-8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-3);
+}
+
+.single-testimonial__results-icon {
+  color: var(--primary);
+}
+
+.single-testimonial__tech-section {
+  text-align: center;
+  margin-top: var(--spacing-10);
+}
+
+.single-testimonial__tech-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h5);
+  font-weight: var(--font-weight-medium);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-4);
+}
+
+.single-testimonial__results {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-4);
+}
+
+@media (min-width: 768px) {
+  .single-testimonial__results {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.single-testimonial__result-card {
+  text-align: center;
+  padding: var(--spacing-6);
+  background-color: var(--card);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-soft);
+}
+
+.single-testimonial__result-value {
+  font-family: var(--font-primary);
+  font-size: var(--text-h3);
+  font-weight: var(--font-weight-bold);
+  color: var(--primary);
+  line-height: var(--line-height-tight);
+}
+
+.single-testimonial__result-metric {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  margin-top: var(--spacing-1);
+}
+
+/* ── Tech Stack ── */
+.single-testimonial__tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-2);
+  margin-top: var(--spacing-6);
+}
+
+.single-testimonial__tech-tag {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--primary);
+  background-color: var(--primary-soft);
+  padding: var(--spacing-1-5) var(--spacing-4);
+  border-radius: var(--radius-full);
+  border: 1px solid color-mix(in srgb, var(--primary) 20%, transparent);
+}
+
+/* ── Related / Navigation ── */
+.single-testimonial__related {
+  padding: var(--section-padding-y) var(--section-padding-x);
+  background-color: var(--card);
+}
+
+.single-testimonial__related-inner {
+  max-width: var(--section-max-width);
+  margin: 0 auto;
+}
+
+.single-testimonial__related-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h3);
+  font-weight: var(--font-weight-medium);
+  color: var(--foreground);
+  text-align: center;
+  margin-bottom: var(--spacing-10);
+}
+
+/* ============================================
+   DARK MODE OVERRIDES
+   ============================================ */
+
+.dark .single-testimonial__hero {
+  background-color: color-mix(in srgb, var(--background) 95%, var(--primary) 5%);
+  border-bottom-color: var(--glass-border);
+}
+
+.dark .single-testimonial__avatar {
+  border-color: var(--primary);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--primary) 30%, transparent);
+}
+
+.dark .single-testimonial__author-company {
+  color: var(--primary);
+}
+
+.dark .single-testimonial__star--filled {
+  color: var(--primary);
+  filter: drop-shadow(0 0 4px color-mix(in srgb, var(--primary) 30%, transparent));
+}
+
+.dark .single-testimonial__quote {
+  border-left-color: var(--primary);
+}
+
+.dark .single-testimonial__meta-item {
+  background-color: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border-color: var(--glass-border);
+}
+
+.dark .single-testimonial__audio-player {
+  background-color: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border-color: var(--glass-border);
+}
+
+.dark .single-testimonial__audio-icon {
+  box-shadow: var(--shadow-glow);
+}
+
+.dark .single-testimonial__audio-icon:hover {
+  box-shadow: var(--shadow-glow-lg);
+}
+
+.dark .single-testimonial__audio-progress-bar {
+  box-shadow: 0 0 6px color-mix(in srgb, var(--primary) 30%, transparent);
+}
+
+.dark .single-testimonial__transcript {
+  background-color: color-mix(in srgb, var(--background) 95%, var(--primary) 5%);
+  border-color: var(--glass-border);
+}
+
+.dark .single-testimonial__result-card {
+  background-color: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border-color: var(--glass-border);
+}
+
+.dark .single-testimonial__result-value {
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.dark .single-testimonial__tech-tag {
+  box-shadow: 0 0 6px color-mix(in srgb, var(--primary) 15%, transparent);
+}
+
+.dark .single-testimonial__gallery-thumb:hover {
+  border-color: var(--primary);
+  box-shadow: 0 0 8px color-mix(in srgb, var(--primary) 20%, transparent);
+}
+
+.dark .single-testimonial__related {
+  background-color: color-mix(in srgb, var(--background) 95%, var(--primary) 5%);
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .single-testimonial__audio-icon:hover {
+    transform: none;
+  }
+
+  .single-testimonial__video-player:hover .single-testimonial__video-play {
+    transform: none;
+  }
+}

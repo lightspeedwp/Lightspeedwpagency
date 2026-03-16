@@ -1,0 +1,343 @@
+/**
+ * About Base — Section Headings, Story Grids & Glow-Border Cards
+ *
+ * Section headings with gradient underlines, story sections with
+ * decorative elements, and glow-border cards for mission/vision/values.
+ * 100% CSS variables, BEM naming.
+ *
+ * @see /src/styles/templates/about-base.css (orchestrator)
+ */
+
+/* ============================================
+   SECTION HEADINGS — GRADIENT UNDERLINES
+   ============================================ */
+
+/**
+ * Story/section headers with centered text
+ */
+.about-overview__story-header,
+.about-culture__section-header,
+.about-history__section-header,
+.about-process__section-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto var(--spacing-16);
+}
+
+/**
+ * Section titles with gradient underline
+ */
+.about-overview__section-title,
+.about-culture__section-title,
+.about-history__section-title,
+.about-process__section-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-4xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-4);
+  color: var(--foreground);
+}
+
+.about-overview__section-title::after,
+.about-culture__section-title::after,
+.about-history__section-title::after,
+.about-process__section-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  margin: var(--spacing-4) auto 0;
+  border-radius: var(--radius-full);
+}
+
+.dark .about-overview__section-title::after,
+.dark .about-culture__section-title::after,
+.dark .about-history__section-title::after,
+.dark .about-process__section-title::after {
+  box-shadow: var(--shadow-glow-sm);
+}
+
+/**
+ * Section descriptions
+ */
+.about-overview__section-desc,
+.about-culture__section-desc,
+.about-history__section-desc,
+.about-process__section-desc {
+  font-family: var(--font-secondary);
+  font-size: var(--text-lg);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-relaxed);
+}
+
+/* ============================================
+   STORY SECTIONS — DECORATIVE ELEMENTS
+   ============================================ */
+
+/**
+ * Story sections with top accent line
+ */
+.about-overview__story,
+.about-culture__story,
+.about-history__story,
+.about-process__story {
+  padding: var(--spacing-20) 0;
+  position: relative;
+  background-color: var(--background);
+}
+
+.about-overview__story::before,
+.about-culture__story::before,
+.about-history__story::before,
+.about-process__story::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-glow-sm);
+  animation: about-line-pulse 2s ease-in-out infinite;
+}
+
+@keyframes about-line-pulse {
+  0%, 100% {
+    opacity: 1;
+    width: 120px;
+  }
+  50% {
+    opacity: 0.7;
+    width: 160px;
+  }
+}
+
+/**
+ * Story grids — responsive 1 → 2 columns
+ */
+.about-overview__story-grid,
+.about-culture__story-grid,
+.about-history__story-grid,
+.about-process__story-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-8);
+}
+
+@media (min-width: 768px) {
+  .about-overview__story-grid,
+  .about-culture__story-grid,
+  .about-history__story-grid,
+  .about-process__story-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ============================================
+   GLOW-BORDER CARDS — MISSION/VISION/VALUES
+   ============================================ */
+
+/**
+ * Cards sections with decorative backgrounds
+ */
+.about-overview__cards-section,
+.about-culture__values-section,
+.about-history__milestones-section {
+  padding: var(--spacing-20) 0;
+  background-color: var(--card);
+  position: relative;
+  overflow: hidden;
+}
+
+.dark .about-overview__cards-section::before,
+.dark .about-culture__values-section::before,
+.dark .about-history__milestones-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, var(--overlay-white-soft) 1px, transparent 1px);
+  background-size: 32px 32px;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.about-overview__cards-section::after,
+.about-culture__values-section::after,
+.about-history__milestones-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--primary) 50%, transparent 100%);
+  opacity: 0.15;
+}
+
+.dark .about-overview__cards-section::after,
+.dark .about-culture__values-section::after,
+.dark .about-history__milestones-section::after {
+  opacity: 0.4;
+  box-shadow: 0 0 8px color-mix(in srgb, var(--neon-color) 20%, transparent);
+}
+
+/**
+ * Cards grids — responsive 1 → 2 → 3 columns
+ */
+.about-overview__cards-grid,
+.about-culture__values-grid,
+.about-history__milestones-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-8);
+}
+
+@media (min-width: 768px) {
+  .about-overview__cards-grid,
+  .about-culture__values-grid,
+  .about-history__milestones-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .about-overview__cards-grid,
+  .about-culture__values-grid,
+  .about-history__milestones-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/**
+ * Individual glow-border cards
+ */
+.about-overview__card,
+.about-culture__value-card,
+.about-history__milestone-card {
+  position: relative;
+  background: var(--background);
+  border-radius: var(--radius-xl);
+  padding: 2px;
+  overflow: hidden;
+  height: 100%;
+  transition: transform var(--transition-slow) var(--ease-out),
+              box-shadow var(--transition-slow) var(--ease-out);
+}
+
+.about-overview__card:hover,
+.about-culture__value-card:hover,
+.about-history__milestone-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+
+.dark .about-overview__card:hover,
+.dark .about-culture__value-card:hover,
+.dark .about-history__milestone-card:hover {
+  box-shadow: var(--shadow-neon);
+}
+
+/**
+ * Gradient border glow layer
+ */
+.about-overview__card-glow,
+.about-culture__card-glow,
+.about-history__card-glow {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  opacity: 0.1;
+  transition: opacity var(--transition-slow) var(--ease-out);
+}
+
+.about-overview__card:hover .about-overview__card-glow,
+.about-culture__value-card:hover .about-culture__card-glow,
+.about-history__milestone-card:hover .about-history__card-glow {
+  opacity: 1;
+}
+
+/**
+ * Inner card surface
+ */
+.about-overview__card-inner,
+.about-culture__card-inner,
+.about-history__card-inner {
+  position: relative;
+  background: var(--background);
+  border-radius: calc(var(--radius-xl) - 2px);
+  padding: var(--spacing-8);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+}
+
+.dark .about-overview__card-inner,
+.dark .about-culture__card-inner,
+.dark .about-history__card-inner {
+  background: var(--card);
+}
+
+/**
+ * Icon wrappers with neon ring effect
+ */
+.about-overview__card-icon-wrapper,
+.about-culture__card-icon-wrapper,
+.about-history__card-icon-wrapper {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary-soft);
+  color: var(--primary);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--spacing-6);
+  transition: all var(--transition-slow) var(--ease-out);
+  position: relative;
+}
+
+.dark .about-overview__card-icon-wrapper,
+.dark .about-culture__card-icon-wrapper,
+.dark .about-history__card-icon-wrapper {
+  background: color-mix(in srgb, var(--neon-color) 12%, transparent);
+  color: var(--neon-color);
+}
+
+.about-overview__card:hover .about-overview__card-icon-wrapper,
+.about-culture__value-card:hover .about-culture__card-icon-wrapper,
+.about-history__milestone-card:hover .about-history__card-icon-wrapper {
+  background: var(--primary);
+  color: var(--primary-foreground);
+  transform: rotate(-5deg) scale(1.1);
+  box-shadow: var(--shadow-neon);
+}
+
+/**
+ * Card titles
+ */
+.about-overview__card-title,
+.about-culture__card-title,
+.about-history__card-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-3);
+  color: var(--foreground);
+}
+
+/**
+ * Card descriptions
+ */
+.about-overview__card-desc,
+.about-culture__card-desc,
+.about-history__card-desc {
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-relaxed);
+}

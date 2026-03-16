@@ -1,0 +1,238 @@
+/**
+ * About Base — Stats, Promise/CTA, FAQ & Reduced Motion
+ *
+ * Stats sections with gradient backgrounds and animated grids,
+ * promise/CTA sections with gradient text, FAQ wrapper,
+ * and reduced motion support.
+ * 100% CSS variables, BEM naming.
+ *
+ * @see /src/styles/templates/about-base.css (orchestrator)
+ */
+
+/* ============================================
+   STATS SECTIONS — GRADIENT BACKGROUNDS
+   ============================================ */
+
+/**
+ * Stats sections with gradient backgrounds and animated grids
+ */
+.about-overview__stats,
+.team-page__stats,
+.about-culture__stats {
+  padding: var(--spacing-24) 0;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  position: relative;
+  color: var(--color-white);
+  overflow: hidden;
+}
+
+.dark .about-overview__stats,
+.dark .team-page__stats,
+.dark .about-culture__stats {
+  background: linear-gradient(135deg, var(--sidebar) 0%, var(--secondary) 100%);
+}
+
+.about-overview__stats::before,
+.team-page__stats::before,
+.about-culture__stats::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--overlay-white-soft) 1px, transparent 1px),
+    linear-gradient(90deg, var(--overlay-white-soft) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.2;
+  pointer-events: none;
+  animation: about-grid-drift 20s linear infinite;
+}
+
+@keyframes about-grid-drift {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(40px, 40px); }
+}
+
+/**
+ * Stats header titles
+ */
+.about-overview__stats-header-title,
+.team-page__stats-title,
+.about-culture__stats-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-4xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-white);
+  margin-bottom: var(--spacing-4);
+}
+
+.about-overview__stats-header-title::after,
+.team-page__stats-title::after,
+.about-culture__stats-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 2px;
+  background: var(--overlay-white-medium);
+  margin: var(--spacing-4) auto 0;
+  border-radius: var(--radius-full);
+}
+
+/**
+ * Stats descriptions
+ */
+.about-overview__stats-header-desc,
+.team-page__stats-desc,
+.about-culture__stats-desc {
+  font-family: var(--font-secondary);
+  font-size: var(--text-lg);
+  color: var(--overlay-white-heavy);
+  line-height: var(--line-height-relaxed);
+}
+
+/* ============================================
+   PROMISE/CTA SECTIONS — GRADIENT TEXT
+   ============================================ */
+
+/**
+ * Promise/CTA sections with decorative orb
+ */
+.about-overview__promise,
+.about-culture__promise,
+.about-history__promise,
+.about-process__promise {
+  padding: var(--spacing-24) 0;
+  background-color: var(--background);
+  text-align: center;
+  position: relative;
+}
+
+.about-overview__promise::before,
+.about-culture__promise::before,
+.about-history__promise::before,
+.about-process__promise::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 300px;
+  height: 300px;
+  background: var(--primary);
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+.dark .about-overview__promise::before,
+.dark .about-culture__promise::before,
+.dark .about-history__promise::before,
+.dark .about-process__promise::before {
+  opacity: 0.15;
+}
+
+/**
+ * Promise content containers
+ */
+.about-overview__promise-content,
+.about-culture__promise-content,
+.about-history__promise-content,
+.about-process__promise-content {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-8);
+  position: relative;
+  z-index: 1;
+}
+
+/**
+ * Promise titles with gradient text
+ */
+.about-overview__promise-title,
+.about-culture__promise-title,
+.about-history__promise-title,
+.about-process__promise-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-4xl);
+  font-weight: var(--font-weight-black);
+  color: var(--foreground);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: var(--line-height-snug);
+}
+
+.dark .about-overview__promise-title,
+.dark .about-culture__promise-title,
+.dark .about-history__promise-title,
+.dark .about-process__promise-title {
+  filter: drop-shadow(0 0 12px color-mix(in srgb, var(--neon-color) 40%, transparent));
+}
+
+/**
+ * Promise button groups
+ */
+.about-overview__promise-buttons,
+.about-culture__promise-buttons,
+.about-history__promise-buttons,
+.about-process__promise-buttons {
+  display: flex;
+  gap: var(--spacing-4);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* ============================================
+   FAQ WRAPPER
+   ============================================ */
+
+.about-overview__faq-wrapper,
+.about-culture__faq-wrapper,
+.about-history__faq-wrapper,
+.about-process__faq-wrapper {
+  max-width: 768px;
+  margin: 0 auto;
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .about-overview__hero-orb,
+  .about-overview__hero-badge,
+  .team-page__hero-badge,
+  .about-culture__hero-badge,
+  .about-history__hero-badge,
+  .about-process__hero-badge {
+    animation: none;
+  }
+
+  .about-overview__story::before,
+  .about-culture__story::before,
+  .about-history__story::before,
+  .about-process__story::before {
+    animation: none;
+  }
+
+  .about-overview__stats::before,
+  .team-page__stats::before,
+  .about-culture__stats::before {
+    animation: none;
+  }
+
+  .about-overview__card:hover,
+  .about-culture__value-card:hover,
+  .about-history__milestone-card:hover {
+    transform: none;
+  }
+
+  .about-overview__card:hover .about-overview__card-icon-wrapper,
+  .about-culture__value-card:hover .about-culture__card-icon-wrapper,
+  .about-history__milestone-card:hover .about-history__card-icon-wrapper {
+    transform: none;
+  }
+}

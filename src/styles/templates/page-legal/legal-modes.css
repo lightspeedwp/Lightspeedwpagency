@@ -1,0 +1,127 @@
+/**
+ * Legal Page — Dark Mode + Nav Sidebar
+ *
+ * Sub-file 3/3 of page-legal.css
+ * BEM naming: .legal-page__*, .legal-content__*
+ */
+
+/* ============================================
+   DARK MODE OVERRIDES
+   ============================================ */
+
+.dark .legal-page__hero-funky {
+  color: var(--color-white);
+}
+
+.dark .legal-page__hero-overlay-funky {
+  background: linear-gradient(
+    to bottom,
+    var(--overlay-30) 0%,
+    var(--overlay-darker) 55%,
+    var(--background) 100%
+  );
+}
+
+.dark .legal-page__hero-grid {
+  opacity: 0.6;
+}
+
+.dark .legal-page__orb--1 {
+  opacity: 0.5;
+}
+
+.dark .legal-page__orb--2 {
+  opacity: 0.3;
+}
+
+.dark .legal-page__hero-badge {
+  box-shadow: 0 0 8px color-mix(in srgb, var(--primary) 20%, transparent);
+}
+
+.dark .legal-page__section {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border-color: var(--glass-border);
+}
+
+.dark .legal-page__section:hover {
+  border-color: var(--primary);
+  box-shadow: 0 0 16px color-mix(in srgb, var(--primary) 15%, transparent);
+}
+
+.dark .legal-page__section-icon {
+  box-shadow: 0 0 8px color-mix(in srgb, var(--primary) 15%, transparent);
+}
+
+.dark .legal-page__contact-box {
+  background-color: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border-color: color-mix(in srgb, var(--primary) 30%, transparent);
+  box-shadow: 0 0 20px color-mix(in srgb, var(--primary) 12%, transparent);
+}
+
+.dark .legal-page__hero {
+  background: var(--gradient-teal);
+}
+
+.dark .legal-page__hero-icon {
+  background-color: color-mix(in srgb, var(--primary) 20%, transparent);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--primary) 20%, transparent);
+}
+
+/* ============================================
+   Generic Policy Nav Sidebar
+   ============================================ */
+.legal-content__nav-card {
+  background: var(--card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-6);
+  position: sticky;
+  top: var(--spacing-24);
+  box-shadow: var(--shadow-md);
+}
+
+.legal-content__nav-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-4);
+  padding-bottom: var(--spacing-3);
+  border-bottom: 1px solid var(--border-soft);
+  color: var(--foreground);
+}
+
+.legal-content__nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.legal-content__nav-link {
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  color: color-mix(in srgb, var(--foreground) 70%, transparent);
+  text-decoration: none;
+  padding: var(--spacing-2) var(--spacing-3);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast) var(--ease-out);
+}
+
+.legal-content__nav-link:hover,
+.legal-content__nav-link:focus-visible {
+  color: var(--primary);
+  background: color-mix(in srgb, var(--primary) 5%, transparent);
+}
+
+.legal-content__nav-link.active {
+  color: var(--primary);
+  background: color-mix(in srgb, var(--primary) 10%, transparent);
+  font-weight: var(--font-weight-medium);
+  border-left: 3px solid var(--primary);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+.dark .legal-content__nav-card {
+  background: color-mix(in srgb, var(--card) 60%, transparent);
+}

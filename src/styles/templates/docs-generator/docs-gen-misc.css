@@ -1,0 +1,148 @@
+/**
+ * Documentation Generator — Links, Stats, Empty State & Responsive
+ *
+ * Usage/see-also links, stats row, empty state,
+ * and mobile responsive sidebar as horizontal chips.
+ *
+ * @see /src/styles/templates/docs-generator.css (orchestrator)
+ */
+
+/* =============================================
+   USAGE / SEE ALSO LINKS
+   ============================================= */
+
+.docs-gen__see-also {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-2);
+  margin-top: var(--spacing-4);
+}
+
+.docs-gen__see-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  font-family: var(--font-secondary);
+  font-size: var(--text-xs);
+  color: var(--primary);
+  background: color-mix(in srgb, var(--primary) 6%, transparent);
+  padding: var(--spacing-1) var(--spacing-3);
+  border-radius: var(--radius-full);
+  border: none;
+  cursor: pointer;
+  transition: background var(--duration-fast) var(--ease-out);
+}
+
+.docs-gen__see-link:hover {
+  background: color-mix(in srgb, var(--primary) 14%, transparent);
+}
+
+/* =============================================
+   STATS ROW
+   ============================================= */
+
+.docs-gen__stats-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-4);
+  margin-top: var(--spacing-8);
+}
+
+@media (min-width: 768px) {
+  .docs-gen__stats-row {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.docs-gen__stat-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-4);
+  text-align: center;
+}
+
+.docs-gen__stat-value {
+  font-family: var(--font-primary);
+  font-size: var(--text-h3);
+  font-weight: var(--font-weight-semibold);
+  color: var(--primary);
+  margin-bottom: var(--spacing-1);
+}
+
+.docs-gen__stat-label {
+  font-family: var(--font-secondary);
+  font-size: var(--text-xs);
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+}
+
+/* =============================================
+   EMPTY STATE
+   ============================================= */
+
+.docs-gen__empty {
+  text-align: center;
+  padding: var(--spacing-16) var(--spacing-6);
+}
+
+.docs-gen__empty-icon {
+  color: var(--muted-foreground);
+  margin-bottom: var(--spacing-4);
+  opacity: 0.5;
+}
+
+.docs-gen__empty-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h4);
+  font-weight: var(--font-weight-medium);
+  color: var(--foreground);
+  margin: 0 0 var(--spacing-2);
+}
+
+.docs-gen__empty-desc {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  color: var(--muted-foreground);
+  margin: 0;
+}
+
+/* =============================================
+   RESPONSIVE — MOBILE SIDEBAR AS HORIZONTAL CHIPS
+   ============================================= */
+
+@media (max-width: 1023px) {
+  .docs-gen__body {
+    grid-template-columns: 1fr;
+  }
+
+  .docs-gen__sidebar {
+    display: block;
+    position: static;
+    max-height: none;
+    overflow-y: visible;
+    padding-right: 0;
+    padding-bottom: var(--spacing-4);
+    border-bottom: 1px solid var(--border);
+    margin-bottom: var(--spacing-4);
+  }
+
+  .docs-gen__sidebar-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-2);
+    margin-bottom: var(--spacing-3);
+  }
+
+  .docs-gen__sidebar-label {
+    width: 100%;
+  }
+
+  .docs-gen__sidebar-item {
+    padding: var(--spacing-1) var(--spacing-3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-full);
+    font-size: var(--text-xs);
+  }
+}

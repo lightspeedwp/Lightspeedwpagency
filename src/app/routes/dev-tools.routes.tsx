@@ -25,6 +25,7 @@
  * - Design playground
  * - Code quality dashboard
  * - Docs generator
+ * - Snippet generator
  * - Style guide
  */
 
@@ -55,6 +56,9 @@ import { DeploymentReadinessTemplate } from '../components/templates/DeploymentR
 import { DesignPlaygroundTemplate } from '../components/templates/DesignPlaygroundTemplate';
 import { CodeQualityDashboardTemplate } from '../components/templates/CodeQualityDashboardTemplate';
 import { DocsGeneratorTemplate } from '../components/templates/DocsGeneratorTemplate';
+
+// SnippetGenerator
+import { SnippetGeneratorTemplate } from '../components/templates/SnippetGeneratorTemplate';
 
 // StyleGuideTemplate (static import - also used in utility.routes.tsx)
 import { StyleGuideTemplate } from '../components/templates/StyleGuideTemplate';
@@ -146,6 +150,10 @@ function DocsGeneratorRoute() {
   return <DocsGeneratorTemplate />;
 }
 
+function SnippetGeneratorRoute() {
+  return <SnippetGeneratorTemplate />;
+}
+
 function StyleGuideRoute() {
   return <StyleGuideTemplate />;
 }
@@ -181,5 +189,6 @@ export const devToolsRoutes: RouteObject[] = [
   { path: 'dev-tools/design-playground', Component: DesignPlaygroundRoute },
   { path: 'dev-tools/code-quality-dashboard', Component: CodeQualityDashboardRoute },
   { path: 'dev-tools/docs-generator', Component: DocsGeneratorRoute },
+  { path: 'dev-tools/snippet-generator', Component: SnippetGeneratorRoute },
   { path: 'dev-tools/style-guide', Component: StyleGuideRoute }, // Duplicate path allowed for dev tools
 ];

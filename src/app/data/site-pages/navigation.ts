@@ -4,7 +4,7 @@
  * WordPress registered menu locations.
  * Based on real navigation from lightspeedwp.agency.
  *
- * @see /guidelines/overview-sitemap.md
+ * @see /guidelines/routes.md
  */
 
 /**
@@ -70,6 +70,8 @@ export const footerNavigation = {
       { label: 'Our Culture', page: 'about-culture' as const },
       { label: 'Portfolio', page: 'portfolio-archive' as const },
       { label: 'Blog', page: 'blog' as const },
+      { label: 'Videos', page: 'videos' as const },
+      { label: 'Podcasts', page: 'podcasts' as const },
       { label: 'Site Map', page: 'site-map' as const }
     ]
   },
@@ -98,8 +100,8 @@ export const footerNavigation = {
       { label: 'WooCommerce', page: 'woocommerce' as const },
       { label: 'WordPress', page: 'wordpress' as const },
       { label: 'Publishers', page: 'publishers' as const },
-      { label: 'Videos', page: 'videos' as const },
-      { label: 'Podcasts', page: 'podcasts' as const }
+      { label: 'Tour Operators', page: 'tour-operators' as const },
+      { label: 'Mailchimp', page: 'mailchimp' as const }
     ]
   },
   legal: {

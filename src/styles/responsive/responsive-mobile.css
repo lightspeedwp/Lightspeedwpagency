@@ -1,0 +1,264 @@
+/**
+ * LSX Design System — Responsive Mobile Breakpoints
+ *
+ * Sub-file 1/2 of responsive.css
+ * Breakpoints: Variables + 280px-782px (WCAG + Mobile + Tablet Portrait + WP Adminbar)
+ */
+
+/* ============================================
+   BREAKPOINT SYSTEM
+   ============================================ */
+
+:root {
+  /* Core breakpoint values */
+  --breakpoint-zoomed-in: 280px;
+  --breakpoint-mobile-compact: 320px;
+  --breakpoint-mobile: 480px;
+  --breakpoint-small: 600px;
+  --breakpoint-editorial: 640px;
+  --breakpoint-tablet-portrait: 768px;
+  --breakpoint-medium: 782px;
+  --breakpoint-large: 960px;
+  --breakpoint-tablet-landscape: 1024px;
+  --breakpoint-xlarge: 1080px;
+  --breakpoint-wide: 1280px;
+  --breakpoint-desktop: 1440px;
+  --breakpoint-xhuge: 1920px;
+  
+  /* Container max-widths */
+  --container-mobile: 100%;
+  --container-small: 600px;
+  --container-tablet: 768px;
+  --container-large: 960px;
+  --container-desktop: 1152px;
+  --container-wide: 1280px;
+  --container-full: 1440px;
+  --container-ultra-wide: 1920px;
+}
+
+
+/* ============================================
+   BREAKPOINT: Zoomed-In (280px+)
+   WCAG 1.4.4 - Browser zoom up to 400%
+   ============================================ */
+
+@media (min-width: 280px) {
+  /* Minimum touch targets for accessibility */
+  button,
+  a,
+  input,
+  select,
+  textarea,
+  .wp-block-button__link {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Prevent horizontal scroll at extreme zoom */
+  body {
+    overflow-x: hidden;
+  }
+  
+  /* Force single column at extreme zoom */
+  .wp-grid-2-cols,
+  .wp-grid-3-cols,
+  .wp-grid-4-cols {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-4);
+  }
+}
+
+
+/* ============================================
+   BREAKPOINT: Mobile Compact (320px+)
+   Small phones, minimum device support
+   ============================================ */
+
+@media (min-width: 320px) {
+  html {
+    font-size: 15px; /* Slightly smaller for compact screens */
+  }
+  
+  /* Compact spacing */
+  section,
+  .wp-block-group {
+    padding-top: var(--spacing-8);    /* 32px */
+    padding-bottom: var(--spacing-8); /* 32px */
+  }
+  
+  /* Single column layouts */
+  .wp-grid-2-cols,
+  .wp-grid-3-cols,
+  .wp-grid-4-cols {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-6);
+  }
+}
+
+
+/* ============================================
+   BREAKPOINT: Mobile (480px+)
+   Large phones, landscape orientation
+   WordPress standard mobile breakpoint
+   ============================================ */
+
+@media (min-width: 480px) {
+  html {
+    font-size: 16px; /* Standard base font size */
+  }
+  
+  /* Increased spacing */
+  section,
+  .wp-block-group {
+    padding-top: var(--spacing-12);    /* 48px */
+    padding-bottom: var(--spacing-12); /* 48px */
+  }
+  
+  /* Still single column */
+  .wp-grid-2-cols,
+  .wp-grid-3-cols,
+  .wp-grid-4-cols {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-8);
+  }
+}
+
+
+/* ============================================
+   BREAKPOINT: Small (600px+)
+   Small tablets, large phablets
+   ============================================ */
+
+@media (min-width: 600px) {
+  /* Transition to 2-column layouts */
+  .wp-grid-2-cols-early {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-8);
+  }
+  
+  /* Increased spacing */
+  section,
+  .wp-block-group {
+    padding-top: var(--spacing-10);    /* 40px */
+    padding-bottom: var(--spacing-10); /* 40px */
+  }
+  
+  /* Container starts to be constrained */
+  .container-small {
+    max-width: var(--container-small);
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+
+/* ============================================
+   BREAKPOINT: Editorial (640px+)
+   Editorial layouts, blog streams, portfolio grids
+   Currently used in 12+ instances across codebase
+   ============================================ */
+
+@media (min-width: 640px) {
+  /* Editorial stream layouts */
+  .blog-stream__wrap,
+  .pf-editorial__wrap {
+    grid-template-columns: auto 1fr;
+    gap: var(--spacing-8);
+  }
+  
+  /* List grids start 2-column */
+  .service-page__list-grid,
+  .service-page__results-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-8);
+  }
+  
+  /* Button rows (horizontal) */
+  .service-page__cta-buttons {
+    flex-direction: row;
+    gap: var(--spacing-4);
+  }
+  
+  /* Featured cards get side-by-side layout */
+  .blog-index__featured-card {
+    grid-template-columns: 1.5fr 1fr;
+    gap: var(--spacing-8);
+  }
+}
+
+
+/* ============================================
+   BREAKPOINT: Tablet Portrait (768px+)
+   Tablets vertical, iPad portrait
+   Primary grid breakpoint
+   ============================================ */
+
+@media (min-width: 768px) {
+  /* 2-column grids activate */
+  .wp-grid-2-cols {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-8);
+  }
+  
+  /* 3-column and 4-column grids start at 2 columns */
+  .wp-grid-3-cols,
+  .wp-grid-4-cols {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-8);
+  }
+  
+  /* Section spacing increases */
+  section,
+  .wp-block-group {
+    padding-top: var(--spacing-16);    /* 64px */
+    padding-bottom: var(--spacing-16); /* 64px */
+  }
+  
+  /* Container constrained to tablet width */
+  .container,
+  .wp-max-w-6xl {
+    max-width: var(--container-tablet); /* 768px */
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Flexible layouts become horizontal */
+  .wp-flex-responsive {
+    flex-direction: row;
+    gap: var(--spacing-8);
+  }
+}
+
+
+/* ============================================
+   BREAKPOINT: Medium (782px+)
+   WordPress adminbar breakpoint
+   Adminbar height changes from 46px to 32px
+   ============================================ */
+
+@media (min-width: 782px) {
+  /* WordPress adminbar visible for logged-in users */
+  body.admin-bar .site-header {
+    top: 46px;
+  }
+  
+  body.admin-bar .site-header.sticky {
+    top: 46px;
+  }
+  
+  /* Admin toolbar utilities */
+  .wp-admin-visible {
+    display: block;
+  }
+  
+  .wp-admin-hidden {
+    display: none;
+  }
+}
+
+/* Mobile adminbar (below 782px) */
+@media (max-width: 781px) {
+  body.admin-bar .site-header {
+    top: 0; /* Mobile adminbar doesn't affect fixed elements */
+  }
+}

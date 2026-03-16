@@ -1,5 +1,13 @@
 # Prototype Content Audit
 
+**Category:** Strategy  
+**Version:** 1.0.0  
+**Last Updated:** 2026-03-15  
+**Status:** Active  
+**Template Used:** _templates/general-template.md
+
+---
+
 ## Access note
 
 This audit defines the required checks and the likely deltas to validate against the current Figma Make prototype codebase.

@@ -1,0 +1,217 @@
+/**
+ * Mailchimp Solution — Variables + Automation + Campaign + Integration
+ *
+ * Sub-file 1/2 of mailchimp-solution-page-optimized.css
+ * BEM naming: .mailchimp-page__*
+ */
+
+/* ============================================
+   BASE IMPORTS
+   ============================================ */
+
+/**
+ * Import solution-base.css for shared structure
+ * Provides: hero sections, floating orbs, section headers,
+ * feature grids, benefits, process timelines, CTAs, dark mode
+ */
+@import '../solution-base.css';
+@import '../../base/glass-effect-base.css';
+@import '../../base/grid-utilities.css';
+@import '../../base/card-base.css';
+
+/* ============================================
+   MAILCHIMP PAGE SCOPED VARIABLES
+   ============================================ */
+
+/**
+ * Mailchimp-specific accent colors (email/marketing theme)
+ * Uses "growth" color palette for email marketing context
+ */
+.mailchimp-page {
+  --solution-accent: var(--wp--preset--color--neon-lime);
+  --solution-accent-alt: var(--wp--preset--color--neon-yellow);
+  --growth-primary: var(--wp--preset--color--neon-lime);
+  --growth-secondary: var(--wp--preset--color--neon-yellow);
+  --growth-accent: var(--wp--preset--color--neon-cyan);
+  --growth-text: var(--foreground);
+  --growth-muted: var(--muted-foreground);
+  --growth-surface: color-mix(in srgb, var(--foreground) 3%, transparent);
+  --growth-border: color-mix(in srgb, var(--foreground) 8%, transparent);
+}
+
+/* ============================================
+   EMAIL AUTOMATION FEATURES SECTION
+   ============================================ */
+
+.mailchimp-page__automation-features {
+  padding: var(--spacing-20) 0;
+  background-color: var(--growth-surface);
+  position: relative;
+}
+
+.mailchimp-page__automation-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-6);
+}
+
+@media (min-width: 768px) {
+  .mailchimp-page__automation-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .mailchimp-page__automation-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ============================================
+   EMAIL CAMPAIGN CARD
+   ============================================ */
+
+.mailchimp-page__campaign-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-8);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-slow) var(--ease-out),
+              box-shadow var(--transition-slow) var(--ease-out),
+              border-color var(--transition-slow) var(--ease-out);
+  position: relative;
+  overflow: hidden;
+}
+
+.mailchimp-page__campaign-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--growth-primary), var(--growth-secondary));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition-slow) var(--ease-out);
+}
+
+.mailchimp-page__campaign-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 36px color-mix(in srgb, var(--growth-primary) 20%, transparent);
+  border-color: color-mix(in srgb, var(--growth-primary) 30%, transparent);
+}
+
+.mailchimp-page__campaign-card:hover::before {
+  transform: scaleX(1);
+}
+
+.mailchimp-page__campaign-icon {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--growth-primary), var(--growth-secondary));
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--spacing-4);
+  color: var(--color-white);
+  font-size: var(--text-2xl);
+  box-shadow: 0 8px 24px color-mix(in srgb, var(--growth-primary) 30%, transparent);
+}
+
+.mailchimp-page__campaign-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h5);
+  font-weight: var(--font-weight-semibold);
+  color: var(--growth-text);
+  margin-bottom: var(--spacing-2);
+}
+
+.mailchimp-page__campaign-desc {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  line-height: var(--line-height-relaxed);
+  color: var(--growth-muted);
+}
+
+/* ============================================
+   EMAIL INTEGRATION CARDS
+   ============================================ */
+
+.mailchimp-page__integrations {
+  padding: var(--spacing-20) 0;
+  position: relative;
+}
+
+.mailchimp-page__integration-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-6);
+}
+
+@media (min-width: 768px) {
+  .mailchimp-page__integration-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .mailchimp-page__integration-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.mailchimp-page__integration-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-8);
+  text-align: center;
+  transition: all var(--transition-slow) var(--ease-out);
+  cursor: pointer;
+}
+
+.mailchimp-page__integration-card:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--growth-accent) 40%, transparent);
+  box-shadow: 0 12px 32px color-mix(in srgb, var(--growth-accent) 15%, transparent);
+}
+
+.mailchimp-page__integration-logo {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto var(--spacing-4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: color-mix(in srgb, var(--growth-accent) 10%, transparent);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-4);
+  transition: all var(--transition-slow) var(--ease-out);
+}
+
+.mailchimp-page__integration-card:hover .mailchimp-page__integration-logo {
+  background: color-mix(in srgb, var(--growth-accent) 20%, transparent);
+  box-shadow: 0 0 24px color-mix(in srgb, var(--growth-accent) 25%, transparent);
+}
+
+.mailchimp-page__integration-name {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--growth-text);
+  margin-bottom: var(--spacing-2);
+}
+
+.mailchimp-page__integration-desc {
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  color: var(--growth-muted);
+  line-height: var(--line-height-normal);
+}

@@ -1,0 +1,211 @@
+/**
+ * Solution Base — Process, CTA & Reduced Motion
+ *
+ * Process timeline sections, CTA sections with gradient backgrounds,
+ * and reduced motion support.
+ *
+ * @see /src/styles/templates/solution-base.css (orchestrator)
+ */
+
+/* ============================================
+   PROCESS SECTIONS
+   ============================================ */
+
+/**
+ * Process sections
+ */
+.ai-page__process,
+.ecommerce-page__process,
+.redesign-page__process,
+.tour-design-page__process,
+.wordpress-page__process {
+  padding: var(--spacing-20) 0;
+  background-color: var(--card);
+}
+
+/**
+ * Process timelines
+ */
+.ai-page__process-timeline,
+.ecommerce-page__process-timeline,
+.redesign-page__process-timeline,
+.tour-design-page__process-timeline,
+.wordpress-page__process-timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-12);
+}
+
+/**
+ * Process step cards
+ */
+.ai-page__process-step,
+.ecommerce-page__process-step,
+.redesign-page__process-step,
+.tour-design-page__process-step,
+.wordpress-page__process-step {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-6);
+  padding: var(--spacing-8);
+  background: var(--background);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-slow) var(--ease-out);
+}
+
+@media (min-width: 768px) {
+  .ai-page__process-step,
+  .ecommerce-page__process-step,
+  .redesign-page__process-step,
+  .tour-design-page__process-step,
+  .wordpress-page__process-step {
+    grid-template-columns: 80px 1fr;
+  }
+}
+
+.ai-page__process-step:hover,
+.ecommerce-page__process-step:hover,
+.redesign-page__process-step:hover,
+.tour-design-page__process-step:hover,
+.wordpress-page__process-step:hover {
+  border-color: var(--solution-accent);
+  box-shadow: 0 0 20px color-mix(in srgb, var(--solution-accent) 12%, transparent);
+}
+
+/**
+ * Process step numbers
+ */
+.ai-page__process-number,
+.ecommerce-page__process-number,
+.redesign-page__process-number,
+.tour-design-page__process-number,
+.wordpress-page__process-number {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--solution-accent), var(--solution-accent-alt));
+  color: var(--color-white);
+  border-radius: var(--radius-full);
+  font-family: var(--font-primary);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-weight-black);
+  box-shadow: 0 0 16px color-mix(in srgb, var(--solution-accent) 25%, transparent);
+}
+
+/* ============================================
+   CTA SECTIONS
+   ============================================ */
+
+/**
+ * CTA sections with gradient backgrounds
+ */
+.ai-page__cta,
+.ecommerce-page__cta,
+.redesign-page__cta,
+.tour-design-page__cta,
+.wordpress-page__cta {
+  padding: var(--spacing-24) 0;
+  background: linear-gradient(135deg, var(--solution-accent) 0%, var(--solution-accent-alt) 100%);
+  position: relative;
+  color: var(--color-white);
+  text-align: center;
+  overflow: hidden;
+}
+
+.ai-page__cta::before,
+.ecommerce-page__cta::before,
+.redesign-page__cta::before,
+.tour-design-page__cta::before,
+.wordpress-page__cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, var(--overlay-white-soft) 1px, transparent 1px);
+  background-size: 32px 32px;
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+/**
+ * CTA content containers
+ */
+.ai-page__cta-content,
+.ecommerce-page__cta-content,
+.redesign-page__cta-content,
+.tour-design-page__cta-content,
+.wordpress-page__cta-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/**
+ * CTA titles
+ */
+.ai-page__cta-title,
+.ecommerce-page__cta-title,
+.redesign-page__cta-title,
+.tour-design-page__cta-title,
+.wordpress-page__cta-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-4xl);
+  font-weight: var(--font-weight-black);
+  color: var(--color-white);
+  margin-bottom: var(--spacing-6);
+}
+
+/**
+ * CTA button groups
+ */
+.ai-page__cta-buttons,
+.ecommerce-page__cta-buttons,
+.redesign-page__cta-buttons,
+.tour-design-page__cta-buttons,
+.wordpress-page__cta-buttons {
+  display: flex;
+  gap: var(--spacing-4);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .ai-page__hero-grid,
+  .ecommerce-page__hero-grid,
+  .redesign-page__hero-grid,
+  .tour-design-page__hero-grid,
+  .wordpress-page__hero-grid,
+  .ai-page__benefits::before,
+  .ecommerce-page__benefits::before,
+  .redesign-page__benefits::before,
+  .tour-design-page__benefits::before,
+  .wordpress-page__benefits::before {
+    animation: none;
+  }
+
+  .ai-page__orb,
+  .ecommerce-page__orb,
+  .redesign-page__orb,
+  .tour-design-page__orb,
+  .wordpress-page__orb {
+    animation: none;
+  }
+
+  .ai-page__feature-card:hover,
+  .ecommerce-page__feature-card:hover,
+  .redesign-page__feature-card:hover,
+  .tour-design-page__feature-card:hover,
+  .wordpress-page__feature-card:hover {
+    transform: none;
+  }
+}

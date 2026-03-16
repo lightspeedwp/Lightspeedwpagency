@@ -1,0 +1,197 @@
+/**
+ * System Page Shared — Imports + Base + Breadcrumbs + Hero + Sections + Benefits
+ *
+ * Sub-file 1/2 of system-page-shared.css
+ * BEM: .system-page
+ */
+
+/* ============================================
+   BASE IMPORTS — Phase 1 Optimization
+   ============================================ */
+
+@import '../../base/grid-utilities.css';
+@import '../../base/card-base.css';
+@import '../../patterns/hero/hero-base.css';
+
+/* ============================================
+   SYSTEM PAGE STYLES
+   ============================================ */
+
+/* Base Container */
+.system-page {
+  font-family: var(--font-primary);
+  color: var(--foreground);
+  background: var(--background);
+}
+
+/* Breadcrumbs */
+.system-page__breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-6) var(--section-padding-x);
+  background: var(--card);
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.system-page__breadcrumb-link {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--primary);
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+.system-page__breadcrumb-link:hover {
+  color: var(--primary-dark);
+}
+
+.system-page__breadcrumb-separator {
+  width: 16px;
+  height: 16px;
+  color: var(--muted-foreground);
+}
+
+.system-page__breadcrumb-current {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--muted-foreground);
+}
+
+/* Hero */
+.system-page__hero {
+  padding: var(--spacing-20) var(--section-padding-x);
+  text-align: center;
+  background: linear-gradient(135deg, 
+    color-mix(in srgb, var(--accent) 5%, transparent),
+    color-mix(in srgb, var(--primary) 5%, transparent)
+  );
+}
+
+.system-page__hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.system-page__hero-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto var(--spacing-6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--accent), var(--primary));
+  border-radius: var(--radius-lg);
+}
+
+.system-page__hero-icon-svg {
+  width: 40px;
+  height: 40px;
+  color: var(--color-white);
+}
+
+.system-page__hero-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h1);
+  font-weight: var(--font-weight-black);
+  line-height: var(--line-height-tight);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-4);
+}
+
+.system-page__hero-tagline {
+  font-family: var(--font-secondary);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: var(--spacing-6);
+}
+
+.system-page__hero-description {
+  font-family: var(--font-primary);
+  font-size: var(--text-lead);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-relaxed);
+  color: var(--muted-foreground);
+}
+
+/* Section Shared Styles */
+.system-page__what,
+.system-page__why,
+.system-page__how,
+.system-page__tiers {
+  padding: var(--spacing-20) var(--section-padding-x);
+}
+
+.system-page__why {
+  background: var(--card);
+}
+
+.system-page__section-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.system-page__section-heading {
+  font-family: var(--font-primary);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-snug);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-6);
+  text-align: center;
+}
+
+.system-page__section-text {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-relaxed);
+  color: var(--muted-foreground);
+  margin-bottom: var(--spacing-6);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Benefits List */
+.system-page__benefits-list {
+  list-style: none;
+  padding: 0;
+  margin: var(--spacing-8) 0 0 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-4);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 768px) {
+  .system-page__benefits-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.system-page__benefit {
+  display: flex;
+  align-items: start;
+  gap: var(--spacing-3);
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-normal);
+  color: var(--foreground);
+}
+
+.system-page__benefit-icon {
+  width: 20px;
+  height: 20px;
+  color: var(--success);
+  flex-shrink: 0;
+  margin-top: 2px;
+}

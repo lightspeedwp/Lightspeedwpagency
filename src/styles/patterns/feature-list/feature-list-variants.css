@@ -1,0 +1,311 @@
+/**
+ * FeatureList — Variants + Dark Mode + Accessibility + Responsive
+ *
+ * Sub-file 2/2 of feature-list.css
+ * BEM naming: .feature-list__*
+ */
+
+/* ============================================
+   VARIANT: CARDS (Default)
+   ============================================ */
+
+.feature-list--cards .feature-list__item {
+  padding: var(--spacing-6);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+}
+
+.feature-list--cards .feature-list__item:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.feature-list--cards .feature-list__item-link:hover .feature-list__icon-wrapper {
+  background: var(--primary);
+  box-shadow: 0 0 16px color-mix(in srgb, var(--primary) 40%, transparent);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .feature-list--cards .feature-list__item:hover {
+    transform: none;
+  }
+}
+
+/* ============================================
+   VARIANT: GLASS (Glassmorphism)
+   Uses glass-effect-base.css
+   ============================================ */
+
+.feature-list--glass .feature-list__item {
+  /* Inherits from .glass-effect-base */
+  padding: var(--spacing-6);
+  background: color-mix(in srgb, var(--card) 60%, transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid color-mix(in srgb, var(--border) 30%, transparent);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s ease;
+}
+
+.feature-list--glass .feature-list__item:hover {
+  background: color-mix(in srgb, var(--card) 80%, transparent);
+  border-color: var(--primary);
+  box-shadow: 0 8px 32px var(--shadow-md);
+  transform: translateY(-4px);
+}
+
+/* Dark mode enhancement */
+.dark .feature-list--glass .feature-list__item {
+  background: color-mix(in srgb, var(--background) 40%, transparent);
+  border-color: color-mix(in srgb, var(--primary) 20%, transparent);
+}
+
+.dark .feature-list--glass .feature-list__item:hover {
+  background: color-mix(in srgb, var(--background) 60%, transparent);
+  border-color: var(--primary);
+  box-shadow: 0 0 24px color-mix(in srgb, var(--primary) 30%, transparent);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .feature-list--glass .feature-list__item:hover {
+    transform: none;
+  }
+}
+
+/* ============================================
+   VARIANT: MINIMAL (Clean, no borders)
+   ============================================ */
+
+.feature-list--minimal .feature-list__item {
+  padding: var(--spacing-4) 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+.feature-list--minimal .feature-list__item:hover {
+  background: transparent;
+}
+
+.feature-list--minimal .feature-list__icon-wrapper {
+  background: color-mix(in srgb, var(--primary) 10%, transparent);
+  color: var(--primary);
+}
+
+.feature-list--minimal .feature-list__item:hover .feature-list__icon-wrapper {
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+
+/* ============================================
+   VARIANT: COMPACT (Smaller sizing)
+   ============================================ */
+
+.feature-list--compact {
+  gap: var(--spacing-4);
+  margin-top: var(--spacing-4);
+}
+
+.feature-list--compact .feature-list__item {
+  padding: var(--spacing-4);
+  gap: var(--spacing-2);
+}
+
+.feature-list--compact .feature-list__icon-wrapper {
+  width: var(--spacing-10);
+  height: var(--spacing-10);
+}
+
+.feature-list--compact .feature-list__icon {
+  width: var(--spacing-5);
+  height: var(--spacing-5);
+}
+
+.feature-list--compact .feature-list__title {
+  font-size: var(--text-h6);
+}
+
+.feature-list--compact .feature-list__description {
+  font-size: var(--text-xs);
+}
+
+.feature-list--compact .feature-list__checklist {
+  margin-top: var(--spacing-2);
+  gap: var(--spacing-1);
+}
+
+/* ============================================
+   VARIANT: GLOW (Neon glow border)
+   ============================================ */
+
+.feature-list--glow .feature-list__item {
+  padding: var(--spacing-6);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+.feature-list--glow .feature-list__item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--accent, var(--secondary)));
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.feature-list--glow .feature-list__item:hover {
+  border-color: var(--primary);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px color-mix(in srgb, var(--primary) 15%, transparent);
+}
+
+.feature-list--glow .feature-list__item:hover::before {
+  opacity: 1;
+}
+
+.feature-list--glow .feature-list__icon-wrapper {
+  background: linear-gradient(135deg, var(--primary), var(--accent, var(--secondary)));
+  box-shadow: 0 0 16px color-mix(in srgb, var(--primary) 30%, transparent);
+}
+
+.feature-list--glow .feature-list__item:hover .feature-list__icon-wrapper {
+  transform: scale(1.1);
+  box-shadow: 0 0 24px color-mix(in srgb, var(--primary) 50%, transparent);
+}
+
+/* Dark mode glow enhancement */
+[data-theme="dark"] .feature-list--glow .feature-list__item {
+  background: var(--glass-bg, var(--card));
+  border-color: var(--glass-border, var(--border));
+}
+
+[data-theme="dark"] .feature-list--glow .feature-list__item:hover {
+  border-color: var(--primary);
+  box-shadow: 0 0 30px color-mix(in srgb, var(--primary) 25%, transparent);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .feature-list--glow .feature-list__item:hover {
+    transform: none;
+  }
+
+  .feature-list--glow .feature-list__item:hover .feature-list__icon-wrapper {
+    transform: none;
+  }
+}
+
+/* ============================================
+   DARK MODE
+   ============================================ */
+
+[data-theme="dark"] .feature-list__title {
+  color: var(--foreground);
+}
+
+[data-theme="dark"] .feature-list__description {
+  color: var(--muted-foreground);
+}
+
+[data-theme="dark"] .feature-list--cards .feature-list__item,
+[data-theme="dark"] .feature-list--compact .feature-list__item {
+  background: var(--card);
+  border-color: var(--border);
+}
+
+[data-theme="dark"] .feature-list--cards .feature-list__item:hover,
+[data-theme="dark"] .feature-list--compact .feature-list__item:hover {
+  border-color: var(--primary);
+  box-shadow: 0 0 20px color-mix(in srgb, var(--primary) 30%, transparent);
+}
+
+[data-theme="dark"] .feature-list__icon-wrapper {
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+
+[data-theme="dark"] .feature-list__item:hover .feature-list__icon-wrapper {
+  box-shadow: 0 0 16px color-mix(in srgb, var(--primary) 50%, transparent);
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+/* Focus states */
+.feature-list__item-link:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-lg);
+}
+
+.feature-list__item:focus-within {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .feature-list__item {
+    border-width: 2px;
+  }
+  
+  .feature-list__title {
+    font-weight: var(--font-weight-bold);
+  }
+  
+  .feature-list__check-icon {
+    border: 2px solid var(--primary);
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .feature-list__item,
+  .feature-list--cards .feature-list__item,
+  .feature-list--glass .feature-list__item,
+  .feature-list__icon-wrapper,
+  .feature-list__link-text {
+    transition: none;
+  }
+  
+  .feature-list__item:hover,
+  .feature-list--cards .feature-list__item:hover,
+  .feature-list--glass .feature-list__item:hover {
+    transform: none;
+  }
+}
+
+/* ============================================
+   RESPONSIVE ENHANCEMENTS
+   ============================================ */
+
+/* Mobile: Larger touch targets */
+@media (max-width: 768px) {
+  .feature-list__item-link {
+    min-height: 48px; /* WCAG touch target */
+  }
+  
+  .feature-list__item {
+    padding: var(--spacing-5);
+  }
+  
+  .feature-list--compact .feature-list__item {
+    padding: var(--spacing-3);
+  }
+}

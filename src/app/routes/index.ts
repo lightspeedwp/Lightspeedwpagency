@@ -4,7 +4,8 @@
  * Modular route architecture with split route groups for improved maintainability.
  * 
  * Route Groups:
- * - Core: Home, About, Services, Systems, Solutions
+ * - Core: Home, About, Services, Systems
+ * - Solutions: WordPress, WooCommerce, Tour Operators, etc.
  * - Content: Work (Portfolio), Insights (Blog)
  * - Media: Videos, Podcasts
  * - Post Formats: Audio, Gallery, Image, Quote, Link, Chat, Status, Standard, Aside
@@ -33,6 +34,7 @@ import { Template404 } from '../components/templates/404Template';
  * ═══════════════════════════════════════════ */
 
 import { coreRoutes } from './core.routes';
+import { solutionsRoutes } from './solutions.routes';
 import { contentRoutes } from './content.routes';
 import { mediaRoutes } from './media.routes';
 import { postFormatRoutes } from './post-formats.routes';
@@ -50,8 +52,11 @@ const routes: RouteObject[] = [
     path: '/',
     Component: RootLayout,
     children: [
-      // Core routes (Home, About, Services, Systems, Solutions)
+      // Core routes (Home, About, Services, Systems)
       ...coreRoutes,
+
+      // Solutions routes (WordPress, WooCommerce, Tour Operators, etc.)
+      ...solutionsRoutes,
 
       // Content routes (Work, Insights)
       ...contentRoutes,

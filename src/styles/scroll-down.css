@@ -16,7 +16,7 @@
   cursor: pointer;
   color: var(--primary-foreground);
   opacity: 0.8;
-  transition: opacity 0.3s ease;
+  transition: opacity var(--transition-base) ease;
   z-index: 20;
 }
 
@@ -36,5 +36,15 @@
   }
   50% {
     transform: translateY(-25%);
+  }
+}
+
+/* Accessibility: Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-down-arrow__icon {
+    animation: none;
+  }
+  .scroll-down-arrow {
+    transition: none;
   }
 }

@@ -1,0 +1,255 @@
+/**
+ * Section Styles — Content & Testimonial Variants
+ *
+ * WordPress FSE content and testimonial section style variations:
+ *   - content-default: standard bg, basic typography
+ *   - content-feature: card bg, bordered
+ *   - content-editorial: long-form with lists
+ *   - testimonial-default: muted bg, card layout
+ *   - testimonial-highlight: primary bg, centered quote
+ *   - testimonial-grid: card grid with hover
+ *
+ * Maps to theme.json "styles.blocks.core/group.variations"
+ * 100% CSS variables for all styling.
+ *
+ * @see /src/styles/section-styles.css (orchestrator)
+ */
+
+/* ========================================
+   CONTENT SECTION STYLES
+   ======================================== */
+
+.section-style-content-default {
+  background-color: var(--background);
+  color: var(--foreground);
+  padding-top: var(--section-padding-y);
+  padding-bottom: var(--section-padding-y);
+}
+
+.section-style-content-default h2,
+.section-style-content-default h3,
+.section-style-content-default h4 {
+  font-family: var(--font-primary);
+  font-weight: 500;
+  color: var(--foreground);
+  line-height: var(--line-height-snug);
+  margin-bottom: var(--spacing-6);
+}
+
+.section-style-content-default h2 {
+  font-size: var(--text-h2);
+}
+
+.section-style-content-default h3 {
+  font-size: var(--text-h3);
+}
+
+.section-style-content-default p {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  color: var(--foreground);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--spacing-6);
+}
+
+.section-style-content-feature {
+  background-color: var(--card);
+  color: var(--foreground);
+  padding-top: var(--section-padding-y);
+  padding-bottom: var(--section-padding-y);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.section-style-content-feature h2 {
+  font-family: var(--font-primary);
+  font-size: var(--text-h2);
+  font-weight: 500;
+  color: var(--foreground);
+  margin-bottom: var(--spacing-6);
+}
+
+.section-style-content-feature p {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-relaxed);
+}
+
+.section-style-content-editorial {
+  background-color: var(--background);
+  color: var(--foreground);
+  padding-top: var(--section-padding-y);
+  padding-bottom: var(--section-padding-y);
+}
+
+.section-style-content-editorial h2,
+.section-style-content-editorial h3,
+.section-style-content-editorial h4 {
+  font-family: var(--font-primary);
+  font-weight: 500;
+  color: var(--foreground);
+  line-height: var(--line-height-snug);
+  margin-top: var(--spacing-10);
+  margin-bottom: var(--spacing-4);
+}
+
+.section-style-content-editorial p {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  color: var(--foreground);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--spacing-6);
+}
+
+.section-style-content-editorial ul,
+.section-style-content-editorial ol {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  color: var(--foreground);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--spacing-6);
+  padding-left: var(--spacing-8);
+}
+
+/* ========================================
+   TESTIMONIAL SECTION STYLES
+   ======================================== */
+
+.section-style-testimonial-default {
+  background-color: var(--muted);
+  color: var(--foreground);
+  padding-top: var(--section-padding-y);
+  padding-bottom: var(--section-padding-y);
+}
+
+.section-style-testimonial-default h2 {
+  font-family: var(--font-primary);
+  font-size: var(--text-h2);
+  font-weight: 500;
+  color: var(--foreground);
+  text-align: center;
+  margin-bottom: var(--spacing-12);
+}
+
+.section-style-testimonial-default .testimonial-card {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-8);
+  position: relative;
+}
+
+.section-style-testimonial-default .testimonial-quote {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  color: var(--foreground);
+  line-height: var(--line-height-relaxed);
+  font-style: italic;
+  margin-bottom: var(--spacing-6);
+}
+
+.section-style-testimonial-default .testimonial-author {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: 500;
+  color: var(--foreground);
+  margin-bottom: var(--spacing-1);
+}
+
+.section-style-testimonial-default .testimonial-role {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+}
+
+.section-style-testimonial-default .testimonial-company {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+}
+
+.section-style-testimonial-highlight {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  padding-top: var(--section-padding-y);
+  padding-bottom: var(--section-padding-y);
+  position: relative;
+  overflow: hidden;
+}
+
+.section-style-testimonial-highlight::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 0%, var(--accent) 100%);
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.section-style-testimonial-highlight h2 {
+  font-family: var(--font-primary);
+  font-size: var(--text-h2);
+  font-weight: 500;
+  color: var(--primary-foreground);
+  text-align: center;
+  margin-bottom: var(--spacing-12);
+}
+
+.section-style-testimonial-highlight .testimonial-quote {
+  font-family: var(--font-primary);
+  font-size: var(--text-xl);
+  color: var(--primary-foreground);
+  line-height: var(--line-height-relaxed);
+  font-style: italic;
+  text-align: center;
+  margin-bottom: var(--spacing-8);
+  /* CONTRAST FIX: Removed opacity 0.95 to maintain AAA contrast in light mode */
+}
+
+.section-style-testimonial-highlight .testimonial-author {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  font-weight: 500;
+  color: var(--primary-foreground);
+  text-align: center;
+}
+
+.section-style-testimonial-highlight .testimonial-role,
+.section-style-testimonial-highlight .testimonial-company {
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  color: var(--primary-foreground);
+  text-align: center;
+  /* CONTRAST FIX: Removed opacity 0.9 to maintain AAA contrast in light mode */
+}
+
+.section-style-testimonial-grid {
+  background-color: var(--background);
+  color: var(--foreground);
+  padding-top: var(--section-padding-y);
+  padding-bottom: var(--section-padding-y);
+}
+
+.section-style-testimonial-grid h2 {
+  font-family: var(--font-primary);
+  font-size: var(--text-h2);
+  font-weight: 500;
+  color: var(--foreground);
+  text-align: center;
+  margin-bottom: var(--spacing-12);
+}
+
+.section-style-testimonial-grid .testimonial-card {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-8);
+  height: 100%;
+  transition: transform var(--transition-base) var(--ease-in-out), box-shadow var(--transition-base) var(--ease-in-out);
+}
+
+.section-style-testimonial-grid .testimonial-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
+}

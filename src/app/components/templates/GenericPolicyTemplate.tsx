@@ -127,7 +127,7 @@ export function GenericPolicyTemplate() {
             </aside>
 
             {/* Main Content Area */}
-            <main className="legal-content__main" style={{ gridColumn: '2 / -1' }}>
+            <div className="legal-content__main" role="region" aria-label="Policy content" style={{ gridColumn: '2 / -1' }}>
               <ScrollReveal animation="fade-up">
                 <div className="legal-content__document wp-block-group">
                   <Heading level={2} className="legal-content__heading">Overview</Heading>
@@ -158,7 +158,7 @@ export function GenericPolicyTemplate() {
                   </div>
                 </div>
               </ScrollReveal>
-            </main>
+            </div>
           </div>
         </Container>
       </section>

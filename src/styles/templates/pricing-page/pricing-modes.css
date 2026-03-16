@@ -1,0 +1,182 @@
+/**
+ * Pricing Page — Dark Mode, Reduced Motion & Mobile
+ *
+ * Dark mode overrides for all pricing components,
+ * reduced motion guards, and mobile responsive overrides.
+ *
+ * @see /src/styles/templates/pricing-page.css (orchestrator)
+ */
+
+/* ============================================
+   5. DARK MODE OVERRIDES
+   ============================================ */
+
+.dark .pricing-page__hero {
+  background: linear-gradient(135deg, var(--background) 0%, color-mix(in srgb, var(--background) 80%, var(--primary)) 100%);
+}
+
+.dark .pricing-page__hero-mesh {
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--primary) 10%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--primary) 10%, transparent) 1px, transparent 1px);
+}
+
+.dark .pricing-page__hero-orb--1 {
+  background: radial-gradient(circle, color-mix(in srgb, var(--primary) 30%, transparent), transparent 70%);
+}
+
+.dark .pricing-page__hero-orb--2 {
+  background: radial-gradient(circle, color-mix(in srgb, var(--accent) 25%, transparent), transparent 70%);
+}
+
+.dark .pricing-page__hero-stat {
+  background: color-mix(in srgb, var(--card) 50%, transparent);
+  border-color: color-mix(in srgb, var(--primary) 15%, transparent);
+}
+
+.dark .pricing-page__hero-stat:hover {
+  box-shadow: var(--shadow-glow);
+}
+
+.dark .pricing-page__hero-badge {
+  background: color-mix(in srgb, var(--primary) 20%, transparent);
+  border-color: color-mix(in srgb, var(--primary) 40%, transparent);
+}
+
+/* Section title underline glows more in dark mode */
+.dark .pricing-page__section-title::after {
+  box-shadow: 0 0 8px color-mix(in srgb, var(--primary) 40%, transparent);
+}
+
+/* Cards: stronger glow in dark mode */
+.dark .pricing-page__package-card {
+  background: color-mix(in srgb, var(--card) 60%, transparent);
+  border-color: color-mix(in srgb, var(--primary) 10%, transparent);
+}
+
+.dark .pricing-page__package-card:hover {
+  box-shadow: var(--shadow-neon);
+  border-color: color-mix(in srgb, var(--primary) 50%, transparent);
+}
+
+.dark .pricing-page__package-card--popular {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-neon-intense);
+}
+
+.dark .pricing-page__package-card--popular:hover {
+  box-shadow:
+    0 0 12px var(--neon-color),
+    0 0 40px color-mix(in srgb, var(--neon-color) 50%, transparent),
+    0 0 80px color-mix(in srgb, var(--neon-color) 20%, transparent);
+}
+
+.dark .pricing-page__package-icon {
+  background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 25%, transparent), color-mix(in srgb, var(--accent) 15%, transparent));
+  border-color: color-mix(in srgb, var(--primary) 35%, transparent);
+}
+
+.dark .pricing-page__feature-icon--included {
+  filter: drop-shadow(0 0 6px color-mix(in srgb, var(--primary) 60%, transparent));
+}
+
+/* Support section dark */
+.dark .pricing-page__support-section {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--background) 80%, var(--primary)) 0%,
+    var(--background) 100%
+  );
+}
+
+.dark .pricing-page__support-section::before {
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--primary) 8%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--primary) 8%, transparent) 1px, transparent 1px);
+}
+
+/* Section orbs brighter in dark mode */
+.dark .pricing-page__section-orb--1 {
+  background: radial-gradient(circle, color-mix(in srgb, var(--primary) 18%, transparent), transparent 70%);
+}
+
+.dark .pricing-page__section-orb--2 {
+  background: radial-gradient(circle, color-mix(in srgb, var(--accent) 15%, transparent), transparent 70%);
+}
+
+/* Payment cards dark */
+.dark .pricing-page__payment-card {
+  background: color-mix(in srgb, var(--card) 50%, transparent);
+  border-color: color-mix(in srgb, var(--primary) 10%, transparent);
+}
+
+.dark .pricing-page__payment-card:hover {
+  box-shadow: var(--shadow-neon);
+  border-color: color-mix(in srgb, var(--primary) 40%, transparent);
+}
+
+.dark .pricing-page__payment-icon-wrapper {
+  background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 25%, transparent), color-mix(in srgb, var(--accent) 15%, transparent));
+  border-color: color-mix(in srgb, var(--primary) 35%, transparent);
+}
+
+/* ============================================
+   6. REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .pricing-page__package-card,
+  .pricing-page__payment-card,
+  .pricing-page__hero-stat {
+    transition: none;
+  }
+
+  .pricing-page__package-card:hover,
+  .pricing-page__package-card--popular:hover,
+  .pricing-page__payment-card:hover,
+  .pricing-page__hero-stat:hover {
+    transform: none;
+  }
+}
+
+/* ============================================
+   7. MOBILE OVERRIDES
+   ============================================ */
+
+@media (max-width: 767px) {
+  .pricing-page__hero {
+    padding: var(--spacing-10) 0 var(--spacing-12);
+  }
+
+  .pricing-page__hero-orb {
+    display: none;
+  }
+
+  .pricing-page__section-orb {
+    display: none;
+  }
+
+  .pricing-page__hero-stats {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-3);
+  }
+
+  .pricing-page__hero-stat {
+    width: 100%;
+    max-width: 16rem;
+    flex-direction: row;
+    justify-content: center;
+    gap: var(--spacing-3);
+  }
+}
+
+@media (max-width: 479px) {
+  .pricing-page__package-card {
+    padding: var(--spacing-6);
+  }
+
+  .pricing-page__payment-card {
+    padding: var(--spacing-6);
+  }
+}

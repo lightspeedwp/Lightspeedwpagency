@@ -1,0 +1,202 @@
+/**
+ * Section Styles — Stats, Pricing, Forms & Responsive
+ *
+ * WordPress FSE section style variations:
+ *   - stats-default: muted bg, stat number/label/description
+ *   - stats-highlight: primary bg, white text
+ *   - pricing-default: card-based pricing, hover lift
+ *   - pricing-featured: accent accent border
+ *   - form-default: standard form inputs
+ *   - form-highlight: muted bg, centered heading
+ *   - Responsive: mobile adjustments for all section types
+ *
+ * Maps to theme.json "styles.blocks.core/group.variations"
+ * 100% CSS variables for all styling.
+ *
+ * @see /src/styles/section-styles.css (orchestrator)
+ */
+
+/* ========================================
+   STATS SECTION STYLES
+   ======================================== */
+
+.section-style-stats-default {
+  background-color: var(--muted);
+  color: var(--foreground);
+  padding-top: var(--section-padding-y);
+  padding-bottom: var(--section-padding-y);
+}
+
+.section-style-stats-default .stat-number {
+  font-family: var(--font-primary);
+  font-size: var(--text-h1);
+  font-weight: 600;
+  color: var(--primary);
+  line-height: var(--line-height-tight);
+  margin-bottom: var(--spacing-2);
+}
+
+.section-style-stats-default .stat-label {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: 500;
+  color: var(--foreground);
+}
+
+.section-style-stats-default .stat-description {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+}
+
+.section-style-stats-highlight {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  padding-top: var(--section-padding-y);
+  padding-bottom: var(--section-padding-y);
+}
+
+.section-style-stats-highlight .stat-number {
+  font-family: var(--font-primary);
+  font-size: var(--text-h1);
+  font-weight: 600;
+  color: var(--primary-foreground);
+  line-height: var(--line-height-tight);
+  margin-bottom: var(--spacing-2);
+}
+
+.section-style-stats-highlight .stat-label {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: 500;
+  color: var(--primary-foreground);
+  /* CONTRAST FIX: Removed opacity 0.9 to maintain AAA contrast in light mode */
+}
+
+/* ========================================
+   PRICING SECTION STYLES
+   ======================================== */
+
+.section-style-pricing-default {
+  background-color: var(--background);
+  color: var(--foreground);
+  padding-top: var(--section-padding-y);
+  padding-bottom: var(--section-padding-y);
+}
+
+.section-style-pricing-default h2 {
+  font-family: var(--font-primary);
+  font-size: var(--text-h2);
+  font-weight: 500;
+  color: var(--foreground);
+  text-align: center;
+  margin-bottom: var(--spacing-12);
+}
+
+.section-style-pricing-default .pricing-card {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-8);
+  transition: transform var(--transition-base) var(--ease-in-out), box-shadow var(--transition-base) var(--ease-in-out);
+}
+
+.section-style-pricing-default .pricing-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.section-style-pricing-featured {
+  background-color: var(--accent);
+  color: var(--accent-foreground);
+  border: 2px solid var(--accent);
+}
+
+/* ========================================
+   FORM SECTION STYLES
+   ======================================== */
+
+.section-style-form-default {
+  background-color: var(--background);
+  color: var(--foreground);
+  padding-top: var(--section-padding-y);
+  padding-bottom: var(--section-padding-y);
+}
+
+.section-style-form-default h2 {
+  font-family: var(--font-primary);
+  font-size: var(--text-h2);
+  font-weight: 500;
+  color: var(--foreground);
+  margin-bottom: var(--spacing-8);
+}
+
+.section-style-form-default label {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: 500;
+  color: var(--foreground);
+  display: block;
+  margin-bottom: var(--spacing-2);
+}
+
+.section-style-form-default input,
+.section-style-form-default textarea,
+.section-style-form-default select {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  color: var(--foreground);
+  background-color: var(--background);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--spacing-3) var(--spacing-4);
+  width: 100%;
+}
+
+.section-style-form-highlight {
+  background-color: var(--muted);
+  color: var(--foreground);
+  padding-top: var(--section-padding-y);
+  padding-bottom: var(--section-padding-y);
+}
+
+.section-style-form-highlight h2 {
+  font-family: var(--font-primary);
+  font-size: var(--text-h2);
+  font-weight: 500;
+  color: var(--foreground);
+  margin-bottom: var(--spacing-8);
+  text-align: center;
+}
+
+/* ========================================
+   Responsive Adjustments
+   ======================================== */
+
+@media (max-width: 768px) {
+  /* Hero sections */
+  .section-style-hero-primary,
+  .section-style-hero-secondary {
+    min-height: 400px;
+  }
+  
+  .section-style-hero-primary::after {
+    width: 24rem;
+    height: 24rem;
+  }
+  
+  /* Button groups */
+  .section-style-hero-primary .button-group,
+  .section-style-cta-primary .button-group,
+  .section-style-cta-secondary .button-group,
+  .section-style-cta-accent .button-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  /* Trust indicators */
+  .section-style-cta-primary .trust-indicators {
+    flex-direction: column;
+    gap: var(--spacing-4);
+  }
+}

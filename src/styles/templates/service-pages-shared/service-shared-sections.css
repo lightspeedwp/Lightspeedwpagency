@@ -1,0 +1,279 @@
+/**
+ * Service Pages Shared — Headers + Benefits + Features + Process + Lists
+ *
+ * Sub-file 1/2 of service-pages-shared.css
+ * BEM naming: .service-page__*
+ */
+
+/* ============================================================
+   SECTION HEADERS -- flex column with blockGap
+   ============================================================ */
+
+.service-page__section-header {
+  text-align: center;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: var(--spacing-12);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.service-page__section-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h2);
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.service-page__section-description {
+  font-family: var(--font-secondary);
+  font-size: var(--text-lg);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-normal);
+}
+
+/* ============================================================
+   BENEFITS GRID (4-COLUMN)
+   ============================================================ */
+
+.service-page__benefits-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-8);
+}
+
+@media (min-width: 768px) {
+  .service-page__benefits-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .service-page__benefits-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Benefit card -- flex column with blockGap */
+.service-page__benefit-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-8);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.service-page__benefit-card:hover {
+  border-color: var(--primary);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+.service-page__benefit-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary);
+  color: var(--primary-foreground);
+  border-radius: var(--radius);
+}
+
+.service-page__benefit-icon svg {
+  width: 24px;
+  height: 24px;
+  color: var(--primary);
+  margin-top: calc(var(--spacing-1) / 2); /* optical icon alignment */
+}
+
+.service-page__benefit-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.service-page__benefit-description {
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-normal);
+}
+
+/* ============================================================
+   FEATURES GRID (3-COLUMN)
+   ============================================================ */
+
+.service-page__features-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-8);
+}
+
+@media (min-width: 768px) {
+  .service-page__features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .service-page__features-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Feature card -- flex column with blockGap */
+.service-page__feature-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.service-page__feature-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary);
+  color: var(--primary-foreground);
+  border-radius: var(--radius);
+}
+
+.service-page__feature-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.service-page__feature-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.service-page__feature-description {
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-normal);
+}
+
+/* ============================================================
+   PROCESS STEPS (5 STEPS)
+   ============================================================ */
+
+.service-page__process-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-6);
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.service-page__process-step {
+  display: flex;
+  gap: var(--spacing-6);
+  align-items: flex-start;
+}
+
+.service-page__process-number {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary);
+  color: var(--primary-foreground);
+  border-radius: 50%;
+  font-family: var(--font-primary);
+  font-size: var(--text-xl);
+  font-weight: 600;
+}
+
+/* Process content -- flex column with blockGap */
+.service-page__process-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.service-page__process-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.service-page__process-description {
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-normal);
+}
+
+/* ============================================================
+   LIST GRIDS (PLATFORMS, STANDARDS, CONTENT TYPES)
+   ============================================================ */
+
+.service-page__list-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-6);
+}
+
+@media (min-width: 640px) {
+  .service-page__list-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .service-page__list-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* List item -- flex column with blockGap */
+.service-page__list-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--spacing-6);
+  text-align: center;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.service-page__list-item:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.service-page__list-name {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.service-page__list-description {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+}

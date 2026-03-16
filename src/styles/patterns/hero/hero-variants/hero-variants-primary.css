@@ -1,0 +1,171 @@
+/**
+ * Hero Variants — Primary (Minimal, Feature, Splash, Service)
+ *
+ * Sub-file 1/2 of hero-variants.css
+ * Minimal + Feature + Splash + Service hero variants
+ *
+ * @see hero-base.css — Base hero styles
+ */
+
+/* ============================================
+   MINIMAL HERO VARIANT
+   ============================================ */
+
+.hero-variant-minimal {
+  padding: var(--spacing-12) 0;
+}
+
+.hero-variant-minimal .hero-base__gradient,
+.hero-variant-minimal .hero-base__orb {
+  display: none;
+}
+
+.hero-variant-minimal .hero-base__title {
+  font-size: var(--text-h2);
+  margin-bottom: var(--spacing-4);
+}
+
+.hero-variant-minimal .hero-base__description {
+  font-size: var(--text-base);
+  margin-bottom: var(--spacing-6);
+}
+
+@media (max-width: 767px) {
+  .hero-variant-minimal {
+    padding: var(--spacing-8) 0;
+  }
+}
+
+/* ============================================
+   FEATURE HERO VARIANT
+   ============================================ */
+
+.hero-variant-feature {
+  text-align: left;
+  padding: var(--spacing-20) 0;
+}
+
+.hero-variant-feature .hero-base__content {
+  max-width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-12);
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .hero-variant-feature .hero-base__content {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.hero-variant-feature .hero-base__text {
+  max-width: 600px;
+}
+
+.hero-variant-feature .hero-base__visual {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-variant-feature .hero-base__actions {
+  justify-content: flex-start;
+}
+
+@media (max-width: 1023px) {
+  .hero-variant-feature {
+    text-align: center;
+  }
+
+  .hero-variant-feature .hero-base__text {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .hero-variant-feature .hero-base__actions {
+    justify-content: center;
+  }
+}
+
+/* ============================================
+   SPLASH HERO VARIANT
+   ============================================ */
+
+.hero-variant-splash {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-20) 0;
+}
+
+.hero-variant-splash .hero-base__title {
+  font-size: clamp(2.5rem, 6vw + 1rem, 5rem);
+  margin-bottom: var(--spacing-8);
+}
+
+.hero-variant-splash .hero-base__description {
+  font-size: var(--text-xl);
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: var(--spacing-10);
+}
+
+.hero-variant-splash .hero-base__actions {
+  margin-bottom: var(--spacing-16);
+}
+
+/* Scroll down indicator */
+.hero-variant-splash::after {
+  content: '';
+  position: absolute;
+  bottom: var(--spacing-8);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24px;
+  height: 40px;
+  border: 2px solid var(--muted-foreground);
+  border-radius: var(--radius-full);
+  opacity: 0.4;
+}
+
+@media (max-width: 767px) {
+  .hero-variant-splash {
+    min-height: auto;
+    padding: var(--spacing-16) 0;
+  }
+
+  .hero-variant-splash::after {
+    display: none;
+  }
+}
+
+/* ============================================
+   SERVICE HERO VARIANT
+   ============================================ */
+
+.hero-variant-service {
+  padding: var(--spacing-20) 0;
+}
+
+.hero-variant-service .hero-base__badge {
+  margin-bottom: var(--spacing-4);
+}
+
+.hero-variant-service .hero-base__title {
+  margin-bottom: var(--spacing-6);
+}
+
+.hero-variant-service .hero-base__description {
+  margin-bottom: var(--spacing-8);
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-variant-service .hero-base__features {
+  margin-top: var(--spacing-12);
+  padding-top: var(--spacing-12);
+  border-top: 1px solid var(--border-soft);
+}

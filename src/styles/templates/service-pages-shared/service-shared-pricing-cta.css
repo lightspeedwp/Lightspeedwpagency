@@ -1,0 +1,257 @@
+/**
+ * Service Pages Shared — Pricing + Case Study + CTA
+ *
+ * Sub-file 2/2 of service-pages-shared.css
+ * BEM naming: .service-page__*
+ */
+
+/* ============================================================
+   PRICING PACKAGES (3-TIER)
+   ============================================================ */
+
+.service-page__pricing-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-8);
+  padding-top: var(--spacing-12);
+  /* margin-top converted to padding-top — section-level spacing */
+}
+
+@media (min-width: 768px) {
+  .service-page__pricing-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Pricing card -- flex column with blockGap */
+.service-page__pricing-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+  position: relative;
+}
+
+.service-page__pricing-card--popular {
+  border-color: var(--primary);
+  border-width: 2px;
+  box-shadow: var(--shadow-hover);
+}
+
+.service-page__pricing-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--primary);
+  color: var(--primary-foreground);
+  font-family: var(--font-primary);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: var(--spacing-1) var(--spacing-4);
+  border-radius: var(--radius-full);
+  letter-spacing: var(--letter-spacing-wider);
+}
+
+.service-page__pricing-name {
+  font-family: var(--font-primary);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.service-page__pricing-tagline {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+}
+
+.service-page__pricing-price {
+  /* price wrapper */
+}
+
+.service-page__pricing-amount {
+  font-family: var(--font-primary);
+  font-size: var(--text-4xl);
+  font-weight: 700;
+  color: var(--foreground);
+}
+
+.service-page__pricing-period {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  margin-left: var(--spacing-2);
+}
+
+.service-page__pricing-description {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  padding-bottom: var(--spacing-6);
+  border-bottom: 1px solid var(--border);
+}
+
+/* Pricing features list -- flex column with blockGap */
+.service-page__pricing-features {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.service-page__pricing-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-3);
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  color: var(--foreground);
+}
+
+.service-page__pricing-feature svg {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  color: var(--primary);
+  margin-top: calc(var(--spacing-1) / 2); /* optical icon alignment */
+}
+
+/* ============================================================
+   CASE STUDY -- flex column with blockGap
+   ============================================================ */
+
+.service-page__case-study {
+  background: var(--muted);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-12);
+  /* margin-top removed — handled by parent gap */
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+}
+
+/* Case study header -- flex column with blockGap */
+.service-page__case-study-header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.service-page__case-study-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-2xl);
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.service-page__case-study-quote {
+  font-family: var(--font-secondary);
+  font-size: var(--text-xl);
+  font-style: italic;
+  color: var(--foreground);
+  line-height: var(--line-height-normal);
+}
+
+.service-page__case-study-author {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.service-page__case-study-role {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+}
+
+.service-page__results-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-6);
+}
+
+@media (min-width: 640px) {
+  .service-page__results-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .service-page__results-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Result item -- flex column with blockGap */
+.service-page__result-item {
+  text-align: center;
+  padding: var(--spacing-6);
+  background: var(--card);
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.service-page__result-metric {
+  font-family: var(--font-primary);
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.service-page__result-label {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+}
+
+/* ============================================================
+   CTA SECTION -- flex column with blockGap
+   ============================================================ */
+
+.service-page__cta-container {
+  text-align: center;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-6);
+}
+
+.service-page__cta-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-3xl);
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.service-page__cta-description {
+  font-family: var(--font-secondary);
+  font-size: var(--text-lg);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-normal);
+}
+
+.service-page__cta-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  align-items: center;
+}
+
+@media (min-width: 640px) {
+  .service-page__cta-buttons {
+    flex-direction: row;
+    justify-content: center;
+  }
+}

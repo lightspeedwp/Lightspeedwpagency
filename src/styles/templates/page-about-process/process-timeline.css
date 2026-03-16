@@ -1,0 +1,316 @@
+/**
+ * About Process Page — Timeline & Steps
+ *
+ * Vertical snake timeline with neon line, step nodes,
+ * glassmorphism content cards, deliverable tags.
+ *
+ * @see /src/styles/templates/page-about-process.css (orchestrator)
+ */
+
+/* Process Steps (Vertical Snake Timeline) */
+.about-process__steps {
+  position: relative;
+  padding: var(--spacing-24) 0;
+  background-color: var(--background);
+}
+
+/* Neon accent line at section top */
+.about-process__steps::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-glow-sm);
+}
+
+.about-process__steps-header {
+  text-align: center;
+  margin-bottom: var(--spacing-16);
+}
+
+.about-process__steps-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-4xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-4);
+  color: var(--foreground);
+}
+
+.about-process__steps-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  margin: var(--spacing-4) auto 0;
+  border-radius: var(--radius-full);
+}
+
+.dark .about-process__steps-title::after {
+  box-shadow: var(--shadow-glow-sm);
+}
+
+.about-process__steps-desc {
+  font-family: var(--font-secondary);
+  font-size: var(--text-lg);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-relaxed);
+}
+
+.about-process__steps-container {
+  position: relative;
+}
+
+/* Vertical neon line */
+.about-process__timeline-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--primary), var(--secondary));
+  transform: translateX(-50%);
+  z-index: 0;
+  box-shadow: var(--shadow-glow-sm);
+  animation: process-line-glow 3s ease-in-out infinite;
+}
+
+@keyframes process-line-glow {
+  0%, 100% {
+    box-shadow: var(--shadow-glow-sm);
+    opacity: 1;
+  }
+  50% {
+    box-shadow: var(--shadow-glow);
+    opacity: 0.8;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-process__timeline-line {
+    animation: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-process__timeline-line {
+    left: var(--spacing-8);
+  }
+}
+
+/* Step item */
+.about-process__step-item {
+  position: relative;
+  margin-bottom: var(--spacing-24);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-process__step-item:last-child {
+  margin-bottom: 0;
+}
+
+/* Content Card */
+.about-process__step-content {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-color: var(--glass-border);
+  overflow: hidden;
+}
+
+.about-process__step-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary), var(--primary));
+  background-size: 200% 100%;
+  animation: processStripeShimmer 3s linear infinite;
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+}
+
+.dark .about-process__step-content {
+  background: var(--card);
+  border-color: var(--border-soft);
+}
+
+.about-process__step-content:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary);
+}
+
+.dark .about-process__step-content:hover {
+  box-shadow: var(--shadow-neon);
+  border-color: var(--neon-color);
+}
+
+/* Desktop: Alternating sides */
+@media (min-width: 769px) {
+  .about-process__step-item:nth-child(odd) {
+    justify-content: flex-start;
+  }
+
+  .about-process__step-item:nth-child(even) {
+    justify-content: flex-end;
+  }
+
+  .about-process__step-item:nth-child(odd) .about-process__step-content {
+    margin-right: 55%;
+  }
+
+  .about-process__step-item:nth-child(even) .about-process__step-content {
+    margin-left: 55%;
+  }
+}
+
+/* Mobile: Stacked */
+@media (max-width: 768px) {
+  .about-process__step-content {
+    width: calc(100% - var(--spacing-16));
+    margin-left: var(--spacing-16);
+  }
+}
+
+/* Center node (phase number) */
+.about-process__step-node {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: var(--spacing-12);
+  height: var(--spacing-12);
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: var(--color-white);
+  border: none;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--text-sm);
+  box-shadow: var(--shadow-neon);
+  transition: transform var(--transition-slow) var(--ease-out),
+              box-shadow var(--transition-slow) var(--ease-out);
+}
+
+.about-process__step-item:hover .about-process__step-node {
+  transform: translate(-50%, -50%) scale(1.15);
+  box-shadow: var(--shadow-neon-intense);
+}
+
+.dark .about-process__step-node {
+  background: linear-gradient(135deg, var(--neon-color), var(--accent));
+  color: var(--sidebar);
+  border: none;
+  box-shadow: 0 0 20px color-mix(in srgb, var(--neon-color) 50%, transparent);
+}
+
+@media (max-width: 768px) {
+  .about-process__step-node {
+    left: var(--spacing-8);
+  }
+}
+
+/* Step content layout */
+.about-process__step-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+  margin-bottom: var(--spacing-4);
+}
+
+.about-process__step-icon {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: var(--color-white);
+  box-shadow: 0 0 16px color-mix(in srgb, var(--primary) 30%, transparent);
+  padding: var(--spacing-3);
+  border-radius: var(--radius-lg);
+  transition: transform var(--transition-slow) var(--ease-out);
+  flex-shrink: 0;
+}
+
+.dark .about-process__step-icon {
+  background: linear-gradient(135deg, var(--neon-color), var(--accent));
+  color: var(--color-white);
+  box-shadow: 0 0 16px color-mix(in srgb, var(--neon-color) 40%, transparent);
+}
+
+.about-process__step-content:hover .about-process__step-icon {
+  transform: scale(1.1);
+  box-shadow: 0 0 24px color-mix(in srgb, var(--primary) 50%, transparent);
+}
+
+.dark .about-process__step-content:hover .about-process__step-icon {
+  box-shadow: 0 0 24px color-mix(in srgb, var(--neon-color) 60%, transparent);
+}
+
+.about-process__step-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+}
+
+.about-process__step-desc {
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--spacing-6);
+}
+
+/* Deliverables */
+.about-process__deliverables {
+  margin-top: var(--spacing-6);
+  padding-top: var(--spacing-6);
+  border-top: 1px solid var(--border-soft);
+}
+
+.about-process__deliverables-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+  color: var(--muted-foreground);
+  margin-bottom: var(--spacing-3);
+  font-weight: var(--font-weight-semibold);
+}
+
+.about-process__deliverables-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-2);
+}
+
+.about-process__tag {
+  font-family: var(--font-secondary);
+  font-size: var(--text-xs);
+  padding: var(--spacing-1) var(--spacing-3);
+  background: var(--primary-soft);
+  border-radius: var(--radius-full);
+  color: var(--primary);
+  transition: all var(--transition-base) var(--ease-out);
+  cursor: default;
+}
+
+.dark .about-process__tag {
+  background: color-mix(in srgb, var(--neon-color) 10%, transparent);
+  color: var(--neon-color);
+}
+
+.about-process__tag:hover {
+  background: var(--primary);
+  color: var(--primary-foreground);
+  box-shadow: var(--shadow-glow-sm);
+}

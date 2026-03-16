@@ -1,0 +1,197 @@
+/**
+ * Styleguide Page — Interactive States & Card Variants
+ *
+ * Button states, form input focus styles,
+ * and card variant showcase (default, glow, glass, elevated).
+ *
+ * @see /src/styles/templates/page-styleguide.css (orchestrator)
+ */
+
+/* ============================================
+   8. INTERACTIVE STATES
+   ============================================ */
+
+.styleguide__states__grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-12);
+}
+
+.styleguide__states__group-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-6);
+}
+
+.styleguide__states__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-4);
+  margin-bottom: var(--spacing-4);
+}
+
+.styleguide__states__inputs {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  max-width: 500px;
+}
+
+.styleguide__states__input,
+.styleguide__states__textarea {
+  width: 100%;
+  padding: var(--spacing-3) var(--spacing-4);
+  border-radius: var(--radius-lg);
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  background-color: var(--background);
+  color: var(--foreground);
+  border: 1px solid var(--border-soft);
+  outline: none;
+  transition: border-color var(--transition-base) var(--ease-out),
+              box-shadow var(--transition-base) var(--ease-out);
+}
+
+.styleguide__states__input:focus,
+.styleguide__states__textarea:focus {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-glow-sm);
+}
+
+.dark .styleguide__states__input:focus,
+.dark .styleguide__states__textarea:focus {
+  border-color: var(--neon-color);
+  box-shadow: var(--shadow-neon);
+}
+
+.styleguide__states__textarea {
+  resize: vertical;
+}
+
+/* ============================================
+   9. CARD VARIANTS
+   ============================================ */
+
+.styleguide__cards__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-6);
+}
+
+@media (min-width: 768px) { .styleguide__cards__grid { grid-template-columns: repeat(2, 1fr); } }
+
+.styleguide__cards__item {
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-8);
+  transition: all var(--transition-slow) var(--ease-out);
+  height: 100%;
+}
+
+.styleguide__cards__item:hover { transform: translateY(-4px); }
+
+/* Default */
+.styleguide__cards__item--default {
+  background: var(--card);
+  border: 1px solid var(--border-soft);
+}
+
+.styleguide__cards__item--default:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-md);
+}
+
+.dark .styleguide__cards__item--default:hover {
+  border-color: var(--neon-color);
+  box-shadow: var(--shadow-neon);
+}
+
+/* Glow */
+.styleguide__cards__item--glow {
+  position: relative;
+  background: var(--background);
+  padding: 2px;
+  overflow: hidden;
+}
+
+.styleguide__cards__glow-border {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  opacity: 0.15;
+  transition: opacity var(--transition-slow) var(--ease-out);
+}
+
+.styleguide__cards__item--glow:hover .styleguide__cards__glow-border {
+  opacity: 1;
+}
+
+.styleguide__cards__glow-inner {
+  position: relative;
+  background: var(--background);
+  border-radius: calc(var(--radius-xl) - 2px);
+  padding: var(--spacing-8);
+  height: 100%;
+  z-index: 1;
+}
+
+.dark .styleguide__cards__glow-inner {
+  background: var(--card);
+}
+
+/* Glass */
+.styleguide__cards__item--glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+}
+
+.styleguide__cards__item--glass:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+.dark .styleguide__cards__item--glass:hover {
+  box-shadow: var(--shadow-neon);
+}
+
+/* Elevated */
+.styleguide__cards__item--elevated {
+  background: var(--card);
+  box-shadow: var(--shadow-xl);
+}
+
+.styleguide__cards__item--elevated:hover {
+  box-shadow: var(--shadow-xl), var(--shadow-glow-sm);
+}
+
+/* Card inner */
+.styleguide__cards__card-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-3);
+}
+
+.styleguide__cards__card-desc {
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--spacing-4);
+}
+
+.styleguide__cards__card-code {
+  font-family: var(--font-primary);
+  font-size: var(--text-xs);
+  color: var(--primary);
+  background: var(--primary-soft);
+  padding: var(--spacing-1) var(--spacing-2);
+  border-radius: var(--radius-sm);
+}
+
+.dark .styleguide__cards__card-code {
+  color: var(--neon-color);
+  background: color-mix(in srgb, var(--neon-color) 12%, transparent);
+}

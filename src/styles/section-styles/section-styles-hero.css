@@ -1,0 +1,136 @@
+/**
+ * Section Styles — Hero Variants
+ *
+ * WordPress FSE hero section style variations:
+ *   - hero-primary: gradient bg, grid overlay, orb accent
+ *   - hero-secondary: muted bg, centered
+ *   - hero-minimal: plain bg, simple text
+ *
+ * Maps to theme.json "styles.blocks.core/group.variations"
+ * 100% CSS variables for all styling.
+ *
+ * @see /src/styles/section-styles.css (orchestrator)
+ */
+
+/* ========================================
+   HERO SECTION STYLES
+   ======================================== */
+
+.section-style-hero-primary {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  color: var(--primary-foreground);
+  position: relative;
+  overflow: hidden;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  padding-top: var(--section-padding-y);
+  padding-bottom: var(--section-padding-y);
+}
+
+.section-style-hero-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(var(--primary-foreground) 1px, transparent 1px),
+    linear-gradient(90deg, var(--primary-foreground) 1px, transparent 1px);
+  background-size: 50px 50px;
+  opacity: 0.03;
+  pointer-events: none;
+}
+
+.section-style-hero-primary::after {
+  content: '';
+  position: absolute;
+  top: -10rem;
+  right: -10rem;
+  width: 40rem;
+  height: 40rem;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.15;
+  filter: blur(100px);
+  pointer-events: none;
+}
+
+.section-style-hero-primary h1,
+.section-style-hero-primary h2,
+.section-style-hero-primary h3 {
+  font-family: var(--font-primary);
+  font-weight: 600;
+  color: var(--primary-foreground);
+  letter-spacing: var(--letter-spacing-tight);
+  line-height: var(--line-height-tight);
+}
+
+.section-style-hero-primary h1 {
+  font-size: var(--text-h1);
+  margin-bottom: var(--spacing-6);
+}
+
+.section-style-hero-primary p {
+  font-family: var(--font-primary);
+  font-size: var(--text-xl);
+  font-weight: 400;
+  color: var(--primary-foreground);
+  /* CONTRAST FIX: Removed opacity 0.95 to maintain AAA contrast (16.07:1) in light mode */
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--spacing-10);
+}
+
+.section-style-hero-primary .button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-4);
+  justify-content: center;
+  align-items: center;
+  margin-top: var(--spacing-10);
+}
+
+.section-style-hero-secondary {
+  background-color: var(--muted);
+  color: var(--foreground);
+  padding-top: var(--section-padding-y);
+  padding-bottom: var(--section-padding-y);
+  text-align: center;
+}
+
+.section-style-hero-secondary h1 {
+  font-family: var(--font-primary);
+  font-size: var(--text-h1);
+  font-weight: 600;
+  color: var(--foreground);
+  margin-bottom: var(--spacing-6);
+}
+
+.section-style-hero-secondary p {
+  font-family: var(--font-primary);
+  font-size: var(--text-xl);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-relaxed);
+  max-width: 800px;
+  margin: 0 auto var(--spacing-8);
+}
+
+.section-style-hero-minimal {
+  background-color: var(--background);
+  color: var(--foreground);
+  padding-top: var(--section-padding-y);
+  padding-bottom: var(--section-padding-y);
+}
+
+.section-style-hero-minimal h1 {
+  font-family: var(--font-primary);
+  font-size: var(--text-h1);
+  font-weight: 600;
+  color: var(--foreground);
+  margin-bottom: var(--spacing-4);
+}
+
+.section-style-hero-minimal p {
+  font-family: var(--font-primary);
+  font-size: var(--text-lead);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-relaxed);
+}

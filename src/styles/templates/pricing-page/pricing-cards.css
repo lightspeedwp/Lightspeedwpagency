@@ -1,0 +1,364 @@
+/**
+ * Pricing Page — Packages, Cards & Payment
+ *
+ * Website packages section, package cards with glassmorphism,
+ * support section, and payment options.
+ *
+ * @see /src/styles/templates/pricing-page.css (orchestrator)
+ */
+
+/* ============================================
+   2. WEBSITE PACKAGES SECTION
+   ============================================ */
+
+.pricing-page__packages-section {
+  position: relative;
+  background-color: var(--background);
+  overflow: hidden;
+}
+
+/* Decorative orb behind the packages grid */
+.pricing-page__section-orb {
+  position: absolute;
+  border-radius: var(--radius-full);
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.pricing-page__section-orb--1 {
+  top: 10%;
+  left: -8%;
+  width: 20rem;
+  height: 20rem;
+  background: radial-gradient(circle, color-mix(in srgb, var(--primary) 10%, transparent), transparent 70%);
+}
+
+.pricing-page__section-orb--2 {
+  bottom: 5%;
+  right: -5%;
+  width: 16rem;
+  height: 16rem;
+  background: radial-gradient(circle, color-mix(in srgb, var(--accent) 8%, transparent), transparent 70%);
+}
+
+.pricing-page__section-header {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-4);
+  margin-bottom: var(--spacing-12);
+}
+
+.pricing-page__section-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+  position: relative;
+  display: inline-block;
+}
+
+/* Gradient underline accent on section titles */
+.pricing-page__section-title::after {
+  content: '';
+  display: block;
+  width: 60%;
+  height: 3px;
+  margin: var(--spacing-3) auto 0;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  border-radius: var(--radius-full);
+}
+
+.pricing-page__section-description {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  color: var(--muted-foreground);
+  max-width: var(--wp--style--global--content-size);
+  margin: 0 auto;
+}
+
+.pricing-page__packages-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-8);
+}
+
+/* ============================================
+   PACKAGE CARD — Glow + Glassmorphism
+   ============================================ */
+
+.pricing-page__package-card {
+  position: relative;
+  background: color-mix(in srgb, var(--card) 85%, transparent);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-soft);
+  padding: var(--spacing-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.pricing-page__package-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-glow);
+  border-color: color-mix(in srgb, var(--primary) 30%, transparent);
+}
+
+/* Popular card — permanent neon glow */
+.pricing-page__package-card--popular {
+  border: 2px solid var(--primary);
+  box-shadow: var(--shadow-neon);
+  background: color-mix(in srgb, var(--card) 90%, transparent);
+}
+
+.pricing-page__package-card--popular:hover {
+  box-shadow: var(--shadow-neon-intense);
+  transform: translateY(-6px);
+}
+
+.pricing-page__popular-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: var(--primary-foreground);
+  padding: var(--spacing-1) var(--spacing-4);
+  border-radius: var(--radius-full);
+  font-size: var(--text-tiny);
+  font-family: var(--font-secondary);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+  box-shadow: var(--shadow-glow-sm);
+  white-space: nowrap;
+}
+
+.pricing-page__package-icon {
+  width: var(--spacing-12);
+  height: var(--spacing-12);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 15%, transparent), color-mix(in srgb, var(--accent) 10%, transparent));
+  border: 1px solid color-mix(in srgb, var(--primary) 20%, transparent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: box-shadow 0.3s ease;
+}
+
+.pricing-page__package-card:hover .pricing-page__package-icon {
+  box-shadow: var(--shadow-glow-sm);
+}
+
+.pricing-page__package-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h4);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+}
+
+.pricing-page__package-tagline {
+  font-family: var(--font-primary);
+  font-size: var(--text-small);
+  color: var(--muted-foreground);
+}
+
+.pricing-page__package-price-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+.pricing-page__package-price {
+  font-family: var(--font-primary);
+  font-size: var(--text-h1);
+  font-weight: var(--font-weight-bold);
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.pricing-page__package-period {
+  font-family: var(--font-secondary);
+  font-size: var(--text-small);
+  color: var(--muted-foreground);
+}
+
+.pricing-page__package-description {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  line-height: var(--line-height-normal);
+  color: var(--foreground);
+  flex-grow: 1;
+}
+
+.pricing-page__features-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.pricing-page__feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-3);
+}
+
+.pricing-page__feature-icon--included {
+  color: var(--primary);
+  flex-shrink: 0;
+  margin-top: calc(var(--spacing-1) / 2);
+  filter: drop-shadow(0 0 4px color-mix(in srgb, var(--primary) 40%, transparent));
+}
+
+.pricing-page__feature-icon--excluded {
+  color: var(--muted-foreground);
+  flex-shrink: 0;
+  margin-top: calc(var(--spacing-1) / 2);
+}
+
+.pricing-page__feature-text {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+}
+
+.pricing-page__feature-text--included {
+  color: var(--foreground);
+}
+
+.pricing-page__feature-text--excluded {
+  color: var(--muted-foreground);
+}
+
+/* ============================================
+   3. SUPPORT PACKAGES SECTION
+   ============================================ */
+
+.pricing-page__support-section {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    180deg,
+    var(--muted) 0%,
+    color-mix(in srgb, var(--muted) 60%, var(--background)) 100%
+  );
+}
+
+/* Mesh overlay for the support section */
+.pricing-page__support-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--primary) 4%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--primary) 4%, transparent) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.pricing-page__support-section > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================
+   4. PAYMENT OPTIONS SECTION
+   ============================================ */
+
+.pricing-page__payment-section {
+  background-color: var(--background);
+}
+
+.pricing-page__payment-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-6);
+}
+
+@media (min-width: 768px) {
+  .pricing-page__payment-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.pricing-page__payment-card {
+  background: color-mix(in srgb, var(--card) 80%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-soft);
+  padding: var(--spacing-8);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.pricing-page__payment-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-glow);
+  border-color: color-mix(in srgb, var(--primary) 25%, transparent);
+}
+
+/* Neon icon wrapper */
+.pricing-page__payment-icon-wrapper {
+  width: var(--spacing-14);
+  height: var(--spacing-14);
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 15%, transparent), color-mix(in srgb, var(--accent) 10%, transparent));
+  border: 1px solid color-mix(in srgb, var(--primary) 20%, transparent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: box-shadow 0.3s ease;
+}
+
+.pricing-page__payment-card:hover .pricing-page__payment-icon-wrapper {
+  box-shadow: var(--shadow-glow-sm);
+}
+
+.pricing-page__payment-icon {
+  color: var(--primary);
+}
+
+.pricing-page__payment-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h5);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+}
+
+.pricing-page__payment-description {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  color: var(--muted-foreground);
+}
+
+.pricing-page__payment-discount {
+  font-family: var(--font-secondary);
+  font-size: var(--text-small);
+  font-weight: var(--font-weight-semibold);
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.pricing-page__payment-terms {
+  font-family: var(--font-secondary);
+  font-size: var(--text-small);
+  color: var(--muted-foreground);
+}

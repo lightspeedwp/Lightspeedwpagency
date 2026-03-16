@@ -60,7 +60,7 @@ Copy everything below this line and paste it into a new session:
 
 ### 2.3 Missing Routes
 - Read `/src/app/routes/index.ts` and all route group files (`core.routes.tsx`, `content.routes.tsx`, etc.)
-- Read the sitemap page data or `/guidelines/overview-sitemap.md`
+- Read the sitemap page data or `/guidelines/routes.md`
 - Cross-reference: identify any pages in the sitemap that have no route defined
 - List missing routes (do NOT create templates -- just report the gaps)
 
@@ -107,8 +107,8 @@ Copy everything below this line and paste it into a new session:
 
 ### 4.3 Guidelines Spot-Check
 - Open `/guidelines/Guidelines.md` -- verify the "Last Updated" date and "System Version"
-- Open `/guidelines/overview-sitemap.md` -- verify route count matches actual routes
-- Open `/guidelines/overview-components.md` -- verify component count is approximate
+- Open `/guidelines/routes.md` -- verify route count matches actual routes
+- Open `/guidelines/components/components-vs-patterns.md` -- verify component count is approximate
 - Update any obviously stale numbers (don't rewrite entire files)
 
 ## Phase 5: Final Report (5 min)

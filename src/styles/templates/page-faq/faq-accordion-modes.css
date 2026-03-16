@@ -1,0 +1,192 @@
+/**
+ * FAQ Page — Accordion + Dark Mode + Reduced Motion + Mobile
+ *
+ * Sub-file 2/2 of page-faq.css
+ * BEM block: .page-faq
+ */
+
+/* ============================================
+   4. ACCORDION — Glow on open/hover
+   ============================================ */
+
+.page-faq__accordion-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.page-faq__accordion-item {
+  background: color-mix(in srgb, var(--card) 85%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-soft);
+  overflow: hidden;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.page-faq__accordion-item:hover {
+  border-color: color-mix(in srgb, var(--primary) 20%, transparent);
+}
+
+/* Active/expanded state — neon glow border */
+.page-faq__accordion-item--open,
+.page-faq__accordion-item:has(.page-faq__accordion-content) {
+  border-color: color-mix(in srgb, var(--primary) 35%, transparent);
+  box-shadow: var(--shadow-glow-sm);
+}
+
+.page-faq__accordion-button {
+  width: 100%;
+  padding: var(--spacing-5) var(--spacing-6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-4);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.page-faq__accordion-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  margin: 0;
+}
+
+.page-faq__accordion-chevron {
+  color: var(--primary);
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+  filter: drop-shadow(0 0 3px color-mix(in srgb, var(--primary) 30%, transparent));
+}
+
+.page-faq__accordion-content {
+  padding: 0 var(--spacing-6) var(--spacing-6) var(--spacing-6);
+  border-top: 1px solid color-mix(in srgb, var(--primary) 10%, transparent);
+}
+
+.page-faq__accordion-text {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  line-height: var(--line-height-relaxed);
+  color: var(--muted-foreground);
+  padding-top: var(--spacing-4);
+  margin-bottom: 0;
+}
+
+
+/* ============================================
+   5. DARK MODE OVERRIDES
+   ============================================ */
+
+/* Hero: deeper gradient in dark */
+.dark .page-faq__hero {
+  background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 70%, var(--background)) 0%, color-mix(in srgb, var(--accent) 40%, var(--background)) 100%);
+}
+
+.dark .page-faq__hero-orb {
+  opacity: 0.5;
+}
+
+/* Stats: stronger glass + glow */
+.dark .page-faq__stat-card {
+  background: color-mix(in srgb, var(--card) 50%, transparent);
+  border-color: color-mix(in srgb, var(--primary) 10%, transparent);
+}
+
+.dark .page-faq__stat-card:hover {
+  box-shadow: var(--shadow-neon);
+  border-color: color-mix(in srgb, var(--primary) 40%, transparent);
+}
+
+/* Categories section dark */
+.dark .page-faq__categories-section {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--background) 80%, var(--primary)) 0%,
+    var(--background) 100%
+  );
+}
+
+.dark .page-faq__categories-section::before {
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--primary) 6%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--primary) 6%, transparent) 1px, transparent 1px);
+}
+
+.dark .page-faq__category-icon {
+  background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 25%, transparent), color-mix(in srgb, var(--accent) 15%, transparent));
+  border-color: color-mix(in srgb, var(--primary) 35%, transparent);
+}
+
+.dark .page-faq__category-header:hover .page-faq__category-icon {
+  box-shadow: var(--shadow-glow);
+}
+
+/* Accordion dark: neon glow */
+.dark .page-faq__accordion-item {
+  background: color-mix(in srgb, var(--card) 50%, transparent);
+  border-color: color-mix(in srgb, var(--primary) 8%, transparent);
+}
+
+.dark .page-faq__accordion-item:hover {
+  border-color: color-mix(in srgb, var(--primary) 30%, transparent);
+  box-shadow: var(--shadow-glow-sm);
+}
+
+.dark .page-faq__accordion-item--open,
+.dark .page-faq__accordion-item:has(.page-faq__accordion-content) {
+  border-color: color-mix(in srgb, var(--primary) 50%, transparent);
+  box-shadow: var(--shadow-neon);
+}
+
+.dark .page-faq__accordion-chevron {
+  filter: drop-shadow(0 0 5px color-mix(in srgb, var(--primary) 50%, transparent));
+}
+
+
+/* ============================================
+   6. REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .page-faq__stat-card,
+  .page-faq__accordion-item,
+  .page-faq__accordion-chevron {
+    transition: none;
+  }
+
+  .page-faq__stat-card:hover {
+    transform: none;
+  }
+}
+
+
+/* ============================================
+   7. MOBILE OVERRIDES
+   ============================================ */
+
+@media (max-width: 767px) {
+  .page-faq__hero-orb {
+    width: 200px;
+    height: 200px;
+  }
+
+  .page-faq__category-header {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .page-faq__accordion-button {
+    padding: var(--spacing-4) var(--spacing-5);
+  }
+
+  .page-faq__accordion-content {
+    padding: 0 var(--spacing-5) var(--spacing-5) var(--spacing-5);
+  }
+}

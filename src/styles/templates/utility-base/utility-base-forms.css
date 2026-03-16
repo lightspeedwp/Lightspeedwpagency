@@ -1,0 +1,231 @@
+/**
+ * Utility Base — Contact Heroes & Form Elements
+ *
+ * Contact/FAQ hero sections with grid backgrounds and
+ * floating icons, form containers, inputs, and validation.
+ *
+ * @see /src/styles/templates/utility-base.css (orchestrator)
+ */
+
+/* ============================================
+   CONTACT/FORM HERO SECTIONS
+   ============================================ */
+
+/**
+ * Contact hero sections with grid backgrounds
+ */
+.contact-page__hero,
+.faq-page__hero {
+  position: relative;
+  padding: var(--spacing-24) 0;
+  background-color: var(--card);
+  color: var(--foreground);
+  overflow: hidden;
+  transition: background-color 0.3s ease;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+}
+
+/**
+ * Grid backgrounds with radial masks
+ */
+.contact-page__bg,
+.faq-page__bg {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(color-mix(in srgb, var(--primary) 10%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--primary) 10%, transparent) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+  z-index: 0;
+  opacity: 0.5;
+}
+
+/**
+ * Floating decorative icons
+ */
+.contact-page__floating-icon,
+.faq-page__floating-icon {
+  position: absolute;
+  color: var(--primary);
+  opacity: 0.2;
+  animation: float-utility 6s ease-in-out infinite;
+  z-index: 1;
+}
+
+.contact-page__floating-icon--1,
+.faq-page__floating-icon--1 {
+  top: 10%;
+  left: 10%;
+  width: 64px;
+  height: 64px;
+  animation-delay: 0s;
+}
+
+.contact-page__floating-icon--2,
+.faq-page__floating-icon--2 {
+  bottom: 15%;
+  right: 15%;
+  width: 48px;
+  height: 48px;
+  animation-delay: 2s;
+}
+
+.contact-page__floating-icon--3,
+.faq-page__floating-icon--3 {
+  top: 20%;
+  right: 20%;
+  width: 32px;
+  height: 32px;
+  animation-delay: 4s;
+}
+
+@keyframes float-utility {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+/**
+ * Hero content containers
+ */
+.contact-page__hero-content,
+.faq-page__hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/**
+ * Hero titles
+ */
+.contact-page__hero-title,
+.faq-page__hero-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-5xl);
+  font-weight: var(--font-weight-black);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-6);
+  line-height: var(--line-height-tight);
+}
+
+@media (min-width: 768px) {
+  .contact-page__hero-title,
+  .faq-page__hero-title {
+    font-size: var(--text-6xl);
+  }
+}
+
+/**
+ * Hero subtitles
+ */
+.contact-page__hero-subtitle,
+.faq-page__hero-subtitle {
+  font-family: var(--font-secondary);
+  font-size: var(--text-xl);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-relaxed);
+  max-width: 60ch;
+  margin: 0 auto;
+}
+
+/* ============================================
+   FORM ELEMENTS
+   ============================================ */
+
+/**
+ * Form containers
+ */
+.contact-form,
+.faq-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: var(--spacing-8);
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+/**
+ * Form field groups
+ */
+.contact-form__field,
+.faq-form__field {
+  margin-bottom: var(--spacing-6);
+}
+
+/**
+ * Form labels
+ */
+.contact-form__label,
+.faq-form__label {
+  display: block;
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-2);
+}
+
+/**
+ * Form inputs and textareas
+ */
+.contact-form__input,
+.contact-form__textarea,
+.faq-form__input {
+  width: 100%;
+  padding: var(--spacing-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  background-color: var(--background);
+  color: var(--foreground);
+  transition: all var(--transition-base) ease;
+}
+
+.contact-form__textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/**
+ * Form input focus states
+ */
+.contact-form__input:focus,
+.contact-form__textarea:focus,
+.faq-form__input:focus {
+  outline: 2px solid var(--primary);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px var(--primary-soft);
+}
+
+/**
+ * Form error states
+ */
+.contact-form__input--error,
+.contact-form__textarea--error,
+.faq-form__input--error {
+  border-color: var(--destructive);
+}
+
+.contact-form__input--error:focus,
+.contact-form__textarea--error:focus,
+.faq-form__input--error:focus {
+  outline-color: var(--destructive);
+  box-shadow: 0 0 0 2px var(--destructive-soft);
+}
+
+/**
+ * Form error messages
+ */
+.contact-form__error,
+.faq-form__error {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--destructive);
+  margin-top: var(--spacing-1);
+}

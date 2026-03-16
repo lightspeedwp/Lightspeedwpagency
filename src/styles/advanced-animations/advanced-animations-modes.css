@@ -1,0 +1,172 @@
+/**
+ * Advanced Animations — Loading, Reduced Motion & Dark Mode
+ *
+ * Skeleton shimmer, dots loading, comprehensive reduced motion
+ * support, and dark mode adjustments for all effects.
+ *
+ * @see /src/styles/advanced-animations.css (orchestrator)
+ */
+
+/* ============================================
+   LOADING ANIMATIONS
+   ============================================ */
+
+/**
+ * Skeleton shimmer
+ * Animated loading shimmer
+ */
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--color-white) 5%, transparent) 0%,
+    color-mix(in srgb, var(--color-white) 10%, transparent) 50%,
+    color-mix(in srgb, var(--color-white) 5%, transparent) 100%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s ease-in-out infinite;
+}
+
+/**
+ * Dots loading
+ * Three dots bounce in sequence
+ */
+@keyframes dots-bounce {
+  0%,
+  80%,
+  100% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(1);
+  }
+}
+
+.dots-loading {
+  display: flex;
+  gap: var(--spacing-2);
+}
+
+.dots-loading span {
+  width: 8px;
+  height: 8px;
+  background: hsl(var(--primary));
+  border-radius: var(--radius-full);
+  animation: dots-bounce 1.4s infinite ease-in-out both;
+}
+
+.dots-loading span:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.dots-loading span:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+/* ============================================
+   REDUCED MOTION SUPPORT
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .parallax-layer,
+  .parallax-bg,
+  .morph-shape,
+  .morph-color,
+  .morph-border,
+  .card-3d-flip,
+  .perspective-hover,
+  .text-gradient-animated {
+    animation: none;
+    transition: none;
+  }
+
+  .page-fade-in,
+  .page-slide-up,
+  .page-scale-in {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .scroll-reveal-blur,
+  .scroll-reveal-rotate,
+  .scroll-reveal-flip,
+  .scroll-reveal-elastic {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+
+  .float-animation,
+  .float-rotate-animation,
+  .pulse-glow-animation,
+  .cube-rotate {
+    animation: none;
+  }
+
+  .skeleton-shimmer {
+    animation: none;
+    background: color-mix(in srgb, var(--color-white) 5%, transparent);
+  }
+
+  .dots-loading span {
+    animation: none;
+  }
+
+  .text-reveal,
+  .text-glitch {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .card-3d-flip:hover,
+  .perspective-hover:hover {
+    transform: none;
+  }
+
+  .morph-shape:hover {
+    transform: none;
+  }
+}
+
+/* ============================================
+   DARK MODE ADJUSTMENTS
+   ============================================ */
+
+.dark .skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--color-white) 3%, transparent) 0%,
+    color-mix(in srgb, var(--color-white) 6%, transparent) 50%,
+    color-mix(in srgb, var(--color-white) 3%, transparent) 100%
+  );
+  background-size: 200% 100%;
+}
+
+.dark .morph-border:hover {
+  box-shadow: 0 0 24px color-mix(in srgb, var(--primary) 40%, transparent);
+}
+
+.dark .pulse-glow-animation {
+  animation: pulse-glow-dark 2s ease-in-out infinite;
+}
+
+@keyframes pulse-glow-dark {
+  0%,
+  100% {
+    box-shadow: 0 0 24px color-mix(in srgb, var(--primary) 40%, transparent);
+  }
+  50% {
+    box-shadow: 0 0 48px color-mix(in srgb, var(--primary) 70%, transparent);
+  }
+}

@@ -1,5 +1,13 @@
 # WordPress 2026-2027 Horizon Signals
 
+**Category:** Strategy  
+**Version:** 1.0.0  
+**Last Updated:** 2026-03-15  
+**Status:** Active  
+**Template Used:** _templates/general-template.md
+
+---
+
 ## Release cadence signals
 
 WordPress publishes projected major releases for 2026 (7.0, 7.1, 7.2), with feature freeze one month before release.

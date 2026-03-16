@@ -1,8 +1,12 @@
 # Content Guidelines
 
-> **Last Updated:** February 16, 2026
-> **Status:** Active
+**Category:** Strategy  
+**Version:** 1.1.0  
+**Last Updated:** 2026-03-15  
+**Status:** Active  
+**Template Used:** _templates/general-template.md
 
+---
 These guidelines ensure consistency in voice, tone, and formatting across the LSX Design System.
 
 ## 1. Voice & Tone

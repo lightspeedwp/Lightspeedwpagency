@@ -66,3 +66,50 @@ img, video, canvas, audio, iframe, embed, object {
 [hidden] {
   display: none !important;
 }
+
+/* ============================================
+   GLOBAL FOCUS-VISIBLE RING
+   WCAG 2.1 AA — Keyboard focus indicator
+   ============================================ */
+
+/**
+ * All interactive elements get a visible focus ring
+ * when navigated via keyboard (not mouse click).
+ * Uses var(--ring) for consistent theming.
+ * Individual components can override with more specific selectors.
+ */
+:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+/* Remove default outline for mouse users */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Enhanced focus ring for links and buttons */
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible,
+[role="link"]:focus-visible,
+[role="tab"]:focus-visible,
+[role="menuitem"]:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Skip-to-content and neon-focus elements get themed ring */
+.neon-focus:focus-visible {
+  outline-color: var(--neon-color, var(--primary));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :focus-visible {
+    transition: none;
+  }
+}

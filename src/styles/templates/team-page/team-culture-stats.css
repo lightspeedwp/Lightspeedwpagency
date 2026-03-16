@@ -1,0 +1,256 @@
+/**
+ * Team Page — Culture, Stats, FAQ & Reduced Motion
+ *
+ * Culture & values glassmorphism cards with neon icons,
+ * stats section with gradient values, FAQ, and reduced motion.
+ *
+ * @see /src/styles/templates/team-page.css (orchestrator)
+ */
+
+/* ============================================
+   4. CULTURE & VALUES (Glassmorphism + Neon Icons)
+   ============================================ */
+
+.team-page__culture {
+  padding: var(--spacing-20) 0;
+  background: var(--background);
+  position: relative;
+}
+
+/* Neon divider */
+.team-page__culture::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--neon-color, var(--primary)), var(--accent, var(--primary)));
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-glow-sm);
+}
+
+/* Culture Grid — Removed (using FeatureList pattern component)
+   Previous: .team-page__culture-grid (1→2→3 columns)
+   Migration: March 4, 2026 — Template now uses FeatureList for culture values
+   Lines saved: 18 lines (grid base + 2 media queries)
+*/
+
+/* Culture Card — Glassmorphism */
+.team-page__culture-card {
+  position: relative;
+  background: color-mix(in srgb, var(--card) 65%, transparent);
+  backdrop-filter: blur(10px);
+  border: 1px solid color-mix(in srgb, var(--neon-color, var(--primary)) 12%, transparent);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-8);
+  text-align: center;
+  transition: transform var(--transition-slow) var(--ease-out),
+              border-color var(--transition-slow) var(--ease-out),
+              box-shadow var(--transition-slow) var(--ease-out);
+}
+
+.team-page__culture-card:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--neon-color, var(--primary)) 45%, transparent);
+  box-shadow: 0 0 24px color-mix(in srgb, var(--neon-color, var(--primary)) 12%, transparent);
+}
+
+.dark .team-page__culture-card {
+  background: color-mix(in srgb, var(--foreground) 5%, transparent);
+  border-color: color-mix(in srgb, var(--foreground) 10%, transparent);
+}
+
+.dark .team-page__culture-card:hover {
+  border-color: color-mix(in srgb, var(--neon-color, var(--primary)) 50%, transparent);
+  box-shadow: 0 0 24px color-mix(in srgb, var(--neon-color, var(--primary)) 15%, transparent);
+}
+
+/* Neon Icon Wrapper */
+.team-page__culture-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--neon-color, var(--primary)), var(--accent, var(--primary)));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-foreground);
+  margin: 0 auto var(--spacing-4);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--neon-color, var(--primary)) 25%, transparent);
+  transition: transform var(--transition-slow) var(--ease-out),
+              box-shadow var(--transition-slow) var(--ease-out);
+}
+
+.team-page__culture-card:hover .team-page__culture-icon {
+  transform: scale(1.1) rotate(-5deg);
+  box-shadow: var(--shadow-neon);
+}
+
+.team-page__culture-card-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h5);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-2);
+}
+
+.team-page__culture-card-desc {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-relaxed);
+}
+
+/* ============================================
+   5. STATS (Glassmorphism + Gradient Values)
+   ============================================ */
+
+.team-page__stats {
+  padding: var(--spacing-16) 0;
+  background: color-mix(in srgb, var(--card) 50%, var(--background));
+  position: relative;
+  overflow: hidden;
+}
+
+.dark .team-page__stats {
+  background: color-mix(in srgb, var(--foreground) 3%, var(--background));
+}
+
+/* Mesh grid overlay */
+.team-page__stats::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--neon-color, var(--primary)) 6%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--neon-color, var(--primary)) 6%, transparent) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+/* Stats Grid — Removed (using StatsSection pattern component)
+   Previous: .team-page__stats-grid (2→4 columns)
+   Migration: March 4, 2026 — Template now uses StatsSection pattern
+   Lines saved: 12 lines (grid base + media query)
+*/
+
+/* Stat Item — Glassmorphism */
+.team-page__stat-item {
+  background: color-mix(in srgb, var(--card) 65%, transparent);
+  backdrop-filter: blur(10px);
+  border: 1px solid color-mix(in srgb, var(--neon-color, var(--primary)) 12%, transparent);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-8) var(--spacing-6);
+  text-align: center;
+  transition: border-color var(--transition-slow) var(--ease-out),
+              box-shadow var(--transition-slow) var(--ease-out);
+}
+
+.team-page__stat-item:hover {
+  border-color: color-mix(in srgb, var(--neon-color, var(--primary)) 40%, transparent);
+  box-shadow: 0 0 20px color-mix(in srgb, var(--neon-color, var(--primary)) 12%, transparent);
+}
+
+.dark .team-page__stat-item {
+  background: color-mix(in srgb, var(--foreground) 5%, transparent);
+  border-color: color-mix(in srgb, var(--foreground) 10%, transparent);
+}
+
+.dark .team-page__stat-item:hover {
+  border-color: color-mix(in srgb, var(--neon-color, var(--primary)) 50%, transparent);
+  box-shadow: 0 0 24px color-mix(in srgb, var(--neon-color, var(--primary)) 15%, transparent);
+}
+
+/* Gradient stat value */
+.team-page__stat-number {
+  font-family: var(--font-primary);
+  font-size: var(--text-h1);
+  font-weight: var(--font-weight-black);
+  line-height: var(--line-height-tight);
+  background: linear-gradient(135deg, var(--neon-color, var(--primary)), var(--accent, var(--primary)));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.dark .team-page__stat-number {
+  filter: drop-shadow(0 0 8px color-mix(in srgb, var(--neon-color, var(--primary)) 30%, transparent));
+}
+
+.team-page__stat-label {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  margin-top: var(--spacing-2);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+}
+
+/* ============================================
+   6. FAQ SECTION
+   ============================================ */
+
+.team-page__faq {
+  padding: var(--spacing-20) 0;
+  background: var(--background);
+  position: relative;
+}
+
+.team-page__faq::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--neon-color, var(--primary)), var(--accent, var(--primary)));
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-glow-sm);
+}
+
+.team-page__faq-wrapper {
+  max-width: 768px;
+  margin: 0 auto;
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .team-page__leader-card,
+  .team-page__member-card,
+  .team-page__member-photo,
+  .team-page__culture-card,
+  .team-page__culture-icon,
+  .team-page__stat-item,
+  .team-page__leader-image,
+  .team-page__leader-social-overlay,
+  .team-page__leader-social-link,
+  .team-page__member-social-icon {
+    transition: none;
+  }
+
+  .team-page__leader-card:hover,
+  .team-page__member-card:hover,
+  .team-page__culture-card:hover {
+    transform: none;
+  }
+
+  .team-page__leader-card:hover .team-page__leader-image,
+  .team-page__member-card:hover .team-page__member-photo {
+    transform: none;
+  }
+
+  .team-page__culture-card:hover .team-page__culture-icon {
+    transform: none;
+  }
+
+  .team-page__leader-card::before {
+    animation: none;
+  }
+}

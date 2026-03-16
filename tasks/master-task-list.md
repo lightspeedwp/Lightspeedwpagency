@@ -1,8 +1,33 @@
 # Master Task List — LSX Design Prototype
 
-**Last Updated:** March 14, 2026  
+**Last Updated:** March 15, 2026  
 **Purpose:** Single consolidated view of ALL open tasks across all task files.  
 **Usage:** Run incomplete tasks sequentially by priority. Type `continue` to execute the next open task.
+
+---
+
+## Trigger Task Lists Dashboard
+
+Dedicated, persistent task lists for each trigger word. These files are **protected** — never deleted.
+
+When `continue` finds zero open tasks in `task-list.md`, it scans these files for the next open item.
+
+| Task List | Trigger(s) | Status | Last Run | Open | Done |
+|---|---|---|---|---|---|
+| [routes-task-list.md](./routes-task-list.md) | `routes`, `sitemap` | 🟡 5 open | 2026-03-15 | 19 | 14 |
+| [cleanup-task-list.md](./cleanup-task-list.md) | `cleanup` | -- Not yet run | — | — | — |
+| [tokens-task-list.md](./tokens-task-list.md) | `audit tokens` | ✅ 0 open | 2026-03-15 | 13 | 13 |
+| [css-task-list.md](./css-task-list.md) | `audit css`, `audit styles` | 🟡 5 open | 2026-03-15 | 6 | 1 |
+| [a11y-task-list.md](./a11y-task-list.md) | `audit a11y` | ✅ 0 open | 2026-03-15 | 9 | 9 |
+| [data-task-list.md](./data-task-list.md) | `audit data` | ✅ 0 open | 2026-03-15 | 0 | 0 |
+| [responsive-task-list.md](./responsive-task-list.md) | `audit responsive` | ✅ 0 open | 2026-03-15 | 0 | 0 |
+| [guidelines-task-list.md](./guidelines-task-list.md) | `audit guidelines`, `cleanup guidelines`, `update guidelines` | 🟡 1 open | 2026-03-15 | 1 | 0 |
+| [release-task-list.md](./release-task-list.md) | `release` | -- Not yet run | — | — | — |
+| [changelog-task-list.md](./changelog-task-list.md) | `changelog` | -- Not yet run | — | — | — |
+| [reports-task-list.md](./reports-task-list.md) | `process reports` | -- Not yet run | — | — | — |
+| [status-task-list.md](./status-task-list.md) | `status` | -- Not yet run | — | — | — |
+| [patterns-task-list.md](./patterns-task-list.md) | `new pattern` | -- Not yet run | — | — | — |
+| [blocks-task-list.md](./blocks-task-list.md) | `new block` | -- Not yet run | — | — | — |
 
 ---
 
@@ -50,7 +75,7 @@
 
 **Source:** `/tasks/task-list.md`  
 **Status:** ✅ ALL PARTS COMPLETE  
-**Completed:** March 14, 2026
+**Completed:** March 15, 2026
 
 - [x] **Part A:** Hardcoding audit — 31 templates with ~870 lines inline content identified, 6 incorrect founding year refs found
 - [x] **Part B:** Real content integration — Fixed founding year to 2003 across 10 files, rebuilt team.ts (13 members), about.ts (9 milestones), about-page.ts (9-item timeline). Updated "10+ years" to "20+ years" everywhere.
@@ -181,6 +206,6 @@
 
 ---
 
-**Last Updated:** March 14, 2026  
-**Next Review:** March 15, 2026  
+**Last Updated:** March 15, 2026  
+**Next Review:** March 16, 2026  
 **Maintained By:** LSX Design Systems Team

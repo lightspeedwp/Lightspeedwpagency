@@ -67,6 +67,14 @@ export const sitePages: SitePage[] = [
     showInNav: false
   },
   {
+    id: 'tour-operators',
+    slug: 'tour-operators',
+    title: 'Tour Operators',
+    excerpt: 'WordPress and WooCommerce solutions tailored for safari lodges, tour operators, and travel companies.',
+    parent: 'solutions',
+    showInNav: false
+  },
+  {
     id: 'lsx',
     slug: 'lsx',
     title: 'LSX',

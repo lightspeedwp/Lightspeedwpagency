@@ -45,23 +45,23 @@ class AppErrorBoundary extends Component<
     if (this.state.hasError) {
       return (
         <div style={{
-          padding: '2rem',
-          fontFamily: 'system-ui, -apple-system, sans-serif',
-          color: '#ff3333',
-          backgroundColor: '#0a0a0a',
+          padding: 'var(--spacing-8)',
+          fontFamily: 'var(--font-primary)',
+          color: 'var(--destructive)',
+          backgroundColor: 'var(--background)',
           minHeight: '100vh',
         }}>
-          <h1 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>
+          <h1 style={{ fontSize: 'var(--text-h3)', marginBottom: 'var(--spacing-4)' }}>
             Something went wrong
           </h1>
           <pre style={{
             whiteSpace: 'pre-wrap',
             wordBreak: 'break-word',
-            fontSize: '0.875rem',
-            padding: '1rem',
-            backgroundColor: '#1a1a1a',
-            borderRadius: '8px',
-            border: '1px solid #333',
+            fontSize: 'var(--text-small)',
+            padding: 'var(--spacing-4)',
+            backgroundColor: 'var(--card)',
+            borderRadius: 'var(--radius-lg)',
+            border: '1px solid var(--border)',
             maxHeight: '60vh',
             overflow: 'auto',
           }}>
@@ -72,12 +72,12 @@ class AppErrorBoundary extends Component<
           <button
             onClick={() => window.location.reload()}
             style={{
-              marginTop: '1rem',
-              padding: '0.5rem 1rem',
-              backgroundColor: '#333',
-              color: '#fff',
-              border: '1px solid #555',
-              borderRadius: '4px',
+              marginTop: 'var(--spacing-4)',
+              padding: 'var(--spacing-2) var(--spacing-4)',
+              backgroundColor: 'var(--muted)',
+              color: 'var(--foreground)',
+              border: '1px solid var(--border)',
+              borderRadius: 'var(--radius-md)',
               cursor: 'pointer',
               fontFamily: 'inherit',
             }}

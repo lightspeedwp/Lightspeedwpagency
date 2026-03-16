@@ -1,0 +1,104 @@
+/**
+ * Utility Base — Sitemap & Reduced Motion
+ *
+ * Sitemap sections, link grids, and reduced motion guards.
+ *
+ * @see /src/styles/templates/utility-base.css (orchestrator)
+ */
+
+/* ============================================
+   SITEMAP SECTIONS
+   ============================================ */
+
+/**
+ * Sitemap section containers
+ */
+.sitemap-section {
+  margin-bottom: var(--spacing-12);
+}
+
+/**
+ * Sitemap section headers
+ */
+.sitemap-section__header {
+  margin-bottom: var(--spacing-6);
+  padding-bottom: var(--spacing-4);
+  border-bottom: 1px solid var(--border);
+}
+
+/**
+ * Sitemap section titles
+ */
+.sitemap-section__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+  margin: 0;
+}
+
+/**
+ * Sitemap link lists
+ */
+.sitemap-links {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-3);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .sitemap-links {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .sitemap-links {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/**
+ * Individual sitemap links
+ */
+.sitemap-link {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-3);
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  color: var(--foreground);
+  text-decoration: none;
+  transition: all var(--transition-base) var(--ease-out);
+}
+
+.sitemap-link:hover {
+  background-color: color-mix(in srgb, var(--primary) 5%, var(--card));
+  border-color: var(--primary);
+  color: var(--primary);
+  transform: translateX(4px);
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-page__floating-icon,
+  .faq-page__floating-icon {
+    animation: none;
+  }
+
+  .search-result-card:hover,
+  .sitemap-result-card:hover,
+  .sitemap-link:hover {
+    transform: none;
+  }
+}
