@@ -210,6 +210,7 @@
 
 **Remaining Backlog (P3 — Low Priority):**
 1. P4.1 — ✅ **COMPLETE** (March 16, 2026) — QueryLoop pattern consolidation (12 → 7 files). Merged Audio+Video+Chat+Gallery → QueryLoopMedia.tsx, Services+Solutions → QueryLoopOfferings.tsx, Portfolio absorbed into QueryLoopPosts.tsx. 7 files deleted, 2 new files created, backward-compatible aliases exported. Report: `/reports/2026-03/queryloop-consolidation-audit.md`
+2. P4.3 — ✅ **COMPLETE** (March 16, 2026) — CSS import optimization. Fixed 3 duplicate import issues: (1) Deleted duplicate `components/taxonomy-filter.css` (conflicting with comprehensive `patterns/taxonomy-filter.css`), removed orphan import from index.css. (2) Fixed `ui/error-boundary.css` — replaced 5 hardcoded HSL values with `var(--destructive)`, fixed `hsl(var(--primary))` → `var(--primary)`, replaced `.dark` → `[data-theme="dark"]`, replaced hardcoded `font-weight: 600/700` → `var(--font-weight-*)`, replaced `line-height: 1.6` → `var(--line-height-relaxed)`, replaced `0.3s` → `var(--transition-base)`. (3) Fixed `ui/scroll-progress.css` — replaced `hsl(var(--primary))` → `var(--primary)`. (4) Fixed `components/error-boundary.css` — replaced `font-weight: 600` → `var(--font-weight-semibold)`, `line-height: 1.7` → `var(--line-height-relaxed)`.
 
 **Other Potential Work:**
 8. [x] ~~Phase 4.4 — Industry + Specialty Pages CSS Optimization~~ ✅ COMPLETE (March 15, 2026) — 6 CSS files split (why-choose-us, careers, publishers, guarantees, page-legal, service-pricing-timeline)
