@@ -55,7 +55,7 @@ export interface JourneyPhase {
 export const serviceJourney: JourneyPhase[] = [
   {
     step: '01',
-    name: 'Ignite',
+    name: 'Discover',
     icon: MagnifyingGlass,
     tagline: 'Uncover. Research. Strategise.',
     accent: 'var(--category-violet)',

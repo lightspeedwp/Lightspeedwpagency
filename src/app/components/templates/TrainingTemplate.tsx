@@ -44,7 +44,7 @@ const trainingData = {
 
 export function TrainingTemplate() {
   return (
-    <>
+    <div className="service-page">
       {/* Breadcrumbs */}
       <BreadcrumbPart
         items={[
@@ -302,6 +302,6 @@ export function TrainingTemplate() {
           'Certificate of completion',
         ]}
       />
-    </>
+    </div>
   );
 }

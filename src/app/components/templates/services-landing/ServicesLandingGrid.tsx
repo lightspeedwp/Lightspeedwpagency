@@ -50,7 +50,7 @@ export function ServicesLandingGrid() {
       <section style={{ padding: 'var(--spacing-24) 0', backgroundColor: 'var(--background)' }}>
         <Container>
           <ScrollReveal animation="fade-up">
-            <div className="wp-flex wp-flex-col wp-items-center wp-text-center wp-mb-16">
+            <div className="service-section__header">
               <div style={{
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -88,7 +88,7 @@ export function ServicesLandingGrid() {
             </div>
           </ScrollReveal>
 
-          <div className="wp-grid-3-cols wp-gap-8">
+          <div className="service-section__grid service-section__grid--3">
             {servicesData.map((service, index) => {
               const Icon = service.icon;
               return (
@@ -184,7 +184,7 @@ export function ServicesLandingGrid() {
               overflow: 'hidden',
               position: 'relative'
             }}>
-              <div className="wp-grid-2-cols wp-items-center">
+              <div className="service-section__grid service-section__grid--2 service-section__grid--align-center">
                 <div style={{ padding: 'var(--spacing-16)' }}>
                   <div style={{
                     display: 'inline-flex',
@@ -233,7 +233,7 @@ export function ServicesLandingGrid() {
                     alignment="left"
                   />
 
-                  <div className="wp-flex wp-gap-4" style={{ marginTop: 'var(--spacing-8)' }}>
+                  <div className="service-section__actions" style={{ marginTop: 'var(--spacing-8)' }}>
                     <Button variant="default" page="portfolio-single">
                       Read Case Study
                     </Button>

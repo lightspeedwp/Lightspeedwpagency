@@ -157,7 +157,7 @@ function AISearchReadinessSystemRoute() { loadCSSBundle('system'); return <AISea
 function PerformanceReliabilitySystemRoute() { loadCSSBundle('system'); return <PerformanceReliabilitySystemTemplate />; }
 
 // Journey Stage routes
-function JourneyIgniteRoute() { loadCSSBundle('services'); return <JourneyStageTemplate slug="ignite" />; }
+function JourneyDiscoverRoute() { loadCSSBundle('services'); return <JourneyStageTemplate slug="discover" />; }
 function JourneyCreateRoute() { loadCSSBundle('services'); return <JourneyStageTemplate slug="create" />; }
 function JourneyBuildRoute() { loadCSSBundle('services'); return <JourneyStageTemplate slug="build" />; }
 function JourneyLaunchRoute() { loadCSSBundle('services'); return <JourneyStageTemplate slug="launch" />; }
@@ -222,7 +222,8 @@ export const coreRoutes: RouteObject[] = [
   { path: 'services/answer-engine-optimisation', element: <Navigate to="/services/ai/answer-engine-optimisation" replace /> },
 
   /* ── Journey Stage Pages (Services Bundle) ── */
-  { path: 'services/ignite', Component: JourneyIgniteRoute },
+  { path: 'services/discover', Component: JourneyDiscoverRoute },
+  { path: 'services/ignite', element: <Navigate to="/services/discover" replace /> },
   { path: 'services/create', Component: JourneyCreateRoute },
   { path: 'services/build', Component: JourneyBuildRoute },
   { path: 'services/launch', Component: JourneyLaunchRoute },

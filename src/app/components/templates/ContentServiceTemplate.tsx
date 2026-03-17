@@ -55,7 +55,7 @@ import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 
 export function ContentServiceTemplate() {
   return (
-    <div className="wp-w-full wp-flex wp-flex-col">
+    <div className="service-page content-service">
       {/* Breadcrumbs */}
       <BreadcrumbPart
         items={[

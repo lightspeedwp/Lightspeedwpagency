@@ -1,7 +1,7 @@
 # AI services restructure — audit report
 
 **Category:** Strategy  
-**Version:** 1.0.0  
+**Version:** 2.0.0  
 **Last Updated:** 2026-03-17  
 **Status:** Active  
 **Prompt:** `/prompts/ai-services-restructure.md`
@@ -10,178 +10,135 @@
 
 ## Executive summary
 
-This report analyses the current services architecture against the proposed 6-stage AI-enhanced lifecycle discussed in the March 17, 2026 team meeting. The restructure renames "Ignite" to "Discover", repositions AI services as a cross-cutting concern woven into every stage, and consolidates the AI landing page into a highly interactive mega page.
+This report analyses the current AI page architecture against the proposed unified ecosystem from the March 17, 2026 team meeting and subsequent planning document. The restructure affects **12 pages** across two hubs (`/solutions/ai/` and `/services/ai/`) plus 10 sub-pages, introducing lifecycle stage context, cross-linking, trust signals, and CSS-animated hero sections.
 
-**Impact level:** High — touches routes, data files, navigation, templates, and content strategy.  
-**Estimated effort:** 12–16 tasks across 3 priority tiers.
+**Impact level:** High — touches 12 templates, 10+ data files, routes, navigation, and CSS.  
+**Estimated effort:** 5 phases, 12 sub-prompts, ~50 tasks.
 
 ---
 
 ## Current state analysis
 
-### Journey stages (existing)
+### AI solutions pages (under `/solutions/ai/`)
 
-| Step | Current name | Slug | Accent | Status |
-|---|---|---|---|---|
-| 01 | Ignite | `/services/ignite` | `--category-violet` | Rename → Discover |
-| 02 | Create | `/services/create` | `--category-pink` | Update services list |
-| 03 | Build | `/services/build` | `--category-cyan` | Update services list |
-| 04 | Launch | `/services/launch` | `--category-amber` | Update services list |
-| 05 | Grow | `/services/grow` | `--category-green` | Update services list |
-| 06 | Evolve | `/services/evolve` | `--category-indigo` | Update services list |
+| Route | Template | Data source | Layout |
+|---|---|---|---|
+| `/solutions/ai/` | AISolutionsLandingTemplate | `ai-solutions-landing-data.tsx` | Custom hero + cards + capabilities |
+| `/solutions/ai/integrations` | AIIntegrationsTemplate | `ai-integrations/landing.ts` | Custom (similar to AISubPageTemplate) |
+| `/solutions/ai/content-generation` | AIContentGenerationTemplate | `ai-integrations/content-generation.ts` | AISubPageTemplate (variant: content) |
+| `/solutions/ai/seo` | AISEOTemplate | `ai-integrations/seo.ts` | AISubPageTemplate (variant: seo) |
+| `/solutions/ai/chatbots` | AIChatbotsTemplate | `ai-integrations/chatbots.ts` | AISubPageTemplate (variant: chatbots) |
+| `/solutions/ai/analytics` | AIAnalyticsTemplate | `ai-integrations/analytics.ts` | AISubPageTemplate (variant: analytics) |
 
-### Affected files inventory
+**Key observations:**
+- Solutions landing is a simple card hub — no lifecycle context
+- Sub-pages use `AISubPageTemplate` with pricing tables (meeting notes say: remove pricing)
+- Zero cross-links to `/services/ai/*` pages
+- No trust signals (testimonials) on any solutions page
+- No lifecycle stage badges
 
-| File | Type | Changes needed |
-|---|---|---|
-| `/src/app/data/service-journey.ts` | Data | Rename Ignite → Discover, remap services per stage |
-| `/src/app/data/journey-stage-pages.ts` | Data | Rename slug, update all content for Discover, update service lists for all 6 stages |
-| `/src/app/utils/route-map.ts` | Utility | `journey-ignite` → `journey-discover`, add path `/services/discover` |
-| `/src/app/routes/core.routes.tsx` | Routes | Rename route, add legacy redirect `/services/ignite` → `/services/discover` |
-| `/src/app/components/templates/JourneyStageTemplate.tsx` | Template | No code change needed (slug-driven) |
-| `/src/app/components/templates/AIServicesLandingTemplate.tsx` | Template | Major redesign — mega page with stage-based sections |
-| `/src/app/data/header-navigation.ts` | Data | Verify mega menu references use "Discover" |
+### AI services pages (under `/services/ai/`)
 
-### AI services — current route map
+| Route | Template | Data source | Layout |
+|---|---|---|---|
+| `/services/ai/` | AIServicesLandingTemplate | Inline arrays (not extracted!) | Custom hero + grid + stats + approach |
+| `/services/ai/search-visibility` | AISearchServiceTemplate | `ai-search-service-template-data.tsx` | Standalone (FeatureList + StatsGrid + ProcessTimeline) |
+| `/services/ai/seo` | SEOServiceTemplate | `seo-service-template-data.tsx` | Sub-service shared BEM |
+| `/services/ai/analytics` | AnalyticsServiceTemplate | `analytics-service-template-data.tsx` | Sub-service shared BEM |
+| `/services/ai/engine-optimisation` | AIEngineServiceTemplate | `ai-engine-service-template-data.tsx` | Sub-service shared BEM |
+| `/services/ai/answer-engine-optimisation` | AnswerEngineServiceTemplate | `answer-engine-service-template-data.tsx` | Sub-service shared BEM |
 
-| Route | Template | Target stage |
-|---|---|---|
-| `/services/ai` | AIServicesLandingTemplate | Hub — becomes mega page |
-| `/services/ai/search-visibility` | AISearchServiceTemplate | Grow |
-| `/services/ai/seo` | SEOServiceTemplate | Grow |
-| `/services/ai/analytics` | AnalyticsServiceTemplate | Grow |
-| `/services/ai/engine-optimisation` | AIEngineServiceTemplate | Grow / Evolve |
-| `/services/ai/answer-engine-optimisation` | AnswerEngineServiceTemplate | Grow |
+**Key observations:**
+- Services landing has inline data (not extracted to data file — violates data architecture pattern)
+- No lifecycle context on any services sub-page
+- Zero cross-links to `/solutions/ai/*` pages
+- No trust signals on services landing
+- No lifecycle flow strips (prev/current/next stage)
 
-### AI solutions — current route map (separate from services)
+### Interconnection gap
 
-| Route | Template | Notes |
-|---|---|---|
-| `/solutions/ai` | AISolutionsLandingTemplate | Solutions hub — may merge with services mega page |
-| `/solutions/ai/content-generation` | AIContentGenerationTemplate | Create stage |
-| `/solutions/ai/seo` | AISEOTemplate | Grow stage |
-| `/solutions/ai/chatbots` | AIChatbotsTemplate | Launch stage |
-| `/solutions/ai/analytics` | AIAnalyticsTemplate | Grow stage |
-| `/solutions/ai/integrations` | AIIntegrationsTemplate | Launch stage |
+Currently there is **zero cross-linking** between the solutions and services AI pages:
+- No solutions page links to any services page
+- No services page links to any solutions page
+- The two hubs don't reference each other (except a secondary CTA on solutions landing)
+- Users who land on `/solutions/ai/seo` have no path to discover `/services/ai/seo`
 
 ---
 
 ## Gap analysis
 
-### 1. Naming conflict — Ignite → Discover
+### 1. Missing cross-links (critical)
 
-**Finding:** The current "Ignite" phase (step 01) must be renamed to "Discover". This affects 4 files directly and any navigation/content that references "Ignite" by name.
+| Gap | Count | Fix |
+|---|---|---|
+| Solutions → Services links | 0 of 15 needed | Add "Related services" sections |
+| Services → Solutions links | 0 of 15 needed | Add "Related solutions" sections |
+| Landing → All sub-pages | Partial | Enhance both hubs |
 
-**Files affected:**
-- `service-journey.ts` — `name: 'Ignite'` → `name: 'Discover'`
-- `journey-stage-pages.ts` — `slug: 'ignite'` → `slug: 'discover'`, all content referencing "Ignite"
-- `route-map.ts` — `'journey-ignite': '/services/ignite'` → `'journey-discover': '/services/discover'`
-- `core.routes.tsx` — route path + component function + legacy redirect
+### 2. Missing lifecycle context (high)
 
-**Risk:** Low — slug-driven template means only data/route changes needed.
+| Gap | Pages affected | Fix |
+|---|---|---|
+| No stage badges | 10 sub-pages | Add LifecycleStageBadge component |
+| No lifecycle flow strips | 5 services sub-pages | Add LifecycleFlowStrip component |
+| No journey context | 5 services sub-pages | Add mini-timeline |
 
-### 2. Service-to-stage mapping gaps
+### 3. Missing trust signals (high)
 
-**Finding:** The meeting defined specific service allocations per stage that differ from current journey data. Key changes:
+| Gap | Pages affected | Fix |
+|---|---|---|
+| No testimonials on solutions hub | 1 page | Add trust section in position 3–4 |
+| No testimonials on services hub | 1 page | Add trust section in position 3–4 |
+| No testimonials on sub-pages | 10 pages | Add inline trust cards |
 
-| Stage | Currently missing services |
+### 4. Pricing tables to remove (medium)
+
+| Gap | Pages affected | Fix |
+|---|---|---|
+| Pricing tables on AISubPageTemplate pages | 4 pages | Replace with consultation CTA |
+| Pricing data in data files | 4 data files | Keep but don't render (or remove) |
+
+### 5. Content not extracted (medium)
+
+| Gap | File | Fix |
+|---|---|---|
+| AIServicesLandingTemplate inline data | 1 template | Extract to `ai-services-lifecycle-data.tsx` |
+
+### 6. Ignite → Discover rename (high)
+
+| File | Change |
 |---|---|
-| Discover | AI consulting (new), content collection doc |
-| Create | Figma prototyping, design systems, accessible design (partially present) |
-| Build | AI-assisted development (new concept) |
-| Launch | AI integrations (currently in Solutions, not Services) |
-| Grow | LLM.txt (new), AEO (present as "Answer Engine") |
-| Evolve | AI future strategy (new), AI advancements consulting |
+| `service-journey.ts` | `name: 'Ignite'` → `name: 'Discover'` |
+| `journey-stage-pages.ts` | `slug: 'ignite'` → `slug: 'discover'`, all Ignite references |
+| `route-map.ts` | `journey-ignite` → `journey-discover` |
+| `core.routes.tsx` | Route path + component + legacy redirect |
 
-### 3. Migrations — anomalous placement
+### 7. Missing CSS animations (low)
 
-**Finding:** Migrations is described as "stage 0" — an anomaly that either feeds into Discover (if the client is moving from an existing platform) or goes directly to Build. Currently lives at `/services/migrations` as a standalone.
-
-**Recommendation:** Add Migrations as an optional pre-stage card on the Discover page with a visual indicator that it can also connect directly to Build. Do not create a separate "stage 0" route — keep `/services/migrations` as-is but cross-reference from both Discover and Build journey pages.
-
-### 4. Mega AI page — no WebGL exists
-
-**Finding:** A codebase search for WebGL, Canvas 3D, and Three.js returned **zero results**. The current hero sections use CSS-only effects (grids, gradients, neon glows, keyframe animations). There are no existing WebGL headers to "collect and render."
-
-**Recommendation:** The mega AI page should use **enhanced CSS animations and scroll-triggered effects** rather than actual WebGL, consistent with the existing design system. Each stage section can use a unique hero-style visual treatment combining:
-- Neon grid backgrounds (existing pattern)
-- Scroll-triggered `ScrollReveal` animations (existing)
-- Stage-specific neon accent colours (existing `--category-*` tokens)
-- CSS-only particle/glow effects (can be created with existing animation system)
-
-### 5. Trust factors — placement audit
-
-**Finding:** The meeting stressed that testimonials and case studies must appear higher on content pages. Currently:
-- Journey stage pages have testimonials at position 6 of 8 (below services, deliverables)
-- AI services landing has NO testimonials section
-- Service templates place testimonials in lower sections via patterns
-
-**Recommendation:** Move testimonials to position 3 (after hero + services overview, before detailed deliverables) on both journey and service pages.
-
-### 6. Content presentation — cards vs lists
-
-**Finding:** The meeting requested smaller text amounts with lists or sliders instead of large cards. Currently service cards use `ServiceCapabilitiesGrid` with full description blocks.
-
-**Recommendation:** Create a compact list variant of the service cards pattern, and consider a tabbed interface for sub-services within each stage.
+The planning document specifies WebGL-style visuals for each stage. Codebase has **zero WebGL**. All 7 animation concepts must be implemented as CSS-only with reduced-motion fallbacks.
 
 ---
 
-## Proposed new architecture
+## Proposed shared components
 
-### Mega AI services page (`/services/ai` — enhanced)
-
-```
-Section 1: Hero — full-viewport with animated stage icons orbiting
-Section 2: Stage overview — 6-stage horizontal timeline (interactive, clickable)
-Section 3: Discover — neon violet section with service cards
-Section 4: Create — neon pink section with service cards
-Section 5: Build — neon cyan section with service cards
-Section 6: Launch — neon amber section with service cards
-Section 7: Grow — neon green section with service cards
-Section 8: Evolve — neon indigo section with service cards
-Section 9: Trust — testimonials + case study cards (high position)
-Section 10: CTA — FunkyCTA with AI audit offer
-```
-
-Each stage section should:
-- Force dark background (`var(--color-black)`) for neon accent compliance
-- Use stage-specific `--phase-accent` CSS variable
-- Include 2–4 service cards in compact list format
-- Link to the full journey stage page and individual service pages
-- Feature a scroll-triggered entrance animation
-
-### Route changes
-
-```
-RENAME:  /services/ignite  →  /services/discover
-ADD:     /services/ignite   →  redirect to /services/discover (legacy)
-KEEP:    /services/ai       →  enhanced mega page (AIServicesLandingTemplate redesign)
-KEEP:    /services/ai/*     →  all sub-service routes unchanged
-KEEP:    /solutions/ai/*    →  solution pages unchanged (separate concern)
-```
+| Component | Location | Used by |
+|---|---|---|
+| LifecycleStageBadge | `/src/app/components/parts/LifecycleStageBadge.tsx` | All 10 sub-pages |
+| LifecycleFlowStrip | `/src/app/components/parts/LifecycleFlowStrip.tsx` | All 5 services sub-pages |
+| RelatedPagesGrid | `/src/app/components/patterns/RelatedPagesGrid.tsx` | All 10 sub-pages |
+| StickyAnchorNav | `/src/app/components/parts/StickyAnchorNav.tsx` | Both landing pages |
 
 ---
 
-## Recommendations summary
+## Phase summary
 
-| # | Item | Priority | Effort |
+| Phase | Scope | Files affected | New files |
 |---|---|---|---|
-| 1 | Rename Ignite → Discover in all data files | High | Small |
-| 2 | Update route + route-map + add legacy redirect | High | Small |
-| 3 | Update `service-journey.ts` service mappings for all 6 stages | High | Medium |
-| 4 | Update `journey-stage-pages.ts` content for Discover + all stages | High | Medium |
-| 5 | Check header navigation for Ignite references | High | Small |
-| 6 | Redesign `AIServicesLandingTemplate` as mega page | High | Large |
-| 7 | Create mega page data file (stage sections + content) | High | Medium |
-| 8 | Create mega page CSS (6 stage sections + dark bg neon) | High | Medium |
-| 9 | Move testimonials higher on journey stage pages | Medium | Small |
-| 10 | Create compact service list variant pattern | Medium | Medium |
-| 11 | Add Migrations cross-reference to Discover + Build pages | Medium | Small |
-| 12 | Add AI consulting content to Discover stage | Medium | Small |
-| 13 | Add AI-assisted development content to Build stage | Medium | Small |
-| 14 | Add LLM.txt / AEO content to Grow stage | Medium | Small |
-| 15 | Add AI future strategy content to Evolve stage | Medium | Small |
-| 16 | Consider tabbed interface for sub-services | Low | Medium |
+| 1 | Data layer | 4 existing + 2 new data files | `ai-services-lifecycle-data.tsx`, `ai-solutions-hub-data.tsx` |
+| 2 | Landing pages | 2 templates + 2 CSS files | Split files if over 300 lines |
+| 3 | Solutions sub-pages | 5 templates + 5 data files | — |
+| 4 | Services sub-pages | 5 templates + 5 data files | — |
+| 5 | Cross-linking + polish | All 12 pages + nav + routes | 3–4 shared components |
 
 ---
 
@@ -189,4 +146,5 @@ KEEP:    /solutions/ai/*    →  solution pages unchanged (separate concern)
 
 | Version | Date | Changes |
 |---|---|---|
-| 1.0.0 | 2026-03-17 | Initial audit from March 17 team meeting requirements |
+| 2.0.0 | 2026-03-17 | Major expansion: 12-page analysis, interconnection gap, 5-phase plan |
+| 1.0.0 | 2026-03-17 | Initial audit from March 17 team meeting |

@@ -157,6 +157,8 @@
 
 .dark .journey-progress__node--active .journey-progress__pip,
 .dark .journey-progress__node--completed .journey-progress__pip {
+  background: var(--node-accent, var(--primary));
+  color: var(--color-black, #000000);
   box-shadow: var(--shadow-glow-sm);
 }
 

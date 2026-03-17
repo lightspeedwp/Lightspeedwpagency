@@ -48,15 +48,16 @@
 
 **Report:** `/reports/2026-03/2026-03-17-ai-services-restructure-audit.md`  
 **Task File:** `/tasks/ai-services-restructure-task-list.md`  
-**Prompt:** `/prompts/ai-services-restructure.md`  
-**Impact:** High — routes, data files, navigation, templates, content strategy  
-**Tasks:** 25 across 4 priority tiers (5 high-rename, 6 high-mapping, 3 high-mega, 2 medium-trust, 5 medium-content, 3 low-UI)
+**Prompt:** `/prompts/ai-services-restructure.md` (orchestrator with 12 sub-prompts)  
+**Impact:** High — 12 templates, 10+ data files, routes, navigation, 2 CSS files, 4 new shared components  
+**Tasks:** 57 across 5 phases
 
-- [ ] **Rename Ignite → Discover** — Update 4 files: `service-journey.ts`, `journey-stage-pages.ts`, `route-map.ts`, `core.routes.tsx` + header nav check
-- [ ] **Update service mappings** — Remap services across all 6 stages (Discover, Create, Build, Launch, Grow, Evolve)
-- [ ] **Build mega AI services page** — Redesign `AIServicesLandingTemplate` as scrollable mega page with 6 neon-accent stage sections on dark backgrounds
-- [ ] **Reposition trust factors** — Move testimonials higher on journey + service pages
-- [ ] **Content enrichment** — Add AI consulting, AI-assisted dev, LLM.txt, AI future strategy content
+- [ ] **Phase 1: Data layer (8 tasks)** — Create lifecycle + hub data files, rename Ignite → Discover, extract inline data
+- [ ] **Phase 2a: Solutions landing (5 tasks)** — Mega page with sticky anchor nav, neural network CSS animation, 5 solution sections
+- [ ] **Phase 2b: Services landing (6 tasks)** — Lifecycle mega page with timeline, orbit animation, 6 stage sections on dark backgrounds
+- [ ] **Phase 3: Solutions sub-pages (12 tasks)** — Add lifecycle badges, trust signals, cross-links, remove pricing from all 5 solutions sub-pages
+- [ ] **Phase 4: Services sub-pages (12 tasks)** — Add lifecycle flow, trust signals, cross-links, new LLM.txt + voice search content to 5 services sub-pages
+- [ ] **Phase 5: Interconnection (14 tasks)** — Cross-link verification (30+ links), nav updates, trust repositioning, full compliance audit
 
 ### Data Architecture Audit — March 17, 2026 (from `audit data` trigger)
 

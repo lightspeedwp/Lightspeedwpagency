@@ -68,7 +68,7 @@ export function DiscoveryServiceTemplate() {
   };
 
   return (
-    <>
+    <div className="service-page discovery-service">
       <BreadcrumbPart items={[
         { label: 'Home', page: 'front-page' },
         { label: 'Services', page: 'services' },
@@ -103,9 +103,9 @@ export function DiscoveryServiceTemplate() {
                 We Scan&nbsp;Deep to Build&nbsp;<span className="service-hero__gradient-text">What Matters</span>
               </h1>
               <p className="service-hero__description service-hero__description--centered">{data.tagline}</p>
-              <div className="wp-flex wp-justify-center wp-gap-4 wp-flex-wrap wp-mb-16">
+              <div className="service-hero__cta-group" style={{ marginBottom: 'var(--spacing-16)' }}>
                 <Button variant="default" size="lg" page="contact">
-                  Start Discovery <ArrowRight size={16} className="wp-ml-2" />
+                  Start Discovery <ArrowRight size={16} style={{ marginLeft: 'var(--spacing-2)' }} />
                 </Button>
                 <Button variant="outline" size="lg" page="portfolio-archive">View Case Studies</Button>
               </div>
@@ -162,6 +162,6 @@ export function DiscoveryServiceTemplate() {
           'Risk assessment matrix',
         ]}
       />
-    </>
+    </div>
   );
 }

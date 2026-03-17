@@ -26,7 +26,7 @@ export const SupportServiceTemplate = () => {
   const results = supportServiceResults;
 
   return (
-    <div className="wp-w-full wp-flex wp-flex-col">
+    <div className="service-page">
       <BreadcrumbPart
         items={[
           { label: 'Home', page: 'front-page' },
@@ -52,7 +52,7 @@ export const SupportServiceTemplate = () => {
                 fast support, and peace of mind with 24/7 monitoring and expert care.
               </p>
               
-              <div className="wp-flex wp-justify-center wp-gap-4 wp-flex-wrap">
+              <div className="service-hero__cta-group">
                 <Link to={getPageUrl('contact')} className="sub-service-base__hero-btn sub-service-base__hero-btn--primary">
                   Get Support Quote
                 </Link>

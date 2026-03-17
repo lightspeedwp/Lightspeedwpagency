@@ -101,7 +101,7 @@ export function JourneyStageTemplate({ slug }: JourneyStageTemplateProps) {
               {data.tagline}
             </h1>
 
-            <p className="journey-stage__tagline">{data.description.split('.').slice(0, 2).join('.') + '.'}</p>
+            <p className="journey-stage__subtitle">{data.description.split('.').slice(0, 2).join('.') + '.'}</p>
 
             <div className="journey-stage__duration">
               <Clock size={16} className="journey-stage__duration-icon" />
@@ -119,7 +119,7 @@ export function JourneyStageTemplate({ slug }: JourneyStageTemplateProps) {
         style={{ '--phase-accent': data.accent } as React.CSSProperties}
       >
         <ScrollReveal animation="fade-up">
-          <div className="journey-stage__description-inner wp-grid-2-cols">
+          <div className="journey-stage__description-inner">
             <div className="journey-stage__desc-block">
               <h2 className="journey-stage__desc-heading">What happens during {data.name}?</h2>
               <p className="journey-stage__desc-text">{data.description}</p>
@@ -146,7 +146,7 @@ export function JourneyStageTemplate({ slug }: JourneyStageTemplateProps) {
             </h2>
           </ScrollReveal>
 
-          <div className="journey-stage__outcomes-grid wp-grid-3-cols">
+          <div className="journey-stage__outcomes-grid">
             {data.outcomes.map((outcome, idx) => (
               <ScrollReveal key={idx} animation="fade-up" delay={idx * 80}>
                 <div className="journey-stage__outcome-item">
@@ -176,7 +176,7 @@ export function JourneyStageTemplate({ slug }: JourneyStageTemplateProps) {
             </p>
           </ScrollReveal>
 
-          <div className="journey-stage__services-grid wp-grid-3-cols">
+          <div className="journey-stage__services-grid">
             {data.services.map((service, idx) => {
               const ServiceIcon = service.icon;
               return (

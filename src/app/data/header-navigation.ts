@@ -128,9 +128,9 @@ export function buildNavItems(currentPath: string): NavItem[] {
       menuDescription: 'From strategy to AI evolution — our proven process takes you through every stage of your website journey.',
       megaMenuSections: [
         {
-          title: '01 — Ignite', accent: 'var(--category-violet)',
+          title: '01 — Discover', accent: 'var(--category-violet)',
           items: [
-            { label: 'Discovery & Strategy', page: 'journey-ignite', description: 'Uncover. Research. Strategise.' },
+            { label: 'Discovery & Strategy', page: 'journey-discover', description: 'Uncover. Research. Strategise.' },
             { label: 'Content Audit', page: 'content-audit', description: 'Analyse every page' },
             { label: 'Content Strategy', page: 'content-strategy', description: 'Define your voice & plan' }
           ]

@@ -36,7 +36,7 @@ import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 
 export function ServicesLandingTemplate() {
   return (
-    <>
+    <div className="service-page services-landing">
       {/* Breadcrumbs */}
       <BreadcrumbPart
         items={[
@@ -88,6 +88,6 @@ export function ServicesLandingTemplate() {
           />
         </Container>
       </section>
-    </>
+    </div>
   );
 }

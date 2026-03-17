@@ -43,7 +43,7 @@ import { ScrollReveal } from '../../hooks/useScrollReveal';
 
 export const AnalyticsServiceTemplate = () => {
   return (
-    <div className="wp-w-full wp-flex wp-flex-col">
+    <div className="service-page analytics-service">
       <BreadcrumbPart
         items={[
           { label: 'Home', page: 'front-page' },
@@ -71,11 +71,11 @@ export const AnalyticsServiceTemplate = () => {
                 your audience, track performance, and optimize for growth with actionable insights.
               </p>
               
-              <div className="wp-flex wp-justify-center wp-gap-4 wp-flex-wrap">
-                <Link to={getPageUrl('contact')} className="wp-inline-flex wp-items-center wp-justify-center wc-hero__btn-primary">
+              <div className="service-hero__cta-group service-hero__cta-group--centered">
+                <Link to={getPageUrl('contact')} className="sub-service-base__hero-btn sub-service-base__hero-btn--primary">
                   Get analytics audit
                 </Link>
-                <Link to={getPageUrl('ai-search-visibility')} className="wp-inline-flex wp-items-center wp-justify-center wc-hero__btn-secondary">
+                <Link to={getPageUrl('ai-search-visibility')} className="sub-service-base__hero-btn sub-service-base__hero-btn--secondary">
                   View Parent Service
                 </Link>
               </div>

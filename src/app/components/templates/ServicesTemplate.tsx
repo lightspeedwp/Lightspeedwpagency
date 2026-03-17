@@ -67,7 +67,7 @@ export function ServicesTemplate() {
         title="WordPress & WooCommerce Services"
         description="From discovery to ongoing support, we provide comprehensive WordPress services to help your business succeed online. Over 15 years of expertise delivering exceptional results."
         buttons={
-          <Buttons orientation="horizontal" className="wp-justify-center">
+          <Buttons orientation="horizontal" className="services-landing__buttons">
             <Button
               variant="primary"
               size="lg"
@@ -134,12 +134,12 @@ export function ServicesTemplate() {
       <Section spacing="xl">
         <Container>
           <ScrollReveal animation="fade-up">
-            <div className="wp-flex wp-flex-col wp-items-center wp-justify-center wp-text-center wp-mb-12">
-              <h2 className="wp-m-0 wp-mb-4 template-section-header__title template-section-header__title--h2">
+            <div className="template-section-header">
+              <h2 className="template-section-header__title template-section-header__title--h2">
                 How We Work
               </h2>
 
-              <p className="wp-m-0 wp-max-w-2xl template-section-header__description template-section-header__description--secondary">
+              <p className="template-section-header__description template-section-header__description--secondary">
                 Our streamlined process from start to finish
               </p>
             </div>
@@ -155,18 +155,18 @@ export function ServicesTemplate() {
       <Section spacing="xl" backgroundColor="var(--muted)">
         <Container>
           <ScrollReveal animation="fade-up">
-            <div className="wp-flex wp-flex-col wp-items-center wp-justify-center wp-text-center wp-mb-12">
-              <h2 className="wp-m-0 wp-mb-4 template-section-header__title template-section-header__title--h2">
+            <div className="template-section-header">
+              <h2 className="template-section-header__title template-section-header__title--h2">
                 Industries We Serve
               </h2>
 
-              <p className="wp-m-0 wp-max-w-2xl template-section-header__description template-section-header__description--secondary">
+              <p className="template-section-header__description template-section-header__description--secondary">
                 Experience across diverse sectors
               </p>
             </div>
           </ScrollReveal>
 
-          <div className="wp-grid-3-cols wp-gap-6">
+          <div className="services-landing__grid">
             {industries.map((industry, index) => (
               <ScrollReveal key={index} animation="fade-up" delay={index * 50}>
                 <div
@@ -201,14 +201,14 @@ export function ServicesTemplate() {
       {/* FAQ Section */}
       <Section spacing="xl">
         <Container>
-          <div className="wp-max-w-4xl wp-mx-auto">
+          <div className="services-landing__faq-container">
             <ScrollReveal animation="fade-up">
-              <div className="wp-flex wp-flex-col wp-items-center wp-justify-center wp-text-center wp-mb-12">
-                <h2 className="wp-m-0 wp-mb-4 template-section-header__title template-section-header__title--h2">
+              <div className="template-section-header">
+                <h2 className="template-section-header__title template-section-header__title--h2">
                   Frequently asked questions
                 </h2>
 
-                <p className="wp-m-0 wp-max-w-2xl template-section-header__description template-section-header__description--secondary">
+                <p className="template-section-header__description template-section-header__description--secondary">
                   Common questions about our services
                 </p>
               </div>

@@ -7,40 +7,293 @@
  * WordPress template: templates/404.html
  * Error page with search and suggestions
  * BEM naming: .error-404__*
- *
- * OPTIMIZATION:
- * - Imports utility-base.css for shared utility page structure
- * - Contains ONLY unique 404-specific features (if any)
- * - Shared patterns extracted: error state sections, search forms, suggestions
- *
- * BEFORE: ~150-180 lines
- * AFTER: ~35 lines (81% reduction)
- * SAVINGS: ~115-145 lines
  */
 
 /* ============================================
    BASE IMPORTS
    ============================================ */
 
-/**
- * Import utility base for shared structure:
- * - Error state sections with icon wrappers
- * - Search forms with focus states
- * - Search suggestions with hover effects
- * - Result cards
- */
 @import './utility-base.css';
 @import '../base/grid-utilities.css';
 @import '../base/card-base.css';
 @import '../patterns/hero/hero-base.css';
 
 /* ============================================
-   404-SPECIFIC STYLES
+   404-SPECIFIC STYLES (FUNKY DESIGN)
    ============================================ */
 
-/**
- * All 404 error page styles are inherited from utility-base.css
- * No additional unique styles needed for this template
- */
+/* Hero Section */
+.error-404__hero {
+  position: relative;
+  overflow: hidden;
+  padding: var(--spacing-32) 0 var(--spacing-24);
+  text-align: center;
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
 
-/* Placeholder for future 404-specific features */
+.error-404__hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: 0;
+  opacity: 0.4;
+  animation: float-slow 10s ease-in-out infinite alternate;
+}
+
+.error-404__hero-orb--1 {
+  width: 400px;
+  height: 400px;
+  background: var(--color-neon-cyan);
+  top: -100px;
+  left: -100px;
+}
+
+.error-404__hero-orb--2 {
+  width: 300px;
+  height: 300px;
+  background: var(--color-neon-pink);
+  bottom: -50px;
+  right: -50px;
+  animation-delay: -5s;
+}
+
+.error-404__hero-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.error-404__hero-icon-wrapper {
+  color: var(--color-neon-yellow);
+  margin-bottom: var(--spacing-8);
+  animation: pulse-glow 2s infinite alternate;
+}
+
+.error-404__hero-title {
+  margin-bottom: var(--spacing-6);
+  font-family: var(--font-primary);
+  color: var(--color-white);
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.error-404__hero-description {
+  margin-bottom: var(--spacing-10);
+  font-family: var(--font-secondary);
+  font-size: 1.125rem;
+  color: var(--color-neutral-300);
+}
+
+/* Search Area */
+.error-404__search {
+  display: flex;
+  gap: var(--spacing-4);
+  width: 100%;
+  max-width: 500px;
+  margin-bottom: var(--spacing-8);
+}
+
+.error-404__search-input-wrapper {
+  position: relative;
+  flex: 1;
+}
+
+.error-404__search-icon {
+  position: absolute;
+  left: var(--spacing-4);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-neutral-400);
+}
+
+.error-404__search-input {
+  width: 100%;
+  padding: var(--spacing-3) var(--spacing-4) var(--spacing-3) var(--spacing-10);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-neutral-700);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--color-white);
+  font-family: var(--font-secondary);
+  transition: all 0.3s ease;
+}
+
+.error-404__search-input:focus {
+  outline: none;
+  border-color: var(--color-neon-cyan);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Suggestions */
+.error-404__search-suggestions {
+  margin-bottom: var(--spacing-10);
+}
+
+.error-404__search-suggestions-label {
+  font-size: 0.875rem;
+  color: var(--color-neutral-400);
+  margin-bottom: var(--spacing-3);
+  font-family: var(--font-secondary);
+}
+
+.error-404__search-suggestions-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-3);
+  justify-content: center;
+}
+
+.error-404__search-suggestions-chip {
+  padding: var(--spacing-2) var(--spacing-4);
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--color-white);
+  font-size: 0.875rem;
+  font-family: var(--font-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.error-404__search-suggestions-chip:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: var(--color-neon-cyan);
+  color: var(--color-neon-cyan);
+}
+
+/* Suggestions Section */
+.error-404__suggestions {
+  padding: var(--spacing-20) 0;
+  background-color: var(--background);
+}
+
+.error-404__suggestions-header {
+  text-align: center;
+  margin-bottom: var(--spacing-12);
+}
+
+.error-404__suggestions-title {
+  font-family: var(--font-primary);
+}
+
+.error-404__suggestions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-8);
+}
+
+/* Cards */
+.error-404__suggestion-card {
+  position: relative;
+  border-radius: var(--radius-lg);
+  padding: 2px; /* For the glow border */
+  background: linear-gradient(135deg, var(--color-neutral-800), var(--color-neutral-900));
+  transition: transform 0.3s ease;
+  height: 100%;
+}
+
+.error-404__suggestion-card:hover {
+  transform: translateY(-5px);
+}
+
+.error-404__suggestion-card-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, var(--color-neon-pink), var(--color-neon-cyan));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 0;
+}
+
+.error-404__suggestion-card:hover .error-404__suggestion-card-glow {
+  opacity: 0.8;
+}
+
+.error-404__suggestion-card-inner {
+  position: relative;
+  z-index: 1;
+  background-color: var(--color-black);
+  border-radius: calc(var(--radius-lg) - 2px);
+  padding: var(--spacing-6);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  color: var(--color-white);
+}
+
+.error-404__suggestion-card-icon-container {
+  color: var(--color-neon-lime);
+  margin-bottom: var(--spacing-4);
+}
+
+.error-404__suggestion-card-title {
+  font-family: var(--font-primary);
+  margin-bottom: var(--spacing-2);
+}
+
+.error-404__suggestion-card-description {
+  font-family: var(--font-secondary);
+  color: var(--color-neutral-300);
+  margin-bottom: var(--spacing-6);
+  flex-grow: 1;
+}
+
+/* CTA */
+.error-404__cta {
+  position: relative;
+  padding: var(--spacing-20) 0;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  text-align: center;
+  overflow: hidden;
+}
+
+.error-404__cta-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(0,255,255,0.1) 0%, transparent 70%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.error-404__cta-content {
+  position: relative;
+  z-index: 1;
+}
+
+.error-404__cta-title {
+  font-family: var(--font-primary);
+  margin-bottom: var(--spacing-4);
+}
+
+.error-404__cta-description {
+  font-family: var(--font-secondary);
+  color: var(--color-neutral-300);
+  margin-bottom: var(--spacing-8);
+}
+
+.error-404__cta-buttons {
+  display: flex;
+  gap: var(--spacing-4);
+  justify-content: center;
+}
+
+/* Animations */
+@keyframes float-slow {
+  0% { transform: translateY(0) scale(1); }
+  100% { transform: translateY(-20px) scale(1.05); }
+}
+
+@keyframes pulse-glow {
+  0% { filter: drop-shadow(0 0 5px var(--color-neon-yellow)); }
+  100% { filter: drop-shadow(0 0 20px var(--color-neon-yellow)); }
+}

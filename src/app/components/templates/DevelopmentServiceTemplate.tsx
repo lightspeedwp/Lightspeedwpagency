@@ -82,7 +82,7 @@ export function DevelopmentServiceTemplate() {
   }, []);
 
   return (
-    <>
+    <div className="service-page">
       {/* Breadcrumbs */}
       <BreadcrumbPart
         items={[
@@ -142,7 +142,7 @@ export function DevelopmentServiceTemplate() {
                     {'>'} System Status: <span className="dev-service__terminal-status">OPTIMAL</span>
                   </p>
 
-                  <div className="wp-flex wp-gap-4 wp-flex-wrap">
+                  <div className="service-hero__cta-group">
                     <Button variant="default" size="lg" page="contact">
                       Execute Project
                     </Button>
@@ -163,7 +163,7 @@ export function DevelopmentServiceTemplate() {
           ============================================ */}
       <section id="dev-overview" className="dev-service__section dev-service__section--alt">
         <Container>
-          <div className="wp-grid-2-cols wp-items-center wp-gap-16">
+          <div className="service-section__grid service-section__grid--2 service-section__grid--align-center service-section__grid--gap-lg">
             <ScrollReveal animation="fade-right">
               <div>
                 <div className="dev-service__system-card">
@@ -233,6 +233,6 @@ export function DevelopmentServiceTemplate() {
         relatedServices={data.relatedServices}
         cta={data.cta}
       />
-    </>
+    </div>
   );
 }

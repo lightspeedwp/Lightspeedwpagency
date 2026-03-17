@@ -4,11 +4,11 @@
  * WordPress template: templates/page-about.html
  *
  * Pattern Components:
- * - ✅ FeatureList — Values grid (glow variant, 3 columns)
- * - ✅ FeatureList — Expertise grid (glow variant, 3 columns)
- * - ✅ StatsSection — Impact stats
- * - ✅ FAQSection — About FAQs
- * - ✅ FunkyCTA — Final conversion section
+ * - FeatureList — Values grid (glow variant, 3 columns)
+ * - FeatureList — Expertise grid (glow variant, 3 columns)
+ * - StatsSection — Impact stats
+ * - FAQSection — About FAQs
+ * - FunkyCTA — Final conversion section
  *
  * STRICT DESIGN SYSTEM COMPLIANCE:
  * - No inline Tailwind classes
@@ -200,7 +200,7 @@ export function AboutTemplate() {
       {/* ============================================
           4. VALUES (Icon Glow Cards)
           ============================================ */}
-      <section className="about-overview__cards-section wp-bg-background">
+      <section className="about-overview__cards-section">
         <Container>
           <ScrollReveal animation="fade-up">
             <div className="about-overview__story-header">

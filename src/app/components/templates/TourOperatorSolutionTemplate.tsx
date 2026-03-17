@@ -19,7 +19,7 @@ import {
 
 export function TourOperatorSolutionTemplate() {
   return (
-    <div className="wp-flex wp-flex-col wp-w-full wp-min-h-screen wp-bg-background">
+    <div className="solution-page tour-operator-solution">
       {/* Hero Section */}
       <Hero
         variant="service"

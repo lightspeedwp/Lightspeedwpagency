@@ -97,19 +97,19 @@ export interface JourneyStageData {
    ───────────────────────────────────────────── */
 
 export const journeyStages: JourneyStageData[] = [
-  /* ── 01 IGNITE ── */
+  /* ── 01 DISCOVER ── */
   {
-    slug: 'ignite',
+    slug: 'discover',
     step: '01',
-    name: 'Ignite',
+    name: 'Discover',
     tagline: 'Uncover. Research. Strategise.',
     icon: MagnifyingGlass,
     accent: 'var(--category-violet)',
     duration: '2 – 4 weeks',
     description:
-      'Every great website begins with a spark — a clear understanding of who you are, who you serve, and what you want to achieve. The Ignite phase is where we light that spark. We dive deep into your business goals, audience behaviours, competitor landscape, and existing content to build a rock-solid strategic foundation.',
+      'Every great website begins with a spark — a clear understanding of who you are, who you serve, and what you want to achieve. The Discover phase is where we light that spark. We dive deep into your business goals, audience behaviours, competitor landscape, and existing content to build a rock-solid strategic foundation.',
     whyItMatters:
-      'Skipping strategy is the number-one reason websites fail. Without a blueprint, development becomes guesswork. Ignite eliminates that risk by ensuring every design decision, content choice, and technical build is anchored to measurable objectives.',
+      'Skipping strategy is the number-one reason websites fail. Without a blueprint, development becomes guesswork. Discover eliminates that risk by ensuring every design decision, content choice, and technical build is anchored to measurable objectives.',
     outcomes: [
       'Crystal-clear project brief aligned to business KPIs',
       'Audience personas backed by real data',
@@ -139,7 +139,7 @@ export const journeyStages: JourneyStageData[] = [
       { label: 'Project Roadmap', description: 'Milestone timeline with clear go / no-go gates.' },
     ],
     clientRole: {
-      title: 'Your role during Ignite',
+      title: 'Your role during Discover',
       items: [
         'Share your business goals, brand guidelines, and existing analytics',
         'Attend a 90-minute discovery workshop (remote or in-person)',
@@ -153,7 +153,7 @@ export const journeyStages: JourneyStageData[] = [
       role: 'Marketing Director, TravelCo',
     },
     cta: {
-      title: 'Ready to Ignite Your Project?',
+      title: 'Ready to Discover Your Path?',
       description: 'Book a free 30-minute strategy call. We\'ll explore your goals and map the road ahead.',
       buttonText: 'Book a Strategy Call',
       buttonPage: 'contact',

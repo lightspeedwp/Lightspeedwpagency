@@ -104,7 +104,7 @@ function HubCard({ to, accentColor, accentVar, icon: Icon, title, description, f
           fontFamily: 'var(--font-secondary)', fontSize: 'var(--text-sm)', color: 'var(--muted-foreground)'
         }}>
           {features.map((feature) => (
-            <li key={feature} className="wp-flex wp-items-center wp-gap-2">
+            <li key={feature} className="service-feature__list-item">
               <Check size={16} color={accentColor} /> {feature}
             </li>
           ))}
@@ -131,7 +131,7 @@ export function ServicesLandingHubs() {
     <section className="service-section service-section--bg-muted">
       <Container>
         <ScrollReveal animation="fade-up">
-          <div className="wp-flex wp-flex-col wp-items-center wp-text-center wp-mb-16">
+          <div className="service-section__header">
             <div style={{
               display: 'inline-flex',
               alignItems: 'center',
@@ -164,7 +164,7 @@ export function ServicesLandingHubs() {
           </div>
         </ScrollReveal>
 
-        <div className="wp-grid-2-cols wp-gap-8">
+        <div className="service-section__grid service-section__grid--2">
           <HubCard
             to={getPageUrl('ai-services-landing')}
             accentColor="var(--primary)"

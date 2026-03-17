@@ -23,81 +23,7 @@ import {
 } from '@phosphor-icons/react';
 
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
-
-/* ============================================
-   LOCAL DATA — Service items, stats, approach steps
-   ============================================ */
-
-const serviceItems = [
-  {
-    icon: Brain,
-    title: 'AI content generation',
-    description: 'Create on-brand blog posts, product descriptions, and marketing copy at scale using AI trained on your voice.',
-  },
-  {
-    icon: MagnifyingGlass,
-    title: 'AI-powered SEO',
-    description: 'Automated keyword research, content scoring, schema markup, and competitor analysis powered by machine learning.',
-  },
-  {
-    icon: ChatCentered,
-    title: 'AI chatbots',
-    description: 'Intelligent WordPress chatbots that engage visitors 24/7, qualify leads, and hand off to human agents seamlessly.',
-  },
-  {
-    icon: ChartBar,
-    title: 'AI analytics & insights',
-    description: 'Turn raw data into strategic decisions with automated dashboards, traffic predictions, and anomaly detection.',
-  },
-  {
-    icon: Eye,
-    title: 'AI search readiness',
-    description: 'Optimise your site for AI-powered search engines like ChatGPT, Perplexity, and Google SGE.',
-  },
-  {
-    icon: Robot,
-    title: 'AI engine optimisation',
-    description: 'Ensure your content is discoverable, citable, and ranked by the next generation of AI discovery platforms.',
-  },
-];
-
-const statsItems = [
-  { value: '156%', label: 'Average organic traffic increase' },
-  { value: '10x', label: 'Content production speed' },
-  { value: '92%', label: 'Prediction accuracy for traffic' },
-  { value: '30+', label: 'AI integrations deployed' },
-];
-
-const approachSteps = [
-  {
-    id: 'approach-1',
-    number: '01',
-    icon: Binoculars,
-    title: 'Discovery & audit',
-    description: 'We analyse your current digital footprint, content strategy, and search performance to identify AI opportunities.',
-  },
-  {
-    id: 'approach-2',
-    number: '02',
-    icon: Blueprint,
-    title: 'Strategy & architecture',
-    description: 'We design a tailored AI integration plan aligned with your business goals, tech stack, and budget.',
-  },
-  {
-    id: 'approach-3',
-    number: '03',
-    icon: Rocket,
-    title: 'Implementation & training',
-    description: 'We deploy AI tools, integrate with your WordPress site, and train your team on best practices.',
-  },
-  {
-    id: 'approach-4',
-    number: '04',
-    icon: TrendUp,
-    title: 'Optimisation & scale',
-    description: 'We monitor performance, refine models, and scale successful AI initiatives across your digital ecosystem.',
-  },
-];
+import { legacyServiceItems, legacyStatsItems, legacyApproachSteps } from '../../data/ai-services-lifecycle-data';
 
 export function AIServicesLandingTemplate() {
   return (
@@ -176,7 +102,7 @@ export function AIServicesLandingTemplate() {
             <ServiceCapabilitiesGrid
               heading="AI & search services"
               subheading="Comprehensive AI-powered services to maximise your digital visibility across every search channel."
-              capabilities={serviceItems.map((item, i) => ({
+              capabilities={legacyServiceItems.map((item, i) => ({
                 id: `ai-srv-${i}`,
                 title: item.title,
                 description: item.description,
@@ -200,7 +126,7 @@ export function AIServicesLandingTemplate() {
             <AgencyStats
               heading="Results that matter"
               subheading="Data-backed outcomes from our AI and search optimisation campaigns."
-              stats={statsItems}
+              stats={legacyStatsItems}
               columns={4}
             />
           </ScrollReveal>
@@ -219,7 +145,7 @@ export function AIServicesLandingTemplate() {
             <AgencyProcessTimeline
               heading="Our approach"
               subheading="A proven four-phase methodology that delivers measurable results."
-              steps={approachSteps}
+              steps={legacyApproachSteps}
             />
           </ScrollReveal>
         </Container>

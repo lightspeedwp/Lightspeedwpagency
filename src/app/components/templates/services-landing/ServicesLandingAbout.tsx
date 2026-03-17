@@ -32,8 +32,8 @@ export function ServicesLandingAbout() {
 
       <Container>
         <ScrollReveal animation="fade-up">
-          <div className="wp-grid-2-cols wp-items-center wp-gap-16" style={{ position: 'relative', zIndex: 1 }}>
-            <div className="wp-flex wp-flex-col wp-gap-8">
+          <div className="service-section__grid service-section__grid--2 service-section__grid--align-center service-section__grid--gap-lg" style={{ position: 'relative', zIndex: 1 }}>
+            <div className="service-section__content">
               <h2 className="service-section__title" style={{ margin: 0, lineHeight: '1.2' }}>
                 Experience meets{' '}
                 <span className="service-hero__gradient-text">Innovation</span>
@@ -56,7 +56,7 @@ export function ServicesLandingAbout() {
                 </p>
               </div>
 
-              <div className="wp-flex wp-flex-wrap wp-gap-4">
+              <div className="service-section__tags">
                 {[
                   { icon: Sparkle, label: 'WordPress Core', color: 'var(--primary)' },
                   { icon: Palette, label: 'UI/UX Design', color: 'var(--secondary)' },

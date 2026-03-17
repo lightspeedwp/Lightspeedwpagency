@@ -72,7 +72,7 @@ export function DesignServiceTemplate() {
   };
 
   return (
-    <div className="wp-w-full wp-flex wp-flex-col">
+    <div className="service-page">
       {/* Breadcrumbs */}
       <BreadcrumbPart
         items={[
@@ -126,7 +126,7 @@ export function DesignServiceTemplate() {
               {data.tagline}
             </p>
 
-            <div className="wp-flex wp-justify-center wp-gap-4">
+            <div className="service-hero__cta-group">
               <Button variant="default" size="lg" page="contact">
                 Start Your Project
               </Button>
@@ -144,7 +144,7 @@ export function DesignServiceTemplate() {
           ============================================ */}
       <section id="design-overview" className="service-section service-section--bg-card service-section--overflow-hidden">
         <Container>
-          <div className="wp-grid-2-cols wp-items-center wp-gap-16">
+          <div className="service-section__grid service-section__grid--2 service-section__grid--align-center service-section__grid--gap-lg">
             <ScrollReveal animation="fade-right">
               {/* Visual Stack */}
               <div className="design-decor__stack">

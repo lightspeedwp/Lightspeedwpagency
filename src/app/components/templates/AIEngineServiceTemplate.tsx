@@ -32,7 +32,7 @@ export const AIEngineServiceTemplate = () => {
   const results = aiEngineServiceResults;
 
   return (
-    <div className="wp-w-full wp-flex wp-flex-col">
+    <div className="service-page ai-engine-service">
       <BreadcrumbPart
         items={[
           { label: 'Home', page: 'front-page' },
@@ -60,7 +60,7 @@ export const AIEngineServiceTemplate = () => {
                 Perplexity, and other AI systems that are becoming the new search engines.
               </p>
               
-              <div className="wp-flex wp-justify-center wp-gap-4 wp-flex-wrap">
+              <div className="service-hero__cta-group service-hero__cta-group--centered">
                 <Link to={getPageUrl('contact')} className="sub-service-base__hero-btn sub-service-base__hero-btn--primary">
                   Get AI Visibility Audit
                 </Link>

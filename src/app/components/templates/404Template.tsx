@@ -27,83 +27,93 @@ import {
 export function Template404() {
   return (
     <>
-      <Section className="error-hero">
+      <Section className="error-404__hero">
         <Container>
-          <div className="error-hero__icon">
-            <Warning size={40} weight="duotone" />
-          </div>
+          <div className="error-404__hero-orb error-404__hero-orb--1" />
+          <div className="error-404__hero-orb error-404__hero-orb--2" />
           
-          <Heading level={1} className="wp-mb-6">
-            {error404Hero.errorCode} - {error404Hero.title}
-          </Heading>
-          
-          <Paragraph className="error-hero__description">
-            {error404Hero.description}
-          </Paragraph>
-
-          {/* Search Bar */}
-          <div className="error-search">
-            <div className="error-search__input-wrapper">
-              <MagnifyingGlass className="error-search__icon" size={20} />
-              <input 
-                type="text" 
-                className="error-search__input" 
-                placeholder="Search our site..."
-                aria-label="Search"
-              />
+          <div className="error-404__hero-content">
+            <div className="error-404__hero-icon-wrapper">
+              <Warning size={40} weight="duotone" className="error-404__hero-icon" />
             </div>
-            <Button variant="primary">Search</Button>
-          </div>
+            
+            <Heading level={1} className="error-404__hero-title">
+              {error404Hero.errorCode} - {error404Hero.title}
+            </Heading>
+            
+            <Paragraph className="error-404__hero-description">
+              {error404Hero.description}
+            </Paragraph>
 
-          {/* Search Suggestions */}
-          {searchSuggestions.length > 0 && (
-            <div className="error-search-suggestions">
-              <Paragraph className="error-search-suggestions__label">
-                Try searching for:
-              </Paragraph>
-              <div className="error-search-suggestions__list">
-                {searchSuggestions.map((suggestion, index) => (
-                  <span key={index} className="error-search-suggestions__chip">
-                    {suggestion.query}
-                  </span>
-                ))}
+            {/* Search Bar */}
+            <div className="error-404__search">
+              <div className="error-404__search-input-wrapper">
+                <MagnifyingGlass className="error-404__search-icon" size={20} />
+                <input 
+                  type="text" 
+                  className="error-404__search-input" 
+                  placeholder="Search our site..."
+                  aria-label="Search"
+                />
               </div>
+              <Button variant="primary">Search</Button>
             </div>
-          )}
 
-          <div className="error-actions">
-            <Button variant="outline" href="/" icon={<House size={18} />}>
-              Back to Home
-            </Button>
+            {/* Search Suggestions */}
+            {searchSuggestions.length > 0 && (
+              <div className="error-404__search-suggestions">
+                <Paragraph className="error-404__search-suggestions-label">
+                  Try searching for:
+                </Paragraph>
+                <div className="error-404__search-suggestions-list">
+                  {searchSuggestions.map((suggestion, index) => (
+                    <span key={index} className="error-404__search-suggestions-chip">
+                      {suggestion.query}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <div className="error-404__actions">
+              <Button variant="outline" href="/" icon={<House size={18} />}>
+                Back to Home
+              </Button>
+            </div>
           </div>
         </Container>
       </Section>
 
       {/* Helpful Links */}
-      <Section spacing="xl" className="error-suggestions">
+      <Section spacing="xl" className="error-404__suggestions">
         <Container>
-          <Heading level={2} className="wp-text-center wp-mb-12">
-            You Might Be Looking For
-          </Heading>
+          <div className="error-404__suggestions-header">
+            <Heading level={2} className="error-404__suggestions-title">
+              You Might Be Looking For
+            </Heading>
+          </div>
 
-          <div className="error-suggestions__grid">
+          <div className="error-404__suggestions-grid">
             {helpfulLinks.map((item, index) => {
               const IconComponent = item.icon;
               return (
-                <div key={index} className="error-suggestion-card">
-                  <div className="error-suggestion-card__icon-container">
-                    <IconComponent size={24} />
-                  </div>
-                  <div className="error-suggestion-card__content">
-                    <Heading level={3} className="error-suggestion-card__title">
-                      {item.title}
-                    </Heading>
-                    <Paragraph className="error-suggestion-card__description">
-                      {item.description}
-                    </Paragraph>
-                    <Button variant="text" page={item.page}>
-                      Learn More <ArrowRight size={16} />
-                    </Button>
+                <div key={index} className="error-404__suggestion-card">
+                  <div className="error-404__suggestion-card-glow" />
+                  <div className="error-404__suggestion-card-inner">
+                    <div className="error-404__suggestion-card-icon-container">
+                      <IconComponent size={24} className="error-404__suggestion-card-icon" />
+                    </div>
+                    <div className="error-404__suggestion-card-content">
+                      <Heading level={3} className="error-404__suggestion-card-title">
+                        {item.title}
+                      </Heading>
+                      <Paragraph className="error-404__suggestion-card-description">
+                        {item.description}
+                      </Paragraph>
+                      <Button variant="text" page={item.page} className="error-404__suggestion-card-btn">
+                        Learn More <ArrowRight size={16} />
+                      </Button>
+                    </div>
                   </div>
                 </div>
               );
@@ -113,16 +123,17 @@ export function Template404() {
       </Section>
 
       {/* Bottom CTA */}
-      <Section spacing="lg" className="error-cta">
+      <Section spacing="lg" className="error-404__cta">
+        <div className="error-404__cta-glow" />
         <Container>
-          <div className="wp-text-center">
-            <Heading level={2} className="wp-mb-4">
+          <div className="error-404__cta-content">
+            <Heading level={2} className="error-404__cta-title">
               {error404CTA.title}
             </Heading>
-            <Paragraph className="wp-mb-8">
+            <Paragraph className="error-404__cta-description">
               {error404CTA.description}
             </Paragraph>
-            <div className="error-cta__buttons">
+            <div className="error-404__cta-buttons">
               {error404CTA.buttons.map((btn, index) => (
                 <Button
                   key={index}

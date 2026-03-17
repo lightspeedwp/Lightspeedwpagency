@@ -58,7 +58,7 @@ export function PerformanceServiceTemplate() {
   };
 
   return (
-    <div className="wp-w-full wp-flex wp-flex-col">
+    <div className="service-page">
       {/* Breadcrumbs */}
       <BreadcrumbPart
         items={[
@@ -131,7 +131,7 @@ export function PerformanceServiceTemplate() {
           ============================================ */}
       <section className="service-section service-section--bg-muted">
         <Container>
-          <div className="wp-grid-2-cols wp-items-center wp-gap-16">
+          <div className="service-section__grid service-section__grid--2 service-section__grid--align-center service-section__grid--gap-lg">
             <ScrollReveal animation="fade-right">
               <div>
                 <h2 className="service-section__title perf-section__title">

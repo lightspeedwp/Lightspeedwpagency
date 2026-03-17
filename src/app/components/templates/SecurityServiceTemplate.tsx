@@ -106,7 +106,7 @@ export function SecurityServiceTemplate() {
         <div className="security-hero__radial-bg" aria-hidden="true" />
         
         <Container>
-          <div className="wp-grid-2-cols wp-items-center wp-gap-16">
+          <div className="service-section__grid service-section__grid--2 service-section__grid--align-center service-section__grid--gap-lg">
             <div className="security-hero__content">
               <ScrollReveal animation="fade-right">
                 <span className="service-hero__badge service-hero__badge--custom service-hero__badge--mono" style={{ '--badge-color': 'var(--color-terminal-green)' } as React.CSSProperties}>
@@ -123,7 +123,7 @@ export function SecurityServiceTemplate() {
                   {data.tagline} We build an impenetrable perimeter around your digital assets.
                 </p>
 
-                <div className="wp-flex wp-gap-4 wp-flex-wrap">
+                <div className="service-hero__cta-group">
                   <Button
                     variant="default"
                     size="lg"

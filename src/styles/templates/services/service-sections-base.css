@@ -85,16 +85,46 @@
 /* Section Content */
 .service-section__content {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+}
+
+.service-section__actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+@media (min-width: 640px) {
+  .service-section__actions {
+    flex-direction: row;
+    align-items: center;
+  }
 }
 
 /* ============================================
    GRID LAYOUTS
    ============================================ */
 
+.service-section__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-4);
+}
+
 .service-section__grid {
   display: grid;
   gap: var(--spacing-8);
   grid-template-columns: 1fr;
+}
+
+.service-section__grid--gap-lg {
+  gap: var(--spacing-16);
+}
+
+.service-section__grid--align-center {
+  align-items: center;
 }
 
 @media (min-width: 768px) {
@@ -188,9 +218,21 @@
   line-height: var(--line-height-normal);
 }
 
-/* ============================================
-   FEATURES LIST
-   ============================================ */
+/* Features Lists */
+.service-feature__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.service-feature__list-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
 
 .service-features {
   display: grid;

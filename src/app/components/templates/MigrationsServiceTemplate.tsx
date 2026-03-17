@@ -29,7 +29,7 @@ export const MigrationsServiceTemplate = () => {
   const results = migrationsServiceResults;
 
   return (
-    <div className="wp-w-full wp-flex wp-flex-col">
+    <div className="service-page migrations-service">
       <BreadcrumbPart
         items={[
           { label: 'Home', page: 'front-page' },
@@ -55,7 +55,7 @@ export const MigrationsServiceTemplate = () => {
                 and comprehensive testing ensure a smooth transition to your new platform or host.
               </p>
               
-              <div className="wp-flex wp-justify-center wp-gap-4 wp-flex-wrap">
+              <div className="service-hero__cta-group service-hero__cta-group--centered">
                 <Link to={getPageUrl('contact')} className="sub-service-base__hero-btn sub-service-base__hero-btn--primary">
                   Get Migration Quote
                 </Link>

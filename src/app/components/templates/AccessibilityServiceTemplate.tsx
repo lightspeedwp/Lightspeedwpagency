@@ -18,8 +18,10 @@ import { getPageUrl } from '../../data/site-pages';
 import { FeatureList } from '../patterns/FeatureList';
 import { CheckList } from '../patterns/CheckList';
 import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
+import { FunkyCTA } from '../patterns/FunkyCTA';
 import '../../../styles/templates/accessibility-service-optimized.css';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
+import { JourneyPhaseIndicator } from '../ui/JourneyPhaseIndicator';
 
 export const AccessibilityServiceTemplate = () => {
   const benefits = [
@@ -107,7 +109,7 @@ export const AccessibilityServiceTemplate = () => {
   ];
 
   return (
-    <div className="accessibility-service">
+    <div className="service-page accessibility-service">
       {/* Hero Section */}
       <section className="sub-service-base__hero accessibility-service__hero">
         <div className="sub-service-base__hero-content">
@@ -119,6 +121,8 @@ export const AccessibilityServiceTemplate = () => {
               { label: 'Accessibility' },
             ]}
           />
+          
+          <JourneyPhaseIndicator currentPhase="grow" currentServicePage="accessibility" />
           
           <h1 className="sub-service-base__hero-title">
             Web accessibility services
@@ -223,17 +227,18 @@ export const AccessibilityServiceTemplate = () => {
       <ServiceTestimonial serviceSlug="accessibility" />
 
       {/* CTA Section */}
-      <section className="sub-service-base__cta accessibility-service__cta">
-        <div className="sub-service-base__cta-content">
-          <h2 className="sub-service-base__cta-title">Ready for inclusive design?</h2>
-          <p className="sub-service-base__cta-description">
-            Get a free accessibility audit and discover how to make your website accessible to everyone.
-          </p>
-          <Link to={getPageUrl('contact')} className="sub-service-base__cta-button sub-service-base__cta-button--primary">
-            Request free audit
-          </Link>
-        </div>
-      </section>
+      <FunkyCTA
+        title="Ready for inclusive design?"
+        description="Get a free accessibility audit and discover how to make your website accessible to everyone."
+        buttonText="Request free audit"
+        buttonPage="contact"
+        benefits={[
+          'WCAG 2.1 AA/AAA compliance',
+          'Reduce legal risks',
+          'Expand your audience reach',
+          'Improve overall UX and SEO'
+        ]}
+      />
     </div>
   );
 };

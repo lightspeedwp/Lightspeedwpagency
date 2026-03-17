@@ -2,57 +2,124 @@
 
 **Last Updated:** March 17, 2026  
 **Report:** `/reports/2026-03/2026-03-17-ai-services-restructure-audit.md`  
-**Prompt:** `/prompts/ai-services-restructure.md`
+**Prompt:** `/prompts/ai-services-restructure.md`  
+**Sub-prompts:** `/prompts/ai-services-restructure/phase-*.md` (12 files)
 
 ---
 
-## High priority — Ignite → Discover rename
+## Phase 1 — Data layer
 
-- [ ] **Rename in `service-journey.ts`** — Change `name: 'Ignite'` → `name: 'Discover'`, update tagline to "Consult. Research. Strategise.", update icon to `Compass` or keep `MagnifyingGlass`, update service links to include AI consulting
-- [ ] **Rename in `journey-stage-pages.ts`** — Change `slug: 'ignite'` → `slug: 'discover'`, `name: 'Ignite'` → `name: 'Discover'`, rewrite description/whyItMatters/outcomes to reflect AI-enhanced consulting. Update `clientRole.title` from "Your role during Ignite" → "Your role during Discover". Update `cta.title` from "Ready to Ignite Your Project?" → "Ready to discover your potential?"
-- [ ] **Update `route-map.ts`** — Change `'journey-ignite': '/services/ignite'` → `'journey-discover': '/services/discover'`
-- [ ] **Update `core.routes.tsx`** — Rename `JourneyIgniteRoute` → `JourneyDiscoverRoute`, change `slug="ignite"` → `slug="discover"`, update route path `services/ignite` → `services/discover`, add legacy redirect `{ path: 'services/ignite', element: <Navigate to="/services/discover" replace /> }`
-- [ ] **Check header navigation** — Search `header-navigation.ts` and `SiteHeader.tsx` for any "Ignite" string references, update to "Discover"
+- [x] **Create `ai-services-lifecycle-data.tsx`** — 6 lifecycle stages with slug, step, name, tagline, icon, accent, description (2–3 sentences), services[], solutionLinks[], serviceLinks[], testimonial, cta. Phosphor icons imported directly
+- [x] **Create `ai-solutions-hub-data.tsx`** — Enhanced solutions hub data: hero, sticky nav items, 5 solution sections (title, description, benefits[], accent, icon, href, relatedServices[]), trust signals (3 testimonials), capabilities, CTA
+- [x] **Extract AIServicesLandingTemplate inline data** — Move serviceItems, statsItems, approachSteps from template to the new lifecycle data file
+- [x] **Rename Ignite → Discover in `service-journey.ts`** — `name: 'Ignite'` → `name: 'Discover'`, tagline, service mappings
+- [x] **Rename Ignite → Discover in `journey-stage-pages.ts`** — `slug: 'ignite'` → `slug: 'discover'`, all content referencing Ignite, clientRole.title, cta.title
+- [x] **Update `route-map.ts`** — `'journey-ignite': '/services/ignite'` → `'journey-discover': '/services/discover'`
+- [x] **Update `core.routes.tsx`** — Rename route, component, add legacy redirect for `/services/ignite`
+- [x] **Check header navigation** — Search `header-navigation.ts` and `SiteHeader.tsx` for Ignite references
 
-## High priority — Service mapping updates
+## Phase 2a — Solutions landing mega page
 
-- [ ] **Update Discover stage services** — Add AI consulting service card, add content collection doc reference, keep Discovery & Strategy and Content Operations
-- [ ] **Update Create stage services** — Add Figma prototyping, design systems as explicit cards. Ensure content services (prototype, design system, refined design prototype, accessible design) are represented
-- [ ] **Update Build stage services** — Add "AI-assisted development" concept to service cards alongside WordPress Dev and Security
-- [ ] **Update Launch stage services** — Add AI integrations (backend) as a service card alongside Hosting and Training
-- [ ] **Update Grow stage services** — Add LLM.txt as a service concept alongside AI Search, SEO, AEO, Analytics, Performance
-- [ ] **Update Evolve stage services** — Add "AI future strategy" and "AI advancements consulting" alongside existing AI services
+- [ ] **Redesign `AISolutionsLandingTemplate.tsx`** — Long-form mega page: hero → sticky nav → trust → stats → 5 solution sections → capabilities → CTA. Import from `ai-solutions-hub-data.tsx`
+- [ ] **Create sticky anchor nav component** — `StickyAnchorNav.tsx` with IntersectionObserver active state. Shared by both landing pages
+- [ ] **Create neural network CSS animation** — Hero visual: CSS grid of nodes with animated connections. Neon-cyan particles, pink pulses. Reduced-motion fallback
+- [ ] **Create `ai-solutions-mega.css`** — BEM styles for mega page. Dark-bg solution sections, sticky nav, trust cards. Max 400 lines (split if needed)
+- [ ] **Split template if over 300 lines** — `AISolutionsLandingTemplate.tsx` (hero + nav + trust + stats) + `AISolutionsLandingSections.tsx` (5 solution sections + capabilities + CTA)
 
-## High priority — Mega AI services page
+## Phase 2b — Services lifecycle mega page
 
-- [ ] **Create `ai-services-mega-data.tsx`** — Extract all mega page content to data file following established pattern. Include: hero content, 6 stage sections (title, description, accent colour, service cards, icon), trust/testimonials section, CTA content. Use Phosphor icon imports directly in data file
-- [ ] **Redesign `AIServicesLandingTemplate.tsx`** — Transform from current 4-section layout (hero → grid → stats → approach → CTA) to mega page layout (hero → timeline → 6 stage sections → trust → CTA). Each stage section must: force dark background for neon compliance, use `--phase-accent` CSS variable, include compact service cards, link to journey stage page. Import content from `ai-services-mega-data.tsx`
-- [ ] **Create `ai-services-mega.css`** — BEM styles for mega page. Blocks: `.ai-mega__hero`, `.ai-mega__timeline`, `.ai-mega__stage`, `.ai-mega__stage-header`, `.ai-mega__service-list`, `.ai-mega__trust`, `.ai-mega__cta`. All stages must use dark surface (`var(--color-black)` bg) with neon accent foreground text/borders per Guidelines neon colour rule. Use CSS variables only — zero hardcoded values
+- [ ] **Redesign `AIServicesLandingTemplate.tsx`** — Lifecycle mega page: hero → timeline → trust → stats → 6 stage sections → migrations callout → CTA. Import from `ai-services-lifecycle-data.tsx`
+- [ ] **Create sticky timeline component** — Horizontal 6-stage progress bar with IntersectionObserver. Adapt from `JourneyProgressBar`
+- [ ] **Create lifecycle orbit CSS animation** — Hero visual: 6 icons orbiting central brain. Stage accent pulses. Reduced-motion fallback
+- [ ] **Create `ai-services-lifecycle.css`** — BEM styles for lifecycle page. All stage sections on dark backgrounds (`var(--color-black)`) for neon compliance. Max 400 lines (split if needed)
+- [ ] **Split template if over 300 lines** — `AIServicesLandingTemplate.tsx` + `AIServicesLifecycleSections.tsx`
+- [ ] **Create migrations callout section** — Glassmorphism card between stages and CTA, links to `/services/migrations`
 
-## Medium priority — Trust factor repositioning
+## Phase 3 — Solutions sub-pages (5 pages)
 
-- [ ] **Move testimonials up in `JourneyStageTemplate.tsx`** — Relocate testimonial section from position 6 to position 3 (after hero + description, before outcomes). This gives social proof earlier in the page scroll
-- [ ] **Add testimonials to mega page** — Include a trust section with 2–3 testimonial cards between the stage sections and CTA
+### Shared AISubPageTemplate updates
 
-## Medium priority — Content enrichment
+- [ ] **Add optional props to `AISubPageTemplate.tsx`** — `lifecycleStage?`, `trustSignal?`, `relatedServices?`, `relatedSolutions?`, `showPricing?` (default false)
+- [ ] **Create `LifecycleStageBadge.tsx`** — Shared component: horizontal pill with stage icon, name, accent colour. Location: `/src/app/components/parts/`
 
-- [ ] **Add Migrations cross-reference** — In Discover and Build journey stage data, add a note/card referencing migrations as an optional entry point. Update `journey-stage-pages.ts` services arrays for both stages
-- [ ] **Expand AI consulting content** — Write Discover stage description emphasising AI-enhanced consulting: "ask the right questions", content collection document, AI readiness assessment
-- [ ] **Expand AI-assisted development content** — Write Build stage content mentioning AI code assistance, automated testing, accessibility scanning
-- [ ] **Expand LLM.txt + AEO content** — Write Grow stage content covering LLM.txt protocol, answer engine optimisation, AI SEO strategies
-- [ ] **Expand AI future strategy content** — Write Evolve stage content covering AI advancements consulting, future strategy planning, ongoing AI support
+### Per-page updates
 
-## Low priority — UI refinements
+- [ ] **`/solutions/ai/integrations`** — Add lifecycle badge (Discover → Launch → Evolve), trust signal, related services (3), related solutions (3), remove pricing, update breadcrumbs to sentence case
+- [ ] **`/solutions/ai/content-generation`** — Add lifecycle badge (Create stage, pink), trust signal, related services (3), related solutions (3), remove pricing
+- [ ] **`/solutions/ai/seo`** — Add lifecycle badge (Grow stage, green), trust signal, related services (4), related solutions (3), remove pricing
+- [ ] **`/solutions/ai/chatbots`** — Add lifecycle badge (Launch stage, amber), trust signal, related services (3), related solutions (3), remove pricing
+- [ ] **`/solutions/ai/analytics`** — Add dual lifecycle badge (Grow + Evolve), trust signal, related services (4), related solutions (3), remove pricing
 
-- [ ] **Create compact service list pattern** — New `ServiceCompactList` component using list/pill format instead of large cards. Smaller text, icon + title + one-liner on single row. For use on mega page and potentially journey pages
-- [ ] **Consider tabbed sub-services** — Evaluate converting some service pages to tabbed sections on parent pages (e.g., content sub-services as tabs on Content page). Requires UX review before implementation
-- [ ] **Reduce card text volume** — Audit service card descriptions across all templates. Shorten to 1–2 lines max. Use lists or expandable sections for detail
+### Data file updates
+
+- [ ] **Update `ai-integrations/landing.ts`** — Add lifecycleStages, trustSignal, relatedServices, relatedSolutions
+- [ ] **Update `ai-integrations/content-generation.ts`** — Add lifecycle + cross-link data
+- [ ] **Update `ai-integrations/seo.ts`** — Add lifecycle + cross-link data
+- [ ] **Update `ai-integrations/chatbots.ts`** — Add lifecycle + cross-link data
+- [ ] **Update `ai-integrations/analytics.ts`** — Add lifecycle + cross-link data
+
+## Phase 4 — Services sub-pages (5 pages)
+
+### Shared components
+
+- [ ] **Create `LifecycleFlowStrip.tsx`** — 3-card horizontal strip: prev stage → current stage → next stage. Location: `/src/app/components/parts/`
+- [ ] **Create `RelatedPagesGrid.tsx`** — Responsive grid of linked cards for "Related services" / "Related solutions". Location: `/src/app/components/patterns/`
+
+### Per-page updates
+
+- [ ] **`/services/ai/search-visibility`** — Add journey context strip (mini-timeline), trust signal, related solutions (3), lifecycle flow (Build → **Grow** → Evolve), update RelatedServicesGrid (4 links)
+- [ ] **`/services/ai/seo`** — Add lifecycle badge (Grow, green), trust signal, related solutions (3), related services (4), lifecycle flow, differentiation callout vs AI Search & Visibility
+- [ ] **`/services/ai/analytics`** — Add lifecycle badge (Grow, green), trust signal, related solutions (3), related services (4), lifecycle flow, differentiation callout
+- [ ] **`/services/ai/engine-optimisation`** — Add dual lifecycle badge (Grow + Evolve), trust signal, related solutions (3), related services (3), lifecycle flow spanning two stages, new LLM.txt + AI citation content sections
+- [ ] **`/services/ai/answer-engine-optimisation`** — Add lifecycle badge (Grow, green), trust signal, related solutions (3), related services (4), lifecycle flow, new voice search + zero-click content sections
+
+### Data file updates
+
+- [ ] **Update `ai-search-service-template-data.tsx`** — Add lifecycle, trust, relatedSolutions, lifecycleFlow
+- [ ] **Update `seo-service-template-data.tsx`** — Add lifecycle, trust, cross-link data
+- [ ] **Update `analytics-service-template-data.tsx`** — Add lifecycle, trust, cross-link data
+- [ ] **Update `ai-engine-service-template-data.tsx`** — Add lifecycle, trust, cross-link data, llmTxtContent, aiCitationStrategy
+- [ ] **Update `answer-engine-service-template-data.tsx`** — Add lifecycle, trust, cross-link data, voiceSearchContent, zeroClickContent
+
+## Phase 5 — Cross-linking, navigation, trust, and polish
+
+### Cross-link verification
+
+- [ ] **Verify solutions → services links** — All 5 solutions sub-pages link to relevant services (15 links total)
+- [ ] **Verify services → solutions links** — All 5 services sub-pages link to relevant solutions (15 links total)
+- [ ] **Verify landing → sub-page links** — Both hubs link to all 10 sub-pages
+
+### Navigation updates
+
+- [ ] **Update mega menu** — Rename Ignite → Discover, ensure 6 lifecycle stages with icons
+- [ ] **Verify route-map.ts** — All 12 AI pages have entries, slugToPath resolves correctly
+- [ ] **Update sitemap-data.ts** — All 12 AI pages listed with correct hierarchy
+
+### Trust signal repositioning
+
+- [ ] **Move testimonials in `JourneyStageTemplate.tsx`** — Position 6 → position 3 (after hero + description, before outcomes)
+
+### Final audit
+
+- [ ] **Sentence case sweep** — All 12 AI pages
+- [ ] **Neon compliance sweep** — All neon accents on dark backgrounds only
+- [ ] **Token compliance sweep** — Zero hardcoded values in CSS/inline
+- [ ] **Font compliance sweep** — Only var(--font-primary), var(--font-secondary), var(--font-mono)
+- [ ] **Icon compliance sweep** — Only @phosphor-icons/react
+- [ ] **File size sweep** — All .tsx under 300 lines, all .css under 400 lines
+- [ ] **Accessibility sweep** — aria-labels, keyboard nav, reduced motion
+- [ ] **Data extraction verification** — All content in data files, templates layout-only
 
 ---
 
-## Notes
+## Summary
 
-- **WebGL headers:** Codebase search found zero WebGL/Canvas 3D/Three.js usage. All hero visuals are CSS-only (grids, gradients, neon glows, keyframes). The mega page should use enhanced CSS animations rather than actual WebGL, consistent with existing design system
-- **Migrations anomaly:** Migrations is a "stage 0" that can feed into either Discover or Build. Keep `/services/migrations` route as-is, add cross-references from both stages
-- **Neon compliance:** All stage sections on the mega page must force dark backgrounds per Guidelines v5.8.0 neon colour rule
-- **Sentence case:** All new headings must use sentence case per Guidelines v5.7.0
+| Phase | Tasks | New components | New data files | New CSS files |
+|---|---|---|---|---|
+| 1 | 8 | 0 | 2 | 0 |
+| 2a | 5 | 1 (StickyAnchorNav) | 0 | 1 |
+| 2b | 6 | 0 (reuse sticky nav) | 0 | 1 |
+| 3 | 12 | 1 (LifecycleStageBadge) | 0 | 0 |
+| 4 | 12 | 2 (LifecycleFlowStrip, RelatedPagesGrid) | 0 | 0 |
+| 5 | 14 | 0 | 0 | 0 |
+| **Total** | **57** | **4** | **2** | **2** |

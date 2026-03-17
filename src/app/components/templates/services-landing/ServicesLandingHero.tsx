@@ -94,7 +94,7 @@ export function ServicesLandingHero() {
                 {servicesHeroMessaging.subtitle}
               </p>
 
-              <div className="wp-flex wp-justify-center wp-gap-4">
+              <div className="service-hero__cta-group">
                 <Button variant="default" size="lg" page={servicesHeroMessaging.cta.primary.page}>
                   {servicesHeroMessaging.cta.primary.text}
                 </Button>

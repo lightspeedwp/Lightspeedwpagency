@@ -56,7 +56,7 @@ export function WordPressSolutionTemplate() {
   }));
 
   return (
-    <div className="wp-w-full wp-flex wp-flex-col">
+    <div className="service-page wordpress-solution">
       {/* ── Breadcrumbs ── */}
       <BreadcrumbPart
         items={[

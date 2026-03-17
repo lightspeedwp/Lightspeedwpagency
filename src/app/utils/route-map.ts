@@ -62,7 +62,7 @@ const SLUG_TO_PATH: Record<string, string> = {
   'design-systems-service': '/services/design-systems',
 
   /* ── Journey Stage Pages ── */
-  'journey-ignite': '/services/ignite',
+  'journey-discover': '/services/discover',
   'journey-create': '/services/create',
   'journey-build': '/services/build',
   'journey-launch': '/services/launch',
