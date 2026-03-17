@@ -20,6 +20,8 @@ import { getPageUrl } from '../../data/site-pages';
 import { answerEngineServiceBenefits, answerEngineServiceProcess, answerEngineServiceResults } from '../../data/answer-engine-service-template-data';
 import { FeatureList } from '../patterns/FeatureList';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
+import { FunkyCTA } from '../patterns/FunkyCTA';
+import { JourneyPhaseIndicator } from '../ui/JourneyPhaseIndicator';
 import '../../../styles/templates/answer-engine-service-optimized.css';
 
 export const AnswerEngineServiceTemplate = () => {
@@ -42,6 +44,8 @@ export const AnswerEngineServiceTemplate = () => {
               { label: 'Answer engine optimization' },
             ]}
           />
+          
+          <JourneyPhaseIndicator currentPhase="grow" currentServicePage="answer-engine" />
           
           <h1 className="sub-service-base__hero-title">
             Answer engine optimization (AEO)
@@ -127,17 +131,18 @@ export const AnswerEngineServiceTemplate = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="sub-service-base__cta answer-engine-service__cta">
-        <div className="sub-service-base__cta-content">
-          <h2 className="sub-service-base__cta-title">Ready to be the answer?</h2>
-          <p className="sub-service-base__cta-description">
-            Get a free question analysis and see what your audience is asking.
-          </p>
-          <Link to={getPageUrl('contact')} className="sub-service-base__cta-button sub-service-base__cta-button--primary">
-            Request free analysis
-          </Link>
-        </div>
-      </section>
+      <FunkyCTA
+        title="Ready to be the answer?"
+        description="Get a free question analysis and see what your audience is asking."
+        buttonText="Request free analysis"
+        buttonPage="contact"
+        benefits={[
+          'Detailed question mapping',
+          'AEO strategy overview',
+          'Content gap identification',
+          'Featured snippet opportunities'
+        ]}
+      />
     </div>
   );
 };

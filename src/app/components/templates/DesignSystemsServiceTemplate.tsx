@@ -17,6 +17,7 @@ import { AgencyStats } from '../patterns/AgencyStats';
 import { CheckList } from '../patterns/CheckList';
 import { FunkyCTA } from '../patterns/FunkyCTA';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
+import { JourneyPhaseIndicator } from '../ui/JourneyPhaseIndicator';
 
 export const DesignSystemsServiceTemplate = () => {
   const benefits = [
@@ -50,6 +51,8 @@ export const DesignSystemsServiceTemplate = () => {
               { label: 'Design systems' },
             ]}
           />
+          
+          <JourneyPhaseIndicator currentPhase="create" currentServicePage="design-systems" />
 
           <ScrollReveal animation="fade-down">
             <h1 className="sub-service-base__hero-title">

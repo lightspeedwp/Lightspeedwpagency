@@ -18,6 +18,8 @@
 import { Link } from 'react-router';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { FeatureList } from '../patterns/FeatureList';
+import { FunkyCTA } from '../patterns/FunkyCTA';
+import { JourneyPhaseIndicator } from '../ui/JourneyPhaseIndicator';
 import { seoServiceBenefits, seoServiceDeliverables, seoServiceResults } from '../../data/seo-service-template-data';
 import '../../../styles/templates/seo-service-optimized.css';
 
@@ -35,6 +37,8 @@ export const SEOServiceTemplate = () => {
               { label: 'SEO' },
             ]}
           />
+          
+          <JourneyPhaseIndicator currentPhase="grow" currentServicePage="seo" />
           
           <h1 className="sub-service-base__hero-title">
             SEO services
@@ -121,17 +125,18 @@ export const SEOServiceTemplate = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="sub-service-base__cta seo-service__cta">
-        <div className="sub-service-base__cta-content">
-          <h2 className="sub-service-base__cta-title">Ready to rank higher?</h2>
-          <p className="sub-service-base__cta-description">
-            Get a free SEO audit and discover opportunities to improve your search visibility.
-          </p>
-          <Link to="/contact" className="sub-service-base__cta-button sub-service-base__cta-button--primary">
-            Request free audit
-          </Link>
-        </div>
-      </section>
+      <FunkyCTA
+        title="Ready to rank higher?"
+        description="Get a free SEO audit and discover opportunities to improve your search visibility."
+        buttonText="Request free audit"
+        buttonPage="contact"
+        benefits={[
+          'Detailed site analysis',
+          'Keyword gap identification',
+          'Technical SEO overview',
+          'Actionable recommendations'
+        ]}
+      />
     </div>
   );
 };

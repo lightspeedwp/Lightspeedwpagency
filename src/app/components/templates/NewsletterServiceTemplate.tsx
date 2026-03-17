@@ -18,6 +18,7 @@ import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
 import { Container } from '../common/Container';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { FunkyCTA } from '../patterns/FunkyCTA';
+import { JourneyPhaseIndicator } from '../ui/JourneyPhaseIndicator';
 
 export const NewsletterServiceTemplate = () => {
   const benefits = [
@@ -51,6 +52,8 @@ export const NewsletterServiceTemplate = () => {
               { label: 'Newsletter' }
             ]}
           />
+          
+          <JourneyPhaseIndicator currentPhase="grow" currentServicePage="newsletter" />
 
           <ScrollReveal animation="fade-down">
             <h1 className="sub-service-base__hero-title">

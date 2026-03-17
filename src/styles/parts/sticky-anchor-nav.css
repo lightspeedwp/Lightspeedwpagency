@@ -1,0 +1,118 @@
+/**
+ * Sticky Anchor Navigation
+ *
+ * Horizontal navigation that sticks to viewport top.
+ * Active section tracking via IntersectionObserver.
+ * Mobile: horizontal scrolling with snap.
+ *
+ * BLOCK: sticky-anchor-nav
+ */
+
+.sticky-anchor-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--color-background);
+  border-bottom: 1px solid var(--color-border);
+  transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.sticky-anchor-nav--stuck {
+  box-shadow: 
+    0 4px 6px -1px rgb(0 0 0 / 0.1),
+    0 2px 4px -1px rgb(0 0 0 / 0.06);
+  background: var(--color-background);
+}
+
+/* Inner container (max-width + centering) */
+.sticky-anchor-nav__inner {
+  max-width: var(--wp--style--global--content-size);
+  margin: 0 auto;
+  padding: 0 var(--spacing-4);
+}
+
+/* Scroll container (horizontal scroll on mobile) */
+.sticky-anchor-nav__scroll-container {
+  display: flex;
+  gap: var(--spacing-2);
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+.sticky-anchor-nav__scroll-container::-webkit-scrollbar {
+  display: none; /* Chrome/Safari/Opera */
+}
+
+/* Individual nav links */
+.sticky-anchor-nav__link {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--spacing-3) var(--spacing-4);
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-muted);
+  text-decoration: none;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: 
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.sticky-anchor-nav__link:hover {
+  color: var(--color-text);
+}
+
+.sticky-anchor-nav__link:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Active state */
+.sticky-anchor-nav__link--active {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  .sticky-anchor-nav {
+    background: var(--color-background);
+    border-bottom-color: var(--color-border);
+  }
+
+  .sticky-anchor-nav--stuck {
+    box-shadow: 
+      0 4px 6px -1px rgb(0 0 0 / 0.3),
+      0 2px 4px -1px rgb(0 0 0 / 0.2);
+  }
+}
+
+/* Tablet and up: center links, no scroll */
+@media (min-width: 768px) {
+  .sticky-anchor-nav__scroll-container {
+    justify-content: center;
+    overflow-x: visible;
+  }
+
+  .sticky-anchor-nav__link {
+    padding: var(--spacing-4) var(--spacing-6);
+    font-size: var(--text-base);
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .sticky-anchor-nav {
+    transition: none;
+  }
+
+  .sticky-anchor-nav__link {
+    transition: none;
+  }
+}

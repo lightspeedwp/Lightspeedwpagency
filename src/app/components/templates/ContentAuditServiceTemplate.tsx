@@ -18,6 +18,7 @@ import { CheckList } from '../patterns/CheckList';
 import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
 import { FunkyCTA } from '../patterns/FunkyCTA';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
+import { JourneyPhaseIndicator } from '../ui/JourneyPhaseIndicator';
 
 export const ContentAuditServiceTemplate = () => {
   const benefits = [
