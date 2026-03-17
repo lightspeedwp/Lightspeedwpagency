@@ -68,51 +68,52 @@ export function ContentServiceTemplate() {
       {/* ============================================
           HERO SECTION (The Art of Words)
           ============================================ */}
-      <section className="service-hero" style={{ minHeight: '80vh' }}>
+      <section className="service-hero">
         {/* Paper texture background — CSS noise pattern (no external dependency) */}
-        <div style={{ position: 'absolute', inset: 0, opacity: 0.03, backgroundImage: 'repeating-conic-gradient(var(--foreground) 0% 25%, transparent 0% 50%)', backgroundSize: '4px 4px', zIndex: 0 }} aria-hidden="true" />
-        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '100%', background: 'linear-gradient(to bottom, rgba(var(--background-rgb), 0) 0%, var(--background) 100%)', zIndex: 0 }} aria-hidden="true" />
+        <div className="content-decor__texture" aria-hidden="true" />
+        <div className="content-decor__fade" aria-hidden="true" />
         
         {/* Floating Manuscript Pages Background */}
-        <div style={{ position: 'absolute', left: '-5%', top: '20%', width: '300px', height: '400px', backgroundColor: 'var(--card)', border: '1px solid var(--border)', borderRadius: 'var(--radius)', transform: 'rotate(-15deg)', padding: 'var(--spacing-8)', display: 'flex', flexDirection: 'column', gap: 'var(--spacing-4)', opacity: 0.4, boxShadow: 'var(--shadow-xl)', zIndex: 0 }} aria-hidden="true">
-          <div style={{ width: '80%', height: '8px', backgroundColor: 'var(--border)', borderRadius: 'var(--radius-full)' }}></div>
-          <div style={{ width: '90%', height: '8px', backgroundColor: 'var(--border)', borderRadius: 'var(--radius-full)' }}></div>
-          <div style={{ width: '60%', height: '8px', backgroundColor: 'var(--border)', borderRadius: 'var(--radius-full)' }}></div>
-          <div style={{ width: '70%', height: '8px', backgroundColor: 'var(--border)', borderRadius: 'var(--radius-full)' }}></div>
-          <div style={{ width: '85%', height: '8px', backgroundColor: 'var(--border)', borderRadius: 'var(--radius-full)' }}></div>
+        <div className="content-decor__manuscript content-decor__manuscript--left" aria-hidden="true">
+          <div className="content-decor__line content-decor__line--w80" />
+          <div className="content-decor__line content-decor__line--w90" />
+          <div className="content-decor__line content-decor__line--w60" />
+          <div className="content-decor__line content-decor__line--w70" />
+          <div className="content-decor__line content-decor__line--w85" />
         </div>
         
-        <div style={{ position: 'absolute', right: '-5%', top: '10%', width: '300px', height: '400px', backgroundColor: 'var(--card)', border: '1px solid var(--border)', borderRadius: 'var(--radius)', transform: 'rotate(10deg)', padding: 'var(--spacing-8)', display: 'flex', flexDirection: 'column', gap: 'var(--spacing-4)', opacity: 0.4, boxShadow: 'var(--shadow-xl)', zIndex: 0 }} aria-hidden="true">
-           <div style={{ width: '90%', height: '8px', backgroundColor: 'var(--border)', borderRadius: 'var(--radius-full)' }}></div>
-           <div style={{ width: '75%', height: '8px', backgroundColor: 'var(--border)', borderRadius: 'var(--radius-full)' }}></div>
-           <div style={{ width: '85%', height: '8px', backgroundColor: 'var(--border)', borderRadius: 'var(--radius-full)' }}></div>
-           <div style={{ width: '65%', height: '8px', backgroundColor: 'var(--border)', borderRadius: 'var(--radius-full)' }}></div>
+        <div className="content-decor__manuscript content-decor__manuscript--right" aria-hidden="true">
+           <div className="content-decor__line content-decor__line--w90" />
+           <div className="content-decor__line content-decor__line--w75" />
+           <div className="content-decor__line content-decor__line--w85" />
+           <div className="content-decor__line content-decor__line--w65" />
            {/* Red Pen Mark */}
-           <div style={{ position: 'absolute', top: '40%', right: '20%', width: '40px', height: '40px', border: '2px solid var(--color-terminal-red)', borderRadius: '50%', transform: 'scale(1.5) rotate(-20deg)', opacity: 0.8 }} />
+           <div className="content-decor__pen-mark" />
         </div>
 
         <Container>
-          <div className="service-hero__content service-hero__content--centered" style={{ textAlign: 'center' }}>
+          <div className="service-hero__content service-hero__content--centered">
             <ScrollReveal animation="fade-down">
-              <div className="service-hero__badge service-hero__badge--mono" style={{ display: 'inline-block', color: 'var(--muted-foreground)', letterSpacing: 'var(--letter-spacing-widest)' }}>
+              <div className="service-hero__badge service-hero__badge--mono">
                 — DRAFT v1.0 —
               </div>
 
-              <h1 className="service-hero__title" style={{ position: 'relative', display: 'inline-block' }}>
-                Content That <br />
-                <span className="service-hero__gradient-text">Connects</span>
-                <span style={{ display: 'inline-block', width: '4px', height: '1em', backgroundColor: 'var(--primary)', marginLeft: '8px', verticalAlign: 'text-bottom', animation: 'blink 1s step-end infinite' }}></span>
-                
-                {/* Editing Marks */}
-                <span style={{ position: 'absolute', bottom: '-10px', right: '-40px', fontFamily: 'var(--font-mono)', fontSize: 'var(--text-lg)', color: 'var(--color-terminal-red)', transform: 'rotate(-15deg)', fontStyle: 'italic' }}>stet</span>
+              <h1 className="service-hero__title">
+                <span className="content-decor__title-wrapper">
+                  Content that <br />
+                  <span className="service-hero__gradient-text">connects</span>
+                  <span className="content-decor__cursor" />
+                  {/* Editing Marks */}
+                  <span className="content-decor__edit-mark content-decor__edit-mark--stet">stet</span>
+                </span>
               </h1>
               
-              <div style={{ position: 'relative', maxWidth: '600px', margin: '0 auto' }}>
+              <div className="content-decor__description-wrapper">
                 <p className="service-hero__description service-hero__description--centered">
                   {contentHero.description}
                 </p>
                 {/* Editing Marks */}
-                <span style={{ position: 'absolute', bottom: '-20px', left: '20%', fontFamily: 'var(--font-mono)', fontSize: 'var(--text-sm)', color: 'var(--color-terminal-red)', transform: 'rotate(-5deg)' }}>^ insert magic</span>
+                <span className="content-decor__edit-mark content-decor__edit-mark--insert">^ insert magic</span>
               </div>
             </ScrollReveal>
           </div>
@@ -127,16 +128,16 @@ export function ContentServiceTemplate() {
       <section className="service-section service-section--bg-muted">
         <Container>
           <ScrollReveal animation="fade-up">
-            <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-              <div style={{ width: '80px', height: '80px', backgroundColor: 'color-mix(in srgb, var(--primary) 10%, transparent)', color: 'var(--primary)', borderRadius: 'var(--radius-full)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 'var(--spacing-8)' }}>
+            <div className="content-decor__why-container">
+              <div className="content-decor__why-icon">
                 <Feather size={40} weight="duotone" />
               </div>
               
-              <h2 className="service-section__title" style={{ marginBottom: 'var(--spacing-6)' }}>
+              <h2 className="content-decor__why-title">
                 {whyContentStrategy.title}
               </h2>
               
-              <p className="service-section__description" style={{ lineHeight: 'var(--line-height-comfortable)' }}>
+              <p className="content-decor__why-description">
                 {whyContentStrategy.description}
               </p>
             </div>
@@ -206,7 +207,7 @@ export function ContentServiceTemplate() {
           ============================================ */}
       {servicePricingTimeline.content && (
         <ScrollReveal animation="fade-up">
-          <section style={{ padding: 'var(--spacing-24) 0', backgroundColor: 'var(--background)' }}>
+          <section className="service-section service-section--bg-background">
             <Container>
               <ServicePricingTimeline
                 pricing={servicePricingTimeline.content.pricing}
@@ -220,7 +221,7 @@ export function ContentServiceTemplate() {
       )}
       
       <FunkyCTA
-        title="Ready to Transform Your Content?"
+        title="Ready to transform your content?"
         description="Let's create compelling content that engages your audience and drives results."
         buttonText="Start Content Strategy"
         buttonPage="contact"

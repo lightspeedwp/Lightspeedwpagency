@@ -77,36 +77,37 @@ export function WetuImporterTemplate() {
       {/* ============================================
           1. HERO SECTION (Parallax + Floating Orbs)
           ============================================ */}
-      <section className="wetu-importer__hero">
+      <section className="product-hero__section">
         <img
           ref={parallaxRef}
           src="https://images.unsplash.com/photo-1607184023678-63ea486d62cd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMG5lb24lMjBkYXRhJTIwaW1wb3J0JTIwdGVjaG5vbG9neXxlbnwxfHx8fDE3NzE1ODQ2Mzh8MA&ixlib=rb-4.1.0&q=80&w=1080"
           alt="Abstract neon data import technology"
-          className="wetu-importer__hero-bg"
+          className="product-hero__bg"
+          loading="lazy"
         />
-        <div className="wetu-importer__hero-overlay" />
-        <div className="wetu-importer__hero-grid" />
+        <div className="product-hero__overlay" />
+        <div className="product-hero__grid" />
 
         {/* Floating Orbs */}
-        <div className="wetu-importer__orb wetu-importer__orb--1" />
-        <div className="wetu-importer__orb wetu-importer__orb--2" />
-        <div className="wetu-importer__orb wetu-importer__orb--3" />
+        <div className="product-hero__orb product-hero__orb--1" />
+        <div className="product-hero__orb product-hero__orb--2" />
+        <div className="product-hero__orb product-hero__orb--3" />
 
         <Container>
-          <div className="wetu-importer__hero-content">
-            <span className="wetu-importer__hero-badge">
+          <div className="product-hero__content">
+            <span className="product-hero__badge">
               <Upload size={16} />
               {wetuImporterHero.badge.text}
             </span>
 
-            <h1 className="wetu-importer__hero-title">
+            <h1 className="product-hero__title">
               {wetuImporterHero.title}{' '}
-              <span className="wetu-importer__hero-highlight">
+              <span className="product-hero__highlight">
                 {wetuImporterHero.titleHighlight}
               </span>
             </h1>
 
-            <p className="wetu-importer__hero-subtitle">
+            <p className="product-hero__subtitle">
               {wetuImporterHero.description}
             </p>
 
@@ -124,20 +125,20 @@ export function WetuImporterTemplate() {
       {/* ============================================
           2. FEATURES SECTION
           ============================================ */}
-      <section className="wetu-importer__features">
+      <section className="product-section product-section--muted">
         <Container>
           <ScrollReveal animation="fade-up">
-            <div className="wetu-importer__section-header">
-              <Heading level={2} className="wetu-importer__section-title">
-                Key Features
+            <div className="product-section__header">
+              <Heading level={2} className="product-section__title">
+                Key features
               </Heading>
-              <Paragraph className="wetu-importer__section-description">
+              <Paragraph className="product-section__description">
                 Everything you need to automate your tour content management
               </Paragraph>
             </div>
           </ScrollReveal>
 
-          <div className="wetu-importer__features-grid">
+          <div>
             <FeatureList
               items={wetuImporterFeatures}
               columns={3}
@@ -149,14 +150,14 @@ export function WetuImporterTemplate() {
       {/* ============================================
           3. BENEFITS SECTION
           ============================================ */}
-      <section className="wetu-importer__benefits">
+      <section className="product-section product-section--bg">
         <Container>
           <ScrollReveal animation="fade-up">
-            <div className="wetu-importer__section-header">
-              <Heading level={2} className="wetu-importer__section-title">
-                Why Choose Wetu Importer?
+            <div className="product-section__header">
+              <Heading level={2} className="product-section__title">
+                Why choose Wetu Importer?
               </Heading>
-              <Paragraph className="wetu-importer__section-description">
+              <Paragraph className="product-section__description">
                 Transform how you manage tour content with automation and reliability
               </Paragraph>
             </div>
@@ -174,14 +175,14 @@ export function WetuImporterTemplate() {
       {/* ============================================
           4. HOW IT WORKS (Process Steps)
           ============================================ */}
-      <section className="wetu-importer__process">
+      <section className="product-section product-section--muted">
         <Container>
           <ScrollReveal animation="fade-up">
-            <div className="wetu-importer__section-header">
-              <Heading level={2} className="wetu-importer__section-title">
-                How It Works
+            <div className="product-section__header">
+              <Heading level={2} className="product-section__title">
+                How it works
               </Heading>
-              <Paragraph className="wetu-importer__section-description">
+              <Paragraph className="product-section__description">
                 Get started in 4 simple steps
               </Paragraph>
             </div>
@@ -197,24 +198,24 @@ export function WetuImporterTemplate() {
       {/* ============================================
           5. TECHNICAL SPECIFICATIONS
           ============================================ */}
-      <section className="wetu-importer__specs">
+      <section className="product-section product-section--bg">
         <Container>
           <ScrollReveal animation="fade-up">
-            <div className="wetu-importer__section-header">
-              <Heading level={2} className="wetu-importer__section-title">
+            <div className="product-section__header">
+              <Heading level={2} className="product-section__title">
                 {wetuImporterSpecs.title}
               </Heading>
             </div>
           </ScrollReveal>
 
           <ScrollReveal animation="fade-up" delay={100}>
-            <div className="wetu-importer__specs-grid responsive-grid-2-cols">
+            <div className="product-specs">
               {wetuImporterSpecs.specs.map((spec, index) => (
-                <div key={index} className="wetu-importer__spec-item">
-                  <span className="wetu-importer__spec-label">
+                <div key={index} className="product-specs__item">
+                  <span className="product-specs__label">
                     {spec.label}
                   </span>
-                  <span className="wetu-importer__spec-value">
+                  <span className="product-specs__value">
                     {spec.value}
                   </span>
                 </div>
@@ -227,14 +228,14 @@ export function WetuImporterTemplate() {
       {/* ============================================
           6. PRICING SECTION
           ============================================ */}
-      <section className="wetu-importer__pricing">
+      <section className="product-section product-section--muted">
         <Container>
           <ScrollReveal animation="fade-up">
-            <div className="wetu-importer__section-header">
-              <Heading level={2} className="wetu-importer__section-title">
+            <div className="product-section__header">
+              <Heading level={2} className="product-section__title">
                 {wetuImporterPricing.title}
               </Heading>
-              <Paragraph className="wetu-importer__section-description">
+              <Paragraph className="product-section__description">
                 {wetuImporterPricing.description}
               </Paragraph>
             </div>
@@ -300,7 +301,7 @@ export function WetuImporterTemplate() {
       {/* ============================================
           7. FAQ SECTION
           ============================================ */}
-      <section className="wetu-importer__faq">
+      <section className="product-section product-section--bg">
         <Container>
           <ScrollReveal animation="fade-up">
             <FAQSection faqs={wetuImporterFAQs} />

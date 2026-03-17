@@ -6,12 +6,12 @@
  *
  * Theme: Neon social connections, glassmorphism cards, floating orbs
  * Features:
- * - Parallax hero with floating orbs + mesh grid
+ * - Parallax hero with floating orbs + mesh grid (product-base)
  * - Neon glow badge
- * - Glassmorphism feature/benefit cards
- * - Process steps with neon numbering
- * - Social networks showcase
- * - Free plugin highlight
+ * - Glassmorphism feature/benefit cards (FeatureList pattern)
+ * - Process steps (ProcessTimeline pattern)
+ * - Social networks showcase (unique)
+ * - Free plugin highlight (unique)
  * - FAQ section
  * - FunkyCTA conversion section
  * - ScrollReveal entry animations
@@ -19,17 +19,18 @@
  *
  * STRICT DESIGN SYSTEM COMPLIANCE:
  * - No inline Tailwind classes
- * - All styling via @/styles/templates/lsx-sharing-page.css
+ * - All styling via product-base.css + lsx-sharing-page.css
  * - BEM naming throughout
  * 
  * PATTERN COMPONENTS:
- * - ✅ FeatureList — Key features (glassmorphism variant)
- * - ✅ FeatureList — Benefits grid (4 items, 2 columns)
+ * - ✅ FeatureList — Key features (glow variant, 3 columns)
+ * - ✅ FeatureList — Benefits grid (glow variant, 2 columns)
  * - ✅ ProcessTimeline — 4-step process (numbered variant)
  * - ✅ FAQSection — FAQ accordion
  * - ✅ FunkyCTA — Final CTA section
  * 
  * @migrated March 3, 2026 — Phase 3.2: Migrated inline benefits + process (~65 lines saved)
+ * @migrated March 17, 2026 — Phase 4.4: Migrated to product-base (~272 lines CSS saved)
  */
 
 import '../../../styles/templates/lsx-sharing-page.css';
@@ -63,7 +64,7 @@ export function LSXSharingTemplate() {
   const parallaxRef = useHeroParallax(0.5);
 
   return (
-    <div className="lsx-sharing">
+    <div className="product-hero">
       {/* Breadcrumbs */}
       <BreadcrumbPart
         items={[
@@ -76,36 +77,37 @@ export function LSXSharingTemplate() {
       {/* ============================================
           1. HERO SECTION (Parallax + Floating Orbs)
           ============================================ */}
-      <section className="lsx-sharing__hero">
+      <section className="product-hero__section">
         <img
           ref={parallaxRef}
           src="https://images.unsplash.com/photo-1602731465517-820d34d5a9c3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMG5lb24lMjBzb2NpYWwlMjBzaGFyaW5nJTIwbmV0d29ya3xlbnwxfHx8fDE3NzE1ODQ2Mzl8MA&ixlib=rb-4.1.0&q=80&w=1080"
           alt="Abstract neon social sharing network"
-          className="lsx-sharing__hero-bg"
+          className="product-hero__bg"
+          loading="lazy"
         />
-        <div className="lsx-sharing__hero-overlay" />
-        <div className="lsx-sharing__hero-grid" />
+        <div className="product-hero__overlay" />
+        <div className="product-hero__grid" />
 
         {/* Floating Orbs */}
-        <div className="lsx-sharing__orb lsx-sharing__orb--1" />
-        <div className="lsx-sharing__orb lsx-sharing__orb--2" />
-        <div className="lsx-sharing__orb lsx-sharing__orb--3" />
+        <div className="product-hero__orb product-hero__orb--1" />
+        <div className="product-hero__orb product-hero__orb--2" />
+        <div className="product-hero__orb product-hero__orb--3" />
 
         <Container>
-          <div className="lsx-sharing__hero-content">
-            <span className="lsx-sharing__hero-badge">
+          <div className="product-hero__content">
+            <span className="product-hero__badge">
               <Share2 size={16} />
               {lsxSharingHero.badge.text}
             </span>
 
-            <h1 className="lsx-sharing__hero-title">
+            <h1 className="product-hero__title">
               {lsxSharingHero.title}{' '}
-              <span className="lsx-sharing__hero-highlight">
+              <span className="product-hero__highlight">
                 {lsxSharingHero.titleHighlight}
               </span>
             </h1>
 
-            <p className="lsx-sharing__hero-subtitle">
+            <p className="product-hero__subtitle">
               {lsxSharingHero.description}
             </p>
 
@@ -125,12 +127,12 @@ export function LSXSharingTemplate() {
       {/* ============================================
           2. FEATURES SECTION
           ============================================ */}
-      <section className="lsx-sharing__features">
+      <section className="product-section product-section--muted">
         <Container>
           <ScrollReveal animation="fade-up">
-            <div className="lsx-sharing__section-header">
-              <h2 className="lsx-sharing__section-title">Key Features</h2>
-              <p className="lsx-sharing__section-description">
+            <div className="product-section__header">
+              <h2 className="product-section__title">Key features</h2>
+              <p className="product-section__description">
                 Everything you need for effective social sharing
               </p>
             </div>
@@ -148,12 +150,12 @@ export function LSXSharingTemplate() {
       {/* ============================================
           3. BENEFITS SECTION
           ============================================ */}
-      <section className="lsx-sharing__benefits">
+      <section className="product-section product-section--bg">
         <Container>
           <ScrollReveal animation="fade-up">
-            <div className="lsx-sharing__section-header">
-              <h2 className="lsx-sharing__section-title">Why LSX Sharing?</h2>
-              <p className="lsx-sharing__section-description">
+            <div className="product-section__header">
+              <h2 className="product-section__title">Why LSX Sharing?</h2>
+              <p className="product-section__description">
                 Amplify your content reach with beautiful, easy-to-use social sharing
               </p>
             </div>
@@ -171,12 +173,12 @@ export function LSXSharingTemplate() {
       {/* ============================================
           4. HOW IT WORKS
           ============================================ */}
-      <section className="lsx-sharing__process">
+      <section className="product-section product-section--muted">
         <Container>
           <ScrollReveal animation="fade-up">
-            <div className="lsx-sharing__section-header">
-              <h2 className="lsx-sharing__section-title">How It Works</h2>
-              <p className="lsx-sharing__section-description">Get started in 4 simple steps</p>
+            <div className="product-section__header">
+              <h2 className="product-section__title">How it works</h2>
+              <p className="product-section__description">Get started in 4 simple steps</p>
             </div>
           </ScrollReveal>
 
@@ -190,12 +192,12 @@ export function LSXSharingTemplate() {
       {/* ============================================
           5. SUPPORTED NETWORKS
           ============================================ */}
-      <section className="lsx-sharing__networks">
+      <section className="product-section product-section--bg">
         <Container>
           <ScrollReveal animation="fade-up">
-            <div className="lsx-sharing__section-header">
-              <h2 className="lsx-sharing__section-title">{lsxSharingNetworks.title}</h2>
-              <p className="lsx-sharing__section-description">{lsxSharingNetworks.description}</p>
+            <div className="product-section__header">
+              <h2 className="product-section__title">{lsxSharingNetworks.title}</h2>
+              <p className="product-section__description">{lsxSharingNetworks.description}</p>
             </div>
           </ScrollReveal>
 
@@ -218,16 +220,16 @@ export function LSXSharingTemplate() {
       {/* ============================================
           6. TECHNICAL SPECIFICATIONS
           ============================================ */}
-      <section className="lsx-sharing__specs">
+      <section className="product-section product-section--muted">
         <Container>
           <ScrollReveal animation="fade-up">
-            <div className="lsx-sharing__section-header">
-              <h2 className="lsx-sharing__section-title">{lsxSharingSpecs.title}</h2>
+            <div className="product-section__header">
+              <h2 className="product-section__title">{lsxSharingSpecs.title}</h2>
             </div>
           </ScrollReveal>
 
           <ScrollReveal animation="fade-up" delay={100}>
-            <div className="lsx-sharing__specs-grid responsive-grid-2-cols">
+            <div className="lsx-sharing__specs-grid">
               {lsxSharingSpecs.specs.map((spec, index) => (
                 <div key={index} className="lsx-sharing__spec-item">
                   <span className="lsx-sharing__spec-label">{spec.label}</span>
@@ -242,11 +244,11 @@ export function LSXSharingTemplate() {
       {/* ============================================
           7. FREE PLUGIN HIGHLIGHT
           ============================================ */}
-      <section className="lsx-sharing__free-section">
+      <section className="product-section product-section--bg">
         <Container>
           <ScrollReveal animation="fade-up">
             <div className="lsx-sharing__free-highlight">
-              <h2 className="lsx-sharing__free-title">100% Free Forever</h2>
+              <h2 className="lsx-sharing__free-title">100% free forever</h2>
               <p className="lsx-sharing__free-description">
                 LSX Sharing is completely free with no hidden costs, premium versions, or upsells.
                 Download from WordPress.org and start amplifying your content today.
@@ -265,7 +267,7 @@ export function LSXSharingTemplate() {
       {/* ============================================
           8. FAQ SECTION
           ============================================ */}
-      <section className="lsx-sharing__faq">
+      <section className="product-section product-section--bg">
         <Container>
           <ScrollReveal animation="fade-up">
             <FAQSection faqs={lsxSharingFAQs} />

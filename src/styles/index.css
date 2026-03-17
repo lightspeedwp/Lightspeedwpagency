@@ -290,6 +290,10 @@
 /* AI Services Landing BEM (apply BEM — March 16, 2026) */
 @import './templates/ai-services-landing.css';
 
+/* Design + Content Service Decoratives BEM (apply BEM round 15 — March 17, 2026) */
+@import './templates/design-service-decor.css';
+@import './templates/content-service-decor.css';
+
 /* Route Bundle Base Files (consolidated from /styles/bundles/ — March 13, 2026)
  * These base files were previously only loaded via bundle imports in css-bundle-loader.ts.
  * Moving them here eliminates ~200 duplicate CSS @import resolutions from bundle files.

@@ -5,39 +5,29 @@
  * WordPress Mapping: Product detail page
  *
  * Theme: Neon search pulses, glassmorphism cards, floating orbs
- * Features:
- * - Parallax hero with floating orbs + mesh grid
- * - Neon glow badge
- * - Glassmorphism feature/benefit cards
- * - Process steps with neon numbering
- * - Search capabilities showcase
- * - Interactive search demo
- * - FAQ section
- * - FunkyCTA conversion section
- * - ScrollReveal entry animations
- * - 100% CSS variable compliance
  *
- * STRICT DESIGN SYSTEM COMPLIANCE:
- * - No inline Tailwind classes
- * - All styling via @/styles/templates/lsx-search-page.css
- * - BEM naming throughout
+ * Layout classes:
+ * - product-hero__* (from product-base.css) — hero, orbs, badge, title
+ * - product-section__* (from product-base.css) — section headers
+ * - product-step__* (from product-base.css) — process steps
+ * - product-specs__* (from product-base.css) — specs grid
+ * - lsx-search__* (from lsx-search/) — unique sections, funky overrides
  *
- * PATTERN COMPONENTS:
- * - ✅ FeatureList — Key Features section (glow variant)
- * - ✅ FAQSection — FAQ section
- * - ✅ FunkyCTA — Final conversion section
+ * Pattern components:
+ * - FeatureList — Key features section (glow variant)
+ * - FAQSection — FAQ section
+ * - FunkyCTA — Final conversion section
  *
  * @see /src/styles/templates/lsx-search-page.css
- * @migrated March 3, 2026 — Migrated inline feature grid to FeatureList component
+ * @see /src/styles/templates/product-base.css
  */
 
 import '../../../styles/templates/lsx-search-page.css';
-import { Section } from '@/app/components/common/Section';
-import { Container } from '@/app/components/common/Container';
-import { FunkyCTA } from '@/app/components/patterns/FunkyCTA';
-import { FAQSection } from '@/app/components/patterns/FAQSection';
-import { FeatureList } from '@/app/components/patterns/FeatureList';
-import { Buttons } from '@/app/components/blocks/design/Buttons';
+import { Container } from '../common/Container';
+import { FunkyCTA } from '../patterns/FunkyCTA';
+import { FAQSection } from '../patterns/FAQSection';
+import { FeatureList } from '../patterns/FeatureList';
+import { Buttons } from '../blocks/design/Buttons';
 import { useHeroParallax } from '../../hooks/useHeroParallax';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { ScrollDownArrow } from '../common/ScrollDownArrow';
@@ -53,16 +43,13 @@ import {
   lsxSearchSpecs,
   lsxSearchFAQs,
   lsxSearchCTA
-} from '@/app/data/lsx-search-page';
+} from '../../data/lsx-search-page';
 
-/**
- * LSX Search Product Page Template
- */
 export function LSXSearchTemplate() {
   const parallaxRef = useHeroParallax(0.5);
 
   return (
-    <div className="lsx-search">
+    <div className="product-hero">
       {/* Breadcrumbs */}
       <BreadcrumbPart
         items={[
@@ -72,39 +59,38 @@ export function LSXSearchTemplate() {
         ]}
       />
 
-      {/* ============================================
-          1. HERO SECTION (Parallax + Floating Orbs)
-          ============================================ */}
-      <section className="lsx-search__hero">
+      {/* Hero section */}
+      <section className="product-hero__section">
         <img
           ref={parallaxRef}
           src="https://images.unsplash.com/photo-1759912301996-3b99deda9996?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMG5lb24lMjBzZWFyY2glMjB0ZWNobm9sb2d5JTIwZGlnaXRhbHxlbnwxfHx8fDE3NzE1ODQ2Mzh8MA&ixlib=rb-4.1.0&q=80&w=1080"
           alt="Abstract neon search technology digital"
-          className="lsx-search__hero-bg"
+          className="product-hero__bg"
+          loading="lazy"
         />
-        <div className="lsx-search__hero-overlay" />
-        <div className="lsx-search__hero-grid" />
+        <div className="product-hero__overlay" />
+        <div className="product-hero__grid" />
 
-        {/* Floating Orbs */}
-        <div className="lsx-search__orb lsx-search__orb--1" />
-        <div className="lsx-search__orb lsx-search__orb--2" />
-        <div className="lsx-search__orb lsx-search__orb--3" />
+        {/* Floating orbs */}
+        <div className="product-hero__orb product-hero__orb--1" />
+        <div className="product-hero__orb product-hero__orb--2" />
+        <div className="product-hero__orb product-hero__orb--3" />
 
         <Container>
-          <div className="lsx-search__hero-content">
-            <span className="lsx-search__hero-badge">
+          <div className="product-hero__content">
+            <span className="product-hero__badge">
               <Search size={16} />
               {lsxSearchHero.badge.text}
             </span>
 
-            <h1 className="lsx-search__hero-title">
+            <h1 className="product-hero__title">
               {lsxSearchHero.title}{' '}
-              <span className="lsx-search__hero-highlight">
+              <span className="product-hero__highlight">
                 {lsxSearchHero.titleHighlight}
               </span>
             </h1>
 
-            <p className="lsx-search__hero-subtitle">
+            <p className="product-hero__subtitle">
               {lsxSearchHero.description}
             </p>
 
@@ -121,15 +107,13 @@ export function LSXSearchTemplate() {
         <ScrollDownArrow />
       </section>
 
-      {/* ============================================
-          2. FEATURES SECTION
-          ============================================ */}
+      {/* Features section */}
       <section className="lsx-search__features">
         <Container>
           <ScrollReveal animation="fade-up">
-            <div className="lsx-search__section-header">
-              <h2 className="lsx-search__section-title">Key Features</h2>
-              <p className="lsx-search__section-description">
+            <div className="product-section__header">
+              <h2 className="product-section__title lsx-search__section-title">Key features</h2>
+              <p className="product-section__description">
                 Powerful search functionality that your visitors will love
               </p>
             </div>
@@ -151,15 +135,13 @@ export function LSXSearchTemplate() {
         </Container>
       </section>
 
-      {/* ============================================
-          3. BENEFITS SECTION
-          ============================================ */}
+      {/* Benefits section */}
       <section className="lsx-search__benefits">
         <Container>
           <ScrollReveal animation="fade-up">
-            <div className="lsx-search__section-header">
-              <h2 className="lsx-search__section-title">Why LSX Search?</h2>
-              <p className="lsx-search__section-description">
+            <div className="product-section__header">
+              <h2 className="product-section__title lsx-search__section-title">Why LSX Search?</h2>
+              <p className="product-section__description">
                 Transform your website search experience with advanced functionality
               </p>
             </div>
@@ -167,7 +149,7 @@ export function LSXSearchTemplate() {
 
           <div className="lsx-search__benefits-grid responsive-grid-2-cols">
             {lsxSearchBenefits.map((benefit, index) => (
-              <ScrollReveal key={index} animation="fade-up" delay={index * 100}>
+              <ScrollReveal key={`benefit-${index}`} animation="fade-up" delay={index * 100}>
                 <div className="lsx-search__benefit-card">
                   <h3 className="lsx-search__benefit-title">{benefit.title}</h3>
                   <p className="lsx-search__benefit-description">{benefit.description}</p>
@@ -178,26 +160,24 @@ export function LSXSearchTemplate() {
         </Container>
       </section>
 
-      {/* ============================================
-          4. HOW IT WORKS
-          ============================================ */}
+      {/* How it works */}
       <section className="lsx-search__process">
         <Container>
           <ScrollReveal animation="fade-up">
-            <div className="lsx-search__section-header">
-              <h2 className="lsx-search__section-title">How It Works</h2>
-              <p className="lsx-search__section-description">Get started in 4 simple steps</p>
+            <div className="product-section__header">
+              <h2 className="product-section__title lsx-search__section-title">How it works</h2>
+              <p className="product-section__description">Get started in 4 simple steps</p>
             </div>
           </ScrollReveal>
 
           <div className="lsx-search__process-grid">
             {lsxSearchProcess.map((step, index) => (
-              <ScrollReveal key={index} animation="fade-up" delay={index * 120}>
-                <div className="lsx-search__process-step">
-                  <div className="lsx-search__process-number">{step.step}</div>
-                  <div className="lsx-search__process-content">
-                    <h3 className="lsx-search__process-title">{step.title}</h3>
-                    <p className="lsx-search__process-description">{step.description}</p>
+              <ScrollReveal key={`step-${index}`} animation="fade-up" delay={index * 120}>
+                <div className="product-step lsx-search__process-step">
+                  <div className="product-step__number lsx-search__process-number">{step.step}</div>
+                  <div className="product-step__content">
+                    <h3 className="product-step__title">{step.title}</h3>
+                    <p className="product-step__text">{step.description}</p>
                   </div>
                 </div>
               </ScrollReveal>
@@ -206,26 +186,24 @@ export function LSXSearchTemplate() {
         </Container>
       </section>
 
-      {/* ============================================
-          5. SEARCH CAPABILITIES
-          ============================================ */}
+      {/* Search capabilities */}
       <section className="lsx-search__capabilities">
         <Container>
           <ScrollReveal animation="fade-up">
-            <div className="lsx-search__section-header">
-              <h2 className="lsx-search__section-title">{lsxSearchCapabilities.title}</h2>
-              <p className="lsx-search__section-description">{lsxSearchCapabilities.description}</p>
+            <div className="product-section__header">
+              <h2 className="product-section__title lsx-search__section-title">{lsxSearchCapabilities.title}</h2>
+              <p className="product-section__description">{lsxSearchCapabilities.description}</p>
             </div>
           </ScrollReveal>
 
           <div className="lsx-search__capabilities-grid responsive-grid-2-cols">
             {lsxSearchCapabilities.capabilities.map((capability, index) => (
-              <ScrollReveal key={index} animation="fade-up" delay={index * 100}>
+              <ScrollReveal key={`cap-${index}`} animation="fade-up" delay={index * 100}>
                 <div className="lsx-search__capability-category">
                   <h3 className="lsx-search__capability-title">{capability.category}</h3>
                   <ul className="lsx-search__capability-list">
                     {capability.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="lsx-search__capability-item">
+                      <li key={`feat-${featureIndex}`} className="lsx-search__capability-item">
                         {feature}
                       </li>
                     ))}
@@ -237,23 +215,21 @@ export function LSXSearchTemplate() {
         </Container>
       </section>
 
-      {/* ============================================
-          6. TECHNICAL SPECIFICATIONS
-          ============================================ */}
+      {/* Technical specifications */}
       <section className="lsx-search__specs">
         <Container>
           <ScrollReveal animation="fade-up">
-            <div className="lsx-search__section-header">
-              <h2 className="lsx-search__section-title">{lsxSearchSpecs.title}</h2>
+            <div className="product-section__header">
+              <h2 className="product-section__title lsx-search__section-title">{lsxSearchSpecs.title}</h2>
             </div>
           </ScrollReveal>
 
           <ScrollReveal animation="fade-up" delay={100}>
-            <div className="lsx-search__specs-grid responsive-grid-2-cols">
+            <div className="product-specs">
               {lsxSearchSpecs.specs.map((spec, index) => (
-                <div key={index} className="lsx-search__spec-item">
-                  <span className="lsx-search__spec-label">{spec.label}</span>
-                  <span className="lsx-search__spec-value">{spec.value}</span>
+                <div key={`spec-${index}`} className="product-specs__item lsx-search__spec-item">
+                  <span className="product-specs__label">{spec.label}</span>
+                  <span className="product-specs__value">{spec.value}</span>
                 </div>
               ))}
             </div>
@@ -261,14 +237,12 @@ export function LSXSearchTemplate() {
         </Container>
       </section>
 
-      {/* ============================================
-          7. SEARCH DEMO
-          ============================================ */}
+      {/* Search demo */}
       <section className="lsx-search__demo">
         <Container>
           <ScrollReveal animation="fade-up">
             <div className="lsx-search__demo-container">
-              <h2 className="lsx-search__demo-title">See It In Action</h2>
+              <h2 className="lsx-search__demo-title">See it in action</h2>
               <div className="lsx-search__demo-input-wrapper">
                 <Search size={20} className="lsx-search__demo-icon" />
                 <input
@@ -283,9 +257,7 @@ export function LSXSearchTemplate() {
         </Container>
       </section>
 
-      {/* ============================================
-          8. FAQ SECTION
-          ============================================ */}
+      {/* FAQ section */}
       <section className="lsx-search__faq">
         <Container>
           <ScrollReveal animation="fade-up">
@@ -294,9 +266,7 @@ export function LSXSearchTemplate() {
         </Container>
       </section>
 
-      {/* ============================================
-          9. CTA SECTION (FunkyCTA)
-          ============================================ */}
+      {/* CTA section */}
       <FunkyCTA
         title={lsxSearchCTA.title}
         description={lsxSearchCTA.description}

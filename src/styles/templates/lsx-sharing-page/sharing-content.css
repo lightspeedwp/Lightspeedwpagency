@@ -1,211 +1,20 @@
 /**
- * LSX Sharing Page — Content Sections
+ * LSX Sharing Page — Unique Content Sections
  *
- * Feature cards, benefit cards, process steps,
- * network grid, specifications, and free plugin highlight.
+ * MIGRATED: March 17, 2026 — Phase 4.4 Product Base Extraction
+ * Removed: feature-card (~88 lines, DEAD — template uses FeatureList pattern),
+ *          benefit-card (~31 lines, DEAD — template uses FeatureList pattern),
+ *          process-step (~57 lines, DEAD — template uses ProcessTimeline pattern).
+ * Kept: Networks grid, specs (glassmorphism variant), free plugin highlight.
  *
+ * Lines saved: ~220 lines (354 → ~134 lines)
+ *
+ * @see /src/styles/templates/product-base.css (shared hero/section classes)
  * @see /src/styles/templates/lsx-sharing-page.css (orchestrator)
  */
 
 /* ============================================================
-   FEATURES GRID — Removed (using FeatureList pattern component)
-   Previous: .lsx-sharing__features-grid (1→2→3 columns, 768px→1024px)
-   Migration: March 3, 2026 — Template uses FeatureList for features section
-   Lines saved: 13 lines (grid base + 2 media queries)
-   ============================================================ */
-
-.lsx-sharing__feature-card {
-  position: relative;
-  background: var(--glass-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius-lg);
-  padding: var(--spacing-8);
-  transition: all 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-4);
-  overflow: hidden;
-}
-
-.lsx-sharing__feature-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
-  background-size: 200% 100%;
-  animation: sharingStripeShimmer 3s linear infinite;
-  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-}
-
-.lsx-sharing__feature-card:hover {
-  border-color: var(--primary);
-  transform: translateY(-4px);
-  box-shadow: 0 8px 30px var(--primary-transparent-10);
-}
-
-.lsx-sharing__feature-glow {
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle at center, var(--primary-transparent-10) 0%, transparent 60%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-}
-
-.lsx-sharing__feature-card:hover .lsx-sharing__feature-glow { opacity: 1; }
-
-.lsx-sharing__feature-icon {
-  width: 48px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, var(--primary), var(--accent));
-  box-shadow: 0 0 16px color-mix(in srgb, var(--primary) 30%, transparent);
-  border-radius: var(--radius-lg);
-  transition: transform var(--transition-base) var(--ease-out), box-shadow var(--transition-base) var(--ease-out);
-}
-
-.lsx-sharing__feature-icon svg {
-  width: 24px;
-  height: 24px;
-  color: var(--color-white);
-}
-
-.lsx-sharing__feature-card:hover .lsx-sharing__feature-icon {
-  transform: scale(1.1);
-  box-shadow: 0 0 24px color-mix(in srgb, var(--primary) 50%, transparent);
-}
-
-.lsx-sharing__feature-title {
-  font-family: var(--font-primary);
-  font-size: var(--text-xl);
-  font-weight: var(--font-weight-bold);
-  color: var(--primary);
-  position: relative;
-  z-index: 1;
-}
-
-.lsx-sharing__feature-description {
-  font-family: var(--font-secondary);
-  font-size: var(--text-base);
-  color: var(--muted-foreground);
-  line-height: var(--line-height-normal);
-  position: relative;
-  z-index: 1;
-}
-
-/* ============================================================
-   BENEFITS GRID — Removed (using FeatureList pattern component)
-   Previous: .lsx-sharing__benefits-grid (1→2 columns, 768px)
-   Migration: March 3, 2026 — Template uses FeatureList for benefits section
-   Lines saved: 9 lines (grid base + media query)
-   ============================================================ */
-
-.lsx-sharing__benefit-card {
-  background: var(--glass-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius-lg);
-  padding: var(--spacing-8);
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-3);
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.lsx-sharing__benefit-card:hover {
-  border-color: var(--primary);
-  box-shadow: 0 0 24px color-mix(in srgb, var(--primary) 20%, transparent);
-}
-
-.lsx-sharing__benefit-title {
-  font-family: var(--font-primary);
-  font-size: var(--text-xl);
-  font-weight: var(--font-weight-semibold);
-  color: var(--foreground);
-}
-
-.lsx-sharing__benefit-description {
-  font-family: var(--font-secondary);
-  font-size: var(--text-base);
-  color: var(--muted-foreground);
-  line-height: var(--line-height-normal);
-}
-
-/* ============================================================
-   PROCESS STEPS
-   ============================================================ */
-
-.lsx-sharing__process-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--spacing-6);
-  max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.lsx-sharing__process-step {
-  display: flex;
-  gap: var(--spacing-6);
-  align-items: flex-start;
-}
-
-.lsx-sharing__process-number {
-  flex-shrink: 0;
-  width: 48px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, var(--primary), var(--accent));
-  color: var(--color-white);
-  border-radius: 50%;
-  font-family: var(--font-primary);
-  font-size: var(--text-xl);
-  font-weight: var(--font-weight-semibold);
-  box-shadow: 0 0 20px color-mix(in srgb, var(--primary) 40%, transparent);
-  transition: transform var(--transition-base) var(--ease-out), box-shadow var(--transition-base) var(--ease-out);
-}
-
-.lsx-sharing__process-step:hover .lsx-sharing__process-number {
-  transform: scale(1.1);
-  box-shadow: 0 0 30px color-mix(in srgb, var(--primary) 60%, transparent);
-}
-
-.lsx-sharing__process-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-2);
-}
-
-.lsx-sharing__process-title {
-  font-family: var(--font-primary);
-  font-size: var(--text-lg);
-  font-weight: var(--font-weight-semibold);
-  color: var(--foreground);
-}
-
-.lsx-sharing__process-description {
-  font-family: var(--font-secondary);
-  font-size: var(--text-base);
-  color: var(--muted-foreground);
-  line-height: var(--line-height-normal);
-}
-
-/* ============================================================
-   NETWORKS GRID
+   NETWORKS GRID (Unique to LSX Sharing)
    ============================================================ */
 
 .lsx-sharing__networks-grid {
@@ -230,7 +39,7 @@
   flex-direction: column;
   align-items: center;
   gap: var(--spacing-3);
-  transition: all 0.3s ease;
+  transition: all var(--transition-base) var(--ease-out);
 }
 
 .lsx-sharing__network-card:hover {
@@ -275,7 +84,7 @@
 }
 
 /* ============================================================
-   SPECIFICATIONS
+   SPECIFICATIONS (Glassmorphism variant)
    ============================================================ */
 
 .lsx-sharing__specs-grid {

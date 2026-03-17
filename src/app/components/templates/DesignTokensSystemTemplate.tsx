@@ -55,7 +55,7 @@ export const DesignTokensSystemTemplate = () => {
       {/* What Section */}
       <section className="system-page__what">
         <div className="system-page__section-content">
-          <h2 className="system-page__section-heading">What Are Design Tokens?</h2>
+          <h2 className="system-page__section-heading">What are design tokens?</h2>
           <p className="system-page__section-text">
             Design tokens are centralized variables that store your brand's visual
             decisions — colors, typography, spacing, borders, and shadows. They replace
@@ -114,7 +114,7 @@ export const DesignTokensSystemTemplate = () => {
       {/* How Section */}
       <section className="design-tokens-system__how">
         <div className="design-tokens-system__section-content">
-          <h2 className="design-tokens-system__section-heading">How We Implement It</h2>
+          <h2 className="design-tokens-system__section-heading">How we implement it</h2>
           <div className="design-tokens-system__steps">
             <div className="design-tokens-system__step">
               <div className="design-tokens-system__step-number">1</div>

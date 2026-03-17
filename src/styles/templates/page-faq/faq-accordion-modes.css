@@ -64,6 +64,10 @@
   filter: drop-shadow(0 0 3px color-mix(in srgb, var(--primary) 30%, transparent));
 }
 
+.page-faq__accordion-chevron--open {
+  transform: rotate(180deg);
+}
+
 .page-faq__accordion-content {
   padding: 0 var(--spacing-6) var(--spacing-6) var(--spacing-6);
   border-top: 1px solid color-mix(in srgb, var(--primary) 10%, transparent);

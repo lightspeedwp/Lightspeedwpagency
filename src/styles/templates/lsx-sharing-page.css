@@ -1,20 +1,24 @@
 /**
  * LSX Sharing Product Page Styles — Orchestrator
  *
- * SPLIT: March 15, 2026 — C3.1 file size optimization
- * Split from 708-line file into 3 modular sub-files.
+ * MIGRATED: March 17, 2026 — Phase 4.4 Product Base Extraction
+ * Removed: sharing-hero.css (225 lines → deleted, 100% replaced by product-base)
+ * Dead CSS removed: feature-card/benefit-card/process (~189 lines, unused since
+ *                   migration to FeatureList + ProcessTimeline patterns)
+ * Savings: ~272 lines total (708 → ~199 unique + shared product-base)
  *
  * Sub-files:
- *   sharing-hero.css    — Container, hero, section layout, headers (~221 lines)
- *   sharing-content.css — Features, benefits, process, networks, specs, plugin (~356 lines)
- *   sharing-modes.css   — Funky treatments, dark mode, reduced motion (~109 lines)
+ *   product-base.css    — Shared hero, sections, cards, steps, specs, pricing
+ *   sharing-content.css — Networks grid, specs (glass), free plugin highlight (~134 lines)
+ *   sharing-modes.css   — Dark mode for unique sections + reduced motion (~65 lines)
  *
- * BEM naming: .lsx-sharing__*
+ * BEM naming: .product-hero__*, .product-section__*,
+ *             .lsx-sharing__network-*, .lsx-sharing__spec-*, .lsx-sharing__free-* (unique)
  * 100% CSS variables — no hardcoded color/spacing values.
  */
 
 @import '../base/glass-effect-base.css';
+@import './product-base.css';
 
-@import './lsx-sharing-page/sharing-hero.css';
 @import './lsx-sharing-page/sharing-content.css';
 @import './lsx-sharing-page/sharing-modes.css';

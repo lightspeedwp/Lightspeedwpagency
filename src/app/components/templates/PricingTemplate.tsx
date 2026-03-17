@@ -52,13 +52,13 @@ export function PricingTemplate() {
       />
 
       {/* Funky Neon Hero */}
-      <section className="service-hero" style={{ minHeight: '60vh', padding: 'var(--spacing-24) 0' }}>
-        <div style={{ position: 'absolute', inset: 0, opacity: 0.1, backgroundImage: 'linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px)', backgroundSize: '40px 40px', zIndex: 0 }} aria-hidden="true" />
+      <section className="service-hero service-hero--pricing">
+        <div className="pricing-page__grid-bg" aria-hidden="true" />
         <div className="pricing-page__hero-orb pricing-page__hero-orb--1" aria-hidden="true" />
         <div className="pricing-page__hero-orb pricing-page__hero-orb--2" aria-hidden="true" />
 
         <Container>
-          <div ref={heroRef} className="service-hero__content service-hero__content--centered" style={{ textAlign: 'center' }}>
+          <div ref={heroRef} className="service-hero__content service-hero__content--centered">
             <div className="service-hero__badge">
               <Sparkles size={14} />
               {pricingPageHero.badge.text}
@@ -88,7 +88,7 @@ export function PricingTemplate() {
       </section>
 
       {/* Website Packages Section */}
-      <section className="service-section service-section--bg-card" style={{ position: 'relative', overflow: 'hidden' }}>
+      <section className="service-section service-section--bg-card pricing-page__packages-section">
         {/* Decorative orbs */}
         <div className="pricing-page__section-orb pricing-page__section-orb--1" aria-hidden="true" />
         <div className="pricing-page__section-orb pricing-page__section-orb--2" aria-hidden="true" />
@@ -106,7 +106,7 @@ export function PricingTemplate() {
               </div>
             </ScrollReveal>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 'var(--spacing-8)' }}>
+            <div className="pricing-page__packages-grid">
               {websitePackages.map((plan, idx) => {
                 const Icon = plan.icon;
                 return (
@@ -197,7 +197,7 @@ export function PricingTemplate() {
               </div>
             </ScrollReveal>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 'var(--spacing-8)' }}>
+            <div className="pricing-page__packages-grid">
               {supportPackages.map((plan, idx) => {
                 const Icon = plan.icon;
                 return (

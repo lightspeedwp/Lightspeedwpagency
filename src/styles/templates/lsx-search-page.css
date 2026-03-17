@@ -2,7 +2,7 @@
  * LSX Search Product Page Styles — ORCHESTRATOR
  *
  * P3.5 Optimization: Split into modular sub-files.
- * Original: 813 lines -> 3 modular files + this orchestrator.
+ * P4.4 Migration: Hero + section headers + specs → product-base.css
  *
  * Template: LSXSearchTemplate
  * Theme: Neon search, glassmorphism cards, floating orbs
@@ -11,7 +11,11 @@
  * BEM naming throughout.
  *
  * @see /src/styles/templates/lsx-search/
+ * @see /src/styles/templates/product-base.css (shared hero/section/specs)
  */
+
+/* Shared product-base (hero, sections, cards, specs) */
+@import './product-base.css';
 
 /* Base imports */
 @import '../base/glass-effect-base.css';
@@ -19,7 +23,6 @@
 @import '../base/card-base.css';
 @import '../patterns/hero/hero-base.css';
 
-/* LSX Search modular files */
-@import './lsx-search/lsx-search-hero.css';
+/* LSX Search modular files (unique content + funky treatments) */
 @import './lsx-search/lsx-search-content.css';
 @import './lsx-search/lsx-search-funky.css';

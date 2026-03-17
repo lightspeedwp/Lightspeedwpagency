@@ -86,7 +86,7 @@ export function DesignPlaygroundTemplate() {
 
       <div className="playground">
         <div className="playground__header">
-          <h1 className="playground__title">Design System Playground</h1>
+          <h1 className="playground__title">Design system playground</h1>
           <p className="playground__description">
             Experiment with the LSX design tokens in real time. Changes apply instantly
             via CSS variable overrides and are never persisted.

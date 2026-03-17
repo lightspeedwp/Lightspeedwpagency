@@ -1,19 +1,18 @@
 /**
- * LSX Sharing Page — Funky Treatments, Dark Mode & Reduced Motion
+ * LSX Sharing Page — Dark Mode & Reduced Motion
  *
- * Animated gradient stripe keyframes, dark mode overrides
- * for glassmorphism cards, and reduced motion guards.
+ * MIGRATED: March 17, 2026 — Phase 4.4 Product Base Extraction
+ * Removed: Hero dark mode (now product-base), feature-card/benefit-card/
+ *          process dark overrides (DEAD CSS — template uses patterns),
+ *          section bg overrides (now product-section--muted).
+ * Kept: Network cards, specs, free highlight, stripe shimmer, reduced motion.
+ *
+ * Lines saved: ~52 lines (117 → ~65 lines)
  *
  * @see /src/styles/templates/lsx-sharing-page.css (orchestrator)
  */
 
-/* ============================================================
-   FUNKY BODY TREATMENTS
-   Glassmorphism, animated gradient stripes, neon icon wrappers,
-   gradient section title underlines, dark mode overrides.
-   ============================================================ */
-
-/* --- Animated Gradient Stripe Keyframe --- */
+/* --- Animated Gradient Stripe Keyframe (used by FeatureList glow variant) --- */
 
 @keyframes sharingStripeShimmer {
   0%   { background-position: -200% 0; }
@@ -21,40 +20,8 @@
 }
 
 /* ============================================================
-   DARK MODE OVERRIDES
+   DARK MODE — Unique Sections
    ============================================================ */
-
-.dark .lsx-sharing__features { background: color-mix(in srgb, var(--background) 95%, var(--primary) 5%); }
-.dark .lsx-sharing__process  { background: color-mix(in srgb, var(--background) 95%, var(--primary) 5%); }
-.dark .lsx-sharing__specs    { background: color-mix(in srgb, var(--background) 95%, var(--primary) 5%); }
-
-.dark .lsx-sharing__feature-card {
-  background: var(--glass-bg);
-  border-color: var(--glass-border);
-}
-
-.dark .lsx-sharing__feature-card:hover {
-  border-color: var(--primary);
-  box-shadow: 0 0 30px color-mix(in srgb, var(--primary) 25%, transparent);
-}
-
-.dark .lsx-sharing__feature-icon {
-  box-shadow: 0 0 20px color-mix(in srgb, var(--primary) 40%, transparent);
-}
-
-.dark .lsx-sharing__benefit-card {
-  background: var(--glass-bg);
-  border-color: var(--glass-border);
-}
-
-.dark .lsx-sharing__benefit-card:hover {
-  border-color: var(--primary);
-  box-shadow: 0 0 24px color-mix(in srgb, var(--primary) 30%, transparent);
-}
-
-.dark .lsx-sharing__process-number {
-  box-shadow: 0 0 24px color-mix(in srgb, var(--primary) 50%, transparent);
-}
 
 .dark .lsx-sharing__network-card {
   background: var(--glass-bg);
@@ -81,36 +48,16 @@
   box-shadow: 0 0 40px color-mix(in srgb, var(--primary) 20%, transparent);
 }
 
-.dark .lsx-sharing__section-title::after {
-  box-shadow: 0 0 8px color-mix(in srgb, var(--primary) 30%, transparent);
-}
-
-.dark .lsx-sharing__hero-overlay {
-  background: linear-gradient(
-    to bottom,
-    var(--overlay-dark) 0%,
-    var(--overlay-darker) 55%,
-    var(--background) 100%
-  );
-}
-
 /* ============================================================
-   REDUCED MOTION GUARDS
+   REDUCED MOTION
    ============================================================ */
 
 @media (prefers-reduced-motion: reduce) {
-  .lsx-sharing__feature-card::before {
-    animation: none;
-  }
-
-  .lsx-sharing__feature-card:hover,
   .lsx-sharing__network-card:hover {
     transform: none;
   }
 
-  .lsx-sharing__feature-card:hover .lsx-sharing__feature-icon,
-  .lsx-sharing__network-card:hover .lsx-sharing__network-icon,
-  .lsx-sharing__process-step:hover .lsx-sharing__process-number {
+  .lsx-sharing__network-card:hover .lsx-sharing__network-icon {
     transform: none;
   }
 }

@@ -113,7 +113,7 @@ export function CodeQualityDashboardTemplate() {
             <Pulse size={14} />
             Code Quality
           </div>
-          <h1 className="cq-dashboard__hero-title">Code Quality Dashboard</h1>
+          <h1 className="cq-dashboard__hero-title">Code quality dashboard</h1>
           <p className="cq-dashboard__hero-subtitle">
             Static analysis of the LSX Design codebase — component counts, route stats,
             CSS architecture, design token inventory, and compliance scores.
@@ -146,7 +146,7 @@ export function CodeQualityDashboardTemplate() {
         <div className="cq-dashboard__section">
           <div className="cq-dashboard__section-header">
             <div className="cq-dashboard__section-icon"><Shield size={18} /></div>
-            <h2 className="cq-dashboard__section-title">Overall Quality Score</h2>
+            <h2 className="cq-dashboard__section-title">Overall quality score</h2>
             <span className="cq-dashboard__section-badge cq-dashboard__section-badge--success">
               <CheckCircle size={12} className="wp-mr-1" /> Excellent
             </span>
@@ -199,7 +199,7 @@ export function CodeQualityDashboardTemplate() {
         <div className="cq-dashboard__section">
           <div className="cq-dashboard__section-header">
             <div className="cq-dashboard__section-icon"><Database size={18} /></div>
-            <h2 className="cq-dashboard__section-title">Data File Statistics</h2>
+            <h2 className="cq-dashboard__section-title">Data file statistics</h2>
             <span className="cq-dashboard__section-badge cq-dashboard__section-badge--info">{totalDataEntries} entries</span>
           </div>
           <div className="cq-dashboard__section-body">
@@ -221,7 +221,7 @@ export function CodeQualityDashboardTemplate() {
         <div className="cq-dashboard__section">
           <div className="cq-dashboard__section-header">
             <div className="cq-dashboard__section-icon"><Swatches size={18} /></div>
-            <h2 className="cq-dashboard__section-title">Design Token Inventory</h2>
+            <h2 className="cq-dashboard__section-title">Design token inventory</h2>
             <span className="cq-dashboard__section-badge cq-dashboard__section-badge--info">{totalTokens} tokens</span>
           </div>
           <div className="cq-dashboard__section-body">

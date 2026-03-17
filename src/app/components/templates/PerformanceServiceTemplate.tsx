@@ -81,7 +81,7 @@ export function PerformanceServiceTemplate() {
         <Container>
           <div className="perf-hero__grid">
             <ScrollReveal animation="fade-down">
-              <div className="service-hero__badge service-hero__badge--primary" style={{ fontWeight: 'var(--font-weight-bold)' }}>
+              <div className="service-hero__badge service-hero__badge--primary service-hero__badge--bold">
                 <Zap size={16} weight="fill" />
                 <span>PERFORMANCE + WCAG COMPLIANCE</span>
               </div>
@@ -102,7 +102,7 @@ export function PerformanceServiceTemplate() {
                   <div className="perf-speedometer__gauge">
                     98
                   </div>
-                  <span className="service-stat__label" style={{ letterSpacing: 'var(--letter-spacing-widest)' }}>Lighthouse Score</span>
+                  <span className="service-stat__label service-stat__label--wide">Lighthouse Score</span>
                 </div>
                 
                 <div className="perf-speedometer__metrics">
@@ -134,10 +134,10 @@ export function PerformanceServiceTemplate() {
           <div className="wp-grid-2-cols wp-items-center wp-gap-16">
             <ScrollReveal animation="fade-right">
               <div>
-                <h2 className="service-section__title" style={{ marginBottom: 'var(--spacing-6)' }}>
+                <h2 className="service-section__title perf-section__title">
                   {data.whyLightSpeed.title}
                 </h2>
-                <p className="service-section__description service-section__description--left" style={{ marginBottom: 'var(--spacing-8)', lineHeight: 'var(--line-height-comfortable)' }}>
+                <p className="service-section__description service-section__description--left perf-section__description">
                   {data.whyLightSpeed.description}
                 </p>
                 <div className="perf-checklist">
@@ -177,7 +177,7 @@ export function PerformanceServiceTemplate() {
                 </div>
                 
                 <div className="perf-comparison__result">
-                  <span className="service-stat__label" style={{ letterSpacing: 'var(--letter-spacing-widest)' }}>
+                  <span className="service-stat__label service-stat__label--wide">
                     SPEED IMPROVEMENT: <span className="perf-comparison__result-highlight">3X FASTER</span>
                   </span>
                 </div>
@@ -194,7 +194,7 @@ export function PerformanceServiceTemplate() {
         <Container>
           <div className="service-section__header">
             <ScrollReveal animation="fade-up">
-              <h2 className="service-section__title">Performance & Accessibility Features</h2>
+              <h2 className="service-section__title">Performance & accessibility features</h2>
               <p className="service-section__description">
                 Comprehensive optimization covering every layer of your stack.
               </p>

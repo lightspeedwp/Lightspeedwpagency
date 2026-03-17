@@ -16,6 +16,10 @@ import {
   ChatCentered,
   Eye,
   Robot,
+  Binoculars,
+  Blueprint,
+  Rocket,
+  TrendUp,
 } from '@phosphor-icons/react';
 
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
@@ -66,18 +70,30 @@ const statsItems = [
 
 const approachSteps = [
   {
+    id: 'approach-1',
+    number: '01',
+    icon: Binoculars,
     title: 'Discovery & audit',
     description: 'We analyse your current digital footprint, content strategy, and search performance to identify AI opportunities.',
   },
   {
+    id: 'approach-2',
+    number: '02',
+    icon: Blueprint,
     title: 'Strategy & architecture',
     description: 'We design a tailored AI integration plan aligned with your business goals, tech stack, and budget.',
   },
   {
+    id: 'approach-3',
+    number: '03',
+    icon: Rocket,
     title: 'Implementation & training',
     description: 'We deploy AI tools, integrate with your WordPress site, and train your team on best practices.',
   },
   {
+    id: 'approach-4',
+    number: '04',
+    icon: TrendUp,
     title: 'Optimisation & scale',
     description: 'We monitor performance, refine models, and scale successful AI initiatives across your digital ecosystem.',
   },

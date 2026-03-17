@@ -97,22 +97,22 @@ export function DesignServiceTemplate() {
         <div className="service-hero__crosshair service-hero__crosshair--br" />
 
         {/* Floating Wireframes */}
-        <div style={{ position: 'absolute', top: '20%', right: '5%', width: '200px', padding: 'var(--spacing-4)', background: 'rgba(var(--card-rgb), 0.5)', backdropFilter: 'blur(10px)', border: '1px solid rgba(var(--primary-rgb), 0.2)', borderRadius: 'var(--radius-lg)', transform: 'perspective(1000px) rotateY(-15deg) rotateX(10deg)', opacity: 0.6, zIndex: 0, pointerEvents: 'none', display: 'flex', flexDirection: 'column', gap: 'var(--spacing-3)' }} aria-hidden="true">
-          <div style={{ width: '40%', height: '8px', background: 'rgba(var(--primary-rgb), 0.3)', borderRadius: 'var(--radius-full)' }} />
-          <div style={{ width: '80%', height: '8px', background: 'rgba(var(--muted-foreground-rgb), 0.2)', borderRadius: 'var(--radius-full)' }} />
-          <div style={{ width: '100%', height: '80px', background: 'rgba(var(--muted-foreground-rgb), 0.1)', borderRadius: 'var(--radius)' }} />
-          <div style={{ width: '60%', height: '8px', background: 'rgba(var(--muted-foreground-rgb), 0.2)', borderRadius: 'var(--radius-full)' }} />
+        <div className="design-decor__wireframe design-decor__wireframe--right" aria-hidden="true">
+          <div className="design-decor__bar design-decor__bar--primary design-decor__bar--w40" />
+          <div className="design-decor__bar design-decor__bar--w80" />
+          <div className="design-decor__bar design-decor__bar--block design-decor__bar--w100" />
+          <div className="design-decor__bar design-decor__bar--w60" />
         </div>
-        <div style={{ position: 'absolute', bottom: '15%', left: '5%', width: '250px', padding: 'var(--spacing-4)', background: 'rgba(var(--card-rgb), 0.5)', backdropFilter: 'blur(10px)', border: '1px solid rgba(var(--secondary-rgb), 0.2)', borderRadius: 'var(--radius-lg)', transform: 'perspective(1000px) rotateY(15deg) rotateX(5deg)', opacity: 0.6, zIndex: 0, pointerEvents: 'none', display: 'flex', flexDirection: 'column', gap: 'var(--spacing-3)' }} aria-hidden="true">
-          <div style={{ width: '100%', height: '120px', background: 'rgba(var(--muted-foreground-rgb), 0.1)', borderRadius: 'var(--radius)' }} />
-          <div style={{ width: '90%', height: '8px', background: 'rgba(var(--muted-foreground-rgb), 0.2)', borderRadius: 'var(--radius-full)' }} />
-          <div style={{ width: '70%', height: '8px', background: 'rgba(var(--muted-foreground-rgb), 0.2)', borderRadius: 'var(--radius-full)' }} />
-          <div style={{ width: '50%', height: '8px', background: 'rgba(var(--secondary-rgb), 0.3)', borderRadius: 'var(--radius-full)' }} />
+        <div className="design-decor__wireframe design-decor__wireframe--left" aria-hidden="true">
+          <div className="design-decor__bar design-decor__bar--block-lg design-decor__bar--w100" />
+          <div className="design-decor__bar design-decor__bar--w90" />
+          <div className="design-decor__bar design-decor__bar--w70" />
+          <div className="design-decor__bar design-decor__bar--secondary design-decor__bar--w50" />
         </div>
 
-        <div className="service-hero__content" style={{ padding: '0 var(--spacing-8)' }}>
+        <div className="service-hero__content service-hero__content--centered">
           <ScrollReveal animation="fade-down">
-            <div className="service-hero__badge service-hero__badge--outline" style={{ letterSpacing: 'var(--letter-spacing-wider)' }}>
+            <div className="service-hero__badge service-hero__badge--outline">
               <Grid size={16} />
               PIXEL PERFECT ARCHITECTURE
             </div>
@@ -147,34 +147,34 @@ export function DesignServiceTemplate() {
           <div className="wp-grid-2-cols wp-items-center wp-gap-16">
             <ScrollReveal animation="fade-right">
               {/* Visual Stack */}
-              <div style={{ position: 'relative', width: '100%', height: '400px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <div style={{ position: 'absolute', width: '280px', height: '200px', backgroundColor: 'var(--background)', border: '1px solid var(--border)', borderRadius: 'var(--radius-lg)', transform: 'perspective(1000px) rotateX(60deg) rotateZ(-45deg) translateZ(-60px)', opacity: 0.4, boxShadow: 'var(--shadow-lg)' }} />
-                <div style={{ position: 'absolute', width: '280px', height: '200px', backgroundColor: 'var(--background)', border: '1px solid var(--primary)', borderRadius: 'var(--radius-lg)', transform: 'perspective(1000px) rotateX(60deg) rotateZ(-45deg) translateZ(0px)', opacity: 0.7, boxShadow: '0 10px 30px rgba(var(--primary-rgb),0.1)' }} />
-                <div style={{ position: 'absolute', width: '280px', height: '200px', backgroundColor: 'var(--background)', border: '2px solid var(--secondary)', borderRadius: 'var(--radius-lg)', transform: 'perspective(1000px) rotateX(60deg) rotateZ(-45deg) translateZ(60px)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', boxShadow: '0 20px 40px rgba(var(--secondary-rgb),0.2)', padding: 'var(--spacing-6)', textAlign: 'center' }}>
-                  <Layers size={48} style={{ color: 'var(--secondary)', marginBottom: 'var(--spacing-4)' }} />
-                  <h3 className="service-section__title" style={{ margin: 0, fontSize: 'var(--text-h4)' }}>Design Systems</h3>
-                  <p className="service-section__description" style={{ margin: 'var(--spacing-2) 0 0 0', fontSize: 'var(--text-sm)' }}>Scalable & Consistent</p>
+              <div className="design-decor__stack">
+                <div className="design-decor__layer design-decor__layer--back" />
+                <div className="design-decor__layer design-decor__layer--mid" />
+                <div className="design-decor__layer design-decor__layer--front">
+                  <Layers size={48} className="design-decor__layer-icon" />
+                  <h3 className="design-decor__layer-title">Design systems</h3>
+                  <p className="design-decor__layer-subtitle">Scalable & consistent</p>
                 </div>
               </div>
             </ScrollReveal>
 
             <ScrollReveal animation="fade-left">
               <div>
-                <h2 className="service-section__title" style={{ marginBottom: 'var(--spacing-6)' }}>
-                  Design that <span style={{ color: 'var(--primary)' }}>Works</span>
+                <h2 className="design-decor__overview-title">
+                  Design that <span className="design-decor__overview-highlight">works</span>
                 </h2>
-                <p className="service-section__description service-section__description--left" style={{ marginBottom: 'var(--spacing-8)', lineHeight: 'var(--line-height-comfortable)' }}>
+                <p className="design-decor__overview-description">
                   {data.whyLightSpeed.description}
                 </p>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 'var(--spacing-4)' }}>
+                <div className="design-decor__checklist-grid">
                   {[
-                    'User-Centric Approach',
-                    'Accessibility First (WCAG 2.1)',
-                    'Conversion Optimized Layouts',
-                    'Brand Consistency'
+                    'User-centric approach',
+                    'Accessibility first (WCAG 2.1)',
+                    'Conversion optimized layouts',
+                    'Brand consistency'
                   ].map((item, i) => (
                     <div key={i} className="perf-checklist__card">
-                      <CheckCircle size={20} style={{ color: 'var(--primary)', flexShrink: 0 }} />
+                      <CheckCircle size={20} className="design-decor__checklist-icon" />
                       <span className="perf-checklist__card-text">{item}</span>
                     </div>
                   ))}

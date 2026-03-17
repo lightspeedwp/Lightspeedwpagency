@@ -86,6 +86,10 @@
   /* Content is rendered here */
 }
 
+.comparison__preview-content--tall {
+  min-height: 6rem;
+}
+
 /* Variant Grid */
 .comparison__grid {
   display: grid;

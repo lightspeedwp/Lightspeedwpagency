@@ -73,7 +73,8 @@
 }
 
 .solutions-hero__badge {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   font-family: var(--font-primary);
   font-size: var(--text-sm);
   font-weight: var(--font-weight-bold);

@@ -107,7 +107,7 @@ export function ThemeBlocksShowcase() {
             <div className="theme-showcase__demo">
               <span className="theme-showcase__demo-title">Mega Menu Preview</span>
               <p className="wp-mb-4">Hover over "Services" to see the mega menu interaction.</p>
-              <div className="wp-border wp-border-border-soft wp-rounded-md wp-relative" style={{ height: '18rem' }}>
+              <div className="theme-showcase__demo-container">
                 <MegaMenu />
               </div>
             </div>

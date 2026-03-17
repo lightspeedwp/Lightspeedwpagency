@@ -69,7 +69,7 @@ export function TeamTemplate() {
             </span>
 
             <h1 className="team-page__hero-title">
-              The People Behind LightSpeed
+              The people behind LightSpeed
             </h1>
 
             <p className="team-page__hero-subtitle">

@@ -1,20 +1,22 @@
 /**
  * Wetu Importer Product Page Styles — Orchestrator
  *
- * SPLIT: March 15, 2026 — C3.1j file size optimization
- * Split from 674-line file into 3 modular sub-files.
+ * MIGRATED: March 17, 2026 — Phase 4.4 Product Base Extraction
+ * Removed: wetu-hero.css (231 lines → deleted, 100% replaced by product-base)
+ * Savings: ~233 lines (wetu-hero.css + content/modes trimming)
  *
  * Sub-files:
- *   wetu-hero.css    — Container, hero, section layout, headers (~227 lines)
- *   wetu-content.css — Features, benefits, process, specs, pricing (~322 lines)
- *   wetu-modes.css   — Dark mode overrides, reduced motion (~100 lines)
+ *   product-base.css — Shared hero, sections, cards, steps, specs, pricing
+ *   wetu-content.css — Wetu-unique pricing card structure (~100 lines)
+ *   wetu-modes.css   — Dark mode for pricing + reduced motion (~45 lines)
  *
- * BEM naming: .wetu-importer__*
+ * BEM naming: .product-hero__*, .product-section__*, .product-card__*,
+ *             .wetu-importer__pricing-* (unique)
  * 100% CSS variables, zero hardcoded values.
  */
 
 @import '../base/glass-effect-base.css';
+@import './product-base.css';
 
-@import './wetu-importer-page/wetu-hero.css';
 @import './wetu-importer-page/wetu-content.css';
 @import './wetu-importer-page/wetu-modes.css';

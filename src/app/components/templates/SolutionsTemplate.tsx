@@ -221,7 +221,7 @@ export function SolutionsTemplate() {
             <div className="solutions-hero__content">
               {/* Badge */}
               <div className="solutions-hero__badge">
-                <Sparkle size={14} className="wp-inline wp-mr-2" style={{ verticalAlign: 'middle' }} />
+                <Sparkle size={14} className="wp-inline wp-mr-2" />
                 Comprehensive Solutions
               </div>
 

@@ -1,59 +1,20 @@
 /**
  * Wetu Importer — Dark Mode & Reduced Motion
  *
- * Dark mode overrides for all card types, hero overlay,
- * and reduced motion guards.
+ * MIGRATED: March 17, 2026 — Phase 4.4 Product Base Extraction
+ * Removed: Hero, feature-card, benefit-card, process, spec dark overrides
+ *          (now use product-base classes → product-base dark mode or semantic vars).
+ * Kept: Pricing-specific dark mode (unique card structure).
+ *
+ * Lines saved: ~50 lines (110 → ~60 lines)
  *
  * @see /src/styles/templates/wetu-importer-page.css (orchestrator)
  */
 
 /* ============================================================
-   DARK MODE OVERRIDES
+   DARK MODE — Pricing Cards
    ============================================================ */
 
-/* Dark body section backgrounds */
-.dark .wetu-importer__features { background: color-mix(in srgb, var(--background) 95%, var(--primary) 5%); }
-.dark .wetu-importer__process  { background: color-mix(in srgb, var(--background) 95%, var(--primary) 5%); }
-.dark .wetu-importer__pricing  { background: color-mix(in srgb, var(--background) 95%, var(--primary) 5%); }
-
-/* Dark feature cards */
-.dark .wetu-importer__feature-card {
-  background: var(--glass-bg);
-  border-color: var(--glass-border);
-}
-
-.dark .wetu-importer__feature-card:hover {
-  border-color: var(--primary);
-  box-shadow: 0 0 30px color-mix(in srgb, var(--primary) 25%, transparent);
-}
-
-.dark .wetu-importer__feature-icon {
-  box-shadow: 0 0 20px color-mix(in srgb, var(--primary) 40%, transparent);
-}
-
-/* Dark benefit cards */
-.dark .wetu-importer__benefit-card {
-  background: var(--glass-bg);
-  border-color: var(--glass-border);
-}
-
-.dark .wetu-importer__benefit-card:hover {
-  border-color: var(--primary);
-  box-shadow: 0 0 24px color-mix(in srgb, var(--primary) 30%, transparent);
-}
-
-/* Dark process numbers */
-.dark .wetu-importer__process-number {
-  box-shadow: 0 0 24px color-mix(in srgb, var(--primary) 50%, transparent);
-}
-
-/* Dark spec items */
-.dark .wetu-importer__spec-item {
-  background: var(--glass-bg);
-  border-color: var(--glass-border);
-}
-
-/* Dark pricing cards */
 .dark .wetu-importer__pricing-card {
   background: var(--glass-bg);
   border-color: var(--glass-border);
@@ -73,37 +34,12 @@
   box-shadow: 0 0 12px color-mix(in srgb, var(--primary) 40%, transparent);
 }
 
-/* Dark network/spec items */
-.dark .wetu-importer__section-title::after {
-  box-shadow: 0 0 8px color-mix(in srgb, var(--primary) 30%, transparent);
-}
-
-/* Dark hero overlay adjustment */
-.dark .wetu-importer__hero-overlay {
-  background: linear-gradient(
-    to bottom,
-    var(--overlay-dark) 0%,
-    var(--overlay-darker) 55%,
-    var(--background) 100%
-  );
-}
-
 /* ============================================================
-   REDUCED MOTION GUARDS
+   REDUCED MOTION
    ============================================================ */
 
 @media (prefers-reduced-motion: reduce) {
-  .wetu-importer__feature-card::before {
-    animation: none;
-  }
-
-  .wetu-importer__feature-card:hover,
   .wetu-importer__pricing-card:hover {
-    transform: none;
-  }
-
-  .wetu-importer__feature-card:hover .wetu-importer__feature-icon,
-  .wetu-importer__process-step:hover .wetu-importer__process-number {
     transform: none;
   }
 }

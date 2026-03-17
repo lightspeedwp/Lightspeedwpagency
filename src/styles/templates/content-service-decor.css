@@ -1,0 +1,225 @@
+/**
+ * Content Service Template — Decorative Elements BEM
+ *
+ * Manuscript page decoratives, paper texture, editing marks,
+ * cursor blink, "why" section centered layout + icon wrapper.
+ *
+ * BEM naming: .content-decor__*
+ *
+ * Created: March 17, 2026 — apply BEM round 15
+ *
+ * @see /src/app/components/templates/ContentServiceTemplate.tsx
+ */
+
+/* ============================================
+   HERO — Paper Texture + Gradient Fade
+   ============================================ */
+
+.content-decor__texture {
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  background-image: repeating-conic-gradient(
+    var(--foreground) 0% 25%,
+    transparent 0% 50%
+  );
+  background-size: 4px 4px;
+  z-index: 0;
+}
+
+.content-decor__fade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--background) 0%, transparent) 0%,
+    var(--background) 100%
+  );
+  z-index: 0;
+}
+
+/* ============================================
+   FLOATING MANUSCRIPT PAGES (Hero Decorative)
+   ============================================ */
+
+.content-decor__manuscript {
+  position: absolute;
+  width: 300px;
+  height: 400px;
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--spacing-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  opacity: 0.4;
+  box-shadow: var(--shadow-xl);
+  z-index: 0;
+}
+
+.content-decor__manuscript--left {
+  left: -5%;
+  top: 20%;
+  transform: rotate(-15deg);
+}
+
+.content-decor__manuscript--right {
+  right: -5%;
+  top: 10%;
+  transform: rotate(10deg);
+}
+
+/* Text skeleton lines inside manuscripts */
+.content-decor__line {
+  height: 8px;
+  background-color: var(--border);
+  border-radius: var(--radius-full);
+}
+
+/* Width modifiers */
+.content-decor__line--w60 { width: 60%; }
+.content-decor__line--w65 { width: 65%; }
+.content-decor__line--w70 { width: 70%; }
+.content-decor__line--w75 { width: 75%; }
+.content-decor__line--w80 { width: 80%; }
+.content-decor__line--w85 { width: 85%; }
+.content-decor__line--w90 { width: 90%; }
+
+/* Red pen editing mark */
+.content-decor__pen-mark {
+  position: absolute;
+  top: 40%;
+  right: 20%;
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--color-terminal-red);
+  border-radius: 50%;
+  transform: scale(1.5) rotate(-20deg);
+  opacity: 0.8;
+}
+
+/* Hide manuscripts on mobile — too large */
+@media (max-width: 767px) {
+  .content-decor__manuscript {
+    display: none;
+  }
+}
+
+/* ============================================
+   HERO — Title Cursor Blink
+   ============================================ */
+
+.content-decor__cursor {
+  display: inline-block;
+  width: 4px;
+  height: 1em;
+  background-color: var(--primary);
+  margin-left: var(--spacing-2);
+  vertical-align: text-bottom;
+  animation: content-cursor-blink 1s step-end infinite;
+}
+
+@keyframes content-cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .content-decor__cursor {
+    animation: none;
+  }
+}
+
+/* ============================================
+   HERO — Editing Marks (Decorative)
+   ============================================ */
+
+.content-decor__edit-mark {
+  position: absolute;
+  font-family: var(--font-mono);
+  color: var(--color-terminal-red);
+  font-style: italic;
+}
+
+.content-decor__edit-mark--stet {
+  bottom: -10px;
+  right: -40px;
+  font-size: var(--text-lg);
+  transform: rotate(-15deg);
+}
+
+.content-decor__edit-mark--insert {
+  bottom: -20px;
+  left: 20%;
+  font-size: var(--text-sm);
+  transform: rotate(-5deg);
+}
+
+/* ============================================
+   HERO — Title + Description Wrappers
+   ============================================ */
+
+.content-decor__title-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.content-decor__description-wrapper {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ============================================
+   WHY SECTION — Centered Layout + Icon
+   ============================================ */
+
+.content-decor__why-container {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content-decor__why-icon {
+  width: 80px;
+  height: 80px;
+  background-color: color-mix(in srgb, var(--primary) 10%, transparent);
+  color: var(--primary);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--spacing-8);
+}
+
+.content-decor__why-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-6);
+}
+
+.content-decor__why-description {
+  font-family: var(--font-secondary);
+  font-size: var(--text-lg);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-comfortable);
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .content-decor__manuscript {
+    transform: none;
+  }
+}

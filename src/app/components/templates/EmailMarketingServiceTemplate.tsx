@@ -2,9 +2,12 @@
  * Email Marketing Service Template
  * Route: /services/email-marketing
  * Parent: /services/content
+ *
+ * Layout classes: sub-service-base__* (from sub-service-base.css)
+ * @see /src/styles/templates/sub-service-base.css
  */
 
-import { Envelope, Crosshair, Lightning, Users, ChartBar, TrendUp, Package } from '@phosphor-icons/react';
+import { Envelope, Crosshair, Lightning, Users, ChartBar, TrendUp } from '@phosphor-icons/react';
 import { Link } from 'react-router';
 import { getPageUrl } from '../../data/site-pages';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
@@ -18,12 +21,12 @@ import { FunkyCTA } from '../patterns/FunkyCTA';
 
 export const EmailMarketingServiceTemplate = () => {
   const benefits = [
-    { icon: Envelope, title: 'Campaign Strategy & Planning', description: 'Strategic email campaigns aligned with sales cycles and customer journeys.' },
-    { icon: Crosshair, title: 'Advanced Segmentation', description: 'Behavioral targeting, dynamic content, and personalized messaging at scale.' },
-    { icon: Lightning, title: 'Marketing Automation', description: 'Sophisticated workflows that nurture leads and drive conversions automatically.' },
-    { icon: Users, title: 'List Growth & Acquisition', description: 'Lead magnets, landing pages, and campaigns designed to grow your list.' },
-    { icon: ChartBar, title: 'A/B Testing & Optimization', description: 'Continuous testing and improvement of subject lines, content, and CTAs.' },
-    { icon: TrendUp, title: 'Revenue Attribution', description: 'Track email marketing contribution to revenue and customer lifetime value.' }
+    { icon: Envelope, title: 'Campaign strategy and planning', description: 'Strategic email campaigns aligned with sales cycles and customer journeys.' },
+    { icon: Crosshair, title: 'Advanced segmentation', description: 'Behavioral targeting, dynamic content, and personalized messaging at scale.' },
+    { icon: Lightning, title: 'Marketing automation', description: 'Sophisticated workflows that nurture leads and drive conversions automatically.' },
+    { icon: Users, title: 'List growth and acquisition', description: 'Lead magnets, landing pages, and campaigns designed to grow your list.' },
+    { icon: ChartBar, title: 'A/B testing and optimization', description: 'Continuous testing and improvement of subject lines, content, and CTAs.' },
+    { icon: TrendUp, title: 'Revenue attribution', description: 'Track email marketing contribution to revenue and customer lifetime value.' }
   ];
 
   const deliverables = ['Email marketing strategy', 'Campaign calendar', 'Email template library', 'Automation workflows', 'Segmentation strategy', 'Monthly performance reports', 'Conversion optimization roadmap'];
@@ -36,51 +39,47 @@ export const EmailMarketingServiceTemplate = () => {
   ];
 
   return (
-    <div className="wp-w-full wp-flex wp-flex-col" data-service="email-marketing">
-      {/* HERO SECTION */}
-      <section className="service-hero" style={{ minHeight: '60vh' }}>
-        <div style={{ position: 'absolute', top: 0, left: '50%', transform: 'translate(-50%, -50%)', width: '100vw', height: '100vh', background: 'radial-gradient(ellipse at bottom, rgba(var(--primary-rgb), 0.1) 0%, transparent 70%)', zIndex: 0, pointerEvents: 'none' }} />
-        
-        <div className="service-hero__content" style={{ padding: '0 var(--spacing-8)' }}>
+    <div data-service="email-marketing">
+      {/* Hero section */}
+      <section className="sub-service-base__hero">
+        <div className="sub-service-base__hero-content">
+          <BreadcrumbPart
+            items={[
+              { label: 'Home', href: '/' },
+              { label: 'Services', href: '/services' },
+              { label: 'Content', href: '/services/content' },
+              { label: 'Email marketing' }
+            ]}
+          />
+
           <ScrollReveal animation="fade-down">
-            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 'var(--spacing-6)' }}>
-              <BreadcrumbPart
-                links={[
-                  { to: '/services', label: 'Services' },
-                  { to: '/services/content', label: 'Content' },
-                  { label: 'Email Marketing' }
-                ]}
-              />
-            </div>
-            
-            <h1 className="service-hero__title">
-              Email Marketing <br />
-              <span className="service-hero__gradient-text">Services</span>
+            <h1 className="sub-service-base__hero-title">
+              Email marketing services
             </h1>
-            
-            <p className="service-hero__description service-hero__description--centered">
-              Turn email into your highest-ROI channel. Strategic campaigns, advanced automation, and continuous 
+
+            <p className="sub-service-base__hero-description">
+              Turn email into your highest-ROI channel. Strategic campaigns, advanced automation, and continuous
               optimization that consistently drives revenue and customer loyalty.
             </p>
-            
-            <div className="wp-flex wp-justify-center wp-gap-4">
-              <Link to={getPageUrl('contact')} className="sub-service-base__content-btn sub-service-base__content-btn--primary">
-                Get Email Marketing Plan
+
+            <div className="sub-service-base__hero-cta">
+              <Link to={getPageUrl('contact')} className="sub-service-base__cta-button sub-service-base__cta-button--primary">
+                Get email marketing plan
               </Link>
-              <Link to={getPageUrl('content')} className="sub-service-base__content-btn sub-service-base__content-btn--outline">
-                View Parent Service
+              <Link to={getPageUrl('content')} className="sub-service-base__cta-button sub-service-base__cta-button--secondary">
+                View parent service
               </Link>
             </div>
           </ScrollReveal>
         </div>
       </section>
 
-      {/* BENEFITS */}
-      <section className="service-section service-section--bg-muted">
+      {/* Benefits */}
+      <section className="sub-service-base__benefits">
         <Container>
           <ScrollReveal animation="fade-up">
             <ServiceCapabilitiesGrid
-              heading="Email Marketing Services"
+              heading="Email marketing services"
               subheading="Comprehensive email marketing strategies that convert."
               capabilities={benefits.map((item, i) => ({
                 id: `em-ben-${i}`,
@@ -94,31 +93,23 @@ export const EmailMarketingServiceTemplate = () => {
         </Container>
       </section>
 
-      {/* DELIVERABLES */}
-      <section className="service-section service-section--bg-background">
+      {/* Deliverables */}
+      <section className="sub-service-base__results">
         <Container>
-          <div className="wp-grid-2-cols wp-items-center wp-gap-16">
-            <ScrollReveal animation="fade-up">
-              <div>
-                <div className="sub-service-base__eyebrow-badge">
-                  <Package size={16} weight="duotone" />
-                  What You Get
-                </div>
-                <h2 className="sub-service-base__deliverables-title">Complete Campaign Assets</h2>
-                <p className="sub-service-base__deliverables-description">End-to-end management from templates to automated flows.</p>
-              </div>
-            </ScrollReveal>
-            <ScrollReveal animation="fade-up" delay={100}>
-              <div className="sub-service-base__deliverables-card">
-                <CheckList items={deliverables} columns={1} />
-              </div>
-            </ScrollReveal>
+          <div className="sub-service-base__section-header">
+            <h2 className="sub-service-base__section-title">What you get</h2>
+            <p className="sub-service-base__section-description">
+              End-to-end management from templates to automated flows.
+            </p>
           </div>
+          <ScrollReveal animation="fade-up">
+            <CheckList items={deliverables} columns={2} />
+          </ScrollReveal>
         </Container>
       </section>
 
-      {/* RESULTS */}
-      <section className="service-section service-section--bg-muted">
+      {/* Results */}
+      <section className="sub-service-base__benefits">
         <Container>
           <ScrollReveal animation="fade-up">
             <AgencyStats
@@ -131,19 +122,17 @@ export const EmailMarketingServiceTemplate = () => {
         </Container>
       </section>
 
-      {/* TESTIMONIALS */}
+      {/* Testimonials */}
       <ServiceTestimonial serviceSlug="email-marketing" />
 
       {/* CTA */}
-      <section>
-        <FunkyCTA
-          title="Ready for Email Marketing ROI?"
-          description="Get a free email marketing audit and strategy session."
-          buttonText="Request Free Audit"
-          buttonPage="contact"
-          benefits={['Account structure review', 'Deliverability check', 'Automation recommendations', 'Conversion path analysis']}
-        />
-      </section>
+      <FunkyCTA
+        title="Ready for email marketing ROI?"
+        description="Get a free email marketing audit and strategy session."
+        buttonText="Request free audit"
+        buttonPage="contact"
+        benefits={['Account structure review', 'Deliverability check', 'Automation recommendations', 'Conversion path analysis']}
+      />
     </div>
   );
 };

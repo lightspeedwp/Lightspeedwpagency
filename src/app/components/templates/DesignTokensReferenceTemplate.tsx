@@ -92,7 +92,7 @@ export function DesignTokensReferenceTemplate() {
 
           {/* Hero */}
           <div className="tokens-ref__hero">
-            <h1 className="tokens-ref__title">Design Tokens Reference</h1>
+            <h1 className="tokens-ref__title">Design tokens reference</h1>
             <p className="tokens-ref__subtitle">
               Complete reference of all CSS custom properties in the LSX Design System.
               Click any token to copy its <code className="wp-font-mono wp-text-sm wp-text-primary wp-bg-primary/10 wp-px-2 wp-py-1 wp-rounded">var()</code> reference.

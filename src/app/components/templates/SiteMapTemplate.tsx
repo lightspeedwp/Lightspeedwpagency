@@ -68,7 +68,7 @@ export function SiteMapTemplate() {
               Site Map
             </div>
 
-            <h1 className="site-map__hero-title">Complete Site Navigation</h1>
+            <h1 className="site-map__hero-title">Complete site navigation</h1>
 
             <p className="site-map__hero-subtitle">
               {totalRoutes} navigable pages across {sectionCount} sections
@@ -205,7 +205,7 @@ export function SiteMapTemplate() {
       <Section spacing="xl" className="site-map__cta-section">
         <Container>
           <div className="site-map__cta-inner">
-            <h2 className="site-map__cta-title">Need Help Finding Something?</h2>
+            <h2 className="site-map__cta-title">Need help finding something?</h2>
 
             <p className="site-map__cta-text">
               Can't find what you're looking for? Try the search page or explore

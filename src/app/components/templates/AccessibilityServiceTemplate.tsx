@@ -4,6 +4,12 @@
  * Sub-service page for Web Accessibility under Performance
  * Route: /services/accessibility
  * Parent: /services/performance
+ *
+ * Layout classes: sub-service-base__* (from sub-service-base.css)
+ * Theme classes: accessibility-service__* (from accessibility-service-optimized.css)
+ *
+ * @see /src/styles/templates/accessibility-service-optimized.css
+ * @see /src/styles/templates/sub-service-base.css
  */
 
 import { Eye, Ear, Keyboard, Cursor, CheckCircle, Shield } from '@phosphor-icons/react';
@@ -19,32 +25,32 @@ export const AccessibilityServiceTemplate = () => {
   const benefits = [
     {
       icon: Eye,
-      title: 'Visual Accessibility',
+      title: 'Visual accessibility',
       description: 'WCAG 2.1 AA/AAA compliant color contrast, text sizing, and screen reader optimization.'
     },
     {
       icon: Ear,
-      title: 'Audio & Video Accessibility',
+      title: 'Audio & video accessibility',
       description: 'Captions, transcripts, and audio descriptions for all multimedia content.'
     },
     {
       icon: Keyboard,
-      title: 'Keyboard Navigation',
+      title: 'Keyboard navigation',
       description: 'Full keyboard operability with clear focus indicators and logical tab order.'
     },
     {
       icon: Cursor,
-      title: 'Motor Accessibility',
+      title: 'Motor accessibility',
       description: 'Large touch targets, generous spacing, and support for assistive input devices.'
     },
     {
       icon: CheckCircle,
-      title: 'WCAG Compliance Audits',
+      title: 'WCAG compliance audits',
       description: 'Comprehensive testing against WCAG 2.1 Level AA/AAA standards with detailed reports.'
     },
     {
       icon: Shield,
-      title: 'Legal Compliance',
+      title: 'Legal compliance',
       description: 'Meet ADA, Section 508, and international accessibility regulations.'
     }
   ];
@@ -103,8 +109,8 @@ export const AccessibilityServiceTemplate = () => {
   return (
     <div className="accessibility-service">
       {/* Hero Section */}
-      <section className="accessibility-service__hero">
-        <div className="accessibility-service__hero-content">
+      <section className="sub-service-base__hero accessibility-service__hero">
+        <div className="sub-service-base__hero-content">
           <BreadcrumbPart
             items={[
               { label: 'Home', href: '/' },
@@ -114,31 +120,31 @@ export const AccessibilityServiceTemplate = () => {
             ]}
           />
           
-          <h1 className="accessibility-service__hero-title">
-            Web Accessibility Services
+          <h1 className="sub-service-base__hero-title">
+            Web accessibility services
           </h1>
           
-          <p className="accessibility-service__hero-description">
+          <p className="sub-service-base__hero-description">
             Make your website accessible to everyone. Achieve WCAG 2.1 AA/AAA compliance, reduce legal risk, 
             and expand your audience by 20-30% with inclusive design.
           </p>
           
-          <div className="accessibility-service__hero-cta">
-            <Link to={getPageUrl('contact')} className="accessibility-service__cta-button accessibility-service__cta-button--primary">
-              Get Accessibility Audit
+          <div className="sub-service-base__hero-cta">
+            <Link to={getPageUrl('contact')} className="sub-service-base__cta-button sub-service-base__cta-button--primary">
+              Get accessibility audit
             </Link>
-            <Link to={getPageUrl('performance')} className="accessibility-service__cta-button accessibility-service__cta-button--secondary">
-              View Parent Service
+            <Link to={getPageUrl('performance')} className="sub-service-base__cta-button sub-service-base__cta-button--secondary">
+              View parent service
             </Link>
           </div>
         </div>
       </section>
 
       {/* Benefits Grid */}
-      <section className="accessibility-service__benefits">
-        <div className="accessibility-service__section-header">
-          <h2 className="accessibility-service__section-title">What We Fix</h2>
-          <p className="accessibility-service__section-description">
+      <section className="sub-service-base__benefits accessibility-service__benefits">
+        <div className="sub-service-base__section-header">
+          <h2 className="sub-service-base__section-title">What we fix</h2>
+          <p className="sub-service-base__section-description">
             Comprehensive accessibility services covering all disability types
           </p>
         </div>
@@ -153,10 +159,10 @@ export const AccessibilityServiceTemplate = () => {
       </section>
 
       {/* WCAG Levels */}
-      <section className="accessibility-service__wcag">
-        <div className="accessibility-service__section-header">
-          <h2 className="accessibility-service__section-title">WCAG Compliance Levels</h2>
-          <p className="accessibility-service__section-description">
+      <section className="sub-service-base__benefits accessibility-service__wcag">
+        <div className="sub-service-base__section-header">
+          <h2 className="sub-service-base__section-title">WCAG compliance levels</h2>
+          <p className="sub-service-base__section-description">
             We help you achieve the right accessibility level for your needs
           </p>
         </div>
@@ -179,10 +185,10 @@ export const AccessibilityServiceTemplate = () => {
       </section>
 
       {/* Deliverables */}
-      <section className="accessibility-service__deliverables">
-        <div className="accessibility-service__section-header">
-          <h2 className="accessibility-service__section-title">What You Get</h2>
-          <p className="accessibility-service__section-description">
+      <section className="sub-service-base__benefits accessibility-service__deliverables">
+        <div className="sub-service-base__section-header">
+          <h2 className="sub-service-base__section-title">What you get</h2>
+          <p className="sub-service-base__section-description">
             Complete accessibility implementation and ongoing monitoring
           </p>
         </div>
@@ -195,19 +201,19 @@ export const AccessibilityServiceTemplate = () => {
       </section>
 
       {/* Results Section */}
-      <section className="accessibility-service__results">
-        <div className="accessibility-service__section-header">
-          <h2 className="accessibility-service__section-title">Expected Outcomes</h2>
-          <p className="accessibility-service__section-description">
+      <section className="sub-service-base__results accessibility-service__results">
+        <div className="sub-service-base__section-header">
+          <h2 className="sub-service-base__section-title">Expected outcomes</h2>
+          <p className="sub-service-base__section-description">
             Measurable improvements in accessibility and compliance
           </p>
         </div>
         
-        <div className="accessibility-service__results-grid">
+        <div className="sub-service-base__results-grid">
           {results.map((result, index) => (
-            <div key={index} className="accessibility-service__result-card">
-              <div className="accessibility-service__result-metric">{result.metric}</div>
-              <div className="accessibility-service__result-label">{result.label}</div>
+            <div key={index} className="sub-service-base__result-card">
+              <div className="sub-service-base__result-metric">{result.metric}</div>
+              <div className="sub-service-base__result-label">{result.label}</div>
             </div>
           ))}
         </div>
@@ -217,14 +223,14 @@ export const AccessibilityServiceTemplate = () => {
       <ServiceTestimonial serviceSlug="accessibility" />
 
       {/* CTA Section */}
-      <section className="accessibility-service__cta">
-        <div className="accessibility-service__cta-content">
-          <h2 className="accessibility-service__cta-title">Ready for Inclusive Design?</h2>
-          <p className="accessibility-service__cta-description">
+      <section className="sub-service-base__cta accessibility-service__cta">
+        <div className="sub-service-base__cta-content">
+          <h2 className="sub-service-base__cta-title">Ready for inclusive design?</h2>
+          <p className="sub-service-base__cta-description">
             Get a free accessibility audit and discover how to make your website accessible to everyone.
           </p>
-          <Link to={getPageUrl('contact')} className="accessibility-service__cta-button accessibility-service__cta-button--primary">
-            Request Free Audit
+          <Link to={getPageUrl('contact')} className="sub-service-base__cta-button sub-service-base__cta-button--primary">
+            Request free audit
           </Link>
         </div>
       </section>

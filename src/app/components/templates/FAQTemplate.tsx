@@ -4,6 +4,9 @@
  * WordPress template: templates/page-faq.html
  * 
  * Pattern order: Breadcrumbs → Hero → Stats → FAQ Categories → CTA
+ *
+ * BEM block: .page-faq
+ * @see /src/styles/templates/page-faq.css
  */
 
 /* Route-level CSS */
@@ -54,27 +57,27 @@ export function FAQTemplate() {
       {/* Hero Section */}
       <Section 
         spacing="xl"
-        className="faq-page__hero"
+        className="page-faq__hero"
       >
         {/* Gradient orb decorations */}
-        <div className="faq-page__hero-orb" />
+        <div className="page-faq__hero-orb" />
 
         <Container>
-          <div className="faq-page__hero-content">
-            <div className="faq-page__hero-badge">
+          <div className="page-faq__hero-content">
+            <div className="page-faq__hero-badge">
               <HelpCircle size={14} className="wp-inline wp-mr-2" />
               {faqPageHero.badge.text}
             </div>
 
-            <h1 className="faq-page__hero-title">
-              Frequently Asked <span className="faq-page__hero-highlight">Questions</span>
+            <h1 className="page-faq__hero-title">
+              Frequently asked <span className="page-faq__hero-highlight">questions</span>
             </h1>
 
-            <p className="faq-page__hero-tagline">
+            <p className="page-faq__hero-tagline">
               {faqPageHero.tagline}
             </p>
 
-            <p className="faq-page__hero-desc">
+            <p className="page-faq__hero-desc">
               {faqPageHero.description}
             </p>
           </div>
@@ -82,9 +85,9 @@ export function FAQTemplate() {
       </Section>
 
       {/* Stats Section */}
-      <Section spacing="lg" className="faq-page__stats-section">
+      <Section spacing="lg" className="page-faq__stats-section">
         <Container>
-          <div className="faq-page__stats-container">
+          <div className="page-faq__stats-container">
             <StatsGrid
               stats={[
                 {
@@ -110,32 +113,32 @@ export function FAQTemplate() {
       </Section>
 
       {/* FAQ Categories Section */}
-      <Section spacing="xl" className="faq-page__categories-section">
+      <Section spacing="xl" className="page-faq__categories-section">
         <Container>
-          <div className="faq-page__categories-container">
-            <div className="faq-page__category-list">
+          <div className="page-faq__categories-container">
+            <div className="page-faq__category-list">
               {faqCategories.map((category) => {
                 const Icon = category.icon;
                 return (
                   <div key={category.id}>
                     {/* Category Header */}
-                    <div className="faq-page__category-header">
-                      <div className="faq-page__category-icon">
+                    <div className="page-faq__category-header">
+                      <div className="page-faq__category-icon">
                         <Icon size={24} />
                       </div>
 
                       <div>
-                        <h2 className="faq-page__category-title">
+                        <h2 className="page-faq__category-title">
                           {category.title}
                         </h2>
-                        <p className="faq-page__category-desc">
+                        <p className="page-faq__category-desc">
                           {category.description}
                         </p>
                       </div>
                     </div>
 
                     {/* FAQs */}
-                    <div className="faq-page__accordion-list">
+                    <div className="page-faq__accordion-list">
                       {category.faqs.map((faq, index) => {
                         const key = `${category.id}-${index}`;
                         const isOpen = openFAQs[key];
@@ -143,29 +146,26 @@ export function FAQTemplate() {
                         return (
                           <div
                             key={index}
-                            className="faq-page__accordion-item"
+                            className="page-faq__accordion-item"
                           >
                             <button
                               onClick={() => toggleFAQ(category.id, index)}
-                              className="faq-page__accordion-button"
+                              className="page-faq__accordion-button"
                               aria-expanded={isOpen}
                             >
-                              <h3 className="faq-page__accordion-title">
+                              <h3 className="page-faq__accordion-title">
                                 {faq.question}
                               </h3>
 
                               <ChevronDown
                                 size={20}
-                                className="faq-page__accordion-chevron"
-                                style={{
-                                  transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)'
-                                }}
+                                className={`page-faq__accordion-chevron${isOpen ? ' page-faq__accordion-chevron--open' : ''}`}
                               />
                             </button>
 
                             {isOpen && (
-                              <div className="faq-page__accordion-content">
-                                <p className="faq-page__accordion-text">
+                              <div className="page-faq__accordion-content">
+                                <p className="page-faq__accordion-text">
                                   {faq.answer}
                                 </p>
                               </div>

@@ -78,11 +78,12 @@ export function DiscoveryServiceTemplate() {
       <JourneyPhaseIndicator currentPhase="ignite" currentServicePage="discovery" />
 
       {/* 1. HERO — "RADAR SCAN" */}
-      <section style={{ position: 'relative', minHeight: '80vh', display: 'flex', alignItems: 'center', backgroundColor: 'var(--background)', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', inset: 0, opacity: 0.1, zIndex: 0 }}>
+      <section className="service-hero">
+        <div className="service-hero__bg-image" aria-hidden="true">
           <img
             src="https://images.unsplash.com/photo-1687125114692-54f19a0fd438?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmdXR1cmlzdGljJTIwcmFkYXIlMjBob2xvZ3JhbSUyMGRhcmslMjBpbnRlcmZhY2V8ZW58MXx8fHwxNzcxNTA5MzgzfDA&ixlib=rb-4.1.0&q=80&w=1080"
-            alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} aria-hidden="true"
+            alt="" className="service-hero__bg-cover" aria-hidden="true"
+            loading="lazy"
           />
         </div>
         <div className="service-hero__decor-rings" aria-hidden="true">
@@ -93,7 +94,7 @@ export function DiscoveryServiceTemplate() {
         </div>
 
         <Container>
-          <div className="service-hero__content service-hero__content--centered" style={{ textAlign: 'center' }}>
+          <div className="service-hero__content service-hero__content--centered">
             <ScrollReveal animation="fade-up">
               <span className="service-hero__badge service-hero__badge--primary">
                 <Search size={14} /> Strategic Discovery
@@ -104,7 +105,7 @@ export function DiscoveryServiceTemplate() {
               <p className="service-hero__description service-hero__description--centered">{data.tagline}</p>
               <div className="wp-flex wp-justify-center wp-gap-4 wp-flex-wrap wp-mb-16">
                 <Button variant="default" size="lg" page="contact">
-                  Start Discovery <ArrowRight size={16} style={{ marginLeft: 'var(--spacing-2)' }} />
+                  Start Discovery <ArrowRight size={16} className="wp-ml-2" />
                 </Button>
                 <Button variant="outline" size="lg" page="portfolio-archive">View Case Studies</Button>
               </div>
@@ -134,7 +135,7 @@ export function DiscoveryServiceTemplate() {
 
       {servicePricingTimeline.discovery && (
         <ScrollReveal animation="fade-up">
-          <section style={{ padding: 'var(--spacing-24) 0', backgroundColor: 'var(--muted)' }}>
+          <section className="service-section service-section--bg-muted">
             <Container>
               <ServicePricingTimeline
                 pricing={servicePricingTimeline.discovery.pricing}

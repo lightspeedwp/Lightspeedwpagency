@@ -88,6 +88,13 @@
   display: block;
 }
 
+.theme-showcase__demo-container {
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius);
+  position: relative;
+  height: 18rem;
+}
+
 /* Context Variants */
 .theme-showcase__context-grid {
   display: grid;

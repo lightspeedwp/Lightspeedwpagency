@@ -58,18 +58,14 @@ export function ServicesLandingTemplate() {
       <ServicesLandingGrid />
 
       {/* Delivery Stats (Dynamic Content Widget) */}
-      <section style={{ padding: 'var(--spacing-24) 0', backgroundColor: 'var(--muted)' }}>
+      <section className="service-section service-section--bg-muted">
         <Container>
           <ScrollReveal animation="fade-up">
-            <div className="wp-flex wp-flex-col wp-items-center wp-text-center wp-mb-16">
-              <h2 className="service-section__title" style={{
-                margin: '0 0 var(--spacing-4) 0'
-              }}>
-                Delivered Results
+            <div className="service-section__header">
+              <h2 className="service-section__title">
+                Delivered results
               </h2>
-              <p className="service-section__description" style={{
-                margin: 0
-              }}>
+              <p className="service-section__description">
                 Live stats from our portfolio, blog, and client feedback.
               </p>
             </div>
@@ -82,7 +78,7 @@ export function ServicesLandingTemplate() {
       </section>
 
       {/* Related Content (Dynamic Widget) */}
-      <section style={{ padding: 'var(--spacing-24) 0', backgroundColor: 'var(--background)' }}>
+      <section className="service-section service-section--bg-background">
         <Container>
           <RelatedContentWidget
             tags={['wordpress', 'development', 'design', 'woocommerce']}

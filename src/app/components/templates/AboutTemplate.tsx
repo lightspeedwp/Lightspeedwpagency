@@ -34,6 +34,11 @@ import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { useHeroParallax } from '../../hooks/useHeroParallax';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { ScrollDownArrow } from '../common/ScrollDownArrow';
+import {
+  Lightning,
+  Crosshair,
+  Eye,
+} from '@phosphor-icons/react';
 
 // Import centralized data
 import {
@@ -84,7 +89,8 @@ export function AboutTemplate() {
         <Container>
           <div className="about-overview__hero-content">
             <span className="about-overview__hero-badge">
-              ⚡ About LightSpeed
+              <Lightning size={16} weight="fill" aria-hidden="true" />
+              About LightSpeed
             </span>
 
             <h1 className="about-overview__hero-title">
@@ -158,7 +164,7 @@ export function AboutTemplate() {
                 <div className="about-overview__card-glow" />
                 <div className="about-overview__card-inner">
                   <div className="about-overview__card-icon-wrapper">
-                    🎯
+                    <Crosshair size={24} />
                   </div>
                   <Heading level={3} className="about-overview__card-title">
                     {aboutPageMissionVision.mission.title}
@@ -176,7 +182,7 @@ export function AboutTemplate() {
                 <div className="about-overview__card-glow" />
                 <div className="about-overview__card-inner">
                   <div className="about-overview__card-icon-wrapper">
-                    🔮
+                    <Eye size={24} />
                   </div>
                   <Heading level={3} className="about-overview__card-title">
                     {aboutPageMissionVision.vision.title}
@@ -316,7 +322,7 @@ export function AboutTemplate() {
           <ScrollReveal animation="fade-up">
             <div className="about-overview__story-header">
               <h2 className="about-overview__section-title">
-                By the Numbers
+                By the numbers
               </h2>
               <p className="about-overview__section-desc">
                 Real content from our blog, portfolio, and client testimonials.

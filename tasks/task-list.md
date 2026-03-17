@@ -1,6 +1,6 @@
 # LSX Design — General Task List
 
-**Last Updated:** March 16, 2026
+**Last Updated:** March 17, 2026
 
 ## 🎉 ALL DEPLOYMENT BLOCKERS FIXED — READY FOR DEPLOYMENT!
 
@@ -79,15 +79,67 @@
 ### Phase 4.4 — Product Page Base Extraction
 
 - [x] **Create product-base.css** — ✅ COMPLETE (March 16, 2026)
-- [ ] **Migrate Wetu Importer to product-base** — Replace duplicated hero/section/card patterns in wetu-importer-page CSS with product-base classes. Expected savings: ~100-120 lines.
-- [ ] **Migrate LSX Sharing to product-base** — Replace duplicated hero/section/card patterns in lsx-sharing-page CSS with product-base classes. Expected savings: ~100-120 lines.
-- [ ] **Migrate LSX Search to product-base** — Replace duplicated hero/section/card patterns in lsx-search CSS with product-base classes. Expected savings: ~100-120 lines.
-- [ ] **Migrate Publishers to product-base** — Replace duplicated hero/section/card patterns in publishers-page CSS with product-base classes. Expected savings: ~80-100 lines.
+- [x] **Migrate Wetu Importer to product-base** — ✅ COMPLETE (March 17, 2026): Deleted `wetu-hero.css` (231 lines, 100% duplicated by product-base). Trimmed `wetu-content.css` 327 → 100 lines (removed feature-card/benefit-card/process/specs → product-card/product-step/product-specs). Trimmed `wetu-modes.css` 110 → 45 lines (removed hero/feature/benefit/process/spec dark overrides). Updated orchestrator to import product-base.css. Migrated template TSX: `wetu-importer__*` → `product-hero__*` / `product-section__*` / `product-specs__*` (hero, 6 sections, 6 headers, specs grid). Pricing section kept wetu-specific classes (unique badge/tagline/amount/period). Applied sentence case to 4 headings. Added `loading="lazy"`. **Savings: ~233 lines CSS.**
+- [x] **Migrate LSX Sharing to product-base** — ✅ COMPLETE (March 17, 2026): Deleted `sharing-hero.css` (225 lines, 100% duplicated by product-base). Removed 189 lines dead CSS from `sharing-content.css` (feature-card/benefit-card/process classes unused since FeatureList + ProcessTimeline pattern migration). Trimmed `sharing-content.css` 354 → 134 lines (kept unique: networks grid, glassmorphism specs, free plugin highlight). Trimmed `sharing-modes.css` 117 → 65 lines (removed hero/feature/benefit/process/section dark overrides). Updated orchestrator to import product-base.css. Migrated template TSX: `lsx-sharing__*` → `product-hero__*` / `product-section__*` (hero, 8 sections, 7 headers). Applied sentence case to 4 headings. Added `loading="lazy"`. **Savings: ~272 lines CSS (includes 189 dead CSS).** Cumulative Phase 4.4: ~505 lines CSS saved.
+- [x] **Migrate LSX Search to product-base** — ✅ COMPLETE (March 17, 2026): Deleted `lsx-search-hero.css` (168 lines, 100% duplicated by product-base). Trimmed `lsx-search-content.css` 325 → 105 lines (removed section layout, section headers, feature cards, process steps, specs → product-base). Kept unique: benefits grid + capabilities grid. Updated orchestrator to import product-base.css. Migrated template TSX: hero → `product-hero__*`, section headers → `product-section__*` (dual-classed for funky gradient underline), process → `product-step__*`, specs → `product-specs__*`. Applied sentence case to 3 headings. Added `loading="lazy"`. **Savings: ~388 lines CSS.** Cumulative Phase 4.4: ~893 lines CSS saved.
+- [x] **Publishers — sentence case + lazy loading** — ✅ COMPLETE (March 17, 2026): Applied sentence case to 3 section headings. Added `loading="lazy"` to hero image. Publishers hero has distinct custom styling (gradient-gold, color-mix overlays) — product-base migration deferred as low ROI.
 
 ### Apply BEM — AI Solutions Pages
 
-- [x] **UseCasesGrid card styles (ZERO CSS → full BEM)** — ✅ COMPLETE (March 16, 2026): Created 150+ lines of BEM rules in `use-cases-grid.css` for `.use-case-card` and all children. Card container with glassmorphism border + hover lift + gradient overlay pseudo-element. Title (font-primary, h4, semibold), description (font-secondary, base, muted), industries section (label + flex-wrap tags with primary-soft badges), features list (checkmark icons, semantic `<ul>` reset). Reduced motion + responsive. **Fixes all 4 AI sub-pages:** Content Generation, AI SEO, AI Chatbots, AI Analytics.
-- [x] **AIServicesLandingTemplate hero inline → BEM** — ✅ COMPLETE (March 16, 2026): Created `ai-services-landing.css` (210 lines, 20 BEM rules for `.ai-landing__*`). Converted ~40 inline style blocks to BEM classes: hero section (80vh, centered flex), mesh grid pattern, badge (pill with glow), title (h1 + gradient highlight), subtitle (secondary font, muted), button group (primary + outline with hover/focus/active states), section wrappers (muted/bg modifiers), scroll-down positioning, responsive mobile stack, reduced motion. Applied sentence case to 5 headings. Registered in `index.css`. Zero inline styles remain.
+- [x] **UseCasesGrid card styles (ZERO CSS → full BEM)** — ✅ COMPLETE (March 16, 2026)
+- [x] **AIServicesLandingTemplate hero inline → BEM** — ✅ COMPLETE (March 16, 2026)
+
+### Apply BEM — Round 15: Service Template Decoratives
+
+- [x] **DesignServiceTemplate (~20 inline → 0)** — ✅ COMPLETE (March 17, 2026): Created `design-service-decor.css` (175 lines, `.design-decor__*`). Floating wireframe cards with 3D perspective transforms, skeleton bars with width modifiers (w40-w100) + primary/secondary/block variants, 3D layer stack (back/mid/front layers), overview checklist grid, highlight text. Responsive: hide wireframes on mobile. Reduced motion: flatten transforms. Applied sentence case to 2 headings.
+- [x] **ContentServiceTemplate (~20 inline → 0)** — ✅ COMPLETE (March 17, 2026): Created `content-service-decor.css` (210 lines, `.content-decor__*`). Paper texture noise, gradient fade, floating manuscript pages with rotation + skeleton text lines (w60-w90), red pen mark, typewriter cursor blink keyframes, editorial marks (stet/insert), title/description wrappers, "why" section centered layout + icon wrapper. Responsive: hide manuscripts on mobile. Reduced motion: flatten + stop blink. Applied sentence case to 2 headings.
+- [x] **DiscoveryServiceTemplate (~7 inline → 0)** — ✅ COMPLETE (March 17, 2026): Added `.service-hero__bg-image` + `.service-hero__bg-cover` (12 lines) to shared `service-hero.css`. Converted hero wrapper, bg image, textAlign, icon margin, pricing section to BEM. Added `loading="lazy"` to hero image. Zero inline styles remain.
+
+### Apply BEM — Round 16: Production Templates
+
+- [x] **PricingTemplate (5 inline → 0)** — ✅ COMPLETE (March 17, 2026): Created `.service-hero--pricing` (minHeight 60vh + spacing-24 padding), `.pricing-page__grid-bg` (mesh grid bg), `.pricing-page__packages-section` (relative + overflow), `.pricing-page__packages-grid` (auto-fit 3-col grid). Removed redundant `textAlign: 'center'` (already in `service-hero__content--centered`). 4 new BEM rules in `pricing-hero.css`.
+- [x] **PerformanceServiceTemplate (4 inline → 0)** — ✅ COMPLETE (March 17, 2026): Created `.service-hero__badge--bold`, `.service-stat__label--wide`, `.perf-section__title` (mb-6), `.perf-section__description` (mb-8 + line-height-comfortable). Applied sentence case to 1 heading. 4 new BEM rules in `performance-service.css`.
+- [x] **ServicesLandingTemplate (4 inline → 0)** — ✅ COMPLETE (March 17, 2026): Replaced 2 inline section wrappers with `service-section service-section--bg-muted`/`--bg-background`. Replaced inline header margins with `service-section__header` flex gap. Applied sentence case to 1 heading. Zero new CSS needed (reused existing BEM classes).
+
+### Apply BEM — Round 17: Final Sweep
+
+- [x] **SecurityServiceTemplate (2 inline → 0)** — ✅ COMPLETE (March 17, 2026): `color: terminal-red` span → `.security-hero__title-accent`, section border → `.service-section--bordered`. 2 new BEM rules in `security-service.css`. 1 scoped CSS var inline retained (legitimate `--badge-color`).
+- [x] **FAQTemplate (1 inline → 0)** — ✅ COMPLETE (March 17, 2026): Dynamic chevron transform → `.faq-page__accordion-chevron--open` CSS class toggle. 1 new BEM rule in `faq-accordion-modes.css`.
+- [x] **HeaderFooterComparison (2 inline → 0)** — ✅ COMPLETE (March 17, 2026): `minHeight: 6rem` × 2 → `.comparison__preview-content--tall`. 1 new BEM rule in `header-footer-comparison.css`.
+- [x] **SolutionsTemplate (1 inline → 0)** — ✅ COMPLETE (March 17, 2026): `verticalAlign: 'middle'` icon → fixed `.solutions-hero__badge` to `display: inline-flex; align-items: center`. Zero new rules (existing class fixed).
+- [x] **SectionStyleExample (1 inline → 0)** — ✅ COMPLETE (March 17, 2026): `listStyleType: disc` → `.wp-list-disc` utility. Created `wp-list-disc` + `wp-list-none` in `typography.css`.
+- [x] **ThemeBlocksShowcase (1 inline → 0)** — ✅ COMPLETE (March 17, 2026): `height: 18rem` → `.theme-showcase__demo-container`. 1 new BEM rule in `theme-blocks-showcase.css`.
+- [x] **Remaining accepted (no fix needed):** PortfolioSingle (3 dynamic `backgroundImage` from data URLs), SecurityService (1 scoped `--badge-color` CSS custom prop), StyleGuide/DesignPlayground/CodeQuality (dynamic showcase data — font/color/width).
+
+### Apply BEM — Round 18: Class name alignment (6 unstyled pages)
+
+- [x] **SinglePostTemplate — CSS import fix** — ✅ COMPLETE (March 17, 2026): Added missing `@import './single-post.css'` to `single-post-page.css` orchestrator. Hero, body, tags, author bio, newsletter sections now receive their 388 lines of existing CSS.
+- [x] **FAQTemplate — class name realignment** — ✅ COMPLETE (March 17, 2026): Renamed all `faq-page__*` → `page-faq__*` in TSX (29 class references) to match CSS in `faq-hero-categories.css` and `faq-accordion-modes.css`. Updated `layout.css` hero selector. Applied sentence case to hero title. Orphaned dead CSS: `faq-page__*` rules in `utility-base-forms.css`.
+- [x] **StyleGuideTemplate + StyleGuideLowerSections — class name realignment** — ✅ COMPLETE (March 17, 2026): Renamed all `sg-*` → `styleguide__*` in both TSX files (~65 class references) to match CSS in `styleguide-hero.css`, `styleguide-effects.css`, `styleguide-tokens.css`, `styleguide-components.css`. Updated `layout.css` hero selector.
+- [x] **AccessibilityServiceTemplate — layout classes** — ✅ COMPLETE (March 17, 2026): Added `sub-service-base__*` layout classes for hero, sections, results grid, CTA, and buttons (was using only `accessibility-service__*` theme classes with no layout rules). Applied sentence case to all headings.
+- [x] **SEOServiceTemplate — layout classes** — ✅ COMPLETE (March 17, 2026): Added `sub-service-base__*` layout classes for hero, sections, results grid, CTA, and buttons. Converted custom timeline markup to `sub-service-base__types-grid` card layout. Applied sentence case to all headings.
+- [x] **AnswerEngineServiceTemplate — layout classes** — ✅ COMPLETE (March 17, 2026): Added `sub-service-base__*` layout classes for hero, sections, results grid, CTA, and buttons. Converted custom process timeline to `sub-service-base__types-grid` card layout. Applied sentence case to all headings.
+- [x] **Cleanup: Remove dead `faq-page__*` rules from `utility-base-forms.css`** — ✅ COMPLETE (March 17, 2026): Removed ~40 lines dead CSS from `utility-base-forms.css` (orphaned `faq-page__hero`, `faq-page__bg`, `faq-page__floating-icon`, `faq-page__hero-content`, `faq-page__hero-title`, `faq-page__hero-subtitle`, `faq-form__*`). Also removed `faq-page__floating-icon` from `utility-base-sitemap.css` reduced motion rule. File reduced 232 → 192 lines. Zero dead `faq-page__` selectors remain in codebase.
+
+### Apply BEM — Round 19: Full BEM + sentence case sweep (32 pages)
+
+- [x] **AboutCultureTemplate — class name realignment** — ✅ COMPLETE (March 17, 2026): Renamed all `culture-page__*` → `about-culture__*` in TSX (~20 class references) to match CSS. Updated `layout.css` hero selector. Applied sentence case. Removed all emoji.
+- [x] **FigmaPrototypingServiceTemplate — BreadcrumbPart fix + inline → BEM** — ✅ COMPLETE (March 17, 2026): Fixed broken `links=` → `items=` prop. Converted ~30 inline → `sub-service-base__*`. Sentence case applied.
+- [x] **ContentCollectionServiceTemplate — BreadcrumbPart fix + inline → BEM** — ✅ COMPLETE (March 17, 2026): Fixed broken `links=` → `items=`. Converted ~25 inline → `sub-service-base__*`. Sentence case applied.
+- [x] **NewsletterServiceTemplate — BreadcrumbPart fix + inline → BEM** — ✅ COMPLETE (March 17, 2026): Fixed broken `links=` → `items=`. Converted ~25 inline → `sub-service-base__*`. Sentence case applied.
+- [x] **EmailMarketingServiceTemplate — BreadcrumbPart fix + inline → BEM** — ✅ COMPLETE (March 17, 2026): Fixed broken `links=` → `items=`. Converted ~25 inline → `sub-service-base__*`. Sentence case applied.
+- [x] **DesignSystemsServiceTemplate — inline → BEM** — ✅ COMPLETE (March 17, 2026): Converted ~30 inline → `sub-service-base__*`. Sentence case applied.
+- [x] **ContentServicesLandingTemplate — missing data + inline → BEM** — ✅ COMPLETE (March 17, 2026): Restored missing `serviceItems` and `timelineSteps` data (render crash fix). Converted ~40 inline → `sub-service-base__*`. Sentence case applied.
+- [x] **ContentAuditServiceTemplate — inline → BEM** — ✅ COMPLETE (March 17, 2026): Converted ~20 inline → `sub-service-base__*`. Sentence case applied.
+- [x] **ContentCreationServiceTemplate — inline → BEM** — ✅ COMPLETE (March 17, 2026): Converted ~25 inline → `sub-service-base__*`. Sentence case applied.
+- [x] **ContentCopywritingServiceTemplate — inline → BEM** — ✅ COMPLETE (March 17, 2026): Converted ~25 inline → `sub-service-base__*`. Sentence case applied.
+- [x] **ContentSEOServiceTemplate — inline → BEM** — ✅ COMPLETE (March 17, 2026): Converted ~25 inline → `sub-service-base__*`. Sentence case applied.
+- [x] **ContentGovernanceServiceTemplate — inline → BEM** — ✅ COMPLETE (March 17, 2026): Converted ~25 inline → `sub-service-base__*`. Sentence case applied.
+- [x] **AboutTemplate — emoji removal** — ✅ COMPLETE (March 17, 2026): Replaced ⚡/🎯/🔮 with Phosphor icons (Lightning/Crosshair/Eye). Sentence case to "By the numbers".
+- [x] **TeamTemplate — sentence case** — ✅ COMPLETE (March 17, 2026): Applied sentence case to hero title.
+- [x] **Verified already complete (no changes needed):** AboutHistoryTemplate, AIServicesLandingTemplate, SolutionsTemplate, WooCommerceSolutionTemplate, PublishersTemplate, WordPressRedesignTemplate, SearchResultsPageTemplate, ServicesLandingTemplate, DiscoveryServiceTemplate, DesignServiceTemplate, DevelopmentServiceTemplate, PerformanceServiceTemplate, SupportServiceTemplate, SecurityServiceTemplate, TrainingTemplate, ContentServiceTemplate, ContentStrategyServiceTemplate.
+
+**Round 19 totals:** 12 templates rewritten (270+ inline styles → BEM), 4 broken BreadcrumbPart APIs fixed, 1 render crash fixed (missing data), 3 emoji replaced with Phosphor icons, 1 class name mismatch resolved. **Cumulative BEM rounds 1-19: 845+ inline styles → BEM across 57+ templates.**
 
 ### Code Quality — Sentence Case Compliance
 

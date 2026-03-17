@@ -9,12 +9,14 @@
  * - 100% CSS variable compliance
  * 
  * PATTERN COMPONENTS:
- * - ✅ FeatureList — Core values (4 items, 2 columns, glass variant)
- * - ✅ FeatureList — Environment items (4 items, 2 columns, minimal variant)
- * - ✅ FeatureList — Perks grid (6 items, 3 columns, glass variant)
- * - ✅ FAQSection — FAQ accordion
- * - ✅ FunkyCTA — Final CTA section
- * 
+ * - FeatureList — Core values (4 items, 2 columns, glass variant)
+ * - FeatureList — Environment items (4 items, 2 columns, minimal variant)
+ * - FeatureList — Perks grid (6 items, 3 columns, glass variant)
+ * - FAQSection — FAQ accordion
+ * - FunkyCTA — Final CTA section
+ *
+ * BEM block: .about-culture
+ * @see /src/styles/templates/page-about-culture.css
  * @migrated March 3, 2026 — Phase 3.3: Migrated inline grids (~70 lines saved)
  */
 
@@ -57,42 +59,43 @@ export function AboutCultureTemplate() {
         ]}
       />
 
-      {/* ── Hero ── */}
-      <section className="culture-page__hero">
+      {/* Hero */}
+      <section className="about-culture__hero">
         <img
           ref={parallaxRef}
           src="https://images.unsplash.com/photo-1769120063554-5270207217cf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMG9yZ2FuaWMlMjBncm93dGglMjBuZW9uJTIwZ3JlZW58ZW58MXx8fHwxNzcxMzU4OTE5fDA&ixlib=rb-4.1.0&q=80&w=1080"
           alt="Abstract organic neon growth"
-          className="culture-page__hero-bg"
+          className="about-culture__hero-bg"
+          loading="lazy"
         />
-        <div className="culture-page__hero-overlay" />
+        <div className="about-culture__hero-overlay" />
 
         <Container>
-          <div className="culture-page__hero-content">
-            <span className="culture-page__hero-badge">
-              <Sprout size={16} className="culture-page__hero-badge-icon" />
+          <div className="about-culture__hero-content">
+            <span className="about-culture__hero-badge">
+              <Sprout size={16} className="about-culture__hero-badge-icon" />
               Life at LSX
             </span>
 
-            <h1 className="culture-page__hero-title">
-              Growing Together
+            <h1 className="about-culture__hero-title">
+              Growing together
             </h1>
 
-            <p className="culture-page__hero-subtitle">
+            <p className="about-culture__hero-subtitle">
               We believe in creating a workplace where talented people can do their best work while maintaining balance, learning continuously, and having fun.
             </p>
           </div>
         </Container>
       </section>
 
-      {/* ── Core Values ── */}
-      <section className="culture-page__values">
+      {/* Core values */}
+      <section className="about-culture__values">
         <Container>
-          <div className="culture-page__section-header">
-            <Heading level={2} className="culture-page__section-title">
+          <div className="about-culture__section-header">
+            <Heading level={2} className="about-culture__section-title">
               Our values
             </Heading>
-            <p className="culture-page__section-desc">
+            <p className="about-culture__section-desc">
               The roots of our culture.
             </p>
           </div>
@@ -101,7 +104,7 @@ export function AboutCultureTemplate() {
             items={[
               {
                 icon: Heart,
-                title: 'People First',
+                title: 'People first',
                 description: 'We prioritize the wellbeing and growth of our team members above all else. Happy people make great software.'
               },
               {
@@ -111,12 +114,12 @@ export function AboutCultureTemplate() {
               },
               {
                 icon: Sprout,
-                title: 'Continuous Growth',
+                title: 'Continuous growth',
                 description: 'Learning and improvement are built into our daily work. We fail fast, learn faster, and always level up.'
               },
               {
                 icon: Globe2,
-                title: 'Remote-First',
+                title: 'Remote-first',
                 description: 'We embrace distributed work, giving everyone flexibility and autonomy to work where they are most productive.'
               }
             ]}
@@ -126,36 +129,36 @@ export function AboutCultureTemplate() {
         </Container>
       </section>
 
-      {/* ── Work Environment ── */}
-      <section className="culture-page__environment">
+      {/* Work environment */}
+      <section className="about-culture__environment">
         <Container>
-          <div className="culture-page__environment-grid">
+          <div className="about-culture__environment-grid">
             <div>
-              <h2 className="culture-page__environment-title">
+              <h2 className="about-culture__environment-title">
                 How we work
               </h2>
 
               <FeatureList
                 items={[
-                  { title: 'Flexible Hours', description: "Work when you're most productive. Output > Hours." },
-                  { title: 'Async Default', description: 'Deep work is protected. No unnecessary meetings.' },
-                  { title: 'Open Feedback', description: 'Honest, constructive feedback helps us all grow.' },
-                  { title: 'Playful Spirit', description: 'We take our work seriously, but not ourselves.' }
+                  { title: 'Flexible hours', description: "Work when you're most productive. Output over hours." },
+                  { title: 'Async default', description: 'Deep work is protected. No unnecessary meetings.' },
+                  { title: 'Open feedback', description: 'Honest, constructive feedback helps us all grow.' },
+                  { title: 'Playful spirit', description: 'We take our work seriously, but not ourselves.' }
                 ]}
                 columns={2}
                 variant="minimal"
               />
             </div>
 
-            <div className="culture-page__cta-card-wrapper">
-              <div className="culture-page__cta-card-glow" />
-              <div className="culture-page__cta-card">
-                <Users size={64} className="culture-page__cta-card-icon" />
-                <h3 className="culture-page__cta-card-title">Join our team</h3>
-                <p className="culture-page__cta-card-desc">
+            <div className="about-culture__cta-card-wrapper">
+              <div className="about-culture__cta-card-glow" />
+              <div className="about-culture__cta-card">
+                <Users size={64} className="about-culture__cta-card-icon" />
+                <h3 className="about-culture__cta-card-title">Join our team</h3>
+                <p className="about-culture__cta-card-desc">
                   We're always looking for talented folks who share our values.
                 </p>
-                <a href="/about/careers" className="culture-page__cta-card-link">
+                <a href="/about/careers" className="about-culture__cta-card-link">
                   View open positions
                 </a>
               </div>
@@ -164,25 +167,25 @@ export function AboutCultureTemplate() {
         </Container>
       </section>
 
-      {/* ── Benefits & Perks ── */}
-      <section className="culture-page__perks">
+      {/* Benefits and perks */}
+      <section className="about-culture__perks">
         <Container>
-          <div className="culture-page__section-header">
-            <Heading level={2} className="culture-page__section-title">
-              Benefits & Perks
+          <div className="about-culture__section-header">
+            <Heading level={2} className="about-culture__section-title">
+              Benefits and perks
             </Heading>
-            <p className="culture-page__section-desc">
+            <p className="about-culture__section-desc">
               We invest in your success and wellbeing.
             </p>
           </div>
 
           <FeatureList
             items={[
-              { icon: Award, title: 'Top Tier Salary', description: 'Market-leading compensation.' },
-              { icon: Laptop, title: 'Tech Budget', description: '$3k for your dream setup.' },
-              { icon: Code, title: 'Learning Fund', description: 'Unlimited books & courses.' },
-              { icon: Heart, title: 'Full Health', description: 'Comprehensive coverage.' },
-              { icon: Globe2, title: 'Remote Freedom', description: 'Work from anywhere.' },
+              { icon: Award, title: 'Top tier salary', description: 'Market-leading compensation.' },
+              { icon: Laptop, title: 'Tech budget', description: '$3k for your dream setup.' },
+              { icon: Code, title: 'Learning fund', description: 'Unlimited books and courses.' },
+              { icon: Heart, title: 'Full health', description: 'Comprehensive coverage.' },
+              { icon: Globe2, title: 'Remote freedom', description: 'Work from anywhere.' },
               { icon: Coffee, title: 'Unlimited PTO', description: 'Rest when you need it.' }
             ]}
             columns={3}
@@ -191,10 +194,10 @@ export function AboutCultureTemplate() {
         </Container>
       </section>
 
-      {/* ── FAQ Section ── */}
-      <section className="culture-page__faq">
+      {/* FAQ section */}
+      <section className="about-culture__faq">
         <Container>
-          <div className="culture-page__faq-wrapper">
+          <div className="about-culture__faq-wrapper">
             <FAQSection
               title="Culture FAQs"
               description="Questions about life at LSX."
@@ -205,17 +208,17 @@ export function AboutCultureTemplate() {
         </Container>
       </section>
 
-      {/* ── CTA Section ── */}
+      {/* CTA section */}
       <FunkyCTA
         title="Ready to grow with us?"
         description="Check out our open roles and find your place in our story."
-        buttonText="View Careers"
+        buttonText="View careers"
         buttonPage="careers"
         benefits={[
           'Flexible remote-first culture',
-          'Continuous learning & growth',
+          'Continuous learning and growth',
           'Work with modern WordPress tech',
-          'Collaborative & supportive team'
+          'Collaborative and supportive team'
         ]}
       />
     </>

@@ -61,7 +61,7 @@ export function HeaderFooterComparison() {
                   <span>Default Header</span>
                   <span>parts/header.html</span>
                 </div>
-                <div className="comparison__preview-content wp-relative" style={{ minHeight: '6rem' }}>
+                <div className="comparison__preview-content comparison__preview-content--tall wp-relative">
                   <SiteHeader />
                 </div>
               </div>
@@ -72,7 +72,7 @@ export function HeaderFooterComparison() {
                   <span>Transparent Overlay Header</span>
                   <span>parts/header-transparent.html</span>
                 </div>
-                <div className="comparison__preview-content wp-relative wp-bg-primary-dark" style={{ minHeight: '6rem' }}>
+                <div className="comparison__preview-content comparison__preview-content--tall wp-relative wp-bg-primary-dark">
                   <div className="wp-p-4 wp-text-center wp-text-xs wp-text-white">
                     (Simulated dark background)
                   </div>

@@ -1,141 +1,39 @@
 /**
- * LSX Search — Content Sections (Features, Benefits, Process, Capabilities, Specs)
+ * LSX Search — Content Sections (Benefits, Capabilities)
  *
  * Split from lsx-search-page.css (P3.5 optimization)
- * BEM naming: .lsx-search__section-*, .lsx-search__feature-*, etc.
+ * Trimmed March 17, 2026 — Phase 4.4: Removed duplicated hero, section headers,
+ * feature cards, process steps, specs (now in product-base.css).
+ * Kept: benefits grid + capabilities grid (unique to LSX Search).
+ *
+ * BEM naming: .lsx-search__benefit-*, .lsx-search__capability-*
  *
  * @see /src/styles/templates/lsx-search-page.css (orchestrator)
+ * @see /src/styles/templates/product-base.css (shared hero/section/specs)
  */
 
 /* ============================================================
-   SECTION LAYOUT (Shared)
+   SECTION BACKGROUNDS (unique per-section)
    ============================================================ */
 
-.lsx-search__features,
-.lsx-search__benefits,
-.lsx-search__process,
-.lsx-search__capabilities,
-.lsx-search__specs,
-.lsx-search__demo,
-.lsx-search__faq {
-  padding: var(--spacing-20) 0;
-}
+.lsx-search__features { padding: var(--spacing-20) 0; background: var(--muted); }
+.lsx-search__benefits { padding: var(--spacing-20) 0; }
+.lsx-search__process  { padding: var(--spacing-20) 0; background: var(--muted); }
+.lsx-search__capabilities { padding: var(--spacing-20) 0; }
+.lsx-search__specs    { padding: var(--spacing-20) 0; background: var(--muted); }
+.lsx-search__demo     { padding: var(--spacing-20) 0; background: var(--background); }
+.lsx-search__faq      { padding: var(--spacing-20) 0; }
 
-.lsx-search__features { background: var(--muted); }
-.lsx-search__process  { background: var(--muted); }
-.lsx-search__specs    { background: var(--muted); }
-.lsx-search__demo     { background: var(--background); }
-
-
-/* ============================================================
-   SECTION HEADERS
-   ============================================================ */
-
-.lsx-search__section-header {
-  text-align: center;
-  max-width: 800px;
+/* Process grid constraint */
+.lsx-search__process-grid {
+  max-width: 900px;
   margin-left: auto;
   margin-right: auto;
-  padding-bottom: var(--spacing-12);
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-4);
-}
-
-.lsx-search__section-title {
-  font-family: var(--font-primary);
-  font-size: var(--text-h2);
-  font-weight: var(--font-weight-semibold);
-  color: var(--foreground);
-}
-
-.lsx-search__section-description {
-  font-family: var(--font-secondary);
-  font-size: var(--text-lg);
-  color: var(--muted-foreground);
-  line-height: var(--line-height-normal);
 }
 
 
 /* ============================================================
-   FEATURES GRID -- Removed (using FeatureList pattern component)
-   Previous: .lsx-search__features-grid (1->2->3 columns)
-   Migration: March 3, 2026 -- Template now uses FeatureList pattern
-   Lines saved: 18 lines (grid base + 2 media queries)
-*/
-
-.lsx-search__feature-card {
-  position: relative;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: var(--spacing-8);
-  transition: all 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-4);
-  overflow: hidden;
-}
-
-.lsx-search__feature-card:hover {
-  border-color: var(--primary);
-  transform: translateY(-4px);
-  box-shadow: 0 8px 30px var(--primary-transparent-10);
-}
-
-.lsx-search__feature-glow {
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle at center, var(--primary-transparent-10) 0%, transparent 60%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-}
-
-.lsx-search__feature-card:hover .lsx-search__feature-glow { opacity: 1; }
-
-.lsx-search__feature-icon {
-  width: 48px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--primary-transparent-10);
-  border-radius: var(--radius);
-  position: relative;
-  z-index: 1;
-}
-
-.lsx-search__feature-icon svg {
-  width: 24px;
-  height: 24px;
-  color: var(--primary);
-}
-
-.lsx-search__feature-title {
-  font-family: var(--font-primary);
-  font-size: var(--text-xl);
-  font-weight: var(--font-weight-semibold);
-  color: var(--foreground);
-  position: relative;
-  z-index: 1;
-}
-
-.lsx-search__feature-description {
-  font-family: var(--font-secondary);
-  font-size: var(--text-base);
-  color: var(--muted-foreground);
-  line-height: var(--line-height-normal);
-  position: relative;
-  z-index: 1;
-}
-
-
-/* ============================================================
-   BENEFITS GRID
+   BENEFITS GRID (unique to LSX Search)
    ============================================================ */
 
 .lsx-search__benefits-grid {
@@ -152,7 +50,8 @@
   display: flex;
   flex-direction: column;
   gap: var(--spacing-3);
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  transition: border-color var(--transition-base) var(--ease-out),
+              box-shadow var(--transition-base) var(--ease-out);
 }
 
 .lsx-search__benefit-card:hover {
@@ -176,64 +75,7 @@
 
 
 /* ============================================================
-   PROCESS STEPS
-   ============================================================ */
-
-.lsx-search__process-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--spacing-6);
-  max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.lsx-search__process-step {
-  display: flex;
-  gap: var(--spacing-6);
-  align-items: flex-start;
-}
-
-.lsx-search__process-number {
-  flex-shrink: 0;
-  width: 48px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--primary);
-  color: var(--primary-foreground);
-  border-radius: 50%;
-  font-family: var(--font-primary);
-  font-size: var(--text-xl);
-  font-weight: var(--font-weight-semibold);
-  box-shadow: 0 0 20px var(--primary-transparent-20);
-}
-
-.lsx-search__process-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-2);
-}
-
-.lsx-search__process-title {
-  font-family: var(--font-primary);
-  font-size: var(--text-lg);
-  font-weight: var(--font-weight-semibold);
-  color: var(--foreground);
-}
-
-.lsx-search__process-description {
-  font-family: var(--font-secondary);
-  font-size: var(--text-base);
-  color: var(--muted-foreground);
-  line-height: var(--line-height-normal);
-}
-
-
-/* ============================================================
-   CAPABILITIES GRID
+   CAPABILITIES GRID (unique to LSX Search)
    ============================================================ */
 
 .lsx-search__capabilities-grid {
@@ -250,7 +92,7 @@
   display: flex;
   flex-direction: column;
   gap: var(--spacing-4);
-  transition: border-color 0.3s ease;
+  transition: border-color var(--transition-base) var(--ease-out);
 }
 
 .lsx-search__capability-category:hover {
@@ -285,42 +127,4 @@
   position: absolute;
   left: 0;
   color: var(--primary);
-}
-
-
-/* ============================================================
-   SPECIFICATIONS
-   ============================================================ */
-
-.lsx-search__specs-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--spacing-4);
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.lsx-search__spec-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: var(--spacing-4);
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-}
-
-.lsx-search__spec-label {
-  font-family: var(--font-primary);
-  font-size: var(--text-base);
-  font-weight: var(--font-weight-medium);
-  color: var(--muted-foreground);
-}
-
-.lsx-search__spec-value {
-  font-family: var(--font-secondary);
-  font-size: var(--text-base);
-  color: var(--foreground);
-  text-align: right;
 }

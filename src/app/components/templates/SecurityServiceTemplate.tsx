@@ -127,7 +127,7 @@ export function SecurityServiceTemplate() {
                 
                 <h1 className="service-hero__title">
                   Digital <br />
-                  <span style={{ color: 'var(--color-terminal-red)' }}>Fortress.</span>
+                  <span className="security-hero__title-accent">Fortress.</span>
                 </h1>
                 
                 <p className="service-hero__description service-hero__description--mono">
@@ -199,7 +199,7 @@ export function SecurityServiceTemplate() {
       {/* ============================================
           THREAT INTEL (Why LightSpeed)
           ============================================ */}
-      <section className="service-section service-section--bg-card" style={{ borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)' }}>
+      <section className="service-section service-section--bg-card service-section--bordered">
         <Container>
           <div className="service-section__header">
             <ScrollReveal animation="fade-up">

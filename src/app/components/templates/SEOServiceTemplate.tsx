@@ -2,28 +2,17 @@
  * SEO Service Template
  * 
  * Sub-service page for SEO optimization under AI Search & Visibility
- * Route: /services/seo
- * Parent: /services/ai-search-visibility
- * 
- * Features:
- * - Hero section with service overview
- * - Key benefits grid
- * - Technical SEO deliverables
- * - Process timeline
- * - Results showcase
- * - CTA section
- * 
- * Design System Compliance:
- * - Uses CSS variables from /src/styles/theme-base.css
- * - Uses semantic colors from /src/styles/theme-light.css
- * - BEM methodology for all class names
- * - No hardcoded colors or spacing values
- * - Font families: var(--font-primary) and var(--font-secondary) only
- * 
+ * Route: /services/ai/seo
+ * Parent: /services/ai
+ *
+ * Layout classes: sub-service-base__* (from sub-service-base.css)
+ * Theme classes: seo-service__* (from seo-service-optimized.css)
+ *
  * Pattern Components:
- * - ✅ FeatureList — Benefits grid (6 items, 3 columns, glow variant)
- * 
- * @migrated March 3, 2026 — Phase 3.1: Migrated inline benefits grid to FeatureList component (~80 lines saved)
+ * - FeatureList — Benefits grid (6 items, 3 columns, glow variant)
+ *
+ * @see /src/styles/templates/seo-service-optimized.css
+ * @see /src/styles/templates/sub-service-base.css
  */
 
 import { MagnifyingGlass, TrendUp, Target, ChartBar, FileMagnifyingGlass, Trophy } from '@phosphor-icons/react';
@@ -36,39 +25,39 @@ export const SEOServiceTemplate = () => {
   const benefits = [
     {
       icon: MagnifyingGlass,
-      title: 'Keyword Research & Strategy',
+      title: 'Keyword research & strategy',
       description: 'Data-driven keyword analysis to target high-value search terms your audience is actually using.'
     },
     {
       icon: TrendUp,
-      title: 'Technical SEO Optimization',
+      title: 'Technical SEO optimization',
       description: 'Fix crawl errors, improve site architecture, and ensure search engines can properly index your content.'
     },
     {
       icon: Target,
-      title: 'On-Page SEO',
+      title: 'On-page SEO',
       description: 'Optimize meta tags, headings, content structure, and internal linking for maximum relevance.'
     },
     {
       icon: ChartBar,
-      title: 'Performance Tracking',
+      title: 'Performance tracking',
       description: 'Monitor rankings, traffic, and conversions with comprehensive analytics and reporting.'
     },
     {
       icon: FileMagnifyingGlass,
-      title: 'Content Optimization',
+      title: 'Content optimization',
       description: 'Enhance existing content and create new SEO-optimized pages that rank and convert.'
     },
     {
       icon: Trophy,
-      title: 'Competitive Analysis',
+      title: 'Competitive analysis',
       description: 'Understand your competitive landscape and identify opportunities to outrank competitors.'
     }
   ];
 
   const deliverables = [
     {
-      phase: 'Discovery & Audit',
+      phase: 'Discovery & audit',
       items: [
         'Complete technical SEO audit',
         'Competitor analysis report',
@@ -77,7 +66,7 @@ export const SEOServiceTemplate = () => {
       ]
     },
     {
-      phase: 'Strategy & Planning',
+      phase: 'Strategy & planning',
       items: [
         'SEO strategy roadmap',
         'Keyword targeting plan',
@@ -95,7 +84,7 @@ export const SEOServiceTemplate = () => {
       ]
     },
     {
-      phase: 'Monitoring & Reporting',
+      phase: 'Monitoring & reporting',
       items: [
         'Monthly performance reports',
         'Ranking tracking dashboard',
@@ -115,8 +104,8 @@ export const SEOServiceTemplate = () => {
   return (
     <div className="seo-service">
       {/* Hero Section */}
-      <section className="seo-service__hero">
-        <div className="seo-service__hero-content">
+      <section className="sub-service-base__hero seo-service__hero">
+        <div className="sub-service-base__hero-content">
           <BreadcrumbPart
             items={[
               { label: 'Home', href: '/' },
@@ -126,31 +115,31 @@ export const SEOServiceTemplate = () => {
             ]}
           />
           
-          <h1 className="seo-service__hero-title">
-            SEO Services
+          <h1 className="sub-service-base__hero-title">
+            SEO services
           </h1>
           
-          <p className="seo-service__hero-description">
+          <p className="sub-service-base__hero-description">
             Get found by the right audience at the right time. Our data-driven SEO strategies 
             help you rank higher, drive quality traffic, and convert visitors into customers.
           </p>
           
-          <div className="seo-service__hero-cta">
-            <Link to="/contact" className="seo-service__cta-button seo-service__cta-button--primary">
-              Get SEO Audit
+          <div className="sub-service-base__hero-cta">
+            <Link to="/contact" className="sub-service-base__cta-button sub-service-base__cta-button--primary">
+              Get SEO audit
             </Link>
-            <Link to="/services/ai-search-visibility" className="seo-service__cta-button seo-service__cta-button--secondary">
-              View AI Services
+            <Link to="/services/ai" className="sub-service-base__cta-button sub-service-base__cta-button--secondary">
+              View AI services
             </Link>
           </div>
         </div>
       </section>
 
       {/* Benefits Grid */}
-      <section className="seo-service__benefits">
-        <div className="seo-service__section-header">
-          <h2 className="seo-service__section-title">What We Do</h2>
-          <p className="seo-service__section-description">
+      <section className="sub-service-base__benefits seo-service__benefits">
+        <div className="sub-service-base__section-header">
+          <h2 className="sub-service-base__section-title">What we do</h2>
+          <p className="sub-service-base__section-description">
             Comprehensive SEO services that cover every aspect of search optimization
           </p>
         </div>
@@ -164,63 +153,61 @@ export const SEOServiceTemplate = () => {
       </section>
 
       {/* Deliverables Timeline */}
-      <section className="seo-service__deliverables">
-        <div className="seo-service__section-header">
-          <h2 className="seo-service__section-title">What You Get</h2>
-          <p className="seo-service__section-description">
+      <section className="sub-service-base__benefits seo-service__deliverables">
+        <div className="sub-service-base__section-header">
+          <h2 className="sub-service-base__section-title">What you get</h2>
+          <p className="sub-service-base__section-description">
             Comprehensive deliverables across four key phases
           </p>
         </div>
         
-        <div className="seo-service__timeline">
+        <div className="sub-service-base__types-grid">
           {deliverables.map((phase, index) => (
-            <div key={index} className="seo-service__timeline-item">
-              <div className="seo-service__timeline-marker">
-                <span className="seo-service__timeline-number">{index + 1}</span>
-              </div>
-              <div className="seo-service__timeline-content">
-                <h3 className="seo-service__timeline-title">{phase.phase}</h3>
-                <ul className="seo-service__timeline-list">
-                  {phase.items.map((item, itemIndex) => (
-                    <li key={itemIndex} className="seo-service__timeline-list-item">
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+            <div key={index} className="sub-service-base__type-card">
+              <h3 className="sub-service-base__type-card-title">
+                <span className="sub-service-base__type-list-dot" /> {phase.phase}
+              </h3>
+              <ul className="sub-service-base__type-list">
+                {phase.items.map((item, itemIndex) => (
+                  <li key={itemIndex} className="sub-service-base__type-list-item">
+                    <span className="sub-service-base__type-list-dot" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
             </div>
           ))}
         </div>
       </section>
 
       {/* Results Section */}
-      <section className="seo-service__results">
-        <div className="seo-service__section-header">
-          <h2 className="seo-service__section-title">Expected Results</h2>
-          <p className="seo-service__section-description">
+      <section className="sub-service-base__results seo-service__results">
+        <div className="sub-service-base__section-header">
+          <h2 className="sub-service-base__section-title">Expected results</h2>
+          <p className="sub-service-base__section-description">
             Data-backed outcomes from our SEO campaigns
           </p>
         </div>
         
-        <div className="seo-service__results-grid">
+        <div className="sub-service-base__results-grid">
           {results.map((result, index) => (
-            <div key={index} className="seo-service__result-card">
-              <div className="seo-service__result-metric">{result.metric}</div>
-              <div className="seo-service__result-label">{result.label}</div>
+            <div key={index} className="sub-service-base__result-card">
+              <div className="sub-service-base__result-metric">{result.metric}</div>
+              <div className="sub-service-base__result-label">{result.label}</div>
             </div>
           ))}
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="seo-service__cta">
-        <div className="seo-service__cta-content">
-          <h2 className="seo-service__cta-title">Ready to Rank Higher?</h2>
-          <p className="seo-service__cta-description">
+      <section className="sub-service-base__cta seo-service__cta">
+        <div className="sub-service-base__cta-content">
+          <h2 className="sub-service-base__cta-title">Ready to rank higher?</h2>
+          <p className="sub-service-base__cta-description">
             Get a free SEO audit and discover opportunities to improve your search visibility.
           </p>
-          <Link to="/contact" className="seo-service__cta-button seo-service__cta-button--primary">
-            Request Free Audit
+          <Link to="/contact" className="sub-service-base__cta-button sub-service-base__cta-button--primary">
+            Request free audit
           </Link>
         </div>
       </section>

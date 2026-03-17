@@ -87,6 +87,7 @@ export function PublishersTemplate() {
           src="https://images.unsplash.com/photo-1702747592938-ca8f80e709fc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMG5lb24lMjBkaWdpdGFsJTIwcHVibGlzaGluZyUyMG5ld3Nyb29tfGVufDF8fHx8MTc3MTU4NjU4Nnww&ixlib=rb-4.1.0&q=80&w=1080"
           alt="Abstract neon digital publishing"
           className="publishers__hero-bg"
+          loading="lazy"
         />
         <div className="publishers__hero-overlay" />
         <div className="publishers__hero-grid" />
@@ -160,7 +161,7 @@ export function PublishersTemplate() {
           <ScrollReveal animation="fade-up">
             <div className="publishers__section-header">
               <Heading level={2} className="publishers__section-title">
-                Built for the Newsroom
+                Built for the newsroom
               </Heading>
               <Paragraph className="publishers__section-description">
                 Specialized features that power modern digital publishing
@@ -192,7 +193,7 @@ export function PublishersTemplate() {
           <ScrollReveal animation="fade-up">
             <div className="publishers__section-header">
               <Heading level={2} className="publishers__section-title">
-                Our Methodology
+                Our methodology
               </Heading>
               <Paragraph className="publishers__section-description">
                 From print to digital dominance
@@ -222,7 +223,7 @@ export function PublishersTemplate() {
           <ScrollReveal animation="fade-up">
             <div className="publishers__section-header">
               <Heading level={2} className="publishers__section-title">
-                Trusted by Publishers
+                Trusted by publishers
               </Heading>
             </div>
           </ScrollReveal>

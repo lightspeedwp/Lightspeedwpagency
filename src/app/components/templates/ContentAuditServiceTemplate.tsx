@@ -2,9 +2,12 @@
  * Content Audit Service Template
  * Route: /services/content/audit
  * Parent: /services/content
+ *
+ * Layout classes: sub-service-base__* (from sub-service-base.css)
+ * @see /src/styles/templates/sub-service-base.css
  */
 
-import { MagnifyingGlass, ListChecks as FileCheck, TrendDown, WarningCircle, Crosshair, Trophy, Package } from '@phosphor-icons/react';
+import { MagnifyingGlass, ListChecks as FileCheck, TrendDown, WarningCircle, Crosshair, Trophy } from '@phosphor-icons/react';
 import { Link } from 'react-router';
 import { getPageUrl } from '../../data/site-pages';
 import { Container } from '../common/Container';
@@ -18,12 +21,12 @@ import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 
 export const ContentAuditServiceTemplate = () => {
   const benefits = [
-    { icon: MagnifyingGlass, title: 'Complete Content Inventory', description: 'Catalog every page, post, and asset with metadata and performance metrics.' },
-    { icon: FileCheck, title: 'Quality Assessment', description: 'Evaluate content against E-E-A-T, readability, and brand consistency standards.' },
-    { icon: TrendDown, title: 'Performance Analysis', description: 'Identify low-performing content and optimization opportunities.' },
-    { icon: WarningCircle, title: 'Gap Analysis', description: 'Find missing topics and content gaps in your market coverage.' },
-    { icon: Crosshair, title: 'SEO Evaluation', description: 'Assess keyword targeting, meta data, and technical SEO issues.' },
-    { icon: Trophy, title: 'Actionable Recommendations', description: 'Prioritized action plan: update, consolidate, redirect, or delete.' }
+    { icon: MagnifyingGlass, title: 'Complete content inventory', description: 'Catalog every page, post, and asset with metadata and performance metrics.' },
+    { icon: FileCheck, title: 'Quality assessment', description: 'Evaluate content against E-E-A-T, readability, and brand consistency standards.' },
+    { icon: TrendDown, title: 'Performance analysis', description: 'Identify low-performing content and optimization opportunities.' },
+    { icon: WarningCircle, title: 'Gap analysis', description: 'Find missing topics and content gaps in your market coverage.' },
+    { icon: Crosshair, title: 'SEO evaluation', description: 'Assess keyword targeting, meta data, and technical SEO issues.' },
+    { icon: Trophy, title: 'Actionable recommendations', description: 'Prioritized action plan: update, consolidate, redirect, or delete.' }
   ];
 
   const deliverables = ['Complete content inventory spreadsheet', 'Performance dashboard', 'Quality scorecard', 'Gap analysis report', 'SEO audit findings', 'Action plan with priorities', 'Content refresh roadmap'];
@@ -36,50 +39,47 @@ export const ContentAuditServiceTemplate = () => {
   ];
 
   return (
-    <div className="wp-w-full wp-flex wp-flex-col" data-service="content-audit">
-      {/* HERO SECTION */}
-      <section className="service-hero" style={{ minHeight: '60vh' }}>
-        <div style={{ position: 'absolute', top: 0, left: '50%', transform: 'translate(-50%, -50%)', width: '100vw', height: '100vh', background: 'radial-gradient(ellipse at bottom, rgba(var(--secondary-rgb), 0.1) 0%, transparent 70%)', zIndex: 0, pointerEvents: 'none' }} />
-        
-        <div className="service-hero__content" style={{ padding: '0 var(--spacing-8)' }}>
+    <div data-service="content-audit">
+      {/* Hero section */}
+      <section className="sub-service-base__hero">
+        <div className="sub-service-base__hero-content">
+          <BreadcrumbPart
+            items={[
+              { label: 'Home', href: '/' },
+              { label: 'Services', href: '/services' },
+              { label: 'Content', href: '/services/content' },
+              { label: 'Content audit' },
+            ]}
+          />
+
           <ScrollReveal animation="fade-down">
-            <BreadcrumbPart
-              items={[
-                { label: 'Home', href: '/' },
-                { label: 'Services', href: '/services' },
-                { label: 'Content', href: '/services/content' },
-                { label: 'Content Audit' },
-              ]}
-            />
-            
-            <h1 className="service-hero__title">
-              Content Audit <br />
-              <span className="service-hero__gradient-text">Services</span>
+            <h1 className="sub-service-base__hero-title">
+              Content audit services
             </h1>
-            
-            <p className="service-hero__description service-hero__description--centered">
-              Know exactly what content you have, how it's performing, and what to do next. Our comprehensive audits 
+
+            <p className="sub-service-base__hero-description">
+              Know exactly what content you have, how it's performing, and what to do next. Our comprehensive audits
               reveal quick wins and long-term opportunities to improve content ROI.
             </p>
-            
-            <div className="wp-flex wp-justify-center wp-gap-4">
-              <Link to={getPageUrl('contact')} className="sub-service-base__content-btn sub-service-base__content-btn--primary">
-                Get Content Audit
+
+            <div className="sub-service-base__hero-cta">
+              <Link to={getPageUrl('contact')} className="sub-service-base__cta-button sub-service-base__cta-button--primary">
+                Get content audit
               </Link>
-              <Link to={getPageUrl('content')} className="sub-service-base__content-btn sub-service-base__content-btn--outline">
-                View Parent Service
+              <Link to={getPageUrl('content')} className="sub-service-base__cta-button sub-service-base__cta-button--secondary">
+                View parent service
               </Link>
             </div>
           </ScrollReveal>
         </div>
       </section>
 
-      {/* BENEFITS */}
-      <section className="service-section service-section--bg-muted">
+      {/* Benefits */}
+      <section className="sub-service-base__benefits">
         <Container>
           <ScrollReveal animation="fade-up">
             <ServiceCapabilitiesGrid
-              heading="Audit Services"
+              heading="Audit services"
               subheading="Comprehensive evaluation of your entire content ecosystem."
               capabilities={benefits.map((item, i) => ({
                 id: `audit-ben-${i}`,
@@ -93,31 +93,23 @@ export const ContentAuditServiceTemplate = () => {
         </Container>
       </section>
 
-      {/* DELIVERABLES */}
-      <section className="service-section service-section--bg-background">
+      {/* Deliverables */}
+      <section className="sub-service-base__results">
         <Container>
-          <div className="wp-grid-2-cols wp-items-center wp-gap-16">
-            <ScrollReveal animation="fade-up">
-              <div>
-                <div className="sub-service-base__eyebrow-badge">
-                  <Package size={16} weight="duotone" />
-                  What You Get
-                </div>
-                <h2 className="sub-service-base__deliverables-title">Actionable Reports & Roadmaps</h2>
-                <p className="sub-service-base__deliverables-description">Clear, prioritized next steps to improve your content performance.</p>
-              </div>
-            </ScrollReveal>
-            <ScrollReveal animation="fade-up" delay={100}>
-              <div className="sub-service-base__deliverables-card">
-                <CheckList items={deliverables} columns={1} />
-              </div>
-            </ScrollReveal>
+          <div className="sub-service-base__section-header">
+            <h2 className="sub-service-base__section-title">What you get</h2>
+            <p className="sub-service-base__section-description">
+              Clear, prioritized next steps to improve your content performance.
+            </p>
           </div>
+          <ScrollReveal animation="fade-up">
+            <CheckList items={deliverables} columns={2} />
+          </ScrollReveal>
         </Container>
       </section>
 
-      {/* RESULTS */}
-      <section className="service-section service-section--bg-muted">
+      {/* Results */}
+      <section className="sub-service-base__benefits">
         <Container>
           <ScrollReveal animation="fade-up">
             <AgencyStats
@@ -130,19 +122,17 @@ export const ContentAuditServiceTemplate = () => {
         </Container>
       </section>
 
-      {/* TESTIMONIALS */}
+      {/* Testimonials */}
       <ServiceTestimonial serviceSlug="content-audit" />
 
       {/* CTA */}
-      <section>
-        <FunkyCTA
-          title="Ready to Audit Your Content?"
-          description="Get a free sample audit of 10 pages."
-          buttonText="Request Free Sample Audit"
-          buttonPage="contact"
-          benefits={['SEO performance check', 'Content gap analysis', 'Actionable insights', 'No commitment required']}
-        />
-      </section>
+      <FunkyCTA
+        title="Ready to audit your content?"
+        description="Get a free sample audit of 10 pages."
+        buttonText="Request free sample audit"
+        buttonPage="contact"
+        benefits={['SEO performance check', 'Content gap analysis', 'Actionable insights', 'No commitment required']}
+      />
     </div>
   );
 };

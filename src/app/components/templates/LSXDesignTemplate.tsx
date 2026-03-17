@@ -99,7 +99,7 @@ export function LSXDesignTemplate() {
         <Container>
           <ScrollReveal animation="fade-up">
             <div className="lsx-design__section-header">
-              <h2 className="lsx-design__section-title">Why Choose LSX Design?</h2>
+              <h2 className="lsx-design__section-title">Why choose LSX Design?</h2>
               <p className="lsx-design__section-desc">
                 Built on WordPress best practices with modern development standards.
               </p>
@@ -169,7 +169,7 @@ export function LSXDesignTemplate() {
         <Container>
           <ScrollReveal animation="fade-up">
             <div className="lsx-design__section-header">
-              <h2 className="lsx-design__section-title">Our Theme Process</h2>
+              <h2 className="lsx-design__section-title">Our theme process</h2>
               <p className="lsx-design__section-desc">
                 From concept to launch in a structured, collaborative workflow.
               </p>

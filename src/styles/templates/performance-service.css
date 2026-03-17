@@ -324,3 +324,24 @@
   color: var(--muted-foreground);
   margin: 0;
 }
+
+/* ============================================
+   BEM MODIFIERS (Added: March 17, 2026 — Round 16)
+   ============================================ */
+
+.service-hero__badge--bold {
+  font-weight: var(--font-weight-bold);
+}
+
+.service-stat__label--wide {
+  letter-spacing: var(--letter-spacing-widest);
+}
+
+.perf-section__title {
+  margin-bottom: var(--spacing-6);
+}
+
+.perf-section__description {
+  margin-bottom: var(--spacing-8);
+  line-height: var(--line-height-comfortable);
+}

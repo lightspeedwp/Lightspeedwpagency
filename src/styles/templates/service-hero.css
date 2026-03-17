@@ -40,6 +40,23 @@
 }
 
 /* ============================================
+   HERO BACKGROUND IMAGE
+   ============================================ */
+
+.service-hero__bg-image {
+  position: absolute;
+  inset: 0;
+  opacity: 0.1;
+  z-index: 0;
+}
+
+.service-hero__bg-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ============================================
    HERO CONTENT WRAPPER
    ============================================ */
 

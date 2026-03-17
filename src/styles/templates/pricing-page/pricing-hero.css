@@ -144,3 +144,35 @@
   letter-spacing: var(--letter-spacing-wider);
   margin-top: var(--spacing-1);
 }
+
+/* ============================================
+   PRICING HERO MODIFIERS (on .service-hero)
+   Added: March 17, 2026 — BEM Round 16
+   ============================================ */
+
+.service-hero--pricing {
+  min-height: 60vh;
+  padding: var(--spacing-24) 0;
+}
+
+.pricing-page__grid-bg {
+  position: absolute;
+  inset: 0;
+  opacity: 0.1;
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 40px 40px;
+  z-index: 0;
+}
+
+.pricing-page__packages-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.pricing-page__packages-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-8);
+}
