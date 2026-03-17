@@ -44,6 +44,94 @@
 
 ## Open Tasks
 
+### AI Services Restructure — March 17, 2026
+
+**Report:** `/reports/2026-03/2026-03-17-ai-services-restructure-audit.md`  
+**Task File:** `/tasks/ai-services-restructure-task-list.md`  
+**Prompt:** `/prompts/ai-services-restructure.md`  
+**Impact:** High — routes, data files, navigation, templates, content strategy  
+**Tasks:** 25 across 4 priority tiers (5 high-rename, 6 high-mapping, 3 high-mega, 2 medium-trust, 5 medium-content, 3 low-UI)
+
+- [ ] **Rename Ignite → Discover** — Update 4 files: `service-journey.ts`, `journey-stage-pages.ts`, `route-map.ts`, `core.routes.tsx` + header nav check
+- [ ] **Update service mappings** — Remap services across all 6 stages (Discover, Create, Build, Launch, Grow, Evolve)
+- [ ] **Build mega AI services page** — Redesign `AIServicesLandingTemplate` as scrollable mega page with 6 neon-accent stage sections on dark backgrounds
+- [ ] **Reposition trust factors** — Move testimonials higher on journey + service pages
+- [ ] **Content enrichment** — Add AI consulting, AI-assisted dev, LLM.txt, AI future strategy content
+
+### Data Architecture Audit — March 17, 2026 (from `audit data` trigger)
+
+**Report:** `/reports/2026-03/2026-03-17-data-architecture-audit.md`  
+**Overall grade:** B (clean architecture, but 16 templates with embedded content)  
+**Data files created:** 17 | **Templates migrated:** 17 | **Templates remaining:** 0
+
+#### Completed — data extraction + template wiring
+
+- [x] **SEOServiceTemplate** — Created `seo-service-template-data.tsx` (96 lines, 3 exports). Replaced inline benefits/deliverables/results. Fixed 4 sentence case violations.
+- [x] **AnalyticsServiceTemplate** — Created `analytics-service-template-data.tsx` (71 lines, 3 exports). Replaced inline benefits/deliverables/results. Fixed 4 sentence case violations.
+- [x] **AIEngineServiceTemplate** — Wired `ai-engine-service-template-data.tsx` (benefits, process, results). Removed 6 icon imports. Inline arrays replaced with data imports.
+- [x] **AnswerEngineServiceTemplate** — Wired `answer-engine-service-template-data.tsx` (benefits, process, results). Removed 6 icon imports. Inline arrays replaced with data imports.
+- [x] **MigrationsServiceTemplate** — Wired `migrations-service-template-data.tsx` (benefits, types, process, results). Removed 6 icon imports. Inline arrays replaced with data imports.
+- [x] **SupportServiceTemplate** — Wired `support-service-template-data.tsx` (benefits, plans, results). Removed 6 icon imports. Inline arrays replaced with data imports.
+- [x] **AISearchServiceTemplate** — Wired `ai-search-service-template-data.tsx` (pillars, processSteps). Removed 4 icon imports + 2 mapping consts. Fixed `name` to `title` in pillar data for FeatureList compatibility.
+- [x] **TrainingTemplate** — Wired `training-template-data.tsx` (hero, modules, formats). Removed 8 icon imports. Replaced inline trainingData object with data imports.
+- [x] **AboutProcessTemplate** — Wired `about-process-template-data.tsx` (steps). Removed 3 icon imports (Search, Palette, Code). Inline steps array replaced.
+- [x] **AboutHistoryTemplate** — Wired `about-history-template-data.tsx` (milestones). Removed 6 icon imports. Inline milestones array replaced.
+- [x] **SecurityServiceTemplate** — Wired `security-service-template-data.tsx` (terminalMessages, threatCards). Removed Lock, Activity, Zap icon imports. Threat cards now iterate data with proper Icon component rendering.
+- [x] **WordPressSolutionTemplate** — Wired `wordpress-solution-template-data.tsx` (relatedBenefits). Removed Code, ShoppingCart, Shield icon imports. Inline relatedBenefits array replaced.
+
+#### Data files NOT yet created (medium priority)
+
+- [x] **ROICalculatorTemplate** — ✅ COMPLETE (March 17, 2026): Created `roi-calculator-template-data.tsx` (85 lines, 4 exports). Extracted breakdown cards (3 items with icons), calculation constants (3 percentages), testimonial avatar fallbacks (6 URLs), CTA benefits (4 items). Removed 3 icon imports from template. Fixed 3 sentence case violations. Template now uses `roiBreakdownCards` with `breakdownValues` lookup for dynamic values.
+- [x] **SinglePostLongformTemplate** — ✅ COMPLETE (March 17, 2026): Created `longform-post-data.tsx` (166 lines, 8 exports). Extracted breadcrumb items, hero metadata (category, title, author, date, reading time, featured image), TOC items (5 sections), article sections (5 sections with paragraphs + optional list items), pull quote with insertion position, newsletter CTA content, and related posts (3 items). Template reduced from 336 → 195 lines. Article body now renders from data-driven loop with dynamic pull quote insertion.
+
+#### Data files NOT yet created (low priority — dev/showcase tools)
+
+- [x] **ComponentShowcase** — ✅ COMPLETE (March 17, 2026): Created `component-showcase-data.tsx` (113 lines, 3 exports + 2 interfaces). Extracted 5 component categories (41 components total) with Phosphor icon imports. Template reduced from 367 → 282 lines. Removed 8 unused icon imports.
+- [x] **BlockDocumentation** — ✅ COMPLETE (March 17, 2026): Created `block-documentation-data.tsx` (175 lines, 3 exports + 2 interfaces). Extracted 3 block categories (14 blocks total) with Phosphor icon imports. Template reduced from 374 → 226 lines. Removed 4 unused icon imports.
+- [x] **SectionPresetsShowcase** — ✅ COMPLETE (March 17, 2026): Created `section-presets-showcase-data.tsx` (60 lines, 3 exports + 2 interfaces). Extracted 5 preset categories (12 styles total). Template reduced from 173 → 133 lines.
+- [x] **ThemeBlocksShowcase** — ✅ COMPLETE (March 17, 2026): Created `theme-blocks-showcase-data.tsx` (24 lines, 2 exports + 1 interface). Extracted 4 mock navigation items. Template reduced from 149 → 142 lines.
+
+---
+
+### Master Audit — March 17, 2026 (from `audit` trigger)
+
+**Report:** `/reports/2026-03/2026-03-17-master-audit-report.md`  
+**Overall grade:** A- (12 A grades, 5 B grades)  
+**Auto-fixed:** 28 sentence case violations across 18 templates
+
+#### Sentence case — auto-fixed (28 headings)
+
+- [x] **Sentence case sweep (March 17, 2026)** — ✅ COMPLETE: Fixed 28 title case → sentence case headings across 18 templates (LSXDesign, SiteMap, DesignTokensReference, DesignPlayground, CodeQualityDashboard, DesignTokensSystem, PatternGovernance, EditorialWorkflows, AISearchReadiness, PerformanceReliability, WordPressRedesign, WooCommerceRedesign, Analytics, SingleProject, ContentStrategy, WhyMailchimp, SingleTestimonial, PlaygroundPanels, SolutionDetailLower, ServiceDetailLower, DesignLower, SingleAudio, SingleStandard)
+
+#### File size violations (2 files over 300-line limit)
+
+- [x] **Split FrontPageTemplate.tsx** — ✅ COMPLETE (March 17, 2026): Extracted sections 7–11 to `FrontPageLowerSections.tsx` (~170 lines). Main template reduced to ~190 lines (was 361). Fixed 3 sentence case violations. Removed unused `ArrowRight` import.
+- [x] **Split FeatureShowcaseTemplate.tsx** — ✅ COMPLETE (March 17, 2026): Extracted Animation Variants + Interactive Cards to `FeatureShowcaseLowerSections.tsx` (~155 lines). Main template reduced to ~220 lines (was 342). Fixed 4 sentence case violations.
+
+#### Inline styles to BEM migration (3 files)
+
+- [x] **DiscoveryBodySections.tsx** — ✅ COMPLETE (March 17, 2026): Created `discovery-body-sections.css` (260 lines, 35+ BEM rules). Migrated ~15 inline style blocks → 0. Replaced JS hover handlers with CSS `:hover`. Fixed 3 token violations (48px → `var(--spacing-12)`, 24px → `var(--spacing-6)`, lineHeight 1.6 → `var(--line-height-comfortable)`). Sentence case + `aria-label` on 4 sections. `loading="lazy"`. Reduced motion support.
+- [x] **DesignLowerSections.tsx** — ✅ COMPLETE (March 17, 2026): Created `design-lower-sections.css` (140 lines, 18 BEM rules). Migrated ~8 inline style blocks → 0. CSS `:hover` replaces JS handlers. Token fixes (800px → narrow-size, 48px → spacing-12). `aria-label` on 3 sections. Reduced motion.
+- [x] **AnalyticsServiceTemplate.tsx** — ✅ COMPLETE (March 17, 2026): Replaced hero bg + grid inline with existing BEM (`service-hero--pricing`, `pricing-page__grid-bg`, `discovery-body__deliverables-grid`). Fixed 2 sentence case violations.
+
+#### Accessibility — missing ARIA labels (5 templates)
+
+- [x] **AISubPageTemplate.tsx** — ✅ COMPLETE (March 17, 2026): Added `aria-label` to hero and stats sections. All 4 sub-page templates inherit these labels.
+- [x] **AIContentGenerationTemplate.tsx** — ✅ COMPLETE (March 17, 2026): Inherited from AISubPageTemplate fix.
+- [x] **AISEOTemplate.tsx** — ✅ COMPLETE (March 17, 2026): Inherited from AISubPageTemplate fix.
+- [x] **AIChatbotsTemplate.tsx** — ✅ COMPLETE (March 17, 2026): Inherited from AISubPageTemplate fix.
+- [x] **AIAnalyticsTemplate.tsx** — ✅ COMPLETE (March 17, 2026): Inherited from AISubPageTemplate fix.
+
+#### Token compliance — minor (5 items, low priority)
+
+- [x] **DiscoveryBodySections.tsx** — ✅ COMPLETE (March 17, 2026): Fixed in BEM migration above. `var(--spacing-12)` for 48px.
+- [x] **DiscoveryBodySections.tsx** — ✅ COMPLETE (March 17, 2026): Fixed in BEM migration above. `var(--spacing-6)` for left, 2px in CSS class.
+- [x] **DiscoveryBodySections.tsx** — ✅ COMPLETE (March 17, 2026): Fixed in BEM migration above. `var(--line-height-comfortable)` in CSS.
+- [x] **AnalyticsServiceTemplate.tsx** — ✅ COMPLETE (March 17, 2026): Fixed in BEM migration above. Grid uses `discovery-body__deliverables-grid` CSS class.
+- [x] **theme.css** — ✅ COMPLETE (March 17, 2026): Condensed verbose multi-line JSDoc blocks to single-line comments. Reduced from 438 → 138 lines (68% reduction). All imports preserved, documentation retained as concise inline comments. Well within 400-line limit.
+
+---
+
 ### High Priority — Memory Optimization & Cleanup
 
 - [x] **Execute Unified Memory Optimization Orchestrator** — ✅ ORCHESTRATOR COMPLETE (March 15, 2026): All 4 workflows finished. Workflow 1: CSS Memory Optimization (75% — remaining 25% is advanced Phase 3 bundle optimization, deferred). Workflow 2: File Size Reduction (100% — all 4 pillars complete). Workflow 3: Codebase Cleanup (100% — all 5 audits complete). Workflow 4: Content Data Integration (100% — all 4 parts complete). Memory Reduction P1-P3 100% complete, P4 100% COMPLETE. Grand total: ~34,700+ lines eliminated/saved across all workflows.

@@ -87,7 +87,7 @@ export function SingleAudioTemplate() {
           <Section spacing="lg">
             <Container>
               <div className="single-post-body wp-max-w-3xl wp-mx-auto">
-                <h2>About This Episode</h2>
+                <h2>About this episode</h2>
                 <div dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
                 
                 <h3>Show Notes</h3>

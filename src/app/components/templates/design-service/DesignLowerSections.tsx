@@ -7,8 +7,10 @@
  * Extracted from DesignServiceTemplate.tsx for file size compliance.
  *
  * @see /src/styles/templates/page-service-design.css
+ * @bem March 17, 2026 — Migrated ~8 inline style blocks to BEM classes
  */
 
+import '../../../../styles/templates/design-lower-sections.css';
 import { Container } from '../../common/Container';
 import { FunkyCTA } from '../../patterns/FunkyCTA';
 import { FeatureList } from '../../patterns/FeatureList';
@@ -60,12 +62,12 @@ export function DesignLowerSections({
       {/* ============================================
           SHOWCASE (Portfolio Preview)
           ============================================ */}
-      <section className="service-section service-section--bg-background">
+      <section className="service-section service-section--bg-background" aria-label="Recent design work">
         <Container>
           <ScrollReveal animation="fade-up">
             <div className="service-section__header">
               <h2 className="service-section__title">
-                Recent <span style={{ color: 'var(--secondary)' }}>Work</span>
+                Recent <span className="design-lower__title-accent">work</span>
               </h2>
               <p className="service-section__description">
                 A glimpse at some of our latest design projects.
@@ -73,21 +75,19 @@ export function DesignLowerSections({
             </div>
           </ScrollReveal>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 'var(--spacing-8)' }}>
+          <div className="design-lower__showcase-grid">
             {showcaseProjects.map((project, index) => (
-              <ScrollReveal key={index} animation="fade-up" delay={index * 100}>
-                <div style={{ position: 'relative', borderRadius: 'var(--radius-xl)', overflow: 'hidden', aspectRatio: '4/3', border: '1px solid var(--border)', cursor: 'pointer' }}>
+              <ScrollReveal key={project.name} animation="fade-up" delay={index * 100}>
+                <div className="design-lower__showcase-card">
                   <img
                     src={project.image}
                     alt={project.name}
                     loading="lazy"
-                    style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s ease' }}
-                    onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.05)')}
-                    onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+                    className="design-lower__showcase-image"
                   />
-                  <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: 'var(--spacing-6)', background: 'var(--gradient-overlay-dark)', display: 'flex', flexDirection: 'column', gap: 'var(--spacing-2)', pointerEvents: 'none' }}>
-                    <span style={{ display: 'inline-block', padding: 'var(--spacing-1) var(--spacing-3)', backgroundColor: 'var(--primary)', color: 'var(--primary-foreground)', borderRadius: 'var(--radius-full)', fontSize: 'var(--text-xs)', fontWeight: 'var(--font-weight-bold)', width: 'fit-content' }}>{project.tag}</span>
-                    <span style={{ color: 'var(--primary-foreground)', fontFamily: 'var(--font-primary)', fontSize: 'var(--text-h4)', fontWeight: 'var(--font-weight-bold)' }}>{project.name}</span>
+                  <div className="design-lower__showcase-overlay">
+                    <span className="design-lower__showcase-tag">{project.tag}</span>
+                    <span className="design-lower__showcase-name">{project.name}</span>
                   </div>
                 </div>
               </ScrollReveal>
@@ -99,11 +99,11 @@ export function DesignLowerSections({
       {/* ============================================
           SERVICES GRID
           ============================================ */}
-      <section className="service-section service-section--bg-muted">
+      <section className="service-section service-section--bg-muted" aria-label="Our creative suite">
         <Container>
           <ScrollReveal animation="fade-up">
             <div className="service-section__header">
-              <h2 className="service-section__title">Our Creative Suite</h2>
+              <h2 className="service-section__title">Our creative suite</h2>
               <p className="service-section__description">
                 From branding to full-scale UI/UX design, we cover every pixel.
               </p>
@@ -129,28 +129,28 @@ export function DesignLowerSections({
       {/* ============================================
           PROCESS (Creative Flow)
           ============================================ */}
-      <section className="service-section service-section--bg-background">
+      <section className="service-section service-section--bg-background" aria-label="Design process">
         <Container>
           <div className="service-section__header">
             <ScrollReveal animation="fade-up">
-              <h2 className="service-section__title">The Creative Process</h2>
+              <h2 className="service-section__title">The creative process</h2>
               <p className="service-section__description">
                 How we take your vision from concept to reality.
               </p>
             </ScrollReveal>
           </div>
 
-          <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', gap: 'var(--spacing-12)', maxWidth: '800px', margin: '0 auto' }}>
-            <div style={{ position: 'absolute', top: '24px', bottom: '24px', left: '24px', width: '2px', backgroundColor: 'var(--border)', zIndex: 0 }} aria-hidden="true" />
+          <div className="design-lower__process-wrapper">
+            <div className="design-lower__process-line" aria-hidden="true" />
 
             {processSteps.map((step, index) => (
-              <ScrollReveal key={index} animation="fade-up" delay={index * 80}>
-                <div style={{ position: 'relative', zIndex: 1, display: 'flex', gap: 'var(--spacing-8)' }}>
-                  <div style={{ flexShrink: 0, width: '48px', height: '48px', backgroundColor: 'var(--primary)', color: 'var(--primary-foreground)', borderRadius: 'var(--radius-full)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--font-primary)', fontSize: 'var(--text-lg)', fontWeight: 'var(--font-weight-bold)', border: '4px solid var(--background)', boxShadow: '0 0 0 1px var(--border)' }}>
+              <ScrollReveal key={step.id} animation="fade-up" delay={index * 80}>
+                <div className="design-lower__step-row">
+                  <div className="design-lower__step-number">
                     {index + 1}
                   </div>
-                  <div style={{ paddingTop: 'var(--spacing-2)' }}>
-                    <h3 style={{ margin: '0 0 var(--spacing-2) 0', fontFamily: 'var(--font-primary)', fontSize: 'var(--text-h4)', color: 'var(--foreground)' }}>
+                  <div className="design-lower__step-content">
+                    <h3 className="design-lower__step-title">
                       {step.title}
                     </h3>
                     <p className="service-body-text" style={{ lineHeight: 'var(--line-height-comfortable)' }}>
@@ -186,7 +186,7 @@ export function DesignLowerSections({
           ============================================ */}
       {servicePricingTimeline.design && (
         <ScrollReveal animation="fade-up">
-          <section style={{ padding: 'var(--spacing-16) 0', backgroundColor: 'var(--muted)' }}>
+          <section className="design-lower__pricing-section">
             <Container>
               <ServicePricingTimeline
                 pricing={servicePricingTimeline.design.pricing}

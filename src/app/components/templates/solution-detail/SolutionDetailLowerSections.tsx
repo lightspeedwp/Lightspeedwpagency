@@ -144,7 +144,7 @@ export function SolutionDetailLowerSections({ solution }: SolutionLowerProps) {
         <Container>
           <ScrollReveal animation="fade-up">
             <div className="solution-detail__section-header">
-              <h2 className="solution-detail__section-heading">What Our Clients Say</h2>
+              <h2 className="solution-detail__section-heading">What our clients say</h2>
               <p className="solution-detail__section-desc">
                 Hear from satisfied clients about their experience with {solution.title}.
               </p>

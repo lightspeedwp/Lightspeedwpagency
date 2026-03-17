@@ -38,11 +38,9 @@ import { ScrollDownArrow } from '../common/ScrollDownArrow';
 import { SecurityLowerSections } from './security-service/SecurityLowerSections';
 import { 
   Shield, 
-  Lock, 
-  Terminal, 
-  ChartLineUp as Activity, 
-  Lightning as Zap, 
+  Terminal,
 } from '@phosphor-icons/react';
+import { securityTerminalMessages, securityThreatCards } from '../../data/security-service-template-data';
 
 // Import detailed data
 import { 
@@ -71,16 +69,7 @@ export function SecurityServiceTemplate() {
 
   // Simulated Terminal Logs
   useEffect(() => {
-    const messages = [
-      "Initializing defense protocols...",
-      "Scanning file system integrity...",
-      "[OK] Core files verified.",
-      "Checking database for injection risks...",
-      "[OK] Database sanitized.",
-      "Monitoring traffic patterns...",
-      "Threat detected: IP 192.168.x.x blocked.",
-      "Firewall active. System secure."
-    ];
+    const messages = securityTerminalMessages;
     
     let currentIndex = 0;
     const interval = setInterval(() => {
@@ -214,35 +203,20 @@ export function SecurityServiceTemplate() {
           </div>
 
           <div className="service-section__grid">
-            <ScrollReveal animation="fade-up" delay={0}>
-              <div className="security-threat__card security-threat__card--red">
-                <div className="security-threat__card-icon security-threat__card-icon--red">
-                  <Activity size={32} />
-                </div>
-                <h3 className="security-threat__card-title">Real-time monitoring</h3>
-                <p className="security-threat__card-desc">24/7 surveillance of file changes, login attempts, and traffic spikes.</p>
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal animation="fade-up" delay={100}>
-              <div className="security-threat__card security-threat__card--green">
-                <div className="security-threat__card-icon security-threat__card-icon--green">
-                  <Lock size={32} />
-                </div>
-                <h3 className="security-threat__card-title">Hardened core</h3>
-                <p className="security-threat__card-desc">Database encryption, salt key rotation, and strict file permissions.</p>
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal animation="fade-up" delay={200}>
-              <div className="security-threat__card security-threat__card--accent">
-                <div className="security-threat__card-icon security-threat__card-icon--accent">
-                  <Zap size={32} />
-                </div>
-                <h3 className="security-threat__card-title">Rapid response</h3>
-                <p className="security-threat__card-desc">Immediate containment and cleanup if any breach attempts occur.</p>
-              </div>
-            </ScrollReveal>
+            {securityThreatCards.map((card, index) => {
+              const Icon = card.icon;
+              return (
+                <ScrollReveal key={index} animation="fade-up" delay={index * 100}>
+                  <div className={`security-threat__card security-threat__card--${card.variant}`}>
+                    <div className={`security-threat__card-icon security-threat__card-icon--${card.variant}`}>
+                      <Icon size={32} />
+                    </div>
+                    <h3 className="security-threat__card-title">{card.title}</h3>
+                    <p className="security-threat__card-desc">{card.description}</p>
+                  </div>
+                </ScrollReveal>
+              );
+            })}
           </div>
         </Container>
       </section>

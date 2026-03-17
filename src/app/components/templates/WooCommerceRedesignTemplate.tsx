@@ -181,7 +181,7 @@ export function WooCommerceRedesignTemplate() {
         <Container>
           <ScrollReveal animation="fade-up">
             <div className="redesign-page__section-header">
-              <h2 className="redesign-page__section-title">Store Performance After Redesign</h2>
+              <h2 className="redesign-page__section-title">Store performance after redesign</h2>
               <p className="redesign-page__section-desc">Average improvements our WooCommerce clients see within 90 days of launch.</p>
             </div>
           </ScrollReveal>

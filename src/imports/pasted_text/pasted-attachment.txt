@@ -1,0 +1,68 @@
+Below is a high‑level plan for merging and reimagining your AI pages into **one unified AI solutions landing page** and **one AI services page**.  It incorporates the six‑stage lifecycle from your meeting notes, integrates trust factors early, and proposes rich WebGL interactions while ensuring the content structure remains clear and compelling.
+
+---
+
+### 🧠 **Merging strategy: one “mega” AI page + one AI services page**
+
+1. **Consolidate existing AI pages into a single landing page**
+
+   * Use the “AI Solutions Hub” structure from the existing `ai-integrations` data files to pull hero copy, stats, features, and FAQs for each solution (content generation, SEO, search‑visibility, chatbots, analytics, engine optimisation).
+   * Combine these into one long‑form page with a sticky anchor navigation so users can jump directly to each solution.
+   * Extract content programmatically from the data files (`ai-content-generation.ts`, `ai-seo.ts`, etc.) and remove any pricing tables or plan details to focus purely on benefits and outcomes.
+
+2. **Reimagine the AI Services page** around your six‑stage lifecycle:
+
+   * **Discover** → rename “Ignite” to “Discover” and redirect `/services/ignite` to `/services/discover`. This stage will focus on AI‑enhanced consulting and needs analysis.
+   * **Create** → combine prototype, design system, and content services into a single stage. Include design systems and content audits as sub‑services.
+   * **Build** → emphasise WordPress site build, AI‑assisted development, QA, and accessibility.
+   * **Launch** → highlight AI integrations, hosting, migrations, and immediate post‑launch support.
+   * **Grow** → showcase AI search & visibility, SEO, AEO, performance, and support.
+   * **Evolve** → position as ongoing AI consulting and future‑proofing services.
+   * Feature migrations prominently either as a cross‑stage service (starting in “Discover” and running through “Build”) or as a standalone sub‑service.
+
+3. **Centralised data layer**
+
+   * Create a single `ai-services-lifecycle.ts` data file mapping each stage to its hero copy, benefits, sub‑services, and FAQs.  This mirrors the structure of existing data files but unifies them for maintainability.
+
+---
+
+### 🎨 **Interactive WebGL design**
+
+| Stage/Section                  | WebGL concept                                                                                                                                       | Colour palette                                     |
+| ------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
+| **AI Solutions landing (Hub)** | Brain‑shaped particle network (3D neural network) rotating slowly, with glowing connections and mouse‑reactive highlights.                          | Neon‑cyan particles, pink pulses, lime highlights. |
+| **Discover**                   | “Constellation of questions” – particles form question marks that morph into a lightbulb/brain icon, representing discovery and consulting.         | Neon‑cyan & neon‑lime (fresh start, exploration).  |
+| **Create**                     | “Flowing prototype” – particles form blocky wireframes that animate into design systems and content blocks; lines trace grid systems like in Figma. | Neon‑pink (creative energy).                       |
+| **Build**                      | “Code weave” – particles align into code snippets and then assemble into a WordPress logo; subtle gear rotations hint at development.               | Neon‑lime & neon‑cyan (technical).                 |
+| **Launch**                     | “Rocket launch” – particles form a rocket that ignites and trails off into orbital paths; shimmering stars indicate hosting and migration flows.    | Neon‑yellow and neon‑cyan (energy, success).       |
+| **Grow**                       | “Growth curve” – particles follow upward graphs and sine waves; a tree/plant shape grows from data points, referencing SEO/AEO gains.               | Neon‑lime & neon‑pink.                             |
+| **Evolve**                     | “Evolving brain” – particles gradually rearrange into more complex neural patterns, symbolising continuous learning and AI strategy.                | Neon‑purple blending with other tokens (maturity). |
+
+* Each WebGL canvas should pause when its section is not visible to preserve performance.
+* Provide reduced‑motion fallbacks (static gradients) as shown in the existing implementations.
+* Keep each canvas under ~200 lines of code and offload heavy computations outside the main thread.
+
+---
+
+### 📐 **Content & UX structure**
+
+* **Top‑loaded trust signals:** Integrate testimonials and case studies in the hero or immediately after the hero to build confidence early.
+* **Mega menu:** Use icons and colour coding for each lifecycle stage so users understand the journey at a glance.
+* **Stats & proof:** Pull metrics from internal data (tickets resolved, migrations completed, support response times) and display them in an aggregated stats bar. This pattern exists in the current AI landing templates.
+* **Reduce text volume:** Replace large text blocks with bulleted benefits, interactive sliders, or tabbed content to improve scannability.
+* **Anchor navigation:** Sticky nav linking to each lifecycle section on the services page and each solution on the hub page.
+* **Call‑to‑action per section:** Each lifecycle stage ends with a specific CTA (e.g., “Book discovery session,” “Start your prototype,” “Launch with AI,” etc.). No pricing tables; instead, funnel users to request a bespoke audit or consultation.
+
+---
+
+### 🛠️ **Implementation overview**
+
+1. **Extract & normalise content** from existing AI data files (`ai-integrations/` and `services/` components) into new data modules for the hub and lifecycle pages.
+2. **Develop WebGL components** for each hero section using the patterns described above. Reference the existing `NeuralBrainCanvas` concept for guidance.
+3. **Build new templates** (`AISolutionsHubTemplate` and `AIServicesLifecycleTemplate`) reusing patterns like `StatsGrid`, `FeatureGrid`, `FAQSection` and `FunkyCTA`.
+4. **Add routing & navigation** to reflect the new structure. Use `react-router` and update `solutions.routes.tsx` and `services.routes.tsx`.
+5. **Test accessibility**, ensuring keyboard navigation for sliders and proper fallbacks for reduced‑motion users.
+
+---
+
+With this plan, your new AI pages will not only consolidate and enrich existing content but also guide visitors through your AI‑enhanced service lifecycle with clear structure, high‑impact visuals and strong trust signals.

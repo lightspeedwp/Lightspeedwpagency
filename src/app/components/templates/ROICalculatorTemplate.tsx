@@ -27,13 +27,8 @@ import { useState } from 'react';
 import {
   Calculator,
   TrendUp,
-  Lightning as Zap,
-  Shield,
-  MagnifyingGlass as Search,
   Clock
 } from '@phosphor-icons/react';
-
-
 
 /* ── Data imports ── */
 import {
@@ -44,6 +39,12 @@ import {
 import { testimonials } from '../../data/testimonials';
 import { clientLogos } from '../../data/logos';
 import { pricingTimelineFAQs } from '../../data/faqs';
+import {
+  roiCalculationConstants,
+  roiBreakdownCards,
+  roiTestimonialAvatars,
+  roiCtaBenefits,
+} from '../../data/roi-calculator-template-data';
 
 export function ROICalculatorTemplate() {
   /* ── Calculator State ── */
@@ -56,15 +57,13 @@ export function ROICalculatorTemplate() {
   const currentMonthlyRevenue = monthlyTraffic * (currentConversion / 100) * avgOrderValue;
   const currentAnnualRevenue = currentMonthlyRevenue * 12;
 
-  const performanceImprovementPercent = 15;
+  const { performanceImprovementPercent, accessibilityAudienceIncrease, seoTrafficIncrease } = roiCalculationConstants;
   const newConversionRate = currentConversion * (1 + performanceImprovementPercent / 100);
   const performanceRevenue = monthlyTraffic * (newConversionRate / 100) * avgOrderValue;
   const performanceGain = performanceRevenue - currentMonthlyRevenue;
 
-  const accessibilityAudienceIncrease = 15;
   const accessibilityRevenue = monthlyTraffic * (accessibilityAudienceIncrease / 100) * (currentConversion / 100) * avgOrderValue;
 
-  const seoTrafficIncrease = 30;
   const seoRevenue = (monthlyTraffic * (seoTrafficIncrease / 100)) * (currentConversion / 100) * avgOrderValue;
 
   const totalMonthlyGain = performanceGain + accessibilityRevenue + seoRevenue;
@@ -75,44 +74,22 @@ export function ROICalculatorTemplate() {
 
   const fmt = (n: number) => n.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
 
+  /* ── Computed values for breakdown cards ── */
+  const breakdownValues: Record<string, number> = {
+    performance: performanceGain,
+    accessibility: accessibilityRevenue,
+    seo: seoRevenue,
+  };
+
   /* ── Testimonial mapping ── */
   const mappedTestimonials = testimonials.slice(0, 6).map((t, i) => ({
     quote: t.quote,
     author: t.author,
     role: t.role,
     company: t.company,
-    avatar: t.avatar || [
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400',
-      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400',
-      'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400',
-      'https://images.unsplash.com/photo-1689600944138-da3b150d9cb8?w=400',
-      'https://images.unsplash.com/photo-1610387694365-19fafcc86d86?w=400',
-      'https://images.unsplash.com/photo-1584940121258-c2553b66a739?w=400',
-    ][i % 6],
+    avatar: t.avatar || roiTestimonialAvatars[i % roiTestimonialAvatars.length],
     rating: t.rating || 5
   }));
-
-  /* ── Breakdown Cards Data ── */
-  const breakdowns = [
-    {
-      icon: Zap,
-      title: 'Performance (+15%)',
-      desc: '90+ Lighthouse scores mean faster load times. Amazon found that every 100ms delay costs 1% in sales. We improve by seconds, not milliseconds.',
-      value: `+$${fmt(performanceGain)}/month`
-    },
-    {
-      icon: Shield,
-      title: 'Accessibility (+15%)',
-      desc: '15% of the population has some form of disability. WCAG AA compliance makes your site usable for everyone, expanding your addressable market.',
-      value: `+$${fmt(accessibilityRevenue)}/month`
-    },
-    {
-      icon: Search,
-      title: 'SEO (+30%)',
-      desc: 'Google prioritises fast, accessible sites. Better Core Web Vitals = higher rankings = more organic traffic without ad spend.',
-      value: `+$${fmt(seoRevenue)}/month`
-    }
-  ];
 
   return (
     <div className="roi-calc">
@@ -308,7 +285,7 @@ export function ROICalculatorTemplate() {
           </ScrollReveal>
 
           <div className="roi-calc__breakdown-grid">
-            {breakdowns.map((card) => (
+            {roiBreakdownCards.map((card) => (
               <ScrollReveal key={card.title} animation="fade-up">
                 <article className="roi-calc__bk-card">
                   <div className="roi-calc__bk-icon">
@@ -316,7 +293,7 @@ export function ROICalculatorTemplate() {
                   </div>
                   <h3 className="roi-calc__bk-title">{card.title}</h3>
                   <p className="roi-calc__bk-desc">{card.desc}</p>
-                  <p className="roi-calc__bk-value">{card.value}</p>
+                  <p className="roi-calc__bk-value">+${fmt(breakdownValues[card.valueKey])}/month</p>
                 </article>
               </ScrollReveal>
             ))}
@@ -330,21 +307,21 @@ export function ROICalculatorTemplate() {
 
       <TestimonialGrid
         testimonials={mappedTestimonials}
-        title="Real ROI from Real Clients"
+        title="Real ROI from real clients"
         description="See how our work has delivered measurable results for businesses like yours."
         variant="funky"
       />
 
       <SocialProof
         logos={clientLogos}
-        title="Trusted by Leading Brands"
+        title="Trusted by leading brands"
         description="Join hundreds of businesses who've seen real ROI from our WordPress expertise."
         variant="funky"
       />
 
       <FAQSection
         faqs={pricingTimelineFAQs}
-        title="ROI Calculator FAQs"
+        title="ROI calculator FAQs"
         description="Common questions about our ROI calculations and methodology."
       />
 
@@ -353,12 +330,7 @@ export function ROICalculatorTemplate() {
         description={roiCalculatorCTA.description}
         buttonText={roiCalculatorCTA.button.text}
         buttonPage={roiCalculatorCTA.button.page}
-        benefits={[
-          'Custom analysis for your industry',
-          'Real data-backed projections',
-          'No obligation — 100% free consultation',
-          'Results within 30 days of launch'
-        ]}
+        benefits={roiCtaBenefits}
       />
     </div>
   );

@@ -181,7 +181,7 @@ export function WordPressRedesignTemplate() {
         <Container>
           <ScrollReveal animation="fade-up">
             <div className="redesign-page__section-header">
-              <h2 className="redesign-page__section-title">Results That Speak</h2>
+              <h2 className="redesign-page__section-title">Results that speak</h2>
               <p className="redesign-page__section-desc">Average improvements our clients see after a website redesign.</p>
             </div>
           </ScrollReveal>

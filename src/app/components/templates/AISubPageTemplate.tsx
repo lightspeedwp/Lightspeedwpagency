@@ -116,7 +116,7 @@ export function AISubPageTemplate({
       />
 
       {/* ════════════════ HERO ════════════════ */}
-      <section className="ai-page__hero">
+      <section className="ai-page__hero" aria-label={`${hero.title} hero`}>
         <div className="ai-page__hero-grid" />
         <div className="ai-page__orb ai-page__orb--1" />
         <div className="ai-page__orb ai-page__orb--2" />
@@ -174,7 +174,7 @@ export function AISubPageTemplate({
       </section>
 
       {/* ════════════════ STATS ════════════════ */}
-      <section className="ai-page__stats">
+      <section className="ai-page__stats" aria-label={statsTitle}>
         <Container>
           <ScrollReveal animation="fade-up">
             <div className="ai-page__section-header">

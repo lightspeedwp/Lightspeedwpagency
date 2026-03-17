@@ -160,7 +160,7 @@ export function WhyMailchimpTemplate() {
         <Container>
           <ScrollReveal animation="fade-up">
             <div className="why-mailchimp-page__section-header">
-              <h2 className="why-mailchimp-page__section-title">Grow Your Audience</h2>
+              <h2 className="why-mailchimp-page__section-title">Grow your audience</h2>
               <p className="why-mailchimp-page__section-desc">
                 Everything you need to build relationships and drive sales through email.
               </p>

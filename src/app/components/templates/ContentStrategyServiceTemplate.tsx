@@ -45,7 +45,7 @@ export const ContentStrategyServiceTemplate = () => {
             ]}
           />
           
-          <h1 className="content-strategy-service__hero-title">Content Strategy Services</h1>
+          <h1 className="content-strategy-service__hero-title">Content strategy services</h1>
           
           <p className="content-strategy-service__hero-description">
             Stop guessing what content to create. Get a data-driven content strategy that attracts your ideal customers, 
@@ -65,7 +65,7 @@ export const ContentStrategyServiceTemplate = () => {
 
       <section className="content-strategy-service__benefits">
         <div className="content-strategy-service__section-header">
-          <h2 className="content-strategy-service__section-title">Strategic Content Planning</h2>
+          <h2 className="content-strategy-service__section-title">Strategic content planning</h2>
           <p className="content-strategy-service__section-description">Comprehensive strategy services that align content with business goals</p>
         </div>
         
@@ -80,7 +80,7 @@ export const ContentStrategyServiceTemplate = () => {
 
       <section className="content-strategy-service__deliverables">
         <div className="content-strategy-service__section-header">
-          <h2 className="content-strategy-service__section-title">What You Get</h2>
+          <h2 className="content-strategy-service__section-title">What you get</h2>
           <p className="content-strategy-service__section-description">Complete strategic framework for content success</p>
         </div>
         

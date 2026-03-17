@@ -38,7 +38,7 @@ export function SingleProjectTemplate({ slug }: SingleProjectTemplateProps) {
     return (
       <Container>
         <div className="wp-py-24 wp-text-center">
-          <h1>Project Not Found</h1>
+          <h1>Project not found</h1>
           <Link to={getPageUrl('work')}>Return to Portfolio</Link>
         </div>
       </Container>

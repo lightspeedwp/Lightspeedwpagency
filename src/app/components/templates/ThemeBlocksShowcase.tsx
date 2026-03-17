@@ -23,16 +23,7 @@ import { Navigation } from '../blocks/theme/Navigation';
 import { Pagination } from '../blocks/theme/Pagination';
 import { Breadcrumbs } from '../blocks/theme/Breadcrumbs';
 import { MegaMenu } from '../blocks/theme/MegaMenu';
-
-
-
-// Mock Navigation Data
-const mockNavItems = [
-  { label: 'Home', path: '/', id: '1' },
-  { label: 'About', path: '/about', id: '2' },
-  { label: 'Services', path: '/services', id: '3' },
-  { label: 'Contact', path: '/contact', id: '4' },
-];
+import { mockNavItems } from '../../data/theme-blocks-showcase-data';
 
 export function ThemeBlocksShowcase() {
   const breadcrumbs = [

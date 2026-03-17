@@ -20,8 +20,8 @@ import { PricingTable } from '../patterns/PricingTable';
 import { ServiceRelatedSolutions } from '../patterns/ServiceRelatedSolutions';
 import { FAQSection } from '../patterns/FAQSection';
 import { FunkyCTA } from '../patterns/FunkyCTA';
-import { Code, ShoppingBag as ShoppingCart, Shield } from '@phosphor-icons/react';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
+import { wordPressSolutionRelatedBenefits } from '../../data/wordpress-solution-template-data';
 
 import {
   wordpressSolutionHero,
@@ -54,30 +54,6 @@ export function WordPressSolutionTemplate() {
     recommended: pkg.recommended,
     category: 'website'
   }));
-
-  const relatedBenefits = [
-    {
-      icon: ShoppingCart,
-      title: 'WooCommerce Solution',
-      description: 'Build powerful e-commerce stores with WooCommerce and WordPress.',
-      link: 'woocommerce',
-      linkText: 'Learn More'
-    },
-    {
-      icon: Shield,
-      title: 'WordPress Hosting',
-      description: 'Secure managed WordPress hosting with daily backups and monitoring.',
-      link: 'hosting',
-      linkText: 'Learn More'
-    },
-    {
-      icon: Code,
-      title: 'WordPress Security',
-      description: 'Protect your WordPress site from malware, hacks, and security threats.',
-      link: 'security',
-      linkText: 'Learn More'
-    }
-  ];
 
   return (
     <div className="wp-w-full wp-flex wp-flex-col">
@@ -157,7 +133,7 @@ export function WordPressSolutionTemplate() {
         <ServiceRelatedSolutions
           heading="Related Solutions"
           subheading="Explore more ways to enhance your WordPress website"
-          solutions={relatedBenefits.map((b, i) => ({
+          solutions={wordPressSolutionRelatedBenefits.map((b, i) => ({
             id: `related-${i}`,
             icon: b.icon,
             title: b.title,

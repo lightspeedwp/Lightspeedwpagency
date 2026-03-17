@@ -6,9 +6,9 @@
  * Parent: /services/hosting
  */
 
-import { Package, Database, CloudArrowUp, CheckCircle, Shield, Lightning } from '@phosphor-icons/react';
 import { Link } from 'react-router';
 import { getPageUrl } from '../../data/site-pages';
+import { migrationsServiceBenefits, migrationsServiceTypes, migrationsServiceProcess, migrationsServiceResults } from '../../data/migrations-service-template-data';
 import { FeatureList } from '../patterns/FeatureList';
 import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
 import { Container } from '../common/Container';
@@ -20,69 +20,13 @@ import { ProcessTimeline } from '../patterns/ProcessTimeline';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 
 export const MigrationsServiceTemplate = () => {
-  const benefits = [
-    {
-      icon: Package as any,
-      title: 'Platform Migrations',
-      description: 'Seamlessly migrate from any platform to WordPress, WooCommerce, or custom solutions.'
-    },
-    {
-      icon: Database as any,
-      title: 'Complete Data Transfer',
-      description: 'Migrate all content, media, databases, and settings with zero data loss.'
-    },
-    {
-      icon: CloudArrowUp as any,
-      title: 'Hosting Migration',
-      description: 'Move to better hosting with minimal downtime and improved performance.'
-    },
-    {
-      icon: CheckCircle as any,
-      title: 'Quality Assurance',
-      description: 'Comprehensive testing ensures everything works perfectly post-migration.'
-    },
-    {
-      icon: Shield as any,
-      title: 'Security First',
-      description: 'Secure transfer protocols and backup systems protect your data throughout.'
-    },
-    {
-      icon: Lightning as any,
-      title: 'Minimal Downtime',
-      description: 'Strategic planning keeps your site running during the migration process.'
-    }
-  ];
+  const benefits = migrationsServiceBenefits;
 
-  const migrationTypes = [
-    {
-      type: 'Platform Migration',
-      examples: ['Wix → WordPress', 'Squarespace → WooCommerce', 'Shopify → WooCommerce', 'Custom CMS → WordPress']
-    },
-    {
-      type: 'Hosting Migration',
-      examples: ['Shared → VPS', 'Any Host → WP Engine', 'Any Host → Kinsta', 'On-Premise → Cloud']
-    },
-    {
-      type: 'Version Upgrade',
-      examples: ['WordPress Major Upgrade', 'PHP Version Upgrade', 'MySQL → MariaDB', 'HTTP → HTTPS']
-    }
-  ];
+  const migrationTypes = migrationsServiceTypes;
 
-  const process = [
-    { id: 'audit', step: 'Pre-Migration Audit', description: 'Complete site analysis and backup' },
-    { id: 'plan', step: 'Migration Plan', description: 'Detailed roadmap with timeline' },
-    { id: 'staging', step: 'Staging Migration', description: 'Test migration on staging server' },
-    { id: 'qa', step: 'QA & Testing', description: 'Comprehensive testing and fixes' },
-    { id: 'live', step: 'Live Migration', description: 'Production deployment with monitoring' },
-    { id: 'support', step: 'Post-Migration Support', description: '30 days of dedicated support' }
-  ];
+  const process = migrationsServiceProcess;
 
-  const results = [
-    { id: 'metric-1', value: '99.9%', label: 'Data Transfer Success Rate' },
-    { id: 'metric-2', value: '<2hr', label: 'Average Downtime' },
-    { id: 'metric-3', value: '100%', label: 'Sites Tested Pre-Launch' },
-    { id: 'metric-4', value: '30 days', label: 'Post-Migration Support' }
-  ];
+  const results = migrationsServiceResults;
 
   return (
     <div className="wp-w-full wp-flex wp-flex-col">

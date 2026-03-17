@@ -32,97 +32,8 @@ import { ProcessTimeline } from '../patterns/ProcessTimeline';
 import { RelatedServicesGrid } from '../patterns/RelatedServicesGrid';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { ScrollDownArrow } from '../common/ScrollDownArrow';
-import {
-  MagnifyingGlass,
-  ChartBar,
-  Brain,
-  ChatCentered,
-  Eye,
-} from '@phosphor-icons/react';
-
-/** Service pillars — the 4 merged sub-services */
-const pillars = [
-  {
-    id: 'seo',
-    icon: MagnifyingGlass,
-    name: 'Technical SEO',
-    description:
-      'Comprehensive technical SEO audits, keyword research, on-page optimisation, and ongoing monitoring to dominate organic search results.',
-    features: [
-      'Technical SEO audit & remediation',
-      'Keyword research & content gaps',
-      'On-page & schema markup',
-      'Link authority building',
-      'Monthly ranking reports',
-    ],
-  },
-  {
-    id: 'analytics',
-    icon: ChartBar,
-    name: 'Analytics & Reporting',
-    description:
-      'Data-driven insights with custom dashboards, conversion tracking, and actionable reporting that connects marketing spend to revenue.',
-    features: [
-      'GA4 & tag management setup',
-      'Custom KPI dashboards',
-      'Conversion funnel analysis',
-      'Attribution modelling',
-      'Monthly performance reports',
-    ],
-  },
-  {
-    id: 'ai-engine',
-    icon: Brain,
-    name: 'AI Engine Optimisation',
-    description:
-      'Fine-tune, accelerate, and scale AI models on your WordPress stack — from inference speed to cost efficiency. Cut AI costs by 60%.',
-    features: [
-      'Model benchmarking (6+ providers)',
-      'Prompt engineering & tuning',
-      'Semantic inference caching',
-      'Cost & rate-limit management',
-      'Quality regression testing',
-    ],
-  },
-  {
-    id: 'answer-engine',
-    icon: ChatCentered,
-    name: 'Answer Engine Optimisation',
-    description:
-      'Get cited by ChatGPT, Perplexity, and AI Overviews. Optimise your content to be the answer AI engines serve.',
-    features: [
-      'AI citation audit',
-      'Entity authority building',
-      'AI-friendly content formatting',
-      'Citation tracking (5+ engines)',
-      'Monthly share-of-voice reports',
-    ],
-  },
-];
-
-/** Process steps */
-const processSteps = [
-  { number: '01', title: 'Audit', description: 'Full-stack visibility audit across search engines and AI platforms.' },
-  { number: '02', title: 'Strategy', description: 'Custom roadmap combining SEO, AEO, and AI optimisation priorities.' },
-  { number: '03', title: 'Implement', description: 'Technical fixes, content restructuring, schema, and AI model tuning.' },
-  { number: '04', title: 'Measure', description: 'Ongoing tracking, citation monitoring, and monthly performance reports.' },
-];
-
-/* ── Map pillars to FeatureList shape ── */
-const pillarItems = pillars.map((p) => ({
-  icon: p.icon,
-  title: p.name,
-  description: p.description,
-  features: p.features,
-}));
-
-/* ── Map process steps to ProcessTimeline shape ── */
-const timelineSteps = processSteps.map((s) => ({
-  id: `ai-step-${s.number}`,
-  number: parseInt(s.number, 10),
-  title: s.title,
-  description: s.description,
-}));
+import { Eye } from '@phosphor-icons/react';
+import { aiSearchServicePillars, aiSearchServiceProcessSteps } from '../../data/ai-search-service-template-data';
 
 export function AISearchServiceTemplate() {
   return (
@@ -193,7 +104,7 @@ export function AISearchServiceTemplate() {
           </ScrollReveal>
 
           <FeatureList
-            items={pillarItems}
+            items={aiSearchServicePillars}
             columns={2}
             variant="glow"
           />
@@ -210,7 +121,7 @@ export function AISearchServiceTemplate() {
           </ScrollReveal>
 
           <ProcessTimeline
-            steps={timelineSteps}
+            steps={aiSearchServiceProcessSteps}
             orientation="horizontal"
           />
         </Container>

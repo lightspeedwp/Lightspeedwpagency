@@ -15,92 +15,13 @@
  * @see /src/styles/templates/sub-service-base.css
  */
 
-import { MagnifyingGlass, TrendUp, Target, ChartBar, FileMagnifyingGlass, Trophy } from '@phosphor-icons/react';
 import { Link } from 'react-router';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { FeatureList } from '../patterns/FeatureList';
+import { seoServiceBenefits, seoServiceDeliverables, seoServiceResults } from '../../data/seo-service-template-data';
 import '../../../styles/templates/seo-service-optimized.css';
 
 export const SEOServiceTemplate = () => {
-  const benefits = [
-    {
-      icon: MagnifyingGlass,
-      title: 'Keyword research & strategy',
-      description: 'Data-driven keyword analysis to target high-value search terms your audience is actually using.'
-    },
-    {
-      icon: TrendUp,
-      title: 'Technical SEO optimization',
-      description: 'Fix crawl errors, improve site architecture, and ensure search engines can properly index your content.'
-    },
-    {
-      icon: Target,
-      title: 'On-page SEO',
-      description: 'Optimize meta tags, headings, content structure, and internal linking for maximum relevance.'
-    },
-    {
-      icon: ChartBar,
-      title: 'Performance tracking',
-      description: 'Monitor rankings, traffic, and conversions with comprehensive analytics and reporting.'
-    },
-    {
-      icon: FileMagnifyingGlass,
-      title: 'Content optimization',
-      description: 'Enhance existing content and create new SEO-optimized pages that rank and convert.'
-    },
-    {
-      icon: Trophy,
-      title: 'Competitive analysis',
-      description: 'Understand your competitive landscape and identify opportunities to outrank competitors.'
-    }
-  ];
-
-  const deliverables = [
-    {
-      phase: 'Discovery & audit',
-      items: [
-        'Complete technical SEO audit',
-        'Competitor analysis report',
-        'Keyword research document',
-        'Content gap analysis'
-      ]
-    },
-    {
-      phase: 'Strategy & planning',
-      items: [
-        'SEO strategy roadmap',
-        'Keyword targeting plan',
-        'Content calendar',
-        'Technical optimization plan'
-      ]
-    },
-    {
-      phase: 'Implementation',
-      items: [
-        'On-page optimization',
-        'Technical fixes',
-        'Content creation/optimization',
-        'Link building strategy'
-      ]
-    },
-    {
-      phase: 'Monitoring & reporting',
-      items: [
-        'Monthly performance reports',
-        'Ranking tracking dashboard',
-        'Traffic & conversion analytics',
-        'Ongoing optimization recommendations'
-      ]
-    }
-  ];
-
-  const results = [
-    { metric: '150%', label: 'Average Organic Traffic Increase' },
-    { metric: '10x', label: 'First Page Rankings Growth' },
-    { metric: '85%', label: 'Click-Through Rate Improvement' },
-    { metric: '3-6 mo', label: 'Time to See Results' }
-  ];
-
   return (
     <div className="seo-service">
       {/* Hero Section */}
@@ -145,7 +66,7 @@ export const SEOServiceTemplate = () => {
         </div>
         
         <FeatureList 
-          items={benefits} 
+          items={seoServiceBenefits} 
           columns={3} 
           variant="glow" 
           iconSize="lg"
@@ -162,7 +83,7 @@ export const SEOServiceTemplate = () => {
         </div>
         
         <div className="sub-service-base__types-grid">
-          {deliverables.map((phase, index) => (
+          {seoServiceDeliverables.map((phase, index) => (
             <div key={index} className="sub-service-base__type-card">
               <h3 className="sub-service-base__type-card-title">
                 <span className="sub-service-base__type-list-dot" /> {phase.phase}
@@ -190,7 +111,7 @@ export const SEOServiceTemplate = () => {
         </div>
         
         <div className="sub-service-base__results-grid">
-          {results.map((result, index) => (
+          {seoServiceResults.map((result, index) => (
             <div key={index} className="sub-service-base__result-card">
               <div className="sub-service-base__result-metric">{result.metric}</div>
               <div className="sub-service-base__result-label">{result.label}</div>

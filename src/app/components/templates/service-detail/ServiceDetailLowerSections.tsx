@@ -49,7 +49,7 @@ export function ServiceDetailLowerSections({ slug }: ServiceDetailLowerSectionsP
         <Container>
           <ScrollReveal animation="fade-up">
             <div className="service-detail__section-header">
-              <h2 className="service-detail__title">Our Development Process</h2>
+              <h2 className="service-detail__title">Our development process</h2>
               <p className="service-detail__description">
                 From discovery to launch, we follow a proven process
               </p>
@@ -125,7 +125,7 @@ export function ServiceDetailLowerSections({ slug }: ServiceDetailLowerSectionsP
         <Container>
           <ScrollReveal animation="fade-up">
             <div className="service-detail__section-header">
-              <h2 className="service-detail__title">Why Choose LightSpeed</h2>
+              <h2 className="service-detail__title">Why choose LightSpeed</h2>
               <p className="service-detail__description">
                 What sets us apart from other WordPress development agencies
               </p>

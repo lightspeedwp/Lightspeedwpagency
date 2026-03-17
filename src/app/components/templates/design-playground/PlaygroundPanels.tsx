@@ -52,7 +52,7 @@ export function RadiusPanel({ activeTab }: PanelProps) {
       role="tabpanel"
       aria-label="Radius"
     >
-      <h2 className="playground__section-title">Border Radius Tokens</h2>
+      <h2 className="playground__section-title">Border radius tokens</h2>
       <p className="playground__section-description">
         Each shape uses the actual CSS variable so it responds to theme overrides.
       </p>

@@ -96,7 +96,7 @@ export function SingleTestimonialTemplate({ slug }: { slug?: string }) {
             ref={storyRef as any}
             style={storyStyle}
           >
-            <h2 className="single-testimonial__story-title">The Full Story</h2>
+            <h2 className="single-testimonial__story-title">The full story</h2>
             <p className="single-testimonial__story-text">{testimonial.fullStory}</p>
           </div>
         </Section>

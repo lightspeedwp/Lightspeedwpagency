@@ -82,7 +82,7 @@ export const PerformanceReliabilitySystemTemplate = () => {
 
       <section className="system-page__how">
         <div className="system-page__section-content">
-          <h2 className="system-page__section-heading">How We Implement It</h2>
+          <h2 className="system-page__section-heading">How we implement it</h2>
           <div className="system-page__steps">
             <div className="system-page__step">
               <div className="system-page__step-number">1</div>

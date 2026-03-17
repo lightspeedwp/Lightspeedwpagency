@@ -11,9 +11,9 @@
  * @migrated March 3, 2026 — Phase 3.1: Migrated inline benefits grid to FeatureList component (~80 lines saved)
  */
 
-import { Brain, Sparkle, Target, Lightning, CheckCircle, TrendUp } from '@phosphor-icons/react';
 import { Link } from 'react-router';
 import { getPageUrl } from '../../data/site-pages';
+import { aiEngineServiceBenefits, aiEngineServiceProcess, aiEngineServiceResults } from '../../data/ai-engine-service-template-data';
 import { FeatureList } from '../patterns/FeatureList';
 import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
 import { Container } from '../common/Container';
@@ -25,68 +25,11 @@ import { ProcessTimeline } from '../patterns/ProcessTimeline';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 
 export const AIEngineServiceTemplate = () => {
-  const benefits = [
-    {
-      icon: Brain,
-      title: 'AI-First Content Strategy',
-      description: 'Structure content to be understood and surfaced by AI systems like ChatGPT, Claude, and Perplexity.'
-    },
-    {
-      icon: Sparkle,
-      title: 'Entity Optimization',
-      description: 'Build strong entity associations and knowledge graph relationships for AI comprehension.'
-    },
-    {
-      icon: Target,
-      title: 'Intent Matching',
-      description: 'Align content with AI interpretation of user queries and contextual understanding.'
-    },
-    {
-      icon: Lightning,
-      title: 'Structured Data Enhancement',
-      description: 'Implement schema markup that AI engines use to understand and categorize your content.'
-    },
-    {
-      icon: CheckCircle,
-      title: 'Authoritative Signals',
-      description: 'Build E-E-A-T signals (Experience, Expertise, Authoritativeness, Trust) for AI credibility scoring.'
-    },
-    {
-      icon: TrendUp,
-      title: 'AI Visibility Tracking',
-      description: 'Monitor your brand presence across AI-generated responses and recommendations.'
-    }
-  ];
+  const benefits = aiEngineServiceBenefits;
 
-  const process = [
-    {
-      title: 'AI Audit',
-      description: 'Analyze how AI engines currently understand and reference your brand',
-      deliverables: ['AI citation audit', 'Entity relationship mapping', 'Content structure analysis']
-    },
-    {
-      title: 'Strategy Development',
-      description: 'Create a roadmap for improving AI engine visibility',
-      deliverables: ['AEO strategy document', 'Priority content targets', 'Implementation timeline']
-    },
-    {
-      title: 'Content Optimization',
-      description: 'Enhance content for AI understanding and citation',
-      deliverables: ['Content restructuring', 'Schema implementation', 'Authority building']
-    },
-    {
-      title: 'Monitoring & Refinement',
-      description: 'Track AI visibility and refine strategy based on results',
-      deliverables: ['Monthly AI visibility reports', 'Citation tracking', 'Strategy adjustments']
-    }
-  ];
+  const process = aiEngineServiceProcess;
 
-  const results = [
-    { metric: '250%', label: 'Increase in AI Citations' },
-    { metric: '3x', label: 'More AI-Generated Referrals' },
-    { metric: '90%', label: 'Accuracy of AI Brand Info' },
-    { metric: '6-9 mo', label: 'Time to Significant Impact' }
-  ];
+  const results = aiEngineServiceResults;
 
   return (
     <div className="wp-w-full wp-flex wp-flex-col">

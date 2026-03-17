@@ -6,9 +6,9 @@
  * Parent: /services/hosting
  */
 
-import { Headphones, Clock, Wrench, Shield, Lightning, TrendUp } from '@phosphor-icons/react';
 import { Link } from 'react-router';
 import { getPageUrl } from '../../data/site-pages';
+import { supportServiceBenefits, supportServicePlans, supportServiceResults } from '../../data/support-service-template-data';
 import { FeatureList } from '../patterns/FeatureList';
 import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
 import { Container } from '../common/Container';
@@ -19,63 +19,11 @@ import { StatsGrid } from '../patterns/StatsGrid';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 
 export const SupportServiceTemplate = () => {
-  const benefits = [
-    {
-      icon: Headphones as any,
-      title: '24/7 Support Availability',
-      description: 'Round-the-clock support for critical issues with guaranteed response times.'
-    },
-    {
-      icon: Clock as any,
-      title: 'Fast Response Times',
-      description: 'Under 1 hour response for critical issues, under 4 hours for standard requests.'
-    },
-    {
-      icon: Wrench as any,
-      title: 'Proactive Maintenance',
-      description: 'Regular updates, backups, and monitoring to prevent issues before they occur.'
-    },
-    {
-      icon: Shield as any,
-      title: 'Security Monitoring',
-      description: 'Continuous security scans and immediate response to threats.'
-    },
-    {
-      icon: Lightning as any,
-      title: 'Performance Optimization',
-      description: 'Ongoing speed improvements and resource optimization.'
-    },
-    {
-      icon: TrendUp as any,
-      title: 'Priority Support Queue',
-      description: 'Jump the queue with dedicated support team members.'
-    }
-  ];
+  const benefits = supportServiceBenefits;
 
-  const plans = [
-    {
-      name: 'Essential Support',
-      price: '$199/mo',
-      features: ['5 hours/month', 'Email support', '24hr response time', 'Monthly backups', 'Plugin updates']
-    },
-    {
-      name: 'Priority Support',
-      price: '$499/mo',
-      features: ['15 hours/month', 'Phone + email', '4hr response time', 'Weekly backups', 'Priority queue', 'Security monitoring']
-    },
-    {
-      name: 'Enterprise Support',
-      price: 'Custom',
-      features: ['Unlimited hours', '24/7 phone support', '<1hr critical response', 'Daily backups', 'Dedicated team', 'Custom SLA']
-    }
-  ];
+  const plans = supportServicePlans;
 
-  const results = [
-    { id: 'metric-1', value: '<1hr', label: 'Critical Issue Response' },
-    { id: 'metric-2', value: '99.9%', label: 'Uptime Guarantee' },
-    { id: 'metric-3', value: '4.9/5', label: 'Customer Satisfaction' },
-    { id: 'metric-4', value: '24/7', label: 'Support Availability' }
-  ];
+  const results = supportServiceResults;
 
   return (
     <div className="wp-w-full wp-flex wp-flex-col">

@@ -109,12 +109,13 @@ const SLUG_TO_PATH: Record<string, string> = {
   'wordpress-redesign': '/solutions/wordpress-redesign',
   'woocommerce-redesign': '/solutions/woocommerce-redesign',
 
-  /* ── AI Integrations ── */
-  'ai-integrations': '/solutions/ai-integrations',
-  'ai-content-generation': '/solutions/ai-content-generation',
-  'ai-seo': '/solutions/ai-seo',
-  'ai-chatbots': '/solutions/ai-chatbots',
-  'ai-analytics': '/solutions/ai-analytics',
+  /* ── AI Solutions ── */
+  'ai-solutions': '/solutions/ai',
+  'ai-integrations': '/solutions/ai/integrations',
+  'ai-content-generation': '/solutions/ai/content-generation',
+  'ai-seo': '/solutions/ai/seo',
+  'ai-chatbots': '/solutions/ai/chatbots',
+  'ai-analytics': '/solutions/ai/analytics',
 
   /* ── Solutions (legacy "with suffix" routes) ── */
   'wordpress-solutions': '/solutions/wordpress',

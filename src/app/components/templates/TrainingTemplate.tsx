@@ -28,102 +28,14 @@ import { ScrollDownArrow } from '../common/ScrollDownArrow';
 import '../../../styles/templates/page-service-training-optimized.css';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import {
-  BookOpen, VideoCamera as Video, Users, Trophy as Award, PlayCircle, Check,
-  Lightbulb, Brain, Crosshair as Target, Lightning as Zap, Clock, Calendar
+  PlayCircle, Check, Lightbulb, Clock
 } from '@phosphor-icons/react';
-
-/* ─────────────────────────────────────────────
-   DATA (inline — no separate data file yet)
-   ───────────────────────────────────────────── */
+import { trainingHero, trainingModules, trainingFormats } from '../../data/training-template-data';
 
 const trainingData = {
-  hero: {
-    badge: 'WORDPRESS MASTERY',
-    title: "Unlock Your Team's",
-    highlight: 'Full Potential.',
-    description:
-      'Empower your team with expert-led WordPress training. From content management basics to advanced development workflows.',
-    cta: {
-      primary: { text: 'Explore Courses', page: 'services' },
-      secondary: { text: 'Team Training', page: 'contact' },
-    },
-  },
-  modules: [
-    {
-      title: 'Content Editor Mastery',
-      description:
-        'Master the Gutenberg editor, manage media efficiently, and publish SEO-optimized content with confidence.',
-      icon: BookOpen,
-      progress: 0,
-      duration: '4 Hours',
-    },
-    {
-      title: 'Site Management Basics',
-      description:
-        'Learn to handle updates, manage users, configure plugins, and maintain site health without breaking things.',
-      icon: Target,
-      progress: 35,
-      duration: '3 Hours',
-    },
-    {
-      title: 'Advanced Workflows',
-      description:
-        'Streamline your publishing process with editorial calendars, revision history, and collaborative tools.',
-      icon: Zap,
-      progress: 75,
-      duration: '5 Hours',
-    },
-    {
-      title: 'SEO & Performance',
-      description:
-        'Write content that ranks. Understand technical SEO basics, image optimization, and Core Web Vitals.',
-      icon: Brain,
-      progress: 10,
-      duration: '6 Hours',
-    },
-    {
-      title: 'WooCommerce Admin',
-      description:
-        'Manage products, process orders, handle refunds, and analyze store reports like a pro.',
-      icon: Award,
-      progress: 0,
-      duration: '8 Hours',
-    },
-    {
-      title: 'Custom Development',
-      description:
-        'For technical teams: Learn our specific stack, coding standards, and deployment pipelines.',
-      icon: Lightbulb,
-      progress: 0,
-      duration: '12 Hours',
-    },
-  ],
-  formats: [
-    {
-      title: 'Video Library',
-      description:
-        'On-demand access to our comprehensive library of tutorials and walkthroughs.',
-      icon: Video,
-      badge: 'SELF-PACED',
-      featured: false,
-    },
-    {
-      title: 'Live Workshops',
-      description:
-        'Interactive Zoom sessions with Q&A, live demos, and hands-on exercises.',
-      icon: Users,
-      badge: 'POPULAR',
-      featured: true,
-    },
-    {
-      title: 'On-Site Training',
-      description:
-        'We come to you (or dedicated remote) for bespoke team training days.',
-      icon: Calendar,
-      badge: 'ENTERPRISE',
-      featured: false,
-    },
-  ],
+  hero: trainingHero,
+  modules: trainingModules,
+  formats: trainingFormats,
 };
 
 /* ═══════════════════════════════════════════

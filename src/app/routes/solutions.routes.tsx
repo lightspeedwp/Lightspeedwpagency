@@ -15,7 +15,7 @@
  */
 
 import React from 'react';
-import type { RouteObject } from 'react-router';
+import { Navigate, type RouteObject } from 'react-router';
 import { loadCSSBundle } from '../utils/css-bundle-loader';
 
 /* ═══════════════════════════════════════════
@@ -40,6 +40,7 @@ import { AIContentGenerationTemplate } from '../components/templates/AIContentGe
 import { AISEOTemplate } from '../components/templates/AISEOTemplate';
 import { AIChatbotsTemplate } from '../components/templates/AIChatbotsTemplate';
 import { AIAnalyticsTemplate } from '../components/templates/AIAnalyticsTemplate';
+import { AISolutionsLandingTemplate } from '../components/templates/AISolutionsLandingTemplate';
 
 /* ═══════════════════════════════════════════
  * Route Wrapper Components
@@ -63,6 +64,7 @@ function AIContentGenerationRoute() { loadCSSBundle('solutions'); return <AICont
 function AISEORoute() { loadCSSBundle('solutions'); return <AISEOTemplate />; }
 function AIChatbotsRoute() { loadCSSBundle('solutions'); return <AIChatbotsTemplate />; }
 function AIAnalyticsRoute() { loadCSSBundle('solutions'); return <AIAnalyticsTemplate />; }
+function AISolutionsLandingRoute() { loadCSSBundle('solutions'); return <AISolutionsLandingTemplate />; }
 
 /* ═══════════════════════════════════════════
  * Route Definitions
@@ -82,9 +84,19 @@ export const solutionsRoutes: RouteObject[] = [
   { path: 'solutions/lsx-search', Component: LSXSearchRoute },
   { path: 'solutions/wordpress-redesign', Component: WordPressRedesignRoute },
   { path: 'solutions/woocommerce-redesign', Component: WooCommerceRedesignRoute },
-  { path: 'solutions/ai-integrations', Component: AIIntegrationsRoute },
-  { path: 'solutions/ai-content-generation', Component: AIContentGenerationRoute },
-  { path: 'solutions/ai-seo', Component: AISEORoute },
-  { path: 'solutions/ai-chatbots', Component: AIChatbotsRoute },
-  { path: 'solutions/ai-analytics', Component: AIAnalyticsRoute },
+
+  /* ── AI Solutions Landing + Sub-Pages ── */
+  { path: 'solutions/ai', Component: AISolutionsLandingRoute },
+  { path: 'solutions/ai/integrations', Component: AIIntegrationsRoute },
+  { path: 'solutions/ai/content-generation', Component: AIContentGenerationRoute },
+  { path: 'solutions/ai/seo', Component: AISEORoute },
+  { path: 'solutions/ai/chatbots', Component: AIChatbotsRoute },
+  { path: 'solutions/ai/analytics', Component: AIAnalyticsRoute },
+
+  /* ── AI Solutions Legacy Redirects (backward compatibility) ── */
+  { path: 'solutions/ai-integrations', element: <Navigate to="/solutions/ai/integrations" replace /> },
+  { path: 'solutions/ai-content-generation', element: <Navigate to="/solutions/ai/content-generation" replace /> },
+  { path: 'solutions/ai-seo', element: <Navigate to="/solutions/ai/seo" replace /> },
+  { path: 'solutions/ai-chatbots', element: <Navigate to="/solutions/ai/chatbots" replace /> },
+  { path: 'solutions/ai-analytics', element: <Navigate to="/solutions/ai/analytics" replace /> },
 ];
