@@ -16,7 +16,11 @@ import {
   aiChatbotsPricing,
   aiChatbotsFAQs,
   aiChatbotsCTA,
-} from '../../data/ai-integrations-page';
+  chatbotsLifecycle,
+  chatbotsTrustSignal,
+  chatbotsRelatedServices,
+  chatbotsRelatedSolutions,
+} from '../../data/ai-integrations/chatbots';
 
 export function AIChatbotsTemplate() {
   return (
@@ -42,6 +46,11 @@ export function AIChatbotsTemplate() {
         'Seamless handoff to human agents',
         'GDPR compliant by design',
       ]}
+      lifecycleStages={[chatbotsLifecycle]}
+      trustSignal={chatbotsTrustSignal}
+      relatedServices={chatbotsRelatedServices}
+      relatedSolutions={chatbotsRelatedSolutions}
+      showPricing={false}
     />
   );
 }

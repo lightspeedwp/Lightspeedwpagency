@@ -20,9 +20,64 @@ import {
   Shield,
   PenNib,
   Robot,
+  Code,
+  Rocket,
 } from '@phosphor-icons/react';
 
 import type { AIHero, AIStat, AIFeature, AISubPageCard, AIFAQ, AICTA } from './types';
+import type { LifecycleStageInfo } from './content-generation';
+
+/* ── Lifecycle Stage Info (Integrations spans multiple stages) ── */
+
+export const integrationsLifecycleStages: LifecycleStageInfo[] = [
+  {
+    slug: 'discover',
+    name: 'Discover',
+    icon: MagnifyingGlass,
+    accent: 'var(--wp--preset--color--neon-yellow)',
+  },
+  {
+    slug: 'build',
+    name: 'Build',
+    icon: Code,
+    accent: 'var(--wp--preset--color--neon-cyan)',
+  },
+  {
+    slug: 'launch',
+    name: 'Launch',
+    icon: Rocket,
+    accent: 'var(--wp--preset--color--neon-lime)',
+  },
+  {
+    slug: 'evolve',
+    name: 'Evolve',
+    icon: Brain,
+    accent: 'var(--category-purple)',
+  },
+];
+
+/* ── Trust Signal ── */
+
+export const integrationsTrustSignal = {
+  quote: 'The AI readiness audit gave us a clear, actionable path to automation we never saw before.',
+  author: 'Sarah Chen',
+  role: 'Marketing Director',
+  company: 'TravelCo',
+};
+
+/* ── Related Links ── */
+
+export const integrationsRelatedServices = [
+  { label: 'AI Search & Visibility', href: '/services/ai/search-visibility', description: 'Comprehensive AI search strategy' },
+  { label: 'AI Engine Optimisation', href: '/services/ai/engine-optimisation', description: 'Get cited by AI platforms' },
+  { label: 'Training', href: '/services/training', description: 'AI prompt training for teams' },
+];
+
+export const integrationsRelatedSolutions = [
+  { label: 'AI Content Generation', href: '/solutions/ai/content-generation', description: 'Scale content with AI' },
+  { label: 'AI Chatbots', href: '/solutions/ai/chatbots', description: '24/7 conversational support' },
+  { label: 'AI Analytics', href: '/solutions/ai/analytics', description: 'Predictive insights from data' },
+];
 
 /* ── Hero ── */
 

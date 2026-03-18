@@ -91,20 +91,27 @@ export function buildNavItems(currentPath: string): NavItem[] {
           title: 'Platforms',
           items: [
             { label: 'WordPress', page: 'wordpress', description: 'Enterprise WordPress solutions' },
-            { label: 'WooCommerce', page: 'woocommerce', description: 'E-commerce & online stores' }
+            { label: 'WooCommerce', page: 'woocommerce', description: 'E-commerce & online stores' },
+            { label: 'WordPress Multisite', page: 'wordpress-multisite', description: 'Multi-site network management' },
+            { label: 'Headless WordPress', page: 'headless-wordpress', description: 'API-first architecture' }
           ]
         },
         {
           title: 'Website Projects',
           items: [
             { label: 'WordPress Redesign', page: 'wordpress-redesign', description: 'Transform your existing site' },
-            { label: 'WooCommerce Redesign', page: 'woocommerce-redesign', description: 'Rebuild your online store' }
+            { label: 'WooCommerce Redesign', page: 'woocommerce-redesign', description: 'Rebuild your online store' },
+            { label: 'Custom WordPress Theme', page: 'custom-wordpress-theme', description: 'Bespoke FSE themes' },
+            { label: 'WordPress to WordPress', page: 'wordpress-to-wordpress', description: 'Modernize legacy sites' }
           ]
         },
         {
           title: 'Industries',
           items: [
-            { label: 'Publishers', page: 'publishers', description: 'Digital publishing solutions' }
+            { label: 'Publishers', page: 'publishers', description: 'Digital publishing solutions' },
+            { label: 'E-commerce', page: 'ecommerce-industry', description: 'Online retail platforms' },
+            { label: 'Education', page: 'education-industry', description: 'Learning management systems' },
+            { label: 'Healthcare', page: 'healthcare-industry', description: 'HIPAA-compliant websites' }
           ]
         },
         {
@@ -114,7 +121,8 @@ export function buildNavItems(currentPath: string): NavItem[] {
             { label: 'AI Content Generation', page: 'ai-content-generation', description: 'Automated content at scale' },
             { label: 'AI-Powered SEO', page: 'ai-seo', description: 'Intelligent search optimisation' },
             { label: 'AI Chatbots', page: 'ai-chatbots', description: 'Conversational agents 24/7' },
-            { label: 'AI Analytics', page: 'ai-analytics', description: 'Predictive insights & reporting' }
+            { label: 'AI Analytics', page: 'ai-analytics', description: 'Predictive insights & reporting' },
+            { label: 'AI Image Recognition', page: 'ai-image-recognition', description: 'Auto-tagging & optimization' }
           ]
         }
       ]
@@ -132,7 +140,8 @@ export function buildNavItems(currentPath: string): NavItem[] {
           items: [
             { label: 'Discovery & Strategy', page: 'journey-discover', description: 'Uncover. Research. Strategise.' },
             { label: 'Content Audit', page: 'content-audit', description: 'Analyse every page' },
-            { label: 'Content Strategy', page: 'content-strategy', description: 'Define your voice & plan' }
+            { label: 'Content Strategy', page: 'content-strategy', description: 'Define your voice & plan' },
+            { label: 'Competitor Research', page: 'competitor-research', description: 'Market analysis & benchmarking' }
           ]
         },
         {
@@ -141,7 +150,8 @@ export function buildNavItems(currentPath: string): NavItem[] {
             { label: 'Web Design', page: 'journey-create', description: 'Design. Prototype. Inspire.' },
             { label: 'Figma Prototyping', page: 'figma-prototyping', description: 'Interactive prototypes' },
             { label: 'Design Systems', page: 'design-systems', description: 'Tokens & governance' },
-            { label: 'Content Collection', page: 'content-collection', description: 'Gather & organize assets' }
+            { label: 'Content Collection', page: 'content-collection', description: 'Gather & organize assets' },
+            { label: 'Brand Guidelines', page: 'brand-guidelines', description: 'Visual identity systems' }
           ]
         },
         {
@@ -150,7 +160,9 @@ export function buildNavItems(currentPath: string): NavItem[] {
             { label: 'WordPress Development', page: 'journey-build', description: 'Develop. Integrate. Harden.' },
             { label: 'WooCommerce Development', page: 'woocommerce-service', description: 'E-commerce platforms' },
             { label: 'Plugin Development', page: 'development-service', description: 'Custom functionality' },
-            { label: 'Theme Development', page: 'development-service', description: 'Block themes & FSE' }
+            { label: 'Theme Development', page: 'development-service', description: 'Block themes & FSE' },
+            { label: 'API Integrations', page: 'api-integrations', description: 'Third-party connections' },
+            { label: 'Custom Post Types', page: 'custom-post-types', description: 'Advanced content models' }
           ]
         },
         {
@@ -158,7 +170,9 @@ export function buildNavItems(currentPath: string): NavItem[] {
           items: [
             { label: 'Deployment', page: 'journey-launch', description: 'Deploy. Train. Go live.' },
             { label: 'Managed Hosting', page: 'hosting', description: 'High-performance infrastructure' },
-            { label: 'Team Training', page: 'training', description: 'WordPress editor training' }
+            { label: 'Team Training', page: 'training', description: 'WordPress editor training' },
+            { label: 'Migration Services', page: 'migration-service', description: 'Platform & content transfer' },
+            { label: 'SSL & Security Setup', page: 'security-setup', description: 'Certificate & hardening' }
           ]
         },
         {
@@ -167,7 +181,9 @@ export function buildNavItems(currentPath: string): NavItem[] {
             { label: 'SEO & Performance', page: 'journey-grow', description: 'Optimise. Rank. Scale.' },
             { label: 'Performance Optimisation', page: 'performance-service', description: 'Core Web Vitals' },
             { label: 'Accessibility', page: 'accessibility-service', description: 'WCAG compliance' },
-            { label: 'Support & Maintenance', page: 'support-service', description: 'Ongoing care' }
+            { label: 'Support & Maintenance', page: 'support-service', description: 'Ongoing care' },
+            { label: 'Security Monitoring', page: 'security-monitoring', description: '24/7 threat protection' },
+            { label: 'Analytics & Reporting', page: 'analytics-service', description: 'Data-driven insights' }
           ]
         },
         {
@@ -175,7 +191,8 @@ export function buildNavItems(currentPath: string): NavItem[] {
           items: [
             { label: 'AI Integration', page: 'journey-evolve', description: 'AI-power. Future-proof.' },
             { label: 'AI Engine Optimisation', page: 'ai-engine-optimisation', description: 'Cut AI costs 60%' },
-            { label: 'Answer Engine Optimisation', page: 'answer-engine-optimisation', description: 'Get cited by AI' }
+            { label: 'Answer Engine Optimisation', page: 'answer-engine-optimisation', description: 'Get cited by AI' },
+            { label: 'Voice Search Optimization', page: 'voice-search-optimization', description: 'Optimize for Alexa & Google' }
           ]
         }
       ]

@@ -27,6 +27,8 @@ import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { FunkyCTA } from '../patterns/FunkyCTA';
 import { FAQSection } from '../patterns/FAQSection';
 import { FeatureList } from '../patterns/FeatureList';
+import { NeonStats } from '../common/NeonStats';
+import { WebGLWorldMap } from '../patterns/WebGLWorldMap';
 import { Heading } from '../blocks/text/Heading';
 import { Paragraph } from '../blocks/text/Paragraph';
 import { useHeroParallax } from '../../hooks/useHeroParallax';
@@ -41,7 +43,11 @@ import {
   Plant as Sprout,
   Globe as Globe2,
   Smiley as Smile,
-  Laptop
+  Laptop,
+  GlobeHemisphereWest,
+  MapPin,
+  Clock,
+  ChartLineUp
 } from '@phosphor-icons/react';
 
 
@@ -126,6 +132,49 @@ export function AboutCultureTemplate() {
             columns={2}
             variant="glass"
           />
+        </Container>
+      </section>
+
+      {/* Global Team Stats & Map */}
+      <section className="about-culture__global">
+        <Container>
+          <div className="about-culture__global-grid">
+            <div className="about-culture__global-content">
+              <Heading level={2} className="about-culture__global-title">
+                A distributed network
+              </Heading>
+              <Paragraph className="about-culture__global-desc">
+                We believe great talent is everywhere. Our remote-first culture enables us to build a diverse, global team with high retention and continuous growth.
+              </Paragraph>
+              
+              <NeonStats
+                stats={[
+                  {
+                    id: 'remote-1',
+                    value: '100%',
+                    label: 'Remote workforce',
+                    description: 'Across multiple timezones',
+                    icon: GlobeHemisphereWest
+                  },
+                  {
+                    id: 'retention-1',
+                    value: '94%',
+                    label: 'Team retention',
+                    description: 'Year-over-year average',
+                    icon: ChartLineUp,
+                    trend: { value: '+2%', direction: 'up' }
+                  }
+                ]}
+                columns={2}
+                accentColor="var(--wp--preset--color--neon-lime)"
+                className="about-culture__global-stats"
+              />
+            </div>
+            
+            <div className="about-culture__global-visual">
+              <WebGLWorldMap accentColor="var(--wp--preset--color--neon-lime)" />
+            </div>
+          </div>
         </Container>
       </section>
 

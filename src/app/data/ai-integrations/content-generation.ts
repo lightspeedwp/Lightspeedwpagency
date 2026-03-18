@@ -20,6 +20,46 @@ import {
 } from '@phosphor-icons/react';
 
 import type { AIHero, AIStat, AIFeature, AIUseCase, AIPricingPackage, AIFAQ, AICTA } from './types';
+import type { UniversalIcon } from '../../utils/icon-map';
+
+/* ── Lifecycle Stage Info ── */
+
+export interface LifecycleStageInfo {
+  slug: string;
+  name: string;
+  icon: UniversalIcon;
+  accent: string;
+}
+
+export const contentGenerationLifecycle: LifecycleStageInfo = {
+  slug: 'create',
+  name: 'Create',
+  icon: PenNib,
+  accent: 'var(--category-pink)',
+};
+
+/* ── Trust Signal ── */
+
+export const contentGenerationTrustSignal = {
+  quote: 'The conversational UI they designed feels incredibly human and reduced our support tickets by 30%.',
+  author: 'James Okafor',
+  role: 'CEO',
+  company: 'SafariBookings',
+};
+
+/* ── Related Links ── */
+
+export const contentGenerationRelatedServices = [
+  { label: 'Content Strategy', href: '/services/content/strategy', description: 'Editorial planning and content models' },
+  { label: 'Content Audit', href: '/services/content/audit', description: 'Inventory and quality assessment' },
+  { label: 'AI SEO', href: '/services/ai/seo', description: 'AI-powered on-page optimisation' },
+];
+
+export const contentGenerationRelatedSolutions = [
+  { label: 'AI Integrations', href: '/solutions/ai/integrations', description: 'Complete AI integration roadmap' },
+  { label: 'AI Chatbots', href: '/solutions/ai/chatbots', description: 'Conversational interfaces for support' },
+  { label: 'AI Analytics', href: '/solutions/ai/analytics', description: 'Predictive content performance insights' },
+];
 
 /* ── Hero ── */
 

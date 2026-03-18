@@ -32,7 +32,10 @@ import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
 import { ServicePricingTimeline } from '../patterns/ServicePricingTimeline';
 import { servicePricingTimeline } from '../../data/services';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
+import { WebGLContentInk } from '../patterns/WebGLContentInk';
 import { ScrollDownArrow } from '../common/ScrollDownArrow';
+import { NeonStats } from '../common/NeonStats';
+import { statsRegistry, mapToNeonStats } from '../../data/stats';
 import { Feather } from '@phosphor-icons/react';
 
 // Import detailed data
@@ -54,6 +57,9 @@ const processSteps = contentProcess.map((step) => ({
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 
 export function ContentServiceTemplate() {
+  const collection = statsRegistry.getCollection('seo-stats');
+  const seoStats = collection ? mapToNeonStats(collection.stats) : [];
+
   return (
     <div className="service-page content-service">
       {/* Breadcrumbs */}
@@ -68,13 +74,15 @@ export function ContentServiceTemplate() {
       {/* ============================================
           HERO SECTION (The Art of Words)
           ============================================ */}
-      <section className="service-hero">
+      <section className="service-hero" style={{ position: 'relative' }}>
+        <WebGLContentInk accentColor="var(--wp--preset--color--neon-pink)" secondaryColor="var(--wp--preset--color--neon-purple)" />
+        
         {/* Paper texture background — CSS noise pattern (no external dependency) */}
-        <div className="content-decor__texture" aria-hidden="true" />
-        <div className="content-decor__fade" aria-hidden="true" />
+        <div className="content-decor__texture" aria-hidden="true" style={{ opacity: 0.3, zIndex: 1 }} />
+        <div className="content-decor__fade" aria-hidden="true" style={{ zIndex: 1 }} />
         
         {/* Floating Manuscript Pages Background */}
-        <div className="content-decor__manuscript content-decor__manuscript--left" aria-hidden="true">
+        <div className="content-decor__manuscript content-decor__manuscript--left" aria-hidden="true" style={{ zIndex: 1 }}>
           <div className="content-decor__line content-decor__line--w80" />
           <div className="content-decor__line content-decor__line--w90" />
           <div className="content-decor__line content-decor__line--w60" />
@@ -91,7 +99,7 @@ export function ContentServiceTemplate() {
            <div className="content-decor__pen-mark" />
         </div>
 
-        <Container>
+        <Container style={{ position: 'relative', zIndex: 2 }}>
           <div className="service-hero__content service-hero__content--centered">
             <ScrollReveal animation="fade-down">
               <div className="service-hero__badge service-hero__badge--mono">
@@ -144,6 +152,18 @@ export function ContentServiceTemplate() {
           </ScrollReveal>
         </Container>
       </section>
+
+      {seoStats.length > 0 && (
+        <section className="service-section">
+          <NeonStats
+            stats={seoStats}
+            title="SEO & content impact"
+            subtitle="The measurable results of our content strategy."
+            columns={4}
+            variant="glass"
+          />
+        </section>
+      )}
 
       {/* ============================================
           SERVICES GRID (Sticky Notes)

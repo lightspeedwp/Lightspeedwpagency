@@ -19,16 +19,18 @@
  * - ✅ FeatureList — Tech Stack features section (glow variant)
  * - ✅ FeatureList — Benefits grid (4 items, 2 columns, glass variant)
  * - ✅ ProcessTimeline — 4-step implementation process
+ * - ✅ PricingCard — Pricing tiers (3 packages)
  * - ✅ FAQSection — FAQ section (accordion variant)
  * - ✅ FunkyCTA — Final conversion section
  *
  * @see /src/styles/templates/mailchimp-solution-page-optimized.css
  * @see /src/app/data/mailchimp-solution-page.ts
  * @migrated March 3, 2026 — Phase 3.2: Migrated inline benefits grid + process timeline (~60 lines saved)
+ * @migrated March 18, 2026 — Phase 3.5: Migrated pricing cards to PricingCard (~55 lines saved)
  */
 
 import '../../../styles/templates/mailchimp-solution-page-optimized.css';
-import { Check, Rocket, ArrowRight, Quotes as Quote } from '@phosphor-icons/react';
+import { Rocket, ArrowRight, Quotes as Quote, EnvelopeSimple as Mail, ChartLineUp as TrendingUp, BriefcaseMetal as Briefcase } from '@phosphor-icons/react';
 import { Section } from '../common/Section';
 import { Container } from '../common/Container';
 import { Button } from '../blocks/design/Buttons';
@@ -36,6 +38,7 @@ import { FAQSection } from '../patterns/FAQSection';
 import { FunkyCTA } from '../patterns/FunkyCTA';
 import { FeatureList } from '../patterns/FeatureList';
 import { ProcessTimeline } from '../patterns/ProcessTimeline';
+import { PricingCard } from '../patterns/PricingCard';
 import { ScrollReveal, StaggerReveal } from '../../hooks/useScrollReveal';
 import { ScrollDownArrow } from '../common/ScrollDownArrow';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
@@ -235,63 +238,51 @@ export function MailchimpSolutionTemplate() {
           </ScrollReveal>
 
           <div className="mailchimp-page__pricing-grid">
-            {mailchimpPackages.map((plan, index) => (
-              <ScrollReveal key={index} animation="fade-up" delay={index * 120}>
-                <div
-                  className={`mailchimp-page__pricing-card${
-                    plan.popular
-                      ? ' mailchimp-page__pricing-card--popular'
-                      : ''
-                  }`}
-                >
-                  {plan.popular && (
-                    <div className="mailchimp-page__pricing-badge">
-                      Most Popular
-                    </div>
-                  )}
-
-                  <h3 className="mailchimp-page__pricing-name">
-                    {plan.name}
-                  </h3>
-                  <p className="mailchimp-page__pricing-tagline">
-                    {plan.tagline}
-                  </p>
-
-                  <div className="mailchimp-page__pricing-amount">
-                    <span className="mailchimp-page__pricing-price">
-                      {plan.price.display}
-                    </span>
-                    <span className="mailchimp-page__pricing-period">
-                      {plan.price.period}
-                    </span>
-                  </div>
-
-                  <ul className="mailchimp-page__feature-list">
-                    {plan.features.map((feature, fi) => (
-                      <li key={fi} className="mailchimp-page__feature-item">
-                        <Check size={18} className="mailchimp-page__check-icon" />
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="mailchimp-page__pricing-action">
-                    <Button
-                      variant={plan.popular ? 'primary' : 'outline'}
-                      size="lg"
-                      page={plan.cta.page}
-                      className={
-                        plan.popular
-                          ? 'mailchimp-page__btn--growth'
-                          : 'mailchimp-page__btn--outline'
-                      }
-                    >
-                      {plan.cta.text}
-                    </Button>
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
+            <PricingCard
+              id="mailchimp-starter"
+              name={mailchimpPackages[0].name}
+              icon={Mail}
+              tagline={mailchimpPackages[0].tagline}
+              price={{
+                display: mailchimpPackages[0].price.display,
+                period: mailchimpPackages[0].price.period,
+              }}
+              description={mailchimpPackages[0].description}
+              popular={mailchimpPackages[0].popular}
+              features={mailchimpPackages[0].features}
+              cta={mailchimpPackages[0].cta}
+              delay={0}
+            />
+            <PricingCard
+              id="mailchimp-professional"
+              name={mailchimpPackages[1].name}
+              icon={TrendingUp}
+              tagline={mailchimpPackages[1].tagline}
+              price={{
+                display: mailchimpPackages[1].price.display,
+                period: mailchimpPackages[1].price.period,
+              }}
+              description={mailchimpPackages[1].description}
+              popular={mailchimpPackages[1].popular}
+              features={mailchimpPackages[1].features}
+              cta={mailchimpPackages[1].cta}
+              delay={120}
+            />
+            <PricingCard
+              id="mailchimp-enterprise"
+              name={mailchimpPackages[2].name}
+              icon={Briefcase}
+              tagline={mailchimpPackages[2].tagline}
+              price={{
+                display: mailchimpPackages[2].price.display,
+                period: mailchimpPackages[2].price.period,
+              }}
+              description={mailchimpPackages[2].description}
+              popular={mailchimpPackages[2].popular}
+              features={mailchimpPackages[2].features}
+              cta={mailchimpPackages[2].cta}
+              delay={240}
+            />
           </div>
         </Container>
       </section>

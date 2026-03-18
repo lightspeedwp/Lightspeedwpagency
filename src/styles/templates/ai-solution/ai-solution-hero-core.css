@@ -1,0 +1,119 @@
+/**
+ * AI Solution Pages — Hero Core Styles
+ *
+ * Variant accent scoping, hero content overrides, badges,
+ * titles, highlights, and taglines.
+ *
+ * Split from ai-solution-hero.css (March 17, 2026) to meet
+ * 400-line file size limit (519 → 3 files).
+ *
+ * Blocks:
+ * - .ai-page (variant scoping with CSS custom properties)
+ * - .ai-page__badge
+ * - .ai-page__title, __highlight, __tagline
+ *
+ * @see AISubPageTemplate.tsx
+ * @see AIIntegrationsTemplate.tsx
+ */
+
+/* ============================================
+   VARIANT ACCENT SCOPING
+   ============================================ */
+
+.ai-page {
+  --ai-accent: var(--solution-accent, var(--wp--preset--color--neon-cyan));
+  --ai-accent-alt: var(--solution-accent-alt, var(--wp--preset--color--neon-pink));
+  --ai-accent-glow: color-mix(in srgb, var(--ai-accent) 35%, transparent);
+  --ai-accent-subtle: color-mix(in srgb, var(--ai-accent) 12%, transparent);
+  --ai-accent-border: color-mix(in srgb, var(--ai-accent) 25%, transparent);
+  --ai-btn-text: var(--wp--preset--color--deep-purple, var(--color-black));
+}
+
+/* Per-variant overrides — each sub-page gets its own accent */
+.ai-page--content {
+  --ai-accent: var(--wp--preset--color--neon-pink);
+  --ai-accent-alt: var(--wp--preset--color--neon-cyan);
+}
+
+.ai-page--seo {
+  --ai-accent: var(--wp--preset--color--neon-yellow);
+  --ai-accent-alt: var(--wp--preset--color--neon-lime);
+}
+
+.ai-page--chatbots {
+  --ai-accent: var(--wp--preset--color--neon-lime);
+  --ai-accent-alt: var(--wp--preset--color--neon-cyan);
+}
+
+.ai-page--analytics {
+  --ai-accent: var(--wp--preset--color--neon-purple);
+  --ai-accent-alt: var(--wp--preset--color--neon-pink);
+}
+
+.ai-page--integrations {
+  --ai-accent: var(--wp--preset--color--neon-cyan);
+  --ai-accent-alt: var(--wp--preset--color--neon-pink);
+}
+
+/* ============================================
+   HERO CONTENT OVERRIDE
+   ============================================ */
+
+.ai-page .solution-hero__content {
+  text-align: center;
+}
+
+/* ============================================
+   BADGE
+   ============================================ */
+
+.ai-page__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-1-5) var(--spacing-4);
+  background-color: var(--ai-accent-subtle);
+  border: 1px solid var(--ai-accent-border);
+  border-radius: var(--radius-full);
+  color: var(--ai-accent);
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--spacing-6);
+}
+
+/* ============================================
+   TITLE + HIGHLIGHT + TAGLINE
+   ============================================ */
+
+.ai-page__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h1);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-white);
+  margin: 0 0 var(--spacing-6) 0;
+  line-height: 1.15;
+}
+
+.ai-page__highlight {
+  background: linear-gradient(
+    135deg,
+    var(--ai-accent),
+    var(--ai-accent-alt)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 24px var(--ai-accent-glow));
+}
+
+.ai-page__tagline {
+  font-family: var(--font-secondary);
+  font-size: var(--text-xl);
+  color: color-mix(in srgb, var(--color-white) 80%, transparent);
+  max-width: 60ch;
+  margin: 0 auto var(--spacing-8) auto;
+  line-height: var(--line-height-comfortable);
+}

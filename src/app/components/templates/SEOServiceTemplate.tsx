@@ -17,28 +17,48 @@
 
 import { Link } from 'react-router';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
+import { LifecycleStageBadge } from '../parts/LifecycleStageBadge';
+import { LifecycleFlowStrip } from '../parts/LifecycleFlowStrip';
 import { FeatureList } from '../patterns/FeatureList';
 import { FunkyCTA } from '../patterns/FunkyCTA';
-import { JourneyPhaseIndicator } from '../ui/JourneyPhaseIndicator';
-import { seoServiceBenefits, seoServiceDeliverables, seoServiceResults } from '../../data/seo-service-template-data';
+import { TestimonialCard } from '../patterns/TestimonialCard';
+import { RelatedPagesGrid } from '../patterns/RelatedPagesGrid';
+import { Container } from '../common/Container';
+import { StatsGrid } from '../patterns/StatsGrid';
+import { WebGLSearchGraph } from '../patterns/WebGLSearchGraph';
+import { ScrollReveal } from '../../hooks/useScrollReveal';
+import {
+  seoServiceBenefits,
+  seoServiceDeliverables,
+  seoServiceResults,
+  seoLifecycle,
+  seoTrustSignal,
+  seoRelatedSolutions,
+  seoRelatedServices,
+  seoDifferentiation,
+} from '../../data/seo-service-template-data';
 import '../../../styles/templates/seo-service-optimized.css';
+import '../../../styles/parts/lifecycle-flow.css';
+import { Code, TrendUp, Brain } from '@phosphor-icons/react';
 
 export const SEOServiceTemplate = () => {
   return (
     <div className="seo-service">
       {/* Hero Section */}
-      <section className="sub-service-base__hero seo-service__hero">
-        <div className="sub-service-base__hero-content">
+      <section className="sub-service-base__hero seo-service__hero" style={{ position: 'relative' }}>
+        <WebGLSearchGraph accentColor="var(--wp--preset--color--neon-purple)" />
+        <div className="sub-service-base__hero-content" style={{ position: 'relative', zIndex: 2 }}>
           <BreadcrumbPart
             items={[
-              { label: 'Home', href: '/' },
-              { label: 'Services', href: '/services' },
-              { label: 'AI Services', href: '/services/ai' },
+              { label: 'Home', page: 'front-page' },
+              { label: 'Services', page: 'services' },
               { label: 'SEO' },
             ]}
           />
           
-          <JourneyPhaseIndicator currentPhase="grow" currentServicePage="seo" />
+          <ScrollReveal animation="fade-down">
+            <LifecycleStageBadge stages={[seoLifecycle]} />
+          </ScrollReveal>
           
           <h1 className="sub-service-base__hero-title">
             SEO services
@@ -60,6 +80,29 @@ export const SEOServiceTemplate = () => {
         </div>
       </section>
 
+      {/* Lifecycle Context Flow */}
+      <section aria-label="Lifecycle context">
+        <Container>
+          <ScrollReveal animation="fade-up">
+            <LifecycleFlowStrip
+              prevStage={{
+                slug: 'build',
+                name: 'Build',
+                icon: Code,
+                accent: 'var(--category-cyan)',
+              }}
+              currentStage={seoLifecycle}
+              nextStage={{
+                slug: 'evolve',
+                name: 'Evolve',
+                icon: Brain,
+                accent: 'var(--category-indigo)',
+              }}
+            />
+          </ScrollReveal>
+        </Container>
+      </section>
+
       {/* Benefits Grid */}
       <section className="sub-service-base__benefits seo-service__benefits">
         <div className="sub-service-base__section-header">
@@ -75,6 +118,19 @@ export const SEOServiceTemplate = () => {
           variant="glow" 
           iconSize="lg"
         />
+      </section>
+
+      {/* Trust Signal */}
+      <section aria-label="Client testimonial">
+        <Container>
+          <ScrollReveal animation="fade-up">
+            <TestimonialCard
+              quote={seoTrustSignal.quote}
+              author={seoTrustSignal.author}
+              role={seoTrustSignal.role}
+            />
+          </ScrollReveal>
+        </Container>
       </section>
 
       {/* Deliverables Timeline */}
@@ -105,6 +161,21 @@ export const SEOServiceTemplate = () => {
         </div>
       </section>
 
+      {/* Differentiation Callout */}
+      <section aria-label="Service differentiation">
+        <Container>
+          <ScrollReveal animation="fade-up">
+            <div className="sub-service-base__callout">
+              <h2 className="sub-service-base__callout-title">{seoDifferentiation.title}</h2>
+              <p className="sub-service-base__callout-description">{seoDifferentiation.description}</p>
+              <Link to={seoDifferentiation.ctaHref} className="sub-service-base__callout-link">
+                {seoDifferentiation.ctaText} →
+              </Link>
+            </div>
+          </ScrollReveal>
+        </Container>
+      </section>
+
       {/* Results Section */}
       <section className="sub-service-base__results seo-service__results">
         <div className="sub-service-base__section-header">
@@ -114,15 +185,28 @@ export const SEOServiceTemplate = () => {
           </p>
         </div>
         
-        <div className="sub-service-base__results-grid">
-          {seoServiceResults.map((result, index) => (
-            <div key={index} className="sub-service-base__result-card">
-              <div className="sub-service-base__result-metric">{result.metric}</div>
-              <div className="sub-service-base__result-label">{result.label}</div>
-            </div>
-          ))}
-        </div>
+        <StatsGrid
+          stats={seoServiceResults.map((r, i) => ({ id: `seo-stat-${i}`, number: r.metric, label: r.label, icon: r.icon as any }))}
+          columns={4}
+          variant="cards"
+        />
       </section>
+
+      {/* Related Solutions */}
+      <RelatedPagesGrid
+        title="Related solutions"
+        description="Explore AI-powered solutions that complement SEO"
+        items={seoRelatedSolutions}
+        columns={3}
+      />
+
+      {/* Related Services */}
+      <RelatedPagesGrid
+        title="Related services"
+        description="Discover other services in the AI visibility ecosystem"
+        items={seoRelatedServices}
+        columns={4}
+      />
 
       {/* CTA Section */}
       <FunkyCTA

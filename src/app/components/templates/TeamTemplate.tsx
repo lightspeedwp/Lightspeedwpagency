@@ -19,6 +19,8 @@ import { FunkyCTA } from '../patterns/FunkyCTA';
 import { FAQSection } from '../patterns/FAQSection';
 import { FeatureList } from '../patterns/FeatureList';
 import { StatsSection } from '../patterns/StatsSection';
+import { NeonStats } from '../common/NeonStats';
+import { WebGLTeamSphere } from '../patterns/WebGLTeamSphere';
 import { Heading } from '../blocks/text/Heading';
 import { Paragraph } from '../blocks/text/Paragraph';
 import { useHeroParallax } from '../../hooks/useHeroParallax';
@@ -35,7 +37,10 @@ import {
   TrendUp,
   Lightning,
   Smiley,
-  Coffee
+  Coffee,
+  GraduationCap,
+  Clock,
+  GlobeHemisphereWest
 } from '@phosphor-icons/react';
 
 export function TeamTemplate() {
@@ -227,15 +232,59 @@ export function TeamTemplate() {
         </Container>
       </section>
 
-      {/* ── Stats Section ── */}
-      <StatsSection
-        stats={[
-          { number: '100%', label: 'Remote' },
-          { number: '5', label: 'Continents' },
-          { number: '12', label: 'Languages' },
-          { number: '50+', label: 'Pet Dogs' }
-        ]}
-      />
+      {/* ── Experience & Connectivity Sphere ── */}
+      <section className="team-page__sphere-stats">
+        <Container>
+          <div className="team-page__sphere-grid">
+            <div className="team-page__sphere-content">
+              <ScrollReveal animation="fade-up">
+                <Heading level={2} className="team-page__sphere-title">
+                  Collective expertise
+                </Heading>
+                <Paragraph className="team-page__sphere-desc">
+                  Our team brings together decades of specialized WordPress experience. We're a tightly connected network of professionals continuously leveling up our skills.
+                </Paragraph>
+                
+                <NeonStats
+                  stats={[
+                    {
+                      id: 'exp-1',
+                      value: '12+',
+                      label: 'Years average experience',
+                      description: 'Across senior engineering leadership',
+                      icon: Clock
+                    },
+                    {
+                      id: 'cert-1',
+                      value: '25+',
+                      label: 'Active certifications',
+                      description: 'React, Node, WordPress VIP',
+                      icon: GraduationCap
+                    },
+                    {
+                      id: 'geo-1',
+                      value: '100%',
+                      label: 'Remote globally',
+                      description: 'Seamlessly connected worldwide',
+                      icon: GlobeHemisphereWest
+                    }
+                  ]}
+                  columns={1}
+                  accentColor="var(--wp--preset--color--neon-pink)"
+                  variant="glass"
+                  className="team-page__sphere-neon"
+                />
+              </ScrollReveal>
+            </div>
+            
+            <div className="team-page__sphere-visual">
+              <ScrollReveal animation="fade-in" className="team-page__sphere-visual-reveal">
+                <WebGLTeamSphere accentColor="var(--wp--preset--color--neon-pink)" />
+              </ScrollReveal>
+            </div>
+          </div>
+        </Container>
+      </section>
 
       {/* ── FAQ Section ── */}
       <section className="team-page__faq">

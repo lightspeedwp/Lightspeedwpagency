@@ -1,0 +1,232 @@
+/**
+ * Lifecycle Flow Strip
+ *
+ * 3-card horizontal strip showing previous → current → next lifecycle stages.
+ * Current stage is emphasized with larger size and neon glow.
+ *
+ * BEM Block: .lifecycle-flow
+ * Elements: __container, __track, __card, __card-step, __card-icon-wrapper,
+ *           __card-icon, __card-name, __card-tagline, __card-badge, __arrow
+ * Modifiers: __card--prev, __card--current, __card--next
+ *
+ * @see /src/app/components/parts/LifecycleFlowStrip.tsx
+ */
+
+/* ── Section wrapper ── */
+.lifecycle-flow {
+  width: 100%;
+  padding: var(--spacing-16) var(--spacing-4);
+  background: var(--color-background);
+}
+
+/* ── Container ── */
+.lifecycle-flow__container {
+  max-width: var(--wp--style--global--wide-size);
+  margin: 0 auto;
+}
+
+/* ── Horizontal track ── */
+.lifecycle-flow__track {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-6);
+  flex-wrap: wrap;
+}
+
+/* ── Card base ── */
+.lifecycle-flow__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-3);
+  padding: var(--spacing-6);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  transition: all 0.3s ease;
+  position: relative;
+  flex: 0 0 auto;
+  width: 200px;
+}
+
+/* ── Previous/Next cards (subdued) ── */
+.lifecycle-flow__card--prev,
+.lifecycle-flow__card--next {
+  opacity: 0.7;
+}
+
+.lifecycle-flow__card--prev:hover,
+.lifecycle-flow__card--next:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+/* ── Current card (emphasized) ── */
+.lifecycle-flow__card--current {
+  width: 240px;
+  padding: var(--spacing-8);
+  background: var(--color-black);
+  border: 2px solid var(--_card-accent, var(--category-cyan));
+  box-shadow:
+    0 0 24px color-mix(in srgb, var(--_card-accent, var(--category-cyan)) 40%, transparent),
+    inset 0 0 32px color-mix(in srgb, var(--_card-accent, var(--category-cyan)) 15%, transparent);
+}
+
+.lifecycle-flow__card--current:hover {
+  box-shadow:
+    0 0 32px color-mix(in srgb, var(--_card-accent, var(--category-cyan)) 50%, transparent),
+    inset 0 0 40px color-mix(in srgb, var(--_card-accent, var(--category-cyan)) 20%, transparent);
+  transform: translateY(-4px);
+}
+
+/* ── Card step number ── */
+.lifecycle-flow__card-step {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.lifecycle-flow__card--current .lifecycle-flow__card-step {
+  color: var(--_card-accent, var(--category-cyan));
+}
+
+/* ── Icon wrapper ── */
+.lifecycle-flow__card-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-full);
+  background: var(--color-surface-elevated);
+  border: 1px solid var(--color-border);
+}
+
+.lifecycle-flow__card--current .lifecycle-flow__card-icon-wrapper {
+  width: 64px;
+  height: 64px;
+  background: color-mix(in srgb, var(--_card-accent, var(--category-cyan)) 10%, var(--color-black));
+  border-color: var(--_card-accent, var(--category-cyan));
+  box-shadow: 0 0 16px color-mix(in srgb, var(--_card-accent, var(--category-cyan)) 30%, transparent);
+}
+
+/* ── Icon ── */
+.lifecycle-flow__card-icon {
+  color: var(--color-text);
+  flex-shrink: 0;
+}
+
+.lifecycle-flow__card--current .lifecycle-flow__card-icon {
+  color: var(--_card-accent, var(--category-cyan));
+}
+
+/* ── Card name ── */
+.lifecycle-flow__card-name {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+  text-align: center;
+  margin: 0;
+}
+
+.lifecycle-flow__card--current .lifecycle-flow__card-name {
+  font-size: var(--text-xl);
+  color: var(--color-white);
+}
+
+/* ── Card tagline ── */
+.lifecycle-flow__card-tagline {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  text-align: center;
+  margin: 0;
+  line-height: var(--line-height-tight);
+}
+
+.lifecycle-flow__card--current .lifecycle-flow__card-tagline {
+  font-size: var(--text-base);
+  color: var(--color-text);
+}
+
+/* ── "You are here" badge (current only) ── */
+.lifecycle-flow__card-badge {
+  position: absolute;
+  top: calc(var(--spacing-2) * -1);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: var(--spacing-1) var(--spacing-3);
+  background: var(--_card-accent, var(--category-cyan));
+  color: var(--color-black);
+  font-family: var(--font-primary);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: var(--radius-pill);
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* ── Arrow separator ── */
+.lifecycle-flow__arrow {
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+}
+
+/* ── Responsive: Stack on mobile ── */
+@media (max-width: 640px) {
+  .lifecycle-flow__track {
+    flex-direction: column;
+    gap: var(--spacing-4);
+  }
+
+  .lifecycle-flow__arrow {
+    transform: rotate(90deg);
+  }
+
+  .lifecycle-flow__card,
+  .lifecycle-flow__card--current {
+    width: 100%;
+    max-width: 320px;
+  }
+}
+
+/* ── Responsive: Smaller cards on tablet ── */
+@media (max-width: 960px) and (min-width: 641px) {
+  .lifecycle-flow__card {
+    width: 160px;
+  }
+
+  .lifecycle-flow__card--current {
+    width: 200px;
+  }
+}
+
+/* ── Dark mode ── */
+@media (prefers-color-scheme: dark) {
+  .lifecycle-flow__card {
+    background: var(--color-surface-elevated);
+  }
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .lifecycle-flow__card,
+  .lifecycle-flow__card--prev,
+  .lifecycle-flow__card--next,
+  .lifecycle-flow__card--current {
+    transition: none;
+  }
+
+  .lifecycle-flow__card--prev:hover,
+  .lifecycle-flow__card--next:hover,
+  .lifecycle-flow__card--current:hover {
+    transform: none;
+  }
+}

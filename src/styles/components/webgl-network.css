@@ -1,0 +1,31 @@
+/**
+ * WebGL AI Network Component Styles
+ * BEM-compliant, zero hardcoded values (except canvas defaults).
+ */
+
+.webgl-network {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  border-radius: var(--radius-3xl);
+  overflow: hidden;
+  border: 1px solid var(--color-gray-800);
+  background-color: var(--color-black);
+}
+
+.webgl-network__canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+}
+
+.webgl-network__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, transparent 40%, var(--color-black) 100%);
+  pointer-events: none;
+}

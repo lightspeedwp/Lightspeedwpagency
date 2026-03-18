@@ -20,6 +20,10 @@ import {
   Lightning,
   CheckCircle,
   Pulse,
+  Timer,
+  TrendUp,
+  ShieldCheck,
+  Eye
 } from '@phosphor-icons/react';
 
 export const performanceServiceHero = {
@@ -98,10 +102,10 @@ export const performanceServiceProcess = {
 };
 
 export const performanceServiceStats = [
-  { value: '<1s', label: 'LCP Target' },
-  { value: '100', label: 'Lighthouse Score' },
-  { value: '50%', label: 'Avg Speed Boost' },
-  { value: '24/7', label: 'RUM Monitoring' },
+  { value: '<1s', label: 'LCP Target', icon: Timer },
+  { value: '100', label: 'Lighthouse Score', icon: ShieldCheck },
+  { value: '50%', label: 'Avg Speed Boost', icon: TrendUp },
+  { value: '24/7', label: 'RUM Monitoring', icon: Eye },
 ];
 
 export const performanceServiceCTA = {

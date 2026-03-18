@@ -8,7 +8,7 @@
  *   - AI Analytics & Insights
  *
  * Pattern order:
- * Hero -> Stats -> Features -> Use Cases -> Pricing -> FAQs -> CTA
+ * Hero -> Lifecycle Badge -> Stats -> Features -> Use Cases -> Trust Signal -> Pricing (optional) -> FAQs -> Related -> CTA
  *
  * BEM: .ai-page + .ai-page--{variant} (content | seo | chatbots | analytics)
  * All hero/button/visual styles via /src/styles/templates/ai-solution-hero.css
@@ -18,6 +18,7 @@
  */
 
 import '../../../styles/templates/page-solution-ai-optimized.css';
+import '../../../styles/parts/lifecycle-badge.css';
 import { Container } from '../common/Container';
 import { StatsGrid } from '../patterns/StatsGrid';
 import { FeatureGrid } from '../patterns/FeatureGrid';
@@ -31,7 +32,9 @@ import { slugToPath } from '../../utils/route-map';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { ScrollDownArrow } from '../common/ScrollDownArrow';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
+import { LifecycleStageBadge } from '../parts/LifecycleStageBadge';
 import { PricingPackage } from '../../data/pricing';
+import type { UniversalIcon } from '../../utils/icon-map';
 
 import type {
   AIHero,
@@ -42,6 +45,26 @@ import type {
   AICTA,
   AIPricingPackage,
 } from '../../data/ai-integrations-page';
+
+interface LifecycleStageInfo {
+  slug: string;
+  name: string;
+  icon: UniversalIcon;
+  accent: string;
+}
+
+interface TrustSignal {
+  quote: string;
+  author: string;
+  role: string;
+  company?: string;
+}
+
+interface RelatedLink {
+  label: string;
+  href: string;
+  description?: string;
+}
 
 interface AISubPageProps {
   /** BEM modifier for accent colour: 'content' | 'seo' | 'chatbots' | 'analytics' */
@@ -62,6 +85,16 @@ interface AISubPageProps {
   faqs: AIFAQ[];
   cta: AICTA;
   ctaBenefits: string[];
+  /** Optional lifecycle stage badge(s) to display after hero */
+  lifecycleStages?: LifecycleStageInfo[];
+  /** Optional trust signal (testimonial) to display after use cases */
+  trustSignal?: TrustSignal;
+  /** Optional related services links */
+  relatedServices?: RelatedLink[];
+  /** Optional related solutions links */
+  relatedSolutions?: RelatedLink[];
+  /** Show pricing section (default: false) */
+  showPricing?: boolean;
 }
 
 export function AISubPageTemplate({
@@ -81,6 +114,11 @@ export function AISubPageTemplate({
   faqs,
   cta,
   ctaBenefits,
+  lifecycleStages,
+  trustSignal,
+  relatedServices,
+  relatedSolutions,
+  showPricing = false,
 }: AISubPageProps) {
   /* Transform pricing data for the PricingTable pattern */
   const pricingPlans: PricingPackage[] = pricing.packages.map((pkg, i) => ({
@@ -170,6 +208,13 @@ export function AISubPageTemplate({
           </div>
         </Container>
 
+        {/* Optional lifecycle stage badges */}
+        {lifecycleStages && (
+          <div className="ai-page__lifecycle-badges">
+            <LifecycleStageBadge stages={lifecycleStages} />
+          </div>
+        )}
+
         <ScrollDownArrow />
       </section>
 
@@ -213,13 +258,34 @@ export function AISubPageTemplate({
         variant="default"
       />
 
-      {/* ════════════════ PRICING ════════════════ */}
-      <PricingTable
-        heading={pricing.title}
-        description={pricing.description}
-        packages={pricingPlans}
-        variant="default"
-      />
+      {/* Optional trust signal (testimonial) */}
+      {trustSignal && (
+        <section className="ai-page__trust-signal">
+          <Container>
+            <div className="wp-grid-2-cols wp-items-center wp-gap-12">
+              <div className="ai-page__trust-signal-content">
+                <blockquote className="ai-page__trust-quote">
+                  &ldquo;{trustSignal.quote}&rdquo;
+                </blockquote>
+                <p className="ai-page__trust-author">
+                  {trustSignal.author}, {trustSignal.role}
+                  {trustSignal.company && `, ${trustSignal.company}`}
+                </p>
+              </div>
+            </div>
+          </Container>
+        </section>
+      )}
+
+      {/* Optional pricing section */}
+      {showPricing && (
+        <PricingTable
+          heading={pricing.title}
+          description={pricing.description}
+          packages={pricingPlans}
+          variant="default"
+        />
+      )}
 
       {/* ════════════════ FAQS ════════════════ */}
       <FAQSection
@@ -228,6 +294,54 @@ export function AISubPageTemplate({
         faqs={faqs}
         variant="muted"
       />
+
+      {/* Optional related links */}
+      {(relatedServices || relatedSolutions) && (
+        <section className="ai-page__related-links">
+          <Container>
+            <div className="wp-grid-2-cols wp-items-center wp-gap-12">
+              {relatedServices && (
+                <div className="ai-page__related-content">
+                  <h3 className="ai-page__related-title">Related Services</h3>
+                  <ul className="ai-page__related-list">
+                    {relatedServices.map((link) => (
+                      <li key={link.href} className="ai-page__related-item">
+                        <Link to={link.href} className="ai-page__related-link">
+                          {link.label}
+                        </Link>
+                        {link.description && (
+                          <p className="ai-page__related-description">
+                            {link.description}
+                          </p>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              {relatedSolutions && (
+                <div className="ai-page__related-content">
+                  <h3 className="ai-page__related-title">Related Solutions</h3>
+                  <ul className="ai-page__related-list">
+                    {relatedSolutions.map((link) => (
+                      <li key={link.href} className="ai-page__related-item">
+                        <Link to={link.href} className="ai-page__related-link">
+                          {link.label}
+                        </Link>
+                        {link.description && (
+                          <p className="ai-page__related-description">
+                            {link.description}
+                          </p>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          </Container>
+        </section>
+      )}
 
       {/* ════════════════ CTA ════════════════ */}
       <FunkyCTA

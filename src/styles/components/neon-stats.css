@@ -1,0 +1,405 @@
+/**
+ * Neon Stats Component Styles
+ *
+ * BEM-compliant styles for the NeonStats component.
+ * 100% CSS variables, no hardcoded values.
+ *
+ * Features:
+ * - Custom neon accent colors via --neon-accent custom property
+ * - Dark background enforcement for neon colors (per guidelines)
+ * - Glass morphism and solid variants
+ * - Responsive grid layouts (1/2/3/4 columns)
+ * - Neon glow hover effects
+ * - Reduced motion support
+ *
+ * @see /src/app/components/common/NeonStats.tsx
+ */
+
+/* ============================================
+   CONTAINER & LAYOUT
+   ============================================ */
+
+.neon-stats {
+  /* Dark background enforcement - neon colors require dark surfaces */
+  background-color: var(--color-black);
+  position: relative;
+  overflow: hidden;
+  padding: var(--spacing-16) 0;
+}
+
+.neon-stats__container {
+  max-width: var(--wp--style--global--wide-size);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--spacing-6);
+  padding-right: var(--spacing-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-12);
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+
+.neon-stats__header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  max-width: var(--wp--style--global--content-size);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.neon-stats__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-snug);
+  color: var(--color-white);
+  margin: 0;
+}
+
+.neon-stats__subtitle {
+  font-family: var(--font-secondary);
+  font-size: var(--text-lg);
+  line-height: var(--line-height-comfortable);
+  color: var(--muted-foreground);
+  max-width: 60ch;
+  margin: 0 auto;
+}
+
+/* ============================================
+   GRID LAYOUT
+   ============================================ */
+
+.neon-stats__grid {
+  display: grid;
+  gap: var(--spacing-8);
+}
+
+/* 1 Column (mobile default, or explicit) */
+.neon-stats__grid--1-col {
+  grid-template-columns: 1fr;
+}
+
+/* 2 Columns - responsive */
+.neon-stats__grid--2-col {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .neon-stats__grid--2-col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 3 Columns - responsive */
+.neon-stats__grid--3-col {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .neon-stats__grid--3-col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .neon-stats__grid--3-col {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* 4 Columns - responsive */
+.neon-stats__grid--4-col {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .neon-stats__grid--4-col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .neon-stats__grid--4-col {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ============================================
+   STAT ITEM - BASE
+   ============================================ */
+
+.neon-stats__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: var(--spacing-3);
+  padding: var(--spacing-8);
+  border-radius: var(--radius-xl);
+  transition: all 0.3s var(--ease-out);
+  position: relative;
+}
+
+/* ============================================
+   STAT ITEM - VARIANTS
+   ============================================ */
+
+/* Default variant - minimal border */
+.neon-stats--default .neon-stats__item {
+  background-color: transparent;
+  border: 1px solid color-mix(in srgb, var(--color-white) 10%, transparent);
+}
+
+.neon-stats--default .neon-stats__item:hover {
+  background-color: color-mix(in srgb, var(--color-white) 3%, transparent);
+  border-color: var(--neon-accent);
+  box-shadow: 0 0 20px color-mix(in srgb, var(--neon-accent) 20%, transparent);
+}
+
+/* Glass variant - glassmorphism effect */
+.neon-stats--glass .neon-stats__item {
+  background-color: color-mix(in srgb, var(--color-white) 3%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-white) 10%, transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.neon-stats--glass .neon-stats__item:hover {
+  background-color: color-mix(in srgb, var(--color-white) 6%, transparent);
+  border-color: var(--neon-accent);
+  box-shadow: 0 0 30px color-mix(in srgb, var(--neon-accent) 30%, transparent);
+  transform: translateY(-4px);
+}
+
+/* Solid variant - solid background */
+.neon-stats--solid .neon-stats__item {
+  background-color: color-mix(in srgb, var(--color-white) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--neon-accent) 30%, transparent);
+}
+
+.neon-stats--solid .neon-stats__item:hover {
+  background-color: color-mix(in srgb, var(--color-white) 12%, transparent);
+  border-color: var(--neon-accent);
+  box-shadow: 
+    0 0 20px color-mix(in srgb, var(--neon-accent) 25%, transparent),
+    0 4px 16px color-mix(in srgb, var(--color-black) 40%, transparent);
+  transform: translateY(-4px);
+}
+
+/* ============================================
+   ICON WRAPPER
+   ============================================ */
+
+.neon-stats__icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-full);
+  background-color: color-mix(in srgb, var(--neon-accent) 15%, transparent);
+  border: 1px solid var(--neon-accent);
+  color: var(--neon-accent);
+  box-shadow: 0 0 15px color-mix(in srgb, var(--neon-accent) 30%, transparent);
+  transition: all 0.3s var(--ease-out);
+}
+
+.neon-stats__item:hover .neon-stats__icon-wrapper {
+  background-color: var(--neon-accent);
+  color: var(--color-black);
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 0 25px color-mix(in srgb, var(--neon-accent) 50%, transparent);
+}
+
+/* ============================================
+   VALUE
+   ============================================ */
+
+.neon-stats__value {
+  font-family: var(--font-primary);
+  font-size: var(--text-5xl);
+  font-weight: var(--font-weight-black);
+  line-height: var(--line-height-tight);
+  color: var(--neon-accent);
+  text-shadow: 0 0 20px color-mix(in srgb, var(--neon-accent) 40%, transparent);
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .neon-stats__value {
+    font-size: var(--text-6xl);
+  }
+}
+
+.neon-stats__item:hover .neon-stats__value {
+  text-shadow: 0 0 30px color-mix(in srgb, var(--neon-accent) 60%, transparent);
+}
+
+/* ============================================
+   LABEL
+   ============================================ */
+
+.neon-stats__label {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+  color: var(--color-white);
+  margin: 0;
+}
+
+/* ============================================
+   DESCRIPTION
+   ============================================ */
+
+.neon-stats__description {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  line-height: var(--line-height-normal);
+  color: var(--muted-foreground);
+  max-width: 24ch;
+  margin: 0;
+}
+
+/* ============================================
+   TREND INDICATOR
+   ============================================ */
+
+.neon-stats__trend {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  padding: var(--spacing-1) var(--spacing-3);
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-semibold);
+  border-radius: var(--radius-full);
+  margin-top: var(--spacing-2);
+}
+
+.neon-stats__trend-value {
+  font-family: var(--font-secondary);
+  font-size: var(--text-xs);
+}
+
+.neon-stats__trend--up {
+  color: var(--wp--preset--color--neon-lime);
+  background-color: color-mix(in srgb, var(--wp--preset--color--neon-lime) 15%, transparent);
+  border: 1px solid color-mix(in srgb, var(--wp--preset--color--neon-lime) 30%, transparent);
+}
+
+.neon-stats__trend--down {
+  color: var(--wp--preset--color--neon-pink);
+  background-color: color-mix(in srgb, var(--wp--preset--color--neon-pink) 15%, transparent);
+  border: 1px solid color-mix(in srgb, var(--wp--preset--color--neon-pink) 30%, transparent);
+}
+
+.neon-stats__trend--neutral {
+  color: var(--muted-foreground);
+  background-color: color-mix(in srgb, var(--color-white) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-white) 20%, transparent);
+}
+
+/* ============================================
+   BACKGROUND DECORATIVE ELEMENTS
+   ============================================ */
+
+/* Radial gradient orbs for visual interest */
+.neon-stats::before,
+.neon-stats::after {
+  content: '';
+  position: absolute;
+  border-radius: var(--radius-full);
+  pointer-events: none;
+  opacity: 0.1;
+  filter: blur(80px);
+  z-index: 0;
+}
+
+.neon-stats::before {
+  top: -10%;
+  left: -10%;
+  width: 40%;
+  height: 60%;
+  background: radial-gradient(
+    circle,
+    var(--neon-accent) 0%,
+    transparent 70%
+  );
+}
+
+.neon-stats::after {
+  bottom: -10%;
+  right: -10%;
+  width: 40%;
+  height: 60%;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--neon-accent) 70%, var(--wp--preset--color--neon-pink) 30%) 0%,
+    transparent 70%
+  );
+}
+
+/* Ensure content is above decorative elements */
+.neon-stats__container {
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .neon-stats__item,
+  .neon-stats__icon-wrapper {
+    transition: none;
+    transform: none !important;
+  }
+
+  .neon-stats::before,
+  .neon-stats::after {
+    animation: none;
+  }
+}
+
+/* Focus visible for keyboard navigation */
+.neon-stats__item:focus-visible {
+  outline: 2px solid var(--neon-accent);
+  outline-offset: 4px;
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+  .neon-stats {
+    background-color: var(--color-white);
+  }
+
+  .neon-stats__title,
+  .neon-stats__label,
+  .neon-stats__value {
+    color: var(--color-black);
+    text-shadow: none;
+  }
+
+  .neon-stats__item {
+    border: 1px solid var(--color-black);
+    box-shadow: none;
+  }
+
+  .neon-stats::before,
+  .neon-stats::after {
+    display: none;
+  }
+}

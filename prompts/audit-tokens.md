@@ -13,6 +13,12 @@
 
 **When to Use:** After building new components/templates, or periodically to verify compliance.
 
+**Reference guidelines:**
+- `/guidelines/design-tokens/colors.md` — color token definitions
+- `/guidelines/design-tokens/spacing.md` — spacing token definitions
+- `/guidelines/design-tokens/typography.md` — font and text size tokens
+- `/guidelines/Guidelines.md` — design system compliance rules
+
 ---
 
 ## Workflow Steps

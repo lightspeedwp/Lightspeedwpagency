@@ -20,6 +20,40 @@ import {
 } from '@phosphor-icons/react';
 
 import type { AIHero, AIStat, AIFeature, AIUseCase, AIPricingPackage, AIFAQ, AICTA } from './types';
+import type { LifecycleStageInfo } from './content-generation';
+
+/* ── Lifecycle Stage Info ── */
+
+export const seoLifecycle: LifecycleStageInfo = {
+  slug: 'grow',
+  name: 'Grow',
+  icon: TrendUp,
+  accent: 'var(--category-green)',
+};
+
+/* ── Trust Signal ── */
+
+export const seoTrustSignal = {
+  quote: 'The predictive analytics showed us exactly which content to double down on, increasing traffic by 150%.',
+  author: 'Nina Petrov',
+  role: 'Head of Digital',
+  company: 'EuroTrek',
+};
+
+/* ── Related Links ── */
+
+export const seoRelatedServices = [
+  { label: 'SEO Service', href: '/services/seo', description: 'Comprehensive search engine optimisation' },
+  { label: 'AI Search & Visibility', href: '/services/ai/search-visibility', description: 'Holistic AI search strategy' },
+  { label: 'Content Strategy', href: '/services/content/strategy', description: 'Editorial planning for SEO' },
+  { label: 'Analytics', href: '/services/analytics', description: 'Track and measure SEO performance' },
+];
+
+export const seoRelatedSolutions = [
+  { label: 'AI Analytics', href: '/solutions/ai/analytics', description: 'Predictive insights from SEO data' },
+  { label: 'AI Content Generation', href: '/solutions/ai/content-generation', description: 'SEO-optimised content at scale' },
+  { label: 'WordPress Solutions', href: '/solutions/wordpress', description: 'WordPress SEO best practices' },
+];
 
 /* ── Hero ── */
 

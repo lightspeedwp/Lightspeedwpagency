@@ -1,0 +1,115 @@
+/**
+ * Service Hero — Decorative Elements
+ *
+ * Visual decorations for service hero sections: grids, orbs,
+ * crosshairs, and concentric rings.
+ *
+ * Split from service-hero.css (March 17, 2026) to meet
+ * 400-line file size limit (429 → 2 files).
+ *
+ * @see service-hero-core.css (main hero styles)
+ */
+
+/* ============================================
+   DECORATIVE ELEMENTS
+   ============================================ */
+
+/* Background grid overlay */
+.service-hero__decor-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(var(--primary-rgb), 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--primary-rgb), 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Custom-color grid — uses scoped --grid-color-rgb */
+.service-hero__decor-grid--custom {
+  background-image:
+    linear-gradient(rgba(var(--grid-color-rgb, var(--primary-rgb)), 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--grid-color-rgb, var(--primary-rgb)), 0.05) 1px, transparent 1px);
+}
+
+/* Gradient orb glow */
+.service-hero__decor-orb {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, color-mix(in srgb, var(--primary) 10%, transparent) 0%, transparent 70%);
+  filter: blur(40px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Custom orb color — uses scoped --orb-color */
+.service-hero__decor-orb--custom {
+  background: radial-gradient(circle, color-mix(in srgb, var(--orb-color, var(--primary)) 10%, transparent) 0%, transparent 70%);
+}
+
+/* Corner crosshair marks */
+.service-hero__crosshair {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.service-hero__crosshair--tl {
+  top: 10%;
+  left: 10%;
+  border-top: 2px solid var(--primary);
+  border-left: 2px solid var(--primary);
+}
+
+.service-hero__crosshair--tr {
+  top: 10%;
+  right: 10%;
+  border-top: 2px solid var(--primary);
+  border-right: 2px solid var(--primary);
+}
+
+.service-hero__crosshair--bl {
+  bottom: 10%;
+  left: 10%;
+  border-bottom: 2px solid var(--primary);
+  border-left: 2px solid var(--primary);
+}
+
+.service-hero__crosshair--br {
+  bottom: 10%;
+  right: 10%;
+  border-bottom: 2px solid var(--primary);
+  border-right: 2px solid var(--primary);
+}
+
+/* Concentric circles decoration */
+.service-hero__decor-rings {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 800px;
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.service-hero__decor-ring {
+  position: absolute;
+  border: 1px solid var(--primary);
+  border-radius: 50%;
+}
+
+.service-hero__decor-ring--1 { inset: 10%; }
+.service-hero__decor-ring--2 { inset: 30%; }
+.service-hero__decor-ring--3 { inset: 50%; }
+.service-hero__decor-ring--4 { inset: 70%; }

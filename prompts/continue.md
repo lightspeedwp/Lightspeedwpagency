@@ -6,7 +6,7 @@
 **Status:** Production
 **Trigger:** User types `continue` (see `/guidelines/prompt-triggers.md`)
 **Repeatable:** Yes — paste into any new session to resume work
-**Companion:** Can run standalone OR after `/prompts/cleanup.md`
+**Companion:** Can run standalone OR after a cleanup session
 
 ---
 
@@ -23,8 +23,9 @@ Pick up the next logical task and execute it. This prompt can be used:
 ## Step 1 — Read Context
 
 1. Read `/guidelines/Guidelines.md` — project rules and design system
-2. Read `/tasks/task-list.md` — find open tasks (`[ ]`)
-3. If no open tasks there, read `/tasks/master-task-list.md` — find next incomplete workflow
+2. Read `/guidelines/housekeeping.md` — protected files, task management rules
+3. Read `/tasks/task-list.md` — find open tasks (`[ ]`)
+4. If no open tasks there, read `/tasks/master-task-list.md` — find next incomplete workflow
 
 ---
 

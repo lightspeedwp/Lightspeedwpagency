@@ -36,6 +36,7 @@ import { Button } from '../blocks/design/Buttons';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { ScrollDownArrow } from '../common/ScrollDownArrow';
 import { SecurityLowerSections } from './security-service/SecurityLowerSections';
+import { WebGLCyberRadar } from '../patterns/WebGLCyberRadar';
 import { 
   Shield, 
   Terminal,
@@ -146,35 +147,36 @@ export function SecurityServiceTemplate() {
             </div>
 
             <div className="security-hero__content">
-               {/* Terminal Visual */}
+               {/* Cyber Radar Visual */}
                <ScrollReveal animation="fade-left">
-                 <div className="security-terminal">
-                   <div className="security-terminal__header">
-                     <div className="security-terminal__dots">
-                       <div className="security-terminal__dot security-terminal__dot--red" />
-                       <div className="security-terminal__dot security-terminal__dot--yellow" />
-                       <div className="security-terminal__dot security-terminal__dot--green" />
-                     </div>
-                     <div className="security-terminal__title">root@lightspeed:~</div>
+                 <div style={{ background: 'var(--card)', borderRadius: 'var(--radius-lg)', border: '1px solid var(--border)', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+                   <div style={{ height: '300px', position: 'relative' }}>
+                     <WebGLCyberRadar />
                    </div>
-                   <div className="security-terminal__body">
-                     <div className="security-terminal__welcome">
-                       Welcome to LightSpeed Defense System v4.0<br/>
-                       Copyright (c) 2025 LightSpeed Agency
-                     </div>
-                     {logs.map((log, i) => (
-                       <div key={i} className="security-terminal__log-entry">
-                         <span className="security-terminal__log-time">{new Date().toLocaleTimeString()} &gt;</span> 
-                         <span className={`security-terminal__log-text ${
-                           log.includes("detected") ? 'security-terminal__log-text--alert' :
-                           log.includes("OK") ? 'security-terminal__log-text--ok' :
-                           'security-terminal__log-text--info'
-                         }`}>
-                           {log}
-                         </span>
+                   <div className="security-terminal" style={{ margin: 0, border: 'none', borderTop: '1px solid var(--border)', borderRadius: 0, borderBottomLeftRadius: 'var(--radius-lg)', borderBottomRightRadius: 'var(--radius-lg)' }}>
+                     <div className="security-terminal__header">
+                       <div className="security-terminal__dots">
+                         <div className="security-terminal__dot security-terminal__dot--red" />
+                         <div className="security-terminal__dot security-terminal__dot--yellow" />
+                         <div className="security-terminal__dot security-terminal__dot--green" />
                        </div>
-                     ))}
-                     <div className="security-terminal__cursor">_</div>
+                       <div className="security-terminal__title">root@lightspeed:~</div>
+                     </div>
+                     <div className="security-terminal__body">
+                       {logs.map((log, i) => (
+                         <div key={i} className="security-terminal__log-entry">
+                           <span className="security-terminal__log-time">{new Date().toLocaleTimeString()} &gt;</span> 
+                           <span className={`security-terminal__log-text ${
+                             log.includes("detected") ? 'security-terminal__log-text--alert' :
+                             log.includes("OK") ? 'security-terminal__log-text--ok' :
+                             'security-terminal__log-text--info'
+                           }`}>
+                             {log}
+                           </span>
+                         </div>
+                       ))}
+                       <div className="security-terminal__cursor">_</div>
+                     </div>
                    </div>
                  </div>
                </ScrollReveal>

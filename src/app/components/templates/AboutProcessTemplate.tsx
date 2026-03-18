@@ -21,6 +21,8 @@ import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { FunkyCTA } from '../patterns/FunkyCTA';
 import { FAQSection } from '../patterns/FAQSection';
 import { FeatureList } from '../patterns/FeatureList';
+import { NeonStats } from '../common/NeonStats';
+import { WebGLProcessOrbital } from '../patterns/WebGLProcessOrbital';
 import { Heading } from '../blocks/text/Heading';
 import { Paragraph } from '../blocks/text/Paragraph';
 import { useHeroParallax } from '../../hooks/useHeroParallax';
@@ -35,7 +37,9 @@ import {
   Globe,
   Lightning as Zap,
   Stack as Layers,
-  Gear as Settings
+  Gear as Settings,
+  Clock,
+  CheckFat,
 } from '@phosphor-icons/react';
 
 /* Route-level CSS */
@@ -79,6 +83,49 @@ export function AboutProcessTemplate() {
             <p className="about-process__hero-subtitle">
               A proven methodology that transforms ideas into exceptional WordPress experiences. Systematic, scalable, and built for success.
             </p>
+          </div>
+        </Container>
+      </section>
+
+      {/* ── Process Efficiency Stats & Visuals ── */}
+      <section className="about-process__efficiency">
+        <Container>
+          <div className="about-process__efficiency-grid">
+            <div className="about-process__efficiency-content">
+              <Heading level={2} className="about-process__efficiency-title">
+                Velocity & quality
+              </Heading>
+              <Paragraph className="about-process__efficiency-desc">
+                Our systematic approach doesn't just improve quality; it accelerates delivery. We build robust WordPress platforms faster through our tokenized design system and unified FSE block architecture.
+              </Paragraph>
+              
+              <NeonStats
+                stats={[
+                  {
+                    id: 'velocity-1',
+                    value: '45%',
+                    label: 'Faster deployment',
+                    description: 'Compared to legacy WP builds',
+                    icon: Clock,
+                    trend: { value: '+15%', direction: 'up' }
+                  },
+                  {
+                    id: 'quality-1',
+                    value: '98%',
+                    label: 'QA pass rate',
+                    description: 'First-round UAT success',
+                    icon: CheckFat
+                  }
+                ]}
+                columns={2}
+                accentColor="var(--wp--preset--color--neon-purple)"
+                className="about-process__efficiency-stats"
+              />
+            </div>
+            
+            <div className="about-process__efficiency-visual">
+              <WebGLProcessOrbital accentColor="var(--wp--preset--color--neon-purple)" />
+            </div>
           </div>
         </Container>
       </section>

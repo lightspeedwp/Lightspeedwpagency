@@ -13,6 +13,11 @@
 
 **When to Use:** After building new UI components, or periodically as a quality gate.
 
+**Reference guidelines:**
+- `/guidelines/accessibility.md` — WCAG 2.1 AA rules
+- `/guidelines/design-tokens/touch-targets.md` — minimum touch target sizes
+- `/guidelines/design-tokens/iconography.md` — icon accessibility rules
+
 ---
 
 ## Workflow Steps

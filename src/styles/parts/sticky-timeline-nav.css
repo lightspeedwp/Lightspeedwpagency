@@ -1,0 +1,191 @@
+/**
+ * Sticky Timeline Navigation
+ *
+ * Horizontal 6-stage progress bar for lifecycle mega page.
+ * Sticks to top after hero scroll, tracks active section.
+ *
+ * BLOCK: sticky-timeline-nav
+ */
+
+.sticky-timeline-nav {
+  position: sticky;
+  top: 80px; /* Account for site header */
+  z-index: 40;
+  background: var(--color-background);
+  border-bottom: 1px solid var(--color-border);
+  transition: all 0.3s ease;
+}
+
+.sticky-timeline-nav--stuck {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.sticky-timeline-nav__inner {
+  max-width: var(--wp--style--global--wide-size);
+  margin: 0 auto;
+  padding: var(--spacing-4) var(--spacing-6);
+}
+
+.sticky-timeline-nav__scroll-container {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+}
+
+.sticky-timeline-nav__scroll-container::-webkit-scrollbar {
+  height: 4px;
+}
+
+.sticky-timeline-nav__scroll-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sticky-timeline-nav__scroll-container::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: var(--radius-full);
+}
+
+/* Stage button */
+.sticky-timeline-nav__stage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  padding: var(--spacing-3) var(--spacing-4);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.sticky-timeline-nav__stage:hover {
+  background: var(--color-muted);
+}
+
+.sticky-timeline-nav__stage:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-md);
+}
+
+/* Active state */
+.sticky-timeline-nav__stage--active {
+  background: var(--color-muted);
+}
+
+.sticky-timeline-nav__stage--active .sticky-timeline-nav__stage-icon {
+  background: var(--stage-accent);
+  color: var(--color-white);
+  border-color: var(--stage-accent);
+}
+
+.sticky-timeline-nav__stage--active .sticky-timeline-nav__stage-name {
+  color: var(--color-text);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Stage icon */
+.sticky-timeline-nav__stage-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: var(--color-background);
+  border: 2px solid var(--color-border);
+  border-radius: 50%;
+  color: var(--color-text-muted);
+  transition: all 0.3s ease;
+}
+
+/* Stage label */
+.sticky-timeline-nav__stage-label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+.sticky-timeline-nav__stage-step {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+}
+
+.sticky-timeline-nav__stage-name {
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-muted);
+  transition: all 0.3s ease;
+}
+
+/* Connector line between stages */
+.sticky-timeline-nav__connector {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 40px;
+  height: 2px;
+  background: var(--color-border);
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+/* Mobile responsive (hide labels on very small screens) */
+@media (max-width: 640px) {
+  .sticky-timeline-nav__stage {
+    padding: var(--spacing-3);
+  }
+
+  .sticky-timeline-nav__stage-label {
+    display: none;
+  }
+
+  .sticky-timeline-nav__connector {
+    width: 20px;
+  }
+}
+
+/* Tablet */
+@media (min-width: 641px) and (max-width: 1023px) {
+  .sticky-timeline-nav__stage {
+    padding: var(--spacing-3);
+  }
+
+  .sticky-timeline-nav__stage-name {
+    font-size: var(--text-xs);
+  }
+
+  .sticky-timeline-nav__connector {
+    width: 30px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .sticky-timeline-nav__scroll-container {
+    justify-content: center;
+    overflow-x: visible;
+  }
+
+  .sticky-timeline-nav__connector {
+    width: 60px;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .sticky-timeline-nav,
+  .sticky-timeline-nav__stage,
+  .sticky-timeline-nav__stage-icon {
+    transition: none;
+  }
+}

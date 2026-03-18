@@ -7,7 +7,7 @@
  * @see /src/styles/templates/sub-service-base.css
  */
 
-import { Envelope, Crosshair, Lightning, Users, ChartBar, TrendUp } from '@phosphor-icons/react';
+import { Envelope, Crosshair, Lightning, Users, ChartBar, TrendUp, CurrencyDollar, ChartLineUp, Clock } from '@phosphor-icons/react';
 import { Link } from 'react-router';
 import { getPageUrl } from '../../data/site-pages';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
@@ -19,6 +19,7 @@ import { Container } from '../common/Container';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { FunkyCTA } from '../patterns/FunkyCTA';
 import { JourneyPhaseIndicator } from '../ui/JourneyPhaseIndicator';
+import { WebGLMail } from '../patterns/WebGLMail';
 
 export const EmailMarketingServiceTemplate = () => {
   const benefits = [
@@ -33,17 +34,18 @@ export const EmailMarketingServiceTemplate = () => {
   const deliverables = ['Email marketing strategy', 'Campaign calendar', 'Email template library', 'Automation workflows', 'Segmentation strategy', 'Monthly performance reports', 'Conversion optimization roadmap'];
 
   const results = [
-    { id: 'res-1', value: '25%', label: 'Avg Conversion Rate' },
-    { id: 'res-2', value: '38:1', label: 'Avg ROI (Email Marketing)' },
-    { id: 'res-3', value: '200%', label: 'Revenue Growth (12 mo)' },
-    { id: 'res-4', value: '50%', label: 'Reduction in Manual Work' }
+    { id: 'res-1', value: '25%', label: 'Avg Conversion Rate', icon: ChartLineUp },
+    { id: 'res-2', value: '38:1', label: 'Avg ROI (Email Marketing)', icon: CurrencyDollar },
+    { id: 'res-3', value: '200%', label: 'Revenue Growth (12 mo)', icon: TrendUp },
+    { id: 'res-4', value: '50%', label: 'Reduction in Manual Work', icon: Clock }
   ];
 
   return (
     <div data-service="email-marketing">
       {/* Hero section */}
-      <section className="sub-service-base__hero">
-        <div className="sub-service-base__hero-content">
+      <section className="sub-service-base__hero" style={{ position: 'relative' }}>
+        <WebGLMail accentColor="var(--wp--preset--color--neon-cyan)" />
+        <div className="sub-service-base__hero-content" style={{ position: 'relative', zIndex: 2 }}>
           <BreadcrumbPart
             items={[
               { label: 'Home', href: '/' },

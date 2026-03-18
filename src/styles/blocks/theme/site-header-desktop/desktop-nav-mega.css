@@ -104,6 +104,11 @@
   transform-origin: top center;
   max-height: 80vh;
   overflow-y: auto;
+  display: none;
+}
+
+.site-header__mega-menu--visible {
+  display: block;
 }
 
 @keyframes megaMenuSlideDown {

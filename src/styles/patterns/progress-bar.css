@@ -1,0 +1,102 @@
+/**
+ * ProgressBar Pattern
+ *
+ * Reusable progress bar component.
+ * 
+ * Used in:
+ * - TrainingTemplate
+ * - GettingStartedTemplate
+ *
+ * @pattern Extracted March 18, 2026
+ */
+
+/* ── Base Container ── */
+
+.progress-bar {
+  width: 100%;
+}
+
+/* ── Header (Label + Percentage) ── */
+
+.progress-bar__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-2);
+}
+
+.progress-bar__label {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text);
+}
+
+.progress-bar__percentage {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-muted);
+}
+
+/* ── Track ── */
+
+.progress-bar__track {
+  position: relative;
+  width: 100%;
+  background: var(--color-border);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.progress-bar__track--sm {
+  height: 4px;
+}
+
+.progress-bar__track--md {
+  height: 8px;
+}
+
+.progress-bar__track--lg {
+  height: 12px;
+}
+
+/* ── Fill ── */
+
+.progress-bar__fill {
+  height: 100%;
+  transition: width var(--duration-slow) var(--ease-out);
+  border-radius: var(--radius-full);
+}
+
+.progress-bar__fill--primary {
+  background: var(--gradient-primary);
+}
+
+.progress-bar__fill--success {
+  background: var(--gradient-success);
+}
+
+.progress-bar__fill--warning {
+  background: var(--gradient-warning);
+}
+
+.progress-bar__fill--accent {
+  background: var(--gradient-accent);
+}
+
+/* ── Dark Mode ── */
+
+@media (prefers-color-scheme: dark) {
+  .progress-bar__track {
+    background: var(--color-surface-muted);
+  }
+}
+
+/* ── Reduced Motion ── */
+
+@media (prefers-reduced-motion: reduce) {
+  .progress-bar__fill {
+    transition: none;
+  }
+}

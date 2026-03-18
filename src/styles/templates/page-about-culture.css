@@ -20,5 +20,6 @@
 
 /* Culture page sub-files */
 @import './page-about-culture/culture-hero.css';
+@import './page-about-culture/culture-global.css';
 @import './page-about-culture/culture-values-env.css';
 @import './page-about-culture/culture-perks-faq.css';

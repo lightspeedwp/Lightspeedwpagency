@@ -20,5 +20,6 @@
 
 /* Process page sub-files */
 @import './page-about-process/process-hero.css';
+@import './page-about-process/process-efficiency.css';
 @import './page-about-process/process-timeline.css';
 @import './page-about-process/process-methodology.css';

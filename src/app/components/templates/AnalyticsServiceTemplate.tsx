@@ -11,6 +11,9 @@
  * - Analytics deliverables
  * - Results showcase
  * - CTA section
+ * - Lifecycle flow strip
+ * - Related pages grid
+ * - Testimonial card
  * 
  * Design System Compliance:
  * - Uses CSS variables from /src/styles/theme-base.css
@@ -31,15 +34,28 @@
 import { CheckCircle } from '@phosphor-icons/react';
 import { Link } from 'react-router';
 import { getPageUrl } from '../../data/site-pages';
-import { analyticsServiceBenefits, analyticsServiceDeliverables, analyticsServiceResults } from '../../data/analytics-service-template-data';
+import { 
+  analyticsServiceBenefits, 
+  analyticsServiceDeliverables, 
+  analyticsServiceResults,
+  analyticsLifecycle,
+  analyticsTrustSignal,
+  analyticsRelatedSolutions,
+  analyticsRelatedServices,
+} from '../../data/analytics-service-template-data';
 import { FeatureList } from '../patterns/FeatureList';
-import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
 import { Container } from '../common/Container';
 import { FunkyCTA } from '../patterns/FunkyCTA';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { JourneyPhaseIndicator } from '../ui/JourneyPhaseIndicator';
 import { StatsGrid } from '../patterns/StatsGrid';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
+import { LifecycleFlowStrip } from '../parts/LifecycleFlowStrip';
+import { RelatedPagesGrid } from '../patterns/RelatedPagesGrid';
+import { TestimonialCard } from '../patterns/TestimonialCard';
+import { Rocket, Brain } from '@phosphor-icons/react';
+
+import { WebGLDataNodes } from '../patterns/WebGLDataNodes';
 
 export const AnalyticsServiceTemplate = () => {
   return (
@@ -53,13 +69,14 @@ export const AnalyticsServiceTemplate = () => {
         ]}
       />
 
-      <JourneyPhaseIndicator currentPhase="ignite" currentServicePage="analytics" />
+      <JourneyPhaseIndicator currentPhase="grow" currentServicePage="analytics" />
 
       {/* Hero Section */}
-      <section className="service-hero service-hero--pricing">
-        <div className="pricing-page__grid-bg" aria-hidden="true" />
+      <section className="service-hero service-hero--pricing" style={{ position: 'relative' }}>
+        <WebGLDataNodes accentColor="var(--wp--preset--color--neon-cyan)" secondaryColor="var(--wp--preset--color--neon-purple)" />
+        <div className="pricing-page__grid-bg" aria-hidden="true" style={{ opacity: 0.5, zIndex: 1 }} />
         
-        <Container>
+        <Container style={{ position: 'relative', zIndex: 2 }}>
           <div className="service-hero__content service-hero__content--centered">
             <ScrollReveal animation="fade-up">
               <h1 className="service-hero__title">
@@ -148,7 +165,7 @@ export const AnalyticsServiceTemplate = () => {
           
           <ScrollReveal animation="fade-up" delay={100}>
             <StatsGrid
-              stats={analyticsServiceResults.map((r, i) => ({ id: `analytics-stat-${i}`, value: r.metric, label: r.label }))}
+              stats={analyticsServiceResults.map((r, i) => ({ id: `analytics-stat-${i}`, number: r.metric, label: r.label, icon: r.icon as any }))}
               columns={4}
               variant="cards"
             />
@@ -156,7 +173,75 @@ export const AnalyticsServiceTemplate = () => {
         </Container>
       </section>
 
-      <ServiceTestimonial serviceSlug="ai-search" />
+      {/* Lifecycle Context Flow */}
+      <section aria-label="Lifecycle context">
+        <Container>
+          <ScrollReveal animation="fade-up">
+            <LifecycleFlowStrip
+              prevStage={{
+                slug: 'launch',
+                name: 'Launch',
+                icon: Rocket,
+                accent: 'var(--category-amber)',
+              }}
+              currentStage={analyticsLifecycle}
+              nextStage={{
+                slug: 'evolve',
+                name: 'Evolve',
+                icon: Brain,
+                accent: 'var(--category-indigo)',
+              }}
+            />
+          </ScrollReveal>
+        </Container>
+      </section>
+
+      {/* Trust Signal */}
+      <section aria-label="Client testimonial">
+        <Container>
+          <ScrollReveal animation="fade-up">
+            <TestimonialCard
+              quote={analyticsTrustSignal.quote}
+              author={analyticsTrustSignal.author}
+              role={analyticsTrustSignal.role}
+            />
+          </ScrollReveal>
+        </Container>
+      </section>
+
+      {/* Related Solutions */}
+      <section aria-label="Related solutions">
+        <Container>
+          <div className="service-section__header">
+            <ScrollReveal animation="fade-up">
+              <h2 className="service-section__title">Related solutions</h2>
+              <p className="service-section__description">
+                Explore AI-powered solutions that work alongside analytics
+              </p>
+            </ScrollReveal>
+          </div>
+          <ScrollReveal animation="fade-up" delay={100}>
+            <RelatedPagesGrid pages={analyticsRelatedSolutions} />
+          </ScrollReveal>
+        </Container>
+      </section>
+
+      {/* Related Services */}
+      <section aria-label="Related services">
+        <Container>
+          <div className="service-section__header">
+            <ScrollReveal animation="fade-up">
+              <h2 className="service-section__title">Related services</h2>
+              <p className="service-section__description">
+                Complementary services that enhance your analytics strategy
+              </p>
+            </ScrollReveal>
+          </div>
+          <ScrollReveal animation="fade-up" delay={100}>
+            <RelatedPagesGrid pages={analyticsRelatedServices} />
+          </ScrollReveal>
+        </Container>
+      </section>
 
       {/* CTA */}
       <FunkyCTA

@@ -33,11 +33,13 @@ import { JourneyPhaseIndicator } from '../ui/JourneyPhaseIndicator';
 import { servicePricingTimeline } from '../../data/services';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { ScrollDownArrow } from '../common/ScrollDownArrow';
+import { WebGLPerformanceRing } from '../patterns/WebGLPerformanceRing';
 import { 
   Lightning as Zap, 
   CheckCircle, 
 } from '@phosphor-icons/react';
-import { performanceServiceHero, performanceServiceOverview, performanceServiceFeatures, performanceServiceProcess } from '../../data/performance-service-page';
+import { performanceServiceHero, performanceServiceOverview, performanceServiceFeatures, performanceServiceProcess, performanceServiceStats } from '../../data/performance-service-page';
+import { StatsGrid } from '../patterns/StatsGrid';
 
 export function PerformanceServiceTemplate() {
   // Build unified data object
@@ -97,26 +99,22 @@ export function PerformanceServiceTemplate() {
             </ScrollReveal>
 
             <ScrollReveal animation="scale" delay={200}>
-              <div className="perf-speedometer">
-                <div className="perf-speedometer__gauge-wrapper">
-                  <div className="perf-speedometer__gauge">
-                    98
+              <div className="perf-speedometer" style={{ position: 'relative' }}>
+                <WebGLPerformanceRing accentColor="var(--wp--preset--color--neon-lime)" />
+                <div style={{ position: 'absolute', bottom: '20px', left: 0, width: '100%' }}>
+                  <div className="perf-speedometer__metrics">
+                    {[
+                      { value: '0.8s', label: 'LCP' },
+                      { value: '0ms', label: 'CLS' },
+                      { value: '50ms', label: 'TBT' },
+                      { value: '100%', label: 'SEO' },
+                    ].map((metric) => (
+                      <div key={metric.label} className="perf-speedometer__metric">
+                        <div className="perf-speedometer__metric-value">{metric.value}</div>
+                        <div className="perf-speedometer__metric-label">{metric.label}</div>
+                      </div>
+                    ))}
                   </div>
-                  <span className="service-stat__label service-stat__label--wide">Lighthouse Score</span>
-                </div>
-                
-                <div className="perf-speedometer__metrics">
-                  {[
-                    { value: '0.8s', label: 'LCP' },
-                    { value: '0ms', label: 'CLS' },
-                    { value: '50ms', label: 'TBT' },
-                    { value: '100%', label: 'SEO' },
-                  ].map((metric) => (
-                    <div key={metric.label} className="perf-speedometer__metric">
-                      <div className="perf-speedometer__metric-value">{metric.value}</div>
-                      <div className="perf-speedometer__metric-label">{metric.label}</div>
-                    </div>
-                  ))}
                 </div>
               </div>
             </ScrollReveal>
@@ -184,6 +182,21 @@ export function PerformanceServiceTemplate() {
               </div>
             </ScrollReveal>
           </div>
+        </Container>
+      </section>
+
+      {/* ============================================
+          STATS GRID
+          ============================================ */}
+      <section className="service-section service-section--bg-background">
+        <Container>
+          <ScrollReveal animation="fade-up">
+            <StatsGrid 
+              stats={performanceServiceStats.map(s => ({ number: s.value, label: s.label, icon: s.icon }))}
+              columns={4}
+              variant="cards"
+            />
+          </ScrollReveal>
         </Container>
       </section>
 

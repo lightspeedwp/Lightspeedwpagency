@@ -13,6 +13,13 @@
 
 **When to Use:** As a comprehensive pre-deployment check or after major UI changes.
 
+**Reference guidelines:**
+- `/guidelines/Guidelines.md` — design system compliance rules
+- `/guidelines/design-tokens/colors.md` — color tokens
+- `/guidelines/design-tokens/spacing.md` — spacing tokens
+- `/guidelines/design-tokens/typography.md` — font and text size tokens
+- `/guidelines/design-tokens/iconography.md` — icon library rules
+
 ---
 
 ## Workflow Steps

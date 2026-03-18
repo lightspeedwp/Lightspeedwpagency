@@ -1,0 +1,197 @@
+/**
+ * LSX Design System — Dark Mode Semantic Colors
+ *
+ * Part 1/2: Core semantic colors for dark theme
+ * Includes: Core, Card, Popover, Brand (Primary/Secondary), Muted, Accent
+ *
+ * Split from theme-dark-colors.css (March 17, 2026) to meet
+ * 400-line file size limit (417 → 2 files).
+ *
+ * @requires theme-base.css
+ */
+
+.dark {
+  /* ============================================
+     SEMANTIC COLOR SYSTEM (Dark Mode)
+     ============================================ */
+  
+  /* ----------------------------------------
+     Core Colors
+     ---------------------------------------- */
+  
+  /**
+   * Primary background color for the application (dark mode)
+   * Usage: Page background, canvas sections
+   * Contrast: Base for all foreground colors
+   * Hex: #090909
+   */
+  --background: #090909;                /* #090909 - Near black */
+  
+  /**
+   * Primary foreground color (text on dark background)
+   * Usage: Body text, headings on dark backgrounds
+   * Hex: #FFFFFF
+   * Contrast: 16.07:1 on dark background (AAA ✓✓✓)
+   */
+  --foreground: #FFFFFF;          /* #FFFFFF - Pure white */
+  
+  
+  /* ----------------------------------------
+     Card & Container Colors
+     ---------------------------------------- */
+  
+  /**
+   * Card background color (dark mode)
+   * Usage: Card components, modals, panels
+   * Hex: #1E1E1E
+   * Contrast: Slightly lighter than background for depth
+   */
+  --card: #1E1E1E;                   /* #1E1E1E - Dark gray */
+  
+  /**
+   * Card foreground color (text on cards in dark mode)
+   * Usage: Text inside cards and containers
+   * Hex: #FFFFFF
+   * Contrast: 13.85:1 on card background (AAA ✓✓✓)
+   */
+  --card-foreground: #FFFFFF;     /* #FFFFFF - White */
+  
+  /** Card hover background — slightly lighter on hover */
+  --card-hover: #2A2A2A;                /* Lighter dark gray */
+  
+  /** Primary dark variant — for hover states on links */
+  --primary-dark: #5B9AFF;              /* Lighter blue for dark mode */
+  
+  
+  /* ----------------------------------------
+     Popover & Dropdown Colors
+     ---------------------------------------- */
+  
+  /**
+   * Popover background color (dark mode)
+   * Usage: Dropdowns, tooltips, floating menus
+   * Hex: #1E1E1E
+   */
+  --popover: #1E1E1E;                /* #1E1E1E - Dark gray */
+  
+  /**
+   * Popover foreground color (dark mode)
+   * Usage: Text in popovers and dropdowns
+   * Hex: #FFFFFF
+   * Contrast: 13.85:1 on popover background (AAA ✓✓✓)
+   */
+  --popover-foreground: #FFFFFF;  /* #FFFFFF - White */
+  
+  
+  /* ----------------------------------------
+     Primary Brand Colors (Dark Mode)
+     ---------------------------------------- */
+  
+  /**
+   * Primary brand color (dark mode - brighter cyan)
+   * Usage: Primary buttons, links, interactive elements
+   * Hex: #7BE7FF
+   * Contrast: 10.87:1 on dark background (AAA ✓✓✓)
+   * Note: Inverted from light mode for better dark contrast
+   */
+  --primary: #7BE7FF;             /* #7BE7FF - Bright cyan */
+  
+  /**
+   * Primary foreground color (dark mode)
+   * Usage: Text on primary buttons and backgrounds
+   * Hex: #0E3278
+   * Contrast: 9.62:1 on primary (AAA ✓✓✓)
+   */
+  --primary-foreground: #0E3278;    /* #0E3278 - Dark blue */
+  
+  /**
+   * Primary soft background (10% opacity) (dark mode)
+   * Usage: Category badges, tags, soft highlights
+   * Hex: #7BE7FF1A
+   */
+  --primary-soft: #7BE7FF1A;      /* 10% primary cyan */
+  
+  /**
+   * Primary light variant (dark mode)
+   * Usage: Gradient endpoints, lighter accent backgrounds
+   * Hex: #A8F0FF (lighter shade of primary cyan)
+   */
+  --primary-light: #A8F0FF;        /* Lighter cyan for gradients */
+
+  /**
+   * Primary RGB (raw channel values, dark mode)
+   * Usage: rgba() patterns where color-mix() isn't supported
+   * Values: 123, 231, 255 (from #7BE7FF)
+   */
+  --primary-rgb: 123, 231, 255;
+
+  /**
+   * Funky Neon Color (Dark Mode)
+   * Usage: Glow effects, neon shadows
+   * Hex: #7BE7FF (Matches Primary for consistency)
+   */
+  --neon-color: #7BE7FF;
+  
+  
+  /* ----------------------------------------
+     Secondary Brand Colors (Dark Mode)
+     ---------------------------------------- */
+  
+  /**
+   * Secondary brand color (dark mode)
+   * Usage: Secondary buttons, accent elements
+   * Hex: #0E3278
+   * Contrast: 8.95:1 on dark background (AAA ✓✓✓)
+   */
+  --secondary: #0E3278;             /* #0E3278 - Dark blue */
+  
+  /**
+   * Secondary foreground color (dark mode)
+   * Usage: Text on secondary buttons
+   * Hex: #7BE7FF
+   * Contrast: 9.62:1 on secondary (AAA ✓✓✓)
+   */
+  --secondary-foreground: #7BE7FF; /* #7BE7FF - Bright cyan */
+  
+  
+  /* ----------------------------------------
+     Muted & Neutral Colors (Dark Mode)
+     ---------------------------------------- */
+  
+  /**
+   * Muted background color (dark mode)
+   * Usage: Disabled states, subtle backgrounds
+   * Hex: #565656
+   * Contrast: 2.19:1 on dark background
+   */
+  --muted: #565656;                  /* #565656 - Medium gray */
+  
+  /**
+   * Muted foreground color (dark mode)
+   * Usage: Secondary text, metadata, captions
+   * Hex: #E1E1E1
+   * Contrast: 13.16:1 on dark background (AAA ✓✓✓)
+   */
+  --muted-foreground: #E1E1E1;    /* #E1E1E1 - Light gray */
+  
+  
+  /* ----------------------------------------
+     Accent Colors (Dark Mode)
+     ---------------------------------------- */
+  
+  /**
+   * Accent color for highlights (dark mode)
+   * Usage: Hover states, active links, badges
+   * Hex: #1E6AFF
+   * Contrast: 3.51:1 on dark background (AA Large ✓)
+   */
+  --accent: #1E6AFF;               /* #1E6AFF - Bright blue */
+  
+  /**
+   * Accent foreground color (dark mode)
+   * Usage: Text on accent backgrounds
+   * Hex: #FFFFFF
+   * Contrast: 4.58:1 on accent (AA ✓)
+   */
+  --accent-foreground: #FFFFFF;   /* #FFFFFF - White */
+}

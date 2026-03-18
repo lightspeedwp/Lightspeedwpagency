@@ -1,0 +1,68 @@
+/**
+ * Lifecycle Stage Badge
+ *
+ * Compact horizontal pill(s) displaying lifecycle stage with icon and name.
+ * Uses scoped custom property --_badge-accent for dynamic stage color.
+ *
+ * BEM Block: .lifecycle-badge
+ * Elements: __item, __icon, __name
+ *
+ * @see /src/app/components/parts/LifecycleStageBadge.tsx
+ */
+
+/* ── Badge container ── */
+.lifecycle-badge {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-3);
+  align-items: center;
+}
+
+/* ── Individual stage item ── */
+.lifecycle-badge__item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2) var(--spacing-4);
+  background: var(--color-black);
+  border: 1px solid var(--_badge-accent, var(--category-cyan));
+  border-radius: var(--radius-pill);
+  box-shadow:
+    0 0 8px var(--_badge-accent, var(--category-cyan)),
+    inset 0 0 12px color-mix(in srgb, var(--_badge-accent, var(--category-cyan)) 20%, transparent);
+  transition: all 0.3s ease;
+}
+
+.lifecycle-badge__item:hover {
+  box-shadow:
+    0 0 16px var(--_badge-accent, var(--category-cyan)),
+    inset 0 0 20px color-mix(in srgb, var(--_badge-accent, var(--category-cyan)) 30%, transparent);
+  transform: translateY(-1px);
+}
+
+/* ── Icon ── */
+.lifecycle-badge__icon {
+  color: var(--_badge-accent, var(--category-cyan));
+  flex-shrink: 0;
+}
+
+/* ── Stage name ── */
+.lifecycle-badge__name {
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-white);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .lifecycle-badge__item {
+    transition: none;
+  }
+
+  .lifecycle-badge__item:hover {
+    transform: none;
+  }
+}

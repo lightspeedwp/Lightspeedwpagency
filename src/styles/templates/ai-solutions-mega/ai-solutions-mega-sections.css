@@ -1,0 +1,230 @@
+/**
+ * AI Solutions Mega Page — Solution Sections & Capabilities
+ *
+ * Split from ai-solutions-mega.css (March 17, 2026) to meet
+ * 400-line file size limit (496 → 3 files).
+ *
+ * Sections:
+ * - 5 full-page solution sections (dark backgrounds for neon compliance)
+ * - Capabilities section
+ *
+ * @see AISolutionsLandingTemplate.tsx
+ */
+
+/* ═══════════════════════════════════════════
+   SOLUTION SECTIONS (5 full-page sections)
+   ═══════════════════════════════════════════ */
+
+.ai-solutions-mega__solution {
+  padding: var(--spacing-20) var(--spacing-6);
+  background: var(--color-black); /* Dark background for neon compliance */
+  color: var(--color-white);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ai-solutions-mega__solution-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-12);
+  max-width: var(--wp--style--global--content-size);
+  margin: 0 auto;
+}
+
+/* Solution content (left column) */
+.ai-solutions-mega__solution-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid var(--solution-accent);
+  border-radius: var(--radius-lg);
+  color: var(--solution-accent);
+  margin-bottom: var(--spacing-6);
+}
+
+.ai-solutions-mega__solution-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-4xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-white);
+  margin-bottom: var(--spacing-4);
+}
+
+.ai-solutions-mega__solution-description {
+  font-family: var(--font-secondary);
+  font-size: var(--text-lg);
+  line-height: var(--line-height-relaxed);
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: var(--spacing-8);
+}
+
+/* Benefits list */
+.ai-solutions-mega__benefits {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--spacing-8) 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-3);
+}
+
+.ai-solutions-mega__benefit {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-3);
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.ai-solutions-mega__benefit-icon {
+  flex-shrink: 0;
+  color: var(--solution-accent);
+  margin-top: 2px;
+}
+
+/* Solution actions */
+.ai-solutions-mega__solution-actions {
+  display: flex;
+  gap: var(--spacing-4);
+  flex-wrap: wrap;
+}
+
+.ai-solutions-mega__solution-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-4) var(--spacing-8);
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-semibold);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.ai-solutions-mega__solution-btn--primary {
+  background: var(--solution-accent);
+  color: var(--color-black);
+}
+
+.ai-solutions-mega__solution-btn--primary:hover {
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.ai-solutions-mega__solution-btn--primary:focus-visible {
+  outline: 2px solid var(--color-white);
+  outline-offset: 2px;
+}
+
+/* Solution sidebar (right column) */
+.ai-solutions-mega__solution-sidebar {
+  padding: var(--spacing-8);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(10px);
+}
+
+.ai-solutions-mega__related-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-white);
+  margin-bottom: var(--spacing-4);
+}
+
+.ai-solutions-mega__related-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.ai-solutions-mega__related-item {
+  /* Reset list item styles */
+}
+
+.ai-solutions-mega__related-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-3) var(--spacing-4);
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.ai-solutions-mega__related-link:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--solution-accent);
+  color: var(--color-white);
+}
+
+.ai-solutions-mega__related-link:focus-visible {
+  outline: 2px solid var(--color-white);
+  outline-offset: 2px;
+  border-color: var(--solution-accent);
+}
+
+/* ═══════════════════════════════════════════
+   CAPABILITIES SECTION
+   ═══════════════════════════════════════════ */
+
+.ai-solutions-mega__capabilities {
+  padding: var(--spacing-16) var(--spacing-6);
+  background: var(--color-muted);
+}
+
+.ai-solutions-mega__capabilities-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-8);
+  margin-top: var(--spacing-8);
+}
+
+.ai-solutions-mega__capability {
+  padding: var(--spacing-8);
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.ai-solutions-mega__capability-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  background: var(--color-primary);
+  border-radius: var(--radius-md);
+  color: var(--color-white);
+  margin-bottom: var(--spacing-4);
+}
+
+.ai-solutions-mega__capability-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  margin-bottom: var(--spacing-2);
+}
+
+.ai-solutions-mega__capability-description {
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-muted);
+}

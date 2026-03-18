@@ -16,6 +16,10 @@ import {
   aiContentPricing,
   aiContentFAQs,
   aiContentCTA,
+  contentGenerationLifecycle,
+  contentGenerationTrustSignal,
+  contentGenerationRelatedServices,
+  contentGenerationRelatedSolutions,
 } from '../../data/ai-integrations-page';
 
 export function AIContentGenerationTemplate() {
@@ -42,6 +46,11 @@ export function AIContentGenerationTemplate() {
         'SEO-optimised from the first draft',
         '30+ language support built in',
       ]}
+      lifecycleStages={[contentGenerationLifecycle]}
+      trustSignal={contentGenerationTrustSignal}
+      relatedServices={contentGenerationRelatedServices}
+      relatedSolutions={contentGenerationRelatedSolutions}
+      showPricing={false}
     />
   );
 }

@@ -31,22 +31,14 @@ export function ServiceCapabilitiesGrid({
       
       {/* Section Header */}
       {(heading || subheading) && (
-        <div className="wp-flex wp-flex-col wp-items-center wp-justify-center wp-text-center wp-mb-12">
+        <div className="service-capabilities__header">
           {heading && (
-            <h2 className="wp-m-0 wp-mb-4" style={{ 
-              fontFamily: 'var(--font-primary)', 
-              fontSize: 'var(--text-h2)', 
-              color: 'var(--foreground)'
-            }}>
+            <h2 className="service-capabilities__heading">
               {heading}
             </h2>
           )}
           {subheading && (
-            <p className="wp-m-0 wp-max-w-3xl" style={{ 
-              fontFamily: 'var(--font-secondary)', 
-              fontSize: 'var(--text-lg)', 
-              color: 'var(--muted-foreground)'
-            }}>
+            <p className="service-capabilities__subheading">
               {subheading}
             </p>
           )}
@@ -56,67 +48,34 @@ export function ServiceCapabilitiesGrid({
       {/* Grid */}
       <div className={`${gridClass} wp-gap-8`}>
         {capabilities.map((capability) => {
-          const Icon = capability.icon;
+          const IconComponent = capability.icon;
           return (
             <div 
               key={capability.id} 
-              className="wp-flex wp-flex-col wp-p-8"
-              style={{
-                backgroundColor: 'var(--card)',
-                borderRadius: 'var(--radius-lg)',
-                border: '1px solid var(--border)',
-                transition: 'transform var(--transition-base), border-color var(--transition-base)',
-                height: '100%'
-              }}
+              className="service-capabilities__card"
             >
               {/* Icon Wrapper */}
-              <div 
-                className="wp-flex wp-items-center wp-justify-center shrink-0 wp-mb-6" 
-                style={{ 
-                  width: '48px', 
-                  height: '48px', 
-                  borderRadius: 'var(--radius)', 
-                  backgroundColor: 'var(--primary-soft)', 
-                  color: 'var(--primary)',
-                  boxShadow: '0 0 20px var(--primary-soft)'
-                }}
-              >
-                <Icon size={24} weight="duotone" />
+              <div className="service-capabilities__icon-wrapper">
+                <IconComponent size={24} weight="duotone" />
               </div>
 
               {/* Content */}
-              <div className="wp-flex wp-flex-col grow">
-                <h3 className="wp-m-0 wp-mb-3" style={{ 
-                  fontFamily: 'var(--font-primary)', 
-                  fontSize: 'var(--text-h4)', 
-                  color: 'var(--card-foreground)'
-                }}>
+              <div className="service-capabilities__content">
+                <h3 className="service-capabilities__title">
                   {capability.title}
                 </h3>
                 
-                <p className="wp-m-0 wp-mb-6" style={{ 
-                  fontFamily: 'var(--font-secondary)', 
-                  fontSize: 'var(--text-base)', 
-                  color: 'var(--muted-foreground)',
-                  lineHeight: '1.6'
-                }}>
+                <p className="service-capabilities__description">
                   {capability.description}
                 </p>
 
                 {/* Tags */}
                 {capability.tags && capability.tags.length > 0 && (
-                  <div className="wp-flex wp-flex-wrap wp-gap-2 wp-mb-6">
+                  <div className="service-capabilities__tags">
                     {capability.tags.map(tag => (
                       <span 
                         key={tag} 
-                        className="wp-inline-flex wp-items-center wp-px-3 wp-py-1"
-                        style={{
-                          backgroundColor: 'var(--muted)',
-                          color: 'var(--muted-foreground)',
-                          borderRadius: 'var(--radius-full)',
-                          fontSize: 'var(--text-sm)',
-                          fontFamily: 'var(--font-secondary)'
-                        }}
+                        className="service-capabilities__tag"
                       >
                         {tag}
                       </span>
@@ -127,17 +86,10 @@ export function ServiceCapabilitiesGrid({
 
               {/* Action Link (pushed to bottom by flex grow on parent) */}
               {capability.link && (
-                <div className="wp-mt-auto">
+                <div className="service-capabilities__link-wrapper">
                   <a 
                     href={capability.link} 
-                    className="wp-inline-flex wp-items-center wp-gap-2"
-                    style={{
-                      color: 'var(--primary)',
-                      fontFamily: 'var(--font-primary)',
-                      fontSize: 'var(--text-sm)',
-                      fontWeight: 'var(--font-weight-semibold)',
-                      textDecoration: 'none'
-                    }}
+                    className="service-capabilities__link"
                   >
                     Learn more <ArrowRight size={16} weight="bold" />
                   </a>

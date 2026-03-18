@@ -28,7 +28,7 @@
    Types
    ───────────────────────────────────────────── */
 
-export type JourneyPhase = 'ignite' | 'create' | 'build' | 'launch' | 'grow' | 'evolve';
+export type JourneyPhase = 'discover' | 'create' | 'build' | 'launch' | 'grow' | 'evolve';
 
 export interface JourneyPhaseClickEvent {
   event: 'journey_phase_click';
@@ -226,7 +226,7 @@ export function trackRelatedServicesImpression(
  */
 export function getPhaseDisplayName(phase: JourneyPhase): string {
   const phaseNames: Record<JourneyPhase, string> = {
-    ignite: 'Ignite',
+    discover: 'Discover',
     create: 'Create',
     build: 'Build',
     launch: 'Launch',
@@ -244,7 +244,7 @@ export function getPhaseDisplayName(phase: JourneyPhase): string {
  * @returns Progress percentage (0-100)
  */
 export function getJourneyProgress(currentPhase: JourneyPhase): number {
-  const phaseOrder: JourneyPhase[] = ['ignite', 'create', 'build', 'launch', 'grow', 'evolve'];
+  const phaseOrder: JourneyPhase[] = ['discover', 'create', 'build', 'launch', 'grow', 'evolve'];
   const currentIndex = phaseOrder.indexOf(currentPhase);
   
   if (currentIndex === -1) return 0;
@@ -264,7 +264,7 @@ export function getNavigationDirection(
   fromPhase: JourneyPhase,
   toPhase: JourneyPhase
 ): 'forward' | 'backward' | 'same' {
-  const phaseOrder: JourneyPhase[] = ['ignite', 'create', 'build', 'launch', 'grow', 'evolve'];
+  const phaseOrder: JourneyPhase[] = ['discover', 'create', 'build', 'launch', 'grow', 'evolve'];
   const fromIndex = phaseOrder.indexOf(fromPhase);
   const toIndex = phaseOrder.indexOf(toPhase);
 

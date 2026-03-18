@@ -13,6 +13,12 @@
 
 **When to Use:** After CSS refactoring, or periodically to verify architecture integrity.
 
+**Reference guidelines:**
+- `/guidelines/Guidelines.md` — design system compliance, file size limits
+- `/guidelines/build-rules.md` — CSS file size limit (400 lines)
+- `/guidelines/design-tokens/colors.md` — color token definitions
+- `/guidelines/design-tokens/spacing.md` — spacing token definitions
+
 ---
 
 ## Workflow Steps

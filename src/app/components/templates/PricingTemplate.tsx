@@ -5,11 +5,13 @@
  *
  * Pattern Components:
  * - ✅ StatsGrid — Hero quick stats (inline variant, 4 columns)
+ * - ✅ PricingCard — Pricing tier cards (website & support packages)
  * - ✅ FunkyCTA — Final conversion section
  *
  * @see /src/styles/templates/pricing-page.css
  * @see /src/app/data/pricing-page.ts
  * @migrated March 4, 2026 — Migrated hero stats to StatsGrid (~12 lines saved)
+ * @migrated March 18, 2026 — Migrated pricing cards to PricingCard (~120 lines saved)
  */
 
 /* Route-level CSS */
@@ -17,17 +19,13 @@ import '../../../styles/templates/pricing-page.css';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
-import { Button } from '../blocks/design/Buttons';
 import { FunkyCTA } from '../patterns/FunkyCTA';
 import { StatsGrid } from '../patterns/StatsGrid';
+import { PricingCard } from '../patterns/PricingCard';
 import {
-  Check,
-  X,
   Lightning as Zap,
   Sparkle as Sparkles,
 } from '@phosphor-icons/react';
-import { useScrollReveal, ScrollReveal } from '../../hooks/useScrollReveal';
-import { ScrollDownArrow } from '../common/ScrollDownArrow';
 
 // Import centralized data
 import {
@@ -107,76 +105,22 @@ export function PricingTemplate() {
             </ScrollReveal>
 
             <div className="pricing-page__packages-grid">
-              {websitePackages.map((plan, idx) => {
-                const Icon = plan.icon;
-                return (
-                  <ScrollReveal key={plan.id} animation="fade-up" delay={idx * 100}>
-                    <div
-                      className={`pricing-page__package-card ${plan.popular ? 'pricing-page__package-card--popular' : ''}`}
-                    >
-                      {plan.popular && (
-                        <div className="pricing-page__popular-badge">
-                          Most Popular
-                        </div>
-                      )}
-
-                      <div className="pricing-page__package-icon">
-                        <Icon size={24} className="wp-text-primary" />
-                      </div>
-
-                      <h3 className="pricing-page__package-title">
-                        {plan.name}
-                      </h3>
-
-                      <p className="pricing-page__package-tagline">
-                        {plan.tagline}
-                      </p>
-
-                      <div className="pricing-page__package-price-wrapper">
-                        <div className="pricing-page__package-price">
-                          {plan.price.display}
-                        </div>
-                        <div className="pricing-page__package-period">
-                          {plan.price.period}
-                        </div>
-                      </div>
-
-                      <p className="pricing-page__package-description">
-                        {plan.description}
-                      </p>
-
-                      <ul className="pricing-page__features-list">
-                        {plan.features.slice(0, 8).map((feature, index) => (
-                          <li
-                            key={index}
-                            className="pricing-page__feature-item"
-                          >
-                            {feature.included ? (
-                              <Check size={20} className="pricing-page__feature-icon--included" />
-                            ) : (
-                              <X size={20} className="pricing-page__feature-icon--excluded" />
-                            )}
-                            <span
-                              className={`pricing-page__feature-text ${feature.included ? 'pricing-page__feature-text--included' : 'pricing-page__feature-text--excluded'}`}
-                            >
-                              {feature.name}
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
-
-                      <Button
-                        page={plan.cta.page as any}
-                        size="lg"
-                        variant={plan.popular ? 'primary' : 'outline'}
-                        className="wp-w-full"
-                      >
-                        {plan.cta.text}
-                      </Button>
-                    </div>
-                  </ScrollReveal>
-                );
-              })}
+              {websitePackages.map((plan, idx) => (
+                <PricingCard
+                  key={plan.id}
+                  id={plan.id}
+                  name={plan.name}
+                  icon={plan.icon}
+                  tagline={plan.tagline}
+                  price={plan.price}
+                  description={plan.description}
+                  popular={plan.popular}
+                  features={plan.features}
+                  cta={plan.cta}
+                  delay={idx * 100}
+                  maxFeatures={8}
+                />
+              ))}
             </div>
           </div>
         </Container>
@@ -198,76 +142,22 @@ export function PricingTemplate() {
             </ScrollReveal>
 
             <div className="pricing-page__packages-grid">
-              {supportPackages.map((plan, idx) => {
-                const Icon = plan.icon;
-                return (
-                  <ScrollReveal key={plan.id} animation="fade-up" delay={idx * 100}>
-                    <div
-                      className={`pricing-page__package-card ${plan.popular ? 'pricing-page__package-card--popular' : ''}`}
-                    >
-                      {plan.popular && (
-                        <div className="pricing-page__popular-badge">
-                          Most Popular
-                        </div>
-                      )}
-
-                      <div className="pricing-page__package-icon">
-                        <Icon size={24} className="wp-text-primary" />
-                      </div>
-
-                      <h3 className="pricing-page__package-title">
-                        {plan.name}
-                      </h3>
-
-                      <p className="pricing-page__package-tagline">
-                        {plan.tagline}
-                      </p>
-
-                      <div className="pricing-page__package-price-wrapper">
-                        <div className="pricing-page__package-price">
-                          {plan.price.display}
-                        </div>
-                        <div className="pricing-page__package-period">
-                          {plan.price.period}
-                        </div>
-                      </div>
-
-                      <p className="pricing-page__package-description">
-                        {plan.description}
-                      </p>
-
-                      <ul className="pricing-page__features-list">
-                        {plan.features.slice(0, 8).map((feature, index) => (
-                          <li
-                            key={index}
-                            className="pricing-page__feature-item"
-                          >
-                            {feature.included ? (
-                              <Check size={20} className="pricing-page__feature-icon--included" />
-                            ) : (
-                              <X size={20} className="pricing-page__feature-icon--excluded" />
-                            )}
-                            <span
-                              className={`pricing-page__feature-text ${feature.included ? 'pricing-page__feature-text--included' : 'pricing-page__feature-text--excluded'}`}
-                            >
-                              {feature.name}
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
-
-                      <Button
-                        page={plan.cta.page as any}
-                        size="lg"
-                        variant={plan.popular ? 'primary' : 'outline'}
-                        className="wp-w-full"
-                      >
-                        {plan.cta.text}
-                      </Button>
-                    </div>
-                  </ScrollReveal>
-                );
-              })}
+              {supportPackages.map((plan, idx) => (
+                <PricingCard
+                  key={plan.id}
+                  id={plan.id}
+                  name={plan.name}
+                  icon={plan.icon}
+                  tagline={plan.tagline}
+                  price={plan.price}
+                  description={plan.description}
+                  popular={plan.popular}
+                  features={plan.features}
+                  cta={plan.cta}
+                  delay={idx * 100}
+                  maxFeatures={8}
+                />
+              ))}
             </div>
           </div>
         </Container>

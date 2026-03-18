@@ -68,7 +68,7 @@ export const aiServicesLifecycle: LifecycleStageData[] = [
     name: 'Discover',
     tagline: 'Uncover. Research. Strategise.',
     icon: MagnifyingGlass,
-    accent: 'var(--category-violet)',
+    accent: 'var(--wp--preset--color--neon-yellow)',
     description: 'Every successful AI project starts with a clear roadmap. We analyse your existing workflows, identify repetitive bottlenecks, and map out where AI integration will deliver the highest ROI without disrupting your team.',
     services: [
       { title: 'AI Readiness Audit', description: 'Evaluate your infrastructure for AI adoption.', icon: Binoculars, href: '/services/discovery' },
@@ -98,7 +98,7 @@ export const aiServicesLifecycle: LifecycleStageData[] = [
     name: 'Create',
     tagline: 'Design. Prototype. Inspire.',
     icon: PenNib,
-    accent: 'var(--category-pink)',
+    accent: 'var(--wp--preset--color--neon-pink)',
     description: 'We design AI-powered interfaces and automated content models. From chatbot UI/UX to scalable generation templates, we ensure your AI solutions feel native and frictionless to your end users.',
     services: [
       { title: 'Conversational UI', description: 'Figma prototypes for AI chat interfaces.', icon: ChatCentered, href: '/services/design' },
@@ -128,7 +128,7 @@ export const aiServicesLifecycle: LifecycleStageData[] = [
     name: 'Build',
     tagline: 'Develop. Integrate. Harden.',
     icon: Code,
-    accent: 'var(--category-cyan)',
+    accent: 'var(--wp--preset--color--neon-cyan)',
     description: 'Our engineers integrate enterprise AI models directly into your WordPress architecture. We build secure, private pipelines using the OpenAI, Anthropic, and Google APIs tailored strictly to your data.',
     services: [
       { title: 'API Integration', description: 'Secure connections to leading LLMs.', icon: Code, href: '/services/development' },
@@ -159,7 +159,7 @@ export const aiServicesLifecycle: LifecycleStageData[] = [
     name: 'Launch',
     tagline: 'Deploy. Train. Go live.',
     icon: Rocket,
-    accent: 'var(--category-amber)',
+    accent: 'var(--wp--preset--color--neon-lime)',
     description: 'Deploying AI requires careful calibration. We handle the production launch, optimise model latency, and provide hands-on prompt training so your team can confidently manage the new tools.',
     services: [
       { title: 'Deployment', description: 'Zero-downtime rollouts of AI features.', icon: GitBranch, href: '/services/hosting' },
@@ -221,7 +221,7 @@ export const aiServicesLifecycle: LifecycleStageData[] = [
     name: 'Evolve',
     tagline: 'AI-power. Future-proof.',
     icon: Brain,
-    accent: 'var(--category-indigo)',
+    accent: 'var(--category-purple)',
     description: 'Ensure your brand remains authoritative as search engines shift to Answer Engines. We optimise your site to be cited by LLMs like ChatGPT and Perplexity, maintaining your competitive edge.',
     services: [
       { title: 'Answer Engine Optimisation', description: 'Get cited by AI search platforms.', icon: Cpu, href: '/services/ai/answer-engine-optimisation', badge: 'NEW' },

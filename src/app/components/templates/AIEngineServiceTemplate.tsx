@@ -13,16 +13,32 @@
 
 import { Link } from 'react-router';
 import { getPageUrl } from '../../data/site-pages';
-import { aiEngineServiceBenefits, aiEngineServiceProcess, aiEngineServiceResults } from '../../data/ai-engine-service-template-data';
+import { 
+  aiEngineServiceBenefits, 
+  aiEngineServiceProcess, 
+  aiEngineServiceResults,
+  aiEngineLifecycleStages,
+  aiEngineTrustSignal,
+  aiEngineRelatedSolutions,
+  aiEngineRelatedServices,
+  llmTxtContent,
+  aiCitationStrategy,
+} from '../../data/ai-engine-service-template-data';
 import { FeatureList } from '../patterns/FeatureList';
-import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
 import { Container } from '../common/Container';
 import { FunkyCTA } from '../patterns/FunkyCTA';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { JourneyPhaseIndicator } from '../ui/JourneyPhaseIndicator';
-import { StatsGrid } from '../patterns/StatsGrid';
+import { WebGLAINetwork } from '../patterns/WebGLAINetwork';
+import { NeonStats } from '../common/NeonStats';
 import { ProcessTimeline } from '../patterns/ProcessTimeline';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
+import { LifecycleStageBadge } from '../parts/LifecycleStageBadge';
+import { LifecycleFlowStrip } from '../parts/LifecycleFlowStrip';
+import { TestimonialCard } from '../patterns/TestimonialCard';
+import { RelatedPagesGrid } from '../patterns/RelatedPagesGrid';
+import { Rocket } from '@phosphor-icons/react';
+import { Brain, Target, CheckCircle, Lightning, Sparkle } from '@phosphor-icons/react';
 
 export const AIEngineServiceTemplate = () => {
   const benefits = aiEngineServiceBenefits;
@@ -42,15 +58,30 @@ export const AIEngineServiceTemplate = () => {
         ]}
       />
 
-      <JourneyPhaseIndicator currentPhase="ignite" currentServicePage="ai-engine-optimization" />
+      <JourneyPhaseIndicator currentPhase="evolve" currentServicePage="ai-engine-optimization" />
 
       {/* Hero Section */}
-      <section className="service-hero" style={{ minHeight: '60vh' }}>
-        <div style={{ position: 'absolute', inset: 0, opacity: 0.1, backgroundImage: 'radial-gradient(circle at center, var(--border) 1px, transparent 1px)', backgroundSize: '24px 24px', zIndex: 0 }} aria-hidden="true" />
+      <section className="service-hero" style={{ minHeight: '60vh', position: 'relative' }}>
+        <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
+          <WebGLAINetwork />
+        </div>
         
         <Container>
           <div className="service-hero__content service-hero__content--centered">
             <ScrollReveal animation="fade-up">
+              {/* Dual Lifecycle Badges */}
+              <div style={{ display: 'flex', gap: 'var(--spacing-3)', justifyContent: 'center', marginBottom: 'var(--spacing-6)' }}>
+                {aiEngineLifecycleStages.map((stage) => (
+                  <LifecycleStageBadge
+                    key={stage.slug}
+                    slug={stage.slug}
+                    name={stage.name}
+                    icon={stage.icon}
+                    accent={stage.accent}
+                  />
+                ))}
+              </div>
+
               <h1 className="service-hero__title">
                 AI Engine Optimization (AEO)
               </h1>
@@ -70,6 +101,21 @@ export const AIEngineServiceTemplate = () => {
               </div>
             </ScrollReveal>
           </div>
+        </Container>
+      </section>
+
+      {/* AI Network Interactive Visualization */}
+      <section className="service-section" style={{ padding: 'var(--spacing-16) 0', background: 'var(--color-black)' }}>
+        <Container>
+          <ScrollReveal animation="fade-up">
+            <div className="service-section__header" style={{ marginBottom: 'var(--spacing-8)' }}>
+              <h2 className="service-section__title" style={{ color: 'var(--color-white)' }}>AI citation network</h2>
+              <p className="service-section__description" style={{ color: 'var(--color-gray-400)' }}>
+                Visualizing how your knowledge graph connects to large language models.
+              </p>
+            </div>
+            <WebGLAINetwork />
+          </ScrollReveal>
         </Container>
       </section>
 
@@ -125,29 +171,143 @@ export const AIEngineServiceTemplate = () => {
         </Container>
       </section>
 
-      {/* Results */}
-      <section className="service-section service-section--bg-card">
+      {/* Results Section Using Contextual NeonStats */}
+      <section className="service-section service-page__results" style={{ padding: 'var(--spacing-16) 0', background: 'var(--color-black)' }}>
         <Container>
-          <div className="service-section__header">
-            <ScrollReveal animation="fade-up">
-              <h2 className="service-section__title">Expected Results</h2>
-              <p className="service-section__description">
-                Measurable improvements in AI visibility and brand presence
-              </p>
-            </ScrollReveal>
-          </div>
-          
           <ScrollReveal animation="fade-up" delay={100}>
-            <StatsGrid
-              stats={results.map((r, i) => ({ id: `stat-${i}`, value: r.metric, label: r.label }))}
+            <NeonStats
+              stats={results.map((r, i) => ({ 
+                id: `stat-${i}`, 
+                value: r.metric, 
+                label: r.label,
+                icon: i % 2 === 0 ? CheckCircle : Sparkle // fallback icons if not in data
+              }))}
+              title="Expected results"
+              subtitle="Measurable improvements in AI visibility and brand presence"
               columns={4}
-              variant="cards"
+              variant="glass"
+              accentColor="var(--wp--preset--color--neon-lime)"
             />
           </ScrollReveal>
         </Container>
       </section>
 
-      <ServiceTestimonial serviceSlug="ai-search" />
+      {/* Lifecycle Flow spanning Grow → Evolve */}
+      <section aria-label="Lifecycle context">
+        <Container>
+          <ScrollReveal animation="fade-up">
+            <LifecycleFlowStrip
+              prevStage={{
+                slug: 'grow',
+                name: 'Grow',
+                icon: aiEngineLifecycleStages[0].icon,
+                accent: 'var(--category-green)',
+              }}
+              currentStage={aiEngineLifecycleStages[1]}
+              nextStage={undefined}
+            />
+          </ScrollReveal>
+        </Container>
+      </section>
+
+      {/* LLM.txt Content Section */}
+      <section className="service-section service-section--bg-muted" aria-label="LLM.txt standard">
+        <Container>
+          <div className="service-section__header">
+            <ScrollReveal animation="fade-up">
+              <h2 className="service-section__title">{llmTxtContent.heading}</h2>
+              <p className="service-section__description">
+                {llmTxtContent.description}
+              </p>
+            </ScrollReveal>
+          </div>
+          
+          <ScrollReveal animation="fade-up" delay={100}>
+            <FeatureList 
+              items={llmTxtContent.benefits.map((b, i) => ({ 
+                ...b, 
+                icon: [Brain, Target, CheckCircle][i] as any 
+              }))}
+              columns={3}
+              variant="glow"
+              iconSize="lg"
+            />
+          </ScrollReveal>
+        </Container>
+      </section>
+
+      {/* AI Citation Strategy Section */}
+      <section className="service-section service-section--bg-background" aria-label="Citation strategy">
+        <Container>
+          <div className="service-section__header">
+            <ScrollReveal animation="fade-up">
+              <h2 className="service-section__title">{aiCitationStrategy.heading}</h2>
+              <p className="service-section__description">
+                {aiCitationStrategy.description}
+              </p>
+            </ScrollReveal>
+          </div>
+          
+          <ScrollReveal animation="fade-up" delay={100}>
+            <FeatureList 
+              items={aiCitationStrategy.strategies.map((s, i) => ({ 
+                ...s, 
+                icon: [CheckCircle, Target, Lightning, Sparkle][i] as any 
+              }))}
+              columns={2}
+              variant="glow"
+              iconSize="lg"
+            />
+          </ScrollReveal>
+        </Container>
+      </section>
+
+      {/* Trust Signal */}
+      <section aria-label="Client testimonial">
+        <Container>
+          <ScrollReveal animation="fade-up">
+            <TestimonialCard
+              quote={aiEngineTrustSignal.quote}
+              author={aiEngineTrustSignal.author}
+              role={aiEngineTrustSignal.role}
+            />
+          </ScrollReveal>
+        </Container>
+      </section>
+
+      {/* Related Solutions */}
+      <section aria-label="Related solutions">
+        <Container>
+          <div className="service-section__header">
+            <ScrollReveal animation="fade-up">
+              <h2 className="service-section__title">Related solutions</h2>
+              <p className="service-section__description">
+                Explore AI-powered solutions that work alongside engine optimisation
+              </p>
+            </ScrollReveal>
+          </div>
+          <ScrollReveal animation="fade-up" delay={100}>
+            <RelatedPagesGrid pages={aiEngineRelatedSolutions} />
+          </ScrollReveal>
+        </Container>
+      </section>
+
+      {/* Related Services */}
+      <section aria-label="Related services">
+        <Container>
+          <div className="service-section__header">
+            <ScrollReveal animation="fade-up">
+              <h2 className="service-section__title">Related services</h2>
+              <p className="service-section__description">
+                Complementary services that enhance your AI strategy
+              </p>
+            </ScrollReveal>
+          </div>
+          <ScrollReveal animation="fade-up" delay={100}>
+            <RelatedPagesGrid pages={aiEngineRelatedServices} />
+          </ScrollReveal>
+        </Container>
+      </section>
 
       {/* CTA */}
       <FunkyCTA

@@ -25,20 +25,23 @@
  * - ✅ FeatureList — Key features (glassmorphism variant)
  * - ✅ FeatureList — Benefits grid (4 items, 2 columns)
  * - ✅ ProcessTimeline — 4-step process (numbered variant)
+ * - ✅ PricingCard — Pricing tiers (3 plans)
  * - ✅ FAQSection — FAQ accordion
  * - ✅ FunkyCTA — Final CTA section
  * 
  * @migrated March 3, 2026 — Phase 3.2: Migrated inline benefits + process (~65 lines saved)
+ * @migrated March 18, 2026 — Phase 3.5: Migrated pricing cards to PricingCard (~60 lines saved)
  */
 
 import '../../../styles/templates/wetu-importer-page.css';
-import { Check, UploadSimple as Upload, Database, ArrowsClockwise as RefreshCw, Lightning as Zap, Gear as Settings, Globe } from '@phosphor-icons/react';
+import { UploadSimple as Upload, Globe, Users, BuildingOffice as Building } from '@phosphor-icons/react';
 import { Section } from '@/app/components/common/Section';
 import { Container } from '@/app/components/common/Container';
 import { FunkyCTA } from '@/app/components/patterns/FunkyCTA';
 import { FAQSection } from '@/app/components/patterns/FAQSection';
 import { FeatureList } from '@/app/components/patterns/FeatureList';
 import { ProcessTimeline } from '@/app/components/patterns/ProcessTimeline';
+import { PricingCard } from '@/app/components/patterns/PricingCard';
 import { Buttons } from '@/app/components/blocks/design/Buttons';
 import { Heading } from '@/app/components/common/Heading';
 import { Paragraph } from '@/app/components/blocks/text/Paragraph';
@@ -242,58 +245,48 @@ export function WetuImporterTemplate() {
           </ScrollReveal>
 
           <div className="wetu-importer__pricing-grid">
-            {wetuImporterPricing.plans.map((plan, index) => (
-              <ScrollReveal key={index} animation="fade-up" delay={index * 100}>
-                <div
-                  className={`wetu-importer__pricing-card ${
-                    plan.popular ? 'wetu-importer__pricing-card--popular' : ''
-                  }`}
-                >
-                  {plan.popular && (
-                    <div className="wetu-importer__pricing-badge">
-                      Most Popular
-                    </div>
-                  )}
-
-                  <Heading level={3} className="wetu-importer__pricing-name">
-                    {plan.name}
-                  </Heading>
-                  <Paragraph className="wetu-importer__pricing-tagline">
-                    {plan.tagline}
-                  </Paragraph>
-
-                  <div className="wetu-importer__pricing-price">
-                    <span className="wetu-importer__pricing-amount">
-                      {plan.price.display}
-                    </span>
-                    <span className="wetu-importer__pricing-period">
-                      {plan.price.period}
-                    </span>
-                  </div>
-
-                  <div className="wetu-importer__pricing-features">
-                    {plan.features.map((feature, featureIndex) => (
-                      <div key={featureIndex} className="wetu-importer__pricing-feature">
-                        <Check />
-                        <span>{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <Buttons
-                    buttons={[
-                      {
-                        text: plan.cta.text,
-                        page: plan.cta.page,
-                        variant: plan.popular ? 'default' : 'outline',
-                        size: 'md'
-                      }
-                    ]}
-                    alignment="center"
-                  />
-                </div>
-              </ScrollReveal>
-            ))}
+            <PricingCard
+              id="wetu-single"
+              name={wetuImporterPricing.plans[0].name}
+              icon={Globe}
+              tagline={wetuImporterPricing.plans[0].tagline}
+              price={{
+                display: wetuImporterPricing.plans[0].price.display,
+                period: wetuImporterPricing.plans[0].price.period,
+              }}
+              popular={wetuImporterPricing.plans[0].popular}
+              features={wetuImporterPricing.plans[0].features}
+              cta={wetuImporterPricing.plans[0].cta}
+              delay={0}
+            />
+            <PricingCard
+              id="wetu-agency"
+              name={wetuImporterPricing.plans[1].name}
+              icon={Users}
+              tagline={wetuImporterPricing.plans[1].tagline}
+              price={{
+                display: wetuImporterPricing.plans[1].price.display,
+                period: wetuImporterPricing.plans[1].price.period,
+              }}
+              popular={wetuImporterPricing.plans[1].popular}
+              features={wetuImporterPricing.plans[1].features}
+              cta={wetuImporterPricing.plans[1].cta}
+              delay={100}
+            />
+            <PricingCard
+              id="wetu-enterprise"
+              name={wetuImporterPricing.plans[2].name}
+              icon={Building}
+              tagline={wetuImporterPricing.plans[2].tagline}
+              price={{
+                display: wetuImporterPricing.plans[2].price.display,
+                period: wetuImporterPricing.plans[2].price.period,
+              }}
+              popular={wetuImporterPricing.plans[2].popular}
+              features={wetuImporterPricing.plans[2].features}
+              cta={wetuImporterPricing.plans[2].cta}
+              delay={200}
+            />
           </div>
         </Container>
       </section>

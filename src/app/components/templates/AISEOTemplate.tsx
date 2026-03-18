@@ -16,6 +16,10 @@ import {
   aiSEOPricing,
   aiSEOFAQs,
   aiSEOCTA,
+  seoLifecycle,
+  seoTrustSignal,
+  seoRelatedServices,
+  seoRelatedSolutions,
 } from '../../data/ai-integrations-page';
 
 export function AISEOTemplate() {
@@ -42,6 +46,11 @@ export function AISEOTemplate() {
         'Auto-generated schema markup',
         'Competitor monitoring and gap analysis',
       ]}
+      lifecycleStages={[seoLifecycle]}
+      trustSignal={seoTrustSignal}
+      relatedServices={seoRelatedServices}
+      relatedSolutions={seoRelatedSolutions}
+      showPricing={false}
     />
   );
 }

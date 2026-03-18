@@ -14,6 +14,9 @@ import {
   Shield,
   Lightning,
   TrendUp,
+  ShieldCheck,
+  Star,
+  Globe
 } from '@phosphor-icons/react';
 
 export const supportServiceBenefits = [
@@ -94,8 +97,8 @@ export const supportServicePlans = [
 ];
 
 export const supportServiceResults = [
-  { id: 'metric-1', value: '<1hr', label: 'Critical issue response' },
-  { id: 'metric-2', value: '99.9%', label: 'Uptime guarantee' },
-  { id: 'metric-3', value: '4.9/5', label: 'Customer satisfaction' },
-  { id: 'metric-4', value: '24/7', label: 'Support availability' },
+  { id: 'metric-1', number: '<1hr', label: 'Critical issue response', icon: Clock },
+  { id: 'metric-2', number: '99.9%', label: 'Uptime guarantee', icon: ShieldCheck },
+  { id: 'metric-3', number: '4.9/5', label: 'Customer satisfaction', icon: Star },
+  { id: 'metric-4', number: '24/7', label: 'Support availability', icon: Globe },
 ];

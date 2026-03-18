@@ -25,4 +25,5 @@
 /* Team page sub-files */
 @import './team-page/team-hero.css';
 @import './team-page/team-leadership.css';
+@import './team-sphere.css';
 @import './team-page/team-culture-stats.css';

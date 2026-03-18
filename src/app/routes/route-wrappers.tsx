@@ -155,23 +155,8 @@ export function PerformanceReliabilitySystemRoute() {
  * Lazy Suspense Wrappers — Journey Stages
  * ═══════════════════════════════════════════ */
 
-export function JourneyIgniteRoute() {
-  return (<Suspense fallback={<RouteLoadingFallback />}><JourneyStageTemplate slug="ignite" /></Suspense>);
-}
-export function JourneyCreateRoute() {
-  return (<Suspense fallback={<RouteLoadingFallback />}><JourneyStageTemplate slug="create" /></Suspense>);
-}
-export function JourneyBuildRoute() {
-  return (<Suspense fallback={<RouteLoadingFallback />}><JourneyStageTemplate slug="build" /></Suspense>);
-}
-export function JourneyLaunchRoute() {
-  return (<Suspense fallback={<RouteLoadingFallback />}><JourneyStageTemplate slug="launch" /></Suspense>);
-}
-export function JourneyGrowRoute() {
-  return (<Suspense fallback={<RouteLoadingFallback />}><JourneyStageTemplate slug="grow" /></Suspense>);
-}
-export function JourneyEvolveRoute() {
-  return (<Suspense fallback={<RouteLoadingFallback />}><JourneyStageTemplate slug="evolve" /></Suspense>);
+export function JourneyDiscoverRoute() {
+  return (<Suspense fallback={<RouteLoadingFallback />}><JourneyStageTemplate slug="discover" /></Suspense>);
 }
 
 /* ═══════════════════════════════════════════

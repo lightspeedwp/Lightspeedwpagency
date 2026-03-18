@@ -1,0 +1,236 @@
+/**
+ * LSX Design System — Dark Mode Status & UI Colors
+ *
+ * Part 2/2: Status and UI-specific colors for dark theme
+ * Includes: Destructive, Warning, Success, Info, Category, Border, Input, Navigation
+ *
+ * Split from theme-dark-colors.css (March 17, 2026) to meet
+ * 400-line file size limit (417 → 2 files).
+ *
+ * @requires theme-base.css
+ * @requires dark-semantic-colors.css
+ */
+
+.dark {
+  /* ----------------------------------------
+     Destructive & Error Colors (Dark Mode)
+     ---------------------------------------- */
+  
+  /**
+   * Destructive background color (dark mode - lighter red)
+   * Usage: Delete buttons, error messages, warnings
+   * Hex: #FF6363
+   * Contrast: 4.53:1 on dark background (AA ✓)
+   */
+  --destructive: #FF6363;           /* #FF6363 - Light red */
+  
+  /**
+   * Destructive foreground color (dark mode)
+   * Usage: Text on destructive backgrounds
+   * Hex: #090909
+   * Contrast: 8.99:1 on destructive (AAA ✓✓✓)
+   */
+  --destructive-foreground: #090909;    /* #090909 - Near black */
+  
+  /**
+   * Destructive/Error soft background (dark mode, 10% opacity)
+   */
+  --destructive-soft: color-mix(in srgb, var(--destructive) 10%, transparent);
+  
+  
+  /* ----------------------------------------
+     Warning Colors (Dark Mode)
+     ---------------------------------------- */
+  
+  /**
+   * Warning background color (dark mode)
+   * Usage: Cautionary messages, alerts, pending states
+   * Hex: #F59E0B
+   */
+  --warning: #F59E0B;               /* #F59E0B - Amber */
+  
+  /**
+   * Warning foreground color (dark mode)
+   * Usage: Text on warning backgrounds
+   */
+  --warning-foreground: #090909;     /* #090909 - Near black */
+  
+  /**
+   * Warning soft background (dark mode, 10% opacity)
+   */
+  --warning-soft: color-mix(in srgb, var(--warning) 10%, transparent);
+  
+  
+  /* ----------------------------------------
+     Success Colors (Dark Mode)
+     ---------------------------------------- */
+  
+  /**
+   * Success background color (dark mode)
+   * Usage: Success messages, confirmations, positive states
+   * Hex: #22C55E
+   */
+  --success: #22C55E;               /* #22C55E - Green (brighter for dark mode) */
+  
+  /**
+   * Success foreground color (dark mode)
+   * Usage: Text on success backgrounds
+   */
+  --success-foreground: #090909;     /* #090909 - Near black */
+  
+  /**
+   * Success soft background (dark mode, 10% opacity)
+   */
+  --success-soft: color-mix(in srgb, var(--success) 10%, transparent);
+  
+  
+  /* ----------------------------------------
+     Info Colors (Dark Mode)
+     ---------------------------------------- */
+  
+  /**
+   * Info color (dark mode)
+   * Usage: Informational messages, tips, highlights
+   * Hex: #38BDF8
+   */
+  --info: #38BDF8;                   /* #38BDF8 - Sky blue (brighter for dark mode) */
+  
+  /**
+   * Info foreground color (dark mode)
+   */
+  --info-foreground: #090909;        /* #090909 - Near black */
+  
+  
+  /* ----------------------------------------
+     Category Colors (Decorative, Dark Mode)
+     ---------------------------------------- */
+  
+  /**
+   * Category-specific colors for visual differentiation (dark mode).
+   * Slightly brighter than light mode for dark background contrast.
+   */
+  --category-green: #34D399;      /* Emerald-400 — Services */
+  --category-amber: #FBBF24;      /* Amber-400 — Solutions */
+  --category-pink: #F472B6;       /* Pink-400 — Portfolio, Media */
+  --category-blue: #60A5FA;       /* Blue-400 — Blog */
+  --category-cyan: #22D3EE;       /* Cyan-400 — Posts */
+  --category-indigo: #818CF8;     /* Indigo-400 — Dev Tools */
+  --category-red: #F87171;        /* Red-400 — Error / 404 */
+  --category-violet: #A78BFA;     /* Violet-400 — Summary stats */
+  
+  
+  /* ----------------------------------------
+     Border Colors (Dark Mode)
+     ---------------------------------------- */
+  
+  /**
+   * Default border color (dark mode)
+   * Usage: Input borders, dividers, card outlines
+   * Hex: #757575
+   * Contrast: 3.53:1 on dark background (AA Large ✓)
+   */
+  --border: #757575;              /* #757575 - Medium gray */
+  
+  /**
+   * Soft border color (dark mode - subtle)
+   * Usage: Subtle card borders, section dividers
+   * Contrast: Low contrast for subtle effect
+   */
+  --border-soft: #FFFFFF14;      /* 8% white */
+  
+  /**
+   * Extra soft border color (dark mode)
+   * Usage: Very subtle dividers
+   * Contrast: Minimal contrast for elegant design
+   */
+  --border-extra-soft: #FFFFFF0A; /* 4% white */
+  
+  /** Subtle border — used for feature lists, inner dividers */
+  --border-subtle: #FFFFFF10;    /* 6% white */
+  
+  
+  /* ----------------------------------------
+     Input & Form Colors (Dark Mode)
+     ---------------------------------------- */
+  
+  /**
+   * Input field background (filled state, dark mode)
+   * Usage: Text inputs, textareas
+   * Hex: #1E1E1E
+   */
+  --input: #1E1E1E;                  /* #1E1E1E - Dark gray */
+  
+  /**
+   * Input field background (default, dark mode)
+   * Usage: Form fields, search boxes
+   * Hex: #1E1E1E
+   */
+  --input-background: #1E1E1E;       /* #1E1E1E - Dark gray */
+  
+  /**
+   * Focus ring color (dark mode)
+   * Usage: Focus outlines, keyboard navigation
+   * Hex: #7BE7FF
+   * Contrast: 10.87:1 on dark background (AAA ✓✓✓)
+   */
+  --ring: #7BE7FF;                /* #7BE7FF - Bright cyan */
+  
+  
+  /* ----------------------------------------
+     Navigation & Sidebar Colors (Dark Mode)
+     ---------------------------------------- */
+  
+  /**
+   * Sidebar background color (dark mode - matches main bg)
+   * Usage: Navigation menus, sidebars
+   * Hex: #090909
+   */
+  --sidebar: #090909;                   /* #090909 - Near black */
+  
+  /**
+   * Sidebar foreground color (dark mode)
+   * Usage: Text in navigation/sidebar
+   * Hex: #FFFFFF
+   * Contrast: 16.07:1 on sidebar (AAA ✓✓✓)
+   */
+  --sidebar-foreground: #FFFFFF;  /* #FFFFFF - White */
+  
+  /**
+   * Sidebar primary color (dark mode)
+   * Usage: Active nav items
+   * Hex: #7BE7FF
+   */
+  --sidebar-primary: #7BE7FF;     /* #7BE7FF - Bright cyan */
+  
+  /**
+   * Sidebar primary foreground (dark mode)
+   * Hex: #0E3278
+   * Contrast: 9.62:1 on sidebar-primary (AAA ✓✓✓)
+   */
+  --sidebar-primary-foreground: #0E3278; /* #0E3278 - Dark blue */
+  
+  /**
+   * Sidebar accent color (dark mode)
+   * Hex: #1E6AFF
+   */
+  --sidebar-accent: #1E6AFF;       /* #1E6AFF - Bright blue */
+  
+  /**
+   * Sidebar accent foreground (dark mode)
+   * Hex: #FFFFFF
+   * Contrast: 4.58:1 on sidebar-accent (AA ✓)
+   */
+  --sidebar-accent-foreground: #FFFFFF; /* #FFFFFF - White */
+  
+  /**
+   * Sidebar border color (dark mode)
+   * Hex: #757575
+   */
+  --sidebar-border: #757575;      /* #757575 - Medium gray */
+  
+  /**
+   * Sidebar ring (focus, dark mode)
+   * Hex: #1E6AFF
+   */
+  --sidebar-ring: #1E6AFF;         /* #1E6AFF - Bright blue */
+}

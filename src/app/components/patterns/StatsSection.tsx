@@ -71,7 +71,7 @@ export function StatsSection({ title, description, stats, variant = 'default' }:
                       <div className="stats-track__card">
                         {Icon && (
                           <div className="stats-track__icon-wrapper">
-                            <Icon size={28} />
+                            <Icon weight="duotone" size={28} />
                           </div>
                         )}
                         <div className="stats-track__number">{stat.number}</div>
@@ -138,7 +138,7 @@ export function StatsSection({ title, description, stats, variant = 'default' }:
                 >
                   {Icon && (
                     <div className="stats-section__icon-wrapper">
-                      <Icon size={32} className="stats-section__icon" />
+                      <Icon weight="duotone" size={32} className="stats-section__icon" />
                     </div>
                   )}
 

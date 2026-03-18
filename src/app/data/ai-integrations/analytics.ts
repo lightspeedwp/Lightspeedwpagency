@@ -1,5 +1,5 @@
 /**
- * AI Integrations — AI Analytics & Insights Sub-page Data
+ * AI Integrations — AI Analytics Sub-page Data
  *
  * Content for /solutions/ai-integrations/analytics
  *
@@ -7,12 +7,17 @@
  */
 
 import {
-  ChartLine,
   ChartBar,
-  Lightbulb,
-  Clock,
   TrendUp,
+  Clock,
+  Target,
+  Lightning,
   Users,
+  Eye,
+  ArrowsClockwise,
+  Bell,
+  Download,
+  Lightbulb,
   FileText,
   Crosshair,
   Megaphone,
@@ -20,6 +25,49 @@ import {
 } from '@phosphor-icons/react';
 
 import type { AIHero, AIStat, AIFeature, AIUseCase, AIPricingPackage, AIFAQ, AICTA } from './types';
+import type { LifecycleStageInfo } from './content-generation';
+import { Brain } from '@phosphor-icons/react';
+
+/* ── Lifecycle Stage Info (dual badges) ── */
+
+export const analyticsLifecycleStages: LifecycleStageInfo[] = [
+  {
+    slug: 'grow',
+    name: 'Grow',
+    icon: TrendUp,
+    accent: 'var(--category-green)',
+  },
+  {
+    slug: 'evolve',
+    name: 'Evolve',
+    icon: Brain,
+    accent: 'var(--category-indigo)',
+  },
+];
+
+/* ── Trust Signal ── */
+
+export const analyticsTrustSignal = {
+  quote: 'The predictive models caught a traffic anomaly 2 weeks before it would have impacted revenue. Saved us $50K.',
+  author: 'Sarah Chen',
+  role: 'Marketing Director',
+  company: 'TravelCo',
+};
+
+/* ── Related Links ── */
+
+export const analyticsRelatedServices = [
+  { label: 'Analytics Service', href: '/services/analytics', description: 'Google Analytics setup and training' },
+  { label: 'AI SEO', href: '/services/ai/seo', description: 'AI-powered SEO with analytics integration' },
+  { label: 'Content Strategy', href: '/services/content/strategy', description: 'Data-driven content planning' },
+  { label: 'Performance', href: '/services/performance', description: 'Speed optimisation and monitoring' },
+];
+
+export const analyticsRelatedSolutions = [
+  { label: 'AI SEO', href: '/solutions/ai/seo', description: 'Combine AI analytics with SEO insights' },
+  { label: 'AI Content Generation', href: '/solutions/ai/content-generation', description: 'Data-driven content automation' },
+  { label: 'WordPress Solutions', href: '/solutions/wordpress', description: 'Analytics-optimised WordPress builds' },
+];
 
 /* ── Hero ── */
 
@@ -28,7 +76,7 @@ export const aiAnalyticsHero: AIHero = {
   titleHighlight: 'Analytics & Insights',
   tagline:
     'Transform raw data into strategic decisions. AI analyses visitor behaviour, predicts trends, and delivers actionable reports — automatically.',
-  badge: { text: 'SMART ANALYTICS', icon: ChartLine },
+  badge: { text: 'SMART ANALYTICS', icon: ChartBar },
   primaryButton: { text: 'Request a Systems Audit', page: 'contact' },
   secondaryButton: { text: 'Back to AI Hub', page: 'ai-integrations' },
 };
@@ -66,7 +114,7 @@ export const aiAnalyticsStats: AIStat[] = [
 
 export const aiAnalyticsFeatures: AIFeature[] = [
   {
-    icon: ChartLine,
+    icon: ChartBar,
     title: 'Predictive traffic',
     description: 'Forecast daily, weekly, and seasonal traffic patterns so you can plan content and campaigns in advance.',
   },

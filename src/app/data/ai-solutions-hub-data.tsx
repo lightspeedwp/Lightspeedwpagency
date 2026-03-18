@@ -13,6 +13,7 @@ import {
   Crosshair
 } from '@phosphor-icons/react';
 import type { UniversalIcon } from '../utils/icon-map';
+import { statsRegistry } from './stats/stats-registry';
 
 export interface AISolutionHubData {
   hero: {
@@ -53,6 +54,14 @@ export interface AISolutionHubData {
     buttonPage: string;
     benefits: string[];
   };
+  // Section headings (Phase 3 requirement: zero hardcoded content)
+  sectionHeadings: {
+    trust: string;
+    stats: { title: string; subtitle: string };
+    capabilities: { title: string; description: string };
+    relatedServices: string;
+    solutionCta: string; // "Explore {title}" template
+  };
 }
 
 export const aiSolutionsHubData: AISolutionHubData = {
@@ -78,7 +87,7 @@ export const aiSolutionsHubData: AISolutionHubData = {
       title: 'AI Integrations',
       description: 'Add production-ready AI tooling to your WordPress stack. Connect your site directly to LLMs for automated content, automated tagging, and 24/7 engagement.',
       benefits: ['Plugin ecosystem compatibility', 'API orchestration', 'GDPR compliant', 'Custom data training'],
-      accent: 'var(--category-cyan)',
+      accent: 'var(--wp--preset--color--neon-cyan)',
       icon: Brain,
       href: '/solutions/ai/integrations',
       relatedServices: [
@@ -91,7 +100,7 @@ export const aiSolutionsHubData: AISolutionHubData = {
       title: 'AI Content Generation',
       description: 'Create on-brand blog posts, product descriptions, and marketing copy at scale using models trained specifically on your voice and style guidelines.',
       benefits: ['Brand-voice tuning', 'Multi-language support', 'SEO-optimised output', 'Bulk generation tools'],
-      accent: 'var(--category-pink)',
+      accent: 'var(--wp--preset--color--neon-pink)',
       icon: PenNib,
       href: '/solutions/ai/content-generation',
       relatedServices: [
@@ -104,7 +113,7 @@ export const aiSolutionsHubData: AISolutionHubData = {
       title: 'AI-Powered SEO',
       description: 'Automated keyword research, content scoring, dynamic schema markup, and competitor analysis powered by cutting-edge machine learning.',
       benefits: ['Real-time content scoring', 'Schema automation', 'Automated internal linking', 'Predictive rank tracking'],
-      accent: 'var(--category-green)',
+      accent: 'var(--wp--preset--color--neon-lime)',
       icon: MagnifyingGlass,
       href: '/solutions/ai/seo',
       relatedServices: [
@@ -117,7 +126,7 @@ export const aiSolutionsHubData: AISolutionHubData = {
       title: 'AI Chatbots',
       description: 'Intelligent conversational agents trained on your unique content that qualify leads, answer FAQs, and convert visitors 24/7.',
       benefits: ['Custom model training', 'Seamless human handoff', 'Lead qualification routing', 'Multi-channel support'],
-      accent: 'var(--category-amber)',
+      accent: 'var(--wp--preset--color--neon-cyan)',
       icon: Robot,
       href: '/solutions/ai/chatbots',
       relatedServices: [
@@ -130,7 +139,7 @@ export const aiSolutionsHubData: AISolutionHubData = {
       title: 'AI Analytics & Insights',
       description: 'Turn raw data into strategic decisions with automated dashboards, traffic predictions, and real-time anomaly detection.',
       benefits: ['Predictive models', 'Anomaly alerts', 'Custom dashboards', 'Conversion path analysis'],
-      accent: 'var(--category-violet)',
+      accent: 'var(--wp--preset--color--neon-yellow)',
       icon: ChartBar,
       href: '/solutions/ai/analytics',
       relatedServices: [
@@ -140,10 +149,26 @@ export const aiSolutionsHubData: AISolutionHubData = {
     }
   ],
   stats: [
-    { value: '73%', label: 'Productivity gain', description: 'Average increase in content output with AI' },
-    { value: '60%', label: 'Time saved', description: 'Reduction in routine SEO and content tasks' },
-    { value: '3.5x', label: 'Engagement boost', description: 'Higher visitor engagement with AI chatbots' },
-    { value: '45%', label: 'Conversion uplift', description: 'Improvement from AI-driven personalisation' }
+    {
+      value: statsRegistry.getStatById('time-saved-content')?.value || '73%',
+      label: statsRegistry.getStatById('time-saved-content')?.label || 'Productivity gain',
+      description: statsRegistry.getStatById('time-saved-content')?.description || 'Average time savings across content workflows',
+    },
+    {
+      value: statsRegistry.getStatById('api-cost-reduction')?.value || '60%',
+      label: 'Time saved',
+      description: 'Reduction in routine SEO and content tasks',
+    },
+    {
+      value: statsRegistry.getStatById('chatbot-engagement')?.value || '3.5x',
+      label: statsRegistry.getStatById('chatbot-engagement')?.label || 'Engagement boost',
+      description: statsRegistry.getStatById('chatbot-engagement')?.description || 'Higher visitor engagement with AI chatbots',
+    },
+    {
+      value: statsRegistry.getStatById('conversion-uplift')?.value || '45%',
+      label: statsRegistry.getStatById('conversion-uplift')?.label || 'Conversion uplift',
+      description: statsRegistry.getStatById('conversion-uplift')?.description || 'Improvement from AI-driven personalisation',
+    },
   ],
   trustSignals: [
     {
@@ -179,5 +204,13 @@ export const aiSolutionsHubData: AISolutionHubData = {
       'GDPR compliant and privacy-first',
       'Measurable ROI within 30 days'
     ]
+  },
+  // Section headings (Phase 3 requirement: zero hardcoded content)
+  sectionHeadings: {
+    trust: 'Trusted by industry leaders',
+    stats: { title: 'Proven results', subtitle: 'See the impact of our AI solutions' },
+    capabilities: { title: 'Why choose us?', description: 'Our AI solutions are designed with your success in mind' },
+    relatedServices: 'Related services',
+    solutionCta: 'Explore {title}' // "Explore {title}" template
   }
 };

@@ -13,6 +13,7 @@ import {
   Archive, Wrench,
   WarningCircle as AlertCircle, BookOpen,
   Gear as Settings,
+  MagnifyingGlass, PenNib, Code, Rocket, TrendUp,
 } from '@phosphor-icons/react';
 
 import { blogPosts, blogAuthors, blogCategories, postTags } from './blog-posts';
@@ -138,73 +139,120 @@ export function buildSiteMapSections(): SiteMapSection[] {
   /* ── 2. Services ── */
   const servicePages: SiteMapPage[] = [
     { id: 'services', label: 'Services Landing', status: 'active' },
-    { id: 'discovery', label: 'Discovery & Strategy', status: 'active' },
-    { id: 'design', label: 'Design', status: 'active' },
-    { id: 'figma-prototyping', label: 'Figma Prototyping', status: 'active' },
-    { id: 'design-systems-service', label: 'Design Systems', status: 'active' },
-    { id: 'development', label: 'Development', status: 'active' },
-    { id: 'security', label: 'Security', status: 'active' },
-    { id: 'migrations', label: 'Migrations', status: 'active' },
-    { id: 'support', label: 'Support & Maintenance', status: 'active' },
-    { id: 'training', label: 'Training', status: 'active' },
-    { id: 'hosting', label: 'Hosting', status: 'active' },
-    { id: 'performance', label: 'Performance Optimisation', status: 'active' },
-    { id: 'accessibility', label: 'Accessibility Compliance', status: 'active' },
-    { id: 'newsletter-service', label: 'Newsletter Service', status: 'active' },
-    { id: 'email-marketing', label: 'Email Marketing', status: 'active' },
-    /* AI Services Category */
     { id: 'ai-services-landing', label: 'AI Services (Category)', status: 'active' },
-    { id: 'ai-search-visibility', label: 'AI Search & Visibility', status: 'active' },
-    { id: 'seo', label: 'Technical SEO', status: 'active' },
-    { id: 'analytics', label: 'Analytics & Reporting', status: 'active' },
-    { id: 'ai-engine-optimisation', label: 'AI Engine Optimisation', status: 'active' },
-    { id: 'answer-engine-optimisation', label: 'Answer Engine Optimisation', status: 'active' },
-    /* Content Services Category */
     { id: 'content', label: 'Content Services (Category)', status: 'active' },
+  ];
+
+  /* ── 3. Journey Phase: Discover ── */
+  const discoverPhaseServices: SiteMapPage[] = [
+    { id: 'journey-discover', label: '01 Discover — Discovery & Strategy', status: 'active' },
+    { id: 'discovery', label: 'Discovery & Strategy', status: 'active' },
     { id: 'content-overview', label: 'Content Overview', status: 'active' },
     { id: 'content-strategy', label: 'Content Strategy', status: 'active' },
     { id: 'content-collection', label: 'Content Collection', status: 'active' },
     { id: 'content-audit', label: 'Content Audit', status: 'active' },
+    { id: 'competitor-research', label: 'Competitor Research', status: 'active' },
+  ];
+
+  /* ── 4. Journey Phase: Create ── */
+  const createPhaseServices: SiteMapPage[] = [
+    { id: 'journey-create', label: '02 Create — Design & Content', status: 'active' },
+    { id: 'design', label: 'Design', status: 'active' },
+    { id: 'figma-prototyping', label: 'Figma Prototyping', status: 'active' },
+    { id: 'design-systems-service', label: 'Design Systems', status: 'active' },
     { id: 'content-creation', label: 'Content Creation', status: 'active' },
     { id: 'content-copywriting', label: 'Copywriting & UX Writing', status: 'active' },
     { id: 'content-seo-content', label: 'SEO Content', status: 'active' },
-    { id: 'content-governance', label: 'Content Governance', status: 'active' },
-    /* Journey Stage Pages */
-    { id: 'journey-ignite', label: '01 Ignite — Discovery & Strategy', status: 'active' },
-    { id: 'journey-create', label: '02 Create — Design & Content', status: 'active' },
-    { id: 'journey-build', label: '03 Build — Development & Integration', status: 'active' },
-    { id: 'journey-launch', label: '04 Launch — Deploy & Training', status: 'active' },
-    { id: 'journey-grow', label: '05 Grow — Optimise & Scale', status: 'active' },
-    { id: 'journey-evolve', label: '06 Evolve — AI & Future-Proof', status: 'active' },
+    { id: 'newsletter-service', label: 'Newsletter Service', status: 'active' },
+    { id: 'email-marketing', label: 'Email Marketing', status: 'active' },
+    { id: 'brand-guidelines', label: 'Brand Guidelines', status: 'active' },
   ];
 
-  /* ── 3. Solutions ── */
+  /* ── 5. Journey Phase: Build ── */
+  const buildPhaseServices: SiteMapPage[] = [
+    { id: 'journey-build', label: '03 Build — Development & Integration', status: 'active' },
+    { id: 'development', label: 'Development', status: 'active' },
+    { id: 'security', label: 'Security', status: 'active' },
+    { id: 'migrations', label: 'Migrations', status: 'active' },
+    { id: 'development-service', label: 'Plugin & Theme Development', status: 'active' },
+    { id: 'woocommerce-service', label: 'WooCommerce Development', status: 'active' },
+    { id: 'api-integrations', label: 'API Integrations', status: 'active' },
+    { id: 'custom-post-types', label: 'Custom Post Types', status: 'active' },
+  ];
+
+  /* ── 6. Journey Phase: Launch ── */
+  const launchPhaseServices: SiteMapPage[] = [
+    { id: 'journey-launch', label: '04 Launch — Deploy & Training', status: 'active' },
+    { id: 'hosting', label: 'Hosting', status: 'active' },
+    { id: 'support', label: 'Support & Maintenance', status: 'active' },
+    { id: 'training', label: 'Training', status: 'active' },
+    { id: 'migration-service', label: 'Migration Services', status: 'active' },
+    { id: 'security-setup', label: 'SSL & Security Setup', status: 'active' },
+  ];
+
+  /* ── 7. Journey Phase: Grow ── */
+  const growPhaseServices: SiteMapPage[] = [
+    { id: 'journey-grow', label: '05 Grow — Optimise & Scale', status: 'active' },
+    { id: 'performance', label: 'Performance Optimisation', status: 'active' },
+    { id: 'accessibility', label: 'Accessibility Compliance', status: 'active' },
+    { id: 'ai-search-visibility', label: 'AI Search & Visibility', status: 'active' },
+    { id: 'seo', label: 'Technical SEO', status: 'active' },
+    { id: 'analytics', label: 'Analytics & Reporting', status: 'active' },
+    { id: 'content-governance', label: 'Content Governance', status: 'active' },
+    { id: 'performance-service', label: 'Performance Optimisation Service', status: 'active' },
+    { id: 'accessibility-service', label: 'Accessibility Service', status: 'active' },
+    { id: 'support-service', label: 'Support & Maintenance Service', status: 'active' },
+    { id: 'security-monitoring', label: 'Security Monitoring', status: 'active' },
+    { id: 'analytics-service', label: 'Analytics & Reporting Service', status: 'active' },
+  ];
+
+  /* ── 8. Journey Phase: Evolve ── */
+  const evolvePhaseServices: SiteMapPage[] = [
+    { id: 'journey-evolve', label: '06 Evolve — AI & Future-Proof', status: 'active' },
+    { id: 'ai-engine-optimisation', label: 'AI Engine Optimisation', status: 'active' },
+    { id: 'answer-engine-optimisation', label: 'Answer Engine Optimisation', status: 'active' },
+    { id: 'voice-search-optimization', label: 'Voice Search Optimization', status: 'active' },
+  ];
+
+  /* ── 9. Solutions ── */
   const solutionPages: SiteMapPage[] = [
     { id: 'solutions', label: 'Solutions Landing', status: 'active' },
     { id: 'wordpress', label: 'WordPress', status: 'active' },
     { id: 'woocommerce', label: 'WooCommerce', status: 'active' },
+    { id: 'wordpress-multisite', label: 'WordPress Multisite', status: 'active' },
+    { id: 'headless-wordpress', label: 'Headless WordPress', status: 'active' },
+    { id: 'wordpress-redesign', label: 'WordPress Redesign', status: 'active' },
+    { id: 'woocommerce-redesign', label: 'WooCommerce Redesign', status: 'active' },
+    { id: 'custom-wordpress-theme', label: 'Custom WordPress Theme', status: 'active' },
+    { id: 'wordpress-to-wordpress', label: 'WordPress to WordPress', status: 'active' },
     { id: 'publishers', label: 'Publishers', status: 'active' },
+    { id: 'ecommerce-industry', label: 'E-commerce Industry', status: 'active' },
+    { id: 'education-industry', label: 'Education Industry', status: 'active' },
+    { id: 'healthcare-industry', label: 'Healthcare Industry', status: 'active' },
     { id: 'lsx', label: 'LSX Design', status: 'active' },
     { id: 'lsx-theme', label: 'LSX Theme', status: 'active' },
     { id: 'mailchimp', label: 'Mailchimp', status: 'active' },
     { id: 'wetu-importer', label: 'Wetu Importer', status: 'active' },
     { id: 'lsx-sharing', label: 'LSX Sharing', status: 'active' },
     { id: 'lsx-search', label: 'LSX Search', status: 'active' },
-    { id: 'wordpress-redesign', label: 'WordPress Redesign', status: 'active' },
-    { id: 'woocommerce-redesign', label: 'WooCommerce Redesign', status: 'active' },
     { id: 'tour-operators', label: 'Tour Operators', status: 'active' },
   ];
 
-  /* ── 4. AI Integrations ── */
+  /* ── 10. AI Solutions & Services ── */
   const aiPages: SiteMapPage[] = [
-    { id: 'ai-integrations', label: 'AI Integrations Hub', status: 'active' },
+    // AI Solutions Landing + Sub-pages
+    { id: 'ai-solutions', label: 'AI Solutions Hub', status: 'active' },
+    { id: 'ai-integrations', label: 'AI Integrations', status: 'active' },
     { id: 'ai-content-generation', label: 'AI Content Generation', status: 'active' },
     { id: 'ai-seo', label: 'AI-Powered SEO', status: 'active' },
-    { id: 'ai-chatbots', label: 'AI Chatbots for WordPress', status: 'active' },
+    { id: 'ai-chatbots', label: 'AI Chatbots', status: 'active' },
     { id: 'ai-analytics', label: 'AI Analytics & Insights', status: 'active' },
+    { id: 'ai-image-recognition', label: 'AI Image Recognition', status: 'active' },
+    // AI Services Landing (already listed in servicePages section)
+    // AI Services Sub-pages (already distributed across lifecycle phases)
   ];
 
-  /* ── 4b. Systems Hub ── */
+  /* ── 10b. Systems Hub ── */
   const systemsPages: SiteMapPage[] = [
     { id: 'systems', label: 'Systems Hub Dashboard', status: 'active' },
     { id: 'design-tokens', label: 'Design Tokens System', status: 'active' },
@@ -214,7 +262,7 @@ export function buildSiteMapSections(): SiteMapSection[] {
     { id: 'performance-reliability', label: 'Performance & Reliability System', status: 'active' },
   ];
 
-  /* ── 5. Portfolio (dynamic) ── */
+  /* ── 11. Portfolio (dynamic) ── */
   const uniquePortfolioCategories = Array.from(new Set(portfolioArchiveItems.map((item) => item.category))).sort();
   const uniquePortfolioTags = Array.from(new Set(portfolioArchiveItems.flatMap((item) => item.tags))).sort();
 
@@ -225,7 +273,7 @@ export function buildSiteMapSections(): SiteMapSection[] {
     ...uniquePortfolioTags.map((tag) => ({ id: `portfolio-tag-${tag.toLowerCase().replace(/\s+/g, '-')}`, label: `Tag: ${tag}`, status: 'active' as const })),
   ];
 
-  /* ── 6. Insights & Archives (dynamic) ── */
+  /* ── 12. Insights & Archives (dynamic) ── */
   const blogArchivePages: SiteMapPage[] = [
     { id: 'insights', label: 'Insights Index', status: 'active' },
     { id: 'single-post', label: 'Single Post (Longform Demo)', status: 'active' },
@@ -238,14 +286,14 @@ export function buildSiteMapSections(): SiteMapSection[] {
     { id: 'date-2025', label: 'Date: 2025', status: 'active' as const },
   ];
 
-  /* ── 7. Single Posts (dynamic) ── */
+  /* ── 13. Single Posts (dynamic) ── */
   const singlePostPages: SiteMapPage[] = blogPosts.map((post) => ({
     id: `post-${post.slug}`,
     label: post.title.substring(0, 60) + (post.title.length > 60 ? '...' : ''),
     status: 'active' as const,
   }));
 
-  /* ── 8. Post Formats ── */
+  /* ── 14. Post Formats ── */
   const postFormatPages: SiteMapPage[] = [
     { id: 'audio-archive', label: 'Audio Archive', status: 'active' },
     { id: 'audio-single', label: 'Audio Single', status: 'active' },
@@ -268,7 +316,7 @@ export function buildSiteMapSections(): SiteMapSection[] {
     { id: 'aside-stream', label: 'Aside Stream', status: 'active' },
   ];
 
-  /* ── 9. Videos (dynamic) ── */
+  /* ── 15. Videos (dynamic) ── */
   const videoPages: SiteMapPage[] = [
     { id: 'videos', label: 'Video Index', status: 'active' },
     ...videoCategories.map((cat) => ({ id: `video-category-${cat.slug}`, label: `Category: ${cat.name}`, status: 'active' as const })),
@@ -276,14 +324,14 @@ export function buildSiteMapSections(): SiteMapSection[] {
     ...videos.map((video) => ({ id: `video-${video.slug}`, label: video.title.substring(0, 50) + (video.title.length > 50 ? '...' : ''), status: 'active' as const })),
   ];
 
-  /* ── 10. Podcasts (dynamic) ── */
+  /* ── 16. Podcasts (dynamic) ── */
   const podcastPagesList: SiteMapPage[] = [
     { id: 'podcasts', label: 'Podcast Index', status: 'active' },
     ...podcastCategories.map((cat) => ({ id: `podcast-category-${cat.slug}`, label: `Category: ${cat.name}`, status: 'active' as const })),
     ...podcasts.map((podcast) => ({ id: `podcast-${podcast.slug}`, label: podcast.title.substring(0, 50) + (podcast.title.length > 50 ? '...' : ''), status: 'active' as const })),
   ];
 
-  /* ── 11. Testimonials (dynamic) ── */
+  /* ── 17. Testimonials (dynamic) ── */
   const testimonialPages: SiteMapPage[] = [
     { id: 'testimonials', label: 'Testimonials Overview', status: 'active' },
     { id: 'testimonial-archive', label: 'Testimonials Archive (All)', status: 'active' },
@@ -294,13 +342,13 @@ export function buildSiteMapSections(): SiteMapSection[] {
     })),
   ];
 
-  /* ── 14. Tutorials (dynamic) ── */
+  /* ── 18. Tutorials (dynamic) ── */
   const tutorialPages: SiteMapPage[] = [
     { id: 'tutorials', label: 'Tutorials Index', status: 'active' },
     ...tutorials.map((tutorial) => ({ id: `tutorial-${tutorial.id}`, label: tutorial.title.substring(0, 55) + (tutorial.title.length > 55 ? '...' : ''), status: 'active' as const })),
   ];
 
-  /* ── 15. Legacy / Misc ── */
+  /* ── 19. Legacy / Misc ── */
   const legacyPages: SiteMapPage[] = [
     { id: 'archive', label: 'Archive (Legacy)', status: 'active' },
     { id: 'archive-filters', label: 'Archive with Filters', status: 'active' },
@@ -311,7 +359,7 @@ export function buildSiteMapSections(): SiteMapSection[] {
     { id: 'feature-showcase', label: 'Feature Showcase', status: 'active' },
   ];
 
-  /* ── 16. Dev Tools ── */
+  /* ── 20. Dev Tools ── */
   const devToolsPages: SiteMapPage[] = [
     { id: 'dev-tools', label: 'Dev Tools Hub', status: 'active' },
     { id: 'template-tester', label: 'Template Tester', status: 'active' },
@@ -338,7 +386,7 @@ export function buildSiteMapSections(): SiteMapSection[] {
     { id: 'phosphor-icon-reference', label: 'Phosphor Icon Reference', status: 'active' },
   ];
 
-  /* ── 17. Additional Site Pages ── */
+  /* ── 21. Additional Site Pages ── */
   const predefinedIds = new Set([
     'home', 'front-page',
     ...corePages.map(p => p.id),
@@ -366,6 +414,12 @@ export function buildSiteMapSections(): SiteMapSection[] {
     { title: 'Consultation & Onboarding', icon: ChatCircle, colorClass: 'wp-text-category-cyan', pages: consultationPages },
     { title: 'Policies', icon: BookOpen, colorClass: 'wp-text-category-indigo', pages: policyPages },
     { title: 'Services', icon: Briefcase, colorClass: 'wp-text-category-green', pages: servicePages },
+    { title: 'Journey Phase: Discover', icon: MagnifyingGlass, colorClass: 'wp-text-category-violet', pages: discoverPhaseServices },
+    { title: 'Journey Phase: Create', icon: PenNib, colorClass: 'wp-text-category-pink', pages: createPhaseServices },
+    { title: 'Journey Phase: Build', icon: Code, colorClass: 'wp-text-category-cyan', pages: buildPhaseServices },
+    { title: 'Journey Phase: Launch', icon: Rocket, colorClass: 'wp-text-category-amber', pages: launchPhaseServices },
+    { title: 'Journey Phase: Grow', icon: TrendUp, colorClass: 'wp-text-category-green', pages: growPhaseServices },
+    { title: 'Journey Phase: Evolve', icon: Brain, colorClass: 'wp-text-category-indigo', pages: evolvePhaseServices },
     { title: 'Solutions', icon: Lightbulb, colorClass: 'wp-text-category-amber', pages: solutionPages },
     { title: 'AI Integrations', icon: Brain, colorClass: 'wp-text-category-violet', pages: aiPages },
     { title: 'Systems Hub', icon: Settings, colorClass: 'wp-text-category-cyan', pages: systemsPages },

@@ -2,7 +2,7 @@
  * Journey Stage Pages Data
  *
  * Rich content for each of the 6 website-journey phase landing pages
- * (Ignite → Create → Build → Launch → Grow → Evolve).
+ * (Discover → Create → Build → Launch → Grow → Evolve).
  *
  * Every phase explains:
  * - What happens during the stage
@@ -51,7 +51,7 @@ export interface JourneyClientRole {
 }
 
 export interface JourneyStageData {
-  /** URL slug (e.g. "ignite") */
+  /** URL slug (e.g. "discover") */
   slug: string;
   /** Step number string (e.g. "01") */
   step: string;

@@ -1,0 +1,327 @@
+/**
+ * AI Solution Pages — Visual Elements
+ *
+ * Brain graphic, orbit nodes, section headers, lifecycle badges,
+ * trust signals, related links, responsive, and reduced motion rules.
+ *
+ * Split from ai-solution-hero.css (March 17, 2026) to meet
+ * 400-line file size limit (519 → 3 files).
+ *
+ * Blocks:
+ * - .ai-page__visual, __brain-graphic, __brain-ring, __brain-icon
+ * - .ai-page__orbit-node
+ * - .ai-page__stats, __section-header, __section-title, __section-description
+ * - .ai-page__lifecycle-badges
+ * - .ai-page__trust-signal, __trust-quote, __trust-author
+ * - .ai-page__related-links, __related-content, __related-list, __related-link
+ *
+ * @see AISubPageTemplate.tsx
+ * @see AIIntegrationsTemplate.tsx
+ */
+
+/* ============================================
+   HERO VISUAL — Brain Graphic
+   ============================================ */
+
+.ai-page__visual {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ai-page__brain-graphic {
+  position: relative;
+  width: 240px;
+  height: 240px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+/* Concentric rings */
+.ai-page__brain-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid var(--ai-accent-border);
+}
+
+.ai-page__brain-ring--1 {
+  width: 100%;
+  height: 100%;
+  animation: ai-ring-pulse 4s ease-in-out infinite;
+}
+
+.ai-page__brain-ring--2 {
+  width: 72%;
+  height: 72%;
+  border-color: color-mix(in srgb, var(--ai-accent) 35%, transparent);
+  animation: ai-ring-pulse 4s ease-in-out 0.6s infinite;
+}
+
+.ai-page__brain-ring--3 {
+  width: 44%;
+  height: 44%;
+  border-color: color-mix(in srgb, var(--ai-accent) 50%, transparent);
+  animation: ai-ring-pulse 4s ease-in-out 1.2s infinite;
+}
+
+@keyframes ai-ring-pulse {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50%      { opacity: 0.7; transform: scale(1.04); }
+}
+
+/* Central icon */
+.ai-page__brain-icon {
+  position: relative;
+  z-index: 2;
+  color: var(--ai-accent);
+  filter: drop-shadow(0 0 24px var(--ai-accent-glow));
+}
+
+/* Orbit nodes (landing page decorative elements) */
+.ai-page__orbit-node {
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--ai-accent-subtle);
+  border: 1px solid var(--ai-accent-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ai-accent);
+}
+
+.ai-page__orbit-node--1 {
+  top: 8%;
+  right: 12%;
+  animation: ai-orbit-float 5s ease-in-out infinite;
+}
+
+.ai-page__orbit-node--2 {
+  bottom: 15%;
+  right: 5%;
+  animation: ai-orbit-float 5s ease-in-out 1.2s infinite;
+}
+
+.ai-page__orbit-node--3 {
+  bottom: 8%;
+  left: 12%;
+  animation: ai-orbit-float 5s ease-in-out 2.4s infinite;
+}
+
+.ai-page__orbit-node--4 {
+  top: 15%;
+  left: 5%;
+  animation: ai-orbit-float 5s ease-in-out 3.6s infinite;
+}
+
+@keyframes ai-orbit-float {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.6; }
+  50%      { transform: translateY(-8px) scale(1.1); opacity: 1; }
+}
+
+/* ============================================
+   SECTION HEADERS (Stats, Features, etc.)
+   ============================================ */
+
+.ai-page__stats {
+  padding: var(--spacing-24) 0;
+  background-color: var(--muted);
+}
+
+.ai-page__section-header {
+  text-align: center;
+  margin-bottom: var(--spacing-16);
+}
+
+.ai-page__section-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+  margin: 0 0 var(--spacing-4) 0;
+}
+
+.ai-page__section-description {
+  font-family: var(--font-secondary);
+  font-size: var(--text-lg);
+  color: var(--muted-foreground);
+  max-width: 60ch;
+  margin: 0 auto;
+  line-height: var(--line-height-comfortable);
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .ai-page__brain-ring,
+  .ai-page__orbit-node,
+  .ai-page__btn-primary,
+  .ai-page__btn-outline,
+  .ai-page__card {
+    animation: none;
+    transition: none;
+  }
+
+  .ai-page__btn-primary:hover,
+  .ai-page__btn-outline:hover,
+  .ai-page__card:hover {
+    transform: none;
+  }
+}
+
+/* ============================================
+   RESPONSIVE — Mobile stack
+   ============================================ */
+
+@media (max-width: 767px) {
+  .ai-page__hero-content {
+    text-align: center;
+  }
+
+  .ai-page__tagline {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .ai-page__visual {
+    margin-top: var(--spacing-12);
+  }
+
+  .ai-page__brain-graphic {
+    width: 240px;
+    height: 240px;
+  }
+}
+
+/* ============================================
+   LIFECYCLE BADGES POSITIONING
+   ============================================ */
+
+.ai-page__lifecycle-badges {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--spacing-12);
+  padding: 0 var(--spacing-6);
+}
+
+/* ============================================
+   TRUST SIGNAL (Testimonial)
+   ============================================ */
+
+.ai-page__trust-signal {
+  padding: var(--spacing-20) 0;
+  background: var(--color-black);
+  position: relative;
+}
+
+.ai-page__trust-signal::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--ai-accent-border) 50%,
+    transparent
+  );
+}
+
+.ai-page__trust-signal-content {
+  text-align: center;
+  max-width: 65ch;
+  margin: 0 auto;
+}
+
+.ai-page__trust-quote {
+  font-family: var(--font-secondary);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-white);
+  line-height: var(--line-height-relaxed);
+  margin: 0 0 var(--spacing-6) 0;
+  font-style: italic;
+}
+
+.ai-page__trust-author {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--ai-accent);
+  margin: 0;
+}
+
+/* ============================================
+   RELATED LINKS (Services & Solutions)
+   ============================================ */
+
+.ai-page__related-links {
+  padding: var(--spacing-20) 0;
+  background: var(--muted);
+}
+
+.ai-page__related-content {
+  padding: var(--spacing-8);
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.ai-page__related-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+  margin: 0 0 var(--spacing-6) 0;
+}
+
+.ai-page__related-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.ai-page__related-item {
+  padding: 0;
+  margin: 0;
+}
+
+.ai-page__related-link {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--ai-accent);
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+.ai-page__related-link:hover {
+  color: var(--ai-accent-alt);
+  text-decoration: underline;
+}
+
+.ai-page__related-link:focus-visible {
+  outline: 2px solid var(--ai-accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+.ai-page__related-description {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  margin: var(--spacing-2) 0 0 0;
+  line-height: var(--line-height-comfortable);
+}

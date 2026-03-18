@@ -14,7 +14,14 @@ import {
   ChartBar,
   FileMagnifyingGlass,
   Trophy,
+  Eye,
+  Brain,
+  Cpu,
+  ChartLineUp,
+  MouseClick,
+  Timer
 } from '@phosphor-icons/react';
+import type { RelatedPageItem } from '../components/patterns/RelatedPagesGrid';
 
 export const seoServiceBenefits = [
   {
@@ -95,8 +102,88 @@ export const seoServiceDeliverables = [
 ];
 
 export const seoServiceResults = [
-  { metric: '150%', label: 'Average organic traffic increase' },
-  { metric: '10x', label: 'First page rankings growth' },
-  { metric: '85%', label: 'Click-through rate improvement' },
-  { metric: '3-6 mo', label: 'Time to see results' },
+  { metric: '150%', label: 'Average organic traffic increase', icon: ChartLineUp },
+  { metric: '10x', label: 'First page rankings growth', icon: Trophy },
+  { metric: '85%', label: 'Click-through rate improvement', icon: MouseClick },
+  { metric: '3-6 mo', label: 'Time to see results', icon: Timer },
 ];
+
+/** Lifecycle badge — Grow stage */
+export const seoLifecycle = {
+  slug: 'grow',
+  name: 'Grow',
+  icon: TrendUp,
+  accent: 'var(--category-green)',
+};
+
+/** Trust signal */
+export const seoTrustSignal = {
+  quote: 'The predictive analytics showed us exactly which content to double down on, increasing traffic by 150%.',
+  author: 'Nina Petrov',
+  role: 'Head of Digital, EuroTrek',
+};
+
+/** Related solutions */
+export const seoRelatedSolutions: RelatedPageItem[] = [
+  {
+    title: 'AI SEO solutions',
+    description: 'Automated keyword research, content scoring, and competitor analysis powered by machine learning.',
+    href: '/solutions/ai/seo',
+    icon: MagnifyingGlass,
+    accent: 'var(--category-green)',
+  },
+  {
+    title: 'AI analytics solutions',
+    description: 'Turn raw data into strategic decisions with automated dashboards and predictive insights.',
+    href: '/solutions/ai/analytics',
+    icon: ChartBar,
+    accent: 'var(--category-green)',
+  },
+  {
+    title: 'AI content generation',
+    description: 'Create on-brand blog posts, product descriptions, and marketing copy at scale using AI.',
+    href: '/solutions/ai/content-generation',
+    icon: FileMagnifyingGlass,
+    accent: 'var(--category-pink)',
+  },
+];
+
+/** Related services */
+export const seoRelatedServices: RelatedPageItem[] = [
+  {
+    title: 'AI Search & Visibility',
+    description: 'Unified search visibility combining traditional SEO, analytics, and AI optimisation.',
+    href: '/services/ai/search-visibility',
+    icon: Eye,
+    accent: 'var(--category-cyan)',
+  },
+  {
+    title: 'Analytics service',
+    description: 'Data tracking, conversion analysis, and performance reporting.',
+    href: '/services/ai/analytics',
+    icon: ChartBar,
+    accent: 'var(--category-green)',
+  },
+  {
+    title: 'AI engine optimisation',
+    description: 'Fine-tune and accelerate AI models on your WordPress stack for cost efficiency.',
+    href: '/services/ai/engine-optimisation',
+    icon: Brain,
+    accent: 'var(--category-indigo)',
+  },
+  {
+    title: 'Answer engine optimisation',
+    description: 'Get cited by ChatGPT, Perplexity, and AI Overviews with structured content.',
+    href: '/services/ai/answer-engine-optimisation',
+    icon: Cpu,
+    accent: 'var(--category-indigo)',
+  },
+];
+
+/** Differentiation callout */
+export const seoDifferentiation = {
+  title: 'Traditional SEO vs. AI Search & Visibility',
+  description: 'While SEO focuses on ranking in traditional search engines like Google, our AI Search & Visibility service covers both traditional SEO AND optimisation for AI platforms like ChatGPT and Perplexity. For comprehensive coverage across all search channels, explore our unified AI Search & Visibility service.',
+  ctaText: 'Explore AI Search & Visibility',
+  ctaHref: '/services/ai/search-visibility',
+};

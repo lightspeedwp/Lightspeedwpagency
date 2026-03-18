@@ -1,0 +1,140 @@
+/**
+ * Lifecycle Flow Strip
+ *
+ * 3-card horizontal strip showing journey context: prev → current → next.
+ * Current stage is emphasized with larger size and stronger glow.
+ *
+ * BEM Block: .lifecycle-flow
+ * Elements: __card (--prev, --current, --next), __icon, __name, __arrow
+ *
+ * @see /src/app/components/parts/LifecycleFlowStrip.tsx
+ */
+
+/* ── Container ── */
+.lifecycle-flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-4);
+  padding: var(--spacing-8) 0;
+  flex-wrap: wrap;
+}
+
+/* ── Card base ── */
+.lifecycle-flow__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-4) var(--spacing-6);
+  background: var(--color-black);
+  border: 1px solid var(--_flow-accent, var(--category-cyan));
+  border-radius: var(--radius-md);
+  transition: all 0.3s ease;
+  opacity: 0.6;
+}
+
+/* ── Previous/Next cards (smaller, muted) ── */
+.lifecycle-flow__card--prev,
+.lifecycle-flow__card--next {
+  min-width: 120px;
+  box-shadow:
+    0 0 4px var(--_flow-accent, var(--category-cyan)),
+    inset 0 0 8px color-mix(in srgb, var(--_flow-accent, var(--category-cyan)) 10%, transparent);
+}
+
+.lifecycle-flow__card--prev:hover,
+.lifecycle-flow__card--next:hover {
+  opacity: 0.8;
+  box-shadow:
+    0 0 8px var(--_flow-accent, var(--category-cyan)),
+    inset 0 0 12px color-mix(in srgb, var(--_flow-accent, var(--category-cyan)) 15%, transparent);
+  transform: translateY(-2px);
+}
+
+/* ── Current card (larger, emphasized) ── */
+.lifecycle-flow__card--current {
+  min-width: 160px;
+  opacity: 1;
+  transform: scale(1.1);
+  box-shadow:
+    0 0 16px var(--_flow-accent, var(--category-cyan)),
+    inset 0 0 20px color-mix(in srgb, var(--_flow-accent, var(--category-cyan)) 25%, transparent);
+  border-width: 2px;
+}
+
+.lifecycle-flow__card--current:hover {
+  box-shadow:
+    0 0 24px var(--_flow-accent, var(--category-cyan)),
+    inset 0 0 30px color-mix(in srgb, var(--_flow-accent, var(--category-cyan)) 35%, transparent);
+  transform: scale(1.12) translateY(-2px);
+}
+
+/* ── Icon ── */
+.lifecycle-flow__icon {
+  color: var(--_flow-accent, var(--category-cyan));
+  flex-shrink: 0;
+}
+
+/* ── Stage name ── */
+.lifecycle-flow__name {
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-white);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.lifecycle-flow__card--current .lifecycle-flow__name {
+  font-size: var(--text-base);
+}
+
+/* ── Arrow between cards ── */
+.lifecycle-flow__arrow {
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+  opacity: 0.5;
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .lifecycle-flow {
+    gap: var(--spacing-3);
+  }
+
+  .lifecycle-flow__card--prev,
+  .lifecycle-flow__card--next {
+    min-width: 100px;
+    padding: var(--spacing-3) var(--spacing-4);
+  }
+
+  .lifecycle-flow__card--current {
+    min-width: 140px;
+    transform: scale(1.05);
+  }
+
+  .lifecycle-flow__card--current:hover {
+    transform: scale(1.06) translateY(-2px);
+  }
+
+  .lifecycle-flow__arrow {
+    display: none;
+  }
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .lifecycle-flow__card {
+    transition: none;
+  }
+
+  .lifecycle-flow__card--current {
+    transform: none;
+  }
+
+  .lifecycle-flow__card:hover {
+    transform: none;
+  }
+}

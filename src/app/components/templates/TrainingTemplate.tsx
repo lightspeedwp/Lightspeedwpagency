@@ -8,6 +8,9 @@
  * Pattern order:
  *   Hero -> Formats -> Curriculum -> Related Services -> CTA
  *
+ * PATTERN COMPONENTS:
+ * - ✅ ProgressBar — Module progress indicators
+ *
  * STRICT DESIGN SYSTEM COMPLIANCE:
  * - Zero Tailwind classes
  * - All styling via /src/styles/templates/page-service-training.css
@@ -15,6 +18,7 @@
  * - Button styling via :where(.wp-block-button__link)
  *
  * @see /src/styles/templates/page-service-training.css
+ * @migrated March 18, 2026 — Phase 3.5: Migrated progress bars to ProgressBar (~15 lines saved)
  */
 
 import { Container } from '../common/Container';
@@ -22,13 +26,16 @@ import { FAQSection } from '../patterns/FAQSection';
 import { FunkyCTA } from '../patterns/FunkyCTA';
 import { RelatedServicesGrid } from '../patterns/RelatedServicesGrid';
 import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
+import { ProgressBar } from '../patterns/ProgressBar';
 import { Button } from '../blocks/design/Buttons';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { ScrollDownArrow } from '../common/ScrollDownArrow';
 import '../../../styles/templates/page-service-training-optimized.css';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
+import { NeonStats } from '../common/NeonStats';
+import { WebGLKnowledgeGraph } from '../patterns/WebGLKnowledgeGraph';
 import {
-  PlayCircle, Check, Lightbulb, Clock
+  PlayCircle, Check, Lightbulb, Clock, Users, GraduationCap, ChartBar
 } from '@phosphor-icons/react';
 import { trainingHero, trainingModules, trainingFormats } from '../../data/training-template-data';
 
@@ -207,28 +214,48 @@ export function TrainingTemplate() {
       {/* ════════════════════════════════════════
           3. CURRICULUM — "The Modules"
           ════════════════════════════════════════ */}
-      <section className="training-page__curriculum">
+      <section className="training-page__curriculum" style={{ background: 'var(--color-black)', paddingBottom: 'var(--spacing-12)' }}>
         <Container>
+          <div style={{ marginBottom: 'var(--spacing-16)' }}>
+            <NeonStats
+              title="Training impact"
+              columns={3}
+              accentColor="var(--wp--preset--color--neon-purple)"
+              variant="glass"
+              stats={[
+                { id: '1', value: '150+', label: 'Teams Trained', icon: Users },
+                { id: '2', value: '3000+', label: 'Hours Delivered', icon: Clock },
+                { id: '3', value: '98%', label: 'Success Rate', icon: ChartBar }
+              ]}
+            />
+          </div>
+
           <ScrollReveal animation="fade-up">
             <div className="training-page__curriculum-header">
               <div className="training-page__curriculum-text">
-                <span className="training-page__curriculum-badge">
+                <span className="training-page__curriculum-badge" style={{ background: 'var(--color-gray-800)', color: 'var(--color-white)' }}>
                   The Syllabus
                 </span>
-                <h2 className="training-page__section-title">
+                <h2 className="training-page__section-title" style={{ color: 'var(--color-white)' }}>
                   Available Modules
                 </h2>
               </div>
               <div className="training-page__level-tags">
-                <span className="training-page__level-tag training-page__level-tag--beginner">
+                <span className="training-page__level-tag training-page__level-tag--beginner" style={{ color: 'var(--wp--preset--color--neon-lime)' }}>
                   Beginner
                 </span>
-                <span className="training-page__level-tag training-page__level-tag--advanced">
+                <span className="training-page__level-tag training-page__level-tag--advanced" style={{ color: 'var(--wp--preset--color--neon-purple)' }}>
                   Advanced
                 </span>
               </div>
             </div>
           </ScrollReveal>
+
+          <div style={{ marginBottom: 'var(--spacing-16)' }}>
+            <ScrollReveal animation="fade-up" delay={50}>
+              <WebGLKnowledgeGraph />
+            </ScrollReveal>
+          </div>
 
           <div className="training-page__module-grid">
             {trainingData.modules.map((module, index) => {
@@ -257,18 +284,13 @@ export function TrainingTemplate() {
                       {module.description}
                     </p>
 
-                    <div className="training-page__progress-bar">
-                      <div
-                        className="training-page__progress-fill"
-                        style={{ width: `${module.progress}%` }}
-                      />
-                    </div>
-
-                    {module.progress > 0 && (
-                      <span className="training-page__progress-label">
-                        {module.progress}% Complete (Demo)
-                      </span>
-                    )}
+                    <ProgressBar
+                      value={module.progress}
+                      label={module.progress > 0 ? `${module.progress}% Complete (Demo)` : undefined}
+                      variant="primary"
+                      size="md"
+                      showPercentage={false}
+                    />
                   </div>
                 </ScrollReveal>
               );

@@ -88,7 +88,7 @@ function SearchResultsRoute() { loadCSSBundle('utility'); return <SearchResultsP
 function PrivacyPolicyRoute() { loadCSSBundle('utility'); return <PrivacyPolicyTemplate />; }
 function TermsOfServiceRoute() { loadCSSBundle('utility'); return <TermsOfServiceTemplate />; }
 function GenericPolicyRoute() { loadCSSBundle('utility'); return <GenericPolicyTemplate />; }
-function GettingStartedRoute() { loadCSSBundle('utility'); return <GettingStartedTemplate />; }
+function GettingStartedLegacyRoute() { loadCSSBundle('utility'); return <GettingStartedTemplate />; }
 function NewsletterUtilityRoute() { loadCSSBundle('utility'); return <NewsletterUtilityTemplate />; }
 function SiteMapRoute() { loadCSSBundle('utility'); return <SiteMapTemplate />; }
 function StyleGuideRoute() { loadCSSBundle('utility'); return <StyleGuideTemplate />; }
@@ -139,7 +139,7 @@ export const utilityRoutes: RouteObject[] = [
   { path: 'policies-feedback', Component: GenericPolicyRoute },
   { path: 'policies-corrections', Component: GenericPolicyRoute },
   { path: 'policies-ownership-funding', Component: GenericPolicyRoute },
-  { path: 'getting-started-with-lightspeed', Component: GettingStartedRoute },
+  { path: 'getting-started-with-lightspeed', Component: GettingStartedLegacyRoute },
   { path: 'mailpoet-unsubscribe-success-page', Component: NewsletterUtilityRoute },
   { path: 'mailpoet-manage-your-subscription', Component: NewsletterUtilityRoute },
   { path: 'mailpoet-unsubscribe-confirmation', Component: NewsletterUtilityRoute },

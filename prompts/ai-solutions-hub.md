@@ -24,6 +24,105 @@ Create a new unified AI solutions hub page at `/solutions/ai` that consolidates 
 
 ---
 
+## Stats integration
+
+Import statistics from the centralized stats registry instead of defining locally.
+
+**Registry location:** `/src/app/data/stats/stats-registry.ts`
+
+**Import example:**
+```typescript
+import { statsRegistry } from '@/data/stats/stats-registry';
+
+// Get AI-specific stats
+const aiStats = statsRegistry.getStatsByCategory('ai');
+
+// Get SEO stats for AI-Powered SEO section
+const seoStats = statsRegistry.getStatsByCategory('seo');
+
+// Get migration/hosting stats for scale metrics
+const migrationStats = statsRegistry.getStatsByCategory('migration');
+const hostingStats = statsRegistry.getStatsByCategory('hosting');
+
+// Get all stats for aggregated metrics banner
+const allStats = statsRegistry.allStats;
+```
+
+**Stats placement:**
+
+1. **Aggregated metrics banner** (section 3, after sticky nav):
+   - Projects completed: `statsRegistry.getStatById('projects-completed')` → "1,500+"
+   - Sites hosted: `statsRegistry.getStatById('sites-hosted')` → "250+"
+   - Design systems: `statsRegistry.getStatById('design-systems')` → "10+"
+   - Custom plugins: `statsRegistry.getStatById('custom-plugins')` → "150+"
+
+2. **Per-solution stats** (within each full-viewport solution section):
+   - **Content Generation** → `aiStatsCollection` filtered by `tags: ['content']`
+     - Use `statsRegistry.getStatsByTag('content')`
+   - **AI-Powered SEO** → `seoStatsCollection` (entire collection)
+     - Use `statsRegistry.getStatsByCategory('seo')`
+   - **Chatbots** → `aiStatsCollection` filtered by `tags: ['chatbots']`
+     - Use `statsRegistry.getStatsByTag('chatbots')`
+   - **Analytics** → `aiStatsCollection` filtered by `tags: ['analytics']`
+     - Use `statsRegistry.getStatsByTag('analytics')`
+
+3. **Component selection:**
+   - **Dark mode** → Use `NeonStats` with solution-specific accent color
+   - **Light mode** → Use `StatsGrid` (traditional grid)
+   - **Recommended:** Use `AdaptiveStats` wrapper for automatic theme detection
+
+**Accent colors per solution:**
+- Content Generation → `var(--wp--preset--color--neon-cyan)` (cyan)
+- AI-Powered SEO → `var(--wp--preset--color--neon-lime)` (lime)
+- Chatbots → `var(--wp--preset--color--neon-pink)` (pink)
+- Analytics → `var(--wp--preset--color--neon-yellow)` (yellow)
+
+**Component usage (NeonStats for dark mode):**
+```typescript
+import { NeonStats } from '@/components/common/NeonStats';
+import { statsRegistry } from '@/data/stats/stats-registry';
+import * as PhosphorIcons from '@phosphor-icons/react';
+
+// Example: Content Generation section stats
+const contentStats = statsRegistry.getStatsByTag('content');
+const neonStatsData = contentStats.map((stat) => ({
+  id: stat.id,
+  value: stat.value,
+  label: stat.label,
+  description: stat.description,
+  icon: PhosphorIcons[stat.icon as keyof typeof PhosphorIcons],
+  trend: stat.trend,
+}));
+
+<NeonStats
+  stats={neonStatsData}
+  title="Content at scale"
+  subtitle="AI-powered content generation delivers measurable results."
+  columns={4}
+  accentColor="var(--wp--preset--color--neon-cyan)"
+  variant="glass"
+/>
+```
+
+**Component usage (AdaptiveStats for automatic theme detection):**
+```typescript
+import { AdaptiveStats } from '@/components/common/AdaptiveStats';
+import { statsRegistry } from '@/data/stats/stats-registry';
+
+const seoCollection = statsRegistry.getCollection('seo-stats');
+
+<AdaptiveStats
+  collection={seoCollection}
+  title="SEO performance"
+  subtitle="Proven results from AI-powered SEO strategies."
+  columns={4}
+/>
+```
+
+**Reference:** See `/prompts/stats-data-structure.md` for complete registry specification and data structure details.
+
+---
+
 ## Current hero audit — all 12 AI pages
 
 This section documents every existing AI page hero, its visual treatment, whether it has WebGL/canvas animation, and which neon design tokens it uses. **None of the 12 pages currently have WebGL heroes** — all effects are CSS-only.

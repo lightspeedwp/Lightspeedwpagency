@@ -7,7 +7,7 @@
  * @see /src/styles/templates/sub-service-base.css
  */
 
-import { Envelope, Users, TrendUp, Calendar, ChartBar, Trophy } from '@phosphor-icons/react';
+import { Envelope, Users, TrendUp, Calendar, ChartBar, Trophy, Eye, CursorClick, Money, Timer } from '@phosphor-icons/react';
 import { Link } from 'react-router';
 import { getPageUrl } from '../../data/site-pages';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
@@ -19,6 +19,7 @@ import { Container } from '../common/Container';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { FunkyCTA } from '../patterns/FunkyCTA';
 import { JourneyPhaseIndicator } from '../ui/JourneyPhaseIndicator';
+import { WebGLMail } from '../patterns/WebGLMail';
 
 export const NewsletterServiceTemplate = () => {
   const benefits = [
@@ -33,10 +34,10 @@ export const NewsletterServiceTemplate = () => {
   const deliverables = ['Newsletter strategy document', 'Content calendar (6-12 months)', 'Email template design', 'List segmentation setup', 'Automated sequences', 'Monthly analytics reports', 'Subscriber growth plan'];
 
   const results = [
-    { id: 'res-1', value: '45%', label: 'Avg Open Rate' },
-    { id: 'res-2', value: '8%', label: 'Avg Click Rate' },
-    { id: 'res-3', value: '150%', label: 'List Growth (12 mo)' },
-    { id: 'res-4', value: '3-6 mo', label: 'Time to Positive ROI' }
+    { id: 'res-1', value: '45%', label: 'Avg Open Rate', icon: Eye },
+    { id: 'res-2', value: '8%', label: 'Avg Click Rate', icon: CursorClick },
+    { id: 'res-3', value: '150%', label: 'List Growth (12 mo)', icon: TrendUp },
+    { id: 'res-4', value: '3-6 mo', label: 'Time to Positive ROI', icon: Timer }
   ];
 
   return (

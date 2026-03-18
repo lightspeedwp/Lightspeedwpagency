@@ -10,17 +10,20 @@
  */
 
 import '../../../styles/templates/page-solution-ai-optimized.css';
+import '../../../styles/parts/lifecycle-badge.css';
 import { Container } from '../common/Container';
-import { StatsGrid } from '../patterns/StatsGrid';
+import { NeonStats } from '../common/NeonStats';
 import { FeatureGrid } from '../patterns/FeatureGrid';
 import { FAQSection } from '../patterns/FAQSection';
 import { FunkyCTA } from '../patterns/FunkyCTA';
+import { WebGLAINetwork } from '../patterns/WebGLAINetwork';
 import { Brain, Sparkle, ArrowRight } from '@phosphor-icons/react';
 import { Link } from 'react-router';
 import { slugToPath } from '../../utils/route-map';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { ScrollDownArrow } from '../common/ScrollDownArrow';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
+import { LifecycleStageBadge } from '../parts/LifecycleStageBadge';
 
 import {
   aiLandingHero,
@@ -29,6 +32,10 @@ import {
   aiSubPages,
   aiLandingFAQs,
   aiLandingCTA,
+  integrationsLifecycleStages,
+  integrationsTrustSignal,
+  integrationsRelatedServices,
+  integrationsRelatedSolutions,
 } from '../../data/ai-integrations-page';
 
 export function AIIntegrationsTemplate() {
@@ -38,10 +45,15 @@ export function AIIntegrationsTemplate() {
       <BreadcrumbPart
         items={[
           { label: 'Home', href: '/' },
-          { label: 'Solutions', href: '/solutions' },
-          { label: 'AI Integrations' },
+          { label: 'AI solutions', href: '/solutions/ai' },
+          { label: 'AI integrations' },
         ]}
       />
+
+      {/* Lifecycle Stage Badge */}
+      <Container>
+        <LifecycleStageBadge stages={integrationsLifecycleStages} />
+      </Container>
 
       {/* ════════════════ HERO ════════════════ */}
       <section className="ai-page__hero">
@@ -113,23 +125,38 @@ export function AIIntegrationsTemplate() {
         <ScrollDownArrow />
       </section>
 
-      {/* ════════════════ STATS ════════════════ */}
-      <section className="ai-page__stats">
+      {/* ════════════════ AI NETWORK WEBGL ════════════════ */}
+      <section className="ai-page__webgl" style={{ padding: 'var(--spacing-16) 0', background: 'var(--color-black)' }}>
         <Container>
           <ScrollReveal animation="fade-up">
-            <div className="ai-page__section-header">
-              <h2 className="ai-page__section-title">AI impact by the numbers</h2>
-              <p className="ai-page__section-description">Real results from businesses using AI with WordPress</p>
+            <div className="ai-page__section-header" style={{ marginBottom: 'var(--spacing-8)' }}>
+              <h2 className="ai-page__section-title" style={{ color: 'var(--color-white)' }}>AI ecosystem</h2>
+              <p className="ai-page__section-description" style={{ color: 'var(--color-gray-400)' }}>
+                Visualize your interconnected AI models and data flow.
+              </p>
             </div>
-            <StatsGrid
-              stats={aiLandingStats.map((s) => ({
+            <WebGLAINetwork />
+          </ScrollReveal>
+        </Container>
+      </section>
+
+      {/* ════════════════ STATS ════════════════ */}
+      <section className="ai-page__stats" style={{ padding: 'var(--spacing-16) 0', background: 'var(--color-black)' }}>
+        <Container>
+          <ScrollReveal animation="fade-up">
+            <NeonStats
+              stats={aiLandingStats.map((s, index) => ({
+                id: `ai-stat-${index}`,
                 icon: s.icon,
                 value: s.value,
                 label: s.label,
                 description: s.description,
               }))}
+              title="AI impact by the numbers"
+              subtitle="Real results from businesses using AI with WordPress"
               columns={4}
-              variant="default"
+              variant="glass"
+              accentColor="var(--wp--preset--color--neon-cyan)"
             />
           </ScrollReveal>
         </Container>

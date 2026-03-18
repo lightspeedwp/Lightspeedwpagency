@@ -1,0 +1,240 @@
+/**
+ * SEO Statistics Collection
+ *
+ * Real-world SEO performance metrics including traffic growth, rankings,
+ * keyword coverage, schema implementation, and Core Web Vitals.
+ *
+ * @see /src/app/data/stats/stats-registry.ts
+ * @see /prompts/ai-services-restructure.md
+ */
+
+import type { StatCollection } from './types';
+
+export const seoStatsCollection: StatCollection = {
+  id: 'seo-stats',
+  title: 'SEO performance statistics',
+  category: 'seo',
+  description: 'Comprehensive SEO metrics including traffic, rankings, visibility, and technical optimization.',
+  icon: 'MagnifyingGlass',
+  defaultLightColor: 'var(--category-green)',
+  defaultDarkColor: 'var(--wp--preset--color--neon-lime)',
+  useNeonComponent: true,
+  stats: [
+    // Traffic Stats
+    {
+      id: 'seo-traffic-growth',
+      value: '150%',
+      label: 'Average traffic growth',
+      description: 'Organic traffic increase within 6-12 months.',
+      icon: 'TrendUp',
+      category: 'seo',
+      darkColor: 'var(--wp--preset--color--neon-lime)',
+      requiresDarkBg: true,
+      tags: ['seo', 'traffic', 'scale'],
+      lastUpdated: '2026-03-17',
+      trend: {
+        value: '+150% YoY',
+        direction: 'up',
+        sentiment: 'positive',
+      },
+      footnote: {
+        text: 'Average measured across 25+ client sites using comprehensive SEO strategies including content optimization, technical SEO, and link building.',
+        displayMode: 'tooltip',
+      },
+    },
+    {
+      id: 'seo-organic-sessions',
+      value: '250k+',
+      label: 'Organic sessions',
+      description: 'Monthly organic sessions managed across all client sites.',
+      icon: 'Users',
+      category: 'seo',
+      darkColor: 'var(--wp--preset--color--neon-lime)',
+      requiresDarkBg: true,
+      tags: ['seo', 'traffic', 'scale'],
+      lastUpdated: '2026-03-17',
+    },
+
+    // Rankings Stats
+    {
+      id: 'seo-page-1-rankings',
+      value: '3x',
+      label: 'Page 1 rankings',
+      description: 'Triple the number of first-page keyword rankings.',
+      icon: 'Trophy',
+      category: 'seo',
+      darkColor: 'var(--wp--preset--color--neon-lime)',
+      requiresDarkBg: true,
+      tags: ['seo', 'rankings', 'scale'],
+      lastUpdated: '2026-03-17',
+      trend: {
+        value: '+200% increase',
+        direction: 'up',
+        sentiment: 'positive',
+      },
+    },
+    {
+      id: 'seo-keywords-tracked',
+      value: '5k+',
+      label: 'Keywords tracked',
+      description: 'Comprehensive keyword monitoring across all verticals.',
+      icon: 'ListDashes',
+      category: 'seo',
+      darkColor: 'var(--wp--preset--color--neon-lime)',
+      requiresDarkBg: true,
+      tags: ['seo', 'rankings'],
+      lastUpdated: '2026-03-17',
+    },
+    {
+      id: 'seo-featured-snippets',
+      value: '120+',
+      label: 'Featured snippets',
+      description: 'Content optimized to win featured snippet positions.',
+      icon: 'Star',
+      category: 'seo',
+      darkColor: 'var(--wp--preset--color--neon-lime)',
+      requiresDarkBg: true,
+      tags: ['seo', 'visibility', 'quality'],
+      lastUpdated: '2026-03-17',
+    },
+
+    // Technical SEO Stats
+    {
+      id: 'seo-schema-markup',
+      value: '100%',
+      label: 'Schema coverage',
+      description: 'All pages include appropriate structured data.',
+      icon: 'Code',
+      category: 'seo',
+      darkColor: 'var(--wp--preset--color--neon-lime)',
+      requiresDarkBg: true,
+      tags: ['seo', 'quality'],
+      lastUpdated: '2026-03-17',
+      trend: {
+        value: 'Full coverage',
+        direction: 'neutral',
+        sentiment: 'positive',
+      },
+      footnote: {
+        text: 'All LSX-built sites include automated schema markup for Organization, WebSite, Article, Product, FAQPage, and more.',
+        displayMode: 'tooltip',
+      },
+    },
+    {
+      id: 'seo-core-web-vitals',
+      value: '95%',
+      label: 'CWV pass rate',
+      description: 'Sites passing all Core Web Vitals thresholds.',
+      icon: 'Gauge',
+      category: 'seo',
+      darkColor: 'var(--wp--preset--color--neon-lime)',
+      requiresDarkBg: true,
+      tags: ['seo', 'performance', 'quality'],
+      lastUpdated: '2026-03-17',
+      trend: {
+        value: '+15% improvement',
+        direction: 'up',
+        sentiment: 'positive',
+      },
+    },
+    {
+      id: 'seo-mobile-friendly',
+      value: '100%',
+      label: 'Mobile-friendly',
+      description: 'All sites fully responsive and mobile-optimized.',
+      icon: 'DeviceMobile',
+      category: 'seo',
+      darkColor: 'var(--wp--preset--color--neon-lime)',
+      requiresDarkBg: true,
+      tags: ['seo', 'quality'],
+      lastUpdated: '2026-03-17',
+    },
+
+    // Content & Visibility Stats
+    {
+      id: 'seo-content-score',
+      value: '85%',
+      label: 'Average content score',
+      description: 'SEO content quality scores using AI analysis.',
+      icon: 'FileText',
+      category: 'seo',
+      darkColor: 'var(--wp--preset--color--neon-lime)',
+      requiresDarkBg: true,
+      tags: ['seo', 'content', 'quality'],
+      lastUpdated: '2026-03-17',
+    },
+    {
+      id: 'seo-internal-links',
+      value: '1,500+',
+      label: 'Internal links optimized',
+      description: 'Strategic internal linking for site authority flow.',
+      icon: 'Link',
+      category: 'seo',
+      darkColor: 'var(--wp--preset--color--neon-lime)',
+      requiresDarkBg: true,
+      tags: ['seo', 'content'],
+      lastUpdated: '2026-03-17',
+    },
+    {
+      id: 'seo-ctr-improvement',
+      value: '85%',
+      label: 'CTR improvement',
+      description: 'Better click-through rates with optimized titles and descriptions.',
+      icon: 'CursorClick',
+      category: 'seo',
+      darkColor: 'var(--wp--preset--color--neon-lime)',
+      requiresDarkBg: true,
+      tags: ['seo', 'traffic'],
+      lastUpdated: '2026-03-17',
+      trend: {
+        value: '+85% lift',
+        direction: 'up',
+        sentiment: 'positive',
+      },
+    },
+
+    // Competitive Stats
+    {
+      id: 'seo-competitor-audits',
+      value: '50+',
+      label: 'Competitor audits',
+      description: 'Comprehensive competitive analysis and gap identification.',
+      icon: 'Binoculars',
+      category: 'seo',
+      darkColor: 'var(--wp--preset--color--neon-lime)',
+      requiresDarkBg: true,
+      tags: ['seo'],
+      lastUpdated: '2026-03-17',
+    },
+    {
+      id: 'seo-market-share',
+      value: '40%',
+      label: 'Market share gains',
+      description: 'Average market share increase in target verticals.',
+      icon: 'ChartPie',
+      category: 'seo',
+      darkColor: 'var(--wp--preset--color--neon-lime)',
+      requiresDarkBg: true,
+      tags: ['seo', 'scale'],
+      lastUpdated: '2026-03-17',
+    },
+
+    // Timeframe Stats
+    {
+      id: 'seo-results-timeframe',
+      value: '3-6 mo',
+      label: 'Results timeframe',
+      description: 'Typical time to see significant ranking improvements.',
+      icon: 'Calendar',
+      category: 'seo',
+      darkColor: 'var(--wp--preset--color--neon-lime)',
+      requiresDarkBg: true,
+      tags: ['seo', 'quality'],
+      lastUpdated: '2026-03-17',
+      footnote: {
+        text: 'SEO is a long-term strategy. Most clients see initial improvements within 3 months and substantial growth by month 6.',
+        displayMode: 'tooltip',
+      },
+    },
+  ],
+};

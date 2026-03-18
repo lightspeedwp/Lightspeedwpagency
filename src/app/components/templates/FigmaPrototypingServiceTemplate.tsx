@@ -7,7 +7,7 @@
  * @see /src/styles/templates/sub-service-base.css
  */
 
-import { FigmaLogo, Lightning, Users, Layout, Cursor, Trophy, Package } from '@phosphor-icons/react';
+import { FigmaLogo, Lightning, Users, Layout, Cursor, Trophy, Package, Timer, ChartLineUp } from '@phosphor-icons/react';
 import { Link } from 'react-router';
 import { getPageUrl } from '../../data/site-pages';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
@@ -18,6 +18,8 @@ import { ServiceTestimonial } from '../patterns/ServiceTestimonial';
 import { Container } from '../common/Container';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { FunkyCTA } from '../patterns/FunkyCTA';
+import { JourneyPhaseIndicator } from '../ui/JourneyPhaseIndicator';
+import { WebGLWireframe } from '../patterns/WebGLWireframe';
 
 export const FigmaPrototypingServiceTemplate = () => {
   const benefits = [
@@ -32,10 +34,10 @@ export const FigmaPrototypingServiceTemplate = () => {
   const deliverables = ['Interactive Figma prototype', 'Component library', 'Design system documentation', 'User flow diagrams', 'Responsive breakpoints', 'Developer handoff package', 'Design revision rounds (3)'];
 
   const results = [
-    { id: 'res-1', value: '70%', label: 'Faster Development' },
-    { id: 'res-2', value: '50%', label: 'Fewer Design Changes' },
-    { id: 'res-3', value: '3x', label: 'Better Stakeholder Alignment' },
-    { id: 'res-4', value: '2-4 wks', label: 'Typical Timeline' }
+    { id: 'res-1', value: '70%', label: 'Faster Development', icon: Lightning },
+    { id: 'res-2', value: '50%', label: 'Fewer Design Changes', icon: ChartLineUp },
+    { id: 'res-3', value: '3x', label: 'Better Stakeholder Alignment', icon: Users },
+    { id: 'res-4', value: '2-4 wks', label: 'Typical Timeline', icon: Timer }
   ];
 
   return (
@@ -51,6 +53,8 @@ export const FigmaPrototypingServiceTemplate = () => {
               { label: 'Figma prototyping' }
             ]}
           />
+          
+          <JourneyPhaseIndicator currentPhase="create" currentServicePage="figma-prototyping" />
 
           <ScrollReveal animation="fade-down">
             <h1 className="sub-service-base__hero-title">

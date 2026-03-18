@@ -96,7 +96,7 @@ export function StatsGrid({
           >
             {Icon && (
               <div className="stats-grid__icon-wrapper">
-                <Icon className="stats-grid__icon" aria-hidden="true" />
+                <Icon weight="duotone" className="stats-grid__icon" aria-hidden="true" />
               </div>
             )}
             

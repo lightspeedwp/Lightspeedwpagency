@@ -34,6 +34,10 @@ import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { useHeroParallax } from '../../hooks/useHeroParallax';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { ScrollDownArrow } from '../common/ScrollDownArrow';
+import { NeonStats } from '../common/NeonStats';
+import { WebGLConstellation } from '../patterns/WebGLConstellation';
+import { WebGLTimeline } from '../patterns/WebGLTimeline';
+import { WebGLTeamMosaic } from '../patterns/WebGLTeamMosaic';
 import {
   Lightning,
   Crosshair,
@@ -226,21 +230,52 @@ export function AboutTemplate() {
       </section>
 
       {/* ============================================
-          5. STATS BAR (Gradient + Neon Grid)
+          5. STATS BAR (Neon Stats Grid)
           ============================================ */}
-      <div className="about-overview__stats">
-        <StatsSection
-          title="Our impact in numbers"
-          description="Over a decade of delivering digital excellence."
-          stats={aboutPageStats}
-          variant="funky"
-        />
+      <div className="about-overview__stats about-overview__stats--dark">
+        <Container>
+          <NeonStats
+            stats={aboutPageStats.map(stat => ({
+              id: stat.label,
+              value: stat.number,
+              label: stat.label,
+              description: stat.description || '',
+              icon: Lightning // fallback, could map specific icons if needed
+            }))}
+            title="Our impact in numbers"
+            columns={4}
+            accentColor="var(--wp--preset--color--neon-cyan)"
+            variant="glass"
+          />
+        </Container>
       </div>
+
+      {/* ============================================
+          5b. MISSION CONSTELLATION (WebGL)
+          ============================================ */}
+      <section className="about-overview__story about-overview__story--dark">
+        <Container>
+          <ScrollReveal animation="fade-up">
+            <div className="about-overview__story-header">
+              <h2 className="about-overview__section-title">
+                Mission constellation
+              </h2>
+              <p className="about-overview__section-desc">
+                Our core values interconnected in everything we build.
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <ScrollReveal animation="fade-up" delay={150}>
+            <WebGLConstellation />
+          </ScrollReveal>
+        </Container>
+      </section>
 
       {/* ============================================
           6. TIMELINE
           ============================================ */}
-      <section className="about-overview__story">
+      <section className="about-overview__story about-overview__story--dark">
         <Container>
           <ScrollReveal animation="fade-up">
             <div className="about-overview__story-header">
@@ -253,8 +288,16 @@ export function AboutTemplate() {
             </div>
           </ScrollReveal>
 
+          <ScrollReveal animation="fade-up" delay={100}>
+            <div className="about-overview__timeline-wrapper--spacing">
+              <WebGLTimeline accentColor="var(--wp--preset--color--neon-pink)" />
+            </div>
+          </ScrollReveal>
+
           <ScrollReveal animation="fade-up" delay={150}>
-            <Timeline items={aboutPageTimeline} />
+            <div className="about-overview__timeline-wrapper">
+              <Timeline items={aboutPageTimeline} />
+            </div>
           </ScrollReveal>
         </Container>
       </section>
@@ -284,6 +327,28 @@ export function AboutTemplate() {
             variant="glow"
             columns={3}
           />
+        </Container>
+      </section>
+
+      {/* ============================================
+          7b. TEAM MOSAIC (WebGL)
+          ============================================ */}
+      <section className="about-overview__story about-overview__story--dark">
+        <Container>
+          <ScrollReveal animation="fade-up">
+            <div className="about-overview__story-header">
+              <h2 className="about-overview__section-title">
+                Our digital artisans
+              </h2>
+              <p className="about-overview__section-desc">
+                A collective of developers, designers, and strategists working in harmony.
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <ScrollReveal animation="fade-up" delay={150}>
+            <WebGLTeamMosaic />
+          </ScrollReveal>
         </Container>
       </section>
 

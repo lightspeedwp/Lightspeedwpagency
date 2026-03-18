@@ -13,6 +13,14 @@
 
 **When to Use:** After making changes to design tokens, components, CSS variables, routes, or any system that a guideline file documents.
 
+**Reference guidelines (read before starting):**
+- `/guidelines/Guidelines.md` — canonical rules, file size limits, folder structure
+- `/guidelines/build-rules.md` — file size limits (350 lines for .md)
+- `/guidelines/writing-guidelines.md` — markdown standards, frontmatter format
+- `/guidelines/_templates/` — template files for restructuring
+
+**This prompt does not call other prompts.** It is a maintenance operation that updates guideline content. For trigger registry updates, use `update triggers` instead.
+
 ---
 
 ## Workflow Steps
@@ -86,4 +94,5 @@ If file names or locations changed, update all files that reference them:
 
 | Version | Date | Changes |
 |---|---|---|
+| 1.1.0 | 2026-03-18 | Added reference guidelines, clarified scope vs `update triggers`, no-circular-reference note |
 | 1.0.0 | 2026-03-15 | Initial creation |

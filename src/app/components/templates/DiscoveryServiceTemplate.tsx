@@ -46,6 +46,8 @@ import { MagnifyingGlass as Search, ArrowRight } from '@phosphor-icons/react';
 import { heroStats } from '../../data/discovery-service-template-data';
 import { DiscoveryBodySections } from './discovery-service/DiscoveryBodySections';
 
+import { WebGLBlueprint } from '../patterns/WebGLBlueprint';
+
 export function DiscoveryServiceTemplate() {
   const data = {
     tagline: discoveryServiceHero.subtitle || "Before you build, know exactly what to build.",
@@ -75,25 +77,26 @@ export function DiscoveryServiceTemplate() {
         { label: 'Discovery & Strategy' },
       ]} />
 
-      <JourneyPhaseIndicator currentPhase="ignite" currentServicePage="discovery" />
+      <JourneyPhaseIndicator currentPhase="discover" currentServicePage="discovery" />
 
       {/* 1. HERO — "RADAR SCAN" */}
-      <section className="service-hero">
-        <div className="service-hero__bg-image" aria-hidden="true">
+      <section className="service-hero" style={{ position: 'relative' }}>
+        <WebGLBlueprint accentColor="var(--wp--preset--color--neon-cyan)" />
+        <div className="service-hero__bg-image" aria-hidden="true" style={{ opacity: 0.3, zIndex: 1 }}>
           <img
             src="https://images.unsplash.com/photo-1687125114692-54f19a0fd438?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmdXR1cmlzdGljJTIwcmFkYXIlMjBob2xvZ3JhbSUyMGRhcmslMjBpbnRlcmZhY2V8ZW58MXx8fHwxNzcxNTA5MzgzfDA&ixlib=rb-4.1.0&q=80&w=1080"
             alt="" className="service-hero__bg-cover" aria-hidden="true"
             loading="lazy"
           />
         </div>
-        <div className="service-hero__decor-rings" aria-hidden="true">
+        <div className="service-hero__decor-rings" aria-hidden="true" style={{ zIndex: 1 }}>
           <div className="service-hero__decor-ring service-hero__decor-ring--1" />
           <div className="service-hero__decor-ring service-hero__decor-ring--2" />
           <div className="service-hero__decor-ring service-hero__decor-ring--3" />
           <div className="service-hero__decor-ring service-hero__decor-ring--4" />
         </div>
 
-        <Container>
+        <Container style={{ position: 'relative', zIndex: 2 }}>
           <div className="service-hero__content service-hero__content--centered">
             <ScrollReveal animation="fade-up">
               <span className="service-hero__badge service-hero__badge--primary">
@@ -112,7 +115,7 @@ export function DiscoveryServiceTemplate() {
             </ScrollReveal>
             <ScrollReveal animation="fade-up" delay={200}>
               <StatsGrid
-                stats={heroStats.map((s, i) => ({ id: `hero-stat-${i}`, value: s.value, label: s.label }))}
+                stats={heroStats.map((s, i) => ({ id: `hero-stat-${i}`, number: s.value, label: s.label, icon: s.icon as any }))}
                 columns={3} variant="default"
               />
             </ScrollReveal>
@@ -147,7 +150,7 @@ export function DiscoveryServiceTemplate() {
         </ScrollReveal>
       )}
 
-      <RelatedServicesInPhase currentPhase="ignite" currentServicePage="discovery" />
+      <RelatedServicesInPhase currentPhase="discover" currentServicePage="discovery" />
 
       <FunkyCTA
         title={data.cta.title}

@@ -1,0 +1,59 @@
+/**
+ * AI Solutions Mega Page — Responsive & Reduced Motion
+ *
+ * Split from ai-solutions-mega.css (March 17, 2026) to meet
+ * 400-line file size limit (496 → 3 files).
+ *
+ * Sections:
+ * - Responsive breakpoints (tablet 768px+, desktop 1024px+)
+ * - Reduced motion accessibility
+ *
+ * @see AISolutionsLandingTemplate.tsx
+ */
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE DESIGN
+   ═══════════════════════════════════════════ */
+
+/* Tablet (768px+) */
+@media (min-width: 768px) {
+  .ai-solutions-mega__title {
+    font-size: var(--text-6xl);
+  }
+
+  .ai-solutions-mega__trust-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .ai-solutions-mega__solution-inner {
+    grid-template-columns: 2fr 1fr;
+    gap: var(--spacing-16);
+  }
+
+  .ai-solutions-mega__capabilities-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Desktop (1024px+) */
+@media (min-width: 1024px) {
+  .ai-solutions-mega__capabilities-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ═══════════════════════════════════════════
+   REDUCED MOTION
+   ═══════════════════════════════════════════ */
+
+@media (prefers-reduced-motion: reduce) {
+  .ai-solutions-mega__hero-grid,
+  .ai-solutions-mega__hero-glow {
+    animation: none;
+  }
+
+  .ai-solutions-mega__btn-primary:hover,
+  .ai-solutions-mega__solution-btn--primary:hover {
+    transform: none;
+  }
+}

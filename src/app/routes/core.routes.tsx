@@ -101,8 +101,11 @@ import { EditorialWorkflowsSystemTemplate } from '../components/templates/Editor
 import { AISearchReadinessSystemTemplate } from '../components/templates/AISearchReadinessSystemTemplate';
 import { PerformanceReliabilitySystemTemplate } from '../components/templates/PerformanceReliabilitySystemTemplate';
 
+// Getting Started
+import { GettingStartedTemplate } from '../components/templates/GettingStartedTemplate';
+
 /* ═══════════════════════════════════════════
- * Route Wrapper Components
+ * Route Component Wrappers (CSS Bundle Loaders)
  * ═══════════════════════════════════════════ */
 
 // About
@@ -164,6 +167,9 @@ function JourneyLaunchRoute() { loadCSSBundle('services'); return <JourneyStageT
 function JourneyGrowRoute() { loadCSSBundle('services'); return <JourneyStageTemplate slug="grow" />; }
 function JourneyEvolveRoute() { loadCSSBundle('services'); return <JourneyStageTemplate slug="evolve" />; }
 
+// Getting Started
+function GettingStartedRoute() { loadCSSBundle('services'); return <GettingStartedTemplate />; }
+
 /* ═══════════════════════════════════════════
  * Route Definitions
  * ═══════════════════════════════════════════ */
@@ -171,6 +177,9 @@ function JourneyEvolveRoute() { loadCSSBundle('services'); return <JourneyStageT
 export const coreRoutes: RouteObject[] = [
   /* ── Home (Core CSS Only) ── */
   { index: true, Component: FrontPageTemplate },
+
+  /* ── Getting Started ── */
+  { path: 'getting-started', Component: GettingStartedRoute },
 
   /* ── About (About Bundle) ── */
   { path: 'about', Component: AboutRoute },

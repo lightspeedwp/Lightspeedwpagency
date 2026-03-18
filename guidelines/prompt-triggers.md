@@ -1,8 +1,8 @@
 # Prompt Trigger Words — Registry
 
 **Category:** Workflow  
-**Version:** 7.1.0  
-**Last Updated:** 2026-03-16  
+**Version:** 8.2.0  
+**Last Updated:** 2026-03-18  
 **Status:** Active  
 **Template Used:** _templates/general-template.md
 
@@ -16,9 +16,9 @@ This project supports **trigger words** — short commands the user types instea
 
 ---
 
-## Registered Triggers (33 Total)
+## Registered Triggers (40 Total)
 
-### Workflow Triggers (7)
+### Workflow Triggers (8)
 
 | Trigger | Prompt File | Description |
 |---|---|---|
@@ -27,10 +27,11 @@ This project supports **trigger words** — short commands the user types instea
 | `cleanup and continue` | `/prompts/cleanup.md` → `/prompts/continue.md` | Alias for `cleanup` (identical behavior) |
 | `status` | `/prompts/status.md` | Read-only project health dashboard |
 | `changelog` | `/prompts/changelog.md` | Update CHANGELOG with undocumented recent work |
-| `sitemap` | `/prompts/sitemap.md` | Sync SiteMapTemplate with actual routes |
+| `sitemap` | `/prompts/sitemap.md` | Sync SiteMapTemplate with actual routes (inline fix, no report) |
+| `routes` | `/prompts/routes.md` | Route integrity audit + inline fix (no report). Use `audit routes` for report variant |
 | `process reports` | `/prompts/process-reports.md` | Organize, rename, and archive reports |
 
-### Audit Triggers (19)
+### Audit Triggers (24)
 
 | Trigger | Prompt File | Description |
 |---|---|---|
@@ -46,15 +47,26 @@ This project supports **trigger words** — short commands the user types instea
 | `audit guidelines` | `/prompts/audit-guidelines.md` | Guideline file standards (frontmatter, headings, size) |
 | `audit theme` | `/prompts/audit-light-dark-mode.md` | Light/dark mode token compliance and contrast |
 | `audit style` | `/prompts/audit-retro-style.md` | Funky Neon design language compliance |
-| `audit webgl` | `/prompts/audit-webgl.md` | Canvas/WebGL inventory and integration safety |
+| `audit webgl` | `/prompts/audit-webgl.md` | WebGL architecture, data-driven design & compliance audit |
 | `audit routing` | `/prompts/audit-routing.md` | Route integrity, link validation, logo navigation |
 | `audit layout` | `/prompts/audit-layout.md` | Visual integrity, containers, overflow, responsiveness |
 | `audit functionality` | `/prompts/audit-functionality.md` | UI state wiring, dead UI detection, interaction flows |
 | `audit accessibility` | `/prompts/audit-accessibility.md` | Comprehensive WCAG 2.1 AA (focus, ARIA, touch targets) |
 | `audit performance` | `/prompts/audit-performance.md` | Render performance, assets, animations, WebGL impact |
 | `audit images` | `/prompts/audit-images.md` | Broken image URLs, missing alt text, asset compliance |
+| `audit phosphor` | `/prompts/audit-phosphor.md` | Lucide-to-Phosphor migration readiness (maps every remaining Lucide icon) |
+| `audit icons` | `/prompts/audit-icons.md` | Phosphor icon import integrity (broken imports, legacy Lucide, weight compliance) |
+| `audit header` | `/prompts/audit-header.md` | Header template part compliance (single part, section-based patterns) |
+| `audit footer` | `/prompts/audit-footer.md` | Footer template part compliance (main site vs dev tools patterns) |
+| `audit hero` | `/prompts/audit-hero.md` | Hero template part compliance (single part, data-driven patterns per page type) |
 
-### Scaffold Triggers
+### Scaffold Triggers (3)
+
+| Trigger | Prompt File | Description |
+|---|---|---|
+| `new template` | `/prompts/new-template.md` | Scaffold a page template from patterns |
+| `new pattern` | `/prompts/new-pattern.md` | Scaffold a reusable block pattern |
+| `new block` | `/prompts/new-block.md` | Scaffold an atomic block component |
 
 All scaffold triggers:
 1. Read relevant guidelines (patterns, components, archetypes).
@@ -63,16 +75,11 @@ All scaffold triggers:
 4. Register the route and CSS import.
 5. Update CHANGELOG.
 
-### Guidelines Triggers (2)
+### Code Quality Triggers (1)
 
 | Trigger | Prompt File | Description |
 |---|---|---|
-| `update guidelines` | `/prompts/update-guidelines.md` | Update content accuracy, frontmatter, template compliance |
-| `cleanup guidelines` | `/prompts/cleanup-guidelines.md` | Merge duplicates, deprecate outdated, restructure |
-
-### Code Quality Triggers
-
-**`apply bem`** — Scans all `.tsx` files for 5 violation types: (A) missing BEM block class on root elements, (B) inline styles that should use CSS variables via BEM classes, (C) Tailwind utilities instead of BEM/`.wp-*`, (D) inconsistent BEM naming, (E) BEM classes referenced but undefined in CSS. Matches violations to existing CSS in `/src/styles/` (base, patterns, blocks, components). Fixes violations by applying existing classes or creating new CSS rules with 100% variable compliance. Performs token gap analysis — if the design system lacks tokens for required styles, recommends running `audit tokens` and/or `audit css`. Report saved to `/reports/YYYY-MM/bem-compliance-audit.md`.
+| `apply bem` | `/prompts/apply-bem.md` | BEM class compliance audit + fix (inline styles → CSS variables, Tailwind → BEM) |
 
 ### Release Trigger (1)
 
@@ -98,6 +105,8 @@ All scaffold triggers:
 
 **`sitemap`** — Diffs registered routes against SiteMapTemplate. Adds missing pages, removes dead links, updates counts.
 
+**`routes`** — Route integrity audit + inline fix (no report). Use `audit routes` for report variant.
+
 **`process reports`** — Audits `/reports/` directory. Moves misplaced files, renames non-conforming filenames, archives old reports.
 
 ### Audit Triggers
@@ -109,7 +118,7 @@ All audit triggers follow the same workflow:
 4. Save report to `/reports/YYYY-MM/[audit-name].md`.
 5. Create or update a dedicated task list in `/tasks/[audit-name]-task-list.md`.
 
-**`audit`** — Master orchestrator. Runs ALL 17 audit sub-triggers in sequence:
+**`audit`** — Master orchestrator. Runs ALL 24 audit sub-triggers in sequence:
 
 1. `audit routes` — Route map completeness
 2. `audit sitemap` — SiteMap template sync
@@ -122,14 +131,20 @@ All audit triggers follow the same workflow:
 9. `audit guidelines` — Guideline file standards
 10. `audit theme` — Light/dark mode tokens
 11. `audit style` — Funky Neon design language
-12. `audit webgl` — Canvas/WebGL safety
+12. `audit webgl` — WebGL architecture & compliance
 13. `audit routing` — Route integrity
 14. `audit layout` — Visual integrity
 15. `audit functionality` — UI state wiring
 16. `audit accessibility` — Comprehensive WCAG
 17. `audit performance` — Render performance
+18. `audit images` — Broken images & alt text
+19. `audit phosphor` — Lucide-to-Phosphor migration readiness
+20. `audit icons` — Phosphor icon import integrity
+21. `audit header` — Header template part compliance
+22. `audit footer` — Footer template part compliance
+23. `audit hero` — Hero template part compliance
 
-After all 17 audits complete, prints a summary dashboard showing pass/fail per audit. Does **not** auto-chain to `process reports` unless explicitly requested via `audit && process reports`.
+After all 24 audits complete, prints a summary dashboard showing pass/fail per audit. Does **not** auto-chain to `process reports` unless explicitly requested via `audit && process reports`.
 
 **`audit routes`** — Report-generating variant of `routes`. Diffs `route-map.ts` slugs against actual route definitions. Writes report to `/reports/YYYY-MM/`. The plain `routes` trigger fixes issues inline without writing a report.
 
@@ -154,8 +169,8 @@ All scaffold triggers:
 
 | Command | Behaviour |
 |---|---|
-| `audit` | Run all 17 audit sub-triggers sequentially |
-| `audit && process reports` | Run all 17 audits, then auto-chain to `process reports` |
+| `audit` | Run all 24 audit sub-triggers sequentially |
+| `audit && process reports` | Run all 24 audits, then auto-chain to `process reports` |
 | `audit tokens, css, a11y` | Run only the listed audit sub-triggers (comma-separated) |
 | `cleanup` | Full cleanup + continue |
 | `cleanup only` | Cleanup only — skip the continue phase |
@@ -174,7 +189,7 @@ Triggers can be chained with `&&` to run sequentially:
 
 | Command | Behaviour |
 |---|---|
-| `audit && process reports` | Run all 17 audits → convert reports to task lists |
+| `audit && process reports` | Run all 24 audits → convert reports to task lists |
 | `cleanup && continue` | Full cleanup → next open task (alias for `cleanup`) |
 | `audit tokens && audit css` | Run two specific audits in sequence |
 
@@ -226,6 +241,9 @@ Every prompt execution MUST enforce:
 
 | Version | Date | Changes |
 |---|---|---|
+| 8.2.0 | 2026-03-18 | Registry sync via `update triggers`. Added unregistered `routes` workflow trigger. Added scaffold + code quality trigger tables. Workflow 7 → 8. Total 39 → 40. Zero circular references validated |
+| 8.1.0 | 2026-03-18 | Added `update triggers` guideline trigger. Guidelines triggers 2 → 3. Total triggers 38 → 39. Updated audit orchestrator to 24 sub-triggers. Added guideline references to 6 audit prompts. Validated zero circular references |
+| 8.0.0 | 2026-03-18 | Added 5 audit triggers: `audit phosphor`, `audit icons`, `audit header`, `audit footer`, `audit hero`. Audit triggers 19 → 24. Total triggers 33 → 38 |
 | 7.1.0 | 2026-03-16 | Added `audit images` audit trigger. Audit triggers 18 → 19. Total triggers 32 → 33 |
 | 7.0.0 | 2026-03-16 | Added `apply bem` code quality trigger. Added Code Quality category. Restored missing 6.0.0 entry. Total triggers 31 → 32 |
 | 6.0.0 | 2026-03-15 | Added 8 new audit triggers: `audit theme`, `audit style`, `audit webgl`, `audit routing`, `audit layout`, `audit functionality`, `audit accessibility`, `audit performance`. Audit triggers 10 → 18. Total triggers 23 → 31 |

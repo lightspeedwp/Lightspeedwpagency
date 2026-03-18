@@ -221,10 +221,7 @@ export function SiteHeader({ variant = 'default' }: SiteHeaderProps) {
                 {/* Mega Menu Dropdown */}
                 {item.hasMegaMenu && (
                   <div 
-                    className="site-header__mega-menu"
-                    style={{
-                      display: activeMenu === item.label ? 'block' : 'none',
-                    }}
+                    className={`site-header__mega-menu ${activeMenu === item.label ? 'site-header__mega-menu--visible' : ''}`}
                   >
                     {/* Mega Menu Header */}
                     {item.menuTitle && (

@@ -23,6 +23,7 @@
  */
 
 import '../../../styles/templates/page-service-ai-search.css';
+import '../../../styles/parts/lifecycle-flow.css';
 import { Container } from '../common/Container';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { FunkyCTA } from '../patterns/FunkyCTA';
@@ -30,10 +31,20 @@ import { FeatureList } from '../patterns/FeatureList';
 import { StatsGrid } from '../patterns/StatsGrid';
 import { ProcessTimeline } from '../patterns/ProcessTimeline';
 import { RelatedServicesGrid } from '../patterns/RelatedServicesGrid';
+import { RelatedPagesGrid } from '../patterns/RelatedPagesGrid';
+import { LifecycleFlowStrip } from '../parts/LifecycleFlowStrip';
+import { TestimonialCard } from '../patterns/TestimonialCard';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { ScrollDownArrow } from '../common/ScrollDownArrow';
 import { Eye } from '@phosphor-icons/react';
-import { aiSearchServicePillars, aiSearchServiceProcessSteps } from '../../data/ai-search-service-template-data';
+import {
+  aiSearchServicePillars,
+  aiSearchServiceProcessSteps,
+  aiSearchLifecycleStages,
+  aiSearchTrustSignal,
+  aiSearchRelatedSolutions,
+  aiSearchRelatedServices,
+} from '../../data/ai-search-service-template-data';
 
 export function AISearchServiceTemplate() {
   return (
@@ -91,6 +102,21 @@ export function AISearchServiceTemplate() {
       </section>
 
       {/* ══════════════════════════════════════════
+          LIFECYCLE CONTEXT
+          ══════════════════════════════════════════ */}
+      <section aria-label="Lifecycle context">
+        <Container>
+          <ScrollReveal animation="fade-up">
+            <LifecycleFlowStrip
+              prevStage={aiSearchLifecycleStages[0]}
+              currentStage={aiSearchLifecycleStages[1]}
+              nextStage={aiSearchLifecycleStages[2]}
+            />
+          </ScrollReveal>
+        </Container>
+      </section>
+
+      {/* ══════════════════════════════════════════
           CONSOLIDATED SERVICE PILLARS
           ══════════════════════════════════════════ */}
       <section className="ai-search-page__pillars" aria-label="Service pillars">
@@ -112,6 +138,21 @@ export function AISearchServiceTemplate() {
       </section>
 
       {/* ══════════════════════════════════════════
+          TRUST SIGNAL
+          ══════════════════════════════════════════ */}
+      <section aria-label="Client testimonial">
+        <Container>
+          <ScrollReveal animation="fade-up">
+            <TestimonialCard
+              quote={aiSearchTrustSignal.quote}
+              author={aiSearchTrustSignal.author}
+              role={aiSearchTrustSignal.role}
+            />
+          </ScrollReveal>
+        </Container>
+      </section>
+
+      {/* ══════════════════════════════════════════
           PROCESS
           ══════════════════════════════════════════ */}
       <section className="ai-search-page__process" aria-label="Our process">
@@ -128,11 +169,23 @@ export function AISearchServiceTemplate() {
       </section>
 
       {/* ══════════════════════════════════════════
+          RELATED SOLUTIONS
+          ══════════════════════════════════════════ */}
+      <RelatedPagesGrid
+        title="Related solutions"
+        description="Explore AI-powered solutions that complement this service"
+        items={aiSearchRelatedSolutions}
+        columns={3}
+      />
+
+      {/* ══════════════════════════════════════════
           RELATED SERVICES
           ══════════════════════════════════════════ */}
-      <RelatedServicesGrid
-        currentServiceSlug="ai-search-visibility"
+      <RelatedPagesGrid
         title="Related services"
+        description="Discover other services in the AI visibility ecosystem"
+        items={aiSearchRelatedServices}
+        columns={4}
       />
 
       {/* ══════════════════════════════════════════

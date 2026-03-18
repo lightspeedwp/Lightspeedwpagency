@@ -14,6 +14,9 @@ import {
   CheckCircle,
   Shield,
   Lightning,
+  Timer,
+  Clock,
+  ThumbsUp
 } from '@phosphor-icons/react';
 
 export const migrationsServiceBenefits = [
@@ -95,8 +98,8 @@ export const migrationsServiceProcess = [
 ];
 
 export const migrationsServiceResults = [
-  { id: 'metric-1', value: '99.9%', label: 'Data transfer success rate' },
-  { id: 'metric-2', value: '<2hr', label: 'Average downtime' },
-  { id: 'metric-3', value: '100%', label: 'Sites tested pre-launch' },
-  { id: 'metric-4', value: '30 days', label: 'Post-migration support' },
+  { id: 'metric-1', number: '99.9%', label: 'Data transfer success rate', icon: CheckCircle },
+  { id: 'metric-2', number: '<2hr', label: 'Average downtime', icon: Timer },
+  { id: 'metric-3', number: '100%', label: 'Sites tested pre-launch', icon: ThumbsUp },
+  { id: 'metric-4', number: '30 days', label: 'Post-migration support', icon: Clock },
 ];

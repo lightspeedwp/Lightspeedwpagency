@@ -51,14 +51,18 @@
 - [x] **C3.1j-15:** Split `micro-interactions.css` (610 lines) into 2 sub-files in `/src/styles/micro-interactions/`: `micro-interactions-core.css` (~310 lines), `micro-interactions-effects.css` (~300 lines). Original → 15-line orchestrator. 610 → 15 lines (98% reduction).
 - [x] **C3.1j-16:** Split `global-search.css` (600 lines) into 2 sub-files in `/src/styles/patterns/global-search/`: `global-search-overlay.css` (~370 lines), `global-search-states.css` (~230 lines). Original → 18-line orchestrator. 600 → 18 lines (97% reduction).
 
+### P3 — 400-600 Line Batch
+
+- [x] **C3.2a:** Split `ai-solution-hero.css` (519 lines) into 3 sub-files in `/src/styles/templates/ai-solution/`: `ai-solution-hero-core.css` (~130 lines — variant scoping, badges, titles), `ai-solution-buttons.css` (~95 lines — primary/outline buttons), `ai-solution-visual.css` (~310 lines — brain graphic, orbit, sections, trust, responsive). Original → 31-line orchestrator. 519 → 31 lines (94% reduction).
+
 ---
 
 ## Summary
 
 | Priority | Tasks | Status |
-|---|---|---|
+|---|---|---| |
 | P2 (File size) | 5 | 5 done |
 | P3 (700+ batch) | 10 | 10 done |
 | P3 (600-690 batch) | 16 | 16 done |
-| P3 (400-600 batch) | 1 | Open |
-| **Total** | **32** | **31 done, 1 open** |
+| P3 (400-600 batch) | 1 | 1 done |
+| **Total** | **32** | **32 done, 0 open** |

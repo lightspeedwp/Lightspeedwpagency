@@ -1,47 +1,65 @@
 /**
- * AI Solutions Landing Template
+ * AI Solutions Landing Template — FUNKY REDESIGN
  *
  * Hub page for all AI solution sub-pages under /solutions/ai
  * Route: /solutions/ai
  *
- * Pattern order:
- *   Breadcrumbs -> Hero -> Stats -> Solution Cards -> Capabilities -> CTA
+ * Structure:
+ *   Hero → Sticky Nav → Trust → Stats → 5 Solution Sections → Capabilities → CTA
+ *
+ * Each solution section:
+ *   - Full-viewport dark background (neon compliance)
+ *   - Title, description, benefits list
+ *   - Links to sub-page + related services
+ *   - Section-specific accent color
+ *
+ * FUNKY REDESIGN FEATURES:
+ * - Neural network animated hero background
+ * - Glassmorphism cards with neon borders
+ * - Smooth scroll reveals and micro-interactions
+ * - NeonStats component for metrics (forced dark)
+ * - Particle background effects
+ * - Depth effects with neon shadows
  *
  * STRICT DESIGN SYSTEM COMPLIANCE:
  * - Zero Tailwind classes
- * - All styling via /src/styles/templates/page-solution-ai-landing.css
- * - Fonts: var(--font-primary), var(--font-secondary) only
+ * - All styling via /src/styles/templates/ai-solutions-mega.css
+ * - Typography: var(--font-primary), var(--font-secondary) only
+ * - Colors: 100% CSS variables
+ * - Neon colors only on dark backgrounds (WCAG 2.2 AA/AAA compliant)
+ * - BEM methodology: .ai-solutions-mega__*
  *
- * @see /src/styles/templates/page-solution-ai-landing.css
- * @see /src/app/data/ai-solutions-landing-data.tsx
+ * LIGHT/DARK MODE COMPLIANCE:
+ * - Light mode: Professional clean aesthetic for trust section
+ * - Dark mode: Full Funky neon with glowing elements
+ * - Forced dark: Hero, solution sections, stats, CTA (neon requirement)
+ * - All text meets 4.5:1 minimum contrast ratio (AA)
+ *
+ * @see /src/styles/templates/ai-solutions-mega.css
+ * @see /src/app/data/ai-solutions-hub-data.tsx
+ * @see /prompts/ai-services-restructure/solutions-ai.md
  */
 
-import '../../../styles/templates/page-solution-ai-landing.css';
+import '../../../styles/templates/ai-solutions-mega.css';
 
 import React from 'react';
 import { Link } from 'react-router';
-import { ArrowRight } from '@phosphor-icons/react';
+import { ArrowRight, Check } from '@phosphor-icons/react';
 import { Container } from '../common/Container';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
-import { StatsGrid } from '../patterns/StatsGrid';
+import { StickyAnchorNav } from '../parts/StickyAnchorNav';
+import { NeonStats } from '../common/NeonStats';
 import { FunkyCTA } from '../patterns/FunkyCTA';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { ScrollDownArrow } from '../common/ScrollDownArrow';
-import { slugToPath } from '../../utils/route-map';
 
-import {
-  aiSolutionsHero,
-  aiSolutionsStats,
-  aiSolutionCards,
-  aiSolutionsCapabilities,
-  aiSolutionsCTA,
-} from '../../data/ai-solutions-landing-data';
+import { aiSolutionsHubData } from '../../data/ai-solutions-hub-data';
 
 export function AISolutionsLandingTemplate() {
-  const BadgeIcon = aiSolutionsHero.badgeIcon;
+  const { hero, stickyNav, solutions, stats, trustSignals, capabilities, cta, sectionHeadings } = aiSolutionsHubData;
 
   return (
-    <div className="ai-solutions">
+    <div className="ai-solutions-mega">
       {/* Breadcrumbs */}
       <BreadcrumbPart
         items={[
@@ -51,49 +69,48 @@ export function AISolutionsLandingTemplate() {
         ]}
       />
 
-      {/* ════════════════ HERO ════════════════ */}
-      <section className="ai-solutions__hero" aria-label="AI solutions hero">
-        <div className="ai-solutions__hero-grid" aria-hidden="true" />
-        <div className="ai-solutions__hero-glow" aria-hidden="true" />
+      {/* Hero */}
+      <section className="ai-solutions-mega__hero" aria-label="AI solutions hero">
+        <div className="ai-solutions-mega__hero-grid" aria-hidden="true" />
+        <div className="ai-solutions-mega__hero-glow" aria-hidden="true" />
 
-        <div className="ai-solutions__hero-content">
+        <div className="ai-solutions-mega__hero-content">
           <ScrollReveal animation="fade-down">
-            <span className="ai-solutions__badge">
-              <BadgeIcon size={14} />
-              {aiSolutionsHero.badge}
+            <span className="ai-solutions-mega__badge">
+              {hero.badge}
             </span>
           </ScrollReveal>
 
           <ScrollReveal animation="fade-up">
-            <h1 className="ai-solutions__title">
-              {aiSolutionsHero.title}
+            <h1 className="ai-solutions-mega__title">
+              {hero.title}
               <br />
-              <span className="ai-solutions__title-highlight">
-                {aiSolutionsHero.highlight}
+              <span className="ai-solutions-mega__title-highlight">
+                {hero.highlight}
               </span>
             </h1>
           </ScrollReveal>
 
           <ScrollReveal animation="fade-up" delay={100}>
-            <p className="ai-solutions__description">
-              {aiSolutionsHero.description}
+            <p className="ai-solutions-mega__description">
+              {hero.description}
             </p>
           </ScrollReveal>
 
           <ScrollReveal animation="fade-up" delay={200}>
-            <div className="ai-solutions__hero-actions">
-              <Link
-                to={slugToPath(aiSolutionsHero.primaryCta.page)}
-                className="ai-solutions__btn-primary"
+            <div className="ai-solutions-mega__hero-actions">
+              <a
+                href="#integrations"
+                className="ai-solutions-mega__btn-primary"
               >
-                {aiSolutionsHero.primaryCta.text}
+                {hero.primaryCta.text}
                 <ArrowRight size={18} />
-              </Link>
+              </a>
               <Link
-                to={slugToPath(aiSolutionsHero.secondaryCta.page)}
-                className="ai-solutions__btn-outline"
+                to="/services/ai"
+                className="ai-solutions-mega__btn-outline"
               >
-                {aiSolutionsHero.secondaryCta.text}
+                {hero.secondaryCta.text}
               </Link>
             </div>
           </ScrollReveal>
@@ -102,107 +119,164 @@ export function AISolutionsLandingTemplate() {
         <ScrollDownArrow />
       </section>
 
-      {/* ════════════════ STATS ════════════════ */}
-      <section className="ai-solutions__stats">
+      {/* Sticky Nav */}
+      <StickyAnchorNav items={stickyNav} />
+
+      {/* Trust signals */}
+      <section className="ai-solutions-mega__trust" aria-label="Client testimonials">
         <Container>
           <ScrollReveal animation="fade-up">
-            <div className="ai-solutions__section-header">
-              <h2 className="ai-solutions__section-title">
-                AI impact by the numbers
-              </h2>
-              <p className="ai-solutions__section-description">
-                Real results from businesses using AI with WordPress
-              </p>
-            </div>
-            <StatsGrid
-              stats={aiSolutionsStats.map((s) => ({
-                number: s.value,
+            <h2 className="ai-solutions-mega__section-title">
+              {sectionHeadings.trust}
+            </h2>
+          </ScrollReveal>
+
+          <div className="ai-solutions-mega__trust-grid">
+            {trustSignals.map((testimonial, index) => (
+              <ScrollReveal key={index} animation="fade-up" delay={index * 100}>
+                <div className="ai-solutions-mega__trust-card">
+                  <p className="ai-solutions-mega__trust-quote">
+                    "{testimonial.quote}"
+                  </p>
+                  <p className="ai-solutions-mega__trust-author">
+                    <strong>{testimonial.author}</strong>
+                    <span className="ai-solutions-mega__trust-role">
+                      {testimonial.role}
+                    </span>
+                  </p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* Stats */}
+      <section className="ai-solutions-mega__stats">
+        <Container>
+          <ScrollReveal animation="fade-up">
+            <NeonStats
+              title={sectionHeadings.stats.title}
+              subtitle={sectionHeadings.stats.subtitle}
+              stats={stats.map((s, index) => ({
+                id: `ai-stat-${index}`,
+                value: s.value,
                 label: s.label,
                 description: s.description,
               }))}
               columns={4}
-              variant="default"
             />
           </ScrollReveal>
         </Container>
       </section>
 
-      {/* ════════════════ SOLUTION CARDS ════════════════ */}
-      <section className="ai-solutions__cards">
-        <Container>
-          <div className="ai-solutions__section-header">
-            <ScrollReveal animation="fade-up">
-              <h2 className="ai-solutions__section-title">
-                Explore AI solutions
-              </h2>
-              <p className="ai-solutions__section-description">
-                Every solution is designed to integrate seamlessly with your
-                WordPress site
-              </p>
-            </ScrollReveal>
-          </div>
-
-          <div className="ai-solutions__cards-grid">
-            {aiSolutionCards.map((card, index) => {
-              const Icon = card.icon;
-              return (
-                <ScrollReveal
-                  key={card.href}
-                  animation="fade-up"
-                  delay={index * 80}
-                >
-                  <Link
-                    to={card.href}
-                    className="ai-solutions__card"
-                    style={
-                      {
-                        '--card-accent': `var(--wp--preset--color--${card.accent})`,
-                      } as React.CSSProperties
-                    }
-                    aria-label={`Learn more about ${card.title}`}
-                  >
-                    <div className="ai-solutions__card-icon">
-                      <Icon size={28} />
+      {/* Solution sections (5 full-page sections) */}
+      {solutions.map((solution, index) => {
+        const Icon = solution.icon;
+        return (
+          <section
+            key={solution.id}
+            id={solution.id}
+            className="ai-solutions-mega__solution"
+            style={{ '--solution-accent': solution.accent } as React.CSSProperties}
+            aria-labelledby={`solution-${solution.id}-title`}
+          >
+            <Container>
+              <div className="ai-solutions-mega__solution-inner">
+                {/* Left: Content */}
+                <div className="ai-solutions-mega__solution-content">
+                  <ScrollReveal animation="fade-up">
+                    <div className="ai-solutions-mega__solution-icon">
+                      <Icon size={32} />
                     </div>
-                    <h3 className="ai-solutions__card-title">{card.title}</h3>
-                    <p className="ai-solutions__card-description">
-                      {card.description}
+                  </ScrollReveal>
+
+                  <ScrollReveal animation="fade-up" delay={100}>
+                    <h2
+                      id={`solution-${solution.id}-title`}
+                      className="ai-solutions-mega__solution-title"
+                    >
+                      {solution.title}
+                    </h2>
+                  </ScrollReveal>
+
+                  <ScrollReveal animation="fade-up" delay={150}>
+                    <p className="ai-solutions-mega__solution-description">
+                      {solution.description}
                     </p>
-                    <ul className="ai-solutions__card-features">
-                      {card.features.map((feat) => (
-                        <li key={feat} className="ai-solutions__card-feature">
-                          {feat}
+                  </ScrollReveal>
+
+                  {/* Benefits list */}
+                  <ScrollReveal animation="fade-up" delay={200}>
+                    <ul className="ai-solutions-mega__benefits">
+                      {solution.benefits.map((benefit, i) => (
+                        <li key={i} className="ai-solutions-mega__benefit">
+                          <Check size={20} className="ai-solutions-mega__benefit-icon" />
+                          <span>{benefit}</span>
                         </li>
                       ))}
                     </ul>
-                    <span className="ai-solutions__card-arrow">
-                      Learn more <ArrowRight size={14} />
-                    </span>
-                  </Link>
-                </ScrollReveal>
-              );
-            })}
-          </div>
-        </Container>
-      </section>
+                  </ScrollReveal>
 
-      {/* ════════════════ CAPABILITIES ════════════════ */}
-      <section className="ai-solutions__capabilities">
+                  {/* CTA Buttons */}
+                  <ScrollReveal animation="fade-up" delay={250}>
+                    <div className="ai-solutions-mega__solution-actions">
+                      <Link
+                        to={solution.href}
+                        className="ai-solutions-mega__solution-btn ai-solutions-mega__solution-btn--primary"
+                      >
+                        Explore {solution.title}
+                        <ArrowRight size={18} />
+                      </Link>
+                    </div>
+                  </ScrollReveal>
+                </div>
+
+                {/* Right: Related services */}
+                <div className="ai-solutions-mega__solution-sidebar">
+                  <ScrollReveal animation="fade-up" delay={300}>
+                    <div className="ai-solutions-mega__related">
+                      <h3 className="ai-solutions-mega__related-title">
+                        {sectionHeadings.relatedServices}
+                      </h3>
+                      <ul className="ai-solutions-mega__related-list">
+                        {solution.relatedServices.map((service, i) => (
+                          <li key={i} className="ai-solutions-mega__related-item">
+                            <Link
+                              to={service.href}
+                              className="ai-solutions-mega__related-link"
+                            >
+                              {service.label}
+                              <ArrowRight size={14} />
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </ScrollReveal>
+                </div>
+              </div>
+            </Container>
+          </section>
+        );
+      })}
+
+      {/* Capabilities */}
+      <section className="ai-solutions-mega__capabilities">
         <Container>
-          <div className="ai-solutions__section-header">
+          <div className="ai-solutions-mega__section-header">
             <ScrollReveal animation="fade-up">
-              <h2 className="ai-solutions__section-title">
-                Why choose LSX for AI
+              <h2 className="ai-solutions-mega__section-title">
+                {sectionHeadings.capabilities.title}
               </h2>
-              <p className="ai-solutions__section-description">
-                WordPress-native AI that respects your data, your brand, and
-                your bottom line
+              <p className="ai-solutions-mega__section-description">
+                {sectionHeadings.capabilities.description}
               </p>
             </ScrollReveal>
           </div>
 
-          <div className="ai-solutions__capabilities-grid">
-            {aiSolutionsCapabilities.map((cap, index) => {
+          <div className="ai-solutions-mega__capabilities-grid">
+            {capabilities.map((cap, index) => {
               const Icon = cap.icon;
               return (
                 <ScrollReveal
@@ -210,14 +284,14 @@ export function AISolutionsLandingTemplate() {
                   animation="fade-up"
                   delay={index * 80}
                 >
-                  <div className="ai-solutions__capability">
-                    <div className="ai-solutions__capability-icon">
+                  <div className="ai-solutions-mega__capability">
+                    <div className="ai-solutions-mega__capability-icon">
                       <Icon size={28} />
                     </div>
-                    <h3 className="ai-solutions__capability-title">
+                    <h3 className="ai-solutions-mega__capability-title">
                       {cap.title}
                     </h3>
-                    <p className="ai-solutions__capability-description">
+                    <p className="ai-solutions-mega__capability-description">
                       {cap.description}
                     </p>
                   </div>
@@ -228,13 +302,13 @@ export function AISolutionsLandingTemplate() {
         </Container>
       </section>
 
-      {/* ════════════════ CTA ════════════════ */}
+      {/* CTA */}
       <FunkyCTA
-        title={aiSolutionsCTA.title}
-        description={aiSolutionsCTA.description}
-        buttonText={aiSolutionsCTA.buttonText}
-        buttonPage={aiSolutionsCTA.buttonPage}
-        benefits={aiSolutionsCTA.benefits}
+        title={cta.title}
+        description={cta.description}
+        buttonText={cta.buttonText}
+        buttonPage={cta.buttonPage}
+        benefits={cta.benefits}
       />
     </div>
   );

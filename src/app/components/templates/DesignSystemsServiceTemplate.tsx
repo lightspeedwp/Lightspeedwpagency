@@ -7,7 +7,7 @@
  * @see /src/styles/templates/sub-service-base.css
  */
 
-import { Stack, Palette, Code, BookOpen, Lightning, Trophy } from '@phosphor-icons/react';
+import { Stack, Palette, Code, BookOpen, Lightning, Trophy, Timer, Star, CheckCircle, PaintBrush } from '@phosphor-icons/react';
 import { Link } from 'react-router';
 import { getPageUrl } from '../../data/site-pages';
 import { Container } from '../common/Container';
@@ -18,6 +18,7 @@ import { CheckList } from '../patterns/CheckList';
 import { FunkyCTA } from '../patterns/FunkyCTA';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { JourneyPhaseIndicator } from '../ui/JourneyPhaseIndicator';
+import { WebGLTokens } from '../patterns/WebGLTokens';
 
 export const DesignSystemsServiceTemplate = () => {
   const benefits = [
@@ -32,17 +33,18 @@ export const DesignSystemsServiceTemplate = () => {
   const deliverables = ['Figma component library', 'Design token system', 'React/WordPress components', 'Documentation website', 'Usage guidelines', 'Governance framework', 'Implementation training'];
 
   const results = [
-    { id: 'result-1', value: '60%', label: 'Faster UI Development' },
-    { id: 'result-2', value: '90%', label: 'Brand Consistency Score' },
-    { id: 'result-3', value: '50%', label: 'Reduction in Design Debt' },
-    { id: 'result-4', value: '6-12 wks', label: 'Build Timeline' }
+    { id: 'result-1', value: '60%', label: 'Faster UI Development', icon: Lightning },
+    { id: 'result-2', value: '90%', label: 'Brand Consistency Score', icon: Star },
+    { id: 'result-3', value: '50%', label: 'Reduction in Design Debt', icon: CheckCircle },
+    { id: 'result-4', value: '6-12 wks', label: 'Build Timeline', icon: Timer }
   ];
 
   return (
     <div data-service="design-systems">
       {/* Hero section */}
-      <section className="sub-service-base__hero">
-        <div className="sub-service-base__hero-content">
+      <section className="sub-service-base__hero" style={{ position: 'relative' }}>
+        <WebGLTokens accentColor="var(--wp--preset--color--neon-lime)" />
+        <div className="sub-service-base__hero-content" style={{ position: 'relative', zIndex: 2 }}>
           <BreadcrumbPart
             items={[
               { label: 'Home', href: '/' },

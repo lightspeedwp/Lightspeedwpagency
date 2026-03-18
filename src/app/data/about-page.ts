@@ -108,10 +108,10 @@ export const aboutPageValues = [
 ];
 
 export const aboutPageStats = [
-  { number: "13", label: "Team Members", icon: Users },
+  { number: "220k+", label: "Posts Migrated", icon: TrendUp },
+  { number: "250+", label: "Sites Launched", icon: Globe },
   { number: "20+", label: "Years in Business", icon: Trophy },
-  { number: "500+", label: "Happy Clients", icon: Smiley },
-  { number: "1k+", label: "Projects Delivered", icon: CheckCircle }
+  { number: "13", label: "Team Members", icon: Users }
 ];
 
 export const aboutPageTimeline = [

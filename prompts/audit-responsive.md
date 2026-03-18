@@ -13,6 +13,11 @@
 
 **When to Use:** After building new templates, or when responsive issues are reported.
 
+**Reference guidelines:**
+- `/guidelines/design-tokens/spacing.md` — responsive spacing tokens
+- `/guidelines/design-tokens/touch-targets.md` — mobile touch target sizes
+- `/guidelines/accessibility.md` — responsive accessibility requirements
+
 ---
 
 ## Workflow Steps

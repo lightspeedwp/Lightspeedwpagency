@@ -19,7 +19,13 @@ import { RelatedServicesInPhase } from '../../patterns/RelatedServicesInPhase';
 import { IncludedInSolutions } from '../../patterns/IncludedInSolutions';
 import { ServiceTestimonial } from '../../patterns/ServiceTestimonial';
 import { ServicePricingTimeline } from '../../patterns/ServicePricingTimeline';
-import { StatsGrid } from '../../patterns/StatsGrid';
+import { NeonStats } from '../../common/NeonStats';
+import { 
+  ShieldCheck, 
+  Pulse, 
+  Clock, 
+  LockKey 
+} from '@phosphor-icons/react';
 import { ScrollReveal } from '../../../hooks/useScrollReveal';
 import { servicePricingTimeline } from '../../../data/services';
 import {
@@ -101,15 +107,16 @@ export function SecurityLowerSections({
           ============================================ */}
       <section className="service-section service-section--bg-background">
         <Container>
-          <StatsGrid
+          <NeonStats
             stats={[
-              { number: '24/7', label: 'Monitoring' },
-              { number: '100%', label: 'Uptime Goal' },
-              { number: '<1hr', label: 'Response Time' },
-              { number: 'Zero', label: 'Data Loss' },
+              { id: 'sec-1', value: '24/7', label: 'Monitoring', icon: Pulse },
+              { id: 'sec-2', value: '100%', label: 'Uptime Goal', icon: ShieldCheck },
+              { id: 'sec-3', value: '<1hr', label: 'Response Time', icon: Clock },
+              { id: 'sec-4', value: 'Zero', label: 'Data Loss', icon: LockKey },
             ]}
             columns={4}
-            variant="cards"
+            variant="glass"
+            accentColor="var(--wp--preset--color--neon-lime)"
           />
         </Container>
       </section>

@@ -81,7 +81,7 @@ function StatCard({ stat, isVisible }: { stat: StatItem; isVisible: boolean }) {
   return (
     <div className="content-stats__card">
       <div className="content-stats__icon-wrap">
-        <Icon size={22} />
+        <Icon weight="duotone" size={22} />
       </div>
       <div className="content-stats__value">
         {animatedValue}{stat.suffix || ''}

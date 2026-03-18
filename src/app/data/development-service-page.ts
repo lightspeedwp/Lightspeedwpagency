@@ -20,10 +20,10 @@ export const developmentServiceHero = {
     icon: 'Code' as UniversalIcon,
     text: 'Development Service'
   },
-  title: 'Expert WordPress development for modern websites',
-  titleHighlight: 'Development', // Word to highlight
-  tagline: 'Custom WordPress development that delivers scalable, high-performance solutions built on modern best practices',
-  description: 'We build custom WordPress themes, plugins, and integrations using modern development practices including Full Site Editing, block patterns, and headless architecture. Our code is clean, maintainable, and optimized for performance and security.'
+  title: 'Engineering powerful WordPress experiences',
+  titleHighlight: 'Engineering', // Word to highlight
+  tagline: 'Custom block themes, WooCommerce development, API integrations & AI-assisted code generation',
+  description: 'We build custom WordPress themes, plugins, and integrations using modern development practices including Full Site Editing, block patterns, headless architecture, and AI-assisted coding. Our development is secure, scalable, and optimized for performance with automated testing and continuous integration.'
 };
 
 /**
@@ -73,10 +73,10 @@ export interface DevelopmentService {
 
 export const developmentServices: DevelopmentService[] = [
   {
-    id: 'theme-dev',
+    id: 'block-theme-fse',
     icon: 'Layers' as UniversalIcon,
-    title: 'Custom theme development',
-    description: 'Block themes built with Full Site Editing, theme.json, and modern WordPress standards.',
+    title: 'Block theme & FSE development',
+    description: 'Full Site Editing block themes built with theme.json, custom patterns, and modern WordPress standards.',
     features: [
       'Block-based themes (FSE)',
       'theme.json configuration',
@@ -89,53 +89,25 @@ export const developmentServices: DevelopmentService[] = [
   {
     id: 'plugin-dev',
     icon: 'Package' as UniversalIcon,
-    title: 'Plugin development',
-    description: 'Custom plugins that extend WordPress functionality with clean, maintainable code.',
+    title: 'Custom plugin development',
+    description: 'WooCommerce extensions, payment gateways, and custom plugins with clean, maintainable code.',
     features: [
+      'WooCommerce extensions',
+      'Payment gateway integrations',
       'Custom post types',
       'Advanced Custom Fields',
       'Admin interfaces',
-      'REST API endpoints',
-      'Hooks & filters',
-      'WordPress coding standards'
+      'REST API endpoints'
     ]
   },
   {
-    id: 'block-dev',
-    icon: 'Blocks' as UniversalIcon,
-    title: 'Custom block development',
-    description: 'Gutenberg blocks built with React for powerful, reusable content components.',
-    features: [
-      'React-based blocks',
-      'Block patterns',
-      'Block variations',
-      'InnerBlocks support',
-      'Attributes & controls',
-      'Block styles & themes'
-    ]
-  },
-  {
-    id: 'headless',
-    icon: 'Terminal' as UniversalIcon,
-    title: 'Headless WordPress',
-    description: 'WordPress as a headless CMS with REST API or GraphQL for modern front-ends.',
-    features: [
-      'REST API customization',
-      'GraphQL with WPGraphQL',
-      'Custom endpoints',
-      'Authentication & JWT',
-      'Next.js/React integration',
-      'API performance optimization'
-    ]
-  },
-  {
-    id: 'integrations',
+    id: 'api-crm',
     icon: 'Puzzle' as UniversalIcon,
-    title: 'Third-party integrations',
-    description: 'Connect WordPress with external services, APIs, and platforms.',
+    title: 'API & CRM integrations',
+    description: 'Connect WordPress with external services, CRMs, payment processors, and third-party APIs.',
     features: [
+      'CRM integrations (Salesforce, HubSpot)',
       'Payment gateways',
-      'CRM integrations',
       'Email marketing platforms',
       'Analytics & tracking',
       'Social media APIs',
@@ -143,17 +115,73 @@ export const developmentServices: DevelopmentService[] = [
     ]
   },
   {
-    id: 'optimization',
+    id: 'headless-hybrid',
+    icon: 'Terminal' as UniversalIcon,
+    title: 'Headless/hybrid architecture',
+    description: 'Gatsby, Next.js, and React front-ends powered by WordPress REST API or GraphQL.',
+    features: [
+      'REST API customization',
+      'GraphQL with WPGraphQL',
+      'Next.js integration',
+      'Gatsby integration',
+      'Authentication & JWT',
+      'API performance optimization'
+    ]
+  },
+  {
+    id: 'performance-engineering',
     icon: 'Zap' as UniversalIcon,
-    title: 'Performance optimization',
-    description: 'Code optimization, caching strategies, and database tuning for speed.',
+    title: 'Performance engineering',
+    description: 'Code optimization, caching strategies, database tuning, and Core Web Vitals optimization.',
     features: [
       'Database optimization',
       'Query optimization',
       'Asset minification',
       'Lazy loading',
       'Caching strategies',
-      'CDN integration'
+      'Core Web Vitals'
+    ]
+  },
+  {
+    id: 'security-hardening',
+    icon: 'Shield' as UniversalIcon,
+    title: 'Security & code hardening',
+    description: 'Proactive security measures, code audits, vulnerability scanning, and OWASP compliance.',
+    features: [
+      'Input validation & sanitization',
+      'Output escaping',
+      'Prepared SQL statements',
+      'Nonce verification',
+      'Capability checks',
+      'Security audits'
+    ]
+  },
+  {
+    id: 'testing-cicd',
+    icon: 'CheckCircle' as UniversalIcon,
+    title: 'Automated testing & CI/CD',
+    description: 'PHPUnit, Jest, Cypress testing with continuous integration and automated deployments.',
+    features: [
+      'Unit testing (PHPUnit)',
+      'Integration testing',
+      'Browser testing (Cypress)',
+      'Automated deployments',
+      'GitHub Actions / GitLab CI',
+      'Code quality checks'
+    ]
+  },
+  {
+    id: 'ai-assisted-coding',
+    icon: 'Brain' as UniversalIcon,
+    title: 'AI-assisted coding & code reviews',
+    description: 'AI tools for code generation, static analysis, documentation, and automated code reviews.',
+    features: [
+      'AI code generation',
+      'Boilerplate automation',
+      'Static analysis',
+      'Code review assistance',
+      'Documentation generation',
+      'Quality assurance'
     ]
   }
 ];
@@ -195,24 +223,26 @@ export const developmentProcess = [
   {
     step: 1,
     title: 'Planning & architecture',
-    description: 'Define requirements, technical architecture, and development roadmap.',
+    description: 'Define requirements, technical architecture, and development roadmap. AI tools assist with technical documentation and architecture diagrams.',
     icon: 'FileCode' as UniversalIcon,
     deliverables: [
       'Technical specifications',
       'Database schema',
       'API documentation',
       'Development timeline',
-      'Technology stack selection'
+      'Technology stack selection',
+      'Architecture diagrams'
     ]
   },
   {
     step: 2,
-    title: 'Development & coding',
-    description: 'Build custom solutions using WordPress best practices and modern standards.',
+    title: 'Coding & integration',
+    description: 'Build custom solutions using WordPress best practices. AI accelerates development by generating boilerplate code and running static analysis.',
     icon: 'Code' as UniversalIcon,
     deliverables: [
-      'Custom theme/plugin code',
-      'Block development',
+      'Theme codebase',
+      'Plugin repositories',
+      'Custom blocks',
       'API integrations',
       'Database migrations',
       'Version control setup'
@@ -220,12 +250,13 @@ export const developmentProcess = [
   },
   {
     step: 3,
-    title: 'Testing & QA',
-    description: 'Comprehensive testing including functionality, performance, and security.',
+    title: 'Testing & review',
+    description: 'Comprehensive testing including functionality, performance, and security. AI assists with test generation and code quality checks.',
     icon: 'CheckCircle' as UniversalIcon,
     deliverables: [
       'Unit tests',
       'Integration tests',
+      'Testing reports',
       'Browser testing',
       'Performance testing',
       'Security audit'
@@ -234,14 +265,15 @@ export const developmentProcess = [
   {
     step: 4,
     title: 'Deployment & support',
-    description: 'Launch to production with monitoring, documentation, and ongoing support.',
+    description: 'Launch to production with monitoring, documentation, and ongoing support. AI helps generate comprehensive documentation.',
     icon: 'Rocket' as UniversalIcon,
     deliverables: [
       'Production deployment',
-      'Developer documentation',
+      'Deployment scripts',
+      'Integration documentation',
+      'API keys management',
       'Training materials',
-      'Monitoring setup',
-      'Ongoing support plan'
+      'Monitoring setup'
     ]
   }
 ];
@@ -433,6 +465,80 @@ export const developmentServiceCTA = {
 };
 
 /**
+ * Client Responsibilities
+ */
+export const clientResponsibilities = [
+  {
+    icon: 'Key' as UniversalIcon,
+    title: 'API credentials',
+    description: 'Provide API keys and access credentials for third-party services and integrations.'
+  },
+  {
+    icon: 'TestTube' as UniversalIcon,
+    title: 'Test environments',
+    description: 'Supply development and staging environments for testing and quality assurance.'
+  },
+  {
+    icon: 'FileText' as UniversalIcon,
+    title: 'Business logic requirements',
+    description: 'Document specific business rules, workflows, and functionality requirements.'
+  },
+  {
+    icon: 'Users' as UniversalIcon,
+    title: 'Code reviews & demos',
+    description: 'Participate in code review sessions and provide feedback during demos.'
+  }
+];
+
+/**
+ * Development Case Studies
+ */
+export const developmentCaseStudies = [
+  {
+    id: 'woocommerce-payment',
+    title: 'Custom payment gateway integration',
+    client: 'E-commerce Retailer',
+    challenge: 'Needed to integrate a regional payment processor not supported by WooCommerce.',
+    solution: 'Built a custom WooCommerce payment gateway plugin with full transaction management.',
+    results: [
+      '40% reduction in payment processing fees',
+      '98% payment success rate',
+      'Full PCI compliance maintained',
+      '2-week delivery timeline'
+    ],
+    technologies: ['WooCommerce', 'PHP', 'REST API', 'OAuth']
+  },
+  {
+    id: 'headless-migration',
+    title: 'Large-scale headless migration',
+    client: 'Digital Publishing Platform',
+    challenge: 'Migrate legacy WordPress monolith to headless architecture for improved performance.',
+    solution: 'Implemented WordPress + Next.js headless setup with GraphQL and incremental static regeneration.',
+    results: [
+      '60% faster page load times',
+      '10x better scalability',
+      'Zero downtime migration',
+      'Enhanced security posture'
+    ],
+    technologies: ['Next.js', 'WPGraphQL', 'React', 'Vercel']
+  },
+  {
+    id: 'complex-plugin',
+    title: 'Complex CRM integration plugin',
+    client: 'B2B SaaS Company',
+    challenge: 'Sync WordPress users and WooCommerce orders with Salesforce CRM in real-time.',
+    solution: 'Developed custom plugin with bi-directional sync, webhook handlers, and error recovery.',
+    results: [
+      '100% data sync accuracy',
+      'Real-time synchronization',
+      'Automated workflow triggers',
+      'Reduced manual data entry by 95%'
+    ],
+    technologies: ['Salesforce API', 'Webhooks', 'WP Cron', 'Custom Post Types']
+  }
+];
+
+/**
  * Helper Functions
  */
 
@@ -450,6 +556,8 @@ export function getDevelopmentServiceData() {
     packages: developmentPackages,
     whyChoose: whyChooseDevelopment,
     faqs: developmentServiceFAQs,
-    cta: developmentServiceCTA
+    cta: developmentServiceCTA,
+    clientResponsibilities: clientResponsibilities,
+    caseStudies: developmentCaseStudies
   };
 }

@@ -41,6 +41,9 @@ import {
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { ScrollDownArrow } from '../common/ScrollDownArrow';
 import { DevelopmentLowerSections } from './development-service/DevelopmentLowerSections';
+import { NeonStats } from '../common/NeonStats';
+import { statsRegistry, mapToNeonStats } from '../../data/stats';
+import { WebGLTopology } from '../patterns/WebGLTopology';
 import { 
   Code,
   Terminal,
@@ -49,6 +52,9 @@ import {
 } from '@phosphor-icons/react';
 
 export function DevelopmentServiceTemplate() {
+  const collection = statsRegistry.getCollection('development-stats');
+  const devStats = collection ? mapToNeonStats(collection.stats) : [];
+
   // Build unified data object
   const data = {
     tagline: developmentServiceOverview.description,
@@ -98,13 +104,14 @@ export function DevelopmentServiceTemplate() {
       {/* ============================================
           HERO SECTION (Terminal)
           ============================================ */}
-      <section className="dev-service__hero">
+      <section className="dev-service__hero" style={{ position: 'relative', overflow: 'hidden' }}>
         {/* Background Effects */}
+        <WebGLTopology />
         <div className="dev-service__hero-grid" aria-hidden="true" />
         
         <div className="dev-service__hero-orb" aria-hidden="true" />
         
-        <Container>
+        <Container style={{ position: 'relative', zIndex: 1 }}>
           <ScrollReveal animation="fade-up">
             <div className="dev-service__hero-content">
               <div className="dev-service__badge">
@@ -227,6 +234,18 @@ export function DevelopmentServiceTemplate() {
           </div>
         </Container>
       </section>
+
+      {devStats.length > 0 && (
+        <section className="service-section">
+          <NeonStats
+            stats={devStats}
+            title="Development scale"
+            subtitle="The impact of our custom WordPress development."
+            columns={4}
+            variant="glass"
+          />
+        </section>
+      )}
 
       {/* Lower sections extracted for file size compliance */}
       <DevelopmentLowerSections

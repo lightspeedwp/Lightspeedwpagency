@@ -1,0 +1,538 @@
+/**
+ * Getting Started Template — Funky Micro-Interactions
+ *
+ * Additional interactive polish and delightful micro-animations for the
+ * Getting Started page in dark mode.
+ *
+ * Features:
+ * - Stagger animations on scroll reveal
+ * - Interactive hover states with depth
+ * - Glow pulse effects on important elements
+ * - Smooth state transitions
+ * - Celebration animations on completion
+ *
+ * @see /src/styles/templates/getting-started.css
+ * @see /src/styles/templates/getting-started-enhancements.css
+ */
+
+/* ============================================
+   SCROLL REVEAL STAGGER ANIMATIONS
+   ============================================ */
+
+/* Stage cards appear with staggered delay */
+.lifecycle-stage-card {
+  opacity: 0;
+  animation: fade-slide-up 0.6s ease-out forwards;
+}
+
+.lifecycle-stage-card:nth-child(1) { animation-delay: 0.1s; }
+.lifecycle-stage-card:nth-child(2) { animation-delay: 0.2s; }
+.lifecycle-stage-card:nth-child(3) { animation-delay: 0.3s; }
+.lifecycle-stage-card:nth-child(4) { animation-delay: 0.4s; }
+.lifecycle-stage-card:nth-child(5) { animation-delay: 0.5s; }
+.lifecycle-stage-card:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes fade-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Checklist categories stagger */
+.checklist-category {
+  opacity: 0;
+  animation: fade-slide-up 0.6s ease-out forwards;
+}
+
+.checklist-category:nth-child(1) { animation-delay: 0.1s; }
+.checklist-category:nth-child(2) { animation-delay: 0.2s; }
+.checklist-category:nth-child(3) { animation-delay: 0.3s; }
+.checklist-category:nth-child(4) { animation-delay: 0.4s; }
+.checklist-category:nth-child(5) { animation-delay: 0.5s; }
+
+/* ============================================
+   HOVER DEPTH EFFECTS (DARK MODE ONLY)
+   ============================================ */
+
+/* 3D tilt effect on stage cards */
+.dark .lifecycle-stage-card {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.dark .lifecycle-stage-card:hover .lifecycle-stage-card__icon {
+  transform: translateZ(20px) scale(1.1);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dark .lifecycle-stage-card:hover .lifecycle-stage-card__title {
+  transform: translateZ(10px);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Folder icons float on hover */
+.dark .folder-item:hover svg {
+  animation: float-icon 2s ease-in-out infinite;
+}
+
+@keyframes float-icon {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Tool card icons spin on hover */
+.dark .tool-card:hover .tool-card__icon {
+  animation: spin-icon 0.6s ease-in-out;
+}
+
+@keyframes spin-icon {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ============================================
+   GLOW PULSE EFFECTS
+   ============================================ */
+
+/* Progress bar glows when near completion */
+.dark .checklist-progress__fill[style*="width: 9"],
+.dark .checklist-progress__fill[style*="width: 100"] {
+  animation: progress-glow-intense 1.5s ease-in-out infinite;
+}
+
+@keyframes progress-glow-intense {
+  0%, 100% {
+    box-shadow: 0 0 20px var(--wp--preset--color--neon-lime);
+  }
+  50% {
+    box-shadow: 0 0 40px var(--wp--preset--color--neon-lime),
+                0 0 60px var(--wp--preset--color--neon-lime);
+  }
+}
+
+/* Complete badge pulses */
+.dark .checklist-category--complete .checklist-category__complete-badge {
+  animation: badge-glow-pulse 2s ease-in-out infinite;
+}
+
+@keyframes badge-glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 10px var(--wp--preset--color--neon-lime);
+  }
+  50% {
+    box-shadow: 0 0 20px var(--wp--preset--color--neon-lime),
+                0 0 30px color-mix(in srgb, var(--wp--preset--color--neon-lime) 60%, transparent);
+  }
+}
+
+/* ============================================
+   INTERACTIVE CHECKBOX ANIMATIONS
+   ============================================ */
+
+/* Checkbox gets bigger on hover */
+.checklist-item__checkbox {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.checklist-item__checkbox:hover {
+  transform: scale(1.2);
+}
+
+/* Checked state celebration */
+.dark .checklist-item__checkbox--checked {
+  animation: checkbox-celebrate 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes checkbox-celebrate {
+  0% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.3) rotate(10deg);
+  }
+  60% {
+    transform: scale(0.9) rotate(-5deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+/* Ripple effect when checking */
+.dark .checklist-item__checkbox--checked::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200%;
+  height: 200%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--wp--preset--color--neon-lime) 40%, transparent),
+    transparent 70%
+  );
+  animation: ripple-out 0.8s ease-out;
+  pointer-events: none;
+}
+
+@keyframes ripple-out {
+  from {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(0);
+  }
+  to {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* ============================================
+   DOWNLOAD CARDS INTERACTIVE STATES
+   ============================================ */
+
+/* Download icon bounces on hover */
+.dark .download-card:hover .download-card__icon-download {
+  animation: bounce-icon 0.6s ease-in-out;
+}
+
+@keyframes bounce-icon {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-8px);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  75% {
+    transform: translateY(-4px);
+  }
+}
+
+/* File type badge scales */
+.dark .download-card:hover .download-card__file-type {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+
+/* ============================================
+   BENEFITS GRID STAGGER
+   ============================================ */
+
+.benefit-card {
+  opacity: 0;
+  animation: fade-scale-in 0.6s ease-out forwards;
+}
+
+.benefit-card:nth-child(1) { animation-delay: 0.1s; }
+.benefit-card:nth-child(2) { animation-delay: 0.2s; }
+.benefit-card:nth-child(3) { animation-delay: 0.3s; }
+.benefit-card:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes fade-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Benefit icons breathe */
+.dark .benefit-card__icon {
+  animation: icon-breathe-slow 4s ease-in-out infinite;
+}
+
+@keyframes icon-breathe-slow {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+/* ============================================
+   AI TOUCHPOINT BADGE PULSE
+   ============================================ */
+
+.dark .lifecycle-stage-card__ai-touchpoint {
+  position: relative;
+  overflow: visible;
+}
+
+.dark .lifecycle-stage-card__ai-label::before {
+  content: '';
+  position: absolute;
+  left: -4px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2px;
+  height: 100%;
+  background: var(--wp--preset--color--neon-yellow);
+  box-shadow: 0 0 10px var(--wp--preset--color--neon-yellow);
+  animation: ai-pulse 2s ease-in-out infinite;
+}
+
+@keyframes ai-pulse {
+  0%, 100% {
+    opacity: 0.6;
+    box-shadow: 0 0 10px var(--wp--preset--color--neon-yellow);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 20px var(--wp--preset--color--neon-yellow),
+                0 0 30px color-mix(in srgb, var(--wp--preset--color--neon-yellow) 60%, transparent);
+  }
+}
+
+/* ============================================
+   CELEBRATION CONFETTI (100% COMPLETE)
+   ============================================ */
+
+/* When progress reaches 100%, show celebration */
+.dark .checklist-progress__celebration {
+  position: relative;
+  overflow: visible;
+}
+
+.dark .checklist-progress__celebration::before,
+.dark .checklist-progress__celebration::after {
+  content: '✨';
+  position: absolute;
+  font-size: var(--text-xl);
+  animation: confetti-fall 2s ease-out infinite;
+}
+
+.dark .checklist-progress__celebration::before {
+  left: -30px;
+  animation-delay: 0.3s;
+}
+
+.dark .checklist-progress__celebration::after {
+  right: -30px;
+  animation-delay: 0.6s;
+}
+
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(-20px) rotate(0deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(20px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* ============================================
+   CTA ICON FLOAT ANIMATION
+   ============================================ */
+
+.dark .getting-started-cta__icon {
+  animation: icon-float-cta 3s ease-in-out infinite;
+}
+
+@keyframes icon-float-cta {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  25% {
+    transform: translateY(-12px) scale(1.05);
+  }
+  50% {
+    transform: translateY(0) scale(1);
+  }
+  75% {
+    transform: translateY(-6px) scale(1.02);
+  }
+}
+
+/* CTA icon rotates on page load */
+.dark .getting-started-cta__icon {
+  animation: icon-float-cta 3s ease-in-out infinite,
+             icon-rotate-entrance 1s ease-out;
+}
+
+@keyframes icon-rotate-entrance {
+  from {
+    transform: rotate(-180deg) scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: rotate(0deg) scale(1);
+    opacity: 1;
+  }
+}
+
+/* ============================================
+   SECTION BADGE ANIMATIONS
+   ============================================ */
+
+/* All section badges fade in from left */
+.getting-started-lifecycle__badge,
+.getting-started-checklist__badge,
+.getting-started-folders__badge,
+.getting-started-tools__badge,
+.getting-started-benefits__badge,
+.getting-started-downloads__badge {
+  opacity: 0;
+  animation: badge-slide-in 0.6s ease-out 0.3s forwards;
+}
+
+@keyframes badge-slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ============================================
+   BACKGROUND PATTERN ANIMATIONS
+   ============================================ */
+
+/* Dot pattern subtle movement */
+.dark .getting-started-checklist__bg-pattern {
+  animation: pattern-drift 30s linear infinite;
+}
+
+@keyframes pattern-drift {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 24px 24px;
+  }
+}
+
+/* ============================================
+   LINK UNDERLINE ANIMATIONS
+   ============================================ */
+
+/* Folder code hover effect */
+.dark .folder-item__name {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.dark .folder-item:hover .folder-item__name {
+  color: var(--color-white);
+  text-shadow: 0 0 10px var(--wp--preset--color--neon-cyan);
+}
+
+.dark .folder-item__name::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--wp--preset--color--neon-cyan);
+  box-shadow: 0 0 8px var(--wp--preset--color--neon-cyan);
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dark .folder-item:hover .folder-item__name::after {
+  width: 100%;
+}
+
+/* ============================================
+   REDUCED MOTION OVERRIDES
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  /* Disable all decorative animations */
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.1s !important;
+  }
+
+  /* Keep essential state changes but make them instant */
+  .lifecycle-stage-card,
+  .checklist-category,
+  .benefit-card {
+    opacity: 1;
+    animation: none;
+  }
+
+  /* Disable all transform animations */
+  .dark .lifecycle-stage-card:hover .lifecycle-stage-card__icon,
+  .dark .lifecycle-stage-card:hover .lifecycle-stage-card__title,
+  .dark .folder-item:hover svg,
+  .dark .tool-card:hover .tool-card__icon,
+  .dark .download-card:hover .download-card__icon-download,
+  .dark .getting-started-cta__icon {
+    animation: none;
+    transform: none;
+  }
+
+  /* Keep functional focus states */
+  .checklist-item__checkbox:focus,
+  .checklist-item__checkbox:hover {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+  /* Hide all glow effects for print */
+  .getting-started-hero__bg-grid,
+  .getting-started-hero__glow,
+  .lifecycle-stage-card__glow,
+  .checklist-category__glow,
+  .folder-item__glow,
+  .tool-card__glow,
+  .benefit-card__glow,
+  .download-card__glow,
+  .getting-started-cta__bg-grid,
+  .getting-started-cta__glow,
+  .checklist-progress__glow {
+    display: none !important;
+  }
+
+  /* Simplify colors for print */
+  .dark .getting-started-hero__title,
+  .dark .getting-started-cta__title {
+    color: var(--color-black) !important;
+    background: none !important;
+    -webkit-text-fill-color: var(--color-black) !important;
+  }
+
+  /* Remove animations */
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}

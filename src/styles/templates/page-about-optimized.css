@@ -42,9 +42,58 @@
    ABOUT OVERVIEW SPECIFIC STYLES
    ============================================ */
 
-/**
- * All about overview styles are inherited from about-base.css
- * No additional unique styles needed for this template
- */
+.about-overview__story--dark {
+  background-color: var(--color-black);
+  padding: var(--spacing-24) 0;
+}
 
-/* Placeholder for future about-specific features */
+.about-overview__story--dark .about-overview__section-title {
+  color: var(--color-white);
+}
+
+.about-overview__story--dark .about-overview__section-desc {
+  color: var(--color-gray-400);
+}
+
+.about-overview__story--dark .timeline__title,
+.about-overview__story--dark .timeline__description,
+.about-overview__story--dark .timeline__year {
+  color: var(--color-white);
+}
+
+.about-overview__timeline-wrapper--spacing {
+  margin-bottom: var(--spacing-16);
+}
+
+.about-overview__stats--dark {
+  background-color: var(--color-black);
+  padding: var(--spacing-16) 0;
+}
+
+/* WebGL Interactive Components */
+.webgl-timeline-container {
+  width: 100%;
+  height: 200px;
+  position: relative;
+  background: var(--color-black);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--color-gray-800);
+}
+
+.webgl-timeline-canvas {
+  display: block;
+}
+
+.webgl-team-mosaic-container {
+  width: 100%;
+  height: 300px;
+  position: relative;
+  background: var(--color-black);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.webgl-team-mosaic-canvas {
+  display: block;
+}

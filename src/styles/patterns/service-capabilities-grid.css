@@ -1,0 +1,162 @@
+/**
+ * Service Capabilities Grid Pattern
+ * 
+ * BEM compliance - migrated from inline styles (Apply BEM Round 20 - March 17, 2026)
+ * Zero hardcoded values - 100% CSS variable compliance
+ */
+
+/* ============================================
+   SECTION HEADER
+   ============================================ */
+
+.service-capabilities__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: var(--spacing-12);
+}
+
+.service-capabilities__heading {
+  font-family: var(--font-primary);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+  margin: 0 0 var(--spacing-4) 0;
+}
+
+.service-capabilities__subheading {
+  font-family: var(--font-secondary);
+  font-size: var(--text-lg);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-relaxed);
+  margin: 0;
+  max-width: var(--wp--style--global--narrow-size);
+}
+
+/* ============================================
+   CAPABILITY CARD
+   ============================================ */
+
+.service-capabilities__card {
+  display: flex;
+  flex-direction: column;
+  padding: var(--spacing-8);
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  height: 100%;
+  transition: transform var(--transition-base), 
+              border-color var(--transition-base),
+              box-shadow var(--transition-base);
+}
+
+.service-capabilities__card:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary);
+  box-shadow: 0 0 20px var(--primary-soft);
+}
+
+/* Icon Wrapper */
+.service-capabilities__icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  margin-bottom: var(--spacing-6);
+  background-color: var(--primary-soft);
+  color: var(--primary);
+  border-radius: var(--radius);
+  box-shadow: 0 0 20px var(--primary-soft);
+}
+
+/* Content */
+.service-capabilities__content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.service-capabilities__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h4);
+  font-weight: var(--font-weight-semibold);
+  color: var(--card-foreground);
+  margin: 0 0 var(--spacing-3) 0;
+}
+
+.service-capabilities__description {
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-comfortable);
+  margin: 0 0 var(--spacing-6) 0;
+}
+
+/* Tags */
+.service-capabilities__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-2);
+  margin-bottom: var(--spacing-6);
+}
+
+.service-capabilities__tag {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--spacing-1) var(--spacing-3);
+  background-color: var(--muted);
+  color: var(--muted-foreground);
+  border-radius: var(--radius-full);
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Action Link */
+.service-capabilities__link-wrapper {
+  margin-top: auto;
+}
+
+.service-capabilities__link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  color: var(--primary);
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+  transition: gap var(--transition-base);
+}
+
+.service-capabilities__link:hover {
+  gap: var(--spacing-3);
+  text-decoration: underline;
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .service-capabilities__card {
+    transition: border-color var(--transition-base),
+                box-shadow var(--transition-base);
+  }
+
+  .service-capabilities__card:hover {
+    transform: none;
+  }
+
+  .service-capabilities__link {
+    transition: none;
+  }
+
+  .service-capabilities__link:hover {
+    gap: var(--spacing-2);
+  }
+}

@@ -12,7 +12,7 @@
  * @see /src/styles/templates/sub-service-base.css
  */
 
-import { Eye, Ear, Keyboard, Cursor, CheckCircle, Shield } from '@phosphor-icons/react';
+import { Eye, Ear, Keyboard, Cursor, CheckCircle, Shield, TrendUp } from '@phosphor-icons/react';
 import { Link } from 'react-router';
 import { getPageUrl } from '../../data/site-pages';
 import { FeatureList } from '../patterns/FeatureList';
@@ -22,6 +22,8 @@ import { FunkyCTA } from '../patterns/FunkyCTA';
 import '../../../styles/templates/accessibility-service-optimized.css';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { JourneyPhaseIndicator } from '../ui/JourneyPhaseIndicator';
+import { NeonStats } from '../common/NeonStats';
+import { WebGLScanner } from '../patterns/WebGLScanner';
 
 export const AccessibilityServiceTemplate = () => {
   const benefits = [
@@ -204,23 +206,33 @@ export const AccessibilityServiceTemplate = () => {
         />
       </section>
 
-      {/* Results Section */}
-      <section className="sub-service-base__results accessibility-service__results">
+      {/* Interactive Accessibility Scanner (WebGL) */}
+      <section className="sub-service-base__benefits accessibility-service__scanner" style={{ padding: 'var(--spacing-16) 0', background: 'var(--color-black)' }}>
         <div className="sub-service-base__section-header">
-          <h2 className="sub-service-base__section-title">Expected outcomes</h2>
-          <p className="sub-service-base__section-description">
-            Measurable improvements in accessibility and compliance
+          <h2 className="sub-service-base__section-title" style={{ color: 'var(--color-white)' }}>Continuous compliance</h2>
+          <p className="sub-service-base__section-description" style={{ color: 'var(--color-gray-400)' }}>
+            Real-time accessibility monitoring and issue detection.
           </p>
         </div>
-        
-        <div className="sub-service-base__results-grid">
-          {results.map((result, index) => (
-            <div key={index} className="sub-service-base__result-card">
-              <div className="sub-service-base__result-metric">{result.metric}</div>
-              <div className="sub-service-base__result-label">{result.label}</div>
-            </div>
-          ))}
+        <div style={{ maxWidth: 'var(--max-w-5xl)', margin: '0 auto', padding: '0 var(--spacing-6)' }}>
+          <WebGLScanner />
         </div>
+      </section>
+
+      {/* Results Section Using Contextual NeonStats */}
+      <section className="sub-service-base__results accessibility-service__results" style={{ background: 'var(--color-black)', padding: 'var(--spacing-16) 0' }}>
+        <NeonStats
+          stats={[
+            { id: '1', value: '100%', label: 'WCAG 2.1 AA Compliance', icon: CheckCircle },
+            { id: '2', value: '0', label: 'Critical Accessibility Errors', icon: Shield },
+            { id: '3', value: '30%', label: 'Broader Audience Reach', icon: TrendUp },
+            { id: '4', value: '2-3', label: 'Months to Full Compliance', icon: CheckCircle }
+          ]}
+          title="Expected outcomes"
+          columns={4}
+          accentColor="var(--wp--preset--color--neon-lime)"
+          variant="glass"
+        />
       </section>
 
       {/* Client Testimonials */}

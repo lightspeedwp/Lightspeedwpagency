@@ -42,6 +42,9 @@ import {
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { ScrollDownArrow } from '../common/ScrollDownArrow';
 import { DesignLowerSections } from './design-service/DesignLowerSections';
+import { NeonStats } from '../common/NeonStats';
+import { WebGLDesignGrid } from '../patterns/WebGLDesignGrid';
+import { statsRegistry, mapToNeonStats } from '../../data/stats';
 import { 
   GridFour as Grid,
   CheckCircle,
@@ -49,6 +52,9 @@ import {
 } from '@phosphor-icons/react';
 
 export function DesignServiceTemplate() {
+  const collection = statsRegistry.getCollection('design-stats');
+  const designStats = collection ? mapToNeonStats(collection.stats) : [];
+
   // Build a unified data object from imports
   const data = {
     tagline: designServiceHero.subtitle || "Strategic, user-focused design that drives results",
@@ -88,16 +94,18 @@ export function DesignServiceTemplate() {
       {/* ============================================
           HERO SECTION (The Blueprint)
           ============================================ */}
-      <section className="service-hero">
+      <section className="service-hero" style={{ position: 'relative' }}>
+        <WebGLDesignGrid accentColor="var(--wp--preset--color--neon-pink)" />
+        
         {/* Crosshairs & Grid Background */}
-        <div className="service-hero__decor-grid" />
-        <div className="service-hero__crosshair service-hero__crosshair--tl" />
-        <div className="service-hero__crosshair service-hero__crosshair--tr" />
-        <div className="service-hero__crosshair service-hero__crosshair--bl" />
-        <div className="service-hero__crosshair service-hero__crosshair--br" />
+        <div className="service-hero__decor-grid" style={{ zIndex: 1, opacity: 0.3 }} />
+        <div className="service-hero__crosshair service-hero__crosshair--tl" style={{ zIndex: 1 }} />
+        <div className="service-hero__crosshair service-hero__crosshair--tr" style={{ zIndex: 1 }} />
+        <div className="service-hero__crosshair service-hero__crosshair--bl" style={{ zIndex: 1 }} />
+        <div className="service-hero__crosshair service-hero__crosshair--br" style={{ zIndex: 1 }} />
 
         {/* Floating Wireframes */}
-        <div className="design-decor__wireframe design-decor__wireframe--right" aria-hidden="true">
+        <div className="design-decor__wireframe design-decor__wireframe--right" aria-hidden="true" style={{ zIndex: 1 }}>
           <div className="design-decor__bar design-decor__bar--primary design-decor__bar--w40" />
           <div className="design-decor__bar design-decor__bar--w80" />
           <div className="design-decor__bar design-decor__bar--block design-decor__bar--w100" />
@@ -110,7 +118,7 @@ export function DesignServiceTemplate() {
           <div className="design-decor__bar design-decor__bar--secondary design-decor__bar--w50" />
         </div>
 
-        <div className="service-hero__content service-hero__content--centered">
+        <div className="service-hero__content service-hero__content--centered" style={{ position: 'relative', zIndex: 2 }}>
           <ScrollReveal animation="fade-down">
             <div className="service-hero__badge service-hero__badge--outline">
               <Grid size={16} />
@@ -184,6 +192,18 @@ export function DesignServiceTemplate() {
           </div>
         </Container>
       </section>
+
+      {designStats.length > 0 && (
+        <section className="service-section">
+          <NeonStats
+            stats={designStats}
+            title="Design impact"
+            subtitle="The scope of our design system implementations."
+            columns={4}
+            variant="glass"
+          />
+        </section>
+      )}
 
       {/* Lower sections extracted for file size compliance */}
       <DesignLowerSections

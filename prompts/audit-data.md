@@ -13,6 +13,11 @@
 
 **When to Use:** After adding new data files, or periodically to verify data architecture integrity.
 
+**Reference guidelines:**
+- `/guidelines/data-files.md` — data file architecture, naming conventions, location rules
+- `/guidelines/Guidelines.md` — folder structure, file size limits
+- `/guidelines/build-rules.md` — component file size limit (300 lines)
+
 ---
 
 ## Workflow Steps

@@ -52,6 +52,8 @@ export const ContentAuditServiceTemplate = () => {
               { label: 'Content audit' },
             ]}
           />
+          
+          <JourneyPhaseIndicator currentPhase="discover" currentServicePage="content-audit" />
 
           <ScrollReveal animation="fade-down">
             <h1 className="sub-service-base__hero-title">

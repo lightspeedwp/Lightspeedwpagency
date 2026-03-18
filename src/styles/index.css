@@ -175,6 +175,7 @@
 @import './patterns/hero.css';
 @import './patterns/hero-home.css';
 @import './patterns/pagination-nav.css';
+@import './patterns/service-capabilities-grid.css';
 @import './patterns/social-proof.css';
 @import './patterns/proof-strip.css';
 @import './patterns/solution-cards-grid.css';
@@ -294,6 +295,11 @@
 @import './templates/design-service-decor.css';
 @import './templates/content-service-decor.css';
 
+/* Getting Started Template BEM (March 17, 2026) */
+@import './templates/getting-started.css';
+@import './templates/getting-started-enhancements.css';
+@import './templates/getting-started-micro-interactions.css';
+
 /* Route Bundle Base Files (consolidated from /styles/bundles/ — March 13, 2026)
  * These base files were previously only loaded via bundle imports in css-bundle-loader.ts.
  * Moving them here eliminates ~200 duplicate CSS @import resolutions from bundle files.
@@ -338,6 +344,7 @@
 @import './components/mobile-filter-popover.css';
 @import './components/trust-badges.css';
 @import './components/scroll-down-arrow.css';
+@import './components/neon-stats.css';
 @import './back-to-top.css';
 @import './scroll-down.css';
 @import './header-simple.css';

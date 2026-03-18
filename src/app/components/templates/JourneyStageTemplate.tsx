@@ -2,27 +2,24 @@
  * Journey Stage Template
  *
  * Shared template for all 6 website-journey phase landing pages
- * (Ignite → Create → Build → Launch → Grow → Evolve).
+ * (Discover → Create → Build → Launch → Grow → Evolve).
  *
  * Features:
- * - Horizontal journey progress bar (all 6 phases, clickable)
- * - Phase-specific neon accent colour
- * - Rich content: description, outcomes, services, deliverables
- * - Prev / next navigation for horizontal flow between stages
- * - FunkyCTA at the bottom
+ * - Full viewport hero with animated background concept
+ * - Phase navigation breadcrumbs
+ * - Service cards grid
+ * - Client role clarification
+ * - Deliverables showcase
+ * - Trust signal (testimonial)
+ * - CTA section
  *
- * Sub-components:
- * - JourneyProgressBar — horizontal progress bar (journey-stage/JourneyStageNav.tsx)
- * - StageNavigation — prev/next navigation (journey-stage/JourneyStageNav.tsx)
+ * Usage:
+ * ```tsx
+ * <JourneyStageTemplate slug="discover" />
+ * ```
  *
- * STRICT DESIGN SYSTEM COMPLIANCE:
- * - Zero Tailwind classes
- * - Zero inline styles except CSS variable dynamic values
- * - All styling via @/styles/templates/page-journey-stage.css
- * - Fonts: var(--font-primary), var(--font-secondary) only
- *
- * @see /src/app/data/journey-stage-pages.ts
- * @see /src/styles/templates/page-journey-stage.css
+ * @see /src/app/data/journey-stage-pages.ts — Stage content data
+ * @see /src/app/components/parts/JourneyPhaseNav.tsx
  */
 
 import '../../../styles/templates/journey-stage/journey-stage-base.css';
@@ -46,7 +43,7 @@ import { JourneyProgressBar, StageNavigation } from './journey-stage/JourneyStag
    ───────────────────────────────────────────── */
 
 interface JourneyStageTemplateProps {
-  /** URL slug for the stage (e.g. "ignite") */
+  /** URL slug for the stage (e.g. "discover") */
   slug: string;
 }
 
@@ -133,7 +130,24 @@ export function JourneyStageTemplate({ slug }: JourneyStageTemplateProps) {
       </section>
 
       {/* ============================================
-          3. OUTCOMES — Key Results
+          3. TESTIMONIAL — Trust Signal
+          ============================================ */}
+      <section
+        className="journey-stage__testimonial"
+        style={{ '--phase-accent': data.accent } as React.CSSProperties}
+      >
+        <ScrollReveal animation="fade-up">
+          <div className="journey-stage__testimonial-inner">
+            <p className="journey-stage__testimonial-quote">{data.testimonial.quote}</p>
+            <p className="journey-stage__testimonial-author">
+              <strong>{data.testimonial.author}</strong> — {data.testimonial.role}
+            </p>
+          </div>
+        </ScrollReveal>
+      </section>
+
+      {/* ============================================
+          4. OUTCOMES — Key Results
           ============================================ */}
       <section
         className="journey-stage__outcomes"
@@ -160,7 +174,7 @@ export function JourneyStageTemplate({ slug }: JourneyStageTemplateProps) {
       </section>
 
       {/* ============================================
-          4. SERVICES — Cards linking to service pages
+          5. SERVICES — Cards linking to service pages
           ============================================ */}
       <section
         className="journey-stage__services"
@@ -210,7 +224,7 @@ export function JourneyStageTemplate({ slug }: JourneyStageTemplateProps) {
       </section>
 
       {/* ============================================
-          5. DELIVERABLES + CLIENT ROLE
+          6. DELIVERABLES + CLIENT ROLE
           ============================================ */}
       <section
         className="journey-stage__deliverables"
@@ -257,23 +271,6 @@ export function JourneyStageTemplate({ slug }: JourneyStageTemplateProps) {
             </div>
           </ScrollReveal>
         </div>
-      </section>
-
-      {/* ============================================
-          6. TESTIMONIAL
-          ============================================ */}
-      <section
-        className="journey-stage__testimonial"
-        style={{ '--phase-accent': data.accent } as React.CSSProperties}
-      >
-        <ScrollReveal animation="fade-up">
-          <div className="journey-stage__testimonial-inner">
-            <p className="journey-stage__testimonial-quote">{data.testimonial.quote}</p>
-            <p className="journey-stage__testimonial-author">
-              <strong>{data.testimonial.author}</strong> — {data.testimonial.role}
-            </p>
-          </div>
-        </ScrollReveal>
       </section>
 
       {/* ============================================

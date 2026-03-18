@@ -13,6 +13,12 @@
 
 **When to Use:** After creating or updating guideline files, or periodically to enforce documentation standards.
 
+**Reference guidelines:**
+- `/guidelines/Guidelines.md` — canonical rules, file size limits
+- `/guidelines/build-rules.md` — file size limits (350 lines for .md)
+- `/guidelines/writing-guidelines.md` — markdown standards, frontmatter format
+- `/guidelines/_templates/` — template files for structure validation
+
 ---
 
 ## Workflow Steps

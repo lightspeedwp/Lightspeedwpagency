@@ -1,8 +1,8 @@
 # LSX Design — Figma Make Prototype Guidelines
 
 **Category:** Core  
-**Version:** 5.8.0  
-**Last Updated:** 2026-03-16  
+**Version:** 5.11.0  
+**Last Updated:** 2026-03-18  
 **Status:** Active  
 **Template Used:** Canonical (no template — this IS the source of truth)
 
@@ -37,7 +37,7 @@ This is the **single source of truth** for all project standards. Every guidelin
 
 See **[prompt-triggers.md](./prompt-triggers.md)** for full details and behaviour descriptions.
 
-### Workflow (7)
+### Workflow (8)
 
 | Trigger | What It Does |
 |---|---|
@@ -47,9 +47,10 @@ See **[prompt-triggers.md](./prompt-triggers.md)** for full details and behaviou
 | `status` | Read-only project health dashboard |
 | `changelog` | Update CHANGELOG with undocumented work |
 | `sitemap` | Sync SiteMapTemplate with actual routes |
+| `routes` | Route integrity audit + inline fix (no report) |
 | `process reports` | Organize, rename, archive reports |
 
-### Audits (19)
+### Audits (24)
 
 | Trigger | What It Does |
 |---|---|
@@ -72,6 +73,11 @@ See **[prompt-triggers.md](./prompt-triggers.md)** for full details and behaviou
 | `audit accessibility` | Comprehensive WCAG 2.1 AA (focus, ARIA, touch targets) |
 | `audit performance` | Render performance, assets, animations, WebGL impact |
 | `audit images` | Broken image URLs, missing alt text, asset compliance |
+| `audit phosphor` | Lucide-to-Phosphor migration readiness (maps every remaining Lucide icon) |
+| `audit icons` | Phosphor icon import integrity (broken imports, legacy Lucide, weight compliance) |
+| `audit header` | Header template part compliance (single part, section-based patterns) |
+| `audit footer` | Footer template part compliance (main site vs dev tools patterns) |
+| `audit hero` | Hero template part compliance (single part, data-driven patterns per page type) |
 
 ### Scaffolds (3)
 
@@ -81,12 +87,13 @@ See **[prompt-triggers.md](./prompt-triggers.md)** for full details and behaviou
 | `new pattern` | Scaffold a reusable block pattern |
 | `new block` | Scaffold an atomic block component |
 
-### Guidelines (2) & Release (1)
+### Guidelines (3) & Release (1)
 
 | Trigger | What It Does |
 |---|---|
 | `update guidelines` | Update content accuracy, frontmatter, template compliance |
 | `cleanup guidelines` | Merge duplicates, deprecate outdated, restructure |
+| `update triggers` | Sync trigger registry, validate reference hierarchy, detect circular references |
 | `release` | Version bump: move Unreleased → versioned section |
 
 ### Code Quality (1)
@@ -246,6 +253,9 @@ See **[prompt-triggers.md](./prompt-triggers.md)** for full details and behaviou
 
 | Version | Date | Changes |
 |---|---|---|
+| 5.11.0 | 2026-03-18 | Registry sync via `update triggers`. Added unregistered `routes` workflow trigger. Workflow 7 → 8. Total 39 → 40. Zero circular references validated |
+| 5.10.0 | 2026-03-18 | Added `update triggers` guideline trigger. Guidelines triggers 2 → 3. Total triggers 38 → 39. Updated audit orchestrator to 24 sub-triggers. Validated zero circular references across all prompts |
+| 5.9.0 | 2026-03-18 | Added 5 audit triggers: `audit phosphor`, `audit icons`, `audit header`, `audit footer`, `audit hero`. Audit triggers 19 → 24. Total triggers 33 → 38 |
 | 5.8.0 | 2026-03-16 | Added neon color rule to Design System Compliance. Neon-bright foreground colours must only appear against dark backgrounds (`var(--color-black)` or equivalent). Cards or sections using neon accents must force a dark surface regardless of light/dark mode |
 | 5.7.0 | 2026-03-16 | Added sentence case heading rule to Design System Compliance. All UI headings must use sentence case — never title case |
 | 5.6.0 | 2026-03-16 | Added `audit images` trigger. Audit triggers 18 → 19. Total triggers 32 → 33 |
@@ -261,7 +271,7 @@ See **[prompt-triggers.md](./prompt-triggers.md)** for full details and behaviou
 
 ---
 
-**Last Updated:** March 16, 2026  
+**Last Updated:** March 18, 2026  
 **Design System:** LSX Design  
 **WordPress Compatibility:** FSE (Full Site Editing)  
 **Total Routes:** ~172 | **Total Templates:** 130+

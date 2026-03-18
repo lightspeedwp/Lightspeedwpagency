@@ -23,7 +23,15 @@ When triggered, execute ALL steps below IN ORDER within a single session. Do not
 - Icons: `@phosphor-icons/react` only — zero `lucide-react`
 - Router: `react-router` only — never `react-router-dom`
 - NEVER delete service template files
-- See `/guidelines/prompt-triggers.md` for protected files list
+- See `/guidelines/housekeeping.md` for protected files list
+
+**Reference guidelines (read before starting):**
+- `/guidelines/Guidelines.md` — canonical rules, folder structure, design system compliance
+- `/guidelines/housekeeping.md` — protected files, task management rules
+- `/guidelines/build-rules.md` — file size limits
+- `/guidelines/Changelog-Guidelines.md` — changelog format
+
+**This prompt does not call other prompts.** It performs its own 11-step cleanup workflow inline. For deeper audits, run `audit` or specific audit sub-triggers separately after cleanup.
 
 ---
 

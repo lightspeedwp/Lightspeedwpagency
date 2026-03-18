@@ -16,6 +16,10 @@ import {
   aiAnalyticsPricing,
   aiAnalyticsFAQs,
   aiAnalyticsCTA,
+  analyticsLifecycleStages,
+  analyticsTrustSignal,
+  analyticsRelatedServices,
+  analyticsRelatedSolutions,
 } from '../../data/ai-integrations-page';
 
 export function AIAnalyticsTemplate() {
@@ -42,6 +46,11 @@ export function AIAnalyticsTemplate() {
         '15 hours saved on manual reporting',
         'Works alongside Google Analytics',
       ]}
+      lifecycleStages={analyticsLifecycleStages}
+      trustSignal={analyticsTrustSignal}
+      relatedServices={analyticsRelatedServices}
+      relatedSolutions={analyticsRelatedSolutions}
+      showPricing={false}
     />
   );
 }

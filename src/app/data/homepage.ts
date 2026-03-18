@@ -165,22 +165,22 @@ export const homepageClients = [
 export const homepagePartners = [
   {
     name: 'WordPress VIP Partner',
-    emoji: '🏆',
+    icon: 'Trophy',
     description: 'Official WordPress VIP Agency Partner'
   },
   {
     name: 'WooCommerce Expert',
-    emoji: '🛒',
+    icon: 'ShoppingCart',
     description: 'Certified WooCommerce Development Partner'
   },
   {
     name: 'WPML Certified',
-    emoji: '🌍',
+    icon: 'Globe',
     description: 'Multilingual WordPress Solutions Expert'
   },
   {
     name: 'GiveWP Partner',
-    emoji: '💝',
+    icon: 'Heart',
     description: 'Donation and Fundraising Platform Partner'
   }
 ];

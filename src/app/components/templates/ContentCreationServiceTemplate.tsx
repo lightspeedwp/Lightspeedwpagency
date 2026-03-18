@@ -18,6 +18,7 @@ import { Container } from '../common/Container';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { FunkyCTA } from '../patterns/FunkyCTA';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
+import { JourneyPhaseIndicator } from '../ui/JourneyPhaseIndicator';
 
 export const ContentCreationServiceTemplate = () => {
   const benefits = [
@@ -59,6 +60,8 @@ export const ContentCreationServiceTemplate = () => {
               { label: 'Content creation' },
             ]}
           />
+          
+          <JourneyPhaseIndicator currentPhase="create" currentServicePage="content-creation" />
 
           <ScrollReveal animation="fade-down">
             <h1 className="sub-service-base__hero-title">
