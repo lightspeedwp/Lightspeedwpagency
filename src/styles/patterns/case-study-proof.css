@@ -3,7 +3,7 @@
  *
  * Featured testimonial with project image, outcomes, and partner logos.
  * Funky treatment: glassmorphism card, gradient overlays, neon badges,
- * glowing outcome metrics.
+ * glowing outcome metrics, floating animation effects.
  *
  * BEM block: .case-study-proof
  */
@@ -15,8 +15,30 @@
   background: linear-gradient(
     180deg,
     color-mix(in srgb, var(--card) 25%, transparent) 0%,
-    transparent 100%
+    transparent 50%,
+    color-mix(in srgb, var(--primary) 4%, transparent) 100%
   );
+  overflow: hidden;
+}
+
+/* Decorative light beams */
+.case-study-proof::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%) rotate(15deg);
+  width: 200%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 80px,
+    color-mix(in srgb, var(--primary) 2%, transparent) 80px,
+    color-mix(in srgb, var(--primary) 2%, transparent) 81px
+  );
+  pointer-events: none;
+  opacity: 0.4;
 }
 
 /* ── Title ── */
@@ -51,11 +73,47 @@
   text-decoration: none;
   border-radius: var(--radius-xl);
   overflow: hidden;
-  transition: transform 0.3s ease;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+/* Glowing border on hover */
+.case-study-proof__project-link::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-xl);
+  padding: 2px;
+  background: linear-gradient(
+    135deg,
+    transparent,
+    var(--primary),
+    var(--accent),
+    transparent
+  );
+  background-size: 200% 200%;
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  animation: borderShine 3s ease-in-out infinite;
+}
+
+@keyframes borderShine {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
 .case-study-proof__project-link:hover {
   transform: scale(1.02);
+}
+
+.case-study-proof__project-link:hover::before {
+  opacity: 1;
 }
 
 .case-study-proof__image-wrapper {
@@ -71,11 +129,11 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.4s ease;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .case-study-proof__project-link:hover .case-study-proof__image {
-  transform: scale(1.05);
+  transform: scale(1.08);
 }
 
 .case-study-proof__image-overlay {
@@ -121,6 +179,12 @@
   box-shadow: 
     0 8px 24px color-mix(in srgb, var(--background) 10%, transparent),
     inset 0 1px 0 color-mix(in srgb, var(--foreground) 5%, transparent);
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
 }
 
 .case-study-proof__quote-icon {
@@ -140,6 +204,30 @@
   box-shadow: 
     0 6px 20px color-mix(in srgb, var(--primary) 30%, transparent),
     0 0 40px color-mix(in srgb, var(--primary) 20%, transparent);
+  position: relative;
+}
+
+/* Rotating glow */
+.case-study-proof__quote-icon::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: var(--radius-lg);
+  background: conic-gradient(
+    from 0deg,
+    transparent,
+    var(--primary),
+    transparent
+  );
+  opacity: 0.5;
+  filter: blur(16px);
+  animation: quoteSpin 4s linear infinite;
+  z-index: -1;
+}
+
+@keyframes quoteSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 .case-study-proof__quote {
@@ -191,6 +279,7 @@
   box-shadow: 
     0 8px 24px color-mix(in srgb, var(--background) 10%, transparent),
     inset 0 1px 0 color-mix(in srgb, var(--foreground) 5%, transparent);
+  animation: float 6s ease-in-out -2s infinite;
 }
 
 .case-study-proof__outcomes-title {
@@ -211,6 +300,23 @@
   display: flex;
   flex-direction: column;
   gap: var(--spacing-2);
+  padding: var(--spacing-4);
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--background) 30%, transparent),
+    color-mix(in srgb, var(--background) 20%, transparent)
+  );
+  border-radius: var(--radius);
+  border-left: 3px solid var(--primary);
+  transition: all 0.3s ease;
+}
+
+.case-study-proof__outcome:hover {
+  transform: translateX(6px);
+  border-left-color: var(--accent);
+  box-shadow: 
+    0 4px 16px color-mix(in srgb, var(--primary) 12%, transparent),
+    -3px 0 12px color-mix(in srgb, var(--primary) 20%, transparent);
 }
 
 .case-study-proof__outcome-icon {
@@ -235,6 +341,14 @@
   font-weight: var(--font-weight-bold);
   color: var(--foreground);
   margin: 0;
+  background: linear-gradient(
+    135deg,
+    var(--foreground),
+    color-mix(in srgb, var(--foreground) 70%, var(--primary))
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .case-study-proof__outcome-label {
@@ -319,6 +433,34 @@
     color-mix(in srgb, var(--card) 55%, transparent)
   );
   border-color: color-mix(in srgb, var(--border) 50%, transparent);
+}
+
+/* ── Reduced Motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .case-study-proof__testimonial,
+  .case-study-proof__outcomes {
+    animation: none;
+  }
+
+  .case-study-proof__quote-icon::before {
+    animation: none;
+  }
+
+  .case-study-proof__project-link::before {
+    animation: none;
+  }
+
+  .case-study-proof__project-link:hover {
+    transform: scale(1.01);
+  }
+
+  .case-study-proof__project-link:hover .case-study-proof__image {
+    transform: scale(1.04);
+  }
+
+  .case-study-proof__outcome:hover {
+    transform: translateX(3px);
+  }
 }
 
 /* ── Responsive ── */

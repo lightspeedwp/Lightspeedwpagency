@@ -1,0 +1,196 @@
+/**
+ * Homepage Orbs Background Styles
+ *
+ * Animated gradient orbs for funky atmosphere.
+ * Uses CSS variables for all colors and sizing.
+ *
+ * BEM block: .homepage-orbs
+ */
+
+.homepage-orbs {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Individual Orbs ── */
+.homepage-orbs__orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.15;
+  animation: float 20s ease-in-out infinite;
+  transition: transform 0.3s ease-out;
+  will-change: transform;
+}
+
+/* Orb 1: Primary color - Top left */
+.homepage-orbs__orb--1 {
+  width: 600px;
+  height: 600px;
+  top: -200px;
+  left: -200px;
+  background: radial-gradient(
+    circle,
+    var(--primary),
+    transparent 70%
+  );
+  animation-delay: 0s;
+  animation-duration: 25s;
+}
+
+/* Orb 2: Accent color - Top right */
+.homepage-orbs__orb--2 {
+  width: 500px;
+  height: 500px;
+  top: -150px;
+  right: -100px;
+  background: radial-gradient(
+    circle,
+    var(--accent),
+    transparent 70%
+  );
+  animation-delay: -5s;
+  animation-duration: 30s;
+}
+
+/* Orb 3: Secondary color - Middle */
+.homepage-orbs__orb--3 {
+  width: 700px;
+  height: 700px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    circle,
+    var(--secondary),
+    transparent 70%
+  );
+  animation-delay: -10s;
+  animation-duration: 35s;
+}
+
+/* Orb 4: Primary variant - Bottom left */
+.homepage-orbs__orb--4 {
+  width: 550px;
+  height: 550px;
+  bottom: -200px;
+  left: 10%;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--primary) 80%, var(--accent)),
+    transparent 70%
+  );
+  animation-delay: -15s;
+  animation-duration: 28s;
+}
+
+/* Orb 5: Accent variant - Bottom right */
+.homepage-orbs__orb--5 {
+  width: 480px;
+  height: 480px;
+  bottom: -150px;
+  right: 15%;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--accent) 80%, var(--primary)),
+    transparent 70%
+  );
+  animation-delay: -20s;
+  animation-duration: 32s;
+}
+
+/* ── Float Animation ── */
+@keyframes float {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(30px, -40px) scale(1.05);
+  }
+  50% {
+    transform: translate(-20px, 30px) scale(0.95);
+  }
+  75% {
+    transform: translate(25px, 20px) scale(1.02);
+  }
+}
+
+/* ── Dark Mode ── */
+.dark .homepage-orbs__orb {
+  opacity: 0.25;
+  filter: blur(140px);
+}
+
+.dark .homepage-orbs__orb--1 {
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--primary) 70%, transparent),
+    transparent 60%
+  );
+}
+
+.dark .homepage-orbs__orb--2 {
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--accent) 70%, transparent),
+    transparent 60%
+  );
+}
+
+.dark .homepage-orbs__orb--3 {
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--secondary) 70%, transparent),
+    transparent 60%
+  );
+}
+
+.dark .homepage-orbs__orb--4 {
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--primary) 60%, var(--accent) 40%),
+    transparent 60%
+  );
+}
+
+.dark .homepage-orbs__orb--5 {
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--accent) 60%, var(--primary) 40%),
+    transparent 60%
+  );
+}
+
+/* ── Reduced Motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .homepage-orbs__orb {
+    animation: none;
+  }
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .homepage-orbs__orb--1 {
+    width: 400px;
+    height: 400px;
+  }
+
+  .homepage-orbs__orb--2 {
+    width: 350px;
+    height: 350px;
+  }
+
+  .homepage-orbs__orb--3 {
+    width: 450px;
+    height: 450px;
+  }
+
+  .homepage-orbs__orb--4,
+  .homepage-orbs__orb--5 {
+    width: 350px;
+    height: 350px;
+  }
+}

@@ -13,7 +13,7 @@ import { Link } from 'react-router';
 import type { UniversalIcon } from '../../utils/icon-map';
 import { ScrollReveal } from '../../hooks/useScrollReveal';
 import { ImageWithFallback } from '../figma/ImageWithFallback';
-import { Quote, CheckCircle } from '@phosphor-icons/react';
+import { Quotes, CheckCircle } from '@phosphor-icons/react';
 
 interface Outcome {
   icon: UniversalIcon;
@@ -78,7 +78,7 @@ export function CaseStudyProof({
 
             <div className="case-study-proof__testimonial">
               <div className="case-study-proof__quote-icon">
-                <Quote size={32} weight="fill" />
+                <Quotes size={32} weight="fill" />
               </div>
               <blockquote className="case-study-proof__quote">
                 <p>{quote}</p>

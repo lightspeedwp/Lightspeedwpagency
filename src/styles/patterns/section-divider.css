@@ -1,0 +1,184 @@
+/**
+ * Section Divider Pattern Styles
+ *
+ * Decorative divider with gradient lines and glowing center orb.
+ * Creates visual rhythm between homepage sections.
+ *
+ * BEM block: .section-divider
+ */
+
+.section-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-6);
+  padding: var(--spacing-16) 0;
+  position: relative;
+}
+
+/* ── Lines ── */
+.section-divider__line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--border)
+  );
+  max-width: 200px;
+}
+
+.section-divider__line--left {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, var(--primary) 30%, var(--border))
+  );
+}
+
+.section-divider__line--right {
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--primary) 30%, var(--border)),
+    transparent
+  );
+}
+
+/* ── Center Orb ── */
+.section-divider__orb {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: linear-gradient(
+    135deg,
+    var(--primary),
+    var(--accent)
+  );
+  box-shadow: 
+    0 0 20px color-mix(in srgb, var(--primary) 40%, transparent),
+    0 0 40px color-mix(in srgb, var(--primary) 20%, transparent);
+  position: relative;
+  animation: orbPulse 3s ease-in-out infinite;
+}
+
+@keyframes orbPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 
+      0 0 20px color-mix(in srgb, var(--primary) 40%, transparent),
+      0 0 40px color-mix(in srgb, var(--primary) 20%, transparent);
+  }
+  50% {
+    transform: scale(1.2);
+    box-shadow: 
+      0 0 30px color-mix(in srgb, var(--primary) 60%, transparent),
+      0 0 60px color-mix(in srgb, var(--primary) 30%, transparent);
+  }
+}
+
+/* Orb glow ring */
+.section-divider__orb::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--primary) 20%, transparent),
+    transparent 70%
+  );
+  animation: orbExpand 3s ease-in-out infinite;
+}
+
+@keyframes orbExpand {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.3;
+  }
+}
+
+/* ── Glow Variant ── */
+.section-divider--glow .section-divider__orb {
+  background: linear-gradient(
+    135deg,
+    var(--accent),
+    color-mix(in srgb, var(--accent) 70%, var(--primary))
+  );
+  box-shadow: 
+    0 0 30px color-mix(in srgb, var(--accent) 60%, transparent),
+    0 0 60px color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
+.section-divider--glow .section-divider__line--left {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, var(--accent) 40%, var(--border))
+  );
+}
+
+.section-divider--glow .section-divider__line--right {
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--accent) 40%, var(--border)),
+    transparent
+  );
+}
+
+/* ── Minimal Variant ── */
+.section-divider--minimal {
+  padding: var(--spacing-12) 0;
+}
+
+.section-divider--minimal .section-divider__orb {
+  width: 8px;
+  height: 8px;
+  box-shadow: 
+    0 0 12px color-mix(in srgb, var(--primary) 30%, transparent);
+}
+
+.section-divider--minimal .section-divider__orb::before {
+  display: none;
+}
+
+.section-divider--minimal .section-divider__line {
+  max-width: 150px;
+}
+
+/* ── Dark Mode ── */
+.dark .section-divider__line {
+  opacity: 0.6;
+}
+
+.dark .section-divider__orb {
+  box-shadow: 
+    0 0 25px color-mix(in srgb, var(--primary) 50%, transparent),
+    0 0 50px color-mix(in srgb, var(--primary) 25%, transparent);
+}
+
+/* ── Reduced Motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .section-divider__orb,
+  .section-divider__orb::before {
+    animation: none;
+  }
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .section-divider {
+    padding: var(--spacing-12) 0;
+  }
+
+  .section-divider__line {
+    max-width: 100px;
+  }
+
+  .section-divider--minimal .section-divider__line {
+    max-width: 80px;
+  }
+}
