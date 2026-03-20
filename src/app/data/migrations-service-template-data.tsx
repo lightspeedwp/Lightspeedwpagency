@@ -16,7 +16,9 @@ import {
   Lightning,
   Timer,
   Clock,
-  ThumbsUp
+  ThumbsUp,
+  FileText,
+  HardDrives
 } from '@phosphor-icons/react';
 
 export const migrationsServiceBenefits = [
@@ -103,3 +105,24 @@ export const migrationsServiceResults = [
   { id: 'metric-3', number: '100%', label: 'Sites tested pre-launch', icon: ThumbsUp },
   { id: 'metric-4', number: '30 days', label: 'Post-migration support', icon: Clock },
 ];
+
+/** Real migration statistics from LightSpeed WP Agency */
+export const migrationsServiceStats = [
+  { value: '220k+', label: 'Posts migrated', icon: FileText },
+  { value: '250+', label: 'Sites migrated', icon: Database },
+  { value: '6+', label: 'Migration types', icon: ArrowsClockwise },
+  { value: '15+', label: 'Years of experience', icon: Clock },
+];
+
+/** Migration type details */
+export const migrationTypes = {
+  description: 'We handle migrations from custom CMS, Drupal, Joomla, TYPO3, XML, and SQL databases to WordPress with complete data integrity.',
+  types: [
+    'Custom CMS → WordPress',
+    'Drupal → WordPress',
+    'Joomla → WordPress',
+    'TYPO3 → WordPress',
+    'XML data imports',
+    'SQL database migrations'
+  ]
+};

@@ -1,14 +1,13 @@
 import { useRef, useEffect } from 'react';
+import { resolveCssColor, addAlpha } from '../../utils/css-color-resolver';
 
 interface WebGLCyberRadarProps {
   accentColor?: string;
-  gridColor?: string;
   className?: string;
 }
 
 export function WebGLCyberRadar({ 
-  accentColor = 'var(--color-terminal-green, #00ff00)',
-  gridColor = 'var(--color-slate-800, #1e293b)',
+  accentColor = 'var(--wp--preset--color--neon-cyan)',
   className = ''
 }: WebGLCyberRadarProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -21,6 +20,9 @@ export function WebGLCyberRadar({
 
     let animationFrameId: number;
     let time = 0;
+
+    // Check for prefers-reduced-motion
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     const resize = () => {
       const parent = canvas.parentElement;
@@ -37,15 +39,8 @@ export function WebGLCyberRadar({
     window.addEventListener('resize', resize);
     resize();
 
-    const getCssColor = (colorVar: string) => {
-      if (!colorVar.startsWith('var(')) return colorVar;
-      const varName = colorVar.match(/var\(([^),]+)/)?.[1];
-      if (!varName) return colorVar;
-      // Fallback
-      const fallbackMatch = colorVar.match(/,\s*([^)]+)\)/);
-      const fallback = fallbackMatch ? fallbackMatch[1].trim() : '#000';
-      return getComputedStyle(document.documentElement).getPropertyValue(varName).trim() || fallback;
-    };
+    // Resolve colors once (NEVER in animation loop)
+    const computedAccent = resolveCssColor(accentColor, '#00ffff');
 
     const blips: {x: number, y: number, life: number}[] = [];
     for(let i=0; i<8; i++) {
@@ -66,11 +61,8 @@ export function WebGLCyberRadar({
       const centerY = height / 2;
       const radius = Math.min(width, height) * 0.45;
       
-      const computedAccent = getCssColor(accentColor);
-      const computedGrid = getCssColor(gridColor);
-
       // Draw Grid
-      ctx.strokeStyle = computedGrid;
+      ctx.strokeStyle = 'var(--color-slate-800, #1e293b)';
       ctx.lineWidth = 1;
       ctx.beginPath();
       const gridSize = 20;
@@ -185,7 +177,7 @@ export function WebGLCyberRadar({
       window.removeEventListener('resize', resize);
       cancelAnimationFrame(animationFrameId);
     };
-  }, [accentColor, gridColor]);
+  }, [accentColor]);
 
   return (
     <div className={`webgl-cyber-radar-container ${className}`} style={{ width: '100%', height: '100%', minHeight: '350px', position: 'relative' }}>

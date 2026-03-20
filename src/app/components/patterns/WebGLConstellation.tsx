@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 interface ConstellationProps {
   points?: Array<{ x: number; y: number; label: string }>;
@@ -15,6 +15,13 @@ export function WebGLConstellation({ points, accentColor = 'var(--wp--preset--co
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
+    // Check for prefers-reduced-motion
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Cache CSS variable resolution (move outside render loop for performance)
+    const neonColor = getComputedStyle(document.documentElement).getPropertyValue('--wp--preset--color--neon-cyan').trim() || '#00ffff';
+    const fontFamily = getComputedStyle(document.documentElement).getPropertyValue('--font-primary').trim() || 'sans-serif';
+
     const resize = () => {
       canvas.width = canvas.parentElement?.clientWidth || 800;
       canvas.height = canvas.parentElement?.clientHeight || 400;
@@ -27,7 +34,6 @@ export function WebGLConstellation({ points, accentColor = 'var(--wp--preset--co
     let time = 0;
 
     const render = () => {
-      time += 0.01;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
       const defaultPoints = points || [
@@ -46,33 +52,40 @@ export function WebGLConstellation({ points, accentColor = 'var(--wp--preset--co
         for (let j = i + 1; j < defaultPoints.length; j++) {
           const p1 = defaultPoints[i];
           const p2 = defaultPoints[j];
-          ctx.moveTo(p1.x * canvas.width + Math.sin(time + i) * 10, p1.y * canvas.height + Math.cos(time + i) * 10);
-          ctx.lineTo(p2.x * canvas.width + Math.sin(time + j) * 10, p2.y * canvas.height + Math.cos(time + j) * 10);
+          // Use cached time (0 for static, animated otherwise)
+          const offset = prefersReducedMotion ? 0 : time;
+          ctx.moveTo(p1.x * canvas.width + Math.sin(offset + i) * 10, p1.y * canvas.height + Math.cos(offset + i) * 10);
+          ctx.lineTo(p2.x * canvas.width + Math.sin(offset + j) * 10, p2.y * canvas.height + Math.cos(offset + j) * 10);
         }
       }
       ctx.stroke();
 
       // Draw nodes
       defaultPoints.forEach((point, i) => {
-        const x = point.x * canvas.width + Math.sin(time + i) * 10;
-        const y = point.y * canvas.height + Math.cos(time + i) * 10;
+        const offset = prefersReducedMotion ? 0 : time;
+        const x = point.x * canvas.width + Math.sin(offset + i) * 10;
+        const y = point.y * canvas.height + Math.cos(offset + i) * 10;
         
         ctx.beginPath();
         ctx.arc(x, y, 6, 0, Math.PI * 2);
-        ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--wp--preset--color--neon-cyan').trim() || '#00ffff';
+        ctx.fillStyle = neonColor; // Use cached color
         ctx.fill();
         
         // Glow
         ctx.shadowBlur = 15;
-        ctx.shadowColor = getComputedStyle(document.documentElement).getPropertyValue('--wp--preset--color--neon-cyan').trim() || '#00ffff';
+        ctx.shadowColor = neonColor; // Use cached color
 
-        ctx.font = `14px ${getComputedStyle(document.documentElement).getPropertyValue('--font-primary').trim() || 'sans-serif'}`;
+        ctx.font = `14px ${fontFamily}`; // Use cached font
         ctx.fillStyle = '#ffffff';
         ctx.shadowBlur = 0;
         ctx.fillText(point.label, x + 12, y + 4);
       });
 
-      animationFrameId = requestAnimationFrame(render);
+      // Only continue animation if motion is not reduced
+      if (!prefersReducedMotion) {
+        time += 0.01;
+        animationFrameId = requestAnimationFrame(render);
+      }
     };
 
     render();

@@ -125,7 +125,7 @@ export function DesignPlaygroundTemplate() {
 
         {/* Colors Panel */}
         <div className={`playground__panel${activeTab === 'colors' ? ' playground__panel--active' : ''}`} role="tabpanel" aria-label="Colors">
-          <h2 className="playground__section-title">Color Experimenter</h2>
+          <h2 className="playground__section-title">Color experimenter</h2>
           <p className="playground__section-description">
             Click any swatch to pick a new colour. The override is injected as a CSS variable
             and updates every element that references it.
@@ -152,9 +152,9 @@ export function DesignPlaygroundTemplate() {
             })}
           </div>
           <div className="playground__preview">
-            <h3 className="playground__preview-title">Live Preview</h3>
+            <h3 className="playground__preview-title">Live preview</h3>
             <div className="playground__preview-card">
-              <h4 className="playground__preview-card-title">Sample Card Component</h4>
+              <h4 className="playground__preview-card-title">Sample card component</h4>
               <p className="playground__preview-card-text">
                 This card updates in real time as you change colour tokens above.
                 All borders, backgrounds, and text respond to your overrides.
@@ -173,10 +173,9 @@ export function DesignPlaygroundTemplate() {
 
         {/* Typography Panel */}
         <div className={`playground__panel${activeTab === 'typography' ? ' playground__panel--active' : ''}`} role="tabpanel" aria-label="Typography">
-          <h2 className="playground__section-title">Typography Experimenter</h2>
+          <h2 className="playground__section-title">Typography experimenter</h2>
           <p className="playground__section-description">
             Preview different font families, weights, and the full type scale.
-            The heading specimens use the fluid clamp() values from the design system.
           </p>
           <div className="playground__type-controls">
             <div className="playground__type-control">

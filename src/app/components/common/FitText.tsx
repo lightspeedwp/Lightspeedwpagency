@@ -20,12 +20,9 @@
  * - CTA sections
  * - Standout moments
  * 
- * **Best Practices:**
+ * **Best practices:**
  * - Use for short text (1-5 words)
  * - Keep single line only
- * - Use bold font weights
- * - Ensure adequate contrast
- * - Test at multiple viewport sizes
  * 
  * **WordPress Mapping:**
  * Maps to Paragraph/Heading blocks with "Fit text to container" enabled

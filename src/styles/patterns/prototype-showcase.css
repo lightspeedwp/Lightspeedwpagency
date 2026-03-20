@@ -1,0 +1,389 @@
+/**
+ * Prototype Showcase Pattern
+ * 
+ * BEM pattern for displaying collections of Figma Make prototypes.
+ * Supports grid, carousel, and featured layout variants.
+ * 
+ * Block: .prototype-showcase
+ * Variants: --grid, --carousel, --featured
+ */
+
+/* ============================================
+   BLOCK: Prototype Showcase
+   ============================================ */
+
+.prototype-showcase {
+  /* Layout */
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-12);
+  
+  /* Spacing */
+  padding: var(--spacing-16) 0;
+  
+  /* Container */
+  width: 100%;
+  max-width: var(--container-max-width, 1440px);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-padding, var(--spacing-6));
+  padding-right: var(--container-padding, var(--spacing-6));
+}
+
+
+/* ============================================
+   ELEMENT: Header
+   ============================================ */
+
+.prototype-showcase__header {
+  /* Layout */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-6);
+  text-align: center;
+  
+  /* Spacing */
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.prototype-showcase__header-icon {
+  /* Layout */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Sizing */
+  width: 64px;
+  height: 64px;
+  
+  /* Visual */
+  color: var(--primary-500);
+  background: var(--surface-primary-subtle);
+  border: var(--border-width-default) solid var(--border-primary);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--glow-sm);
+}
+
+.prototype-showcase__header-content {
+  /* Layout */
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.prototype-showcase__title {
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+  color: var(--text-primary);
+  
+  /* Reset margins */
+  margin: 0;
+}
+
+.prototype-showcase__description {
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-comfortable);
+  color: var(--text-secondary);
+  
+  /* Reset margins */
+  margin: 0;
+  
+  /* Max width for readability */
+  max-width: 600px;
+}
+
+.prototype-showcase__view-all {
+  /* Layout */
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  
+  /* Spacing */
+  padding: var(--spacing-3) var(--spacing-6);
+  margin-top: var(--spacing-2);
+  
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-normal);
+  text-decoration: none;
+  color: var(--primary-500);
+  
+  /* Visual */
+  background: var(--surface-primary-subtle);
+  border: var(--border-width-default) solid var(--border-primary);
+  border-radius: var(--radius-md);
+  
+  /* Transition */
+  transition: all var(--transition-fast);
+}
+
+.prototype-showcase__view-all:hover {
+  background: var(--primary-500);
+  color: var(--text-inverse);
+  border-color: var(--primary-500);
+  box-shadow: var(--glow-sm);
+  transform: translateY(-1px);
+}
+
+.prototype-showcase__view-all:focus-visible {
+  outline: var(--border-width-focus) solid var(--border-focus);
+  outline-offset: 2px;
+}
+
+
+/* ============================================
+   ELEMENT: Grid
+   ============================================ */
+
+.prototype-showcase__grid {
+  /* Layout */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: var(--spacing-8);
+}
+
+
+/* ============================================
+   ELEMENT: Empty State
+   ============================================ */
+
+.prototype-showcase__empty {
+  /* Layout */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Spacing */
+  padding: var(--spacing-16) var(--spacing-6);
+  
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-regular);
+  color: var(--text-tertiary);
+  text-align: center;
+  
+  /* Visual */
+  background: var(--surface-subtle);
+  border: var(--border-width-default) dashed var(--border-subtle);
+  border-radius: var(--radius-lg);
+}
+
+
+/* ============================================
+   ELEMENT: Summary Stats
+   ============================================ */
+
+.prototype-showcase__summary {
+  /* Layout */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-6);
+  
+  /* Spacing */
+  padding: var(--spacing-10);
+  margin-top: var(--spacing-8);
+  
+  /* Visual */
+  background: var(--surface-elevated);
+  border: var(--border-width-default) solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.prototype-showcase__stat {
+  /* Layout */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-2);
+  text-align: center;
+}
+
+.prototype-showcase__stat-value {
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-4xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--primary-500);
+}
+
+.prototype-showcase__stat-label {
+  /* Typography */
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-normal);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+
+/* ============================================
+   MODIFIER: Featured
+   ============================================ */
+
+.prototype-showcase--featured .prototype-showcase__grid {
+  /* Featured layout: first item full width, then 2 columns */
+  grid-template-columns: 1fr;
+}
+
+.prototype-showcase--featured .prototype-showcase__grid > :first-child {
+  /* Featured card spans full width */
+  grid-column: 1 / -1;
+}
+
+.prototype-showcase--featured .prototype-showcase__grid > :not(:first-child) {
+  /* Remaining cards in 2-column grid */
+  grid-column: auto;
+}
+
+@media (min-width: 769px) {
+  .prototype-showcase--featured .prototype-showcase__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+/* ============================================
+   MODIFIER: Carousel (future enhancement)
+   ============================================ */
+
+.prototype-showcase--carousel .prototype-showcase__grid {
+  /* Horizontal scroll on mobile */
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding: var(--spacing-6);
+  gap: var(--spacing-6);
+  padding-bottom: var(--spacing-4);
+  
+  /* Hide scrollbar but keep functionality */
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-default) transparent;
+}
+
+.prototype-showcase--carousel .prototype-showcase__grid::-webkit-scrollbar {
+  height: 8px;
+}
+
+.prototype-showcase--carousel .prototype-showcase__grid::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.prototype-showcase--carousel .prototype-showcase__grid::-webkit-scrollbar-thumb {
+  background: var(--border-default);
+  border-radius: var(--radius-full);
+}
+
+.prototype-showcase--carousel .prototype-showcase__grid > * {
+  /* Card sizing in carousel */
+  flex: 0 0 min(400px, 85vw);
+  scroll-snap-align: start;
+}
+
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+  .prototype-showcase {
+    gap: var(--spacing-10);
+    padding: var(--spacing-12) 0;
+  }
+  
+  .prototype-showcase__header {
+    gap: var(--spacing-5);
+  }
+  
+  .prototype-showcase__header-icon {
+    width: 56px;
+    height: 56px;
+  }
+  
+  .prototype-showcase__title {
+    font-size: var(--text-h3);
+  }
+  
+  .prototype-showcase__description {
+    font-size: var(--text-base);
+  }
+  
+  .prototype-showcase__grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-6);
+  }
+  
+  .prototype-showcase__summary {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-5);
+    padding: var(--spacing-8);
+  }
+  
+  .prototype-showcase__stat-value {
+    font-size: var(--text-3xl);
+  }
+}
+
+@media (max-width: 480px) {
+  .prototype-showcase {
+    gap: var(--spacing-8);
+    padding: var(--spacing-10) 0;
+  }
+  
+  .prototype-showcase__header-icon {
+    width: 48px;
+    height: 48px;
+  }
+  
+  .prototype-showcase__summary {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-4);
+    padding: var(--spacing-6);
+  }
+}
+
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .prototype-showcase__view-all {
+    transition: none;
+  }
+  
+  .prototype-showcase__view-all:hover {
+    transform: none;
+  }
+  
+  .prototype-showcase--carousel .prototype-showcase__grid {
+    scroll-behavior: auto;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .prototype-showcase__header-icon {
+    border-width: var(--border-width-thick);
+  }
+  
+  .prototype-showcase__view-all {
+    border-width: var(--border-width-thick);
+  }
+}

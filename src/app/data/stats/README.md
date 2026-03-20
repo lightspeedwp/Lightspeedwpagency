@@ -1,656 +1,371 @@
-# Stats Registry — Documentation
+# Stats & Metrics System
 
-**Version:** 1.0.0  
-**Last Updated:** 2026-03-17  
-**Status:** Production Ready
+Comprehensive statistics and metrics system for LightSpeed WP Agency site.
 
----
+## 📊 Overview
 
-## Overview
+The stats system provides real-world data across multiple categories:
 
-The Stats Registry is a centralized, type-safe system for managing all site statistics with support for:
+1. **Service-Specific Stats** - Individual service page metrics
+2. **Advanced Metrics** - Performance, scale, SEO, longevity, and efficiency
+3. **Aggregated Metrics** - Company-wide overview stats
 
-- ✅ Icon string mapping to Phosphor components
-- ✅ Version history tracking
-- ✅ Tooltip/below-stat footnotes
-- ✅ Fixed tag taxonomy
-- ✅ Collection-level color fallbacks
-- ✅ Trend sentiment (positive/negative/neutral)
-- ✅ Multiple collections per category
-- ✅ Memoized helper functions for performance
-
----
-
-## Quick Start
-
-### Import the Registry
-
-```typescript
-import { statsRegistry } from '@/data/stats';
-
-// Get stat by ID
-const stat = statsRegistry.getStatById('posts-migrated');
-
-// Get all migration stats
-const migrationStats = statsRegistry.getStatsByCategory('migration');
-
-// Get stats by tag
-const scaleStats = statsRegistry.getStatsByTag('scale');
-
-// Get collection
-const collection = statsRegistry.getCollection('migration-stats');
-```
-
-### Use with NeonStats Component
-
-```typescript
-import { statsRegistry, mapToNeonStats } from '@/data/stats';
-import { NeonStats } from '@/components/common/NeonStats';
-
-function MigrationSection() {
-  const collection = statsRegistry.getCollection('migration-stats');
-  const stats = mapToNeonStats(collection.stats);
-
-  return (
-    <NeonStats
-      stats={stats}
-      title="Migration at scale"
-      subtitle="Real numbers from 15+ years of enterprise WordPress migrations."
-      columns={4}
-      accentColor={collection.defaultDarkColor}
-      variant="glass"
-    />
-  );
-}
-```
-
-### Use with StatsGrid Component
-
-```typescript
-import { statsRegistry, mapToStatsGridStats } from '@/data/stats';
-import { StatsGrid } from '@/components/patterns/StatsGrid';
-
-function SupportSection() {
-  const supportStats = statsRegistry.getStatsByCategory('support');
-  const stats = mapToStatsGridStats(supportStats);
-
-  return <StatsGrid stats={stats} columns={4} />;
-}
-```
-
----
-
-## File Structure
+## 🗂️ File Structure
 
 ```
 /src/app/data/stats/
-├── index.ts                    # Main export (use this for imports)
-├── types.ts                    # TypeScript type definitions
-├── icon-resolver.ts            # Icon string → Phosphor component mapping
-├── stat-mappers.ts             # Helper utilities for component mapping
-├── stats-registry.ts           # Central registry with memoization
-├── migration-stats.ts          # Migration statistics collection
-├── support-stats.ts            # Support & maintenance statistics
-├── hosting-stats.ts            # Hosting & infrastructure statistics
-├── design-stats.ts             # Design systems statistics
-├── development-stats.ts        # Development statistics
-├── projects-stats.ts           # Projects & builds statistics
-├── business-stats.ts           # Business & SLA statistics
-└── README.md                   # This file
+├── advanced-metrics.ts          # Advanced category metrics
+├── index.ts                     # Centralized exports
+└── README.md                    # This file
+
+/src/app/data/
+├── hosting-service-stats.ts     # Hosting & deployments stats
+├── projects-service-stats.ts    # Projects & builds stats
+├── sla-retainer-stats.ts        # SLA response times & retainer stats
+├── migrations-service-template-data.tsx  # Migrations stats
+├── support-service-template-data.tsx     # Support stats
+├── design-service-page.ts       # Design stats
+├── development-service-page.ts  # Development stats
+└── [service]-template-data.tsx  # Other service stats
+
+/src/app/components/patterns/
+├── AggregatedMetricsBanner.tsx  # Company-wide metrics banner
+├── AdvancedMetricsShowcase.tsx  # Advanced metrics displays
+└── StatsGrid.tsx                # Base stats grid component
 ```
 
----
+## 📈 Available Metrics
 
-## Type Definitions
+### Service-Specific Stats
 
-### StatCategory
+#### SEO Service
+- `seoServiceResults` - 156% organic traffic, 12x rankings, 92% CTR, 3-6 mo
 
+#### Analytics Service
+- `analyticsServiceResults` - 250% insights, 58% tracking, 15x reporting, 42% silos
+
+#### AI Engine Service
+- `aiEngineServiceResults` - 285% citations, 4x referrals, 94% accuracy, 6-9 mo
+
+#### Answer Engine Service
+- `answerEngineServiceResults` - 420% snippets, 4.2x voice search, 91% accuracy, 2-4 mo
+
+#### Development Service
+- `developmentServiceOverview.stats` - 5 gateways, 50+ APIs, 150+ plugins, 300+ themes
+
+#### Design Service
+- `designServiceOverview.stats` - 10+ systems, 112 components, 230 tokens, 25 prototypes
+
+#### Performance Service
+- `performanceServiceStats` - <1s LCP, 98 Lighthouse, 68% reduction, 72% good CWV
+
+#### Migrations Service
+- `migrationsServiceStats` - 220k+ posts, 250+ sites, 6+ types, 15+ years
+
+#### Support Service
+- `supportServiceStats` - 10,575+ tickets, 13/day, 68/week, 290/month
+
+#### Hosting Service
+- `hostingServiceStats` - 250+ sites, 10k peak sessions, <12 deployments, 4k+ hours
+
+#### Projects Service
+- `projectsServiceStats` - 1,500+ projects, 300+ websites, 12 active builds
+
+#### SLA & Retainers
+- `slaResponseTimes` - 24h urgent, 48h important, 72h normal, 1 week minor
+- `retainerClientStats` - 20 clients, ~100 sites
+
+### Advanced Metrics
+
+#### Performance Delta
 ```typescript
-type StatCategory =
-  | 'migration'
-  | 'support'
-  | 'hosting'
-  | 'design'
-  | 'development'
-  | 'seo'
-  | 'ai'
-  | 'performance'
-  | 'projects'
-  | 'business'
-  | 'general';
+import { performanceDeltaMetrics } from '@/app/data/stats/advanced-metrics';
 ```
+- 68% average LCP reduction
+- 72% Core Web Vitals improvement
+- 3.2s load time reduction
+- 85% speed score improvement
 
-### StatTag (Fixed Taxonomy)
-
+#### Enterprise Scale
 ```typescript
-type StatTag =
-  // General
-  | 'scale' | 'quality' | 'speed' | 'expertise' | 'service' | 'enterprise'
-  // Category-specific
-  | 'migration' | 'content' | 'data-integrity'
-  | 'support' | 'sla' | 'tickets'
-  | 'hosting' | 'infrastructure' | 'deployment' | 'uptime'
-  | 'design' | 'systems' | 'components' | 'tokens' | 'prototyping'
-  | 'development' | 'plugins' | 'themes' | 'integrations' | 'payments'
-  | 'seo' | 'traffic' | 'rankings' | 'visibility'
-  | 'ai' | 'automation' | 'chatbots' | 'analytics'
-  | 'performance' | 'core-web-vitals' | 'optimization'
-  | 'clients' | 'management' | 'retainers'
-  | 'projects' | 'websites' | 'active';
+import { enterpriseScaleMetrics } from '@/app/data/stats/advanced-metrics';
 ```
+- 220k+ largest single migration
+- 15TB+ database cleanup
+- 10k peak concurrent sessions
+- 100k anticipated peak capacity
 
-### ThemedStat
-
+#### SEO Continuity
 ```typescript
-interface ThemedStat {
-  id: string;
-  value: string;
-  label: string;
-  description?: string;
-  icon?: string; // Icon name (e.g., 'Rocket')
-  trend?: Trend;
-  footnote?: StatFootnote;
-  lastUpdated?: string; // ISO 8601
-  versionHistory?: StatVersion[];
-  category: StatCategory;
-  lightColor?: string;
-  darkColor?: string;
-  requiresDarkBg?: boolean;
-  tags?: StatTag[];
-}
+import { seoContinuityMetrics } from '@/app/data/stats/advanced-metrics';
 ```
+- 15k+ 301 redirects managed
+- 94% SEO parity within 30 days
+- 98% content preservation rate
+- 0% metadata loss
 
-### StatCollection
-
+#### Longevity & Trust
 ```typescript
-interface StatCollection {
-  id: string;
-  title: string;
-  category: StatCategory;
-  stats: ThemedStat[];
-  defaultLightColor?: string;
-  defaultDarkColor?: string;
-  useNeonComponent?: boolean;
-  description?: string;
-  icon?: string;
-}
+import { longevityTrustMetrics } from '@/app/data/stats/advanced-metrics';
 ```
+- 17+ years in business
+- 5 WordPress eras
+- 85% client retention (10+ years)
+- 100% uptime commitment
 
----
-
-## Registry API
-
-### Core Methods
-
-#### `getStatById(id: string): ThemedStat | undefined`
-
-Get a single stat by its unique ID. **Memoized.**
-
+#### Editor Efficiency
 ```typescript
-const stat = statsRegistry.getStatById('posts-migrated');
-console.log(stat.value); // '220k+'
+import { editorEfficiencyMetrics } from '@/app/data/stats/advanced-metrics';
 ```
+- 65% publishing time reduction
+- 80% fewer support tickets
+- 3x content production increase
+- 90% editor satisfaction
 
-#### `getStatsByCategory(category: StatCategory): ThemedStat[]`
-
-Get all stats in a category. **Memoized.**
-
+#### Aggregated Company Metrics
 ```typescript
-const migrationStats = statsRegistry.getStatsByCategory('migration');
-console.log(migrationStats.length); // 5
+import { aggregatedCompanyMetrics } from '@/app/data/stats/advanced-metrics';
+```
+- 17+ years in business
+- 1,500+ projects completed
+- 220k+ posts migrated
+- 300+ websites built
+- 10+ design systems
+- 250+ sites hosted
+- 20 retainer clients
+- 10,575+ tickets resolved
+
+## 🎨 Components
+
+### 1. StatsGrid (Base Component)
+
+The foundation for all stats displays.
+
+```tsx
+import { StatsGrid } from '@/app/components/patterns/StatsGrid';
+
+<StatsGrid
+  stats={[
+    { number: '150+', label: 'Projects delivered', icon: Briefcase },
+    { number: '98%', label: 'Client satisfaction', icon: Star }
+  ]}
+  columns={3}
+  variant="cards"
+/>
 ```
 
-#### `getStatsByTag(tag: StatTag): ThemedStat[]`
+**Props:**
+- `stats` - Array of stat objects with `number`, `label`, optional `description` and `icon`
+- `columns` - 2, 3, or 4 (default: 3)
+- `variant` - 'default', 'inline', 'compact', or 'cards' (default: 'default')
 
-Get all stats with a specific tag. **Memoized.**
+### 2. AggregatedMetricsBanner
 
-```typescript
-const scaleStats = statsRegistry.getStatsByTag('scale');
+Company-wide metrics banner for homepage/about page.
+
+```tsx
+import { AggregatedMetricsBanner } from '@/app/components/patterns/AggregatedMetricsBanner';
+
+<AggregatedMetricsBanner
+  heading="By the numbers"
+  description="Real results from 17+ years of WordPress engineering excellence"
+  columns={4}
+  variant="cards"
+/>
 ```
 
-#### `getStatsByTags(tags: StatTag[]): ThemedStat[]`
+**Props:**
+- `heading` - Banner heading (default: "By the numbers")
+- `description` - Optional description text
+- `columns` - 2, 3, or 4 (default: 4)
+- `variant` - 'default', 'cards', or 'inline' (default: 'cards')
+- `stats` - Optional custom stats (defaults to aggregatedCompanyMetrics)
 
-Get all stats matching ANY of the provided tags (OR operation). Deduplicated.
+### 3. Advanced Metrics Showcase Components
 
-```typescript
-const stats = statsRegistry.getStatsByTags(['migration', 'scale', 'quality']);
+Specialized displays for different metric categories.
+
+```tsx
+import {
+  PerformanceDeltaMetrics,
+  EnterpriseScaleMetrics,
+  SEOContinuityMetrics,
+  LongevityTrustMetrics,
+  EditorEfficiencyMetrics
+} from '@/app/components/patterns/AdvancedMetricsShowcase';
+
+// Performance improvements
+<PerformanceDeltaMetrics
+  heading="Performance improvements"
+  description="Average speed improvements across client sites"
+  columns={4}
+  variant="cards"
+/>
+
+// Enterprise scale
+<EnterpriseScaleMetrics
+  heading="Enterprise scale"
+  description="Large-scale migration capabilities"
+  columns={4}
+  variant="cards"
+/>
+
+// SEO continuity
+<SEOContinuityMetrics
+  heading="SEO continuity"
+  description="Preserving rankings during migrations"
+  columns={4}
+  variant="cards"
+/>
+
+// Longevity & trust
+<LongevityTrustMetrics
+  heading="Longevity & trust"
+  description="17+ years of WordPress expertise"
+  columns={4}
+  variant="cards"
+/>
+
+// Editor efficiency
+<EditorEfficiencyMetrics
+  heading="Editor efficiency"
+  description="Workflow improvements with block themes"
+  columns={4}
+  variant="cards"
+/>
 ```
 
-#### `getCollection(collectionId: string): StatCollection | undefined`
+## 📍 Where to Use
 
-Get a collection by its ID. **Memoized.**
+### Homepage
+- `<AggregatedMetricsBanner />` in hero or overview section
+- `<LongevityTrustMetrics />` near testimonials or social proof
 
-```typescript
-const collection = statsRegistry.getCollection('migration-stats');
-console.log(collection.title); // 'Migration statistics'
-```
+### About Page
+- `<AggregatedMetricsBanner />` in company overview
+- `<LongevityTrustMetrics />` in history/timeline section
 
-#### `getCollectionsByCategory(category: StatCategory): StatCollection[]`
+### Performance Service Page
+- `<PerformanceDeltaMetrics />` after service overview
+- Existing `performanceServiceStats` in hero section
 
-Get all collections in a category. **Memoized.**
+### Migrations Service Page
+- `<EnterpriseScaleMetrics />` showcasing large migrations
+- `<SEOContinuityMetrics />` highlighting SEO preservation
+- Existing `migrationsServiceStats` in overview
 
-```typescript
-const migrationCollections = statsRegistry.getCollectionsByCategory('migration');
-```
+### Development Service Page
+- `<EditorEfficiencyMetrics />` showing workflow improvements
+- Existing `developmentServiceOverview.stats` in hero
 
-#### `clearCache(): void`
+### Hosting Service Page
+- `<EnterpriseScaleMetrics />` demonstrating scale capabilities
+- `hostingServiceStats` from data file
 
-Clear all memoization caches. Call if stats are updated dynamically.
+### Support Service Page
+- `supportServiceStats` in overview
+- `slaResponseTimes` in SLA section
 
-```typescript
-statsRegistry.clearCache();
-```
+## 🎯 Design System Compliance
 
----
+All stats components follow LightSpeed design system guidelines:
 
-## Icon Resolver
+✅ **100% CSS Variables** - All colors, spacing, typography from `global.css`  
+✅ **Phosphor Icons** - Duotone weight for all stat icons  
+✅ **BEM Methodology** - Proper CSS class naming  
+✅ **Sentence Case** - All labels use sentence case  
+✅ **WCAG 2.2 AA** - Accessible color contrast and semantic HTML  
+✅ **Responsive** - Mobile-first grid layouts  
+✅ **Motion Safety** - Respects `prefers-reduced-motion`
 
-### `resolveStatIcon(iconName?: string): Icon | undefined`
+## 📝 Data Format
 
-Map icon name string to Phosphor Icon component.
+Stats use two slightly different formats:
 
-```typescript
-import { resolveStatIcon } from '@/data/stats';
-
-const RocketIcon = resolveStatIcon('Rocket');
-if (RocketIcon) {
-  return <RocketIcon size={24} weight="duotone" />;
-}
-```
-
-### Supported Icons
-
-Over 70 Phosphor icons are registered. See `/src/app/data/stats/icon-resolver.ts` for the full list.
-
-Common icons:
-- **General:** Rocket, Lightning, Clock, Users, CheckCircle, Star
-- **Data:** Database, Server, Globe, CloudArrowUp
-- **Design:** Palette, PaintBrush, Code, Cube, Swatches
-- **Analytics:** ChartLine, ChartBar, ChartPie, TrendUp
-- **Files:** FolderOpen, File, FilePdf, DownloadSimple
-
-### Validation
-
-```typescript
-import { isValidIcon, getAvailableIcons } from '@/data/stats';
-
-// Check if icon exists
-if (isValidIcon('Rocket')) {
-  console.log('Valid icon!');
-}
-
-// Get all available icons
-const allIcons = getAvailableIcons();
-console.log(allIcons); // ['Rocket', 'Lightning', 'Clock', ...]
-```
-
----
-
-## Stat Mappers
-
-### `mapToNeonStats(stats: ThemedStat[]): NeonStat[]`
-
-Convert ThemedStat array to NeonStats component format.
-
-```typescript
-import { statsRegistry, mapToNeonStats } from '@/data/stats';
-
-const migrationStats = statsRegistry.getStatsByCategory('migration');
-const neonStats = mapToNeonStats(migrationStats);
-
-<NeonStats stats={neonStats} columns={4} />
-```
-
-### `mapToStatsGridStats(stats: ThemedStat[])`
-
-Convert ThemedStat array to StatsGrid component format.
-
-```typescript
-import { statsRegistry, mapToStatsGridStats } from '@/data/stats';
-
-const supportStats = statsRegistry.getStatsByCategory('support');
-const gridStats = mapToStatsGridStats(supportStats);
-
-<StatsGrid stats={gridStats} columns={4} />
-```
-
-### `getCollectionAccentColor(collection: StatCollection, isDarkMode: boolean): string`
-
-Get appropriate accent color for current theme.
-
-```typescript
-import { statsRegistry, getCollectionAccentColor } from '@/data/stats';
-
-const collection = statsRegistry.getCollection('migration-stats');
-const isDark = document.documentElement.classList.contains('dark');
-const accentColor = getCollectionAccentColor(collection, isDark);
-
-<NeonStats accentColor={accentColor} />
-```
-
-### `shouldUseNeonStats(collection: StatCollection, isDarkMode: boolean): boolean`
-
-Determine whether to use NeonStats or StatsGrid.
-
-```typescript
-import { statsRegistry, shouldUseNeonStats } from '@/data/stats';
-
-const collection = statsRegistry.getCollection('migration-stats');
-const isDark = true;
-
-if (shouldUseNeonStats(collection, isDark)) {
-  // Render NeonStats
-} else {
-  // Render StatsGrid
-}
-```
-
-### `filterStats(stats: ThemedStat[], options): ThemedStat[]`
-
-Filter stats by multiple criteria.
-
-```typescript
-import { statsRegistry, filterStats } from '@/data/stats';
-
-const allStats = statsRegistry.allStats;
-const filtered = filterStats(allStats, {
-  categories: ['migration', 'hosting'],
-  tags: ['scale'],
-  requiresDarkBg: true,
-  hasVersionHistory: true,
-});
-```
-
-### `sortStats(stats: ThemedStat[], sortBy): ThemedStat[]`
-
-Sort stats by various criteria.
-
-```typescript
-import { statsRegistry, sortStats } from '@/data/stats';
-
-const migrationStats = statsRegistry.getStatsByCategory('migration');
-
-// Sort options: 'label-asc' | 'label-desc' | 'updated-newest' | 'updated-oldest' | 'id-asc' | 'id-desc'
-const sorted = sortStats(migrationStats, 'updated-newest');
-```
-
----
-
-## Collections
-
-### Available Collections (7)
-
-| Collection ID | Category | Stats Count | Neon Component |
-|---|---|---|---|
-| `migration-stats` | migration | 5 | ✅ Yes |
-| `support-stats` | support | 6 | ✅ Yes |
-| `hosting-stats` | hosting | 6 | ✅ Yes |
-| `design-stats` | design | 7 | ✅ Yes |
-| `development-stats` | development | 8 | ✅ Yes |
-| `projects-stats` | projects | 5 | ✅ Yes |
-| `business-stats` | business | 8 | ❌ No (traditional grid) |
-
-**Total Stats:** 45
-
----
-
-## Features Explained
-
-### 1. Version History Tracking
-
-Each stat can track value changes over time:
-
-```typescript
-versionHistory: [
-  {
-    date: '2026-03-17',
-    value: '220k+',
-    note: 'Updated with Alpha Media Holdings migration',
-  },
-  {
-    date: '2025-11-10',
-    value: '120k+',
-    note: 'Novus Media migration completed',
-  },
-]
-```
-
-### 2. Footnotes (Tooltip or Below)
-
-Stats can have explanatory footnotes displayed as tooltips or below the stat:
-
-```typescript
-footnote: {
-  text: 'Within Zendesk\'s 37-month retention limit.',
-  displayMode: 'tooltip', // or 'below'
-}
-```
-
-### 3. Trend Sentiment
-
-Separates visual direction from semantic meaning (down can be good for costs):
-
-```typescript
-trend: {
-  value: '-30% faster',
-  direction: 'down', // Visual indicator
-  sentiment: 'positive', // Semantic meaning (down is good here)
-}
-```
-
-### 4. Color Fallbacks
-
-Stats inherit collection colors if not specified:
-
-```typescript
-// Stat-level colors override collection defaults
-darkColor: 'var(--wp--preset--color--neon-pink)'
-
-// Falls back to collection.defaultDarkColor if not set
-```
-
-### 5. Memoization
-
-All lookup functions are memoized for performance:
-
-```typescript
-// First call: calculates and caches
-const stats1 = statsRegistry.getStatsByCategory('migration');
-
-// Second call: returns cached result (instant)
-const stats2 = statsRegistry.getStatsByCategory('migration');
-
-// Clear cache if data changes
-statsRegistry.clearCache();
-```
-
----
-
-## Adding New Stats
-
-### Step 1: Choose a Collection
-
-Determine which category your stat belongs to. If the category doesn't have a collection yet, create one.
-
-### Step 2: Add to Collection File
-
-Edit the appropriate collection file (e.g., `/src/app/data/stats/migration-stats.ts`):
-
+### Format 1: Service Stats (value/label)
 ```typescript
 {
-  id: 'new-stat-id',
-  value: '100+',
-  label: 'New statistic',
-  description: 'Description of the stat.',
-  icon: 'Rocket',
-  category: 'migration',
-  darkColor: 'var(--wp--preset--color--neon-cyan)',
-  requiresDarkBg: true,
-  tags: ['migration', 'scale'],
-  lastUpdated: '2026-03-17',
-  versionHistory: [
-    {
-      date: '2026-03-17',
-      value: '100+',
-      note: 'Initial value',
-    },
-  ],
-  footnote: {
-    text: 'Optional explanatory footnote.',
-    displayMode: 'tooltip',
-  },
-  trend: {
-    value: '+20 this year',
-    direction: 'up',
-    sentiment: 'positive',
-  },
+  value: '220k+',
+  label: 'Posts migrated',
+  icon: FileText,
+  description: 'Content successfully migrated'
 }
 ```
 
-### Step 3: Use the Stat
-
+### Format 2: StatsGrid (number/label)
 ```typescript
-import { statsRegistry } from '@/data/stats';
-
-const newStat = statsRegistry.getStatById('new-stat-id');
-```
-
----
-
-## Best Practices
-
-### ✅ Do
-
-- Use fixed tag taxonomy (prevents typos and ensures consistency)
-- Add version history for time-sensitive metrics
-- Include footnotes for context that needs explanation
-- Use appropriate trend sentiment (down can be positive for costs/errors)
-- Leverage memoization for repeated lookups
-- Use icon names from the registered list
-
-### ❌ Don't
-
-- Don't create ad-hoc tags (use fixed taxonomy)
-- Don't hardcode stat data in components (use registry)
-- Don't bypass the registry (always import from `/data/stats`)
-- Don't use unregistered icon names (check with `isValidIcon()`)
-- Don't forget to set `requiresDarkBg: true` for neon colors
-
----
-
-## Performance
-
-### Memoization Impact
-
-All registry lookup functions are memoized:
-
-- **First call:** ~2-5ms (calculation + cache write)
-- **Subsequent calls:** <0.1ms (cache read)
-- **Memory overhead:** Minimal (~50KB for full registry)
-
-### Bundle Size
-
-- **Types only:** 0KB (TypeScript types don't add to bundle)
-- **Registry + Collections:** ~15KB (minified + gzipped)
-- **Icon resolver:** ~8KB (includes 70+ icon mappings)
-- **Mappers + utilities:** ~5KB
-
-**Total:** ~28KB (minified + gzipped)
-
----
-
-## Troubleshooting
-
-### Icon not rendering
-
-```typescript
-import { isValidIcon, getAvailableIcons } from '@/data/stats';
-
-// Check if icon exists
-if (!isValidIcon('MyIcon')) {
-  console.error('Icon not found. Available icons:', getAvailableIcons());
+{
+  number: '220k+',
+  label: 'Posts migrated',
+  icon: FileText,
+  description: 'Content successfully migrated'
 }
 ```
 
-### Stat not found
+Components automatically transform between formats as needed.
 
-```typescript
-const stat = statsRegistry.getStatById('my-stat-id');
-if (!stat) {
-  console.error('Stat not found. Check ID spelling and ensure stat exists in collection.');
-}
+## 🔄 Updating Stats
+
+To update statistics:
+
+1. Edit the relevant data file in `/src/app/data/`
+2. For advanced metrics, edit `/src/app/data/stats/advanced-metrics.ts`
+3. Stats are centralized - changes propagate to all pages automatically
+4. Use consistent formatting (K for thousands, M for millions, + for approximate)
+5. Keep labels in sentence case
+6. Always include appropriate Phosphor icon
+
+## 🚀 Examples
+
+### Simple Service Page Stats
+```tsx
+import { migrationsServiceStats } from '@/app/data/migrations-service-template-data';
+import { StatsGrid } from '@/app/components/patterns/StatsGrid';
+
+const transformedStats = migrationsServiceStats.map(stat => ({
+  number: stat.value,
+  label: stat.label,
+  description: stat.description,
+  icon: stat.icon
+}));
+
+<StatsGrid stats={transformedStats} columns={4} variant="cards" />
 ```
 
-### Cache not updating
+### Homepage Hero with Aggregated Metrics
+```tsx
+import { AggregatedMetricsBanner } from '@/app/components/patterns/AggregatedMetricsBanner';
 
-```typescript
-// Clear cache after updating stats dynamically
-statsRegistry.clearCache();
+<AggregatedMetricsBanner
+  heading="Trusted by industry leaders"
+  description="Real results from real projects"
+  columns={4}
+  variant="cards"
+/>
 ```
+
+### Performance Page with Delta Metrics
+```tsx
+import { PerformanceDeltaMetrics } from '@/app/components/patterns/AdvancedMetricsShowcase';
+
+<PerformanceDeltaMetrics
+  heading="Proven performance improvements"
+  description="Real speed gains from actual client projects"
+  columns={4}
+  variant="cards"
+/>
+```
+
+## 📚 Related Documentation
+
+- **StatsGrid Pattern**: `/src/styles/patterns/stats-grid.css`
+- **Metrics Showcase Styles**: `/src/styles/patterns/metrics-showcase.css`
+- **Aggregated Banner Styles**: `/src/styles/patterns/aggregated-metrics-banner.css`
+- **Design System Guidelines**: `/Guidelines.md`
+- **Icon Registry**: `/src/app/data/icon-registry.ts`
 
 ---
 
-## Migration Guide
-
-### From Old System to Registry
-
-**Before:**
-
-```typescript
-// Stats hardcoded in component
-const stats = [
-  { value: '220k+', label: 'Posts migrated' },
-  { value: '250+', label: 'Sites migrated' },
-];
-```
-
-**After:**
-
-```typescript
-import { statsRegistry, mapToNeonStats } from '@/data/stats';
-
-const migrationStats = statsRegistry.getStatsByCategory('migration');
-const stats = mapToNeonStats(migrationStats);
-```
-
-**Benefits:**
-- ✅ Single source of truth
-- ✅ Type safety
-- ✅ Version history tracking
-- ✅ Reusable across components
-- ✅ Centralized updates
-
----
-
-## Contributing
-
-### Adding a New Collection
-
-1. Create `/src/app/data/stats/[category]-stats.ts`
-2. Define collection following the `StatCollection` interface
-3. Import and add to `allCollections` in `stats-registry.ts`
-4. Update this README with new collection details
-
-### Adding New Icons
-
-1. Import icon from `@phosphor-icons/react` in `icon-resolver.ts`
-2. Add to `iconMap` object with lowercase key
-3. Test with `isValidIcon('NewIcon')`
-
-### Updating Taxonomy
-
-1. Add new tag to `StatTag` type in `types.ts`
-2. Document in this README
-3. Update existing stats to use new tag where appropriate
-
----
-
-## Changelog
-
-| Version | Date | Changes |
-|---|---|---|
-| 1.0.0 | 2026-03-17 | Initial release with 7 collections, 45 stats, memoization, version tracking |
-
----
-
-**Questions?** See `/prompts/stats-data-structure.md` for full specification.
+**Last Updated:** March 18, 2026  
+**Maintained By:** LightSpeed WP Agency  
+**Status:** ✅ Production Ready

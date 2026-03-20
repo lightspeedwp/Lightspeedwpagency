@@ -127,7 +127,7 @@ export function DocsGeneratorTemplate() {
               <BookOpen size={14} />
               Auto-Generated Docs
             </div>
-            <h1 className="docs-gen__hero-title">Documentation Generator</h1>
+            <h1 className="docs-gen__hero-title">Documentation generator</h1>
             <p className="docs-gen__hero-subtitle">
               Structured documentation for every component, pattern, block, hook, and data file in the LSX Design system
               — parsed from JSDoc annotations.

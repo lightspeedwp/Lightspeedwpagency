@@ -49,13 +49,13 @@
   height: 40px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid color-mix(in srgb, var(--primary) 40%, transparent);
-  box-shadow: 0 0 8px color-mix(in srgb, var(--primary) 15%, transparent);
+  border: 2px solid var(--border);
+  box-shadow: var(--glow-primary);
   transition: box-shadow var(--transition-base) var(--ease-out);
 }
 
 .single-post-meta__avatar:hover {
-  box-shadow: 0 0 16px color-mix(in srgb, var(--primary) 30%, transparent);
+  box-shadow: var(--glow-primary-intense);
 }
 
 .single-post-meta__author-info {
@@ -135,8 +135,7 @@
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
-  box-shadow: inset 0 0 30px color-mix(in srgb, var(--primary) 5%, transparent),
-              var(--shadow-md);
+  box-shadow: var(--shadow-md);
 }
 
 .single-post-body blockquote p {
@@ -177,10 +176,10 @@
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   color: var(--secondary);
-  background: color-mix(in srgb, var(--secondary) 10%, transparent);
+  background: var(--accent);
   padding: var(--spacing-1-5) var(--spacing-3);
   border-radius: var(--radius-full);
-  border: 1px solid color-mix(in srgb, var(--secondary) 20%, transparent);
+  border: 1px solid var(--border);
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: var(--letter-spacing-wider);
@@ -188,9 +187,9 @@
 }
 
 .single-post-tags__tag:hover {
-  background: color-mix(in srgb, var(--secondary) 20%, transparent);
+  background: var(--accent-hover);
   border-color: var(--secondary);
-  box-shadow: 0 0 12px color-mix(in srgb, var(--secondary) 25%, transparent);
+  box-shadow: var(--glow-accent);
 }
 
 /* ============================================
@@ -206,8 +205,7 @@
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border);
   border-radius: var(--radius-xl);
-  box-shadow: inset 0 0 30px color-mix(in srgb, var(--primary) 3%, transparent),
-              var(--shadow-lg);
+  box-shadow: var(--shadow-lg);
 }
 
 .single-post-author-bio__header {
@@ -222,8 +220,8 @@
   height: 80px;
   border-radius: var(--radius-full);
   object-fit: cover;
-  border: 3px solid color-mix(in srgb, var(--primary) 40%, transparent);
-  box-shadow: 0 0 20px color-mix(in srgb, var(--primary) 20%, transparent);
+  border: 3px solid var(--border);
+  box-shadow: var(--glow-primary);
   flex-shrink: 0;
 }
 
@@ -272,17 +270,17 @@
   width: 36px;
   height: 36px;
   border-radius: var(--radius-full);
-  background: color-mix(in srgb, var(--primary) 10%, transparent);
-  border: 1px solid color-mix(in srgb, var(--primary) 25%, transparent);
+  background: var(--accent);
+  border: 1px solid var(--border);
   color: var(--primary);
   text-decoration: none;
   transition: all var(--transition-base) var(--ease-out);
 }
 
 .single-post-author-bio__link:hover {
-  background: color-mix(in srgb, var(--primary) 20%, transparent);
+  background: var(--accent-hover);
   border-color: var(--primary);
-  box-shadow: 0 0 12px color-mix(in srgb, var(--primary) 25%, transparent);
+  box-shadow: var(--glow-primary);
 }
 
 /* ============================================
@@ -306,10 +304,10 @@
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   color: var(--primary);
-  background: color-mix(in srgb, var(--primary) 10%, transparent);
+  background: var(--accent);
   padding: var(--spacing-1-5) var(--spacing-4);
   border-radius: var(--radius-full);
-  border: 1px solid color-mix(in srgb, var(--primary) 25%, transparent);
+  border: 1px solid var(--border);
   text-transform: uppercase;
   letter-spacing: var(--letter-spacing-wider);
   margin-bottom: var(--spacing-4);
@@ -335,18 +333,17 @@
    ============================================ */
 
 .dark .single-post-hero {
-  background: linear-gradient(180deg, var(--background) 0%, color-mix(in srgb, var(--background) 90%, var(--primary)) 100%);
+  background: linear-gradient(180deg, var(--background) 0%, var(--card) 100%);
 }
 
 .dark .single-post-body blockquote {
-  background: color-mix(in srgb, var(--card) 40%, transparent);
-  box-shadow: inset 0 0 30px color-mix(in srgb, var(--primary) 8%, transparent),
-              var(--shadow-neon);
+  background: var(--glass-bg);
+  box-shadow: var(--shadow-neon);
 }
 
 .dark .single-post-tags__tag {
-  background: color-mix(in srgb, var(--secondary) 15%, transparent);
-  border-color: color-mix(in srgb, var(--secondary) 30%, transparent);
+  background: var(--accent);
+  border-color: var(--border);
 }
 
 .dark .single-post-tags__tag:hover {
@@ -354,19 +351,18 @@
 }
 
 .dark .single-post-author-bio {
-  background: color-mix(in srgb, var(--card) 40%, transparent);
-  border-color: color-mix(in srgb, var(--primary) 20%, transparent);
-  box-shadow: inset 0 0 30px color-mix(in srgb, var(--primary) 8%, transparent),
-              var(--shadow-neon);
+  background: var(--glass-bg);
+  border-color: var(--border);
+  box-shadow: var(--shadow-neon);
 }
 
 .dark .single-post-author-bio__avatar {
-  box-shadow: 0 0 30px color-mix(in srgb, var(--primary) 30%, transparent);
+  box-shadow: var(--glow-primary-intense);
 }
 
 .dark .single-post-related__badge {
-  background: color-mix(in srgb, var(--primary) 15%, transparent);
-  border-color: color-mix(in srgb, var(--primary) 30%, transparent);
+  background: var(--accent);
+  border-color: var(--border);
 }
 
 /* ============================================

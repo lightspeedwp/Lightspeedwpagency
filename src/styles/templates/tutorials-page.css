@@ -171,17 +171,17 @@
 }
 
 .tutorials__card-difficulty--beginner {
-  background-color: color-mix(in srgb, var(--success) 15%, transparent);
+  background-color: var(--success-soft);
   color: var(--success);
 }
 
 .tutorials__card-difficulty--intermediate {
-  background-color: color-mix(in srgb, var(--warning) 15%, transparent);
+  background-color: var(--warning-soft);
   color: var(--warning);
 }
 
 .tutorials__card-difficulty--advanced {
-  background-color: color-mix(in srgb, var(--destructive) 15%, transparent);
+  background-color: var(--destructive-soft);
   color: var(--destructive);
 }
 
@@ -288,11 +288,55 @@
 }
 
 .dark .tutorials__filter-btn {
-  background-color: color-mix(in srgb, var(--foreground) 8%, transparent);
+  background-color: var(--surface-elevated);
   border-color: var(--border);
 }
 
 .dark .tutorials__card-duration {
   background-color: var(--overlay-dark);
   color: var(--color-white);
+}
+
+
+/* ============================================
+   LIGHT MODE
+   ============================================ */
+
+@media (prefers-color-scheme: light) {
+  .tutorials__card {
+    background-color: var(--color-white);
+    border-color: var(--border-default);
+  }
+  
+  .tutorials__card:hover {
+    box-shadow: var(--shadow-xl);
+  }
+  
+  .tutorials__filter-btn {
+    background-color: var(--surface-secondary);
+  }
+  
+  .tutorials__card-thumb {
+    background-color: var(--surface-subtle);
+  }
+}
+
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .tutorials__card,
+  .tutorials__card-thumb img {
+    transition: none;
+  }
+  
+  .tutorials__card:hover {
+    transform: none;
+  }
+  
+  .tutorials__card:hover .tutorials__card-thumb img {
+    transform: none;
+  }
 }

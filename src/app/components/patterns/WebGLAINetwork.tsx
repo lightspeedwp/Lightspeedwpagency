@@ -11,6 +11,13 @@ export function WebGLAINetwork() {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
+    // Check for prefers-reduced-motion
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Cache CSS variable resolution (move outside render loop for performance)
+    const primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--wp--preset--color--neon-cyan').trim() || '#00f0ff';
+    const secondaryColor = getComputedStyle(document.documentElement).getPropertyValue('--wp--preset--color--neon-pink').trim() || '#ff00ff';
+
     const resize = () => {
       canvas.width = canvas.parentElement?.clientWidth || 800;
       canvas.height = canvas.parentElement?.clientHeight || 400;
@@ -32,24 +39,24 @@ export function WebGLAINetwork() {
     }));
 
     const render = () => {
-      time += 0.05;
-      
       // Clear with very slight fade for trail effect
       ctx.fillStyle = 'rgba(0, 0, 0, 0.2)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-      
-      const primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--wp--preset--color--neon-cyan').trim() || '#00f0ff';
-      const secondaryColor = getComputedStyle(document.documentElement).getPropertyValue('--wp--preset--color--neon-pink').trim() || '#ff00ff';
+
+      // Update nodes only if motion is allowed
+      if (!prefersReducedMotion) {
+        nodes.forEach((node) => {
+          node.x += node.vx;
+          node.y += node.vy;
+
+          if (node.x < 0 || node.x > 1) node.vx *= -1;
+          if (node.y < 0 || node.y > 1) node.vy *= -1;
+
+          node.pulse += 0.05;
+        });
+      }
 
       nodes.forEach((node, i) => {
-        node.x += node.vx;
-        node.y += node.vy;
-
-        if (node.x < 0 || node.x > 1) node.vx *= -1;
-        if (node.y < 0 || node.y > 1) node.vy *= -1;
-
-        node.pulse += 0.05;
-
         const x = node.x * canvas.width;
         const y = node.y * canvas.height;
 
@@ -64,8 +71,9 @@ export function WebGLAINetwork() {
             ctx.beginPath();
             ctx.moveTo(x, y);
             ctx.lineTo(otherNode.x * canvas.width, otherNode.y * canvas.height);
-            // Pulsing connection lines
-            const alpha = (1 - dist / 0.15) * 0.5 * (Math.sin(time + node.pulse) * 0.5 + 0.5);
+            // Pulsing connection lines (static if motion reduced)
+            const pulseEffect = prefersReducedMotion ? 0.5 : (Math.sin(time + node.pulse) * 0.5 + 0.5);
+            const alpha = (1 - dist / 0.15) * 0.5 * pulseEffect;
             ctx.strokeStyle = `rgba(0, 240, 255, ${alpha})`;
             ctx.lineWidth = 1;
             ctx.stroke();
@@ -73,11 +81,12 @@ export function WebGLAINetwork() {
         });
 
         // Draw nodes
-        const currentSize = node.size + Math.sin(node.pulse) * 1.5;
+        const pulseAmount = prefersReducedMotion ? 0 : Math.sin(node.pulse) * 1.5;
+        const currentSize = node.size + pulseAmount;
         
         ctx.beginPath();
         ctx.arc(x, y, currentSize, 0, Math.PI * 2);
-        ctx.fillStyle = i % 3 === 0 ? secondaryColor : primaryColor;
+        ctx.fillStyle = i % 3 === 0 ? secondaryColor : primaryColor; // Use cached colors
         ctx.fill();
         
         // Node glow
@@ -87,7 +96,11 @@ export function WebGLAINetwork() {
         ctx.shadowBlur = 0;
       });
 
-      animationFrameId = requestAnimationFrame(render);
+      // Only continue animation if motion is not reduced
+      if (!prefersReducedMotion) {
+        time += 0.05;
+        animationFrameId = requestAnimationFrame(render);
+      }
     };
 
     render();

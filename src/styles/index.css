@@ -132,6 +132,9 @@
 @import './blocks/post-formats/status.css';
 @import './blocks/post-formats/standard.css';
 
+/* Showcase Blocks */
+@import './blocks/prototype-card.css';
+
 /* Embed Blocks */
 @import './blocks/embed/embed-base.css';
 
@@ -238,6 +241,12 @@
 @import './patterns/service-comparison-table.css';
 @import './patterns/service-pricing-timeline.css';
 
+/* Figma Make Showcase Patterns (March 18, 2026) */
+@import './patterns/prototype-showcase.css';
+
+/* WebGL Showcase Graphics (March 18, 2026) */
+@import './patterns/webgl-showcase.css';
+
 /* Dynamic Content Widget Patterns */
 /* recent-posts-widget.css — moved to component-level (RecentPostsWidget.tsx) */
 @import './patterns/related-content-widget.css';
@@ -290,15 +299,18 @@
 
 /* AI Services Landing BEM (apply BEM — March 16, 2026) */
 @import './templates/ai-services-landing.css';
+@import './templates/ai-services/index.css';
 
 /* Design + Content Service Decoratives BEM (apply BEM round 15 — March 17, 2026) */
 @import './templates/design-service-decor.css';
 @import './templates/content-service-decor.css';
 
-/* Getting Started Template BEM (March 17, 2026) */
-@import './templates/getting-started.css';
-@import './templates/getting-started-enhancements.css';
+/* Getting Started Template BEM (March 17, 2026) — Modular Structure (March 18, 2026) */
+@import './templates/getting-started/index.css';
 @import './templates/getting-started-micro-interactions.css';
+
+/* Figma Make Showcase Template (March 18, 2026) */
+@import './templates/page-figma-showcase.css';
 
 /* Route Bundle Base Files (consolidated from /styles/bundles/ — March 13, 2026)
  * These base files were previously only loaded via bundle imports in css-bundle-loader.ts.

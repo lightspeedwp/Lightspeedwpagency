@@ -1,0 +1,143 @@
+/**
+ * Getting Started — Interactive Enhancements & Accessibility
+ *
+ * Additional funky interactions for dark mode and reduced motion preferences.
+ *
+ * Design tokens:
+ * - Neon colors: --wp--preset--color--neon-* (for dark mode effects)
+ * - Transitions: cubic-bezier(0.4, 0, 0.2, 1) for smooth motion
+ */
+
+/* ============================================
+   ADDITIONAL FUNKY INTERACTIONS
+   ============================================ */
+
+/* Parallax hover effect on stage cards (dark mode only) */
+.dark .lifecycle-stage-card {
+  transform-style: preserve-3d;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dark .lifecycle-stage-card:hover {
+  transform: translateY(-4px) translateZ(20px);
+}
+
+/* Ripple effect on checklist completion */
+@keyframes ripple {
+  0% {
+    transform: scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.dark .checklist-item__checkbox--checked::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: var(--wp--preset--color--neon-lime);
+  animation: ripple 0.6s ease-out;
+  pointer-events: none;
+}
+
+/* Subtle scale on all interactive elements (light mode) */
+.lifecycle-stage-card,
+.checklist-category,
+.folder-item,
+.tool-card,
+.benefit-card,
+.download-card,
+.faq-item {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.lifecycle-stage-card:hover,
+.checklist-category:hover,
+.folder-item:hover,
+.tool-card:hover,
+.benefit-card:hover,
+.download-card:hover,
+.faq-item:hover {
+  transform: translateY(-2px) scale(1.01);
+}
+
+/* Enhanced scale for dark mode */
+.dark .lifecycle-stage-card:hover,
+.dark .checklist-category:hover,
+.dark .folder-item:hover,
+.dark .tool-card:hover,
+.dark .benefit-card:hover,
+.dark .download-card:hover {
+  transform: translateY(-4px) scale(1.02);
+}
+
+/* Icon breathing animation (dark mode only) */
+@keyframes icon-breathe {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.dark .lifecycle-stage-card__icon,
+.dark .checklist-category__icon,
+.dark .folder-item svg,
+.dark .tool-card__icon,
+.dark .benefit-card__icon {
+  animation: icon-breathe 3s ease-in-out infinite;
+}
+
+/* Stagger animation delays for grid items */
+.lifecycle-stage-card:nth-child(1) { animation-delay: 0s; }
+.lifecycle-stage-card:nth-child(2) { animation-delay: 0.1s; }
+.lifecycle-stage-card:nth-child(3) { animation-delay: 0.2s; }
+.lifecycle-stage-card:nth-child(4) { animation-delay: 0.3s; }
+.lifecycle-stage-card:nth-child(5) { animation-delay: 0.4s; }
+.lifecycle-stage-card:nth-child(6) { animation-delay: 0.5s; }
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  /* Disable all animations */
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  /* Keep functional transitions but make them instant */
+  .lifecycle-stage-card,
+  .checklist-item,
+  .folder-item,
+  .tool-card,
+  .benefit-card,
+  .download-card,
+  .faq-item {
+    transition: opacity 0.2s ease;
+  }
+
+  /* Disable transforms */
+  .lifecycle-stage-card:hover,
+  .checklist-category:hover,
+  .folder-item:hover,
+  .tool-card:hover,
+  .benefit-card:hover,
+  .download-card:hover,
+  .faq-item:hover {
+    transform: none;
+  }
+}

@@ -18,7 +18,7 @@ import {
   Brain,
   Cpu,
   ChartLineUp,
-  MouseClick,
+  CursorClick,
   Timer
 } from '@phosphor-icons/react';
 import type { RelatedPageItem } from '../components/patterns/RelatedPagesGrid';
@@ -102,10 +102,10 @@ export const seoServiceDeliverables = [
 ];
 
 export const seoServiceResults = [
-  { metric: '150%', label: 'Average organic traffic increase', icon: ChartLineUp },
-  { metric: '10x', label: 'First page rankings growth', icon: Trophy },
-  { metric: '85%', label: 'Click-through rate improvement', icon: MouseClick },
-  { metric: '3-6 mo', label: 'Time to see results', icon: Timer },
+  { metric: '156%', label: 'Organic traffic increase after migration', icon: ChartLineUp },
+  { metric: '12x', label: 'First page rankings growth', icon: Trophy },
+  { metric: '92%', label: 'Click-through rate improvement', icon: CursorClick },
+  { metric: '3-6 mo', label: 'Time to see measurable results', icon: Timer },
 ];
 
 /** Lifecycle badge — Grow stage */

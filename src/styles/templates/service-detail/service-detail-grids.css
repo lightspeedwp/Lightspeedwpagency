@@ -14,7 +14,7 @@
    ============================================ */
 
 .service-detail__overview-section {
-  background-color: var(--muted);
+  background-color: var(--card);
 }
 
 .service-detail__section-header {
@@ -54,7 +54,7 @@
    ============================================ */
 
 .service-detail__services-section {
-  background-color: var(--muted);
+  background-color: var(--card);
 }
 
 .service-detail__services-grid {

@@ -5,3 +5,36 @@
  * Project-specific animations are in animations.css.
  * All component animations use wp-* prefixed keyframes in dedicated CSS files.
  */
+
+/**
+ * Tailwind v4 Color Channel Fix
+ * 
+ * Prevents Tailwind from trying to extract color channels from CSS custom properties.
+ * This fixes parsing errors like "rgb(255, 255, 255) rgb(255, 255, 255) rgba(...)".
+ * 
+ * Our design system uses:
+ * - Hex colors (#FFFFFF, #7BE7FF1A)
+ * - color-mix() for transparency
+ * - CSS custom properties for theming
+ * 
+ * These should NOT be processed by Tailwind's automatic color channel extraction.
+ */
+@layer base {
+  *,
+  ::before,
+  ::after {
+    /* Prevent Tailwind from extracting color channels from custom properties */
+    --tw-border-opacity: 1;
+    --tw-bg-opacity: 1;
+    --tw-text-opacity: 1;
+  }
+  
+  :root {
+    /* Declare color-scheme for proper light/dark mode handling */
+    color-scheme: light dark;
+  }
+  
+  .dark {
+    color-scheme: dark;
+  }
+}

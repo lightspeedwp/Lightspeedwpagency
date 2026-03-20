@@ -1,0 +1,169 @@
+/**
+ * Getting Started — Download Cards
+ *
+ * Glassmorphic download cards for client resources.
+ *
+ * Design tokens:
+ * - Neon colors: --wp--preset--color--neon-cyan (primary), --neon-lime (gradient)
+ * - Spacing: --spacing-* tokens
+ * - Typography: --font-primary (Lexend), --font-secondary (Manrope)
+ */
+
+/* ============================================
+   GLASSMORPHIC DOWNLOAD CARDS
+   ============================================ */
+
+.getting-started-downloads--funky {
+  padding-block: var(--spacing-24);
+  background: var(--color-black);
+}
+
+.getting-started-downloads__header {
+  max-width: 800px;
+  margin-inline: auto;
+  text-align: center;
+  margin-block-end: var(--spacing-12);
+}
+
+.getting-started-downloads__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2) var(--spacing-4);
+  background: color-mix(in srgb, var(--wp--preset--color--neon-cyan) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--wp--preset--color--neon-cyan) 30%, transparent);
+  border-radius: var(--radius-full);
+  color: var(--wp--preset--color--neon-cyan);
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.getting-started-downloads__title {
+  margin-block-start: var(--spacing-4);
+  font-family: var(--font-primary);
+  font-size: var(--text-5xl);
+  font-weight: var(--font-weight-black);
+  color: var(--wp--preset--color--white);
+}
+
+.getting-started-downloads__description {
+  margin-block-start: var(--spacing-4);
+  font-family: var(--font-secondary);
+  font-size: var(--text-lg);
+  color: color-mix(in srgb, var(--wp--preset--color--white) 80%, transparent);
+}
+
+.downloads-grid--funky {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
+  gap: var(--spacing-6);
+}
+
+.download-card--glass {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+  padding: var(--spacing-6);
+  background: color-mix(in srgb, var(--color-black) 40%, transparent);
+  backdrop-filter: blur(16px);
+  border: 1px solid color-mix(in srgb, var(--wp--preset--color--white) 15%, transparent);
+  border-radius: var(--radius-xl);
+  text-decoration: none;
+  transition: all 0.4s ease;
+  overflow: hidden;
+}
+
+.download-card__glow {
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(
+    135deg,
+    var(--wp--preset--color--neon-cyan),
+    var(--wp--preset--color--neon-lime)
+  );
+  opacity: 0;
+  border-radius: var(--radius-xl);
+  z-index: -1;
+  transition: opacity 0.4s ease;
+}
+
+.download-card--glass:hover {
+  border-color: color-mix(in srgb, var(--wp--preset--color--neon-cyan) 50%, transparent);
+  box-shadow: 0 0 40px color-mix(in srgb, var(--wp--preset--color--neon-cyan) 20%, transparent);
+  transform: translateY(-2px);
+}
+
+.download-card--glass:hover .download-card__glow {
+  opacity: 0.12;
+}
+
+.download-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  background: color-mix(in srgb, var(--wp--preset--color--neon-cyan) 15%, transparent);
+  border: 2px solid color-mix(in srgb, var(--wp--preset--color--neon-cyan) 40%, transparent);
+  border-radius: var(--radius-lg);
+  color: var(--wp--preset--color--neon-cyan);
+  flex-shrink: 0;
+}
+
+.download-card__content {
+  flex: 1;
+}
+
+.download-card__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--wp--preset--color--white);
+}
+
+.download-card__description {
+  margin-block-start: var(--spacing-2);
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  line-height: var(--line-height-relaxed);
+  color: color-mix(in srgb, var(--wp--preset--color--white) 80%, transparent);
+}
+
+.download-card__action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-2);
+  flex-shrink: 0;
+}
+
+.download-card__file-type {
+  font-family: var(--font-primary);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--wp--preset--color--neon-cyan);
+}
+
+.download-card__icon-download {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: color-mix(in srgb, var(--wp--preset--color--neon-cyan) 20%, transparent);
+  border-radius: var(--radius-full);
+  color: var(--wp--preset--color--neon-cyan);
+  transition: all 0.3s ease;
+}
+
+.download-card--glass:hover .download-card__icon-download {
+  background: var(--wp--preset--color--neon-cyan);
+  color: var(--color-black);
+  box-shadow: 0 0 20px var(--wp--preset--color--neon-cyan);
+}

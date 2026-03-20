@@ -31,7 +31,7 @@ export function ChatArchiveTemplate() {
       <Section spacing="lg">
         <Container>
           <header className="archive-header">
-            <h1 className="archive-header__title">Chat Transcripts</h1>
+            <h1 className="archive-header__title">Chat transcripts</h1>
             <p className="archive-header__description">Support logs, Q&amp;A sessions, and team discussions.</p>
           </header>
 

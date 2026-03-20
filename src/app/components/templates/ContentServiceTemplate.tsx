@@ -74,15 +74,15 @@ export function ContentServiceTemplate() {
       {/* ============================================
           HERO SECTION (The Art of Words)
           ============================================ */}
-      <section className="service-hero" style={{ position: 'relative' }}>
+      <section className="service-hero service-hero--content">
         <WebGLContentInk accentColor="var(--wp--preset--color--neon-pink)" secondaryColor="var(--wp--preset--color--neon-purple)" />
         
         {/* Paper texture background — CSS noise pattern (no external dependency) */}
-        <div className="content-decor__texture" aria-hidden="true" style={{ opacity: 0.3, zIndex: 1 }} />
-        <div className="content-decor__fade" aria-hidden="true" style={{ zIndex: 1 }} />
+        <div className="content-decor__texture" aria-hidden="true" />
+        <div className="content-decor__fade" aria-hidden="true" />
         
         {/* Floating Manuscript Pages Background */}
-        <div className="content-decor__manuscript content-decor__manuscript--left" aria-hidden="true" style={{ zIndex: 1 }}>
+        <div className="content-decor__manuscript content-decor__manuscript--left" aria-hidden="true">
           <div className="content-decor__line content-decor__line--w80" />
           <div className="content-decor__line content-decor__line--w90" />
           <div className="content-decor__line content-decor__line--w60" />
@@ -99,7 +99,7 @@ export function ContentServiceTemplate() {
            <div className="content-decor__pen-mark" />
         </div>
 
-        <Container style={{ position: 'relative', zIndex: 2 }}>
+        <Container className="service-hero__container">
           <div className="service-hero__content service-hero__content--centered">
             <ScrollReveal animation="fade-down">
               <div className="service-hero__badge service-hero__badge--mono">

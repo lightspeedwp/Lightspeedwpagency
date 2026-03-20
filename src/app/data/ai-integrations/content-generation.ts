@@ -78,26 +78,26 @@ export const aiContentHero: AIHero = {
 export const aiContentStats: AIStat[] = [
   {
     icon: FileText,
-    value: '10x',
-    label: 'Content Output',
-    description: 'Produce 10x more content without growing your team',
+    value: '12x',
+    label: 'Content output increase',
+    description: 'Produce 12x more content without growing your team',
   },
   {
     icon: Clock,
-    value: '80%',
-    label: 'Time Reduction',
+    value: '85%',
+    label: 'Time reduction',
     description: 'Average time saved on first-draft creation',
   },
   {
     icon: Crosshair,
-    value: '95%',
-    label: 'Brand Accuracy',
+    value: '96%',
+    label: 'Brand accuracy',
     description: 'Content matches your brand voice and guidelines',
   },
   {
     icon: Globe,
-    value: '30+',
-    label: 'Languages',
+    value: '40+',
+    label: 'Languages supported',
     description: 'Multi-language content from a single source',
   },
 ];

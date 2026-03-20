@@ -35,7 +35,7 @@ export function StandardArchiveTemplate() {
       <Section spacing="lg">
         <Container>
           <header className="standard-archive__header">
-            <h1 className="standard-archive__title">Latest Articles</h1>
+            <h1 className="standard-archive__title">Latest articles</h1>
             <p className="standard-archive__description">Insights, tutorials, and news.</p>
           </header>
 

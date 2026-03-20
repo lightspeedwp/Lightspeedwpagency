@@ -90,12 +90,9 @@ export function SingleAudioTemplate() {
                 <h2>About this episode</h2>
                 <div dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
                 
-                <h3>Show Notes</h3>
+                <h3>Show notes</h3>
                 <ul>
                   <li>00:00 - Introduction</li>
-                  <li>05:30 - The challenge of FSE</li>
-                  <li>15:45 - Building custom blocks</li>
-                  <li>30:20 - Future of WordPress</li>
                 </ul>
               </div>
             </Container>

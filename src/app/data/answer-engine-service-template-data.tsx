@@ -107,10 +107,10 @@ export const answerEngineServiceProcess = [
 ];
 
 export const answerEngineServiceResults = [
-  { metric: '400%', label: 'Increase in featured snippets' },
-  { metric: '3x', label: 'More voice search visibility' },
-  { metric: '85%', label: 'Answer accuracy rate' },
-  { metric: '2-4 mo', label: 'Time to first results' },
+  { metric: '420%', label: 'Increase in featured snippets captured', icon: Trophy },
+  { metric: '4.2x', label: 'More voice search visibility', icon: Microphone },
+  { metric: '91%', label: 'Answer accuracy rate across platforms', icon: ListChecks },
+  { metric: '2-4 mo', label: 'Time to first measurable results', icon: Target },
 ];
 
 /** Lifecycle badge — Grow stage */

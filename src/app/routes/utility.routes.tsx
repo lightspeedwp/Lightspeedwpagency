@@ -60,6 +60,8 @@ import { NewsletterUtilityTemplate } from '../components/templates/NewsletterUti
 import { SiteMapTemplate } from '../components/templates/SiteMapTemplate';
 import { StyleGuideTemplate } from '../components/templates/StyleGuideTemplate';
 import { TutorialsTemplate } from '../components/templates/TutorialsTemplate';
+import { CompetitorResearchServiceTemplate } from '../components/templates/CompetitorResearchServiceTemplate';
+import { FigmaMakeShowcaseTemplate } from '../components/templates/FigmaMakeShowcaseTemplate';
 
 /* ═══════════════════════════════════════════
  * Route Wrapper Components
@@ -93,6 +95,8 @@ function NewsletterUtilityRoute() { loadCSSBundle('utility'); return <Newsletter
 function SiteMapRoute() { loadCSSBundle('utility'); return <SiteMapTemplate />; }
 function StyleGuideRoute() { loadCSSBundle('utility'); return <StyleGuideTemplate />; }
 function TutorialsRoute() { loadCSSBundle('utility'); return <TutorialsTemplate />; }
+function CompetitorResearchServiceRoute() { loadCSSBundle('utility'); return <CompetitorResearchServiceTemplate />; }
+function FigmaMakeShowcaseRoute() { loadCSSBundle('utility'); return <FigmaMakeShowcaseTemplate />; }
 
 /* ═══════════════════════════════════════════
  * Route Definitions
@@ -147,4 +151,6 @@ export const utilityRoutes: RouteObject[] = [
   { path: 'site-map', Component: SiteMapRoute },
   { path: 'style-guide', Component: StyleGuideRoute },
   { path: 'tutorials', Component: TutorialsRoute },
+  { path: 'competitor-research', Component: CompetitorResearchServiceRoute },
+  { path: 'showcase/figma-make', Component: FigmaMakeShowcaseRoute },
 ];

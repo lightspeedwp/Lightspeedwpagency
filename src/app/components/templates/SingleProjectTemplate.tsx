@@ -148,10 +148,10 @@ export function SingleProjectTemplate({ slug }: SingleProjectTemplateProps) {
             {/* Case Study Content */}
             <article className="single-project__body">
               <ScrollReveal animation="fade-up">
-                <h2>The Challenge</h2>
+                <h2>The challenge</h2>
                 <p>{project.challenge || "Every project begins with a unique set of challenges. For this client, the primary goal was to modernize their digital presence while improving core web vitals and conversion rates. Their previous legacy system was difficult to manage and performed poorly on mobile devices."}</p>
                 
-                <h2>Our Solution</h2>
+                <h2>Our solution</h2>
                 <p>{project.solution || "We implemented a custom WordPress block theme architecture, leveraging the latest Full Site Editing capabilities. This approach allowed for a highly performant frontend while giving the marketing team complete control over content layout without needing developer intervention."}</p>
                 
                 {/* Gallery */}
@@ -174,7 +174,7 @@ export function SingleProjectTemplate({ slug }: SingleProjectTemplateProps) {
                   )}
                 </div>
 
-                <h2>The Outcome</h2>
+                <h2>The outcome</h2>
                 <p>{project.outcome || "The launch was a resounding success. Post-launch analytics showed a 40% increase in mobile traffic engagement and a 25% boost in lead generation. The client's team can now publish new landing pages in minutes rather than days."}</p>
               </ScrollReveal>
             </article>

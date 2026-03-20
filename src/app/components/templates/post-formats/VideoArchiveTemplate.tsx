@@ -35,7 +35,7 @@ export function VideoArchiveTemplate() {
       <Section spacing="lg">
         <Container>
           <header className="archive-header">
-            <h1 className="archive-header__title">Video Library</h1>
+            <h1 className="archive-header__title">Video library</h1>
             <p className="archive-header__description">Master WordPress with our step-by-step guides.</p>
           </header>
 

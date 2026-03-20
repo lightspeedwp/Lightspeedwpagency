@@ -1,4 +1,5 @@
 import { useRef, useEffect } from 'react';
+import { resolveCssColor, addAlpha } from '../../utils/css-color-resolver';
 
 interface WebGLPerformanceRingProps {
   accentColor?: string;
@@ -20,6 +21,9 @@ export function WebGLPerformanceRing({
     let animationFrameId: number;
     let time = 0;
 
+    // Check for prefers-reduced-motion
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     const resize = () => {
       const parent = canvas.parentElement;
       if (parent) {
@@ -35,31 +39,28 @@ export function WebGLPerformanceRing({
     window.addEventListener('resize', resize);
     resize();
 
-    const getCssColor = (colorVar: string) => {
-      if (!colorVar.startsWith('var(')) return colorVar;
-      const varName = colorVar.match(/var\(([^)]+)\)/)?.[1];
-      if (!varName) return colorVar;
-      return getComputedStyle(document.documentElement).getPropertyValue(varName).trim() || colorVar;
-    };
+    // Resolve colors once (NEVER in animation loop)
+    const computedAccent = resolveCssColor(accentColor, '#00ff00');
+    const computedDark = resolveCssColor('var(--surface-primary)', '#000000');
 
     const draw = () => {
       const width = canvas.clientWidth;
       const height = canvas.clientHeight;
       ctx.clearRect(0, 0, width, height);
-      time += 0.03;
+      
+      if (!prefersReducedMotion) {
+        time += 0.03;
+      }
 
       const centerX = width / 2;
       const centerY = height / 2;
-      
-      const computedAccent = getCssColor(accentColor);
-      const computedDark = getCssColor('var(--color-black)') || '#000';
 
       const baseRadius = Math.min(width, height) * 0.35;
 
       // Draw glowing background pulse
       const pulse = Math.sin(time * 2) * 0.1 + 0.9;
       const grad = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, baseRadius * 1.5);
-      grad.addColorStop(0, `${computedAccent}33`);
+      grad.addColorStop(0, addAlpha(computedAccent, 0.2));
       grad.addColorStop(1, 'transparent');
       ctx.fillStyle = grad;
       ctx.beginPath();

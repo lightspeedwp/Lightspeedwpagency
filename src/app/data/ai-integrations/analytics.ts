@@ -86,27 +86,27 @@ export const aiAnalyticsHero: AIHero = {
 export const aiAnalyticsStats: AIStat[] = [
   {
     icon: ChartBar,
-    value: '45%',
-    label: 'Better Decisions',
+    value: '52%',
+    label: 'Better decisions',
     description: 'More data-driven decisions across the organisation',
   },
   {
     icon: Lightbulb,
-    value: '200+',
-    label: 'Auto Insights',
+    value: '280+',
+    label: 'Auto insights generated',
     description: 'AI-generated insights per month, on average',
   },
   {
     icon: Clock,
-    value: '15h',
-    label: 'Hours Saved',
+    value: '22h',
+    label: 'Hours saved monthly',
     description: 'Per month on manual reporting and analysis',
   },
   {
     icon: TrendUp,
-    value: '92%',
-    label: 'Accuracy',
-    description: 'Prediction accuracy for traffic forecasting',
+    value: '3.5x',
+    label: 'ROI improvement',
+    description: 'Better conversion optimization decisions',
   },
 ];
 

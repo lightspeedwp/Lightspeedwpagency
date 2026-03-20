@@ -1,4 +1,5 @@
 import { useRef, useEffect } from 'react';
+import { resolveCssColor, addAlpha } from '../../utils/css-color-resolver';
 
 interface WebGLNeuralNetworkProps {
   accentColor?: string;
@@ -20,10 +21,12 @@ export function WebGLNeuralNetwork({
     let animationFrameId: number;
     let time = 0;
 
+    // Check for prefers-reduced-motion
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     const resize = () => {
       const parent = canvas.parentElement;
       if (parent) {
-        // High DPI canvas
         const dpr = window.devicePixelRatio || 1;
         canvas.width = parent.clientWidth * dpr;
         canvas.height = parent.clientHeight * dpr;
@@ -36,12 +39,9 @@ export function WebGLNeuralNetwork({
     window.addEventListener('resize', resize);
     resize();
 
-    const getCssColor = (colorVar: string) => {
-      if (!colorVar.startsWith('var(')) return colorVar;
-      const varName = colorVar.match(/var\(([^)]+)\)/)?.[1];
-      if (!varName) return colorVar;
-      return getComputedStyle(document.documentElement).getPropertyValue(varName).trim() || colorVar;
-    };
+    // Resolve colors once (NEVER in animation loop)
+    const computedAccent = resolveCssColor(accentColor, '#b535f6');
+    const computedDark = resolveCssColor('var(--surface-primary)', '#000000');
 
     // Initialize nodes
     const nodeCount = 20;
@@ -64,9 +64,6 @@ export function WebGLNeuralNetwork({
       ctx.clearRect(0, 0, width, height);
       time += 0.02;
       
-      const computedAccent = getCssColor(accentColor);
-      const computedDark = getCssColor('var(--color-black)') || '#000';
-
       // Update node positions
       nodes.forEach((node, i) => {
         if (node.isCenter) {

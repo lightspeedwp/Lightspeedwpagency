@@ -87,20 +87,20 @@ export const aiChatbotsStats: AIStat[] = [
   },
   {
     icon: TrendUp,
-    value: '65%',
-    label: 'Auto-Resolution',
+    value: '72%',
+    label: 'Auto-resolution rate',
     description: 'Common queries solved without human intervention',
   },
   {
     icon: CurrencyDollar,
-    value: '40%',
-    label: 'Cost Reduction',
+    value: '48%',
+    label: 'Cost reduction',
     description: 'Lower support costs while improving response times',
   },
   {
     icon: Users,
     value: '1000+',
-    label: 'Concurrent Chats',
+    label: 'Concurrent chats',
     description: 'Handle unlimited conversations simultaneously',
   },
 ];

@@ -1,142 +1,86 @@
 /**
  * Solution Cards Grid Pattern
- * 
- * WordPress pattern: lsx-design/content/solution-cards-grid
- * 
- * Displays a grid of clickable solution cards with icons, descriptions, and hover effects.
- * Responsive 1-3 column layout with smooth animations and primary color highlights.
- * 
- * All styling in /src/styles/solution-cards-grid.css (user-editable)
- * 
- * @see {@link /guidelines/patterns/SolutionCardsGrid.md}
+ *
+ * Displays solution categories in a grid layout for homepage.
+ * Shows 6 key solutions with icons, descriptions, and links.
+ *
+ * BEM block: .solution-cards-grid
+ *
+ * @see /src/styles/patterns/solution-cards-grid.css
  */
 
-import type { UniversalIcon } from '../../utils/icon-map';
 import { Link } from 'react-router';
-import { Container } from '../common/Container';
-import { Section } from '../common/Section';
-import { getPageUrl } from '../../data/site-pages';
+import type { UniversalIcon } from '../../utils/icon-map';
+import { ScrollReveal } from '../../hooks/useScrollReveal';
+import { ArrowRight } from '@phosphor-icons/react';
 
-
-export interface SolutionCard {
-  /** Unique solution ID */
-  id: string;
-  /** Lucide icon component */
+interface SolutionCard {
   icon: UniversalIcon;
-  /** Solution title */
   title: string;
-  /** Solution description */
   description: string;
-  /** Page slug for navigation */
   link: string;
-  /** Link text (default: "Learn More →") */
-  linkText?: string;
+  featured?: boolean;
 }
 
-export interface SolutionCardsGridProps {
-  /** Optional badge text above title */
-  badge?: string;
-  /** Optional badge icon */
-  badgeIcon?: UniversalIcon;
-  /** Section title */
+interface SolutionCardsGridProps {
   title: string;
-  /** Section description */
-  description?: string;
-  /** Solution cards */
+  description: string;
   solutions: SolutionCard[];
-  /** Section spacing */
-  spacing?: 'sm' | 'md' | 'lg' | 'xl';
-  /** Background color override */
-  background?: 'default' | 'card' | 'muted' | 'transparent';
-  /** Max width for content */
-  maxWidth?: '4xl' | '5xl' | '6xl' | '7xl' | 'full';
+  cta?: {
+    text: string;
+    page: string;
+  };
 }
 
-export function SolutionCardsGrid({
-  badge,
-  badgeIcon: BadgeIcon,
-  title,
-  description,
-  solutions,
-  spacing = 'xl',
-  background = 'default',
-  maxWidth = 'full'
-}: SolutionCardsGridProps) {
-  // Build grid classes
-  const gridClasses = [
-    'solution-cards__grid',
-    `solution-cards__grid--${maxWidth}`
-  ].filter(Boolean).join(' ');
-
+export function SolutionCardsGrid({ title, description, solutions, cta }: SolutionCardsGridProps) {
   return (
-    <Section spacing={spacing} background={background as any}>
-      <Container>
-        {/* Section Header */}
-        <div className="solution-cards__header">
-          {/* Badge */}
-          {badge && (
-            <div className="solution-cards__badge">
-              {BadgeIcon && <BadgeIcon size={14} />}
-              {badge}
-            </div>
-          )}
-
-          {/* Title */}
-          <h2 className="solution-cards__title">
-            {title}
-          </h2>
-
-          {/* Description */}
-          {description && (
-            <p className="solution-cards__description">
-              {description}
-            </p>
-          )}
+    <section className="solution-cards-grid" aria-labelledby="solutions-heading">
+      <ScrollReveal animation="fade-up">
+        <div className="solution-cards-grid__header">
+          <h2 id="solutions-heading" className="solution-cards-grid__title">{title}</h2>
+          <p className="solution-cards-grid__description">{description}</p>
         </div>
+      </ScrollReveal>
 
-        {/* Solution Cards Grid */}
-        <div className={gridClasses}>
-          {solutions.map((solution) => {
-            const Icon = solution.icon;
-
-            return (
+      <div className="solution-cards-grid__grid">
+        {solutions.map((solution, index) => {
+          const Icon = solution.icon;
+          return (
+            <ScrollReveal key={solution.title} animation="fade-up" delay={index * 80}>
               <Link
-                key={solution.id}
-                to={getPageUrl(solution.link)}
-                className="solution-cards__card-link"
+                to={solution.link}
+                className={`solution-cards-grid__card${
+                  solution.featured ? ' solution-cards-grid__card--featured' : ''
+                }`}
                 aria-label={`Learn more about ${solution.title}`}
               >
-                <article className="solution-cards__card">
-                  {/* Icon */}
-                  <div className="solution-cards__icon">
-                    <Icon 
-                      size={32} 
-                      className="solution-cards__icon-svg"
-                    />
-                  </div>
+                <div className="solution-cards-grid__card-icon">
+                  <Icon size={28} weight="duotone" />
+                </div>
+                
+                <h3 className="solution-cards-grid__card-title">{solution.title}</h3>
+                <p className="solution-cards-grid__card-description">{solution.description}</p>
+                
+                <span className="solution-cards-grid__card-link">
+                  Learn more
+                  <ArrowRight size={14} weight="bold" />
+                </span>
+              </Link>
+            </ScrollReveal>
+          );
+        })}
+      </div>
 
-                  {/* Title */}
-                  <h3 className="solution-cards__card-title">
-                    {solution.title}
-                  </h3>
-
-                  {/* Description */}
-                  <p className="solution-cards__card-description">
-                    {solution.description}
-                  </p>
-
-                  {/* Link */}
-                  <div className="solution-cards__card-link-text">
-                    {solution.linkText || 'Learn More →'}
-                  </div>
-                </article>
-              </a>
-            );
-          })}
-        </div>
-      </Container>
-    </Section>
+      {cta && (
+        <ScrollReveal animation="fade-up" delay={480}>
+          <div className="solution-cards-grid__footer">
+            <Link to={`/${cta.page}`} className="solution-cards-grid__cta">
+              {cta.text}
+              <ArrowRight size={18} weight="bold" />
+            </Link>
+          </div>
+        </ScrollReveal>
+      )}
+    </section>
   );
 }
-
-export default SolutionCardsGrid;

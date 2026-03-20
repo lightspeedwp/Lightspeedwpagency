@@ -48,7 +48,7 @@ const showcaseCards = [
   },
   {
     icon: Palette,
-    label: 'Design Systems',
+    label: 'Design systems',
     meta: 'Token-Driven',
   },
   {

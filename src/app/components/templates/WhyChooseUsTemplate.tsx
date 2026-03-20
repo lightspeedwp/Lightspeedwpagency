@@ -47,7 +47,7 @@ import {
   Code,
   Headphones,
   ThumbsUp,
-  HardDrives as Server,
+  Database as Server,
   Sparkle as Sparkles,
   Medal as Award,
   SquaresFour as Blocks,

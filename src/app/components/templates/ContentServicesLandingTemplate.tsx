@@ -1,21 +1,14 @@
 /**
- * Content Services Landing Template
+ * Content Services Landing Template — Funky Neon Redesign
  *
  * Parent landing page for all content-related services.
  * Route: /services/content/
  *
- * Layout classes: sub-service-base__* (from sub-service-base.css)
- * @see /src/styles/templates/sub-service-base.css
+ * Design: Funky neon aesthetic with glassmorphism cards, animated grid, floating shapes
  */
 
 import { Link } from 'react-router';
 import { getPageUrl } from '../../data/site-pages';
-import { ScrollReveal } from '../../hooks/useScrollReveal';
-import { ScrollDownArrow } from '../common/ScrollDownArrow';
-import { Container } from '../common/Container';
-import { ServiceCapabilitiesGrid } from '../patterns/ServiceCapabilitiesGrid';
-import { AgencyProcessTimeline } from '../patterns/AgencyProcessTimeline';
-import { FunkyCTA } from '../patterns/FunkyCTA';
 import {
   FileMagnifyingGlass,
   Target,
@@ -28,6 +21,7 @@ import {
 } from '@phosphor-icons/react';
 
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
+import '../../../styles/templates/content-services-landing-funky.css';
 
 /* ============================================
    LOCAL DATA
@@ -97,89 +91,105 @@ const timelineSteps = [
 
 export function ContentServicesLandingTemplate() {
   return (
-    <div>
+    <div className="content-landing-funky">
       {/* Breadcrumbs */}
-      <BreadcrumbPart
-        items={[
-          { label: 'Home', href: '/' },
-          { label: 'Services', href: '/services' },
-          { label: 'Content services' },
-        ]}
-      />
+      <div className="content-landing-funky__breadcrumb-wrapper">
+        <BreadcrumbPart
+          items={[
+            { label: 'Home', href: '/' },
+            { label: 'Services', href: '/services' },
+            { label: 'Content services' },
+          ]}
+        />
+      </div>
 
-      {/* Hero section */}
-      <section className="sub-service-base__hero" aria-labelledby="content-hero-title">
-        <div className="sub-service-base__hero-content">
-          <ScrollReveal animation="fade-down">
-            <h1 id="content-hero-title" className="sub-service-base__hero-title">
-              Content that converts
-            </h1>
+      {/* Hero section with animated grid background */}
+      <section className="content-landing-funky__hero" aria-labelledby="content-hero-title">
+        <div className="content-landing-funky__hero-content">
+          <h1 id="content-hero-title" className="content-landing-funky__hero-title">
+            Content that converts
+          </h1>
 
-            <p className="sub-service-base__hero-description">
-              From strategy to creation, audit to governance — we deliver
-              comprehensive content services that drive organic traffic, build
-              authority, and convert visitors into customers.
-            </p>
+          <p className="content-landing-funky__hero-description">
+            From strategy to creation, audit to governance — we deliver
+            comprehensive content services that drive organic traffic, build
+            authority, and convert visitors into customers.
+          </p>
 
-            <div className="sub-service-base__hero-cta">
-              <Link to={getPageUrl('contact')} className="sub-service-base__cta-button sub-service-base__cta-button--primary">
-                Start content project
-              </Link>
-              <a href="#services" className="sub-service-base__cta-button sub-service-base__cta-button--secondary">
-                Explore services
-              </a>
-            </div>
-          </ScrollReveal>
+          <div className="content-landing-funky__hero-cta">
+            <Link to={getPageUrl('contact')} className="content-landing-funky__cta-button content-landing-funky__cta-button--primary">
+              Start content project
+            </Link>
+            <a href="#services" className="content-landing-funky__cta-button content-landing-funky__cta-button--secondary">
+              Explore services
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Services grid with glassmorphism cards */}
+      <section id="services" className="content-landing-funky__services" aria-labelledby="content-services-title">
+        <div className="content-landing-funky__section-header">
+          <h2 id="content-services-title" className="content-landing-funky__section-title">
+            Content services
+          </h2>
+          <p className="content-landing-funky__section-subtitle">
+            End-to-end content solutions for every stage of your content lifecycle.
+          </p>
         </div>
 
-        <ScrollDownArrow />
+        <div className="content-landing-funky__services-grid">
+          {serviceItems.map((item, index) => {
+            const IconComponent = item.icon;
+            return (
+              <div key={index} className="content-landing-funky__service-card">
+                <div className="content-landing-funky__service-icon">
+                  <IconComponent weight="duotone" size={32} />
+                </div>
+                <h3 className="content-landing-funky__service-title">{item.title}</h3>
+                <p className="content-landing-funky__service-description">{item.description}</p>
+              </div>
+            );
+          })}
+        </div>
       </section>
 
-      {/* Services grid */}
-      <section id="services" className="sub-service-base__benefits" aria-labelledby="content-services-title">
-        <Container>
-          <ScrollReveal animation="fade-up">
-            <ServiceCapabilitiesGrid
-              heading="Content services"
-              subheading="End-to-end content solutions for every stage of your content lifecycle."
-              capabilities={serviceItems.map((item, i) => ({
-                id: `content-srv-${i}`,
-                title: item.title,
-                description: item.description,
-                icon: item.icon as any
-              }))}
-              columns={3}
-            />
-          </ScrollReveal>
-        </Container>
+      {/* Process timeline with neon styling */}
+      <section className="content-landing-funky__process" aria-labelledby="content-process-title">
+        <div className="content-landing-funky__section-header">
+          <h2 id="content-process-title" className="content-landing-funky__section-title">
+            Our content process
+          </h2>
+          <p className="content-landing-funky__section-subtitle">
+            A proven methodology from discovery to ongoing optimisation.
+          </p>
+        </div>
+
+        <div className="content-landing-funky__process-timeline">
+          {timelineSteps.map((step, index) => (
+            <div key={index} className="content-landing-funky__process-step">
+              <div className="content-landing-funky__process-number">{index + 1}</div>
+              <h3 className="content-landing-funky__process-title">{step.title}</h3>
+              <p className="content-landing-funky__process-description">{step.description}</p>
+            </div>
+          ))}
+        </div>
       </section>
 
-      {/* Process */}
-      <section className="sub-service-base__results" aria-labelledby="content-process-title">
-        <Container>
-          <ScrollReveal animation="fade-up">
-            <AgencyProcessTimeline
-              heading="Our content process"
-              subheading="A proven methodology from discovery to ongoing optimisation."
-              steps={timelineSteps}
-            />
-          </ScrollReveal>
-        </Container>
+      {/* CTA section with glow effect */}
+      <section className="content-landing-funky__cta-section">
+        <div className="content-landing-funky__cta-content">
+          <h2 className="content-landing-funky__cta-title">
+            Ready to transform your content?
+          </h2>
+          <p className="content-landing-funky__cta-description">
+            Get a free content audit and discover how strategic content can drive measurable growth for your business.
+          </p>
+          <Link to={getPageUrl('contact')} className="content-landing-funky__cta-button content-landing-funky__cta-button--primary">
+            Request free content audit
+          </Link>
+        </div>
       </section>
-
-      {/* CTA */}
-      <FunkyCTA
-        title="Ready to transform your content?"
-        description="Get a free content audit and discover how strategic content can drive measurable growth for your business."
-        buttonText="Request free content audit"
-        buttonPage="contact"
-        benefits={[
-          'Content inventory analysis',
-          'SEO gap identification',
-          'Audience persona review',
-          'Actionable strategy roadmap'
-        ]}
-      />
     </div>
   );
 }

@@ -84,7 +84,7 @@ export function SingleVideoTemplate() {
 
                 {/* Sidebar (Related) */}
                 <div className="wp-block-video-sidebar">
-                  <h3 className="wp-block-video-sidebar__title">Up Next</h3>
+                  <h3 className="wp-block-video-sidebar__title">Up next</h3>
                   <div className="single-video__related-list">
                     {[1, 2, 3].map((i) => (
                       <div key={i} className="wp-block-video-related-item">

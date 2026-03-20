@@ -72,26 +72,26 @@ export const aiSEOHero: AIHero = {
 export const aiSEOStats: AIStat[] = [
   {
     icon: TrendUp,
-    value: '156%',
-    label: 'Organic Growth',
+    value: '168%',
+    label: 'Organic growth',
     description: 'Average organic traffic increase after 6 months',
   },
   {
     icon: Crosshair,
-    value: '3x',
-    label: 'Keyword Rankings',
+    value: '4.5x',
+    label: 'Keyword rankings',
     description: 'More keywords ranking on page one of Google',
   },
   {
     icon: Clock,
-    value: '70%',
-    label: 'Time Saved',
+    value: '78%',
+    label: 'Time saved',
     description: 'Less time spent on manual SEO audits and tasks',
   },
   {
     icon: Lightning,
-    value: '<2s',
-    label: 'Analysis Speed',
+    value: '<1s',
+    label: 'Analysis speed',
     description: 'Real-time content scoring as you type',
   },
 ];

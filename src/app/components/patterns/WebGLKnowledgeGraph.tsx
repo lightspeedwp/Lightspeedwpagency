@@ -10,6 +10,14 @@ export function WebGLKnowledgeGraph() {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
+    // Check for prefers-reduced-motion
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Cache CSS variable resolution (move outside render loop for performance)
+    const neonColor = getComputedStyle(document.documentElement).getPropertyValue('--wp--preset--color--neon-purple').trim() || '#b535f6';
+    const secondaryColor = getComputedStyle(document.documentElement).getPropertyValue('--wp--preset--color--neon-lime').trim() || '#32cd32';
+    const fontFamily = getComputedStyle(document.documentElement).getPropertyValue('--font-primary').trim() || 'sans-serif';
+
     const resize = () => {
       canvas.width = canvas.parentElement?.clientWidth || 800;
       canvas.height = canvas.parentElement?.clientHeight || 400;
@@ -36,12 +44,11 @@ export function WebGLKnowledgeGraph() {
     ];
 
     const render = () => {
-      time += 0.01;
       ctx.fillStyle = 'rgba(0, 0, 0, 0.15)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       
-      const neonColor = getComputedStyle(document.documentElement).getPropertyValue('--wp--preset--color--neon-purple').trim() || '#b535f6';
-      const secondaryColor = getComputedStyle(document.documentElement).getPropertyValue('--wp--preset--color--neon-lime').trim() || '#32cd32';
+      // Use static position if motion is reduced, otherwise animate
+      const animTime = prefersReducedMotion ? 0 : time;
 
       // Draw edges
       ctx.beginPath();
@@ -51,10 +58,10 @@ export function WebGLKnowledgeGraph() {
         const p1 = nodes[a];
         const p2 = nodes[b];
         
-        const x1 = p1.x * canvas.width + Math.sin(time + a) * 20;
-        const y1 = p1.y * canvas.height + Math.cos(time + a) * 20;
-        const x2 = p2.x * canvas.width + Math.sin(time + b) * 20;
-        const y2 = p2.y * canvas.height + Math.cos(time + b) * 20;
+        const x1 = p1.x * canvas.width + Math.sin(animTime + a) * 20;
+        const y1 = p1.y * canvas.height + Math.cos(animTime + a) * 20;
+        const x2 = p2.x * canvas.width + Math.sin(animTime + b) * 20;
+        const y2 = p2.y * canvas.height + Math.cos(animTime + b) * 20;
         
         ctx.moveTo(x1, y1);
         ctx.lineTo(x2, y2);
@@ -63,14 +70,17 @@ export function WebGLKnowledgeGraph() {
 
       // Draw nodes
       nodes.forEach((node, i) => {
-        const x = node.x * canvas.width + Math.sin(time + i) * 20;
-        const y = node.y * canvas.height + Math.cos(time + i) * 20;
+        const x = node.x * canvas.width + Math.sin(animTime + i) * 20;
+        const y = node.y * canvas.height + Math.cos(animTime + i) * 20;
+        
+        // Ensure radius is never negative
+        const radius = Math.max(1, node.size + Math.sin(animTime*2 + i) * 2);
         
         ctx.beginPath();
-        ctx.arc(x, y, node.size + Math.sin(time*2 + i) * 2, 0, Math.PI * 2);
+        ctx.arc(x, y, radius, 0, Math.PI * 2);
         
         const isCore = i === 0 || i === 5;
-        ctx.fillStyle = isCore ? neonColor : secondaryColor;
+        ctx.fillStyle = isCore ? neonColor : secondaryColor; // Use cached colors
         ctx.shadowBlur = isCore ? 20 : 10;
         ctx.shadowColor = ctx.fillStyle;
         
@@ -78,12 +88,16 @@ export function WebGLKnowledgeGraph() {
         
         ctx.shadowBlur = 0;
         ctx.fillStyle = '#ffffff';
-        ctx.font = `14px ${getComputedStyle(document.documentElement).getPropertyValue('--font-primary').trim() || 'sans-serif'}`;
+        ctx.font = `14px ${fontFamily}`; // Use cached font
         ctx.textAlign = 'center';
         ctx.fillText(node.id, x, y + node.size + 15);
       });
 
-      animationFrameId = requestAnimationFrame(render);
+      // Only continue animation if motion is not reduced
+      if (!prefersReducedMotion) {
+        time += 0.01;
+        animationFrameId = requestAnimationFrame(render);
+      }
     };
 
     render();

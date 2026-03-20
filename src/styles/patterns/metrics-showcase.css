@@ -1,0 +1,221 @@
+/**
+ * Metrics Showcase Pattern Styles
+ *
+ * BEM: .metrics-showcase, .performance-delta-metrics, .enterprise-scale-metrics, etc.
+ * 100% CSS variable-based design
+ * WCAG 2.2 AA compliant
+ */
+
+/* ============================================================
+   SHARED: Metrics Showcase Headers
+   ============================================================ */
+
+.metrics-showcase__header,
+.performance-delta-metrics .metrics-showcase__header,
+.enterprise-scale-metrics .metrics-showcase__header,
+.seo-continuity-metrics .metrics-showcase__header,
+.longevity-trust-metrics .metrics-showcase__header,
+.editor-efficiency-metrics .metrics-showcase__header {
+  text-align: center;
+  margin-bottom: var(--spacing-2xl);
+  max-width: 56rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.metrics-showcase__header h2 {
+  margin-bottom: var(--spacing-md);
+  color: var(--text-primary);
+}
+
+.metrics-showcase__header p {
+  color: var(--text-secondary);
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-relaxed);
+}
+
+/* ============================================================
+   BLOCK: Performance Delta Metrics
+   ============================================================ */
+
+.performance-delta-metrics {
+  --section-spacing-y: var(--spacing-section-md);
+  background: var(--surface-base);
+  position: relative;
+}
+
+.performance-delta-metrics::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    var(--neon-green-alpha-5) 0%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+.performance-delta-metrics > .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================================
+   BLOCK: Enterprise Scale Metrics
+   ============================================================ */
+
+.enterprise-scale-metrics {
+  --section-spacing-y: var(--spacing-section-md);
+  background: var(--surface-elevated);
+  position: relative;
+}
+
+.enterprise-scale-metrics::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    var(--neon-cyan-alpha-5) 0%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+.enterprise-scale-metrics > .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================================
+   BLOCK: SEO Continuity Metrics
+   ============================================================ */
+
+.seo-continuity-metrics {
+  --section-spacing-y: var(--spacing-section-md);
+  background: var(--surface-base);
+  position: relative;
+}
+
+.seo-continuity-metrics::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    var(--neon-pink-alpha-5) 0%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+.seo-continuity-metrics > .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================================
+   BLOCK: Longevity & Trust Metrics
+   ============================================================ */
+
+.longevity-trust-metrics {
+  --section-spacing-y: var(--spacing-section-md);
+  background: var(--surface-elevated);
+  position: relative;
+}
+
+.longevity-trust-metrics::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    var(--neon-indigo-alpha-5) 0%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+.longevity-trust-metrics > .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================================
+   BLOCK: Editor Efficiency Metrics
+   ============================================================ */
+
+.editor-efficiency-metrics {
+  --section-spacing-y: var(--spacing-section-md);
+  background: var(--surface-base);
+  position: relative;
+}
+
+.editor-efficiency-metrics::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    var(--neon-violet-alpha-5) 0%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+.editor-efficiency-metrics > .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 768px) {
+  .metrics-showcase__header,
+  .performance-delta-metrics .metrics-showcase__header,
+  .enterprise-scale-metrics .metrics-showcase__header,
+  .seo-continuity-metrics .metrics-showcase__header,
+  .longevity-trust-metrics .metrics-showcase__header,
+  .editor-efficiency-metrics .metrics-showcase__header {
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .metrics-showcase__header p {
+    font-size: var(--font-size-base);
+  }
+}
+
+/* ============================================================
+   ACCESSIBILITY
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .performance-delta-metrics::before,
+  .enterprise-scale-metrics::before,
+  .seo-continuity-metrics::before,
+  .longevity-trust-metrics::before,
+  .editor-efficiency-metrics::before {
+    animation: none;
+    transition: none;
+  }
+}
+
+/* ============================================================
+   DARK MODE
+   ============================================================ */
+
+@media (prefers-color-scheme: dark) {
+  .performance-delta-metrics,
+  .seo-continuity-metrics,
+  .editor-efficiency-metrics {
+    background: var(--surface-elevated);
+  }
+
+  .enterprise-scale-metrics,
+  .longevity-trust-metrics {
+    background: var(--surface-card);
+  }
+}

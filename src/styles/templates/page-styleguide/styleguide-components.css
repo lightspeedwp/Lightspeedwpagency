@@ -195,3 +195,49 @@
   color: var(--neon-color);
   background: color-mix(in srgb, var(--neon-color) 12%, transparent);
 }
+
+
+/* ============================================
+   LIGHT MODE
+   ============================================ */
+
+@media (prefers-color-scheme: light) {
+  .styleguide__states__input,
+  .styleguide__states__textarea {
+    background-color: var(--color-white);
+  }
+  
+  .styleguide__cards__item--default {
+    background: var(--color-white);
+  }
+  
+  .styleguide__cards__glow-inner {
+    background: var(--color-white);
+  }
+  
+  .styleguide__cards__item--glass {
+    background: rgba(255, 255, 255, 0.8);
+  }
+  
+  .styleguide__cards__item--elevated {
+    background: var(--color-white);
+  }
+}
+
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .styleguide__cards__item,
+  .styleguide__states__input,
+  .styleguide__states__textarea,
+  .styleguide__cards__glow-border {
+    transition: none;
+  }
+  
+  .styleguide__cards__item:hover {
+    transform: none;
+  }
+}

@@ -16,7 +16,9 @@ import {
   TrendUp,
   ShieldCheck,
   Star,
-  Globe
+  Globe,
+  Ticket,
+  CalendarCheck
 } from '@phosphor-icons/react';
 
 export const supportServiceBenefits = [
@@ -102,3 +104,37 @@ export const supportServiceResults = [
   { id: 'metric-3', number: '4.9/5', label: 'Customer satisfaction', icon: Star },
   { id: 'metric-4', number: '24/7', label: 'Support availability', icon: Globe },
 ];
+
+/** Real support statistics from LightSpeed WP Agency */
+export const supportServiceStats = [
+  { 
+    value: '10,575+', 
+    label: 'Tickets resolved since 2023', 
+    icon: Ticket,
+    description: 'Comprehensive support across all client sites'
+  },
+  { 
+    value: '13', 
+    label: 'Requests per day (avg)', 
+    icon: CalendarCheck,
+    description: 'Daily average varies based on client needs'
+  },
+  { 
+    value: '68', 
+    label: 'Requests per week (avg)', 
+    icon: Clock,
+    description: 'Weekly support volume across all retainers'
+  },
+  { 
+    value: '290', 
+    label: 'Requests per month (avg)', 
+    icon: TrendUp,
+    description: 'Monthly support requests handled efficiently'
+  },
+];
+
+/** Support volume note */
+export const supportVolumeNote = {
+  title: 'Understanding support volume variability',
+  description: 'Support request volumes fluctuate day-to-day based on client activity, project launches, and seasonal patterns. Our team is equipped to handle peak demand while maintaining fast response times across all priority levels.'
+};

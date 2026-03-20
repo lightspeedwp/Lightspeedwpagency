@@ -95,37 +95,35 @@
 
 @keyframes glowPulse {
   0%, 100% {
-    box-shadow: 0 0 8px color-mix(in srgb, var(--neon-color) 30%, transparent),
-                0 0 20px color-mix(in srgb, var(--neon-color) 15%, transparent);
+    box-shadow: var(--glow-neon);
   }
   50% {
-    box-shadow: 0 0 16px color-mix(in srgb, var(--neon-color) 50%, transparent),
-                0 0 40px color-mix(in srgb, var(--neon-color) 25%, transparent);
+    box-shadow: var(--glow-neon-intense);
   }
 }
 
 @keyframes neonBorderFlow {
   0% {
     border-color: var(--primary);
-    box-shadow: 0 0 6px color-mix(in srgb, var(--primary) 25%, transparent);
+    box-shadow: var(--glow-primary);
   }
   50% {
     border-color: var(--neon-color);
-    box-shadow: 0 0 12px color-mix(in srgb, var(--neon-color) 40%, transparent);
+    box-shadow: var(--glow-neon);
   }
   100% {
     border-color: var(--primary);
-    box-shadow: 0 0 6px color-mix(in srgb, var(--primary) 25%, transparent);
+    box-shadow: var(--glow-primary);
   }
 }
 
 @keyframes neonTextGlow {
   0%, 100% {
-    text-shadow: 0 0 6px color-mix(in srgb, var(--neon-color) 30%, transparent);
+    text-shadow: 0 0 6px var(--neon-color);
   }
   50% {
-    text-shadow: 0 0 14px color-mix(in srgb, var(--neon-color) 50%, transparent),
-                 0 0 30px color-mix(in srgb, var(--neon-color) 20%, transparent);
+    text-shadow: 0 0 14px var(--neon-color),
+                 0 0 30px var(--neon-color);
   }
 }
 
@@ -238,6 +236,5 @@
 .neon-focus:focus-visible {
   outline: none;
   border-color: var(--neon-color);
-  box-shadow: 0 0 0 2px color-mix(in srgb, var(--neon-color) 20%, transparent),
-              0 0 12px color-mix(in srgb, var(--neon-color) 25%, transparent);
+  box-shadow: var(--glow-neon);
 }

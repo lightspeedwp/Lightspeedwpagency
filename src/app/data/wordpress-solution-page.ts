@@ -4,7 +4,7 @@
  * Content for the WordPress Solution template.
  */
 
-import { Layout, DeviceMobile, Lightning, MagnifyingGlass, Lock, PencilSimple, Globe, ChartBar, HardDrives, Database } from '@phosphor-icons/react';
+import { Layout, DeviceMobile, Lightning, MagnifyingGlass, Lock, PencilSimple, Globe, ChartBar, HardDrive, Database } from '@phosphor-icons/react';
 
 export const wordpressSolutionHero = {
   title: "Enterprise-Grade WordPress Solutions",
@@ -33,7 +33,7 @@ export const wordpressSolutionOverview = {
       description: "WordPress dominates the CMS market share"
     },
     {
-      icon: HardDrives,
+      icon: HardDrive,
       value: "100%",
       label: "Ownership",
       description: "You own your data and content completely"

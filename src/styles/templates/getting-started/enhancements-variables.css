@@ -1,0 +1,43 @@
+/**
+ * Getting Started — Theme Variables
+ *
+ * Mode-aware CSS variables for light and dark themes.
+ *
+ * Design tokens:
+ * - Light mode: Clean, professional, subtle accents
+ * - Dark mode: Full neon/funky aesthetic with glowing elements
+ */
+
+/* ============================================
+   ROOT CSS VARIABLES — MODE-AWARE
+   ============================================ */
+
+/* Light mode (default) */
+.getting-started {
+  --gs-bg-primary: var(--color-white);
+  --gs-bg-secondary: var(--color-gray-50);
+  --gs-bg-card: var(--color-white);
+  --gs-text-primary: var(--color-gray-900);
+  --gs-text-secondary: var(--color-gray-600);
+  --gs-border-color: var(--color-gray-200);
+  --gs-accent-color: var(--category-blue);
+  --gs-shadow: var(--shadow-md);
+  --gs-interactive-bg: var(--color-blue-50);
+  --gs-interactive-border: var(--color-blue-200);
+  --gs-interactive-text: var(--color-blue-700);
+}
+
+/* Dark mode */
+.dark .getting-started {
+  --gs-bg-primary: var(--color-black);
+  --gs-bg-secondary: color-mix(in srgb, var(--wp--preset--color--deep-purple) 20%, var(--color-black));
+  --gs-bg-card: color-mix(in srgb, var(--color-black) 60%, transparent);
+  --gs-text-primary: var(--color-white);
+  --gs-text-secondary: color-mix(in srgb, var(--color-white) 80%, transparent);
+  --gs-border-color: color-mix(in srgb, var(--color-white) 10%, transparent);
+  --gs-accent-color: var(--wp--preset--color--neon-cyan);
+  --gs-shadow: 0 0 20px color-mix(in srgb, var(--wp--preset--color--neon-cyan) 15%, transparent);
+  --gs-interactive-bg: color-mix(in srgb, var(--wp--preset--color--neon-cyan) 10%, transparent);
+  --gs-interactive-border: color-mix(in srgb, var(--wp--preset--color--neon-cyan) 30%, transparent);
+  --gs-interactive-text: var(--wp--preset--color--neon-cyan);
+}

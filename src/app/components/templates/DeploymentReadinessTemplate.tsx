@@ -124,7 +124,7 @@ export function DeploymentReadinessTemplate() {
 
           {/* Hero */}
           <div className="deploy__hero">
-            <h1 className="deploy__title">Deployment Readiness</h1>
+            <h1 className="deploy__title">Deployment readiness</h1>
             <p className="deploy__subtitle">
               Pre-deploy validation dashboard with simulated Lighthouse scores, accessibility audit, broken link checker, and WordPress FSE compatibility check.
             </p>

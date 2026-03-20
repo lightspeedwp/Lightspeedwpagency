@@ -1,7 +1,7 @@
 # Prompt Trigger Words — Registry
 
 **Category:** Workflow  
-**Version:** 8.2.0  
+**Version:** 16.0.0  
 **Last Updated:** 2026-03-18  
 **Status:** Active  
 **Template Used:** _templates/general-template.md
@@ -16,13 +16,13 @@ This project supports **trigger words** — short commands the user types instea
 
 ---
 
-## Registered Triggers (40 Total)
+## Registered Triggers (93 Total)
 
 ### Workflow Triggers (8)
 
 | Trigger | Prompt File | Description |
 |---|---|---|
-| `cleanup` | `/prompts/cleanup.md` | Full 11-step audit + fix, then auto-runs `continue` |
+| `cleanup` | `/prompts/cleanup.md` | Full 11-step audit + fix, then auto-runs `archive` |
 | `continue` | `/prompts/continue.md` | Pick up next open task from `/tasks/task-list.md` |
 | `cleanup and continue` | `/prompts/cleanup.md` → `/prompts/continue.md` | Alias for `cleanup` (identical behavior) |
 | `status` | `/prompts/status.md` | Read-only project health dashboard |
@@ -30,6 +30,70 @@ This project supports **trigger words** — short commands the user types instea
 | `sitemap` | `/prompts/sitemap.md` | Sync SiteMapTemplate with actual routes (inline fix, no report) |
 | `routes` | `/prompts/routes.md` | Route integrity audit + inline fix (no report). Use `audit routes` for report variant |
 | `process reports` | `/prompts/process-reports.md` | Organize, rename, and archive reports |
+
+### Archive Triggers (5)
+
+| Trigger | Prompt File | Description |
+|---|---|---|
+| `archive` | `/prompts/archive.md` | **Master orchestrator** — runs ALL archive sub-triggers sequentially |
+| `archive prompts` | `/prompts/archive-prompts.md` | Classify prompts as reusable or specific; generalize or archive |
+| `archive reports` | `/prompts/archive-reports.md` | Archive resolved/outdated reports |
+| `archive tasks` | `/prompts/archive-tasks.md` | Archive completed task lists, clean protected files |
+| `archive guidelines` | `/prompts/archive-guidelines.md` | Archive obsolete/superseded guideline files |
+
+### Update Triggers (10)
+
+| Trigger | Prompt File | Description |
+|---|---|---|
+| `update` | `/prompts/update.md` | **Master orchestrator** — runs ALL update sub-triggers sequentially |
+| `update routes` | `/prompts/update-routes.md` | Sync routes, fix gaps, update route map and SiteMap |
+| `update sitemap` | `/prompts/update-sitemap.md` | Sync SiteMapTemplate with actual routes (inline fix, no report) |
+| `update data` | `/prompts/update-data.md` | Migrate hardcoded content to data files — zero hardcoded strings |
+| `update guidelines` | `/prompts/update-guidelines.md` | Refresh guideline accuracy, frontmatter, and cross-references |
+| `update prompts` | `/prompts/update-prompts.md` | Fix prompt frontmatter, references, and environment reminders |
+| `update reports` | `/prompts/update-reports.md` | Organize reports into correct directories and naming |
+| `update tasks` | `/prompts/update-tasks.md` | Verify task completion, remove stale tasks, update counts |
+| `update status` | `/prompts/update-status.md` | Refresh project metrics, route counts, compliance scores |
+| `update triggers` | `/prompts/update-triggers.md` | Sync trigger registry with prompt files |
+
+### Expand Triggers (18)
+
+| Trigger | Prompt File | Description |
+|---|---|---|
+| `expand` | `/prompts/expand.md` | **Master orchestrator** — runs ALL expand sub-triggers |
+| `expand prompts` | `/prompts/expand-prompts.md` | Discover new reusable prompts from chat history patterns |
+| `expand guidelines` | `/prompts/expand-guidelines.md` | Identify and fix guideline gaps and ambiguities |
+| `expand data` | `/prompts/expand-data.md` | Discover shared data structures across templates |
+| `expand patterns` | `/prompts/expand-patterns.md` | Discover repeated UI sections to extract as reusable patterns |
+| `expand components` | `/prompts/expand-components.md` | Identify duplicated component logic for extraction |
+| `expand templates` | `/prompts/expand-templates.md` | Find missing sections in existing templates |
+| `expand pages` | `/prompts/expand-pages.md` | Discover missing pages in the site structure |
+| `expand functionality` | `/prompts/expand-functionality.md` | Discover dead UI and missing interactive features |
+| `expand webgl` | `/prompts/expand-webgl.md` | Recommend new WebGL integrations per page brief |
+| `expand triggers` | `/prompts/expand-triggers.md` | Analyse trigger registry for gaps and overlaps |
+| `expand blocks` | `/prompts/expand-blocks.md` | Discover missing atomic block components |
+| `expand contexts` | `/prompts/expand-contexts.md` | Identify missing React contexts for state management |
+| `expand hooks` | `/prompts/expand-hooks.md` | Identify missing custom hooks (useLocalStorage, etc.) |
+| `expand a11y` | `/prompts/expand-a11y.md` | Discover accessibility enhancements beyond WCAG |
+| `expand routes` | `/prompts/expand-routes.md` | Analyse navigation flows for orphans and dead-ends |
+| `expand seo` | `/prompts/expand-seo.md` | Discover missing meta, schema, internal linking |
+| `expand animations` | `/prompts/expand-animations.md` | Discover scroll-triggered and neon animation opportunities |
+
+All expand triggers are **discovery-first**
+
+### Optimise Triggers (6)
+
+| Trigger | Prompt File | Description |
+|---|---|---|
+| `optimise` | `/prompts/optimise.md` | **Master orchestrator** — runs ALL optimise sub-triggers sequentially |
+| `optimise memory` | `/prompts/optimise-memory.md` | File splitting, duplicate removal, component consolidation, DRY architecture enforcement |
+| `optimise css` | `/prompts/optimise-css.md` | CSS architecture, duplicate removal, logical splits, import optimization |
+| `optimise components` | `/prompts/optimise-components.md` | Component consolidation, prop optimization, variant reduction |
+| `optimise data` | `/prompts/optimise-data.md` | Data file consolidation, duplicate removal, type safety |
+| `optimise imports` | `/prompts/optimise-imports.md` | Remove unused imports, consolidate import statements |
+| `optimise performance` | `/prompts/optimise-performance.md` | Bundle size, lazy loading, render performance, memoization |
+
+All optimise triggers MUST maintain 100% design system compliance
 
 ### Audit Triggers (24)
 
@@ -60,13 +124,7 @@ This project supports **trigger words** — short commands the user types instea
 | `audit footer` | `/prompts/audit-footer.md` | Footer template part compliance (main site vs dev tools patterns) |
 | `audit hero` | `/prompts/audit-hero.md` | Hero template part compliance (single part, data-driven patterns per page type) |
 
-### Scaffold Triggers (3)
-
-| Trigger | Prompt File | Description |
-|---|---|---|
-| `new template` | `/prompts/new-template.md` | Scaffold a page template from patterns |
-| `new pattern` | `/prompts/new-pattern.md` | Scaffold a reusable block pattern |
-| `new block` | `/prompts/new-block.md` | Scaffold an atomic block component |
+### Scaffold Triggers
 
 All scaffold triggers:
 1. Read relevant guidelines (patterns, components, archetypes).
@@ -75,17 +133,26 @@ All scaffold triggers:
 4. Register the route and CSS import.
 5. Update CHANGELOG.
 
-### Code Quality Triggers (1)
+### Fix Triggers
 
-| Trigger | Prompt File | Description |
-|---|---|---|
-| `apply bem` | `/prompts/apply-bem.md` | BEM class compliance audit + fix (inline styles → CSS variables, Tailwind → BEM) |
+All fix triggers follow the same workflow:
+1. Read relevant guidelines and definitions.
+2. Scan the codebase for violations.
+3. Fix violations inline where possible.
+4. Save report to `/reports/YYYY-MM/[fix-name].md`.
+5. Create or update task list in `/tasks/task-list.md` (if manual review needed).
 
-### Release Trigger (1)
+**`fix`** — Master orchestrator. Runs ALL fix sub-triggers in sequence:
 
-| Trigger | Prompt File | Description |
-|---|---|---|
-| `release` | `/prompts/release.md` | Version bump: move Unreleased → versioned, update links |
+1. `fix titles` — Title Case → Sentence Case (headings, titles, labels)
+
+After all fixes complete, prints a summary dashboard showing pass/fail per fix. Does **not** auto-chain to `process reports` unless explicitly requested via `fix && process reports`.
+
+**`fix titles`** — Scan all headings, titles, and labels for Title Case violations. Convert to sentence case while preserving acronyms (AI, SEO, API, etc.) and proper nouns (LSX Design, WordPress, etc.). Fix inline, write report, flag ambiguous cases for manual review.
+
+### Release Trigger
+
+**`release`** — Accepts optional modifier: `release patch`, `release minor`, `release major`, or `release 2.1.0`. If no modifier, auto-detects version type from changelog entries.
 
 ---
 
@@ -93,7 +160,7 @@ All scaffold triggers:
 
 ### Workflow Triggers
 
-**`cleanup`** — Executes `/prompts/cleanup.md` (11 steps), then automatically chains to `/prompts/continue.md`. Use `cleanup only` modifier to skip the continue phase.
+**`cleanup`** — Executes `/prompts/cleanup.md` (11 steps), then automatically chains to `/prompts/archive.md`. Use `cleanup only` modifier to skip the archive phase.
 
 **`continue`** — Reads `/tasks/task-list.md`, picks the first unchecked task by priority, executes it, marks it complete. Loops until session capacity is reached.
 
@@ -108,6 +175,170 @@ All scaffold triggers:
 **`routes`** — Route integrity audit + inline fix (no report). Use `audit routes` for report variant.
 
 **`process reports`** — Audits `/reports/` directory. Moves misplaced files, renames non-conforming filenames, archives old reports.
+
+### Archive Triggers
+
+All archive triggers follow the same workflow:
+1. Read relevant guidelines and definitions.
+2. Scan the codebase for violations.
+3. Fix violations where possible.
+4. Save report to `/reports/YYYY-MM/[audit-name].md`.
+5. Create or update a dedicated task list in `/tasks/[audit-name]-task-list.md`.
+
+**`archive`** — Master orchestrator. Runs ALL 5 archive sub-triggers in sequence:
+
+1. `archive prompts` — Classify prompts as reusable or specific
+2. `archive reports` — Archive resolved/outdated reports
+3. `archive tasks` — Archive completed task lists, clean protected files
+4. `archive guidelines` — Archive obsolete/superseded guideline files
+
+After all 5 archives complete, prints a summary dashboard showing pass/fail per archive. Does **not** auto-chain to `process reports` unless explicitly requested via `archive && process reports`.
+
+**`archive prompts`** — Classify prompts as reusable or specific; generalize or archive.
+
+**`archive reports`** — Archive resolved/outdated reports.
+
+**`archive tasks`** — Archive completed task lists, clean protected files.
+
+**`archive guidelines`** — Archive obsolete/superseded guideline files.
+
+### Update Triggers
+
+All update triggers follow the same workflow:
+1. Read relevant guidelines and definitions.
+2. Scan the codebase for violations.
+3. Fix violations where possible.
+4. Save report to `/reports/YYYY-MM/[audit-name].md`.
+5. Create or update a dedicated task list in `/tasks/[audit-name]-task-list.md`.
+
+**`update`** — Master orchestrator. Runs ALL 10 update sub-triggers in sequence:
+
+1. `update routes` — Sync routes, fix gaps, update route map and SiteMap
+2. `update sitemap` — Sync SiteMapTemplate with actual routes
+3. `update data` — Migrate hardcoded content to data files — zero hardcoded strings
+4. `update guidelines` — Refresh guideline accuracy, frontmatter, and cross-references
+5. `update prompts` — Fix prompt frontmatter, references, and environment reminders
+6. `update reports` — Organize reports into correct directories and naming
+7. `update tasks` — Verify task completion, remove stale tasks, update counts
+8. `update status` — Refresh project metrics, route counts, compliance scores
+9. `update triggers` — Sync trigger registry with prompt files
+
+After all 10 updates complete, prints a summary dashboard showing pass/fail per update. Does **not** auto-chain to `process reports` unless explicitly requested via `update && process reports`.
+
+**`update routes`** — Sync routes, fix gaps, update route map and SiteMap.
+
+**`update sitemap`** — Sync SiteMapTemplate with actual routes (inline fix, no report).
+
+**`update data`** — Migrate hardcoded content to data files — zero hardcoded strings.
+
+**`update guidelines`** — Refresh guideline accuracy, frontmatter, and cross-references.
+
+**`update prompts`** — Fix prompt frontmatter, references, and environment reminders.
+
+**`update reports`** — Organize reports into correct directories and naming.
+
+**`update tasks`** — Verify task completion, remove stale tasks, update counts.
+
+**`update status`** — Refresh project metrics, route counts, compliance scores.
+
+**`update triggers`** — Sync trigger registry with prompt files.
+
+### Expand Triggers
+
+All expand triggers follow the same workflow:
+1. Read relevant guidelines and definitions.
+2. Scan the codebase for violations.
+3. Fix violations where possible.
+4. Save report to `/reports/YYYY-MM/[audit-name].md`.
+5. Create or update a dedicated task list in `/tasks/[audit-name]-task-list.md`.
+
+**`expand`** — Master orchestrator. Runs ALL 17 expand sub-triggers in sequence:
+
+1. `expand triggers` — Meta-analysis of trigger registry gaps
+2. `expand prompts` — Discover new reusable prompts from chat patterns
+3. `expand guidelines` — Identify and fix guideline gaps
+4. `expand data` — Discover shared data structures across templates
+5. `expand hooks` — Identify missing custom hooks
+6. `expand contexts` — Identify missing React contexts
+7. `expand blocks` — Discover missing atomic block components
+8. `expand components` — Identify duplicated component logic for extraction
+9. `expand patterns` — Discover repeated UI sections to extract as patterns
+10. `expand templates` — Find missing sections in existing templates
+11. `expand pages` — Discover missing pages in the site structure
+12. `expand routes` — Analyse navigation flows for orphans and dead-ends
+13. `expand functionality` — Discover dead UI and missing interactive features
+14. `expand a11y` — Discover progressive accessibility enhancements
+15. `expand animations` — Discover animation opportunities for Funky Neon aesthetic
+16. `expand webgl` — Recommend new WebGL integrations per page brief
+17. `expand seo` — Discover missing meta, schema, and internal linking
+
+After all 17 expands complete, prints a summary dashboard showing pass/fail per expand. Does **not** auto-chain to `process reports` unless explicitly requested via `expand && process reports`.
+
+**`expand prompts`** — Discover new reusable prompts from chat history patterns.
+
+**`expand guidelines`** — Identify and fix guideline gaps and ambiguities.
+
+**`expand data`** — Discover shared data structures (stats blocks, feature lists, testimonials) across templates.
+
+**`expand hooks`** — Identify duplicated hook logic (localStorage, mediaQuery, intersectionObserver, debounce) for extraction into shared hooks.
+
+**`expand contexts`** — Identify missing React contexts (Theme, Navigation, Notification, Modal) based on prop-drilling and cross-component state needs.
+
+**`expand blocks`** — Discover missing atomic block components (StatCounter, BadgeLabel, SkeletonLoader). Hands off to `new block`.
+
+**`expand patterns`** — Discover repeated UI sections to extract as reusable block patterns. Hands off to `new pattern`.
+
+**`expand components`** — Identify duplicated component logic for extraction into shared atomic components. Hands off to `new block`.
+
+**`expand templates`** — Find missing sections in existing templates vs archetype expectations. Hands off to `new template` or `new pattern`.
+
+**`expand pages`** — Discover missing pages in the site structure. Hands off to `new template`.
+
+**`expand routes`** — Analyse navigation flows for orphaned pages, missing breadcrumbs, and UX dead-ends.
+
+**`expand functionality`** — Discover dead UI (buttons/links that do nothing) and missing interactive features.
+
+**`expand a11y`** — Discover progressive accessibility enhancements: skip links, focus traps, aria-live regions, reduced motion fallbacks, keyboard navigation.
+
+**`expand animations`** — Discover pages and components that would benefit from scroll-triggered animations, micro-interactions, and Funky Neon effects. All with `prefers-reduced-motion` fallbacks.
+
+**`expand webgl`** — Review page briefs and recommend new WebGL/canvas integrations with accessibility fallbacks.
+
+**`expand seo`** — Scan templates for missing meta descriptions, Open Graph tags, JSON-LD schema markup, and internal linking opportunities.
+
+**`expand triggers`** — Meta-trigger that analyses the trigger registry for gaps, overlaps, and missing orchestrator coverage.
+
+### Optimise Triggers
+
+All optimise triggers follow the same workflow:
+1. Read relevant guidelines and definitions.
+2. Scan the codebase for violations.
+3. Fix violations where possible.
+4. Save report to `/reports/YYYY-MM/[audit-name].md`.
+5. Create or update a dedicated task list in `/tasks/[audit-name]-task-list.md`.
+
+**`optimise`** — Master orchestrator. Runs ALL 6 optimise sub-triggers in sequence:
+
+1. `optimise memory` — File splitting, duplicate removal, component consolidation, DRY architecture enforcement
+2. `optimise css` — CSS architecture, duplicate removal, logical splits, import optimization
+3. `optimise components` — Component consolidation, prop optimization, variant reduction
+4. `optimise data` — Data file consolidation, duplicate removal, type safety
+5. `optimise imports` — Remove unused imports, consolidate import statements
+6. `optimise performance` — Bundle size, lazy loading, render performance, memoization
+
+After all 6 optimises complete, prints a summary dashboard showing pass/fail per optimise. Does **not** auto-chain to `process reports` unless explicitly requested via `optimise && process reports`.
+
+**`optimise memory`** — File splitting, duplicate removal, component consolidation, DRY architecture enforcement.
+
+**`optimise css`** — CSS architecture, duplicate removal, logical splits, import optimization.
+
+**`optimise components`** — Component consolidation, prop optimization, variant reduction.
+
+**`optimise data`** — Data file consolidation, duplicate removal, type safety.
+
+**`optimise imports`** — Remove unused imports, consolidate import statements.
+
+**`optimise performance`** — Bundle size, lazy loading, render performance, memoization.
 
 ### Audit Triggers
 
@@ -172,8 +403,8 @@ All scaffold triggers:
 | `audit` | Run all 24 audit sub-triggers sequentially |
 | `audit && process reports` | Run all 24 audits, then auto-chain to `process reports` |
 | `audit tokens, css, a11y` | Run only the listed audit sub-triggers (comma-separated) |
-| `cleanup` | Full cleanup + continue |
-| `cleanup only` | Cleanup only — skip the continue phase |
+| `cleanup` | Full cleanup + archive |
+| `cleanup only` | Cleanup only — skip the archive phase |
 | `continue` | Next open task |
 | `continue from P2.3` | Override task selection — start from specific task ID |
 | `release patch` | Patch version bump (x.y.Z) |
@@ -241,6 +472,12 @@ Every prompt execution MUST enforce:
 
 | Version | Date | Changes |
 |---|---|---|
+| 16.0.0 | 2026-03-18 | Added Fix category with 2 triggers (`fix`, `fix titles`). Total 91 → 93 |
+| 15.0.0 | 2026-03-18 | Added Optimise category with 6 triggers (memory, css, components, data, imports, performance). Total 83 → 89 |
+| 14.0.0 | 2026-03-18 | Added Optimise category with 6 triggers (memory, css, components, data, imports, performance). Total 83 → 89 |
+| 13.0.0 | 2026-03-18 | Expanded Expand category from 11 → 18 triggers (added blocks, contexts, hooks, a11y, routes, seo, animations). Total 76 → 83 |
+| 12.0.0 | 2026-03-18 | Expanded Expand category from 3 → 11 triggers (added data, patterns, components, templates, pages, functionality, webgl, triggers). Added `new page` scaffold trigger. Scaffold 3 → 4. Total 58 → 76 |
+| 11.0.0 | 2026-03-18 | Added 3 new categories: Archive (5 triggers), Update (10 triggers), Expand (3 triggers). 18 new prompt files created. `cleanup` now chains to `archive`. Total 40 → 58 |
 | 8.2.0 | 2026-03-18 | Registry sync via `update triggers`. Added unregistered `routes` workflow trigger. Added scaffold + code quality trigger tables. Workflow 7 → 8. Total 39 → 40. Zero circular references validated |
 | 8.1.0 | 2026-03-18 | Added `update triggers` guideline trigger. Guidelines triggers 2 → 3. Total triggers 38 → 39. Updated audit orchestrator to 24 sub-triggers. Added guideline references to 6 audit prompts. Validated zero circular references |
 | 8.0.0 | 2026-03-18 | Added 5 audit triggers: `audit phosphor`, `audit icons`, `audit header`, `audit footer`, `audit hero`. Audit triggers 19 → 24. Total triggers 33 → 38 |

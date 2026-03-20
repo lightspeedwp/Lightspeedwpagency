@@ -160,7 +160,7 @@ export function CodeQualityDashboardTemplate() {
         <div className="cq-dashboard__section">
           <div className="cq-dashboard__section-header">
             <div className="cq-dashboard__section-icon"><DotsSix size={18} /></div>
-            <h2 className="cq-dashboard__section-title">Component Inventory</h2>
+            <h2 className="cq-dashboard__section-title">Component inventory</h2>
             <span className="cq-dashboard__section-badge cq-dashboard__section-badge--info">{totalComponents} total</span>
           </div>
           <div className="cq-dashboard__section-body">
@@ -180,7 +180,7 @@ export function CodeQualityDashboardTemplate() {
         <div className="cq-dashboard__section">
           <div className="cq-dashboard__section-header">
             <div className="cq-dashboard__section-icon"><Path size={18} /></div>
-            <h2 className="cq-dashboard__section-title">Route Statistics</h2>
+            <h2 className="cq-dashboard__section-title">Route statistics</h2>
             <span className="cq-dashboard__section-badge cq-dashboard__section-badge--success">0 broken</span>
           </div>
           <div className="cq-dashboard__section-body">
@@ -266,7 +266,7 @@ export function CodeQualityDashboardTemplate() {
         <div className="cq-dashboard__section">
           <div className="cq-dashboard__section-header">
             <div className="cq-dashboard__section-icon"><CheckCircle size={18} /></div>
-            <h2 className="cq-dashboard__section-title">Compliance Scores</h2>
+            <h2 className="cq-dashboard__section-title">Compliance scores</h2>
             <span className="cq-dashboard__section-badge cq-dashboard__section-badge--success">{avgCompliance}% avg</span>
           </div>
           <div className="cq-dashboard__section-body">

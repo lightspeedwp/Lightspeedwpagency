@@ -1,4 +1,5 @@
 import { useRef, useEffect } from 'react';
+import { resolveCssColor, addAlpha } from '../../utils/css-color-resolver';
 
 interface WebGLContentInkProps {
   accentColor?: string;
@@ -22,6 +23,9 @@ export function WebGLContentInk({
     let animationFrameId: number;
     let time = 0;
 
+    // Check for prefers-reduced-motion
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     const resize = () => {
       const parent = canvas.parentElement;
       if (parent) {
@@ -37,15 +41,9 @@ export function WebGLContentInk({
     window.addEventListener('resize', resize);
     resize();
 
-    const getCssColor = (colorVar: string) => {
-      if (!colorVar.startsWith('var(')) return colorVar;
-      const varName = colorVar.match(/var\(([^),]+)/)?.[1];
-      if (!varName) return colorVar;
-      // Fallback
-      const fallbackMatch = colorVar.match(/,\s*([^)]+)\)/);
-      const fallback = fallbackMatch ? fallbackMatch[1].trim() : '#000';
-      return getComputedStyle(document.documentElement).getPropertyValue(varName).trim() || fallback;
-    };
+    // Resolve colors once (NEVER in animation loop)
+    const primary = resolveCssColor(accentColor, '#ff00ff');
+    const secondary = resolveCssColor(secondaryColor, '#b14dff');
 
     // Particles for fluid/ink simulation
     const particles: {x: number, y: number, vx: number, vy: number, life: number, maxLife: number, size: number}[] = [];
@@ -72,9 +70,6 @@ export function WebGLContentInk({
       ctx.fillRect(0, 0, width, height);
       
       time += 0.01;
-
-      const primary = getCssColor(accentColor);
-      const secondary = getCssColor(secondaryColor);
 
       // Noise field for fluid motion
       const noise = (x: number, y: number, t: number) => {

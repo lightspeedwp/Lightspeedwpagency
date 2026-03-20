@@ -39,7 +39,7 @@ export function GalleryArchiveTemplate() {
       <Section spacing="lg">
         <Container>
           <header className="archive-header">
-            <h1 className="archive-header__title">Photo Galleries</h1>
+            <h1 className="archive-header__title">Photo galleries</h1>
             <p className="archive-header__description">Events, retreats, and behind the scenes.</p>
           </header>
 

@@ -37,7 +37,7 @@ export function AsideArchiveTemplate() {
         <Container>
           <div className="wp-max-w-2xl wp-mx-auto">
             <header className="archive-header">
-              <h1 className="archive-header__title">Quick Updates</h1>
+              <h1 className="archive-header__title">Quick updates</h1>
               <p className="archive-header__description">Short announcements, thoughts, and links.</p>
             </header>
 

@@ -1,0 +1,251 @@
+/**
+ * WebGL Showcase Components
+ * 
+ * Styling for WebGL canvas components used in Figma Make showcase.
+ * Follows BEM methodology and uses design system tokens exclusively.
+ * 
+ * Components:
+ * - .webgl-ripple-wave
+ * - .webgl-particle-field
+ * - .webgl-gradient-orbs
+ * - .webgl-neon-grid
+ * - .webgl-geometric-grid
+ */
+
+/* ============================================
+   Ripple Wave
+   ============================================ */
+
+.webgl-ripple-wave {
+  /* Layout */
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  
+  /* Visual */
+  background: var(--surface-primary);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.webgl-ripple-wave__canvas {
+  /* Layout */
+  display: block;
+  width: 100%;
+  height: 100%;
+  
+  /* Visual */
+  opacity: 0.8;
+}
+
+/* ============================================
+   Particle Field
+   ============================================ */
+
+.webgl-particle-field {
+  /* Layout */
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  
+  /* Visual */
+  background: var(--surface-primary);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.webgl-particle-field__canvas {
+  /* Layout */
+  display: block;
+  width: 100%;
+  height: 100%;
+  
+  /* Visual */
+  opacity: 0.7;
+}
+
+/* ============================================
+   Gradient Orbs
+   ============================================ */
+
+.webgl-gradient-orbs {
+  /* Layout */
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  
+  /* Visual */
+  background: var(--surface-primary);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.webgl-gradient-orbs__canvas {
+  /* Layout */
+  display: block;
+  width: 100%;
+  height: 100%;
+  
+  /* Visual */
+  opacity: 0.6;
+  filter: blur(2px);
+}
+
+/* ============================================
+   Neon Grid
+   ============================================ */
+
+.webgl-neon-grid {
+  /* Layout */
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  
+  /* Visual */
+  background: var(--surface-primary);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.webgl-neon-grid__canvas {
+  /* Layout */
+  display: block;
+  width: 100%;
+  height: 100%;
+  
+  /* Visual */
+  opacity: 0.9;
+}
+
+/* ============================================
+   Geometric Grid
+   ============================================ */
+
+.webgl-geometric-grid {
+  /* Layout */
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  
+  /* Visual */
+  background: var(--surface-primary);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.webgl-geometric-grid__canvas {
+  /* Layout */
+  display: block;
+  width: 100%;
+  height: 100%;
+  
+  /* Visual */
+  opacity: 0.7;
+}
+
+/* ============================================
+   Hero Background Variant
+   ============================================ */
+
+.webgl-hero-background {
+  /* Layout */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  
+  /* Visual */
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.webgl-hero-background__canvas {
+  /* Layout */
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* ============================================
+   Card Background Variant
+   ============================================ */
+
+.webgl-card-background {
+  /* Layout */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  z-index: 0;
+  
+  /* Visual */
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+.webgl-card-background__canvas {
+  /* Layout */
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* ============================================
+   Reduced Motion Support
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .webgl-ripple-wave,
+  .webgl-particle-field,
+  .webgl-gradient-orbs,
+  .webgl-neon-grid,
+  .webgl-geometric-grid,
+  .webgl-hero-background,
+  .webgl-card-background {
+    /* Replace with static gradient */
+    background: linear-gradient(
+      135deg,
+      var(--surface-primary) 0%,
+      var(--surface-secondary) 100%
+    );
+  }
+  
+  .webgl-ripple-wave__canvas,
+  .webgl-particle-field__canvas,
+  .webgl-gradient-orbs__canvas,
+  .webgl-neon-grid__canvas,
+  .webgl-geometric-grid__canvas,
+  .webgl-hero-background__canvas,
+  .webgl-card-background__canvas {
+    /* Hide canvas for reduced motion */
+    display: none;
+  }
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
+
+@media (max-width: 768px) {
+  .webgl-ripple-wave,
+  .webgl-particle-field,
+  .webgl-gradient-orbs,
+  .webgl-neon-grid,
+  .webgl-geometric-grid {
+    /* Reduce height on mobile */
+    min-height: 200px;
+  }
+  
+  .webgl-hero-background {
+    /* Reduce opacity on mobile for performance */
+    opacity: 0.2;
+  }
+}

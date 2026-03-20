@@ -1,0 +1,43 @@
+/**
+ * Service Hero — CTA Styles
+ *
+ * Call-to-action button groups for service hero sections.
+ * All styling uses CSS variables for complete user control.
+ *
+ * BEM Block: .service-hero__cta-*
+ * Created: March 18, 2026 — BEM application round
+ *
+ * @see service-hero-core.css (main hero styles)
+ */
+
+/* ============================================
+   CTA GROUP
+   ============================================ */
+
+.service-hero__cta-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+  margin-bottom: var(--spacing-16);
+}
+
+/* ============================================
+   CTA ICON
+   ============================================ */
+
+.service-hero__cta-icon {
+  margin-left: var(--spacing-2);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+  .service-hero__cta-group {
+    flex-direction: column;
+    width: 100%;
+  }
+}

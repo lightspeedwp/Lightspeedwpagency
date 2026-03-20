@@ -63,7 +63,7 @@ export function SectionPresetsShowcase() {
                     <Container>
                       {category.category === 'Hero' && (
                         <>
-                          <h1>Hero Headline</h1>
+                          <h1>Hero headline</h1>
                           <p>Subheading text that explains the value proposition clearly and concisely.</p>
                           <div className="button-group">
                             <Button variant="primary">Primary Action</Button>
@@ -86,7 +86,7 @@ export function SectionPresetsShowcase() {
 
                       {category.category === 'Content' && (
                         <>
-                          <h2>Content Heading</h2>
+                          <h2>Content heading</h2>
                           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                           <h3>Subheading</h3>
                           <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>

@@ -61,7 +61,7 @@
 }
 
 .wp-index-filter-btn--inactive {
-  background-color: var(--muted);
+  background-color: color-mix(in srgb, var(--card) 80%, transparent);
   color: var(--foreground);
 }
 
@@ -239,10 +239,10 @@
 }
 
 .wp-index-pagination__btn--inactive:hover {
-  background-color: var(--muted);
+  background-color: var(--card);
 }
 
 /* Newsletter Section */
 .wp-index-newsletter {
-  background-color: var(--muted);
+  background-color: var(--card);
 }

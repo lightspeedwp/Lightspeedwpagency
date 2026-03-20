@@ -33,6 +33,8 @@ When triggered, execute ALL steps below IN ORDER within a single session. Do not
 
 **This prompt does not call other prompts.** It performs its own 11-step cleanup workflow inline. For deeper audits, run `audit` or specific audit sub-triggers separately after cleanup.
 
+**Chained orchestrator:** After completing all 11 steps, this prompt automatically invokes the `archive` orchestrator (`/prompts/archive.md`) to archive completed tasks, resolved reports, specific prompts, and obsolete guidelines. To skip the archive phase, use `cleanup only`.
+
 ---
 
 ## Step 1 — Root Directory Cleanup

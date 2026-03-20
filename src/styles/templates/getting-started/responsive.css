@@ -1,0 +1,96 @@
+/**
+ * Getting Started — Responsive & Accessibility
+ *
+ * Mobile breakpoints and reduced motion preferences for Getting Started template.
+ *
+ * Design tokens:
+ * - Responsive typography via --text-* tokens
+ * - Spacing adjustments via --spacing-* tokens
+ */
+
+/* ============================================
+   RESPONSIVE — MOBILE ADJUSTMENTS
+   ============================================ */
+
+@media (max-width: 768px) {
+  .getting-started-hero--funky {
+    padding-block: var(--spacing-24) var(--spacing-16);
+  }
+
+  .getting-started-hero__title {
+    font-size: var(--text-4xl);
+  }
+
+  .getting-started-hero__tagline {
+    font-size: var(--text-xl);
+  }
+
+  .getting-started-hero__actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .getting-started-hero__actions .wp-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .getting-started-lifecycle__stages {
+    grid-template-columns: 1fr;
+  }
+
+  .getting-started-lifecycle__title,
+  .getting-started-checklist__title,
+  .getting-started-folders__title,
+  .getting-started-tools__title,
+  .getting-started-benefits__title,
+  .getting-started-downloads__title,
+  .getting-started-faq__title,
+  .getting-started-cta__title {
+    font-size: var(--text-3xl);
+  }
+
+  .tools-grid--funky,
+  .benefits-grid--funky {
+    grid-template-columns: 1fr;
+  }
+
+  .download-card--glass {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .getting-started-cta__actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .getting-started-cta__actions .wp-button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .getting-started-hero__bg-grid,
+  .getting-started-hero__glow,
+  .getting-started-hero__badge,
+  .checklist-progress__fill--neon,
+  .checklist-progress__celebration svg,
+  .getting-started-cta__icon {
+    animation: none;
+  }
+
+  .lifecycle-stage-card--funky,
+  .checklist-item--funky,
+  .folder-item--funky,
+  .tool-card--glass,
+  .benefit-card--funky,
+  .download-card--glass {
+    transition: none;
+  }
+}

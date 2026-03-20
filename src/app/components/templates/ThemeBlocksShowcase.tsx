@@ -40,7 +40,7 @@ export function ThemeBlocksShowcase() {
       <section className="theme-showcase__hero">
         <Container>
           <ScrollReveal animation="fade-up">
-            <h1 className="theme-showcase__hero-title">Theme Blocks</h1>
+            <h1 className="theme-showcase__hero-title">Theme blocks</h1>
             <p className="theme-showcase__hero-desc">
               Global site components that form the identity and navigation structure.
               Context-aware and completely customizable via FSE.
@@ -55,7 +55,7 @@ export function ThemeBlocksShowcase() {
           <section className="theme-showcase__section">
             <div className="theme-showcase__section-header">
               <ImageSquare className="theme-showcase__section-icon" size={20} />
-              <h2 className="theme-showcase__section-title">Site Identity</h2>
+              <h2 className="theme-showcase__section-title">Site identity</h2>
             </div>
             
             <div className="theme-showcase__context-grid">
@@ -110,7 +110,7 @@ export function ThemeBlocksShowcase() {
           <section className="theme-showcase__section">
             <div className="theme-showcase__section-header">
               <List className="theme-showcase__section-icon" size={20} />
-              <h2 className="theme-showcase__section-title">Nav Utilities</h2>
+              <h2 className="theme-showcase__section-title">Nav utilities</h2>
             </div>
 
             <div className="theme-showcase__demo">

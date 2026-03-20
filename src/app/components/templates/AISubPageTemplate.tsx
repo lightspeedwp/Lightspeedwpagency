@@ -302,7 +302,7 @@ export function AISubPageTemplate({
             <div className="wp-grid-2-cols wp-items-center wp-gap-12">
               {relatedServices && (
                 <div className="ai-page__related-content">
-                  <h3 className="ai-page__related-title">Related Services</h3>
+                  <h3 className="ai-page__related-title">Related services</h3>
                   <ul className="ai-page__related-list">
                     {relatedServices.map((link) => (
                       <li key={link.href} className="ai-page__related-item">
@@ -321,7 +321,7 @@ export function AISubPageTemplate({
               )}
               {relatedSolutions && (
                 <div className="ai-page__related-content">
-                  <h3 className="ai-page__related-title">Related Solutions</h3>
+                  <h3 className="ai-page__related-title">Related solutions</h3>
                   <ul className="ai-page__related-list">
                     {relatedSolutions.map((link) => (
                       <li key={link.href} className="ai-page__related-item">

@@ -170,7 +170,7 @@
 }
 
 .dev-service__section--alt {
-  background-color: var(--muted);
+  background-color: var(--card);
 }
 
 /* ============================================

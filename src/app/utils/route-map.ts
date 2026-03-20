@@ -68,6 +68,22 @@ const SLUG_TO_PATH: Record<string, string> = {
   'journey-launch': '/services/launch',
   'journey-grow': '/services/grow',
   'journey-evolve': '/services/evolve',
+  
+  /* ── Services: Missing legacy mappings ── */
+  'brand-guidelines': '/services/design',
+  'api-integrations': '/services/development',
+  'custom-post-types': '/services/development',
+  'migration-service': '/services/migrations',
+  'security-setup': '/services/security',
+  'security-monitoring': '/services/security',
+  'analytics-service': '/services/ai/analytics',
+  'voice-search-optimization': '/services/ai/answer-engine-optimisation',
+  'woocommerce-service': '/solutions/woocommerce',
+  'development-service': '/services/development',
+  'performance-service': '/services/performance',
+  'accessibility-service': '/services/accessibility',
+  'support-service': '/services/support',
+  'competitor-research': '/services/competitor-research',
 
   /* ── Systems Hub (Phase 1 - Tasks 1.1, 1.2) ── */
   'systems': '/systems',

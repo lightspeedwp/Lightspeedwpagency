@@ -16,11 +16,11 @@
    SECTION BACKGROUNDS (unique per-section)
    ============================================================ */
 
-.lsx-search__features { padding: var(--spacing-20) 0; background: var(--muted); }
+.lsx-search__features { padding: var(--spacing-20) 0; background: var(--card); }
 .lsx-search__benefits { padding: var(--spacing-20) 0; }
-.lsx-search__process  { padding: var(--spacing-20) 0; background: var(--muted); }
+.lsx-search__process  { padding: var(--spacing-20) 0; background: var(--card); }
 .lsx-search__capabilities { padding: var(--spacing-20) 0; }
-.lsx-search__specs    { padding: var(--spacing-20) 0; background: var(--muted); }
+.lsx-search__specs    { padding: var(--spacing-20) 0; background: var(--card); }
 .lsx-search__demo     { padding: var(--spacing-20) 0; background: var(--background); }
 .lsx-search__faq      { padding: var(--spacing-20) 0; }
 

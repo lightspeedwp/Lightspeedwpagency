@@ -32,7 +32,7 @@
 import { SiteLogo } from '../blocks/theme/SiteLogo';
 import { useLocation as useRouterLocation, Link } from 'react-router';
 import { slugToPath } from '../../utils/route-map';
-import { buildNavItems } from '../../data/header-navigation';
+import { buildNavItems, buildMobileNavItems } from '../../data/header-navigation';
 import { 
   List as Menu, 
   X, 
@@ -80,6 +80,7 @@ export function SiteHeader({ variant = 'default' }: SiteHeaderProps) {
 
   // Build navigation items from extracted data
   const navItems = buildNavItems(currentPath);
+  const mobileNavItems = buildMobileNavItems(currentPath);
 
   // Initialize theme
   useEffect(() => {
@@ -318,7 +319,7 @@ export function SiteHeader({ variant = 'default' }: SiteHeaderProps) {
           ============================================ */}
       {mobileMenuOpen && (
         <MobileMenu
-          navItems={navItems}
+          navItems={mobileNavItems}
           expandedMobileMenu={expandedMobileMenu}
           isDark={isDark}
           onToggleSubmenu={toggleMobileSubmenu}

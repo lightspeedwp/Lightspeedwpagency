@@ -1,74 +1,51 @@
 /**
- * Stats Registry — Main Export
+ * Stats Index
  *
- * Central export point for all stats-related functionality.
- *
- * Usage:
- * ```typescript
- * // Import registry
- * import { statsRegistry } from '@/data/stats';
- *
- * // Import specific collection
- * import { migrationStatsCollection } from '@/data/stats';
- *
- * // Import mappers
- * import { mapToNeonStats, mapToStatsGridStats } from '@/data/stats';
- *
- * // Import icon resolver
- * import { resolveStatIcon } from '@/data/stats';
- *
- * // Import types
- * import type { ThemedStat, StatCollection } from '@/data/stats';
- * ```
+ * Centralized export for all statistics and metrics across the LightSpeed site.
  */
 
-// Registry
-export { statsRegistry, registryStats } from './stats-registry';
+// Stats registry
+export { statsRegistry } from './stats-registry';
+export type { StatsRegistry } from './types';
 
-// Collections
-export {
-  migrationStatsCollection,
-  supportStatsCollection,
-  hostingStatsCollection,
-  designStatsCollection,
-  developmentStatsCollection,
-  projectsStatsCollection,
-  businessStatsCollection,
-  allCollections,
-} from './stats-registry';
-
-// Mappers
-export {
-  mapToNeonStat,
+// Stat mappers
+export { 
+  mapToNeonStat, 
   mapToNeonStats,
   mapToStatsGridStat,
   mapToStatsGridStats,
   getCollectionAccentColor,
-  shouldUseNeonStats,
-  filterStats,
-  sortStats,
+  shouldUseNeonStats
 } from './stat-mappers';
 
-// Icon resolver
+// Advanced metrics
 export {
-  resolveStatIcon,
-  isValidIcon,
-  getAvailableIcons,
-  resolveMultipleIcons,
-} from './icon-resolver';
+  performanceDeltaMetrics,
+  enterpriseScaleMetrics,
+  seoContinuityMetrics,
+  longevityTrustMetrics,
+  editorEfficiencyMetrics,
+  aggregatedCompanyMetrics,
+} from './advanced-metrics';
 
-// Types
-export type {
-  StatCategory,
-  StatTag,
-  TrendSentiment,
-  TrendDirection,
-  Trend,
-  StatVersion,
-  StatFootnote,
-  BaseStat,
-  ThemedStat,
-  StatCollection,
-  StatsRegistry,
-  IconResolver,
-} from './types';
+// Service-specific stats (re-export from parent data directory)
+export { hostingServiceStats, hostingCapabilities } from '../hosting-service-stats';
+export { projectsServiceStats, projectsOverview } from '../projects-service-stats';
+export {
+  slaResponseTimes,
+  retainerClientStats,
+  slaCommitment,
+  priorityLevelDefinitions,
+} from '../sla-retainer-stats';
+
+// Pattern components for metrics display
+export { AggregatedMetricsBanner } from '../../components/patterns/AggregatedMetricsBanner';
+export {
+  PerformanceDeltaMetrics,
+  EnterpriseScaleMetrics,
+  SEOContinuityMetrics,
+  LongevityTrustMetrics,
+  EditorEfficiencyMetrics,
+} from '../../components/patterns/AdvancedMetricsShowcase';
+export { StatsGrid } from '../../components/patterns/StatsGrid';
+export type { Stat, StatsGridProps } from '../../components/patterns/StatsGrid';

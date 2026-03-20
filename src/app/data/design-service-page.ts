@@ -26,6 +26,44 @@ export const designServiceHero = {
 export const designServiceOverview = {
   title: "Design That Works",
   description: "Our design philosophy is rooted in user-centricity. We don't just make things look good; we make them work effectively for your users and your business goals.",
+  stats: [
+    {
+      icon: Stack,
+      value: '10+',
+      label: 'Design systems',
+      description: 'Complete design systems built'
+    },
+    {
+      icon: Layout,
+      value: '112',
+      label: 'LSX components',
+      description: 'Reusable block components'
+    },
+    {
+      icon: Palette,
+      value: '230',
+      label: 'Design tokens',
+      description: 'CSS variables & tokens'
+    },
+    {
+      icon: Monitor,
+      value: '10',
+      label: 'Full prototypes',
+      description: 'Production-ready prototypes'
+    },
+    {
+      icon: PenNib,
+      value: '25',
+      label: 'Figma Make prototypes',
+      description: 'AI-generated prototypes'
+    },
+    {
+      icon: Eye,
+      value: '2k+',
+      label: 'Design hours',
+      description: 'Invested in design systems'
+    }
+  ],
   features: [
     {
       icon: Monitor,

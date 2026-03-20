@@ -34,28 +34,40 @@ export const developmentServiceOverview = {
   description: 'Custom development gives you complete control over functionality, design, and user experience. Unlike off-the-shelf themes and plugins, custom solutions are tailored to your exact needs, optimized for performance, and built to scale with your business.',
   stats: [
     {
-      icon: 'Lightning' as UniversalIcon,
-      value: '2.5x',
-      label: 'Faster',
-      description: 'Than page builders'
+      icon: 'Package' as UniversalIcon,
+      value: '5',
+      label: 'Payment gateways',
+      description: 'Custom payment plugins'
     },
     {
-      icon: 'Shield' as UniversalIcon,
-      value: '99.9%',
-      label: 'Secure',
-      description: 'Code security standards'
-    },
-    {
-      icon: 'Rocket' as UniversalIcon,
-      value: '10x',
-      label: 'Scalability',
-      description: 'Better performance at scale'
+      icon: 'Cpu' as UniversalIcon,
+      value: '50+',
+      label: 'API integrations',
+      description: 'Third-party connections'
     },
     {
       icon: 'Code' as UniversalIcon,
-      value: '100%',
-      label: 'Custom',
-      description: 'Tailored to your needs'
+      value: '150+',
+      label: 'Custom plugins',
+      description: 'Built from scratch'
+    },
+    {
+      icon: 'Palette' as UniversalIcon,
+      value: '300+',
+      label: 'Custom themes',
+      description: 'Tailored designs'
+    },
+    {
+      icon: 'GithubLogo' as UniversalIcon,
+      value: '10+',
+      label: 'Open-source themes',
+      description: 'Public contributions'
+    },
+    {
+      icon: 'Puzzle' as UniversalIcon,
+      value: '30+',
+      label: 'Open-source plugins',
+      description: 'Community projects'
     }
   ]
 };

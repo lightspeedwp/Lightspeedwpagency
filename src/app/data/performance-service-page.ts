@@ -102,10 +102,10 @@ export const performanceServiceProcess = {
 };
 
 export const performanceServiceStats = [
-  { value: '<1s', label: 'LCP Target', icon: Timer },
-  { value: '100', label: 'Lighthouse Score', icon: ShieldCheck },
-  { value: '50%', label: 'Avg Speed Boost', icon: TrendUp },
-  { value: '24/7', label: 'RUM Monitoring', icon: Eye },
+  { value: '<1s', label: 'LCP target achieved', icon: Timer },
+  { value: '98', label: 'Average Lighthouse score', icon: ShieldCheck },
+  { value: '68%', label: 'Average LCP reduction', icon: TrendUp },
+  { value: '72%', label: 'Sites achieving "Good" CWV', icon: Eye },
 ];
 
 export const performanceServiceCTA = {

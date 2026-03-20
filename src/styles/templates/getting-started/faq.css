@@ -1,0 +1,70 @@
+/**
+ * Getting Started — FAQ Section
+ *
+ * Minimal FAQ cards with hover effects.
+ *
+ * Design tokens:
+ * - Neon colors: --wp--preset--color--neon-cyan (hover accent)
+ * - Spacing: --spacing-* tokens
+ * - Typography: --font-primary (Lexend), --font-secondary (Manrope)
+ */
+
+/* ============================================
+   FAQ SECTION — MINIMAL
+   ============================================ */
+
+.getting-started-faq--funky {
+  padding-block: var(--spacing-24);
+  background: color-mix(in srgb, var(--wp--preset--color--deep-purple) 15%, var(--color-black));
+}
+
+.getting-started-faq__header {
+  max-width: 800px;
+  margin-inline: auto;
+  text-align: center;
+  margin-block-end: var(--spacing-12);
+}
+
+.getting-started-faq__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-5xl);
+  font-weight: var(--font-weight-black);
+  color: var(--wp--preset--color--white);
+}
+
+.faq-list--funky {
+  max-width: 900px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+.faq-item--funky {
+  padding: var(--spacing-6);
+  background: color-mix(in srgb, var(--color-black) 60%, transparent);
+  backdrop-filter: blur(12px);
+  border: 1px solid color-mix(in srgb, var(--wp--preset--color--white) 10%, transparent);
+  border-radius: var(--radius-xl);
+  transition: all 0.3s ease;
+}
+
+.faq-item--funky:hover {
+  border-color: color-mix(in srgb, var(--wp--preset--color--neon-cyan) 30%, transparent);
+  background: color-mix(in srgb, var(--color-black) 80%, transparent);
+}
+
+.faq-item__question {
+  font-family: var(--font-primary);
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--wp--preset--color--white);
+}
+
+.faq-item__answer {
+  margin-block-start: var(--spacing-3);
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  line-height: var(--line-height-relaxed);
+  color: color-mix(in srgb, var(--wp--preset--color--white) 85%, transparent);
+}

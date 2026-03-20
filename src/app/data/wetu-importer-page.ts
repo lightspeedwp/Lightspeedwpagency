@@ -7,14 +7,14 @@
  * WordPress Mapping: Product/Solution detail page
  */
 
-import { HardDrives, DownloadSimple, ArrowsClockwise, Lightning, Check, Shield } from '@phosphor-icons/react';
+import { HardDrive, DownloadSimple, ArrowsClockwise, Lightning, Check, Shield } from '@phosphor-icons/react';
 
 /**
  * Hero Section Data
  */
 export const wetuImporterHero = {
   badge: {
-    icon: HardDrives,
+    icon: HardDrive,
     text: 'WETU INTEGRATION'
   },
   title: 'Wetu Importer',
@@ -62,7 +62,7 @@ export const wetuImporterFeatures = [
     description: 'Map Wetu fields to your custom post types and taxonomies for complete control over your content structure.'
   },
   {
-    icon: HardDrives,
+    icon: HardDrive,
     title: 'Bulk Operations',
     description: 'Import, update, or delete multiple tours at once with our powerful bulk management tools.'
   }

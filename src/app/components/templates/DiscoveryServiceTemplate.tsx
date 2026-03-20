@@ -80,23 +80,23 @@ export function DiscoveryServiceTemplate() {
       <JourneyPhaseIndicator currentPhase="discover" currentServicePage="discovery" />
 
       {/* 1. HERO — "RADAR SCAN" */}
-      <section className="service-hero" style={{ position: 'relative' }}>
+      <section className="service-hero service-hero--discovery">
         <WebGLBlueprint accentColor="var(--wp--preset--color--neon-cyan)" />
-        <div className="service-hero__bg-image" aria-hidden="true" style={{ opacity: 0.3, zIndex: 1 }}>
+        <div className="service-hero__bg-image" aria-hidden="true">
           <img
             src="https://images.unsplash.com/photo-1687125114692-54f19a0fd438?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmdXR1cmlzdGljJTIwcmFkYXIlMjBob2xvZ3JhbSUyMGRhcmslMjBpbnRlcmZhY2V8ZW58MXx8fHwxNzcxNTA5MzgzfDA&ixlib=rb-4.1.0&q=80&w=1080"
             alt="" className="service-hero__bg-cover" aria-hidden="true"
             loading="lazy"
           />
         </div>
-        <div className="service-hero__decor-rings" aria-hidden="true" style={{ zIndex: 1 }}>
+        <div className="service-hero__decor-rings" aria-hidden="true">
           <div className="service-hero__decor-ring service-hero__decor-ring--1" />
           <div className="service-hero__decor-ring service-hero__decor-ring--2" />
           <div className="service-hero__decor-ring service-hero__decor-ring--3" />
           <div className="service-hero__decor-ring service-hero__decor-ring--4" />
         </div>
 
-        <Container style={{ position: 'relative', zIndex: 2 }}>
+        <Container className="service-hero__container">
           <div className="service-hero__content service-hero__content--centered">
             <ScrollReveal animation="fade-up">
               <span className="service-hero__badge service-hero__badge--primary">
@@ -106,9 +106,9 @@ export function DiscoveryServiceTemplate() {
                 We Scan&nbsp;Deep to Build&nbsp;<span className="service-hero__gradient-text">What Matters</span>
               </h1>
               <p className="service-hero__description service-hero__description--centered">{data.tagline}</p>
-              <div className="service-hero__cta-group" style={{ marginBottom: 'var(--spacing-16)' }}>
+              <div className="service-hero__cta-group">
                 <Button variant="default" size="lg" page="contact">
-                  Start Discovery <ArrowRight size={16} style={{ marginLeft: 'var(--spacing-2)' }} />
+                  Start Discovery <ArrowRight size={16} className="service-hero__cta-icon" />
                 </Button>
                 <Button variant="outline" size="lg" page="portfolio-archive">View Case Studies</Button>
               </div>

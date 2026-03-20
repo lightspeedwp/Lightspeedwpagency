@@ -145,7 +145,7 @@ export function LSXDesignTemplate() {
         <Container>
           <ScrollReveal animation="fade-up">
             <div className="lsx-design__section-header">
-              <h2 className="lsx-design__section-title">Performance First</h2>
+              <h2 className="lsx-design__section-title">Performance first</h2>
               <p className="lsx-design__section-desc">
                 Optimised for speed, accessibility, and SEO.
               </p>

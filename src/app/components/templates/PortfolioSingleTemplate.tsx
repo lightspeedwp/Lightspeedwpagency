@@ -7,7 +7,6 @@
  */
 
 /* Route-level CSS */
-import '../../../styles/templates/portfolio-single.css';
 import '../../../styles/templates/single-project-optimized.css';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';

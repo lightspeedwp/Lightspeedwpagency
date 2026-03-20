@@ -165,3 +165,13 @@
   color: var(--muted-foreground);
   line-height: var(--line-height-relaxed);
 }
+
+/* ============================================
+   LIGHT MODE
+   ============================================ */
+
+@media (prefers-color-scheme: light) {
+  .content-strategy-service__roadmap-content {
+    background: var(--color-white);
+  }
+}

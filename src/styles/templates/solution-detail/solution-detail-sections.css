@@ -12,7 +12,7 @@
    ============================================ */
 
 .solution-detail__features-section {
-  background-color: var(--muted);
+  background-color: var(--card);
 }
 
 .solution-detail__section-header {

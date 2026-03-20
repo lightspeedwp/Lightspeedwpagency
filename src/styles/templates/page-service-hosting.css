@@ -30,19 +30,19 @@
 
 .dark .hosting-lab__hero-mesh {
   background:
-    radial-gradient(ellipse 60% 50% at 15% 30%, color-mix(in srgb, var(--hl-violet) 20%, transparent) 0%, transparent 70%),
-    radial-gradient(ellipse 50% 60% at 85% 70%, color-mix(in srgb, var(--hl-cyan) 25%, transparent) 0%, transparent 70%);
+    radial-gradient(ellipse 60% 50% at 15% 30%, var(--hl-violet-soft) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 60% at 85% 70%, var(--hl-cyan-soft) 0%, transparent 70%);
 }
 
 .dark .hosting-lab__hero-grid {
   background-image:
-    linear-gradient(color-mix(in srgb, var(--hl-cyan) 10%, transparent) 1px, transparent 1px),
-    linear-gradient(90deg, color-mix(in srgb, var(--hl-cyan) 10%, transparent) 1px, transparent 1px);
+    linear-gradient(var(--border-soft) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border-soft) 1px, transparent 1px);
 }
 
 .dark .hosting-lab__stat {
-  background: color-mix(in srgb, var(--foreground) 5%, var(--background));
-  border-color: color-mix(in srgb, var(--foreground) 10%, transparent);
+  background: var(--muted);
+  border-color: var(--border);
 }
 
 .dark .hosting-lab__stat:hover {
@@ -51,102 +51,102 @@
 }
 
 .dark .hosting-lab__plan {
-  background: color-mix(in srgb, var(--foreground) 5%, var(--background));
-  border-color: color-mix(in srgb, var(--foreground) 10%, transparent);
+  background: var(--muted);
+  border-color: var(--border);
 }
 
 .dark .hosting-lab__plan:hover {
-  border-color: color-mix(in srgb, var(--hl-violet) 60%, transparent);
-  box-shadow: 0 12px 40px color-mix(in srgb, var(--hl-violet) 20%, transparent);
+  border-color: var(--hl-violet);
+  box-shadow: var(--shadow-glow-lg);
 }
 
 .dark .hosting-lab__plan--popular {
   border-color: var(--hl-cyan);
-  box-shadow: 0 0 40px color-mix(in srgb, var(--hl-cyan) 25%, transparent);
+  box-shadow: var(--shadow-glow-xl);
 }
 
 .dark .hosting-lab__spec {
-  background: color-mix(in srgb, var(--foreground) 3%, var(--background));
-  border-color: color-mix(in srgb, var(--foreground) 8%, transparent);
+  background: var(--card);
+  border-color: var(--border-soft);
 }
 
 .dark .hosting-lab__features {
-  background: color-mix(in srgb, var(--foreground) 3%, var(--background));
+  background: var(--card);
 }
 
 .dark .hosting-lab__features::before {
   background-image:
-    linear-gradient(color-mix(in srgb, var(--hl-cyan) 6%, transparent) 1px, transparent 1px),
-    linear-gradient(90deg, color-mix(in srgb, var(--hl-cyan) 6%, transparent) 1px, transparent 1px);
+    linear-gradient(var(--border-soft) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border-soft) 1px, transparent 1px);
 }
 
 .dark .hosting-lab__feature-card {
-  background: color-mix(in srgb, var(--foreground) 5%, var(--background));
-  border-color: color-mix(in srgb, var(--foreground) 10%, transparent);
+  background: var(--muted);
+  border-color: var(--border);
 }
 
 .dark .hosting-lab__feature-card:hover {
   border-color: var(--hl-cyan);
-  box-shadow: 0 0 30px color-mix(in srgb, var(--hl-cyan) 20%, transparent);
+  box-shadow: var(--shadow-glow-lg);
 }
 
 .dark .hosting-lab__why-card {
-  background: color-mix(in srgb, var(--foreground) 5%, var(--background));
-  border-color: color-mix(in srgb, var(--foreground) 10%, transparent);
+  background: var(--muted);
+  border-color: var(--border);
 }
 
 .dark .hosting-lab__why-card:hover {
-  border-color: color-mix(in srgb, var(--hl-violet) 50%, transparent);
-  box-shadow: 0 4px 24px color-mix(in srgb, var(--hl-violet) 15%, transparent);
+  border-color: var(--hl-violet);
+  box-shadow: var(--shadow-glow-md);
 }
 
 .dark .hosting-lab__migration {
-  background: color-mix(in srgb, var(--foreground) 2%, var(--background));
+  background: var(--card);
 }
 
 .dark .hosting-lab__migration::before {
   background-image:
-    linear-gradient(color-mix(in srgb, var(--hl-violet) 5%, transparent) 1px, transparent 1px),
-    linear-gradient(90deg, color-mix(in srgb, var(--hl-violet) 5%, transparent) 1px, transparent 1px);
+    linear-gradient(var(--border-soft) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border-soft) 1px, transparent 1px);
 }
 
 .dark .hosting-lab__step {
-  background: color-mix(in srgb, var(--foreground) 5%, var(--background));
-  border-color: color-mix(in srgb, var(--foreground) 10%, transparent);
+  background: var(--muted);
+  border-color: var(--border);
 }
 
 .dark .hosting-lab__step:hover {
   border-color: var(--hl-cyan);
-  box-shadow: 0 0 24px color-mix(in srgb, var(--hl-cyan) 15%, transparent);
+  box-shadow: var(--shadow-glow-md);
 }
 
 .dark .hosting-lab__guarantee-card {
-  background: color-mix(in srgb, var(--foreground) 5%, var(--background));
-  border-color: color-mix(in srgb, var(--foreground) 10%, transparent);
+  background: var(--muted);
+  border-color: var(--border);
 }
 
 .dark .hosting-lab__testimonials {
-  background: color-mix(in srgb, var(--foreground) 2%, var(--background));
+  background: var(--card);
 }
 
 .dark .hosting-lab__testimonials::before {
   background-image:
-    linear-gradient(color-mix(in srgb, var(--hl-cyan) 5%, transparent) 1px, transparent 1px),
-    linear-gradient(90deg, color-mix(in srgb, var(--hl-cyan) 5%, transparent) 1px, transparent 1px);
+    linear-gradient(var(--border-soft) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border-soft) 1px, transparent 1px);
 }
 
 .dark .hosting-lab__testimonial {
-  background: color-mix(in srgb, var(--foreground) 5%, var(--background));
-  border-color: color-mix(in srgb, var(--foreground) 10%, transparent);
+  background: var(--muted);
+  border-color: var(--border);
 }
 
 .dark .hosting-lab__testimonial:hover {
-  border-color: color-mix(in srgb, var(--hl-violet) 50%, transparent);
-  box-shadow: 0 0 24px color-mix(in srgb, var(--hl-violet) 15%, transparent);
+  border-color: var(--hl-violet);
+  box-shadow: var(--shadow-glow-md);
 }
 
 .dark .hosting-lab__testimonial::before {
-  color: color-mix(in srgb, var(--hl-cyan) 15%, transparent);
+  color: var(--muted-foreground);
 }
 
 /* REDUCED MOTION */

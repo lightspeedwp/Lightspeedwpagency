@@ -298,3 +298,25 @@
     transition: none;
   }
 }
+
+/* ============================================
+   LIGHT MODE
+   ============================================ */
+
+@media (prefers-color-scheme: light) {
+  .content-strategy-service__board-column {
+    background: var(--color-white);
+  }
+  
+  .content-strategy-service__board-card {
+    background: var(--surface-secondary);
+  }
+  
+  .content-strategy-service__matrix-quadrant {
+    background: var(--color-white);
+  }
+  
+  .content-strategy-service__metric-card {
+    background: var(--color-white);
+  }
+}

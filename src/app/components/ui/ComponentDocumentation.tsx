@@ -162,7 +162,7 @@ export const ComponentDocumentation = ({ docs }: ComponentDocumentationProps) =>
       <section className="component-docs__section">
         <div className="component-docs__section-header">
           <Lightbulb size={20} />
-          <h3 className="component-docs__section-title">Best Practices</h3>
+          <h3 className="component-docs__section-title">Best practices</h3>
         </div>
 
         <ul className="component-docs__list">
@@ -179,7 +179,7 @@ export const ComponentDocumentation = ({ docs }: ComponentDocumentationProps) =>
       <section className="component-docs__section">
         <div className="component-docs__section-header">
           <Palette size={20} />
-          <h3 className="component-docs__section-title">CSS Variables</h3>
+          <h3 className="component-docs__section-title">CSS variables</h3>
         </div>
 
         <div className="component-docs__variables">

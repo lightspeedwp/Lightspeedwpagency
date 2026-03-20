@@ -1,0 +1,70 @@
+/**
+ * AI Services Lifecycle — Responsive & Accessibility
+ *
+ * Responsive design adjustments and reduced motion support.
+ *
+ * DESIGN SYSTEM COMPLIANCE:
+ * - 100% CSS variables
+ * - WCAG 2.2 AA compliant
+ * - Respects prefers-reduced-motion
+ */
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE DESIGN
+   ═══════════════════════════════════════════ */
+
+@media (min-width: 768px) {
+  .ai-services-lifecycle__title {
+    font-size: var(--text-6xl);
+  }
+
+  .ai-services-lifecycle__services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ai-services-lifecycle__related-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .ai-services-lifecycle__orbit-ring {
+    width: 500px;
+    height: 500px;
+  }
+
+  .ai-services-lifecycle__orbit-center {
+    width: 96px;
+    height: 96px;
+  }
+
+  .ai-services-lifecycle__orbit-icon {
+    width: 56px;
+    height: 56px;
+  }
+}
+
+/* ═══════════════════════════════════════════
+   REDUCED MOTION
+   ═══════════════════════════════════════════ */
+
+@media (prefers-reduced-motion: reduce) {
+  .ai-services-lifecycle__orbit-ring {
+    animation: none;
+  }
+
+  .ai-services-lifecycle__orbit-center,
+  .ai-services-lifecycle__orbit-icon {
+    animation: none;
+  }
+
+  .ai-services-lifecycle__btn-primary:hover,
+  .ai-services-lifecycle__stage-cta-btn:hover,
+  .ai-services-lifecycle__migrations-btn:hover {
+    transform: none;
+  }
+
+  .ai-services-lifecycle__service-card:hover {
+    transform: none;
+  }
+}

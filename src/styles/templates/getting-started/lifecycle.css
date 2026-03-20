@@ -1,0 +1,237 @@
+/**
+ * Getting Started — Lifecycle Stages
+ *
+ * Funky neon cards for 6-stage AI lifecycle with stage-specific accent colors.
+ *
+ * Design tokens:
+ * - Neon colors: --stage-accent (CSS custom property per card)
+ * - Spacing: --spacing-* tokens
+ * - Typography: --font-primary (Lexend), --font-secondary (Manrope)
+ */
+
+/* ============================================
+   LIFECYCLE STAGES — FUNKY CARDS
+   ============================================ */
+
+.getting-started-lifecycle--funky {
+  padding-block: var(--spacing-24);
+  background: linear-gradient(
+    180deg,
+    var(--color-black) 0%,
+    color-mix(in srgb, var(--wp--preset--color--deep-purple) 30%, var(--color-black)) 100%
+  );
+}
+
+.getting-started-lifecycle__header {
+  max-width: 800px;
+  margin-inline: auto;
+  text-align: center;
+  margin-block-end: var(--spacing-16);
+}
+
+.getting-started-lifecycle__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2) var(--spacing-4);
+  background: color-mix(in srgb, var(--wp--preset--color--neon-pink) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--wp--preset--color--neon-pink) 30%, transparent);
+  border-radius: var(--radius-full);
+  color: var(--wp--preset--color--neon-pink);
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  box-shadow: 0 0 20px color-mix(in srgb, var(--wp--preset--color--neon-pink) 20%, transparent);
+}
+
+.getting-started-lifecycle__title {
+  margin-block-start: var(--spacing-4);
+  font-family: var(--font-primary);
+  font-size: var(--text-5xl);
+  font-weight: var(--font-weight-black);
+  color: var(--wp--preset--color--white);
+}
+
+.getting-started-lifecycle__description {
+  margin-block-start: var(--spacing-4);
+  font-family: var(--font-secondary);
+  font-size: var(--text-lg);
+  color: color-mix(in srgb, var(--wp--preset--color--white) 80%, transparent);
+}
+
+.getting-started-lifecycle__stages {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
+  gap: var(--spacing-8);
+}
+
+.lifecycle-stage-card--funky {
+  position: relative;
+  padding: var(--spacing-8);
+  background: color-mix(in srgb, var(--color-black) 60%, transparent);
+  backdrop-filter: blur(12px);
+  border: 1px solid color-mix(in srgb, var(--stage-accent, var(--wp--preset--color--neon-cyan)) 20%, transparent);
+  border-radius: var(--radius-2xl);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.lifecycle-stage-card__glow {
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(
+    135deg,
+    var(--stage-accent, var(--wp--preset--color--neon-cyan)),
+    transparent
+  );
+  opacity: 0;
+  border-radius: var(--radius-2xl);
+  z-index: -1;
+  transition: opacity 0.4s ease;
+}
+
+.lifecycle-stage-card--funky:hover,
+.lifecycle-stage-card--active {
+  border-color: var(--stage-accent, var(--wp--preset--color--neon-cyan));
+  box-shadow: 0 0 40px color-mix(in srgb, var(--stage-accent, var(--wp--preset--color--neon-cyan)) 30%, transparent);
+  transform: translateY(-4px);
+}
+
+.lifecycle-stage-card--funky:hover .lifecycle-stage-card__glow,
+.lifecycle-stage-card--active .lifecycle-stage-card__glow {
+  opacity: 0.15;
+}
+
+.lifecycle-stage-card__header {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-4);
+}
+
+.lifecycle-stage-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  background: color-mix(in srgb, var(--stage-accent, var(--wp--preset--color--neon-cyan)) 15%, transparent);
+  border: 2px solid color-mix(in srgb, var(--stage-accent, var(--wp--preset--color--neon-cyan)) 40%, transparent);
+  border-radius: var(--radius-xl);
+  color: var(--stage-accent, var(--wp--preset--color--neon-cyan));
+  flex-shrink: 0;
+  box-shadow: 0 0 20px color-mix(in srgb, var(--stage-accent, var(--wp--preset--color--neon-cyan)) 20%, transparent);
+}
+
+.lifecycle-stage-card__title-group {
+  flex: 1;
+}
+
+.lifecycle-stage-card__number {
+  display: block;
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+  color: var(--stage-accent, var(--wp--preset--color--neon-cyan));
+}
+
+.lifecycle-stage-card__title {
+  margin-block-start: var(--spacing-1);
+  font-family: var(--font-primary);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--wp--preset--color--white);
+}
+
+.lifecycle-stage-card__tagline {
+  margin-block-start: var(--spacing-4);
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  line-height: var(--line-height-relaxed);
+  color: color-mix(in srgb, var(--wp--preset--color--white) 80%, transparent);
+}
+
+.lifecycle-stage-card__ai-touchpoint {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-2);
+  margin-block-start: var(--spacing-6);
+  padding: var(--spacing-4);
+  background: color-mix(in srgb, var(--wp--preset--color--neon-yellow) 8%, transparent);
+  border-left: 3px solid var(--wp--preset--color--neon-yellow);
+  border-radius: var(--radius-md);
+}
+
+.lifecycle-stage-card__ai-label {
+  font-family: var(--font-primary);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--wp--preset--color--neon-yellow);
+}
+
+.lifecycle-stage-card__ai-description {
+  flex: 1;
+  margin-block-start: var(--spacing-1);
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  line-height: var(--line-height-relaxed);
+  color: color-mix(in srgb, var(--wp--preset--color--white) 90%, transparent);
+}
+
+.lifecycle-stage-card__divider {
+  height: 1px;
+  margin-block: var(--spacing-6);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, var(--stage-accent, var(--wp--preset--color--neon-cyan)) 30%, transparent),
+    transparent
+  );
+}
+
+.lifecycle-stage-card__section {
+  margin-block-start: var(--spacing-6);
+}
+
+.lifecycle-stage-card__section:first-of-type {
+  margin-block-start: 0;
+}
+
+.lifecycle-stage-card__section-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--stage-accent, var(--wp--preset--color--neon-cyan));
+}
+
+.lifecycle-stage-card__list {
+  list-style: none;
+  margin-block-start: var(--spacing-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.lifecycle-stage-card__list-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-3);
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  line-height: var(--line-height-relaxed);
+  color: color-mix(in srgb, var(--wp--preset--color--white) 90%, transparent);
+}
+
+.lifecycle-stage-card__list-item svg {
+  flex-shrink: 0;
+  margin-block-start: 2px;
+  color: var(--stage-accent, var(--wp--preset--color--neon-cyan));
+}

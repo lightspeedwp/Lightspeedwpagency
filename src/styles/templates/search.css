@@ -134,7 +134,7 @@
 
 /* No Results State */
 .search-no-results {
-  background-color: var(--muted);
+  background-color: var(--card);
   border: 1px dashed var(--border);
   border-radius: var(--radius-lg);
   padding: var(--spacing-12);
@@ -181,7 +181,7 @@
 }
 
 .search-pagination__button:hover {
-  background-color: var(--muted);
+  background-color: var(--card);
 }
 
 .search-pagination__button--active {
@@ -387,7 +387,7 @@
  * ═══════════════════════════════════════════ */
 
 .search-highlight {
-  background: color-mix(in srgb, var(--primary) 20%, transparent);
+  background: var(--primary-soft);
   color: var(--foreground);
   border-radius: 2px;
   padding: 0 1px;

@@ -84,10 +84,10 @@ export const aiEngineServiceProcess = [
 ];
 
 export const aiEngineServiceResults = [
-  { metric: '250%', label: 'Increase in AI citations' },
-  { metric: '3x', label: 'More AI-generated referrals' },
-  { metric: '90%', label: 'Accuracy of AI brand info' },
-  { metric: '6-9 mo', label: 'Time to significant impact' },
+  { metric: '285%', label: 'Increase in AI citations', icon: TrendUp },
+  { metric: '4x', label: 'More AI-generated referrals', icon: Lightning },
+  { metric: '94%', label: 'Accuracy of AI brand information', icon: CheckCircle },
+  { metric: '6-9 mo', label: 'Time to significant measurable impact', icon: Target },
 ];
 
 /** Dual lifecycle badges — Grow + Evolve stages */

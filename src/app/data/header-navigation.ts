@@ -92,37 +92,26 @@ export function buildNavItems(currentPath: string): NavItem[] {
           items: [
             { label: 'WordPress', page: 'wordpress', description: 'Enterprise WordPress solutions' },
             { label: 'WooCommerce', page: 'woocommerce', description: 'E-commerce & online stores' },
-            { label: 'WordPress Multisite', page: 'wordpress-multisite', description: 'Multi-site network management' },
-            { label: 'Headless WordPress', page: 'headless-wordpress', description: 'API-first architecture' }
+            { label: 'Tour Operators', page: 'tour-operators', description: 'Travel & tourism solutions' },
+            { label: 'Publishers', page: 'publishers', description: 'Digital publishing solutions' }
           ]
         },
         {
           title: 'Website Projects',
           items: [
             { label: 'WordPress Redesign', page: 'wordpress-redesign', description: 'Transform your existing site' },
-            { label: 'WooCommerce Redesign', page: 'woocommerce-redesign', description: 'Rebuild your online store' },
-            { label: 'Custom WordPress Theme', page: 'custom-wordpress-theme', description: 'Bespoke FSE themes' },
-            { label: 'WordPress to WordPress', page: 'wordpress-to-wordpress', description: 'Modernize legacy sites' }
-          ]
-        },
-        {
-          title: 'Industries',
-          items: [
-            { label: 'Publishers', page: 'publishers', description: 'Digital publishing solutions' },
-            { label: 'E-commerce', page: 'ecommerce-industry', description: 'Online retail platforms' },
-            { label: 'Education', page: 'education-industry', description: 'Learning management systems' },
-            { label: 'Healthcare', page: 'healthcare-industry', description: 'HIPAA-compliant websites' }
+            { label: 'WooCommerce Redesign', page: 'woocommerce-redesign', description: 'Rebuild your online store' }
           ]
         },
         {
           title: 'AI Solutions',
           items: [
-            { label: 'AI Integrations', page: 'ai-integrations', description: 'AI-powered WordPress' },
+            { label: 'AI Solutions Hub', page: 'ai-solutions', description: 'AI-powered WordPress' },
+            { label: 'AI Integrations', page: 'ai-integrations', description: 'AI-powered features' },
             { label: 'AI Content Generation', page: 'ai-content-generation', description: 'Automated content at scale' },
             { label: 'AI-Powered SEO', page: 'ai-seo', description: 'Intelligent search optimisation' },
             { label: 'AI Chatbots', page: 'ai-chatbots', description: 'Conversational agents 24/7' },
-            { label: 'AI Analytics', page: 'ai-analytics', description: 'Predictive insights & reporting' },
-            { label: 'AI Image Recognition', page: 'ai-image-recognition', description: 'Auto-tagging & optimization' }
+            { label: 'AI Analytics', page: 'ai-analytics', description: 'Predictive insights & reporting' }
           ]
         }
       ]
@@ -149,7 +138,7 @@ export function buildNavItems(currentPath: string): NavItem[] {
           items: [
             { label: 'Web Design', page: 'journey-create', description: 'Design. Prototype. Inspire.' },
             { label: 'Figma Prototyping', page: 'figma-prototyping', description: 'Interactive prototypes' },
-            { label: 'Design Systems', page: 'design-systems', description: 'Tokens & governance' },
+            { label: 'Design Systems', page: 'design-systems-service', description: 'Tokens & governance' },
             { label: 'Content Collection', page: 'content-collection', description: 'Gather & organize assets' },
             { label: 'Brand Guidelines', page: 'brand-guidelines', description: 'Visual identity systems' }
           ]
@@ -289,4 +278,34 @@ export function buildNavItems(currentPath: string): NavItem[] {
       isActive: currentPath === '/contact'
     }
   ];
+}
+
+/* ═══════════════════════════════════════════
+ * Build Mobile Menu Items (Simplified)
+ * ═══════════════════════════════════════════ */
+
+export function buildMobileNavItems(currentPath: string): NavItem[] {
+  const desktopItems = buildNavItems(currentPath);
+  
+  // For mobile, simplify the Services menu to show only the 6 journey stages
+  return desktopItems.map(item => {
+    if (item.label === 'Services') {
+      return {
+        ...item,
+        megaMenuSections: [
+          {
+            items: [
+              { label: 'Discover', page: 'journey-discover', description: 'Uncover. Research. Strategise.' },
+              { label: 'Create', page: 'journey-create', description: 'Design. Prototype. Inspire.' },
+              { label: 'Build', page: 'journey-build', description: 'Develop. Integrate. Harden.' },
+              { label: 'Launch', page: 'journey-launch', description: 'Deploy. Train. Go live.' },
+              { label: 'Grow', page: 'journey-grow', description: 'Optimise. Rank. Scale.' },
+              { label: 'Evolve', page: 'journey-evolve', description: 'AI-power. Future-proof.' }
+            ]
+          }
+        ]
+      };
+    }
+    return item;
+  });
 }

@@ -129,7 +129,7 @@
   color: var(--primary);
   background: var(--primary-soft);
   border-color: var(--primary-soft);
-  box-shadow: 0 0 6px var(--primary-soft);
+  box-shadow: 0 0 6px color-mix(in srgb, var(--primary) 30%, transparent);
 }
 
 .wp-block-breadcrumbs__link:focus-visible {

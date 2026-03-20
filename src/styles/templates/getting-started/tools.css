@@ -1,0 +1,160 @@
+/**
+ * Getting Started — Communication Tools
+ *
+ * Glassmorphic cards showcasing communication tools (Slack, email, project management).
+ *
+ * Design tokens:
+ * - Neon colors: --wp--preset--color--neon-pink (primary), --neon-lime (bg glow)
+ * - Spacing: --spacing-* tokens
+ * - Typography: --font-primary (Lexend), --font-secondary (Manrope)
+ */
+
+/* ============================================
+   GLASSMORPHIC COMMUNICATION TOOLS
+   ============================================ */
+
+.getting-started-tools--funky {
+  position: relative;
+  padding-block: var(--spacing-24);
+  background: var(--color-black);
+  overflow: hidden;
+}
+
+.getting-started-tools__bg-glow {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.12;
+  z-index: -1;
+}
+
+.getting-started-tools__bg-glow--pink {
+  background: var(--wp--preset--color--neon-pink);
+  top: 0;
+  left: 0;
+}
+
+.getting-started-tools__bg-glow--lime {
+  background: var(--wp--preset--color--neon-lime);
+  bottom: 0;
+  right: 0;
+}
+
+.getting-started-tools__header {
+  max-width: 800px;
+  margin-inline: auto;
+  text-align: center;
+  margin-block-end: var(--spacing-12);
+}
+
+.getting-started-tools__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2) var(--spacing-4);
+  background: color-mix(in srgb, var(--wp--preset--color--neon-pink) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--wp--preset--color--neon-pink) 30%, transparent);
+  border-radius: var(--radius-full);
+  color: var(--wp--preset--color--neon-pink);
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.getting-started-tools__title {
+  margin-block-start: var(--spacing-4);
+  font-family: var(--font-primary);
+  font-size: var(--text-5xl);
+  font-weight: var(--font-weight-black);
+  color: var(--wp--preset--color--white);
+}
+
+.getting-started-tools__description {
+  margin-block-start: var(--spacing-4);
+  font-family: var(--font-secondary);
+  font-size: var(--text-lg);
+  color: color-mix(in srgb, var(--wp--preset--color--white) 80%, transparent);
+}
+
+.tools-grid--funky {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: var(--spacing-6);
+}
+
+.tool-card--glass {
+  position: relative;
+  padding: var(--spacing-8);
+  background: color-mix(in srgb, var(--color-black) 40%, transparent);
+  backdrop-filter: blur(16px);
+  border: 1px solid color-mix(in srgb, var(--wp--preset--color--white) 15%, transparent);
+  border-radius: var(--radius-2xl);
+  text-align: center;
+  transition: all 0.4s ease;
+  overflow: hidden;
+}
+
+.tool-card__glow {
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(
+    135deg,
+    var(--wp--preset--color--neon-pink),
+    var(--wp--preset--color--neon-cyan)
+  );
+  opacity: 0;
+  border-radius: var(--radius-2xl);
+  z-index: -1;
+  transition: opacity 0.4s ease;
+}
+
+.tool-card--glass:hover {
+  border-color: color-mix(in srgb, var(--wp--preset--color--neon-pink) 50%, transparent);
+  box-shadow: 0 0 40px color-mix(in srgb, var(--wp--preset--color--neon-pink) 20%, transparent);
+  transform: translateY(-4px);
+}
+
+.tool-card--glass:hover .tool-card__glow {
+  opacity: 0.1;
+}
+
+.tool-card__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  margin-inline: auto;
+  background: color-mix(in srgb, var(--wp--preset--color--neon-pink) 15%, transparent);
+  border: 2px solid color-mix(in srgb, var(--wp--preset--color--neon-pink) 40%, transparent);
+  border-radius: var(--radius-xl);
+  color: var(--wp--preset--color--neon-pink);
+  box-shadow: 0 0 20px color-mix(in srgb, var(--wp--preset--color--neon-pink) 20%, transparent);
+}
+
+.tool-card__name {
+  margin-block-start: var(--spacing-4);
+  font-family: var(--font-primary);
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--wp--preset--color--white);
+}
+
+.tool-card__purpose {
+  margin-block-start: var(--spacing-2);
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  line-height: var(--line-height-relaxed);
+  color: color-mix(in srgb, var(--wp--preset--color--white) 80%, transparent);
+}
+
+.tool-card__access {
+  margin-block-start: var(--spacing-3);
+  font-family: var(--font-secondary);
+  font-size: var(--text-xs);
+  color: var(--wp--preset--color--neon-pink);
+}

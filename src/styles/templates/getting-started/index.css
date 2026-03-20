@@ -1,0 +1,30 @@
+/**
+ * Getting Started Template — Styles Index
+ *
+ * This file imports all sub-files for the Getting Started template.
+ * Split from monolithic getting-started.css (1,666 lines) into modular structure
+ * for better maintainability and compliance with 400-line guideline.
+ *
+ * @see /src/app/components/templates/GettingStartedTemplate.tsx
+ */
+
+/* Core CSS Variables */
+@import './enhancements-variables.css';
+
+/* Base Layout Sections */
+@import './hero.css';
+@import './lifecycle.css';
+@import './checklist.css';
+@import './folders.css';
+@import './tools.css';
+@import './benefits.css';
+@import './downloads.css';
+@import './faq.css';
+@import './cta.css';
+
+/* Responsive & Adaptations */
+@import './responsive.css';
+@import './mode-adaptations.css';
+
+/* Interactions */
+@import './interactions.css';

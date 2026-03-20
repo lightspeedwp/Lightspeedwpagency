@@ -19,5 +19,8 @@
 /* Core hero styles (layout, typography, sections, stats) */
 @import './service-hero/service-hero-core.css';
 
+/* CTA button groups */
+@import './service-hero/service-hero-cta.css';
+
 /* Decorative elements (grids, orbs, crosshairs, rings) */
 @import './service-hero/service-hero-decorative.css';

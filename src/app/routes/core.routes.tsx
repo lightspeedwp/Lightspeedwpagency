@@ -71,6 +71,7 @@ import { ContentCollectionServiceTemplate } from '../components/templates/Conten
 import { ContentAuditServiceTemplate } from '../components/templates/ContentAuditServiceTemplate';
 import { NewsletterServiceTemplate } from '../components/templates/NewsletterServiceTemplate';
 import { EmailMarketingServiceTemplate } from '../components/templates/EmailMarketingServiceTemplate';
+import { CompetitorResearchServiceTemplate } from '../components/templates/CompetitorResearchServiceTemplate';
 
 // AI Services Landing
 import { AIServicesLandingTemplate } from '../components/templates/AIServicesLandingTemplate';
@@ -140,6 +141,7 @@ function ContentCollectionServiceRoute() { loadCSSBundle('services'); return <Co
 function ContentAuditServiceRoute() { loadCSSBundle('services'); return <ContentAuditServiceTemplate />; }
 function NewsletterServiceRoute() { loadCSSBundle('services'); return <NewsletterServiceTemplate />; }
 function EmailMarketingServiceRoute() { loadCSSBundle('services'); return <EmailMarketingServiceTemplate />; }
+function CompetitorResearchServiceRoute() { loadCSSBundle('services'); return <CompetitorResearchServiceTemplate />; }
 function AIServicesLandingRoute() { loadCSSBundle('services'); return <AIServicesLandingTemplate />; }
 function ContentServicesLandingRoute() { loadCSSBundle('services'); return <ContentServicesLandingTemplate />; }
 function ContentCreationServiceRoute() { loadCSSBundle('services'); return <ContentCreationServiceTemplate />; }
@@ -208,6 +210,7 @@ export const coreRoutes: RouteObject[] = [
   { path: 'services/support', Component: SupportServiceRoute },
   { path: 'services/newsletter', Component: NewsletterServiceRoute },
   { path: 'services/email-marketing', Component: EmailMarketingServiceRoute },
+  { path: 'services/competitor-research', Component: CompetitorResearchServiceRoute },
   { path: 'services/training', Component: TrainingRoute },
   { path: 'services/hosting', Component: HostingRoute },
   { path: 'services/performance', Component: PerformanceServiceRoute },

@@ -38,7 +38,7 @@ interface StatsSectionProps {
   variant?: 'default' | 'highlighted' | 'funky' | 'proven-track';
 }
 
-export function StatsSection({ title, description, stats, variant = 'default' }: StatsSectionProps) {
+export function StatsSection({ title, description, stats = [], variant = 'default' }: StatsSectionProps) {
 
   /* ─── proven-track variant: completely separate markup ─── */
   if (variant === 'proven-track') {

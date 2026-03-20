@@ -104,14 +104,16 @@
 }
 
 /* Dark Mode Grid Overlay */
-.dark .btn-showcase__hero::before {
+.dark .btn-showcase__hero-grid::before {
   content: '';
   position: absolute;
   inset: 0;
   background-image: 
-    linear-gradient(color-mix(in srgb, var(--color-white) 3%, transparent) 1px, transparent 1px),
-    linear-gradient(90deg, color-mix(in srgb, var(--color-white) 3%, transparent) 1px, transparent 1px);
+    linear-gradient(var(--border-soft) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border-soft) 1px, transparent 1px);
   background-size: 24px 24px;
   mask-image: radial-gradient(circle at 50% 50%, black 0%, transparent 80%);
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, black 0%, transparent 80%);
   pointer-events: none;
+  z-index: 1;
 }

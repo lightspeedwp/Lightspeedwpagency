@@ -73,10 +73,10 @@ export const analyticsServiceDeliverables = [
 ];
 
 export const analyticsServiceResults = [
-  { metric: '200%', label: 'Increase in actionable insights', icon: ChartLineUp },
-  { metric: '45%', label: 'Improvement in conversion tracking', icon: Target },
-  { metric: '10x', label: 'Faster reporting with dashboards', icon: Lightning },
-  { metric: '30%', label: 'Reduction in data silos', icon: TreeStructure },
+  { metric: '250%', label: 'Increase in actionable insights', icon: ChartLineUp },
+  { metric: '58%', label: 'Improvement in conversion tracking accuracy', icon: Target },
+  { metric: '15x', label: 'Faster reporting with automated dashboards', icon: Lightning },
+  { metric: '42%', label: 'Reduction in data silos across platforms', icon: TreeStructure },
 ];
 
 /** Lifecycle badge — Grow stage */

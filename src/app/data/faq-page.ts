@@ -10,7 +10,7 @@
 import {
   Question,
   Wrench,
-  HardDrives,
+  HardDrive,
   CreditCard
 } from '@phosphor-icons/react';
 
@@ -107,7 +107,7 @@ export const faqCategories = [
     id: 'technical',
     title: 'Technical',
     description: 'Hosting, security, FSE, and code questions.',
-    icon: HardDrives,
+    icon: HardDrive,
     faqs: [
       {
         question: "What is a WordPress block theme?",

@@ -1,0 +1,164 @@
+/**
+ * Getting Started — Folder Structure
+ *
+ * Animated folder structure cards showing recommended project organization.
+ *
+ * Design tokens:
+ * - Neon colors: --wp--preset--color--neon-cyan
+ * - Spacing: --spacing-* tokens
+ * - Typography: --font-primary (Lexend), --font-secondary (Manrope), monospace
+ */
+
+/* ============================================
+   FOLDER STRUCTURE — ANIMATED
+   ============================================ */
+
+.getting-started-folders--funky {
+  padding-block: var(--spacing-24);
+  background: color-mix(in srgb, var(--wp--preset--color--deep-purple) 20%, var(--color-black));
+}
+
+.getting-started-folders__header {
+  max-width: 800px;
+  margin-inline: auto;
+  text-align: center;
+  margin-block-end: var(--spacing-12);
+}
+
+.getting-started-folders__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2) var(--spacing-4);
+  background: color-mix(in srgb, var(--wp--preset--color--neon-cyan) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--wp--preset--color--neon-cyan) 30%, transparent);
+  border-radius: var(--radius-full);
+  color: var(--wp--preset--color--neon-cyan);
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.getting-started-folders__title {
+  margin-block-start: var(--spacing-4);
+  font-family: var(--font-primary);
+  font-size: var(--text-5xl);
+  font-weight: var(--font-weight-black);
+  color: var(--wp--preset--color--white);
+}
+
+.getting-started-folders__description {
+  margin-block-start: var(--spacing-4);
+  font-family: var(--font-secondary);
+  font-size: var(--text-lg);
+  color: color-mix(in srgb, var(--wp--preset--color--white) 80%, transparent);
+}
+
+.folder-structure--funky {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+  gap: var(--spacing-6);
+}
+
+.folder-item--funky {
+  position: relative;
+  padding: var(--spacing-6);
+  background: color-mix(in srgb, var(--color-black) 60%, transparent);
+  backdrop-filter: blur(12px);
+  border: 1px solid color-mix(in srgb, var(--wp--preset--color--neon-cyan) 20%, transparent);
+  border-radius: var(--radius-xl);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.folder-item__glow {
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(
+    135deg,
+    var(--wp--preset--color--neon-cyan),
+    transparent
+  );
+  opacity: 0;
+  border-radius: var(--radius-xl);
+  z-index: -1;
+  transition: opacity 0.3s ease;
+}
+
+.folder-item--funky:hover {
+  border-color: var(--wp--preset--color--neon-cyan);
+  box-shadow: 0 0 30px color-mix(in srgb, var(--wp--preset--color--neon-cyan) 20%, transparent);
+  transform: translateY(-2px);
+}
+
+.folder-item--funky:hover .folder-item__glow {
+  opacity: 0.1;
+}
+
+.folder-item__header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+.folder-item__header svg {
+  color: var(--wp--preset--color--neon-cyan);
+  flex-shrink: 0;
+}
+
+.folder-item__name {
+  font-family: var(--font-family-mono, monospace);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--wp--preset--color--neon-cyan);
+  background: color-mix(in srgb, var(--wp--preset--color--neon-cyan) 10%, transparent);
+  padding: var(--spacing-1) var(--spacing-2);
+  border-radius: var(--radius-sm);
+}
+
+.folder-item__description {
+  margin-block-start: var(--spacing-3);
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  line-height: var(--line-height-relaxed);
+  color: color-mix(in srgb, var(--wp--preset--color--white) 80%, transparent);
+}
+
+.folder-item__examples {
+  margin-block-start: var(--spacing-4);
+}
+
+.folder-item__examples-label {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  font-family: var(--font-primary);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  color: color-mix(in srgb, var(--wp--preset--color--white) 60%, transparent);
+}
+
+.folder-item__examples-label svg {
+  color: var(--wp--preset--color--neon-cyan);
+}
+
+.folder-item__examples-list {
+  list-style: none;
+  margin-block-start: var(--spacing-2);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.folder-item__example code {
+  font-family: var(--font-family-mono, monospace);
+  font-size: var(--text-xs);
+  color: color-mix(in srgb, var(--wp--preset--color--white) 90%, transparent);
+  background: color-mix(in srgb, var(--wp--preset--color--white) 5%, transparent);
+  padding: var(--spacing-1) var(--spacing-2);
+  border-radius: var(--radius-sm);
+}

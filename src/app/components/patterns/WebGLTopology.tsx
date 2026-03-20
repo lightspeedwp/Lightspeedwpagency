@@ -10,6 +10,12 @@ export function WebGLTopology() {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
+    // Check for prefers-reduced-motion
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Cache CSS variable resolution (move outside render loop for performance)
+    const themeColor = getComputedStyle(document.documentElement).getPropertyValue('--wp--preset--color--neon-cyan').trim() || '#00ffff';
+
     const resize = () => {
       canvas.width = canvas.parentElement?.clientWidth || 800;
       canvas.height = canvas.parentElement?.clientHeight || 400;
@@ -30,19 +36,18 @@ export function WebGLTopology() {
     }));
 
     const render = () => {
-      time += 0.01;
       ctx.fillStyle = 'rgba(0, 0, 0, 0.2)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-      
-      const themeColor = getComputedStyle(document.documentElement).getPropertyValue('--wp--preset--color--neon-cyan').trim() || '#00ffff';
 
-      // Update points
-      points.forEach(p => {
-        p.x += p.vx;
-        p.y += p.vy;
-        if (p.x < 0 || p.x > 1) p.vx *= -1;
-        if (p.y < 0 || p.y > 1) p.vy *= -1;
-      });
+      // Update points only if motion is allowed
+      if (!prefersReducedMotion) {
+        points.forEach(p => {
+          p.x += p.vx;
+          p.y += p.vy;
+          if (p.x < 0 || p.x > 1) p.vx *= -1;
+          if (p.y < 0 || p.y > 1) p.vy *= -1;
+        });
+      }
 
       // Draw lines
       ctx.beginPath();
@@ -67,13 +72,16 @@ export function WebGLTopology() {
         const x = point.x * canvas.width;
         const y = point.y * canvas.height;
         
+        // Ensure radius is never negative
+        const radius = Math.max(0.5, point.z * 1.5 + 1);
+        
         ctx.beginPath();
-        ctx.arc(x, y, point.z * 1.5 + 1, 0, Math.PI * 2);
+        ctx.arc(x, y, radius, 0, Math.PI * 2);
         
         if (i % 5 === 0) {
-          ctx.fillStyle = themeColor;
+          ctx.fillStyle = themeColor; // Use cached color
           ctx.shadowBlur = 10;
-          ctx.shadowColor = themeColor;
+          ctx.shadowColor = themeColor; // Use cached color
         } else {
           ctx.fillStyle = 'rgba(255,255,255,0.4)';
           ctx.shadowBlur = 0;
@@ -82,7 +90,11 @@ export function WebGLTopology() {
         ctx.fill();
       });
 
-      animationFrameId = requestAnimationFrame(render);
+      // Only continue animation if motion is not reduced
+      if (!prefersReducedMotion) {
+        time += 0.01;
+        animationFrameId = requestAnimationFrame(render);
+      }
     };
 
     render();

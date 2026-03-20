@@ -186,7 +186,7 @@ export function SiteMapTemplate() {
       <Section spacing="xl" className="site-map__stats">
         <Container>
           <div className="site-map__stats-inner">
-            <h2 className="site-map__stats-title">Site Statistics</h2>
+            <h2 className="site-map__stats-title">Site statistics</h2>
 
             <StatsGrid
               stats={[

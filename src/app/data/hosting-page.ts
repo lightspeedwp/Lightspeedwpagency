@@ -23,9 +23,9 @@
  */
 
 import {
-  HardDrives, Shield, Lightning, Globe, Database, Clock,
+  HardDrive, Shield, Lightning, Globe, Database, Clock,
   Headphones, ArrowsClockwise, Trophy, CheckCircle,
-  Cpu, WifiHigh, HardDrive, Lock, ChartBar, Rocket,
+  Cpu, WifiHigh, HardDrive as Storage, Lock, ChartBar, Rocket,
   ArrowRight, Pulse, Eye, Speedometer
 } from '@phosphor-icons/react';
 
@@ -42,7 +42,7 @@ export const hostingBreadcrumbs = [
  * 1. Hero
  * ───────────────────────────────────────────── */
 export const hostingPageHero = {
-  badge: { text: 'Next-gen infrastructure', icon: HardDrives },
+  badge: { text: 'Next-gen infrastructure', icon: HardDrive },
   title: 'High-velocity WordPress hosting',
   description:
     'Enterprise-grade servers tuned for WordPress. Sub-second load times, ironclad security, and 24/7 expert support — so you can focus on growing your business.',
@@ -67,7 +67,7 @@ export const hostingPlans = [
   {
     id: 'starter',
     name: 'Starter',
-    icon: HardDrives,
+    icon: HardDrive,
     tagline: 'For small business websites and blogs',
     price: { display: '$49', period: '/mo' },
     description:
@@ -210,7 +210,7 @@ export const whyChooseHosting = {
         'We monitor your site 24/7 and fix issues before they affect your visitors or search rankings.'
     },
     {
-      icon: HardDrive,
+      icon: Storage,
       title: 'Developer-friendly tools',
       description:
         'SSH access, WP-CLI, Git integration, and staging environments for streamlined development workflows.'

@@ -1,4 +1,4 @@
-import '../../../styles/templates/ai-services-lifecycle.css';
+import '../../../styles/templates/ai-services/index.css';
 
 import { Link } from 'react-router';
 import { getPageUrl } from '../../data/site-pages';

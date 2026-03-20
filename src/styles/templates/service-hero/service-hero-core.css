@@ -51,6 +51,23 @@
   border-bottom: 1px solid var(--border);
 }
 
+.service-hero--content {
+  /* Content service specific styling can go here if needed */
+}
+
+.service-hero--discovery {
+  /* Discovery service specific styling can go here if needed */
+}
+
+/* ============================================
+   HERO CONTAINER
+   ============================================ */
+
+.service-hero__container {
+  position: relative;
+  z-index: 2;
+}
+
 /* ============================================
    HERO BACKGROUND IMAGE
    ============================================ */
@@ -58,8 +75,8 @@
 .service-hero__bg-image {
   position: absolute;
   inset: 0;
-  opacity: 0.1;
-  z-index: 0;
+  opacity: 0.3;
+  z-index: 1;
 }
 
 .service-hero__bg-cover {

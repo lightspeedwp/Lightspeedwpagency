@@ -1,0 +1,13 @@
+/**
+ * AI Services Lifecycle — Styles Index
+ *
+ * This file imports all sub-files for the AI Services Lifecycle template.
+ * Split from monolithic ai-services-lifecycle.css (641 lines) into modular structure
+ * for better maintainability and compliance with 400-line guideline.
+ *
+ * @see /src/app/components/templates/AIServicesLandingTemplate.tsx
+ */
+
+@import './lifecycle-hero.css';
+@import './lifecycle-stages.css';
+@import './lifecycle-responsive.css';
