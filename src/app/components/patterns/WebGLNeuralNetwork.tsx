@@ -94,7 +94,7 @@ export function WebGLNeuralNetwork({
               nodes[i].x * width, nodes[i].y * height,
               nodes[j].x * width, nodes[j].y * height
             );
-            grad.addColorStop(0, `${computedAccent}${Math.floor(opacity * 255).toString(16).padStart(2, '0')}`);
+            grad.addColorStop(0, addAlpha(computedAccent, opacity));
             grad.addColorStop(1, `rgba(255, 255, 255, ${opacity * 0.2})`);
             
             ctx.beginPath();

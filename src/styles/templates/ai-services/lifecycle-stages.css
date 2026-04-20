@@ -16,9 +16,9 @@
 
 .ai-services-lifecycle__stage {
   padding: var(--spacing-20) var(--spacing-6);
-  background: var(--color-black);
-  color: var(--color-white);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--background);
+  color: var(--foreground);
+  border-top: 1px solid var(--border);
 }
 
 .ai-services-lifecycle__stage-inner {
@@ -37,7 +37,7 @@
   justify-content: center;
   width: 56px;
   height: 56px;
-  background: rgba(255, 255, 255, 0.1);
+  background: color-mix(in srgb, var(--card) 60%, transparent);
   border: 2px solid var(--stage-accent);
   border-radius: 50%;
   color: var(--stage-accent);
@@ -51,7 +51,7 @@
   font-family: var(--font-primary);
   font-size: var(--text-4xl);
   font-weight: var(--font-weight-bold);
-  color: var(--color-white);
+  color: var(--foreground);
   margin-bottom: var(--spacing-2);
 }
 
@@ -67,7 +67,7 @@
   font-family: var(--font-secondary);
   font-size: var(--text-lg);
   line-height: var(--line-height-relaxed);
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--muted-foreground);
   max-width: 800px;
 }
 
@@ -82,8 +82,8 @@
 
 .ai-services-lifecycle__service-card {
   padding: var(--spacing-6);
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: color-mix(in srgb, var(--card) 50%, transparent);
+  border: 1px solid var(--border);
   border-left: 4px solid var(--stage-accent);
   border-radius: var(--radius-lg);
   backdrop-filter: blur(10px);
@@ -91,9 +91,9 @@
 }
 
 .ai-services-lifecycle__service-card:hover {
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--card);
   border-color: var(--stage-accent);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--foreground) 10%, transparent);
   transform: translateY(-2px);
 }
 
@@ -103,7 +103,7 @@
   justify-content: center;
   width: 40px;
   height: 40px;
-  background: rgba(255, 255, 255, 0.1);
+  background: color-mix(in srgb, var(--card) 60%, transparent);
   border-radius: var(--radius-md);
   color: var(--stage-accent);
   margin-bottom: var(--spacing-3);
@@ -113,7 +113,7 @@
   font-family: var(--font-primary);
   font-size: var(--text-xl);
   font-weight: var(--font-weight-semibold);
-  color: var(--color-white);
+  color: var(--foreground);
   margin-bottom: var(--spacing-2);
 }
 
@@ -121,14 +121,14 @@
   font-family: var(--font-secondary);
   font-size: var(--text-base);
   line-height: var(--line-height-relaxed);
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--muted-foreground);
 }
 
 /* Testimonial */
 .ai-services-lifecycle__testimonial {
   padding: var(--spacing-8);
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: color-mix(in srgb, var(--card) 50%, transparent);
+  border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   backdrop-filter: blur(10px);
   margin-bottom: var(--spacing-8);
@@ -138,7 +138,7 @@
   font-family: var(--font-secondary);
   font-size: var(--text-lg);
   line-height: var(--line-height-relaxed);
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--foreground);
   font-style: italic;
   margin-bottom: var(--spacing-4);
 }
@@ -147,14 +147,14 @@
   font-family: var(--font-primary);
   font-size: var(--text-base);
   font-weight: var(--font-weight-semibold);
-  color: var(--color-white);
+  color: var(--foreground);
 }
 
 .ai-services-lifecycle__testimonial-role {
   display: block;
   margin-top: var(--spacing-1);
   font-size: var(--text-sm);
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--muted-foreground);
   font-weight: var(--font-weight-normal);
 }
 
@@ -167,7 +167,7 @@
   font-family: var(--font-primary);
   font-size: var(--text-lg);
   font-weight: var(--font-weight-semibold);
-  color: var(--color-white);
+  color: var(--foreground);
   margin-bottom: var(--spacing-4);
 }
 
@@ -184,18 +184,18 @@
   padding: var(--spacing-3) var(--spacing-4);
   font-family: var(--font-secondary);
   font-size: var(--text-sm);
-  color: rgba(255, 255, 255, 0.8);
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--muted-foreground);
+  background: color-mix(in srgb, var(--card) 50%, transparent);
+  border: 1px solid var(--border);
   border-radius: var(--radius-md);
   text-decoration: none;
   transition: all 0.3s ease;
 }
 
 .ai-services-lifecycle__related-link:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--card);
   border-color: var(--stage-accent);
-  color: var(--color-white);
+  color: var(--foreground);
 }
 
 /* Stage CTA */
@@ -203,8 +203,8 @@
   padding: var(--spacing-8);
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.05),
-    rgba(255, 255, 255, 0.02)
+    color-mix(in srgb, var(--card) 50%, transparent),
+    color-mix(in srgb, var(--card) 30%, transparent)
   );
   border: 1px solid var(--stage-accent);
   border-radius: var(--radius-lg);
@@ -215,7 +215,7 @@
   font-family: var(--font-primary);
   font-size: var(--text-2xl);
   font-weight: var(--font-weight-bold);
-  color: var(--color-white);
+  color: var(--foreground);
   margin-bottom: var(--spacing-3);
 }
 
@@ -223,7 +223,7 @@
   font-family: var(--font-secondary);
   font-size: var(--text-base);
   line-height: var(--line-height-relaxed);
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--muted-foreground);
   margin-bottom: var(--spacing-6);
 }
 
@@ -236,7 +236,7 @@
   font-size: var(--text-base);
   font-weight: var(--font-weight-semibold);
   background: var(--stage-accent);
-  color: var(--color-black);
+  color: var(--background);
   border-radius: var(--radius-md);
   text-decoration: none;
   transition: all 0.3s ease;
@@ -245,7 +245,7 @@
 .ai-services-lifecycle__stage-cta-btn:hover {
   filter: brightness(1.1);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--stage-accent) 30%, transparent);
 }
 
 /* ═══════════════════════════════════════════
@@ -254,19 +254,19 @@
 
 .ai-services-lifecycle__migrations {
   padding: var(--spacing-16) var(--spacing-6);
-  background: var(--color-black);
+  background: var(--background);
 }
 
 .ai-services-lifecycle__migrations-card {
   max-width: var(--wp--style--global--narrow-size);
   margin: 0 auto;
   padding: var(--spacing-12);
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--color-neon-cyan);
+  background: color-mix(in srgb, var(--card) 50%, transparent);
+  border: 1px solid var(--primary);
   border-radius: var(--radius-xl);
   backdrop-filter: blur(20px);
   text-align: center;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 32px color-mix(in srgb, var(--foreground) 10%, transparent);
 }
 
 .ai-services-lifecycle__migrations-icon {
@@ -275,10 +275,10 @@
   justify-content: center;
   width: 72px;
   height: 72px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 2px solid var(--color-neon-cyan);
+  background: color-mix(in srgb, var(--card) 60%, transparent);
+  border: 2px solid var(--primary);
   border-radius: 50%;
-  color: var(--color-neon-cyan);
+  color: var(--primary);
   margin-bottom: var(--spacing-6);
 }
 
@@ -286,7 +286,7 @@
   font-family: var(--font-primary);
   font-size: var(--text-3xl);
   font-weight: var(--font-weight-bold);
-  color: var(--color-white);
+  color: var(--foreground);
   margin-bottom: var(--spacing-3);
 }
 
@@ -294,7 +294,7 @@
   font-family: var(--font-secondary);
   font-size: var(--text-lg);
   line-height: var(--line-height-relaxed);
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--muted-foreground);
   margin-bottom: var(--spacing-8);
   max-width: 600px;
   margin-left: auto;
@@ -309,16 +309,16 @@
   font-family: var(--font-primary);
   font-size: var(--text-base);
   font-weight: var(--font-weight-semibold);
-  background: var(--color-neon-cyan);
-  color: var(--color-black);
+  background: var(--primary);
+  color: var(--primary-foreground);
   border-radius: var(--radius-md);
   text-decoration: none;
   transition: all 0.3s ease;
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+  box-shadow: 0 0 20px color-mix(in srgb, var(--primary) 30%, transparent);
 }
 
 .ai-services-lifecycle__migrations-btn:hover {
   filter: brightness(1.1);
   transform: translateY(-2px);
-  box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+  box-shadow: 0 0 30px color-mix(in srgb, var(--primary) 50%, transparent);
 }

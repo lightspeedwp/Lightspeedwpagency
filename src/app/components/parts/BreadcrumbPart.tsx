@@ -44,7 +44,7 @@ export function BreadcrumbPart({
 }: BreadcrumbPartProps) {
   return (
     <section
-      className={`wp-block-breadcrumbs-section wp-block-breadcrumbs-section--border ${className}`.trim("px-[0px] py-[12px] px-[31px] py-[0px]")}
+      className={`wp-block-breadcrumbs-section wp-block-breadcrumbs-section--border ${className}`.trim()}
     >
       <Breadcrumbs items={items} maxItems={maxItems} />
     </section>

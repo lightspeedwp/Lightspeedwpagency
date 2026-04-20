@@ -22,6 +22,8 @@ import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { FunkyCTA } from '../patterns/FunkyCTA';
 import { StatsGrid } from '../patterns/StatsGrid';
 import { PricingCard } from '../patterns/PricingCard';
+import { ScrollDownArrow } from '../common/ScrollDownArrow';
+import { ScrollReveal, useScrollReveal } from '../../hooks/useScrollReveal';
 import {
   Lightning as Zap,
   Sparkle as Sparkles,

@@ -125,9 +125,11 @@ export const SEOServiceTemplate = () => {
         <Container>
           <ScrollReveal animation="fade-up">
             <TestimonialCard
-              quote={seoTrustSignal.quote}
-              author={seoTrustSignal.author}
-              role={seoTrustSignal.role}
+              testimonial={{
+                quote: seoTrustSignal.quote,
+                author: seoTrustSignal.author,
+                role: seoTrustSignal.role,
+              }}
             />
           </ScrollReveal>
         </Container>

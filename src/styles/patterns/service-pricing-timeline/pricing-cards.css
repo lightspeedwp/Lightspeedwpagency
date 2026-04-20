@@ -11,6 +11,7 @@
 
 .service-pricing {
   width: 100%;
+  position: relative;
 }
 
 /* ============================================
@@ -23,11 +24,35 @@
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
+  position: relative;
 }
 
 .service-pricing__header h2 {
   margin-bottom: var(--spacing-4);
   font-weight: var(--font-weight-semibold);
+  position: relative;
+  display: inline-block;
+}
+
+/* Funky gradient underline */
+.service-pricing__header h2::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--accent) 20%,
+    var(--primary) 50%,
+    var(--accent) 80%,
+    transparent
+  );
+  border-radius: var(--radius-full);
+  box-shadow: 0 0 20px color-mix(in srgb, var(--primary) 40%, transparent);
 }
 
 .service-pricing__header p {
@@ -46,32 +71,96 @@
   margin-bottom: var(--spacing-12);
 }
 
+@media (min-width: 768px) {
+  .service-pricing__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 /* ============================================
    CARDS
    ============================================ */
 
 .service-pricing__card {
+  position: relative;
+  padding: var(--spacing-10);
   background: linear-gradient(
     135deg,
-    color-mix(in srgb, var(--card) 60%, transparent) 0%,
-    color-mix(in srgb, var(--card) 40%, transparent) 100%
+    color-mix(in srgb, var(--card) 90%, transparent) 0%,
+    color-mix(in srgb, var(--card) 75%, transparent) 100%
   );
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid color-mix(in srgb, var(--border) 30%, transparent);
-  border-radius: var(--radius-lg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid color-mix(in srgb, var(--border) 50%, transparent);
+  border-radius: var(--radius-xl);
   overflow: hidden;
   box-shadow: 
-    0 4px 16px color-mix(in srgb, var(--foreground) 5%, transparent),
-    inset 0 1px 0 color-mix(in srgb, var(--foreground) 5%, transparent);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+    0 8px 32px color-mix(in srgb, var(--foreground) 8%, transparent),
+    inset 0 1px 0 color-mix(in srgb, var(--foreground) 10%, transparent);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Animated gradient top stripe */
+.service-pricing__card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--accent) 25%,
+    var(--primary) 50%,
+    var(--accent) 75%,
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: stripeShimmer 3s ease-in-out infinite;
+  opacity: 0.9;
+}
+
+@keyframes stripeShimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Glow border on hover */
+.service-pricing__card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-xl);
+  padding: 2px;
+  background: linear-gradient(
+    135deg,
+    transparent,
+    color-mix(in srgb, var(--primary) 40%, transparent) 30%,
+    color-mix(in srgb, var(--accent) 30%, transparent) 70%,
+    transparent
+  );
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
 }
 
 .service-pricing__card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-8px) scale(1.01);
+  border-color: color-mix(in srgb, var(--primary) 60%, transparent);
   box-shadow: 
-    0 8px 24px color-mix(in srgb, var(--foreground) 10%, transparent),
-    inset 0 1px 0 color-mix(in srgb, var(--foreground) 10%, transparent);
+    0 20px 60px color-mix(in srgb, var(--primary) 25%, transparent),
+    0 0 0 1px color-mix(in srgb, var(--primary) 30%, transparent),
+    inset 0 1px 0 color-mix(in srgb, var(--foreground) 15%, transparent);
+}
+
+.service-pricing__card:hover::after {
+  opacity: 1;
 }
 
 /* ============================================
@@ -292,4 +381,19 @@
   font-size: var(--text-h3);
   font-weight: var(--font-weight-bold);
   color: var(--foreground);
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .service-pricing__card::before {
+    animation: none;
+    background-position: 0 0;
+  }
+
+  .service-pricing__card:hover {
+    transform: translateY(-2px);
+  }
 }

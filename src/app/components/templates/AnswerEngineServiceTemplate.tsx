@@ -261,9 +261,11 @@ export const AnswerEngineServiceTemplate = () => {
         <Container>
           <ScrollReveal animation="fade-up">
             <TestimonialCard
-              quote={answerEngineTrustSignal.quote}
-              author={answerEngineTrustSignal.author}
-              role={answerEngineTrustSignal.role}
+              testimonial={{
+                quote: answerEngineTrustSignal.quote,
+                author: answerEngineTrustSignal.author,
+                role: answerEngineTrustSignal.role,
+              }}
             />
           </ScrollReveal>
         </Container>

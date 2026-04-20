@@ -100,6 +100,8 @@ export function TestimonialCard({
   showServiceTags = false,
   className = '',
 }: TestimonialCardProps) {
+  if (!testimonial) return null;
+
   const cardClasses = [
     'testimonial-card',
     `testimonial-card--${variant}`,

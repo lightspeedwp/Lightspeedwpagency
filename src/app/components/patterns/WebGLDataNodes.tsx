@@ -81,8 +81,8 @@ export function WebGLDataNodes({
               nodes[i].x * width, nodes[i].y * height,
               nodes[j].x * width, nodes[j].y * height
             );
-            gradient.addColorStop(0, `${nodes[i].type === 0 ? primary : secondary}${Math.floor(alpha * 255).toString(16).padStart(2, '0')}`);
-            gradient.addColorStop(1, `${nodes[j].type === 0 ? primary : secondary}${Math.floor(alpha * 255).toString(16).padStart(2, '0')}`);
+            gradient.addColorStop(0, addAlpha(nodes[i].type === 0 ? primary : secondary, alpha));
+            gradient.addColorStop(1, addAlpha(nodes[j].type === 0 ? primary : secondary, alpha));
             
             ctx.beginPath();
             ctx.moveTo(nodes[i].x * width, nodes[i].y * height);

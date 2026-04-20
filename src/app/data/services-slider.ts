@@ -16,7 +16,7 @@ import {
   GraduationCap,
   ShieldCheck,
   CloudArrowUp,
-  UniversalAccess,
+  Wheelchair,
 } from '@phosphor-icons/react';
 
 export interface ServiceSlide {
@@ -97,7 +97,7 @@ export const servicesSliderData: ServiceSlide[] = [
     id: 'accessibility',
     title: 'Accessibility',
     description: 'WCAG 2.2 AA/AAA compliance audits and remediation.',
-    icon: UniversalAccess,
+    icon: Wheelchair,
     href: '/services/accessibility',
     accent: 'var(--primary)',
   },

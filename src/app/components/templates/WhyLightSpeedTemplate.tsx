@@ -87,12 +87,10 @@ export function WhyLightSpeedTemplate() {
     {
       id: 'ls-test-1',
       quote: "LightSpeed did not just build us a website; they transformed our entire digital infrastructure. The performance gains were immediate.",
-      author: {
-        name: "James Wilson",
-        role: "CTO",
-        company: "Vanguard Tech",
-        image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150&h=150"
-      },
+      author: "James Wilson",
+      role: "CTO",
+      company: "Vanguard Tech",
+      avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150&h=150",
       rating: 5
     }
   ];

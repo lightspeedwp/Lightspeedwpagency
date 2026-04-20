@@ -72,6 +72,16 @@ export function StickyTimelineNav({ stages, className = '' }: StickyTimelineNavP
         const rect = navRef.current.getBoundingClientRect();
         setIsSticky(rect.top <= 0);
       }
+
+      // Activate last stage when scrolled near the bottom of the page
+      const lastStage = stages[stages.length - 1];
+      if (lastStage) {
+        const scrollBottom = window.innerHeight + window.scrollY;
+        const pageHeight = document.documentElement.scrollHeight;
+        if (pageHeight - scrollBottom < 200) {
+          setActiveSlug(lastStage.slug);
+        }
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -104,8 +114,8 @@ export function StickyTimelineNav({ stages, className = '' }: StickyTimelineNavP
       className={`sticky-timeline-nav ${isSticky ? 'sticky-timeline-nav--stuck' : ''} ${className}`}
       aria-label="Lifecycle stage navigation"
     >
-      <div className="sticky-timeline-nav__inner">
-        <div className="sticky-timeline-nav__scroll-container">
+      <div className="sticky-timeline-nav__inner sticky-timeline-nav__inner--funky">
+        <div className="sticky-timeline-nav__scroll-container sticky-timeline-nav__scroll-container--funky">
           {stages.map((stage, index) => {
             const isActive = activeSlug === stage.slug;
             const Icon = stage.icon;
@@ -113,20 +123,20 @@ export function StickyTimelineNav({ stages, className = '' }: StickyTimelineNavP
             return (
               <button
                 key={stage.slug}
-                className={`sticky-timeline-nav__stage ${isActive ? 'sticky-timeline-nav__stage--active' : ''}`}
+                className={`sticky-timeline-nav__stage sticky-timeline-nav__stage--funky ${isActive ? 'sticky-timeline-nav__stage--active sticky-timeline-nav__stage--active-neon' : ''}`}
                 onClick={(e) => handleClick(e, stage.slug)}
                 aria-current={isActive ? 'location' : undefined}
                 style={{ '--stage-accent': stage.accent } as React.CSSProperties}
               >
-                <div className="sticky-timeline-nav__stage-icon">
+                <div className="sticky-timeline-nav__stage-icon sticky-timeline-nav__stage-icon--neon">
                   <Icon size={20} weight="duotone" aria-hidden="true" />
                 </div>
-                <div className="sticky-timeline-nav__stage-label">
-                  <span className="sticky-timeline-nav__stage-step">{stage.step}</span>
-                  <span className="sticky-timeline-nav__stage-name">{stage.name}</span>
+                <div className="sticky-timeline-nav__stage-label sticky-timeline-nav__stage-label--funky">
+                  <span className="sticky-timeline-nav__stage-step sticky-timeline-nav__stage-step--neon">{stage.step}</span>
+                  <span className="sticky-timeline-nav__stage-name sticky-timeline-nav__stage-name--neon">{stage.name}</span>
                 </div>
                 {index < stages.length - 1 && (
-                  <div className="sticky-timeline-nav__connector" aria-hidden="true" />
+                  <div className="sticky-timeline-nav__connector sticky-timeline-nav__connector--neon" aria-hidden="true" />
                 )}
               </button>
             );

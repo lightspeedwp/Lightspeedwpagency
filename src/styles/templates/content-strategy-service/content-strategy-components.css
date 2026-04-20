@@ -269,6 +269,107 @@
 }
 
 /* ============================================
+   RESULTS GRID (Stats Display)
+   ============================================ */
+
+.content-strategy-service__results-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-6);
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .content-strategy-service__results-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.content-strategy-service__result-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-8);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.content-strategy-service__result-card:hover {
+  border-color: var(--primary);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Light Mode: Solid card with shadow */
+:root .content-strategy-service__result-card {
+  background: var(--card);
+}
+
+/* Dark Mode: Glass effect */
+.dark .content-strategy-service__result-card {
+  background: color-mix(in srgb, var(--color-white) 5%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.dark .content-strategy-service__result-card:hover {
+  box-shadow: 
+    0 0 20px color-mix(in srgb, var(--primary) 20%, transparent),
+    var(--shadow-lg);
+}
+
+/* Accent bar on top */
+.content-strategy-service__result-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.content-strategy-service__result-card:hover::before {
+  transform: scaleX(1);
+}
+
+.content-strategy-service__result-metric {
+  font-family: var(--font-primary);
+  font-size: var(--text-5xl);
+  font-weight: var(--font-weight-black);
+  color: var(--primary);
+  line-height: var(--line-height-tight);
+  margin-bottom: var(--spacing-3);
+}
+
+/* Light Mode: Primary color with subtle glow */
+:root .content-strategy-service__result-metric {
+  color: var(--primary);
+}
+
+/* Dark Mode: Primary with neon glow */
+.dark .content-strategy-service__result-metric {
+  color: var(--primary);
+  text-shadow: 0 0 15px color-mix(in srgb, var(--primary) 30%, transparent);
+}
+
+.content-strategy-service__result-label {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-normal);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+}
+
+/* ============================================
    REDUCED MOTION
    ============================================ */
 
@@ -303,20 +404,48 @@
    LIGHT MODE
    ============================================ */
 
-@media (prefers-color-scheme: light) {
-  .content-strategy-service__board-column {
-    background: var(--color-white);
-  }
-  
-  .content-strategy-service__board-card {
-    background: var(--surface-secondary);
-  }
-  
-  .content-strategy-service__matrix-quadrant {
-    background: var(--color-white);
-  }
-  
-  .content-strategy-service__metric-card {
-    background: var(--color-white);
-  }
+/* Light Mode: Solid card backgrounds */
+:root .content-strategy-service__board-column {
+  background: var(--card);
+}
+
+/* Dark Mode: Glass effect backgrounds */
+.dark .content-strategy-service__board-column {
+  background: color-mix(in srgb, var(--color-white) 5%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Light Mode: Nested card backgrounds */
+:root .content-strategy-service__board-card {
+  background: var(--background);
+}
+
+/* Dark Mode: Subtle glass effect */
+.dark .content-strategy-service__board-card {
+  background: color-mix(in srgb, var(--color-white) 3%, transparent);
+}
+
+/* Light Mode: Matrix quadrants */
+:root .content-strategy-service__matrix-quadrant {
+  background: var(--card);
+}
+
+/* Dark Mode: Glass effect */
+.dark .content-strategy-service__matrix-quadrant {
+  background: color-mix(in srgb, var(--color-white) 5%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Light Mode: Metric cards */
+:root .content-strategy-service__metric-card {
+  background: var(--card);
+}
+
+/* Dark Mode: Glass effect */
+.dark .content-strategy-service__metric-card {
+  background: color-mix(in srgb, var(--color-white) 5%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }

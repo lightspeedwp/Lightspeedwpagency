@@ -82,7 +82,7 @@ export function WebGLAINetwork() {
 
         // Draw nodes
         const pulseAmount = prefersReducedMotion ? 0 : Math.sin(node.pulse) * 1.5;
-        const currentSize = node.size + pulseAmount;
+        const currentSize = Math.max(0.1, node.size + pulseAmount);
         
         ctx.beginPath();
         ctx.arc(x, y, currentSize, 0, Math.PI * 2);

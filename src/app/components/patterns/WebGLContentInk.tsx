@@ -112,7 +112,7 @@ export function WebGLContentInk({
         const color = i % 2 === 0 ? primary : secondary;
         const alpha = Math.sin(p.life / p.maxLife * Math.PI) * 0.3; // Fade in and out
         
-        gradient.addColorStop(0, `${color}${Math.floor(alpha * 255).toString(16).padStart(2, '0')}`);
+        gradient.addColorStop(0, addAlpha(color, alpha));
         gradient.addColorStop(1, 'transparent');
 
         ctx.beginPath();

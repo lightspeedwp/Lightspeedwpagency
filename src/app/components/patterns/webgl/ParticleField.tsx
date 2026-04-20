@@ -151,7 +151,7 @@ export function ParticleField({
 
         // Pulsing size effect
         particle.pulsePhase += 0.05;
-        const pulseSize = particle.size + Math.sin(particle.pulsePhase) * 0.8;
+        const pulseSize = Math.max(0.1, particle.size + Math.sin(particle.pulsePhase) * 0.8);
 
         // Draw main particle with intense glow
         ctx.shadowBlur = 20;

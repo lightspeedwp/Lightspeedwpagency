@@ -67,4 +67,10 @@
   .ai-services-lifecycle__service-card:hover {
     transform: none;
   }
+
+  .design-lower__pricing-glow,
+  .design-lower__pricing-glow--primary,
+  .design-lower__pricing-glow--accent {
+    animation: none;
+  }
 }

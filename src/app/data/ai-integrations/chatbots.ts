@@ -72,8 +72,10 @@ export const aiChatbotsHero: AIHero = {
   tagline:
     'Provide instant, intelligent support 24/7. AI chatbots handle common queries, qualify leads, and escalate complex issues to your team.',
   badge: { text: 'AI CHATBOTS', icon: Robot },
-  primaryButton: { text: 'Request a Systems Audit', page: 'contact' },
-  secondaryButton: { text: 'Back to AI Hub', page: 'ai-integrations' },
+  buttons: [
+    { text: 'Request a Systems Audit', page: 'contact' },
+    { text: 'Back to AI Hub', page: 'ai-integrations' },
+  ],
 };
 
 /* ── Stats ── */
@@ -258,6 +260,8 @@ export const aiChatbotsFAQs: AIFAQ[] = [
 export const aiChatbotsCTA: AICTA = {
   title: 'Ready to provide instant support?',
   description: 'Let\'s build an AI chatbot that feels natural, solves problems, and scales with your business.',
-  primaryButton: { text: 'Request a Systems Audit', page: 'contact' },
-  secondaryButton: { text: 'View All AI Solutions', page: 'ai-integrations' },
+  buttons: [
+    { text: 'Request a Systems Audit', page: 'contact' },
+    { text: 'View All AI Solutions', page: 'ai-integrations' },
+  ],
 };

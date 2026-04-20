@@ -24,17 +24,17 @@ import { servicesFAQs } from '../../../data/faqs';
 interface SolutionLowerProps {
   solution: {
     title: string;
-    useCases: Array<{
+    useCases?: Array<{
       title: string;
       description: string;
       industries: string[];
     }>;
-    specifications: {
+    specifications?: {
       technology: string[];
       requirements: string[];
       support: string[];
     };
-    relatedSolutions: Array<{
+    relatedSolutions?: Array<{
       id: string;
       title: string;
       slug: string;
@@ -44,15 +44,16 @@ interface SolutionLowerProps {
 }
 
 export function SolutionDetailLowerSections({ solution }: SolutionLowerProps) {
-  const specSections = [
+  const specSections = solution.specifications ? [
     { title: 'Technology', items: solution.specifications.technology },
     { title: 'Requirements', items: solution.specifications.requirements },
     { title: 'Support', items: solution.specifications.support },
-  ];
+  ] : [];
 
   return (
     <>
       {/* Use Cases */}
+      {solution.useCases && solution.useCases.length > 0 && (
       <Section spacing="xl" className="solution-detail__usecases-section">
         <Container>
           <ScrollReveal animation="fade-up">
@@ -81,8 +82,10 @@ export function SolutionDetailLowerSections({ solution }: SolutionLowerProps) {
           </div>
         </Container>
       </Section>
+      )}
 
       {/* Technical Specifications */}
+      {specSections.length > 0 && (
       <Section spacing="xl" className="solution-detail__specs-section">
         <Container>
           <ScrollReveal animation="fade-up">
@@ -107,9 +110,10 @@ export function SolutionDetailLowerSections({ solution }: SolutionLowerProps) {
           </div>
         </Container>
       </Section>
+      )}
 
       {/* Related Solutions */}
-      {solution.relatedSolutions.length > 0 && (
+      {solution.relatedSolutions && solution.relatedSolutions.length > 0 && (
         <Section spacing="xl" className="solution-detail__related-section">
           <Container>
             <ScrollReveal animation="fade-up">

@@ -4,9 +4,12 @@
  * Parent: /services/design
  *
  * Layout classes: sub-service-base__* (from sub-service-base.css)
+ * Funky styles: figma-prototyping__* (from figma-prototyping-service.css)
  * @see /src/styles/templates/sub-service-base.css
+ * @see /src/styles/templates/figma-prototyping-service.css
  */
 
+import '../../../styles/templates/figma-prototyping-service.css';
 import { FigmaLogo, Lightning, Users, Layout, Cursor, Trophy, Package, Timer, ChartLineUp } from '@phosphor-icons/react';
 import { Link } from 'react-router';
 import { getPageUrl } from '../../data/site-pages';
@@ -43,8 +46,14 @@ export const FigmaPrototypingServiceTemplate = () => {
   return (
     <div data-service="figma-prototyping">
       {/* Hero section */}
-      <section className="sub-service-base__hero">
-        <div className="sub-service-base__hero-content">
+      <section className="figma-prototyping__hero">
+        {/* Animated gradient mesh background */}
+        <div className="figma-prototyping__hero-mesh" aria-hidden="true">
+          <div className="figma-prototyping__mesh-layer figma-prototyping__mesh-layer--primary"></div>
+          <div className="figma-prototyping__mesh-layer figma-prototyping__mesh-layer--accent"></div>
+        </div>
+
+        <div className="figma-prototyping__hero-content">
           <BreadcrumbPart
             items={[
               { label: 'Home', href: '/' },
@@ -57,20 +66,20 @@ export const FigmaPrototypingServiceTemplate = () => {
           <JourneyPhaseIndicator currentPhase="create" currentServicePage="figma-prototyping" />
 
           <ScrollReveal animation="fade-down">
-            <h1 className="sub-service-base__hero-title">
+            <h1 className="figma-prototyping__hero-title">
               Figma prototyping services
             </h1>
 
-            <p className="sub-service-base__hero-description">
+            <p className="figma-prototyping__hero-description">
               See your product before it's built. Interactive Figma prototypes let you test ideas, get feedback,
               and refine the experience before writing a single line of code.
             </p>
 
-            <div className="sub-service-base__hero-cta">
-              <Link to={getPageUrl('contact')} className="sub-service-base__cta-button sub-service-base__cta-button--primary">
+            <div className="figma-prototyping__cta-group">
+              <Link to={getPageUrl('contact')} className="figma-prototyping__cta-button figma-prototyping__cta-button--primary">
                 Start prototype project
               </Link>
-              <Link to={getPageUrl('design')} className="sub-service-base__cta-button sub-service-base__cta-button--secondary">
+              <Link to={getPageUrl('design')} className="figma-prototyping__cta-button figma-prototyping__cta-button--secondary">
                 View parent service
               </Link>
             </div>
@@ -79,7 +88,11 @@ export const FigmaPrototypingServiceTemplate = () => {
       </section>
 
       {/* Benefits */}
-      <section className="sub-service-base__benefits">
+      <section className="figma-prototyping__benefits">
+        {/* Background glow orbs */}
+        <div className="figma-prototyping__benefits-glow figma-prototyping__benefits-glow--left" aria-hidden="true"></div>
+        <div className="figma-prototyping__benefits-glow figma-prototyping__benefits-glow--right" aria-hidden="true"></div>
+
         <Container>
           <ScrollReveal animation="fade-up">
             <ServiceCapabilitiesGrid
@@ -98,11 +111,11 @@ export const FigmaPrototypingServiceTemplate = () => {
       </section>
 
       {/* Deliverables */}
-      <section className="sub-service-base__results">
+      <section className="figma-prototyping__results">
         <Container>
-          <div className="sub-service-base__section-header">
-            <h2 className="sub-service-base__section-title">What you get</h2>
-            <p className="sub-service-base__section-description">
+          <div className="figma-prototyping__section-header">
+            <h2 className="figma-prototyping__section-title">What you get</h2>
+            <p className="figma-prototyping__section-description">
               End-to-end deliverables ready for developer handoff.
             </p>
           </div>
@@ -113,7 +126,7 @@ export const FigmaPrototypingServiceTemplate = () => {
       </section>
 
       {/* Results */}
-      <section className="sub-service-base__benefits">
+      <section className="figma-prototyping__benefits">
         <Container>
           <ScrollReveal animation="fade-up">
             <AgencyStats
@@ -127,7 +140,9 @@ export const FigmaPrototypingServiceTemplate = () => {
       </section>
 
       {/* Testimonials */}
-      <ServiceTestimonial serviceSlug="figma-prototyping" />
+      <section className="figma-prototyping__testimonial">
+        <ServiceTestimonial serviceSlug="figma-prototyping" />
+      </section>
 
       {/* CTA */}
       <FunkyCTA

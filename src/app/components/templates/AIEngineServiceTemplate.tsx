@@ -267,9 +267,11 @@ export const AIEngineServiceTemplate = () => {
         <Container>
           <ScrollReveal animation="fade-up">
             <TestimonialCard
-              quote={aiEngineTrustSignal.quote}
-              author={aiEngineTrustSignal.author}
-              role={aiEngineTrustSignal.role}
+              testimonial={{
+                quote: aiEngineTrustSignal.quote,
+                author: aiEngineTrustSignal.author,
+                role: aiEngineTrustSignal.role,
+              }}
             />
           </ScrollReveal>
         </Container>

@@ -102,19 +102,30 @@ export function hexToRgba(hex: string, alpha: number = 1): string {
  * addAlpha('rgb(255, 0, 255)', 0.5) // Returns 'rgba(255, 0, 255, 0.5)'
  */
 export function addAlpha(color: string, alpha: number): string {
+  if (!color || typeof color !== 'string') return `rgba(0, 255, 255, ${alpha})`;
+
+  // Extract the first color if multiple are present (e.g., from a gradient or multiple shadows)
+  const firstColorMatch = color.match(/(rgba?\([^)]+\)|#[a-fA-F0-9]{3,8})/);
+  let resolvedColor = firstColorMatch ? firstColorMatch[0] : color;
+  
+  // Add closing parenthesis if missing from match
+  if (resolvedColor.startsWith('rgb') && !resolvedColor.endsWith(')')) {
+    resolvedColor += ')';
+  }
+
   // If already rgba, just replace alpha
-  if (color.startsWith('rgba(')) {
-    return color.replace(/[\d.]+\)$/, `${alpha})`);
+  if (resolvedColor.startsWith('rgba(')) {
+    return resolvedColor.replace(/[\d.]+\)$/, `${alpha})`);
   }
   
   // If rgb, convert to rgba
-  if (color.startsWith('rgb(')) {
-    return color.replace('rgb(', 'rgba(').replace(')', `, ${alpha})`);
+  if (resolvedColor.startsWith('rgb(')) {
+    return resolvedColor.replace('rgb(', 'rgba(').replace(')', `, ${alpha})`);
   }
   
   // If hex, convert to rgba
-  if (color.startsWith('#')) {
-    return hexToRgba(color, alpha);
+  if (resolvedColor.startsWith('#')) {
+    return hexToRgba(resolvedColor, alpha);
   }
   
   // Unknown format, return with alpha appended (best effort)

@@ -40,22 +40,22 @@ interface SolutionDetailProps {
       icon: UniversalIcon;
     }>;
     benefits: string[];
-    useCases: Array<{
+    useCases?: Array<{
       title: string;
       description: string;
       industries: string[];
     }>;
-    specifications: {
+    specifications?: {
       technology: string[];
       requirements: string[];
       support: string[];
     };
-    pricing: {
+    pricing?: {
       model: string;
       starting: string;
       includes: string[];
     };
-    relatedSolutions: Array<{
+    relatedSolutions?: Array<{
       id: string;
       title: string;
       slug: string;
@@ -131,17 +131,17 @@ export function SolutionDetailTemplate({ solution }: SolutionDetailProps) {
                   <h3 className="solution-detail__sidebar-title">Pricing</h3>
                   <div className="solution-detail__sidebar-item">
                     <dt className="solution-detail__sidebar-label">Model</dt>
-                    <dd className="solution-detail__sidebar-value">{solution.pricing.model}</dd>
+                    <dd className="solution-detail__sidebar-value">{solution.pricing?.model}</dd>
                   </div>
                   <div className="solution-detail__sidebar-item">
                     <dt className="solution-detail__sidebar-label">Starting At</dt>
-                    <dd className="solution-detail__price-value">{solution.pricing.starting}</dd>
+                    <dd className="solution-detail__price-value">{solution.pricing?.starting}</dd>
                   </div>
                   <div className="solution-detail__sidebar-item">
                     <dt className="solution-detail__sidebar-label">Includes</dt>
                     <dd>
                       <ul className="solution-detail__includes-list">
-                        {solution.pricing.includes.map((item, index) => (
+                        {solution.pricing?.includes.map((item, index) => (
                           <li key={index} className="solution-detail__include-item">
                             <Check size={16} className="solution-detail__check-icon" />
                             <span className="solution-detail__include-text">{item}</span>

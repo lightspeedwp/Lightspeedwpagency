@@ -187,6 +187,10 @@ export function DesignLowerSections({
       {servicePricingTimeline.design && (
         <ScrollReveal animation="fade-up">
           <section className="design-lower__pricing-section">
+            {/* Funky background glow layers */}
+            <div className="design-lower__pricing-glow design-lower__pricing-glow--primary" aria-hidden="true"></div>
+            <div className="design-lower__pricing-glow design-lower__pricing-glow--accent" aria-hidden="true"></div>
+            
             <Container>
               <ServicePricingTimeline
                 pricing={servicePricingTimeline.design.pricing}

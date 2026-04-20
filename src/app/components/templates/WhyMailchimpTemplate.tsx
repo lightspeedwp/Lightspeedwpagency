@@ -88,12 +88,10 @@ export function WhyMailchimpTemplate() {
     {
       id: 'mailchimp-test-1',
       quote: "Integrating Mailchimp with our WooCommerce store transformed our business. Our abandoned cart recovery rate is up 42%.",
-      author: {
-        name: "Marcus Reid",
-        role: "Marketing Director",
-        company: "Bloom Botanicals",
-        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150&h=150"
-      },
+      author: "Marcus Reid",
+      role: "Marketing Director",
+      company: "Bloom Botanicals",
+      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150&h=150",
       rating: 5
     }
   ];

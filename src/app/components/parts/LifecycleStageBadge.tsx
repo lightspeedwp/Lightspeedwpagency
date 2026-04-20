@@ -24,7 +24,9 @@ interface LifecycleStageBadgeProps {
   stages: LifecycleStage[];
 }
 
-export function LifecycleStageBadge({ stages }: LifecycleStageBadgeProps) {
+export function LifecycleStageBadge({ stages = [] }: LifecycleStageBadgeProps) {
+  if (!stages) return null;
+  
   return (
     <div className="lifecycle-badge">
       {stages.map((stage) => {

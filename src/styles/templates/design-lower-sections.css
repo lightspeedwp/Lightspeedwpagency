@@ -136,8 +136,68 @@
    ============================================ */
 
 .design-lower__pricing-section {
-  padding: var(--spacing-16) 0;
-  background-color: var(--muted);
+  position: relative;
+  padding: var(--spacing-20) 0;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--card) 30%, transparent) 0%,
+    transparent 50%,
+    color-mix(in srgb, var(--muted) 40%, transparent) 100%
+  );
+  overflow: hidden;
+}
+
+/* Funky background glow layers */
+.design-lower__pricing-glow {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  filter: blur(80px);
+  animation: pulseGlow 8s ease-in-out infinite;
+  z-index: 0;
+}
+
+.design-lower__pricing-glow--primary {
+  top: 20%;
+  left: 10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(
+    ellipse,
+    color-mix(in srgb, var(--primary) 15%, transparent),
+    color-mix(in srgb, var(--primary) 8%, transparent) 50%,
+    transparent 75%
+  );
+}
+
+.design-lower__pricing-glow--accent {
+  bottom: 10%;
+  right: 15%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--accent) 12%, transparent),
+    color-mix(in srgb, var(--accent) 6%, transparent) 50%,
+    transparent 70%
+  );
+  animation: floatGlow 10s ease-in-out infinite alternate;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes floatGlow {
+  from { transform: translate(0, 0) scale(1); }
+  to { transform: translate(-40px, 30px) scale(1.1); }
+}
+
+/* Ensure content sits above glow layers */
+.design-lower__pricing-section .container {
+  position: relative;
+  z-index: 1;
 }
 
 /* ============================================
@@ -147,5 +207,11 @@
 @media (prefers-reduced-motion: reduce) {
   .design-lower__showcase-card:hover .design-lower__showcase-image {
     transform: none;
+  }
+
+  .design-lower__pricing-glow,
+  .design-lower__pricing-glow--primary,
+  .design-lower__pricing-glow--accent {
+    animation: none;
   }
 }

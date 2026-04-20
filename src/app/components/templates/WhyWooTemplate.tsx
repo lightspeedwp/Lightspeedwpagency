@@ -90,12 +90,10 @@ export function WhyWooTemplate() {
     {
       id: 'woo-test-1',
       quote: "Switching to WooCommerce gave us complete control over our checkout flow. Our conversion rate increased by 34% within the first month.",
-      author: {
-        name: "Sarah Jenkins",
-        role: "eCommerce Director",
-        company: "Urban Supply Co",
-        image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150&h=150"
-      },
+      author: "Sarah Jenkins",
+      role: "eCommerce Director",
+      company: "Urban Supply Co",
+      avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150&h=150",
       rating: 5
     }
   ];

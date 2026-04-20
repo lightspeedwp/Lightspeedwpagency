@@ -112,8 +112,8 @@ export function WebGLCyberRadar({
       ctx.arc(centerX, centerY, radius, sweepAngle, sweepAngle + 0.2);
       ctx.lineTo(centerX, centerY);
       const grad = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, radius);
-      grad.addColorStop(0, `${computedAccent}00`);
-      grad.addColorStop(1, `${computedAccent}aa`);
+      grad.addColorStop(0, addAlpha(computedAccent, 0));
+      grad.addColorStop(1, addAlpha(computedAccent, 0.67));
       ctx.fillStyle = grad;
       ctx.globalAlpha = 1;
       ctx.fill();

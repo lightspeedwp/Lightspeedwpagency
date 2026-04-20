@@ -234,12 +234,8 @@
 @import './patterns/testimonial-slider.css';
 
 /* Service Cross-Linking Patterns (Feb 23, 2026) */
-@import './patterns/included-solutions.css';
+@import './patterns/included-in-solutions.css';
 @import './patterns/related-services.css';
-@import './patterns/service-testimonials.css';
-@import './patterns/service-case-studies.css';
-@import './patterns/service-comparison-table.css';
-@import './patterns/service-pricing-timeline.css';
 
 /* Figma Make Showcase Patterns (March 18, 2026) */
 @import './patterns/prototype-showcase.css';

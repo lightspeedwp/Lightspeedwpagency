@@ -81,7 +81,7 @@ interface AISubPageProps {
   useCases: AIUseCase[];
   useCasesTitle: string;
   useCasesDescription: string;
-  pricing: { title: string; description: string; packages: AIPricingPackage[] };
+  pricing?: { title: string; description: string; packages: AIPricingPackage[] };
   faqs: AIFAQ[];
   cta: AICTA;
   ctaBenefits: string[];
@@ -121,7 +121,7 @@ export function AISubPageTemplate({
   showPricing = false,
 }: AISubPageProps) {
   /* Transform pricing data for the PricingTable pattern */
-  const pricingPlans: PricingPackage[] = pricing.packages.map((pkg, i) => ({
+  const pricingPlans: PricingPackage[] = pricing?.packages?.map((pkg, i) => ({
     id: `ai-${variant}-${i}`,
     name: pkg.name,
     slug: pkg.name.toLowerCase().replace(/\s+/g, '-'),
@@ -137,7 +137,7 @@ export function AISubPageTemplate({
     cta: { text: 'Get Started', action: 'contact' },
     recommended: pkg.recommended,
     category: 'custom',
-  }));
+  })) || [];
 
   const BadgeIcon = hero.badge.icon;
 
@@ -179,16 +179,16 @@ export function AISubPageTemplate({
 
                 <div className="wp-flex wp-gap-4">
                   <Link
-                    to={slugToPath(hero.primaryButton.page)}
+                    to={slugToPath(hero.buttons?.[0]?.page ?? 'contact')}
                     className="ai-page__btn-primary"
                   >
-                    {hero.primaryButton.text} <ArrowRight size={18} />
+                    {hero.buttons?.[0]?.text ?? 'Get Started'} <ArrowRight size={18} />
                   </Link>
                   <Link
-                    to={slugToPath(hero.secondaryButton.page)}
+                    to={slugToPath(hero.buttons?.[1]?.page ?? 'ai-integrations')}
                     className="ai-page__btn-outline"
                   >
-                    {hero.secondaryButton.text}
+                    {hero.buttons?.[1]?.text ?? 'Learn More'}
                   </Link>
                 </div>
               </ScrollReveal>
@@ -278,7 +278,7 @@ export function AISubPageTemplate({
       )}
 
       {/* Optional pricing section */}
-      {showPricing && (
+      {showPricing && pricing && (
         <PricingTable
           heading={pricing.title}
           description={pricing.description}

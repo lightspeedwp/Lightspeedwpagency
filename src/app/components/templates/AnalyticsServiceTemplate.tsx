@@ -201,9 +201,11 @@ export const AnalyticsServiceTemplate = () => {
         <Container>
           <ScrollReveal animation="fade-up">
             <TestimonialCard
-              quote={analyticsTrustSignal.quote}
-              author={analyticsTrustSignal.author}
-              role={analyticsTrustSignal.role}
+              testimonial={{
+                quote: analyticsTrustSignal.quote,
+                author: analyticsTrustSignal.author,
+                role: analyticsTrustSignal.role,
+              }}
             />
           </ScrollReveal>
         </Container>

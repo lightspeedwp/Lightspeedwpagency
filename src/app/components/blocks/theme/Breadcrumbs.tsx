@@ -18,7 +18,7 @@
 import React from 'react';
 import { DotsThree as MoreHorizontal } from '@phosphor-icons/react';
 import { Link } from 'react-router';
-import { slugToPath } from '@/app/utils/route-map';
+import { slugToPath } from '../../../utils/route-map';
 
 export interface BreadcrumbItem {
   label: string;

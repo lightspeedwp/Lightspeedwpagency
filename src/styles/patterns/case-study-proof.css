@@ -167,24 +167,12 @@
 .case-study-proof__testimonial {
   position: relative;
   padding: var(--spacing-8);
-  background: linear-gradient(
-    135deg,
-    color-mix(in srgb, var(--card) 90%, transparent),
-    color-mix(in srgb, var(--card) 80%, transparent)
-  );
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+  background: var(--card);
+  border: 1px solid var(--border);
   border-radius: var(--radius-xl);
   box-shadow: 
     0 8px 24px color-mix(in srgb, var(--background) 10%, transparent),
     inset 0 1px 0 color-mix(in srgb, var(--foreground) 5%, transparent);
-  animation: float 6s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
 }
 
 .case-study-proof__quote-icon {
@@ -267,19 +255,12 @@
 /* ── Outcomes ── */
 .case-study-proof__outcomes {
   padding: var(--spacing-8);
-  background: linear-gradient(
-    135deg,
-    color-mix(in srgb, var(--card) 85%, transparent),
-    color-mix(in srgb, var(--card) 75%, transparent)
-  );
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+  background: var(--card);
+  border: 1px solid var(--border);
   border-radius: var(--radius-xl);
   box-shadow: 
     0 8px 24px color-mix(in srgb, var(--background) 10%, transparent),
     inset 0 1px 0 color-mix(in srgb, var(--foreground) 5%, transparent);
-  animation: float 6s ease-in-out -2s infinite;
 }
 
 .case-study-proof__outcomes-title {
@@ -339,21 +320,13 @@
   font-family: var(--font-primary);
   font-size: var(--text-2xl);
   font-weight: var(--font-weight-bold);
-  color: var(--foreground);
+  color: var(--primary);
   margin: 0;
-  background: linear-gradient(
-    135deg,
-    var(--foreground),
-    color-mix(in srgb, var(--foreground) 70%, var(--primary))
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 .case-study-proof__outcome-label {
   font-family: var(--font-secondary);
-  font-size: var(--text-small);
+  font-size: var(--text-sm);
   color: var(--muted-foreground);
   margin: 0;
 }
@@ -361,14 +334,8 @@
 /* ── Partners ── */
 .case-study-proof__partners {
   padding: var(--spacing-8);
-  background: linear-gradient(
-    135deg,
-    color-mix(in srgb, var(--card) 85%, transparent),
-    color-mix(in srgb, var(--card) 75%, transparent)
-  );
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+  background: var(--card);
+  border: 1px solid var(--border);
   border-radius: var(--radius-xl);
   box-shadow: 
     0 8px 24px color-mix(in srgb, var(--background) 10%, transparent),

@@ -96,8 +96,49 @@
 .wp-block-button:where(.is-style-outline) .wp-block-button__link:hover {
   background-color: var(--primary);
   color: var(--primary-foreground);
+  border-color: var(--primary);
 }
 
+/* Light Mode: Ensure visible blue outline */
+:root .wp-block-button:where(.is-style-outline) .wp-block-button__link {
+  border-color: var(--primary);
+  color: var(--primary);
+  border-width: 2px;
+}
+
+:root .wp-block-button:where(.is-style-outline) .wp-block-button__link:hover {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border-color: var(--primary);
+}
+
+/* Dark Mode: Ensure visible blue outline with glow */
+.dark .wp-block-button:where(.is-style-outline) .wp-block-button__link {
+  border-color: var(--primary);
+  color: var(--primary);
+  border-width: 2px;
+  box-shadow: 0 0 0 0 transparent;
+}
+
+.dark .wp-block-button:where(.is-style-outline) .wp-block-button__link:hover {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border-color: var(--primary);
+  box-shadow: 0 0 20px color-mix(in srgb, var(--primary) 40%, transparent);
+}
+
+/* Sizes — use :where() for same reason */
+.wp-block-button:where(.is-style-small) .wp-block-button__link {
+  padding: var(--spacing-1) var(--spacing-3);
+  font-size: var(--text-sm);
+}
+
+.wp-block-button:where(.is-style-large) .wp-block-button__link {
+  padding: var(--spacing-3) var(--spacing-6);
+  font-size: var(--text-lg);
+}
+
+/* CTA Button Style */
 .wp-block-button:where(.is-style-cta) .wp-block-button__link {
   background-color: var(--accent);
   color: var(--accent-foreground);
@@ -113,13 +154,15 @@
   box-shadow: var(--shadow-lg);
 }
 
-/* Sizes — use :where() for same reason */
-.wp-block-button:where(.is-style-small) .wp-block-button__link {
-  padding: var(--spacing-1) var(--spacing-3);
-  font-size: var(--text-sm);
+/* Light Mode: Enhanced visibility for CTA buttons */
+:root .wp-block-button:where(.is-style-cta) .wp-block-button__link {
+  background-color: var(--accent);
+  color: var(--accent-foreground);
 }
 
-.wp-block-button:where(.is-style-large) .wp-block-button__link {
-  padding: var(--spacing-3) var(--spacing-6);
-  font-size: var(--text-lg);
+/* Dark Mode: Enhanced glow for CTA buttons */
+.dark .wp-block-button:where(.is-style-cta) .wp-block-button__link:hover {
+  box-shadow: 
+    var(--shadow-lg),
+    0 0 30px color-mix(in srgb, var(--accent) 35%, transparent);
 }

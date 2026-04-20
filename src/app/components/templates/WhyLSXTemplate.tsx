@@ -87,12 +87,10 @@ export function WhyLSXTemplate() {
     {
       id: 'lsx-test-1',
       quote: "The LSX Design System completely changed how our agency builds WordPress sites. It's clean, intuitive, and the documentation is incredible.",
-      author: {
-        name: "Elena Rodriguez",
-        role: "Lead Developer",
-        company: "Studio North",
-        image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=150&h=150"
-      },
+      author: "Elena Rodriguez",
+      role: "Lead Developer",
+      company: "Studio North",
+      avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=150&h=150",
       rating: 5
     }
   ];

@@ -90,12 +90,10 @@ export function WhyWPTemplate() {
     {
       id: 'wp-test-1',
       quote: "Migrating to WordPress gave our marketing team the freedom to create landing pages instantly. Our organic traffic grew by 150% in 6 months.",
-      author: {
-        name: "David Chen",
-        role: "CMO",
-        company: "TechFlow Solutions",
-        image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=150&h=150"
-      },
+      author: "David Chen",
+      role: "CMO",
+      company: "TechFlow Solutions",
+      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=150&h=150",
       rating: 5
     }
   ];

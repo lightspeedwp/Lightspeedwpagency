@@ -170,8 +170,14 @@
    LIGHT MODE
    ============================================ */
 
-@media (prefers-color-scheme: light) {
-  .content-strategy-service__roadmap-content {
-    background: var(--color-white);
-  }
+/* Light Mode: Clean card backgrounds */
+:root .content-strategy-service__roadmap-content {
+  background: var(--card);
+}
+
+/* Dark Mode: Glass effect backgrounds */
+.dark .content-strategy-service__roadmap-content {
+  background: color-mix(in srgb, var(--color-white) 5%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }

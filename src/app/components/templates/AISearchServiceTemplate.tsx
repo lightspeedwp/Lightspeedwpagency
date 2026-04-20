@@ -144,9 +144,11 @@ export function AISearchServiceTemplate() {
         <Container>
           <ScrollReveal animation="fade-up">
             <TestimonialCard
-              quote={aiSearchTrustSignal.quote}
-              author={aiSearchTrustSignal.author}
-              role={aiSearchTrustSignal.role}
+              testimonial={{
+                quote: aiSearchTrustSignal.quote,
+                author: aiSearchTrustSignal.author,
+                role: aiSearchTrustSignal.role,
+              }}
             />
           </ScrollReveal>
         </Container>
