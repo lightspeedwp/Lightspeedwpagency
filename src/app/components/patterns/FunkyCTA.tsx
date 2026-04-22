@@ -65,7 +65,7 @@ export function FunkyCTA({
             {benefits.length > 0 && (
             <div className="funky-cta__benefits">
               <ul className="funky-cta__list">
-                {benefits.map((benefit, index) => (
+                {(benefits || []).map((benefit, index) => (
                   <li key={index} className="funky-cta__item">
                     <div className="funky-cta__check-wrapper">
                       <Check size={20} className="funky-cta__check" />

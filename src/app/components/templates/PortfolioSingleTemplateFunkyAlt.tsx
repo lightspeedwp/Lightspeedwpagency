@@ -1,26 +1,17 @@
 /**
- * Portfolio Single Template
+ * Portfolio Single Template — Funky Alternative
  *
- * WordPress template: templates/single-portfolio.html
+ * Art-directed case study template with neon glow, glassmorphism,
+ * animated gradient stripes, and editorial asymmetry.
  *
- * Funky neon aesthetic with glassmorphism, animated gradient stripes,
- * neon orb glows, editorial asymmetry, and warm/cool content splits.
- *
- * BEM block: .portfolio-single
- *
- * Pattern order: Breadcrumbs → Hero → Meta Ribbon → Challenge/Solution →
- *   Results → Gallery → Testimonial → Related Projects → CTA
+ * BEM block: .portfolio-single-alt
  */
 
-import '../../../styles/templates/single-project-optimized.css';
+import '../../../styles/templates/portfolio-single-funky-alt.css';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';
 import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 import { FunkyCTA } from '../patterns/FunkyCTA';
-import { TechnologyStack } from '../patterns/TechnologyStack';
-import {
-  armdTechnologyStack,
-} from '../../data/portfolio-case-study-enhanced';
 import {
   Code,
   Calendar,
@@ -31,6 +22,7 @@ import {
   Warning,
   Lightbulb,
   Star,
+  Quotes,
   Briefcase,
   Buildings,
 } from '@phosphor-icons/react';
@@ -49,11 +41,13 @@ import {
   projectPageCTA,
 } from '../../data/portfolio-project-page';
 
-interface PortfolioSingleTemplateProps {
+interface PortfolioSingleTemplateFunkyAltProps {
   slug?: string;
 }
 
-export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSingleTemplateProps) {
+export function PortfolioSingleTemplateFunkyAlt({
+  slug = 'armd-digital',
+}: PortfolioSingleTemplateFunkyAltProps) {
   return (
     <>
       {/* Breadcrumbs */}
@@ -68,35 +62,32 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
       {/* ──────────────────────────────────────────
           HERO
           ────────────────────────────────────────── */}
-      <section className="portfolio-single__hero" aria-label="Project hero">
-        <div className="portfolio-single__hero-orb portfolio-single__hero-orb--left" aria-hidden="true" />
-        <div className="portfolio-single__hero-orb portfolio-single__hero-orb--right" aria-hidden="true" />
-
+      <section className="portfolio-single-alt__hero" aria-label="Project hero">
         <Container>
-          <div className="portfolio-single__hero-inner">
+          <div className="portfolio-single-alt__hero-inner">
             {/* Left: content */}
-            <div className="portfolio-single__hero-content">
-              <span className="portfolio-single__badge">
+            <div className="portfolio-single-alt__hero-content">
+              <span className="portfolio-single-alt__badge">
                 <Code size={14} weight="duotone" />
                 {projectPageHero.badge.text}
               </span>
 
-              <h1 className="portfolio-single__hero-title">
+              <h1 className="portfolio-single-alt__hero-title">
                 {projectPageHero.title}
               </h1>
 
-              <p className="portfolio-single__hero-desc">
+              <p className="portfolio-single-alt__hero-desc">
                 {projectPageHero.description}
               </p>
             </div>
 
             {/* Right: featured image + floating cards */}
-            <div className="portfolio-single__hero-visual">
-              <div className="portfolio-single__hero-frame">
+            <div className="portfolio-single-alt__hero-visual">
+              <div className="portfolio-single-alt__hero-frame">
                 <div
-                  className="portfolio-single__hero-image"
+                  className="portfolio-single-alt__hero-image"
                   role="img"
-                  aria-label={`${projectPageMeta.client} project screenshot`}
+                  aria-label={`${projectPageHero.client} project screenshot`}
                   style={{
                     backgroundImage: `url(${projectPageHero.featuredImage})`,
                   }}
@@ -105,33 +96,33 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
 
               {/* Floating stat cards */}
               <div
-                className="portfolio-single__float-card portfolio-single__float-card--bottom-left"
+                className="portfolio-single-alt__float-card"
                 aria-hidden="true"
               >
-                <p className="portfolio-single__float-value">
+                <p className="portfolio-single-alt__float-value">
                   {projectPageMeta.duration}
                 </p>
-                <p className="portfolio-single__float-label">Duration</p>
+                <p className="portfolio-single-alt__float-label">Duration</p>
               </div>
 
               <div
-                className="portfolio-single__float-card portfolio-single__float-card--top-right"
+                className="portfolio-single-alt__float-card"
                 aria-hidden="true"
               >
-                <p className="portfolio-single__float-value">
+                <p className="portfolio-single-alt__float-value">
                   {projectPageMeta.teamSize}
                 </p>
-                <p className="portfolio-single__float-label">Team</p>
+                <p className="portfolio-single-alt__float-label">Team</p>
               </div>
 
               <div
-                className="portfolio-single__float-card portfolio-single__float-card--mid-right"
+                className="portfolio-single-alt__float-card"
                 aria-hidden="true"
               >
-                <p className="portfolio-single__float-value">
+                <p className="portfolio-single-alt__float-value">
                   {projectPageMeta.budget}
                 </p>
-                <p className="portfolio-single__float-label">Budget</p>
+                <p className="portfolio-single-alt__float-label">Budget</p>
               </div>
             </div>
           </div>
@@ -141,82 +132,82 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
       {/* ──────────────────────────────────────────
           META RIBBON
           ────────────────────────────────────────── */}
-      <Section spacing="none" className="portfolio-single__meta-section">
+      <Section spacing="none" className="portfolio-single-alt__meta">
         <Container>
-          <div className="portfolio-single__meta-ribbon">
-            <div className="portfolio-single__meta-grid">
-              <div className="portfolio-single__meta-item">
-                <span className="portfolio-single__meta-label">
+          <div className="portfolio-single-alt__meta-ribbon">
+            <div className="portfolio-single-alt__meta-grid">
+              <div className="portfolio-single-alt__meta-item">
+                <span className="portfolio-single-alt__meta-label">
                   <Briefcase size={12} weight="duotone" />
                   Client
                 </span>
-                <span className="portfolio-single__meta-value">
+                <span className="portfolio-single-alt__meta-value">
                   {projectPageMeta.client}
                 </span>
               </div>
 
-              <div className="portfolio-single__meta-item">
-                <span className="portfolio-single__meta-label">
+              <div className="portfolio-single-alt__meta-item">
+                <span className="portfolio-single-alt__meta-label">
                   <Buildings size={12} weight="duotone" />
                   Industry
                 </span>
-                <span className="portfolio-single__meta-value">
+                <span className="portfolio-single-alt__meta-value">
                   {projectPageMeta.industry}
                 </span>
               </div>
 
-              <div className="portfolio-single__meta-item">
-                <span className="portfolio-single__meta-label">
+              <div className="portfolio-single-alt__meta-item">
+                <span className="portfolio-single-alt__meta-label">
                   <Calendar size={12} weight="duotone" />
                   Completed
                 </span>
-                <span className="portfolio-single__meta-value">
+                <span className="portfolio-single-alt__meta-value">
                   {projectPageMeta.completedDate}
                 </span>
               </div>
 
-              <div className="portfolio-single__meta-item">
-                <span className="portfolio-single__meta-label">
+              <div className="portfolio-single-alt__meta-item">
+                <span className="portfolio-single-alt__meta-label">
                   <Clock size={12} weight="duotone" />
                   Duration
                 </span>
-                <span className="portfolio-single__meta-value">
+                <span className="portfolio-single-alt__meta-value">
                   {projectPageMeta.duration}
                 </span>
               </div>
 
-              <div className="portfolio-single__meta-item">
-                <span className="portfolio-single__meta-label">
+              <div className="portfolio-single-alt__meta-item">
+                <span className="portfolio-single-alt__meta-label">
                   <Users size={12} weight="duotone" />
                   Team
                 </span>
-                <span className="portfolio-single__meta-value">
+                <span className="portfolio-single-alt__meta-value">
                   {projectPageMeta.teamSize}
                 </span>
               </div>
 
-              <div className="portfolio-single__meta-item">
-                <span className="portfolio-single__meta-label">
+              <div className="portfolio-single-alt__meta-item">
+                <span className="portfolio-single-alt__meta-label">
                   <CurrencyDollar size={12} weight="duotone" />
                   Budget
                 </span>
-                <span className="portfolio-single__meta-value">
+                <span className="portfolio-single-alt__meta-value">
                   {projectPageMeta.budget}
                 </span>
               </div>
             </div>
 
             {/* Services & Technologies pills */}
-            <div className="portfolio-single__pills-section">
+            <div className="portfolio-single-alt__pills-section">
               <div>
-                <h3 className="portfolio-single__pills-title">
+                <h3 className="portfolio-single-alt__pills-title">
                   Services provided
                 </h3>
-                <div className="portfolio-single__pills">
-                  {(projectPageServices || []).map((service, i) => (
+                <div className="portfolio-single-alt__pills">
+                  {projectPageServices.map((service, i) => (
                     <span
                       key={`service-${i}`}
-                      className="portfolio-single__pill portfolio-single__pill--service"
+                      className="portfolio-single-alt__pill portfolio-single-alt__pill--service"
                     >
                       {service}
                     </span>
@@ -225,14 +216,14 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
               </div>
 
               <div>
-                <h3 className="portfolio-single__pills-title">
+                <h3 className="portfolio-single-alt__pills-title">
                   Technologies used
                 </h3>
-                <div className="portfolio-single__pills">
-                  {(projectPageTechnologies || []).map((tech, i) => (
+                <div className="portfolio-single-alt__pills">
+                  {projectPageTechnologies.map((tech, i) => (
                     <span
                       key={`tech-${i}`}
-                      className="portfolio-single__pill portfolio-single__pill--tech"
+                      className="portfolio-single-alt__pill portfolio-single-alt__pill--tech"
                     >
                       {tech}
                     </span>
@@ -248,38 +239,38 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
           CHALLENGE + SOLUTION
           ────────────────────────────────────────── */}
       <section
-        className="portfolio-single__editorial"
+        className="portfolio-single-alt__editorial"
         aria-label="Challenge and solution"
       >
         <Container>
-          <div className="portfolio-single__editorial-grid">
+          <div className="portfolio-single-alt__editorial-grid">
             {/* Challenge */}
-            <div className="portfolio-single__editorial-panel portfolio-single__editorial-panel--challenge">
-              <div className="portfolio-single__editorial-icon">
+            <div className="portfolio-single-alt__editorial-panel portfolio-single-alt__editorial-panel--challenge">
+              <div className="portfolio-single-alt__editorial-icon">
                 <Warning size={32} weight="duotone" />
               </div>
-              <h2 className="portfolio-single__editorial-heading">
+              <h2 className="portfolio-single-alt__editorial-title">
                 {projectPageChallenge.title}
               </h2>
-              <p className="portfolio-single__editorial-desc">
+              <p className="portfolio-single-alt__editorial-desc">
                 {projectPageChallenge.description}
               </p>
-              <ul className="portfolio-single__editorial-list">
-                {(projectPageChallenge.keyIssues || []).map((item, i) => {
+              <ul className="portfolio-single-alt__editorial-list">
+                {projectPageChallenge.keyIssues.map((item, i) => {
                   const Icon = item.icon;
                   return (
                     <li
                       key={`challenge-${i}`}
-                      className="portfolio-single__editorial-item"
+                      className="portfolio-single-alt__editorial-item"
                     >
-                      <span className="portfolio-single__editorial-item-icon">
+                      <span className="portfolio-single-alt__editorial-item-icon">
                         <Icon size={18} weight="duotone" />
                       </span>
                       <div>
-                        <p className="portfolio-single__editorial-item-title">
+                        <p className="portfolio-single-alt__editorial-item-title">
                           {item.issue}
                         </p>
-                        <p className="portfolio-single__editorial-item-desc">
+                        <p className="portfolio-single-alt__editorial-item-desc">
                           {item.description}
                         </p>
                       </div>
@@ -290,32 +281,32 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
             </div>
 
             {/* Solution */}
-            <div className="portfolio-single__editorial-panel portfolio-single__editorial-panel--solution">
-              <div className="portfolio-single__editorial-icon">
+            <div className="portfolio-single-alt__editorial-panel portfolio-single-alt__editorial-panel--solution">
+              <div className="portfolio-single-alt__editorial-icon">
                 <Lightbulb size={32} weight="duotone" />
               </div>
-              <h2 className="portfolio-single__editorial-heading">
+              <h2 className="portfolio-single-alt__editorial-title">
                 {projectPageSolution.title}
               </h2>
-              <p className="portfolio-single__editorial-desc">
+              <p className="portfolio-single-alt__editorial-desc">
                 {projectPageSolution.description}
               </p>
-              <ul className="portfolio-single__editorial-list">
-                {(projectPageSolution.keyFeatures || []).map((item, i) => {
+              <ul className="portfolio-single-alt__editorial-list">
+                {projectPageSolution.keyFeatures.map((item, i) => {
                   const Icon = item.icon;
                   return (
                     <li
                       key={`solution-${i}`}
-                      className="portfolio-single__editorial-item"
+                      className="portfolio-single-alt__editorial-item"
                     >
-                      <span className="portfolio-single__editorial-item-icon">
+                      <span className="portfolio-single-alt__editorial-item-icon">
                         <Icon size={18} weight="duotone" />
                       </span>
                       <div>
-                        <p className="portfolio-single__editorial-item-title">
+                        <p className="portfolio-single-alt__editorial-item-title">
                           {item.feature}
                         </p>
-                        <p className="portfolio-single__editorial-item-desc">
+                        <p className="portfolio-single-alt__editorial-item-desc">
                           {item.description}
                         </p>
                       </div>
@@ -329,44 +320,33 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
       </section>
 
       {/* ──────────────────────────────────────────
-          TECHNOLOGY STACK
-          ────────────────────────────────────────── */}
-      <TechnologyStack
-        technologies={armdTechnologyStack}
-        title="Technology stack"
-        description="Modern technologies and tools used to deliver this project"
-        groupByCategory={true}
-        variant="badges"
-      />
-
-      {/* ──────────────────────────────────────────
           RESULTS
           ────────────────────────────────────────── */}
-      <section className="portfolio-single__results" aria-label="Project results">
+      <section className="portfolio-single-alt__results" aria-label="Project results">
         <Container>
-          <h2 className="portfolio-single__results-title">
+          <h2 className="portfolio-single-alt__results-title">
             Project results
           </h2>
-          <div className="portfolio-single__results-grid">
-            {(projectPageResults || []).map((result, i) => {
+          <div className="portfolio-single-alt__results-grid">
+            {projectPageResults.map((result, i) => {
               const Icon = result.icon;
               return (
                 <div
                   key={`result-${i}`}
-                  className="portfolio-single__result-card"
+                  className="portfolio-single-alt__result-card"
                 >
                   <Icon
                     size={40}
                     weight="duotone"
-                    className="portfolio-single__result-icon"
+                    className="portfolio-single-alt__result-icon"
                   />
-                  <p className="portfolio-single__result-value">
+                  <p className="portfolio-single-alt__result-value">
                     {result.value}
                   </p>
-                  <p className="portfolio-single__result-metric">
+                  <p className="portfolio-single-alt__result-metric">
                     {result.metric}
                   </p>
-                  <p className="portfolio-single__result-desc">
+                  <p className="portfolio-single-alt__result-desc">
                     {result.description}
                   </p>
                 </div>
@@ -379,24 +359,24 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
       {/* ──────────────────────────────────────────
           GALLERY
           ────────────────────────────────────────── */}
-      <section className="portfolio-single__gallery" aria-label="Project gallery">
+      <section className="portfolio-single-alt__gallery" aria-label="Project gallery">
         <Container>
-          <h2 className="portfolio-single__gallery-title">
+          <h2 className="portfolio-single-alt__gallery-title">
             Project gallery
           </h2>
-          <div className="portfolio-single__gallery-grid">
-            {(projectPageGallery || []).map((image, i) => (
+          <div className="portfolio-single-alt__gallery-grid">
+            {projectPageGallery.map((image, i) => (
               <div
                 key={`gallery-${i}`}
-                className="portfolio-single__gallery-card"
+                className="portfolio-single-alt__gallery-card"
               >
                 <div
-                  className="portfolio-single__gallery-image"
+                  className="portfolio-single-alt__gallery-image"
                   role="img"
                   aria-label={image.caption}
                   style={{ backgroundImage: `url(${image.url})` }}
                 />
-                <div className="portfolio-single__gallery-caption">
+                <div className="portfolio-single-alt__gallery-caption">
                   {image.caption}
                 </div>
               </div>
@@ -409,14 +389,14 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
           TESTIMONIAL
           ────────────────────────────────────────── */}
       <section
-        className="portfolio-single__testimonial"
+        className="portfolio-single-alt__testimonial"
         aria-label="Client testimonial"
       >
         <Container>
-          <blockquote className="portfolio-single__testimonial-panel">
+          <blockquote className="portfolio-single-alt__testimonial-panel">
             {/* Star rating */}
-            {projectPageTestimonial?.rating && (
-              <div className="portfolio-single__quote-stars" aria-label={`${projectPageTestimonial.rating} out of 5 stars`}>
+            {projectPageTestimonial.rating && (
+              <div className="portfolio-single-alt__quote-stars" aria-label={`${projectPageTestimonial.rating} out of 5 stars`}>
                 {Array.from({ length: projectPageTestimonial.rating }).map(
                   (_, i) => (
                     <Star key={`star-${i}`} size={20} weight="fill" />
@@ -425,28 +405,28 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
               </div>
             )}
 
-            <p className="portfolio-single__quote-mark" aria-hidden="true">
+            <p className="portfolio-single-alt__quote-mark" aria-hidden="true">
               &ldquo;
             </p>
 
-            <p className="portfolio-single__quote-text">
+            <p className="portfolio-single-alt__quote-text">
               {projectPageTestimonial.quote}
             </p>
 
-            <footer className="portfolio-single__quote-author">
+            <footer className="portfolio-single-alt__quote-author">
               {projectPageTestimonial.avatar && (
                 <img
-                  className="portfolio-single__quote-avatar"
+                  className="portfolio-single-alt__quote-avatar"
                   src={projectPageTestimonial.avatar}
                   alt={projectPageTestimonial.author}
                   loading="lazy"
                 />
               )}
               <div>
-                <p className="portfolio-single__quote-name">
+                <p className="portfolio-single-alt__quote-name">
                   {projectPageTestimonial.author}
                 </p>
-                <p className="portfolio-single__quote-role">
+                <p className="portfolio-single-alt__quote-role">
                   {projectPageTestimonial.position},{' '}
                   {projectPageTestimonial.company}
                 </p>
@@ -460,15 +440,15 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
           RELATED PROJECTS
           ────────────────────────────────────────── */}
       <section
-        className="portfolio-single__related"
+        className="portfolio-single-alt__related"
         aria-label="Related projects"
       >
         <Container>
-          <h2 className="portfolio-single__related-heading">
+          <h2 className="portfolio-single-alt__related-title">
             Related projects
           </h2>
-          <div className="portfolio-single__related-grid">
-            {(projectPageRelated || []).map((project) => {
+          <div className="portfolio-single-alt__related-grid">
+            {projectPageRelated.map((project) => {
               const categoryLabel =
                 project.projectGroups && project.projectGroups.length > 0
                   ? project.projectGroups[0]
@@ -478,27 +458,27 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
                 <a
                   key={project.id}
                   href={`/work/${project.slug}`}
-                  className="portfolio-single__related-card"
+                  className="portfolio-single-alt__related-card"
                 >
                   <div
-                    className="portfolio-single__related-image"
+                    className="portfolio-single-alt__related-image"
                     role="img"
                     aria-label={project.title}
                     style={{
                       backgroundImage: `url(${project.featuredImage})`,
                     }}
                   />
-                  <div className="portfolio-single__related-body">
-                    <span className="portfolio-single__related-badge">
+                  <div className="portfolio-single-alt__related-body">
+                    <span className="portfolio-single-alt__related-badge">
                       {categoryLabel}
                     </span>
-                    <h3 className="portfolio-single__related-card-title">
+                    <h3 className="portfolio-single-alt__related-card-title">
                       {project.title}
                     </h3>
-                    <p className="portfolio-single__related-excerpt">
+                    <p className="portfolio-single-alt__related-excerpt">
                       {project.excerpt}
                     </p>
-                    <span className="portfolio-single__related-link">
+                    <span className="portfolio-single-alt__related-link">
                       View case study <ArrowRight size={16} weight="regular" />
                     </span>
                   </div>
@@ -512,18 +492,20 @@ export function PortfolioSingleTemplate({ slug = 'armd-digital' }: PortfolioSing
       {/* ──────────────────────────────────────────
           CTA
           ────────────────────────────────────────── */}
-      <FunkyCTA
-        title={projectPageCTA.title}
-        description={projectPageCTA.description}
-        buttonText={projectPageCTA.buttons[0].text}
-        buttonPage={projectPageCTA.buttons[0].page}
-        benefits={[
-          'Custom WordPress solutions tailored to your goals',
-          'Full-stack development & design expertise',
-          'Ongoing support & maintenance included',
-          'Proven track record with 150+ projects',
-        ]}
-      />
+      <div className="portfolio-single-alt__cta-wrapper">
+        <FunkyCTA
+          title={projectPageCTA.title}
+          description={projectPageCTA.description}
+          buttonText={projectPageCTA.buttons[0].text}
+          buttonPage={projectPageCTA.buttons[0].page}
+          benefits={[
+            'Custom WordPress solutions tailored to your goals',
+            'Full-stack development & design expertise',
+            'Ongoing support & maintenance included',
+            'Proven track record with 150+ projects',
+          ]}
+        />
+      </div>
     </>
   );
 }

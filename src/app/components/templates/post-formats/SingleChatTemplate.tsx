@@ -8,6 +8,7 @@
 
 import '../../../../styles/templates/single-post.css';
 import { Chat as MessageCircle, User, Calendar } from '@phosphor-icons/react';
+import { BreadcrumbPart } from '../../parts/BreadcrumbPart';
 
 export function SingleChatTemplate() {
   const post = chatPost;

@@ -31,6 +31,7 @@ import { loadCSSBundle } from '../utils/css-bundle-loader';
 
 // Core Pages
 import { FrontPageTemplate } from '../components/templates/FrontPageTemplate';
+import { FrontPageAltTemplate } from '../components/templates/FrontPageAltTemplate';
 
 // About
 import { AboutTemplate } from '../components/templates/AboutTemplate';
@@ -179,6 +180,7 @@ function GettingStartedRoute() { loadCSSBundle('services'); return <GettingStart
 export const coreRoutes: RouteObject[] = [
   /* ── Home (Core CSS Only) ── */
   { index: true, Component: FrontPageTemplate },
+  { path: 'home-alt', Component: FrontPageAltTemplate },
 
   /* ── Getting Started ── */
   { path: 'getting-started', Component: GettingStartedRoute },

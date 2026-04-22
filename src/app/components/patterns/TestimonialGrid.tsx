@@ -98,7 +98,7 @@ export function TestimonialGrid({
       <div
         className={gridClasses}
       >
-        {testimonials.map((testimonial, index) => {
+        {(testimonials || []).map((testimonial, index) => {
           const cardData: TestimonialCardData = {
             quote: testimonial.quote,
             author: testimonial.author,

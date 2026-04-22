@@ -76,7 +76,7 @@ export function SocialProof({
 
         {/* Logo Grid */}
         <div className="social-proof__grid">
-          {logos.map((logo) => {
+          {(logos || []).map((logo) => {
             const LogoImage = (
               <img
                 src={logo.src}

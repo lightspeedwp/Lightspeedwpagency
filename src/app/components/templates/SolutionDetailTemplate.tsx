@@ -34,12 +34,13 @@ interface SolutionDetailProps {
     category: string;
     tagline: string;
     description: string;
-    features: Array<{
+    features?: Array<{
       title: string;
       description: string;
       icon: UniversalIcon;
     }>;
-    benefits: string[];
+    featuresList?: string[];
+    benefits?: string[];
     useCases?: Array<{
       title: string;
       description: string;
@@ -53,7 +54,7 @@ interface SolutionDetailProps {
     pricing?: {
       model: string;
       starting: string;
-      includes: string[];
+      includes?: string[];
     };
     relatedSolutions?: Array<{
       id: string;
@@ -65,6 +66,10 @@ interface SolutionDetailProps {
 }
 
 export function SolutionDetailTemplate({ solution }: SolutionDetailProps) {
+  if (!solution) {
+    return <div className="solution-detail__error">Solution data not available.</div>;
+  }
+
   return (
     <>
       {/* Breadcrumbs */}
@@ -120,7 +125,7 @@ export function SolutionDetailTemplate({ solution }: SolutionDetailProps) {
                 <h2 className="solution-detail__section-title">Overview</h2>
                 <p className="solution-detail__description">{solution.description}</p>
                 <h3 className="solution-detail__subsection-title">Key benefits</h3>
-                <CheckList items={solution.benefits} />
+                <CheckList items={solution.benefits || []} />
               </div>
             </ScrollReveal>
 
@@ -141,7 +146,7 @@ export function SolutionDetailTemplate({ solution }: SolutionDetailProps) {
                     <dt className="solution-detail__sidebar-label">Includes</dt>
                     <dd>
                       <ul className="solution-detail__includes-list">
-                        {solution.pricing?.includes.map((item, index) => (
+                        {(solution.pricing?.includes || []).map((item, index) => (
                           <li key={index} className="solution-detail__include-item">
                             <Check size={16} className="solution-detail__check-icon" />
                             <span className="solution-detail__include-text">{item}</span>
@@ -171,7 +176,12 @@ export function SolutionDetailTemplate({ solution }: SolutionDetailProps) {
               </p>
             </div>
           </ScrollReveal>
-          <FeatureList items={solution.features} columns={3} variant="glass" iconStyle="rounded" />
+          {solution.features && solution.features.length > 0 && (
+            <FeatureList items={solution.features} columns={3} variant="glass" iconStyle="rounded" />
+          )}
+          {solution.featuresList && solution.featuresList.length > 0 && (
+            <CheckList items={solution.featuresList} />
+          )}
         </Container>
       </Section>
 

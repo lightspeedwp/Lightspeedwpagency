@@ -41,6 +41,8 @@ import { AISEOTemplate } from '../components/templates/AISEOTemplate';
 import { AIChatbotsTemplate } from '../components/templates/AIChatbotsTemplate';
 import { AIAnalyticsTemplate } from '../components/templates/AIAnalyticsTemplate';
 import { AISolutionsLandingTemplate } from '../components/templates/AISolutionsLandingTemplate';
+import { EducationSolutionTemplate } from '../components/templates/EducationSolutionTemplate';
+import { DesignSystemsSolutionTemplate } from '../components/templates/DesignSystemsSolutionTemplate';
 
 /* ═══════════════════════════════════════════
  * Route Wrapper Components
@@ -65,6 +67,8 @@ function AISEORoute() { loadCSSBundle('solutions'); return <AISEOTemplate />; }
 function AIChatbotsRoute() { loadCSSBundle('solutions'); return <AIChatbotsTemplate />; }
 function AIAnalyticsRoute() { loadCSSBundle('solutions'); return <AIAnalyticsTemplate />; }
 function AISolutionsLandingRoute() { loadCSSBundle('solutions'); return <AISolutionsLandingTemplate />; }
+function EducationSolutionRoute() { loadCSSBundle('solutions'); return <EducationSolutionTemplate />; }
+function DesignSystemsSolutionRoute() { loadCSSBundle('solutions'); return <DesignSystemsSolutionTemplate />; }
 
 /* ═══════════════════════════════════════════
  * Route Definitions
@@ -84,6 +88,12 @@ export const solutionsRoutes: RouteObject[] = [
   { path: 'solutions/lsx-search', Component: LSXSearchRoute },
   { path: 'solutions/wordpress-redesign', Component: WordPressRedesignRoute },
   { path: 'solutions/woocommerce-redesign', Component: WooCommerceRedesignRoute },
+
+  /* ── Industry Solutions ── */
+  { path: 'solutions/education', Component: EducationSolutionRoute },
+
+  /* ── Strategic Solutions ── */
+  { path: 'solutions/design-systems', Component: DesignSystemsSolutionRoute },
 
   /* ── AI Solutions Landing + Sub-Pages ── */
   { path: 'solutions/ai', Component: AISolutionsLandingRoute },

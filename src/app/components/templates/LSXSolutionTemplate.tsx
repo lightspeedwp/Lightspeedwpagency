@@ -40,5 +40,21 @@ export function LSXSolutionTemplate() {
     return <div>Solution not found</div>;
   }
 
-  return <SolutionDetailTemplate solution={solution} />;
+  // Map Solution data to SolutionDetailTemplate's expected shape
+  const templateData = {
+    title: solution.name,
+    slug: solution.slug,
+    category: solution.category,
+    tagline: solution.tagline,
+    description: solution.description,
+    benefits: solution.benefits,
+    featuresList: solution.features,
+    pricing: {
+      model: solution.pricing.model,
+      starting: solution.pricing.starting,
+      includes: solution.deliverables,
+    },
+  };
+
+  return <SolutionDetailTemplate solution={templateData} />;
 }

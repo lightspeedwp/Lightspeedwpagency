@@ -322,7 +322,7 @@ export function FAQSection({
           {/* FAQ Accordion - WordPress Accordion Block */}
           <div className="faq-section__accordion">
             <Accordion>
-              {faqs.map((faq, index) => (
+              {(faqs || []).map((faq, index) => (
                 <AccordionItem
                   key={index}
                   id={`faq-${index}`}

@@ -81,7 +81,7 @@ export function CheckList({
       className={`checklist checklist--${variant} ${className}`}
       role="list"
     >
-      {items.map((item, index) => {
+      {(items || []).map((item, index) => {
         const text = typeof item === 'string' ? item : item.text;
         const Icon = typeof item === 'object' && item.icon ? item.icon : DefaultIcon;
         

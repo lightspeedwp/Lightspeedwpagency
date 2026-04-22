@@ -14,7 +14,7 @@
 
 import '../../../../styles/templates/testimonial-single.css';
 import { Star, Calendar, Briefcase, Tag, ArrowLeft } from '@phosphor-icons/react';
-import { Link } from 'react-router';
+import { Link, useParams } from 'react-router';
 import { getPageUrl } from '../../../data/site-pages';
 import { Section } from '../../common/Section';
 import { FunkyCTA } from '../../patterns/FunkyCTA';

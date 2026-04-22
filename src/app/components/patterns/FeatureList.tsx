@@ -116,7 +116,7 @@ export function FeatureList({
       role="list"
       aria-label="Features"
     >
-      {items.map((item, index) => {
+      {(items || []).map((item, index) => {
         const Icon = item.icon;
         const CardWrapper = item.link ? Link : 'div';
         const cardProps = item.link ? {

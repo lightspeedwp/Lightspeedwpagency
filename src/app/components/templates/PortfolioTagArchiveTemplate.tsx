@@ -1,5 +1,6 @@
 import '../../../styles/templates/portfolio-tag-archive-optimized.css';
 import { Link, Navigate, useParams } from 'react-router';
+import { slugToPath } from '../../utils/route-map';
 import { getPageUrl } from '../../data/site-pages';
 import { Container } from '../common/Container';
 import { Section } from '../common/Section';

@@ -227,7 +227,8 @@ export function buildSiteMapSections(): SiteMapSection[] {
     { id: 'wordpress-to-wordpress', label: 'WordPress to WordPress', status: 'active' },
     { id: 'publishers', label: 'Publishers', status: 'active' },
     { id: 'ecommerce-industry', label: 'E-commerce Industry', status: 'active' },
-    { id: 'education-industry', label: 'Education Industry', status: 'active' },
+    { id: 'education-solution', label: 'Education Industry', status: 'active' },
+    { id: 'design-systems-solution', label: 'Design Systems (Strategic Solution)', status: 'active' },
     { id: 'healthcare-industry', label: 'Healthcare Industry', status: 'active' },
     { id: 'lsx', label: 'LSX Design', status: 'active' },
     { id: 'lsx-theme', label: 'LSX Theme', status: 'active' },
@@ -268,6 +269,7 @@ export function buildSiteMapSections(): SiteMapSection[] {
 
   const portfolioPages: SiteMapPage[] = [
     { id: 'portfolio-archive', label: 'Portfolio Archive', status: 'active' },
+    { id: 'work-alt-single-armd-digital', label: 'Work — Funky Alt Template (ARMD Digital)', status: 'active' },
     ...portfolioArchiveItems.map((project) => ({ id: `portfolio-single-${project.slug}`, label: project.title, status: 'active' as const })),
     ...uniquePortfolioCategories.map((cat) => ({ id: `portfolio-category-${cat.toLowerCase().replace(/\s+/g, '-')}`, label: `Category: ${cat}`, status: 'active' as const })),
     ...uniquePortfolioTags.map((tag) => ({ id: `portfolio-tag-${tag.toLowerCase().replace(/\s+/g, '-')}`, label: `Tag: ${tag}`, status: 'active' as const })),

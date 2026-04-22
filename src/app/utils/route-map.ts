@@ -19,6 +19,7 @@ const SLUG_TO_PATH: Record<string, string> = {
   /* ── Home ── */
   'front-page': '/',
   'home': '/',
+  'home-alt': '/home-alt',
 
   /* ── About ── */
   'about': '/about',
@@ -97,16 +98,11 @@ const SLUG_TO_PATH: Record<string, string> = {
   /* ── Services (legacy "with suffix" routes) ── */
   'discovery-service': '/services/discovery',
   'design-service': '/services/design',
-  'development-service': '/services/development',
   'content-service': '/services/content',
   'migrations-service': '/services/migrations',
   'security-service': '/services/security',
-  'support-service': '/services/support',
-  'performance-service': '/services/performance',
-  'accessibility-service': '/services/accessibility',
   'hosting-service': '/services/hosting',
   'training-service': '/services/training',
-  'woocommerce-service': '/solutions/woocommerce',
 
   /* ── Solutions ── */
   'solutions': '/solutions',
@@ -124,6 +120,10 @@ const SLUG_TO_PATH: Record<string, string> = {
   /* ── New Solution Pages ── */
   'wordpress-redesign': '/solutions/wordpress-redesign',
   'woocommerce-redesign': '/solutions/woocommerce-redesign',
+
+  /* ── Industry / Strategic Solution Pages ── */
+  'education-solution': '/solutions/education',
+  'design-systems-solution': '/solutions/design-systems',
 
   /* ── AI Solutions ── */
   'ai-solutions': '/solutions/ai',
@@ -149,6 +149,9 @@ const SLUG_TO_PATH: Record<string, string> = {
   'portfolio-single': '/work',
   'work': '/work',
   'work-archive': '/work',
+
+  /* ── Work Alt (Funky Alternative Template) ── */
+  'work-alt': '/work-alt/armd-digital',
 
   /* ── Insights ── */
   'blog': '/insights',  // Backward compatibility
@@ -374,6 +377,9 @@ export function slugToPath(slug: string): string {
   // 2. Dynamic patterns
   if (slug.startsWith('portfolio-single-') || slug.startsWith('work-single-')) {
     return `/work/${slug.replace('portfolio-single-', '').replace('work-single-', '')}`;
+  }
+  if (slug.startsWith('work-alt-single-')) {
+    return `/work-alt/${slug.replace('work-alt-single-', '')}`;
   }
   if (slug.startsWith('portfolio-category-') || slug.startsWith('work-category-')) {
     return `/work/category/${slug.replace('portfolio-category-', '').replace('work-category-', '')}`;

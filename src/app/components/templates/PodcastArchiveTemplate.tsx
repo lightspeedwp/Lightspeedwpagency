@@ -18,7 +18,7 @@ import { Paragraph } from '../blocks/text/Paragraph';
 import { Headphones, Clock, Calendar } from '@phosphor-icons/react';
 import { podcasts, podcastCategories } from '../../data/podcasts';
 import { podcastFAQs } from '../../data/faqs';
-
+import { BreadcrumbPart } from '../parts/BreadcrumbPart';
 
 export function PodcastArchiveTemplate() {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);

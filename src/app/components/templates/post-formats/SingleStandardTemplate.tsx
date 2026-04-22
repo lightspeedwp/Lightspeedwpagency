@@ -12,6 +12,7 @@
 
 import '../../../../styles/templates/single-post.css';
 import { User, Calendar, Tag } from '@phosphor-icons/react';
+import { BreadcrumbPart } from '../../parts/BreadcrumbPart';
 
 export function SingleStandardTemplate() {
   const post = standardPost;

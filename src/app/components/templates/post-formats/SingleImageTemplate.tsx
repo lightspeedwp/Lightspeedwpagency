@@ -8,6 +8,7 @@
 
 import '../../../../styles/templates/single-post.css';
 import { Camera, Calendar, User } from '@phosphor-icons/react';
+import { BreadcrumbPart } from '../../parts/BreadcrumbPart';
 
 export function SingleImageTemplate() {
   const post = imagePost;

@@ -1,0 +1,172 @@
+/**
+ * Education Solution — Custom Sections
+ *
+ * Minimal CSS for the AI integrations section, case study proof block,
+ * and any education-specific overrides. Reuses solution-detail.css
+ * for all standard sections.
+ *
+ * BEM block: education-ai-section, education-proof-section
+ */
+
+/* ============================================
+   AI INTEGRATIONS SECTION
+   ============================================ */
+
+.education-ai-section {
+  background: var(--surface-elevated);
+  position: relative;
+}
+
+.education-ai-section__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-6);
+  margin-top: var(--spacing-8);
+}
+
+@media (max-width: 768px) {
+  .education-ai-section__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.education-ai-section__card {
+  background: var(--surface-card);
+  border: var(--border-width-thin) solid var(--border-soft);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-8);
+  transition: var(--transition-base);
+}
+
+.education-ai-section__card:hover {
+  border-color: color-mix(in srgb, var(--primary) 40%, transparent);
+  box-shadow: 0 0 24px color-mix(in srgb, var(--primary) 12%, transparent);
+}
+
+.education-ai-section__card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--primary) 12%, transparent);
+  color: var(--primary);
+  margin-bottom: var(--spacing-4);
+}
+
+.education-ai-section__card-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h5);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-2);
+}
+
+.education-ai-section__card-desc {
+  font-family: var(--font-secondary);
+  font-size: var(--text-body);
+  line-height: var(--line-height-relaxed);
+  color: var(--text-secondary);
+}
+
+.education-ai-section__cta-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--spacing-10);
+}
+
+.education-ai-section__cta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-family: var(--font-primary);
+  font-size: var(--text-body-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--primary);
+  text-decoration: none;
+  padding: var(--spacing-3) var(--spacing-6);
+  border: var(--border-width-thin) solid var(--primary);
+  border-radius: var(--radius-full);
+  transition: var(--transition-base);
+}
+
+.education-ai-section__cta-link:hover {
+  background: color-mix(in srgb, var(--primary) 10%, transparent);
+  box-shadow: 0 0 20px color-mix(in srgb, var(--primary) 20%, transparent);
+}
+
+/* ============================================
+   CASE STUDY PROOF BLOCK
+   ============================================ */
+
+.education-proof-section {
+  background: var(--background);
+}
+
+.education-proof-section__inner {
+  max-width: 48rem;
+  margin: 0 auto;
+  text-align: center;
+  padding: var(--spacing-8);
+  border: var(--border-width-thin) solid var(--border-soft);
+  border-radius: var(--radius-xl);
+  background: var(--surface-card);
+}
+
+.education-proof-section__text {
+  font-family: var(--font-secondary);
+  font-size: var(--text-body-lg);
+  line-height: var(--line-height-relaxed);
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-4);
+}
+
+.education-proof-section__link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-family: var(--font-primary);
+  font-size: var(--text-body);
+  font-weight: var(--font-weight-semibold);
+  color: var(--primary);
+  text-decoration: none;
+  transition: var(--transition-base);
+}
+
+.education-proof-section__link:hover {
+  text-decoration: underline;
+}
+
+/* ============================================
+   DARK MODE
+   ============================================ */
+
+.dark .education-ai-section {
+  background: var(--surface-elevated);
+}
+
+.dark .education-ai-section__card {
+  background: color-mix(in srgb, var(--card) 60%, transparent);
+  border-color: color-mix(in srgb, var(--border) 40%, transparent);
+}
+
+.dark .education-ai-section__card:hover {
+  box-shadow: 0 0 30px color-mix(in srgb, var(--primary) 20%, transparent);
+}
+
+.dark .education-proof-section__inner {
+  background: color-mix(in srgb, var(--card) 60%, transparent);
+  border-color: color-mix(in srgb, var(--border) 40%, transparent);
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .education-ai-section__card,
+  .education-ai-section__cta-link {
+    transition: none;
+  }
+}

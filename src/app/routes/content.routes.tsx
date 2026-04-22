@@ -23,6 +23,7 @@ import { loadCSSBundle } from '../utils/css-bundle-loader';
 // Portfolio
 import { PortfolioArchiveTemplate } from '../components/templates/PortfolioArchiveTemplate';
 import { PortfolioSingleTemplate } from '../components/templates/PortfolioSingleTemplate';
+import { PortfolioSingleTemplateFunkyAlt } from '../components/templates/PortfolioSingleTemplateFunkyAlt';
 import { PortfolioCategoryArchiveTemplate } from '../components/templates/PortfolioCategoryArchiveTemplate';
 import { PortfolioTagArchiveTemplate } from '../components/templates/PortfolioTagArchiveTemplate';
 
@@ -49,6 +50,12 @@ function PortfolioSingleRoute() {
   const { slug } = useParams();
   loadCSSBundle('portfolio');
   return <PortfolioSingleTemplate slug={slug} />;
+}
+
+function PortfolioSingleFunkyAltRoute() {
+  const { slug } = useParams();
+  loadCSSBundle('portfolio');
+  return <PortfolioSingleTemplateFunkyAlt slug={slug} />;
 }
 
 function PortfolioCategoryRoute() {
@@ -115,6 +122,7 @@ export const contentRoutes: RouteObject[] = [
   /* ── Work (Portfolio Bundle) ── */
   { path: 'work', Component: PortfolioArchiveRoute },
   { path: 'work/:slug', Component: PortfolioSingleRoute },
+  { path: 'work-alt/:slug', Component: PortfolioSingleFunkyAltRoute },
   { path: 'work/category/:slug', Component: PortfolioCategoryRoute },
   { path: 'work/tag/:slug', Component: PortfolioTagRoute },
 

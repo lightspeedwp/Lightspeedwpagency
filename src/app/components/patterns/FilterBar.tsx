@@ -52,21 +52,21 @@ export interface FilterBarProps {
 }
 
 export const FilterBar = ({
-  searchTerm,
+  searchTerm = '',
   onSearchChange,
   searchPlaceholder = 'Search...',
-  availableCategories,
-  selectedCategories,
+  availableCategories = [],
+  selectedCategories = [],
   onCategoryToggle,
-  sortBy,
+  sortBy = '',
   onSortChange,
-  sortDirection,
+  sortDirection = 'asc',
   onSortDirectionToggle,
-  sortOptions,
+  sortOptions = [],
   onClearFilters,
-  activeFilterCount,
-  totalCount,
-  filteredCount,
+  activeFilterCount = 0,
+  totalCount = 0,
+  filteredCount = 0,
 }: FilterBarProps) => {
   return (
     <div className="filter-bar">

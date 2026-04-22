@@ -1,0 +1,182 @@
+Create an ALTERNATIVE portfolio single / case study template for the LightSpeed WP Agency prototype.
+
+IMPORTANT:
+- Do not overwrite the current template.
+- Do not edit or recreate `src/styles/templates/portfolio-single.css`.
+- The current active route-level file is `src/styles/templates/single-project-optimized.css`.
+- Build a parallel variant instead.
+
+READ THESE FILES FIRST:
+1. `src/app/components/templates/PortfolioSingleTemplate.tsx`
+2. `src/styles/templates/single-project-optimized.css`
+3. `src/styles/templates/portfolio-single/portfolio-single-hero.css`
+4. `src/styles/templates/portfolio-single/portfolio-single-content.css`
+5. `src/styles/templates/portfolio-single/portfolio-single-related.css`
+6. `src/styles/patterns/included-in-solutions.css`
+7. `guidelines/design-tokens/funky-design.md`
+8. `prompts/audit-retro-style.md`
+
+CREATE ONLY THESE NEW FILES:
+1. `src/app/components/templates/PortfolioSingleTemplateFunkyAlt.tsx`
+2. `src/styles/templates/portfolio-single-funky-alt.css`
+
+GOAL:
+Design a NEW funky, premium, art-directed single case study template that feels much more expressive than the current one.
+This should look intentionally bold, stylish, and memorable — retro-wave / neon / editorial — but still professional enough for agency case studies.
+Do not make it look like a generic SaaS landing page.
+
+VISUAL DIRECTION:
+- Use the repo’s funky design language:
+  - neon glow accents
+  - high-contrast borders
+  - bold typography
+  - vibrant gradient bursts
+  - animated top stripes on interactive cards
+  - glassmorphism panels
+  - subtle orb / mesh / glow backgrounds
+- Push the styling further than the current portfolio single files.
+- Borrow the strongest funky motifs from `included-in-solutions.css`:
+  - animated gradient stripe
+  - glow border overlay
+  - richer glass backgrounds
+  - stronger neon icon wrappers
+  - more dramatic hover glow
+- Keep it premium and controlled, not childish and not messy.
+
+STRICT TECH RULES:
+- Use strict BEM naming with a NEW namespace: `portfolio-single-alt__*`
+- Use CSS variables only. Do not hardcode hex colours, font families, spacing values, or border radius values.
+- Use existing repo tokens such as:
+  - `var(--primary)`
+  - `var(--accent)`
+  - `var(--foreground)`
+  - `var(--muted-foreground)`
+  - `var(--background)`
+  - `var(--card)`
+  - `var(--glass-bg)`
+  - `var(--glass-border)`
+  - `var(--border-soft)`
+  - `var(--shadow-neon)`
+  - `var(--spacing-*)`
+  - `var(--radius-*)`
+  - `var(--text-*)`
+  - `var(--font-primary)`
+  - `var(--font-secondary)`
+  - `var(--transition-*)`
+  - `var(--ease-out)`
+- No Tailwind utility soup for visual styling.
+- Existing `wp-*` layout helpers may be used sparingly for container width and basic grids only.
+- No inline styles except where the existing component already needs image background URLs.
+- Include reduced-motion handling.
+- Include visible `:focus-visible` states.
+
+KEEP THE CONTENT / DATA REAL:
+- No lorem ipsum.
+- Reuse the existing portfolio/case study data imports.
+- Keep the same content structure and real project content source.
+- The alt template should still work as a real portfolio single template, not just a visual mock.
+
+IMPORTANT DATA / LOGIC FIXES:
+- Do not hardcode the alt template to ARMD-only content.
+- Accept a `slug` prop and keep the component future-friendly for real single project rendering.
+- In the related projects area, do not use nonexistent fields like:
+  - `project.imageUrl`
+  - `project.category`
+  - `project.description`
+- Use the actual project data shape from `portfolioProjects`:
+  - `project.featuredImage`
+  - `project.excerpt`
+  - `project.projectGroups`
+- If you need a category label, derive it from the first project group or a simple readable label fallback.
+- Preserve compatibility with the current data architecture as much as possible.
+
+LAYOUT TO BUILD:
+1. Breadcrumbs
+2. Hero section
+3. Floating project meta ribbon
+4. Challenge + Solution editorial split section
+5. Results / metrics section
+6. Gallery section
+7. Testimonial spotlight section
+8. Related projects section
+9. Funky CTA section
+
+SECTION-BY-SECTION DESIGN BRIEF:
+
+1. HERO
+- Left side: badge, title, description, short intro copy
+- Right side: large featured image in a thick framed neon/glass container
+- Add 2–3 floating stat/meta cards partially overlapping the image
+- Add subtle background orb / mesh glow behind hero
+- Hero should feel asymmetric and editorial, not boxy
+
+2. PROJECT META RIBBON
+- Convert the standard meta grid into a more designed ribbon / floating panel
+- Include client, industry, completed date, duration, team, budget
+- Add stronger contrast, glass panel treatment, and small neon separators
+- Services and technologies should feel like intentional pill systems, not plain tags
+
+3. CHALLENGE + SOLUTION
+- Present as a split editorial section with two visually distinct panels
+- Challenge should lean warmer / more destructive accent
+- Solution should lean brighter / success / primary accent
+- Each panel should have a large icon block and stronger visual hierarchy
+- Use layered backgrounds, glow edge, and subtle stripe detail
+
+4. RESULTS
+- Four result cards in a more expressive staggered or asymmetric grid
+- Oversized gradient numbers / values
+- Strong hover lift + glow
+- Cards must include animated 3px or 4px top stripe
+- This section should feel like the high-energy centrepiece
+
+5. GALLERY
+- Keep it clean but more art-directed
+- Use framed image cards with tilt / overlap / asymmetry if tasteful
+- Captions should be built into a card footer, not plain text blocks
+- Avoid messy masonry if it harms consistency
+
+6. TESTIMONIAL
+- Full-width spotlight band or statement panel
+- Use a more dramatic neon background wash
+- Make the quote feel premium and intentional
+- Preserve readability and contrast
+
+7. RELATED PROJECTS
+- Use the richer card treatment inspired by `included-in-solutions.css`
+- Each card should be clickable, visually polished, and clearly related
+- Include animated stripe, glow border, better badge treatment, and stronger hover motion
+- Use real related-project fields from the actual data source
+
+8. CTA
+- Keep the existing CTA content but visually integrate it better with the alt design
+- Make it feel like a final neon call-to-action band instead of a generic footer block
+
+ACCESSIBILITY / QUALITY BAR:
+- Maintain good contrast
+- Keep heading hierarchy sensible
+- Do not overdo motion
+- Add reduced motion fallbacks
+- Add focus-visible states
+- Avoid visual clutter
+- This is a premium funky agency portfolio template, not a game UI
+
+DELIVERABLES:
+1. `PortfolioSingleTemplateFunkyAlt.tsx`
+2. `portfolio-single-funky-alt.css`
+
+DO NOT:
+- do not change global theme files
+- do not rename existing data files
+- do not recreate deleted duplicate CSS architecture
+- do not replace the current template
+- do not use placeholder content
+- do not use hardcoded colours or fonts
+- do not build a generic SaaS page
+
+SUCCESS CRITERIA:
+- The new alt template feels materially better and more distinctive than the current single work template
+- It clearly uses the repo’s funky design language
+- It stays compatible with the current codebase structure
+- It introduces a new CSS file for the alternative style only
+- It fixes the related-project field mismatch in the alt template

@@ -44,10 +44,14 @@ interface SolutionLowerProps {
 }
 
 export function SolutionDetailLowerSections({ solution }: SolutionLowerProps) {
+  if (!solution) {
+    return null;
+  }
+
   const specSections = solution.specifications ? [
-    { title: 'Technology', items: solution.specifications.technology },
-    { title: 'Requirements', items: solution.specifications.requirements },
-    { title: 'Support', items: solution.specifications.support },
+    { title: 'Technology', items: solution.specifications.technology || [] },
+    { title: 'Requirements', items: solution.specifications.requirements || [] },
+    { title: 'Support', items: solution.specifications.support || [] },
   ] : [];
 
   return (
@@ -72,7 +76,7 @@ export function SolutionDetailLowerSections({ solution }: SolutionLowerProps) {
                   <h3 className="solution-detail__usecase-title">{useCase.title}</h3>
                   <p className="solution-detail__usecase-desc">{useCase.description}</p>
                   <div className="solution-detail__usecase-tags">
-                    {useCase.industries.map((industry, idx) => (
+                    {(useCase.industries || []).map((industry, idx) => (
                       <span key={idx} className="solution-detail__usecase-tag">{industry}</span>
                     ))}
                   </div>
@@ -157,7 +161,7 @@ export function SolutionDetailLowerSections({ solution }: SolutionLowerProps) {
 
           <ScrollReveal animation="fade-up" delay={100}>
             <TestimonialGrid
-              testimonials={testimonials.slice(0, 3)}
+              testimonials={(testimonials || []).slice(0, 3)}
               variant="funky"
               columns={3}
               showRating={true}
@@ -169,7 +173,7 @@ export function SolutionDetailLowerSections({ solution }: SolutionLowerProps) {
 
       {/* Social Proof */}
       <SocialProof
-        logos={clientLogos.slice(0, 8)}
+        logos={(clientLogos || []).slice(0, 8)}
         title="Trusted by Leading Brands"
         description={`Join the ranks of satisfied clients using ${solution.title}.`}
         variant="funky"
@@ -178,7 +182,7 @@ export function SolutionDetailLowerSections({ solution }: SolutionLowerProps) {
       {/* FAQ */}
       <ScrollReveal animation="fade-up">
         <FAQSection
-          faqs={servicesFAQs.slice(0, 6)}
+          faqs={(servicesFAQs || []).slice(0, 6)}
           title="Frequently asked questions"
           description={`Find answers to common questions about ${solution.title}.`}
           variant="muted"

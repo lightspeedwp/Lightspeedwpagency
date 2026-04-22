@@ -13,6 +13,7 @@
 
 import '../../../../styles/templates/single-post.css';
 import { ChatCircle as MessageSquare, Heart, ShareNetwork as Share2 } from '@phosphor-icons/react';
+import { BreadcrumbPart } from '../../parts/BreadcrumbPart';
 
 export function SingleStatusTemplate() {
   const post = statusPost;
